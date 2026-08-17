@@ -24,6 +24,7 @@ export type LabelSlots = LabelSlots_2;
 export type LabelState = LabelBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-required'?: string;
     };
 };
 

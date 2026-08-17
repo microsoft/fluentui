@@ -75,7 +75,6 @@ export const styles: ElementStyles = css`
 
   .content {
     grid-area: body;
-    max-width: 520px;
     padding-block: ${spacingVerticalMNudge};
     padding-inline: 0;
   }
@@ -118,7 +117,6 @@ export const styles: ElementStyles = css`
   :host([layout='multiline']) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
-    padding-block-start: ${spacingVerticalS};
   }
 
   ::slotted(*) {

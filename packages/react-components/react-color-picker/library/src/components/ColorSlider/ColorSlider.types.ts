@@ -52,8 +52,12 @@ export type ColorSliderProps = Omit<
     defaultColor?: HsvColor;
   };
 
+export type ColorSliderBaseProps = Omit<ColorSliderProps, 'shape'>;
+
 /**
  * State used in rendering ColorSlider
  */
 export type ColorSliderState = ComponentState<ColorSliderSlots> &
   Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
+
+export type ColorSliderBaseState = Omit<ColorSliderState, 'shape'>;

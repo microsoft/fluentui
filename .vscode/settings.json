@@ -69,12 +69,10 @@
   "[handlebars]": {
     "editor.formatOnSave": false
   },
-  "javascript.preferences.importModuleSpecifier": "relative",
-  "javascript.preferences.importModuleSpecifierEnding": "index",
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.importModuleSpecifierEnding": "index",
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.reportStyleChecksAsWarnings": false,
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.importModuleSpecifierEnding": "index",
+  "js/ts.tsdk.path": "./node_modules/typescript/lib",
+  "js/ts.reportStyleChecksAsWarnings": false,
   "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"],
   "nxConsole.generateAiAgentRules": true,
   // Maximum number of requests for the chat agent - Prevents AI agents from stopping mid-session

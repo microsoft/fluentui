@@ -25,6 +25,7 @@ export type CheckboxState = CheckboxBaseState & {
     root: {
         'data-disabled'?: string;
         'data-checked'?: string;
+        'data-label-position'?: CheckboxBaseState['labelPosition'];
     };
 };
 

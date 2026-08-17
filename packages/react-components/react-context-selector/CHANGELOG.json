@@ -2,6 +2,26 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2026 17:20:15 GMT",
+      "version": "9.2.19",
+      "tag": "@fluentui/react-context-selector_v9.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.26.6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:10 GMT",
       "tag": "@fluentui/react-context-selector_v9.2.18",
       "version": "9.2.18",

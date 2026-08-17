@@ -24,5 +24,9 @@ export type OptionState = OptionBaseState & {
      * Whether the option is currently selected.
      */
     'data-selected'?: string;
+    /**
+     * Whether the option belongs to a multiselect listbox.
+     */
+    'data-multiselect'?: string;
   };
 };

@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.2.44",
+  "version": "9.2.45",
   "description": "A package that contains compatibility layer for React Portals",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,12 +12,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.15",
-    "@fluentui/react-tabster": "^9.26.16",
+    "@fluentui/react-portal-compat-context": "^9.0.16",
+    "@fluentui/react-tabster": "^9.26.17",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.74.5",
+    "@fluentui/react-components": "^9.74.6",
     "@types/react": ">=16.14.0 <20.0.0",
     "react": ">=16.14.0 <20.0.0"
   },
@@ -29,18 +29,24 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-amd",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

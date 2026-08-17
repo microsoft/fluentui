@@ -9,7 +9,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
-import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -17,7 +16,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InlineDrawerBaseProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
 import { JSXElement } from '@fluentui/react-utilities';
-import type { NavBaseState } from '@fluentui/react-nav';
 import { NavCategoryContextValues } from '@fluentui/react-nav';
 import { NavCategoryItemProvider } from '@fluentui/react-nav';
 import { NavCategoryProps } from '@fluentui/react-nav';
@@ -27,21 +25,23 @@ import { NavContextValue } from '@fluentui/react-nav';
 import { NavContextValues } from '@fluentui/react-nav';
 import { DrawerBodyProps as NavDrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots as NavDrawerBodySlots } from '@fluentui/react-drawer';
+import { DrawerBodyState as NavDrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterProps as NavDrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots as NavDrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderProps as NavDrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots as NavDrawerHeaderSlots } from '@fluentui/react-drawer';
-import { NavItemBaseProps as NavItemProps } from '@fluentui/react-nav';
+import type { NavItemBaseProps } from '@fluentui/react-nav';
+import type { NavItemBaseState } from '@fluentui/react-nav';
 import { NavItemRegisterData } from '@fluentui/react-nav';
 import { NavItemSlots } from '@fluentui/react-nav';
-import { NavItemBaseState as NavItemState } from '@fluentui/react-nav';
 import { NavItemValue } from '@fluentui/react-nav';
 import { NavBaseProps as NavProps } from '@fluentui/react-nav';
 import { NavProvider } from '@fluentui/react-nav';
 import { NavSlots } from '@fluentui/react-nav';
+import { NavBaseState as NavState } from '@fluentui/react-nav';
+import type { NavSubItemBaseState } from '@fluentui/react-nav';
 import { NavSubItemBaseProps as NavSubItemProps } from '@fluentui/react-nav';
 import { NavSubItemSlots } from '@fluentui/react-nav';
-import { NavSubItemBaseState as NavSubItemState } from '@fluentui/react-nav';
 import { OnNavItemSelectData } from '@fluentui/react-nav';
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
@@ -53,8 +53,6 @@ import { useNavCategoryContext_unstable as useNavCategoryContext } from '@fluent
 import { useNavCategoryContextValues_unstable as useNavCategoryContextValues } from '@fluentui/react-nav';
 import { useNavCategoryItemContext_unstable as useNavCategoryItemContext } from '@fluentui/react-nav';
 import { useNavContext_unstable as useNavContext } from '@fluentui/react-nav';
-import { useNavItemBase_unstable as useNavItem } from '@fluentui/react-nav';
-import { useNavSubItemBase_unstable as useNavSubItem } from '@fluentui/react-nav';
 
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
@@ -99,6 +97,10 @@ export type NavCategoryItemSlots = {
 // @public
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
     selected: boolean;
+    root: {
+        'data-open'?: string;
+        'data-selected'?: string;
+    };
 };
 
 export { NavCategoryProps }
@@ -133,12 +135,7 @@ export { NavDrawerBodyProps }
 
 export { NavDrawerBodySlots }
 
-// @public (undocumented)
-export type NavDrawerBodyState = DrawerBodyState & {
-    root: DrawerBodyState['root'] & {
-        focusgroup?: string;
-    };
-};
+export { NavDrawerBodyState }
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
@@ -177,13 +174,19 @@ export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextVal
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
 
-export { NavItemProps }
+// @public (undocumented)
+export type NavItemProps = NavItemBaseProps;
 
 export { NavItemRegisterData }
 
 export { NavItemSlots }
 
-export { NavItemState }
+// @public (undocumented)
+export type NavItemState = NavItemBaseState & {
+    root: {
+        'data-selected'?: string;
+    };
+};
 
 export { NavItemValue }
 
@@ -207,12 +210,7 @@ export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
 
 export { NavSlots }
 
-// @public (undocumented)
-export type NavState = NavBaseState & {
-    root: NavBaseState['root'] & {
-        focusgroup?: string;
-    };
-};
+export { NavState }
 
 // @public
 export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
@@ -237,7 +235,12 @@ export { NavSubItemProps }
 
 export { NavSubItemSlots }
 
-export { NavSubItemState }
+// @public (undocumented)
+export type NavSubItemState = NavSubItemBaseState & {
+    root: {
+        'data-selected'?: string;
+    };
+};
 
 export { OnNavItemSelectData }
 
@@ -258,7 +261,7 @@ export const renderNavDivider: (state: DividerBaseState) => JSXElement;
 export const renderNavDrawer: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
 // @public
-export const renderNavDrawerBody: (state: DrawerBodyState) => JSXElement;
+export const renderNavDrawerBody: (state: NavDrawerBodyState) => JSXElement;
 
 // @public
 export const renderNavDrawerFooter: (state: DrawerFooterState) => JSXElement;
@@ -315,12 +318,14 @@ export const useNavDrawerFooter: (props: NavDrawerFooterProps, ref: React_2.Ref<
 // @public
 export const useNavDrawerHeader: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
 
-export { useNavItem }
+// @public (undocumented)
+export const useNavItem: (props: NavItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavItemState;
 
 // @public
 export const useNavSectionHeader: (props: NavSectionHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavSectionHeaderState;
 
-export { useNavSubItem }
+// @public (undocumented)
+export const useNavSubItem: (props: NavSubItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavSubItemState;
 
 // @public
 export const useNavSubItemGroup: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;
