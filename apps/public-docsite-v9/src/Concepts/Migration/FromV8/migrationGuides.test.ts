@@ -1,4 +1,4 @@
-/** @jest-environment node */
+/* @jest-environment node */
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -120,7 +120,12 @@ describe('migration guide route helpers', () => {
   test('flags missing P0 inventory rows with markdown guide links regardless of planned text', () => {
     const rows: InventoryRow[] = [
       {
-        cells: ['Button', '[Button migration](/docs/concepts-migration-from-v8-components-button--docs)', 'P0', 'missing'],
+        cells: [
+          'Button',
+          '[Button migration](/docs/concepts-migration-from-v8-components-button--docs)',
+          'P0',
+          'missing',
+        ],
         guideLinks: ['/docs/concepts-migration-from-v8-components-button--docs'],
         lineNumber: 12,
         raw: '| Button | [Button migration](/docs/concepts-migration-from-v8-components-button--docs) | P0 | missing |',
@@ -133,9 +138,7 @@ describe('migration guide route helpers', () => {
       },
     ];
 
-    expect(
-      getLinkedMissingP0Rows(rows, 2, 3),
-    ).toEqual([
+    expect(getLinkedMissingP0Rows(rows, 2, 3)).toEqual([
       {
         guideLinks: ['/docs/concepts-migration-from-v8-components-button--docs'],
         lineNumber: 12,
@@ -199,8 +202,8 @@ describe('FromV8 migration guide routes', () => {
           return [{ docsId, issue: 'No MDX file found for existing P0 guide.' }];
         }
 
-        const filesWithoutBacklink = filePaths.filter(filePath =>
-          !readUtf8(filePath).includes(`](${componentMappingDocsPath})`),
+        const filesWithoutBacklink = filePaths.filter(
+          filePath => !readUtf8(filePath).includes(`](${componentMappingDocsPath})`),
         );
 
         return filesWithoutBacklink.map(filePath => ({

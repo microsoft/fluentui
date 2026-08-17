@@ -46,7 +46,10 @@ export interface DiscoveredDocs {
 
 const repoRoot = path.resolve(__dirname, '../../../../../..');
 const appDefinitionPath = path.join(repoRoot, 'apps/public-docsite-resources/src/AppDefinition.tsx');
-const componentMappingPath = path.join(repoRoot, 'apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx');
+const componentMappingPath = path.join(
+  repoRoot,
+  'apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx',
+);
 const fromV8ComponentsDirectory = path.join(
   repoRoot,
   'apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components',
@@ -80,7 +83,9 @@ function getPropertyAssignment(
 ): ts.PropertyAssignment | undefined {
   return objectLiteral.properties.find(
     property =>
-      ts.isPropertyAssignment(property) && property.name !== undefined && getPropertyName(property.name) === propertyName,
+      ts.isPropertyAssignment(property) &&
+      property.name !== undefined &&
+      getPropertyName(property.name) === propertyName,
   ) as ts.PropertyAssignment | undefined;
 }
 
@@ -117,7 +122,10 @@ function getResolvableStringLiteralValue(
     return getResolvableStringLiteralValue(initializer, variableInitializers, nextVisitedIdentifiers);
   }
 
-  if (ts.isBinaryExpression(unwrappedExpression) && unwrappedExpression.operatorToken.kind === ts.SyntaxKind.PlusToken) {
+  if (
+    ts.isBinaryExpression(unwrappedExpression) &&
+    unwrappedExpression.operatorToken.kind === ts.SyntaxKind.PlusToken
+  ) {
     const left = getResolvableStringLiteralValue(unwrappedExpression.left, variableInitializers, visitedIdentifiers);
     const right = getResolvableStringLiteralValue(unwrappedExpression.right, variableInitializers, visitedIdentifiers);
 
@@ -131,7 +139,10 @@ function getDocsSlug(value: string): string {
   return toId(value, 'docs').replace(/--docs$/, '');
 }
 
-function getRequiredObjectLiteralProperty(objectLiteral: ts.ObjectLiteralExpression, propertyName: string): ts.Expression {
+function getRequiredObjectLiteralProperty(
+  objectLiteral: ts.ObjectLiteralExpression,
+  propertyName: string,
+): ts.Expression {
   const property = getPropertyAssignment(objectLiteral, propertyName);
 
   if (!property) {
@@ -527,7 +538,11 @@ export function getConfiguredDocs(): DiscoveredDocs {
     }),
     'packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ];
-  const files = [...new Set(configuredStoryGlobs.flatMap(pattern => globSync(normalizeConfiguredStoryGlob(pattern), { nodir: true })))];
+  const files = [
+    ...new Set(
+      configuredStoryGlobs.flatMap(pattern => globSync(normalizeConfiguredStoryGlob(pattern), { nodir: true })),
+    ),
+  ];
   const allDocsIds = new Set<string>();
   const mdxDocsIds = new Set<string>();
   const mdxFilesByDocsId = new Map<string, string[]>();
@@ -609,7 +624,9 @@ export function getDocsIdFromUrl(url: string): string | undefined {
 }
 
 function getInventoryColumnIndex(columnName: string): number {
-  return getInventoryTable().headerCells.findIndex(cell => normalizeInventoryCell(cell) === normalizeInventoryCell(columnName));
+  return getInventoryTable().headerCells.findIndex(
+    cell => normalizeInventoryCell(cell) === normalizeInventoryCell(columnName),
+  );
 }
 
 export function getExistingP0GuideDocsIds(fallbackExistingP0GuideDocsIds: string[]): string[] {
@@ -703,9 +720,5 @@ export function getPrematurelyLinkedMissingP0Rows(): Array<Pick<InventoryRow, 'g
     return [];
   }
 
-  return getLinkedMissingP0Rows(
-    getInventoryRows(),
-    priorityColumnIndex,
-    statusColumnIndex,
-  );
+  return getLinkedMissingP0Rows(getInventoryRows(), priorityColumnIndex, statusColumnIndex);
 }
