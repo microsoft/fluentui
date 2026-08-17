@@ -58,10 +58,25 @@ Supported statuses are:
 - `no direct counterpart`;
 - `out of scope`.
 
+Status assignment is mechanical:
+
+- `missing`: no central MDX guide exists for an eligible row;
+- `in progress`: a central MDX guide exists but fails one or more `complete` checks;
+- `complete`: every completion check below passes;
+- `no direct counterpart`: no stable v9 destination serves the same primary task;
+- `out of scope`: a destination exists only in an excluded package category or outside Fluent UI v9.
+
 The inventory population starts from the v8 controls registered in
 `apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. Every public v8 docsite control receives a row. Duplicate mapping rows are removed, and any control present in only one source is investigated and retained with the appropriate status.
 
-Inventory entries use one row per v8 public component or component family. Variants are grouped only when they share the same v9 destination and migration model, such as the v8 button variants that converge on the v9 button family. A stable v9 component with no v8 source does not receive a migration row; it remains covered by the existing "New Components in v9" section.
+Inventory entries use one row per v8 public component by default. Components are grouped into one family row only when all of these are true:
+
+1. they are variants exported from the same v8 component package;
+2. they have the same stable v9 destination package;
+3. none requires a different conditional destination;
+4. one guide can provide separate mapping subsections and examples for every grouped export.
+
+If any condition fails, the components receive separate rows. A stable v9 component with no v8 source does not receive a migration row; it remains covered by the existing "New Components in v9" section.
 
 Eligibility is determined as follows:
 
@@ -73,7 +88,7 @@ Eligibility is determined as follows:
 
 Complexity values are:
 
-- `high`: any of these apply: multiple destination components require a scenario decision; one v8 component becomes three or more required v9 compound components; or a supported core v8 scenario requires custom implementation because v9 has no equivalent;
+- `high`: any of these apply: multiple destination components require a scenario decision; one v8 component becomes three or more required v9 compound components; or a core v8 scenario requires custom implementation because v9 has no equivalent;
 - `medium`: no `high` rule applies, but migration changes controlled-state ownership, event data shape, accessible labeling, focus/keyboard behavior, or replaces render callbacks with slots or child composition;
 - `low`: neither `high` nor `medium` applies, and migration is limited to component/prop renames, string-enum changes, or native HTML/ARIA prop replacements.
 
@@ -87,6 +102,8 @@ Priority values are:
 Changing a guide from `missing` to `in progress` does not change its priority. A guide changes to `N/A` priority only when it becomes `complete` or is classified as out of scope or no direct counterpart.
 
 A guide is `complete` only when its MDX page exists, has the required `<Meta>` title, is linked from `ComponentMapping.mdx`, contains every required section or an explicit `Not applicable` statement, includes the required examples, has no unresolved documentation gap affecting destination choice, public API mapping, behavior, or example correctness, and passes the validation defined below.
+
+A **core v8 scenario** is a scenario demonstrated by a v8 overview/example page or represented by a non-deprecated public prop in the v8 type declarations. Deprecated props and undocumented implementation details do not raise complexity.
 
 ## Pilot Components
 
@@ -115,6 +132,16 @@ Four pilot pages already exist in the central docsite:
 - `SpinButton.mdx`.
 
 These pages are audit-and-revise work, not duplicate-page creation. They must be brought up to the new content model, corrected against current stable APIs, and relinked from the expanded inventory. The remaining six pilot guides are new pages.
+
+All other existing pages under `FromV8/Components/` have this explicit disposition:
+
+- retain the page and its current route;
+- classify its inventory row using the mechanical status rules;
+- if it already passes the new completion checks, mark it `complete`;
+- otherwise mark it `in progress` and record the missing checks in the inventory notes;
+- do not expand or rewrite it during the pilot unless a pilot edit breaks its navigation or reveals migration guidance that is materially incorrect.
+
+This rule applies to every existing non-pilot page, including nested component-family pages such as Card, Flex, Image, and Slider.
 
 ## Guide Content Model
 
@@ -155,6 +182,8 @@ Every component guide follows the same top-level structure. If a section is not 
 
 A **major change** is any item classified as a conditional mapping, composition replacement, separate-component replacement, behavioral change, or unsupported core scenario. Each major change requires a focused example. If an unsupported scenario cannot have a runnable v9 example, it requires a minimal v8 example plus a concrete composition sketch or explicit statement that no supported replacement exists.
 
+Every guide contains a major-change checklist with a stable local ID for each item, such as `MC-1`. Each focused example names the ID or IDs it demonstrates. A major change is sufficiently covered only when the example includes the minimum v8 code that exhibits the old behavior and the minimum v9 code or composition needed to achieve or replace it. Unsupported items link their ID to the unsupported-scenario explanation.
+
 ## Research and Evidence
 
 Migration claims must be based on current repository sources:
@@ -175,6 +204,15 @@ When evidence is incomplete or contradictory, the guide must not guess. The auth
 - mark the item as a documentation gap requiring component-owner input.
 
 A documentation gap that affects destination choice, public prop/event mapping, behavior, accessibility guidance, or example correctness blocks `complete` status until repository evidence or component-owner confirmation resolves it. Minor historical context gaps may remain in the known-gaps section when they do not affect migration instructions.
+
+Every resolved gap is recorded in the guide's `Evidence` section with:
+
+- the affected mapping or major-change ID;
+- a repository file and symbol, test, changelog/RFC link, or public GitHub issue/PR URL;
+- the resolution date;
+- a one-sentence conclusion.
+
+Component-owner confirmation is valid only when recorded in a public GitHub issue or PR and linked from this section. Unrecorded conversation or private-message confirmation does not close a gap.
 
 ## Authoring Workflow
 
@@ -258,7 +296,14 @@ Internal guide links use Storybook doc routes in the existing form:
 /docs/concepts-migration-from-v8-components-<storybook-slug>--docs
 ```
 
-An adjacent Jest navigation test under `FromV8/` scans `ComponentMapping.mdx` and pilot MDX files, extracts `<Meta title>` values and internal `/docs/` links, derives Storybook IDs with Storybook's existing CSF ID utility, and fails when a linked guide has no matching MDX title. `yarn nx run public-docsite-v9:test` runs this check. This source-level test complements the Storybook build, which validates MDX compilation but does not itself prove that links resolve.
+An adjacent Jest navigation test under `FromV8/` scans `ComponentMapping.mdx` and every MDX file under `FromV8/Components/`. It extracts `<Meta title>` values and every internal `/docs/` link used for:
+
+- landing-page guide links;
+- guide backlinks to component mapping;
+- v8/v9 component documentation links;
+- cross-migration links such as Dropdown to ComboBox/Combobox.
+
+The test derives Storybook IDs with Storybook's existing CSF ID utility and fails when a required internal link has no matching story or MDX title in the docsite sources. External URLs are excluded from this source-level check. `yarn nx run public-docsite-v9:test` runs the test. This complements the Storybook build, which validates MDX compilation but does not itself prove that links resolve.
 
 ## Delivery Phases
 
@@ -290,13 +335,16 @@ The pilot is complete when:
 - the inventory records a defensible status, complexity, and priority for every entry;
 - all ten pilot component pages are published and linked;
 - the four existing pilot pages are revised in place rather than duplicated;
+- every non-pilot existing central page has a mechanically assigned inventory status and missing-check notes when not complete;
 - every guide covers renamed, removed, replaced, unsupported, and new APIs where applicable;
 - every required section is present or explicitly marked `Not applicable`;
 - every guide includes appropriate prop mapping tables;
 - every guide includes at least one basic side-by-side v8/v9 example;
 - major API and composition changes have focused examples;
+- every major-change ID maps to a focused example or unsupported-scenario explanation;
 - imports, props, event shapes, and examples match current stable APIs;
-- v9 examples have a typed story or fixture source shared with the visible documentation example;
+- both v8 and v9 examples use typed CSF story sources shared with the visible documentation example;
 - accessibility and interaction differences are documented;
+- resolved documentation gaps have auditable evidence entries;
 - internal specifications are not treated as current public guidance without verification;
-- the public docsite type-check, lint, and Storybook docsite build succeed.
+- the public docsite type-check, lint, test, and Storybook docsite build succeed.
