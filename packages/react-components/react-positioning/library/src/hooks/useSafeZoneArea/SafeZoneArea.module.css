@@ -4,49 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `SafeZoneArea.tsx`. Four
- * elements, four independent class strings — there is no single "root slot" cascade here:
- *
- *   element                     #  mergeClasses argument      → target
- *   ---------------------------------------------------------------------------------------
- *   <div data-safe-zone>        1  useStyles.wrapper          → fui.components.l1 .wrapper
- *                               2  active && wrapperActive    → fui.components.l1 .wrapper-active
- *                               —  (no consumer className — SafeZoneArea takes no className prop)
- *   <svg>                       1  useStyles.svg              → fui.components.l1 .svg
- *   <g>                         1  useStyles.triangle         → fui.components.l1 .triangle
- *                               2  debug && triangleDebug     → fui.components.l1 .triangle-debug
- *   <path> (debug only)         1  useStyles.rectDebug        → fui.components.l1 .rect-debug
- *
- * ── Order (CONVERSION_GUIDE "order rule") ────────────────────────────────────────────────
- * `.wrapper` / `.wrapper-active` is the ONLY same-property collision in this file
- * (`display: none` vs `display: block`), and `.wrapper-active` is the LATER mergeClasses
- * argument, so its block must stay after `.wrapper`'s. Declaration order in the Griffel
- * source already matched argument order — no inversion to unwind. Do not reorder these two.
- * `.triangle` / `.triangle-debug` land on the same <g> but touch disjoint properties
- * (`pointer-events` vs `cursor` + `fill`), so their relative position is not load-bearing;
- * they are still authored in argument order for consistency.
- *
- * ── Altitude: l1, not l2 (D2 amendment 2) ────────────────────────────────────────────────
- * Every element styled here is created by SafeZoneArea itself — the wrapper <div>, the <svg>
- * and the SVG shapes inside it. No declaration reaches into another component's hook output,
- * and nothing external styles these nodes, so this is one component's own cascade: l1.
- *
- * ── Unlayered rules: none needed (D2 amendment 5) ────────────────────────────────────────
- * Nothing here targets an element owned by an external or unconverted Griffel package.
- * Grepped for `fui-Icon-filled` / `fui-Icon-regular` / `:global(` across react-positioning:
- * zero hits. SafeZoneArea renders raw SVG, not icons.
- *
- * ── Theming (D4) ─────────────────────────────────────────────────────────────────────────
- * Two colour tokens, both literal `var(--tokenName)` inside `color-mix()`, reproduced from
- * the compiled atomics rather than from the `tokens.*` source expressions. No spacing or
- * stroke-width token is read, so the D4 prohibitions do not apply here; `w-0` / `h-0` are the
- * numeric-fallback spacing form and compute to 0 at any `--base-scale`.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/hooks/useSafeZoneArea/SafeZoneArea.styles.js.
- */
-
 @layer fui.components.l1 {
   /* arg #1 (wrapper) — from useStyles.wrapper */
   .wrapper {

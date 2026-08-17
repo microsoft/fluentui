@@ -4,60 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useImageSwatchStyles_unstable, not source declaration order:
- *
- *   1 imageSwatchClassNames.root      → static class (JS) — REMOVED in the statics sweep
- *                                       (DECISIONS.md D16.1); the root now leads with
- *                                       `.root` below and carries `group/fui-image-swatch`
- *                                       second
- *   2 useStyles (makeResetStyles)     → fui.base — EXCEPT its forced-colors block, hoisted
- *                                       to the LAST fui.components.l1 block (see below)
- *   3 useSizeStyles[size]             → fui.components.l1   (data-size)
- *   4 useShapeStyles[shape]           → fui.components.l1
- *   5 selected && useStylesSelected   → fui.components.l1
- *   6 consumer className              → unlayered (always wins)
- *
- * ── The one hoist, and why it is not an argument-order violation ─────────────────────
- * Griffel's `styleBucketOrdering` is `r, d, l, v, w, f, i, h, a, s, k, t, m, c` — the `s`
- * bucket is "at rules for RESET styles" and it sorts AFTER every plain makeStyles bucket
- * (`d`/`h`/`a`) and BEFORE the makeStyles media bucket (`m`). So the reset's
- * `@media (forced-colors: active)` hover rules do NOT behave like the rest of the reset:
- * they BEAT the `selected` slice's `:hover` / `:hover:active` box-shadows (both 0-2-0 and
- * 0-3-0, `h`/`a` buckets) instead of losing to them.
- *
- * Concretely, for a selected + hovered swatch in forced colors Griffel resolves
- *   `.r18b5q7m:hover` (r, 0-2-0) < `.f106r15f:hover` (h, 0-2-0)
- *     < `@media hc { .r18b5q7m:hover }` (s, 0-2-0)   ← winner, colorBrandStroke2Hover
- * Leaving that rule in `fui.base` would hand the win to `.selected`'s
- * colorCompoundBrandStrokeHover — a silent high-contrast regression. Hoisting the reset's
- * forced-colors block to the END of `fui.components.l1` reproduces the `s` bucket's rank
- * exactly. (Same class of fix as the batch-1 ProgressBar/Link splits and the batch-2
- * Checkbox interleave.)
- *
- * ── Ordering inside `.selected` ──────────────────────────────────────────────────────
- * Griffel decided that slice by bucket + specificity, both of which `:where()` flattens,
- * so the block is written in BUCKET order rather than source order:
- *   rest (d, 0-1-0) → forced-colors rest (m, 0-1-0, beats the rest rule)
- *     → [data-fui-focus-visible] (d, 0-2-0, beats both on specificity)
- *     → :hover (h, 0-2-0) → :hover:active (a, 0-3-0)
- *
- * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
- * The 20/24/28/32px box sizes and the 5px/6px/7px box-shadow spreads are literals in the
- * Griffel source, not token reads. Sizes take the numeric utility `size-N`; the shadow
- * spreads take `calc(Npx * var(--base-scale))` (box-shadow is NOT a spacing-powered
- * property, so no utility exists) — both are exactly Npx at the default 16px root and both
- * scale with the stroke widths they are paired with. `1px` border width and every
- * `strokeWidth*` read become `var(--spacing-*)` per the D4 addendum.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/ImageSwatch/useImageSwatchStyles.styles.js.
- *
- * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
- * this module, and it contains no `:global()` at all.
- */
-
 @layer fui.base {
   /*
    * from useStyles (makeResetStyles), minus its `@media (forced-colors: active)` block —

@@ -625,45 +625,7 @@
 }
 
 /*
- * ── The icon swap — retired to `fui.components.l1` (S-J batch 1, DECISIONS.md D27) ────
- *
- * These twelve rules style ANOTHER package's elements: the two <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. Under icons 2.x
- * that package styled them with UNLAYERED Griffel atomics, so these rules had to be
- * unlayered too (D2 amendment 5 — the CDP matched-rules evidence lives in DECISIONS.md
- * and this file's git history). Icons 3.0 (headless) replaced the atomics with
- * `data-fui-icon-*` attributes resolved by a stylesheet this repo imports at
- * `layer(fui.components.l1)` (D27), so the swap returns to the layer that mirrors its
- * mergeClasses argument — the retirement D2a5's own scope clause promised.
- *
- * ── Cascade math at l1 (verified: emitted VR bundle + CDP computed styles, S-J gate) ──
- * The icons sheet's competing rules are the base `:where([data-fui-icon])` (0-0-0,
- * display:inline) and the bundled-pair hide `[data-fui-icon-hidden]` (0-1-0,
- * display:none, deliberately not `:where()`-wrapped). Every selector below is 0-2-0
- * (two classes; the `@variant` compounds are `:where()`-flat), so within the shared
- * `fui.components.l1` layer these rules win on SPECIFICITY and the icons-sheet-vs-module
- * source order never becomes the tiebreak. ToggleButton's `.checked` and MenuButton's
- * `.expanded` swaps sit at those modules' own `fui.components.l2` altitude and beat all
- * of this on layer order — reproducing the winner the unlayered blocks decided by file
- * position.
- *
- * ── Order inside this block reproduces mergeClasses ARGUMENT order ───────────────────
- * Every selector here ties at 0-2-0 in the same layer (`disabled-any` and `hover-active`
- * are both `:where(...)` compounds — see react-tailwind-theme/css/variants.css), and
- * `.root`, `.subtle`, `.transparent` are separate CSS-module classes on the SAME element.
- * So the tie is broken purely by file position and file position must therefore encode
- * argument order, exactly as it did while the block was unlayered:
- *
- *   1. `.subtle` / `.transparent` hover + pressed swaps   ← args #3 (rootStyles[appearance])
- *   2. `.root` disabled-any hover + pressed swap-BACKS    ← arg  #8 (rootDisabledStyles.base)
- *
- * arg #8 outranks arg #3 in mergeClasses, so the disabled swap-backs are written LAST and a
- * hovered *disabled* subtle Button keeps the regular glyph. Within each appearance, `hover`
- * is written before `hover-active` — Griffel separated them by specificity (0-2-0 vs
- * 0-3-0), `:where()` does not, so pressed must come second to win.
- *
- * `@variant`, not hand-written `[disabled]`/`:hover` selectors, so the shared catalog stays
- * the single definition of each selector; `:where()` still flattens them to 0-2-0 total.
+ * - Within each appearance, `hover` is written before `hover-active` — Griffel separated them by specificity (0-2-0 vs 0-3-0), `:where()` does not, so pressed must come second to win.
  */
 
 @layer fui.components.l1 {

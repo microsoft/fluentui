@@ -4,86 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useColorSwatchStyles_unstable, not source declaration order.
- *
- * ROOT slot:
- *   1 colorSwatchClassNames.root        → static class (JS) — REMOVED in the statics sweep
- *                                         (DECISIONS.md D16.1); the root now leads with
- *                                         `.root` below and carries `group/fui-color-swatch`
- *                                         second
- *   2 useResetStyles                    → fui.base — EXCEPT its forced-colors block, hoisted
- *                                         below `.selected` (see "the one hoist")
- *   3 useSizeStyles[size]               → fui.components.l1   (data-size)
- *   4 useShapeStyles[shape]             → fui.components.l1
- *   5 selected && useStyles.selected    → fui.components.l1
- *   6 selected && useStyles.selectedSmall → fui.components.l1 (nested in `.selected` as
- *                                          `size-small-or-below`)
- *   -  HOISTED reset forced-colors block → fui.components.l1
- *   7 disabled && useStyles.disabled    → fui.components.l1   (native `[disabled]`)
- *   8 consumer className                → unlayered (always wins)
- *
- * ICON / DISABLED-ICON slots (both take the same three-argument merge):
- *   1 useIconStyles.icon                → fui.components.l1  (`.icon`)
- *   2 useIconStyles[size]               → fui.components.l1  (`.root[data-size] & .icon`)
- *   3 useIconStyles.disabledIcon        → fui.components.l1  (`.disabled-icon`, disabledIcon
- *                                         slot only)
- *
- * ── The one hoist, and why it is not an argument-order violation ─────────────────────
- * Griffel's `styleBucketOrdering` is `r, d, l, v, w, f, i, h, a, s, k, t, m, c`. The `s`
- * bucket is "at rules for RESET styles" and sorts AFTER every plain makeStyles bucket
- * (`d`/`h`/`a`) and BEFORE the makeStyles media bucket (`m`). So the reset's
- * `@media (forced-colors: active)` hover rules do NOT behave like the rest of the reset:
- * they BEAT the size and selected slices' `:hover` / `:hover:active` box-shadows, and lose
- * only to `disabled`'s own forced-colors rule (`m`).
- *
- * Concretely, for a selected + hovered swatch in forced colors Griffel resolves
- *   `.ryw27oi:hover` (r, 0-2-0) < `.f106r15f:hover` (h, 0-2-0)
- *     < `@media hc { .ryw27oi:hover }` (s, 0-2-0)   ← winner, colorBrandStroke2Hover
- * Leaving that rule in `fui.base` would hand the win to `.selected`'s
- * colorCompoundBrandStrokeHover — a silent high-contrast regression. Hoisting the reset's
- * forced-colors block to a block placed AFTER `.selected` and BEFORE `disabled` reproduces
- * the `s` bucket's rank exactly, in both directions. (Same class of fix as the batch-1
- * ProgressBar/Link splits and the batch-2 Checkbox interleave.)
- *
- * ── Ordering inside `.selected` ──────────────────────────────────────────────────────
- * Griffel decided that slice by bucket + specificity, both of which `:where()` flattens,
- * so the block is written in BUCKET order rather than source order:
- *   rest (d, 0-1-0) → selectedSmall rest (d, 0-1-0, later arg)
- *     → forced-colors rest (m, 0-1-0, beats both)
- *     → [data-fui-focus-visible] (d, 0-2-0, beats all three on specificity)
- *     → :hover (h, 0-2-0) → :hover:active (a, 0-3-0), each with its selectedSmall
- *       override nested immediately after so arg #6 still beats arg #5.
- *
- * ── State selectors ──────────────────────────────────────────────────────────────────
- * `size` is a SCALE prop and rides `data-size` + the shared `size-*` variants (D3); the
- * `selectedSmall` slice's `size === 'small' || 'extra-small'` gate is the catalog's
- * `size-small-or-below`, whose value set is exactly this component's two smallest steps.
- * `shape` and `selected` are look/state props gating whole slices and stay module classes.
- * `disabled` uses the NATIVE selector: the root is a `<button>` and `useColorSwatch_unstable`
- * passes `disabled` straight through, so `@variant disabled` (`[disabled], [data-disabled],
- * :disabled`) reads it with no mirror — D15.6's rule that a `data-*` attribute is a fallback
- * for what a native selector cannot express at the element that needs it.
- *
- * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
- * The 20/24/28/32px box sizes and the 5px/6px/7px box-shadow spreads are literals in the
- * Griffel source, not token reads. Sizes take the numeric utility `size-N`; the shadow
- * spreads take `calc(Npx * var(--base-scale))` (box-shadow is NOT spacing-powered, so no
- * utility exists) — both are exactly Npx at the default 16px root and both scale with the
- * stroke widths they are paired with. `1px` border width and every `strokeWidth*` read
- * become `var(--spacing-*)` per the D4 addendum. The icon's
- * `drop-shadow(0 1px 1px rgb(0 0 0 / 1))` keeps its literals, matching the PopoverSurface /
- * Tooltip precedent for `filter: drop-shadow(...)`.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/ColorSwatch/useColorSwatchStyles.styles.js.
- *
- * D2 amendment 5 does not apply: this component renders `<ProhibitedFilled />` directly
- * rather than through `bundleIcon()`, so there is no `fui-Icon-filled` / `fui-Icon-regular`
- * swap to compete with — and this module contains no `:global()` at all.
- */
-
 @layer fui.base {
   .root {
     @apply box-border inline-flex shrink-0 items-center justify-center overflow-hidden p-0;
@@ -279,11 +199,7 @@
 
 @layer fui.components.l1 {
   /*
-   * arg #7 — from useStyles.disabled, the LAST style argument, hence the last root block.
-   * Read from the native `[disabled]` on the root `<button>` (see header), so no module
-   * class and no mirror is needed. The forced-colors half is written after the plain half
-   * to mirror Griffel's `m`-after-`h` bucket order; both set the same value, so the only
-   * thing the split buys is that it also beats the hoisted reset block above.
+   * - The forced-colors half is written after the plain half to mirror Griffel's `m`-after-`h` bucket order; both set the same value, so the only thing the split buys is that it also beats the hoisted reset block above.
    */
   .root {
     @variant disabled {

@@ -154,11 +154,7 @@
    */
   .root {
     /*
-     * from useRootStyles.small / .medium / .large — arg #14.
-     *
-     * `columnGap: 0` and `maxWidth: '468px'` are byte-identical in all three slices and
-     * `size` is always one of them (`SearchBoxState` makes it Required), so they are
-     * hoisted out of the `@variant size-*` blocks. Only the padding differs per size.
+     * - `columnGap: 0` and `maxWidth: '468px'` are byte-identical in all three slices and `size` is always one of them (`SearchBoxState` makes it Required), so they are hoisted out of the `@variant size-*` blocks.
      */
     @apply max-w-468;
 
@@ -202,12 +198,7 @@
   }
 
   /*
-   * from useInputStyles.small / .medium / .large — arg #9. Gives the text room back on the
-   * end side while the contentAfter box is collapsed (see `rest` below), overriding the
-   * `padding-inline-end: 0` arg #8 set — hence written after it.
-   *
-   * `data-size` and `data-focused` both live on the ROOT, so these reach the input the same
-   * way Input's own size paddings do: a descendant selector.
+   * - Gives the text room back on the end side while the contentAfter box is collapsed (see `rest` below), overriding the `padding-inline-end: 0` arg #8 set — hence written after it.
    */
   .root {
     @variant not-focused {

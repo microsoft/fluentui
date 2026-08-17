@@ -127,17 +127,7 @@
 
 @layer fui.components.l1 {
   /*
-   * from useRootStyles[appearance] — root arg #4.
-   *
-   * `subtle` is `{}` in the Griffel source ("no shared colors between appearances"), so
-   * it gets no block: `styles['subtle']` is then `undefined` and clsx drops it, matching
-   * the empty class string Griffel produces today.
-   *
-   * `transparent`'s unconditional `background-color` sits in l1 while the base reset's
-   * `:hover` / `:active` backgrounds sit in fui.base, i.e. the layer inverts Griffel's
-   * specificity winner — which is why `transparent` re-declares both interaction
-   * backgrounds in this same block. It always did; the trio is what makes the layered
-   * result identical to the compiled one.
+   * - the layer inverts Griffel's specificity winner — which is why `transparent` re-declares both interaction backgrounds in this same block.
    */
   .subtle-alpha {
     @variant hover {

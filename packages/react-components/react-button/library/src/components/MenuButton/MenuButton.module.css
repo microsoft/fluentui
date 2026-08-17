@@ -8,22 +8,6 @@
 
 @layer fui.components.l2 {
   /*
-   * NOTE (statics-removal phase, DECISIONS.md D16): every class below is conditional on
-   * `aria-expanded`, so this module contributes NO unconditional leading token to the root.
-   * That is safe here, and only here, because `useMenuButtonStyles_unstable` calls
-   * `useButtonStyles_unstable` LAST, and that hook prepends Button's unconditional
-   * `.root` — so the rendered `classList[0]` is Button's hashed root class, never the
-   * `group/fui-menu-button` marker (D15.1; asserted by `component-has-group-marker`).
-   *
-   * §4b's generic fix — an empty `.root {}` identity local — does NOT work in this build
-   * pipeline anyway: a rule with no declarations is dropped before the class map is
-   * extracted, so `styles.root` comes back `undefined` and clsx silently omits it
-   * (measured: `lib/components/MenuButton/MenuButton.module.css.js` contained no `root`
-   * key). If the call to `useButtonStyles_unstable` ever stops being last, this root needs
-   * a leading local carrying at least one declaration.
-   */
-
-  /*
    * Expanded appearance variations — arg #3. `secondary` DOES carry rules here (unlike
    * most Button-family appearance sets); only the icon slot's `primary` slice is empty.
    */

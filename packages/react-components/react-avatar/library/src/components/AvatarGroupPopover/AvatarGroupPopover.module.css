@@ -115,17 +115,7 @@
 
 @layer fui.components.l1 {
   /*
-   * arg 8b — the `indicator` × `size` type ramp.
-   *
-   * `indicator` is a look prop (D3) and stays a module class; the size bucket inside it is
-   * the scale prop and rides `data-size`, the same split Avatar's own module uses. The two
-   * classes are mutually exclusive and every declaration here is a type property, disjoint
-   * from every rule above — so this block's file position carries no cascade meaning and is
-   * placed last purely for readability.
-   *
-   * `typographyStyles.*` expands to its four compiled atomics; every preset in this ramp
-   * shares `fontFamilyBase` + `fontWeightSemibold` (`fk6fouc` / `fl43uef`), so those two are
-   * hoisted onto the class itself and only size/line-height vary per bucket.
+   * - `typographyStyles.*` expands to its four compiled atomics; every preset in this ramp shares `fontFamilyBase` + `fontWeightSemibold` (`fk6fouc` / `fl43uef`), so those two are hoisted onto the class itself and only size/line-height vary per bucket.
    */
   .indicator-count {
     font-family: var(--font-base);

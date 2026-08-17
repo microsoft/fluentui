@@ -5,48 +5,7 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment: every block below is `fui.components.l1`, written in the makeStyles
- * hook-CALL order of useCalendarDayGridStyles_unstable — which is Griffel's stylesheet
- * INSERTION order and, for every element in this grid, also the mergeClasses ARGUMENT
- * order. One file order therefore satisfies all of them:
- *
- *   <table>  : table → table-show-week-numbers            (+ consumer className, unlayered)
- *   <td>     : day-cell → day-cell-focus-indicator → corners → <corner class>
- *              → day-selected → day-single-selected → day-outside-bounds
- *              → lighten-days-outside-navigated-month
- *   <button> : day-button → day-is-today
- *   <tr>     : week-row | first-transition-week | last-transition-week
- *   <th>     : day-cell (+ week-day-label-cell) | week-number-cell
- *
- *   1 calendarDayGridClassNames.<slot> → static classes (JS) — REMOVED in the statics sweep
- *                                        (D16.1). The `<table>` is CalendarDayGrid's
- *                                        outermost node, so it leads with `.table` and
- *                                        carries `group/fui-calendar-day-grid` second.
- *
- * ⚠ ORDERING CONSTRAINT, do not "tidy": `.day-button` must stay AFTER `.day-single-selected`.
- * See the note on `.day-single-selected > .day-button` below.
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * Every subject is an element CalendarDayGrid renders itself → `fui.components.l1`; nothing
- * qualifies for l2 (D2 amendment 2). No `:global(…)` selector, and the package uses no
- * `bundleIcon()` — grepped for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — so D2
- * amendment 5 (UNLAYERED) does not apply.
- *
- * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
- * Named steps for SPACING properties whose px literal matches a step
- * (`pb-vertical-m-nudge` = 10px, `mt-vertical-xs` = 4px, `p-horizontal-xxs` = 2px);
- * numeric utilities for pure SIZING literals (`w-196`, `h-28`, `w-4`, `-mt-28`).
- * `line-height` is TYPOGRAPHY → `calc(<px> * var(--base-scale))` (react-toast precedent),
- * as are the `1px` outline/border literals, which are raw px in the Griffel source rather
- * than `strokeWidthThin`. The one real stroke-width token in this file —
- * `createFocusOutlineStyle`'s `outlineWidth: tokens.strokeWidthThick` — takes
- * `var(--spacing-thick)` (D4 addendum, case 2: `outline-width` is not spacing-powered).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * rtl-css-js flips `borderRight*`, `left`/`right`, and `borderTopLeftRadius` ↔
- * `borderTopRightRadius` / `borderBottomLeftRadius` ↔ `borderBottomRightRadius`. All are
- * rewritten to logical properties here, so no `@variant rtl` twin is needed. The corner
- * radii are the interesting case — see the `.corners` block.
+ * - ⚠ ORDERING CONSTRAINT, do not "tidy": `.day-button` must stay AFTER `.day-single-selected`.
  */
 
 @layer fui.components.l1 {

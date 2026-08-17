@@ -17,22 +17,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). `useStyles.root` was `{}` (compiles
-   * to no atomic) and HeatMapChart renders no element of its own: its outermost node is
-   * CartesianChart's root `<div>`, reached through CartesianChart's public `styles.root`
-   * prop (CONVERSION_GUIDE §3d M2 — VerticalStackedBarChart precedent).
-   * `useHeatMapChartStyles` leads its `clsx()` with this class so the composed string
-   * ALWAYS starts with a hashed, selector-safe token ahead of `group/fui-heat-map-chart`:
-   * nwsapi's `:scope` polyfill anchors on `escape(element.classList[0])` and the `/`
-   * survives that escaping, yielding an invalid selector and a render-time AggregateError
-   * under jsdom. Do not delete it because it looks like it does nothing.
-   *
-   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
-   * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.root {}`
-   * would never reach the class map and `styles.root` would be `undefined`. A custom
-   * property set to `initial` is guaranteed-invalid, so it renders nothing.
-   */
   .root {
     --fui-heat-map-chart-identity: initial;
   }

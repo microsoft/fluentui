@@ -4,69 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * mergeClasses ARGUMENT order of useTableCellLayoutStyles_unstable. Every slot's arg #1 was
- * the `fui-TableCellLayout` / `fui-TableCellLayout__<slot>` static, all REMOVED (D16.1); the
- * root's public identity is the `group/fui-table-cell-layout` marker, threaded in as clsx
- * argument 2 so it is never `classList[0]` (D16.2). Sub-slots get NO marker (D15.1).
- *
- *   root         2 useStyles.root                    → `.root`
- *                3 truncate && rootTruncate          → `.root-truncate`
- *                4 consumer className                → unlayered
- *   media        2 useStyles.media                   → `.media`
- *                3 mediaSizedStyles[size]            → `.media-extra-small` /
- *                                                      `.media-small-and-medium`
- *                4 primary && mediaPrimary           → `.media-primary`
- *                5 consumer className                → unlayered
- *   main         2 truncate && mainTruncate          → `.main-truncate`
- *                3 primary && mainPrimary            → `.main-primary`
- *                4 consumer className                → unlayered
- *   description  2 useStyles.description             → `.description`
- *                3 consumer className                → unlayered
- *   content      2 useStyles.content                 → `.content`
- *                3 truncate && contentTruncate       → `.content-truncate`
- *                4 consumer className                → unlayered
- *
- * The `main` slot has NO unconditional module class — both of its arguments are gated. That
- * is safe because it carries no marker: D15.1's `classList[0]` invariant only binds slots
- * that emit a `group/…` token, so no identity-only local is minted here (contrast the six
- * ROOTS D16.2 names). On a plain `<span>` with neither `truncate` nor `primary`, clsx
- * yields the consumer's className alone — exactly the string Griffel produced once its
- * static is removed.
- *
- * ── ORDERING ────────────────────────────────────────────────────────────────────────
- * Not one slice in this component declares a pseudo-class, media query or attribute
- * selector: the compiled output is a single `d` bucket. So plain mergeClasses argument
- * order is exact and the bucket-major structure TableRow needs does not apply. Blocks are
- * grouped per SLOT, and within a slot the later argument is written later.
- *
- * Every slot is one of this component's own intrinsic elements (`div` / `span`, see
- * renderTableCellLayout), so nothing sits over another component's hook output and
- * `fui.components.l2` is unused. The `media` slot wraps an `AvatarContextProvider`, but the
- * class lands on TableCellLayout's own `<span>`, not on the Avatar — the Avatar is sized
- * through `contextValues.avatar`, a JS prop, which this conversion does not touch.
- *
- * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
- * `tokens.spacingHorizontalS` takes the NAMED utility `gap-horizontal-s`; raw
- * `var(--spacing-horizontal-s)` is forbidden in modules because it is the one form that does
- * not ride `--base-scale`. The three media font sizes (16 / 20 / 24 px) are pixel LITERALS,
- * written `calc(<n>px * var(--base-scale))` — `font-size` reads Tailwind's `--text-*`
- * namespace, not `--spacing-*`, so there is no numeric utility for it and this is the form
- * react-avatar / react-badge / react-breadcrumb already use.
- *
- * ── Typography (DECISIONS.md D4) ────────────────────────────────────────────────────
- * `typographyStyles.caption1` is spread into the `description` slice; the compiler expanded
- * it to the four `font-*` / `line-height` longhands reproduced below. They are transcribed
- * from the compiled atomics rather than re-derived from the token bundle.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * No `[ltr, rtl]` pair in the compiled output and no direction-sensitive property
- * (`text-overflow` and `overflow-x` are axis-symmetric).
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TableCellLayout/useTableCellLayoutStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex items-center gap-horizontal-s;

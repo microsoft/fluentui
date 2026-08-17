@@ -5,67 +5,8 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useLinkStyles_unstable,
- * not source declaration order. Link has no `makeResetStyles` slice, so `fui.base` is
- * unused and every rule lives in `fui.components.l1` — which means the winner between
- * two rules is purely their order in THIS file.
- *
- *   #  mergeClasses argument                              → target
- *   -------------------------------------------------------------------------------
- *   1  linkClassNames.root                                → static class (JS)
- *   2  useStyles.root                                     → .root
- *   3  useStyles.focusIndicator                           → .root (focus-visible-fui)
- *   4  root.as === 'a' && root.href && useStyles.href     → .href
- *   5  root.as === 'button' && useStyles.button           → .button
- *   6  appearance === 'subtle' && useStyles.subtle        → .subtle
- *   7  backgroundAppearance === 'inverted' && …inverted   → .inverted
- *   8  backgroundAppearance === 'brand' && …brand         → .brand
- *   9  inline && useStyles.inline                         → .root (data-inline)
- *  10  disabled && useStyles.disabled                     → .root (data-disabled)
- *  11  consumer className                                 → unlayered (always wins)
- *
- * ── The KNOWN inversion (risk-analysis.md §1a) ──────────────────────────────────────
- * `disabled` is DECLARED FIRST in the Griffel source (L79) but APPLIED LAST (arg #10),
- * while `inverted` (L107) and `brand` (L116) are declared later and applied earlier
- * (#7/#8). All three set `color`. Transcribing declaration order would render a disabled
- * Link on an inverted/brand background in the brand colour instead of
- * `colorNeutralForegroundDisabled` — a silent regression no unit test covers. The
- * disabled blocks are therefore written AFTER `.inverted` / `.brand`: argument order
- * wins by file position. The same holds for `inline` (#9, declared L75) vs `disabled`
- * (#10) — both set `text-decoration-line`, and disabled must win.
- *
- * ── Why the focus indicator (#3) is written near the END ────────────────────────────
- * Griffel does not resolve conflicts by argument order alone: it emits into ordered
- * style buckets (`d` default → `i` :focus-visible → `h` :hover → `a` :active →
- * `m` @media) and, inside one bucket, higher specificity still wins.
- * `createCustomFocusIndicatorStyle` compiles to `[data-fui-focus-visible]` rules that
- * live in the DEFAULT bucket carrying an extra attribute selector
- * (`.f1olyrje[data-fui-focus-visible]`, 0-2-0), so in the shipped stylesheet they beat
- * EVERY plain base declaration — including `disabled`'s `text-decoration-line: none`
- * from a later argument — yet lose to the `:hover` / `:active` rules emitted in the
- * later buckets (also 0-2-0).
- *
- * `:where()`-flat selectors can only express that through file order, so arg #3 is
- * placed BETWEEN `disabled`'s base declarations and `disabled`'s :hover / :active /
- * forced-colors declarations. `text-decoration-line` is the only property where those
- * slices actually meet (every non-disabled slice agrees on `underline`), so this single
- * hoist reproduces the compiled cascade exactly. Verified against the compiled atomics
- * in lib-commonjs/components/Link/useLinkStyles.styles.js.
- *
- * ── Other cross-slice moves (verified disjoint against the same compiled output) ────
- * #4 `.href` sets `font-size` only and follows #2's `font-size` — file order already
- * equals argument order. #5 `.button` sets border styles nothing else touches.
- * #6/#7/#8 set `color` (plus `text-decoration-line` under :hover/:active for `subtle`)
- * in argument order, so a later background appearance beats an earlier `appearance` —
- * the same winner mergeClasses' per-property class deletion produced.
- *
- * ── Shorthands ─────────────────────────────────────────────────────────────────────
- * `margin: 0`, `padding: 0` and `overflow: inherit` are what the compiler emitted, and
- * nothing in this component sets any of their longhands, so no Griffel shorthand/longhand
- * priority behaviour is left to reproduce — they stay shorthands.
- * `shorthands.borderStyle('none')` (#5) IS expanded to the four physical longhands the
- * compiler emitted; its [ltr, rtl] pair only swaps left↔right and both carry `none`, so
- * the flip is a visual no-op and physical longhands are exact.
+ * - The disabled blocks are therefore written AFTER `.inverted` / `.brand`: argument order wins by file position.
+ * - `text-decoration-line` is the only property where those slices actually meet (every non-disabled slice agrees on `underline`), so this single hoist reproduces the compiled cascade exactly.
  */
 
 @layer fui.components.l1 {
@@ -189,14 +130,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.focusIndicator — arg #3, hoisted to here. See the header: the compiled
-   * `[data-fui-focus-visible]` rules outrank every base declaration (attribute-selector
-   * specificity inside Griffel's default bucket) but lose to the :hover / :active buckets
-   * that follow. This is Link's own indicator — `createCustomFocusIndicatorStyle` with a
-   * bespoke text-decoration payload, not a ring — so neither `fui-focus-outline` nor
-   * `fui-focus-ring` applies and the four declarations are transcribed directly.
-   */
   .root {
     @variant focus-visible-fui {
       text-decoration-color: var(--color-stroke-focus-2);

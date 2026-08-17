@@ -6,61 +6,7 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useCarouselNavStyles_unstable`.
- *
- * `root` slot
- *
- *   #  mergeClasses argument       → target
- *   ------------------------------------------------------------------
- *   1  group/fui-carousel-nav      → identity marker (JS); no declarations
- *   2  styles.root                 → fui.components.l1  .root
- *   3  state.root.className        → unlayered (always wins)
- *
- * ── ALTITUDE: l1 ────────────────────────────────────────────────────────────────────
- * Own `<div>`, own cascade (DECISIONS.md D2 amendment 2).
- *
- * Note the OTHER direction of that rule applies to this element too, from the outside:
- * `CarouselNavContainer`'s `expanded` slice styles `& > div`, which is THIS root, and that
- * rule correctly lives at `fui.components.l2` in CarouselNavContainer.module.css — it has to
- * beat the `margin-block: auto` below, exactly as its 0-1-1 selector beat the 0-1-0 atomic
- * under Griffel.
- *
- * ── Focus indicator (DECISIONS.md D6) ───────────────────────────────────────────────
- * `createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor })` compiles to
- * plain `[data-fui-focus-visible]` rules, NOT to the Button-family ring, so there is no
- * shared utility to `@apply` — the declarations are the component's own and are written
- * under the catalog `focus-visible-fui` variant. Compiled selectors reproduced 1:1:
- *
- *   .f89hs3r[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
- *   .f2krc9w[data-fui-focus-visible]{border-radius:var(--radius-medium)}
- *   .f8hki3x/.f1d2448m/.ffh67wi/.f1bjia2o[data-fui-focus-visible]{border-*-color:transparent}
- *
- * ── ORDERING IS LOAD-BEARING inside this one rule ───────────────────────────────────
- * The focus indicator sets `border-radius: Medium` and the rest state sets
- * `border-radius: XLarge`. Under Griffel the focus atomic won on SPECIFICITY (0-2-0 vs
- * 0-1-0) even though it is emitted EARLIER in the bucket. `:where()` flattens both to
- * 0-1-0, so file position is the only tiebreak and the `@variant focus-visible-fui` block
- * must stay LAST inside `.root` (nested rules emit after their parent's declarations).
- *
- * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────
- * `outline-width` is NOT one of the families that reads the `--spacing-*` namespace, so
- * `strokeWidthThick` takes the direct `var(--spacing-thick)` reference rather than a
- * utility. Raw `var(--stroke-width-thick)` is forbidden — it is the one form that does not
- * ride `--base-scale`.
- *
- * ── Spacing (DECISIONS.md D4) ───────────────────────────────────────────────────────
- * `margin: auto var(--spacing-horizontal-s)` compiled to a single class (`.fkb7v5e`, no
- * `[ltr, rtl]` pair — a symmetric shorthand needs no flip). Expanded to longhands: the
- * block axis is `auto`, the inline axis is the NAMED spacing utility.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * ONE `[ltr, rtl]` pair — the focus indicator's `border-right-color` / `border-left-color`
- * (`Bci5o5g: ["f1d2448m", "ffh67wi"]` / `Bdrgwmp: ["ffh67wi", "f1d2448m"]`). Identical
- * value on both sides, i.e. a pure PROPERTY flip, so it becomes the logical
- * `border-inline-end-color` / `border-inline-start-color` and needs no `@variant rtl` twin.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/CarouselNav/useCarouselNavStyles.styles.js.
+ * - `:where()` flattens both to 0-1-0, so file position is the only tiebreak and the `@variant focus-visible-fui` block must stay LAST inside `.root` (nested rules emit after their parent's declarations).
  */
 
 @layer fui.components.l1 {

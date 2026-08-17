@@ -71,19 +71,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useBaseStyles' createCustomFocusIndicatorStyle({ borderRadius, outlineColor,
-   * outlineRadius, outlineWidth, outlineStyle }, { customizeSelector }) — still root
-   * arg #2, hoisted out of fui.base because its subject elements belong to
-   * TreeItemLayout / TreeItemPersonaLayout (see the ALTITUDE note in the file header).
-   *
-   * The shared `fui-focus-outline` / `fui-focus-ring` utilities are deliberately NOT
-   * used: both model the DEFAULT indicator shapes (a `::after` pseudo-element and the
-   * border+box-shadow Button ring). This call site asks for neither — it paints a real
-   * `outline` on a CHILD element — so the five declarations are authored directly, which
-   * is the "selector stays authorable" case react-tailwind-theme/css/utilities.css calls
-   * out for `customizeSelector`.
-   */
   .root {
     @variant focus-visible-fui {
       & > :global(.group\/fui-tree-item-layout),

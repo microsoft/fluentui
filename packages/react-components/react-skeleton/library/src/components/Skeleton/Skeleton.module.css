@@ -4,28 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Skeleton's only
- * styled slice, `.block-styling`, is CONDITIONAL (`as="span"`, and the root defaults to a
- * `div`), so on the default render the root's own contribution is just the group marker.
- * `useSkeletonStyles_unstable` leads its `clsx()` with this class so the root ALWAYS carries
- * a hashed, selector-safe token at `classList[0]`: nwsapi's `:scope` polyfill builds its
- * anchor from `escape(element.classList[0])`, and the `/` in `group/fui-skeleton` survives
- * that escaping, yielding an invalid selector and a render-time AggregateError under jsdom.
- * The `fui-Skeleton` static used to keep the marker off index 0 incidentally; it was removed
- * in the statics sweep (DECISIONS.md D16.1) and this local is now the ONLY thing holding the
- * D16.2 invariant. Do not delete it because it looks like it does nothing.
- *
- * WHY IT IS NOT A LITERALLY EMPTY RULE. The design specified `.root {}` on the premise that
- * `postcss-modules` exports the name even with an empty body. It does not survive this
- * pipeline: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
- * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
- * every declaration-less rule — layered, unlayered or comment-only — so the class would
- * never reach the class map and `styles.root` would be `undefined`, silently putting the
- * marker at index 0. Measured on Tailwind v4.3.3. `--fui-skeleton-identity: initial` is the minimal
- * body that survives: a custom property set to `initial` is guaranteed-invalid, so it
- * renders nothing and any `var(--fui-skeleton-identity, X)` still resolves to `X`.
- */
 @layer fui.components.l1 {
   .root {
     --fui-skeleton-identity: initial;

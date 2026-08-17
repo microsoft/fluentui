@@ -4,85 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of usePersonaStyles_unstable,
- * not source declaration order. Persona has seven slots; three of them are its own DOM
- * (root <div>, the four text <span>s) and two are ANOTHER component's root — `avatar` is
- * an <Avatar> and `presence` is a <PresenceBadge>, so everything Persona applies to them
- * is composition and lands in `fui.components.l2` (DECISIONS.md D2 amendment 2, the
- * ToggleButton-over-Button case). They are mutually exclusive: usePersona_unstable builds
- * `avatar` only when `!presenceOnly` and `presence` only when `presenceOnly`.
- *
- * root slot
- *   1 personaClassNames.root                             → static class (JS)
- *   2 useRootClassName (makeResetStyles)                 → fui.base            `.root`
- *   3 alignBeforeAfterCenter && useStyles.beforeAfterCenter → fui.components.l1 `.before-after-center`
- *   4 useStyles[textPosition]                            → fui.components.l1   `.root` @variant text-position-*
- *   5 consumer className                                 → unlayered (always wins)
- *
- * avatar slot (l2 — over Avatar's own hook output)
- *   1 personaClassNames.avatar                           → static class (JS)
- *   2 textPosition !== 'below' && useStyles.media        → l2 `.media`
- *   3 alignBeforeAfterCenter && useStyles.mediaBeforeAfterCenter → l2 `.media-before-after-center`
- *   4 useStyles[textAlignment]                           → l2 `.start` / `.center`
- *   5 useAvatarSpacingStyles[size]                       → HOISTED to the root, see below
- *   6 useAvatarSpacingStyles[textPosition]               → l2 `.spacing-after/-below/-before`
- *   7 consumer className                                 → unlayered
- *
- * presence slot (l2 — over PresenceBadge's own hook output)
- *   1 personaClassNames.presence                         → static class (JS)
- *   2–4 as avatar
- *   5 usePresenceSpacingStyles[size]                     → root hoist + l2 `.presence-spacing-s-nudge`
- *   6 usePresenceSpacingStyles[textPosition]             → l2 `.spacing-after/-below/-before`
- *   7 textPosition === 'after'  && alignToPrimary && useStyles.afterAlignToPrimary
- *                                                        → l2 `.presence-after-align-to-primary`
- *   8 textPosition === 'before' && alignToPrimary && useStyles.beforeAlignToPrimary
- *                                                        → l2 `.presence-before-align-to-primary`
- *   9 consumer className                                 → unlayered
- *
- * primaryText slot
- *   1 personaClassNames.primaryText                      → static class (JS)
- *   2 alignBeforeAfterCenter && useStyles.primary        → fui.components.l1 `.primary`
- *   3 primaryTextClassName = usePrimaryTextBaseClassName (makeResetStyles → fui.base
- *     `.primary-text-base`) + useTextStyles.caption1|.subtitle2 (l1) +
- *     useTextStyles.before|afterAlignToPrimary (l1 `.text-before-/after-align-to-primary`)
- *   4 consumer className                                 → unlayered
- *
- * secondaryText slot
- *   1 personaClassNames.secondaryText                    → static class (JS)
- *   2 alignBeforeAfterCenter && useStyles.secondary      → l1 `.secondary`
- *   3 optionalTextClassName = useOptionalTextBaseClassName (makeResetStyles → fui.base
- *     `.optional-text-base`) + useTextStyles.body1 (l1) + alignToPrimary (l1)
- *   4 useStyles.secondLineSpacing                        → l1 `.second-line-spacing`
- *   5 consumer className                                 → unlayered
- *
- * tertiaryText / quaternaryText slots — as secondaryText without arg 4.
- *
- * INVERSIONS: none. Every cross-slice property conflict in this component is resolved by
- * the same ordering both before and after conversion, and each one was checked against the
- * compiled atomics in lib-commonjs/components/Persona/usePersonaStyles.styles.js:
- *   • root reset (`justify-items`, `grid-template-columns`, `grid-auto-flow`) loses to the
- *     `before`/`below` slices — reset bucket `r` loses to bucket `d` in Griffel, and
- *     `fui.base` loses to `fui.components.l1` here.
- *   • `.media` (`grid-row-start: span 5`) loses to `.media-before-after-center` (`span 6`) and
- *     both lose to `.presence-*-align-to-primary` (`unset`) — argument order == file order.
- *   • `.start`/`.center` (`align-self`) lose to `.presence-*-align-to-primary`
- *     (`align-self: center`) — argument order == file order.
- *   • the two text resets carry body1/caption1 typography and lose to the l1 typography
- *     slices (`.caption1`/`.subtitle2`/`.body1`) — same base-vs-level relationship.
- * `.before-after-center` (grid-template-rows) is disjoint from the textPosition slices, and
- * `.second-line-spacing` (margin-top) is disjoint from everything on its slot; both are
- * nevertheless written in argument order.
- *
- * RTL: the compiled output contains exactly two `[ltr, rtl]` pairs — `margin-right` ↔
- * `margin-left` (`t21cq0`) and `margin-left` ↔ `margin-right` (`Frg6f3`) — i.e. purely
- * property-level flips, written here as `margin-inline-end` / `margin-inline-start`.
- * `margin-bottom` (`jrapky`) and `margin-top` (`B6of3ja`) were not flipped by Griffel and
- * stay physical. No value-level flip exists anywhere in this component, so there is no
- * `@variant rtl` block. The grid track lists are direction-relative by definition and
- * Griffel emitted them unflipped.
- */
-
 @layer fui.base {
   .root {
     @apply inline-grid;
@@ -139,28 +60,7 @@
   }
 
   /*
-   * from useAvatarSpacingStyles' six size slices (avatar/presence arg 5), HOISTED from the
-   * coin onto Persona's own root.
-   *
-   * Why the hoist: `size` is a small enum scale, so the cookbook's scale-prop rule routes
-   * it to the shared `data-size` catalog variants — but the element those slices sat on is
-   * another component's root, and that component stamps its own `data-size` there
-   * (react-badge's usePresenceBadgeStyles.styles.ts writes `root['data-size'] = size`, and
-   * Avatar uses the catalog's numeric `size-20`…`size-56` for the pixel sizes Persona
-   * passes it). Persona's value would simply be overwritten. The slices declare nothing but
-   * the inherited custom property `--fui-Persona__avatar--spacing`, which the coin's margin
-   * below reads, so declaring it on the root resolves to the identical computed value while
-   * keeping every Persona data-attribute on Persona's own DOM.
-   *
-   * `small` and `medium` share one token, as do `large` and `extra-large` — Griffel deduped
-   * them into single atomics (`f18q9vkd`, `fx34bi6`); kept as separate blocks here so each
-   * size reads back 1:1 against the source.
-   *
-   * SPACING FORM (D4 amendment): the payload is a custom property, and no spacing utility
-   * targets an arbitrary custom property, so these take the literal
-   * `calc(<step>px * var(--base-scale))` form the named utilities themselves compile to —
-   * NOT raw `var(--spacingHorizontal*)`, which is the one authoring form that does not scale
-   * with `--base-scale`. The source token is named in the trailing comment on each line.
+   * - Why the hoist: `size` is a small enum scale, so the cookbook's scale-prop rule routes it to the shared `data-size` catalog variants — but the element those slices sat on is another component's root, and that component stamps its own `data-size` there (react-badge's usePresenceBadgeStyles.styles.ts writes `root['data-size'] = size`, and Avatar uses the catalog's numeric `size-20`…`size-56` for the pixel sizes Persona passes it).
    */
   .root {
     @variant size-extra-small {

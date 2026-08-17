@@ -31,10 +31,7 @@
   }
 
   /*
-   * from useStyles.calloutBlockContainerCartesian / …NonCartesian — the
-   * `isCartesian ? … : …` mergeClasses argument, authored AFTER the base because it is
-   * the later argument. `line-height: 22px` is a frozen LITERAL in the source (not a
-   * token), carried verbatim.
+   * - `line-height: 22px` is a frozen LITERAL in the source (not a token), carried verbatim.
    */
   .callout-block-container-cartesian {
     font-family: var(--font-base);
@@ -97,9 +94,7 @@
   }
 
   /*
-   * from useStyles.descriptionMessage — typographyStyles.caption1 + color/margins/border.
-   * `border-top`'s `1px` is a frozen LITERAL in the source (not a strokeWidth token),
-   * carried verbatim.
+   * - `border-top`'s `1px` is a frozen LITERAL in the source (not a strokeWidth token), carried verbatim.
    */
   .description-message {
     @apply mt-vertical-m-nudge pt-vertical-m-nudge text-neutral-foreground-2;
@@ -137,24 +132,6 @@
     forced-color-adjust: none;
   }
 
-  /*
-   * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). `useStyles.calloutContainer` was `{}`
-   * (compiles to no atomic), so the removed BEM static was the slot's only token — but this
-   * slot is ChartPopover's OWN root `<div>`, the element that carries the
-   * `group/fui-chart-popover` marker. The hook leads its `clsx()` with this class so the
-   * composed string ALWAYS starts with a hashed, selector-safe token ahead of the marker:
-   * nwsapi's `:scope` polyfill anchors on `escape(element.classList[0])` and the `/`
-   * survives that escaping, yielding an invalid selector and a render-time AggregateError
-   * under jsdom. Do not delete it because it looks like it does nothing.
-   *
-   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
-   * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so
-   * `.callout-container {}` would never reach the class map. A custom property set to
-   * `initial` is guaranteed-invalid, so it renders nothing.
-   *
-   * ALTITUDE l1: this is ChartPopover's own element (unlike VerticalBarChart's `.root`,
-   * which decorates CartesianChart's element and sits at l2).
-   */
   .callout-container {
     --fui-chart-popover-identity: initial;
   }

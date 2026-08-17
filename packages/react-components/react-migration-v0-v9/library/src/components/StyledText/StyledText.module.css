@@ -3,24 +3,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l1 {
-  /*
-   * Identity-only local. StyledText's root has no unconditional slice of its own — every
-   * class in the composition above is conditional — so this class exists so the root always
-   * emits a selector-safe leading token ahead of the group marker (DECISIONS.md D15.1 /
-   * D16.2). Do not delete because it looks empty.
-   *
-   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}` DOES
-   * NOT SURVIVE this pipeline: `@tailwindcss/postcss` runs before postcss-modules in the package
-   * build's chain and prunes the empty rule, so the local name never reaches the class map,
-   * `styles.root` is `undefined` at runtime, and the group marker silently lands back at
-   * `classList[0]` — the exact failure this local exists to prevent. Reproduced here on
-   * tailwindcss v4.3.3; react-accordion's Accordion.module.css documents the measurement.
-   * A comment inside the braces does not help; only a declaration does.
-   *
-   * `--fui-styled-text-identity: initial` is the minimal body that survives with zero rendered
-   * effect: a custom property set to `initial` takes the guaranteed-invalid initial value,
-   * exactly equivalent to never having been declared, and nothing reads it.
-   */
   .root {
     --fui-styled-text-identity: initial;
   }

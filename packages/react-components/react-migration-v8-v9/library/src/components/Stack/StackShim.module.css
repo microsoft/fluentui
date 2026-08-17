@@ -159,20 +159,9 @@
   }
 }
 
-/* UNLAYERED — D2 amendment 5.
-   Subjects are arbitrary consumer children. In a hybrid v8/v9 tree those are routinely
-   v8 components whose merge-styles CSS is unlayered; a layered rule here would lose the
-   flex-shrink / text-overflow ties it wins today on specificity (0-2-0 vs 0-1-0).
-   Permanent, not transitional: v8 will never convert.
-   ORDERING: .disable-shrink must come last — StackShim.tsx pushes styles.root at :70 and
-   styles.disableShrink at :129, and unlayered blocks have only file position to encode that.
-   DO NOT WRAP IN :where() — the 0-2-0 specificity is the whole mechanism.
-
-   Measured against the installed @fluentui/react: 13 component style files declare
-   `flexShrink` and 20 declare `textOverflow`, so the collision is routine, not theoretical
-   (s4-v8-layering-decision.md §1.3). Guarded by the compile-time assertions in
-   tools/workspace-plugin/src/executors/build/lib/css-modules.spec.ts, because every way of
-   breaking this block is silent at runtime and there are no VR baselines for this package. */
+/*
+ * - ORDERING: .disable-shrink must come last — StackShim.tsx pushes styles.root at :70 and styles.disableShrink at :129, and unlayered blocks have only file position to encode that.
+ */
 
 .root > * {
   text-overflow: ellipsis;

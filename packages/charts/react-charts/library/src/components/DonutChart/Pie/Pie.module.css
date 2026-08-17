@@ -7,25 +7,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l1 {
-  /*
-   * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). Pie's root `<g>` has no declarations of
-   * its own; this class exists so the root always emits a hashed, selector-safe token at
-   * `classList[0]`, ahead of the `group/fui-donut-pie` marker — nwsapi's `:scope` polyfill
-   * builds its anchor from `escape(element.classList[0])` and the `/` survives that escaping,
-   * yielding an invalid selector and a render-time AggregateError under jsdom.
-   *
-   * WHY IT IS NOT A LITERALLY EMPTY RULE. `CONVERSION_GUIDE.md §3b` still shows `.root {}`;
-   * that does not survive this pipeline. `@tailwindcss/postcss` runs BEFORE `postcss-modules`
-   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
-   * every declaration-less rule, so the class never reaches the class map and `styles.root`
-   * is `undefined` — silently putting the marker back at index 0. Verified here: the first
-   * build of this module emitted a `Pie.module.css.js` class map containing only
-   * `inside-donut-string`. Same minimal surviving body as react-breadcrumb: a custom property
-   * set to `initial` is guaranteed-invalid, renders nothing, and leaves any
-   * `var(--fui-donut-pie-identity, X)` resolving to `X`.
-   *
-   * Do not delete it because it looks like it does nothing.
-   */
   .root {
     --fui-donut-pie-identity: initial;
   }

@@ -4,57 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * IDENTITY-ONLY MODULE. MessageBarGroup has no styles of its own — its Griffel hook never
- * declared a `makeStyles` slice, it only ran `mergeClasses` over the static class name and
- * the consumer className. There is therefore nothing to map from mergeClasses argument
- * order to a layer, and this file declares exactly one empty local. (The group's animation
- * work lives in `useMessageBarGroup`'s motion logic, not in CSS.)
- *
- * WHY IT EXISTS (statics-removal design §4b, DECISIONS.md D15.1 / D16.2). MessageBarGroup's
- * root is one of the six "Class B" slots: it carries the `group/fui-message-bar-group`
- * marker but has NO unconditional module class of its own. Until D16 the `fui-MessageBarGroup`
- * static was the only thing keeping the marker off `classList[0]`; that static is now gone and
- * THIS LOCAL IS THE ONLY REMAINING LEADING TOKEN. That position is load-bearing: jsdom
- * polyfills `:scope` through nwsapi, whose `makeref()` builds its anchor from
- * `escape(element.classList[0])`, and the `/` in `group/fui-message-bar-group` survives that
- * escaping and produces an invalid selector — a render-time `AggregateError` for any test or
- * app that evaluates a `:scope` selector against a converted component.
- *
- * The `component-has-group-marker` conformance test in `MessageBarGroup.test.tsx` asserts
- * exactly this, so a regression here fails a test rather than an end user's app.
- *
- * DO NOT DELETE BECAUSE IT LOOKS EMPTY. If MessageBarGroup's root ever gains a declaration,
- * it belongs in this block — and the placeholder declaration below goes away with it.
- */
-
 @layer fui.components.l1 {
-  /*
-   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}`
-   * DOES NOT SURVIVE this pipeline: `@tailwindcss/postcss` runs FIRST in the package build's
-   * chain (tools/workspace-plugin/src/executors/build/lib/css-modules.ts — tailwindcss() →
-   * globalize-group-markers → postcssModules) and drops empty rules, comments included, so
-   * postcss-modules never sees the class, the generated class map is `{}`, and `styles.root`
-   * is `undefined` at runtime — which silently puts the group marker back at `classList[0]`,
-   * the exact failure this local exists to prevent. The statics-removal design §4b's "an
-   * empty `.root {}`; postcss-modules emits the name into the class map even with an empty
-   * body" is correct only about postcss-modules in isolation.
-   *
-   * Measured on tailwindcss v4.3.3 through the real plugin chain:
-   *   postcss-modules alone,     `.root {}`  → {"root":"fuicm-message-bar-group-root-…"}
-   *   tailwindcss + postcss-modules, same    → {} and `@layer fui.components.l1` with no rule
-   *   tailwindcss + postcss-modules, below   → {"root":"fuicm-message-bar-group-root-…"}
-   * A comment inside the braces does not help; only a declaration does.
-   *
-   * Jest cannot catch the empty-map case: its `*.module.css` mapper is a Proxy that answers
-   * every key (scripts/jest/src/css-modules/proxy.js), so `styles.root` is always truthy
-   * there. The build is the only gate, which is why this note lives next to the workaround.
-   *
-   * `initial` is chosen because it is the one value that changes nothing: a custom property
-   * set to `initial` takes the guaranteed-invalid initial value, exactly equivalent to never
-   * having been declared. Nothing reads `--fui-message-bar-group-identity`, and descendants
-   * inherit that same "unset". Zero rendered effect, one class token.
-   */
   .root {
     --fui-message-bar-group-identity: initial;
   }

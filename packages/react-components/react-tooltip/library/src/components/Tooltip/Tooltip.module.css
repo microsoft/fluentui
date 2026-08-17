@@ -5,39 +5,7 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTooltipStyles_unstable,
- * not source declaration order.
- *
- * `content` slot — Tooltip declares no `root` slot, `content` is its only one:
- *
- *   #  mergeClasses argument                             → target
- *   --------------------------------------------------------------------------------
- *   1  tooltipClassNames.content                         → static class (JS)
- *   2  useStyles.root                                    → fui.components.l1, block 1
- *   3  appearance === 'inverted' && useStyles.inverted   → fui.components.l1, block 2
- *   4  visible && useStyles.visible                      → fui.components.l1, block 3
- *   5  consumer className                                → unlayered (always wins)
- *
- * `state.arrowClassName = styles.arrow` is a bare assignment, NOT a mergeClasses call, so
- * the arrow element carries exactly one class and has no argument order to preserve. It
- * styles an element Tooltip renders itself (renderTooltip's `<div ref={state.arrowRef}>`),
- * so it belongs in fui.components.l1 — not l2, which is reserved for styles applied over
- * ANOTHER component's hook output (DECISIONS.md D2 amendment 2).
- *
- * Load-bearing order inside l1, checked against the compiled atomics in
- * lib-commonjs/components/Tooltip/useTooltipStyles.styles.js:
- *   - `inverted` overrides block 1's `background-color` + `color`  → written after it.
- *   - `visible`  overrides block 1's `display: none`               → written after it.
- * `inverted` and `visible` set disjoint properties, so their relative order is free; they
- * are written in argument order regardless. This component has NO inversions.
- *
- * No `makeResetStyles` slice → `fui.base` is unused by this package.
- *
- * RTL: the compiled AOT output contains not one `[ltr, rtl]` class pair — every atomic is
- * a single class string and the only Griffel bucket emitted is `d`. Nothing here is
- * direction-dependent, so there is no `@variant rtl` block. The physical
- * `border-bottom-left-radius` / `left` / `right` in `.arrow` are `@noflip` at their
- * source and MUST stay physical; see that block's header.
+ * - The physical `border-bottom-left-radius` / `left` / `right` in `.arrow` are `@noflip` at their source and MUST stay physical; see that block's header.
  */
 
 @layer fui.components.l1 {
@@ -97,22 +65,9 @@
 
 @layer fui.components.l1 {
   /*
-   * from useStyles.arrow = createArrowStyles({ arrowHeight }) — @fluentui/react-positioning's
-   * GriffelStyle factory, resolved here to the CONCRETE rules it compiled to for
-   * `arrowHeight === 6` (private/constants.ts). react-positioning keeps exporting the factory
-   * for its still-Griffel consumers; this module no longer calls it.
-   *
-   * createArrowHeightStyles(6): edge = 1.414 * 6 = 8.484px, offset = -(edge / 2) = -4.242px.
-   * These stay literal px on purpose — react-positioning's `mergeArrowOffset(offset,
-   * arrowHeight)` does the matching arithmetic in JS pixels (useTooltipBase.tsx), so they
-   * must NOT be rescaled through --base-scale.
-   *
-   * `@noflip` markers in the factory, each verified unpaired in the compiled AOT output (a
-   * flipped declaration would appear there as an `[ltr, rtl]` array): the two
-   * `border-bottom-left-radius` declarations, `transform: rotate(...)`, and the
-   * `left`/`right` offsets under the right/left placements. They stay PHYSICAL —
-   * rewriting them as logical properties would mirror the arrow in RTL, which is exactly
-   * what `@noflip` forbids.
+   * - These stay literal px on purpose — react-positioning's `mergeArrowOffset(offset, arrowHeight)` does the matching arithmetic in JS pixels (useTooltipBase.tsx), so they must NOT be rescaled through --base-scale.
+   * - `@noflip` markers in the factory, each verified unpaired in the compiled AOT output (a flipped declaration would appear there as an `[ltr, rtl]` array): the two `border-bottom-left-radius` declarations, `transform: rotate(...)`, and the `left`/`right` offsets under the right/left placements.
+   * - They stay PHYSICAL — rewriting them as logical properties would mirror the arrow in RTL, which is exactly what `@noflip` forbids.
    */
   .arrow {
     @apply absolute box-border;

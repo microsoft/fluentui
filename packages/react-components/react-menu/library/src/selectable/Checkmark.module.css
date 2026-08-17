@@ -5,26 +5,7 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useCheckmarkStyles_unstable,
- * not source declaration order.
- *
- * `checkmark` slot (of whichever selectable menu item renders it)
- *   1 useStyles.root                    → fui.components.l1  .root
- *   2 checked && useStyles.rootChecked  → fui.components.l1  .root-checked
- *   3 incoming className                → unlayered / whatever the caller already composed
- *
- * ── ALTITUDE: l1, not l2 ─────────────────────────────────────────────────────────────
- * This is not a cross-component override: `useCheckmarkStyles_unstable` is a shared helper
- * that MenuItem's own hook calls on MenuItem's own `checkmark` slot. The element it styles
- * is owned by this package, so l1 is correct.
- *
- * `MenuItem.module.css`'s `.checkmark` (`margin-top`) lands on the same element from the
- * same layer; the two slices share no property, so their relative file position is inert.
- * `visibility` is the only property `.root-checked` re-declares over `.root`, and it is
- * written after it here — the same winner Griffel's `d`-bucket order produced.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/selectable/useCheckmarkStyles.styles.js.
+ * - `visibility` is the only property `.root-checked` re-declares over `.root`, and it is written after it here — the same winner Griffel's `d`-bucket order produced.
  */
 
 @layer fui.components.l1 {

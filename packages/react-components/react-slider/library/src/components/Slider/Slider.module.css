@@ -5,125 +5,17 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * ══ Slider — Griffel → Tailwind + CSS Modules ═════════════════════════════════════════
+ * Constraints not visible from the rules below:
  *
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useSliderStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 sliderClassNames.root                              → REMOVED (D16.1); the group
- *                                                          marker `group/fui-slider` now
- *                                                          rides at clsx index 1
- *   2 rootStyles.root                                    → fui.components.l1  .root
- *   3 focusIndicatorVertical | focusIndicatorHorizontal  → fui.components.l1  (data-orientation)
- *   4 rootStyles[size]                                   → fui.components.l1  (data-size)
- *   5 rootStyles.vertical | .horizontal                  → fui.components.l1  (data-orientation)
- *   6 rootStyles.disabled | .enabled                     → fui.components.l1  (data-disabled)
- *   7 consumer className                                 → unlayered (always wins)
- *
- * `rail` slot
- *   1 sliderClassNames.rail   → REMOVED (D16.1 — no public handle on internals)
- *   2 railStyles.rail                                    → fui.components.l1  .rail
- *   3 railStyles.vertical | .horizontal                  → fui.components.l1  (root data-orientation)
- *   4 consumer className                                 → unlayered
- *
- * `thumb` slot
- *   1 sliderClassNames.thumb  → REMOVED (D16.1)
- *   2 thumbStyles.thumb                                  → fui.components.l1  .thumb
- *   3 thumbStyles.vertical | .horizontal                 → fui.components.l1  (root data-orientation)
- *   4 thumbStyles.disabled    (state.disabled)           → fui.components.l1  (root data-disabled)
- *   5 consumer className                                 → unlayered
- *
- * `input` slot
- *   1 sliderClassNames.input  → REMOVED (D16.1)
- *   2 inputStyles.input                                  → fui.components.l1  .input
- *   3 inputStyles.vertical | .horizontal                 → fui.components.l1  (root data-orientation)
- *   4 inputStyles.disabled    (state.disabled)           → fui.components.l1  (root data-disabled)
- *   5 consumer className                                 → unlayered
- *
- * ── ALTITUDE: everything is l1, nothing is l2 (DECISIONS.md D2 amendment 2) ───────────
- * `rail`, `thumb` and `input` are Slider's OWN slots — plain `<div>` / `<input>` elements
- * whose base rules are authored in this very file. No rule here decorates another
- * component's hook output (Slider renders no sub-component; `<Field>` decorates Slider,
- * not the reverse), so there is no l2 content. There is no `makeResetStyles` in this
- * component either, so `fui.base` stays empty.
- *
- * ── RUNTIME CSS VARIABLES ARE UNCHANGED (specials-triage A1) ─────────────────────────
- * `--fui-Slider--direction`, `--fui-Slider--progress` and `--fui-Slider--steps-percent`
- * are written by JS as an inline `style` attribute on the root
- * (useSliderState.tsx → `state.root.style`), exactly as before. CSS only ever READS them
- * with `var()`. That mechanism is untouched by this conversion; only the `makeStyles`
- * surface moved. The names in `Slider.constants.ts` are a frozen cross-package contract —
- * `@fluentui/react-color-picker`'s ColorSlider re-declares them verbatim and its ColorArea
- * reads `--fui-Slider__thumb--size` — so nothing here may be renamed.
- *
- * `--fui-Slider__thumb--position` is INTERNAL (it was a file-local const in the Griffel
- * source, not part of `sliderCSSVars`) and stays internal: it is declared and consumed on
- * `.thumb` only.
- *
- * ── STATE → DATA ATTRIBUTES ─────────────────────────────────────────────────────────
- * Three attributes are stamped on the ROOT, all matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`):
- *
- *   data-orientation="horizontal|vertical"  ← `state.vertical`   (headless vocabulary,
- *                                              reports/headless-precedent.md)
- *   data-size="small|medium"                ← `state.size`
- *   data-disabled                           ← `state.disabled`, presence-only
- *
- * They live on the root even though they gate rules on `rail` / `thumb` / `input`, because
- * those three are the root's CHILDREN — one stamp drives every descendant rule (the same
- * approach react-button uses for `data-size` → `.root … & .icon`, and react-switch for
- * `data-label-position`).
- *
- * `data-disabled` is a genuine fallback, not decoration (D15.6): the root is a `<div>`, so
- * `:disabled` can never match it, yet arguments #6 (root), thumb #4 and input #4 are all
- * gated on the same `state.disabled` boolean. Note that the `disabled` catalog variant is
- * `:where([disabled], [data-disabled], :disabled)`, so the `.input` rules below COULD have
- * keyed on the input's own native `:disabled` instead — that is deliberately NOT done. It
- * would make a Slider disabled by an ancestor `<fieldset disabled>` render a
- * `cursor: default` input inside an otherwise enabled-looking track, a split state Griffel
- * never produced. One attribute, one source of truth.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * • root arg #4 `[size]` sets `min-height: 24px/32px` and arg #5 `vertical` sets
- *   `min-height: 120px` — the SAME Griffel atomic key (`sshi5w`), so the later argument
- *   wins and a vertical Slider is 120px tall. Both compile to `.root:where([data-…])`,
- *   i.e. equal specificity, so the winner is now file position: the orientation block is
- *   written AFTER the size block and must stay there.
- * • `.thumb`'s `::before` border colour: base (arg #2) → `--color-neutral-stroke-1`,
- *   disabled (arg #4) → `--color-neutral-foreground-disabled`. The disabled rule is reached
- *   through the root (`.root:where([data-disabled]) .thumb::before`, 0-2-0) so it beats
- *   the 0-1-0 base rule on specificity, not only on order.
- * • Inside the root's `enabled` block the order is base vars → `:hover` → `:active`.
- *   Griffel resolved these by specificity (`.x:active` 0-2-0 beats `.x` 0-1-0, and the
- *   `a` bucket is emitted after the `h` bucket); `:where()` flattens all three to 0-1-0,
- *   so the narrower condition must come LATER in the file. Source order already does that.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Every `[ltr, rtl]` pair in the compiled atomics
- * (lib-commonjs/components/Slider/useSliderStyles.styles.js) is a pure PROPERTY flip with
- * IDENTICAL values — `left`↔`right` on the focus ring, the rail's `::before` bleed and the
- * thumb's `::before` inset — and becomes a logical property, EXCEPT two real VALUE flips:
- *   thumbStyles.horizontal  `transform: translateX(-50%)` / `translateX(50%)`
- *   inputStyles.vertical    `direction: rtl` / `direction: ltr` (inside `@supports`)
- * Both get an explicit `@variant rtl` twin. `:dir()` matches the element's HTML-level
- * directionality, not its own `direction` declaration, so the input rule is not circular.
- *
- * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
- * Track/thumb geometry (16/20/24/32/120 px, the 5/6 px inner-thumb radii, the 2/4 px rail)
- * is a pixel literal, so it rides `--base-scale`: Tailwind numeric utilities
- * (`min-h-24`, `min-w-120`, …) where one exists, `calc(<n>px * var(--base-scale))` inside a
- * custom-property assignment or a calc() where none does. At the default 16px root every
- * one of these computes to the value in the compiled atomics. The rail's hairline
- * `outline-width: 1px`, its `::before` −1px bleed and the step gradient's 1px stop follow
- * the same rule (precedent: react-calendar-compat's `calc(1px * var(--base-scale))`).
- *
- * The focus ring's `2px` and its −2px / ∓4px offsets are the documented D6 exception —
- * react-tabster hardcodes the width with an upstream FIXME and "fixing" it to a stroke
- * width changes rendering — so those stay literal, matching react-card's conversion.
- *
- * No `tokens.spacing*` is read anywhere in this component, so no named spacing utility
- * appears below.
+ * - The runtime CSS variable names (Slider.constants.ts) are a frozen cross-package
+ *   contract: @fluentui/react-color-picker re-declares them verbatim. Do not rename.
+ * - The orientation block must stay AFTER the size block, and the inline-axis rules AFTER
+ *   the block-axis ones: :where() makes them equal specificity, so file order decides.
+ * - Within .root, base vars -> :hover -> :active, narrowest last, for the same reason.
+ * - The two @variant rtl twins (thumb translateX, input direction) are real VALUE flips,
+ *   not property flips - they cannot be folded into logical properties.
+ * - The focus ring 2px and its offsets stay literal: react-tabster hardcodes the width
+ *   (upstream FIXME), so tokenising them changes rendering (D6).
  */
 
 @layer fui.components.l1 {
@@ -149,15 +41,7 @@
     }
 
     /*
-     * Inline-axis ring offset — the ONLY difference between focusIndicatorHorizontal and
-     * focusIndicatorVertical. Written as PHYSICAL `left`/`right` on purpose: the compiled
-     * `[ltr, rtl]` pairs (`f1dfga45`/`f63jj3o`, `fm5xmfm`/`femsgmt`) carry the identical
-     * value on both sides, and the utility being overridden declares physical longhands —
-     * matching it avoids relying on logical-vs-physical declaration-order resolution for a
-     * flip that does not exist.
-     *
-     * Equal specificity with the block-axis rule above (`:where()` everywhere), so these
-     * must stay AFTER it.
+     * - Equal specificity with the block-axis rule above (`:where()` everywhere), so these must stay AFTER it.
      */
     @variant horizontal {
       @variant focus-within-fui {

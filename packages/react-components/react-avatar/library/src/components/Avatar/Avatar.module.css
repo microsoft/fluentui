@@ -192,11 +192,7 @@
 
 @layer fui.components.l1 {
   /*
-   * arg 4 — from useStyles.badgeAlign.
-   * Griffel could not auto-flip a `right` keyword buried inside the mask-image value, so
-   * the source hoisted it into a custom property that rtl-css-js *could* flip
-   * (compiled pair: `--fui-Avatar-badgeAlign:right` / `:left`). Same trick here, with the
-   * flip expressed by the shared `rtl` variant instead.
+   * - Griffel could not auto-flip a `right` keyword buried inside the mask-image value, so the source hoisted it into a custom property that rtl-css-js *could* flip (compiled pair: `--fui-Avatar-badgeAlign:right` / `:left`).
    */
   .badge-align {
     --fui-Avatar-badgeAlign: right;

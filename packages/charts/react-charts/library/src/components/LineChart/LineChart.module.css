@@ -37,27 +37,6 @@
   }
 }
 
-/*
- * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). LineChart renders no element of its
- * own: its outermost node is CartesianChart's root `<div>`, reached through
- * CartesianChart's public `styles.root` prop (CONVERSION_GUIDE §3d M2 — LineChart renders
- * CartesianChart itself, so it owns the props). `useLineChartStyles` leads its `clsx()`
- * with this class so the composed string ALWAYS starts with a hashed, selector-safe token
- * ahead of `group/fui-line-chart`: nwsapi's `:scope` polyfill anchors on
- * `escape(element.classList[0])` and the `/` survives that escaping, yielding an invalid
- * selector and a render-time AggregateError under jsdom. Do not delete it because it looks
- * like it does nothing.
- *
- * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
- * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.root {}`
- * would never reach the class map and `styles.root` would be `undefined`. A custom
- * property set to `initial` is guaranteed-invalid, so it renders nothing and any
- * `var(--fui-line-chart-identity, X)` still resolves to `X`.
- *
- * ALTITUDE l2, not l1: this class decorates an element whose base styles come from
- * `useCartesianChartStyles` (DECISIONS.md D2 amendment 2). It declares nothing that could
- * compete today, but the altitude is the contract, not the current declaration list.
- */
 @layer fui.components.l2 {
   .root {
     --fui-line-chart-identity: initial;

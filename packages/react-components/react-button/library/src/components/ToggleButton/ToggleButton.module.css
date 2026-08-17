@@ -8,23 +8,6 @@
  * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /*
-   * NOTE (statics-removal phase, DECISIONS.md D16): EVERY class below is conditional
-   * (`checked`, `disabled`, `appearance === 'primary'`), so this module contributes NO
-   * unconditional leading token to the root. That is safe here, and only here, because
-   * `useToggleButtonStyles_unstable` calls `useButtonStyles_unstable` LAST, and that hook
-   * prepends Button's unconditional `.root` — so the rendered `classList[0]` is Button's
-   * hashed root class, never the `group/fui-toggle-button` marker (D15.1; asserted by
-   * `component-has-group-marker`).
-   *
-   * §4b's generic fix — an empty `.root {}` identity local — does NOT work in this build
-   * pipeline anyway: a rule with no declarations is dropped before the class map is
-   * extracted, so `styles.root` comes back `undefined` and clsx silently omits it
-   * (measured on this file: `lib/components/ToggleButton/ToggleButton.module.css.js`
-   * contained no `root` key). If the call to `useButtonStyles_unstable` ever stops being
-   * last, this root needs a leading local carrying at least one declaration.
-   */
-
   .checked {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-1 border-l-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
 

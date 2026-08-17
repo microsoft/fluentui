@@ -84,27 +84,6 @@
  */
 
 @layer fui.components.l1 {
-  /*
-   * Identity-only local. TimePicker's root has no declarations of its own — every root
-   * style comes from `useComboboxStyles_unstable`. This class exists so the root always
-   * emits a selector-safe leading token ahead of the `group/fui-time-picker` marker
-   * (DECISIONS.md D15.1 / D16.2): a marker at `classList[0]` makes nwsapi's jsdom `:scope`
-   * polyfill splice the `/` into an invalid selector and throw at render time.
-   *
-   * Do not delete because it looks empty.
-   *
-   * WHY IT IS NOT A LITERALLY EMPTY RULE. CONVERSION_GUIDE §3b still specifies `.root {}` on
-   * the premise that `postcss-modules` exports the name even with an empty body. It does not
-   * survive this pipeline: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
-   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
-   * every declaration-less rule, so the class never reaches the class map and `styles.root`
-   * comes back `undefined` — silently putting the marker at index 0. Reproduced here on
-   * Tailwind v4.3.3 before this body was added: `dist/styles.css` emitted a bare
-   * `@layer fui.components.l1;` statement and the generated class map held `listbox` only.
-   * `--fui-time-picker-identity: initial` is the same minimal surviving body react-breadcrumb
-   * uses: a custom property set to `initial` is guaranteed-invalid, so it renders nothing and
-   * any `var(--fui-time-picker-identity, X)` still resolves to `X`.
-   */
   .root {
     --fui-time-picker-identity: initial;
   }

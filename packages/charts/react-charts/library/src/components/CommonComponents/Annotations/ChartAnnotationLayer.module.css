@@ -5,78 +5,7 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Slot mapping (mergeClasses ARGUMENT order of `useChartAnnotationLayerStyles`):
- *
- *   root                                 1 chartAnnotationLayerClassNames.root → static (JS) — REMOVED (D16.1)
- *                                        2 useStyles.root                      → l1  .root
- *                                          (+ `group/fui-chart-annotation-layer` marker second, in JS)
- *                                        3 props.className                     → consumer (CartesianChart hands its
- *                                                                               `.annotation-layer` class here)
- *                                        4 props.styles?.root                  → consumer
- *   annotation                           same shape → l1  .annotation (+ shared base, below)
- *   annotationNoDefaults                 DEAD SLICE, carried: the Griffel hook declared it
- *                                        but never returned it, so under
- *                                        `hideDefaultStyles` the TSX's
- *                                        `classes.annotationNoDefaults` was always
- *                                        `undefined` (see the hook's JSDoc)
- *                                                   → l1  .annotation-no-defaults
- *   connectorLayer                       same shape → l1  .connector-layer
- *   measurement                          same shape → l1  .measurement
- *   annotationContent                    same shape → l1  .annotation-content
- *   annotationForeignObject              same shape → l1  .annotation-foreign-object
- *   annotationContentInteractive         same shape → l1  .annotation-content-interactive
- *   annotationForeignObjectInteractive   same shape → l1  .annotation-foreign-object-interactive
- *   connectorGroup                       same shape → l1  .connector-group
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
- * Everything is `fui.components.l1` — every classed element (the layer root `<div>`, the
- * connector `<svg>`, the `<foreignObject>`s, the annotation container/content `<div>`s,
- * the measurement `<div>`s and the connector `<g>`) is rendered by ChartAnnotationLayer
- * itself. `root` is the component's outermost slot, so the D15.1 marker rides it.
- *
- * The Griffel source spread ONE shared object (`annotationBaseStyles`, i.e.
- * `typographyStyles.caption1` + layout/padding/color) into both `annotation` and
- * `annotationNoDefaults`, with `annotation` adding only shadow + border on top. That
- * sharing is expressed as a two-class selector list (PolarChart `gridLine` precedent)
- * followed by an `.annotation`-only block — file order is the winner order (D2a3), and
- * the two blocks set disjoint properties anyway.
- *
- * IN-FILE ORDER IS LOAD-BEARING in one place: `.annotation-content-interactive` /
- * `.annotation-foreign-object-interactive` (`pointer-events: auto`) must be declared
- * AFTER `.annotation-content` / `.annotation-foreign-object` (`pointer-events: none`) —
- * the TSX composes content + contentInteractive on the same element and the Griffel
- * mergeClasses winner was the LAST argument.
- *
- * The per-annotation dynamic styling (backgroundColor/opacity via
- * `applyOpacityToColor`, border*, padding, boxShadow, rotation, text color/size/weight)
- * was always INLINE STYLE computed in the component — it never was in the Griffel
- * slices and stays in JS.
- *
- * VALUES ARE THE COMPILED ONES — read off
- * lib-commonjs/components/CommonComponents/Annotations/useChartAnnotationLayer.styles.js.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` atomic pairs, both inert but carried faithfully:
- *   root            left:0 + right:0 (both flipped) → symmetric → physical `inset-0`
- *   connector-layer left:0 only (flips to right:0 in RTL) → `start-0`
- *     (inset-inline-start reproduces the flip exactly; with `width: 100%` the two
- *     anchors coincide, so this is fidelity, not behaviour)
- * The 4px/8px padding pair on the annotation base is symmetric (both sides set) →
- * `px-horizontal-s` / `py-vertical-xs` (logical inline/block, identical computed values).
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────────
- * No `HighContrastSelector` media query in any slice — nothing to narrow.
- *
- * ── Spacing forms (D4 amendment) ────────────────────────────────────────────────────────
- * 4px → vertical-XS step, 8px → horizontal-S step.
- *
- * ── Shorthands ──────────────────────────────────────────────────────────────────────────
- * `border-radius: var(--radius-medium)` and `border: 1px solid
- * var(--color-neutral-stroke-1)` kept as compiled shorthands (react-tooltip/PopoverSurface
- * precedent) — no rule in this module sets any of their longhands, so no Griffel priority
- * machinery survives to get wrong. The border `1px` is a frozen literal (not a
- * strokeWidth token in the source), so the D4-addendum `var(--spacing-*)` mapping does
- * not apply.
+ * - The border `1px` is a frozen literal (not a strokeWidth token in the source), so the D4-addendum `var(--spacing-*)` mapping does not apply.
  */
 
 @layer fui.components.l1 {
