@@ -10,8 +10,8 @@ import styles from './TableCellActions.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use
- * `fuiSelector(tableCellActionsClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableCellActionsClassNames: { root: string } = {
   root: 'group/fui-table-cell-actions',
@@ -21,19 +21,8 @@ export const tableCellActionsClassNames: { root: string } = {
  * Apply styling to the TableCellActions slots based on the state
  */
 export const useTableCellActionsStyles_unstable = (state: TableCellActionsState): TableCellActionsState => {
-  // Module class first, named group marker second, consumer className last. `styles.root`
-  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
-  // asserted by `component-has-group-marker`).
-  //
-  // `visible` stays a JS-gated module class rather than a `data-visible` attribute: it
-  // selects one slice exactly as the mergeClasses argument it replaces did, and nothing
-  // outside this hook reads it (DECISIONS.md D15.6 — data attributes are a fallback for
-  // state CSS cannot otherwise reach, not a default).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TableCellActions.module.css
-  // and by block order within it, not by the order of these arguments.
-  //
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     tableCellActionsClassNames.root,

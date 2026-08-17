@@ -44,16 +44,8 @@ export const alphaSliderClassNames: { root: string } = {
  * Apply styling to the AlphaSlider slots based on the state
  */
 export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSliderState => {
-  // Unconditional module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
-  // D16.2) — with the consumer className last. `styles.root` is the identity-only local minted
-  // for exactly this reason (D16.2): AlphaSlider's root has no declarations of its own, so
-  // without it the marker would lead. `useColorSliderStyles_unstable` below prepends its own
-  // class + marker, so the emitted `classList[0]` is in fact ColorSlider's module class — but
-  // this call must be safe on its own terms, not by relying on what runs after it.
-  //
-  // Every rule these classes carry lives in `@layer fui.components.l2` — see
-  // AlphaSlider.module.css for why composition over ColorSlider's output cannot sit in l1.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: { ...state.root, className: clsx(styles.root, alphaSliderClassNames.root, state.root.className) },
@@ -61,16 +53,12 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
 
   state = { ...state, rail: { ...state.rail, className: clsx(styles.rail, state.rail.className) } };
 
-  // The thumb was assigned TWICE in the Griffel version, with byte-identical arguments. That
-  // was dead code with a visible symptom: `mergeClasses` de-duplicates its own atomics but not
-  // plain string classes, so the emitted class list carried `fui-AlphaSlider__thumb` twice
-  // (see the committed inline snapshot). One assignment.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, thumb: { ...state.thumb, className: clsx(styles.thumb, state.thumb.className) } };
 
-  // The `input` slot had a static-class-only assignment, which under D16 leaves
-  // `clsx(state.input.className)` — an identity on the consumer's own string, i.e. dead code
-  // implying this hook styles a slot it does not (CONVERSION_GUIDE "Known special cases").
-  // Deleted; ColorSlider's hook below is the only thing that styles the input.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   // Applied LAST, exactly as before: it prepends ColorSlider's own classes to each slot and
   // keeps `state.*.className` — and therefore the consumer's className — trailing.

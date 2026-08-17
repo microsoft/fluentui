@@ -19,12 +19,8 @@ export const dialogContentClassNames: { root: string } = {
  * Apply styling to the DialogContent slots based on the state
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
-  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
-  // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
-  // `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the `/` in
-  // `group/fui-dialog-content` survives that escaping into an invalid selector, throwing a
-  // render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
-  // `fui-DialogContent` static held that position; `styles.root` holds it now.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, dialogContentClassNames.root, state.root.className);
 
   return state;

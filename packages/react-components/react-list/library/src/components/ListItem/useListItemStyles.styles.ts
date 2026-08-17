@@ -64,54 +64,15 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   root['data-interactive'] = state.selectable || state.navigable || undefined;
   root['data-disabled'] = state.disabled || undefined;
 
-  // Module class FIRST, then the named group marker, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so it is always the leading token and the marker
-  // is never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom
-  // (D15.1). Before the statics sweep the `fui-ListItem` class held that position
-  // incidentally; now it is held explicitly by the hashed CSS-Modules class. The marker is a
-  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in this
-  // package or any other — can style an element from this ListItem's state, because
-  // `styles.root` is hashed and unaddressable from outside this file (DECISIONS.md D15).
-  //
-  // ListItem needs no state mirrors: `data-interactive` and `data-disabled` are stamped on
-  // this very element above, so `@variant group-interactive/fui-list-item` /
-  // `group-disabled/fui-list-item` work as-is (D15.6, Tier 0). The marker nests under
-  // `group/fui-list` for free — each component root carries its own (D15.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ListItem.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why the checkmark slot's rules
-  // live in `fui.components.l2` rather than l1.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, listItemClassNames.root, state.root.className);
 
   if (state.checkmark) {
     state.checkmark.className = clsx(styles.checkmark, state.checkmark.className);
 
-    // JS slot composition, the D16.3 mechanism for styling a sub-slot of a component this
-    // package RENDERS ITSELF (M2 in reports/statics-removal-design.md §2.2).
-    //
-    // The `checkmark` slot IS a `<Checkbox>` (`slot.optional(props.checkmark, { elementType:
-    // Checkbox })` in useListItem.tsx), and the 4px margin this component wants belongs on
-    // Checkbox's `indicator` sub-slot. That element used to be reached from CSS by its
-    // owner's static class — `.checkmark :global(.fui-Checkbox__indicator)` — which D16.1
-    // deletes. Rather than renaming that coupling to a marker, this removes it: ListItem
-    // hands its OWN hashed class down through the slot props it already controls, so nothing
-    // in this package depends on react-checkbox's internal DOM shape any more.
-    //
-    // `slot.always` normalises whatever the consumer passed — shorthand, element, props
-    // object, or nothing — into a props object, and the `clsx` MERGES onto it rather than
-    // replacing it: `slot.always`'s own `{ ...defaultProps, ...props }` would let a
-    // consumer's `checkmark={{ indicator: { className: 'x' } }}` silently drop our class.
-    // Checkbox re-resolves this object in `useCheckbox_unstable` (idempotent) and its own
-    // `clsx` keeps this className last, so ours still wins its ties. Altitude is unchanged:
-    // `.checkmark-indicator` sits in `fui.components.l2` against Checkbox's `fui.base`
-    // indicator reset — see ListItem.module.css.
-    //
-    // An explicit `null` is a SUPPRESSED slot (`checkmark={{ indicator: null }}` renders no
-    // indicator — Checkbox's `slot.optional` drops it) and must pass through untouched: a
-    // `?? undefined` here used to convert it into "use the default", making `slot.always`
-    // recreate the very element the consumer disabled (PR-36513 review item 15). Only
-    // `undefined`/shorthand/props go through normalisation.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     if (state.checkmark.indicator !== null) {
       const indicator = slot.always<CheckmarkIndicatorProps>(state.checkmark.indicator, {
         elementType: 'div',

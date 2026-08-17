@@ -50,17 +50,8 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   const { checked, subText } = state;
   const multiline = !!subText;
 
-  // Named group marker, consumer className last. There is no unconditional module class on
-  // THIS root to lead with — the root is a MenuItem root and this component contributes only
-  // its identity to it — and it does not need one: `useMenuItemStyles_unstable` runs LAST and
-  // PREPENDS its own unconditional hashed `styles.root`, so the token that actually reaches
-  // `classList[0]` is that hashed class and the D15.1 invariant holds on the rendered string.
-  // Before D16.1 the `fui-MenuItemSwitch` static held that position instead.
-  //
-  // The element legitimately carries TWO markers — `group/fui-menu-item-switch` and
-  // MenuItem's `group/fui-menu-item` — because it genuinely is both. Both are declared to
-  // react-conformance's `component-has-group-marker` through
-  // `testOptions['has-group-marker'].markers` in MenuItemSwitch.test.tsx (D16.3).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, root: { ...state.root, className: clsx(menuItemSwitchClassNames.root, state.root.className) } };
 
   // The Griffel source put `multiline && multilineStyles.switch` AFTER the consumer

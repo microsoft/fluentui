@@ -11,9 +11,8 @@ import styles from './TagPickerInput.module.css';
  * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
  * `group-*` variant target.
  *
- * The value is a class TOKEN, not a selector — `'.' + tagPickerInputClassNames.root` is invalid
- * CSS, because the `/` must be escaped in a selector. Use
- * `fuiSelector(tagPickerInputClassNames.root)` from `@fluentui/react-utilities`.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tagPickerInputClassNames: { root: string } = {
   root: 'group/fui-tag-picker-input',
@@ -41,15 +40,8 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
 
   root['data-size'] = state.size;
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. `styles.root` is the
-  // single class that carries the whole component: the `makeResetStyles` body in `@layer
-  // fui.base`, plus the `data-size` and `disabled` variant blocks in `@layer fui.components.l1`.
-  //
-  // Cascade priority is decided by that layer order, not by the order of these arguments — see
-  // TagPickerInput.module.css for the mapping back to the mergeClasses() argument order this
-  // replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   state.root.className = clsx(styles.root, tagPickerInputClassNames.root, state.root.className);
 

@@ -6,12 +6,8 @@ import styles from './Pie.module.css';
 /**
  * Public identity class for the DonutChart Pie.
  *
- * DEPRECATED FOR STYLING INTERNALS — deliberately NOT tagged `@deprecated` (see
- * useDonutChartStyles.styles.ts for why). `root` is retained as the component's identity class — the
- * Tailwind named-group marker (DECISIONS.md D15.1) — and is now the ONLY handle by which a
- * test or another module can address anything Pie renders, because the module locals are
- * hashed. The `insideDonutString` BEM static was removed with the statics sweep
- * (DECISIONS.md D16.1 / D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * The marker keeps the `donut-pie` qualifier the old statics carried (`fui-donut-pie__*`)
  * rather than the bare `Pie` displayName, for the same reason as Arc: `group/fui-pie` would
@@ -53,10 +49,8 @@ export const usePieStyles = (props: PieProps): PieStyles => {
   const { className } = props;
 
   return {
-    // `styles.root` is the identity-only local declared in Pie.module.css. It carries no
-    // declarations and exists solely so this slot emits a selector-safe leading token ahead
-    // of the group marker — the marker must never be `classList[0]` (DECISIONS.md D15.1 /
-    // D16.2, nwsapi `:scope` polyfill under jsdom).
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, donutPieClassNames.root, className, props.styles?.root),
     // `className` is applied to BOTH slots, as it was before the conversion. Preserved
     // deliberately: DonutChart renders <Pie> without a className, so no call site observes

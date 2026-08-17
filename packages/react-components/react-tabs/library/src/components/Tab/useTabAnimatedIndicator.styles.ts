@@ -125,19 +125,8 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
     'data-orientation': vertical ? 'vertical' : 'horizontal',
   };
 
-  // The Griffel original wrote `mergeClasses(state.root.className, …)` — its own atomics
-  // LAST, i.e. after the consumer's className, which mergeClasses does by design. The
-  // arguments are flipped here so the consumer's string (already inside
-  // `state.root.className` by the time this hook runs) stays last, which is the contract
-  // `classname-overrides-win` asserts and the one the `@layer` system implements
-  // (DECISIONS.md D2/D9: unlayered consumer CSS beats every `fui.*` layer regardless).
-  //
-  // Nothing about rendering changes: argument order carries no cascade meaning here — layer
-  // order and block position inside Tab.module.css decide every tie — and the leading token
-  // stays selector-safe either way, so `classList[0]` is never the group marker (D16.2).
-  //
-  // The `horizontal` / `vertical` slices this call used to carry are gone: they are
-  // `data-orientation` arms nested inside `.indicator-transform` now.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

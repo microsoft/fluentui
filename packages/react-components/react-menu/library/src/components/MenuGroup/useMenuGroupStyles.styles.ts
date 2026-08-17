@@ -19,10 +19,8 @@ export const menuGroupClassNames: { root: string } = {
 };
 
 export const useMenuGroupStyles_unstable = (state: MenuGroupState): MenuGroupState => {
-  // `styles.root` is the identity-only local minted in MenuGroup.module.css: this component
-  // has no styles of its own and nothing else prepends a class here, so without it the
-  // marker would be `classList[0]` and nwsapi's jsdom `:scope` polyfill would throw
-  // (DECISIONS.md D15.1 / D16.2). Consumer className stays last.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, menuGroupClassNames.root, state.root.className);
 
   return state;

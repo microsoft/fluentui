@@ -21,17 +21,8 @@ export const menuGridRowClassNames: { root: string } = {
 };
 
 export const useMenuGridRowStyles_unstable = (state: MenuGridRowState): MenuGridRowState => {
-  // Unconditional module class FIRST, then the named group marker, with the consumer
-  // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
-  // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
-  // the token that guarantees it. The BEM static that used to hold that position is gone
-  // (DECISIONS.md D16.1).
-  //
-  // When `MenuGridItem` renders a MenuGridRow as its root, the string that component
-  // composed (its own identity local + `group/fui-menu-grid-item`) arrives here as
-  // `state.root.className`, so the element carries BOTH markers — the D16.3 shape, declared
-  // to react-conformance via `testOptions['has-group-marker'].markers` in
-  // MenuGridItem.test.tsx.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, menuGridRowClassNames.root, state.root.className);
 
   return state;

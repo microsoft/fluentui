@@ -16,14 +16,8 @@ import styles from './Avatar.module.css';
  * Avatar's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const avatarClassNames: { root: string } = {
   root: 'group/fui-avatar',
@@ -93,28 +87,8 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     'data-active-appearance': isActive ? activeAppearance : undefined,
   };
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static that used
-  // to lead this call is gone (D16.1): the marker is now Avatar's SOLE public identity
-  // class, and the only handle by which another module — in this package or any other — can
-  // style an element from this Avatar's state, because `styles.root` is hashed and
-  // unaddressable from outside this file (DECISIONS.md D15).
-  //
-  // Avatar needs no state mirrors: `data-size`, `data-active` and `data-active-appearance`
-  // are stamped on this very element above, so `@variant group-*/fui-avatar` reads them
-  // as-is (D15.6, Tier 0). Every sibling in this package now carries its own marker —
-  // AvatarGroupPopover stamps `group/fui-avatar-group-popover` on its trigger button, the
-  // outermost element it renders (D15.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Avatar.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces. Every remaining condition below is
-  // byte-for-byte the one the Griffel `rootClasses` builder used; the size-bucket
-  // if/else chains (typography, square radius, ring width, shadow depth, icon size) moved
-  // out of JS and onto `data-size`.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

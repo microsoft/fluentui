@@ -39,20 +39,8 @@ export const legendClassNames: { root: string } = {
 export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
   const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
 
-  // Unconditional module class FIRST, then the named group marker, then the consumer's own
-  // strings last (DECISIONS.md D15.1 / D16.2). The marker must never be `classList[0]` —
-  // nwsapi's `:scope` polyfill throws on the `/` under jsdom — and `styles.root` is the token
-  // that guarantees it, since clsx never drops an unconditional argument. The BEM static that
-  // used to hold that position is gone (DECISIONS.md D16.1).
-  //
-  // Only the root carries the marker: `.legend`, `.rect`, `.text` … are descendants of it, so
-  // `@variant group-*/fui-legends` reaches them for free (DECISIONS.md D15, "No other slot
-  // gets a marker").
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Legends.module.css, not by the
-  // order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, and for why `.legend` / `.resizable-area`
-  // sit at `fui.components.l2` rather than `.l1`.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   return {
     root: clsx(styles.root, legendClassNames.root, className, props.styles?.root),
     legend: clsx(styles.legend, props.styles?.legend),

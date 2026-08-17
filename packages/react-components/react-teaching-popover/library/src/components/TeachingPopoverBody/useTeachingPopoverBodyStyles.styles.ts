@@ -10,13 +10,8 @@ import styles from './TeachingPopoverBody.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + teachingPopoverBodyClassNames.root` is invalid CSS. Use
- * `fuiSelector(teachingPopoverBodyClassNames.root)` from `@fluentui/react-utilities` (D16.5);
- * `element.classList.contains(...)` is token-taking and needs no escaping.
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const teachingPopoverBodyClassNames: { root: string } = {
   root: 'group/fui-teaching-popover-body',
@@ -45,22 +40,13 @@ export const useMediaStyles = (): typeof mediaStyles => mediaStyles;
 export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState): TeachingPopoverBodyState => {
   const { mediaLength } = state;
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1). The `fui-TeachingPopoverBody`
-  // BEM static that used to lead this call is gone (D16.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TeachingPopoverBody.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, teachingPopoverBodyClassNames.root, state.root.className);
 
   if (state.media) {
-    // No marker here: D15.1 puts exactly one marker on the component's OUTERMOST slot.
-    // `mediaLength` selects a module class rather than a `data-*` attribute — this hook holds
-    // the slot object and applies the class to the very element it styles, so there is no
-    // state a selector cannot otherwise reach (D15.6, resolved).
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     state.media.className = clsx(mediaStyles.base, mediaStyles[mediaLength], state.media.className);
   }
 

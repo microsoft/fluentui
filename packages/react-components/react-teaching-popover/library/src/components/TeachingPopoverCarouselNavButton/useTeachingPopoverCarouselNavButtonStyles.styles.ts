@@ -10,10 +10,8 @@ import styles from './TeachingPopoverCarouselNavButton.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + teachingPopoverCarouselNavButtonClassNames.root` is
- * invalid CSS. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
- * `element.classList.contains(...)` is token-taking and needs no escaping.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const teachingPopoverCarouselNavButtonClassNames: { root: string } = {
   root: 'group/fui-teaching-popover-carousel-nav-button',
@@ -27,22 +25,8 @@ export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
 ): TeachingPopoverCarouselNavButtonState => {
   const { appearance } = state;
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
-  //
-  // The Griffel hook's `isSelected ? rootSelected : rootUnselected` and
-  // `isSelected ? rootBrand : rootBrandUnselected` branches are GONE from the JS: the element
-  // already renders `aria-selected`, so both branches are expressed in the module as the
-  // catalog's `selected` / `not-selected` variants (D15.6, resolved — a `data-selected` mirror
-  // would only widen invalidation without closing the ARIA half). `appearance` stays a JS-side
-  // gate because it is a LOOK prop selecting a module class (D3).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order and by file position inside
-  // TeachingPopoverCarouselNavButton.module.css — see that file's header for the mapping back
-  // to the mergeClasses() argument order, including the two blocks whose position reproduces
-  // Griffel's `@supports` / `@media` bucket ordering.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     teachingPopoverCarouselNavButtonClassNames.root,

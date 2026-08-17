@@ -26,10 +26,8 @@ import styles from './TeachingPopoverSurface.module.css';
  * the same element (D16.3). A descendant can address whichever identity it means. The
  * conformance suite is told about the pair through `testOptions['has-group-marker'].markers`.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + teachingPopoverSurfaceClassNames.root` is invalid CSS.
- * Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
- * `element.classList.contains(...)` is token-taking and needs no escaping.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const teachingPopoverSurfaceClassNames: { root: string } = {
   root: 'group/fui-teaching-popover-surface',
@@ -41,26 +39,15 @@ export const teachingPopoverSurfaceClassNames: { root: string } = {
 export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `usePopoverSurfaceStyles_unstable` — called LAST, below — additionally prepends
-  // PopoverSurface's own unconditional `styles.root`, so the token that actually renders at
-  // `classList[0]` is react-popover's hashed module class. Either way neither marker is index
-  // 0, where nwsapi's `:scope` polyfill would throw on its `/` under jsdom (D15.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TeachingPopoverSurface.module.css
-  // — its single block sits at `fui.components.l2`, above react-popover's l1 — not by the order
-  // of these arguments.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: { ...state.root, className: clsx(styles.root, teachingPopoverSurfaceClassNames.root, state.root.className) },
   };
 
-  // Called LAST, exactly as before — the Griffel source's comment for this line was "Make sure
-  // to merge teaching bubble surface prior to popover styles", i.e. compose here first so that
-  // under `mergeClasses` these classes arrived as PopoverSurface's trailing argument and won.
-  // The `fui.components.l2` altitude reproduces that winner now, but the call order still has
-  // to stand so the consumer className stays last in the rendered class attribute.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   const updatedState = usePopoverSurfaceStyles_unstable(state);
 
   return updatedState;

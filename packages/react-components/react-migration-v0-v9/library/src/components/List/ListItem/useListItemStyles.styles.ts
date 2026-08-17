@@ -30,13 +30,8 @@ export const listItemClassNames: { root: string } = {
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
-  // Unconditional module class FIRST, then the named group marker, then the conditional
-  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
-  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom (D15.1).
-  // Cascade priority is decided by the `@layer fui.*` order in ListItem.module.css, not by
-  // the order of these arguments.
-  //
-  // The state-mutation pattern is kept deliberately during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     listItemClassNames.root,
@@ -45,10 +40,8 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     state.root.className,
   );
 
-  // `header` and `contentWrapper` are handed to <ItemLayout> by renderListItem_unstable and
-  // are decorated by ItemLayout's own hook, so these classes ride at `fui.components.l2` —
-  // the D16.3/M2 mechanism (JS slot composition, no selector, no public class-name handle).
-  // No marker on either: only the OUTERMOST slot carries one (D15.1).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.header) {
     state.header.className = clsx(state.truncateHeader && styles.truncate, state.header?.className);
   }

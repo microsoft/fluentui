@@ -30,27 +30,12 @@ export const menuItemCheckboxClassNames: { root: string } = {
 };
 
 export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState): MenuItemCheckboxState => {
-  // Named group marker, consumer className last. There is no unconditional module class to
-  // lead with — this component has no styles of its own; its root IS a MenuItem root — and
-  // it does not need one: `useMenuItemStyles_unstable` runs LAST and PREPENDS its own
-  // unconditional hashed `styles.root`, so the token that actually reaches `classList[0]`
-  // is that hashed class and the D15.1 invariant holds on the rendered string. Before
-  // D16.1 the `fui-MenuItemCheckbox` static held that position instead.
-  //
-  // The element legitimately carries TWO markers — `group/fui-menu-item-checkbox` and
-  // MenuItem's `group/fui-menu-item` — because it genuinely is both, and a descendant (or
-  // MenuSplitGroup's child selectors) can address whichever identity it means. Both are
-  // declared to react-conformance's `component-has-group-marker` through
-  // `testOptions['has-group-marker'].markers` in MenuItemCheckbox.test.tsx (D16.3).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, root: { ...state.root, className: clsx(menuItemCheckboxClassNames.root, state.root.className) } };
 
-  // Called LAST, exactly as before: it composes its own classes ahead of the incoming
-  // className, which keeps the consumer's string last in the rendered class attribute.
-  // It also applies the checkmark styles (`useCheckmarkStyles_unstable`), which is why this
-  // hook no longer calls that helper a second time — clsx does not dedupe the way
-  // mergeClasses did, and the second call only ever produced duplicate class tokens.
-  // MenuItemCheckboxState is `MenuItemState & MenuItemSelectableState`, so the delegate's
-  // narrower return is re-merged onto this component's own shape (F1 of the D14 mutation removal — thread the composed result, do not discard it).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, ...useMenuItemStyles_unstable(state) };
 
   return state;

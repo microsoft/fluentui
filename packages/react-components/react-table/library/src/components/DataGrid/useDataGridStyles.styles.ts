@@ -25,8 +25,8 @@ import { useTableStyles_unstable } from '../Table/useTableStyles.styles';
  * whichever identity it means. The pair is declared to react-conformance through
  * `testOptions['has-group-marker'].markers`.
  *
- * The value is a class TOKEN, not a selector: use `fuiSelector(dataGridClassNames.root)`
- * from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dataGridClassNames: { root: string } = {
   root: 'group/fui-data-grid',
@@ -36,18 +36,8 @@ export const dataGridClassNames: { root: string } = {
  * Apply styling to the DataGrid slots based on the state
  */
 export const useDataGridStyles_unstable = (state: DataGridState): DataGridState => {
-  // `useTableStyles_unstable` is called LAST, not first as it was under Griffel, and that
-  // reordering is what keeps the D16.2 invariant holdable without inventing an
-  // identity-only local for a component that has no styles of its own: Table's hook
-  // PREPENDS its unconditional `styles.root`, so the rendered `classList[0]` is Table's
-  // hashed module class and `group/fui-data-grid` never lands at index 0 (nwsapi's jsdom
-  // `:scope` polyfill throws on the `/` there — D15.1). It also keeps the consumer's
-  // className last in the emitted string, per CONVERSION_GUIDE §3.
-  //
-  // The swap is inert for the cascade: this component contributes no declarations at all,
-  // and argument order carries no cascade meaning in this system — the `@layer fui.*` order
-  // decides every tie (DECISIONS.md D2). Same shape as react-button's ToggleButton and
-  // react-toolbar's ToolbarButton, which have always called the wrapped hook last.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, root: { ...state.root, className: clsx(dataGridClassNames.root, state.root.className) } };
 
   // DataGridState widens TableState, so the delegate's narrower return is re-merged onto this

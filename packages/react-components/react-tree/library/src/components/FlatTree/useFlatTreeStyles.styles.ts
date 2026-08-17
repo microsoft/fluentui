@@ -21,30 +21,8 @@ export const flatTreeClassNames: { root: string } = {
 };
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
-  // Module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
-  // the removed `fui-FlatTree` static was what held that position.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
-  // statics, FlatTree's SOLE public identity class: it is the only handle by which another
-  // module — in this package or any other — can style an element from this FlatTree's
-  // state, because `styles.root` is hashed and unaddressable from outside this file.
-  // FlatTree gets its own name rather than
-  // sharing `fui-tree`: the two are distinct components with distinct roots, and a
-  // descendant that means "only inside a flat tree" must be able to say so (DECISIONS.md
-  // D15, Tier 0 — no state mirrors needed).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in FlatTree.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
-  //
-  // The `react-hooks/immutability` suppression the Griffel version carried is gone: the
-  // rule only fired because the assigned value derived from a hook call (`useBaseStyles()`),
-  // and there are none left here. The state-mutation pattern itself is deliberately kept —
-  // the mixed-mode sibling seam and the customStyleHooks contract depend on the shared
-  // object, and its removal is a single Phase 3 sweep (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, flatTreeClassNames.root, state.root.className);
   return state;
 };

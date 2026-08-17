@@ -13,9 +13,8 @@ import styles from './Dropdown.module.css';
  * `listbox`) were removed together with the `fui-Dropdown__*` BEM statics
  * (DECISIONS.md D16.1/D16.5): there is no public class-name handle on component internals.
  *
- * The value is a class TOKEN, not a selector — `'.' + dropdownClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(dropdownClassNames.root)`
- * from `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dropdownClassNames: { root: string } = {
   root: 'group/fui-dropdown',
@@ -60,21 +59,8 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Dropdown*`
-  // BEM statics that used to lead this list are gone (D16.1); the marker is Dropdown's sole
-  // public identity class now.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order and by block order inside
-  // Dropdown.module.css, not by the order of these arguments — see that file's header for the
-  // mapping back to the mergeClasses() argument order this replaces, including the three
-  // inversions.
-  //
-  // The `!disabled &&` guard on `outlineInteractive` is now an `@variant enabled` block inside
-  // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
-  // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
-  // appearance classes.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, dropdownClassNames.root, styles[appearance], state.root.className);
 
   state.button.className = clsx(styles.button, placeholderVisible && styles.placeholder, state.button.className);

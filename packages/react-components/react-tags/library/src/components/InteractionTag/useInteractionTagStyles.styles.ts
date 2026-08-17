@@ -42,23 +42,8 @@ export const useInteractionTagStyles_unstable = (state: InteractionTagState): In
 
   root['data-size'] = size;
 
-  // Module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
-  // the removed `fui-InteractionTag` static was what held that position.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
-  // statics, InteractionTag's SOLE public identity class: it is the only handle by which
-  // another module — in this package or any other — can style an element from this
-  // InteractionTag's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. This is the strongest nesting case in the package: InteractionTagPrimary and
-  // InteractionTagSecondary are separate components rendered INSIDE this root, so they can
-  // read it as `@variant group-hover/fui-interaction-tag { … }` (DECISIONS.md D15).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in InteractionTag.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, interactionTagClassNames.root, styles[shape], state.root.className);
 
   return state;

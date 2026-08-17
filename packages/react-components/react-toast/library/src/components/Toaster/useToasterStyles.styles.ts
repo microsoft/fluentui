@@ -8,19 +8,13 @@ import styles from './Toaster.module.css';
  * Toaster's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
  * The class lands on EVERY rendered position container, not on one element — `ToasterSlots`
  * declares a single `root` whose props map identically onto the `<div>` rendered for each
  * occupied toast position (see the slot type's own comment). A selector built from this
  * constant therefore matches one element per occupied position, exactly as `fui-Toaster` did.
  *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const toasterClassNames: { root: string } = {
   root: 'group/fui-toaster',
@@ -30,22 +24,8 @@ export const toasterClassNames: { root: string } = {
  * Apply styling to the Toaster slots based on the state
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
-  // Module class FIRST, named group marker SECOND, consumer className LAST (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 of every position container is always
-  // the hashed, selector-safe `fuicm-*` token — which is what keeps the marker off
-  // `classList[0]`, where nwsapi's `:scope` polyfill would splice its `/` into an invalid
-  // selector and throw a render-time `AggregateError` under jsdom (D15.1). The `fui-Toaster`
-  // static that used to hold index 0 is gone (D16.1); `styles.inline` could not take its
-  // place — it is conditional on `state.inline`.
-  //
-  // One string, assigned to each occupied position container below: that is what the Griffel
-  // hook did, and `ToasterSlots.root`'s own comment is explicit that the root slot maps the
-  // same way onto every position `<div>`. The containers are siblings, so no Toaster group
-  // ever nests inside another.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Toaster.module.css — in
-  // particular `.inline`'s `position: absolute` (l1) over the reset's `fixed` (base) — not by
-  // the order of these arguments.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   const className = clsx(styles.root, toasterClassNames.root, state.inline && styles.inline, state.root.className);
 
   // Per-position placement stays INLINE STYLE: `getPositionStyles` computes `top`/`bottom` and

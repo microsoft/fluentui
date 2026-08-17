@@ -26,10 +26,8 @@ import styles from './DataGridRow.module.css';
  * `useTableRowStyles_unstable` — two markers by design (D16.3), declared to
  * react-conformance through `testOptions['has-group-marker'].markers`.
  *
- * The value is a class TOKEN, not a selector: use `fuiSelector(dataGridRowClassNames.root)`
- * from `@fluentui/react-utilities` (D16.5). `apps/vr-tests-react-components`'s two
- * `DataGrid/DataGridSubtle*.stories.tsx` build a StoryWright hover selector from the literal
- * `.fui-DataGridHeader > .fui-DataGridRow` and have to move to the marker form.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dataGridRowClassNames: { root: string } = {
   root: 'group/fui-data-grid-row',
@@ -41,19 +39,8 @@ export const dataGridRowClassNames: { root: string } = {
 export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGridRowState => {
   const isSubtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
 
-  // `useTableRowStyles_unstable` is called LAST (it ran first under Griffel) so that its
-  // unconditional `styles.root` is PREPENDED and `group/fui-data-grid-row` can never be
-  // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
-  // D16.2). `styles['subtle-selection']` is conditional and so cannot hold that position
-  // itself, which is exactly the case D16.2 warns about.
-  //
-  // The consumer className also moves to LAST, where the Griffel call had it SECOND — see
-  // DataGridRow.module.css for why that is the migration's stated contract rather than a
-  // regression: `subtle-selection` lives in `fui.components.l2` and an unlayered consumer
-  // rule beats every `fui.*` layer (D2 / D9).
-  //
-  // No `data-subtle-selection` mirror is minted: `isSubtle` gates one module class on this
-  // very element and nothing reads it from CSS across an element boundary (D15.6).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {
@@ -62,12 +49,8 @@ export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGrid
     },
   };
 
-  // NOTE: there is deliberately no `state.selectionCell` assignment. Its only library token
-  // was the `fui-DataGridRow__selectionCell` static (D16.1 removed it), so what remained,
-  // `clsx(state.selectionCell.className)`, was an identity on the consumer's own string:
-  // dead code implying this hook styles a slot it does not (CONVERSION_GUIDE "a slot whose
-  // only library token is the static"). The TableSelectionCell that fills the slot styles
-  // itself, and this row reaches it through its marker — see DataGridRow.module.css.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   // Thread the composed result instead of discarding it (F1 of the D14 mutation removal).
   // DataGridRow adds a `selectionCell` slot, so TableRow's `components` map is NARROWER than this

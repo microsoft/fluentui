@@ -32,18 +32,8 @@ export const carouselNavImageButtonClassNames: { root: string } = {
 export const useCarouselNavImageButtonStyles_unstable = (
   state: CarouselNavImageButtonState,
 ): CarouselNavImageButtonState => {
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires.
-  //
-  // Neither slot keeps a `selected && …` argument. The component renders
-  // `aria-selected={selected}` on this root already, so the root reads it with the catalog
-  // `selected` variant and the image reads the SAME attribute off its ancestor through
-  // `group-selected/fui-carousel-nav-image-button` — the cross-boundary state read the
-  // marker exists for (DECISIONS.md D15.1). No `data-selected` mirror is stamped:
-  // DECISIONS.md D15.6 (resolved) makes data attributes a FALLBACK for state a selector
-  // cannot otherwise reach.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, carouselNavImageButtonClassNames.root, state.root.className);
 
   if (state.image) {

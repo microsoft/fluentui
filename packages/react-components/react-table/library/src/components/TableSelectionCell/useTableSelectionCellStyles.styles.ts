@@ -23,8 +23,8 @@ export const CELL_WIDTH = 44;
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use
- * `fuiSelector(tableSelectionCellClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableSelectionCellClassNames: { root: string } = {
   root: 'group/fui-table-selection-cell',
@@ -39,16 +39,8 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
   // (DECISIONS.md D15.6).
   const layout = state.noNativeElements ? 'flex' : 'table';
 
-  // Module class first, named group marker second, consumer className last. `styles.root`
-  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
-  // asserted by `component-has-group-marker`).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in
-  // TableSelectionCell.module.css and by BLOCK order within it — that file is authored
-  // bucket-major because arg #4's focus-within rule has to keep outranking arg #5's flat
-  // `opacity: 0`, which `:where()` flattening would otherwise reverse.
-  //
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     tableSelectionCellClassNames.root,
@@ -58,17 +50,12 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     state.root.className,
   );
 
-  // NOTE: there is deliberately no `state.checkboxIndicator` assignment. Its only library
-  // token was the `fui-TableSelectionCell__checkboxIndicator` static (D16.1 removed it) —
-  // the Griffel source attached no declarations to that slot — so what remained,
-  // `clsx(state.checkboxIndicator.className)`, was an identity on the consumer's own
-  // string: dead code implying this hook styles a slot it does not
-  // (CONVERSION_GUIDE "a slot whose only library token is the static").
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   if (state.radioIndicator) {
-    // This class lands on react-radio's ROOT, so its rule sits at `fui.components.l2`
-    // (D2 amendment 2). No marker here: a group cannot style itself, and Radio stamps its
-    // own `group/fui-radio` on this same element.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     state.radioIndicator.className = clsx(styles['radio-indicator'], state.radioIndicator.className);
   }
 

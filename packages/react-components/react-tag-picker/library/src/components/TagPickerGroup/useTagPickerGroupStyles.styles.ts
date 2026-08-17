@@ -30,11 +30,8 @@ import styles from './TagPickerGroup.module.css';
  * TagPickerGroup IS a TagGroup — the delegation to `useTagGroupStyles_unstable` below stamps it
  * on this same element. `group/fui-tag-picker-group` narrows to this subtype.
  *
- * The value is a class TOKEN, not a selector — `'.' + tagPickerGroupClassNames.root` is invalid
- * CSS, because the `/` must be escaped in a selector. Use
- * `fuiSelector(tagPickerGroupClassNames.root)` from `@fluentui/react-utilities`; inside a
- * Griffel `makeStyles` key, where a call cannot be made, write the escaped literal
- * `'& > .group\\/fui-tag-picker-group'`.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tagPickerGroupClassNames: { root: string } = {
   root: 'group/fui-tag-picker-group',
@@ -44,34 +41,13 @@ export const tagPickerGroupClassNames: { root: string } = {
  * Apply styling to the TagPickerGroup slots based on the state
  */
 export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): TagPickerGroupState => {
-  // Delegation FIRST, exactly as before: `useTagGroupStyles_unstable` stamps its own module
-  // class, its `group/fui-tag-group` marker and the `data-size` this root carries in the TAG
-  // scale, then leaves the consumer className trailing. Everything this hook adds is prepended
-  // to that string below, so the consumer's className stays last overall.
-  // TagPickerGroupState widens TagGroupState, so the delegate's narrower return is re-merged onto
-  // this component's own shape (F1 of the D14 mutation removal — thread the
-  // composed result, do not discard it).
-  // The merge is applied IMMEDIATELY rather than at the return: TagGroup returns a NEW root, so
-  // merging after this hook's own composition would overwrite it and drop `styles.root`, the
-  // marker and the picker-scale size class.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   const composedTagGroup = useTagGroupStyles_unstable(state);
   state = { ...state, ...composedTagGroup };
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the accumulated `state.root.className` (TagGroup's
-  // classes, then the consumer's) last.
-  //
-  // The size class is keyed by the PICKER scale, which is why it stays a conditional module
-  // class instead of joining the root's `data-size`: that attribute already exists here and
-  // carries the TAG scale. See TagPickerGroup.module.css.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order, not by the order of these
-  // arguments — and note that this delegation runs the OPPOSITE way to Combobox-over-Listbox or
-  // CounterBadge-over-Badge: TagGroup's classes are the LAST mergeClasses argument, so TagGroup
-  // won every shared property key under Griffel. That is why this file's rules sit in
-  // `fui.components.l1` rather than the usual composition altitude, and why the two property
-  // sets are kept strictly disjoint (DECISIONS.md D12).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

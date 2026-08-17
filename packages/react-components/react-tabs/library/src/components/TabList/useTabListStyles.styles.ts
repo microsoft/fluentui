@@ -13,9 +13,8 @@ import styles from './TabList.module.css';
  * object; its type simply narrows from `SlotClassNames<TabListSlots>` to `{ root: string }`
  * alongside every other converted package (DECISIONS.md D16.5).
  *
- * The value is a class TOKEN, not a selector — `'.' + tabListClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(tabListClassNames.root)`
- * from `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tabListClassNames: { root: string } = {
   root: 'group/fui-tab-list',

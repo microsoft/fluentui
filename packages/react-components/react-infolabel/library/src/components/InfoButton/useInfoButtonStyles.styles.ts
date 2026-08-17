@@ -59,39 +59,16 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   root['data-size'] = size;
   root['data-open'] = open || undefined;
 
-  // The `info` slot is a `PopoverSurface` root, so these classes reach that component's hook as
-  // its CONSUMER className — the position mergeClasses gave them the win from. They sit in
-  // `@layer fui.components.l2`, above PopoverSurface's own l1 rules, which is what now
-  // guarantees the win; see InfoButton.module.css §ALTITUDE. The size branch stays a class pick
-  // rather than a `@variant size-large` block because `data-size` rides the BUTTON, and the
-  // surface is portalled out of the button's subtree. No named-group marker: the marker is the
-  // root slot's public identity, and nothing styles this element from outside.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.info.className = clsx(
     styles.info,
     size === 'large' ? styles['info-large'] : styles['info-small-medium'],
     state.info.className,
   );
 
-  // Module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
-  // the removed `fui-InfoButton` static was what held that position.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
-  // statics, InfoButton's SOLE public identity class: it is the only handle by which another
-  // module — in this package or any other — can style an element from this InfoButton's
-  // state, because `styles.root` is hashed and unaddressable from outside this file
-  // (DECISIONS.md D15).
-  //
-  // InfoButton needs no state mirrors: `data-size` and `data-open` are stamped on this very
-  // element above, so `@variant group-open/fui-info-button` etc. work as-is (D15.6, Tier 0).
-  // The marker rides the `root` slot only — the `info` slot is a portalled PopoverSurface and
-  // gets nothing.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in InfoButton.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, infoButtonClassNames.root, state.root.className);
 
   return state;

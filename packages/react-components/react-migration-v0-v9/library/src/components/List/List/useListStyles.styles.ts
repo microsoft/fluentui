@@ -37,14 +37,8 @@ export const useListStyles_unstable = (state: ListState): ListState => {
     ['vertical']: undefined, // no extra styles needed, keep it in for completeness and type safety
   };
 
-  // Unconditional module class FIRST, then the named group marker, then the conditional
-  // module class, with the consumer className last (DECISIONS.md D16.2). The marker must
-  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom (D15.1) —
-  // and `styles.root` is the token that guarantees it, since clsx never drops an
-  // unconditional argument. Cascade priority is decided by the `@layer fui.*` order in
-  // List.module.css, not by the order of these arguments.
-  //
-  // The state-mutation pattern is kept deliberately during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, listClassNames.root, layoutToStyles[state.layout], state.root.className);
 
   return state;

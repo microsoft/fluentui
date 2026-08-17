@@ -30,41 +30,8 @@ type StaticLevelProperty = `level${StaticLevel}`;
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
   const { level } = state;
 
-  // Module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
-  // the removed `fui-TreeItem` static was what held that position.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
-  // statics, TreeItem's SOLE public identity class: it is the only handle by which another
-  // module — in this package or any other — can style an element from this TreeItem's
-  // state, because `styles.root` is hashed and unaddressable from outside this file. This
-  // is the package's strongest nesting
-  // case: TreeItemLayout and TreeItemPersonaLayout are separate components rendered inside
-  // this root, and they can now read the item's expansion directly as
-  // `@variant group-expanded/fui-tree-item { … }`.
-  //
-  // No state mirror is needed. `aria-expanded` is already on this root and the catalog's
-  // `expanded` variant matches `[aria-expanded='true']`, so the state a child most wants is
-  // readable as-is (DECISIONS.md D15, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TreeItem.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why the focus indicator sits at
-  // altitude `fui.components.l2` (it is applied over TreeItemLayout /
-  // TreeItemPersonaLayout's own hook output).
-  //
-  // The ten `level*` classes stay module classes rather than a `data-level` attribute:
-  // each carries nothing but the indentation custom property, and keeping the class shape
-  // preserves the `level > 10` inline-style fallback contract asserted in TreeItem.test.tsx.
-  //
-  // The `react-hooks/immutability` suppressions the Griffel version carried are gone: the
-  // rule only fired because the assigned values derived from hook calls (`useBaseStyles()`,
-  // `useStyles()`), and there are none left here. The state-mutation pattern itself is
-  // deliberately kept — the mixed-mode sibling seam and the customStyleHooks contract
-  // depend on the shared object, and its removal is a single Phase 3 sweep
-  // (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     treeItemClassNames.root,

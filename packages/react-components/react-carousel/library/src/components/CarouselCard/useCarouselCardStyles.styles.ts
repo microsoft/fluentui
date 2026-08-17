@@ -42,18 +42,8 @@ export const useCarouselCardStyles_unstable = (state: CarouselCardState): Carous
   const { autoSize } = state;
   const appearance = useCarouselContext(context => context.appearance);
 
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires.
-  //
-  // The marker literal here is what embla resolves at runtime (see the constant above), so
-  // it must stay unconditional.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in CarouselCard.module.css, not
-  // by the order of these arguments — but the argument order IS reproduced there, because
-  // `autoSize` genuinely overrides `root`'s `flex` and the source declares the two slices in
-  // the opposite order (see that file's header).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

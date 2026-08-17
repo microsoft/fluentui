@@ -48,34 +48,8 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
 
   root['data-size'] = size;
 
-  // Unconditional module class FIRST, then the named group marker, then the conditional
-  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
-  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
-  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
-  // never drops an unconditional argument. The BEM static that used to hold that position
-  // is gone (DECISIONS.md D16.1).
-  //
-  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
-  // identity class: it is the only handle by which another module — in this package
-  // or any other — can style an element from this SkeletonItem's state, because `styles.root`
-  // is hashed and unaddressable from outside this file. No state mirrors are needed:
-  // `data-size` is already stamped on this very element above, and `animation` / `appearance`
-  // / `shape` are look props carried as module classes, which a group variant cannot read
-  // anyway (DECISIONS.md D15, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in SkeletonItem.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces, including the media-query bucket
-  // rule that keeps `prefers-reduced-motion` beating the pulse animation duration.
-  //
-  // `styles[animation]` covers the mutually exclusive `wave` / `pulse` slices in one
-  // lookup. `styles[appearance]` resolves to `undefined` for `opaque` — that slice does
-  // not exist in Griffel either, and clsx drops the falsy argument exactly as
-  // mergeClasses dropped the `false` one.
-  //
-  // The `react-hooks/immutability` disables the Griffel version carried are gone: the rule
-  // no longer reports here, and the state-mutation pattern itself stays until the Phase 3
-  // sweep (DECISIONS.md D14) — only the now-unused directives were dropped.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     skeletonItemClassNames.root,

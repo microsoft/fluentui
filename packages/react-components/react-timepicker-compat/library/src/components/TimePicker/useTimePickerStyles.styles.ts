@@ -45,34 +45,15 @@ export const timePickerClassNames: { root: string } = {
  * Apply styling to the TimePicker slots based on the state
  */
 export const useTimePickerStyles_unstable = (state: TimePickerState): TimePickerState => {
-  // Unconditional module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
-  // D16.2) — with the consumer className last. `styles.root` is the identity-only `.root` local
-  // minted in TimePicker.module.css for exactly this purpose: TimePicker declares nothing on
-  // its root, so without it the marker would lead. (`useComboboxStyles_unstable`
-  // then PREPENDS Combobox's own composition to the same element, so the rendered
-  // `classList[0]` is Combobox's hashed `.root` — but this hook does not rely on that, and
-  // must not: the guarantee has to hold from this hook's own arguments alone.)
-  //
-  // The name is the COMPONENT's, kebab-cased — `fui-time-picker`. It was NOT derived from the
-  // (now removed) `fui-TimePicker` root static, which was PascalCase; D15.1 fixes the marker
-  // alphabet independently of what the statics used to be.
-  //
-  // TimePicker needs no data attributes and no state mirrors: it has exactly one CSS rule and
-  // that rule is unconditional (DECISIONS.md D15.6 — attributes are a fallback, not a
-  // requirement).
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: { ...state.root, className: clsx(styles.root, timePickerClassNames.root, state.root.className) },
   };
 
-  // The `input`, `expandIcon` and `clearIcon` slots deliberately get NO assignment. Their only
-  // library token was the `fui-TimePicker__<slot>` static; TimePicker has no module class for
-  // any of them (`useComboboxStyles_unstable` is what styles them). Keeping
-  // `clsx(state.x.className)` would be an identity on the consumer's own string and would
-  // imply this hook styles slots it does not (statics-removal design §4d). The `if (state.x)`
-  // guards went with them.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   // The listbox slot is react-combobox's `<Listbox>`; this rule sits in `fui.components.l2`
   // (D2 amendment 2) — the same layer Combobox's own listbox rules sit in, because Combobox

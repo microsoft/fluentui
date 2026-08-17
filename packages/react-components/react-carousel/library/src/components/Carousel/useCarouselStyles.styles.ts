@@ -28,20 +28,8 @@ export const carouselClassNames: { root: string } = {
 export const useCarouselStyles_unstable = (state: CarouselState): CarouselState => {
   const { appearance } = state;
 
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires; the `fui-Carousel` static
-  // that used to hold that position was removed in the D16 sweep.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and is now this component's SOLE public
-  // identity class (D16.1) — the only handle by which a consumer, or another module, can
-  // select this element or read its state, because `styles.root` is hashed and unaddressable
-  // from outside this file.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Carousel.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     carouselClassNames.root,

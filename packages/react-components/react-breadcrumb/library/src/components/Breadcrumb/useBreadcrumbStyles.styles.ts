@@ -25,28 +25,8 @@ export const breadcrumbClassNames: { root: string } = {
  * Apply styling to the Breadcrumb slots based on the state
  */
 export const useBreadcrumbStyles_unstable = (state: BreadcrumbState): BreadcrumbState => {
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. The marker is a literal, unhashed, GLOBAL token, and since
-  // the BEM statics were removed (D16.1) it is this component's SOLE public identity class:
-  // the only handle by which a consumer, or another module in this package or any other, can
-  // select or style an element from this Breadcrumb's state, because a `*.module.css` class
-  // is hashed and unaddressable from outside its own file. Read it as
-  // `@variant group-…/fui-breadcrumb { … }` (DECISIONS.md D15). Only the outermost slot
-  // carries a marker; `list` does not.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Breadcrumb.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
-  //
-  // The root slot has no styles of its OWN — the Griffel hook merged only the static class —
-  // so `styles.root` is an IDENTITY-ONLY local, present purely to keep a hashed,
-  // selector-safe token at `classList[0]`; Breadcrumb.module.css explains why it carries an
-  // inert custom property rather than an empty body. It is unconditional by construction,
-  // which is what keeps the marker's position safe now that the static class it used to sit
-  // behind is gone (D16.2 — this is one of the six Class B roots). No data attribute is
-  // stamped here: `size` lives on BreadcrumbContext and is read by the child components' own
-  // styles hooks.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, breadcrumbClassNames.root, state.root.className);
 
   if (state.list) {

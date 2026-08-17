@@ -32,17 +32,8 @@ export const useDialogTitleInternalStyles = (): string => styles['action-button'
  * Apply styling to the DialogTitle slots based on the state
  */
 export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
-  // ARGUMENT ORDER — `styles.root`, marker, conditional module class, consumer className
-  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
-  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
-  // `escape(element.classList[0])`, and the `/` in `group/fui-dialog-title` survives that
-  // escaping into an invalid selector, throwing a render-time `AggregateError` under jsdom
-  // (DECISIONS.md D15.1). Before D16 the `fui-DialogTitle` static held that position;
-  // `styles.root` holds it now.
-  //
-  // `.root-without-action` wins its `grid-column-end` conflict with the root reset through
-  // the layer system (`fui.components.l1` over `fui.base`), not through this argument order
-  // — see the mapping table in DialogTitle.module.css.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     dialogTitleClassNames.root,

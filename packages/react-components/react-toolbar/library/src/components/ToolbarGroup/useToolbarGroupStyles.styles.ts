@@ -44,21 +44,8 @@ export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): Toolba
 
   root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
 
-  // Module class FIRST, then the named group marker, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so it is always the leading token and the marker
-  // is never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom
-  // (D15.1). Before the statics sweep the `fui-ToolbarGroup` class held that position
-  // incidentally; now it is held explicitly by the hashed CSS-Modules class. The marker is a
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this ToolbarGroup's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. `data-orientation` is
-  // already stamped on this very element above, so a descendant ToolbarButton can read
-  // `@variant group-orientation-vertical/fui-toolbar-group { … }` and distinguish it from
-  // the enclosing Toolbar's own orientation (DECISIONS.md D15, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ToolbarGroup.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, toolbarGroupClassNames.root, state.root.className);
 
   return state;

@@ -52,28 +52,8 @@ export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): Ca
     ...useButtonStyles_unstable(state),
   };
 
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires; the `fui-CarouselButton`
-  // static that used to hold that position was removed in the D16 sweep.
-  //
-  // This root ends up carrying TWO markers, which is correct and not a duplication:
-  // `useButtonStyles_unstable` above stamps `group/fui-button` on the same element, because
-  // the element genuinely IS both a Button and a CarouselButton. (This is why the component
-  // declares the whole marker set in `testOptions['has-group-marker']` — see
-  // CarouselButton.test.tsx.)
-  //
-  // The composition ORDER is preserved verbatim — Button's hook first, this hook's classes
-  // prepended after — because it is also what keeps `state.root.className` (which now ends
-  // with the CONSUMER's className, appended last by Button's own clsx) at the end of the
-  // rendered class attribute.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in CarouselButton.module.css,
-  // NOT by these arguments. Read that file's header before adding anything here: under
-  // Griffel this hook's classes were Button's EARLIER mergeClasses argument, so Button won
-  // every property collision, and two of the four Griffel declarations were provably deleted
-  // from the DOM and are deliberately not reproduced.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, carouselButtonClassNames.root, state.root.className);
 
   return state;

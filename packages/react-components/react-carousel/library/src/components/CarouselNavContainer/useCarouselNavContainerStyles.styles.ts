@@ -35,18 +35,8 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   const isWide = layout === 'inline-wide' || layout === 'overlay-wide';
   const isExpanded = layout === 'overlay-expanded';
 
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires.
-  //
-  // `layout` stays a JS-derived gate rather than a `data-layout` attribute: it feeds four
-  // different slots and nothing reads it back off the DOM, so an attribute would add public
-  // surface and widen invalidation for nothing (DECISIONS.md D15.6, resolved).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in
-  // CarouselNavContainer.module.css — see that file's header for why the three sub-slots sit
-  // at `fui.components.l2` (they are react-button roots) while this root is l1.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     carouselNavContainerClassNames.root,
@@ -57,9 +47,8 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   );
 
   if (state.next) {
-    // The Griffel `styles.next` slice was `{}` and emitted no class; it is not reproduced as
-    // an empty local (identity-only locals exist to keep a marker off `classList[0]`, and
-    // this slot carries no marker). Same for `prev` / `autoplay` below.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     state.next.className = clsx(
       isWide && styles['next-wide'],
       isWide && isOverlay && styles['next-overlay-wide'],

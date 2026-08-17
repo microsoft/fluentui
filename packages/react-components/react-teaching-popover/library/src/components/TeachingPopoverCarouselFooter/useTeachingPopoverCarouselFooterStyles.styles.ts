@@ -10,10 +10,8 @@ import styles from './TeachingPopoverCarouselFooter.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + teachingPopoverCarouselFooterClassNames.root` is invalid
- * CSS. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
- * `element.classList.contains(...)` is token-taking and needs no escaping.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const teachingPopoverCarouselFooterClassNames: { root: string } = {
   root: 'group/fui-teaching-popover-carousel-footer',
@@ -25,18 +23,8 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (
 ): TeachingPopoverCarouselFooterState => {
   const { layout } = state;
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
-  //
-  // `layout` selects a module class rather than a `data-*` attribute: it picks between two
-  // mutually exclusive looks on the very element this hook composes, and nothing reads it from
-  // a selector (D3 / D15.6, resolved).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in
-  // TeachingPopoverCarouselFooter.module.css — including the l2 half of `.right-aligned`,
-  // which reaches into a react-button root — not by the order of these arguments.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     teachingPopoverCarouselFooterClassNames.root,
@@ -44,13 +32,8 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (
     state.root.className,
   );
 
-  // The `previous` / `next` assignments are GONE (D16.1 + cookbook, "A slot whose only library
-  // token is the static"): the Griffel hook wrote nothing to either slot but
-  // `fui-TeachingPopoverCarouselFooter__previous` / `__next`, so with the statics removed what
-  // remained was `clsx(state.previous.className)` — an identity on the consumer's own string,
-  // i.e. dead code implying this hook styles slots it does not. Both slots keep rendering and
-  // are styled by `useTeachingPopoverCarouselFooterButtonStyles_unstable`; the
-  // `if (state.previous)` guard went with the assignment it protected.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   return state;
 };

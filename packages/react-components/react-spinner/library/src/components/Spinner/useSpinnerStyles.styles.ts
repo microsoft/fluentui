@@ -60,24 +60,8 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   root['data-orientation'] = labelPosition === 'above' || labelPosition === 'below' ? 'vertical' : 'horizontal';
   root['data-size'] = size;
 
-  // Unconditional module class FIRST, then the named group marker, with the consumer
-  // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
-  // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
-  // the token that guarantees it, since clsx never drops an unconditional argument. The BEM
-  // static that used to hold that position is gone (DECISIONS.md D16.1).
-  //
-  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
-  // identity class: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Spinner's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Spinner needs no state mirrors:
-  // `data-orientation` and `data-size` are already stamped on this very element above, so
-  // `@variant group-vertical/fui-spinner` and `group-size-small/fui-spinner` work as-is
-  // (DECISIONS.md D15, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Spinner.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why the label slot's rules
-  // live in `fui.components.l2`.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, spinnerClassNames.root, state.root.className);
 
   // Sub-slots: the statics are gone and the hashed module class leads each one. No marker

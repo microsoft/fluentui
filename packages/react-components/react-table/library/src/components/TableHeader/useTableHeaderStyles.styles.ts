@@ -10,10 +10,8 @@ import styles from './TableHeader.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use `fuiSelector(tableHeaderClassNames.root)`
- * from `@fluentui/react-utilities` (D16.5). `apps/vr-tests-react-components`'s
- * `Table/TableSubtleSelection.stories.tsx` builds a StoryWright hover selector from this
- * constant and has to adopt that helper.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableHeaderClassNames: { root: string } = {
   root: 'group/fui-table-header',
@@ -24,12 +22,6 @@ export const tableHeaderClassNames: { root: string } = {
  * than deleted or left holding the old `fui-TableHeader` string (D16.5): deleting a published
  * constant breaks consumers at build time, while a stub carrying the retired static would
  * leave them compiling and silently selecting nothing.
- *
- * Deliberately NOT tagged `@deprecated`, for the same reason the `*ClassNames` objects are
- * not (see react-card's CardHeader): the tag propagates to every barrel that re-exports the
- * symbol — three in this package plus the `@fluentui/react-components` umbrella, which this
- * conversion does not own — and `@typescript-eslint/no-deprecated` then errors on each of
- * those re-export specifiers. Prefer `tableHeaderClassNames.root`.
  */
 export const tableHeaderClassName = tableHeaderClassNames.root;
 
@@ -37,13 +29,8 @@ export const tableHeaderClassName = tableHeaderClassNames.root;
  * Apply styling to the TableHeader slots based on the state
  */
 export const useTableHeaderStyles_unstable = (state: TableHeaderState): TableHeaderState => {
-  // Module class first, named group marker second, consumer className last. The leading
-  // token is the layout class; the hook picks between the two branches with a TERNARY, so
-  // one of them is emitted on every render and the marker can never be `classList[0]`
-  // (DECISIONS.md D15.1 / D16.2; asserted by `component-has-group-marker`).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TableHeader.module.css.
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     state.noNativeElements ? styles['flex-root'] : styles['table-root'],
     tableHeaderClassNames.root,

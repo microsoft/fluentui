@@ -33,25 +33,8 @@ export const menuButtonClassNames: { root: string } = {
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
   const expanded = state.root['aria-expanded'];
 
-  // Named group marker first, consumer className last. Every module class here is
-  // conditional on `aria-expanded`, so this hook alone cannot put a selector-safe token
-  // ahead of the marker — and it does not have to: `useButtonStyles_unstable` is called
-  // LAST and prepends Button's own unconditional `styles.root`, so the token this string
-  // ultimately renders at `classList[0]` is Button's hashed root class, never a marker
-  // (DECISIONS.md D15.1 / D16.2; asserted by `component-has-group-marker`). §4b's empty
-  // `.root {}` is NOT usable here — a rule with no declarations is dropped before the
-  // class map is extracted, so `styles.root` would come back `undefined`; see the note at
-  // the top of MenuButton.module.css.
-  //
-  // The marker is MenuButton's OWN identity on an element that is also a Button:
-  // `useButtonStyles_unstable` adds `group/fui-button` to the same element, so this root
-  // carries two markers by design and a descendant can address whichever identity it means.
-  //
-  // The `aria-expanded` gates stay in JS rather than moving to the shared `expanded`
-  // variant: they are the Griffel source's own conditions, they select whole slices
-  // rather than states inside one, and keeping them here preserves the 1:1 mapping the
-  // module header documents. Cascade priority is decided by the `@layer fui.*` order in
-  // MenuButton.module.css.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

@@ -14,10 +14,8 @@ import styles from './TeachingPopoverFooter.module.css';
  * onto the slot objects this hook already holds (D16.3's M2), which is why removing their
  * public class handles costs nothing.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + teachingPopoverFooterClassNames.root` is invalid CSS. Use
- * `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
- * `element.classList.contains(...)` is token-taking and needs no escaping.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const teachingPopoverFooterClassNames: { root: string } = {
   root: 'group/fui-teaching-popover-footer',
@@ -30,14 +28,8 @@ export const useTeachingPopoverFooterStyles_unstable = (
   const { appearance, footerLayout } = state;
   const isHorizontal = footerLayout === 'horizontal';
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TeachingPopoverFooter.module.css
-  // — the root's own rules at l1, everything applied to the two `Button` slots at l2 — not by
-  // the order of these arguments.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     teachingPopoverFooterClassNames.root,
@@ -45,10 +37,8 @@ export const useTeachingPopoverFooterStyles_unstable = (
     state.root.className,
   );
 
-  // No marker on either button slot: D15.1 puts exactly one marker on the component's
-  // OUTERMOST slot, and each `<Button>` already stamps its own `group/fui-button`. These
-  // classes are the D16.3 M2 mechanism — this hook renders the buttons and holds their slot
-  // objects, so it decorates them directly instead of needing a public class handle.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.secondary) {
     state.secondary.className = clsx(
       isHorizontal ? styles['button-horizontal'] : styles['button-vertical'],

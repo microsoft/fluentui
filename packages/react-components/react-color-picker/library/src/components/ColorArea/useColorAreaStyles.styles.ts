@@ -29,19 +29,8 @@ export const colorAreaClassNames: { root: string } = {
 export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaState => {
   const { shape = 'rounded' } = state;
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never
-  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
-  // what keeps the marker safe now that the `fui-ColorArea` static is gone.
-  //
-  // The marker is this component's SOLE public identity class: it is the only handle by
-  // which another module can address a ColorArea root, because `styles.root` is hashed and
-  // unaddressable from outside this file.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ColorArea.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, colorAreaClassNames.root, styles[shape], state.root.className);
 
   // `.thumb` carries the focus indicator too: `createFocusOutlineStyle({ selector:

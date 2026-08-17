@@ -64,10 +64,8 @@ export const scatterChartClassNames: { root: string } = {
  */
 export const useScatterChartStyles = (props: ScatterChartProps): ScatterChartStyles => {
   return {
-    // The marker is written as a LITERAL, not `scatterChartClassNames.root`: greppable,
-    // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
-    // being self-referenced (which the `deprecation` lint rule reports as an error). Same
-    // form as react-divider and react-button's ToggleButton.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, scatterChartClassNames.root, props.styles?.root),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
     markerLabel: clsx(styles['marker-label'], props.styles?.markerLabel),

@@ -32,36 +32,8 @@ export const datePickerClassNames: { root: string } = {
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
   const { disabled, inlinePopup } = state;
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
-  // D16.2) — with the consumer className last. `styles.root` is unconditional and clsx never
-  // drops it, so this hook's own contribution always leads with a hashed, selector-safe token
-  // now that the `fui-DatePicker` static is gone. (This string is then handed to `<Input>` as
-  // a plain `className` prop, and `useInputStyles_unstable` PREPENDS Input's own composition
-  // to the same element, so the rendered `classList[0]` is Input's leading token — but this
-  // hook does not rely on that.) The marker is a literal, unhashed, GLOBAL token: it is the
-  // only handle by which another module — in this package or any other — can style an element
-  // from this DatePicker's state, because `styles.root` is hashed and unaddressable from
-  // outside this file (DECISIONS.md D15).
-  //
-  // DatePicker needs no data attributes and no state mirrors. Its two stateful style branches
-  // both live on an element the branching hook itself writes to: `disabled` selects a module
-  // class on this very root, and `inlinePopup` selects one on the `popupSurface` slot object
-  // this hook holds. Nothing on a descendant has to read root state through a `group-*`
-  // variant (DECISIONS.md D15.6 — data attributes are a fallback, not a requirement).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in DatePicker.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, and for why every rule that lands on an
-  // Input-owned element (the root `<span>` and the inner `<input>`) is authored in
-  // `fui.components.l2` while the DatePicker-owned `popupSurface` stays in `fui.base` +
-  // `fui.components.l1`.
-  //
-  // The `react-hooks/immutability` suppressions the Griffel version carried on these two
-  // assignments are gone: the rule no longer reports them, and an unused disable directive is
-  // itself a lint warning. The state-MUTATION pattern stays exactly as it was — the mixed-mode
-  // sibling seam and the customStyleHooks contract depend on the shared object, and its removal
-  // is a single committed Phase 3 sweep (DECISIONS.md D14), not a per-conversion change.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     datePickerClassNames.root,
@@ -82,11 +54,8 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     );
   }
 
-  // The `calendar` slot deliberately gets NO assignment. Its only library token was the
-  // `fui-DatePicker__calendar` static; DatePicker has no module class for it (the still-Griffel
-  // `@fluentui/react-calendar-compat` is what styles it). Keeping
-  // `clsx(state.calendar.className)` would be an identity on the consumer's own string and
-  // would imply this hook styles a slot it does not (statics-removal design §4d).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   return state;
 };

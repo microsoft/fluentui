@@ -64,10 +64,8 @@ export const areaChartClassNames: { root: string } = {
  */
 export const useAreaChartStyles = (props: AreaChartProps): AreaChartStyles => {
   return {
-    // The marker is written as a LITERAL, not `areaChartClassNames.root`: greppable,
-    // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
-    // being self-referenced (which the `deprecation` lint rule reports as an error). Same
-    // form as react-divider and react-button's ToggleButton.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, areaChartClassNames.root, props.styles?.root),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
   };

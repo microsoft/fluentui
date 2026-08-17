@@ -24,9 +24,8 @@ import styles from './Tab.module.css';
  * the `fui-Tab__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no public class-name
  * handle on component internals.
  *
- * The value is a class TOKEN, not a selector — `'.' + tabClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(tabClassNames.root)` from
- * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * NOTE: this is NOT the package's runtime-styling contract. The
  * `--fui-Tab__indicator--offset` / `--fui-Tab__indicator--scale` custom properties written by
@@ -102,19 +101,8 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   // exactly as the Griffel original's `if (appearance !== 'subtle-circular' && …)` guard did.
   const isCircular = appearance === 'subtle-circular' || appearance === 'filled-circular';
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Tab` BEM
-  // static that used to lead this list is gone (D16.1); the marker is Tab's sole public
-  // identity CLASS now.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Tab.module.css and by block
-  // order within it, not by the order of these arguments — see that file's header for the
-  // mapping back to the mergeClasses() argument order this replaces, including the two places
-  // where block order restores a specificity win that `:where()` flattening would have lost.
-  //
-  // The data attributes above and the class list below land on the root in ONE composition, so
-  // the returned root is a single new object rather than a chain of copies.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

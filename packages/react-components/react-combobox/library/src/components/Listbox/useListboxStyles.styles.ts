@@ -12,9 +12,8 @@ import styles from './Listbox.module.css';
  * `group-*` variant target. The `fui-Listbox` BEM static is no longer rendered
  * (DECISIONS.md D16.1/D16.5).
  *
- * The value is a class TOKEN, not a selector — `'.' + listboxClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(listboxClassNames.root)` from
- * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const listboxClassNames: { root: string } = {
   root: 'group/fui-listbox',
@@ -24,15 +23,8 @@ export const listboxClassNames: { root: string } = {
  * Apply styling to the Listbox slots based on the state
  */
 export const useListboxStyles_unstable = (state: ListboxState): ListboxState => {
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The consumer
-  // className is what carries Combobox's / Dropdown's `listbox` slot classes when this
-  // Listbox is rendered as their popup, so they keep winning: their rules sit in
-  // `fui.components.l2`, this file's in `fui.components.l1`.
-  //
-  // Listbox stamps no `data-*` mirror: it holds no state a descendant could read that a
-  // native selector does not already express (DECISIONS.md D15.6).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, listboxClassNames.root, state.root.className);
 
   return state;

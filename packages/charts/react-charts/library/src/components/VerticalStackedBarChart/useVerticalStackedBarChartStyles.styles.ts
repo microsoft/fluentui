@@ -60,17 +60,11 @@ export const useVerticalStackedBarChartStyles = (
   props: VerticalStackedBarChartProps,
 ): VerticalStackedBarChartStyles => {
   return {
-    // The marker is written as a LITERAL, not `verticalstackedbarchartClassNames.root`:
-    // greppable, sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated`
-    // constant from being self-referenced (which the `deprecation` lint rule reports as an
-    // error). Same form as react-divider and this package's VerticalBarChart.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, verticalstackedbarchartClassNames.root, props.styles?.root),
-    // `props.href ? 'pointer' : 'default'` is PRESERVED VERBATIM from the mergeClasses
-    // call it replaces. The two tokens are class NAMES no stylesheet defines (almost
-    // certainly an upstream bug — the author meant cursor values, and the `<rect>`s set
-    // the real `cursor` attribute separately), so they are visually inert; they are kept
-    // because the conversion is a pure re-expression of the rendered DOM, and dropping
-    // them belongs to an upstream fix, not this migration.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     opacityChangeOnHover: clsx(styles['opacity-change-on-hover'], props.href ? 'pointer' : 'default'),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
     barLabel: clsx(styles['bar-label'] /*props.styles?.barLabel*/),

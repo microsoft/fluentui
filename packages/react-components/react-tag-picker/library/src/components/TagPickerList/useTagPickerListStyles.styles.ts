@@ -16,9 +16,8 @@ import styles from './TagPickerList.module.css';
  * whose own hook stamps that marker on this same element. `group/fui-tag-picker-list` narrows
  * to this subtype.
  *
- * The value is a class TOKEN, not a selector — `'.' + tagPickerListClassNames.root` is invalid
- * CSS, because the `/` must be escaped in a selector. Use
- * `fuiSelector(tagPickerListClassNames.root)` from `@fluentui/react-utilities`.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tagPickerListClassNames: { root: string } = {
   root: 'group/fui-tag-picker-list',
@@ -28,19 +27,8 @@ export const tagPickerListClassNames: { root: string } = {
  * Apply styling to the TagPickerList slots based on the state
  */
 export const useTagPickerListStyles_unstable = (state: TagPickerListState): TagPickerListState => {
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `<Listbox>` this
-  // slot renders as prepends its OWN unconditional class ahead of all of this, so index 0 is
-  // doubly safe; leading with `styles.root` keeps that a property of this file rather than of
-  // another package's hook.
-  //
-  // Both module classes live in `@layer fui.components.l2` so they keep beating Listbox's l1
-  // rules — in particular `collapsed`'s `display: none` over Listbox's `display: flex` — without
-  // depending on stylesheet load order. See TagPickerList.module.css.
-  //
-  // No `data-*` mirror is minted: `open` drives one unconditional-vs-absent module class and no
-  // descendant selector needs to read it (DECISIONS.md D15.6).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   state.root.className = clsx(
     styles.root,

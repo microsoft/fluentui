@@ -80,36 +80,8 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     'data-focused': focused || undefined,
   };
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
-  // D16.2) — with the consumer className last. `styles.root` is unconditional and clsx never
-  // drops it, so this hook's own contribution always leads with a hashed, selector-safe token
-  // now that the `fui-SearchBox` static is gone. (`useInputStyles_unstable` then PREPENDS
-  // Input's own composition to the same element, so the rendered `classList[0]` is Input's
-  // leading token — but this hook does not rely on that.) The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this SearchBox's state, because `styles.root` is
-  // hashed and unaddressable from outside this file (DECISIONS.md D15).
-  //
-  // SearchBox needs no state mirrors: `data-focused` is stamped on this very element above,
-  // and `data-size` / `data-disabled` land on it too when `useInputStyles_unstable` runs at
-  // the end of this hook, so `@variant group-focused/fui-search-box`,
-  // `group-disabled/fui-search-box` and the size variants all work as-is (D15.6, Tier 0).
-  //
-  // The name is the COMPONENT's, kebab-cased — `fui-search-box`. It was NOT derived from the
-  // (now removed) `fui-SearchBox` root static, which was PascalCase; D15.1 fixes the marker
-  // alphabet independently of what the statics used to be.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in SearchBox.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, and for why every rule that lands on an
-  // Input-owned element (root / input / contentAfter) is authored in `fui.components.l2`
-  // while the SearchBox-owned `dismiss` stays in `fui.base` + `fui.components.l1`.
-  //
-  // The `!focused &&` guards that used to gate `unfocusedNoContentAfter`, `inputStyles[size]`
-  // and `contentAfterStyles.rest` are now `@variant not-focused` blocks keyed off the
-  // `data-focused` attribute above, and `styles[size]` lookups are `@variant size-*` blocks
-  // keyed off the `data-size` Input's hook stamps.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   state = {
     ...state,
@@ -131,11 +103,8 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     state = { ...state, dismiss };
   }
 
-  // The `contentBefore` slot deliberately gets NO assignment. Its only library token was the
-  // `fui-SearchBox__contentBefore` static; SearchBox has no module class for it (Input's hook
-  // is what styles it). Keeping `clsx(state.contentBefore.className)` would be an identity on
-  // the consumer's own string and would imply this hook styles a slot it does not
-  // (statics-removal design §4d).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   if (state.contentAfter) {
     state = {

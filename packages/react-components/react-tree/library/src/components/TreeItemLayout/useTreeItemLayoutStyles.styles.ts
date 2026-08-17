@@ -71,30 +71,8 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     'data-size': size,
   };
 
-  // Module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
-  // the removed `fui-TreeItemLayout` static was what held that position.
-  //
-  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
-  // statics, TreeItemLayout's SOLE public identity class: it is the only handle by which
-  // another module — in this package or any other — can style an element from this
-  // TreeItemLayout's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. TreeItem.module.css selects it exactly that way (`& >
-  // :global(.group\/fui-tree-item-layout)`), and so do the package's own keyboard-navigation
-  // hooks. `data-size` is already stamped on this very element above (DECISIONS.md D15,
-  // Tier 0 — no state mirrors needed).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TreeItemLayout.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces (appearance → size → itemType, which
-  // is NOT the order the slices are declared in).
-  //
-  // `styles.subtle` is intentionally absent from the module (the Griffel slice is `{}`);
-  // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
-  // This hook delegates to nothing, so every slot is composed in a single returned object rather
-  // than a chain of `state` rebindings — the optional slots stay absent when they were absent.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   const composed: Pick<TreeItemLayoutState, 'root' | 'main'> &
     Partial<Pick<TreeItemLayoutState, 'expandIcon' | 'iconBefore' | 'iconAfter' | 'actions' | 'aside'>> = {
     root: {
@@ -124,11 +102,8 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     composed.aside = { ...aside, className: clsx(styles.aside, aside.className) };
   }
 
-  // NOTE: `selector` gets NO assignment. Its only library token was the
-  // `fui-TreeItemLayout__selector` static, which DECISIONS.md D16.1 removed and D16 §4d
-  // rules must not be replaced by `clsx(selector.className)` — that is an identity on the
-  // consumer's own string, i.e. dead code implying this hook styles a slot it does not.
-  // The module declares no `.selector` local; if it ever gains one, restore the assignment.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   return { ...state, ...composed };
 };

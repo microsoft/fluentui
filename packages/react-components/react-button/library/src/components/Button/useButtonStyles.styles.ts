@@ -62,32 +62,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   root['data-disabled-focusable'] = disabledFocusable || undefined;
   root['data-empty'] = !state.root.children || undefined;
 
-  // Module class FIRST, then the named group marker, consumer className LAST (D16.2).
-  // `styles.root` is unconditional and hashed, so it is always a selector-safe `classList[0]`:
-  // the marker must never hold that slot (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1). The marker is a literal, unhashed, GLOBAL token and — since D16
-  // removed the BEM statics — Button's SOLE public identity class. It is the only handle by
-  // which another module, in this package or any other, can style an element from this
-  // Button's state, because `styles.root` is hashed and unaddressable from outside this file.
-  // Button needs no state mirrors: `data-disabled`, `data-icon-only`, `data-size` and the rest
-  // are already stamped on this very element above, so `@variant group-hover/fui-button`,
-  // `group-disabled/fui-button` etc. work as-is (DECISIONS.md D15, Tier 0).
-  //
-  // ToggleButton / CompoundButton / MenuButton each stamp their OWN marker on this same
-  // element before calling this hook, so those roots carry two markers by design — the
-  // component-specific one and `group/fui-button` — and a descendant can address whichever
-  // identity it means (react-toolbar's ToolbarToggleButton relies on exactly that).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Button.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including the two shape-vs-size
-  // `border-radius` inversions.
-  //
-  // `state.root.className` is also how ToggleButton/CompoundButton/MenuButton/SplitButton
-  // reach this slot: each of them composes its own `clsx(...)` FIRST and calls
-  // `useButtonStyles_unstable` LAST, so their `fui.components.l2` classes arrive here as
-  // the trailing argument and keep beating these layered rules — the same winner
-  // mergeClasses produced when their string was its last argument.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     buttonClassNames.root,

@@ -54,18 +54,8 @@ export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuIt
   const { components: menuItemComponents, ...composedMenuItem } = useMenuItemStyles_unstable(state as MenuItemState);
   state = { ...state, ...composedMenuItem } as MenuItemLinkState;
 
-  // Unconditional module class FIRST, then the named group marker, consumer className last
-  // (DECISIONS.md D16.2). `styles['reset-link']` is unconditional, so it is the selector-safe
-  // `classList[0]` the marker must never occupy — nwsapi's `:scope` polyfill throws on the
-  // `/` under jsdom (D15.1). Before D16.1 the `fui-MenuItemLink` static held that position.
-  //
-  // The element legitimately carries TWO markers — `group/fui-menu-item-link` and MenuItem's
-  // `group/fui-menu-item` — because it genuinely is both. Both are declared to
-  // react-conformance's `component-has-group-marker` through
-  // `testOptions['has-group-marker'].markers` in MenuItemLink.test.tsx (D16.3).
-  //
-  // `state.root.className` here is MenuItem's composition plus the consumer's string, exactly
-  // what the mutating version read, so the rendered order is unchanged.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

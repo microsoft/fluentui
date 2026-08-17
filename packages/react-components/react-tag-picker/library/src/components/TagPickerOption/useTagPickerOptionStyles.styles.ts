@@ -33,9 +33,8 @@ import styles from './TagPickerOption.module.css';
  * `useTagPicker.ts`'s `el.classList.contains(optionClassNames.root)` keeps matching unchanged
  * (a token-taking DOM API needs no escaping).
  *
- * The value is a class TOKEN, not a selector — `'.' + tagPickerOptionClassNames.root` is
- * invalid CSS, because the `/` must be escaped in a selector. Use
- * `fuiSelector(tagPickerOptionClassNames.root)` from `@fluentui/react-utilities`.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tagPickerOptionClassNames: { root: string } = {
   root: 'group/fui-tag-picker-option',
@@ -45,22 +44,8 @@ export const tagPickerOptionClassNames: { root: string } = {
  * Apply styling to the TagPickerOption slots based on the state
  */
 export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): TagPickerOptionState => {
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The delegation below
-  // prepends Option's own unconditional class ahead of all of this, so index 0 is doubly safe;
-  // leading with `styles.root` keeps that a property of this file rather than of another
-  // package's hook.
-  //
-  // `styles.root` is the `makeResetStyles` body, which lives in `@layer fui.base` and therefore
-  // loses to Option's l1 rules — reproducing Griffel's `r`-before-`d` bucket order.
-  // `.with-secondary-content` is in `fui.components.l2` because its `display: grid` HAS to beat
-  // Option's `display: flex`, the way the later mergeClasses argument did. See
-  // TagPickerOption.module.css.
-  //
-  // No `data-*` mirror is minted: every state these rules read is a plain boolean branch on this
-  // same element, and Option's own hook already relies on the native `aria-disabled` /
-  // `data-activedescendant-focusvisible` that sit here (DECISIONS.md D15.6).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

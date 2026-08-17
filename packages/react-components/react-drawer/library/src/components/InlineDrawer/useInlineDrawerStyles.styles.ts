@@ -9,14 +9,8 @@ import styles from './InlineDrawer.module.css';
  * InlineDrawer's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const inlineDrawerClassNames: { root: string } = {
   root: 'group/fui-inline-drawer',
@@ -33,18 +27,8 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   // `separator` and `animationDirection` reduce to two flat conditional classes.
   setDrawerBaseDataAttributes(state);
 
-  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
-  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
-  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
-  // `escape(element.classList[0])`, and the `/` in `group/fui-inline-drawer` survives that
-  // escaping into an invalid selector, throwing a render-time `AggregateError` under jsdom
-  // (DECISIONS.md D15.1). Before D16 the `fui-InlineDrawer` static held that position;
-  // `styles.root` holds it now. Neither `styles.separator` nor `styles['animation-exit']`
-  // could: both are conditional, and `clsx` drops a falsy argument entirely.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in InlineDrawer.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     inlineDrawerClassNames.root,

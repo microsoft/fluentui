@@ -13,9 +13,8 @@ import styles from './Input.module.css';
  * removed together with the `fui-Input__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no
  * public class-name handle on component internals.
  *
- * The value is a class TOKEN, not a selector — `'.' + inputClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(inputClassNames.root)` from
- * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const inputClassNames: { root: string } = {
   root: 'group/fui-input',
@@ -65,30 +64,8 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   root['data-content-before'] = !!state.contentBefore || undefined;
   root['data-content-after'] = !!state.contentAfter || undefined;
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Input*` BEM
-  // statics that used to lead this list are gone (D16.1); the marker is Input's sole public
-  // identity class now. It is a literal, unhashed, GLOBAL token: it is the only handle by
-  // which another module — in this package or any other — can style an element from this
-  // Input's state, because `styles.root` is hashed and unaddressable from outside this file.
-  // Input needs no state mirrors:
-  // `data-size`, `data-disabled`, `data-invalid` and the two content flags are already
-  // stamped on this very element above, so `@variant group-invalid/fui-input`,
-  // `group-focus-within/fui-input` etc. work as-is (DECISIONS.md D15, Tier 0 — the optional
-  // Tier 2 `data-focused` is deliberately skipped: `:focus-within` on this root already
-  // reaches every descendant through the group).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Input.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including the `filledInteractive`
-  // hover-vs-rest inversion.
-  //
-  // The `!disabled &&` guards that used to gate `outlineInteractive` / `underlineInteractive`
-  // / `filledInteractive` are now `@variant enabled` blocks inside the appearance classes,
-  // and `appearance === 'outline' | 'underline'` is the class itself. `styles.medium` and
-  // (for the root) `styles.outline`'s rest state are the compiled `{}` slices — nothing to
-  // apply, exactly as before.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     inputClassNames.root,

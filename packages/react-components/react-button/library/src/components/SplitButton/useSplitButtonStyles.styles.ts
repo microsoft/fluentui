@@ -25,18 +25,8 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const { appearance, disabled, disabledFocusable } = state;
   const disabledAny = disabled || disabledFocusable;
 
-  // Module class FIRST, then the named group marker, consumer className LAST (D16.2).
-  // `styles.root` is unconditional and hashed, so it is always a selector-safe
-  // `classList[0]`: the marker must never hold that slot (nwsapi's `:scope` polyfill throws
-  // on it under jsdom; DECISIONS.md D15.1).
-  //
-  // Unlike the rest of the family this root is SplitButton's own `<div>`, not a Button, so
-  // `group/fui-split-button` is the only marker on it; `group/fui-button` and
-  // `group/fui-menu-button` sit on the two children.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in SplitButton.module.css —
-  // the wrapper's own declarations are `fui.components.l1`, everything that lands on the
-  // two child buttons is `fui.components.l2`. See that file's header.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     splitButtonClassNames.root,

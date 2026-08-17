@@ -60,25 +60,8 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
 
   root['data-thickness'] = thickness;
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never
-  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
-  // what keeps the marker safe now that the `fui-ProgressBar` static is gone. The marker is
-  // a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this ProgressBar's state, because `styles.root`
-  // is hashed and unaddressable from outside this file. ProgressBar needs no state mirrors:
-  // `data-thickness` is already on this element, so
-  // `@variant group-thickness-large/fui-progress-bar` works as-is (DECISIONS.md D15, Tier
-  // 0). `data-indeterminate` deliberately stays on the `bar` slot — that is the element
-  // Griffel styled, and the bar is a descendant of this marker, so a child that needs it
-  // reads it there rather than through the group.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ProgressBar.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces, including the forced-colors
-  // inversion on the bar.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, progressBarClassNames.root, styles[shape], state.root.className);
 
   if (state.bar) {
@@ -86,9 +69,8 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
 
     bar['data-indeterminate'] = isIndeterminate || undefined;
 
-    // `barStyles.brand` (unconditional) and `barStyles[color]` (determinate only) were two
-    // mergeClasses arguments setting the same `background-color`; the later one won. That
-    // winner is resolved here so a single class is emitted — see the module's header.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     const barColor = !isIndeterminate && color ? color : 'brand';
 
     state.bar.className = clsx(

@@ -71,10 +71,8 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
     numerator: clsx(styles.numerator /*props.styles?.numerator*/),
     denominator: clsx(styles.denominator /*props.styles?.denominator*/),
     calloutInfoContainer: clsx(styles['callout-info-container']),
-    // Unconditional module identity class FIRST, then the named group marker (DECISIONS.md
-    // D16.2) — the marker must never be `classList[0]`; nwsapi's `:scope` polyfill throws
-    // on the `/` under jsdom. Written as a LITERAL, not `popoverClassNames.root`:
-    // greppable, and it keeps the `@deprecated` constant from being self-referenced.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     calloutContainer: clsx(styles['callout-container'], popoverClassNames.root),
   };
 };

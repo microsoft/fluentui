@@ -7,14 +7,8 @@ import styles from './Accordion.module.css';
  * Accordion's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const accordionClassNames: { root: string } = {
   root: 'group/fui-accordion',

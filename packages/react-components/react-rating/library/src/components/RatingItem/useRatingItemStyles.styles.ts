@@ -47,22 +47,8 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
 
   root['data-size'] = size;
 
-  // `styles.root` first, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // `clsx` never drops it, so index 0 is always the hashed, selector-safe module class; the
-  // BEM static that used to hold that position was removed in D16.1. The marker is a
-  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
-  // this package or any other — can style an element from this RatingItem's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. `data-size` is
-  // already stamped on this very element above, so
-  // `@variant group-size-large/fui-rating-item { … }` works as-is (DECISIONS.md D15,
-  // Tier 0 — no state mirrors needed).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in RatingItem.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why `useIndicatorStyles.filled`
-  // is split across two blocks there.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, ratingItemClassNames.root, state.root.className);
 
   if (state.halfValueInput) {

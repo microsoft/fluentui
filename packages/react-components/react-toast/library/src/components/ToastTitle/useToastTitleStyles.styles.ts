@@ -10,13 +10,8 @@ import styles from './ToastTitle.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + toastTitleClassNames.root` is invalid CSS. Use
- * `fuiSelector(toastTitleClassNames.root)` from `@fluentui/react-utilities` (D16.5) — this
- * component's own conformance `getTargetElement` does exactly that.
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const toastTitleClassNames: { root: string } = {
   root: 'group/fui-toast-title',
@@ -29,19 +24,8 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   const { intent } = state;
   const inverted = state.backgroundAppearance === 'inverted';
 
-  // Module class FIRST, named group marker SECOND, consumer className LAST (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would splice its `/` into an invalid selector and throw a render-time
-  // `AggregateError` under jsdom (D15.1). The `fui-ToastTitle` static that used to hold index
-  // 0 is gone (D16.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ToastTitle.module.css, not by
-  // the order of these arguments — see that file's header, in particular the note that the
-  // three `color` blocks on the media slot are ordered by FILE POSITION.
-  //
-  // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
-  // pure-builder rewrite to a single Phase 3 sweep.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     toastTitleClassNames.root,
@@ -50,12 +34,8 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   );
 
   if (state.media) {
-    // `media` renders BEFORE `root` in `renderToastTitle` and is its SIBLING, not its
-    // descendant, so neither the root's group marker nor a descendant selector can reach it —
-    // `intent` and `backgroundAppearance` are applied here as module classes instead of the
-    // `data-intent` shape react-message-bar uses (see the module header). The three
-    // conditional classes reproduce mergeClasses arguments #3/#4/#5 in order; the CSS relies
-    // on that order too, but through file position rather than this call.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     state.media.className = clsx(
       styles.media,
       inverted && styles['media-inverted'],

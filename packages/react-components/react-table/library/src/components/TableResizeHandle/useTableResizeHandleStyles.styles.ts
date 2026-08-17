@@ -10,8 +10,8 @@ import styles from './TableResizeHandle.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use
- * `fuiSelector(tableResizeHandleClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableResizeHandleClassNames: { root: string } = {
   root: 'group/fui-table-resize-handle',
@@ -21,12 +21,8 @@ export const tableResizeHandleClassNames: { root: string } = {
  * Apply styling to the TableResizeHandle slots based on the state
  */
 export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleState): TableResizeHandleState => {
-  // Module class first, named group marker second, consumer className last. `styles.root`
-  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
-  // asserted by `component-has-group-marker`).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TableResizeHandle.module.css.
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, tableResizeHandleClassNames.root, state.root.className);
 
   return state;

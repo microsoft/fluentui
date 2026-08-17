@@ -7,20 +7,14 @@ import styles from './Tooltip.module.css';
  * Tooltip's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
  * The key is `root` even though `TooltipSlots` declares no `root` slot. Tooltip renders into
  * a portal and its `content` element is its outermost node, so that is where the marker rides
  * (D15.1) and `root` names the element the identity class actually lands on. Migration is a
  * rename plus an escape: a template selector built from `tooltipClassNames.content` becomes
  * `fuiSelector(tooltipClassNames.root)`, resolving to the same element.
  *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tooltipClassNames: { root: string } = {
   root: 'group/fui-tooltip',
@@ -57,24 +51,8 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   // than rendering `data-hidden="false"`, which `[data-hidden]` would still match.
   content['data-hidden'] = state.hidden || undefined;
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.content` is unconditional, so index 0 is always the hashed,
-  // selector-safe `fuicm-*` token — which is what keeps the marker off `classList[0]`, where
-  // nwsapi's `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static
-  // that used to lead this call is gone (D16.1): the marker is now Tooltip's SOLE public
-  // identity class, and the only handle by which another module can style an element from
-  // this Tooltip's state, because `styles.content` is hashed and unaddressable from outside
-  // this file (DECISIONS.md D15).
-  //
-  // It goes on `content` rather than a root because Tooltip HAS no root slot: `TooltipSlots`
-  // declares `content` alone, the tooltip renders into a portal, and the content element is
-  // therefore its outermost node — it is also the element that carries `data-open`, which is
-  // the state a descendant would want to read. The marker uses the component's own name
-  // (`group/fui-tooltip`), not a slot name, and `tooltipClassNames.root` resolves to it.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Tooltip.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.content.className = clsx(
     styles.content,
     tooltipClassNames.root,

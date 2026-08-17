@@ -25,12 +25,8 @@ export const colorPickerClassNames: { root: string } = {
  * Apply styling to the ColorPicker slots based on the state
  */
 export const useColorPickerStyles_unstable = (state: ColorPickerState): ColorPickerState => {
-  // Unconditional module class FIRST, then the named group marker — the marker must never
-  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ColorPicker.module.css, not
-  // by the order of these arguments.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, colorPickerClassNames.root, state.root.className);
 
   return state;

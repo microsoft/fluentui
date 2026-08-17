@@ -57,28 +57,8 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   rootWithData['data-disabled'] = disabled || undefined;
   rootWithData['data-inline'] = inline || undefined;
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never
-  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
-  // what keeps the marker safe now that the `fui-Link` static is gone. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Link's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Link needs no state mirrors:
-  // `data-disabled` and `data-inline` are already stamped on this very element above, and
-  // `:hover` / `:active` / `:focus-visible` are pseudo-class states that are true of the
-  // root whenever they are true of its subtree — so `@variant group-hover/fui-link`,
-  // `group-disabled/fui-link` etc. work with no JS change (DECISIONS.md D15, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order — and, within
-  // `fui.components.l1`, by block order — in Link.module.css, not by the order of these
-  // arguments. See that file's header for the mapping back to the mergeClasses()
-  // argument order this replaces, including the documented disabled-vs-inverted/brand
-  // `color` inversion.
-  //
-  // `appearance` keeps its literal `=== 'subtle'` test rather than a `styles[appearance]`
-  // lookup: the Griffel source has no `default` slice at all (the base styles ARE the
-  // default appearance), so there is no class to look up for it.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     linkClassNames.root,

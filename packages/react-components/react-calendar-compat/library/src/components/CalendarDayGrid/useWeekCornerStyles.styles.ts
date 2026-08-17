@@ -57,7 +57,6 @@ export function useWeekCornerStyles(
    * corners to be rounded depending on which date range type and where the cell is located in the current grid.
    * If we just round all of the corners, there isn't a good overlap and we get gaps between contiguous day boxes
    * in Edge browser.
-   *
    */
   const getWeekCornerStyles = (initialWeeks: DayInfo[][]): WeekCorners => {
     const weekCornersStyled: { [key: string]: string } = {};

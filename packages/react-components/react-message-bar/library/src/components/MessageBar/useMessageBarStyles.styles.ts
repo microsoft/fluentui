@@ -7,14 +7,8 @@ import styles from './MessageBar.module.css';
  * MessageBar's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const messageBarClassNames: { root: string } = {
   root: 'group/fui-message-bar',
@@ -55,29 +49,8 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   root['data-layout'] = layout;
   root['data-intent'] = intent;
 
-  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
-  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
-  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
-  // `escape(element.classList[0])`, and the `/` in `group/fui-message-bar` survives that
-  // escaping into an invalid selector, throwing a render-time `AggregateError` under jsdom
-  // (DECISIONS.md D15.1). Before D16 the `fui-MessageBar` static held that position;
-  // `styles.root` holds it now. `styles.square` cannot: it is conditional on `shape`.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
-  // out of `messageBarClassNames` — and is the only handle by which another module, in this
-  // package or any other, can style an element from this MessageBar's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. MessageBarBody /
-  // MessageBarTitle / MessageBarActions are separate components nested inside this root, so
-  // `@variant group-…/fui-message-bar { … }` in one of THEIR modules is exactly the
-  // cross-component read this exists for: `data-intent` and `data-layout` are already
-  // stamped here and are otherwise invisible to them (DECISIONS.md D15).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in MessageBar.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
-  //
-  // The `info` intent has no class here because both of its Griffel slices are `{}`
-  // ("already in base reset styles"); the module emits no rule for it.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     messageBarClassNames.root,
@@ -85,9 +58,8 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
     state.root.className,
   );
 
-  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
-  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
-  // on component internals).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.icon) {
     state.icon.className = clsx(styles.icon, state.icon.className);
   }

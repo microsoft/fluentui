@@ -80,37 +80,8 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     'data-current': current || undefined,
   };
 
-  // Module class FIRST, then the named group marker — which must never be `classList[0]`
-  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
-  // the consumer className last. `styles.root` is unconditional, so it is always the
-  // selector-safe token at index 0 that the invariant requires; the `fui-BreadcrumbButton`
-  // static that used to hold that position was removed in the D16 sweep.
-  //
-  // The marker is a literal, unhashed, GLOBAL token, and is now this component's SOLE public
-  // identity class (D16.1): the only handle by which a consumer, or another module in this
-  // package or any other, can select or style an element from this button's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. Read it as
-  // `@variant group-current/fui-breadcrumb-button { … }` (DECISIONS.md D15). It is also what
-  // the UNLAYERED icon-swap rule at the bottom of BreadcrumbButton.module.css now compounds
-  // for its specificity bump, in place of the deleted static (D16.4) — so this literal is
-  // load-bearing for rendered pixels, not just for identity.
-  //
-  // This root ends up carrying TWO markers, which is correct and not a duplication:
-  // `useButtonStyles_unstable` below stamps its own `group/fui-button` on the same element,
-  // because the element genuinely IS both a Button and a BreadcrumbButton. A module reading
-  // either name resolves to this element; `data-current` is only visible under the
-  // breadcrumb name, since react-button never stamps it. (This is why the component opts out
-  // of `component-has-group-marker` — see BreadcrumbButton.test.tsx.)
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbButton.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why EVERY block sits at altitude
-  // `fui.components.l2` (both slots are react-button's elements) and why the icon swap has
-  // to be unlayered.
-  //
-  // `state.root.className` is what `useButtonStyles_unstable` receives as its own LAST
-  // argument below, so this string still arrives after react-button's classes — exactly as
-  // it did under mergeClasses.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {
@@ -120,15 +91,8 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     },
   };
 
-  // `styles.icon` is this module's own hashed local on react-button's `icon` element. It is
-  // the D16.3 "M2" handle: every rule in BreadcrumbButton.module.css that used to reach
-  // that element through react-button's `:global(.fui-Button__icon)` static now selects
-  // this local instead, so the cross-package coupling is composed in JS here rather than
-  // published as a global class name. Same element, same descendant-selector shape, same
-  // specificity — a class-for-class substitution.
-  //
-  // The slot carries no marker, so D15.1 does not apply to it; the hashed class is
-  // `classList[0]` and react-button appends its own classes after this string.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.icon) {
     state = { ...state, icon: { ...state.icon, className: clsx(styles.icon, state.icon.className) } };
   }

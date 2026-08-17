@@ -21,9 +21,6 @@ import styles from './AvatarGroupPopover.module.css';
  * AvatarGroupPopover's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
  * CAVEAT — `root` names the marker, but the marker is NOT on the `root` slot, because that
  * slot renders no DOM. This component's `root` is a `<Popover>`, which emits no element of
  * its own (nor does the `<PopoverTrigger>` / `<Tooltip>` pair nested inside it), so the old
@@ -34,11 +31,8 @@ import styles from './AvatarGroupPopover.module.css';
  * `root` at all) and `react-popover` (marker on `PopoverSurface`) reached. Unlike before the
  * conversion, `root` now selects a real element.
  *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const avatarGroupPopoverClassNames: { root: string } = {
   root: 'group/fui-avatar-group-popover',
@@ -76,33 +70,8 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
     'data-size': size,
   };
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles['trigger-button']` is unconditional, so index 0 is always the hashed,
-  // selector-safe `fuicm-*` token — which is what keeps the marker off `classList[0]`, where
-  // nwsapi's `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM statics
-  // that used to lead this call are gone (D16.1): the marker is now AvatarGroupPopover's SOLE
-  // public identity class, and the only handle by which another module can style an element
-  // from this component's state, because every `styles.*` here is hashed and unaddressable
-  // from outside this file (DECISIONS.md D15).
-  //
-  // The marker is on THIS slot, not on `root`, because `root` is a `<Popover>` that renders
-  // no DOM element — see the note on `avatarGroupPopoverClassNames` above. `triggerButton` is
-  // the outermost node this component actually renders, which is also what `getTargetElement`
-  // resolves to, so `component-has-group-marker` checks exactly this class list.
-  //
-  // `groupChildClassName` and `sizeStyles[size]` are classes owned by AvatarGroupItem's and
-  // Avatar's modules and led this list under mergeClasses. They no longer need to: argument
-  // order carries no cascade meaning here, and they collide with nothing in this module
-  // (they set only `box-shadow` / `margin-inline-start` and `width`/`height` respectively),
-  // so both stay at `fui.components.l1` alongside it with no cross-module tie to break.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in AvatarGroupPopover.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, and for the block ordering that reproduces
-  // Griffel's specificity/bucket winners among base, forced-colors, focus-visible and
-  // hover/active. Every condition below is byte-for-byte the one the Griffel builder used;
-  // the two size ladders (border width, indicator type ramp) moved out of JS onto `data-size`.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     triggerButton: {

@@ -16,10 +16,8 @@ import styles from './CartesianChart.module.css';
 /**
  * Public identity classes for CartesianChart.
  *
- * DEPRECATED FOR STYLING INTERNALS — deliberately NOT tagged `@deprecated`, matching
- * react-popover and this package's DonutChart: the tag propagates to every re-export
- * specifier and `@typescript-eslint/no-deprecated` then errors on each. The narrowed type is
- * what enforces D16.5; the tag would only buy lint noise.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * The only supported way to style a Fluent component's internals is the per-slot `styles`
  * prop. `root` is retained as the component's public identity class — the Tailwind named-group
@@ -91,12 +89,8 @@ export const cartesianYAxisClassName: string = styles['y-axis'];
  */
 export const useCartesianChartStyles = (props: CartesianChartProps): CartesianChartStyles => {
   return {
-    // Unconditional module class FIRST, then the named group marker, then the consumer's own
-    // string last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
-    // `:scope` polyfill throws on the `/` under jsdom — and `styles.root` is the token that
-    // guarantees it, since clsx never drops an unconditional argument. Written as a LITERAL
-    // rather than `cartesianchartClassNames.root`: greppable and sortable by
-    // prettier-plugin-tailwindcss.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, cartesianchartClassNames.root, props.styles?.root),
     chartWrapper: clsx(
       styles['chart-wrapper'],
@@ -117,12 +111,8 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     annotationLayer: clsx(styles['annotation-layer'] /*props.styles?.annotationLayer*/),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
     axisAnnotation: clsx(styles['axis-annotation'] /*props.styles?.axisAnnotation*/),
-    // `chart` carries NO class of its own. Its only library token was the `fui-cart__chart`
-    // static and CartesianChart.module.css declares no `.chart` local — the `<svg>` is styled
-    // entirely by its `width`/`height`/`style` attributes. With the static removed the
-    // assignment would be `clsx(props.styles?.chart)`, an identity on the consumer's own
-    // string, so it is passed straight through rather than left as dead code implying this
-    // hook styles a slot it does not (statics-removal design §4d / DECISIONS.md D16.1).
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     chart: props.styles?.chart,
   };
 };

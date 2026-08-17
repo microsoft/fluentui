@@ -32,9 +32,8 @@ import styles from './TagPickerOptionGroup.module.css';
  * below stamps it on this same element. `group/fui-tag-picker-option-group` narrows to this
  * subtype.
  *
- * The value is a class TOKEN, not a selector — `'.' + tagPickerOptionGroupClassNames.root` is
- * invalid CSS, because the `/` must be escaped in a selector. Use
- * `fuiSelector(tagPickerOptionGroupClassNames.root)` from `@fluentui/react-utilities`.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tagPickerOptionGroupClassNames: { root: string } = {
   root: 'group/fui-tag-picker-option-group',
@@ -44,28 +43,19 @@ export const tagPickerOptionGroupClassNames: { root: string } = {
  * Apply styling to the TagPickerOptionGroup slots based on the state
  */
 export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState): TagPickerOptionGroupState => {
-  // Delegation FIRST, exactly as before: `useOptionGroupStyles_unstable` styles the root and the
-  // `label` slot and stamps its own `group/fui-option-group` marker, leaving the consumer
-  // className trailing. Everything this hook adds is prepended to that string below, so the
-  // consumer's className stays last overall.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = useOptionGroupStyles_unstable(state);
 
-  // `styles.root` is the identity-only local minted in TagPickerOptionGroup.module.css: this
-  // component has no styles of its own, and leading with it keeps the D15.1 / D16.2 invariant
-  // — the marker is never `classList[0]`, where nwsapi's jsdom `:scope` polyfill would splice
-  // the `/` into an invalid selector — a property of THIS file rather than of react-combobox's
-  // hook. Consumer className stays last.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: { ...state.root, className: clsx(styles.root, tagPickerOptionGroupClassNames.root, state.root.className) },
   };
 
-  // The `label` slot deliberately gets NO assignment here. Its only library token was the
-  // `fui-TagPickerOptionGroup__label` static; this component has no module class for it
-  // (react-combobox's OptionGroup hook is what styles the label). Keeping
-  // `clsx(state.label.className)` would be an identity on the consumer's own string and would
-  // imply this hook styles a slot it does not (CONVERSION_GUIDE, "a slot whose only library
-  // token is the static").
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   return state;
 };

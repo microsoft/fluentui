@@ -16,9 +16,6 @@ import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useT
  * DataGridSelectionCell's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
  * A DataGridSelectionCell IS a TableSelectionCell, so this element ALSO carries
  * `group/fui-table-selection-cell` from `useTableSelectionCellStyles_unstable` — two markers
  * by design (D16.3), declared to react-conformance through
@@ -26,8 +23,8 @@ import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useT
  * decorative here: it is what TableRow / DataGridRow select to reveal a subtle selection
  * cell on row interaction.
  *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dataGridSelectionCellClassNames: { root: string } = {
   root: 'group/fui-data-grid-selection-cell',
@@ -39,23 +36,15 @@ export const dataGridSelectionCellClassNames: { root: string } = {
 export const useDataGridSelectionCellStyles_unstable = (
   state: DataGridSelectionCellState,
 ): DataGridSelectionCellState => {
-  // `useTableSelectionCellStyles_unstable` is called LAST (it ran first under Griffel) so
-  // that its unconditional `styles.root` is PREPENDED and
-  // `group/fui-data-grid-selection-cell` can never be `classList[0]`, where nwsapi's jsdom
-  // `:scope` polyfill throws on the `/` (D15.1 / D16.2). It also keeps the consumer
-  // className last. The swap is cascade-inert: this component contributes no declarations,
-  // and `@layer fui.*` decides every tie (D2).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: { ...state.root, className: clsx(dataGridSelectionCellClassNames.root, state.root.className) },
   };
 
-  // NOTE: the `checkboxIndicator` and `radioIndicator` assignments are gone. Each one's ONLY
-  // library token was a `fui-DataGridSelectionCell__<slot>` static (D16.1 removed both) —
-  // this hook attached no declarations to either — so what remained,
-  // `clsx(state.<slot>.className)`, was an identity on the consumer's own string
-  // (CONVERSION_GUIDE "a slot whose only library token is the static").
-  // `useTableSelectionCellStyles_unstable` below still styles `radioIndicator`.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   state = useTableSelectionCellStyles_unstable(state);
 

@@ -30,20 +30,8 @@ export const useHorizontalBarChartStyles = (props: HorizontalBarChartProps): Hor
   const { className, showTriangle, variant, hideLabels } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const isAbsoluteScale = variant === HorizontalBarChartVariant.AbsoluteScale;
 
-  // Unconditional module class FIRST, then the named group marker, then the consumer's own
-  // strings last (DECISIONS.md D15.1 / D16.2). The marker must never be `classList[0]` —
-  // nwsapi's `:scope` polyfill throws on the `/` under jsdom — and `styles.root` is the token
-  // that guarantees it, since clsx never drops an unconditional argument. The BEM static that
-  // used to hold that position is gone (DECISIONS.md D16.1).
-  //
-  // Only the root carries the marker; every other slot is a descendant of it, so
-  // `@variant group-*/fui-horizontal-bar-chart` reaches them for free (DECISIONS.md D15).
-  //
-  // The three `isAbsoluteScale` / `showTriangle` / `hideLabels` branches below pick between a
-  // PAIR of mutually exclusive module classes, exactly as the Griffel version did — no data
-  // attribute is introduced, because nothing needs to read the choice from CSS
-  // (DECISIONS.md D15.6). Cascade priority is decided by the `@layer fui.*` order in
-  // HorizontalBarChart.module.css, not by the order of these arguments.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   return {
     root: clsx(styles.root, hbcClassNames.root, className, props.styles?.root),
     items: clsx(

@@ -80,29 +80,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // `styles.root` first, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // `clsx` never drops it, so index 0 is always the hashed, selector-safe module class; the
-  // BEM static that used to hold that position was removed in D16.1. The marker is a
-  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
-  // this package or any other — can style an element from this SpinButton's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. No state mirrors are needed:
-  // `data-size`, `data-disabled` and `data-invalid` are already stamped on this very
-  // element above, so `@variant group-disabled/fui-spin-button { … }` works as-is
-  // (DECISIONS.md D15, Tier 0). `:focus-within` likewise needs no mirror — it is true of
-  // this root whenever it is true of the inner `<input>`, so
-  // `group-focus-within/fui-spin-button` costs zero JS.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in SpinButton.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including the two `invalid` inversions.
-  //
-  // The `!disabled &&` guards that used to gate `outlineInteractive` /
-  // `underlineInteractive` / `filledInteractive` are now `@variant enabled` blocks inside
-  // the appearance classes, and `appearance === 'outline' | 'underline'` is the class
-  // itself. `styles.medium` and (for the root) `styles.outline`'s rest state are the
-  // compiled `{}` slices — nothing to apply, exactly as before.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     spinButtonClassNames.root,
@@ -111,9 +90,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     state.root.className,
   );
 
-  // Both buttons share the `.button` reset the way mergeClasses handed them the identical
-  // reset class; `buttonStyles[appearance]` and the `size === 'small'` padding now reach
-  // them from the root (appearance look class + `data-size`).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   const incrementButton = state.incrementButton as SpinButtonState['incrementButton'] & SpinButtonButtonDataAttributes;
   const decrementButton = state.decrementButton as SpinButtonState['decrementButton'] & SpinButtonButtonDataAttributes;
 

@@ -40,40 +40,8 @@ export const counterBadgeClassNames: { root: string } = {
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
-  // Identity-only module class FIRST, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
-  // D16.2) — with the consumer className last. The marker is a literal, unhashed, GLOBAL
-  // token — the only handle by which another module can style an element from this
-  // CounterBadge's state, because the module classes are hashed and unaddressable from
-  // outside this file (DECISIONS.md D15).
-  //
-  // `styles.root` carries no declarations; it exists so this root always emits a hashed,
-  // selector-safe token ahead of the markers. It is needed because BOTH of this hook's own
-  // slices are conditional — the default render (children, not a dot) emits neither — so
-  // nothing else here is guaranteed to be present. Badge's delegation below does prepend its
-  // own unconditional classes, but relying on that would make this root's D15.1 safety a
-  // property of another component's hook. See CounterBadge.module.css for why the local
-  // carries an inert custom property rather than an empty body (statics-removal design §4b).
-  //
-  // This root ends up carrying TWO markers, `group/fui-badge` and `group/fui-counter-badge`
-  // — exactly as it used to carry both `fui-Badge` and `fui-CounterBadge`: the delegation
-  // below prepends Badge's whole composition to this same element. That is the intended
-  // shape — a rule written against `group/fui-badge` should match a CounterBadge, since a
-  // CounterBadge IS one, and `group/fui-counter-badge` narrows to this subtype. It is also
-  // why this component opts OUT of `component-has-group-marker`, whose first assertion
-  // is given both via `testOptions['has-group-marker'].markers`; CounterBadge.test.tsx also asserts the D15.1
-  // `classList[0]` half locally instead.
-  //
-  // This composition is otherwise deliberately unchanged: these classes are set BEFORE
-  // delegating to `useBadgeStyles_unstable`, which prepends its own and carries this whole
-  // string through as its trailing argument — so the consumer's className stays last
-  // overall. The two slices below live in `@layer fui.components.l2` precisely so they keep
-  // beating Badge's l1 rules without depending on that ordering; see CounterBadge.module.css.
-  //
-  // No data attributes are needed here: `dot`/`hide` are plain boolean branches with no
-  // descendant selectors, and Badge's own hook stamps `data-size` / `data-icon-position` /
-  // `data-empty` on this same root when it runs.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {
@@ -88,11 +56,8 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
     },
   };
 
-  // The `icon` slot deliberately gets NO assignment here. Its only library token was the
-  // `fui-CounterBadge__icon` static; CounterBadge has no module class for it (Badge's hook
-  // is what styles the icon). Keeping `clsx(state.icon.className)` would be an identity on
-  // the consumer's own string and would imply this hook styles a slot it does not
-  // (statics-removal design §4d).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
 
   return useBadgeStyles_unstable(state) as CounterBadgeState;
 };

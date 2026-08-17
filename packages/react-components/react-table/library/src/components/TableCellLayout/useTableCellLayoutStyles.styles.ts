@@ -10,8 +10,8 @@ import styles from './TableCellLayout.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use
- * `fuiSelector(tableCellLayoutClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableCellLayoutClassNames: { root: string } = {
   root: 'group/fui-table-cell-layout',
@@ -36,17 +36,8 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   const { truncate } = state;
   const primary = state.appearance === 'primary';
 
-  // Module class first, named group marker second, consumer className last. `styles.root`
-  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
-  // asserted by `component-has-group-marker`). Sub-slots pass no marker — a group cannot
-  // style itself, so a marker on `media` / `main` / `description` / `content` would serve
-  // nothing but those slots' own descendants.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TableCellLayout.module.css
-  // and by block order within it, not by the order of these arguments — see that file's
-  // header for the mapping back to the mergeClasses() argument order.
-  //
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     tableCellLayoutClassNames.root,
@@ -64,9 +55,8 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   }
 
   if (state.main) {
-    // Both arguments are conditional, exactly as the Griffel source had them. That is safe
-    // on a marker-free slot: D15.1's `classList[0]` invariant only binds slots that emit a
-    // `group/…` token, so no identity-only local is minted here.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     state.main.className = clsx(
       truncate && styles['main-truncate'],
       primary && styles['main-primary'],

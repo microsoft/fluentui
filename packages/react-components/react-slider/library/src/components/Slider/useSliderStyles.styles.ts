@@ -13,9 +13,8 @@ import styles from './Slider.module.css';
  * with the `fui-Slider__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no public
  * class-name handle on component internals.
  *
- * The value is a class TOKEN, not a selector — `'.' + sliderClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(sliderClassNames.root)` from
- * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * NOTE: this is NOT the package's runtime-styling contract. The `--fui-Slider*` custom
  * properties exported from `Slider.constants.ts` (`sliderCSSVars`) are unchanged and remain the

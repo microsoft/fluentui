@@ -10,8 +10,8 @@ import styles from './TableCell.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: use `fuiSelector(tableCellClassNames.root)`
- * from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const tableCellClassNames: { root: string } = {
   root: 'group/fui-table-cell',
@@ -22,12 +22,6 @@ export const tableCellClassNames: { root: string } = {
  * than deleted or left holding the old `fui-TableCell` string (D16.5): deleting a published
  * constant breaks consumers at build time, while a stub carrying the retired static would
  * leave them compiling and silently selecting nothing.
- *
- * Deliberately NOT tagged `@deprecated`, for the same reason the `*ClassNames` objects are
- * not (see react-card's CardHeader): the tag propagates to every barrel that re-exports the
- * symbol — three in this package plus the `@fluentui/react-components` umbrella, which this
- * conversion does not own — and `@typescript-eslint/no-deprecated` then errors on each of
- * those re-export specifiers. Prefer `tableCellClassNames.root`.
  */
 export const tableCellClassName = tableCellClassNames.root;
 
@@ -42,15 +36,8 @@ export const useTableCellStyles_unstable = (state: TableCellState): TableCellSta
   // this hook needs to read them from CSS (DECISIONS.md D15.6).
   const layout = state.noNativeElements ? 'flex' : 'table';
 
-  // Module class first, named group marker second, consumer className last. `styles.root`
-  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
-  // asserted by `component-has-group-marker`).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in TableCell.module.css and by
-  // block order within it — see that file's header for the mapping back to the
-  // mergeClasses() argument order, including why the focus-indicator block is written last.
-  //
-  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     tableCellClassNames.root,

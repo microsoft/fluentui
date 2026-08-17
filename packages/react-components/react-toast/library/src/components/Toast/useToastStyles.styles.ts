@@ -10,13 +10,8 @@ import styles from './Toast.module.css';
  * Deprecated for styling internals: the supported way to style a Fluent component is the
  * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + toastClassNames.root` is invalid CSS. Use
- * `fuiSelector(toastClassNames.root)` from `@fluentui/react-utilities` (D16.5) — this
- * package's own cypress spec does exactly that.
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const toastClassNames: { root: string } = {
   root: 'group/fui-toast',
@@ -26,25 +21,8 @@ export const toastClassNames: { root: string } = {
  * Apply styling to the Toast slots based on the state
  */
 export const useToastStyles_unstable = (state: ToastState): ToastState => {
-  // Module class FIRST, named group marker SECOND, consumer className LAST (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would splice its `/` into an invalid selector and throw a render-time
-  // `AggregateError` under jsdom (D15.1). The `fui-Toast` static that used to hold index 0 is
-  // gone (D16.1); `styles.root` holds it now, and `styles.inverted` could not — it is
-  // conditional on `backgroundAppearance`.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
-  // out of `toastClassNames` — and is the only handle by which another module, in this package
-  // or any other, can style an element from this Toast's state, because `styles.root` is
-  // hashed and unaddressable from outside this file.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Toast.module.css, not by the
-  // order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
-  //
-  // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
-  // pure-builder rewrite to a single Phase 3 sweep.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     toastClassNames.root,

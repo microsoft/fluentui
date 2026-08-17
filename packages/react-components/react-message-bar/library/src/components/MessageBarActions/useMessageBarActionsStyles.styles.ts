@@ -44,28 +44,12 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
   root['data-layout'] = layout;
   root['data-has-actions'] = hasActions || undefined;
 
-  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
-  // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
-  // `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the `/` in
-  // `group/fui-message-bar-actions` survives that escaping into an invalid selector, throwing
-  // a render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
-  // `fui-MessageBarActions` static held that position; `styles.root` holds it now.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
-  // out of `messageBarActionsClassNames` — and is the only handle by which another module, in
-  // this package or any other, can style an element from these actions' state, because
-  // `styles.root` is hashed and unaddressable from outside this file. Read it as
-  // `@variant group-has-actions/fui-message-bar-actions { … }` (DECISIONS.md D15). Only the
-  // root slot carries a marker; `containerAction` does not.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in MessageBarActions.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, messageBarActionsClassNames.root, state.root.className);
 
-  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
-  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
-  // on component internals).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.containerAction) {
     state.containerAction.className = clsx(styles['container-action'], state.containerAction.className);
   }

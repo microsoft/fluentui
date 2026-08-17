@@ -6,11 +6,8 @@ import styles from './Arc.module.css';
 /**
  * Public identity class for the DonutChart Arc.
  *
- * DEPRECATED FOR STYLING INTERNALS — deliberately NOT tagged `@deprecated` (see
- * useDonutChartStyles.styles.ts for why). `root` is retained as the component's identity class — the
- * Tailwind named-group marker (DECISIONS.md D15.1). The `focusRing` and `arcLabel` BEM
- * statics were removed with the statics sweep (DECISIONS.md D16.1 / D16.5): there is no
- * public class-name handle on component internals.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * The marker keeps the `donut-arc` qualifier the old statics carried (`fui-donut-arc__*`)
  * rather than the bare `Arc` displayName. `group/fui-arc` would be an unqualified token in a
@@ -41,9 +38,8 @@ export const useArcStyles = (props: ArcProps): ArcStyles => {
   const { className } = props;
 
   return {
-    // Unconditional module class FIRST, then the named group marker, then the consumer's own
-    // strings last (DECISIONS.md D16.2). Cascade priority is decided by the `@layer fui.*`
-    // order in Arc.module.css, not by the order of these arguments.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, donutArcClassNames.root, className, props.styles?.root),
     focusRing: clsx(styles['focus-ring'], props.styles?.focusRing),
     arcLabel: clsx(styles['arc-label'], props.styles?.arcLabel),

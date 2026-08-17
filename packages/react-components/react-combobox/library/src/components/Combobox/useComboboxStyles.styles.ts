@@ -13,9 +13,8 @@ import styles from './Combobox.module.css';
  * were removed together with the `fui-Combobox__*` BEM statics (DECISIONS.md D16.1/D16.5):
  * there is no public class-name handle on component internals.
  *
- * The value is a class TOKEN, not a selector — `'.' + comboboxClassNames.root` is invalid CSS,
- * because the `/` must be escaped in a selector. Use `fuiSelector(comboboxClassNames.root)`
- * from `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const comboboxClassNames: { root: string } = {
   root: 'group/fui-combobox',
@@ -60,24 +59,8 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
-  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Combobox*`
-  // BEM statics that used to lead this list are gone (D16.1); the marker is Combobox's sole
-  // public identity class now, and the only handle by which another module can style an
-  // element from this Combobox's state, because `styles.root` is hashed and unaddressable
-  // from outside this file.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order and by block order inside
-  // Combobox.module.css, not by the order of these arguments — see that file's header for the
-  // mapping back to the mergeClasses() argument order this replaces, including the three
-  // inversions (`outlineInteractive`'s bucket order, its focus-within/hover/active ordering,
-  // and the split `invalid` specificity hack).
-  //
-  // The `!disabled &&` guard on `outlineInteractive` is now an `@variant enabled` block inside
-  // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
-  // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
-  // appearance classes.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, comboboxClassNames.root, styles[appearance], state.root.className);
 
   state.input.className = clsx(styles.input, state.input.className);

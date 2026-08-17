@@ -18,14 +18,8 @@ import styles from './AvatarGroupItem.module.css';
  * AvatarGroupItem's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const avatarGroupItemClassNames: { root: string } = {
   root: 'group/fui-avatar-group-item',
@@ -59,29 +53,8 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
     'data-size': size,
   };
 
-  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
-  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
-  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
-  // `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static that used
-  // to lead this call is gone (D16.1): the marker is now AvatarGroupItem's SOLE public
-  // identity class, and the only handle by which another module — in this package or any
-  // other — can style an element from this AvatarGroupItem's state, because `styles.root`
-  // is hashed and unaddressable from outside this file (DECISIONS.md D15).
-  //
-  // AvatarGroupItem needs no state mirrors: `data-size` is stamped on this very element
-  // above, so `@variant group-*/fui-avatar-group-item` reads it as-is (D15.6, Tier 0). The
-  // marker nests under `group/fui-avatar-group` for free — each component root carries its
-  // own (D15.1) — and the `avatar` slot, which is an `<Avatar>` root, already carries
-  // `group/fui-avatar` from that component's own hook.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in AvatarGroupItem.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces.
-  //
-  // The `dir === 'rtl'` branch that used to push `pieStyles.rtlSlices` is gone: the mirror
-  // now lives in the module under the shared `rtl` variant, which resolves the computed
-  // direction from the DOM (DECISIONS.md D5). `useFluent()` is therefore no longer called.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {
@@ -100,11 +73,8 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
     },
   };
 
-  // Both module classes here are CONDITIONAL, so this slot can emit the consumer's class
-  // alone. That is harmless and deliberately NOT "fixed" (DECISIONS.md D16 / design §4c):
-  // the slot carries no marker, so the D15.1 leading-token invariant is not in play, and the
-  // element is an `<Avatar>` root that leads with Avatar's own unconditional `styles.root`.
-  //
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     avatar: {

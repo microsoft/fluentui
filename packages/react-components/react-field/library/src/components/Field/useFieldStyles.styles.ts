@@ -7,9 +7,6 @@ import styles from './Field.module.css';
  * Field's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
  * The `label` / `validationMessage` / `validationMessageIcon` / `hint` keys are gone along
  * with the `fui-Field*` BEM statics (D16.1), and the type has narrowed from
  * `SlotClassNames<FieldSlots>` to `{ root: string }` so that any read of a per-slot key is a
@@ -19,11 +16,8 @@ import styles from './Field.module.css';
  * literals rather than single-quoted strings, so a scan keyed on a single quote followed by
  * fui- reported this file as having no statics at all. Match all three quote characters.
  *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const fieldClassNames: { root: string } = {
   root: 'group/fui-field',
@@ -75,28 +69,8 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   root['data-orientation'] = state.orientation;
   root['data-size'] = size;
 
-  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
-  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
-  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
-  // `escape(element.classList[0])`, and the `/` in `group/fui-field` survives that escaping
-  // into an invalid selector, throwing a render-time `AggregateError` under jsdom
-  // (DECISIONS.md D15.1). Before D16 the `fui-Field` static held that position; `styles.root`
-  // holds it now. `styles['horizontal-no-label']` cannot: it is conditional.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
-  // out of `fieldClassNames` — and is the only handle by which another module, in this package
-  // or any other, can style an element from this Field's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Field is the natural consumer of this
-  // capability: it wraps an ARBITRARY control from another package, and that control's own
-  // module can read Field's `data-orientation` / `data-size` as
-  // `@variant group-size-small/fui-field { … }` rather than needing the value threaded
-  // through props (DECISIONS.md D15).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Field.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, including why the `label` slot's rules
-  // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
-  // own hook output).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     fieldClassNames.root,
@@ -104,9 +78,8 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
     state.root.className,
   );
 
-  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
-  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
-  // on component internals).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.label) {
     state.label.className = clsx(styles.label, state.label.className);
   }

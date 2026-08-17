@@ -35,30 +35,8 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   const { appearance, checked, disabled, disabledFocusable, isAccessible } = state;
   const disabledAny = disabled || disabledFocusable;
 
-  // Named group marker first, consumer className last. Every module class here is
-  // conditional (`checked`, `disabled`, `appearance === 'primary'`), so this hook alone
-  // cannot put a selector-safe token ahead of the marker — and it does not have to:
-  // `useButtonStyles_unstable` is called LAST and prepends Button's own unconditional
-  // `styles.root`, so the token this string ultimately renders at `classList[0]` is
-  // Button's hashed root class, never a marker (DECISIONS.md D15.1 / D16.2; asserted by
-  // `component-has-group-marker`). §4b's empty `.root {}` is NOT usable here — a rule with
-  // no declarations is dropped before the class map is extracted; see the note at the top
-  // of ToggleButton.module.css.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — after D16 the SOLE public identity
-  // class — and it is deliberately ToggleButton's OWN identity even though this element is
-  // also a Button: `useButtonStyles_unstable` adds `group/fui-button` to the same element,
-  // so this root carries two markers by design and a descendant — or a wrapping component
-  // such as react-toolbar's ToolbarToggleButton — can address whichever identity it means.
-  // ToolbarToggleButton/ToolbarRadioButton compound `:global(.group\/fui-toggle-button)`
-  // for exactly that reason; see their modules.
-  //
-  // No state mirrors are needed (DECISIONS.md D15, Tier 0): every condition below is a
-  // JS-side gate that selects a module class, exactly as the mergeClasses arguments it
-  // replaces did. Cascade priority is decided by the `@layer fui.*` order and by file
-  // position inside ToggleButton.module.css — see that file's header for the mapping back
-  // to the mergeClasses() argument order, including why its blocks are bucket-major
-  // rather than slice-major.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

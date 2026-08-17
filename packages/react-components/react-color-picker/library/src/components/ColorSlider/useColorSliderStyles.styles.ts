@@ -56,20 +56,8 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
 
   root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
-  // Unconditional module class FIRST, then the named group marker — the marker must never
-  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
-  // what keeps the marker safe now that the `fui-ColorSlider` static is gone.
-  //
-  // The `vertical ? styles.vertical : styles.horizontal` pair is gone from JS entirely: the
-  // orientation slices for ALL FOUR slots now hang off `data-orientation` above, inside the
-  // module (see its header for why they are descendant selectors rather than per-slot
-  // classes).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in ColorSlider.module.css, not
-  // by the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, colorSliderClassNames.root, state.root.className);
 
   state.rail.className = clsx(styles.rail, styles[channel], styles[shape], state.rail.className);

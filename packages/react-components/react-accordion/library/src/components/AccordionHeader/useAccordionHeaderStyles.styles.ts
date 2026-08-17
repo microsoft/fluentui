@@ -58,29 +58,12 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   root['data-disabled'] = disabled || undefined;
   root['data-icon'] = Boolean(state.icon) || undefined;
 
-  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
-  // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
-  // `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the `/` in
-  // `group/fui-accordion-header` survives that escaping into an invalid selector, throwing a
-  // render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
-  // `fui-AccordionHeader` static held that position; `styles.root` holds it now.
-  //
-  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
-  // out of `accordionHeaderClassNames` — and is the only handle by which another module, in
-  // this package or any other, can style an element from this header's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. Read it as
-  // `@variant group-disabled/fui-accordion-header { … }` (DECISIONS.md D15). Only the root
-  // slot carries a marker: a group cannot style itself, so one on `button` or `expandIcon`
-  // would only serve those slots' own descendants.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in AccordionHeader.module.css,
-  // not by the order of these arguments — see that file's header for the mapping back to
-  // the mergeClasses() argument order this replaces.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, accordionHeaderClassNames.root, state.root.className);
 
-  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
-  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
-  // on component internals).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.button.className = clsx(styles.button, state.button.className);
 
   if (state.expandIcon) {

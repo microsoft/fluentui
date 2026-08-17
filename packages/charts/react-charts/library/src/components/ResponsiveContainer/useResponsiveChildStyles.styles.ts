@@ -50,9 +50,8 @@ export const responsiveChildClassNames: { root: string } = {
  */
 export const useResponsiveChildStyles = (): ResponsiveChildStyles => {
   return {
-    // The marker is written as a LITERAL, not `responsiveChildClassNames.root`: greppable,
-    // and it keeps the `@deprecated` constant from being self-referenced (which the
-    // `deprecation` lint rule reports as an error).
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.root, responsiveChildClassNames.root),
     chartWrapper: clsx(styles['chart-wrapper']),
     chart: clsx(styles.chart),

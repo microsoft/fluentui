@@ -8,14 +8,8 @@ import styles from './DialogSurface.module.css';
  * DialogSurface's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS, and deliberately not tagged `@deprecated`: the constant
- * itself is not going away, only the ability to reach a component's internals through it. The
- * `fui-DialogSurface` / `fui-DialogSurface__backdrop` BEM statics are gone (D16.1), the type is
- * narrowed to `{ root: string }` so a per-slot read such as `dialogSurfaceClassNames.backdrop`
- * is a compile error rather than a silently-selects-nothing string, and the value is a class
- * TOKEN, not a selector — use `fuiSelector(dialogSurfaceClassNames.root)` from
- * `@fluentui/react-utilities` to build a selector from it, because the `/` is legal in a class
- * token but terminates the name in a selector.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dialogSurfaceClassNames: { root: string } = {
   root: 'group/fui-dialog-surface',
@@ -30,18 +24,8 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const isBackdropTransparent = backdropAppearance ? backdropAppearance === 'transparent' : treatBackdropAsNested;
   const mountedAndClosed = !unmountOnClose && !open;
 
-  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
-  // (DECISIONS.md D16.2). Order carries no cascade meaning (the `@layer fui.*` order decides
-  // every tie, DECISIONS.md D2), so the only thing position buys is the D15.1 invariant: the
-  // marker must never be `classList[0]`, because nwsapi's `:scope` polyfill builds its anchor
-  // from `escape(element.classList[0])` and the `/` in `group/fui-dialog-surface` survives
-  // that escaping into an invalid selector, throwing a render-time `AggregateError` under
-  // jsdom. `styles.root` is the unconditional hashed module class that holds index 0 now that
-  // the `fui-DialogSurface` static is gone.
-  //
-  // The marker is written as a LITERAL rather than read back out of
-  // `dialogSurfaceClassNames` — greppable, sortable, and asserted by the
-  // `component-has-group-marker` conformance test (DECISIONS.md D15.1).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   root.className = clsx(
     styles.root,
     dialogSurfaceClassNames.root,

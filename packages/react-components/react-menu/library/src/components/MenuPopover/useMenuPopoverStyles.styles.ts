@@ -22,14 +22,8 @@ export const menuPopoverClassNames: { root: string } = {
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
-  // Unconditional module class FIRST, then the named group marker, consumer className last
-  // (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's `:scope`
-  // polyfill throws on it under jsdom (DECISIONS.md D15.1). The BEM static that used to hold
-  // that position is gone (DECISIONS.md D16.1).
-  //
-  // This slot is PORTALLED and positioned by @fluentui/react-positioning; its classes still
-  // arrive through this hook exactly like any other slot, and the package's compiled
-  // `dist/styles.css` is document-level so it reaches the portal wherever it mounts.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(styles.root, menuPopoverClassNames.root, state.root.className);
   return state;
 };

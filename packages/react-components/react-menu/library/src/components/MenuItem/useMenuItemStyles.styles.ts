@@ -43,16 +43,8 @@ export const menuItemClassNames: { root: string } = {
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   const multiline = !!state.subText;
 
-  // Unconditional module class FIRST, then the named group marker, then the conditional
-  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
-  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
-  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
-  // never drops an unconditional argument. The BEM static that used to hold that position
-  // is gone (DECISIONS.md D16.1).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in MenuItem.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // Griffel mergeClasses argument list.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {
@@ -67,12 +59,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     },
   };
 
-  // The Griffel source put `multiline && multilineStyles.content` AFTER the consumer
-  // className. Class-attribute position carries no cascade meaning here (mergeClasses
-  // only ever reordered ATOMICS, and a consumer string was passed through untouched), so
-  // the conditional class moves ahead of the consumer's — which is what
-  // `classname-overrides-win` asserts and what unlayered-beats-layered guarantees
-  // (DECISIONS.md D7 revision / D9). Same move on every slot below.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   if (state.content) {
     state = {
       ...state,

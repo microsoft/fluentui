@@ -22,8 +22,8 @@ import { useTableCellStyles_unstable } from '../TableCell/useTableCellStyles.sty
  * `useTableCellStyles_unstable` — two markers by design (D16.3), declared to
  * react-conformance through `testOptions['has-group-marker'].markers`.
  *
- * The value is a class TOKEN, not a selector: use `fuiSelector(dataGridCellClassNames.root)`
- * from `@fluentui/react-utilities` (D16.5).
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  */
 export const dataGridCellClassNames: { root: string } = {
   root: 'group/fui-data-grid-cell',
@@ -33,11 +33,8 @@ export const dataGridCellClassNames: { root: string } = {
  * Apply styling to the DataGridCell slots based on the state
  */
 export const useDataGridCellStyles_unstable = (state: DataGridCellState): DataGridCellState => {
-  // `useTableCellStyles_unstable` is called LAST (it ran first under Griffel) so that its
-  // unconditional `styles.root` is PREPENDED and `group/fui-data-grid-cell` can never be
-  // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
-  // D16.2). It also keeps the consumer className last. The swap is cascade-inert: this
-  // component contributes no declarations, and `@layer fui.*` decides every tie (D2).
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = { ...state, root: { ...state.root, className: clsx(dataGridCellClassNames.root, state.root.className) } };
 
   state = useTableCellStyles_unstable(state);

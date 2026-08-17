@@ -34,19 +34,8 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
   const disabledAny = disabled || disabledFocusable;
 
-  // Module class FIRST, then the named group marker, consumer className LAST (D16.2).
-  // `styles.root` is unconditional, so it is always the selector-safe `classList[0]` the
-  // marker must never occupy (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1). `useButtonStyles_unstable` (called last) prepends its own
-  // `styles.root` ahead of all of this, so the rendered leading token is Button's.
-  //
-  // The marker is CompoundButton's OWN identity on an element that is also a Button:
-  // `useButtonStyles_unstable` adds `group/fui-button` to the same element, so this root
-  // carries two markers by design and a descendant can address whichever identity it means.
-  //
-  // Cascade priority is decided by the `@layer fui.*` order and by file position inside
-  // CompoundButton.module.css — see that file's header for the mapping back to the
-  // mergeClasses() argument order, including why its blocks are bucket-major.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state = {
     ...state,
     root: {

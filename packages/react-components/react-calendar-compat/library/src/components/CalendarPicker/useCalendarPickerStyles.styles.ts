@@ -9,14 +9,8 @@ import styles from './CalendarPicker.module.css';
  * shared root identity of CalendarMonth and CalendarYear, both of which render their root
  * through this hook exactly as they both carried `fui-CalendarPicker` before.
  *
- * Deprecated for styling internals: the supported way to style a Fluent component is the
- * per-slot `className` props. `root` is retained as the public identity handle.
- *
- * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
- * `@fluentui/react-utilities` (D16.5).
- *
- * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
- * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
+ * Not for styling internals — use the per-slot `className` props. The value is a class
+ * TOKEN, not a selector: build one with `fuiSelector()` from `@fluentui/react-utilities`.
  *
  * @internal
  */
@@ -35,17 +29,8 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
   const { className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
 
   return {
-    // Unconditional module class FIRST, then the named group marker, then the consumer
-    // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
-    // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.normalize`
-    // is the token that guarantees it, since clsx never drops an unconditional argument. The
-    // BEM static that used to hold that position is gone (DECISIONS.md D16.1).
-    //
-    // The lead token is `normalize` rather than `root` because these arguments stay in the
-    // mergeClasses() order they replace, and `normalize` was passed first. Argument order
-    // carries no cascade meaning — the `@layer fui.*` order in CalendarPicker.module.css
-    // decides every tie, and that file reproduces this same order, INCLUDING the documented
-    // `normalize`-before-`base` inversion.
+    // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+    // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
     root: clsx(styles.normalize, calendarPickerClassNames.root, styles.root, className),
     headerContainer: styles['header-container'],
     currentItemButton: clsx(

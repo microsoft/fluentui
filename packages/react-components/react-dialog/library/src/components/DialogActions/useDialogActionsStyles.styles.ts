@@ -19,19 +19,8 @@ export const dialogActionsClassNames: { root: string } = {
  * Apply styling to the DialogActions slots based on the state
  */
 export const useDialogActionsStyles_unstable = (state: DialogActionsState): DialogActionsState => {
-  // ARGUMENT ORDER — `styles.root`, marker, the four conditional module classes in their
-  // original mergeClasses order, consumer className (DECISIONS.md D16.2). The unconditional
-  // hashed module class leads so the marker is never `classList[0]`: nwsapi's `:scope`
-  // polyfill builds its anchor from `escape(element.classList[0])`, and the `/` in
-  // `group/fui-dialog-actions` survives that escaping into an invalid selector, throwing a
-  // render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
-  // `fui-DialogActions` static held that position; `styles.root` holds it now.
-  //
-  // The order of the four conditionals below carries NO cascade meaning any more — the
-  // `@layer` order plus the BLOCK order inside DialogActions.module.css decides which of
-  // `.fluid-*` and `.grid-position-*` wins the two `grid-column-*` conflicts (DECISIONS.md
-  // D2/D7-revision). It is kept identical to the Griffel call purely so the module's mapping
-  // table can be read against this file line for line.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     dialogActionsClassNames.root,

@@ -76,25 +76,8 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   root['data-size'] = size;
   root['data-text-position'] = textPosition;
 
-  // `styles.root` first, then the named group marker — the marker must never be
-  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
-  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
-  // `clsx` never drops it, so index 0 is always the hashed, selector-safe module class; the
-  // BEM static that used to hold that position was removed in D16.1. The marker is a
-  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
-  // this package or any other — can style an element from this Persona's state, because
-  // `styles.root` is hashed and unaddressable from outside this file (DECISIONS.md D15).
-  //
-  // It matters more here than for most components: Persona's `avatar` and `presence` slots
-  // ARE other components' roots (an `<Avatar>`, a `<PresenceBadge>`), so `group/fui-persona`
-  // is exactly the handle a future Avatar or Badge module would need to react to Persona's
-  // `data-size` / `data-text-position` — the pair this hook already stamps on this element,
-  // which is why no state mirror is required (D15.6, Tier 0).
-  //
-  // Cascade priority is decided by the `@layer fui.*` order in Persona.module.css, not by
-  // the order of these arguments — see that file's header for the mapping back to the
-  // mergeClasses() argument order this replaces, and for why the avatar/presence rules sit
-  // in `fui.components.l2`.
+  // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope
+  // polyfill throws on the `/`), consumer className LAST. D15.1 / D16.2.
   state.root.className = clsx(
     styles.root,
     personaClassNames.root,
