@@ -81,7 +81,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — root arg #2 */
   .root {
     @apply mt-horizontal-none mb-horizontal-none flex flex-row items-center pb-vertical-xs text-neutral-foreground-3;
 
@@ -92,14 +91,12 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.rootBrand — root arg #3 */
   .brand {
     @apply text-neutral-foreground-on-brand;
   }
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.dismissButton — dismissButton arg #2 */
   .dismiss-button {
     @apply box-border flex cursor-pointer items-center;
 
@@ -138,14 +135,12 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.dismissBrand — dismissButton arg #3 */
   .dismiss-brand {
     @apply text-neutral-foreground-on-brand;
   }
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.icon — icon arg #2 */
   .icon {
     @apply relative me-horizontal-xs box-content inline-flex items-center justify-center bg-transparent-background text-neutral-foreground-2;
 
@@ -160,7 +155,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.iconBrand — icon arg #3 */
   .icon-brand {
     @apply text-neutral-foreground-on-brand;
   }

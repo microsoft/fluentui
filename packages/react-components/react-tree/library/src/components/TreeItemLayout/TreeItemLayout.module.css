@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -101,7 +93,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseStyles (makeResetStyles) — root arg #2 */
   .root {
     @apply box-border flex min-h-32 items-center;
 
@@ -127,7 +118,6 @@
     }
   }
 
-  /* from useMainBaseStyles (makeResetStyles) — main arg #2 */
   .main {
     @apply ps-horizontal-xxs pe-horizontal-xxs;
 
@@ -136,7 +126,6 @@
     padding-bottom: 0;
   }
 
-  /* from useExpandIconBaseStyles (makeResetStyles) — expandIcon arg #2 */
   .expand-icon {
     @apply box-border flex min-w-24 items-center justify-center pt-vertical-xs pb-vertical-xs text-neutral-foreground-3;
 
@@ -159,7 +148,6 @@
     font-size: var(--text-base-500);
   }
 
-  /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
   .actions {
     @apply relative ms-auto flex ps-horizontal-s pe-horizontal-s;
 
@@ -171,7 +159,6 @@
     padding-bottom: 0;
   }
 
-  /* from useAsideBaseStyles (makeResetStyles) — aside arg #2 */
   .aside {
     @apply ms-auto flex items-center gap-horizontal-xs ps-horizontal-m pe-horizontal-m;
 

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -122,7 +114,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply relative inline-flex max-w-fit cursor-pointer align-middle;
 
@@ -151,7 +142,6 @@
     }
   }
 
-  /* from useInputBaseClassName (makeResetStyles) */
   .input {
     @apply absolute m-0 box-border h-full;
 
@@ -169,7 +159,6 @@
     width: calc(16px * var(--base-scale) + 2 * 8px * var(--base-scale));
   }
 
-  /* from useIndicatorBaseClassName (makeResetStyles) */
   .indicator {
     @apply pointer-events-none mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s box-border flex h-16 w-16 shrink-0 items-center justify-center self-start overflow-hidden rounded-small;
 
@@ -195,7 +184,6 @@
    * gate is required rather than cosmetic.
    */
   .root {
-    /* from useRootStyles.unchecked */
     @variant enabled {
       @variant not-checked {
         @variant not-indeterminate {
@@ -214,7 +202,6 @@
       }
     }
 
-    /* from useRootStyles.checked */
     @variant enabled {
       @variant checked {
         color: var(--color-neutral-foreground-1);
@@ -235,7 +222,6 @@
       }
     }
 
-    /* from useRootStyles.mixed */
     @variant enabled {
       @variant indeterminate {
         color: var(--color-neutral-foreground-1);
@@ -255,7 +241,6 @@
       }
     }
 
-    /* from useRootStyles.disabled */
     @variant disabled {
       @apply cursor-default;
 
@@ -306,7 +291,6 @@
       }
     }
 
-    /* from useIndicatorStyles.large — indicator arg #3 */
     @variant size-large {
       & .indicator {
         @apply h-20 w-20;
@@ -333,7 +317,6 @@
    * layers on top of it lives at altitude l2 — see the ALTITUDE note in the file header.
    */
 
-  /* from useLabelStyles.base — label arg #2 */
   .label {
     @apply self-center ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s text-inherit;
 
@@ -366,7 +349,6 @@
       }
     }
 
-    /* from useLabelStyles[labelPosition] — label arg #4 */
     @variant label-before {
       & .label {
         @apply pe-horizontal-xs;

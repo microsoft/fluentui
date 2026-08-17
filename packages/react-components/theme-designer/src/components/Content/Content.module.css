@@ -10,7 +10,6 @@
  */
 
 @layer fui.components.l4 {
-  /* from useStyles.root */
   .root {
     @apply flex flex-col items-stretch;
     /* gridRowGap: spacingVerticalXXXL */

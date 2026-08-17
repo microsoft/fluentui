@@ -73,7 +73,6 @@
  * `d` bucket — flat declarations on Button's root, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootStyles.base — arg #2 */
   .root {
     height: auto;
 
@@ -82,21 +81,18 @@
     }
   }
 
-  /* from useRootStyles.primary — arg #4 */
   .primary {
     & .secondary-content {
       @apply text-neutral-foreground-on-brand;
     }
   }
 
-  /* from useRootStyles.subtle — arg #4 */
   .subtle {
     & .secondary-content {
       @apply text-neutral-foreground-2;
     }
   }
 
-  /* from useRootStyles.transparent — arg #4 */
   .transparent {
     & .secondary-content {
       @apply text-neutral-foreground-2;
@@ -112,7 +108,6 @@
    * `18px` match no spacing step and stay numeric.
    */
 
-  /* from useRootStyles.small */
   .small {
     @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
 
@@ -120,7 +115,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useRootStyles.medium */
   .medium {
     @apply px-horizontal-m pt-14 pb-horizontal-l;
 
@@ -128,7 +122,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useRootStyles.large */
   .large {
     @apply px-horizontal-l pt-18 pb-horizontal-xl;
 
@@ -136,7 +129,6 @@
     line-height: var(--leading-base-400);
   }
 
-  /* from useRootStyles.disabled — arg #6 */
   .disabled {
     & .secondary-content {
       @apply text-neutral-foreground-disabled;
@@ -149,17 +141,14 @@
    * their min/max-width must beat Button's own size min-width.
    */
 
-  /* from useRootIconOnlyStyles.small */
   .icon-only-small {
     @apply max-w-48 min-w-48 p-horizontal-xs;
   }
 
-  /* from useRootIconOnlyStyles.medium */
   .icon-only-medium {
     @apply max-w-52 min-w-52 p-horizontal-s-nudge;
   }
 
-  /* from useRootIconOnlyStyles.large */
   .icon-only-large {
     @apply max-w-56 min-w-56 p-horizontal-s;
   }
@@ -169,7 +158,6 @@
  * `h` bucket (`:hover`), in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootStyles.base — arg #2 */
   .root {
     @variant hover {
       & .secondary-content {
@@ -178,7 +166,6 @@
     }
   }
 
-  /* from useRootStyles.primary — arg #4 */
   .primary {
     @variant hover {
       & .secondary-content {
@@ -187,7 +174,6 @@
     }
   }
 
-  /* from useRootStyles.subtle — arg #4 */
   .subtle {
     @variant hover {
       & .secondary-content {
@@ -196,7 +182,6 @@
     }
   }
 
-  /* from useRootStyles.transparent — arg #4 */
   .transparent {
     @variant hover {
       & .secondary-content {
@@ -205,7 +190,6 @@
     }
   }
 
-  /* from useRootStyles.disabled — arg #6 */
   .disabled {
     @variant hover {
       & .secondary-content {
@@ -219,7 +203,6 @@
  * `a` bucket — Griffel's `':hover:active,:active:focus-visible'` compound.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootStyles.base — arg #2 */
   .root {
     @variant hover-active {
       & .secondary-content {
@@ -228,7 +211,6 @@
     }
   }
 
-  /* from useRootStyles.primary — arg #4 */
   .primary {
     @variant hover-active {
       & .secondary-content {
@@ -237,7 +219,6 @@
     }
   }
 
-  /* from useRootStyles.subtle — arg #4 */
   .subtle {
     @variant hover-active {
       & .secondary-content {
@@ -246,7 +227,6 @@
     }
   }
 
-  /* from useRootStyles.transparent — arg #4 */
   .transparent {
     @variant hover-active {
       & .secondary-content {
@@ -255,7 +235,6 @@
     }
   }
 
-  /* from useRootStyles.disabled — arg #6 */
   .disabled {
     @variant hover-active {
       & .secondary-content {
@@ -269,7 +248,6 @@
  * CompoundButton's OWN slots — `fui.components.l1`.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useContentContainerStyles.base */
   .content-container {
     @apply flex flex-col text-start;
 
@@ -277,13 +255,11 @@
        the logical keyword. */
   }
 
-  /* from useSecondaryContentStyles.base */
   .secondary-content {
     line-height: 100%;
     font-weight: var(--font-weight-regular);
   }
 
-  /* from useSecondaryContentStyles.small / .medium / .large */
   .secondary-content-small {
     font-size: var(--text-base-200);
   }
@@ -303,7 +279,6 @@
  * unlayered Griffel atomics they replace did.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useIconStyles.base */
   .icon {
     @apply size-40;
 
@@ -331,7 +306,6 @@
  * the file: Griffel's `m` bucket outranks `d`, `h` and `a` regardless of argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootStyles.highContrast — arg #3 */
   .high-contrast {
     @variant forced-colors {
       @variant hover {
@@ -348,7 +322,6 @@
     }
   }
 
-  /* from useRootStyles.primary — arg #4 */
   .primary {
     @variant forced-colors {
       & .secondary-content {
@@ -357,7 +330,6 @@
     }
   }
 
-  /* from useRootStyles.subtle — arg #4 */
   .subtle {
     @variant forced-colors {
       @variant hover {
@@ -374,7 +346,6 @@
     }
   }
 
-  /* from useRootStyles.disabledHighContrast — arg #7 */
   .disabled-high-contrast {
     @variant forced-colors {
       & .secondary-content {

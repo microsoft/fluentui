@@ -25,14 +25,12 @@
  */
 
 @layer fui.components.l1 {
-  /* from useItemLayoutStyles.root */
   .root {
     @apply grid min-h-48;
 
     grid-template-columns: auto 1fr auto auto;
   }
 
-  /* from useItemLayoutStyles.startMedia */
   .start-media {
     @apply me-horizontal-s self-center;
 
@@ -44,7 +42,6 @@
     grid-row-end: 3;
   }
 
-  /* from useItemLayoutStyles.header */
   .header {
     @apply me-horizontal-s self-end;
 
@@ -55,7 +52,6 @@
     font-size: calc(14px * var(--base-scale));
   }
 
-  /* from useItemLayoutStyles.headerMedia */
   .header-media {
     @apply self-end;
 
@@ -68,7 +64,6 @@
     line-height: 1.3333;
   }
 
-  /* from useItemLayoutStyles.contentWrapper */
   .content-wrapper {
     @apply me-horizontal-s self-start;
 
@@ -80,7 +75,6 @@
     line-height: 1.3333;
   }
 
-  /* from useItemLayoutStyles.contentMedia */
   .content-media {
     @apply self-start;
 
@@ -92,7 +86,6 @@
     line-height: 1.3333;
   }
 
-  /* from useItemLayoutStyles.endMedia */
   .end-media {
     @apply self-center;
 

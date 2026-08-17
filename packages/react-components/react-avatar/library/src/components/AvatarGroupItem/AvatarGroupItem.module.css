@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -175,7 +167,6 @@
   .pie {
     @apply absolute;
 
-    /* from usePieStyles.thick / .thicker / .thickest */
     &:where(
       [data-size='16'],
       [data-size='20'],
@@ -197,7 +188,6 @@
       --fuiAvatarGroupItem__divider--width: var(--spacing-thickest);
     }
 
-    /* from usePieStyles.slices — two slices */
     &:where(:nth-of-type(1):nth-last-of-type(2)) {
       clip-path: inset(0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)) 0 25%);
       inset-inline-start: -25%;
@@ -208,7 +198,6 @@
       inset-inline-start: 25%;
     }
 
-    /* from usePieStyles.slices — three slices */
     &:where(:nth-of-type(1):nth-last-of-type(3)) {
       clip-path: inset(0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)) 0 25%);
       inset-inline-start: -25%;

@@ -12,14 +12,12 @@
  */
 
 @layer fui.components.l4 {
-  /* from useStyles.root */
   .root {
     @apply flex justify-evenly;
 
     height: 150px;
   }
 
-  /* from useStyles.block */
   .block {
     @apply grid shrink-0 grow;
 
@@ -30,13 +28,11 @@
       @apply shrink;
     }
 
-    /* from useStyles.block[':hover .hexCopy'] — was a global marker class, now a local */
     &:hover .hex-copy {
       @apply flex;
     }
   }
 
-  /* from useStyles.hexCopy */
   .hex-copy {
     @apply hidden justify-between;
 
@@ -44,7 +40,6 @@
     grid-row-start: 2;
   }
 
-  /* from useStyles.brandKey */
   .brand-key {
     @apply flex items-end;
 

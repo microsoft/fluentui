@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -88,7 +80,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root */
   .root {
     @apply pointer-events-none absolute inset-0 h-full w-full overflow-visible;
 
@@ -114,22 +105,18 @@
     border: 1px solid var(--color-neutral-stroke-1);
   }
 
-  /* from useStyles.connectorLayer */
   .connector-layer {
     @apply pointer-events-none absolute start-0 top-0 h-full w-full overflow-visible;
   }
 
-  /* from useStyles.measurement */
   .measurement {
     @apply pointer-events-none invisible absolute;
   }
 
-  /* from useStyles.annotationContent */
   .annotation-content {
     @apply pointer-events-none h-full w-full;
   }
 
-  /* from useStyles.annotationForeignObject */
   .annotation-foreign-object {
     @apply pointer-events-none overflow-visible;
   }
@@ -147,7 +134,6 @@
     @apply pointer-events-auto;
   }
 
-  /* from useStyles.connectorGroup */
   .connector-group {
     @apply pointer-events-none;
   }

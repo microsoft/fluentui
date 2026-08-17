@@ -40,22 +40,18 @@
  */
 
 @layer fui.components.l1 {
-  /* from useFlexStyles.flex */
   .flex {
     @apply flex;
   }
 
-  /* from useFlexStyles.inline */
   .inline {
     @apply inline-flex;
   }
 
-  /* from useFlexStyles.column */
   .column {
     @apply flex-col;
   }
 
-  /* from useFlexStyles.alignItemsFlexStart / …Center / …FlexEnd / …Stretch */
   .align-items-flex-start {
     @apply items-start;
   }
@@ -72,7 +68,6 @@
     @apply items-stretch;
   }
 
-  /* from useFlexStyles.justifyContentFlexStart / …Center / …FlexEnd / …Stretch */
   .justify-content-flex-start {
     @apply justify-start;
   }
@@ -92,7 +87,6 @@
     justify-content: stretch;
   }
 
-  /* from useFlexStyles.justifyContentSpaceAround / …Between / …Evenly */
   .justify-content-space-around {
     @apply justify-around;
   }
@@ -105,12 +99,10 @@
     @apply justify-evenly;
   }
 
-  /* from useFlexStyles.wrap */
   .wrap {
     @apply flex-wrap;
   }
 
-  /* from useFlexStyles.fill */
   .fill {
     @apply h-full w-full;
   }

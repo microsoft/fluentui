@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -75,14 +67,12 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.calloutContentRoot */
   .callout-content-root {
     @apply grid overflow-hidden bg-neutral-background-1;
 
     background-blend-mode: normal, luminosity;
   }
 
-  /* from useStyles.calloutDateTimeContainer */
   .callout-date-time-container {
     @apply flex flex-row justify-between;
   }
@@ -98,7 +88,6 @@
     opacity: 0.8;
   }
 
-  /* from useStyles.calloutBlockContainer — textAlign 'left' → logical `start` */
   .callout-block-container {
     @apply text-start text-neutral-foreground-2;
   }
@@ -123,24 +112,20 @@
     forced-color-adjust: none;
   }
 
-  /* from useStyles.calloutBlockContainertoDrawShapefalse — paddingLeft → logical start */
   .callout-block-container-to-draw-shape-false {
     @apply ps-horizontal-s;
 
     forced-color-adjust: none;
   }
 
-  /* from useStyles.calloutBlockContainertoDrawShapetrue */
   .callout-block-container-to-draw-shape-true {
     @apply inline-grid;
   }
 
-  /* from useStyles.shapeStyles — marginRight → logical end */
   .shape-styles {
     @apply me-horizontal-s;
   }
 
-  /* from useStyles.calloutLegendText — typographyStyles.caption1 + color/margin */
   .callout-legend-text {
     @apply mb-vertical-xs text-neutral-foreground-2;
 
@@ -151,7 +136,6 @@
     forced-color-adjust: auto;
   }
 
-  /* from useStyles.calloutContentY */
   .callout-content-y {
     forced-color-adjust: auto;
   }
@@ -209,7 +193,6 @@
     line-height: var(--leading-base-100);
   }
 
-  /* from useStyles.calloutInfoContainer — paddingLeft → logical start */
   .callout-info-container {
     @apply ps-horizontal-s;
 

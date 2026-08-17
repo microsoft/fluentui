@@ -27,42 +27,34 @@
  * `gap` shorthand.
  */
 @layer fui.components.l4 {
-  /* from useExampleStyles.multiExample */
   .multi-example {
     @apply flex justify-center gap-60;
   }
 
-  /* from useSkeletonStyles.blue */
   .blue {
     background-color: #4f5e8f;
   }
 
-  /* from useSkeletonStyles.purple */
   .purple {
     background-color: #e1c7fc;
   }
 
-  /* from useSkeletonStyles.legendContainer */
   .legend-container {
     @apply flex flex-col-reverse gap-10 p-4;
   }
 
-  /* from useSkeletonStyles.legend */
   .legend {
     @apply flex gap-5;
   }
 
-  /* from useSkeletonStyles.legendColor */
   .legend-color {
     @apply h-10 w-10 self-center;
   }
 
-  /* from useMediaObjectStyles.main */
   .main {
     @apply flex flex-row gap-4;
   }
 
-  /* from useMediaObjectStyles.text */
   .text {
     @apply flex flex-col gap-4;
   }
@@ -76,27 +68,22 @@
     @apply py-20 ps-80 pe-20;
   }
 
-  /* from useMediaObjectStyles.emptyText */
   .empty-text {
     @apply h-50 w-100;
   }
 
-  /* from useMediaObjectStyles.centerMedia */
   .center-media {
     @apply items-center;
   }
 
-  /* from useMediaObjectStyles.verticalMediaObject */
   .vertical-media-object {
     @apply flex flex-col items-center gap-4;
   }
 
-  /* from useMediaObjectStyles.centerTextPosition */
   .center-text-position {
     @apply items-center;
   }
 
-  /* from useMediaObjectStyles.beforeTextPosition */
   .before-text-position {
     @apply items-end;
   }

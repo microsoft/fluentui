@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -246,7 +238,6 @@
    * (D4 addendum); `border-thin` does not exist.
    */
 
-  /* from useStyles.outline (the default appearance) */
   .outline {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
@@ -421,7 +412,6 @@
    * ── `button` slot ──────────────────────────────────────────────────────────────────
    */
   .root {
-    /* from useStyles.button — arg #2 */
     & .button {
       @apply box-border grid w-full items-center justify-between;
 
@@ -496,7 +486,6 @@
       @apply text-neutral-foreground-4;
     }
 
-    /* from useStyles.disabledText — arg #5, the last `button` style argument */
     @variant disabled {
       & .button {
         @apply cursor-not-allowed text-neutral-foreground-disabled;
@@ -518,7 +507,6 @@
    * the Griffel version did too — the same class was on both elements.
    */
   .root {
-    /* from useIconStyles.icon — arg #2/#3 */
     & .icon {
       @apply box-border block text-neutral-stroke-accessible;
 
@@ -586,7 +574,6 @@
    * `<Portal>` unless `inlinePopup` is set, so it is not reliably a descendant of the root.
    */
 
-  /* from useStyles.listbox */
   .listbox {
     @apply box-border rounded-medium;
 

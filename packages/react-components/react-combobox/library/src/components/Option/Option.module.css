@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -74,7 +66,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2 */
   .root {
     @apply relative flex items-center;
 
@@ -139,7 +130,6 @@
    * atomics over: within this group file position alone decides every tie.
    */
 
-  /* from useStyles.checkIcon — arg #2 */
   .check-icon {
     @apply invisible -ms-horizontal-xxs me-horizontal-xxs shrink-0;
 
@@ -156,7 +146,6 @@
      */
   }
 
-  /* from useStyles.multiselectCheck — arg #3 */
   .multiselect-check {
     @apply visible box-border flex h-16 w-16 items-center justify-center rounded-small border-t-neutral-stroke-accessible border-r-neutral-stroke-accessible border-b-neutral-stroke-accessible border-l-neutral-stroke-accessible;
 
@@ -177,17 +166,14 @@
     font-size: calc(12px * var(--base-scale));
   }
 
-  /* from useStyles.selectedCheck — arg #4 */
   .selected-check {
     @apply visible;
   }
 
-  /* from useStyles.selectedMultiselectCheck — arg #5 */
   .selected-multiselect-check {
     @apply border-t-compound-brand-background border-r-compound-brand-background border-b-compound-brand-background border-l-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;
   }
 
-  /* from useStyles.checkDisabled — arg #6 */
   .check-disabled {
     color: var(--color-neutral-foreground-disabled);
 
@@ -196,7 +182,6 @@
     }
   }
 
-  /* from useStyles.multiselectCheckDisabled — arg #7, the last style argument */
   .multiselect-check-disabled {
     @apply border-t-neutral-foreground-disabled border-r-neutral-foreground-disabled border-b-neutral-foreground-disabled border-l-neutral-foreground-disabled;
   }

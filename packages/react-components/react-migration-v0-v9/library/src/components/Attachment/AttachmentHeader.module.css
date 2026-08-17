@@ -11,7 +11,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useAttachmentHeaderStyles.root */
   .root {
     @apply block;
 

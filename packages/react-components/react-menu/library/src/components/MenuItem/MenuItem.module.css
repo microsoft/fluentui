@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -121,7 +113,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseStyles (makeResetStyles) */
   .root {
     @apply relative box-border flex min-h-32 max-w-290 shrink-0 cursor-pointer select-none;
     @apply gap-horizontal-xs px-horizontal-s-nudge py-vertical-s-nudge;
@@ -220,7 +211,6 @@
     }
   }
 
-  /* from useContentBaseStyles (makeResetStyles) */
   .content {
     @apply grow bg-transparent px-horizontal-xxs;
   }
@@ -245,7 +235,6 @@
     }
   }
 
-  /* from useIconBaseStyles (makeResetStyles) */
   .icon {
     @apply inline-flex h-20 w-20 shrink-0 items-center justify-center;
 
@@ -264,7 +253,6 @@
     line-height: 0;
   }
 
-  /* from useSubtextBaseStyles (makeResetStyles) — typographyStyles.caption2 */
   .sub-text {
     @apply text-neutral-foreground-3;
 
@@ -276,12 +264,10 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.checkmark — root arg n/a, `checkmark` slot arg #2 */
   .checkmark {
     @apply mt-vertical-xxs;
   }
 
-  /* from useStyles.submenuOpen — root arg #3 */
   .submenu-open {
     background-color: var(--color-neutral-background-1-hover);
     color: var(--color-neutral-foreground-2-hover);
@@ -379,7 +365,6 @@
     }
   }
 
-  /* from useSubTextStyles.disabled — `subText` arg #2 */
   .sub-text-disabled {
     color: var(--color-neutral-foreground-disabled);
 
@@ -388,17 +373,14 @@
     }
   }
 
-  /* from useMultilineStyles.content — `content` arg #4 */
   .content-multiline {
     @apply flex flex-col;
   }
 
-  /* from useMultilineStyles.secondaryContent — `secondaryContent` arg #5 */
   .secondary-content-multiline {
     @apply self-center;
   }
 
-  /* from useMultilineStyles.submenuIndicator — `submenuIndicator` arg #4 */
   .submenu-indicator-multiline {
     @apply self-center;
   }
@@ -446,7 +428,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useRootBaseStyles — root arg #2, the `:hover` half */
   .root {
     @variant hover {
       & :global(.fui-Icon-filled) {
@@ -459,7 +440,6 @@
     }
   }
 
-  /* from useStyles.submenuOpen — root arg #3 */
   .submenu-open {
     & :global(.fui-Icon-filled) {
       @apply inline;

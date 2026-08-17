@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -111,7 +103,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply relative inline-flex;
 
@@ -137,7 +128,6 @@
     }
   }
 
-  /* from useIndicatorBaseClassName (makeResetStyles) */
   .indicator {
     @apply relative box-border flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden;
 
@@ -310,7 +300,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /* from useInputStyles.below — input arg #3, also ungated on `label` */
     @variant vertical {
       & .input {
         @apply w-full;
@@ -370,7 +359,6 @@
    * on top of it lives at altitude l2 — see the ALTITUDE note in the file header.
    */
 
-  /* from useLabelStyles.base — label arg #2 */
   .label {
     @apply self-center ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
 
@@ -382,7 +370,6 @@
   }
 
   .root {
-    /* from useLabelStyles.after — label arg #3 */
     @variant label-after {
       & .label {
         @apply ps-horizontal-xs;
@@ -395,7 +382,6 @@
       }
     }
 
-    /* from useLabelStyles.below — label arg #3 */
     @variant label-below {
       & .label {
         @apply pt-vertical-xs text-center;

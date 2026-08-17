@@ -23,7 +23,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseStyles (makeResetStyles) */
   .root {
     @apply list-none;
 
@@ -36,12 +35,10 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.rootHorizontal */
   .root-horizontal {
     @apply flex;
   }
 
-  /* from useStyles.rootGrid */
   .root-grid {
     @apply grid;
   }

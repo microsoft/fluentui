@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -54,22 +46,18 @@
     @apply box-border flex h-auto w-auto flex-col flex-nowrap;
   }
 
-  /* from useStackStyles.horizontal (:22-24) */
   .horizontal {
     @apply flex-row;
   }
 
-  /* from useStackStyles.verticalFill (:25-27) */
   .vertical-fill {
     @apply h-full;
   }
 
-  /* from useStackStyles.reversedVertical (:28-30) */
   .reversed-vertical {
     @apply flex-col-reverse;
   }
 
-  /* from useStackStyles.reversedHorizontal (:31-33) */
   .reversed-horizontal {
     @apply flex-row-reverse;
   }
@@ -89,7 +77,6 @@
   .disable-shrink {
   }
 
-  /* from useStackStyles.wrap (:41-45) */
   .wrap {
     @apply flex h-full flex-wrap;
   }
@@ -101,7 +88,6 @@
     max-width: 100vw;
   }
 
-  /* from useStackStyles.innerWidth (:58-60) */
   .inner-width {
     @apply w-full;
   }

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -207,7 +199,6 @@
    * restatement is reproduced so the slice mapping stays 1:1.
    */
 
-  /* from useShapeStyles.rounded */
   .rounded {
     border-radius: var(--radius-medium);
 
@@ -216,7 +207,6 @@
     }
   }
 
-  /* from useShapeStyles.circular */
   .circular {
     border-radius: var(--radius-circular);
 
@@ -225,7 +215,6 @@
     }
   }
 
-  /* from useShapeStyles.square */
   .square {
     border-radius: var(--radius-none);
 
@@ -366,12 +355,10 @@
    * the `disabledIcon` slot only.
    */
 
-  /* from useIconStyles.icon */
   .icon {
     @apply absolute flex self-center;
   }
 
-  /* from useIconStyles[size] */
   .root {
     @variant size-extra-small {
       & .icon {
@@ -398,7 +385,6 @@
     }
   }
 
-  /* from useIconStyles.disabledIcon */
   .disabled-icon {
     @apply text-neutral-foreground-inverted;
 

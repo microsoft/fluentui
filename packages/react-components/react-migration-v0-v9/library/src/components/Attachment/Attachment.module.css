@@ -1,14 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5), so this is
- * safe to repeat and makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -46,7 +39,6 @@
  */
 
 @layer fui.base {
-  /* from useAttachmentBaseStyles (makeResetStyles) */
   .root {
     @apply relative me-2 mb-2 inline-flex min-h-32 w-full max-w-424 items-center ps-11 pe-3 pt-7 pb-7;
 
@@ -71,7 +63,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useAttachmentStyles.actionable */
   .actionable {
     @apply cursor-pointer;
 
@@ -90,7 +81,6 @@
     border-end-end-radius: calc(4px * var(--base-scale));
   }
 
-  /* from useAttachmentStyles.progressBar */
   .progress-bar {
     @apply h-full max-w-full bg-palette-light-green-background-3;
 

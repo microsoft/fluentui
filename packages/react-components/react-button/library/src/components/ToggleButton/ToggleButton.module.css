@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -104,7 +96,6 @@
    * last, this root needs a leading local carrying at least one declaration.
    */
 
-  /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-1 border-l-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
 
@@ -119,7 +110,6 @@
        l2 icon-swap block at the bottom of this file (DECISIONS.md D27 / S-J batch 1). */
   }
 
-  /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-1 border-l-neutral-stroke-1 bg-transparent-background-selected;
 
@@ -129,7 +119,6 @@
     border-left-width: var(--spacing-thicker);
   }
 
-  /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
     @apply bg-brand-background-selected text-neutral-foreground-on-brand;
 
@@ -139,7 +128,6 @@
     border-left-color: transparent;
   }
 
-  /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
     @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
 
@@ -149,7 +137,6 @@
     border-left-color: transparent;
   }
 
-  /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
     @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
 
@@ -159,7 +146,6 @@
     border-left-color: transparent;
   }
 
-  /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
     @apply bg-brand-background text-neutral-foreground-on-brand;
 
@@ -184,12 +170,10 @@
     outline-offset: calc(var(--spacing-thicker) * -1);
   }
 
-  /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
     @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
   }
 
-  /* from useRootDisabledStyles.primary — arg #10 */
   .disabled-primary {
     border-top-color: transparent;
     border-right-color: transparent;
@@ -197,7 +181,6 @@
     border-left-color: transparent;
   }
 
-  /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
     @apply bg-transparent-background;
 
@@ -207,7 +190,6 @@
     border-left-color: transparent;
   }
 
-  /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
     @apply bg-transparent-background;
 
@@ -247,21 +229,18 @@
  * BLOCK 3 — `h` bucket (`:hover`), in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     @variant hover {
       @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-1-hover border-l-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
     }
   }
 
-  /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
     @variant hover {
       @apply bg-transparent-background-hover;
     }
   }
 
-  /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
     @variant hover {
       @apply bg-brand-background-hover text-neutral-foreground-on-brand;
@@ -273,7 +252,6 @@
     }
   }
 
-  /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
     @variant hover {
       @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
@@ -285,7 +263,6 @@
     }
   }
 
-  /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
     @variant hover {
       @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
@@ -297,7 +274,6 @@
     }
   }
 
-  /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
     @variant hover {
       @apply bg-brand-background-hover text-neutral-foreground-on-brand;
@@ -324,14 +300,12 @@
     }
   }
 
-  /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
     @variant hover {
       @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
     }
   }
 
-  /* from useRootDisabledStyles.primary — arg #10 */
   .disabled-primary {
     @variant hover {
       border-top-color: transparent;
@@ -341,7 +315,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
     @variant hover {
       @apply bg-transparent-background-hover;
@@ -353,7 +326,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
     @variant hover {
       @apply bg-transparent-background-hover;
@@ -371,21 +343,18 @@
  * carried by the shared `hover-active` variant.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     @variant hover-active {
       @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-1-pressed border-l-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
     }
   }
 
-  /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
     @variant hover-active {
       @apply bg-transparent-background-pressed;
     }
   }
 
-  /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
     @variant hover-active {
       @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
@@ -397,7 +366,6 @@
     }
   }
 
-  /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
     @variant hover-active {
       @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
@@ -409,7 +377,6 @@
     }
   }
 
-  /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
     @variant hover-active {
       @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
@@ -421,7 +388,6 @@
     }
   }
 
-  /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
     @variant hover-active {
       @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
@@ -433,14 +399,12 @@
     }
   }
 
-  /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
     @variant hover-active {
       @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
     }
   }
 
-  /* from useRootDisabledStyles.primary — arg #10 */
   .disabled-primary {
     @variant hover-active {
       border-top-color: transparent;
@@ -450,7 +414,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
     @variant hover-active {
       @apply bg-transparent-background-pressed;
@@ -462,7 +425,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
     @variant hover-active {
       @apply bg-transparent-background-pressed;
@@ -493,7 +455,6 @@
     }
   }
 
-  /* from useIconCheckedStyles.subtleOrTransparent — icon arg #2 */
   .checked-icon {
     @apply text-neutral-foreground-2-brand-selected;
   }
@@ -525,7 +486,6 @@
     }
   }
 
-  /* from usePrimaryHighContrastStyles.disabled — arg #3 */
   .primary-high-contrast-disabled {
     @variant forced-colors {
       border-top-color: GrayText;
@@ -609,7 +569,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     & :global(.fui-Icon-filled) {
       @apply inline;

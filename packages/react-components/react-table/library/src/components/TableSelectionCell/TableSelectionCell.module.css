@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -81,17 +73,14 @@
  * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, flat half */
   .root {
     @apply p-0 text-center whitespace-nowrap;
   }
 
-  /* from useTableLayoutStyles.root — arg #3, native-table branch */
   .table-root {
     @apply table-cell w-44;
   }
 
-  /* from useFlexLayoutStyles.root — arg #3, flex branch */
   .flex-root {
     @apply flex max-w-44 min-w-44 justify-center;
 
@@ -100,12 +89,10 @@
     flex: 1 1 0px;
   }
 
-  /* from useStyles.subtle — arg #4, flat half */
   .subtle {
     opacity: 0;
   }
 
-  /* from useStyles.hidden — arg #5 */
   .hidden {
     opacity: 0;
   }
@@ -116,7 +103,6 @@
  * BLOCK 1 so arg #4's focus rule still outranks arg #5's flat rule — see the header.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-visible-fui {
       @apply rounded-medium;
@@ -125,7 +111,6 @@
     }
   }
 
-  /* from useStyles.subtle — arg #4, focus half */
   .subtle {
     @variant focus-within-fui {
       opacity: 1;
@@ -138,7 +123,6 @@
  * ALTITUDE note in the header.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useStyles.radioIndicator — `radioIndicator` slot arg #2 */
   .radio-indicator {
     @apply flex grow items-center justify-center;
   }

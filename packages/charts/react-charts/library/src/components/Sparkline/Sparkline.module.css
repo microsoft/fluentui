@@ -37,7 +37,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.inlineBlock */
   .inline-block {
     @apply inline;
   }

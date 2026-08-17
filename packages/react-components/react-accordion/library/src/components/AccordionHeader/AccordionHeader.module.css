@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -104,7 +96,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /* from useStyles.root — root arg #2 */
     color: var(--color-neutral-foreground-1);
     background-color: var(--color-transparent-background);
 
@@ -158,7 +149,6 @@
     -webkit-appearance: button;
     text-align: unset;
 
-    /* from useStyles.button — button arg #3 */
     @apply relative flex w-full items-center;
 
     border-top-width: 0;
@@ -228,27 +218,23 @@
      * boolean-pair rule.
      */
     @variant expand-icon-position-end {
-      /* from useStyles.buttonExpandIconEndNoIcon — button arg #5 */
       @variant not-icon {
         & .button {
           @apply ps-horizontal-m;
         }
       }
 
-      /* from useStyles.buttonExpandIconEnd — button arg #6 */
       & .button {
         @apply pe-horizontal-m-nudge;
       }
     }
 
-    /* from useStyles.buttonInline — button arg #7 */
     @variant inline {
       & .button {
         @apply inline-flex;
       }
     }
 
-    /* from useStyles.buttonSmall — button arg #8 */
     @variant size-small {
       & .button {
         @apply min-h-32;
@@ -259,7 +245,6 @@
       }
     }
 
-    /* from useStyles.buttonLarge — button arg #9 */
     @variant size-large {
       & .button {
         line-height: var(--leading-base-400);
@@ -267,7 +252,6 @@
       }
     }
 
-    /* from useStyles.buttonExtraLarge — button arg #10 */
     @variant size-extra-large {
       & .button {
         line-height: var(--leading-base-500);
@@ -275,7 +259,6 @@
       }
     }
 
-    /* from useStyles.buttonDisabled — button arg #11 */
     @variant disabled {
       & .button {
         @apply cursor-not-allowed;
@@ -285,7 +268,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.expandIcon — expandIcon arg #2 */
   .expand-icon {
     @apply flex h-full items-center;
 
@@ -294,14 +276,12 @@
   }
 
   .root {
-    /* from useStyles.expandIconStart — expandIcon arg #3 */
     @variant expand-icon-position-start {
       & .expand-icon {
         @apply pe-horizontal-s;
       }
     }
 
-    /* from useStyles.expandIconEnd — expandIcon arg #4 */
     @variant expand-icon-position-end {
       & .expand-icon {
         @apply flex justify-end ps-horizontal-s;
@@ -315,7 +295,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.icon — icon arg #2 */
   .icon {
     @apply flex h-full items-center pe-horizontal-s;
 

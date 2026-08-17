@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -132,7 +124,6 @@
     line-height: var(--leading-base-200);
   }
 
-  /* from useValidationMessageIconBaseClassName (makeResetStyles) */
   .validation-message-icon {
     @apply me-horizontal-xs inline-block;
 
@@ -158,7 +149,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useRootStyles.base — root arg #2 */
   .root {
     @apply grid;
   }
@@ -214,7 +204,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useSecondaryTextStyles.error — validationMessage arg #3 */
   .secondary-text-error {
     @apply text-palette-red-foreground-1;
   }
@@ -236,14 +225,12 @@
    * on top of it lives at altitude l2 — see the ALTITUDE note in the file header.
    */
 
-  /* from useLabelStyles.base — label arg #2 */
   .label {
     max-width: max-content;
     max-height: max-content;
   }
 
   .root {
-    /* from useLabelStyles.horizontal — label arg #3 */
     @variant horizontal {
       & .label {
         @apply me-horizontal-m pt-vertical-s-nudge pb-vertical-s-nudge;
@@ -255,7 +242,6 @@
       }
     }
 
-    /* from useLabelStyles.horizontalSmall — label arg #4 */
     @variant horizontal {
       @variant size-small {
         & .label {
@@ -281,7 +267,6 @@
       }
     }
 
-    /* from useLabelStyles.vertical — label arg #6 */
     @variant vertical {
       & .label {
         @apply mb-vertical-xxs pt-vertical-xxs pb-vertical-xxs;

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -62,19 +54,16 @@
  */
 
 @layer fui.components.l1 {
-  /* from useRootStyles.base — root arg #2 */
   .root {
     @apply flex w-220;
   }
 
-  /* from useRootStyles.normalize — root arg #3 */
   .normalize {
     @apply m-0 box-border p-0;
 
     box-shadow: none;
   }
 
-  /* from useRootStyles.monthPickerNotVisible — root arg #4 (!isMonthPickerVisible) */
   .month-picker-not-visible {
     @apply flex-col;
   }
@@ -84,17 +73,14 @@
    * hook, but their file position is what makes each of them beat `.root`.
    */
 
-  /* from useRootStyles.dayAndMonthPickersVisible — root arg #5 */
   .day-and-month-pickers-visible {
     @apply w-440;
   }
 
-  /* from useRootStyles.dayPickerVisibleAndWeekNumbersShown — root arg #6 */
   .day-picker-visible-and-week-numbers-shown {
     @apply w-250;
   }
 
-  /* from useRootStyles.dayAndMonthPickersVisibleAndWeekNumbersShown — root arg #7 */
   .day-and-month-pickers-visible-and-week-numbers-shown {
     @apply w-470;
   }
@@ -119,12 +105,10 @@
     top: 0;
   }
 
-  /* from useMonthPickerWrapperStyles.base */
   .month-picker-wrapper {
     @apply flex flex-col;
   }
 
-  /* from useGoTodayButtonStyles.base */
   .go-today-button {
     @apply box-content self-end overflow-visible;
 

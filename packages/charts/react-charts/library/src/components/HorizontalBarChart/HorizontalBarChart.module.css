@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -48,19 +40,16 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root */
   .root {
     @apply flex w-full flex-col text-start;
 
     /* Support custom width: `width: 100%` above; textAlign 'left' → logical `start` */
   }
 
-  /* from useStyles.items10pMargin — tokens.spacingVerticalMNudge */
   .items-10p-margin {
     @apply mb-vertical-m-nudge;
   }
 
-  /* from useStyles.items16pMargin — tokens.spacingVerticalL */
   .items-16p-margin {
     @apply mb-vertical-l;
   }
@@ -90,7 +79,6 @@
     --fui-horizontal-bar-chart-bar-wrapper-identity: initial;
   }
 
-  /* from useStyles.chartTitle — typographyStyles.caption1 expanded */
   .chart-title {
     @apply flex justify-between;
 
@@ -100,12 +88,10 @@
     line-height: var(--leading-base-200);
   }
 
-  /* from useStyles.chartTitleLeft */
   .chart-title-left {
     @apply block overflow-hidden text-ellipsis whitespace-nowrap text-neutral-foreground-1;
   }
 
-  /* from useStyles.chartTitleLeft4pMargin — 4px is the vertical XS step */
   .chart-title-left-4p-margin {
     @apply mb-vertical-xs;
   }
@@ -115,7 +101,6 @@
     @apply mb-5;
   }
 
-  /* from useStyles.chartTitleRight — typographyStyles.body1Strong expanded */
   .chart-title-right {
     @apply text-neutral-foreground-1;
 
@@ -125,7 +110,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useStyles.chartDataTextDenominator — typographyStyles.body1 expanded */
   .chart-data-text-denominator {
     @apply text-neutral-foreground-1;
 
@@ -135,12 +119,10 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useStyles.benchmarkContainer — 7px/3px/1px match no spacing step */
   .benchmark-container {
     @apply relative -mt-3 -mb-1 h-7;
   }
 
-  /* from useStyles.triangle — the benchmark marker */
   .triangle {
     @apply absolute mb-vertical-xs h-0 w-0 border-t-palette-blue-border-active;
 
@@ -188,12 +170,10 @@
     @apply pe-40;
   }
 
-  /* from useStyles.chartWrapper0ppadding — tokens.spacingHorizontalNone (0) */
   .chart-wrapper-0p-padding {
     @apply pe-horizontal-none;
   }
 
-  /* from useStyles.legendContainer — tokens.spacingVerticalL */
   .legend-container {
     @apply pt-vertical-l;
   }

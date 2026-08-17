@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -198,7 +190,6 @@
     }
   }
 
-  /* from useInputClassName (makeResetStyles) */
   .input {
     @apply box-border min-w-0 grow self-stretch;
 
@@ -237,7 +228,6 @@
     }
   }
 
-  /* from useContentClassName (makeResetStyles) — shared by contentBefore + contentAfter */
   .content {
     @apply box-border flex;
 
@@ -267,7 +257,6 @@
       line-height: var(--leading-base-200);
     }
 
-    /* from useRootStyles.large — arg #3 */
     @variant size-large {
       @apply min-h-40 gap-horizontal-s-nudge;
 
@@ -329,7 +318,6 @@
    * interactive rules.
    */
 
-  /* from useRootStyles.underline */
   .underline {
     background-color: var(--color-transparent-background);
 
@@ -349,24 +337,20 @@
     }
   }
 
-  /* from useRootStyles['filled-darker'] */
   .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
     @apply bg-neutral-background-1;
   }
 
-  /* from useRootStyles['filled-darker-shadow'] — deprecated appearance */
   .filled-darker-shadow {
     @apply bg-neutral-background-3;
 
     box-shadow: var(--shadow-2);
   }
 
-  /* from useRootStyles['filled-lighter-shadow'] — deprecated appearance */
   .filled-lighter-shadow {
     @apply bg-neutral-background-1;
 
@@ -399,7 +383,6 @@
       }
     }
 
-    /* from useRootStyles.disabled — arg #12, the last style argument. */
     @variant disabled {
       cursor: not-allowed;
       background-color: var(--color-transparent-background);
@@ -442,7 +425,6 @@
    * classes are mutually exclusive, so no two of these blocks are ever on one element.
    */
 
-  /* from useRootStyles.outlineInteractive — arg #7 (appearance === 'outline') */
   .outline {
     @variant enabled {
       @variant hover {
@@ -455,7 +437,6 @@
     }
   }
 
-  /* from useRootStyles.underlineInteractive — arg #8 (appearance === 'underline') */
   .underline {
     @variant enabled {
       @variant hover {
@@ -475,7 +456,6 @@
     }
   }
 
-  /* from useRootStyles.filledInteractive — arg #9 (appearance starts with 'filled') */
   .filled {
     @variant enabled {
       /* also handles the pressed border color (`:active` is a subset of `:focus-within`
@@ -633,7 +613,6 @@
    * carries no winner.
    */
   .root {
-    /* from useContentStyles.disabled */
     @variant disabled {
       & .content {
         @apply text-neutral-foreground-disabled;

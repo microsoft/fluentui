@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -141,7 +133,6 @@
     border: var(--spacing-thin) solid var(--color-transparent-stroke);
   }
 
-  /* from useRootRoundedBaseClassName — the rounded-only half of arg #2 */
   .rounded {
     border-radius: var(--radius-medium);
 
@@ -171,7 +162,6 @@
     }
   }
 
-  /* from useRootCircularBaseClassName — the circular-only half of arg #2 */
   .circular {
     border-radius: var(--radius-circular);
 
@@ -196,7 +186,6 @@
     }
   }
 
-  /* from useSecondaryTextBaseClassName (makeResetStyles) — secondaryText arg #2 */
   .secondary-text {
     @apply px-horizontal-xxs whitespace-nowrap;
 
@@ -211,7 +200,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useRootStyles[appearance] — root arg #3, the ENABLED branch */
   .filled {
     @apply bg-neutral-background-3 text-neutral-foreground-2;
   }
@@ -261,7 +249,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useRootStyles[size] — root arg #5 */
   .root {
     @variant size-medium {
       @apply h-32;
@@ -323,7 +310,6 @@
     }
   }
 
-  /* from useRootWithoutDismissStyles[size] — root arg #7 */
   .without-dismiss {
     @variant size-medium {
       @apply pe-7;
@@ -345,7 +331,6 @@
    * size rules read the SLOT's own `data-size`, not the root's.
    */
 
-  /* from useMediaStyles.base (arg #2) + useMediaStyles[size] (arg #3) */
   .media {
     grid-area: media;
 
@@ -365,7 +350,6 @@
     }
   }
 
-  /* from useIconStyles.base (arg #2) + useIconStyles[size] (arg #3) */
   .icon {
     grid-area: media;
 
@@ -390,7 +374,6 @@
     }
   }
 
-  /* from usePrimaryTextStyles.base (arg #2) + usePrimaryTextStyles[size] (arg #3) */
   .primary-text {
     @apply px-horizontal-xxs whitespace-nowrap;
 
@@ -459,7 +442,6 @@
 
     @apply flex;
 
-    /* from useDismissIconStyles[size] — dismissIcon arg #3 */
     @variant size-medium {
       @apply ps-horizontal-xs pe-7;
 

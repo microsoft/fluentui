@@ -85,7 +85,6 @@
     }
   }
 
-  /* from useBaseStyles.iconSelected */
   .icon-selected {
     @apply text-neutral-foreground-2-brand-selected;
   }

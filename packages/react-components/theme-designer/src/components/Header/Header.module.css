@@ -18,7 +18,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useStyles.root — lands on FluentProvider's root element */
   .root {
     @apply flex items-center;
 
@@ -35,12 +34,10 @@
     justify-content: start;
   }
 
-  /* from useStyles.text */
   .text {
     width: 300px;
   }
 
-  /* from useStyles.header */
   .header {
     @apply flex items-center justify-between;
 

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -86,19 +78,16 @@
  * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, flat half */
   .root {
     @apply relative ps-horizontal-s pe-horizontal-s pt-0 pb-0;
 
     font-weight: var(--font-weight-regular);
   }
 
-  /* from useTableLayoutStyles.root — arg #4, native-table branch */
   .table-root {
     @apply table-cell align-middle;
   }
 
-  /* from useFlexLayoutStyles.root — arg #4, flex branch */
   .flex-root {
     @apply flex min-w-0;
 
@@ -112,7 +101,6 @@
  * BLOCK 2 — keyborg focus indicator. Griffel's `d` bucket, but at 0-2-0.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-within-fui {
       @apply rounded-medium;
@@ -126,7 +114,6 @@
  * BLOCK 3 — `h` bucket.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.rootInteractive[':hover'] — arg #3 */
   .root-interactive {
     @variant hover {
       @apply bg-subtle-background-hover text-neutral-foreground-1-hover;
@@ -138,7 +125,6 @@
  * BLOCK 4 — `a` bucket.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.rootInteractive[':active'] — arg #3 */
   .root-interactive {
     @variant active {
       @apply bg-subtle-background-pressed text-neutral-foreground-1-pressed;
@@ -151,7 +137,6 @@
  * bucket interleaving is possible; written in slot then mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.resetButton — `button` arg #2 */
   .reset-button {
     @apply box-content resize-x overflow-visible p-0 text-inherit;
 
@@ -167,7 +152,6 @@
     border: none;
   }
 
-  /* from useStyles.button — `button` arg #3 */
   .button {
     @apply relative flex h-full min-h-32 w-full items-center gap-horizontal-xs;
 
@@ -181,12 +165,10 @@
     outline-style: none;
   }
 
-  /* from useStyles.sortable — `button` arg #4 */
   .sortable {
     @apply cursor-pointer;
   }
 
-  /* from useStyles.sortIcon — `sortIcon` arg #2 */
   .sort-icon {
     @apply flex items-center pt-vertical-xxs;
   }

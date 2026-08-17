@@ -28,22 +28,18 @@
  */
 
 @layer fui.components.l1 {
-  /* from useGridStyles.grid */
   .grid {
     @apply grid justify-evenly;
   }
 
-  /* from useGridStyles.columnsDefault */
   .columns-default {
     grid-template-columns: repeat(5, 1fr);
   }
 
-  /* from useGridStyles.onlyRows */
   .only-rows {
     @apply grid-flow-col;
   }
 
-  /* from useGridStyles.rows1 / rows2 / rows3 */
   .rows1 {
     grid-template-rows: repeat(1, 1fr);
   }
@@ -56,7 +52,6 @@
     grid-template-rows: repeat(3, 1fr);
   }
 
-  /* from useGridStyles.columns1 / columns2 / columns3 */
   .columns1 {
     grid-template-columns: repeat(1, 1fr);
   }

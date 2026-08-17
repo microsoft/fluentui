@@ -20,26 +20,22 @@
     @apply flex items-center justify-end pe-20;
   }
 
-  /* from useStyles.exportHeader */
   .export-header {
     @apply grid items-center;
 
     grid-template-columns: 350px 50px;
   }
 
-  /* from useStyles.popover */
   .popover {
     width: 300px;
   }
 
-  /* from useStyles.text */
   .text {
     @apply flex;
 
     height: 50vh;
   }
 
-  /* from useStyles.textarea */
   .textarea {
     @apply box-border;
 

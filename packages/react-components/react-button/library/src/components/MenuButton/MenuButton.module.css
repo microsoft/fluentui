@@ -67,7 +67,6 @@
    * most Button-family appearance sets); only the icon slot's `primary` slice is empty.
    */
 
-  /* from useRootExpandedStyles.outline */
   .expanded-outline {
     @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected text-neutral-foreground-1-selected;
 
@@ -79,22 +78,18 @@
     border-left-width: var(--spacing-thicker);
   }
 
-  /* from useRootExpandedStyles.primary */
   .expanded-primary {
     @apply bg-brand-background-selected;
   }
 
-  /* from useRootExpandedStyles.secondary */
   .expanded-secondary {
     @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
   }
 
-  /* from useRootExpandedStyles.subtle */
   .expanded-subtle {
     @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
   }
 
-  /* from useRootExpandedStyles.transparent */
   .expanded-transparent {
     @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
   }
@@ -104,7 +99,6 @@
  * Icon slot — react-button's, so l2 (see ALTITUDE above).
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /* from useIconExpandedStyles.highContrast */
   .icon-expanded-high-contrast {
     @variant forced-colors {
       @variant hover {
@@ -118,7 +112,6 @@
  * `menuIcon` — MenuButton's own slot, so `fui.components.l1`.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useMenuIconStyles.base */
   .menu-icon {
     line-height: 0;
   }
@@ -129,7 +122,6 @@
    * ride `--base-scale` (D4), matching react-button's own icon sizing form.
    */
 
-  /* from useMenuIconStyles.small */
   .menu-icon-small {
     @apply size-12;
 
@@ -137,7 +129,6 @@
     line-height: var(--leading-base-200);
   }
 
-  /* from useMenuIconStyles.medium */
   .menu-icon-medium {
     @apply size-12;
 
@@ -145,7 +136,6 @@
     line-height: var(--leading-base-200);
   }
 
-  /* from useMenuIconStyles.large */
   .menu-icon-large {
     @apply size-16;
 
@@ -185,7 +175,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useRootExpandedStyles.base — arg #2 */
   .expanded {
     & :global(.fui-Icon-filled) {
       @apply inline;

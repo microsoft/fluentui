@@ -77,19 +77,16 @@
     @apply w-200 grow;
   }
 
-  /* from useStyles.globalTogglesContainer — columnGap: spacingHorizontalXXXL */
   .global-toggles-container {
     @apply flex gap-x-horizontal-xxxl;
   }
 
-  /* from useStyles.description */
   .description {
     @apply grid;
 
     grid-template-columns: 1fr min-content;
   }
 
-  /* from useStyles.additionalInfoWrapper */
   .additional-info-wrapper {
     @apply flex flex-col gap-vertical-m;
   }
@@ -106,12 +103,10 @@
     border-style: solid;
   }
 
-  /* from useStyles.additionalInfoMessage */
   .additional-info-message {
     @apply flex flex-row items-center gap-vertical-xs;
   }
 
-  /* from useStyles.infoIcon */
   .info-icon {
     @apply flex flex-1 flex-col gap-vertical-xs;
   }

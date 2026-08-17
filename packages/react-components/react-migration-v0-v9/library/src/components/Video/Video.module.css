@@ -12,7 +12,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useVideoStyles.root */
   .root {
     @apply inline-block h-auto w-full align-middle;
   }

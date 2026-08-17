@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -91,7 +83,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useStyles.chart */
   .chart {
     @apply block;
   }
@@ -121,7 +112,6 @@
     forced-color-adjust: auto;
   }
 
-  /* from useStyles.needle */
   .needle {
     @apply fill-neutral-foreground-1 stroke-neutral-background-1;
   }
@@ -160,19 +150,16 @@
     outline: none;
   }
 
-  /* from useStyles.gradientSegment */
   .gradient-segment {
     @apply h-full w-full;
   }
 
-  /* from useStyles.calloutContentRoot */
   .callout-content-root {
     @apply grid overflow-hidden bg-neutral-background-1;
 
     background-blend-mode: normal, luminosity;
   }
 
-  /* from useStyles.calloutDateTimeContainer */
   .callout-date-time-container {
     @apply flex flex-row justify-between;
   }
@@ -200,12 +187,10 @@
     forced-color-adjust: none;
   }
 
-  /* from useStyles.shapeStyles — marginRight → logical end */
   .shape-styles {
     @apply me-horizontal-s;
   }
 
-  /* from useStyles.calloutlegendText — typographyStyles.caption1 + color */
   .callout-legend-text {
     @apply text-neutral-foreground-2;
 
@@ -238,7 +223,6 @@
     border-top: 1px solid var(--color-neutral-stroke-1);
   }
 
-  /* from useStyles.legendsContainer */
   .legends-container {
     @apply w-full;
   }

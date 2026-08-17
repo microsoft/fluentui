@@ -12,7 +12,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useStyles.root — lands on FluentProvider's root element */
   .root {
     @apply grid items-center;
 
@@ -22,12 +21,10 @@
 }
 
 @layer fui.components.l4 {
-  /* from useStyles.logo */
   .logo {
     @apply flex items-center justify-evenly;
   }
 
-  /* from useStyles.element */
   .element {
     @apply flex items-center justify-center;
   }

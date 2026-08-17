@@ -67,7 +67,6 @@
     stroke-width: var(--spacing-thickest);
   }
 
-  /* from useStyles.arcLabel — typographyStyles.caption1Strong + fill */
   .arc-label {
     font-family: var(--font-base);
     font-size: var(--text-base-200);

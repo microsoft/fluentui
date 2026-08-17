@@ -39,7 +39,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseStyles (makeResetStyles) */
   .root {
     /* `padding: '0 10px'` — block 0, inline 10px (spacing step MNudge). Symmetric on the
        inline axis, so the logical utilities are a straight substitution. */
@@ -59,7 +58,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.rootClickable */
   .root-clickable {
     @apply cursor-pointer;
 
@@ -68,7 +66,6 @@
     }
   }
 
-  /* from useStyles.rootSelected */
   .root-selected {
     @apply bg-neutral-background-1-selected;
   }

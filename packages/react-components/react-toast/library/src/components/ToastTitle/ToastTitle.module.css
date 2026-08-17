@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -91,7 +83,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
   .root {
     @apply flex text-neutral-foreground-1;
 
@@ -102,7 +93,6 @@
     word-break: break-word;
   }
 
-  /* from useMediaBaseClassName (makeResetStyles) — media arg #2 */
   .media {
     @apply flex pe-horizontal-s pt-vertical-xxs text-neutral-foreground-1;
 
@@ -111,7 +101,6 @@
     font-size: calc(16px * var(--base-scale));
   }
 
-  /* from useActionBaseClassName (makeResetStyles) — action arg #2 */
   .action {
     @apply flex ps-horizontal-m text-brand-foreground-1;
 
@@ -126,12 +115,10 @@
 }
 
 @layer fui.components.l1 {
-  /* from useInvertedStyles.root — root arg #3 */
   .root-inverted {
     @apply text-neutral-foreground-inverted-2;
   }
 
-  /* from useInvertedStyles.media — media arg #3 */
   .media-inverted {
     @apply text-neutral-foreground-inverted;
   }
@@ -174,7 +161,6 @@
     @apply text-neutral-foreground-inverted-2;
   }
 
-  /* from useInvertedStyles.action — action arg #3 */
   .action-inverted {
     @apply text-brand-foreground-inverted;
   }

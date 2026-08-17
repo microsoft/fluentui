@@ -30,7 +30,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2 */
   .root {
     @apply w-auto max-w-full;
   }

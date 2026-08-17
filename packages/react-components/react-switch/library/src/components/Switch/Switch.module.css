@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -111,7 +103,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply relative box-border inline-flex items-start;
 
@@ -138,7 +129,6 @@
     }
   }
 
-  /* from useIndicatorBaseClassName (makeResetStyles) */
   .indicator {
     @apply pointer-events-none box-border h-20 w-40 shrink-0;
 
@@ -379,7 +369,6 @@
       }
     }
 
-    /* from useIndicatorStyles.sizeSmall — indicator arg #4 */
     @variant size-small {
       & .indicator {
         @apply h-16 w-32;
@@ -459,7 +448,6 @@
    * on top of it lives at altitude l2 — see the ALTITUDE note in the file header.
    */
 
-  /* from useLabelStyles.base — label arg #2 */
   .label {
     @apply cursor-pointer ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
 
@@ -477,7 +465,6 @@
   }
 
   .root {
-    /* from useLabelStyles[labelPosition] — label arg #3 */
     @variant label-above {
       & .label {
         @apply w-full pt-vertical-xs pb-vertical-xs;

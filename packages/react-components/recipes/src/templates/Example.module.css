@@ -19,7 +19,6 @@
  * output, which is what would have made it l2.
  */
 @layer fui.components.l4 {
-  /* from useExampleStyles.root */
   .root {
     @apply m-6 rounded-[16px] border-neutral-stroke-1 p-30;
 
@@ -45,7 +44,6 @@
     background-color: rgb(250, 250, 250);
   }
 
-  /* from useExampleStyles.centered */
   .centered {
     @apply justify-center;
   }

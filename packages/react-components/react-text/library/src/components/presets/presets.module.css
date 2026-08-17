@@ -121,7 +121,6 @@
     line-height: var(--leading-base-100);
   }
 
-  /* from useDisplayStyles.root — typographyStyles.display */
   .display {
     font-family: var(--font-base);
     font-size: var(--text-hero-1000);
@@ -129,7 +128,6 @@
     line-height: var(--leading-hero-1000);
   }
 
-  /* from useLargeTitleStyles.root — typographyStyles.largeTitle */
   .large-title {
     font-family: var(--font-base);
     font-size: var(--text-hero-900);

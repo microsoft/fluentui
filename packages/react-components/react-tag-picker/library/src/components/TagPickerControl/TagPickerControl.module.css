@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -230,7 +222,6 @@
    * `border-thin` does not exist.
    */
 
-  /* from useStyles.outline (the default appearance) */
   .outline {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
@@ -257,7 +248,6 @@
     border-radius: 0;
   }
 
-  /* from useStyles['filled-lighter'] */
   .filled-lighter {
     @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-1;
 
@@ -271,7 +261,6 @@
     border-left-style: solid;
   }
 
-  /* from useStyles['filled-darker'] */
   .filled-darker {
     @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-3;
 
@@ -427,7 +416,6 @@
    * `--fui-TagPickerControl-aside-width`, which the root's `padding-inline-end` above reads.
    */
   .root {
-    /* from useAsideStyles.root — arg #2 */
     & .aside {
       @apply absolute end-horizontal-m flex h-full cursor-text;
 
@@ -436,7 +424,6 @@
       /* compiled `[ltr, rtl]` property flip (`j35jbq: ["f8b87gs","fedtrts"]`) → logical */
     }
 
-    /* from useAsideStyles[size] — arg #3 */
     @variant size-medium {
       & .aside {
         @apply min-h-32;
@@ -464,7 +451,6 @@
    * react-input and react-select use for their inner slots.
    */
   .root {
-    /* from useIconStyles.icon — arg #2 */
     & .icon {
       @apply box-border flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
 
@@ -501,7 +487,6 @@
       }
     }
 
-    /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
         @apply cursor-not-allowed text-neutral-foreground-disabled;

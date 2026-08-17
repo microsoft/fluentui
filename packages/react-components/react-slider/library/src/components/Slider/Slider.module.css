@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -137,7 +129,6 @@
 @layer fui.components.l1 {
   /* ═══ root ═══════════════════════════════════════════════════════════════════════ */
 
-  /* from useRootStyles.root — root arg #2 */
   .root {
     @apply relative inline-grid touch-none items-center justify-items-center;
 
@@ -214,7 +205,6 @@
       }
     }
 
-    /* from useRootStyles.small / .medium — root arg #4 */
     @variant size-small {
       @apply min-h-24;
 
@@ -308,7 +298,6 @@
 
   /* ═══ rail ═══════════════════════════════════════════════════════════════════════ */
 
-  /* from useRailStyles.rail — rail arg #2 */
   .rail {
     @apply pointer-events-none relative;
 
@@ -406,7 +395,6 @@
 
   /* ═══ thumb ══════════════════════════════════════════════════════════════════════ */
 
-  /* from useThumbStyles.thumb — thumb arg #2 */
   .thumb {
     /*
      * Internal, thumb-local custom property (was `thumbPositionVar` in the Griffel source).
@@ -457,7 +445,6 @@
   }
 
   .root {
-    /* from useThumbStyles.horizontal / .vertical — thumb arg #3 */
     @variant horizontal {
       & .thumb {
         /* VALUE flip: compiled `[translateX(-50%), translateX(50%)]` */
@@ -485,7 +472,6 @@
       }
     }
 
-    /* from useThumbStyles.disabled — thumb arg #4 */
     @variant disabled {
       & .thumb::before {
         border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--color-neutral-foreground-disabled);
@@ -495,7 +481,6 @@
 
   /* ═══ input ══════════════════════════════════════════════════════════════════════ */
 
-  /* from useInputStyles.input — input arg #2 */
   .input {
     @apply cursor-pointer;
 
@@ -517,7 +502,6 @@
   }
 
   .root {
-    /* from useInputStyles.horizontal / .vertical — input arg #3 */
     @variant horizontal {
       & .input {
         @apply w-full;
@@ -556,7 +540,6 @@
       }
     }
 
-    /* from useInputStyles.disabled — input arg #4 */
     @variant disabled {
       & .input {
         @apply cursor-default;

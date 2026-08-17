@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -138,7 +130,6 @@
     }
   }
 
-  /* from useRootRoundedBaseClassName — the rounded-only half of arg #2 */
   .rounded {
     border-radius: var(--radius-medium);
 
@@ -162,7 +153,6 @@
     }
   }
 
-  /* from useRootCircularBaseClassName — the circular-only half of arg #2 */
   .circular {
     border-radius: var(--radius-circular);
 
@@ -338,7 +328,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useRootStyles[size] — arg #6 */
   .root {
     @variant size-medium {
       @apply pe-7;
@@ -382,7 +371,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useRootWithoutMediaStyles[size] — arg #7 */
   .without-media {
     @variant size-medium {
       @apply ps-7;
@@ -470,7 +458,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useRootStyles.outline — arg #4, the `h` and `a` bucket halves */
   .outline {
     @variant hover {
       & :global(.fui-Icon-filled) {
@@ -493,7 +480,6 @@
     }
   }
 
-  /* from useRootStyles.selected — arg #5, the `h` and `a` bucket halves */
   .selected {
     @variant hover {
       & :global(.fui-Icon-filled) {

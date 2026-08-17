@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -41,7 +33,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useBaseStyles.base */
   .root {
     @apply relative box-border flex grow flex-row items-center text-center;
 
@@ -55,7 +46,6 @@
       @apply box-border flex grow;
     }
 
-    /* from useBaseStyles.start / .center / .end — pseudo-element presence only */
     @variant align-content-start {
       &::after {
         content: '';
@@ -75,7 +65,6 @@
       }
     }
 
-    /* from useHorizontalStyles.base */
     @variant horizontal {
       @apply w-full;
 
@@ -89,7 +78,6 @@
         border-top-width: var(--spacing-thin);
       }
 
-      /* from useHorizontalStyles.start — textAlign 'left' → logical `start` */
       @variant align-content-start {
         @apply text-start;
 
@@ -104,7 +92,6 @@
         }
       }
 
-      /* from useHorizontalStyles.center */
       @variant align-content-center {
         @apply text-center;
 
@@ -117,7 +104,6 @@
         }
       }
 
-      /* from useHorizontalStyles.end — textAlign 'right' → logical `end` */
       @variant align-content-end {
         @apply text-end;
 
@@ -133,7 +119,6 @@
       }
     }
 
-    /* from useVerticalStyles.base — borderRight* → border-inline-end-* */
     @variant vertical {
       @apply min-h-20 flex-col;
 
@@ -145,7 +130,6 @@
         border-inline-end-width: var(--spacing-thin);
       }
 
-      /* from useVerticalStyles.start */
       @variant align-content-start {
         &::before {
           @apply mb-vertical-m max-h-8;
@@ -158,7 +142,6 @@
         }
       }
 
-      /* from useVerticalStyles.center */
       @variant align-content-center {
         &::before {
           @apply mb-vertical-m;
@@ -169,7 +152,6 @@
         }
       }
 
-      /* from useVerticalStyles.end */
       @variant align-content-end {
         &::before {
           @apply mb-vertical-m;
@@ -182,7 +164,6 @@
         }
       }
 
-      /* from useVerticalStyles.withChildren — must beat .base min-height:20px above */
       @variant not-empty {
         @apply min-h-84;
       }
@@ -201,7 +182,6 @@
     }
   }
 
-  /* from useBaseStyles.default */
   .default {
     color: var(--color-neutral-foreground-2);
 
@@ -211,7 +191,6 @@
     }
   }
 
-  /* from useBaseStyles.subtle */
   .subtle {
     color: var(--color-neutral-foreground-3);
 
@@ -221,7 +200,6 @@
     }
   }
 
-  /* from useBaseStyles.strong */
   .strong {
     color: var(--color-neutral-foreground-1);
 

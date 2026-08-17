@@ -5,14 +5,12 @@
 /* Replaces TokenBoxes.tsx's inline `makeStyles`. App altitude: fui.components.l4. */
 
 @layer fui.components.l4 {
-  /* from useStyles.root — gridGap (both axes): spacingVerticalXXL */
   .root {
     @apply grid gap-vertical-xxl;
 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
-  /* from useStyles.topbar — paddingBottom: spacingVerticalS */
   .topbar {
     @apply flex justify-between pb-vertical-s;
   }
@@ -29,7 +27,6 @@
       0 1.5px 5px 0 rgb(0 0 0 / 19%);
   }
 
-  /* from useStyles.colors */
   .colors {
     height: 100px;
   }

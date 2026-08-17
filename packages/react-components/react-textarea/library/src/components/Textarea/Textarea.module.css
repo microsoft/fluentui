@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -65,7 +57,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useRootStyles.base */
   .root {
     @apply relative m-0 box-border inline-flex align-top;
 
@@ -84,7 +75,6 @@
 
     border-radius: var(--radius-medium);
 
-    /* from useRootStyles.disabled — arg #3 */
     @variant disabled {
       background-color: var(--color-transparent-background);
 
@@ -132,17 +122,14 @@
 @layer fui.components.l1 {
   /* Appearance variations — arg #5. */
 
-  /* from useRootStyles['filled-darker'] */
   .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
     @apply bg-neutral-background-1;
   }
 
-  /* from useRootStyles['filled-darker-shadow'] (deprecated appearance) */
   .filled-darker-shadow {
     @apply border-transparent-stroke-interactive bg-neutral-background-3;
 
@@ -152,7 +139,6 @@
     box-shadow: var(--shadow-2);
   }
 
-  /* from useRootStyles['filled-lighter-shadow'] (deprecated appearance) */
   .filled-lighter-shadow {
     @apply border-transparent-stroke-interactive bg-neutral-background-1;
 
@@ -162,7 +148,6 @@
     box-shadow: var(--shadow-2);
   }
 
-  /* from useRootStyles.outline */
   .outline {
     @apply border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
 
@@ -301,7 +286,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useTextareaStyles.base — textarea slot arg #2 */
   .textarea {
     @apply m-0 box-border h-full grow;
 
@@ -331,7 +315,6 @@
      * `size` is a scale prop, so it rides `data-size` rather than a class (D3).
      */
 
-    /* from useTextareaStyles.small + typographyStyles.caption1 */
     @variant size-small {
       @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs;
 
@@ -346,7 +329,6 @@
       line-height: var(--leading-base-200);
     }
 
-    /* from useTextareaStyles.medium + typographyStyles.body1 */
     @variant size-medium {
       @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge;
 
@@ -360,7 +342,6 @@
       line-height: var(--leading-base-300);
     }
 
-    /* from useTextareaStyles.large + typographyStyles.body2 */
     @variant size-large {
       @apply max-h-320 min-h-64 px-14 py-vertical-s;
 

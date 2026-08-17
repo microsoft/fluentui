@@ -59,7 +59,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.elevated — arg #3 */
   .elevated {
     @apply gap-horizontal-xxl;
   }

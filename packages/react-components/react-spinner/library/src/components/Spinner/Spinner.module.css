@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -88,7 +80,6 @@
  * a layer would be meaningless, and CSS Modules already makes each name unique.
  */
 
-/* from useSpinnerBaseClassName.animationName */
 @keyframes spinner-spin {
   0% {
     transform: rotate(0deg);
@@ -109,7 +100,6 @@
   }
 }
 
-/* from useSpinnerTailBaseClassName.animationName */
 @keyframes spinner-tail-spin {
   0% {
     transform: rotate(-135deg);
@@ -138,7 +128,6 @@
   }
 }
 
-/* from useSpinnerTailBaseClassName['&::before'].animationName */
 @keyframes spinner-tail-before-spin {
   0% {
     transform: rotate(0deg);
@@ -167,7 +156,6 @@
   }
 }
 
-/* from useSpinnerTailBaseClassName['&::after'].animationName */
 @keyframes spinner-tail-after-spin {
   0% {
     transform: rotate(0deg);
@@ -197,7 +185,6 @@
 }
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply flex items-center justify-center gap-horizontal-s overflow-hidden;
 
@@ -350,7 +337,6 @@
    * for why the root and not the slot itself.
    */
   .root {
-    /* from useSpinnerStyles['extra-tiny'] */
     @variant size-extra-tiny {
       & .spinner {
         @apply size-16;
@@ -359,7 +345,6 @@
       }
     }
 
-    /* from useSpinnerStyles.tiny */
     @variant size-tiny {
       & .spinner {
         @apply size-20;
@@ -368,7 +353,6 @@
       }
     }
 
-    /* from useSpinnerStyles['extra-small'] */
     @variant size-extra-small {
       & .spinner {
         @apply size-24;
@@ -377,7 +361,6 @@
       }
     }
 
-    /* from useSpinnerStyles.small */
     @variant size-small {
       & .spinner {
         @apply size-28;
@@ -386,7 +369,6 @@
       }
     }
 
-    /* from useSpinnerStyles.medium */
     @variant size-medium {
       & .spinner {
         @apply size-32;
@@ -395,7 +377,6 @@
       }
     }
 
-    /* from useSpinnerStyles.large */
     @variant size-large {
       & .spinner {
         @apply size-36;
@@ -404,7 +385,6 @@
       }
     }
 
-    /* from useSpinnerStyles['extra-large'] */
     @variant size-extra-large {
       & .spinner {
         @apply size-40;
@@ -413,7 +393,6 @@
       }
     }
 
-    /* from useSpinnerStyles.huge */
     @variant size-huge {
       & .spinner {
         @apply size-44;
@@ -474,7 +453,6 @@
    * hook (see the header).
    */
   .root {
-    /* from useLabelStyles['extra-tiny'] — typographyStyles.body1 */
     @variant size-extra-tiny {
       & .label {
         font-family: var(--font-base);
@@ -484,7 +462,6 @@
       }
     }
 
-    /* from useLabelStyles.tiny — typographyStyles.body1 */
     @variant size-tiny {
       & .label {
         font-family: var(--font-base);
@@ -494,7 +471,6 @@
       }
     }
 
-    /* from useLabelStyles['extra-small'] — typographyStyles.body1 */
     @variant size-extra-small {
       & .label {
         font-family: var(--font-base);
@@ -504,7 +480,6 @@
       }
     }
 
-    /* from useLabelStyles.small — typographyStyles.body1 */
     @variant size-small {
       & .label {
         font-family: var(--font-base);
@@ -514,7 +489,6 @@
       }
     }
 
-    /* from useLabelStyles.medium — typographyStyles.subtitle2 */
     @variant size-medium {
       & .label {
         font-family: var(--font-base);
@@ -524,7 +498,6 @@
       }
     }
 
-    /* from useLabelStyles.large — typographyStyles.subtitle2 */
     @variant size-large {
       & .label {
         font-family: var(--font-base);
@@ -534,7 +507,6 @@
       }
     }
 
-    /* from useLabelStyles['extra-large'] — typographyStyles.subtitle2 */
     @variant size-extra-large {
       & .label {
         font-family: var(--font-base);
@@ -544,7 +516,6 @@
       }
     }
 
-    /* from useLabelStyles.huge — typographyStyles.subtitle1 */
     @variant size-huge {
       & .label {
         font-family: var(--font-base);
@@ -557,7 +528,6 @@
 }
 
 @layer fui.components.l2 {
-  /* from useLabelStyles.inverted — arg #3 on the label slot */
   .label-inverted {
     @apply text-neutral-foreground-static-inverted;
   }

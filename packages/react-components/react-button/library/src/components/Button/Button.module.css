@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -90,7 +82,6 @@
  */
 
 @layer fui.base {
-  /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply m-horizontal-none box-border inline-flex items-center justify-center overflow-hidden align-middle no-underline;
 
@@ -185,7 +176,6 @@
     }
   }
 
-  /* from useIconBaseClassName (makeResetStyles) */
   .icon {
     @apply inline-flex size-20 items-center justify-center;
 
@@ -240,7 +230,6 @@
    * matching Griffel's empty class string today.
    */
 
-  /* from useRootStyles.outline */
   .outline {
     background-color: var(--color-transparent-background);
 
@@ -253,7 +242,6 @@
     }
   }
 
-  /* from useRootStyles.primary */
   .primary {
     background-color: var(--color-brand-background);
     border-top-color: transparent;
@@ -309,7 +297,6 @@
     }
   }
 
-  /* from useRootStyles.subtle */
   .subtle {
     background-color: var(--color-subtle-background);
     border-top-color: transparent;
@@ -370,7 +357,6 @@
     }
   }
 
-  /* from useRootStyles.transparent */
   .transparent {
     background-color: var(--color-transparent-background);
     border-top-color: transparent;
@@ -426,7 +412,6 @@
      * fui.components.l1 compose predictably.
      */
 
-    /* from useRootStyles.small */
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3;
 
@@ -437,7 +422,6 @@
       line-height: var(--leading-base-200);
     }
 
-    /* from useRootStyles.large */
     @variant size-large {
       @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s;
 
@@ -464,7 +448,6 @@
       }
     }
 
-    /* from useIconStyles.large */
     @variant size-large {
       & .icon {
         @apply size-24;
@@ -533,7 +516,6 @@
         }
       }
 
-      /* from useRootDisabledStyles.highContrast — arg #9 */
       @variant forced-colors {
         background-color: ButtonFace;
         border-top-color: GrayText;
@@ -581,7 +563,6 @@
       }
     }
 
-    /* from useRootFocusStyles.small / .large — arg #12 */
     @variant focus-visible-fui {
       @variant size-small {
         @apply rounded-small;
@@ -599,7 +580,6 @@
    * layer, exactly as mergeClasses arg #10 beats arg #8.
    */
 
-  /* from useRootDisabledStyles.outline */
   .outline {
     @variant disabled-any {
       background-color: var(--color-transparent-background);
@@ -614,7 +594,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.primary */
   .primary {
     @variant disabled-any {
       border-top-color: transparent;
@@ -677,7 +656,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.subtle */
   .subtle {
     @variant disabled-any {
       background-color: var(--color-transparent-background);
@@ -706,7 +684,6 @@
     }
   }
 
-  /* from useRootDisabledStyles.transparent */
   .transparent {
     @variant disabled-any {
       background-color: var(--color-transparent-background);
@@ -762,7 +739,6 @@
    * from the base/size styles), so `styles.rounded` is intentionally undefined.
    */
 
-  /* from useRootStyles.circular + useRootFocusStyles.circular */
   .circular {
     border-radius: var(--radius-circular);
 
@@ -771,7 +747,6 @@
     }
   }
 
-  /* from useRootStyles.square + useRootFocusStyles.square */
   .square {
     border-radius: var(--radius-none);
 
@@ -846,7 +821,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useRootStyles.subtle — arg #3, the `h` bucket halves */
   .subtle {
     @variant hover {
       & :global(.fui-Icon-filled) {
@@ -869,7 +843,6 @@
     }
   }
 
-  /* from useRootStyles.transparent — arg #3, the `h` bucket halves */
   .transparent {
     @variant hover {
       & :global(.fui-Icon-filled) {

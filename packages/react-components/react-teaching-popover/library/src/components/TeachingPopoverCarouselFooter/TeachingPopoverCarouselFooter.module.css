@@ -74,7 +74,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — root arg #2 */
   .root {
     @apply flex flex-row;
   }

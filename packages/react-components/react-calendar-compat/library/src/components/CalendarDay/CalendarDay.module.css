@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -72,21 +64,18 @@
     @apply box-content w-196 p-horizontal-m;
   }
 
-  /* from useRootStyles.showWeekNumbers — root arg #4 (showWeekNumbers) */
   .show-week-numbers {
     @apply w-226;
   }
 }
 
 @layer fui.components.l1 {
-  /* from useHeaderStyles.base */
   .header {
     @apply relative inline-flex h-28 w-full;
 
     line-height: calc(44px * var(--base-scale));
   }
 
-  /* from useMonthAndYearStyles.base — monthAndYear arg #2 */
   .month-and-year {
     @apply inline-block grow items-center overflow-hidden rounded-medium bg-transparent-background py-0 ps-horizontal-m-nudge pe-horizontal-xs text-start text-ellipsis whitespace-nowrap text-neutral-foreground-1;
 
@@ -130,12 +119,10 @@
     }
   }
 
-  /* from useMonthComponentsStyles.base */
   .month-components {
     @apply inline-flex self-end;
   }
 
-  /* from useHeaderIconButtonStyles.base */
   .header-icon-button {
     background-color: var(--color-transparent-background);
 

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -260,7 +252,6 @@
     }
   }
 
-  /* from useInputClassName (makeResetStyles) */
   .input {
     @apply w-full;
 
@@ -399,7 +390,6 @@
    * arg #6's interactive rules.
    */
 
-  /* from useRootStyles.underline */
   .underline {
     &::before {
       @apply rounded-none;
@@ -415,12 +405,10 @@
     }
   }
 
-  /* from useRootStyles['filled-darker'] */
   .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
     @apply bg-neutral-background-1;
   }
@@ -460,7 +448,6 @@
       }
     }
 
-    /* from useRootStyles.disabled — root arg #10, the last style argument. */
     @variant disabled {
       cursor: not-allowed;
       background-color: var(--color-transparent-background);
@@ -494,7 +481,6 @@
    * are mutually exclusive, so no two of these blocks are ever on one element.
    */
 
-  /* from useRootStyles.outlineInteractive — root arg #6 (appearance === 'outline') */
   .outline {
     @variant enabled {
       @variant hover {
@@ -511,7 +497,6 @@
     }
   }
 
-  /* from useRootStyles.underlineInteractive — root arg #7 (appearance === 'underline') */
   .underline {
     @variant enabled {
       @variant hover {
@@ -609,7 +594,6 @@
    * Griffel decided it by bucket + argument order.
    */
 
-  /* from useButtonStyles.increment — button arg #4 */
   .increment {
     @apply pt-vertical-xs pb-1;
 
@@ -621,7 +605,6 @@
     /* 4px = the XS step; 1px matches no step, so the numeric fallback */
   }
 
-  /* from useButtonStyles.decrement — button arg #4 */
   .decrement {
     @apply pt-1 pb-vertical-xs;
 
@@ -636,7 +619,6 @@
    * so the default appearance simply keeps the reset's interaction colours.
    */
 
-  /* from useButtonStyles.underline */
   .underline {
     & .button {
       background-color: transparent;
@@ -662,7 +644,6 @@
     }
   }
 
-  /* from useButtonStyles['filled-darker'] */
   .filled-darker {
     & .button {
       background-color: transparent;

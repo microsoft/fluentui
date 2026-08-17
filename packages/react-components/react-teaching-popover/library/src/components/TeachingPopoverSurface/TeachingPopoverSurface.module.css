@@ -65,7 +65,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useStyles.root — root arg #2 */
   .root {
     @apply box-border min-w-320 rounded-x-large p-vertical-l;
   }

@@ -23,12 +23,10 @@
  */
 
 @layer fui.components.l2 {
-  /* from useAttachmentActionStyles.root */
   .root {
     @apply relative inline-flex h-32 max-w-280 min-w-32 cursor-pointer items-center justify-center align-middle;
   }
 
-  /* from useAttachmentActionStyles.disabled */
   .disabled {
     @apply cursor-default;
   }

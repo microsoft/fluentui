@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -148,7 +140,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.root — root arg #2 */
   .root {
     @apply relative;
 
@@ -255,7 +246,6 @@
     @apply text-brand-foreground-1;
   }
 
-  /* from useIndicatorStyles.brandFilled — unselectedIcon arg #4, filled branch */
   .brand-filled {
     @apply text-brand-background-2;
   }
@@ -265,7 +255,6 @@
     @apply text-palette-marigold-border-active;
   }
 
-  /* from useIndicatorStyles.marigoldFilled — unselectedIcon arg #5, filled branch */
   .marigold-filled {
     @apply text-palette-marigold-background-2;
   }

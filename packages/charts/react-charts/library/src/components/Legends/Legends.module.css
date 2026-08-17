@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -53,7 +45,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root */
   .root {
     @apply w-full items-center whitespace-nowrap;
 
@@ -65,7 +56,6 @@
      */
   }
 
-  /* from useStyles.rect */
   .rect {
     @apply me-horizontal-s w-horizontal-m;
 
@@ -95,7 +85,6 @@
     }
   }
 
-  /* from useStyles.shape */
   .shape {
     @apply me-horizontal-s;
   }
@@ -118,7 +107,6 @@
     border-top-style: solid;
   }
 
-  /* from useStyles.text — typographyStyles.caption1 expanded */
   .text {
     @apply text-neutral-foreground-1;
 
@@ -147,7 +135,6 @@
     border-left-style: solid;
   }
 
-  /* from useStyles.legendContainer */
   .legend-container {
     @apply mx-horizontal-xs my-vertical-xs;
 
@@ -157,7 +144,6 @@
     flex-basis: auto;
   }
 
-  /* from useStyles.annotation */
   .annotation {
     @apply flex items-center gap-horizontal-xs;
   }
@@ -197,7 +183,6 @@
     border-bottom-style: none;
     border-left-style: none;
 
-    /* from useStyles.legend[HighContrastSelector] and useStyles.legend['&:hover'] */
     @variant forced-colors {
       color: WindowText;
       forced-color-adjust: none;
@@ -218,7 +203,6 @@
     }
   }
 
-  /* from useStyles.resizableArea — applied to the element `<Overflow>` owns */
   .resizable-area {
     @apply relative start-1/2 top-auto max-w-800 min-w-200;
 

@@ -175,7 +175,6 @@
 }
 
 @layer fui.components.l2 {
-  /* from useStyles.prevWide / .prevOverlayWide / .prevOverlayExpanded — `prev` args #2–#4 */
   .prev-wide {
     margin-inline-end: auto;
   }

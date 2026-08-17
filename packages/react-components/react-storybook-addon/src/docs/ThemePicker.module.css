@@ -15,7 +15,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useStyles.menuButton — lands on MenuButton's root */
   .menu-button {
     @apply min-w-210 justify-start;
   }
@@ -28,7 +27,6 @@
     @apply ms-auto;
   }
 
-  /* from useStyles.menuPopover — lands on MenuPopover's root */
   .menu-popover {
     @apply min-w-210;
   }

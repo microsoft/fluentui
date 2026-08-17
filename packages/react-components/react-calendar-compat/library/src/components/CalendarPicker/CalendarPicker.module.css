@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -81,12 +73,10 @@
 }
 
 @layer fui.components.l1 {
-  /* from useHeaderContainerStyles.base */
   .header-container {
     @apply flex;
   }
 
-  /* from useCurrentItemButtonStyles.base — currentItemButton arg #2 */
   .current-item-button {
     @apply grow overflow-visible rounded-medium bg-transparent-background py-0 ps-horizontal-m-nudge pe-horizontal-xs text-start text-inherit;
 
@@ -128,12 +118,10 @@
     }
   }
 
-  /* from useNavigationButtonsContainerStyles.base */
   .navigation-buttons-container {
     @apply flex items-center;
   }
 
-  /* from useNavigationButtonStyles.base */
   .navigation-button {
     background-color: var(--color-transparent-background);
 
@@ -163,12 +151,10 @@
     }
   }
 
-  /* from useGridContainerStyles.base — 4px is the XS step on the block axis */
   .grid-container {
     @apply mt-vertical-xs;
   }
 
-  /* from useButtonRowStyles.base — 16px is the L step on the block axis */
   .button-row {
     @apply mb-vertical-l;
 
@@ -178,7 +164,6 @@
     }
   }
 
-  /* from useItemButtonStyles.base — itemButton arg #2 */
   .item-button {
     background-color: var(--color-transparent-background);
 
@@ -241,7 +226,6 @@
     }
   }
 
-  /* from useCurrentStyles.highlightCurrent — itemButton arg #3 (highlightCurrent) */
   .highlight-current {
     background-color: var(--color-brand-background);
     color: var(--color-neutral-foreground-on-brand);
@@ -271,7 +255,6 @@
     }
   }
 
-  /* from useSelectedStyles.highlightSelected — itemButton arg #4 (highlightSelected) */
   .highlight-selected {
     background-color: var(--color-brand-background-inverted-selected);
     color: var(--color-neutral-foreground-1-static);

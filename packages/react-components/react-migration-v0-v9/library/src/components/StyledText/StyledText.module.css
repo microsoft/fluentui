@@ -64,7 +64,6 @@
     --fui-styled-text-identity: initial;
   }
 
-  /* from useSizeStyles.* */
   .base100 {
     font-size: var(--text-base-100);
     line-height: var(--leading-base-100);
@@ -126,12 +125,10 @@
     font-weight: 700;
   }
 
-  /* from useStyles.nowrap */
   .nowrap {
     @apply overflow-hidden whitespace-nowrap;
   }
 
-  /* from useStyles.truncate */
   .truncate {
     @apply text-ellipsis;
   }
@@ -150,46 +147,38 @@
     @apply text-justify;
   }
 
-  /* from useStyles.mention */
   .mention {
     @apply text-brand-foreground-link;
   }
 
-  /* from useStyles.mentionMe */
   .mention-me {
     @apply text-palette-pumpkin-border-active;
 
     font-weight: 700;
   }
 
-  /* from useStyles.disabled */
   .disabled {
     @apply text-neutral-foreground-disabled;
   }
 
-  /* from useStyles.error */
   .error {
     @apply text-palette-red-foreground-3;
   }
 
-  /* from useStyles.important */
   .important {
     @apply text-palette-dark-orange-foreground-3;
 
     font-weight: 700;
   }
 
-  /* from useStyles.success */
   .success {
     @apply text-palette-green-foreground-3;
   }
 
-  /* from useStyles.temporary */
   .temporary {
     @apply italic;
   }
 
-  /* from useStyles.timestamp */
   .timestamp {
     @apply text-neutral-foreground-3;
   }

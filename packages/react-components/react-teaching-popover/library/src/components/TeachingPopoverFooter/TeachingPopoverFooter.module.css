@@ -101,7 +101,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.rootHorizontal / .rootVertical — root arg #3 */
   .horizontal {
     @apply flex-row justify-end;
   }

@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -178,7 +170,6 @@
 @layer fui.components.l1 {
   /* ═══ button slot — useTabButtonStyles_unstable ══════════════════════════════════ */
 
-  /* from useRootStyles.button — arg b1 */
   .button {
     @apply relative grid shrink-0 items-center overflow-hidden normal-case;
 
@@ -198,7 +189,6 @@
     line-height: var(--leading-base-300);
     outline-style: none;
 
-    /* from useRootStyles.horizontal / .vertical — arg b2 */
     @variant horizontal {
       @apply justify-center;
     }
@@ -248,7 +238,6 @@
 
   /* ── circular appearances (`subtle-circular`, `filled-circular`) ─────────────────── */
 
-  /* from useCircularAppearanceStyles.base — arg b4 */
   .circular {
     border-radius: var(--radius-circular);
     border: solid var(--spacing-thin) var(--color-transparent-stroke);
@@ -279,7 +268,6 @@
     padding-block: calc(8px * var(--base-scale) - var(--spacing-thin));
   }
 
-  /* from useCircularAppearanceStyles.subtle — arg b7 */
   .circular-subtle {
     background-color: var(--color-subtle-background);
     color: var(--color-neutral-foreground-2);
@@ -303,7 +291,6 @@
     }
   }
 
-  /* from useCircularAppearanceStyles.subtleSelected — arg b7 */
   .circular-subtle-selected {
     background-color: var(--color-brand-background-2);
     border: solid var(--spacing-thin) var(--color-compound-brand-stroke);
@@ -328,19 +315,16 @@
     }
   }
 
-  /* from useCircularAppearanceStyles.subtleDisabled — arg b7 */
   .circular-subtle-disabled {
     @apply bg-subtle-background text-neutral-foreground-disabled;
   }
 
-  /* from useCircularAppearanceStyles.subtleDisabledSelected — arg b7 */
   .circular-subtle-disabled-selected {
     @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
 
     border: solid var(--spacing-thin) var(--color-neutral-stroke-disabled);
   }
 
-  /* from useCircularAppearanceStyles.filled — arg b8 */
   .circular-filled {
     background-color: var(--color-neutral-background-3);
     color: var(--color-neutral-foreground-2);
@@ -375,7 +359,6 @@
     }
   }
 
-  /* from useCircularAppearanceStyles.filledSelected — arg b8 */
   .circular-filled-selected {
     background-color: var(--color-brand-background);
     color: var(--color-neutral-foreground-on-brand);
@@ -406,12 +389,10 @@
     }
   }
 
-  /* from useCircularAppearanceStyles.filledDisabled — arg b8 */
   .circular-filled-disabled {
     @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
   }
 
-  /* from useCircularAppearanceStyles.filledDisabledSelected — arg b8 */
   .circular-filled-disabled-selected {
     @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
 
@@ -465,7 +446,6 @@
     }
   }
 
-  /* from useRootStyles.transparent — arg r7 */
   .transparent {
     background-color: var(--color-transparent-background);
 
@@ -617,7 +597,6 @@
       }
     }
 
-    /* from usePendingIndicatorStyles[size][orientation] — arg i4 */
     @variant size-small {
       @variant horizontal {
         &::before {
@@ -660,7 +639,6 @@
       }
     }
 
-    /* from usePendingIndicatorStyles.disabled — arg i5 */
     @variant disabled {
       @variant hover {
         &::before {
@@ -748,7 +726,6 @@
       }
     }
 
-    /* from useActiveIndicatorStyles[size][orientation] — arg i8 */
     @variant size-small {
       @variant horizontal {
         &::after {
@@ -1018,7 +995,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useContentStyles.large — typographyStyles.body2 */
   .content-large {
     font-family: var(--font-base);
     font-size: var(--text-base-400);
@@ -1026,7 +1002,6 @@
     line-height: var(--leading-base-400);
   }
 
-  /* from useContentStyles.selected — typographyStyles.body1Strong */
   .content-selected {
     font-family: var(--font-base);
     font-size: var(--text-base-300);
@@ -1034,7 +1009,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /* from useContentStyles.largeSelected — typographyStyles.subtitle2 */
   .content-large-selected {
     font-family: var(--font-base);
     font-size: var(--text-base-400);
@@ -1042,7 +1016,6 @@
     line-height: var(--leading-base-400);
   }
 
-  /* from useContentStyles.noIconBefore / .iconBefore — grid line NUMBERS, written literally */
   .content-no-icon-before {
     grid-column-start: 1;
     grid-row-start: 1;
@@ -1053,7 +1026,6 @@
     grid-row-start: 1;
   }
 
-  /* from useContentStyles.placeholder */
   .content-placeholder {
     @apply invisible;
   }
@@ -1093,7 +1065,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useIconStyles.base */
   .icon {
     & :global(.fui-Icon-filled) {
       @apply hidden;
@@ -1104,7 +1075,6 @@
     }
   }
 
-  /* from useIconStyles.selected */
   .icon-selected {
     & :global(.fui-Icon-filled) {
       @apply inline;
@@ -1115,7 +1085,6 @@
     }
   }
 
-  /* from useCircularAppearanceStyles.filled — the forced-colors glyph colours */
   .circular-filled {
     @variant forced-colors {
       @variant enabled {

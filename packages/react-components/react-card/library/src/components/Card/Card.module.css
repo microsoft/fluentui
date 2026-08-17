@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -134,7 +126,6 @@
  */
 
 @layer fui.base {
-  /* from useCardResetStyles (makeResetStyles) */
   .root {
     @apply relative box-border flex overflow-hidden;
 
@@ -561,7 +552,6 @@
 }
 
 @layer fui.components.l1 {
-  /* from useCardStyles.highContrastSelected — root arg #11 */
   .root {
     @variant selected {
       @variant forced-colors {
@@ -712,14 +702,12 @@
 }
 
 @layer fui.components.l1 {
-  /* from useCardStyles.select — floatingAction slot arg #2 */
   .floating-action {
     @apply absolute end-4 top-4;
 
     z-index: var(--z-index-content, 1);
   }
 
-  /* from useCardStyles.hiddenCheckbox — checkbox slot arg #2 */
   .checkbox {
     @apply absolute h-1 w-1 overflow-hidden whitespace-nowrap;
 
@@ -738,7 +726,6 @@
  */
 
 @layer fui.components.l2 {
-  /* from useCardResetStyles — root arg #2, the reset's third rule */
   .root {
     & > :global(.group\/fui-card-header),
     & > :global(.group\/fui-card-footer) {
@@ -748,7 +735,6 @@
 }
 
 @layer fui.components.l2 {
-  /* from useCardStyles.orientationHorizontal — root arg #3 */
   .root {
     @variant horizontal {
       /* Remove vertical padding so CardPreview content sits flush with Card's borders. */
@@ -783,7 +769,6 @@
       }
     }
 
-    /* from useCardStyles.orientationVertical — root arg #3 */
     @variant vertical {
       /* Remove lateral padding so CardPreview content sits flush with Card's borders. */
       & > :global(.group\/fui-card-preview) {

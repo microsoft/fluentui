@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -76,7 +68,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — `root` arg #2 */
   .root {
     @apply flex items-center gap-horizontal-s;
 
@@ -85,19 +76,16 @@
     flex: 1 1 0px;
   }
 
-  /* from useStyles.rootTruncate — `root` arg #3 */
   .root-truncate {
     @apply overflow-x-hidden;
   }
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.media — `media` arg #2 */
   .media {
     @apply flex items-center;
   }
 
-  /* from useStyles.mediaExtraSmall — `media` arg #3, size === 'extra-small' */
   .media-extra-small {
     font-size: calc(16px * var(--base-scale));
   }
@@ -107,19 +95,16 @@
     font-size: calc(20px * var(--base-scale));
   }
 
-  /* from useStyles.mediaPrimary — `media` arg #4 */
   .media-primary {
     font-size: calc(24px * var(--base-scale));
   }
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.mainTruncate — `main` arg #2 */
   .main-truncate {
     @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
   }
 
-  /* from useStyles.mainPrimary — `main` arg #3 */
   .main-primary {
     font-weight: var(--font-weight-semibold);
   }
@@ -139,12 +124,10 @@
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.content — `content` arg #2 */
   .content {
     @apply flex flex-col;
   }
 
-  /* from useStyles.contentTruncate — `content` arg #3 */
   .content-truncate {
     @apply overflow-x-hidden;
   }

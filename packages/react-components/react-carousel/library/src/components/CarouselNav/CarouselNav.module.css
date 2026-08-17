@@ -64,7 +64,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2 */
   .root {
     @apply flex flex-row items-center justify-center;
     @apply ms-horizontal-s me-horizontal-s mt-auto mb-auto;

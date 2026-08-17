@@ -19,7 +19,6 @@
  */
 
 @layer fui.components.l4 {
-  /* from useStyles.root */
   .root {
     @apply grid;
 
@@ -28,13 +27,11 @@
     min-height: 100vh;
   }
 
-  /* from useStyles.nav */
   .nav {
     grid-column-start: 1;
     grid-column-end: 3;
   }
 
-  /* from useStyles.sidebar */
   .sidebar {
     grid-row-start: 2;
     grid-row-end: 3;
@@ -42,7 +39,6 @@
     grid-column-end: 2;
   }
 
-  /* from useStyles.content */
   .content {
     grid-row-start: 2;
     grid-row-end: 3;

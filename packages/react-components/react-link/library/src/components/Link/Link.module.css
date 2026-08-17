@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -77,7 +69,6 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2 */
   .root {
     /* `margin: 0` / `padding: 0` px literals → the `none` spacing step (D4 amendment) */
     @apply m-horizontal-none box-border p-horizontal-none select-text;
@@ -138,7 +129,6 @@
     border-left-style: none;
   }
 
-  /* from useStyles.subtle — arg #6 */
   .subtle {
     color: var(--color-neutral-foreground-2-link);
 
@@ -171,7 +161,6 @@
     }
   }
 
-  /* from useStyles.brand — arg #8 */
   .brand {
     color: var(--color-neutral-foreground-inverted-link);
 
@@ -187,7 +176,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /* from useStyles.inline — arg #9 */
     @variant inline {
       text-decoration-line: underline;
     }

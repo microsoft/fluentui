@@ -1,15 +1,7 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2).
- *
- * Repeated here on purpose: `@reference` emits nothing, so a component module that is
- * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
- * order decide the layer ranking — which differs per component. Re-declaring the full,
- * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
- * statement never re-orders an already-created layer), so this is safe to repeat and
- * makes each module self-sufficient.
- */
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
@@ -106,7 +98,6 @@
  * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, flat half */
   .root {
     @apply box-border text-neutral-foreground-1;
   }
@@ -125,29 +116,24 @@
     border-bottom-style: solid;
   }
 
-  /* from useStyles['extra-small'] — arg #4 */
   .extra-small {
     font-size: var(--text-base-200);
   }
 
-  /* from useTableLayoutStyles.root — arg #5, native-table branch */
   .table-root {
     @apply table-row;
   }
 
-  /* from useFlexLayoutStyles.root — arg #5, flex branch */
   .flex-root {
     @apply flex items-center;
   }
 
-  /* from useStyles.brand — arg #6, flat half */
   .brand {
     @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive bg-brand-background-2;
 
     /* `...shorthands.borderColor(tokens.colorTransparentStrokeInteractive)` */
   }
 
-  /* from useStyles.neutral — arg #6, flat half */
   .neutral {
     @apply border-t-neutral-stroke-on-brand border-r-neutral-stroke-on-brand border-b-neutral-stroke-on-brand border-l-neutral-stroke-on-brand bg-subtle-background-selected text-neutral-foreground-1-hover;
 
@@ -160,7 +146,6 @@
  * rule above; written after BLOCK 1 for the same effect.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-visible-fui {
       @apply rounded-medium;
@@ -174,7 +159,6 @@
  * BLOCK 3 — `h` bucket.
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.rootInteractive[':hover'] — arg #3 */
   .root-interactive {
     @variant hover {
       @apply bg-subtle-background-hover text-neutral-foreground-1-hover;
@@ -186,21 +170,18 @@
  * BLOCK 4 — `a` bucket, in mergeClasses argument order (#3 before #6).
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /* from useStyles.rootInteractive[':active'] — arg #3 */
   .root-interactive {
     @variant active {
       @apply bg-subtle-background-pressed text-neutral-foreground-1-pressed;
     }
   }
 
-  /* from useStyles.brand[':active'] — arg #6 */
   .brand {
     @variant active {
       @apply bg-brand-background-2 text-neutral-foreground-1;
     }
   }
 
-  /* from useStyles.neutral[':active'] — arg #6 */
   .neutral {
     @variant active {
       @apply bg-subtle-background-selected;
@@ -251,7 +232,6 @@
     }
   }
 
-  /* from useStyles.rootInteractive['@media (forced-colors: active)'] — arg #3 */
   .root-interactive {
     @variant forced-colors {
       @variant hover {
@@ -288,7 +268,6 @@
     }
   }
 
-  /* from useStyles.rootInteractive[':hover'] / [':active'] — arg #3 */
   .root-interactive {
     @variant hover {
       & :global(.group\/fui-table-selection-cell) {

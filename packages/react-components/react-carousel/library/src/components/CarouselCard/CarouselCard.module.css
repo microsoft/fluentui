@@ -55,14 +55,12 @@
  */
 
 @layer fui.components.l1 {
-  /* from useStyles.root — arg #2 */
   .root {
     @apply max-w-full shrink-0 grow-0 basis-full;
   }
 }
 
 @layer fui.components.l1 {
-  /* from useStyles.elevated — arg #3 */
   .elevated {
     @apply overflow-hidden rounded-x-large;
 
