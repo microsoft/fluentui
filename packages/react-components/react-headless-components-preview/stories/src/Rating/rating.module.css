@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .rating {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-2;
 
-  gap: 2px;
   color: var(--text);
 }
 
@@ -20,13 +19,12 @@
 }
 
 .input {
-  @apply absolute cursor-pointer;
+  @apply absolute m-0 cursor-pointer;
 
   inset: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  margin: 0;
 }
 
 .input:focus-visible ~ svg {
@@ -34,16 +32,11 @@
 }
 
 .icon {
-  @apply text-inherit;
-
-  width: 22px;
-  height: 22px;
+  @apply h-22 w-22 text-inherit;
 }
 
 .row {
-  @apply flex items-center;
-
-  gap: 12px;
+  @apply flex items-center gap-12;
 }
 
 .value {

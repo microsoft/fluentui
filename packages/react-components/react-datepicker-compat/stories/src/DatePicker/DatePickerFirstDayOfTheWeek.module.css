@@ -4,13 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply inline-flex flex-col;
-
-  row-gap: 15px;
+  @apply inline-flex flex-col gap-y-15;
 }
 
 .firstDaySelector {
-  @apply inline-flex flex-col;
-
-  row-gap: 5px;
+  @apply inline-flex flex-col gap-y-5;
 }

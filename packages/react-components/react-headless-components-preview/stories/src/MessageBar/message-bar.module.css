@@ -1,10 +1,9 @@
 @reference '#theme';
 
 .bar {
-  @apply grid items-center;
+  @apply grid items-center gap-12;
 
   grid-template-columns: auto 1fr auto;
-  gap: 12px;
   width: 100%;
   padding: 8px 12px;
   border-radius: var(--radius-pill);
@@ -26,39 +25,35 @@
 }
 
 .icon {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-20 w-20 items-center justify-center;
 
-  width: 20px;
-  height: 20px;
   color: var(--text-muted);
   flex-shrink: 0;
 }
 
 .icon svg {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
 }
 
 .body {
+  @apply min-w-0;
+
   color: var(--text);
-  min-width: 0;
 }
 
 .title {
+  @apply mr-4;
+
   font-weight: 600;
-  margin-right: 4px;
 }
 
 .actions {
-  @apply inline-flex items-center;
-
-  gap: 4px;
+  @apply inline-flex items-center gap-4;
 }
 
 .actionBtn {
-  @apply cursor-pointer;
+  @apply h-24 cursor-pointer;
 
-  height: 24px;
   padding: 0 10px;
   border-radius: var(--radius-pill);
   font-size: 12px;
@@ -74,15 +69,11 @@
 }
 
 .iconBtn {
-  @apply inline-flex items-center justify-center;
-
-  width: 24px;
-  padding: 0;
+  @apply inline-flex w-24 items-center justify-center p-0;
 }
 
 .iconBtn svg {
-  width: 12px;
-  height: 12px;
+  @apply h-12 w-12;
 }
 
 /* Intent variants — subtle pastel backgrounds */
@@ -119,8 +110,7 @@
 }
 
 .list {
-  @apply flex flex-col;
+  @apply flex flex-col gap-10;
 
-  gap: 10px;
   width: 100%;
 }

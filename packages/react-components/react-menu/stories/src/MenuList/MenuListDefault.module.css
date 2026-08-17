@@ -4,13 +4,8 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply bg-neutral-background-1;
+  @apply min-h-48 max-w-300 min-w-128 bg-neutral-background-1 pt-4 pb-4;
 
-  min-width: 128px;
-  min-height: 48px;
-  max-width: 300px;
   width: max-content;
   box-shadow: var(--shadow-16);
-  padding-top: 4px;
-  padding-bottom: 4px;
 }

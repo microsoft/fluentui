@@ -1,22 +1,19 @@
 @reference '#theme';
 
 .slider {
-  @apply relative flex items-center;
+  @apply relative flex h-28 max-w-320 items-center;
 
   width: 100%;
-  max-width: 320px;
-  height: 28px;
 }
 
 .input {
-  @apply absolute cursor-pointer;
+  @apply absolute m-0 cursor-pointer;
 
   inset: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
   z-index: 2;
-  margin: 0;
 }
 
 .input:disabled {
@@ -24,10 +21,9 @@
 }
 
 .rail {
-  @apply relative overflow-hidden;
+  @apply relative h-4 overflow-hidden;
 
   width: 100%;
-  height: 4px;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
 }
@@ -44,13 +40,11 @@
 }
 
 .thumb {
-  @apply absolute;
+  @apply absolute h-18 w-18;
 
   top: 50%;
   left: var(--fui-Slider--progress, 0%);
   transform: translate(-50%, -50%);
-  width: 18px;
-  height: 18px;
   border-radius: 50%;
   background: var(--bg-elev);
   border: 2px solid var(--accent);
@@ -72,24 +66,22 @@
 }
 
 .row {
-  @apply flex items-center;
+  @apply flex items-center gap-16;
 
-  gap: 16px;
   width: 100%;
 }
 
 .value {
-  @apply text-right;
+  @apply min-w-38 text-right;
 
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   color: var(--text);
-  min-width: 38px;
   font-size: 13px;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 360px;
+  @apply max-w-360;
 }

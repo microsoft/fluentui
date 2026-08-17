@@ -6,12 +6,10 @@
  * deliberately renders a Teams-light-theme snapshot rather than the active theme. */
 
 .propGrid {
-  @apply grid items-center;
+  @apply grid items-center gap-x-10 gap-y-10;
 
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
-  row-gap: 10px;
-  column-gap: 10px;
   font-family:
     'Segoe UI',
     'Segoe UI Web (West European)',

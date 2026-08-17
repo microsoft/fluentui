@@ -4,14 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .compact {
-  width: 600px;
+  @apply w-600;
 }
 
 .resizableArea {
-  @apply relative flex flex-col overflow-hidden;
+  @apply relative flex flex-col gap-10 overflow-hidden;
 
   padding: 30px 10px;
-  gap: 10px;
   border: 2px solid var(--color-brand-background);
 }
 

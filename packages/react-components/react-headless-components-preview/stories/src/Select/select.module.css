@@ -41,18 +41,15 @@
 }
 
 .icon {
-  @apply pointer-events-none absolute;
+  @apply pointer-events-none absolute right-12 h-14 w-14;
 
-  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
   color: var(--text-soft);
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 360px;
+  @apply max-w-360;
 }

@@ -12,24 +12,21 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex min-h-100 flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  padding: 10px;
-  min-height: 100px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 10px;
 }
 
 .sliderField {

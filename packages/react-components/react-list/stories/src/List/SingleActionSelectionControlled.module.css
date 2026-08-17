@@ -4,8 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .buttonControls {
-  @apply flex;
-
-  column-gap: 8px;
-  margin-bottom: 16px;
+  @apply mb-16 flex gap-x-8;
 }

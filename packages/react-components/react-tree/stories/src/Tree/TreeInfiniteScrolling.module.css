@@ -4,17 +4,12 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply overflow-auto;
-
-  height: 400px;
-  padding-bottom: 10px;
+  @apply h-400 overflow-auto pb-10;
 }
 
 .screenReadersOnly {
-  @apply absolute overflow-hidden whitespace-nowrap;
+  @apply absolute h-1 w-1 overflow-hidden whitespace-nowrap;
 
-  width: 1px;
-  height: 1px;
   /* '-1' is not a length; browsers drop this declaration — preserved verbatim from the original story */
   margin: -1;
   clip: rect(0, 0, 0, 0);

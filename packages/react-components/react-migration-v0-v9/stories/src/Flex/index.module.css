@@ -6,15 +6,13 @@
  * its demo stories (S-H, DECISIONS.md D19). */
 
 .root {
-  @apply grid items-center;
+  @apply grid items-center gap-x-10 gap-y-10;
 
   width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   align-content: center;
   justify-items: center;
-  column-gap: 10px;
-  row-gap: 10px;
 }
 
 .root > * {

@@ -16,20 +16,15 @@
 }
 
 .level {
-  @apply absolute;
-
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  @apply absolute top-0 right-0 bottom-0 left-0;
 }
 
 .level:first-child {
-  padding-top: 0;
+  @apply pt-0;
 }
 
 .level:last-child {
-  padding-bottom: 0;
+  @apply pb-0;
 }
 
 .footer {

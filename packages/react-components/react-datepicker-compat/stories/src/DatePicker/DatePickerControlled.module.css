@@ -4,15 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col;
-
-  row-gap: 15px;
+  @apply flex flex-col gap-y-15;
 }
 
 .control {
-  max-width: 300px;
+  @apply max-w-300;
 }
 
 .button {
-  margin-inline-end: 10px;
+  @apply me-10;
 }

@@ -1,10 +1,8 @@
 @reference '#theme';
 
 .toggle {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6;
 
-  gap: 6px;
-  height: 32px;
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
@@ -48,31 +46,25 @@
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
+  @apply h-14 w-14;
 }
 
 .iconOnly {
-  width: 32px;
-  padding: 0;
+  @apply w-32 p-0;
 }
 
 /* Segmented group — single bordered shell, dividers between cells */
 .group {
-  @apply inline-flex;
+  @apply inline-flex gap-2 p-2;
 
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
-  padding: 2px;
-  gap: 2px;
 }
 
 .groupItem {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-28 w-28 cursor-pointer items-center justify-center;
 
-  height: 28px;
-  width: 28px;
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -106,13 +98,9 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }
 
 .demoRow {
-  @apply flex items-center;
-
-  gap: 12px;
+  @apply flex items-center gap-12;
 }

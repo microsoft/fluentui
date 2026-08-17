@@ -4,18 +4,15 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .carousel {
-  @apply grid;
+  @apply grid gap-10;
 
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr auto;
-  gap: 10px;
   place-items: center;
 }
 
 .container {
-  @apply flex flex-col;
-
-  gap: 20px;
+  @apply flex flex-col gap-20;
 }
 
 .viewport {
@@ -23,23 +20,21 @@
 }
 
 .footer {
-  @apply flex rounded-medium;
+  @apply flex gap-10 rounded-medium p-10;
 
-  gap: 10px;
   align-self: center;
   justify-self: center;
   width: max-content;
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .controls {
-  padding: 0;
+  @apply p-0;
 }
 
 .controlButton {
-  min-width: 32px;
+  @apply min-w-32;
 }
 
 .code {
@@ -52,13 +47,10 @@
 }
 
 .wireframe {
-  @apply relative flex flex-col bg-neutral-background-3;
+  @apply relative flex h-200 flex-col gap-12 bg-neutral-background-3 p-40;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  gap: 12px;
   place-content: center;
-  padding: 40px;
-  height: 200px;
 }
 
 .wireframeEven {
@@ -68,10 +60,8 @@
 }
 
 .wireframeInfo {
-  @apply absolute bg-palette-red-background-2;
+  @apply absolute top-12 right-12 bg-palette-red-background-2;
 
-  right: 12px;
-  top: 12px;
   border: var(--stroke-width-thin) dotted var(--color-palette-red-border-2);
   font-size: var(--text-base-200);
   padding: 4px 8px;

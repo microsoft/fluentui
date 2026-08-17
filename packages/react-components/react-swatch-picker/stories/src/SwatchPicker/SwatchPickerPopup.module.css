@@ -4,8 +4,8 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  width: 100px;
-  height: 100px;
+  @apply h-100 w-100;
+
   border: 1px solid #ccc;
   margin: 20px 0;
 }

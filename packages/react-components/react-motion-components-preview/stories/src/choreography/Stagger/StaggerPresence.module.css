@@ -10,12 +10,11 @@
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -27,9 +26,7 @@
 }
 
 .item {
-  @apply flex items-center justify-center bg-neutral-background-static text-neutral-foreground-inverted;
+  @apply flex h-100 w-40 items-center justify-center bg-neutral-background-static text-neutral-foreground-inverted;
 
-  width: 40px;
-  height: 100px;
   margin: var(--spacing-horizontal-xxs);
 }

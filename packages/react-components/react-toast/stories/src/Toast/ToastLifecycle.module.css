@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex;
-
-  gap: 20px;
+  @apply flex gap-20;
 }
 
 .button {
@@ -26,11 +24,8 @@
 }
 
 .log {
-  @apply relative overflow-y-auto;
+  @apply relative h-200 min-w-200 overflow-y-auto p-12;
 
   box-shadow: var(--shadow-16);
-  min-width: 200px;
-  height: 200px;
   border: 2px solid var(--color-brand-background);
-  padding: 12px;
 }

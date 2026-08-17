@@ -4,25 +4,18 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply grid gap-40 p-20;
 
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 20px;
 }
 
 .example {
-  @apply flex flex-col items-center;
-
-  gap: 15px;
+  @apply flex flex-col items-center gap-15;
 }
 
 .card {
-  @apply flex items-center justify-center rounded-medium bg-neutral-background-1 text-center;
+  @apply flex h-180 w-250 items-center justify-center rounded-medium bg-neutral-background-1 p-20 text-center;
 
-  width: 250px;
-  height: 180px;
-  padding: 20px;
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   font-size: var(--text-base-400);
   background-image:
@@ -47,8 +40,5 @@
 }
 
 .controls {
-  @apply flex justify-center;
-
-  gap: 10px;
-  margin-bottom: 20px;
+  @apply mb-20 flex justify-center gap-10;
 }

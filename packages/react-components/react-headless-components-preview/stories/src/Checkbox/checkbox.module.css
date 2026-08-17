@@ -1,29 +1,24 @@
 @reference '#theme';
 
 .row {
-  @apply relative inline-flex cursor-pointer items-center select-none;
+  @apply relative inline-flex cursor-pointer items-center gap-10 select-none;
 
-  gap: 10px;
   font-size: 13.5px;
   color: var(--text);
   padding: 4px 0;
 }
 
 .input {
-  @apply absolute cursor-pointer;
+  @apply absolute h-18 w-18 cursor-pointer;
 
   inset: 0;
-  width: 18px;
-  height: 18px;
   opacity: 0;
   z-index: 1;
 }
 
 .indicator {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-18 w-18 items-center justify-center;
 
-  width: 18px;
-  height: 18px;
   border-radius: var(--radius-xs);
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
@@ -68,13 +63,11 @@
 }
 
 .iconCheck {
-  width: 12px;
-  height: 12px;
+  @apply h-12 w-12;
+
   stroke-width: 2.5;
 }
 
 .list {
-  @apply flex flex-col;
-
-  gap: 6px;
+  @apply flex flex-col gap-6;
 }

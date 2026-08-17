@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .footer {
-  width: 300px;
+  @apply w-300;
 }

@@ -8,9 +8,8 @@
  */
 
 .trigger {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-36 cursor-pointer items-center;
 
-  height: 36px;
   padding: 0 var(--space-4);
   border: 0;
   border-radius: var(--radius-md);
@@ -33,9 +32,8 @@
 }
 
 .triggerSecondary {
-  @apply cursor-pointer;
+  @apply h-28 cursor-pointer;
 
-  height: 28px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -65,12 +63,13 @@
 }
 
 .surface {
+  @apply min-w-180;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-1) 0;
-  min-width: 180px;
 }
 
 .list {
@@ -130,11 +129,9 @@
 
 /* Decoration slots */
 .icon {
-  @apply inline-grid;
+  @apply inline-grid h-16 w-16;
 
   place-items: center;
-  width: 16px;
-  height: 16px;
   color: var(--text-muted);
 }
 
@@ -146,11 +143,10 @@
 }
 
 .subText {
-  @apply block;
+  @apply mt-2 block;
 
   font-size: 11.5px;
   color: var(--text-faint);
-  margin-top: 2px;
 }
 
 .chevron {
@@ -167,9 +163,7 @@
 
 /* Group + header */
 .group {
-  @apply flex flex-col;
-
-  gap: 2px;
+  @apply flex flex-col gap-2;
 }
 
 .groupHeader {
@@ -183,11 +177,9 @@
 
 /* Selectable indicators (checkmark / radio dot) */
 .checkmark {
-  @apply inline-grid;
+  @apply inline-grid h-16 w-16;
 
   place-items: center;
-  width: 16px;
-  height: 16px;
   border-radius: var(--radius-pill);
   border: var(--stroke-thin) solid var(--border-strong);
   background: transparent;
@@ -218,11 +210,9 @@
 
 /* Switch indicator — slider track + knob */
 .switchTrack {
-  @apply relative;
+  @apply relative h-16 w-28;
 
   flex-shrink: 0;
-  width: 28px;
-  height: 16px;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
   border: var(--stroke-thin) solid var(--border);
@@ -232,13 +222,9 @@
 }
 
 .switchTrack::after {
-  @apply absolute;
+  @apply absolute top-1 left-1 h-12 w-12;
 
   content: '';
-  top: 1px;
-  left: 1px;
-  width: 12px;
-  height: 12px;
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
   transition:
@@ -283,10 +269,9 @@
 }
 
 .splitSecondary {
-  @apply justify-center;
+  @apply max-w-50 justify-center;
 
   flex: 0 0 auto;
-  max-width: 50px;
   padding-inline: var(--space-2);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

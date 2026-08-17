@@ -8,14 +8,13 @@
 }
 
 .countButton {
-  min-width: 0;
+  @apply min-w-0;
 }
 
 .control {
-  @apply flex flex-nowrap overflow-hidden;
+  @apply flex min-w-0 flex-nowrap overflow-hidden;
 
   flex-grow: 1;
-  min-width: 0;
 }
 
 /* TagPickerGroup's public identity class is its Tailwind named-group marker,

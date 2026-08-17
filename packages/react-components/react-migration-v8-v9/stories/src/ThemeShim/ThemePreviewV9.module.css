@@ -4,7 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  padding: 16px;
+  @apply p-16;
 }
 
 .threeCol {

@@ -1,10 +1,8 @@
 @reference '#theme';
 
 .button {
-  @apply inline-flex cursor-pointer items-center justify-center select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 select-none;
 
-  gap: 6px;
-  height: 32px;
   padding: 0 12px;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
@@ -48,18 +46,19 @@
 }
 
 .button svg {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
+
   flex-shrink: 0;
 }
 
 .surface {
+  @apply min-w-180;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-1) 0;
-  min-width: 180px;
 }
 
 .list {

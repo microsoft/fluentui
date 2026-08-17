@@ -7,9 +7,8 @@
 */
 
 .chat {
-  @apply flex items-center;
+  @apply flex items-center gap-4;
 
-  gap: 4px;
   width: 100%;
   padding: 8px 8px;
   background: var(--bg-soft);
@@ -27,13 +26,14 @@
 
 .chatLeading,
 .chatTrailing {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-2;
 
-  gap: 2px;
   flex-shrink: 0;
 }
 
 .chatField {
+  @apply min-w-0;
+
   flex: 1;
   border: none;
   outline: none;
@@ -41,7 +41,6 @@
   padding: 8px 8px;
   font-size: 14px;
   color: var(--text);
-  min-width: 0;
 }
 
 .chatField::placeholder {
@@ -49,10 +48,8 @@
 }
 
 .iconBtn {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
 
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
   border: none;
   background: transparent;
@@ -75,8 +72,7 @@
 }
 
 .iconBtn svg {
-  width: 18px;
-  height: 18px;
+  @apply h-18 w-18;
 }
 
 .iconBtn[disabled] {
@@ -96,8 +92,8 @@
 }
 
 .send svg {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
+
   stroke-width: 2.25;
 }
 
@@ -130,7 +126,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  width: 100%;
+  @apply max-w-560;
 
-  max-width: 560px;
+  width: 100%;
 }

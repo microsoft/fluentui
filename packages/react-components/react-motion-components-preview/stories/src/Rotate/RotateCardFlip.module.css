@@ -6,11 +6,10 @@
  * constants, not CSS vars): durationSlow = 300 (ms), curveDecelerateMid = cubic-bezier(0,0,0,1). */
 
 .container {
-  @apply flex flex-col;
+  @apply flex max-w-1000 flex-col;
 
   gap: var(--spacing-vertical-xl); /* 20px */
   padding: var(--spacing-vertical-xl); /* 20px */
-  max-width: 1000px;
 }
 
 .controls {
@@ -28,11 +27,10 @@
 }
 
 .cardWrapper {
-  @apply cursor-pointer rounded-medium;
+  @apply h-140 cursor-pointer rounded-medium;
 
   perspective: 500px;
   perspective-origin: center center;
-  height: 140px;
   transition: scale 300ms cubic-bezier(0, 0, 0, 1);
 }
 
@@ -56,10 +54,8 @@
 }
 
 .demoIcon {
-  @apply flex items-center justify-center rounded-medium text-neutral-foreground-on-brand;
+  @apply flex h-48 w-48 items-center justify-center rounded-medium text-neutral-foreground-on-brand;
 
-  width: 48px;
-  height: 48px;
   font-size: 24px;
   font-weight: bold;
 }

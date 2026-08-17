@@ -1,39 +1,35 @@
 @reference '#theme';
 
 .card {
-  @apply flex flex-col;
+  @apply flex flex-col gap-12 p-16;
 
-  gap: 12px;
   width: 100%;
-  padding: 16px;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
 
 .row {
-  @apply flex items-center;
-
-  gap: 12px;
+  @apply flex items-center gap-12;
 }
 
 .demoFlex {
-  @apply flex flex-col;
+  @apply flex flex-col gap-8;
 
   flex: 1;
-  gap: 8px;
 }
 
 .bar {
-  height: 12px;
+  @apply h-12;
+
   border-radius: var(--radius-xs);
   background: var(--surface-muted);
   animation: pulse 1.6s ease-in-out infinite;
 }
 
 .circle {
-  width: 40px;
-  height: 40px;
+  @apply h-40 w-40;
+
   border-radius: 50%;
   background: var(--surface-muted);
   flex-shrink: 0;
@@ -69,5 +65,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 384px;
+  @apply max-w-384;
 }

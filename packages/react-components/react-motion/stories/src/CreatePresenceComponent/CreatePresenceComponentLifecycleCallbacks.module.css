@@ -11,22 +11,20 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -42,12 +40,10 @@
 }
 
 .item {
-  @apply bg-brand-background;
+  @apply h-100 w-100 bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
 }
 
 .logContainer {
@@ -67,10 +63,8 @@
 }
 
 .log {
-  @apply relative overflow-y-auto rounded-medium;
+  @apply relative h-200 overflow-y-auto rounded-medium p-10;
 
-  height: 200px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-right-radius: 0;
-  padding: 10px;
 }

@@ -6,22 +6,16 @@
   Drawer renders into) for the dim layer.
 */
 .drawerOverlay {
-  @apply fixed hidden flex-col;
+  @apply fixed top-0 right-0 bottom-0 m-0 hidden w-320 flex-col p-0;
 
-  top: 0;
-  right: 0;
-  bottom: 0;
   /* `left: auto` overrides the user-agent `inset-inline-start: 0` on
      `<dialog>` so the drawer pins to the right edge instead of centering. */
   left: auto;
-  margin: 0;
   min-height: 100vh;
-  width: 320px;
   max-width: calc(100vw - 32px);
   border: 0;
   border-left: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
-  padding: 0;
   box-shadow: var(--shadow-4);
   transform: translateX(100%);
   transition: transform 200ms ease-in-out;
@@ -48,12 +42,11 @@
   opacity on the [data-open] attribute.
 */
 .drawerInline {
-  @apply overflow-hidden;
+  @apply w-0 overflow-hidden;
 
   flex-shrink: 0;
   background: var(--bg-soft);
   border-right: var(--stroke-thin) solid transparent;
-  width: 0;
   opacity: 0;
   transition:
     width 200ms linear,
@@ -62,7 +55,8 @@
 }
 
 .drawerInline[data-open] {
-  width: 288px;
+  @apply w-288;
+
   opacity: 1;
   border-right-color: var(--border);
 }
@@ -113,10 +107,8 @@
 }
 
 .closeButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
 
-  height: 32px;
-  width: 32px;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
@@ -134,9 +126,8 @@
 }
 
 .primaryButton {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-32 cursor-pointer items-center;
 
-  height: 32px;
   padding: 0 var(--space-3);
   border: 0;
   border-radius: var(--radius-pill);
@@ -156,9 +147,8 @@
 }
 
 .secondaryButton {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-32 cursor-pointer items-center;
 
-  height: 32px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -181,9 +171,8 @@
 }
 
 .inlineFrame {
-  @apply flex overflow-hidden;
+  @apply flex h-420 overflow-hidden;
 
-  height: 420px;
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-md);
   background: var(--bg-elev);

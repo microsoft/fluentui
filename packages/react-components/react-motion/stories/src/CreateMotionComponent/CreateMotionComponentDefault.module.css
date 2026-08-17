@@ -11,20 +11,17 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .item {
-  @apply bg-brand-background;
+  @apply h-100 w-100 bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
 }

@@ -2,10 +2,9 @@
 
 /* column wrapper for the whole example; positioning context for the popup */
 .demo {
-  @apply relative flex flex-col;
+  @apply relative flex max-w-400 flex-col;
 
   width: 100%;
-  max-width: 400px;
   gap: var(--space-2);
 }
 
@@ -18,11 +17,9 @@
 
 /* the interactive control: holds the selected tags and the input */
 .control {
-  @apply flex cursor-text flex-wrap items-center;
+  @apply flex min-h-36 min-w-0 cursor-text flex-wrap items-center;
 
   gap: var(--space-2);
-  min-width: 0;
-  min-height: 36px;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -46,18 +43,16 @@
 
 /* group of selected tags — a focusgroup row */
 .group {
-  @apply flex flex-wrap items-center;
+  @apply flex min-w-0 flex-wrap items-center;
 
   gap: var(--space-1);
-  min-width: 0;
   max-width: 100%;
 }
 
 .tag {
-  @apply inline-flex items-center;
+  @apply inline-flex min-w-0 items-center;
 
   gap: var(--space-1);
-  min-width: 0;
   max-width: 100%;
   border-radius: var(--radius-sm);
   border: var(--stroke-thin) solid var(--border);
@@ -74,12 +69,11 @@
 }
 
 .dismissIcon {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex cursor-pointer items-center justify-center p-0;
 
   border: none;
   background: transparent;
   color: var(--text-soft);
-  padding: 0;
   line-height: 1;
 }
 
@@ -95,8 +89,9 @@
 
 /* free-text input trigger */
 .input {
+  @apply min-w-60;
+
   flex: 1 1 60px;
-  min-width: 60px;
   border: none;
   background: transparent;
   outline: none;
@@ -112,11 +107,9 @@
 /* popup listbox — rendered in the top layer via the native `popover` attribute and anchored to the
    control by `usePositioning`, so placement (position/inset) is owned by those, not this rule. */
 .listbox {
-  @apply box-border flex flex-col overflow-auto;
+  @apply m-0 box-border flex max-h-256 flex-col overflow-auto;
 
   /* reset the user-agent [popover] centering so usePositioning's anchor-positioned offsets take effect */
-  margin: 0;
-  max-height: 256px;
   width: max-content;
   border-radius: var(--radius-md);
   gap: var(--space-1);
@@ -172,11 +165,9 @@
 
 /* circular "avatar" media used in tags and options */
 .media {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-20 w-20 items-center justify-center;
 
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -187,9 +178,9 @@
 
 /* square media variant used inside option rows */
 .mediaSquare {
+  @apply h-24 w-24;
+
   border-radius: var(--radius-sm);
-  width: 24px;
-  height: 24px;
   font-size: 10px;
 }
 
@@ -205,10 +196,8 @@
 
 /* default trigger chevron */
 .expandIcon {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-16 w-16 items-center justify-center;
 
-  width: 16px;
-  height: 16px;
   flex-shrink: 0;
   color: var(--text-soft);
 }
@@ -232,9 +221,7 @@
 
 /* option group label + container */
 .optionGroup {
-  @apply flex flex-col;
-
-  gap: 1px;
+  @apply flex flex-col gap-1;
 }
 
 .optionGroupLabel {
@@ -250,13 +237,13 @@
 
 /* text truncation helpers (TruncatedText story) */
 .truncate {
-  @apply block overflow-hidden whitespace-nowrap;
+  @apply block min-w-0 overflow-hidden whitespace-nowrap;
 
-  min-width: 0;
   text-overflow: ellipsis;
 }
 
 .truncateFixed {
-  width: 50px;
+  @apply w-50;
+
   flex: 0 0 auto;
 }

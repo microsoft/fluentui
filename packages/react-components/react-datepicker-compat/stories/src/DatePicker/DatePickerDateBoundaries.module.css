@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .inputControl {
-  max-width: 300px;
+  @apply max-w-300;
 }

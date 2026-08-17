@@ -4,11 +4,10 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  @apply flex flex-col;
+  @apply flex max-w-800 flex-col;
 
   gap: var(--spacing-vertical-l);
   width: 100%;
-  max-width: 800px;
   scrollbar-gutter: stable;
 }
 
@@ -28,11 +27,10 @@
 }
 
 .column {
-  @apply flex flex-col;
+  @apply flex min-w-0 flex-col;
 
   gap: var(--spacing-vertical-s);
   flex: 1;
-  min-width: 0;
 }
 
 .section {
@@ -55,16 +53,14 @@
 }
 
 .accordionContainer {
-  @apply overflow-hidden;
+  @apply min-w-0 overflow-hidden;
 
-  min-width: 0;
   max-width: 100%;
 }
 
 .constrainedText {
-  @apply block overflow-hidden;
+  @apply block min-w-0 overflow-hidden;
 
-  min-width: 0;
   overflow-wrap: break-word;
   word-break: break-word;
 }

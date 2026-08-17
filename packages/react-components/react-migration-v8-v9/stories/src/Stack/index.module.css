@@ -8,8 +8,9 @@
 }
 
 .stack {
+  @apply min-h-200;
+
   background-color: pink;
-  min-height: 200px;
 }
 
 .stackItem {

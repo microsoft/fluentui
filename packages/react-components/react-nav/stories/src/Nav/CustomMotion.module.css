@@ -6,31 +6,24 @@
  * (the const remains in the story for the custom DrawerMotion/ContentMotion keyframes). */
 
 .root {
-  @apply relative flex overflow-hidden bg-neutral-background-1;
-
-  height: 600px;
+  @apply relative flex h-600 overflow-hidden bg-neutral-background-1;
 }
 
 .nav {
-  min-width: 200px;
-  width: 260px;
+  @apply w-260 min-w-200;
 }
 
 .content {
-  @apply absolute box-border grid items-start justify-start;
+  @apply absolute m-0 box-border grid items-start justify-start p-16;
 
   flex: 1;
-  padding: 16px;
-  margin: 0;
   gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
   inset: 0;
 }
 
 .field {
-  @apply flex flex-col;
+  @apply mt-4 ml-8 flex flex-col;
 
-  margin-top: 4px;
-  margin-left: 8px;
   grid-row-gap: var(--spacing-vertical-s);
 }

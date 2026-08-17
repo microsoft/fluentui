@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .listItemRoot {
-  @apply relative items-center;
+  @apply relative items-center gap-8;
 
   flex-grow: 1;
-  gap: 8px;
   border: 1px solid grey;
   border-radius: 8px;
   grid-template:
@@ -16,16 +15,11 @@
 }
 
 .list {
-  @apply flex flex-col;
-
-  gap: 16px;
-  max-width: 300px;
+  @apply flex max-w-300 flex-col gap-16;
 }
 
 .listItem {
-  @apply grid;
-
-  padding: 8px;
+  @apply grid p-8;
 }
 
 .caption {
@@ -33,7 +27,8 @@
 }
 
 .image {
-  height: 160px;
+  @apply h-160;
+
   max-width: 100%;
   border-radius: 5px;
 }
@@ -45,10 +40,8 @@
 }
 
 .checkmark {
-  @apply absolute;
+  @apply absolute top-10 left-10;
 
-  left: 10px;
-  top: 10px;
   z-index: 1;
 }
 

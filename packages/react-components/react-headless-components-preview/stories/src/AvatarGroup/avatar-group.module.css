@@ -37,10 +37,8 @@
 }
 
 .avatar {
-  @apply box-border inline-flex items-center justify-center overflow-hidden select-none;
+  @apply box-border inline-flex h-32 w-32 items-center justify-center overflow-hidden select-none;
 
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--text-on-accent);
@@ -52,16 +50,14 @@
 }
 
 .item {
-  @apply relative inline-flex items-center;
+  @apply relative inline-flex h-32 w-32 items-center;
 
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
 }
 
 .itemSpread:not(:first-child) {
-  margin-inline-start: 12px;
+  @apply ms-12;
 }
 
 .itemStack {
@@ -73,20 +69,16 @@
 }
 
 .pieGroup {
-  @apply relative inline-flex;
+  @apply relative inline-flex h-32 w-32;
 
-  width: 32px;
-  height: 32px;
   clip-path: circle(50%);
   background: var(--border);
 }
 
 .pieItem {
-  @apply relative inline-flex items-center;
+  @apply relative inline-flex h-32 w-32 items-center;
 
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
   --pie-divider-width: 2px;
 }
@@ -160,12 +152,9 @@
 /* ---- Overflow trigger ("+N") ----------------------------------------- */
 
 .overflowTrigger {
-  @apply relative box-border inline-flex cursor-pointer items-center justify-center;
+  @apply relative box-border inline-flex h-32 w-32 cursor-pointer items-center justify-center p-0;
 
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  padding: 0;
   border-radius: 50%;
   background: var(--bg-elev);
   color: var(--text);
@@ -178,6 +167,8 @@
 }
 
 .tooltip {
+  @apply max-w-240;
+
   background: var(--bg-elev);
   color: var(--text);
   font-size: 12px;
@@ -186,7 +177,6 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-3);
   border: none;
-  max-width: 240px;
 }
 
 .overflowTrigger:hover,
@@ -209,7 +199,7 @@
 }
 
 .overflowTriggerSpread:not(:first-child) {
-  margin-inline-start: 12px;
+  @apply ms-12;
 }
 
 .overflowTriggerPie {
@@ -228,15 +218,13 @@
 /* ---- Overflow popover ------------------------------------------------- */
 
 .surface {
-  @apply box-border overflow-y-auto;
+  @apply box-border max-h-296 min-w-224 overflow-y-auto;
 
   background: var(--bg-elev);
   border-radius: var(--radius-lg);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-4);
   padding: var(--space-2);
-  min-width: 224px;
-  max-height: 296px;
 }
 
 .surface::backdrop {
@@ -249,12 +237,9 @@
 }
 
 .overflowList {
-  @apply flex flex-col;
+  @apply m-0 flex flex-col gap-2 p-0;
 
   list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 2px;
 }
 
 /* Each overflowed person renders as a row: avatar + name. */
@@ -273,11 +258,10 @@
 
 /* Avatars inside the popover don't overlap, so drop the ring + offset. */
 .overflowList .avatar {
-  margin-inline-start: 0;
+  @apply ms-0 h-28 w-28;
+
   border: 0;
   box-shadow: none;
-  width: 28px;
-  height: 28px;
   font-size: 11px;
 }
 

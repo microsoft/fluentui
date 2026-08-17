@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  height: 360px;
+  @apply h-360;
 }

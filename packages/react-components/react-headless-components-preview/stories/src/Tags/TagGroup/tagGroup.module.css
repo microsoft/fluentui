@@ -1,9 +1,7 @@
 @reference '#theme';
 
 .group {
-  @apply inline-flex flex-wrap;
-
-  gap: 6px;
+  @apply inline-flex flex-wrap gap-6;
 }
 
 .group[data-disabled] {
@@ -11,14 +9,13 @@
 }
 
 .tag {
-  @apply inline-grid cursor-default items-center select-none;
+  @apply inline-grid min-h-28 cursor-default items-center select-none;
 
   grid-template-areas:
     'media primary dismiss'
     'media secondary dismiss';
   align-content: center;
   justify-items: start;
-  min-height: 28px;
   width: max-content;
   max-width: 100%;
   padding: 0 10px;
@@ -81,13 +78,12 @@
 }
 
 .interactionTag {
-  @apply inline-flex items-stretch overflow-hidden;
+  @apply inline-flex min-h-28 items-stretch overflow-hidden;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   font-size: 12px;
-  min-height: 28px;
   width: max-content;
   max-width: 100%;
 }
@@ -169,13 +165,10 @@
 }
 
 .dismissIcon {
-  @apply inline-flex items-center justify-center;
+  @apply ml-6 inline-flex h-22 w-22 items-center justify-center;
 
   grid-area: dismiss;
   align-self: center;
-  width: 22px;
-  height: 22px;
-  margin-left: 6px;
   border-radius: var(--radius-sm, 4px);
   flex-shrink: 0;
 }
@@ -185,9 +178,7 @@
 }
 
 .demo {
-  @apply flex flex-col items-start;
-
-  gap: 16px;
+  @apply flex flex-col items-start gap-16;
 }
 
 .label {

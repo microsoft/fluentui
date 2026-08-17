@@ -52,9 +52,10 @@
 }
 
 .emptySwatch {
+  @apply p-0;
+
   width: var(--space-8);
   height: var(--space-8);
-  padding: 0;
   border: var(--stroke-thin) dashed var(--border-stronger);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -73,11 +74,10 @@
 }
 
 .imageSwatch {
-  @apply cursor-pointer;
+  @apply cursor-pointer p-0;
 
   width: calc(var(--space-16) + var(--space-10) - var(--space-1));
   height: calc(var(--space-16) + var(--space-10) - var(--space-1));
-  padding: 0;
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-sm);
   background-position: center;

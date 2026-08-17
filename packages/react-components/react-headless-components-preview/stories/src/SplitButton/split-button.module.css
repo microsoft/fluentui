@@ -6,10 +6,8 @@
 
 .primaryButton,
 .menuButton {
-  @apply inline-flex cursor-pointer items-center justify-center select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 select-none;
 
-  gap: 6px;
-  height: 32px;
   border: var(--stroke-thin) solid transparent;
   background: var(--accent);
   color: var(--accent-contrast);
@@ -66,20 +64,19 @@
 }
 
 .menuButton svg {
-  @apply block;
+  @apply block h-16 w-16;
 
-  width: 16px;
-  height: 16px;
   flex-shrink: 0;
 }
 
 .surface {
+  @apply min-w-180;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-1) 0;
-  min-width: 180px;
 }
 
 .list {

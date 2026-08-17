@@ -4,10 +4,8 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply grid gap-x-48 gap-y-24;
 
-  row-gap: 24px;
-  column-gap: 48px;
   grid-template-columns: auto auto auto 1fr;
   align-items: start;
 }

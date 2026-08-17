@@ -4,13 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }
 
 .card {
-  max-width: 400px;
-  min-width: 230px;
+  @apply max-w-400 min-w-230;
+
   width: 100%;
 }

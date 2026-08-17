@@ -16,9 +16,7 @@
 }
 
 .cardContent {
-  @apply overflow-hidden;
-
-  max-height: 300px;
+  @apply max-h-300 overflow-hidden;
 }
 
 .controls {
@@ -35,5 +33,5 @@
 }
 
 .cardHeaderText {
-  margin: 0;
+  @apply m-0;
 }

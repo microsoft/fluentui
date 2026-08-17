@@ -4,21 +4,17 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
-  @apply relative rounded-large text-left;
+  @apply relative h-450 rounded-large text-left;
 
   align-content: center;
-  height: 450px;
 }
 
 .cardContainer {
-  @apply absolute flex flex-col;
+  @apply absolute flex max-w-270 flex-col gap-8 p-18;
 
-  gap: 8px;
   left: 10%;
   top: 25%;
   background: var(--color-neutral-background-1);
-  padding: 18px;
-  max-width: 270px;
   width: 50%;
 }
 
@@ -45,29 +41,26 @@
 }
 
 .card {
-  @apply flex flex-col rounded-medium;
+  @apply flex min-h-100 flex-col rounded-medium p-10;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  padding: 10px;
-  min-height: 100px;
 }
 
 .carousel {
+  @apply p-20;
+
   flex: 1;
-  padding: 20px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col gap-6 rounded-medium p-10;
 
-  gap: 6px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 10px;
 }
 
 .field {

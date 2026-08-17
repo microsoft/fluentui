@@ -24,8 +24,9 @@
 }
 
 .textarea {
+  @apply min-h-96;
+
   width: 100%;
-  min-height: 96px;
   border: none;
   outline: none;
   background: transparent;
@@ -47,11 +48,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex max-w-360 flex-col gap-16;
 
   width: 100%;
-
-  max-width: 360px;
 }

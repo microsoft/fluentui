@@ -4,7 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .selectedInfo {
-  margin-top: 16px;
+  @apply mt-16;
 }
 
 .buttonWrapper {

@@ -4,13 +4,10 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .message {
-  @apply fixed bg-neutral-background-1;
+  @apply fixed top-0 left-0 bg-neutral-background-1 p-20;
 
   border: var(--stroke-width-thick) solid var(--color-status-success-border-1);
-  padding: 20px;
   font-size: var(--text-base-600);
-  top: 0;
-  left: 0;
 }
 
 .portal {

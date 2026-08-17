@@ -4,15 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .innerWrapper {
-  @apply flex;
+  @apply flex gap-x-15;
 
   align-items: start;
-  column-gap: 15px;
 }
 
 .outerWrapper {
-  @apply flex flex-col;
+  @apply flex flex-col gap-y-15;
 
-  row-gap: 15px;
   min-width: min-content;
 }

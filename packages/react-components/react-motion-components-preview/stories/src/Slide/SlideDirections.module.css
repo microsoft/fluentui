@@ -4,33 +4,27 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-wrap items-start;
-
-  gap: 20px;
-  padding: 20px;
+  @apply flex flex-wrap items-start gap-20 p-20;
 }
 
 .controls {
-  @apply flex flex-col items-center justify-center rounded-medium;
+  @apply flex flex-col items-center justify-center gap-15 rounded-medium p-20;
 
-  gap: 15px;
   box-shadow: var(--shadow-16);
-  padding: 20px;
   flex: 0 0 auto;
 }
 
 .directionsGrid {
-  @apply grid;
+  @apply grid gap-6;
 
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 6px;
 }
 
 .directionButton {
-  height: 44px;
+  @apply h-44 min-w-44;
+
   font-size: var(--text-base-200);
-  min-width: 44px;
 }
 
 .centerSpace {
@@ -40,19 +34,14 @@
 }
 
 .demo {
-  @apply relative flex items-center justify-center overflow-hidden rounded-medium bg-neutral-background-2;
+  @apply relative flex min-h-200 min-w-300 items-center justify-center overflow-hidden rounded-medium bg-neutral-background-2 p-20;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
-  padding: 20px;
-  min-width: 300px;
-  min-height: 200px;
   flex: 1 1 300px;
 }
 
 .card {
-  @apply rounded-medium bg-brand-background text-center text-neutral-foreground-on-brand;
+  @apply max-w-300 rounded-medium bg-brand-background p-20 text-center text-neutral-foreground-on-brand;
 
-  padding: 20px;
   box-shadow: var(--shadow-8);
-  max-width: 300px;
 }

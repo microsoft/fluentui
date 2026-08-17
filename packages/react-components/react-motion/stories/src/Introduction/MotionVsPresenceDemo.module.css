@@ -32,23 +32,22 @@
 }
 
 .title {
-  margin: 0;
+  @apply m-0;
+
   font-size: var(--text-base-400);
   font-weight: var(--font-weight-semibold);
 }
 
 .subtitle {
-  @apply text-center text-neutral-foreground-3;
+  @apply m-0 text-center text-neutral-foreground-3;
 
-  margin: 0;
   font-size: var(--text-base-200);
 }
 
 .demoArea {
-  @apply grid items-center bg-neutral-background-1;
+  @apply grid h-80 items-center bg-neutral-background-1;
 
   justify-items: center;
-  height: 80px;
   padding: var(--spacing-vertical-l);
 }
 
@@ -65,9 +64,8 @@
 }
 
 .codeArea {
-  @apply overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+  @apply m-0 overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
 
-  margin: 0;
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-l);
   border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   font-family: var(--font-monospace);

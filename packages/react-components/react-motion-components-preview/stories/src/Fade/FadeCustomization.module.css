@@ -11,15 +11,14 @@
 }
 
 .card {
-  @apply overflow-hidden;
+  @apply max-h-300 overflow-hidden;
 
   grid-area: card;
   padding: var(--spacing-vertical-xl);
-  max-height: 300px;
 }
 
 .cardHeaderText {
-  margin: 0;
+  @apply m-0;
 }
 
 .controls {
@@ -44,10 +43,8 @@
 }
 
 .item {
-  @apply bg-brand-background;
+  @apply h-100 w-100 bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
 }

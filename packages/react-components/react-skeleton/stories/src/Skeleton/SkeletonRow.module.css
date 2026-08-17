@@ -8,17 +8,13 @@
 }
 
 .firstRow {
-  @apply relative grid items-center;
+  @apply relative grid items-center gap-10 pb-10;
 
-  padding-bottom: 10px;
-  gap: 10px;
   grid-template-columns: min-content 80%;
 }
 
 .secondThirdRow {
-  @apply relative grid items-center;
+  @apply relative grid items-center gap-10 pb-10;
 
-  padding-bottom: 10px;
-  gap: 10px;
   grid-template-columns: min-content 20% 20% 15% 15%;
 }

@@ -1,7 +1,7 @@
 @reference '#theme';
 
 .surface {
-  @apply fixed overflow-hidden;
+  @apply fixed overflow-hidden p-0;
 
   inset: 0;
   margin: auto;
@@ -11,7 +11,6 @@
   border-radius: var(--radius-2xl);
   background: var(--bg-elev);
   color: var(--text);
-  padding: 0;
   box-shadow: var(--shadow-5);
 }
 
@@ -35,16 +34,16 @@
 }
 
 .copy {
-  margin: 0;
+  @apply m-0;
+
   color: var(--text-muted);
   font-size: 13.5px;
   line-height: 1.6;
 }
 
 .actions {
-  @apply flex justify-end;
+  @apply flex justify-end gap-8;
 
-  gap: 8px;
   padding: 16px 24px 20px;
 }
 
@@ -53,9 +52,8 @@
 }
 
 .btn {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center;
 
-  height: 32px;
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: none;
@@ -99,25 +97,21 @@
 }
 
 .row {
-  @apply flex flex-wrap items-center;
-
-  gap: 12px;
+  @apply flex flex-wrap items-center gap-12;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demoSpacer {
-  margin-bottom: 12px;
+  @apply mb-12;
 }
 
 .demoSpacerLg {
-  margin-bottom: 16px;
+  @apply mb-16;
 }
 
 .demoCol {
-  @apply flex flex-col;
-
-  gap: 12px;
+  @apply flex flex-col gap-12;
 }
 
 .demoNote {

@@ -4,17 +4,14 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply relative;
-
-  max-width: 400px;
+  @apply relative max-w-400;
 }
 
 .listbox {
-  @apply absolute box-border list-none rounded-medium bg-neutral-background-1;
+  @apply absolute m-0 box-border list-none rounded-medium bg-neutral-background-1;
 
   border: 1px solid var(--color-neutral-stroke-1);
   box-shadow: var(--shadow-16);
-  margin: 0;
   padding: var(--spacing-vertical-xs) 0;
   width: 100%;
   z-index: 1000;

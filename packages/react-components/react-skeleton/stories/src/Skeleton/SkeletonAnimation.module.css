@@ -4,8 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
-  @apply bg-neutral-background-1;
-
-  padding-top: 50px;
-  padding-bottom: 50px;
+  @apply bg-neutral-background-1 pt-50 pb-50;
 }

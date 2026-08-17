@@ -1,11 +1,10 @@
 @reference '#theme';
 
 .toaster {
-  @apply flex;
+  @apply flex p-0;
 
   border: none;
   background: transparent;
-  padding: 0;
   gap: var(--space-2);
 }
 
@@ -53,7 +52,7 @@
 
 /* Toast card wrapper — white elevated surface with subtle border and shadow */
 .toast {
-  @apply grid;
+  @apply grid max-w-400 min-w-280 p-12;
 
   grid-template-columns: auto 1fr auto;
   background: var(--bg-elev);
@@ -63,9 +62,6 @@
   margin: unset;
   margin-block-start: auto;
   margin-inline-start: auto;
-  padding: 12px;
-  min-width: 280px;
-  max-width: 400px;
   transition:
     box-shadow var(--duration-fast) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
@@ -107,11 +103,10 @@
 
 /* Toast subtitle — smaller, muted text */
 .subtitle {
-  @apply block;
+  @apply block pt-4;
 
   grid-column-start: 2;
   grid-column-end: 3;
-  padding-top: 4px;
   font-size: 12px;
   color: var(--text-soft);
   line-height: 1.5;
@@ -120,9 +115,10 @@
 /* Toast body — main content area */
 .body,
 .bodyText {
+  @apply pt-6;
+
   grid-column-start: 2;
   grid-column-end: 3;
-  padding-top: 6px;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -138,27 +134,24 @@
 
 /* Toast body text — regular body content */
 .bodyText {
-  margin: 0;
+  @apply m-0;
 }
 
 /* Toast footer — action button container */
 .footer {
-  @apply flex flex-wrap items-center;
+  @apply flex flex-wrap items-center pt-16;
 
   grid-column-start: 2;
   grid-column-end: 3;
   gap: var(--space-3);
-  padding-top: 16px;
 }
 
 /* Icon badge — circular badge for intent icon */
 .iconBadge {
-  @apply flex items-center justify-center;
+  @apply flex h-24 w-24 items-center justify-center;
 
   grid-column-end: 2;
   margin-inline-end: var(--space-2);
-  width: 24px;
-  height: 24px;
   border-radius: var(--radius-pill);
   font-size: 12px;
   font-weight: 700;
@@ -258,14 +251,13 @@
 
 /* Primary button — solid color action button */
 .btnPrimary {
-  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
 
   background: var(--accent);
   color: var(--accent-contrast);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   padding: 0 var(--space-3);
-  height: 32px;
   font-size: 13px;
   font-weight: 600;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -297,14 +289,13 @@
 
 /* Secondary button — light background */
 .btnSecondary {
-  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
 
   background: var(--surface-muted);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   padding: 0 var(--space-3);
-  height: 32px;
   font-size: 13px;
   font-weight: 600;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -337,14 +328,13 @@
 
 /* Trigger button — for triggering toasts */
 .triggerBtn {
-  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
 
   background: var(--bg-elev);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 0 var(--space-3);
-  height: 32px;
   font-size: 13px;
   font-weight: 600;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -421,15 +411,17 @@
 
 /* Progress bar styling */
 .progressBar {
+  @apply h-4;
+
   width: 100%;
-  height: 4px;
   margin-top: var(--space-1);
 }
 
 .progressBar::-webkit-progress-bar {
+  @apply h-4;
+
   background: var(--surface-muted);
   border-radius: var(--radius-pill);
-  height: 4px;
 }
 
 .progressBar::-webkit-progress-value {
@@ -523,7 +515,8 @@
 }
 
 .timeoutInput input {
-  width: 128px;
+  @apply w-128;
+
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   padding: 0 var(--space-2);
@@ -549,10 +542,9 @@
 }
 
 .logViewer {
-  @apply flex flex-col;
+  @apply flex min-w-200 flex-col;
 
   gap: var(--space-1);
-  min-width: 200px;
 }
 
 .logHeader {
@@ -566,11 +558,10 @@
 }
 
 .logContent {
-  @apply overflow-y-auto;
+  @apply h-200 overflow-y-auto;
 
   border: 2px solid var(--text);
   padding: var(--space-3);
-  height: 200px;
   font-size: 11px;
   font-family: var(--font-mono);
 }

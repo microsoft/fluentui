@@ -2,10 +2,8 @@
 
 /* button — pill-shaped, monochrome */
 .button {
-  @apply inline-flex cursor-pointer items-center justify-center select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 select-none;
 
-  gap: 6px;
-  height: 32px;
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
@@ -93,55 +91,49 @@
 
 /* Sizes */
 .small {
-  height: 26px;
+  @apply h-26;
+
   padding: 0 10px;
   font-size: 12px;
 }
 
 .large {
-  height: 40px;
+  @apply h-40;
+
   padding: 0 18px;
   font-size: 14px;
 }
 
 /* Icon-only — perfectly circular */
 .button[data-icon-only] {
-  width: 32px;
-  padding: 0;
+  @apply w-32 p-0;
 }
 
 .iconOnlySmall[data-icon-only] {
-  width: 26px;
-  height: 26px;
+  @apply h-26 w-26;
 }
 
 .iconOnlyLarge[data-icon-only] {
-  width: 40px;
-  height: 40px;
+  @apply h-40 w-40;
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
+  @apply h-14 w-14;
+
   flex-shrink: 0;
 }
 
 .large .icon,
 .iconOnlyLarge .icon {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }
 
 .demoRow {
-  @apply flex flex-wrap items-center;
-
-  gap: 12px;
+  @apply flex flex-wrap items-center gap-12;
 }

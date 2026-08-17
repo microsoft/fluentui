@@ -14,12 +14,10 @@
 }
 
 .infoButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-16 w-16 cursor-pointer items-center justify-center;
 
   all: unset;
   border-radius: var(--radius-sm);
-  width: 16px;
-  height: 16px;
   color: var(--text-muted);
   line-height: 1;
 }
@@ -42,7 +40,7 @@
 }
 
 .popover {
-  @apply flex flex-col items-start;
+  @apply flex max-w-320 flex-col items-start;
 
   background: var(--bg-elev);
   border-radius: var(--radius-md);
@@ -50,7 +48,6 @@
   box-shadow: var(--shadow-3);
   padding: var(--space-2);
   min-width: min-content;
-  max-width: 320px;
 }
 
 .popover:focus-visible {

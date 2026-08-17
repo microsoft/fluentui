@@ -4,14 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .surface {
-  @apply overflow-hidden;
+  @apply overflow-hidden p-0;
 
-  padding: 0;
   border: none;
 }
 
 .carousel {
-  padding: 0;
+  @apply p-0;
 }
 
 .card {

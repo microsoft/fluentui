@@ -4,18 +4,16 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid;
+  @apply grid p-5;
 
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-row-gap: 10px;
   justify-items: start;
-  padding: 5px;
 }
 
 .editor {
-  width: 400px;
-  height: 300px;
+  @apply h-300 w-400;
 }
 
 .actions {
@@ -27,18 +25,14 @@
 }
 
 .result {
-  @apply grid;
+  @apply grid gap-x-10 gap-y-5;
 
   grid-template-columns: auto auto;
   grid-template-rows: auto;
-  column-gap: 10px;
-  row-gap: 5px;
 }
 
 .colorBlock {
-  @apply inline-block;
+  @apply inline-block h-10 w-10;
 
-  width: 10px;
-  height: 10px;
   border: 1px solid black;
 }

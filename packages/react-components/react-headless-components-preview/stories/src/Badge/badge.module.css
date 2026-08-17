@@ -1,10 +1,8 @@
 @reference '#theme';
 
 .badge {
-  @apply inline-flex items-center;
+  @apply inline-flex h-22 items-center gap-4;
 
-  gap: 4px;
-  height: 22px;
   padding: 0 8px;
   border-radius: var(--radius-pill);
   background: var(--surface-muted);
@@ -52,22 +50,19 @@
 }
 
 .dot {
-  @apply inline-block;
+  @apply inline-block h-6 w-6;
 
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background: currentColor;
 }
 
 .icon {
-  width: 12px;
-  height: 12px;
+  @apply h-12 w-12;
 }
 
 .counter {
-  height: 18px;
-  min-width: 18px;
+  @apply h-18 min-w-18;
+
   padding: 0 6px;
   font-size: 10.5px;
   font-weight: 600;
@@ -79,7 +74,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-wrap items-center;
-
-  gap: 12px;
+  @apply flex flex-wrap items-center gap-12;
 }

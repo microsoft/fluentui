@@ -39,7 +39,8 @@
 }
 
 .paragraph {
-  margin: 0;
+  @apply m-0;
+
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--text-muted);
@@ -49,7 +50,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }

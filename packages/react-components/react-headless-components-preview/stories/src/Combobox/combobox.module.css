@@ -35,8 +35,9 @@
 
 /* the actual <input> element */
 .input {
+  @apply min-w-0;
+
   flex: 1;
-  min-width: 0;
   border: none;
   background: transparent;
   padding: 10px 0;
@@ -61,11 +62,9 @@
 
 /* popup listbox */
 .listbox {
-  @apply flex flex-col overflow-auto;
+  @apply flex max-h-256 max-w-320 flex-col overflow-auto;
 
-  max-height: 256px;
   width: 100%;
-  max-width: 320px;
   border-radius: var(--radius-md);
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
@@ -123,20 +122,16 @@
 
 /* expand chevron */
 .expandIcon {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-16 w-16 items-center justify-center;
 
-  width: 16px;
-  height: 16px;
   flex-shrink: 0;
   color: var(--text-soft);
 }
 
 /* clear icon — inline span acting as a clickable affordance */
 .clearIcon {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-20 w-20 cursor-pointer items-center justify-center;
 
-  width: 20px;
-  height: 20px;
   border-radius: var(--radius-pill);
   flex-shrink: 0;
   color: var(--text-soft);
@@ -157,9 +152,7 @@
 
 /* option group container */
 .optionGroup {
-  @apply flex flex-col;
-
-  gap: 1px;
+  @apply flex flex-col gap-1;
 }
 
 .optionGroup:not(:last-child)::after {
@@ -185,10 +178,9 @@
 /* Demo helpers */
 
 .demo {
-  @apply flex flex-col;
+  @apply flex max-w-320 flex-col;
 
   width: 100%;
-  max-width: 320px;
   gap: var(--space-2);
 }
 

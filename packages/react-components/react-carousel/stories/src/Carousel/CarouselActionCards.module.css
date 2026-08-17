@@ -12,29 +12,26 @@
 }
 
 .card {
-  @apply flex flex-col rounded-medium;
+  @apply flex min-h-100 flex-col rounded-medium p-10;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  padding: 10px;
-  min-height: 100px;
 }
 
 .carousel {
+  @apply p-20;
+
   flex: 1;
-  padding: 20px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col gap-6 rounded-medium p-10;
 
-  gap: 6px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 10px;
 }
 
 .field {
@@ -43,14 +40,14 @@
 }
 
 .dropdown {
-  min-width: 100px;
+  @apply min-w-100;
+
   width: 1fr;
 }
 
 .actionCard {
-  @apply overflow-hidden rounded-large text-center;
+  @apply max-w-350 overflow-hidden rounded-large text-center;
 
-  max-width: 350px;
   margin: 0px 6px;
   box-shadow: var(--shadow-16);
 }
@@ -60,20 +57,16 @@
 }
 
 .image {
-  max-height: 200px;
+  @apply max-h-200;
 }
 
 .imageButton {
-  @apply absolute;
-
-  left: 12px;
-  bottom: 12px;
+  @apply absolute bottom-12 left-12;
 }
 
 .info {
-  @apply flex flex-row justify-between;
+  @apply flex flex-row justify-between p-12;
 
-  padding: 12px;
   width: auto;
   align-content: center;
 }

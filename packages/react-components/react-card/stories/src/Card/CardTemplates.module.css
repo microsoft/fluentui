@@ -4,29 +4,26 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-wrap;
-
-  gap: 16px;
+  @apply flex flex-wrap gap-16;
 }
 
 .card {
-  max-width: 280px;
+  @apply max-w-280;
+
   width: 100%;
   height: fit-content;
 }
 
 .flex {
-  @apply flex flex-row items-center;
-
-  gap: 4px;
+  @apply flex flex-row items-center gap-4;
 }
 
 .labels {
-  gap: 6px;
+  @apply gap-6;
 }
 
 .footer {
-  gap: 12px;
+  @apply gap-12;
 }
 
 .caption {
@@ -38,8 +35,7 @@
 }
 
 .grid {
-  @apply flex flex-col;
+  @apply flex flex-col gap-16;
 
-  gap: 16px;
   width: 100%;
 }

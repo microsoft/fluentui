@@ -5,12 +5,9 @@
 }
 
 .list {
-  @apply flex items-center;
+  @apply m-0 flex items-center gap-2 p-0;
 
-  gap: 2px;
   list-style: none;
-  margin: 0;
-  padding: 0;
   font-size: 13px;
 }
 
@@ -64,6 +61,5 @@
 }
 
 .divider svg {
-  width: 12px;
-  height: 12px;
+  @apply h-12 w-12;
 }

@@ -11,22 +11,20 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -42,10 +40,8 @@
 }
 
 .balloon {
-  @apply relative inline-block bg-brand-background;
+  @apply relative inline-block h-100 w-80 bg-brand-background;
 
-  width: 80px;
-  height: 100px;
   border-radius: 80%;
   box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
   margin: 20px 30px;

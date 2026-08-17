@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex overflow-hidden;
+  @apply flex h-480 overflow-hidden;
 
   border: 2px solid #ccc;
-  height: 480px;
   background-color: #fff;
 }
 

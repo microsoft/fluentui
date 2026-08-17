@@ -12,26 +12,26 @@
 }
 
 .size32 {
-  width: 32px;
-  height: 32px;
+  @apply h-32 w-32;
+
   font-size: 12px;
 }
 
 .size40 {
-  width: 40px;
-  height: 40px;
+  @apply h-40 w-40;
+
   font-size: 14px;
 }
 
 .size56 {
-  width: 56px;
-  height: 56px;
+  @apply h-56 w-56;
+
   font-size: 19px;
 }
 
 .size72 {
-  width: 72px;
-  height: 72px;
+  @apply h-72 w-72;
+
   font-size: 24px;
 }
 
@@ -76,13 +76,11 @@
 }
 
 .stack > *:first-child {
-  margin-left: 0;
+  @apply ml-0;
 }
 
 .row {
-  @apply flex items-center;
-
-  gap: 12px;
+  @apply flex items-center gap-12;
 }
 
 .meta {
@@ -103,13 +101,9 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 24px;
+  @apply flex flex-col gap-24;
 }
 
 .demoRow {
-  @apply flex flex-wrap items-center;
-
-  gap: 12px;
+  @apply flex flex-wrap items-center gap-12;
 }

@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply overflow-hidden;
-
-  min-width: 0;
+  @apply min-w-0 overflow-hidden;
 }
 
 .overflowItem {
@@ -14,10 +12,8 @@
 }
 
 .resizableArea {
-  @apply relative;
+  @apply relative max-w-800 min-w-200;
 
-  min-width: 200px;
-  max-width: 800px;
   border: 2px solid var(--color-brand-background);
   padding: 20px 10px 10px 10px;
   resize: vertical;

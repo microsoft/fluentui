@@ -4,27 +4,22 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col;
-
-  gap: 10px;
+  @apply flex flex-col gap-10;
 }
 
 .controls {
-  @apply grid items-center rounded-medium;
+  @apply grid items-center rounded-medium p-10;
 
   grid-template-columns: 1fr auto;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .card {
-  @apply flex flex-col items-center justify-center rounded-medium;
+  @apply flex min-h-400 flex-col items-center justify-center rounded-medium p-10;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
-  min-height: 400px;
 }
 
 .cardAbove {
@@ -36,28 +31,25 @@
 }
 
 .container {
-  @apply flex items-center justify-center bg-palette-berry-background-2 text-palette-berry-foreground-2;
+  @apply flex h-300 w-300 items-center justify-center bg-palette-berry-background-2 text-palette-berry-foreground-2;
 
   font-size: var(--text-base-400);
-  width: 300px;
-  height: 300px;
   border: var(--stroke-width-thicker) solid var(--color-palette-berry-border-active);
 }
 
 .target {
-  @apply flex items-center justify-center bg-palette-blue-background-2 text-palette-blue-foreground-2;
+  @apply flex h-50 w-300 items-center justify-center bg-palette-blue-background-2 text-palette-blue-foreground-2;
 
   font-size: var(--text-base-400);
-  width: 300px;
-  height: 50px;
   border: var(--stroke-width-thicker) solid var(--color-palette-blue-border-active);
 }
 
 .targetSmall {
+  @apply w-100;
+
   font-size: var(--text-base-100);
-  width: 100px;
 }
 
 .targetLarge {
-  width: 600px;
+  @apply w-600;
 }

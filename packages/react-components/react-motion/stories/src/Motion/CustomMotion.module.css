@@ -4,47 +4,38 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col;
-
-  gap: 40px;
+  @apply flex flex-col gap-40;
 }
 
 .section {
-  @apply flex flex-col;
-
-  gap: 12px;
+  @apply flex flex-col gap-12;
 }
 
 .sectionTitle {
+  @apply m-0;
+
   font-size: var(--text-base-400);
   font-weight: var(--font-weight-semibold);
-  margin: 0;
 }
 
 .sectionDescription {
-  @apply text-neutral-foreground-3;
+  @apply m-0 text-neutral-foreground-3;
 
   font-size: var(--text-base-300);
-  margin: 0;
 }
 
 .buttons {
-  @apply flex;
-
-  gap: 12px;
+  @apply flex gap-12;
 }
 
 .drawerContainer {
-  @apply flex flex-col-reverse overflow-hidden rounded-medium bg-neutral-background-1;
+  @apply flex h-300 flex-col-reverse overflow-hidden rounded-medium bg-neutral-background-1;
 
   border: 2px solid var(--color-neutral-stroke-1);
-  height: 300px;
 }
 
 .drawerContent {
-  @apply flex items-start;
+  @apply flex items-start gap-12 p-16;
 
   flex: 1;
-  padding: 16px;
-  gap: 12px;
 }

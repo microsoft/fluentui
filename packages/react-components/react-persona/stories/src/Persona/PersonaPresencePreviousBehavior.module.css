@@ -12,11 +12,9 @@
 }
 
 .root {
-  @apply grid;
+  @apply grid gap-x-20 gap-y-10;
 
   grid-auto-flow: column;
   grid-template-columns: repeat(2, max-content);
   grid-template-rows: repeat(3, auto);
-  column-gap: 20px;
-  row-gap: 10px;
 }

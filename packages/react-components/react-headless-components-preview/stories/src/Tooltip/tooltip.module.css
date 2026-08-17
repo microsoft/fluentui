@@ -2,6 +2,8 @@
 
 /* Tooltip content bubble — inverse surface (dark on light, light on dark) */
 .content {
+  @apply max-w-240;
+
   background: var(--bg-elev);
   color: var(--text);
   font-size: 12px;
@@ -10,7 +12,6 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-3);
   border: none;
-  max-width: 240px;
 }
 
 /*
@@ -26,10 +27,8 @@
 }
 
 .contentWithArrow [data-arrow] {
-  @apply absolute;
+  @apply absolute h-8 w-8;
 
-  width: 8px;
-  height: 8px;
   background: var(--bg-elev);
   transform: rotate(45deg);
 }
@@ -75,9 +74,8 @@
 
 /* Trigger button — primary filled style */
 .trigger {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center;
 
-  height: 32px;
   padding: 0 var(--space-3);
   border: 0;
   border-radius: var(--radius-pill);
@@ -109,8 +107,7 @@
 
 /* Icon-only trigger — square, fixed size */
 .triggerIcon {
-  width: 32px;
-  padding: 0;
+  @apply w-32 p-0;
 }
 
 /* Layout helpers */

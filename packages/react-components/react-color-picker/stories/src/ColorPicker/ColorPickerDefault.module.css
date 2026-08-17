@@ -4,15 +4,12 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  @apply flex flex-col;
-
-  width: 300px;
-  gap: 10px;
+  @apply flex w-300 flex-col gap-10;
 }
 
 .previewColor {
-  width: 50px;
-  height: 50px;
+  @apply h-50 w-50;
+
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -24,21 +21,17 @@
 }
 
 .inputFields {
-  @apply flex flex-row items-end;
-
-  gap: 10px;
+  @apply flex flex-row items-end gap-10;
 }
 
 .colorFieldWrapper {
-  @apply flex flex-col;
-
-  gap: 6px;
+  @apply flex flex-col gap-6;
 }
 
 .input {
-  width: 96px;
+  @apply w-96;
 }
 
 .spinButton {
-  min-width: 60px;
+  @apply min-w-60;
 }

@@ -4,12 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply box-border overflow-y-auto;
+  @apply box-border overflow-y-auto p-16;
 
-  padding: 16px;
   height: 100%;
 }
 
 .header {
-  margin-top: 0;
+  @apply mt-0;
 }

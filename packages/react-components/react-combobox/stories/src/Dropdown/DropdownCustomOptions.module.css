@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .option {
-  @apply flex items-center;
-
-  gap: 5px;
+  @apply flex items-center gap-5;
 }
 
 .icon {
@@ -18,14 +16,12 @@
 }
 
 .root {
-  @apply grid;
+  @apply grid max-w-400 gap-2;
 
   grid-template-rows: repeat(1fr);
   justify-items: start;
-  gap: 2px;
-  max-width: 400px;
 }
 
 .listbox {
-  max-height: 200px;
+  @apply max-h-200;
 }

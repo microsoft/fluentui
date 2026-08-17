@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .wrap {
-  @apply relative inline-flex items-center overflow-hidden;
+  @apply relative inline-flex w-160 items-center overflow-hidden;
 
-  width: 160px;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -23,7 +22,7 @@
 }
 
 .input {
-  @apply text-center;
+  @apply min-w-0 text-center;
 
   flex: 1;
   border: none;
@@ -33,15 +32,12 @@
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   padding: 8px 36px 8px 12px;
-  min-width: 0;
   color: var(--text);
 }
 
 .btn {
-  @apply absolute inline-flex cursor-pointer items-center justify-center;
+  @apply absolute right-0 inline-flex w-28 cursor-pointer items-center justify-center;
 
-  right: 0;
-  width: 28px;
   height: 50%;
   border: none;
   border-left: 1px solid var(--border);
@@ -64,22 +60,23 @@
 }
 
 .btnUp {
-  top: 0;
+  @apply top-0;
+
   border-bottom: 1px solid var(--border);
 }
 
 .btnDown {
-  bottom: 0;
+  @apply bottom-0;
 }
 
 .icon {
-  width: 11px;
-  height: 11px;
+  @apply h-11 w-11;
+
   stroke-width: 2;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 240px;
+  @apply max-w-240;
 }

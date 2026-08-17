@@ -11,29 +11,25 @@
 }
 
 .cards {
-  @apply flex flex-row;
+  @apply flex flex-row gap-20;
 
-  gap: 20px;
   grid-area: cards;
 }
 
 .card {
-  @apply flex flex-col items-center justify-center rounded-medium;
+  @apply flex min-h-200 flex-col items-center justify-center rounded-medium p-20;
 
   flex: 1;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 20px;
-  min-height: 200px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -49,15 +45,14 @@
 }
 
 .item {
-  @apply bg-brand-background;
+  @apply h-100 w-100 bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
 }
 
 .cardTitle {
-  margin-bottom: 50px;
+  @apply mb-50;
+
   font-weight: var(--font-weight-semibold);
 }

@@ -1,16 +1,14 @@
 @reference '#theme';
 
 .group {
-  @apply flex flex-col;
+  @apply flex flex-col gap-8;
 
-  gap: 8px;
   width: 100%;
 }
 
 .row {
-  @apply relative flex cursor-pointer items-start;
+  @apply relative flex cursor-pointer items-start gap-12;
 
-  gap: 12px;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -31,23 +29,19 @@
 }
 
 .input {
-  @apply absolute cursor-pointer;
+  @apply absolute m-0 cursor-pointer;
 
   inset: 0;
   opacity: 0;
-  margin: 0;
 }
 
 .indicator {
-  @apply relative;
+  @apply relative mt-1 h-18 w-18;
 
-  width: 18px;
-  height: 18px;
   border-radius: 50%;
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
   flex-shrink: 0;
-  margin-top: 1px;
   transition: border-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -69,9 +63,8 @@
 }
 
 .text {
-  @apply flex flex-col;
+  @apply flex flex-col gap-2;
 
-  gap: 2px;
   flex: 1;
 }
 
@@ -89,5 +82,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 360px;
+  @apply max-w-360;
 }

@@ -12,24 +12,21 @@
 }
 
 .example {
-  @apply overflow-hidden bg-neutral-background-2;
+  @apply overflow-hidden bg-neutral-background-2 p-5;
 
-  padding: 5px;
   z-index: 0;
 }
 
 .horizontal {
+  @apply w-600 min-w-150;
+
   height: fit-content;
-  min-width: 150px;
   resize: horizontal;
-  width: 600px;
 }
 
 .vertical {
-  @apply flex items-stretch;
+  @apply flex h-250 min-h-100 items-stretch;
 
-  height: 250px;
-  min-height: 100px;
   resize: vertical;
   width: fit-content;
   align-content: stretch;
@@ -38,9 +35,7 @@
 }
 
 .root {
-  @apply flex flex-col items-start justify-start overflow-auto;
+  @apply flex min-h-600 flex-col items-start justify-start gap-y-20 overflow-auto;
 
   padding: 50px 20px;
-  row-gap: 20px;
-  min-height: 600px;
 }

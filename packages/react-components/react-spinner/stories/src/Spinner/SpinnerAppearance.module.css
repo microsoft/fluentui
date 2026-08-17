@@ -4,7 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container > div {
-  padding: 20px;
+  @apply p-20;
 }
 
 .invertedWrapper {

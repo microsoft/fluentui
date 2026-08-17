@@ -10,12 +10,11 @@
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -23,11 +22,10 @@
 }
 
 .items {
-  @apply relative flex items-center justify-center;
+  @apply relative flex items-center justify-center p-50;
 
   width: 100%;
   height: 100%;
-  padding: 50px;
 }
 
 .item {

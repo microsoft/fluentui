@@ -7,8 +7,9 @@
  * Those constants are inlined here. */
 
 .customDonutChart {
+  @apply p-10;
+
   border: 2px solid #3c51b4;
   border-radius: 50%;
-  padding: 10px;
   background-color: #dbdbdb;
 }

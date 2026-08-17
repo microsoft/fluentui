@@ -56,13 +56,11 @@
 }
 
 .areaInput {
-  @apply pointer-events-none absolute overflow-hidden;
+  @apply pointer-events-none absolute m-0 overflow-hidden p-0;
 
   inset: 0;
   inline-size: 100%;
   block-size: 100%;
-  padding: 0;
-  margin: 0;
   opacity: 0;
 }
 
@@ -112,15 +110,13 @@
 }
 
 .sliderInput {
-  @apply cursor-pointer;
+  @apply m-0 cursor-pointer p-0;
 
   z-index: 1;
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   inline-size: 100%;
   block-size: 100%;
-  padding: 0;
-  margin: 0;
   opacity: 0;
 }
 

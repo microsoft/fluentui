@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  @apply flex flex-col;
-
-  max-width: 500px;
+  @apply flex max-w-500 flex-col;
 }
 
 .base > div {
@@ -16,7 +14,7 @@
 }
 
 .base > div:first-child {
-  margin-top: 0px;
+  @apply mt-0;
 }
 
 .base > div label {

@@ -4,7 +4,8 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .popover {
-  width: 360px;
+  @apply w-360;
+
   max-width: 100%;
   height: fit-content;
 }

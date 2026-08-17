@@ -4,9 +4,8 @@
  * Nav — standalone nav list
  * ----------------------------------------------------------------*/
 .nav {
-  @apply flex flex-col;
+  @apply flex w-280 flex-col;
 
-  width: 280px;
   padding: var(--space-2) 0;
   gap: var(--space-1);
 }
@@ -106,13 +105,14 @@
  * NavSectionHeader
  * ----------------------------------------------------------------*/
 .sectionHeader {
+  @apply m-0;
+
   padding: var(--space-3) var(--space-3) var(--space-1);
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-soft);
-  margin: 0;
 }
 
 /* ----------------------------------------------------------------
@@ -128,9 +128,8 @@
  * NavDrawer layout
  * ================================================================*/
 .drawerRoot {
-  @apply flex overflow-hidden;
+  @apply flex h-480 overflow-hidden;
 
-  height: 480px;
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
@@ -149,9 +148,8 @@
  * NavDrawer panel (the <nav> rendered by NavDrawer)
  * ----------------------------------------------------------------*/
 .drawerNav {
-  @apply flex flex-col;
+  @apply flex w-280 flex-col;
 
-  width: 280px;
   flex-shrink: 0;
   border: none;
   border-right: var(--stroke-thin) solid var(--border);
@@ -159,12 +157,8 @@
 }
 
 dialog.drawerNav {
-  @apply fixed;
+  @apply fixed top-0 bottom-0 left-0 m-0;
 
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: 0;
   max-height: 100%;
 }
 
@@ -187,10 +181,8 @@ dialog.drawerNav {
  * Buttons
  * ----------------------------------------------------------------*/
 .hamburgerButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
 
-  height: 32px;
-  width: 32px;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
@@ -209,9 +201,8 @@ dialog.drawerNav {
 }
 
 .navigateButton {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-32 cursor-pointer items-center;
 
-  height: 32px;
   padding: 0 var(--space-3);
   border: 0;
   border-radius: var(--radius-md);

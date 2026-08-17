@@ -11,11 +11,10 @@
 }
 
 .card {
-  @apply overflow-hidden;
+  @apply max-h-300 overflow-hidden;
 
   grid-area: card;
   padding: var(--spacing-vertical-xl);
-  max-height: 300px;
 }
 
 .controls {
@@ -32,5 +31,5 @@
 }
 
 .cardHeaderText {
-  margin: 0;
+  @apply m-0;
 }

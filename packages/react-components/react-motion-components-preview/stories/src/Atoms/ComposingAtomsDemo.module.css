@@ -19,7 +19,8 @@
 }
 
 .title {
-  margin: 0;
+  @apply m-0;
+
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-base-300);
 }
@@ -35,10 +36,9 @@
 }
 
 .demoArea {
-  @apply flex items-center justify-center bg-neutral-background-1;
+  @apply flex min-h-120 items-center justify-center bg-neutral-background-1;
 
   flex: 1 1 auto;
-  min-height: 120px;
   padding: var(--spacing-vertical-xl);
 }
 
@@ -64,10 +64,9 @@
 }
 
 .codeArea {
-  @apply overflow-auto bg-neutral-background-1;
+  @apply min-w-0 overflow-auto bg-neutral-background-1;
 
   flex: 1 1 auto;
-  min-width: 0;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
@@ -80,10 +79,9 @@
 }
 
 .code {
-  @apply block whitespace-pre text-neutral-foreground-1;
+  @apply m-0 block whitespace-pre text-neutral-foreground-1;
 
   font-family: var(--font-monospace);
   font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
-  margin: 0;
 }

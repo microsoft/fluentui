@@ -4,18 +4,16 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex overflow-hidden;
+  @apply flex h-480 overflow-hidden;
 
   border: 2px solid #ccc;
-  height: 480px;
   background-color: #fff;
 }
 
 .content {
-  @apply relative overflow-auto;
+  @apply relative overflow-auto p-16;
 
   flex: 1;
-  padding: 16px;
 }
 
 .flexColumn {
@@ -23,10 +21,9 @@
 }
 
 .buttons {
-  @apply sticky flex flex-wrap items-start justify-center;
+  @apply sticky flex flex-wrap items-start justify-center p-16;
 
   flex: 1;
-  padding: 16px;
   top: -16px;
   right: -16px;
   left: -16px;

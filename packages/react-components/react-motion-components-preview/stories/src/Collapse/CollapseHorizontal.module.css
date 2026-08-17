@@ -4,22 +4,19 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: 10px;
+  @apply flex flex-col gap-10;
 }
 
 .sideContent {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center p-50;
 
   background: lightgrey;
-  padding: 50px;
 }
 
 .card {
+  @apply w-300 p-20;
+
   grid-area: card;
-  padding: 20px;
-  width: 300px;
 }
 
 .controls {

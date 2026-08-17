@@ -11,26 +11,21 @@
 }
 
 .card {
-  @apply flex flex-col items-center justify-center rounded-medium;
+  @apply flex min-h-120 flex-col items-center justify-center rounded-medium p-10;
 
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
-  min-height: 120px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .panel {
-  @apply rounded-medium bg-brand-background text-neutral-foreground-on-brand;
-
-  padding: 20px;
+  @apply rounded-medium bg-brand-background p-20 text-neutral-foreground-on-brand;
 }

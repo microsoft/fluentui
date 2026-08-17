@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  @apply flex;
-
-  column-gap: 15px;
+  @apply flex gap-x-15;
 }
 
 .buttonNonInteractive {

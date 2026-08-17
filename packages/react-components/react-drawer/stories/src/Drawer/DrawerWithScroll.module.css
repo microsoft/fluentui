@@ -10,6 +10,5 @@
 }
 
 .drawer {
-  height: 400px;
-  min-width: 320px;
+  @apply h-400 min-w-320;
 }

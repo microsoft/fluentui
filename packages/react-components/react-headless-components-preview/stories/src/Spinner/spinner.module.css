@@ -1,18 +1,15 @@
 @reference '#theme';
 
 .spinner {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-8;
 
-  gap: 8px;
   font-size: 13px;
   color: var(--text-muted);
 }
 
 .tail {
-  @apply inline-flex;
+  @apply inline-flex h-20 w-20;
 
-  width: 20px;
-  height: 20px;
   color: var(--accent);
   animation: spin 800ms linear infinite;
 }
@@ -23,8 +20,7 @@
 }
 
 .large .tail {
-  width: 32px;
-  height: 32px;
+  @apply h-32 w-32;
 }
 
 .muted .tail {
@@ -32,9 +28,7 @@
 }
 
 .column {
-  @apply flex flex-col items-center;
-
-  gap: 8px;
+  @apply flex flex-col items-center gap-8;
 }
 
 @keyframes spin {
@@ -49,13 +43,9 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demoRow {
-  @apply flex items-center;
-
-  gap: 32px;
+  @apply flex items-center gap-32;
 }
 
 .demoCol {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }

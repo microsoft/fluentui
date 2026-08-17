@@ -4,9 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .listbox {
-  max-height: 250px;
+  @apply max-h-250;
 }
 
 .option {
-  height: 32px;
+  @apply h-32;
 }

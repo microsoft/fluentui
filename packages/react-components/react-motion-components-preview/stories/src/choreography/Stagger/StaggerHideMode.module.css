@@ -39,12 +39,11 @@
 }
 
 .items {
-  @apply relative flex flex-wrap items-start rounded-small;
+  @apply relative flex min-h-80 flex-wrap items-start rounded-small;
 
   gap: var(--spacing-horizontal-s);
   padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thin) dashed var(--color-neutral-stroke-2);
-  min-height: 80px;
 }
 
 .description {

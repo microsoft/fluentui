@@ -1,10 +1,8 @@
 @reference '#theme';
 
 .toolbar {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-2 p-4;
 
-  gap: 2px;
-  padding: 4px;
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -18,10 +16,8 @@
 }
 
 .btn {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
 
-  width: 32px;
-  height: 32px;
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--text-muted);
@@ -63,22 +59,22 @@
 }
 
 .divider {
-  width: 1px;
+  @apply w-1;
+
   align-self: stretch;
   margin: 4px 4px;
   background: var(--border);
 }
 
 .toolbar[data-vertical] .divider {
+  @apply h-1;
+
   width: auto;
-  height: 1px;
   margin: 4px 4px;
 }
 
 .group {
-  @apply inline-flex items-center;
-
-  gap: 2px;
+  @apply inline-flex items-center gap-2;
 }
 
 .toolbar[data-vertical] .group {
@@ -86,6 +82,5 @@
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
 }

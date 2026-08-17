@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .divWithWidth {
-  width: 200px;
+  @apply w-200;
 }

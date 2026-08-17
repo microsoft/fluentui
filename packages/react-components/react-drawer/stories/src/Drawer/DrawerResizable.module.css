@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex overflow-hidden;
+  @apply flex h-480 overflow-hidden;
 
   border: 2px solid #ccc;
-  height: 480px;
   background-color: #fff;
   user-select: auto;
 }
@@ -27,24 +26,19 @@
 }
 
 .resizer {
-  @apply absolute rounded-none;
+  @apply absolute top-0 right-0 bottom-0 w-24 rounded-none;
 
-  width: 24px;
   height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
   cursor: col-resize;
   border: none;
   min-width: unset;
 }
 
 .resizer:before {
-  @apply absolute;
+  @apply absolute w-1;
 
   content: '';
   border-right: 1px solid var(--color-neutral-background-5);
-  width: 1px;
   height: 100%;
   transform: translateX(-50%);
   left: 50%;

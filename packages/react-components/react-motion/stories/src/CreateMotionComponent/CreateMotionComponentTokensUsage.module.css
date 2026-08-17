@@ -11,27 +11,23 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .item {
-  @apply rounded-circular bg-brand-background;
+  @apply h-100 w-100 rounded-circular bg-brand-background;
 
-  width: 100px;
-  height: 100px;
   forced-color-adjust: none;
 }
 
 .description {
-  @apply rounded-medium bg-neutral-background-1-pressed;
+  @apply mt-10 rounded-medium bg-neutral-background-1-pressed;
 
   font-family: var(--font-monospace);
-  margin-top: 10px;
   padding: 5px 10px;
 }

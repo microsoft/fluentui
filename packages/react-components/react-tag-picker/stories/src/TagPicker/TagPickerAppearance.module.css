@@ -4,8 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .darkBG {
-  @apply rounded-medium bg-neutral-background-inverted text-neutral-foreground-inverted-2;
+  @apply rounded-medium bg-neutral-background-inverted p-20 text-neutral-foreground-inverted-2;
 
-  padding: 20px;
   margin-block: 10px;
 }

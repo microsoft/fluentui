@@ -4,17 +4,16 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .provider {
-  @apply bg-brand-background-2;
+  @apply mb-20 bg-brand-background-2 p-5;
 
   border: 3px solid var(--color-brand-foreground-2);
   border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 20px;
 }
 
 .portal {
+  @apply p-5;
+
   /* '3x' is an invalid length shipped in the original story; browsers drop the whole
    * border declaration. Preserved verbatim — behavior-identical to what was emitted before. */
   border: 3x dotted var(--color-palette-dark-orange-border-2);
-  padding: 5px;
 }

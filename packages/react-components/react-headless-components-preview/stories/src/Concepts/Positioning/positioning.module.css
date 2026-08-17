@@ -56,10 +56,11 @@
 
 /* ===== Section text ===== */
 .sectionTitle {
+  @apply m-0;
+
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  margin: 0;
 }
 
 .sectionNote {
@@ -79,9 +80,8 @@
 }
 
 .select {
-  @apply cursor-pointer;
+  @apply h-32 cursor-pointer;
 
-  height: 32px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -91,8 +91,8 @@
 }
 
 .input {
-  width: 80px;
-  height: 28px;
+  @apply h-28 w-80;
+
   padding: 0 var(--space-2);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
@@ -125,22 +125,19 @@
 
 /* ===== Demo containers ===== */
 .stage {
-  @apply grid;
+  @apply grid min-h-320 min-w-560;
 
   place-items: center;
-  min-width: 560px;
-  min-height: 320px;
   border: var(--stroke-thin) dashed var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-soft);
 }
 
 .demoBox {
-  @apply relative;
+  @apply relative min-h-260;
 
   width: 100%;
   max-width: 36rem;
-  min-height: 260px;
   border: var(--stroke-thin) dashed var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-soft);
@@ -150,9 +147,8 @@
 
 /* ===== Triggers ===== */
 .trigger {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-36 cursor-pointer items-center justify-center;
 
-  height: 36px;
   padding: 0 var(--space-4);
   border: 0;
   border-radius: var(--radius-md);
@@ -173,89 +169,72 @@
 }
 
 .triggerFixed {
-  height: 48px;
-  width: 128px;
+  @apply h-48 w-128;
+
   padding: 0 var(--space-3);
   font-size: 12px;
 }
 
 .triggerWide {
-  width: 350px;
+  @apply w-350;
 }
 
 .triggerSm {
-  height: 30px;
+  @apply h-30;
+
   padding: 0 var(--space-3);
   font-size: 12px;
 }
 
 /* Trigger placement modifiers (used inside .demoBox) */
 .pinTopCenter {
-  @apply absolute;
+  @apply absolute top-12;
 
-  top: 12px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .pinBottomCenter {
-  @apply absolute;
+  @apply absolute bottom-12;
 
-  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .pinTopLeft {
-  @apply absolute;
-
-  top: 12px;
-  left: 12px;
+  @apply absolute top-12 left-12;
 }
 
 .pinTopRight {
-  @apply absolute;
-
-  top: 12px;
-  right: 12px;
+  @apply absolute top-12 right-12;
 }
 
 .pinBottomLeft {
-  @apply absolute;
-
-  bottom: 12px;
-  left: 12px;
+  @apply absolute bottom-12 left-12;
 }
 
 .pinBottomRight {
-  @apply absolute;
-
-  bottom: 12px;
-  right: 12px;
+  @apply absolute right-12 bottom-12;
 }
 
 .pinLeftCenter {
-  @apply absolute;
+  @apply absolute left-12;
 
-  left: 12px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .pinRightCenter {
-  @apply absolute;
+  @apply absolute right-12;
 
-  right: 12px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 /* ===== Surfaces ===== */
 .surfaceShorthand {
-  @apply flex items-center justify-center;
+  @apply flex h-80 w-160 items-center justify-center;
 
-  width: 160px;
-  height: 80px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -265,10 +244,8 @@
 }
 
 .surfaceCover {
-  @apply flex items-center justify-center;
+  @apply flex h-112 w-224 items-center justify-center;
 
-  width: 224px;
-  height: 112px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -279,9 +256,8 @@
 }
 
 .surfaceCallout {
-  @apply block;
+  @apply block min-w-160;
 
-  min-width: 160px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -302,9 +278,8 @@
 }
 
 .surfaceFlipNarrow {
-  @apply block;
+  @apply block w-160;
 
-  width: 160px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -314,10 +289,8 @@
 }
 
 .surfaceFlipWide {
-  @apply block;
+  @apply block max-h-140 w-320;
 
-  width: 320px;
-  max-height: 140px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -327,9 +300,8 @@
 }
 
 .surfaceFallback {
-  @apply block;
+  @apply block min-w-200;
 
-  min-width: 200px;
   max-width: 20rem;
   background: var(--bg-elev);
   border-radius: var(--radius-md);

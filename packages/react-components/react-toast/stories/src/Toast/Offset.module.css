@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .playground {
-  @apply grid;
+  @apply grid gap-20;
 
   grid-template-columns: 25% 75%;
-  gap: 20px;
 }
 
 .horizontal {

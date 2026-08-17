@@ -4,21 +4,17 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
-  @apply relative text-left;
+  @apply relative h-450 text-left;
 
   align-content: center;
-  height: 450px;
 }
 
 .cardContainer {
-  @apply absolute flex flex-col;
+  @apply absolute flex max-w-270 flex-col gap-8 p-18;
 
-  gap: 8px;
   left: 10%;
   top: 25%;
   background: var(--color-neutral-background-1);
-  padding: 18px;
-  max-width: 270px;
   width: 50%;
 }
 

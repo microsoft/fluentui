@@ -4,11 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex;
-
-  gap: 10px;
+  @apply flex gap-10;
 }
 
 .contentHeader {
-  margin-top: 0;
+  @apply mt-0;
 }

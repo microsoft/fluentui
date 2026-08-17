@@ -1,10 +1,9 @@
 @reference '#theme';
 
 .card {
-  @apply relative flex flex-col overflow-hidden;
+  @apply relative flex w-320 flex-col overflow-hidden;
 
   gap: var(--space-3);
-  width: 320px;
   padding: var(--space-3);
   background: var(--bg-elev);
   border: var(--stroke-thin) solid var(--border);
@@ -60,10 +59,9 @@
 }
 
 .previewImage {
-  @apply block object-cover;
+  @apply block h-160 object-cover;
 
   width: 100%;
-  height: 160px;
 }
 
 .header {
@@ -77,10 +75,8 @@
 }
 
 .headerImage {
-  @apply flex overflow-hidden;
+  @apply flex h-40 w-40 overflow-hidden;
 
-  height: 40px;
-  width: 40px;
   border-radius: var(--radius-md);
   background: var(--surface-muted);
   flex-shrink: 0;
@@ -113,10 +109,8 @@
 }
 
 .iconButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
 
-  height: 32px;
-  width: 32px;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
@@ -151,10 +145,8 @@
 }
 
 .footerButton {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-32 cursor-pointer items-center gap-6;
 
-  gap: 6px;
-  height: 32px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-md);
@@ -177,12 +169,10 @@
 }
 
 .checkbox {
-  @apply absolute cursor-pointer;
+  @apply absolute h-16 w-16 cursor-pointer;
 
   top: var(--space-3);
   left: var(--space-3);
-  height: 16px;
-  width: 16px;
   accent-color: var(--accent);
 }
 

@@ -8,24 +8,20 @@
 }
 
 .card {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col gap-10 rounded-medium p-10;
 
-  gap: 10px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-right-radius: 0;
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .controls {
-  @apply flex;
+  @apply flex gap-10 p-10;
 
-  gap: 10px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
   border-top-left-radius: var(--radius-medium);
   border-top-right-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
-  padding: 10px;
   align-self: end;
 }

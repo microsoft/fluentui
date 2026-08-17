@@ -1,18 +1,14 @@
 @reference '#theme';
 
 .display {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-6;
 
-  gap: 6px;
   color: var(--text);
   font-size: 13.5px;
 }
 
 .display [data-appearance] {
-  @apply relative inline-flex;
-
-  width: 18px;
-  height: 18px;
+  @apply relative inline-flex h-18 w-18;
 }
 
 .display [data-appearance] svg {
@@ -24,8 +20,7 @@
 }
 
 .icon {
-  width: 18px;
-  height: 18px;
+  @apply h-18 w-18;
 }
 
 .display [data-appearance='filled'] .iconHalf,

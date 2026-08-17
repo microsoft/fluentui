@@ -41,6 +41,8 @@
 }
 
 .input {
+  @apply min-w-0;
+
   flex: 1;
   border: none;
   outline: none;
@@ -48,7 +50,6 @@
   padding: 8px 12px;
   font-size: 13.5px;
   color: var(--text);
-  min-width: 0;
 }
 
 .input::placeholder {
@@ -69,21 +70,19 @@
 }
 
 .affixIcon {
-  width: 16px;
-  height: 16px;
+  @apply h-16 w-16;
 }
 
 .column {
-  @apply flex flex-col;
+  @apply flex flex-col gap-10;
 
-  gap: 10px;
   width: 100%;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  width: 100%;
+  @apply max-w-360;
 
-  max-width: 360px;
+  width: 100%;
 }

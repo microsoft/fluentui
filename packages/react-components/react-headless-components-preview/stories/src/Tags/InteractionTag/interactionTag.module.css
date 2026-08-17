@@ -1,13 +1,12 @@
 @reference '#theme';
 
 .interactionTag {
-  @apply inline-flex items-stretch overflow-hidden;
+  @apply inline-flex min-h-28 items-stretch overflow-hidden;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   font-size: 12px;
-  min-height: 28px;
   width: max-content;
   max-width: 100%;
 }
@@ -89,25 +88,19 @@
 }
 
 .icon {
-  @apply inline-flex items-center justify-center;
+  @apply mr-6 inline-flex h-14 w-14 items-center justify-center;
 
   grid-area: media;
   align-self: center;
   flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  margin-right: 6px;
 }
 
 .media {
-  @apply inline-flex items-center justify-center;
+  @apply mr-6 inline-flex h-24 w-24 items-center justify-center;
 
   grid-area: media;
   align-self: center;
   flex-shrink: 0;
-  margin-right: 6px;
-  width: 24px;
-  height: 24px;
   margin-left: -6px;
   border-radius: 50%;
   background: var(--accent);
@@ -137,15 +130,11 @@
 }
 
 .demo {
-  @apply flex flex-wrap items-center;
-
-  gap: 8px;
+  @apply flex flex-wrap items-center gap-8;
 }
 
 .demoCol {
-  @apply flex flex-col items-start;
-
-  gap: 16px;
+  @apply flex flex-col items-start gap-16;
 }
 
 .resetButton {
@@ -182,12 +171,13 @@
 }
 
 .popover ul {
+  @apply pl-18;
+
   margin: 6px 0 0;
-  padding-left: 18px;
 }
 
 .popover li + li {
-  margin-top: 2px;
+  @apply mt-2;
 }
 
 .popover a {

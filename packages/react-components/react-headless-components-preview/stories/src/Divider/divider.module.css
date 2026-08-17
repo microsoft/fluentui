@@ -4,18 +4,18 @@
    The line itself comes from ::before / ::after on the root. */
 
 .divider {
-  @apply flex items-center;
+  @apply flex items-center gap-12;
 
-  gap: 12px;
   width: 100%;
   color: var(--text-faint);
 }
 
 .divider::before,
 .divider::after {
+  @apply h-1;
+
   content: '';
   flex: 1;
-  height: 1px;
   background: var(--border);
 }
 
@@ -30,9 +30,8 @@
 }
 
 .label {
-  @apply inline-flex items-center whitespace-nowrap;
+  @apply inline-flex items-center gap-6 whitespace-nowrap;
 
-  gap: 6px;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -41,44 +40,40 @@
 }
 
 .label::before {
+  @apply h-8 w-8;
+
   content: '';
-  width: 8px;
-  height: 8px;
   border-radius: 50%;
   border: 1.5px solid var(--border-stronger);
 }
 
 /* Sentence-case content (icon + text) used inside dividers. */
 .content {
-  @apply inline-flex items-center whitespace-nowrap;
+  @apply inline-flex items-center gap-6 whitespace-nowrap;
 
-  gap: 6px;
   font-size: 12px;
   color: var(--text-muted);
 }
 
 .content svg {
-  width: 14px;
-  height: 14px;
+  @apply h-14 w-14;
 }
 
 /* Vertical: stack lines top/bottom of label, swap orientation. */
 .dividerVertical {
-  @apply flex flex-col items-center;
+  @apply flex min-w-80 flex-col items-center gap-12;
 
-  gap: 12px;
   height: 100%;
   width: auto;
-  min-width: 80px;
 }
 
 .dividerVertical::before,
 .dividerVertical::after {
+  @apply min-h-8 w-1;
+
   content: '';
   flex: 1;
-  width: 1px;
   height: auto;
-  min-height: 8px;
   background: var(--border);
 }
 
@@ -94,29 +89,28 @@
 
 /* Plain hairline (no label) */
 .horizontal {
+  @apply h-1;
+
   width: 100%;
-  height: 1px;
   background: var(--border);
 }
 
 .vertical {
-  width: 1px;
+  @apply w-1;
+
   background: var(--border);
 }
 
 .row {
-  @apply flex items-center;
+  @apply flex h-24 items-center gap-16;
 
-  gap: 16px;
-  height: 24px;
   font-size: 13px;
   color: var(--text-muted);
 }
 
 .column {
-  @apply flex flex-col;
+  @apply flex flex-col gap-14;
 
-  gap: 14px;
   width: 100%;
 }
 
@@ -126,19 +120,16 @@
 }
 
 .verticalGroup {
-  @apply grid;
+  @apply grid h-180 gap-24;
 
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  height: 180px;
   width: 100%;
 }
 
 .verticalCol {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center gap-6;
 
   height: 100%;
-  gap: 6px;
 }
 
 .verticalCaption {
@@ -157,15 +148,15 @@
 }
 
 .labelled {
-  @apply flex items-center text-center;
+  @apply flex items-center gap-12 text-center;
 
-  gap: 12px;
   width: 100%;
 }
 
 .labelledLine {
+  @apply h-1;
+
   flex: 1;
-  height: 1px;
   background: var(--border);
 }
 

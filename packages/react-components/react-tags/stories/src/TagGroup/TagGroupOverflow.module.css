@@ -22,12 +22,10 @@
 }
 
 .container {
-  @apply box-border overflow-hidden;
+  @apply box-border min-w-150 overflow-hidden p-5;
 
-  padding: 5px;
   z-index: 0;
   height: fit-content;
-  min-width: 150px;
   resize: horizontal;
   width: 100%;
 }

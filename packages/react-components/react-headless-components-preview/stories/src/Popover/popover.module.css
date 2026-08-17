@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .trigger {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-36 cursor-pointer items-center;
 
-  height: 36px;
   padding: 0 var(--space-4);
   border: 0;
   border-radius: var(--radius-md);
@@ -34,7 +33,8 @@
 }
 
 .triggerSmall {
-  height: 28px;
+  @apply h-28;
+
   padding: 0 var(--space-3);
   font-size: 12.5px;
 }
@@ -57,13 +57,13 @@
 }
 
 .surface {
+  @apply max-w-320 min-w-240;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-4);
-  min-width: 240px;
-  max-width: 320px;
 }
 
 .surfaceColumn {
@@ -79,12 +79,13 @@
 }
 
 .surfaceWide {
-  width: 320px;
+  @apply w-320;
 }
 
 .surfaceMenu {
+  @apply min-w-160;
+
   padding: var(--space-2) 0;
-  min-width: 160px;
 }
 
 .heading {
@@ -95,7 +96,7 @@
 }
 
 .headingFlush {
-  margin: 0;
+  @apply m-0;
 }
 
 .body {
@@ -109,9 +110,8 @@
 }
 
 .actionButton {
-  @apply inline-flex cursor-pointer items-center;
+  @apply inline-flex h-28 cursor-pointer items-center;
 
-  height: 28px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -195,8 +195,9 @@
 }
 
 .outerPad {
+  @apply min-h-320;
+
   padding: var(--space-12);
-  min-height: 320px;
 }
 
 .localPad {
@@ -217,10 +218,8 @@
 }
 
 .surfaceWithArrow [data-arrow] {
-  @apply absolute;
+  @apply absolute h-12 w-12;
 
-  width: 12px;
-  height: 12px;
   background: var(--bg-elev);
   transform: rotate(45deg);
 }

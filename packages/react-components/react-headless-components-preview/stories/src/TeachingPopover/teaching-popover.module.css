@@ -1,11 +1,11 @@
 @reference '#theme';
 
 .surface {
+  @apply max-w-360 min-w-320;
+
   background: var(--bg-elev);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
-  min-width: 320px;
-  max-width: 360px;
 }
 
 .header {
@@ -19,21 +19,16 @@
 }
 
 .headerIcon {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex h-16 w-16 items-center justify-center;
 
-  width: 16px;
-  height: 16px;
   font-size: 16px;
   color: var(--text-muted);
 }
 
 /* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
 .dismissButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-24 w-24 cursor-pointer items-center justify-center p-0;
 
-  width: 24px;
-  height: 24px;
-  padding: 0;
   margin-inline-start: auto;
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
@@ -89,17 +84,17 @@
 }
 
 .bodyText {
+  @apply m-0;
+
   font-size: 14px;
   color: var(--text);
   line-height: 1.45;
-  margin: 0;
 }
 
 .footer {
-  @apply flex justify-end;
+  @apply mt-0 flex justify-end;
 
   gap: var(--space-2);
-  margin-top: 0;
 }
 
 /*
@@ -108,10 +103,8 @@
   TeachingPopoverCarouselFooterButton minimum.
 */
 .actionButton {
-  @apply inline-flex cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 min-w-96 cursor-pointer items-center justify-center;
 
-  height: 32px;
-  min-width: 96px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -201,11 +194,8 @@
   (full accent). Width and border-radius animate so paging feels continuous.
 */
 .carouselNavButton {
-  @apply box-border flex cursor-pointer;
+  @apply box-border flex h-8 w-8 cursor-pointer p-0;
 
-  width: 8px;
-  height: 8px;
-  padding: 0;
   border: 0;
   border-radius: 50%;
   background: color-mix(in srgb, var(--accent) 30%, transparent);
@@ -223,7 +213,8 @@
 }
 
 .carouselNavButton[aria-selected='true'] {
-  width: 16px;
+  @apply w-16;
+
   border-radius: 4px;
   background: var(--accent);
   opacity: 1;

@@ -11,22 +11,19 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex min-h-230 flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
-  min-height: 230px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -50,15 +47,14 @@
 }
 
 .item {
+  @apply w-300 p-8;
+
   border: var(--stroke-width-thicker) solid var(--color-brand-background);
-  padding: 8px;
-  width: 300px;
 }
 
 .description {
-  @apply rounded-medium bg-neutral-background-1-pressed;
+  @apply mt-10 rounded-medium bg-neutral-background-1-pressed;
 
   font-family: var(--font-monospace);
-  margin-top: 10px;
   padding: 5px 10px;
 }

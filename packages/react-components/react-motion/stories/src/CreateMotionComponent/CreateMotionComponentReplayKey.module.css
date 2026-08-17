@@ -23,9 +23,7 @@
 }
 
 .card {
-  @apply flex items-center justify-center;
-
-  min-height: 160px;
+  @apply flex min-h-160 items-center justify-center;
 }
 
 .controls {

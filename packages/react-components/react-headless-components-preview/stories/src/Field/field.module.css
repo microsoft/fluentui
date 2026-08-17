@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .field {
-  @apply flex flex-col;
+  @apply flex flex-col gap-6;
 
-  gap: 6px;
   width: 100%;
 }
 
@@ -19,10 +18,9 @@
 }
 
 .message {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-4;
 
   font-size: 12px;
-  gap: 4px;
 }
 
 .messageError {
@@ -44,11 +42,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex flex-col;
-
-  gap: 20px;
+  @apply flex max-w-360 flex-col gap-20;
 
   width: 100%;
-
-  max-width: 360px;
 }

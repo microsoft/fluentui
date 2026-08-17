@@ -1,14 +1,13 @@
 @reference '#theme';
 
 .tag {
-  @apply inline-grid cursor-default items-center select-none;
+  @apply inline-grid min-h-28 cursor-default items-center select-none;
 
   grid-template-areas:
     'media primary dismiss'
     'media secondary dismiss';
   align-content: center;
   justify-items: start;
-  min-height: 28px;
   width: max-content;
   max-width: 100%;
   padding: 0 10px;
@@ -80,16 +79,13 @@
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
-  margin-right: 6px;
+  @apply mr-6 h-14 w-14;
 }
 
 .media {
-  width: 22px;
-  height: 22px;
+  @apply mr-6 h-22 w-22;
+
   margin-left: -4px;
-  margin-right: 6px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
@@ -114,13 +110,10 @@
 }
 
 .dismissIcon {
-  @apply inline-flex items-center justify-center;
+  @apply ml-6 inline-flex h-22 w-22 items-center justify-center;
 
   grid-area: dismiss;
   align-self: center;
-  width: 22px;
-  height: 22px;
-  margin-left: 6px;
   border-radius: var(--radius-sm, 4px);
   flex-shrink: 0;
 }
@@ -134,15 +127,11 @@
 }
 
 .demo {
-  @apply flex flex-col items-start;
-
-  gap: 16px;
+  @apply flex flex-col items-start gap-16;
 }
 
 .demoRow {
-  @apply flex flex-wrap items-center;
-
-  gap: 8px;
+  @apply flex flex-wrap items-center gap-8;
 }
 
 .resetButton {

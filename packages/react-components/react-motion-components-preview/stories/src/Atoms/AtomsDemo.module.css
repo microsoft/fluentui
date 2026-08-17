@@ -30,28 +30,23 @@
 }
 
 .demoArea {
-  @apply flex items-center justify-center bg-neutral-background-1;
+  @apply flex min-h-120 items-center justify-center bg-neutral-background-1;
 
-  min-height: 120px;
   flex: 0 0 200px;
   padding: var(--spacing-vertical-xl);
 }
 
 .demoBox {
-  @apply flex items-center justify-center rounded-medium bg-neutral-background-3 text-neutral-foreground-1;
+  @apply flex h-80 w-100 items-center justify-center rounded-medium bg-neutral-background-3 text-neutral-foreground-1;
 
-  width: 100px;
-  height: 80px;
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   font-weight: var(--font-weight-semibold);
 }
 
 .codeArea {
-  @apply overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+  @apply m-0 min-w-0 overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
 
   flex: 1 1 auto;
-  min-width: 0;
-  margin: 0;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   font-family: var(--font-monospace);

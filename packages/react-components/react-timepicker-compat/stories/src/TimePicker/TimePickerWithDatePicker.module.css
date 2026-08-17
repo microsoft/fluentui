@@ -4,10 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid;
+  @apply mb-10 grid max-w-600 gap-x-20;
 
-  column-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
-  max-width: 600px;
-  margin-bottom: 10px;
 }

@@ -4,6 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .drawer {
-  width: 400px;
-  height: 600px;
+  @apply h-600 w-400;
 }

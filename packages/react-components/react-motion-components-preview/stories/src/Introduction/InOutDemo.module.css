@@ -27,15 +27,15 @@
 }
 
 .title {
-  margin: 0;
+  @apply m-0;
+
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-base-300);
 }
 
 .subtitle {
-  @apply text-center text-neutral-foreground-3;
+  @apply m-0 text-center text-neutral-foreground-3;
 
-  margin: 0;
   font-size: var(--text-base-200);
 }
 
@@ -48,17 +48,14 @@
 }
 
 .demoArea {
-  @apply flex items-center justify-center;
+  @apply flex h-60 items-center justify-center;
 
   width: 100%;
-  height: 60px;
 }
 
 .demoBox {
-  @apply flex items-center justify-center rounded-small bg-brand-background text-neutral-foreground-on-brand;
+  @apply flex h-50 w-80 items-center justify-center rounded-small bg-brand-background text-neutral-foreground-on-brand;
 
-  width: 80px;
-  height: 50px;
   font-size: var(--text-base-200);
   font-weight: var(--font-weight-semibold);
 }

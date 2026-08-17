@@ -7,22 +7,21 @@
  * inline here. The consts remain in the story for the motion keyframes. */
 
 .root {
-  @apply relative flex overflow-hidden bg-neutral-background-1;
+  @apply relative flex h-480 overflow-hidden bg-neutral-background-1;
 
   border: 2px solid #ccc;
-  height: 480px;
 }
 
 .drawer {
-  width: 320px;
+  @apply w-320;
+
   border: 1px solid;
 }
 
 .content {
-  @apply absolute box-border grid items-start justify-start bg-neutral-background-1;
+  @apply absolute box-border grid items-start justify-start bg-neutral-background-1 p-16;
 
   flex: 1;
-  padding: 16px;
   gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
   inset: 0;

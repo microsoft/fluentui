@@ -4,12 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .longText {
-  width: 280px;
+  @apply w-280;
 }
 
 .wrapper {
-  @apply flex items-center;
+  @apply flex items-center gap-x-15;
 
-  column-gap: 15px;
   min-width: min-content;
 }

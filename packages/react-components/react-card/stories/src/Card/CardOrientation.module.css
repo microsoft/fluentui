@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
-  @apply flex flex-col flex-wrap;
-
-  gap: 36px;
+  @apply flex flex-col flex-wrap gap-36;
 }
 
 .card {
@@ -15,7 +13,8 @@
 }
 
 .section {
-  max-width: 360px;
+  @apply max-w-360;
+
   width: 100%;
 }
 
@@ -24,14 +23,13 @@
 }
 
 .horizontalCardImage {
-  width: 64px;
-  height: 64px;
+  @apply h-64 w-64;
 }
 
 .headerImage {
+  @apply max-h-44 max-w-44;
+
   border-radius: 4px;
-  max-width: 44px;
-  max-height: 44px;
 }
 
 .caption {
@@ -39,5 +37,5 @@
 }
 
 .text {
-  margin: 0;
+  @apply m-0;
 }

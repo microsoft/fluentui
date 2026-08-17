@@ -4,26 +4,21 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex overflow-hidden;
-
-  height: 600px;
+  @apply flex h-600 overflow-hidden;
 }
 
 .nav {
-  min-width: 200px;
+  @apply min-w-200;
 }
 
 .content {
-  @apply grid items-start justify-start;
+  @apply grid items-start justify-start p-16;
 
   flex: 1;
-  padding: 16px;
 }
 
 .field {
-  @apply flex flex-col;
+  @apply ms-8 mt-4 flex flex-col;
 
-  margin-top: 4px;
   grid-row-gap: var(--spacing-vertical-s);
-  margin-inline-start: 8px;
 }

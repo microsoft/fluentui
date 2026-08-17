@@ -4,13 +4,12 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
-  @apply flex flex-wrap;
-
-  gap: 16px;
+  @apply flex flex-wrap gap-16;
 }
 
 .card {
-  max-width: 400px;
+  @apply max-w-400;
+
   width: 100%;
   height: fit-content;
 }
@@ -28,9 +27,8 @@
 }
 
 .logoBadge {
-  @apply rounded-small;
+  @apply rounded-small p-5;
 
-  padding: 5px;
   background-color: #fff;
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.14),

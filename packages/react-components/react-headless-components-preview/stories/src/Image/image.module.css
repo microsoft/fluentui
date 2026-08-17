@@ -1,9 +1,7 @@
 @reference '#theme';
 
 .grid {
-  @apply flex flex-col;
-
-  gap: 24px;
+  @apply flex flex-col gap-24;
 }
 
 .image {
@@ -11,10 +9,7 @@
 }
 
 .fitContainer {
-  @apply inline-block overflow-hidden;
-
-  width: 300px;
-  height: 200px;
+  @apply inline-block h-200 w-300 overflow-hidden;
 }
 
 .fitFill {

@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  max-width: 400px;
+  @apply max-w-400;
 }

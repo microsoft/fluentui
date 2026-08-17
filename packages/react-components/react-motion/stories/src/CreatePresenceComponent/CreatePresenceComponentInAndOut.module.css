@@ -11,21 +11,17 @@
 }
 
 .card {
-  @apply flex items-center justify-center rounded-medium;
+  @apply flex items-center justify-center gap-10 rounded-medium p-10;
 
-  gap: 10px;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .item {
-  @apply flex items-center justify-center bg-brand-background;
+  @apply flex h-100 w-100 items-center justify-center bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
   color: white;
 }

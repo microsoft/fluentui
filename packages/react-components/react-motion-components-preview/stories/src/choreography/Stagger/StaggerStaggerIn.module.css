@@ -4,29 +4,24 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: 20px;
-  padding: 20px;
-  max-width: 600px;
+  @apply flex max-w-600 flex-col gap-20 p-20;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium bg-neutral-background-1;
+  @apply flex flex-col gap-12 rounded-medium bg-neutral-background-1 p-16;
 
-  gap: 12px;
-  padding: 16px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-8);
 }
 
 .userCard {
+  @apply mb-4;
+
   width: 100%;
-  margin-bottom: 4px;
 }
 
 .cardHeader {
-  padding-bottom: 8px;
+  @apply pb-8;
 }
 
 .cardContent {
@@ -34,5 +29,5 @@
 }
 
 .ctaButton {
-  min-width: 120px;
+  @apply min-w-120;
 }

@@ -21,7 +21,7 @@
 .eyebrow,
 .heading,
 .summary {
-  margin: 0;
+  @apply m-0;
 }
 
 .eyebrow {
@@ -146,9 +146,8 @@
 }
 
 .iconAction[data-icon-only] {
-  @apply inline-flex justify-center;
+  @apply inline-flex justify-center p-0;
 
   min-inline-size: var(--space-16);
   inline-size: var(--space-16);
-  padding: 0;
 }

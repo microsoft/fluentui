@@ -4,25 +4,17 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  padding: 16px;
-  gap: 16px;
+  @apply flex flex-col gap-16 p-16;
 }
 
 .row {
-  @apply flex flex-row flex-wrap items-center;
-
-  gap: 20px;
+  @apply flex flex-row flex-wrap items-center gap-20;
 }
 
 .sliderGroup {
-  @apply flex flex-col;
-
-  gap: 4px;
-  min-width: 180px;
+  @apply flex min-w-180 flex-col gap-4;
 }
 
 .chartWrapper {
-  margin-top: 10px;
+  @apply mt-10;
 }

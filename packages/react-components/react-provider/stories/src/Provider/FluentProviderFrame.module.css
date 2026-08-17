@@ -4,20 +4,20 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .button {
-  margin-top: 5px;
+  @apply mt-5;
 }
 
 .text {
-  @apply bg-brand-background-2 text-brand-foreground-2;
+  @apply bg-brand-background-2 p-5 text-brand-foreground-2;
 
   font-size: 20px;
   border: 1px;
   border-radius: 5px;
-  padding: 5px;
 }
 
 .provider {
+  @apply p-5;
+
   border: 1px;
   border-radius: 5px;
-  padding: 5px;
 }

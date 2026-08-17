@@ -6,10 +6,9 @@
  * (the const was only used by makeStyles and was removed with it). */
 
 .container {
-  @apply flex flex-col;
+  @apply flex max-w-300 flex-col;
 
   gap: var(--spacing-vertical-l);
-  max-width: 300px;
 }
 
 .controls {
@@ -25,9 +24,10 @@
 }
 
 .sliderLabel {
+  @apply min-w-90;
+
   font-size: var(--text-base-200);
   font-weight: var(--font-weight-semibold);
-  min-width: 90px;
   flex-shrink: 0;
 }
 
@@ -49,7 +49,5 @@
 }
 
 .item {
-  @apply flex items-center justify-start rounded-small;
-
-  min-height: 36px;
+  @apply flex min-h-36 items-center justify-start rounded-small;
 }

@@ -4,10 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply relative flex items-center justify-center;
+  @apply relative mt-20 flex h-500 w-500 items-center justify-center;
 
   border: 2px dashed green;
-  height: 500px;
-  width: 500px;
-  margin-top: 20px;
 }

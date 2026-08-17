@@ -12,14 +12,14 @@
 }
 
 .example {
-  @apply bg-brand-background-2 text-brand-foreground-2;
+  @apply m-5 bg-brand-background-2 text-brand-foreground-2;
 
   border: 5px solid var(--color-brand-stroke-1);
   border-radius: 5px;
-  margin: 5px;
 }
 
 .text {
-  padding: 5px;
+  @apply p-5;
+
   font-size: 18px;
 }

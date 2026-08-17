@@ -4,24 +4,18 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-nowrap overflow-hidden;
+  @apply flex min-w-0 flex-nowrap overflow-hidden;
 
   flex-grow: 1;
-  min-width: 0;
 }
 
 .farItems {
-  @apply flex flex-nowrap;
-
-  gap: 4px;
-  margin-inline-end: 10px;
+  @apply me-10 flex flex-nowrap gap-4;
 }
 
 .resizableArea {
-  @apply relative flex flex-nowrap overflow-hidden;
+  @apply relative flex max-w-1000 min-w-200 flex-nowrap overflow-hidden;
 
-  min-width: 200px;
-  max-width: 1000px;
   border: 2px solid var(--color-brand-background);
   padding: 20px 10px 10px 10px;
   resize: horizontal;

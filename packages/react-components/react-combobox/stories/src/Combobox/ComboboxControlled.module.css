@@ -4,16 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid;
+  @apply grid max-w-400 gap-20;
 
   justify-items: start;
-  gap: 20px;
-  max-width: 400px;
 }
 
 .field {
-  @apply grid;
+  @apply grid gap-2;
 
   justify-items: start;
-  gap: 2px;
 }

@@ -4,14 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col;
-
-  row-gap: 5px;
+  @apply flex flex-col gap-y-5;
 }
 
 .example {
-  @apply flex flex-col items-center bg-neutral-background-1;
+  @apply flex min-h-96 flex-col items-center bg-neutral-background-1;
 
   justify-items: center;
-  min-height: 96px;
 }

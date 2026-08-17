@@ -22,7 +22,5 @@
 
 /* Demo helpers (used by Storybook examples) */
 .demo {
-  @apply flex flex-col;
-
-  gap: 16px;
+  @apply flex flex-col gap-16;
 }

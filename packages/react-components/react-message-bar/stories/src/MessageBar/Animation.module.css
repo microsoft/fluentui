@@ -8,12 +8,9 @@
 }
 
 .messageBarGroup {
-  @apply flex flex-col overflow-auto;
+  @apply mt-10 flex h-300 flex-col gap-10 overflow-auto;
 
   padding: var(--spacing-horizontal-m-nudge);
-  margin-top: 10px;
-  gap: 10px;
-  height: 300px;
   border: 2px solid var(--color-brand-foreground-1);
 }
 
@@ -25,7 +22,5 @@
 }
 
 .buttonGroup {
-  @apply flex;
-
-  gap: 5px;
+  @apply flex gap-5;
 }

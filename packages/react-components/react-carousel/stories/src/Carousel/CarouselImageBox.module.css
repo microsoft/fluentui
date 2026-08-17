@@ -4,15 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .viewport {
-  margin-bottom: 72px;
+  @apply mb-72;
 }
 
 .card {
-  @apply box-border overflow-hidden;
+  @apply box-border overflow-hidden ps-52 pe-52;
 
   width: 100%;
-  padding-inline-end: 52px;
-  padding-inline-start: 52px;
 }
 
 .image {

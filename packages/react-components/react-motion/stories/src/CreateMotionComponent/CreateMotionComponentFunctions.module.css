@@ -11,23 +11,20 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium;
+  @apply flex min-h-180 flex-col items-center rounded-medium p-10;
 
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
-  min-height: 180px;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-10;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
-  padding: 10px;
 }
 
 .field {
@@ -43,13 +40,11 @@
 }
 
 .item {
-  @apply overflow-hidden;
+  @apply w-300 overflow-hidden p-8;
 
   border: var(--stroke-width-thicker) solid var(--color-brand-background);
-  padding: 8px;
-  width: 300px;
 }
 
 .description {
-  margin: 5px;
+  @apply m-5;
 }

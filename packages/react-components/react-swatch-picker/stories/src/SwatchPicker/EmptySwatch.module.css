@@ -4,15 +4,12 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  @apply flex flex-col;
-
-  width: 300px;
-  gap: 10px;
+  @apply flex w-300 flex-col gap-10;
 }
 
 .selectedColor {
-  width: 100px;
-  height: 100px;
+  @apply h-100 w-100;
+
   border: 1px solid #ccc;
   margin: 20px 0;
 }
@@ -24,29 +21,25 @@
 }
 
 .button {
-  margin-inline-end: 8px;
+  @apply me-8;
 }
 
 .previewColor {
+  @apply h-50 w-50;
+
   margin: 10px 0;
-  width: 50px;
-  height: 50px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
 .previewButton {
-  @apply block;
+  @apply block h-50 min-w-50;
 
-  min-width: 50px;
-  height: 50px;
   margin: 10px 0;
 }
 
 .rowWrapper {
-  @apply flex;
-
-  gap: 10px;
+  @apply flex gap-10;
 }
 
 .sliders {

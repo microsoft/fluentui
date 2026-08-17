@@ -26,10 +26,9 @@
 }
 
 .controlGroup {
-  @apply flex flex-col;
+  @apply flex min-w-200 flex-col;
 
   gap: var(--spacing-vertical-s);
-  min-width: 200px;
 }
 
 .spinnerSection {
@@ -41,17 +40,15 @@
 }
 
 .spinnerTitle {
-  @apply text-neutral-foreground-1;
+  @apply m-0 text-neutral-foreground-1;
 
   font-size: var(--text-base-300);
   font-weight: var(--font-weight-semibold);
-  margin: 0;
 }
 
 .spinnerContainer {
-  @apply flex items-center justify-center;
+  @apply flex min-h-120 items-center justify-center;
 
-  min-height: 120px;
   padding: var(--spacing-horizontal-l);
 }
 
@@ -62,9 +59,7 @@
 }
 
 .bouncingDot {
-  @apply bg-brand-background;
+  @apply h-12 w-12 bg-brand-background;
 
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
 }

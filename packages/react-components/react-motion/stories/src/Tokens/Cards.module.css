@@ -20,10 +20,9 @@
 }
 
 .card {
-  @apply grid rounded-medium bg-neutral-background-1;
+  @apply grid rounded-medium bg-neutral-background-1 p-30;
 
   border-top-right-radius: 0;
-  padding: 30px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px 50px;
   place-items: center;
@@ -31,12 +30,11 @@
 }
 
 .cardClassesContainer {
-  @apply grid;
+  @apply grid gap-10;
 
   grid-template:
     'view point'
     'title .' auto / min-content var(--point-size);
-  gap: 10px;
   --container-size: 250px;
   --point-size: 20px;
 }
@@ -61,13 +59,12 @@
 }
 
 .graph {
-  @apply grid;
+  @apply grid gap-6;
 
   grid-area: view;
   grid-template:
     'graphP svg'
     '.      graphT' / min-content 1fr;
-  gap: 6px;
 }
 
 @media (forced-colors: active) {
@@ -115,11 +112,9 @@
 }
 
 .duration {
-  @apply bg-neutral-foreground-3;
+  @apply h-4 w-128 bg-neutral-foreground-3;
 
   place-self: center;
-  width: 128px;
-  height: 4px;
   margin: 64px auto;
   animation-name: duration-kf;
   animation-iteration-count: infinite;
@@ -136,12 +131,11 @@
 }
 
 .title {
-  @apply flex flex-col rounded-medium bg-neutral-background-3;
+  @apply flex flex-col gap-5 rounded-medium bg-neutral-background-3;
 
   grid-area: title;
   justify-self: center;
   margin: 0 20px;
-  gap: 5px;
   font-family: var(--font-monospace);
   font-size: var(--text-base-400);
   padding: 5px 10px;

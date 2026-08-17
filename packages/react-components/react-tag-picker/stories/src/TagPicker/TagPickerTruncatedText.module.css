@@ -10,7 +10,7 @@
 }
 
 .tagPrimaryTextFixedWidth {
-  width: 50px;
+  @apply w-50;
 }
 
 .optionContent {

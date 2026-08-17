@@ -4,14 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  @apply overflow-hidden bg-neutral-background-2;
+  @apply w-600 min-w-200 overflow-hidden bg-neutral-background-2 p-5;
 
-  padding: 5px;
   z-index: 0;
   height: fit-content;
-  min-width: 200px;
   resize: horizontal;
-  width: 600px;
 }
 
 .tooltip {
