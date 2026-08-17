@@ -23,24 +23,8 @@ export const badgeClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * The icon slot deliberately carries NO data attributes: both its placement
- * (`data-icon-position`) and its scale (`data-size`) are selected from the root, and its
- * margin is additionally gated on the root's `data-empty` — the same three attributes the
- * react-button conversion established.
- *
- * `data-empty` mirrors Griffel's gate on the icon margin, which is
- * `React.Children.toArray(state.root.children).length > 0` and NOT `!!children`: a badge
- * whose only child is the number `0` must still render as text and keep the icon margin
- * (the edge case the original code comments on). `React.Children.toArray` drops
- * `null`/`undefined`/booleans but keeps `0`, so it is reproduced verbatim here rather
- * than simplified to a truthiness check.
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-empty="false"` and still match
- * `[data-empty]`.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type BadgeRootDataAttributes = {
   'data-size': BadgeState['size'];

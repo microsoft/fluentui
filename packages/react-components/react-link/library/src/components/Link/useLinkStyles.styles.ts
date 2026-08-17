@@ -22,27 +22,8 @@ export const linkClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Both are *presence* selectors, so the flags are written `flag || undefined` — React
- * omits an attribute whose value is `undefined`, whereas `false` would render
- * `data-inline="false"` and still match `[data-inline]`.
- *
- * `data-disabled` is the headless preview's own name for this exact value: its `useLink`
- * writes `data-disabled` from `state.disabled` too (reports/headless-precedent.md). By
- * the time this hook runs, `useLinkState_unstable` has already widened `state.disabled`
- * to `disabled || disabledFocusable`, which is the condition the Griffel
- * `disabled && styles.disabled` argument branched on — so no separate
- * `data-disabled-focusable` attribute is needed here (nothing in Link.module.css
- * distinguishes the two, unlike Button).
- *
- * `data-inline` is new (no headless precedent); it follows the react-divider pilot's
- * `data-inset` shape — a boolean styling opt-in expressed as a presence attribute.
- *
- * `as`/`href` stay JS-side class lookups (`styles.href`, `styles.button`) rather than
- * attributes: they select on the rendered element type, which is not component state and
- * has no data-attribute precedent.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type LinkRootDataAttributes = {
   'data-disabled'?: true;

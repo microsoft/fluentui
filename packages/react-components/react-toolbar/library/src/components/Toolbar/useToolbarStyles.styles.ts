@@ -21,16 +21,8 @@ export const toolbarClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
- * the headless preview's vocabulary (reports/headless-precedent.md).
- *
- * Both are stamped UNCONDITIONALLY. `data-size` in particular is written even on a
- * vertical toolbar, where the Griffel hook applied no size slice: the `!vertical` half of
- * that gate is expressed in CSS by nesting the size variants inside `@variant horizontal`
- * (see Toolbar.module.css), not by withholding the attribute. Toolbar also publishes
- * `size` to its children through ToolbarContext, so an absent `data-size` would make the
- * DOM disagree with the state the children are reading.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ToolbarRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

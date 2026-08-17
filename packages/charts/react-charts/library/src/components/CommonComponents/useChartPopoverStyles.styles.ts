@@ -34,15 +34,6 @@ export const popoverClassNames: { root: string } = {
 
 /**
  * Apply styling to the ChartPopover slots based on the props.
- *
- * Cascade priority is decided by the `@layer fui.*` order in ChartPopover.module.css, not
- * by the order of the `clsx` arguments — see that file's header for the mapping back to
- * the mergeClasses() argument order this replaces.
- *
- * The `isCartesian` prop selects between two mutually-exclusive module classes on two
- * slots — a plain conditional class lookup, exactly as the Griffel version selected
- * between two slices. No data attributes are set: `isCartesian` is a render-time look
- * selection with no descendant that needs to read it (D15.6 — data-* is fallback-only).
  */
 export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComponentStyles => {
   const { isCartesian } = props;

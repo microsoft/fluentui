@@ -22,14 +22,8 @@ export const breadcrumbDividerClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a scale prop, so it rides `data-size` rather than a module class
- * (DECISIONS.md D3) — the same attribute react-button/react-badge/react-avatar stamp.
- * `BreadcrumbDividerState['size']` is optional (it is injected from BreadcrumbContext by
- * the full hook, and the base hook omits it), so the `= 'medium'` default the Griffel hook
- * applied in its destructure is preserved here and the DEFAULTED value is what gets stamped.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type BreadcrumbDividerRootDataAttributes = {
   'data-size': NonNullable<BreadcrumbDividerState['size']>;

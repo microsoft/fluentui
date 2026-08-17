@@ -19,12 +19,8 @@ export const tagPickerButtonClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants (DECISIONS.md D3)
- * rather than a class per step. `hasSelectedOption` gets no attribute: it toggles one module
- * class on this same element and no descendant selector reads it (DECISIONS.md D15.6).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TagPickerButtonRootDataAttributes = {
   'data-size': TagPickerButtonState['size'];

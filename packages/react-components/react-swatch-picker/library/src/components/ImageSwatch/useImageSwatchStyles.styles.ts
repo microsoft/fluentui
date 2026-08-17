@@ -22,17 +22,8 @@ export const imageSwatchClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-size` carries the SCALE prop (DECISIONS.md D3). `shape` and `selected` deliberately
- * do NOT get one: both gate a whole makeStyles slice and stay module classes, and no
- * descendant needs to read them (D15.6 — a `data-*` attribute is a fallback for state that
- * a native selector cannot express at the element that needs it, never a mirror added for
- * symmetry). Note in particular that the root's own `aria-selected` is present only in grid
- * layout — `useImageSwatch_unstable` renders `aria-checked` in row layout — so neither
- * attribute is a reliable selector for selection, which is precisely why the module class
- * carries it instead.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ImageSwatchRootDataAttributes = {
   'data-size': NonNullable<ImageSwatchState['size']>;

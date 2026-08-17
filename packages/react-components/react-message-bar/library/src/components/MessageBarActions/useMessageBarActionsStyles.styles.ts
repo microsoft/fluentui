@@ -17,16 +17,6 @@ export const messageBarActionsClassNames: { root: string } = {
 /**
  * Data attributes rendered on the root slot and matched by `:where([data-…])` selectors in
  * `MessageBarActions.module.css`.
- *
- * Both names are taken from the in-repo headless preview, which stamps exactly these two
- * on ITS MessageBarActions root (`react-headless-components-preview/library/src/components/
- * MessageBar/MessageBarActions/useMessageBarActions.ts`), and both are in the 25-name
- * vocabulary (reports/headless-precedent.md).
- *
- * `data-has-actions` is a presence flag written `hasActions || undefined`: React omits an
- * attribute whose value is `undefined`, whereas `false` would render
- * `data-has-actions="false"` and still match `[data-has-actions]` — which would invert the
- * `:not([data-has-actions])` rule that hides an empty actions slot.
  */
 type MessageBarActionsRootDataAttributes = {
   'data-layout': MessageBarActionsState['layout'];

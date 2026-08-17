@@ -24,20 +24,10 @@ export const fieldClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the ROOT slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
- * the headless preview's vocabulary (reports/headless-precedent.md) and both already
- * existed in the catalog — this conversion adds no new variant.
+ * Data attributes rendered on the ROOT slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *
- * They live on the root even though every rule they select styles the `label` slot: the
- * label is the root's child, so one stamp drives all the descendant rules (same approach
- * as react-switch's `data-size` → `.root … & .label`).
- *
- * `data-size` must NOT be stamped on the label slot itself. That element is the <Label>
- * from `@fluentui/react-label`, whose own styles hook writes `data-size` from the
- * label's OWN `size` prop — a consumer may override it (`<Field size="medium"
- * label={{ size: 'small' }} />`) while Field's label rules must keep reading Field's
- * `size`, exactly as the Griffel hook did.
+ * `data-size` must NOT be stamped on the label slot itself.
  */
 type FieldRootDataAttributes = {
   'data-orientation': FieldState['orientation'];

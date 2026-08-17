@@ -21,12 +21,8 @@ export const interactionTagClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
- * (DECISIONS.md D3). `shape` stays a conditional CLASS in the composition below, the
- * same way `rootStyles[shape]` was a conditional mergeClasses argument.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type InteractionTagRootDataAttributes = {
   'data-size': InteractionTagState['size'];

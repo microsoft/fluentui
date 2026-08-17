@@ -21,48 +21,8 @@ export const radioClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the Radio slots and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
- * the headless preview's vocabulary (reports/headless-precedent.md).
- *
- * `data-orientation` vs `data-label-position` — the two are NOT redundant, they encode the
- * two different gates the Griffel hook used (identical split to react-switch):
- *   • `rootStyles.vertical` and `inputStyles.below` are applied for
- *     `labelPosition === 'below'` with NO label gate, so their selectors must match even
- *     when the Radio has no label → `data-orientation`, always stamped, reusing the
- *     catalog's existing `vertical` / `horizontal` pair.
- *   • `labelStyles[labelPosition]` is applied inside `if (state.label)`, so it rides
- *     `data-label-position`, written ONLY when the label slot exists. Its presence carries
- *     the `label &&` half of the condition and its value carries the position.
- * Hence `data-label-position` is optional and written `label ? labelPosition : undefined`:
- * React omits an attribute whose value is `undefined`.
- *
- * `data-empty` lives on the INDICATOR, not the root. It replaces the Griffel hook's
- * `state.indicator.children ? inputStyles.customIndicator : inputStyles.defaultIndicator`
- * branch, whose condition is literally "the indicator slot has no children" — which is also
- * what the catalog variant's `:empty` fallback means for that exact element. It is a
- * *presence* selector, so it is written `|| undefined`: `false` would render
- * `data-empty="false"` and still match `[data-empty]`.
- *
- * ── `data-checked` / `data-disabled` are MIRRORS, not new state (DECISIONS.md D15) ────────
- *
- * Neither drives a rule in Radio.module.css: every checked/disabled rule there is anchored
- * on `.input` and reaches the indicator and label through sibling combinators. They exist so
- * that a DESCENDANT can read the Radio's primary state through the `group/fui-radio` marker
- * on this same element — `.input` is a sibling of every such descendant, not an ancestor, so
- * CSS alone cannot reach it. Identical shape and rationale to react-switch's pair; the
- * worked reference for both is `react-checkbox` (useCheckboxStyles.styles.ts).
- *
- * Presence flags, written `value || undefined`: the catalog's `checked` /
- * `disabled-control` variants are attribute-presence selectors, so `data-checked="false"`
- * would falsely match `[data-checked]`.
- *
- * ⚠ `data-checked` reflects the CONTROLLED value only. useRadio.tsx derives it as
- * `group.value === props.value`, which is `undefined` whenever the enclosing RadioGroup is
- * uncontrolled (`defaultValue`), and the DOM then owns the state. For an uncontrolled group
- * the attribute is absent and descendants see "not checked"; `defaultChecked` is
- * deliberately not used as a fallback, because it is correct only until the first change and
- * a stale mirror is worse than an absent one. Same limitation, same cause, as react-switch.
+ * Data attributes rendered on the Radio slots and matched by the shared `@custom-variant` catalog
+ * in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type RadioRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

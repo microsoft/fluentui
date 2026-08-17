@@ -104,31 +104,8 @@ export const chartAnnotationLayerClassNames: { root: string } = {
 /**
  * Apply styling to the ChartAnnotationLayer slots based on the state.
  *
- * Cascade priority is decided by the `@layer fui.*` order in
- * ChartAnnotationLayer.module.css, not by clsx argument order — see that file's header
- * for the mapping back to the mergeClasses() argument order this replaces.
- *
- * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
- * marker SECOND, consumer overrides LAST. `styles.root` is what guarantees the marker is
- * never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- * `props.className` is a live consumer channel (CartesianChart passes its
- * `.annotation-layer` class through it) and `props.styles?.*` per-slot channels are
- * preserved verbatim (HeatMapChart precedent).
- *
- * No data attributes are set by this hook: the `data-chart-annotation-*` attributes on
- * the component's DOM predate the migration and are consumer/test seams, not styling
- * state (D15.6 — data-* is fallback-only); no `@variant` in the module reads one.
- *
- * `annotationNoDefaults` is DELIBERATELY ABSENT from the returned object — fidelity, not
- * an oversight (VSBC upstream-bug precedent). The Griffel hook declared the slice (and
- * this interface declares the key) but its return object never composed it, so
- * `classes.annotationNoDefaults` has always been `undefined`: under `hideDefaultStyles`
- * an annotation renders with NO base styling at all (no caption1 typography, no flex
- * centering, no padding), and the `props.styles?.annotationNoDefaults` channel is
- * likewise dead. Returning the module class here would silently restyle every
- * `hideDefaultStyles` consumer (AnnotationOnlyChart among them). The compiled slice is
- * carried in the module as `.annotation-no-defaults` so a future upstream fix is a
- * one-line re-point, not a re-transcription.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useChartAnnotationLayerStyles = (props: ChartAnnotationLayerStyleProps): ChartAnnotationLayerStyles => {
   return {

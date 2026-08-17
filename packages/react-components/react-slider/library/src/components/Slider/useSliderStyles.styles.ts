@@ -27,34 +27,12 @@ export const sliderClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *
- * All three live on the ROOT even though they also select styles for the `rail`, `thumb` and
- * `input` slots: those slots are the root's children, so one stamp drives every descendant
- * rule (the same approach react-button uses for `data-size` → `.root … & .icon`).
- *
- * • `data-orientation` replaces the `vertical ? … : …` ternary that selected four separate
- *   Griffel slices (root focus indicator, root grid, rail, thumb, input). It is ALWAYS
- *   stamped — both branches have styles — and reuses the catalog's existing
- *   `vertical` / `horizontal` pair from the headless vocabulary
- *   (reports/headless-precedent.md).
- * • `data-size` replaces `rootStyles[state.size!]`. `size` defaults to `'medium'` in
- *   `useSlider_unstable`, so in practice it is always present; when it is not (a caller
- *   passing a `SliderBaseState`, where `size` is optional) no size variant matches, which is
- *   exactly what `styles[undefined]` did under Griffel.
- * • `data-disabled` is a PRESENCE flag written `state.disabled || undefined` — never
- *   `|| false`, because the catalog's `disabled` variant is an attribute-presence selector
- *   and `data-disabled="false"` would still match `[data-disabled]`. React omits an attribute
- *   whose value is `undefined`.
- *
- * `data-disabled` is a genuine fallback rather than a mirror for its own sake (DECISIONS.md
- * D15.6): the root is a `<div>`, so `:disabled` can never match it, yet the root's own
- * enabled/disabled custom-property block is gated on the same boolean as the thumb's and the
- * input's rules. The `.input` rules could have keyed on the input's native `:disabled` (the
- * catalog variant matches it), but that is deliberately not done — it would let an ancestor
- * `<fieldset disabled>` render a `cursor: default` input inside an otherwise enabled-looking
- * track, a split state the Griffel original never produced.
+ * • `data-disabled` is a PRESENCE flag written `state.disabled || undefined` — never `|| false`,
+ * because the catalog's `disabled` variant is an attribute-presence selector and
+ * `data-disabled="false"` would still match `[data-disabled]`.
  */
 type SliderRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

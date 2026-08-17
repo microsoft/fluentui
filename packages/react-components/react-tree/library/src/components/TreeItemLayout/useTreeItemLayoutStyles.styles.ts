@@ -33,23 +33,8 @@ export const treeItemLayoutClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Only `size` becomes an attribute. It is the one enum here with catalog variants
- * (`size-small` / `size-medium`), and it selects rules on THREE slots — the root's own
- * typography/min-height plus the `iconBefore` / `iconAfter` padding — so one stamp on the
- * root drives every descendant rule (the same approach as react-button's `data-size` →
- * `.root … & .icon`).
- *
- * `appearance` and `itemType` stay module classes (`styles[appearance]`,
- * `styles[itemType]`): neither has a shared variant, and a component package must not add
- * one. That is the line react-badge and react-button already drew — `styles[appearance]`
- * / `styles[shape]` as classes, `data-size` as an attribute.
- *
- * All three values come from context (TreeContext for `size`/`appearance`, TreeItemContext
- * for `itemType`), not from TreeItemLayout props, so `TreeItemLayout.types.ts` is
- * untouched — the cast below is local, as the cookbook requires.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TreeItemLayoutRootDataAttributes = {
   'data-size': 'small' | 'medium';

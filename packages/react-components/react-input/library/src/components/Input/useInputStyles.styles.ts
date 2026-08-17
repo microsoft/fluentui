@@ -21,23 +21,8 @@ export const inputClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * All five live on the ROOT even though three of them drive rules on the `input` and
- * content slots: that is the headless preview's convention (every `data-*` it stamps is
- * on the root — reports/headless-precedent.md), and it is what lets Input.module.css
- * reach the inner slots with `& .input` / `& .content` descendant selectors instead of
- * duplicating the attributes onto every slot.
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-invalid="false"` and still match
- * `[data-invalid]`.
- *
- * `data-disabled` mirrors `state.input.disabled`, which the ROOT cannot express natively —
- * the root is a `<span>` and only the inner `<input>` carries the real `disabled`
- * attribute. The `input` slot's own disabled rules therefore need no attribute at all;
- * they key off native `:disabled` through the shared `disabled` variant.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type InputRootDataAttributes = {
   'data-size': InputState['size'];

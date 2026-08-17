@@ -17,21 +17,6 @@ export const messageBarClassNames: { root: string } = {
 /**
  * Data attributes rendered on the root slot and matched by `:where([data-…])` selectors in
  * `MessageBar.module.css`.
- *
- * Both names are taken from the in-repo headless preview, which stamps exactly these two
- * on ITS MessageBar root (`react-headless-components-preview/library/src/components/
- * MessageBar/useMessageBar.ts`), and both are in the 25-name vocabulary
- * (reports/headless-precedent.md).
- *
- * `data-intent` sits on the ROOT even though it also selects the icon slot's colour: the
- * icon is the root's child, so one stamp drives every descendant rule (the react-button
- * `data-size` → `.root … & .icon` precedent).
- *
- * `shape` is deliberately NOT an attribute — it is a look prop, so it keeps a module class
- * lookup (`styles.square`) per DECISIONS.md D3.
- *
- * Neither flag is optional: `layout` and `intent` are both `Required<…>` on the state, so
- * neither needs the `flag || undefined` form the presence attributes elsewhere use.
  */
 type MessageBarRootDataAttributes = {
   'data-layout': MessageBarState['layout'];

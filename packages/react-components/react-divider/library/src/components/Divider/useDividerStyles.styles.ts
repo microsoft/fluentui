@@ -21,12 +21,8 @@ export const dividerClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-inset` / `data-empty` are *presence* selectors, so the flags are written as
- * `flag || undefined` — React omits an attribute whose value is `undefined`, whereas
- * `false` would render `data-inset="false"` and still match `[data-inset]`.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type DividerRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

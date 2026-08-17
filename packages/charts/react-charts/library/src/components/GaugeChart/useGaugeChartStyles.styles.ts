@@ -33,16 +33,8 @@ export const gaugeChartClassNames: { root: string } = {
 /**
  * Apply styling to the GaugeChart slots based on the state.
  *
- * Cascade priority is decided by the `@layer fui.*` order in GaugeChart.module.css, not by
- * clsx argument order — see that file's header for the mapping back to the mergeClasses()
- * argument order this replaces.
- *
- * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
- * marker SECOND, consumer override LAST. `styles.root` is what guarantees the marker is
- * never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- *
- * No data attributes are set: nothing in this component's styling is state-driven
- * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   return {

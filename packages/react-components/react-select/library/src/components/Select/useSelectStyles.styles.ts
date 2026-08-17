@@ -23,23 +23,8 @@ export const selectClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * All three live on the ROOT even though every rule they drive targets the `select` or
- * `icon` slot: that is the headless preview's convention (every `data-*` it stamps is on
- * the root — reports/headless-precedent.md), and here it is also load-bearing —
- * Select.module.css's header explains why moving `data-invalid` onto the `<select>` would
- * both break the invalid-vs-interactive file-order tie and let the shared `invalid`
- * variant's `:invalid` term fire on a `required` Select the Griffel code never styled.
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-invalid="false"` and still match
- * `[data-invalid]`.
- *
- * `data-disabled` mirrors `state.select.disabled`, which the ROOT cannot express natively —
- * the root is a `<span>` and only the inner `<select>` carries the real `disabled`
- * attribute.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type SelectRootDataAttributes = {
   'data-size': SelectState['size'];

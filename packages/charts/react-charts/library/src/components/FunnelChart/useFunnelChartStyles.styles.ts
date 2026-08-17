@@ -34,18 +34,8 @@ export const funnelClassNames: { root: string } = {
 /**
  * Apply styling to the FunnelChart component.
  *
- * Cascade priority is decided by the `@layer fui.*` order in FunnelChart.module.css, not by
- * clsx argument order — see that file's header for the mapping back to the mergeClasses()
- * argument order this replaces.
- *
- * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
- * marker SECOND, consumer strings LAST (`className` before `props.styles?.root` preserves
- * the previous argument order; both are unlayered, so the relative order carries no cascade
- * meaning either way). `styles.root` is what guarantees the marker is never `classList[0]`
- * — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- *
- * No data attributes are set: nothing in this component's styling is state-driven
- * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useFunnelChartStyles = (props: FunnelChartProps): FunnelChartStyles => {
   const { className } = props;

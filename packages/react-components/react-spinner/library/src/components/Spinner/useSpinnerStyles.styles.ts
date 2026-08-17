@@ -23,26 +23,8 @@ export const spinnerClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
- * the headless preview's vocabulary (reports/headless-precedent.md).
- *
- * `data-orientation` carries the `labelPosition === 'above' || labelPosition === 'below'`
- * branch the Griffel hook used to pick `rootStyles.vertical`: that condition is exactly
- * "stack the slots on the block axis", so it reuses the catalog's existing
- * `vertical`/`horizontal` pair (react-divider's encoding for the same flex-direction
- * switch) rather than introducing a Spinner-only label-position variant. The individual
- * label positions are not exposed — Griffel never distinguished `above` from `below`
- * either, and only the rendered ORDER (renderSpinner) depends on the rest.
- *
- * `data-size` sits on the ROOT even though the sized elements are the `spinner` and
- * `label` slots. It cannot ride the label slot: that slot renders `@fluentui/react-label`'s
- * `Label`, whose own `useLabelStyles_unstable` stamps `root['data-size']` from Label's
- * `size` prop and would overwrite it. Driving both slots from the root's attribute is also
- * the react-button precedent (`data-size` on the Button root selects its icon slot).
- *
- * No presence flags here, so nothing needs the `flag || undefined` form the other
- * converted packages use.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type SpinnerRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

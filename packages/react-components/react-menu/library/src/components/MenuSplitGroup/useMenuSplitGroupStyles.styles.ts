@@ -27,12 +27,10 @@ export const menuSplitGroupClassNames: { root: string } = {
 };
 
 /**
- * Apply styling to the MenuSplitGroup slots based on the state
- *
- * The `> MenuItem` rules this component owns live at `fui.components.l2` and select the
- * children through `:global(.group\/fui-menu-item)` — MenuSplitGroup does not render its
- * items, so it never holds their slot objects and the marker is the only handle (D16.3).
- * See MenuSplitGroup.module.css for the full mapping.
+ * Apply styling to the MenuSplitGroup slots based on the state The `> MenuItem` rules this
+ * component owns live at `fui.components.l2` and select the children through
+ * `:global(.group\/fui-menu-item)` — MenuSplitGroup does not render its items, so it never holds
+ * their slot objects and the marker is the only handle (D16.3).
  */
 export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
   // Module class FIRST (the group marker must never be classList[0] — nwsapi’s :scope

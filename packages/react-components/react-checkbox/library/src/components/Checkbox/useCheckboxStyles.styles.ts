@@ -15,32 +15,8 @@ export const checkboxClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Every name comes from
- * the existing catalog vocabulary (reports/headless-precedent.md for `data-size` /
- * `data-label-position` / `data-disabled`; `data-checked` and `data-indeterminate` are the
- * catalog's generic state pair).
- *
- * All of them live on the ROOT even though they select styles for the input, indicator and
- * label slots: those slots are the root's children, so one stamp drives every descendant
- * rule (same approach as react-button's `data-size` → `.root … & .icon`).
- *
- * `checked` is TRI-state (`true | false | 'mixed'`), so it needs two presence attributes
- * rather than one: `data-checked` for the boolean-true branch and `data-indeterminate` for
- * `'mixed'`. Presence flags are written `flag || undefined` — React omits an attribute
- * whose value is `undefined`, whereas `false` would render `data-checked="false"` and still
- * match `[data-checked]`. The unchecked branch is therefore the `not-checked` AND
- * `not-indeterminate` complement in the module, not a third attribute.
- *
- * Both flags reflect the CHECKED state alone and are stamped even while disabled; the
- * module gates the checked/mixed/unchecked rule blocks on `enabled` instead, which is what
- * reproduces the Griffel hook's `disabled ? … : mixed ? … : checked ? … : unchecked`
- * ternary chain (see Checkbox.module.css's header for why that gate is load-bearing).
- *
- * `data-label-position` is stamped UNCONDITIONALLY here, unlike react-switch's. Checkbox's
- * `inputStyles[labelPosition]` slice is applied with no `label &&` gate, so the attribute
- * has to be present even on a label-less Checkbox; the label-slot rules that also read it
- * are inert without a `.label` element to match.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type CheckboxRootDataAttributes = {
   'data-size': CheckboxState['size'];

@@ -34,35 +34,8 @@ export const hbcWithAxisClassNames: { root: string } = {
 /**
  * Apply styling to the HorizontalBarChartWithAxis slots based on the state.
  *
- * DELEGATION SEAM: HorizontalBarChartWithAxis renders no element of its own — its
- * outermost node is the root `<div>` of `CartesianChart`, which this component renders
- * itself and whose props it therefore owns. That makes the `root` composition below
- * CONVERSION_GUIDE §3d **M2** (JS slot-className composition, VerticalStackedBarChart
- * precedent): `HorizontalBarChartWithAxis.tsx` forwards the value as
- * `styles={{ ...props.styles, root: classes.root }}`, placed AFTER its `{...props}`
- * spread so it wins. Two markers end up on that one element
- * (`group/fui-cartesian-chart` alongside `group/fui-horizontal-bar-chart-with-axis`) —
- * the sanctioned shape, not a collision.
- *
- * `props.styles?.root` joins the composition even though the Griffel hook never read it:
- * under Griffel the consumer's `styles.root` still reached the same element through
- * CartesianChart's own hook (this component spreads `{...props}` onto CartesianChart, so
- * CartesianChart read `props.styles?.root` as ITS consumer override). The explicit
- * `styles={{ ... }}` override would otherwise cut that channel — including it here keeps
- * the rendered surface identical (HeatMapChart precedent). The three Griffel-era slots
- * keep their no-consumer-argument shape verbatim (those never had another channel).
- *
- * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
- * marker SECOND, consumer override LAST. `styles.root` is what guarantees the marker is
- * never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- *
- * `xAxisTicks` composes to the empty string: its Griffel slice was `{}` (no atomics) and
- * its only token was the removed `fui-hbcwa__xAxisTicks` static. The key stays because it
- * is part of the public `HorizontalBarChartWithAxisStyles` contract (VSBC known-dead-slot
- * precedent).
- *
- * No data attributes are set: nothing in this component's styling is state-driven
- * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useHorizontalBarChartWithAxisStyles = (
   props: HorizontalBarChartWithAxisProps,

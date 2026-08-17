@@ -22,14 +22,8 @@ export const emptySwatchClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-size` carries the SCALE prop (DECISIONS.md D3) — it is the only state this
- * component has that CSS must see. `shape` is a look prop and rides a module class, and
- * there is no boolean state to mirror, so nothing else is stamped (D15.6: a `data-*`
- * attribute is a fallback for state no native selector expresses at the element that needs
- * it, never a mirror added for symmetry).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type EmptySwatchRootDataAttributes = {
   'data-size': NonNullable<EmptySwatchState['size']>;

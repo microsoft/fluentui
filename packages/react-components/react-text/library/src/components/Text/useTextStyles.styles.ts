@@ -28,19 +28,6 @@ export const textClassNames: { root: string } = {
 
 /**
  * Data attributes rendered on the root slot.
- *
- * `size` is a dense NUMERIC scale (100…1000), so per the cookbook's scale-prop rule it
- * rides `data-size` and is targeted by attribute selectors written directly in
- * `Text.module.css` — no variant definitions are added to the shared catalog for it.
- * The attribute is stamped for every value, including the rule-free default `300`.
- *
- * The remaining props stay module classes rather than attributes: `wrap`/`truncate`/
- * `block`/`italic`/`underline`/`strikethrough` are standalone look modifiers whose rules
- * never nest inside another selector (react-image precedent), and `font`/`weight`/`align`
- * are enums whose default value carries no Griffel slice at all, which a class lookup
- * expresses for free (react-label precedent). Neither would have a name in the
- * nyt-games catalog or the headless preview's vocabulary, and the cookbook ranks
- * inventing catalog entries last.
  */
 type TextRootDataAttributes = {
   'data-size': TextState['size'];

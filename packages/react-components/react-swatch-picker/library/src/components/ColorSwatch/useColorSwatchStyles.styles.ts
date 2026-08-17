@@ -24,22 +24,8 @@ export const colorSwatchClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-size` carries the SCALE prop (DECISIONS.md D3) and is the ONLY attribute this
- * component stamps. Three states deliberately do NOT get one:
- *
- * - `disabled` — the root is a `<button>` and `useColorSwatch_unstable` passes `disabled`
- *   straight through, so `@variant disabled` reads the native attribute at the element that
- *   needs it (D15.6).
- * - `shape` and `selected` — each gates a whole makeStyles slice and stays a module class;
- *   no descendant reads either. (Selection is NOT expressible natively here: the root
- *   renders `aria-selected` in grid layout but `aria-checked` in row layout, which is
- *   exactly why a class carries it rather than an `aria-*` selector.)
- *
- * The icon slots carry no attributes either: their per-size font-size is selected from this
- * root's `data-size` through a descendant selector inside ColorSwatch.module.css.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ColorSwatchRootDataAttributes = {
   'data-size': NonNullable<ColorSwatchState['size']>;

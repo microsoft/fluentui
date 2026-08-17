@@ -47,23 +47,8 @@ export const iconSizes = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * All three live on the ROOT even though several of the rules they drive target the `aside`
- * and `expandIcon` slots: that is the headless preview's convention (reports/headless-precedent.md),
- * and it is what lets TagPickerControl.module.css reach those slots with `& .aside` / `& .icon`
- * descendant selectors instead of duplicating the attributes onto every slot.
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-invalid="false"` and still match
- * `[data-invalid]`.
- *
- * `data-disabled` and `data-invalid` mirror the picker context's `disabled` and the field
- * context's `validationState === 'error'`. The root is a plain `<div>`: it carries neither a
- * `disabled` attribute nor `aria-invalid` (only the `expandIcon` gets `aria-disabled`), so
- * nothing native reaches these states. That is precisely the case DECISIONS.md D15.6 reserves
- * mirroring for.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TagPickerControlRootDataAttributes = {
   'data-size': TagPickerControlState['size'];

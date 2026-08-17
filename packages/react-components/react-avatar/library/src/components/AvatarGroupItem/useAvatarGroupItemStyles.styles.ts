@@ -28,13 +28,6 @@ export const avatarGroupItemClassNames: { root: string } = {
 /**
  * Data attributes rendered on the root slot and matched by in-module attribute selectors in
  * `AvatarGroupItem.module.css`.
- *
- * `data-size` drives the pie layout's divider width only; the item's own width/height comes
- * from the shared `useSizeStyles()` classes, and the stack/spread spacing stays in JS because
- * `useGroupChildClassName` is a shared class-name factory serving both this component and
- * AvatarGroupPopover's trigger button, on two different elements. `isOverflowItem` and
- * `layout` are boolean/look conditions and stay module-class branches, exactly as the Griffel
- * hook had them.
  */
 type AvatarGroupItemRootDataAttributes = {
   'data-size': AvatarSize;

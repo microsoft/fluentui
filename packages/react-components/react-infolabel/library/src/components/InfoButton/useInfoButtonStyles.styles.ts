@@ -23,18 +23,8 @@ export const infoButtonClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a scale prop, so it rides `data-size` rather than a module class
- * (DECISIONS.md D3). `data-open` is a *presence* selector, so the flag is written
- * `open || undefined` — React omits an attribute whose value is `undefined`, whereas
- * `false` would render `data-open="false"` and still match `[data-open]`.
- *
- * `data-open` is stamped rather than reusing the `aria-expanded` PopoverTrigger already
- * writes on this same button: that attribute is explicitly consumer-overridable
- * (react-popover's PopoverTrigger.test.tsx "should allow user to override aria-expanded"),
- * while `state.popover.open` is exactly the boolean the Griffel hook branched on.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type InfoButtonRootDataAttributes = {
   'data-size': InfoButtonState['size'];

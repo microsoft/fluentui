@@ -44,27 +44,8 @@ export const breadcrumbButtonClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Only ONE attribute is stamped here. `data-size` — which this component's rules read on
- * both slots — is written by `useButtonStyles_unstable`, called unconditionally at the end
- * of this hook: `size` is a single field on the shared state object, so Button stamps
- * exactly the value the Griffel `styles[state.size]` lookups used. Stamping it again here
- * would be a redundant write of an identical value.
- *
- * `data-current` mirrors `state.current`, the boolean the Griffel hook branched on, and is
- * written `current || undefined` (React omits an attribute whose value is `undefined`;
- * `false` would render `data-current="false"` and still match `[data-current]`).
- *
- * It is deliberately NOT read off `aria-current`. The catalog's `current` variant also
- * matches `[aria-current]:not([aria-current='false'])`, and this component lets a consumer
- * set that attribute directly (`...rest` overrides the computed value in
- * `useBreadcrumbButtonBase_unstable`) — so an `aria-current` passed WITHOUT `current` would
- * newly pick up the current styling. Stamping the boolean keeps the common path exact; the
- * residual aria-only widening is inherited from the shared variant and accepted rather than
- * hand-writing a bespoke selector. (Same reasoning react-infolabel used to prefer
- * `data-open` over PopoverTrigger's consumer-overridable `aria-expanded`.)
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type BreadcrumbButtonRootDataAttributes = {
   'data-current'?: true;

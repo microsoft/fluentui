@@ -21,12 +21,8 @@ export const interactionTagSecondaryClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
- * (DECISIONS.md D3). `appearance`, `shape` and the `selected && !disabled` gate stay
- * conditional CLASSES below, the same way they were conditional mergeClasses arguments.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type InteractionTagSecondaryRootDataAttributes = {
   'data-size': InteractionTagSecondaryState['size'];

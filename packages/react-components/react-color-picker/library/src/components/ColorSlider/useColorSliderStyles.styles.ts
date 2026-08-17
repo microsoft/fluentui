@@ -28,19 +28,8 @@ export const colorSliderClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-orientation` is the ONLY attribute this component stamps, and it is a genuine
- * D15.6 fallback rather than a convenience: `vertical` is one piece of React state that the
- * root, rail, thumb AND input all style off, and no native selector expresses it at any of
- * them. Mirroring it once on the root — where the `vertical` / `horizontal` catalog variants
- * read it — lets every slot's orientation block be a descendant selector inside
- * ColorSlider.module.css, and lets AlphaSlider read the same state from its own module with
- * no second mirror.
- *
- * `shape` and `channel` each gate a whole makeStyles slice and stay module classes; nothing
- * reads either across an element boundary.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ColorSliderRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';

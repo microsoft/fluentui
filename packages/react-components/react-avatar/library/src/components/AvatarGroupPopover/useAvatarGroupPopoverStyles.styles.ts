@@ -39,19 +39,8 @@ export const avatarGroupPopoverClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the trigger button and matched by in-module attribute selectors
- * in `AvatarGroupPopover.module.css`.
- *
- * `data-size` carries a dense NUMERIC scale (16…128), so its buckets are selected with
- * `&:where([data-size='…'])` inside the module rather than through the shared variant catalog
- * (CONVERSION_GUIDE scale-prop rule). It drives two chains that used to be JS if/else ladders:
- * the border-width ramp and the `indicator` type/icon ramp.
- *
- * It is stamped on the trigger button rather than mirrored from a root because the trigger
- * button IS the outermost rendered element — the selector and the attribute are on the same
- * node, so no mirroring is in play (D15.6, Tier 0). `layout` and `popoverOpen` stay module
- * classes: they are look/boolean conditions, nothing below them needs to read them, and
- * `data-*` is fallback-only under D15.6.
+ * Data attributes rendered on the trigger button and matched by in-module attribute selectors in
+ * `AvatarGroupPopover.module.css`.
  */
 type AvatarGroupPopoverTriggerButtonDataAttributes = {
   'data-size': AvatarSize;

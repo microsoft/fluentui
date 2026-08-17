@@ -35,32 +35,8 @@ export const scatterChartClassNames: { root: string } = {
 /**
  * Apply styling to the ScatterChart slots based on the state.
  *
- * DELEGATION SEAM: ScatterChart renders no element of its own — its outermost node is the
- * root `<div>` of `CartesianChart`, which ScatterChart renders itself and whose props it
- * therefore owns. That makes the `root` composition below CONVERSION_GUIDE §3d **M2**
- * (JS slot-className composition), not M3: no new public DOM surface is minted, the
- * existing `CartesianChart.styles.root` prop is the channel. `ScatterChart.tsx` forwards
- * the value as `styles={{ ...props.styles, root: classes.root }}`, placed AFTER its
- * `{...props}` spread so it wins.
- *
- * Two markers end up on that one element once CartesianChart converts
- * (`group/fui-cartesian-chart` alongside `group/fui-scatter-chart`). That is the sanctioned
- * shape, not a collision — react-button's ToggleButton root carries both
- * `group/fui-toggle-button` and `group/fui-button` for exactly this reason, so a descendant
- * can address whichever identity it means.
- *
- * Ordering (DECISIONS.md D16.2): unconditional module class FIRST, named group marker
- * SECOND, consumer override LAST. `styles.root` is what guarantees the marker is never
- * `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- *
- * KNOWN DEAD SLOT: `tooltip` has no render site — `ScatterChart.tsx` reads only
- * `classes.markerLabel`, and the component draws its hover surface through `ChartPopover`.
- * The slot is preserved verbatim rather than deleted because it is part of the
- * `ScatterChartStyles` (→ `CartesianChartStyles`) contract and CONVERSION_GUIDE §3 forbids
- * dropping exports mid-migration; retiring it belongs to the Phase 3 sweep.
- *
- * No data attributes are set: nothing in this component's styling is state-driven
- * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useScatterChartStyles = (props: ScatterChartProps): ScatterChartStyles => {
   return {

@@ -25,21 +25,8 @@ export const arrowHeights: Record<PopoverSize, number> = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Both names already exist in the catalog (`size-small`/`-medium`/`-large` and `inline`), so
- * converting PopoverSurface adds no new vocabulary (D15.5).
- *
- * `data-inline` is a *presence* selector, so the flag is written `inline || undefined` —
- * React omits an attribute whose value is `undefined`, whereas `false` would render
- * `data-inline="false"` and still match `[data-inline]`.
- *
- * Neither attribute mirrors something a native selector already expresses (D15.6, as settled
- * 2026-07-28): `size` and `inline` are React props with no DOM state behind them, and the
- * element that needs them IS the element they are stamped on. Nothing is mirrored for a
- * descendant's benefit — the arrow reads its geometry from module classes the hook hands it
- * directly, not from the root (see PopoverSurface.module.css).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type PopoverSurfaceRootDataAttributes = {
   'data-size': PopoverSurfaceState['size'];

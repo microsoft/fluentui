@@ -21,23 +21,8 @@ export const dropdownClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * All three live on the ROOT even though most of the rules they drive target the `button` and
- * icon slots: that is the headless preview's convention (every `data-*` it stamps is on the
- * root — reports/headless-precedent.md), and it is what lets Dropdown.module.css reach the
- * inner slots with `& .button` / `& .icon` descendant selectors instead of duplicating the
- * attributes onto every slot.
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-invalid="false"` and still match
- * `[data-invalid]`.
- *
- * `data-disabled` and `data-invalid` mirror `state.button.disabled` / the button's
- * `aria-invalid`, neither of which the ROOT can express natively — the root is a `<div>` and
- * only the inner `<button>` carries those. That is precisely the case DECISIONS.md D15.6
- * reserves mirroring for.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type DropdownRootDataAttributes = {
   'data-size': DropdownState['size'];

@@ -57,16 +57,6 @@ export const useSizeStyles = (): Record<AvatarSize, string> => sizeClassNames;
 /**
  * Data attributes rendered on the root slot and matched by in-module attribute selectors in
  * `Avatar.module.css`.
- *
- * `data-size` carries a dense NUMERIC scale (16…128) and `data-active*` a pair of
- * Avatar-only states, so all three are selected with `&:where([data-…])` inside the module
- * rather than through the shared variant catalog (CONVERSION_GUIDE scale-prop rule; the
- * catalog already owns the name `active` for the `:active` pseudo-class, which is a
- * different thing entirely).
- *
- * `data-active` / `data-active-appearance` are stamped only when `active` is `'active'` or
- * `'inactive'`, reproducing the Griffel hook's guard exactly — `active="unset"` renders no
- * attribute at all, so `[data-active-appearance='ring']` alone implies the active state.
  */
 type AvatarRootDataAttributes = {
   'data-size': AvatarSize;

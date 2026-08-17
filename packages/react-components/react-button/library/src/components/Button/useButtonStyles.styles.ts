@@ -20,26 +20,8 @@ export const buttonClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Names follow the
- * headless preview's vocabulary (`data-disabled`, `data-disabled-focusable`,
- * `data-icon-only` are the three that `react-headless-components-preview`'s own
- * `useButton` already stamps — reports/headless-precedent.md).
- *
- * Presence flags are written `flag || undefined`: React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-icon-only="false"` and still match
- * `[data-icon-only]`. (The headless preview writes `''` instead of `true` via
- * `stringifyDataAttribute`; both forms match a presence selector — this file follows the
- * `|| undefined` form the react-divider pilot established.)
- *
- * `data-icon-position` is written ONLY when the icon slot exists, so its *presence*
- * doubles as the "has an icon" signal that `rootStyles.smallWithIcon` / `.largeWithIcon`
- * branch on (`icon && size === 'small'`). That is why the icon slot itself carries no
- * data attributes: both its placement and its scale are selected from the root.
- *
- * `data-empty` mirrors `!state.root.children`, the guard on the icon's margin
- * (`!!state.root.children && iconStyles[iconPosition]`). Same attribute the react-divider
- * pilot introduced.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ButtonRootDataAttributes = {
   'data-size': ButtonState['size'];

@@ -16,27 +16,6 @@ export const accordionHeaderClassNames: { root: string } = {
 
 /**
  * Data attributes rendered on the root slot.
- *
- * All five live on the ROOT even though most of them select styles for the `button` and
- * `expandIcon` slots: those slots are the root's descendants, so one stamp drives every
- * descendant rule (the same approach as react-button's `data-size` → `.root … & .icon`).
- *
- * `data-size` / `data-inline` / `data-disabled` are matched by the shared
- * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- * `data-expand-icon-position` and `data-icon` have no catalog entry yet, so
- * `AccordionHeader.module.css` matches them with raw attribute selectors — the cookbook
- * bans variant DEFINITIONS in modules, not attribute selectors.
- * `data-expand-icon-position` is one of the headless preview's 25 attribute names
- * (reports/headless-precedent.md); its own AccordionHeader stamps exactly this name and
- * value space.
- *
- * `data-inline` / `data-disabled` / `data-icon` are *presence* selectors, so the flags
- * are written as `flag || undefined` — React omits an attribute whose value is
- * `undefined`, whereas `false` would render `data-inline="false"` and still match
- * `[data-inline]`. `data-icon` carries the `!state.icon` half of the
- * `buttonExpandIconEndNoIcon` condition; `data-disabled` carries `state.disabled`, which
- * is NOT the same as the `<button>`'s own `disabled` attribute (react-aria drops that one
- * for `disabledFocusable`).
  */
 type AccordionHeaderRootDataAttributes = {
   'data-size': AccordionHeaderState['size'];

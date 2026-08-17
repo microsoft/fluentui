@@ -36,17 +36,11 @@ export const responsiveChildClassNames: { root: string } = {
 /**
  * Apply styling to the responsive-child slots.
  *
- * DELEGATION SEAM: these values are injected by `ResponsiveContainer.tsx` into the wrapped
- * chart's `styles` prop (cloneElement), i.e. every subject element is owned by the CHILD
- * chart — which is why ResponsiveContainer.module.css authors its rules UNLAYERED (see the
- * module header, D2 amendment 5) and why no new DOM surface is minted here
- * (CONVERSION_GUIDE §3d M2: the chart's existing `styles` prop is the channel).
- *
- * Marker ordering (DECISIONS.md D16.2): the marker rides AFTER the unconditional module
- * class inside this fragment, and the fragment itself is appended after the consumer's own
- * `styles.root` by the caller — the final DOM class string is composed by the chart's own
- * hook (`clsx(chartModuleClass, chartMarker, …, thisFragment)`), so a marker is never
- * `classList[0]` (nwsapi's `:scope` polyfill throws on the `/` under jsdom).
+ * Marker ordering (DECISIONS.md D16.2): the marker rides AFTER the unconditional module class
+ * inside this fragment, and the fragment itself is appended after the consumer's own `styles.root`
+ * by the caller — the final DOM class string is composed by the chart's own hook
+ * (`clsx(chartModuleClass, chartMarker, …, thisFragment)`), so a marker is never `classList[0]`
+ * (nwsapi's `:scope` polyfill throws on the `/` under jsdom).
  */
 export const useResponsiveChildStyles = (): ResponsiveChildStyles => {
   return {

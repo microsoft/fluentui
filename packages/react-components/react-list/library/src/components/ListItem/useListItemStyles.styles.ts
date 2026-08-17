@@ -37,18 +37,8 @@ export const listItemClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `data-interactive` carries the `selectable || navigable` union that gated Griffel's
- * `rootClickableOrSelectable` slice. It is ONE attribute rather than two because neither
- * half gates anything on its own (cookbook: "prefer ONE presence attribute over two").
- *
- * Both are *presence* selectors, so the flags are written `flag || undefined` — React
- * omits an attribute whose value is `undefined`, whereas `false` would render
- * `data-interactive="false"` and still match `[data-interactive]`.
- *
- * The checkmark slot carries no data attributes: its only slice is unconditional.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type ListItemRootDataAttributes = {
   'data-interactive'?: true;

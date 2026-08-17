@@ -21,21 +21,13 @@ export const tagClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the Tag slots and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
- * (DECISIONS.md D3). It is stamped on the ROOT (for its own height/padding rules) and,
- * separately, on every slot that has size-dependent rules of its own — `media`, `icon`,
- * `primaryText` and `dismissIcon`. The slots carry their own stamp rather than being
- * selected through the root because the first three blocks are SHARED with
- * InteractionTagPrimary, whose root is a different CSS-module class; see the "SHARED
- * SLOTS" note in Tag.module.css.
+ * Data attributes rendered on the Tag slots and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *
  * Everything else the Griffel hook selected with a conditional `mergeClasses` argument
- * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `!dismissIcon`)
- * stays a conditional CLASS in the composition below — see Tag.module.css for why
- * `selected` in particular must NOT ride the catalog's `selected` variant.
+ * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `!dismissIcon`) stays a
+ * conditional CLASS in the composition below — see Tag.module.css for why `selected` in particular
+ * must NOT ride the catalog's `selected` variant.
  */
 type TagSizeDataAttributes = {
   'data-size': TagState['size'];

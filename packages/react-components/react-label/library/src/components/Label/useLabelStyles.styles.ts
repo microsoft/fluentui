@@ -21,21 +21,8 @@ export const labelClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the Label slots and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a scale prop, so it rides `data-size` rather than a module class
- * (DECISIONS.md D3); `weight` is a look prop and stays a module class (`.semibold`),
- * which also keeps the "regular" default rule-free exactly as the Griffel source was.
- *
- * `data-disabled` is a *presence* selector, so the flag is written `disabled || undefined`
- * — React omits an attribute whose value is `undefined`, whereas `false` would render
- * `data-disabled="false"` and still match `[data-disabled]`.
- *
- * It is stamped on BOTH slots because the single Griffel `disabled` slice was applied to
- * both by mergeClasses; keying the required slot off its own attribute (rather than a
- * descendant selector from the root) keeps `.required` independent of DOM nesting and
- * every selector `:where()`-flat.
+ * Data attributes rendered on the Label slots and matched by the shared `@custom-variant` catalog
+ * in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type LabelRootDataAttributes = {
   'data-size': LabelState['size'];

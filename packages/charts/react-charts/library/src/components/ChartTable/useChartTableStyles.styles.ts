@@ -34,22 +34,8 @@ export const chartTableClassNames: { root: string } = {
 /**
  * Apply styling to the ChartTable slots based on the state.
  *
- * Cascade priority is decided by the `@layer fui.*` order in ChartTable.module.css, not by
- * clsx argument order — see that file's header for the mapping back to the mergeClasses()
- * argument order this replaces.
- *
- * The `props.styles?.<slot>` arguments were COMMENTED OUT in the Griffel source (consumer
- * styles are deliberately not applied by this component today) and are preserved as
- * comments — enabling them is an upstream behaviour change, not a migration concern. The
- * `chart` slot (static-only, never consumed by `ChartTable.tsx`) is deleted rather than
- * left returning an empty string (DonutChart chartWrapper precedent).
- *
- * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
- * marker SECOND. `styles.root` is what guarantees the marker is never `classList[0]` —
- * nwsapi's `:scope` polyfill throws on the `/` under jsdom.
- *
- * No data attributes are set: nothing in this component's styling is state-driven
- * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
+ * `styles.root` is what guarantees the marker is never `classList[0]` — nwsapi's `:scope` polyfill
+ * throws on the `/` under jsdom.
  */
 export const useChartTableStyles = (props: ChartTableProps): ChartTableStyles => {
   return {

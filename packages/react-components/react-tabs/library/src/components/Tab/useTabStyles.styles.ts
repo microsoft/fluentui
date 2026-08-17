@@ -39,26 +39,6 @@ export const tabClassNames: { root: string } = {
 /**
  * Data attributes rendered on the element each style hook decorates, and matched by the shared
  * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * These two are the ONLY attributes this conversion adds, and both are genuine fallbacks under
- * DECISIONS.md D15.6 — no native selector expresses either one:
- *
- * • `data-size` replaces `rootStyles[size + orientation]`, `pendingIndicatorStyles[…]`,
- *   `activeIndicatorStyles[…]` and `circularStyles[size]`'s selection halves.
- * • `data-orientation` replaces every `vertical ? … : …` ternary, and reuses the headless
- *   vocabulary's existing `vertical` / `horizontal` pair (reports/headless-precedent.md).
- *   It is ALWAYS stamped — both branches have styles.
- *
- * Together they collapse twenty Griffel slices into six nested `@variant` blocks. Everything
- * else Tab styles on — `disabled`, `:hover`, `:active`, `[data-fui-focus-visible]` — already
- * has a native or catalog selector, and `selected` / `appearance` / the animation's
- * `animating` flag stay CONDITIONAL MODULE CLASSES (see Tab.module.css's header for why
- * `selected` in particular must not become an attribute or read `aria-selected`).
- *
- * They are stamped by BOTH `useTabIndicatorStyles_unstable` (on `state.root`) and
- * `useTabButtonStyles_unstable` (on the `slot` it is handed). In the default composition those
- * are the same object and the second write is idempotent; when a custom Tab points the button
- * hook at a different element, each hook stamps the element whose rules read the attribute.
  */
 type TabRootDataAttributes = {
   'data-size': TabState['size'];

@@ -41,23 +41,8 @@ const appearanceClassNames: Record<CardState['appearance'], string> = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Every name already
- * exists there; this conversion adds none.
- *
- * `data-orientation` and `data-size` are the two design props (always stamped). The other
- * three are PRESENCE flags written `flag || undefined` so React omits them entirely —
- * `false` would render `data-x="false"` and still match `[data-x]`.
- *
- * `data-interactive` carries the `!disabled && (interactive || selectable)` union the
- * Griffel hook computed as `isSelectableOrInteractive`. Per the cookbook's boolean-pair
- * rule it rides ONE attribute rather than two: neither half of the union gates a slice on
- * its own, exactly the shape ListItem introduced the `interactive` variant for.
- *
- * `data-disabled` rather than the `aria-disabled` Card already renders: the catalog's
- * `disabled` variant deliberately does not match `[aria-disabled='true']` (that widening
- * is `disabled-control`, for hidden form controls), so the explicit attribute is what
- * keeps the gate 1:1 with the Griffel `state.disabled &&`.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type CardRootDataAttributes = {
   'data-orientation': CardState['orientation'];

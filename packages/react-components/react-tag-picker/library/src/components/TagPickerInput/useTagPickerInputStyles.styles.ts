@@ -19,14 +19,8 @@ export const tagPickerInputClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants (DECISIONS.md D3)
- * rather than a class per step. `disabled` gets NO mirror: this root IS the `<input>` and
- * `useTagPickerInputBase_unstable` hands the picker context's `disabled` straight to it, so the
- * native attribute the shared `disabled` variant already matches is always present
- * (DECISIONS.md D15.6 — mirror only what a native selector cannot reach).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TagPickerInputRootDataAttributes = {
   'data-size': TagPickerInputState['size'];

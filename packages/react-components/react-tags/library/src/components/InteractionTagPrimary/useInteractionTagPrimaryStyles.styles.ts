@@ -24,16 +24,6 @@ export const interactionTagPrimaryClassNames: { root: string } = {
 /**
  * Data attributes rendered on the InteractionTagPrimary slots and matched by the shared
  * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
- * (DECISIONS.md D3). It is stamped on the ROOT and, separately, on the `media`, `icon` and
- * `primaryText` slots: those three blocks are SHARED with Tag (they live in
- * Tag.module.css) and so cannot be selected through a root class that only exists in this
- * component's module.
- *
- * Everything else the Griffel hook selected with a conditional `mergeClasses` argument
- * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `hasSecondaryAction`)
- * stays a conditional CLASS in the composition below.
  */
 type InteractionTagPrimarySizeDataAttributes = {
   'data-size': InteractionTagPrimaryState['size'];

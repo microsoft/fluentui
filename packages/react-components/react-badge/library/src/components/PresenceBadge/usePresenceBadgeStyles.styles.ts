@@ -31,16 +31,8 @@ const getIsBusy = (status: PresenceBadgeStatus): boolean => {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Only `size` rides an attribute. `status` and `outOfOffice` stay module-class branches:
- * the eleven colour slices they select between are resolved by mergeClasses ARGUMENT
- * order, including one slice that is deliberately applied twice at two different ranks
- * (see the INVERSION note in PresenceBadge.module.css). Keeping them as classes preserves
- * that ordering as plain file order and keeps the slice mapping 1:1; expressing it with
- * data-attributes would push five bespoke compound selectors, used by this component
- * alone, into the shared catalog.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type PresenceBadgeRootDataAttributes = {
   'data-size': PresenceBadgeState['size'];

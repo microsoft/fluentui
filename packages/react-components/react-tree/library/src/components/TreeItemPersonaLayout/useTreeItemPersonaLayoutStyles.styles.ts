@@ -33,20 +33,8 @@ export const treeItemPersonaLayoutClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Only `size` becomes an attribute — it is the one enum here with catalog variants
- * (`size-small` / `size-medium`). `appearance` and `itemType` stay module classes
- * (`styles[appearance]`, `styles[itemType]`): neither has a shared variant, and a
- * component package must not add one. That is the line react-badge and react-button
- * already drew — `styles[appearance]` / `styles[shape]` as classes, `data-size` as an
- * attribute.
- *
- * All three values come from context (TreeContext for `size`/`appearance`, TreeItemContext
- * for `itemType`), not from TreeItemPersonaLayout props, so
- * `TreeItemPersonaLayout.types.ts` is untouched — the cast below is local, as the cookbook
- * requires.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TreeItemPersonaLayoutRootDataAttributes = {
   'data-size': 'small' | 'medium';

@@ -22,17 +22,8 @@ export const personaClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Both attributes live on Persona's OWN root and nowhere else. The `avatar` and `presence`
- * slots are another component's root — an `<Avatar>` and a `<PresenceBadge>` — and those
- * components' styles hooks stamp their own attributes there; react-badge's
- * `usePresenceBadgeStyles_unstable` already writes `root['data-size'] = size`, which would
- * silently overwrite anything Persona put on the same name. Everything Persona applies to
- * the coin therefore rides module classes, and its one scale-driven slice (the spacing
- * custom property) is declared on the root instead, where the coin inherits it — see the
- * hoist note in Persona.module.css.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type PersonaRootDataAttributes = {
   'data-size': PersonaState['size'];

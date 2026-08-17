@@ -15,19 +15,8 @@ export const drawerCSSVars = {
 };
 
 /**
- * Data attributes rendered on the root slot of InlineDrawer and OverlayDrawer, and matched
- * by `:where([data-…])` selectors in their modules.
- *
- * Both names come from the in-repo headless preview, which stamps exactly these on ITS
- * drawer roots (`react-headless-components-preview/library/src/components/Drawer/
- * InlineDrawer/useInlineDrawer.ts:18` and `OverlayDrawer/useOverlayDrawer.ts:27`), and
- * `data-position` is in the 25-name vocabulary (reports/headless-precedent.md). Neither
- * duplicates a state a native selector already expresses, which is the bar D15.6 sets for
- * adding one at all.
- *
- * Neither is optional — `position` and `size` are both `Required<…>` on `DrawerBaseState`
- * (defaulted in `useDrawerDefaultProps`) — so neither needs the `flag || undefined` form
- * the presence attributes elsewhere use.
+ * Data attributes rendered on the root slot of InlineDrawer and OverlayDrawer, and matched by
+ * `:where([data-…])` selectors in their modules.
  */
 type DrawerBaseRootDataAttributes = {
   'data-position': DrawerBaseState['position'];

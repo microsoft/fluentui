@@ -23,18 +23,8 @@ export const textareaClassNames: { root: string } = {
 };
 
 /**
- * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
- * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
- *
- * Both are *presence* selectors, so the flags are written as `flag || undefined` — React
- * omits an attribute whose value is `undefined`, whereas `false` would render
- * `data-disabled="false"` and still match `[data-disabled]`.
- *
- * The root is a plain `<span>` wrapper: it carries neither the native `disabled` attribute
- * nor `aria-invalid` (both live on the `textarea` slot), so the two conditions the Griffel
- * hook branched on have to be mirrored onto it explicitly. `data-disabled` also drives the
- * `enabled` variant that gates the focus-underline block (`!disabled &&
- * rootStyles.interactive`).
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant` catalog in
+ * `@fluentui/react-tailwind-theme` (`css/variants.css`).
  */
 type TextareaRootDataAttributes = {
   'data-disabled'?: true;
