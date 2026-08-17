@@ -4,41 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useDialogBodyStyles_unstable.
- *
- *   `root` slot
- *     1 dialogBodyClassNames.root      → REMOVED (D16.1). The root's identity is now the
- *                                        `group/fui-dialog-body` marker, written by the hook
- *                                        as clsx argument 2; `styles.root` leads so the marker
- *                                        is never `classList[0]` (D15.1 / D16.2). The EXPORT is
- *                                        retained, re-pointed at the marker and narrowed to
- *                                        `{ root: string }` (D16.5).
- *     2 useResetStyles   (makeReset)   → fui.base   .root
- *     3 consumer className             → unlayered (always wins)
- *
- * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and no
- * data-attributes are needed. Every declaration styles DialogBody's own element, so nothing
- * is l2. The compiled reset has a `null` rtl class — nothing flips, no logical properties
- * and no `@variant rtl` twin are required. Grepped this package for `fui-Icon-filled` /
- * `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5 does not apply.
- *
- * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
- * DIALOG_GAP = '8px' lands exactly on the S spacing step → the named utility. DialogBody is
- * a GRID and the compiled atomic is the `gap` shorthand (both axes), so the utility is
- * applied in its shorthand form too; the axis word in `gap-horizontal-s` names the token, not
- * the axis it is applied to (`--spacing-*` is axis-agnostic — CONVERSION_GUIDE §2).
- *
- * `SURFACE_PADDING` ('24px') appears here only inside a `calc()` against a viewport unit, so
- * no utility can express it and it is written `calc(24px * var(--base-scale))` — the same
- * scaled length `p-horizontal-xxl` compiles to in DialogSurface.module.css, which is what
- * keeps "the body may be as tall as the surface minus its padding" true at any root font
- * size rather than only at 16px.
- *
- * Verified against the compiled Griffel atomic in
- * lib-commonjs/components/DialogBody/useDialogBodyStyles.styles.js.
- */
-
 @layer fui.base {
   .root {
     overflow: unset;

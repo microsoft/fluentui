@@ -4,50 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useDonutChartStyles`, not
- * source declaration order. Every slot in this hook had the identical 3-or-4 argument
- * shape — `mergeClasses(<static>, <base slice>, [className], props.styles?.<slot>)` — so
- * there is exactly ONE library slice per slot and no intra-slot ordering to preserve:
- *
- *   root            1 donutClassNames.root            → static class (JS) — REMOVED in the
- *                                                       statics sweep (DECISIONS.md D16.1);
- *                                                       the root now leads with `.root` below
- *                                                       and carries `group/fui-donut-chart` second
- *                   2 useStyles.root                  → fui.components.l1   .root
- *                   3 props.className                 → unlayered (always wins)
- *                   4 props.styles?.root              → unlayered (always wins)
- *   chart           useStyles.chart                   → fui.components.l1   .chart
- *   legendContainer useStyles.legendContainer         → fui.components.l1   .legend-container
- *   chartWrapper    (static only — no slice)          → slot deleted from the hook entirely
- *   axisAnnotation  useStyles.axisAnnotation          → fui.components.l1   .axis-annotation
- *   chartTitle      useStyles.chartTitle              → fui.components.l1   .chart-title
- *   svgTooltip      useStyles.svgTooltip              → fui.components.l1   .svg-tooltip
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
- * Everything is `fui.components.l1`. `.chart-title` and `.svg-tooltip` land on elements
- * rendered by `ChartTitle` → `SVGTooltipText` (`src/utilities/`), but those two are plain
- * render helpers with NO styles hook of their own (`SVGTooltipText.tsx` spreads
- * `props.className` onto a bare `<text>`/`<rect>` and declares no `makeStyles`), so nothing
- * of another component's competes on these elements and l2 would buy nothing. This is JS
- * slot-className composition (CONVERSION_GUIDE §3d, M2), not a selector reaching into
- * another package.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * The compiled Griffel atomics contain exactly one `[ltr, rtl]` pair:
- * `.f1o700av{text-align:left}` / `.fes3tcz{text-align:right}` on `root`. `text-align: start`
- * (via `@apply text-start`) is that pair, so no `@variant rtl` twin is needed anywhere here.
- *
- * ── HighContrastSelector → `@variant forced-colors` ─────────────────────────────────────
- * `utilities/utilities.ts` defines `HighContrastSelector` as
- * `@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)`.
- * The shared catalog variant is `@media (forced-colors: active)`. The `-ms-high-contrast`
- * half is a removed, non-standard EdgeHTML/legacy-Chromium query that no shipping browser
- * evaluates; the `forced-colors` half is the standard replacement and is what every current
- * high-contrast user agent matches. Narrowing to the catalog variant is therefore behaviour
- * preserving on every supported target (see report §HighContrastSelector).
- */
-
 @layer fui.components.l1 {
   /* from useStyles.root — typographyStyles.body1 + layout; textAlign 'left' → logical `start` */
   .root {

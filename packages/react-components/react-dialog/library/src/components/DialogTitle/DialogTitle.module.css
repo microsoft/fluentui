@@ -4,60 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useDialogTitleStyles_unstable.
- *
- *   `root` slot
- *     1 dialogTitleClassNames.root       → REMOVED (D16.1). The root's identity is now the
- *                                          `group/fui-dialog-title` marker, written by the
- *                                          hook as clsx argument 2; `styles.root` leads so
- *                                          the marker is never `classList[0]` (D15.1 /
- *                                          D16.2). The EXPORT is retained, re-pointed at the
- *                                          marker and narrowed to `{ root: string }` (D16.5).
- *     2 useRootResetStyles  (makeReset)  → fui.base            .root
- *     3 useStyles.rootWithoutAction      → fui.components.l1   .root-without-action
- *     4 consumer className               → unlayered (always wins)
- *
- *   `action` slot
- *     1 dialogTitleClassNames.action     → REMOVED (D16.1) — sub-slots have no public handle
- *     2 useActionResetStyles (makeReset) → fui.base            .action
- *     3 consumer className               → unlayered
- *
- *   internal close <button> (not a slot; `useDialogTitle.tsx` renders it as the default
- *   `action` children on a non-modal Dialog and applies the class directly)
- *     1 useDialogTitleInternalStyles (makeReset) → fui.base    .action-button
- *
- * ── The one real conflict ───────────────────────────────────────────────────────────
- * `.root-without-action` re-sets `grid-column-end` (4) over the root reset's 3 — the title
- * spans the action column when there is no action to put in it. Griffel resolved this by
- * bucket (`d` beats `r`); here the altitude does it: `fui.components.l1` beats the levelless
- * `fui.base` unconditionally, independent of file position and specificity.
- *
- * `!state.action` stays a CONDITIONAL MODULE CLASS rather than becoming a `data-*`
- * attribute. D15.6 (as resolved) makes `data-*` a FALLBACK for state that CSS cannot
- * otherwise reach: the styling target here is the root itself, no descendant or sibling
- * module reads "has an action", and adding an attribute would be new public DOM surface for
- * nothing.
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * All three elements are DialogTitle's own, so nothing is l2. The `<svg>` inside the close
- * button comes from `@fluentui/react-icons` (still Griffel, D11) but no rule here targets
- * it — grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
- * hits — so the D2-amendment-5 unlayered block does not apply to this module.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * `.rxjm636` (root), `.fsyjsko` (rootWithoutAction) and `.r13kcrze` (action) all have a
- * `null` rtl twin: grid placement follows the grid's own inline axis and `justify-self: end`
- * / `align-self: start` are logical keywords. The internal button DOES compile to an
- * `[ltr, rtl]` pair (`.r2avt6e` / `.roj2bbc`), but diffing them the only difference is
- * DECLARATION ORDER inside the `[data-fui-focus-visible]` rules (`top/right/bottom/left` vs
- * `top/left/bottom/right`) with identical values on every side — nothing to express, and the
- * offsets live in the shared `fui-focus-outline` utility anyway. No `@variant rtl` twin.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/DialogTitle/useDialogTitleStyles.styles.js.
- */
-
 @layer fui.base {
   .root {
     @apply m-0;

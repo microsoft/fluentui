@@ -4,55 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useTableResizeHandleStyles_unstable:
- *
- *   1 tableResizeHandleClassNames.root   → REMOVED (D16.1); the root's public identity is
- *                                          the `group/fui-table-resize-handle` marker,
- *                                          threaded in as clsx argument 2 (D16.2)
- *   2 useStyles.root                     → fui.components.l1  `.root`
- *   3 state.root.className               → unlayered (always wins)
- *
- * One slice, one element, so there is no cross-slice bucket interleaving to re-encode: the
- * `:focus` and `:hover` rules are written after the flat ones purely to mirror Griffel's
- * `d` → `f` → `h` bucket order. Both set the same `opacity: 1`, so nothing depends on it.
- *
- * Nothing here styles another component's element, so `fui.components.l2` is unused.
- *
- * ── Runtime-value styles are untouched (CONVERSION_GUIDE "Known special cases") ─────
- * Column resizing drives WIDTHS through inline `style` props set by
- * `useTableColumnSizing_unstable` / `useTableColumnResizeState`, not through this module.
- * That mechanism ports unchanged; nothing here reads or writes a `--fui-*` variable.
- *
- * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
- * Every length here is a pixel LITERAL in the Griffel source — no `tokens.spacing*` is read
- * — so they take the NUMERIC utilities (`w-16`, `-mx-8`, `w-1`), which ride `--base-scale`
- * exactly as the named ones do (`--spacing: calc(1px * var(--base-scale))`).
- *
- * `margin: '0 -8px'` compiled to a single shorthand atomic (`.fg06o1j`, no `[ltr, rtl]`
- * pair — the two inline sides carry the same value). It is authored as the two LOGICAL
- * shorthands `my-0` / `-mx-8` rather than four longhands: nothing on this element declares
- * a margin longhand, so there is no Griffel shorthand/longhand priority to unwind, and the
- * utilities are what make the value ride `--base-scale`.
- *
- * ── Transitions (transition audit) ──────────────────────────────────────────────────
- * `transition-property` is already the individual longhand `opacity` in the source — the
- * one property that actually changes — so it is transcribed verbatim. No shorthand, no
- * `all`.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` pairs, both pure PROPERTY flips, so logical longhands are exact and no
- * `@variant rtl` twin is needed:
- *   `.f1e31b4d{right:0}` / `.f1vgc2s3{left:0}`               → inset-inline-end
- *   `.f10awi5f::after{left:50%}` / `.f1nzedbg::after{right:50%}` → inset-inline-start
- * `cursor: col-resize` is axis-symmetric (unlike `e-resize`), so rtl-css-js leaves it alone
- * and so do we.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TableResizeHandle/useTableResizeHandleStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply absolute -mx-8 my-0 w-16 cursor-col-resize;

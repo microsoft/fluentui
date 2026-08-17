@@ -4,33 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useTableHeaderStyles_unstable:
- *
- *   1 tableHeaderClassName                          → REMOVED (D16.1); the root's public
- *                                                     identity is the
- *                                                     `group/fui-table-header` marker
- *   2 noNativeElements ? flexLayout : tableLayout   → fui.components.l1  .flex-root /
- *                                                     .table-root
- *   3 state.root.className                          → unlayered (always wins)
- *
- * Byte-identical to TableBody's pair (`display: table-row-group` / `display: block`) —
- * both compile to Griffel's `.f1tp1avn` / `.ftgm304`. They stay two separate modules
- * because each is its own component's own class map; sharing one would give the two
- * components the same hashed ident and couple their futures.
- *
- * Like TableBody this component has NO `useStyles` slice, so the layout pair is also the
- * token that keeps the marker off `classList[0]` (D16.2) — legal because the hook picks
- * between the two with a TERNARY, so one is emitted on every render.
- *
- * No pseudo-class or media rule, no `[ltr, rtl]` pair, nothing styling another
- * component's element.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TableHeader/useTableHeaderStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .table-root {
     @apply table-row-group;

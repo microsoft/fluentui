@@ -4,50 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useVerticalStackedBarChartStyles`:
- *
- *   `opacityChangeOnHover` slot
- *     1 verticalstackedbarchartClassNames.opacityChangeOnHover → static (JS) — REMOVED (D16.1)
- *     2 useStyles.opacityChangeOnHover                → fui.components.l1  .opacity-change-on-hover
- *     3 `props.href ? 'pointer' : 'default'`          → literal tokens, PRESERVED in the hook
- *       (inert class names no stylesheet defines — see the hook for why they stay)
- *
- *   `tooltip` slot
- *     1 verticalstackedbarchartClassNames.tooltip     → static (JS) — REMOVED
- *     2 useStyles.tooltip                             → fui.components.l1  .tooltip
- *
- *   `barLabel` slot
- *     1 verticalstackedbarchartClassNames.barLabel    → static (JS) — REMOVED
- *     2 useStyles.barLabel                            → fui.components.l1  .bar-label
- *
- *   `root` slot (NEW — see the identity block at the bottom of this file)
- *     1 .root (identity-only)                         → fui.components.l2
- *     2 group/fui-vertical-stacked-bar-chart          → identity marker (JS, unstyled)
- *     3 consumer `props.styles.root`                  → unlayered (always wins)
- *
- * The three styled slots are SVG elements VerticalStackedBarChart renders itself inside
- * CartesianChart's `children` render prop, so they are l1 — this component's own cascade.
- * Only `.root` is l2, because that element belongs to CartesianChart (D2 amendment 2).
- *
- * VALUES ARE THE COMPILED ONES. `.tooltip` and `.bar-label` come from the shared
- * `getTooltipStyle()` / `getBarLabelStyle()` factories in `src/utilities/Common.styles.ts`,
- * which are NOT converted in this batch (other chart components still consume them —
- * CONVERSION_GUIDE's shared-utilities rule). Every declaration below was read off
- * lib-commonjs/components/VerticalStackedBarChart/useVerticalStackedBarChartStyles.styles.js
- * and is byte-identical to VerticalBarChart.module.css's `.tooltip` / `.bar-label` — the
- * duplication is deliberate while `Common.styles.ts` is still Griffel-owned.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * No `[ltr, rtl]` atomic pair and no direction-sensitive property in the compiled output,
- * so no `@variant rtl` twin is needed.
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────
- * No `HighContrastSelector` media query in any slice; `.bar-label` keeps its flat
- * `forced-color-adjust: auto` declaration (Griffel `d` bucket, not a media query).
- */
-
 @layer fui.components.l1 {
   .opacity-change-on-hover {
     @apply cursor-default;

@@ -4,46 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useLegendStyles`. That hook
- * does NOT mutate a shared state object — it RETURNS one class string per slot — so every
- * slot is its own independent 3-argument call and there is no cross-slot ordering to encode:
- *
- *   #  mergeClasses argument            → target
- *   ---------------------------------------------------------------------------------
- *   1  legendClassNames.<slot>          → static class (JS) — REMOVED in the statics sweep
- *                                         (DECISIONS.md D16.1). The root now leads with
- *                                         `.root` below and carries `group/fui-legends`
- *                                         second; every other slot leads with its own local.
- *   2  useStyles.<slot>                 → the blocks below
- *   3  props.className   (root only)    → unlayered (consumer, always wins)
- *   4  props.styles?.<slot>             → unlayered (consumer, always wins)
- *
- * Legends has no `makeResetStyles`, so `fui.base` is unused. It stamps NO data attributes:
- * nothing in this file reads component state, so attributes would be pure DOM weight
- * (DECISIONS.md D15.6 — attributes are a fallback, not a requirement). There are no
- * transitions to tighten and no `@keyframes`.
- *
- * ── Altitudes ────────────────────────────────────────────────────────────────────────
- * `fui.components.l1` — slots whose element Legends itself renders: `.root`,
- * `.text`, `.rect`, `.shape`, `.triangle`, `.hover-change`, `.legend-container`,
- * `.annotation`. (`.rect` / `.shape` are rendered by this package's own `<Shape>`.)
- *
- * `fui.components.l2` — slots handed to ANOTHER package's component as its `className`,
- * i.e. elements whose base styles come from that package's hook (D2 amendment 2):
- *   • `.legend`         → `<Button className={classes.legend}>` (@fluentui/react-button).
- *                         `border`, `padding`, `min-width` and `justify-content` here
- *                         exist precisely to beat `useButtonStyles_unstable`, which writes
- *                         `fui.base` (its makeResetStyles) + `fui.components.l1`. At l1
- *                         this override would be decided by stylesheet load order.
- *   • `.resizable-area` → the `<Overflow>` child element; `useOverflowStyles_unstable`
- *                         owns that element's className (`clsx(styles.root,
- *                         'group/fui-overflow', child.props.className)`).
- * Both packages are converted, so a LAYERED rule is correct — nothing unlayered competes
- * for these elements (D2 amendment: the unlayered escape hatch is only for elements owned
- * by an unconverted/external Griffel package, and neither is).
- */
-
 @layer fui.components.l1 {
   .root {
     @apply w-full items-center whitespace-nowrap;

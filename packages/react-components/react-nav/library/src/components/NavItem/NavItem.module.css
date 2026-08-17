@@ -4,68 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useNavItemStyles_unstable:
- *
- *   #  mergeClasses argument                     → target
- *   -----------------------------------------------------------------------------------
- *   root slot
- *   1  navItemClassNames.root                    → REMOVED (D16.1); the root's identity is
- *                                                  now the `group/fui-nav-item` marker, and
- *                                                  `.root` leads the clsx
- *   2  useRootDefaultClassName    (makeReset)    → fui.base          .root
- *   3  density === 'small' && useSmallStyles     → fui.components.l1 .small
- *   4  selected && useIndicatorStyles.base       → fui.components.l1 .indicator
- *   5  selected && useContentStyles.selected     → fui.components.l1 .selected
- *   6  consumer className                        → unlayered (always wins)
- *
- *   icon slot
- *   1  navItemClassNames.icon                    → REMOVED (D16.1/D16.5); there is no public
- *                                                  class handle on component internals
- *   2  useIconStyles.base                        → fui.components.l1 .icon (own box +
- *                                                  react-icons descendants, S-J/D27)
- *   3  selected && useIconStyles.selected        → fui.components.l1 .icon-selected
- *   4  consumer className                        → unlayered (always wins)
- *
- * ── Why the shared slices are DUPLICATED here instead of living in one shared module ──
- * `sharedNavStyles.styles.ts` produced args #2–#5 for NavItem, NavCategoryItem, NavSubItem,
- * AppItem, AppItemStatic and SplitNavItem. Griffel could share them because `mergeClasses`
- * resolves the winner per-element at call time; CSS cannot — two `@layer fui.components.l1`
- * rules in two different files are ranked by their position in the aggregated
- * `dist/styles.css`, which is emission order, not argument order. NavSubItem's `.base`
- * overrides the shared small slice's `padding-inline-start` on the very same element, so
- * that tie MUST be decided by file position inside one file. Same shape as react-drawer's
- * duplicated `useDrawerBaseStyles` blocks; it is the faithful form, not a DRY regression.
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * Every value here either read a Fluent spacing token or is a px literal that lands on a
- * spacing step, so all of them take the NAMED axis utilities; raw `var(--spacingVertical*)`
- * / `var(--spacingHorizontal*)` is the one authoring form that does not scale with
- * `--base-scale`. `gap` keeps the axis of the token the source named (`spacingVerticalL`),
- * even though it is the inline gap that renders — the two scales are one system.
- * `strokeWidthThick` becomes `var(--spacing-thick)`: `outline-width` / `outline-offset` are
- * NOT spacing-powered, so they take the emitted variable directly (D4 addendum).
- *
- * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
- * The reset compiled to an [ltr, rtl] class pair (`.rdi7s9k` / `.r94071`) whose deltas are
- * `text-align: left|right` and the two horizontal padding edges — pure property flips with
- * mirrored values, so logical properties reproduce both sides and no `@variant rtl` twin is
- * needed. The indicator's `margin-inline-start` was already logical in the compiled output
- * (`.f3i5gj0::after{margin-inline-start:-16px}`, no pair).
- *
- * ── Shorthands (CONVERSION_GUIDE §2) ─────────────────────────────────────────────────
- * `border: 'none'` compiled to the `border:none` SHORTHAND. `border-*-style: none` is the
- * half that carries the rendering — a computed `border-*-width` is 0 whenever its style is
- * `none` — so the four style longhands reproduce it exactly without re-declaring widths or
- * colours that can never be seen. Same treatment react-drawer's `animation-exit` got.
- * `transitionProperty: 'background'` becomes `background-color`, the only background
- * longhand any slice in this package animates.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/sharedNavStyles.styles.js and
- * lib-commonjs/components/NavItem/useNavItemStyles.styles.js.
- */
-
 @keyframes nav-item-indicator-enter {
   0% {
     background-color: transparent;

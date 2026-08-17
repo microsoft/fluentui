@@ -4,30 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useMessageBarTitleStyles_unstable, not source declaration order.
- *
- * `root` slot
- *   1 messageBarTitleClassNames.root           → static class (JS)
- *   2 useRootBaseStyles          (makeReset)   → fui.base   .root
- *   3 consumer className                       → unlayered (always wins)
- *
- * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and
- * no data-attributes are needed. Everything is MessageBarTitle's own element (l1/l2 do not
- * apply), the compiled reset has a `null` rtl class — nothing to flip, no logical
- * properties needed — and the package has no `fui-Icon-filled` / `:global(` rule
- * (grepped), so D2 amendment 5 does not apply.
- *
- * `...typographyStyles.body1Strong` is spread into the reset by the Griffel source; the
- * four declarations it contributes are written out literally here, matching the compiled
- * atomic `.r168xkm9{font-family:…;font-size:…;font-weight:…;line-height:…}`.
- *
- * The `::after` pseudo-element is a separate compiled rule
- * (`.r168xkm9::after{content:" "}`) — a hard space separating the title from the body
- * text that follows it inline.
- */
-
 @layer fui.base {
   .root {
     /* from typographyStyles.body1Strong */

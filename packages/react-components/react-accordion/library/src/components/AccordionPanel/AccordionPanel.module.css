@@ -4,34 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useAccordionPanelStyles_unstable.
- *
- * `root` slot
- *   1 accordionPanelClassNames.root   → static class (JS)
- *   2 useStyles.root                  → fui.components.l1  .root
- *   3 consumer className              → unlayered (always wins)
- *
- * ── ALTITUDE: l1 (DECISIONS.md D2 amendment 2) ─────────────────────────────────────
- * The root `<div>` is AccordionPanel's own element. `renderAccordionPanel_unstable` may
- * wrap it in the `collapseMotion` slot (@fluentui/react-motion-components-preview), but
- * that is a wrapper AROUND the root, not a component whose hook styles the root — no
- * rule here reaches into it, so nothing belongs in `fui.components.l2`. Grepped for
- * `fui-Icon-filled` / `fui-Icon-regular` / `:global(` across the package: zero hits, so
- * the D2-amendment-5 unlayered block does not apply.
- *
- * ── RTL (DECISIONS.md D5) ──────────────────────────────────────────────────────────
- * The single compiled atomic (`.f1axvtxu`) has no `[ltr, rtl]` twin: the two inline
- * margins carry the same value, so there is nothing to flip. Logical properties are
- * used anyway.
- *
- * ── Spacing (DECISIONS.md D4 amendment) ────────────────────────────────────────────
- * `tokens.spacingHorizontalM` is authored as the named utility `ms-horizontal-m` /
- * `me-horizontal-m`; raw `var(--spacing-horizontal-m)` is forbidden in modules because it
- * is the one form that does not ride `--base-scale`.
- */
-
 @layer fui.components.l1 {
   /*
    * from useStyles.root — root arg #2.

@@ -7,23 +7,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverCarouselStyles_unstable`.
- *
- * `root` slot — carries NO declarations; only the identity-only local below:
- *   1  teachingPopoverCarouselClassNames.root   → REMOVED (D16.1)
- *   2  useStyles.root                           → an EMPTY `makeStyles` slice in the Griffel
- *                                                 source (`root: {}`, above a
- *                                                 "Todo: Page change animation & styles"
- *                                                 comment) → the identity-only local below
- *   3  group/fui-teaching-popover-carousel      → identity marker (JS, unstyled)
- *   4  consumer className                       → unlayered (always wins)
- *
- * Nothing here sits over another component's hook output, so `fui.components.l2` is unused;
- * there is no `makeResetStyles` slice, so `fui.base` is unused too.
- */
-
-/*
  * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2; statics-removal design §4b). This root has
  * no declarations of its own, so without this class it would emit the group marker ALONE.
  * `useTeachingPopoverCarouselStyles_unstable` leads its `clsx()` with it so the root ALWAYS

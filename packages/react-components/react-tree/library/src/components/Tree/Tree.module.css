@@ -4,39 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTreeStyles_unstable.
- *
- * `root` slot
- *   1 treeClassNames.root                  → static class (JS)
- *   2 useBaseStyles       (makeReset)      → fui.base           .root
- *   3 useStyles.subtree   (level > 1)      → fui.components.l1  .subtree
- *   4 consumer className                   → unlayered (always wins)
- *
- * ── Altitude ────────────────────────────────────────────────────────────────────────
- * Tree styles only its own `<div role="tree">`; nothing here reaches into another
- * component's hook output, so `fui.components.l2` is unused.
- *
- * ── `subtree` is a module CLASS, not a data attribute ────────────────────────────────
- * The gate is `state.level > 1` and the ONLY rule it drives sits on the root itself —
- * no sibling or descendant slot reads it — so there is nothing for a root presence
- * attribute to buy (contrast react-input's `data-content-before`, which the inner
- * input's rules have to see from the root). The `styles[…]` composition form the
- * cookbook lists for enum/gated slices reproduces Griffel's class 1:1.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * `useBaseStyles` compiles with a `null` rtl class (`__resetStyles("rnv2ez3", null, …)`)
- * and `subtree` is a single block-axis `padding-top` atomic — nothing to flip.
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * Both lengths were read from `tokens.spacingVerticalXXS`, so both are authored as the
- * named spacing utility. Raw `var(--spacing-vertical-xxs)` is forbidden in modules: it is
- * the one authoring form that does not ride `--base-scale`.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/Tree/useTreeStyles.styles.js.
- */
-
 @layer fui.base {
   .root {
     @apply flex flex-col gap-y-vertical-xxs;

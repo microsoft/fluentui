@@ -4,67 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * ── EVERY rule in this file is `fui.components.l2`, not `l1` (D2 amendment 2) ─────────
- *
- * AlphaSlider does not render slots of its own: `useAlphaSliderStyles_unstable` decorates
- * the four slots and then calls `useColorSliderStyles_unstable(state)`, so every element it
- * styles already carries ColorSlider's base styles from ColorSlider.module.css. That is
- * composition — one component styling over another component's output — and its altitude is
- * `l2`. Griffel expressed the same precedence positionally: the AlphaSlider classes reached
- * the ColorSlider merge as its LAST argument (`state.rail.className`), so they beat every
- * ColorSlider atomic on the same property. `l2 > l1` reproduces that, and it does so without
- * depending on stylesheet load order between the two modules.
- *
- * The overrides that actually collide, and would silently invert if this file were `l1`:
- *   .rail  background-image  ← ColorSlider `.hue` (AlphaSlider never sets `channel`, so the
- *                              default `hue` gradient is always applied underneath)
- *   .thumb background-color  ← ColorSlider `.thumb`
- *   .thumb transform / inset ← ColorSlider's orientation slices, which read
- *                              `--fui-Slider--progress`; an AlphaSlider root never sets that
- *                              var (it sets `--fui-AlphaSlider--progress`), so those
- *                              declarations are invalid-at-computed-value-time and the ones
- *                              below are what actually position the thumb.
- *
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useAlphaSliderStyles_unstable:
- *
- * ROOT slot:
- *   1 alphaSliderClassNames.root  → static class (JS) — REMOVED in the statics sweep
- *                                   (DECISIONS.md D16.1); the root now leads with the
- *                                   identity-only `.root` below and carries
- *                                   `group/fui-alpha-slider` second
- *   2 consumer className          → unlayered (always wins)
- *   … then useColorSliderStyles_unstable appends ColorSlider's root class + marker
- *
- * INPUT slot:  static only → REMOVED; the slot is left entirely to ColorSlider
- * RAIL slot:   1 static (REMOVED) · 2 useStyles.rail        → l2 (`.rail`)
- * THUMB slot:  1 static (REMOVED) · 2 useThumbStyles.thumb  → l2 (`.thumb`)
- *              3 useThumbStyles.vertical|horizontal         → l2 (data-orientation descendant)
- *
- * ── Reading orientation ──────────────────────────────────────────────────────────────
- * `data-orientation` is stamped on the root by `useColorSliderStyles_unstable`, which this
- * component's hook always calls. The orientation blocks below therefore use the same
- * `.root:where([data-orientation='…']) .thumb` shape as ColorSlider.module.css — but with
- * THIS module's own locals, which are the classes AlphaSlider's hook put on those elements.
- *
- * ── Runtime values (CONVERSION_GUIDE "Known special cases") ──────────────────────────
- * `--fui-AlphaSlider--direction`, `--fui-AlphaSlider--progress`,
- * `--fui-AlphaSlider__thumb--color` and `--fui-AlphaSlider__rail--color` are written as
- * INLINE STYLES by `useAlphaSliderState_unstable` (`alphaSliderCSSVars`). JS writes, CSS only
- * reads with `var()` — the mechanism ports unchanged and the names stay public API. The rail
- * gradient's direction is one of them, which is why it needs no `@variant rtl` twin (and the
- * compiled output confirms it: one class, `.f183gti0`, no pair).
- *
- * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
- * The rail's `1px` border is a literal in the Griffel source, not a `strokeWidthThin` read;
- * it becomes `var(--spacing-thin)` per the D4 addendum — same computed 1px, and it now
- * scales with `--base-scale` like every other width in the package.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/AlphaSlider/useAlphaSliderStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   /*
    * Identity-only local. AlphaSlider's root has no declarations of its own — its layout comes

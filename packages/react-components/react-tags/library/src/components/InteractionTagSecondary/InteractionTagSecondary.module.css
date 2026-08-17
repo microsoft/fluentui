@@ -4,66 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useInteractionTagSecondaryStyles_unstable, not source declaration order.
- *
- *   #  mergeClasses argument                      → target
- *   ----------------------------------------------------------------------------------
- *   1  interactionTagSecondaryClassNames.root     → static class (JS)
- *   2  useRootBaseClassName        (makeReset)    → fui.base           .root
- *   3  disabled ? useRootDisabledStyles[appearance]
- *                : useRootStyles[appearance]      → fui.components.l1  .filled/.outline/…
- *   4  useRootStyles[shape]                       → fui.components.l1  .rounded/.circular
- *   5  useRootStyles[size]                        → fui.components.l1  (data-size)
- *   6  selected && !disabled && useRootStyles.selected
- *                                                 → fui.components.l1  .selected
- *   7  consumer className                         → unlayered (always wins)
- *
- * This is the tag's dismiss half — a <button> of its own inside InteractionTag, rendering
- * `@fluentui/react-icons`' <DismissRegular /> as its only child. It applies NO rule to that
- * icon (no `.fui-Icon-*` selector anywhere in the compiled AOT output), so unlike
- * InteractionTagPrimary this module needs no unlayered block, and it styles no other
- * component's element, so `fui.components.l2` is unused.
- *
- * ── Which prop becomes what ─────────────────────────────────────────────────────────
- * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
- * `appearance`, `shape` and the `selected && !disabled` gate stay conditional CLASSES in
- * the hook, exactly as they were conditional `mergeClasses` arguments (the react-button
- * precedent). `disabled` is a BRANCH (`disabled ? disabledStyles[a] : styles[a]`), not an
- * additive state, so each appearance has its own disabled class.
- *
- * ── Ordering ────────────────────────────────────────────────────────────────────────
- * Selectors are `:where()`-flat, so within the layer file position decides.
- * • #6 `.selected` re-sets #3's background/colour/border colours and its own forced-colors
- *   half must beat #3's, so its block is written LAST.
- * • #4 shape (corner radii) and #5 size (font-size + inline padding) are disjoint from
- *   each other and from #3/#6; written in argument order anyway.
- * • WITHIN each appearance rule the declarations run `d` → `h` → `a` → `m`, reproducing
- *   Griffel's bucket order: `filled`'s forced-colors `border-*-width: strokeWidthThin`
- *   must beat its own `d`-bucket `border-*-width: 0`, and its forced-colors `:hover`
- *   background must beat its plain `:hover` background.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Verified against the compiled `[ltr, rtl]` pairs in
- * lib-commonjs/components/InteractionTagSecondary/useInteractionTagSecondaryStyles.styles.js.
- * Every pair is a pure PROPERTY flip with identical values on both sides — no value-level
- * flip anywhere — so each becomes a logical property:
- *   reset `border-left-color` (the divider) ↔ `border-right-color` → border-inline-start-color
- *   reset `border-top/bottom-left-radius`   ↔ …-right-radius       → border-{start,end}-start-radius
- *   rounded/circular `border-top/bottom-right-radius`              → border-{start,end}-end-radius
- *   [size] `padding-left` / `padding-right`                        → padding-inline-{start,end}
- *   brand / selected / disabled `border-left-color` dividers       → border-inline-start-color
- *
- * ── Spacing & stroke widths (DECISIONS.md D4 amendment + addendum) ──────────────────
- * The 5px/3px inline paddings match no spacing step → numeric utilities (`ps-5`, `pe-3`),
- * which ride `--base-scale` all the same. `tokens.strokeWidthThin` / `strokeWidthThick`
- * are authored as `var(--spacing-thin)` / `var(--spacing-thick)`: border-width and
- * outline-width do not consume the spacing namespace, and raw `var(--strokeWidth*)` is the
- * one form that does not scale. Font sizes are not spacing-powered → `calc(<n>px *
- * var(--base-scale))`.
- */
-
 @layer fui.base {
   .root {
     /* reset default button style */

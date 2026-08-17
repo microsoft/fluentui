@@ -4,43 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuItemLinkStyles_unstable,
- * not source declaration order.
- *
- * `root` slot (= MenuItem's root — this component renders an `<a>` MenuItem)
- *   1  menuItemLinkClassNames.root  → REMOVED (D16.1); `.reset-link` is now the leading token,
- *                                     followed by the `group/fui-menu-item-link` marker
- *   2  useStyles.resetLink          → fui.components.l2  ← altitude, below
- *   3  consumer className           → unlayered (always wins)
- *
- * The `icon` / `content` / `secondaryContent` / `checkmark` assignments are GONE: each one
- * only ever carried this component's BEM static, so after D16.1 what was left was
- * `clsx(state.x.className)` — an identity on the consumer's own string, i.e. dead code
- * implying the hook styles a slot it does not (CONVERSION_GUIDE, "known special cases").
- * MenuItem's hook styles those slots.
- *
- * ── ALTITUDE: l2, not l1 (DECISIONS.md D2 amendment 2) ───────────────────────────────
- * MenuItemLink owns no element of its own: `useMenuItemLinkStyles_unstable` calls
- * `useMenuItemStyles_unstable` and then decorates the SAME root, whose base rules come from
- * MenuItem's hook (`fui.base` + `fui.components.l1`). Anything a component applies over
- * another component's hook output belongs in `fui.components.l2` — in l1 the winner would be
- * decided by stylesheet load order between MenuItem.module.css and this file. Same shape as
- * react-button's ToggleButton over Button.
- *
- * No collision exists today (MenuItem declares nothing in the `text-decoration-*` family),
- * so the altitude is ownership bookkeeping rather than a live tiebreak — but it is the
- * altitude that keeps it that way if MenuItem ever grows one.
- *
- * ── No unlayered block ──────────────────────────────────────────────────────────────
- * grep-verified: this module contains no `fui-Icon-filled` / `fui-Icon-regular` rule, so
- * nothing here contends with @fluentui/react-icons' unlayered atomics (D2 amendment 5). The
- * glyph swaps this component inherits live in MenuItem.module.css, already unlayered there.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuItemLink/useMenuItemLinkStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   .reset-link {
     text-decoration-line: none;

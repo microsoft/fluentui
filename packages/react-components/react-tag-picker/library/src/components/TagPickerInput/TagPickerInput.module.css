@@ -4,39 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerInputStyles_unstable,
- * not source declaration order.
- *
- *   #  mergeClasses argument       bucket → target
- *   ---------------------------------------------------------------------------------
- *   1  tagPickerInputClassNames.root  —   → group marker (JS, D16.5)
- *   2  useBaseStyle  (makeResetStyles) r  → fui.base   (levelless — loses to every level)
- *   3  styles[size]                   d   → fui.components.l1  (data-size)
- *   4  styles.disabled  (disabled)    d   → fui.components.l1
- *   5  consumer className             —   → unlayered (always wins)
- *
- * The root IS the `<input>` — this component has exactly one element and styles nothing it
- * does not own, so nothing sits at `fui.components.l2` and no `:global()` selector appears.
- * `fui.base` reproduces makeResetStyles' `r` bucket, which Griffel sorts before every other
- * bucket and which therefore lost to `[size]` and `disabled` on every shared property. The two
- * that ARE shared — `background-color` and `color`, both re-declared by `disabled` — resolve
- * the same way here, because `fui.base` is levelless and loses to `fui.components.l1`.
- *
- * ── The runtime width variable ──────────────────────────────────────────────────────
- * `--fluent-TagPickerInput__width` is written on this same element by
- * `setTagPickerInputStretchStyle` in useTagPickerInput.tsx (`input.style.setProperty(...)`,
- * `'100%'` when the text overflows, removed otherwise). Its name comes from
- * `utils/tokens.ts` and is reproduced verbatim from the compiled reset
- * (`width:var(--fluent-TagPickerInput__width, 0)`) — note the `--fluent-` prefix and the
- * bare `0` fallback, neither of which this conversion touches. The JS mechanism is unchanged.
- *
- * ── RTL ─────────────────────────────────────────────────────────────────────────────
- * Every compiled atomic in this file is a single class with no `[ltr, rtl]` pair: the size
- * paddings are `<vertical> 0 <vertical> 0`, symmetric on the inline axis, so Griffel emitted
- * one `padding` shorthand each (`.fa2pw7h` / `.ft37c3` / `.f3abo53`). Nothing flips.
- */
-
 @layer fui.base {
   /* from useBaseStyle (makeResetStyles) — arg #2 */
   .root {

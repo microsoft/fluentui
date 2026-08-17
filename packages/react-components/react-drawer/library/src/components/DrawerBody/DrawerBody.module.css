@@ -4,36 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useDrawerBodyStyles_unstable:
- *
- *   #  mergeClasses argument      → target
- *   -----------------------------------------------------------------------------------
- *   1  drawerBodyClassNames.root  → REMOVED (D16.1); the root's identity is now the
- *                                   `group/fui-drawer-body` marker, and `.root` leads
- *                                   the clsx
- *   2  useStyles (makeReset)      → fui.base          .root
- *   3  consumer className         → unlayered (always wins)
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * `padding: 0 spacingHorizontalXXL` becomes the two named axis utilities `py-0` /
- * `px-horizontal-xxl` — raw `var(--spacingHorizontal*)` is the one authoring form that does
- * not scale with `--base-scale`.
- *
- * The two edge overrides are `calc(spacingHorizontalXXL + 1px)` = 24px + 1px = 25px, which
- * matches NO spacing step, so they take the numeric fallback (`pt-25` / `pb-25` compile to
- * `calc(25 * var(--spacing))`, i.e. `calc(25px * var(--base-scale))`). Note the Griffel
- * source really does read the HORIZONTAL token for a block-axis padding; that is reproduced,
- * not corrected.
- *
- * `:first-child` / `:last-child` are element-relative structural pseudo-classes, unchanged
- * by the conversion, and they keep the 0-2-0 vs 0-1-0 win over the rule's own `py-0` that
- * `.ri6rvx7:last-child` had in the compiled output.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/DrawerBody/useDrawerBodyStyles.styles.js.
- */
-
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {

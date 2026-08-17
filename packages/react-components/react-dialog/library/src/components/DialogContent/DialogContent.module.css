@@ -4,44 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useDialogContentStyles_unstable.
- *
- *   `root` slot
- *     1 dialogContentClassNames.root   → REMOVED (D16.1). The root's identity is now the
- *                                        `group/fui-dialog-content` marker, written by the
- *                                        hook as clsx argument 2; `styles.root` leads so the
- *                                        marker is never `classList[0]` (D15.1 / D16.2). The
- *                                        EXPORT is retained, re-pointed at the marker and
- *                                        narrowed to `{ root: string }` (D16.5).
- *     2 useStyles        (makeReset)   → fui.base   .root
- *     3 consumer className             → unlayered (always wins)
- *
- * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and no
- * data-attributes are needed. Every declaration styles DialogContent's own element, so
- * nothing is l2. The compiled reset has a `null` rtl class — nothing flips, so no logical
- * properties and no `@variant rtl` twin are required. Grepped this package for
- * `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5 does not
- * apply.
- *
- * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────
- * The Griffel source reads `tokens.strokeWidthThick` for BOTH the padding and the negative
- * margin that cancels it — the pair exists so a focus ring drawn just outside a child is not
- * clipped by this element's `overflow-y: auto`, and it only nets to zero if both halves are
- * the same length. `padding` and `margin` are spacing-powered families (probe-measured), so
- * both take the utility: `p-thick` / `-m-thick`. Raw `var(--stroke-width-thick)` is forbidden
- * in component modules — it is the one form that does not ride `--base-scale`, which would
- * break exactly the cancellation this rule depends on under user zoom.
- *
- * `min-height: 32px` is a dimensional px literal, so it takes the NUMERIC utility
- * `min-h-32`, which computes through the same `--base-scale` (the precedent set by
- * react-accordion's `min-h-44` / `min-h-32` button heights).
- *
- * Verified against the compiled Griffel atomic in
- * lib-commonjs/components/DialogContent/useDialogContentStyles.styles.js.
- */
-
 @layer fui.base {
   .root {
     /* `padding: tokens.strokeWidthThick` / `margin: calc(tokens.strokeWidthThick * -1)` */

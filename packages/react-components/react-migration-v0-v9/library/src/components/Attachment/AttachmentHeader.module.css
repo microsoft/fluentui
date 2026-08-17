@@ -2,14 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of AttachmentHeader.tsx:
- *
- *   1 attachmentHeaderClassName        → BEM static (JS) — REMOVED (DECISIONS.md D16.1)
- *   2 useAttachmentHeaderStyles.root   → fui.components.l1
- *   3 consumer className               → unlayered (always wins)
- */
-
 @layer fui.components.l1 {
   .root {
     @apply block;

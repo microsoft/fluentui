@@ -4,40 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useNavDrawerHeaderStyles_unstable:
- *
- *   #  mergeClasses argument             → target
- *   -----------------------------------------------------------------------------------
- *   1  navDrawerHeaderClassNames.root    → REMOVED (D16.1); the root's identity is now the
- *                                          `group/fui-nav-drawer-header` marker, and `.root`
- *                                          leads the clsx
- *   2  useStyles.root                    → fui.components.l2 .root
- *   3  consumer className                → unlayered (always wins)
- *
- * ── Altitude: l2, not l1 (D2 amendment 2) ───────────────────────────────────────────
- * `useNavDrawerHeaderStyles_unstable` calls react-drawer's converted
- * `useDrawerHeaderStyles_unstable(state)` on the same state object, so every declaration
- * here sits over ANOTHER component's hook output. DrawerHeader authors its root in
- * `fui.base` (including `pt-vertical-xxl px-horizontal-xxl pb-vertical-s`, which both
- * padding declarations below override) plus a `::after` separator in `fui.components.l1`.
- *
- * ── Shorthands (CONVERSION_GUIDE §2) ─────────────────────────────────────────────────
- * `margin: 'unset'` compiled to the `margin:unset` shorthand and is expanded to its four
- * logical longhands. `unset` on a non-inherited property computes to `initial` (0) on every
- * edge, so the four longhands are exactly equivalent; DrawerHeader declares no margin, which
- * makes this slice a defensive reset rather than an override.
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * 14px and 5px match NO spacing step, so both take the numeric fallback (`ps-14` / `py-5`
- * compile to `calc(14px * var(--base-scale))` / `calc(5px * var(--base-scale))`).
- * `paddingInlineStart` was already logical in the compiled output (unpaired, no RTL twin).
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/NavDrawerHeader/useNavDrawerHeaderStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   /* arg #2 — from useStyles.root */
   .root {

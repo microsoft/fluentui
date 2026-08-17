@@ -4,46 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useMenuGridGroupHeaderStyles_unstable, not source declaration order.
- *
- * `root` slot
- *   1 menuGridGroupHeaderClassNames.root → REMOVED (D16.1); `.root` is now the leading
- *                                          token, followed by the
- *                                          `group/fui-menu-grid-group-header` marker
- *   2 useStyles.root                     → fui.components.l1  .root
- *   3 consumer className                 → unlayered (always wins)
- *
- * A single plain `makeStyles` slice (no `makeResetStyles`), so nothing lands in `fui.base`.
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * l1: MenuGridGroupHeader styles only its own root.
- *
- * ── No unlayered block ──────────────────────────────────────────────────────────────
- * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here, so nothing contends
- * with @fluentui/react-icons' unlayered atomics (D2 amendment 5).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry exactly one `[ltr, rtl]` pair, and it is a pure PROPERTY flip
- * with identical values:
- *
- *   uwmqm3: ['f177v4lu' padding-left:8px,  'f19lj068' padding-right:8px]
- *   z189sj: ['f19lj068' padding-right:8px, 'f177v4lu' padding-left:8px]
- *
- * i.e. `paddingLeft` and `paddingRight` are the same length, so `padding-inline` covers
- * both directions and no `@variant rtl` twin is needed.
- *
- * ── Spacing / pixel literals (DECISIONS.md D4 amendment) ────────────────────────────
- * `padding-left/right: 8px` matches the S spacing step and is an INLINE-axis property, so
- * it takes `px-horizontal-s`. `height: 32px` is a height, not spacing, so it rides the
- * numeric utility `h-32` — same treatment react-menu's `MenuItem` gave `min-height: 32px`.
- * Both compute through the same `--base-scale`.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuGridGroupHeader/useMenuGridGroupHeaderStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex h-32 items-center px-horizontal-s text-neutral-foreground-3;

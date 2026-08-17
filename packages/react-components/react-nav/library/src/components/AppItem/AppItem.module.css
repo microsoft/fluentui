@@ -4,62 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useAppItemStyles_unstable.
- * NOTE the reset is argument #1 here and the static was #2 — the reverse of NavItem:
- *
- *   #  mergeClasses argument                       → target
- *   -----------------------------------------------------------------------------------
- *   root slot
- *   1  useRootDefaultClassName     (makeReset)     → fui.base          .root
- *   2  appItemClassNames.root                      → REMOVED (D16.1); the root's identity is
- *                                                    now the `group/fui-app-item` marker,
- *                                                    and `.root` leads the clsx
- *   3  useAppItemStyles.root                       → fui.components.l1 .root
- *   4  density === 'small' && useAppItemStyles.small
- *                                                  → fui.components.l1 .small
- *   5  !icon && .absentIconRootAdjustment          → fui.components.l1 .absent-icon
- *   6  consumer className                          → unlayered (always wins)
- *
- *   icon slot
- *   1  appItemClassNames.icon                      → REMOVED (D16.1/D16.5)
- *   2  useIconStyles.base                          → fui.components.l1 .icon (own box +
- *                                                    react-icons descendants, S-J/D27)
- *   3  consumer className                          → unlayered (always wins)
- *
- * AppItem never applies `useIconStyles.selected` — it has no `selected` state — so this
- * module carries no icon keyframes and its unlayered block is the base half only.
- *
- * ── Dead declaration reproduced verbatim ────────────────────────────────────────────
- * `marginInline: '4px'` (arg #3) is overridden on BOTH inline edges by the same slice's
- * `marginInlineStart: '-6px'` / `marginInlineEnd: '0px'`, so it renders nothing. In Griffel
- * the shorthand atomic sat in the lower-priority bucket (`{p:-1}`) and lost to the two
- * longhands; here it is emitted first in the same rule and the longhands follow. It is kept
- * rather than dropped so the slice maps 1:1 and so the `@apply` statements below stay in
- * source order (a single `@apply` would let Tailwind's canonical utility sort decide, which
- * is exactly the ordering this rule cannot afford to lose).
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * 4px / 10px / 6px / 0px / 16px all land on spacing steps (xs / m-nudge / s-nudge / none /
- * l) and take the named axis utilities. 14px matches NO step and takes the numeric fallback
- * (`ps-14` → `calc(14px * var(--base-scale))`). `gap` uses the HORIZONTAL axis here because
- * the source wrote a bare px literal rather than a Fluent token — the two scales are one
- * system, so this is a naming choice, not a value choice.
- *
- * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
- * The two `padding` atomics are an [ltr, rtl] pair whose only delta is which horizontal edge
- * gets which token — a pure property flip, reproduced by the logical longhands with no
- * `@variant rtl` twin. `marginInlineStart` / `marginInlineEnd` were already logical in the
- * compiled output (unpaired).
- *
- * The shared slices (args #1 and the icon slot) are DUPLICATED into this module rather than
- * shared — see NavItem.module.css's header for the full rationale.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/sharedNavStyles.styles.js and
- * lib-commonjs/components/AppItem/useAppItemStyles.styles.js.
- */
-
 @layer fui.base {
   /* arg #1 — from the shared useRootDefaultClassName (makeResetStyles) */
   .root {

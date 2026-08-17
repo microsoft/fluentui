@@ -2,26 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useListStyles_unstable:
- *
- *   1 listClassNames.root  → BEM static (JS) — REMOVED (DECISIONS.md D16.1); the root now
- *                            leads with `.root` and carries `group/fui-list` second
- *   2 useRootBaseStyles    → @layer fui.base   (makeResetStyles)
- *   3 layoutToStyles[layout] → fui.components.l1  (`horizontal` | `grid`; `vertical` is the
- *                              rule-free default and deliberately has no slice)
- *   4 consumer className   → unlayered (always wins)
- *
- * MARKER-NAMESPACE COLLISION, inherited not introduced. `@fluentui/react-list` — a separate,
- * already-converted package — stamps the SAME `group/fui-list` on its own List root. The
- * collision predates this conversion: both packages published the static `fui-List`, and
- * statics-removal-design.md §1g records it verbatim ("a `.fui-List` selector today matches
- * two unrelated components"). Repointing to the marker preserves the situation exactly and
- * makes it no worse in CSS terms — react-list authors ZERO `group-<variant>/fui-list` rules, so no
- * declaration from either package can reach the other's subtree today. It is reported as a
- * seam because a future `group-<variant>/fui-list` rule in EITHER package would silently match both.
- */
-
 @layer fui.base {
   .root {
     @apply list-none;

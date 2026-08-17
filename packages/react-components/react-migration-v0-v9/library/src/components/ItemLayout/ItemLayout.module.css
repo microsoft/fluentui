@@ -2,28 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of ItemLayout.tsx. Every slot is
- * a two-argument composition — `mergeClasses(styles.<slot>, state.<slot>.className)` — so
- * the whole file is one level:
- *
- *   root            1 itemLayoutClassName → BEM static (JS), REMOVED (DECISIONS.md D16.1)
- *                   2 styles.root         → fui.components.l1
- *                   3 consumer className  → unlayered
- *   every sub-slot  1 styles.<slot>       → fui.components.l1
- *                   2 consumer className  → unlayered
- *
- * The consumer className here is frequently ListItem's (renderListItem_unstable hands its
- * `header` / `contentWrapper` slots straight to `<ItemLayout>`); those ListItem classes sit
- * at fui.components.l2 and so win over this file by LAYER, which is exactly the arrangement
- * `mergeClasses` used to produce by argument position. See ListItem.module.css.
- *
- * The grid is 4 columns × 2 rows: startMedia spans both rows in column 1, header +
- * contentWrapper stack in column 2, headerMedia + contentMedia stack in column 3, endMedia
- * spans both rows in column 4. `grid-column-*` / `grid-row-*` are line-number properties,
- * not physical directions — they follow the writing mode and need no RTL treatment.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply grid min-h-48;

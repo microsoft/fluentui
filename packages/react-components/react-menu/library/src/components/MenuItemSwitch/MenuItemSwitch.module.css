@@ -4,69 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useMenuItemSwitchStyles_unstable, not source declaration order.
- *
- * `root` slot (= MenuItem's root)
- *   1  menuItemSwitchClassNames.root                  → REMOVED (D16.1); only the
- *                                                       `group/fui-menu-item-switch` marker
- *                                                       remains, and it is not `classList[0]`
- *                                                       because `useMenuItemStyles_unstable`
- *                                                       runs afterwards and prepends its own
- *                                                       unconditional hashed `.root`
- *   2  consumer className                             → unlayered
- *
- * `switchIndicator` slot (MenuItemSwitch's OWN element)
- *   1  menuItemSwitchClassNames.switchIndicator       → REMOVED (D16.1)
- *   2  useSwitchIndicatorBaseClassName  (makeReset)   → fui.base           .switch-indicator
- *   3  checked && useSwitchIndicatorStyles.checked    → fui.components.l1  .switch-indicator-checked
- *   4  consumer className                             → unlayered
- *   5  multiline && useMultilineStyles.switch         → fui.components.l1  .switch-indicator-multiline
- *
- * The `icon` / `content` / `secondaryContent` / `subText` assignments are GONE: each one
- * only ever carried this component's BEM static, so after D16.1 what was left was
- * `clsx(state.x.className)` — an identity on the consumer's own string, i.e. dead code
- * implying the hook styles a slot it does not (CONVERSION_GUIDE, "known special cases").
- * MenuItem's hook styles those slots.
- *
- * ── ALTITUDE: fui.base + l1, because the indicator is this component's OWN slot ──────
- * MenuItemSwitch adds nothing to any slot MenuItem's hook styles (its root contribution is
- * the identity marker alone, which carries no declarations), so no l2 block is needed here.
- * Contrast MenuItemLink.module.css, which does decorate the shared root and is therefore l2.
- *
- * ── Reaching the thumb (DECISIONS.md D16.3 — mechanism M2) ──────────────────────────
- * `.circle-filled` is a module local, applied by `useMenuItemSwitch.tsx` through the
- * re-pointed `circleFilledClassName` export. That element is created BY THIS PACKAGE
- * (`state.switchIndicator.children ??= <CircleFilled className={circleFilledClassName} />`),
- * so the class is composed in JS rather than exposed as a public handle — the old
- * `fui-MenuItemSwitch__switchIndicator__circleFilled` string is gone with every other
- * `fui-` static (D16.1). A consumer who supplies their own `switchIndicator.children` never
- * matched the old selector either, so nothing changes for them.
- *
- * ── No unlayered block ──────────────────────────────────────────────────────────────
- * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule exists in this module, so
- * nothing here contends with @fluentui/react-icons' unlayered atomics (D2 amendment 5). The
- * `<CircleFilled />` thumb is a single icon, not a `bundleIcon()` pair.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` pairs in the compiled atomics:
- *   reset    `margin-right` → `margin-left`, same value  → PROPERTY flip → `me-horizontal-xs`
- *   checked  `translateX(20px)` → `translateX(-20px)`    → VALUE flip → explicit `@variant rtl`
- *
- * ── Geometry / spacing (DECISIONS.md D4 + amendment) ────────────────────────────────
- * Track/thumb geometry is computed in the source from `trackWidth: 40`, `trackHeight: 20`,
- * `spaceBetweenThumbAndTrack: 2` and `thumbSize = 20 - 2 = 18`; the thumb travel is
- * `40 - 18 - 2 = 20`. Those are px literals, so they ride `--base-scale`: numeric utilities
- * where one exists (`h-20`, `w-40`), `calc(<n>px * var(--base-scale))` inside `font-size` and
- * `translateX()` where none does. `spacingHorizontalXS` takes the named utility;
- * `strokeWidthThin` becomes `var(--spacing-thin)` — the raw token var() is the one authoring
- * form that does NOT scale with `--base-scale` and is forbidden in modules (D4 addendum).
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuItemSwitch/useMenuItemSwitchStyles.styles.js.
- */
-
 @layer fui.base {
   .switch-indicator {
     @apply me-horizontal-xs box-border h-20 w-40 shrink-0;

@@ -4,55 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useCardPreviewStyles_unstable.
- * Argument order and source-declaration order are identical here, and neither slot has an
- * intra-slot property collision, so the blocks are written straight down the list:
- *
- *   `root` slot
- *     1 cardPreviewClassNames.root → REMOVED (D16.1). The root's identity is now the
- *                                    `group/fui-card-preview` marker, which the hook writes
- *                                    as clsx argument 2; `styles.root` leads. The EXPORT is
- *                                    retained, re-pointed to the marker and narrowed to
- *                                    `{ root: string }` (D16.5).
- *     2 useStyles.root             → fui.components.l1  .root
- *     3 consumer className         → unlayered (always wins)
- *
- *   `logo` slot
- *     1 cardPreviewClassNames.logo → REMOVED (D16.1) — sub-slots have no public handle
- *     2 useStyles.logo             → fui.components.l1  .logo
- *     3 consumer className         → unlayered
- *
- * ── Altitude: everything stays l1 ───────────────────────────────────────────────────
- * The one selector that reaches past CardPreview's own slots is `> :not(.logo)`, whose
- * subject is the consumer's preview content (an `<img>` in every story). Consumer elements
- * have no owning styles hook, and the excluded class is CardPreview's OWN `logo` slot —
- * now a LOCAL rather than a global static — so nothing here is a library composition
- * (cookbook: "rules that style the component's own elements stay layered").
- *
- * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
- * this package, and after the D16 sweep this module contains no `:global()` at all — the
- * one it had named a static this package owned, which is exactly the case that resolves to
- * a hashed local instead of a renamed global.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * One `[ltr, rtl]` pair, and it is a pure PROPERTY flip:
- *   `.f1t6tvco{left:12px}` / `.ffrfxm3{right:12px}` → `inset-inline-start`
- * so no `@variant rtl` twin is needed.
- *
- * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
- * The 12px offsets and the 32px logo box are pixel literals in the Griffel source (not
- * token reads), so they take the numeric utilities, which ride `--base-scale`:
- * `bottom-12` / `start-12` / `h-32` / `w-32` compile to `calc(var(--spacing) * n)` with
- * `--spacing: calc(1px * var(--base-scale))` — exactly 12px / 32px at the default 16px
- * root. Same call the sibling Card module makes for its floating action's `top: 4px` /
- * `right: 4px`: absolute-positioning offsets are geometry here, not the padding/margin
- * rhythm the named spacing utilities describe.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/CardPreview/useCardPreviewStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply relative;

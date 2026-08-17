@@ -4,41 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useAreaChartStyles`, not
- * source declaration order. The single styled slot was a two-argument call — BEM static
- * first, one Griffel slice second — so there is no intra-slot ordering to encode:
- *
- *   `tooltip` slot
- *     1 areaChartClassNames.tooltip     → static class (JS) — REMOVED (DECISIONS.md D16.1)
- *     2 useStyles.tooltip               → fui.components.l1   .tooltip
- *     3 consumer className              → unlayered (still commented out upstream)
- *
- *   `root` slot (NEW — see the identity block at the bottom of this file)
- *     1 .root (identity-only)           → fui.components.l2
- *     2 group/fui-area-chart            → identity marker (JS, unstyled)
- *     3 consumer `props.styles.root`    → unlayered (always wins)
- *
- * `.tooltip` is l1 — it would decorate an element AreaChart renders itself. `.root` is l2,
- * because that element belongs to CartesianChart (D2 amendment 2).
- *
- * VALUES ARE THE COMPILED ONES, not a reading of the source. `.tooltip` comes from the
- * shared `getTooltipStyle()` factory in `src/utilities/Common.styles.ts`, which is NOT
- * converted in this batch (six other chart components still consume it). Every declaration
- * below was read off lib-commonjs/components/AreaChart/useAreaChartStyles.styles.js — the
- * AOT atomics — so this module and the Griffel factory cannot drift apart silently while
- * both exist. It is byte-identical to LineChart's and VerticalBarChart's `.tooltip`; the
- * three stay duplicated on purpose while `Common.styles.ts` is still Griffel-owned.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry no `[ltr, rtl]` pair and no direction-sensitive property
- * (`text-align: center` is axis-neutral, `padding` is a uniform four-side shorthand), so
- * no `@variant rtl` twin is needed.
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────
- * `.tooltip` has no `HighContrastSelector` bucket in the source, so nothing to port.
- */
-
 @layer fui.components.l1 {
   /*
    * from useStyles.tooltip — the shared `getTooltipStyle()` factory

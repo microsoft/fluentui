@@ -4,58 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTextareaStyles_unstable,
- * not source declaration order. Textarea has NO `makeResetStyles` slice, so `fui.base`
- * stays empty for this component and everything lands in `fui.components.l1`.
- *
- * `root` slot (a <span> wrapper — it exists only to host the focus underline):
- *
- *   #  mergeClasses argument                        → target
- *   ---------------------------------------------------------------------------------
- *   1  textareaClassNames.root                      → static class (JS)
- *   2  useRootStyles.base                           → .root
- *   3  disabled && .disabled                        → .root + `disabled`   (data-disabled)
- *   4  !disabled && filled && .filled               → .filled              (JS-gated)
- *   5  !disabled && .[appearance]                   → .outline / .filled-*  (JS-gated)
- *   6  !disabled && .interactive                    → .root + `enabled`
- *   7  !disabled && outline && .outlineInteractive  → .outline, 2nd block
- *   8  !disabled && invalid && .invalid             → .root + `invalid`    (data-invalid)
- *   9  consumer className                           → unlayered (always wins)
- *
- * `textarea` slot:
- *
- *   1  textareaClassNames.textarea                  → static class (JS)
- *   2  useTextareaStyles.base                       → .textarea
- *   3  useTextareaStyles[size]                      → .textarea + `size-*` (data-size)
- *   4  useTextareaResizeStyles[resize]              → .none/.both/.horizontal/.vertical
- *   5  disabled && useTextareaStyles.disabled       → .textarea + `disabled` (native attr)
- *   6  consumer className                           → unlayered
- *
- * ── `!disabled` gating ──────────────────────────────────────────────────────────────
- * Args 4/5/7 keep the JS gate Griffel used (the class is simply not applied). Args 6/8
- * ride the root's `data-disabled` / `data-invalid` presence attributes instead, per D3
- * (state props → data-attributes). `data-invalid` is written as `!disabled && invalid`,
- * so a disabled+invalid Textarea gets no red border — exactly the arg-8 condition.
- *
- * ── Griffel BUCKET order beats source order INSIDE a slice ──────────────────────────
- * Within one makeStyles slice the winner is not source order but Griffel's style-bucket
- * ordering: d < w(:focus-within) < f < i < h(:hover) < a(:active) < … < m(@media).
- * `useRootStyles.outlineInteractive` declares `:hover`, `:active`, `:focus-within` in
- * that order but the buckets rank them `:focus-within` → `:hover` → `:active`, so this
- * file writes those three blocks in BUCKET order. Verified against the compiled atomics
- * in lib-commonjs/components/Textarea/useTextareaStyles.styles.js (`w`/`h`/`a` arrays).
- * Same rule puts every `@media (prefers-reduced-motion)` / `(forced-colors)` block after
- * the declarations it overrides (bucket `m` sorts last).
- *
- * ── `.invalid` selector simplification ──────────────────────────────────────────────
- * Griffel emits `:not(:focus-within),:hover:not(:focus-within)`. The second selector is a
- * strict subset of the first; it exists only to raise specificity to (0,3,0) so the rule
- * beats `.outlineInteractive`'s (0,2,0) `:hover` border. Here every selector is
- * `:where()`-flat and the winner is file position, so the plain `not-focus-within`
- * variant is exact — and it is written LAST, matching mergeClasses arg #8.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply relative m-0 box-border inline-flex align-top;

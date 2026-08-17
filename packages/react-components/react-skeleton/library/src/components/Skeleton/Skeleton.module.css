@@ -5,20 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useSkeletonStyles_unstable,
- * not source declaration order:
- *
- *   1 useStyles.root (identity-only) → fui.components.l1
- *   2 skeletonClassNames.root        → static class (JS) — REMOVED in the statics sweep
- *                                     (DECISIONS.md D16.1)
- *   3 useStyles.blockStyling         → fui.components.l1   (only when rendered `as="span"`)
- *   4 consumer className             → unlayered (always wins)
- *
- * Skeleton has no `makeResetStyles`, so nothing lands in `fui.base`, and its single styled
- * slice has no ordering interactions to preserve.
- */
-
-/*
  * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Skeleton's only
  * styled slice, `.block-styling`, is CONDITIONAL (`as="span"`, and the root defaults to a
  * `div`), so on the default render the root's own contribution is just the group marker.

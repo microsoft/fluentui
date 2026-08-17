@@ -4,32 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTableStyles_unstable:
- *
- *   1 tableClassNames.root                          → REMOVED (D16.1). The root's public
- *                                                     identity is now the
- *                                                     `group/fui-table` marker, which the
- *                                                     hook threads in as clsx argument 2
- *                                                     so it is never `classList[0]`
- *                                                     (D16.2).
- *   2 useStyles.root                                → fui.components.l1  .root
- *   3 noNativeElements ? flexLayout : tableLayout   → fui.components.l1  .flex-root /
- *                                                     .table-root (written AFTER .root)
- *   4 state.root.className                          → unlayered (always wins)
- *
- * Nothing here styles another component's element, so `fui.components.l2` is unused.
- * No pseudo-class or media rule exists in this component, so the "bucket-major" ordering
- * the Button/TableRow modules need does not apply: plain argument order is exact.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry no `[ltr, rtl]` pair and no direction-sensitive property,
- * so no `@variant rtl` twin is needed.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/Table/useTableStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply border-collapse bg-subtle-background;

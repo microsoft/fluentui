@@ -4,51 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useNavCategoryItemStyles_unstable:
- *
- *   #  mergeClasses argument                          → target
- *   -----------------------------------------------------------------------------------
- *   root slot
- *   1  navCategoryItemClassNames.root                 → REMOVED (D16.1); the root's identity
- *                                                       is now the
- *                                                       `group/fui-nav-category-item` marker,
- *                                                       and `.root` leads the clsx
- *   2  useRootDefaultClassName       (makeReset)      → fui.base          .root
- *   3  useRootStyles.base                             → fui.components.l1 .root
- *   4  density === 'small' && useSmallStyles          → fui.components.l1 .small
- *   5  selected && !open && useIndicatorStyles.base   → fui.components.l1 .indicator
- *   6  selected && !open && useContentStyles.selected → fui.components.l1 .selected
- *   7  consumer className                             → unlayered (always wins)
- *
- *   expandIcon slot
- *   1  navCategoryItemClassNames.expandIcon           → REMOVED (D16.1/D16.5)
- *   2  useExpandIconStyles.base                       → fui.components.l1 .expand-icon
- *   3  consumer className                             → unlayered (always wins)
- *
- *   icon slot
- *   1  navCategoryItemClassNames.icon                 → REMOVED (D16.1/D16.5)
- *   2  useIconStyles.base                             → fui.components.l1 .icon (own box +
- *                                                       react-icons descendants, S-J/D27)
- *   3  selected && useIconStyles.selected             → fui.components.l1 .icon-selected
- *   4  consumer className                             → unlayered (always wins)
- *
- * `useExpandIconStyles.selected` (typographyStyles.body1Strong) exists in the Griffel source
- * but is never passed to any mergeClasses call — dead code, so it is not reproduced here.
- * Reported in the conversion report rather than silently kept.
- *
- * The shared slices (args #2, #4, #5, #6 and the icon slot) are DUPLICATED into this module
- * rather than shared: two `@layer fui.components.l1` rules in two different files are ranked
- * by their position in the aggregated `dist/styles.css`, which is emission order, not
- * argument order. Same shape as react-drawer's duplicated `useDrawerBaseStyles` blocks. See
- * NavItem.module.css's header for the full rationale, spacing/RTL/shorthand notes.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/sharedNavStyles.styles.js and
- * lib-commonjs/components/NavCategoryItem/useNavCategoryItem.styles.js.
- */
-
 @keyframes nav-category-item-indicator-enter {
   0% {
     background-color: transparent;

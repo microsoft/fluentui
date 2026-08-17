@@ -4,51 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useChartTableStyles`. Every
- * slot was `mergeClasses(<static>, <base slice>)` — the consumer `props.styles?.<slot>`
- * arguments are COMMENTED OUT in the source (consumer styles are deliberately not applied
- * today) and stay that way; fidelity means preserving that, not fixing it:
- *
- *   root       2 useStyles.root       → l1  .root
- *                (static #1 REMOVED by D16.1; the root now leads with `.root` and carries
- *                `group/fui-chart-table` second)
- *   table      2 useStyles.table      → l1  .table
- *   headerCell 2 useStyles.headerCell → l1  .header-cell
- *   bodyCell   2 useStyles.bodyCell   → l1  .body-cell
- *   chart      (static only — no slice, and `ChartTable.tsx` never consumes `classes.chart`)
- *                → slot deleted from the hook entirely (DonutChart chartWrapper precedent;
- *                with the static removed it would be an empty string)
- *   chartTitle 2 useStyles.chartTitle → l1  .chart-title
- *   svgTooltip 2 useStyles.svgTooltip → l1  .svg-tooltip
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
- * Everything is `fui.components.l1`. ChartTable renders its OWN root `<div>`, `<table>`,
- * and cells; `.chart-title`/`.svg-tooltip` land on ChartTitle/SVGTooltipText elements —
- * plain render helpers with no styles hook of their own (DonutChart precedent). Per-cell
- * consumer colours arrive as INLINE styles (`header.style`/`cell.style`), which beat any
- * layered declaration — same winner as the old mergeClasses composition, where inline
- * styles also beat atomics.
- *
- * VALUES ARE THE COMPILED ONES — read off
- * lib-commonjs/components/ChartTable/useChartTableStyles.styles.js.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * Two compiled `[ltr, rtl]` pairs: textAlign 'left' on `.header-cell` and `.body-cell` →
- * `text-align: start` (`text-start`).
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────────
- * `.header-cell`/`.body-cell` carry plain `@media (forced-colors: active)` blocks in the
- * source (already the standard query — no `-ms-high-contrast` half to narrow);
- * `.svg-tooltip` uses `HighContrastSelector`, narrowed as usual (DonutChart precedent).
- *
- * ── Stroke widths (D4 addendum) ─────────────────────────────────────────────────────────
- * `border: strokeWidthThick solid …` — raw `var(--stroke-width-thick)` is forbidden in
- * modules; the sanctioned form for border widths is the emitted `var(--spacing-thick)`
- * (= calc(2px * var(--base-scale)), identical at the default root). `padding:
- * var(--spacing-horizontal-s)` (8px, the S step) becomes the named utility `p-horizontal-s`.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply w-full overflow-x-auto;

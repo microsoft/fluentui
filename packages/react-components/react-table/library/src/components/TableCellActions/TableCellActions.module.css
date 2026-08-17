@@ -4,43 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useTableCellActionsStyles_unstable:
- *
- *   1 tableCellActionsClassNames.root   → REMOVED (D16.1); the root's public identity is
- *                                         the `group/fui-table-cell-actions` marker, which
- *                                         is also how TableRow / DataGridRow now reach this
- *                                         element (D16.3, M1 — see below)
- *   2 useStyles.root                    → fui.components.l1  .root
- *   3 visible && useStyles.visible      → fui.components.l1  .visible (written AFTER .root)
- *   4 state.root.className              → unlayered (always wins)
- *
- * ── This element is styled from OUTSIDE, and that is why the marker matters ─────────
- * TableRow's `rootInteractive` and DataGridRow's `subtleSelection` slices reveal these
- * actions on row hover / active / focus-within. Under Griffel they did it with
- * `& .fui-TableCellActions` at 0-2-0, beating this `.root`'s 0-1-0 `opacity: 0`. Those
- * rules now select `:global(.group\/fui-table-cell-actions)` from
- * `fui.components.l2` — the marker is a class-for-class substitution for the static, and
- * the higher altitude reproduces the win that `:where()` flattening would otherwise
- * destroy (D2 amendment 2, D16.3 M1). TableRow never holds this component's slot object —
- * it is a descendant the consumer composes inside a TableCell — so M2 (JS slot
- * composition) is structurally unavailable.
- *
- * No pseudo-class or media rule of its own, so plain argument order is exact.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` pairs, both pure PROPERTY flips, so logical longhands are exact and no
- * `@variant rtl` twin is needed:
- *   `.f10k790i{right:0px}` / `.f1xynx9j{left:0px}`        → inset-inline-end
- *   `.fcgxt0o{margin-left:auto}` / `.f1ujusj6{margin-right:auto}` → margin-inline-start
- * `transform: translateY(-50%)` compiled to a SINGLE class (`.f188r07x`, no pair) — a
- * block-axis translation is direction-agnostic — so it needs no mirrored value.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TableCellActions/useTableCellActionsStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply absolute;

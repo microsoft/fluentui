@@ -4,42 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of StackShim.tsx, not source
- * declaration order. Adjudicated in
- * migration/griffel-to-tailwind/reports/s4-v8-layering-decision.md §2.1.
- *
- * `root` element — StackShim.tsx:152-157
- *    1 stackClassNames.root ('ms-Stack')       → static class (JS) — RETAINED, v8 interop
- *    2 'group/fui-stack-shim'                  → named group marker (JS), never index 0
- *    3 wrap ? .wrap : .root                    → fui.components.l1
- *    4 horizontal      → .horizontal           → fui.components.l1
- *    5 verticalFill    → .vertical-fill        → fui.components.l1
- *    6 reversed        → .reversed-horizontal | .reversed-vertical
- *    7 grow            → .grow-<value>         → fui.components.l1
- *    8 disableShrink   → .disable-shrink       → fui.components.l1 (+ UNLAYERED rule below)
- *    9 horizontalAlign → .justify-content-<v> (horizontal) | .align-items-<v> (vertical)
- *   10 verticalAlign   → .align-items-<v> (horizontal) | .justify-content-<v> (vertical)
- *   11 childrenGapClassName.root                → v8 merge-styles, UNLAYERED at runtime
- *   12 consumer className                       → unlayered (always wins)
- *
- * `inner` element — StackShim.tsx:159-163
- *    1 stackClassNames.inner ('ms-Stack-inner') → static class (JS) — RETAINED, v8 interop
- *    2 .inner                                   → fui.components.l1
- *    3 horizontal → .horizontal, 4 .inner-width, 5 reversed, 6/7 align — as above
- *    8 childrenGapClassName.inner               → v8 merge-styles, UNLAYERED at runtime
- *
- * Args 11/12 are unlayered and therefore beat every rule in this file — which is the
- * intent and matches Griffel's behaviour today (D2's core contract). The only same-element
- * property the v8 side could have collided on is `width` on `inner`, and it cannot occur:
- * `.inner-width` is pushed only under `(!tokens || !tokens.childrenGap)` (StackShim.tsx:78)
- * while `childrenGapClassName` exists only under `if (tokens.childrenGap)` (:60-66) — an
- * explicit JS guard, not cascade luck (decision doc §1.2).
- *
- * The four DESCENDANT rules are the exception and live UNLAYERED at the bottom of this
- * file. See that block's comment; do not move them.
- */
-
 @layer fui.components.l1 {
   /* from useStackStyles.root (:6-12) — its two `> *` rules moved to the unlayered block */
   .root {

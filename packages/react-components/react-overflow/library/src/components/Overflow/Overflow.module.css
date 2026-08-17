@@ -5,29 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useOverflowStyles_unstable,
- * not source declaration order:
- *
- *   #  mergeClasses argument                → target
- *   ---------------------------------------------------------------------------------
- *   1  'fui-Overflow'                       → static class (JS) — REMOVED in the statics
- *                                             sweep (DECISIONS.md D16.1); the element now
- *                                             leads with `.root` below and carries
- *                                             `group/fui-overflow` second
- *   2  useOverflowStyles.overflowMenu       → UNLAYERED (see the block below)
- *   3  useOverflowStyles.overflowingItems   → UNLAYERED (see the block below)
- *   4  child.props.className                → unlayered (consumer, always last)
- *
- * Overflow has no `makeResetStyles`, so `fui.base` is unused. It has no enum "look" props
- * and no state of its own that any rule reads, so no data attributes are stamped
- * (DECISIONS.md D15.6 — attributes are a fallback, not a requirement).
- *
- * `fui.components.l1` and `.l2` are unused too, and that is the whole story of this file:
- * BOTH of Overflow's rules have a FOREIGN subject element, so neither may sit in a layer.
- * See the block heading below.
- */
-
-/*
  * ── Both rules must be UNLAYERED ─────────────────────────────────────────────────────
  *
  * DECISIONS.md D2 amendment 5 / CONVERSION_GUIDE §2: a rule whose SUBJECT element is owned

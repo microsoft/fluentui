@@ -4,33 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagGroupStyles_unstable,
- * not source declaration order.
- *
- *   #  mergeClasses argument       → target
- *   ----------------------------------------------------------------------------------
- *   1  tagGroupClassNames.root     → static class (JS)
- *   2  useRootStyles.base          → fui.components.l1  .root
- *   3  useRootStyles[size]         → fui.components.l1  (data-size)
- *   4  consumer className          → unlayered (always wins)
- *
- * TagGroup has no `makeResetStyles`, so `fui.base` is unused; it renders a plain <div>
- * and styles none of its children's elements, so `fui.components.l2` is unused too.
- * (Tag / InteractionTag children carry their OWN hooks' classes — TagGroup passes size,
- * appearance and dismissible down through `TagGroupContextProvider`, never through CSS.)
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * `column-gap` is the INLINE axis, so the three size steps take the horizontal token's
- * `gap-x-*` utility. Raw `var(--spacing-horizontal-s)` is forbidden in modules: it is the
- * one authoring form that does not ride `--base-scale`.
- *
- * ── RTL ─────────────────────────────────────────────────────────────────────────────
- * Every compiled atomic here is a single class with no `[ltr, rtl]` pair
- * (`ftuwxu6`/`fsnqrgy`/`f1rjii52`/`f1ufnopg` in
- * lib-commonjs/components/TagGroup/useTagGroupStyles.styles.js), so nothing flips.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply inline-flex;

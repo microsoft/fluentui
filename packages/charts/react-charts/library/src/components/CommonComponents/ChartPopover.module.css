@@ -4,68 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `usePopoverStyles_unstable`.
- * Every slot was `mergeClasses(<static>, <base slice>[, <conditional slice>])`, with a
- * consumer override (`props.styles?.calloutContentRoot`) live on ONE slot only:
- *
- *   calloutContentRoot        2 useStyles.calloutContentRoot     → l1  .callout-content-root
- *                             3 props.styles?.calloutContentRoot → unlayered (always wins)
- *   calloutDateTimeContainer  2 useStyles.calloutDateTimeContainer → l1 .callout-date-time-container
- *   calloutContentX           2 useStyles.calloutContentX        → l1  .callout-content-x
- *   calloutBlockContainer     2 useStyles.calloutBlockContainer  → l1  .callout-block-container
- *                             3 isCartesian ? …Cartesian : …NonCartesian
- *                                                                → l1  .callout-block-container-cartesian /
- *                                                                      .callout-block-container-non-cartesian
- *                                                                  (authored AFTER the base — later argument)
- *   calloutBlockContainertoDrawShapefalse                        → l1  .callout-block-container-to-draw-shape-false
- *   calloutBlockContainertoDrawShapetrue                         → l1  .callout-block-container-to-draw-shape-true
- *   shapeStyles               2 useStyles.shapeStyles            → l1  .shape-styles
- *   calloutlegendText         2 useStyles.calloutLegendText      → l1  .callout-legend-text
- *   calloutContentY           2 useStyles.calloutContentY        → l1  .callout-content-y
- *                             3 isCartesian ? …Cartesian : …NonCartesian
- *                                                                → l1  .callout-content-y-cartesian /
- *                                                                      .callout-content-y-non-cartesian
- *   descriptionMessage        2 useStyles.descriptionMessage     → l1  .description-message
- *   ratio                     2 useStyles.ratio                  → l1  .ratio
- *   numerator                 2 useStyles.numerator               → l1  .numerator
- *   denominator               2 useStyles.denominator             → l1  .denominator
- *   calloutInfoContainer      2 useStyles.calloutInfoContainer   → l1  .callout-info-container
- *   calloutContainer          (identity only — see the block at the bottom of this file)
- *
- * Every static class (argument 1 of every slot) was REMOVED by D16.1;
- * `group/fui-chart-popover` on `calloutContainer` is the sole public identity class.
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ────────────────────────────────────────────
- * Everything is `fui.components.l1`: every subject element is a `<div>`/`<span>`/`<svg>`
- * ChartPopover renders ITSELF — the classed elements sit INSIDE react-popover's
- * `PopoverSurface` but none of them IS the surface, so no other component's hook competes
- * on any of them and l2 would buy nothing.
- *
- * ── Portal reach ──────────────────────────────────────────────────────────────────────
- * ChartPopover renders `<Popover inline>`, and `inline` mounts the surface in place (no
- * Portal — `renderPopover_unstable` only wraps in `<Portal>` when `!state.inline`), so the
- * classed elements stay inside the chart's DOM subtree. Either way the compiled module CSS
- * is a document-level stylesheet, so these rules would reach a portaled surface in the same
- * document too; only shadow-DOM/iframe boundaries would not (out of scope, D11).
- *
- * VALUES ARE THE COMPILED ONES — read off
- * lib-commonjs/components/CommonComponents/useChartPopoverStyles.styles.js (AOT atomics
- * with their explicit `[ltr, rtl]` pairs).
- *
- * ── RTL (DECISIONS.md D5) ─────────────────────────────────────────────────────────────
- * Four compiled `[ltr, rtl]` pairs, all expressed logically here:
- *   textAlign 'left'  on `.callout-block-container` → `text-align: start` (`text-start`)
- *   paddingLeft       on `.callout-block-container-to-draw-shape-false` and
- *                        `.callout-info-container`  → `padding-inline-start` (`ps-horizontal-s`)
- *   marginRight       on `.shape-styles`            → `margin-inline-end` (`me-horizontal-s`)
- *   marginLeft        on `.ratio`                   → `margin-inline-start` (`ms-horizontal-s-nudge`)
- *
- * ── forced colors ─────────────────────────────────────────────────────────────────────
- * No `HighContrastSelector` media query in any slice. The `forced-color-adjust`
- * declarations below are FLAT properties (Griffel `d` bucket), carried verbatim.
- */
-
 @layer fui.components.l1 {
   .callout-content-root {
     @apply grid overflow-hidden bg-neutral-background-1;

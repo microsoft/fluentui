@@ -5,21 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useDrawerStyles_unstable:
- *
- *   #  mergeClasses argument      → target
- *   -----------------------------------------------------------------------------------
- *   1  drawerClassNames.root      → REMOVED (D16.1); the root's identity is now the
- *                                   `group/fui-drawer` marker, and `.root` below leads
- *                                   the clsx
- *   2  consumer className         → unlayered (always wins)
- *
- * Drawer declares no styles at all: `useDrawer_unstable` picks `InlineDrawer` or
- * `OverlayDrawer` as the root's element type and every declaration comes from that
- * component's own hook. The only thing this hook ever contributed was the BEM static.
- */
-
-/*
  * Identity-only local. Drawer's root has no declarations of its own; this class exists so
  * the root always emits a selector-safe, hashed leading token ahead of the group marker
  * (DECISIONS.md D15.1 / D16.2). Do not delete it because it looks like it does nothing.

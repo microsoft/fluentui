@@ -4,36 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuDividerStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 menuDividerClassNames.root → REMOVED (D16.1); `.root` is now the leading token,
- *                                  followed by the `group/fui-menu-divider` marker
- *   2 useStyles.root             → fui.components.l1  .root
- *   3 consumer className         → unlayered (always wins)
- *
- * ── No unlayered block ──────────────────────────────────────────────────────────────
- * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here (D2 amendment 5).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics contain no `[ltr, rtl]` pairs: the `margin` shorthand is symmetric
- * on the inline axis (`4px -5px 4px -5px`), so Griffel emitted a single class. Expanded
- * here into the two logical axes anyway, per the cookbook's shorthand rule.
- *
- * ── Spacing / stroke width (DECISIONS.md D4 + amendment + addendum) ─────────────────
- * `4px` matches the vertical XS step → `my-vertical-xs`. `-5px` matches no step → the
- * numeric utility `-mx-5`, which computes through the same `--base-scale`. `strokeWidthThin`
- * becomes `var(--spacing-thin)`: `border-*-width` is NOT a spacing-powered Tailwind family
- * (there is no `border-thin`), so the direct variable reference is the sanctioned form, and
- * the raw `var(--stroke-width-thin)` is forbidden because it is the one form that does not
- * scale with `--base-scale`.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuDivider/useMenuDividerStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply -mx-5 my-vertical-xs w-auto;

@@ -4,55 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useScatterChartStyles`, not
- * source declaration order. Both styled slots were two- or three-argument calls — BEM
- * static first, one Griffel slice second, consumer className last — so there is no
- * intra-slot ordering to encode:
- *
- *   `tooltip` slot
- *     1 scatterChartClassNames.tooltip     → static class (JS) — REMOVED (DECISIONS.md D16.1)
- *     2 useStyles.tooltip                  → fui.components.l1   .tooltip
- *     3 consumer className                 → unlayered (still commented out upstream)
- *
- *   `markerLabel` slot
- *     1 scatterChartClassNames.markerLabel → static class (JS) — REMOVED
- *     2 useStyles.markerLabel              → fui.components.l1   .marker-label
- *     3 consumer `props.styles.markerLabel`→ unlayered (always wins)
- *
- *   `root` slot (NEW — see the identity block at the bottom of this file)
- *     1 .root (identity-only)              → fui.components.l2
- *     2 group/fui-scatter-chart            → identity marker (JS, unstyled)
- *     3 consumer `props.styles.root`       → unlayered (always wins)
- *
- * The two styled slots are SVG/HTML elements ScatterChart renders itself inside
- * CartesianChart's `children` render prop, so they are l1 — ScatterChart's own cascade.
- * Only `.root` is l2, because that element belongs to CartesianChart (D2 amendment 2).
- *
- * VALUES ARE THE COMPILED ONES, not a reading of the source. `.tooltip` and
- * `.marker-label` come from the shared `getTooltipStyle()` / `getMarkerLabelStyle()`
- * factories in `src/utilities/Common.styles.ts`, which are NOT converted in this batch
- * (six other chart components still consume them). Every declaration below was read off
- * lib-commonjs/components/ScatterChart/useScatterChartStyles.styles.js — the AOT atomics —
- * so this module and the Griffel factory cannot drift apart silently while both exist.
- * Both blocks are byte-identical to LineChart's; they stay duplicated on purpose while
- * `Common.styles.ts` is still Griffel-owned.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry no `[ltr, rtl]` pair and no direction-sensitive property
- * (`text-align: center`, `text-anchor: middle` are axis-neutral), so no `@variant rtl`
- * twin is needed.
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────
- * `HighContrastSelector` (src/utilities/utilities.ts) is
- * `@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)`.
- * `@variant forced-colors` from the shared catalog is `@media (forced-colors: active)`.
- * The legacy `-ms-high-contrast` half is deliberately dropped — it is a removed
- * MS-proprietary feature superseded by `forced-colors`, and the shared catalog is the
- * single place that decision is made (react-avatar, react-button et al. converted the
- * same way). The `screen` restriction goes with it; `forced-colors` never matches print.
- */
-
 @layer fui.components.l1 {
   /*
    * from useStyles.tooltip — the shared `getTooltipStyle()` factory

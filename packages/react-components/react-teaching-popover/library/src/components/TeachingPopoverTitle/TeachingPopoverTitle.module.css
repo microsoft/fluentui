@@ -6,66 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverTitleStyles_unstable`, not source declaration order.
- *
- * `root` slot (an `h2` by default)
- *   1  teachingPopoverTitleClassNames.root                 → REMOVED (D16.1)
- *   2  useStyles.root                                      → fui.components.l1  .root
- *   3  appearance === 'brand' && useStyles.rootBrand       → fui.components.l1  .brand
- *   4  consumer className                                  → unlayered (always wins)
- *
- * `dismissButton` slot
- *   1  teachingPopoverTitleClassNames.dismissButton        → REMOVED (D16.1); no marker
- *                                                            replaces it — D15.1 puts one
- *                                                            marker on the outermost slot only
- *   2  useStyles.dismissButton                             → fui.components.l1 .dismiss-button
- *   3  appearance === 'brand' ? dismissBrand : undefined   → fui.components.l1 .dismiss-brand
- *   4  consumer className                                  → unlayered
- *
- * ── ALTITUDE: l1 throughout ─────────────────────────────────────────────────────────────
- * Both slots are this component's OWN elements (`useTeachingPopoverTitle.tsx` builds the root
- * as an `h2` and the dismiss button as a `button`), so nothing sits over another component's
- * hook output and `fui.components.l2` is unused. No `makeResetStyles` slice → `fui.base` is
- * unused too.
- *
- * ── ORDER inside l1 ─────────────────────────────────────────────────────────────────────
- * Same three effects as TeachingPopoverHeader.module.css, for the same reasons:
- *   • each `*-brand` class walks back one `color` and must follow its base block;
- *   • `border: <thin> solid <TransparentStroke>` (the compiled SHORTHAND, `p: -2`) is written
- *     before `border-inline-end-style: none` (a longhand, `p: 0`), which is what Griffel's
- *     priority made win;
- *   • the focus indicator won on SPECIFICITY (`[data-fui-focus-visible]`, 0-2-0) and now wins
- *     on file position, so its block is LAST in the slice.
- *
- * ── Lengths (DECISIONS.md D4 + addendum) ────────────────────────────────────────────────
- * `marginTop` / `marginBottom` read `spacingHorizontalNone` in the SOURCE even though they are
- * block-axis properties; the utility follows the token the source read (both are `0`, so the
- * choice is inert and the mapping back to the Griffel file stays exact). `outline-width` and
- * `border-width` do not read the `--spacing-*` namespace, so the stroke widths take direct
- * `var(--spacing-thin)` / `var(--spacing-thick)` references (D4 addendum).
- * `typographyStyles.body1` is expanded to the four declarations the compiler emitted.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * The compiled AOT output pairs the corner radii, the border style longhand and the focus
- * indicator's right/left border colours — all pure PROPERTY flips with identical values, so
- * they take the LOGICAL longhands below and no `@variant rtl` twin is needed.
- * `marginInlineStart` was already logical at source.
- *
- * ── Icon-swap rules (S-J retirement of D2 amendment 5; D27) ─────────────────────────────
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
- * The dismiss glyph IS a `bundleIcon()` pair (`DismissFilled` / `DismissRegular`), whose
- * filled/regular toggle rides icons 3.0's `[data-fui-icon-hidden]` stylesheet, imported at
- * `@layer fui.components.l1` (D27) — but this module declares no rule that touches it.
- * Should a future `:global(.fui-Icon-filled)` rule be added here, it goes at the module's
- * own altitude and must beat the hide's 0-1-0 on specificity (or ride a higher layer);
- * see react-infolabel's InfoButton.module.css for the template.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TeachingPopoverTitle/useTeachingPopoverTitleStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply mt-horizontal-none mb-horizontal-none flex flex-row justify-between pb-vertical-s text-neutral-foreground-1;

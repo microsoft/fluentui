@@ -4,56 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useAppItemStaticStyles_unstable:
- *
- *   #  mergeClasses argument                       → target
- *   -----------------------------------------------------------------------------------
- *   root slot
- *   1  useRootDefaultClassName     (makeReset)     → fui.base          .root
- *   2  appItemStaticClassNames.root                → REMOVED (D16.1); the root's identity is
- *                                                    now the `group/fui-app-item-static`
- *                                                    marker, and `.root` leads the clsx
- *   3  useAppItemStyles.root       (AppItem's)     → fui.components.l1 .root  (1st block)
- *   4  useAppItemStaticStyles.root                 → fui.components.l1 .root  (2nd block)
- *   5  density === 'small' && useAppItemStyles.small
- *                                                  → fui.components.l1 .small
- *   6  !icon && .absentIconRootAdjustment          → fui.components.l1 .absent-icon
- *   7  consumer className                          → unlayered (always wins)
- *
- *   icon slot
- *   1  appItemStaticClassNames.icon                → REMOVED (D16.1/D16.5)
- *   2  useIconStyles.base                          → fui.components.l1 .icon (own box +
- *                                                    react-icons descendants, S-J/D27)
- *   3  consumer className                          → unlayered (always wins)
- *
- * ── Why AppItem's slices are COPIED here ────────────────────────────────────────────
- * Args #3, #5 and #6 are AppItem's own makeStyles slices, imported across component folders.
- * Griffel could share them because `mergeClasses` resolves the winner per-element at call
- * time; CSS cannot — two `@layer fui.components.l1` rules in two different files are ranked
- * by their position in the aggregated `dist/styles.css`, which is emission order, not
- * argument order. Arg #4 overrides arg #3's `:hover` background on the very same element and
- * arg #6 overrides arg #5's `padding-inline-start`, so both ties MUST be decided by file
- * position inside ONE file. Same shape as react-drawer's duplicated `useDrawerBaseStyles`
- * blocks; it is the faithful form, not a DRY regression.
- *
- * ── `background-color: unset` on hover is not a no-op ───────────────────────────────
- * The reset paints `--color-neutral-background-4` unconditionally, so arg #4's `unset` (=
- * `initial` = transparent) makes a hovered AppItemStatic go TRANSPARENT rather than fall
- * back to the rest colour. Griffel produced exactly that: `.fmaajru:hover` at 0-2-0 beat the
- * reset's plain `.rdi7s9k` at 0-1-0. Here `fui.components.l1` beats `fui.base` before
- * specificity is consulted, which reproduces the same winner.
- *
- * See AppItem.module.css and NavItem.module.css for the spacing / RTL / dead-`marginInline`
- * notes, which apply identically.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/sharedNavStyles.styles.js,
- * lib-commonjs/components/AppItem/useAppItemStyles.styles.js and
- * lib-commonjs/components/AppItemStatic/useAppItemStaticStyles.styles.js.
- */
-
 @layer fui.base {
   /* arg #1 — from the shared useRootDefaultClassName (makeResetStyles) */
   .root {

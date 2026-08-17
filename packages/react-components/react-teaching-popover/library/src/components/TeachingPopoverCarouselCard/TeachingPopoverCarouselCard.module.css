@@ -7,26 +7,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverCarouselCardStyles_unstable`.
- *
- * `root` slot — carries NO declarations; only the identity-only local below:
- *   1  teachingPopoverCarouselCardClassNames.root   → REMOVED (D16.1)
- *   2  useStyles.root                               → an EMPTY `makeStyles` slice in the
- *                                                     Griffel source (`root: {}`) → the
- *                                                     identity-only local below
- *   3  group/fui-teaching-popover-carousel-card     → identity marker (JS, unstyled)
- *   4  consumer className                           → unlayered (always wins)
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────────
- * The root renders as this package's own internal `CarouselItem`
- * (`TeachingPopoverCarousel/Carousel/CarouselItem`), which "has no styling opinions" — it
- * builds a plain `div` and writes only `data-carousel-item` / `data-carousel-active-item` /
- * `hidden`. Nothing sits over another component's hook output, so `fui.components.l2` is
- * unused; there is no `makeResetStyles` slice, so `fui.base` is unused too.
- */
-
-/*
  * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2; statics-removal design §4b) — same shape
  * and same reason as TeachingPopoverCarousel.module.css, including why the body cannot be
  * literally empty (Tailwind v4 prunes declaration-less rules before `postcss-modules` sees

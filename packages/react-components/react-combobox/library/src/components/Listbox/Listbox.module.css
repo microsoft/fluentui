@@ -4,29 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useListboxStyles_unstable.
- * `root` slot:
- *
- *   #  mergeClasses argument     bucket  → target
- *   ------------------------------------------------------------------
- *   1  listboxClassNames.root    —       → group marker (JS, D16.5)
- *   2  styles.root               d       → l1
- *   3  consumer className        —       → unlayered (always wins)
- *
- * One slice, one bucket, no conflicts: nothing here is order-sensitive.
- *
- * Listbox is the element Combobox/Dropdown decorate through their own `listbox` slot.
- * Those rules live in Combobox.module.css / Dropdown.module.css at `fui.components.l2`
- * (D2 amendment 2 — a component styling another component's output), which is what
- * reproduces mergeClasses handing `state.root.className` (already carrying the parent's
- * classes) to this hook as its LAST argument.
- *
- * Grepped for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits — this
- * component renders no icon and styles nothing it does not own, so the D2 amendment 5
- * unlayered treatment does not apply here.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply box-border flex min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto bg-neutral-background-1 p-horizontal-xs outline-transparent-stroke;

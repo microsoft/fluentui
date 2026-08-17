@@ -4,62 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useVerticalBarChartStyles`,
- * not source declaration order. Every slot was a two-argument call — BEM static first, one
- * Griffel slice second — so there is no intra-slot ordering to encode:
- *
- *   `tooltip` slot
- *     1 verticalbarchartClassNames.tooltip   → static class (JS) — REMOVED (D16.1)
- *     2 useStyles.tooltip                    → fui.components.l1   .tooltip
- *     3 consumer className                   → unlayered (still commented out upstream)
- *
- *   `barLabel` slot
- *     1 verticalbarchartClassNames.barLabel  → static class (JS) — REMOVED
- *     2 useStyles.barLabel                   → fui.components.l1   .bar-label
- *     3 consumer className                   → unlayered (still commented out upstream)
- *
- *   `lineBorder` slot
- *     1 verticalbarchartClassNames.lineBorder → static class (JS) — REMOVED
- *     2 useStyles.lineBorder                  → fui.components.l1  .line-border
- *     3 consumer className                    → unlayered (still commented out upstream)
- *
- *   `opacityChangeOnHover` slot — GONE, no CSS here.
- *     `useStyles.opacityChangeOnHover` was `{}`; an empty `makeStyles` slice compiles to
- *     NO atomic at all (the key is absent from the compiled `__styles` map in
- *     lib-commonjs/…/useVerticalBarChartStyles.styles.js), so the BEM static was the slot's
- *     ONLY token. CONVERSION_GUIDE "Known special cases": delete the assignment entirely
- *     rather than mint an identity class for a slot the hook does not style.
- *
- *   `root` slot (NEW — see the identity block at the bottom of this file)
- *     1 .root (identity-only)                 → fui.components.l2
- *     2 group/fui-vertical-bar-chart          → identity marker (JS, unstyled)
- *     3 consumer `props.styles.root`          → unlayered (always wins)
- *
- * The three styled slots are SVG elements VerticalBarChart renders itself inside
- * CartesianChart's `children` render prop, so they are l1 — this component's own cascade.
- * Only `.root` is l2, because that element belongs to CartesianChart (D2 amendment 2).
- *
- * VALUES ARE THE COMPILED ONES. `.tooltip` and `.bar-label` come from the shared
- * `getTooltipStyle()` / `getBarLabelStyle()` factories in `src/utilities/Common.styles.ts`,
- * which are NOT converted in this batch (six other chart components still consume them).
- * Every declaration below was read off
- * lib-commonjs/components/VerticalBarChart/useVerticalBarChartStyles.styles.js.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * No `[ltr, rtl]` atomic pair and no direction-sensitive property in the compiled output,
- * so no `@variant rtl` twin is needed.
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────
- * `HighContrastSelector` is
- * `@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)`;
- * `@variant forced-colors` is `@media (forced-colors: active)`. The legacy
- * `-ms-high-contrast` half is deliberately dropped (removed MS-proprietary feature,
- * superseded by `forced-colors`) — the shared catalog is the single place that decision
- * is made. `.bar-label` keeps its own `forced-color-adjust: auto`, which is a flat
- * declaration in Griffel's `d` bucket, NOT a media query.
- */
-
 @layer fui.components.l1 {
   /*
    * from useStyles.tooltip — the shared `getTooltipStyle()` factory

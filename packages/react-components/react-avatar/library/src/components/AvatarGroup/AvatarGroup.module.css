@@ -4,27 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useAvatarGroupStyles_unstable, not source declaration order:
- *
- *   1  avatarGroupClassNames.root              → static class (JS)
- *   2  useStyles.base                          → fui.components.l1  `.root`
- *   3  layout === 'pie' && useSizeStyles[size] → fui.components.l1  (Avatar.module.css)
- *   4  layout === 'pie' && useStyles.pie       → fui.components.l1  `.pie`
- *   5  consumer className                      → unlayered (always wins)
- *
- * AvatarGroup has no `makeResetStyles`, so nothing lands in `fui.base`, and it styles no
- * element owned by another component's hook, so nothing lands in `fui.components.l2`.
- *
- * No data-attributes: `layout` is a look prop (D3 → module class) and `size` reaches the
- * root through the shared `useSizeStyles()` classes defined in `Avatar.module.css`. Args 3
- * and 4 touch no common property, so their relative file position cannot invert a winner.
- *
- * Values reproduced from the compiled AOT output in
- * lib-commonjs/components/AvatarGroup/useAvatarGroupStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   /* arg 2 — from useStyles.base */
   .root {

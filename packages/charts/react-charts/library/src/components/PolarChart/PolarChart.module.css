@@ -4,48 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `usePolarChartStyles`.
- * The `gridLineInner`/`gridLineOuter` slots are the one multi-slice shape — each composed
- * the SHARED `useStyles.gridLine` slice first and its own opacity slice second; the two
- * slices have no property in common, so a shared selector list + per-slot opacity rule
- * reproduces the pair exactly (GaugeChart limits/sublabel precedent, inverted):
- *
- *   root            2 useStyles.root          → l1  .root
- *                     (static #1 REMOVED by D16.1; the root leads with `.root` and
- *                     carries `group/fui-polar-chart` second)
- *   chartWrapper    (static only — no slice)  → slot passes the consumer string through
- *                                               (GaugeChart/DonutChart chartWrapper precedent)
- *   chart           2 useStyles.chart         → l1  .chart
- *   gridLineInner   2 useStyles.gridLine      → l1  .grid-line-inner (shared decls)
- *                   3 useStyles.gridLineInner → l1  .grid-line-inner (opacity)
- *   gridLineOuter   2 useStyles.gridLine      → l1  .grid-line-outer (shared decls)
- *                   3 useStyles.gridLineOuter → l1  .grid-line-outer (opacity)
- *   tickLabel       2 useStyles.tickLabel     → l1  .tick-label
- *   legendContainer 2 useStyles.legendContainer → l1  .legend-container
- *   props.styles?.<slot>                      → unlayered (always wins)
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
- * Everything is `fui.components.l1`. PolarChart renders its OWN root `<div>` (it does not
- * compose CartesianChart), and every classed element — the wrapper div, the `<svg>`, the
- * grid `<path>`/`<circle>`s, tick `<text>`s, and the legends wrapper div — is rendered by
- * PolarChart itself. The `Legends` component inside `.legend-container` has its own hook,
- * but `.legend-container` decorates the WRAPPER div PolarChart owns, not a Legends element.
- *
- * VALUES ARE THE COMPILED ONES — read off
- * lib-commonjs/components/PolarChart/usePolarChartStyles.styles.js.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * One compiled `[ltr, rtl]` pair: textAlign 'left' on `.root` → `text-align: start`
- * (`text-start`).
- *
- * ── forced colors ───────────────────────────────────────────────────────────────────────
- * No `HighContrastSelector` media query in any slice — nothing to narrow.
- *
- * `stroke-width: 1px` on the grid lines is a frozen literal in the source (not a
- * strokeWidth token — the D4 addendum mapping applies to token references only).
- */
-
 @layer fui.components.l1 {
   /* from useStyles.root — typographyStyles.body1 + layout; textAlign 'left' → logical `start` */
   .root {

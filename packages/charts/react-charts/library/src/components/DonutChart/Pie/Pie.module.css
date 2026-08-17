@@ -6,24 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `usePieStyles`:
- *
- *   root              1 donutPieClassNames.root          → static class (JS) — REMOVED
- *                                                          (DECISIONS.md D16.1)
- *                     2 useStyles.root ({} — no decls)   → fui.components.l1   .root (identity-only)
- *                     3 props.className                  → unlayered (always wins)
- *                     4 props.styles?.root               → unlayered (always wins)
- *   insideDonutString useStyles.insideDonutString        → fui.components.l1   .inside-donut-string
- *
- * Both elements are Pie's own (`<g>` and the centred `<text>`), so `fui.components.l1`
- * throughout; `fui.components.l2` is unused.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * No `[ltr, rtl]` pair in the compiled atomics — `fill`, `forced-color-adjust` and the type
- * ramp are all direction agnostic. No `@variant rtl` twin.
- */
-
 @layer fui.components.l1 {
   /*
    * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). Pie's root `<g>` has no declarations of

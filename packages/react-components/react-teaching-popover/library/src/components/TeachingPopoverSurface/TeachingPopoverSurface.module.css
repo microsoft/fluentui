@@ -6,64 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverSurfaceStyles_unstable`.
- *
- * `root` slot — which is react-popover's `PopoverSurface` root, not an element this package
- * creates: `useTeachingPopoverSurface_unstable` returns `usePopoverSurface_unstable(props, ref)`
- * verbatim and `renderTeachingPopoverSurface_unstable` delegates to
- * `renderPopoverSurface_unstable`.
- *
- *   #  mergeClasses argument                                → target
- *   ---------------------------------------------------------------------------------------
- *   1  teachingPopoverSurfaceClassNames.root                → REMOVED (D16.1)
- *   2  useStyles.root                                       → fui.components.l2  .root
- *   3  state.root.className (consumer)                      → unlayered (always wins)
- *   …then `usePopoverSurfaceStyles_unstable(state)` prepends PopoverSurface's own
- *   `fui.components.l1` classes and its `group/fui-popover-surface` marker.
- *
- * ── ALTITUDE: l2 ────────────────────────────────────────────────────────────────────────
- * Every declaration here overrides one that `PopoverSurface.module.css` sets on the SAME
- * element — `padding` (its `size-*` variants), `border-radius` (Medium → XLarge) — so this is
- * "styles applied over ANOTHER component's hook output" (DECISIONS.md D2 amendment 2).
- *
- * The altitude reproduces the Griffel winner exactly, and it always has: this hook composes
- * FIRST and `usePopoverSurfaceStyles_unstable` runs LAST, so under Griffel these atomics
- * arrived as the last `mergeClasses` argument of PopoverSurface's own call and won there too.
- * The Griffel source's comment — "Make sure to merge teaching bubble surface prior to popover
- * styles" — is describing exactly that, and the call order is preserved in the converted hook.
- *
- * ── TWO MARKERS ON ONE ELEMENT (D16.3) ──────────────────────────────────────────────────
- * Because the root IS PopoverSurface's root, it carries `group/fui-popover-surface` (stamped
- * by react-popover) alongside `group/fui-teaching-popover-surface` (stamped here), and a
- * descendant can address whichever identity it means. `component-has-group-marker` is an exact
- * SET comparison, so the pair is declared in the test via
- * `testOptions['has-group-marker'].markers`.
- *
- * ── Lengths (DECISIONS.md D4) ───────────────────────────────────────────────────────────
- * `padding` reads `spacingVerticalL` on BOTH axes in the source (not a copy-paste slip worth
- * "fixing": the compiled atomic is `padding:var(--spacing-vertical-l) var(--spacing-vertical-l)`),
- * so it takes the named `vertical` utility — `p-*` is all-sides and the two scales compute
- * through the same `--base-scale`. It stays the SHORTHAND Griffel emitted: PopoverSurface sets
- * its padding with a shorthand too, and cascade LAYERS decide between the two before
- * specificity or shorthand/longhand priority is consulted, so there is nothing here for the
- * cookbook's expand rule to protect. `min-width: 320px` matches no spacing step → the numeric
- * utility, which still computes through `--base-scale`.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * The compiled AOT output carries no `[ltr, rtl]` class pair; nothing here is
- * direction-dependent, so there is no `@variant rtl` block.
- *
- * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────────
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
- * react-popover is CONVERTED, so its rules are layered and `@layer fui.components.l2` can
- * arbitrate against them; the unlayered escape hatch is for UNCONVERTED Griffel owners only.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TeachingPopoverSurface/useTeachingPopoverSurfaceStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   .root {
     @apply box-border min-w-320 rounded-x-large p-vertical-l;

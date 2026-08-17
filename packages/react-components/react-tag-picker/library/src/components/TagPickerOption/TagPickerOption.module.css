@@ -4,54 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerOptionStyles_unstable.
- * A TagPickerOption IS an Option: this hook composes its own classes first and then hands the
- * whole state to react-combobox's `useOptionStyles_unstable`, which prepends Option's.
- *
- * `root` slot:
- *
- *   #  mergeClasses argument                        bucket → target
- *   ---------------------------------------------------------------------------------
- *   1  optionClassNames.root + Option's own slices  —      → Option hook (fui.components.l1)
- *   2  tagPickerOptionClassNames.root               —      → group marker (JS, D16.5)
- *   3  useRootBaseStyle (makeResetStyles)           r      → fui.base
- *   4  useRootStyles.secondaryContent (conditional) d      → fui.components.l2
- *   5  consumer className                           —      → unlayered (always wins)
- *
- * `media` slot:                                  `secondaryContent` slot:
- *   1 static → removed (D16.1)                     1 static → removed (D16.1)
- *   2 useMediaBaseStyle       r → fui.base         2 useSecondaryContentBaseStyle  r → fui.base
- *   3 consumer className      —                    3 consumer className            —
- *
- * ── Altitudes, and why they differ per block ────────────────────────────────────────
- * `fui.base` reproduces makeResetStyles' `r` bucket, which Griffel sorts BEFORE every other
- * bucket. That matters for the root: Option's own `.root` is a `d`-bucket slice declaring the
- * same `display: flex` / `align-items: center`, so under Griffel Option's atomics won this
- * element regardless of argument order. `fui.base` is levelless and loses to every level, which
- * reproduces that exactly.
- *
- * `useRootStyles.secondaryContent` is the opposite case: a `d`-bucket slice applied as a LATER
- * mergeClasses argument than Option's own, so it WON — and it has to, because its
- * `display: grid` overrides Option's `display: flex`. That is the composition altitude,
- * `fui.components.l2` (D2 amendment 2). In l1 the winner would depend on which module's rules
- * happen to be emitted first.
- *
- * The `media` and `secondaryContent` slots are elements THIS component builds
- * (`slot.optional` in useTagPickerOption.tsx) and that nothing else styles — Option's module
- * only reaches its `root` and its own `check-icon`. Their resets therefore stay in `fui.base`
- * with nothing to compete against, exactly as the unopposed `makeResetStyles` atomics did.
- *
- * ── RTL ─────────────────────────────────────────────────────────────────────────────
- * Every compiled class here is a single class with no `[ltr, rtl]` pair (`r70qvj9`, `f13qh94s`,
- * `fjxzuw`, `r131qrbm`, `rrip69g`), and the grid line numbers are writing-mode relative
- * already. Nothing flips.
- *
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits. TagPickerOption
- * renders no icon of its own (it passes `checkIcon: undefined` down to Option), so the D2
- * amendment's unlayered treatment does not apply here.
- */
-
 @layer fui.base {
   /* from useRootBaseStyle (makeResetStyles) */
   .root {

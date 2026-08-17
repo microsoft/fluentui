@@ -4,41 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useHorizontalBarChartStyles`.
- * That hook does NOT mutate a shared state object — it RETURNS one class string per slot —
- * so every slot is its own independent call and there is no cross-slot ordering to encode:
- *
- *   #  mergeClasses argument            → target
- *   ---------------------------------------------------------------------------------
- *   1  hbcClassNames.<slot>             → static class (JS) — REMOVED in the statics sweep
- *                                         (DECISIONS.md D16.1). The root now leads with
- *                                         `.root` below and carries
- *                                         `group/fui-horizontal-bar-chart` second; every
- *                                         other slot leads with its own local.
- *   2  useStyles.<slot>                 → the blocks below
- *   3  props.className   (root only)    → unlayered (consumer, always wins)
- *   4  props.styles?.<slot>             → unlayered (consumer, always wins)
- *
- * Two slots pick between a PAIR of mutually exclusive classes rather than adding one:
- *
- *   items          → `.items-16p-margin` when (showTriangle || variant === AbsoluteScale),
- *                    else `.items-10p-margin`
- *   chartTitleLeft → `.chart-title-left-4p-margin` when variant === AbsoluteScale,
- *                    else `.chart-title-left-5p-margin`
- *   chartWrapper   → `.chart-wrapper-40p-padding` when (AbsoluteScale && !hideLabels),
- *                    else `.chart-wrapper-0p-padding`
- *
- * They stay a JS choice between module classes: exactly one applies per render, so nothing
- * competes and no data attribute is needed (DECISIONS.md D15.6 — attributes are a fallback).
- *
- * Every element styled here is rendered by HorizontalBarChart itself — including the `<svg>`
- * (`.chart`), the `<rect>` bars (`.bar-wrapper`) and the `<text>` bar labels (`.bar-label`),
- * which are ordinary CSS subjects and follow the same dialect — so everything sits at
- * `fui.components.l1`. There is no `makeResetStyles` (so `fui.base` is unused), no
- * `@keyframes` and no transition to tighten.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex w-full flex-col text-start;

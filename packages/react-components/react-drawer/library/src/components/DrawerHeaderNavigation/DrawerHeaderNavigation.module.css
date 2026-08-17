@@ -4,31 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useDrawerHeaderNavigationStyles_unstable:
- *
- *   #  mergeClasses argument                  → target
- *   -----------------------------------------------------------------------------------
- *   1  drawerHeaderNavigationClassNames.root  → REMOVED (D16.1); the root's identity is
- *                                               now the `group/fui-drawer-header-navigation`
- *                                               marker, and `.root` leads the clsx
- *   2  useStyles (makeReset)                  → fui.base          .root
- *   3  consumer className                     → unlayered (always wins)
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * `margin: calc(spacingVerticalS * -1) calc(spacingHorizontalL * -1)` becomes the two
- * NEGATED named axis utilities `-my-vertical-s` / `-mx-horizontal-l`, which compile to
- * `margin-block: calc(<step> * -1)` / `margin-inline: calc(<step> * -1)` on the one scaling
- * system. Raw `var(--spacing*)` is the single authoring form that does not ride
- * `--base-scale`. The axis↔token pairing matches the Griffel shorthand's own
- * vertical-then-horizontal order, and the inline half is a logical pair so it cannot drift
- * in RTL.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/DrawerHeaderNavigation/useDrawerHeaderNavigationStyles.styles.js.
- */
-
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {

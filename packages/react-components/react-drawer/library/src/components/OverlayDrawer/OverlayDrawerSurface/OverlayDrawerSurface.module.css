@@ -4,43 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useOverlayDrawerSurfaceStyles_unstable, not source declaration order.
- *
- * This hook styles ONE slot — `backdrop` — on a `DialogSurfaceState`:
- *
- *   #  mergeClasses argument                         → target
- *   -----------------------------------------------------------------------------------
- *   1  useBackdropResetStyles       (makeReset)      → fui.base          .backdrop
- *   2  treatBackdropAsNested && .nested              → fui.components.l1 .nested
- *   3  mountedAndClosed && .drawerHidden             → fui.components.l1 .drawer-hidden
- *   4  backdrop.className                            → unlayered (carries the consumer's
- *                                                      className AND, ahead of it,
- *                                                      OverlayDrawer's own
- *                                                      `.backdrop-absolute` at l2)
- *
- * ── This component has no root slot and no group marker ──────────────────────────────
- * OverlayDrawerSurface is `@internal`: it is a proxy that hands its state to
- * `useDialogSurface_unstable` / `renderDialogSurface_unstable` and only decorates the
- * backdrop. Its root element IS OverlayDrawer's root, which already carries
- * `group/fui-overlay-drawer` (D15.1: one marker per component, on the outermost slot).
- * There is no `overlayDrawerSurfaceClassNames` export and never was.
- *
- * ── Nothing here needs to be UNLAYERED (D2 amendment 5) ──────────────────────────────
- * The backdrop element is rendered by `renderDialogSurface_unstable`, which belongs to
- * `@fluentui/react-dialog` — converted in this same batch, so nothing it emits is unlayered
- * anyway. More decisively, OverlayDrawerSurface deliberately does NOT call
- * `useDialogSurfaceStyles_unstable` — that is the entire point of the proxy — so react-dialog
- * puts no class of any kind on this element; `useDialogSurface_unstable` sets only
- * `aria-hidden` and `onClick` on the slot. These four blocks and OverlayDrawer's
- * `.backdrop-absolute` are the complete rule set for it.
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/OverlayDrawer/OverlayDrawerSurface/useOverlayDrawerSurfaceStyles.styles.js.
- */
-
 @layer fui.base {
   /*
    * arg #1 — from useBackdropResetStyles (makeResetStyles). `inset: 0px` is expanded to its

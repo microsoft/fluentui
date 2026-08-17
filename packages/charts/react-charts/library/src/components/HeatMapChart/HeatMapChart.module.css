@@ -4,40 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of `useHeatMapChartStyles`.
- * The consumer `props.styles?.<slot>` arguments are COMMENTED OUT in the Griffel source
- * for `text`/`calloutContentRoot` and stay that way; the hook returned only three slots
- * (the other `HeatMapChartStyles` keys had empty statics and no slices — nothing to
- * convert):
- *
- *   root               1 heatmapChartClassNames.root  → static (JS) — REMOVED (D16.1)
- *                      2 useStyles.root = {}          → identity-only  .root  (l2, below)
- *                      + group/fui-heat-map-chart     → identity marker (JS, unstyled)
- *                      + props.styles?.root           → unlayered (always wins; see hook)
- *   text               2 useStyles.text               → l1  .text
- *   calloutContentRoot 2 useStyles.calloutContentRoot → l2  .callout-content-root (below)
- *
- * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
- * `.text` is l1: the value `<text>`s are elements HeatMapChart renders itself inside
- * CartesianChart's `children` render prop — this component's own cascade.
- *
- * `.root` and `.callout-content-root` are l2 because BOTH decorate elements owned by other
- * (converted) components' hooks:
- *   - `.root` rides CartesianChart's root `<div>` via the `styles` prop
- *     (VerticalStackedBarChart precedent);
- *   - `.callout-content-root` is passed into ChartPopover's `styles.calloutContentRoot`
- *     (`calloutProps` in HeatMapChart.tsx) and lands on the div that already carries
- *     ChartPopover's own l1 `.callout-content-root`. It was the LAST mergeClasses argument
- *     inside `usePopoverStyles_unstable` (the winner); no property conflicts exist today
- *     (`max-width` vs ChartPopover's grid/background set), and l2-beats-l1 preserves the
- *     old winner direction if one ever appears.
- *
- * VALUES ARE THE COMPILED ONES — read off
- * lib-commonjs/components/HeatMapChart/useHeatMapChartStyles.styles.js. No `[ltr, rtl]`
- * pair (nothing direction-sensitive) and no HighContrastSelector anywhere.
- */
-
 @layer fui.components.l1 {
   /* from useStyles.text — typographyStyles.body1Strong + pointerEvents */
   .text {

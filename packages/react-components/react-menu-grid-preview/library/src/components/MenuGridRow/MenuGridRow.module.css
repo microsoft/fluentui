@@ -4,61 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuGridRowStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 menuGridRowClassNames.root      → REMOVED (D16.1); `.root` is now the leading token,
- *                                       followed by the `group/fui-menu-grid-row` marker
- *   2 useRootBaseStyles (makeReset)   → fui.base           .root
- *   3 consumer className              → unlayered (always wins)
- *
- * `makeResetStyles` → `fui.base`, the levelless layer that loses to every `fui.components.*`
- * level. That is what lets `MenuGridItem`'s l2 additions — and any consumer's unlayered
- * className — win over this base without a specificity fight.
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * fui.base only: MenuGridRow owns the element it styles. `MenuGridItem` renders a
- * MenuGridRow as ITS root and decorates the same element; that component authors its
- * additions at l2 (D2 amendment 2) — see MenuGridItem.module.css.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * `useRootBaseStyles` compiles to an `[ltr, rtl]` pair (`r1j5mkl8` / `ro8804w`), but every
- * difference between the two is inside `createFocusOutlineStyle`'s `::after`
- * (`right`/`left` inset ordering) with IDENTICAL values on both sides, plus the
- * `border-*-color: transparent` reset in a different property order. `fui-focus-outline`
- * emits all four insets from one expression, so logical properties cover the whole pair and
- * no `@variant rtl` twin is needed. The declarations authored in this file directly
- * (padding, gap, colours) are already symmetric.
- *
- * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
- * `padding: ${spacingVerticalXS} ${spacingVerticalSNudge}` reads VERTICAL tokens for both
- * axes in the Griffel source. Both spacing scales register XS as `calc(4px * --base-scale)`
- * and SNudge as `calc(6px * --base-scale)`, so the axis-correct pair
- * `py-vertical-xs` / `px-horizontal-s-nudge` is byte-identical to what the source asked for
- * while following the cookbook's axis rule (identical situation to react-menu's `MenuItem`,
- * whose four paddings all read `spacingVerticalSNudge`).
- * `gap: 4px` is a px literal matching the XS step on a ROW-direction flex container, hence
- * `gap-horizontal-xs`. `max-width: 290px` / `min-height: 32px` match no spacing intent and
- * ride the numeric utilities, which compute through the same `--base-scale`.
- * Raw `var(--spacingVertical*)` is FORBIDDEN in modules — it is the one form that does not
- * scale with `--base-scale`.
- *
- * ── The react-icons glyph swap, at l1 (S-J retirement of D2 amendment 5, D27) ───────
- * The `:hover` slice also toggles `:global(.fui-Icon-filled)` / `:global(.fui-Icon-regular)`.
- * Those elements belong to `@fluentui/react-icons`; icons 3.0 (headless) styles them via
- * `[data-fui-icon-hidden]` (0-1-0) from a stylesheet this repo imports at
- * `@layer fui.components.l1` (D27), so the old unlayered escape hatch is retired. The swap
- * lives in an l1 block at the BOTTOM of this file — NOT in `fui.base` with the rest of its
- * slice, because at base altitude it would lose to the icons sheet's l1 hide on LAYER
- * order; at l1 it wins on specificity (0-2-0 over 0-1-0). A pointer comment marks the
- * block it came out of.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuGridRow/useMenuGridRowStyles.styles.js.
- */
-
 @layer fui.base {
   /* from useRootBaseStyles (makeResetStyles) — arg #2.
      "Base styles similar to regular menu item. Right now excludes icon color, hover active

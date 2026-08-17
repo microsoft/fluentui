@@ -4,61 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useCardFooterStyles_unstable.
- * Argument order and source-declaration order are identical, and there is no intra-slot
- * property collision:
- *
- *   `root` slot
- *     1 cardFooterClassNames.root   → REMOVED (D16.1). The root's identity is now the
- *                                     `group/fui-card-footer` marker, which the hook writes
- *                                     as clsx argument 2; `styles.root` leads. The EXPORT is
- *                                     retained, re-pointed to the marker and narrowed to
- *                                     `{ root: string }` (D16.5).
- *     2 useStyles.root              → fui.components.l1  .root
- *     3 consumer className          → unlayered (always wins)
- *
- *   `action` slot
- *     1 cardFooterClassNames.action → REMOVED (D16.1) — sub-slots have no public handle
- *     2 useStyles.action            → fui.components.l1  .action        (margin only)
- *                                     fui.components.l2  (the forced-colors rules, whose
- *                                     subject is a Button/Link — see below)
- *     3 consumer className          → unlayered
- *
- * ── ALTITUDE: the forced-colors rules are l2 (D2 amendment 2) ───────────────────────
- * `@media (forced-colors: active) { & .group\/fui-button, & .group\/fui-link { … } }` styles
- * elements owned by @fluentui/react-button and @fluentui/react-link, whose own hooks write
- * their base rules in `fui.components.l1`. CardFooter reaching into them is a library
- * composition, so those rules sit one altitude up; the `margin-inline-start: auto` on
- * CardFooter's own action slot stays in l1.
- *
- * Those two Button/Link elements are consumer-supplied CHILDREN — CardFooter never holds
- * their slot objects — so JS slot composition (D16.3, M2) is structurally unavailable and
- * the group marker (M1) is the correct and sufficient mechanism. Marker-for-static is
- * class-for-class, so the 0-1-0 the `:where()`-flattened descendant scores is unchanged
- * and the altitude still carries the win.
- *
- * Griffel resolved this the same way but by specificity — `.fs9eatd .fui-Button` was 0-2-0
- * against Button's 0-1-0 atomics, and the `m` bucket sorts after `d`/`h`/`a`. `:where()`
- * flattens the descendant selector to 0-1-0, so the altitude has to carry the win now.
- *
- * ── D2 amendment 5 (UNLAYERED) deliberately NOT applied ─────────────────────────────
- * Both owners are CONVERTED (`react-button` and `react-link` are `validated` in
- * migration/griffel-to-tailwind/ledger.json), so there are no unlayered Griffel atomics
- * to lose to and the rules belong in the layer that mirrors their mergeClasses argument.
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` pairs, both pure PROPERTY flips:
- *   `.fcgxt0o{margin-left:auto}` / `.f1ujusj6{margin-right:auto}` → margin-inline-start
- *   `.fxoo9ru…{border-right-color}` / `.f1g0ekvh…{border-left-color}` — same `currentColor`
- *     on both sides, so these stay physical longhands (nothing flips visually).
- * No `@variant rtl` twin is needed.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/CardFooter/useCardFooterStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex flex-row;

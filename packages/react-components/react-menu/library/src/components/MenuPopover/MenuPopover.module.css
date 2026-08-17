@@ -4,40 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuPopoverStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 menuPopoverClassNames.root → REMOVED (D16.1); `.root` is now the leading token,
- *                                  followed by the `group/fui-menu-popover` marker
- *   2 useStyles.root             → fui.components.l1  .root
- *   3 consumer className         → unlayered (always wins)
- *
- * ── PORTAL ──────────────────────────────────────────────────────────────────────────
- * This element is portalled and POSITIONED by `@fluentui/react-positioning`, which is
- * `special` in the conversion ledger and still on Griffel. Nothing here styles a
- * positioning-owned element — react-positioning writes `position` / `top` / `left` and its
- * `--fui-*` custom properties directly onto this same node via inline `style`, and inline
- * styles beat every stylesheet rule regardless of layer, so there is no contention to
- * arbitrate and no unlayered block is needed for it. Portal-rendered surfaces get their
- * classes through this hook exactly like any other slot; the compiled `dist/styles.css` is a
- * document-level stylesheet and reaches them wherever the portal mounts.
- *
- * ── No unlayered block ──────────────────────────────────────────────────────────────
- * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here (D2 amendment 5).
- *
- * ── Spacing / literals (DECISIONS.md D4 + amendment) ────────────────────────────────
- * `padding: '4px'` matches the XS spacing step, so it takes the named utilities on both
- * axes. `138px` / `300px` match no step and ride the numeric utilities. The `1px` border is
- * a px LITERAL in the source (not `strokeWidthThin`), so it stays literal — the same call
- * react-switch's indicator makes; `var(--spacing-thin)` would silently retune a value the
- * component never expressed as a token.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/MenuPopover/useMenuPopoverStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply box-border w-max max-w-300 min-w-138 overflow-x-hidden rounded-medium bg-neutral-background-1 px-horizontal-xs py-vertical-xs text-neutral-foreground-1;
