@@ -1193,6 +1193,91 @@ Not applicable
     expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V8CustomHeaderFooter: Story ='));
     expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V9ComposedBodyActions: Story ='));
   });
+
+  test('Task 12 Drawer guide and shared stories satisfy the Panel migration contract', () => {
+    const drawerGuidePath = path.join(fromV8ComponentsDirectory, 'Drawer.mdx');
+    const drawerExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Drawer/index.stories.tsx');
+    const drawerGuideSource = readUtf8(drawerGuidePath);
+    const normalizedDrawerGuideSource = drawerGuideSource.replace(/\s+/g, ' ');
+    const drawerSections = getGuideSections(stripIgnoredGuideContent(drawerGuideSource));
+    const drawerPropMapping = drawerSections.get('Prop mapping') ?? '';
+    const drawerPropMappingRows = drawerPropMapping.split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+    const drawerAccessibility = drawerSections.get('Accessibility') ?? '';
+    const drawerUnsupported = drawerSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredDrawerProps = [
+      'isOpen',
+      'onDismiss',
+      'type',
+      'headerText',
+      'hasCloseButton',
+      'isBlocking',
+      'isLightDismiss',
+      'onLightDismissClick',
+      'onRenderHeader',
+      'onRenderNavigation',
+      'onRenderFooterContent',
+      'customWidth',
+      'closeButtonAriaLabel',
+      'layerProps',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const panelRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'panel');
+
+    expect(validateCompleteGuide(drawerGuideSource, 'Drawer')).toEqual([]);
+    expect(drawerPropMappingRows.map(parseTableCells).map(cells => cells.length)).toEqual(
+      drawerPropMappingRows.map(() => 4),
+    );
+    expect(requiredDrawerProps.filter(propName => !drawerPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedDrawerGuideSource).toContain('| MC-1 | `Panel` splits into `OverlayDrawer` and `InlineDrawer` |');
+    expect(normalizedDrawerGuideSource).toContain(
+      '| MC-2 | Overlay `isOpen`/`onDismiss` become `open`/`onOpenChange`; InlineDrawer exposes `open` without Dialog dismissal semantics |',
+    );
+    expect(normalizedDrawerGuideSource).toContain(
+      '| MC-3 | header, navigation, body, and footer props become compound children |',
+    );
+    expect(normalizedDrawerGuideSource).toContain(
+      '| MC-4 | `PanelType` becomes `position` plus supported `size` values |',
+    );
+    expect(normalizedDrawerGuideSource).toContain(
+      '| MC-5 | blocking, focus, and portal behavior differ between overlay and inline drawers |',
+    );
+    expect(drawerGuideSource).toContain(
+      'packages/react-components/react-drawer/library/src/components/OverlayDrawer/OverlayDrawer.test.tsx',
+    );
+    expect(drawerGuideSource).toContain(
+      'packages/react-components/react-drawer/stories/src/Drawer/OverlayDrawerNoModal.stories.tsx',
+    );
+    expect(drawerAccessibility).toContain('focus');
+    expect(drawerAccessibility).toContain('Escape');
+    expect(drawerAccessibility).toContain('aria-labelledby');
+    expect(drawerAccessibility).toContain('non-modal');
+    expect(drawerUnsupported).toContain('bottom');
+    expect(drawerUnsupported).toContain('customWidth');
+    expect(drawerUnsupported).toContain('layerProps');
+    expect(panelRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(panelRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(panelRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const drawerExamplesSource = readUtf8(drawerExamplesPath);
+
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8Modeless: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9NonModalOverlayDrawer: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8EmbeddedPanelAlternative: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9InlineDrawer: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8PanelType: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9PositionAndSize: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8CustomHeaderFooter: Story ='));
+    expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9ComposedHeaderFooter: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
