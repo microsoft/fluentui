@@ -522,10 +522,14 @@
       }
     },
     "./tag-picker": {
-      "types": "./dist/tag-picker.d.ts",
-      "node": "./lib-commonjs/tag-picker.js",
-      "import": "./lib/tag-picker.js",
-      "require": "./lib-commonjs/tag-picker.js"
+      "import": {
+        "types": "./dist/tag-picker.d.ts",
+        "default": "./lib/tag-picker.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker.d.cts",
+        "default": "./lib-commonjs/tag-picker.cjs"
+      }
     },
     "./teaching-popover": {
       "import": {
@@ -598,7 +602,8 @@
   "devDependencies": {
     "@fluentui/scripts-cypress": "*",
     "@fluentui/verify-bundle-isolation": "*",
-    "@oddbird/popover-polyfill": "^0.6.1"
+    "@oddbird/popover-polyfill": "^0.6.1",
+    "webpack": "5.108.4"
   },
   "type": "module"
 }

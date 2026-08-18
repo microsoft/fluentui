@@ -1,5 +1,6 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import { createPositionManager } from './createPositionManager';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
@@ -32,8 +33,21 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioningEnd'] }> = ({ onPositioningEnd }) => {
-  const { targetRef, containerRef } = usePositioning({ onPositioningEnd });
+const createPositionManagerMock = createPositionManager as jest.MockedFunction<typeof createPositionManager>;
+
+type TestComponentProps = {
+  enabled?: boolean;
+  onPositioningEnd?: PositioningProps['onPositioningEnd'];
+};
+
+const flushMicrotasks = async () => {
+  await act(async () => {
+    await new Promise(process.nextTick);
+  });
+};
+
+const TestComponent = ({ enabled, onPositioningEnd }: TestComponentProps) => {
+  const { targetRef, containerRef } = usePositioning({ enabled, onPositioningEnd });
 
   return (
     <>
@@ -48,16 +62,17 @@ const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioni
 };
 
 describe('usePositioning', () => {
+  beforeEach(() => {
+    createPositionManagerMock.mockClear();
+  });
+
   describe('onPositioningEnd', () => {
     it('calls onPositioningEnd with the positioning event', async () => {
       const onPositioningEnd = jest.fn();
 
       render(<TestComponent onPositioningEnd={onPositioningEnd} />);
 
-      // Flush microtasks so the async dispatch fires
-      await act(async () => {
-        await new Promise(process.nextTick);
-      });
+      await flushMicrotasks();
 
       expect(onPositioningEnd).toHaveBeenCalled();
 
@@ -74,9 +89,41 @@ describe('usePositioning', () => {
       // Should not throw
       render(<TestComponent />);
 
-      await act(async () => {
-        await new Promise(process.nextTick);
+      await flushMicrotasks();
+    });
+
+    it('uses the latest onPositioningEnd callback after rerender', async () => {
+      const firstOnPositioningEnd = jest.fn();
+      const secondOnPositioningEnd = jest.fn();
+      const { getByTestId, rerender } = render(<TestComponent onPositioningEnd={firstOnPositioningEnd} />);
+
+      await flushMicrotasks();
+
+      const initialCallCount = firstOnPositioningEnd.mock.calls.length;
+
+      expect(initialCallCount).toBeGreaterThan(0);
+
+      rerender(<TestComponent onPositioningEnd={secondOnPositioningEnd} />);
+
+      const event = new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+        detail: {
+          placement: 'top',
+          escaped: true,
+          referenceHidden: true,
+        },
       });
+
+      getByTestId('container').dispatchEvent(event);
+
+      expect(firstOnPositioningEnd).toHaveBeenCalledTimes(initialCallCount);
+      expect(secondOnPositioningEnd).toHaveBeenCalledTimes(1);
+      expect(secondOnPositioningEnd).toHaveBeenCalledWith(event);
+    });
+
+    it('does not create a manager when disabled', () => {
+      render(<TestComponent enabled={false} />);
+
+      expect(createPositionManagerMock).not.toHaveBeenCalled();
     });
   });
 });

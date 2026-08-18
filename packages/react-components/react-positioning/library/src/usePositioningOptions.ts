@@ -1,25 +1,12 @@
 'use client';
 
-import { devtools } from '@floating-ui/devtools';
-import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
-import {
-  shift as shiftMiddleware,
-  flip as flipMiddleware,
-  coverTarget as coverTargetMiddleware,
-  maxSize as maxSizeMiddleware,
-  resetMaxSize as resetMaxSizeMiddleware,
-  offset as offsetMiddleware,
-  intersecting as intersectingMiddleware,
-  matchTargetSize as matchTargetSizeMiddleware,
-} from './middleware';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
-import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
-import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
+import { resolvePositioningOptions } from './resolvePositioningOptions';
 
 /**
  * This is redundant and exists only to manage React dependencies properly & avoid leaking individual options to the
@@ -43,7 +30,11 @@ function usePositioningConfigFn(
     pinned,
     position,
     // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableShift,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_flipFallbackStrategy,
     strategy,
     overflowBoundaryPadding,
     fallbackPositions,
@@ -75,7 +66,11 @@ function usePositioningConfigFn(
           shiftToCoverTarget,
           position,
           // eslint-disable-next-line @typescript-eslint/naming-convention
+          unstable_disableShift,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           unstable_disableTether,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          unstable_flipFallbackStrategy,
         },
       });
     },
@@ -97,6 +92,8 @@ function usePositioningConfigFn(
       shiftToCoverTarget,
       position,
       unstable_disableTether,
+      unstable_disableShift,
+      unstable_flipFallbackStrategy,
       configFn,
     ],
   );
@@ -116,7 +113,6 @@ export function usePositioningOptions(options: PositioningOptions): (
   useTransform?: boolean;
 } {
   const { dir, targetDocument } = useFluent();
-  const isRtl = dir === 'rtl';
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
   const {
@@ -126,68 +122,16 @@ export function usePositioningOptions(options: PositioningOptions): (
 
   return React.useCallback(
     (container: HTMLElement, arrow: HTMLElement | null) => {
-      const hasScrollableElement = hasScrollParent(container);
-
       const optionsAfterEnhancement = configFn(container, arrow);
-      const {
-        autoSize,
-        disableUpdateOnResize,
-        matchTargetSize,
-        offset,
-        coverTarget,
-        flipBoundary,
-        overflowBoundary,
-        useTransform,
-        overflowBoundaryPadding,
-        pinned,
-        position,
-        arrowPadding,
-        strategy,
-        align,
-        fallbackPositions,
-        shiftToCoverTarget,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        unstable_disableTether,
-      } = optionsAfterEnhancement;
-      const normalizedAutoSize = normalizeAutoSize(autoSize);
-
-      const middleware = [
-        normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
-        matchTargetSize && matchTargetSizeMiddleware(),
-        offset && offsetMiddleware(offset),
-        coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
-        shiftMiddleware({
-          container,
-          hasScrollableElement,
-          overflowBoundary,
-          disableTether: unstable_disableTether,
-          overflowBoundaryPadding,
-          isRtl,
-          shiftToCoverTarget,
-        }),
-        normalizedAutoSize &&
-          maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
-        intersectingMiddleware(),
-        arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden' }),
-        hideMiddleware({ strategy: 'escaped' }),
-        process.env.NODE_ENV !== 'production' &&
-          targetDocument &&
-          devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
-      ].filter(Boolean) as Middleware[];
-
-      const placement = toFloatingUIPlacement(align, position, isRtl);
-
-      return {
-        placement,
-        middleware,
-        strategy: strategy ?? positionFixed ? ('fixed' as const) : ('absolute' as const),
-
-        disableUpdateOnResize,
-        useTransform,
-      };
+      return resolvePositioningOptions({
+        container,
+        arrow,
+        dir,
+        targetDocument,
+        positionFixed,
+        ...optionsAfterEnhancement,
+      });
     },
-    [configFn, isRtl, targetDocument, positionFixed],
+    [configFn, dir, targetDocument, positionFixed],
   );
 }

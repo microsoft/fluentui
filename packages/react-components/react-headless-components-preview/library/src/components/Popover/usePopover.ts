@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import type { PopoverContextValueInternal, PopoverStateInternal } from './Popover.internal-types';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -76,7 +77,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const generatedSurfaceId = useId('fui-popover-surface-');
   const surfaceId = props.id ?? generatedSurfaceId;
 
-  const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
+  const positioning = usePositioning(
+    resolvePositioningShorthand(props.positioning),
+  ) as PopoverStateInternal['positioning'];
 
   const onSurfaceToggle = useEventCallback((event: Event) => {
     const toggle = event as ToggleEvent;
@@ -176,10 +179,11 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setContextTarget,
     positioning,
     surfaceId,
-  };
+  } as PopoverStateInternal;
 };
 
 export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+  const internalState = state as PopoverStateInternal;
   const {
     open,
     setOpen,
@@ -210,8 +214,9 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
+        arrowRef: internalState.positioning.arrowRef,
       },
       surfaceId,
-    },
+    } as PopoverContextValueInternal,
   };
 };

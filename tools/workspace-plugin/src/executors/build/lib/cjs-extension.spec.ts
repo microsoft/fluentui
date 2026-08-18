@@ -65,11 +65,15 @@ describe('cjs-extension', () => {
   });
 
   describe('renameToCjs', () => {
-    it('renames *.js -> *.cjs and rewrites relative requires + sourceMappingURL comment', async () => {
+    it('renames *.js -> *.cjs and rewrites relative requires, imports, and sourceMappingURL comments', async () => {
       await mkdir(join(projectRoot, 'lib-commonjs'));
       await writeFile(
         join(projectRoot, 'lib-commonjs/index.js'),
-        [`var other = require("./other.js");`, `//# sourceMappingURL=index.js.map`].join('\n'),
+        [
+          `var other = require("./other.js");`,
+          `const lazy = () => import("./lazy.js");`,
+          `//# sourceMappingURL=index.js.map`,
+        ].join('\n'),
       );
 
       await renameToCjs(join(projectRoot, 'lib-commonjs/index.js'));
@@ -77,6 +81,7 @@ describe('cjs-extension', () => {
       expect(await exists(join(projectRoot, 'lib-commonjs/index.js'))).toBe(false);
       const index = await readFile(join(projectRoot, 'lib-commonjs/index.cjs'), 'utf-8');
       expect(index).toContain(`require("./other.cjs")`);
+      expect(index).toContain(`import("./lazy.cjs")`);
       expect(index).toContain(`//# sourceMappingURL=index.cjs.map`);
     });
 

@@ -3209,6 +3209,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/popover-tests-headless@workspace:apps/popover-tests-headless":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/popover-tests-headless@workspace:apps/popover-tests-headless"
+  dependencies:
+    "@fluentui/react-components": "npm:*"
+    "@fluentui/react-headless-components-preview": "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/pr-deploy-site@workspace:apps/pr-deploy-site":
   version: 0.0.0-use.local
   resolution: "@fluentui/pr-deploy-site@workspace:apps/pr-deploy-site"

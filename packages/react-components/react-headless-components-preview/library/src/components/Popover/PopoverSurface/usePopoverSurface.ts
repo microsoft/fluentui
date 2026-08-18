@@ -5,6 +5,7 @@ import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities
 import { usePopoverContext } from '../popoverContext';
 import { stringifyDataAttribute } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import type { PopoverContextValueInternal, PopoverSurfaceStateInternal } from '../Popover.internal-types';
 
 /**
  * Returns the state for a PopoverSurface component.
@@ -19,13 +20,16 @@ export const usePopoverSurface = (
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const withArrow = usePopoverContext(context => context.withArrow);
   const open = usePopoverContext(context => context.open);
-  const positioningCtx = usePopoverContext(context => context.positioning);
+  const positioningCtx = usePopoverContext(
+    context => context.positioning,
+  ) as PopoverContextValueInternal['positioning'];
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
 
-  const state: PopoverSurfaceState = {
+  const state: PopoverSurfaceStateInternal = {
     withArrow,
     arrowRef,
+    renderArrowRef: useMergedRefs(arrowRef, positioningCtx.arrowRef),
     components: { root: 'dialog' },
     root: slot.always(
       {
