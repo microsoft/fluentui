@@ -1,0 +1,159 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Popover/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/Callout to Popover Migration" />
+
+# Callout to Popover Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [Popover](/docs/components-popover--docs) when the old `Callout` anchored non-blocking content to a visible trigger. The biggest change is ownership: v8 keeps the surface separate from the launcher and points back to it with `target`, while v9 makes [PopoverTrigger](/docs/components-popover--docs) the default owner of target, button semantics, dismissal wiring, and focus restoration.
+
+That ownership shift changes how you think about open state, positioning, focus, and layering. `Callout` exposes those concerns as root props such as `target`, `hidden`, `directionalHint`, `coverTarget`, `doNotLayer`, and `setInitialFocus`. `Popover` keeps the same anchored-surface job, but it moves most of those choices into trigger composition, `open` or `onOpenChange`, the `positioning` prop, `trapFocus`, and portal configuration such as `inline` or `mountNode`.
+
+## Component mapping
+
+| v8 scenario                                | v9 destination                                                         | Notes                                                                                                                                         |
+| ------------------------------------------ | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Standard anchored surface                  | `Popover` + `PopoverTrigger` + `PopoverSurface`                        | This is the default migration path because the trigger owns target wiring, dismissal semantics, and focus restoration.                        |
+| External target that is not the trigger    | Controlled `Popover` + `PopoverSurface` + `positioningRef.setTarget()` | Use this only when the old `target` must stay separate from the trigger. Add `useRestoreFocusTarget()` to the external trigger.               |
+| Cover the target instead of sitting beside | `Popover` with `positioning={{ coverTarget: true }}`                   | `coverTarget` moved under the positioning object, and the arrow is automatically suppressed when the surface covers the target.               |
+| Focus-trapped lightweight dialog           | `Popover` with `trapFocus`                                             | `trapFocus` gives the surface dialog semantics and keeps focus inside while the Popover is open.                                              |
+| Visible beak                               | `Popover` with `withArrow`                                             | Arrow visibility is a single boolean; there is no numeric `beakWidth` prop.                                                                   |
+| Layer opt-out or custom portal host        | `Popover` with `inline` or `mountNode`                                 | `inline` replaces the old `doNotLayer` path, while `mountNode` replaces Layer targeting when you still want a portal.                         |
+| Large modal workflow                       | `Dialog`                                                               | If the old `Callout` acted like a blocking modal or needed explicit dialog structure, move to Dialog instead of stretching Popover semantics. |
+
+## What changed
+
+The first migration decision is whether you still need an external target. Most v8 `Callout` usage conditionally renders the surface and points it at a button, link, or element via `target`. In v9, start from `PopoverTrigger` instead. It injects the correct popup semantics into the trigger, opens and closes on the expected interactions, and restores focus when the Popover closes.
+
+Controlled state also becomes more direct. `hidden` and `onDismiss` turn into `open`, `defaultOpen`, and `onOpenChange`. Unlike some other v9 popup components, the Popover callback only reports `{ open }`, so if you need analytics or branch-specific dismissal handling you keep that logic in your own event handlers.
+
+Positioning moves under the [positioning API](/docs/concepts-developer-positioning-components--docs). `DirectionalHint` becomes `position` plus `align` (or a shorthand such as `after-top`), `gapSpace` becomes `positioning.offset`, `coverTarget` moves inside the same object, `directionalHintForRTL` disappears because start or end alignment is RTL-aware by default, and `bounds` splits into `flipBoundary` plus `overflowBoundary`.
+
+Focus and layering shift too. `FocusTrapCallout` becomes `Popover trapFocus`, trigger-based Popovers restore focus automatically on close, triggerless Popovers use `useRestoreFocusTarget()`, and `doNotLayer` becomes `inline` or `mountNode`. There is no direct replacement for `shouldUpdateWhenHidden`, so a closed Popover unmounts instead of staying warm in a hidden mounted state.
+
+## Architecture and behavior
+
+Treat the v9 root `Popover` as state and positioning context, not as a rendered surface. `PopoverTrigger` clones a single child and adds the accessible popup behavior that `Callout` never owned. `PopoverSurface` renders the actual content, and it becomes the place where you set `aria-labelledby`, `aria-describedby`, `className`, and any dialog-style focus behavior.
+
+That split affects open and dismissal semantics. A standard `Callout` is usually conditionally rendered or kept mounted behind `hidden`, and `onDismiss` fires after outside click or Escape requests the close. A standard `Popover` instead stays in the tree while `open` is true and uses `onOpenChange` to request open or close. Outside click and Escape continue to dismiss the surface, but the callback only tells you whether the Popover should now be open.
+
+Scroll and resize behavior are intentionally different. V8 `Callout` dismisses on scroll and resize unless `preventDismissOnScroll` or `preventDismissOnResize` opt out. V9 `Popover` does not close on scroll unless you explicitly set `closeOnScroll`, and it repositions on resize instead of exposing a resize-dismiss toggle. If your old design depended on those automatic dismissals, re-check the interaction requirements instead of assuming the defaults still match.
+
+When you must keep the old target separate from the trigger, move to a controlled Popover and set the target through `positioningRef.setTarget()`. That pattern is also where focus restoration changes: a Popover with `PopoverTrigger` restores focus automatically, but a triggerless Popover should mark the external trigger with `useRestoreFocusTarget()` so closing the surface returns focus to the right control.
+
+## Prop mapping
+
+| v8 `Callout` prop or pattern | v9 replacement                                                      | Status      | Migration notes                                                                                                                                        |
+| ---------------------------- | ------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `target`                     | `PopoverTrigger`; triggerless `Popover` plus `positioningRef`       | Replace     | Prefer trigger composition. Use `positioningRef.setTarget()` only when the target must stay separate from the trigger element.                         |
+| `hidden`                     | `open`, `defaultOpen`, or conditional rendering                     | Replace     | V9 state is positive instead of inverse. Closed Popovers unmount; there is no hidden mounted surface mode.                                             |
+| `onDismiss`                  | `onOpenChange`                                                      | Replace     | Outside click and Escape still dismiss, but the callback reports only `{ open }`.                                                                      |
+| `directionalHint`            | `positioning={{ position, align }}` or shorthand strings            | Replace     | Use pairs such as `position="after"` and `align="top"`, or shorthand strings such as `after-top`.                                                      |
+| `directionalHintForRTL`      | Automatic RTL-aware start or end alignment                          | Replace     | V9 positioning follows logical start or end alignment, so there is no separate RTL override prop.                                                      |
+| `gapSpace`                   | `positioning={{ offset }}`                                          | Replace     | Use `offset` when the surface needs extra separation from the target.                                                                                  |
+| `beakWidth`                  | No direct equivalent                                                | Unsupported | `withArrow` is on or off only. Arrow size follows the Popover `size` and is not configured through a numeric width prop.                               |
+| `isBeakVisible`              | `withArrow`                                                         | Replace     | Use `withArrow` to show the arrow. The arrow is automatically removed when `coverTarget` is true.                                                      |
+| `doNotLayer`                 | `inline` or `mountNode`                                             | Replace     | `inline` keeps DOM order near the trigger, while `mountNode` portals to a specific host.                                                               |
+| `setInitialFocus`            | Default Popover autofocus; `trapFocus`; `unstable_disableAutoFocus` | Partial     | Popover focuses inside by default. Use `trapFocus` for dialog-like content, and use `unstable_disableAutoFocus` only when autofocus must be disabled.  |
+| `preventDismissOnScroll`     | `closeOnScroll`                                                     | Partial     | The semantics are inverted. V8 dismisses on scroll by default; v9 dismisses on scroll only when `closeOnScroll` is true.                               |
+| `preventDismissOnResize`     | No direct equivalent                                                | Unsupported | Popover repositions on resize instead of exposing a resize-dismiss toggle.                                                                             |
+| `preventDismissOnLostFocus`  | No direct equivalent                                                | Partial     | Trigger-based Popovers dismiss on outside click or Escape, not on every focus change. With `trapFocus`, a real inside-to-outside focus move closes it. |
+| `shouldUpdateWhenHidden`     | No direct equivalent                                                | Unsupported | Closed Popovers unmount. Keep external state outside the Popover if reopening performance or preserved calculations matter.                            |
+| `coverTarget`                | `positioning={{ coverTarget: true }}`                               | Replace     | Covering the target is a positioning concern in v9 instead of a root Popover prop.                                                                     |
+| `bounds`                     | `positioning={{ flipBoundary, overflowBoundary }}`                  | Partial     | V8 uses one bounds concept; v9 lets you tune flip and overflow boundaries separately.                                                                  |
+| `styles`                     | `className` on `PopoverSurface` and the trigger child               | Replace     | Style the surface and trigger directly with Griffel classes and tokens instead of extending a single `styles` object.                                  |
+| `theme`                      | `FluentProvider`                                                    | Replace     | Theme context comes from the provider, not a per-instance prop.                                                                                        |
+| `onRestoreFocus`             | Trigger-owned focus restore or `useRestoreFocusTarget()`            | Replace     | Trigger-based Popovers restore focus automatically. Triggerless Popovers should mark the external trigger with `useRestoreFocusTarget()`.              |
+| `shouldRestoreFocus`         | Default Popover restore behavior                                    | Replace     | The stable Popover restores focus to the most recent target unless you replace the trigger pattern entirely.                                           |
+
+## Styling and theming
+
+V8 styling usually starts from one `styles` object on the `Callout` root. In v9, style the surface and trigger separately. `PopoverSurface` takes the surface `className`, the trigger child takes its own class name, and any custom action rows or layout wrappers become ordinary Griffel classes in your example or product code.
+
+Keep those classes token-based. Use Fluent v9 design tokens for spacing, borders, colors, and type ramp choices so the Popover stays aligned with the surrounding `FluentProvider`. If the old `Callout` styles reached into the beak, revisit the design instead of porting the old CSS literally, because the arrow is now a built-in Popover concern rather than a separate width and visibility API surface.
+
+## Accessibility
+
+Trigger ownership is the largest accessibility improvement. `PopoverTrigger` supplies the popup trigger semantics that v8 left to the consumer, including `aria-expanded`, keyboard opening, focus return, and predictable outside click or Escape dismissal. When you keep a custom external target, you must recreate those trigger semantics yourself and apply `useRestoreFocusTarget()` to the trigger so focus returns correctly after close.
+
+Focus behavior depends on whether the surface is interactive. Without `trapFocus`, `PopoverSurface` behaves like a grouped popup and keeps lightweight semantics. With `trapFocus`, it becomes a dialog-style surface with `aria-modal`, traps focus while open, and closes when the user presses Escape or moves focus from inside the surface to a real outside target. Always label the surface with `aria-labelledby` or `aria-label`, and keep any descriptive text connected through `aria-describedby` when the content needs more explanation.
+
+Positioning is also more accessible in RTL. Instead of mirroring `directionalHintForRTL`, v9 uses logical start and end alignment, so the same `positioning` values stay correct when the interface flips directions. That keeps the accessible trigger relationship stable across left-to-right and RTL layouts without a second positioning prop.
+
+## Examples
+
+### MC-1 Move from external `target` ownership to `PopoverTrigger` composition
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+
+### MC-2 Replace `hidden` and `onDismiss` with `open` and `onOpenChange`
+
+<Canvas of={Examples.V8ControlledDismiss} />
+<Source of={Examples.V8ControlledDismiss} />
+<Canvas of={Examples.V9ControlledOpen} />
+<Source of={Examples.V9ControlledOpen} />
+
+### MC-3 Map `DirectionalHint`, alignment, `coverTarget`, and `gapSpace` to v9 `positioning`
+
+<Canvas of={Examples.V8DirectionalHint} />
+<Source of={Examples.V8DirectionalHint} />
+<Canvas of={Examples.V9Positioning} />
+<Source of={Examples.V9Positioning} />
+
+### MC-4 Replace `FocusTrapCallout` with Popover focus configuration
+
+<Canvas of={Examples.V8FocusTrapCallout} />
+<Source of={Examples.V8FocusTrapCallout} />
+<Canvas of={Examples.V9TrapFocus} />
+<Source of={Examples.V9TrapFocus} />
+
+### MC-5 Replace beak props with `withArrow`
+
+<Canvas of={Examples.V8Beak} />
+<Source of={Examples.V8Beak} />
+<Canvas of={Examples.V9WithArrow} />
+<Source of={Examples.V9WithArrow} />
+
+### MC-6 Replace Layer props and hidden mounts with `inline` or `mountNode`
+
+<Canvas of={Examples.V8LayeringAndHiddenMount} />
+<Source of={Examples.V8LayeringAndHiddenMount} />
+<Canvas of={Examples.V9InlineAndMountNode} />
+<Source of={Examples.V9InlineAndMountNode} />
+
+## Unsupported scenarios and known gaps
+
+MC-5: `beakWidth` has no direct equivalent in stable Popover. `withArrow` only controls visibility, and Popover suppresses the arrow entirely when `coverTarget` is true.
+
+MC-6: `shouldUpdateWhenHidden` has no direct Popover replacement. Closed Popovers unmount instead of keeping a hidden mounted surface warm in the background.
+
+MC-6: `preventDismissOnResize` also has no direct equivalent. Popover repositions on resize, and `doNotLayer` becomes either `inline` or `mountNode` rather than a root boolean that disables Layer.
+
+## Major-change checklist
+
+| ID   | Change                                                                                   |
+| ---- | ---------------------------------------------------------------------------------------- |
+| MC-1 | external `target` and conditional rendering become `PopoverTrigger` composition          |
+| MC-2 | `onDismiss` and hidden state become `open`/`onOpenChange`                                |
+| MC-3 | `DirectionalHint` and Callout positioning props become v9 `positioning`                  |
+| MC-4 | `FocusTrapCallout` becomes Popover focus configuration                                   |
+| MC-5 | beak configuration becomes `withArrow`                                                   |
+| MC-6 | layering and mount behavior use v9 portal/inline configuration rather than Callout props |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Date       | Conclusion                                                                                                                                              |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/Callout/Callout.types.ts` `ICalloutProps.target`, `ICalloutProps.hidden`<br />`packages/react-components/react-popover/library/src/components/PopoverTrigger/PopoverTrigger.types.ts` `PopoverTriggerProps`<br />`packages/react-components/react-popover/stories/src/Popover/PopoverWithoutTrigger.stories.tsx` `WithoutTrigger`                                                                                                                                                                                                                                                                                                       | 2026-08-18 | The default migration path is trigger composition, while the old external target pattern survives only as an advanced triggerless Popover case.         |
+| MC-2 | `packages/react/src/components/Callout/Callout.types.ts` `ICalloutProps.hidden`, `ICalloutProps.onDismiss`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.types.ts` `PopoverProps.open`, `PopoverProps.defaultOpen`, `PopoverProps.onOpenChange`<br />`packages/react-components/react-popover/stories/src/Popover/PopoverControllingOpenAndClose.stories.tsx` `ControllingOpenAndClose`                                                                                                                                                                                                                                         | 2026-08-18 | V9 replaces inverse hidden state and dismiss callbacks with positive open state and a shared open-change callback.                                      |
+| MC-3 | `packages/react/src/components/Callout/Callout.types.ts` `ICalloutProps.directionalHint`, `ICalloutProps.directionalHintForRTL`, `ICalloutProps.gapSpace`, `ICalloutProps.coverTarget`, `ICalloutProps.bounds`<br />`packages/react-components/react-positioning/library/src/types.ts` `PositioningProps`, `PositioningShorthandValue`<br />`packages/react-components/react-popover/library/docs/Spec.md` `Position/Alignment hints`, `Bounds and overflow`                                                                                                                                                                                                           | 2026-08-18 | Direction, alignment, cover-target behavior, offset, and boundary tuning all move under the shared v9 positioning API.                                  |
+| MC-4 | `packages/react/src/components/Callout/FocusTrapCallout.types.ts` `IFocusTrapCalloutProps`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.types.ts` `PopoverProps.trapFocus`, `PopoverProps.inertTrapFocus`, `PopoverProps.unstable_disableAutoFocus`<br />`packages/react-components/react-popover/library/src/components/PopoverSurface/usePopoverSurface.ts` `role`, `aria-modal`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.test.tsx` `close on focus outside`<br />`packages/react-components/react-popover/stories/src/Popover/PopoverTrappingFocus.stories.tsx` `TrappingFocus` | 2026-08-18 | Focus trapping becomes a Popover configuration concern, and the stable surface supplies dialog semantics plus close-on-Escape behavior.                 |
+| MC-5 | `packages/react/src/components/Callout/Callout.types.ts` `ICalloutProps.beakWidth`, `ICalloutProps.isBeakVisible`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.types.ts` `PopoverProps.withArrow`, `PopoverProps.size`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.test.tsx` `Should not render arrow if coverTarget is set to true`<br />`packages/react-components/react-popover/stories/src/Popover/PopoverWithArrow.stories.tsx` `WithArrow`                                                                                                                                      | 2026-08-18 | Popover keeps only a boolean arrow switch, and covering the target automatically disables the arrow instead of exposing separate beak props.            |
+| MC-6 | `packages/react/src/components/Callout/Callout.types.ts` `ICalloutProps.doNotLayer`, `ICalloutProps.hidden`, `ICalloutProps.shouldUpdateWhenHidden`, `ICalloutProps.preventDismissOnScroll`, `ICalloutProps.preventDismissOnResize`<br />`packages/react-components/react-popover/library/src/components/Popover/Popover.types.ts` `PopoverProps.inline`, `PopoverProps.mountNode`, `PopoverProps.closeOnScroll`<br />`packages/react-components/react-popover/library/docs/Spec.md` `Hidden mount`                                                                                                                                                                    | 2026-08-18 | Layer control becomes inline or custom portal placement, scroll dismissal flips to an opt-in prop, and hidden mounted surfaces are no longer supported. |

@@ -1365,6 +1365,130 @@ Not applicable
     expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8Truncated: Story ='));
     expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9CustomTruncation: Story ='));
   });
+
+  test('Task 14 Popover guide and shared stories satisfy the Callout migration contract', () => {
+    const popoverGuidePath = path.join(fromV8ComponentsDirectory, 'Popover.mdx');
+    const popoverExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Popover/index.stories.tsx');
+
+    expect(fs.existsSync(popoverGuidePath)).toBe(true);
+    expect(fs.existsSync(popoverExamplesPath)).toBe(true);
+
+    const popoverGuideSource = readUtf8(popoverGuidePath);
+    const normalizedPopoverGuideSource = popoverGuideSource.replace(/\s+/g, ' ');
+    const popoverSections = getGuideSections(stripIgnoredGuideContent(popoverGuideSource));
+    const popoverPropMapping = popoverSections.get('Prop mapping') ?? '';
+    const popoverAccessibility = popoverSections.get('Accessibility') ?? '';
+    const popoverUnsupported = popoverSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredPopoverProps = [
+      'target',
+      'hidden',
+      'onDismiss',
+      'directionalHint',
+      'directionalHintForRTL',
+      'gapSpace',
+      'beakWidth',
+      'isBeakVisible',
+      'doNotLayer',
+      'setInitialFocus',
+      'preventDismissOnScroll',
+      'preventDismissOnResize',
+      'preventDismissOnLostFocus',
+      'shouldUpdateWhenHidden',
+      'coverTarget',
+      'bounds',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const calloutRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'callout');
+
+    expect(validateCompleteGuide(popoverGuideSource, 'Popover')).toEqual([]);
+    expect(requiredPopoverProps.filter(propName => !popoverPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedPopoverGuideSource).toContain(
+      '| MC-1 | external `target` and conditional rendering become `PopoverTrigger` composition |',
+    );
+    expect(normalizedPopoverGuideSource).toContain(
+      '| MC-2 | `onDismiss` and hidden state become `open`/`onOpenChange` |',
+    );
+    expect(normalizedPopoverGuideSource).toContain(
+      '| MC-3 | `DirectionalHint` and Callout positioning props become v9 `positioning` |',
+    );
+    expect(normalizedPopoverGuideSource).toContain('| MC-4 | `FocusTrapCallout` becomes Popover focus configuration |');
+    expect(normalizedPopoverGuideSource).toContain('| MC-5 | beak configuration becomes `withArrow` |');
+    expect(normalizedPopoverGuideSource).toContain(
+      '| MC-6 | layering and mount behavior use v9 portal/inline configuration rather than Callout props |',
+    );
+    expect(popoverGuideSource).toContain('packages/react/src/components/Callout/Callout.types.ts');
+    expect(popoverGuideSource).toContain('packages/react/src/components/Callout/FocusTrapCallout.types.ts');
+    expect(popoverGuideSource).toContain(
+      'packages/react-components/react-popover/library/src/components/Popover/Popover.test.tsx',
+    );
+    expect(popoverGuideSource).toContain(
+      'packages/react-components/react-popover/stories/src/Popover/PopoverTrappingFocus.stories.tsx',
+    );
+    expect(popoverGuideSource).toContain(
+      'packages/react-components/react-popover/stories/src/Popover/PopoverWithArrow.stories.tsx',
+    );
+    expect(popoverAccessibility).toContain('trigger');
+    expect(popoverAccessibility).toContain('Escape');
+    expect(popoverAccessibility).toContain('outside click');
+    expect(popoverAccessibility).toContain('focus');
+    expect(popoverAccessibility).toContain('RTL');
+    expect(popoverAccessibility).toContain('useRestoreFocusTarget');
+    expect(popoverUnsupported).toContain('shouldUpdateWhenHidden');
+    expect(popoverUnsupported).toContain('preventDismissOnResize');
+    expect(popoverUnsupported).toContain('doNotLayer');
+    expect(calloutRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(calloutRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(calloutRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const popoverExamplesSource = readUtf8(popoverExamplesPath);
+
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    const v9BasicExampleSource =
+      popoverExamplesSource.match(/const V9BasicExample = \(\) => \{[\s\S]*?\n\};/)?.[0] ?? '';
+
+    expect(v9BasicExampleSource).toEqual(expect.stringContaining('const [open, setOpen] = React.useState(false);'));
+    expect(v9BasicExampleSource).toEqual(
+      expect.stringContaining('onOpenChange={(_event, data) => setOpen(data.open)}'),
+    );
+    expect(v9BasicExampleSource).toEqual(expect.stringContaining('onClick={() => setOpen(false)}'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('aria-expanded={open}'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('aria-haspopup="dialog"'));
+    expect(popoverExamplesSource).toEqual(
+      expect.stringContaining('positioningRef.current?.setTarget(buttonRef.current);'),
+    );
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('if (event.target === buttonRef.current) {'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8ControlledDismiss: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9ControlledOpen: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8DirectionalHint: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9Positioning: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('offset:'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8FocusTrapCallout: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9TrapFocus: Story ='));
+    const v9TrapFocusExampleSource =
+      popoverExamplesSource.match(/const V9TrapFocusExample = \(\) => \{[\s\S]*?\n\};/)?.[0] ?? '';
+
+    expect(v9TrapFocusExampleSource).toEqual(expect.stringContaining('const [open, setOpen] = React.useState(false);'));
+    expect(v9TrapFocusExampleSource).toEqual(
+      expect.stringContaining('onOpenChange={(_event, data) => setOpen(data.open)}'),
+    );
+    expect(v9TrapFocusExampleSource).toEqual(expect.stringContaining('onClick={() => setOpen(false)}'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8Beak: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9WithArrow: Story ='));
+    const v8BeakExampleSource = popoverExamplesSource.match(/const V8BeakExample = \(\) => \{[\s\S]*?\n\};/)?.[0] ?? '';
+
+    expect(v8BeakExampleSource).toEqual(expect.stringContaining('beakWidth='));
+    expect(v8BeakExampleSource).toEqual(expect.stringContaining('isBeakVisible'));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8LayeringAndHiddenMount: Story ='));
+    expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9InlineAndMountNode: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
