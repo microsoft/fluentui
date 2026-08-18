@@ -166,6 +166,7 @@ const createV8Columns = (
     minWidth: 150,
     maxWidth: 190,
     isResizable: true,
+    onRender: item => (item as MigrationRow).status.label,
   },
   {
     key: 'updated',
@@ -177,6 +178,7 @@ const createV8Columns = (
     isSorted: sortState?.columnKey === 'updated',
     isSortedDescending: sortState?.columnKey === 'updated' ? sortState.descending : undefined,
     onColumnClick,
+    onRender: item => (item as MigrationRow).updated.label,
   },
   {
     key: 'notes',
@@ -431,6 +433,10 @@ const V8CustomCellExample = () => {
 
         if (column.key === 'notes') {
           return <Text className={styles.summary}>{(item as MigrationRow).notes}</Text>;
+        }
+
+        if (column.key === 'updated') {
+          return (item as MigrationRow).updated.label;
         }
 
         return (item as Record<string, React.ReactNode>)[column.fieldName ?? column.key] as React.ReactNode;
