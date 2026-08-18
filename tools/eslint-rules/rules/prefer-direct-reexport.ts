@@ -263,25 +263,14 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     }
 
     /**
-     * Matches an identity wrapper — a function whose entire body forwards its own parameters,
-     * unchanged and in order, to an imported callee:
+     * Matches an identity wrapper — a function whose body forwards its own parameters, unchanged
+     * and in order, to an imported callee: `export const render = props => renderBase(props)`.
      *
-     * ```ts
-     * export const render = props => renderBase(props);
-     * export function render(props) { return renderBase(props); }
-     * ```
+     * The match is purely syntactic and never needs to know what the parameters are typed as; any
+     * annotation in the signature narrows the public contract, so the rule bails.
      *
-     * The match is purely syntactic and never needs to know what the parameters are typed as.
-     * An annotation anywhere in the signature — parameter type, return type or type parameter —
-     * narrows the public contract, so the wrapper stops being a plain re-export and the rule bails.
-     * It also bails on `async`/generator functions, a reassigned function declaration, parameters
-     * that are not bare identifiers (rest, default, destructured), a body that is anything other
-     * than a single forwarding call, an optional call or explicit type arguments, and any argument
-     * list that is not exactly the parameter list.
-     *
-     * A wrapper is not byte-for-byte equivalent to its target: it drops `this`, `fn.length`,
-     * `fn.name`, arguments beyond the declared parameters, and `new`-ability. Those differences are
-     * not observable for the re-export patterns this rule targets, so they are reported anyway.
+     * A wrapper is not byte-for-byte equivalent — it drops `this`, `fn.length`, `fn.name`, extra
+     * arguments and `new`-ability — but none of that is observable for these re-export patterns.
      */
     function checkFunctionLike(
       functionNode: TSESTree.ArrowFunctionExpression | TSESTree.FunctionDeclaration | TSESTree.FunctionExpression,
