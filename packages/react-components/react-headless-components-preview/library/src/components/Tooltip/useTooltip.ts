@@ -37,6 +37,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const {
     children,
     content,
+    secondaryContent,
     positioning = 'above',
     withArrow = false,
     onVisibleChange,
@@ -45,17 +46,24 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     hideDelay = 250,
   } = props;
 
+  const child = getTriggerChild(children);
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  const renderedVisible = visible && !isPopupExpanded;
+
   const state: TooltipState = {
     positioning,
     showDelay,
     hideDelay,
     relationship,
-    visible,
-    shouldRenderTooltip: visible,
+    visible: renderedVisible,
+    shouldRenderTooltip: renderedVisible,
     withArrow,
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
@@ -64,11 +72,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       },
       elementType: 'div',
     }),
+    secondaryContent: slot.optional(secondaryContent, {
+      elementType: 'span',
+    }),
   };
 
   const positioningOptions = resolvePositioningShorthand(positioning);
   const { targetRef, containerRef } = usePositioning(positioningOptions);
-
   state.content.id = useId('tooltip-', state.content.id);
   state.content['data-open'] = stringifyDataAttribute(state.visible);
 
@@ -107,7 +117,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     el.addEventListener('toggle', onToggle);
 
     try {
-      if (visible) {
+      if (state.visible) {
         el.showPopover();
       } else if (el.matches(':popover-open')) {
         el.hidePopover();
@@ -128,7 +138,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     return () => {
       el.removeEventListener('toggle', onToggle);
     };
-  }, [contentRef, visible, setVisible, onToggle]);
+  }, [contentRef, state.visible, setVisible, onToggle]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
@@ -215,16 +225,18 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
-  const child = getTriggerChild(children);
-
   const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isPopupExpanded =
-    child?.props?.['aria-haspopup'] &&
-    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
+    if (
+      typeof state.content.children === 'string' &&
+      (!state.secondaryContent || typeof state.secondaryContent.children === 'string')
+    ) {
+      triggerAriaProps['aria-label'] = state.secondaryContent
+        ? `${state.content.children} ${state.secondaryContent.children}`
+        : state.content.children;
+    } else if (isServerSideRender && typeof state.content.children === 'string') {
       triggerAriaProps['aria-label'] = state.content.children;
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
@@ -239,9 +251,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     state.shouldRenderTooltip = true;
   }
 
-  // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
-  if (isServerSideRender || isPopupExpanded) {
+  // Don't render the Tooltip in SSR to avoid hydration errors.
+  if (isServerSideRender) {
     // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = false;
   }

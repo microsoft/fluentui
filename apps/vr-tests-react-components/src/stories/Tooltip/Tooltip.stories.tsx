@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Tooltip } from '@fluentui/react-tooltip';
+import { TextBoldRegular } from '@fluentui/react-icons';
 
 import { useStyles } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
@@ -28,6 +29,21 @@ Basic.storyName = 'basic';
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
+
+export const SecondaryContent = () => (
+  <div className={useStyles().wrapper}>
+    <Tooltip visible content="Bold" secondaryContent="Ctrl+B" relationship="label">
+      <button>
+        <TextBoldRegular />
+      </button>
+    </Tooltip>
+  </div>
+);
+SecondaryContent.storyName = 'secondary content';
+
+export const SecondaryContentDarkMode = getStoryVariant(SecondaryContent, DARK_MODE);
+
+export const SecondaryContentHighContrast = getStoryVariant(SecondaryContent, HIGH_CONTRAST);
 
 export const Inverted = () => (
   <div className={useStyles().wrapper}>
