@@ -57,6 +57,46 @@ const requiredCompleteGuideSections = [
   'Major-change checklist',
   'Evidence',
 ] as const;
+const allowedReplacementCategories = [
+  'Rename',
+  'Native replacement',
+  'Composition replacement',
+  'Separate component',
+  'Behavioral change',
+  'Unsupported',
+  'Conditional mapping',
+] as const;
+const expectedP0GuideLinksByInventoryKey = new Map<string, string[]>([
+  ['dialog', ['/docs/concepts-migration-from-v8-components-dialog-migration--docs']],
+  ['panel', ['/docs/concepts-migration-from-v8-components-drawer-migration--docs']],
+  [
+    'textfield',
+    [
+      '/docs/concepts-migration-from-v8-components-textfield-to-input-migration--docs',
+      '/docs/concepts-migration-from-v8-components-textarea-migration--docs',
+    ],
+  ],
+  ['contextualmenu', ['/docs/concepts-migration-from-v8-components-menu-migration--docs']],
+  ['messagebar', ['/docs/concepts-migration-from-v8-components-messagebar-migration--docs']],
+  ['callout', ['/docs/concepts-migration-from-v8-components-callout-to-popover-migration--docs']],
+  ['choicegroup', ['/docs/concepts-migration-from-v8-components-choicegroup-to-radiogroup-migration--docs']],
+  ['dropdown', ['/docs/concepts-migration-from-v8-components-dropdown-migration--docs']],
+  ['spinbutton', ['/docs/concepts-migration-from-v8-components-spinbutton-migration--docs']],
+  ['detailslist', ['/docs/concepts-migration-from-v8-components-detailslist-migration--docs']],
+]);
+const p0GuidePageNames = [
+  'Dialog',
+  'Drawer',
+  'Input',
+  'Textarea',
+  'Menu',
+  'MessageBar',
+  'Popover',
+  'RadioGroup',
+  'Dropdown',
+  'SpinButton',
+  'DetailsList',
+] as const;
 
 const getGuideImportDeclarations = (source: string): ts.ImportDeclaration[] => {
   const importLines: string[] = [];
@@ -205,6 +245,29 @@ const getGuideSections = (source: string): Map<string, string> => {
   flushSection();
 
   return sections;
+};
+
+const getMarkdownTables = (source: string): string[][][] => {
+  const tables: string[][][] = [];
+  let currentTable: string[][] = [];
+
+  for (const line of source.split(/\r?\n/)) {
+    if (line.trim().startsWith('|')) {
+      currentTable.push(parseTableCells(line.trim()));
+      continue;
+    }
+
+    if (currentTable.length > 0) {
+      tables.push(currentTable);
+      currentTable = [];
+    }
+  }
+
+  if (currentTable.length > 0) {
+    tables.push(currentTable);
+  }
+
+  return tables.filter(table => table.length >= 2);
 };
 
 const hasExampleCoverage = (source: string, storyExportName: 'V8Basic' | 'V9Basic'): boolean => {
@@ -1766,6 +1829,67 @@ describe('FromV8 migration inventory', () => {
     );
 
     expect(placeholderRows).toEqual([]);
+  });
+
+  test('Task 17 keeps every P0 family row complete, N/A priority, and linked to the approved guide pages', () => {
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+
+    for (const [inventoryKey, expectedGuideLinks] of expectedP0GuideLinksByInventoryKey) {
+      const row = getInventoryRows().find(candidate => normalizeInventoryCell(candidate.cells[0]) === inventoryKey);
+
+      expect(row).toBeDefined();
+      expect(normalizeInventoryCell(row?.cells[statusColumnIndex])).toBe('complete');
+      expect(normalizeInventoryCell(row?.cells[priorityColumnIndex])).toBe('n/a');
+      expect([...(row?.guideLinks ?? [])].sort()).toEqual([...expectedGuideLinks].sort());
+    }
+  });
+
+  test('Task 17 enforces the approved replacement categories and example safety checks across P0 guide families', () => {
+    for (const pageName of p0GuidePageNames) {
+      const guidePath = path.join(fromV8ComponentsDirectory, `${pageName}.mdx`);
+      const examplePath = path.join(fromV8ComponentsDirectory, 'examples', pageName, 'index.stories.tsx');
+      const guideSource = readUtf8(guidePath);
+      const strippedGuideSource = stripIgnoredGuideContent(guideSource);
+      const propMappingContent = getGuideSections(strippedGuideSource).get('Prop mapping') ?? '';
+      const propTables = getMarkdownTables(propMappingContent);
+      const exampleSource = readUtf8(examplePath);
+
+      expect(strippedGuideSource).not.toMatch(/\bv0\b/i);
+      expect(strippedGuideSource).not.toMatch(/converged/i);
+      expect(propTables.length).toBeGreaterThan(0);
+
+      for (const table of propTables) {
+        const headerCells = table[0];
+        const replacementCategoryColumnIndex = headerCells.indexOf('Replacement category');
+
+        expect(replacementCategoryColumnIndex).toBe(2);
+
+        for (const rowCells of table.slice(2).filter(row => row.some(cell => cell !== ''))) {
+          expect(rowCells).toHaveLength(4);
+
+          if (!rowCells[0]?.startsWith('`')) {
+            continue;
+          }
+
+          expect(allowedReplacementCategories).toContain(rowCells[replacementCategoryColumnIndex] as never);
+        }
+      }
+
+      expect(exampleSource).not.toMatch(/React\.FC\b/);
+      expect(exampleSource).not.toMatch(/\bwindow\s*[.[]/);
+      expect(exampleSource).not.toMatch(/\bdocument\s*[.[]/);
+      expect(exampleSource).not.toMatch(/\bnavigator\s*[.[]/);
+      expect(exampleSource).not.toMatch(/#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})\b/);
+      expect(exampleSource).not.toMatch(/['"`]?\d+px['"`]?/);
+
+      if (exampleSource.includes('makeStyles')) {
+        expect(exampleSource).toContain('tokens');
+      }
+    }
   });
 });
 

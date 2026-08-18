@@ -29,26 +29,26 @@ Treat `Input` as the control and `Field` as the form-field shell. `Field` owns t
 
 ## Prop mapping
 
-| v8 `TextField` prop | v9 replacement                                                | Notes                                                                                                              |
-| ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `label`             | `Field label` or a separate `Label`                           | `Input` does not render its own label.                                                                             |
-| `description`       | `Field hint`                                                  | `Field` connects hint text through `aria-describedby`.                                                             |
-| `errorMessage`      | `Field validationMessage`                                     | Pair with `validationState` to control the message semantics and styling.                                          |
-| `required`          | `Field required`; optionally native `Input required`          | `Field required` adds the asterisk and `aria-required`; native `required` keeps browser form validation.           |
-| `multiline`         | Use `Textarea`                                                | `Input` is single-line only.                                                                                       |
-| `rows`              | Use `Textarea rows`                                           | `rows` is only available on `Textarea`.                                                                            |
-| `autoAdjustHeight`  | No `Input` equivalent                                         | Re-evaluate the scenario with `Textarea`; v9 `Input` has no auto-height behavior.                                  |
-| `canRevealPassword` | No direct prop                                                | Use `type="password"` and compose any reveal button yourself, typically in `contentAfter`.                         |
-| `iconProps`         | `contentBefore` or `contentAfter`                             | Supply JSX such as an icon component instead of an `IIconProps` object.                                            |
-| `prefix`            | `contentBefore`                                               | Presentational text or icons render in the slot and are not part of the field value.                               |
-| `suffix`            | `contentAfter`                                                | Use slot content instead of a dedicated string prop.                                                               |
-| `onRenderLabel`     | Compose with `Field`, `Label`, or custom JSX                  | There is no v9 render callback on `Input`.                                                                         |
-| `onChange`          | `onChange(event, data)`                                       | Read the next value from `data.value`.                                                                             |
-| `componentRef`      | `ref`                                                         | V9 refs target the underlying `<input>` element rather than the v8 `ITextField` API surface.                       |
-| `styles`            | `className`, `input={{ className: ... }}`, and Griffel styles | Style the root slot with `className` and the native input through the `input` slot props.                          |
-| `theme`             | `FluentProvider`                                              | Theming is provided by context instead of a per-instance prop.                                                     |
-| `underlined`        | `appearance="underline"`                                      | The appearance is a string union on `Input`.                                                                       |
-| `borderless`        | No direct prop                                                | Choose an `appearance` value that matches the design intent, or add custom styling when design review approves it. |
+| v8 `TextField` prop | v9 replacement                                                | Replacement category    | Migration notes                                                                                                    |
+| ------------------- | ------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `label`             | `Field label` or a separate `Label`                           | Composition replacement | `Input` does not render its own label.                                                                             |
+| `description`       | `Field hint`                                                  | Composition replacement | `Field` connects hint text through `aria-describedby`.                                                             |
+| `errorMessage`      | `Field validationMessage`                                     | Composition replacement | Pair with `validationState` to control the message semantics and styling.                                          |
+| `required`          | `Field required`; optionally native `Input required`          | Composition replacement | `Field required` adds the asterisk and `aria-required`; native `required` keeps browser form validation.           |
+| `multiline`         | Use `Textarea`                                                | Separate component      | `Input` is single-line only.                                                                                       |
+| `rows`              | Use `Textarea rows`                                           | Separate component      | `rows` is only available on `Textarea`.                                                                            |
+| `autoAdjustHeight`  | No `Input` equivalent                                         | Unsupported             | Re-evaluate the scenario with `Textarea`; v9 `Input` has no auto-height behavior.                                  |
+| `canRevealPassword` | No direct prop                                                | Composition replacement | Use `type="password"` and compose any reveal button yourself, typically in `contentAfter`.                         |
+| `iconProps`         | `contentBefore` or `contentAfter`                             | Composition replacement | Supply JSX such as an icon component instead of an `IIconProps` object.                                            |
+| `prefix`            | `contentBefore`                                               | Composition replacement | Presentational text or icons render in the slot and are not part of the field value.                               |
+| `suffix`            | `contentAfter`                                                | Composition replacement | Use slot content instead of a dedicated string prop.                                                               |
+| `onRenderLabel`     | Compose with `Field`, `Label`, or custom JSX                  | Composition replacement | There is no v9 render callback on `Input`.                                                                         |
+| `onChange`          | `onChange(event, data)`                                       | Behavioral change       | Read the next value from `data.value`.                                                                             |
+| `componentRef`      | `ref`                                                         | Rename                  | V9 refs target the underlying `<input>` element rather than the v8 `ITextField` API surface.                       |
+| `styles`            | `className`, `input={{ className: ... }}`, and Griffel styles | Composition replacement | Style the root slot with `className` and the native input through the `input` slot props.                          |
+| `theme`             | `FluentProvider`                                              | Composition replacement | Theming is provided by context instead of a per-instance prop.                                                     |
+| `underlined`        | `appearance="underline"`                                      | Behavioral change       | The appearance is a string union on `Input`.                                                                       |
+| `borderless`        | No direct prop                                                | Behavioral change       | Choose an `appearance` value that matches the design intent, or add custom styling when design review approves it. |
 
 ## Styling and theming
 
