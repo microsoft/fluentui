@@ -1489,6 +1489,115 @@ Not applicable
     expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V8LayeringAndHiddenMount: Story ='));
     expect(popoverExamplesSource).toEqual(expect.stringContaining('export const V9InlineAndMountNode: Story ='));
   });
+
+  test('Task 15 Dropdown guide and shared stories satisfy the Dropdown migration contract', () => {
+    const dropdownGuidePath = path.join(fromV8ComponentsDirectory, 'Dropdown.mdx');
+    const dropdownExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Dropdown/index.stories.tsx');
+
+    expect(fs.existsSync(dropdownGuidePath)).toBe(true);
+    expect(fs.existsSync(dropdownExamplesPath)).toBe(true);
+
+    const dropdownGuideSource = readUtf8(dropdownGuidePath);
+    const normalizedDropdownGuideSource = dropdownGuideSource.replace(/\s+/g, ' ');
+    const dropdownSections = getGuideSections(stripIgnoredGuideContent(dropdownGuideSource));
+    const dropdownPropMapping = dropdownSections.get('Prop mapping') ?? '';
+    const dropdownAccessibility = dropdownSections.get('Accessibility') ?? '';
+    const dropdownUnsupported = dropdownSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredDropdownProps = [
+      'options',
+      'selectedKey',
+      'defaultSelectedKey',
+      'selectedKeys',
+      'defaultSelectedKeys',
+      'value',
+      'defaultValue',
+      'selectedOptions',
+      'defaultSelectedOptions',
+      'multiSelect',
+      'onChange',
+      'onOptionSelect',
+      'placeholder',
+      'label',
+      'errorMessage',
+      'onRenderOption',
+      'onRenderTitle',
+      'onRenderCaretDown',
+      'dropdownWidth',
+      'responsiveMode',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const dropdownRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'dropdown');
+
+    expect(validateCompleteGuide(dropdownGuideSource, 'Dropdown')).toEqual([]);
+    expect(requiredDropdownProps.filter(propName => !dropdownPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedDropdownGuideSource).toContain('| MC-1 | `options` data becomes child `Option` elements |');
+    expect(normalizedDropdownGuideSource).toContain(
+      '| MC-2 | `selectedKey(s)` become `selectedOptions`; `value` separately controls displayed text; changes use `onOptionSelect` data |',
+    );
+    expect(normalizedDropdownGuideSource).toContain(
+      '| MC-3 | multiselect is explicit and returns selected option values |',
+    );
+    expect(normalizedDropdownGuideSource).toContain(
+      '| MC-4 | custom option/title render callbacks become Option/slot composition |',
+    );
+    expect(normalizedDropdownGuideSource).toContain(
+      '| MC-5 | native-select scenarios may choose `Select`; editable/filtering scenarios belong to Combobox |',
+    );
+    expect(dropdownGuideSource).toContain('packages/react/src/components/Dropdown/Dropdown.types.ts');
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-combobox/library/src/components/Dropdown/Dropdown.types.ts',
+    );
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-combobox/library/src/components/Option/Option.types.ts',
+    );
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-select/library/src/components/Select/Select.types.ts',
+    );
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-combobox/library/src/components/Dropdown/Dropdown.test.tsx',
+    );
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-combobox/stories/src/Dropdown/DropdownControlled.stories.tsx',
+    );
+    expect(dropdownGuideSource).toContain(
+      'packages/react-components/react-combobox/stories/src/Dropdown/DropdownMultiselect.stories.tsx',
+    );
+    expect(dropdownAccessibility).toContain('text');
+    expect(dropdownAccessibility).toContain('aria');
+    expect(dropdownAccessibility).toContain('Field');
+    expect(dropdownAccessibility).toContain('label');
+    expect(dropdownAccessibility).toContain('Select');
+    expect(dropdownUnsupported).toContain('Combobox');
+    expect(dropdownUnsupported).toContain('freeform');
+    expect(dropdownUnsupported).toContain('filter');
+    expect(dropdownUnsupported).toContain('Select');
+    expect(dropdownRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(dropdownRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(dropdownRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const dropdownExamplesSource = readUtf8(dropdownExamplesPath);
+
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9NativeSelectAlternative: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V8MultiSelect: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9MultiSelect: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V8ControlledSelection: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9ControlledSelection: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V8CustomOptionRender: Story ='));
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9OptionComposition: Story ='));
+    expect(dropdownExamplesSource).toEqual(
+      expect.stringContaining('export const V9ComboboxSearchAlternative: Story ='),
+    );
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9FieldIntegration: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
