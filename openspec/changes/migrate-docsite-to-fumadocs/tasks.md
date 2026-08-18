@@ -64,9 +64,11 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 - [x] 3.7 Visually compared headless pages against the existing Storybook by diffing computed styles. Found the site never loaded the headless `tokens.css` — Storybook imports it globally from its preview, so CSS Module rules applied but every token reference fell back (border-radius 8px vs 12px, gaps and padding missing). Fixed by importing the stylesheet in the `/docs/headless` route only, so tokens do not leak into the styled tree. Accordion and Card now match on all 7 computed properties.
 - [x] 3.8 Re-measured prerender build time: 58 routes in 14.8s cold, against 6 routes in 11.8s. Scaling is strongly sublinear (startup-dominated), so no mitigation is needed before Phase 3.
 
+> Resolution note: the app resolves `@fluentui/*` to source via generated Vite aliases (the equivalent of Storybook's TsconfigPathsPlugin). Adding a tree needs no new alias — only tsconfig path entries. Verified with a clean `nx reset` build: 58 routes in 67s.
+
 ## 4. Phase 3 — v9 component pages
 
-- [ ] 4.1 Generate wildcard path entries for all remaining `*-stories` packages via a `tools/workspace-plugin` generator (design D7)
+- [x] 4.1 Wildcard path entries are no longer needed per package: Vite aliases are generated from `tsconfig.base.json`, so a story package becomes importable as soon as it has a tsconfig path entry (which all 66 already do). Verified for `react-button` and `react-headless-components-preview`.
 - [ ] 4.2 Generate the 124 v9 component pages with the stub generator
 - [ ] 4.3 Hand-finish the v9 pages using `decorators` (all remaining after the headless ones in 3.5), converting each to a wrapper prop on `<ComponentPage>`
 - [ ] 4.4 Hand-finish the v9 pages using `args` / `argTypes` / `controls` (all remaining after 3.5) with an interactive controls panel; decide per design Open Question 2 whether to use `defineStory` or a hand-rolled panel
