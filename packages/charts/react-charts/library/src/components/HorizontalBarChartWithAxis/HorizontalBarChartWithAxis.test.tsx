@@ -517,6 +517,17 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('supports correctly spelled y-axis label props', () => {
+    const { container } = render(
+      <HorizontalBarChartWithAxis
+        data={pointsForWrapLabels}
+        showYAxisLabels={true}
+        showYAxisLabelsTooltip={true}
+      />,
+    );
+    expect(container.firstChild).not.toBeNull();
+  });
+
   it('Should render gradients on bars', () => {
     const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} enableGradient={true} />);
     expect(component).toMatchSnapshot();
