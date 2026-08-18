@@ -23,9 +23,9 @@ describe('ListItem behavior contract', () => {
       </List>,
     );
 
-    expect(getByRole('list')).toHaveAttribute('data-tabster');
+    expect(getByRole('list').hasAttribute('data-tabster')).toBe(true);
     for (const item of getAllByRole('listitem')) {
-      expect(item).toHaveAttribute('data-tabster');
+      expect(item.hasAttribute('data-tabster')).toBe(true);
     }
   });
 
@@ -49,7 +49,7 @@ describe('ListItem behavior contract', () => {
     const checkbox = getAllByRole('checkbox')[0];
 
     expect(checkbox.tagName).toBe('INPUT');
-    expect(checkbox).toHaveAttribute('tabindex', '-1');
+    expect(checkbox.getAttribute('tabindex')).toBe('-1');
     // The Fluent Checkbox wraps its input in a labelled root, unlike a bare native checkbox.
     expect(checkbox.closest('.fui-Checkbox')).not.toBeNull();
   });
@@ -98,7 +98,7 @@ describe('ListItem behavior contract', () => {
     );
 
     const item = getByText('First');
-    expect(item).toHaveAttribute('aria-disabled', 'true');
+    expect(item.getAttribute('aria-disabled')).toBe('true');
 
     fireEvent.keyDown(item, { key: ' ' });
     expect(onSelectionChange).not.toHaveBeenCalled();
