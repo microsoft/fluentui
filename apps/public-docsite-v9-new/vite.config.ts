@@ -10,6 +10,7 @@ import { fullSource } from './vite-plugins/full-source.js';
 import { guardUnsupportedStories } from './vite-plugins/guard-unsupported-stories.js';
 import { markdownAsString } from './vite-plugins/markdown-as-string.js';
 import { storyOrder } from './vite-plugins/story-order.js';
+import { tsconfigAliases } from './vite-plugins/tsconfig-aliases.js';
 
 const require = (await import('node:module')).createRequire(import.meta.url);
 const { getImportMappingsForExportToSandboxAddon } = require('@fluentui/scripts-storybook');
@@ -60,24 +61,15 @@ export default defineConfig(
       noExternal: [/^@fluentui\//],
     },
     resolve: {
-      alias: [
-        // Mirrors the tsconfig.base.json wildcard path entries (design D7). Wildcards keep
-        // per-page code splitting; the `stories/src/index.ts` barrels are empty by design.
-        {
-          find: /^@fluentui\/react-button-stories\/(.*)$/,
-          replacement: `${repoRoot}packages/react-components/react-button/stories/$1`,
-        },
-        {
-          find: /^@fluentui\/react-headless-components-preview-stories\/(.*)$/,
-          replacement: `${repoRoot}packages/react-components/react-headless-components-preview/stories/$1`,
-        },
-        {
-          // Library subpath exports (e.g. '@fluentui/react-headless-components-preview/avatar-group').
-          // Must be declared after the -stories alias so it cannot shadow it.
-          find: /^@fluentui\/react-headless-components-preview\/(.*)$/,
-          replacement: `${repoRoot}packages/react-components/react-headless-components-preview/library/src/$1.ts`,
-        },
-      ],
+      /*
+       * Resolve @fluentui/* to source, exactly as Storybook does via TsconfigPathsPlugin.
+       *
+       * Without this the site resolves those packages through node, which requires every
+       * component package to have been built first — so a clean checkout fails, and a stale
+       * `lib/` can silently win over the source being edited. It also removes the need to
+       * hand-maintain one alias per `*-stories` package as more trees are migrated.
+       */
+      alias: tsconfigAliases(`${repoRoot}tsconfig.base.json`, repoRoot),
     },
     plugins: [
       guardUnsupportedStories(),

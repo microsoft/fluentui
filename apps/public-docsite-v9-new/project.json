@@ -21,12 +21,7 @@
       "dependsOn": [
         "docgen",
         {
-          "projects": [
-            "babel-preset-storybook-full-source",
-            "react-storybook-addon-export-to-sandbox",
-            "react-components",
-            "react-headless-components-preview"
-          ],
+          "projects": ["babel-preset-storybook-full-source", "react-storybook-addon-export-to-sandbox"],
           "target": "build"
         }
       ]
