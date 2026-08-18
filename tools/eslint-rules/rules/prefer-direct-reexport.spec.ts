@@ -5,22 +5,26 @@ const ruleTester = new RuleTester();
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
+    // valid: Already a direct re-export.
     {
       code: `
         export type { BaseProps as Props } from 'pkg';
       `,
     },
+    // valid: Already a direct re-export.
     {
       code: `
         export { renderBase as render } from 'pkg';
       `,
     },
+    // valid: `extends` declares a new interface instead of renaming the imported one.
     {
       code: `
         import type { BaseProps } from 'pkg';
         export interface Props extends BaseProps {}
       `,
     },
+    // valid: An intersection declares a new type.
     {
       code: `
         import type { BaseProps } from 'pkg';
@@ -28,49 +32,49 @@ ruleTester.run(RULE_NAME, rule, {
         export type Props = BaseProps & OtherProps;
       `,
     },
+    // valid: Instantiating a generic declares a new type.
     {
       code: `
         import type { BaseProps } from 'pkg';
         export type Props = BaseProps<any>;
       `,
     },
+    // valid: A generic alias declares a new type constructor.
     {
       code: `
         import type { BaseProps } from 'pkg';
         export type Props<T> = BaseProps;
       `,
     },
+    // valid: `export … from` cannot address a single member of a namespace binding.
     {
       code: `
         import * as upstream from 'pkg';
         export const render = upstream.renderBase;
       `,
     },
+    // valid: A namespace import has no `export … from` default equivalent.
     {
       code: `
         import * as local from 'pkg';
         export default local;
       `,
     },
+    // valid: A namespace import has no `export … from` default equivalent.
     {
       code: `
         import * as local from 'pkg';
         export { local as default };
       `,
     },
-    {
-      code: `
-        import type { BaseProps } from 'pkg';
-        type LocalBaseProps = BaseProps;
-        export type Props = LocalBaseProps;
-      `,
-    },
+    // valid: Destructuring is not an alias of the import.
     {
       code: `
         import { renderBase } from 'pkg';
         export const [render] = [renderBase];
       `,
     },
+    // valid: The annotation narrows the public signature, so the export is not the import.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -78,6 +82,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const render: PublicSignature = renderBase;
       `,
     },
+    // valid: The annotation narrows the public signature, so the export is not the import.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -85,30 +90,37 @@ ruleTester.run(RULE_NAME, rule, {
         export const render: PublicType = props => renderBase(props);
       `,
     },
+    // valid: The binding is reassigned, so it is a live mutable export that `export … from` cannot express.
     {
       code: `
         import { renderBase } from 'pkg';
         export let render = renderBase;
+        render = renderOther;
       `,
     },
+    // valid: The binding is reassigned, so it is a live mutable export that `export … from` cannot express.
     {
       code: `
         import { renderBase } from 'pkg';
         export let render = props => renderBase(props);
+        render = renderOther;
       `,
     },
+    // valid: An annotated parameter narrows the public signature.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = (value: unknown) => renderBase(value);
       `,
     },
+    // valid: `async` wraps the result in a promise.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = async props => renderBase(props);
       `,
     },
+    // valid: A generator returns an iterator instead of the call result.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -117,6 +129,7 @@ ruleTester.run(RULE_NAME, rule, {
         }
       `,
     },
+    // valid: The return type annotation narrows the public signature.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -125,6 +138,7 @@ ruleTester.run(RULE_NAME, rule, {
         }
       `,
     },
+    // valid: Type parameters and annotations narrow the public signature.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -133,6 +147,7 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
+    // valid: The function declaration is reassigned, so the export is not the import.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -143,6 +158,7 @@ ruleTester.run(RULE_NAME, rule, {
         render = otherRender;
       `,
     },
+    // valid: The function declaration is reassigned, so the export is not the import.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -154,48 +170,56 @@ ruleTester.run(RULE_NAME, rule, {
         export { render };
       `,
     },
+    // valid: A default parameter value changes what reaches the call.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = (props = defaultProps) => renderBase(props);
       `,
     },
+    // valid: A rest parameter does not forward a fixed signature.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = (...args) => renderBase(...args);
       `,
     },
+    // valid: A destructured parameter changes what reaches the call.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = ({ props }) => renderBase(props);
       `,
     },
+    // valid: The arguments are reordered.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = (first, second) => renderBase(second, first);
       `,
     },
+    // valid: An extra argument is added.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = first => renderBase(first, 1);
       `,
     },
+    // valid: An argument is dropped.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = (first, second) => renderBase(first);
       `,
     },
+    // valid: `.call` is not a direct invocation.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = props => renderBase.call(undefined, props);
       `,
     },
+    // valid: The wrapper runs an extra statement.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -206,6 +230,7 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
+    // valid: The argument is asserted before it is forwarded.
     {
       code: `
         import type { BaseProps } from 'pkg';
@@ -213,24 +238,28 @@ ruleTester.run(RULE_NAME, rule, {
         export const render = props => renderBase(props as BaseProps);
       `,
     },
+    // valid: The argument is asserted before it is forwarded.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = props => renderBase(props!);
       `,
     },
+    // valid: Explicit type arguments narrow the call.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = props => renderBase<string>(props);
       `,
     },
+    // valid: The parameter shadows the import, so the call never reaches it.
     {
       code: `
         import { renderBase } from 'pkg';
         export const render = renderBase => renderBase(renderBase);
       `,
     },
+    // valid: The local alias is never exported; only a property is assigned to it.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -239,6 +268,7 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
+    // valid: The local wrapper is never exported; only a property is assigned to it.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -249,6 +279,7 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
+    // valid: The alias chain is never exported.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -258,6 +289,7 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
+    // valid: The alias is never exported.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -267,6 +299,60 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    // Prefer: export type { BaseProps as Props } from 'pkg';
+    // The local alias is transparent, so the chain still resolves to the imported type.
+    {
+      code: `
+        import type { BaseProps } from 'pkg';
+        type LocalBaseProps = BaseProps;
+        export type Props = LocalBaseProps;
+      `,
+      errors: [
+        {
+          messageId: 'preferTypeReexport',
+          data: {
+            source: 'pkg',
+            importedName: 'BaseProps',
+            exportedName: 'Props',
+          },
+        },
+      ],
+    },
+    // Prefer: export { renderBase as render } from 'pkg';
+    // A `let` that is never reassigned is not a live binding, so it is a plain re-export.
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        export let render = renderBase;
+      `,
+      errors: [
+        {
+          messageId: 'preferValueReexport',
+          data: {
+            source: 'pkg',
+            importedName: 'renderBase',
+            exportedName: 'render',
+          },
+        },
+      ],
+    },
+    // Prefer: export { renderBase as render } from 'pkg';
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        export let render = props => renderBase(props);
+      `,
+      errors: [
+        {
+          messageId: 'preferFunctionReexport',
+          data: {
+            source: 'pkg',
+            importedName: 'renderBase',
+            exportedName: 'render',
+          },
+        },
+      ],
+    },
     // Prefer: export { default as render } from 'pkg';
     {
       code: `

@@ -39,14 +39,50 @@ function getImportedName(specifier: TSESTree.ImportClause): string | null {
   }
 }
 
-function hasWriteReferences(variable: TSESLint.Scope.Variable) {
-  return variable.references.some(reference => reference.isWrite());
+/**
+ * A binding that is reassigned is a live mutable export, which `export … from` cannot express.
+ * The initializer write is skipped so that a never-reassigned `let` still counts as a re-export.
+ */
+function isReassigned(variable: TSESLint.Scope.Variable) {
+  return variable.references.some(reference => reference.isWrite() && !reference.init);
 }
 
-function isConstVariableDeclarator(variableDeclarator: TSESTree.VariableDeclarator) {
-  return (
-    variableDeclarator.parent?.type === AST_NODE_TYPES.VariableDeclaration && variableDeclarator.parent.kind === 'const'
-  );
+/**
+ * Identifier of a bare `type Local = Imported` alias, or `null` when the alias declares type
+ * parameters, instantiates its target, or composes it with anything else — in all of those cases
+ * the alias is a new type rather than another name for the imported one.
+ */
+function getAliasedTypeReference(typeAliasDeclaration: TSESTree.TSTypeAliasDeclaration): TSESTree.Identifier | null {
+  const { typeAnnotation } = typeAliasDeclaration;
+
+  if (
+    typeAliasDeclaration.typeParameters ||
+    typeAnnotation.type !== AST_NODE_TYPES.TSTypeReference ||
+    typeAnnotation.typeName.type !== AST_NODE_TYPES.Identifier ||
+    typeAnnotation.typeArguments
+  ) {
+    return null;
+  }
+
+  return typeAnnotation.typeName;
+}
+
+/** Identifier that a local `const local = imported` / `type Local = Imported` declaration aliases. */
+function getAliasTarget(definitionNode: TSESTree.Node): TSESTree.Identifier | null {
+  if (definitionNode.type === AST_NODE_TYPES.TSTypeAliasDeclaration) {
+    return getAliasedTypeReference(definitionNode);
+  }
+
+  if (
+    definitionNode.type !== AST_NODE_TYPES.VariableDeclarator ||
+    definitionNode.id.type !== AST_NODE_TYPES.Identifier ||
+    definitionNode.id.typeAnnotation ||
+    definitionNode.init?.type !== AST_NODE_TYPES.Identifier
+  ) {
+    return null;
+  }
+
+  return definitionNode.init;
 }
 
 function getParameterIdentifiers(parameters: TSESTree.Parameter[]): TSESTree.Identifier[] | null {
@@ -153,23 +189,25 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       exportedName = typeAliasDeclaration.id.name,
       reportNode: TSESTree.Identifier | TSESTree.StringLiteral = typeAliasDeclaration.id,
     ) {
-      const typeAnnotation = typeAliasDeclaration.typeAnnotation;
+      const aliasedTypeReference = getAliasedTypeReference(typeAliasDeclaration);
 
-      if (
-        typeAliasDeclaration.typeParameters ||
-        typeAnnotation.type !== AST_NODE_TYPES.TSTypeReference ||
-        typeAnnotation.typeName.type !== AST_NODE_TYPES.Identifier ||
-        typeAnnotation.typeArguments
-      ) {
+      if (!aliasedTypeReference) {
         return;
       }
 
-      const trackedImport = getTrackedImport(typeAnnotation.typeName);
+      const trackedImport = getTrackedImport(aliasedTypeReference);
+
       if (!trackedImport) {
         return;
       }
 
       reportIssue('preferTypeReexport', reportNode, exportedName, trackedImport);
+    }
+
+    function isReassignedDeclarator(variableDeclarator: TSESTree.VariableDeclarator) {
+      const [declaredVariable] = sourceCode.getDeclaredVariables(variableDeclarator);
+
+      return !declaredVariable || isReassigned(declaredVariable);
     }
 
     function checkVariableDeclarator(
@@ -180,7 +218,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       if (
         variableDeclarator.id.type !== AST_NODE_TYPES.Identifier ||
         !variableDeclarator.init ||
-        !isConstVariableDeclarator(variableDeclarator)
+        isReassignedDeclarator(variableDeclarator)
       ) {
         return;
       }
@@ -211,6 +249,27 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       }
     }
 
+    /**
+     * Matches an identity wrapper — a function whose entire body forwards its own parameters,
+     * unchanged and in order, to an imported callee:
+     *
+     * ```ts
+     * export const render = props => renderBase(props);
+     * export function render(props) { return renderBase(props); }
+     * ```
+     *
+     * The match is purely syntactic and never needs to know what the parameters are typed as.
+     * An annotation anywhere in the signature — parameter type, return type or type parameter —
+     * narrows the public contract, so the wrapper stops being a plain re-export and the rule bails.
+     * It also bails on `async`/generator functions, a reassigned function declaration, parameters
+     * that are not bare identifiers (rest, default, destructured), a body that is anything other
+     * than a single forwarding call, an optional call or explicit type arguments, and any argument
+     * list that is not exactly the parameter list.
+     *
+     * A wrapper is not byte-for-byte equivalent to its target: it drops `this`, `fn.length`,
+     * `fn.name`, arguments beyond the declared parameters, and `new`-ability. Those differences are
+     * not observable for the re-export patterns this rule targets, so they are reported anyway.
+     */
     function checkFunctionLike(
       functionNode: TSESTree.ArrowFunctionExpression | TSESTree.FunctionDeclaration | TSESTree.FunctionExpression,
       reportNode: TSESTree.Identifier | TSESTree.StringLiteral,
@@ -222,7 +281,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
 
       if (functionNode.type === AST_NODE_TYPES.FunctionDeclaration && functionNode.id) {
         const [declaredVariable] = sourceCode.getDeclaredVariables(functionNode);
-        if (declaredVariable && hasWriteReferences(declaredVariable)) {
+        if (declaredVariable && isReassigned(declaredVariable)) {
           return;
         }
       }
@@ -262,10 +321,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         }
 
         if (declaration.type === AST_NODE_TYPES.VariableDeclaration) {
-          if (declaration.kind !== 'const') {
-            return;
-          }
-
           declaration.declarations.forEach(variableDeclarator => {
             checkVariableDeclarator(variableDeclarator);
           });
@@ -380,17 +435,17 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
 
       const definitionNode = resolvedVariable.defs[0]?.node;
 
-      if (
-        definitionNode?.type !== AST_NODE_TYPES.VariableDeclarator ||
-        definitionNode.id.type !== AST_NODE_TYPES.Identifier ||
-        definitionNode.id.typeAnnotation ||
-        definitionNode.init?.type !== AST_NODE_TYPES.Identifier ||
-        !isConstVariableDeclarator(definitionNode)
-      ) {
+      if (!definitionNode || isReassigned(resolvedVariable)) {
         return;
       }
 
-      return getTrackedImport(definitionNode.init, visitedVariables);
+      const aliasTarget = getAliasTarget(definitionNode);
+
+      if (!aliasTarget) {
+        return;
+      }
+
+      return getTrackedImport(aliasTarget, visitedVariables);
     }
 
     function getResolvedVariable(identifier: TSESTree.Identifier): TSESLint.Scope.Variable | null {
