@@ -863,6 +863,98 @@ Not applicable
       expect.stringContaining('export const V9ControlledTextarea: Story ='),
     );
   });
+
+  test('Task 8 Menu guide and shared stories satisfy the ContextualMenu migration contract', () => {
+    const menuGuidePath = path.join(fromV8ComponentsDirectory, 'Menu.mdx');
+    const menuExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Menu/index.stories.tsx');
+    const menuGuideSource = readUtf8(menuGuidePath);
+    const strippedMenuGuideSource = stripIgnoredGuideContent(menuGuideSource);
+    const normalizedMenuGuideSource = menuGuideSource.replace(/\s+/g, ' ');
+    const menuSections = getGuideSections(strippedMenuGuideSource);
+    const menuPropMapping = menuSections.get('Prop mapping') ?? '';
+    const menuWhatChanged = menuSections.get('What changed') ?? '';
+    const requiredMenuProps = [
+      'items',
+      'hidden',
+      'onDismiss',
+      'directionalHint',
+      'target',
+      'calloutProps',
+      'onRenderMenuList',
+      'onRenderSubMenu',
+      'useTargetWidth',
+      'useTargetAsMinWidth',
+      'shouldUpdateWhenHidden',
+      'styles',
+      'theme',
+      'doNotLayer',
+    ];
+    const requiredMenuItemProps = [
+      'itemType',
+      'canCheck',
+      'checked',
+      'iconProps',
+      'onRenderContent',
+      'onRender',
+      'secondaryText',
+      'subMenuProps',
+      'sectionProps',
+      'split',
+      'href',
+      'role',
+      'style',
+      'itemProps',
+      'contextualMenuItemWrapperAs',
+    ];
+    const emptyPropMappingRows = menuPropMapping
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(line => line.startsWith('|'))
+      .map(parseTableCells)
+      .filter(cells => cells[0]?.startsWith('`'))
+      .flatMap(cells => {
+        const [propName = '', replacement = '', status = '', notes = ''] = cells;
+
+        return replacement !== '' && status !== '' && notes !== '' ? [] : [propName];
+      });
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const menuRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'contextualmenu');
+
+    expect(validateCompleteGuide(menuGuideSource, 'Menu')).toEqual([]);
+    expect(requiredMenuProps.filter(propName => !menuPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(requiredMenuItemProps.filter(propName => !menuPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(emptyPropMappingRows).toEqual([]);
+    expect(normalizedMenuGuideSource).toContain('| MC-1 | `items` arrays become declarative child components |');
+    expect(normalizedMenuGuideSource).toContain(
+      '| MC-2 | `itemType` and `canCheck` become dedicated item components |',
+    );
+    expect(normalizedMenuGuideSource).toContain('| MC-3 | visibility and dismissal become controlled `open` state |');
+    expect(normalizedMenuGuideSource).toContain(
+      '| MC-4 | target and callout positioning move to trigger composition and `positioning` |',
+    );
+    expect(normalizedMenuGuideSource).toContain('| MC-5 | render callbacks become slots or composed children |');
+    expect(menuWhatChanged).toContain('MenuItemRadio');
+    expect(menuWhatChanged.toLowerCase()).toContain('new capability');
+    expect(menuRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(menuRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(menuRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const menuExamplesSource = readUtf8(menuExamplesPath);
+
+    expect(menuExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V8ItemTypes: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V9ItemTypes: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V8ControlledVisibility: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V9ControlledOpen: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V8Submenu: Story ='));
+    expect(menuExamplesSource).toEqual(expect.stringContaining('export const V9Submenu: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {

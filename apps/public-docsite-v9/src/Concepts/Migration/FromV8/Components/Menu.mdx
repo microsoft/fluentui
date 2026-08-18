@@ -1,132 +1,213 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Menu/index.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/Menu Migration" />
 
-# Menu Migration
+# ContextualMenu to Menu Migration
 
 See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
 
-**v8**
+## Overview
 
-- A menu can be displayed by passing menuProps to Button, or by showing/hiding a ContextualMenu.
-  In both cases, the menu items are specified as an IContextualMenuItem array passed in props.
-- Different types of menu items are created by setting the IContextualMenuItem.itemType property.
+Use [Menu](/docs/components-menu-menu--docs) when migrating `ContextualMenu` scenarios to Fluent UI v9. The largest shift is architectural: v8 centralizes menu structure in an `items` array and optional render callbacks, while v9 uses explicit child components such as `MenuTrigger`, `MenuPopover`, `MenuList`, `MenuItem`, `MenuItemCheckbox`, `MenuGroup`, and nested `Menu` instances.
 
-**v9**
+Expect to rewrite item definitions, open-state control, and positioning. V9 no longer exposes callout beaks or FocusZone customization on `Menu`, but it adds clearer compound structure, built-in submenu composition, and a distinct `MenuItemRadio` pattern for single-select menu groups.
 
-- A menu can be displayed by creating a hierarchy of children under Menu.
-- There are children that act as containers and coordinate behavior including MenuTrigger, MenuPopover, MenuList, and MenuGroup.
-- There are individual components for different types of items including MenuItem, MenuDivider, MenuItemCheckbox, MenuItemRadio, MenuGroup, and MenuSplitGroup.
+## Component mapping
 
-## Types -> Component props
+| v8 scenario                                                        | v9 destination                                                    | Notes                                                                                                                             |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Standalone `ContextualMenu`                                        | `Menu` plus `MenuPopover` plus `MenuList`                         | Use a triggerless `Menu` only when you must anchor to a custom target; otherwise prefer `MenuTrigger` for built-in accessibility. |
+| `Button` with `menuProps` or a launch button plus `ContextualMenu` | `Menu` plus `MenuTrigger` plus a trigger child such as `Button`   | The trigger owns `aria-haspopup`, `aria-expanded`, keyboard open, and focus restoration.                                          |
+| `itemType: Divider`                                                | `MenuDivider`                                                     | Dividers are their own component instead of a sentinel item entry.                                                                |
+| `itemType: Header` or `itemType: Section`                          | `MenuGroupHeader` and `MenuGroup`                                 | Group structure is explicit in the child tree.                                                                                    |
+| `canCheck` plus `checked` items                                    | `MenuItemCheckbox` with `checkedValues` or `defaultCheckedValues` | Selection state moves from per-item booleans to menu-managed checked values.                                                      |
+| `subMenuProps`                                                     | Nested `Menu`                                                     | Each submenu is its own `Menu` with a `MenuItem` trigger inside the parent `MenuList`.                                            |
+| `href` menu items                                                  | `MenuItemLink`                                                    | Use the link-specific item component instead of mixing button and anchor behavior in one item shape.                              |
+| Single-select menu groups                                          | `MenuItemRadio`                                                   | This is a new v9 capability, not a direct v8 `ContextualMenu` item mapping.                                                       |
+| Split menu actions                                                 | `MenuSplitGroup` plus nested `MenuTrigger`                        | Split actions still work, but the trigger and primary action are composed explicitly.                                             |
 
-| v8 menu type                                  | v9 props                                |
-| --------------------------------------------- | --------------------------------------- |
-| IContextualMenuProps                          | MenuProps, MenuListProps (for submenus) |
-| IContextualMenuItemProps, IContextualMenuItem | MenuItemProps                           |
-| IContextualMenuItem itemType=Normal           | MenuItemProps                           |
-| IContextualMenuItem itemType=Divider          | MenuDividerProps                        |
-| IContextualMenuItem itemType=Header           | MenuGroupHeaderProps                    |
-| IContextualMenuItem itemType=Section          | MenuGroupProps                          |
-| IContextualMenuProps.hidden                   | MenuTrigger, MenuPopover                |
-| Button menuProps={'...'}                      | MenuButton                              |
+## What changed
 
-## IContextualMenuProps -> MenuProps
+`ContextualMenu` item arrays become declarative children. Instead of feeding `items`, `sectionProps`, and `subMenuProps` into one data shape, you author the menu tree directly with `MenuList`, `MenuGroup`, `MenuGroupHeader`, `MenuDivider`, `MenuItem`, and nested `Menu` components.
 
-| v8 IContextualMenuProps | v9 MenuProps (replacements) |
-| ----------------------- | --------------------------- |
-| alignTargetEdge         |                             |
-| ariaLabel               |                             |
-| beakWidth               |                             |
-| bounds                  |                             |
-| className               |                             |
-| componentRef            |                             |
-| contextualMenuItemAs    |                             |
-| coverTarget             |                             |
-| delayUpdateFocusOnHover |                             |
-| directionalHint         | positioning                 |
-| directionalHintFixed    |                             |
-| directionalHintForRTL   |                             |
-| focusZoneAs             |                             |
-| focusZoneProps          |                             |
-| gapSpace                |                             |
-| getMenuClassNames       |                             |
-| hidden                  |                             |
-| id                      |                             |
-| labelElementId          |                             |
-| isBeakVisible           |                             |
-| isSubMenu               |                             |
-| items                   |                             |
-| onDismiss               |                             |
-| onItemClick             |                             |
-| onRenderMenuList        |                             |
-| onRenderSubMenu         |                             |
-| onRestoreFocus          |                             |
-| doNotLayer              |                             |
-| onMenuOpened            |                             |
-| onMenuDismissed         |                             |
-| calloutProps            |                             |
-| shouldFocusOnMount      |                             |
-| shouldFocusOnContainer  |                             |
-| shouldUpdateWhenHidden  |                             |
-| styles                  |                             |
-| subMenuHoverDelay       |                             |
-| target                  |                             |
-| theme                   |                             |
-| title                   |                             |
-| useTargetAsMinWidth     |                             |
-| useTargetWidth          |                             |
+Item variants are also separate components now. Checkbox-like entries use `MenuItemCheckbox`, submenu triggers are normal `MenuItem` children wrapped by nested `Menu`, link navigation moves to `MenuItemLink`, and v9 adds `MenuItemRadio` as a new capability for single-select groups.
 
-## IContextualMenuItem -> MenuItemProps
+Visibility and dismissal are controlled through `open`, `defaultOpen`, and `onOpenChange` instead of `hidden`, `onDismiss`, `onMenuOpened`, and `onMenuDismissed`. Positioning moves from `target`, `directionalHint`, and `calloutProps` into trigger composition and the `positioning` prop. Render callbacks such as `onRender`, `onRenderContent`, `onRenderMenuList`, and `onRenderSubMenu` are replaced by slots, normal JSX children, or direct composition of the compound menu parts.
 
-| v8 IContextualMenuItem                  | v9 MenuItemProps+                                                  |
-| --------------------------------------- | ------------------------------------------------------------------ |
-| ariaDescribedBy                         | (removed)                                                          |
-| ariaDescription                         | (removed)                                                          |
-| ariaLabel                               | HTML aria-label                                                    |
-| canCheck                                | (use MenuItemRadio, MenuItemCheckbox)                              |
-| checked                                 | (use MenuItemRadio, MenuItemCheckbox)                              |
-| className                               | className                                                          |
-| componentRef                            | ref                                                                |
-| customOnRenderListLength                |                                                                    |
-| data                                    |                                                                    |
-| disabled                                | disabled                                                           |
-| getItemClassNames                       |                                                                    |
-| getSplitButtonVerticalDividerClassNames |                                                                    |
-| href                                    |                                                                    |
-| iconProps                               | icon (slot)                                                        |
-| inactive                                | (removed)                                                          |
-| itemProps                               | (use makeStyles and className)                                     |
-| items                                   | children                                                           |
-| itemType                                | children (MenuDivider, MenuGroup, MenuGroupHeader, MenuSplitGroup) |
-| key                                     |                                                                    |
-| keytipProps                             |                                                                    |
-| name (deprecated)                       | name & value (MenuItemCheckbox, MenuItemRadio)                     |
-| onClick                                 | onClick                                                            |
-| onMouseDown                             | onMouseDown                                                        |
-| onRender                                | children                                                           |
-| onRenderContent                         | children                                                           |
-| onRenderIcon                            | icon (slot)                                                        |
-| preferMenuTargetAsEventTarget           |                                                                    |
-| primaryDisabled                         |                                                                    |
-| rel                                     |                                                                    |
-| role                                    | (removed - set by component)                                       |
-| secondaryText                           | secondaryContent (slot)                                            |
-| sectionProps                            | (MenuGroup, MenuGroupHeader)                                       |
-| split                                   | children (MenuSplitGroup)                                          |
-| style                                   | (use makeStyles and className)                                     |
-| subMenuIconProps                        |                                                                    |
-| subMenuProps                            | children (Menu), hasSubmenu                                        |
-| target                                  |                                                                    |
-| text                                    | children                                                           |
-| title                                   | title                                                              |
-| \[propertyName: string\]                | (removed)                                                          |
+## Architecture and behavior
 
-## IContextualMenuSection -> MenuGroupProps
+Treat `Menu` as the state container and `MenuTrigger`, `MenuPopover`, and `MenuList` as the structural shell around the items. `MenuTrigger` clones a single child and injects the button semantics needed to open the menu, while `MenuPopover` and `MenuList` own popup rendering and keyboard navigation.
 
-| v8 IContextualMenuSection | v9 MenuGroupProps, MenuGroupHeaderProps |
-| ------------------------- | --------------------------------------- |
-| items                     | (use MenuGroup children)                |
-| title                     | (use MenuGroupHeader children)          |
-| topDivider                | (removed)                               |
-| bottomDivider             | (removed)                               |
+When the old menu was conditionally shown with `hidden`, migrate that logic to `open` and `onOpenChange`. The callback supplies `data.open` plus a `data.type` reason such as `menuTriggerClick`, `menuItemClick`, or `clickOutside`, so you can mirror v8 dismissal logic without inspecting DOM events manually. Nested menus are separate `Menu` components inside the parent `MenuList`, which keeps submenu behavior, hover delay, and keyboard semantics local to each branch.
+
+## Prop mapping
+
+### `IContextualMenuProps`
+
+| v8 prop                   | v9 equivalent                                                                  | Status      | Migration notes                                                                                                                               |
+| ------------------------- | ------------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `alignTargetEdge`         | `positioning`                                                                  | Partial     | Use `positioning` alignment and boundary options, but there is no single v9 flag that exactly mirrors the v8 edge-flip preference.            |
+| `ariaLabel`               | `aria-label` on `MenuList`                                                     | Use         | Apply the accessible name to the rendered list surface.                                                                                       |
+| `beakWidth`               | No equivalent                                                                  | Unsupported | `Menu` does not render a callout beak.                                                                                                        |
+| `bounds`                  | `positioning={{ flipBoundary, overflowBoundary }}`                             | Use         | Boundary control moved into the positioning configuration.                                                                                    |
+| `className`               | `className` on `MenuPopover` or `MenuList`                                     | Compose     | Style the popup and list slots directly instead of styling a single root.                                                                     |
+| `componentRef`            | `ref` on `MenuPopover`, `MenuList`, or the trigger child                       | Compose     | `Menu` itself is not a single DOM element, so attach refs to the slot you need.                                                               |
+| `contextualMenuItemAs`    | Compose explicit item components                                               | Unsupported | Rewrite the item tree with `MenuItem`, `MenuItemLink`, `MenuItemCheckbox`, or nested `Menu` rather than injecting one renderer for all items. |
+| `coverTarget`             | `positioning={{ coverTarget: true }}`                                          | Use         | Target-covering behavior moved into positioning middleware.                                                                                   |
+| `delayUpdateFocusOnHover` | Built-in menu focus management                                                 | Removed     | `MenuList` owns hover and keyboard focus behavior without an exposed override.                                                                |
+| `directionalHint`         | `positioning={{ position, align }}`                                            | Use         | Translate the v8 directional intent into the v9 positioning shorthand.                                                                        |
+| `directionalHintFixed`    | `positioning` boundary options                                                 | Partial     | You can tune boundaries, but there is no direct v9 equivalent for the exact fixed-side flag.                                                  |
+| `directionalHintForRTL`   | Automatic RTL-aware positioning                                                | Use         | V9 positioning respects RTL without a separate prop.                                                                                          |
+| `focusZoneAs`             | Built-in `MenuList` focus handling                                             | Unsupported | `MenuList` does not expose a FocusZone replacement slot.                                                                                      |
+| `focusZoneProps`          | Built-in `MenuList` focus handling                                             | Unsupported | Keyboard navigation is built in and not configured through FocusZone props.                                                                   |
+| `gapSpace`                | `positioning={{ offset }}`                                                     | Use         | Offset spacing moves into the positioning shorthand.                                                                                          |
+| `getMenuClassNames`       | Griffel `className` and slot props                                             | Compose     | Replace class-name factories with slot-level styling.                                                                                         |
+| `hidden`                  | `open` or conditional rendering                                                | Use         | Control visibility with boolean open state instead of a hidden prop.                                                                          |
+| `id`                      | `id` on `MenuList` or `MenuPopover`                                            | Use         | Apply the identifier to the rendered slot that needs the DOM id.                                                                              |
+| `labelElementId`          | `aria-labelledby` on `MenuList`                                                | Use         | Preserve the label relationship on the menu surface.                                                                                          |
+| `isBeakVisible`           | No equivalent                                                                  | Unsupported | V9 menus do not support beak rendering.                                                                                                       |
+| `isSubMenu`               | Nested `Menu`                                                                  | Compose     | Submenus are separate menu trees instead of a boolean mode on one component.                                                                  |
+| `items`                   | `MenuList` children                                                            | Use         | Replace the data array with explicit item children.                                                                                           |
+| `onDismiss`               | `onOpenChange`                                                                 | Use         | Close handling now comes through `data.open === false` and the dismissal reason in `data.type`.                                               |
+| `onItemClick`             | `onClick` on the relevant item component                                       | Compose     | Attach handlers to each `MenuItem`, `MenuItemCheckbox`, or `MenuItemLink`.                                                                    |
+| `onRenderMenuList`        | Compose `MenuList`, `MenuGroup`, and `MenuDivider` directly                    | Compose     | Build the list structure in JSX instead of intercepting a render callback.                                                                    |
+| `onRenderSubMenu`         | Compose nested `Menu` directly                                                 | Compose     | Submenu rendering is expressed through nested menu children.                                                                                  |
+| `onRestoreFocus`          | `MenuTrigger` default behavior or `useRestoreFocusTarget()` for custom targets | Compose     | Triggered menus restore focus automatically; triggerless menus require explicit focus restoration work.                                       |
+| `doNotLayer`              | `inline` or `mountNode`                                                        | Use         | Use inline rendering or portal targeting instead of the v8 layer toggle.                                                                      |
+| `onMenuOpened`            | `onOpenChange` when `data.open` is `true`                                      | Use         | Derive open notifications from the shared state callback.                                                                                     |
+| `onMenuDismissed`         | `onOpenChange` when `data.open` is `false`                                     | Use         | Derive closed notifications from the shared state callback.                                                                                   |
+| `calloutProps`            | `positioning`, `inline`, `mountNode`, `closeOnScroll`                          | Partial     | Some popup behaviors moved to dedicated menu props, while callout-only features such as beaks are gone.                                       |
+| `shouldFocusOnMount`      | Default v9 menu focus behavior                                                 | Removed     | `Menu` focuses the appropriate item when it opens and does not expose the v8 opt-out prop.                                                    |
+| `shouldFocusOnContainer`  | No equivalent                                                                  | Unsupported | Container focus is not a supported menu pattern in v9.                                                                                        |
+| `shouldUpdateWhenHidden`  | No equivalent                                                                  | Unsupported | V9 does not keep a hidden menu tree warm for later reuse.                                                                                     |
+| `styles`                  | Griffel `className` on `MenuPopover`, `MenuList`, and item slots               | Compose     | Style the relevant slots directly with classes and tokens.                                                                                    |
+| `subMenuHoverDelay`       | `hoverDelay`                                                                   | Use         | Hover delay is a first-class `Menu` prop in v9.                                                                                               |
+| `target`                  | `MenuTrigger` or triggerless `Menu` with custom positioning target             | Compose     | Prefer a normal trigger; only drop to manual targeting when the menu must be anchored elsewhere.                                              |
+| `theme`                   | `FluentProvider`                                                               | Use         | Theme context is supplied by the provider instead of a per-menu prop.                                                                         |
+| `title`                   | `MenuGroupHeader` or composed content above `MenuList`                         | Compose     | Titles become normal menu children rather than a root string prop.                                                                            |
+| `useTargetAsMinWidth`     | Custom width styling plus `positioning`                                        | Partial     | V9 has no dedicated min-width-to-target prop, so matching this behavior requires custom measurement or styling.                               |
+| `useTargetWidth`          | `positioning={{ matchTargetSize: 'width' }}`                                   | Use         | Width matching moved into the positioning middleware.                                                                                         |
+
+### `IContextualMenuItem`
+
+| v8 prop                                   | v9 equivalent                                                      | Status      | Migration notes                                                                                                            |
+| ----------------------------------------- | ------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `ariaDescribedBy`                         | `aria-describedby` on the item component                           | Use         | Preserve the relationship with native ARIA props on the rendered item.                                                     |
+| `ariaDescription`                         | `aria-description` on the item component                           | Use         | Native ARIA props replace the bespoke v8 field.                                                                            |
+| `ariaLabel`                               | `aria-label` on `MenuItem`, `MenuItemCheckbox`, or `MenuItemLink`  | Use         | Keep explicit item labels on the rendered component.                                                                       |
+| `canCheck`                                | `MenuItemCheckbox` or `MenuItemRadio`                              | Use         | Checkbox behavior moves to dedicated components, and radio groups are a new v9 capability.                                 |
+| `checked`                                 | `checkedValues` or `defaultCheckedValues` on `Menu` or `MenuList`  | Use         | Checked state is stored by item `name` and `value`, not a boolean on each item object.                                     |
+| `className`                               | `className` on the item component or slot props                    | Use         | Apply styling directly to the rendered menu item.                                                                          |
+| `componentRef`                            | `ref`                                                              | Use         | Refs point to the rendered item element.                                                                                   |
+| `customOnRenderListLength`                | No equivalent                                                      | Unsupported | Child composition removes the need for list-length bookkeeping.                                                            |
+| `data`                                    | Closures, React state, or `data-*` attributes                      | Compose     | Store custom payloads in React state or pass explicit DOM data attributes when the markup needs them.                      |
+| `disabled`                                | `disabled`                                                         | Use         | Disabled behavior stays on the dedicated item component.                                                                   |
+| `getItemClassNames`                       | Griffel `className` and slot props                                 | Compose     | Replace class factories with slot-level styling.                                                                           |
+| `getSplitButtonVerticalDividerClassNames` | `MenuSplitGroup` styling                                           | Partial     | Split-menu styling is explicit, but there is no direct divider-class callback.                                             |
+| `href`                                    | `MenuItemLink href`                                                | Use         | Link navigation uses the anchor-specific item component.                                                                   |
+| `iconProps`                               | `icon` slot                                                        | Use         | Supply JSX to the `icon` slot instead of an `IIconProps` object.                                                           |
+| `inactive`                                | Built-in disabled-focusable behavior                               | Removed     | V9 disabled items already use the supported focus behavior and do not need a separate prop.                                |
+| `itemProps`                               | Item props, slot props, and `className`                            | Compose     | Pass props to the exact item component you render instead of storing nested overrides in data.                             |
+| `items`                                   | Nested `Menu` children                                             | Compose     | Nested arrays become nested menu trees.                                                                                    |
+| `itemType`                                | `MenuDivider`, `MenuGroup`, `MenuGroupHeader`, or `MenuSplitGroup` | Use         | Item shape switches are replaced by dedicated components.                                                                  |
+| `key`                                     | React `key`                                                        | Use         | Preserve stable React keys on the child elements.                                                                          |
+| `keytipProps`                             | No equivalent                                                      | Unsupported | Keytips do not have a stable v9 menu-item API.                                                                             |
+| `name`                                    | `name` on `MenuItemCheckbox` or `MenuItemRadio` plus text children | Use         | The deprecated v8 string now participates in selectable item grouping.                                                     |
+| `onClick`                                 | `onClick`                                                          | Use         | Click handlers stay on the rendered item component.                                                                        |
+| `onMouseDown`                             | `onMouseDown`                                                      | Use         | Pointer interception still uses the native event prop.                                                                     |
+| `onRender`                                | Compose the item with normal JSX                                   | Compose     | Replace custom item render functions with explicit children or another item component.                                     |
+| `onRenderContent`                         | `children`, `icon`, `secondaryContent`, and `subText`              | Compose     | Slot props and normal JSX replace content render callbacks.                                                                |
+| `onRenderIcon`                            | `icon` slot                                                        | Use         | The icon becomes slot content.                                                                                             |
+| `preferMenuTargetAsEventTarget`           | No equivalent                                                      | Unsupported | V9 does not expose an event-target remapping flag for item clicks.                                                         |
+| `primaryDisabled`                         | Disabled main action inside `MenuSplitGroup`                       | Partial     | Split actions still work, but you must compose the primary item and submenu trigger yourself.                              |
+| `rel`                                     | `MenuItemLink rel`                                                 | Use         | Link relationship props stay on the link-specific item component.                                                          |
+| `role`                                    | Dedicated item component semantics                                 | Partial     | Prefer the built-in item roles; override only when you are composing a custom child that truly needs it.                   |
+| `secondaryText`                           | `secondaryContent` or `subText`                                    | Use         | V9 distinguishes opposite-edge content from multiline supporting text.                                                     |
+| `sectionProps`                            | `MenuGroup` and `MenuGroupHeader`                                  | Use         | Sections are modeled as explicit group children.                                                                           |
+| `split`                                   | `MenuSplitGroup` plus nested `MenuTrigger`                         | Use         | Split actions become explicit composition instead of a boolean item flag.                                                  |
+| `style`                                   | Griffel `className` and slot props                                 | Compose     | Replace inline style objects with token-based classes.                                                                     |
+| `submenuIconProps`                        | Built-in submenu indicator or `submenuIndicator` slot              | Partial     | Nested menus render an indicator automatically, and you only customize it through the slot when necessary.                 |
+| `subMenuProps`                            | Nested `Menu`                                                      | Use         | Each submenu is a nested menu tree with its own props.                                                                     |
+| `target`                                  | `MenuItemLink target`                                              | Use         | Window targeting stays on link items.                                                                                      |
+| `text`                                    | `children`                                                         | Use         | Item labels are authored as component children.                                                                            |
+| `title`                                   | `title`                                                            | Use         | Native tooltip text stays on the rendered item component.                                                                  |
+| `contextualMenuItemWrapperAs`             | Compose explicit item components                                   | Unsupported | V9 does not expose a wrapper override for every item, so rebuild the item structure directly with the compound components. |
+| `[propertyName: string]`                  | Explicit props or React state                                      | Unsupported | V9 does not support arbitrary extra item fields on a shared item-data object.                                              |
+
+### `IContextualMenuSection`
+
+| v8 prop         | v9 equivalent                    | Status  | Migration notes                                       |
+| --------------- | -------------------------------- | ------- | ----------------------------------------------------- |
+| `items`         | `MenuGroup` children             | Use     | Group items are authored inline inside the menu tree. |
+| `title`         | `MenuGroupHeader`                | Use     | Group titles become their own component.              |
+| `topDivider`    | `MenuDivider` before `MenuGroup` | Compose | Insert the divider explicitly where it belongs.       |
+| `bottomDivider` | `MenuDivider` after `MenuGroup`  | Compose | Insert the divider explicitly where it belongs.       |
+
+## Styling and theming
+
+Move v8 `styles`, `style`, and class-name factories to Griffel classes applied to the menu slots you actually render. In practice that usually means a class for `MenuPopover`, `MenuList`, or specific item slots such as `icon`, `secondaryContent`, or `submenuIndicator`. Keep spacing, color, and typography aligned with Fluent v9 design tokens.
+
+Theme changes move to `FluentProvider`. Do not pass per-instance `theme` props to the menu tree; instead, wrap the relevant subtree and let `Menu`, `MenuPopover`, and the item components consume the shared theme context.
+
+## Accessibility
+
+Prefer `MenuTrigger` whenever the menu is launched by an interactive control. It wires `aria-haspopup`, `aria-expanded`, keyboard open behavior, and focus restoration for you. Only use a triggerless `Menu` when you truly need a custom anchor, and then supply your own accessible trigger semantics and focus restoration.
+
+Use `MenuGroup` with `MenuGroupHeader` for sectioned content so screen readers get meaningful group labeling. `MenuList` owns keyboard navigation, so the old FocusZone escape hatches are intentionally absent. When you compose split actions or submenu triggers, give the submenu trigger an explicit `aria-label` if its visible text is ambiguous.
+
+## Examples
+
+### MC-1 Replace `items` arrays with explicit menu children
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+
+### MC-2 and MC-5 Replace item-type switches and render callbacks with dedicated components and slots
+
+<Canvas of={Examples.V8ItemTypes} />
+<Source of={Examples.V8ItemTypes} />
+<Canvas of={Examples.V9ItemTypes} />
+<Source of={Examples.V9ItemTypes} />
+
+### MC-3 and MC-4 Control visibility with `open` and move placement into trigger composition and `positioning`
+
+<Canvas of={Examples.V8ControlledVisibility} />
+<Source of={Examples.V8ControlledVisibility} />
+<Canvas of={Examples.V9ControlledOpen} />
+<Source of={Examples.V9ControlledOpen} />
+
+### MC-1 and MC-4 Rewrite submenu data into nested `Menu` components
+
+<Canvas of={Examples.V8Submenu} />
+<Source of={Examples.V8Submenu} />
+<Canvas of={Examples.V9Submenu} />
+<Source of={Examples.V9Submenu} />
+
+## Unsupported scenarios and known gaps
+
+There is no v9 equivalent for the v8 callout beak props such as `beakWidth` and `isBeakVisible`, so menus no longer render a beak. `shouldUpdateWhenHidden` also has no supported replacement; if you need a reusable popup, keep the menu state outside the component tree and reopen it with `open`.
+
+`focusZoneAs`, `focusZoneProps`, `contextualMenuItemAs`, `onRenderContextualMenuItem`, and `keytipProps` do not map to stable v9 menu props. Rebuild those scenarios with the explicit compound components, or move the customization outside the menu when the behavior is no longer a good fit for the v9 control.
+
+## Major-change checklist
+
+| ID   | Change                                                                       |
+| ---- | ---------------------------------------------------------------------------- |
+| MC-1 | `items` arrays become declarative child components                           |
+| MC-2 | `itemType` and `canCheck` become dedicated item components                   |
+| MC-3 | visibility and dismissal become controlled `open` state                      |
+| MC-4 | target and callout positioning move to trigger composition and `positioning` |
+| MC-5 | render callbacks become slots or composed children                           |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Date       | Conclusion                                                                                                                              |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/ContextualMenu/ContextualMenu.types.ts` `IContextualMenuProps.items`<br />`packages/react-components/react-menu/library/src/components/Menu/Menu.types.ts` `MenuProps.children`<br />`packages/react-components/react-menu/library/src/components/MenuList/MenuList.types.ts` `MenuListProps`                                                                                                                                                                                                                                                                                                                                  | 2026-08-17 | V8 menu structure is a single `items` array, while v9 requires an explicit `Menu` child tree rooted in `MenuList`.                      |
+| MC-2 | `packages/react/src/components/ContextualMenu/ContextualMenu.types.ts` `IContextualMenuItem.itemType`, `canCheck`, `checked`, `sectionProps`<br />`packages/react-components/react-menu/library/src/components/MenuDivider/MenuDivider.types.ts` `MenuDividerProps`<br />`packages/react-components/react-menu/library/src/components/MenuGroup/MenuGroup.types.ts` `MenuGroupProps`<br />`packages/react-components/react-menu/library/src/components/MenuGroupHeader/MenuGroupHeader.types.ts` `MenuGroupHeaderProps`<br />`packages/react-components/react-menu/library/src/components/MenuItemCheckbox/MenuItemCheckbox.types.ts` `MenuItemCheckboxProps` | 2026-08-17 | V9 replaces v8 item-type flags and checkable booleans with dedicated divider, group, header, and checkbox item components.              |
+| MC-3 | `packages/react/src/components/ContextualMenu/ContextualMenu.types.ts` `IContextualMenuProps.hidden`, `onDismiss`, `onMenuOpened`, `onMenuDismissed`<br />`packages/react-components/react-menu/library/src/components/Menu/Menu.types.ts` `MenuProps.open`, `defaultOpen`, `onOpenChange`, `MenuOpenChangeData`<br />`packages/react-components/react-menu/stories/src/Menu/MenuControllingOpenAndClose.stories.tsx` `ControllingOpenAndClose`                                                                                                                                                                                                               | 2026-08-17 | Visibility and dismissal move from v8 hidden-state callbacks to v9 controlled open state with a typed open-change reason.               |
+| MC-4 | `packages/react/src/components/ContextualMenu/ContextualMenu.types.ts` `IContextualMenuProps.target`, `directionalHint`, `gapSpace`, `coverTarget`, `useTargetWidth`<br />`packages/react-components/react-menu/library/src/components/Menu/Menu.types.ts` `MenuProps.positioning`, `inline`, `mountNode`<br />`packages/react-components/react-menu/stories/src/Menu/MenuAnchorToTarget.stories.tsx` `AnchorToCustomTarget`<br />`packages/react-components/react-positioning/library/src/types.ts` `PositioningProps.matchTargetSize`, `coverTarget`, `offset`                                                                                              | 2026-08-17 | Trigger ownership and popup placement move into `MenuTrigger` plus the v9 positioning shorthand instead of v8 target and callout props. |
+| MC-5 | `packages/react/src/components/ContextualMenu/ContextualMenu.types.ts` `IContextualMenuItem.onRender`, `onRenderContent`, `IContextualMenuProps.onRenderMenuList`, `onRenderSubMenu`, `contextualMenuItemAs`<br />`packages/react-components/react-menu/library/src/components/MenuItem/MenuItem.types.ts` `MenuItemSlots.icon`, `secondaryContent`, `subText`, `content`<br />`packages/react-components/react-menu/stories/src/Menu/MenuSecondaryContentForMenuItems.stories.tsx` `SecondaryContentForMenuItems`                                                                                                                                            | 2026-08-17 | V9 replaces render callbacks with slot content and normal JSX composition across the menu tree.                                         |
