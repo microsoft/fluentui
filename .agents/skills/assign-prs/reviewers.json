@@ -109,19 +109,19 @@
       "login": "dmytrokirpa",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "mainframev",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "PaulGMardling",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "tudorpopams",
