@@ -1278,6 +1278,93 @@ Not applicable
     expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V8CustomHeaderFooter: Story ='));
     expect(drawerExamplesSource).toEqual(expect.stringContaining('export const V9ComposedHeaderFooter: Story ='));
   });
+
+  test('Task 13 MessageBar guide and shared stories satisfy the MessageBar migration contract', () => {
+    const messageBarGuidePath = path.join(fromV8ComponentsDirectory, 'MessageBar.mdx');
+    const messageBarExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/MessageBar/index.stories.tsx');
+    const messageBarGuideSource = readUtf8(messageBarGuidePath);
+    const normalizedMessageBarGuideSource = messageBarGuideSource.replace(/\s+/g, ' ');
+    const messageBarSections = getGuideSections(stripIgnoredGuideContent(messageBarGuideSource));
+    const messageBarPropMapping = messageBarSections.get('Prop mapping') ?? '';
+    const messageBarAccessibility = messageBarSections.get('Accessibility') ?? '';
+    const messageBarUnsupported = messageBarSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredMessageBarProps = [
+      'messageBarType',
+      'isMultiline',
+      'actions',
+      'onDismiss',
+      'dismissButtonAriaLabel',
+      'messageBarIconProps',
+      'onRenderIcon',
+      'truncated',
+      'overflowButtonAriaLabel',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const messageBarRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'messagebar');
+
+    expect(validateCompleteGuide(messageBarGuideSource, 'MessageBar')).toEqual([]);
+    expect(requiredMessageBarProps.filter(propName => !messageBarPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedMessageBarGuideSource).toContain(
+      '| MC-1 | supported `messageBarType` values become string `intent`; `blocked` and `severeWarning` require a documented fallback choice |',
+    );
+    expect(normalizedMessageBarGuideSource).toContain(
+      '| MC-2 | body, title, actions, and container action become compound children |',
+    );
+    expect(normalizedMessageBarGuideSource).toContain(
+      '| MC-3 | `onDismiss` and dismiss-button creation move to consumer state/composition |',
+    );
+    expect(normalizedMessageBarGuideSource).toContain('| MC-4 | `isMultiline` becomes `layout` |');
+    expect(normalizedMessageBarGuideSource).toContain('| MC-5 | groups of messages can use `MessageBarGroup` |');
+    expect(normalizedMessageBarGuideSource).toContain(
+      '| MC-6 | v8 `truncated` and overflow behavior require custom composition |',
+    );
+    expect(messageBarGuideSource).toContain('packages/react-components/react-message-bar/library/docs/Spec.md');
+    expect(messageBarGuideSource).toContain(
+      'packages/react-components/react-message-bar/library/src/components/MessageBar/useMessageBar.ts',
+    );
+    expect(messageBarGuideSource).toContain(
+      'packages/react-components/react-message-bar/library/src/components/MessageBar/MessageBar.test.tsx',
+    );
+    expect(messageBarGuideSource).toContain(
+      'packages/react-components/react-message-bar/library/src/components/MessageBar/useMessageBar.test.tsx',
+    );
+    expect(messageBarAccessibility).toContain('role="group"');
+    expect(messageBarAccessibility).toContain('polite');
+    expect(messageBarAccessibility).toContain('assertive');
+    expect(messageBarAccessibility).toContain('dismiss');
+    expect(messageBarAccessibility).toContain('aria-label');
+    expect(messageBarUnsupported).toContain('blocked');
+    expect(messageBarUnsupported).toContain('severeWarning');
+    expect(messageBarUnsupported).toContain('truncated');
+    expect(messageBarUnsupported).toContain('overflow');
+    expect(messageBarRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(messageBarRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(messageBarRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const messageBarExamplesSource = readUtf8(messageBarExamplesPath);
+
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8IntentTypes: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9IntentValues: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8ActionsAndDismiss: Story ='));
+    expect(messageBarExamplesSource).toEqual(
+      expect.stringContaining('export const V9ComposedActionsAndDismiss: Story ='),
+    );
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8Multiline: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9Layout: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8MultipleMessages: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9MessageBarGroup: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V8Truncated: Story ='));
+    expect(messageBarExamplesSource).toEqual(expect.stringContaining('export const V9CustomTruncation: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
