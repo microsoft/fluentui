@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@fluentui/scripts-github": "*",
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-utils": "*"
   }

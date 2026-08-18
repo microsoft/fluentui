@@ -1,0 +1,33 @@
+# Flags a release that published to npm but deliberately skipped the git push.
+#
+# Only fires when the git push preflight failed and the release was forced. In that case packages
+# are live on npm while the repo still has the old versions, so someone must run the recovery.
+#
+# Include immediately AFTER the beachball publish step.
+
+parameters:
+  - name: dryRun
+    type: boolean
+    default: false
+
+steps:
+  - ${{ if eq(parameters.dryRun, false) }}:
+      - script: |
+          echo "##vso[task.logissue type=warning]Packages were published to npm but NOT pushed to git."
+          echo "##vso[task.logissue type=warning]Run the 'release-recovery' skill against this pipeline run to resync the repo."
+          echo ""
+          echo "The repository is now out of sync with npm."
+          echo ""
+          echo "To recover, from a clean fluentui checkout run:"
+          echo "  /release-recovery $(System.CollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)"
+          echo ""
+          echo "Then fix the underlying cause - usually rotating the GitHub PAT in the"
+          echo "'Github and NPM secrets' variable group - or the next release will fail the same way."
+          echo ""
+
+          # Green-with-warning: the npm release genuinely succeeded, so a red run would be
+          # misleading and would train people to ignore failed release runs. But plain green would
+          # let the outstanding manual recovery slip by unnoticed.
+          echo "##vso[task.complete result=SucceededWithIssues;]Published to npm; git push skipped - recovery required"
+        displayName: 'Flag forced release for recovery'
+        condition: and(succeeded(), ne(variables['gitPushAvailable'], 'true'))
