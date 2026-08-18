@@ -35,7 +35,9 @@ export function storyOrder(): Plugin {
 
       return {
         code: `${code}\nexport const __storyOrder = ${JSON.stringify(order)};\n`,
-        map: null,
+        // Appended at the end, so every original position is unchanged; an empty mappings
+        // string tells Rollup the source is untouched rather than breaking the map chain.
+        map: { mappings: '' },
       };
     },
   };

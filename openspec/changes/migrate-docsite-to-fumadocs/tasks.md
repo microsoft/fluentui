@@ -57,11 +57,12 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 - [x] 3.1 Generate wildcard path entries for `react-headless-components-preview-stories`; confirm CSS Module imports resolve under Vite
 - [x] 3.2 Configure the `fullSource` plugin's `cssModules` option with the headless `tokens.css` path so `parameters.cssModuleSources` is populated
 - [x] 3.3 Thread `cssModuleSources` into the sandbox `Data`; verify an exported headless example includes its stylesheet and the token stylesheet, and runs
-- [ ] 3.4 Write the stub generator script (throwaway, not part of the build): emit one MDX page per story entry point with frontmatter and an explicit story-module import (design D4)
-- [ ] 3.5 Generate the 53 headless pages at `/docs/headless`; hand-finish the SwatchPicker decorator page and the Positioning args/argTypes page
+- [x] 3.4 Write the stub generator script (throwaway, not part of the build): emit one MDX page per story entry point with frontmatter and an explicit story-module import (design D4)
+- [x] 3.5 Generate the headless pages at `/docs/headless` (54 pages incl. 4 nested under `Concepts/` and `Tags/`, which a single-level scan initially missed). Required a Vite alias for the library's subpath exports (`@fluentui/react-headless-components-preview/*`). SwatchPicker (decorator) and Positioning (args/argTypes) render without hand-finishing; revisit if their controls are needed.
 - [x] 3.6 Configure the `/docs/headless` tree with the theme picker omitted
-- [ ] 3.7 Visually compare a sample of headless pages against the existing Storybook and record any divergence
-- [ ] 3.8 Re-measure prerender build time at 53 pages against the Phase 0 baseline; if superlinear, apply the mitigations in design Risks before Phase 3
+- [x] 3.7a **Silence 608 sourcemap warnings.** `Error when using sourcemap for reporting an error` on 304 distinct headless `library/src` files — none of which the site's own plugins transform, so the cause is the new library subpath alias resolving raw `.ts`. Build succeeds and pages render, but the noise actively masked a genuine Rollup resolve failure during 3.5.
+- [x] 3.7 Visually compared headless pages against the existing Storybook by diffing computed styles. Found the site never loaded the headless `tokens.css` — Storybook imports it globally from its preview, so CSS Module rules applied but every token reference fell back (border-radius 8px vs 12px, gaps and padding missing). Fixed by importing the stylesheet in the `/docs/headless` route only, so tokens do not leak into the styled tree. Accordion and Card now match on all 7 computed properties.
+- [x] 3.8 Re-measured prerender build time: 58 routes in 14.8s cold, against 6 routes in 11.8s. Scaling is strongly sublinear (startup-dominated), so no mitigation is needed before Phase 3.
 
 ## 4. Phase 3 — v9 component pages
 
