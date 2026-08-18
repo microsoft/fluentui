@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "fix!: move Combobox/Dropdown data-attributes to the root slot and add combobox filtering",
+  "comment": "feat!: add Combobox filtering and root state attributes",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
