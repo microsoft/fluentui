@@ -16,10 +16,13 @@ import {
   getExistingP0GuideDocsIds,
   getExistingP0GuideFiles,
   getInventoryBacktickedKeys,
+  getInventoryColumnIndex,
   getInventoryRows,
   getLinkedMissingP0Rows,
   getPrematurelyLinkedMissingP0Rows,
   getUnresolvedInternalDocsLinkIssues,
+  normalizeInventoryCell,
+  parseTableCells,
   readUtf8,
   relativeToRepo,
   type DiscoveredDocs,
@@ -204,15 +207,6 @@ const getGuideSections = (source: string): Map<string, string> => {
   return sections;
 };
 
-const parseTableCells = (raw: string): string[] =>
-  raw
-    .split('|')
-    .slice(1, -1)
-    .map(cell => cell.trim());
-
-const normalizeInventoryCell = (cell: string | undefined): string =>
-  cell?.replace(/^`|`$/g, '').trim().toLowerCase() ?? '';
-
 const hasExampleCoverage = (source: string, storyExportName: 'V8Basic' | 'V9Basic'): boolean => {
   const normalizedSource = source.replace(/\s+/g, ' ');
 
@@ -237,7 +231,7 @@ const validateCompleteGuide = (source: string, pageName: string): string[] => {
   for (const requiredSection of requiredCompleteGuideSections) {
     const content = sections.get(requiredSection);
 
-    if (!content) {
+    if (content === undefined) {
       errors.push(`${pageName}: missing required section "${requiredSection}".`);
     }
   }
@@ -577,6 +571,19 @@ Not applicable
     expect(validateCompleteGuide(validGuide, 'Input')).toEqual([]);
   });
 
+  test('distinguishes an empty required section from a missing heading', () => {
+    const guideWithEmptyOverview = `
+## Overview
+
+## Component mapping
+Not applicable
+`;
+    const errors = validateCompleteGuide(guideWithEmptyOverview, 'Input');
+
+    expect(errors).toContain('Input: section "Overview" must contain content or the literal "Not applicable".');
+    expect(errors).not.toContain('Input: missing required section "Overview".');
+  });
+
   test('ignores code fences and comments when checking sections and example coverage', () => {
     const guideWithIgnoredBlocks = `
 import { Meta, Canvas, Source } from '@storybook/addon-docs/blocks';
@@ -756,8 +763,17 @@ Not applicable
 
   test('enforces the contract only for complete P0 guides', () => {
     const configuredDocs = getConfiguredDocs();
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+
     const contractIssues = getInventoryRows().flatMap(row => {
-      if (normalizeInventoryCell(row.cells[3]) !== 'complete' || normalizeInventoryCell(row.cells[5]) !== 'p0') {
+      if (
+        normalizeInventoryCell(row.cells[statusColumnIndex]) !== 'complete' ||
+        normalizeInventoryCell(row.cells[priorityColumnIndex]) !== 'p0'
+      ) {
         return [];
       }
 

@@ -240,14 +240,14 @@ export function extractMdxMetaTitles(source: string): string[] {
   return [...source.matchAll(/<Meta\s+title=(?:"([^"]+)"|'([^']+)')\s*\/>/g)].map(match => match[1] ?? match[2]);
 }
 
-function parseTableCells(raw: string): string[] {
+export function parseTableCells(raw: string): string[] {
   return raw
     .split('|')
     .slice(1, -1)
     .map(cell => cell.trim());
 }
 
-function normalizeInventoryCell(cell: string | undefined): string {
+export function normalizeInventoryCell(cell: string | undefined): string {
   return cell?.replace(/^`|`$/g, '').trim().toLowerCase() ?? '';
 }
 
@@ -623,7 +623,7 @@ export function getDocsIdFromUrl(url: string): string | undefined {
   return match?.[1];
 }
 
-function getInventoryColumnIndex(columnName: string): number {
+export function getInventoryColumnIndex(columnName: string): number {
   return getInventoryTable().headerCells.findIndex(
     cell => normalizeInventoryCell(cell) === normalizeInventoryCell(columnName),
   );
