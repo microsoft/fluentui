@@ -29,8 +29,8 @@ import { TeachingPopoverCarouselCardState } from '@fluentui/react-teaching-popov
 import { TeachingPopoverCarouselFooterButtonBaseProps as TeachingPopoverCarouselFooterButtonProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselFooterButtonSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselFooterButtonBaseState as TeachingPopoverCarouselFooterButtonState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverCarouselNavButtonBaseProps } from '@fluentui/react-teaching-popover';
 import type { TeachingPopoverCarouselNavButtonBaseState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonBaseProps as TeachingPopoverCarouselNavButtonProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselNavBaseProps as TeachingPopoverCarouselNavProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselNavSlots } from '@fluentui/react-teaching-popover';
@@ -167,8 +167,7 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
 // @public (undocumented)
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
-// @public (undocumented)
-export type TeachingPopoverCarouselNavButtonProps = TeachingPopoverCarouselNavButtonBaseProps;
+export { TeachingPopoverCarouselNavButtonProps }
 
 export { TeachingPopoverCarouselNavButtonSlots }
 

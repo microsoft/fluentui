@@ -4,9 +4,9 @@
 
 ```ts
 
-import type { BadgeBaseProps } from '@fluentui/react-badge';
 import type { BadgeBaseState } from '@fluentui/react-badge';
-import type { BadgeSlots as BadgeSlots_2 } from '@fluentui/react-badge';
+import { BadgeBaseProps as BadgeProps } from '@fluentui/react-badge';
+import { BadgeSlots } from '@fluentui/react-badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderBadge_unstable as renderBadge } from '@fluentui/react-badge';
@@ -14,11 +14,9 @@ import { renderBadge_unstable as renderBadge } from '@fluentui/react-badge';
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
-// @public
-export type BadgeProps = BadgeBaseProps;
+export { BadgeProps }
 
-// @public
-export type BadgeSlots = BadgeSlots_2;
+export { BadgeSlots }
 
 // @public
 export type BadgeState = BadgeBaseState & {

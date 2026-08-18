@@ -1,11 +1,6 @@
-import type {
-  AccordionSlots as AccordionBaseSlots,
-  AccordionBaseProps,
-  AccordionContextValues as AccordionBaseContextValues,
-  AccordionBaseState,
-} from '@fluentui/react-accordion';
+import type { AccordionBaseProps, AccordionBaseState } from '@fluentui/react-accordion';
 
-export type AccordionSlots = AccordionBaseSlots;
+export type { AccordionSlots, AccordionContextValues } from '@fluentui/react-accordion';
 
 export type AccordionProps = AccordionBaseProps;
 
@@ -21,5 +16,3 @@ export type AccordionState = AccordionBaseState & {
     'data-multiple'?: string;
   };
 };
-
-export type AccordionContextValues = AccordionBaseContextValues;

@@ -1,18 +1,6 @@
-import type {
-  SpinButtonSlots as SpinButtonBaseSlots,
-  SpinButtonBaseProps,
-  SpinButtonBaseState,
-} from '@fluentui/react-spinbutton';
+import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 
-/**
- * SpinButton component slots
- */
-export type SpinButtonSlots = SpinButtonBaseSlots;
-
-/**
- * SpinButton component props
- */
-export type SpinButtonProps = SpinButtonBaseProps;
+export type { SpinButtonSlots, SpinButtonBaseProps as SpinButtonProps } from '@fluentui/react-spinbutton';
 
 /**
  * SpinButton component state

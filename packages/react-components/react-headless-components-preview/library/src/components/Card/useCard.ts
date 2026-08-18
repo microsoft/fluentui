@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { useCardBase_unstable, useCardContext_unstable } from '@fluentui/react-card';
+import { useCardBase_unstable } from '@fluentui/react-card';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
 import { stringifyDataAttribute } from '../../utils/stringifyDataAttribute';
@@ -25,7 +25,7 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardS
  * Returns the context value provided by the nearest Card, enabling child components to
  * read card-level state such as the selectable accessibility properties.
  */
-export const useCardContext = useCardContext_unstable;
+export { useCardContext_unstable as useCardContext } from '@fluentui/react-card';
 
 /**
  * Maps Card state to the context value passed down to child components.
