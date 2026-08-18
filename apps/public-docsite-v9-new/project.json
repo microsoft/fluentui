@@ -18,7 +18,18 @@
         "{projectRoot}/react-router.config.ts",
         "{projectRoot}/source.config.ts"
       ],
-      "dependsOn": ["docgen"]
+      "dependsOn": [
+        "docgen",
+        {
+          "projects": [
+            "babel-preset-storybook-full-source",
+            "react-storybook-addon-export-to-sandbox",
+            "react-components",
+            "react-headless-components-preview"
+          ],
+          "target": "build"
+        }
+      ]
     },
     "dev": {
       "executor": "nx:run-script",
@@ -55,6 +66,12 @@
         "{workspaceRoot}/tsconfig.base.all.json",
         {
           "dependentTasksOutputFiles": "**/*.d.ts"
+        }
+      ],
+      "dependsOn": [
+        {
+          "projects": ["babel-preset-storybook-full-source"],
+          "target": "build"
         }
       ]
     },

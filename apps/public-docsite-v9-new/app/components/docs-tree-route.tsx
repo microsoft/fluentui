@@ -2,7 +2,7 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 
-import type { reactSource } from '../lib/source';
+import type { reactSource } from '../source';
 
 /** Both trees are built by the same `loader()` call shape, so one type covers both. */
 type Source = typeof reactSource;

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 
 import { DocsTreeRoute } from '../components/docs-tree-route';
-import { reactSource } from '../lib/source';
+import { reactSource } from '../source';
 
 export default function ReactDocs() {
   const params = useParams();

@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 import '@fluentui/react-headless-components-preview-stories/.storybook/tokens.css';
 
 import { DocsTreeRoute } from '../components/docs-tree-route';
-import { headlessSource } from '../lib/source';
+import { headlessSource } from '../source';
 
 export default function HeadlessDocs() {
   const params = useParams();
