@@ -23,6 +23,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   TabList: ['focusgroup'],
   Nav: ['focusgroup'],
   SwatchPicker: ['focusgroup'],
+  List: ['focusgroup'],
 };
 
 const BROWSER_SUPPORT_DOCS_PATH = '?path=/docs/overview-browser-support--docs';
