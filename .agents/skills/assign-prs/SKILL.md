@@ -1,35 +1,35 @@
 ---
 name: assign-prs
 description: >-
-  Groom the open pull requests awaiting review from microsoft/cxe-prg and microsoft/fluentui-react-build. Assigns a cxe-prg reviewer to each PR that lacks one, routing by area ownership and then by lowest current review load, proposes stale PRs for closure, and identifies low-risk Dependabot updates that are safe to approve and merge. Always presents a dry-run plan and requires explicit approval before requesting a review, approving, merging, closing, or commenting.
+  Assign reviewers to the open pull requests awaiting review from the Fluent UI team queues, by default microsoft/cxe-prg and microsoft/fluentui-react-build. Routes each PR that lacks coverage to a reviewer by area ownership and then by lowest current review load, requesting only the shortfall. Always presents a dry-run plan and requires explicit approval before requesting a review.
 disable-model-invocation: true
-argument-hint: '[--repo owner/repo] [--team slug] [--account login] [--reviewers count] [--stale-days days] [--skip-dependabot] [--skip-assign]'
+argument-hint: '[--repo owner/repo] [--team slug] [--account login] [--reviewers count] [--stale-days days]'
 allowed-tools: Bash Read Grep Glob
 ---
 
 # Assign PRs
 
-Groom the two team review queues and take three distinct actions: assign reviewers to PRs that need humans, clear out Dependabot updates that are demonstrably safe, and retire work nobody intends to finish. The default operation is read-only. Never request a review, approve, merge, close, or comment until the user explicitly approves the plan.
+Groom the team review queues by getting a human reviewer onto every PR that needs one. Route by area ownership, balance by current review load, and request only the shortfall. The default operation is read-only. Never request a review until the user explicitly approves the plan.
 
-These are independent workstreams over one shared queue. A failure or rejection in one must not block the others.
+This skill does one thing. It does not approve, merge, close, or comment on anything — for Dependabot updates use `/dependabot-rollup`, which combines compatible updates into a single reviewable branch.
 
 ## Defaults
 
-| Argument            | Default              | Purpose                                                  |
-| ------------------- | -------------------- | -------------------------------------------------------- |
-| `--repo`            | `microsoft/fluentui` | Repository containing the pull requests                  |
-| `--team`            | `microsoft/cxe-prg`  | Team whose members receive review assignments            |
-| `--account`         | Active `gh` account  | GitHub account the run acts as                           |
-| `--reviewers`       | `1`                  | Reviewers to assign per PR, minimum 1                    |
-| `--stale-days`      | `90`                 | Age past which a PR is a closure candidate, not assigned |
-| `--skip-dependabot` | off                  | Only assign reviewers; skip the Dependabot workstream    |
-| `--skip-assign`     | off                  | Only groom Dependabot; skip reviewer assignment          |
+| Argument       | Default                                               | Purpose                                             |
+| -------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| `--repo`       | `microsoft/fluentui`                                  | Repository containing the pull requests             |
+| `--team`       | `microsoft/cxe-prg`, `microsoft/fluentui-react-build` | Team queue to read; repeat the flag to pass several |
+| `--account`    | Active `gh` account                                   | GitHub account the run acts as                      |
+| `--reviewers`  | `1`                                                   | Reviewers to assign per PR, minimum 1               |
+| `--stale-days` | `90`                                                  | Age past which a PR is reported but never assigned  |
 
 Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--reviewers` value below 1, a non-integer `--stale-days`, or unknown arguments instead of guessing.
 
+`--team` is repeatable and replaces the defaults entirely when given: passing it once reads exactly one queue rather than adding a third. Collect the validated values into `TEAMS`, each as `org/slug`. Note that this selects which queues to read, not who may be assigned — the reviewer roster comes from the team declared in `reviewers.json`, as Step 4 explains.
+
 ## Step 1 - Check prerequisites
 
-Every command runs as `ACCOUNT`. Several accounts are commonly authenticated at once, and `gh` applies whichever one is active, so a run can silently request reviews or merge as the wrong identity. Resolve the active account before anything else:
+Every command runs as `ACCOUNT`. Several accounts are commonly authenticated at once, and `gh` applies whichever one is active, so a run can silently request reviews as the wrong identity. Resolve the active account before anything else:
 
 ```bash
 gh auth status --active
@@ -45,7 +45,7 @@ gh auth switch --user "$ACCOUNT"
 
 Also confirm the token carries `read:org`, which Step 4 needs to resolve the team roster.
 
-The account must then have `push` or `triage` permission on the repository. Requesting reviewers and merging both fail on a read-only token, and the failure message is misleading: GitHub reports a `ReplaceActorsForAssignable` permission error rather than an authentication error.
+The account must then have `push` or `triage` permission on the repository. Requesting a reviewer fails on a read-only token, and the failure message is misleading: GitHub reports a `ReplaceActorsForAssignable` permission error rather than an authentication error.
 
 ```bash
 gh api "repos/${REPO}" -q '.permissions'
@@ -53,53 +53,80 @@ gh api "repos/${REPO}" -q '.permissions'
 
 Stop and report if `push` and `triage` are both `false`.
 
-## Step 2 - Fetch both queues
+## Step 2 - Fetch the queues
 
-Use the search API with the exact query strings so `draft:false` is honored. The `gh pr list` and `gh search prs` shortcuts do not reliably apply the draft filter and will pull draft PRs into the queue:
+Use the search API directly so `draft:false` is honored. The `gh pr list` and `gh search prs` shortcuts do not reliably apply the draft filter and will pull draft PRs into the queue:
 
 ```bash
-gh api 'search/issues?q=is:open+is:pr+repo:microsoft/fluentui+team-review-requested:microsoft/cxe-prg+draft:false&sort=updated&order=desc&per_page=100' \
-  --jq '.items[] | {number, title, user: .user.login, updated_at}'
-
-gh api 'search/issues?q=is:open+is:pr+repo:microsoft/fluentui+team-review-requested:microsoft/fluentui-react-build+draft:false&sort=updated&order=desc&per_page=100' \
-  --jq '.items[] | {number, title, user: .user.login, updated_at}'
+for TEAM in "${TEAMS[@]}"; do
+  gh api --method GET search/issues \
+    -f q="is:open is:pr repo:${REPO} team-review-requested:${TEAM} draft:false" \
+    -f sort=updated -f order=desc -f per_page=100 \
+    --jq '.items[] | {number, title, user: .user.login, updated_at}'
+done
 ```
 
-**Deduplicate by PR number across both queues.** The two queues overlap substantially; a PR requesting review from both teams must be considered once and assigned once. Record which queue or queues each PR came from so the report can show it.
+**Build the qualifier string from the validated `REPO` and `TEAM` values, and never from a literal.** A single-quoted query with the repository baked in ignores `--repo` entirely, so discovery reads one repository while the mutations in the final step, which do honour `--repo`, write to another. The queue then holds PR numbers from the wrong project and every number resolves to an unrelated PR that happens to share it. Use `--method GET` with `-f q="..."` as above so `gh` form-encodes the qualifiers; hand-glued `+` separators in a query string silently mis-encode any value containing a space or a slash.
+
+**Deduplicate by PR number across the queues.** The queues overlap substantially; a PR requesting review from more than one team must be considered once and assigned once. Record which queue or queues each PR came from so the report can show it.
 
 ### What these queries do and do not cover
 
 `team-review-requested:` matches only PRs with an _outstanding_ review request for that team. Two consequences worth stating in the report:
 
-- **The queue is a point-in-time snapshot.** PRs are opened while the plan is being reviewed, and a long approval pause means the batch no longer matches reality. Re-fetch both queues immediately before applying, and assign to anything that appeared in between rather than reusing a stale list. Timestamp the snapshot in the report so the gap is visible.
-- **A PR that never requested either team is invisible here**, however badly it needs a reviewer. The repository carries several times more open PRs than these two queues contain; the rest belong to other teams and are out of scope. Report the queue size against the repository's total open non-draft PR count so the boundary is explicit and nobody reads a clean queue as a clean repository.
+- **The queue is a point-in-time snapshot.** PRs are opened while the plan is being reviewed, and a long approval pause means the batch no longer matches reality. Re-fetch every queue immediately before applying, and assign to anything that appeared in between rather than reusing a stale list. Timestamp the snapshot in the report so the gap is visible.
+- **A PR that never requested one of these teams is invisible here**, however badly it needs a reviewer. The repository carries several times more open PRs than these queues contain; the rest belong to other teams and are out of scope. Report the queue size against the repository's total open non-draft PR count so the boundary is explicit and nobody reads a clean queue as a clean repository.
 
 ## Step 3 - Partition the queue
 
 Split the deduplicated set into three buckets. A PR belongs to exactly one:
 
-1. **Dependabot** - author is `dependabot[bot]` (or `app/dependabot`; see Step 5). Goes to the Dependabot workstream (Step 5).
-2. **Stale** - last updated more than `STALE_DAYS` ago. Never assign; piling reviewers onto a PR idle for months creates noise, not throughput. These queues contain PRs several years old. Goes to the closure workstream (Step 6).
-3. **Assignable** - everything else. Goes to the assignment workstream (Step 4).
+1. **Dependabot** - author is `dependabot[bot]` or `app/dependabot`. Reported, never assigned.
+2. **Stale** - last updated more than `STALE_DAYS` ago. Reported, never assigned.
+3. **Assignable** - everything else.
+
+Only the third bucket is acted on. The other two are **exclusions, not workstreams** — this skill neither merges nor closes anything, and the report says how many PRs each bucket held so the queue's real shape stays visible.
+
+Both exclusions earn their place:
+
+- **Dependabot PRs do not need a human reviewer each.** These queues are mostly dependency bumps, so assigning them would hand a small pool dozens of review requests that no human judgement improves. Point the reader at `/dependabot-rollup`, which combines compatible updates into one reviewable branch.
+- **Stale PRs do not benefit from another reviewer.** Piling a request onto a PR idle for months creates noise, not throughput; these queues contain PRs several years old. Report them so someone can decide their fate, and leave that decision to a human.
 
 ## Step 4 - Plan reviewer assignments
 
-Resolve team members at run time rather than hardcoding a roster, because membership changes:
+Resolve team members at run time rather than hardcoding a roster, because membership changes. The roster comes from the team declared in `reviewers.json`, not from `--team`:
 
 ```bash
+TEAM_ORG="$(jq -r '.team.org' "$CONFIG")"
+TEAM_SLUG="$(jq -r '.team.slug' "$CONFIG")"
 gh api "orgs/${TEAM_ORG}/teams/${TEAM_SLUG}/members" --paginate -q '.[].login'
 ```
 
-This needs only `read:org`. If it fails, stop the assignment workstream and report; do not fall back to a stale hardcoded list.
+**`--team` and the config's `team` answer different questions.** `--team` selects which queues to read — whose PRs need attention. The config's `team` selects who may be assigned. They are deliberately allowed to differ: this repository grooms two queues but draws every reviewer from one team, so a build-queue PR can be routed to a component reviewer. Resolving the roster from the union of the queue teams instead would report every member of the second team as unconfigured on every run, which is noise, not drift.
+
+This needs only `read:org`. If it fails, stop and report; do not fall back to a stale hardcoded list. A roster that resolves to zero members is a fault, not an empty pool.
 
 ### Reviewer configuration
 
-Everything about _who_ reviews lives in `reviewers.json`, beside this file. This document deliberately contains no names — to change who receives assignments, edit that file, never this one.
+Everything about _who_ reviews lives in `reviewers.json`, beside this file, and `README.md` documents its fields. This document deliberately contains no names — to change who receives assignments, edit that file, never this one.
+
+Validate the config before reading anything out of it:
 
 ```bash
 CONFIG="$(dirname "$SKILL_PATH")/reviewers.json"
+SCHEMA="$(dirname "$SKILL_PATH")/reviewers.schema.json"
+
 jq empty "$CONFIG" || { echo "reviewers.json is unparseable"; }
+
+jq -e '
+  (.areas | keys) as $valid
+  | [.reviewers[] | (.primary + .secondary)[]]
+  | map(select(. as $a | $valid | index($a) | not))
+  | if length == 0 then true else ("undeclared areas: " + join(", ") | error) end
+' "$CONFIG"
 ```
+
+`reviewers.schema.json` covers the structure, and its `additionalProperties: false` is what stops a free-text field about a person being reintroduced. It cannot express that every entry in `primary` and `secondary` must be a key of `areas` — JSON Schema has no keyref — so that cross-reference is the check above. It matters because a misspelled area is not an error at run time: it simply never matches, and the owner silently stops receiving their own area's PRs.
 
 The config is an **overlay, not a roster**. Membership still comes from the API call above; the file only declares which of those members are eligible and what each one knows well. Both halves are required: the API says who exists, the file says who to ask.
 
@@ -109,7 +136,7 @@ Read the eligible pool from it:
 jq -r '[.reviewers[] | select(.eligible) | .login] | join("\n")' "$CONFIG"
 ```
 
-**If `reviewers.json` is missing, unparseable, or yields zero eligible reviewers, stop the assignment workstream and report the specific fault.** Never fall back to an inline list — that reintroduces the hardcoding this design removes. The Dependabot and closure workstreams are independent and must still run.
+**If `reviewers.json` is missing, unparseable, fails schema validation, declares an undeclared area, or yields zero eligible reviewers, stop and report the specific fault.** Never fall back to an inline list — that reintroduces the hardcoding this design removes. Assigning to a guessed reviewer is worse than assigning to nobody, because it looks like the config was consulted.
 
 Report the effective pool size at the top of the plan, because shrinking the roster concentrates load: at `REVIEWERS=1` a 19-PR queue still lands roughly 5 new reviews on each of 4 eligible people, and raising `REVIEWERS` multiplies that directly.
 
@@ -247,77 +274,18 @@ Flagging on pool size alone produces false warnings on exactly the PRs that are 
 
 Compute each member's current open-review load across the deduplicated queue and include it in the report, alongside the number of requests this batch would add. Selection is area-then-load rather than a blind draw, so a lopsided batch is now a signal that something is wrong rather than ordinary variance — check whether one area is absorbing the whole queue, or whether the shortfall rule is being ignored. If the batch total looks large relative to the number of under-covered PRs, that is a symptom of ignoring the shortfall rule — recheck it before presenting the plan.
 
-## Step 5 - Classify Dependabot PRs
-
-This workstream handles Dependabot PRs **individually**: each one is judged on its own merits, then approved and merged on its own. When the queue instead calls for combining many compatible updates into a single reviewable branch, that is `/dependabot-rollup`, and it is the better tool for that shape of work. The two are complementary — reach for this one to clear PRs that are already safe, and for the rollup when the volume of individually-safe PRs is the problem.
-
-Classify every Dependabot PR as **safe** or **unsafe**, defaulting to unsafe. Safety requires _all_ of the following. This is deliberately conservative: the cost of a wrong merge is far higher than the cost of leaving a PR for a human.
-
-1. **Author is Dependabot.** Never treat a human-authored dependency PR as auto-mergeable. Beware that the two APIs spell this login differently: `search/issues` returns `dependabot[bot]`, while `gh pr view --json author` returns `app/dependabot`. Comparing the `gh pr view` value against `dependabot[bot]` silently marks **every** Dependabot PR unsafe and produces an empty safe list — a failure that looks like a conservative result rather than a bug. Match either spelling, and treat an empty safe list against a large Dependabot bucket as a signal to recheck this comparison first.
-2. **Patch or minor only.** Parse the title as `bump <dependency> from <version> to <version>`, stripping an optional `chore(deps): ` or `chore(deps-dev): ` prefix. The target major must equal the source major. Exclude anything unparseable rather than guessing.
-3. **Non-empty diff.** `changedFiles` must be greater than zero. A Dependabot branch can net to nothing — a bump followed by a corrective commit that restores the original lockfile entry leaves zero changed files against the base. Such a PR passes every other rule here, including "no workflow files touched", which is trivially true when no files are touched at all. Merging it is a pointless commit; close it instead and let Dependabot re-raise the update if it still applies.
-4. **No workflow files touched.** Any change under `.github/workflows/**` is out of scope for auto-merge regardless of semver, because it alters CI execution and is a supply-chain surface. GitHub Action bumps land here and are frequently major anyway.
-5. **Every check passing.** No entry in `statusCheckRollup` may have a conclusion of `FAILURE`, `TIMED_OUT`, `CANCELLED`, or `ACTION_REQUIRED`. Treat a still-running check as not-yet-safe and re-check later rather than merging optimistically. A minor version bump touching only the lockfile can still red the build, so semver alone never establishes safety.
-6. **Cleanly mergeable.** `mergeable` must be `MERGEABLE`. Exclude `CONFLICTING` and `DIRTY`. `UNKNOWN` means GitHub has not finished computing the merge state; re-poll once, then exclude if it is still unknown.
-
-```bash
-gh pr view "$PR" --repo "$REPO" \
-  --json number,title,author,mergeable,mergeStateStatus,reviewDecision,files,changedFiles,statusCheckRollup
-```
-
-A green lockfile-only patch bump is the archetypal safe case. Note that `mergeStateStatus=BLOCKED` on its own is expected and is _not_ a disqualifier: it usually means only that the required approval has not been given yet, which is the approval this skill is about to add.
-
-Record a specific exclusion reason per unsafe PR. "Unsafe" alone is not an actionable report.
-
-## Step 6 - Plan closures and nudges
-
-A queue is not groomed by assignment alone. Most of these queues is work nobody intends to finish, and leaving it in place is what makes the queue unreadable. Closing and nudging are proposals like any other: they appear in the dry-run plan and wait for approval.
-
-### Stale human PRs
-
-Re-poll `mergeable` before judging. GitHub computes merge state lazily, so a long-idle PR reports `UNKNOWN` on first read and resolves on a second call. Sort the candidates:
-
-- **Stale and `CONFLICTING`** - the strongest case. The branch cannot land without a rebase the author has abandoned. Safe to propose as a bulk close.
-- **Stale but still `MERGEABLE`** - needs a human decision, listed separately with a recommendation. A long-lived RFC, or a teammate's small branch with real review history, is often open on purpose. Never fold these into a bulk close.
-
-Closing is a social act on someone else's work, so always post a comment in the same call:
-
-```bash
-gh pr close "$PR" --repo "$REPO" --comment "$MSG"
-```
-
-The comment states how long the PR has been idle, adds the broken merge state when it applies, makes explicit that this is housekeeping and **not a rejection on merit**, and tells the author how to resume — reopen, or raise a fresh PR against the default branch. Resolve the default branch with `gh api "repos/${REPO}" -q '.default_branch'` rather than assuming `main`.
-
-### Stale Dependabot PRs
-
-These are cheaper to close than human PRs and need no apology: Dependabot re-raises an equivalent PR if the update still applies. Say so in the comment.
-
-Detect **supersession** — two open PRs bumping the same dependency mean the older is dead — and point its comment at the newer PR, which turns a bare closure into a useful pointer. Never point at a PR being closed in the same pass; check the closure list before writing the reference.
-
-### Nudging blocked Dependabot PRs
-
-A recent Dependabot PR that is blocked rather than stale deserves a nudge, not a close. Comment `@copilot` and ask for the specific thing that would unblock it:
-
-- **Conflicting** - resolve the conflicts against the default branch and get CI green.
-- **Failing checks** - name the failing checks and ask whether the update itself caused them.
-- **Major Action bump that touches a workflow file** under `.github/workflows/**` - ask for a changelog review and an explicit list of breaking changes affecting our workflows.
-
-Name the actual blocker in each comment. A generic ping produces a generic answer, and a wall of identical comments is indistinguishable from spam.
-
-Agree the age boundary between "nudge" and "close" with the user rather than assuming one; it is the single most consequential number in this step, and the natural reading of a phrase like "close anything older than N" is often not what the user meant.
-
-## Step 7 - Present the dry-run plan
+## Step 5 - Present the dry-run plan
 
 Show the whole plan before touching anything:
 
 ```markdown
-## PR grooming plan
+## Reviewer assignment plan
 
 - Repository: owner/repo
 - Queues: cxe-prg (25), fluentui-react-build (51), 62 unique after dedupe
-- Eligible reviewers after exclusions: 4 of 8
+- Eligible reviewers after exclusions: 6 of 8
 - Config: reviewers.json in sync with the live roster
-- Assignable: 0 | Dependabot: 0 | Stale (reported only): 0
+- Assignable: 18 | Dependabot (not assigned): 40 | Stale (not assigned): 4
 
 ### Reviewer assignments
 
@@ -327,36 +295,12 @@ Show the whole plan before touching anything:
 | #124 | dave   | both    | motion     | carol             | fell back | 1        |
 | #125 | erin   | cxe-prg | components | (already covered) | -         | 2        |
 
-### Dependabot: safe to approve and merge
+### Not assigned
 
-| PR   | Update                           | Kind  | Files     | Checks |
-| ---- | -------------------------------- | ----- | --------- | ------ |
-| #456 | brace-expansion 1.1.11 -> 1.1.18 | patch | yarn.lock | green  |
-
-### Dependabot: excluded
-
-| PR   | Update                   | Reason                                  |
-| ---- | ------------------------ | --------------------------------------- |
-| #789 | actions/checkout 6 -> 7  | semver-major; touches .github/workflows |
-| #790 | lodash 4.17.23 -> 4.18.1 | 9 failing checks (main, bundle, e2e)    |
-
-### Stale (proposed for closure)
-
-| PR   | Age  | Author | Merge state | Title |
-| ---- | ---- | ------ | ----------- | ----- |
-| #321 | 740d | erin   | conflicting | ...   |
-
-### Stale but mergeable (your call, not bulk-closed)
-
-| PR   | Age  | Author | Recommendation |
-| ---- | ---- | ------ | -------------- |
-| #322 | 300d | frank  | ...            |
-
-### Dependabot: nudge @copilot
-
-| PR   | Update                  | Blocker                 |
-| ---- | ----------------------- | ----------------------- |
-| #791 | actions/checkout 6 -> 7 | semver-major + workflow |
+| Bucket     | Count | Note                                           |
+| ---------- | ----- | ---------------------------------------------- |
+| Dependabot | 40    | use `/dependabot-rollup`                       |
+| Stale      | 4     | idle more than 90 days; needs a human decision |
 ```
 
 Show the config-reconciliation line even when it is clean, so a silent drift is never mistaken for an absent check. When it is not clean, replace it with the detail and list the affected logins by name:
@@ -369,9 +313,11 @@ The `Match` column records whether the chosen reviewer owned the area as `primar
 
 The `Coverage` column counts only reviewers who serve the PR's area, so it can read lower than the reviewer list GitHub shows. When a PR is assigned despite already carrying an eligible reviewer, say which reviewer was discounted and for which area — otherwise the row looks like the shortfall rule misfiring, and the natural correction is to suppress exactly the assignment that was needed.
 
-Then ask the user to approve. Accept `apply all`, a subset such as `assign only`, `merge 36476`, `skip 36430`, or `cancel`. Treat invoking the skill as a request for the plan, never as approval to mutate.
+Report the two excluded buckets as counts rather than dropping them. A run that assigns 3 reviewers out of a 62-PR queue looks broken until the report shows that 40 were Dependabot and 4 were stale.
 
-## Step 8 - Apply approved actions
+Then ask the user to approve. Accept `apply all`, a subset such as `assign 36476` or `skip 36430`, or `cancel`. Treat invoking the skill as a request for the plan, never as approval to mutate.
+
+## Step 6 - Apply approved assignments
 
 Act on approved items only, one PR at a time, printing a one-line result for each. Do not retry a failure blindly; report it and continue with the remaining items.
 
@@ -381,53 +327,33 @@ Request reviewers:
 gh pr edit "$PR" --repo "$REPO" --add-reviewer "$LOGIN"
 ```
 
-Close a stale PR, or nudge a blocked one:
+Pass `--repo "$REPO"` on every call, using the same value discovery ran under. A mutation aimed at a different repository than the queue was read from will still succeed whenever that number happens to exist there, and it will act on an unrelated PR.
 
-```bash
-gh pr close "$PR" --repo "$REPO" --comment "$MSG"
-gh pr comment "$PR" --repo "$REPO" --body "$MSG"
-```
+If the request is rejected for a missing permission or because the login cannot be requested on that PR, report it and move on. Never retry by substituting a different reviewer without saying so.
 
-Approve and merge a safe Dependabot PR:
+## Step 7 - Report
 
-```bash
-gh pr review "$PR" --repo "$REPO" --approve
-gh pr merge "$PR" --repo "$REPO" --squash --auto
-```
+Print assigned, skipped and failed counts, each failure with its specific reason, plus already-covered PRs and any genuinely under-covered PRs still needing a human. Restate the Dependabot and stale counts that were excluded from assignment. Name the next action for anything left unresolved.
 
-Prefer `--auto` so the merge waits on required checks rather than racing them. If the merge is rejected for a missing required approval or an unsatisfied branch protection rule, report it and move on; never attempt to bypass protection or use an administrator override.
-
-Re-verify safety immediately before merging each PR. Check status can change between planning and execution, and the plan may be minutes old by the time it is approved.
-
-## Step 9 - Report
-
-Print assigned, approved, merged, closed, nudged, skipped, and failed counts, each failure with its specific reason, plus already-covered PRs and any genuinely under-covered PRs still needing a human. Name the next action for anything left unresolved.
-
-Verify rather than trusting exit codes: re-read the affected PRs and confirm the state actually changed — closed PRs report `CLOSED`, merged ones carry an approval and auto-merge, and every assigned PR sits at exactly `REVIEWERS` eligible reviewers. A command that returns zero has not necessarily produced the state you intended.
+Verify rather than trusting exit codes: re-read the affected PRs and confirm the state actually changed — every assigned PR should sit at exactly `REVIEWERS` eligible reviewers who serve its area. A command that returns zero has not necessarily produced the state you intended.
 
 If a correction is needed, remove a request with `gh pr edit "$PR" --repo "$REPO" --remove-reviewer "$LOGIN"`, but guard each removal: skip when that person has already submitted a review, when the request is already gone, or when removing would drop coverage to zero. Only ever remove requests this run created — a reviewer who predates the run is not yours to unassign.
 
-A run almost always leaves something a human has to finish: a major Action bump the guardrails forbid merging, a PR parked on another team's CODEOWNERS approval, a nudge awaiting a reply. Nothing persists between runs, so list each of these explicitly at the end of the report, with a link and the specific reason it needs a person — "semver-major touching 15 workflow files, changelog not yet reviewed" is actionable, "needs review" is not. Anything left only as an implication of a table is lost when the conversation ends.
+A run almost always leaves something a human has to finish: a PR parked on another team's CODEOWNERS approval, an area with no eligible owner, a stale PR somebody has to decide about. Nothing persists between runs, so list each of these explicitly at the end of the report, with a link and the specific reason it needs a person — "no eligible reviewer serves `charting`, and the PR has sat 40 days" is actionable, "needs review" is not. Anything left only as an implication of a table is lost when the conversation ends.
 
 ## Guardrails
 
-- Always dry-run and obtain explicit approval before requesting a review, approving, or merging.
+- Always dry-run and obtain explicit approval before requesting a review.
 - Never act as an account other than the one confirmed in Step 1; stop and ask rather than switching accounts unprompted.
-- Never approve or merge a PR that is not authored by Dependabot (`dependabot[bot]` / `app/dependabot`).
-- Never merge a semver-major update, or any PR touching `.github/workflows/**`.
-- Never merge with a failing, cancelled, timed-out, or still-running required check.
-- Never merge a PR that is not cleanly mergeable.
-- Never merge a PR with an empty diff; propose closing it instead.
+- Never approve, merge, close, or comment on a pull request. This skill only requests reviewers; `/dependabot-rollup` owns dependency updates.
+- Never build a search query from a literal repository or team name; derive every qualifier from the validated `REPO` and `TEAMS` values, and mutate only PRs discovered under that same `REPO`.
 - Never assign the PR author as a reviewer of their own PR.
 - Never add a reviewer to a PR that already has `REVIEWERS` eligible team members requested or reviewing who serve that PR's area; request only the shortfall. A request to someone outside the area they serve is not coverage, and the author's own review never counts toward that total.
+- Never assign a reviewer to a Dependabot PR or to a PR idle longer than `STALE_DAYS`; report both as counts instead.
 - Never hardcode the team roster or reviewer names in `SKILL.md`; resolve membership from the API at run time and read eligibility and areas from `reviewers.json`. Neither source is sufficient alone.
 - Never request a review from a login that is absent from `reviewers.json`, or present but not `eligible`; report the omission by name instead.
-- Never fall back to an inline reviewer list when `reviewers.json` is missing or malformed; stop the assignment workstream and report, letting the other workstreams continue.
+- Never fall back to an inline reviewer list when `reviewers.json` is missing, malformed, or fails schema validation; stop and report the specific fault.
 - Never add review statistics, performance comparisons, or any other free-text assessment of a person to `reviewers.json`; it is a committed file in a public repository. Report those figures in the run, and explain eligibility changes in the pull request that makes them.
-- Never bypass branch protection or use an administrator merge override.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
 - Never run on a schedule or add a GitHub Actions workflow.
-- Never assign reviewers to a stale PR without the user explicitly asking.
-- Never close a PR without posting a comment saying why and how to resume.
-- Never bulk-close stale PRs that are still cleanly mergeable; list them for a human decision.
 - Never remove a reviewer this run did not add.

@@ -1,25 +1,6 @@
 {
+  "$schema": "./reviewers.schema.json",
   "version": 1,
-  "_readme": [
-    "Reviewer configuration for the /assign-prs skill.",
-    "",
-    "This file is an OVERLAY, not a roster. Team membership is resolved at run",
-    "time from the GitHub team API; this file only says which of those members",
-    "are eligible for automatic assignment and what each one knows well.",
-    "",
-    "To change who gets review requests, edit 'eligible' below. Do not edit",
-    "SKILL.md - it deliberately contains no names.",
-    "",
-    "Every member of the team is listed, including ineligible ones, so that a",
-    "person is never silently absent. Removing someone's entry is not the same",
-    "as marking them ineligible: an unlisted team member is reported as",
-    "unconfigured on every run until someone decides.",
-    "",
-    "THIS REPOSITORY IS PUBLIC. An entry carries a login, an eligibility flag",
-    "and the areas that person owns - deliberately no free-text notes about",
-    "anyone. Do not add a field to explain why someone is ineligible: record",
-    "that reasoning in the pull request that changes the flag, not here."
-  ],
 
   "team": {
     "org": "microsoft",

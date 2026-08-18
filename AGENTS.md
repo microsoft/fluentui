@@ -103,7 +103,7 @@ state.root.className = mergeClasses(
 | `review-pr`          | `/review-pr #123`          | Review a PR with confidence scoring and category checks                   |
 | `triage-issues`      | `/triage-issues`           | Walk the Needs-Triage queue and recommend labels/assignee                 |
 | `dependabot-rollup`  | `/dependabot-rollup`       | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs      |
-| `assign-prs`         | `/assign-prs`              | Assign reviewers, merge safe Dependabot PRs, propose stale closures       |
+| `assign-prs`         | `/assign-prs`              | Assign reviewers to the team review queues by area and current load       |
 
 ## Package Layout
 
