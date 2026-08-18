@@ -299,6 +299,68 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    // A locally used alias is still a violation: the fix drops the alias and switches its use sites
+    // to the imported name, so `Props` becomes `BaseProps` inside `Wrapper`.
+    // Prefer: export type { BaseProps as Props } from 'pkg';
+    {
+      code: `
+        import type { BaseProps } from 'pkg';
+        export type Props = BaseProps;
+        export type Wrapper = { inner: Props };
+      `,
+      errors: [
+        {
+          messageId: 'preferTypeReexport',
+          data: { source: 'pkg', importedName: 'BaseProps', exportedName: 'Props' },
+        },
+      ],
+    },
+    // Reported the same way when the export is a specifier rather than part of the declaration.
+    // Prefer: export type { BaseProps as Props } from 'pkg';
+    {
+      code: `
+        import type { BaseProps } from 'pkg';
+        type Props = BaseProps;
+        export type Wrapper = { inner: Props };
+        export type { Props };
+      `,
+      errors: [
+        {
+          messageId: 'preferTypeReexport',
+          data: { source: 'pkg', importedName: 'BaseProps', exportedName: 'Props' },
+        },
+      ],
+    },
+    // Prefer: export { renderBase as render } from 'pkg';
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        export const render = renderBase;
+        export const renderTwice = props => render(render(props));
+      `,
+      errors: [
+        {
+          messageId: 'preferValueReexport',
+          data: { source: 'pkg', importedName: 'renderBase', exportedName: 'render' },
+        },
+      ],
+    },
+    // Prefer: export { renderBase as render } from 'pkg';
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        export function render(props) {
+          return renderBase(props);
+        }
+        export const renderTwice = props => render(render(props));
+      `,
+      errors: [
+        {
+          messageId: 'preferFunctionReexport',
+          data: { source: 'pkg', importedName: 'renderBase', exportedName: 'render' },
+        },
+      ],
+    },
     // Prefer: export type { BaseProps as Props } from 'pkg';
     // The local alias is transparent, so the chain still resolves to the imported type.
     {
