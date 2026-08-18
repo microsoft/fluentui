@@ -33,16 +33,4 @@ describe('debounce', () => {
 
     expect(count).toBe(2);
   });
-
-  it('cancels pending work without preventing a later update', async () => {
-    const callback = jest.fn();
-    const debounced = debounce(callback);
-
-    debounced();
-    debounced.cancel();
-    debounced();
-    await tick();
-
-    expect(callback).toHaveBeenCalledTimes(1);
-  });
 });

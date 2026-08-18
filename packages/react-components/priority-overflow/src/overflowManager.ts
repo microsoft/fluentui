@@ -236,14 +236,13 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
-    update.cancel();
     if (processOverflowItems() || forceDispatch) {
       forceDispatch = false;
       dispatchOverflowUpdate();
     }
   };
 
-  const update = debounce(forceUpdate);
+  const update: OverflowManager['update'] = debounce(forceUpdate);
 
   const setOptions: OverflowManager['setOptions'] = nextOptions => {
     if (options === nextOptions) {
@@ -340,7 +339,11 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
     if (observing) {
       forceDispatch = true;
-      update();
+      if (invisibleItemQueue.size() > 0) {
+        forceUpdate();
+      } else {
+        update();
+      }
     }
   };
 

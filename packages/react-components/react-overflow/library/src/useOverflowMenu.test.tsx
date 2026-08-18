@@ -74,15 +74,16 @@ describe('useOverflowMenu', () => {
     ).not.toThrow();
   });
 
-  it('does not force an overflow update while the menu unmounts', () => {
+  it('delegates menu updates to registration without forcing another update', () => {
     const unregisterOverflowMenu = jest.fn();
+    const registerOverflowMenu = jest.fn(() => unregisterOverflowMenu);
     const forceUpdateOverflow = jest.fn();
     const contextValue: OverflowContextValue = {
       hasOverflow: true,
       itemVisibility: { item: false },
       groupVisibility: {},
       registerItem: () => jest.fn(),
-      registerOverflowMenu: () => unregisterOverflowMenu,
+      registerOverflowMenu,
       registerDivider: () => jest.fn(),
       updateOverflow: jest.fn(),
       forceUpdateOverflow,
@@ -96,11 +97,12 @@ describe('useOverflowMenu', () => {
       </OverflowProvider>,
     );
 
-    expect(forceUpdateOverflow).toHaveBeenCalledTimes(1);
+    expect(registerOverflowMenu).toHaveBeenCalledTimes(1);
+    expect(forceUpdateOverflow).not.toHaveBeenCalled();
 
     unmount();
 
     expect(unregisterOverflowMenu).toHaveBeenCalledTimes(1);
-    expect(forceUpdateOverflow).toHaveBeenCalledTimes(1);
+    expect(forceUpdateOverflow).not.toHaveBeenCalled();
   });
 });

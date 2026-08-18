@@ -16,12 +16,12 @@ export function useOverflowVisibility(): {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
 } {
-  return useOverflowSnapshot(selectVisibility);
+  const snapshot = useOverflowSnapshot(selectSnapshot);
+
+  return {
+    itemVisibility: snapshot.itemVisibility,
+    groupVisibility: snapshot.groupVisibility,
+  };
 }
 
-const selectVisibility = (
-  snapshot: OverflowSnapshot,
-): {
-  itemVisibility: Record<string, boolean>;
-  groupVisibility: Record<string, OverflowGroupState>;
-} => snapshot;
+const selectSnapshot = (snapshot: OverflowSnapshot): OverflowSnapshot => snapshot;

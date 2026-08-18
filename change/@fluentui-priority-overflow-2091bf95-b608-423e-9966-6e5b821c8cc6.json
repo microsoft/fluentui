@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: cancel redundant queued overflow measurements after synchronous updates",
+  "comment": "fix: synchronously measure overflowing managers when the overflow menu attaches",
   "packageName": "@fluentui/priority-overflow",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
