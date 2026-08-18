@@ -1036,6 +1036,84 @@ Not applicable
     expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V8Horizontal: Story ='));
     expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V9Horizontal: Story ='));
   });
+
+  test('Task 10 SpinButton guide and shared stories satisfy the SpinButton migration contract', () => {
+    const spinButtonGuidePath = path.join(fromV8ComponentsDirectory, 'SpinButton.mdx');
+    const spinButtonExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/SpinButton/index.stories.tsx');
+    const spinButtonGuideSource = readUtf8(spinButtonGuidePath);
+    const normalizedSpinButtonGuideSource = spinButtonGuideSource.replace(/\s+/g, ' ');
+    const spinButtonSections = getGuideSections(stripIgnoredGuideContent(spinButtonGuideSource));
+    const spinButtonPropMapping = spinButtonSections.get('Prop mapping') ?? '';
+    const spinButtonAccessibility = spinButtonSections.get('Accessibility') ?? '';
+    const spinButtonUnsupported = spinButtonSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredSpinButtonProps = [
+      'componentRef',
+      'defaultValue',
+      'value',
+      'min',
+      'max',
+      'step',
+      'precision',
+      'onChange',
+      'onValidate',
+      'onIncrement',
+      'onDecrement',
+      'label',
+      'labelPosition',
+      'incrementButtonAriaLabel',
+      'decrementButtonAriaLabel',
+      'styles',
+      'theme',
+      'ariaLabel',
+      'ariaDescribedBy',
+      'ariaValueNow',
+      'ariaValueText',
+      'iconProps',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const spinButtonRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'spinbutton');
+
+    expect(validateCompleteGuide(spinButtonGuideSource, 'SpinButton')).toEqual([]);
+    expect(requiredSpinButtonProps.filter(propName => !spinButtonPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedSpinButtonGuideSource).toContain(
+      '| MC-1 | v8 string `value` becomes numeric `value` plus optional `displayValue` |',
+    );
+    expect(normalizedSpinButtonGuideSource).toContain(
+      '| MC-2 | typed edits and step actions use `SpinButtonOnChangeData` |',
+    );
+    expect(normalizedSpinButtonGuideSource).toContain(
+      '| MC-3 | formatting encoded in the v8 string value and callbacks moves to numeric `value` plus consumer-managed `displayValue` |',
+    );
+    expect(normalizedSpinButtonGuideSource).toContain(
+      '| MC-4 | labels compose with `Field`; increment/decrement semantics are built in |',
+    );
+    expect(spinButtonAccessibility).toContain('incrementButtonAriaLabel');
+    expect(spinButtonAccessibility).toContain('decrementButtonAriaLabel');
+    expect(spinButtonAccessibility).toContain('aria-valuetext');
+    expect(spinButtonUnsupported).toContain('onValidate');
+    expect(spinButtonUnsupported).toContain('Field');
+    expect(spinButtonRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(spinButtonRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(spinButtonRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const spinButtonExamplesSource = readUtf8(spinButtonExamplesPath);
+
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V8StringValue: Story ='));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V9NumericAndDisplayValue: Story ='));
+    expect(spinButtonExamplesSource).toEqual(
+      expect.stringContaining('export const V8FormattedStringCallbacks: Story ='),
+    );
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V9DisplayValueFormatting: Story ='));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V8ControlledChange: Story ='));
+    expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V9ControlledChange: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {

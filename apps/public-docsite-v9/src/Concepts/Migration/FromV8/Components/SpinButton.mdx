@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/SpinButton/index.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/SpinButton Migration" />
 
@@ -6,281 +7,130 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
 
-Both Fluent UI v8 and v9 provide `SpinButton` controls. The controls are largely similar and this guide provides some examples of how to migrate areas that differ.
+## Overview
+
+Use [SpinButton](/docs/components-spinbutton--docs) for Fluent UI v9 numeric stepper scenarios. The largest migration change is the value model: v8 `SpinButton` stores committed values as strings and often mixes formatting into that string, while v9 keeps the source of truth numeric in `value` or `defaultValue` and optionally renders a separate `displayValue`.
+
+V9 also separates form-field layout from the control. When the v8 component rendered its own label, horizontal label position, hint text, or validation message, wrap the v9 `SpinButton` in [Field](/docs/components-field--docs) so the visible label and `aria-*` wiring stay correct.
+
+## Component mapping
+
+| v8 scenario                                    | v9 destination                                           | Notes                                                                                                                                |
+| ---------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Standard labeled `SpinButton`                  | `Field` plus `SpinButton`                                | `Field` restores the visible label, hint, validation message, required indicator, and optional horizontal label layout.              |
+| Inline or label-less spinbutton                | `SpinButton` with `aria-label` or `aria-labelledby`      | Keep an explicit accessible name whenever the control is not wrapped in `Field`.                                                     |
+| Formatted string values with custom callbacks  | Controlled `SpinButton` with `value` plus `displayValue` | Parse `data.displayValue` when users type text, then store the numeric result in `value` and the formatted string in `displayValue`. |
+| Custom increment and decrement button labeling | `SpinButton` slot props                                  | Override the built-in button names with `incrementButton={{ 'aria-label': '...' }}` and `decrementButton={{ 'aria-label': '...' }}`. |
+
+## What changed
+
+V8 `SpinButton` mixes two concepts into one string value: the committed numeric state and whatever formatted text is shown to the user. That is why v8 callback shapes such as `onIncrement`, `onDecrement`, and `onValidate` all work with strings. In v9, `SpinButtonProps.value` and `defaultValue` are numeric, and formatted text moves to the optional controlled `displayValue` prop.
+
+The event model also changes. V8 `onChange` reports an optional `newValue` string after stepping or validation. V9 consolidates typing, stepping, and keyboard actions into `onChange(event, data)` and uses `SpinButtonOnChangeData` to report either a committed numeric `data.value` or a committed text `data.displayValue` that still needs consumer parsing.
+
+Labeling and button semantics are more explicit in v9. There is no built-in `label` or `labelPosition` prop on `SpinButton`; use `Field` or your own label composition instead. The increment and decrement buttons are built into the control with default accessible names, and you override those names through the `incrementButton` and `decrementButton` slot props instead of through dedicated top-level aria-label props.
+
+## Architecture and behavior
+
+Treat v9 `SpinButton` as a numeric input primitive. Keep the source of truth in a `number | null`, use `displayValue` only when you want to render formatted text, and update both together inside `onChange`. Button clicks, arrow keys, Home, End, and Page Up or Page Down use the numeric props (`min`, `max`, `step`, `precision`, and the additional v9 `stepPage`) and surface the committed next number through `data.value`.
+
+Typed edits behave differently from step actions. V9 still waits for commit events such as blur, Enter, or a step action before calling `onChange`, but when the committed text cannot be trusted as a number the payload uses `data.displayValue` instead of auto-running a v8-style `onValidate` callback for you. If your migration needs to clamp typed text, reject invalid formats, or preserve prefixes and suffixes, that logic now lives in your own handler.
+
+Use `Field` as the form-field shell when the v8 control used `label`, `labelPosition`, required state, hint text, or validation UI. `Field` owns the visible label, optional horizontal layout through `orientation`, and the `aria-describedby` or `aria-labelledby` relationships for the nested spinbutton while the spinbutton itself remains responsible for bounds, stepping, and formatted value semantics.
+
+## Prop mapping
+
+| v8 `SpinButton` prop       | v9 equivalent                                      | Status      | Migration notes                                                                                                                                |
+| -------------------------- | -------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `componentRef`             | `ref` on `SpinButton`                              | Partial     | The forwarded ref targets the underlying `<input>` element, not the v8 `ISpinButton` instance with a `value` property and `focus()` helper.    |
+| `defaultValue`             | `defaultValue`                                     | Use         | The type changes from `string` to `number                                                                                                      | null`. |
+| `value`                    | `value`                                            | Use         | Controlled state is numeric in v9; pair it with `displayValue` when the rendered text should include units, currency, or other formatting.     |
+| `min`                      | `min`                                              | Use         | Bounds stay numeric.                                                                                                                           |
+| `max`                      | `max`                                              | Use         | Bounds stay numeric.                                                                                                                           |
+| `step`                     | `step`                                             | Use         | Step size stays numeric.                                                                                                                       |
+| `precision`                | `precision`                                        | Use         | Precision stays numeric and still rounds the committed value.                                                                                  |
+| `onChange`                 | `onChange(event, data)`                            | Use         | Read committed values from `SpinButtonOnChangeData.value` or `SpinButtonOnChangeData.displayValue`.                                            |
+| `onValidate`               | No direct prop                                     | Unsupported | Parse or clamp committed text in your own `onChange` handler when `data.displayValue` is present.                                              |
+| `onIncrement`              | `onChange(event, data)`                            | Use         | Built-in increment behavior already applies `step`, `stepPage`, `min`, `max`, and `precision`; update your controlled state from `data.value`. |
+| `onDecrement`              | `onChange(event, data)`                            | Use         | Built-in decrement behavior already applies `step`, `stepPage`, `min`, `max`, and `precision`; update your controlled state from `data.value`. |
+| `label`                    | `Field label` or custom label composition          | Compose     | `SpinButton` does not render a visible label by itself in v9.                                                                                  |
+| `labelPosition`            | `Field orientation` or custom layout               | Compose     | `Field orientation="horizontal"` replaces the common left-label layout.                                                                        |
+| `incrementButtonAriaLabel` | `incrementButton={{ 'aria-label': '...' }}`        | Use         | Override the built-in increment button name only when the default text is not specific enough for the scenario.                                |
+| `decrementButtonAriaLabel` | `decrementButton={{ 'aria-label': '...' }}`        | Use         | Override the built-in decrement button name only when the default text is not specific enough for the scenario.                                |
+| `styles`                   | `className`, slot props, and Griffel styles        | Compose     | Style the root, `input`, `incrementButton`, or `decrementButton` slots instead of supplying v8 style objects.                                  |
+| `theme`                    | `FluentProvider`                                   | Use         | Theming moves to provider context instead of a per-instance prop.                                                                              |
+| `ariaLabel`                | `aria-label`                                       | Use         | Use this when the control does not have a visible `Field` label.                                                                               |
+| `ariaDescribedBy`          | `aria-describedby`                                 | Use         | `Field` commonly supplies this automatically for hints and validation messages.                                                                |
+| `ariaValueNow`             | Computed from `value`                              | Automatic   | V9 derives the numeric `aria-valuenow` from the committed value.                                                                               |
+| `ariaValueText`            | `aria-valuetext` or `displayValue`                 | Use         | `displayValue` automatically becomes `aria-valuetext` unless you override it with your own accessible text.                                    |
+| `iconProps`                | Custom `Field` label content or surrounding layout | Compose     | There is no dedicated v9 label-icon prop; compose the icon into your label or the surrounding layout yourself.                                 |
+
+## Styling and theming
+
+Use Griffel classes and Fluent v9 design tokens for any migration-specific layout or visual customization. `SpinButton` styling is slot-based: apply root styles through `className` or `root`, adjust the editable text field through `input`, and target the step buttons through `incrementButton` or `decrementButton` slot props. This replaces the v8 `styles`, `upArrowButtonStyles`, `downArrowButtonStyles`, and theme-object customization pattern.
+
+Theme changes move to `FluentProvider`. Avoid copying v8 color values into the migrated control; instead use appearance props plus design tokens in custom Griffel styles so the spinbutton, label, and helper text respond to theme changes together.
+
+## Accessibility
+
+Wrap the control in `Field` when you need a visible label, hint text, or validation message so the spinbutton receives the right `aria-labelledby` and `aria-describedby` relationships. If you intentionally render the control without `Field`, provide an explicit `aria-label` or `aria-labelledby` on `SpinButton`.
+
+V9 `SpinButton` includes increment and decrement buttons with default accessible names of “Increment value” and “Decrement value.” When the generic text is not descriptive enough, replace it with `incrementButtonAriaLabel` and `decrementButtonAriaLabel` equivalents by setting `incrementButton={{ 'aria-label': '...' }}` and `decrementButton={{ 'aria-label': '...' }}`.
+
+When the displayed text is formatted, `displayValue` automatically becomes `aria-valuetext`. Override `aria-valuetext` only if screen readers need wording that differs from the rendered string. The control also sets `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` from the numeric state, so keep the numeric source of truth accurate even when the visible text includes units or currency symbols.
 
 ## Examples
 
-### Basic Migration
+### MC-1 and MC-4 Compose `Field` around `SpinButton` and keep bounds and step behavior on the control
 
-Basic usage of `SpinButton` v8 looks like
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
 
-```tsx
-import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+### MC-1 Store numeric state separately from the rendered `displayValue`
 
-const styles: Partial<ISpinButtonStyles> = {
-  spinButtonWrapper: { width: 300 },
-};
+<Canvas of={Examples.V8StringValue} />
+<Source of={Examples.V8StringValue} />
+<Canvas of={Examples.V9NumericAndDisplayValue} />
+<Source of={Examples.V9NumericAndDisplayValue} />
 
-const SpinButtonV8BasicExample: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState('5');
+### MC-2 and MC-3 Replace string-based callbacks with `SpinButtonOnChangeData` parsing and formatting
 
-  const onChange = React.useCallback((event: React.SyntheticEvent<HTMLElement>, newValue?: string) => {
-    console.log('onChange');
-    if (newValue !== undefined) {
-      setValue(newValue);
-    }
-  }, []);
+<Canvas of={Examples.V8FormattedStringCallbacks} />
+<Source of={Examples.V8FormattedStringCallbacks} />
+<Canvas of={Examples.V9DisplayValueFormatting} />
+<Source of={Examples.V9DisplayValueFormatting} />
 
-  return (
-    <SpinButton
-      label="Basic SpinButton Usage"
-      value={value}
-      onChange={onChange}
-      incrementButtonAriaLabel="Increment"
-      decrementButtonAriaLabel="Decrement"
-      styles={styles}
-    />
-  );
-};
-```
+### MC-2 Read controlled updates from the typed change payload
 
-An equivalent `SpinButton` v9 usage is
+<Canvas of={Examples.V8ControlledChange} />
+<Source of={Examples.V8ControlledChange} />
+<Canvas of={Examples.V9ControlledChange} />
+<Source of={Examples.V9ControlledChange} />
 
-```tsx
-import * as React from 'react';
-import { makeStyles, Label, SpinButton } from '@fluentui/react-components';
-import type { SpinButtonChangeEvent, SpinButtonOnChangeData } from '@fluentui/react-components';
-import { useId } from '@fluentui/react-utilities';
+## Unsupported scenarios and known gaps
 
-const useLayoutStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '300px',
+There is no direct v9 `onValidate` prop. If a v8 migration depended on `onValidate` to clean up free-form text, clamp typed values, or restore suffixes before the value changed, that logic must move into your controlled `onChange` handler by parsing `data.displayValue` and deciding what numeric `value` and rendered `displayValue` to keep.
 
-    '> label': {
-      marginBottom: '5px',
-    },
-  },
-});
+The v8 `componentRef` instance surface does not carry forward either. A v9 `ref` gives you the input element directly, so helper members like the v8 `ISpinButton.value` accessor do not exist and focus management should use normal DOM focus on the input.
 
-const getNumericPart = (value: string): number | undefined => {
-  const valueRegex = /^(\d+(\.\d+)?).*/;
-  if (valueRegex.test(value)) {
-    const numericValue = Number(value.replace(valueRegex, '$1'));
-    return isNaN(numericValue) ? undefined : numericValue;
-  }
-  return undefined;
-};
+Visible label composition also changes permanently. V9 `SpinButton` has no dedicated `label`, `labelPosition`, or `iconProps` prop, so use `Field` for standard form-field UI and fall back to your own custom label composition when the scenario needs richer content.
 
-const SpinButtonV9BasicExample = () => {
-  const spinButtonId = useId('spinbutton');
-  const layoutStyles = useLayoutStyles();
+## Major-change checklist
 
-  const [value, setValue] = React.useState(5);
+| ID   | Change                                                                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | v8 string `value` becomes numeric `value` plus optional `displayValue`                                                |
+| MC-2 | typed edits and step actions use `SpinButtonOnChangeData`                                                             |
+| MC-3 | formatting encoded in the v8 string value and callbacks moves to numeric `value` plus consumer-managed `displayValue` |
+| MC-4 | labels compose with `Field`; increment/decrement semantics are built in                                               |
 
-  const onChange = (e: SpinButtonChangeEvent, data: SpinButtonOnChangeData): void => {
-    console.log('onChange');
-    let newValue;
-    if (data.value !== undefined) {
-      // Value stepped with the buttons or hotkeys
-      newValue = data.value;
-    } else if (data.displayValue !== undefined) {
-      // Value changed by typing into text input
-      newValue = getNumericPart(data.displayValue);
-    }
+## Evidence
 
-    if (newValue !== undefined) {
-      setValue(newValue);
-    }
-  };
-
-  return (
-    <div className={layoutStyles.root}>
-      <Label htmlFor={spinButtonId}>SpinButton with Increment/Decrement</Label>
-      <SpinButton id={spinButtonId} value={value} min={0} max={100} onChange={onChange} />
-    </div>
-  );
-};
-```
-
-### Custom Suffixes Migration
-
-Basic usage of `SpinButton` v8 custom suffixes looks like
-
-```tsx
-import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
-
-const suffix = ' cm';
-const min = 0;
-const max = 100;
-
-const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 300 } };
-
-/** Remove the suffix or any other text after the numbers, or return undefined if not a number */
-const getNumericPart = (value: string): number | undefined => {
-  const valueRegex = /^(\d+(\.\d+)?).*/;
-  if (valueRegex.test(value)) {
-    const numericValue = Number(value.replace(valueRegex, '$1'));
-    return isNaN(numericValue) ? undefined : numericValue;
-  }
-  return undefined;
-};
-
-/** Increment the value (or return nothing to keep the previous value if invalid) */
-const onIncrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
-  const numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    return String(Math.min(numericValue + 2, max)) + suffix;
-  }
-};
-
-/** Decrement the value (or return nothing to keep the previous value if invalid) */
-const onDecrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
-  const numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    return String(Math.max(numericValue - 2, min)) + suffix;
-  }
-};
-
-/**
- * Clamp the value within the valid range (or return nothing to keep the previous value
- * if there's not valid numeric input)
- */
-const onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
-  let numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    numericValue = Math.min(numericValue, max);
-    numericValue = Math.max(numericValue, min);
-    return String(numericValue) + suffix;
-  }
-};
-
-/** This will be called after each change */
-const onChange = (event: React.SyntheticEvent<HTMLElement>, value?: string): void => {
-  console.log('Value changed to ' + value);
-};
-
-const SpinButtonV8CustomSuffixBasicExample: React.FunctionComponent = () => {
-  return (
-    <SpinButton
-      label="SpinButton with Custom Suffix"
-      defaultValue={'7' + suffix}
-      min={min}
-      max={max}
-      onValidate={onValidate}
-      onIncrement={onIncrement}
-      onDecrement={onDecrement}
-      onChange={onChange}
-      incrementButtonAriaLabel="Increase value by 2"
-      decrementButtonAriaLabel="Decrease value by 2"
-      styles={styles}
-    />
-  );
-};
-```
-
-`SpinButton` v9 introduces a new prop called `displayValue` that may be used in conjunction with `value` to display a formatted value in `SpinButton`. To display a value with a custom suffix (or prefix or an entirely different name) just provide the `displayValue` prop to your `SpinButton`:
-
-```tsx
-import * as React from 'react';
-import { makeStyles, Label, SpinButton } from '@fluentui/react-components';
-import type { SpinButtonChangeEvent, SpinButtonOnChangeData } from '@fluentui/react-components';
-import { useId } from '@fluentui/react-utilities';
-
-const useLayoutStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '300px',
-
-    '> label': {
-      marginBottom: '5px',
-    },
-  },
-});
-
-const suffix = 'cm';
-const getNumericPart = (value: string): number | undefined => {
-  const valueRegex = /^(\d+(\.\d+)?).*/;
-  if (valueRegex.test(value)) {
-    const numericValue = Number(value.replace(valueRegex, '$1'));
-    return isNaN(numericValue) ? undefined : numericValue;
-  }
-  return undefined;
-};
-
-const SpinButtonV9CustomSuffixBasicExample = () => {
-  const spinButtonId = useId('spinbutton');
-  const layoutStyles = useLayoutStyles();
-
-  const [value, setValue] = React.useState(7);
-  const [displayValue, setDisplayValue] = React.useState(`7 ${suffix}`);
-
-  const onChange = (e: SpinButtonChangeEvent, data: SpinButtonOnChangeData): void => {
-    let newValue;
-    let newDisplayValue;
-    if (data.value !== undefined) {
-      // Value stepped with the buttons or hotkeys
-      newValue = data.value;
-      newDisplayValue = `${data.value} ${suffix}`;
-    } else if (data.displayValue !== undefined) {
-      // Value changed by typing into text input.
-      newValue = getNumericPart(data.displayValue);
-      if (newValue !== undefined) {
-        newDisplayValue = `${newValue} ${suffix}`;
-      }
-    }
-
-    if (newValue !== undefined && newDisplayValue !== undefined) {
-      console.log(`Display value changed to ${newDisplayValue}`);
-      setValue(newValue);
-      setDisplayValue(newDisplayValue);
-    }
-  };
-
-  return (
-    <div className={layoutStyles.root}>
-      <Label htmlFor={spinButtonId}>SpinButton with Custom Suffix</Label>
-      <SpinButton
-        id={spinButtonId}
-        value={value}
-        displayValue={displayValue}
-        step={2}
-        min={0}
-        max={100}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
-```
-
-## Prop Mapping
-
-This table maps v8 `SpinButton` props to the v9 `SpinButton` equivalent.
-
-| v8                  | v9                    | Notes                                                                                                    |
-| ------------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
-| `componentRef`      | `ref`                 | v9 provides access to the underlyig DOM node, not ISpinButton                                            |
-| `defaultValue`      | `defaultValue`        | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `value`.        |
-| `value`             | `value`               | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `defaultValue`. |
-| `min`               | `min`                 |                                                                                                          |
-| `max`               | `max`                 |                                                                                                          |
-| `step`              | `step`                |                                                                                                          |
-| `precision`         | `precision`           |                                                                                                          |
-| `onChange`          | `onChange`            | Typescript types have changed                                                                            |
-| `onValidate`        | n/a                   |                                                                                                          |
-| `onIncrement`       | `onChange`            | See example above                                                                                        |
-| `onDecrement`       | `onChange`            | See example above                                                                                        |
-| `label`             | Use `Label` component | Be sure to associate `Label` with `SpinButton` via `htmlFor`                                             |
-| `labelPosition`     | Use `Label` component |                                                                                                          |
-| `ariaLabel`         | `aria-label`          |                                                                                                          |
-| `ariaDescribedBy`   | `aria-describedby`    |                                                                                                          |
-| `ariaPositionInSet` | `aria-posinset`       | You probably don't need this for `SpinButton`                                                            |
-| `ariaSetSize`       | `aria-setsize`        | You probably don't need this for `SpinButton`                                                            |
-| `ariaValueNow`      | n/a                   | Set internally by `SpinButton`                                                                           |
-| `ariaValueText`     | `aria-valuetext`      | Set internally by `SpinButton` but can be overridden by setting this prop                                |
-| `iconProps`         | Use `Icon` component  |                                                                                                          |
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Date       | Conclusion                                                                                                                                                                |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/SpinButton/SpinButton.types.ts` `ISpinButtonProps.value`, `defaultValue`<br />`packages/react-components/react-spinbutton/library/src/components/SpinButton/SpinButton.types.ts` `SpinButtonProps.value`, `defaultValue`, `displayValue`                                                                                                                                                                                                                                                                         | 2026-08-17 | V8 stores committed values as strings, while v9 stores numeric state and optionally renders a separate formatted `displayValue`.                                          |
+| MC-2 | `packages/react/src/components/SpinButton/SpinButton.types.ts` `ISpinButtonProps.onChange`, `onIncrement`, `onDecrement`<br />`packages/react-components/react-spinbutton/library/src/components/SpinButton/SpinButton.types.ts` `SpinButtonProps.onChange`, `SpinButtonOnChangeData`<br />`packages/react-components/react-spinbutton/library/src/components/SpinButton/SpinButton.test.tsx` `onChange` expectations                                                                                                                           | 2026-08-17 | V9 collapses step buttons, keyboard actions, and committed text edits into a typed `onChange(event, data)` payload instead of separate string callbacks.                  |
+| MC-3 | `packages/react/src/components/SpinButton/SpinButton.types.ts` `ISpinButtonProps.onValidate`, `onIncrement`, `onDecrement`<br />`packages/react-components/react-spinbutton/library/src/components/SpinButton/SpinButton.types.ts` `SpinButtonProps.displayValue`<br />`packages/react-components/react-spinbutton/stories/src/SpinButton/SpinButtonDisplayValue.stories.tsx` `DisplayValue`                                                                                                                                                    | 2026-08-17 | Formatted strings move from v8 callback return values into consumer-managed `displayValue` formatting and parsing around the numeric v9 control.                          |
+| MC-4 | `packages/react/src/components/SpinButton/SpinButton.types.ts` `ISpinButtonProps.label`, `labelPosition`, `incrementButtonAriaLabel`, `decrementButtonAriaLabel`<br />`packages/react-components/react-field/library/src/components/Field/Field.types.ts` `FieldProps.label`, `orientation`<br />`packages/react-components/react-field/stories/src/Field/FieldComponentExamples.stories.tsx` `ComponentExamples`<br />`packages/react-components/react-spinbutton/library/src/components/SpinButton/SpinButton.test.tsx` default button labels | 2026-08-17 | V9 moves label layout into `Field`, keeps increment and decrement behavior built in, and exposes button labeling through slot props instead of dedicated top-level props. |
