@@ -36,10 +36,12 @@ export { ComboboxSlots }
 
 // @public (undocumented)
 export type ComboboxState = BaseComboboxState & {
-    input: {
-        'data-state'?: 'open' | 'closed';
+    root: {
+        'data-open'?: string;
         'data-disabled'?: string;
         'data-placeholder'?: string;
+        'data-invalid'?: string;
+        'data-clearable'?: string;
     };
 };
 
@@ -94,6 +96,9 @@ export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLInputEleme
 
 // @public (undocumented)
 export const useComboboxContextValues: (state: ComboboxState) => ComboboxContextValues;
+
+// @public
+export function useComboboxFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseComboboxFilterConfig): JSXElement[];
 
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;

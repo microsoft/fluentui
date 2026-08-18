@@ -52,16 +52,24 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
   });
 
   const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
+  const placeholderVisible = !baseState.value && !!mergedProps.placeholder;
   const state: DropdownState = {
-    components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
-    root: rootSlot,
-    button: {
-      ...trigger,
-      'data-state': open ? 'open' : 'closed',
-      'data-disabled': stringifyDataAttribute(trigger.disabled),
-      'data-placeholder': stringifyDataAttribute(!baseState.value),
-      'data-invalid': stringifyDataAttribute(trigger['aria-invalid']),
+    components: {
+      root: 'div',
+      button: 'button',
+      clearButton: 'button',
+      expandIcon: 'span',
+      listbox: Listbox,
     },
+    root: {
+      ...rootSlot,
+      'data-open': stringifyDataAttribute(open),
+      'data-disabled': stringifyDataAttribute(trigger.disabled),
+      'data-placeholder': stringifyDataAttribute(placeholderVisible),
+      'data-invalid': stringifyDataAttribute(trigger['aria-invalid']),
+      'data-clearable': stringifyDataAttribute(showClearButton),
+    },
+    button: trigger,
     listbox: open || hasFocus ? listbox : undefined,
     clearButton: slot.optional(mergedProps.clearButton, {
       defaultProps: {
@@ -78,7 +86,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
       renderByDefault: true,
       elementType: 'span',
     }),
-    placeholderVisible: !baseState.value && !!mergedProps.placeholder,
+    placeholderVisible,
     showClearButton,
     activeDescendantController,
     ...baseState,
@@ -94,7 +102,6 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
 
   if (state.clearButton) {
     state.clearButton.onClick = onClearButtonClick;
-    state.clearButton['data-visible'] = stringifyDataAttribute(showClearButton);
   }
 
   // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
