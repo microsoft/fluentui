@@ -955,6 +955,87 @@ Not applicable
     expect(menuExamplesSource).toEqual(expect.stringContaining('export const V8Submenu: Story ='));
     expect(menuExamplesSource).toEqual(expect.stringContaining('export const V9Submenu: Story ='));
   });
+
+  test('Task 9 RadioGroup guide and shared stories satisfy the ChoiceGroup migration contract', () => {
+    const radioGroupGuidePath = path.join(fromV8ComponentsDirectory, 'RadioGroup.mdx');
+    const radioGroupExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/RadioGroup/index.stories.tsx');
+    const radioGroupGuideSource = readUtf8(radioGroupGuidePath);
+    const normalizedRadioGroupGuideSource = radioGroupGuideSource.replace(/\s+/g, ' ');
+    const radioGroupSections = getGuideSections(stripIgnoredGuideContent(radioGroupGuideSource));
+    const radioGroupPropMapping = radioGroupSections.get('Prop mapping') ?? '';
+    const requiredGroupProps = [
+      'componentRef',
+      'options',
+      'defaultSelectedKey',
+      'selectedKey',
+      'onChange',
+      'label',
+      'theme',
+      'styles',
+      'ariaLabelledBy',
+    ];
+    const requiredOptionProps = [
+      'key',
+      'text',
+      'onRenderField',
+      'onRenderLabel',
+      'iconProps',
+      'imageSrc',
+      'imageAlt',
+      'selectedImageSrc',
+      'imageSize',
+      'disabled',
+      'id',
+      'labelId',
+      'ariaLabel',
+      'styles',
+      'itemKey',
+      'checked',
+      'onChange',
+      'onFocus',
+      'onBlur',
+      'focused',
+      'theme',
+      'required',
+      'name',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const choiceGroupRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'choicegroup');
+
+    expect(validateCompleteGuide(radioGroupGuideSource, 'RadioGroup')).toEqual([]);
+    expect(requiredGroupProps.filter(propName => !radioGroupPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(requiredOptionProps.filter(propName => !radioGroupPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedRadioGroupGuideSource).toContain('| MC-1 | `options` data becomes child `Radio` components |');
+    expect(normalizedRadioGroupGuideSource).toContain(
+      '| MC-2 | `selectedKey` and `defaultSelectedKey` become `value` and `defaultValue` |',
+    );
+    expect(normalizedRadioGroupGuideSource).toContain('| MC-3 | change callbacks return `data.value` |');
+    expect(normalizedRadioGroupGuideSource).toContain(
+      '| MC-4 | group labeling and validation compose with `Field` or explicit ARIA labeling |',
+    );
+    expect(normalizedRadioGroupGuideSource).toContain(
+      '| MC-5 | option render callbacks become normal React composition or slot content |',
+    );
+    expect(choiceGroupRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(choiceGroupRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(choiceGroupRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const radioGroupExamplesSource = readUtf8(radioGroupExamplesPath);
+
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V8ControlledSelection: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V9ControlledSelection: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V8CustomOptionRender: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V9ComposedRadioLabel: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V8Horizontal: Story ='));
+    expect(radioGroupExamplesSource).toEqual(expect.stringContaining('export const V9Horizontal: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
