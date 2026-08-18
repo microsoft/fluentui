@@ -136,6 +136,7 @@ const compareRows: Record<SortableColumnKey, (left: MigrationRow, right: Migrati
 const createV8Columns = (
   sortState?: { columnKey: SortableColumnKey; descending: boolean },
   onColumnClick?: (event?: React.MouseEvent<HTMLElement>, column?: IColumn) => void,
+  useDefaultRenderers = true,
 ): IColumn[] => [
   {
     key: 'fileName',
@@ -166,7 +167,7 @@ const createV8Columns = (
     minWidth: 150,
     maxWidth: 190,
     isResizable: true,
-    onRender: item => (item as MigrationRow).status.label,
+    onRender: useDefaultRenderers ? item => (item as MigrationRow).status.label : undefined,
   },
   {
     key: 'updated',
@@ -178,7 +179,7 @@ const createV8Columns = (
     isSorted: sortState?.columnKey === 'updated',
     isSortedDescending: sortState?.columnKey === 'updated' ? sortState.descending : undefined,
     onColumnClick,
-    onRender: item => (item as MigrationRow).updated.label,
+    onRender: useDefaultRenderers ? item => (item as MigrationRow).updated.label : undefined,
   },
   {
     key: 'notes',
@@ -421,7 +422,7 @@ const V8CustomCellExample = () => {
   return (
     <DetailsList
       items={rows}
-      columns={createV8Columns()}
+      columns={createV8Columns(undefined, undefined, false)}
       onRenderItemColumn={(item, _index, column) => {
         if (!item || !column) {
           return null;

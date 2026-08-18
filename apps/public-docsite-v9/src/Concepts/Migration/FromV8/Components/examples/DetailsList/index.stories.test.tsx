@@ -15,3 +15,10 @@ test.each(Object.entries(v8Stories))('%s renders without passing row objects to 
 
   expect(() => render(renderStory())).not.toThrow();
 });
+
+test('V8CustomCell renders the custom status badge', () => {
+  const renderStory = V8CustomCell.render as () => React.ReactElement;
+  const { container } = render(renderStory());
+
+  expect(container.querySelector('.fui-Badge')).not.toBeNull();
+});
