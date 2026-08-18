@@ -1044,6 +1044,7 @@ Not applicable
     const normalizedSpinButtonGuideSource = spinButtonGuideSource.replace(/\s+/g, ' ');
     const spinButtonSections = getGuideSections(stripIgnoredGuideContent(spinButtonGuideSource));
     const spinButtonPropMapping = spinButtonSections.get('Prop mapping') ?? '';
+    const spinButtonPropMappingRows = spinButtonPropMapping.split(/\r?\n/).filter(line => line.trim().startsWith('|'));
     const spinButtonAccessibility = spinButtonSections.get('Accessibility') ?? '';
     const spinButtonUnsupported = spinButtonSections.get('Unsupported scenarios and known gaps') ?? '';
     const requiredSpinButtonProps = [
@@ -1075,6 +1076,9 @@ Not applicable
     const spinButtonRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'spinbutton');
 
     expect(validateCompleteGuide(spinButtonGuideSource, 'SpinButton')).toEqual([]);
+    expect(spinButtonPropMappingRows.map(parseTableCells).map(cells => cells.length)).toEqual(
+      spinButtonPropMappingRows.map(() => 4),
+    );
     expect(requiredSpinButtonProps.filter(propName => !spinButtonPropMapping.includes(`\`${propName}\``))).toEqual([]);
     expect(normalizedSpinButtonGuideSource).toContain(
       '| MC-1 | v8 string `value` becomes numeric `value` plus optional `displayValue` |',

@@ -242,9 +242,9 @@ export function extractMdxMetaTitles(source: string): string[] {
 
 export function parseTableCells(raw: string): string[] {
   return raw
-    .split('|')
+    .split(/(?<!\\)\|/)
     .slice(1, -1)
-    .map(cell => cell.trim());
+    .map(cell => cell.replaceAll('\\|', '|').trim());
 }
 
 export function normalizeInventoryCell(cell: string | undefined): string {

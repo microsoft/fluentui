@@ -41,9 +41,9 @@ Use `Field` as the form-field shell when the v8 control used `label`, `labelPosi
 ## Prop mapping
 
 | v8 `SpinButton` prop       | v9 equivalent                                      | Status      | Migration notes                                                                                                                                |
-| -------------------------- | -------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| -------------------------- | -------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `componentRef`             | `ref` on `SpinButton`                              | Partial     | The forwarded ref targets the underlying `<input>` element, not the v8 `ISpinButton` instance with a `value` property and `focus()` helper.    |
-| `defaultValue`             | `defaultValue`                                     | Use         | The type changes from `string` to `number                                                                                                      | null`. |
+| `defaultValue`             | `defaultValue`                                     | Use         | The type changes from `string` to `number \| null`.                                                                                            |
 | `value`                    | `value`                                            | Use         | Controlled state is numeric in v9; pair it with `displayValue` when the rendered text should include units, currency, or other formatting.     |
 | `min`                      | `min`                                              | Use         | Bounds stay numeric.                                                                                                                           |
 | `max`                      | `max`                                              | Use         | Bounds stay numeric.                                                                                                                           |
