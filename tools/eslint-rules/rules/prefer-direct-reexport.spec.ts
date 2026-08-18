@@ -5,18 +5,21 @@ const ruleTester = new RuleTester();
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
-    // valid: Already a direct re-export.
+    // --- Already a direct re-export ---
+    // valid: Already a direct type re-export.
     {
       code: `
         export type { BaseProps as Props } from 'pkg';
       `,
     },
-    // valid: Already a direct re-export.
+    // valid: Already a direct value re-export.
     {
       code: `
         export { renderBase as render } from 'pkg';
       `,
     },
+
+    // --- Aliases that declare a new type ---
     // valid: `extends` declares a new interface instead of renaming the imported one.
     {
       code: `
@@ -46,6 +49,8 @@ ruleTester.run(RULE_NAME, rule, {
         export type Props<T> = BaseProps;
       `,
     },
+
+    // --- Namespace imports ---
     // valid: `export … from` cannot address a single member of a namespace binding.
     {
       code: `
@@ -53,20 +58,22 @@ ruleTester.run(RULE_NAME, rule, {
         export const render = upstream.renderBase;
       `,
     },
-    // valid: A namespace import has no `export … from` default equivalent.
+    // valid: `export default ns` re-exports the namespace object, which `export … from` cannot name.
     {
       code: `
         import * as local from 'pkg';
         export default local;
       `,
     },
-    // valid: A namespace import has no `export … from` default equivalent.
+    // valid: Same for the specifier form of the default export.
     {
       code: `
         import * as local from 'pkg';
         export { local as default };
       `,
     },
+
+    // --- Value bindings that are not a plain alias ---
     // valid: Destructuring is not an alias of the import.
     {
       code: `
@@ -74,7 +81,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const [render] = [renderBase];
       `,
     },
-    // valid: The annotation narrows the public signature, so the export is not the import.
+    // valid: The annotation on a plain alias narrows the public signature, so the export is not the import.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -82,7 +89,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const render: PublicSignature = renderBase;
       `,
     },
-    // valid: The annotation narrows the public signature, so the export is not the import.
+    // valid: Same for an annotated identity wrapper.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -90,7 +97,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const render: PublicType = props => renderBase(props);
       `,
     },
-    // valid: The binding is reassigned, so it is a live mutable export that `export … from` cannot express.
+    // valid: A reassigned alias is a live mutable export, which `export … from` cannot express.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -98,7 +105,7 @@ ruleTester.run(RULE_NAME, rule, {
         render = renderOther;
       `,
     },
-    // valid: The binding is reassigned, so it is a live mutable export that `export … from` cannot express.
+    // valid: Same for a reassigned identity wrapper.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -106,6 +113,31 @@ ruleTester.run(RULE_NAME, rule, {
         render = renderOther;
       `,
     },
+    // valid: A reassigned function declaration is a live binding, here exported as a declaration.
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        const otherRender = props => props;
+        export function render(props) {
+          return renderBase(props);
+        }
+        render = otherRender;
+      `,
+    },
+    // valid: Same when the reassigned declaration is exported through a specifier instead.
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        const otherRender = props => props;
+        function render(props) {
+          return renderBase(props);
+        }
+        render = otherRender;
+        export { render };
+      `,
+    },
+
+    // --- Wrapper signature ---
     // valid: An annotated parameter narrows the public signature.
     {
       code: `
@@ -147,29 +179,8 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
-    // valid: The function declaration is reassigned, so the export is not the import.
-    {
-      code: `
-        import { renderBase } from 'pkg';
-        const otherRender = props => props;
-        export function render(props) {
-          return renderBase(props);
-        }
-        render = otherRender;
-      `,
-    },
-    // valid: The function declaration is reassigned, so the export is not the import.
-    {
-      code: `
-        import { renderBase } from 'pkg';
-        const otherRender = props => props;
-        function render(props) {
-          return renderBase(props);
-        }
-        render = otherRender;
-        export { render };
-      `,
-    },
+
+    // --- Wrapper body and arguments ---
     // valid: A default parameter value changes what reaches the call.
     {
       code: `
@@ -230,7 +241,7 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
-    // valid: The argument is asserted before it is forwarded.
+    // valid: An `as` assertion changes the argument before it is forwarded.
     {
       code: `
         import type { BaseProps } from 'pkg';
@@ -238,7 +249,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const render = props => renderBase(props as BaseProps);
       `,
     },
-    // valid: The argument is asserted before it is forwarded.
+    // valid: Same for a non-null assertion.
     {
       code: `
         import { renderBase } from 'pkg';
@@ -259,6 +270,8 @@ ruleTester.run(RULE_NAME, rule, {
         export const render = renderBase => renderBase(renderBase);
       `,
     },
+
+    // --- Locals that are never exported ---
     // valid: The local alias is never exported; only a property is assigned to it.
     {
       code: `
@@ -297,8 +310,10 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
+
+    // --- Imports still used locally ---
     // valid: `Foo` is needed by `Wrapper`, so the import stays and `export … from` could only be
-    // added next to it rather than replace it.
+    // added alongside it rather than replace it.
     {
       code: `
         import type { Foo } from 'pkg';
@@ -306,7 +321,7 @@ ruleTester.run(RULE_NAME, rule, {
         export type Wrapper = { inner: Foo };
       `,
     },
-    // valid: the imported value is called locally, so the import cannot be dropped.
+    // valid: The imported value is called locally, so the import cannot be dropped.
     {
       code: `
         import { helper } from 'pkg';
@@ -314,7 +329,7 @@ ruleTester.run(RULE_NAME, rule, {
         export const wrapped = props => helper(props, true);
       `,
     },
-    // valid: same when the import is renamed locally.
+    // valid: Same when the import is renamed locally.
     {
       code: `
         import { helper as localHelper } from 'pkg';
