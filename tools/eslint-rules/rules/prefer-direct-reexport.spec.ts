@@ -297,8 +297,49 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
+    // valid: `Foo` is needed by `Wrapper`, so the import stays and `export … from` could only be
+    // added next to it rather than replace it.
+    {
+      code: `
+        import type { Foo } from 'pkg';
+        export type { Foo };
+        export type Wrapper = { inner: Foo };
+      `,
+    },
+    // valid: the imported value is called locally, so the import cannot be dropped.
+    {
+      code: `
+        import { helper } from 'pkg';
+        export { helper };
+        export const wrapped = props => helper(props, true);
+      `,
+    },
+    // valid: same when the import is renamed locally.
+    {
+      code: `
+        import { helper as localHelper } from 'pkg';
+        export { localHelper as helper };
+        export const wrapped = props => localHelper(props, true);
+      `,
+    },
   ],
   invalid: [
+    // The guard is per binding, not per import declaration: `Bar` is used locally but `Foo` is
+    // imported only to be re-exported, so `Foo` is still reported.
+    // Prefer: export type { Foo } from 'pkg';
+    {
+      code: `
+        import type { Foo, Bar } from 'pkg';
+        export type { Foo };
+        export type State = Bar & { extra: string };
+      `,
+      errors: [
+        {
+          messageId: 'preferTypeReexport',
+          data: { source: 'pkg', importedName: 'Foo', exportedName: 'Foo' },
+        },
+      ],
+    },
     // A locally used alias is still a violation: the fix drops the alias and switches its use sites
     // to the imported name, so `Props` becomes `BaseProps` inside `Wrapper`.
     // Prefer: export type { BaseProps as Props } from 'pkg';

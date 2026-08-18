@@ -48,6 +48,19 @@ function isReassigned(variable: TSESLint.Scope.Variable) {
 }
 
 /**
+ * Whether the binding is referenced somewhere other than the export that re-exports it. Such a
+ * binding has to stay, so `export … from` can only be added alongside it rather than replace it.
+ * The initializer write and the `export { … }` specifier itself are not local uses.
+ */
+function hasLocalUses(variable: TSESLint.Scope.Variable | undefined) {
+  return Boolean(
+    variable?.references.some(
+      reference => !reference.init && reference.identifier.parent?.type !== AST_NODE_TYPES.ExportSpecifier,
+    ),
+  );
+}
+
+/**
  * Identifier of a bare `type Local = Imported` alias, or `null` when the alias declares type
  * parameters, instantiates its target, or composes it with anything else — in all of those cases
  * the alias is a new type rather than another name for the imported one.
@@ -356,6 +369,15 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       }
 
       const isTypeExport = isTypeOnly(exportKind, exportSpecifier.exportKind);
+      const resolvedVariable = getResolvedVariable(exportSpecifier.local);
+
+      if (
+        resolvedVariable?.defs[0]?.type === TSESLint.Scope.DefinitionType.ImportBinding &&
+        hasLocalUses(resolvedVariable)
+      ) {
+        return;
+      }
+
       const trackedImport = getTrackedImport(exportSpecifier.local);
 
       if (trackedImport) {
@@ -372,7 +394,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return;
       }
 
-      const resolvedVariable = getResolvedVariable(exportSpecifier.local);
       const definitionNode = resolvedVariable?.defs[0]?.node;
 
       if (!definitionNode) {
