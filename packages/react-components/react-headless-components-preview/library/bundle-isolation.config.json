@@ -4,8 +4,6 @@
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
   "fixtures": {
-    "AllComponents.fixture.js": {},
-    "TagPicker.fixture.js": {},
-    "TeachingPopover.fixture.js": {}
+    "AllComponents.fixture.js": {}
   }
 }
