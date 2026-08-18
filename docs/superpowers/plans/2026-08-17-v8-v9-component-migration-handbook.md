@@ -47,6 +47,7 @@ Each guide page independently contains: Overview, Component mapping, What change
 ### Task 1: Add migration inventory and route validation
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
 - Read: `apps/public-docsite-resources/src/AppDefinition.tsx`
 - Read: `apps/public-docsite-v9/.storybook/main.js`
@@ -162,8 +163,7 @@ const walkMdx = (directory: string): string[] =>
     return entry.isDirectory() ? walkMdx(resolved) : entry.name.endsWith('.mdx') ? [resolved] : [];
   });
 
-const getMetaTitle = (source: string): string | undefined =>
-  source.match(/<Meta\s+title="([^"]+)"\s*\/>/)?.[1];
+const getMetaTitle = (source: string): string | undefined => source.match(/<Meta\s+title="([^"]+)"\s*\/>/)?.[1];
 
 const toStorybookDocsId = (title: string): string => toId(title, 'docs');
 
@@ -235,6 +235,7 @@ git commit -m "test(docsite): validate v8 migration guide inventory"
 ### Task 2: Establish the inventory schema and P0 rows
 
 **Files:**
+
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
 
@@ -325,6 +326,7 @@ git commit -m "docs: add v8 migration guide inventory"
 ### Task 3: Audit non-P0 inventory keys A through I
 
 **Files:**
+
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
 - Modify as needed: audited A-I guide MDX files under `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
@@ -365,6 +367,7 @@ git commit -m "docs: audit v8 migration inventory A through I"
 ### Task 4: Audit non-P0 inventory keys J through R
 
 **Files:**
+
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
 - Modify as needed: audited J-R guide MDX files under `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
@@ -389,6 +392,7 @@ git commit -m "docs: audit v8 migration inventory J through R"
 ### Task 5: Audit non-P0 inventory keys S through Z
 
 **Files:**
+
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
 - Modify as needed: audited S-Z guide MDX files under `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
@@ -426,6 +430,7 @@ git commit -m "docs: complete v8 migration inventory audit"
 ### Task 6: Enforce the complete-guide page contract
 
 **Files:**
+
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
 
@@ -486,6 +491,7 @@ git commit -m "test(docsite): enforce migration guide page contract"
 ### Task 7: Complete TextField to Input and Textarea
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Input/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Textarea/index.stories.tsx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Input.mdx`
@@ -556,12 +562,12 @@ Use:
 ```md
 ## Major-change checklist
 
-| ID | Change |
-| --- | --- |
-| MC-1 | Label, validation, hint, and required state move to `Field` composition |
+| ID   | Change                                                                     |
+| ---- | -------------------------------------------------------------------------- |
+| MC-1 | Label, validation, hint, and required state move to `Field` composition    |
 | MC-2 | Prefix, suffix, and icon APIs move to `contentBefore`/`contentAfter` slots |
-| MC-3 | `onChange` now reads `data.value` |
-| MC-4 | Multiline `TextField` migrates to `Textarea`, not `Input` |
+| MC-3 | `onChange` now reads `data.value`                                          |
+| MC-4 | Multiline `TextField` migrates to `Textarea`, not `Input`                  |
 ```
 
 The prop table must cover at least: `label`, `description`, `errorMessage`, `required`, `multiline`, `rows`, `autoAdjustHeight`, `canRevealPassword`, `iconProps`, `prefix`, `suffix`, `onRenderLabel`, `onChange`, `componentRef`, `styles`, `theme`, `underlined`, and `borderless`.
@@ -607,6 +613,7 @@ git commit -m "docs: complete TextField migration guides"
 ### Task 8: Complete ContextualMenu to Menu
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Menu/index.stories.tsx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Menu.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -655,6 +662,7 @@ git commit -m "docs: complete ContextualMenu migration guide"
 ### Task 9: Complete ChoiceGroup to RadioGroup
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/RadioGroup/index.stories.tsx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/RadioGroup.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -702,6 +710,7 @@ git commit -m "docs: complete ChoiceGroup migration guide"
 ### Task 10: Complete SpinButton
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/SpinButton/index.stories.tsx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/SpinButton.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -762,6 +771,7 @@ All Chunk 3 story files use the complete CSF template from Task 7, including `V8
 ### Task 11: Add Dialog migration guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Dialog/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Dialog.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -837,6 +847,7 @@ git commit -m "docs: add Dialog migration guide"
 ### Task 12: Add Panel to Drawer migration guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Drawer/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Drawer.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -897,6 +908,7 @@ git commit -m "docs: add Panel to Drawer migration guide"
 ### Task 13: Add MessageBar migration guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/MessageBar/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/MessageBar.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -968,6 +980,7 @@ All Chunk 4 story files use the complete CSF template from Task 7. Evidence tabl
 ### Task 14: Add Callout to Popover migration guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Popover/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Popover.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -1028,6 +1041,7 @@ git commit -m "docs: add Callout to Popover migration guide"
 ### Task 15: Add Dropdown migration decision guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/Dropdown/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Dropdown.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -1062,12 +1076,12 @@ Expected: PASS.
 
 Start with a decision table:
 
-| v8 scenario | v9 destination |
-| --- | --- |
-| custom-rendered single select | `Dropdown` |
-| multiselect | `Dropdown` with `multiselect` |
-| native single select is sufficient | `Select` |
-| editable/freeform/filtering | separate `ComboBox` to `Combobox` migration |
+| v8 scenario                        | v9 destination                              |
+| ---------------------------------- | ------------------------------------------- |
+| custom-rendered single select      | `Dropdown`                                  |
+| multiselect                        | `Dropdown` with `multiselect`               |
+| native single select is sufficient | `Select`                                    |
+| editable/freeform/filtering        | separate `ComboBox` to `Combobox` migration |
 
 Major changes:
 
@@ -1108,6 +1122,7 @@ git commit -m "docs: add Dropdown migration guide"
 ### Task 16: Add DetailsList to Table/DataGrid migration guide
 
 **Files:**
+
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/examples/DetailsList/index.stories.tsx`
 - Create: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/DetailsList.mdx`
 - Modify: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
@@ -1145,14 +1160,14 @@ Expected: PASS.
 
 Lead with a decision table:
 
-| Need | Destination |
-| --- | --- |
-| semantic display table with consumer-owned behavior | `Table` |
-| selection, sorting, or sizing with maximum composition control | `Table` plus `useTableFeatures` plugins |
-| composite keyboard navigation with a composed Table | `useTableCompositeNavigation` in addition to Table state |
-| integrated selection, sorting, keyboard navigation, and column sizing | `DataGrid` |
-| virtualization | compose Table/DataGrid with a virtualization library; not a built-in DetailsList-equivalent prop |
-| grouped hierarchical rows | custom composition or another component; document current gap |
+| Need                                                                  | Destination                                                                                      |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| semantic display table with consumer-owned behavior                   | `Table`                                                                                          |
+| selection, sorting, or sizing with maximum composition control        | `Table` plus `useTableFeatures` plugins                                                          |
+| composite keyboard navigation with a composed Table                   | `useTableCompositeNavigation` in addition to Table state                                         |
+| integrated selection, sorting, keyboard navigation, and column sizing | `DataGrid`                                                                                       |
+| virtualization                                                        | compose Table/DataGrid with a virtualization library; not a built-in DetailsList-equivalent prop |
+| grouped hierarchical rows                                             | custom composition or another component; document current gap                                    |
 
 Major changes:
 
@@ -1186,6 +1201,7 @@ git commit -m "docs: add DetailsList migration guide"
 ### Task 17: Run the cross-guide consistency pass
 
 **Files:**
+
 - Modify as needed: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ComponentMapping.mdx`
 - Modify as needed: all P0 MDX and `Components/examples/*/index.stories.tsx`
 - Test: `apps/public-docsite-v9/src/Concepts/Migration/FromV8/migrationGuides.test.ts`
@@ -1227,7 +1243,7 @@ Run:
 git diff --name-only 203c5b8d8e...HEAD
 ```
 
-Expected: changes are limited to `apps/public-docsite-v9/` and `docs/superpowers/`. Because no published package changes, do not create a Beachball change file.
+Expected: changes are limited to `apps/public-docsite-v9/`, `docs/superpowers/`, and the `yarn.lock` update required by Task 1's private docsite devDependencies. Because no published package changes, do not create a Beachball change file.
 
 - [ ] **Step 5: Commit final consistency fixes**
 
