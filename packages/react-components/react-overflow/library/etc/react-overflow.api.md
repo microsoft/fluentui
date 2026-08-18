@@ -10,6 +10,7 @@ import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { OverflowEventPayload } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
+import { OverflowManager } from '@fluentui/priority-overflow';
 import { OverflowOptions } from '@fluentui/priority-overflow';
 import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
@@ -38,6 +39,7 @@ export { OnUpdateOverflow }
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "overflowAxis" | "overflowDirection" | "padding" | "minimumVisible" | "hasHiddenItems">> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
+    createManager?: (options: Partial<OverflowOptions>) => OverflowManager;
 } & React_2.RefAttributes<unknown>>;
 
 // @public
@@ -97,6 +99,7 @@ export type OverflowItemProps = {
     id: string;
     groupId?: string;
     children: React_2.ReactElement;
+    sizeHint?: number;
 } & ({
     pinned?: boolean;
     priority?: never;
@@ -109,6 +112,7 @@ export type OverflowItemProps = {
 export type OverflowProps = Partial<Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
+    createManager?: (options: Partial<OverflowOptions>) => OverflowManager;
 };
 
 // @public
@@ -140,7 +144,7 @@ export function useIsOverflowItemVisible(id: string): boolean;
 export const useOverflow_unstable: (props: OverflowProps, ref: React_2.Ref<HTMLElement>) => OverflowComponentState;
 
 // @internal (undocumented)
-export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<OverflowOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
+export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<OverflowOptions, "onUpdateOverflow">, managerFactory?: (opts: Partial<OverflowOptions>) => OverflowManager) => UseOverflowContainerReturn<TElement>;
 
 // @public (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'forceUpdateOverflow' | 'registerOverflowMenu' | 'registerDivider' | 'getSnapshot' | 'subscribe'> {
@@ -163,14 +167,19 @@ export const useOverflowCount: () => number;
 export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement | null>;
 
 // @internal
-export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string, pinned?: boolean): React_2.RefObject<TElement | null>;
+export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string, pinned?: boolean, sizeHint?: number): React_2.RefObject<TElement | null>;
 
 // @public (undocumented)
-export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
+export function useOverflowMenu<TElement extends HTMLElement>(idOrOptions?: string | UseOverflowMenuOptions): {
     ref: React_2.MutableRefObject<TElement | null>;
     overflowCount: number;
     isOverflowing: boolean;
 };
+
+// @public (undocumented)
+export interface UseOverflowMenuOptions {
+    id?: string;
+}
 
 // @public (undocumented)
 export const useOverflowStyles_unstable: (state: OverflowComponentState) => OverflowComponentState;

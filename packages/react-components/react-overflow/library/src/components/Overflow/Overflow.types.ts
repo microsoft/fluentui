@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { OverflowOptions, OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowOptions, OverflowGroupState, OverflowManager } from '@fluentui/priority-overflow';
 import type { OverflowContextValue } from '../../overflowContext';
 import type { UseOverflowContainerReturn } from '../../types';
 
@@ -19,6 +19,16 @@ export type OverflowProps = Partial<
   // overflow is not caused by DOM event
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onOverflowChange?: (ev: null, data: OverflowState) => void;
+
+  /**
+   * Optional factory used to create the overflow manager.
+   * When provided, called instead of the default `createOverflowManager`.
+   * All option props (`padding`, `overflowAxis`, etc.) are still applied normally.
+   *
+   * Pass `createFlatOverflowManager` from `\@fluentui/priority-overflow` to opt into
+   * the flat manager optimised for simple ungrouped lists (no pinning, no groups).
+   */
+  createManager?: (options: Partial<OverflowOptions>) => OverflowManager;
 };
 
 /**
