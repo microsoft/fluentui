@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Input/index.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/TextField to Input Migration" />
 
@@ -6,154 +7,100 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
 
-Fluent UI v8 provides the `TextField` control for entering and editing text. In Fluent UI v9 `TextField` is replaced with `Input` for single line input. For multiline input, use `Textarea`.
+## Overview
 
-While basic usage is largely the same, `Input` omits some features found in `TextField`, preferring to compose several components together for greater flexibility.
+Use [Input](/docs/components-input--docs) for single-line `TextField` scenarios in Fluent UI v9. The v9 component is intentionally smaller than v8 `TextField`: labels, hints, required state, and validation messaging move into [Field](/docs/components-field--docs), while multiline scenarios move to the separate [Textarea migration guide](/docs/concepts-migration-from-v8-components-textarea-migration--docs).
+
+## Component mapping
+
+| v8 scenario                                | v9 destination                             | Notes                                                                                              |
+| ------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| Single-line `TextField`                    | `Field` plus `Input`                       | Use `Field` when the v8 control supplied `label`, `description`, `errorMessage`, or `required` UI. |
+| Multiline `TextField`                      | `Field` plus `Textarea`                    | `Input` does not support `multiline`, `rows`, or `autoAdjustHeight`.                               |
+| `prefix`, `suffix`, `iconProps` adornments | `Input` `contentBefore` and `contentAfter` | Slot content is rendered inside the control chrome instead of through dedicated string props.      |
+
+## What changed
+
+V8 `TextField` bundled layout, labeling, validation, and the input element in one component. In v9, `Input` is the text-entry primitive and `Field` provides the surrounding form-field structure. Slot-based adornments replace the v8 prefix, suffix, and icon props, and controlled updates now read the latest value from `data.value` instead of a second `newValue` string argument.
+
+## Architecture and behavior
+
+Treat `Input` as the control and `Field` as the form-field shell. `Field` owns the visible label, required indicator, hint text, validation message, and `aria-*` wiring for the nested control. `Input` owns the native `<input>` props, appearance, size, and `contentBefore` or `contentAfter` slots. If the old `TextField` was multiline, that behavior does not stay on `Input`; migrate it to `Textarea` and keep the same `Field` composition around it when you need labeling or validation UI.
+
+## Prop mapping
+
+| v8 `TextField` prop | v9 replacement                                                | Notes                                                                                                              |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `label`             | `Field label` or a separate `Label`                           | `Input` does not render its own label.                                                                             |
+| `description`       | `Field hint`                                                  | `Field` connects hint text through `aria-describedby`.                                                             |
+| `errorMessage`      | `Field validationMessage`                                     | Pair with `validationState` to control the message semantics and styling.                                          |
+| `required`          | `Field required`; optionally native `Input required`          | `Field required` adds the asterisk and `aria-required`; native `required` keeps browser form validation.           |
+| `multiline`         | Use `Textarea`                                                | `Input` is single-line only.                                                                                       |
+| `rows`              | Use `Textarea rows`                                           | `rows` is only available on `Textarea`.                                                                            |
+| `autoAdjustHeight`  | No `Input` equivalent                                         | Re-evaluate the scenario with `Textarea`; v9 `Input` has no auto-height behavior.                                  |
+| `canRevealPassword` | No direct prop                                                | Use `type="password"` and compose any reveal button yourself, typically in `contentAfter`.                         |
+| `iconProps`         | `contentBefore` or `contentAfter`                             | Supply JSX such as an icon component instead of an `IIconProps` object.                                            |
+| `prefix`            | `contentBefore`                                               | Presentational text or icons render in the slot and are not part of the field value.                               |
+| `suffix`            | `contentAfter`                                                | Use slot content instead of a dedicated string prop.                                                               |
+| `onRenderLabel`     | Compose with `Field`, `Label`, or custom JSX                  | There is no v9 render callback on `Input`.                                                                         |
+| `onChange`          | `onChange(event, data)`                                       | Read the next value from `data.value`.                                                                             |
+| `componentRef`      | `ref`                                                         | V9 refs target the underlying `<input>` element rather than the v8 `ITextField` API surface.                       |
+| `styles`            | `className`, `input={{ className: ... }}`, and Griffel styles | Style the root slot with `className` and the native input through the `input` slot props.                          |
+| `theme`             | `FluentProvider`                                              | Theming is provided by context instead of a per-instance prop.                                                     |
+| `underlined`        | `appearance="underline"`                                      | The appearance is a string union on `Input`.                                                                       |
+| `borderless`        | No direct prop                                                | Choose an `appearance` value that matches the design intent, or add custom styling when design review approves it. |
+
+## Styling and theming
+
+Use Griffel classes with Fluent v9 design tokens for any migration-specific layout or adornment styling. `Input` styling is split between the root `className` and the `input` slot props, while `Field` handles label, hint, and validation layout. Theme changes move to `FluentProvider`, and appearance changes use the v9 `appearance` union instead of v8 booleans such as `underlined` or `borderless`.
+
+## Accessibility
+
+Prefer `Field` when the control needs a visible label, hint, or validation message so those relationships are wired correctly through `aria-labelledby` and `aria-describedby`. Decorative slot content in `contentBefore` or `contentAfter` should not replace the accessible name, and any interactive content placed in a slot must carry its own accessible label. When you rely on the browser's required-field behavior, keep the native `required` prop on `Input` in addition to `Field required`.
 
 ## Examples
 
-### Basic Migration
+### MC-1 Compose `Field` around `Input` for label, hint, required, and validation UI
 
-Basic usage of `TextField` looks like
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
 
-```tsx
-import * as React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';}
-import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
+### MC-2 Move prefix, suffix, and icon affordances into slots
 
-const columnProps: Partial<IStackProps> = {
-  tokens: { childrenGap: 15 },
-  styles: { root: { width: 300 } },
-};
+<Canvas of={Examples.V8PrefixSuffix} />
+<Source of={Examples.V8PrefixSuffix} />
+<Canvas of={Examples.V9ContentSlots} />
+<Source of={Examples.V9ContentSlots} />
 
-const TextFieldV8BasicExample = () => {
-  return <Stack {...columnProps}>
-    <TextField label="Standard" />
-    <TextField label="Disabled" disabled defaultValue="I am disabled" />
-    <TextField label="Read-only" readOnly defaultValue="I am read-only" />
-    <TextField label="Required " required />
-    <TextField ariaLabel="Required without visible label" required />
-    <TextField label="With error message" errorMessage="Error message" />
-  </Stack>
-}
-```
+### MC-3 Read controlled updates from `data.value`
 
-An equivalent `Input` usage is:
+<Canvas of={Examples.V8Controlled} />
+<Source of={Examples.V8Controlled} />
+<Canvas of={Examples.V9Controlled} />
+<Source of={Examples.V9Controlled} />
 
-```tsx
-import * as React from 'react';
-import { makeStyles, Text, Label, Input } from '@fluentui/react-components';
-import { useId } from '@fluentui/react-utilities';
+## Unsupported scenarios and known gaps
 
-const useStackStyles = makeStyles({
-  root: {
-    maxWidth: '300px',
-    display: 'flex',
-    flexDirection: 'column',
+MC-4: A multiline `TextField` does not migrate to `Input`; move that scenario to [Textarea](/docs/components-textarea--docs) and use the [Textarea migration guide](/docs/concepts-migration-from-v8-components-textarea-migration--docs) for `rows`, resize, and multiline composition details.
 
-    '> * + *': {
-      marginTop: '20px',
-    },
+Built-in password reveal is also not part of `InputProps`, so any reveal affordance must be composed manually with a standard button or icon slot.
 
-    '> div': {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  },
-});
+## Major-change checklist
 
-const InputV9BasicExample = () => {
-  const stackStyles = useStackStyles();
-  const standardId = useId('standard');
-  const disabledId = useId('disabled');
-  const readonlyId = useId('readonly');
-  const requiredId = useId('required');
-  const errorId = useId('error');
-  const errorMessageId = useId('error-message');
+| ID   | Change                                                                     |
+| ---- | -------------------------------------------------------------------------- |
+| MC-1 | Label, validation, hint, and required state move to `Field` composition    |
+| MC-2 | Prefix, suffix, and icon APIs move to `contentBefore`/`contentAfter` slots |
+| MC-3 | `onChange` now reads `data.value`                                          |
+| MC-4 | Multiline `TextField` migrates to `Textarea`, not `Input`                  |
 
-  return (
-    <div className={stackStyles.root}>
-      <div>
-        <Label htmlFor={standardId}>Standard</Label>
-        <Input id={standardId} />
-      </div>
+## Evidence
 
-      <div>
-        <Label htmlFor={disabledId}>Disabled</Label>
-        <Input id={disabledId} disabled defaultValue="I am disabled" />
-      </div>
-
-      <div>
-        <Label htmlFor={readonlyId}>Read Only</Label>
-        <Input id={readonlyId} readOnly defaultValue="I am read only" />
-      </div>
-
-      <div>
-        <Label htmlFor={requiredId} required>
-          Required
-        </Label>
-        <Input id={requiredId} required defaultValue="I am required" />
-      </div>
-
-      <div>
-        <Input
-          aria-label="Required without visible label"
-          required
-          defaultValue="I am required without a visible label"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor={errorId}>With Error Message</Label>
-        <Input id={errorId} aria-describedby={errorMessageId} />
-        <Text id={errorMessageId}>Error message</Text>
-      </div>
-    </div>
-  );
-};
-```
-
-## Prop Mapping
-
-This table maps v8 `TextField` props to the v9 `Input` equivalent.
-
-| v8                         | v9                                         | Notes                                                                                |
-| -------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `componentRef`             | `ref`                                      | v9 provides access to the underlyig DOM node, not ITextField                         |
-| `elementRef`               | `ref`                                      |                                                                                      |
-| `multiline`                | n/a                                        | Use `Textarea`                                                                       |
-| `resizable`                | n/a                                        |                                                                                      |
-| `autoAjustHeight`          | n/a                                        | See `Textarea` docs                                                                  |
-| `underlined`               | `appearance`                               |                                                                                      |
-| `borderless`               | `appearance`                               |                                                                                      |
-| `label`                    | Use `Label` component                      | Be sure to associate `Label` with `Input` via `htmlFor`                              |
-| `onRenderLabel`            | n/a                                        | Use slots to customize `Input`                                                       |
-| `description`              | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
-| `onRenderDescription`      | n/a                                        |                                                                                      |
-| `onRenderInput`            | n/a                                        | Use slots to customize `Input`                                                       |
-| `prefix`                   | `contentBefore`                            | This is a slot not a `string`                                                        |
-| `suffix`                   | `contentAfter`                             | This is a slot not a `string`                                                        |
-| `onRenderPrefix`           | n/a                                        | Use slots to customize `Input`                                                       |
-| `onRenderSuffix`           | n/a                                        | Use slots to customize `Input`                                                       |
-| `iconProps`                | Use `contentBefore` or `contentAfter` slot |                                                                                      |
-| `defaultValue`             | `defaultValue`                             | Mutually exclusive with `value`                                                      |
-| `value`                    | `value`                                    | Mutually exclusive with `defaultValue`                                               |
-| `disabled`                 | `disabled`                                 |                                                                                      |
-| `readOnly`                 | `readOnly`                                 | In v9 this is the native HTML prop                                                   |
-| `invalid`                  | n/a                                        | v9 `Input` does not handle validation states                                         |
-| `errorMessage`             | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
-| `onChange`                 | `onChange`                                 | Typescript types have changed                                                        |
-| `onNotifyValidationResult` | n/a                                        | v9 `Input` does not handle validation                                                |
-| `onGetErrorMessage`        | n/a                                        | v9 `Input` does not handle error states                                              |
-| `deferredValidationTime`   | n/a                                        | v9 `Input` does not handle validation                                                |
-| `className`                | `className`                                |                                                                                      |
-| `inputClassName`           | Use `input` slot                           |                                                                                      |
-| `ariaLabel`                | `aria-label`                               |                                                                                      |
-| `validateOnFocusIn`        | n/a                                        | v9 `Input` does not handle validation                                                |
-| `validateOnFocusOut`       | n/a                                        | v9 `Input` does not handle validation                                                |
-| `validateOnLoad`           | n/a                                        | v9 `Input` does not handle validation                                                |
-| `theme`                    | n/a                                        | Use `FluentProvider` to customize themes                                             |
-| `styles`                   | `className`                                |                                                                                      |
-| `autoComplete`             | `autoComplete`                             | In v9 this is the native HTML prop                                                   |
-| `canRevealPassword`        | n/a                                        | v9 `Input` does not provide built in password reveal behavior                        |
-| `revealPasswordAriaLabel`  | n/a                                        | v9 `Input` does not provide built in password reveal behavior                        |
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                     | Date       | Conclusion                                                                                                                    |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.label`, `description`, `errorMessage`, `required`<br />`packages/react-components/react-field/library/src/components/Field/Field.types.ts` `FieldProps.label`, `hint`, `validationMessage`, `required`<br />`packages/react-components/react-field/stories/src/Field/FieldValidationMessage.stories.tsx` `ValidationMessage` | 2026-08-17 | V9 splits the v8 field shell into `Field`, which restores label, hint, required, and validation composition around `Input`.   |
+| MC-2 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.prefix`, `suffix`, `iconProps`<br />`packages/react-components/react-input/library/src/components/Input/Input.types.ts` `InputSlots.contentBefore`, `contentAfter`<br />`packages/react-components/react-input/stories/src/Input/InputContentBeforeAfter.stories.tsx` `ContentBeforeAfter`                                   | 2026-08-17 | Prefix, suffix, and icon UI move from dedicated v8 props to the v9 before and after content slots.                            |
+| MC-3 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.onChange`<br />`packages/react-components/react-input/library/src/components/Input/Input.types.ts` `InputProps.onChange`, `InputOnChangeData`<br />`packages/react-components/react-input/stories/src/Input/InputControlled.stories.tsx` `Controlled`                                                                        | 2026-08-17 | Controlled v9 inputs read the next value from `data.value` instead of the v8 `newValue` callback argument.                    |
+| MC-4 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.multiline`, `rows`, `autoAdjustHeight`<br />`packages/react-components/react-textarea/library/src/components/Textarea/Textarea.types.ts` `TextareaProps.rows`, `resize`<br />`packages/react-components/react-textarea/stories/src/Textarea/TextareaResize.stories.tsx` `Resize`                                             | 2026-08-17 | Multiline behavior is a separate `Textarea` component in v9, so `Input` intentionally excludes the v8 multiline surface area. |

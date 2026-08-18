@@ -792,6 +792,77 @@ Not applicable
 
     expect(contractIssues).toEqual([]);
   });
+
+  test('Task 7 Input guide and shared stories satisfy the TextField migration contract', () => {
+    const inputGuidePath = path.join(fromV8ComponentsDirectory, 'Input.mdx');
+    const inputExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Input/index.stories.tsx');
+    const inputGuideSource = readUtf8(inputGuidePath);
+    const inputPropMapping = getGuideSections(stripIgnoredGuideContent(inputGuideSource)).get('Prop mapping') ?? '';
+    const requiredInputProps = [
+      'label',
+      'description',
+      'errorMessage',
+      'required',
+      'multiline',
+      'rows',
+      'autoAdjustHeight',
+      'canRevealPassword',
+      'iconProps',
+      'prefix',
+      'suffix',
+      'onRenderLabel',
+      'onChange',
+      'componentRef',
+      'styles',
+      'theme',
+      'underlined',
+      'borderless',
+    ];
+
+    expect(validateCompleteGuide(inputGuideSource, 'Input')).toEqual([]);
+    expect(requiredInputProps.filter(propName => !inputPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V8PrefixSuffix: Story ='));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V9ContentSlots: Story ='));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V8Controlled: Story ='));
+    expect(readUtf8(inputExamplesPath)).toEqual(expect.stringContaining('export const V9Controlled: Story ='));
+  });
+
+  test('Task 7 Textarea guide and shared stories satisfy the TextField multiline migration contract', () => {
+    const textareaGuidePath = path.join(fromV8ComponentsDirectory, 'Textarea.mdx');
+    const textareaExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Textarea/index.stories.tsx');
+    const textareaGuideSource = readUtf8(textareaGuidePath);
+    const textareaPropMapping =
+      getGuideSections(stripIgnoredGuideContent(textareaGuideSource)).get('Prop mapping') ?? '';
+    const requiredTextareaProps = [
+      'multiline',
+      'rows',
+      'resizable',
+      'autoAdjustHeight',
+      'onChange',
+      'onRenderLabel',
+      'styles',
+      'theme',
+    ];
+
+    expect(validateCompleteGuide(textareaGuideSource, 'Textarea')).toEqual([]);
+    expect(requiredTextareaProps.filter(propName => !textareaPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('export const V8ResizeAndRows: Story ='));
+    expect(readUtf8(textareaExamplesPath)).toEqual(expect.stringContaining('export const V9ResizeAndRows: Story ='));
+    expect(readUtf8(textareaExamplesPath)).toEqual(
+      expect.stringContaining('export const V8ControlledTextarea: Story ='),
+    );
+    expect(readUtf8(textareaExamplesPath)).toEqual(
+      expect.stringContaining('export const V9ControlledTextarea: Story ='),
+    );
+  });
 });
 
 describe('FromV8 migration inventory', () => {

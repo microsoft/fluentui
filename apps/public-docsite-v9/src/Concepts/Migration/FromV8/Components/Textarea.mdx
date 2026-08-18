@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Textarea/index.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/Textarea Migration" />
 
@@ -6,107 +7,96 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
 
-Fluent UI v8 provides the `TextField` control to allow users to enter and edit text. Fluent UI v9 provides a `Textarea` control, but has a different API.
+## Overview
 
-v9 takes a different approach than v8 with respect to text inputs, and instead of using a single `TextField` component instaed uses separate `Input` and `Textarea` components. v9's `Input` in this case is equivalent to the general v8's `TextField`, while v9's `Textarea` is equivalent to v8's `TextField` with the `multiline` prop set to `true`.
+Use [Textarea](/docs/components-textarea--docs) when a v8 `TextField` relied on `multiline`. The v9 model is explicit: single-line text entry uses [Input](/docs/components-input--docs), multiline entry uses `Textarea`, and surrounding label or validation UI comes from [Field](/docs/components-field--docs).
+
+## Component mapping
+
+| v8 scenario                                      | v9 destination               | Notes                                                                                                                                                                     |
+| ------------------------------------------------ | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TextField multiline`                            | `Field` plus `Textarea`      | `Textarea` is always multiline, so the v8 `multiline` switch becomes the component choice itself.                                                                         |
+| `TextField multiline` with `rows` or `resizable` | `Textarea rows` and `resize` | Pick the `resize` string union explicitly in v9.                                                                                                                          |
+| Single-line `TextField`                          | `Field` plus `Input`         | Use the [Input migration guide](/docs/concepts-migration-from-v8-components-textfield-to-input-migration--docs) instead of forcing a single-line case through `Textarea`. |
+
+## What changed
+
+V8 exposed single-line and multiline entry from the same `TextField` component. In v9, multiline entry is a distinct component with its own slot model and `resize` prop. Labels, hints, and validation messages move to `Field`, and controlled change handlers now read the next value from `data.value`.
+
+## Architecture and behavior
+
+`Textarea` is the primitive textarea control in Fluent UI v9. It owns native textarea props such as `rows`, `value`, `defaultValue`, and `readOnly`, plus the v9 `appearance`, `size`, and `resize` options. Compose it with `Field` when the old `TextField` used `label`, `description`, `required`, or `errorMessage`. Unlike v8 `TextField`, there is no `multiline` toggle to flip on or off after the fact, and there is no built-in auto-height or password-reveal scenario on `Textarea`.
+
+## Prop mapping
+
+| v8 `TextField` prop | v9 replacement                                                   | Notes                                                                                                                                         |
+| ------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`             | `Field label` or a separate `Label`                              | `Textarea` does not render its own label.                                                                                                     |
+| `description`       | `Field hint`                                                     | `Field` wires hint text into the control's description relationship.                                                                          |
+| `errorMessage`      | `Field validationMessage`                                        | Add `validationState` when you need warning, success, or non-error messaging.                                                                 |
+| `required`          | `Field required`; optionally native `Textarea required`          | Use both when you need the v9 form-field UI and native browser validation.                                                                    |
+| `multiline`         | Use `Textarea`                                                   | `Textarea` is the multiline destination; no boolean prop is needed.                                                                           |
+| `rows`              | `rows`                                                           | The native rows prop is available directly on `Textarea`.                                                                                     |
+| `resizable`         | `resize`                                                         | `resizable={false}` maps to `resize="none"`, while `vertical`, `horizontal`, or `both` opt into resize handles because v9 defaults to `none`. |
+| `autoAdjustHeight`  | No direct prop                                                   | Rework the layout or build a custom auto-resize wrapper if that behavior is required.                                                         |
+| `onChange`          | `onChange(event, data)`                                          | Read the new value from `data.value`.                                                                                                         |
+| `onRenderLabel`     | Compose with `Field`, `Label`, or custom JSX                     | There is no render callback on `Textarea`.                                                                                                    |
+| `styles`            | `className`, `textarea={{ className: ... }}`, and Griffel styles | Style the root slot separately from the native `textarea` slot.                                                                               |
+| `theme`             | `FluentProvider`                                                 | Theming is handled by context.                                                                                                                |
+| `underlined`        | No direct prop                                                   | Choose an `appearance` value or custom styling that matches the intended design.                                                              |
+| `canRevealPassword` | No equivalent                                                    | Password scenarios belong on `Input`, not `Textarea`.                                                                                         |
+
+## Styling and theming
+
+Use Griffel with Fluent design tokens for any layout or helper text around `Textarea`, and use slot-level class names when you need to style the root versus the native `textarea`. `resize`, `appearance`, and `size` replace v8's mix of booleans and style overrides, while theme changes move to `FluentProvider`.
+
+## Accessibility
+
+Use `Field` for the visible label, hint text, required indicator, and validation message so `Textarea` receives the right `aria-labelledby`, `aria-describedby`, and `aria-invalid` wiring. If you intentionally omit a visible label, provide an `aria-label` directly on `Textarea`. Resize affordances do not change the accessible name or description, so do not rely on the handle as a cue for the field's purpose.
 
 ## Examples
 
-### Basic Migration
+### MC-1 Multiline entry becomes a separate `Textarea` component
 
-Basic usage of `TextField` v8
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
 
-```tsx
-import React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';
+### MC-2 Configure resize behavior with the `resize` string union
 
-const TextAreaV0BasicExample = () => {
-  return (
-    <>
-      <TextField label="Standard" multiline rows={3} />
-      <TextField label="Disabled" multiline rows={3} disabled defaultValue={dummyText} />
-      <TextField label="Non-resizable" multiline resizable={false} />
-    </>
-  );
-};
+<Canvas of={Examples.V8ResizeAndRows} />
+<Source of={Examples.V8ResizeAndRows} />
+<Canvas of={Examples.V9ResizeAndRows} />
+<Source of={Examples.V9ResizeAndRows} />
 
-export default TextAreaExample;
-```
+### MC-3 Read controlled multiline updates from `data.value`
 
-An equivalent `Textarea` in v9 is
+<Canvas of={Examples.V8ControlledTextarea} />
+<Source of={Examples.V8ControlledTextarea} />
+<Canvas of={Examples.V9ControlledTextarea} />
+<Source of={Examples.V9ControlledTextarea} />
 
-```tsx
-import * as React from 'react';
-import { Label, Textarea } from '@fluentui/react-components';
-import { useId } from '@fluentui/react-utilities';
+## Unsupported scenarios and known gaps
 
-const TextareaV9BasicExample = () => {
-  const standardTextareaId = useId('standard');
-  const disabledTextareaId = useId('disabled');
-  const nonResizableTextareaId = useId('nonResizable');
+MC-4: V8 `autoAdjustHeight` and password-related `TextField` scenarios do not map to `Textarea`; keep those requirements on the [Input migration guide](/docs/concepts-migration-from-v8-components-textfield-to-input-migration--docs) or build custom multiline behavior around `Textarea`.
 
-  return (
-    <>
-      <div>
-        <Label htmlFor={standardTextareaId}>Standard</Label>
-        <Textarea id={standardTextareaId} />
-      </div>
-      <div>
-        <Label disabled htmlFor={disabledTextareaId}>
-          Disabled
-        </Label>
-        <Textarea defaultValue={dummyText} disabled id={disabledTextareaId} />
-      </div>
-      <div>
-        <Label htmlFor={nonResizableTextareaId}>Non-resizable</Label>
-        <Textarea resize="none" id={nonResizableTextareaId} />
-      </div>
-    </>
-  );
-};
-```
+There is also no prefix, suffix, or icon slot on `Textarea`, so multiline adornments need surrounding layout instead of inline control chrome.
 
-## Props Mapping
+## Major-change checklist
 
-This table maps `TextField` v8 props to the `Textarea` v9 equivalent.
+| ID   | Change                                                       |
+| ---- | ------------------------------------------------------------ |
+| MC-1 | Multiline input is a separate v9 component                   |
+| MC-2 | Resize behavior uses the `resize` string union               |
+| MC-3 | Controlled changes use `data.value`                          |
+| MC-4 | v8 auto-height and password scenarios do not map to Textarea |
 
-| v0                         | v9             | Notes                                                                                                            |
-| -------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `ariaLabel`                | aria-label     |                                                                                                                  |
-| `autoAdjustHeight`         | n/a            | Auto-resize will be added in the future. See spec for more information                                           |
-| `className`                | `className`    | To use a custom className for the container use as follows: `<textarea root={{ className: customClassName }} />` |
-| `autoComplete`             | `autoComplete` |                                                                                                                  |
-| `borderless`               | `appearance`   | Equivalent `appearance` could be either `filledLighter` or `filledDarker`                                        |
-| `canRevealPassword`        | n/a            |                                                                                                                  |
-| `className`                | `className`    |                                                                                                                  |
-| `componentRef`             | ref            |                                                                                                                  |
-| `defaultValue`             | `defaultValue` | Mutually exclusive with `value`                                                                                  |
-| `deferredValidationTime`   | n/a            |                                                                                                                  |
-| `description`              | n/a            |                                                                                                                  |
-| `disabled`                 | `disabled`     |                                                                                                                  |
-| `errorMessage`             | n/a            |                                                                                                                  |
-| `iconProps`                | n/a            |                                                                                                                  |
-| `inputClassName`           | `className`    |                                                                                                                  |
-| `invalid`                  | n/a            |                                                                                                                  |
-| `label`                    | n/a            | To add a label, use the `Label` component                                                                        |
-| `multiline`                | n/a            | `Textarea` is multiline by default                                                                               |
-| `onChange`                 | `onChange`     |                                                                                                                  |
-| `onGetErrorMessage`        | n/a            |                                                                                                                  |
-| `onNotifyValidationResult` | n/a            |                                                                                                                  |
-| `onRenderDescription`      | n/a            |                                                                                                                  |
-| `onRenderInput`            | n/a            |                                                                                                                  |
-| `onRenderLabel`            | n/a            |                                                                                                                  |
-| `onRenderPrefix`           | n/a            |                                                                                                                  |
-| `onRenderSuffix`           | n/a            |                                                                                                                  |
-| `prefix`                   | n/a            |                                                                                                                  |
-| `readOnly`                 | `readonly`     | This is handled by native component                                                                              |
-| `resizable`                | `resize`       |                                                                                                                  |
-| `revealPasswordAriaLabel`  | n/a            |                                                                                                                  |
-| `styles`                   | `className`    |                                                                                                                  |
-| `suffix`                   | n/a            |                                                                                                                  |
-| `theme`                    | n/a            | use `FluentProvider` to customize themes                                                                         |
-| `underlined`               | n/a            |                                                                                                                  |
-| `validateOnFocusIn`        | n/a            |                                                                                                                  |
-| `validateOnFocusOut`       | n/a            |                                                                                                                  |
-| `validateOnLoad`           | n/a            |                                                                                                                  |
-| `value`                    | `value`        | Mutually exclusive with `defaultValue`                                                                           |
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                      | Date       | Conclusion                                                                                                                                                    |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.multiline`<br />`packages/react-components/react-textarea/library/src/components/Textarea/Textarea.types.ts` `TextareaProps`<br />`packages/react-components/react-textarea/stories/src/Textarea/TextareaUncontrolled.stories.tsx` `Uncontrolled`                             | 2026-08-17 | V9 promotes multiline entry to the dedicated `Textarea` component instead of keeping it as a boolean on `TextField`.                                          |
+| MC-2 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.resizable`, `rows`<br />`packages/react-components/react-textarea/library/src/components/Textarea/Textarea.types.ts` `TextareaProps.resize`, `rows`<br />`packages/react-components/react-textarea/stories/src/Textarea/TextareaResize.stories.tsx` `Resize`                  | 2026-08-17 | Resize behavior is explicit in v9 through the `resize` union, while rows stay a native textarea concern.                                                      |
+| MC-3 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.onChange`<br />`packages/react-components/react-textarea/library/src/components/Textarea/Textarea.types.ts` `TextareaProps.onChange`, `TextareaOnChangeData`<br />`packages/react-components/react-textarea/stories/src/Textarea/TextareaControlled.stories.tsx` `Controlled` | 2026-08-17 | Controlled multiline updates now use the v9 change data object and expose the latest value as `data.value`.                                                   |
+| MC-4 | `packages/react/src/components/TextField/TextField.types.ts` `ITextFieldProps.autoAdjustHeight`, `canRevealPassword`<br />`packages/react-components/react-field/library/src/components/Field/Field.types.ts` `FieldProps`<br />`packages/react-components/react-textarea/library/src/components/Textarea/Textarea.types.ts` `TextareaProps`                | 2026-08-17 | Neither auto-height nor password reveal is part of `TextareaProps`, so those v8 scenarios need a different v9 design than a straight prop-for-prop migration. |
