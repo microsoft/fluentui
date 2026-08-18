@@ -17,6 +17,7 @@ type Story = ComponentType<Record<string, unknown>> & {
 
 interface Meta {
   title?: string;
+  decorators?: import('./story-preview').StoryDecorator[];
   parameters?: {
     docs?: { description?: { component?: string }; hideArgsTable?: boolean };
   };
@@ -122,11 +123,13 @@ function Example({
   story,
   docgenTitle,
   wrapper,
+  decorators,
 }: {
   name: string;
   story: Story;
   docgenTitle: string;
   wrapper?: ComponentType<{ children: ReactNode }>;
+  decorators?: import('./story-preview').StoryDecorator[];
 }) {
   const description = story.parameters?.docs?.description?.story;
 
@@ -134,7 +137,7 @@ function Example({
     <section>
       <h2 id={nameToHash(name)}>{name}</h2>
       {description ? <p>{description}</p> : null}
-      <StoryPreview story={story} name={name} wrapper={wrapper} />
+      <StoryPreview story={story} name={name} wrapper={wrapper} decorators={decorators} />
       <StorySource story={story} />
       <OpenInSandbox story={story} exportToken={name} description={`${docgenTitle} - ${name}`} />
     </section>
@@ -174,7 +177,14 @@ export function ComponentPage({ meta, stories, docgen, order, wrapper, showTheme
       ) : null}
 
       {rest.map(([name, story]) => (
-        <Example key={name} name={name} story={story} docgenTitle={title} wrapper={wrapper} />
+        <Example
+          key={name}
+          name={name}
+          story={story}
+          docgenTitle={title}
+          wrapper={wrapper}
+          decorators={meta.decorators}
+        />
       ))}
     </DocsSettingsProvider>
   );

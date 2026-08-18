@@ -60,13 +60,29 @@ class PreviewErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 }
 
+/** Storybook decorator: receives a component rendering the story, returns wrapped JSX. */
+export type StoryDecorator = (Story: ComponentType) => ReactNode;
+
 export interface StoryPreviewProps {
   /** A story export from a `*.stories.tsx` module. */
   story: ComponentType<Record<string, unknown>>;
   /** Story export name, used for anchors and error reporting. */
   name: string;
-  /** Optional per-page wrapper, replacing a story file's Storybook `decorators`. */
+  /** Optional per-page wrapper. */
   wrapper?: ComponentType<{ children: ReactNode }>;
+  /**
+   * Decorators declared on the story module's meta.
+   *
+   * Applying these keeps the story module the single source of truth (design D1) — the
+   * alternative was re-declaring each layout wrapper on the corresponding docs page, which
+   * would drift from Storybook the moment a decorator changed.
+   */
+  decorators?: StoryDecorator[];
+}
+
+/** Applies decorators innermost-last, matching Storybook's ordering. */
+function applyDecorators(content: ReactNode, decorators: StoryDecorator[] = []): ReactNode {
+  return decorators.reduceRight<ReactNode>((acc, decorate) => decorate(() => <>{acc}</>), content);
 }
 
 /**
@@ -75,16 +91,11 @@ export interface StoryPreviewProps {
  * `data-fluent-preview` marks the subtree that Tailwind's preflight must not reach
  * (see app.css). Everything inside is styled solely by Griffel, as in Storybook.
  */
-export function StoryPreview({ story: Story, name, wrapper: Wrapper }: StoryPreviewProps) {
+export function StoryPreview({ story: Story, name, wrapper: Wrapper, decorators }: StoryPreviewProps) {
   const { theme, dir } = usePreviewSettings();
 
-  const content = Wrapper ? (
-    <Wrapper>
-      <Story />
-    </Wrapper>
-  ) : (
-    <Story />
-  );
+  const decorated = applyDecorators(<Story />, decorators);
+  const content = Wrapper ? <Wrapper>{decorated}</Wrapper> : decorated;
 
   return (
     <div className="not-prose my-4 rounded-lg border p-6">
