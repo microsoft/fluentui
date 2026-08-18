@@ -1162,6 +1162,9 @@ Not applicable
     );
     expect(normalizedDialogGuideSource).toContain('| MC-3 | `onDismiss` becomes `onOpenChange` with event data |');
     expect(normalizedDialogGuideSource).toContain('| MC-4 | blocking/modal behavior becomes `modalType` |');
+    expect(dialogGuideSource).toContain(
+      'packages/react-components/react-dialog/library/src/components/Dialog/Dialog.test.tsx',
+    );
     expect(normalizedDialogGuideSource).toContain(
       '| MC-5 | title, subtext, close button, top buttons, and footer content move from content props/components to explicit compound children |',
     );
