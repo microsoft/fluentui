@@ -29,9 +29,9 @@ steps:
 
   - script: |
       if [[ -n "$(targetBranch)" ]]; then
-        yarn format --since $(targetBranch) --check
+        yarn nx format:check --base $(targetBranch)
       else
-        yarn format --all --check
+        yarn nx format:check --all
       fi
     displayName: check formatting
 
