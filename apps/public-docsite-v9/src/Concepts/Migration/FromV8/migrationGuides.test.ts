@@ -1596,6 +1596,7 @@ Not applicable
     expect(dropdownExamplesSource).toEqual(
       expect.stringContaining('export const V9ComboboxSearchAlternative: Story ='),
     );
+    expect(dropdownExamplesSource).toEqual(expect.stringContaining('optionToText: option => option.text'));
     expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9FieldIntegration: Story ='));
   });
 });

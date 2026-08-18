@@ -291,7 +291,10 @@ const V9ComboboxSearchAlternativeExample = () => {
       text: option.text,
       value: option.key,
     })),
-    { noOptionsMessage: 'No matching owner.' },
+    {
+      noOptionsMessage: 'No matching owner.',
+      optionToText: option => option.text,
+    },
   );
 
   const onOptionSelect: ComboboxProps['onOptionSelect'] = (_event, data) => {
