@@ -21,10 +21,7 @@ export function useOverflowMenu<TElement extends HTMLElement>(
       if (isOverflowing) {
         forceUpdateOverflow();
       }
-      return () => {
-        unregister();
-        forceUpdateOverflow();
-      };
+      return unregister;
     }
   }, [registerOverflowMenu, forceUpdateOverflow, isOverflowing, elementId]);
 
