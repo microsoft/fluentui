@@ -131,11 +131,11 @@ gh api "search/issues?q=repo:${REPO}+reviewed-by:${LOGIN}&per_page=1" --jq .tota
 gh api "search/issues?q=repo:${REPO}+review-requested:${LOGIN}&per_page=1" --jq .total_count
 ```
 
-A ratio near zero disqualifies them, and the reason is subtle: an eligible member counts toward `existing_coverage` on every PR that already requests them. Marking a non-reviewing account eligible therefore does the opposite of helping — it marks PRs "already covered" and suppresses the real assignment they needed. The damage scales with how widely CODEOWNERS requests them, so it is largest for exactly the accounts that look most involved.
+A ratio near zero matters because an eligible member counts toward `existing_coverage` on any PR that already requests them **in an area they serve**. Marking a non-reviewing account eligible therefore suppresses the real assignment those PRs needed, inside that area. Coverage is area-scoped precisely to bound this, so an account that CODEOWNERS requests across the whole repository only distorts the areas it actually claims — but the bound is only as tight as its area list. Keep such an account's `primary` and `secondary` narrow, and set `fallbackEligible` to `false` so it never absorbs unclassified work either.
 
-Prefer giving the area to someone who does review, and record why in that person's `evidence` field so the substitution is not mistaken for the natural owner.
+Where an area's declared owner does not review in practice, give the area to someone who does as well. `reviewers.json` holds no free-text field, so name the substitution in the run's report — read cold, the config shows both as owners with nothing to indicate one is standing in for the other.
 
-**Report those ratios in the run, never write them into `reviewers.json`.** This repository is public, and the config is a committed file: `evidence` must stay a neutral statement of which areas someone owns, or of the mechanics behind an exclusion. A measurement that justifies a decision in conversation becomes a permanent public statement about a named person once committed. Record the decision, not the arithmetic behind it.
+**Report those ratios in the run, never try to record them in `reviewers.json`.** This repository is public and the config is committed, so it deliberately gives you nowhere to put them. A measurement that justifies a decision in conversation becomes a permanent public statement about a named person once committed. Change the `eligible` flag, and explain the change in the pull request that makes it.
 
 A typo'd login in the config surfaces here too: it appears as a stale entry on one side and an unconfigured member on the other.
 
@@ -214,22 +214,29 @@ For each assignable PR, build the eligible pool by removing:
 Never assign a fixed `REVIEWERS` per PR. Count what the PR already has, and request only what is missing:
 
 ```
-existing_coverage = eligible team members already requested on the PR or already reviewing it
+serves(area)      = eligible reviewers whose primary or secondary areas include area,
+                    or — when no eligible reviewer declares that area — every eligible
+                    reviewer whose fallbackEligible is not false
+existing_coverage = reviewers in serves(area) already requested on the PR or already
+                    reviewing it
 shortfall         = max(0, REVIEWERS - existing_coverage)
 ```
 
 Select `shortfall` logins from the tier described above — area match first, then lowest load. When `shortfall` is `0`, **request nobody** and report the PR as already covered.
 
-This is the single most important rule in this step. A PR that already has a team member on it does not need a second, and assigning one anyway is the default failure mode of this skill: most PRs in these queues already carry a reviewer, so a naive fixed-size assignment inflates a batch several times over and dumps the excess on a 4-person pool. Excess requests are worse than useless — they train the team to ignore review notifications.
+This is the single most important rule in this step. A PR that already has a team member on it does not need a second, and assigning one anyway is the default failure mode of this skill: most PRs in these queues already carry a reviewer, so a naive fixed-size assignment inflates a batch several times over and dumps the excess on a small pool. Excess requests are worse than useless — they train the team to ignore review notifications.
 
-`existing_coverage` counts only members of the eligible pool defined by `reviewers.json`. A review request aimed at the whole team is what put the PR in this queue, so it never counts toward coverage; neither does a bot review, nor a reviewer outside the team, nor the author's own review of their own PR.
+**Coverage is area-scoped: being requested on a PR only counts if the person serves that PR's area.** Note that `serves(area)` does not cascade the way selection does — selection prefers a primary owner over a secondary one, but for coverage either counts, because either would be a legitimate review. Without this scoping, one account that CODEOWNERS requests across the whole repository would mark nearly every PR "already covered" and silently suppress the assignments they needed, in areas that account never works in. Area ownership is already declared in `reviewers.json`, so use it on both sides of the calculation rather than treating any request as coverage.
+
+`existing_coverage` counts only members of the eligible pool defined by `reviewers.json`. A review request aimed at the whole team is what put the PR in this queue, so it never counts toward coverage; neither does a bot review, nor a reviewer outside the team, nor an eligible member requested on a PR outside the areas they serve, nor the author's own review of their own PR.
 
 ### Judge coverage, not pool size
 
 A small or empty pool usually means the PR is already well covered, not that it needs attention. Compute **effective coverage** for each PR:
 
 ```
-effective_coverage = (eligible reviewers already requested or already reviewing) + (newly selected reviewers)
+effective_coverage = (reviewers in serves(area) already requested or already reviewing)
+                     + (newly selected reviewers)
 ```
 
 - Report a PR as **under-covered** only when `effective_coverage < REVIEWERS`. That is the condition a human needs to act on, and it means the pool ran dry before the shortfall was filled.
@@ -360,6 +367,8 @@ Show the config-reconciliation line even when it is clean, so a silent drift is 
 
 The `Match` column records whether the chosen reviewer owned the area as `primary`, as `secondary`, or whether selection `fell back` to the whole pool because nobody owned it. A column full of fallbacks means the area map in `reviewers.json` no longer reflects what the team actually works on, and is the signal to update it.
 
+The `Coverage` column counts only reviewers who serve the PR's area, so it can read lower than the reviewer list GitHub shows. When a PR is assigned despite already carrying an eligible reviewer, say which reviewer was discounted and for which area — otherwise the row looks like the shortfall rule misfiring, and the natural correction is to suppress exactly the assignment that was needed.
+
 Then ask the user to approve. Accept `apply all`, a subset such as `assign only`, `merge 36476`, `skip 36430`, or `cancel`. Treat invoking the skill as a request for the plan, never as approval to mutate.
 
 ## Step 8 - Apply approved actions
@@ -410,11 +419,11 @@ A run almost always leaves something a human has to finish: a major Action bump 
 - Never merge a PR that is not cleanly mergeable.
 - Never merge a PR with an empty diff; propose closing it instead.
 - Never assign the PR author as a reviewer of their own PR.
-- Never add a reviewer to a PR that already has `REVIEWERS` eligible team members requested or reviewing; request only the shortfall. The author's own review never counts toward that total.
+- Never add a reviewer to a PR that already has `REVIEWERS` eligible team members requested or reviewing who serve that PR's area; request only the shortfall. A request to someone outside the area they serve is not coverage, and the author's own review never counts toward that total.
 - Never hardcode the team roster or reviewer names in `SKILL.md`; resolve membership from the API at run time and read eligibility and areas from `reviewers.json`. Neither source is sufficient alone.
 - Never request a review from a login that is absent from `reviewers.json`, or present but not `eligible`; report the omission by name instead.
 - Never fall back to an inline reviewer list when `reviewers.json` is missing or malformed; stop the assignment workstream and report, letting the other workstreams continue.
-- Never write review statistics, performance comparisons, or other personal assessments into `reviewers.json`; it is a committed file in a public repository. Report those figures in the run instead.
+- Never add review statistics, performance comparisons, or any other free-text assessment of a person to `reviewers.json`; it is a committed file in a public repository. Report those figures in the run, and explain eligibility changes in the pull request that makes them.
 - Never bypass branch protection or use an administrator merge override.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
 - Never run on a schedule or add a GitHub Actions workflow.

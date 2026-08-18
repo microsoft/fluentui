@@ -15,10 +15,10 @@
     "as marking them ineligible: an unlisted team member is reported as",
     "unconfigured on every run until someone decides.",
     "",
-    "THIS REPOSITORY IS PUBLIC. Keep 'evidence' to a neutral statement of which",
-    "areas a person owns, or of the mechanics behind an exclusion. Never record",
-    "review statistics, performance comparisons, or anything you would not put",
-    "in a public code review."
+    "THIS REPOSITORY IS PUBLIC. An entry carries a login, an eligibility flag",
+    "and the areas that person owns - deliberately no free-text notes about",
+    "anyone. Do not add a field to explain why someone is ineligible: record",
+    "that reasoning in the pull request that changes the flag, not here."
   ],
 
   "team": {
@@ -103,58 +103,51 @@
       "login": "Hotell",
       "eligible": true,
       "primary": ["build"],
-      "secondary": ["ai-skills", "dependencies", "docs", "headless"],
-      "evidence": "Owns build, tooling and release: ESLint rules, workspace plugin, Babel presets, bundle size and CI. Also the eligible owner of ai-skills."
+      "secondary": ["ai-skills", "dependencies", "docs", "headless"]
     },
     {
       "login": "dmytrokirpa",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
-      "evidence": "Works primarily on v9 React components and headless components."
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "mainframev",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
-      "evidence": "Works primarily on v9 React components and headless components."
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "PaulGMardling",
       "eligible": true,
       "primary": ["components", "headless"],
-      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
-      "evidence": "Works primarily on v9 React components and headless components."
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"]
     },
     {
       "login": "tudorpopams",
-      "eligible": false,
+      "eligible": true,
+      "fallbackEligible": false,
       "primary": ["ai-skills"],
-      "secondary": [],
-      "evidence": "Excluded from automatic assignment; typically the person running this skill."
+      "secondary": []
     },
     {
       "login": "ValentinaKozlova",
       "eligible": false,
       "primary": [],
-      "secondary": [],
-      "evidence": "Excluded from automatic assignment."
+      "secondary": []
     },
     {
       "login": "paolo-aliprandi",
-      "eligible": false,
+      "eligible": true,
       "fallbackEligible": false,
       "primary": ["ai-skills"],
-      "secondary": [],
-      "evidence": "Declared owner of ai-skills, but deliberately not eligible for automatic assignment. An eligible member counts toward existing_coverage on every PR that already requests them, so listing an account that is auto-requested at scale would mark those PRs already covered and silently suppress the assignments they actually need. ai-skills routes to its other declared owner in the meantime."
+      "secondary": []
     },
     {
       "login": "gouttierre",
       "eligible": false,
       "primary": [],
-      "secondary": [],
-      "evidence": "Excluded from automatic assignment."
+      "secondary": []
     }
   ]
 }
