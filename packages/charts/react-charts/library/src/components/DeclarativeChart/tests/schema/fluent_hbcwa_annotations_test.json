@@ -1,0 +1,61 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "bar",
+      "orientation": "h",
+      "x": [120, 150, 180, 200],
+      "y": ["Product A", "Product B", "Product C", "Product D"],
+      "marker": {
+        "color": ["#0078d4", "#00bcf2", "#00b294", "#ffc83d"]
+      }
+    }
+  ],
+  "layout": {
+    "title": "Sales by Product with Annotations",
+    "width": 700,
+    "height": 400,
+    "xaxis": { "title": "Sales ($K)" },
+    "yaxis": { "title": "Product" },
+    "annotations": [
+      {
+        "text": "Top Seller",
+        "x": 200,
+        "y": "Product D",
+        "showarrow": true,
+        "arrowhead": 2,
+        "arrowcolor": "#107c10",
+        "arrowwidth": 2,
+        "ax": 40,
+        "ay": 0,
+        "bgcolor": "#dff6dd",
+        "bordercolor": "#107c10",
+        "font": { "color": "#107c10", "size": 12 }
+      },
+      {
+        "text": "Growth Target",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.95,
+        "y": 0.95,
+        "showarrow": false,
+        "bgcolor": "#fff4ce",
+        "bordercolor": "#ffc83d",
+        "font": { "color": "#8a6d00", "size": 10 }
+      },
+      {
+        "text": "Needs Improvement",
+        "x": 120,
+        "y": "Product A",
+        "showarrow": true,
+        "arrowhead": 2,
+        "arrowcolor": "#d13438",
+        "ax": -50,
+        "ay": 0,
+        "bgcolor": "#fde7e9",
+        "bordercolor": "#d13438",
+        "font": { "color": "#d13438", "size": 11 }
+      }
+    ]
+  }
+}
