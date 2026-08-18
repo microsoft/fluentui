@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "_readme": [
+    "Reviewer configuration for the /assign-prs skill.",
+    "",
+    "This file is an OVERLAY, not a roster. Team membership is resolved at run",
+    "time from the GitHub team API; this file only says which of those members",
+    "are eligible for automatic assignment and what each one knows well.",
+    "",
+    "To change who gets review requests, edit 'eligible' below. Do not edit",
+    "SKILL.md - it deliberately contains no names.",
+    "",
+    "Every member of the team is listed, including ineligible ones, so that a",
+    "person is never silently absent. Removing someone's entry is not the same",
+    "as marking them ineligible: an unlisted team member is reported as",
+    "unconfigured on every run until someone decides.",
+    "",
+    "THIS REPOSITORY IS PUBLIC. Keep 'evidence' to a neutral statement of which",
+    "areas a person owns, or of the mechanics behind an exclusion. Never record",
+    "review statistics, performance comparisons, or anything you would not put",
+    "in a public code review."
+  ],
+
+  "team": {
+    "org": "microsoft",
+    "slug": "cxe-prg"
+  },
+
+  "settings": {
+    "reviewers": 1,
+    "areaMatch": "preference",
+    "unknownMemberPolicy": "exclude-and-report"
+  },
+
+  "areas": {
+    "headless": {
+      "label": "Headless components",
+      "scopes": ["react-headless-components-preview", "headless-*"],
+      "paths": ["packages/react-components/react-headless-components-preview/**", "apps/public-docsite-v9-headless/**"]
+    },
+    "components": {
+      "label": "v9 React components",
+      "scopes": ["react", "react-*"],
+      "paths": ["packages/react-components/**"]
+    },
+    "web-components": {
+      "label": "Web components",
+      "scopes": ["web-components"],
+      "paths": ["packages/web-components/**", "apps/vr-tests-web-components/**"]
+    },
+    "motion": {
+      "label": "Motion",
+      "scopes": ["react-motion*"],
+      "paths": ["packages/react-components/react-motion*/**"]
+    },
+    "build": {
+      "label": "Build, tooling and release",
+      "scopes": [
+        "eslint-*",
+        "workspace-plugin",
+        "tools",
+        "scripts*",
+        "ci",
+        "release",
+        "bundle-size",
+        "monosize",
+        "babel-preset*",
+        "react-conformance"
+      ],
+      "paths": [
+        "tools/**",
+        "scripts/**",
+        ".github/**",
+        ".devops/**",
+        "packages/eslint-plugin/**",
+        "packages/react-conformance/**"
+      ]
+    },
+    "dependencies": {
+      "label": "Dependencies",
+      "scopes": ["deps", "deps-dev", "dependabot"],
+      "paths": ["yarn.lock", "package.json", "**/package.json"]
+    },
+    "docs": {
+      "label": "Docs and docsite",
+      "scopes": ["docsite*", "api-docs", "react-docsite-components", "docs"],
+      "paths": ["apps/public-docsite*/**", "packages/api-docs/**"]
+    },
+    "a11y": {
+      "label": "Accessibility",
+      "scopes": ["a11y*", "axe"],
+      "paths": ["packages/a11y-testing/**"]
+    },
+    "ai-skills": {
+      "label": "Agentic Skills",
+      "scopes": ["skills"],
+      "paths": [".agents/skills/**", ".claude/skills/**", "AGENTS.md"]
+    }
+  },
+
+  "reviewers": [
+    {
+      "login": "Hotell",
+      "eligible": true,
+      "primary": ["build"],
+      "secondary": ["ai-skills", "dependencies", "docs", "headless"],
+      "evidence": "Owns build, tooling and release: ESLint rules, workspace plugin, Babel presets, bundle size and CI. Also the eligible owner of ai-skills."
+    },
+    {
+      "login": "dmytrokirpa",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
+      "evidence": "Works primarily on v9 React components and headless components."
+    },
+    {
+      "login": "mainframev",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
+      "evidence": "Works primarily on v9 React components and headless components."
+    },
+    {
+      "login": "PaulGMardling",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "build", "dependencies", "motion", "web-components"],
+      "evidence": "Works primarily on v9 React components and headless components."
+    },
+    {
+      "login": "tudorpopams",
+      "eligible": false,
+      "primary": ["ai-skills"],
+      "secondary": [],
+      "evidence": "Excluded from automatic assignment; typically the person running this skill."
+    },
+    {
+      "login": "ValentinaKozlova",
+      "eligible": false,
+      "primary": [],
+      "secondary": [],
+      "evidence": "Excluded from automatic assignment."
+    },
+    {
+      "login": "paolo-aliprandi",
+      "eligible": false,
+      "fallbackEligible": false,
+      "primary": ["ai-skills"],
+      "secondary": [],
+      "evidence": "Declared owner of ai-skills, but deliberately not eligible for automatic assignment. An eligible member counts toward existing_coverage on every PR that already requests them, so listing an account that is auto-requested at scale would mark those PRs already covered and silently suppress the assignments they actually need. ai-skills routes to its other declared owner in the meantime."
+    },
+    {
+      "login": "gouttierre",
+      "eligible": false,
+      "primary": [],
+      "secondary": [],
+      "evidence": "Excluded from automatic assignment."
+    }
+  ]
+}
