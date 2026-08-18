@@ -1,0 +1,164 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/DetailsList/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/DetailsList Migration" />
+
+# DetailsList Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [Table](/docs/components-table--docs) when your v8 `DetailsList` is primarily a semantic display table and you want to own the rendering and interaction model yourself. Use [DataGrid](/docs/components-datagrid--docs) when you want Fluent UI v9 to provide integrated row selection, sortable headers, composite keyboard navigation, and resizable columns on top of the same table primitives.
+
+The v8 component bundled data mapping, a mutable `Selection` object, row focus behavior, column sizing, grouping, shimmer loading, and virtualization-oriented APIs into one surface. V9 splits those responsibilities across explicit `Table` children, `DataGrid` column definitions, `useTableFeatures` plugins, and separate composition for scenarios that are no longer built in.
+
+| Need                                                                  | Destination                                                                                                         |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| semantic display table with consumer-owned behavior                   | `Table`                                                                                                             |
+| selection, sorting, or sizing with maximum composition control        | `Table` plus `useTableFeatures` plugins                                                                             |
+| composite keyboard navigation with a composed table                   | `useTableCompositeNavigation` with `Table`                                                                          |
+| integrated selection, sorting, keyboard navigation, and column sizing | `DataGrid`                                                                                                          |
+| virtualization                                                        | compose `Table` or `DataGrid` with a virtualization library; there is no built-in `DetailsList` virtualization prop |
+| grouped hierarchical rows                                             | no one-to-one `DetailsList` replacement; use custom composition or a different component family                     |
+
+## Component mapping
+
+| v8 `DetailsList` scenario                                                   | v9 destination                                                                                                               | Notes                                                                                                                       |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Read-only or lightly interactive tabular layout                             | `Table`                                                                                                                      | Keep semantic `<table>` markup and render `TableHeader`, `TableRow`, and `TableCell` children yourself.                     |
+| Selection, sortable headers, or resizable columns with built-in affordances | `DataGrid`                                                                                                                   | `DataGrid` composes the same table primitives with column definitions, selection state, keyboard modes, and sizing helpers. |
+| Advanced selection, sorting, or sizing with custom layout rules             | `Table` plus `useTableFeatures`, `useTableSelection`, `useTableSort`, and `useTableColumnSizing_unstable`                    | Use hook composition when the v8 scenario outgrew a single component and you need to own the rendered structure.            |
+| Hierarchical `groupProps` rows                                              | [GroupedList migration guide](/docs/concepts-migration-from-v8-components-groupedlist-migration--docs) or custom composition | V9 does not ship a direct grouped grid replacement inside `Table` or `DataGrid`.                                            |
+| Loading placeholders from `ShimmeredDetailsList`                            | `Table` or `DataGrid` plus [Skeleton](/docs/components-skeleton--docs) or app-level loading UI                               | The loading surface is composed separately instead of controlled by an `enableShimmer` prop.                                |
+
+## What changed
+
+`DetailsList` let you hand over `items`, optional `columns`, a `Selection` instance, and render callbacks while the component owned the rest. V9 makes the data-to-UI mapping explicit. `Table` renders rows and cells directly, while `DataGrid` turns `items` and `createTableColumn` definitions into rows, selection cells, sort handlers, and keyboard interactions.
+
+The `Selection` class, `setKey`, and checkbox visibility flags no longer define a mutable singleton selection model. Instead, selection is expressed as controlled or default `selectedItems` sets in `DataGrid` or through the `useTableSelection` plugin when you compose `Table` yourself. Sorting also moves from `onColumnHeaderClick` and mutable `IColumn` flags into explicit `sortState`, `onSortChange`, and `compare` functions on each v9 column definition.
+
+## Architecture and behavior
+
+A v9 `Table` is presentational by default. It renders semantic table elements unless you opt into `noNativeElements`, and it leaves selection, sorting, composite focus navigation, and virtualization to composition. `useTableFeatures` is the main integration point for rebuilding selected `DetailsList` behaviors around stable hooks such as `useTableSelection`, `useTableSort`, and `useTableColumnSizing_unstable`.
+
+`DataGrid` is the higher-level choice when the old `DetailsList` relied on integrated row selection, sort state, focus movement, or column sizing. It accepts `items`, `columns`, `selectionMode`, `sortState`, and `resizableColumns`, then renders `DataGridRow` and `DataGridCell` children through column `renderHeaderCell` and `renderCell` functions. For keyboard behavior, `DataGrid` exposes `focusMode`, while a custom `Table` can add `useTableCompositeNavigation` when the old grid relied on row-plus-cell arrow key movement.
+
+Layout responsibilities also change. V8 `layoutMode`, `compact`, and resize handles all lived on `DetailsList`. In v9, density is handled with the `size` prop and token-based styling, column widths come from `columnSizingOptions` or `useTableColumnSizing_unstable`, and non-native flex layouts are an explicit opt-in for scenarios such as virtualization.
+
+## Prop mapping
+
+### Data, columns, and row rendering
+
+| v8 prop                 | v9 replacement                                                                 | Notes                                                                                                                           |
+| ----------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `items`                 | `TableBody` children or `DataGrid items`                                       | `Table` renders each row explicitly; `DataGrid` still accepts an `items` array but only in combination with column definitions. |
+| `columns`               | `TableHeaderCell` plus `TableCell` children or `createTableColumn` definitions | `DataGrid` columns own `renderHeaderCell`, `renderCell`, and optional `compare` callbacks.                                      |
+| `getKey`                | `DataGrid getRowId` or row `key` props                                         | Preserve stable row identity yourself when sorting, selecting, or virtualizing.                                                 |
+| `onRenderRow`           | Compose `TableRow` or `DataGridRow` directly                                   | Row wrappers, selection styling, and action cells move into explicit JSX.                                                       |
+| `onRenderItemColumn`    | Column `renderCell` or direct `TableCell` children                             | Cell rendering is a first-class column concern in v9.                                                                           |
+| `onRenderDetailsHeader` | Column `renderHeaderCell` or direct `TableHeaderCell` composition              | Header render callbacks become header cell composition instead of a list-level escape hatch.                                    |
+
+### Selection and checkbox behavior
+
+| v8 prop              | v9 replacement                                                               | Notes                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `selection`          | `DataGrid selectedItems` and `onSelectionChange`, or `useTableSelection`     | The mutable v8 `Selection` object is replaced by controlled or default `Set<TableRowId>` state. |
+| `selectionMode`      | `DataGrid selectionMode` or `useTableSelection({ selectionMode })`           | Use `single` or `multiselect` depending on the old row-selection behavior.                      |
+| `setKey`             | Recreate or reset controlled selection state when your data identity changes | V9 does not reset selection automatically from a string key.                                    |
+| `checkboxVisibility` | `DataGrid selectionMode` or explicit `TableSelectionCell` composition        | Checkbox presence is expressed by rendering selection cells instead of a hover-only list prop.  |
+
+### Sorting, focus, and layout
+
+| v8 prop                        | v9 replacement                                                                                                                               | Notes                                                                                          |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `onColumnHeaderClick`          | `DataGrid sortable` plus `sortState` and `onSortChange`, or `useTableSort`                                                                   | Sorting is tied to each column definition and an explicit sort state model.                    |
+| `layoutMode`                   | semantic `Table` layout by default; `noNativeElements`, `columnSizingOptions`, and `useTableColumnSizing_unstable` when you need flex sizing | There is no direct `fixedColumns` vs `justified` toggle on a single v9 prop.                   |
+| `compact`                      | `size="small"` or `size="extra-small"` plus token-based row styling                                                                          | Density is handled by component size and Griffel styling rather than a dedicated compact mode. |
+| row and cell keyboard behavior | `DataGrid focusMode` or `useTableCompositeNavigation`                                                                                        | `DetailsList` default row focus is no longer implicit for a plain `Table`.                     |
+
+### Unsupported and cross-cutting scenarios
+
+| v8 prop         | v9 replacement                                                                                     | Notes                                                                                                                                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `groupProps`    | No direct equivalent inside `Table` or `DataGrid`                                                  | Re-evaluate the scenario with [`Tree`](/docs/components-tree--docs), the [GroupedList migration guide](/docs/concepts-migration-from-v8-components-groupedlist-migration--docs), or custom grouped composition. |
+| `enableShimmer` | Compose [Skeleton](/docs/components-skeleton--docs), placeholders, or an app-level loading overlay | `ShimmeredDetailsList` loading is not a built-in `Table` or `DataGrid` feature.                                                                                                                                 |
+| `styles`        | `className`, slot props, `makeStyles`, and design tokens                                           | Apply styles to the exact row, cell, or layout primitive that changed in the migration.                                                                                                                         |
+| `theme`         | `FluentProvider`                                                                                   | Theming is provided by context instead of a per-instance prop.                                                                                                                                                  |
+
+## Styling and theming
+
+V8 `styles` and `theme` often targeted one monolithic component tree. In v9, style the table, row, cell, and layout pieces directly with Griffel `makeStyles` and Fluent design tokens from `@fluentui/react-theme`. Use component `className` props, slot props, and `TableCellLayout` composition to apply styling where it belongs.
+
+Treat column width numbers as functional sizing inputs, not design tokens. Visual decisions such as spacing, borders, typography, and color should come from tokens, while `columnSizingOptions`, `size`, and `resizableColumns` describe behavior. Theme changes move to `FluentProvider`, which makes `Table` and `DataGrid` participate in the same v9 theme context as the rest of the page.
+
+## Accessibility
+
+A semantic v9 `Table` keeps native table roles by default, which is the best starting point for read-only layouts. When you recompose the table with `noNativeElements` for custom keyboard navigation or virtualization, provide the correct `role`, `aria-label`, `aria-selected`, and selection-cell labels yourself because you have opted out of native semantics.
+
+`DataGrid` is the better fit when the v8 `DetailsList` relied on grid-style keyboard behavior. Use `focusMode` to choose row, cell, or composite navigation, and keep column headers descriptive so assistive technologies can announce sort state. Selection columns should include explicit `aria-label` text for row and header toggles, and sortable headers should expose their direction through the built-in sort metadata rather than custom DOM wiring.
+
+## Examples
+
+### MC-1 `items` and `columns` data becomes explicit `Table` children or `DataGrid` column definitions
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+<Canvas of={Examples.V9DataGridAlternative} />
+<Source of={Examples.V9DataGridAlternative} />
+
+### MC-2 v8 `Selection` object becomes controlled selection state and callbacks
+
+<Canvas of={Examples.V8Selection} />
+<Source of={Examples.V8Selection} />
+<Canvas of={Examples.V9DataGridSelection} />
+<Source of={Examples.V9DataGridSelection} />
+
+### MC-3 sorting becomes controlled column definitions and callbacks
+
+<Canvas of={Examples.V8Sorting} />
+<Source of={Examples.V8Sorting} />
+<Canvas of={Examples.V9DataGridSorting} />
+<Source of={Examples.V9DataGridSorting} />
+
+### MC-4 cell and header render callbacks move to `renderCell`, `renderHeaderCell`, or child composition
+
+<Canvas of={Examples.V8CustomCell} />
+<Source of={Examples.V8CustomCell} />
+<Canvas of={Examples.V9RenderCell} />
+<Source of={Examples.V9RenderCell} />
+
+### MC-5 layout, column sizing, and keyboard behavior differ between `Table` and `DataGrid`
+
+<Canvas of={Examples.V8LayoutAndColumnSizing} />
+<Source of={Examples.V8LayoutAndColumnSizing} />
+<Canvas of={Examples.V9TableFeatureHooks} />
+<Source of={Examples.V9TableFeatureHooks} />
+
+## Unsupported scenarios and known gaps
+
+MC-6: grouping, shimmer integration, and virtualization are not one-to-one built-ins. `groupProps`-driven hierarchies still need a different component strategy such as the [GroupedList migration guide](/docs/concepts-migration-from-v8-components-groupedlist-migration--docs) or a custom combination of `Tree`, `List`, and table primitives. `ShimmeredDetailsList` `enableShimmer` becomes explicit loading composition with `Skeleton` rows or an overlay, not a `Table` or `DataGrid` prop. Built-in virtualization is also gone: use the patterns in `packages/react-components/react-table/stories/src/Table/Virtualization.stories.tsx` or the `@fluentui-contrib/react-data-grid-react-window` package shown by the DataGrid virtualization story. The v8 marquee selection behavior is likewise unsupported and must be rebuilt outside the stable v9 table surface if it remains a hard requirement.
+
+## Major-change checklist
+
+| ID   | Change                                                                                          |
+| ---- | ----------------------------------------------------------------------------------------------- |
+| MC-1 | `items` and `columns` data becomes explicit `Table` children or `DataGrid` column definitions   |
+| MC-2 | v8 `Selection` object becomes controlled selection state and callbacks                          |
+| MC-3 | sorting becomes controlled column definitions and callbacks                                     |
+| MC-4 | cell and header render callbacks move to `renderCell`, `renderHeaderCell`, or child composition |
+| MC-5 | layout, column sizing, and keyboard behavior differ between `Table` and `DataGrid`              |
+| MC-6 | grouping, shimmer integration, and virtualization are not one-to-one built-ins                  |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Date       | Conclusion                                                                                                                                                                |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `IDetailsListProps.items`, `columns`, `getKey`<br />`packages/react-components/react-table/library/src/components/Table/Table.types.ts` `TableProps`<br />`packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts` `DataGridProps.items`, `columns`, `getRowId`<br />`packages/react-components/react-table/library/src/hooks/useTableFeatures.ts` `useTableFeatures`<br />`packages/react-components/react-table/library/src/hooks/useTableFeatures.test.ts` `useTableFeatures`                                                                                                                                                                                                    | 2026-08-18 | V9 replaces the v8 list-owned data mapping with explicit `Table` children or `DataGrid` column definitions driven by stable table hooks.                                  |
+| MC-2 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `selection`, `selectionMode`, `setKey`<br />`packages/react/src/components/DetailsList/DetailsHeader.types.ts` `ariaLabelForSelectAllCheckbox`, `ariaLabelForSelectionColumn`<br />`packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts` `selectionMode`, `selectedItems`, `onSelectionChange`<br />`packages/react-components/react-table/library/src/hooks/useTableSelection.test.ts` `useTableSelectionState`<br />`packages/react-components/react-table/stories/src/DataGrid/SingleSelectControlled.stories.tsx` `SingleSelectControlled`<br />`packages/react-components/react-table/stories/src/DataGrid/MultipleSelectControlled.stories.tsx` `MultipleSelectControlled` | 2026-08-18 | The v8 `Selection` object and checkbox labels become controlled row-id sets plus explicit row and header selection cells in v9.                                           |
+| MC-3 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `onColumnHeaderClick`<br />`packages/react/src/components/DetailsList/DetailsList.types.ts` `IColumn.onColumnClick`, `isSorted`, `isSortedDescending`<br />`packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts` `sortState`, `defaultSortState`, `onSortChange`<br />`packages/react-components/react-table/library/src/hooks/useTableSort.test.ts` `useTableSortState`<br />`packages/react-components/react-table/stories/src/DataGrid/SortControlled.stories.tsx` `SortControlled`                                                                                                                                                                                           | 2026-08-18 | Sorting moves from mutable v8 column metadata into explicit compare functions and controlled sort callbacks on v9 columns.                                                |
+| MC-4 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `onRenderRow`, `onRenderItemColumn`, `onRenderDetailsHeader`<br />`packages/react/src/components/DetailsList/DetailsRow.types.ts` `IDetailsRowBaseProps.onRenderItemColumn`<br />`packages/react-components/react-table/library/src/components/Table/Table.types.ts` `TableProps`<br />`packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts` `DataGridProps.columns`                                                                                                                                                                                                                                                                                                             | 2026-08-18 | V9 removes list-level render escape hatches in favor of direct row composition and per-column `renderCell` and `renderHeaderCell` renderers.                              |
+| MC-5 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `layoutMode`, `checkboxVisibility`, `compact`<br />`packages/react/src/components/DetailsList/DetailsHeader.types.ts` `layoutMode`<br />`packages/react-components/react-table/library/src/components/Table/Table.types.ts` `size`, `noNativeElements`, `sortable`<br />`packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts` `focusMode`, `resizableColumns`, `columnSizingOptions`<br />`packages/react-components/react-table/library/src/hooks/useTableColumnSizing.test.ts` `useTableColumnSizing`<br />`packages/react-components/react-table/library/src/hooks/useTableCompositeNavigation.ts` `useTableCompositeNavigation`                                              | 2026-08-18 | Density, column sizing, and keyboard behavior are separate v9 concerns expressed through size props, column sizing hooks, `focusMode`, and optional composite navigation. |
+| MC-6 | `packages/react/src/components/DetailsList/DetailsList.types.ts` `groups`, `groupProps`<br />`packages/react/src/components/DetailsList/ShimmeredDetailsList.types.ts` `enableShimmer`<br />`packages/react-components/react-table/stories/src/Table/Virtualization.stories.tsx` `Virtualization`<br />`packages/react-components/react-table/stories/src/DataGrid/Virtualization.stories.tsx` `Virtualization`                                                                                                                                                                                                                                                                                                                                                                       | 2026-08-18 | Grouping, shimmer loading, marquee selection, and virtualization no longer ship as one built-in table component and must be composed or replaced deliberately.            |

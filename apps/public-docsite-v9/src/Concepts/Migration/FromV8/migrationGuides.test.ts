@@ -1599,6 +1599,148 @@ Not applicable
     expect(dropdownExamplesSource).toEqual(expect.stringContaining('optionToText: option => option.text'));
     expect(dropdownExamplesSource).toEqual(expect.stringContaining('export const V9FieldIntegration: Story ='));
   });
+
+  test('Task 16 DetailsList guide and shared stories satisfy the DetailsList migration contract', () => {
+    const detailsListGuidePath = path.join(fromV8ComponentsDirectory, 'DetailsList.mdx');
+    const detailsListExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/DetailsList/index.stories.tsx');
+
+    expect(fs.existsSync(detailsListGuidePath)).toBe(true);
+    expect(fs.existsSync(detailsListExamplesPath)).toBe(true);
+
+    const detailsListGuideSource = readUtf8(detailsListGuidePath);
+    const normalizedDetailsListGuideSource = detailsListGuideSource.replace(/\s+/g, ' ');
+    const detailsListSections = getGuideSections(stripIgnoredGuideContent(detailsListGuideSource));
+    const detailsListPropMapping = detailsListSections.get('Prop mapping') ?? '';
+    const detailsListAccessibility = detailsListSections.get('Accessibility') ?? '';
+    const detailsListUnsupported = detailsListSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredDetailsListProps = [
+      'items',
+      'columns',
+      'selection',
+      'selectionMode',
+      'setKey',
+      'layoutMode',
+      'compact',
+      'checkboxVisibility',
+      'onColumnHeaderClick',
+      'onRenderItemColumn',
+      'onRenderDetailsHeader',
+      'onRenderRow',
+      'groupProps',
+      'enableShimmer',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const guidePagesColumnIndex = getInventoryColumnIndex('Guide pages');
+    const detailsListRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'detailslist');
+
+    expect(validateCompleteGuide(detailsListGuideSource, 'DetailsList')).toEqual([]);
+    expect(requiredDetailsListProps.filter(propName => !detailsListPropMapping.includes(`\`${propName}\``))).toEqual(
+      [],
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-1 | `items` and `columns` data becomes explicit `Table` children or `DataGrid` column definitions |',
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-2 | v8 `Selection` object becomes controlled selection state and callbacks |',
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-3 | sorting becomes controlled column definitions and callbacks |',
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-4 | cell and header render callbacks move to `renderCell`, `renderHeaderCell`, or child composition |',
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-5 | layout, column sizing, and keyboard behavior differ between `Table` and `DataGrid` |',
+    );
+    expect(normalizedDetailsListGuideSource).toContain(
+      '| MC-6 | grouping, shimmer integration, and virtualization are not one-to-one built-ins |',
+    );
+    expect(detailsListGuideSource).toContain('packages/react/src/components/DetailsList/DetailsList.types.ts');
+    expect(detailsListGuideSource).toContain('packages/react/src/components/DetailsList/DetailsHeader.types.ts');
+    expect(detailsListGuideSource).toContain('packages/react/src/components/DetailsList/DetailsRow.types.ts');
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/components/Table/Table.types.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/components/DataGrid/DataGrid.types.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableFeatures.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableFeatures.test.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableSelection.test.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableSort.test.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableColumnSizing.test.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/library/src/hooks/useTableCompositeNavigation.ts',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/stories/src/Table/Virtualization.stories.tsx',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/stories/src/DataGrid/SingleSelectControlled.stories.tsx',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/stories/src/DataGrid/MultipleSelectControlled.stories.tsx',
+    );
+    expect(detailsListGuideSource).toContain(
+      'packages/react-components/react-table/stories/src/DataGrid/SortControlled.stories.tsx',
+    );
+    expect(detailsListAccessibility).toContain('aria');
+    expect(detailsListAccessibility).toContain('keyboard');
+    expect(detailsListAccessibility).toContain('focus');
+    expect(detailsListAccessibility).toContain('grid');
+    expect(detailsListUnsupported).toContain('virtual');
+    expect(detailsListUnsupported).toContain('group');
+    expect(detailsListUnsupported).toContain('shimmer');
+    expect(detailsListUnsupported).toContain('marquee');
+    expect(detailsListRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(guidePagesColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(detailsListRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(detailsListRow?.cells[priorityColumnIndex])).toBe('n/a');
+    expect(detailsListRow?.guideLinks).toContain(
+      '/docs/concepts-migration-from-v8-components-detailslist-migration--docs',
+    );
+
+    const detailsListExamplesSource = readUtf8(detailsListExamplesPath);
+
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9DataGridAlternative: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V8Selection: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9DataGridSelection: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V8Sorting: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9DataGridSorting: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V8CustomCell: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9RenderCell: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V8LayoutAndColumnSizing: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('export const V9TableFeatureHooks: Story ='));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('DetailsList'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('Selection'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('createTableColumn'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('DataGrid'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('useTableFeatures'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('useTableSort'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('useTableSelection'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('useTableColumnSizing_unstable'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('useTableCompositeNavigation'));
+    expect(detailsListExamplesSource).toEqual(expect.stringContaining('focusMode="composite"'));
+  });
 });
 
 describe('FromV8 migration inventory', () => {
