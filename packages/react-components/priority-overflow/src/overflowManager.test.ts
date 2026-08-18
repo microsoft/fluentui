@@ -177,6 +177,29 @@ describe('overflowManager', () => {
     expect(onUpdateOverflow).toHaveBeenCalled();
   });
 
+  it('should cancel a pending update when overflow is synchronously forced', async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const manager = createOverflowManager(createObserveOptions());
+    process.env.NODE_ENV = previousNodeEnv;
+
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    manager.forceUpdate();
+    await Promise.resolve();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+  });
+
   it('should remove items through removeItem', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: avoid synchronous overflow measurement when the overflow menu unmounts",
+  "comment": "fix: avoid redundant overflow work during menu teardown and unchanged visibility updates",
   "packageName": "@fluentui/react-overflow",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

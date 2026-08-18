@@ -24,7 +24,4 @@ const selectVisibility = (
 ): {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
-} => ({
-  itemVisibility: snapshot.itemVisibility,
-  groupVisibility: snapshot.groupVisibility,
-});
+} => snapshot;
