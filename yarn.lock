@@ -3559,10 +3559,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
-    react: ">=16.8.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -4063,7 +4063,7 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
-    react: ">=16.8.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
@@ -4424,10 +4424,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
-    react: ">=16.8.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -4554,10 +4554,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -4681,10 +4681,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -4772,10 +4772,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -4830,7 +4830,7 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
-    react: ">=16.8.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
@@ -4899,10 +4899,10 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5277,10 +5277,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5524,10 +5524,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5724,10 +5724,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
     use-sync-external-store: "npm:^1.2.0"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5823,10 +5823,10 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@types/react": ">=16.8.0 <20.0.0"
-    "@types/react-dom": ">=16.8.0 <20.0.0"
-    react: ">=16.8.0 <20.0.0"
-    react-dom: ">=16.8.0 <20.0.0"
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
