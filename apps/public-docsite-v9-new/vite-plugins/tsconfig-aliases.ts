@@ -45,7 +45,16 @@ export function tsconfigAliases(tsconfigPath: string, repoRoot: string): Alias[]
     });
   }
 
-  return [...exact, ...wildcard];
+  /*
+   * Deprecated packages have no tsconfig path entry, but `@fluentui/react-components/unstable`
+   * still re-exports them, so they must resolve for any page that imports the unstable barrel.
+   */
+  const deprecated = ['react-alert', 'react-infobutton', 'react-virtualizer'].map(name => ({
+    find: new RegExp(`^@fluentui/${name}$`),
+    replacement: join(repoRoot, `packages/react-components/deprecated/${name}/src/index.ts`),
+  }));
+
+  return [...exact, ...deprecated, ...wildcard];
 }
 
 function escapeRegExp(value: string): string {

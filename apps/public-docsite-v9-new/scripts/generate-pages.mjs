@@ -17,13 +17,27 @@ const repoRoot = resolve(appRoot, '../..');
 
 const TREES = {
   headless: {
-    storiesRoot: 'packages/react-components/react-headless-components-preview/stories/src',
-    importBase: '@fluentui/react-headless-components-preview-stories/src',
+    packages: ['react-headless-components-preview'],
     showThemePicker: false,
   },
   react: {
-    storiesRoot: 'packages/react-components/react-button/stories/src',
-    importBase: '@fluentui/react-button-stories/src',
+    /*
+     * Every component package that ships stories, minus:
+     *  - the headless preview, which is its own tree
+     *  - the migration shims, which are explicitly out of scope (see proposal Non-goals);
+     *    they embed v8/v0 playgrounds that would pull those libraries into the bundle
+     *  - internal tooling packages, which document the workbench rather than components
+     */
+    packagesGlob: 'packages/react-components',
+    exclude: [
+      'react-headless-components-preview',
+      'react-migration-v8-v9',
+      'react-migration-v0-v9',
+      'react-storybook-addon',
+      'react-storybook-addon-export-to-sandbox',
+      'babel-preset-storybook-full-source',
+      'react-conformance-griffel',
+    ],
     showThemePicker: true,
   },
 };
@@ -48,7 +62,6 @@ if (!tree) {
   throw new Error(`Unknown tree "${treeName}". Expected one of: ${Object.keys(TREES).join(', ')}`);
 }
 
-const storiesDir = join(repoRoot, tree.storiesRoot);
 const outDir = join(appRoot, 'content', treeName);
 
 mkdirSync(outDir, { recursive: true });
@@ -56,11 +69,23 @@ mkdirSync(outDir, { recursive: true });
 const created = [];
 const skipped = [];
 
+/** Component packages contributing to this tree. */
+function resolvePackages() {
+  if (tree.packages) {
+    return tree.packages;
+  }
+
+  return readdirSync(join(repoRoot, tree.packagesGlob), { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && !tree.exclude.includes(entry.name))
+    .map(entry => entry.name)
+    .filter(name => existsSync(join(repoRoot, tree.packagesGlob, name, 'stories/src')));
+}
+
 /**
  * Finds every story entry point beneath `dir`.
  *
- * Entry points are not always one level deep — the headless tree nests them under grouping
- * folders (`Concepts/Positioning`, `Tags/Tag`), so this recurses rather than assuming depth.
+ * Entry points are not always one level deep — stories nest under grouping folders
+ * (`Concepts/Positioning`, `Tags/Tag`), so this recurses rather than assuming depth.
  */
 function findEntryPoints(dir, segments = []) {
   const found = [];
@@ -73,12 +98,12 @@ function findEntryPoints(dir, segments = []) {
     const childDir = join(dir, entry.name);
     const childSegments = [...segments, entry.name];
 
-    const stories = ['index.stories.tsx', 'index.stories.ts'].find(candidate =>
+    const hasEntry = ['index.stories.tsx', 'index.stories.ts'].some(candidate =>
       existsSync(join(childDir, candidate)),
     );
 
-    if (stories) {
-      found.push({ segments: childSegments });
+    if (hasEntry) {
+      found.push(childSegments);
       continue;
     }
 
@@ -88,28 +113,29 @@ function findEntryPoints(dir, segments = []) {
   return found;
 }
 
-const entryPoints = findEntryPoints(storiesDir);
+for (const pkg of resolvePackages()) {
+  const storiesDir = join(repoRoot, 'packages/react-components', pkg, 'stories/src');
 
-for (const { segments } of entryPoints) {
-  const name = segments[segments.length - 1];
-  const slug = segments.map(toKebab).join('/');
-  const outFile = join(outDir, `${slug}.mdx`);
+  for (const segments of findEntryPoints(storiesDir)) {
+    const name = segments[segments.length - 1];
+    const slug = segments.map(toKebab).join('/');
+    const outFile = join(outDir, `${slug}.mdx`);
 
-  if (existsSync(outFile)) {
-    skipped.push(`${segments.join('/')} (page already exists — not overwriting)`);
-    continue;
-  }
+    if (existsSync(outFile)) {
+      skipped.push(`${pkg}/${segments.join('/')} (page already exists)`);
+      continue;
+    }
 
-  const specifier = `${tree.importBase}/${segments.join('/')}/index.stories`;
-  const themeProp = tree.showThemePicker ? '' : ' showThemePicker={false}';
-  const depth = slug.split('/').length + 1;
-  const appPath = `${'../'.repeat(depth)}app/components/component-page`;
+    const specifier = `@fluentui/${pkg}-stories/src/${segments.join('/')}/index.stories`;
+    const themeProp = tree.showThemePicker ? '' : ' showThemePicker={false}';
+    const depth = slug.split('/').length + 1;
+    const appPath = `${'../'.repeat(depth)}app/components/component-page`;
 
-  mkdirSync(join(outFile, '..'), { recursive: true });
+    mkdirSync(join(outFile, '..'), { recursive: true });
 
-  writeFileSync(
-    outFile,
-    `---
+    writeFileSync(
+      outFile,
+      `---
 title: ${toTitle(name)}
 ---
 
@@ -118,9 +144,10 @@ import { ComponentPage } from '${appPath}';
 
 <ComponentPage meta={meta} stories={stories}${themeProp} />
 `,
-  );
+    );
 
-  created.push(slug);
+    created.push(slug);
+  }
 }
 
 console.log(`created ${created.length} page(s) in content/${treeName}`);

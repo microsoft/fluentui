@@ -58,7 +58,9 @@ export default defineConfig(
     ssr: {
       // Prerendering runs the app through Node. Fluent packages ship chunked ESM that
       // Node cannot resolve directly, so Vite must bundle them rather than externalize.
-      noExternal: [/^@fluentui\//],
+      // `tabster`/`keyborg` are CommonJS; left external, Node's ESM loader rejects their
+      // named imports during prerendering, so Vite must bundle them and handle the interop.
+      noExternal: [/^@fluentui\//, 'tabster', 'keyborg'],
     },
     resolve: {
       /*

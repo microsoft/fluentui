@@ -69,15 +69,15 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 ## 4. Phase 3 — v9 component pages
 
 - [x] 4.1 Wildcard path entries are no longer needed per package: Vite aliases are generated from `tsconfig.base.json`, so a story package becomes importable as soon as it has a tsconfig path entry (which all 66 already do). Verified for `react-button` and `react-headless-components-preview`.
-- [ ] 4.2 Generate the 124 v9 component pages with the stub generator
+- [x] 4.2 Generated 91 v9 component pages (115 entry points minus the excluded migration shims and workbench-internal packages). Required aliases for the three deprecated packages that `@fluentui/react-components/unstable` still re-exports, and `tabster`/`keyborg` added to `ssr.noExternal` because they are CommonJS and Node rejects their named imports during prerendering. 149 routes build clean.
 - [ ] 4.3 Hand-finish the v9 pages using `decorators` (all remaining after the headless ones in 3.5), converting each to a wrapper prop on `<ComponentPage>`
 - [ ] 4.4 Hand-finish the v9 pages using `args` / `argTypes` / `controls` (all remaining after 3.5) with an interactive controls panel; decide per design Open Question 2 whether to use `defineStory` or a hand-rolled panel
 - [ ] 4.5 Handle the non-standard packages: `react-motion` and `react-motion-components-preview` (`.ts` entry points, 59 `*.stories.md` sidecars), `react-theme` (MDX-only), `react-positioning`
 - [ ] 4.6 Handle entry points with no `component` (`react-motion`) and the `hideArgsTable` / `skipPrimaryStory` flags
 - [ ] 4.7 Fix `react-card` stories to import their local assets instead of the hardcoded `raw.githubusercontent.com/.../master/...` URL
-- [ ] 4.8 Confirm the migration-shim packages are excluded from the build and that no v8/v0 library appears in the output bundle
+- [x] 4.8 Migration-shim packages are excluded by the generator and no shim pages exist; no v8/v0 library appears in the output.
 - [ ] 4.8a Reconcile sandbox dependency versions: the scaffold pins `react ^18` with `@types/react ^17` and `typescript ~4.7`, while the repo ships React 19.2.0 — exported projects should match what the docs render (pre-existing, shared with the workbench)
-- [ ] 4.9 Measure bundle size and per-page payload; confirm examples are not in the shared bundle
+- [ ] 4.9 **Code-split the examples.** Measured: 44M total output with a single 10M JS chunk, because the Fumadocs content index is generated with `import.meta.glob(..., { eager: true })` — so every page's MDX, and therefore every story module, lands in one shared bundle. `fumadocs-mdx` also emits a lazy `browser`/`dynamic` runtime; `app/source.ts` should consume that instead of `server`. Blocks the design goal that examples stay out of the shared bundle.
 
 ## 5. Phase 4 — Conceptual MDX pages
 
