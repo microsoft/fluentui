@@ -44,15 +44,16 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   });
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
+  const placeholderVisible = !baseState.value && !!mergedProps.placeholder;
 
   const state: ComboboxState = {
     ...baseState,
-    components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox, icon: 'span' },
+    components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox },
     root: {
       ...rootSlot,
       'data-open': stringifyDataAttribute(open),
       'data-disabled': stringifyDataAttribute(triggerSlot.disabled),
-      'data-placeholder': stringifyDataAttribute(!baseState.value && !!mergedProps.placeholder),
+      'data-placeholder': stringifyDataAttribute(placeholderVisible),
       'data-invalid': stringifyDataAttribute(triggerSlot['aria-invalid']),
       'data-clearable': stringifyDataAttribute(showClearIcon),
     },
@@ -65,10 +66,6 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     }),
     expandIcon: slot.optional(mergedProps.expandIcon, {
       renderByDefault: true,
-      elementType: 'span',
-    }),
-    icon: slot.optional(mergedProps.icon, {
-      defaultProps: { 'aria-hidden': 'true' },
       elementType: 'span',
     }),
     showClearIcon,

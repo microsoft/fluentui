@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, Option } from '@fluentui/react-headless-components-preview/dropdown';
 
-import { CheckmarkRegular, ChevronDownRegular, DismissRegular, ImageRegular } from '@fluentui/react-icons';
+import { CheckmarkRegular, ChevronDownRegular, DismissRegular } from '@fluentui/react-icons';
 import styles from './dropdown.module.css';
 
 export const Default = (): React.ReactNode => {
@@ -14,7 +14,6 @@ export const Default = (): React.ReactNode => {
       </label>
       <Dropdown
         className={styles.demoWrapper}
-        icon={{ className: styles.icon, children: <ImageRegular /> }}
         button={{ className: styles.button }}
         listbox={{ className: styles.listbox }}
         id="dropdown-default"
@@ -27,7 +26,6 @@ export const Default = (): React.ReactNode => {
           <Option
             className={styles.option}
             key={option}
-            icon={{ className: styles.icon, children: <ImageRegular /> }}
             checkIcon={{ className: styles.checkIcon, children: <CheckmarkRegular /> }}
             disabled={option === 'Ferret'}
           >

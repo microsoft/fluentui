@@ -7,9 +7,7 @@
 import type { BaseComboboxProps } from '@fluentui/react-combobox';
 import type { BaseComboboxState } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
-import type { ComboboxSlots as ComboboxSlots_2 } from '@fluentui/react-combobox';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxContextValues } from '@fluentui/react-combobox';
@@ -24,26 +22,20 @@ import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
+import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
-<<<<<<< HEAD
 import { useListboxContextValues } from '@fluentui/react-combobox';
-=======
-import type { Slot } from '@fluentui/react-utilities';
->>>>>>> e619178813 (feat(headless-components-preview): add combobox filtering)
 
 // @public (undocumented)
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public (undocumented)
-export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'> & ComponentProps<Pick<ComboboxSlots, 'icon'>>;
+export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'>;
+
+export { ComboboxSlots }
 
 // @public (undocumented)
-export type ComboboxSlots = ComboboxSlots_2 & {
-    icon?: Slot<'span'>;
-};
-
-// @public (undocumented)
-export type ComboboxState = BaseComboboxState & ComponentState<Pick<ComboboxSlots, 'icon'>> & {
+export type ComboboxState = BaseComboboxState & {
     root: {
         'data-open'?: string;
         'data-disabled'?: string;
@@ -77,22 +69,12 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
-<<<<<<< HEAD
 export { OptionProps }
 
 export { OptionSlots }
-=======
-// @public
-export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionProps_2;
-
-// @public (undocumented)
-export type OptionSlots = OptionSlots_2 & {
-    icon?: Slot<'span'>;
-};
->>>>>>> e619178813 (feat(headless-components-preview): add combobox filtering)
 
 // @public
-export type OptionState = ComponentState<OptionSlots> & OptionState_2 & {
+export type OptionState = OptionState_2 & {
     root: {
         'data-disabled'?: string;
         'data-selected'?: string;
@@ -105,8 +87,7 @@ export const renderCombobox: (state: ComboboxState, contextValues: ComboboxConte
 
 export { renderListbox }
 
-// @public
-export const renderOption: (state: OptionState) => JSXElement;
+export { renderOption }
 
 export { renderOptionGroup }
 

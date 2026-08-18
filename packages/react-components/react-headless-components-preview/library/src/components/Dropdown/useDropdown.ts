@@ -60,7 +60,6 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
       clearButton: 'button',
       expandIcon: 'span',
       listbox: Listbox,
-      icon: 'span',
     },
     root: {
       ...rootSlot,
@@ -85,10 +84,6 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     }),
     expandIcon: slot.optional(mergedProps.expandIcon, {
       renderByDefault: true,
-      elementType: 'span',
-    }),
-    icon: slot.optional(mergedProps.icon, {
-      defaultProps: { 'aria-hidden': 'true' },
       elementType: 'span',
     }),
     placeholderVisible,
