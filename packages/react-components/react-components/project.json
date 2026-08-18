@@ -27,6 +27,20 @@
           }
         ]
       }
+    },
+    "verify-bundle-isolation": {
+      "cache": true,
+      "dependsOn": ["build", "^build"],
+      "command": "yarn run -T verify-bundle-isolation",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
+      "outputs": ["{projectRoot}/dist/bundle-isolation"],
+      "metadata": {
+        "technologies": ["webpack"],
+        "description": "Assert base hooks do not bundle tabster, Griffel, react-icons or motion"
+      }
     }
   }
 }

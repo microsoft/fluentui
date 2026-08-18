@@ -3960,6 +3960,7 @@ __metadata:
     "@fluentui/react-tree": "npm:^9.16.5"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@fluentui/react-virtualizer": "npm:9.0.0-alpha.115"
+    "@fluentui/verify-bundle-isolation": "npm:*"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
