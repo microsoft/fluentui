@@ -1118,6 +1118,78 @@ Not applicable
     expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V8ControlledChange: Story ='));
     expect(spinButtonExamplesSource).toEqual(expect.stringContaining('export const V9ControlledChange: Story ='));
   });
+
+  test('Task 11 Dialog guide and shared stories satisfy the Dialog migration contract', () => {
+    const dialogGuidePath = path.join(fromV8ComponentsDirectory, 'Dialog.mdx');
+    const dialogExamplesPath = path.join(fromV8ComponentsDirectory, 'examples/Dialog/index.stories.tsx');
+    const dialogGuideSource = readUtf8(dialogGuidePath);
+    const normalizedDialogGuideSource = dialogGuideSource.replace(/\s+/g, ' ');
+    const dialogSections = getGuideSections(stripIgnoredGuideContent(dialogGuideSource));
+    const dialogPropMapping = dialogSections.get('Prop mapping') ?? '';
+    const dialogPropMappingRows = dialogPropMapping.split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+    const dialogAccessibility = dialogSections.get('Accessibility') ?? '';
+    const dialogUnsupported = dialogSections.get('Unsupported scenarios and known gaps') ?? '';
+    const requiredDialogProps = [
+      'hidden',
+      'onDismiss',
+      'dialogContentProps',
+      'modalProps',
+      'minWidth',
+      'maxWidth',
+      'isBlocking',
+      'isDarkOverlay',
+      'containerClassName',
+      'title',
+      'subText',
+      'showCloseButton',
+      'topButtonsProps',
+      'DialogFooter',
+      'styles',
+      'theme',
+    ];
+    const statusColumnIndex = getInventoryColumnIndex('Status');
+    const priorityColumnIndex = getInventoryColumnIndex('Priority');
+    const dialogRow = getInventoryRows().find(row => normalizeInventoryCell(row.cells[0]) === 'dialog');
+
+    expect(validateCompleteGuide(dialogGuideSource, 'Dialog')).toEqual([]);
+    expect(dialogPropMappingRows.map(parseTableCells).map(cells => cells.length)).toEqual(
+      dialogPropMappingRows.map(() => 4),
+    );
+    expect(requiredDialogProps.filter(propName => !dialogPropMapping.includes(`\`${propName}\``))).toEqual([]);
+    expect(normalizedDialogGuideSource).toContain('| MC-1 | `hidden` inverse state becomes `open`/`defaultOpen` |');
+    expect(normalizedDialogGuideSource).toContain(
+      '| MC-2 | `dialogContentProps`, `modalProps`, and `DialogFooter` become compound children |',
+    );
+    expect(normalizedDialogGuideSource).toContain('| MC-3 | `onDismiss` becomes `onOpenChange` with event data |');
+    expect(normalizedDialogGuideSource).toContain('| MC-4 | blocking/modal behavior becomes `modalType` |');
+    expect(normalizedDialogGuideSource).toContain(
+      '| MC-5 | title, subtext, close button, top buttons, and footer content move from content props/components to explicit compound children |',
+    );
+    expect(dialogAccessibility).toContain('focus');
+    expect(dialogAccessibility).toContain('alert');
+    expect(dialogAccessibility).toContain('Escape');
+    expect(dialogAccessibility).toContain('aria-modal');
+    expect(dialogUnsupported).toContain('trigger');
+    expect(dialogUnsupported).toContain('drag');
+    expect(dialogRow).toBeDefined();
+    expect(statusColumnIndex).not.toBe(-1);
+    expect(priorityColumnIndex).not.toBe(-1);
+    expect(normalizeInventoryCell(dialogRow?.cells[statusColumnIndex])).toBe('complete');
+    expect(normalizeInventoryCell(dialogRow?.cells[priorityColumnIndex])).toBe('n/a');
+
+    const dialogExamplesSource = readUtf8(dialogExamplesPath);
+
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('satisfies Meta'));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('type Story = StoryObj<typeof meta>;'));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V8Basic: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V9Basic: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V8ControlledVisibility: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V9ControlledOpen: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V8ModalAndBlocking: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V9ModalTypes: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V8CustomHeaderFooter: Story ='));
+    expect(dialogExamplesSource).toEqual(expect.stringContaining('export const V9ComposedBodyActions: Story ='));
+  });
 });
 
 describe('FromV8 migration inventory', () => {

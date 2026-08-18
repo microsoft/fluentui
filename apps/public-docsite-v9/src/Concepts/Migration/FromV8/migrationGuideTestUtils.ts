@@ -244,7 +244,7 @@ export function parseTableCells(raw: string): string[] {
   return raw
     .split(/(?<!\\)\|/)
     .slice(1, -1)
-    .map(cell => cell.replaceAll('\\|', '|').trim());
+    .map(cell => cell.replace(/\\\|/g, '|').trim());
 }
 
 export function normalizeInventoryCell(cell: string | undefined): string {

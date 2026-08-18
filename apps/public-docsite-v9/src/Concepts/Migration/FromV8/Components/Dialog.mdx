@@ -1,0 +1,138 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Dialog/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/Dialog Migration" />
+
+# Dialog Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [Dialog](/docs/components-dialog--docs) when a v8 `Dialog` already represents a short confirmation, warning, or task gate. The destination keeps the same high-level job, but the authoring model changes completely: `hidden` becomes `open`, `dialogContentProps` and `DialogFooter` become explicit children, and dismissal now flows through `onOpenChange` data instead of a single `onDismiss` callback.
+
+The highest migration risk is structural. A v8 dialog can be configured from one root component plus props and a footer child, while a v9 dialog usually composes `DialogTrigger`, `DialogSurface`, `DialogBody`, `DialogTitle`, `DialogContent`, and `DialogActions`. You should also re-check modal behavior, focus restoration, and any custom header buttons during the move.
+
+## Component mapping
+
+| v8 scenario                                                                               | v9 destination                                                                                                                                       | Notes                                                                                    |
+| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Standard confirmation `Dialog`                                                            | `Dialog` + `DialogTrigger` + `DialogSurface` + `DialogBody` + `DialogTitle` + `DialogContent` + `DialogActions`                                      | The root manages state and context while the children define structure explicitly.       |
+| Controlled `hidden` dialog                                                                | `Dialog open` or `defaultOpen` + `onOpenChange`                                                                                                      | Visibility is no longer expressed as inverse state.                                      |
+| `dialogContentProps` plus `DialogFooter`                                                  | `DialogTitle`, `DialogContent`, `DialogActions`, and optional `DialogTitle action`                                                                   | Header, body, and footer content move from config props to children.                     |
+| `modalProps.isBlocking`, `modalProps.isModeless`, or `modalProps.isAlert`-style semantics | `Dialog modalType="modal" \| "non-modal" \| "alert"`                                                                                                 | Choose the modal type directly instead of routing the behavior through `modalProps`.     |
+| Trigger rendered outside the dialog root                                                  | Controlled `Dialog` plus `DialogSurface`; optionally use the [trigger outside dialog guidance](/docs/components-dialog--docs#trigger-outside-dialog) | When `DialogTrigger` is not inside the tree, you own `open` state and focus restoration. |
+
+## What changed
+
+V8 `Dialog` centralizes its UI in `dialogContentProps`, `modalProps`, and a `DialogFooter` child. V9 keeps the state container small and pushes the rest of the experience into compound components. Title text, subtext, close affordances, body content, and actions become real children instead of nested props.
+
+Dismissal also changes shape. V8 typically closes through `hidden` toggles and a single `onDismiss` callback. V9 uses `open`/`defaultOpen` with `onOpenChange(event, data)`, where `data.open` gives the next state and `data.type` reports whether the change came from a trigger click, the backdrop, or `Escape`.
+
+Modal behavior is more explicit too. Instead of tuning `modalProps.isBlocking`, `modalProps.isModeless`, or alert behavior indirectly, v9 exposes `modalType="modal"`, `modalType="non-modal"`, and `modalType="alert"` on the root `Dialog`.
+
+## Architecture and behavior
+
+Treat `Dialog` as the state boundary and author the popup structure explicitly beneath it. `DialogTrigger` clones one accessible trigger child, `DialogSurface` renders the popup surface and backdrop, and `DialogBody` groups the title, content, and action regions that users and assistive technologies move through. `DialogTitle` can also host a custom `action` slot when the close affordance belongs next to the heading.
+
+The visibility contract flips during migration. In v8, `hidden={true}` means closed; in v9, `open={true}` means visible. Controlled dialogs should translate v8 toggle handlers into `onOpenChange` handlers that read `data.open`, and triggerless or programmatically opened dialogs should keep `open` in sync manually.
+
+Dismissal and focus behavior are now part of the public contract instead of implementation details. Triggered dialogs restore focus to the opener automatically when they close. If you omit `DialogTrigger`, follow the [trigger outside dialog guidance](/docs/components-dialog--docs#trigger-outside-dialog) and use `useRestoreFocusTarget` or an equivalent manual focus return. `modalType="alert"` keeps modal focus trapping and ignores backdrop clicks, while modal and non-modal dialogs still close on `Escape`.
+
+## Prop mapping
+
+| v8 prop or child     | v9 equivalent                                                                              | Status  | Migration notes                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------------------------- |
+| `hidden`             | `open` or `defaultOpen`                                                                    | Replace | Translate the inverse boolean to positive visibility state.                                        |
+| `onDismiss`          | `onOpenChange(event, data)`                                                                | Replace | Close logic now reads `data.open` and can branch on `data.type`.                                   |
+| `dialogContentProps` | `DialogTitle`, `DialogContent`, `DialogActions`, and child composition                     | Compose | Split the nested content props into explicit compound children.                                    |
+| `modalProps`         | `modalType`, `inertTrapFocus`, `mountNode`, `DialogSurface` props, and trigger composition | Compose | Only keep the specific behaviors that still exist; v9 does not forward one catch-all modal bag.    |
+| `minWidth`           | `className` or `style` on `DialogSurface`                                                  | Compose | Apply width rules to the surface slot instead of the root wrapper.                                 |
+| `maxWidth`           | `className` or `style` on `DialogSurface`                                                  | Compose | Move container sizing to the surface slot and keep values token-friendly when possible.            |
+| `isBlocking`         | `modalType="modal"` or `modalType="non-modal"`                                             | Replace | Blocking and light-dismiss behavior are part of the modal-type decision.                           |
+| `isDarkOverlay`      | `DialogSurface backdrop` customization                                                     | Partial | There is no one-line dark-overlay prop; customize the backdrop appearance or styling deliberately. |
+| `containerClassName` | `className` on `DialogSurface`                                                             | Replace | Style the rendered popup surface directly.                                                         |
+| `title`              | `DialogTitle` children                                                                     | Replace | Title content becomes explicit JSX in the title slot.                                              |
+| `subText`            | `DialogContent` children                                                                   | Replace | Supporting text becomes normal body content instead of a string prop.                              |
+| `showCloseButton`    | `DialogTitle action` or the default non-modal close action                                 | Replace | Add a custom close trigger when modal content needs an explicit action in the header.              |
+| `topButtonsProps`    | `DialogTitle action` or additional `DialogActions` buttons                                 | Replace | V9 does not expose a top-button array; compose the commands where they belong.                     |
+| `DialogFooter`       | `DialogActions`                                                                            | Replace | Footer buttons become one or more explicit actions containers.                                     |
+| `styles`             | Slot `className` props with Griffel styles and design tokens                               | Replace | Style `DialogSurface`, `DialogBody`, `DialogTitle`, and `DialogActions` individually.              |
+| `theme`              | `FluentProvider`                                                                           | Replace | Theme context comes from the provider instead of a per-instance prop.                              |
+| `type`               | `DialogTitle` composition and `modalType`                                                  | Partial | Rebuild close-button and emphasis variants with explicit title content, actions, and modal type.   |
+
+## Styling and theming
+
+V8 `styles`, `containerClassName`, and width props target a mostly monolithic dialog shell. In v9, style the slots you actually render: `DialogSurface` for the popup container and backdrop, `DialogBody` for spacing, `DialogTitle` for heading layout, and `DialogActions` for footer alignment. Use Griffel classes and Fluent design tokens rather than hardcoded colors, spacing, or typography values.
+
+The `theme` prop no longer travels with the dialog instance. Wrap the experience in `FluentProvider` and use token-driven styling so the dialog surface, title action, and body content inherit the current design system values. For overlay changes such as the old `isDarkOverlay` behavior, prefer the built-in [backdrop appearance guidance](/docs/components-dialog--docs#backdrop-appearance) before reaching for custom styling.
+
+## Accessibility
+
+Keep an accessible title on every migrated dialog. `DialogTitle` provides the heading content that labels the surface, and `DialogSurface` should receive `aria-label` or `aria-labelledby` when the title is omitted. For short confirmations, the default `DialogContent` description wiring is usually enough. For complex forms or nested widgets, set `aria-describedby={undefined}` on `DialogSurface` and supply your own descriptive relationships.
+
+Focus behavior also changes with the trigger model. Triggered dialogs restore focus to the opener automatically, while externally controlled dialogs must use `useRestoreFocusTarget` or another manual strategy to return focus after dismissal. `modalType="alert"` changes the role to `alertdialog`, keeps focus trapped, and ignores backdrop clicks even though `Escape` still dismisses the current implementation. `modalType="non-modal"` allows focus to move outside the surface and adds a default close action in `DialogTitle` unless you override it.
+
+When a dialog contains popup components such as `Menu`, `Dropdown`, `Popover`, or `Combobox`, set `aria-modal={false}` on `DialogSurface` so VoiceOver can access the nested popup content. This is especially important for screen-reader interoperability and differs from the older v8 modal implementation details.
+
+## Examples
+
+### MC-1 Convert inverse `hidden` state to `open`/`defaultOpen`
+
+<Canvas of={Examples.V8ControlledVisibility} />
+<Source of={Examples.V8ControlledVisibility} />
+<Canvas of={Examples.V9ControlledOpen} />
+<Source of={Examples.V9ControlledOpen} />
+
+### MC-2 and MC-5 Compose `DialogSurface`, `DialogBody`, `DialogTitle`, `DialogContent`, and `DialogActions` explicitly
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+<Canvas of={Examples.V8CustomHeaderFooter} />
+<Source of={Examples.V8CustomHeaderFooter} />
+<Canvas of={Examples.V9ComposedBodyActions} />
+<Source of={Examples.V9ComposedBodyActions} />
+
+### MC-3 Replace `onDismiss` with `onOpenChange(event, data)`
+
+<Canvas of={Examples.V8ControlledVisibility} />
+<Source of={Examples.V8ControlledVisibility} />
+<Canvas of={Examples.V9ControlledOpen} />
+<Source of={Examples.V9ControlledOpen} />
+
+### MC-4 Choose `modalType` instead of tunneling behavior through `modalProps`
+
+<Canvas of={Examples.V8ModalAndBlocking} />
+<Source of={Examples.V8ModalAndBlocking} />
+<Canvas of={Examples.V9ModalTypes} />
+<Source of={Examples.V9ModalTypes} />
+
+## Unsupported scenarios and known gaps
+
+MC-3: A trigger rendered outside the dialog tree is supported, but it is no longer a drop-in `onDismiss` migration. You must control `open`, react to `onOpenChange`, and restore focus yourself with `useRestoreFocusTarget` or an equivalent manual trigger strategy.
+
+MC-5: V8 `modalProps.dragOptions`, draggable headers, and arbitrary `topButtonsProps` collections do not have a built-in one-prop equivalent in v9 `Dialog`. Compose one custom `DialogTitle action` or move commands into `DialogActions`; if dragging is a product requirement, keep the old experience until a different overlay pattern is approved.
+
+Nested dialogs still exist in source as an escape hatch, but Fluent guidance treats them as an anti-pattern because they complicate focus restoration and user understanding.
+
+## Major-change checklist
+
+| ID   | Change                                                                                                                         |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| MC-1 | `hidden` inverse state becomes `open`/`defaultOpen`                                                                            |
+| MC-2 | `dialogContentProps`, `modalProps`, and `DialogFooter` become compound children                                                |
+| MC-3 | `onDismiss` becomes `onOpenChange` with event data                                                                             |
+| MC-4 | blocking/modal behavior becomes `modalType`                                                                                    |
+| MC-5 | title, subtext, close button, top buttons, and footer content move from content props/components to explicit compound children |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Date       | Conclusion                                                                                                                                                                     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| MC-1 | `packages/react/src/components/Dialog/Dialog.types.ts` `IDialogProps.hidden`<br />`packages/react-components/react-dialog/library/src/components/Dialog/Dialog.types.ts` `DialogProps.open`, `DialogProps.defaultOpen`<br />`packages/react-components/react-dialog/stories/src/Dialog/DialogControllingOpenAndClose.stories.tsx` `ControllingOpenAndClose`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 2026-08-17 | V9 replaces the inverse `hidden` flag with positive `open` and `defaultOpen` state, and controlled usage reads the next value from `data.open`.                                |
+| MC-2 | `packages/react/src/components/Dialog/Dialog.types.ts` `IDialogProps.dialogContentProps`, `IDialogProps.modalProps`<br />`packages/react/src/components/Dialog/DialogContent.types.ts` `IDialogContentProps`<br />`packages/react/src/components/Dialog/DialogFooter.types.ts` `IDialogFooterProps`<br />`packages/react-components/react-dialog/library/src/components/Dialog/Dialog.types.ts` `DialogProps.children`<br />`packages/react-components/react-dialog/library/src/components/DialogBody/DialogBody.types.ts` `DialogBodyProps`<br />`packages/react-components/react-dialog/library/src/components/DialogContent/DialogContent.types.ts` `DialogContentProps`<br />`packages/react-components/react-dialog/library/src/components/DialogSurface/DialogSurface.types.ts` `DialogSurfaceProps`<br />`packages/react-components/react-dialog/library/docs/Spec.md` `Dialog`, `DialogSurface`, `DialogBody` | 2026-08-17 | The v8 configuration bags and footer child are replaced by explicit compound children that describe the surface, body, content, and actions directly.                          |
+| MC-3 | `packages/react/src/components/Dialog/Dialog.types.ts` `IDialogProps.onDismiss`<br />`packages/react-components/react-dialog/library/src/components/Dialog/Dialog.types.ts` `DialogOpenChangeData`, `DialogOpenChangeEventHandler`<br />`packages/react-components/react-dialog/stories/src/Dialog/DialogControllingOpenAndClose.stories.tsx` `ControllingOpenAndClose`<br />`packages/react-components/react-dialog/stories/src/Dialog/DialogTriggerOutsideDialog.md`                                                                                                                                                                                                                                                                                                                                                                                                                                                | 2026-08-17 | Close behavior now flows through `onOpenChange(event, data)`, and externally controlled dialogs must also own focus restoration when the trigger sits outside the dialog tree. |
+| MC-4 | `packages/react/src/components/Modal/Modal.types.ts` `IModalProps.isBlocking`, `IModalProps.isModeless`, `IModalProps.isAlert`<br />`packages/react-components/react-dialog/library/src/components/Dialog/Dialog.types.ts` `DialogModalType`<br />`packages/react-components/react-dialog/library/src/components/Dialog/Dialog.cy.tsx` `modalType = alert`, `modalType = non-modal`<br />`packages/react-components/react-dialog/stories/src/Dialog/DialogAlert.md`                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 2026-08-17 | Modal, non-modal, and alert behavior are first-class v9 modes, and the alert variant specifically ignores backdrop clicks while retaining explicit focus-management semantics. |
+| MC-5 | `packages/react/src/components/Dialog/DialogContent.types.ts` `IDialogContentProps.title`, `subText`, `showCloseButton`, `topButtonsProps`<br />`packages/react-components/react-dialog/library/src/components/DialogTitle/DialogTitle.types.ts` `DialogTitleSlots.action`<br />`packages/react-components/react-dialog/library/src/components/DialogActions/DialogActions.types.ts` `DialogActionsProps`<br />`packages/react-components/react-dialog/stories/src/Dialog/DialogTitleCustomAction.stories.tsx` `TitleCustomAction`                                                                                                                                                                                                                                                                                                                                                                                    | 2026-08-17 | Header text, header actions, close affordances, and footer buttons move from nested props and `DialogFooter` into explicit `DialogTitle` and `DialogActions` composition.      |
