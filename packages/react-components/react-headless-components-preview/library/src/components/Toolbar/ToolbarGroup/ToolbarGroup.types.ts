@@ -5,7 +5,8 @@ export type { ToolbarGroupProps } from '@fluentui/react-toolbar';
 export type ToolbarGroupState = ToolbarGroupBaseState & {
   root: {
     /**
-     * Data attribute set when the toolbar group is in a vertically oriented toolbar.
+     * Present when the toolbar group is in a vertically oriented toolbar;
+     * omitted when it is in a horizontally oriented toolbar.
      */
     'data-vertical'?: string;
   };

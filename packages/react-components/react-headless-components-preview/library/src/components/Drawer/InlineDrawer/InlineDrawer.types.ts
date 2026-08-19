@@ -5,7 +5,7 @@ export type { InlineDrawerSlots, InlineDrawerBaseProps as InlineDrawerProps } fr
 export type InlineDrawerState = InlineDrawerBaseState & {
   root: {
     /**
-     * Indicates whether the drawer is open, used for styling purposes.
+     * Present when the drawer is open; omitted when it is closed.
      */
     'data-open'?: string;
     /**

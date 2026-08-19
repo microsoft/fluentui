@@ -5,10 +5,58 @@
   "implicitDependencies": ["react-headless-components-preview-stories"],
   "tags": ["platform:web", "vNext"],
   "targets": {
-    "build-storybook": {
+    "storybook": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox"
+          ],
+          "target": "build"
+        }
+      ]
+    },
+    "storybook:docs": {
+      "dependsOn": [
+        {
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox"
+          ],
+          "target": "build"
+        }
+      ]
+    },
+    "start": {
+      "dependsOn": [
+        {
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox"
+          ],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/.storybook/**"
+      ],
+      "dependsOn": [
+        {
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "storybook-llms-extractor"
+          ],
           "target": "build"
         }
       ]
@@ -16,11 +64,22 @@
     "build-storybook:docsite": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "storybook-llms-extractor"
+          ],
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"]
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/.storybook/**"
+      ]
     }
   }
 }

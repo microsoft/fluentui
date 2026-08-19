@@ -1,0 +1,9 @@
+{
+  "name": "@fixtures/state-data-attributes-valid",
+  "version": "0.0.0",
+  "exports": {
+    "./button": {
+      "types": "./types/button.d.ts"
+    }
+  }
+}

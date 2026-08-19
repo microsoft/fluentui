@@ -5,8 +5,8 @@ export type { ToolbarDividerBaseProps as ToolbarDividerProps } from '@fluentui/r
 export type ToolbarDividerState = ToolbarDividerBaseState & {
   root: {
     /**
-     * Data attribute reflecting the actual orientation of the divider element.
-     * Note: the toolbar divider's orientation is inverted relative to the toolbar's orientation.
+     * Present when the divider is vertically oriented (in a horizontally oriented toolbar);
+     * omitted when the divider is horizontally oriented (in a vertically oriented toolbar).
      */
     'data-vertical'?: string;
   };

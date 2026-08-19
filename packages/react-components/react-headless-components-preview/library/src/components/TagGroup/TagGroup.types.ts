@@ -5,12 +5,12 @@ export type { TagGroupBaseProps as TagGroupProps, TagGroupSlots, TagGroupContext
 export type TagGroupState = TagGroupBaseState & {
   root: {
     /**
-     * Data attribute set when the group is disabled.
+     * Present when the group is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the group is dismissible.
+     * Present when the group is dismissible; omitted otherwise.
      */
     'data-dismissible'?: string;
   };

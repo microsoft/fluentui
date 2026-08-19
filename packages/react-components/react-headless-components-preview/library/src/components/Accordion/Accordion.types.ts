@@ -7,11 +7,11 @@ export type AccordionProps = AccordionBaseProps;
 export type AccordionState = AccordionBaseState & {
   root: {
     /**
-     * Data attribute set to indicate whether the accordion allows multiple items to be expanded at once.
+     * Present when the accordion allows all items to be collapsed; omitted when one item must remain open.
      */
     'data-collapsible'?: string;
     /**
-     * Data attribute set to indicate whether the accordion allows multiple items to be expanded at once.
+     * Present when the accordion allows multiple items to be expanded at once; omitted when only one item may be expanded.
      */
     'data-multiple'?: string;
   };

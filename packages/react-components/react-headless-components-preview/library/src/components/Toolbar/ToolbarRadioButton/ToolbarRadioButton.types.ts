@@ -5,22 +5,22 @@ export type { ToolbarRadioButtonBaseProps as ToolbarRadioButtonProps } from '@fl
 export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the button is disabled.
+     * Present when the button is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the button is disabled but still focusable.
+     * Present when the button is disabled but still focusable; omitted otherwise.
      */
     'data-disabled-focusable'?: string;
 
     /**
-     * Data attribute set when the button renders only an icon.
+     * Present when the button renders only an icon; omitted otherwise.
      */
     'data-icon-only'?: string;
 
     /**
-     * Data attribute set when the button is in a checked (selected) state.
+     * Present when the button is checked (selected); omitted when it is unchecked.
      */
     'data-checked'?: string;
   };
