@@ -5,7 +5,7 @@ import { mergeCallbacks, useEventCallback, useMergedRefs, slot } from '@fluentui
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from '../Dropdown/Listbox';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 import { useListboxPopupState } from '../Dropdown/useListboxPopupState';
 
 export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
@@ -51,11 +51,11 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox },
     root: {
       ...rootSlot,
-      'data-open': stringifyDataAttribute(open),
-      'data-disabled': stringifyDataAttribute(triggerSlot.disabled),
-      'data-placeholder': stringifyDataAttribute(placeholderVisible),
-      'data-invalid': stringifyDataAttribute(triggerSlot['aria-invalid']),
-      'data-clearable': stringifyDataAttribute(showClearIcon),
+      'data-open': toDataAttributeValue(open),
+      'data-disabled': toDataAttributeValue(triggerSlot.disabled),
+      'data-placeholder': toDataAttributeValue(placeholderVisible),
+      'data-invalid': toDataAttributeValue(triggerSlot['aria-invalid']),
+      'data-clearable': toDataAttributeValue(showClearIcon),
     },
     input: triggerSlot,
     listbox: open || hasFocus ? listbox : undefined,

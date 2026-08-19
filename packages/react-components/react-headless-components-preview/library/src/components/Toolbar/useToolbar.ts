@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useToolbarBase_unstable, useToolbarContextValues_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarProps, ToolbarState, ToolbarContextValues } from './Toolbar.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Toolbar component, given its props and ref.
@@ -16,7 +16,7 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
   // eslint-disable-next-line react-hooks/immutability
   state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
 
   return state;
 };

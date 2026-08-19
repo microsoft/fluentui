@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useAccordionHeaderBase_unstable, useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderContextValues } from './AccordionHeader.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AccordionHeader component, given its props and ref.
@@ -15,9 +15,9 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
 
   // Set data attributes for open, disabled, and expand icon position states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-open'] = stringifyDataAttribute(state.open);
+  state.root['data-open'] = toDataAttributeValue(state.open);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-expand-icon-position'] = state.expandIconPosition;
 

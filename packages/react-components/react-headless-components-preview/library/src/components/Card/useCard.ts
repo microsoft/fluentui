@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useCardBase_unstable } from '@fluentui/react-card';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
-import { stringifyDataAttribute } from '../../utils/stringifyDataAttribute';
+import { toDataAttributeValue } from '../../utils/toDataAttributeValue';
 
 /**
  * Returns the state for a Card component, given its props and ref.
@@ -14,9 +14,9 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardS
   const state: CardState = useCardBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
 
   return state;
 };

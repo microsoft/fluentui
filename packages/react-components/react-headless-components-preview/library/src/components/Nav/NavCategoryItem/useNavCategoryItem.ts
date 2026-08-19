@@ -5,7 +5,7 @@ import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from
 import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Create the state required to render NavCategoryItem.
@@ -62,8 +62,8 @@ export const useNavCategoryItem = (
     },
   };
 
-  state.root['data-open'] = stringifyDataAttribute(state.open);
-  state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  state.root['data-open'] = toDataAttributeValue(state.open);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
 
   return state;
 };

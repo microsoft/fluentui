@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useCompoundButtonBase_unstable } from '@fluentui/react-button';
 
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 
 /**
@@ -17,13 +17,13 @@ export const useCompoundButton = (
   const hasSecondaryContent = Boolean(!state.iconOnly && state.secondaryContent);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  state.root['data-icon-only'] = toDataAttributeValue(state.iconOnly);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-has-secondary-content'] = stringifyDataAttribute(hasSecondaryContent);
+  state.root['data-has-secondary-content'] = toDataAttributeValue(hasSecondaryContent);
 
   return state;
 };
