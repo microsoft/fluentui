@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Thu, 13 Aug 2026 04:10:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 19 Aug 2026 04:08:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.1)
+
+Wed, 19 Aug 2026 04:08:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.0..@fluentui/web-components_v3.1.1)
+
+### Patches
+
+- fix: remove padding-block-start in multiline dismiss slot to fix alignment ([PR #36547](https://github.com/microsoft/fluentui/pull/36547) by jibinjose884@gmail.com)
 
 ## [3.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.0)
 

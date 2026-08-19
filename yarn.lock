@@ -2619,7 +2619,7 @@ __metadata:
   resolution: "@fluentui/chart-web-components@workspace:packages/charts/chart-web-components"
   dependencies:
     "@fluentui/tokens": "npm:^1.0.0-alpha.24"
-    "@fluentui/web-components": "npm:^3.1.0"
+    "@fluentui/web-components": "npm:^3.1.1"
     "@microsoft/fast-web-utilities": "npm:^6.0.0"
     "@storybook/html": "npm:9.1.17"
     "@storybook/html-vite": "npm:9.1.17"
@@ -6631,7 +6631,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/web-components@npm:*, @fluentui/web-components@npm:^3.1.0, @fluentui/web-components@workspace:packages/web-components":
+"@fluentui/web-components@npm:*, @fluentui/web-components@npm:^3.1.1, @fluentui/web-components@workspace:packages/web-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/web-components@workspace:packages/web-components"
   dependencies:

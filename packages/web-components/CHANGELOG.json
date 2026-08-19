@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2026 04:08:27 GMT",
+      "version": "3.1.1",
+      "tag": "@fluentui/web-components_v3.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "jibinjose884@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1964e7ce05f25771f4a476ec6b2fdbfb3d5e4bf7",
+            "comment": "fix: remove padding-block-start in multiline dismiss slot to fix alignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2026 04:10:22 GMT",
       "version": "3.1.0",
       "tag": "@fluentui/web-components_v3.1.0",
