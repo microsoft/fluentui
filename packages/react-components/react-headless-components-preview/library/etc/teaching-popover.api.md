@@ -224,10 +224,40 @@ export { TeachingPopoverHeaderSlots }
 export { TeachingPopoverHeaderState }
 
 // @public
-export type TeachingPopoverProps = PopoverProps;
+export type TeachingPopoverProps = {
+    children: [JSXElement, JSXElement] | JSXElement;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: EventHandler<OnOpenChangeData>;
+    openOnHover?: boolean;
+    openOnContext?: boolean;
+    mouseLeaveDelay?: number;
+    positioning?: PositioningShorthand;
+    withArrow?: boolean;
+    id?: string;
+    trapFocus?: boolean;
+};
 
 // @public
-export type TeachingPopoverState = PopoverState;
+export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    toggleOpen: (e: OpenPopoverEvents) => void;
+    triggerRef: React_2.RefObject<HTMLElement | null>;
+    contentRef: React_2.RefObject<HTMLElement | null>;
+    arrowRef: React_2.RefObject<HTMLDivElement | null>;
+    popoverTrigger: React_2.ReactElement | undefined;
+    popoverSurface: React_2.ReactElement | undefined;
+    contextTarget: {
+        x: number;
+        y: number;
+    } | undefined;
+    setContextTarget: (target: {
+        x: number;
+        y: number;
+    } | undefined) => void;
+    positioning: PositioningReturn;
+    surfaceId: string;
+};
 
 // @public
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;

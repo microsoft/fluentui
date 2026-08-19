@@ -34,7 +34,7 @@ import { MenuItemSwitchSlots } from '@fluentui/react-menu';
 import { MenuItemSwitchState } from '@fluentui/react-menu';
 import type { MenuListContextValues } from '@fluentui/react-menu';
 import { MenuListProps } from '@fluentui/react-menu';
-import type { MenuListSlots } from '@fluentui/react-menu';
+import { MenuListSlots } from '@fluentui/react-menu';
 import type { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
 import { MenuOpenEvent } from '@fluentui/react-menu';
