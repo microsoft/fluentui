@@ -177,6 +177,53 @@ describe('overflowManager', () => {
     expect(onUpdateOverflow).toHaveBeenCalled();
   });
 
+  it('should synchronously update once when the overflow menu attaches to an overflowing manager', async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const manager = createOverflowManager(createObserveOptions());
+    process.env.NODE_ENV = previousNodeEnv;
+
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+
+    await Promise.resolve();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+  });
+
+  it('should batch the update when the overflow menu attaches without hidden items', async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const manager = createOverflowManager(createObserveOptions());
+    process.env.NODE_ENV = previousNodeEnv;
+
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 40), id: 'a', priority: 1 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    expect(getClientWidth).not.toHaveBeenCalled();
+
+    await Promise.resolve();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+  });
+
   it('should remove items through removeItem', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
