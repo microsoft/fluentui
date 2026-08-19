@@ -1,0 +1,137 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/MessageBar/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/MessageBar Migration" />
+
+# MessageBar Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [MessageBar](/docs/components-messagebar--docs) for page-level, card-level, or panel-level status messaging in Fluent UI v9. The v9 component keeps the same overall job as v8 `MessageBar`, but it no longer centralizes intent, title, body, actions, dismiss behavior, and overflow controls on one root prop bag. Instead, compose the content with `MessageBarBody`, `MessageBarTitle`, `MessageBarActions`, and optionally `MessageBarGroup`.
+
+The biggest migration risk is assuming the v8 root still owns everything. V8 wraps icon choice, live-region behavior, body content, optional actions, optional dismiss behavior, and single-line truncation into one component. V9 splits those decisions across compound children and consumer-owned state, so plan the content structure and dismissal behavior before translating props.
+
+## Component mapping
+
+| v8 scenario                                | v9 destination                                                 | Notes                                                                                                   |
+| ------------------------------------------ | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Body text with an inline link              | `MessageBar` + `MessageBarBody` + inline `Link`                | Keep the link inside `MessageBarBody` so it remains part of the announced content and visual flow.      |
+| Emphasized title plus body copy            | Add `MessageBarTitle` before the body text                     | The title becomes an explicit child instead of bold text inside the root children string.               |
+| Action buttons and dismiss affordance      | `MessageBarActions` with button children and `containerAction` | The consumer now owns the action buttons, dismiss button, and the state that hides the component.       |
+| Multiple related messages                  | `MessageBarGroup`                                              | Grouping is the preferred v9 wrapper when several MessageBars should share spacing and exit animations. |
+| `blocked` or `severeWarning` message types | `intent="error"` or `intent="warning"`                         | V9 has only `info`, `success`, `warning`, and `error`, so choose the closest supported semantic intent. |
+
+## What changed
+
+Intent is now a string union instead of the v8 `MessageBarType` enum. `info`, `success`, `warning`, and `error` map directly, while `blocked` and `severeWarning` require a conscious fallback choice because there is no one-to-one v9 intent value.
+
+Structure is explicit too. `MessageBarBody` owns the body copy and inline links, `MessageBarTitle` provides the distinct title, and `MessageBarActions` owns action buttons plus the single `containerAction` slot that normally hosts the dismiss button. V8 `actions`, `onDismiss`, and `dismissButtonAriaLabel` therefore stop being root props and become ordinary React composition.
+
+Layout and overflow also change. V8 `isMultiline` is a boolean and `truncated` can generate a built-in expand button for a very narrow single-line case. V9 replaces that with the `layout` union (`auto`, `singleline`, or `multiline`) and leaves truncation or overflow toggles to the consumer.
+
+## Architecture and behavior
+
+Treat the v9 root `MessageBar` as a container that coordinates intent styling, reflow, and announcements. By default, `layout="auto"` watches the available width and changes between single-line and multiline layouts as the content reflows. If your product already knows which layout it needs, set `layout="singleline"` or `layout="multiline"` explicitly instead of porting the old boolean prop directly.
+
+Move the actual content into children. `MessageBarTitle` labels the group, `MessageBarBody` keeps the title, body text, and inline links together, and `MessageBarActions` separates secondary actions from the single container action on the far edge. That composition is also how you rebuild v8 dismiss behavior: keep an `open` or `visible` flag in your own React state, render a dismiss `Button` in `containerAction`, and remove the bar when the user closes it.
+
+When several messages may appear together, wrap them in `MessageBarGroup`. The group is not required for a single bar, but it is the supported v9 pattern for shared spacing and exit animation instead of stacking independent roots with ad hoc containers.
+
+## Prop mapping
+
+| v8 `MessageBar` prop or pattern | v9 replacement                                                                                                     | Replacement category    | Migration notes                                                                                                                                                                            |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `messageBarType`                | `intent`                                                                                                           | Behavioral change       | Map `info`, `success`, `warning`, and `error` directly. Use `intent="error"` as the documented fallback for `blocked`, and `intent="warning"` as the default fallback for `severeWarning`. |
+| `isMultiline`                   | `layout="singleline"`, `layout="multiline"`, or the default `layout="auto"`                                        | Behavioral change       | V9 adds `auto` reflow, so you can keep the layout responsive instead of choosing a boolean upfront.                                                                                        |
+| `actions`                       | `MessageBarActions` children                                                                                       | Composition replacement | Author one or more action buttons as direct children of `MessageBarActions`.                                                                                                               |
+| `onDismiss`                     | Consumer-managed state plus a dismiss `Button` inside `MessageBarActions containerAction`                          | Behavioral change       | V9 does not create or wire the dismiss button for you. Hide the component from your own state when the dismiss action runs.                                                                |
+| `dismissButtonAriaLabel`        | `aria-label` on the dismiss `Button` that you pass to `containerAction`                                            | Native replacement      | Because the dismiss control is now your button, you own its accessible name too.                                                                                                           |
+| `messageBarIconProps`           | `MessageBar icon={{ children: <Icon /> }}`                                                                         | Composition replacement | Swap the v8 `IIconProps` bag for the v9 `icon` slot and pass the actual icon element as slot content.                                                                                      |
+| `onRenderIcon`                  | `MessageBar icon` slot composition                                                                                 | Composition replacement | `IMessageBarProps` does not expose a public `onRenderIcon`; if internal icon customization existed in your codebase, rebuild it with the v9 `icon` slot.                                   |
+| `truncated`                     | Custom collapsed state and custom body styling                                                                     | Composition replacement | V9 has no built-in truncation prop, so clamp or expand the body content yourself and keep the interaction explicit.                                                                        |
+| `overflowButtonAriaLabel`       | `aria-label` or button text on your custom overflow toggle                                                         | Native replacement      | Give the custom expand or collapse control an accessible name because there is no generated overflow button anymore.                                                                       |
+| `styles`                        | `className` props on `MessageBar`, `MessageBarBody`, `MessageBarTitle`, `MessageBarActions`, and `containerAction` | Composition replacement | Style each slot or child region with Griffel classes instead of extending a single v8 style object.                                                                                        |
+| `theme`                         | `FluentProvider`                                                                                                   | Composition replacement | Theming is supplied by the provider context, not by a per-instance `theme` prop.                                                                                                           |
+
+## Styling and theming
+
+V8 styling usually starts with `styles` and `theme` on the root `MessageBar`. In v9, style the composed pieces instead: the root `MessageBar` for the surface, `MessageBarBody` and `MessageBarTitle` for content spacing or typography, and `MessageBarActions` plus `containerAction` for action alignment. This is a good migration point to break one large style bag into smaller Griffel classes with clear responsibilities.
+
+Keep those styles token-based. Use Fluent v9 design tokens for spacing, borders, colors, and type ramp decisions so the message remains consistent with the current `FluentProvider` theme. When you replace v8 icon or link customization, prefer slot-level class names and token-driven overrides instead of hardcoded colors or spacing.
+
+## Accessibility
+
+V8 places a live-region role on the text container and chooses `status` or `alert` from `messageBarType`. V9 instead renders the root as `role="group"`, labels it through `MessageBarTitle`, and announces the combined body and action text on mount through the announcer used by `useMessageBar`. The current stable implementation announces `info` politely and every other intent assertively, so test the resulting urgency with screen readers if you are migrating custom severity taxonomies.
+
+Always provide an accessible dismiss label when you compose `containerAction`. That usually means an `aria-label` on the dismiss `Button`, because the icon-only button no longer receives a generated name from `dismissButtonAriaLabel`. Keep links inline inside `MessageBarBody`, and prefer a visible `MessageBarTitle` whenever the message needs a short scannable summary because the title becomes the group's accessible label.
+
+## Examples
+
+### MC-1 Choose the closest v9 intent for each v8 `messageBarType`
+
+<Canvas of={Examples.V8IntentTypes} />
+<Source of={Examples.V8IntentTypes} />
+<Canvas of={Examples.V9IntentValues} />
+<Source of={Examples.V9IntentValues} />
+
+### MC-2 and MC-3 Compose title, body, links, actions, and dismiss buttons as children
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+<Canvas of={Examples.V8ActionsAndDismiss} />
+<Source of={Examples.V8ActionsAndDismiss} />
+<Canvas of={Examples.V9ComposedActionsAndDismiss} />
+<Source of={Examples.V9ComposedActionsAndDismiss} />
+
+### MC-4 Replace the boolean multiline switch with the `layout` union
+
+<Canvas of={Examples.V8Multiline} />
+<Source of={Examples.V8Multiline} />
+<Canvas of={Examples.V9Layout} />
+<Source of={Examples.V9Layout} />
+
+### MC-5 Group related messages with `MessageBarGroup`
+
+<Canvas of={Examples.V8MultipleMessages} />
+<Source of={Examples.V8MultipleMessages} />
+<Canvas of={Examples.V9MessageBarGroup} />
+<Source of={Examples.V9MessageBarGroup} />
+
+### MC-6 Replace built-in truncation with custom composition
+
+<Canvas of={Examples.V8Truncated} />
+<Source of={Examples.V8Truncated} />
+<Canvas of={Examples.V9CustomTruncation} />
+<Source of={Examples.V9CustomTruncation} />
+
+## Unsupported scenarios and known gaps
+
+MC-1: V9 does not expose `blocked` or `severeWarning` intents. Use `intent="error"` when the message blocks progress, and use `intent="warning"` when the message is urgent but still fundamentally cautionary.
+
+MC-6: V9 has no built-in equivalent for `truncated` or `overflowButtonAriaLabel`, so any single-line overflow affordance must be composed with your own state, your own clamped content styling, and an explicitly labeled toggle button.
+
+## Major-change checklist
+
+| ID   | Change                                                                                                                       |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | supported `messageBarType` values become string `intent`; `blocked` and `severeWarning` require a documented fallback choice |
+| MC-2 | body, title, actions, and container action become compound children                                                          |
+| MC-3 | `onDismiss` and dismiss-button creation move to consumer state/composition                                                   |
+| MC-4 | `isMultiline` becomes `layout`                                                                                               |
+| MC-5 | groups of messages can use `MessageBarGroup`                                                                                 |
+| MC-6 | v8 `truncated` and overflow behavior require custom composition                                                              |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Date       | Conclusion                                                                                                                              |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/MessageBar/MessageBar.types.ts` `MessageBarType`<br />`packages/react-components/react-message-bar/library/src/components/MessageBar/MessageBar.types.ts` `MessageBarIntent`<br />`packages/react-components/react-message-bar/library/docs/Spec.md` `Migration`                                                                                                                                                                                                                            | 2026-08-18 | V9 keeps only four supported intent values, so `blocked` and `severeWarning` must be migrated to the closest supported semantic choice. |
+| MC-2 | `packages/react/src/components/MessageBar/MessageBar.types.ts` `IMessageBarProps.actions`<br />`packages/react-components/react-message-bar/library/src/components/MessageBarBody/MessageBarBody.types.ts` `MessageBarBodyProps`<br />`packages/react-components/react-message-bar/library/src/components/MessageBarTitle/MessageBarTitle.types.ts` `MessageBarTitleProps`<br />`packages/react-components/react-message-bar/library/src/components/MessageBarActions/MessageBarActions.types.ts` `MessageBarActionsProps` | 2026-08-18 | V9 splits the v8 root content model into explicit body, title, and action children instead of keeping them on a single prop bag.        |
+| MC-3 | `packages/react/src/components/MessageBar/MessageBar.types.ts` `IMessageBarProps.onDismiss`, `IMessageBarProps.dismissButtonAriaLabel`<br />`packages/react-components/react-message-bar/library/src/components/MessageBarActions/MessageBarActions.types.ts` `MessageBarActionsSlots.containerAction`<br />`packages/react-components/react-message-bar/library/docs/Spec.md` `Sample Code`                                                                                                                               | 2026-08-18 | Dismiss behavior and its accessible label move from built-in root props to consumer-authored button composition in `containerAction`.   |
+| MC-4 | `packages/react/src/components/MessageBar/MessageBar.types.ts` `IMessageBarProps.isMultiline`<br />`packages/react-components/react-message-bar/library/src/components/MessageBar/useMessageBar.ts` `layout`, `computedLayout`<br />`packages/react-components/react-message-bar/library/src/components/MessageBar/MessageBar.test.tsx` `should not flicker during reflow`                                                                                                                                                 | 2026-08-18 | V9 replaces the v8 boolean multiline switch with a layout union and an automatic reflow path that responds to available width.          |
+| MC-5 | `packages/react-components/react-message-bar/library/src/components/MessageBarGroup/MessageBarGroup.types.ts` `MessageBarGroupProps`<br />`packages/react-components/react-message-bar/stories/src/MessageBar/Dismiss.stories.tsx` `Dismiss`                                                                                                                                                                                                                                                                               | 2026-08-18 | `MessageBarGroup` is the supported v9 wrapper for multiple related messages, especially when dismissing them from a shared stack.       |
+| MC-6 | `packages/react/src/components/MessageBar/MessageBar.types.ts` `IMessageBarProps.truncated`, `IMessageBarProps.overflowButtonAriaLabel`<br />`packages/react-components/react-message-bar/library/src/components/MessageBar/MessageBar.types.ts` `MessageBarProps`<br />`packages/react-components/react-message-bar/library/src/components/MessageBar/useMessageBar.test.tsx` `should return state for default props`                                                                                                     | 2026-08-18 | V9 exposes no truncation or overflow-button props, so the old single-prop overflow behavior must be rebuilt with explicit composition.  |

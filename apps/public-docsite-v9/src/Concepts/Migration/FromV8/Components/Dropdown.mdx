@@ -1,0 +1,147 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Dropdown/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/Dropdown Migration" />
+
+# Dropdown Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [Dropdown](/docs/components-dropdown--docs) as the primary v9 destination when a v8 `Dropdown` still needs Fluent-rendered options, multiselect, custom option composition, or listbox styling. Use [Select](/docs/components-select--docs) only when the scenario is a basic native single-select that can accept platform option rendering and the limits of the HTML `<select>` element.
+
+The biggest migration risk is that v8 `Dropdown` keeps its option model in `options: IDropdownOption[]`, while v9 `Dropdown` composes the popup with child `Option` elements. Selection state also changes shape: `selectedKey` and `selectedKeys` become `selectedOptions`, and controlled trigger text can be managed separately with `value` or `defaultValue` when the selected content is richer than a plain string. If the product now needs editable input, filtering, or freeform text, move to [Combobox](/docs/components-combobox--docs) and the [ComboBox to Combobox status](/docs/concepts-migration-from-v8-component-mapping--docs#combobox-migration) instead of stretching `Dropdown` or `Select` past their supported scope.
+
+## Component mapping
+
+| v8 scenario                                  | v9 destination                                      | Notes                                                                                                                                       |
+| -------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| custom-rendered single select                | `Dropdown`                                          | Keep the Fluent popup and compose each `Option` child with custom JSX plus a plain-text `text` prop.                                        |
+| multiselect                                  | `Dropdown` with `multiselect`                       | V9 `Dropdown` keeps multiselect in the Fluent listbox surface and returns selected option values through `onOptionSelect`.                  |
+| native single select is sufficient           | `Select`                                            | Use the HTML `<select>`-based control when native option rendering, mobile pickers, and single selection meet the product requirements.     |
+| editable, freeform, or filtering             | `Combobox` via the pending ComboBox migration guide | These requirements are intentionally outside the v8 `Dropdown` parity path and should not be modeled as a `Dropdown` or `Select` migration. |
+| label, hint, required, or validation message | `Field` plus `Dropdown` or `Select`                 | Form-field UI moves out of the v8 root component and into composition around the v9 control.                                                |
+
+## What changed
+
+The v8 control combines a label, error message, responsive popup behavior, an `options` array, and selection callbacks on one component. In v9, those responsibilities split by scenario. `Dropdown` is still the select-only Fluent choice, but it expects child `Option` elements, `selectedOptions`, and `onOptionSelect(event, data)` instead of `selectedKey(s)` and `onChange(event, option, index)`. When the options render custom JSX, each `Option` also needs a `text` prop so the selected trigger value and type-to-find behavior can stay accessible.
+
+`Select` is a deliberately narrower alternative. It renders a native `<select>`, keeps single selection only, and uses regular `<option>` or `<optgroup>` children. That makes it a better fit for platform-native accessibility and mobile UX, but it also means there is no custom option layout, no multiselect, and no styled Fluent listbox popup.
+
+The form-field shell also moves. V8 `label` and `errorMessage` props are not part of the v9 `Dropdown` or `Select` component APIs. Compose [Field](/docs/components-field--docs) around the control when the migrated scenario needs labels, hints, required state, or validation messaging.
+
+## Architecture and behavior
+
+Think about the migration as a decision between three primitives. V9 `Dropdown` renders a Fluent button plus listbox popup, supports multiselect, and lets you style the popup surface and option content. V9 `Select` wraps the browser's native `<select>` element, so its expanded popup and option layout are owned by the platform. V9 `Combobox` uses an input slot and is the only choice when users must type, filter, or submit custom text.
+
+Controlled selection also changes shape. In v8, `selectedKey` or `selectedKeys` drive the selected option identity and `onChange` reports the option object that changed. In v9 `Dropdown`, `selectedOptions` is always an array of selected option values, `onOptionSelect` reports the next `selectedOptions` array plus `optionText`, and `value` or `defaultValue` separately control the text shown in the trigger when you need a custom title summary. `Select` stays closer to native forms: the control value is a string and `onChange(event, data)` reports `data.value`.
+
+Popup behavior is intentionally different too. V8 `responsiveMode` can switch the old experience between a Callout and a Panel. V9 `Dropdown` always uses its listbox popup model, while `Select` always defers to the platform-native menu. If the old design depended on the small-screen panel presentation, treat that as a redesign decision rather than expecting a one-prop v9 replacement.
+
+## Prop mapping
+
+| v8 `Dropdown` prop or pattern | v9 equivalent                                                                               | Replacement category    | Migration notes                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `options`                     | child `Option` elements or native `<option>` children                                       | Conditional mapping     | Use `Dropdown` or `Combobox` children when you need Fluent option composition; use `Select` children when native single-select semantics are enough. |
+| `selectedKey`                 | `selectedOptions={['value']}` plus optional controlled `value`                              | Behavioral change       | `Dropdown` selection is always an array of option values. Keep `value` in sync when complex option content needs a specific trigger string.          |
+| `defaultSelectedKey`          | `defaultSelectedOptions` plus optional `defaultValue`; `Select defaultValue`                | Behavioral change       | Set `defaultValue` on `Dropdown` when the trigger text must be available before the option children render.                                          |
+| `selectedKeys`                | `selectedOptions`                                                                           | Behavioral change       | Multiselect selections are an explicit array of option values in v9.                                                                                 |
+| `defaultSelectedKeys`         | `defaultSelectedOptions`                                                                    | Behavioral change       | Use an array of option values for uncontrolled multiselect defaults.                                                                                 |
+| `multiSelect`                 | `multiselect` on `Dropdown`                                                                 | Behavioral change       | `Select` does not support multiselect, so any v8 multiselect path stays on `Dropdown` or moves to `Combobox` only when typing is required.           |
+| `onChange`                    | `onOptionSelect` on `Dropdown`; `onChange(event, data)` on `Select`                         | Behavioral change       | `Dropdown` callbacks report `data.selectedOptions` and `data.optionText`; `Select` reports `data.value`.                                             |
+| `placeholder`                 | `placeholder` on `Dropdown`; placeholder `<option value="">` for `Select`                   | Behavioral change       | Native `Select` needs a placeholder-like option because there is no dedicated placeholder prop.                                                      |
+| `label`                       | `Field label` or explicit `Label`                                                           | Composition replacement | The visible label moves out of the control and into composition.                                                                                     |
+| `errorMessage`                | `Field validationMessage` with `validationState`                                            | Composition replacement | `Field` owns the validation message semantics and wires `aria-describedby` for the nested control.                                                   |
+| `onRenderOption`              | `Option` children with a `text` prop when the children are not plain text                   | Composition replacement | Compose the option content directly in JSX and keep a plain-text `text` value for accessibility and trigger display.                                 |
+| `onRenderTitle`               | `Option text` plus controlled `value` or `defaultValue`; optional `button` slot composition | Behavioral change       | The selected title is no longer a render callback. Use the `text` prop and trigger value state instead.                                              |
+| `onRenderCaretDown`           | `expandIcon` on `Dropdown`; `icon` slot on `Select`                                         | Composition replacement | The expand affordance becomes slot content instead of a render function.                                                                             |
+| `dropdownWidth`               | `listbox` slot `className` or `style` on `Dropdown`                                         | Behavioral change       | Width and max-height belong to the listbox slot when you keep the Fluent popup.                                                                      |
+| `responsiveMode`              | No direct equivalent                                                                        | Unsupported             | V9 does not switch between a Callout and a Panel. `Dropdown` keeps one popup model and `Select` keeps the native menu.                               |
+| `styles`                      | slot `className` props with Griffel and design tokens                                       | Composition replacement | Style `Dropdown` slots such as `button`, `listbox`, and `expandIcon`, or `Select` slots such as `root`, `select`, and `icon`.                        |
+| `theme`                       | `FluentProvider`                                                                            | Composition replacement | Theming moves to provider context instead of a per-instance prop.                                                                                    |
+
+## Styling and theming
+
+Move v8 `styles` and `theme` work to slot-level Griffel classes and Fluent design tokens. For v9 `Dropdown`, the common styling targets are the `button`, `listbox`, and `expandIcon` slots plus any custom JSX inside `Option` children. For v9 `Select`, style the `root`, `select`, and `icon` slots, but remember that the expanded native option list is still rendered by the platform.
+
+Keep those styles token-based. Use spacing, border, color, radius, and typography tokens inside `makeStyles` rather than porting old `styles` objects verbatim. This is especially important for migration examples that wrap the control in `Field`, because `Field` now owns the label, hint, and validation-message layout while the control itself owns only the trigger and popup semantics.
+
+## Accessibility
+
+Prefer `Field` when the migrated control needs a visible label, hint, required state, or validation message. Both v9 `Dropdown` and `Select` can read those props from a surrounding `Field`, which keeps `aria-labelledby`, `aria-describedby`, and required-state wiring aligned with the control and, for `Dropdown`, its listbox popup.
+
+Complex `Option` content must keep a plain-text `text` prop. That string is used for the selected trigger value and type-to-find behavior, so omitting it from non-string JSX harms both keyboard and screen-reader usability. The same rule applies when you migrate a v8 `onRenderTitle` scenario: keep the selected text understandable without relying on arbitrary rendered markup.
+
+Choose `Select` when native semantics are the accessibility win. It inherits the browser's mobile picker behavior, platform keyboard handling, and cross-platform screen reader support. Choose `Dropdown` when the scenario needs Fluent-rendered options, multiselect, or styled popup content. When the scenario needs search, filtering, or freeform input, move to `Combobox` instead of overloading `Dropdown` or `Select`.
+
+## Examples
+
+### MC-1 Convert `options` data into child `Option` elements and keep `Select` for native single-select alternatives
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+<Canvas of={Examples.V9NativeSelectAlternative} />
+<Source of={Examples.V9NativeSelectAlternative} />
+
+### MC-2 Move `selectedKey(s)` state to `selectedOptions`, `value`, and `onOptionSelect`
+
+<Canvas of={Examples.V8ControlledSelection} />
+<Source of={Examples.V8ControlledSelection} />
+<Canvas of={Examples.V9ControlledSelection} />
+<Source of={Examples.V9ControlledSelection} />
+<Canvas of={Examples.V9FieldIntegration} />
+<Source of={Examples.V9FieldIntegration} />
+
+### MC-3 Use explicit `multiselect` state and selected option values
+
+<Canvas of={Examples.V8MultiSelect} />
+<Source of={Examples.V8MultiSelect} />
+<Canvas of={Examples.V9MultiSelect} />
+<Source of={Examples.V9MultiSelect} />
+
+### MC-4 Replace render callbacks with `Option` composition and slot content
+
+<Canvas of={Examples.V8CustomOptionRender} />
+<Source of={Examples.V8CustomOptionRender} />
+<Canvas of={Examples.V9OptionComposition} />
+<Source of={Examples.V9OptionComposition} />
+
+### MC-5 Choose `Select` only for native single-select paths, and move searchable or freeform requirements to `Combobox`
+
+<Canvas of={Examples.V9NativeSelectAlternative} />
+<Source of={Examples.V9NativeSelectAlternative} />
+<Canvas of={Examples.V9ComboboxSearchAlternative} />
+<Source of={Examples.V9ComboboxSearchAlternative} />
+
+## Unsupported scenarios and known gaps
+
+MC-5: Searchability, filtering, and freeform text do not belong to the v8 `Dropdown` migration target. When those requirements exist, use [Combobox](/docs/components-combobox--docs) and the [ComboBox to Combobox status](/docs/concepts-migration-from-v8-component-mapping--docs#combobox-migration) instead of trying to bolt editable behavior onto `Dropdown` or `Select`.
+
+MC-5: `Select` is not a substitute for multiselect, custom option layout, or styled Fluent listbox content. If the migrated screen needs those behaviors, keep the migration on `Dropdown` rather than forcing it through the native `<select>` element.
+
+MC-2: V8 `multiSelectDelimiter` does not have a dedicated v9 `Dropdown` prop. When a product requires a specific summary string, control the trigger `value` yourself from `selectedOptions` and `optionText`.
+
+MC-5: V8 `responsiveMode` and its Panel-versus-Callout behavior have no direct v9 counterpart. Re-evaluate the small-screen design instead of assuming that `Dropdown` or `Select` can reproduce the old responsive popup swap.
+
+## Major-change checklist
+
+| ID   | Change                                                                                                                   |
+| ---- | ------------------------------------------------------------------------------------------------------------------------ |
+| MC-1 | `options` data becomes child `Option` elements                                                                           |
+| MC-2 | `selectedKey(s)` become `selectedOptions`; `value` separately controls displayed text; changes use `onOptionSelect` data |
+| MC-3 | multiselect is explicit and returns selected option values                                                               |
+| MC-4 | custom option/title render callbacks become Option/slot composition                                                      |
+| MC-5 | native-select scenarios may choose `Select`; editable/filtering scenarios belong to Combobox                             |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Date       | Conclusion                                                                                                                                                                                             |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| MC-1 | `packages/react/src/components/Dropdown/Dropdown.types.ts` `IDropdownProps.options`<br />`packages/react-components/react-combobox/library/src/components/Dropdown/Dropdown.types.ts` `DropdownProps`<br />`packages/react-components/react-combobox/library/src/components/Option/Option.types.ts` `OptionProps.text`<br />`packages/react-components/react-combobox/library/docs/Migration.md` `Migration from v8 Dropdown`                                                                                                                                                                               | 2026-08-18 | V8 `options` arrays migrate either to child `Option` elements in `Dropdown` or to native `<option>` children in `Select`, depending on whether the scenario still needs Fluent-rendered popup content. |
+| MC-2 | `packages/react/src/components/Dropdown/Dropdown.types.ts` `IDropdownProps.onChange`, `selectedKeys`, `defaultSelectedKeys`<br />`packages/react/src/utilities/selectableOption/SelectableDroppableText.types.ts` `defaultSelectedKey`, `selectedKey`<br />`packages/react-components/react-combobox/library/src/components/Dropdown/Dropdown.types.ts` `DropdownProps`<br />`packages/react-components/react-combobox/stories/src/Dropdown/DropdownControlled.stories.tsx` `Controlled`                                                                                                                    | 2026-08-18 | Controlled v9 `Dropdown` state moves to `selectedOptions`, and complex trigger text is controlled separately with `value` or `defaultValue` while `onOptionSelect` reports the next selection data.    |
+| MC-3 | `packages/react/src/utilities/selectableOption/SelectableDroppableText.types.ts` `multiSelect`<br />`packages/react/src/components/Dropdown/Dropdown.types.ts` `defaultSelectedKeys`, `selectedKeys`, `multiSelectDelimiter`<br />`packages/react-components/react-combobox/library/src/components/Dropdown/Dropdown.test.tsx` multiselect selection tests and surrounding `Field` tests<br />`packages/react-components/react-combobox/stories/src/Dropdown/DropdownMultiselect.stories.tsx` `Multiselect`                                                                                                 | 2026-08-18 | V9 keeps multiselect on `Dropdown`, but the API becomes explicit with `multiselect` and arrays of selected option values instead of the v8 `selectedKeys` model.                                       |
+| MC-4 | `packages/react/src/components/Dropdown/Dropdown.types.ts` `onRenderOption`, `onRenderTitle`, `onRenderCaretDown`<br />`packages/react-components/react-combobox/library/src/components/Option/Option.types.ts` `OptionProps.text`<br />`packages/react-components/react-combobox/library/docs/Spec.md` `Customizing Option Render`, `When to use Select`, and `When to use Combobox or Dropdown`                                                                                                                                                                                                           | 2026-08-18 | Custom option and title rendering are no longer callback props. They move to `Option` child composition, the `text` prop, and slot content such as `expandIcon`.                                       |
+| MC-5 | `packages/react-components/react-select/library/src/components/Select/Select.types.ts` `SelectProps.onChange`<br />`packages/react-components/react-select/library/src/components/Select/Select.test.tsx` `gets props from a surrounding Field`<br />`packages/react-components/react-select/library/docs/Spec.md` `Background`, `Unsupported Select variants`, and `Migration`<br />`packages/react-components/react-combobox/stories/src/Combobox/ComboboxFiltering.stories.tsx` `Filtering`<br />`packages/react-components/react-combobox/stories/src/Combobox/ComboboxFreeform.stories.tsx` `Freeform` | 2026-08-18 | `Select` is the native single-select alternative, while searchable or freeform requirements intentionally move to `Combobox` instead of trying to preserve them on `Dropdown` or `Select`.             |

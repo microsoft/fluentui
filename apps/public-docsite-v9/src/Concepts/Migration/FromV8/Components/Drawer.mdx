@@ -1,0 +1,135 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as Examples from './examples/Drawer/index.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/Drawer Migration" />
+
+# Drawer Migration
+
+See the [v8 component migration inventory](/docs/concepts-migration-from-v8-component-mapping--docs).
+
+## Overview
+
+Use [Drawer](/docs/components-drawer--docs) when a v8 `Panel` provides supplementary editing, review, or navigation content beside the main page. The first migration decision is no longer a `PanelType`; it is whether the surface should remain an overlay (`OverlayDrawer`) or become part of the page layout (`InlineDrawer`). Overlay drawers preserve the dialog-like experience, while inline drawers are for always-available or adjacent content that should push sibling layout instead of floating above it.
+
+The highest migration risk is assuming there is still one catch-all root component. V8 `Panel` centralizes visibility, title text, close behavior, footer rendering, and responsive sizing on one API. V9 splits those concerns across `OverlayDrawer` or `InlineDrawer`, `DrawerHeader`, `DrawerHeaderNavigation`, `DrawerHeaderTitle`, `DrawerBody`, and `DrawerFooter`, so each scenario should be re-authored deliberately instead of translated prop-for-prop.
+
+## Component mapping
+
+| v8 scenario                                                  | v9 destination                                                                           | Notes                                                                                                   |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Standard blocking `Panel` for editing or review              | `OverlayDrawer` + `DrawerHeader` + `DrawerHeaderTitle` + `DrawerBody`                    | Keep the modal overlay model and translate dismissal to controlled `open` state.                        |
+| Non-blocking or modeless `Panel`                             | `OverlayDrawer modalType="non-modal"`                                                    | The page stays interactive, but the surface is still an overlay and needs focus restoration.            |
+| Embedded supplemental content that should share page layout  | `InlineDrawer` + `DrawerHeader` + `DrawerBody`                                           | This is not the same as `isBlocking={false}`; it becomes a layout primitive instead of a modal surface. |
+| `headerText`, `onRenderHeader`, `onRenderNavigation`, footer | `DrawerHeaderNavigation`, `DrawerHeaderTitle`, `DrawerBody`, and `DrawerFooter` children | V9 moves header, navigation, body, and footer content from render props into explicit children.         |
+| `PanelType` sizing and anchoring                             | `position` + `size`, with optional custom surface styling                                | Near/far anchoring becomes `start` or `end`; full-screen behavior maps to `size="full"`.                |
+
+## What changed
+
+V8 `Panel` is an opinionated overlay with one root API. V9 `Drawer` is a family of primitives. Before translating individual props, pick `OverlayDrawer` when the content should still behave like a dialog surface or `InlineDrawer` when the content should live beside the rest of the page.
+
+State and dismissal change shape too. `isOpen` becomes `open`, and overlay dismissal moves from `onDismiss` to `onOpenChange(event, data)`. The callback reports both the next `data.open` value and the interaction type, so light-dismiss logic should branch on `data.type === 'backdropClick'` instead of relying on a dedicated `onLightDismissClick` prop. `InlineDrawer` keeps the simpler `open` boolean without any dialog dismissal callback because there is no backdrop or `Escape` contract to translate.
+
+Structure is now explicit. Instead of `headerText`, `hasCloseButton`, `onRenderHeader`, `onRenderNavigation`, and `onRenderFooterContent` all configuring one root panel, v9 authors the navigation, title, body, and footer as real children. That makes the migrated layout more obvious, but it also means every customized v8 region must be rebuilt intentionally.
+
+## Architecture and behavior
+
+Start each migration by choosing the surface boundary. `OverlayDrawer` uses dialog semantics under the hood, so it participates in modal or non-modal focus management, reports `onOpenChange`, and can render into a custom `mountNode`. `InlineDrawer` skips dialog semantics entirely and simply adds or removes layout content according to `open`.
+
+That split affects behavior more than the rename from Panel to Drawer. A v8 non-blocking panel still floats in a portal-like layer, while an inline drawer consumes space next to the main content. Conversely, a modal overlay drawer keeps overlay dismissal and `Escape` handling, which means product teams should decide whether users still need the page to go inert or whether `modalType="non-modal"` is the better match.
+
+Composition is the second architectural shift. `DrawerHeaderNavigation` carries toolbar-like controls, `DrawerHeaderTitle` owns the visible heading and optional close action, `DrawerBody` contains the scrollable content region, and `DrawerFooter` carries secondary and primary actions. Styling also happens per slot, so body spacing, footer alignment, and header affordances no longer share one monolithic `styles` bag.
+
+## Prop mapping
+
+| v8 prop or pattern      | v9 equivalent                                                                                | Replacement category    | Migration notes                                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `isOpen`                | `open`                                                                                       | Rename                  | Both overlay and inline drawers use positive open state.                                                           |
+| `onDismiss`             | `onOpenChange(event, data)` on `OverlayDrawer`; explicit `setOpen(false)` for `InlineDrawer` | Conditional mapping     | Overlay drawers report `data.open` and `data.type`; inline drawers do not expose dialog dismissal semantics.       |
+| `type`                  | `position` + `size`                                                                          | Behavioral change       | Translate near/far anchoring to `start` or `end`, then choose a supported size deliberately.                       |
+| `headerText`            | `DrawerHeaderTitle` children                                                                 | Composition replacement | Title text becomes explicit JSX in the heading slot instead of a root prop.                                        |
+| `hasCloseButton`        | `DrawerHeaderTitle action` with a `Button`                                                   | Composition replacement | Compose the close affordance explicitly and give the button its own `aria-label`.                                  |
+| `isBlocking`            | `modalType="modal"` or `modalType="non-modal"` on `OverlayDrawer`                            | Behavioral change       | Blocking and page interactivity are now a modal-type choice instead of a boolean on every panel.                   |
+| `isLightDismiss`        | Modal `OverlayDrawer` dismissal through `onOpenChange`                                       | Conditional mapping     | Overlay drawers still support backdrop dismissal, but inline drawers do not because there is no backdrop.          |
+| `onLightDismissClick`   | Branch on `data.type === 'backdropClick'` inside `onOpenChange`                              | Behavioral change       | There is no dedicated light-dismiss callback in v9.                                                                |
+| `onRenderHeader`        | `DrawerHeaderTitle` plus ordinary JSX                                                        | Composition replacement | Rebuild the header directly in JSX and keep the heading associated with the overlay surface.                       |
+| `onRenderNavigation`    | `DrawerHeaderNavigation`                                                                     | Separate component      | Navigation content becomes a dedicated child region instead of a render callback.                                  |
+| `onRenderFooterContent` | `DrawerFooter` children                                                                      | Composition replacement | Footer actions become explicit children and can be aligned with normal layout techniques.                          |
+| `customWidth`           | `className` or `style` width on `OverlayDrawer`                                              | Behavioral change       | There is no `PanelType.custom`; keep custom widths deliberate and verify responsive behavior separately.           |
+| `closeButtonAriaLabel`  | `aria-label` on the close `Button` in `DrawerHeaderTitle action`                             | Native replacement      | The close button is authored by you, so its accessible name is no longer generated from one root prop.             |
+| `layerProps`            | `mountNode` on `OverlayDrawer`                                                               | Behavioral change       | V9 keeps mount-node targeting, but it drops the broader v8 layer configuration bag.                                |
+| `styles`                | Slot `className` props with Griffel and Fluent design tokens                                 | Composition replacement | Style the overlay surface, header, body, and footer individually instead of extending one monolithic style object. |
+| `theme`                 | `FluentProvider`                                                                             | Composition replacement | Theme context comes from the provider, not a per-instance component prop.                                          |
+
+## Styling and theming
+
+V8 `Panel` styling often starts with one `styles` object or a `theme` prop on the root component. V9 drawers are styled slot by slot: use `className` on `OverlayDrawer` or `InlineDrawer` for the surface, `DrawerHeaderNavigation` and `DrawerHeaderTitle` for header affordances, `DrawerBody` for spacing and typography, and `DrawerFooter` for action alignment. This is a good time to break broad panel overrides into smaller, purpose-specific Griffel classes.
+
+Keep those styles token-driven. Use Fluent design tokens for spacing, border radii, color, and typography so the migrated drawer follows the active `FluentProvider` theme automatically. When a v8 panel relied on `customWidth`, prefer the built-in `size` values first and only reach for an explicit surface width when the product requirement still demands it.
+
+## Accessibility
+
+Overlay drawers still need an accessible title and close affordance, but you author both pieces yourself. `DrawerHeaderTitle` provides the heading content that labels the surface, so keep a visible heading or provide equivalent `aria-labelledby` or `aria-label` wiring when you diverge from the default structure. Any custom close button should keep the accessible name that used to come from `closeButtonAriaLabel`.
+
+Focus behavior is different enough to test explicitly during migration. Overlay drawers use dialog semantics, so modal drawers trap focus, non-modal drawers leave the page interactive, and both patterns should restore focus with `useRestoreFocusTarget()` and `useRestoreFocusSource()` when the trigger lives outside the drawer tree. Inline drawers stay in document flow, do not close on `Escape`, and should only be chosen when that persistent, layout-based behavior is appropriate.
+
+Because `modalType="non-modal"` still renders an overlay surface, screen-reader and keyboard users should understand whether the surface is supplemental or blocking. Re-test `Escape`, close-button labeling, and any custom navigation controls after moving the content out of v8 render props.
+
+## Examples
+
+### MC-1 and MC-2 Choose `OverlayDrawer` or `InlineDrawer`, then convert `isOpen` and `onDismiss`
+
+<Canvas of={Examples.V8Basic} />
+<Source of={Examples.V8Basic} />
+<Canvas of={Examples.V9Basic} />
+<Source of={Examples.V9Basic} />
+<Canvas of={Examples.V8EmbeddedPanelAlternative} />
+<Source of={Examples.V8EmbeddedPanelAlternative} />
+<Canvas of={Examples.V9InlineDrawer} />
+<Source of={Examples.V9InlineDrawer} />
+
+### MC-3 Rebuild header, navigation, body, and footer content as children
+
+<Canvas of={Examples.V8CustomHeaderFooter} />
+<Source of={Examples.V8CustomHeaderFooter} />
+<Canvas of={Examples.V9ComposedHeaderFooter} />
+<Source of={Examples.V9ComposedHeaderFooter} />
+
+### MC-4 Split `PanelType` into `position` and `size`
+
+<Canvas of={Examples.V8PanelType} />
+<Source of={Examples.V8PanelType} />
+<Canvas of={Examples.V9PositionAndSize} />
+<Source of={Examples.V9PositionAndSize} />
+
+### MC-5 Re-evaluate blocking, light dismissal, and focus restoration
+
+<Canvas of={Examples.V8Modeless} />
+<Source of={Examples.V8Modeless} />
+<Canvas of={Examples.V9NonModalOverlayDrawer} />
+<Source of={Examples.V9NonModalOverlayDrawer} />
+
+## Unsupported scenarios and known gaps
+
+MC-4: `PanelType.large`, `PanelType.largeFixed`, `PanelType.extraLarge`, `PanelType.custom`, and `PanelType.customNear` do not map one-to-one. Use the nearest supported `size`, reserve `customWidth`-style overrides for deliberate exceptions, and treat the v9 `bottom` drawer position as a new capability rather than a Panel migration target.
+
+MC-5: There is no catch-all replacement for `layerProps`, `focusTrapZoneProps`, or `onLightDismissClick`. `OverlayDrawer` keeps `mountNode`, `modalType`, `inertTrapFocus`, and `onOpenChange`, while `InlineDrawer` omits backdrop and `Escape` dismissal behavior entirely.
+
+## Major-change checklist
+
+| ID   | Change                                                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `Panel` splits into `OverlayDrawer` and `InlineDrawer`                                                                    |
+| MC-2 | Overlay `isOpen`/`onDismiss` become `open`/`onOpenChange`; InlineDrawer exposes `open` without Dialog dismissal semantics |
+| MC-3 | header, navigation, body, and footer props become compound children                                                       |
+| MC-4 | `PanelType` becomes `position` plus supported `size` values                                                               |
+| MC-5 | blocking, focus, and portal behavior differ between overlay and inline drawers                                            |
+
+## Evidence
+
+| ID   | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Date       | Conclusion                                                                                                                                                                                |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-1 | `packages/react/src/components/Panel/Panel.types.ts` `IPanelProps`<br />`packages/react-components/react-drawer/library/docs/Spec.md` `OverlayDrawer`, `InlineDrawer`<br />`packages/react-components/react-drawer/library/src/components/Drawer/Drawer.types.ts` `DrawerProps.type`                                                                                                                                                                                                                                                                                                                                                              | 2026-08-18 | V9 no longer treats the destination as one root component; authors choose overlay or inline drawer behavior before translating the rest of the API.                                       |
+| MC-2 | `packages/react/src/components/Panel/Panel.types.ts` `IPanelProps.isOpen`, `IPanelProps.onDismiss`<br />`packages/react-components/react-drawer/library/src/components/OverlayDrawer/OverlayDrawer.types.ts` `OverlayDrawerProps.open`, `OverlayDrawerProps.onOpenChange`<br />`packages/react-components/react-drawer/library/src/components/InlineDrawer/InlineDrawer.types.ts` `InlineDrawerProps.open`                                                                                                                                                                                                                                        | 2026-08-18 | Overlay drawers replace `isOpen` and `onDismiss` with controlled `open` and `onOpenChange`, while inline drawers keep only direct `open` state.                                           |
+| MC-3 | `packages/react/src/components/Panel/Panel.types.ts` `IPanelProps.headerText`, `IPanelProps.onRenderHeader`, `IPanelProps.onRenderNavigation`, `IPanelProps.onRenderFooterContent`<br />`packages/react-components/react-drawer/library/src/components/DrawerHeaderTitle/DrawerHeaderTitle.types.ts` `DrawerHeaderTitleProps`<br />`packages/react-components/react-drawer/library/src/components/DrawerBody/DrawerBody.types.ts` `DrawerBodyProps`<br />`packages/react-components/react-drawer/library/src/components/DrawerFooter/DrawerFooter.types.ts` `DrawerFooterProps`                                                                   | 2026-08-18 | V8 root props and render callbacks become explicit header, navigation, body, and footer children in the v9 drawer family.                                                                 |
+| MC-4 | `packages/react/src/components/Panel/Panel.types.ts` `PanelType`<br />`packages/react-components/react-drawer/library/src/shared/DrawerBase.types.ts` `DrawerBaseProps.position`, `DrawerBaseProps.size`                                                                                                                                                                                                                                                                                                                                                                                                                                          | 2026-08-18 | The old enum is decomposed into separate placement and size choices, with `size="full"` covering the common fluid takeover scenario.                                                      |
+| MC-5 | `packages/react/src/components/Panel/Panel.types.ts` `IPanelProps.isBlocking`, `IPanelProps.isLightDismiss`, `IPanelProps.onLightDismissClick`, `IPanelProps.layerProps`<br />`packages/react-components/react-drawer/library/src/components/OverlayDrawer/OverlayDrawer.types.ts` `OverlayDrawerProps.modalType`, `OverlayDrawerProps.inertTrapFocus`, `OverlayDrawerProps.mountNode`<br />`packages/react-components/react-drawer/library/src/components/OverlayDrawer/OverlayDrawer.test.tsx` `respects the mountNode prop`<br />`packages/react-components/react-drawer/stories/src/Drawer/OverlayDrawerNoModal.stories.tsx` `OverlayNoModal` | 2026-08-18 | Blocking, dismissal, focus restoration, and portal targeting are re-expressed through overlay-only props and supporting hooks, while inline drawers omit those dialog behaviors entirely. |
