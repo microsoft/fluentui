@@ -4,7 +4,6 @@
 
 ```ts
 
-import type { AccordionBaseProps } from '@fluentui/react-accordion';
 import type { AccordionBaseState } from '@fluentui/react-accordion';
 import { AccordionContextValues } from '@fluentui/react-accordion';
 import type { AccordionHeaderBaseState } from '@fluentui/react-accordion';
@@ -17,6 +16,7 @@ import type { AccordionItemState as AccordionItemState_2 } from '@fluentui/react
 import type { AccordionPanelBaseState } from '@fluentui/react-accordion';
 import { AccordionPanelBaseProps as AccordionPanelProps } from '@fluentui/react-accordion';
 import { AccordionPanelSlots } from '@fluentui/react-accordion';
+import { AccordionBaseProps as AccordionProps } from '@fluentui/react-accordion';
 import { AccordionSlots } from '@fluentui/react-accordion';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -77,8 +77,7 @@ export type AccordionPanelState = AccordionPanelBaseState & {
     };
 };
 
-// @public (undocumented)
-export type AccordionProps = AccordionBaseProps;
+export { AccordionProps }
 
 export { AccordionSlots }
 

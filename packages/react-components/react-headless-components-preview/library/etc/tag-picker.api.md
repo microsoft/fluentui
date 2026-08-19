@@ -34,7 +34,7 @@ import { TagPickerControlInternalSlots } from '@fluentui/react-tag-picker';
 import { TagPickerControlProps } from '@fluentui/react-tag-picker';
 import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerGroupBaseState } from '@fluentui/react-tag-picker';
-import type { TagPickerGroupSlots as TagPickerGroupSlots_2 } from '@fluentui/react-tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerInputBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerInputBaseProps as TagPickerInputProps } from '@fluentui/react-tag-picker';
 import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
@@ -113,8 +113,7 @@ export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 // @public
 export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> & Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
-// @public (undocumented)
-export type TagPickerGroupSlots = TagPickerGroupSlots_2;
+export { TagPickerGroupSlots }
 
 // @public
 export type TagPickerGroupState = TagPickerGroupBaseState & {

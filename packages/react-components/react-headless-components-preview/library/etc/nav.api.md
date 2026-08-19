@@ -125,8 +125,12 @@ export type NavDividerProps = Omit<DividerBaseProps, 'vertical'>;
 
 export { NavDividerSlots }
 
-// @public
-export type NavDividerState = DividerState;
+// @public (undocumented)
+export type NavDividerState = DividerBaseState & {
+    root: {
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
 
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
