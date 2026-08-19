@@ -23,6 +23,11 @@
     "react": ">=16.14.0 <20.0.0",
     "react-dom": ">=16.14.0 <20.0.0"
   },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
   "beachball": {
     "disallowedChangeTypes": [
       "major",

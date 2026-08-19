@@ -36,6 +36,11 @@
     "react": ">=16.14.0 <20.0.0",
     "storybook": "^9.1.17"
   },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
   "beachball": {
     "disallowedChangeTypes": [
       "major",
