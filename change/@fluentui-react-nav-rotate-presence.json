@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate NavCategoryItem to the graph-level Rotate angle parameters",
+  "packageName": "@fluentui/react-nav",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
