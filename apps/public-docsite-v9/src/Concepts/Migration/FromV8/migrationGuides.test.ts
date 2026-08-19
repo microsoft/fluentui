@@ -104,6 +104,12 @@ type FencedCodeBlock = {
   language: string;
 };
 
+type TsxSyntaxDiagnostic = {
+  character: number;
+  line: number;
+  message: string;
+};
+
 const createSourceFile = (fileName: string, source: string, scriptKind?: ts.ScriptKind): ts.SourceFile =>
   ts.createSourceFile(fileName, source, ts.ScriptTarget.Latest, true, scriptKind);
 
@@ -265,14 +271,32 @@ const getMarkdownTables = (source: string): string[][][] => {
   return tables.filter(table => table.length >= 2);
 };
 
-const hasExampleCoverage = (source: string, storyExportName: 'V8Basic' | 'V9Basic'): boolean => {
-  const normalizedSource = source.replace(/\s+/g, ' ');
+const getTsxSyntaxDiagnostics = (fileName: string, source: string): TsxSyntaxDiagnostic[] =>
+  (
+    ts.transpileModule(source, {
+      fileName,
+      reportDiagnostics: true,
+      compilerOptions: {
+        jsx: ts.JsxEmit.ReactJSX,
+        module: ts.ModuleKind.ESNext,
+        target: ts.ScriptTarget.ES2022,
+      },
+    }).diagnostics ?? []
+  ).flatMap(diagnostic => {
+    if (!diagnostic.file || diagnostic.file.fileName !== fileName || diagnostic.start === undefined) {
+      return [];
+    }
 
-  return (
-    normalizedSource.includes(`<Canvas of={Examples.${storyExportName}}`) &&
-    normalizedSource.includes(`<Source of={Examples.${storyExportName}}`)
-  );
-};
+    const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start);
+
+    return [
+      {
+        character: character + 1,
+        line: line + 1,
+        message: ts.flattenDiagnosticMessageText(diagnostic.messageText, ' '),
+      },
+    ];
+  });
 
 const validateCompleteGuide = (source: string, pageName: string): string[] => {
   const errors: string[] = [];
@@ -313,25 +337,22 @@ const validateCompleteGuide = (source: string, pageName: string): string[] => {
       continue;
     }
 
-    const sourceFile = createSourceFile(
-      `${pageName}-inline-example-${index + 1}.tsx`,
-      codeBlock.content,
-      ts.ScriptKind.TSX,
-    );
+    const fileName = `${pageName}-inline-example-${index + 1}.tsx`;
+    const syntaxDiagnostics = getTsxSyntaxDiagnostics(fileName, codeBlock.content);
 
-    for (const diagnostic of sourceFile.parseDiagnostics) {
-      const { line, character } = sourceFile.getLineAndCharacterOfPosition(diagnostic.start ?? 0);
-
+    for (const diagnostic of syntaxDiagnostics) {
       errors.push(
-        `${pageName}: fenced tsx example ${index + 1} has syntax error at ${codeBlock.contentStartLine + line}:${
-          character + 1
-        }: ${ts.flattenDiagnosticMessageText(diagnostic.messageText, ' ')}`,
+        `${pageName}: fenced tsx example ${index + 1} has syntax error at ${
+          codeBlock.contentStartLine + diagnostic.line - 1
+        }:${diagnostic.character}: ${diagnostic.message}`,
       );
     }
 
-    if (sourceFile.parseDiagnostics.length > 0) {
+    if (syntaxDiagnostics.length > 0) {
       continue;
     }
+
+    const sourceFile = createSourceFile(fileName, codeBlock.content, ts.ScriptKind.TSX);
 
     for (const importDeclaration of getImportDeclarations(sourceFile)) {
       if (!ts.isStringLiteral(importDeclaration.moduleSpecifier)) {
@@ -579,6 +600,31 @@ describe('migration guide route helpers', () => {
 });
 
 describe('complete migration guide contract', () => {
+  test('reports fenced tsx syntax diagnostics with preserved locations and messages', () => {
+    expect(
+      getTsxSyntaxDiagnostics(
+        'Input-inline-example.tsx',
+        [
+          "import * as React from 'react';",
+          "import { TextField } from '@fluentui/react';",
+          '',
+          'export const BrokenExample = () => <TextField value={ />;',
+        ].join('\n'),
+      ),
+    ).toEqual([
+      {
+        character: 55,
+        line: 4,
+        message: 'Unterminated regular expression literal.',
+      },
+      {
+        character: 57,
+        line: 4,
+        message: "'}' expected.",
+      },
+    ]);
+  });
+
   test('rejects an invalid inline guide fixture', () => {
     const invalidGuide = `
 import * as Examples from './examples/Input/index.stories';
