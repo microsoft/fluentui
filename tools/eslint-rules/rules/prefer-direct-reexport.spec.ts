@@ -18,7 +18,6 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as render } from 'pkg';
       `,
     },
-
     // --- Aliases that declare a new type ---
     // valid: `extends` declares a new interface instead of renaming the imported one.
     {
@@ -42,6 +41,13 @@ ruleTester.run(RULE_NAME, rule, {
         export type Props = BaseProps<any>;
       `,
     },
+    {
+      code: `
+        import { renderBase } from 'pkg';
+        const localRender = renderBase;
+        export const render = (props: any) => localRender(props);
+      `,
+    },
     // valid: A generic alias declares a new type constructor.
     {
       code: `
@@ -49,7 +55,6 @@ ruleTester.run(RULE_NAME, rule, {
         export type Props<T> = BaseProps;
       `,
     },
-
     // --- Namespace imports ---
     // valid: `export … from` cannot address a single member of a namespace binding.
     {
@@ -72,7 +77,6 @@ ruleTester.run(RULE_NAME, rule, {
         export { local as default };
       `,
     },
-
     // --- Value bindings that are not a plain alias ---
     // valid: Destructuring is not an alias of the import.
     {
@@ -136,7 +140,6 @@ ruleTester.run(RULE_NAME, rule, {
         export { render };
       `,
     },
-
     // --- Wrapper signature ---
     // valid: An annotated parameter narrows the public signature.
     {
@@ -179,7 +182,6 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
-
     // --- Wrapper body and arguments ---
     // valid: A default parameter value changes what reaches the call.
     {
@@ -270,7 +272,6 @@ ruleTester.run(RULE_NAME, rule, {
         export const render = renderBase => renderBase(renderBase);
       `,
     },
-
     // --- Locals that are never exported ---
     // valid: The local alias is never exported; only a property is assigned to it.
     {
@@ -310,7 +311,6 @@ ruleTester.run(RULE_NAME, rule, {
         export { renderBase as publicRender } from 'pkg';
       `,
     },
-
     // --- Imports still used locally ---
     // valid: `Foo` is needed by `Wrapper`, so the import stays and `export … from` could only be
     // added alongside it rather than replace it.
@@ -978,6 +978,7 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    // --- Identity wrappers ---
     // Prefer: export { renderBase as render } from 'pkg';
     {
       code: `
