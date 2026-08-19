@@ -8,7 +8,7 @@ export type { SelectSlots, SelectBaseProps as SelectProps } from '@fluentui/reac
 export type SelectState = SelectBaseState & {
   root: {
     /**
-     * Data attribute set when the select is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 

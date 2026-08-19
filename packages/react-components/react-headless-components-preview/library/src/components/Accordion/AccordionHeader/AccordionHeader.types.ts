@@ -9,12 +9,12 @@ export type {
 export type AccordionHeaderState = AccordionHeaderBaseState & {
   root: {
     /**
-     * Data attribute set when the accordion item is open.
+     * Present when the accordion item is open; omitted when the accordion item is closed.
      */
     'data-open'?: string;
 
     /**
-     * Data attribute set when the accordion header is disabled.
+     * Present when the accordion header is disabled; omitted when enabled.
      */
     'data-disabled'?: string;
 

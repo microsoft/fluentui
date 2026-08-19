@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add opt-in state data attribute documentation for Storybook ArgTypes.",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

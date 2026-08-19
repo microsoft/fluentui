@@ -9,7 +9,8 @@ export type ToolbarRadioGroupState = ToolbarRadioGroupBaseState & {
   vertical?: boolean;
   root: {
     /**
-     * Data attribute set when the toolbar radio group is in a vertically oriented toolbar.
+     * Present when the toolbar radio group is in a vertically oriented toolbar;
+     * omitted when it is in a horizontally oriented toolbar.
      */
     'data-vertical'?: string;
   };

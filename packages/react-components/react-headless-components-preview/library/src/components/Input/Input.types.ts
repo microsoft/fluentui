@@ -8,7 +8,7 @@ export type { InputSlots, InputBaseProps as InputProps } from '@fluentui/react-i
 export type InputState = InputBaseState & {
   root: {
     /**
-     * Data attribute set when the input is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 

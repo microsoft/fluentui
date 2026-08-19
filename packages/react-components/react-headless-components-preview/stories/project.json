@@ -4,5 +4,33 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/stories/src",
   "tags": ["vNext", "platform:web", "type:stories", "react-headless"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "storybook": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        {
+          "externalDependencies": ["storybook"]
+        }
+      ],
+      "dependsOn": [
+        {
+          "projects": ["react-headless-components-preview", "react-storybook-addon"],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "dependsOn": [
+        {
+          "projects": ["react-headless-components-preview", "react-storybook-addon"],
+          "target": "build"
+        }
+      ]
+    }
+  }
 }
