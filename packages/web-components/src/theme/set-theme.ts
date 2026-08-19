@@ -68,7 +68,7 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
   }
 }
 
-const TOKEN_NAME_REGEX = /^[a-zA-Z_][a-zA-Z0-9_-]*$/;
+const TOKEN_NAME_REGEX = /^[a-zA-Z_-][a-zA-Z0-9_-]*$/;
 function sanitizeTokenName(name: string): string {
   return TOKEN_NAME_REGEX.test(name) ? name : '';
 }
