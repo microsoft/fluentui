@@ -29,9 +29,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
