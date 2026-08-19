@@ -68,15 +68,26 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
   }
 }
 
+const TOKEN_NAME_REGEX = /^[a-zA-Z_][a-zA-Z0-9_-]*$/;
+function sanitizeTokenName(name: string): string {
+  return TOKEN_NAME_REGEX.test(name) ? name : '';
+}
+
+const TOKEN_VALUE_BLOCK_REGEX = /(;|{|}|\/\*|\*\/|@import|url\s*\(|expression\s*\(|javascript:)/i;
+function sanitizeTokenValue(value: string): string {
+  return TOKEN_VALUE_BLOCK_REGEX.test(value) ? '' : value;
+}
+
 function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
-    const tokenDeclarations: string[] = [];
-
-    for (const [tokenName, tokenValue] of Object.entries(theme)) {
-      tokenDeclarations.push(`--${tokenName}:${tokenValue.toString()};`);
-    }
-
-    themeStyleTextMap.set(theme, tokenDeclarations.join(''));
+    themeStyleTextMap.set(
+      theme,
+      Object.keys(theme).reduce((acc, token) => {
+        const tokenName = sanitizeTokenName(token);
+        const tokenValue = sanitizeTokenValue(theme[token].toString());
+        return tokenName && tokenValue ? `${acc}--${tokenName}:${tokenValue};` : acc;
+      }, ''),
+    );
   }
 
   return themeStyleTextMap.get(theme)!;
