@@ -1,0 +1,118 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Callout Migration" />
+
+# Callout → Popover Migration
+
+v8 `Callout` is a standalone component positioned next to a `target` element (ref or DOM node)
+and configured via flat props (`directionalHint`, `isBeakVisible`, `gapSpace`).
+
+v9 `Popover` is **composable**: `PopoverTrigger` wraps the element that opens the popover,
+and `PopoverSurface` contains the floating content. This eliminates the need for a `target` ref
+entirely — the trigger/surface relationship is established by co-location in JSX.
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Callout, DirectionalHint } from '@fluentui/react';
+
+const targetRef = React.useRef<HTMLButtonElement>(null);
+const [isVisible, setIsVisible] = React.useState(false);
+
+<>
+  <button ref={targetRef} onClick={() => setIsVisible(true)}>
+    Open
+  </button>
+  {isVisible && (
+    <Callout
+      target={targetRef}
+      onDismiss={() => setIsVisible(false)}
+      directionalHint={DirectionalHint.bottomLeftEdge}
+      isBeakVisible
+      gapSpace={8}
+    >
+      <p style={{ padding: 16 }}>Callout content</p>
+    </Callout>
+  )}
+</>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Popover, PopoverTrigger, PopoverSurface, Button } from '@fluentui/react-components';
+
+<Popover withArrow positioning="below-start">
+  <PopoverTrigger disableButtonEnhancement>
+    <Button>Open</Button>
+  </PopoverTrigger>
+  <PopoverSurface style={{ padding: 16 }}>
+    <p>Popover content</p>
+  </PopoverSurface>
+</Popover>;
+```
+
+### Focus Trap (`setInitialFocus` → `trapFocus`)
+
+Use `trapFocus` when focus must move into the popover and remain there. Use
+`inertTrapFocus` for a softer trap. Both replace app-owned `FocusTrapZone`
+composition in most callout migrations.
+
+## Prop Mapping
+
+### DirectionalHint → positioning
+
+| v8 `DirectionalHint` | v9 `positioning`  |
+| -------------------- | ----------------- |
+| `topCenter`          | `"above"`         |
+| `topLeftEdge`        | `"above-start"`   |
+| `topRightEdge`       | `"above-end"`     |
+| `topAutoEdge`        | `"above"`         |
+| `bottomCenter`       | `"below"`         |
+| `bottomLeftEdge`     | `"below-start"`   |
+| `bottomRightEdge`    | `"below-end"`     |
+| `bottomAutoEdge`     | `"below"`         |
+| `leftCenter`         | `"before"`        |
+| `leftTopEdge`        | `"before-top"`    |
+| `leftBottomEdge`     | `"before-bottom"` |
+| `rightCenter`        | `"after"`         |
+| `rightTopEdge`       | `"after-top"`     |
+| `rightBottomEdge`    | `"after-bottom"`  |
+
+For `gapSpace`, pass positioning as an object:
+
+```tsx
+// v8
+<Callout directionalHint={DirectionalHint.bottomLeftEdge} gapSpace={8} />
+
+// v9
+<Popover positioning={{ position: 'below', align: 'start', offset: { mainAxis: 8 } }}>
+```
+
+### ICalloutProps → PopoverProps
+
+| v8                       | v9                                       | Notes                                                      |
+| ------------------------ | ---------------------------------------- | ---------------------------------------------------------- |
+| `target`                 | `<PopoverTrigger>` child                 | Replaces ref-based targeting; trigger is co-located in JSX |
+| `hidden`                 | `open` (inverted)                        | `hidden={false}` = `open={true}`                           |
+| `onDismiss`              | `onOpenChange`                           | `(ev, data) => data.open === false` on close               |
+| `directionalHint`        | `positioning`                            | String or object; see table above                          |
+| `gapSpace`               | `positioning={{ offset: { mainAxis } }}` | Pass positioning as object with `offset`                   |
+| `isBeakVisible`          | `withArrow`                              |                                                            |
+| `beakWidth`              | —                                        | Removed                                                    |
+| `setInitialFocus`        | `trapFocus`                              | Also traps focus; use `inertTrapFocus` for softer trap     |
+| `calloutMaxHeight`       | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxHeight: '...' }}>`            |
+| `calloutMaxWidth`        | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxWidth: '...' }}>`             |
+| `preventDismissOnScroll` | `closeOnScroll={false}`                  | Inverted logic — v9 default is `closeOnScroll={false}`     |
+| `coverTarget`            | —                                        | No direct equivalent                                       |
+| `doNotLayer`             | `inline`                                 | Render the popover inline instead of through a portal      |
+| `layerProps.hostId`      | `mountNode`                              | Select a specific portal container                         |
+| `styles`                 | `className` on `<PopoverSurface>`        |                                                            |
+| `theme`                  | `FluentProvider`                         |                                                            |
+| `componentRef`           | `ref` on `<PopoverSurface>`              |                                                            |
+| —                        | `trapFocus`                              | New — moves focus in and traps it                          |
+| —                        | `inertTrapFocus`                         | New — softer focus trap via `inert` attribute              |

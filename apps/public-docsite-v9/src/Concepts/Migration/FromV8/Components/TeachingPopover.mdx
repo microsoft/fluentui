@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Coachmark and TeachingBubble Migration" />
+
+# TeachingBubble / Coachmark → TeachingPopover Migration
+
+Both v8 components map to v9 `TeachingPopover`. It uses the same composable trigger/surface pattern as `Popover`.
+
+| v8               | v9                |
+| ---------------- | ----------------- |
+| `TeachingBubble` | `TeachingPopover` |
+| `Coachmark`      | `TeachingPopover` |
+
+```
+<TeachingPopover>
+  <TeachingPopoverTrigger>   — the element that opens it
+  <TeachingPopoverSurface>
+    <TeachingPopoverHeader>  — title + close button
+    <TeachingPopoverBody>    — content + optional media slot
+    <TeachingPopoverFooter>  — action buttons
+```
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { TeachingBubble } from '@fluentui/react';
+<TeachingBubble
+  target="#my-button"
+  headline="Discover this feature"
+  primaryButtonProps={{ text: 'Next', onClick: handleNext }}
+  secondaryButtonProps={{ text: 'Dismiss', onClick: handleDismiss }}
+  onDismiss={handleDismiss}
+>
+  Here's how to use this new feature.
+</TeachingBubble>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import {
+  TeachingPopover,
+  TeachingPopoverTrigger,
+  TeachingPopoverSurface,
+  TeachingPopoverHeader,
+  TeachingPopoverBody,
+  TeachingPopoverFooter,
+  Button,
+} from '@fluentui/react-components';
+
+<TeachingPopover>
+  <TeachingPopoverTrigger disableButtonEnhancement>
+    <Button id="my-button">Feature</Button>
+  </TeachingPopoverTrigger>
+  <TeachingPopoverSurface>
+    <TeachingPopoverHeader>Discover this feature</TeachingPopoverHeader>
+    <TeachingPopoverBody>Here's how to use this new feature.</TeachingPopoverBody>
+    <TeachingPopoverFooter>
+      <Button appearance="primary" onClick={handleNext}>
+        Next
+      </Button>
+      <Button onClick={handleDismiss}>Dismiss</Button>
+    </TeachingPopoverFooter>
+  </TeachingPopoverSurface>
+</TeachingPopover>;
+```
+
+## Prop Mapping
+
+| v8 `ITeachingBubbleProps`      | v9 equivalent                                                | Notes                                                                         |
+| ------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `headline`                     | `<TeachingPopoverHeader>` children                           |                                                                               |
+| `primaryButtonProps`           | `<Button>` in `<TeachingPopoverFooter>`                      |                                                                               |
+| `secondaryButtonProps`         | `<Button>` in `<TeachingPopoverFooter>`                      |                                                                               |
+| `illustrationImage`            | `media` slot on `<TeachingPopoverBody>`                      |                                                                               |
+| `hasCloseButton`               | `<TeachingPopoverHeader>` includes a close button by default |                                                                               |
+| `footerContent`                | `<TeachingPopoverFooter>` children                           |                                                                               |
+| `onDismiss`                    | `onOpenChange` on `<TeachingPopover>`                        | `(_, data) => !data.open`                                                     |
+| `calloutProps.target`          | `<TeachingPopoverTrigger>` wrapping target                   | Or `positioning` prop on `<TeachingPopover>`                                  |
+| `calloutProps.directionalHint` | `positioning` on `<TeachingPopover>`                         | See [Positioning docs](/docs/concepts-developer-positioning-components--docs) |
+| `styles`                       | `className` on sub-components                                |                                                                               |
+| `theme`                        | —                                                            | Use `FluentProvider`                                                          |

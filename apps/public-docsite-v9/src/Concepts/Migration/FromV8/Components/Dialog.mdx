@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Dialog Migration" />
+
+# Dialog / Modal Migration
+
+In v8, `Dialog` is controlled via `hidden` prop (inverted logic) and composed via a `dialogContentProps` object.
+`Modal` is a separate component with `isOpen`.
+
+In v9, both map to a single `Dialog` that uses declarative JSX children and `open` / `onOpenChange`.
+The structure is: `Dialog` → `DialogSurface` → `DialogBody` → `DialogTitle` + `DialogContent` + `DialogActions`.
+
+Note: v8 `hidden={false}` means visible — v9 `open={true}` means visible. The logic is inverted.
+
+## Examples
+
+### Basic Migration
+
+```tsx
+// v8
+import { Dialog, DialogFooter, DialogType, PrimaryButton, DefaultButton } from '@fluentui/react';
+
+<Dialog
+  hidden={!isOpen}
+  onDismiss={handleClose}
+  dialogContentProps={{
+    type: DialogType.normal,
+    title: 'Delete item',
+    subText: 'Are you sure you want to delete this item?',
+  }}
+  modalProps={{ isBlocking: true }}
+>
+  <DialogFooter>
+    <PrimaryButton onClick={handleConfirm} text="Delete" />
+    <DefaultButton onClick={handleClose} text="Cancel" />
+  </DialogFooter>
+</Dialog>;
+```
+
+```tsx
+// v9
+import {
+  Dialog,
+  DialogSurface,
+  DialogBody,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from '@fluentui/react-components';
+
+<Dialog open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)}>
+  <DialogSurface>
+    <DialogBody>
+      <DialogTitle>Delete item</DialogTitle>
+      <DialogContent>Are you sure you want to delete this item?</DialogContent>
+      <DialogActions>
+        <Button appearance="primary" onClick={handleConfirm}>
+          Delete
+        </Button>
+        <Button onClick={handleClose}>Cancel</Button>
+      </DialogActions>
+    </DialogBody>
+  </DialogSurface>
+</Dialog>;
+```
+
+### Modal → Dialog
+
+v8 `Modal` also maps to v9 `Dialog`. Replace `isOpen` with `open`, use
+the same declarative dialog children shown above, and choose `modalType` for the
+required dismissal behavior.
+
+## Prop Mapping
+
+### IDialogProps → DialogProps
+
+| v8                              | v9                                          | Notes                                        |
+| ------------------------------- | ------------------------------------------- | -------------------------------------------- |
+| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`             |
+| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close |
+| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                    |
+| `dialogContentProps.subText`    | `<DialogContent>`                           | JSX child                                    |
+| `dialogContentProps.type`       | `modalType` on `<Dialog>`                   | See table above                              |
+| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                              |
+| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                              |
+| `modalProps.isBlocking`         | `modalType`                                 | Normal blocking maps to `"modal"`            |
+| `modalProps.layerProps`         | —                                           | Not supported                                |
+| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                              |
+| `styles`                        | `className` + `makeStyles`                  |                                              |
+| `theme`                         | `FluentProvider`                            |                                              |
+
+### IModalProps → DialogProps
+
+| v8                           | v9                               | Notes                             |
+| ---------------------------- | -------------------------------- | --------------------------------- |
+| `isOpen`                     | `open`                           |                                   |
+| `onDismiss`                  | `onOpenChange`                   |                                   |
+| `isBlocking`                 | `modalType`                      | Normal blocking maps to `"modal"` |
+| `isDarkOverlay`              | CSS on `DialogSurface` backdrop  |                                   |
+| `scrollableContentClassName` | `className` on `<DialogSurface>` |                                   |
+| `containerClassName`         | `className` on `<DialogSurface>` |                                   |
+| `layerProps`                 | —                                | Not supported                     |
+| `styles`                     | `className` + `makeStyles`       |                                   |
+| `theme`                      | `FluentProvider`                 |                                   |
+
+| v9 `modalType` | Behavior                                                        | v8 equivalent                                       |
+| -------------- | --------------------------------------------------------------- | --------------------------------------------------- |
+| `"modal"`      | Standard modal semantics; background content is not interactive | Ordinary blocking `Dialog` or `Modal`               |
+| `"non-modal"`  | Background content remains interactive                          | Only intentionally non-modal experiences            |
+| `"alert"`      | Urgent alert dialog that requires an explicit user response     | Reserve for genuine alert dialogs, not `isBlocking` |
+
+Treat dismissal behavior separately from modality. Preserve whether outside
+clicks or Escape close the v8 component through controlled `open` and
+`onOpenChange` handling rather than mapping `isBlocking` directly to `"alert"`.

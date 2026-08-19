@@ -1,0 +1,126 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/CommandBar Migration" />
+
+# CommandBar → Toolbar Migration
+
+v8 `CommandBar` is **data-driven**: items are passed as `ICommandBarItemProps[]` arrays —
+one for primary items, one for overflow items, one for far-right items.
+
+v9 `Toolbar` is **declarative**: items are JSX children using `ToolbarButton`,
+`ToolbarToggleButton`, `ToolbarDivider`, etc. Overflow requires the `Overflow` + `OverflowItem`
+pattern from `@fluentui/react-components`.
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
+
+const items: ICommandBarItemProps[] = [
+  { key: 'new', text: 'New', iconProps: { iconName: 'Add' }, onClick: handleNew },
+  { key: 'edit', text: 'Edit', iconProps: { iconName: 'Edit' }, onClick: handleEdit },
+  { key: 'delete', text: 'Delete', iconProps: { iconName: 'Delete' }, disabled: true },
+];
+
+const farItems: ICommandBarItemProps[] = [
+  { key: 'info', text: 'Info', iconProps: { iconName: 'Info' }, onClick: handleInfo },
+];
+
+<CommandBar items={items} farItems={farItems} />;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components';
+import { AddRegular, EditRegular, DeleteRegular, InfoRegular } from '@fluentui/react-icons';
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({ spacer: { marginLeft: 'auto' } });
+
+function MyToolbar() {
+  const s = useStyles();
+  return (
+    <Toolbar>
+      <ToolbarButton icon={<AddRegular />} onClick={handleNew}>
+        New
+      </ToolbarButton>
+      <ToolbarButton icon={<EditRegular />} onClick={handleEdit}>
+        Edit
+      </ToolbarButton>
+      <ToolbarButton icon={<DeleteRegular />} disabled>
+        Delete
+      </ToolbarButton>
+      {/* farItems equivalent: push to far end with marginLeft: auto */}
+      <ToolbarDivider className={s.spacer} />
+      <ToolbarButton icon={<InfoRegular />} onClick={handleInfo}>
+        Info
+      </ToolbarButton>
+    </Toolbar>
+  );
+}
+```
+
+### CommandBarButton → ToolbarButton
+
+`CommandBarButton` maps to `ToolbarButton` when used inside a `CommandBar` / `Toolbar`.
+When used standalone (outside a CommandBar), replace with `Button`.
+
+```tsx
+// v8
+import { CommandBarButton } from '@fluentui/react';
+<CommandBarButton iconProps={{ iconName: 'Add' }}>New</CommandBarButton>;
+
+// v9 — inside Toolbar
+import { ToolbarButton } from '@fluentui/react-components';
+import { AddRegular } from '@fluentui/react-icons';
+<ToolbarButton icon={<AddRegular />}>New</ToolbarButton>;
+```
+
+### Toggle and Menu Items
+
+Use `ToolbarToggleButton` for checked command items. Wrap a
+`ToolbarButton` in `MenuTrigger` when a v8 item has `subMenuProps`; render the
+submenu entries as `MenuItem` children.
+
+### Overflow Handling
+
+Wrap the toolbar in `Overflow`, wrap each measured item in `OverflowItem`,
+and compose the overflow menu with `useOverflowMenu` and
+`useIsOverflowItemVisible`. Unlike v8, overflow items are detected rather than
+provided as a separate static array.
+
+## Prop Mapping
+
+### ICommandBarProps → ToolbarProps
+
+| v8                 | v9                                      | Notes                                                     |
+| ------------------ | --------------------------------------- | --------------------------------------------------------- |
+| `items`            | `children` (`ToolbarButton`, etc.)      | JSX children replace the items array                      |
+| `overflowItems`    | `Overflow` + `OverflowItem` pattern     | Compose measured items and an overflow menu               |
+| `farItems`         | `ToolbarDivider` + `marginLeft: 'auto'` | Push items to the far end with a styled divider or spacer |
+| `buttonAs`         | —                                       | Wrap in `ToolbarButton` directly                          |
+| `overflowButtonAs` | Custom `ToolbarButton` in overflow menu | Use it as the overflow menu trigger                       |
+| `className`        | `className`                             |                                                           |
+| `styles`           | `className` + `makeStyles`              |                                                           |
+| `theme`            | `FluentProvider`                        |                                                           |
+
+### ICommandBarItemProps → ToolbarButtonProps
+
+| v8 item prop   | v9                                 | Notes                                                                                                |
+| -------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `text`         | `children`                         | Move to JSX children                                                                                 |
+| `key`          | `key`                              | React key on the JSX element                                                                         |
+| `iconProps`    | `icon` slot                        | Pass `<IconComponent />`                                                                             |
+| `onClick`      | `onClick`                          |                                                                                                      |
+| `disabled`     | `disabled`                         |                                                                                                      |
+| `checked`      | `checked` on `ToolbarToggleButton` | Use `ToolbarToggleButton`                                                                            |
+| `subMenuProps` | Wrap in `Menu` + `MenuTrigger`     | Render submenu entries as `MenuItem` children                                                        |
+| `split`        | `SplitButton`                      | See the [Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs) |
+| `iconOnly`     | No `children`, add `aria-label`    | Keep `icon` slot, omit text children                                                                 |
+| `ariaLabel`    | `aria-label`                       |                                                                                                      |
+| `styles`       | `className` + `makeStyles`         |                                                                                                      |

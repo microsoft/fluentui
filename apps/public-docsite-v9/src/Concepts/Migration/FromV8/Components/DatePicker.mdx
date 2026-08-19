@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/DatePicker Migration" />
+
+# DatePicker Migration
+
+Use `DatePicker` from `@fluentui/react-datepicker-compat` when migrating a v8
+date picker. The compatibility component combines v9 `Input`, positioning, and
+portal primitives with `CalendarCompat`.
+
+```tsx
+// v8
+import { DatePicker } from '@fluentui/react';
+
+// v9 compatibility package
+import { DatePicker } from '@fluentui/react-datepicker-compat';
+```
+
+## Examples
+
+### Basic Migration
+
+```tsx
+// v8
+<DatePicker value={selectedDate} placeholder="Select a date" onSelectDate={date => setSelectedDate(date)} />
+```
+
+```tsx
+// v9
+import { DatePicker } from '@fluentui/react-datepicker-compat';
+
+<DatePicker value={selectedDate} placeholder="Select a date" onSelectDate={date => setSelectedDate(date ?? null)} />;
+```
+
+Use `null`, rather than `undefined`, for an empty controlled value. The v9
+compatibility component does not expose a `defaultValue` date prop.
+
+### Open state and popup positioning
+
+The compatibility component makes popup state and placement explicit:
+
+```tsx
+<DatePicker open={isOpen} onOpenChange={setIsOpen} positioning="below-start" inlinePopup />
+```
+
+Use `inlinePopup` when rendering the popup next to the trigger improves screen
+reader navigation. Otherwise the popup renders through a portal; use
+`mountNode` only when the application requires a specific portal boundary.
+
+## Prop Mapping
+
+### API mapping
+
+| v8 `DatePicker`                                    | v9 `DatePickerCompat`                                               |
+| -------------------------------------------------- | ------------------------------------------------------------------- |
+| `value`                                            | `value: Date \| null`                                               |
+| `onSelectDate`                                     | Same callback; the date may be `null` or `undefined`                |
+| `allowTextInput`                                   | Same prop                                                           |
+| `formatDate`, `parseDateFromString`                | Same formatting and parsing hooks                                   |
+| `minDate`, `maxDate`, `initialPickerDate`          | Same props                                                          |
+| `firstDayOfWeek`, `firstWeekOfYear`                | Same props                                                          |
+| `strings`, `dateTimeFormatter`                     | Same localization hooks                                             |
+| `isMonthPickerVisible`, `showMonthPickerAsOverlay` | Same props                                                          |
+| `showGoToToday`, `showWeekNumbers`                 | Same props                                                          |
+| `highlightCurrentMonth`, `highlightSelectedMonth`  | Same props                                                          |
+| `required`, `disabled`, `underlined`, `borderless` | Same props                                                          |
+| `isRequired`                                       | `required`                                                          |
+| `styles`, `theme`                                  | Replace with slots, `className`, `makeStyles`, and v9 design tokens |
+
+## Accessibility
+
+`onValidationResult` receives an object whose `error` is one of:
+
+- `invalid-input`
+- `out-of-bounds`
+- `required-input`
+
+When `allowTextInput` is enabled, migrate custom parsing and formatting
+together. Do not accept a displayed date string that `parseDateFromString`
+cannot round-trip.
+
+Leave automatic focus behavior enabled. Setting `disableAutoFocus` to `true`
+creates an accessibility violation called out by the component API.
+
+Provide localized calendar strings and an accessible label through `Field` or
+the input's labeling props.
