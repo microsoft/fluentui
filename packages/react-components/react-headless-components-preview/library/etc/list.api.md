@@ -4,41 +4,39 @@
 
 ```ts
 
-import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ListContextValue } from '@fluentui/react-list';
-import { ListContextValues as ListContextValues_2 } from '@fluentui/react-list';
+import { ListContextValues } from '@fluentui/react-list';
 import { ListItemActionEventData } from '@fluentui/react-list';
-import type { ListItemBaseProps } from '@fluentui/react-list';
-import type { ListItemBaseSlots } from '@fluentui/react-list';
 import type { ListItemBaseState } from '@fluentui/react-list';
+import { ListItemBaseProps as ListItemProps } from '@fluentui/react-list';
+import { ListItemBaseSlots as ListItemSlots } from '@fluentui/react-list';
 import { ListItemValue } from '@fluentui/react-list';
 import { ListNavigationMode } from '@fluentui/react-list';
-import type { ListProps as ListProps_2 } from '@fluentui/react-list';
-import type { ListSlots as ListSlots_2 } from '@fluentui/react-list';
-import { ListState as ListState_2 } from '@fluentui/react-list';
+import { ListProps } from '@fluentui/react-list';
+import { ListSlots } from '@fluentui/react-list';
+import type { ListState as ListState_2 } from '@fluentui/react-list';
 import { OnListSelectionChangeData } from '@fluentui/react-list';
 import type * as React_2 from 'react';
+import { renderList_unstable as renderList } from '@fluentui/react-list';
+import { useListContext_unstable as useListContext } from '@fluentui/react-list';
 
 // @public
 export const List: ForwardRefComponent<ListProps>;
 
 export { ListContextValue }
 
-// @public (undocumented)
-export type ListContextValues = ListContextValues_2;
+export { ListContextValues }
 
 // @public
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
 export { ListItemActionEventData }
 
-// @public (undocumented)
-export type ListItemProps = ListItemBaseProps;
+export { ListItemProps }
 
-// @public (undocumented)
-export type ListItemSlots = ListItemBaseSlots;
+export { ListItemSlots }
 
 // @public (undocumented)
 export type ListItemState = ListItemBaseState & {
@@ -54,11 +52,9 @@ export { ListItemValue }
 
 export { ListNavigationMode }
 
-// @public (undocumented)
-export type ListProps = ListProps_2;
+export { ListProps }
 
-// @public (undocumented)
-export type ListSlots = ListSlots_2;
+export { ListSlots }
 
 // @public (undocumented)
 export type ListState = ListState_2 & {
@@ -70,8 +66,7 @@ export type ListState = ListState_2 & {
 
 export { OnListSelectionChangeData }
 
-// @public
-export const renderList: (state: ListState_2, contextValues: ListContextValues_2) => JSXElement;
+export { renderList }
 
 // @public
 export const renderListItem: (state: ListItemState) => JSXElement;
@@ -79,8 +74,7 @@ export const renderListItem: (state: ListItemState) => JSXElement;
 // @public
 export const useList: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
-// @public
-export const useListContext: <T>(selector: ContextSelector<ListContextValue, T>) => T;
+export { useListContext }
 
 // @public
 export const useListContextValues: (state: ListState) => ListContextValues;
