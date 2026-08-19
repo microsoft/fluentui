@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add some preview feature",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "author@gmail.com",
+  "dependentChangeType": "minor"
+}

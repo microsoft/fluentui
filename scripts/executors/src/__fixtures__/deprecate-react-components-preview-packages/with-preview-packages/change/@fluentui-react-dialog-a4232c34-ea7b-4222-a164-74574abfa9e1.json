@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: minor fix",
+  "packageName": "@fluentui/react-dialog",
+  "email": "author@gmail.com",
+  "dependentChangeType": "patch"
+}

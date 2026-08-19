@@ -6,7 +6,7 @@ const { getConfig } = require('./utils');
 const { scope, groupConfig } = getConfig({ version: 'vNext' });
 
 /**
- * @type {typeof sharedConfig & { scope: string[] }}
+ * @type {import('./shared.config').ScopedConfig}
  */
 const config = {
   ...sharedConfig,

@@ -63,7 +63,7 @@ steps:
     displayName: Authenticate git for pushes
     condition: and(succeeded(), ne('${{ parameters.githubPAT }}', ''))
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+  - script: |
+      corepack enable
+      yarn install --immutable
+    displayName: yarn install
