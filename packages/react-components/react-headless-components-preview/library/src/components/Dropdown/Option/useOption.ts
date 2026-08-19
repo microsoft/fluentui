@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useOptionBase_unstable } from '@fluentui/react-combobox';
 
 import type { OptionProps, OptionState } from './Option.types';
-import { stringifyDataAttribute } from '../../../utils/stringifyDataAttribute';
+import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 
 /**
  * Returns the state for an Option component, given its props and ref.
@@ -17,9 +17,9 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
     ...baseState,
     root: {
       ...baseState.root,
-      'data-disabled': stringifyDataAttribute(baseState.disabled),
-      'data-selected': stringifyDataAttribute(baseState.selected),
-      'data-multiselect': stringifyDataAttribute(baseState.multiselect),
+      'data-disabled': toDataAttributeValue(baseState.disabled),
+      'data-selected': toDataAttributeValue(baseState.selected),
+      'data-multiselect': toDataAttributeValue(baseState.multiselect),
     },
   };
 

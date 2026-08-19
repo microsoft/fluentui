@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useAccordionItem_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AccordionItem component, given its props and ref.
@@ -15,9 +15,9 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
 
   // Set data attributes for open and disabled states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-open'] = stringifyDataAttribute(state.open);
+  state.root['data-open'] = toDataAttributeValue(state.open);
 
   return state;
 };

@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useMessageBarBase_unstable, useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 
 import type { MessageBarProps, MessageBarState, MessageBarContextValues } from './MessageBar.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a MessageBar component, given its props and ref.
@@ -16,7 +16,7 @@ export const useMessageBar = (props: MessageBarProps, ref: React.Ref<HTMLDivElem
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-layout'] = state.layout;
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-intent'] = stringifyDataAttribute(state.intent);
+  state.root['data-intent'] = toDataAttributeValue(state.intent);
 
   return state;
 };

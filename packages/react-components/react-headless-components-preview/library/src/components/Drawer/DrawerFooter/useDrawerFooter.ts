@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a DrawerFooter component, given its props and ref.
@@ -11,7 +11,7 @@ import { stringifyDataAttribute } from '../../../utils';
 export const useDrawerFooter = (props: DrawerFooterProps, ref: React.Ref<HTMLElement>): DrawerFooterState => {
   const state: DrawerFooterState = useDrawerFooter_unstable(props, ref);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-scroll-state'] = stringifyDataAttribute(state.scrollState);
+  state.root['data-scroll-state'] = toDataAttributeValue(state.scrollState);
 
   return state;
 };

@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useInputBase_unstable } from '@fluentui/react-input';
 
 import type { InputProps, InputState } from './Input.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for an Input component, given its props and ref.
@@ -15,11 +15,9 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): I
 
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.input.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.input.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-invalid'] = stringifyDataAttribute(
-    state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true',
-  );
+  state.root['data-invalid'] = toDataAttributeValue(state.input['aria-invalid']);
 
   return state;
 };

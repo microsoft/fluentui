@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useAlphaSliderBase_unstable } from '@fluentui/react-color-picker';
 import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 export const useAlphaSlider = (props: AlphaSliderProps, ref: React.Ref<HTMLInputElement>): AlphaSliderState => {
   const state: AlphaSliderState = useAlphaSliderBase_unstable(props, ref);
@@ -13,7 +13,7 @@ export const useAlphaSlider = (props: AlphaSliderProps, ref: React.Ref<HTMLInput
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-transparency'] = stringifyDataAttribute(props.transparency);
+  state.root['data-transparency'] = toDataAttributeValue(props.transparency);
 
   return state;
 };

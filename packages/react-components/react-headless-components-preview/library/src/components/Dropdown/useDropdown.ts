@@ -6,7 +6,7 @@ import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from './Listbox';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 import { useListboxPopupState } from './useListboxPopupState';
 
 /**
@@ -63,11 +63,11 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     },
     root: {
       ...rootSlot,
-      'data-open': stringifyDataAttribute(open),
-      'data-disabled': stringifyDataAttribute(trigger.disabled),
-      'data-placeholder': stringifyDataAttribute(placeholderVisible),
-      'data-invalid': stringifyDataAttribute(trigger['aria-invalid']),
-      'data-clearable': stringifyDataAttribute(showClearButton),
+      'data-open': toDataAttributeValue(open),
+      'data-disabled': toDataAttributeValue(trigger.disabled),
+      'data-placeholder': toDataAttributeValue(placeholderVisible),
+      'data-invalid': toDataAttributeValue(trigger['aria-invalid']),
+      'data-clearable': toDataAttributeValue(showClearButton),
     },
     button: trigger,
     listbox: open || hasFocus ? listbox : undefined,

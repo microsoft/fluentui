@@ -587,6 +587,16 @@
         "default": "./lib-commonjs/tooltip.cjs"
       }
     },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./lib/utils.js"
+      },
+      "require": {
+        "types": "./dist/utils.d.cts",
+        "default": "./lib-commonjs/utils.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "beachball": {

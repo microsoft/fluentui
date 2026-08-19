@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useAccordionBase_unstable, useAccordionContextValues_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionProps, AccordionState, AccordionContextValues } from './Accordion.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for an Accordion component, given its props and ref.
@@ -15,9 +15,9 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
 
   // Set data attributes for collapsible and multiple states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-collapsible'] = stringifyDataAttribute(state.collapsible);
+  state.root['data-collapsible'] = toDataAttributeValue(state.collapsible);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-multiple'] = stringifyDataAttribute(state.multiple);
+  state.root['data-multiple'] = toDataAttributeValue(state.multiple);
 
   return state;
 };
