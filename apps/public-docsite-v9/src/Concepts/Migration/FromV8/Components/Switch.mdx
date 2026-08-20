@@ -40,7 +40,7 @@ const [on, setOn] = React.useState(false);
 
 ```tsx
 // v9 — label before the thumb (equivalent to v8 inlineLabel)
-<Switch label="Dark mode" labelPosition="before" checked={checked} onChange={...} />;
+<Switch label="Dark mode" labelPosition="before" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
 ```
 
 ## Prop Mapping
