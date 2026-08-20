@@ -10,11 +10,11 @@ export type {
 export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
 
 export type DropdownState = DropdownBaseHookState & {
-  button: {
+  root: DropdownBaseHookState['root'] & {
     /**
      * Whether the dropdown is currently open.
      */
-    'data-state'?: 'open' | 'closed';
+    'data-open'?: string;
     /**
      * Whether the trigger element is currently disabled.
      */
@@ -23,5 +23,13 @@ export type DropdownState = DropdownBaseHookState & {
      * Whether the trigger element is currently displaying a placeholder.
      */
     'data-placeholder'?: string;
+    /**
+     * Whether the trigger element is currently invalid.
+     */
+    'data-invalid'?: string;
+    /**
+     * Wether the clear icon is visible.
+     */
+    'data-clearable'?: string;
   };
 };

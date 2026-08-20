@@ -1,17 +1,21 @@
 import { execSync } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
 
 import type { BeachballConfig } from 'beachball';
 
 import { renderEntry, renderHeader } from './customRenderers';
+import baseConfig from '../base.config';
 
-const baseConfig: typeof import('../base.config.json') = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../base.config.json'), { encoding: 'utf8' }),
-);
-
-export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changelog' | 'hooks'>> = {
+/**
+ * Shared Beachball release config.
+ */
+export const config: typeof baseConfig &
+  Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>> = {
   ...baseConfig,
+  // This can't be in the base config because people might use different names for remotes,
+  // but it should be safe in release pipelines.
+  branch: 'origin/master',
+  // In beachball v3 alpha, this is required if NPM_TOKEN is used.
+  registry: 'https://registry.npmjs.org',
   changelog: {
     customRenderers: {
       renderHeader,

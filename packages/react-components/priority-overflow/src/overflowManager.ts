@@ -339,7 +339,11 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
     if (observing) {
       forceDispatch = true;
-      update();
+      if (invisibleItemQueue.size() > 0) {
+        forceUpdate();
+      } else {
+        update();
+      }
     }
   };
 

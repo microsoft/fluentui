@@ -381,6 +381,7 @@ const templates = {
         '/**/*.test.tsx',
       ],
       jsc: {
+        baseUrl: '.',
         parser: {
           syntax: 'typescript',
           tsx: true,
@@ -630,7 +631,13 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
-          ...(packageJson.main ? { node: './lib-commonjs/unstable/index.js' } : null),
+          ...(packageJson.main
+            ? {
+                node: packageJson.module
+                  ? { module: './lib/unstable/index.js', default: './lib-commonjs/unstable/index.js' }
+                  : './lib-commonjs/unstable/index.js',
+              }
+            : null),
           ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
           require: './lib-commonjs/unstable/index.js',
         },
@@ -685,12 +692,13 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupExportMaps(json: PackageJson) {
+    const commonjs = json.main ? normalizePackageEntryPointPaths(json.main) : null;
+    const esm = json.module ? normalizePackageEntryPointPaths(json.module) : null;
+
     // Opt-in: a package becomes ESM-first by declaring `"type": "module"` in its package.json. Such
     // packages get the ESM/CJS conditional export shape (no `node` condition); every other package
     // keeps the existing CommonJS-first shape below unchanged (this stays a no-op for them).
     if (json.type === 'module') {
-      const esm = json.module ? normalizePackageEntryPointPaths(json.module) : null;
-      const commonjs = json.main ? normalizePackageEntryPointPaths(json.main) : null;
       // bare Node `import` resolves to valid ESM (`lib/`), `require` resolves to CommonJS
       // (`lib-commonjs/*.cjs`). Per-condition `types` point `require` at a `.d.cts` so `node16`/
       // `nodenext` CJS consumers get a CommonJS-flavoured declaration (keeps `@arethetypeswrong/cli` green).
@@ -712,13 +720,15 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       return json;
     }
 
+    // node / CJS-first packages keep the module-condition shape (no `type: module`):
+    // bundlers tree-shake via `module`, bare Node stays CommonJS via `default`.
     json.exports = {
       '.': {
         types: json.typings,
         ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
-        ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
-        ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
-        ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
+        ...(commonjs ? { node: esm ? { module: esm, default: commonjs } : commonjs } : null),
+        ...(esm ? { import: esm } : null),
+        ...(commonjs ? { require: commonjs } : null),
       },
       './package.json': './package.json',
     };

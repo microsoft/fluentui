@@ -2,6 +2,71 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2026 13:26:17 GMT",
+      "version": "0.2.5",
+      "tag": "@fluentui/react-headless-components-preview_v0.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "141feed5e8c03581e4d49c65f476b7858786854f",
+            "comment": "feat: add color picker controls"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1ac9a091e92475b608b75b8515ed8817b2b56772",
+            "comment": "feat: add headless SplitButton"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "0af6d9f6b915559ea0b874e687287b953fe5e773",
+            "comment": "feat: add swatch picker components"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1c4d6fc29e325dc1e1616f62fe76994896ce9ef1",
+            "comment": "feat: expose missing resolved state through additive data attributes"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "a47be845c617fc63fefb81980eb7ace68556088b",
+            "comment": "fix: use custom renderTagPicker function for TagPicker component to avoid pulling Portal"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "efbc54d45f67039dd6baa557c80f9c970ce6d0f6",
+            "comment": "feat: add headless CompoundButton"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "eeaab4c87045c1839ec9d66e52e6a16c0328d027",
+            "comment": "chore: verify headless entry points do not bundle tabster, Griffel or react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 01 Aug 2026 15:19:05 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.2.4",
       "version": "0.2.4",

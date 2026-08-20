@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -31,7 +31,7 @@ export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement
 export { useProviderContext }
 
 // @public (undocumented)
-export const useProviderContextValues: (state: ProviderState) => ProviderContextValues;
+export const useProviderContextValues: (state: ProviderState) => FluentProviderContextValues;
 
 // (No @packageDocumentation comment for this package)
 

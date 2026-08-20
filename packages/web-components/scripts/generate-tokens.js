@@ -12,7 +12,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import tokensPackage from '@fluentui/tokens';
+import * as tokensPackage from '@fluentui/tokens';
 import prettier from 'prettier';
 
 const { tokens, webLightTheme, webDarkTheme, teamsLightTheme, teamsDarkTheme } = tokensPackage;

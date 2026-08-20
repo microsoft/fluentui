@@ -67,25 +67,26 @@ changed module resolution in a way that makes these packages resolve to sources 
 
 ## Verdicts
 
-| Verdict          | Exit | Meaning                                                                                                                            |
-| ---------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PASS`           | 0    | No forbidden package survived bundling. Only this verdict claims a bundle is free of them.                                         |
-| `PASS WITH DEBT` | 0    | Every surviving forbidden package is on the allowlist. The leaks are listed with their module counts and entry points.             |
-| `FAIL`           | 1    | A regression, a stale or orphaned allowlist entry, a fixture that failed to bundle, or — under `--strict` — any allowed violation. |
+| Verdict          | Exit | Meaning                                                                                                                                           |
+| ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PASS`           | 0    | No forbidden package survived bundling. Only this verdict claims a bundle is free of them.                                                        |
+| `PASS WITH DEBT` | 0    | Every surviving forbidden package is on the allowlist. The leaks are listed with their module counts and entry points.                            |
+| `FAIL`           | 1    | A regression, a stale allowlist entry, an orphaned fixture entry, a fixture that failed to bundle, or — under `--strict` — any allowed violation. |
 
 Per fixture the report labels each finding `CLEAN`, `ALLOWED`, `REGRESSION`, `STALE` or `ERROR`; a single fixture can
-carry more than one label. Module and export counts come from a build with `minimize: false`, so they measure how much
-of a package is retained, not what it costs to ship — use monosize for bytes.
+carry more than one label. Fixtures found in `fixturesRoot` but not opted in are listed under `SKIPPED`. Module and
+export counts come from a build with `minimize: false`, so they measure how much of a package is retained, not what it
+costs to ship — use monosize for bytes.
 
 ## Output
 
 `dist/bundle-isolation/` is wiped on every run, so it only ever contains the fixtures that currently exist.
 
-| Path                    | Written          | Contents                                                                                                                                                               |
-| ----------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `summary.json`          | always           | The console verdict in structured form — overall `status`, and per fixture its `status`, `allowedViolations`, `tolerated`, `regressions`, `stale` and full `leaks` map |
-| `<Fixture>/report.html` | with `--analyze` | webpack-bundle-analyzer treemap                                                                                                                                        |
-| `<Fixture>/report.json` | with `--analyze` | The same data the treemap renders from — module tree with `statSize`, `parsedSize` and `gzipSize`                                                                      |
+| Path                    | Written          | Contents                                                                                                                                                                                                                                           |
+| ----------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `summary.json`          | always           | The console verdict in structured form — overall `status`, `skippedFixtures`, `orphanedFixtureEntries`, and per fixture its `status`, effective `forbiddenPackages`, `allowedViolations`, `tolerated`, `regressions`, `stale` and full `leaks` map |
+| `<Fixture>/report.html` | with `--analyze` | webpack-bundle-analyzer treemap                                                                                                                                                                                                                    |
+| `<Fixture>/report.json` | with `--analyze` | The same data the treemap renders from — module tree with `statSize`, `parsedSize` and `gzipSize`                                                                                                                                                  |
 
 `leaks` maps a forbidden package to the exports that survived tree shaking and the modules importing them, so the
 summary answers _what_ leaked and _why_, while the analyzer output answers _how much_ it costs.
@@ -100,8 +101,10 @@ summary answers _what_ leaked and _why_, while the analyzer output answers _how 
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
-  "allowedViolations": {
-    "AllComponents.fixture.js": ["@fluentui/react-icons"]
+  "fixtures": {
+    "AllComponents.fixture.js": { "allowedViolations": ["@fluentui/react-icons"] },
+    "TagPicker.fixture.js": {},
+    "Headless.fixture.js": { "forbiddenPackages": ["@griffel/*"] }
   }
 }
 ```
@@ -111,13 +114,16 @@ All configured paths are resolved relative to the package root:
 - `fixturesRoot` is the directory containing bundle-size fixtures.
 - `externals` lists host-provided modules excluded from the bundle.
 - `forbiddenPackages` lists exact package names or scoped globs such as `@griffel/*`.
-- `allowedViolations` maps fixture paths, relative to `fixturesRoot` and always with forward slashes, to tolerated
-  forbidden packages.
+- `fixtures` selects which fixtures to verify, keyed by path relative to `fixturesRoot` and always with forward slashes.
 
-The two lists do not take the same values. `forbiddenPackages` declares intent, so it accepts globs. `allowedViolations`
-records what actually leaked, so it takes **exact resolved package names** and rejects globs - `@griffel/*` there would
-let a newly leaked `@griffel/anything` hide behind an entry approved for something else. The debt has to name what it
-is: `@griffel/core` and `@griffel/react`, separately.
+A fixture entry takes two optional keys. `allowedViolations` records tolerated forbidden packages for that fixture.
+`forbiddenPackages` **replaces** the package-level list for that fixture — it overrides rather than extends, because
+otherwise a fixture could only ever widen the intent, never narrow it.
+
+The two package lists do not take the same values. `forbiddenPackages` declares intent, so it accepts globs.
+`allowedViolations` records what actually leaked, so it takes **exact resolved package names** and rejects globs -
+`@griffel/*` there would let a newly leaked `@griffel/anything` hide behind an entry approved for something else. The
+debt has to name what it is: `@griffel/core` and `@griffel/react`, separately.
 
 `$schema` has to be a workspace-relative path. Editors resolve it against the config file and do not apply Node package
 resolution, so `@fluentui/verify-bundle-isolation/schema.json` will not work there despite the export map. The export
@@ -142,13 +148,26 @@ export default {
 
 Sharing fixtures keeps isolation checks and bundle-size measurements aligned.
 
+## Selecting fixtures
+
+`fixturesRoot` is usually shared with monosize, whose fixtures exist to measure bytes and legitimately bundle styling
+engines and icons. Verifying everything found there would force every such fixture onto the allowlist, turning tracked
+debt into permanent noise and adding churn to an unrelated workflow every time a bundle-size fixture is added.
+
+So the check is opt-in: only the fixtures named in `fixtures` are bundled. The rest are reported as `SKIPPED` rather
+than dropped quietly, so what is left unguarded stays visible in CI output and in `summary.json`.
+
+The trade-off is that a newly added fixture is not covered until someone lists it. A key naming a fixture that does not
+exist fails the run as an orphan, and a configuration where no listed fixture exists fails rather than reporting a clean
+run over nothing.
+
 ## Allowed violations
 
 `allowedViolations` is tracked debt, not an exemption. It is shrink-only:
 
 - A newly retained forbidden package fails the check.
 - A package that no longer survives bundling also fails the check until its entry is removed.
-- An entry for a missing fixture fails the check.
+- A fixture entry naming a fixture that does not exist fails the check.
 
 This prevents fixed leaks from being silently reintroduced. Deleting an entry is the goal; adding one is a regression.
 

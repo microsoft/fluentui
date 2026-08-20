@@ -86,7 +86,7 @@ describe(`#getDependencies`, () => {
 
     expect(packageInfo.absoluteRootPath).toEqual(expect.stringContaining('packages/react-components/react-text'));
     expect(packageInfo?.dependencies).toEqual(expect.any(Object));
-    expect(packageInfo?.main).toEqual('lib-commonjs/index.js');
+    expect(packageInfo?.main).toEqual('lib-commonjs/index.cjs');
     expect(packageInfo?.module).toEqual('lib/index.js');
 
     const depResultWithoutProjectScope = await getDependencies('react-text');

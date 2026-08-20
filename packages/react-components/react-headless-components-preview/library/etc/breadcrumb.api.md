@@ -4,23 +4,29 @@
 
 ```ts
 
-import type { BreadcrumbBaseProps } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbBaseState } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbButtonBaseProps } from '@fluentui/react-breadcrumb';
 import type { BreadcrumbButtonBaseState } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbButtonSlots as BreadcrumbButtonSlots_2 } from '@fluentui/react-breadcrumb';
-import { BreadcrumbContextValues as BreadcrumbContextValues_2 } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbDividerBaseProps } from '@fluentui/react-breadcrumb';
-import { BreadcrumbDividerBaseState } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbDividerSlots as BreadcrumbDividerSlots_2 } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbItemBaseProps } from '@fluentui/react-breadcrumb';
-import { BreadcrumbItemBaseState } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbItemSlots as BreadcrumbItemSlots_2 } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbSlots as BreadcrumbSlots_2 } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonBaseProps as BreadcrumbButtonProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbContextValues } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerBaseProps as BreadcrumbDividerProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerBaseState as BreadcrumbDividerState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemBaseProps as BreadcrumbItemProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemBaseState as BreadcrumbItemState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbBaseProps as BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbBaseState as BreadcrumbState } from '@fluentui/react-breadcrumb';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderBreadcrumb_unstable as renderBreadcrumb } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbButton_unstable as renderBreadcrumbButton } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbDivider_unstable as renderBreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbItem_unstable as renderBreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbBase_unstable as useBreadcrumb } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbContext_unstable as useBreadcrumbContext } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDividerBase_unstable as useBreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItemBase_unstable as useBreadcrumbItem } from '@fluentui/react-breadcrumb';
 
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
@@ -28,11 +34,9 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 // @public
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 
-// @public
-export type BreadcrumbButtonProps = BreadcrumbButtonBaseProps;
+export { BreadcrumbButtonProps }
 
-// @public
-export type BreadcrumbButtonSlots = BreadcrumbButtonSlots_2;
+export { BreadcrumbButtonSlots }
 
 // @public
 export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
@@ -41,70 +45,53 @@ export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
     };
 };
 
-// @public
-export type BreadcrumbContextValues = BreadcrumbContextValues_2;
+export { BreadcrumbContextValues }
 
 // @public
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 
-// @public
-export type BreadcrumbDividerProps = BreadcrumbDividerBaseProps;
+export { BreadcrumbDividerProps }
 
-// @public
-export type BreadcrumbDividerSlots = BreadcrumbDividerSlots_2;
+export { BreadcrumbDividerSlots }
 
-// @public
-export type BreadcrumbDividerState = BreadcrumbDividerBaseState;
+export { BreadcrumbDividerState }
 
 // @public
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
 
-// @public
-export type BreadcrumbItemProps = BreadcrumbItemBaseProps;
+export { BreadcrumbItemProps }
 
-// @public
-export type BreadcrumbItemSlots = BreadcrumbItemSlots_2;
+export { BreadcrumbItemSlots }
 
-// @public
-export type BreadcrumbItemState = BreadcrumbItemBaseState;
+export { BreadcrumbItemState }
 
-// @public
-export type BreadcrumbProps = BreadcrumbBaseProps;
+export { BreadcrumbProps }
 
-// @public
-export type BreadcrumbSlots = BreadcrumbSlots_2;
+export { BreadcrumbSlots }
 
-// @public
-export type BreadcrumbState = BreadcrumbBaseState;
+export { BreadcrumbState }
 
 export { renderBreadcrumb }
 
-// @public
-export const renderBreadcrumbButton: (state: BreadcrumbButtonState) => JSXElement;
+export { renderBreadcrumbButton }
 
-// @public
-export const renderBreadcrumbDivider: (state: BreadcrumbDividerBaseState) => JSXElement;
+export { renderBreadcrumbDivider }
 
-// @public
-export const renderBreadcrumbItem: (state: BreadcrumbItemBaseState) => JSXElement;
+export { renderBreadcrumbItem }
 
-// @public
-export const useBreadcrumb: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
+export { useBreadcrumb }
 
 // @public
 export const useBreadcrumbButton: (props: BreadcrumbButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => BreadcrumbButtonState;
 
-// @public
-export const useBreadcrumbContext: () => BreadcrumbContextValues_2;
+export { useBreadcrumbContext }
 
 // @public
 export const useBreadcrumbContextValues: (state: BreadcrumbState) => BreadcrumbContextValues;
 
-// @public
-export const useBreadcrumbDivider: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
+export { useBreadcrumbDivider }
 
-// @public
-export const useBreadcrumbItem: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemState;
+export { useBreadcrumbItem }
 
 // (No @packageDocumentation comment for this package)
 

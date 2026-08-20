@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Sat, 01 Aug 2026 15:19:05 GMT and should not be manually modified.
+<!-- This log was last generated on Wed, 12 Aug 2026 13:26:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.5)
+
+Wed, 12 Aug 2026 13:26:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.4..@fluentui/react-headless-components-preview_v0.2.5)
+
+### Patches
+
+- feat: add color picker controls ([PR #36518](https://github.com/microsoft/fluentui/pull/36518) by dmytrokirpa@microsoft.com)
+- Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- feat: add headless SplitButton ([PR #36525](https://github.com/microsoft/fluentui/pull/36525) by vgenaev@gmail.com)
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- feat: add swatch picker components ([PR #36535](https://github.com/microsoft/fluentui/pull/36535) by dmytrokirpa@microsoft.com)
+- feat: expose missing resolved state through additive data attributes ([PR #36480](https://github.com/microsoft/fluentui/pull/36480) by vgenaev@gmail.com)
+- fix: use custom renderTagPicker function for TagPicker component to avoid pulling Portal ([PR #36553](https://github.com/microsoft/fluentui/pull/36553) by dmytrokirpa@microsoft.com)
+- feat: add headless CompoundButton ([PR #36531](https://github.com/microsoft/fluentui/pull/36531) by vgenaev@gmail.com)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.4)
 

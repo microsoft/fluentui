@@ -1,13 +1,16 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { TagGroupBaseProps } from '@fluentui/react-tags';
-import type { TagPickerGroupBaseState, TagPickerGroupSlots } from '@fluentui/react-tag-picker';
+import type {
+  TagPickerGroupBaseState,
+  TagPickerGroupSlots as TagPickerGroupBaseSlots,
+} from '@fluentui/react-tag-picker';
 
-export type { TagPickerGroupSlots };
+export type { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 
 /**
  * TagPickerGroup Props
  */
-export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> &
+export type TagPickerGroupProps = ComponentProps<TagPickerGroupBaseSlots> &
   Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
 /**
@@ -15,11 +18,6 @@ export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> &
  */
 export type TagPickerGroupState = TagPickerGroupBaseState & {
   root: {
-    /**
-     * Native WICG `focusgroup` attribute for arrow-key navigation across the selected tags.
-     * Replaces the Tabster `useArrowNavigationGroup` used by the styled TagPickerGroup.
-     */
-    focusgroup?: string;
     /**
      * Data attribute set when the group is disabled.
      */

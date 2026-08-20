@@ -1,18 +1,6 @@
-import type {
-  SearchBoxSlots as SearchBoxBaseSlots,
-  SearchBoxBaseProps,
-  SearchBoxBaseState,
-} from '@fluentui/react-search';
+import type { SearchBoxBaseState } from '@fluentui/react-search';
 
-/**
- * Search component slots
- */
-export type SearchBoxSlots = SearchBoxBaseSlots;
-
-/**
- * Search component props
- */
-export type SearchBoxProps = SearchBoxBaseProps;
+export type { SearchBoxSlots, SearchBoxBaseProps as SearchBoxProps } from '@fluentui/react-search';
 
 /**
  * Search component state
