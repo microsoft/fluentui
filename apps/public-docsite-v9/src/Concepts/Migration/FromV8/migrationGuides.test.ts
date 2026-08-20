@@ -100,7 +100,7 @@ describe('v8 migration guide documentation', () => {
     const availableDocsIds = new Set(
       fs
         .readdirSync(componentsDirectory, { recursive: true })
-        .filter(fileName => typeof fileName === 'string' && fileName.endsWith('.mdx'))
+        .filter((fileName): fileName is string => typeof fileName === 'string' && fileName.endsWith('.mdx'))
         .flatMap(fileName => extractMetaTitles(readGuide(fileName)).map(toDocsId)),
     );
     const linkedMigrationDocsIds = [
