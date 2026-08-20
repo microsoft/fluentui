@@ -1,39 +1,43 @@
 import { RendererProvider, createDOMRenderer, renderToStyleElements } from '@griffel/react';
-import { renderToStaticMarkup, renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { prerender } from 'react-dom/static';
 import { ServerRouter, type EntryContext } from 'react-router';
 
 /**
- * Custom server entry so Griffel styles are present in the prerendered HTML (design D8).
+ * Custom server entry (design D8, D9).
  *
- * Without this, prerendered pages ship the `fui-*` class names but none of the rules that
- * define them: examples render unstyled until hydration, then snap into place. Griffel
- * collects rules into a renderer during render, so the markup has to be produced first and
- * the collected `<style>` elements injected into `<head>` afterwards — which rules out the
- * default streaming entry.
+ * Two things this must do that the default streaming entry cannot:
+ *
+ * 1. Griffel collects style rules *during* render, so the markup has to be produced first
+ *    and the collected `<style>` elements injected into `<head>` afterwards. Without this,
+ *    prerendered pages ship `fui-*` class names with no rules behind them.
+ * 2. Page content is loaded lazily (see `source.config.ts` — `async: true`), so rendering
+ *    suspends. `prerender` from `react-dom/static` waits for every suspended boundary to
+ *    settle, whereas `renderToString` would emit fallbacks instead of content.
  */
-export default function handleRequest(
+export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-): Response {
+): Promise<Response> {
   const renderer = createDOMRenderer();
 
-  const markup = renderToString(
+  const { prelude } = await prerender(
     <RendererProvider renderer={renderer}>
       <ServerRouter context={routerContext} url={request.url} />
     </RendererProvider>,
   );
 
+  const markup = await new Response(prelude).text();
   const styles = renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>);
 
-  // `renderToString` always emits a single <head>; append just before it closes so the
-  // rules land after the stylesheet links and can still be overridden by them if needed.
+  // Append just before </head> so the rules land after the stylesheet links.
   const html = markup.includes('</head>') ? markup.replace('</head>', `${styles}</head>`) : `${styles}${markup}`;
 
   responseHeaders.set('Content-Type', 'text/html');
 
-  return new Response(`<!DOCTYPE html>${html}`, {
+  return new Response(html, {
     headers: responseHeaders,
     status: responseStatusCode,
   });
