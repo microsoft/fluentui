@@ -76,14 +76,12 @@ import { MessageBar, MessageBarBody } from '@fluentui/react-components';
 
 ```tsx
 // v8
-<MessageBar isMultiline={true}>
-  Long message that wraps to multiple lines.
-</MessageBar>
-
-// v9 — "auto" is the default; use "multiline" to force this layout
-<MessageBar layout="multiline">
-  <MessageBarBody>Long message that wraps to multiple lines.</MessageBarBody>
-</MessageBar>
+<>
+  <MessageBar isMultiline={true}>Long message that wraps to multiple lines.</MessageBar>
+  <MessageBar layout="multiline">
+    <MessageBarBody>Long message that wraps to multiple lines.</MessageBarBody>
+  </MessageBar>
+</>
 ```
 
 ### Controlled Visibility Pattern

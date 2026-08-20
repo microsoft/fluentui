@@ -40,13 +40,25 @@ v9 also exports semantic preset components that match design token names:
 
 ```tsx
 import {
-  Body1, Body1Strong, Body2, Caption1, Caption2,
-  Display, LargeTitle, Subtitle1, Subtitle2, Title1, Title2, Title3,
+  Body1,
+  Body1Strong,
+  Body2,
+  Caption1,
+  Caption2,
+  Display,
+  LargeTitle,
+  Subtitle1,
+  Subtitle2,
+  Title1,
+  Title2,
+  Title3,
 } from '@fluentui/react-components';
 
-<Title1>Page heading</Title1>
-<Body1>Body text</Body1>
-<Caption1>Small caption</Caption1>
+<>
+  <Title1>Page heading</Title1>
+  <Body1>Body text</Body1>
+  <Caption1>Small caption</Caption1>
+</>;
 ```
 
 Prefer presets over manual `size`/`weight` when matching the Fluent design system — they stay in sync as tokens evolve.

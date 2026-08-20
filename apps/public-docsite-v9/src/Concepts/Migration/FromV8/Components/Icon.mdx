@@ -33,15 +33,14 @@ import { StarRegular, StarFilled } from '@fluentui/react-icons';
 ```tsx
 // v8
 import { Icon } from '@fluentui/react';
-<Icon iconName="Add" />
-
-// v9
 import { AddRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
-<AddRegular />
 
-// With custom size/color
-<AddRegular fontSize={24} style={{ color: tokens.colorBrandForeground1 }} />
+<>
+  <Icon iconName="Add" />
+  <AddRegular />
+  <AddRegular fontSize={24} style={{ color: tokens.colorBrandForeground1 }} />
+</>;
 ```
 
 ### Finding Icon Names

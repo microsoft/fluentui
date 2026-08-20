@@ -87,10 +87,10 @@ For `gapSpace`, pass positioning as an object:
 
 ```tsx
 // v8
-<Callout directionalHint={DirectionalHint.bottomLeftEdge} gapSpace={8} />
-
-// v9
-<Popover positioning={{ position: 'below', align: 'start', offset: { mainAxis: 8 } }}>
+<>
+  <Callout directionalHint={DirectionalHint.bottomLeftEdge} gapSpace={8} />
+  <Popover positioning={{ position: 'below', align: 'start', offset: { mainAxis: 8 } }} />
+</>
 ```
 
 ### ICalloutProps → PopoverProps
