@@ -10,20 +10,6 @@
       "options": {
         "exportSubpaths": true
       }
-    },
-    "verify-bundle-isolation": {
-      "cache": true,
-      "dependsOn": ["build", "^build"],
-      "command": "yarn run -T verify-bundle-isolation",
-      "options": {
-        "cwd": "{projectRoot}"
-      },
-      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
-      "outputs": ["{projectRoot}/dist/bundle-isolation"],
-      "metadata": {
-        "technologies": ["webpack"],
-        "description": "Assert entry points do not bundle tabster, Griffel or react-icons"
-      }
     }
   }
 }

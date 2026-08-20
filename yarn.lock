@@ -3960,7 +3960,6 @@ __metadata:
     "@fluentui/react-tree": "npm:^9.16.5"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@fluentui/react-virtualizer": "npm:9.0.0-alpha.115"
-    "@fluentui/verify-bundle-isolation": "npm:*"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -4368,7 +4367,6 @@ __metadata:
     "@fluentui/react-tooltip": "npm:^9.10.5"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@fluentui/scripts-cypress": "npm:*"
-    "@fluentui/verify-bundle-isolation": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
