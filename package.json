@@ -14,7 +14,6 @@
     "dedupe": "yarn dedupe --strategy highest",
     "change": "beachball change",
     "check:change": "beachball check",
-    "check:modified-files": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-modified-files",
     "check:affected": "node ./scripts/executors/src/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
     "create-component": "nx g @fluentui/workspace-plugin:react-component",

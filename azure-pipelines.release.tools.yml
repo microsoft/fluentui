@@ -14,8 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
 
@@ -54,17 +52,7 @@ extends:
               - template: .devops/templates/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
-
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-                displayName: Authenticate git for pushes
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
+                  githubPAT: $(githubPAT)
 
               - script: |
                   echo "Following packages will be published(if they contain changes):"
@@ -90,7 +78,3 @@ extends:
                   NPM_TOKEN: $(npmToken)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

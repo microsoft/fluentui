@@ -14,8 +14,6 @@ name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
   - name: tags
@@ -65,16 +63,6 @@ extends:
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
-
                 # Deletes all existing changefiles so that only bump that happens is for nightly
               - script: |
                   rm -f change/*
@@ -109,7 +97,3 @@ extends:
                 condition: not(${{ parameters.dryRun }})
                 env:
                   NPM_TOKEN: $(npmToken)
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

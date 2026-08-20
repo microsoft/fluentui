@@ -5,11 +5,14 @@ import type { BeachballConfig } from 'beachball';
 import { renderEntry, renderHeader } from './customRenderers';
 import baseConfig from '../base.config';
 
+type SharedConfig = typeof baseConfig & Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>>;
+
+export type ScopedConfig = SharedConfig & { scope: string[] };
+
 /**
  * Shared Beachball release config.
  */
-export const config: typeof baseConfig &
-  Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>> = {
+export const config: SharedConfig = {
   ...baseConfig,
   // This can't be in the base config because people might use different names for remotes,
   // but it should be safe in release pipelines.
