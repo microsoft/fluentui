@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(web-components): prevent unsafe theme token values from injecting CSS",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
