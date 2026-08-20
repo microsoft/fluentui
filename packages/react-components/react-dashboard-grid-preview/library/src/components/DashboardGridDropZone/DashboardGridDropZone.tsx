@@ -1,0 +1,21 @@
+'use client';
+
+import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { DashboardGridDropZoneProps } from './DashboardGridDropZone.types';
+import { renderDashboardGridDropZone_unstable } from './renderDashboardGridDropZone';
+import { useDashboardGridDropZone_unstable } from './useDashboardGridDropZone';
+import { useDashboardGridDropZoneStyles_unstable } from './useDashboardGridDropZoneStyles.styles';
+
+export const DashboardGridDropZone: ForwardRefComponent<DashboardGridDropZoneProps> = React.forwardRef<
+  HTMLDivElement,
+  DashboardGridDropZoneProps
+>(
+  (props, ref) => {
+    const state = useDashboardGridDropZone_unstable(props, ref);
+    useDashboardGridDropZoneStyles_unstable(state);
+    return renderDashboardGridDropZone_unstable(state);
+  },
+);
+
+DashboardGridDropZone.displayName = 'DashboardGridDropZone';
