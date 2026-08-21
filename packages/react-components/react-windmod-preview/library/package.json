@@ -52,6 +52,16 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./badge": {
+      "import": {
+        "types": "./dist/badge.d.ts",
+        "default": "./lib/badge.js"
+      },
+      "require": {
+        "types": "./dist/badge.d.cts",
+        "default": "./lib-commonjs/badge.cjs"
+      }
+    },
     "./button": {
       "import": {
         "types": "./dist/button.d.ts",

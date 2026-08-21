@@ -4,6 +4,9 @@
 
 ```ts
 
+import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
+import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
@@ -21,6 +24,7 @@ import type { LinkState as LinkState_2 } from '@fluentui/react-headless-componen
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
+import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
@@ -38,6 +42,7 @@ import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-co
 import { TooltipSlots } from '@fluentui/react-headless-components-preview/tooltip';
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
+import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
@@ -46,6 +51,39 @@ import { useProvider } from '@fluentui/react-headless-components-preview/provide
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+
+// @public
+export const Badge: ForwardRefComponent<BadgeProps>;
+
+// @public
+export type BadgeAppearance = 'filled' | 'ghost' | 'outline' | 'tint';
+
+// @public
+export const badgeClassNames: {
+    root: string;
+};
+
+// @public
+export type BadgeColor = 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
+
+// @public
+export type BadgeProps = BadgeProps_2 & {
+    appearance?: BadgeAppearance;
+    color?: BadgeColor;
+    shape?: BadgeShape;
+    size?: BadgeSize;
+};
+
+// @public
+export type BadgeShape = 'circular' | 'rounded' | 'square';
+
+// @public
+export type BadgeSize = 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+
+export { BadgeSlots }
+
+// @public
+export type BadgeState = BadgeState_2 & Required<Pick<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -153,6 +191,8 @@ export { OnVisibleChangeData }
 
 export { Provider }
 
+export { renderBadge }
+
 export { renderButton }
 
 export { renderDivider }
@@ -220,6 +260,11 @@ export type TooltipState = TooltipState_2 & {
 };
 
 export { TooltipTriggerProps }
+
+export { useBadge }
+
+// @public
+export const useBadgeStyles: (state: BadgeState) => BadgeState;
 
 export { useButton }
 

@@ -1,0 +1,230 @@
+@reference '#theme';
+
+/* The border rides the root's ::after so it never affects layout or padding. It carries no
+   module class, so it is reached with Tailwind's built-in after variant, which also supplies
+   `content: var(--tw-content)` — registered with initial-value "". `border-radius: inherit`
+   and `border-color: inherit` are how the shape and colour classes reach it. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge py-0 font-base text-base-200 leading-base-200 font-semibold;
+
+    @variant after {
+      @apply absolute inset-0 rounded-[inherit] border-(length:--spacing-thin) border-solid border-inherit;
+    }
+
+    @variant size-small, size-extra-small, size-tiny {
+      @apply text-base-100 leading-base-100;
+    }
+
+    @variant size-tiny {
+      @apply size-6 min-w-auto p-0 text-[length:calc(4px*var(--base-scale))] leading-[calc(4px*var(--base-scale))];
+    }
+
+    @variant size-extra-small {
+      @apply size-10 min-w-auto p-0 text-[length:calc(6px*var(--base-scale))] leading-[calc(6px*var(--base-scale))];
+    }
+
+    @variant size-small {
+      @apply h-16 min-w-16 px-horizontal-xs;
+    }
+
+    @variant size-large {
+      @apply h-24 min-w-24;
+    }
+
+    @variant size-extra-large {
+      @apply h-32 min-w-32 px-horizontal-s;
+    }
+  }
+
+  .rounded {
+    @apply rounded-medium;
+
+    @variant size-small, size-extra-small, size-tiny {
+      @apply rounded-small;
+    }
+  }
+
+  .square {
+    @apply rounded-none;
+  }
+
+  .ghost {
+    @variant after {
+      @apply hidden;
+    }
+  }
+
+  .outline {
+    @apply border-current;
+  }
+
+  .filled-brand {
+    @apply bg-brand-background text-neutral-foreground-on-brand;
+  }
+
+  .filled-danger {
+    @apply bg-palette-red-background-3 text-neutral-foreground-on-brand;
+  }
+
+  .filled-important {
+    @apply bg-neutral-foreground-1 text-neutral-background-1;
+  }
+
+  .filled-informative {
+    @apply bg-neutral-background-5 text-neutral-foreground-3;
+  }
+
+  .filled-severe {
+    @apply bg-palette-dark-orange-background-3 text-neutral-foreground-on-brand;
+  }
+
+  .filled-subtle {
+    @apply bg-neutral-background-1 text-neutral-foreground-1;
+  }
+
+  .filled-success {
+    @apply bg-palette-green-background-3 text-neutral-foreground-on-brand;
+  }
+
+  .filled-warning {
+    @apply bg-palette-yellow-background-3 text-neutral-foreground-1-static;
+  }
+
+  .ghost-brand {
+    @apply text-brand-foreground-1;
+  }
+
+  .ghost-danger {
+    @apply text-palette-red-foreground-3;
+  }
+
+  .ghost-important {
+    @apply text-neutral-foreground-1;
+  }
+
+  .ghost-informative {
+    @apply text-neutral-foreground-3;
+  }
+
+  .ghost-severe {
+    @apply text-palette-dark-orange-foreground-3;
+  }
+
+  .ghost-subtle {
+    @apply text-neutral-foreground-static-inverted;
+  }
+
+  .ghost-success {
+    @apply text-palette-green-foreground-3;
+  }
+
+  .ghost-warning {
+    @apply text-palette-yellow-foreground-2;
+  }
+
+  .outline-brand {
+    @apply text-brand-foreground-1;
+  }
+
+  .outline-danger {
+    @apply border-palette-red-border-2 text-palette-red-foreground-3;
+  }
+
+  .outline-important {
+    @apply border-neutral-stroke-accessible text-neutral-foreground-3;
+  }
+
+  .outline-informative {
+    @apply border-neutral-stroke-2 text-neutral-foreground-3;
+  }
+
+  .outline-severe {
+    @apply text-palette-dark-orange-foreground-3;
+  }
+
+  .outline-subtle {
+    @apply text-neutral-foreground-static-inverted;
+  }
+
+  .outline-success {
+    @apply border-palette-green-border-2 text-palette-green-foreground-3;
+  }
+
+  .outline-warning {
+    @apply text-palette-yellow-foreground-2;
+  }
+
+  .tint-brand {
+    @apply border-brand-stroke-2 bg-brand-background-2 text-brand-foreground-2;
+  }
+
+  .tint-danger {
+    @apply border-palette-red-border-1 bg-palette-red-background-1 text-palette-red-foreground-1;
+  }
+
+  .tint-important {
+    @apply border-transparent-stroke bg-neutral-foreground-3 text-neutral-background-1;
+  }
+
+  .tint-informative {
+    @apply border-neutral-stroke-2 bg-neutral-background-4 text-neutral-foreground-3;
+  }
+
+  .tint-severe {
+    @apply border-palette-dark-orange-border-1 bg-palette-dark-orange-background-1 text-palette-dark-orange-foreground-1;
+  }
+
+  .tint-subtle {
+    @apply border-neutral-stroke-2 bg-neutral-background-1 text-neutral-foreground-3;
+  }
+
+  .tint-success {
+    @apply border-palette-green-border-1 bg-palette-green-background-1 text-palette-green-foreground-1;
+  }
+
+  .tint-warning {
+    @apply border-palette-yellow-border-1 bg-palette-yellow-background-1 text-palette-yellow-foreground-1;
+  }
+
+  .icon {
+    @apply -mx-horizontal-xxs my-0 flex text-[length:calc(12px*var(--base-scale))] leading-none;
+
+    @variant group-not-empty/fui-badge {
+      @variant group-icon-before/fui-badge {
+        @apply me-horizontal-xs;
+      }
+
+      @variant group-icon-after/fui-badge {
+        @apply ms-horizontal-xs;
+      }
+
+      @variant group-size-extra-large/fui-badge {
+        @variant group-icon-before/fui-badge {
+          @apply me-horizontal-s-nudge;
+        }
+
+        @variant group-icon-after/fui-badge {
+          @apply ms-horizontal-s-nudge;
+        }
+      }
+    }
+
+    @variant group-size-tiny/fui-badge {
+      @apply text-[length:calc(6px*var(--base-scale))];
+    }
+
+    @variant group-size-extra-small/fui-badge {
+      @apply text-[length:calc(10px*var(--base-scale))];
+    }
+
+    @variant group-size-large/fui-badge {
+      @apply text-[length:calc(16px*var(--base-scale))];
+    }
+
+    @variant group-size-extra-large/fui-badge {
+      @apply text-[length:calc(20px*var(--base-scale))];
+    }
+  }
+}

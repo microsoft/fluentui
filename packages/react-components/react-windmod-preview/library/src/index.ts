@@ -1,3 +1,6 @@
+export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './badge';
+export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, BadgeSlots, BadgeState } from './badge';
+
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
