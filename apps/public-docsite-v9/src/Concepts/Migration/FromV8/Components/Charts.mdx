@@ -4,8 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Charts Migration Guide
 
-`Fluent Charting` controls are built on fluent v8 stack.
-But they work across v8 and v9 themes by using the v8ThemeShim.
+Fluent Charting controls are built on Fluent UI v8.
+They can work with v9 themes by using `createV8Theme` from `@fluentui/react-migration-v8-v9`.
 
 Currently charts are brand invariant and don't require a BrandVariant palette to render correctly.
 This would evolve as we onboard new products and their unique theme requirements.
@@ -25,32 +25,13 @@ You can reach out to the charting team by tagging `@microsoft/charting-team` in 
 ### Basic Donut Chart
 
 ```tsx
-import { createV8Theme } from '@fluentui/react-migration-v8-v9';
+import { brandWeb, createV8Theme } from '@fluentui/react-migration-v8-v9';
 import { ThemeProvider } from '@fluentui/react';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import React from 'react';
-import { Theme, BrandVariants, webLightTheme } from '@fluentui/react-components';
+import { Theme, webLightTheme } from '@fluentui/react-components';
 import { DonutChart, IChartProps } from '@fluentui/react-charting';
 import * as d3Color from 'd3-color';
-
-const brandInvariant: BrandVariants = {
-  10: '',
-  20: '',
-  30: '',
-  40: '',
-  50: '',
-  60: '',
-  70: '',
-  80: '',
-  90: '',
-  100: '',
-  110: '',
-  120: '',
-  130: '',
-  140: '',
-  150: '',
-  160: '',
-};
 
 const data: IChartProps = {
   chartTitle: 'Donut chart fluent v9 example',
@@ -67,7 +48,7 @@ export function ChartWrapperDocsite() {
   let v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
   let backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
   let foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
-  const myV8Theme = createV8Theme(brandInvariant, v9Theme, backgroundColor.l < foregroundColor.l); // For dark theme background color is darker than foreground color
+  const myV8Theme = createV8Theme(brandWeb, v9Theme, backgroundColor.l < foregroundColor.l); // For dark themes, the background is darker than the foreground.
   return (
     <ThemeProvider theme={myV8Theme}>
       <DonutChart
@@ -92,12 +73,18 @@ const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
   return {
     xAxis: {
       selectors: {
-        text: { fill: tokens.colorPaletteGreenForeground1, fontSize: tokens.fontSizeBase200 },
+        text: {
+          fill: tokens.colorPaletteGreenForeground1,
+          fontSize: tokens.fontSizeBase200,
+        },
       },
     },
     yAxis: {
       selectors: {
-        text: { fill: tokens.colorPaletteRedForeground2, fontSize: tokens.fontSizeBase300 },
+        text: {
+          fill: tokens.colorPaletteRedForeground2,
+          fontSize: tokens.fontSizeBase300,
+        },
       },
     },
     chartLabel: {

@@ -72,7 +72,11 @@ import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { CatIcon } from '@fluentui/react-icons-mdl2';
 
 const ChoiceGroupCustomOptionExample = () => {
-  const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'center', gap: '5px' });
+  const optionRootClass = mergeStyles({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+  });
 
   const options: IChoiceGroupOption[] = [
     {
@@ -80,7 +84,6 @@ const ChoiceGroupCustomOptionExample = () => {
       text: 'A label with an icon',
       ariaLabel: 'A label with a cat icon',
       onRenderField: (props, render) => {
-        z;
         return (
           <div className={optionRootClass}>
             {render!(props)}
@@ -89,7 +92,11 @@ const ChoiceGroupCustomOptionExample = () => {
         );
       },
     },
-    { key: 'B', text: 'Option B', styles: { root: { border: '1px solid green' } } },
+    {
+      key: 'B',
+      text: 'Option B',
+      styles: { root: { border: '1px solid green' } },
+    },
     { key: 'C', text: 'Option C', disabled: true },
     { key: 'D', text: 'Option D' },
   ];
@@ -167,11 +174,11 @@ This table maps v8 `ChoiceGroup` props to the v9 `RadioGroup` equivalent.
 
 | v8                   | v9                    | Notes                                                                |
 | -------------------- | --------------------- | -------------------------------------------------------------------- |
-| `componentRef`       | `ref`                 | v9 provides access to the underlyig DOM node, not IChoiceGroup       |
+| `componentRef`       | `ref`                 | v9 provides access to the underlying DOM node, not `IChoiceGroup`    |
 | `options`            | `children`            | v9 uses React `children` rather than data props                      |
 | `defaultSelectedKey` | `defaultValue`        | Mutually exclusive with `value`                                      |
 | `selectedKey`        | `value`               | Mutually exclusive with `defaultValue`                               |
-| `onChange`           | `onChange`            | The Typescript types have changed in v9                              |
+| `onChange`           | `onChange`            | The TypeScript types have changed in v9                              |
 | `label`              | Use `Label` component | Be sure to associate `Label` with `RadioGroup` via `aria-labelledby` |
 | `theme`              | n/a                   | Use `FluentProvider` to customize themes                             |
 | `styles`             | `className`           |                                                                      |
@@ -192,12 +199,12 @@ This table maps v8 `IChoiceGroupOption` props to the v9 `Radio` equivalent.
 | `imageSize`        | n/a          | Use slots to customize `Radio`                                                                                 |
 | `disabled`         | `disabled`   |                                                                                                                |
 | `id`               | `id`         | In v9 this is the intrinsic HTML prop                                                                          |
-| `labeldId`         | n/a          | Provide an id to the `label` slot via shorthand props or a custom component                                    |
+| `labelId`          | n/a          | Provide an id to the `label` slot via shorthand props or a custom component                                    |
 | `ariaLabel`        | `aria-label` | In v9 this is the intrinsic HTML prop                                                                          |
 | `styles`           | `className`  |                                                                                                                |
 | `itemKey`          | n/a          |                                                                                                                |
 | `checked`          | `checked`    | When used in a `RadioGroup` use the `value` prop on `RadioGroup` instead                                       |
-| `onChange`         | `onChange`   | Typescript types have changed                                                                                  |
+| `onChange`         | `onChange`   | TypeScript types have changed                                                                                  |
 | `onFocus`          | `onFocus`    | v9 uses native `onFocus`                                                                                       |
 | `onBlur`           | `onBlur`     | v9 uses native `onBlur`                                                                                        |
 | `focused`          | n/a          |                                                                                                                |

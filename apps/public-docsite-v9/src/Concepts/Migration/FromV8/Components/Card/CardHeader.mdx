@@ -30,7 +30,10 @@ const Component = () => (
       <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate />
       <DocumentCardActivity
         activity="Created a few minutes ago"
-        people={{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }}
+        people={{
+          name: 'Annie Lindqvist',
+          profileImageSrc: TestImages.personaFemale,
+        }}
       />
     </DocumentCardDetails>
   </DocumentCard>
@@ -41,15 +44,14 @@ After:
 
 ```jsx
 import * as React from 'react';
-import { Text, Caption1 } from '@fluentui/react-components';
-import { Card, CardHeader } from '@fluentui/react-card/unstable';
+import { Caption1, Card, CardHeader, Text } from '@fluentui/react-components';
 
 export const Component = () => {
   return (
     <Card>
       <Text size={400}>Revenue stream proposal fiscal year 2016 version02.pptx</Text>
       <CardHeader
-        image={<img className="sbdocs-img" src="powerpoint_logo.svg" />}
+        image={<img className="sbdocs-img" src="powerpoint_logo.svg" alt="" />}
         header={<Text weight="bold">Annie Lindqvist</Text>}
         description={<Caption1>Created a few minutes ago</Caption1>}
       />

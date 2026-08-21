@@ -4,14 +4,14 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Spinner Migration
 
-Fluent UI V8 provides the `Spinner` control to allow users to indicate that content is being loaded on the screen.
+Fluent UI v8 provides the `Spinner` control to allow users to indicate that content is being loaded on the screen.
 Fluent UI v9 provides a `Spinner` control with a different API.
 
 ## Examples
 
 ### Basic Migration
 
-Basic usage of `Spinner` V8
+Basic usage of `Spinner` v8
 
 ```tsx
 import { Spinner } from '@fluentui/react/lib/Spinner';
@@ -33,18 +33,18 @@ const SpinnerV9BasicExample = () => <Spinner />;
 export default SpinnerV9BasicExample;
 ```
 
-## Props Mapping
+## Prop Mapping
 
 This table maps `Spinner` v8 props to the `Spinner` v9 equivalent.
 
 | v8              | v9              | Notes                                    |
 | --------------- | --------------- | ---------------------------------------- |
-| `aria-label`    | n/a             |                                          |
-| `aria-live`     | n/a             |                                          |
+| `aria-label`    | `aria-label`    | Applied to the root element              |
+| `aria-live`     | `aria-live`     | Applied to the root element              |
 | `className`     | `className`     |                                          |
-| `componentRef`  | n/a             |                                          |
+| `componentRef`  | `ref`           | Provides access to the root DOM element  |
 | `label`         | `label`         |                                          |
-| `labelPosition` | `labelPosition` | Default changes from `bottom` to 'after' |
+| `labelPosition` | `labelPosition` | Default changes from `bottom` to `after` |
 | `size`          | `size`          |                                          |
 | `styles`        | `className`     |                                          |
 | `theme`         | n/a             | Use `FluentProvider` to customize themes |

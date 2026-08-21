@@ -54,24 +54,26 @@ For example, here is the previous `Pivot` example migrated to use `TabList`
 const [selectedValue, setSelectedValue] = React.useState<TabValue>();
 
 const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
-    setSelectedValue(data.value);
+  setSelectedValue(data.value);
 };
 
 //...
 
-<TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
-  <Tab value="tab1">First Tab</Tab>
-  <Tab value="tab2">Second Tab</Tab>
-  <Tab value="tab3">Third Tab</Tab>
-</TabList>
-<div>
-  {selectedValue === 'tab1' && <div>Content 1</div>}
-  {selectedValue === 'tab2' && <div>Content 2</div>}
-  {selectedValue === 'tab3' && <div>Content 3</div>}
-</div>
+<>
+  <TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
+    <Tab value="tab1">First Tab</Tab>
+    <Tab value="tab2">Second Tab</Tab>
+    <Tab value="tab3">Third Tab</Tab>
+  </TabList>
+  <div>
+    {selectedValue === 'tab1' && <div>Content 1</div>}
+    {selectedValue === 'tab2' && <div>Content 2</div>}
+    {selectedValue === 'tab3' && <div>Content 3</div>}
+  </div>
+</>;
 ```
 
-## Pivot -> TabList Props Mapping
+## Prop Mapping
 
 | v8                 | v9                             |
 | ------------------ | ------------------------------ |

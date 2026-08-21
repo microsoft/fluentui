@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Card Migration
 
-Fluent UI v8 provides the `DocumentCard` component and it's variants. Fluent UI v9 provides a `Card` control, but has a different API. `Card` is more generic is less opinionated about its content.
+Fluent UI v8 provides the `DocumentCard` component and its variants. Fluent UI v9 provides a `Card` control with a different API. `Card` is more generic and less opinionated about its content.
 
 This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
 
@@ -63,8 +63,7 @@ After:
 
 ```tsx
 import * as React from 'react';
-import { Text, Avatar, Caption1 } from '@fluentui/react-components';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+import { Avatar, Caption1, Card, CardHeader, CardPreview, Text } from '@fluentui/react-components';
 
 export const SizedCard = () => {
   const styles = useStyles();

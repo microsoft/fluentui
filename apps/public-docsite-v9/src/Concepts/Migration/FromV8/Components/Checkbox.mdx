@@ -8,8 +8,10 @@ Fluent UI v8 provides the `Checkbox` control to give people a way to select one 
 
 The main difference between v8 and v9 `Checkbox` is that v9 offers a circular variant. v9 handles checked and indeterminate differently from v8, v9 combines both into the `checked` and `defaultChecked` props.
 
-Fluent UI v9 also provide the `CheckboxShim` as a bridge component of v8 and v9, which means you can keeps the v8 props and get a v9 `Checkbox` rendered in your UI.<br/>
-** Note **: `CheckboxShim` is not a part of the `@fluentui/react-component` package, it is a part of the `@fluentui/react-migration-v8-v9s` package. It's consideral to use `CheckboxShim` only for temperary migration purpose, and use `Checkbox` directly for new development.
+Fluent UI v9 also provides `CheckboxShim` as a bridge between v8 and v9. It accepts v8 props and renders a v9 `Checkbox`.
+
+> **Note:** `CheckboxShim` is part of `@fluentui/react-migration-v8-v9`, not `@fluentui/react-components`.
+> Use it only as a temporary migration aid; use `Checkbox` directly for new development.
 
 ## Examples
 

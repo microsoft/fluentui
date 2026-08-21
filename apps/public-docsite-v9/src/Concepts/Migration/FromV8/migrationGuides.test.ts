@@ -7,7 +7,7 @@ import * as ts from 'typescript';
 const componentsDirectory = path.join(__dirname, 'Components');
 const componentMappingPath = path.join(__dirname, 'ComponentMapping.mdx');
 
-const newGuideFiles = [
+const addedGuideFiles = [
   'Breadcrumb.mdx',
   'Calendar.mdx',
   'Callout.mdx',
@@ -38,6 +38,10 @@ const newGuideFiles = [
   'Tooltip.mdx',
 ] as const;
 
+const allGuideFiles = fs
+  .readdirSync(componentsDirectory, { recursive: true })
+  .filter((fileName): fileName is string => typeof fileName === 'string' && fileName.endsWith('.mdx'));
+
 const readGuide = (fileName: string): string => fs.readFileSync(path.join(componentsDirectory, fileName), 'utf8');
 
 const extractMetaTitles = (source: string): string[] =>
@@ -51,6 +55,28 @@ const toDocsId = (title: string): string =>
 
 const extractTsxBlocks = (source: string): string[] =>
   [...source.matchAll(/```tsx\s*\r?\n([\s\S]*?)```/g)].map(match => match[1]);
+
+const extractCodeBlocks = (source: string): string[] => {
+  const blocks: string[] = [];
+  let currentBlock: string[] | undefined;
+
+  for (const line of source.split(/\r?\n/)) {
+    if (currentBlock === undefined) {
+      if (/^```[a-z0-9-]*\s*$/i.test(line)) {
+        currentBlock = [];
+      }
+    } else if (/^```\s*$/.test(line)) {
+      blocks.push(currentBlock.join('\n'));
+      currentBlock = undefined;
+    } else {
+      currentBlock.push(line);
+    }
+  }
+
+  return blocks;
+};
+
+const stripCodeFences = (source: string): string => source.replace(/```[\s\S]*?```/g, '');
 
 const getTsxSyntaxErrors = (fileName: string, source: string): string[] =>
   (
@@ -80,7 +106,7 @@ const getTsxSyntaxErrors = (fileName: string, source: string): string[] =>
 describe('v8 migration guide documentation', () => {
   test('new guides have unique Storybook routes and are linked from the component mapping', () => {
     const componentMapping = fs.readFileSync(componentMappingPath, 'utf8');
-    const docsIds = newGuideFiles.map(fileName => {
+    const docsIds = addedGuideFiles.map(fileName => {
       const metaTitles = extractMetaTitles(readGuide(fileName));
 
       expect(metaTitles).toHaveLength(1);
@@ -93,6 +119,21 @@ describe('v8 migration guide documentation', () => {
     for (const docsId of docsIds) {
       expect(componentMapping).toContain(`](/docs/${docsId})`);
     }
+  });
+
+  test('all component guides have one title, one top-level heading, and unique Storybook routes', () => {
+    const docsIds = allGuideFiles.map(fileName => {
+      const source = readGuide(fileName);
+      const metaTitles = extractMetaTitles(source);
+      const topLevelHeadings = stripCodeFences(source).match(/^#\s+.+$/gm) ?? [];
+
+      expect(metaTitles).toHaveLength(1);
+      expect(topLevelHeadings).toHaveLength(1);
+
+      return toDocsId(metaTitles[0]);
+    });
+
+    expect(new Set(docsIds).size).toBe(docsIds.length);
   });
 
   test('migration guide links in the component mapping resolve to component MDX pages', () => {
@@ -116,7 +157,7 @@ describe('v8 migration guide documentation', () => {
     }
   });
 
-  test.each(newGuideFiles)('%s uses inline, syntactically valid TSX examples', fileName => {
+  test.each(addedGuideFiles)('%s uses inline TSX examples', fileName => {
     const source = readGuide(fileName);
     const tsxBlocks = extractTsxBlocks(source);
 
@@ -125,11 +166,17 @@ describe('v8 migration guide documentation', () => {
     expect(source).not.toMatch(/import\s+\*\s+as\s+Examples\b/);
     expect(source).not.toContain('./examples/');
     expect(tsxBlocks.length).toBeGreaterThan(0);
+  });
 
+  test.each(allGuideFiles)('%s has no empty fences and uses syntactically valid TSX', fileName => {
+    const source = readGuide(fileName);
+    const codeBlocks = extractCodeBlocks(source);
+    const tsxBlocks = extractTsxBlocks(source);
     const syntaxErrors = tsxBlocks.flatMap((tsxBlock, index) =>
       getTsxSyntaxErrors(`${fileName}-example-${index + 1}.tsx`, tsxBlock),
     );
 
+    expect(codeBlocks.every(codeBlock => codeBlock.trim().length > 0)).toBe(true);
     expect(syntaxErrors).toEqual([]);
   });
 });
