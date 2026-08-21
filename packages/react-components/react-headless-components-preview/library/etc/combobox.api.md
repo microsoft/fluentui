@@ -20,7 +20,7 @@ import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
 import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';

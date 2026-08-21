@@ -1,9 +1,9 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { mergeCallbacks, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
-import { useInputTriggerSlot } from '@fluentui/react-combobox';
+import { useComboboxExpandIconSlot, useInputTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from '../Dropdown/Listbox';
 import { toDataAttributeValue } from '../../utils';
 import { useListboxPopupState } from '../Dropdown/useListboxPopupState';
@@ -29,7 +29,11 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   });
 
   const { appearance: _appearance, size: _size, ...baseState } = internalState;
-  const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions } = baseState;
+  const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
+  // The listbox is a native popover: light-dismiss closes it on pointerup, before `click` runs.
+  // Toggling has to be based on the state captured when the interaction started, otherwise clicking
+  // the icon to close would immediately reopen it.
+  const openOnPointerDownRef = React.useRef(false);
 
   const triggerSlot = useInputTriggerSlot(mergedProps.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: internalState,
@@ -60,17 +64,43 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     input: triggerSlot,
     listbox: open || hasFocus ? listbox : undefined,
     clearIcon: slot.optional(mergedProps.clearIcon, {
-      defaultProps: { 'aria-hidden': 'true' },
+      defaultProps: { 'aria-hidden': 'true', role: 'button' },
       elementType: 'span',
       renderByDefault: true,
     }),
-    expandIcon: slot.optional(mergedProps.expandIcon, {
-      renderByDefault: true,
-      elementType: 'span',
+    expandIcon: useComboboxExpandIconSlot(mergedProps.expandIcon, {
+      disabled,
+      open,
+      'aria-label': mergedProps['aria-label'],
+      'aria-labelledby': mergedProps['aria-labelledby'],
+      triggerLabelledBy: triggerSlot['aria-labelledby'],
     }),
     showClearIcon,
     activeDescendantController,
   };
+
+  const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
+      // Keep focus on the input instead of moving it to the icon
+      event.preventDefault();
+      openOnPointerDownRef.current = open;
+    }),
+  );
+
+  const onExpandIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      event.preventDefault();
+      setOpen(event, !openOnPointerDownRef.current);
+      triggerRef.current?.focus();
+    }),
+  );
+
+  if (state.expandIcon) {
+    state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
+  }
 
   const onClearIconMouseDown = useEventCallback(
     mergeCallbacks(state.clearIcon?.onMouseDown, (ev: React.MouseEvent<HTMLSpanElement>) => {
