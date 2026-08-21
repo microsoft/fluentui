@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: do not treat non-scrolling overflow:hidden ancestors as a clipping boundary for the hide middleware's escaped/referenceHidden detection",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

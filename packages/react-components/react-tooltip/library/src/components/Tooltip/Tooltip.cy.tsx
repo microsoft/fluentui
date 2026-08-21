@@ -44,4 +44,20 @@ describe('Tooltip', () => {
         });
     });
   });
+
+  describe('static non-scrolling overflow:hidden container (regression: #36604)', () => {
+    it('still shows the tooltip when its trigger sits in a tightly-fitted overflow:hidden container', () => {
+      mount(
+        <div style={{ overflow: 'hidden', display: 'flex' }}>
+          <Tooltip content="I should still appear" relationship="label">
+            <Button id="trigger">Hover me</Button>
+          </Tooltip>
+        </div>,
+      );
+
+      cy.get('#trigger').realHover();
+
+      cy.get('[role="tooltip"]').should('be.visible').and('have.text', 'I should still appear');
+    });
+  });
 });
