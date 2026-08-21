@@ -1,0 +1,165 @@
+/**
+ * Shared focus-ring utilities — the CSS replacement for react-tabster's Griffel focus
+ * factories (DECISIONS.md D6). Converted packages `@apply` these; the JS helpers
+ * (`createFocusOutlineStyle`, `createCustomFocusIndicatorStyle`) stay exported from
+ * react-tabster because unconverted and deprecated packages still call them.
+ *
+ * These are `@utility` (not plain classes) so component modules can `@apply` them INSIDE
+ * their own `@layer fui.*` blocks: `@apply` inlines a utility's declarations at the call
+ * site, so nothing is ever emitted into Tailwind's `@layer utilities` — which would
+ * outrank every `fui.*` layer (see CONVERSION_GUIDE.md "Toolchain traps").
+ *
+ * ── Selector ────────────────────────────────────────────────────────────────────────
+ * These utilities carry DECLARATIONS ONLY. The selector stays with the caller, which
+ * must wrap them in the shared `focus-visible-fui` / `focus-within-fui` variants
+ * (`[data-fui-focus-visible]` / `[data-fui-focus-within]`, still written by keyborg).
+ * That split is deliberate: `createCustomFocusIndicatorStyle`'s `customizeSelector`
+ * option (4 call sites) has no CSS equivalent, so the selector must stay authorable.
+ *
+ * ── Parameterisation ────────────────────────────────────────────────────────────────
+ * The compiled Griffel output differs per component only in the values react-tabster's
+ * options expose (`outlineRadius`, `outlineColor`, `outlineWidth`, `outlineOffset`).
+ * Those become CSS custom properties here ("knobs"). With every knob unset the `var()`
+ * fallbacks reproduce the compiled defaults exactly — see the byte-comparisons below.
+ *
+ * ── Isolation (why each utility RESETS its knobs) ───────────────────────────────────
+ * The knobs are deliberately UNREGISTERED (no `@property`), and each utility opens by
+ * resetting every knob it consumes to `initial` on the element it is applied to.
+ * Unregistered custom properties inherit, and `initial` on an unregistered custom
+ * property is the guaranteed-invalid value — so the resets keep the knobs self-scoped:
+ * a knob set on an ancestor can never leak into a nested component's focus indicator
+ * (SplitButton renders a Button inside a Button), and an unset knob still resolves to
+ * its `var()` fallback. To override a knob, set it on the consuming element in a
+ * declaration that beats the component's focus rule (after the `@apply` in the same
+ * rule, a higher layer, or unlayered consumer CSS) — or, for `fui-focus-outline`, on
+ * the `::after` pseudo-element itself, which the element-level resets never touch
+ * (that is where every in-repo caller sets its knobs).
+ *
+ * The knobs were previously registered with `@property … syntax:'*'; inherits:false`,
+ * which enforced both guarantees engine-side. The registrations were REMOVED
+ * (2026-08-04): any non-empty custom-property registry flips Blink's transition-start
+ * path onto a page-global slow branch costing ~9.4 µs per started CSS transition —
+ * paid by EVERY transition on the page, on properties unrelated to the registered
+ * ones, turning ~2.5× toggle-cost regressions in transition-heavy scenarios. See
+ * migration/griffel-to-tailwind/reports/perf-mechanism-diagnostic.md (mechanism +
+ * strip experiment) and reports/perf-property-remedy.md (this change and its gates).
+ * Do NOT reintroduce `@property` into shipped FluentUI CSS without re-running that
+ * perf gate.
+ */
+
+/**
+ * `fui-focus-outline` — the DEFAULT ring produced by
+ * `createFocusOutlineStyle()` (react-tabster/src/focus/createFocusOutlineStyle.ts):
+ * a `::after` pseudo-element inset by the outline width.
+ *
+ * Byte-comparison against a compiled AOT consumer
+ * (react-accordion/library/lib-commonjs/components/AccordionHeader/
+ *  useAccordionHeaderStyles.styles.js:245-268, 341-353):
+ *
+ *   [data-fui-focus-visible]{border-{top,right,left,bottom}-color:transparent}
+ *   [data-fui-focus-visible]::after{content:""}
+ *   [data-fui-focus-visible]::after{position:absolute}
+ *   [data-fui-focus-visible]::after{pointer-events:none}
+ *   [data-fui-focus-visible]::after{z-index:1}
+ *   [data-fui-focus-visible]::after{border:2px solid var(--color-stroke-focus-2)}
+ *   [data-fui-focus-visible]::after{border-radius:var(--radius-medium)}
+ *   [data-fui-focus-visible]::after{top:calc(2px * -1)}      (right/left/bottom idem)
+ *   @media (forced-colors: active){…::after{border-{top,left,right,bottom}-color:Highlight}}
+ *
+ * The hardcoded `2px` is react-tabster's own FIXME ("tokens.strokeWidthThick causes some
+ * weird bugs") — it is reproduced verbatim, NOT "fixed" to a token (DECISIONS.md D6).
+ *
+ * `createFocusOutlineStyle` also emits `:focus{outline-style:none}` and
+ * `:focus-visible{outline-style:none}`. Those sit OUTSIDE the focus-visible selector, so
+ * they stay with the caller (Button already sets `outline-style: none` in its base).
+ *
+ * NOT exercised by any converted package yet — Button uses `fui-focus-ring` below. The
+ * first `createFocusOutlineStyle` conversion validates this one against its own AOT
+ * output before trusting it.
+ */
+@utility fui-focus-outline {
+  /* Knob isolation — see the header note. `initial` is the guaranteed-invalid value
+     for these unregistered properties: an ancestor's knob override stops here, the
+     `var()` fallbacks below stay live, and `::after`-level knob declarations (how all
+     in-repo callers parameterise this ring) are unaffected. */
+  --fui-focus-outline-width: initial;
+  --fui-focus-outline-color: initial;
+  --fui-focus-outline-radius: initial;
+  --fui-focus-outline-offset: initial;
+
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  &::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--color-stroke-focus-2));
+    border-radius: var(--fui-focus-outline-radius, var(--radius-medium));
+
+    /* `getOutlinePosition()`: `calc(<width> * -1)` with no offset, else
+       `calc(0px - <width> - <offset>)`. Both branches collapse into one expression
+       because an unset `--fui-focus-outline-offset` falls back to `0px`. */
+    top: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    right: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    bottom: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    left: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+  }
+
+  @media (forced-colors: active) {
+    &::after {
+      border-top-color: Highlight;
+      border-right-color: Highlight;
+      border-bottom-color: Highlight;
+      border-left-color: Highlight;
+    }
+  }
+}
+
+/**
+ * `fui-focus-ring` — the Button-family indicator: no pseudo-element, the ring is drawn
+ * with the element's own border plus an inset `box-shadow`. Produced by
+ * `createCustomFocusIndicatorStyle({...})` with Button's option object.
+ *
+ * Byte-comparison against the compiled AOT output
+ * (react-button/library/lib-commonjs/components/Button/useButtonStyles.styles.js:41):
+ *
+ *   .r1f29ykk[data-fui-focus-visible]{
+ *     border-color:var(--color-stroke-focus-2);
+ *     border-radius:var(--radius-medium);
+ *     border-width:1px;
+ *     outline:<strokeWidthThick> solid var(--color-transparent-stroke);
+ *     box-shadow:0 0 0 <strokeWidthThin> var(--color-stroke-focus-2) inset;
+ *     z-index:1;
+ *   }
+ *
+ * The two widths are shown as placeholders because upstream's AOT output references the
+ * raw `strokeWidthThick` / `strokeWidthThin` tokens, while the declarations below use the
+ * `--spacing-thick` / `--spacing-thin` equivalents required by the D4 addendum authoring
+ * rule (stroke widths live in the spacing namespace and must scale with `--base-scale`).
+ * Both resolve to 2px / 1px at the default root, so the computed values are unchanged.
+ *
+ * With all four knobs unset every declaration below computes to exactly that. The
+ * declaration ORDER is preserved too, which matters for `border-color` vs `border-width`
+ * against the `border:` shorthand a caller's base rule may set in a lower layer.
+ */
+@utility fui-focus-ring {
+  /* Knob isolation — see the header note. Same-element overrides must come AFTER the
+     `@apply` (or from a higher layer / unlayered consumer CSS) to beat these resets. */
+  --fui-focus-ring-color: initial;
+  --fui-focus-ring-radius: initial;
+  --fui-focus-ring-width: initial;
+  --fui-focus-ring-inset-width: initial;
+
+  border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+  border-radius: var(--fui-focus-ring-radius, var(--radius-medium));
+  border-width: var(--fui-focus-ring-width, 1px);
+  outline: var(--spacing-thick) solid var(--color-transparent-stroke);
+  box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--spacing-thin))
+    var(--fui-focus-ring-color, var(--color-stroke-focus-2)) inset;
+  z-index: 1;
+}

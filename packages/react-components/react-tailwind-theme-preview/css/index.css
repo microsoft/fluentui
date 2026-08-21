@@ -1,0 +1,147 @@
+/**
+ * @fluentui/react-tailwind-theme-preview — the `#theme` reference target for component
+ * `*.module.css` files (see migration/griffel-to-tailwind/CONVERSION_GUIDE.md).
+ *
+ * Library constraints (differ deliberately from an app-level Tailwind setup):
+ * - NO preflight: a component library must not ship global resets. Only Tailwind's
+ *   theme + utilities are imported; utilities reach consumers exclusively inlined
+ *   through `@apply` in component modules.
+ * - Fluent design tokens are registered with `@theme inline` (./tokens.css, generated),
+ *   which substitutes `var(--tokenName)` INTO each utility rather than aliasing it at
+ *   `:root`. FluentProvider still owns the values — they stay scoped CSS custom
+ *   properties resolved per-element, so per-provider and nested-provider theming are
+ *   unchanged. A plain (non-inline) `@theme` alias would freeze resolution at `:root`
+ *   and is FORBIDDEN. Literal `var(--tokenName)` remains valid everywhere.
+ * - The ONLY nyt-games theme carry-over is --base-scale (user requirement).
+ */
+
+/*
+ * ONE layer family (settled with user 2026-07-27): the nyt-games layer structure,
+ * carried under the `fui` root. Mapping from nyt-games / Tailwind conventions:
+ *   nyt `theme`         → fui.theme        (the @theme custom-property emission)
+ *   nyt `base`          → fui.base        (levelless; hosts makeResetStyles output —
+ *                          Griffel's reset bucket lost to everything, so this layer
+ *                          sits below all component levels. Also the sanctioned slot
+ *                          for preflight if an app ever wants it; the library itself
+ *                          ships NO global resets.)
+ *   nyt `components.lN` → fui.components.lN (implementation altitude:
+ *                          l1 = base library components, l2 = library compositions
+ *                          (styles applied over another component's hook output),
+ *                          l3–l5 = consumer space: app-global / page / bespoke.
+ *                          Winner order WITHIN a level = in-file source order; all
+ *                          selectors are :where()-flat. Rules written directly into
+ *                          `fui.components` (or any level) beat that layer's
+ *                          sublayers — probe-verified; use sparingly.)
+ *   nyt `utilities`     → fui.utilities    (top of family: utilities beat component
+ *                          styles by design, but lose to unlayered consumer CSS)
+ * Verified caller-side: tailwindcss/utilities.css is a bare `@tailwind utilities;` with
+ * no layer name — cascade layers are assigned only by these import modifiers. Tailwind
+ * v4's own `components` layer receives no emissions (probe-verified).
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@import 'tailwindcss/theme.css' layer(fui.theme);
+@import 'tailwindcss/utilities.css' layer(fui.utilities);
+
+@import './variants.css';
+@import './utilities.css';
+
+@theme static {
+  --base-scale: calc(1rem / 16px);
+
+  /*
+   * DUAL SPACING (settled with user 2026-07-27) — both halves are live:
+   *
+   * 1. NUMERIC. Every numeric spacing/sizing utility (p-12, gap-8, w-64, …) reads as px
+   *    but computes to rem via --base-scale: identical pixels at the default 16px root,
+   *    scaling with user font-size preferences (intentional accessibility deviation).
+   *    `--spacing-*: initial` drops Tailwind's own named spacing scale (px, 0.5, …) so
+   *    only the multiplier below survives.
+   * 2. NAMED. ./tokens.css re-populates the namespace with the 22 Fluent spacing steps
+   *    (p-horizontal-m, gap-vertical-s, …) PLUS the 4 stroke widths (p-thin, w-thick,
+   *    gap-thicker, h-thickest). `initial` clears only what is registered BEFORE it, so
+   *    the LATER import survives this reset — probe-verified, and the reason ./tokens.css
+   *    must stay imported after this block.
+   *
+   * The 22 spacing keys are ALIASES OF THE NUMERIC AXIS — `calc(var(--spacing) * 12)`,
+   * the exact shape `p-12` compiles to — so named and numeric spacing are one scaling
+   * system with ONE density knob: the `--spacing` base below (theming Phase 1, settled
+   * with user 2026-07-29). Overriding `--spacing` on any subtree rescales both forms
+   * identically. Stroke widths are the deliberate exception: their PUBLIC variables are
+   * `--stroke-width-thin/thick/thicker/thickest`, literal `calc(<px> * var(--base-scale))`
+   * — borders must not thin when layout density changes — and the `--spacing-thin/…` keys
+   * are PRIVATE hooks aliasing them for utility generation. No form reads the old
+   * camelCase names (gone — option B single vocabulary), so FluentProvider
+   * spacing/strokeWidth overrides do not reach utility-sourced spacing; all 7 shipped
+   * themes carry identical values for both sets (asserted:
+   * .scratch/layer-probe/assert-theme-spacing.js and assert-theme-stroke-width.js), so no
+   * shipped theme changes behavior.
+   */
+  --spacing-*: initial;
+  --spacing: calc(1px * var(--base-scale));
+
+  /*
+   * Zero out Tailwind's default palette/typography so a stray `text-red-500` or
+   * `font-sans` fails the build instead of silently diverging from Fluent tokens.
+   * Structural utilities (flex, grid, items-*, overflow-*, …) remain available.
+   *
+   * `initial` clears whatever is registered at THIS point in the theme resolution, so
+   * ./tokens.css must be imported AFTER this block — see the note on the import below.
+   */
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --font-weight-*: initial;
+  --tracking-*: initial;
+  --leading-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --blur-*: initial;
+  --animate-*: initial;
+}
+
+/*
+ * Fluent design tokens as Tailwind namespaces — GENERATED, do not edit by hand:
+ *   node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ *
+ * Gives every Fluent token a utility name (`bg-neutral-background-1`, `text-base-300`,
+ * `shadow-8`, `rounded-medium`, `leading-base-300`, `ease-easy-ease`, `duration-normal`,
+ * `z-popup`, …) that compiles to a DIRECT `var(--fluentToken)` reference via
+ * `@theme inline`. Literal `var(--tokenName)` authoring stays valid and unchanged.
+ *
+ * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` compile to the
+ * numeric-axis alias `calc(var(--spacing) * N)` and `w-thin` to
+ * `var(--stroke-width-thin)` — never to any old camelCase token variable (those names no
+ * longer exist in emitted CSS; option B) — see the dual-spacing note in the
+ * `@theme static` block above.
+ *
+ * ALL SPACING-NAMESPACE KEYS ARE ALSO EMITTED as real custom properties, together with
+ * the 4 canonical `--stroke-width-*` variables — a `@layer fui.theme { :root, :host { … } }`
+ * block at the end of the generated file, the only declarations it contains. Two reasons:
+ * (a) border, outline, ring, divide, underline-offset and decoration widths do NOT
+ * consume the `--spacing-*` namespace in v4 (`border-thin` does not exist; `border-2` is
+ * a hardcoded px literal, not a theme lookup), so modules author those properties as a
+ * direct `var(--spacing-thin)`, which needs a variable that exists; (b) the `tokens.*`
+ * JS constants in @fluentui/tokens are var() reference strings against these canonical
+ * names (charts inline styles etc.). Emitted once per document via ./emit.css exactly
+ * like `--base-scale`; `@reference` keeps it out of every component module. Probe:
+ * .scratch/layer-probe/check-stroke-namespace.mjs (consumes/does-not table) and
+ * check-stroke-emission.mjs (emission end to end).
+ *
+ * ORDER IS LOAD-BEARING: this import must stay AFTER the `@theme static` block above.
+ * Placed before it, `--color-*: initial` (and friends) wipe every registration and the
+ * utilities silently stop compiling — probe-verified, not theoretical.
+ */
+@import './tokens.css';
+
+/*
+ * SHIPPED THEME CLASSES (generated — theming Phase 2b). One class per shipped theme
+ * (.fui-theme-web-dark, …), each carrying ONLY the theme-variant canonical custom
+ * properties inside `@layer fui.theme`. A theme class on any DOM node themes that
+ * subtree; the `:root, :host` defaults above stay web light. `@reference` drops these
+ * rules from component modules (plain style rules emit nothing under reference), so the
+ * classes ship once per document via ./emit.css / dist/styles.css.
+ */
+@import './themes.css';

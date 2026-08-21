@@ -1,0 +1,61 @@
+{
+  "name": "@fluentui/react-tailwind-theme-preview",
+  "version": "9.0.0-alpha.0",
+  "description": "Fluent UI themes and design tokens as a Tailwind v4 CSS layer: cascade layer order, custom variants, the base-scale spacing bridge, the generated Fluent token registration (css/tokens.css, `@theme inline` utility names over kebab-case custom properties), and the 7 shipped themes as static CSS classes (css/themes.css — apply `fui-theme-web-dark` etc. to any element to theme its subtree; web-light values are the `:root, :host` defaults). Spacing registers the 22 named tokens as aliases of the numeric axis (one density knob, --spacing); stroke widths keep literal base-scale values under --stroke-width-* on purpose (borders must not thin with layout density). The kebab-case variable namespace is self-contained by design — it does not interoperate with classic FluentProvider runtime theming (camelCase variables). Pairs with @fluentui/react-windmod-preview, and is equally usable for styling @fluentui/react-headless-components-preview directly.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  },
+  "scripts": {
+    "build": "node build.js",
+    "generate-tokens-css": "node scripts/generate-tokens-css.js",
+    "verify-tokens-css": "node scripts/generate-tokens-css.js --check",
+    "generate-theme-values": "node scripts/generate-theme-values.js",
+    "verify-theme-values": "node scripts/generate-theme-values.js --check",
+    "test-spacing-behavior": "node scripts/probe-spacing-behavior.mjs",
+    "prepack": "node build.js"
+  },
+  "style": "css/index.css",
+  "exports": {
+    ".": "./css/index.css",
+    "./styles.css": "./dist/styles.css",
+    "./theme-class-names": {
+      "types": "./theme-class-names.d.mts",
+      "default": "./theme-class-names.mjs"
+    },
+    "./css/*": "./css/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "css",
+    "dist/styles.css",
+    "theme-class-names.mjs",
+    "theme-class-names.d.mts"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "nx": {
+    "name": "react-tailwind-theme-preview",
+    "targets": {
+      "build": {
+        "inputs": [
+          "{projectRoot}/css/**",
+          "{projectRoot}/build.js"
+        ],
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      }
+    }
+  }
+}
