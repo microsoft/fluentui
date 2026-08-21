@@ -27,7 +27,17 @@ export function hide(options: HideMiddlewareOptions): Middleware {
     strategy,
     // Only consider intermediate clipping ancestors (including non-scrolling `overflow: hidden`
     // containers) when there's an ancestor that can actually be scrolled. Otherwise, fall back to
-    // the viewport as the sole boundary.
+    // the viewport as the sole boundary by passing an empty array, so static, non-scrolling
+    // clipping ancestors aren't treated as a boundary an element can be "hidden" or "escaped" by.
+    //
+    // This relies on an implicit (undocumented in floating-ui's public docs, but verified against
+    // its source) behavior of `@floating-ui/dom@^1.6.12`'s `getClippingRect`: passing a `boundary`
+    // that isn't `'clippingAncestors'` (e.g. `[]`) skips all intermediate DOM clipping ancestors
+    // and only considers `rootBoundary` (the viewport, by default). This wrapper's own mapping of
+    // `hasScrollableElement` to `boundary` is pinned by unit tests in `./hide.test.ts`. The deeper
+    // real-browser geometry contract (that `boundary: []` genuinely behaves as viewport-only) is
+    // covered by react-tooltip's Cypress tests (`Tooltip.cy.tsx`, regressions #32882 and #36604) —
+    // if a future `@floating-ui/dom` upgrade changes this behavior, those should fail.
     boundary: hasScrollableElement ? 'clippingAncestors' : [],
   });
 }
