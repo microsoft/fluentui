@@ -61,6 +61,16 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./label": {
+      "import": {
+        "types": "./dist/label.d.ts",
+        "default": "./lib/label.js"
+      },
+      "require": {
+        "types": "./dist/label.d.cts",
+        "default": "./lib-commonjs/label.cjs"
+      }
+    },
     "./provider": {
       "import": {
         "types": "./dist/provider.d.ts",

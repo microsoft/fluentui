@@ -1,6 +1,9 @@
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
+export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
+export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
+
 export { renderTooltip, Tooltip, tooltipClassNames, useTooltip, useTooltipStyles } from './tooltip';
 export type {
   OnVisibleChangeData,

@@ -9,10 +9,14 @@ import { ButtonSlots } from '@fluentui/react-headless-components-preview/button'
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
+import { LabelSlots } from '@fluentui/react-headless-components-preview/label';
+import type { LabelState as LabelState_2 } from '@fluentui/react-headless-components-preview/label';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
+import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -27,6 +31,7 @@ import { TooltipSlots } from '@fluentui/react-headless-components-preview/toolti
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
+import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -61,11 +66,38 @@ export { ButtonSlots }
 // @public
 export type ButtonState = ButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
 
+// @public
+export const Label: ForwardRefComponent<LabelProps>;
+
+// @public
+export const labelClassNames: {
+    root: string;
+};
+
+// @public
+export type LabelProps = LabelProps_2 & {
+    size?: LabelSize;
+    weight?: LabelWeight;
+};
+
+// @public
+export type LabelSize = 'small' | 'medium' | 'large';
+
+export { LabelSlots }
+
+// @public
+export type LabelState = LabelState_2 & Required<Pick<LabelProps, 'size' | 'weight'>>;
+
+// @public
+export type LabelWeight = 'regular' | 'semibold';
+
 export { OnVisibleChangeData }
 
 export { Provider }
 
 export { renderButton }
+
+export { renderLabel }
 
 export { renderProvider }
 
@@ -131,6 +163,11 @@ export { useButton }
 
 // @public
 export const useButtonStyles: (state: ButtonState) => ButtonState;
+
+export { useLabel }
+
+// @public
+export const useLabelStyles: (state: LabelState) => LabelState;
 
 export { useProvider }
 
