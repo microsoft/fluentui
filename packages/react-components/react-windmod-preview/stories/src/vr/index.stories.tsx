@@ -1,5 +1,7 @@
 export { ButtonWindmod } from './ButtonWindmod.stories';
 export { ButtonGriffel } from './ButtonGriffel.stories';
+export { DividerWindmod } from './DividerWindmod.stories';
+export { DividerGriffel } from './DividerGriffel.stories';
 export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';

@@ -1,6 +1,9 @@
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
+export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles } from './divider';
+export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
+
 export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
 export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
 

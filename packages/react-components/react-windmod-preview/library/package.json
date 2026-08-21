@@ -61,6 +61,16 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./divider": {
+      "import": {
+        "types": "./dist/divider.d.ts",
+        "default": "./lib/divider.js"
+      },
+      "require": {
+        "types": "./dist/divider.d.cts",
+        "default": "./lib-commonjs/divider.cjs"
+      }
+    },
     "./label": {
       "import": {
         "types": "./dist/label.d.ts",

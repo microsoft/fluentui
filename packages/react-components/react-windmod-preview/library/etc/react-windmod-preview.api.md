@@ -7,6 +7,9 @@
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
+import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
+import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
+import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
@@ -16,6 +19,7 @@ import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
+import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -31,6 +35,7 @@ import { TooltipSlots } from '@fluentui/react-headless-components-preview/toolti
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
+import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -67,6 +72,32 @@ export { ButtonSlots }
 export type ButtonState = ButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 // @public
+export const Divider: ForwardRefComponent<DividerProps>;
+
+// @public
+export type DividerAlignContent = 'start' | 'center' | 'end';
+
+// @public
+export type DividerAppearance = 'brand' | 'default' | 'strong' | 'subtle';
+
+// @public
+export const dividerClassNames: {
+    root: string;
+};
+
+// @public
+export type DividerProps = DividerProps_2 & {
+    alignContent?: DividerAlignContent;
+    appearance?: DividerAppearance;
+    inset?: boolean;
+};
+
+export { DividerSlots }
+
+// @public
+export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
+
+// @public
 export const Label: ForwardRefComponent<LabelProps>;
 
 // @public
@@ -96,6 +127,8 @@ export { OnVisibleChangeData }
 export { Provider }
 
 export { renderButton }
+
+export { renderDivider }
 
 export { renderLabel }
 
@@ -163,6 +196,11 @@ export { useButton }
 
 // @public
 export const useButtonStyles: (state: ButtonState) => ButtonState;
+
+export { useDivider }
+
+// @public
+export const useDividerStyles: (state: DividerState) => DividerState;
 
 export { useLabel }
 
