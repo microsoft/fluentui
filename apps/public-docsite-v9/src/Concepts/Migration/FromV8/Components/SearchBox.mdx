@@ -35,6 +35,53 @@ import { SearchBox } from '@fluentui/react-components';
 />;
 ```
 
+### Escape and clear behavior
+
+v8 calls `onEscape` for every Escape press. It only clears a non-empty value,
+calls `onClear` for that clear, and lets either callback cancel the clear with
+`preventDefault()`. v9 has no `onEscape`; recreate the policy on the native
+input `onKeyDown`:
+
+```tsx
+import * as React from 'react';
+import { SearchBox } from '@fluentui/react-components';
+
+const MigratedSearch = ({
+  onEscape,
+  onClear,
+}: {
+  onEscape: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClear: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+}) => {
+  const [query, setQuery] = React.useState('');
+
+  return (
+    <SearchBox
+      value={query}
+      onChange={(_, data) => setQuery(data.value)}
+      onKeyDown={event => {
+        if (event.key !== 'Escape') {
+          return;
+        }
+        onEscape(event);
+        if (event.defaultPrevented || query === '') {
+          return;
+        }
+        onClear(event);
+        if (!event.defaultPrevented) {
+          setQuery('');
+          event.stopPropagation();
+        }
+      }}
+    />
+  );
+};
+```
+
+The dismiss button already calls v9 `onChange` with `data.value === ''`. Its
+event is a `React.MouseEvent<HTMLSpanElement>`, while typed changes use
+`React.ChangeEvent<HTMLInputElement>`.
+
 ### With Field (label + validation)
 
 ```tsx
@@ -63,6 +110,7 @@ import { Field, SearchBox } from '@fluentui/react-components';
 | `onChange`           | `onChange`                 | Type changed: `(_, data: InputOnChangeData) => void`; dismiss fires with `data.value === ''` |
 | `onSearch`           | —                          | Use native `onKeyDown` checking `event.key === 'Enter'`                                      |
 | `onClear`            | `onChange` with `''`       | Dismiss button calls `onChange` with empty string                                            |
+| `onEscape`           | Native input `onKeyDown`   | Call the app callback first; clear only a non-empty value and honor `preventDefault()`       |
 | `iconProps`          | `contentBefore` slot       | Pass `<SearchRegular />` or custom icon                                                      |
 | `underlined`         | `appearance="underline"`   |                                                                                              |
 | `disableAnimation`   | —                          | Not supported                                                                                |

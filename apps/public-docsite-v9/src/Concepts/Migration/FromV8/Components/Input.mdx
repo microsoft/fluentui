@@ -38,6 +38,55 @@ const TextFieldV8BasicExample = () => {
 };
 ```
 
+### Validation
+
+Validation is composed with `Field`, not unsupported. Move
+`invalid`/`errorMessage` to `Field validationState` and
+`validationMessage`. `Field` associates the message with the input, sets
+`aria-invalid` for errors, and gives error/warning messages an alert role; do
+not duplicate those ARIA attributes manually.
+
+Keep the v8 validation policy in app state. The following preserves
+change-driven async validation with an app-owned debounce and stale-result
+protection:
+
+```tsx
+import * as React from 'react';
+import { Field, Input } from '@fluentui/react-components';
+
+const ValidatedInput = ({ validate }: { validate: (value: string) => Promise<string> }) => {
+  const [value, setValue] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const requestSequence = React.useRef(0);
+
+  React.useEffect(() => {
+    const sequence = ++requestSequence.current;
+    const timer = window.setTimeout(async () => {
+      const nextMessage = await validate(value);
+      if (sequence === requestSequence.current) {
+        setMessage(nextMessage);
+      }
+    }, 200);
+    return () => window.clearTimeout(timer);
+  }, [validate, value]);
+
+  return (
+    <Field label="Account name" validationState={message ? 'error' : 'none'} validationMessage={message || undefined}>
+      <Input value={value} onChange={(_, data) => setValue(data.value)} />
+    </Field>
+  );
+};
+```
+
+When migrating `validateOnFocusIn` or `validateOnFocusOut`, run the same
+sequenced validator from `onFocus` or `onBlur` instead of every change. If both
+were true, validate on both events. Preserve `validateOnLoad` by either running
+the validator on mount or skipping the initial effect/event until the first
+requested validation. `deferredValidationTime` becomes the app-owned debounce.
+Keep the last-request-wins guard (or cancellation) for promise validators.
+Only update `validationMessage` when a result is current so stale errors are
+not announced.
+
 An equivalent `Input` usage is:
 
 ```tsx
@@ -140,18 +189,18 @@ This table maps v8 `TextField` props to the v9 `Input` equivalent.
 | `value`                    | `value`                                    | Mutually exclusive with `defaultValue`                                               |
 | `disabled`                 | `disabled`                                 |                                                                                      |
 | `readOnly`                 | `readOnly`                                 | In v9 this is the native HTML prop                                                   |
-| `invalid`                  | n/a                                        | v9 `Input` does not handle validation states                                         |
-| `errorMessage`             | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
+| `invalid`                  | `Field validationState="error"`            | `Field` supplies invalid semantics                                                   |
+| `errorMessage`             | `Field validationMessage`                  | `Field` associates and announces the message                                         |
 | `onChange`                 | `onChange`                                 | Typescript types have changed                                                        |
-| `onNotifyValidationResult` | n/a                                        | v9 `Input` does not handle validation                                                |
-| `onGetErrorMessage`        | n/a                                        | v9 `Input` does not handle error states                                              |
-| `deferredValidationTime`   | n/a                                        | v9 `Input` does not handle validation                                                |
+| `onNotifyValidationResult` | App-owned validation state                 | Notify when the current validation result is applied                                 |
+| `onGetErrorMessage`        | App-owned validator + `Field`              | Preserve sync/async result and stale-result protection                               |
+| `deferredValidationTime`   | App-owned debounce                         | Preserve the v8 delay before validation                                              |
 | `className`                | `className`                                |                                                                                      |
 | `inputClassName`           | Use `input` slot                           |                                                                                      |
 | `ariaLabel`                | `aria-label`                               |                                                                                      |
-| `validateOnFocusIn`        | n/a                                        | v9 `Input` does not handle validation                                                |
-| `validateOnFocusOut`       | n/a                                        | v9 `Input` does not handle validation                                                |
-| `validateOnLoad`           | n/a                                        | v9 `Input` does not handle validation                                                |
+| `validateOnFocusIn`        | Validate from `onFocus`                    | Preserve the v8 timing policy                                                        |
+| `validateOnFocusOut`       | Validate from `onBlur`                     | Preserve the v8 timing policy                                                        |
+| `validateOnLoad`           | Initial app-owned validation               | Run or skip validation on mount to match v8                                          |
 | `theme`                    | n/a                                        | Use `FluentProvider` to customize themes                                             |
 | `styles`                   | `className`                                |                                                                                      |
 | `autoComplete`             | `autoComplete`                             | In v9 this is the native HTML prop                                                   |

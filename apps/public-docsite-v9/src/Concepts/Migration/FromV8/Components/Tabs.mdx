@@ -51,7 +51,7 @@ To migrate from `Pivot` to `TabList`
 For example, here is the previous `Pivot` example migrated to use `TabList`
 
 ```tsx
-const [selectedValue, setSelectedValue] = React.useState<TabValue>();
+const [selectedValue, setSelectedValue] = React.useState<TabValue>('tab1');
 
 const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
   setSelectedValue(data.value);
@@ -61,17 +61,43 @@ const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
 
 <>
   <TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
-    <Tab value="tab1">First Tab</Tab>
-    <Tab value="tab2">Second Tab</Tab>
-    <Tab value="tab3">Third Tab</Tab>
+    <Tab id="tab1" value="tab1" aria-controls="panel1">
+      First Tab
+    </Tab>
+    <Tab id="tab2" value="tab2" aria-controls="panel2">
+      Second Tab
+    </Tab>
+    <Tab id="tab3" value="tab3" aria-controls="panel3">
+      Third Tab
+    </Tab>
   </TabList>
   <div>
-    {selectedValue === 'tab1' && <div>Content 1</div>}
-    {selectedValue === 'tab2' && <div>Content 2</div>}
-    {selectedValue === 'tab3' && <div>Content 3</div>}
+    <div id="panel1" role="tabpanel" aria-labelledby="tab1" hidden={selectedValue !== 'tab1'}>
+      Content 1
+    </div>
+    <div id="panel2" role="tabpanel" aria-labelledby="tab2" hidden={selectedValue !== 'tab2'}>
+      Content 2
+    </div>
+    <div id="panel3" role="tabpanel" aria-labelledby="tab3" hidden={selectedValue !== 'tab3'}>
+      Content 3
+    </div>
   </div>
 </>;
 ```
+
+v8 selects the first `PivotItem` when neither `selectedKey` nor
+`defaultSelectedKey` is supplied. v9 `TabList` has no implicit initial
+selection, so initialize controlled state to the first value as above, or use
+`defaultSelectedValue="tab1"` for an uncontrolled list.
+
+The canonical v9 panel pattern gives each `Tab` a stable `id` and each panel
+`role="tabpanel"` plus `aria-labelledby`. When panels stay mounted, also connect
+each tab with `aria-controls`.
+
+v8 `PivotItem alwaysRender` keeps inactive content mounted. Preserve that
+behavior by rendering every stateful panel and toggling the HTML `hidden`
+attribute. Conditional rendering unmounts inactive panels and loses local
+state, focus, and pending work.
 
 ## Prop Mapping
 
@@ -96,16 +122,16 @@ const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
 
 ## PivotItem -> Tab Props Mapping
 
-| v8                | v9             |
-| ----------------- | -------------- |
-| componentRef      | ref            |
-| linkText          | (removed)      |
-| headerText        | (use children) |
-| headerButtonProps | (removed)      |
-| itemKey           | value          |
-| ariaLabel         | aria-label     |
-| itemCount         | (removed)      |
-| itemIcon          | icon (slot)    |
-| onRenderItemLink  | (removed)      |
-| keytipProps       | (removed)      |
-| alwaysRender      | (removed)      |
+| v8                | v9                                      |
+| ----------------- | --------------------------------------- |
+| componentRef      | ref                                     |
+| linkText          | (removed)                               |
+| headerText        | (use children)                          |
+| headerButtonProps | (removed)                               |
+| itemKey           | value                                   |
+| ariaLabel         | aria-label                              |
+| itemCount         | (removed)                               |
+| itemIcon          | icon (slot)                             |
+| onRenderItemLink  | (removed)                               |
+| keytipProps       | (removed)                               |
+| alwaysRender      | Keep panels mounted and toggle `hidden` |

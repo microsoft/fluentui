@@ -10,62 +10,85 @@ In v9, there is not a shared button type. Variants have their own props although
 
 To migrate a button replace the v8 usage with the corresponding v9 button variant. Use the property mapping to pass the right properties to the v9 button.
 
+`MenuButton` only provides the visual trigger. A v8 button with `menuProps`
+must migrate to the complete menu composition:
+
+```tsx
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+
+<Menu>
+  <MenuTrigger disableButtonEnhancement>
+    <MenuButton>Open</MenuButton>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem onClick={handleOpen}>Open file</MenuItem>
+      <MenuItem onClick={handleSave}>Save file</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>;
+```
+
+Move `menuProps.items` into `MenuItem` children and migrate menu open state,
+checked items, callbacks, and positioning to the corresponding `Menu` APIs.
+See the [Menu migration guide](/docs/concepts-migration-from-v8-components-menu-migration--docs).
+
 ## Button Variant Mapping
 
-| v8 Button variant    | v9 Button variant               |
-| -------------------- | ------------------------------- |
-| DefaultButton        | Button                          |
-| ActionButton         | Button appearance="transparent" |
-| CommandButton        | Button                          |
-| CommandBarButton     | Button                          |
-| CompoundButton       | CompoundButton                  |
-| ContextualMenuButton | Menu / MenuButton               |
-| PrimaryButton        | Button appearance="primary"     |
-| Button split         | SplitButton                     |
-| Button toggle        | ToggleButton                    |
+| v8 Button variant    | v9 Button variant                        |
+| -------------------- | ---------------------------------------- |
+| DefaultButton        | Button                                   |
+| ActionButton         | Button appearance="transparent"          |
+| CommandButton        | Button                                   |
+| CommandBarButton     | Button                                   |
+| CompoundButton       | CompoundButton                           |
+| ContextualMenuButton | Menu composition with MenuButton trigger |
+| PrimaryButton        | Button appearance="primary"              |
+| Button split         | SplitButton                              |
+| Button toggle        | ToggleButton                             |
 
 ## Button Props Mapping
 
-| v8 IButtonProps          | v9 ButtonProps (replacements)              |
-| ------------------------ | ------------------------------------------ |
-| allowDisabledFocus       | disabledFocusable                          |
-| ariaLabel                | HTML aria-label                            |
-| ariaDescription          | (removed)                                  |
-| ariaHidden               | HTML aria-hidden                           |
-| checked                  | (use ToggleButton checked)                 |
-| className                | className                                  |
-| children                 | children                                   |
-| componentRef             | ref                                        |
-| data                     | (removed)                                  |
-| defaultRender            | (removed)                                  |
-| disabled                 | disabled                                   |
-| getClassNames            |                                            |
-| getSplitButtonClassNames | (use SplitButton)                          |
-| href                     | (use Link)                                 |
-| iconProps                | icon (slot)                                |
-| key                      | key                                        |
-| keyTipProps              |                                            |
-| menuAs                   | (use Menu and HTML as)                     |
-| menuIconProps            | (use MenuButton menuIcon slot)             |
-| menuProps                | (use Menu and MenuButton)                  |
-| menuTriggerKeyCode       |                                            |
-| onMenuClick              | HTML onClick                               |
-| onRenderAriaDescription  | (removed)                                  |
-| onRenderChildren         | children                                   |
-| onRenderDescription      | (use CompoundButton secondaryContent slot) |
-| onRenderIcon             | icon (slot)                                |
-| onRenderMenuIcon         | (use MenuButton icon)                      |
-| onRenderText             | children                                   |
-| persistMenu              | (use Menu)                                 |
-| primary                  | appearance=primary                         |
-| primaryActionButtonProps | (use SplitButton)                          |
-| primaryDisabled          | (use SplitButton)                          |
-| secondaryText            | (use CompoundButton secondaryContent)      |
-| split                    | (use SplitButton)                          |
-| splitButtonAriaLabel     | HTML aria-label                            |
-| splitButtonMenuProps     | (use Menu and SplitButton)                 |
-| styles                   | (use makeStyles and className)             |
-| text                     | children                                   |
-| theme                    | (use FluentProvider)                       |
-| toggle                   | (use ToggleButton)                         |
-| uniqueId                 | (no direct equivalent)                     |
+| v8 IButtonProps          | v9 ButtonProps (replacements)                                                |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| allowDisabledFocus       | disabledFocusable                                                            |
+| ariaLabel                | HTML aria-label                                                              |
+| ariaDescription          | (removed)                                                                    |
+| ariaHidden               | HTML aria-hidden                                                             |
+| checked                  | (use ToggleButton checked)                                                   |
+| className                | className                                                                    |
+| children                 | children                                                                     |
+| componentRef             | ref                                                                          |
+| data                     | (removed)                                                                    |
+| defaultRender            | (removed)                                                                    |
+| disabled                 | disabled                                                                     |
+| getClassNames            |                                                                              |
+| getSplitButtonClassNames | (use SplitButton)                                                            |
+| href                     | (use Link)                                                                   |
+| iconProps                | icon (slot)                                                                  |
+| key                      | key                                                                          |
+| keyTipProps              |                                                                              |
+| menuAs                   | (use Menu and HTML as)                                                       |
+| menuIconProps            | (use MenuButton menuIcon slot)                                               |
+| menuProps                | (compose Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, and MenuItem) |
+| menuTriggerKeyCode       |                                                                              |
+| onMenuClick              | HTML onClick                                                                 |
+| onRenderAriaDescription  | (removed)                                                                    |
+| onRenderChildren         | children                                                                     |
+| onRenderDescription      | (use CompoundButton secondaryContent slot)                                   |
+| onRenderIcon             | icon (slot)                                                                  |
+| onRenderMenuIcon         | (use MenuButton icon)                                                        |
+| onRenderText             | children                                                                     |
+| persistMenu              | (use Menu)                                                                   |
+| primary                  | appearance=primary                                                           |
+| primaryActionButtonProps | (use SplitButton)                                                            |
+| primaryDisabled          | (use SplitButton)                                                            |
+| secondaryText            | (use CompoundButton secondaryContent)                                        |
+| split                    | (use SplitButton)                                                            |
+| splitButtonAriaLabel     | HTML aria-label                                                              |
+| splitButtonMenuProps     | (use Menu and SplitButton)                                                   |
+| styles                   | (use makeStyles and className)                                               |
+| text                     | children                                                                     |
+| theme                    | (use FluentProvider)                                                         |
+| toggle                   | (use ToggleButton)                                                           |
+| uniqueId                 | (no direct equivalent)                                                       |

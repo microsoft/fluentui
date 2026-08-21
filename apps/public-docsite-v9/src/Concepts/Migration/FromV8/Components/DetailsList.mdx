@@ -19,6 +19,7 @@ Key shifts:
 - Selection uses a `Set` of item keys, not a `Selection` class
 - Sorting is declarative (`sortable` prop + `sortState`) instead of per-column `isSorted` flags
 - `getRowId` prop specifies which field to use as the row key
+- `DataGrid` does not provide the built-in page virtualization used by `DetailsList`
 
 ## Examples
 
@@ -105,6 +106,10 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const isInteractiveTarget = (target: EventTarget) =>
+  target instanceof HTMLElement &&
+  target.closest('a, button, input, select, textarea, [role="button"], [role="link"]') !== null;
+
 <DataGrid
   items={items}
   columns={columns}
@@ -118,7 +123,19 @@ const columns: TableColumnDefinition<Item>[] = [
   </DataGridHeader>
   <DataGridBody<Item>>
     {({ item, rowId }) => (
-      <DataGridRow<Item> key={rowId} onClick={() => handleItemInvoked(item)}>
+      <DataGridRow<Item>
+        key={rowId}
+        onDoubleClick={event => {
+          if (!event.defaultPrevented && !isInteractiveTarget(event.target)) {
+            handleItemInvoked(item);
+          }
+        }}
+        onKeyDown={event => {
+          if (event.key === 'Enter' && !event.defaultPrevented && !isInteractiveTarget(event.target)) {
+            handleItemInvoked(item);
+          }
+        }}
+      >
         {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
       </DataGridRow>
     )}
@@ -143,6 +160,43 @@ class.
 Set `resizableColumns` and provide widths through `columnSizingOptions`.
 The option keys must match the column IDs.
 
+### Activation, focus, and keyboard behavior
+
+`onItemInvoked` is an invocation action: v8 invokes it for Enter on the
+selected row and for double-click. Map it to the app's row action and preserve
+both pointer and keyboard invocation; do not reduce it to a single-click
+handler. Ignore handled events and events from nested interactive controls so
+Enter or double-click on a button or link does not also invoke the row.
+
+`onActiveItemChanged` is different: v8 calls it when a row becomes active
+because focus moved there, including keyboard navigation. Track row focus
+(for example, `onFocus` on `DataGridRow`, ignoring focus moves within the same
+row) and call the migrated active-item callback there. `DataGrid` supplies grid
+keyboard navigation; keep the row/cell focus model intact when adding handlers
+and do not make every cell an independent tab stop.
+
+### Stable row identity and virtualization
+
+`DataGrid` falls back to the row index when `getRowId` is omitted. Provide
+`getRowId` whenever rows can sort, filter, insert, delete, page, or refresh.
+The returned ID must be stable for the domain item across those operations.
+Using an array index causes selection and focus to attach to a different item
+after reordering and can corrupt controlled `selectedItems`.
+
+Unlike `DetailsList`, `DataGrid` does not virtualize rows. If the data set
+requires virtualization, compose a virtualizer around the body and preserve
+the grid contract:
+
+- expose the logical row position with one-based `aria-rowindex` and the full
+  logical count where applicable, not only the rendered window;
+- key rows and selection by the same stable `getRowId`;
+- keep the active row mounted or restore focus deliberately as the window
+  scrolls, and scroll keyboard-selected rows into view;
+- preserve DataGrid row/cell roles, selection state, and arrow-key navigation.
+
+Test keyboard traversal, invocation, selection, focus restoration, and
+programmatic scrolling across virtual-window boundaries.
+
 ## Prop Mapping
 
 ### IColumn → TableColumnDefinition
@@ -163,19 +217,19 @@ The option keys must match the column IDs.
 
 ### IDetailsListProps → DataGridProps
 
-| v8                    | v9                                    | Notes                                     |
-| --------------------- | ------------------------------------- | ----------------------------------------- |
-| `items`               | `items`                               |                                           |
-| `columns`             | `columns`                             | Different shape — use `createTableColumn` |
-| `selectionMode`       | `selectionMode`                       | `"single"` \| `"multiselect"` (string)    |
-| `selection`           | `selectedItems` + `onSelectionChange` | `Set` of row IDs, not `Selection` class   |
-| `getKey`              | `getRowId`                            |                                           |
-| `onItemInvoked`       | `onClick` on `<DataGridRow>`          |                                           |
-| `onActiveItemChanged` | `onClick` on `<DataGridRow>`          |                                           |
-| `onRenderRow`         | Children function of `<DataGridBody>` |                                           |
-| `onRenderItemColumn`  | `renderCell` in `createTableColumn`   |                                           |
-| `checkboxVisibility`  | —                                     | No direct equivalent                      |
-| `groups`              | —                                     | Use `Tree` for grouped/hierarchical data  |
-| `compact`             | `size="small"`                        |                                           |
-| `styles`              | `className` + `makeStyles`            |                                           |
-| `theme`               | `FluentProvider`                      |                                           |
+| v8                    | v9                                    | Notes                                                         |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------- |
+| `items`               | `items`                               |                                                               |
+| `columns`             | `columns`                             | Different shape — use `createTableColumn`                     |
+| `selectionMode`       | `selectionMode`                       | `"single"` \| `"multiselect"` (string)                        |
+| `selection`           | `selectedItems` + `onSelectionChange` | `Set` of row IDs, not `Selection` class                       |
+| `getKey`              | `getRowId`                            |                                                               |
+| `onItemInvoked`       | App-owned row invocation              | Preserve Enter and double-click semantics                     |
+| `onActiveItemChanged` | Focus/active-row handler              | Fire when focus moves to a row, including keyboard navigation |
+| `onRenderRow`         | Children function of `<DataGridBody>` |                                                               |
+| `onRenderItemColumn`  | `renderCell` in `createTableColumn`   |                                                               |
+| `checkboxVisibility`  | —                                     | No direct equivalent                                          |
+| `groups`              | —                                     | Use `Tree` for grouped/hierarchical data                      |
+| `compact`             | `size="small"`                        |                                                               |
+| `styles`              | `className` + `makeStyles`            |                                                               |
+| `theme`               | `FluentProvider`                      |                                                               |

@@ -83,9 +83,40 @@ import { AddRegular } from '@fluentui/react-icons';
 
 ### Toggle and Menu Items
 
-Use `ToolbarToggleButton` for checked command items. Wrap a
-`ToolbarButton` in `MenuTrigger` when a v8 item has `subMenuProps`; render the
-submenu entries as `MenuItem` children.
+Use `ToolbarToggleButton` for checked command items. Checked state belongs to
+the root `Toolbar`: each toggle supplies a required `name` and `value`, while
+`checkedValues` (controlled) or `defaultCheckedValues` (uncontrolled) contains
+the values checked in each named group. `onCheckedValueChange` receives
+`{ name, checkedItems }`.
+
+```tsx
+import * as React from 'react';
+import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
+
+const FormattingToolbar = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
+    formatting: ['bold'],
+  });
+  const onCheckedValueChange: ToolbarProps['onCheckedValueChange'] = (_, { name, checkedItems }) => {
+    setCheckedValues(current => ({ ...current, [name]: checkedItems }));
+  };
+
+  return (
+    <Toolbar checkedValues={checkedValues} onCheckedValueChange={onCheckedValueChange}>
+      <ToolbarToggleButton name="formatting" value="bold">
+        Bold
+      </ToolbarToggleButton>
+      <ToolbarToggleButton name="formatting" value="italic">
+        Italic
+      </ToolbarToggleButton>
+    </Toolbar>
+  );
+};
+```
+
+Wrap a `ToolbarButton` in `MenuTrigger` when a v8 item has `subMenuProps`;
+render the submenu entries as `MenuItem` children.
 
 ### Overflow Handling
 
@@ -111,16 +142,16 @@ provided as a separate static array.
 
 ### ICommandBarItemProps → ToolbarButtonProps
 
-| v8 item prop   | v9                                 | Notes                                                                                                |
-| -------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `text`         | `children`                         | Move to JSX children                                                                                 |
-| `key`          | `key`                              | React key on the JSX element                                                                         |
-| `iconProps`    | `icon` slot                        | Pass `<IconComponent />`                                                                             |
-| `onClick`      | `onClick`                          |                                                                                                      |
-| `disabled`     | `disabled`                         |                                                                                                      |
-| `checked`      | `checked` on `ToolbarToggleButton` | Use `ToolbarToggleButton`                                                                            |
-| `subMenuProps` | Wrap in `Menu` + `MenuTrigger`     | Render submenu entries as `MenuItem` children                                                        |
-| `split`        | `SplitButton`                      | See the [Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs) |
-| `iconOnly`     | No `children`, add `aria-label`    | Keep `icon` slot, omit text children                                                                 |
-| `ariaLabel`    | `aria-label`                       |                                                                                                      |
-| `styles`       | `className` + `makeStyles`         |                                                                                                      |
+| v8 item prop   | v9                              | Notes                                                                                                 |
+| -------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `text`         | `children`                      | Move to JSX children                                                                                  |
+| `key`          | `key`                           | React key on the JSX element                                                                          |
+| `iconProps`    | `icon` slot                     | Pass `<IconComponent />`                                                                              |
+| `onClick`      | `onClick`                       |                                                                                                       |
+| `disabled`     | `disabled`                      |                                                                                                       |
+| `checked`      | `checkedValues` on `Toolbar`    | Use a `ToolbarToggleButton` with `name` and `value`; update the named group in `onCheckedValueChange` |
+| `subMenuProps` | Wrap in `Menu` + `MenuTrigger`  | Render submenu entries as `MenuItem` children                                                         |
+| `split`        | `SplitButton`                   | See the [Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs)  |
+| `iconOnly`     | No `children`, add `aria-label` | Keep `icon` slot, omit text children                                                                  |
+| `ariaLabel`    | `aria-label`                    |                                                                                                       |
+| `styles`       | `className` + `makeStyles`      |                                                                                                       |

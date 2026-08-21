@@ -51,6 +51,43 @@ const CheckboxV9BasicExample = () => {
 };
 ```
 
+Map `indeterminate` to `checked="mixed"` and `defaultIndeterminate` to
+`defaultChecked="mixed"` explicitly.
+
+v8 stores checked and indeterminate separately. Indeterminate is visual
+precedence over a latent boolean checked value; the first click clears
+indeterminate without toggling that boolean. v9 uses one
+`boolean | "mixed"` union and a native click from mixed normally reports a
+boolean in `data.checked`.
+
+If the latent v8 value and first-click transition matter, keep both pieces of
+state in the app and define the transition rather than assigning
+`data.checked` directly:
+
+```tsx
+import * as React from 'react';
+import { Checkbox } from '@fluentui/react-components';
+import type { CheckboxProps } from '@fluentui/react-components';
+
+const LatentMixedCheckbox = () => {
+  const [checked, setChecked] = React.useState(true);
+  const [mixed, setMixed] = React.useState(true);
+  const onChange: CheckboxProps['onChange'] = (_, data) => {
+    if (mixed) {
+      setMixed(false);
+      return;
+    }
+    setChecked(data.checked === true);
+  };
+
+  return <Checkbox checked={mixed ? 'mixed' : checked} onChange={onChange} label="Include descendants" />;
+};
+```
+
+The callback data type is `{ checked: boolean | "mixed" }`. Narrow it before
+storing a boolean, even though a normal user click on the native checkbox
+typically yields `true` or `false`.
+
 Usage of `CheckboxShim` in migration v8 to v9 is
 
 ```tsx
@@ -72,29 +109,29 @@ const CheckboxShimBasicExample = () => {
 
 This table maps `Checkbox` v8 props to the `Checkbox` v9 equivalent and `CheckboxShim`.
 
-| v8                     | v9                 | shim              | Notes                                    |
-| ---------------------- | ------------------ | ----------------- | ---------------------------------------- |
-| `ariaDescribedBy`      | `aria-describedby` | `ariaDescribedBy` |                                          |
-| `ariaLabel`            | `aria-label`       | `ariaLabel`       |                                          |
-| `ariaLabelledBy`       | `aria-labelledby`  | `ariaLabelledBy`  |                                          |
-| `ariaPositionInSet`    | `aria-posinset`    | `aria-posinset`   |                                          |
-| `ariaSetSize`          | `aria-setsize`     | `aria-setsize`    |                                          |
-| `boxSide`              | `labelPosition`    | n/a               |                                          |
-| `checked`              | `checked`          | `checked`         | Mutually exclusive with `defaultChecked` |
-| `checkmarkIconProps`   | `indicator`        | n/a               |                                          |
-| `className`            | `className`        | `className`       |                                          |
-| `componentRef`         | `ref`              | `componentRef`    |                                          |
-| `defaultChecked`       | `defaultChecked`   | `defaultChecked`  | Mutually exclusive with `checked`        |
-| `defaultIndeterminate` | `defaultChecked`   | n/a               |                                          |
-| `disabled`             | `disabled`         | `disabled`        |                                          |
-| `id`                   | `id`               | `id`              |                                          |
-| `indeterminate`        | `checked`          | n/a               |                                          |
-| `inputProps`           | n/a                | n/a               | Props go directly to the `input` slot    |
-| `label`                | `label`            | `label`           |                                          |
-| `name`                 | `name`             | `name`            |                                          |
-| `onChange`             | `onChange`         | `onChange`        |                                          |
-| `onRenderLabel`        | n/a                | `onRenderLabel`   |                                          |
-| `required`             | `required`         | `required`        |                                          |
-| `styles`               | `className`        | `className`       |                                          |
-| `theme`                | n/a                | `theme`           | Use `FluentProvider` to customize themes |
-| `title`                | n/a                | `title`           |                                          |
+| v8                     | v9                       | shim              | Notes                                            |
+| ---------------------- | ------------------------ | ----------------- | ------------------------------------------------ |
+| `ariaDescribedBy`      | `aria-describedby`       | `ariaDescribedBy` |                                                  |
+| `ariaLabel`            | `aria-label`             | `ariaLabel`       |                                                  |
+| `ariaLabelledBy`       | `aria-labelledby`        | `ariaLabelledBy`  |                                                  |
+| `ariaPositionInSet`    | `aria-posinset`          | `aria-posinset`   |                                                  |
+| `ariaSetSize`          | `aria-setsize`           | `aria-setsize`    |                                                  |
+| `boxSide`              | `labelPosition`          | n/a               |                                                  |
+| `checked`              | `checked`                | `checked`         | Mutually exclusive with `defaultChecked`         |
+| `checkmarkIconProps`   | `indicator`              | n/a               |                                                  |
+| `className`            | `className`              | `className`       |                                                  |
+| `componentRef`         | `ref`                    | `componentRef`    |                                                  |
+| `defaultChecked`       | `defaultChecked`         | `defaultChecked`  | Mutually exclusive with `checked`                |
+| `defaultIndeterminate` | `defaultChecked="mixed"` | n/a               | v8 latent `defaultChecked` may require app state |
+| `disabled`             | `disabled`               | `disabled`        |                                                  |
+| `id`                   | `id`                     | `id`              |                                                  |
+| `indeterminate`        | `checked="mixed"`        | n/a               | v8 latent `checked` may require app state        |
+| `inputProps`           | n/a                      | n/a               | Props go directly to the `input` slot            |
+| `label`                | `label`                  | `label`           |                                                  |
+| `name`                 | `name`                   | `name`            |                                                  |
+| `onChange`             | `onChange`               | `onChange`        |                                                  |
+| `onRenderLabel`        | n/a                      | `onRenderLabel`   |                                                  |
+| `required`             | `required`               | `required`        |                                                  |
+| `styles`               | `className`              | `className`       |                                                  |
+| `theme`                | n/a                      | `theme`           | Use `FluentProvider` to customize themes         |
+| `title`                | n/a                      | `title`           |                                                  |
