@@ -27,17 +27,18 @@
     @variant disabled {
       @apply text-neutral-foreground-disabled;
 
-      /* data-disabled lands on the root only; the required indicator is a DOM child. */
-      & .required {
-        @apply text-neutral-foreground-disabled;
+      @variant forced-colors {
+        @apply text-[GrayText];
       }
+    }
+  }
+
+  .required {
+    @variant group-disabled/fui-label {
+      @apply text-neutral-foreground-disabled;
 
       @variant forced-colors {
         @apply text-[GrayText];
-
-        & .required {
-          @apply text-[GrayText];
-        }
       }
     }
   }

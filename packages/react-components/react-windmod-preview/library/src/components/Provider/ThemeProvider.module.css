@@ -1,9 +1,7 @@
 @reference '#theme';
 
-@layer fui.base {
-  /* No layout impact: custom properties inherit through the DOM tree regardless of box
-     generation, including into top-layer popovers. */
-  .root {
-    @apply contents;
-  }
+/* Unlayered: no layered rule may ever override box generation here. Custom properties
+   inherit through the DOM tree regardless, including into top-layer popovers. */
+.root {
+  @apply contents;
 }
