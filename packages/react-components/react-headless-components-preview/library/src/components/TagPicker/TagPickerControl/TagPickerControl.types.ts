@@ -12,11 +12,11 @@ export type {
 export type TagPickerControlState = TagPickerControlBaseState & {
   root: {
     /**
-     * Data attribute set when the control is disabled.
+     * Present when the control is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
     /**
-     * Data attribute set when the control is in an invalid (error) field state.
+     * Present when the control is in an invalid field state; omitted otherwise.
      */
     'data-invalid'?: string;
   };

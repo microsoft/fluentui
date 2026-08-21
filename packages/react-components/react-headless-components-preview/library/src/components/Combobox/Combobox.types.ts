@@ -16,11 +16,11 @@ export type ComboboxState = BaseComboboxState & {
      */
     'data-open'?: string;
     /**
-     * Whether the trigger element is currently disabled.
+     * Present when the input is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
     /**
-     * Whether the trigger element is currently displaying a placeholder.
+     * Present when a placeholder is displayed; omitted when a value is present.
      */
     'data-placeholder'?: string;
     /**
