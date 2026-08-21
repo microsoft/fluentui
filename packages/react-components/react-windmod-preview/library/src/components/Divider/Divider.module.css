@@ -11,45 +11,11 @@
     @variant before, after {
       @apply box-border flex grow;
     }
-  }
 
-  .brand {
-    @apply text-brand-foreground-1;
-
-    @variant before, after {
-      @apply border-brand-stroke-1;
-    }
-  }
-
-  .default {
-    @apply text-neutral-foreground-2;
-
-    @variant before, after {
-      @apply border-neutral-stroke-2;
-    }
-  }
-
-  .subtle {
-    @apply text-neutral-foreground-3;
-
-    @variant before, after {
-      @apply border-neutral-stroke-3;
-    }
-  }
-
-  .strong {
-    @apply text-neutral-foreground-1;
-
-    @variant before, after {
-      @apply border-neutral-stroke-1;
-    }
-  }
-
-  /* No `border-solid` anywhere below: it sets border-style on all four sides, and with only
-     one side's width declared the other three fall back to `medium` and draw a full box. The
-     per-side width utilities emit their own `border-*-style: var(--tw-border-style)`, whose
-     registered initial-value is solid. */
-  .root {
+    /* No `border-solid` anywhere below: it sets border-style on all four sides, and with only
+       one side's width declared the other three fall back to `medium` and draw a full box. The
+       per-side width utilities emit their own `border-*-style: var(--tw-border-style)`, whose
+       registered initial-value is solid. */
     @variant horizontal {
       @apply w-full;
 
@@ -152,6 +118,38 @@
       @variant after {
         @apply ms-0 mt-0;
       }
+    }
+  }
+
+  .brand {
+    @apply text-brand-foreground-1;
+
+    @variant before, after {
+      @apply border-brand-stroke-1;
+    }
+  }
+
+  .default {
+    @apply text-neutral-foreground-2;
+
+    @variant before, after {
+      @apply border-neutral-stroke-2;
+    }
+  }
+
+  .subtle {
+    @apply text-neutral-foreground-3;
+
+    @variant before, after {
+      @apply border-neutral-stroke-3;
+    }
+  }
+
+  .strong {
+    @apply text-neutral-foreground-1;
+
+    @variant before, after {
+      @apply border-neutral-stroke-1;
     }
   }
 }

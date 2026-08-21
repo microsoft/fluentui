@@ -45,141 +45,7 @@
         box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
       }
     }
-  }
 
-  .icon {
-    @apply inline-flex size-20 items-center justify-center text-[length:calc(20px*var(--base-scale))];
-
-    --fui-button-icon-spacing: calc(6px * var(--base-scale));
-  }
-
-  .icon {
-    @variant group-not-empty/fui-button {
-      @variant group-icon-before/fui-button {
-        @apply me-(--fui-button-icon-spacing);
-      }
-
-      @variant group-icon-after/fui-button {
-        @apply ms-(--fui-button-icon-spacing);
-      }
-    }
-
-    @variant group-size-small/fui-button {
-      @apply size-20 text-[length:calc(20px*var(--base-scale))];
-
-      --fui-button-icon-spacing: calc(4px * var(--base-scale));
-    }
-
-    @variant group-size-large/fui-button {
-      @apply size-24 text-[length:calc(24px*var(--base-scale))];
-
-      --fui-button-icon-spacing: calc(6px * var(--base-scale));
-    }
-  }
-
-  .outline {
-    @apply bg-transparent-background;
-
-    @variant hover {
-      @apply bg-transparent-background-hover;
-    }
-
-    @variant hover-active {
-      @apply bg-transparent-background-pressed;
-    }
-  }
-
-  .primary {
-    @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
-
-    @variant hover {
-      @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
-    }
-
-    @variant hover-active {
-      @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
-    }
-
-    @variant forced-colors {
-      @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-    }
-  }
-
-  .subtle {
-    @apply border-transparent bg-subtle-background text-neutral-foreground-2;
-
-    @variant hover {
-      @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
-    }
-
-    @variant hover-active {
-      @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
-    }
-
-    @variant forced-colors {
-      @variant hover {
-        @apply text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply text-[Highlight];
-      }
-    }
-  }
-
-  .icon {
-    @variant group-appearance-subtle/fui-button {
-      @variant group-hover/fui-button {
-        @apply text-neutral-foreground-2-brand-hover;
-      }
-
-      @variant group-hover-active/fui-button {
-        @apply text-neutral-foreground-2-brand-pressed;
-      }
-
-      @variant forced-colors {
-        @variant group-hover/fui-button {
-          @apply text-[Highlight];
-        }
-
-        @variant group-hover-active/fui-button {
-          @apply text-[Highlight];
-        }
-      }
-    }
-  }
-
-  .transparent {
-    @apply border-transparent bg-transparent-background text-neutral-foreground-2;
-
-    @variant hover {
-      @apply border-transparent bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
-    }
-
-    @variant hover-active {
-      @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
-    }
-
-    @variant forced-colors {
-      @variant hover {
-        @apply bg-transparent-background text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply bg-transparent-background text-[Highlight];
-      }
-    }
-  }
-
-  .root {
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
     }
@@ -188,6 +54,8 @@
       @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s text-base-400 leading-base-400 font-semibold;
     }
 
+    /* The appearance blocks all follow this one at equal specificity, so each of them
+       re-asserts the disabled background and foreground it would otherwise win back. */
     @variant disabled, disabled-focusable {
       @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
@@ -225,11 +93,113 @@
         @apply rounded-large;
       }
     }
+
+    @variant with-icon {
+      @variant size-small {
+        @apply py-1;
+      }
+
+      @variant size-large {
+        @apply py-7;
+      }
+    }
+
+    @variant icon-only {
+      @variant size-small {
+        @apply max-w-24 min-w-24 p-1;
+      }
+
+      @variant size-medium {
+        @apply max-w-32 min-w-32 p-5;
+      }
+
+      @variant size-large {
+        @apply max-w-40 min-w-40 p-7;
+      }
+    }
   }
 
-  /* Group-variant form; equal specificity to the appearance-hover icon-color rules
-     above, so source order alone must put the disabled swap-back after them. */
   .icon {
+    @apply inline-flex size-20 items-center justify-center text-[length:calc(20px*var(--base-scale))];
+
+    --fui-button-icon-spacing: calc(6px * var(--base-scale));
+
+    @variant group-not-empty/fui-button {
+      @variant group-icon-before/fui-button {
+        @apply me-(--fui-button-icon-spacing);
+      }
+
+      @variant group-icon-after/fui-button {
+        @apply ms-(--fui-button-icon-spacing);
+      }
+    }
+
+    @variant group-size-small/fui-button {
+      @apply size-20 text-[length:calc(20px*var(--base-scale))];
+
+      --fui-button-icon-spacing: calc(4px * var(--base-scale));
+    }
+
+    @variant group-size-large/fui-button {
+      @apply size-24 text-[length:calc(24px*var(--base-scale))];
+
+      --fui-button-icon-spacing: calc(6px * var(--base-scale));
+    }
+
+    @variant group-appearance-subtle/fui-button {
+      @variant group-hover/fui-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant group-hover-active/fui-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+
+      @variant forced-colors {
+        @variant group-hover/fui-button {
+          @apply text-[Highlight];
+        }
+
+        @variant group-hover-active/fui-button {
+          @apply text-[Highlight];
+        }
+      }
+    }
+
+    /* Glyph swap on hover, keyed off the data-variant attribute bundleIcon stamps on each
+       glyph. Anchored on .icon via the group-composed form so every icon rule shares equal
+       specificity and in-block order carries the cascade: appearance-hover swaps before the
+       disabled swap-back, which must win last. `!` keeps the swap in the same importance tier
+       as the icons stylesheet's hidden rule; normal declarations would lose to the icon
+       components' unlayered base classes. */
+    @variant group-appearance-subtle/fui-button, group-appearance-transparent/fui-button {
+      @variant group-hover/fui-button {
+        & * {
+          @variant variant-filled {
+            @apply inline!;
+          }
+
+          @variant variant-regular {
+            @apply hidden!;
+          }
+        }
+      }
+
+      @variant group-hover-active/fui-button {
+        & * {
+          @variant variant-filled {
+            @apply inline!;
+          }
+
+          @variant variant-regular {
+            @apply hidden!;
+          }
+        }
+      }
+    }
+
+    /* Group-variant form; equal specificity to the appearance-hover icon-color and glyph-swap
+       rules above, so source order alone must put the disabled swap-back after them. */
     @variant group-disabled/fui-button, group-disabled-focusable/fui-button {
       @apply text-neutral-foreground-disabled;
 
@@ -252,10 +222,42 @@
           @apply text-[GrayText];
         }
       }
+
+      & * {
+        @variant group-hover/fui-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+
+        @variant group-hover-active/fui-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+      }
     }
   }
 
   .outline {
+    @apply bg-transparent-background;
+
+    @variant hover {
+      @apply bg-transparent-background-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed;
+    }
+
     @variant disabled, disabled-focusable {
       @apply bg-transparent-background;
 
@@ -270,18 +272,53 @@
   }
 
   .primary {
-    @variant disabled, disabled-focusable {
-      @apply border-transparent;
+    @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
+
+    @variant hover {
+      @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+    }
+
+    @variant hover-active {
+      @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+    }
+
+    @variant forced-colors {
+      @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
 
       @variant hover {
-        @apply border-transparent;
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
       }
 
       @variant hover-active {
-        @apply border-transparent;
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
       }
     }
 
+    @variant disabled, disabled-focusable {
+      @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
+      }
+
+      @variant hover-active {
+        @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
+      }
+
+      @variant forced-colors {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+      }
+    }
+
+    /* Focus outranks disabled, so it stays after the disabled sub-block. */
     @variant focus-visible {
       @apply border-stroke-focus-2;
 
@@ -317,41 +354,93 @@
   }
 
   .subtle {
-    @variant disabled, disabled-focusable {
-      @apply border-transparent bg-transparent-background;
+    @apply border-transparent bg-subtle-background text-neutral-foreground-2;
 
+    @variant hover {
+      @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
+    }
+
+    @variant hover-active {
+      @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+    }
+
+    @variant forced-colors {
       @variant hover {
-        @apply border-transparent bg-transparent-background;
+        @apply text-[Highlight];
       }
 
       @variant hover-active {
-        @apply border-transparent bg-transparent-background;
+        @apply text-[Highlight];
+      }
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+      }
+
+      @variant hover-active {
+        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+      }
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+
+        @variant hover {
+          @apply text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply text-[GrayText];
+        }
       }
     }
   }
 
   .transparent {
-    @variant disabled, disabled-focusable {
-      @apply border-transparent bg-transparent-background;
+    @apply border-transparent bg-transparent-background text-neutral-foreground-2;
 
+    @variant hover {
+      @apply border-transparent bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+    }
+
+    @variant hover-active {
+      @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+    }
+
+    @variant forced-colors {
       @variant hover {
-        @apply border-transparent bg-transparent-background;
+        @apply bg-transparent-background text-[Highlight];
       }
 
       @variant hover-active {
-        @apply border-transparent bg-transparent-background;
+        @apply bg-transparent-background text-[Highlight];
       }
     }
-  }
 
-  .root {
-    @variant with-icon {
-      @variant size-small {
-        @apply py-1;
+    @variant disabled, disabled-focusable {
+      @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
       }
 
-      @variant size-large {
-        @apply py-7;
+      @variant hover-active {
+        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+      }
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+
+        @variant hover {
+          @apply text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply text-[GrayText];
+        }
       }
     }
   }
@@ -369,82 +458,6 @@
 
     @variant focus-visible {
       @apply rounded-none;
-    }
-  }
-
-  .root {
-    @variant icon-only {
-      @variant size-small {
-        @apply max-w-24 min-w-24 p-1;
-      }
-
-      @variant size-medium {
-        @apply max-w-32 min-w-32 p-5;
-      }
-
-      @variant size-large {
-        @apply max-w-40 min-w-40 p-7;
-      }
-    }
-  }
-
-  /* Glyph swap on hover, keyed off the data-variant attribute bundleIcon stamps on each
-     glyph. In-file order carries the cascade: hover before hover-active, and the disabled
-     swap-back last so it wins over the appearance swaps. `!` keeps the swap in the same
-     importance tier as the icons stylesheet's hidden rule; normal declarations would lose
-     to the icon components' unlayered base classes. */
-  .subtle,
-  .transparent {
-    @variant hover {
-      & .icon * {
-        @variant variant-filled {
-          @apply inline!;
-        }
-
-        @variant variant-regular {
-          @apply hidden!;
-        }
-      }
-    }
-
-    @variant hover-active {
-      & .icon * {
-        @variant variant-filled {
-          @apply inline!;
-        }
-
-        @variant variant-regular {
-          @apply hidden!;
-        }
-      }
-    }
-  }
-
-  .root {
-    @variant disabled, disabled-focusable {
-      @variant hover {
-        & .icon * {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-      }
-
-      @variant hover-active {
-        & .icon * {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-      }
     }
   }
 }

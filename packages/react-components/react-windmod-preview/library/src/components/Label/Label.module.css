@@ -3,13 +3,7 @@
 @layer fui.components.l1 {
   .root {
     @apply font-base text-neutral-foreground-1;
-  }
 
-  .required {
-    @apply ps-horizontal-xs text-palette-red-foreground-3;
-  }
-
-  .root {
     @variant size-small {
       @apply text-base-200 leading-base-200;
     }
@@ -32,6 +26,8 @@
   }
 
   .required {
+    @apply ps-horizontal-xs text-palette-red-foreground-3;
+
     @variant group-disabled/fui-label {
       @apply text-neutral-foreground-disabled;
 
