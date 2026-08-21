@@ -2,27 +2,26 @@
 # TEMPORARY diagnostic workflow — remove once the Nx 22 CI hang (see #36435) is understood/fixed.
 #
 # The main CI jobs sometimes hang with zero output after a task completes, until the 6h GH Actions
-# job timeout kills them. This workflow runs several small, isolated `nx` invocations in parallel,
-# each with a short `timeout-minutes`, so we get fast signal on whether the hang reproduces with:
-#  - a single task (no scheduling/transition between tasks at all)
-#  - a couple of sequential tasks (to see if it needs at least one task->task transition)
-#  - a full affected run scoped to one target type only (build vs lint vs test vs type-check)
+# job timeout kills them.
 #
-# Ordered roughly fastest -> slowest so we don't wait on slow legs to learn something from fast ones.
+# Prior findings (kept for history, no longer tested here):
+#  - Small-scale legs (single task, 2 sequential tasks, lint-only) never hung under any setting --
+#    the hang only reproduces at the scale of a full `nx affected -t build` across the whole graph.
+#  - NX_ISOLATE_PLUGINS=false is NOT viable: it broke workspace-plugin:check-graph
+#    (tools/workspace-plugin/src/plugins/workspace-plugin.ts:160 assumes process.cwd() == workspace
+#    root, which only holds inside Nx's isolated plugin worker).
+#  - UV_THREADPOOL_SIZE (32, 64) was tested and REFUTED: both timed out identically to baseline.
+#  - NX_DAEMON=false was tested on the real PR and did NOT fix the hang either.
 #
-# NOTE: the "*-no-isolation" (NX_ISOLATE_PLUGINS=false) legs are purely diagnostic — this setting was
-# found to break workspace-plugin:check-graph (tools/workspace-plugin/src/plugins/workspace-plugin.ts:160
-# assumes process.cwd() == workspace root, which only holds inside Nx's isolated plugin worker). It is
-# NOT a viable production setting as-is; we're only using it here to see whether disabling plugin
-# isolation also happens to avoid the hang, which would help confirm/rule out the plugin-worker IPC
-# path as the root cause.
-#
-# NEW HYPOTHESIS: libuv threadpool exhaustion/deadlock. @swc/core's native N-API binding issues async
-# work onto libuv's threadpool (default size 4 == UV_THREADPOOL_SIZE unset). With NX_PARALLEL=6 running
-# several SWC compiles concurrently, plus fs/crypto ops competing for the same 4 slots, a nested/recursive
-# scheduling pattern in the pool can deadlock silently forever (no error, no crash) — matching our exact
-# symptom of "last task's timing line printed, then zero output until the CI timeout". The "*-threadpool"
-# legs bump UV_THREADPOOL_SIZE to test this.
+# CURRENT LEADING HYPOTHESIS (nrwl/nx#36682, nrwl/nx#36579): Nx v22's native Rust pseudo-terminal
+# subsystem has a teardown bug: `disable_raw_mode().expect(...)` can panic one line before sending the
+# task's exit notification, permanently blocking `task-orchestrator.ts`'s
+# `await Promise.all(this.discreteTaskExitHandled.values())` in cleanup(). This matches our symptom
+# exactly (task fully finishes -> zero output forever -> only SIGKILL/CI-timeout ends it) and matches
+# the 5 orphaned `node` processes GH Actions reported cleaning up after our `all-build-only` timeout.
+# `NX_NATIVE_COMMAND_RUNNER=false` (packages/nx/src/tasks-runner/task-orchestrator.ts) switches Nx back
+# to the pre-v22 "legacy" fork-based task runner, entirely bypassing the native PTY subsystem. The
+# `*-legacy-runner` leg below tests this.
 #
 name: Nx Hang Diagnostics (temporary)
 
@@ -49,53 +48,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: single-lint
-            timeout: 15
-            isolate_plugins: 'true'
-            cmd: yarn nx run babel-preset-global-context:lint
-          - name: single-lint-no-isolation
-            timeout: 15
-            isolate_plugins: 'false'
-            cmd: yarn nx run babel-preset-global-context:lint
-          - name: single-build
-            timeout: 15
-            isolate_plugins: 'true'
-            cmd: yarn nx run react-theme:build
-          - name: single-build-no-isolation
-            timeout: 15
-            isolate_plugins: 'false'
-            cmd: yarn nx run react-theme:build
-          - name: two-builds-sequential
-            timeout: 20
-            isolate_plugins: 'true'
-            cmd: yarn nx run-many -t build -p react-theme,react-shared-contexts --parallel=1
-          - name: two-builds-sequential-no-isolation
-            timeout: 20
-            isolate_plugins: 'false'
-            cmd: yarn nx run-many -t build -p react-theme,react-shared-contexts --parallel=1
-          - name: all-lint-only
-            timeout: 45
-            isolate_plugins: 'true'
-            cmd: yarn nx affected -t lint --nxBail
-          - name: all-lint-only-no-isolation
-            timeout: 45
-            isolate_plugins: 'false'
-            cmd: yarn nx affected -t lint --nxBail
-          - name: all-build-only
+          - name: all-build-only-legacy-runner
             timeout: 60
             isolate_plugins: 'true'
-            uv_threadpool_size: ''
+            native_command_runner: 'false'
             cmd: yarn nx affected -t build --nxBail
-          - name: all-build-only-threadpool32
+          - name: all-build-only-baseline-retry
             timeout: 60
             isolate_plugins: 'true'
-            uv_threadpool_size: '32'
-            cmd: yarn nx affected -t build --nxBail
-          - name: all-build-only-threadpool64-parallel12
-            timeout: 60
-            isolate_plugins: 'true'
-            uv_threadpool_size: '64'
-            nx_parallel: '12'
+            native_command_runner: ''
             cmd: yarn nx affected -t build --nxBail
     name: diag / ${{ matrix.name }}
     runs-on: ubuntu-latest
@@ -103,8 +64,7 @@ jobs:
     timeout-minutes: ${{ matrix.timeout }}
     env:
       NX_ISOLATE_PLUGINS: ${{ matrix.isolate_plugins }}
-      UV_THREADPOOL_SIZE: ${{ matrix.uv_threadpool_size }}
-      NX_PARALLEL: ${{ matrix.nx_parallel || '6' }}
+      NX_NATIVE_COMMAND_RUNNER: ${{ matrix.native_command_runner }}
     steps:
       - uses: actions/checkout@v6
         with:
