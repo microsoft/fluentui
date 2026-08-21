@@ -46,10 +46,17 @@ Status flow: `planned` → `pilot` → `audited` → `converted` → `validated`
 - Upstream tactical-edit candidate: headless Tooltip arrow has no
   slot/className hook (arrowRef exists, nothing applies a class) — windmod must
   style the `[data-arrow]` child via descendant selector until then.
-- Upstream icons proposal: stamp `data-fui-icon-variant="filled|regular"` in
-  bundleIcon so glyph-swap CSS can target attributes instead of the public
-  `fui-Icon-*` classes (icons live in a separate repo — proposal, not a
-  tactical edit).
+- DONE (user-approved tactical edit, 2026-08-21): icons fork branch
+  `feature/data-variant` stamps `data-variant="filled|regular"` in headless
+  bundleIcon; fluentui consumes it via a LOCAL-ONLY tarball resolution
+  (`file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz`)
+  — REVERT the resolutions entry + yarn.lock before any merge/publish (same
+  protocol as the previous campaign), and upstream the icons change. Button's
+  glyph swap now rides `variant-filled`/`variant-regular` catalog variants;
+  zero `fui-Icon-*` class references remain in compiled CSS. To rebuild the
+  tarball: icons repo `yarn build:generate-chunks-and-atoms && yarn build:js`,
+  `npm pack`, copy to `fluentui-react-icons-local.tgz`, then here
+  `rm .yarn/cache/@fluentui-react-icons-file-*.zip && yarn install`.
 - Optional headless edit if wanted: emit `data-appearance` on Button so
   appearance-conditional icon colors can ride named-group variants too.
 - Story convention: ONE export per `*.stories.tsx`, re-exported through

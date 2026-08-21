@@ -380,30 +380,32 @@
     }
   }
 
-  /* Glyph swap on hover. `.fui-Icon-filled` / `.fui-Icon-regular` are the headless icons
-     package's PUBLIC swap contract (iconFilledClassName / iconRegularClassName, stamped by
-     bundleIcon for exactly this). Scoped through `.icon`; `hover` before `hover-active`
-     (same specificity under :where(), in-file order decides); the disabled swap-back is
-     written last so it wins over the appearance swaps. */
+  /* Glyph swap on hover, keyed off the data-variant attribute bundleIcon stamps on each
+     glyph. In-file order carries the cascade: hover before hover-active, and the disabled
+     swap-back last so it wins over the appearance swaps. */
   .subtle,
   .transparent {
     @variant hover {
-      & .icon :global(.fui-Icon-filled) {
-        @apply inline;
-      }
+      & .icon * {
+        @variant variant-filled {
+          @apply inline;
+        }
 
-      & .icon :global(.fui-Icon-regular) {
-        @apply hidden;
+        @variant variant-regular {
+          @apply hidden;
+        }
       }
     }
 
     @variant hover-active {
-      & .icon :global(.fui-Icon-filled) {
-        @apply inline;
-      }
+      & .icon * {
+        @variant variant-filled {
+          @apply inline;
+        }
 
-      & .icon :global(.fui-Icon-regular) {
-        @apply hidden;
+        @variant variant-regular {
+          @apply hidden;
+        }
       }
     }
   }
@@ -411,22 +413,26 @@
   .root {
     @variant disabled-any {
       @variant hover {
-        & .icon :global(.fui-Icon-filled) {
-          @apply hidden;
-        }
+        & .icon * {
+          @variant variant-filled {
+            @apply hidden;
+          }
 
-        & .icon :global(.fui-Icon-regular) {
-          @apply inline;
+          @variant variant-regular {
+            @apply inline;
+          }
         }
       }
 
       @variant hover-active {
-        & .icon :global(.fui-Icon-filled) {
-          @apply hidden;
-        }
+        & .icon * {
+          @variant variant-filled {
+            @apply hidden;
+          }
 
-        & .icon :global(.fui-Icon-regular) {
-          @apply inline;
+          @variant variant-regular {
+            @apply inline;
+          }
         }
       }
     }

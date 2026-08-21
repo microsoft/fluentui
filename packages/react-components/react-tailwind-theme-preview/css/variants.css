@@ -61,6 +61,10 @@
 @custom-variant placement-centered-inline (&:where([data-placement='above'], [data-placement='below']));
 @custom-variant placement-centered-block (&:where([data-placement='before'], [data-placement='after']));
 
+/* Glyph variant — stamped by @fluentui/react-icons/headless bundleIcon on each glyph. */
+@custom-variant variant-filled (&:where([data-variant='filled']));
+@custom-variant variant-regular (&:where([data-variant='regular']));
+
 /*
  * "Where is the scrollable DrawerBody scrolled to" — DrawerHeader / DrawerFooter reveal a
  * separator once the body has scrolled at all, and make it fully opaque while there is
