@@ -1,0 +1,14 @@
+@reference '#theme';
+
+/* Layer order — restated per module so stylesheet load order cannot decide the ranking;
+   re-declaring an existing layer is a no-op. */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.base {
+  /* The provider element must not affect layout: custom properties inherit through the
+     DOM tree regardless of box generation, so `display: contents` gives the theme class
+     a carrier without introducing a box (verified to reach open top-layer popovers). */
+  .root {
+    display: contents;
+  }
+}

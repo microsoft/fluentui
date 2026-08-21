@@ -1,0 +1,656 @@
+@reference '#theme';
+
+/* Layer order (DECISIONS.md D2) - restated per module so stylesheet load order cannot
+   decide the ranking; re-declaring an existing layer is a no-op. */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.base {
+  .root {
+    @apply m-horizontal-none box-border inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline;
+
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
+
+    outline-style: none;
+
+    transition-duration: var(--duration-faster);
+    /*
+     * Longhands only. The Griffel source declared `background, border, color`, which is not
+     * 3 properties: per CSS Transitions L1 a shorthand in `transition-property` expands to
+     * every longhand it covers, so that list is 21 (8 `background-*` + 12 `border-*` + 1).
+     * Only these 6 ever change — the base `border: <w> solid <c>` above is the file's ONLY
+     * border-width/style declaration and no state or appearance slice touches it, and no
+     * slice touches any non-color `background-*`. `cursor`, `outline-style` and
+     * `forced-color-adjust` do change on hover/active but were never in the list and are not
+     * added: the first two are not animatable/are discrete, and Griffel never transitioned
+     * them. See reports/transition-audit.md §2.2.
+     *
+     * Safe to expand here because `transition-duration` and `transition-timing-function` are
+     * SINGLE-valued, so they apply to every entry — no positional-list realignment (that is
+     * the Avatar trap, §2.1, which is why Avatar's `margin` deliberately stays a shorthand).
+     */
+    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
+      color;
+    transition-timing-function: var(--ease-easy-ease);
+
+    @variant hover {
+      @apply cursor-pointer border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+    }
+
+    @variant hover-active {
+      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+
+      outline-style: none;
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.01ms;
+    }
+
+    /* High contrast styles */
+    @variant forced-colors {
+      @variant focus {
+        border-color: ButtonText;
+      }
+
+      @variant hover {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+        forced-color-adjust: none;
+      }
+
+      @variant hover-active {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+        forced-color-adjust: none;
+      }
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-ring;
+    }
+
+    /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible-fui {
+        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
+      }
+    }
+  }
+
+  .icon {
+    @apply inline-flex size-20 items-center justify-center;
+
+    /* `--base-scale` keeps the glyph and its 20px box scaling together (D4); at the
+       default 16px root this is exactly `font-size: 20px`, the compiled value. */
+    font-size: calc(20px * var(--base-scale));
+
+    --fui-Button__icon--spacing: calc(6px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @variant not-empty {
+      @variant icon-before {
+        & .icon {
+          margin-inline-end: var(--fui-Button__icon--spacing);
+        }
+      }
+
+      @variant icon-after {
+        & .icon {
+          margin-inline-start: var(--fui-Button__icon--spacing);
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .outline {
+    @apply bg-transparent-background;
+
+    @variant hover {
+      @apply bg-transparent-background-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed;
+    }
+  }
+
+  .primary {
+    @apply bg-brand-background text-neutral-foreground-on-brand;
+
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+    @variant hover {
+      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    @variant hover-active {
+      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    @variant forced-colors {
+      background-color: Highlight;
+      border-top-color: HighlightText;
+      border-right-color: HighlightText;
+      border-bottom-color: HighlightText;
+      border-left-color: HighlightText;
+      color: HighlightText;
+      forced-color-adjust: none;
+
+      @variant hover {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant hover-active {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+    }
+  }
+
+  .subtle {
+    @apply bg-subtle-background text-neutral-foreground-2;
+
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+    @variant hover {
+      @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here lives in the
+         l1 icon-swap block at the bottom of this file (D27 / S-J batch 1). `.icon` below is
+         this module's own local on react-button's icon slot, so its colour rule stays here. */
+
+      & .icon {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+    }
+
+    @variant hover-active {
+      @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). `.icon`
+         is this module's own local and its colour rule stays here. */
+
+      & .icon {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        color: Highlight;
+
+        & .icon {
+          color: Highlight;
+        }
+      }
+
+      @variant hover-active {
+        color: Highlight;
+
+        & .icon {
+          color: Highlight;
+        }
+      }
+    }
+  }
+
+  .transparent {
+    @apply bg-transparent-background text-neutral-foreground-2;
+
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+    @variant hover {
+      @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        @apply bg-transparent-background;
+
+        color: Highlight;
+      }
+
+      @variant hover-active {
+        @apply bg-transparent-background;
+
+        color: Highlight;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @variant size-small {
+      @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
+
+      /* `padding: buttonSpacingSmall(3px) tokens.spacingHorizontalS`; 3px and 64px match no step */
+    }
+
+    @variant size-large {
+      @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s text-base-400 leading-base-400 font-semibold;
+    }
+
+    /* from useIconStyles.small — icon slot arg #4, keyed off the root's data-size */
+    @variant size-small {
+      & .icon {
+        @apply size-20;
+
+        font-size: calc(20px * var(--base-scale));
+
+        /* tokens.spacingHorizontalXS — custom property, so D4's literal form (see the reset) */
+        --fui-Button__icon--spacing: calc(4px * var(--base-scale));
+      }
+    }
+
+    @variant size-large {
+      & .icon {
+        @apply size-24;
+
+        font-size: calc(24px * var(--base-scale));
+
+        /* tokens.spacingHorizontalSNudge — custom property, so D4's literal form (see the reset) */
+        --fui-Button__icon--spacing: calc(6px * var(--base-scale));
+      }
+    }
+
+    @variant disabled-any {
+      @apply cursor-not-allowed border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+      & .icon {
+        @apply text-neutral-foreground-disabled;
+      }
+
+      @variant hover {
+        @apply cursor-not-allowed border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+        /* The icon swap-BACK that belongs here is in the l1 icon-swap block at the bottom of
+           this file, written LAST there so it still beats the appearance swaps (D27 / S-J
+           batch 1). */
+
+        & .icon {
+          @apply text-neutral-foreground-disabled;
+        }
+      }
+
+      @variant hover-active {
+        @apply cursor-not-allowed border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+        /* The icon swap-BACK that belongs here is in the l1 icon-swap block at the bottom of
+           this file, written LAST there so it still beats the appearance swaps (D27 / S-J
+           batch 1). */
+
+        & .icon {
+          @apply text-neutral-foreground-disabled;
+        }
+      }
+
+      @variant forced-colors {
+        background-color: ButtonFace;
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+        color: GrayText;
+
+        & .icon {
+          color: GrayText;
+        }
+
+        @variant focus {
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+        }
+
+        @variant hover {
+          background-color: ButtonFace;
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+          color: GrayText;
+
+          & .icon {
+            color: GrayText;
+          }
+        }
+
+        @variant hover-active {
+          background-color: ButtonFace;
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+          color: GrayText;
+
+          & .icon {
+            color: GrayText;
+          }
+        }
+      }
+    }
+
+    @variant focus-visible-fui {
+      @variant size-small {
+        @apply rounded-small;
+      }
+
+      @variant size-large {
+        @apply rounded-large;
+      }
+    }
+  }
+
+  .outline {
+    @variant disabled-any {
+      @apply bg-transparent-background;
+
+      @variant hover {
+        @apply bg-transparent-background;
+      }
+
+      @variant hover-active {
+        @apply bg-transparent-background;
+      }
+    }
+  }
+
+  .primary {
+    @variant disabled-any {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+
+    /*
+     * from useRootFocusStyles.primary — arg #11. Applied only for
+     * `appearance === 'primary'`, i.e. exactly when this class is on the element.
+     */
+    @variant focus-visible-fui {
+      @apply border-t-stroke-focus-2 border-r-stroke-focus-2 border-b-stroke-focus-2 border-l-stroke-focus-2;
+
+      box-shadow: var(--shadow-2), 0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset,
+        0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
+
+      @variant hover {
+        @apply border-t-stroke-focus-2 border-r-stroke-focus-2 border-b-stroke-focus-2 border-l-stroke-focus-2;
+
+        box-shadow: var(--shadow-2), 0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
+      }
+    }
+
+    /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible-fui {
+        box-shadow: var(--shadow-2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
+          0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
+
+        @variant hover {
+          box-shadow: var(--shadow-2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
+        }
+      }
+    }
+  }
+
+  .subtle {
+    @variant disabled-any {
+      @apply bg-transparent-background;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        @apply bg-transparent-background;
+
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        @apply bg-transparent-background;
+
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  .transparent {
+    @variant disabled-any {
+      @apply bg-transparent-background;
+
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        @apply bg-transparent-background;
+
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        @apply bg-transparent-background;
+
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @variant with-icon {
+      @variant size-small {
+        @apply py-1;
+      }
+
+      @variant size-large {
+        @apply py-7;
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+
+    @variant focus-visible-fui {
+      @apply rounded-circular;
+    }
+  }
+
+  .square {
+    @apply rounded-none;
+
+    @variant focus-visible-fui {
+      @apply rounded-none;
+    }
+  }
+
+  .root {
+    @variant icon-only {
+      @variant size-small {
+        @apply max-w-24 min-w-24 p-1;
+      }
+
+      @variant size-medium {
+        @apply max-w-32 min-w-32 p-5;
+      }
+
+      @variant size-large {
+        @apply max-w-40 min-w-40 p-7;
+      }
+    }
+  }
+}
+
+/*
+ * - Within each appearance, `hover` is written before `hover-active` — Griffel separated them by specificity (0-2-0 vs 0-3-0), `:where()` does not, so pressed must come second to win.
+ */
+
+@layer fui.components.l1 {
+  .subtle {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        @apply inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        @apply hidden;
+      }
+    }
+
+    @variant hover-active {
+      & :global(.fui-Icon-filled) {
+        @apply inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        @apply hidden;
+      }
+    }
+  }
+
+  .transparent {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        @apply inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        @apply hidden;
+      }
+    }
+
+    @variant hover-active {
+      & :global(.fui-Icon-filled) {
+        @apply inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        @apply hidden;
+      }
+    }
+  }
+
+  /*
+   * from useRootDisabledStyles.base — arg #8. LAST in the file because arg #8 outranks the
+   * appearance args above; this is the swap-BACK that keeps a disabled button's glyph static.
+   */
+  .root {
+    @variant disabled-any {
+      @variant hover {
+        & :global(.fui-Icon-filled) {
+          @apply hidden;
+        }
+
+        & :global(.fui-Icon-regular) {
+          @apply inline;
+        }
+      }
+
+      @variant hover-active {
+        & :global(.fui-Icon-filled) {
+          @apply hidden;
+        }
+
+        & :global(.fui-Icon-regular) {
+          @apply inline;
+        }
+      }
+    }
+  }
+}

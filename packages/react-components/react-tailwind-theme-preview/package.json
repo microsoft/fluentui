@@ -29,6 +29,7 @@
     "./styles.css": "./dist/styles.css",
     "./theme-class-names": {
       "types": "./theme-class-names.d.mts",
+      "require": "./theme-class-names.cjs",
       "default": "./theme-class-names.mjs"
     },
     "./css/*": "./css/*",
@@ -39,6 +40,7 @@
     "css",
     "dist/styles.css",
     "theme-class-names.mjs",
+    "theme-class-names.cjs",
     "theme-class-names.d.mts"
   ],
   "sideEffects": [

@@ -122,11 +122,11 @@
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
-      "@fluentui/react-headless-components-preview/*": [
-        "packages/react-components/react-headless-components-preview/library/src/*.ts"
-      ],
       "@fluentui/react-headless-components-preview-stories": [
         "packages/react-components/react-headless-components-preview/stories/src/index.ts"
+      ],
+      "@fluentui/react-headless-components-preview/*": [
+        "packages/react-components/react-headless-components-preview/library/src/*.ts"
       ],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],
@@ -254,13 +254,17 @@
       "@fluentui/react-utilities-compat-stories": [
         "packages/react-components/react-utilities-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-windmod-preview": ["packages/react-components/react-windmod-preview/library/src/index.ts"],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/storybook-llms-extractor": ["tools/storybook-llms-extractor/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-windmod-preview-stories": [
+        "packages/react-components/react-windmod-preview/stories/src/index.ts"
+      ]
     }
   }
 }

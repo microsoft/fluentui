@@ -4349,7 +4349,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-headless-components-preview@npm:*, @fluentui/react-headless-components-preview@workspace:packages/react-components/react-headless-components-preview/library":
+"@fluentui/react-headless-components-preview@npm:*, @fluentui/react-headless-components-preview@npm:^0.2.5, @fluentui/react-headless-components-preview@workspace:packages/react-components/react-headless-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-headless-components-preview@workspace:packages/react-components/react-headless-components-preview/library"
   dependencies:
@@ -5737,7 +5737,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview":
+"@fluentui/react-tailwind-theme-preview@npm:^9.0.0-alpha.0, @fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview"
   languageName: unknown
@@ -6043,6 +6043,30 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-windmod-preview-stories@workspace:packages/react-components/react-windmod-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-windmod-preview-stories@workspace:packages/react-components/react-windmod-preview/stories"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-windmod-preview@workspace:packages/react-components/react-windmod-preview/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-windmod-preview@workspace:packages/react-components/react-windmod-preview/library"
+  dependencies:
+    "@fluentui/react-headless-components-preview": "npm:^0.2.5"
+    "@fluentui/react-shared-contexts": "npm:^9.26.3"
+    "@fluentui/react-tailwind-theme-preview": "npm:^9.0.0-alpha.0"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -14895,7 +14919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:2.1.1":
+"clsx@npm:2.1.1, clsx@npm:^2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839

@@ -1,0 +1,15 @@
+{
+  "name": "react-windmod-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-windmod-preview/library/src",
+  "tags": ["platform:web", "vNext", "react-windmod"],
+  "implicitDependencies": [],
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
+}

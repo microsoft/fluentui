@@ -1,0 +1,93 @@
+{
+  "name": "@fluentui/react-windmod-preview",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fluent UI React components styled with Tailwind v4 + CSS Modules ('windmod'). Composes @fluentui/react-headless-components-preview hooks (useX → useXStyles → renderX) with build-time-compiled CSS Modules that replicate the Griffel suite's visuals; theming is pure CSS via @fluentui/react-tailwind-theme-preview theme classes applied by ThemeProvider.",
+  "type": "module",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "dist/styles.css",
+    "lib",
+    "lib-commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/react-headless-components-preview": "^0.2.5",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-tailwind-theme-preview": "^9.0.0-alpha.0",
+    "@fluentui/react-utilities": "^9.26.6",
+    "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <20.0.0",
+    "@types/react-dom": ">=16.9.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme-preview/css/index.css"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./button": {
+      "import": {
+        "types": "./dist/button.d.ts",
+        "default": "./lib/button.js"
+      },
+      "require": {
+        "types": "./dist/button.d.cts",
+        "default": "./lib-commonjs/button.cjs"
+      }
+    },
+    "./provider": {
+      "import": {
+        "types": "./dist/provider.d.ts",
+        "default": "./lib/provider.js"
+      },
+      "require": {
+        "types": "./dist/provider.d.cts",
+        "default": "./lib-commonjs/provider.cjs"
+      }
+    },
+    "./tooltip": {
+      "import": {
+        "types": "./dist/tooltip.d.ts",
+        "default": "./lib/tooltip.js"
+      },
+      "require": {
+        "types": "./dist/tooltip.d.cts",
+        "default": "./lib-commonjs/tooltip.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  }
+}
