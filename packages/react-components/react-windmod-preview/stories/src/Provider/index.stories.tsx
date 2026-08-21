@@ -26,7 +26,12 @@ export const NestedThemes = (): React.ReactNode => (
       <div className={styles.surface}>
         <div className={styles.row}>
           <Button appearance="primary">Web light (default)</Button>
-          <Tooltip content="Light-themed tooltip" relationship="label" withArrow visible>
+          <Tooltip
+            content={{ children: 'Light-themed tooltip', popover: 'manual' }}
+            relationship="label"
+            withArrow
+            visible
+          >
             <Button>Pinned tooltip</Button>
           </Tooltip>
         </div>
@@ -35,7 +40,12 @@ export const NestedThemes = (): React.ReactNode => (
         <div className={styles.surface}>
           <div className={styles.row}>
             <Button appearance="primary">Web dark subtree</Button>
-            <Tooltip content="Dark-themed tooltip (top layer)" relationship="label" withArrow visible>
+            <Tooltip
+              content={{ children: 'Dark-themed tooltip (top layer)', popover: 'manual' }}
+              relationship="label"
+              withArrow
+              visible
+            >
               <Button>Pinned tooltip</Button>
             </Tooltip>
           </div>

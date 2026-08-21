@@ -15,7 +15,7 @@ has not asked for them:
    `react-tailwind-theme` (`styling/tailwind-css-modules`): `tokens.css`
    (@theme inline, 467 tokens → utilities), `themes.css` (7 theme classes ×
    433 tokens, generated with lockstep assertions), `variants.css` (catalog
-   already named after the headless data-* vocabulary), the `fui.*` cascade
+   already named after the headless data-_ vocabulary), the `fui._` cascade
    layer order, and the CSS-Modules build pipeline. Standalone value: teams
    styling raw headless components get real Fluent themes.
 2. **`@fluentui/react-windmod-preview`** — styled Fluent components composing
@@ -30,10 +30,10 @@ has not asked for them:
 - **Name:** react-windmod-preview (portmanteau: tailWIND + CSS MODules).
 - **Theme layer is its own package** (react-tailwind-theme-preview).
 - **Per-component architecture — hook composition, not component wrapping:**
-  `useX(props, ref)` (headless; emits data-* state attrs) → `useXStyles(state)`
+  `useX(props, ref)` (headless; emits data-_ state attrs) → `useXStyles(state)`
   (ours: module class-map onto every slot's className, clsx-merged with
   consumer classNames; JS variant branching on state where headless emits no
-  data-* — e.g. Button appearance/size/shape; group marker per D15/D16) →
+  data-_ — e.g. Button appearance/size/shape; group marker per D15/D16) →
   `renderX(state)` (headless re-export). Full state access; upstream tactical
   edits (e.g. adding data-appearance) become optional in-pattern PRs, never
   blockers.
@@ -48,9 +48,14 @@ has not asked for them:
   `popover="hint"`, Toaster `popover="manual"`, MenuPopover `popover="auto"`,
   non-modal Dialog `popover="manual"`). Top-layer keeps DOM ancestry → theme
   vars cascade in.
-- **Icons: `@fluentui/react-icons/headless`** — published upstream since
-  2.0.334 (verified in node_modules). Griffel-free; never import the classic
-  Griffel entrypoints.
+- **Icons: `@fluentui/react-icons/headless`** — published upstream (verified at
+  2.0.337; repo bumped from 2.0.311). CORRECTION (pilot finding): the headless
+  entry ships the Griffel-free FACTORIES (createFluentIcon/bundleIcon/wrapIcon)
+  and the attribute stylesheet, but NOT premade icon components — the premade
+  ones (CalendarMonthRegular, …) are still Griffel-styled in 2.0.337. Windmod's
+  library imports no icons; consumers/stories use classic premade icons for now
+  (Griffel rides along in the DEMO layer only). Track upstream for premade
+  headless components; the fork's promotion work remains the reference.
 - **Tokens stay kebab-case** (`--color-neutral-foreground-1`). Self-contained
   namespace; deliberately NOT interoperable with classic FluentProvider
   camelCase theming. Documented as a design decision.
@@ -70,10 +75,10 @@ has not asked for them:
   stories Storybook wired with the Tailwind v4 pipeline.
 - **Phase 1 — Pilot (GATE: user review): Button + Tooltip + ThemeProvider.**
   Tooltip forces the theme provider, top-layer and positioning path; Button
-  covers variant-branching without data-*. Side-by-side stories vs the Griffel
+  covers variant-branching without data-\*. Side-by-side stories vs the Griffel
   suite for review. A third component only if the user asks after review.
 - **Phase 2 — Audit matrix:** all ~53 headless components × {DOM/slot parity
-  vs styled twin, data-* coverage vs module.css selector needs, top-layer CSS
+  vs styled twin, data-\* coverage vs module.css selector needs, top-layer CSS
   adaptation, port complexity} → batch plan + optional-upstream-PR list.
 - **Phase 3 — Batch conversion** under the established protocol: full contract
   per batch, batch+seam validation only, chunked per-package commits; full
@@ -93,7 +98,7 @@ has not asked for them:
   → compile module.css → dist/styles.css + class-map JS.
 - VR harness (migration/griffel-to-tailwind/validation/) → adapt for
   cross-package A/B (our story render vs Griffel suite story render).
-- DECISIONS.md (D2 layers, D15/D16 class-name & data-* contract, D20 nonce,
+- DECISIONS.md (D2 layers, D15/D16 class-name & data-\* contract, D20 nonce,
   …) → contract carries forward unless a decision here supersedes it.
 
 ## Risk register

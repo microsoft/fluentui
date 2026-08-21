@@ -51,3 +51,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* Room for a tooltip on every side of every trigger without overlapping neighbors. */
+.placementsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 110px 170px;
+  justify-content: center;
+  padding: 90px;
+}

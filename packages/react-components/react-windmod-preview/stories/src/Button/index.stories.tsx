@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Button, ThemeProvider } from '@fluentui/react-windmod-preview';
 import type { ButtonProps } from '@fluentui/react-windmod-preview';
 import { Button as GriffelButton, FluentProvider, webLightTheme } from '@fluentui/react-components';
-import { CalendarMonthRegular } from '@fluentui/react-icons/headless';
-import { CalendarMonthRegular as GriffelCalendarMonthRegular } from '@fluentui/react-icons';
+// Classic (Griffel-styled) icons on BOTH sides: @fluentui/react-icons/headless ships only
+// the FACTORIES (createFluentIcon/bundleIcon) as of 2.0.337 — no premade Griffel-free
+// components yet. Demo-layer-only; the windmod library itself imports no icons.
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 import styles from '../compare.module.css';
 
@@ -94,7 +96,7 @@ export const GriffelComparison = (): React.ReactNode => {
       </div>
       <div>
         <FluentProvider theme={webLightTheme}>
-          <GriffelButton icon={<GriffelCalendarMonthRegular />}>Button</GriffelButton>
+          <GriffelButton icon={<CalendarMonthRegular />}>Button</GriffelButton>
         </FluentProvider>
       </div>
       <div className={styles.label}>icon only</div>
@@ -105,7 +107,7 @@ export const GriffelComparison = (): React.ReactNode => {
       </div>
       <div>
         <FluentProvider theme={webLightTheme}>
-          <GriffelButton icon={<GriffelCalendarMonthRegular />} aria-label="Calendar" />
+          <GriffelButton icon={<CalendarMonthRegular />} aria-label="Calendar" />
         </FluentProvider>
       </div>
     </div>

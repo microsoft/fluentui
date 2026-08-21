@@ -25,7 +25,23 @@ Status flow: `planned` → `pilot` → `audited` → `converted` → `validated`
 | Button    | pilot-built | Button.module.css ported verbatim; wrapper reintroduces appearance/shape/size (headless omits them — defaults mirrored, drift risk documented); adds data-size/data-empty               |
 | Tooltip   | pilot-built | REAL top-layer adaptation: data-placement re-key (logical vocab + rtl swap), pure-CSS arrow cross-axis, JS offset compensation (4/+6); [data-hidden] producer gone — no boundary hiding |
 
+### Storybook verification 2026-08-20 (screenshots in .scratch/windmod-shots/)
+
+- Button GriffelComparison: side-by-side parity convincing across all 5
+  appearances × 3 sizes × 3 shapes × 3 disabled states × icon variants.
+- Tooltip Placements: all 12 placements render with correctly oriented arrows
+  (top-layer + CSS anchor positioning + data-placement re-key + pure-CSS arrow).
+- ThemeProvider NestedThemes: web-dark/teams-dark/teams-HC subtrees all resolve;
+  the pinned top-layer tooltip inside the dark subtree renders DARK — the
+  display:contents theming architecture is proven in-browser.
+- Learning: `popover='hint'` is exclusive by spec — multiple pinned-open
+  tooltips need `content={{ popover: 'manual' }}` (demo-only device).
+
 ### Pilot known gaps (for review discussion)
+
+- Headless icons: /headless ships FACTORIES only (2.0.337) — premade icon
+  components are still Griffel. Stories use classic icons in the demo layer;
+  the windmod library imports none. PLAN.md corrected.
 
 - Arrow cross-axis position for -start/-end placements is a fixed 8px inset
   (`--fui-positioning-arrow-cross`) — Griffel aligned it to the anchor from JS.

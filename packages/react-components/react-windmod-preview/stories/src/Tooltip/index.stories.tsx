@@ -49,11 +49,13 @@ const placements = [
 /** All 12 placements pinned open — exercises data-placement re-keying + the pure-CSS arrow. */
 export const Placements = (): React.ReactNode => (
   <ThemeProvider>
-    <div className={styles.spacer}>
+    <div className={styles.placementsGrid}>
       {placements.map(positioning => (
         <Tooltip
           key={positioning}
-          content={positioning}
+          // popover='manual' ONLY because these are pinned open side by side: 'hint'
+          // popovers are exclusive by spec, so twelve visible hints collapse to one.
+          content={{ children: positioning, popover: 'manual' }}
           relationship="label"
           withArrow
           visible
@@ -74,7 +76,7 @@ export const Placements = (): React.ReactNode => (
 export const GriffelComparison = (): React.ReactNode => (
   <div className={styles.spacer}>
     <ThemeProvider>
-      <Tooltip content="Windmod tooltip" relationship="label" withArrow visible>
+      <Tooltip content={{ children: 'Windmod tooltip', popover: 'manual' }} relationship="label" withArrow visible>
         <Button>Windmod</Button>
       </Tooltip>
     </ThemeProvider>
