@@ -20,8 +20,8 @@ export const styles = css`
     --_col-end-width: 0px;
     --_col-submenu-width: 0px;
 
-    contain: content;
-    block-size: fit-content;
+    contain: layout style;
+    block-size: auto;
     max-inline-size: 300px;
     min-inline-size: 160px;
     inline-size: auto;
