@@ -1,0 +1,103 @@
+#
+# TEMPORARY diagnostic workflow — remove once the Nx 22 CI hang (see #36435) is understood/fixed.
+#
+# The main CI jobs sometimes hang with zero output after a task completes, until the 6h GH Actions
+# job timeout kills them. This workflow runs several small, isolated `nx` invocations in parallel,
+# each with a short `timeout-minutes`, so we get fast signal on whether the hang reproduces with:
+#  - a single task (no scheduling/transition between tasks at all)
+#  - a couple of sequential tasks (to see if it needs at least one task->task transition)
+#  - a full affected run scoped to one target type only (build vs lint vs test vs type-check)
+#
+# Ordered roughly fastest -> slowest so we don't wait on slow legs to learn something from fast ones.
+#
+name: Nx Hang Diagnostics (temporary)
+
+on:
+  push:
+    branches:
+      - chore/nx-22-upgrade
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+jobs:
+  diag:
+    if: ${{ github.repository_owner == 'PaulGMardling' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: single-lint
+            timeout: 15
+            isolate_plugins: 'true'
+            cmd: yarn nx run babel-preset-global-context:lint
+          - name: single-lint-no-isolation
+            timeout: 15
+            isolate_plugins: 'false'
+            cmd: yarn nx run babel-preset-global-context:lint
+          - name: single-build
+            timeout: 15
+            isolate_plugins: 'true'
+            cmd: yarn nx run react-theme:build
+          - name: single-build-no-isolation
+            timeout: 15
+            isolate_plugins: 'false'
+            cmd: yarn nx run react-theme:build
+          - name: two-builds-sequential
+            timeout: 20
+            isolate_plugins: 'true'
+            cmd: yarn nx run-many -t build -p react-theme,react-shared-contexts --parallel=1
+          - name: two-builds-sequential-no-isolation
+            timeout: 20
+            isolate_plugins: 'false'
+            cmd: yarn nx run-many -t build -p react-theme,react-shared-contexts --parallel=1
+          - name: all-lint-only
+            timeout: 45
+            isolate_plugins: 'true'
+            cmd: yarn nx affected -t lint --nxBail
+          - name: all-lint-only-no-isolation
+            timeout: 45
+            isolate_plugins: 'false'
+            cmd: yarn nx affected -t lint --nxBail
+          - name: all-build-only
+            timeout: 60
+            isolate_plugins: 'true'
+            cmd: yarn nx affected -t build --nxBail
+          - name: all-build-only-no-isolation
+            timeout: 60
+            isolate_plugins: 'false'
+            cmd: yarn nx affected -t build --nxBail
+    name: diag / ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: ${{ matrix.timeout }}
+    env:
+      NX_ISOLATE_PLUGINS: ${{ matrix.isolate_plugins }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - name: Run yarn install --immutable
+        run: yarn install --immutable
+
+      - name: Run diagnostic command
+        run: ${{ matrix.cmd }}
