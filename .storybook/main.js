@@ -47,11 +47,6 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
           test: /\.stories\.tsx$/,
           include: /stories/,
         },
-        /**
-         * windmod-preview stories import `*.module.css`; without this the sandbox export
-         * drops those imports and every exported story opens unstyled.
-         */
-        cssModules: true,
       },
     }),
   ],

@@ -4,22 +4,38 @@ Status flow: `planned` → `pilot` → `audited` → `converted` → `validated`
 
 ## Infra
 
-| Item                                   | Status  | Notes                                       |
-| -------------------------------------- | ------- | ------------------------------------------- |
-| Branch styling/react-windmod           | done    | off master 06cbcbe0b1                       |
-| PLAN.md committed                      | done    |                                             |
-| react-tailwind-theme-preview port      | planned | source: branch styling/tailwind-css-modules |
-| react-windmod-preview scaffold         | planned | library/ + stories/                         |
-| ThemeProvider                          | planned | display:contents, verified viable           |
-| Stories Storybook + Tailwind v4 wiring | planned |                                             |
-| VR harness adaptation                  | planned | after pilot review                          |
+| Item                                   | Status  | Notes                                                                                                                                                        |
+| -------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Branch styling/react-windmod           | done    | off master 06cbcbe0b1                                                                                                                                        |
+| PLAN.md committed                      | done    |                                                                                                                                                              |
+| Build infra port (executor, scripts)   | done    | css-modules compiler in build executor; jest+storybook wiring; react-icons → 2.0.337 for /headless                                                           |
+| react-tailwind-theme-preview port      | done    | self-contained (theme-values.json + class-name constants in-package; tokens.ts = name inventory only); regenerated vs current tokens; dist builds (175,694B) |
+| react-windmod-preview scaffold         | done    | generator + bespoke: type:module, subpath exports, moduleResolution bundler (type-check --baseUrl override defeats repo paths)                               |
+| workspace-plugin Windows fix           | done    | generate-api subpath rollups skipped on Windows (backslash vs '/index.d.ts' suffix check) — fixed, 56 headless rollups emit                                  |
+| ThemeProvider                          | done    | display:contents + headless Provider context; theme classes re-exported from /provider                                                                       |
+| Stories Storybook + Tailwind v4 wiring | done    | root .storybook rules + package stories project (generator template had 2 bugs: main.cjs not inferred, wrong require depth)                                  |
+| Library build/type-check/lint          | done    | all green                                                                                                                                                    |
+| VR harness adaptation                  | planned | after pilot review                                                                                                                                           |
+| Unit tests (conformance + behavior)    | planned | isConformant adapted (export-map shape); write with pilot round 2                                                                                            |
 
 ## Components (pilot)
 
-| Component | Status | Notes                                                |
-| --------- | ------ | ---------------------------------------------------- |
-| Button    | pilot  | variants w/o data-* (appearance/size/shape)          |
-| Tooltip   | pilot  | top-layer popover=hint + positioning + ThemeProvider |
+| Component | Status      | Notes                                                                                                                                                                                   |
+| --------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Button    | pilot-built | Button.module.css ported verbatim; wrapper reintroduces appearance/shape/size (headless omits them — defaults mirrored, drift risk documented); adds data-size/data-empty               |
+| Tooltip   | pilot-built | REAL top-layer adaptation: data-placement re-key (logical vocab + rtl swap), pure-CSS arrow cross-axis, JS offset compensation (4/+6); [data-hidden] producer gone — no boundary hiding |
+
+### Pilot known gaps (for review discussion)
+
+- Arrow cross-axis position for -start/-end placements is a fixed 8px inset
+  (`--fui-positioning-arrow-cross`) — Griffel aligned it to the anchor from JS.
+  Zero-tolerance VR may flag it on those placements; centered placements should match.
+- Button's icon filled/regular hover-swap rules target `:global(.fui-Icon-*)` classes —
+  verify against headless icons 2.0.337 markup in storybook (fork lineage carried them,
+  unconfirmed upstream).
+- ButtonContext size inheritance (Toolbar et al.) not consumed — audit item for the
+  compound-component batches.
+- generate-api emits `library/etc/*.api.md` per subpath — commit them once reviewed.
 
 ## Components (remaining headless coverage)
 

@@ -1,0 +1,53 @@
+/*
+ * Plain CSS Modules (no Tailwind, no theme reference) — demo chrome for the pilot-review
+ * stories only. Deliberately styled with neutral literals so the harness itself never
+ * competes with the component styles under review.
+ */
+
+.grid {
+  display: grid;
+  grid-template-columns: max-content 1fr 1fr;
+  gap: 12px 24px;
+  align-items: center;
+  max-width: 720px;
+}
+
+.header {
+  font: 600 12px/16px system-ui, sans-serif;
+  color: #616161;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.label {
+  font: 400 13px/18px system-ui, sans-serif;
+  color: #242424;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.surface {
+  padding: 16px;
+  border-radius: 8px;
+  /* Windmod token — resolves inside a ThemeProvider subtree; transparent elsewhere. */
+  background: var(--color-neutral-background-2, transparent);
+}
+
+.spacer {
+  display: flex;
+  gap: 48px;
+  padding: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

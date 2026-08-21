@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from 'clsx';
 
 import type { ButtonState } from './Button.types';

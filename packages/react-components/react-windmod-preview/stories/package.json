@@ -1,5 +1,8 @@
 {
   "name": "@fluentui/react-windmod-preview-stories",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build-storybook": "yarn run -T storybook build -o ./dist/storybook"
+  }
 }
