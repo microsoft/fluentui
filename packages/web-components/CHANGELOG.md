@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Wed, 19 Aug 2026 04:08:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 21 Aug 2026 04:08:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.2)
+
+Fri, 21 Aug 2026 04:08:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.1..@fluentui/web-components_v3.1.2)
+
+### Patches
+
+- fix(web-components): prevent unsafe theme token values from injecting CSS ([PR #36600](https://github.com/microsoft/fluentui/pull/36600) by machi@microsoft.com)
 
 ## [3.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.1)
 
