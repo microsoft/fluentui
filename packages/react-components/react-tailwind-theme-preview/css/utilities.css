@@ -87,35 +87,24 @@
   --fui-focus-outline-radius: initial;
   --fui-focus-outline-offset: initial;
 
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
+  @apply border-transparent;
 
-  &::after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
+  /* Tailwind's `after` variant supplies `content` itself. */
+  @variant after {
+    @apply pointer-events-none absolute z-1;
 
     border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--color-stroke-focus-2));
     border-radius: var(--fui-focus-outline-radius, var(--radius-medium));
 
     /* `getOutlinePosition()`: `calc(<width> * -1)` with no offset, else
-       `calc(0px - <width> - <offset>)`. Both branches collapse into one expression
-       because an unset `--fui-focus-outline-offset` falls back to `0px`. */
-    top: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
-    right: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
-    bottom: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
-    left: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+       `calc(0px - <width> - <offset>)` — one expression, since an unset offset falls
+       back to `0px`. */
+    inset: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
   }
 
-  @media (forced-colors: active) {
-    &::after {
-      border-top-color: Highlight;
-      border-right-color: Highlight;
-      border-bottom-color: Highlight;
-      border-left-color: Highlight;
+  @variant forced-colors {
+    @variant after {
+      @apply border-[Highlight];
     }
   }
 }

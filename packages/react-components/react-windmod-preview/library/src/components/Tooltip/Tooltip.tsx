@@ -30,17 +30,15 @@ export const Tooltip = (props: TooltipProps): JSXElement => {
     resolved.offset === undefined
       ? TOOLTIP_OFFSET + (withArrow ? ARROW_HEIGHT : 0)
       : typeof resolved.offset === 'number' && withArrow
-      ? resolved.offset + ARROW_HEIGHT
-      : resolved.offset;
+        ? resolved.offset + ARROW_HEIGHT
+        : resolved.offset;
 
   const state: TooltipState = {
     ...useTooltip({ ...rest, withArrow, positioning: { ...resolved, offset } }),
     appearance,
   };
 
-  useTooltipStyles(state);
-
-  return renderTooltip(state);
+  return renderTooltip(useTooltipStyles(state));
 };
 
 Tooltip.displayName = 'Tooltip';

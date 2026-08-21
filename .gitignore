@@ -163,5 +163,3 @@ gulp-cache
 
 # session scratch space (never committed)
 .scratch/
-graphify-out/
-packages/graphify-out/

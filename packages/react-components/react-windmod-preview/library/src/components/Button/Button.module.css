@@ -28,8 +28,8 @@
      * SINGLE-valued, so they apply to every entry — no positional-list realignment (that is
      * the Avatar trap, §2.1, which is why Avatar's `margin` deliberately stays a shorthand).
      */
-    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
-      color;
+    transition-property:
+      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
     transition-timing-function: var(--ease-easy-ease);
 
     @variant hover {
@@ -449,24 +449,32 @@
     @variant focus-visible-fui {
       @apply border-t-stroke-focus-2 border-r-stroke-focus-2 border-b-stroke-focus-2 border-l-stroke-focus-2;
 
-      box-shadow: var(--shadow-2), 0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset,
+      box-shadow:
+        var(--shadow-2),
+        0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset,
         0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
 
       @variant hover {
         @apply border-t-stroke-focus-2 border-r-stroke-focus-2 border-b-stroke-focus-2 border-l-stroke-focus-2;
 
-        box-shadow: var(--shadow-2), 0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
+        box-shadow:
+          var(--shadow-2),
+          0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
       }
     }
 
     /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
     @supports (-moz-appearance: button) {
       @variant focus-visible-fui {
-        box-shadow: var(--shadow-2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
+        box-shadow:
+          var(--shadow-2),
+          0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
           0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
 
         @variant hover {
-          box-shadow: var(--shadow-2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
+          box-shadow:
+            var(--shadow-2),
+            0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
         }
       }
     }

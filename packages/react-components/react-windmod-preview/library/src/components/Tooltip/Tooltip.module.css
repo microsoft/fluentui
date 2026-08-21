@@ -1,163 +1,139 @@
 @reference '#theme';
 
-/* Layer order — restated per module so stylesheet load order cannot decide the ranking;
-   re-declaring an existing layer is a no-op. */
+/* Layer order — restated per module so stylesheet load order cannot decide the ranking. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Adapted from the Griffel-suite parity CSS for the headless top-layer model:
- *
- * - The content is a native `popover="hint"` element. The top layer owns display (no
- *   `hidden`/`data-open` display dance), but the UA [popover] defaults (border, padding,
- *   Canvas colors, `overflow: auto`) must all be overridden here — layered author rules
- *   still beat UA styles, layers only order the author origin.
- * - Placement rides `data-placement` ON THE CONTENT (headless vocabulary:
- *   above|below|before|after with -start/-end/-top/-bottom suffixes, kept in sync with
- *   the browser-resolved fallback by the headless placement observer) — not
- *   react-positioning's `data-popper-placement` ancestor attribute.
- * - The arrow is the headless-rendered `[data-arrow]` child (no class hook, no arrowRef):
- *   its cross-axis position is pure CSS (centered via auto margins; -start/-end offsets
- *   via --fui-positioning-arrow-cross), where react-positioning used to set inline
- *   coordinates from JS.
- * - `before`/`after` are LOGICAL placements, but the arrow's edge offsets and rotation
- *   are physical geometry (`@noflip` in the Griffel source) — the rtl variant swaps them
- *   explicitly.
+ * Top-layer model: the content is a native `popover="hint"` element (the top layer owns
+ * show/hide; the UA [popover] defaults are overridden below), placement rides
+ * `data-placement` on the content (see the placement-* variants in the theme catalog),
+ * and the arrow is the class-less headless-rendered `[data-arrow]` child — styled from
+ * here because there is no slot/className hook for it (upstream candidate).
  */
 
 @layer fui.components.l1 {
   .content {
-    @apply box-border max-w-240 cursor-default overflow-visible rounded-medium bg-neutral-background-1 px-11 pt-vertical-xs pb-vertical-s-nudge font-base text-base-200 leading-base-200 break-words text-neutral-foreground-1;
+    @apply box-border max-w-240 cursor-default overflow-visible rounded-medium border border-solid border-transparent-stroke bg-neutral-background-1 px-11 pt-vertical-xs pb-vertical-s-nudge font-base text-base-200 leading-base-200 break-words text-neutral-foreground-1;
 
-    border: 1px solid var(--color-transparent-stroke);
-
-    /* TODO carried from the Griffel source: need versions of tokens.alias.shadow.shadow8
-       etc. that work with filter. */
+    /* TODO carried from the Griffel source: needs a filter-compatible shadow token. */
     filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
       drop-shadow(0 4px 8px var(--color-neutral-shadow-key));
   }
-}
 
-@layer fui.components.l1 {
-  /* `appearance` is a LOOK prop, so it rides a module class */
+  /* `appearance` is a look prop — it rides a module class. */
   .inverted {
     @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
   }
-}
 
-@layer fui.components.l1 {
   .content {
-    /* Cross-axis inset for -start/-end/-top/-bottom arrow placements. The Griffel arrow
-       was positioned from JS to align with the anchor; this fixed inset is the pure-CSS
-       stand-in, overridable per consumer. */
+    /* Cross-axis inset for aligned (-start/-end/-top/-bottom) arrows; Griffel computed
+       this from JS. Overridable per consumer. */
     --fui-positioning-arrow-cross: 8px;
 
-    /*
-     * The arrow: a rotated square whose visible half is carved by the ::before clip-path.
-     * Sizes stay literal px on purpose — the JS side (Tooltip.tsx ARROW_HEIGHT) does the
-     * matching arithmetic in CSS pixels, so they must NOT be rescaled via --base-scale.
-     * 8.484px = 6px arrow height × 1.414 (diagonal); -4.242px = half, poking out of the
-     * surface. Rotation and the per-edge offsets are PHYSICAL geometry (`@noflip` in the
-     * Griffel source) — see the rtl block for the logical placements.
-     */
+    /* A rotated square; the visible half is carved by the ::before clip-path. Literal px
+       on purpose: 8.484px = 6px arrow height × √2, -4.242px = half — paired with
+       ARROW_HEIGHT in Tooltip.tsx. Rotation and edge offsets are PHYSICAL geometry
+       (@noflip); the rtl block swaps the logical before/after placements. */
     > :where([data-arrow]) {
-      @apply absolute box-border;
-
-      z-index: -1;
+      @apply absolute -z-1 box-border size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
 
       --fui-positioning-arrow-height: 8.484px;
       --fui-positioning-arrow-offset: -4.242px;
 
-      background-color: inherit;
-      background-clip: content-box;
+      @variant before {
+        @apply -m-px block size-full rounded-bl-small border border-solid border-transparent-stroke bg-inherit;
 
-      border-bottom-left-radius: var(--radius-small); /* @noflip */
-      transform: rotate(var(--fui-positioning-arrow-angle)); /* @noflip */
-
-      height: var(--fui-positioning-arrow-height);
-      width: var(--fui-positioning-arrow-height);
-
-      &::before {
-        @apply block h-full w-full;
-
-        content: '';
-        background-color: inherit;
-
-        margin: -1px;
-        border: 1px solid var(--color-transparent-stroke);
-
-        border-bottom-left-radius: var(--radius-small); /* @noflip */
         clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
       }
     }
 
-    /* Main axis: which edge the arrow pokes out of, and its rotation. */
-    &:where([data-placement^='above']) > :where([data-arrow]) {
-      bottom: var(--fui-positioning-arrow-offset);
+    /* Main axis: the edge the arrow pokes out of, and its rotation. */
+    @variant placement-above {
+      > :where([data-arrow]) {
+        @apply bottom-(--fui-positioning-arrow-offset);
 
-      --fui-positioning-arrow-angle: -45deg;
-    }
-
-    &:where([data-placement^='below']) > :where([data-arrow]) {
-      top: var(--fui-positioning-arrow-offset);
-
-      --fui-positioning-arrow-angle: 135deg;
-    }
-
-    /* Logical `before` = physical left of the trigger in LTR → arrow on the surface's
-       right edge (Griffel's popper-left case); `after` mirrors it. */
-    &:where([data-placement^='before']) > :where([data-arrow]) {
-      right: var(--fui-positioning-arrow-offset); /* @noflip */
-
-      --fui-positioning-arrow-angle: 225deg;
-    }
-
-    &:where([data-placement^='after']) > :where([data-arrow]) {
-      left: var(--fui-positioning-arrow-offset); /* @noflip */
-
-      --fui-positioning-arrow-angle: 45deg;
-    }
-
-    @variant rtl {
-      &:where([data-placement^='before']) > :where([data-arrow]) {
-        right: auto;
-        left: var(--fui-positioning-arrow-offset);
-
-        --fui-positioning-arrow-angle: 45deg;
+        --fui-positioning-arrow-angle: -45deg;
       }
+    }
 
-      &:where([data-placement^='after']) > :where([data-arrow]) {
-        left: auto;
-        right: var(--fui-positioning-arrow-offset);
+    @variant placement-below {
+      > :where([data-arrow]) {
+        @apply top-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 135deg;
+      }
+    }
+
+    /* Logical before = physical left of the trigger in LTR → arrow on the right edge. */
+    @variant placement-before {
+      > :where([data-arrow]) {
+        @apply right-(--fui-positioning-arrow-offset);
 
         --fui-positioning-arrow-angle: 225deg;
       }
     }
 
-    /* Cross axis: centered for suffix-less placements, near-edge inset for suffixed. */
-    &:where([data-placement='above'], [data-placement='below']) > :where([data-arrow]) {
-      inset-inline: 0;
-      margin-inline: auto;
+    @variant placement-after {
+      > :where([data-arrow]) {
+        @apply left-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 45deg;
+      }
     }
 
-    &:where([data-placement$='-start']) > :where([data-arrow]) {
-      inset-inline-start: var(--fui-positioning-arrow-cross);
+    @variant rtl {
+      @variant placement-before {
+        > :where([data-arrow]) {
+          @apply right-auto left-(--fui-positioning-arrow-offset);
+
+          --fui-positioning-arrow-angle: 45deg;
+        }
+      }
+
+      @variant placement-after {
+        > :where([data-arrow]) {
+          @apply right-(--fui-positioning-arrow-offset) left-auto;
+
+          --fui-positioning-arrow-angle: 225deg;
+        }
+      }
     }
 
-    &:where([data-placement$='-end']) > :where([data-arrow]) {
-      inset-inline-end: var(--fui-positioning-arrow-cross);
+    /* Cross axis: centered when suffix-less, near-edge inset when aligned. */
+    @variant placement-centered-inline {
+      > :where([data-arrow]) {
+        @apply inset-x-0 mx-auto;
+      }
     }
 
-    &:where([data-placement='before'], [data-placement='after']) > :where([data-arrow]) {
-      inset-block: 0;
-      margin-block: auto;
+    @variant placement-centered-block {
+      > :where([data-arrow]) {
+        @apply inset-y-0 my-auto;
+      }
     }
 
-    &:where([data-placement$='-top']) > :where([data-arrow]) {
-      top: var(--fui-positioning-arrow-cross);
+    @variant placement-start {
+      > :where([data-arrow]) {
+        @apply start-(--fui-positioning-arrow-cross);
+      }
     }
 
-    &:where([data-placement$='-bottom']) > :where([data-arrow]) {
-      bottom: var(--fui-positioning-arrow-cross);
+    @variant placement-end {
+      > :where([data-arrow]) {
+        @apply end-(--fui-positioning-arrow-cross);
+      }
+    }
+
+    @variant placement-top {
+      > :where([data-arrow]) {
+        @apply top-(--fui-positioning-arrow-cross);
+      }
+    }
+
+    @variant placement-bottom {
+      > :where([data-arrow]) {
+        @apply bottom-(--fui-positioning-arrow-cross);
+      }
     }
   }
 }

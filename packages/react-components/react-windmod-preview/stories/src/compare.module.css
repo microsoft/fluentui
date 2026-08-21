@@ -13,14 +13,18 @@
 }
 
 .header {
-  font: 600 12px/16px system-ui, sans-serif;
+  font:
+    600 12px/16px system-ui,
+    sans-serif;
   color: #616161;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .label {
-  font: 400 13px/18px system-ui, sans-serif;
+  font:
+    400 13px/18px system-ui,
+    sans-serif;
   color: #242424;
 }
 

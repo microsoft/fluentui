@@ -23,9 +23,7 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
     size,
   };
 
-  useButtonStyles(state);
-
-  return renderButton(state);
+  return renderButton(useButtonStyles(state));
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<ButtonProps>;
 

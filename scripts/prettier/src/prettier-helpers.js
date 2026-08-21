@@ -1,4 +1,4 @@
-const { execFileSync } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -51,7 +51,11 @@ function runPrettier(files, config = {}) {
         const ext = path.extname(file).replace('.', '');
 
         if (prettierSupportedFileExtensions.includes(ext)) {
-          acc.push(file);
+          // WHY IGNORE IS NEEDED?: prettier removes one of the '\' within replaceValue
+          // prettier-ignore
+          const escapedFileName = `"${file.replace(/\$/g, '\\\$')}"`;
+
+          acc.push(escapedFileName);
         }
         return acc;
       }, /** @type {string[]} */ ([]));
@@ -64,20 +68,21 @@ function runPrettier(files, config = {}) {
 
   // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
   // on a single file. So to easily format multiple files, we have to use the CLI.
-  // NOTE: arguments are passed as an argv array (no shell), so file names are never interpreted by a shell.
-  const args = [
+  const cmd = [
+    'node',
     prettierBin,
     '--config',
     prettierRulesConfig,
     '--ignore-path',
-    prettierIgnorePath,
-    ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
+    `"${prettierIgnorePath}"`,
+    // `--loglevel` was renamed to `--log-level` in prettier 3
+    ...(logErrorsOnly ? ['--log-level', 'warn'] : []),
     check ? '--check' : '--write',
     ...prettierSupportedFiles,
-  ];
+  ].join(' ');
 
   try {
-    execFileSync(process.execPath, args, { stdio: 'inherit' });
+    execSync(cmd, { stdio: 'inherit' });
     return true;
   } catch {
     return false;
@@ -100,7 +105,7 @@ function runPrettierForFolder(folderPath, config = {}) {
   }
 
   const fileExtensions = `.{${prettierSupportedFileExtensions.join(',')}}`;
-  const sourcePath = `${path.join(folderPath, nonRecursive ? '' : '**', '*')}${fileExtensions}`;
+  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', '*')}${fileExtensions}"`;
 
   console.log(`Running prettier for ${sourcePath}`);
 

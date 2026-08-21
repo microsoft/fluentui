@@ -1,5 +1,5 @@
-export { ThemeProvider } from './components/Provider/index';
-export type { ThemeClassName, ThemeProviderProps } from './components/Provider/index';
+export { ThemeProvider } from './components/Provider';
+export type { ThemeClassName, ThemeProviderProps } from './components/Provider';
 
 /**
  * The shipped theme class names, re-exported from the theme package so the provider and

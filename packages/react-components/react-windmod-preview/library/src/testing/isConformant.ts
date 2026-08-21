@@ -1,12 +1,6 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
-
-function kebabCase(str: string): string {
-  return str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/\s+/g, '-')
-    .toLowerCase();
-}
+import { kebabCase } from 'lodash';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },

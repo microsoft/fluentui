@@ -101,6 +101,25 @@
 @custom-variant position-start-or-end (&:where([data-position='start'], [data-position='end']));
 
 /*
+ * Anchored-surface placement — the headless positioning hook stamps `data-placement`
+ * ON the positioned surface (logical vocabulary: above|below|before|after, with
+ * -start/-end (inline) or -top/-bottom (block) alignment suffixes) and keeps it in sync
+ * with the browser-resolved fallback. Prefix variants key the main axis; suffix variants
+ * key the alignment; the two `-centered` forms name the suffix-less (centered) cases per
+ * axis, for cross-axis rules that differ between horizontal and vertical placements.
+ */
+@custom-variant placement-above (&:where([data-placement^='above']));
+@custom-variant placement-below (&:where([data-placement^='below']));
+@custom-variant placement-before (&:where([data-placement^='before']));
+@custom-variant placement-after (&:where([data-placement^='after']));
+@custom-variant placement-start (&:where([data-placement$='-start']));
+@custom-variant placement-end (&:where([data-placement$='-end']));
+@custom-variant placement-top (&:where([data-placement$='-top']));
+@custom-variant placement-bottom (&:where([data-placement$='-bottom']));
+@custom-variant placement-centered-inline (&:where([data-placement='above'], [data-placement='below']));
+@custom-variant placement-centered-block (&:where([data-placement='before'], [data-placement='after']));
+
+/*
  * "Where is the scrollable DrawerBody scrolled to" — DrawerHeader / DrawerFooter reveal a
  * separator once the body has scrolled at all, and make it fully opaque while there is
  * content hidden on their side of it. `data-scroll-state` is one of the headless preview's 25

@@ -2886,6 +2886,7 @@ __metadata:
     "@oddbird/css-anchor-positioning": "npm:0.4.0"
     "@phenomnomnominal/tsquery": "npm:6.1.3"
     "@playwright/test": "npm:1.56.1"
+    "@prettier/sync": "npm:0.6.1"
     "@react-native/babel-preset": "npm:0.73.21"
     "@rnx-kit/eslint-plugin": "npm:0.8.6"
     "@rollup/plugin-node-resolve": "npm:13.3.0"
@@ -2937,7 +2938,6 @@ __metadata:
     "@types/markdown-table": "npm:2.0.0"
     "@types/micromatch": "npm:4.0.2"
     "@types/node": "npm:^22.0.0"
-    "@types/prettier": "npm:2.7.2"
     "@types/progress": "npm:2.0.5"
     "@types/react": "npm:19.2.2"
     "@types/react-dom": "npm:19.2.2"
@@ -3062,7 +3062,8 @@ __metadata:
     postcss: "npm:8.5.18"
     postcss-loader: "npm:4.1.0"
     postcss-modules: "npm:4.1.3"
-    prettier: "npm:2.8.8"
+    prettier: "npm:3.9.6"
+    prettier-plugin-tailwindcss: "npm:0.8.1"
     progress: "npm:2.0.3"
     puppeteer: "npm:24.42.0"
     raw-loader: "npm:4.0.2"
@@ -8889,6 +8890,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prettier/sync@npm:0.6.1":
+  version: 0.6.1
+  resolution: "@prettier/sync@npm:0.6.1"
+  dependencies:
+    make-synchronized: "npm:^0.8.0"
+  peerDependencies:
+    prettier: "*"
+  checksum: 10c0/4cf6dd8c27f6425924ac749ca980693b447d39162b530e103f4613df470c1ec877f691d10796556b748ce8c954cc76e0f2a73e18e02b125d295168012c25df71
+  languageName: node
+  linkType: hard
+
 "@puppeteer/browsers@npm:2.13.0":
   version: 2.13.0
   resolution: "@puppeteer/browsers@npm:2.13.0"
@@ -11016,7 +11028,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:*, @types/prettier@npm:2.7.2":
+"@types/prettier@npm:*":
   version: 2.7.2
   resolution: "@types/prettier@npm:2.7.2"
   checksum: 10c0/16ffbd1135c10027f118517d3b12aaaf3936be1f3c6e4c6c9c03d26d82077c2d86bf0dcad545417896f29e7d90faf058aae5c9db2e868be64298c644492ea29e
@@ -23889,6 +23901,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"make-synchronized@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "make-synchronized@npm:0.8.0"
+  checksum: 10c0/b8293d79e8752840a8103034866296b781c754286bf54864f4014b01f4b46710c5eaa04ffdabd7167513a4e72e7fec4396b36fb5aef16222fd5a268d1b4c041e
+  languageName: node
+  linkType: hard
+
 "makeerror@npm:1.0.12":
   version: 1.0.12
   resolution: "makeerror@npm:1.0.12"
@@ -27339,7 +27358,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.8.8":
+"prettier-plugin-tailwindcss@npm:0.8.1":
+  version: 0.8.1
+  resolution: "prettier-plugin-tailwindcss@npm:0.8.1"
+  peerDependencies:
+    "@ianvs/prettier-plugin-sort-imports": "*"
+    "@prettier/plugin-hermes": "*"
+    "@prettier/plugin-oxc": "*"
+    "@prettier/plugin-pug": "*"
+    "@shopify/prettier-plugin-liquid": "*"
+    "@trivago/prettier-plugin-sort-imports": "*"
+    "@zackad/prettier-plugin-twig": "*"
+    prettier: ^3.0
+    prettier-plugin-astro: "*"
+    prettier-plugin-css-order: "*"
+    prettier-plugin-jsdoc: "*"
+    prettier-plugin-marko: "*"
+    prettier-plugin-multiline-arrays: "*"
+    prettier-plugin-organize-attributes: "*"
+    prettier-plugin-organize-imports: "*"
+    prettier-plugin-sort-imports: "*"
+    prettier-plugin-svelte: "*"
+  peerDependenciesMeta:
+    "@ianvs/prettier-plugin-sort-imports":
+      optional: true
+    "@prettier/plugin-hermes":
+      optional: true
+    "@prettier/plugin-oxc":
+      optional: true
+    "@prettier/plugin-pug":
+      optional: true
+    "@shopify/prettier-plugin-liquid":
+      optional: true
+    "@trivago/prettier-plugin-sort-imports":
+      optional: true
+    "@zackad/prettier-plugin-twig":
+      optional: true
+    prettier-plugin-astro:
+      optional: true
+    prettier-plugin-css-order:
+      optional: true
+    prettier-plugin-jsdoc:
+      optional: true
+    prettier-plugin-marko:
+      optional: true
+    prettier-plugin-multiline-arrays:
+      optional: true
+    prettier-plugin-organize-attributes:
+      optional: true
+    prettier-plugin-organize-imports:
+      optional: true
+    prettier-plugin-sort-imports:
+      optional: true
+    prettier-plugin-svelte:
+      optional: true
+  checksum: 10c0/45b8d8686e6b27f06f710063b24c4b5fba4d201aaee7ed85dfdd6cb8e68b6d8f9cea2d8497999c4f72e4c3a8b93b078fb3b6ab35567b3bfaef4bf9ec43482a6f
+  languageName: node
+  linkType: hard
+
+"prettier@npm:3.9.6":
+  version: 3.9.6
+  resolution: "prettier@npm:3.9.6"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/9f7ddae234035868f3daab3dc34e6de7e54622185afb017378029f0c09a9c023248ccf6f34def0b17a0538e18c47aa1b3188bab72965d1bf735919baa0747e99
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.0.1, prettier@npm:^2.8.8":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
