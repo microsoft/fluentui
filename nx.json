@@ -49,6 +49,7 @@
       "cache": true
     },
     "test-ssr": {
+      "dependsOn": ["^build"],
       "cache": true
     },
     "test-vr": {
@@ -195,5 +196,5 @@
       ]
     }
   ],
-  "useLegacyCache": true
+  "analytics": false
 }

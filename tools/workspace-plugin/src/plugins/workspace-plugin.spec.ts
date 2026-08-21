@@ -1,4 +1,4 @@
-import { CreateNodesContext, CreateNodesResultV2, ProjectConfiguration, serializeJson } from '@nx/devkit';
+import { CreateNodesContextV2, CreateNodesResultV2, ProjectConfiguration, serializeJson } from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
 import { WorkspacePluginOptions, createNodesV2 } from './workspace-plugin';
@@ -6,7 +6,7 @@ import { PackageJson } from '../types';
 
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
-  let context: CreateNodesContext;
+  let context: CreateNodesContextV2;
   let tempFs: TempFs;
   let cwd: string;
   const options: WorkspacePluginOptions = {
@@ -28,15 +28,13 @@ describe(`workspace-plugin`, () => {
         },
       },
       workspaceRoot: tempFs.tempDir,
-
-      configFiles: [],
     };
   });
 
   afterEach(() => {
     jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
   });
 
   it('should create nodes with clean,format targets for any project', async () => {

@@ -1,4 +1,4 @@
-import { Tree, updateJson, generateFiles, joinPathFragments } from '@nx/devkit';
+import { Tree, updateJson, generateFiles } from '@nx/devkit';
 import path from 'path';
 
 import { PackageJson, TsConfig } from '../../../types';
@@ -8,7 +8,7 @@ import { uniqueArray } from './utils';
 type Options = ReturnType<typeof getProjectConfig> & { rootOffset: string };
 
 export function addFiles(tree: Tree, options: Options) {
-  generateFiles(tree, joinPathFragments(__dirname, '../files'), options.projectConfig.root, {
+  generateFiles(tree, path.join(__dirname, '../files'), options.projectConfig.root, {
     tmpl: '',
     options,
   });
