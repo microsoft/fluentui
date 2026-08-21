@@ -10,6 +10,13 @@
 #
 # Ordered roughly fastest -> slowest so we don't wait on slow legs to learn something from fast ones.
 #
+# NOTE: the "*-no-isolation" (NX_ISOLATE_PLUGINS=false) legs are purely diagnostic — this setting was
+# found to break workspace-plugin:check-graph (tools/workspace-plugin/src/plugins/workspace-plugin.ts:160
+# assumes process.cwd() == workspace root, which only holds inside Nx's isolated plugin worker). It is
+# NOT a viable production setting as-is; we're only using it here to see whether disabling plugin
+# isolation also happens to avoid the hang, which would help confirm/rule out the plugin-worker IPC
+# path as the root cause.
+#
 name: Nx Hang Diagnostics (temporary)
 
 on:

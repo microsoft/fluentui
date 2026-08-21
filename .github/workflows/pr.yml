@@ -15,9 +15,13 @@ env:
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
   # TODO(nx-22-upgrade): experimental workaround for a CI hang (tasks stop producing output and never resume,
-  # eventually hitting the GH Actions 6h job timeout). Matches upstream reports of Nx's plugin-isolation worker
-  # and daemon IPC deadlocking under CI: https://github.com/nrwl/nx/issues/36576, https://github.com/nrwl/nx/issues/36579
-  NX_ISOLATE_PLUGINS: false
+  # eventually hitting the GH Actions 6h job timeout). Matches upstream reports of Nx's daemon IPC deadlocking
+  # under CI: https://github.com/nrwl/nx/issues/36576, https://github.com/nrwl/nx/issues/36579
+  #
+  # NOTE: NX_ISOLATE_PLUGINS=false was also tried here but reverted — it broke workspace-plugin:check-graph
+  # because tools/workspace-plugin/src/plugins/workspace-plugin.ts:160 (getTaskBuilderConfig) reads
+  # project.json via a path relative to process.cwd() rather than context.root. That assumption only holds
+  # inside Nx's isolated plugin worker (cwd = workspace root); running the plugin in-process breaks it.
   NX_DAEMON: false
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
