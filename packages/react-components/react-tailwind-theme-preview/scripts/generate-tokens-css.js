@@ -1121,11 +1121,19 @@ function main() {
   const modifiersIndex = argv.indexOf('--modifiers');
   const modifiers = modifiersIndex >= 0 ? argv[modifiersIndex + 1] : undefined;
 
+  // Prettier-format the output so the generated files satisfy the repo formatter
+  // without a .prettierignore exception; `--check` stays byte-exact because it
+  // compares against the formatted contents.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const prettier = require('@prettier/sync');
+  const format = (filePath, contents) =>
+    prettier.format(contents, { ...(prettier.resolveConfig(filePath) ?? {}), filepath: filePath });
+
   const files = [
-    { path: outPath, contents: render({ modifiers }) },
+    { path: outPath, contents: format(outPath, render({ modifiers })) },
     // themes.css is only written/checked alongside the canonical tokens.css — `--out`
     // runs are probe runs of the registration block.
-    ...(outIndex >= 0 ? [] : [{ path: THEMES_OUTPUT, contents: renderThemes() }]),
+    ...(outIndex >= 0 ? [] : [{ path: THEMES_OUTPUT, contents: format(THEMES_OUTPUT, renderThemes()) }]),
   ];
 
   for (const file of files) {

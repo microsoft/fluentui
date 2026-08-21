@@ -1,71 +1,13 @@
 /**
- * Custom variant catalog — the single place state selectors are defined.
- * Every variant is `:where()`-wrapped: zero added specificity, cascade decided by
- * @layer order alone (DECISIONS.md D2). Names follow the headless-preview
- * data-attribute vocabulary where one exists (reports/headless-precedent.md).
+ * Custom variant catalog — the single place state selectors are defined; never define
+ * variants in component modules. Names follow the headless data-attribute vocabulary.
  *
- * Grow this catalog as packages convert; never define variants in component modules.
- *
- * ── COMPOSITION WITH NAMED GROUPS (DECISIONS.md D15) ──────────────────────────────────
- *
- * (Careful editing this block: a CSS comment ends at the first `*` immediately followed by a
- * slash, so the group syntax is spelled `group-<variant>/<name>` throughout rather than with
- * an asterisk wildcard, which would terminate the comment and spill the prose into the
- * stylesheet as invalid declarations.)
- *
- * Every SELECTOR variant below already composes as `group-<variant>/<name>` for free —
- * Tailwind v4 rewrites any `&:where(…)` variant into the group form, so a child module writes
- * `@variant group-checked/fui-switch { … }` and get
- * `.child:is(:where(.group\/fui-switch):where([data-checked], :checked) *)`. Verified
- * against tailwindcss 4.3.3 for `checked`, `not-checked`, `size-small`, `disabled-control`,
- * `hover`, `focus-within` and `rtl`. **This catalog needs NO additions to support named
- * groups**, and a new entry becomes group-composable the moment it is added here.
- *
- * Two consequences that bite:
- *
- *   1. The `&:where(…)` shape is what makes composition work. An ancestor-form variant
- *      (`:where([x]) &`) still compiles on its own but SILENTLY stops composing under
- *      `group-*`. Keep every new entry in the canonical form.
- *
- *   2. `forced-colors` (below) is the ONE exception, because it is an AT-RULE variant —
- *      `@media (forced-colors: active)` has no element for `group-*` to scope.
- *      `group-forced-colors/fui-switch` is a hard build error
- *      (`Cannot use @variant with unknown variant`). Nest it the other way instead:
- *
- *          @variant forced-colors { @variant group-checked/fui-switch { … } }
- *
- *      Any future at-rule variant inherits the same restriction.
- *
- * ── WHAT IS DELIBERATELY NOT HERE ─────────────────────────────────────────────────────
- *
- * Five raw attribute-selector families in converted modules were examined for promotion and
- * left raw. The cookbook bans variant DEFINITIONS in component modules, not attribute
- * SELECTORS, so a raw selector is a legitimate authoring form; these are the cases where it
- * is the better one. Recording them here so the next reader does not re-litigate:
- *
- *   1. `data-popper-placement` (react-popover PopoverSurface, react-tooltip Tooltip — 8 uses)
- *      is written ANCESTOR-form, `:where(:global([data-popper-placement^='top'])) &`. It is on
- *      the positioned WRAPPER, not on the styled element, and it is a prefix match. Consequence
- *      1 above says an ancestor-form entry silently stops composing under `group-*`, so this
- *      cannot become a canonical entry at all.
- *
- *   2. `data-overflowing` / `data-overflow-menu` (react-overflow Overflow — 2 uses) are
- *      DESCENDANT selectors (`& [data-overflowing]`) that match arbitrary consumer children.
- *      A variant scopes `&`, so no entry can express them.
- *
- *   3. `data-size` on Avatar (123 uses across three modules) is written as multi-value bucket
- *      TABLES (`[data-size='16'], [data-size='20'], [data-size='24']`). The catalog names every
- *      one of those values individually, but only 4 of Avatar's 22 rules select a single value;
- *      naming the 18 unions would mean 18 write-once `-or-` entries and would fragment tables
- *      that are readable precisely because they are uniform.
- *
- *   4. `data-activedescendant-focusvisible` (react-combobox Option) gets no entry — D15.5
- *      admits no additions.
- *
- *   5. Card's "has a description" gate is not an attribute at ALL — CardHeader keeps two
- *      mutually exclusive module-class maps. Promoting it would mean inventing
- *      `data-has-description` and rewriting the hook, which is out of scope for a CSS-only
- *      pass and against D15.6's fallback-only reading of `data-*`.
+ * Every entry is the canonical `&:where(…)` form: zero added specificity (cascade is
+ * decided by @layer order and in-file order), and Tailwind rewrites that form into
+ * `group-<variant>/<name>` automatically, so every entry composes with named groups.
+ * An ancestor-form entry (`:where([x]) &`) silently stops group-composing — don't add
+ * one. At-rule variants (`forced-colors`) cannot take a group prefix; nest the group
+ * variant inside them instead.
  */
 
 /* direction — computed direction, correct under nesting (DECISIONS.md D5) */

@@ -985,10 +985,12 @@
     --radius-5-x-large: 32px;
     --radius-6-x-large: 40px;
     --radius-circular: 10000px;
-    --font-base: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    --font-base:
+      'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
       sans-serif;
     --font-monospace: Consolas, 'Courier New', Courier, monospace;
-    --font-numeric: Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto,
+    --font-numeric:
+      Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto,
       'Helvetica Neue', sans-serif;
     --text-base-100: 10px;
     --text-base-200: 12px;

@@ -1,9 +1,5 @@
 # generated or imported files
 package-deps.json
-# generated theme CSS — byte-exact against packages/tokens values (generator --check);
-# prettier would rewrite value bytes (rgba spacing, trailing zeros, line wraps)
-packages/react-components/react-tailwind-theme-preview/css/tokens.css
-packages/react-components/react-tailwind-theme-preview/css/themes.css
 CHANGELOG.*
 # generated from `web-features` via `yarn generate-browser-support`
 **/browser-support-data.generated.json
