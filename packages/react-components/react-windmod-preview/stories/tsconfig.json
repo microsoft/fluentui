@@ -2,6 +2,8 @@
   "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2019",
+    /* Subpath-export resolution — see library/tsconfig.json. */
+    "moduleResolution": "bundler",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,

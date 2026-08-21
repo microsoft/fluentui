@@ -14,7 +14,7 @@ const tsConfigPath = path.resolve(repoRoot, 'tsconfig.base.json');
  * @param {string | { name?: string }} addon
  */
 function isNotExportToSandboxAddon(addon) {
-  const name = typeof addon === 'string' ? addon : addon?.name ?? '';
+  const name = typeof addon === 'string' ? addon : (addon?.name ?? '');
   return !name.includes('react-storybook-addon-export-to-sandbox');
 }
 
@@ -41,6 +41,17 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
       },
     }),
   ],
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        // Headless VR captures trip lazy compilation's HMR reload loop (on-demand compile
+        // changes the runtime hash, the fresh page can't hot-update, reloads forever), so
+        // this storybook compiles everything eagerly.
+        lazyCompilation: false,
+      },
+    },
+  },
   // No local webpack tweaks: the root webpackFinal already registers the Tailwind v4 +
   // CSS Modules pipeline (rules.cssModulesRule / rules.tailwindThemeRule) that this
   // package's module.css files need.

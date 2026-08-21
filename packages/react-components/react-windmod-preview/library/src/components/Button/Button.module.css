@@ -382,17 +382,19 @@
 
   /* Glyph swap on hover, keyed off the data-variant attribute bundleIcon stamps on each
      glyph. In-file order carries the cascade: hover before hover-active, and the disabled
-     swap-back last so it wins over the appearance swaps. */
+     swap-back last so it wins over the appearance swaps. `!` keeps the swap in the same
+     importance tier as the icons stylesheet's hidden rule; normal declarations would lose
+     to the icon components' unlayered base classes. */
   .subtle,
   .transparent {
     @variant hover {
       & .icon * {
         @variant variant-filled {
-          @apply inline;
+          @apply inline!;
         }
 
         @variant variant-regular {
-          @apply hidden;
+          @apply hidden!;
         }
       }
     }
@@ -400,11 +402,11 @@
     @variant hover-active {
       & .icon * {
         @variant variant-filled {
-          @apply inline;
+          @apply inline!;
         }
 
         @variant variant-regular {
-          @apply hidden;
+          @apply hidden!;
         }
       }
     }
@@ -415,11 +417,11 @@
       @variant hover {
         & .icon * {
           @variant variant-filled {
-            @apply hidden;
+            @apply hidden!;
           }
 
           @variant variant-regular {
-            @apply inline;
+            @apply inline!;
           }
         }
       }
@@ -427,11 +429,11 @@
       @variant hover-active {
         & .icon * {
           @variant variant-filled {
-            @apply hidden;
+            @apply hidden!;
           }
 
           @variant variant-regular {
-            @apply inline;
+            @apply inline!;
           }
         }
       }

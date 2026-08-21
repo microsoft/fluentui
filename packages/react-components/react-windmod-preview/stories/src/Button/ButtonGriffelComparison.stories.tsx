@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button, ThemeProvider } from '@fluentui/react-windmod-preview';
-import type { ButtonProps } from '@fluentui/react-windmod-preview';
 import { Button as GriffelButton, FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { bundleIcon as griffelBundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { bundleIcon } from '@fluentui/react-icons/headless';
@@ -15,15 +14,23 @@ const appearances = ['secondary', 'primary', 'outline', 'subtle', 'transparent']
 const sizes = ['small', 'medium', 'large'] as const;
 const shapes = ['rounded', 'circular', 'square'] as const;
 
+type LookProps = {
+  appearance?: (typeof appearances)[number];
+  size?: (typeof sizes)[number];
+  shape?: (typeof shapes)[number];
+  disabled?: boolean;
+  disabledFocusable?: boolean;
+};
+
 /**
  * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
  * The pair in each row must be pixel-identical — this is the pilot's review surface.
  */
 export const GriffelComparison = (): React.ReactNode => {
-  const variants: Array<{ label: string; props: Partial<ButtonProps> }> = [
-    ...appearances.map(appearance => ({ label: appearance, props: { appearance } as Partial<ButtonProps> })),
-    ...sizes.map(size => ({ label: size, props: { size } as Partial<ButtonProps> })),
-    ...shapes.map(shape => ({ label: shape, props: { shape } as Partial<ButtonProps> })),
+  const variants: Array<{ label: string; props: LookProps }> = [
+    ...appearances.map(appearance => ({ label: appearance, props: { appearance } })),
+    ...sizes.map(size => ({ label: size, props: { size } })),
+    ...shapes.map(shape => ({ label: shape, props: { shape } })),
     { label: 'disabled', props: { disabled: true } },
     { label: 'disabledFocusable', props: { disabledFocusable: true } },
     { label: 'primary disabled', props: { appearance: 'primary', disabled: true } },
@@ -44,7 +51,7 @@ export const GriffelComparison = (): React.ReactNode => {
           </div>
           <div>
             <FluentProvider theme={webLightTheme}>
-              <GriffelButton {...(props as object)}>Button</GriffelButton>
+              <GriffelButton {...props}>Button</GriffelButton>
             </FluentProvider>
           </div>
         </React.Fragment>
