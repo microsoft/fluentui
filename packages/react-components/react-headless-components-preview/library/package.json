@@ -100,10 +100,14 @@
       }
     },
     "./avatar-group": {
-      "types": "./dist/avatar-group.d.ts",
-      "node": "./lib-commonjs/avatar-group.js",
-      "import": "./lib/avatar-group.js",
-      "require": "./lib-commonjs/avatar-group.js"
+      "import": {
+        "types": "./dist/avatar-group.d.ts",
+        "default": "./lib/avatar-group.js"
+      },
+      "require": {
+        "types": "./dist/avatar-group.d.cts",
+        "default": "./lib-commonjs/avatar-group.cjs"
+      }
     },
     "./badge": {
       "import": {
@@ -298,10 +302,14 @@
       }
     },
     "./menu-button": {
-      "types": "./dist/menu-button.d.ts",
-      "node": "./lib-commonjs/menu-button.js",
-      "import": "./lib/menu-button.js",
-      "require": "./lib-commonjs/menu-button.js"
+      "import": {
+        "types": "./dist/menu-button.d.ts",
+        "default": "./lib/menu-button.js"
+      },
+      "require": {
+        "types": "./dist/menu-button.d.cts",
+        "default": "./lib-commonjs/menu-button.cjs"
+      }
     },
     "./message-bar": {
       "import": {
@@ -324,10 +332,14 @@
       }
     },
     "./overflow": {
-      "types": "./dist/overflow.d.ts",
-      "node": "./lib-commonjs/overflow.js",
-      "import": "./lib/overflow.js",
-      "require": "./lib-commonjs/overflow.js"
+      "import": {
+        "types": "./dist/overflow.d.ts",
+        "default": "./lib/overflow.js"
+      },
+      "require": {
+        "types": "./dist/overflow.d.cts",
+        "default": "./lib-commonjs/overflow.cjs"
+      }
     },
     "./persona": {
       "import": {
