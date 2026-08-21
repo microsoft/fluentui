@@ -4,7 +4,7 @@
    they are reached with Tailwind's built-in before/after variants, which also supply
    `content: var(--tw-content)` — registered with initial-value "" — for every state. */
 
-@layer fui.base {
+@layer fui.components.l1 {
   .root {
     @apply relative box-border flex grow flex-row items-center text-center font-base text-base-200 leading-base-200 font-regular;
 
@@ -12,9 +12,7 @@
       @apply box-border flex grow;
     }
   }
-}
 
-@layer fui.components.l1 {
   .brand {
     @apply text-brand-foreground-1;
 

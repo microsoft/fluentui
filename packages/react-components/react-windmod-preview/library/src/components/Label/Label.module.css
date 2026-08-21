@@ -1,6 +1,6 @@
 @reference '#theme';
 
-@layer fui.base {
+@layer fui.components.l1 {
   .root {
     @apply font-base text-neutral-foreground-1;
   }
@@ -8,9 +8,7 @@
   .required {
     @apply ps-horizontal-xs text-palette-red-foreground-3;
   }
-}
 
-@layer fui.components.l1 {
   .root {
     @variant size-small {
       @apply text-base-200 leading-base-200;
