@@ -23,11 +23,6 @@
 @custom-variant align-content-center (&:where([data-align-content='center']));
 @custom-variant align-content-end (&:where([data-align-content='end']));
 
-/* surface edge position (Drawer) */
-@custom-variant position-start (&:where([data-position='start']));
-@custom-variant position-end (&:where([data-position='end']));
-@custom-variant position-bottom (&:where([data-position='bottom']));
-
 /* anchored-surface placement — data-placement on the positioned surface: above|below|before|after main axis, -start/-end/-top/-bottom alignment, suffix-less = centered */
 @custom-variant placement-above (&:where([data-placement^='above']));
 @custom-variant placement-below (&:where([data-placement^='below']));
@@ -41,17 +36,6 @@
 @custom-variant placement-below-centered (&:where([data-placement='below']));
 @custom-variant placement-before-centered (&:where([data-placement='before']));
 @custom-variant placement-after-centered (&:where([data-placement='after']));
-
-/* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
-@custom-variant variant-filled (&:where([data-variant='filled']));
-@custom-variant variant-regular (&:where([data-variant='regular']));
-
-/* scroll position of a scrollable body (Drawer) */
-@custom-variant scroll-state-none (&:where([data-scroll-state='none']));
-@custom-variant scroll-state-top (&:where([data-scroll-state='top']));
-@custom-variant scroll-state-middle (&:where([data-scroll-state='middle']));
-@custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
-@custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
 
 /* generic states (native/ARIA + data- spellings of one state per entry) */
 @custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
@@ -71,13 +55,6 @@
 @custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
 @custom-variant not-indeterminate (&:where(:not([data-indeterminate], :indeterminate)));
 
-/* active appearance (SwatchPicker) */
-@custom-variant with-active (&:where([data-active]));
-@custom-variant active-inactive (&:where([data-active='inactive']));
-@custom-variant active-appearance-ring (&:where([data-active-appearance='ring']));
-@custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
-@custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
-
 /* size scale. Numeric data-size values get NO variants (size-16 would read as a
  * Tailwind utility) — coerce with typed attr(): calc(attr(data-size type(<number>)) * 1px) */
 @custom-variant size-extra-tiny (&:where([data-size='extra-tiny']));
@@ -90,19 +67,11 @@
 @custom-variant size-huge (&:where([data-size='huge']));
 @custom-variant size-full (&:where([data-size='full']));
 
-/* thickness (ProgressBar) */
-@custom-variant thickness-medium (&:where([data-thickness='medium']));
-@custom-variant thickness-large (&:where([data-thickness='large']));
-
 /* icon slot states */
 @custom-variant icon-only (&:where([data-icon-only]));
 @custom-variant with-icon (&:where([data-icon-position]));
 @custom-variant icon-before (&:where([data-icon-position='before']));
 @custom-variant icon-after (&:where([data-icon-position='after']));
-
-/* expand icon position (Accordion) */
-@custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
-@custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
 @custom-variant icon (&:where([data-icon]));
 @custom-variant not-icon (&:where(:not([data-icon])));
 
@@ -120,21 +89,6 @@
 @custom-variant layout-singleline (&:where([data-layout='singleline']));
 @custom-variant layout-multiline (&:where([data-layout='multiline']));
 
-/* intent (MessageBar) */
-@custom-variant intent-info (&:where([data-intent='info']));
-@custom-variant intent-success (&:where([data-intent='success']));
-@custom-variant intent-warning (&:where([data-intent='warning']));
-@custom-variant intent-error (&:where([data-intent='error']));
-
-/* appearance (Button) */
-@custom-variant appearance-subtle (&:where([data-appearance='subtle']));
-@custom-variant appearance-transparent (&:where([data-appearance='transparent']));
-
-/* text position (Persona) */
-@custom-variant text-position-after (&:where([data-text-position='after']));
-@custom-variant text-position-before (&:where([data-text-position='before']));
-@custom-variant text-position-below (&:where([data-text-position='below']));
-
 /* per-component booleans */
 @custom-variant inset (&:where([data-inset]));
 @custom-variant interactive (&:where([data-interactive]));
@@ -144,9 +98,6 @@
 @custom-variant content-after (&:where([data-content-after]));
 @custom-variant has-actions (&:where([data-has-actions]));
 @custom-variant not-has-actions (&:where(:not([data-has-actions])));
-
-/* held spin repeat (SpinButton) — persists across the repeat interval, unlike :active */
-@custom-variant spin-active (&:where([data-spin-active]));
 
 /* interaction */
 @custom-variant hover (&:where(:hover));

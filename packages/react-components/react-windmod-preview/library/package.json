@@ -16,7 +16,8 @@
     "dist/*.d.cts",
     "dist/styles.css",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "src/variants.css"
   ],
   "repository": {
     "type": "git",
@@ -38,7 +39,7 @@
     "react-dom": ">=16.14.0 <20.0.0"
   },
   "imports": {
-    "#theme": "@fluentui/react-tailwind-theme-preview/css/index.css"
+    "#theme": "./src/theme.css"
   },
   "exports": {
     ".": {
@@ -112,6 +113,7 @@
       }
     },
     "./styles.css": "./dist/styles.css",
+    "./variants.css": "./src/variants.css",
     "./package.json": "./package.json"
   },
   "beachball": {

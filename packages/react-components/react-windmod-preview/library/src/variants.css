@@ -1,0 +1,59 @@
+/**
+ * Component-specific variant catalog — component API values (appearance/intent/etc.), never
+ * meaningful without knowing the owning component's props. Generic vocabulary (state, structure,
+ * positioning/orientation, size-*) stays in the theme's `css/variants.css`; see that file's header
+ * for the shared rules this catalog also follows: canonical `&:where(…)` form, zero added
+ * specificity, group-composes automatically, no union entries — comma-separate variants at the
+ * call site (@variant hover, focus { … }).
+ *
+ * New component-specific entries go here, sectioned by the component that owns them.
+ */
+
+/* Accordion */
+@custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
+@custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
+
+/* Button */
+@custom-variant appearance-subtle (&:where([data-appearance='subtle']));
+@custom-variant appearance-transparent (&:where([data-appearance='transparent']));
+
+/* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
+@custom-variant variant-filled (&:where([data-variant='filled']));
+@custom-variant variant-regular (&:where([data-variant='regular']));
+
+/* Drawer: surface edge position */
+@custom-variant position-start (&:where([data-position='start']));
+@custom-variant position-end (&:where([data-position='end']));
+@custom-variant position-bottom (&:where([data-position='bottom']));
+
+/* Drawer: scroll position of a scrollable body */
+@custom-variant scroll-state-none (&:where([data-scroll-state='none']));
+@custom-variant scroll-state-top (&:where([data-scroll-state='top']));
+@custom-variant scroll-state-middle (&:where([data-scroll-state='middle']));
+@custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
+@custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
+
+/* MessageBar: intent */
+@custom-variant intent-info (&:where([data-intent='info']));
+@custom-variant intent-success (&:where([data-intent='success']));
+@custom-variant intent-warning (&:where([data-intent='warning']));
+@custom-variant intent-error (&:where([data-intent='error']));
+
+/* Persona: text position */
+@custom-variant text-position-after (&:where([data-text-position='after']));
+@custom-variant text-position-before (&:where([data-text-position='before']));
+@custom-variant text-position-below (&:where([data-text-position='below']));
+
+/* ProgressBar: thickness */
+@custom-variant thickness-medium (&:where([data-thickness='medium']));
+@custom-variant thickness-large (&:where([data-thickness='large']));
+
+/* SpinButton: held spin repeat — persists across the repeat interval, unlike :active */
+@custom-variant spin-active (&:where([data-spin-active]));
+
+/* SwatchPicker: active appearance */
+@custom-variant with-active (&:where([data-active]));
+@custom-variant active-inactive (&:where([data-active='inactive']));
+@custom-variant active-appearance-ring (&:where([data-active-appearance='ring']));
+@custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
+@custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
