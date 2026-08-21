@@ -30,7 +30,11 @@ import { renderDivider } from '@fluentui/react-headless-components-preview/divid
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
+import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import type { SpinnerProps as SpinnerProps_2 } from '@fluentui/react-headless-components-preview/spinner';
+import { SpinnerSlots } from '@fluentui/react-headless-components-preview/spinner';
+import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-components-preview/spinner';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -48,6 +52,7 @@ import { useDivider } from '@fluentui/react-headless-components-preview/divider'
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
+import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -203,7 +208,34 @@ export { renderLink }
 
 export { renderProvider }
 
+export { renderSpinner }
+
 export { renderTooltip }
+
+// @public
+export const Spinner: ForwardRefComponent<SpinnerProps>;
+
+// @public
+export type SpinnerAppearance = 'primary' | 'inverted';
+
+// @public
+export const spinnerClassNames: {
+    root: string;
+};
+
+// @public
+export type SpinnerProps = SpinnerProps_2 & {
+    appearance?: SpinnerAppearance;
+    size?: SpinnerSize;
+};
+
+// @public
+export type SpinnerSize = 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+
+export { SpinnerSlots }
+
+// @public
+export type SpinnerState = SpinnerState_2 & Required<Pick<SpinnerProps, 'appearance' | 'size'>>;
 
 export { teamsDarkThemeClassName }
 
@@ -287,6 +319,11 @@ export { useLink }
 export const useLinkStyles: (state: LinkState) => LinkState;
 
 export { useProvider }
+
+export { useSpinner }
+
+// @public
+export const useSpinnerStyles: (state: SpinnerState) => SpinnerState;
 
 export { useTooltip }
 

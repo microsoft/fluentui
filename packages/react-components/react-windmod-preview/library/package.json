@@ -112,6 +112,16 @@
         "default": "./lib-commonjs/provider.cjs"
       }
     },
+    "./spinner": {
+      "import": {
+        "types": "./dist/spinner.d.ts",
+        "default": "./lib/spinner.js"
+      },
+      "require": {
+        "types": "./dist/spinner.d.cts",
+        "default": "./lib-commonjs/spinner.cjs"
+      }
+    },
     "./tooltip": {
       "import": {
         "types": "./dist/tooltip.d.ts",

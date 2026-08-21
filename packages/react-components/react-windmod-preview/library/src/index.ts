@@ -13,6 +13,9 @@ export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from 
 export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
 
+export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
+export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
+
 export { renderTooltip, Tooltip, tooltipClassNames, useTooltip, useTooltipStyles } from './tooltip';
 export type {
   OnVisibleChangeData,

@@ -51,6 +51,9 @@
 /* SpinButton: held spin repeat — persists across the repeat interval, unlike :active */
 @custom-variant spin-active (&:where([data-spin-active]));
 
+/* Spinner: appearance */
+@custom-variant appearance-inverted (&:where([data-appearance='inverted']));
+
 /* SwatchPicker: active appearance */
 @custom-variant with-active (&:where([data-active]));
 @custom-variant active-inactive (&:where([data-active='inactive']));
