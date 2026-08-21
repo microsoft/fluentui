@@ -17,6 +17,13 @@
 # isolation also happens to avoid the hang, which would help confirm/rule out the plugin-worker IPC
 # path as the root cause.
 #
+# NEW HYPOTHESIS: libuv threadpool exhaustion/deadlock. @swc/core's native N-API binding issues async
+# work onto libuv's threadpool (default size 4 == UV_THREADPOOL_SIZE unset). With NX_PARALLEL=6 running
+# several SWC compiles concurrently, plus fs/crypto ops competing for the same 4 slots, a nested/recursive
+# scheduling pattern in the pool can deadlock silently forever (no error, no crash) — matching our exact
+# symptom of "last task's timing line printed, then zero output until the CI timeout". The "*-threadpool"
+# legs bump UV_THREADPOOL_SIZE to test this.
+#
 name: Nx Hang Diagnostics (temporary)
 
 on:
@@ -77,10 +84,18 @@ jobs:
           - name: all-build-only
             timeout: 60
             isolate_plugins: 'true'
+            uv_threadpool_size: ''
             cmd: yarn nx affected -t build --nxBail
-          - name: all-build-only-no-isolation
+          - name: all-build-only-threadpool32
             timeout: 60
-            isolate_plugins: 'false'
+            isolate_plugins: 'true'
+            uv_threadpool_size: '32'
+            cmd: yarn nx affected -t build --nxBail
+          - name: all-build-only-threadpool64-parallel12
+            timeout: 60
+            isolate_plugins: 'true'
+            uv_threadpool_size: '64'
+            nx_parallel: '12'
             cmd: yarn nx affected -t build --nxBail
     name: diag / ${{ matrix.name }}
     runs-on: ubuntu-latest
@@ -88,6 +103,8 @@ jobs:
     timeout-minutes: ${{ matrix.timeout }}
     env:
       NX_ISOLATE_PLUGINS: ${{ matrix.isolate_plugins }}
+      UV_THREADPOOL_SIZE: ${{ matrix.uv_threadpool_size }}
+      NX_PARALLEL: ${{ matrix.nx_parallel || '6' }}
     steps:
       - uses: actions/checkout@v6
         with:
