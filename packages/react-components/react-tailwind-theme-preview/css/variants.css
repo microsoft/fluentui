@@ -126,6 +126,10 @@
 @custom-variant intent-warning (&:where([data-intent='warning']));
 @custom-variant intent-error (&:where([data-intent='error']));
 
+/* appearance (Button) */
+@custom-variant appearance-subtle (&:where([data-appearance='subtle']));
+@custom-variant appearance-transparent (&:where([data-appearance='transparent']));
+
 /* text position (Persona) */
 @custom-variant text-position-after (&:where([data-text-position='after']));
 @custom-variant text-position-before (&:where([data-text-position='before']));

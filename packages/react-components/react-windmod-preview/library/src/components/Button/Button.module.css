@@ -120,33 +120,39 @@
 
     @variant hover {
       @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
-
-      & .icon {
-        @apply text-neutral-foreground-2-brand-hover;
-      }
     }
 
     @variant hover-active {
       @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
-
-      & .icon {
-        @apply text-neutral-foreground-2-brand-pressed;
-      }
     }
 
     @variant forced-colors {
       @variant hover {
         @apply text-[Highlight];
-
-        & .icon {
-          @apply text-[Highlight];
-        }
       }
 
       @variant hover-active {
         @apply text-[Highlight];
+      }
+    }
+  }
 
-        & .icon {
+  .icon {
+    @variant group-appearance-subtle/fui-button {
+      @variant group-hover/fui-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant group-hover-active/fui-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+
+      @variant forced-colors {
+        @variant group-hover/fui-button {
+          @apply text-[Highlight];
+        }
+
+        @variant group-hover-active/fui-button {
           @apply text-[Highlight];
         }
       }
@@ -187,32 +193,16 @@
     @variant disabled, disabled-focusable {
       @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
-      & .icon {
-        @apply text-neutral-foreground-disabled;
-      }
-
       @variant hover {
         @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-        & .icon {
-          @apply text-neutral-foreground-disabled;
-        }
       }
 
       @variant hover-active {
         @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-        & .icon {
-          @apply text-neutral-foreground-disabled;
-        }
       }
 
       @variant forced-colors {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        & .icon {
-          @apply text-[GrayText];
-        }
 
         @variant focus {
           @apply border-[GrayText];
@@ -220,18 +210,10 @@
 
         @variant hover {
           @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-          & .icon {
-            @apply text-[GrayText];
-          }
         }
 
         @variant hover-active {
           @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-          & .icon {
-            @apply text-[GrayText];
-          }
         }
       }
     }
@@ -243,6 +225,34 @@
 
       @variant size-large {
         @apply rounded-large;
+      }
+    }
+  }
+
+  /* Group-variant form; equal specificity to the appearance-hover icon-color rules
+     above, so source order alone must put the disabled swap-back after them. */
+  .icon {
+    @variant group-disabled/fui-button, group-disabled-focusable/fui-button {
+      @apply text-neutral-foreground-disabled;
+
+      @variant group-hover/fui-button {
+        @apply text-neutral-foreground-disabled;
+      }
+
+      @variant group-hover-active/fui-button {
+        @apply text-neutral-foreground-disabled;
+      }
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+
+        @variant group-hover/fui-button {
+          @apply text-[GrayText];
+        }
+
+        @variant group-hover-active/fui-button {
+          @apply text-[GrayText];
+        }
       }
     }
   }

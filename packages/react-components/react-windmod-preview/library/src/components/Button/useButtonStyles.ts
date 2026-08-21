@@ -10,17 +10,19 @@ export const buttonClassNames: { root: string } = {
 };
 
 type ButtonRootDataAttributes = {
+  'data-appearance'?: ButtonState['appearance'];
   'data-size'?: ButtonState['size'];
   'data-empty'?: true;
 };
 
 /** Applies the visual contract, returning new state. The headless hook already stamps
- * data-disabled/-disabled-focusable/-icon-only/-icon-position; these two are style-only. */
+ * data-disabled/-disabled-focusable/-icon-only/-icon-position; these three are style-only. */
 export const useButtonStyles = (state: ButtonState): ButtonState => {
   const { appearance, shape, size } = state;
 
   const root: ButtonState['root'] & ButtonRootDataAttributes = {
     ...state.root,
+    'data-appearance': appearance,
     'data-size': size,
     'data-empty': !state.root.children || undefined,
     // The marker's '/' must never be classList[0]: jsdom's nwsapi builds its :scope
