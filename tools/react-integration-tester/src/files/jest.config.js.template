@@ -30,6 +30,7 @@ const ritConfig = {
     <%_ } _%>
     '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
     '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+    '^@testing-library/react/(.+)$': join(usedNodeModulesPath, './@testing-library/react/$1'),
     <%_ if (react > 17) { _%>
     '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
     <%_ } else { _%>
