@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
 import * as React from 'react';
 
 const sizes = ['small', 'medium', 'large'] as const;

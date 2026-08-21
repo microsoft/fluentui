@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
 import * as React from 'react';
 
 const appearances = ['secondary', 'primary', 'outline', 'subtle', 'transparent'] as const;
