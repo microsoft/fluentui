@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: avoid redundant overflow recomputation after conditional menu removal",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
