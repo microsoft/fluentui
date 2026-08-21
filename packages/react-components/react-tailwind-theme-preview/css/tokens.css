@@ -10,11 +10,11 @@
  *
  * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each
  * utility, so values resolve per-element — the `:root, :host` defaults below,
- * overridden per subtree by the theme classes (css/themes.css, theming Phase 2b).
+ * overridden per subtree by the theme classes (css/themes.css).
  * A plain `@theme` alias would freeze resolution at `:root`, breaking scoped
  * theming. `reference` suppresses the self-referential aliases that plain
  * `inline` would emit now that each runtime variable IS its theme key (theming
- * Phase 2a) — the values are emitted in the fui.theme block below, not by JS.
+ * the kebab-name model) — the values are emitted in the fui.theme block below, not by JS.
  *
  * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are
  * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12
@@ -540,9 +540,9 @@
  * inline styles etc.).
  *
  * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)
- * ARE GONE for the ENTIRE token set (option B, theming Phase 2a): single
+ * ARE GONE for the ENTIRE token set: single
  * vocabulary, documented major break for hand-written consumer CSS. Theming
- * Phase 2b removed FluentProvider's runtime theme style tag, so this block (plus
+ * the static-theme model removed FluentProvider's runtime theme style tag, so this block (plus
  * the theme classes in css/themes.css) is the ONLY writer of token values.
  *
  * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component
@@ -602,7 +602,7 @@
     --spacing-vertical-xxxl: calc(var(--spacing) * 32);
 
     /*
-     * DEFAULT THEME VALUES (web light) — theming Phase 2b. Since the removal of
+     * DEFAULT THEME VALUES (web light). Since the removal of
      * FluentProvider's runtime theme style tag, these declarations are the sole
      * default value source for the theme-variant canonical variables. Non-default
      * themes are shipped as classes in css/themes.css (same layer); a theme class

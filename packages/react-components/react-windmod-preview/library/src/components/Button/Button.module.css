@@ -184,7 +184,7 @@
       @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s text-base-400 leading-base-400 font-semibold;
     }
 
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
       & .icon {
@@ -248,7 +248,7 @@
   }
 
   .outline {
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @apply bg-transparent-background;
 
       @variant hover {
@@ -262,7 +262,7 @@
   }
 
   .primary {
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @apply border-transparent;
 
       @variant hover {
@@ -309,7 +309,7 @@
   }
 
   .subtle {
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background;
 
       @variant hover {
@@ -323,7 +323,7 @@
   }
 
   .transparent {
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background;
 
       @variant hover {
@@ -411,7 +411,7 @@
   }
 
   .root {
-    @variant disabled-any {
+    @variant disabled, disabled-focusable {
       @variant hover {
         & .icon * {
           @variant variant-filled {

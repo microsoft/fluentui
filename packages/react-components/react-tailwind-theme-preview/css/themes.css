@@ -6,7 +6,7 @@
  * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
  * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
  *
- * SHIPPED THEME CLASSES (theming Phase 2b). Applying one of these classes to any
+ * SHIPPED THEME CLASSES. Applying one of these classes to any
  * DOM node themes that subtree — custom properties cascade. They contain ONLY
  * custom-property declarations, in the same fui.theme layer as the web-light
  * defaults at :root/:host (css/tokens.css), which they override element-locally.

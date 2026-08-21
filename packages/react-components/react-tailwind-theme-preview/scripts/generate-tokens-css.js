@@ -1,80 +1,24 @@
 // @ts-check
 /**
- * Generates `css/tokens.css` — the `@theme inline` registration that gives every Fluent
- * design token a Tailwind utility name (`bg-neutral-background-1`, `text-base-300`,
- * `shadow-8`, `rounded-medium`, …).
+ * Generates `css/tokens.css` — the `@theme inline reference` registration giving every
+ * Fluent token a Tailwind utility name (`bg-neutral-background-1`, `rounded-medium`, …)
+ * — and `css/themes.css` — one class per shipped theme.
  *
- * WHY `inline` IS MANDATORY
- * -------------------------
- * A naive `@theme { --color-x: <value> }` emits the value into `:root` and compiles
- * `bg-x` to `background-color: var(--color-x)` resolved ONCE, at `:root`, where Fluent
- * token VALUES do not exist — FluentProvider writes them on `.fui-FluentProviderN`
- * elements. Every provider (and every nested provider) would render the same frozen
- * value. FORBIDDEN.
+ * `inline` substitutes the token variable into each utility so it resolves per-element;
+ * a plain `@theme` alias would freeze resolution at `:root`. `reference` suppresses the
+ * self-referential alias emission that self-named registrations (`--color-x: var(--color-x)`)
+ * would otherwise produce (~19KB of cyclic declarations).
  *
- * `inline` substitutes the theme value into the utility itself, so `bg-x` compiles to
- * `background-color: var(--color-neutral-background-1)` and resolves per-element against
- * the nearest FluentProvider — nested themes keep working (DECISIONS.md D4's theming
- * guarantee is preserved; only the authoring surface changes).
+ * Spacing: the 22 spacing tokens register as aliases of the numeric axis
+ * (`calc(var(--spacing) * N)`), so named and numeric spacing share one density knob.
+ * The 4 strokeWidth tokens keep literal base-scale values under `--stroke-width-*`
+ * (borders must not thin with layout density); `--spacing-thin/…` are private hooks
+ * feeding utility generation. All of these are also emitted as real custom properties,
+ * because border/outline/ring/decoration widths do not consume the spacing namespace.
  *
- * THEMING PHASE 2a — canonical kebab names; `reference` ADOPTED (supersedes the earlier
- * rejection)
- * -----------------------------------------------------------------------------------
- * Since theming Phase 2a the runtime CSS variable of every token IS its Tailwind theme
- * key (`--color-neutral-background-1`, `--text-base-300`, `--shadow-2`, …; durations are
- * the one exception, see NAMESPACES). Each registration is therefore a SELF-NAMED
- * reference (`--color-x: var(--color-x)`), which plain `inline` treats as a by-name use
- * and answers by emitting a self-referential alias at `:root, :host` — 400+ cyclic
- * (guaranteed-invalid at `:root`) declarations that define nothing and cost ~19KB
- * (probe: .scratch/phase2a-theming/probe/). `reference` suppresses exactly that
- * emission and nothing else — probed byte-identical utility output.
- *
- * `reference` was REJECTED pre-Phase-2a ("suppresses the alias even when a by-name
- * reference exists, emitting CSS against a variable nothing defines"). That reason is
- * retired: FluentProvider's runtime theme tag now writes the canonical kebab names on
- * every provider element (alongside the legacy camelCase names, until Phase 2b removes
- * the tag), so `var(--color-neutral-background-1)` IS defined wherever tokens were ever
- * defined. Resolution semantics are unchanged from the camelCase era: per-element,
- * against the nearest provider; undefined outside any provider.
- *
- * SPACING IS DIFFERENT — see SPACING_SCALE / STROKE_WIDTH_SCALE below. The 22
- * spacingHorizontal / spacingVertical tokens register under `--spacing-*` as ALIASES OF
- * THE NUMERIC AXIS — `calc(var(--spacing) * <multiplier>)`, where the multiplier is the
- * token's canonical px divided by the `--spacing` base px (theming Phase 1, settled with
- * user 2026-07-29; supersedes the literal `calc(<px> * var(--base-scale))` form). Probe-
- * verified: `@theme inline` carries the `var(--spacing)` reference VERBATIM into each
- * utility, so `p-horizontal-m` compiles to `padding: calc(var(--spacing) * 12)` — the
- * same shape as `p-12` — and BOTH respond identically to a subtree `--spacing` override.
- * `--spacing` (css/index.css: `calc(1px * var(--base-scale))`) is the single density knob.
- *
- * THE 4 strokeWidth TOKENS ARE THE DELIBERATE EXCEPTION: their PUBLIC variables are
- * `--stroke-width-thin/thick/thicker/thickest` with LITERAL base-scale values
- * (`calc(<px> * var(--base-scale))`), NOT coupled to `--spacing` — borders must not thin
- * when layout density changes. The `--spacing-thin/…` names still exist, but ONLY as
- * PRIVATE internal hooks (`--spacing-thin: var(--stroke-width-thin)`) that feed Tailwind
- * utility generation (`w-thin`, `p-thick`, …) and the sanctioned direct-var authoring in
- * component modules; the public set-contract is `--stroke-width-*`. See STROKE_WIDTH_SCALE.
- *
- * ALL ENTRIES ARE ALSO EMITTED AS REAL CUSTOM PROPERTIES (`emit: true`): the 22 spacing
- * canonicals, the 4 `--stroke-width-*` canonicals, and the 4 private hooks. `@theme inline`
- * registers a utility name but emits NO variable, and border/outline/ring/decoration widths
- * do NOT consume the spacing namespace (probe-measured — see
- * `.scratch/layer-probe/check-stroke-namespace.mjs`), so those properties must be authored
- * as a direct `var(--spacing-thin)` reference, which needs a real variable.
- *
- * THE OLD camelCase NAMES (`--colorNeutralBackground1`, `--fontSizeBase300`,
- * `--spacingHorizontalM`, `--strokeWidthThin`, …) NO LONGER EXIST in emitted CSS or in
- * any shipped read path (theming Phase 2a extends Phase 1's option B to the FULL token
- * set: single vocabulary; a documented major break for hand-written consumer CSS against
- * the old names). The `tokens.*` JS constants in @fluentui/tokens are repointed to the
- * canonical kebab names — this generator ASSERTS that lockstep for EVERY token on every
- * run. (FluentProvider's runtime theme tag writes token values under BOTH vocabularies
- * on provider elements until theming Phase 2b removes it — the camelCase half feeds
- * nothing shipped and exists only as unbroken-interim insurance for hand-written
- * consumer reads.)
- *
- * The emission rides the once-per-document artifact (css/emit.css -> dist/styles.css)
- * and is suppressed in component modules by `@reference`, exactly like `--base-scale`.
+ * tokens.ts is consumed as the token-name inventory; theme VALUES come from the
+ * committed theme-values.json snapshot; the emitted class names are asserted against
+ * theme-class-names.mjs.
  *
  * Run:      node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
  * Verify:   node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
@@ -96,7 +40,7 @@ const THEME_CLASSNAMES_SOURCE = path.join(PACKAGE_ROOT, 'theme-class-names.mjs')
 const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
 const THEMES_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'themes.css');
 
-/** The theme whose values are emitted as the `:root, :host` defaults (theming Phase 2b). */
+/** The theme whose values are emitted as the `:root, :host` defaults. */
 const DEFAULT_THEME = 'webLightTheme';
 
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js';
@@ -128,8 +72,7 @@ function kebabCase(name) {
 
 /**
  * Fluent's spacing scale — the ONE namespace whose registered values are NOT
- * `var(--fluentToken)` references (dual spacing support, settled with user 2026-07-27;
- * numeric-axis alias restructure settled with user 2026-07-29 — theming Phase 1).
+ * `var(--fluentToken)` references (numeric-axis aliases).
  *
  * WHY NUMERIC-AXIS ALIASES AND NOT `var(--spacingHorizontalM)` OR PX LITERALS
  * ---------------------------------------------------------------------------
@@ -146,7 +89,7 @@ function kebabCase(name) {
  * The earlier literal form (`calc(12px * var(--base-scale))`) was arithmetically
  * identical at default but bypassed `--spacing`, so a subtree density override reached
  * numeric utilities and missed named ones. Probe-verified that `@theme inline` carries
- * the `var(--spacing)` reference verbatim into utilities (.scratch/phase1-theming/).
+ * the `var(--spacing)` reference verbatim into utilities.
  *
  * COST, ACCEPTED: a FluentProvider `theme` override of `spacingHorizontalM` no longer
  * reaches utility-sourced spacing (a literal `var(--spacingHorizontalM)` still honours it,
@@ -158,7 +101,7 @@ function kebabCase(name) {
  * the name is a convention, not a constraint — the same is already true of a literal
  * `var(--spacingHorizontalM)` in a `padding-block` declaration.
  *
- * `utility` is the EXPLICIT suffix table (user-specified). It deliberately does NOT go
+ * `utility` is the EXPLICIT suffix table. It deliberately does NOT go
  * through `kebabCase` — that would turn `SNudge` into `s-nudge` correctly but `XXS` into
  * `xxs` only by accident of the acronym rule; pinning the table keeps these names stable
  * and independent of the generic algorithm.
@@ -185,7 +128,7 @@ const SPACING_SCALE = [
 
 /**
  * Fluent's stroke widths — border/outline/divider thickness — joining the SAME `--spacing-*`
- * namespace as SPACING_SCALE, on the same literal-value terms (settled with user 2026-07-27).
+ * namespace as SPACING_SCALE, on the same literal-value terms ().
  *
  * WHY THE SPACING NAMESPACE AND NOT A `--border-width-*` NAMESPACE
  * ---------------------------------------------------------------
@@ -195,8 +138,7 @@ const SPACING_SCALE = [
  * (`stroke-2` → `stroke-width: 2`), which is the wrong property. So there is nothing to
  * register these against that would give `border-thin` a meaning.
  *
- * PROBE-MEASURED, not reasoned (`.scratch/layer-probe/check-stroke-namespace.mjs` registers a
- * `--spacing-thin` on the real css/index.css and compiles a candidate list):
+ * PROBE-MEASURED, not reasoned:
  *   CONSUMES `--spacing-*`  p m gap space-x w h min-w max-w size inset top start basis
  *                           translate scroll-m scroll-p indent leading (+ every axis/side form)
  *   DOES NOT               border border-t/b/s/x divide-x outline outline-offset ring
@@ -211,13 +153,13 @@ const SPACING_SCALE = [
  * CANONICAL `--stroke-width-*` VALUES STAY LITERAL `calc(<px> * var(--base-scale))` —
  * DELIBERATELY NOT `--spacing`-COUPLED
  * -----------------------------------------------------------------------------------
- * Theming Phase 1 (settled with user 2026-07-29) rebased the 22 spacing tokens onto the
+ * Theming the alias model () rebased the 22 spacing tokens onto the
  * `--spacing` numeric axis; these four are the intentional exception. `--spacing` is the
  * layout DENSITY knob — a subtree that halves it should compress padding and gaps, but
  * borders must NOT thin with it: a 1px hairline is a 1px hairline at any density. Stroke
  * widths therefore keep the raw `--base-scale` form and ignore `--spacing` overrides.
  *
- * NAME SPLIT (user amendment): the PUBLIC set-contract variable is
+ * NAME SPLIT: the PUBLIC set-contract variable is
  * `--stroke-width-<step>`, emitted with the literal value; the spacing-namespace
  * `--spacing-<step>` names are PRIVATE internal hooks registered/emitted as
  * `var(--stroke-width-<step>)` so Tailwind's spacing-consuming utility families
@@ -225,9 +167,6 @@ const SPACING_SCALE = [
  * border/outline widths keep working. `--stroke-width-*` is deliberately NOT registered
  * in `@theme` — Tailwind's `--stroke-width-*` namespace drives SVG `stroke-width`
  * utilities, which would be the wrong property.
- *
- * All 7 shipped themes carry byte-identical strokeWidth values — asserted before shipping in
- * `.scratch/layer-probe/assert-theme-stroke-width.js` (1/2/3/4px, zero divergence).
  *
  * `global` is the key in `packages/tokens/src/global/strokeWidths.ts`; `px` is asserted against
  * it at generation time, exactly like SPACING_SCALE.
@@ -437,7 +376,7 @@ function readThemeClassNames() {
 
 /**
  * Reads the committed `packages/tokens/theme-values.json` snapshot — the VALUE source for
- * the theme emission (theming Phase 2b). The snapshot exists because theme values are
+ * the theme emission. The snapshot exists because theme values are
  * computed (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way
  * `tokens.ts` is; `packages/tokens/src/themes/themeValues.test.ts` asserts on every jest
  * run that it deep-equals the computed themes.
@@ -648,8 +587,7 @@ const NAMESPACES = [
     // Durations are the ONE Phase-2a family whose canonical RUNTIME variable
     // (`--duration-fast`) differs from its Tailwind theme key
     // (`--transition-duration-fast`): the family keeps the shorter custom namespace
-    // (user decision — consistent with the token vocabulary, no first-class variable
-    // namespace worth occupying), while the theme key must be what the installed
+    //, while the theme key must be what the installed
     // utility registry reads. The registered value `var(--duration-fast)` carries the
     // canonical reference into `duration-*` utilities verbatim.
     canonicalNamespace: 'duration',
@@ -729,7 +667,7 @@ function readTokens() {
 
   // Every token value must be a var() reference, optionally with a fallback (zIndex*).
   // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names
-  // (theming Phase 1 option B).
+  //.
   for (const { name, value } of tokens) {
     if (!/^var\(--[A-Za-z][A-Za-z0-9_-]*(?:, ?[^)]+)?\)$/.test(value)) {
       throw new Error(`${TOKENS_SOURCE}: token \`${name}\` has an unexpected value \`${value}\`.`);
@@ -785,7 +723,7 @@ function classify(name) {
       kind: 'register',
       group,
       themeKey: `--${group.namespace}-${kebab}`,
-      // The canonical RUNTIME variable name (theming Phase 2a): identical to the theme
+      // The canonical RUNTIME variable name: identical to the theme
       // key for every namespace except duration (see NAMESPACES).
       canonical: `--${group.canonicalNamespace || group.namespace}-${kebab}`,
     };
@@ -814,7 +752,7 @@ function render(options = {}) {
   // upstream scale change throws here instead of silently shipping a stale hardcoded value.
   readSpacingScale();
   readStrokeWidthScale();
-  // Theming Phase 2b: the default (web light) theme values are emitted at `:root, :host`
+  // Theming the static-theme model: the default (web light) theme values are emitted at `:root, :host`
   // right below the spacing/stroke block — this artifact is now the SOLE value source for
   // the canonical token variables (FluentProvider's runtime theme style tag is gone).
   const { variantTokens, themes } = analyzeThemeEmission(tokens);
@@ -908,11 +846,11 @@ function render(options = {}) {
   out.push(' *');
   out.push(' * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each');
   out.push(' * utility, so values resolve per-element — the `:root, :host` defaults below,');
-  out.push(' * overridden per subtree by the theme classes (css/themes.css, theming Phase 2b).');
+  out.push(' * overridden per subtree by the theme classes (css/themes.css).');
   out.push(' * A plain `@theme` alias would freeze resolution at `:root`, breaking scoped');
   out.push(' * theming. `reference` suppresses the self-referential aliases that plain');
   out.push(' * `inline` would emit now that each runtime variable IS its theme key (theming');
-  out.push(' * Phase 2a) — the values are emitted in the fui.theme block below, not by JS.');
+  out.push(' * the kebab-name model) — the values are emitted in the fui.theme block below, not by JS.');
   out.push(' *');
   out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are');
   out.push(' * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12');
@@ -959,9 +897,9 @@ function render(options = {}) {
     out.push(' * inline styles etc.).');
     out.push(' *');
     out.push(' * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)');
-    out.push(' * ARE GONE for the ENTIRE token set (option B, theming Phase 2a): single');
+    out.push(' * ARE GONE for the ENTIRE token set: single');
     out.push(' * vocabulary, documented major break for hand-written consumer CSS. Theming');
-    out.push(" * Phase 2b removed FluentProvider's runtime theme style tag, so this block (plus");
+    out.push(" * the static-theme model removed FluentProvider's runtime theme style tag, so this block (plus");
     out.push(' * the theme classes in css/themes.css) is the ONLY writer of token values.');
     out.push(' *');
     out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
@@ -997,7 +935,7 @@ function render(options = {}) {
     out.push(...emittedVariables);
     out.push('');
     out.push('    /*');
-    out.push('     * DEFAULT THEME VALUES (web light) — theming Phase 2b. Since the removal of');
+    out.push('     * DEFAULT THEME VALUES (web light). Since the removal of');
     out.push("     * FluentProvider's runtime theme style tag, these declarations are the sole");
     out.push('     * default value source for the theme-variant canonical variables. Non-default');
     out.push('     * themes are shipped as classes in css/themes.css (same layer); a theme class');
@@ -1018,7 +956,7 @@ function render(options = {}) {
 }
 
 /**
- * Renders `css/themes.css` — one CSS class per shipped theme (theming Phase 2b).
+ * Renders `css/themes.css` — one CSS class per shipped theme.
  *
  * THE THEMING CONTRACT: a theme class on ANY DOM node themes that node's subtree (custom
  * properties cascade); FluentProvider's `themeClassName` prop applies one to its root and
@@ -1051,7 +989,7 @@ function renderThemes() {
   out.push(` * Regenerate: node ${GENERATOR_ID}`);
   out.push(` * Verify:     node ${GENERATOR_ID} --check`);
   out.push(' *');
-  out.push(' * SHIPPED THEME CLASSES (theming Phase 2b). Applying one of these classes to any');
+  out.push(' * SHIPPED THEME CLASSES. Applying one of these classes to any');
   out.push(' * DOM node themes that subtree — custom properties cascade. They contain ONLY');
   out.push(' * custom-property declarations, in the same fui.theme layer as the web-light');
   out.push(' * defaults at :root/:host (css/tokens.css), which they override element-locally.');

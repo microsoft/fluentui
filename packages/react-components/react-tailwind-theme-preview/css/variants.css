@@ -2,50 +2,33 @@
  * Custom variant catalog — the single place state selectors are defined; never define
  * variants in component modules. Names follow the headless data-attribute vocabulary.
  *
- * Every entry is the canonical `&:where(…)` form: zero added specificity (cascade is
- * decided by @layer order and in-file order), and Tailwind rewrites that form into
- * `group-<variant>/<name>` automatically, so every entry composes with named groups.
- * An ancestor-form entry (`:where([x]) &`) silently stops group-composing — don't add
- * one. At-rule variants (`forced-colors`) cannot take a group prefix; nest the group
- * variant inside them instead. No union (-or-) entries: comma-separate variants at
- * the call site (@variant hover, focus { … }).
+ * Every entry is the canonical `&:where(…)` form: zero added specificity, and Tailwind
+ * rewrites it into `group-<variant>/<name>` automatically, so every entry composes with
+ * named groups. Ancestor-form entries silently stop group-composing — do not add one.
+ * At-rule variants (forced-colors) cannot take a group prefix; nest the group variant
+ * inside them. No union entries: comma-separate variants at the call site
+ * (@variant hover, focus { … }).
  */
 
-/* direction — computed direction, correct under nesting (DECISIONS.md D5) */
+/* direction (computed, correct under nesting) */
 @custom-variant rtl (&:where(:dir(rtl)));
 @custom-variant ltr (&:where(:dir(ltr)));
 
-/* orientation (Divider, Slider, Tabs, Toolbar, …) */
+/* orientation */
 @custom-variant vertical (&:where([data-orientation='vertical']));
 @custom-variant horizontal (&:where([data-orientation='horizontal']));
 
-/* content alignment along the main axis (Divider, …) */
+/* content alignment along the main axis */
 @custom-variant align-content-start (&:where([data-align-content='start']));
 @custom-variant align-content-center (&:where([data-align-content='center']));
 @custom-variant align-content-end (&:where([data-align-content='end']));
 
-/*
- * Edge placement of a panel-shaped surface — Drawer's
- * `position: 'start' | 'end' | 'bottom'` (react-drawer shared/DrawerBase.types.ts, the
- * complete union). `data-position` is one of the headless preview's 25 attribute names
- * (reports/headless-precedent.md).
- *
- * Deliberately NOT folded into `data-orientation` above: `bottom` names an EDGE, not an
- * axis, and InlineDrawer / OverlayDrawer branch on all three values independently. It is
- * also the reason Persona's text placement got its own `data-text-position` further down —
- * a generic `data-position` would have been ambiguous on a component that has both.
- */
+/* surface edge position (Drawer) */
 @custom-variant position-start (&:where([data-position='start']));
 @custom-variant position-end (&:where([data-position='end']));
 @custom-variant position-bottom (&:where([data-position='bottom']));
 
-/*
- * Anchored-surface placement — the headless positioning hook stamps `data-placement`
- * ON the positioned surface (logical vocabulary: above|below|before|after, with
- * -start/-end (inline) or -top/-bottom (block) alignment suffixes) and keeps it in sync
- * with the browser-resolved fallback. Prefix variants key the main axis; suffix variants
- * key the alignment; the `-centered` singles name the exact suffix-less values.
- */
+/* anchored-surface placement — data-placement on the positioned surface: above|below|before|after main axis, -start/-end/-top/-bottom alignment, suffix-less = centered */
 @custom-variant placement-above (&:where([data-placement^='above']));
 @custom-variant placement-below (&:where([data-placement^='below']));
 @custom-variant placement-before (&:where([data-placement^='before']));
@@ -59,52 +42,24 @@
 @custom-variant placement-before-centered (&:where([data-placement='before']));
 @custom-variant placement-after-centered (&:where([data-placement='after']));
 
-/* Glyph variant — stamped by @fluentui/react-icons/headless bundleIcon on each glyph. */
+/* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
 @custom-variant variant-filled (&:where([data-variant='filled']));
 @custom-variant variant-regular (&:where([data-variant='regular']));
 
-/*
- * "Where is the scrollable DrawerBody scrolled to" — DrawerHeader / DrawerFooter reveal a
- * separator once the body has scrolled at all, and make it fully opaque while there is
- * content hidden on their side of it. `data-scroll-state` is one of the headless preview's 25
- * attribute names and is stamped on exactly these elements there
- * (react-headless-components-preview `DrawerHeader/useDrawerHeader.ts`), so the name is
- * precedent, not invention. No native selector can see "the body is scrolled to the middle",
- * so this is the fallback case D15.6 sanctions rather than a mirror of something CSS already
- * knows.
- *
- * The four singles are `DrawerScrollState`'s complete union
- * (react-drawer shared/DrawerBase.types.ts). An unreferenced variant emits nothing.
- */
+/* scroll position of a scrollable body (Drawer) */
 @custom-variant scroll-state-none (&:where([data-scroll-state='none']));
 @custom-variant scroll-state-top (&:where([data-scroll-state='top']));
 @custom-variant scroll-state-middle (&:where([data-scroll-state='middle']));
 @custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
 @custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
 
-/* generic states (native + data- fallbacks) */
+/* generic states (native/ARIA + data- spellings of one state per entry) */
 @custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
 @custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
 @custom-variant checked (&:where([data-checked], :checked));
 @custom-variant not-checked (&:where(:not([data-checked], :checked)));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
-
-/*
- * Complement of `selected` above, in the same shape as `not-checked` / `not-focused` /
- * `not-empty`. Added by the react-carousel conversion: `CarouselNavButton` and
- * `CarouselNavImageButton` branch `selected ? rootSelected : rootUnselected` — a
- * boolean-ish PAIR where BOTH halves carry declarations, so the complement has to be
- * expressible as a selector rather than as an absent class.
- *
- * No `data-selected` mirror was added for either component (DECISIONS.md D15.6, resolved):
- * both stamp `aria-selected={selected}` on the very element the rules key off
- * (`useCarouselNavButton.ts` / `useCarouselNavImageButton.ts` `defaultProps`), so the
- * native/ARIA half of `selected` already expresses the state where it is needed and a
- * mirror would only widen invalidation. `aria-selected="false"` correctly fails
- * `[aria-selected='true']` and therefore matches this complement.
- */
 @custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
-
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
 @custom-variant open (&:where([open], [data-open], :open));
 @custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
@@ -114,51 +69,17 @@
 @custom-variant read-only (&:where([readonly], [data-readonly], :read-only));
 @custom-variant placeholder-shown (&:where([data-placeholder], :placeholder-shown));
 @custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
-
-/*
- * Complement of `indeterminate` above. Needed by tri-state controls: Checkbox's `checked`
- * prop is `true | false | 'mixed'`, which rides TWO independent presence attributes
- * (`data-checked` + `data-indeterminate`), so its "plain unchecked" branch is the
- * intersection `not-checked` ∩ `not-indeterminate` — `not-checked` alone would also match
- * the mixed state. Radio/Switch, being genuinely boolean, never need this one.
- */
 @custom-variant not-indeterminate (&:where(:not([data-indeterminate], :indeterminate)));
 
-/*
- * Avatar's `active` / `activeAppearance` pair — the animated "this person is active" ring and
- * shadow. `data-active` is stamped only for `active === 'active' | 'inactive'` (`unset`
- * renders no attribute at all, reproducing the JS guard), so its PRESENCE is the "this avatar
- * participates in the active/inactive transition" flag while its VALUE distinguishes the two
- * halves.
- *
- * NAME COLLISION, resolved deliberately: the presence entry is `with-active`, NOT `active` —
- * this catalog already binds `active` to the native `:active` pseudo-class (interaction
- * section below), which is an unrelated state. `with-active` follows the `with-icon` /
- * `with-label` shape: "the enum attribute is present at all". There is no `active-active`
- * entry because no slice reads that value on its own — the presence entry already carries the
- * shared half and `active-inactive` carries the override.
- *
- * `activeAppearance: 'ring' | 'shadow' | 'ring-shadow'` (Avatar.types.ts) is a three-value
- * enum every slice reads as a UNION — "does this appearance include a ring", "does it include
- * a shadow" — so the two `-or-` compounds are the entries Avatar actually uses. The three
- * singles name the rest of the value space and emit nothing until a module references them.
- */
+/* active appearance (SwatchPicker) */
 @custom-variant with-active (&:where([data-active]));
 @custom-variant active-inactive (&:where([data-active='inactive']));
 @custom-variant active-appearance-ring (&:where([data-active-appearance='ring']));
 @custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
 @custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
-@custom-variant active-appearance-ring-or-ring-shadow (
-  &:where([data-active-appearance='ring'], [data-active-appearance='ring-shadow'])
-);
-@custom-variant active-appearance-shadow-or-ring-shadow (
-  &:where([data-active-appearance='shadow'], [data-active-appearance='ring-shadow'])
-);
 
-/*
- * scale (Button, Badge, Avatar, Spinner, …) — `size` is a scale prop, not a look prop,
- * so it rides a data-attribute rather than a module class (DECISIONS.md D3).
- */
+/* size scale. Numeric data-size values get NO variants (size-16 would read as a
+ * Tailwind utility) — coerce with typed attr(): calc(attr(data-size type(<number>)) * 1px) */
 @custom-variant size-extra-tiny (&:where([data-size='extra-tiny']));
 @custom-variant size-tiny (&:where([data-size='tiny']));
 @custom-variant size-extra-small (&:where([data-size='extra-small']));
@@ -167,375 +88,82 @@
 @custom-variant size-large (&:where([data-size='large']));
 @custom-variant size-extra-large (&:where([data-size='extra-large']));
 @custom-variant size-huge (&:where([data-size='huge']));
-
-/*
- * Numeric data-size values (Avatar/Skeleton pixel sizes, Text's typography ramp) get NO
- * variants: size-16 etc. would read as Tailwind's own size-* utilities. Components
- * consume the number directly with typed attr() instead, e.g.
- * width: calc(attr(data-size type(<number>)) * 1px).
- */
-
-/*
- * `full` is a `data-size` value that is not a scale STEP at all: Drawer's
- * `size: 'small' | 'medium' | 'large' | 'full'` (react-drawer shared/DrawerBase.types.ts) ends
- * in a fill-the-container mode. It rides the same attribute because it is the same public prop
- * — a separate attribute would name something Drawer does not have — and it composes with
- * `position-bottom` in both drawers' "full height on the bottom edge" slice. The other three
- * values are the t-shirt entries above.
- */
 @custom-variant size-full (&:where([data-size='full']));
 
-/*
- * ProgressBar's scale prop is `thickness`, not `size` — its props type explicitly
- * `Omit`s `size`, so reusing `data-size` would name an attribute the component does not
- * have. No nyt-games or headless-preview precedent exists for it (reports/
- * nyt-games-conventions.md, reports/headless-precedent.md), so the name is invented from
- * the public prop.
- */
+/* thickness (ProgressBar) */
 @custom-variant thickness-medium (&:where([data-thickness='medium']));
 @custom-variant thickness-large (&:where([data-thickness='large']));
 
-/* icon slot presence/placement (Button family, …) */
+/* icon slot states */
 @custom-variant icon-only (&:where([data-icon-only]));
 @custom-variant with-icon (&:where([data-icon-position]));
 @custom-variant icon-before (&:where([data-icon-position='before']));
 @custom-variant icon-after (&:where([data-icon-position='after']));
 
-/*
- * AccordionHeader's own icon vocabulary: `expandIconPosition: 'start' | 'end'`
- * (AccordionHeader.types.ts, the complete union) plus a `data-icon` presence flag carrying the
- * `!state.icon` half of its no-icon padding slice. Both names are the headless preview's
- * (reports/headless-precedent.md) — its own AccordionHeader stamps
- * `data-expand-icon-position` on exactly this element.
- *
- * `icon` is the presence of the header's OWN icon slot and is a different question from
- * `with-icon` above, which is the presence of `data-icon-position` on the Button family. The
- * complement `not-icon` is the half AccordionHeader actually references, and it is spelled
- * `not-<name>` like every other complement here rather than `no-icon`, which would be the only
- * name of its shape in the file.
- */
+/* expand icon position (Accordion) */
 @custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
 @custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
 @custom-variant icon (&:where([data-icon]));
 @custom-variant not-icon (&:where(:not([data-icon])));
 
-/*
- * label slot presence/placement (Switch, Checkbox, Radio, …) — the same shape as the icon
- * block above. `data-label-position` is one of the headless preview's 25 attribute names
- * (reports/headless-precedent.md). Whether it is stamped conditionally is the CONVERTING
- * COMPONENT's call, and the two converted so far differ:
- *   • react-switch stamps it ONLY when the label slot exists, because every slice that
- *     reads it is gated on `label && …` — its presence then doubles as the "has a label"
- *     signal (`with-label` below). A Switch rule that depends on `labelPosition` WITHOUT
- *     that gate (its root flex-direction) uses `data-orientation` / `@variant vertical`
- *     instead, which is always stamped.
- *   • react-checkbox stamps it UNCONDITIONALLY, because `inputStyles[labelPosition]`
- *     positions the hidden `<input>` with no `label &&` gate. Its label-slot rules read
- *     the same attribute and are simply inert with no `.label` element to match.
- * So `with-label` means "has a label" only for components in the first group; do not read
- * it as a general presence signal.
- *
- * The three values here are react-switch's union (`'above' | 'after' | 'before'`). The
- * rest of the family uses subsets plus one more value: Checkbox is `'before' | 'after'`
- * (both already covered), Radio is `'after' | 'below'` — `label-below` was added by the
- * Radio conversion. Radio belongs to the FIRST group: `labelStyles[labelPosition]` is the
- * only slice that reads the attribute and it is gated on `label &&`, while its two
- * ungated `labelPosition === 'below'` slices (root flex-direction, hidden-input box) use
- * `data-orientation` exactly as Switch does.
- */
+/* label presence/position */
 @custom-variant with-label (&:where([data-label-position]));
 @custom-variant label-above (&:where([data-label-position='above']));
 @custom-variant label-after (&:where([data-label-position='after']));
 @custom-variant label-before (&:where([data-label-position='before']));
 @custom-variant label-below (&:where([data-label-position='below']));
 
-/*
- * RadioGroup's `layout` prop. `data-layout` is one of the headless preview's 25 attribute
- * names (reports/headless-precedent.md) and is deliberately NOT folded into
- * `data-orientation` above: the union includes `horizontal-stacked`, which is a layout mode
- * rather than an axis, and `layout` is the public prop's own name.
- *
- * The three values are RadioGroup's complete union. Only `layout-vertical` carries rules
- * today (the Griffel source styled `layout === 'vertical'` alone, leaving both horizontal
- * modes on the base `flex-direction: row`); the other two name the rest of the attribute's
- * value space and emit nothing until a module references them.
- */
+/* layout */
 @custom-variant layout-vertical (&:where([data-layout='vertical']));
 @custom-variant layout-horizontal (&:where([data-layout='horizontal']));
 @custom-variant layout-horizontal-stacked (&:where([data-layout='horizontal-stacked']));
-
-/*
- * The SAME `data-layout` attribute, reused by MessageBar for a disjoint value space:
- * `'singleline' | 'multiline'`. The value stamped is the COMPUTED layout — `useMessageBar.ts`
- * resolves the public `auto` to one of these two before it reaches the DOM — and
- * MessageBarActions reads the identical value off its own element via MessageBar's context,
- * which is why `layout-multiline` is referenced from two components' modules.
- *
- * Sharing the attribute with RadioGroup is deliberate, not an accident: both components' public
- * prop is literally called `layout`, and neither can ever see the other's element, so the two
- * value spaces cannot meet. `layout-singleline` names the other half and carries no rules —
- * singleline is MessageBar's base look, exactly as in the Griffel source.
- */
 @custom-variant layout-singleline (&:where([data-layout='singleline']));
 @custom-variant layout-multiline (&:where([data-layout='multiline']));
 
-/*
- * Semantic status of a message surface — MessageBar's `intent`
- * (`'info' | 'success' | 'warning' | 'error'`, MessageBar.types.ts, the complete union). It is
- * stamped on the ROOT even though it also selects the icon slot's colour, because the icon's
- * rules are descendant selectors from the root.
- *
- * `data-intent` has no headless-preview or nyt-games precedent, so the name comes from the
- * public prop — the ProgressBar `data-thickness` rule. `intent-info` carries no rules: `info`
- * is the base look and the Griffel source had no `info` slice either.
- */
+/* intent (MessageBar) */
 @custom-variant intent-info (&:where([data-intent='info']));
 @custom-variant intent-success (&:where([data-intent='success']));
 @custom-variant intent-warning (&:where([data-intent='warning']));
 @custom-variant intent-error (&:where([data-intent='error']));
 
-/*
- * Where a Persona's text sits relative to its avatar/presence coin. Persona's public prop
- * is `textPosition: 'after' | 'before' | 'below'` and it drives the root's whole grid
- * template, so the attribute is named from the prop (the ProgressBar `data-thickness`
- * precedent): neither nyt-games nor the headless preview has a name for it, and the
- * preview's generic `data-position` would be ambiguous here because Persona ALSO has a
- * `textAlignment` prop. `text-position-after` is currently unreferenced — Persona's `after`
- * slice is empty — and is listed for completeness; an unreferenced variant emits nothing.
- */
+/* text position (Persona) */
 @custom-variant text-position-after (&:where([data-text-position='after']));
 @custom-variant text-position-before (&:where([data-text-position='before']));
 @custom-variant text-position-below (&:where([data-text-position='below']));
 
-/* spacing opt-ins (Divider inset, …) — presence attributes, written as `|| undefined` */
+/* per-component booleans */
 @custom-variant inset (&:where([data-inset]));
-
-/*
- * "This element responds to pointer/keyboard interaction" — ListItem's
- * `selectable || navigable` union, which its Griffel hook spells as the single slice
- * `rootClickableOrSelectable` (display + cursor). Both halves gate exactly one slice and
- * neither is used alone, so per the cookbook's boolean-pair rule the union rides ONE
- * presence attribute instead of two attributes plus a union variant.
- *
- * The name is invented: neither the nyt-games catalog (reports/nyt-games-conventions.md,
- * 95 variants) nor the headless preview's 25 data-attribute names
- * (reports/headless-precedent.md) has an entry for it — the closest headless names,
- * `data-has-actions` / `data-selected`, mean different things. Generalises to the rest of
- * the row/option family (MenuItem, TreeItem, TableRow) whose Griffel sources gate the
- * same `cursor: pointer` on the same "is this row actionable" condition.
- */
 @custom-variant interactive (&:where([data-interactive]));
-
-/*
- * Link's `inline` boolean — "this link sits inside a run of text", which underlines it at
- * rest. No headless-preview precedent exists for the name, so it follows the react-divider
- * pilot's `data-inset` shape: a boolean styling opt-in as a presence attribute.
- * NOTE for module authors: `inline` is also the name of Tailwind's `display: inline`
- * utility. `@variant inline { … }` and `@apply inline` live in different registries and do
- * not collide, but Link.module.css writes `display: inline` longhand anyway for clarity.
- */
 @custom-variant inline (&:where([data-inline]));
-
-/*
- * MenuSplitGroup's `data-multiline` — "a child menu item has wrapped onto more than one
- * line", which re-centres the split trigger. Unlike every other presence attribute in this
- * catalog it is written IMPERATIVELY (`useMenuSplitGroup.ts` calls `toggleAttribute` from a
- * ref callback), because the child that knows the answer can mount before the parent that
- * renders it; the constant lives in the styles file as `menuSplitGroupMultilineAttr`. The
- * attribute name predates this migration and is unchanged.
- *
- * No headless-preview precedent exists for the name, so it follows the react-divider pilot's
- * `data-inset` shape: a boolean styling opt-in as a presence attribute. It generalises to
- * any wrap-aware row, which is why it is catalogued rather than written as a hand-rolled
- * attribute selector in the module.
- */
 @custom-variant multiline (&:where([data-multiline]));
-
-/*
- * Adornment-slot presence (Input contentBefore/contentAfter, and the same pair on
- * Textarea/Select/SpinButton/Combobox). Presence attributes on the ROOT, written as
- * `|| undefined`: the styles hook branches on `state.contentBefore && …`, and both the
- * root's own padding and the inner input's padding key off it, so the flag has to be
- * readable from the root for descendant selectors.
- */
 @custom-variant content-before (&:where([data-content-before]));
 @custom-variant content-after (&:where([data-content-after]));
-
-/*
- * MessageBarActions' `data-has-actions` — "this actions slot holds at least one action".
- * `data-has-actions` is one of the headless preview's 25 attribute names
- * (reports/headless-precedent.md). Written `hasActions || undefined` in the hook: a literal
- * `false` would render `data-has-actions="false"`, which still MATCHES a presence selector and
- * would therefore invert the complement.
- *
- * Boolean-ish pair per the cookbook, and the complement is the half the module uses — an
- * actions element with nothing in it is hidden rather than left as an empty grid cell.
- */
 @custom-variant has-actions (&:where([data-has-actions]));
 @custom-variant not-has-actions (&:where(:not([data-has-actions])));
 
-/*
- * SpinButton's `data-spin-active` — "this is the increment/decrement button currently
- * repeating". Derived from `spinState === 'up'` / `=== 'down'` and stamped on the matching
- * button only (`useSpinButtonStyles.styles.ts`), presence-only, with the same `|| undefined`
- * discipline as `has-actions` above.
- *
- * No headless-preview or nyt-games precedent exists for the name, so it follows the
- * react-divider pilot's `data-inset` shape: a boolean styling opt-in as a presence attribute.
- * It is NOT folded into `pressed` / `active`: the spin repeat continues while the pointer is
- * held OR the arrow key is held, and it stays set across the repeat interval, which neither
- * pseudo-class tracks.
- */
+/* held spin repeat (SpinButton) — persists across the repeat interval, unlike :active */
 @custom-variant spin-active (&:where([data-spin-active]));
 
 /* interaction */
 @custom-variant hover (&:where(:hover));
 @custom-variant focus (&:where(:focus));
-
-/*
- * SearchBox's `focused` — a React state flag, NOT a pseudo-class, and deliberately not a
- * union with one. `useSearchBoxBase_unstable` sets it from `onFocus`/`onBlur` handlers on
- * the root plus a `relatedTarget` containment check, so it stays true while focus moves
- * between the `<input>` and the dismiss button, and it is what the Griffel hook branched on
- * (`!focused && …`). `:focus-within` is a near-neighbour, not an equal: it is live where the
- * React flag is a render behind, and it would fire on elements whose hook never set the
- * state. Folding either into the other is the "half-applying dual-source variant" trap
- * reports/nyt-games-conventions.md flags.
- *
- * Name from the headless preview's `data-focused` (one of its 25 attribute names —
- * reports/headless-precedent.md; `react-headless-components-preview`'s own SearchBox stamps
- * exactly this on the root). nyt-games spells the same attribute `focus`, a name this
- * catalog already binds to the native `:focus` pseudo-class.
- *
- * Boolean-ish pair per the cookbook: ONE presence attribute plus a `:not()` complement —
- * every v9 slice that reads it reads the complement.
- */
 @custom-variant focused (&:where([data-focused]));
 @custom-variant not-focused (&:where(:not([data-focused])));
-
-/*
- * UNION compounds — the `-or-` in the name is load-bearing. `hover-active` below is an
- * INTERSECTION (`:hover:active`); these are selector lists. The Griffel sources spell
- * them `':hover,:focus-within'` / `':active,:focus-within'` with the comment "DO NOT add
- * a space between the selectors! It changes the behavior of make-styles" — i.e. one slice
- * whose declarations apply in either state. They recur across the whole input family
- * (Input, Textarea, Select, SpinButton, Combobox root borders).
- */
-@custom-variant hover-or-focus-within (&:where(:hover, :focus-within));
-@custom-variant active-or-focus-within (&:where(:active, :focus-within));
-
-/*
- * `:not(:focus-within)` complement — the "field is not focused" guard v9 field controls
- * use to hold their invalid/rest border while the focus indicator owns the focused look.
- *
- * ⚠ CONVERSION TRAP (found by react-input's A/B probe; applies to Textarea/Select too).
- * Griffel authors that slice as `':not(:focus-within),:hover:not(:focus-within)'`. The
- * second term IS a strict subset of the first, so it adds nothing to MATCHING — but it is
- * not redundant, it is a SPECIFICITY HACK. Griffel's atomics are not `:where()`-wrapped:
- * `.x:hover:not(:focus-within)` scores (0,3,0) and therefore outranks the hover-bucket
- * atomics at (0,2,0), letting a `d`-bucket rule beat the `h` bucket. `.x:not(:focus-within)`
- * scores only (0,2,0) and correctly LOSES to `:active` at (0,2,0) on bucket order.
- *
- * `:where()` flattens both to (0,1,0) and the asymmetry disappears, so a converted module
- * must SPLIT the slice: the plain branch goes before the module's hover/active blocks, and
- * a `@variant hover { @variant not-focus-within { … } }` restatement goes after them.
- * Collapsing them into one block silently changes the invalid-plus-hover border.
- * Worked example: Input.module.css, "useRootStyles.invalid, SECOND branch".
- */
 @custom-variant not-focus-within (&:where(:not(:focus-within)));
-
-/*
- * Bare `:active`, distinct from `pressed` above: several v9 styles files (Textarea's
- * `outlineInteractive`, Input, Select, …) author a plain `:active` rule, and a converted
- * component must reproduce the COMPILED selector — `pressed` additionally matches
- * `[data-pressed]`, which Griffel never emitted for these.
- *
- * Also distinct from Avatar's `data-active` attribute, which is catalogued as `with-active` /
- * `active-inactive` precisely because this name was already taken. See that block above.
- */
 @custom-variant active (&:where(:active));
-
-/*
- * Griffel's authored "pressed" compound — `:hover:active,:active:focus-visible` — used
- * verbatim by Button/ToggleButton/MenuButton/SplitButton and many other v9 styles files.
- * Kept distinct from `pressed` above, which is the headless-preview vocabulary
- * (`[data-pressed], :active`); converting a styled component must reproduce the compiled
- * selector, not the headless one. Note the `:focus-visible` here is the NATIVE
- * pseudo-class, not keyborg's attribute — that is what Griffel emitted.
- */
 @custom-variant hover-active (&:where(:hover:active, :active:focus-visible));
-
-/*
- * Complement of the `hover` + `hover-active` PAIR above — "the element is at rest".
- * `:hover:active` is a strict subset of `:hover`, so the union of the two variants is
- * `:hover, :active:focus-visible` and this is its exact negation.
- *
- * Why it exists (react-toolbar's ToolbarToggleButton / ToolbarRadioButton): Griffel
- * resolved a flat `d`-bucket atomic against a LATER slice's `:hover` atomic by
- * SPECIFICITY (0-1-0 vs 0-2-0), so a wrapping component's flat override could beat the
- * wrapped component's flat rules while still losing to its hover/pressed ones. Cascade
- * layers cannot express that interleaving — a higher altitude wins in every state — and
- * `:where()` flattens the specificity that used to arbitrate it. Restricting the wrapper's
- * flat rule to the rest state reproduces the winner exactly, in every state, without
- * either component having to know the other's values.
- *
- * Use it only for that shape. A component styling its OWN element never needs it: it
- * writes its rest rule first and its `hover` / `hover-active` rules after, and file order
- * decides.
- */
 @custom-variant at-rest (&:where(:not(:hover, :active:focus-visible)));
 
-/*
- * `disabled || disabledFocusable` — the condition v9 components actually branch on.
- * A disabled-but-focusable control renders NO `disabled` attribute (react-aria's
- * `useARIAButtonProps` sets `disabled: disabled && !disabledFocusable` and
- * `aria-disabled: true`), and an `<a>`/`<div>`-rendered button drops `disabled`
- * entirely — so neither `:disabled` nor `[disabled]` alone reproduces the JS condition.
- */
+/* disabled family */
 @custom-variant disabled-focusable (&:where([data-disabled-focusable]));
-@custom-variant disabled-any (&:where([disabled], [data-disabled], :disabled, [data-disabled-focusable]));
-
-/*
- * The form-CONTROL disabled compound: `':disabled, &[aria-disabled=\"true\"]'` and its
- * complement `':enabled:not([aria-disabled=\"true\"])'`, authored verbatim by
- * react-switch's hidden-`<input>` reset. As of that conversion this is the ONLY styles
- * file in the repo that spells the selector this way (verified by grep over every
- * `packages/react-components/*​/library/src/components/*​/*.styles.ts`), but the shape
- * generalises to the rest of the hidden-input family (Checkbox, Radio) when they convert:
- * the control renders `aria-disabled` instead of `disabled` when it must stay focusable,
- * so neither `:disabled` nor `[disabled]` alone reproduces the compiled selector.
- *
- * This is a SEPARATE entry rather than a widening of `disabled`/`enabled` above, and that
- * separation is load-bearing: react-link renders `aria-disabled` for
- * `disabled || disabledFocusable` (useLinkState.ts) while its Griffel hook gates the
- * disabled slice on `disabled` alone (`disabled && styles.disabled`). Folding
- * `[aria-disabled='true']` into the generic `disabled` variant would newly apply disabled
- * styling to every `disabledFocusable` Link. Likewise `disabled-any` stays untouched:
- * Button's condition is `disabled || disabledFocusable`, already carried by
- * `[data-disabled-focusable]`.
- */
 @custom-variant disabled-control (&:where([disabled], [data-disabled], :disabled, [aria-disabled='true']));
 @custom-variant enabled-control (&:where(:not([disabled], [data-disabled], :disabled, [aria-disabled='true'])));
 
-/* Focus visibility: keyborg attributes (the Fluent visual contract) plus the native
-   pseudo-classes, one variant each. focus-within keeps the attribute:pseudo pairing —
-   keyborg leaves data-fui-focus-within behind after focus moves. */
+/* focus visibility: keyborg attribute + native pseudo-class. focus-within keeps the
+ * attribute:pseudo pairing — keyborg leaves the attribute behind after focus moves */
 @custom-variant focus-visible (&:where([data-fui-focus-visible], :focus-visible));
 @custom-variant focus-within (&:where([data-fui-focus-within]:focus-within, :focus-within));
 
-/*
- * Content presence — named for alignment with the CSS-native :empty selector
- * (nyt-games catalog; user-settled 2026-07-27, replacing the pilot's 'childless').
- * data-empty mirrors 'no JSX children' from the styles hook — the DOM may still
- * contain slot elements (an icon-only Button root is data-empty but not :empty),
- * which is why the attribute leads and :empty is the unstamped-element fallback.
- */
+/* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
 @custom-variant empty (&:where([data-empty], :empty));
 @custom-variant not-empty (&:where(:not([data-empty], :empty)));
-
-/* forced colors / high contrast */
-@custom-variant forced-colors {
-  @media (forced-colors: active) {
-    @slot;
-  }
-}

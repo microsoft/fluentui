@@ -1,56 +1,17 @@
 // @ts-check
 /**
- * THE single source of truth for generated CSS-Modules class names ("idents").
+ * Single source of truth for generated CSS-Modules class names:
+ *   fuicm-<component-kebab>-<local-kebab>-<hex6>   (all lowercase, - separated)
  *
- * Three pipelines turn `*.module.css` into class names and all three must agree on the
- * SHAPE of what they produce; only then can one snapshot serializer strip them all and one
- * conformance rule describe them:
+ * Three pipelines must agree on this shape — the package build (postcss-modules), the
+ * storybook css-loader, and the jest proxy — so one serializer can strip them and one
+ * conformance rule can describe them. Required by RELATIVE path from all three on
+ * purpose: this file must stay free of workspace requires.
  *
- *   1. package build — `postcss-modules` `generateScopedName`
- *      (tools/workspace-plugin/src/executors/build/lib/css-modules.ts)
- *   2. VR storybook  — `css-loader` `modules.getLocalIdent`
- *      (apps/vr-tests-react-components/.storybook/main.js)
- *   3. jest          — the `moduleNameMapper` Proxy
- *      (scripts/jest/src/css-modules/proxy.js)
- *
- * This file is required by RELATIVE PATH from all three, deliberately: it must stay free of
- * workspace requires (jest.preset.js documents why — `@fluentui/scripts-jest` pulls in
- * `@fluentui/scripts-monorepo`, which walks the repo on load) and it must be requirable from
- * `tools/workspace-plugin`, which does not depend on any `scripts/*` package.
- *
- * ── The scheme ──────────────────────────────────────────────────────────────────────────
- *
- *     fuicm-<component-kebab>-<local-kebab>-<hex6>
- *     fuicm-switch-root-a3f2c1
- *     fuicm-message-bar-actions-container-action-7d10be
- *
- * ALL LOWERCASE, `-` separated, nothing else. Rationale, point by point:
- *
- *  - `fuicm-` prefix — a HARD CONTRACT. scripts/jest/src/css-modules/serializer.js strips
- *    every `fuicm-…` token from snapshots the way Griffel's jest serializer stripped atomics
- *    (DECISIONS.md D9). Changing the prefix silently reintroduces generated class names into
- *    every committed snapshot.
- *  - No `-module__` infix and no `--` separator. The previous shape
- *    (`fuicm-[name]__[local]--[hash:base64:4]`) mixed three separator styles and carried a
- *    redundant `module` token; a single `-` reads better in a DOM inspector and in a diff.
- *  - No base64. base64 is case-SENSITIVE, so it put uppercase letters into class names that
- *    are otherwise lowercase, and its alphabet includes `+` and `/` which have to be
- *    scrubbed anyway. Hex is lowercase by construction. 6 hex chars = 24 bits.
- *  - Lowercase everywhere, including the component and the local, so the whole generated
- *    surface is case-insensitively unique. Module-local class names are authored
- *    lowercase-kebab for the same reason; `toKebabCase` is the safety net that keeps the
- *    invariant true even where a module still declares a camelCase local.
- *
- * ── Why the hash is over the NAME and not the CSS ────────────────────────────────────────
- * The digest seeds on `<package> <source-relative path> <local>` (never the file's bytes,
- * which is what css-loader's default does), so shipped class names are stable across content
- * edits: a cosmetic CSS change does not churn every identifier in `dist/styles.css`. What the
- * digest buys is UNIQUENESS — two packages that both declare `.root` in a same-named file
- * still differ, because the package name is in the seed.
- *
- * The kebab-casing happens AFTER hashing, on the display half only. Two locals that kebab to
- * the same string (`fooBar` / `foo-bar`) therefore still receive different hashes and cannot
- * collide.
+ * The hash seeds on <package> <source-relative-path> <local> — never file contents — so
+ * shipped names are stable across CSS edits but unique across packages. Kebab-casing
+ * happens after hashing, so locals that kebab to the same string cannot collide. The
+ * fuicm- prefix is a hard contract with scripts/jest/src/css-modules/serializer.js.
  */
 
 const { createHash } = require('node:crypto');

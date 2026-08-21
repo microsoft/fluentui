@@ -8,16 +8,9 @@ import type { ThemeProviderProps } from './ThemeProvider.types';
 
 import styles from './ThemeProvider.module.css';
 
-/**
- * Applies a Fluent theme to a subtree by rendering a `display: contents` div carrying
- * the theme class — the theme's custom properties cascade from it without introducing a
- * layout box, and they reach top-layer surfaces (popover/dialog) opened from inside the
- * subtree, since those keep their DOM ancestry. Also composes the headless Provider so
- * descendants read `dir`/`targetDocument` from context.
- *
- * The theme stylesheet itself (`@fluentui/react-tailwind-theme-preview/styles.css`) must
- * be imported once per document — this component only selects which theme applies.
- */
+/** Themes a subtree: a display:contents div carrying the theme class (custom properties
+ * cascade from it, including into top-layer popovers) plus the headless Provider context.
+ * The theme stylesheet must be imported once per document; this only selects the theme. */
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>((props, ref) => {
   const { theme, dir, targetDocument, className, children, ...rest } = props;
 

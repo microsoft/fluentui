@@ -1,47 +1,11 @@
 // @ts-check
 /**
- * PostCSS plugin — keep Tailwind named-group / named-peer markers OUT of CSS-Modules hashing.
- *
- * ── The failure it fixes (DECISIONS.md D15, reports/named-groups-design.md §2.4) ──────────
- *
- * A named group is written in JSX as a literal, unhashed string:
- *
- *     clsx('group/fui-switch', switchClassNames.root, styles.root, state.root.className)
- *
- * and read from another module — possibly in another package — as
- *
- *     @variant group-checked/fui-switch { … }
- *
- * which Tailwind compiles to a selector containing `.group\/fui-switch`.
- *
- * Both `postcss-modules` and `css-loader` scope EVERY class selector in a `*.module.css`
- * file, and they cannot tell this one apart from a real local. Without this plugin the
- * compiled selector becomes `.fuicm-switch-group-fui-switch-xxxxxx`, which nothing in the
- * DOM ever matches. There is no error and no warning: the rules simply never apply, VR
- * passes because nothing changed visually, and the feature silently does not exist. That is
- * why this is a blocking prerequisite for the marker rollout rather than a nicety.
- *
- * ── The fix ─────────────────────────────────────────────────────────────────────────────
- *
- * Wrap the marker segment in `:global(…)`, which BOTH CSS-Modules implementations honour and
- * strip, leaving the class unscoped and out of the exported class map:
- *
- *     .fuicm-switch-thumb-xxxxxx:is(:where(.group\/fui-switch):where([data-checked]) *)
- *              ↑ still scoped                        ↑ untouched, matches the JSX literal
- *
- * ── Where it runs ───────────────────────────────────────────────────────────────────────
- *
- *   - package build: BETWEEN `tailwindcss()` and `postcssModules()`
- *     (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) — Tailwind must have
- *     emitted the selector before this can rewrite it, and CSS Modules must see the
- *     `:global()` before it scopes.
- *   - VR storybook: appended to `postcssOptions.plugins`
- *     (apps/vr-tests-react-components/.storybook/main.js). webpack runs loaders
- *     right-to-left, so postcss-loader already runs before css-loader.
- *
- * Prior art: nyt-games uses `@accelint/postcss-tailwind-css-modules@1.1.0` for exactly this.
- * A local plugin is preferred over adding a third-party runtime dependency to the build of a
- * Microsoft-shipped library.
+ * PostCSS plugin wrapping Tailwind named-group/peer markers (.group/name, .peer/name)
+ * in :global() BEFORE postcss-modules runs, so the marker class survives as authored
+ * instead of being hashed — a hashed marker compiles to a selector the DOM never matches,
+ * with no error. Must run between tailwindcss() and postcssModules() in every pipeline;
+ * the build asserts no marker leaks into a class map.
+ * Prior art: @accelint/postcss-tailwind-css-modules does the same transform.
  */
 
 /**

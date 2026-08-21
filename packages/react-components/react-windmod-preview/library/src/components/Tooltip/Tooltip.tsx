@@ -7,21 +7,13 @@ import { resolvePositioningShorthand } from '@fluentui/react-headless-components
 import type { TooltipProps, TooltipState } from './Tooltip.types';
 import { useTooltipStyles } from './useTooltipStyles';
 
-/**
- * Griffel-parity constants: the classic Tooltip positions at offset 4, and with an arrow
- * react-positioning's `mergeArrowOffset` added the 6px arrow height (4 + 6 = 10). The
- * headless `usePositioning` applies offsets as margins and does no arrow arithmetic, so
- * the same numbers are applied here. The 6px height also drives the CSS constants in
- * Tooltip.module.css (8.484px diagonal / -4.242px edge offset) — change them together.
- */
+/** Griffel parity: base offset 4; withArrow adds the 6px arrow height (pairs with the
+ * 8.484px/−4.242px constants in Tooltip.module.css). */
 const TOOLTIP_OFFSET = 4;
 const ARROW_HEIGHT = 6;
 
-/**
- * Tooltip renders a non-modal floating label or description anchored to a trigger
- * element. Windmod Tooltip: the headless tooltip (native `popover="hint"` top layer +
- * CSS anchor positioning) decorated with the Fluent visual contract.
- */
+/** Tooltip: the headless tooltip (native popover=hint + CSS anchor positioning) with the
+ * Fluent visual contract. */
 export const Tooltip = (props: TooltipProps): JSXElement => {
   const { appearance = 'normal', positioning = 'above', withArrow = false, ...rest } = props;
 
@@ -43,8 +35,5 @@ export const Tooltip = (props: TooltipProps): JSXElement => {
 
 Tooltip.displayName = 'Tooltip';
 
-/**
- * Marks the Tooltip component as a FluentTriggerComponent so trigger utilities clone
- * props through it. Type-cast to avoid exposing internal types in the public API.
- */
+/** Lets trigger utilities clone props through Tooltip. */
 (Tooltip as FluentTriggerComponent).isFluentTriggerComponent = true;

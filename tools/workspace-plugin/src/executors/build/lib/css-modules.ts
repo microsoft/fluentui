@@ -1,7 +1,7 @@
 /**
  * Package-build CSS emission for Tailwind-flavoured CSS Modules.
  *
- * Implements DECISIONS.md D1 + D13 (migration/griffel-to-tailwind/reports/DECISIONS.md):
+ * Implements + D13:
  * source of truth is `src/**\/*.module.css`; the PACKAGE BUILD compiles it so that
  * consumers never run Tailwind and never see CSS-Modules syntax.
  *
@@ -76,7 +76,7 @@ const cssModulesIdent: {
 
 /**
  * `:global()`-wraps Tailwind's `group/…` / `peer/…` markers so CSS Modules cannot hash them.
- * BLOCKING prerequisite for named groups — see that file's header and DECISIONS.md D15.
+ * BLOCKING prerequisite for named groups — see that file's header.
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const globalizeGroupMarkers: (options?: {
@@ -95,22 +95,10 @@ export const CANONICAL_LAYER_STATEMENT =
 
 const CSS_MODULE_GLOB = '**/*.module.css';
 /**
- * One aggregated stylesheet per package. Deliberate, and re-confirmed in Phase 3 (worklist
- * item 11): splitting this per component was evaluated and DROPPED for the migration PR,
- * recorded as an independent follow-up.
- *
- * The case for splitting: every fixture in a package pays the whole package sheet.
- * `metrics/batch3/monosize-react-badge.json` — all three badge fixtures charge an identical
- * `css` gz of 2517, which is why `PresenceBadge` measures +26.3% while `Badge` and
- * `CounterBadge` measure −22.7%/−22.8%.
- *
- * The case against, which won: the regression only appears in single-component micro-bundles
- * and washes out in aggregate (`Suite ENTIRE LIBRARY` −2.1%), while turning `./styles.css`
- * into N subpaths is a public export-surface break for consumers who import that subpath
- * directly (SSR/CJS setups). The work is contained to three functions here
- * (`writeAggregatedStylesheet()`, `renderEsmClassMap()`, and the `stylesheetSpecifier`
- * computation) plus each converted package's `exports`/`files`, with NO authoring changes —
- * so it can land independently at any time without redoing anything.
+ * One aggregated stylesheet per package. Splitting per component was evaluated and
+ * dropped: the per-fixture size regression only appears in single-component
+ * micro-bundles and washes out in aggregate, while N stylesheet subpaths would break
+ * the public ./styles.css export for SSR/CJS consumers.
  */
 const STYLESHEET_RELATIVE_PATH = 'dist/styles.css';
 
@@ -278,7 +266,7 @@ export async function compileCssModuleSource({
     // ORDER IS LOAD-BEARING and this is the only position that works: Tailwind has to have
     // emitted `.group\/fui-switch` before it can be rewritten, and postcssModules has to see
     // the `:global()` wrapper before it scopes. Drop this plugin and every named-group rule
-    // compiles to a selector the DOM never matches — with no error (DECISIONS.md D15).
+    // compiles to a selector the DOM never matches — with no error.
     globalizeGroupMarkers({
       onRewrite: ({ count }) => {
         globalizedMarkers += count;
@@ -306,8 +294,7 @@ export async function compileCssModuleSource({
 /**
  * A `group/…` marker that reached CSS Modules unwrapped gets SCOPED, and the only visible
  * trace is that it appears as a key in the exported class map — postcss-modules ignores
- * anything inside `:global()`, so a correctly handled marker is absent from the map entirely
- * (verified, reports/named-groups-design.md §2.4).
+ * anything inside `:global()`, so a correctly handled marker is absent from the map entirely.
  *
  * The failure is otherwise completely silent: the compiled selector is well-formed, nothing
  * warns, and VR passes because the rules simply never match. Fail the build instead.
@@ -319,7 +306,7 @@ function assertGroupMarkersSurvived(relativePath: string, classMap: Record<strin
     throw new Error(
       `${relativePath}: Tailwind group/peer markers were scoped by CSS Modules (${leaked.join(', ')}). ` +
         'The fui-globalize-group-markers PostCSS plugin must run between tailwindcss() and postcssModules() — ' +
-        'see scripts/css-modules/globalize-group-markers.js and DECISIONS.md D15.',
+        'see scripts/css-modules/globalize-group-markers.js.',
     );
   }
 }
@@ -344,7 +331,7 @@ async function writeAggregatedStylesheet(
     ' * Plain CSS: no Tailwind syntax, no CSS-Modules syntax, no theme emission. Every custom',
     ' * property referenced below is DEFINED elsewhere — Fluent design tokens by',
     ' * FluentProvider at runtime, Tailwind theme variables by the shared theme stylesheet the',
-    ' * document imports exactly once (DECISIONS.md D13). This file declares none of them.',
+    ' * document imports exactly once. This file declares none of them.',
     ' */',
   ].join('\n');
 

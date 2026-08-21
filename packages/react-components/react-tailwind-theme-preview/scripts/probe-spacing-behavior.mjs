@@ -1,7 +1,6 @@
 // @ts-check
 /**
- * Behavior probes for the spacing token structure (theming Phase 1, option B — settled
- * with user 2026-07-29). Loads the REAL compiled theme artifact (dist/styles.css) plus
+ * Behavior probes for the spacing token structure. Loads the REAL compiled theme artifact (dist/styles.css) plus
  * utilities compiled from the real css/index.css into headless Chromium and asserts
  * computed styles — jsdom cannot resolve var()/calc() chains, so this is a browser test
  * by necessity.
@@ -17,7 +16,7 @@
  * C. STROKE DECOUPLING — `var(--stroke-width-thin)` / `var(--spacing-thin)` do NOT
  *    respond to a `--spacing` override: borders must not thin when layout density
  *    changes (deliberate design exception).
- * D. OLD NAMES ARE GONE (option B) — `var(--spacingHorizontalM)` /
+ * D. OLD NAMES ARE GONE — `var(--spacingHorizontalM)` /
  *    `var(--strokeWidthThin)` do NOT resolve anywhere in the emitted CSS.
  * E. DEFAULT ARITHMETIC — at a 16px root everything computes to the canonical px.
  *

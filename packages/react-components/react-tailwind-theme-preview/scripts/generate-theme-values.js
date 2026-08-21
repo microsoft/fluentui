@@ -1,20 +1,18 @@
 // @ts-check
 /**
  * Emits `theme-values.json` — a committed snapshot of the 7 shipped theme objects'
- * token values (theming Phase 2b).
+ * token values.
  *
- * WHY A SNAPSHOT: `@fluentui/react-tailwind-theme`'s generator
+ * WHY A SNAPSHOT: this package's generator
  * (`scripts/generate-tokens-css.js`) deliberately has no dependency edge on this
  * package's BUILD output — a fresh clone must be able to regenerate/verify its CSS
  * without building anything. The theme VALUES, however, are computed
  * (`createLightTheme(brandWeb)`, …), so they cannot be text-scraped from source the way
  * `tokens.ts` is. This committed JSON is the bridge: the CSS generator reads it, and
- * `src/themes/themeValues.test.ts` asserts on every jest run that it deep-equals the
- * computed themes — drift fails CI from this package's side.
+ * `--check` verifies it against the built tokens package.
  *
- * Regenerating (only needed when a theme value intentionally changes):
- *   yarn nx run tokens:build   # the script reads lib-commonjs
- *   yarn workspace @fluentui/tokens generate-theme-values
+ * Regenerating (when a theme value intentionally changes): `yarn nx run tokens:build`,
+ * then `node scripts/generate-theme-values.js` from this package.
  *
  * `--check` exits non-zero when the committed file is missing or stale.
  */
@@ -73,10 +71,9 @@ function render() {
     $schema: 'fluent-theme-values',
     description:
       'Committed snapshot of the shipped Fluent theme objects (theme key -> value). ' +
-      'Consumed by @fluentui/react-tailwind-theme/scripts/generate-tokens-css.js to emit the static theme ' +
-      'CSS classes; drift against the computed themes fails src/themes/themeValues.test.ts. ' +
-      'Regenerate with `yarn workspace @fluentui/tokens generate-theme-values` after `yarn nx run tokens:build`.',
-    generatedBy: 'packages/tokens/scripts/generate-theme-values.js',
+      'Consumed by scripts/generate-tokens-css.js to emit the static theme CSS classes. ' +
+      'Regenerate after yarn nx run tokens:build.',
+    generatedBy: 'packages/react-components/react-tailwind-theme-preview/scripts/generate-theme-values.js',
     source: `${packageJson.name}@${packageJson.version}`,
     themes,
   };
@@ -91,7 +88,7 @@ function main() {
 
   if (check) {
     if (!fs.existsSync(OUTPUT)) {
-      console.error(`MISSING: ${OUTPUT} — run \`yarn workspace @fluentui/tokens generate-theme-values\`.`);
+      console.error(`MISSING: ${OUTPUT} — run \`node scripts/generate-theme-values.js\`.`);
       process.exitCode = 1;
       return;
     }
@@ -99,7 +96,7 @@ function main() {
     const existing = fs.readFileSync(OUTPUT, 'utf8').replace(/\r\n/g, '\n');
 
     if (existing !== contents) {
-      console.error(`STALE: ${OUTPUT} — run \`yarn workspace @fluentui/tokens generate-theme-values\`.`);
+      console.error(`STALE: ${OUTPUT} — run \`node scripts/generate-theme-values.js\`.`);
       process.exitCode = 1;
       return;
     }
