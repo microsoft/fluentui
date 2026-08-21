@@ -37,6 +37,19 @@ Status flow: `planned` → `pilot` → `audited` → `converted` → `validated`
 - Learning: `popover='hint'` is exclusive by spec — multiple pinned-open
   tooltips need `content={{ popover: 'manual' }}` (demo-only device).
 
+### Phase 2 items from PR review (2026-08-20)
+
+- Shared look-prop types: suggest one home for the appearance/shape/size unions
+  and per-component Props/State extensions (ideally exported by the headless
+  package) instead of windmod redeclaring them — user asked to suggest, not
+  implement yet.
+- Upstream tactical-edit candidate: headless Tooltip arrow has no
+  slot/className hook (arrowRef exists, nothing applies a class) — windmod must
+  style the `[data-arrow]` child via descendant selector until then.
+- Story convention: ONE export per `*.stories.tsx`, re-exported through
+  `index.stories.tsx` — the export-to-sandbox addon injects `fullSource` only
+  on the last export otherwise (docs pages error with 'issues with data').
+
 ### Pilot known gaps (for review discussion)
 
 - Headless icons: /headless ships FACTORIES only (2.0.337) — premade icon
