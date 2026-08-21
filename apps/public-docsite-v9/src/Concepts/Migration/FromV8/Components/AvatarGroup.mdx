@@ -41,7 +41,12 @@ An equivalent `AvatarGroup` in v9 is
 
 ```tsx
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover } from '@fluentui/react-components';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupPopover,
+  partitionAvatarGroupItems,
+} from '@fluentui/react-components';
 
 const names = [
   'Johnie McConnell',
@@ -61,21 +66,23 @@ const AvatarGroupV9BasicExample = () => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
-    <AvatarGroup {...props}>
+    <AvatarGroup size={32}>
       {inlineItems.map(name => (
         <AvatarGroupItem name={name} key={name} />
       ))}
-      <AvatarGroupPopover>
-        {overflowItems.map(name => (
-          <AvatarGroupItem name={name} key={name} />
-        ))}
-      </AvatarGroupPopover>
+      {overflowItems && (
+        <AvatarGroupPopover>
+          {overflowItems.map(name => (
+            <AvatarGroupItem name={name} key={name} />
+          ))}
+        </AvatarGroupPopover>
+      )}
     </AvatarGroup>
   );
 };
 ```
 
-## Props Mapping
+## Prop Mapping
 
 This table maps `Facepile` v8 props to the v9's `AvatarGroup` equivalent.
 
@@ -85,7 +92,7 @@ This table maps `Facepile` v8 props to the v9's `AvatarGroup` equivalent.
 | `addButtonProps`         | -                                                          |
 | `className`              | `className`                                                |
 | `getPersonaProps`        | `AvatarGroupItem`'s props                                  |
-| `maxDisplayablePersonas` | `maxAvatars` option in `partitionAvatarGroupItems`         |
+| `maxDisplayablePersonas` | `maxInlineItems` option in `partitionAvatarGroupItems`     |
 | `onRenderPersona`        | Render function for the `AvatarGroupItem`                  |
 | `onRenderPersonaCoin`    | Render function for the `avatar` slot in `AvatarGroupItem` |
 | `onRenderPersonaWrapper` | -                                                          |

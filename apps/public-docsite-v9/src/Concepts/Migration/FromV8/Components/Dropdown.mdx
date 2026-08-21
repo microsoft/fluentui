@@ -1,0 +1,186 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Dropdown and Combobox Migration" />
+
+# Dropdown / Combobox Migration
+
+In v8, both components are **data-driven**: pass an `options` array of `IDropdownOption` / `IComboBoxOption` objects.
+
+In v9, both are **declarative**: compose `<Option>` (and `<OptionGroup>`) as JSX children. This is the same pattern shift as `ContextualMenu` → `Menu`.
+
+The `onChange` callback is also renamed to `onOptionSelect` with a different signature.
+
+`VirtualizedComboBox` has no one-prop replacement. Migrate selection and input
+behavior to `Combobox`, then preserve virtualization as a separate rendering
+concern and validate active-option announcements, scrolling, and keyboard
+navigation with the full data set.
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+// v8
+import { Dropdown, IDropdownOption } from '@fluentui/react';
+
+const options: IDropdownOption[] = [
+  { key: 1, text: 'Apple' },
+  { key: 'banana', text: 'Apple' },
+  { key: 'cherry', text: 'Cherry', disabled: true },
+];
+
+<Dropdown
+  label="Fruit"
+  placeholder="Select an option"
+  options={options}
+  selectedKey={selectedKey}
+  onChange={(_, option) => option && selectFruit(option)}
+/>;
+```
+
+```tsx
+// v9
+import * as React from 'react';
+import { Dropdown, Option, Field } from '@fluentui/react-components';
+
+type FruitOption = { key: string | number; text: string; disabled?: boolean };
+const options: FruitOption[] = [
+  { key: 1, text: 'Apple' },
+  { key: 'banana', text: 'Apple' },
+  { key: 'cherry', text: 'Cherry', disabled: true },
+];
+const toOptionId = (key: string | number) => `${typeof key}:${String(key)}`;
+const optionsById = new Map(options.map(option => [toOptionId(option.key), option]));
+
+const [selectedId, setSelectedId] = React.useState('');
+const [displayValue, setDisplayValue] = React.useState('');
+
+<Field label="Fruit">
+  <Dropdown
+    placeholder="Select an option"
+    value={displayValue}
+    selectedOptions={selectedId ? [selectedId] : []}
+    onOptionSelect={(_, data) => {
+      const nextId = data.optionValue ?? '';
+      const option = optionsById.get(nextId);
+      setSelectedId(option ? nextId : '');
+      setDisplayValue(option?.text ?? '');
+      if (option) {
+        selectFruit(option);
+      }
+    }}
+  >
+    {options.map(option => (
+      <Option key={toOptionId(option.key)} value={toOptionId(option.key)} text={option.text} disabled={option.disabled}>
+        {option.text}
+      </Option>
+    ))}
+  </Dropdown>
+</Field>;
+```
+
+v8 option keys can be strings or numbers and the callback returns the original
+`IDropdownOption` (including its key and application data). v9 option values
+and `selectedOptions` are strings. Canonicalize every key to a stable string ID
+and keep an ID-to-model lookup as above. Include the original key type in the
+encoding so numeric `1` cannot collide with string `"1"`.
+
+`onOptionSelect` returns `optionValue`, `optionText`, and the complete
+`selectedOptions` string array; it does not return the original option object
+or its array index. Resolve the model from `optionValue`/`selectedOptions`.
+Never use display text as identity because duplicate labels are valid. When
+controlling selection, control the displayed `value` from the same resolved
+model so the button text and `selectedOptions` cannot drift apart.
+
+**Multi-select:** Replace `multiSelect` with `multiselect`. Store the selected keys in
+`selectedOptions`; `onOptionSelect` returns the complete next selection.
+
+**Grouped options:** Replace v8 header and divider options with `OptionGroup`.
+Render each selectable item as an `Option`; v9 has no `OptionDivider`.
+
+### Combobox
+
+A v8 `ComboBox` with `allowFreeform` maps to a v9 `Combobox` with `freeform`:
+
+```tsx
+import { Combobox, Field, Option } from '@fluentui/react-components';
+
+<Field label="Fruit">
+  <Combobox
+    value={inputValue}
+    selectedOptions={selectedKey ? [selectedKey] : []}
+    onChange={event => {
+      setInputValue(event.target.value);
+      setSelectedKey('');
+    }}
+    onOptionSelect={(_, data) => {
+      setSelectedKey(data.optionValue ?? '');
+      setInputValue(data.optionText ?? '');
+    }}
+    freeform
+  >
+    <Option value="apple">Apple</Option>
+    <Option value="banana">Banana</Option>
+  </Combobox>
+</Field>;
+```
+
+Filter the rendered `Option` children for autocomplete. `VirtualizedComboBox`
+has no direct replacement; preserve virtualization separately and verify
+keyboard navigation and active-option announcements.
+
+## Prop Mapping
+
+### IDropdownOption → Option
+
+| v8 `IDropdownOption` | v9 `Option`              | Notes                                                           |
+| -------------------- | ------------------------ | --------------------------------------------------------------- |
+| `key`                | canonical string `value` | Encode string/number keys and retain an ID-to-model lookup      |
+| `text`               | `children`               | `<Option>Apple</Option>`                                        |
+| `disabled`           | `disabled`               |                                                                 |
+| `hidden`             | —                        | Remove from the list instead                                    |
+| `title`              | `title`                  |                                                                 |
+| `itemType: Header`   | `OptionGroup` label      | See grouped options example above                               |
+| `itemType: Divider`  | `OptionGroup` boundary   | No `OptionDivider` in v9; use separate `<OptionGroup>` elements |
+
+### IDropdownProps → DropdownProps
+
+| v8                   | v9                               | Notes                                                                 |
+| -------------------- | -------------------------------- | --------------------------------------------------------------------- |
+| `options`            | `<Option>` children              | Each `IDropdownOption` → `<Option>`                                   |
+| `selectedKey`        | `selectedOptions={[id]}`         | Convert the v8 key to its canonical string ID                         |
+| `selectedKeys`       | `selectedOptions={ids}`          | Convert every v8 key; multi-select returns the complete ID array      |
+| `defaultSelectedKey` | `defaultSelectedOptions={[id]}`  | Convert the v8 key to its canonical string ID                         |
+| `onChange`           | `onOptionSelect`                 | Resolve original models from string `optionValue` / `selectedOptions` |
+| `placeholder`        | `placeholder`                    |                                                                       |
+| `label`              | `<Field label="...">` wrapper    | Same as other form controls                                           |
+| `disabled`           | `disabled`                       |                                                                       |
+| `required`           | `required` on `<Field>`          |                                                                       |
+| `errorMessage`       | `validationMessage` on `<Field>` |                                                                       |
+| `multiSelect`        | `multiselect`                    | Casing change                                                         |
+| `calloutProps`       | `Listbox` props / `positioning`  |                                                                       |
+| `styles`             | `className` + `makeStyles`       |                                                                       |
+| `theme`              | `FluentProvider`                 |                                                                       |
+| `componentRef`       | `ref`                            |                                                                       |
+
+### IComboBoxProps → ComboboxProps
+
+| v8                   | v9                               | Notes                                                       |
+| -------------------- | -------------------------------- | ----------------------------------------------------------- |
+| `options`            | `<Option>` children              |                                                             |
+| `selectedKey`        | `selectedOptions={[key]}`        |                                                             |
+| `onChange`           | `onOptionSelect` + `onChange`    | `onOptionSelect` for list picks; `onChange` for typed input |
+| `allowFreeform`      | `freeform`                       |                                                             |
+| `allowFreeInput`     | `freeform` + controlled state    | Preserve its unmatched-value behavior in app logic          |
+| `autoComplete`       | `autoComplete`                   | `"on"` or `"off"`                                           |
+| `label`              | `<Field label="...">` wrapper    |                                                             |
+| `placeholder`        | `placeholder`                    |                                                             |
+| `disabled`           | `disabled`                       |                                                             |
+| `multiSelect`        | `multiselect`                    |                                                             |
+| `text` (display val) | `value`                          | The text shown in the input                                 |
+| `errorMessage`       | `validationMessage` on `<Field>` |                                                             |
+| `styles`             | `className` + `makeStyles`       |                                                             |
+| `theme`              | `FluentProvider`                 |                                                             |
+| `componentRef`       | `ref`                            |                                                             |

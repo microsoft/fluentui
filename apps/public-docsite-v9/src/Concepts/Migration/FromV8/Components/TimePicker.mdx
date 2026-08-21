@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/TimePicker Migration" />
+
+# TimePicker Migration
+
+Use `TimePicker` from `@fluentui/react-timepicker-compat` for v8 time-entry
+experiences. The compatibility component is built on the v9 `Combobox` and
+generates its options from a time range.
+
+```tsx
+// v8
+import { ComboBox } from '@fluentui/react';
+
+// v9 compatibility package
+import { TimePicker } from '@fluentui/react-timepicker-compat';
+```
+
+If the v8 experience is a general-purpose `ComboBox`, migrate it to the v9
+`Combobox` instead. `TimePickerCompat` is for time-specific selection and
+freeform entry.
+
+## Examples
+
+### Basic Migration
+
+```tsx
+// v8
+<ComboBox allowFreeform options={timeOptions} selectedKey={selectedTimeKey} onChange={handleTimeChange} />
+```
+
+```tsx
+// v9
+import { TimePicker } from '@fluentui/react-timepicker-compat';
+
+<TimePicker
+  freeform
+  selectedTime={selectedTime}
+  startHour={8}
+  endHour={18}
+  increment={30}
+  onTimeChange={(_event, data) => {
+    setSelectedTime(data.errorType ? null : data.selectedTime);
+  }}
+/>;
+```
+
+### Event data and validation
+
+Read the selected value from the callback data, not from the event target:
+
+```tsx
+<TimePicker
+  onTimeChange={(_event, data) => {
+    console.log(data.selectedTime);
+    console.log(data.selectedTimeText);
+    console.log(data.errorType);
+  }}
+/>
+```
+
+`errorType` can be `invalid-input`, `out-of-bounds`, or `required-input`.
+Freeform migrations should handle those states explicitly instead of silently
+accepting an unparseable value.
+
+### Localization
+
+Use `hourCycle` to match the user's locale and
+`formatDateToTimeString`/`parseTimeStringToDate` when the default formatting is
+not sufficient. The parser should return both a date and any validation error so
+the displayed text, selected value, and error state remain consistent.
+
+## Prop Mapping
+
+### API mapping
+
+| v8 time-picker pattern            | v9 `TimePickerCompat`                                               |
+| --------------------------------- | ------------------------------------------------------------------- |
+| App-generated `IComboBoxOption[]` | `startHour`, `endHour`, and `increment`                             |
+| `selectedKey` or selected option  | `selectedTime: Date \| null`                                        |
+| `defaultSelectedKey`              | `defaultSelectedTime`                                               |
+| `allowFreeform`                   | `freeform`                                                          |
+| `onChange`                        | `onTimeChange(event, data)`                                         |
+| Custom option text                | `formatDateToTimeString(date)`                                      |
+| Custom freeform parser            | `parseTimeStringToDate(time)`                                       |
+| 12/24-hour option generation      | `hourCycle`                                                         |
+| Options with seconds              | `showSeconds`                                                       |
+| Callout positioning               | `positioning`, `inlinePopup`, and `mountNode`                       |
+| `styles`, `theme`                 | Replace with slots, `className`, `makeStyles`, and v9 design tokens |
+
+## Accessibility
+
+Provide an accessible label through `Field` or the underlying combobox input.
+Preserve keyboard selection, freeform submission, and clear behavior when
+replacing a custom v8 `ComboBox` implementation.

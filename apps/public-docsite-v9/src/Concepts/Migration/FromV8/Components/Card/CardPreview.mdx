@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # CardPreview Migration
 
-Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview`, with a complete different API.
+Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview` with a completely different API.
 
 This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
 
@@ -46,7 +46,7 @@ After:
 
 ```jsx
 import * as React from 'react';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+import { Card, CardPreview } from '@fluentui/react-components';
 
 export const Component = () => {
   return (
@@ -102,8 +102,7 @@ After:
 
 ```jsx
 import * as React from 'react';
-import { Text } from '@fluentui/react-components';
-import { Card } from '@fluentui/react-card/unstable';
+import { Card, Text } from '@fluentui/react-components';
 
 export const Default = () => {
   return (

@@ -116,7 +116,7 @@ export const V9FormattedValueExample = () => {
 };
 ```
 
-## Props Mapping
+## Prop Mapping
 
 ## Migration from v8
 
@@ -126,7 +126,7 @@ export const V9FormattedValueExample = () => {
 - `componentRef` => use `ref` instead.
 - `inline` => use css, or wrap in flex parent
 - `label` => Use `Label` control with `htmlFor` and `id`
-- `onChanged` => use onChange and onMouse events
+- `onChanged` => recreate commit behavior with native pointer, keyboard, and blur events
 - `origin` => no longer supported
 - `originFromZero` => no longer supported
 - `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
@@ -137,24 +137,70 @@ export const V9FormattedValueExample = () => {
 
 ## Property mapping
 
-| v8 `Slider`         | v9 `Slider`      |
-| ------------------- | ---------------- |
-|                     |                  |
-| `ariaLabel`         | `aria-label`     |
-| `ariaValueText`     | `aria-valuetext` |
-| `buttonProps`       |                  |
-| `componentRef`      | `ref`            |
-| `defaultLowerValue` |                  |
-| `inline`            |                  |
-| `input`             | `input`          |
-| `label`             |                  |
-| `lowerValue`        |                  |
-| `onChanged`         | `onChange`       |
-| `origin`            |                  |
-| `originFromZero`    |                  |
-| `ranged`            |                  |
-| `showValue`         |                  |
-| `snapToStep`        | `step`           |
-| `styles`            | `className`      |
-| `theme`             |                  |
-| `valueFormat`       |                  |
+| v8 `Slider`         | v9 `Slider`              |
+| ------------------- | ------------------------ |
+|                     |                          |
+| `ariaLabel`         | `aria-label`             |
+| `ariaValueText`     | `aria-valuetext`         |
+| `buttonProps`       |                          |
+| `componentRef`      | `ref`                    |
+| `defaultLowerValue` |                          |
+| `inline`            |                          |
+| `input`             | `input`                  |
+| `label`             |                          |
+| `lowerValue`        |                          |
+| `onChanged`         | App-owned commit handler |
+| `origin`            |                          |
+| `originFromZero`    |                          |
+| `ranged`            |                          |
+| `showValue`         |                          |
+| `snapToStep`        | `step`                   |
+| `styles`            | `className`              |
+| `theme`             |                          |
+| `valueFormat`       |                          |
+
+### Preserving `onChanged` commit timing
+
+v8 `onChange` runs for every step, while `onChanged(event, value)` runs on
+mouse up, touch end, or after keyboard changes stop. v9 `onChange` also runs on
+every individual step and is not a commit event. Do not move expensive
+persistence, analytics, or network work directly from v8 `onChanged` to v9
+`onChange`.
+
+`Slider`'s primary slot is the native `<input type="range">`, so native event
+props passed to `Slider` are applied to that input. Keep the latest value in a
+ref and commit it on pointer release and blur; use key-up for supported range
+keys when immediate keyboard commit is appropriate for the app:
+
+```tsx
+import * as React from 'react';
+import { Slider } from '@fluentui/react-components';
+import type { SliderProps } from '@fluentui/react-components';
+
+const CommitSlider = ({ onCommit }: { onCommit: (value: number) => void }) => {
+  const [value, setValue] = React.useState(20);
+  const latestValue = React.useRef(value);
+  const lastCommittedValue = React.useRef(value);
+  const commit = () => {
+    if (latestValue.current !== lastCommittedValue.current) {
+      lastCommittedValue.current = latestValue.current;
+      onCommit(latestValue.current);
+    }
+  };
+  const onChange: SliderProps['onChange'] = (_, data) => {
+    latestValue.current = data.value;
+    setValue(data.value);
+  };
+  const onKeyUp: React.KeyboardEventHandler<HTMLInputElement> = event => {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+      commit();
+    }
+  };
+
+  return <Slider value={value} onChange={onChange} onPointerUp={commit} onKeyUp={onKeyUp} onBlur={commit} />;
+};
+```
+
+If keyboard persistence must match v8's idle-delay batching exactly, debounce
+the commit from `onChange` for keyboard input and flush it on blur instead of
+committing every key-up.

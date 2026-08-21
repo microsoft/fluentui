@@ -3,7 +3,12 @@ import { CodeComparison, CodeExample } from './utils.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/Flex/Stack item" />
 
-# @fluentui/react - Stack.Item
+# Stack.Item Migration
+
+Fluent UI v9 does not provide a native `Stack.Item` component. Replace it with
+an element styled using CSS flex item properties. During an incremental
+migration, `StackItemShim` from `@fluentui/react-migration-v8-v9` accepts the
+v8 `Stack.Item` props.
 
 ## Default state
 

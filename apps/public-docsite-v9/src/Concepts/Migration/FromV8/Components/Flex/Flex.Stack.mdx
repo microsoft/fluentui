@@ -3,7 +3,12 @@ import { CodeComparison, CodeExample } from './utils.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/Flex/Stack" />
 
-# @fluentui/react - Stack
+# Stack Migration
+
+Fluent UI v9 does not provide a native `Stack` component. Migrate v8 `Stack`
+layouts to CSS flexbox with `makeStyles`. For an incremental migration,
+`StackShim` from `@fluentui/react-migration-v8-v9` accepts the v8 `Stack` props
+while rendering equivalent flexbox styles.
 
 ## Default state
 
@@ -202,8 +207,9 @@ _`10px` is used below as an example value_
   </CodeExample>
 </CodeComparison>
 
-As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Stack, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
-If you do not have this limitation, you can use the following CSS:
+As an alternative to reproducing v8's margin-based implementation, use the CSS
+`gap` property when the intended spacing does not depend on v8's exact margin
+behavior:
 
 _`10px` is used below as an example value_
 

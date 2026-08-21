@@ -2,6 +2,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Troubleshooting" />
 
+# Troubleshooting v8 to v9 Migration
+
 ## "I tried using the new components but there does not seem to be any styling applied to them. Am I doing something wrong?"
 
 Components in version 8 could be used in isolation and still retain their default styling.
@@ -24,7 +26,7 @@ root.render(
 );
 ```
 
-## "I tried using the new components inside v8 Callouts, Panels, etc. but there does not seem to be any styling applied to them. Am I doing something wrong?"
+## <a id="portal-compatibility"></a> "I tried using the new components inside v8 Callouts, Panels, etc. but there does not seem to be any styling applied to them. Am I doing something wrong?"
 
 Components in version v9 use CSS variables for styling, v9 components that are using [React Portals](https://reactjs.org/docs/portals.html) handle this by default. Components like `Callout` & `Panel` in v8 don't do it, but this can be enabled with a compatibility package called `@fluentui/react-portal-compat`.
 
@@ -43,7 +45,7 @@ function App() {
 }
 ```
 
-## <a id="portal-compatibility"></a> "I tried using a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
+## "I tried using a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
 
 Both v9 and v8 layers set the same `z-index` value by default, which means the document order will resolve their z-positioning.
 This can lead to inconsistent behavior because z-positioning depends on the order in which elements appear in the DOM.
@@ -77,7 +79,3 @@ The styling story in version 9 is very different to what existed in version 8. F
 We are also moving away from `mergeStyles` in favor of `makeStyles` from [`@griffel/react`](https://github.com/microsoft/griffel), a new in-house CSS-in-JS solution that allows for things like atomic classes and build-time optimization of styles.
 
 If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--docs).
-
-```
-
-```

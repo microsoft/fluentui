@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/FocusZone and FocusTrapZone Migration" />
+
+# FocusZone and FocusTrapZone Migration
+
+Fluent UI React v9 does not provide direct `FocusZone` or `FocusTrapZone`
+components. Prefer a v9 component that already owns the required semantics and
+keyboard behavior, such as `TabList`, `Menu`, `Tree`, `Accordion`, `Dialog`, or
+`Popover`. Use hooks from `@fluentui/react-tabster` only for custom composite
+widgets or focus-management scenarios.
+
+## Examples
+
+### FocusZone
+
+For a custom arrow-navigated group, replace `FocusZone` with
+`useArrowNavigationGroup`.
+
+```tsx
+// v8
+import { FocusZone, FocusZoneDirection } from '@fluentui/react';
+
+<FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation>
+  {items}
+</FocusZone>;
+```
+
+```tsx
+// v9
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+
+const CustomToolbar = () => {
+  const navigationAttributes = useArrowNavigationGroup({
+    axis: 'horizontal',
+    circular: true,
+  });
+
+  return (
+    <div role="toolbar" {...navigationAttributes}>
+      {items}
+    </div>
+  );
+};
+```
+
+Do not use `role="toolbar"` as a generic replacement for `FocusZone`; choose the
+ARIA role that matches the widget being implemented.
+
+### FocusTrapZone
+
+`Dialog`, `Popover`, and other overlay components already manage focus. Do not
+wrap them in another focus trap. For a custom modal surface, use
+`useModalAttributes`.
+
+```tsx
+// v8
+<FocusTrapZone forceFocusInsideTrap disableRestoreFocus={false}>
+  {content}
+</FocusTrapZone>
+```
+
+```tsx
+// v9 custom modal surface
+import { useModalAttributes } from '@fluentui/react-tabster';
+
+const CustomModal = () => {
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: true,
+  });
+
+  return (
+    <>
+      <button {...triggerAttributes}>Open</button>
+      <div role="dialog" aria-modal="true" {...modalAttributes}>
+        {content}
+      </div>
+    </>
+  );
+};
+```
+
+## Prop Mapping
+
+### FocusZone API mapping
+
+| v8 `FocusZone`                                 | v9 approach                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------------- |
+| `direction`                                    | `useArrowNavigationGroup({ axis })`                                 |
+| `isCircularNavigation`                         | `circular`                                                          |
+| `shouldFocusOnMount`, `defaultTabbableElement` | Owning component's initial-focus behavior or focus-finder hooks     |
+| Nested zones                                   | Nested semantic components and Tabster mover/grouper hooks          |
+| `shouldEnterInnerZone`                         | Model nested widget behavior explicitly; no direct prop             |
+| `allowTabKey`, `handleTabKey`                  | `tabbable` where appropriate, otherwise app-owned keyboard behavior |
+| `focus()`, `focusLast()`, `focusElement()`     | App-owned refs and focus helpers; no direct instance API            |
+| `setFocusAlignment()`                          | No direct equivalent                                                |
+| `styles`, `theme`                              | Replace with `className`, `makeStyles`, and v9 design tokens        |
+
+`allowFocusRoot`, `shouldRaiseClicks`, `pagingSupportDisabled`,
+`checkForNoWrap`, and `preventFocusRestoration` do not have reliable one-to-one
+replacements. Re-evaluate the behavior in the context of the owning v9
+component.
+
+### FocusTrapZone API mapping
+
+| v8 `FocusTrapZone`                               | v9 approach                                                                                   |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `forceFocusInsideTrap`                           | `useModalAttributes({ trapFocus: true })` or an owning overlay component                      |
+| Focus restoration                                | `triggerAttributes`/`modalAttributes`, or `useRestoreFocusTarget` and `useRestoreFocusSource` |
+| `firstFocusableSelector`, `firstFocusableTarget` | Owning component's initial-focus API or app-owned ref logic                                   |
+| `disableRestoreFocus`                            | Omit restore attributes only when restoration is intentionally app-owned                      |
+| `disableFirstFocus`                              | App-owned initial-focus decision                                                              |
+| `enableAriaHiddenSiblings`                       | Modalizer behavior; do not manipulate sibling `aria-hidden` manually                          |
+| `isClickableOutsideFocusTrap`                    | Choose modal or non-modal behavior in the owning component                                    |
+
+`focusPreviouslyFocusedInnerElement` and other imperative trap details have no
+direct prop mapping. Verify the user-visible behavior rather than reproducing
+the v8 implementation.
+
+## Accessibility
+
+Test keyboard entry and exit, arrow-key movement, nested widgets, focus
+restoration after unmount, Escape behavior, and browser zoom. A focus migration
+is complete only when the semantic component and its keyboard model agree.

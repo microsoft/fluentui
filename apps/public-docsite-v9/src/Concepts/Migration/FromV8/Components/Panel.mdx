@@ -1,0 +1,187 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Panel Migration" />
+
+# Panel / Drawer Migration
+
+v8 `Panel` is controlled via `isOpen` and configured through flat props (`headerText`, `type`, `onRenderFooterContent`).
+
+v9 `Drawer` is composable: content is structured via `DrawerHeader`, `DrawerBody`, and `DrawerFooter` children.
+The v9 package exports two variants:
+
+- **`OverlayDrawer`** — floats over content with a backdrop (equivalent to v8 Panel)
+- **`InlineDrawer`** — embedded in the layout and pushes content (no v8 equivalent)
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Panel, PanelType, PrimaryButton, DefaultButton } from '@fluentui/react';
+
+<Panel
+  isOpen={isOpen}
+  onDismiss={handleClose}
+  type={PanelType.medium}
+  headerText="Settings"
+  hasCloseButton
+  onRenderFooterContent={() => (
+    <>
+      <PrimaryButton onClick={handleSave} styles={{ root: { marginRight: 8 } }}>
+        Save
+      </PrimaryButton>
+      <DefaultButton onClick={handleClose}>Cancel</DefaultButton>
+    </>
+  )}
+>
+  <p>Panel body content</p>
+</Panel>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import {
+  OverlayDrawer,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  DrawerBody,
+  DrawerFooter,
+  Button,
+} from '@fluentui/react-components';
+import { DismissRegular } from '@fluentui/react-icons';
+
+<OverlayDrawer open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)} position="end" size="medium">
+  <DrawerHeader>
+    <DrawerHeaderTitle
+      action={<Button appearance="subtle" icon={<DismissRegular />} onClick={handleClose} aria-label="Close" />}
+    >
+      Settings
+    </DrawerHeaderTitle>
+  </DrawerHeader>
+
+  <DrawerBody>
+    <p>Panel body content</p>
+  </DrawerBody>
+
+  <DrawerFooter>
+    <Button appearance="primary" onClick={handleSave}>
+      Save
+    </Button>
+    <Button onClick={handleClose}>Cancel</Button>
+  </DrawerFooter>
+</OverlayDrawer>;
+```
+
+### InlineDrawer (no v8 equivalent)
+
+Use `InlineDrawer` only when the drawer should remain in the page layout
+and push adjacent content. Existing overlaying v8 panels normally migrate to
+`OverlayDrawer`.
+
+### Backdrop dismissal
+
+Keep `modalType="modal"` for a normal blocking panel. Preserve
+`isLightDismiss` through the typed `onOpenChange` reason rather than changing
+the drawer to non-modal or alert semantics:
+
+```tsx
+import { OverlayDrawer } from '@fluentui/react-components';
+import type { OverlayDrawerProps } from '@fluentui/react-components';
+
+const allowBackdropDismiss = false;
+const handleOpenChange: OverlayDrawerProps['onOpenChange'] = (event, data) => {
+  if (data.type === 'backdropClick' && !allowBackdropDismiss) {
+    event.preventDefault();
+    return;
+  }
+
+  setIsOpen(data.open);
+};
+
+<OverlayDrawer open={isOpen} modalType="modal" onOpenChange={handleOpenChange}>
+  {children}
+</OverlayDrawer>;
+```
+
+If the v8 `onLightDismissClick` callback has additional side effects, run them
+only when `data.type === 'backdropClick'`.
+
+## Prop Mapping
+
+### PanelType → position + size
+
+| v8 `PanelType`   | v9 `position` | v9 `size`  | Notes                                         |
+| ---------------- | ------------- | ---------- | --------------------------------------------- |
+| `SmallFixedFar`  | `"end"`       | `"small"`  | Default                                       |
+| `SmallFixedNear` | `"start"`     | `"small"`  |                                               |
+| `SmallFluid`     | `"end"`       | `"small"`  | Full height; custom width via CSS             |
+| `Medium`         | `"end"`       | `"medium"` |                                               |
+| `Large`          | `"end"`       | `"large"`  |                                               |
+| `LargeFixed`     | `"end"`       | `"large"`  |                                               |
+| `ExtraLarge`     | `"end"`       | `"full"`   |                                               |
+| `Custom`         | `"end"`       | custom CSS | `style={{ width: '...' }}` on `OverlayDrawer` |
+| `CustomNear`     | `"start"`     | custom CSS |                                               |
+
+### IPanelProps → OverlayDrawerProps
+
+| v8                      | v9                                          | Notes                                        |
+| ----------------------- | ------------------------------------------- | -------------------------------------------- |
+| `isOpen`                | `open`                                      |                                              |
+| `onDismiss`             | `onOpenChange`                              | `(ev, data) => data.open === false` on close |
+| `type`                  | `position` + `size`                         | See table above                              |
+| `headerText`            | `<DrawerHeaderTitle>` children              |                                              |
+| `onRenderHeader`        | `<DrawerHeader>` children                   |                                              |
+| `hasCloseButton`        | Button in `DrawerHeaderTitle` `action` slot | See example above                            |
+| `isBlocking`            | `modalType`                                 | The v8 default (`true`) maps to `"modal"`    |
+| `isLightDismiss`        | `onOpenChange` backdrop branch              | Do not change background interactivity       |
+| `onLightDismissClick`   | `data.type === "backdropClick"`             | Preserve callback effects in that branch     |
+| `isHiddenOnDismiss`     | `unmountOnClose={false}`                    | Keeps drawer content mounted while closed    |
+| `onRenderFooterContent` | `<DrawerFooter>` children                   |                                              |
+| `onRenderBody`          | `<DrawerBody>` children                     |                                              |
+| `onRenderNavigation`    | `<DrawerHeaderNavigation>` children         |                                              |
+| `customWidth`           | `style` or `className` on `OverlayDrawer`   |                                              |
+| `styles`                | `className` + `makeStyles`                  |                                              |
+| `theme`                 | `FluentProvider`                            |                                              |
+| `layerProps.hostId`     | `mountNode`                                 | Maps only the portal host behavior           |
+| `focusTrapZoneProps`    | —                                           | Re-evaluate individual focus requirements    |
+| `componentRef`          | `ref`                                       |                                              |
+
+| v9 `modalType` | v8 equivalent                                      | Behavior                                   |
+| -------------- | -------------------------------------------------- | ------------------------------------------ |
+| `"modal"`      | Default v8 Panel (`isBlocking={true}`)             | Backdrop blocks interaction with the page  |
+| `"non-modal"`  | Only experiences that allow background interaction | No backdrop; content behind is interactive |
+| `"alert"`      | No ordinary Panel equivalent                       | Reserve for genuinely urgent alert dialogs |
+
+`isLightDismiss` controls whether an outside action dismisses the v8 Panel; it
+does not determine whether page content remains interactive. Preserve that
+dismissal behavior through controlled `open` and `onOpenChange` handling without
+mechanically changing `modalType`.
+
+## Accessibility
+
+Unlike `DialogTrigger`, Drawer has no trigger component that automatically
+restores focus. Apply `useRestoreFocusTarget()` to the control that opens the
+drawer and `useRestoreFocusSource()` to the drawer surface:
+
+```tsx
+import { Button, OverlayDrawer, useRestoreFocusSource, useRestoreFocusTarget } from '@fluentui/react-components';
+
+const restoreFocusTargetAttributes = useRestoreFocusTarget();
+const restoreFocusSourceAttributes = useRestoreFocusSource();
+
+<>
+  <Button {...restoreFocusTargetAttributes} onClick={() => setIsOpen(true)}>
+    Open settings
+  </Button>
+  <OverlayDrawer {...restoreFocusSourceAttributes} open={isOpen} onOpenChange={handleOpenChange}>
+    {children}
+  </OverlayDrawer>
+</>;
+```
+
+Use `mountNode` only to select a portal container; it does not replace the full
+v8 `layerProps` configuration. `InlineDrawer` has no backdrop or modal focus
+behavior, so choose it only when the drawer should participate in page layout.

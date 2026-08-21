@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/ProgressIndicator Migration" />
+
+# ProgressIndicator → ProgressBar Migration
+
+- Component renamed: `ProgressIndicator` → `ProgressBar`
+- `percentComplete` prop renamed to `value` (same 0–1 range, `max` defaults to `1`)
+- `label` prop removed → wrap `ProgressBar` in `<Field label="...">`
+- `description` prop removed → use `<Field hint="...">`
+- Indeterminate state: v8 omits `percentComplete`; v9 omits `value`
+- `barHeight` removed → use `thickness` prop
+
+## Examples
+
+### Basic Migration
+
+### Determinate progress
+
+```tsx
+// v8
+import { ProgressIndicator } from '@fluentui/react';
+
+<ProgressIndicator label="Uploading files" description="12 of 100 files" percentComplete={0.12} />;
+```
+
+```tsx
+// v9
+import { Field, ProgressBar } from '@fluentui/react-components';
+
+<Field label="Uploading files" hint="12 of 100 files">
+  <ProgressBar value={0.12} />
+</Field>;
+```
+
+### Indeterminate progress
+
+Basic v8 usage:
+
+```tsx
+<ProgressIndicator label="Loading" />
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Field, ProgressBar } from '@fluentui/react-components';
+
+<Field label="Loading">
+  <ProgressBar />
+</Field>;
+```
+
+Do not render a separate `Text` or `Label` next to `ProgressBar` and assume it
+becomes the accessible name. Keep the bar inside the labeling `Field`, or set
+`aria-label`/`aria-labelledby` directly on `ProgressBar`.
+
+### Without label (aria-label only)
+
+Basic v8 usage:
+
+```tsx
+<ProgressIndicator percentComplete={0.5} ariaLabel="Upload progress" />
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { ProgressBar } from '@fluentui/react-components';
+
+<ProgressBar value={0.5} aria-label="Upload progress" />;
+```
+
+Every determinate and indeterminate ProgressBar must have an accessible name.
+This remains required when surrounding prose already describes the metric.
+
+### Custom max value
+
+```tsx
+// v9 — use max prop when your value range is not 0–1
+import { Field, ProgressBar } from '@fluentui/react-components';
+
+const filesUploaded = 42;
+const totalFiles = 100;
+
+<Field label="Uploading files" hint={`${filesUploaded} of ${totalFiles}`}>
+  <ProgressBar value={filesUploaded} max={totalFiles} />
+</Field>;
+```
+
+### Thickness
+
+```tsx
+// v9 — thin or medium bar
+<ProgressBar value={0.5} thickness="large" />
+// thickness: "medium" (default) | "large"
+```
+
+## Prop Mapping
+
+### IProgressIndicatorProps → ProgressBarProps
+
+| v8                | v9                         | Notes                                                                |
+| ----------------- | -------------------------- | -------------------------------------------------------------------- |
+| `percentComplete` | `value`                    | Same 0–1 range; `max` defaults to `1`                                |
+| `label`           | `<Field label="...">`      | Wrap `ProgressBar` in `Field`                                        |
+| `description`     | `<Field hint="...">`       | `hint` slot on `Field`                                               |
+| `ariaLabel`       | `aria-label`               | Native HTML prop                                                     |
+| `ariaValueText`   | `aria-valuetext`           | Native HTML prop                                                     |
+| `barHeight`       | `thickness`                | `"medium"` \| `"large"`                                              |
+| `progressHidden`  | —                          | Conditionally render the component instead                           |
+| `className`       | `className`                |                                                                      |
+| `styles`          | `className` + `makeStyles` |                                                                      |
+| `theme`           | `FluentProvider`           |                                                                      |
+| `componentRef`    | `ref`                      |                                                                      |
+| —                 | `max`                      | New — custom maximum value (default `1`)                             |
+| —                 | `color`                    | New — `"brand"` (default) \| `"success"` \| `"warning"` \| `"error"` |

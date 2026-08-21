@@ -1,0 +1,235 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/DetailsList Migration" />
+
+# DetailsList / DataGrid Migration
+
+v8 `DetailsList` and v9 `DataGrid` share the same `items` + `columns` concept, but the column definitions
+and rendering are completely restructured.
+
+Choose `Table` for simple read-only tabular content and `DataGrid` when the
+experience needs interactive sorting, selection, or keyboard grid navigation.
+For `ShimmeredDetailsList`, migrate the table behavior separately from its
+loading state and use `Skeleton` while rows are unavailable.
+
+Key shifts:
+
+- Columns are defined with `createTableColumn()` factory, which takes typed render functions instead of string `fieldName` + `onRenderColumn` callbacks
+- The grid body uses a **render-props pattern** — `DataGridBody` / `DataGridRow` children are functions, not arrays
+- Selection uses a `Set` of item keys, not a `Selection` class
+- Sorting is declarative (`sortable` prop + `sortState`) instead of per-column `isSorted` flags
+- `getRowId` prop specifies which field to use as the row key
+- `DataGrid` does not provide the built-in page virtualization used by `DetailsList`
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { DetailsList, IColumn, SelectionMode, Selection } from '@fluentui/react';
+
+interface Item {
+  id: string;
+  name: string;
+  age: number;
+}
+
+const columns: IColumn[] = [
+  {
+    key: 'name',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 100,
+    maxWidth: 200,
+    isSortable: true,
+    onRender: (item: Item) => <strong>{item.name}</strong>,
+  },
+  {
+    key: 'age',
+    name: 'Age',
+    fieldName: 'age',
+    minWidth: 50,
+    maxWidth: 100,
+  },
+];
+
+const selection = new Selection();
+
+<DetailsList
+  items={items}
+  columns={columns}
+  selectionMode={SelectionMode.single}
+  selection={selection}
+  onItemInvoked={handleItemInvoked}
+/>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import {
+  DataGrid,
+  DataGridHeader,
+  DataGridRow,
+  DataGridHeaderCell,
+  DataGridBody,
+  DataGridCell,
+  TableColumnDefinition,
+  TableCellLayout,
+  createTableColumn,
+} from '@fluentui/react-components';
+
+interface Item {
+  id: string;
+  name: string;
+  age: number;
+}
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'name',
+    compare: (a, b) => a.name.localeCompare(b.name),
+    renderHeaderCell: () => 'Name',
+    renderCell: item => (
+      <TableCellLayout>
+        <strong>{item.name}</strong>
+      </TableCellLayout>
+    ),
+  }),
+  createTableColumn<Item>({
+    columnId: 'age',
+    compare: (a, b) => a.age - b.age,
+    renderHeaderCell: () => 'Age',
+    renderCell: item => <TableCellLayout>{item.age}</TableCellLayout>,
+  }),
+];
+
+const isInteractiveTarget = (target: EventTarget) =>
+  target instanceof HTMLElement &&
+  target.closest('a, button, input, select, textarea, [role="button"], [role="link"]') !== null;
+
+<DataGrid
+  items={items}
+  columns={columns}
+  getRowId={item => item.id}
+  selectionMode="single"
+  onSelectionChange={(_, data) => console.log([...data.selectedItems])}
+  sortable
+>
+  <DataGridHeader>
+    <DataGridRow>{({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}</DataGridRow>
+  </DataGridHeader>
+  <DataGridBody<Item>>
+    {({ item, rowId }) => (
+      <DataGridRow<Item>
+        key={rowId}
+        onDoubleClick={event => {
+          if (!event.defaultPrevented && !isInteractiveTarget(event.target)) {
+            handleItemInvoked(item);
+          }
+        }}
+        onKeyDown={event => {
+          if (event.key === 'Enter' && !event.defaultPrevented && !isInteractiveTarget(event.target)) {
+            handleItemInvoked(item);
+          }
+        }}
+      >
+        {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      </DataGridRow>
+    )}
+  </DataGridBody>
+</DataGrid>;
+```
+
+### Sorting
+
+Set `sortable` on `DataGrid`, provide `compare` in each sortable
+`createTableColumn`, and use `sortState` with `onSortChange` when the sort state
+is controlled.
+
+### Multi-select
+
+Use `selectionMode="multiselect"` and store row IDs in `selectedItems`.
+`onSelectionChange` returns the next `Set`; this replaces the v8 `Selection`
+class.
+
+### Column Resizing
+
+Set `resizableColumns` and provide widths through `columnSizingOptions`.
+The option keys must match the column IDs.
+
+### Activation, focus, and keyboard behavior
+
+`onItemInvoked` is an invocation action: v8 invokes it for Enter on the
+selected row and for double-click. Map it to the app's row action and preserve
+both pointer and keyboard invocation; do not reduce it to a single-click
+handler. Ignore handled events and events from nested interactive controls so
+Enter or double-click on a button or link does not also invoke the row.
+
+`onActiveItemChanged` is different: v8 calls it when a row becomes active
+because focus moved there, including keyboard navigation. Track row focus
+(for example, `onFocus` on `DataGridRow`, ignoring focus moves within the same
+row) and call the migrated active-item callback there. `DataGrid` supplies grid
+keyboard navigation; keep the row/cell focus model intact when adding handlers
+and do not make every cell an independent tab stop.
+
+### Stable row identity and virtualization
+
+`DataGrid` falls back to the row index when `getRowId` is omitted. Provide
+`getRowId` whenever rows can sort, filter, insert, delete, page, or refresh.
+The returned ID must be stable for the domain item across those operations.
+Using an array index causes selection and focus to attach to a different item
+after reordering and can corrupt controlled `selectedItems`.
+
+Unlike `DetailsList`, `DataGrid` does not virtualize rows. If the data set
+requires virtualization, compose a virtualizer around the body and preserve
+the grid contract:
+
+- expose the logical row position with one-based `aria-rowindex` and the full
+  logical count where applicable, not only the rendered window;
+- key rows and selection by the same stable `getRowId`;
+- keep the active row mounted or restore focus deliberately as the window
+  scrolls, and scroll keyboard-selected rows into view;
+- preserve DataGrid row/cell roles, selection state, and arrow-key navigation.
+
+Test keyboard traversal, invocation, selection, focus restoration, and
+programmatic scrolling across virtual-window boundaries.
+
+## Prop Mapping
+
+### IColumn → TableColumnDefinition
+
+| v8 `IColumn`           | v9 `createTableColumn` option      | Notes                                       |
+| ---------------------- | ---------------------------------- | ------------------------------------------- |
+| `key`                  | `columnId`                         |                                             |
+| `name`                 | `renderHeaderCell`                 | Return a string or JSX                      |
+| `fieldName`            | `renderCell`                       | Access `item.fieldName` inside `renderCell` |
+| `onRender`             | `renderCell`                       |                                             |
+| `onRenderHeader`       | `renderHeaderCell`                 |                                             |
+| `isSortable` + sort cb | `compare` + `sortable` prop        | `compare` is a typed comparator             |
+| `isSorted`             | `sortState.sortColumn`             | Set via `sortState` prop on `DataGrid`      |
+| `isSortedDescending`   | `sortState.sortDirection`          |                                             |
+| `minWidth`             | `columnSizingOptions[id].minWidth` |                                             |
+| `maxWidth`             | `columnSizingOptions[id].maxWidth` |                                             |
+| `isResizable`          | `resizableColumns` on `DataGrid`   |                                             |
+
+### IDetailsListProps → DataGridProps
+
+| v8                    | v9                                    | Notes                                                         |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------- |
+| `items`               | `items`                               |                                                               |
+| `columns`             | `columns`                             | Different shape — use `createTableColumn`                     |
+| `selectionMode`       | `selectionMode`                       | `"single"` \| `"multiselect"` (string)                        |
+| `selection`           | `selectedItems` + `onSelectionChange` | `Set` of row IDs, not `Selection` class                       |
+| `getKey`              | `getRowId`                            |                                                               |
+| `onItemInvoked`       | App-owned row invocation              | Preserve Enter and double-click semantics                     |
+| `onActiveItemChanged` | Focus/active-row handler              | Fire when focus moves to a row, including keyboard navigation |
+| `onRenderRow`         | Children function of `<DataGridBody>` |                                                               |
+| `onRenderItemColumn`  | `renderCell` in `createTableColumn`   |                                                               |
+| `checkboxVisibility`  | —                                     | No direct equivalent                                          |
+| `groups`              | —                                     | Use `Tree` for grouped/hierarchical data                      |
+| `compact`             | `size="small"`                        |                                                               |
+| `styles`              | `className` + `makeStyles`            |                                                               |
+| `theme`               | `FluentProvider`                      |                                                               |

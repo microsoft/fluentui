@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { Image } from '@fluentui/react-components';
 import { FitDifferences } from './FitDifferences';
 
 <Meta title="Concepts/Migration/from v8/Components/Image Migration" />
@@ -56,10 +55,9 @@ Below is an example of a migration:
 
 ```jsx
 import { useState } from 'react';
-import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@griffel/react';
+import { Image, makeStyles } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   fadeIn400: {
     animationName: {
       from: {
@@ -72,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     animationIterationCount: '1',
     animationDuration: '0.367s',
   },
-}));
+});
 
 const Component = () => {
   const [isLoaded, setLoaded] = useState(false);
@@ -96,8 +94,7 @@ Below is an example showcasing this:
 
 ```jsx
 import { useState } from 'react';
-import { makeStyles } from '@griffel/react';
-import { Image } from '@fluentui/react-image';
+import { Image, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -135,7 +132,9 @@ const Component = () => {
   return (
     <Image
       src="example.jpg"
-      styles={props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } })}
+      styles={props => ({
+        root: { border: '1px solid ' + props.theme.palette.neutralSecondary },
+      })}
     />
   );
 };
@@ -159,7 +158,7 @@ const Component = () => {
 };
 ```
 
-## Props mapping
+## Prop Mapping
 
 The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes.
 
@@ -172,7 +171,7 @@ The table below presents a mapping of props between the v8 and v9 `Image` compon
 | `imageFit`             | `fit`                                                                      |
 | `maximizeFrame`        | `block`.                                                                   |
 | `styles`               | `className`                                                                |
-| `loading`              | Not supported -> use onLoad and onError events                             |
+| `loading`              | `loading`                                                                  |
 | `onLoadingStateChange` | Not supported -> use onLoad and onError events                             |
 | `shouldFadeIn`         | Not supported -> implement animation via makeStyles and className + onLoad |
 | `shouldStartVisible`   | Not supported -> use onLoad and onError events                             |
