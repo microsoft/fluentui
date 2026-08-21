@@ -7,6 +7,9 @@ export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots
 export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
 export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
 
+export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
+export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
+
 export { renderTooltip, Tooltip, tooltipClassNames, useTooltip, useTooltipStyles } from './tooltip';
 export type {
   OnVisibleChangeData,

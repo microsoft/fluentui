@@ -15,12 +15,16 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
 import { LabelSlots } from '@fluentui/react-headless-components-preview/label';
 import type { LabelState as LabelState_2 } from '@fluentui/react-headless-components-preview/label';
+import type { LinkProps as LinkProps_2 } from '@fluentui/react-headless-components-preview/link';
+import { LinkSlots } from '@fluentui/react-headless-components-preview/link';
+import type { LinkState as LinkState_2 } from '@fluentui/react-headless-components-preview/link';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
+import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -37,6 +41,7 @@ import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview
 import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
+import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -122,6 +127,28 @@ export type LabelState = LabelState_2 & Required<Pick<LabelProps, 'size' | 'weig
 // @public
 export type LabelWeight = 'regular' | 'semibold';
 
+// @public
+export const Link: ForwardRefComponent<LinkProps>;
+
+// @public
+export type LinkAppearance = 'default' | 'subtle';
+
+// @public
+export const linkClassNames: {
+    root: string;
+};
+
+// @public
+export type LinkProps = LinkProps_2 & {
+    appearance?: LinkAppearance;
+    inline?: boolean;
+};
+
+export { LinkSlots }
+
+// @public
+export type LinkState = LinkState_2 & Required<Pick<LinkProps, 'appearance' | 'inline'>>;
+
 export { OnVisibleChangeData }
 
 export { Provider }
@@ -131,6 +158,8 @@ export { renderButton }
 export { renderDivider }
 
 export { renderLabel }
+
+export { renderLink }
 
 export { renderProvider }
 
@@ -206,6 +235,11 @@ export { useLabel }
 
 // @public
 export const useLabelStyles: (state: LabelState) => LabelState;
+
+export { useLink }
+
+// @public
+export const useLinkStyles: (state: LinkState) => LinkState;
 
 export { useProvider }
 

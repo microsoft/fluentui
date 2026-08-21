@@ -81,6 +81,16 @@
         "default": "./lib-commonjs/label.cjs"
       }
     },
+    "./link": {
+      "import": {
+        "types": "./dist/link.d.ts",
+        "default": "./lib/link.js"
+      },
+      "require": {
+        "types": "./dist/link.d.cts",
+        "default": "./lib-commonjs/link.cjs"
+      }
+    },
     "./provider": {
       "import": {
         "types": "./dist/provider.d.ts",
