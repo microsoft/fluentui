@@ -4517,13 +4517,13 @@ __metadata:
 
 "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::locator=%40fluentui%2Ffluentui-repo%40workspace%3A.":
   version: 2.0.337
-  resolution: "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz#../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::hash=be784d&locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
+  resolution: "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz#../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::hash=7ae61c&locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
   dependencies:
     "@griffel/react": "npm:^1.6.1"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/aa822345bf3d667e463eff633fed16cc5a906ec083a87e8068ba9f37487b168fb43d305fa62207a07adb84905257eb09629d37a1960e200138e8c97ef6a009ec
+  checksum: 10c0/40161a31aea211780cb49c61626b1d424c3d8e1100edb1b410bbc30ea4d50e9285ec349388e5edbbfc4f4bced751abb767c3b1d74b4b1ca68931ee9800d58962
   languageName: node
   linkType: hard
 
