@@ -160,3 +160,8 @@ gulp-cache
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 .playwright-cli
+
+# session scratch space (never committed)
+.scratch/
+graphify-out/
+packages/graphify-out/
