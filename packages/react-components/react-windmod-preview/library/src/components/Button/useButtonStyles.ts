@@ -30,8 +30,11 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     ...state.root,
     'data-size': size,
     'data-empty': !state.root.children || undefined,
-    // Module class FIRST (a group marker as classList[0] breaks nwsapi's :scope polyfill),
-    // consumer className LAST so consumer overrides win.
+    // Class order: module class, group marker, look classes, consumer className. The
+    // marker contains a '/' (Tailwind named-group syntax) and must never be classList[0]:
+    // jsdom's selector engine (nwsapi) builds its :scope polyfill from the first class
+    // without escaping, so a leading '/' class makes element.matches() throw in tests.
+    // Consumer-last is convention — overrides win via cascade layers, not class order.
     className: clsx(styles.root, buttonClassNames.root, styles[appearance], styles[shape], state.root.className),
   };
 
