@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Button, ThemeProvider } from '@fluentui/react-windmod-preview';
 import type { ButtonProps } from '@fluentui/react-windmod-preview';
 import { Button as GriffelButton, FluentProvider, webLightTheme } from '@fluentui/react-components';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon as griffelBundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
+
+// Each side bundles with its own mechanism: headless (data-variant) vs Griffel classic.
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const GriffelCalendarMonth = griffelBundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const appearances = ['secondary', 'primary', 'outline', 'subtle', 'transparent'] as const;
 const sizes = ['small', 'medium', 'large'] as const;
@@ -47,23 +52,23 @@ export const GriffelComparison = (): React.ReactNode => {
       <div className={styles.label}>with icon</div>
       <div>
         <ThemeProvider>
-          <Button icon={<CalendarMonthRegular />}>Button</Button>
+          <Button icon={<CalendarMonth />}>Button</Button>
         </ThemeProvider>
       </div>
       <div>
         <FluentProvider theme={webLightTheme}>
-          <GriffelButton icon={<CalendarMonthRegular />}>Button</GriffelButton>
+          <GriffelButton icon={<GriffelCalendarMonth />}>Button</GriffelButton>
         </FluentProvider>
       </div>
       <div className={styles.label}>icon only</div>
       <div>
         <ThemeProvider>
-          <Button icon={<CalendarMonthRegular />} aria-label="Calendar" />
+          <Button icon={<CalendarMonth />} aria-label="Calendar" />
         </ThemeProvider>
       </div>
       <div>
         <FluentProvider theme={webLightTheme}>
-          <GriffelButton icon={<CalendarMonthRegular />} aria-label="Calendar" />
+          <GriffelButton icon={<GriffelCalendarMonth />} aria-label="Calendar" />
         </FluentProvider>
       </div>
     </div>

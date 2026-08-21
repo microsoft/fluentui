@@ -4,7 +4,7 @@
  * `@utility` on purpose: `@apply` inlines the declarations at the call site inside the
  * caller's `fui.*` layer — nothing lands in Tailwind's `utilities` layer, which would
  * outrank every component layer. Declarations only; the caller supplies the selector via
- * the `focus-visible-fui` / `focus-within-fui` variants.
+ * the `focus-visible` / `focus-within` variants.
  *
  * Parameterisation: the `--fui-focus-*` custom properties are knobs with `var()`
  * fallbacks reproducing the compiled Griffel defaults. Each utility resets its knobs to

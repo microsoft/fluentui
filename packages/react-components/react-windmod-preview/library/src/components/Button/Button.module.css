@@ -35,13 +35,13 @@
       }
     }
 
-    @variant focus-visible-fui {
+    @variant focus-visible {
       @apply fui-focus-ring;
     }
 
     /* Mozilla BugID 1857642 */
     @supports (-moz-appearance: button) {
-      @variant focus-visible-fui {
+      @variant focus-visible {
         box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
       }
     }
@@ -236,7 +236,7 @@
       }
     }
 
-    @variant focus-visible-fui {
+    @variant focus-visible {
       @variant size-small {
         @apply rounded-small;
       }
@@ -274,7 +274,7 @@
       }
     }
 
-    @variant focus-visible-fui {
+    @variant focus-visible {
       @apply border-stroke-focus-2;
 
       box-shadow:
@@ -293,7 +293,7 @@
 
     /* Mozilla BugID 1857642 */
     @supports (-moz-appearance: button) {
-      @variant focus-visible-fui {
+      @variant focus-visible {
         box-shadow:
           var(--shadow-2),
           0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
@@ -351,7 +351,7 @@
   .circular {
     @apply rounded-circular;
 
-    @variant focus-visible-fui {
+    @variant focus-visible {
       @apply rounded-circular;
     }
   }
@@ -359,7 +359,7 @@
   .square {
     @apply rounded-none;
 
-    @variant focus-visible-fui {
+    @variant focus-visible {
       @apply rounded-none;
     }
   }
