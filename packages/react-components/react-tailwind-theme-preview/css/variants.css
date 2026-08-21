@@ -7,7 +7,8 @@
  * `group-<variant>/<name>` automatically, so every entry composes with named groups.
  * An ancestor-form entry (`:where([x]) &`) silently stops group-composing — don't add
  * one. At-rule variants (`forced-colors`) cannot take a group prefix; nest the group
- * variant inside them instead.
+ * variant inside them instead. No union (-or-) entries: comma-separate variants at
+ * the call site (@variant hover, focus { … }).
  */
 
 /* direction — computed direction, correct under nesting (DECISIONS.md D5) */
@@ -33,22 +34,17 @@
  * axis, and InlineDrawer / OverlayDrawer branch on all three values independently. It is
  * also the reason Persona's text placement got its own `data-text-position` further down —
  * a generic `data-position` would have been ambiguous on a component that has both.
- *
- * `position-start-or-end` is the inline-axis pair the two drawers spell as one slice
- * (`[data-position='start'], [data-position='end']`) — a union, hence the `-or-`.
  */
 @custom-variant position-start (&:where([data-position='start']));
 @custom-variant position-end (&:where([data-position='end']));
 @custom-variant position-bottom (&:where([data-position='bottom']));
-@custom-variant position-start-or-end (&:where([data-position='start'], [data-position='end']));
 
 /*
  * Anchored-surface placement — the headless positioning hook stamps `data-placement`
  * ON the positioned surface (logical vocabulary: above|below|before|after, with
  * -start/-end (inline) or -top/-bottom (block) alignment suffixes) and keeps it in sync
  * with the browser-resolved fallback. Prefix variants key the main axis; suffix variants
- * key the alignment; the two `-centered` forms name the suffix-less (centered) cases per
- * axis, for cross-axis rules that differ between horizontal and vertical placements.
+ * key the alignment; the `-centered` singles name the exact suffix-less values.
  */
 @custom-variant placement-above (&:where([data-placement^='above']));
 @custom-variant placement-below (&:where([data-placement^='below']));
@@ -58,8 +54,10 @@
 @custom-variant placement-end (&:where([data-placement$='-end']));
 @custom-variant placement-top (&:where([data-placement$='-top']));
 @custom-variant placement-bottom (&:where([data-placement$='-bottom']));
-@custom-variant placement-centered-inline (&:where([data-placement='above'], [data-placement='below']));
-@custom-variant placement-centered-block (&:where([data-placement='before'], [data-placement='after']));
+@custom-variant placement-above-centered (&:where([data-placement='above']));
+@custom-variant placement-below-centered (&:where([data-placement='below']));
+@custom-variant placement-before-centered (&:where([data-placement='before']));
+@custom-variant placement-after-centered (&:where([data-placement='after']));
 
 /* Glyph variant — stamped by @fluentui/react-icons/headless bundleIcon on each glyph. */
 @custom-variant variant-filled (&:where([data-variant='filled']));
@@ -76,18 +74,13 @@
  * knows.
  *
  * The four singles are `DrawerScrollState`'s complete union
- * (react-drawer shared/DrawerBase.types.ts). Only the complement and the two `-or-` unions
- * carry rules today; an unreferenced variant emits nothing.
+ * (react-drawer shared/DrawerBase.types.ts). An unreferenced variant emits nothing.
  */
 @custom-variant scroll-state-none (&:where([data-scroll-state='none']));
 @custom-variant scroll-state-top (&:where([data-scroll-state='top']));
 @custom-variant scroll-state-middle (&:where([data-scroll-state='middle']));
 @custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
 @custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
-@custom-variant scroll-state-middle-or-top (&:where([data-scroll-state='middle'], [data-scroll-state='top']));
-@custom-variant scroll-state-middle-or-bottom (
-  &:where([data-scroll-state='middle'], [data-scroll-state='bottom'])
-);
 
 /* generic states (native + data- fallbacks) */
 @custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
@@ -174,18 +167,6 @@
 @custom-variant size-large (&:where([data-size='large']));
 @custom-variant size-extra-large (&:where([data-size='extra-large']));
 @custom-variant size-huge (&:where([data-size='huge']));
-
-/*
- * Threshold form of the scale above — "at or below `small`". Badge's `smallToTiny`
- * (`size === 'small' || 'extra-small' || 'tiny'`) gates two slices: the caption2Strong
- * typography step and the `rounded` shape's smaller corner radius. Expressed as ONE
- * variant rather than three duplicated blocks so the slice keeps its 1:1 mapping back to
- * the Griffel source. Generalises safely: a component whose scale stops at `small` still
- * matches only `size-small`.
- */
-@custom-variant size-small-or-below (
-  &:where([data-size='small'], [data-size='extra-small'], [data-size='tiny'])
-);
 
 /*
  * Numeric data-size values (Avatar/Skeleton pixel sizes, Text's typography ramp) get NO

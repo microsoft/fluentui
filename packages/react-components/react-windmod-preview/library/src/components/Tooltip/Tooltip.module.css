@@ -75,11 +75,11 @@
     }
 
     /* Cross axis: centered when suffix-less, near-edge inset when aligned. */
-    @variant group-placement-centered-inline/fui-tooltip {
+    @variant group-placement-above-centered/fui-tooltip, group-placement-below-centered/fui-tooltip {
       @apply inset-x-0 mx-auto;
     }
 
-    @variant group-placement-centered-block/fui-tooltip {
+    @variant group-placement-before-centered/fui-tooltip, group-placement-after-centered/fui-tooltip {
       @apply inset-y-0 my-auto;
     }
 
