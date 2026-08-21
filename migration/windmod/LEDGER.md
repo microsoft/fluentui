@@ -46,6 +46,12 @@ Status flow: `planned` → `pilot` → `audited` → `converted` → `validated`
 - Upstream tactical-edit candidate: headless Tooltip arrow has no
   slot/className hook (arrowRef exists, nothing applies a class) — windmod must
   style the `[data-arrow]` child via descendant selector until then.
+- Upstream icons proposal: stamp `data-fui-icon-variant="filled|regular"` in
+  bundleIcon so glyph-swap CSS can target attributes instead of the public
+  `fui-Icon-*` classes (icons live in a separate repo — proposal, not a
+  tactical edit).
+- Optional headless edit if wanted: emit `data-appearance` on Button so
+  appearance-conditional icon colors can ride named-group variants too.
 - Story convention: ONE export per `*.stories.tsx`, re-exported through
   `index.stories.tsx` — the export-to-sandbox addon injects `fullSource` only
   on the last export otherwise (docs pages error with 'issues with data').
