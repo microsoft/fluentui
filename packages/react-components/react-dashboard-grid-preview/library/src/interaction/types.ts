@@ -1,9 +1,4 @@
 import type {
-  ComponentProps,
-  ComponentState,
-  Slot,
-} from '@fluentui/react-utilities';
-import type {
   DashboardGridCellMetrics as EngineCellMetrics,
   DashboardGridEngineSnapshot as EngineSnapshot,
   DashboardGridGeometryChange as EngineGeometryChange,
@@ -18,6 +13,9 @@ import type {
 export type DashboardGridDirection = 'ltr' | 'rtl';
 
 export type DashboardGridResizeEdge = 'n' | 'e' | 's' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
+
+/** Normalized pointer input kinds used by provider-scoped interaction sessions. */
+export type DashboardGridPointerType = 'mouse' | 'touch' | 'pen' | 'keyboard' | 'unknown';
 
 export type DashboardGridRect = EngineRect;
 export type DashboardGridPixelRect = EnginePixelRect;
@@ -68,11 +66,24 @@ export interface DashboardGridInteractionStore {
 
 export type DashboardGridInteractionOperation = 'drag' | 'resize' | 'external' | 'keyboard';
 
+/** User input channels emitted with interaction intents. */
+export type DashboardGridInteractionInput = 'pointer' | 'keyboard';
+
+/** Intent names emitted by the interaction coordinator. */
+export type DashboardGridInteractionIntentType =
+  | 'start'
+  | 'update'
+  | 'rotate'
+  | 'target'
+  | 'stop'
+  | 'cancel'
+  | 'rejected';
+
 export type DashboardGridInteractionPhase = 'armed' | 'active' | 'committing' | 'cancelled';
 
 export type DashboardGridPointerIdentity = {
   pointerId: number;
-  pointerType: string;
+  pointerType: DashboardGridPointerType;
   isPrimary: boolean;
   button: number;
 };
@@ -122,7 +133,7 @@ export type DashboardGridPointerSession = {
   currentClientPixelRect?: DashboardGridPixelRect;
   lastAcceptedRect?: DashboardGridRect;
   rejectionReason?: DashboardGridRejectedReason;
-  sourceInteractionClosed?: boolean;
+  sourceInteractionClosed: boolean;
   focusReturn?: DashboardGridFocusReturn;
 };
 
@@ -134,6 +145,7 @@ export type DashboardGridKeyboardSession = {
   sourceGridId: string;
   targetGridId: string;
   itemId: string;
+  resizeEdge?: DashboardGridResizeEdge;
   originRect: DashboardGridRect;
   lastAcceptedRect: DashboardGridRect;
   focusReturn?: DashboardGridFocusReturn;
@@ -217,42 +229,10 @@ export type DashboardGridDropZoneVisualState = {
   reason?: DashboardGridRejectedReason;
 };
 
-export type DashboardGridDragSourceSlots = {
-  root: Slot<'div'>;
-  preview?: Slot<'div'>;
-};
-
-export type DashboardGridDragSourceProps = ComponentProps<DashboardGridDragSourceSlots> & {
-  id: string;
-  descriptor: DashboardGridExternalItemDescriptor | (() => DashboardGridExternalItemDescriptor);
-  label?: string;
-  disabled?: boolean;
-  onKeyboardActivate?: (
-    registration: DashboardGridDragSourceRegistration,
-    event: KeyboardEvent,
-  ) => void;
-};
-
-export type DashboardGridDragSourceState = ComponentState<DashboardGridDragSourceSlots>;
-
-export type DashboardGridDropZoneSlots = {
-  root: Slot<'div'>;
-  indicator?: Slot<'div'>;
-};
-
-export type DashboardGridDropZoneProps = ComponentProps<DashboardGridDropZoneSlots> & {
-  id: string;
-  gridId?: string;
-  kind?: DashboardGridDropZoneKind;
-  label?: string;
-  disabled?: boolean;
-  accepts?: boolean | ((context: DashboardGridDropAcceptanceContext) => boolean);
-};
-
-export type DashboardGridDropZoneState = ComponentState<DashboardGridDropZoneSlots>;
+export type DashboardGridTransferOperation = 'drag' | 'external';
 
 export type DashboardGridTransferIntent = {
-  operation: 'drag' | 'external';
+  operation: DashboardGridTransferOperation;
   sourceGridId?: string;
   targetGridId?: string;
   itemId?: string;
@@ -273,23 +253,41 @@ export type DashboardGridNestingIntent = {
 };
 
 export type DashboardGridTransferResult =
-  | { status: 'accepted'; targetGridId?: string; rect?: DashboardGridRect }
+  | {
+      status: 'accepted';
+      targetGridId?: string;
+      rect?: DashboardGridRect;
+      /** Dispatches committed source and target layout notifications after stop. */
+      finalize?: () => void | Promise<void>;
+    }
   | { status: 'rejected'; reason: DashboardGridRejectedReason };
+
+export type DashboardGridPreparedTransferResult =
+  | (Extract<DashboardGridTransferResult, { status: 'accepted' }> & {
+      finalize: () => void | Promise<void>;
+    })
+  | Extract<DashboardGridTransferResult, { status: 'rejected' }>;
 
 export interface DashboardGridProviderInteractionRegistry {
   preflightTransfer?(intent: DashboardGridTransferIntent): DashboardGridTransferResult;
-  transfer?(intent: DashboardGridTransferIntent): DashboardGridTransferResult | Promise<DashboardGridTransferResult>;
-  remove?(intent: DashboardGridTransferIntent): DashboardGridTransferResult | Promise<DashboardGridTransferResult>;
-  drop?(intent: DashboardGridTransferIntent): DashboardGridTransferResult | Promise<DashboardGridTransferResult>;
+  transfer?(
+    intent: DashboardGridTransferIntent,
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
+  remove?(
+    intent: DashboardGridTransferIntent,
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
+  drop?(
+    intent: DashboardGridTransferIntent,
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
   requestNesting?(
     intent: DashboardGridNestingIntent,
-  ): DashboardGridTransferResult | Promise<DashboardGridTransferResult>;
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
   cancel?(session: DashboardGridInteractionSession): void;
 }
 
 export type DashboardGridInteractionIntent = {
   kind?: DashboardGridInteractionOperation;
-  input?: 'pointer' | 'keyboard';
+  input?: DashboardGridInteractionInput;
 } & (
   | {
       type: 'start';
@@ -350,6 +348,8 @@ export type DashboardGridInteractionIntent = {
 
 export interface DashboardGridInteractionEventQueue {
   enqueue(intent: DashboardGridInteractionIntent): void;
+  /** Flushes queued interaction events, optionally scoped to a provider grid. */
+  flush?(gridId?: string): void;
 }
 
 export type DashboardGridCoordinatorOptions = {
@@ -391,6 +391,7 @@ export type DashboardGridUpdatePointerRequest = {
 export type DashboardGridBeginKeyboardRequest = {
   gridId: string;
   itemId: string;
+  resizeEdge?: DashboardGridResizeEdge;
   focusReturn?: DashboardGridFocusReturn;
   nativeEvent?: Event;
 };

@@ -7,8 +7,16 @@ export type DashboardGridSemanticRole = 'group' | 'list' | 'listitem' | 'grid' |
 export type DashboardGridSpatialDescriptionFormatter = (rect: DashboardGridRect) => string;
 
 export type DashboardGridAriaStrings = {
+  /** Formats the localized item position and span description. */
   formatPosition?: DashboardGridSpatialDescriptionFormatter;
+  /** Formats the localized accessible name for a resize handle. */
   formatResizeHandle?: (edge: DashboardGridResizeEdge, itemLabel?: string) => string;
+  /** Formats localized keyboard instructions for a resize handle. */
+  formatResizeHandleInstructions?: (
+    edge: DashboardGridResizeEdge,
+    itemLabel?: string,
+    active?: boolean,
+  ) => string;
 };
 
 export type DashboardGridSemanticProjection = {
@@ -21,6 +29,15 @@ const defaultFormatPosition: DashboardGridSpatialDescriptionFormatter = rect =>
 
 const defaultFormatResizeHandle = (edge: DashboardGridResizeEdge, itemLabel?: string): string =>
   `Resize ${itemLabel ? `${itemLabel} ` : ''}${edge}`;
+
+const defaultFormatResizeHandleInstructions = (
+  _edge: DashboardGridResizeEdge,
+  _itemLabel?: string,
+  active?: boolean,
+): string =>
+  active
+    ? 'Use arrow keys to resize, Enter or Space to commit, or Escape to cancel.'
+    : 'Press Enter, Space, or F2 to start resizing. Use arrow keys to resize, Enter or Space to commit, or Escape to cancel.';
 
 const warn = (message: string, onWarning?: (message: string) => void) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -148,13 +165,20 @@ export const getDashboardGridResizeHandleAriaProps = (options: {
   itemLabel?: string;
   strings?: DashboardGridAriaStrings;
   disabled?: boolean;
+  active?: boolean;
 }): React.ButtonHTMLAttributes<HTMLButtonElement> => {
   const props: React.ButtonHTMLAttributes<HTMLButtonElement> = {
     type: 'button',
     'aria-label': (options.strings?.formatResizeHandle ?? defaultFormatResizeHandle)(options.edge, options.itemLabel),
-    'aria-keyshortcuts': 'ArrowLeft ArrowRight ArrowUp ArrowDown Escape',
+    'aria-keyshortcuts': options.active
+      ? 'ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Escape'
+      : 'Enter Space F2',
+    'aria-pressed': options.active ?? false,
     disabled: options.disabled,
   };
+  (props as Record<string, unknown>)['aria-description'] = (
+    options.strings?.formatResizeHandleInstructions ?? defaultFormatResizeHandleInstructions
+  )(options.edge, options.itemLabel, options.active);
   (props as Record<string, unknown>)[dashboardGridDataAttributes.resizeHandle] = options.edge;
   return props;
 };

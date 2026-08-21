@@ -3,6 +3,7 @@ import { act, render, waitFor } from '@testing-library/react';
 import type { DashboardGridHandle } from '../../hooks/useDashboardGrid';
 import { DashboardGrid } from '../DashboardGrid/DashboardGrid';
 import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
+import { DashboardGridItem } from './DashboardGridItem';
 import { createDashboardGridPointerDrag } from '../../interaction/pointerDrag';
 
 const mockDestroyDrag = jest.fn();
@@ -68,5 +69,27 @@ describe('DashboardGridItem interaction lifecycle', () => {
     expect(mockDestroyDrag.mock.calls.length).toBe(initialDragCleanupCount + 1);
     expect(mockDestroyResize.mock.calls.length).toBe(initialResizeCleanupCount + 1);
     expect(mockCancelKeyboard.mock.calls.length).toBe(initialKeyboardCleanupCount + 1);
+  });
+
+  it('keeps a declarative item registered after its store definition appears', async () => {
+    const imperativeRef = React.createRef<DashboardGridHandle>();
+    render(
+      <DashboardGridProvider targetDocument={document}>
+        <DashboardGrid aria-label="Dashboard" imperativeRef={imperativeRef}>
+          <DashboardGridItem id="declarative">
+            <span>Declarative content</span>
+          </DashboardGridItem>
+        </DashboardGrid>
+      </DashboardGridProvider>,
+    );
+
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(imperativeRef.current?.getItems()).toEqual([
+      expect.objectContaining({ id: 'declarative' }),
+    ]);
   });
 });

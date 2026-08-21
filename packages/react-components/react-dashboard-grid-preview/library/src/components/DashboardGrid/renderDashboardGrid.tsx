@@ -17,7 +17,7 @@ const renderSurfaceChildren = (state: DashboardGridInternalState) => {
 
   if (state.modelItemContents) {
     return state.store.getSnapshot().items.map((item, index) => (
-      <DashboardGridItem key={item.id} id={item.id}>
+      <DashboardGridItem key={item.id} id={item.id} modelOwned_unstable>
         {state.modelItemContents?.[index]}
       </DashboardGridItem>
     ));

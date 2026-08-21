@@ -9,47 +9,30 @@ import {
   dashboardGridPixelRectToRawRect,
   type DashboardGridDomGeometrySession,
 } from './domGeometry';
+import {
+  dashboardGridPixelRectToClientRect,
+  createDashboardGridClickSuppressor,
+  createDashboardGridTouchLeaveController,
+  getDashboardGridDeepActiveElement,
+  getDashboardGridManhattanDistance,
+  normalizeDashboardGridPointerType,
+  releaseDashboardGridPointerCapture,
+  updateDashboardGridPointerCapture,
+} from './pointerSession';
 import type {
   DashboardGridInteractionCoordinator,
   DashboardGridPixelRect,
   DashboardGridPoint,
+  DashboardGridPointerType,
 } from './types';
 
 export const DASHBOARD_GRID_DRAG_THRESHOLD = 3;
-export const DASHBOARD_GRID_TOUCH_LEAVE_DELAY = 10;
+export { DASHBOARD_GRID_TOUCH_LEAVE_DELAY } from './pointerSession';
 
 export type DashboardGridPointerDragController = {
   onPointerDown(event: PointerEvent): void;
   cancel(event?: Event): void;
   destroy(): void;
-};
-
-const getDeepActiveElement = (targetDocument: Document): HTMLElement | null => {
-  let activeElement = targetDocument.activeElement;
-  while (activeElement && 'shadowRoot' in activeElement && activeElement.shadowRoot?.activeElement) {
-    activeElement = activeElement.shadowRoot.activeElement;
-  }
-
-  return activeElement && 'focus' in activeElement ? (activeElement as HTMLElement) : null;
-};
-
-const getManhattanDistance = (start: DashboardGridPoint, current: DashboardGridPoint): number =>
-  Math.abs(current.clientX - start.clientX) + Math.abs(current.clientY - start.clientY);
-
-const toClientRect = (
-  rect: DashboardGridPixelRect,
-): DOMRectReadOnly => {
-  return {
-    x: rect.x,
-    y: rect.y,
-    top: rect.y,
-    bottom: rect.y + rect.height,
-    left: rect.x,
-    right: rect.x + rect.width,
-    width: rect.width,
-    height: rect.height,
-    toJSON: () => ({}),
-  };
 };
 
 export const createDashboardGridPointerDrag = (options: {
@@ -65,27 +48,22 @@ export const createDashboardGridPointerDrag = (options: {
   onTouchTargetChange?: (inside: boolean) => void;
 }): DashboardGridPointerDragController => {
   const targetWindow = options.targetDocument.defaultView;
+  const clickSuppressor = createDashboardGridClickSuppressor(options.targetDocument);
+  const touchLeave = createDashboardGridTouchLeaveController({
+    targetDocument: options.targetDocument,
+    onTargetChange: options.onTouchTargetChange,
+  });
   let pointerId: number | undefined;
-  let pointerType = '';
+  let pointerType: DashboardGridPointerType = 'unknown';
   let startPoint: DashboardGridPoint | undefined;
   let latestEvent: PointerEvent | undefined;
   let active = false;
   let frame = 0;
-  let leaveTimer = 0;
-  let suppressClickTimer = 0;
-  let suppressClickListener: ((event: MouseEvent) => void) | undefined;
   let currentPixelRect: DashboardGridPixelRect | undefined;
   let latestPixelRect: DashboardGridPixelRect | undefined;
   let autoScroll: ReturnType<typeof createDashboardGridAutoScroll> | undefined;
   let destroyed = false;
   let disposeRequested = false;
-
-  const clearLeaveTimer = () => {
-    if (leaveTimer && targetWindow) {
-      targetWindow.clearTimeout(leaveTimer);
-    }
-    leaveTimer = 0;
-  };
 
   const removeDocumentListeners = () => {
     options.targetDocument.removeEventListener('pointermove', onPointerMove, true);
@@ -103,55 +81,18 @@ export const createDashboardGridPointerDrag = (options: {
       targetWindow.cancelAnimationFrame(frame);
     }
     frame = 0;
-    clearLeaveTimer();
+    touchLeave.cancel();
     autoScroll?.destroy();
     autoScroll = undefined;
     removeDocumentListeners();
-    if (pointerId !== undefined && options.itemElement.hasPointerCapture?.(pointerId)) {
-      try {
-        options.itemElement.releasePointerCapture(pointerId);
-      } catch {
-        // Capture may have ended with pointerup or pointercancel.
-      }
-    }
+    releaseDashboardGridPointerCapture(options.itemElement, pointerId);
     pointerId = undefined;
-    pointerType = '';
+    pointerType = 'unknown';
     startPoint = undefined;
     latestEvent = undefined;
     currentPixelRect = undefined;
     latestPixelRect = undefined;
     active = false;
-  };
-
-  const suppressNextClick = () => {
-    if (!targetWindow) {
-      return;
-    }
-
-    if (suppressClickListener) {
-      options.targetDocument.removeEventListener('click', suppressClickListener, true);
-    }
-    suppressClickListener = (event: MouseEvent) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      if (suppressClickListener) {
-        options.targetDocument.removeEventListener('click', suppressClickListener, true);
-        suppressClickListener = undefined;
-      }
-      if (suppressClickTimer) {
-        targetWindow.clearTimeout(suppressClickTimer);
-        suppressClickTimer = 0;
-      }
-    };
-
-    options.targetDocument.addEventListener('click', suppressClickListener, true);
-    suppressClickTimer = targetWindow.setTimeout(() => {
-      if (suppressClickListener) {
-        options.targetDocument.removeEventListener('click', suppressClickListener, true);
-        suppressClickListener = undefined;
-      }
-      suppressClickTimer = 0;
-    }, 500);
   };
 
   const finalizeDestroy = () => {
@@ -163,13 +104,7 @@ export const createDashboardGridPointerDrag = (options: {
       options.coordinator.cancel();
     }
     reset();
-    if (suppressClickTimer && targetWindow) {
-      targetWindow.clearTimeout(suppressClickTimer);
-    }
-    if (suppressClickListener) {
-      options.targetDocument.removeEventListener('click', suppressClickListener, true);
-      suppressClickListener = undefined;
-    }
+    clickSuppressor.dispose();
   };
 
   const processPointerMove = (event: PointerEvent) => {
@@ -200,7 +135,7 @@ export const createDashboardGridPointerDrag = (options: {
     const clientPixelRect = options.geometry.localRectToClientRect(nextPixelRect);
 
     if (!active) {
-      if (getManhattanDistance(startPoint, point) <= DASHBOARD_GRID_DRAG_THRESHOLD) {
+      if (getDashboardGridManhattanDistance(startPoint, point) <= DASHBOARD_GRID_DRAG_THRESHOLD) {
         return;
       }
 
@@ -215,7 +150,9 @@ export const createDashboardGridPointerDrag = (options: {
           targetDocument: options.targetDocument,
           scrollElement,
           getActiveRect: () =>
-            toClientRect(options.geometry.localRectToClientRect(latestPixelRect ?? nextPixelRect)),
+            dashboardGridPixelRectToClientRect(
+              options.geometry.localRectToClientRect(latestPixelRect ?? nextPixelRect),
+            ),
           onScroll: () => {
             options.geometry.invalidate();
             options.coordinator.invalidateGeometry(options.coordinator.getSession()?.targetGridId);
@@ -274,7 +211,7 @@ export const createDashboardGridPointerDrag = (options: {
       return;
     }
 
-    clearLeaveTimer();
+    touchLeave.cancel();
     if (frame && targetWindow) {
       targetWindow.cancelAnimationFrame(frame);
       frame = 0;
@@ -283,7 +220,7 @@ export const createDashboardGridPointerDrag = (options: {
     processPointerMove(event);
 
     if (active) {
-      suppressNextClick();
+      clickSuppressor.suppressNext();
       void options.coordinator.commit(event);
     } else {
       options.coordinator.cancel(event);
@@ -306,28 +243,11 @@ export const createDashboardGridPointerDrag = (options: {
   }
 
   function onPointerOut(event: PointerEvent) {
-    if (
-      event.pointerId !== pointerId ||
-      (pointerType !== 'touch' && pointerType !== 'pen') ||
-      !targetWindow
-    ) {
-      return;
-    }
-
-    clearLeaveTimer();
-    leaveTimer = targetWindow.setTimeout(() => {
-      leaveTimer = 0;
-      options.onTouchTargetChange?.(false);
-    }, DASHBOARD_GRID_TOUCH_LEAVE_DELAY);
+    touchLeave.onPointerOut(event, pointerId, pointerType);
   }
 
   function onPointerOver(event: PointerEvent) {
-    if (event.pointerId !== pointerId || (pointerType !== 'touch' && pointerType !== 'pen')) {
-      return;
-    }
-
-    clearLeaveTimer();
-    options.onTouchTargetChange?.(true);
+    touchLeave.onPointerOver(event, pointerId, pointerType);
   }
 
   function onKeyDown(event: KeyboardEvent) {
@@ -373,7 +293,7 @@ export const createDashboardGridPointerDrag = (options: {
       operation: 'drag',
       pointer: {
         pointerId: event.pointerId,
-        pointerType: event.pointerType,
+        pointerType: normalizeDashboardGridPointerType(event.pointerType),
         isPrimary: event.isPrimary,
         button: event.button,
       },
@@ -384,7 +304,7 @@ export const createDashboardGridPointerDrag = (options: {
       itemId: options.itemId,
       ownerElement: options.itemElement,
       focusReturn: {
-        element: getDeepActiveElement(options.targetDocument),
+        element: getDashboardGridDeepActiveElement(options.targetDocument),
         gridId: options.gridId,
         itemId: options.itemId,
       },
@@ -395,7 +315,7 @@ export const createDashboardGridPointerDrag = (options: {
     }
 
     pointerId = event.pointerId;
-    pointerType = event.pointerType;
+    pointerType = normalizeDashboardGridPointerType(event.pointerType);
     startPoint = point;
     currentPixelRect = originPixelRect;
     latestPixelRect = originPixelRect;
@@ -408,22 +328,7 @@ export const createDashboardGridPointerDrag = (options: {
     options.targetDocument.addEventListener('scroll', onGeometryInvalidated, true);
     targetWindow?.addEventListener('resize', onGeometryInvalidated);
 
-    if (
-      (event.pointerType === 'touch' || event.pointerType === 'pen') &&
-      options.itemElement.hasPointerCapture?.(event.pointerId)
-    ) {
-      try {
-        options.itemElement.releasePointerCapture(event.pointerId);
-      } catch {
-        // Implicit capture may already have been released by the browser.
-      }
-    } else if (event.pointerType === 'mouse' && options.itemElement.setPointerCapture) {
-      try {
-        options.itemElement.setPointerCapture(event.pointerId);
-      } catch {
-        // Document listeners still retain ownership when capture is unavailable.
-      }
-    }
+    updateDashboardGridPointerCapture(options.itemElement, event);
   };
 
   return {

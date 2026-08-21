@@ -464,4 +464,22 @@ describe('GridStack event and load compatibility', () => {
     facade.emit('resizecontent', { nodes: [item] });
     expect(handler).toHaveBeenCalledTimes(2);
   });
+
+  it('does not recurse when a legacy handler synchronously re-emits the same event', () => {
+    const engine = createDashboardGridEngine({ items: [{ id: 'one' }] });
+    const facade = createGridStackEventAdapter(engine);
+    const item = engine.getItem('one')!;
+    let calls = 0;
+
+    facade.on('change', () => {
+      calls += 1;
+      if (calls > 3) {
+        throw new Error('recursive change event');
+      }
+      facade.emit('change', { nodes: [item] });
+    });
+
+    expect(() => facade.emit('change', { nodes: [item] })).not.toThrow();
+    expect(calls).toBe(1);
+  });
 });

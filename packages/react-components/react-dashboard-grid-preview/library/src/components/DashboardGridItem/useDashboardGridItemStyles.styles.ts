@@ -7,6 +7,8 @@ import type { DashboardGridResizeEdge } from '../../interaction/types';
 
 export type DashboardGridItemStyleState = {
   arranging?: boolean;
+  animated?: boolean;
+  handleVisibility?: 'hover' | 'always' | 'coarse-pointer';
   root: { className?: string };
   content?: { className?: string };
   dragHandle?: { className?: string };
@@ -23,20 +25,18 @@ export const dashboardGridItemClassNames = {
 } as const;
 
 const useRootStyles = makeResetStyles({
-  position: 'relative',
+  position: 'absolute',
   minWidth: 0,
   minHeight: 0,
-  gridColumnStart: 'calc(var(--dashboard-grid-column) + 1)',
-  gridColumnEnd: 'span var(--dashboard-grid-column-span)',
-  gridRowStart: 'calc(var(--dashboard-grid-row) + 1)',
-  gridRowEnd: 'span var(--dashboard-grid-row-span)',
   ...createFocusOutlineStyle({ selector: 'focus-within', style: {} }),
 });
 
 const useStyles = makeStyles({
   root: {
     borderRadius: tokens.borderRadiusMedium,
-    transitionProperty: 'grid-column-start, grid-row-start, grid-column-end, grid-row-end',
+  },
+  animated: {
+    transitionProperty: 'inset-inline-start, top, width, height',
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     '@media (prefers-reduced-motion: reduce)': {
@@ -48,6 +48,12 @@ const useStyles = makeStyles({
     outlineWidth: tokens.strokeWidthThick,
     outlineColor: tokens.colorBrandStroke1,
     outlineOffset: tokens.strokeWidthThick,
+  },
+  revealHandles: {
+    [`&:hover .${dashboardGridItemClassNames.resizeHandle}, &:focus-within .${dashboardGridItemClassNames.resizeHandle}`]:
+      {
+        opacity: 1,
+      },
   },
   content: {
     inlineSize: '100%',
@@ -69,7 +75,7 @@ const useStyles = makeStyles({
   },
   resizeHandle: {
     position: 'absolute',
-    zIndex: 2,
+    zIndex: tokens.zIndexContent,
     inlineSize: tokens.spacingHorizontalS,
     blockSize: tokens.spacingVerticalS,
     padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalNone}`,
@@ -86,6 +92,14 @@ const useStyles = makeStyles({
       color: 'ButtonText',
       backgroundColor: 'ButtonFace',
       ...shorthands.borderColor('ButtonText'),
+    },
+  },
+  hiddenResizeHandle: {
+    opacity: 0,
+  },
+  coarseResizeHandle: {
+    '@media (pointer: coarse)': {
+      opacity: 1,
     },
   },
   north: {
@@ -172,7 +186,9 @@ export const useDashboardGridItemStyles_unstable = <TState extends DashboardGrid
     dashboardGridItemClassNames.root,
     rootStyles,
     styles.root,
+    state.animated && styles.animated,
     state.arranging && styles.arranging,
+    state.handleVisibility !== 'always' && styles.revealHandles,
     state.root.className,
   );
   if (state.content) {
@@ -207,6 +223,8 @@ export const useDashboardGridItemStyles_unstable = <TState extends DashboardGrid
       handle.className = mergeClasses(
         dashboardGridItemClassNames.resizeHandle,
         styles.resizeHandle,
+        state.handleVisibility !== 'always' && styles.hiddenResizeHandle,
+        state.handleVisibility === 'coarse-pointer' && styles.coarseResizeHandle,
         edgeClass(edge, styles),
         handle.className,
       );

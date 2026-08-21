@@ -1,12 +1,168 @@
 import { createDashboardGridInteractionCoordinator } from './coordinator';
-import { createDashboardGridKeyboardInteraction } from './keyboardInteraction';
+import {
+  createDashboardGridKeyboardInteraction,
+  getDashboardGridKeyboardResizeProposal,
+} from './keyboardInteraction';
 import type {
+  DashboardGridInteractionIntent,
   DashboardGridInteractionStore,
   DashboardGridMoveProposal,
   DashboardGridResolvedItem,
 } from './types';
 
 describe('dashboard grid keyboard interaction', () => {
+  it.each([
+    ['n', 'ArrowUp', { row: 1, rowSpan: 4, resizeEdge: 'n' }],
+    ['e', 'ArrowRight', { columnSpan: 4, resizeEdge: 'e' }],
+    ['s', 'ArrowDown', { rowSpan: 4, resizeEdge: 's' }],
+    ['w', 'ArrowLeft', { column: 1, columnSpan: 4, resizeEdge: 'w' }],
+    ['ne', 'ArrowUp', { row: 1, rowSpan: 4, resizeEdge: 'ne' }],
+    ['nw', 'ArrowLeft', { column: 1, columnSpan: 4, resizeEdge: 'nw' }],
+    ['se', 'ArrowDown', { rowSpan: 4, resizeEdge: 'se' }],
+    ['sw', 'ArrowLeft', { column: 1, columnSpan: 4, resizeEdge: 'sw' }],
+  ] as const)('creates a keyboard resize proposal for the %s handle', (edge, key, expected) => {
+    expect(
+      getDashboardGridKeyboardResizeProposal({
+        current: { column: 2, row: 2, columnSpan: 3, rowSpan: 3 },
+        edge,
+        key,
+        direction: 'ltr',
+      }),
+    ).toMatchObject({
+      input: 'keyboard',
+      resizing: true,
+      ...expected,
+    });
+  });
+
+  it('mirrors keyboard resize edges while preserving physical RTL arrow intent', () => {
+    expect(
+      getDashboardGridKeyboardResizeProposal({
+        current: { column: 2, row: 2, columnSpan: 3, rowSpan: 3 },
+        edge: 'e',
+        key: 'ArrowLeft',
+        direction: 'rtl',
+      }),
+    ).toMatchObject({ columnSpan: 4, resizeEdge: 'w' });
+    expect(
+      getDashboardGridKeyboardResizeProposal({
+        current: { column: 2, row: 2, columnSpan: 3, rowSpan: 3 },
+        edge: 'w',
+        key: 'ArrowRight',
+        direction: 'rtl',
+      }),
+    ).toMatchObject({ column: 1, columnSpan: 4, resizeEdge: 'e' });
+  });
+
+  it('operates a native resize button through one shared keyboard transaction', async () => {
+    let current: DashboardGridResolvedItem = {
+      id: 'item',
+      column: 2,
+      row: 2,
+      columnSpan: 3,
+      rowSpan: 3,
+      movable: true,
+      resizable: true,
+      locked: false,
+    };
+    const beginInteraction = jest.fn();
+    const move = jest.fn((_id: string, proposal: DashboardGridMoveProposal) => {
+      current = {
+        ...current,
+        column: proposal.column ?? current.column,
+        row: proposal.row ?? current.row,
+        columnSpan: proposal.columnSpan ?? current.columnSpan,
+        rowSpan: proposal.rowSpan ?? current.rowSpan,
+      };
+      return { status: 'accepted' as const, item: current, affected: [] };
+    });
+    const commitInteraction = jest.fn();
+    const cancelInteraction = jest.fn();
+    const intents: DashboardGridInteractionIntent[] = [];
+    const store: DashboardGridInteractionStore = {
+      getSnapshot: () => ({ revision: 0, columns: 8, float: false, items: [current] }),
+      getItem: () => current,
+      beginInteraction,
+      move,
+      rotate: () => ({ status: 'unchanged', item: current }),
+      commitInteraction,
+      cancelInteraction,
+    };
+    const coordinator = createDashboardGridInteractionCoordinator({
+      targetDocument: document,
+      eventQueue: { enqueue: intent => intents.push(intent) },
+    });
+    const grid = document.createElement('div');
+    const item = document.createElement('div');
+    const westHandle = document.createElement('button');
+    item.appendChild(westHandle);
+    grid.appendChild(item);
+    document.body.appendChild(grid);
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store,
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: item,
+      resizeHandles: { w: westHandle },
+      movable: true,
+      resizable: true,
+      locked: false,
+      resizeDirections: ['w'],
+    });
+    const onResizeHandleActiveChange = jest.fn();
+    const keyboard = createDashboardGridKeyboardInteraction({
+      targetDocument: document,
+      coordinator,
+      gridId: 'grid',
+      itemId: 'item',
+      itemElement: item,
+      onResizeHandleActiveChange,
+    });
+    item.addEventListener('keydown', keyboard.onKeyDown);
+
+    westHandle.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }));
+    expect(westHandle.getAttribute('aria-pressed')).toBe('true');
+    expect(westHandle.getAttribute('aria-keyshortcuts')).toContain('ArrowLeft');
+    westHandle.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, cancelable: true }));
+    westHandle.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }));
+    await Promise.resolve();
+
+    expect(beginInteraction).toHaveBeenCalledTimes(1);
+    expect(move).toHaveBeenCalledWith(
+      'item',
+      expect.objectContaining({
+        input: 'keyboard',
+        resizing: true,
+        resizeEdge: 'w',
+        column: 1,
+        columnSpan: 4,
+      }),
+    );
+    expect(commitInteraction).toHaveBeenCalledTimes(1);
+    expect(cancelInteraction).not.toHaveBeenCalled();
+    expect(onResizeHandleActiveChange.mock.calls).toEqual([['w'], [undefined]]);
+    expect(westHandle.getAttribute('aria-pressed')).toBe('false');
+    expect(westHandle.getAttribute('aria-keyshortcuts')).toBe('Enter Space F2');
+    expect(intents.map(intent => [intent.type, intent.operation, intent.input])).toEqual([
+      ['start', 'resize', 'keyboard'],
+      ['update', 'resize', 'keyboard'],
+      ['stop', 'resize', 'keyboard'],
+    ]);
+  });
+
   it('keeps descendant activation native and uses one transaction for Arrange mode', () => {
     let current: DashboardGridResolvedItem = {
       id: 'item',

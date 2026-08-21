@@ -15,8 +15,29 @@ export { useDashboardGridItem } from './hooks/useDashboardGridItem';
 export { useDashboardGridSerializer } from './hooks/useDashboardGridSerializer';
 
 export type {
+  DashboardGridAcceptContext,
+  DashboardGridAcceptPredicate,
+  DashboardGridCollisionOptions,
+  DashboardGridComponentRegistry,
+  DashboardGridCSSLength,
+  DashboardGridDefinition,
+  DashboardGridDragOptions,
+  DashboardGridEngineFactory,
   DashboardGridItemDefinition,
   DashboardGridItemPrintOptions,
+  DashboardGridMutationOptions,
+  DashboardGridOptions,
+  DashboardGridPrintOptions,
+  DashboardGridRemovalOptions,
+  DashboardGridRemoveOptions,
+  DashboardGridRenderItem,
+  DashboardGridRenderUnknownComponent,
+  DashboardGridResizeDirection,
+  DashboardGridResizeOptions,
+  DashboardGridResponsiveOptions,
+  DashboardGridSaveOptions,
+  DashboardGridSerializableOptions,
+  DashboardGridSerializedGrid,
   DashboardGridSerializedItem,
   DashboardGridSerializedState,
 } from './state/DashboardGridStore.types';
@@ -30,3 +51,10 @@ export type {
   DashboardGridExternalItemDescriptor,
   DashboardGridResizeEdge,
 } from './interaction/types';
+export type {
+  DashboardGridColumnLayout,
+  DashboardGridFitResult,
+  DashboardGridLoadOptions,
+  DashboardGridRect,
+  DashboardGridResolvedItem,
+} from './engine';

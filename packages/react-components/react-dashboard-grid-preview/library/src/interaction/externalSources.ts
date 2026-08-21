@@ -2,11 +2,20 @@ import { Enter, Escape, F2, Space } from '@fluentui/keyboard-keys';
 import { createDashboardGridAutoScroll, findNearestDashboardGridScrollAncestor } from './autoScroll';
 import { shouldCancelDashboardGridPointerStart } from './cancelSelectors';
 import { sanitizeDashboardGridDragPreview } from './dragPreview';
-import { DASHBOARD_GRID_DRAG_THRESHOLD, DASHBOARD_GRID_TOUCH_LEAVE_DELAY } from './pointerDrag';
+import { DASHBOARD_GRID_DRAG_THRESHOLD } from './pointerDrag';
+import {
+  createDashboardGridClickSuppressor,
+  createDashboardGridTouchLeaveController,
+  getDashboardGridDeepActiveElement,
+  normalizeDashboardGridPointerType,
+  releaseDashboardGridPointerCapture,
+  updateDashboardGridPointerCapture,
+} from './pointerSession';
 import type {
   DashboardGridDragSourceRegistration,
   DashboardGridInteractionCoordinator,
   DashboardGridPixelRect,
+  DashboardGridPointerType,
 } from './types';
 
 export type DashboardGridExternalSourceController = {
@@ -14,15 +23,6 @@ export type DashboardGridExternalSourceController = {
   onKeyDown(event: KeyboardEvent): void;
   cancel(event?: Event): void;
   destroy(): void;
-};
-
-const getDeepActiveElement = (targetDocument: Document): HTMLElement | null => {
-  let activeElement = targetDocument.activeElement;
-  while (activeElement && 'shadowRoot' in activeElement && activeElement.shadowRoot?.activeElement) {
-    activeElement = activeElement.shadowRoot.activeElement;
-  }
-
-  return activeElement && 'focus' in activeElement ? (activeElement as HTMLElement) : null;
 };
 
 const getElementPixelRect = (element: HTMLElement): DashboardGridPixelRect => {
@@ -39,8 +39,13 @@ export const createDashboardGridExternalSource = (options: {
 }): DashboardGridExternalSourceController => {
   const targetWindow = options.targetDocument.defaultView;
   const unregister = options.coordinator.registerDragSource(options.registration);
+  const clickSuppressor = createDashboardGridClickSuppressor(options.targetDocument);
+  const touchLeave = createDashboardGridTouchLeaveController({
+    targetDocument: options.targetDocument,
+    onTargetChange: options.onTouchTargetChange,
+  });
   let pointerId: number | undefined;
-  let pointerType = '';
+  let pointerType: DashboardGridPointerType = 'unknown';
   let startX = 0;
   let startY = 0;
   let originRect: DashboardGridPixelRect | undefined;
@@ -48,9 +53,6 @@ export const createDashboardGridExternalSource = (options: {
   let latestEvent: PointerEvent | undefined;
   let active = false;
   let frame = 0;
-  let leaveTimer = 0;
-  let suppressClickTimer = 0;
-  let suppressClickListener: ((event: MouseEvent) => void) | undefined;
   let autoScroll: ReturnType<typeof createDashboardGridAutoScroll> | undefined;
   let autoScrollGridId: string | undefined;
   let destroyed = false;
@@ -78,13 +80,6 @@ export const createDashboardGridExternalSource = (options: {
     }
   };
 
-  const clearLeaveTimer = () => {
-    if (leaveTimer && targetWindow) {
-      targetWindow.clearTimeout(leaveTimer);
-    }
-    leaveTimer = 0;
-  };
-
   const removeDocumentListeners = () => {
     options.targetDocument.removeEventListener('pointermove', onPointerMove, true);
     options.targetDocument.removeEventListener('pointerup', onPointerUp, true);
@@ -101,59 +96,19 @@ export const createDashboardGridExternalSource = (options: {
       targetWindow.cancelAnimationFrame(frame);
     }
     frame = 0;
-    clearLeaveTimer();
+    touchLeave.cancel();
     autoScroll?.destroy();
     autoScroll = undefined;
     autoScrollGridId = undefined;
     removeDocumentListeners();
-    if (
-      pointerId !== undefined &&
-      options.registration.element.hasPointerCapture?.(pointerId)
-    ) {
-      try {
-        options.registration.element.releasePointerCapture(pointerId);
-      } catch {
-        // Capture may have ended with pointerup or pointercancel.
-      }
-    }
+    releaseDashboardGridPointerCapture(options.registration.element, pointerId);
     pointerId = undefined;
-    pointerType = '';
+    pointerType = 'unknown';
     originRect = undefined;
     currentRect = undefined;
     latestEvent = undefined;
     active = false;
     updatePreviewElement(undefined, false);
-  };
-
-  const suppressNextClick = () => {
-    if (!targetWindow) {
-      return;
-    }
-
-    if (suppressClickListener) {
-      options.targetDocument.removeEventListener('click', suppressClickListener, true);
-    }
-    suppressClickListener = (event: MouseEvent) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      if (suppressClickListener) {
-        options.targetDocument.removeEventListener('click', suppressClickListener, true);
-        suppressClickListener = undefined;
-      }
-      if (suppressClickTimer) {
-        targetWindow.clearTimeout(suppressClickTimer);
-        suppressClickTimer = 0;
-      }
-    };
-
-    options.targetDocument.addEventListener('click', suppressClickListener, true);
-    suppressClickTimer = targetWindow.setTimeout(() => {
-      if (suppressClickListener) {
-        options.targetDocument.removeEventListener('click', suppressClickListener, true);
-        suppressClickListener = undefined;
-      }
-      suppressClickTimer = 0;
-    }, 500);
   };
 
   const finalizeDestroy = () => {
@@ -166,13 +121,7 @@ export const createDashboardGridExternalSource = (options: {
     }
     reset();
     unregister();
-    if (suppressClickTimer && targetWindow) {
-      targetWindow.clearTimeout(suppressClickTimer);
-    }
-    if (suppressClickListener) {
-      options.targetDocument.removeEventListener('click', suppressClickListener, true);
-      suppressClickListener = undefined;
-    }
+    clickSuppressor.dispose();
   };
 
   const finishDeferredDispose = () => {
@@ -285,7 +234,7 @@ export const createDashboardGridExternalSource = (options: {
       return;
     }
 
-    clearLeaveTimer();
+    touchLeave.cancel();
     if (frame && targetWindow) {
       targetWindow.cancelAnimationFrame(frame);
       frame = 0;
@@ -294,7 +243,7 @@ export const createDashboardGridExternalSource = (options: {
     processPointerMove(event);
 
     if (active) {
-      suppressNextClick();
+      clickSuppressor.suppressNext();
       void options.coordinator.commit(event);
     } else {
       options.coordinator.cancel(event);
@@ -313,27 +262,11 @@ export const createDashboardGridExternalSource = (options: {
   }
 
   function onPointerOut(event: PointerEvent) {
-    if (
-      event.pointerId !== pointerId ||
-      (pointerType !== 'touch' && pointerType !== 'pen') ||
-      !targetWindow
-    ) {
-      return;
-    }
-
-    clearLeaveTimer();
-    leaveTimer = targetWindow.setTimeout(() => {
-      leaveTimer = 0;
-      options.onTouchTargetChange?.(false);
-    }, DASHBOARD_GRID_TOUCH_LEAVE_DELAY);
+    touchLeave.onPointerOut(event, pointerId, pointerType);
   }
 
   function onPointerOver(event: PointerEvent) {
-    if (event.pointerId !== pointerId || (pointerType !== 'touch' && pointerType !== 'pen')) {
-      return;
-    }
-    clearLeaveTimer();
-    options.onTouchTargetChange?.(true);
+    touchLeave.onPointerOver(event, pointerId, pointerType);
   }
 
   function onDocumentKeyDown(event: KeyboardEvent) {
@@ -373,7 +306,7 @@ export const createDashboardGridExternalSource = (options: {
       operation: 'external',
       pointer: {
         pointerId: event.pointerId,
-        pointerType: event.pointerType,
+        pointerType: normalizeDashboardGridPointerType(event.pointerType),
         isPrimary: event.isPrimary,
         button: event.button,
       },
@@ -382,7 +315,7 @@ export const createDashboardGridExternalSource = (options: {
       originPixelRect: pixelRect,
       sourceId: options.registration.id,
       ownerElement: options.registration.element,
-      focusReturn: { element: getDeepActiveElement(options.targetDocument) },
+      focusReturn: { element: getDashboardGridDeepActiveElement(options.targetDocument) },
       nativeEvent: event,
     });
     if (!armed) {
@@ -390,7 +323,7 @@ export const createDashboardGridExternalSource = (options: {
     }
 
     pointerId = event.pointerId;
-    pointerType = event.pointerType;
+    pointerType = normalizeDashboardGridPointerType(event.pointerType);
     startX = event.clientX;
     startY = event.clientY;
     originRect = pixelRect;
@@ -404,25 +337,7 @@ export const createDashboardGridExternalSource = (options: {
     options.targetDocument.addEventListener('scroll', onGeometryInvalidated, true);
     targetWindow?.addEventListener('resize', onGeometryInvalidated);
 
-    if (
-      (event.pointerType === 'touch' || event.pointerType === 'pen') &&
-      options.registration.element.hasPointerCapture?.(event.pointerId)
-    ) {
-      try {
-        options.registration.element.releasePointerCapture(event.pointerId);
-      } catch {
-        // Implicit capture may already have been released by the browser.
-      }
-    } else if (
-      event.pointerType === 'mouse' &&
-      options.registration.element.setPointerCapture
-    ) {
-      try {
-        options.registration.element.setPointerCapture(event.pointerId);
-      } catch {
-        // Document listeners still retain ownership when capture is unavailable.
-      }
-    }
+    updateDashboardGridPointerCapture(options.registration.element, event);
   };
 
   const onKeyDown = (event: KeyboardEvent) => {
@@ -469,7 +384,7 @@ export const createDashboardGridExternalSource = (options: {
       originPixelRect: sourceRect,
       sourceId: options.registration.id,
       ownerElement: options.registration.element,
-      focusReturn: { element: getDeepActiveElement(options.targetDocument) },
+      focusReturn: { element: getDashboardGridDeepActiveElement(options.targetDocument) },
       nativeEvent: event,
     });
     if (!armed) {

@@ -1,6 +1,15 @@
 export { DashboardGrid } from './DashboardGrid';
 export type {
+  DashboardGridChangeReason,
+  DashboardGridDropData,
+  DashboardGridEnabledData,
+  DashboardGridErrorData,
   DashboardGridEventData,
+  DashboardGridEventFields,
+  DashboardGridEventType,
+  DashboardGridInteractionData,
+  DashboardGridItemsData,
+  DashboardGridLayoutChangeData,
   DashboardGridProps,
   DashboardGridResponsiveBreakpoint,
   DashboardGridResponsiveOptions,

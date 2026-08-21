@@ -14,8 +14,6 @@ import {
 import { createDashboardGridDropZone } from '../../interaction/dropZones';
 import {
   dashboardGridDataAttributes,
-  type DashboardGridDropAcceptanceContext,
-  type DashboardGridDropZoneKind,
   type DashboardGridDropZoneVisualState,
 } from '../../interaction/types';
 import type {
@@ -23,25 +21,18 @@ import type {
   DashboardGridDropZoneState,
 } from './DashboardGridDropZone.types';
 
-type ExtendedDashboardGridDropZoneProps = DashboardGridDropZoneProps & {
-  id: string;
-  gridId?: string;
-  kind?: DashboardGridDropZoneKind;
-  label?: string;
-  disabled?: boolean;
-  accepts?: boolean | ((context: DashboardGridDropAcceptanceContext) => boolean);
-};
-
 export type DashboardGridDropZoneInternalState = DashboardGridDropZoneState & {
   dropState: DashboardGridDropZoneVisualState;
   disabled: boolean;
 };
 
+/**
+ * Creates the state required to render DashboardGridDropZone.
+ */
 export const useDashboardGridDropZone_unstable = (
   props: DashboardGridDropZoneProps,
   ref: React.Ref<HTMLDivElement>,
 ): DashboardGridDropZoneInternalState => {
-  const extendedProps = props as ExtendedDashboardGridDropZoneProps;
   const coordinator = useRequiredDashboardGridProviderContext_unstable(context => context.coordinator);
   const contextGridId = useDashboardGridContext_unstable(context => context.gridId);
   const {
@@ -53,7 +44,7 @@ export const useDashboardGridDropZone_unstable = (
     accepts,
     indicator: indicatorShorthand,
     ...rootProps
-  } = extendedProps;
+  } = props;
   const [rootElement, setRootElement] = React.useState<HTMLDivElement | null>(null);
   const [dropState, setDropState] = React.useState<DashboardGridDropZoneVisualState>({
     active: false,

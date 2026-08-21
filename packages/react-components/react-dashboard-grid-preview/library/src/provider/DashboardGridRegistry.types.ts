@@ -3,6 +3,7 @@ import type { DashboardGridColumnLayout } from '../engine';
 import type {
   DashboardGridDirection,
   DashboardGridNestingIntent,
+  DashboardGridPreparedTransferResult,
   DashboardGridProviderInteractionRegistry,
   DashboardGridRejectedReason,
   DashboardGridTransferIntent,
@@ -12,6 +13,9 @@ import type { DashboardGridItemDefinition, DashboardGridStore } from '../state/D
 import type { DashboardGridItemHostRegistry } from './itemHostRegistry';
 import type { DashboardGridSerializerRegistry } from '../serialization/serializerRegistry';
 import type { DashboardGridFocusRecord } from '../accessibility/focusManager';
+import type { DashboardGridOptions } from '../state/DashboardGridStore.types';
+import type { DashboardGridCellMetrics } from '../engine';
+import type { DashboardGridDomGeometrySession } from '../interaction/domGeometry';
 
 export type DashboardGridRegistryError = {
   code: 'duplicate-grid-id' | 'duplicate-item-id' | 'transfer-failed';
@@ -32,6 +36,14 @@ export type DashboardGridRegistration = {
   direction?: DashboardGridDirection;
   label?: string;
   nestedLayout?: DashboardGridColumnLayout;
+  compactMode?: 'compact' | 'list';
+  dynamicNesting?: boolean;
+  subGridDefaults?: DashboardGridOptions;
+  setEnabled?(enabled: boolean, options?: { recursive?: boolean }): void;
+  refreshDragHandles?(id?: string): void;
+  getMetrics?(): DashboardGridCellMetrics;
+  getDomGeometry?(): DashboardGridDomGeometrySession | undefined;
+  resizeItemToContent?(id: string): void;
 };
 
 export type DashboardGridProviderItemRegistration = {
@@ -66,6 +78,7 @@ export type DashboardGridRegistry = DashboardGridProviderInteractionRegistry & {
   registerGrid(registration: DashboardGridRegistration): () => void;
   updateGrid(id: string, patch: Partial<DashboardGridRegistration>): void;
   getGrid(id: string): DashboardGridRegistration | undefined;
+  getEventGrid(id: string): DashboardGridRegistration | undefined;
   getGrids(): readonly DashboardGridRegistration[];
 
   registerItem(registration: DashboardGridProviderItemRegistration): () => void;
@@ -74,12 +87,20 @@ export type DashboardGridRegistry = DashboardGridProviderInteractionRegistry & {
   detachItemHost(id: string, container?: HTMLElement | null): void;
   setParkingElement(element: HTMLElement | null): void;
 
-  transfer(intent: DashboardGridTransferIntent): DashboardGridTransferResult;
-  remove(intent: DashboardGridTransferIntent): DashboardGridTransferResult;
+  transfer(
+    intent: DashboardGridTransferIntent,
+  ): Promise<DashboardGridPreparedTransferResult>;
+  remove(intent: DashboardGridTransferIntent): DashboardGridPreparedTransferResult;
   drop(
     intent: DashboardGridTransferIntent,
-  ): DashboardGridTransferResult | Promise<DashboardGridTransferResult>;
-  requestNesting(intent: DashboardGridNestingIntent): DashboardGridTransferResult;
+  ):
+    | DashboardGridPreparedTransferResult
+    | Promise<DashboardGridPreparedTransferResult>;
+  requestNesting(
+    intent: DashboardGridNestingIntent,
+  ):
+    | DashboardGridPreparedTransferResult
+    | Promise<DashboardGridPreparedTransferResult>;
   dispose(): void;
 };
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { Provider_unstable as FluentProvider } from '@fluentui/react-shared-contexts';
-import type { DashboardGridHandle } from '../hooks/useDashboardGrid';
 import { DashboardGrid } from '../components/DashboardGrid/DashboardGrid';
+import { useRequiredDashboardGridContext_unstable } from '../contexts/DashboardGridContext';
+import type { DashboardGridStore } from '../state/DashboardGridStore.types';
 import { createDashboardGridInteractionCoordinator } from './coordinator';
 
 const rect = (left: number, top: number, width: number, height: number): DOMRect =>
@@ -18,32 +19,52 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
     toJSON: () => ({}),
   }) as DOMRect;
 
+const StoreCapture = (props: {
+  label: string;
+  onStore: (store: DashboardGridStore) => void;
+}) => {
+  const store = useRequiredDashboardGridContext_unstable(context => context.store);
+
+  React.useLayoutEffect(() => {
+    props.onStore(store);
+  }, [props, store]);
+
+  return <span>{props.label}</span>;
+};
+
 describe('dashboard grid deferred drag rendering', () => {
   it.each([
     { direction: 'ltr' as const, originX: 0, firstX: 20, secondX: 45 },
     { direction: 'rtl' as const, originX: 100, firstX: 80, secondX: 55 },
   ])(
     'keeps grid geometry at origin while the active item follows every $direction pixel update',
-    ({ direction, originX, firstX, secondX }) => {
-      const imperativeRef = React.createRef<DashboardGridHandle>();
+    async ({ direction, originX, firstX, secondX }) => {
+      let store: DashboardGridStore | undefined;
       const { container } = render(
         <FluentProvider value={{ dir: direction, targetDocument: document }}>
           <DashboardGrid
             aria-label="Dashboard"
             gridId="smooth-grid"
-            imperativeRef={imperativeRef}
             defaultItems={[{ id: 'active', column: 0, row: 0 }]}
-            renderItem={item => <span>{item.id}</span>}
+            renderItem={item => (
+              <StoreCapture
+                label={item.id}
+                onStore={nextStore => {
+                  store = nextStore;
+                }}
+              />
+            )}
           />
         </FluentProvider>,
       );
-      const store = imperativeRef.current!.getStore();
+      await waitFor(() => expect(store).toBeDefined());
+      const capturedStore = store!;
       const root = container.querySelector('[data-dashboard-grid-root]') as HTMLElement;
       const surface = container.querySelector('.fui-DashboardGrid__surface') as HTMLElement;
       const itemElement = screen.getByText('active').closest('[data-dashboard-grid-item]') as HTMLElement;
       jest.spyOn(root, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 400, 400));
       const move = jest
-        .spyOn(store, 'move')
+        .spyOn(capturedStore, 'move')
         .mockReturnValue({ status: 'deferred', reason: 'coverage-threshold' });
       const coordinator = createDashboardGridInteractionCoordinator({ targetDocument: document });
       coordinator.registerGrid({
@@ -51,7 +72,7 @@ describe('dashboard grid deferred drag rendering', () => {
         element: root,
         surfaceElement: surface,
         direction,
-        store,
+        store: capturedStore,
         getMetrics: () => ({
           columnWidth: 100,
           rowHeight: 100,
@@ -93,7 +114,7 @@ describe('dashboard grid deferred drag rendering', () => {
           proposal: { input: 'pointer', column: 0, row: 0 },
         });
       });
-      expect(store.getItem('active')?.column).toBe(0);
+      expect(capturedStore.getItem('active')?.column).toBe(0);
       expect(itemElement.style.getPropertyValue('--dashboard-grid-column')).toBe('0');
       expect(itemElement.style.transform).toContain('translate3d(20px, 8px, 0)');
 
@@ -104,7 +125,7 @@ describe('dashboard grid deferred drag rendering', () => {
           proposal: { input: 'pointer', column: 0, row: 0 },
         });
       });
-      expect(store.getItem('active')?.column).toBe(0);
+      expect(capturedStore.getItem('active')?.column).toBe(0);
       expect(itemElement.style.getPropertyValue('--dashboard-grid-column')).toBe('0');
       expect(itemElement.style.transform).toContain('translate3d(45px, 16px, 0)');
       expect(move).toHaveBeenCalledTimes(2);

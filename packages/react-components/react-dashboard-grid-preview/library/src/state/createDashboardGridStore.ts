@@ -15,6 +15,8 @@ import type {
   DashboardGridItemDefinition,
   DashboardGridItemStoreSnapshot,
   DashboardGridRuntimeItemState,
+  DashboardGridSerializedGrid,
+  DashboardGridSerializedItem,
   DashboardGridSerializedState,
   DashboardGridStore,
   DashboardGridStoreCallbacks,
@@ -60,6 +62,31 @@ const sameResolvedItem = (
     left.resizable === right.resizable &&
     left.locked === right.locked);
 
+const serializeDefinition = (
+  item: DashboardGridItemDefinition,
+): DashboardGridSerializedItem => {
+  const { content, nestedGrid, subGrid, ...serializable } = item;
+  return {
+    ...serializable,
+    subGrid: subGrid
+      ? {
+          version: 1,
+          options: {
+            columns: subGrid.columns,
+            minRows: subGrid.minRows,
+            maxRows: subGrid.maxRows,
+            fixedRows: subGrid.fixedRows,
+            float: subGrid.float,
+            disableDrag: subGrid.disableDrag,
+            disableResize: subGrid.disableResize,
+            printMode: subGrid.printMode,
+          },
+          items: (subGrid.items ?? []).map(serializeDefinition),
+        }
+      : (nestedGrid as DashboardGridSerializedGrid | undefined),
+  };
+};
+
 export const createDashboardGridStore = (options: DashboardGridStoreOptions): DashboardGridStore => {
   let callbacks = options.callbacks;
   let controlledItems = copyDashboardGridItems(options.items);
@@ -70,6 +97,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
   let rootListeners: Array<() => void> = [];
   const itemListeners = new Map<string, Array<() => void>>();
   const definitions = new Map<string, DashboardGridItemDefinition>();
+  const modelItemIds = new Set<string>();
   const declarativeRegistrations = new Map<string, number>();
   const runtime = new Map<string, DashboardGridRuntimeItemState>();
   const itemSnapshotCache = new Map<string, DashboardGridItemStoreSnapshot>();
@@ -77,6 +105,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
   const initialItems = options.items ?? options.defaultItems ?? [];
   for (const item of initialItems) {
     definitions.set(item.id, item);
+    modelItemIds.add(item.id);
   }
 
   const engine =
@@ -92,6 +121,12 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       onDiagnostic: diagnostic => callbacks?.onDiagnostic?.(diagnostic),
       onError: error => callbacks?.onError?.(error),
     });
+  if (options.engine && initialItems.length > 0) {
+    engine.load(initialItems.map(toDashboardGridEngineItem), {
+      addMissing: true,
+      removeMissing: true,
+    });
+  }
 
   engineSnapshot = engine.getSnapshot();
   let storeSnapshot: DashboardGridStoreSnapshot = {
@@ -258,6 +293,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
 
     getDefinition: id => definitions.get(id),
     getDefinitions: getDefinitionsInLayoutOrder,
+    isControlled: () => controlledItems !== undefined,
 
     setCallbacks(nextCallbacks) {
       callbacks = nextCallbacks;
@@ -283,6 +319,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       const previousIds = new Set(definitions.keys());
       for (const item of items) {
         definitions.set(item.id, item);
+        modelItemIds.add(item.id);
         previousIds.delete(item.id);
         notifyItem(item.id);
       }
@@ -305,6 +342,9 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
     },
 
     registerDeclarativeItem(item) {
+      if (modelItemIds.has(item.id)) {
+        return () => undefined;
+      }
       const count = declarativeRegistrations.get(item.id) ?? 0;
       declarativeRegistrations.set(item.id, count + 1);
       definitions.set(item.id, item);
@@ -353,7 +393,20 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
 
     receiveDefinition(item) {
       definitions.set(item.id, item);
+      modelItemIds.add(item.id);
       notifyItem(item.id);
+    },
+
+    updateDefinition(id, patch) {
+      const definition = definitions.get(id);
+      if (!definition) {
+        return undefined;
+      }
+      const next = { ...definition, ...patch, id };
+      definitions.set(id, next);
+      notifyItem(id);
+      notifyRoot();
+      return next;
     },
 
     setRuntimeItemState(id, patch) {
@@ -423,11 +476,13 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
     },
 
     add(item) {
+      modelItemIds.add(item.id);
       definitions.set(item.id, item);
       notifyItem(item.id);
       const result = engine.add(toDashboardGridEngineItem(item));
       if (result.status === 'rejected') {
         definitions.delete(item.id);
+        modelItemIds.delete(item.id);
         notifyItem(item.id);
       }
       return applyMutationResult(result);
@@ -445,6 +500,22 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       return applyMutationResult(result);
     },
 
+    removeAll() {
+      const previousDefinitions = new Map(definitions);
+      definitions.clear();
+      for (const id of previousDefinitions.keys()) {
+        notifyItem(id);
+      }
+      const result = engine.removeAll();
+      if (result.status === 'rejected') {
+        for (const [id, definition] of previousDefinitions) {
+          definitions.set(id, definition);
+          notifyItem(id);
+        }
+      }
+      return applyMutationResult(result);
+    },
+
     update(id, patch) {
       const definition = definitions.get(id);
       if (definition) {
@@ -458,10 +529,38 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       return applyMutationResult(engine.compact(mode));
     },
 
+    batch(operation, batchOptions) {
+      engine.beginBatch(batchOptions);
+      try {
+        const value = operation();
+        const changeSet = engine.commitBatch(batchOptions);
+        enqueueChange(changeSet);
+        scheduleControlledReconciliation();
+        return value;
+      } catch (error) {
+        engine.rollbackBatch();
+        throw error;
+      }
+    },
+
+    rotateItem(id, pivot) {
+      engine.beginInteraction(id, { kind: 'keyboard', source: 'internal' });
+      const result = engine.rotate(id, { input: 'api', pivot });
+      if (result.status === 'accepted' || result.status === 'unchanged') {
+        const changeSet = engine.commitInteraction();
+        enqueueChange(changeSet);
+        scheduleControlledReconciliation();
+      } else {
+        engine.cancelInteraction();
+      }
+      return result;
+    },
+
     load(items, loadOptions) {
       definitions.clear();
       for (const item of items) {
         definitions.set(item.id, item);
+        modelItemIds.add(item.id);
         notifyItem(item.id);
       }
       return applyMutationResult(
@@ -472,11 +571,21 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       );
     },
 
-    save(): DashboardGridSerializedState {
+    save(saveOptions): DashboardGridSerializedState {
+      const engineState = engine.save({
+        columns: saveOptions?.columns,
+        includeLayouts: saveOptions?.includeLayouts ?? true,
+      });
       return {
         version: 1,
-        engine: engine.save({ includeLayouts: true }),
-        items: getDefinitionsInLayoutOrder().map(({ content, ...item }) => item),
+        options: {
+          columns: engineState.columns,
+          maxRows: engineState.maxRows,
+          float: engineState.float,
+        },
+        items: getDefinitionsInLayoutOrder().map(serializeDefinition),
+        layouts: engineState.layouts,
+        engine: engineState,
       };
     },
 
@@ -487,6 +596,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       itemListeners.clear();
       itemSnapshotCache.clear();
       definitions.clear();
+      modelItemIds.clear();
       runtime.clear();
       preview = undefined;
     },

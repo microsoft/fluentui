@@ -50,12 +50,28 @@ describe('dashboard grid ARIA projection', () => {
       getDashboardGridResizeHandleAriaProps({
         edge: 'se',
         itemLabel: 'Revenue',
-        strings: { formatResizeHandle: (edge, label) => `${label} ${edge} handle` },
+        strings: {
+          formatResizeHandle: (edge, label) => `${label} ${edge} handle`,
+          formatResizeHandleInstructions: edge => `Activate ${edge}, then use arrows`,
+        },
       }),
     ).toMatchObject({
       type: 'button',
       'aria-label': 'Revenue se handle',
+      'aria-description': 'Activate se, then use arrows',
+      'aria-keyshortcuts': 'Enter Space F2',
+      'aria-pressed': false,
       [dashboardGridDataAttributes.resizeHandle]: 'se',
+    });
+    expect(
+      getDashboardGridResizeHandleAriaProps({
+        edge: 'se',
+        itemLabel: 'Revenue',
+        active: true,
+      }),
+    ).toMatchObject({
+      'aria-keyshortcuts': 'ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Escape',
+      'aria-pressed': true,
     });
   });
 });

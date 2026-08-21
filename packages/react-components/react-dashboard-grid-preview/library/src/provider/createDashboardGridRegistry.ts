@@ -1,7 +1,8 @@
-import type { DashboardGridRect } from '../engine';
+import type { DashboardGridEngineChangeSet, DashboardGridRect } from '../engine';
 import type {
   DashboardGridExternalItemDescriptor,
   DashboardGridNestingIntent,
+  DashboardGridPreparedTransferResult,
   DashboardGridRejectedReason,
   DashboardGridTransferIntent,
   DashboardGridTransferResult,
@@ -19,6 +20,8 @@ import type {
 } from './DashboardGridRegistry.types';
 import { createDashboardGridItemHostRegistry } from './itemHostRegistry';
 import { createDashboardGridPendingRemovalQueue } from './pendingRemovalQueue';
+import { createDashboardGridNestedOptions } from '../nesting/nestedGrid';
+import type { DashboardGridDefinition } from '../state/DashboardGridStore.types';
 
 type RegisteredGrid = {
   registration: DashboardGridRegistration;
@@ -46,6 +49,16 @@ const mutationReasonToRejectedReason = (reason: string): DashboardGridRejectedRe
       return 'target-rejected';
   }
 };
+
+const withProviderFinalizer = (
+  result: DashboardGridTransferResult,
+): DashboardGridPreparedTransferResult =>
+  result.status === 'accepted'
+    ? {
+        ...result,
+        finalize: result.finalize ?? (() => undefined),
+      }
+    : result;
 
 const getDeepActiveElement = (targetDocument: Document | undefined): HTMLElement | null => {
   const targetWindow = targetDocument?.defaultView;
@@ -103,6 +116,7 @@ export const createDashboardGridRegistry = (
   options: DashboardGridRegistryOptions = {},
 ): DashboardGridRegistry => {
   const grids = new Map<string, RegisteredGrid>();
+  const eventGridParents = new Map<string, string>();
   const items = new Map<string, RegisteredItem>();
   const pendingItemRemoval = createDashboardGridPendingRemovalQueue();
   const itemHosts = createDashboardGridItemHostRegistry();
@@ -132,6 +146,17 @@ export const createDashboardGridRegistry = (
   };
 
   const getGrid = (id: string): DashboardGridRegistration | undefined => grids.get(id)?.registration;
+  const getEventGrid = (id: string): DashboardGridRegistration | undefined => {
+    let currentId: string | undefined = id;
+    while (currentId) {
+      const grid = getGrid(currentId);
+      if (grid) {
+        return grid;
+      }
+      currentId = eventGridParents.get(currentId);
+    }
+    return undefined;
+  };
 
   const getTransferDefinition = (
     intent: DashboardGridTransferIntent,
@@ -181,10 +206,15 @@ export const createDashboardGridRegistry = (
         };
   };
 
-  const transfer = (intent: DashboardGridTransferIntent): DashboardGridTransferResult => {
+  const transfer = async (
+    intent: DashboardGridTransferIntent,
+  ): Promise<DashboardGridPreparedTransferResult> => {
     const preflight = preflightTransfer(intent);
-    if (preflight.status === 'rejected' || !intent.targetGridId) {
+    if (preflight.status === 'rejected') {
       return preflight;
+    }
+    if (!intent.targetGridId) {
+      return { status: 'rejected', reason: 'target-rejected' };
     }
 
     const target = getGrid(intent.targetGridId);
@@ -199,9 +229,13 @@ export const createDashboardGridRegistry = (
         const result = source.store.update(intent.itemId, intent.rect);
         return result.status === 'rejected'
           ? { status: 'rejected', reason: mutationReasonToRejectedReason(result.reason) }
-          : { status: 'accepted', targetGridId: target.id, rect: intent.rect };
+          : withProviderFinalizer({
+              status: 'accepted',
+              targetGridId: target.id,
+              rect: intent.rect,
+            });
       }
-      return preflight;
+      return withProviderFinalizer(preflight);
     }
 
     const definition = definitionAtRect(sourceDefinition, preflight.rect ?? intent.rect);
@@ -211,6 +245,7 @@ export const createDashboardGridRegistry = (
     let sourceDefinitionRemoved = false;
 
     try {
+      source?.store.cancelInteraction();
       source?.store.engine.beginBatch();
       target.store.engine.beginBatch();
 
@@ -238,32 +273,33 @@ export const createDashboardGridRegistry = (
       target.store.receiveDefinition(definition);
       const sourceChangeSet = source?.store.engine.commitBatch();
       const targetChangeSet = target.store.engine.commitBatch();
-
-      Promise.resolve().then(() =>
-        Promise.resolve().then(() => {
-          if (source && sourceChangeSet?.changes.length) {
-            source.store.events.enqueue({
-              type: 'layout-change',
-              sourceGridId: source.id,
-              targetGridId: target.id,
-              changes: sourceChangeSet,
-              nativeEvent: intent.nativeEvent,
-            });
-          }
-
-          Promise.resolve().then(() => {
-            if (targetChangeSet.changes.length) {
-              target.store.events.enqueue({
-                type: 'layout-change',
-                sourceGridId: source?.id,
-                targetGridId: target.id,
-                changes: targetChangeSet,
-                nativeEvent: intent.nativeEvent,
-              });
-            }
+      let finalized = false;
+      const finalize = () => {
+        if (finalized) {
+          return;
+        }
+        finalized = true;
+        if (source && sourceChangeSet?.changes.length) {
+          source.store.events.enqueue({
+            type: 'layout-change',
+            sourceGridId: source.id,
+            targetGridId: target.id,
+            changes: sourceChangeSet,
+            nativeEvent: intent.nativeEvent,
           });
-        }),
-      );
+          source.store.events.flush();
+        }
+        if (targetChangeSet.changes.length) {
+          target.store.events.enqueue({
+            type: 'layout-change',
+            sourceGridId: source?.id,
+            targetGridId: target.id,
+            changes: targetChangeSet,
+            nativeEvent: intent.nativeEvent,
+          });
+          target.store.events.flush();
+        }
+      };
 
       const registeredItem = items.get(definition.id);
       if (registeredItem) {
@@ -303,6 +339,7 @@ export const createDashboardGridRegistry = (
         status: 'accepted',
         targetGridId: target.id,
         rect: preflight.rect ?? intent.rect,
+        finalize,
       };
     } catch (cause) {
       source?.store.engine.rollbackBatch();
@@ -375,6 +412,7 @@ export const createDashboardGridRegistry = (
     },
 
     getGrid,
+    getEventGrid,
     getGrids: () => [...grids.values()].map(value => value.registration),
 
     registerItem(registration) {
@@ -458,6 +496,7 @@ export const createDashboardGridRegistry = (
         options.requestPendingFocus?.(focusRecord);
       }
 
+      source.store.cancelInteraction();
       source.store.engine.beginBatch();
       const definition = source.store.takeDefinition(intent.itemId);
       const removal = source.store.engine.remove(intent.itemId);
@@ -470,18 +509,20 @@ export const createDashboardGridRegistry = (
       }
 
       const changeSet = source.store.engine.commitBatch();
-      Promise.resolve().then(() =>
-        Promise.resolve().then(() => {
-          if (changeSet.changes.length) {
-            source.store.events.enqueue({
-              type: 'layout-change',
-              sourceGridId: source.id,
-              changes: changeSet,
-              nativeEvent: intent.nativeEvent,
-            });
-          }
-        }),
-      );
+      let finalized = false;
+      const finalize = () => {
+        if (finalized || changeSet.changes.length === 0) {
+          return;
+        }
+        finalized = true;
+        source.store.events.enqueue({
+          type: 'layout-change',
+          sourceGridId: source.id,
+          changes: changeSet,
+          nativeEvent: intent.nativeEvent,
+        });
+        source.store.events.flush();
+      };
       source.store.requestControlledReconciliation();
       if (containedFocus) {
         Promise.resolve().then(() =>
@@ -493,7 +534,7 @@ export const createDashboardGridRegistry = (
           }),
         );
       }
-      return { status: 'accepted', targetGridId: undefined };
+      return { status: 'accepted', targetGridId: undefined, finalize };
     },
 
     drop(intent) {
@@ -501,12 +542,12 @@ export const createDashboardGridRegistry = (
         return transfer(intent);
       }
 
-      return (
+      const result =
         options.onCustomDrop?.(intent) ?? {
           status: 'rejected',
-          reason: 'target-rejected',
-        }
-      );
+          reason: 'target-rejected' as const,
+        };
+      return Promise.resolve(result).then(withProviderFinalizer);
     },
 
     requestNesting(intent: DashboardGridNestingIntent) {
@@ -519,7 +560,138 @@ export const createDashboardGridRegistry = (
         );
 
       if (!nestedTarget) {
-        return { status: 'rejected', reason: 'target-rejected' };
+        const source = getGrid(intent.sourceGridId);
+        const target = getGrid(intent.targetGridId);
+        const sourceItem = source?.store.getItem(intent.itemId);
+        const targetItem = target?.store.getItem(intent.targetItemId);
+        const sourceDefinition = source?.store.getDefinition(intent.itemId);
+        const targetDefinition = target?.store.getDefinition(intent.targetItemId);
+        if (
+          !source ||
+          !target ||
+          !target.dynamicNesting ||
+          !sourceItem ||
+          !targetItem ||
+          !sourceDefinition ||
+          !targetDefinition ||
+          source.store.isControlled() ||
+          target.store.isControlled()
+        ) {
+          return { status: 'rejected', reason: 'target-rejected' };
+        }
+
+        const childGridId = `${target.id}::${intent.targetItemId}::subgrid`;
+        eventGridParents.set(childGridId, target.id);
+        const existingItems = targetDefinition.subGrid?.items ?? [];
+        if (existingItems.some(item => item.id === sourceDefinition.id)) {
+          return { status: 'rejected', reason: 'target-rejected' };
+        }
+        const nestedOptions = createDashboardGridNestedOptions(
+          target.subGridDefaults ?? {},
+          targetDefinition.subGrid,
+          targetItem.columnSpan,
+          sourceItem.columnSpan,
+        );
+        const nestedDefinition: DashboardGridDefinition = {
+          ...(nestedOptions as DashboardGridDefinition),
+          items: [
+            ...existingItems,
+            {
+              ...sourceDefinition,
+              column: undefined,
+              row: undefined,
+              autoPosition: true,
+            },
+          ],
+        };
+
+        source.store.cancelInteraction();
+        source.store.engine.beginBatch();
+        const removal = source.store.engine.remove(intent.itemId);
+        if (removal.status === 'rejected') {
+          source.store.engine.rollbackBatch();
+          return {
+            status: 'rejected',
+            reason: mutationReasonToRejectedReason(removal.reason),
+          };
+        }
+        source.store.takeDefinition(intent.itemId);
+        target.store.updateDefinition(intent.targetItemId, {
+          subGrid: nestedDefinition,
+        });
+        const sourceChangeSet = source.store.engine.commitBatch();
+        const targetChangeSet: DashboardGridEngineChangeSet = {
+          revision: target.store.getSnapshot().revision,
+          removed: [],
+          added: [],
+          changed: [
+            {
+              id: targetItem.id,
+              previous: targetItem,
+              current: targetItem,
+            },
+          ],
+          changes: [
+            {
+              kind: 'changed',
+              change: {
+                id: targetItem.id,
+                previous: targetItem,
+                current: targetItem,
+              },
+            },
+          ],
+          diagnostics: [],
+        };
+        let finalized = false;
+        const finalize = () => {
+          if (finalized) {
+            return;
+          }
+          finalized = true;
+          if (sourceChangeSet.changes.length) {
+            source.store.events.enqueue({
+              type: 'layout-change',
+              sourceGridId: source.id,
+              targetGridId: childGridId,
+              changes: sourceChangeSet,
+              nativeEvent: intent.nativeEvent,
+            });
+            source.store.events.flush();
+          }
+          target.store.events.enqueue({
+            type: 'layout-change',
+            sourceGridId: source.id,
+            targetGridId: childGridId,
+            changes: targetChangeSet,
+            nativeEvent: intent.nativeEvent,
+          });
+          target.store.events.flush();
+        };
+
+        const registeredItem = items.get(intent.itemId);
+        if (registeredItem) {
+          registeredItem.registration = {
+            ...registeredItem.registration,
+            gridId: childGridId,
+          };
+        }
+        itemHosts.setOwner(intent.itemId, childGridId);
+        emitChange();
+        return {
+          status: 'accepted',
+          targetGridId: childGridId,
+          rect: {
+            column: 0,
+            row: 0,
+            columnSpan: Math.min(
+              sourceItem.columnSpan,
+              Number(nestedDefinition.columns) || sourceItem.columnSpan,
+            ),
+            rowSpan: sourceItem.rowSpan,
+          },
+          finalize,
+        };
       }
 
       return transfer({
@@ -539,6 +711,7 @@ export const createDashboardGridRegistry = (
       pendingItemRemoval.dispose();
       itemHosts.dispose();
       grids.clear();
+      eventGridParents.clear();
       items.clear();
       listeners = [];
       emitChange();

@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { tokens } from '@fluentui/react-theme';
 import {
   getIntrinsicElementProps,
   slot,
@@ -30,31 +31,34 @@ import {
   type DashboardGridDomGeometrySession,
 } from '../../interaction/domGeometry';
 import { dashboardGridDataAttributes } from '../../interaction/types';
+import type { DashboardGridDropAcceptanceContext } from '../../interaction/types';
 import { useDashboardGridResizeObserver } from '../../observers/useDashboardGridResizeObserver';
 import { createDashboardGridRegistry } from '../../provider/createDashboardGridRegistry';
 import type { DashboardGridRegistry } from '../../provider/DashboardGridRegistry.types';
 import { createDashboardGridHandle } from '../../hooks/useDashboardGrid';
 import { createDashboardGridStore } from '../../state/createDashboardGridStore';
 import type {
+  DashboardGridCSSLength,
+  DashboardGridEngineFactory,
   DashboardGridItemDefinition,
+  DashboardGridResponsiveOptions,
   DashboardGridStore,
   DashboardGridStoreCallbacks,
 } from '../../state/DashboardGridStore.types';
 import { useDashboardGridStoreSnapshot } from '../../state/useDashboardGridStore';
 import type {
+  DashboardGridCellMetrics,
+  DashboardGridEngineOptions,
+} from '../../engine';
+import {
+  getDashboardGridScreenGeometryStyle,
+  getDashboardGridSurfaceBlockSize,
+} from './screenGeometry';
+import type {
   DashboardGridProps,
   DashboardGridSlots,
   DashboardGridState,
 } from './DashboardGrid.types';
-
-type DashboardGridResponsiveOptions = {
-  breakpoints?: readonly {
-    maxWidth: number;
-    columns: number;
-    layout?: 'list' | 'compact' | 'moveScale' | 'move' | 'scale' | 'none';
-  }[];
-  layout?: 'list' | 'compact' | 'moveScale' | 'move' | 'scale' | 'none';
-};
 
 export type DashboardGridInternalState = DashboardGridState & {
   store: DashboardGridStore;
@@ -70,6 +74,14 @@ export type DashboardGridInternalState = DashboardGridState & {
 
 const DEFAULT_COLUMNS = 12;
 const DEFAULT_ROW_HEIGHT = 80;
+const emptyMetrics: DashboardGridCellMetrics = {
+  columnWidth: 0,
+  rowHeight: 0,
+  gapTop: 0,
+  gapRight: 0,
+  gapBottom: 0,
+  gapLeft: 0,
+};
 
 const resolveResponsiveColumns = (
   responsive: DashboardGridResponsiveOptions | undefined,
@@ -79,7 +91,47 @@ const resolveResponsiveColumns = (
   const breakpoints = [...(responsive?.breakpoints ?? [])].sort(
     (left, right) => left.maxWidth - right.maxWidth,
   );
-  return breakpoints.find(breakpoint => width <= breakpoint.maxWidth)?.columns ?? columns;
+  const breakpointColumns = breakpoints.find(
+    breakpoint => width <= breakpoint.maxWidth,
+  )?.columns;
+  if (breakpointColumns !== undefined) {
+    return breakpointColumns;
+  }
+  if (responsive?.targetColumnWidth) {
+    return Math.max(
+      1,
+      Math.min(
+        responsive.maxColumns ?? columns,
+        Math.round(width / responsive.targetColumnWidth),
+      ),
+    );
+  }
+  return columns;
+};
+
+const toCSSLength = (value: DashboardGridCSSLength | string): string =>
+  typeof value === 'number' ? `${value}px` : value;
+
+const getGapStyles = (
+  gap: DashboardGridProps['gap'],
+): { rowGap: string; columnGap: string } => {
+  if (gap === undefined) {
+    return {
+      rowGap: tokens.spacingVerticalMNudge,
+      columnGap: tokens.spacingHorizontalMNudge,
+    };
+  }
+  const values = String(toCSSLength(gap)).trim().split(/\s+/);
+  if (values.length === 1) {
+    return { rowGap: values[0], columnGap: values[0] };
+  }
+  if (values.length === 2) {
+    return { rowGap: values[0], columnGap: values[1] };
+  }
+  return {
+    rowGap: `calc(${values[0]} + ${values[2] ?? values[0]})`,
+    columnGap: `calc(${values[1]} + ${values[3] ?? values[1]})`,
+  };
 };
 
 const invokeEventHandler = (
@@ -114,7 +166,12 @@ export const useDashboardGrid_unstable = (
   const fluent = useFluent();
   const generatedId = useId('dashboard-grid-');
   const gridId = props.gridId ?? generatedId;
-  const direction = fluent.dir === 'rtl' ? 'rtl' : 'ltr';
+  const direction =
+    props.direction === 'rtl' || props.direction === 'ltr'
+      ? props.direction
+      : fluent.dir === 'rtl'
+        ? 'rtl'
+        : 'ltr';
   const parentProvider = useDashboardGridProviderContext_unstable(context => context);
   const targetDocument = parentProvider
     ? parentProvider.targetDocument
@@ -123,7 +180,20 @@ export const useDashboardGrid_unstable = (
   const parentItemId = useDashboardGridItemContext_unstable(context => context.id);
   const parentItem = useDashboardGridItemContext_unstable(context => context.snapshot.item);
   const parentResizeObserver = useDashboardGridContext_unstable(context => context.resizeObserver);
-  const onRegistryError = useEventCallback((error: unknown) => props.onError?.(error));
+  const onRegistryError = useEventCallback((error: unknown) => {
+    const event = targetDocument?.defaultView
+      ? new targetDocument.defaultView.Event('error')
+      : undefined;
+    props.onError?.(event as never, {
+      type: 'error',
+      event,
+      gridId,
+      input: 'api',
+      affectedItems: [],
+      reason: 'interaction',
+      error,
+    } as never);
+  });
   const localFocusManagerRef = React.useRef<
     ReturnType<typeof useDashboardGridFocusManager> | undefined
   >(undefined);
@@ -155,7 +225,19 @@ export const useDashboardGrid_unstable = (
             eventQueue: {
               enqueue(intent) {
                 const intentGridId = intent.targetGridId ?? intent.sourceGridId ?? gridId;
-                registry.getGrid(intentGridId)?.store.events.enqueue(intent);
+                registry.getEventGrid(intentGridId)?.store.events.enqueue(intent);
+              },
+              flush(intentGridId) {
+                if (intentGridId) {
+                  registry.getEventGrid(intentGridId)?.store.events.flush();
+                  return;
+                }
+                const stores = new Set(
+                  registry.getGrids().map(candidate => candidate.store),
+                );
+                stores.forEach(candidateStore =>
+                  candidateStore.events.flush(),
+                );
               },
             },
           })
@@ -212,20 +294,58 @@ export const useDashboardGrid_unstable = (
     props.columns === 'auto'
       ? Math.max(1, parentItem?.columnSpan ?? DEFAULT_COLUMNS)
       : Math.max(1, props.columns ?? DEFAULT_COLUMNS);
-  const rowHeight = Math.max(1, props.rowHeight ?? DEFAULT_ROW_HEIGHT);
+  const rowHeightOption = props.rowHeight ?? 'auto';
+  const rowHeight =
+    typeof rowHeightOption === 'number'
+      ? Math.max(1, rowHeightOption)
+      : typeof rowHeightOption === 'string' && rowHeightOption.endsWith('px')
+        ? Math.max(1, Number.parseFloat(rowHeightOption))
+        : DEFAULT_ROW_HEIGHT;
+  const [enabled, setEnabledState] = React.useState(!props.static);
+  const [refreshDragHandlesVersion, setRefreshDragHandlesVersion] = React.useState(0);
+  const [layoutMetrics, setLayoutMetrics] =
+    React.useState<DashboardGridCellMetrics>(emptyMetrics);
+  const initialAutoRowHeight = React.useRef<number | undefined>(undefined);
+
+  const engineOptions: DashboardGridEngineOptions = {
+    columns: authoredColumns,
+    maxRows: props.fixedRows ?? props.maxRows,
+    float: props.float,
+    resizeDisabled: props.static || props.disableResize,
+    items: (props.items ?? props.defaultItems)?.map(item => ({
+      id: item.id,
+      column: item.column,
+      row: item.row,
+      columnSpan: item.columnSpan,
+      rowSpan: item.rowSpan,
+      minColumnSpan: item.minColumnSpan,
+      maxColumnSpan: item.maxColumnSpan,
+      minRowSpan: item.minRowSpan,
+      maxRowSpan: item.maxRowSpan,
+      autoPosition: item.autoPosition,
+      movable: item.movable,
+      resizable: item.resizable,
+      locked: item.locked,
+    })),
+    onDiagnostic: props.onDiagnostic,
+    onError: onRegistryError,
+  };
 
   const [store] = React.useState(() =>
     createDashboardGridStore({
       id: gridId,
       columns: authoredColumns,
-      maxRows: props.maxRows,
+      maxRows: props.fixedRows ?? props.maxRows,
       float: props.float,
-      resizeDisabled: props.resizeDisabled,
+      resizeDisabled: props.static || props.disableResize,
       defaultItems: props.defaultItems as readonly DashboardGridItemDefinition[] | undefined,
       items: props.items as readonly DashboardGridItemDefinition[] | undefined,
+      engine:
+        typeof props.layoutEngine === 'function'
+          ? (props.layoutEngine as DashboardGridEngineFactory)(engineOptions)
+          : props.layoutEngine,
       callbacks: {
         onDiagnostic: props.onDiagnostic,
-        onError: props.onError,
       },
     }),
   );
@@ -237,26 +357,47 @@ export const useDashboardGrid_unstable = (
     ) => invokeEventHandler(callback, data, nativeEvent, targetDocument),
     [targetDocument],
   );
+  const pendingDrop = React.useRef<
+    | {
+        data: Record<string, unknown>;
+        nativeEvent?: Event;
+      }
+    | undefined
+  >(undefined);
   const storeCallbacks = React.useMemo<DashboardGridStoreCallbacks>(
     () => ({
       onDiagnostic: diagnostic => props.onDiagnostic?.(diagnostic),
-      onError: error => props.onError?.(error),
+      onError: error =>
+        emit(props.onError, {
+          type: 'error',
+          gridId,
+          input: 'api',
+          affectedItems: store.getSnapshot().items,
+          reason: 'interaction',
+          error,
+        }),
       onIntent: intent => {
         const input =
-          intent.operation === 'keyboard'
+          intent.input ??
+          (intent.operation === 'keyboard' ||
+          (targetDocument?.defaultView?.KeyboardEvent &&
+            intent.nativeEvent instanceof targetDocument.defaultView.KeyboardEvent)
             ? 'keyboard'
-            : intent.operation === 'external'
-              ? 'external'
-              : targetDocument?.defaultView?.KeyboardEvent &&
-                  intent.nativeEvent instanceof targetDocument.defaultView.KeyboardEvent
-                ? 'keyboard'
-                : 'pointer';
+            : 'pointer');
+        const interactionKind =
+          intent.operation === 'resize' || intent.kind === 'resize'
+            ? 'resize'
+            : 'drag';
         const data = {
           ...intent,
           gridId,
           sourceGridId: intent.sourceGridId ?? gridId,
           input,
-          kind: intent.operation,
+          kind: interactionKind,
+          affectedItems: store.getSnapshot().items,
+          reason: 'interaction',
+          rejectedReason:
+            'rejectionReason' in intent ? intent.rejectionReason : undefined,
         };
         const itemId = intent.itemId ?? ('sourceId' in intent ? intent.sourceId : undefined);
         const itemLabel =
@@ -274,8 +415,16 @@ export const useDashboardGrid_unstable = (
         switch (intent.type) {
           case 'start':
             emit(
-              intent.operation === 'resize' ? props.onResizeStart : props.onDragStart,
-              data,
+              interactionKind === 'resize'
+                ? props.onResizeStart
+                : props.onDragStart,
+              {
+                ...data,
+                type:
+                  interactionKind === 'resize'
+                    ? 'resize-start'
+                    : 'drag-start',
+              },
               intent.nativeEvent,
             );
             if (itemLabel) {
@@ -289,8 +438,12 @@ export const useDashboardGrid_unstable = (
             break;
           case 'stop':
             emit(
-              intent.operation === 'resize' ? props.onResizeEnd : props.onDragEnd,
-              data,
+              interactionKind === 'resize' ? props.onResizeEnd : props.onDragEnd,
+              {
+                ...data,
+                type:
+                  interactionKind === 'resize' ? 'resize-end' : 'drag-end',
+              },
               intent.nativeEvent,
             );
             if (
@@ -300,6 +453,36 @@ export const useDashboardGrid_unstable = (
               intent.sourceGridId !== intent.targetGridId
             ) {
               emit(props.onTransfer, data, intent.nativeEvent);
+            }
+            if (interactionKind === 'drag') {
+              pendingDrop.current = {
+                data: {
+                  ...data,
+                  type: 'item-drop',
+                  kind:
+                    intent.sourceGridId &&
+                    intent.targetGridId &&
+                    intent.sourceGridId !== intent.targetGridId
+                      ? 'transfer'
+                      : 'move',
+                  reason: 'transfer',
+                },
+                nativeEvent: intent.nativeEvent,
+              };
+              Promise.resolve().then(() =>
+                Promise.resolve().then(() =>
+                  Promise.resolve().then(() => {
+                    if (pendingDrop.current) {
+                      emit(
+                        props.onItemDrop,
+                        pendingDrop.current.data,
+                        pendingDrop.current.nativeEvent,
+                      );
+                      pendingDrop.current = undefined;
+                    }
+                  }),
+                ),
+              );
             }
             if (itemLabel) {
               announceDashboardGrid({
@@ -323,6 +506,16 @@ export const useDashboardGrid_unstable = (
             break;
           case 'update':
           case 'rotate':
+            if (intent.type === 'update') {
+              emit(
+                interactionKind === 'resize' ? props.onResize : props.onDrag,
+                {
+                  ...data,
+                  type: interactionKind === 'resize' ? 'resize' : 'drag',
+                },
+                intent.nativeEvent,
+              );
+            }
             if (itemLabel && intent.current) {
               announceDashboardGrid({
                 type:
@@ -365,18 +558,48 @@ export const useDashboardGrid_unstable = (
         }
       },
       onLayoutChange: (changeSet, nativeEvent) => {
+        const currentItems = store.getSnapshot().items;
+        const input =
+          targetDocument?.defaultView?.KeyboardEvent &&
+          nativeEvent instanceof targetDocument.defaultView.KeyboardEvent
+            ? 'keyboard'
+            : nativeEvent
+              ? 'pointer'
+              : 'api';
+        const reason =
+          changeSet.added.length > 0
+            ? 'add'
+            : changeSet.removed.length > 0
+              ? 'remove'
+              : 'update';
         const data = {
-          type: 'layout-change',
+          type: 'items-change',
           gridId,
           sourceGridId: gridId,
-          items: store.getSnapshot().items,
+          items: currentItems,
           changeSet,
-          input: 'api',
-          kind: 'layout',
+          input,
+          affectedItems: currentItems,
+          reason,
         };
-        emit(props.onLayoutChange, data, nativeEvent);
+        emit(props.onItemsChange, data, nativeEvent);
+        emit(
+          props.onLayoutChange,
+          { ...data, type: 'layout-change', kind: 'layout' },
+          nativeEvent,
+        );
         for (const item of changeSet.added) {
-          emit(props.onItemAdd, { ...data, itemId: item.id, item }, nativeEvent);
+          emit(
+            props.onItemAdd,
+            {
+              ...data,
+              type: 'item-add',
+              itemId: item.id,
+              affectedItems: changeSet.added,
+              reason: 'add',
+            },
+            nativeEvent,
+          );
           announceDashboardGrid({
             type: 'add',
             itemLabel: coordinator?.getItem(gridId, item.id)?.label ?? item.id,
@@ -384,12 +607,30 @@ export const useDashboardGrid_unstable = (
           });
         }
         for (const item of changeSet.removed) {
-          emit(props.onItemRemove, { ...data, itemId: item.id, item }, nativeEvent);
+          emit(
+            props.onItemRemove,
+            {
+              ...data,
+              type: 'item-remove',
+              itemId: item.id,
+              affectedItems: changeSet.removed,
+              reason: 'remove',
+            },
+            nativeEvent,
+          );
           announceDashboardGrid({
             type: 'remove',
             itemLabel: item.id,
             sourceGridLabel: registry.getGrid(gridId)?.label ?? gridId,
           });
+        }
+        if (pendingDrop.current) {
+          emit(
+            props.onItemDrop,
+            pendingDrop.current.data,
+            pendingDrop.current.nativeEvent,
+          );
+          pendingDrop.current = undefined;
         }
       },
     }),
@@ -404,9 +645,13 @@ export const useDashboardGrid_unstable = (
       props.onDragStart,
       props.onError,
       props.onItemAdd,
+      props.onItemDrop,
       props.onItemRemove,
+      props.onItemsChange,
       props.onLayoutChange,
+      props.onDrag,
       props.onResizeEnd,
+      props.onResize,
       props.onResizeStart,
       props.onTransfer,
       registry,
@@ -429,11 +674,18 @@ export const useDashboardGrid_unstable = (
     }
   }, [authoredColumns, props.columns, store]);
 
+  const [rootElement, setRootElement] = React.useState<HTMLDivElement | null>(null);
+  const [surfaceElement, setSurfaceElement] = React.useState<HTMLDivElement | null>(null);
   const snapshot = useDashboardGridStoreSnapshot(store);
   const responsive = props.responsive as DashboardGridResponsiveOptions | undefined;
+  const gapStyles = React.useMemo(() => getGapStyles(props.gap), [props.gap]);
   const resolveColumns = React.useCallback(
     (width: number) => {
-      const next = resolveResponsiveColumns(responsive, width, authoredColumns);
+      const measuredWidth =
+        responsive?.observe === 'window'
+          ? targetDocument?.defaultView?.innerWidth ?? width
+          : width;
+      const next = resolveResponsiveColumns(responsive, measuredWidth, authoredColumns);
       if (next !== store.getSnapshot().columns) {
         emit(props.onColumnsChange, {
           gridId,
@@ -445,16 +697,95 @@ export const useDashboardGrid_unstable = (
       }
       return next;
     },
-    [authoredColumns, emit, gridId, props.onColumnsChange, responsive, store],
+    [
+      authoredColumns,
+      emit,
+      gridId,
+      props.onColumnsChange,
+      responsive,
+      store,
+      targetDocument,
+    ],
   );
   const handleResizeContent = React.useCallback(() => {
+    const items = store.getSnapshot().items;
+    emit(props.onContentResize, {
+      type: 'content-resize',
+      gridId,
+      input: 'content',
+      items,
+      affectedItems: items,
+      reason: 'content',
+    });
     emit(props.onResizeContent, {
       gridId,
-      items: store.getSnapshot().items,
+      items,
       input: 'responsive',
       kind: 'layout',
     });
-  }, [emit, gridId, props.onResizeContent, store]);
+  }, [
+    emit,
+    gridId,
+    props.onContentResize,
+    props.onResizeContent,
+    store,
+  ]);
+  const resolveMeasuredRowHeight = React.useCallback(
+    (columnWidth: number) => {
+      if (rowHeightOption === 'auto') {
+        return columnWidth > 0 ? columnWidth : rowHeight;
+      }
+      if (rowHeightOption === 'initial') {
+        if (initialAutoRowHeight.current === undefined && columnWidth > 0) {
+          initialAutoRowHeight.current = columnWidth;
+        }
+        return initialAutoRowHeight.current ?? rowHeight;
+      }
+      if (typeof rowHeightOption === 'number') {
+        return Math.max(1, rowHeightOption);
+      }
+      if (!targetDocument || !surfaceElement) {
+        return rowHeight;
+      }
+
+      const probe = targetDocument.createElement('div');
+      probe.style.position = 'absolute';
+      probe.style.visibility = 'hidden';
+      probe.style.blockSize = rowHeightOption;
+      surfaceElement.appendChild(probe);
+      const measured = probe.getBoundingClientRect().height;
+      probe.remove();
+      return measured > 0 ? measured : rowHeight;
+    },
+    [rowHeight, rowHeightOption, surfaceElement, targetDocument],
+  );
+  const measureGaps = React.useCallback(() => {
+    const targetWindow = targetDocument?.defaultView;
+    if (!targetWindow || !surfaceElement) {
+      return {};
+    }
+    const computed = targetWindow.getComputedStyle(surfaceElement);
+    const rowGap = Number.parseFloat(computed.rowGap) || 0;
+    const columnGap = Number.parseFloat(computed.columnGap) || 0;
+    return {
+      gapTop: rowGap / 2,
+      gapBottom: rowGap / 2,
+      gapLeft: columnGap / 2,
+      gapRight: columnGap / 2,
+    };
+  }, [surfaceElement, targetDocument]);
+  const handleMetricsChange = React.useCallback((metrics: DashboardGridCellMetrics) => {
+    setLayoutMetrics(previous =>
+      previous.columnWidth === metrics.columnWidth &&
+      previous.rowHeight === metrics.rowHeight &&
+      previous.gapTop === metrics.gapTop &&
+      previous.gapRight === metrics.gapRight &&
+      previous.gapBottom === metrics.gapBottom &&
+      previous.gapLeft === metrics.gapLeft
+        ? previous
+        : metrics,
+    );
+  }, []);
   const handleDiagnostic = React.useCallback(
     (diagnostic: Parameters<NonNullable<DashboardGridProps['onDiagnostic']>>[0]) => {
       props.onDiagnostic?.(diagnostic);
@@ -470,10 +801,25 @@ export const useDashboardGrid_unstable = (
     nested: !!parentGridId,
     parentController: parentResizeObserver ?? undefined,
     onResizeContent: handleResizeContent,
+    resizeDelay: props.rowHeightThrottle ?? 100,
+    resolveRowHeight: resolveMeasuredRowHeight,
+    measureGaps,
+    onMetricsChange: handleMetricsChange,
   });
 
-  const [rootElement, setRootElement] = React.useState<HTMLDivElement | null>(null);
-  const [surfaceElement, setSurfaceElement] = React.useState<HTMLDivElement | null>(null);
+  React.useEffect(() => {
+    if (responsive?.observe !== 'window') {
+      return;
+    }
+    const targetWindow = targetDocument?.defaultView;
+    if (!targetWindow) {
+      return;
+    }
+    const handleWindowResize = () => resizeObserver.remeasure();
+    targetWindow.addEventListener('resize', handleWindowResize);
+    return () => targetWindow.removeEventListener('resize', handleWindowResize);
+  }, [resizeObserver, responsive?.observe, targetDocument]);
+
   const geometryRef = React.useRef<DashboardGridDomGeometrySession | undefined>(undefined);
   const getDomGeometry = React.useCallback(() => {
     if (!targetDocument || !surfaceElement) {
@@ -501,6 +847,86 @@ export const useDashboardGrid_unstable = (
     geometryRef.current = undefined;
   }, [direction, surfaceElement]);
 
+  const setGridEnabled = React.useCallback(
+    (nextEnabled: boolean, options?: { recursive?: boolean }) => {
+      const resolvedEnabled = nextEnabled && !props.static;
+      setEnabledState(resolvedEnabled);
+      emit(props.onEnabledChange, {
+        type: 'enabled-change',
+        gridId,
+        input: 'api',
+        affectedItems: store.getSnapshot().items,
+        reason: 'enabled',
+        enabled: resolvedEnabled,
+      });
+      if (!options?.recursive) {
+        return;
+      }
+      for (const candidate of registry.getGrids()) {
+        let parentId = candidate.parentGridId;
+        while (parentId) {
+          if (parentId === gridId) {
+            candidate.setEnabled?.(resolvedEnabled, { recursive: false });
+            break;
+          }
+          parentId = registry.getGrid(parentId)?.parentGridId;
+        }
+      }
+    },
+    [emit, gridId, props.onEnabledChange, props.static, registry, store],
+  );
+  const refreshDragHandles = React.useCallback(
+    (id?: string) => {
+      setRefreshDragHandlesVersion(version => version + 1);
+      for (const candidate of registry.getGrids()) {
+        if (candidate.id !== gridId && candidate.parentGridId === gridId) {
+          candidate.refreshDragHandles?.(id);
+        }
+      }
+    },
+    [gridId, registry],
+  );
+  const acceptsExternal = React.useCallback(
+    (context: DashboardGridDropAcceptanceContext) => {
+      const acceptance = props.acceptExternal;
+      if (typeof acceptance === 'boolean' || acceptance === undefined) {
+        return acceptance ?? false;
+      }
+      if (typeof acceptance === 'string') {
+        const data = context.descriptor?.data;
+        return (
+          context.sourceId === acceptance ||
+          (typeof data === 'object' &&
+            data !== null &&
+            'className' in data &&
+            String(data.className).split(/\s+/).includes(acceptance))
+        );
+      }
+      const descriptor = context.descriptor;
+      const descriptorId = descriptor?.id ?? context.sourceId;
+      if (!descriptor || !descriptorId) {
+        return false;
+      }
+      return acceptance(
+        {
+          id: descriptorId,
+          columnSpan: descriptor.columnSpan,
+          rowSpan: descriptor.rowSpan,
+          minColumnSpan: descriptor.minColumnSpan,
+          maxColumnSpan: descriptor.maxColumnSpan,
+          minRowSpan: descriptor.minRowSpan,
+          maxRowSpan: descriptor.maxRowSpan,
+          data: descriptor.data,
+        },
+        {
+          sourceGridId: context.sourceGridId,
+          targetGridId: gridId,
+        },
+      );
+    },
+    [gridId, props.acceptExternal],
+  );
+
   useIsomorphicLayoutEffect(
     () =>
       registry.registerGrid({
@@ -514,6 +940,14 @@ export const useDashboardGrid_unstable = (
         direction,
         label: props['aria-label'],
         nestedLayout: responsive?.layout,
+        compactMode: props.compactMode,
+        dynamicNesting: props.dynamicNesting,
+        subGridDefaults: props.subGridDefaults,
+        setEnabled: setGridEnabled,
+        refreshDragHandles,
+        getMetrics: resizeObserver.getMetrics,
+        getDomGeometry,
+        resizeItemToContent: () => resizeObserver.remeasure(),
       }),
     [
       direction,
@@ -521,12 +955,19 @@ export const useDashboardGrid_unstable = (
       parentGridId,
       parentItemId,
       props['aria-label'],
+      props.dynamicNesting,
+      props.compactMode,
+      props.subGridDefaults,
+      refreshDragHandles,
       registry,
+      resizeObserver,
       responsive?.layout,
       rootElement,
       store,
       surfaceElement,
+      setGridEnabled,
       targetDocument,
+      getDomGeometry,
     ],
   );
 
@@ -544,6 +985,7 @@ export const useDashboardGrid_unstable = (
       direction,
       store,
       getMetrics: resizeObserver.getMetrics,
+      acceptsExternal,
     });
   }, [
     coordinator,
@@ -552,10 +994,86 @@ export const useDashboardGrid_unstable = (
     parentGridId,
     parentItemId,
     props['aria-label'],
+    acceptsExternal,
     resizeObserver,
     rootElement,
     store,
     surfaceElement,
+  ]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!coordinator || !targetDocument || !props.removable) {
+      return;
+    }
+
+    const elements =
+      props.removable === true
+        ? [targetDocument.body]
+        : (() => {
+            const matched = new Set<HTMLElement>(
+              targetDocument.querySelectorAll<HTMLElement>(props.removable),
+            );
+            const rootNode = rootElement?.getRootNode();
+            if (
+              rootNode &&
+              rootNode !== targetDocument &&
+              'querySelectorAll' in rootNode
+            ) {
+              const queryRoot = rootNode as Node & ParentNode;
+              for (const element of queryRoot.querySelectorAll<HTMLElement>(
+                props.removable,
+              )) {
+                matched.add(element);
+              }
+            }
+            return [...matched];
+          })();
+    const accepts = (context: DashboardGridDropAcceptanceContext) => {
+      if (!context.itemId || !context.sourceGridId) {
+        return false;
+      }
+      const item = registry.getGrid(context.sourceGridId)?.store.getItem(context.itemId);
+      const itemElement = coordinator.getItem(
+        context.sourceGridId,
+        context.itemId,
+      )?.element;
+      if (!item) {
+        return false;
+      }
+      const decline = props.removal?.decline;
+      if (
+        (typeof decline === 'function' && decline(item)) ||
+        (typeof decline === 'string' && itemElement?.matches(decline))
+      ) {
+        return false;
+      }
+      const accept = props.removal?.accept;
+      return (
+        accept === undefined ||
+        (typeof accept === 'function' && accept(item)) ||
+        (typeof accept === 'string' && !!itemElement?.matches(accept))
+      );
+    };
+
+    const unregister = elements.map((element, index) =>
+      coordinator.registerDropZone({
+        id: `${gridId}::remove::${index}`,
+        element,
+        kind: 'remove',
+        label: props['aria-label'],
+        accepts,
+      }),
+    );
+    return () => unregister.forEach(dispose => dispose());
+  }, [
+    coordinator,
+    gridId,
+    props['aria-label'],
+    props.removable,
+    props.removal,
+    registry,
+    rootElement,
+    targetDocument,
   ]);
 
   React.useEffect(
@@ -571,15 +1089,37 @@ export const useDashboardGrid_unstable = (
 
   React.useImperativeHandle(
     props.imperativeRef,
-    () => createDashboardGridHandle(store, registry, focusManager),
-    [focusManager, registry, store],
+    () =>
+      createDashboardGridHandle(store, registry, {
+        focusManager,
+        getMetrics: resizeObserver.getMetrics,
+        getDomGeometry,
+        setEnabled: setGridEnabled,
+        refreshDragHandles,
+        resizeItemToContent: () => resizeObserver.remeasure(),
+        compactMode: props.compactMode,
+      }),
+    [
+      focusManager,
+      getDomGeometry,
+      refreshDragHandles,
+      registry,
+      resizeObserver,
+      setGridEnabled,
+      store,
+      props.compactMode,
+    ],
   );
 
   const modelItemContents =
     props.children === undefined
       ? snapshot.engine.items.map(item => {
           const definition = store.getDefinition(item.id);
-          return props.renderItem?.(item) ?? definition?.content ?? null;
+          return (
+            props.renderItem?.({ ...(definition ?? { id: item.id }), ...item }) ??
+            definition?.content ??
+            null
+          );
         })
       : undefined;
 
@@ -596,7 +1136,9 @@ export const useDashboardGrid_unstable = (
       ...rootAria,
       [dashboardGridDataAttributes.grid]: gridId,
       'data-dashboard-grid-ssr': targetDocument ? undefined : '',
-      ...focusManager.navigationAttributes,
+      ...(props.keyboardNavigation === 'none'
+        ? {}
+        : focusManager.navigationAttributes),
       ref: useMergedRefs(
         ref,
         React.useCallback((element: HTMLDivElement | null) => {
@@ -611,12 +1153,25 @@ export const useDashboardGrid_unstable = (
   surface.ref = React.useCallback((element: HTMLDivElement | null) => {
     setSurfaceElement(element);
   }, []);
+  const occupiedRows = snapshot.engine.items.reduce(
+    (rows, item) => Math.max(rows, item.row + item.rowSpan),
+    0,
+  );
+  const renderedRows = Math.max(
+    occupiedRows,
+    props.fixedRows ?? props.minRows ?? 0,
+    snapshot.preview?.temporaryRows ?? 0,
+  );
   surface.style = {
     '--dashboard-grid-columns': snapshot.engine.columns,
-    '--dashboard-grid-row-height': `${rowHeight}px`,
-    gridTemplateRows: snapshot.preview?.temporaryRows
-      ? `repeat(${snapshot.preview.temporaryRows}, var(--dashboard-grid-row-height))`
-      : undefined,
+    '--dashboard-grid-row-height': `${layoutMetrics.rowHeight || rowHeight}px`,
+    rowGap: gapStyles.rowGap,
+    columnGap: gapStyles.columnGap,
+    blockSize: getDashboardGridSurfaceBlockSize(
+      renderedRows,
+      layoutMetrics,
+      rowHeight,
+    ),
     ...surface.style,
   } as React.CSSProperties;
   Object.assign(surface, {
@@ -629,6 +1184,12 @@ export const useDashboardGrid_unstable = (
           'aria-hidden': true,
           style: snapshot.preview.rect
             ? {
+                ...getDashboardGridScreenGeometryStyle(
+                  snapshot.preview.rect,
+                  layoutMetrics,
+                  snapshot.engine.columns,
+                  rowHeight,
+                ),
                 '--dashboard-grid-column': snapshot.preview.rect.column,
                 '--dashboard-grid-row': snapshot.preview.rect.row,
                 '--dashboard-grid-column-span': snapshot.preview.rect.columnSpan,
@@ -663,6 +1224,26 @@ export const useDashboardGrid_unstable = (
       strings: props.strings,
       focusManager,
       registerFocusableItem,
+      layoutMetrics,
+      fallbackRowHeight: rowHeight,
+      columns: snapshot.engine.columns,
+      enabled,
+      animate: props.animate ?? true,
+      disableDrag: !enabled || !!props.static || !!props.disableDrag,
+      disableResize: !enabled || !!props.static || !!props.disableResize,
+      defaultLazyMount: props.lazyMount ?? false,
+      defaultSizeToContent: props.sizeToContent ?? false,
+      dragOptions: props.drag,
+      resizeOptions: props.resize,
+      components: props.components,
+      renderItem: props.renderItem,
+      renderUnknownComponent: props.renderUnknownComponent,
+      subGridDefaults: props.subGridDefaults,
+      dynamicNesting: props.dynamicNesting ?? false,
+      compactMode: props.compactMode,
+      refreshDragHandlesVersion,
+      setEnabled: setGridEnabled,
+      refreshDragHandles,
     }),
     [
       coordinator,
@@ -682,6 +1263,27 @@ export const useDashboardGrid_unstable = (
       props.strings,
       focusManager,
       registerFocusableItem,
+      layoutMetrics,
+      rowHeight,
+      snapshot.engine.columns,
+      enabled,
+      props.animate,
+      props.static,
+      props.disableDrag,
+      props.disableResize,
+      props.lazyMount,
+      props.sizeToContent,
+      props.drag,
+      props.resize,
+      props.components,
+      props.renderItem,
+      props.renderUnknownComponent,
+      props.subGridDefaults,
+      props.dynamicNesting,
+      props.compactMode,
+      refreshDragHandlesVersion,
+      setGridEnabled,
+      refreshDragHandles,
     ],
   );
 

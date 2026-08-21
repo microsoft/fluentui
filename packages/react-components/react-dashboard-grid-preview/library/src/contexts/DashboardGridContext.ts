@@ -8,12 +8,21 @@ import type { DashboardGridResizeObserverController } from '../observers/useDash
 import type { DashboardGridRegistry } from '../provider/DashboardGridRegistry.types';
 import type { DashboardGridStore } from '../state/DashboardGridStore.types';
 import type { DashboardGridEngineDiagnostic } from '../engine';
+import type { DashboardGridCellMetrics } from '../engine';
 import type { DashboardGridAriaStrings } from '../accessibility/aria';
 import type { DashboardGridAnnouncementStrings } from '../accessibility/announcements';
 import type {
   DashboardGridFocusableItem,
   useDashboardGridFocusManager,
 } from '../accessibility/focusManager';
+import type {
+  DashboardGridComponentRegistry,
+  DashboardGridDragOptions,
+  DashboardGridOptions,
+  DashboardGridRenderItem,
+  DashboardGridRenderUnknownComponent,
+  DashboardGridResizeOptions,
+} from '../state/DashboardGridStore.types';
 
 export type DashboardGridContextValue = {
   gridId: string;
@@ -33,6 +42,26 @@ export type DashboardGridContextValue = {
   strings?: DashboardGridAriaStrings & DashboardGridAnnouncementStrings;
   focusManager: ReturnType<typeof useDashboardGridFocusManager>;
   registerFocusableItem(item: DashboardGridFocusableItem): () => void;
+  layoutMetrics: DashboardGridCellMetrics;
+  fallbackRowHeight: number;
+  columns: number;
+  enabled: boolean;
+  animate: boolean;
+  disableDrag: boolean;
+  disableResize: boolean;
+  defaultLazyMount: boolean;
+  defaultSizeToContent: boolean;
+  dragOptions?: DashboardGridDragOptions;
+  resizeOptions?: DashboardGridResizeOptions;
+  components?: DashboardGridComponentRegistry;
+  renderItem?: DashboardGridRenderItem;
+  renderUnknownComponent?: DashboardGridRenderUnknownComponent;
+  subGridDefaults?: DashboardGridOptions;
+  dynamicNesting: boolean;
+  compactMode?: 'compact' | 'list';
+  refreshDragHandlesVersion: number;
+  setEnabled(enabled: boolean, options?: { recursive?: boolean }): void;
+  refreshDragHandles(id?: string): void;
 };
 
 const DashboardGridContext: Context<DashboardGridContextValue | undefined> =

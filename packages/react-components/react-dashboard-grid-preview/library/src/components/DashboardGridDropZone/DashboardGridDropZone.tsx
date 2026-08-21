@@ -7,6 +7,9 @@ import { renderDashboardGridDropZone_unstable } from './renderDashboardGridDropZ
 import { useDashboardGridDropZone_unstable } from './useDashboardGridDropZone';
 import { useDashboardGridDropZoneStyles_unstable } from './useDashboardGridDropZoneStyles.styles';
 
+/**
+ * Registers a grid-backed, removal, or provider-approved custom DashboardGrid drop target.
+ */
 export const DashboardGridDropZone: ForwardRefComponent<DashboardGridDropZoneProps> = React.forwardRef<
   HTMLDivElement,
   DashboardGridDropZoneProps

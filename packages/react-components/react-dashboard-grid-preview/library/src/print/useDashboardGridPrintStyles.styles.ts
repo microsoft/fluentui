@@ -21,6 +21,7 @@ const useStyles = makeStyles({
   surface: {
     '@media print': {
       overflow: 'visible',
+      blockSize: 'auto !important',
     },
   },
   flow: {
@@ -63,13 +64,22 @@ const useItemStyles = makeStyles({
   item: {
     '@media print': {
       breakInside: 'avoid',
+      position: 'static',
+      insetInlineStart: 'auto !important',
+      top: 'auto !important',
+      height: 'auto !important',
     },
   },
   flow: {
     '@media print': {
       float: 'left',
       height: 'auto',
-      inlineSize: 'var(--dashboard-grid-print-width)',
+      width: 'var(--dashboard-grid-print-width) !important',
+    },
+  },
+  exact: {
+    '@media print': {
+      width: 'auto !important',
     },
   },
   hidden: {
@@ -88,6 +98,8 @@ export type DashboardGridPrintItemStyleState = {
   printMode?: 'flow' | 'exact';
   print?: {
     hide?: boolean;
+    pageBreakBefore?: boolean;
+    /** @deprecated Use `pageBreakBefore`. */
     pageBreak?: boolean;
     orientation?: 'portrait' | 'landscape';
   };
@@ -102,8 +114,11 @@ export const useDashboardGridPrintItemStyles_unstable = <TState extends Dashboar
   state.root.className = mergeClasses(
     styles.item,
     state.printMode === 'flow' && styles.flow,
+    state.printMode === 'exact' && styles.exact,
     state.print?.hide && styles.hidden,
-    state.printMode === 'exact' && state.print?.pageBreak && styles.pageBreak,
+    state.printMode === 'exact' &&
+      (state.print?.pageBreakBefore ?? state.print?.pageBreak) &&
+      styles.pageBreak,
     state.root.className,
   );
   if (state.printMode === 'exact' && state.print?.orientation === 'landscape') {

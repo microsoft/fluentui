@@ -32,6 +32,11 @@ export type UseDashboardGridResizeObserverOptions = {
   parentController?: DashboardGridResizeObserverController;
   onResizeContent?: () => void;
   resizeDelay?: number;
+  resolveRowHeight?: (columnWidth: number) => number;
+  measureGaps?: () => Partial<
+    Pick<DashboardGridCellMetrics, 'gapTop' | 'gapRight' | 'gapBottom' | 'gapLeft'>
+  >;
+  onMetricsChange?: (metrics: DashboardGridCellMetrics) => void;
 };
 
 const emptyMetrics: DashboardGridCellMetrics = {
@@ -55,6 +60,9 @@ export const useDashboardGridResizeObserver = (
     nested,
     parentController,
     onResizeContent,
+    resolveRowHeight,
+    measureGaps,
+    onMetricsChange,
   } = options;
   const rootRef = React.useRef<HTMLElement | null>(null);
   const observerRef = React.useRef<ResizeObserver | null>(null);
@@ -100,18 +108,42 @@ export const useDashboardGridResizeObserver = (
         store.setColumns(columns, columnLayout);
       }
 
-      metricsRef.current = {
+      const columnWidth = width > 0 ? width / columns : 0;
+      const nextMetrics: DashboardGridCellMetrics = {
         ...metricsRef.current,
-        columnWidth: width > 0 ? width / columns : 1,
-        rowHeight: Math.max(1, rowHeight),
+        ...measureGaps?.(),
+        columnWidth,
+        rowHeight: Math.max(1, resolveRowHeight?.(columnWidth) ?? rowHeight),
       };
+      const previousMetrics = metricsRef.current;
+      metricsRef.current = nextMetrics;
+      if (
+        previousMetrics.columnWidth !== nextMetrics.columnWidth ||
+        previousMetrics.rowHeight !== nextMetrics.rowHeight ||
+        previousMetrics.gapTop !== nextMetrics.gapTop ||
+        previousMetrics.gapRight !== nextMetrics.gapRight ||
+        previousMetrics.gapBottom !== nextMetrics.gapBottom ||
+        previousMetrics.gapLeft !== nextMetrics.gapLeft
+      ) {
+        onMetricsChange?.(nextMetrics);
+      }
     }
 
     for (const registration of registrationsRef.current.values()) {
       measureRegistration(registration);
     }
     onResizeContent?.();
-  }, [columnLayout, measureRegistration, onResizeContent, resolveColumns, rowHeight, store]);
+  }, [
+    columnLayout,
+    measureGaps,
+    measureRegistration,
+    onMetricsChange,
+    onResizeContent,
+    resolveColumns,
+    resolveRowHeight,
+    rowHeight,
+    store,
+  ]);
 
   React.useEffect(() => {
     if (nested && parentController) {

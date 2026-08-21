@@ -7,6 +7,9 @@ import type { DashboardGridDragSourceProps } from './DashboardGridDragSource.typ
 import { useDashboardGridDragSource_unstable } from './useDashboardGridDragSource';
 import { useDashboardGridDragSourceStyles_unstable } from './useDashboardGridDragSourceStyles.styles';
 
+/**
+ * Registers an external, pointer- and keyboard-operable source for DashboardGrid items.
+ */
 export const DashboardGridDragSource: ForwardRefComponent<DashboardGridDragSourceProps> = React.forwardRef<
   HTMLDivElement,
   DashboardGridDragSourceProps

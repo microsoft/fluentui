@@ -90,8 +90,18 @@ export const useDashboardGridProvider_unstable = (
             eventQueue: {
               enqueue(intent) {
                 const gridId = intent.targetGridId ?? intent.sourceGridId;
-                const grid = gridId ? registry.getGrid(gridId) : undefined;
+                const grid = gridId ? registry.getEventGrid(gridId) : undefined;
                 grid?.store.events.enqueue(intent);
+              },
+              flush(gridId) {
+                 if (gridId) {
+                   registry.getEventGrid(gridId)?.store.events.flush();
+                   return;
+                 }
+                 const stores = new Set(
+                   registry.getGrids().map(grid => grid.store),
+                 );
+                 stores.forEach(store => store.events.flush());
               },
             },
           })

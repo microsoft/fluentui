@@ -9,35 +9,22 @@ import {
 } from '@fluentui/react-utilities';
 import { useDashboardGridDragSource as useDashboardGridDragSourceHook } from '../../hooks/useDashboardGridDragSource';
 import type {
-  DashboardGridDragSourceRegistration,
-  DashboardGridExternalItemDescriptor,
-} from '../../interaction/types';
-import { dashboardGridDataAttributes } from '../../interaction/types';
-import type {
   DashboardGridDragSourceProps,
   DashboardGridDragSourceState,
 } from './DashboardGridDragSource.types';
-
-type ExtendedDashboardGridDragSourceProps = DashboardGridDragSourceProps & {
-  id: string;
-  descriptor: DashboardGridExternalItemDescriptor | (() => DashboardGridExternalItemDescriptor);
-  label?: string;
-  disabled?: boolean;
-  onKeyboardActivate?: (
-    registration: DashboardGridDragSourceRegistration,
-    event: KeyboardEvent,
-  ) => void;
-};
+import { dashboardGridDataAttributes } from '../../interaction/types';
 
 export type DashboardGridDragSourceInternalState = DashboardGridDragSourceState & {
   disabled: boolean;
 };
 
+/**
+ * Creates the state required to render DashboardGridDragSource.
+ */
 export const useDashboardGridDragSource_unstable = (
   props: DashboardGridDragSourceProps,
   ref: React.Ref<HTMLDivElement>,
 ): DashboardGridDragSourceInternalState => {
-  const extendedProps = props as ExtendedDashboardGridDragSourceProps;
   const {
     id,
     descriptor,
@@ -46,7 +33,7 @@ export const useDashboardGridDragSource_unstable = (
     onKeyboardActivate,
     preview: previewShorthand,
     ...rootProps
-  } = extendedProps;
+  } = props;
   const dragSource = useDashboardGridDragSourceHook<HTMLDivElement>({
     id,
     descriptor,

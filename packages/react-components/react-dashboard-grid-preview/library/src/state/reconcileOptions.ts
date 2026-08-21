@@ -47,8 +47,10 @@ export const areDashboardGridItemsEqual = (
       item.lazyMount === candidate.lazyMount &&
       item.sizeToContent === candidate.sizeToContent &&
       item.print?.hide === candidate.print?.hide &&
+      item.print?.pageBreakBefore === candidate.print?.pageBreakBefore &&
       item.print?.pageBreak === candidate.print?.pageBreak &&
       item.print?.orientation === candidate.print?.orientation &&
+      item.subGrid === candidate.subGrid &&
       item.nestedGrid === candidate.nestedGrid
     );
   });

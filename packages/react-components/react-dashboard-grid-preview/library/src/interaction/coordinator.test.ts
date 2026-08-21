@@ -401,4 +401,366 @@ describe('dashboard grid interaction coordinator', () => {
 
     expect(coordinator.getSession()).not.toBeNull();
   });
+
+  it('waits for provider commit completion before emitting cross-grid stop', async () => {
+    const order: string[] = [];
+    const finalize = jest.fn(() => {
+      order.push('source-layout', 'target-layout');
+    });
+    let resolveTransfer:
+      | ((result: {
+          status: 'accepted';
+          targetGridId: string;
+          finalize: () => void;
+        }) => void)
+      | undefined;
+    const transfer = jest.fn(
+      () =>
+        new Promise<{
+          status: 'accepted';
+          targetGridId: string;
+          finalize: () => void;
+        }>(resolve => {
+          resolveTransfer = resolve;
+        }),
+    );
+    const coordinator = createDashboardGridInteractionCoordinator({
+      targetDocument: document,
+      provider: {
+        preflightTransfer: intent => ({
+          status: 'accepted',
+          targetGridId: intent.targetGridId,
+          rect: intent.rect,
+        }),
+        transfer,
+      },
+      eventQueue: {
+        enqueue: intent => {
+          if (intent.type === 'stop') {
+            order.push('stop');
+          }
+        },
+      },
+    });
+    const sourceGrid = document.createElement('div');
+    const targetGrid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    sourceGrid.appendChild(itemElement);
+    jest.spyOn(sourceGrid, 'getBoundingClientRect').mockReturnValue({
+      x: 0,
+      y: 0,
+      left: 0,
+      top: 0,
+      right: 100,
+      bottom: 100,
+      width: 100,
+      height: 100,
+      toJSON: () => ({}),
+    } as DOMRect);
+    jest.spyOn(targetGrid, 'getBoundingClientRect').mockReturnValue({
+      x: 200,
+      y: 0,
+      left: 200,
+      top: 0,
+      right: 400,
+      bottom: 200,
+      width: 200,
+      height: 200,
+      toJSON: () => ({}),
+    } as DOMRect);
+    const metrics = {
+      columnWidth: 100,
+      rowHeight: 100,
+      gapTop: 0,
+      gapRight: 0,
+      gapBottom: 0,
+      gapLeft: 0,
+    };
+    coordinator.registerGrid({
+      id: 'source',
+      element: sourceGrid,
+      direction: 'ltr',
+      store: createStore(order),
+      getMetrics: () => metrics,
+    });
+    coordinator.registerGrid({
+      id: 'target',
+      element: targetGrid,
+      direction: 'ltr',
+      store: createStore(order),
+      getMetrics: () => metrics,
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'source',
+      element: itemElement,
+      movable: true,
+      resizable: true,
+      locked: false,
+    });
+    coordinator.beginPointer({
+      operation: 'drag',
+      pointer: { pointerId: 1, pointerType: 'mouse', isPrimary: true, button: 0 },
+      timeStamp: 40,
+      point: { clientX: 10, clientY: 10 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceGridId: 'source',
+      itemId: 'item',
+      ownerElement: itemElement,
+    });
+    coordinator.activatePointer({ pixelRect: { x: 0, y: 0, width: 100, height: 100 } });
+    coordinator.updatePointer({
+      point: { clientX: 250, clientY: 50 },
+      pixelRect: { x: 250, y: 50, width: 100, height: 100 },
+      clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
+    });
+
+    const commit = coordinator.commit();
+    await Promise.resolve();
+    expect(transfer).toHaveBeenCalledTimes(1);
+    expect(order).not.toContain('stop');
+
+    order.push('provider-commit');
+    resolveTransfer?.({
+      status: 'accepted',
+      targetGridId: 'target',
+      finalize,
+    });
+    await commit;
+
+    expect(finalize).toHaveBeenCalledTimes(1);
+    expect(order.slice(-4)).toEqual([
+      'provider-commit',
+      'stop',
+      'source-layout',
+      'target-layout',
+    ]);
+  });
+
+  it('does not emit stop after a rejected external drop', async () => {
+    const intents: DashboardGridInteractionIntent[] = [];
+    const transfer = jest.fn(() => ({
+      status: 'rejected' as const,
+      reason: 'target-full' as const,
+    }));
+    const coordinator = createDashboardGridInteractionCoordinator({
+      targetDocument: document,
+      provider: {
+        preflightTransfer: intent => ({
+          status: 'accepted',
+          targetGridId: intent.targetGridId,
+          rect: intent.rect,
+        }),
+        transfer,
+      },
+      eventQueue: { enqueue: intent => intents.push(intent) },
+    });
+    const source = document.createElement('div');
+    const target = document.createElement('div');
+    jest.spyOn(target, 'getBoundingClientRect').mockReturnValue({
+      x: 200,
+      y: 0,
+      left: 200,
+      top: 0,
+      right: 400,
+      bottom: 200,
+      width: 200,
+      height: 200,
+      toJSON: () => ({}),
+    } as DOMRect);
+    coordinator.registerDragSource({
+      id: 'external',
+      element: source,
+      descriptor: { id: 'new-item' },
+    });
+    coordinator.registerGrid({
+      id: 'target',
+      element: target,
+      direction: 'ltr',
+      store: createStore([]),
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.beginPointer({
+      operation: 'external',
+      pointer: { pointerId: 1, pointerType: 'mouse', isPrimary: true, button: 0 },
+      timeStamp: 50,
+      point: { clientX: 10, clientY: 10 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceId: 'external',
+      ownerElement: source,
+    });
+    coordinator.activatePointer({ pixelRect: { x: 0, y: 0, width: 100, height: 100 } });
+    coordinator.updatePointer({
+      point: { clientX: 250, clientY: 50 },
+      pixelRect: { x: 250, y: 50, width: 100, height: 100 },
+      clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
+    });
+
+    await expect(coordinator.commit()).resolves.toEqual({
+      status: 'rejected',
+      reason: 'target-full',
+    });
+    expect(transfer).toHaveBeenCalledTimes(1);
+    expect(intents.some(intent => intent.type === 'rejected')).toBe(true);
+    expect(intents.some(intent => intent.type === 'cancel')).toBe(true);
+    expect(intents.some(intent => intent.type === 'stop')).toBe(false);
+  });
+
+  it('emits cancellation without stop for an active uncommitted drag', () => {
+    const intents: DashboardGridInteractionIntent[] = [];
+    const store = createStore([]);
+    const coordinator = createDashboardGridInteractionCoordinator({
+      targetDocument: document,
+      eventQueue: { enqueue: intent => intents.push(intent) },
+    });
+    const grid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store,
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: itemElement,
+      movable: true,
+      resizable: true,
+      locked: false,
+    });
+    coordinator.beginPointer({
+      operation: 'drag',
+      pointer: { pointerId: 1, pointerType: 'mouse', isPrimary: true, button: 0 },
+      timeStamp: 60,
+      point: { clientX: 0, clientY: 0 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceGridId: 'grid',
+      itemId: 'item',
+      ownerElement: itemElement,
+    });
+    coordinator.activatePointer({ pixelRect: { x: 0, y: 0, width: 100, height: 100 } });
+    coordinator.cancel();
+
+    expect(intents.some(intent => intent.type === 'cancel')).toBe(true);
+    expect(intents.some(intent => intent.type === 'stop')).toBe(false);
+  });
+
+  it('closes the source interaction exactly once before provider removal', async () => {
+    const order: string[] = [];
+    const store = createStore(order);
+    const remove = jest.fn(() => {
+      order.push('provider-remove');
+      return {
+        status: 'accepted' as const,
+        finalize: () => {
+          order.push('source-layout');
+        },
+      };
+    });
+    const coordinator = createDashboardGridInteractionCoordinator({
+      targetDocument: document,
+      provider: { remove },
+      eventQueue: {
+        enqueue: intent => {
+          if (intent.type === 'stop') {
+            order.push('stop');
+          }
+        },
+      },
+    });
+    const grid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    const removeZone = document.createElement('div');
+    jest.spyOn(grid, 'getBoundingClientRect').mockReturnValue({
+      x: 0,
+      y: 0,
+      left: 0,
+      top: 0,
+      right: 100,
+      bottom: 100,
+      width: 100,
+      height: 100,
+      toJSON: () => ({}),
+    } as DOMRect);
+    jest.spyOn(removeZone, 'getBoundingClientRect').mockReturnValue({
+      x: 200,
+      y: 0,
+      left: 200,
+      top: 0,
+      right: 300,
+      bottom: 100,
+      width: 100,
+      height: 100,
+      toJSON: () => ({}),
+    } as DOMRect);
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store,
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: itemElement,
+      movable: true,
+      resizable: true,
+      locked: false,
+    });
+    coordinator.registerDropZone({
+      id: 'remove',
+      element: removeZone,
+      kind: 'remove',
+    });
+    coordinator.beginPointer({
+      operation: 'drag',
+      pointer: { pointerId: 1, pointerType: 'mouse', isPrimary: true, button: 0 },
+      timeStamp: 70,
+      point: { clientX: 10, clientY: 10 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceGridId: 'grid',
+      itemId: 'item',
+      ownerElement: itemElement,
+    });
+    coordinator.activatePointer({ pixelRect: { x: 0, y: 0, width: 100, height: 100 } });
+    coordinator.updatePointer({
+      point: { clientX: 250, clientY: 50 },
+      pixelRect: { x: 250, y: 50, width: 100, height: 100 },
+      clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
+    });
+
+    await expect(coordinator.commit()).resolves.toMatchObject({ status: 'accepted' });
+    expect(remove).toHaveBeenCalledTimes(1);
+    expect(order.filter(entry => entry === 'rollback')).toHaveLength(1);
+    expect(order.slice(-4)).toEqual([
+      'rollback',
+      'provider-remove',
+      'stop',
+      'source-layout',
+    ]);
+  });
 });

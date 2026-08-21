@@ -16,6 +16,7 @@ import type {
   DashboardGridGridRegistration,
   DashboardGridInteractionCoordinator,
   DashboardGridInteractionIntent,
+  DashboardGridInteractionOperation,
   DashboardGridInteractionPreview,
   DashboardGridInteractionSession,
   DashboardGridItemRegistration,
@@ -23,6 +24,7 @@ import type {
   DashboardGridMoveProposal,
   DashboardGridMoveResult,
   DashboardGridPoint,
+  DashboardGridPreparedTransferResult,
   DashboardGridPointerSession,
   DashboardGridRejectedReason,
   DashboardGridTransferIntent,
@@ -92,6 +94,7 @@ export const createDashboardGridInteractionCoordinator = (
       getGrid(queuedIntent.sourceGridId)?.store.events ??
       getGrid(queuedIntent.targetGridId)?.store.events;
     queue?.enqueue(queuedIntent);
+    return queue;
   };
 
   const notify = () => {
@@ -199,6 +202,13 @@ export const createDashboardGridInteractionCoordinator = (
     };
   };
 
+  const getIntentOperation = (
+    activeSession: DashboardGridInteractionSession,
+  ): DashboardGridInteractionOperation =>
+    activeSession.operation === 'keyboard' && activeSession.resizeEdge
+      ? 'resize'
+      : activeSession.operation;
+
   const deferCancellation = (shouldCancel: () => boolean) => {
     Promise.resolve().then(() => {
       if (shouldCancel()) {
@@ -210,7 +220,7 @@ export const createDashboardGridInteractionCoordinator = (
   const enqueueStart = (activeSession: DashboardGridInteractionSession, nativeEvent?: Event) => {
     emit({
       type: 'start',
-      operation: activeSession.operation,
+      operation: getIntentOperation(activeSession),
       input:
         activeSession.operation === 'keyboard' ||
         ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')
@@ -254,7 +264,7 @@ export const createDashboardGridInteractionCoordinator = (
         });
         emit({
           type: eventType,
-          operation: activeSession.operation,
+          operation: getIntentOperation(activeSession),
           input:
             activeSession.operation === 'keyboard' ||
             ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')
@@ -315,7 +325,7 @@ export const createDashboardGridInteractionCoordinator = (
         });
         emit({
           type: 'rejected',
-          operation: activeSession.operation,
+          operation: getIntentOperation(activeSession),
           input:
             activeSession.operation === 'keyboard' ||
             ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')
@@ -563,6 +573,7 @@ export const createDashboardGridInteractionCoordinator = (
         currentPixelRect: request.originPixelRect,
         currentClientPixelRect: request.operation === 'external' ? request.originPixelRect : undefined,
         lastAcceptedRect: originRect,
+        sourceInteractionClosed: false,
         focusReturn: request.focusReturn,
       };
       setSession(nextSession);
@@ -778,6 +789,7 @@ export const createDashboardGridInteractionCoordinator = (
         sourceGridId: request.gridId,
         targetGridId: request.gridId,
         itemId: request.itemId,
+        resizeEdge: request.resizeEdge,
         originRect: item,
         lastAcceptedRect: item,
         focusReturn: request.focusReturn,
@@ -834,7 +846,7 @@ export const createDashboardGridInteractionCoordinator = (
       const activeSession = session;
       activeSession.phase = 'committing';
       notify();
-      let transferResult: DashboardGridTransferResult | undefined;
+      let transferResult: DashboardGridPreparedTransferResult | undefined;
       const isTransfer =
         activeSession.operation === 'external' ||
         activeSession.targetGridId !== activeSession.sourceGridId ||
@@ -854,7 +866,11 @@ export const createDashboardGridInteractionCoordinator = (
               ('rejectionReason' in activeSession ? activeSession.rejectionReason : undefined) ?? 'target-rejected',
           };
         } else {
-          if (activeSession.operation !== 'external' && 'sourceInteractionClosed' in activeSession) {
+          if (
+            activeSession.operation !== 'external' &&
+            activeSession.operation !== 'keyboard' &&
+            !activeSession.sourceInteractionClosed
+          ) {
             getGrid(activeSession.sourceGridId)?.store.cancelInteraction();
             activeSession.sourceInteractionClosed = true;
           }
@@ -867,7 +883,7 @@ export const createDashboardGridInteractionCoordinator = (
       if (transferResult?.status === 'rejected') {
         emit({
           type: 'rejected',
-          operation: activeSession.operation,
+          operation: getIntentOperation(activeSession),
           input:
             activeSession.operation === 'keyboard' ||
             ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')
@@ -888,23 +904,33 @@ export const createDashboardGridInteractionCoordinator = (
 
       clearPreview(activeSession);
       clearDropTarget();
-      emit({
+      const stopGridId = transferResult?.targetGridId ?? activeSession.targetGridId;
+      const stopQueue = emit({
         type: 'stop',
-        operation: activeSession.operation,
+        operation: getIntentOperation(activeSession),
         input:
           activeSession.operation === 'keyboard' ||
           ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')
             ? 'keyboard'
             : 'pointer',
         sourceGridId: activeSession.sourceGridId,
-        targetGridId: transferResult?.targetGridId ?? activeSession.targetGridId,
+        targetGridId: stopGridId,
         itemId: activeSession.itemId,
         sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
         previous: activeSession.originRect,
         current: transferResult?.rect ?? activeSession.lastAcceptedRect,
         nativeEvent,
       });
-      setSession(null);
+      if (stopQueue?.flush) {
+        stopQueue.flush(stopGridId ?? activeSession.sourceGridId);
+      } else {
+        await Promise.resolve();
+      }
+      try {
+        await transferResult?.finalize();
+      } finally {
+        setSession(null);
+      }
       return transferResult;
     },
     cancel: nativeEvent => {
@@ -919,11 +945,11 @@ export const createDashboardGridInteractionCoordinator = (
         setSession(null);
         return;
       }
-      if (
-        activeSession.operation !== 'external' &&
-        !wasArmed &&
-        !('sourceInteractionClosed' in activeSession && activeSession.sourceInteractionClosed)
-      ) {
+      const shouldCancelStore =
+        activeSession.operation === 'keyboard' ||
+        ((activeSession.operation === 'drag' || activeSession.operation === 'resize') &&
+          !activeSession.sourceInteractionClosed);
+      if (!wasArmed && shouldCancelStore) {
         getGrid(activeSession.sourceGridId)?.store.cancelInteraction();
       }
       options.provider?.cancel?.(activeSession);
@@ -931,7 +957,7 @@ export const createDashboardGridInteractionCoordinator = (
       clearDropTarget();
       emit({
         type: 'cancel',
-        operation: activeSession.operation,
+        operation: getIntentOperation(activeSession),
         input:
           activeSession.operation === 'keyboard' ||
           ('pointer' in activeSession && activeSession.pointer.pointerType === 'keyboard')

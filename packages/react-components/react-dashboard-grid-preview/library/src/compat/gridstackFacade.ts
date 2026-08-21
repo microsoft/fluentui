@@ -308,6 +308,7 @@ export function createGridStackEventAdapter(
   options: GridStackEventAdapterOptions = {},
 ): GridStackLikeFacade {
   const handlers = new Map<GridStackEventName, Set<GridStackEventHandlerCallback>>();
+  const emittingEvents = new Set<GridStackEventName>();
   const callbackElements = new Map<string, HTMLElement>();
   const getItemElement = (id: string): HTMLElement | undefined =>
     options.getItemElement?.(id) ?? callbackElements.get(id);
@@ -426,7 +427,7 @@ export function createGridStackEventAdapter(
 
     emit(name, payload) {
       const eventHandlers = handlers.get(name);
-      if (!eventHandlers || eventHandlers.size === 0) {
+      if (!eventHandlers || eventHandlers.size === 0 || emittingEvents.has(name)) {
         return facade;
       }
 
@@ -438,60 +439,65 @@ export function createGridStackEventAdapter(
         detail: payload,
       };
 
-      for (const callback of eventHandlers) {
-        if (
-          name === 'added' ||
-          name === 'change' ||
-          name === 'removed' ||
-          name === 'resizecontent'
-        ) {
-          const nodesPayload = payload as Readonly<{
-            nodes: readonly DashboardGridResolvedItem[];
-          }>;
-          const nodes = nodesPayload.nodes.map(item =>
-            toNode(item, getItemElement),
-          );
-          (callback as (event: GridStackCompatibilityEvent, nodes: readonly GridStackNode[]) => void)(
-            event,
-            nodes,
-          );
-        } else if (
-          name === 'drag' ||
-          name === 'dragstart' ||
-          name === 'dragstop' ||
-          name === 'resize' ||
-          name === 'resizestart' ||
-          name === 'resizestop'
-        ) {
-          const itemPayload = payload as Readonly<{
-            item: DashboardGridResolvedItem;
-            element?: HTMLElement;
-          }>;
-          const element = itemPayload.element ?? getItemElement(itemPayload.item.id);
-          if (element) {
-            (callback as (event: GridStackCompatibilityEvent, element: HTMLElement) => void)(
-              event,
-              element,
+      emittingEvents.add(name);
+      try {
+        for (const callback of eventHandlers) {
+          if (
+            name === 'added' ||
+            name === 'change' ||
+            name === 'removed' ||
+            name === 'resizecontent'
+          ) {
+            const nodesPayload = payload as Readonly<{
+              nodes: readonly DashboardGridResolvedItem[];
+            }>;
+            const nodes = nodesPayload.nodes.map(item =>
+              toNode(item, getItemElement),
             );
+            (callback as (event: GridStackCompatibilityEvent, nodes: readonly GridStackNode[]) => void)(
+              event,
+              nodes,
+            );
+          } else if (
+            name === 'drag' ||
+            name === 'dragstart' ||
+            name === 'dragstop' ||
+            name === 'resize' ||
+            name === 'resizestart' ||
+            name === 'resizestop'
+          ) {
+            const itemPayload = payload as Readonly<{
+              item: DashboardGridResolvedItem;
+              element?: HTMLElement;
+            }>;
+            const element = itemPayload.element ?? getItemElement(itemPayload.item.id);
+            if (element) {
+              (callback as (event: GridStackCompatibilityEvent, element: HTMLElement) => void)(
+                event,
+                element,
+              );
+            }
+          } else if (name === 'dropped') {
+            const dropPayload = payload as GridStackEventPayloadMap['dropped'];
+            (
+              callback as (
+                event: GridStackCompatibilityEvent,
+                previousNode: GridStackNode | undefined,
+                newNode: GridStackNode,
+              ) => void
+            )(
+              event,
+              dropPayload.previousItem
+                ? toNode(dropPayload.previousItem, getItemElement)
+                : undefined,
+              toNode(dropPayload.item, getItemElement),
+            );
+          } else {
+            (callback as (event: GridStackCompatibilityEvent) => void)(event);
           }
-        } else if (name === 'dropped') {
-          const dropPayload = payload as GridStackEventPayloadMap['dropped'];
-          (
-            callback as (
-              event: GridStackCompatibilityEvent,
-              previousNode: GridStackNode | undefined,
-              newNode: GridStackNode,
-            ) => void
-          )(
-            event,
-            dropPayload.previousItem
-              ? toNode(dropPayload.previousItem, getItemElement)
-              : undefined,
-            toNode(dropPayload.item, getItemElement),
-          );
-        } else {
-          (callback as (event: GridStackCompatibilityEvent) => void)(event);
         }
+      } finally {
+        emittingEvents.delete(name);
       }
 
       return facade;

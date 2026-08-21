@@ -4,6 +4,17 @@ import { renderToString } from 'react-dom/server.node';
 import { DashboardGrid } from './DashboardGrid';
 import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
 import type { DashboardGridHandle } from '../../hooks/useDashboardGrid';
+import { createDashboardGridEngine } from '../../engine';
+import { useRequiredDashboardGridContext_unstable } from '../../contexts';
+import type { DashboardGridStore } from '../../state/DashboardGridStore.types';
+
+const StoreCapture = (props: { onStore: (store: DashboardGridStore) => void }) => {
+  const store = useRequiredDashboardGridContext_unstable(context => context.store);
+  React.useLayoutEffect(() => {
+    props.onStore(store);
+  }, [props.onStore, store]);
+  return null;
+};
 
 describe('DashboardGrid', () => {
   it('renders uncontrolled defaultItems with deterministic geometry', () => {
@@ -104,6 +115,26 @@ describe('DashboardGrid', () => {
     expect(screen.getByText('Unknown dashboard component: missing-component')).toBeVisible();
   });
 
+  it('renders registered components and a caller-provided unknown fallback', () => {
+    const Metric = (props: Record<string, unknown>) => (
+      <span>{`Metric ${String(props.value)}`}</span>
+    );
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        components={{ metric: Metric }}
+        renderUnknownComponent={item => <span>{`Missing ${item.id}`}</span>}
+        defaultItems={[
+          { id: 'known', component: 'metric', props: { value: 7 } },
+          { id: 'missing', component: 'unknown' },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText('Metric 7')).toBeVisible();
+    expect(screen.getByText('Missing missing')).toBeVisible();
+  });
+
   it('uses caller-localized spatial and resize-handle strings', () => {
     render(
       <DashboardGrid
@@ -113,6 +144,7 @@ describe('DashboardGrid', () => {
           formatPosition: () => 'Localized position',
           formatResizeHandle: edge => `Localized ${edge}`,
         }}
+        resize={{ handleVisibility: 'always' }}
         renderItem={item => <span>{item.id}</span>}
       />,
     );
@@ -126,12 +158,14 @@ describe('DashboardGrid', () => {
   it('emits Fluent event data with input and kind metadata', async () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
     const onLayoutChange = jest.fn();
+    const onItemsChange = jest.fn();
     render(
       <DashboardGrid
         aria-label="Dashboard"
         imperativeRef={imperativeRef}
         defaultItems={[]}
         onLayoutChange={onLayoutChange}
+        onItemsChange={onItemsChange}
       />,
     );
 
@@ -150,43 +184,258 @@ describe('DashboardGrid', () => {
         }),
       ),
     );
+    expect(onItemsChange).toHaveBeenCalledWith(
+      expect.any(Event),
+      expect.objectContaining({
+        type: 'items-change',
+        input: 'api',
+        reason: 'add',
+        affectedItems: [expect.objectContaining({ id: 'event-item' })],
+      }),
+    );
   });
 
-  it('keeps the active pointer shell at origin while preview geometry and temporary rows update', () => {
+  it('renders and updates absolute screen geometry through the public handle', () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
-    const { container } = render(
+    render(
       <DashboardGrid
         aria-label="Dashboard"
-        gridId="pointer-grid"
         imperativeRef={imperativeRef}
-        defaultItems={[{ id: 'active', column: 0, row: 0 }]}
+        columns={4}
+        rowHeight={64}
+        float
+        defaultItems={[
+          { id: 'active', column: 1, row: 2, columnSpan: 2, rowSpan: 2 },
+        ]}
         renderItem={item => <span>{item.id}</span>}
       />,
     );
-    const store = imperativeRef.current!.getStore();
+    const item = screen.getByText('active').closest('[data-dashboard-grid-item]') as HTMLElement;
+    const surface = item.parentElement as HTMLElement;
+
+    expect(getComputedStyle(item).position).toBe('absolute');
+    expect(surface).toHaveClass('fui-DashboardGrid__surface');
+    expect(getComputedStyle(surface).position).toBe('relative');
+    expect(getComputedStyle(surface).overflow).toBe('visible');
+    expect(item.style.insetInlineStart).toBe('25%');
+    expect(item.style.top).toBe('128px');
+    expect(item.style.width).toBe('50%');
+    expect(item.style.height).toBe('128px');
 
     act(() => {
-      store.beginInteraction('active', { kind: 'drag', source: 'internal' });
-      store.move('active', { input: 'pointer', column: 3, row: 0 });
-      store.publishPreview?.({
+      imperativeRef.current?.updateItem('active', { column: 2, row: 1 });
+    });
+    expect(item.style.insetInlineStart).toBe('50%');
+    expect(item.style.top).toBe('64px');
+  });
+
+  it('exposes the architecture command surface without a mutable store escape hatch', async () => {
+    const imperativeRef = React.createRef<DashboardGridHandle>();
+    const onEnabledChange = jest.fn();
+    const onContentResize = jest.fn();
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        imperativeRef={imperativeRef}
+        defaultItems={[
+          {
+            id: 'wide',
+            column: 0,
+            row: 0,
+            columnSpan: 2,
+            rowSpan: 1,
+          },
+        ]}
+        onEnabledChange={onEnabledChange}
+        onContentResize={onContentResize}
+        renderItem={item => <span>{item.id}</span>}
+      />,
+    );
+    const handle = imperativeRef.current!;
+
+    expect('getStore' in handle).toBe(false);
+    expect(handle.getItem('wide')).toMatchObject({ id: 'wide', columnSpan: 2 });
+    expect(handle.getItems()).toHaveLength(1);
+    expect(handle.canPlace({ id: 'candidate', column: 3, row: 0 }).fits).toBe(true);
+    expect(
+      handle.isAreaEmpty({ column: 3, row: 0, columnSpan: 1, rowSpan: 1 }),
+    ).toBe(true);
+    expect(handle.getCellFromPoint({ clientX: 0, clientY: 0 })).toEqual({
+      column: 0,
+      row: 0,
+    });
+    expect(handle.save()).toMatchObject({
+      version: 1,
+      options: expect.any(Object),
+      items: [expect.objectContaining({ id: 'wide' })],
+    });
+    expect(handle.save({ itemsOnly: true })).toEqual([
+      expect.objectContaining({ id: 'wide' }),
+    ]);
+
+    act(() => {
+      handle.batch(() => {
+        handle.addItem({ id: 'second', column: 3, row: 0 });
+        handle.updateItem('wide', { rowSpan: 2 });
+      });
+      handle.setColumns(6, 'move');
+      handle.rotateItem('wide');
+      handle.disable();
+    });
+    await waitFor(() =>
+      expect(onEnabledChange).toHaveBeenCalledWith(
+        expect.any(Event),
+        expect.objectContaining({ type: 'enabled-change', enabled: false }),
+      ),
+    );
+    expect(handle.getItem('wide')).toMatchObject({
+      columnSpan: 2,
+      rowSpan: 2,
+    });
+    expect(screen.queryByRole('button', { name: /Resize wide/i })).toBeNull();
+
+    act(() => {
+      handle.enable();
+      handle.refreshDragHandles('wide');
+      handle.resizeItemToContent('wide');
+      handle.focusItem('wide');
+      handle.removeItem('second');
+      handle.removeAll();
+    });
+    expect(handle.getItems()).toEqual([]);
+    expect(onContentResize).toHaveBeenCalledWith(
+      expect.any(Event),
+      expect.objectContaining({ type: 'content-resize', input: 'content' }),
+    );
+  });
+
+  it('applies gap, row constraints, disablement, and injected-engine options', () => {
+    const engineFactory = jest.fn(options => createDashboardGridEngine(options));
+    const { container } = render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        columns={4}
+        rowHeight={50}
+        gap="8px 12px"
+        minRows={3}
+        fixedRows={4}
+        disableDrag
+        disableResize
+        layoutEngine={engineFactory}
+        defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+        renderItem={item => <span>{item.id}</span>}
+      />,
+    );
+
+    expect(engineFactory).toHaveBeenCalledWith(
+      expect.objectContaining({
+        columns: 4,
+        maxRows: 4,
+        resizeDisabled: true,
+      }),
+    );
+    const surface = container.querySelector('.fui-DashboardGrid__surface') as HTMLElement;
+    expect(surface.style.rowGap).toBe('8px');
+    expect(surface.style.columnGap).toBe('12px');
+    expect(surface.style.blockSize).toBe('200px');
+    expect(screen.queryByRole('button', { name: /Resize item/i })).toBeNull();
+  });
+
+  it('positions the placeholder absolutely inside the surface and reserves temporary rows', async () => {
+    let store: DashboardGridStore | undefined;
+    const { container } = render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        gridId="preview-grid"
+        columns={4}
+        rowHeight={50}
+        defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+        renderItem={() => (
+          <StoreCapture
+            onStore={next => {
+              store = next;
+            }}
+          />
+        )}
+      />,
+    );
+    await waitFor(() => expect(store).toBeDefined());
+
+    act(() => {
+      store?.publishPreview?.({
         operation: 'drag',
-        sourceGridId: 'pointer-grid',
-        targetGridId: 'pointer-grid',
-        itemId: 'active',
+        sourceGridId: 'preview-grid',
+        targetGridId: 'preview-grid',
+        itemId: 'item',
         originRect: { column: 0, row: 0, columnSpan: 1, rowSpan: 1 },
-        rect: { column: 3, row: 0, columnSpan: 1, rowSpan: 1 },
-        temporaryRows: 4,
+        rect: { column: 2, row: 3, columnSpan: 1, rowSpan: 1 },
+        temporaryRows: 5,
         valid: true,
       });
     });
 
-    const item = screen.getByText('active').closest('[data-dashboard-grid-item]') as HTMLElement;
-    const placeholder = container.querySelector('.fui-DashboardGrid__placeholder') as HTMLElement;
     const surface = container.querySelector('.fui-DashboardGrid__surface') as HTMLElement;
-    expect(store.getItem('active')?.column).toBe(3);
-    expect(item.style.getPropertyValue('--dashboard-grid-column')).toBe('0');
-    expect(placeholder.style.getPropertyValue('--dashboard-grid-column')).toBe('3');
-    expect(surface).toHaveAttribute('data-dashboard-grid-temporary-rows', '4');
-    expect(surface.style.gridTemplateRows).toContain('repeat(4');
+    const placeholder = container.querySelector('.fui-DashboardGrid__placeholder') as HTMLElement;
+    expect(placeholder.parentElement).toBe(surface);
+    expect(getComputedStyle(placeholder).position).toBe('absolute');
+    expect(placeholder.style.insetInlineStart).toBe('50%');
+    expect(placeholder.style.top).toBe('150px');
+    expect(surface.style.blockSize).toBe('250px');
+  });
+
+  it('emits public drag and resize progress callbacks from interaction intents', async () => {
+    let store: DashboardGridStore | undefined;
+    const onDrag = jest.fn();
+    const onResize = jest.fn();
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        gridId="progress-grid"
+        defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+        onDrag={onDrag}
+        onResize={onResize}
+        renderItem={() => (
+          <StoreCapture
+            onStore={next => {
+              store = next;
+            }}
+          />
+        )}
+      />,
+    );
+    await waitFor(() => expect(store).toBeDefined());
+
+    act(() => {
+      store?.events.enqueue({
+        type: 'update',
+        operation: 'drag',
+        input: 'pointer',
+        sourceGridId: 'progress-grid',
+        targetGridId: 'progress-grid',
+        itemId: 'item',
+        previous: { column: 0, row: 0, columnSpan: 1, rowSpan: 1 },
+        current: { column: 1, row: 0, columnSpan: 1, rowSpan: 1 },
+      });
+      store?.events.enqueue({
+        type: 'update',
+        operation: 'resize',
+        input: 'pointer',
+        sourceGridId: 'progress-grid',
+        targetGridId: 'progress-grid',
+        itemId: 'item',
+        previous: { column: 1, row: 0, columnSpan: 1, rowSpan: 1 },
+        current: { column: 1, row: 0, columnSpan: 2, rowSpan: 1 },
+      });
+      store?.events.flush();
+    });
+
+    expect(onDrag).toHaveBeenCalledWith(
+      expect.any(Event),
+      expect.objectContaining({ type: 'drag', kind: 'drag' }),
+    );
+    expect(onResize).toHaveBeenCalledWith(
+      expect.any(Event),
+      expect.objectContaining({ type: 'resize', kind: 'resize' }),
+    );
   });
 });
