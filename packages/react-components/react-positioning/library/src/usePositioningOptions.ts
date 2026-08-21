@@ -1,7 +1,7 @@
 'use client';
 
 import { devtools } from '@floating-ui/devtools';
-import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import { arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
@@ -15,6 +15,7 @@ import {
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
   matchTargetSize as matchTargetSizeMiddleware,
+  hide as hideMiddleware,
 } from './middleware';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
 import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
@@ -170,8 +171,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden' }),
-        hideMiddleware({ strategy: 'escaped' }),
+        hideMiddleware({ strategy: 'referenceHidden', hasScrollableElement }),
+        hideMiddleware({ strategy: 'escaped', hasScrollableElement }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
