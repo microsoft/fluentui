@@ -356,6 +356,7 @@
     "starter-templates"
   ],
   "resolutions": {
+    "@fluentui/react-icons": "file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz",
     "@nx/devkit/minimatch": "^9.0.7",
     "@nx/jest/minimatch": "^9.0.7",
     "@phenomnomnominal/tsquery": "6.1.3",
