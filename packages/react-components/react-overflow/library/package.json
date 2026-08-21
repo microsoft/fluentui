@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-overflow",
-  "version": "9.9.0",
+  "version": "9.9.2",
   "description": "React bindings for @fluentui/priority-overflow",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,10 +12,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/priority-overflow": "^9.4.0",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/priority-overflow": "^9.4.2",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
@@ -33,17 +33,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

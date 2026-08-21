@@ -1,16 +1,28 @@
 const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
-const { workspaceRoot } = require('@nx/devkit');
-const { relative, join } = require('node:path');
+const { existsSync, readFileSync } = require('node:fs');
+const { dirname, join } = require('node:path');
 
 function getEsmOnlyPackagesToCjsMapping() {
-  /**
-   * relative path to jest cwd
-   */
-  const prefix = `<rootDir>/`;
+  const findPackageRoot = (libraryName, resolveFrom = __dirname) => {
+    let packageRoot = dirname(require.resolve(libraryName, { paths: [resolveFrom] }));
 
-  const workspaceRootNodeModules = prefix + join(relative(__dirname, workspaceRoot), 'node_modules');
+    while (packageRoot !== dirname(packageRoot)) {
+      const packageJsonPath = join(packageRoot, 'package.json');
+
+      if (existsSync(packageJsonPath) && JSON.parse(readFileSync(packageJsonPath, 'utf8')).name === libraryName) {
+        return packageRoot;
+      }
+
+      packageRoot = dirname(packageRoot);
+    }
+
+    throw new Error(`Could not resolve package root for ${libraryName}`);
+  };
+
   const createD3LibMappingToCommonJs = libraryName => {
-    return workspaceRootNodeModules + `/${libraryName}/dist/${libraryName}.js`;
+    const resolveFrom = libraryName === 'd3-path' ? findPackageRoot('d3-shape') : __dirname;
+
+    return join(findPackageRoot(libraryName, resolveFrom), 'dist', `${libraryName}.js`);
   };
 
   const d3Libs = [

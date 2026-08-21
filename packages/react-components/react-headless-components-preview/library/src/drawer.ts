@@ -1,5 +1,11 @@
 export { Drawer, renderDrawer, useDrawer } from './components/Drawer';
 export type { DrawerProps, DrawerSlots, DrawerState } from './components/Drawer';
+export {
+  DrawerProvider,
+  useDrawerContext_unstable as useDrawerContext,
+  useDrawerContextValue,
+} from '@fluentui/react-drawer';
+export type { DrawerContextValue } from '@fluentui/react-drawer';
 
 export { OverlayDrawer, renderOverlayDrawer, useOverlayDrawer } from './components/Drawer';
 export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from './components/Drawer';

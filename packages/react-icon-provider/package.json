@@ -14,8 +14,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",

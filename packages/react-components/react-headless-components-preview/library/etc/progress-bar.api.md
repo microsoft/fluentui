@@ -5,26 +5,27 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
-import type { ProgressBarBaseProps } from '@fluentui/react-progress';
 import type { ProgressBarBaseState } from '@fluentui/react-progress';
-import type { ProgressBarSlots as ProgressBarSlots_2 } from '@fluentui/react-progress';
+import { ProgressBarBaseProps as ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
 import type * as React_2 from 'react';
+import { renderProgressBar_unstable as renderProgressBar } from '@fluentui/react-progress';
 
 // @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
-// @public
-export type ProgressBarProps = ProgressBarBaseProps;
+export { ProgressBarProps }
 
-// @public (undocumented)
-export type ProgressBarSlots = ProgressBarSlots_2;
+export { ProgressBarSlots }
 
 // @public
-export type ProgressBarState = ProgressBarBaseState;
+export type ProgressBarState = ProgressBarBaseState & {
+    root: {
+        'data-indeterminate'?: string;
+    };
+};
 
-// @public
-export const renderProgressBar: (state: ProgressBarState) => JSXElement;
+export { renderProgressBar }
 
 // @public
 export const useProgressBar: (props: ProgressBarProps, ref: React_2.Ref<HTMLDivElement>) => ProgressBarState;

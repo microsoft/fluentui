@@ -11,19 +11,19 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint"
   },
   "dependencies": {
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "jest": ">=26.0.0",
     "@testing-library/react": "^12 || ^16",
     "@testing-library/user-event": "^13 || ^14",
+    "jest": ">=26.0.0",
     "react": ">=16.8.0 <19.0.0"
   },
   "files": [

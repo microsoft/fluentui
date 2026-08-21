@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add nested `module` condition under `node` so node-targeted bundlers (SSR) resolve ESM and tree-shake; bare Node and `require` consumers keep resolving CommonJS unchanged",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

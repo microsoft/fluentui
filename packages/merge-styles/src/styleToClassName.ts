@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- legacy package, style objects are loosely typed */
 import { IStyle } from './IStyle';
 import { IRawStyle } from './IRawStyle';
 
@@ -223,6 +224,25 @@ function repeatString(target: string, count: number): string {
   return target + repeatString(target, count - 1);
 }
 
+const CSS_ESCAPE_MAP: Record<string, string> = {
+  '<': '\\3C ',
+  '>': '\\3E ',
+};
+
+/**
+ * Escapes characters that could break out of a `<style>` element during server side rendering.
+ *
+ * A `<style>` element is HTML raw text, so the only thing that terminates it is the literal
+ * sequence `</style`. Emitting `<` and `>` as CSS code point escapes keeps the declaration
+ * semantically identical (including inside quoted strings and `url()`) while making it
+ * impossible for the HTML tokenizer to see a tag.
+ *
+ * IMPORTANT: only apply this to declaration *values*. Selectors legitimately contain `>`.
+ */
+function escapeForStyleTag(value: string): string {
+  return value.replace(/[<>]/g, match => CSS_ESCAPE_MAP[match]);
+}
+
 export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key: string]: string | number }): string {
   if (!ruleEntries) {
     return '';
@@ -246,7 +266,9 @@ export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key
 
   // Apply punctuation.
   for (let i = 1; i < allEntries.length; i += 4) {
-    allEntries.splice(i, 1, ':', allEntries[i], ';');
+    const value = allEntries[i];
+
+    allEntries.splice(i, 1, ':', typeof value === 'string' ? escapeForStyleTag(value) : value, ';');
   }
 
   return allEntries.join('');

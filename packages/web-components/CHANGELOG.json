@@ -2,6 +2,124 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 19 Aug 2026 04:08:27 GMT",
+      "version": "3.1.1",
+      "tag": "@fluentui/web-components_v3.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "jibinjose884@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1964e7ce05f25771f4a476ec6b2fdbfb3d5e4bf7",
+            "comment": "fix: remove padding-block-start in multiline dismiss slot to fix alignment"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2026 04:10:22 GMT",
+      "version": "3.1.0",
+      "tag": "@fluentui/web-components_v3.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Use a namespace import for the now ESM-only `@fluentui/tokens`"
+          },
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "32b42a5bf79c1836047dfc7fae07b1320731bce4",
+            "comment": "package bump due to a partial publish"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jolud@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "33e4a021a728e9a7ba2f023e1a500fee549c4be5",
+            "comment": "Remove max-width from MessageBar component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2026 17:06:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.3",
+      "version": "3.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9b50daf7d3e1d0b37733245f355ed087a6f21f79",
+            "comment": "remove using data-indent for styling"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "57e1e3848968c48dfa9769848e0c94edb975bec9",
+            "comment": "make native disabled state support SSR better"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "181ade619f4a6c78b767166c4dc7621daa5bb112",
+            "comment": "fix: select a tab when click() is called on it"
+          }
+        ],
+        "none": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fa836f69d00059cc728b51d0f8f4af9578199fd7",
+            "comment": "use repo root level dependencies to run local commands"
+          },
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7ed216e116af3d202b028d568dc6c4c975b74ad0",
+            "comment": "chore: fixing package bump issue to latest published version"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a7f23fff45fe9d7832098b34a2d1151c69a80894",
+            "comment": "chore: security dependency remediation for S360 CVEs"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2026 04:09:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.2",
+      "version": "3.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bc5035bfcd53277a39075c596b14b9731020d1de",
+            "comment": "fix focusgroup in tree when focusgroup is natively supported"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jul 2026 04:09:49 GMT",
       "tag": "@fluentui/web-components_v3.0.1",
       "version": "3.0.1",

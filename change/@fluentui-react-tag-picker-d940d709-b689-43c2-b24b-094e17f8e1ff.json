@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

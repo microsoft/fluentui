@@ -16,4 +16,8 @@ export type TooltipProps = Omit<TooltipBaseProps, 'mountNode'>;
  *
  * Extends Tooltip base state with headless-specific data attributes used for styling hooks.
  */
-export type TooltipState = Omit<TooltipBaseState, 'mountNode'>;
+export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'hidden'> & {
+  content: {
+    'data-open'?: string;
+  };
+};

@@ -1,9 +1,13 @@
-# Install versions of Node and Yarn required by build pipelines.
+# Install tools and dependencies and set shared configuration
 parameters:
   - name: dryRun
     displayName: Dry Run Mode
     type: boolean
     default: false
+  - name: githubPAT
+    displayName: GitHub Personal Access Token
+    type: string
+    default: ''
 
 steps:
   # Logs a message when dry run mode is enabled.
@@ -45,10 +49,21 @@ steps:
   - script: |
       printenv | sort
       echo "SHELLOPTS $SHELLOPTS"
-      echo 'deployBasePath "$(deployBasePath)"'
-      echo 'deployUrl "$(deployUrl)"'
-      echo 'isPR "$(isPR)"'
-      echo 'targetBranch "$(targetBranch)"'
       echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
     displayName: Log environment variables (Linux)
     condition: eq(variables['Agent.OS'], 'Linux')
+
+  - script: |
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+    displayName: Configure git user (used by beachball)
+
+  - script: |
+      git remote set-url origin https://fabricteam:$(githubPAT)@github.com/microsoft/fluentui.git
+    displayName: Authenticate git for pushes
+    condition: and(succeeded(), ne('${{ parameters.githubPAT }}', ''))
+
+  - script: |
+      corepack enable
+      yarn install --immutable
+    displayName: yarn install
