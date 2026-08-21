@@ -89,7 +89,7 @@ const tailwindPostcssLoader = {
          *
          * Without it css-loader hashes the marker and every named-group rule compiles to a
          * selector the DOM never matches — silently, with VR still green. See
-         * scripts/css-modules/globalize-group-markers.js and DECISIONS.md D15.
+         * scripts/css-modules/globalize-group-markers.js.
          */
         globalizeGroupMarkers(),
       ],
@@ -108,8 +108,7 @@ const tailwindPostcssLoader = {
  * produce byte-identical class names for the same module — see scripts/css-modules/ident.js.
  *
  * The `fuicm-` prefix is a hard contract with the jest snapshot serializer, which strips
- * these exactly like Griffel's jest serializer stripped atomics
- * (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
+ * these exactly like Griffel's jest serializer stripped atomics.
  *
  * @type {import("webpack").RuleSetRule}
  */

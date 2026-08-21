@@ -14,8 +14,7 @@ import {
 import { type NormalizedOptions } from './shared';
 
 /**
- * Guardrail for the two halves of the generated-class-name contract
- * (migration/griffel-to-tailwind/reports/DECISIONS.md D9 + D15).
+ * Guardrail for the two halves of the generated-class-name contract.
  *
  * Both failures these cover are SILENT — the CSS stays well-formed, nothing warns, and the
  * visual-regression suite passes because nothing changed visually:
@@ -123,8 +122,7 @@ describe('compileCssModuleSource', () => {
 });
 
 /**
- * StackShim's permanently UNLAYERED descendant rules
- * (migration/griffel-to-tailwind/reports/s4-v8-layering-decision.md §2.1, §3.4).
+ * StackShim's permanently UNLAYERED descendant rules.
  *
  * `@fluentui/react-migration-v8-v9` exists to render hybrid v8/v9 trees, so a StackShim's
  * children are routinely v8 components styled by merge-styles — which injects UNLAYERED at
@@ -241,7 +239,7 @@ describe('compileCssModuleSource — StackShim unlayered descendant rules (S4)',
  * `cleanOutput` does not clear `dist/` (api-extractor owns it), so deleting a package's last
  * `*.module.css` used to leave `dist/styles.css` behind forever on incremental local builds —
  * a stale stylesheet that nothing imports but that `"./styles.css"` still resolves for
- * consumers (reports/phase15-css-emission.md open question 4).
+ * consumers.
  */
 describe('compileCssModules — orphaned dist/styles.css', () => {
   let projectRoot: string;
