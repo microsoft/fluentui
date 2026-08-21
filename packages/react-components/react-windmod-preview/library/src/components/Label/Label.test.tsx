@@ -13,7 +13,7 @@ describe('Label', () => {
     requiredProps: { children: "I'm a label." },
   });
 
-  it('stamps data-size and keeps the group marker out of classList[0]', () => {
+  it('stamps data-size and the marker class', () => {
     const { getByText } = render(
       <>
         <Label>Default</Label>
@@ -24,7 +24,9 @@ describe('Label', () => {
     expect(getByText('Default').getAttribute('data-size')).toBe('medium');
     expect(getByText('Large').getAttribute('data-size')).toBe('large');
     expect(getByText('Default').className).toContain(labelClassNames.root);
-    expect(getByText('Default').classList[0]).not.toContain('/');
+    expect(getByText('Default')).toHaveClass('fui-label');
+    expect(getByText('Default')).toHaveClass('group/fui-label');
+    expect(getByText('Default').classList[0]).toBe('fui-label');
   });
 
   it('does not mutate the state it is given', () => {

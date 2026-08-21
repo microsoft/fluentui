@@ -1,12 +1,13 @@
 import { clsx } from 'clsx';
 
+import { componentMarkers } from '../../utils/groupMarker';
 import type { TooltipState } from './Tooltip.types';
 
 import styles from './Tooltip.module.css';
 
-/** The only public class — the named-group marker on the content (Tooltip's only slot). */
+/** The only public classes — see componentMarkers; the content is Tooltip's only slot. */
 export const tooltipClassNames: { root: string } = {
-  root: 'group/fui-tooltip',
+  root: componentMarkers('tooltip'),
 };
 
 /** Class assembly only: the headless hook stamps data-open/data-placement, the hint
@@ -17,10 +18,9 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
     arrowClassName: clsx(styles.arrow, state.arrowClassName),
     content: {
       ...state.content,
-      // Marker never first — see useButtonStyles.
       className: clsx(
-        styles.content,
         tooltipClassNames.root,
+        styles.content,
         state.appearance === 'inverted' && styles.inverted,
         state.content.className,
       ),

@@ -1,12 +1,13 @@
 import { clsx } from 'clsx';
 
+import { componentMarkers } from '../../utils/groupMarker';
 import type { LabelState } from './Label.types';
 
 import styles from './Label.module.css';
 
-/** The only public class — the Tailwind named-group marker; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const labelClassNames: { root: string } = {
-  root: 'group/fui-label',
+  root: componentMarkers('label'),
 };
 
 type LabelRootDataAttributes = {
@@ -21,8 +22,7 @@ export const useLabelStyles = (state: LabelState): LabelState => {
   const root: LabelState['root'] & LabelRootDataAttributes = {
     ...state.root,
     'data-size': size,
-    // Marker never first — see useButtonStyles.
-    className: clsx(styles.root, labelClassNames.root, weight === 'semibold' && styles.semibold, state.root.className),
+    className: clsx(labelClassNames.root, styles.root, weight === 'semibold' && styles.semibold, state.root.className),
   };
 
   return {

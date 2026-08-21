@@ -46,6 +46,11 @@ package's `dist/styles.css`); CommonJS/SSR consumers import
 
 - Slot `className` props merge last — your classes win via cascade layers (consumer CSS is
   unlayered; all package styles live in `fui.*` layers).
-- Each component's sole public identity class is its group marker (`group/fui-button`, …) for
-  Tailwind named-group targeting; internals use hashed idents and `data-*` state attributes
-  (`data-open`, `data-placement`, `data-size`, …).
+- Each component's root carries a pair of public identity classes: `fui-button` (the documented
+  identity class — safe for consumer CSS and `querySelector`, no escaping needed) and
+  `group/fui-button` (Tailwind's real named-group class). Internals use hashed idents and
+  `data-*` state attributes (`data-open`, `data-placement`, `data-size`, …).
+- Children inside a component can target it directly with `group-<variant>/fui-<component>`
+  (e.g. `group-disabled/fui-button:text-red-500`) — no group name declaration required.
+  Consumers may additionally add their own `group/name` via `className` to disambiguate nested
+  instances of the same component, but are never required to.

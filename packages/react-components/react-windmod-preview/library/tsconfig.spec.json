@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "outDir": "dist",
-    "types": ["jest", "node", "static-assets"]
+    "types": ["jest", "node", "static-assets", "@testing-library/jest-dom"]
   },
   "include": [
     "**/*.spec.ts",

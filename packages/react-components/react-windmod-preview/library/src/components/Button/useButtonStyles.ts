@@ -1,12 +1,13 @@
 import { clsx } from 'clsx';
 
+import { componentMarkers } from '../../utils/groupMarker';
 import type { ButtonState } from './Button.types';
 
 import styles from './Button.module.css';
 
-/** The only public class — the Tailwind named-group marker; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const buttonClassNames: { root: string } = {
-  root: 'group/fui-button',
+  root: componentMarkers('button'),
 };
 
 type ButtonRootDataAttributes = {
@@ -25,9 +26,7 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     'data-appearance': appearance,
     'data-size': size,
     'data-empty': !state.root.children || undefined,
-    // The marker's '/' must never be classList[0]: jsdom's nwsapi builds its :scope
-    // polyfill from the first class unescaped, so element.matches() would throw.
-    className: clsx(styles.root, buttonClassNames.root, styles[appearance], styles[shape], state.root.className),
+    className: clsx(buttonClassNames.root, styles.root, styles[appearance], styles[shape], state.root.className),
   };
 
   return {

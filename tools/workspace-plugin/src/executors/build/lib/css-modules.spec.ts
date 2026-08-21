@@ -14,6 +14,13 @@ import {
 import { type NormalizedOptions } from './shared';
 
 /**
+ * Required by relative path, same as css-modules.ts's own import of it — see that file's
+ * header for why (it lives outside this project's `rootDir`).
+ */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { globalizeSelector } = require('../../../../../../scripts/css-modules/globalize-group-markers.js');
+
+/**
  * Guardrail for the two halves of the generated-class-name contract.
  *
  * Both failures these cover are SILENT — the CSS stays well-formed, nothing warns, and the
@@ -117,6 +124,56 @@ describe('compileCssModuleSource', () => {
 
       expect(first.classMap.root).toEqual(second.classMap.root);
       expect(first.classMap.root).not.toEqual(otherPackage.classMap.root);
+    });
+  });
+
+  describe('fui-globalize-group-markers plugin', () => {
+    it('wraps a group marker in :global() without altering its name', () => {
+      const { selector, rewrites } = globalizeSelector('.group\\/fui-switch');
+
+      expect(rewrites).toBe(1);
+      expect(selector).toBe(':global(.group\\/fui-switch)');
+    });
+
+    it('wraps a peer marker the same way as a group marker', () => {
+      const { selector, rewrites } = globalizeSelector('.peer\\/fui-input');
+
+      expect(rewrites).toBe(1);
+      expect(selector).toBe(':global(.peer\\/fui-input)');
+    });
+
+    it('is idempotent: a marker already inside :global() is left untouched', () => {
+      const { selector, rewrites } = globalizeSelector(':global(.group\\/fui-switch)');
+
+      expect(rewrites).toBe(0);
+      expect(selector).toBe(':global(.group\\/fui-switch)');
+    });
+
+    it('running the wrap twice in sequence produces the same result as once', () => {
+      const once = globalizeSelector('.group\\/fui-switch');
+      const twice = globalizeSelector(once.selector);
+
+      expect(twice.rewrites).toBe(0);
+      expect(twice.selector).toBe(once.selector);
+    });
+
+    it('renames nothing when a peer marker is compiled through the real chain', async () => {
+      const source = `
+        @custom-variant disabled (&:where([disabled], [data-disabled]));
+
+        .sib {
+          @variant peer-disabled/fui-input { opacity: 0.5; }
+        }
+      `;
+      const { css, classMap } = await compileCssModuleSource({
+        source,
+        absolutePath: ABSOLUTE_PATH,
+        packageName: PACKAGE_NAME,
+        relativePath: RELATIVE_PATH,
+      });
+
+      expect(css).toContain('.peer\\/fui-input');
+      expect(Object.keys(classMap)).not.toContain('peer/fui-input');
     });
   });
 });

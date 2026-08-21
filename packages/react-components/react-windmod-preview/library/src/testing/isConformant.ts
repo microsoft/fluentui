@@ -15,8 +15,8 @@ export function isConformant<TProps = {}>(
       'exported-top-level',
       // We use kebab case naming for top-level files
       'has-top-level-file',
-      // Windmod components have no BEM static classnames — the public identity class is
-      // the group marker alone (xClassNames = { root: 'group/fui-<name>' }).
+      // Windmod components have no BEM static classnames — the public identity is the
+      // marker pair (xClassNames = { root: 'fui-<name> group/fui-<name>' }; see componentMarkers).
       'component-has-static-classnames-object',
     ],
     disableTypeTests: true,
