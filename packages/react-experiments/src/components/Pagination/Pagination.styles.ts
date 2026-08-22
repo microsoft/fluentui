@@ -47,13 +47,13 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
         minHeight: '32px',
         color: palette.black,
         selectors: {
-          '&[aria-selected=true]': {
+          '&[aria-checked=true]': {
             color: palette.blue,
             cursor: 'default',
             fontWeight: 'bold',
             textDecoration: 'underline',
           },
-          '&:hover[aria-selected=true]': {
+          '&:hover[aria-checked=true]': {
             color: palette.blue,
             backgroundColor: 'transparent',
           },
