@@ -33,9 +33,16 @@ const SYMPTOMS = [
     test: html => html.includes('Application Error'),
   },
   {
-    id: 'unresolved-mdx-expression',
-    describe: 'contains an unrendered [object Object]',
-    test: html => html.includes('[object Object]'),
+    id: 'unresolved-expression',
+    describe: 'renders an unresolved [object Object] in page text',
+    /*
+     * Only text content counts. Fluent components also emit slot names as attributes
+     * (`icon="[object Object]"` on Avatar, `root=`/`avatar=` on AvatarGroup) — verified to
+     * be identical in Storybook, so that is upstream behaviour this site reproduces
+     * faithfully, not a defect introduced here. Flagging it would keep this gate
+     * permanently red, which is how a check stops being read.
+     */
+    test: html => />[^<]*\[object Object\]/.test(html),
   },
 ];
 
