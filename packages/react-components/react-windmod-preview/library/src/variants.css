@@ -48,6 +48,12 @@
 @custom-variant thickness-medium (&:where([data-thickness='medium']));
 @custom-variant thickness-large (&:where([data-thickness='large']));
 
+/* Skeleton: animation, appearance, item shape */
+@custom-variant animation-pulse (&:where([data-animation='pulse']));
+@custom-variant appearance-translucent (&:where([data-appearance='translucent']));
+@custom-variant shape-circle (&:where([data-shape='circle']));
+@custom-variant shape-square (&:where([data-shape='square']));
+
 /* SpinButton: held spin repeat — persists across the repeat interval, unlike :active */
 @custom-variant spin-active (&:where([data-spin-active]));
 

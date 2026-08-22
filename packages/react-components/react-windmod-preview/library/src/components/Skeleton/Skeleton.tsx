@@ -1,0 +1,52 @@
+'use client';
+
+import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import {
+  renderSkeleton,
+  useSkeleton,
+  useSkeletonContextValues,
+} from '@fluentui/react-headless-components-preview/skeleton';
+
+import type { SkeletonProps, SkeletonState } from './Skeleton.types';
+import { SkeletonContextProvider, useSkeletonContext } from './SkeletonContext';
+import { useSkeletonStyles } from './useSkeletonStyles';
+
+/**
+ * A Skeleton is a loading placeholder that groups SkeletonItems. Windmod Skeleton: the headless
+ * skeleton decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
+ */
+export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef((props, ref) => {
+  const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
+  // `size` and `shape` carry no context fallback: a nested Skeleton without them resets them
+  // for its subtree, while `animation` and `appearance` pass through.
+  const {
+    animation = contextAnimation ?? 'wave',
+    appearance = contextAppearance ?? 'opaque',
+    size,
+    shape,
+    ...rest
+  } = props;
+
+  const state: SkeletonState = {
+    ...useSkeleton(rest, ref as React.Ref<HTMLDivElement>),
+    animation,
+    appearance,
+    size,
+    shape,
+  };
+
+  const styled = useSkeletonStyles(state);
+  const contextValues = useSkeletonContextValues(styled);
+
+  // renderSkeleton installs the headless group provider; this wrapper populates the windmod one
+  // the windmod SkeletonItem reads. Both providers share the one memoised value object.
+  return (
+    <SkeletonContextProvider value={contextValues.skeletonGroup}>
+      {renderSkeleton(styled, contextValues)}
+    </SkeletonContextProvider>
+  );
+  // Casting is required due to lack of distributive union to support union on @types/react
+}) as ForwardRefComponent<SkeletonProps>;
+
+Skeleton.displayName = 'Skeleton';

@@ -13,6 +13,33 @@ export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from 
 export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
 
+export {
+  renderSkeleton,
+  Skeleton,
+  skeletonClassNames,
+  useSkeleton,
+  useSkeletonContextValues,
+  useSkeletonStyles,
+} from './skeleton';
+export type {
+  SkeletonAnimation,
+  SkeletonAppearance,
+  SkeletonItemShape,
+  SkeletonItemSize,
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+} from './skeleton';
+
+export {
+  renderSkeletonItem,
+  SkeletonItem,
+  skeletonItemClassNames,
+  useSkeletonItem,
+  useSkeletonItemStyles,
+} from './skeleton-item';
+export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './skeleton-item';
+
 export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
 export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
 

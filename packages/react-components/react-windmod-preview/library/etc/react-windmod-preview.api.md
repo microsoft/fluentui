@@ -30,8 +30,16 @@ import { renderDivider } from '@fluentui/react-headless-components-preview/divid
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
+import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
+import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SkeletonItemState as SkeletonItemState_2 } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SkeletonProps as SkeletonProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
+import { SkeletonSlots } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SkeletonState as SkeletonState_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SpinnerProps as SpinnerProps_2 } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerSlots } from '@fluentui/react-headless-components-preview/spinner';
 import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-components-preview/spinner';
@@ -52,6 +60,9 @@ import { useDivider } from '@fluentui/react-headless-components-preview/divider'
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
+import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
+import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
+import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -208,9 +219,65 @@ export { renderLink }
 
 export { renderProvider }
 
+export { renderSkeleton }
+
+export { renderSkeletonItem }
+
 export { renderSpinner }
 
 export { renderTooltip }
+
+// @public
+export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public
+export type SkeletonAnimation = 'wave' | 'pulse';
+
+// @public
+export type SkeletonAppearance = 'opaque' | 'translucent';
+
+// @public
+export const skeletonClassNames: {
+    root: string;
+};
+
+// @public
+export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public
+export const skeletonItemClassNames: {
+    root: string;
+};
+
+// @public
+export type SkeletonItemProps = SkeletonItemProps_2 & {
+    animation?: SkeletonAnimation;
+    appearance?: SkeletonAppearance;
+    shape?: SkeletonItemShape;
+    size?: SkeletonItemSize;
+};
+
+// @public
+export type SkeletonItemShape = 'circle' | 'rectangle' | 'square';
+
+// @public
+export type SkeletonItemSize = NonNullable<SkeletonProps_2['size']>;
+
+export { SkeletonItemSlots }
+
+// @public
+export type SkeletonItemState = SkeletonItemState_2 & Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export type SkeletonProps = SkeletonProps_2 & {
+    animation?: SkeletonAnimation;
+    appearance?: SkeletonAppearance;
+};
+
+export { SkeletonSlots }
+
+// @public
+export type SkeletonState = SkeletonState_2 & Required<Pick<SkeletonProps, 'animation' | 'appearance'>> & Pick<SkeletonProps, 'shape' | 'size'>;
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
@@ -319,6 +386,18 @@ export { useLink }
 export const useLinkStyles: (state: LinkState) => LinkState;
 
 export { useProvider }
+
+export { useSkeleton }
+
+export { useSkeletonContextValues }
+
+export { useSkeletonItem }
+
+// @public
+export const useSkeletonItemStyles: (state: SkeletonItemState) => SkeletonItemState;
+
+// @public
+export const useSkeletonStyles: (state: SkeletonState) => SkeletonState;
 
 export { useSpinner }
 

@@ -112,6 +112,26 @@
         "default": "./lib-commonjs/provider.cjs"
       }
     },
+    "./skeleton": {
+      "import": {
+        "types": "./dist/skeleton.d.ts",
+        "default": "./lib/skeleton.js"
+      },
+      "require": {
+        "types": "./dist/skeleton.d.cts",
+        "default": "./lib-commonjs/skeleton.cjs"
+      }
+    },
+    "./skeleton-item": {
+      "import": {
+        "types": "./dist/skeleton-item.d.ts",
+        "default": "./lib/skeleton-item.js"
+      },
+      "require": {
+        "types": "./dist/skeleton-item.d.cts",
+        "default": "./lib-commonjs/skeleton-item.cjs"
+      }
+    },
     "./spinner": {
       "import": {
         "types": "./dist/spinner.d.ts",

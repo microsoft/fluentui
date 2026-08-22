@@ -8,6 +8,8 @@ export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { LinkWindmod } from './LinkWindmod.stories';
 export { LinkGriffel } from './LinkGriffel.stories';
+export { SkeletonWindmod } from './SkeletonWindmod.stories';
+export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';
