@@ -4,6 +4,15 @@ export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, Ba
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
+export {
+  CompoundButton,
+  compoundButtonClassNames,
+  renderCompoundButton,
+  useCompoundButton,
+  useCompoundButtonStyles,
+} from './compound-button';
+export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './compound-button';
+
 export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles } from './divider';
 export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
 
@@ -80,6 +89,15 @@ export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './
 
 export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
 export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
+
+export {
+  renderToggleButton,
+  ToggleButton,
+  toggleButtonClassNames,
+  useToggleButton,
+  useToggleButtonStyles,
+} from './toggle-button';
+export type { ToggleButtonProps, ToggleButtonSlots, ToggleButtonState } from './toggle-button';
 
 export { renderTooltip, Tooltip, tooltipClassNames, useTooltip, useTooltipStyles } from './tooltip';
 export type {

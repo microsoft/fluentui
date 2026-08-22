@@ -14,6 +14,8 @@
 @custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
 
 /* Button */
+@custom-variant appearance-primary (&:where([data-appearance='primary']));
+@custom-variant appearance-outline (&:where([data-appearance='outline']));
 @custom-variant appearance-subtle (&:where([data-appearance='subtle']));
 @custom-variant appearance-transparent (&:where([data-appearance='transparent']));
 
@@ -62,3 +64,6 @@
 @custom-variant active-appearance-ring (&:where([data-active-appearance='ring']));
 @custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
 @custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
+
+/* ToggleButton: opt-in high-contrast selected look */
+@custom-variant accessible (&:where([data-accessible]));

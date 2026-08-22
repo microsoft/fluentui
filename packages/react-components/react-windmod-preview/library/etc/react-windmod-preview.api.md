@@ -10,6 +10,9 @@ import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-compon
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
+import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
+import { CompoundButtonSlots } from '@fluentui/react-headless-components-preview/compound-button';
+import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/react-headless-components-preview/compound-button';
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
@@ -38,6 +41,7 @@ import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headl
 import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
+import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
@@ -49,6 +53,7 @@ import { renderRatingItem } from '@fluentui/react-headless-components-preview/ra
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
@@ -66,12 +71,16 @@ import { teamsLightThemeClassName } from '@fluentui/react-tailwind-theme-preview
 import { teamsLightV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { themeClassNames } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+import type { ToggleButtonProps as ToggleButtonProps_2 } from '@fluentui/react-headless-components-preview/toggle-button';
+import { ToggleButtonSlots } from '@fluentui/react-headless-components-preview/toggle-button';
+import type { ToggleButtonState as ToggleButtonState_2 } from '@fluentui/react-headless-components-preview/toggle-button';
 import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipSlots } from '@fluentui/react-headless-components-preview/tooltip';
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
+import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
@@ -85,6 +94,7 @@ import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleto
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -150,6 +160,26 @@ export { ButtonSlots }
 
 // @public
 export type ButtonState = ButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
+
+// @public
+export const compoundButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type CompoundButtonProps = CompoundButtonProps_2 & {
+    appearance?: ButtonAppearance;
+    shape?: ButtonShape;
+    size?: ButtonSize;
+};
+
+export { CompoundButtonSlots }
+
+// @public
+export type CompoundButtonState = CompoundButtonState_2 & Required<Pick<CompoundButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -334,6 +364,8 @@ export { renderBadge }
 
 export { renderButton }
 
+export { renderCompoundButton }
+
 export { renderDivider }
 
 export { renderImage }
@@ -355,6 +387,8 @@ export { renderSkeleton }
 export { renderSkeletonItem }
 
 export { renderSpinner }
+
+export { renderToggleButton }
 
 export { renderTooltip }
 
@@ -464,6 +498,26 @@ export type ThemeProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
 };
 
 // @public
+export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
+
+// @public
+export const toggleButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type ToggleButtonProps = ToggleButtonProps_2 & {
+    appearance?: ButtonAppearance;
+    shape?: ButtonShape;
+    size?: ButtonSize;
+};
+
+export { ToggleButtonSlots }
+
+// @public
+export type ToggleButtonState = ToggleButtonState_2 & Required<Pick<ToggleButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
 export const Tooltip: {
     (props: TooltipProps): JSXElement;
     displayName: string;
@@ -500,6 +554,11 @@ export { useButton }
 
 // @public
 export const useButtonStyles: (state: ButtonState) => ButtonState;
+
+export { useCompoundButton }
+
+// @public
+export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
 
 export { useDivider }
 
@@ -556,6 +615,11 @@ export { useSpinner }
 
 // @public
 export const useSpinnerStyles: (state: SpinnerState) => SpinnerState;
+
+export { useToggleButton }
+
+// @public
+export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
 
 export { useTooltip }
 

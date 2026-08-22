@@ -1,0 +1,246 @@
+@reference '#theme';
+
+/* The icons package pins `[data-fui-icon-hidden] { display: none !important }` into
+   fui.components.l1, and importance inverts cascade-layer order: an important declaration in
+   l2 loses to one in l1 regardless of specificity. Revealing a hidden glyph is therefore only
+   expressible at l1, so the glyph swaps live here while every other rule stays in l2. */
+@layer fui.components.l1 {
+  .icon {
+    @variant group-checked/fui-toggle-button {
+      & * {
+        @variant variant-filled {
+          @apply inline!;
+        }
+
+        @variant variant-regular {
+          @apply hidden!;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-toggle-button, group-disabled-focusable/fui-toggle-button {
+      & * {
+        @variant group-hover/fui-toggle-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+
+        @variant group-hover-active/fui-toggle-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  .root {
+    @variant appearance-primary {
+      @variant forced-colors {
+        @apply border-[ButtonBorder] bg-[ButtonFace] text-[ButtonText] forced-color-adjust-auto;
+      }
+
+      @variant disabled, disabled-focusable {
+        @variant forced-colors {
+          @apply border-[GrayText] text-[GrayText];
+
+          @variant focus {
+            @apply border-[GrayText];
+          }
+        }
+      }
+    }
+
+    @variant checked {
+      @apply border-(length:--spacing-thin) border-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+
+      @variant hover {
+        @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+      }
+
+      @variant hover-active {
+        @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+      }
+
+      @variant forced-colors {
+        @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+        @variant hover {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant focus {
+          @apply border border-solid border-[HighlightText] outline-[color:Highlight];
+        }
+      }
+
+      @variant appearance-outline {
+        @apply border-(length:--spacing-thicker) border-neutral-stroke-1 bg-transparent-background-selected;
+
+        @variant hover {
+          @apply bg-transparent-background-hover;
+        }
+
+        @variant hover-active {
+          @apply bg-transparent-background-pressed;
+        }
+      }
+
+      @variant appearance-primary {
+        @apply border-transparent bg-brand-background-selected text-neutral-foreground-on-brand;
+
+        @variant hover {
+          @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+        }
+      }
+
+      @variant appearance-subtle {
+        @apply border-transparent bg-subtle-background-selected text-neutral-foreground-2-selected;
+
+        @variant hover {
+          @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant appearance-transparent {
+        @apply border-transparent bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+
+        @variant hover {
+          @apply border-transparent bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+        }
+      }
+
+      @variant accessible {
+        @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
+
+        @variant hover {
+          @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+        }
+
+        @variant appearance-outline {
+          @apply border-(length:--spacing-thin);
+        }
+
+        @variant appearance-primary {
+          @apply outline-(length:--spacing-thin) -outline-offset-(--spacing-thicker) outline-neutral-foreground-on-brand outline-solid;
+
+          @variant focus-visible {
+            @apply outline-(length:--spacing-thin) -outline-offset-(--spacing-thickest) outline-neutral-foreground-on-brand outline-solid;
+          }
+        }
+      }
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+      }
+
+      @variant hover-active {
+        @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+      }
+
+      @variant appearance-primary {
+        @apply border-transparent;
+
+        @variant hover {
+          @apply border-transparent;
+        }
+
+        @variant hover-active {
+          @apply border-transparent;
+        }
+      }
+
+      @variant appearance-subtle, appearance-transparent {
+        @apply border-transparent bg-transparent-background;
+
+        @variant hover {
+          @apply border-transparent bg-transparent-background-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-transparent-background-pressed;
+        }
+      }
+    }
+
+    /* Griffel selects the focus indicator with an attribute on top of the class, so it
+       outranks every recolour above by specificity; here position alone carries that. */
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+      border-width: var(--fui-focus-ring-width, 1px);
+
+      @variant checked {
+        @variant appearance-outline {
+          @apply border-neutral-stroke-1;
+        }
+      }
+    }
+  }
+
+  .icon {
+    @variant forced-colors {
+      @apply forced-color-adjust-auto;
+    }
+
+    @variant group-checked/fui-toggle-button {
+      @variant group-appearance-subtle/fui-toggle-button, group-appearance-transparent/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-selected;
+      }
+
+      @variant group-accessible/fui-toggle-button {
+        @apply text-neutral-foreground-on-brand;
+      }
+    }
+
+    /* The subtle pressed icon colour is a token of its own; the hover colour is the same
+       value as the selected colour in every shipped theme. */
+    @variant group-appearance-subtle/fui-toggle-button {
+      @variant group-hover-active/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+    }
+
+    @variant group-disabled/fui-toggle-button, group-disabled-focusable/fui-toggle-button {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

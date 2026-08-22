@@ -1,0 +1,121 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @apply h-auto px-horizontal-m pt-14 pb-horizontal-l text-base-300 leading-base-300;
+
+    @variant size-small {
+      @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
+    }
+
+    @variant size-large {
+      @apply px-horizontal-l pt-18 pb-horizontal-xl text-base-400 leading-base-400;
+    }
+
+    @variant icon-only {
+      @variant size-small {
+        @apply max-w-48 min-w-48 p-horizontal-xs;
+      }
+
+      @variant size-medium {
+        @apply max-w-52 min-w-52 p-horizontal-s-nudge;
+      }
+
+      @variant size-large {
+        @apply max-w-56 min-w-56 p-horizontal-s;
+      }
+    }
+  }
+
+  .icon {
+    @apply size-40 text-[length:calc(40px*var(--base-scale))];
+
+    @variant group-not-empty/fui-compound-button {
+      @variant group-icon-before/fui-compound-button {
+        @apply me-horizontal-m;
+      }
+
+      @variant group-icon-after/fui-compound-button {
+        @apply ms-horizontal-m;
+      }
+    }
+  }
+
+  .contentContainer {
+    @apply flex flex-col text-start;
+  }
+
+  .secondaryContent {
+    @apply text-base-200 leading-[100%] font-regular text-neutral-foreground-2;
+
+    @variant group-size-large/fui-compound-button {
+      @apply text-base-300;
+    }
+
+    @variant group-hover/fui-compound-button {
+      @apply text-neutral-foreground-2-hover;
+    }
+
+    @variant group-hover-active/fui-compound-button {
+      @apply text-neutral-foreground-2-pressed;
+    }
+
+    @variant forced-colors {
+      @variant group-hover/fui-compound-button {
+        @apply text-[Highlight];
+      }
+
+      @variant group-hover-active/fui-compound-button {
+        @apply text-[Highlight];
+      }
+    }
+
+    @variant group-appearance-primary/fui-compound-button {
+      @apply text-neutral-foreground-on-brand;
+
+      @variant forced-colors {
+        @apply text-[HighlightText];
+
+        /* Griffel reaches this from the root with a :hover compound that outranks the
+           appearance rule by specificity; here position alone carries it. */
+        @variant group-hover/fui-compound-button {
+          @apply text-[Highlight];
+        }
+
+        @variant group-hover-active/fui-compound-button {
+          @apply text-[Highlight];
+        }
+      }
+    }
+
+    @variant group-appearance-subtle/fui-compound-button {
+      @variant forced-colors {
+        @variant group-hover/fui-compound-button {
+          @apply text-[Canvas];
+        }
+
+        @variant group-hover-active/fui-compound-button {
+          @apply text-[Canvas];
+        }
+      }
+    }
+
+    @variant group-appearance-transparent/fui-compound-button {
+      @variant group-hover/fui-compound-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant group-hover-active/fui-compound-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+    }
+
+    @variant group-disabled/fui-compound-button, group-disabled-focusable/fui-compound-button {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

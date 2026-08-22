@@ -73,6 +73,16 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./compound-button": {
+      "import": {
+        "types": "./dist/compound-button.d.ts",
+        "default": "./lib/compound-button.js"
+      },
+      "require": {
+        "types": "./dist/compound-button.d.cts",
+        "default": "./lib-commonjs/compound-button.cjs"
+      }
+    },
     "./divider": {
       "import": {
         "types": "./dist/divider.d.ts",
@@ -181,6 +191,16 @@
       "require": {
         "types": "./dist/spinner.d.cts",
         "default": "./lib-commonjs/spinner.cjs"
+      }
+    },
+    "./toggle-button": {
+      "import": {
+        "types": "./dist/toggle-button.d.ts",
+        "default": "./lib/toggle-button.js"
+      },
+      "require": {
+        "types": "./dist/toggle-button.d.cts",
+        "default": "./lib-commonjs/toggle-button.cjs"
       }
     },
     "./tooltip": {

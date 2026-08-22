@@ -2,6 +2,8 @@ export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';
 export { ButtonGriffel } from './ButtonGriffel.stories';
+export { CompoundButtonWindmod } from './CompoundButtonWindmod.stories';
+export { CompoundButtonGriffel } from './CompoundButtonGriffel.stories';
 export { DividerWindmod } from './DividerWindmod.stories';
 export { DividerGriffel } from './DividerGriffel.stories';
 export { ImageWindmod } from './ImageWindmod.stories';
@@ -18,6 +20,8 @@ export { SkeletonWindmod } from './SkeletonWindmod.stories';
 export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
+export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';
+export { ToggleButtonGriffel } from './ToggleButtonGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';
 export { TooltipGriffel } from './TooltipGriffel.stories';
 
