@@ -49,6 +49,30 @@ function PageContent({ page }: { page: Page }) {
   );
 }
 
+/**
+ * The two documentation trees, presented as layout tabs so a reader can move between them
+ * without leaving the site (`docsite/site-navigation`).
+ */
+const TREE_TABS = [
+  { url: '/react', title: 'Fluent UI React v9' },
+  { url: '/headless', title: 'Headless components' },
+];
+
+/**
+ * Content deliberately left on the component workbench (proposal Non-goals): charts is a
+ * separate Storybook, and the v8/v0 migration guides render legacy components. Linking out
+ * keeps them reachable rather than simply missing.
+ */
+const OUTBOUND_LINKS = [
+  { text: 'Charts', url: 'https://storybooks.fluentui.dev/charts/', external: true },
+  {
+    text: 'Migration guides',
+    url: 'https://storybooks.fluentui.dev/react/?path=/docs/concepts-migration-getting-started--docs',
+    external: true,
+  },
+  { text: 'Storybook', url: 'https://storybooks.fluentui.dev/react/', external: true },
+] as const;
+
 export interface DocsTreeRouteProps {
   source: Source;
   /** Splat segment after the tree prefix, e.g. `components/button`. */
@@ -66,7 +90,7 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
 
   if (!page) {
     return (
-      <DocsLayout tree={source.pageTree} nav={{ title }}>
+      <DocsLayout tree={source.pageTree} nav={{ title }} tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
         <DocsPage>
           <DocsTitle>Not found</DocsTitle>
           <DocsBody>
@@ -78,7 +102,7 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
   }
 
   return (
-    <DocsLayout tree={source.pageTree} nav={{ title }}>
+    <DocsLayout tree={source.pageTree} nav={{ title }} tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
       {/*
        * Prerendering resolves this boundary before emitting HTML (see entry.server.tsx), so
        * the fallback is only ever seen during client-side navigation to a not-yet-loaded page.

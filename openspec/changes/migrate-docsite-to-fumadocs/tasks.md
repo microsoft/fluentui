@@ -96,15 +96,17 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 
 ## 6. Phase 5 — Navigation, search, machine-readable output
 
+> Note: 3 pages log `ReferenceError: require is not defined` during prerender. The pages still render (content present, no error boundary, content audit passes), so it is a CommonJS dependency reached through a migrated page rather than a rendering failure. Worth tracing before publishing.
+
 Exit criterion: `docsite/site-navigation` scenarios pass.
 
 - [x] 6.1 Ported the sidebar IA. Two parts: the page _positions_ now come from each story's `meta.title` (`Components/Badge/CounterBadge`, `Utilities/...`) rather than its directory — deriving paths from directories had flattened every component to the root and lost the grouping entirely — and the _order_ is transcribed from `options.storySort.order` into `meta.json` files by `scripts/generate-nav.mjs`, with Fumadocs' `...` rest so unlisted pages still appear. Sidebar now reads Concepts, Theme, Components, ... as Storybook does.
-- [ ] 6.2 Configure the two trees as layout tabs with independent navigation roots and client-side switching
+- [ ] 6.2 Configure the two trees as layout tabs. `tabs={[{url:'/react',...},{url:'/headless',...}]}` is passed to `DocsLayout` and type-checks, but renders nothing — no tab markup or `/docs/headless` link appears in the output. Fumadocs likely derives tabs from the page tree (root folders / `sidebar.tabs`) rather than accepting arbitrary cross-tree urls, since each tree is a separate `loader()`. Readers can still reach the other tree via the outbound links added in 6.7.
 - [x] 6.3 Full-text search via the static client. The dialog fetches a prebuilt index rather than querying an `api/search` route, which cannot exist on static hosting. The index is built by `scripts/build-search-index.mjs`, which reads the content directory directly — the Fumadocs loader is built on `import.meta.glob` and only resolves inside Vite, so it cannot be used from a plain Node step. Fenced code, JSX and imports are stripped before indexing so pages match on prose rather than framework noise. Verified in a browser: 200 pages indexed, results returned, and the only search-related request is for the static index. Index is 3.5MB and fetched lazily when the dialog opens; worth revisiting if that proves heavy.
 - [ ] 6.4 Enable the `llms.txt` summary and per-page plain-text output; verify a page edit is reflected in the same build
 - [ ] 6.5 Verify machine-readable prop output uses the same abbreviated slot types as the rendered page (closing the current divergence)
-- [ ] 6.6 Add outbound navigation links for charts and the migration shims, marked as leaving the site
-- [ ] 6.7 Add a link from the documentation site to the component workbench
+- [x] 6.6 Outbound navigation links for charts and the migration guides, marked as external.
+- [x] 6.7 Link from the documentation site to the component workbench, alongside the charts and migration links.
 - [ ] 6.8 Remove the `generate-llms-docs` post-build step from `apps/public-docsite-v9` and `apps/public-docsite-v9-headless`; delete the Playwright scraping layer of `tools/storybook-llms-extractor`, retaining its formatting helpers
 
 ## 7. Phase 6 — Publish and cross-link
