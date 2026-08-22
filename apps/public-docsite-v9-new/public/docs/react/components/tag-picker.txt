@@ -1,0 +1,1460 @@
+# Tag Picker
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import {
+  Tag,
+  Avatar,
+  tokens,
+  makeStyles,
+  Field,
+} from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+const Example = ({ appearance }: Pick<TagPickerProps, "appearance">) => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+  ]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  const labelColor =
+    appearance === "filled-lighter" || appearance === "filled-darker"
+      ? tokens.colorNeutralForegroundInverted2
+      : tokens.colorNeutralForeground1;
+
+  const label = <span style={{ color: labelColor }}>Select Employees</span>;
+
+  return (
+    <Field label={label} style={{ maxWidth: 400 }}>
+      <TagPicker
+        appearance={appearance}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+
+const useStyles = makeStyles({
+  darkBG: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    color: tokens.colorNeutralForegroundInverted2,
+    padding: "20px",
+    marginBlock: "10px",
+    borderRadius: tokens.borderRadiusMedium,
+  },
+});
+
+export const Appearance = (): JSXElement => {
+  const styles = useStyles();
+  return (
+    <>
+      <div>
+        <h1>Outline</h1>
+        <Example appearance="outline" />
+      </div>
+      <div>
+        <h1>Underline</h1>
+        <Example appearance="underline" />
+      </div>
+      <div className={styles.darkBG}>
+        <h1>Filled Darker</h1>
+        <Example appearance="filled-darker" />
+      </div>
+      <div className={styles.darkBG}>
+        <h1>Filled Lighter</h1>
+        <Example appearance="filled-lighter" />
+      </div>
+    </>
+  );
+};
+```
+
+### Button
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerButton,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Button = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerButton aria-label="Select Employees" />
+        </TagPickerControl>
+
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Default = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Disabled = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(
+    options.slice(0, 4)
+  );
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        disabled
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### ExpandIcon
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+import { ArrowDownFilled } from "@fluentui/react-icons";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const ExpandIcon = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+  ]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (event, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl expandIcon={<ArrowDownFilled />}>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### Filtering
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+  useTagPickerFilter,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Filtering = (): JSXElement => {
+  const [query, setQuery] = React.useState<string>("");
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  // disable auto focus when no query is present (e.g. opened by keyboard)
+  // enable auto focus when query is present (e.g. opened by typing)
+  const disableAutoFocus = query.length === 0;
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-matches") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+    setQuery("");
+  };
+
+  const children = useTagPickerFilter({
+    query,
+    options,
+    noOptionsElement: (
+      <TagPickerOption value="no-matches">
+        We couldn't find any matches
+      </TagPickerOption>
+    ),
+    renderOption: (option) => (
+      <TagPickerOption
+        secondaryContent="Microsoft FTE"
+        key={option}
+        media={
+          <Avatar shape="square" aria-hidden name={option} color="colorful" />
+        }
+        value={option}
+      >
+        {option}
+      </TagPickerOption>
+    ),
+
+    filter: (option) =>
+      !selectedOptions.includes(option) &&
+      option.toLowerCase().includes(query.toLowerCase()),
+  });
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+        disableAutoFocus={disableAutoFocus}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            aria-label="Select Employees"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </TagPickerControl>
+
+        <TagPickerList>{children}</TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### Grouped
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+  TagPickerOptionGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const managers = ["John Doe", "Jane Doe", "Max Mustermann", "Erika Mustermann"];
+const devs = ["Pierre Dupont", "Amelie Dupont", "Mario Rossi", "Maria Rossi"];
+
+export const Grouped = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const unSelectedManagers = managers.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+  const unSelectedDevs = devs.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {unSelectedManagers.length === 0 && unSelectedDevs.length === 0 && (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+          {unSelectedManagers.length > 0 && (
+            <TagPickerOptionGroup label="Managers">
+              {unSelectedManagers.map((option) => (
+                <TagPickerOption
+                  secondaryContent="Microsoft FTE"
+                  media={
+                    <Avatar
+                      shape="square"
+                      aria-hidden
+                      name={option}
+                      color="colorful"
+                    />
+                  }
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))}
+            </TagPickerOptionGroup>
+          )}
+          {unSelectedDevs.length > 0 && (
+            <TagPickerOptionGroup label="Devs">
+              {unSelectedDevs.map((option) => (
+                <TagPickerOption
+                  secondaryContent="Microsoft FTE"
+                  media={
+                    <Avatar
+                      shape="square"
+                      aria-hidden
+                      name={option}
+                      color="colorful"
+                    />
+                  }
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))}
+            </TagPickerOptionGroup>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### NoPopover
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+export const NoPopover = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState("");
+
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.currentTarget.value);
+  };
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" && inputValue) {
+      setInputValue("");
+      setSelectedOptions((curr) =>
+        curr.includes(inputValue) ? curr : [...curr, inputValue]
+      );
+    }
+  };
+
+  return (
+    <Field label="Add Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        noPopover
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option, index) => (
+              <Tag
+                key={index}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            value={inputValue}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            aria-label="Add Employees"
+          />
+        </TagPickerControl>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### SecondaryAction
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Button, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const SecondaryAction = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+  ]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (event, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const handleAllClear: React.MouseEventHandler = (event) => {
+    setSelectedOptions([]);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl
+          secondaryAction={
+            <Button
+              appearance="transparent"
+              size="small"
+              shape="rounded"
+              onClick={handleAllClear}
+            >
+              All Clear
+            </Button>
+          }
+        >
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### SingleLine
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TagPickerProps,
+  TagPickerInputProps,
+  TagProps,
+} from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+  makeStyles,
+  tagPickerGroupClassNames,
+  useOverflowCount,
+  useTagPickerContext_unstable,
+  Tag,
+  Avatar,
+  Overflow,
+  OverflowItem,
+} from "@fluentui/react-components";
+import { ChevronDownRegular, ChevronUpRegular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  focusedExpandIcon: { alignSelf: "flex-end" },
+  countButton: { minWidth: 0 },
+  control: {
+    flexWrap: "nowrap",
+    display: "flex",
+    flexGrow: 1,
+    minWidth: 0,
+    overflow: "hidden",
+    [`& > .${tagPickerGroupClassNames.root}`]: {
+      flexWrap: "nowrap",
+    },
+    ":focus-within": {
+      flexWrap: "wrap",
+      [`& > .${tagPickerGroupClassNames.root}`]: {
+        flexWrap: "wrap",
+      },
+    },
+  },
+});
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+type ExpandIconProps = { open: boolean; focus: boolean };
+
+const ExpandIcon = (props: ExpandIconProps) => {
+  const overflowCount = useOverflowCount();
+
+  if (props.open) {
+    return <ChevronUpRegular />;
+  }
+  if (overflowCount === 0 || props.focus) {
+    return <ChevronDownRegular />;
+  }
+  return null;
+};
+
+const OverFlowCountTag = (props: TagProps) => {
+  const overflowCount = useOverflowCount();
+  const styles = useStyles();
+  if (overflowCount === 0) {
+    return null;
+  }
+  return (
+    <Tag
+      as="span"
+      role={undefined}
+      dismissible={false}
+      aria-hidden
+      tabIndex={-1}
+      {...props}
+      className={styles.countButton}
+    >
+      +{overflowCount}
+    </Tag>
+  );
+};
+
+type CustomTagPickerInputProps = TagPickerInputProps & { focus: boolean };
+
+const CustomTagPickerInput = React.forwardRef<
+  HTMLInputElement,
+  CustomTagPickerInputProps
+>(({ focus, onMouseDown, placeholder, ...rest }, ref) => {
+  const overflowCount = useOverflowCount();
+  const selectedOptionsAmount = useTagPickerContext_unstable(
+    (ctx) => ctx.selectedOptions.length
+  );
+  return (
+    <TagPickerInput
+      ref={ref}
+      {...rest}
+      placeholder={
+        selectedOptionsAmount === 0 || (overflowCount > 0 && focus)
+          ? placeholder
+          : undefined
+      }
+    />
+  );
+});
+
+export const SingleLine = (): JSXElement => {
+  const styles = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  const [hasFocus, setFocus] = React.useState(false);
+
+  const handleOpenChange: TagPickerProps["onOpenChange"] = (_, data) =>
+    setOpen(data.open);
+
+  const handleFocus = () => {
+    setFocus(true);
+  };
+
+  const handleBlur = (event: React.FocusEvent) => {
+    if (event.currentTarget.contains(event.relatedTarget as Node)) {
+      return;
+    }
+    setFocus(false);
+  };
+
+  const handleOverflowCountTagMouseDown = (event: React.MouseEvent) => {
+    event.preventDefault();
+    inputRef.current?.focus();
+  };
+
+  return (
+    <TagPicker
+      open={open}
+      onOpenChange={handleOpenChange}
+      onOptionSelect={onOptionSelect}
+      selectedOptions={selectedOptions}
+    >
+      {/* 24 = min input size */}
+      {/* 30 = padding right */}
+      {/* 2 = gap between input and tags */}
+      {/* 4 = gap between tags */}
+      <Overflow
+        minimumVisible={1}
+        padding={24 + 30 + 2 + selectedOptions.length * 4}
+      >
+        <TagPickerControl
+          style={{ maxWidth: 400 }}
+          expandIcon={{
+            className: hasFocus ? styles.focusedExpandIcon : undefined,
+            children: <ExpandIcon focus={hasFocus} open={open} />,
+          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          className={styles.control}
+        >
+          <TagPickerGroup>
+            {selectedOptions.map((option) => (
+              <OverflowItem id={option} key={option}>
+                <Tag
+                  // force style to display the tag even if it's overflowing when focused
+                  style={hasFocus ? { display: "inline-grid" } : undefined}
+                  key={option}
+                  shape="rounded"
+                  media={<Avatar aria-hidden name={option} color="colorful" />}
+                  value={option}
+                >
+                  {option}
+                </Tag>
+              </OverflowItem>
+            ))}
+            {!open && !hasFocus ? (
+              <OverFlowCountTag onMouseDown={handleOverflowCountTagMouseDown} />
+            ) : null}
+          </TagPickerGroup>
+          <CustomTagPickerInput
+            ref={inputRef}
+            focus={hasFocus}
+            placeholder="Select Employees"
+            aria-label="Select Employees"
+          />
+        </TagPickerControl>
+      </Overflow>
+      <TagPickerList>
+        {tagPickerOptions.length > 0
+          ? tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          : "No options available"}
+      </TagPickerList>
+    </TagPicker>
+  );
+};
+```
+
+### SingleSelect
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const SingleSelect = (): JSXElement => {
+  const [selectedOption, setSelectedOption] = React.useState<
+    string | undefined
+  >();
+  const selectedOptions = React.useMemo(
+    () => (selectedOption ? [selectedOption] : []),
+    [selectedOption]
+  );
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    setSelectedOption(selectedOption === data.value ? undefined : data.value);
+  };
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          {selectedOption && (
+            <TagPickerGroup aria-label="Selected Employees">
+              <Tag
+                key={selectedOption}
+                shape="rounded"
+                media={
+                  <Avatar aria-hidden name={selectedOption} color="colorful" />
+                }
+                value={selectedOption}
+              >
+                {selectedOption}
+              </Tag>
+            </TagPickerGroup>
+          )}
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {options
+            .filter((option) => selectedOption !== option)
+            .map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import { Tag, Avatar, Field } from "@fluentui/react-components";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+const Example = ({ size }: Pick<TagPickerProps, "size">) => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+  ]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        size={size}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option}
+                    color="colorful"
+                  />
+                }
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+
+export const Size = (): JSXElement => (
+  <>
+    <div>
+      <h4>Extra Large</h4>
+      <Example size="extra-large" />
+    </div>
+    <div>
+      <h4>Large</h4>
+      <Example size="large" />
+    </div>
+    <div>
+      <h4>Medium</h4>
+      <Example size="medium" />
+    </div>
+  </>
+);
+```
+
+### TruncatedText
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TagPickerProps } from "@fluentui/react-components";
+import {
+  TagPicker,
+  TagPickerList,
+  TagPickerInput,
+  TagPickerControl,
+  TagPickerOption,
+  TagPickerGroup,
+} from "@fluentui/react-components";
+import {
+  Tag,
+  Avatar,
+  makeStyles,
+  mergeClasses,
+  Field,
+} from "@fluentui/react-components";
+
+type Option = { value: string; fixedWidth?: boolean };
+const options: Option[] = [
+  { value: "John Doe" },
+  { value: "Jane Doe" },
+  { value: "Max Mustermann" },
+  { value: "Erika Mustermann" },
+  { value: "Pierre Dupont" },
+  { value: "Amelie Dupont" },
+  { value: "Maria Rossi" },
+  {
+    value: "This tag has text truncation based on a fixed width of 50px",
+    fixedWidth: true,
+  },
+  {
+    value:
+      "This tag has text truncation based on its container width. This is a long text that will be truncated when it reaches the end of the container.",
+  },
+];
+
+const useStyles = makeStyles({
+  tagTruncatedPrimaryText: {
+    whiteSpace: "nowrap",
+    overflowX: "hidden",
+    textOverflow: "ellipsis",
+  },
+  tagPrimaryTextFixedWidth: {
+    width: "50px",
+  },
+  optionContent: {
+    whiteSpace: "nowrap",
+    overflowX: "hidden",
+    textOverflow: "ellipsis",
+  },
+  optionSecondaryContent: {
+    whiteSpace: "nowrap",
+  },
+});
+
+export const TruncatedText = (): JSXElement => {
+  const [selectedOptions, setSelectedOptions] =
+    React.useState<Option[]>(options);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(
+      data.selectedOptions.map(
+        (option) => options.find((o) => o.value === option)!
+      )
+    );
+  };
+  const tagPickerOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+  const styles = useStyles();
+
+  return (
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+      <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions.map((option) => option.value)}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected Employees">
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option.value}
+                shape="rounded"
+                media={
+                  <Avatar aria-hidden name={option.value} color="colorful" />
+                }
+                value={option.value}
+                title={option.value}
+                primaryText={{
+                  className: mergeClasses(
+                    styles.tagTruncatedPrimaryText,
+                    option.fixedWidth && styles.tagPrimaryTextFixedWidth
+                  ),
+                }}
+              >
+                {option.value}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map((option) => (
+              <TagPickerOption
+                secondaryContent={{
+                  children: "Microsoft FTE",
+                  className: styles.optionSecondaryContent,
+                }}
+                media={
+                  <Avatar
+                    shape="square"
+                    aria-hidden
+                    name={option.value}
+                    color="colorful"
+                  />
+                }
+                value={option.value}
+                key={option.value}
+                title={option.value}
+                text={option.value}
+              >
+                <div className={styles.optionContent}>{option.value}</div>
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </Field>
+  );
+};
+```

@@ -1,0 +1,453 @@
+# Combobox
+
+## Examples
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import {
+  CheckmarkRegular,
+  ChevronDownRegular,
+  DismissRegular,
+} from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Controlled = (): React.ReactNode => {
+  const options = ["Cat", "Caterpillar", "Corgi", "Dog", "Fish", "Hamster"];
+
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    "Dog",
+  ]);
+  const [value, setValue] = React.useState("Dog");
+
+  const onOptionSelect = React.useCallback(
+    (_: unknown, data: { selectedOptions: string[]; optionText?: string }) => {
+      setSelectedOptions(data.selectedOptions);
+      setValue(data.optionText ?? "");
+    },
+    []
+  );
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-controlled">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-controlled"
+        placeholder="Select an animal"
+        clearable
+        value={value}
+        selectedOptions={selectedOptions}
+        onOptionSelect={onOptionSelect}
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+        clearIcon={{
+          className: styles.clearIcon,
+          children: <DismissRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            className={styles.option}
+            key={option}
+            checkIcon={{
+              className: styles.checkIcon,
+              children: <CheckmarkRegular />,
+            }}
+          >
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### ControllingOpenAndClose
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import {
+  CheckmarkRegular,
+  ChevronDownRegular,
+  DismissRegular,
+} from "@fluentui/react-icons";
+import type { ComboboxProps } from "@fluentui/react-headless-components-preview/combobox";
+import styles from "./styles/combobox.module.css";
+
+export const ControllingOpenAndClose = (): React.ReactNode => {
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Dog",
+    "Fish",
+    "Ferret",
+    "Hamster",
+    "Snake",
+  ];
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpenChange: NonNullable<ComboboxProps["onOpenChange"]> = (
+    _,
+    data
+  ) => setOpen(data.open);
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.checkboxLabel}>
+        <input
+          type="checkbox"
+          checked={open}
+          onChange={(e) => setOpen(e.target.checked)}
+        />
+        {open ? "Close" : "Open"} listbox
+      </label>
+      <label className={styles.label} htmlFor="combobox-controlled-open">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-controlled-open"
+        placeholder="Select an animal"
+        clearable
+        open={open}
+        onOpenChange={handleOpenChange}
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+        clearIcon={{
+          className: styles.clearIcon,
+          children: <DismissRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            className={styles.option}
+            key={option}
+            checkIcon={{
+              className: styles.checkIcon,
+              children: <CheckmarkRegular />,
+            }}
+            disabled={option === "Ferret"}
+          >
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import {
+  CheckmarkRegular,
+  ChevronDownRegular,
+  DismissRegular,
+} from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Default = (): React.ReactNode => {
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Chupacabra",
+    "Dog",
+    "Ferret",
+    "Fish",
+    "Fox",
+    "Hamster",
+    "Snake",
+  ];
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-default">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-default"
+        placeholder="Select an animal"
+        clearable
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+        clearIcon={{
+          className: styles.clearIcon,
+          children: <DismissRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            className={styles.option}
+            key={option}
+            checkIcon={{
+              className: styles.checkIcon,
+              children: <CheckmarkRegular />,
+            }}
+            disabled={option === "Ferret"}
+          >
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import { ChevronDownRegular } from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Disabled = (): React.ReactNode => {
+  const options = ["Cat", "Dog", "Ferret", "Fish", "Hamster", "Snake"];
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-disabled">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-disabled"
+        disabled
+        placeholder="Select an animal"
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option className={styles.option} key={option}>
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### Freeform
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import { CheckmarkRegular, ChevronDownRegular } from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Freeform = (): React.ReactNode => {
+  const options = ["Cat", "Dog", "Ferret", "Fish", "Hamster", "Snake"];
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-freeform">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-freeform"
+        placeholder="Type anything…"
+        freeform
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            className={styles.option}
+            key={option}
+            checkIcon={{
+              className: styles.checkIcon,
+              children: <CheckmarkRegular />,
+            }}
+          >
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### Grouped
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+  OptionGroup,
+} from "@fluentui/react-headless-components-preview/combobox";
+import {
+  CheckmarkRegular,
+  ChevronDownRegular,
+  DismissRegular,
+} from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Grouped = (): React.ReactNode => {
+  const land = ["Cat", "Dog", "Ferret", "Hamster"];
+  const water = ["Fish", "Jellyfish", "Octopus", "Seal"];
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-grouped">
+        Best pet
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-grouped"
+        placeholder="Select an animal"
+        clearable
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+        clearIcon={{
+          className: styles.clearIcon,
+          children: <DismissRegular />,
+        }}
+      >
+        <OptionGroup
+          className={styles.optionGroup}
+          label={{ className: styles.groupLabel, children: "Land" }}
+        >
+          {land.map((option) => (
+            <Option
+              className={styles.option}
+              key={option}
+              checkIcon={{
+                className: styles.checkIcon,
+                children: <CheckmarkRegular />,
+              }}
+              disabled={option === "Ferret"}
+            >
+              {option}
+            </Option>
+          ))}
+        </OptionGroup>
+        <OptionGroup
+          className={styles.optionGroup}
+          label={{ className: styles.groupLabel, children: "Sea" }}
+        >
+          {water.map((option) => (
+            <Option
+              className={styles.option}
+              key={option}
+              checkIcon={{
+                className: styles.checkIcon,
+                children: <CheckmarkRegular />,
+              }}
+            >
+              {option}
+            </Option>
+          ))}
+        </OptionGroup>
+      </Combobox>
+    </div>
+  );
+};
+```
+
+### Multiselect
+
+```tsx
+import * as React from "react";
+import {
+  Combobox,
+  Option,
+} from "@fluentui/react-headless-components-preview/combobox";
+import { CheckmarkRegular, ChevronDownRegular } from "@fluentui/react-icons";
+import styles from "./styles/combobox.module.css";
+
+export const Multiselect = (): React.ReactNode => {
+  const options = ["Cat", "Dog", "Ferret", "Fish", "Hamster", "Snake"];
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} htmlFor="combobox-multiselect">
+        Best pets
+      </label>
+      <Combobox
+        root={{ className: styles.root }}
+        input={{ className: styles.input }}
+        listbox={{ className: styles.listbox }}
+        id="combobox-multiselect"
+        multiselect
+        placeholder="Select animals"
+        expandIcon={{
+          className: styles.expandIcon,
+          children: <ChevronDownRegular />,
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            className={styles.option}
+            key={option}
+            checkIcon={{
+              className: styles.checkIcon,
+              children: <CheckmarkRegular />,
+            }}
+            disabled={option === "Ferret"}
+          >
+            {option}
+          </Option>
+        ))}
+      </Combobox>
+    </div>
+  );
+};
+```

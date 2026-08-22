@@ -1,0 +1,443 @@
+# Popover
+
+## Examples
+
+### AnchorToCustomTarget
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const AnchorToCustomTarget = (): React.ReactNode => {
+  const [target, setTarget] = React.useState<HTMLElement | null>(null);
+
+  return (
+    <div className={styles.outerPad}>
+      <div className={styles.cluster}>
+        <div className={styles.column}>
+          <span className={styles.fieldLabel}>Custom anchor (target)</span>
+          <button
+            ref={setTarget}
+            className={`${styles.trigger} ${styles.triggerSecondary}`}
+          >
+            Anchor
+          </button>
+        </div>
+
+        <div className={styles.column}>
+          <span className={styles.fieldLabel}>Popover trigger (unrelated)</span>
+          <Popover positioning={{ target, position: "below", offset: 4 }}>
+            <PopoverTrigger>
+              <button className={styles.trigger}>Open popover</button>
+            </PopoverTrigger>
+            <PopoverSurface
+              className={`${styles.surface} ${styles.surfaceColumn}`}
+            >
+              <h3 className={styles.headingFlush}>Popover content</h3>
+              <p className={styles.body}>
+                Clicking <em>Open popover</em> toggles this surface, but{" "}
+                <code>positioning.target</code> makes it anchor to the magenta{" "}
+                <em>Anchor</em> button instead of the trigger. It appears to the
+                right of the anchor regardless of where the trigger sits.
+              </p>
+            </PopoverSurface>
+          </Popover>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const Controlled = (): React.ReactNode => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div className={styles.columnSpacious}>
+      <label className={styles.checkbox}>
+        <input
+          type="checkbox"
+          checked={open}
+          onChange={(e) => setOpen(e.target.checked)}
+        />
+        Popover open
+      </label>
+      <Popover open={open} onOpenChange={(_e, data) => setOpen(data.open)}>
+        <PopoverTrigger>
+          <button className={styles.trigger}>Controlled popover</button>
+        </PopoverTrigger>
+        <PopoverSurface className={styles.surface}>
+          <p className={styles.body}>
+            This popover is controlled externally. Toggle the checkbox above or
+            click the trigger to open and close it.
+          </p>
+        </PopoverSurface>
+      </Popover>
+    </div>
+  );
+};
+```
+
+### CustomTrigger
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+type CustomTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const CustomTriggerButton = React.forwardRef<
+  HTMLButtonElement,
+  CustomTriggerProps
+>((props, ref) => (
+  <button ref={ref} {...props} className={styles.trigger}>
+    Custom trigger
+  </button>
+));
+
+export const CustomTrigger = (): React.ReactNode => (
+  <Popover>
+    <PopoverTrigger>
+      <CustomTriggerButton />
+    </PopoverTrigger>
+    <PopoverSurface className={styles.surface}>
+      <h3 className={styles.heading}>Custom trigger</h3>
+      <p className={styles.body}>
+        Native elements and Fluent components have first-class support as
+        children of <code>PopoverTrigger</code>. To use your own component,
+        forward its ref with <code>React.forwardRef</code> so the popover can
+        wire up the trigger ref and aria attributes.
+      </p>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const Default = (): React.ReactNode => (
+  <Popover>
+    <PopoverTrigger>
+      <button className={styles.trigger}>Show popover</button>
+    </PopoverTrigger>
+    <PopoverSurface className={styles.surface}>
+      <h3 className={styles.heading}>Popover title</h3>
+      <p className={styles.body}>
+        This is the content of the popover. Click the trigger again or press
+        Escape to close.
+      </p>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### InternalUpdateContent
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const InternalUpdateContent = (): React.ReactNode => {
+  const [revealed, setRevealed] = React.useState(false);
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
+
+  React.useEffect(() => {
+    if (revealed) {
+      linkRef.current?.focus();
+    }
+  }, [revealed]);
+
+  return (
+    <Popover onOpenChange={(_, data) => !data.open && setRevealed(false)}>
+      <PopoverTrigger>
+        <button className={styles.trigger}>Popover trigger</button>
+      </PopoverTrigger>
+      <PopoverSurface className={`${styles.surface} ${styles.surfaceWide}`}>
+        <h3 className={styles.heading}>First panel</h3>
+        <p className={`${styles.body} ${styles.bodySpaced}`}>
+          Popover content can change while the popover is open. When new
+          focusable content is revealed, move focus to it so keyboard users can
+          continue interacting.
+        </p>
+
+        {revealed ? (
+          <div className={styles.body}>
+            Revealed content with{" "}
+            <a ref={linkRef} href="#" className={styles.link}>
+              a focusable link
+            </a>
+            .
+          </div>
+        ) : (
+          <button
+            className={styles.actionButton}
+            onClick={() => setRevealed(true)}
+          >
+            Reveal more
+          </button>
+        )}
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### Nested
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+import type { JSXElement } from "@fluentui/react-components";
+
+import styles from "./styles/popover.module.css";
+
+const SecondNestedPopover = (): JSXElement => (
+  <Popover>
+    <PopoverTrigger>
+      <button className={`${styles.trigger} ${styles.triggerSmall}`}>
+        Second nested trigger
+      </button>
+    </PopoverTrigger>
+    <PopoverSurface className={`${styles.surface} ${styles.surfaceColumnLg}`}>
+      <h3 className={styles.headingFlush}>Popover content</h3>
+      <div className={styles.body}>This is some popover content.</div>
+      <button className={styles.actionButton}>Second nested button</button>
+    </PopoverSurface>
+  </Popover>
+);
+
+const FirstNestedPopover = (): JSXElement => (
+  <Popover>
+    <PopoverTrigger>
+      <button
+        className={`${styles.trigger} ${styles.triggerSecondary} ${styles.triggerSmall}`}
+      >
+        First nested trigger
+      </button>
+    </PopoverTrigger>
+    <PopoverSurface className={`${styles.surface} ${styles.surfaceColumnLg}`}>
+      <h3 className={styles.headingFlush}>Popover content</h3>
+      <div className={styles.body}>This is some popover content.</div>
+      <button className={styles.actionButton}>First nested button</button>
+      <div className={styles.row}>
+        <SecondNestedPopover />
+      </div>
+    </PopoverSurface>
+  </Popover>
+);
+
+export const Nested = (): React.ReactNode => (
+  <Popover>
+    <PopoverTrigger>
+      <button className={styles.trigger}>Root trigger</button>
+    </PopoverTrigger>
+    <PopoverSurface className={`${styles.surface} ${styles.surfaceColumnLg}`}>
+      <h3 className={styles.headingFlush}>Popover content</h3>
+      <div className={styles.body}>This is some popover content.</div>
+      <div className={styles.row}>
+        <button className={styles.actionButton}>Root button</button>
+        <FirstNestedPopover />
+      </div>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### OpenOnContext
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const OpenOnContext = (): React.ReactNode => (
+  <Popover openOnContext>
+    <PopoverTrigger>
+      <div className={styles.contextTrigger}>Right-click this area</div>
+    </PopoverTrigger>
+    <PopoverSurface className={`${styles.surface} ${styles.surfaceMenu}`}>
+      <button className={styles.menuItem}>Cut</button>
+      <button className={styles.menuItem}>Copy</button>
+      <button className={styles.menuItem}>Paste</button>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### OpenOnHover
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const OpenOnHover = (): React.ReactNode => (
+  <Popover openOnHover>
+    <PopoverTrigger>
+      <button className={styles.trigger}>Hover me</button>
+    </PopoverTrigger>
+    <PopoverSurface className={styles.surface}>
+      <h3 className={styles.heading}>Hover popover</h3>
+      <p className={styles.body}>
+        This popover opens when you hover over the trigger and closes when the
+        mouse leaves both the trigger and the surface.
+      </p>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### WithArrow
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const WithArrow = (): React.ReactNode => (
+  <div className={styles.columnSpacious}>
+    <Popover withArrow positioning={{ position: "below", offset: 10 }}>
+      <PopoverTrigger>
+        <button className={styles.trigger}>Center-aligned</button>
+      </PopoverTrigger>
+      <PopoverSurface
+        className={`${styles.surface} ${styles.surfaceWithArrow}`}
+      >
+        <h3 className={styles.heading}>Arrow popover</h3>
+        <p className={styles.body}>
+          Arrow orientation follows the <code>data-placement</code> attribute,
+          which <code>usePositioning</code> keeps in sync with the actual
+          placement as you scroll or resize.
+        </p>
+      </PopoverSurface>
+    </Popover>
+
+    <Popover
+      withArrow
+      positioning={{ position: "below", align: "start", offset: 10 }}
+    >
+      <PopoverTrigger>
+        <button className={styles.trigger}>
+          Start-aligned (--arrow-padding: 16px)
+        </button>
+      </PopoverTrigger>
+      <PopoverSurface
+        className={`${styles.surface} ${styles.surfaceWithArrow}`}
+        style={{ "--arrow-padding": "16px" } as React.CSSProperties}
+      >
+        <h3 className={styles.heading}>Arrow padded from corner</h3>
+        <p className={styles.body}>
+          Arrow positioning is fully CSS-owned. For start/end alignments, the
+          rule reads <code>var(--arrow-padding, 12px)</code>; this surface
+          overrides the fallback by setting <code>--arrow-padding: 16px</code>{" "}
+          in its inline <code>style</code>.
+        </p>
+      </PopoverSurface>
+    </Popover>
+  </div>
+);
+```
+
+### WithoutTrigger
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/popover.module.css";
+
+export const WithoutTrigger = (): React.ReactNode => {
+  const [open, setOpen] = React.useState(false);
+  const [buttonEl, setButtonEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  return (
+    <div className={styles.columnSpacious}>
+      <button
+        ref={setButtonEl}
+        className={styles.trigger}
+        onClick={() => setOpen((value) => !value)}
+      >
+        Toggle popover
+      </button>
+      <Popover
+        open={open}
+        onOpenChange={(_e, data) => setOpen(data.open)}
+        positioning={{ target: buttonEl }}
+      >
+        <PopoverSurface className={`${styles.surface} ${styles.surfaceColumn}`}>
+          <h3 className={styles.headingFlush}>Popover content</h3>
+          <p className={styles.body}>
+            This popover has no <code>PopoverTrigger</code>. The surface is
+            controlled externally and anchored to the button via the{" "}
+            <code>positioning.target</code> prop.
+          </p>
+        </PopoverSurface>
+      </Popover>
+    </div>
+  );
+};
+```

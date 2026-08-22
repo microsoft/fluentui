@@ -1,0 +1,396 @@
+# Toggle Button
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CalendarMonthFilled,
+  CalendarMonthRegular,
+} from "@fluentui/react-icons";
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Appearance = (): JSXElement => {
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const styles = useStyles();
+
+  const toggleChecked = React.useCallback(
+    (buttonIndex: number) => {
+      switch (buttonIndex) {
+        case 1:
+          setChecked1(!checked1);
+          break;
+        case 2:
+          setChecked2(!checked2);
+          break;
+      }
+    },
+    [checked1, checked2]
+  );
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton
+        checked={checked1}
+        icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(1)}
+      >
+        Default
+      </ToggleButton>
+      <ToggleButton
+        appearance="primary"
+        checked={checked2}
+        icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(2)}
+      >
+        Primary
+      </ToggleButton>
+      <ToggleButton
+        appearance="outline"
+        icon={<CalendarMonth />}
+        onClick={() => toggleChecked(3)}
+      >
+        Outline
+      </ToggleButton>
+      <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
+        Subtle
+      </ToggleButton>
+      <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
+        Transparent
+      </ToggleButton>
+    </div>
+  );
+};
+```
+
+### AccessibleAppearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const AccessibleAppearance = (): JSXElement => {
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const styles = useStyles();
+
+  const toggleChecked = React.useCallback(
+    (buttonIndex: number) => {
+      switch (buttonIndex) {
+        case 1:
+          setChecked1(!checked1);
+          break;
+        case 2:
+          setChecked2(!checked2);
+          break;
+      }
+    },
+    [checked1, checked2]
+  );
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton
+        checked={checked1}
+        onClick={() => toggleChecked(1)}
+        isAccessible
+      >
+        Default
+      </ToggleButton>
+      <ToggleButton
+        appearance="primary"
+        checked={checked2}
+        onClick={() => toggleChecked(2)}
+        isAccessible
+      >
+        Primary
+      </ToggleButton>
+      <ToggleButton
+        appearance="outline"
+        onClick={() => toggleChecked(3)}
+        isAccessible
+      >
+        Outline
+      </ToggleButton>
+      <ToggleButton appearance="subtle" isAccessible>
+        Subtle
+      </ToggleButton>
+      <ToggleButton appearance="transparent" isAccessible>
+        Transparent
+      </ToggleButton>
+    </div>
+  );
+};
+```
+
+### Checked
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Checked = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton checked={true}>Controlled checked state</ToggleButton>
+      <ToggleButton checked={false}>Controlled unchecked state</ToggleButton>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { ToggleButton } from "@fluentui/react-components";
+import type { ToggleButtonProps } from "@fluentui/react-components";
+
+export const Default = (props: ToggleButtonProps): JSXElement => (
+  <ToggleButton {...props}>Example</ToggleButton>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  innerWrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+  outerWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "15px",
+  },
+});
+
+export const Disabled = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.outerWrapper}>
+      <div className={styles.innerWrapper}>
+        <ToggleButton>Enabled state</ToggleButton>
+        <ToggleButton disabled>Disabled state</ToggleButton>
+        <ToggleButton disabledFocusable>Disabled focusable state</ToggleButton>
+      </div>
+      <div className={styles.innerWrapper}>
+        <ToggleButton appearance="primary">Enabled state</ToggleButton>
+        <ToggleButton appearance="primary" disabled>
+          Disabled state
+        </ToggleButton>
+        <ToggleButton appearance="primary" disabledFocusable>
+          Disabled focusable state
+        </ToggleButton>
+      </div>
+    </div>
+  );
+};
+```
+
+### Icon
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton, Tooltip } from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CalendarMonthFilled,
+  CalendarMonthRegular,
+} from "@fluentui/react-icons";
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Icon = (): JSXElement => {
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const [checked3, setChecked3] = React.useState(false);
+  const styles = useStyles();
+
+  const toggleChecked = React.useCallback(
+    (buttonIndex: number) => {
+      switch (buttonIndex) {
+        case 1:
+          setChecked1(!checked1);
+          break;
+        case 2:
+          setChecked2(!checked2);
+          break;
+        case 3:
+          setChecked3(!checked3);
+          break;
+      }
+    },
+    [checked1, checked2, checked3]
+  );
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton
+        checked={checked1}
+        icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(1)}
+      >
+        With calendar icon before contents
+      </ToggleButton>
+      <ToggleButton
+        checked={checked2}
+        icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        iconPosition="after"
+        onClick={() => toggleChecked(2)}
+      >
+        With calendar icon after contents
+      </ToggleButton>
+      <Tooltip content="With calendar icon only" relationship="label">
+        <ToggleButton
+          checked={checked3}
+          icon={checked3 ? <CalendarMonth /> : <CalendarMonthRegular />}
+          onClick={() => toggleChecked(3)}
+        />
+      </Tooltip>
+    </div>
+  );
+};
+```
+
+### Shape
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Shape = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton>Rounded</ToggleButton>
+      <ToggleButton shape="circular">Circular</ToggleButton>
+      <ToggleButton shape="square">Square</ToggleButton>
+    </div>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    alignItems: "center",
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Size = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton size="small">Size: small</ToggleButton>
+      <ToggleButton size="medium">Size: medium</ToggleButton>
+      <ToggleButton size="large">Size: large</ToggleButton>
+    </div>
+  );
+};
+```
+
+### WithLongText
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, ToggleButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  longText: {
+    width: "280px",
+  },
+  wrapper: {
+    alignItems: "center",
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const WithLongText = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton>Short text</ToggleButton>
+      <ToggleButton className={styles.longText}>
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    </div>
+  );
+};
+```

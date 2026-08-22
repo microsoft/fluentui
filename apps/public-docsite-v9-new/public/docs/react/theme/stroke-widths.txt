@@ -1,0 +1,7 @@
+# Stroke Widths
+
+<h1 className="sbdocs-title">Stroke Widths</h1>
+
+<FluentCanvas>
+  <StrokeWidths />
+</FluentCanvas>

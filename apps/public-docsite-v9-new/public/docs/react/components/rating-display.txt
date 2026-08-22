@@ -1,0 +1,165 @@
+# Rating Display
+
+## Examples
+
+### Color
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+import { makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+});
+
+export const Color = (): JSXElement => {
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <RatingDisplay value={3} />
+
+      <RatingDisplay color="brand" value={3} />
+
+      <RatingDisplay color="marigold" value={3} />
+    </div>
+  );
+};
+```
+
+### Compact
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+
+export const Compact = (): JSXElement => (
+  <RatingDisplay compact value={3} count={1160} />
+);
+```
+
+### Count
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+
+export const Count = (): JSXElement => {
+  return <RatingDisplay value={5} count={1160} />;
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+
+export const Default = (): JSXElement => <RatingDisplay value={4} />;
+```
+
+### Max
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+
+export const Max = (): JSXElement => {
+  return <RatingDisplay max={10} value={5} />;
+};
+```
+
+### Shape
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+import { CircleFilled, SquareFilled } from "@fluentui/react-icons";
+import { makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+});
+
+export const Shape = (): JSXElement => {
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <RatingDisplay icon={CircleFilled} value={3.5} />
+      <RatingDisplay icon={SquareFilled} value={3.5} />
+    </div>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+import { makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+});
+
+export const Size = (): JSXElement => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <RatingDisplay value={3} size="small" />
+      <RatingDisplay value={3} size="medium" />
+      <RatingDisplay value={3} size="large" />
+      <RatingDisplay value={3} size="extra-large" />
+    </div>
+  );
+};
+```
+
+### Value
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { RatingDisplay } from "@fluentui/react-components";
+import { makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+});
+
+export const Value = (): JSXElement => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <RatingDisplay value={1} />
+      <RatingDisplay value={3.7} />
+      <RatingDisplay value={3.9} />
+      <RatingDisplay value={5} />
+    </div>
+  );
+};
+```

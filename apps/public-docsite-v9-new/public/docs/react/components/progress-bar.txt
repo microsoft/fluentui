@@ -1,0 +1,225 @@
+# Progress Bar
+
+## Examples
+
+### Color
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, ProgressBar, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "20px",
+  },
+});
+
+export const Color = (): JSXElement => {
+  const styles = useStyles();
+  return (
+    <div className={styles.container}>
+      <Field validationMessage="Error ProgressBar">
+        <ProgressBar value={0.75} color="error" />
+      </Field>
+
+      <Field validationMessage="Warning ProgressBar" validationState="warning">
+        <ProgressBar value={0.95} color="warning" />
+      </Field>
+
+      <Field validationMessage="Success ProgressBar" validationState="success">
+        <ProgressBar value={1} color="success" />
+      </Field>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement, ProgressBarProps } from "@fluentui/react-components";
+import { Field, ProgressBar } from "@fluentui/react-components";
+
+export const Default = (props: Partial<ProgressBarProps>): JSXElement => {
+  return (
+    <Field validationMessage="Default ProgressBar" validationState="none">
+      <ProgressBar {...props} value={0.5} />
+    </Field>
+  );
+};
+```
+
+### Indeterminate
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, ProgressBar } from "@fluentui/react-components";
+
+export const Indeterminate = (): JSXElement => {
+  return (
+    <Field validationMessage="Indeterminate ProgressBar" validationState="none">
+      <ProgressBar />
+    </Field>
+  );
+};
+```
+
+### Max
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, ProgressBar } from "@fluentui/react-components";
+
+const intervalDelay = 100;
+const intervalIncrement = 1;
+
+export const Max = (): JSXElement => {
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setValue(value < 42 ? intervalIncrement + value : 0);
+    }, intervalDelay);
+    return () => {
+      clearInterval(id);
+    };
+  });
+  return (
+    <Field
+      validationMessage={`There have been ${value} files downloaded`}
+      validationState="none"
+    >
+      <ProgressBar max={42} value={value} />
+    </Field>
+  );
+};
+```
+
+### MotionCustom
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  createMotionComponent,
+  Field,
+  ProgressBar,
+} from "@fluentui/react-components";
+
+// A custom motion component that swings between left and right, instead of always moving to the right.
+// The reduced motion version of the animation moves more slowly, with no acceleration, using a gentler gradient.
+const SwingMotion = createMotionComponent({
+  // translate percentages are relative to the element's own width, not the container's.
+  // The indeterminate bar is ~33% the width of its container, so:
+  //   translate: '-100%' === left: '-33%' (one bar-width off-screen to the left)
+  //   translate: '300%'  === left: '100%' (3 × bar-width ≈ full container width, off-screen to the right)
+  keyframes: [{ translate: "-100%" }, { translate: "300%" }],
+  duration: 2000,
+  easing: "ease-in-out",
+  direction: "alternate", // loop by reversing direction
+  iterations: Infinity,
+
+  reducedMotion: {
+    // The gradient bar is 100% of the container for reduced motion, which is 3x wider
+    keyframes: [{ translate: "-100%" }, { translate: "100%" }],
+    duration: 6000, // slower speed
+    easing: "linear", // no acceleration
+  },
+});
+
+export const MotionCustom = (): JSXElement => (
+  <Field
+    validationMessage="Custom indeterminate animation"
+    validationState="none"
+  >
+    <ProgressBar
+      indeterminateMotion={{
+        children: (_, motionProps) => <SwingMotion {...motionProps} />,
+      }}
+    />
+  </Field>
+);
+```
+
+### Shape
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, ProgressBar, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  container: {
+    margin: "20px 0px",
+  },
+});
+
+export const Shape = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div>
+      <Field validationMessage="Rounded ProgressBar" validationState="none">
+        <ProgressBar
+          className={styles.container}
+          shape="rounded"
+          thickness="large"
+          value={0.5}
+        />
+      </Field>
+      <Field validationMessage="Square ProgressBar" validationState="none">
+        <ProgressBar
+          className={styles.container}
+          shape="square"
+          thickness="large"
+          value={0.5}
+        />
+      </Field>
+    </div>
+  );
+};
+```
+
+### Thickness
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, ProgressBar, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  container: {
+    margin: "20px 0px",
+  },
+});
+
+export const Thickness = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div>
+      <Field validationMessage="Medium ProgressBar" validationState="none">
+        <ProgressBar
+          className={styles.container}
+          thickness="medium"
+          value={0.7}
+        />
+      </Field>
+
+      <Field validationMessage="Large ProgressBar" validationState="none">
+        <ProgressBar
+          className={styles.container}
+          thickness="large"
+          value={0.7}
+        />
+      </Field>
+    </div>
+  );
+};
+```

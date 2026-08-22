@@ -1,0 +1,211 @@
+# Radio Group
+
+## Examples
+
+### ControlledValue
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup, Button } from "@fluentui/react-components";
+
+export const ControlledValue = (): JSXElement => {
+  const [value, setValue] = React.useState("banana");
+  return (
+    <>
+      <Field label="Favorite Fruit">
+        <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
+          <Radio value="apple" label="Apple" />
+          <Radio value="pear" label="Pear" />
+          <Radio value="banana" label="Banana" />
+          <Radio value="orange" label="Orange" />
+        </RadioGroup>
+      </Field>
+      <Button disabledFocusable={!value} onClick={() => setValue("")}>
+        Clear selection
+      </Button>
+    </>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import type { RadioGroupProps } from "@fluentui/react-components";
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const Default = (props: Partial<RadioGroupProps>): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup {...props}>
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### DefaultValue
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const DefaultValue = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup defaultValue="pear">
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const Disabled = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup defaultValue="apple" disabled>
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### DisabledItem
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const DisabledItem = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup defaultValue="apple">
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" disabled />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### Horizontal
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const Horizontal = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup layout="horizontal">
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### HorizontalStacked
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const HorizontalStacked = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup layout="horizontal-stacked">
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### LabelSubtext
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup, Text } from "@fluentui/react-components";
+
+export const LabelSubtext = (): JSXElement => (
+  <Field label="Favorite Fruit">
+    <RadioGroup>
+      <Radio
+        value="A"
+        label={
+          <>
+            Banana
+            <br />
+            <Text size={200}>
+              This is an example subtext of the first option
+            </Text>
+          </>
+        }
+      />
+
+      <Radio
+        value="B"
+        label={
+          <>
+            Pear
+            <br />
+            <Text size={200}>This is some more example subtext</Text>
+          </>
+        }
+      />
+    </RadioGroup>
+  </Field>
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Radio, RadioGroup } from "@fluentui/react-components";
+
+export const Required = (): JSXElement => (
+  <Field label="Favorite Fruit" required>
+    <RadioGroup>
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+```

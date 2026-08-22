@@ -1,0 +1,642 @@
+# Menu
+
+## Examples
+
+### CheckboxItems
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItemCheckbox,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const CheckboxItems = (): React.ReactNode => (
+  <Menu persistOnItemClick>
+    <MenuTrigger>
+      <button className={styles.trigger}>Filters</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list} hasCheckmarks>
+        <MenuItemCheckbox
+          className={styles.item}
+          name="filters"
+          value="bold"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "✓",
+          }}
+        >
+          Bold
+        </MenuItemCheckbox>
+        <MenuItemCheckbox
+          className={styles.item}
+          name="filters"
+          value="italic"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "✓",
+          }}
+        >
+          Italic
+        </MenuItemCheckbox>
+        <MenuItemCheckbox
+          className={styles.item}
+          name="filters"
+          value="underline"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "✓",
+          }}
+        >
+          Underline
+        </MenuItemCheckbox>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const Controlled = (): React.ReactNode => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div className={styles.column}>
+      <button
+        className={styles.triggerSecondary}
+        onClick={() => setOpen((value) => !value)}
+      >
+        Toggle from outside (open: {String(open)})
+      </button>
+      <Menu open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+        <MenuTrigger>
+          <button className={styles.trigger}>Open menu</button>
+        </MenuTrigger>
+        <MenuPopover className={styles.surface}>
+          <MenuList className={styles.list}>
+            <MenuItem className={styles.item}>One</MenuItem>
+            <MenuItem className={styles.item}>Two</MenuItem>
+            <MenuItem className={styles.item}>Three</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const Default = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Open menu</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>New</MenuItem>
+        <MenuItem className={styles.item}>Open</MenuItem>
+        <MenuItem className={styles.item}>Save</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### GroupingItems
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuGroupHeader,
+  MenuDivider,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const GroupingItems = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Insert</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuGroup className={styles.group}>
+          <MenuGroupHeader className={styles.groupHeader}>
+            Document
+          </MenuGroupHeader>
+          <MenuItem className={styles.item}>Page</MenuItem>
+          <MenuItem className={styles.item}>Section</MenuItem>
+        </MenuGroup>
+        <MenuDivider className={styles.divider} />
+        <MenuGroup className={styles.group}>
+          <MenuGroupHeader className={styles.groupHeader}>
+            Media
+          </MenuGroupHeader>
+          <MenuItem className={styles.item}>Image</MenuItem>
+          <MenuItem className={styles.item}>Video</MenuItem>
+        </MenuGroup>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### ItemLink
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItemLink,
+  MenuItem,
+  MenuDivider,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const ItemLink = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Help</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItemLink
+          className={`${styles.item} ${styles.itemLink}`}
+          href="https://react.fluentui.dev/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Documentation
+        </MenuItemLink>
+        <MenuItemLink
+          className={`${styles.item} ${styles.itemLink}`}
+          href="https://github.com/microsoft/fluentui"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </MenuItemLink>
+        <MenuDivider className={styles.divider} />
+        <MenuItem className={styles.item}>About</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### ItemsWithIcons
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+const Icon = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.ReactElement => (
+  <span aria-hidden className={styles.icon}>
+    {children}
+  </span>
+);
+
+export const ItemsWithIcons = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>File</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item} icon={<Icon>📄</Icon>}>
+          New
+        </MenuItem>
+        <MenuItem className={styles.item} icon={<Icon>📂</Icon>}>
+          Open
+        </MenuItem>
+        <MenuItem className={styles.item} icon={<Icon>💾</Icon>}>
+          Save
+        </MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### NestedSubmenus
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+const Submenu = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <Menu>
+    <MenuTrigger>
+      <MenuItem
+        className={styles.item}
+        hasSubmenu
+        submenuIndicator={
+          <span aria-hidden className={styles.chevron}>
+            ›
+          </span>
+        }
+      >
+        {label}
+      </MenuItem>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>{children}</MenuList>
+    </MenuPopover>
+  </Menu>
+);
+
+export const NestedSubmenus = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>File</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>New</MenuItem>
+        <Submenu label="Open recent">
+          <MenuItem className={styles.item}>Document.docx</MenuItem>
+          <MenuItem className={styles.item}>Spreadsheet.xlsx</MenuItem>
+          <Submenu label="Older">
+            <MenuItem className={styles.item}>2024 archive</MenuItem>
+            <MenuItem className={styles.item}>2023 archive</MenuItem>
+          </Submenu>
+        </Submenu>
+        <MenuItem className={styles.item}>Save</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### OpenOnContext
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const OpenOnContext = (): React.ReactNode => (
+  <Menu openOnContext>
+    <MenuTrigger>
+      <div className={styles.contextTarget}>Right-click me</div>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>Cut</MenuItem>
+        <MenuItem className={styles.item}>Copy</MenuItem>
+        <MenuItem className={styles.item}>Paste</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### OpenOnHover
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const OpenOnHover = (): React.ReactNode => (
+  <Menu openOnHover>
+    <MenuTrigger>
+      <button className={styles.trigger}>Hover me</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>Item 1</MenuItem>
+        <MenuItem className={styles.item}>Item 2</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### RadioItems
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItemRadio,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const RadioItems = (): React.ReactNode => (
+  <Menu persistOnItemClick defaultCheckedValues={{ sortBy: ["name"] }}>
+    <MenuTrigger>
+      <button className={styles.trigger}>Sort by</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list} hasCheckmarks>
+        <MenuItemRadio
+          className={styles.item}
+          name="sortBy"
+          value="name"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "●",
+          }}
+        >
+          Name
+        </MenuItemRadio>
+        <MenuItemRadio
+          className={styles.item}
+          name="sortBy"
+          value="size"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "●",
+          }}
+        >
+          Size
+        </MenuItemRadio>
+        <MenuItemRadio
+          className={styles.item}
+          name="sortBy"
+          value="modified"
+          checkmark={{
+            className: styles.checkmark,
+            "aria-hidden": true,
+            children: "●",
+          }}
+        >
+          Last modified
+        </MenuItemRadio>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SecondaryContent
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const SecondaryContent = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Edit</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘X</span>}
+        >
+          Cut
+        </MenuItem>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘C</span>}
+        >
+          Copy
+        </MenuItem>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘V</span>}
+        >
+          Paste
+        </MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SplitMenuItem
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuSplitGroup,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+const SubmenuTrigger = (): React.ReactElement => (
+  <Menu>
+    <MenuTrigger>
+      <MenuItem
+        className={`${styles.item} ${styles.splitSecondary}`}
+        hasSubmenu
+        submenuIndicator={<span aria-hidden>›</span>}
+      />
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>Save as draft</MenuItem>
+        <MenuItem className={styles.item}>Save as template</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+
+export const SplitMenuItem = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Actions</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuSplitGroup className={styles.splitGroup}>
+          <MenuItem className={`${styles.item} ${styles.splitPrimary}`}>
+            Save
+          </MenuItem>
+          <SubmenuTrigger />
+        </MenuSplitGroup>
+        <MenuItem className={styles.item}>Discard</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SwitchItem
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItemSwitch,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const SwitchItem = (): React.ReactNode => (
+  <Menu persistOnItemClick>
+    <MenuTrigger>
+      <button className={styles.trigger}>View</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItemSwitch
+          className={`${styles.item} ${styles.itemSpread}`}
+          name="show"
+          value="grid"
+          switchIndicator={{
+            className: styles.switchTrack,
+            "aria-hidden": true,
+          }}
+        >
+          Grid view
+        </MenuItemSwitch>
+        <MenuItemSwitch
+          className={`${styles.item} ${styles.itemSpread}`}
+          name="show"
+          value="hidden"
+          switchIndicator={{
+            className: styles.switchTrack,
+            "aria-hidden": true,
+          }}
+        >
+          Show hidden files
+        </MenuItemSwitch>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### WithDivider
+
+```tsx
+import * as React from "react";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/menu.module.css";
+
+export const WithDivider = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger>
+      <button className={styles.trigger}>Actions</button>
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>Cut</MenuItem>
+        <MenuItem className={styles.item}>Copy</MenuItem>
+        <MenuItem className={styles.item}>Paste</MenuItem>
+        <MenuDivider className={styles.divider} />
+        <MenuItem className={styles.item}>Delete</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```

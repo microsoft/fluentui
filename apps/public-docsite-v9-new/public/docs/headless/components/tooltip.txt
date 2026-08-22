@@ -1,0 +1,195 @@
+# Tooltip
+
+## Examples
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+export const Controlled = (): React.ReactNode => {
+  const [visible, setVisible] = React.useState(false);
+  const toggleTooltip = () => setVisible((v) => !v);
+
+  return (
+    <div className={styles.row}>
+      <Tooltip
+        content={{
+          className: styles.content,
+          children: "Controlled tooltip",
+        }}
+        relationship="description"
+        visible={visible}
+        positioning={{ offset: 8 }}
+      >
+        <button className={`${styles.trigger} ${styles.triggerOutline}`}>
+          Trigger
+        </button>
+      </Tooltip>
+      <button onClick={toggleTooltip} className={styles.trigger}>
+        {visible ? "Hide" : "Show"} Tooltip
+      </button>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+export const Default = (): React.ReactNode => (
+  <div className={styles.row}>
+    <Tooltip
+      content={{
+        className: styles.content,
+        children: "This is the tooltip label",
+      }}
+      relationship="description"
+      positioning={{ offset: 8 }}
+    >
+      <button className={styles.trigger}>Hover or focus me</button>
+    </Tooltip>
+  </div>
+);
+```
+
+### Positions
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+export const Positions = (): React.ReactNode => (
+  <div className={styles.row}>
+    {(["above", "below", "before", "after"] as const).map((position) => (
+      <Tooltip
+        key={position}
+        content={{
+          className: styles.content,
+          children: `Position: ${position}`,
+        }}
+        relationship="description"
+        positioning={{ position, offset: 8 }}
+      >
+        <button className={`${styles.trigger} ${styles.capitalize}`}>
+          {position}
+        </button>
+      </Tooltip>
+    ))}
+  </div>
+);
+```
+
+### RelationshipDescription
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+export const RelationshipDescription = (): React.ReactNode => (
+  <div className={styles.row}>
+    <Tooltip
+      content={{
+        className: styles.content,
+        children: "This is the description of the button",
+      }}
+      relationship="description"
+      positioning={{ offset: 8 }}
+    >
+      <button className={styles.trigger}>Button</button>
+    </Tooltip>
+  </div>
+);
+```
+
+### RelationshipLabel
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+export const RelationshipLabel = (): React.ReactNode => (
+  <div className={styles.row}>
+    <Tooltip
+      content={{ className: styles.content, children: "Bold" }}
+      relationship="label"
+      positioning={{ offset: 8 }}
+    >
+      <button
+        className={`${styles.trigger} ${styles.triggerOutline} ${styles.triggerIcon} ${styles.bold}`}
+      >
+        B
+      </button>
+    </Tooltip>
+    <Tooltip
+      content={{ className: styles.content, children: "Italic" }}
+      relationship="label"
+      positioning={{ offset: 8 }}
+    >
+      <button
+        className={`${styles.trigger} ${styles.triggerOutline} ${styles.triggerIcon} ${styles.italic}`}
+      >
+        I
+      </button>
+    </Tooltip>
+    <Tooltip
+      content={{ className: styles.content, children: "Underline" }}
+      relationship="label"
+      positioning={{ offset: 8 }}
+    >
+      <button
+        className={`${styles.trigger} ${styles.triggerOutline} ${styles.triggerIcon} ${styles.underline}`}
+      >
+        U
+      </button>
+    </Tooltip>
+  </div>
+);
+```
+
+### WithArrow
+
+```tsx
+import * as React from "react";
+import { Tooltip } from "@fluentui/react-headless-components-preview/tooltip";
+
+import styles from "./styles/tooltip.module.css";
+
+const contentClass = [styles.content, styles.contentWithArrow].join(" ");
+
+export const WithArrow = (): React.ReactNode => (
+  <div className={styles.row}>
+    <Tooltip
+      relationship="description"
+      content={{ className: contentClass, children: "Center-aligned tooltip" }}
+      withArrow
+      positioning={{ position: "below", offset: 10 }}
+    >
+      <button className={styles.trigger}>Center-aligned</button>
+    </Tooltip>
+
+    <Tooltip
+      relationship="description"
+      positioning={{ position: "below", align: "start", offset: 10 }}
+      content={{ className: contentClass, children: "Start-aligned tooltip" }}
+      withArrow
+    >
+      <button className={styles.trigger}>Start-aligned</button>
+    </Tooltip>
+  </div>
+);
+```

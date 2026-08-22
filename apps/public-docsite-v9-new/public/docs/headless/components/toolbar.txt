@@ -1,0 +1,262 @@
+# Toolbar
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  ToolbarGroup,
+  ToolbarRadioGroup,
+  ToolbarToggleButton,
+} from "@fluentui/react-headless-components-preview/toolbar";
+import {
+  ClipboardPasteRegular,
+  CopyRegular,
+  CutRegular,
+  TextAlignCenterRegular,
+  TextAlignLeftRegular,
+  TextAlignRightRegular,
+  TextBoldRegular,
+  TextItalicRegular,
+  TextUnderlineRegular,
+} from "@fluentui/react-icons";
+
+import styles from "./styles/toolbar.module.css";
+const alignIcons = {
+  left: TextAlignLeftRegular,
+  center: TextAlignCenterRegular,
+  right: TextAlignRightRegular,
+} as const;
+
+export const Default = (): React.ReactNode => {
+  const [align, setAlign] = React.useState<"left" | "center" | "right">("left");
+
+  return (
+    <Toolbar className={styles.toolbar} aria-label="Text formatting">
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Cut"
+        icon={<CutRegular />}
+      />
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Copy"
+        icon={<CopyRegular />}
+      />
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Paste"
+        icon={<ClipboardPasteRegular />}
+      />
+
+      <ToolbarDivider className={styles.divider} />
+
+      <ToolbarGroup className={styles.group} aria-label="Text formatting">
+        <ToolbarToggleButton
+          name="format"
+          value="bold"
+          className={styles.btn}
+          aria-label="Bold"
+          icon={<TextBoldRegular />}
+        />
+
+        <ToolbarToggleButton
+          name="format"
+          value="italic"
+          className={styles.btn}
+          aria-label="Italic"
+          icon={<TextItalicRegular />}
+        />
+
+        <ToolbarToggleButton
+          name="format"
+          value="underline"
+          className={styles.btn}
+          aria-label="Underline"
+          icon={<TextUnderlineRegular />}
+        />
+      </ToolbarGroup>
+
+      <ToolbarDivider className={styles.divider} />
+
+      <ToolbarRadioGroup className={styles.group} aria-label="Text alignment">
+        {(
+          Object.entries(alignIcons) as Array<
+            ["left" | "center" | "right", typeof TextAlignLeftRegular]
+          >
+        ).map(([option, Icon]) => (
+          <ToolbarButton
+            key={option}
+            className={`${styles.btn}${
+              align === option ? ` ${styles.btnActive}` : ""
+            }`}
+            aria-label={`Align ${option}`}
+            aria-pressed={align === option}
+            icon={<Icon />}
+            onClick={() => setAlign(option)}
+          />
+        ))}
+      </ToolbarRadioGroup>
+    </Toolbar>
+  );
+};
+```
+
+### RadioButton
+
+```tsx
+import * as React from "react";
+import {
+  Toolbar,
+  ToolbarRadioButton,
+  ToolbarRadioGroup,
+} from "@fluentui/react-headless-components-preview/toolbar";
+import {
+  TextAlignCenterRegular,
+  TextAlignLeftRegular,
+  TextAlignRightRegular,
+} from "@fluentui/react-icons";
+
+import styles from "./styles/toolbar.module.css";
+
+const alignOptions = [
+  { value: "left", label: "Align left", Icon: TextAlignLeftRegular },
+  { value: "center", label: "Align center", Icon: TextAlignCenterRegular },
+  { value: "right", label: "Align right", Icon: TextAlignRightRegular },
+] as const;
+
+export const RadioButton = (): React.ReactNode => (
+  <Toolbar
+    className={styles.toolbar}
+    defaultCheckedValues={{ align: ["left"] }}
+    aria-label="Text alignment"
+  >
+    <ToolbarRadioGroup className={styles.group} aria-label="Alignment">
+      {alignOptions.map(({ value, label, Icon }) => (
+        <ToolbarRadioButton
+          key={value}
+          name="align"
+          value={value}
+          className={styles.btn}
+          aria-label={label}
+        >
+          <Icon />
+        </ToolbarRadioButton>
+      ))}
+    </ToolbarRadioGroup>
+  </Toolbar>
+);
+```
+
+### Toggle
+
+```tsx
+import * as React from "react";
+import {
+  Toolbar,
+  ToolbarGroup,
+  ToolbarToggleButton,
+} from "@fluentui/react-headless-components-preview/toolbar";
+import {
+  TextBoldRegular,
+  TextItalicRegular,
+  TextUnderlineRegular,
+} from "@fluentui/react-icons";
+
+import styles from "./styles/toolbar.module.css";
+export const Toggle = (): React.ReactNode => (
+  <Toolbar className={styles.toolbar} aria-label="Text formatting toggles">
+    <ToolbarGroup className={styles.group} aria-label="Toggle states">
+      <ToolbarToggleButton
+        name="format"
+        value="bold"
+        className={styles.btn}
+        aria-label="Bold"
+        icon={<TextBoldRegular />}
+      />
+
+      <ToolbarToggleButton
+        name="format"
+        value="italic"
+        className={styles.btn}
+        aria-label="Italic"
+        icon={<TextItalicRegular />}
+      />
+
+      <ToolbarToggleButton
+        name="format"
+        value="underline"
+        className={styles.btn}
+        aria-label="Underline"
+        icon={<TextUnderlineRegular />}
+      />
+    </ToolbarGroup>
+  </Toolbar>
+);
+```
+
+### Vertical
+
+```tsx
+import * as React from "react";
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  ToolbarGroup,
+} from "@fluentui/react-headless-components-preview/toolbar";
+import {
+  ClipboardPasteRegular,
+  CopyRegular,
+  CutRegular,
+  TextBoldRegular,
+  TextItalicRegular,
+  TextUnderlineRegular,
+} from "@fluentui/react-icons";
+
+import styles from "./styles/toolbar.module.css";
+export const Vertical = (): React.ReactNode => (
+  <Toolbar className={styles.toolbar} vertical aria-label="Text formatting">
+    <ToolbarButton
+      className={styles.btn}
+      aria-label="Cut"
+      icon={<CutRegular />}
+    />
+    <ToolbarButton
+      className={styles.btn}
+      aria-label="Copy"
+      icon={<CopyRegular />}
+    />
+    <ToolbarButton
+      className={styles.btn}
+      aria-label="Paste"
+      icon={<ClipboardPasteRegular />}
+    />
+
+    <ToolbarDivider className={styles.divider} />
+
+    <ToolbarGroup className={styles.group} aria-label="Text formatting">
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Bold"
+        icon={<TextBoldRegular />}
+      />
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Italic"
+        icon={<TextItalicRegular />}
+      />
+      <ToolbarButton
+        className={styles.btn}
+        aria-label="Underline"
+        icon={<TextUnderlineRegular />}
+      />
+    </ToolbarGroup>
+  </Toolbar>
+);
+```

@@ -1,0 +1,105 @@
+# Counter Badge
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+
+export const Appearance = (): JSXElement => {
+  return (
+    <>
+      <CounterBadge count={5} appearance="filled" />
+      <CounterBadge count={5} appearance="ghost" />
+    </>
+  );
+};
+```
+
+### Color
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+export const Color = (): JSXElement => {
+  return (
+    <>
+      <CounterBadge appearance="filled" color="brand" count={5} />
+      <CounterBadge appearance="filled" color="danger" count={5} />
+      <CounterBadge appearance="filled" color="important" count={5} />
+      <CounterBadge appearance="filled" color="informative" count={5} />
+    </>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+import type { CounterBadgeProps } from "@fluentui/react-components";
+
+export const Default = (args: CounterBadgeProps): JSXElement => (
+  <CounterBadge {...args} />
+);
+```
+
+### Dot
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+
+export const Dot = (): JSXElement => <CounterBadge count={0} dot />;
+```
+
+### Shapes
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+
+export const Shapes = (): JSXElement => {
+  return (
+    <>
+      <CounterBadge count={5} shape="circular" />
+      <CounterBadge count={5} shape="rounded" />
+    </>
+  );
+};
+```
+
+### Sizes
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { CounterBadge } from "@fluentui/react-components";
+
+export const Sizes = (): JSXElement => {
+  return (
+    <>
+      <CounterBadge count={5} size="tiny" />
+      <CounterBadge count={5} size="extra-small" />
+      <CounterBadge count={5} size="small" />
+      <CounterBadge count={5} size="medium" />
+      <CounterBadge count={5} size="large" />
+      <CounterBadge count={5} size="extra-large" />
+    </>
+  );
+};
+```

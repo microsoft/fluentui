@@ -1,0 +1,118 @@
+# Message Bar
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import { Link } from "@fluentui/react-headless-components-preview/link";
+import {
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarTitle,
+} from "@fluentui/react-headless-components-preview/message-bar";
+import { DismissRegular, InfoRegular } from "@fluentui/react-icons";
+
+import linkStyles from "./styles/link.module.css";
+import styles from "./styles/message-bar.module.css";
+export const Default = (): React.ReactNode => (
+  <MessageBar
+    className={`${styles.bar} ${styles.info}`}
+    icon={{ className: styles.icon, children: <InfoRegular aria-hidden /> }}
+  >
+    <MessageBarBody className={styles.body}>
+      <MessageBarTitle className={styles.title}>
+        Descriptive title
+      </MessageBarTitle>
+      Message providing information to the user with actionable insights.{" "}
+      <Link className={`${linkStyles.link} ${linkStyles.inline}`} href="#">
+        Learn more
+      </Link>
+    </MessageBarBody>
+    <MessageBarActions className={styles.actions}>
+      <button type="button" className={styles.actionBtn}>
+        Action
+      </button>
+      <button
+        type="button"
+        className={`${styles.actionBtn} ${styles.iconBtn}`}
+        aria-label="Dismiss"
+      >
+        <DismissRegular aria-hidden />
+      </button>
+    </MessageBarActions>
+  </MessageBar>
+);
+```
+
+### Intent
+
+```tsx
+import * as React from "react";
+import { Link } from "@fluentui/react-headless-components-preview/link";
+import {
+  MessageBar,
+  MessageBarBody,
+  MessageBarTitle,
+} from "@fluentui/react-headless-components-preview/message-bar";
+import {
+  CheckmarkCircleRegular,
+  ErrorCircleRegular,
+  InfoRegular,
+  WarningRegular,
+} from "@fluentui/react-icons";
+
+import linkStyles from "./styles/link.module.css";
+import styles from "./styles/message-bar.module.css";
+const items = [
+  {
+    intent: "info" as const,
+    variant: styles.info,
+    icon: <InfoRegular aria-hidden />,
+    title: "Info message",
+  },
+  {
+    intent: "warning" as const,
+    variant: styles.warning,
+    icon: <WarningRegular aria-hidden />,
+    title: "Warning message",
+  },
+  {
+    intent: "error" as const,
+    variant: styles.danger,
+    icon: <ErrorCircleRegular aria-hidden />,
+    title: "Error message",
+  },
+  {
+    intent: "success" as const,
+    variant: styles.success,
+    icon: <CheckmarkCircleRegular aria-hidden />,
+    title: "Success message",
+  },
+];
+
+export const Intent = (): React.ReactNode => (
+  <div className={styles.list}>
+    {items.map((item) => (
+      <MessageBar
+        key={item.intent}
+        intent={item.intent}
+        className={`${styles.bar} ${item.variant}`}
+        icon={{ className: styles.icon, children: item.icon }}
+      >
+        <MessageBarBody className={styles.body}>
+          <MessageBarTitle className={styles.title}>
+            {item.title}
+          </MessageBarTitle>
+          Message providing information to the user with actionable insights.{" "}
+          <Link className={`${linkStyles.link} ${linkStyles.inline}`} href="#">
+            Learn more
+          </Link>
+        </MessageBarBody>
+      </MessageBar>
+    ))}
+  </div>
+);
+```

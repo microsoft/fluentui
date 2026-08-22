@@ -1,0 +1,365 @@
+# Time Picker
+
+## Examples
+
+### Clearable
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import { TimePicker } from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "300px",
+  },
+});
+
+export const Clearable = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <Field label="Coffee time" className={styles.root}>
+      <TimePicker clearable />
+    </Field>
+  );
+};
+```
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import type { TimePickerProps } from "@fluentui/react-timepicker-compat";
+import {
+  TimePicker,
+  formatDateToTimeString,
+} from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "20px",
+    maxWidth: "300px",
+  },
+});
+
+const DefaultSelection = () => {
+  const [defaultSelectedTime] = React.useState(
+    new Date("November 25, 2023 12:30:00")
+  );
+  return (
+    <Field label="Select a time (default Selection)">
+      <TimePicker
+        startHour={8}
+        endHour={20}
+        defaultSelectedTime={defaultSelectedTime}
+        defaultValue={formatDateToTimeString(defaultSelectedTime)}
+      />
+    </Field>
+  );
+};
+
+const ControlledSelection = () => {
+  const [selectedTime, setSelectedTime] = React.useState<Date | null>(
+    new Date("November 25, 2023 12:30:00")
+  );
+  const [value, setValue] = React.useState<string>(
+    selectedTime ? formatDateToTimeString(selectedTime) : ""
+  );
+
+  const onTimeChange: TimePickerProps["onTimeChange"] = (_ev, data) => {
+    setSelectedTime(data.selectedTime);
+    setValue(data.selectedTimeText ?? "");
+  };
+  const onInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(ev.target.value);
+  };
+
+  return (
+    <Field label="Select a time (controlled Selection)">
+      <TimePicker
+        startHour={8}
+        endHour={20}
+        selectedTime={selectedTime}
+        onTimeChange={onTimeChange}
+        value={value}
+        onInput={onInput}
+      />
+    </Field>
+  );
+};
+
+export const Controlled = (): JSXElement => {
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <DefaultSelection />
+      <ControlledSelection />
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import type { TimePickerProps } from "@fluentui/react-timepicker-compat";
+import { TimePicker } from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "300px",
+  },
+});
+
+export const Default = (props: Partial<TimePickerProps>): JSXElement => {
+  const styles = useStyles();
+  return (
+    <Field label="Coffee time" className={styles.root}>
+      <TimePicker {...props} />
+    </Field>
+  );
+};
+```
+
+### FreeformCustomParsing
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import type { TimePickerProps } from "@fluentui/react-timepicker-compat";
+import { TimePicker } from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "300px",
+  },
+});
+
+const formatDateToTimeString = (date: Date) => {
+  const localeTimeString = date.toLocaleTimeString([], {
+    hour: "numeric",
+    minute: "2-digit",
+    hourCycle: "h12",
+  });
+  if (date.getHours() < 12) {
+    return `Morning: ${localeTimeString}`;
+  }
+  return `Afternoon: ${localeTimeString}`;
+};
+
+export const FreeformCustomParsing = (): JSXElement => {
+  const styles = useStyles();
+
+  const [anchor] = React.useState(() => new Date(2023, 1, 1));
+
+  const parseTimeStringToDate: TimePickerProps["parseTimeStringToDate"] = (
+    time: string | undefined
+  ) => {
+    if (!time) {
+      return { date: null };
+    }
+
+    const [hours, minutes] = (time.split(" ")[1].match(/\d+/g) ?? []).map(
+      Number
+    );
+    const adjustedHours =
+      time.includes("Afternoon: ") && hours !== 12 ? hours + 12 : hours;
+    const date = new Date(
+      anchor.getFullYear(),
+      anchor.getMonth(),
+      anchor.getDate(),
+      adjustedHours,
+      minutes
+    );
+
+    return { date };
+  };
+
+  const [selectedTimeText, setSelectedTimeText] = React.useState<
+    string | undefined
+  >(undefined);
+  const onTimeChange: TimePickerProps["onTimeChange"] = (_ev, data) => {
+    setSelectedTimeText(data.selectedTimeText);
+  };
+
+  return (
+    <div>
+      <Field label="Coffee time" className={styles.root}>
+        <TimePicker
+          freeform
+          dateAnchor={anchor}
+          formatDateToTimeString={formatDateToTimeString}
+          parseTimeStringToDate={parseTimeStringToDate}
+          onTimeChange={onTimeChange}
+        />
+      </Field>
+      {selectedTimeText && <div>Selected time: {selectedTimeText}</div>}
+    </div>
+  );
+};
+```
+
+### FreeformWithErrorHandling
+
+```tsx
+import * as React from "react";
+import type { JSXElement, FieldProps } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import type {
+  TimePickerErrorType,
+  TimePickerProps,
+} from "@fluentui/react-timepicker-compat";
+import { TimePicker } from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  control: {
+    maxWidth: "300px",
+  },
+});
+
+const getErrorMessage = (
+  error?: TimePickerErrorType
+): FieldProps["validationMessage"] => {
+  switch (error) {
+    case "invalid-input":
+      return "Invalid time format. Please use the 24-hour format HH:MM.";
+    case "out-of-bounds":
+      return "Time out of the 10:00 to 19:59 range.";
+    case "required-input":
+      return "Time is required.";
+    default:
+      return "";
+  }
+};
+
+export const FreeformWithErrorHandling = (): JSXElement => {
+  const styles = useStyles();
+
+  const [errorType, setErrorType] = React.useState<TimePickerErrorType>();
+  const handleTimeChange: TimePickerProps["onTimeChange"] = (_ev, data) => {
+    setErrorType(data.errorType);
+  };
+
+  return (
+    <Field
+      required
+      label={
+        `Type a time outside of 10:00 to 19:59,` +
+        ` type an invalid time, or leave the input empty and close the TimePicker.`
+      }
+      validationMessage={getErrorMessage(errorType)}
+    >
+      <TimePicker
+        className={styles.control}
+        freeform
+        startHour={10}
+        endHour={20}
+        onTimeChange={handleTimeChange}
+      />
+    </Field>
+  );
+};
+```
+
+### TimePickerWithDatePicker
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Field, makeStyles } from "@fluentui/react-components";
+import type { DatePickerProps } from "@fluentui/react-datepicker-compat";
+import { DatePicker } from "@fluentui/react-datepicker-compat";
+import type { TimePickerProps } from "@fluentui/react-timepicker-compat";
+import {
+  TimePicker,
+  formatDateToTimeString,
+} from "@fluentui/react-timepicker-compat";
+
+const useStyles = makeStyles({
+  root: {
+    display: "grid",
+    columnGap: "20px",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    maxWidth: "600px",
+    marginBottom: "10px",
+  },
+});
+
+export const TimePickerWithDatePicker = (): JSXElement => {
+  const styles = useStyles();
+
+  const [selectedDate, setSelectedDate] = React.useState<
+    Date | null | undefined
+  >(null);
+
+  const [selectedTime, setSelectedTime] = React.useState<Date | null>(null);
+  const [timePickerValue, setTimePickerValue] = React.useState<string>(
+    selectedTime ? formatDateToTimeString(selectedTime) : ""
+  );
+
+  const onSelectDate: DatePickerProps["onSelectDate"] = (date) => {
+    setSelectedDate(date);
+    if (date && selectedTime) {
+      setSelectedTime(
+        new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+          selectedTime.getHours(),
+          selectedTime.getMinutes()
+        )
+      );
+    }
+  };
+
+  const onTimeChange: TimePickerProps["onTimeChange"] = (_ev, data) => {
+    setSelectedTime(data.selectedTime);
+    setTimePickerValue(data.selectedTimeText ?? "");
+  };
+  const onTimePickerInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setTimePickerValue(ev.target.value);
+  };
+
+  return (
+    <div>
+      <div className={styles.root}>
+        <Field label="Select a date">
+          <DatePicker
+            placeholder="Select a date..."
+            value={selectedDate}
+            onSelectDate={onSelectDate}
+          />
+        </Field>
+        <Field label="Select a time">
+          <TimePicker
+            placeholder="Select a time..."
+            freeform
+            dateAnchor={selectedDate ?? undefined}
+            selectedTime={selectedTime}
+            onTimeChange={onTimeChange}
+            value={timePickerValue}
+            onInput={onTimePickerInput}
+          />
+        </Field>
+      </div>
+
+      {selectedDate && (
+        <div>
+          Selected date time:{" "}
+          {selectedTime ? selectedTime.toString() : selectedDate.toString()}
+        </div>
+      )}
+    </div>
+  );
+};
+```

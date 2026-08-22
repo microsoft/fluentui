@@ -1,0 +1,305 @@
+# Field
+
+## Examples
+
+### ComponentExamples
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Checkbox,
+  Combobox,
+  Field,
+  Input,
+  makeResetStyles,
+  Option,
+  Radio,
+  RadioGroup,
+  Slider,
+  SpinButton,
+  Switch,
+  Textarea,
+  tokens,
+} from "@fluentui/react-components";
+
+const useStackClassName = makeResetStyles({
+  display: "flex",
+  flexDirection: "column",
+  rowGap: tokens.spacingVerticalL,
+});
+
+export const ComponentExamples = (): JSXElement => (
+  <div className={useStackClassName()}>
+    <Field label="Input">
+      <Input />
+    </Field>
+    <Field label="Textarea">
+      <Textarea />
+    </Field>
+    <Field label="Combobox">
+      <Combobox>
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+        <Option>Option 3</Option>
+      </Combobox>
+    </Field>
+    <Field label="SpinButton">
+      <SpinButton />
+    </Field>
+    <Field hint="Checkboxes use their own label instead of the Field label.">
+      <Checkbox label="Checkbox" />
+    </Field>
+    <Field label="Slider">
+      <Slider defaultValue={25} />
+    </Field>
+    <Field label="Switch">
+      <Switch />
+    </Field>
+    <Field label="RadioGroup">
+      <RadioGroup>
+        <Radio label="Option 1" />
+        <Radio label="Option 2" />
+        <Radio label="Option 3" />
+      </RadioGroup>
+    </Field>
+  </div>
+);
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import type { FieldProps } from "@fluentui/react-components";
+import { Field, Input } from "@fluentui/react-components";
+
+export const Default = (props: Partial<FieldProps>): JSXElement => (
+  <Field
+    label="Example field"
+    validationState="success"
+    validationMessage="This is a success message."
+    {...props}
+  >
+    <Input />
+  </Field>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Input } from "@fluentui/react-components";
+
+export const Disabled = (): JSXElement => (
+  <Field label="Field with disabled control">
+    <Input disabled />
+  </Field>
+);
+```
+
+### Hint
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Input } from "@fluentui/react-components";
+
+export const Hint = (): JSXElement => (
+  <Field label="Example with hint" hint="Sample hint text.">
+    <Input />
+  </Field>
+);
+```
+
+### Horizontal
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Input } from "@fluentui/react-components";
+
+export const Horizontal = (): JSXElement => (
+  <Field
+    label="Horizontal"
+    orientation="horizontal"
+    hint="Validation message and hint are below the input."
+  >
+    <Input />
+  </Field>
+);
+```
+
+### Info
+
+```tsx
+import * as React from "react";
+import type { JSXElement, LabelProps } from "@fluentui/react-components";
+
+import { Field, Input } from "@fluentui/react-components";
+import { InfoLabel } from "@fluentui/react-components";
+
+export const Info = (): JSXElement => (
+  <Field
+    label={{
+      // Setting children to a render function allows you to replace the entire slot.
+      // The first param is the component for the slot (Label), which we're ignoring to use InfoLabel instead.
+      // The second param are the props for the slot, which need to be passed to the InfoLabel.
+      children: (_: unknown, slotProps: LabelProps) => (
+        <InfoLabel {...slotProps} info="Example info">
+          Field with an info button
+        </InfoLabel>
+      ),
+    }}
+  >
+    <Input />
+  </Field>
+);
+```
+
+### RenderFunction
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, makeStyles } from "@fluentui/react-components";
+import { AnimalCat24Regular } from "@fluentui/react-icons";
+
+const useCatInputStyles = makeStyles({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    columnGap: "4px",
+  },
+});
+
+const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
+  props
+) => {
+  const styles = useCatInputStyles();
+  return (
+    <div className={styles.root}>
+      <AnimalCat24Regular />
+      <input {...props} />
+    </div>
+  );
+};
+
+export const RenderFunction = (): JSXElement => (
+  <Field
+    label="Third party input"
+    hint="Use a render function to properly associate the label with the control."
+  >
+    {(fieldProps) => <CatInput {...fieldProps} />}
+  </Field>
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { Field, Input } from "@fluentui/react-components";
+
+export const Required = (): JSXElement => (
+  <Field label="Required field" required>
+    <Input />
+  </Field>
+);
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Field,
+  Input,
+  makeResetStyles,
+  tokens,
+} from "@fluentui/react-components";
+
+const useStackClassName = makeResetStyles({
+  display: "flex",
+  flexDirection: "column",
+  rowGap: tokens.spacingVerticalL,
+});
+
+export const Size = (): JSXElement => (
+  <div className={useStackClassName()}>
+    <Field label="Size small" size="small">
+      <Input />
+    </Field>
+    <Field label="Size medium" size="medium">
+      <Input />
+    </Field>
+    <Field label="Size large" size="large">
+      <Input />
+    </Field>
+  </div>
+);
+```
+
+### ValidationMessage
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Field,
+  Input,
+  makeResetStyles,
+  tokens,
+} from "@fluentui/react-components";
+import { SparkleFilled } from "@fluentui/react-icons";
+
+const useStackClassName = makeResetStyles({
+  display: "flex",
+  flexDirection: "column",
+  rowGap: tokens.spacingVerticalL,
+});
+
+export const ValidationMessage = (): JSXElement => (
+  <div className={useStackClassName()}>
+    <Field label="Error state" validationMessage="This is an error message.">
+      <Input />
+    </Field>
+    <Field
+      label="Warning state"
+      validationState="warning"
+      validationMessage="This is a warning message."
+    >
+      <Input />
+    </Field>
+    <Field
+      label="Success state"
+      validationState="success"
+      validationMessage="This is a success message."
+    >
+      <Input />
+    </Field>
+    <Field
+      label="Custom state"
+      validationState="none"
+      validationMessageIcon={<SparkleFilled />}
+      validationMessage="This is a custom message."
+    >
+      <Input />
+    </Field>
+  </div>
+);
+```

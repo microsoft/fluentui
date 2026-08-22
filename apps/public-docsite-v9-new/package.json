@@ -6,7 +6,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "node scripts/build-search-index.mjs && react-router build",
+    "build": "node scripts/build-search-index.mjs && node scripts/build-llms.mjs && react-router build",
+    "build:llms": "node scripts/build-llms.mjs",
     "build:search": "node scripts/build-search-index.mjs",
     "dev": "react-router dev",
     "docgen": "node scripts/generate-docgen.mjs",

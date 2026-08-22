@@ -1,0 +1,100 @@
+# Info Label
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement, InfoLabelProps } from "@fluentui/react-components";
+
+import { InfoLabel, Link } from "@fluentui/react-components";
+
+export const Default = (props: Partial<InfoLabelProps>): JSXElement => (
+  <InfoLabel
+    info={
+      <>
+        This is example information for an InfoLabel.{" "}
+        <Link href="https://react.fluentui.dev">Learn more</Link>
+      </>
+    }
+    {...props}
+  >
+    Example label
+  </InfoLabel>
+);
+```
+
+### InField
+
+```tsx
+import * as React from "react";
+import type { JSXElement, LabelProps } from "@fluentui/react-components";
+
+import { Field, InfoLabel, Input } from "@fluentui/react-components";
+
+export const InField = (): JSXElement => (
+  <Field
+    label={{
+      children: (_: unknown, props: LabelProps) => (
+        <InfoLabel {...props} info="Example info">
+          Field with info label
+        </InfoLabel>
+      ),
+    }}
+  >
+    <Input />
+  </Field>
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { InfoLabel } from "@fluentui/react-components";
+
+export const Required = (): JSXElement => (
+  <InfoLabel info="Example info" required>
+    Required label
+  </InfoLabel>
+);
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { InfoLabel, makeStyles, tokens } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  container: {
+    alignItems: "start",
+    display: "flex",
+    flexDirection: "column",
+    rowGap: tokens.spacingVerticalL,
+  },
+});
+
+export const Size = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <InfoLabel size="small" info="Example small InfoLabel">
+        Small label
+      </InfoLabel>
+      <InfoLabel size="medium" info="Example medium InfoLabel">
+        Medium label
+      </InfoLabel>
+      <InfoLabel size="large" info="Example large InfoLabel">
+        Large label
+      </InfoLabel>
+    </div>
+  );
+};
+```

@@ -1,0 +1,84 @@
+# Presence Badge
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { PresenceBadge } from "@fluentui/react-components";
+
+export const Default = (): JSXElement => <PresenceBadge />;
+```
+
+### OutOfOffice
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { PresenceBadge } from "@fluentui/react-components";
+
+export const OutOfOffice = (): JSXElement => {
+  return (
+    <>
+      <PresenceBadge outOfOffice status="available" />
+      <PresenceBadge outOfOffice status="away" />
+      <PresenceBadge outOfOffice status="busy" />
+      <PresenceBadge outOfOffice status="do-not-disturb" />
+      <PresenceBadge outOfOffice status="offline" />
+      <PresenceBadge outOfOffice status="out-of-office" />
+      <PresenceBadge outOfOffice status="blocked" />
+      <PresenceBadge outOfOffice status="unknown" />
+    </>
+  );
+};
+```
+
+### Sizes
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { PresenceBadge } from "@fluentui/react-components";
+
+export const Sizes = (): JSXElement => {
+  return (
+    <>
+      <PresenceBadge size="tiny" />
+      <PresenceBadge size="extra-small" />
+      <PresenceBadge size="small" />
+      <PresenceBadge size="medium" />
+      <PresenceBadge size="large" />
+      <PresenceBadge size="extra-large" />
+    </>
+  );
+};
+```
+
+### Status
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import { PresenceBadge } from "@fluentui/react-components";
+
+export const Status = (): JSXElement => {
+  return (
+    <>
+      <PresenceBadge status="available" />
+      <PresenceBadge status="away" />
+      <PresenceBadge status="busy" />
+      <PresenceBadge status="do-not-disturb" />
+      <PresenceBadge status="offline" />
+      <PresenceBadge status="out-of-office" />
+      <PresenceBadge status="blocked" />
+      <PresenceBadge status="unknown" />
+    </>
+  );
+};
+```

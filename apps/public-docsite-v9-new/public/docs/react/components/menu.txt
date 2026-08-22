@@ -1,0 +1,1646 @@
+# Menu
+
+## Examples
+
+### AligningWithIcons
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+} from "@fluentui/react-icons";
+
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+
+export const AligningWithIcons = (): JSXElement => (
+  <Menu hasIcons>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem>Edit</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### AligningWithSelectableItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuItemCheckbox,
+  MenuPopover,
+} from "@fluentui/react-components";
+import { CutRegular, CutFilled, bundleIcon } from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+
+export const AligningWithSelectableItems = (): JSXElement => (
+  <Menu hasIcons hasCheckmarks>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+    <MenuPopover>
+      <MenuList>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+          Checkbox item
+        </MenuItemCheckbox>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### AnchorToCustomTarget
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+import type {
+  MenuProps,
+  PositioningImperativeRef,
+} from "@fluentui/react-components";
+
+export const AnchorToCustomTarget = (): JSXElement => {
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const customAnchorRef = React.useRef<HTMLButtonElement>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    // do not close menu as an outside click if clicking on the custom trigger/target
+    // this prevents it from closing & immediately re-opening when clicking custom triggers
+    if (
+      data.type === "clickOutside" &&
+      (e.target === customAnchorRef.current || e.target === buttonRef.current)
+    ) {
+      return;
+    }
+
+    setOpen(data.open);
+  };
+
+  React.useEffect(() => {
+    if (buttonRef.current) {
+      positioningRef.current?.setTarget(buttonRef.current);
+    }
+  }, [buttonRef, positioningRef]);
+
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
+  return (
+    <>
+      <Button
+        {...restoreFocusTargetAttribute}
+        ref={customAnchorRef}
+        onClick={() => setOpen((s) => !s)}
+      >
+        Open menu
+      </Button>
+      <Button
+        {...restoreFocusTargetAttribute}
+        ref={buttonRef}
+        onClick={() => setOpen((s) => !s)}
+      >
+        Custom target
+      </Button>
+      <Menu
+        open={open}
+        onOpenChange={onOpenChange}
+        positioning={{ positioningRef }}
+      >
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+};
+```
+
+### CheckboxItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemCheckbox,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const CheckboxItems = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+            Cut
+          </MenuItemCheckbox>
+          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
+            Paste
+          </MenuItemCheckbox>
+          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
+            Edit
+          </MenuItemCheckbox>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### ControlledCheckboxItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemCheckbox,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+import type { MenuProps } from "@fluentui/react-components";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const ControlledCheckboxItems = (): JSXElement => {
+  const [checkedValues, setCheckedValues] = React.useState<
+    Record<string, string[]>
+  >({ edit: ["cut", "paste"] });
+  const onChange: MenuProps["onCheckedValueChange"] = (
+    e,
+    { name, checkedItems }
+  ) => {
+    setCheckedValues((s) => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  };
+
+  return (
+    <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+            Cut
+          </MenuItemCheckbox>
+          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
+            Paste
+          </MenuItemCheckbox>
+          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
+            Edit
+          </MenuItemCheckbox>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### ControlledRadioItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemRadio,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+import type { MenuProps } from "@fluentui/react-components";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const ControlledRadioItems = (): JSXElement => {
+  const [checkedValues, setCheckedValues] = React.useState<
+    Record<string, string[]>
+  >({ font: ["calibri"] });
+  const onChange: MenuProps["onCheckedValueChange"] = (
+    e,
+    { name, checkedItems }
+  ) => {
+    setCheckedValues((s) => ({ ...s, [name]: checkedItems }));
+  };
+
+  return (
+    <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
+            Segoe
+          </MenuItemRadio>
+          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
+            Calibri
+          </MenuItemRadio>
+          <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
+            Arial
+          </MenuItemRadio>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### ControllingOpenAndClose
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Checkbox,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import type { CheckboxProps, MenuProps } from "@fluentui/react-components";
+
+export const ControllingOpenAndClose = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  const onChange: CheckboxProps["onChange"] = (e, { checked }) => {
+    if (typeof checked === "boolean") {
+      setOpen(checked);
+    }
+  };
+
+  return (
+    <div>
+      <div>
+        <Checkbox label="Open" checked={open} onChange={onChange} />
+      </div>
+
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger disableButtonEnhancement>
+          <Button>Toggle menu</Button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
+```
+
+### CustomTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import type {
+  MenuProps,
+  MenuTriggerChildProps,
+} from "@fluentui/react-components";
+
+const CustomMenuTrigger = React.forwardRef<
+  HTMLButtonElement,
+  Partial<MenuTriggerChildProps>
+>((props, ref) => {
+  return (
+    <Button {...props} ref={ref}>
+      Custom Trigger
+    </Button>
+  );
+});
+
+export const CustomTrigger = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <CustomMenuTrigger />
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+export const Default = (): JSXElement => (
+  <Menu positioning={{ autoSize: true }}>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### GroupingItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuDivider,
+  MenuGroupHeader,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const GroupingItems = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuGroup>
+          <MenuGroupHeader>Section header</MenuGroupHeader>
+          <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+          <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+        </MenuGroup>
+        <MenuDivider />
+        <MenuGroup>
+          <MenuGroupHeader>Section header</MenuGroupHeader>
+          <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+          <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+        </MenuGroup>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### Interaction
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  CutRegular,
+  CutFilled,
+  CopyRegular,
+  CopyFilled,
+} from "@fluentui/react-icons";
+import type { MenuProps } from "@fluentui/react-components";
+
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+
+export const Interaction = (props: Partial<MenuProps>): JSXElement => {
+  return (
+    <Menu {...props}>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Edit content</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem
+            icon={<CutIcon />}
+            onClick={() => alert("Cut to clipboard")}
+          >
+            Cut
+          </MenuItem>
+          <MenuItem
+            icon={<CopyIcon />}
+            onClick={() => alert("Copied to clipboard")}
+          >
+            Copy
+          </MenuItem>
+          <MenuItem
+            icon={<PasteIcon />}
+            onClick={() => alert("Pasted from clipboard")}
+          >
+            Paste
+          </MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### MenuItemLinkNavigation
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemLink,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+export const MenuItemLinkNavigation = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Navigation menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItemLink href="https://www.microsoft.com" target="_blank">
+          Home
+        </MenuItemLink>
+        <MenuItemLink href="https://www.microsoft.com">
+          Online shop
+        </MenuItemLink>
+        <MenuItemLink href="https://www.microsoft.com">Contact us</MenuItemLink>
+        <MenuItemLink href="https://www.microsoft.com">About</MenuItemLink>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### MemoizedMenuItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemCheckbox,
+  MenuPopover,
+} from "@fluentui/react-components";
+import { EditFilled, EditRegular, bundleIcon } from "@fluentui/react-icons";
+import type { MenuItemCheckboxProps } from "@fluentui/react-components";
+
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
+  // use icons in the memo because JSX will always create a new object
+  // possible to memoize icons but it can be overkill
+  return (
+    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value}>
+      {props.children}
+    </MenuItemCheckbox>
+  );
+});
+
+export const MemoizedMenuItems = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MemoCheckbox name="font" value="segoe">
+            Segoe
+          </MemoCheckbox>
+          <MemoCheckbox name="font" value="calibri">
+            Calibri
+          </MemoCheckbox>
+          <MemoCheckbox name="font" value="arial">
+            Arial
+          </MemoCheckbox>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### MenuItemsWithIcons
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const MenuItemsWithIcons = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### MotionCustom
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  createPresenceComponent,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  motionTokens,
+} from "@fluentui/react-components";
+import { fadeAtom, blurAtom } from "@fluentui/react-motion-components-preview";
+
+const FadeInBlurOut = createPresenceComponent({
+  enter: fadeAtom({ direction: "enter", duration: 500 }),
+  exit: [
+    fadeAtom({ direction: "exit", duration: 500 }),
+    blurAtom({
+      direction: "exit",
+      duration: 500,
+      easing: motionTokens.curveEasyEase,
+    }),
+  ],
+});
+
+export const MotionCustom = (): JSXElement => (
+  <Menu
+    surfaceMotion={{
+      children: (_, motionProps) => <FadeInBlurOut {...motionProps} />,
+    }}
+  >
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### MotionDisabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from "@fluentui/react-components";
+
+export const MotionDisabled = (): JSXElement => (
+  <Menu surfaceMotion={null}>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### MultilineItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  MenuTrigger,
+  Menu,
+  Button,
+} from "@fluentui/react-components";
+import {
+  EditRegular,
+  EditFilled,
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  DeleteFilled,
+  DeleteRegular,
+} from "@fluentui/react-icons";
+
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const DeleteIcon = bundleIcon(DeleteFilled, DeleteRegular);
+
+export const MultilineItems = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Multiline items</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem subText="Cut to clipboard" icon={<CutIcon />}>
+            Cut
+          </MenuItem>
+          <MenuItem subText="Paste from clipboard" icon={<PasteIcon />}>
+            Paste
+          </MenuItem>
+          <MenuItem subText="Edit file" icon={<EditIcon />} disabled>
+            Edit
+          </MenuItem>
+          <MenuItem subText="Delete file" icon={<DeleteIcon />}>
+            Delete
+          </MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### NestedSubmenus
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+const EditorLayoutSubMenu = () => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Editor Layout</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Split Up</MenuItem>
+          <MenuItem>Split Down</MenuItem>
+          <MenuItem>Single</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const AppearanceSubMenu = () => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Appearance</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Centered Layout</MenuItem>
+          <MenuItem>Zen</MenuItem>
+          <MenuItem disabled>Zoom In</MenuItem>
+          <MenuItem>Zoom Out</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const PreferencesSubMenu = () => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Preferences</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Settings</MenuItem>
+          <MenuItem>Online Services Settings</MenuItem>
+          <MenuItem>Extensions</MenuItem>
+          <AppearanceSubMenu />
+          <EditorLayoutSubMenu />
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+export const NestedSubmenus = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+          <PreferencesSubMenu />
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### NestedSubmenusControlled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import type { MenuProps } from "@fluentui/react-components";
+
+const EditorLayoutSubMenu = () => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Editor Layout</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Split Up</MenuItem>
+          <MenuItem>Split Down</MenuItem>
+          <MenuItem>Single</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const AppearanceSubMenu = () => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Appearance</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Centered Layout</MenuItem>
+          <MenuItem>Zen</MenuItem>
+          <MenuItem disabled>Zoom In</MenuItem>
+          <MenuItem>Zoom Out</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const PreferencesSubMenu = () => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem>Preferences</MenuItem>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Settings</MenuItem>
+          <MenuItem>Online Services Settings</MenuItem>
+          <MenuItem>Extensions</MenuItem>
+          <AppearanceSubMenu />
+          <EditorLayoutSubMenu />
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+export const NestedSubmenusControlled = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+          <PreferencesSubMenu />
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### RadioItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemRadio,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const RadioItems = (): JSXElement => {
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
+            Segoe
+          </MenuItemRadio>
+          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
+            Calibri
+          </MenuItemRadio>
+          <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
+            Arial
+          </MenuItemRadio>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### RenderFunctionTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { ChevronDownRegular } from "@fluentui/react-icons";
+
+import {
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+import type {
+  MenuProps,
+  MenuTriggerChildProps,
+} from "@fluentui/react-components";
+
+const buttonStyle = { height: 22, verticalAlign: "middle" };
+
+export const RenderFunctionTrigger = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger disableButtonEnhancement>
+        {(props: MenuTriggerChildProps<"button">) => (
+          <div>
+            <button style={buttonStyle}>Custom Trigger</button>
+            <button {...props} style={buttonStyle}>
+              <ChevronDownRegular fontSize={16} />
+            </button>
+          </div>
+        )}
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+### SecondaryContentForMenuItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+export const SecondaryContentForMenuItems = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem secondaryContent="Ctrl+N">New File</MenuItem>
+        <MenuItem secondaryContent="Ctrl+Shift+N">New Window</MenuItem>
+        <MenuItem secondaryContent="Ctrl+T" disabled>
+          New Tab
+        </MenuItem>
+        <MenuItem secondaryContent="Ctrl+O">Open File</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SelectionGroup
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemRadio,
+  MenuItemCheckbox,
+  MenuGroup,
+  MenuDivider,
+  MenuGroupHeader,
+  MenuPopover,
+} from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const SelectionGroup = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuGroup>
+          <MenuGroupHeader>Checkbox group</MenuGroupHeader>
+          <MenuItemCheckbox
+            secondaryContent="Ctrl+N"
+            icon={<CutIcon />}
+            name="edit"
+            value="cut"
+          >
+            Show Menu Bar
+          </MenuItemCheckbox>
+          <MenuItemCheckbox
+            secondaryContent="Ctrl+Shift+N"
+            icon={<PasteIcon />}
+            name="edit"
+            value="paste"
+          >
+            Show Side Bar
+          </MenuItemCheckbox>
+          <MenuItemCheckbox
+            secondaryContent="Ctrl+Shift+O"
+            icon={<EditIcon />}
+            name="edit"
+            value="edit"
+          >
+            Show Status Bar
+          </MenuItemCheckbox>
+          <MenuItemCheckbox
+            disabled
+            icon={<EditIcon />}
+            name="disabled"
+            value="disabled"
+          >
+            Show Debug Panel
+          </MenuItemCheckbox>
+        </MenuGroup>
+        <MenuDivider />
+        <MenuGroup>
+          <MenuGroupHeader>Radio group</MenuGroupHeader>
+          <MenuItemRadio
+            secondaryContent="Ctrl+N"
+            icon={<CutIcon />}
+            name="font"
+            value="segoe"
+          >
+            Segoe
+          </MenuItemRadio>
+          <MenuItemRadio
+            secondaryContent="Ctrl+Shift+N"
+            icon={<PasteIcon />}
+            name="font"
+            value="calibri"
+          >
+            Caliri
+          </MenuItemRadio>
+          <MenuItemRadio
+            secondaryContent="Ctrl+Shift+N"
+            icon={<EditIcon />}
+            name="font"
+            value="arial"
+          >
+            Arial
+          </MenuItemRadio>
+        </MenuGroup>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SplitMenuItem
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  MenuSplitGroup,
+} from "@fluentui/react-components";
+
+export const SplitMenuItem = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <Menu>
+          <MenuSplitGroup>
+            <MenuItem>Open</MenuItem>
+            <MenuTrigger disableButtonEnhancement>
+              <MenuItem aria-label="Open on platform" />
+            </MenuTrigger>
+          </MenuSplitGroup>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>In browser</MenuItem>
+              <MenuItem>In desktop app</MenuItem>
+              <MenuItem>In mobile</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <MenuItem>Preferences</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### SwitchItem
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  MenuItemSwitch,
+} from "@fluentui/react-components";
+
+export const SwitchItem = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+        <MenuItemSwitch name="new-explorer" value="new-explorer">
+          Try V2
+        </MenuItemSwitch>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### MenuTriggerWithTooltip
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  Tooltip,
+} from "@fluentui/react-components";
+
+export const MenuTriggerWithTooltip = (): JSXElement => (
+  <Menu>
+    <Tooltip content="This is a tooltip" relationship="description">
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+    </Tooltip>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### VisualDividerOnly
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from "@fluentui/react-icons";
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const VisualDividerOnly = (): JSXElement => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+        <MenuDivider />
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+### NestedSubmenusResponsiveness
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  PositioningImperativeRef,
+  MenuProps,
+} from "@fluentui/react-components";
+
+import {
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  makeStyles,
+  tokens,
+  mergeClasses,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  container: {
+    width: "500px",
+    height: "400px",
+  },
+
+  resizableArea: {
+    width: "500px",
+    height: "400px",
+    position: "relative",
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    padding: "20px 10px 10px 10px",
+    resize: "both",
+    backgroundImage: `linear-gradient(-45deg, ${tokens.colorBrandBackground} 20px, transparent 20px)`,
+    overflow: "hidden",
+
+    "::after": {
+      content: `'Resizable Area'`,
+      position: "absolute",
+      padding: "1px 4px 1px",
+      top: "-2px",
+      left: "-2px",
+      fontFamily: "monospace",
+      fontSize: "15px",
+      fontWeight: 900,
+      lineHeight: 1,
+      letterSpacing: "1px",
+      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackground,
+    },
+  },
+});
+
+export const NestedSubmenusResponsiveness = (): JSXElement => {
+  const styles = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [boundary, setBoundary] = React.useState<HTMLElement | null>(null);
+  const positioningRefSubmenu = React.useRef<PositioningImperativeRef>(null);
+  const positioningRefRoot = React.useRef<PositioningImperativeRef>(null);
+
+  // Fluent UI handles window resizing by default.
+  // Custom boundary resizing is not handled by default.
+  React.useEffect(() => {
+    if (boundary) {
+      const resizeObserver = new ResizeObserver(() => {
+        positioningRefSubmenu.current?.updatePosition();
+        positioningRefRoot.current?.updatePosition();
+      });
+      resizeObserver.observe(boundary);
+      return () => {
+        resizeObserver.unobserve(boundary);
+        resizeObserver.disconnect();
+      };
+    }
+  }, [boundary]);
+
+  React.useEffect(() => {
+    if (open) {
+      // defer position update of the nested menu the root menu hasn't been positioned yet
+      const timeout = setTimeout(() =>
+        positioningRefSubmenu.current?.updatePosition()
+      );
+      positioningRefRoot.current?.updatePosition();
+
+      return () => clearTimeout(timeout);
+    }
+  }, [open]);
+
+  const onOpenChange: MenuProps["onOpenChange"] = (e, data) => {
+    if (boundary?.contains(e.target as HTMLElement)) {
+      setOpen(true);
+    } else {
+      setOpen(data.open);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <div
+        id="boundary"
+        className={mergeClasses(styles.container, styles.resizableArea)}
+        ref={setBoundary}
+      >
+        <Menu
+          open={open}
+          onOpenChange={onOpenChange}
+          positioning={{
+            positioningRef: positioningRefRoot,
+            overflowBoundary: boundary,
+            flipBoundary: boundary,
+          }}
+        >
+          <MenuTrigger disableButtonEnhancement>
+            <Button style={{ position: "absolute", left: "40%" }}>Menu</Button>
+          </MenuTrigger>
+
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>New </MenuItem>
+              <MenuItem>New Window</MenuItem>
+              <MenuItem disabled>Open File</MenuItem>
+              <MenuItem>Open Folder</MenuItem>
+              <Menu
+                open
+                positioning={{
+                  overflowBoundary: boundary,
+                  flipBoundary: boundary,
+                  positioningRef: positioningRefSubmenu,
+                }}
+              >
+                <MenuTrigger disableButtonEnhancement>
+                  <MenuItem>Toggle menu</MenuItem>
+                </MenuTrigger>
+
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>New </MenuItem>
+                    <MenuItem>New Window</MenuItem>
+                    <MenuItem disabled>Open File</MenuItem>
+                    <MenuItem>Open Folder</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </div>
+    </div>
+  );
+};
+```

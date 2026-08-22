@@ -1,0 +1,284 @@
+# Image
+
+## Examples
+
+### Block
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Block = (): JSXElement => (
+  <>
+    <Image
+      block
+      src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png"
+      alt="Image placeholder"
+    />
+    <Image
+      block
+      src="https://fabricweb.azureedge.net/fabric-website/placeholders/100x100.png"
+      alt="Image placeholder"
+    />
+  </>
+);
+```
+
+### Bordered
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Bordered = (): JSXElement => (
+  <div>
+    <div style={{ display: "flex", gap: 8 }}>
+      <Image
+        alt="Allan's avatar"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        height={200}
+        width={200}
+      />
+
+      <Image
+        alt="Amanda's avatar"
+        shape="rounded"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
+        height={200}
+        width={200}
+      />
+
+      <Image
+        alt="Erik's avatar"
+        shape="circular"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
+        height={200}
+        width={200}
+      />
+    </div>
+    <div style={{ display: "flex", gap: 8, marginTop: "15px" }}>
+      <Image
+        alt="Allan's avatar"
+        bordered
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        height={200}
+        width={200}
+      />
+
+      <Image
+        alt="Amanda's avatar"
+        bordered
+        shape="rounded"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
+        height={200}
+        width={200}
+      />
+
+      <Image
+        alt="Erik's avatar"
+        bordered
+        shape="circular"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
+        height={200}
+        width={200}
+      />
+    </div>
+  </div>
+);
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+import type { ImageProps } from "@fluentui/react-components";
+
+export const Default = (props: ImageProps): JSXElement => {
+  return (
+    <Image
+      {...props}
+      alt="Allan's avatar"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+    />
+  );
+};
+```
+
+### Fallback
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Fallback = (): JSXElement => (
+  <div style={{ display: "flex", gap: 8 }}>
+    <Image
+      alt="Allan's avatar"
+      bordered
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+      height={200}
+      width={200}
+    />
+
+    <Image
+      alt="Non-existing avatar"
+      bordered
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/non-existing-png.jpg"
+      height={200}
+      width={200}
+    />
+  </div>
+);
+```
+
+### Fit
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Fit = (): JSXElement => (
+  <>
+    <h1>None</h1>
+    <div style={{ border: "1px solid green", height: 150, width: 300 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+        alt="Image placeholder"
+        fit="none"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 150, width: 300 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/200x100.png"
+        alt="Image placeholder"
+        fit="none"
+      />
+    </div>
+
+    <h1>Center</h1>
+    <div style={{ border: "1px solid green", height: 150, width: 300 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+        alt="Image placeholder"
+        fit="center"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 150, width: 300 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/200x100.png"
+        alt="Image placeholder"
+        fit="center"
+      />
+    </div>
+
+    <h1>Contain</h1>
+    <div style={{ border: "1px solid green", height: 200, width: 400 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
+        alt="Image placeholder"
+        fit="contain"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 250, width: 400 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
+        alt="Image placeholder"
+        fit="contain"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 200, width: 450 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
+        alt="Image placeholder"
+        fit="contain"
+      />
+    </div>
+
+    <h1>Cover</h1>
+    <div style={{ border: "1px solid green", height: 200, width: 400 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x250.png"
+        alt="Image placeholder"
+        fit="cover"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 200, width: 400 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x300.png"
+        alt="Image placeholder"
+        fit="cover"
+      />
+    </div>
+    <br />
+    <div style={{ border: "1px solid green", height: 200, width: 400 }}>
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+        alt="Image placeholder"
+        fit="cover"
+      />
+    </div>
+  </>
+);
+```
+
+### Shadow
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Shadow = (): JSXElement => (
+  <Image
+    shadow
+    src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png"
+    alt="Image placeholder"
+  />
+);
+```
+
+### Shape
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Image } from "@fluentui/react-components";
+
+export const Shape = (): JSXElement => (
+  <div style={{ display: "flex", gap: 8 }}>
+    <Image
+      alt="Allan's avatar"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+      height={200}
+      width={200}
+    />
+
+    <Image
+      alt="Erik's avatar"
+      shape="circular"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
+      height={200}
+      width={200}
+    />
+
+    <Image
+      alt="Amanda's avatar"
+      shape="rounded"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
+      height={200}
+      width={200}
+    />
+  </div>
+);
+```

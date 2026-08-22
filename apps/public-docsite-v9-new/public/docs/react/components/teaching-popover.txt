@@ -1,0 +1,318 @@
+# Teaching Popover
+
+## Examples
+
+### AppearanceBrand
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Button, Image } from "@fluentui/react-components";
+
+import {
+  TeachingPopover,
+  TeachingPopoverBody,
+  TeachingPopoverHeader,
+  TeachingPopoverTitle,
+  TeachingPopoverSurface,
+  TeachingPopoverTrigger,
+  TeachingPopoverFooter,
+} from "@fluentui/react-components";
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+export const AppearanceBrand = (): JSXElement => (
+  <TeachingPopover appearance="brand">
+    <TeachingPopoverTrigger>
+      <Button>TeachingPopover trigger</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface>
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverBody
+        media={<Image alt="test image" fit="cover" src={swapImage} />}
+      >
+        <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        <div>This is a teaching popover body</div>
+      </TeachingPopoverBody>
+      <TeachingPopoverFooter primary="Learn more" secondary="Got it" />
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
+```
+
+### Carousel
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Button, Image } from "@fluentui/react-components";
+
+import {
+  TeachingPopover,
+  TeachingPopoverBody,
+  TeachingPopoverCarousel,
+  TeachingPopoverHeader,
+  TeachingPopoverTitle,
+  TeachingPopoverSurface,
+  TeachingPopoverTrigger,
+  TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselNav,
+  TeachingPopoverCarouselNavButton,
+} from "@fluentui/react-components";
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+const getAnnouncement = (newValue: string) => {
+  return `Carousel slide ${newValue}`;
+};
+
+export const Carousel = (): JSXElement => (
+  <TeachingPopover>
+    <TeachingPopoverTrigger>
+      <Button>TeachingPopover trigger</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface>
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverCarousel
+        defaultValue={"1"}
+        announcement={getAnnouncement}
+      >
+        <TeachingPopoverCarouselCard value="1">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 1</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="2">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 2</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="3">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 3</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselFooter
+          next="Next"
+          previous="Previous"
+          initialStepText="Close"
+          finalStepText="Finish"
+        >
+          <TeachingPopoverCarouselNav>
+            {(index) => (
+              <TeachingPopoverCarouselNavButton aria-label={`Tip ${index}`} />
+            )}
+          </TeachingPopoverCarouselNav>
+        </TeachingPopoverCarouselFooter>
+      </TeachingPopoverCarousel>
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
+```
+
+### CarouselBrand
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Button, Image } from "@fluentui/react-components";
+
+import {
+  TeachingPopover,
+  TeachingPopoverBody,
+  TeachingPopoverCarousel,
+  TeachingPopoverHeader,
+  TeachingPopoverTitle,
+  TeachingPopoverSurface,
+  TeachingPopoverTrigger,
+  TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselNav,
+  TeachingPopoverCarouselNavButton,
+} from "@fluentui/react-components";
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+export const CarouselBrand = (): JSXElement => (
+  <TeachingPopover appearance="brand">
+    <TeachingPopoverTrigger>
+      <Button>TeachingPopover trigger</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface>
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverCarousel defaultValue="1">
+        <TeachingPopoverCarouselCard value="1">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 1</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="2">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 2</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="3">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 3</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselFooter
+          next="Next"
+          previous="Previous"
+          initialStepText="Close"
+          finalStepText="Finish"
+        >
+          <TeachingPopoverCarouselNav>
+            {(index) => (
+              <TeachingPopoverCarouselNavButton aria-label={`Tip ${index}`} />
+            )}
+          </TeachingPopoverCarouselNav>
+        </TeachingPopoverCarouselFooter>
+      </TeachingPopoverCarousel>
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
+```
+
+### CarouselText
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Button, Image } from "@fluentui/react-components";
+
+import {
+  TeachingPopover,
+  TeachingPopoverBody,
+  TeachingPopoverCarousel,
+  TeachingPopoverHeader,
+  TeachingPopoverTitle,
+  TeachingPopoverSurface,
+  TeachingPopoverTrigger,
+  TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselPageCount,
+} from "@fluentui/react-components";
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+export const CarouselText = (): JSXElement => (
+  <TeachingPopover>
+    <TeachingPopoverTrigger>
+      <Button>TeachingPopover trigger</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface>
+      <TeachingPopoverHeader>Tips"</TeachingPopoverHeader>
+      <TeachingPopoverCarousel defaultValue="1">
+        <TeachingPopoverCarouselCard value="1">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 1</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="2">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 2</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselCard value="3">
+          <TeachingPopoverBody
+            media={<Image alt="test image" fit="cover" src={swapImage} />}
+          >
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 3</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselFooter
+          next="Next"
+          previous="Previous"
+          initialStepText="Close"
+          finalStepText="Finish"
+        >
+          <TeachingPopoverCarouselPageCount>
+            {(currentIndex: number, totalPages: number) =>
+              `${currentIndex} of ${totalPages}`
+            }
+          </TeachingPopoverCarouselPageCount>
+        </TeachingPopoverCarouselFooter>
+      </TeachingPopoverCarousel>
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Button, Image } from "@fluentui/react-components";
+
+import {
+  TeachingPopover,
+  TeachingPopoverBody,
+  TeachingPopoverHeader,
+  TeachingPopoverTitle,
+  TeachingPopoverSurface,
+  TeachingPopoverTrigger,
+  TeachingPopoverFooter,
+} from "@fluentui/react-components";
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+export const Default = (): JSXElement => (
+  <TeachingPopover>
+    <TeachingPopoverTrigger>
+      <Button>TeachingPopover trigger</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface>
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverBody
+        media={<Image alt="test image" fit="cover" src={swapImage} />}
+      >
+        <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        <div>This is a teaching popover body</div>
+      </TeachingPopoverBody>
+      <TeachingPopoverFooter primary="Learn more" secondary="Got it" />
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
+```

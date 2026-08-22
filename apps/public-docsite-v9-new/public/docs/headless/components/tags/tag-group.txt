@@ -1,0 +1,320 @@
+# Tag Group
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import { TagGroup } from "@fluentui/react-headless-components-preview/tag-group";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+
+import styles from "./styles/tagGroup.module.css";
+
+export const Default = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <div className={styles.label}>Example with Tag:</div>
+    <TagGroup
+      aria-label="Simple tag group with Tag"
+      role="list"
+      className={styles.group}
+    >
+      <Tag role="listitem" className={styles.tag}>
+        Tag 1
+      </Tag>
+      <Tag role="listitem" className={styles.tag}>
+        Tag 2
+      </Tag>
+      <Tag role="listitem" className={styles.tag}>
+        Tag 3
+      </Tag>
+    </TagGroup>
+
+    <div className={styles.label}>Example with InteractionTag:</div>
+    <TagGroup
+      aria-label="Simple tag group with InteractionTag"
+      className={styles.group}
+    >
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 1
+        </InteractionTagPrimary>
+      </InteractionTag>
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 2
+        </InteractionTagPrimary>
+      </InteractionTag>
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 3
+        </InteractionTagPrimary>
+      </InteractionTag>
+    </TagGroup>
+  </div>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import { TagGroup } from "@fluentui/react-headless-components-preview/tag-group";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+
+import styles from "./styles/tagGroup.module.css";
+
+export const Disabled = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <div className={styles.label}>Disabled example with Tag:</div>
+    <TagGroup
+      disabled
+      aria-label="Disabled tag group with Tag"
+      role="list"
+      className={styles.group}
+    >
+      <Tag role="listitem" className={styles.tag}>
+        Tag 1
+      </Tag>
+      <Tag role="listitem" className={styles.tag}>
+        Tag 2
+      </Tag>
+      <Tag role="listitem" className={styles.tag}>
+        Tag 3
+      </Tag>
+    </TagGroup>
+
+    <div className={styles.label}>Disabled example with InteractionTag:</div>
+    <TagGroup
+      disabled
+      aria-label="Disabled tag group with InteractionTag"
+      className={styles.group}
+    >
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 1
+        </InteractionTagPrimary>
+      </InteractionTag>
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 2
+        </InteractionTagPrimary>
+      </InteractionTag>
+      <InteractionTag className={styles.interactionTag}>
+        <InteractionTagPrimary className={styles.primary}>
+          Tag 3
+        </InteractionTagPrimary>
+      </InteractionTag>
+    </TagGroup>
+  </div>
+);
+```
+
+### Dismiss
+
+```tsx
+import * as React from "react";
+import { TagGroup } from "@fluentui/react-headless-components-preview/tag-group";
+import type { TagGroupProps } from "@fluentui/react-headless-components-preview/tag-group";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/tagGroup.module.css";
+
+const initialTags = [
+  { value: "1", children: "Tag 1" },
+  { value: "2", children: "Tag 2" },
+  { value: "3", children: "Tag 3" },
+];
+
+const useResetExample = (visibleTagsLength: number) => {
+  const resetButtonRef = React.useRef<HTMLButtonElement>(null);
+  const firstTagRef = React.useRef<HTMLButtonElement>(null);
+  const prevLength = React.useRef(visibleTagsLength);
+  React.useEffect(() => {
+    if (visibleTagsLength === 0) {
+      resetButtonRef.current?.focus();
+    } else if (prevLength.current === 0) {
+      firstTagRef.current?.focus();
+    }
+    prevLength.current = visibleTagsLength;
+  }, [visibleTagsLength]);
+  return { firstTagRef, resetButtonRef };
+};
+
+const DismissWithTags = () => {
+  const [visibleTags, setVisibleTags] = React.useState(initialTags);
+  const onDismiss: TagGroupProps["onDismiss"] = (_e, { value }) =>
+    setVisibleTags((prev) => prev.filter((t) => t.value !== value));
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
+
+  return (
+    <>
+      {visibleTags.length > 0 && (
+        <TagGroup
+          aria-label="Dismiss example with Tag"
+          onDismiss={onDismiss}
+          className={styles.group}
+        >
+          {visibleTags.map((tag, i) => (
+            <Tag
+              key={tag.value}
+              value={tag.value}
+              dismissible
+              className={styles.tag}
+              ref={
+                i === 0 ? (firstTagRef as React.Ref<HTMLButtonElement>) : null
+              }
+              dismissIcon={{
+                className: styles.dismissIcon,
+                "aria-label": "remove",
+                children: <DismissRegular aria-hidden />,
+              }}
+            >
+              {tag.children}
+            </Tag>
+          ))}
+        </TagGroup>
+      )}
+      <button
+        type="button"
+        ref={resetButtonRef}
+        className={styles.resetButton}
+        disabled={visibleTags.length === initialTags.length}
+        onClick={() => setVisibleTags(initialTags)}
+      >
+        Reset the example
+      </button>
+    </>
+  );
+};
+
+const DismissWithInteractionTags = () => {
+  const [visibleTags, setVisibleTags] = React.useState(initialTags);
+  const onDismiss: TagGroupProps["onDismiss"] = (_e, { value }) =>
+    setVisibleTags((prev) => prev.filter((t) => t.value !== value));
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
+
+  return (
+    <>
+      {visibleTags.length > 0 && (
+        <TagGroup
+          aria-label="Dismiss example with InteractionTag"
+          onDismiss={onDismiss}
+          className={styles.group}
+        >
+          {visibleTags.map((tag, i) => (
+            <InteractionTag
+              key={tag.value}
+              value={tag.value}
+              className={styles.interactionTag}
+            >
+              <InteractionTagPrimary
+                className={styles.primary}
+                ref={
+                  i === 0 ? (firstTagRef as React.Ref<HTMLButtonElement>) : null
+                }
+                hasSecondaryAction
+              >
+                {tag.children}
+              </InteractionTagPrimary>
+              <InteractionTagSecondary
+                aria-label="remove"
+                className={styles.secondary}
+              >
+                <DismissRegular aria-hidden />
+              </InteractionTagSecondary>
+            </InteractionTag>
+          ))}
+        </TagGroup>
+      )}
+      <button
+        type="button"
+        ref={resetButtonRef}
+        className={styles.resetButton}
+        disabled={visibleTags.length === initialTags.length}
+        onClick={() => setVisibleTags(initialTags)}
+      >
+        Reset the example
+      </button>
+    </>
+  );
+};
+
+export const Dismiss = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <div className={styles.label}>Example with Tag:</div>
+    <DismissWithTags />
+    <div className={styles.label}>Example with InteractionTag:</div>
+    <DismissWithInteractionTags />
+  </div>
+);
+```
+
+### Select
+
+```tsx
+import * as React from "react";
+import { TagGroup } from "@fluentui/react-headless-components-preview/tag-group";
+import type { TagGroupProps } from "@fluentui/react-headless-components-preview/tag-group";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import type { TagValue } from "@fluentui/react-components";
+
+import styles from "./styles/tagGroup.module.css";
+
+const tags: Array<{ value: string; children: string }> = [
+  { value: "1", children: "Tag 1" },
+  { value: "2", children: "Tag 2" },
+  { value: "3", children: "Tag 3" },
+];
+
+export const Select = (): React.ReactNode => {
+  const [selectedTags, setSelectedTags] = React.useState<Array<TagValue>>([]);
+  const onTagSelect: TagGroupProps["onTagSelect"] = (_e, { value }) => {
+    setSelectedTags((prev) =>
+      prev.includes(value) ? prev.filter((t) => t !== value) : [...prev, value]
+    );
+  };
+
+  return (
+    <div className={styles.demo}>
+      <div className={styles.selectedReadout}>
+        Selected values: [{selectedTags.join(", ")}]
+      </div>
+      <TagGroup
+        onTagSelect={onTagSelect}
+        aria-label="Multiselect tag group"
+        className={styles.group}
+      >
+        {tags.map((t) => (
+          <InteractionTag
+            key={t.value}
+            value={t.value}
+            className={styles.interactionTag}
+          >
+            <InteractionTagPrimary className={styles.primary}>
+              {t.children}
+            </InteractionTagPrimary>
+          </InteractionTag>
+        ))}
+      </TagGroup>
+    </div>
+  );
+};
+```

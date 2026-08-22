@@ -1,0 +1,588 @@
+# Positioning
+
+## Examples
+
+### CoverTarget
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+import type { PositioningProps } from "@fluentui/react-headless-components-preview/positioning";
+
+import styles from "./styles/positioning.module.css";
+
+const options: Array<{
+  label: string;
+  position: NonNullable<PositioningProps["position"]>;
+  align: NonNullable<PositioningProps["align"]>;
+}> = [
+  { label: "above-start", position: "above", align: "start" },
+  { label: "above", position: "above", align: "center" },
+  { label: "above-end", position: "above", align: "end" },
+  { label: "before-top", position: "before", align: "start" },
+  { label: "before", position: "before", align: "center" },
+  { label: "before-bottom", position: "before", align: "end" },
+  { label: "after-top", position: "after", align: "start" },
+  { label: "after", position: "after", align: "center" },
+  { label: "after-bottom", position: "after", align: "end" },
+  { label: "below-start", position: "below", align: "start" },
+  { label: "below", position: "below", align: "center" },
+  { label: "below-end", position: "below", align: "end" },
+];
+
+export const CoverTarget = (): React.ReactNode => {
+  const [selected, setSelected] = React.useState(options[1]);
+
+  return (
+    <div className={styles.outer}>
+      <div className={styles.layout}>
+        <label className={styles.controls}>
+          Position
+          <select
+            className={styles.select}
+            value={selected.label}
+            onChange={(e) => {
+              const next = options.find((o) => o.label === e.target.value);
+              if (next) {
+                setSelected(next);
+              }
+            }}
+          >
+            {options.map((option) => (
+              <option key={option.label} value={option.label}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className={styles.stage}>
+          <Popover
+            open
+            positioning={{
+              position: selected.position,
+              align: selected.align,
+              coverTarget: true,
+            }}
+          >
+            <PopoverTrigger>
+              <button className={`${styles.trigger} ${styles.triggerFixed}`}>
+                {selected.label}
+              </button>
+            </PopoverTrigger>
+            <PopoverSurface className={styles.surfaceCover}>
+              Container
+            </PopoverSurface>
+          </Popover>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+import type { PositioningProps } from "@fluentui/react-headless-components-preview/positioning";
+
+import styles from "./styles/positioning.module.css";
+
+export const Default = (props: PositioningProps): React.ReactNode => (
+  <Popover positioning={props}>
+    <PopoverTrigger>
+      <button className={styles.trigger}>Click me</button>
+    </PopoverTrigger>
+    <PopoverSurface className={styles.surfaceCallout}>Container</PopoverSurface>
+  </Popover>
+);
+```
+
+### FallbackPositions
+
+```tsx
+import * as React from "react";
+
+import styles from "./styles/positioning.module.css";
+
+export const FallbackPositions = (): React.ReactNode => (
+  <div className={styles.pageRoomy}>
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>Basic fallback</h3>
+      <p className={styles.sectionNote}>
+        Primary <code>above</code> overflows the box → first fallback{" "}
+        <code>below-start</code> fits → surface renders there.
+      </p>
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{
+            position: "above",
+            align: "center",
+            fallbackPositions: ["below-start", "after"],
+          }}
+          surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}
+            >
+              trigger near top
+            </button>
+          }
+        >
+          <strong>Requested:</strong> above · fallbacks:{" "}
+          <code>below-start</code>, <code>after</code>
+        </InlineAnchored>
+      </div>
+    </section>
+
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>Chain walking</h3>
+      <p className={styles.sectionNote}>
+        Trigger pinned to top-left. Primary <code>above</code> overflows, first
+        fallback <code>before</code> also overflows (no room to the left), so
+        the browser falls through to <code>below</code>. The live{" "}
+        <strong>Actual</strong> readout should read <code>below</code>.
+      </p>
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{
+            position: "above",
+            align: "center",
+            fallbackPositions: ["before", "below"],
+          }}
+          surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopLeft}`}
+            >
+              top-left trigger
+            </button>
+          }
+        >
+          <strong>Requested:</strong> above · fallbacks: <code>before</code>,{" "}
+          <code>below</code>
+        </InlineAnchored>
+      </div>
+    </section>
+
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>
+        Custom chain replaces default flip
+      </h3>
+      <p className={styles.sectionNote}>
+        Same overflow condition, different chains. Left popover has no{" "}
+        <code>fallbackPositions</code> → default{" "}
+        <code>flip-block, flip-inline</code> fires → surface ends up below.
+        Right popover passes <code>['after']</code> → custom chain replaces
+        defaults → surface goes to the right instead of flipping.
+      </p>
+      <div className={styles.grid}>
+        <div className={styles.demoBox}>
+          <InlineAnchored
+            positioning={{ position: "above", align: "center" }}
+            surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
+            trigger={
+              <button
+                className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}
+              >
+                default (flip)
+              </button>
+            }
+          >
+            <strong>Requested:</strong> above · no custom fallbacks
+          </InlineAnchored>
+        </div>
+        <div className={styles.demoBox}>
+          <InlineAnchored
+            positioning={{
+              position: "above",
+              align: "center",
+              fallbackPositions: ["after", "below"],
+            }}
+            surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
+            trigger={
+              <button
+                className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}
+              >
+                custom ({`['after']`})
+              </button>
+            }
+          >
+            <strong>Requested:</strong> above · fallbacks: <code>after</code>,{" "}
+            <code>below</code>
+          </InlineAnchored>
+        </div>
+      </div>
+    </section>
+  </div>
+);
+```
+
+### FlippingBlock
+
+```tsx
+import * as React from "react";
+
+import styles from "./styles/positioning.module.css";
+
+export const FlippingBlock = (): React.ReactNode => (
+  <div className={styles.page}>
+    <div className={styles.grid}>
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "above" }}
+          surfaceClassName={`${styles.surfaceFlipNarrow} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}
+            >
+              trigger near top
+            </button>
+          }
+        >
+          <strong>Requested:</strong> above → flips below
+        </InlineAnchored>
+      </div>
+
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "below" }}
+          surfaceClassName={`${styles.surfaceFlipNarrow} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinBottomCenter}`}
+            >
+              trigger near bottom
+            </button>
+          }
+        >
+          <strong>Requested:</strong> below → flips above
+        </InlineAnchored>
+      </div>
+    </div>
+  </div>
+);
+```
+
+### FlippingCorner
+
+```tsx
+import * as React from "react";
+
+import styles from "./styles/positioning.module.css";
+
+export const FlippingCorner = (): React.ReactNode => (
+  <div className={styles.page}>
+    <div className={styles.grid}>
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "above", align: "end" }}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopLeft}`}
+            >
+              top-left · requested above-end
+            </button>
+          }
+        >
+          <strong>Requested:</strong> above-end → below-start
+        </InlineAnchored>
+      </div>
+
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "above", align: "start" }}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopRight}`}
+            >
+              top-right · requested above-start
+            </button>
+          }
+        >
+          <strong>Requested:</strong> above-start → below-end
+        </InlineAnchored>
+      </div>
+
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "below", align: "end" }}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinBottomLeft}`}
+            >
+              bottom-left · requested below-end
+            </button>
+          }
+        >
+          <strong>Requested:</strong> below-end → above-start
+        </InlineAnchored>
+      </div>
+
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "below", align: "start" }}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinBottomRight}`}
+            >
+              bottom-right · requested below-start
+            </button>
+          }
+        >
+          <strong>Requested:</strong> below-start → above-end
+        </InlineAnchored>
+      </div>
+    </div>
+  </div>
+);
+```
+
+### FlippingInline
+
+```tsx
+import * as React from "react";
+
+import styles from "./styles/positioning.module.css";
+
+export const FlippingInline = (): React.ReactNode => (
+  <div className={styles.page}>
+    <div className={styles.grid}>
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "before" }}
+          surfaceClassName={`${styles.surfaceFlipNarrow} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinLeftCenter}`}
+            >
+              trigger on left
+            </button>
+          }
+        >
+          <strong>Requested:</strong> before → flips after
+        </InlineAnchored>
+      </div>
+
+      <div className={styles.demoBox}>
+        <InlineAnchored
+          positioning={{ position: "after" }}
+          surfaceClassName={`${styles.surfaceFlipNarrow} ${styles.flipReadout}`}
+          trigger={
+            <button
+              className={`${styles.trigger} ${styles.triggerSm} ${styles.pinRightCenter}`}
+            >
+              trigger on right
+            </button>
+          }
+        >
+          <strong>Requested:</strong> after → flips before
+        </InlineAnchored>
+      </div>
+    </div>
+  </div>
+);
+```
+
+### MatchTargetSize
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/positioning.module.css";
+
+export const MatchTargetSize = (): React.ReactNode => (
+  <div className={styles.column}>
+    <Popover defaultOpen positioning={{ matchTargetSize: "width" }}>
+      <PopoverTrigger>
+        <button className={`${styles.trigger} ${styles.triggerWide}`}>
+          Click me
+        </button>
+      </PopoverTrigger>
+      <PopoverSurface className={styles.surfaceMatch}>
+        This popover has the same width as its target anchor
+      </PopoverSurface>
+    </Popover>
+  </div>
+);
+```
+
+### Offset
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+
+import styles from "./styles/positioning.module.css";
+
+export const Offset = (): React.ReactNode => {
+  const [mainAxis, setMainAxis] = React.useState(10);
+  const [crossAxis, setCrossAxis] = React.useState(0);
+
+  return (
+    <div className={styles.outer}>
+      <div className={styles.column}>
+        <label className={styles.row}>
+          <code>mainAxis</code>
+          <input
+            type="number"
+            className={styles.input}
+            value={mainAxis}
+            onChange={(e) => setMainAxis(parseInt(e.target.value, 10) || 0)}
+          />
+        </label>
+        <label className={styles.row}>
+          <code>crossAxis</code>
+          <input
+            type="number"
+            className={styles.input}
+            value={crossAxis}
+            onChange={(e) => setCrossAxis(parseInt(e.target.value, 10) || 0)}
+          />
+        </label>
+
+        <div className={styles.group}>
+          <span className={styles.fieldLabel}>
+            offset: number (mainAxis only)
+          </span>
+          <Popover positioning={{ position: "after", offset: mainAxis }}>
+            <PopoverTrigger>
+              <button className={styles.trigger}>Number offset</button>
+            </PopoverTrigger>
+            <PopoverSurface className={styles.surfaceCallout}>
+              Container
+            </PopoverSurface>
+          </Popover>
+        </div>
+
+        <div className={styles.group}>
+          <span className={styles.fieldLabel}>
+            offset: {"{ mainAxis, crossAxis }"}
+          </span>
+          <Popover
+            positioning={{ position: "after", offset: { mainAxis, crossAxis } }}
+          >
+            <PopoverTrigger>
+              <button className={styles.trigger}>Object offset</button>
+            </PopoverTrigger>
+            <PopoverSurface className={styles.surfaceCallout}>
+              Container
+            </PopoverSurface>
+          </Popover>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### ShorthandPositions
+
+```tsx
+import * as React from "react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+import type { PositioningProps } from "@fluentui/react-headless-components-preview/positioning";
+
+import styles from "./styles/positioning.module.css";
+
+const options: Array<{
+  label: string;
+  position: NonNullable<PositioningProps["position"]>;
+  align: NonNullable<PositioningProps["align"]>;
+}> = [
+  { label: "above-start", position: "above", align: "start" },
+  { label: "above", position: "above", align: "center" },
+  { label: "above-end", position: "above", align: "end" },
+  { label: "before-top", position: "before", align: "start" },
+  { label: "before", position: "before", align: "center" },
+  { label: "before-bottom", position: "before", align: "end" },
+  { label: "after-top", position: "after", align: "start" },
+  { label: "after", position: "after", align: "center" },
+  { label: "after-bottom", position: "after", align: "end" },
+  { label: "below-start", position: "below", align: "start" },
+  { label: "below", position: "below", align: "center" },
+  { label: "below-end", position: "below", align: "end" },
+];
+
+export const ShorthandPositions = (): React.ReactNode => {
+  const [selected, setSelected] = React.useState(options[1]);
+
+  return (
+    <div className={styles.outer}>
+      <div className={styles.layout}>
+        <label className={styles.controls}>
+          Position
+          <select
+            className={styles.select}
+            value={selected.label}
+            onChange={(e) => {
+              const next = options.find((o) => o.label === e.target.value);
+              if (next) {
+                setSelected(next);
+              }
+            }}
+          >
+            {options.map((option) => (
+              <option key={option.label} value={option.label}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className={styles.stage}>
+          <Popover
+            open
+            positioning={{ position: selected.position, align: selected.align }}
+          >
+            <PopoverTrigger>
+              <button className={`${styles.trigger} ${styles.triggerFixed}`}>
+                {selected.label}
+              </button>
+            </PopoverTrigger>
+            <PopoverSurface className={styles.surfaceShorthand}>
+              Container
+            </PopoverSurface>
+          </Popover>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### Positioning
+
+```tsx
+import * as React from "react";
+
+/**
+ * Helper component used by Storybook to auto-generate the positioning props args table.
+ */
+export const Positioning = () => <div />;
+```

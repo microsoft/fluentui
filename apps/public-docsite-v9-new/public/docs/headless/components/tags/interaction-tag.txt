@@ -1,0 +1,317 @@
+# Interaction Tag
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const Default = (): React.ReactNode => (
+  <InteractionTag className={styles.interactionTag}>
+    <InteractionTagPrimary className={styles.primary}>
+      Primary text
+    </InteractionTagPrimary>
+  </InteractionTag>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import { CalendarMonthRegular, DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const Disabled = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <InteractionTag disabled className={styles.interactionTag}>
+      <InteractionTagPrimary
+        className={styles.primary}
+        icon={{
+          className: styles.icon,
+          children: <CalendarMonthRegular aria-hidden />,
+        }}
+        hasSecondaryAction
+      >
+        Disabled
+      </InteractionTagPrimary>
+      <InteractionTagSecondary aria-label="remove" className={styles.secondary}>
+        <DismissRegular aria-hidden />
+      </InteractionTagSecondary>
+    </InteractionTag>
+  </div>
+);
+```
+
+### Dismiss
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import { TagGroup } from "@fluentui/react-headless-components-preview/tag-group";
+import type { TagGroupProps } from "@fluentui/react-headless-components-preview/tag-group";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/interactionTag.module.css";
+
+const initialTags = [
+  { value: "1", children: "Tag 1" },
+  { value: "2", children: "Tag 2" },
+  { value: "3", children: "Tag 3" },
+];
+
+const useResetExample = (visibleTagsLength: number) => {
+  const resetButtonRef = React.useRef<HTMLButtonElement>(null);
+  const firstTagRef = React.useRef<HTMLButtonElement>(null);
+  const prevLength = React.useRef(visibleTagsLength);
+
+  React.useEffect(() => {
+    if (visibleTagsLength === 0) {
+      resetButtonRef.current?.focus();
+    } else if (prevLength.current === 0) {
+      firstTagRef.current?.focus();
+    }
+    prevLength.current = visibleTagsLength;
+  }, [visibleTagsLength]);
+
+  return { firstTagRef, resetButtonRef };
+};
+
+export const Dismiss = (): React.ReactNode => {
+  const [visibleTags, setVisibleTags] = React.useState(initialTags);
+  const onDismiss: TagGroupProps["onDismiss"] = (_e, { value }) =>
+    setVisibleTags((prev) => prev.filter((t) => t.value !== value));
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
+
+  return (
+    <div className={styles.demoCol}>
+      {visibleTags.length > 0 && (
+        <TagGroup aria-label="Dismiss example" onDismiss={onDismiss}>
+          <div className={styles.demo}>
+            {visibleTags.map((tag, i) => (
+              <InteractionTag
+                key={tag.value}
+                value={tag.value}
+                className={styles.interactionTag}
+              >
+                <InteractionTagPrimary
+                  className={styles.primary}
+                  ref={
+                    i === 0
+                      ? (firstTagRef as React.Ref<HTMLButtonElement>)
+                      : null
+                  }
+                  hasSecondaryAction
+                >
+                  {tag.children}
+                </InteractionTagPrimary>
+                <InteractionTagSecondary
+                  aria-label="remove"
+                  className={styles.secondary}
+                >
+                  <DismissRegular aria-hidden />
+                </InteractionTagSecondary>
+              </InteractionTag>
+            ))}
+          </div>
+        </TagGroup>
+      )}
+      <button
+        type="button"
+        ref={resetButtonRef}
+        className={styles.resetButton}
+        disabled={visibleTags.length === initialTags.length}
+        onClick={() => setVisibleTags(initialTags)}
+      >
+        Reset the example
+      </button>
+    </div>
+  );
+};
+```
+
+### HasPrimaryAction
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-headless-components-preview/popover";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const HasPrimaryAction = (): React.ReactNode => (
+  <InteractionTag className={styles.interactionTag}>
+    <Popover>
+      <PopoverTrigger>
+        <InteractionTagPrimary className={styles.primary} hasSecondaryAction>
+          Golden retriever
+        </InteractionTagPrimary>
+      </PopoverTrigger>
+      <PopoverSurface className={styles.popover}>
+        <a href="https://en.wikipedia.org/wiki/Golden_Retriever">
+          Find out more on wiki
+        </a>
+        <ul>
+          <li>Medium to large-sized breed</li>
+          <li>Dense, water-repellent coat</li>
+          <li>Golden or cream color</li>
+          <li>Friendly, intelligent</li>
+        </ul>
+      </PopoverSurface>
+    </Popover>
+    <InteractionTagSecondary aria-label="dismiss" className={styles.secondary}>
+      <DismissRegular aria-hidden />
+    </InteractionTagSecondary>
+  </InteractionTag>
+);
+```
+
+### Icon
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import { CalendarMonthRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const Icon = (): React.ReactNode => (
+  <InteractionTag className={styles.interactionTag}>
+    <InteractionTagPrimary
+      className={styles.primary}
+      icon={{
+        className: styles.icon,
+        children: <CalendarMonthRegular aria-hidden />,
+      }}
+    >
+      Primary text
+    </InteractionTagPrimary>
+  </InteractionTag>
+);
+```
+
+### Media
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const Media = (): React.ReactNode => (
+  <InteractionTag className={styles.interactionTag}>
+    <InteractionTagPrimary
+      className={styles.primary}
+      media={{ className: styles.media, "aria-hidden": "true", children: "KA" }}
+    >
+      Primary text
+    </InteractionTagPrimary>
+  </InteractionTag>
+);
+```
+
+### SecondaryText
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const SecondaryText = (): React.ReactNode => (
+  <InteractionTag className={styles.interactionTag}>
+    <InteractionTagPrimary
+      className={styles.primary}
+      primaryText={{ className: styles.primaryText, children: "Primary text" }}
+      secondaryText={{
+        className: styles.secondaryText,
+        children: "Secondary text",
+      }}
+    />
+  </InteractionTag>
+);
+```
+
+### Selected
+
+```tsx
+import * as React from "react";
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from "@fluentui/react-headless-components-preview/interaction-tag";
+import { CalendarMonthRegular, DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/interactionTag.module.css";
+
+export const Selected = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <InteractionTag selected className={styles.interactionTag}>
+      <InteractionTagPrimary
+        className={styles.primary}
+        icon={{
+          className: styles.icon,
+          children: <CalendarMonthRegular aria-hidden />,
+        }}
+        hasSecondaryAction
+      >
+        Selected
+      </InteractionTagPrimary>
+      <InteractionTagSecondary aria-label="remove" className={styles.secondary}>
+        <DismissRegular aria-hidden />
+      </InteractionTagSecondary>
+    </InteractionTag>
+    <InteractionTag className={styles.interactionTag}>
+      <InteractionTagPrimary
+        className={styles.primary}
+        icon={{
+          className: styles.icon,
+          children: <CalendarMonthRegular aria-hidden />,
+        }}
+        hasSecondaryAction
+      >
+        Not selected
+      </InteractionTagPrimary>
+      <InteractionTagSecondary aria-label="remove" className={styles.secondary}>
+        <DismissRegular aria-hidden />
+      </InteractionTagSecondary>
+    </InteractionTag>
+  </div>
+);
+```

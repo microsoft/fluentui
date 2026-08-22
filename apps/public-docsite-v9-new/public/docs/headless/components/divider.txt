@@ -1,0 +1,90 @@
+# Divider
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import { Divider } from "@fluentui/react-headless-components-preview/divider";
+
+import styles from "./styles/divider.module.css";
+export const Default = (): React.ReactNode => (
+  <div className={styles.column}>
+    <p className={styles.section}>Content above</p>
+    <Divider className={styles.divider}>
+      <span className={styles.label}>Or</span>
+    </Divider>
+    <p className={styles.section}>Content below</p>
+
+    <Divider className={`${styles.divider} ${styles.start}`}>
+      <span className={styles.label}>Section</span>
+    </Divider>
+
+    <Divider className={`${styles.divider} ${styles.end}`}>
+      <span className={styles.label}>End</span>
+    </Divider>
+
+    <Divider className={styles.horizontal} />
+  </div>
+);
+```
+
+### Vertical
+
+```tsx
+import * as React from "react";
+import { Divider } from "@fluentui/react-headless-components-preview/divider";
+import { CircleRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/divider.module.css";
+export const Vertical = (): React.ReactNode => (
+  <div className={styles.verticalGroup}>
+    <div className={styles.verticalCol}>
+      <span className={styles.verticalCaption}>No text</span>
+      <div className={styles.verticalLineWrap}>
+        <Divider className={styles.dividerVertical} vertical />
+      </div>
+    </div>
+
+    <div className={styles.verticalCol}>
+      <span className={styles.verticalCaption}>Center</span>
+      <div className={styles.verticalLineWrap}>
+        <Divider className={styles.dividerVertical} vertical>
+          <span className={styles.content}>
+            <CircleRegular aria-hidden />
+            Text
+          </span>
+        </Divider>
+      </div>
+    </div>
+
+    <div className={styles.verticalCol}>
+      <span className={styles.verticalCaption}>Start</span>
+      <div className={styles.verticalLineWrap}>
+        <Divider
+          className={`${styles.dividerVertical} ${styles.start}`}
+          vertical
+        >
+          <span className={styles.content}>
+            <CircleRegular aria-hidden />
+            Text
+          </span>
+        </Divider>
+      </div>
+    </div>
+
+    <div className={styles.verticalCol}>
+      <span className={styles.verticalCaption}>End</span>
+      <div className={styles.verticalLineWrap}>
+        <Divider className={`${styles.dividerVertical} ${styles.end}`} vertical>
+          <span className={styles.content}>
+            <CircleRegular aria-hidden />
+            Text
+          </span>
+        </Divider>
+      </div>
+    </div>
+  </div>
+);
+```

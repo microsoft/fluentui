@@ -1,0 +1,163 @@
+# Slider
+
+## Examples
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Button, Label, Slider } from "@fluentui/react-components";
+import type { SliderProps } from "@fluentui/react-components";
+
+export const Controlled = (): JSXElement => {
+  const id = useId();
+  const [sliderValue, setSliderValue] = React.useState(160);
+  const onSliderChange: SliderProps["onChange"] = (_, data) =>
+    setSliderValue(data.value);
+  const resetSlider = () => setSliderValue(0);
+  return (
+    <>
+      <Label htmlFor={id}>
+        Control Slider [ Current Value: {sliderValue} ]
+      </Label>
+      <Slider
+        aria-valuetext={`Value is ${sliderValue}`}
+        value={sliderValue}
+        min={20}
+        max={200}
+        onChange={onSliderChange}
+        id={id}
+      />
+
+      <Button onClick={resetSlider}>Reset</Button>
+    </>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider } from "@fluentui/react-components";
+
+export const Default = (): JSXElement => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Basic Example</Label>
+      <Slider defaultValue={20} id={id} />
+    </>
+  );
+};
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider } from "@fluentui/react-components";
+
+export const Disabled = (): JSXElement => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Disabled Example</Label>
+      <Slider defaultValue={30} disabled id={id} />
+    </>
+  );
+};
+```
+
+### MinMax
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    display: "flex",
+    alignItems: "center",
+  },
+});
+
+export const MinMax = (): JSXElement => {
+  const styles = useStyles();
+  const id = useId();
+  const min = 10;
+  const max = 50;
+  return (
+    <>
+      <Label htmlFor={id}>Min/Max Example</Label>
+      <div className={styles.wrapper}>
+        <Label aria-hidden>{min}</Label>
+        <Slider min={min} max={max} defaultValue={20} id={id} />
+        <Label aria-hidden>{max}</Label>
+      </div>
+    </>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider } from "@fluentui/react-components";
+
+export const Size = (): JSXElement => {
+  const smallId = useId("small");
+  const mediumId = useId("medium");
+  return (
+    <>
+      <Label htmlFor={mediumId}>Medium Slider</Label>
+      <Slider size="medium" defaultValue={20} id={mediumId} />
+
+      <Label htmlFor={smallId}>Small Slider</Label>
+      <Slider size="small" defaultValue={20} id={smallId} />
+    </>
+  );
+};
+```
+
+### Step
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider } from "@fluentui/react-components";
+
+export const Step = (): JSXElement => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Step Example</Label>
+      <Slider defaultValue={6} step={3} min={0} max={12} id={id} />
+    </>
+  );
+};
+```
+
+### Vertical
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { useId, Label, Slider } from "@fluentui/react-components";
+
+export const Vertical = (): JSXElement => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Vertical Example</Label>
+      <Slider vertical step={2} defaultValue={6} min={0} max={10} id={id} />
+    </>
+  );
+};
+```

@@ -1,0 +1,514 @@
+# Spin Button
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  mergeClasses,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+  },
+
+  field: {
+    display: "grid",
+    gridRowGap: tokens.spacingVerticalXXS,
+    marginTop: tokens.spacingVerticalMNudge,
+    padding: tokens.spacingHorizontalMNudge,
+  },
+
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    "> label": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    "> label": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+});
+
+export const Appearance = (): JSXElement => {
+  const styles = useStyles();
+
+  const outlineId = useId("outline-id");
+  const underlineId = useId("underline-id");
+  const filledLighterId = useId("filledLighter-id");
+  const filledDarkerId = useId("filledDarker-id");
+
+  return (
+    <div className={styles.base}>
+      <div className={styles.field}>
+        <Label htmlFor={outlineId}>Outline (default)</Label>
+        <SpinButton id={outlineId} />
+      </div>
+
+      <div className={styles.field}>
+        <Label htmlFor={underlineId}>Underline</Label>
+        <SpinButton appearance="underline" id={underlineId} />
+      </div>
+
+      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+        <Label htmlFor={filledLighterId}>Filled Lighter</Label>
+        <SpinButton appearance="filled-lighter" id={filledLighterId} />
+      </div>
+
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <Label htmlFor={filledDarkerId}>Filled Darker</Label>
+        <SpinButton appearance="filled-darker" id={filledDarkerId} />
+      </div>
+    </div>
+  );
+};
+```
+
+### Bounds
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Bounds = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Bounded SpinButton</Label>
+      <SpinButton defaultValue={10} min={0} max={20} id={id} />
+      <p>min: 0, max: 20</p>
+    </div>
+  );
+};
+```
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+import type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Controlled = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(
+    10
+  );
+
+  const onSpinButtonChange = React.useCallback(
+    (_ev: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
+      console.log("onSpinButtonChange", data.value, data.displayValue);
+      if (data.value !== undefined) {
+        setSpinButtonValue(data.value);
+      } else if (data.displayValue !== undefined) {
+        const newValue = parseFloat(data.displayValue);
+        if (!Number.isNaN(newValue)) {
+          setSpinButtonValue(newValue);
+        } else {
+          console.error(`Cannot parse "${data.displayValue}" as a number.`);
+        }
+      }
+    },
+    [setSpinButtonValue]
+  );
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Controlled SpinButton</Label>
+      <SpinButton
+        value={spinButtonValue}
+        onChange={onSpinButtonChange}
+        id={id}
+      />
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Default = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Default SpinButton</Label>
+      <SpinButton defaultValue={10} min={0} max={20} id={id} />
+    </div>
+  );
+};
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Disabled = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Disabled</Label>
+      <SpinButton disabled id={id} />
+    </div>
+  );
+};
+```
+
+### DisplayValue
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+import type { SpinButtonProps } from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+type FormatterFn = (value: number) => string;
+type ParserFn = (formattedValue: string) => number;
+
+export const DisplayValue = (): JSXElement => {
+  const formatter: FormatterFn = (value) => {
+    return `$${value}`;
+  };
+
+  const parser: ParserFn = (formattedValue) => {
+    if (formattedValue === null) {
+      return NaN;
+    }
+
+    return parseFloat(formattedValue.replace("$", ""));
+  };
+
+  const onSpinButtonChange: SpinButtonProps["onChange"] = (_ev, data) => {
+    if (data.value !== undefined && data.value !== null) {
+      setSpinButtonValue(data.value);
+      setSpinButtonDisplayValue(formatter(data.value));
+    } else if (data.displayValue !== undefined) {
+      const newValue = parser(data.displayValue);
+      if (!Number.isNaN(newValue)) {
+        setSpinButtonValue(newValue);
+        setSpinButtonDisplayValue(formatter(newValue));
+      } else {
+        // Display a "special" value when user types something
+        // that's not parsable as a number.
+        setSpinButtonValue(null);
+        setSpinButtonDisplayValue("(null)");
+      }
+    }
+  };
+
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+  const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(
+    1
+  );
+  const [spinButtonDisplayValue, setSpinButtonDisplayValue] = React.useState(
+    formatter(1)
+  );
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Display Value</Label>
+      <SpinButton
+        value={spinButtonValue}
+        displayValue={spinButtonDisplayValue}
+        onChange={onSpinButtonChange}
+        id={id}
+      />
+    </div>
+  );
+};
+```
+
+### ReadOnly
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const ReadOnly = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Read-Only</Label>
+      <SpinButton readOnly id={id} />
+    </div>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> div": {
+      display: "flex",
+      flexDirection: "column",
+      marginTop: tokens.spacingHorizontalMNudge,
+    },
+
+    "> div:first-child": {
+      marginTop: "0px",
+    },
+
+    "> div label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Size = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const smallId = useId("small-id");
+  const mediumId = useId("medium-id");
+
+  return (
+    <div className={layoutStyles.base}>
+      <div>
+        <Label htmlFor={smallId}>Small</Label>
+        <SpinButton size="small" id={smallId} />
+      </div>
+
+      <div>
+        <Label htmlFor={mediumId}>Medium (default)</Label>
+        <SpinButton id={mediumId} />
+      </div>
+    </div>
+  );
+};
+```
+
+### Step
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Step = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Step Size</Label>
+      <SpinButton defaultValue={10} step={2} stepPage={20} id={id} />
+    </div>
+  );
+};
+```
+
+### Uncontrolled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  useId,
+  Label,
+  SpinButton,
+} from "@fluentui/react-components";
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+
+    "> label": {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
+
+export const Uncontrolled = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+  const id = useId();
+
+  return (
+    <div className={layoutStyles.base}>
+      <Label htmlFor={id}>Uncontrolled SpinButton</Label>
+      <SpinButton defaultValue={10} id={id} />
+    </div>
+  );
+};
+```

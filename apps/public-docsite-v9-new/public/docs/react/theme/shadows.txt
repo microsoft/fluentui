@@ -1,0 +1,7 @@
+# Shadows
+
+<h1 className="sbdocs-title"> Shadow </h1>
+
+<FluentCanvas>
+  <Shadows />
+</FluentCanvas>

@@ -1,0 +1,1115 @@
+# Dropdown
+
+## Examples
+
+### ActiveOptionChange
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+  Persona,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const ActiveOptionChange = (
+  props: Partial<DropdownProps>
+): JSXElement => {
+  const dropdownId = useId("dropdown");
+  const styles = useStyles();
+  const [activeOptionText, setActiveOptionText] = React.useState("");
+
+  const onActiveOptionChange = React.useCallback<
+    NonNullable<DropdownProps["onActiveOptionChange"]>
+  >(
+    (_, data) => {
+      if (data?.nextOption?.text) {
+        setActiveOptionText(data?.nextOption?.text);
+      }
+    },
+    [setActiveOptionText]
+  );
+
+  const onMouseEnter = React.useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      setActiveOptionText(`${e.currentTarget.textContent} (Mouse enter)`);
+    },
+    [setActiveOptionText]
+  );
+
+  return (
+    <div className={styles.root}>
+      {activeOptionText}
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown
+        id={dropdownId}
+        onActiveOptionChange={onActiveOptionChange}
+        {...props}
+      >
+        <Option text="Katri Athokas" onMouseEnter={onMouseEnter}>
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Katri Athokas"
+            presence={{
+              status: "available",
+            }}
+            secondaryText="Available"
+          />
+        </Option>
+        <Option text="Elvia Atkins" onMouseEnter={onMouseEnter}>
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Elvia Atkins"
+            presence={{
+              status: "busy",
+            }}
+            secondaryText="Busy"
+          />
+        </Option>
+        <Option text="Cameron Evans" onMouseEnter={onMouseEnter}>
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Cameron Evans"
+            presence={{
+              status: "away",
+            }}
+            secondaryText="Away"
+          />
+        </Option>
+        <Option text="Wanda Howard" onMouseEnter={onMouseEnter}>
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Wanda Howard"
+            presence={{
+              status: "out-of-office",
+            }}
+            secondaryText="Out of office"
+          />
+        </Option>
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  tokens,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "20px",
+    maxWidth: "400px",
+    "> div": {
+      display: "grid",
+      gridTemplateRows: "repeat(1fr)",
+      justifyItems: "start",
+      gap: "2px",
+      // need padding to see the background color for filled variants
+      padding: "5px 20px 10px",
+    },
+  },
+  // filledLighter and filledDarker appearances depend on particular background colors
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    "> label": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+    "> h3": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    "> label": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+    "> h3": {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+});
+
+export const Appearance = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown");
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <div>
+        <h3>Outline</h3>
+        <label htmlFor={`${dropdownId}-outline`}>Select an animal</label>
+        <Dropdown
+          id={`${dropdownId}-outline`}
+          placeholder="-"
+          appearance="outline"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+
+      <div>
+        <h3>Underline</h3>
+        <label htmlFor={`${dropdownId}-underline`}>Select an animal</label>
+        <Dropdown
+          id={`${dropdownId}-underline`}
+          placeholder="-"
+          appearance="underline"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+
+      <div className={styles.filledDarker}>
+        <h3>Filled Darker</h3>
+        <label htmlFor={`${dropdownId}-filledDarker`}>Select an animal</label>
+        <Dropdown
+          id={`${dropdownId}-filledDarker`}
+          placeholder="-"
+          appearance="filled-darker"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+
+      <div className={styles.filledLighter}>
+        <h3>Filled Lighter</h3>
+        <label htmlFor={`${dropdownId}-filledLighter`}>Select an animal</label>
+        <Dropdown
+          id={`${dropdownId}-filledLighter`}
+          placeholder="-"
+          appearance="filled-lighter"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+    </div>
+  );
+};
+```
+
+### Clearable
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  Label,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const Clearable = (): JSXElement => {
+  const dropdownId = useId("");
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label htmlFor={dropdownId}>Pick a color</Label>
+      <Dropdown clearable id={dropdownId} placeholder="Select a color">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### ComplexOptions
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+  Persona,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const ComplexOptions = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown");
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown id={dropdownId} {...props}>
+        <Option text="Katri Athokas">
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Katri Athokas"
+            presence={{
+              status: "available",
+            }}
+            secondaryText="Available"
+          />
+        </Option>
+        <Option text="Elvia Atkins">
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Elvia Atkins"
+            presence={{
+              status: "busy",
+            }}
+            secondaryText="Busy"
+          />
+        </Option>
+        <Option text="Cameron Evans">
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Cameron Evans"
+            presence={{
+              status: "away",
+            }}
+            secondaryText="Away"
+          />
+        </Option>
+        <Option text="Wanda Howard">
+          <Persona
+            avatar={{ color: "colorful", "aria-hidden": true }}
+            name="Wanda Howard"
+            presence={{
+              status: "out-of-office",
+            }}
+            secondaryText="Out of office"
+          />
+        </Option>
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Controlled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+  Persona,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    justifyItems: "start",
+    gap: "20px",
+    maxWidth: "400px",
+  },
+  field: {
+    display: "grid",
+    justifyItems: "start",
+    gap: "2px",
+  },
+});
+
+export const Controlled = (props: Partial<DropdownProps>): JSXElement => {
+  const comboId = useId("combo-controlled");
+  const styles = useStyles();
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    "eatkins",
+  ]);
+  const [value, setValue] = React.useState("Elvia Atkins");
+
+  const onOptionSelect: (typeof props)["onOptionSelect"] = (ev, data) => {
+    setSelectedOptions(data.selectedOptions);
+    setValue(data.optionText ?? "");
+  };
+
+  return (
+    <div className={styles.root}>
+      <div className={styles.field}>
+        <label htmlFor={`${comboId}-default`}>
+          Schedule a meeting (default selection)
+        </label>
+        <Dropdown
+          id={`${comboId}-default`}
+          {...props}
+          defaultValue="Elvia Atkins"
+          defaultSelectedOptions={["eatkins"]}
+        >
+          <Option text="Katri Athokas" value="kathok">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Katri Athokas"
+              presence={{
+                status: "available",
+              }}
+              secondaryText="Available"
+            />
+          </Option>
+          <Option text="Elvia Atkins" value="eatkins">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Elvia Atkins"
+              presence={{
+                status: "busy",
+              }}
+              secondaryText="Busy"
+            />
+          </Option>
+          <Option text="Cameron Evans" value="cevans">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Cameron Evans"
+              presence={{
+                status: "away",
+              }}
+              secondaryText="Away"
+            />
+          </Option>
+          <Option text="Wanda Howard" value="whoward">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Wanda Howard"
+              presence={{
+                status: "out-of-office",
+              }}
+              secondaryText="Out of office"
+            />
+          </Option>
+        </Dropdown>
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor={`${comboId}-controlled`}>
+          Schedule a meeting (controlled selection)
+        </label>
+        <Dropdown
+          id={`${comboId}-controlled`}
+          {...props}
+          value={value}
+          selectedOptions={selectedOptions}
+          onOptionSelect={onOptionSelect}
+        >
+          <Option text="Katri Athokas" value="kathok">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Katri Athokas"
+              presence={{
+                status: "available",
+              }}
+              secondaryText="Available"
+            />
+          </Option>
+          <Option text="Elvia Atkins" value="eatkins">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Elvia Atkins"
+              presence={{
+                status: "busy",
+              }}
+              secondaryText="Busy"
+            />
+          </Option>
+          <Option text="Cameron Evans" value="cevans">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Cameron Evans"
+              presence={{
+                status: "away",
+              }}
+              secondaryText="Away"
+            />
+          </Option>
+          <Option text="Wanda Howard" value="whoward">
+            <Persona
+              avatar={{ color: "colorful", "aria-hidden": true }}
+              name="Wanda Howard"
+              presence={{
+                status: "out-of-office",
+              }}
+              secondaryText="Out of office"
+            />
+          </Option>
+        </Dropdown>
+      </div>
+    </div>
+  );
+};
+```
+
+### ControllingOpenAndClose
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import type { CheckboxProps, DropdownProps } from "@fluentui/react-components";
+import {
+  Checkbox,
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const ControllingOpenAndClose = (): JSXElement => {
+  const styles = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpenChange: DropdownProps["onOpenChange"] = (e, data) =>
+    setOpen(data.open);
+  const onChange: CheckboxProps["onChange"] = (e, data) =>
+    setOpen(!!data.checked);
+
+  const dropdownId = useId("dropdown");
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Chupacabra",
+    "Dog",
+    "Ferret",
+    "Fish",
+    "Fox",
+    "Hamster",
+    "Snake",
+  ];
+
+  return (
+    <div className={styles.root}>
+      <Checkbox
+        value="open"
+        name="state"
+        label="open"
+        checked={open}
+        onChange={onChange}
+      />
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown
+        id={dropdownId}
+        placeholder="Select an animal"
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
+        {options.map((option) => (
+          <Option key={option} disabled={option === "Ferret"}>
+            {option}
+          </Option>
+        ))}
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### CustomOptions
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  OptionGroup,
+  useId,
+} from "@fluentui/react-components";
+import type {
+  DropdownProps,
+  OptionProps,
+  OptionGroupProps,
+} from "@fluentui/react-components";
+import {
+  AnimalCat24Filled,
+  AnimalDog24Filled,
+  AnimalRabbit24Filled,
+  AnimalTurtle24Filled,
+  FoodFish24Filled,
+  CheckboxChecked24Regular,
+} from "@fluentui/react-icons";
+
+const animalIcons = {
+  Cat: AnimalCat24Filled,
+  Dog: AnimalDog24Filled,
+  Rabbit: AnimalRabbit24Filled,
+  Turtle: AnimalTurtle24Filled,
+  Fish: FoodFish24Filled,
+};
+
+const useCustomOptionStyles = makeStyles({
+  option: {
+    display: "flex",
+    alignItems: "center",
+    gap: "5px",
+  },
+  icon: { flex: "0 0 auto" },
+  text: { flex: "1 1 auto" },
+});
+
+type CustomOptionProps = Partial<OptionProps> & {
+  animal: keyof typeof animalIcons;
+};
+
+const CustomOption = (props: CustomOptionProps) => {
+  const { animal, ...optionProps } = props;
+  const Icon = animalIcons[animal];
+  const styles = useCustomOptionStyles();
+  return (
+    <Option
+      text={animal}
+      className={styles.option}
+      checkIcon={<CheckboxChecked24Regular />}
+      {...optionProps}
+    >
+      <Icon className={styles.icon} />
+      <span className={styles.text}>{animal}</span>
+    </Option>
+  );
+};
+
+const CustomOptionGroup = (
+  props: Partial<OptionGroupProps> & { options: (keyof typeof animalIcons)[] }
+) => {
+  const { label, options, ...optionGroupProps } = props;
+  const labelSlot = typeof label === "object" ? label : { children: label };
+
+  return (
+    <OptionGroup
+      label={{ style: { fontStyle: "italic" }, ...labelSlot }}
+      {...optionGroupProps}
+    >
+      {options.map((option) => (
+        <CustomOption key={option} animal={option} />
+      ))}
+    </OptionGroup>
+  );
+};
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+  listbox: {
+    maxHeight: "200px",
+  },
+});
+
+export const CustomOptions = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown");
+  const land = ["Cat", "Dog", "Rabbit"] as (keyof typeof animalIcons)[];
+  const water = ["Fish", "Turtle"] as (keyof typeof animalIcons)[];
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown
+        id={dropdownId}
+        listbox={{ className: styles.listbox }}
+        placeholder="Select an animal"
+        {...props}
+      >
+        <CustomOptionGroup label="Land" options={land} />
+        <CustomOptionGroup label="Sea" options={water} />
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const Default = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown-default");
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Chupacabra",
+    "Dog",
+    "Ferret",
+    "Fish",
+    "Fox",
+    "Hamster",
+    "Snake",
+  ];
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown id={dropdownId} placeholder="Select an animal" {...props}>
+        {options.map((option) => (
+          <Option key={option} disabled={option === "Ferret"}>
+            {option}
+          </Option>
+        ))}
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const Disabled = (props: Partial<DropdownProps>): JSXElement => {
+  const comboId = useId("combo-disabled");
+  const options = ["Cat", "Dog", "Ferret", "Fish", "Hamster", "Snake"];
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={comboId}>Best pet</label>
+      <Dropdown id={comboId} disabled placeholder="Select an animal" {...props}>
+        {options.map((option) => (
+          <Option key={option}>{option}</Option>
+        ))}
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### WithField
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  Field,
+  makeStyles,
+  Option,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "400px",
+  },
+});
+
+export const WithField = (props: Partial<DropdownProps>): JSXElement => {
+  const styles = useStyles();
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Chupacabra",
+    "Dog",
+    "Ferret",
+    "Fish",
+    "Fox",
+    "Hamster",
+    "Snake",
+  ];
+  return (
+    <Field
+      label="Best pet"
+      required
+      hint="Try picking 'Cat'"
+      className={styles.root}
+    >
+      <Dropdown placeholder="Select an animal" {...props}>
+        {options.map((option) => (
+          <Option key={option} disabled={option === "Ferret"}>
+            {option}
+          </Option>
+        ))}
+      </Dropdown>
+    </Field>
+  );
+};
+```
+
+### Grouped
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  OptionGroup,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const Grouped = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown-grouped");
+  const land = ["Cat", "Dog", "Ferret", "Hamster"];
+  const water = ["Fish", "Jellyfish", "Octopus", "Seal"];
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown id={dropdownId} placeholder="Select an animal" {...props}>
+        <OptionGroup label="Land">
+          {land.map((option) => (
+            <Option key={option} disabled={option === "Ferret"}>
+              {option}
+            </Option>
+          ))}
+        </OptionGroup>
+        <OptionGroup label="Sea">
+          {water.map((option) => (
+            <Option key={option}>{option}</Option>
+          ))}
+        </OptionGroup>
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Multiselect
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "400px",
+  },
+});
+
+export const Multiselect = (props: Partial<DropdownProps>): JSXElement => {
+  const comboId = useId("combo-multi");
+  const options = ["Cat", "Dog", "Ferret", "Fish", "Hamster", "Snake"];
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <label htmlFor={comboId}>Best pet</label>
+      <Dropdown
+        id={comboId}
+        multiselect={true}
+        placeholder="Select an animal"
+        {...props}
+      >
+        {options.map((option) => (
+          <Option key={option} disabled={option === "Ferret"}>
+            {option}
+          </Option>
+        ))}
+      </Dropdown>
+    </div>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "20px",
+    maxWidth: "400px",
+    "> div": {
+      display: "grid",
+      gridTemplateRows: "repeat(1fr)",
+      justifyItems: "start",
+      gap: "2px",
+    },
+  },
+});
+
+export const Size = (props: Partial<DropdownProps>): JSXElement => {
+  const comboId = useId("combobox");
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <div>
+        <h3>Small</h3>
+        <label htmlFor={`${comboId}-small`}>Best pet</label>
+        <Dropdown
+          id={`${comboId}-small`}
+          placeholder="Select an animal"
+          size="small"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+
+      <div>
+        <h3>Medium</h3>
+        <label htmlFor={`${comboId}-med`}>Best pet</label>
+        <Dropdown
+          id={`${comboId}-med`}
+          placeholder="Select an animal"
+          size="medium"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+
+      <div>
+        <h3>Large</h3>
+        <label htmlFor={`${comboId}-large`}>Best pet</label>
+        <Dropdown
+          id={`${comboId}-large`}
+          placeholder="Select an animal"
+          size="large"
+          {...props}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+          <Option>Bird</Option>
+        </Dropdown>
+      </div>
+    </div>
+  );
+};
+```
+
+### TruncatedValue
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dropdown,
+  makeStyles,
+  Option,
+  useId,
+} from "@fluentui/react-components";
+import type { DropdownProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field with a gap
+    display: "grid",
+    gridTemplateRows: "repeat(1fr)",
+    justifyItems: "start",
+    gap: "2px",
+    maxWidth: "200px",
+  },
+  listbox: {
+    maxHeight: "200px",
+  },
+  // these styles wrap the value text within the dropdown button and cause it to truncate
+  truncatedText: {
+    overflowX: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  // these styles allow option text to break and wrap on long words, e.g. emails
+  optionText: {
+    overflow: "hidden",
+    overflowWrap: "break-word",
+  },
+});
+
+export const TruncatedValue = (props: Partial<DropdownProps>): JSXElement => {
+  const dropdownId = useId("dropdown");
+  const options = [
+    "Cat",
+    "Caterpillar",
+    "Corgi",
+    "Chupacabra",
+    "Dog",
+    "Ferret",
+    "Fish",
+    "Fox",
+    "Hamster",
+    "Snake",
+    "SuperLongName_123456789_SomeMoreStuffToMakeItLonger@fluentui.dev",
+    "Screaming hairy armadillo (Chaetophractus vellerosus)",
+  ];
+
+  const styles = useStyles();
+
+  const placeholder = "Select an animal";
+
+  // show truncated option by default
+  const defaultValue = options[11];
+  const [value, setValue] = React.useState(defaultValue);
+
+  return (
+    <div className={styles.root}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown
+        id={dropdownId}
+        listbox={{ className: styles.listbox }}
+        button={<span className={styles.truncatedText}>{value}</span>}
+        onOptionSelect={(e, data) => setValue(data.optionText ?? placeholder)}
+        defaultSelectedOptions={[defaultValue]}
+        defaultValue={defaultValue}
+        {...props}
+      >
+        {options.map((option) => (
+          <Option key={option} text={option} disabled={option === "Ferret"}>
+            <span className={styles.optionText}>{option}</span>
+          </Option>
+        ))}
+      </Dropdown>
+    </div>
+  );
+};
+```

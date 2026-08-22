@@ -1,0 +1,902 @@
+# Popover
+
+## Examples
+
+### AnchorToCustomTarget
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+import type { PositioningImperativeRef } from "@fluentui/react-components";
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    gap: "10px",
+  },
+
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+export const AnchorToCustomTarget = (): JSXElement => {
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const buttonRef = React.useCallback(
+    (el: HTMLButtonElement | null) => {
+      positioningRef.current?.setTarget(el);
+    },
+    [positioningRef]
+  );
+
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <Popover positioning={{ positioningRef }}>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+
+      <Button ref={buttonRef}>Custom target</Button>
+    </div>
+  );
+};
+```
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  tokens,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const useLayoutStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: tokens.spacingVerticalMNudge,
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+export const Appearance = (): JSXElement => {
+  const layoutStyles = useLayoutStyles();
+
+  return (
+    <div className={layoutStyles.root}>
+      <Popover>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Default appearance Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+
+      <Popover appearance="brand">
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Brand appearance Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+
+      <Popover appearance="inverted">
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Inverted appearance Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+    </div>
+  );
+};
+```
+
+### ControllingOpenAndClose
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Checkbox,
+} from "@fluentui/react-components";
+import type { CheckboxProps, PopoverProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+export const ControllingOpenAndClose = (): JSXElement => {
+  const styles = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleOpenChange: PopoverProps["onOpenChange"] = (e, data) =>
+    setOpen(data.open || false);
+
+  const onChange: CheckboxProps["onChange"] = (e, { checked }) => {
+    setOpen(checked as boolean);
+  };
+
+  return (
+    <div className={styles.container}>
+      <Popover open={open} onOpenChange={handleOpenChange}>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Controlled trigger</Button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+      <Checkbox
+        value="open"
+        name="state"
+        label="open"
+        checked={open}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
+```
+
+### CustomTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+import type { PopoverTriggerChildProps } from "@fluentui/react-components";
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+const CustomPopoverTrigger = React.forwardRef<
+  HTMLButtonElement,
+  Partial<PopoverTriggerChildProps>
+>((props, ref) => {
+  return (
+    <Button {...props} ref={ref}>
+      Custom Trigger
+    </Button>
+  );
+});
+
+export const CustomTrigger = (): JSXElement => {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <CustomPopoverTrigger />
+      </PopoverTrigger>
+      <PopoverSurface>
+        <ExampleContent />
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+import type { PopoverProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+export const Default = (props: PopoverProps): JSXElement => (
+  <Popover {...props}>
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <ExampleContent />
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### InternalUpdateContent
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Link,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+import type { PopoverProps } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+    </div>
+  );
+};
+
+export const InternalUpdateContent = (): JSXElement => {
+  const [visible, setVisible] = React.useState(false);
+  const focusRef = React.useRef<HTMLAnchorElement>(null);
+
+  const changeContent = () => setVisible(true);
+  const onOpenChange: PopoverProps["onOpenChange"] = (e, data) => {
+    if (data.open === false) {
+      setVisible(false);
+    }
+  };
+
+  React.useEffect(() => {
+    if (visible) {
+      focusRef.current?.focus();
+    }
+  }, [visible]);
+
+  return (
+    <Popover onOpenChange={onOpenChange}>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <ExampleContent />
+
+        {visible ? (
+          <div>
+            The second panel content{" "}
+            <Link href="#" ref={focusRef}>
+              and a link
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <Button onClick={changeContent}>Action</Button>
+          </div>
+        )}
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### MotionCustom
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  createPresenceComponent,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+import { fadeAtom, blurAtom } from "@fluentui/react-motion-components-preview";
+
+const FadeInBlurOut = createPresenceComponent({
+  enter: fadeAtom({ duration: 500, direction: "enter" }),
+  exit: [
+    fadeAtom({ duration: 500, direction: "exit" }),
+    blurAtom({ duration: 500, direction: "exit" }),
+  ],
+});
+
+export const MotionCustom = (): JSXElement => (
+  <Popover
+    surfaceMotion={{
+      children: (_, motionProps) => <FadeInBlurOut {...motionProps} />,
+    }}
+  >
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Open popover</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <h3 style={{ marginTop: 0 }}>Popover content</h3>
+      <p>This popover fades in and blurs out.</p>
+      <Button>Action</Button>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### MotionDisabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from "@fluentui/react-components";
+
+export const MotionDisabled = (): JSXElement => (
+  <Popover surfaceMotion={null}>
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Open popover</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <h3 style={{ marginTop: 0 }}>Popover content</h3>
+      <p>This popover has motion disabled</p>
+      <Button>Action</Button>
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### NestedPopovers
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  useId,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const FirstNestedPopover = () => {
+  const styles = useStyles();
+  const id = useId();
+
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>First nested trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface aria-labelledby={id}>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
+        <Button>First nested button</Button>
+        <SecondNestedPopover />
+        <SecondNestedPopover />
+      </PopoverSurface>
+    </Popover>
+  );
+};
+
+const SecondNestedPopover = () => {
+  const styles = useStyles();
+  const id = useId();
+
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Second nested trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface aria-labelledby={id}>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
+        <Button>Second nested button</Button>
+      </PopoverSurface>
+    </Popover>
+  );
+};
+
+export const NestedPopovers = (): JSXElement => {
+  const styles = useStyles();
+  const id = useId();
+
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Root trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
+        <Button>Root button</Button>
+        <FirstNestedPopover />
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### NonInteractiveContent
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  makeStyles,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  useId,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+export const NonInteractiveContent = (): JSXElement => {
+  const styles = useStyles();
+  const headingId = useId("popover-heading");
+
+  return (
+    <Popover>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface tabIndex={-1} aria-labelledby={headingId}>
+        <h3 id={headingId} className={styles.contentHeader}>
+          Popover content
+        </h3>
+        <p>This is some non-interactive popover content.</p>
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### TrappingFocus
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  useId,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+export const TrappingFocus = (): JSXElement => {
+  const styles = useStyles();
+  const id = useId();
+
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface aria-labelledby={id}>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
+
+        <div>
+          <Button>Action</Button>
+          <Button>Action</Button>
+        </div>
+      </PopoverSurface>
+    </Popover>
+  );
+};
+```
+
+### WithArrow
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This popover has an arrow pointing to its target</div>
+      <Button>Action</Button>
+    </div>
+  );
+};
+
+export const WithArrow = (): JSXElement => (
+  <Popover withArrow>
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <ExampleContent />
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### WithArrowAutosize
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+} from "@fluentui/react-components";
+
+const useContentStyles = makeStyles({
+  root: {
+    boxSizing: "border-box",
+    padding: "16px",
+    overflowY: "auto",
+    height: "100%",
+  },
+  header: {
+    marginTop: "0",
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useContentStyles();
+  return (
+    <div className={styles.root}>
+      <h3 className={styles.header}>Popover content</h3>
+
+      <Button>Action</Button>
+
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        semper, nulla at pretium pulvinar, erat nibh ultricies risus, eget
+        tincidunt neque nisl non nunc. Integer tempus augue nec facilisis
+        suscipit. Aenean finibus orci id turpis euismod, sit amet varius neque
+        porta. Curabitur et urna vel orci luctus dictum. Mauris sed eros
+        euismod, cursus justo non, facilisis nibh. Aliquam blandit leo ut nisl
+        tincidunt, sit amet ultrices lacus molestie. Phasellus aliquet massa non
+        vestibulum condimentum. Vivamus posuere, ligula eu pharetra fringilla,
+        lorem leo elementum risus, vitae tempor odio purus sed libero.
+        Vestibulum porta nisl a metus ultricies, vel dignissim lectus facilisis.
+        Etiam interdum mi a suscipit aliquet. Nullam rhoncus molestie purus, id
+        porta neque consequat vitae. Sed id aliquam elit. Praesent nunc libero,
+        vulputate vitae porta nec, venenatis sed augue. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Vestibulum semper, nulla at pretium
+        pulvinar, erat nibh ultricies risus, eget tincidunt neque nisl non nunc.
+        Integer tempus augue nec facilisis suscipit. Aenean finibus orci id
+        turpis euismod, sit amet varius neque porta. Curabitur et urna vel orci
+        luctus dictum. Mauris sed eros euismod, cursus justo non, facilisis
+        nibh. Aliquam blandit leo ut nisl tincidunt, sit amet ultrices lacus
+        molestie. Phasellus aliquet massa non vestibulum condimentum. Vivamus
+        posuere, ligula eu pharetra fringilla, lorem leo elementum risus, vitae
+        tempor odio purus sed libero. Vestibulum porta nisl a metus ultricies,
+        vel dignissim lectus facilisis. Etiam interdum mi a suscipit aliquet.
+        Nullam rhoncus molestie purus, id porta neque consequat vitae. Sed id
+        aliquam elit. Praesent nunc libero, vulputate vitae porta nec, venenatis
+        sed augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum semper, nulla at pretium pulvinar, erat nibh ultricies risus,
+        eget tincidunt neque nisl non nunc. Integer tempus augue nec facilisis
+        suscipit. Aenean finibus orci id turpis euismod, sit amet varius neque
+        porta. Curabitur et urna vel orci luctus dictum. Mauris sed eros
+        euismod, cursus justo non, facilisis nibh. Aliquam blandit leo ut nisl
+        tincidunt, sit amet ultrices lacus molestie. Phasellus aliquet massa non
+        vestibulum condimentum. Vivamus posuere, ligula eu pharetra fringilla,
+        lorem leo elementum risus, vitae tempor odio purus sed libero.
+        Vestibulum porta nisl a metus ultricies, vel dignissim lectus facilisis.
+        Etiam interdum mi a suscipit aliquet. Nullam rhoncus molestie purus, id
+        porta neque consequat vitae. Sed id aliquam elit. Praesent nunc libero,
+        vulputate vitae porta nec, venenatis sed augue. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Vestibulum semper, nulla at pretium
+        pulvinar, erat nibh ultricies risus, eget tincidunt neque nisl non nunc.
+        Integer tempus augue nec facilisis suscipit. Aenean finibus orci id
+        turpis euismod, sit amet varius neque porta. Curabitur et urna vel orci
+        luctus dictum. Mauris sed eros euismod, cursus justo non, facilisis
+        nibh. Aliquam blandit leo ut nisl tincidunt, sit amet ultrices lacus
+        molestie. Phasellus aliquet massa non vestibulum condimentum. Vivamus
+        posuere, ligula eu pharetra fringilla, lorem leo elementum risus, vitae
+        tempor odio purus sed libero. Vestibulum porta nisl a metus ultricies,
+        vel dignissim lectus facilisis. Etiam interdum mi a suscipit aliquet.
+        Nullam rhoncus molestie purus, id porta neque consequat vitae. Sed id
+        aliquam elit. Praesent nunc libero, vulputate vitae porta nec, venenatis
+        sed augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum semper, nulla at pretium pulvinar, erat nibh ultricies risus,
+        eget tincidunt neque nisl non nunc. Integer tempus augue nec facilisis
+        suscipit. Aenean finibus orci id turpis euismod, sit amet varius neque
+        porta. Curabitur et urna vel orci luctus dictum. Mauris sed eros
+        euismod, cursus justo non, facilisis nibh. Aliquam blandit leo ut nisl
+        tincidunt, sit amet ultrices lacus molestie. Phasellus aliquet massa non
+        vestibulum condimentum. Vivamus posuere, ligula eu pharetra fringilla,
+        lorem leo elementum risus, vitae tempor odio purus sed libero.
+        Vestibulum porta nisl a metus ultricies, vel dignissim lectus facilisis.
+        Etiam interdum mi a suscipit aliquet. Nullam rhoncus molestie purus, id
+        porta neque consequat vitae. Sed id aliquam elit. Praesent nunc libero,
+        vulputate vitae porta nec, venenatis sed augue. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Vestibulum semper, nulla at pretium
+        pulvinar, erat nibh ultricies risus, eget tincidunt neque nisl non nunc.
+        Integer tempus augue nec facilisis suscipit. Aenean finibus orci id
+        turpis euismod, sit amet varius neque porta. Curabitur et urna vel orci
+        luctus dictum. Mauris sed eros euismod, cursus justo non, facilisis
+        nibh. Aliquam blandit leo ut nisl tincidunt, sit amet ultrices lacus
+        molestie. Phasellus aliquet massa non vestibulum condimentum. Vivamus
+        posuere, ligula eu pharetra fringilla, lorem leo elementum risus, vitae
+        tempor odio purus sed libero. Vestibulum porta nisl a metus ultricies,
+        vel dignissim lectus facilisis. Etiam interdum mi a suscipit aliquet.
+        Nullam rhoncus molestie purus, id porta neque consequat vitae. Sed id
+        aliquam elit. Praesent nunc libero, vulputate vitae porta nec, venenatis
+        sed augue.
+      </div>
+    </div>
+  );
+};
+
+export const WithArrowAutosize = (): JSXElement => (
+  <Popover withArrow positioning={{ autoSize: true }}>
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
+
+    {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
+    <PopoverSurface style={{ overflow: "visible", padding: 0 }}>
+      {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
+      <ExampleContent />
+    </PopoverSurface>
+  </Popover>
+);
+```
+
+### WithoutTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  useId,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+import type { PositioningImperativeRef } from "@fluentui/react-components";
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    gap: "10px",
+  },
+
+  contentHeader: {
+    marginTop: "0",
+  },
+});
+
+export const WithoutTrigger = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  const headerId = useId();
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const styles = useStyles();
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
+  React.useEffect(() => {
+    if (buttonRef.current) {
+      positioningRef.current?.setTarget(buttonRef.current);
+    }
+  }, [buttonRef, positioningRef]);
+
+  return (
+    <div className={styles.container}>
+      <Button
+        {...restoreFocusTargetAttribute}
+        ref={buttonRef}
+        onClick={() => setOpen((s) => !s)}
+      >
+        Toggle popover
+      </Button>
+      <Popover
+        onOpenChange={(e, data) => {
+          if (e.target === buttonRef.current) {
+            // Ignore events that are triggered by the button to avoid re-opening the popover
+            return;
+          }
+
+          setOpen(data.open);
+        }}
+        trapFocus
+        open={open}
+        positioning={{ positioningRef }}
+      >
+        <PopoverSurface aria-labelledby={headerId}>
+          <div>
+            <h3 id={headerId} className={styles.contentHeader}>
+              Popover content
+            </h3>
+
+            <div>This is some popover content</div>
+          </div>
+
+          <div>
+            <Button>Action</Button>
+            <Button>Action</Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+    </div>
+  );
+};
+```

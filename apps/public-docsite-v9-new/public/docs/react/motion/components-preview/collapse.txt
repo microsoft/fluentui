@@ -1,0 +1,691 @@
+# Collapse
+
+## Examples
+
+### DefaultCollapse
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  tokens,
+  type PresenceComponentProps,
+} from "@fluentui/react-components";
+import {
+  Collapse,
+  type CollapseParams,
+} from "@fluentui/react-motion-components-preview";
+
+const useClasses = makeStyles({
+  wrapper: {
+    padding: tokens.spacingVerticalXL,
+  },
+});
+
+const LoremIpsum = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>((props, ref) => (
+  <div ref={ref} {...props}>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </div>
+));
+
+export const DefaultCollapse = (
+  props: PresenceComponentProps & CollapseParams
+): JSXElement => {
+  const classes = useClasses();
+  return (
+    <div className={classes.wrapper}>
+      <Collapse {...props}>
+        <LoremIpsum />
+      </Collapse>
+    </div>
+  );
+};
+```
+
+### Customization
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Card,
+  CardHeader,
+  createPresenceComponentVariant,
+  Field,
+  makeStyles,
+  mergeClasses,
+  type MotionImperativeRef,
+  motionTokens,
+  Slider,
+  Switch,
+  Text,
+  tokens,
+} from "@fluentui/react-components";
+import { Collapse } from "@fluentui/react-motion-components-preview";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
+  },
+  card: {
+    gridArea: "card",
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: "300px",
+    overflow: "hidden",
+  },
+  cardHeaderText: {
+    margin: 0,
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: "min-content 1fr",
+  },
+  sliderLabel: {
+    textWrap: "nowrap",
+  },
+
+  item: {
+    backgroundColor: tokens.colorBrandBackground,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
+    borderRadius: "50%",
+
+    width: "100px",
+    height: "100px",
+  },
+});
+
+const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
+  duration: motionTokens.durationSlow,
+  easing: motionTokens.curveEasyEaseMax,
+  exitDuration: motionTokens.durationNormal,
+  exitEasing: motionTokens.curveEasyEaseMax,
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </>
+);
+
+export const Customization = (): JSXElement => {
+  const classes = useClasses();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
+
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
+  const [visible, setVisible] = React.useState<boolean>(true);
+  const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(false);
+
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
+  React.useEffect(() => {
+    motionRef.current?.setPlaybackRate(playbackRate / 100);
+  }, [playbackRate, visible]);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+        <Field className={classes.field}>
+          <Switch
+            label={<code>animateOpacity</code>}
+            checked={animateOpacity}
+            onChange={() => setAnimateOpacity((v) => !v)}
+          />
+        </Field>
+        <Field className={classes.field}>
+          <Switch
+            label={<code>unmountOnExit</code>}
+            checked={unmountOnExit}
+            onChange={() => setUnmountOnExit((v) => !v)}
+          />
+        </Field>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
+          <Slider
+            aria-valuetext={`Value is ${playbackRate}%`}
+            className={mergeClasses(classes.field, classes.sliderField)}
+            value={playbackRate}
+            onChange={(ev, data) => setPlaybackRate(data.value)}
+            min={0}
+            max={100}
+            step={5}
+          />
+        </Field>
+      </div>
+
+      <CustomCollapseVariant
+        animateOpacity={animateOpacity}
+        imperativeRef={motionRef}
+        visible={visible}
+        unmountOnExit={unmountOnExit}
+      >
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text
+                as="h3"
+                className={classes.cardHeaderText}
+                weight="semibold"
+              >
+                Lorem Ipsum
+              </Text>
+            }
+          />
+
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
+      </CustomCollapseVariant>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  Text,
+} from "@fluentui/react-components";
+import { Collapse } from "@fluentui/react-motion-components-preview";
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
+  },
+  card: {
+    gridArea: "card",
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: "300px",
+    overflow: "hidden",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
+  },
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </>
+);
+
+export const Default = (): JSXElement => {
+  const classes = useClasses();
+  const [visible, setVisible] = React.useState<boolean>(true);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+      </div>
+
+      <Collapse visible={visible}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text
+                as="h3"
+                className={classes.cardHeaderText}
+                weight="semibold"
+              >
+                Lorem Ipsum
+              </Text>
+            }
+          />
+
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
+      </Collapse>
+    </div>
+  );
+};
+```
+
+### Delayed
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  Text,
+} from "@fluentui/react-components";
+import { CollapseDelayed } from "@fluentui/react-motion-components-preview";
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
+  },
+  card: {
+    gridArea: "card",
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: "300px",
+    overflow: "hidden",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
+  },
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </>
+);
+
+export const Delayed = (): JSXElement => {
+  const classes = useClasses();
+  const [visible, setVisible] = React.useState<boolean>(true);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+      </div>
+
+      <CollapseDelayed visible={visible}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text
+                as="h3"
+                className={classes.cardHeaderText}
+                weight="semibold"
+              >
+                Lorem Ipsum
+              </Text>
+            }
+          />
+
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
+      </CollapseDelayed>
+    </div>
+  );
+};
+```
+
+### Horizontal
+
+```tsx
+import { Field, makeStyles, tokens, Switch } from "@fluentui/react-components";
+import { Collapse } from "@fluentui/react-motion-components-preview";
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: { display: "flex", flexDirection: "column", gap: "10px" },
+  sideContent: {
+    background: "lightgrey",
+    padding: "50px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  card: {
+    gridArea: "card",
+    padding: "20px",
+    width: "300px",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      3
+    )}
+  </>
+);
+
+export const Horizontal = (): JSXElement => {
+  const classes = useClasses();
+  const [visible, setVisible] = React.useState<boolean>(false);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+      </div>
+
+      <div style={{ display: "flex" }}>
+        <Collapse visible={visible} orientation="horizontal">
+          {/* Wrapper div to make the collapse crop the card without reflowing the text. */}
+          <div>
+            <div className={classes.card}>
+              <LoremIpsum />
+            </div>
+          </div>
+        </Collapse>
+        <div className={classes.sideContent}>[side content]</div>
+      </div>
+    </div>
+  );
+};
+```
+
+### Relaxed
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  Text,
+} from "@fluentui/react-components";
+import { CollapseRelaxed } from "@fluentui/react-motion-components-preview";
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
+  },
+  card: {
+    gridArea: "card",
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: "300px",
+    overflow: "hidden",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
+  },
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </>
+);
+
+export const Relaxed = (): JSXElement => {
+  const classes = useClasses();
+  const [visible, setVisible] = React.useState<boolean>(true);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+      </div>
+
+      <CollapseRelaxed visible={visible}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text
+                as="h3"
+                className={classes.cardHeaderText}
+                weight="semibold"
+              >
+                Lorem Ipsum
+              </Text>
+            }
+          />
+
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
+      </CollapseRelaxed>
+    </div>
+  );
+};
+```
+
+### Snappy
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  Text,
+} from "@fluentui/react-components";
+import { CollapseSnappy } from "@fluentui/react-motion-components-preview";
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
+  },
+  card: {
+    gridArea: "card",
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: "300px",
+    overflow: "hidden",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "controls",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: tokens.spacingVerticalMNudge,
+  },
+  field: {
+    flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
+  },
+});
+
+const LoremIpsum = () => (
+  <>
+    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".repeat(
+      10
+    )}
+  </>
+);
+
+export const Snappy = (): JSXElement => {
+  const classes = useClasses();
+  const [visible, setVisible] = React.useState<boolean>(true);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch
+            label="Visible"
+            checked={visible}
+            onChange={() => setVisible((v) => !v)}
+          />
+        </Field>
+      </div>
+
+      <CollapseSnappy visible={visible}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text
+                as="h3"
+                className={classes.cardHeaderText}
+                weight="semibold"
+              >
+                Lorem Ipsum
+              </Text>
+            }
+          />
+
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
+      </CollapseSnappy>
+    </div>
+  );
+};
+```

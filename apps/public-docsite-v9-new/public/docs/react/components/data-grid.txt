@@ -1,0 +1,3095 @@
+# Data Grid
+
+## Examples
+
+### CompositeNavigation
+
+```tsx
+import * as React from "react";
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const CompositeNavigation = (): JSXElement => {
+  return (
+    <DataGrid
+      selectionMode="multiselect"
+      items={items}
+      columns={columns}
+      focusMode="composite"
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### CustomRowId
+
+```tsx
+import * as React from "react";
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  Checkbox,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableRowData,
+  TableRowId,
+  DataGridProps,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const CustomRowId = (): JSXElement => {
+  const [selectedRows, setSelectedRows] = React.useState(
+    new Set<TableRowId>(["Thursday presentation"])
+  );
+  const onSelectionChange: DataGridProps["onSelectionChange"] = (e, data) => {
+    setSelectedRows(data.selectedItems);
+  };
+
+  return (
+    <>
+      <ul>
+        {items.map((item) => (
+          <li key={item.file.label}>
+            <Checkbox
+              label={item.file.label}
+              checked={selectedRows.has(item.file.label)}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <DataGrid
+        items={items}
+        columns={columns}
+        selectionMode="multiselect"
+        selectedItems={selectedRows}
+        onSelectionChange={onSelectionChange}
+        getRowId={(item) => item.file.label}
+        style={{ minWidth: "550px" }}
+      >
+        <DataGridHeader>
+          <DataGridRow
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select all rows" },
+            }}
+          >
+            {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
+              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+            )}
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody>
+          {({ item, rowId }: TableRowData<Item>) => (
+            <DataGridRow
+              key={rowId}
+              selectionCell={{
+                checkboxIndicator: { "aria-label": "Select row" },
+              }}
+            >
+              {({ renderCell }: TableColumnDefinition<Item>) => (
+                <DataGridCell>{renderCell(item)}</DataGridCell>
+              )}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const Default = (): JSXElement => {
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      selectionMode="multiselect"
+      getRowId={(item) => item.file.label}
+      focusMode="composite"
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### FocusableElementsInCells
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  MoreHorizontalRegular,
+  OpenRegular,
+  DocumentRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+  DeleteRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableColumnId,
+  DataGridCellFocusMode,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    renderHeaderCell: () => {
+      return (
+        <>
+          Author
+          <Button
+            appearance="transparent"
+            aria-label="Edit"
+            icon={<EditRegular />}
+          />
+          <Menu positioning={{ autoSize: true }}>
+            <MenuTrigger disableButtonEnhancement>
+              <Button
+                appearance="transparent"
+                icon={<MoreHorizontalRegular />}
+                aria-label="More options"
+              />
+            </MenuTrigger>
+
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Delete column</MenuItem>
+                <MenuItem>Create new author</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </>
+      );
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "singleAction",
+    renderHeaderCell: () => {
+      return "Single action";
+    },
+    renderCell: () => {
+      return <Button icon={<OpenRegular />}>Open</Button>;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "actions",
+    renderHeaderCell: () => {
+      return "Actions";
+    },
+    renderCell: () => {
+      return (
+        <>
+          <Button aria-label="Edit" icon={<EditRegular />} />
+          <Button aria-label="Delete" icon={<DeleteRegular />} />
+        </>
+      );
+    },
+  }),
+];
+
+const getCellFocusMode = (columnId: TableColumnId): DataGridCellFocusMode => {
+  switch (columnId) {
+    case "singleAction":
+      return "none";
+    case "actions":
+      return "group";
+    default:
+      return "cell";
+  }
+};
+
+export const FocusableElementsInCells = (): JSXElement => {
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      selectionMode="multiselect"
+      getRowId={(item) => item.file.label}
+      onSelectionChange={(e, data) => console.log(data)}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ columnId, renderHeaderCell }) => (
+            <DataGridHeaderCell
+              focusMode={columnId === "author" ? "group" : undefined}
+            >
+              {renderHeaderCell()}
+            </DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell, columnId }) => (
+              <DataGridCell focusMode={getCellFocusMode(columnId)}>
+                {renderCell(item)}
+              </DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### MultipleSelect
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const MultipleSelect = (): JSXElement => {
+  const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="multiselect"
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### MultipleSelectControlled
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableRowId,
+  DataGridProps,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const MultipleSelectControlled = (): JSXElement => {
+  const [selectedRows, setSelectedRows] = React.useState(
+    new Set<TableRowId>([1])
+  );
+  const onSelectionChange: DataGridProps["onSelectionChange"] = (e, data) => {
+    setSelectedRows(data.selectedItems);
+  };
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="multiselect"
+      selectedItems={selectedRows}
+      onSelectionChange={onSelectionChange}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### ResizableColumns
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGrid,
+  DataGridBody,
+  DataGridCell,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridRow,
+  TableCellLayout,
+  createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          truncate
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+const columnSizingOptions = {
+  file: {
+    minWidth: 80,
+    defaultWidth: 120,
+  },
+  author: {
+    defaultWidth: 180,
+    minWidth: 120,
+    idealWidth: 180,
+  },
+};
+
+export const ResizableColumns = (): JSXElement => {
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
+  return (
+    <div style={{ overflowX: "auto" }}>
+      <DataGrid
+        items={items}
+        columns={columns}
+        sortable
+        getRowId={(item) => item.file.label}
+        selectionMode="multiselect"
+        resizableColumns
+        columnSizingOptions={columnSizingOptions}
+      >
+        <DataGridHeader>
+          <DataGridRow
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select all rows" },
+            }}
+          >
+            {({ renderHeaderCell, columnId }, dataGrid) =>
+              dataGrid.resizableColumns ? (
+                <Menu openOnContext>
+                  <MenuTrigger>
+                    <DataGridHeaderCell
+                      ref={(el) => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
+                      {renderHeaderCell()}
+                    </DataGridHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem
+                        onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(
+                          columnId
+                        )}
+                      >
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ) : (
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              )
+            }
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody<Item>>
+          {({ item, rowId }) => (
+            <DataGridRow<Item>
+              key={rowId}
+              selectionCell={{
+                checkboxIndicator: { "aria-label": "Select row" },
+              }}
+            >
+              {({ renderCell }) => (
+                <DataGridCell>{renderCell(item)}</DataGridCell>
+              )}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </div>
+  );
+};
+```
+
+### ResizableColumnsDisableAutoFit
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGrid,
+  DataGridBody,
+  DataGridCell,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridRow,
+  TableCellLayout,
+  createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          truncate
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout truncate media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+const columnSizingOptions = {
+  file: {
+    minWidth: 80,
+    defaultWidth: 180,
+  },
+  author: {
+    defaultWidth: 180,
+    minWidth: 120,
+    idealWidth: 180,
+  },
+};
+
+export const ResizableColumnsDisableAutoFit = (): JSXElement => {
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
+  return (
+    <div style={{ overflowX: "auto" }}>
+      <DataGrid
+        items={items}
+        columns={columns}
+        sortable
+        getRowId={(item) => item.file.label}
+        selectionMode="multiselect"
+        resizableColumns
+        columnSizingOptions={columnSizingOptions}
+        resizableColumnsOptions={{
+          autoFitColumns: false,
+        }}
+      >
+        <DataGridHeader>
+          <DataGridRow
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select all rows" },
+            }}
+          >
+            {({ renderHeaderCell, columnId }, dataGrid) =>
+              dataGrid.resizableColumns ? (
+                <Menu openOnContext>
+                  <MenuTrigger>
+                    <DataGridHeaderCell
+                      ref={(el) => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
+                      {renderHeaderCell()}
+                    </DataGridHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem
+                        onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(
+                          columnId
+                        )}
+                      >
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ) : (
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              )
+            }
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody<Item>>
+          {({ item, rowId }) => (
+            <DataGridRow<Item>
+              key={rowId}
+              selectionCell={{
+                checkboxIndicator: { "aria-label": "Select row" },
+              }}
+            >
+              {({ renderCell }) => (
+                <DataGridCell>{renderCell(item)}</DataGridCell>
+              )}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </div>
+  );
+};
+```
+
+### SelectionAppearance
+
+```tsx
+import * as React from "react";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const SelectionAppearance = (): JSXElement => {
+  const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="multiselect"
+      selectionAppearance="neutral"
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### SingleSelect
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const SingleSelect = (): JSXElement => {
+  const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="single"
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow>
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{ radioIndicator: { "aria-label": "Select row" } }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### SingleSelectControlled
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableRowId,
+  DataGridProps,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const SingleSelectControlled = (): JSXElement => {
+  const [selectedRows, setSelectedRows] = React.useState(
+    new Set<TableRowId>([1])
+  );
+  const onSelectionChange: DataGridProps["onSelectionChange"] = (e, data) => {
+    setSelectedRows(data.selectedItems);
+  };
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="single"
+      selectedItems={selectedRows}
+      onSelectionChange={onSelectionChange}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow>
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{ radioIndicator: { "aria-label": "Select row" } }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### Sort
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  DataGridProps,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    renderHeaderCell: () => {
+      return "Not sortable";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const Sort = (): JSXElement => {
+  const defaultSortState = React.useMemo<
+    Parameters<NonNullable<DataGridProps["onSortChange"]>>[1]
+  >(() => ({ sortColumn: "file", sortDirection: "ascending" }), []);
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      defaultSortState={defaultSortState}
+      style={{ minWidth: "500px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow>
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId}>
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### SortControlled
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  DataGridProps,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const SortControlled = (): JSXElement => {
+  const [sortState, setSortState] = React.useState<
+    Parameters<NonNullable<DataGridProps["onSortChange"]>>[1]
+  >({
+    sortColumn: "file",
+    sortDirection: "ascending",
+  });
+  const onSortChange: DataGridProps["onSortChange"] = (e, nextSortState) => {
+    setSortState(nextSortState);
+  };
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      sortState={sortState}
+      onSortChange={onSortChange}
+      style={{ minWidth: "500px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow>
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId}>
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### SubtleSelection
+
+```tsx
+import * as React from "react";
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from "@fluentui/react-icons";
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from "@fluentui/react-components";
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+} from "@fluentui/react-components";
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: "Meeting notes", icon: <DocumentRegular /> },
+    author: { label: "Max Mustermann", status: "available" },
+    lastUpdated: { label: "7h ago", timestamp: 1 },
+    lastUpdate: {
+      label: "You edited this",
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: "Thursday presentation", icon: <FolderRegular /> },
+    author: { label: "Erika Mustermann", status: "busy" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Training recording", icon: <VideoRegular /> },
+    author: { label: "John Doe", status: "away" },
+    lastUpdated: { label: "Yesterday at 1:45 PM", timestamp: 2 },
+    lastUpdate: {
+      label: "You recently opened this",
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: "Purchase order", icon: <DocumentPdfRegular /> },
+    author: { label: "Jane Doe", status: "offline" },
+    lastUpdated: { label: "Tue at 9:30 AM", timestamp: 3 },
+    lastUpdate: {
+      label: "You shared this in a Teams chat",
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: "file",
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return "File";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "author",
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return "Author";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdated",
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return "Last updated";
+    },
+
+    renderCell: (item) => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: "lastUpdate",
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return "Last update";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+];
+
+export const SubtleSelection = (): JSXElement => {
+  const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
+
+  return (
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="multiselect"
+      subtleSelection
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: "550px" }}
+    >
+      <DataGridHeader>
+        <DataGridRow
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select all rows" },
+          }}
+        >
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item>
+            key={rowId}
+            selectionCell={{
+              checkboxIndicator: { "aria-label": "Select row" },
+            }}
+          >
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+```
+
+### Virtualization
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+export const Virtualization = (): JSXElement => {
+  return (
+    <iframe
+      style={{ width: "100%", height: 500, border: "none" }}
+      src="https://microsoft.github.io/fluentui-contrib/react-data-grid-react-window/iframe.html?id=packages-react-data-grid-react-window--virtualized-data-grid&viewMode=story"
+    />
+  );
+};
+```

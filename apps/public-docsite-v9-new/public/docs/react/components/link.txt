@@ -1,0 +1,111 @@
+# Link
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+
+export const Appearance = (): JSXElement => (
+  <Link appearance="subtle" href="https://www.bing.com">
+    Subtle link
+  </Link>
+);
+```
+
+### AsButton
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+
+export const AsButton = (): JSXElement => <Link>Render as a button</Link>;
+```
+
+### AsSpan
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link, makeResetStyles } from "@fluentui/react-components";
+
+const useDivWithWidthClassName = makeResetStyles({
+  width: "200px",
+});
+
+export const AsSpan = (): JSXElement => (
+  <div className={useDivWithWidthClassName()}>
+    The following link renders as a span.{" "}
+    <Link as="span" inline onClick={() => alert("Link rendered as span")}>
+      Links that render as a span wrap correctly between lines when their
+      content is very long
+    </Link>
+    . This is because they behave as regular inline elements.
+  </div>
+);
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+import type { LinkProps } from "@fluentui/react-components";
+
+export const Default = (props: LinkProps & { as?: "a" }): JSXElement => (
+  <Link href="https://www.bing.com" {...props}>
+    This is a link
+  </Link>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+
+export const Disabled = (): JSXElement => (
+  <Link disabled href="https://www.bing.com">
+    Disabled link
+  </Link>
+);
+```
+
+### DisabledFocusable
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+
+export const DisabledFocusable = (): JSXElement => (
+  <Link inline disabled disabledFocusable href="https://www.bing.com">
+    Disabled but still focusable
+  </Link>
+);
+```
+
+### Inline
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Link } from "@fluentui/react-components";
+
+export const Inline = (): JSXElement => (
+  <div>
+    This is an{" "}
+    <Link href="https://www.bing.com" inline>
+      inline link
+    </Link>{" "}
+    used alongside other text
+  </div>
+);
+```

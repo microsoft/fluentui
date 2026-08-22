@@ -1,0 +1,1948 @@
+# Carousel
+
+## Examples
+
+### AlignmentAndWhitespace
+
+```tsx
+import {
+  Button,
+  makeStyles,
+  tokens,
+  Image,
+  Persona,
+  Dropdown,
+  Option,
+  Switch,
+  Field,
+  CarouselSlider,
+} from "@fluentui/react-components";
+import {
+  MoreHorizontalRegular,
+  DocumentLinkRegular,
+} from "@fluentui/react-icons";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+  CarouselProps,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "grid",
+    gridTemplateColumns: "minmax(0, 1fr)",
+    gridTemplateRows: "auto 1fr",
+    boxShadow: tokens.shadow16,
+  },
+  card: {
+    display: "flex",
+    flexDirection: "column",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    padding: "10px",
+    minHeight: "100px",
+  },
+  carousel: {
+    flex: 1,
+    padding: "20px",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: "none",
+    borderRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
+    padding: "10px",
+  },
+  field: {
+    flex: 1,
+    gridTemplateColumns: "minmax(100px, max-content) 1fr",
+  },
+  dropdown: {
+    minWidth: "100px",
+    width: "1fr",
+  },
+});
+
+const useCardClasses = makeStyles({
+  actionCard: {
+    borderRadius: tokens.borderRadiusLarge,
+    overflow: "hidden",
+    textAlign: "center",
+    maxWidth: "350px",
+    margin: "0px 6px",
+    boxShadow: tokens.shadow16,
+  },
+  imageContainer: {
+    position: "relative",
+  },
+  image: {
+    maxHeight: "200px",
+  },
+  imageButton: {
+    position: "absolute",
+    left: "12px",
+    bottom: "12px",
+  },
+  info: {
+    display: "flex",
+    flexDirection: "row",
+    padding: "12px",
+    width: "auto",
+    alignContent: "center",
+    justifyContent: "space-between",
+  },
+});
+
+const swapImage =
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png";
+
+type Post = {
+  avatarUrl: string;
+  name: string;
+  text: string;
+  description: string;
+};
+
+const POSTS: Post[] = [
+  {
+    avatarUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg",
+    name: "Allan Munger",
+    text: "Meeting notes",
+    description: "2 days ago by Kathryn Murphy",
+  },
+  {
+    avatarUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg",
+    name: "Amanda Brady",
+    text: "FY24 Hiring Budget",
+    description: "Wed at 3:38pm",
+  },
+  {
+    avatarUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AshleyMcCarthy.jpg",
+    name: "Ashley McCarthy",
+    text: "Test edited this",
+    description: "Thu at 4:38pm",
+  },
+  {
+    avatarUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg",
+    name: "Cameron Evans",
+    text: "Review 1:1 Recap",
+    description: "You recently opened this",
+  },
+  {
+    avatarUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg",
+    name: "Carlos Slattery",
+    text: "FY24 Hiring Test",
+    description: "2 days ago by Cecil Folk",
+  },
+];
+
+const ActionCard: React.FC<Post & { index: number }> = (props) => {
+  const { avatarUrl, description, name, text, index } = props;
+  const classes = useCardClasses();
+
+  return (
+    <CarouselCard
+      className={classes.actionCard}
+      aria-label={`Card ${index + 1} of ${POSTS.length}`}
+    >
+      <div className={classes.imageContainer}>
+        <Image
+          className={classes.image}
+          fit="cover"
+          src={swapImage}
+          role="presentation"
+        />
+        <Button
+          className={classes.imageButton}
+          icon={<DocumentLinkRegular />}
+          aria-label="Go to document"
+        />
+      </div>
+      <div className={classes.info}>
+        <Persona
+          textPosition="after"
+          avatar={{ name, image: { src: avatarUrl } }}
+          name={text}
+          presence={{ status: "available" }}
+          secondaryText={description}
+        />
+
+        <Button icon={<MoreHorizontalRegular />} aria-label="More options" />
+      </div>
+    </CarouselCard>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const AlignmentAndWhitespace = (): JSXElement => {
+  const classes = useClasses();
+
+  const [alignment, setAlignment] =
+    React.useState<CarouselProps["align"]>("center");
+  const [whitespace, setWhitespace] = React.useState<boolean>(false);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field
+          label="Alignment"
+          orientation="horizontal"
+          className={classes.field}
+        >
+          <Dropdown
+            className={classes.dropdown}
+            placeholder="Select an alignment"
+            onOptionSelect={(_, option) => {
+              setAlignment(option.optionText as CarouselProps["align"]);
+            }}
+            value={alignment}
+          >
+            {["start", "center", "end"].map((option) => (
+              <Option key={option}>{option}</Option>
+            ))}
+          </Dropdown>
+        </Field>
+
+        <Field
+          label="Whitespace"
+          orientation="horizontal"
+          className={classes.field}
+        >
+          <Switch
+            checked={whitespace}
+            onChange={() => setWhitespace(!whitespace)}
+          />
+        </Field>
+      </div>
+
+      <div className={classes.card}>
+        <Carousel
+          align={alignment}
+          className={classes.carousel}
+          whitespace={whitespace}
+          announcement={getAnnouncement}
+        >
+          <CarouselViewport>
+            <CarouselSlider
+              cardFocus
+              aria-label="Use the left and right arrow keys to navigate focused carousel card"
+            >
+              {POSTS.map((post, index) => (
+                <ActionCard {...post} key={post.name} index={index} />
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
+          <CarouselNavContainer
+            layout="inline"
+            next={{ "aria-label": "go to next" }}
+            prev={{ "aria-label": "go to prev" }}
+          >
+            <CarouselNav>
+              {(index) => (
+                <CarouselNavButton
+                  aria-label={`Carousel Nav Button ${index}`}
+                />
+              )}
+            </CarouselNav>
+          </CarouselNavContainer>
+        </Carousel>
+      </div>
+    </div>
+  );
+};
+```
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+import {
+  Button,
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselSlider,
+  CarouselViewport,
+  Image,
+  makeStyles,
+  tokens,
+  typographyStyles,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  bannerCard: {
+    alignContent: "center",
+    height: "450px",
+    textAlign: "left",
+    position: "relative",
+  },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    position: "absolute",
+    left: "10%",
+    top: "25%",
+    background: tokens.colorNeutralBackground1,
+    padding: "18px",
+    maxWidth: "270px",
+    width: "50%",
+  },
+  title: {
+    ...typographyStyles.title1,
+  },
+  subtext: {
+    ...typographyStyles.body1,
+  },
+});
+
+const IMAGES = [
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+];
+
+const BannerCard: React.FC<{
+  children: React.ReactNode;
+  imageSrc: string;
+  index: number;
+}> = (props) => {
+  const { children, imageSrc, index } = props;
+  const classes = useClasses();
+
+  return (
+    <CarouselCard
+      className={classes.bannerCard}
+      aria-label={`${index + 1} of ${IMAGES.length}`}
+      id={`test-${index}`}
+    >
+      <Image fit="cover" src={imageSrc} role="presentation" />
+
+      <div className={classes.cardContainer}>
+        <div className={classes.title}>{children}</div>
+        <div className={classes.subtext}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </div>
+        <div>
+          <Button size="small" shape="square" appearance="primary">
+            Call to action
+          </Button>
+        </div>
+      </div>
+    </CarouselCard>
+  );
+};
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number
+) => {
+  return `Elevated carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const Appearance = (): JSXElement => (
+  <Carousel
+    appearance="elevated"
+    groupSize={1}
+    circular
+    announcement={getAnnouncement}
+  >
+    <CarouselViewport>
+      <CarouselSlider>
+        {IMAGES.map((imageSrc, index) => (
+          <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+            Card {index + 1}
+          </BannerCard>
+        ))}
+      </CarouselSlider>
+    </CarouselViewport>
+    <CarouselNavContainer
+      layout="inline"
+      autoplayTooltip={{ content: "Autoplay", relationship: "label" }}
+      nextTooltip={{ content: "Go to next", relationship: "label" }}
+      prevTooltip={{ content: "Go to prev", relationship: "label" }}
+    >
+      <CarouselNav>
+        {(index) => (
+          <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+        )}
+      </CarouselNav>
+    </CarouselNavContainer>
+  </Carousel>
+);
+```
+
+### Autoplay
+
+```tsx
+import {
+  Button,
+  CarouselSlider,
+  Field,
+  Image,
+  Input,
+  makeStyles,
+  Switch,
+  tokens,
+  typographyStyles,
+} from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+  CarouselAutoplayButtonProps,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  bannerCard: {
+    alignContent: "center",
+    borderRadius: tokens.borderRadiusLarge,
+    height: "450px",
+    textAlign: "left",
+    position: "relative",
+  },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+
+    position: "absolute",
+    left: "10%",
+    top: "25%",
+    background: tokens.colorNeutralBackground1,
+    padding: "18px",
+    maxWidth: "270px",
+    width: "50%",
+  },
+  title: {
+    ...typographyStyles.title1,
+  },
+  subtext: {
+    ...typographyStyles.body1,
+  },
+  container: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "auto 1fr",
+    boxShadow: tokens.shadow16,
+  },
+  card: {
+    display: "flex",
+    flexDirection: "column",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    padding: "10px",
+    minHeight: "100px",
+  },
+  carousel: {
+    flex: 1,
+    padding: "20px",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: "none",
+    borderRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
+    padding: "10px",
+  },
+  field: {
+    flex: 1,
+    gridTemplateColumns: "minmax(140px, max-content) 1fr",
+  },
+  dropdown: {
+    maxWidth: "max-content",
+  },
+});
+
+const IMAGES = [
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+];
+
+const BannerCard: React.FC<{
+  children: React.ReactNode;
+  imageSrc: string;
+  index: number;
+}> = (props) => {
+  const { children, imageSrc, index } = props;
+  const classes = useClasses();
+
+  return (
+    <CarouselCard
+      className={classes.bannerCard}
+      aria-label={`${index + 1} of ${IMAGES.length}`}
+    >
+      <Image fit="cover" src={imageSrc} role="presentation" />
+
+      <div className={classes.cardContainer}>
+        <div className={classes.title}>{children}</div>
+        <div className={classes.subtext}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </div>
+        <div>
+          <Button size="small" shape="square" appearance="primary">
+            Call to action
+          </Button>
+        </div>
+      </div>
+    </CarouselCard>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const Autoplay = (): JSXElement => {
+  const classes = useClasses();
+  const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
+  const [autoplayButton, setAutoplayButton] = React.useState(true);
+  const [autoplayInterval, setAutoplayInterval] = React.useState(4000);
+
+  const autoplayProps: CarouselAutoplayButtonProps | undefined = autoplayButton
+    ? {
+        "aria-label": "Enable autoplay",
+        checked: autoplayEnabled,
+        onCheckedChange: (e, data) => {
+          setAutoplayEnabled(data.checked);
+        },
+      }
+    : undefined;
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field
+          label="Autoplay Present"
+          orientation="horizontal"
+          className={classes.field}
+        >
+          <Switch
+            checked={autoplayButton}
+            onChange={() => setAutoplayButton(!autoplayButton)}
+          />
+        </Field>
+
+        <Field
+          label="Autoplay Enabled"
+          orientation="horizontal"
+          className={classes.field}
+        >
+          <Switch
+            checked={autoplayEnabled}
+            onChange={() => setAutoplayEnabled(!autoplayEnabled)}
+          />
+        </Field>
+
+        <Field
+          label="Autoplay Interval (ms)"
+          orientation="horizontal"
+          className={classes.field}
+          hint={`Delay between slides: ${autoplayInterval}ms`}
+        >
+          <Input
+            type="number"
+            value={autoplayInterval.toString()}
+            onChange={(e, data) => {
+              const value = parseInt(data.value, 10);
+              if (!isNaN(value) && value >= 1000) {
+                setAutoplayInterval(value);
+              }
+            }}
+            min="1000"
+            step="1000"
+          />
+        </Field>
+      </div>
+      <div className={classes.card}>
+        <Carousel
+          groupSize={1}
+          circular
+          announcement={getAnnouncement}
+          autoplayInterval={autoplayInterval}
+        >
+          <CarouselViewport>
+            <CarouselSlider>
+              {IMAGES.map((imageSrc, index) => (
+                <BannerCard
+                  key={`image-${index}`}
+                  imageSrc={imageSrc}
+                  index={index}
+                >
+                  Card {index + 1}
+                </BannerCard>
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
+          <CarouselNavContainer
+            layout="inline"
+            autoplay={autoplayProps}
+            next={{ "aria-label": "go to next" }}
+            prev={{ "aria-label": "go to prev" }}
+          >
+            <CarouselNav>
+              {(index) => (
+                <CarouselNavButton
+                  aria-label={`Carousel Nav Button ${index}`}
+                />
+              )}
+            </CarouselNav>
+          </CarouselNavContainer>
+        </Carousel>
+      </div>
+    </div>
+  );
+};
+```
+
+### Controlled
+
+```tsx
+import {
+  Body1,
+  Divider,
+  makeStyles,
+  mergeClasses,
+  Title1,
+  tokens,
+  Tooltip,
+  Toolbar,
+  ToolbarButton,
+  CarouselSlider,
+  CarouselAutoplayButton,
+} from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselButton,
+  CarouselCard,
+  CarouselViewport,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  carousel: {
+    display: "grid",
+    gridTemplateColumns: "1fr auto 1fr",
+    gridTemplateRows: "1fr auto",
+    gap: "10px",
+    placeItems: "center",
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+  viewport: {
+    overflow: "hidden",
+  },
+  footer: {
+    display: "flex",
+    gap: "10px",
+
+    alignSelf: "center",
+    justifySelf: "center",
+    width: "max-content",
+
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+
+    padding: "10px",
+  },
+  controls: {
+    padding: 0,
+  },
+  controlButton: {
+    minWidth: "32px",
+  },
+  code: {
+    display: "flex",
+    placeItems: "center",
+    padding: "4px 8px",
+
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+
+    backgroundColor: tokens.colorNeutralBackground4,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+
+  wireframe: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    placeContent: "center",
+
+    padding: "40px",
+    minHeight: "200px",
+
+    position: "relative",
+  },
+  wireframeEven: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
+  },
+  wireframeInfo: {
+    position: "absolute",
+    right: "12px",
+    top: "12px",
+
+    backgroundColor: tokens.colorPaletteRedBackground2,
+    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
+
+    fontSize: tokens.fontSizeBase200,
+    padding: "4px 8px",
+  },
+});
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+const WireframeContent: React.FC<{
+  index: number;
+}> = (props) => {
+  const classes = useClasses();
+
+  return (
+    <div
+      className={mergeClasses(
+        classes.wireframe,
+        props.index % 2 === 0 && classes.wireframeEven
+      )}
+    >
+      <div className={classes.wireframeInfo}>
+        <code>index: {props.index}</code>
+      </div>
+      <Title1 align="center">Lorem Ipsum</Title1>
+      <Body1 align="center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor...
+      </Body1>
+    </div>
+  );
+};
+
+export const Controlled = (): JSXElement => {
+  const [activeIndex, setActiveIndex] = React.useState(1);
+  const classes = useClasses();
+
+  return (
+    <div className={classes.container}>
+      <Carousel
+        activeIndex={activeIndex}
+        groupSize={1}
+        draggable
+        onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
+        announcement={getAnnouncement}
+      >
+        <div className={classes.carousel}>
+          <Tooltip content="Go To Previous Page" relationship="label">
+            <CarouselButton
+              navType="prev"
+              aria-label="Previous Carousel Page Button"
+            />
+          </Tooltip>
+
+          <CarouselViewport className={classes.viewport}>
+            <CarouselSlider>
+              <CarouselCard aria-label="1 of 5">
+                <WireframeContent index={0} />
+              </CarouselCard>
+              <CarouselCard aria-label="2 of 5">
+                <WireframeContent index={1} />
+              </CarouselCard>
+              <CarouselCard aria-label="3 of 5">
+                <WireframeContent index={2} />
+              </CarouselCard>
+              <CarouselCard aria-label="4 of 5">
+                <WireframeContent index={3} />
+              </CarouselCard>
+              <CarouselCard aria-label="5 of 5">
+                <WireframeContent index={4} />
+              </CarouselCard>
+            </CarouselSlider>
+          </CarouselViewport>
+
+          <Tooltip content="Go To Next Page" relationship="label">
+            <CarouselButton
+              navType="next"
+              aria-label="Next Carousel Page Button"
+            />
+          </Tooltip>
+        </div>
+
+        <div className={classes.footer}>
+          <CarouselAutoplayButton aria-label="Enable autoplay" />
+          <Divider vertical />
+          <code className={classes.code}>
+            {JSON.stringify({ activeIndex }, null, 2)}
+          </code>
+          <Divider vertical />
+          <Toolbar className={classes.controls}>
+            {new Array(5).fill(null).map((_, index) => (
+              <ToolbarButton
+                key={`toolbar-button-${index}`}
+                aria-label={`Carousel Nav Button ${index} `}
+                className={classes.controlButton}
+                appearance="subtle"
+                disabled={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+              >
+                {index}
+              </ToolbarButton>
+            ))}
+          </Toolbar>
+        </div>
+      </Carousel>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import {
+  Button,
+  Image,
+  makeStyles,
+  tokens,
+  typographyStyles,
+} from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+  CarouselSlider,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  bannerCard: {
+    alignContent: "center",
+    height: "450px",
+    textAlign: "left",
+    position: "relative",
+  },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    position: "absolute",
+    left: "10%",
+    top: "25%",
+    background: tokens.colorNeutralBackground1,
+    padding: "18px",
+    maxWidth: "270px",
+    width: "50%",
+  },
+  title: {
+    ...typographyStyles.title1,
+  },
+  subtext: {
+    ...typographyStyles.body1,
+  },
+});
+
+const IMAGES = [
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+];
+
+const BannerCard: React.FC<{
+  children: React.ReactNode;
+  imageSrc: string;
+  index: number;
+}> = (props) => {
+  const { children, imageSrc, index } = props;
+  const classes = useClasses();
+
+  return (
+    <CarouselCard
+      className={classes.bannerCard}
+      aria-label={`${index + 1} of ${IMAGES.length}`}
+      id={`test-${index}`}
+    >
+      <Image fit="cover" src={imageSrc} role="presentation" />
+
+      <div className={classes.cardContainer}>
+        <div className={classes.title}>{children}</div>
+        <div className={classes.subtext}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </div>
+        <div>
+          <Button size="small" shape="square" appearance="primary">
+            Call to action
+          </Button>
+        </div>
+      </div>
+    </CarouselCard>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const Default = (): JSXElement => (
+  <Carousel groupSize={1} circular announcement={getAnnouncement}>
+    <CarouselViewport>
+      <CarouselSlider>
+        {IMAGES.map((imageSrc, index) => (
+          <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+            Card {index + 1}
+          </BannerCard>
+        ))}
+      </CarouselSlider>
+    </CarouselViewport>
+    <CarouselNavContainer
+      layout="inline"
+      autoplayTooltip={{ content: "Autoplay", relationship: "label" }}
+      nextTooltip={{ content: "Go to next", relationship: "label" }}
+      prevTooltip={{ content: "Go to prev", relationship: "label" }}
+    >
+      <CarouselNav>
+        {(index) => (
+          <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+        )}
+      </CarouselNav>
+    </CarouselNavContainer>
+  </Carousel>
+);
+```
+
+### Eventing
+
+```tsx
+import {
+  Body1,
+  Caption1,
+  makeStyles,
+  mergeClasses,
+  tokens,
+  Title1,
+  Subtitle2,
+  useId,
+  CarouselSlider,
+} from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+  Text,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  container: {
+    display: "flex",
+    gap: "20px",
+  },
+  carousel: {
+    border: `2px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: "20px 0",
+    marginTop: "24px",
+  },
+  card: {
+    margin: "10px",
+  },
+  logLabel: {
+    alignSelf: "end",
+    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: tokens.colorBrandBackground,
+    width: "fit-content",
+    fontWeight: tokens.fontWeightBold,
+    padding: "2px 12px",
+    borderRadius: `${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium} 0 0`,
+  },
+  log: {
+    overflowY: "auto",
+    boxShadow: tokens.shadow16,
+    minWidth: "240px",
+    flex: 1,
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    borderRadius: `${tokens.borderRadiusMedium} 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
+    padding: "12px",
+    maxHeight: "250px",
+  },
+  logContainer: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    filter: `drop-shadow(0 0 4px ${tokens.colorNeutralStroke1})`,
+  },
+  wireframe: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    placeContent: "center",
+
+    padding: "40px",
+    height: "100px",
+
+    position: "relative",
+  },
+  wireframeEven: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
+  },
+  wireframeInfo: {
+    position: "absolute",
+    right: "12px",
+    top: "12px",
+
+    backgroundColor: tokens.colorPaletteRedBackground2,
+    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
+
+    fontSize: tokens.fontSizeBase200,
+    padding: "4px 8px",
+  },
+  wireframeSmall: {
+    minWidth: "100px",
+    padding: "40px 20px",
+  },
+  wireframeMedium: {
+    minWidth: "200px",
+    padding: "40px 20px",
+  },
+  wireframeLarge: {
+    minWidth: "350px",
+  },
+});
+
+const WireframeContent: React.FC<{
+  appearance: "odd" | "even";
+  children: React.ReactNode;
+  size?: "small" | "medium" | "large";
+}> = (props) => {
+  const classes = useClasses();
+
+  return (
+    <div
+      tabIndex={0}
+      className={mergeClasses(
+        classes.wireframe,
+        props.appearance === "even" && classes.wireframeEven,
+        props.size === "small" && classes.wireframeSmall,
+        props.size === "medium" && classes.wireframeMedium,
+        props.size === "large" && classes.wireframeLarge
+      )}
+    >
+      <div className={classes.wireframeInfo}>
+        <code>size: {props.size ?? "auto"}</code>
+      </div>
+      {props.children}
+    </div>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const Eventing = (): JSXElement => {
+  const classes = useClasses();
+  const labelId = useId();
+
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [statusLog, setStatusLog] = React.useState<
+    [
+      number,
+      {
+        type: "click" | "focus" | "drag" | "autoplay" | undefined;
+        index: number;
+      }
+    ][]
+  >([]);
+
+  return (
+    <div className={classes.container}>
+      <Carousel
+        className={classes.carousel}
+        groupSize={1}
+        circular
+        draggable
+        announcement={getAnnouncement}
+        activeIndex={activeIndex}
+        onActiveIndexChange={(ev, data) => {
+          setActiveIndex(data.index);
+          setStatusLog((prev) => [
+            [Date.now(), { type: data.type, index: data.index }],
+            ...prev,
+          ]);
+        }}
+      >
+        <CarouselViewport>
+          <CarouselSlider cardFocus>
+            <CarouselCard className={classes.card} autoSize aria-label="1 of 7">
+              <WireframeContent appearance="odd">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor...
+                </Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="2 of 7">
+              <WireframeContent appearance="even" size="small">
+                <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+                <Caption1 align="center">Lorem ipsum...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="3 of 7">
+              <WireframeContent appearance="odd" size="medium">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Caption1 align="center">
+                  Lorem ipsum dolor sit amet...
+                </Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="4 of 7">
+              <WireframeContent appearance="even" size="large">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="5 of 7">
+              <WireframeContent appearance="odd" size="medium">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Caption1 align="center">
+                  Lorem ipsum dolor sit amet...
+                </Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="6 of 7">
+              <WireframeContent appearance="even" size="large">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="7 of 7">
+              <WireframeContent appearance="odd" size="small">
+                <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+                <Caption1 align="center">Lorem ipsum...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+          </CarouselSlider>
+        </CarouselViewport>
+
+        <CarouselNavContainer
+          layout="inline"
+          next={{ "aria-label": "go to next" }}
+          prev={{ "aria-label": "go to prev" }}
+          autoplay={{ "aria-label": "Carousel autoplay" }}
+        >
+          <CarouselNav>
+            {(index) => (
+              <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+            )}
+          </CarouselNav>
+        </CarouselNavContainer>
+      </Carousel>
+
+      <div className={classes.logContainer}>
+        <div className={classes.logLabel} id={labelId}>
+          Events log
+        </div>
+        <div role="log" aria-labelledby={labelId} className={classes.log}>
+          {statusLog.map(([time, status], i) => {
+            const date = new Date(time);
+
+            return (
+              <div key={i}>
+                {date.toLocaleTimeString()}{" "}
+                <Text weight="bold">
+                  {"{"} type: {status.type}, index: {status.index} {"}"}
+                </Text>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### FirstRunExperience
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+import {
+  Button,
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselSlider,
+  CarouselViewport,
+  Dialog,
+  DialogSurface,
+  DialogTrigger,
+  Image,
+  makeStyles,
+  tokens,
+  typographyStyles,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  surface: {
+    padding: 0,
+    border: "none",
+    overflow: "hidden",
+  },
+  carousel: { padding: 0 },
+  card: {},
+  footer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "auto",
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL}`,
+  },
+  header: {
+    display: "block",
+    // We use margin instead of padding to avoid messing with the focus indicator in the header
+    margin: `${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
+    ...typographyStyles.subtitle1,
+  },
+  text: {
+    display: "block",
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
+    ...typographyStyles.body1,
+  },
+});
+
+const PAGES = [
+  {
+    id: "Copilot-page-1",
+    alt: "Copilot logo",
+    imgSrc:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+    header: "Discover Copilot, a whole new way to work",
+    text: "Explore new ways to work smarter and faster using the power of AI. Copilot in [Word] can help you [get started from scratch], [work from an existing file], [get actionable insights about documents], and more.",
+  },
+  {
+    id: "Copilot-page-2",
+    alt: "Copilot logo 2",
+    imgSrc:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+    header: "Use your own judgment",
+    text: "Copilot can make mistakes so remember to verify the results. To help improve the experience, please share your feedback with us.",
+  },
+];
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}, ${
+    PAGES[index].header
+  }`;
+};
+
+export const FirstRunExperience = (): JSXElement => {
+  const styles = useStyles();
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [open, setModalOpen] = React.useState(false);
+  const totalPages = PAGES.length;
+
+  const setPage = (page: number) => {
+    if (page < 0 || page >= totalPages) {
+      setModalOpen(false);
+      return;
+    }
+    setActiveIndex(page);
+  };
+
+  React.useEffect(() => {
+    // Reset or initialize page on open if necessary
+    if (open) {
+      setActiveIndex(0);
+    }
+  }, [open]);
+
+  return (
+    <Dialog open={open} onOpenChange={(e, data) => setModalOpen(data.open)}>
+      <DialogTrigger>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogSurface className={styles.surface} aria-label="Discover Copilot">
+        <Carousel
+          className={styles.carousel}
+          groupSize={1}
+          circular
+          announcement={getAnnouncement}
+          activeIndex={activeIndex}
+          motion="fade"
+          onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
+        >
+          <CarouselViewport>
+            <CarouselSlider>
+              {PAGES.map((page) => (
+                <CarouselCard className={styles.card} key={page.id}>
+                  <Image
+                    src={page.imgSrc}
+                    width={600}
+                    height={324}
+                    alt={page.imgSrc}
+                  />
+                  <h1 tabIndex={-1} className={styles.header}>
+                    {page.header}
+                  </h1>
+                  <span className={styles.text}>{page.text}</span>
+                </CarouselCard>
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
+          <div className={styles.footer}>
+            <Button onClick={() => setPage(activeIndex - 1)}>
+              {activeIndex <= 0 ? "Not Now" : "Previous"}
+            </Button>
+
+            <CarouselNav appearance="brand">
+              {(index) => (
+                <CarouselNavButton
+                  aria-label={`Carousel Nav Button ${index}`}
+                />
+              )}
+            </CarouselNav>
+
+            <Button
+              appearance="primary"
+              onClick={() => setPage(activeIndex + 1)}
+            >
+              {activeIndex === totalPages - 1 ? "Try Copilot" : "Next"}
+            </Button>
+          </div>
+        </Carousel>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### ImageSlideshow
+
+```tsx
+import { makeStyles, Image, CarouselSlider } from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavContainer,
+  CarouselNavImageButton,
+  CarouselViewport,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  viewport: {
+    /* Optional: Prevent image from overlapping the 'overlay-expanded' controls */
+    marginBottom: "72px",
+  },
+  card: {
+    boxSizing: "border-box",
+    width: "100%",
+    /*  Optional: Padding provides a buffer space for the 'overlay-expanded' next/prev buttons without cutting off viewport */
+    paddingLeft: "52px",
+    paddingRight: "52px",
+    overflow: "hidden",
+  },
+  image: {
+    width: "100%",
+  },
+});
+
+type ImageDefinition = {
+  previewUrl: string;
+  url: string;
+
+  label: string;
+  disabled?: boolean;
+};
+
+const IMAGES: ImageDefinition[] = [
+  {
+    previewUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg",
+    url: "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+    label: "sea",
+  },
+  {
+    previewUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg",
+    url: "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+    label: "bridge",
+    disabled: true,
+  },
+  {
+    previewUrl:
+      "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg",
+    url: "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+    label: "park",
+  },
+];
+
+const ImageCard: React.FC<ImageDefinition> = (props) => {
+  const classes = useClasses();
+  const { url } = props;
+
+  return <Image className={classes.image} src={url} role="presentation" />;
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const ImageSlideshow = (): JSXElement => {
+  const classes = useClasses();
+
+  return (
+    <Carousel groupSize={1} align="center" announcement={getAnnouncement}>
+      <CarouselViewport className={classes.viewport}>
+        <CarouselSlider>
+          {IMAGES.map((image, index) => (
+            <CarouselCard
+              key={image.url}
+              className={classes.card}
+              aria-label={`${index + 1} of ${IMAGES.length}`}
+            >
+              <ImageCard {...image} />
+            </CarouselCard>
+          ))}
+        </CarouselSlider>
+      </CarouselViewport>
+
+      <CarouselNavContainer
+        layout="overlay-expanded"
+        next={{ "aria-label": "go to next" }}
+        prev={{ "aria-label": "go to prev" }}
+      >
+        <CarouselNav>
+          {(index) => (
+            <CarouselNavImageButton
+              image={{ src: IMAGES[index].previewUrl }}
+              aria-label={`Carousel Nav Button ${index}`}
+            />
+          )}
+        </CarouselNav>
+      </CarouselNavContainer>
+    </Carousel>
+  );
+};
+```
+
+### Responsive
+
+```tsx
+import {
+  Body1,
+  Caption1,
+  makeStyles,
+  mergeClasses,
+  tokens,
+  Title1,
+  Subtitle2,
+  CarouselSlider,
+} from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+} from "@fluentui/react-components";
+import * as React from "react";
+import type {
+  JSXElement,
+  CarouselAnnouncerFunction,
+} from "@fluentui/react-components";
+
+const useClasses = makeStyles({
+  slider: {
+    gap: "10px",
+  },
+  wireframe: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    placeContent: "center",
+
+    padding: "40px",
+    height: "200px",
+
+    position: "relative",
+  },
+  wireframeEven: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
+  },
+  wireframeInfo: {
+    position: "absolute",
+    right: "12px",
+    top: "12px",
+
+    backgroundColor: tokens.colorPaletteRedBackground2,
+    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
+
+    fontSize: tokens.fontSizeBase200,
+    padding: "4px 8px",
+  },
+  wireframeSmall: {
+    minWidth: "100px",
+    padding: "40px 20px",
+  },
+  wireframeMedium: {
+    minWidth: "200px",
+    padding: "40px 20px",
+  },
+  wireframeLarge: {
+    minWidth: "350px",
+  },
+});
+
+const WireframeContent: React.FC<{
+  appearance: "odd" | "even";
+  children: React.ReactNode;
+  size?: "small" | "medium" | "large";
+}> = (props) => {
+  const classes = useClasses();
+
+  return (
+    <div
+      className={mergeClasses(
+        classes.wireframe,
+        props.appearance === "even" && classes.wireframeEven,
+        props.size === "small" && classes.wireframeSmall,
+        props.size === "medium" && classes.wireframeMedium,
+        props.size === "large" && classes.wireframeLarge
+      )}
+    >
+      <div className={classes.wireframeInfo}>
+        <code>size: {props.size ?? "auto"}</code>
+      </div>
+      {props.children}
+    </div>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const Responsive = (): JSXElement => {
+  const classes = useClasses();
+
+  return (
+    <Carousel draggable announcement={getAnnouncement}>
+      <CarouselViewport>
+        <CarouselSlider className={classes.slider}>
+          <CarouselCard autoSize aria-label="1 of 7">
+            <WireframeContent appearance="odd">
+              <Title1 align="center">Lorem Ipsum</Title1>
+              <Body1 align="center">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor...
+              </Body1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="2 of 7">
+            <WireframeContent appearance="even" size="small">
+              <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+              <Caption1 align="center">Lorem ipsum...</Caption1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="3 of 7">
+            <WireframeContent appearance="odd" size="medium">
+              <Title1 align="center">Lorem Ipsum</Title1>
+              <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="4 of 7">
+            <WireframeContent appearance="even" size="large">
+              <Title1 align="center">Lorem Ipsum</Title1>
+              <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="5 of 7">
+            <WireframeContent appearance="odd" size="medium">
+              <Title1 align="center">Lorem Ipsum</Title1>
+              <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="6 of 7">
+            <WireframeContent appearance="even" size="large">
+              <Title1 align="center">Lorem Ipsum</Title1>
+              <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+            </WireframeContent>
+          </CarouselCard>
+          <CarouselCard autoSize aria-label="7 of 7">
+            <WireframeContent appearance="odd" size="small">
+              <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+              <Caption1 align="center">Lorem ipsum...</Caption1>
+            </WireframeContent>
+          </CarouselCard>
+        </CarouselSlider>
+      </CarouselViewport>
+
+      <CarouselNavContainer
+        layout="inline"
+        next={{ "aria-label": "go to next" }}
+        prev={{ "aria-label": "go to prev" }}
+      >
+        <CarouselNav>
+          {(index) => (
+            <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+          )}
+        </CarouselNav>
+      </CarouselNavContainer>
+    </Carousel>
+  );
+};
+```
+
+### TopNavigation
+
+```tsx
+import {
+  Button,
+  CarouselSlider,
+  Image,
+  makeStyles,
+  tokens,
+  typographyStyles,
+} from "@fluentui/react-components";
+import type { CarouselAnnouncerFunction } from "@fluentui/react-components";
+import {
+  Carousel,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselNavContainer,
+  CarouselViewport,
+  Text,
+} from "@fluentui/react-components";
+import * as React from "react";
+
+const useClasses = makeStyles({
+  bannerCard: {
+    alignContent: "center",
+    borderRadius: tokens.borderRadiusXLarge,
+    boxShadow: tokens.shadow16,
+    height: "450px",
+    textAlign: "left",
+    position: "relative",
+  },
+  image: {
+    borderRadius: "inherit",
+  },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingHorizontalS,
+
+    position: "absolute",
+    left: "10%",
+    top: "25%",
+    borderRadius: tokens.borderRadiusLarge,
+    boxShadow: tokens.shadow8,
+    background: tokens.colorNeutralBackground1,
+    padding: `${tokens.spacingHorizontalXXL} ${tokens.spacingVerticalXXXL}`,
+    maxWidth: "270px",
+    width: "50%",
+  },
+  title: {
+    ...typographyStyles.title3,
+  },
+  subtext: {
+    marginBottom: tokens.spacingVerticalM,
+    ...typographyStyles.body1,
+  },
+  container: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "auto 1fr",
+  },
+  card: {
+    minHeight: "100px",
+  },
+  carousel: {
+    flex: 1,
+    paddingBottom: tokens.spacingVerticalXL,
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalSNudge,
+
+    padding: `${tokens.spacingHorizontalMNudge} ${tokens.spacingVerticalMNudge}`,
+  },
+  field: {
+    flex: 1,
+    gridTemplateColumns: "minmax(100px, max-content) 1fr",
+  },
+  dropdown: {
+    maxWidth: "max-content",
+  },
+  carouselHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: tokens.spacingVerticalSNudge,
+    marginBottom: tokens.spacingHorizontalL,
+  },
+  carouselHeaderTitle: {
+    flex: "1",
+    margin: "0",
+    fontSize: tokens.fontSizeBase600,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  carouselNavigation: {
+    width: "fit-content",
+    alignSelf: "center",
+    margin: "0",
+  },
+  slider: {
+    gap: tokens.spacingVerticalXXL,
+    padding: `0 ${tokens.spacingVerticalXXL}`,
+  },
+});
+
+const IMAGES = [
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
+  "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
+];
+
+const BannerCard: React.FC<{
+  children: React.ReactNode;
+  imageSrc: string;
+  index: number;
+}> = (props) => {
+  const { children, imageSrc, index } = props;
+  const classes = useClasses();
+
+  return (
+    <CarouselCard
+      autoSize
+      className={classes.bannerCard}
+      aria-label={`${index + 1} of ${IMAGES.length}`}
+    >
+      <Image
+        fit="cover"
+        src={imageSrc}
+        role="presentation"
+        className={classes.image}
+      />
+
+      <div className={classes.cardContainer}>
+        <div className={classes.title}>{children}</div>
+        <div className={classes.subtext}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </div>
+        <div>
+          <Button appearance="primary">Call to action</Button>
+        </div>
+      </div>
+    </CarouselCard>
+  );
+};
+
+const getAnnouncement: CarouselAnnouncerFunction = (
+  index: number,
+  totalSlides: number,
+  slideGroupList: number[][]
+) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
+export const TopNavigation = (): React.ReactElement => {
+  const classes = useClasses();
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.card}>
+        <Carousel
+          circular
+          draggable
+          announcement={getAnnouncement}
+          className={classes.carousel}
+        >
+          <div className={classes.carouselHeader}>
+            <Text as="h1" className={classes.carouselHeaderTitle}>
+              Carousel Title
+            </Text>
+            <CarouselNavContainer
+              next={{ "aria-label": "go to next" }}
+              prev={{ "aria-label": "go to prev" }}
+              className={classes.carouselNavigation}
+            >
+              <CarouselNav>
+                {(index) => (
+                  <CarouselNavButton
+                    aria-label={`Carousel Nav Button ${index}`}
+                  />
+                )}
+              </CarouselNav>
+            </CarouselNavContainer>
+          </div>
+          <CarouselViewport>
+            <CarouselSlider className={classes.slider}>
+              {IMAGES.map((imageSrc, index) => (
+                <BannerCard
+                  key={`image-${index}`}
+                  imageSrc={imageSrc}
+                  index={index}
+                >
+                  Card {index + 1}
+                </BannerCard>
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
+        </Carousel>
+      </div>
+    </div>
+  );
+};
+```

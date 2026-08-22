@@ -1,0 +1,75 @@
+# Label
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Label } from "@fluentui/react-components";
+import type { LabelProps } from "@fluentui/react-components";
+
+export const Default = (props: LabelProps): JSXElement => (
+  <Label {...props}>This is a label</Label>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Label } from "@fluentui/react-components";
+
+export const Disabled = (): JSXElement => (
+  <Label disabled required>
+    Disabled label
+  </Label>
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Label } from "@fluentui/react-components";
+
+export const Required = (): JSXElement => (
+  <>
+    <Label required>Required label</Label>
+    <Label required="***">Required label</Label>
+  </>
+);
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Label } from "@fluentui/react-components";
+
+export const Size = (): JSXElement => {
+  return (
+    <>
+      <Label size="small">Small</Label>
+      <Label size="medium">Medium</Label>
+      <Label size="large">Large</Label>
+    </>
+  );
+};
+```
+
+### Weight
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Label } from "@fluentui/react-components";
+
+export const Weight = (): JSXElement => (
+  <Label weight="semibold">Strong label</Label>
+);
+```

@@ -1,0 +1,7 @@
+# Colors
+
+<h1 className="sbdocs-title"> Colors </h1>
+
+<FluentCanvas>
+  <Colors />
+</FluentCanvas>

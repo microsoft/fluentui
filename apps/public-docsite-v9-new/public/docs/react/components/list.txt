@@ -1,0 +1,1523 @@
+# List
+
+## Examples
+
+### ListActiveElement
+
+```tsx
+import {
+  Button,
+  makeStyles,
+  Persona,
+  mergeClasses,
+  Text,
+  tokens,
+} from "@fluentui/react-components";
+import { Mic16Regular } from "@fluentui/react-icons";
+import { List, ListItem } from "@fluentui/react-components";
+import * as React from "react";
+import type { JSXElement, SelectionItemId } from "@fluentui/react-components";
+
+type Item = {
+  name: string;
+  id: string;
+  avatar: string;
+};
+
+const items: Item[] = [
+  "Melda Bevel",
+  "Demetra Manwaring",
+  "Eusebia Stufflebeam",
+  "Israel Rabin",
+  "Bart Merrill",
+  "Sonya Farner",
+  "Kristan Cable",
+].map((name) => ({
+  name,
+  id: name,
+  avatar:
+    "https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png",
+}));
+
+const useStyles = makeStyles({
+  selectedInfo: {
+    marginTop: "16px",
+  },
+  buttonWrapper: {
+    alignSelf: "center",
+  },
+  item: {
+    cursor: "pointer",
+    padding: "2px 6px",
+    justifyContent: "space-between",
+  },
+  itemSelected: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    "@media (forced-colors:active)": {
+      background: "Highlight",
+    },
+  },
+  personaSelected: {
+    "@media (forced-colors:active)": {
+      forcedColorAdjust: "none",
+      color: "HighlightText",
+    },
+  },
+});
+
+export const ListActiveElement = (): JSXElement => {
+  const classes = useStyles();
+
+  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>([
+    "Melda Bevel",
+  ]);
+
+  const onSelectionChange = React.useCallback(
+    (
+      _: React.SyntheticEvent | Event,
+      data: { selectedItems: SelectionItemId[] }
+    ) => {
+      setSelectedItems(data.selectedItems);
+    },
+    []
+  );
+
+  const onFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLLIElement>) => {
+      // Ignore bubbled up events from the children
+      if (event.target !== event.currentTarget) {
+        return;
+      }
+      setSelectedItems([event.currentTarget.dataset.value as SelectionItemId]);
+    },
+    []
+  );
+
+  return (
+    <div>
+      <List
+        selectionMode="single"
+        navigationMode="composite"
+        selectedItems={selectedItems}
+        onSelectionChange={onSelectionChange}
+      >
+        {items.map(({ name, avatar }) => (
+          <ListItem
+            key={name}
+            value={name}
+            className={mergeClasses(
+              classes.item,
+              selectedItems.includes(name) && classes.itemSelected
+            )}
+            data-value={name}
+            aria-label={name}
+            onFocus={onFocus}
+            checkmark={null}
+          >
+            <Persona
+              name={name}
+              role="gridcell"
+              secondaryText="Available"
+              presence={{ status: "available" }}
+              className={mergeClasses(
+                selectedItems.includes(name) && classes.personaSelected
+              )}
+              avatar={{
+                image: {
+                  src: avatar,
+                },
+              }}
+            />
+
+            <div role="gridcell" className={classes.buttonWrapper}>
+              <Button
+                aria-label={`Mute ${name}`}
+                size="small"
+                icon={<Mic16Regular />}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  alert(`Muting ${name}`);
+                }}
+              />
+            </div>
+          </ListItem>
+        ))}
+      </List>
+      <div className={classes.selectedInfo}>
+        Currently selected:{" "}
+        <Text block weight="bold">
+          {selectedItems[0]}
+        </Text>
+      </div>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { List, ListItem } from "@fluentui/react-components";
+import { tokens, Text, makeResetStyles } from "@fluentui/react-components";
+
+const useTextStyle = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+});
+
+export const Default = (): JSXElement => {
+  const textStyle = useTextStyle();
+  return (
+    <List>
+      <ListItem>
+        <Text className={textStyle}>Asia</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>Africa</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>Europe</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>North America</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>South America</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>Australia/Oceania</Text>
+      </ListItem>
+      <ListItem>
+        <Text className={textStyle}>Antarctica</Text>
+      </ListItem>
+    </List>
+  );
+};
+```
+
+### MultipleActionsDifferentPrimary
+
+```tsx
+import {
+  Button,
+  Caption1,
+  Image,
+  makeResetStyles,
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  mergeClasses,
+  Text,
+  tokens,
+} from "@fluentui/react-components";
+import { MoreHorizontal20Regular } from "@fluentui/react-icons";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useListItemRootStyles = makeResetStyles({
+  position: "relative",
+  flexGrow: "1",
+  gap: "8px",
+  border: "1px solid grey",
+  alignItems: "center",
+  borderRadius: "8px",
+  gridTemplate: `"preview preview preview" auto
+      "header action secondary_action" auto / 1fr auto auto
+    `,
+});
+
+const useStyles = makeStyles({
+  list: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    maxWidth: "300px",
+  },
+  listItem: {
+    display: "grid",
+    padding: "8px",
+  },
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+  image: {
+    height: "160px",
+    maxWidth: "100%",
+    borderRadius: "5px",
+  },
+  title: {
+    color: tokens.colorNeutralForeground1,
+    fontWeight: 600,
+    display: "block",
+  },
+  checkmark: {
+    position: "absolute",
+    left: "10px",
+    top: "10px",
+    zIndex: 1,
+  },
+  preview: { gridArea: "preview", overflow: "hidden" },
+  header: { gridArea: "header" },
+  action: { gridArea: "action" },
+  secondaryAction: { gridArea: "secondary_action" },
+});
+
+const CustomListItem = (props: { title: string; value: string }) => {
+  const listItemStyles = useListItemRootStyles();
+  const styles = useStyles();
+  const { value } = props;
+
+  // This will be triggered by user pressing Enter or clicking on the list item
+  const onAction = React.useCallback(
+    (
+      event: React.SyntheticEvent | Event,
+      { value: val }: { value: string | number }
+    ) => {
+      // This prevents the change in selection on click/Enter
+      event.preventDefault();
+      alert(`Triggered custom action on ${val}`);
+    },
+    []
+  );
+
+  return (
+    <ListItem
+      value={props.value}
+      className={mergeClasses(listItemStyles, styles.listItem)}
+      checkmark={{
+        root: { role: "gridcell" },
+        className: styles.checkmark,
+        "aria-label": value,
+      }}
+      aria-label={value}
+      onAction={onAction}
+    >
+      <div role="gridcell" className={styles.preview}>
+        <Image
+          fit="cover"
+          className={styles.image}
+          src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png"
+          alt="Presentation Preview"
+        />
+      </div>
+      <div role="gridcell" className={styles.header}>
+        <Text className={styles.title}>{props.title}</Text>
+        <Caption1 className={styles.caption}>You created 53m ago</Caption1>
+      </div>
+      <div role="gridcell" className={styles.action}>
+        <Button
+          appearance="primary"
+          aria-label="Install"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Installing!");
+          }}
+        >
+          Install
+        </Button>
+      </div>
+      <div role="gridcell" className={styles.secondaryAction}>
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+              appearance="transparent"
+              icon={<MoreHorizontal20Regular />}
+              aria-label="More actions"
+            />
+          </MenuTrigger>
+
+          <MenuPopover>
+            <MenuList>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                About
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Uninstall
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Block
+              </MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </div>
+    </ListItem>
+  );
+};
+
+export const MultipleActionsDifferentPrimary = (): JSXElement => {
+  const classes = useStyles();
+
+  const [selectedItems, setSelectedItems] = React.useState<
+    Array<string | number>
+  >([]);
+
+  return (
+    <List
+      className={classes.list}
+      navigationMode="composite"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
+      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
+    >
+      <CustomListItem title="Example List Item" value="card-1" />
+      <CustomListItem title="Example List Item" value="card-2" />
+      <CustomListItem title="Example List Item" value="card-3" />
+      <CustomListItem title="Example List Item" value="card-4" />
+      <CustomListItem title="Example List Item" value="card-5" />
+      <CustomListItem title="Example List Item" value="card-6" />
+      <CustomListItem title="Example List Item" value="card-7" />
+      <CustomListItem title="Example List Item" value="card-8" />
+      <CustomListItem title="Example List Item" value="card-9" />
+    </List>
+  );
+};
+```
+
+### MultipleActionsSelection
+
+```tsx
+import {
+  Button,
+  Caption1,
+  Image,
+  makeResetStyles,
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  mergeClasses,
+  Text,
+  tokens,
+} from "@fluentui/react-components";
+import { MoreHorizontal20Regular } from "@fluentui/react-icons";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useListItemRootStyles = makeResetStyles({
+  position: "relative",
+  flexGrow: "1",
+  gap: "8px",
+  border: "1px solid grey",
+  alignItems: "center",
+  borderRadius: "8px",
+  gridTemplate: `"preview preview preview" auto
+      "header action secondary_action" auto / 1fr auto auto
+    `,
+});
+
+const useStyles = makeStyles({
+  list: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    maxWidth: "300px",
+  },
+  listItem: {
+    display: "grid",
+    padding: "8px",
+  },
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+  image: {
+    height: "160px",
+    maxWidth: "100%",
+    borderRadius: "5px",
+  },
+  title: {
+    color: tokens.colorNeutralForeground1,
+    fontWeight: 600,
+    display: "block",
+  },
+  checkmark: {
+    position: "absolute",
+    left: "10px",
+    top: "10px",
+    zIndex: 1,
+  },
+  preview: { gridArea: "preview", overflow: "hidden" },
+  header: { gridArea: "header" },
+  action: { gridArea: "action" },
+  secondaryAction: { gridArea: "secondary_action" },
+});
+
+const CustomListItem = (props: { title: string; value: string }) => {
+  const listItemStyles = useListItemRootStyles();
+  const styles = useStyles();
+  const { value, title } = props;
+
+  return (
+    <ListItem
+      value={value}
+      className={mergeClasses(listItemStyles, styles.listItem)}
+      checkmark={{
+        root: { role: "gridcell" },
+        className: styles.checkmark,
+        "aria-label": value,
+      }}
+      aria-label={value}
+    >
+      <div role="gridcell" className={styles.preview}>
+        <Image
+          fit="cover"
+          className={styles.image}
+          src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png"
+          alt="Presentation Preview"
+        />
+      </div>
+      <div role="gridcell" className={styles.header}>
+        <Text className={styles.title}>{title}</Text>
+        <Caption1 className={styles.caption}>You created 53m ago</Caption1>
+      </div>
+      <div role="gridcell" className={styles.action}>
+        <Button
+          appearance="primary"
+          aria-label="Install"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Installing!");
+          }}
+        >
+          Install
+        </Button>
+      </div>
+      <div role="gridcell" className={styles.secondaryAction}>
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+              appearance="transparent"
+              icon={<MoreHorizontal20Regular />}
+              aria-label="More actions"
+            />
+          </MenuTrigger>
+
+          <MenuPopover>
+            <MenuList>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                About
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Uninstall
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Block
+              </MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </div>
+    </ListItem>
+  );
+};
+
+export const MultipleActionsSelection = (): JSXElement => {
+  const classes = useStyles();
+
+  const [selectedItems, setSelectedItems] = React.useState<
+    Array<string | number>
+  >([]);
+
+  return (
+    <List
+      className={classes.list}
+      navigationMode="composite"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
+      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
+    >
+      <CustomListItem title="Example List Item" value="card-1" />
+      <CustomListItem title="Example List Item" value="card-2" />
+      <CustomListItem title="Example List Item" value="card-3" />
+      <CustomListItem title="Example List Item" value="card-4" />
+      <CustomListItem title="Example List Item" value="card-5" />
+      <CustomListItem title="Example List Item" value="card-6" />
+      <CustomListItem title="Example List Item" value="card-7" />
+      <CustomListItem title="Example List Item" value="card-8" />
+      <CustomListItem title="Example List Item" value="card-9" />
+    </List>
+  );
+};
+```
+
+### MultipleActionsWithPrimary
+
+```tsx
+import {
+  Button,
+  Caption1,
+  Image,
+  makeResetStyles,
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  mergeClasses,
+  Text,
+  tokens,
+} from "@fluentui/react-components";
+import { MoreHorizontal20Regular } from "@fluentui/react-icons";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const useListItemRootStyles = makeResetStyles({
+  position: "relative",
+  flexGrow: "1",
+  gap: "8px",
+  border: "1px solid grey",
+  alignItems: "center",
+  borderRadius: "8px",
+  gridTemplate: `"preview preview preview" auto
+      "header action secondary_action" auto / 1fr auto auto
+    `,
+});
+
+const useStyles = makeStyles({
+  list: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    maxWidth: "300px",
+  },
+  listItem: {
+    display: "grid",
+    padding: "8px",
+  },
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+  image: {
+    height: "160px",
+    maxWidth: "100%",
+    borderRadius: "5px",
+  },
+  title: {
+    color: tokens.colorNeutralForeground1,
+    fontWeight: 600,
+    display: "block",
+  },
+  preview: { gridArea: "preview", overflow: "hidden" },
+  header: { gridArea: "header" },
+  action: { gridArea: "action" },
+  secondaryAction: { gridArea: "secondary_action" },
+});
+
+const CustomListItem = (props: { title: string; value: string }) => {
+  const listItemStyles = useListItemRootStyles();
+  const styles = useStyles();
+  const { value } = props;
+
+  // This will be triggered by user pressing Enter or clicking on the list item
+  const onAction = React.useCallback((event: React.SyntheticEvent | Event) => {
+    // This prevents the change in selection on click/Enter
+    event.preventDefault();
+    alert(`Triggered custom action!`);
+  }, []);
+
+  return (
+    <ListItem
+      value={props.value}
+      className={mergeClasses(listItemStyles, styles.listItem)}
+      aria-label={value}
+      onAction={onAction}
+    >
+      <div role="gridcell" className={styles.preview}>
+        <Image
+          fit="cover"
+          className={styles.image}
+          src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png"
+          alt="Presentation Preview"
+        />
+      </div>
+      <div role="gridcell" className={styles.header}>
+        <Text className={styles.title}>{props.title}</Text>
+        <Caption1 className={styles.caption}>You created 53m ago</Caption1>
+      </div>
+      <div role="gridcell" className={styles.action}>
+        <Button
+          appearance="primary"
+          aria-label="Install"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Installing!");
+          }}
+        >
+          Install
+        </Button>
+      </div>
+      <div role="gridcell" className={styles.secondaryAction}>
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              appearance="transparent"
+              icon={<MoreHorizontal20Regular />}
+              onClick={(e) => e.preventDefault()}
+              aria-label="More actions"
+            />
+          </MenuTrigger>
+
+          <MenuPopover>
+            <MenuList>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                About
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Uninstall
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("Clicked menu item");
+                }}
+              >
+                Block
+              </MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </div>
+    </ListItem>
+  );
+};
+
+export const MultipleActionsWithPrimary = (): JSXElement => {
+  const classes = useStyles();
+
+  return (
+    <List navigationMode="composite" className={classes.list}>
+      <CustomListItem title="Example List Item" value="card-1" />
+      <CustomListItem title="Example List Item" value="card-2" />
+      <CustomListItem title="Example List Item" value="card-3" />
+      <CustomListItem title="Example List Item" value="card-4" />
+      <CustomListItem title="Example List Item" value="card-5" />
+      <CustomListItem title="Example List Item" value="card-6" />
+      <CustomListItem title="Example List Item" value="card-7" />
+      <CustomListItem title="Example List Item" value="card-8" />
+      <CustomListItem title="Example List Item" value="card-9" />
+    </List>
+  );
+};
+```
+
+### SingleAction
+
+```tsx
+import { Persona } from "@fluentui/react-components";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+const names = [
+  "Melda Bevel",
+  "Demetra Manwaring",
+  "Eusebia Stufflebeam",
+  "Israel Rabin",
+  "Bart Merrill",
+  "Sonya Farner",
+];
+
+export const SingleAction = (): JSXElement => {
+  return (
+    <List navigationMode="items">
+      {names.map((name) => (
+        <ListItem
+          key={name}
+          aria-label={`${name}, available`}
+          onAction={() => alert(`Triggered custom action!`)}
+        >
+          <Persona
+            name={name}
+            secondaryText="Available"
+            presence={{ status: "available" }}
+            avatar={{
+              image: {
+                src: "https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png",
+              },
+            }}
+          />
+        </ListItem>
+      ))}
+    </List>
+  );
+};
+```
+
+### SingleActionSelection
+
+```tsx
+import { Persona } from "@fluentui/react-components";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+type Item = {
+  name: string;
+  id: string;
+  avatar: string;
+};
+
+const items: Item[] = [
+  "Melda Bevel",
+  "Demetra Manwaring",
+  "Eusebia Stufflebeam",
+  "Israel Rabin",
+  "Bart Merrill",
+  "Sonya Farner",
+].map((name) => ({
+  name,
+  id: name,
+  avatar:
+    "https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png",
+}));
+
+export const SingleActionSelection = (): JSXElement => {
+  const defaultSelectedItems = ["Demetra Manwaring", "Bart Merrill"];
+
+  return (
+    <List
+      selectionMode="multiselect"
+      defaultSelectedItems={defaultSelectedItems}
+      aria-label="People example"
+    >
+      {items.map(({ name, avatar }, i) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          checkmark={{ "aria-label": name }}
+          disabledSelection={i > 3} // Example of disabling selection for last 2 items
+        >
+          <Persona
+            name={name}
+            secondaryText="Available"
+            presence={{ status: "available" }}
+            avatar={{
+              image: {
+                src: avatar,
+              },
+            }}
+          />
+        </ListItem>
+      ))}
+    </List>
+  );
+};
+```
+
+### SingleActionSelectionControlled
+
+```tsx
+import { Button, makeStyles, Persona } from "@fluentui/react-components";
+import { List, ListItem } from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement, SelectionItemId } from "@fluentui/react-components";
+
+type Item = {
+  name: string;
+  id: string;
+  avatar: string;
+};
+
+const items: Item[] = [
+  "Melda Bevel",
+  "Demetra Manwaring",
+  "Eusebia Stufflebeam",
+  "Israel Rabin",
+  "Bart Merrill",
+  "Sonya Farner",
+].map((name) => ({
+  name,
+  id: name,
+  avatar:
+    "https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png",
+}));
+
+const useStyles = makeStyles({
+  buttonControls: {
+    display: "flex",
+    columnGap: "8px",
+    marginBottom: "16px",
+  },
+});
+
+export const SingleActionSelectionControlled = (): JSXElement => {
+  const classes = useStyles();
+
+  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>([
+    "Demetra Manwaring",
+    "Bart Merrill",
+  ]);
+
+  return (
+    <div>
+      <div className={classes.buttonControls}>
+        <Button onClick={(e) => setSelectedItems(items.map(({ id }) => id))}>
+          Select all
+        </Button>
+      </div>
+
+      <List
+        selectionMode="multiselect"
+        selectedItems={selectedItems}
+        onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
+        aria-label="People example"
+      >
+        {items.map(({ name, avatar }) => (
+          <ListItem
+            key={name}
+            value={name}
+            aria-label={name}
+            checkmark={{ "aria-label": name }}
+          >
+            <Persona
+              name={name}
+              secondaryText="Available"
+              presence={{ status: "available" }}
+              avatar={{
+                image: {
+                  src: avatar,
+                },
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+};
+```
+
+### SingleActionSelectionDifferentPrimary
+
+```tsx
+import { Persona } from "@fluentui/react-components";
+import { List, ListItem } from "@fluentui/react-components";
+import type {
+  ListItemProps,
+  SelectionItemId,
+} from "@fluentui/react-components";
+
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+
+type Item = {
+  name: string;
+  id: string;
+  avatar: string;
+};
+
+const items: Item[] = [
+  "Melda Bevel",
+  "Demetra Manwaring",
+  "Eusebia Stufflebeam",
+  "Israel Rabin",
+  "Bart Merrill",
+  "Sonya Farner",
+].map((name) => ({
+  name,
+  id: name,
+  avatar:
+    "https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png",
+}));
+
+export const SingleActionSelectionDifferentPrimary = (): JSXElement => {
+  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>([
+    "Demetra Manwaring",
+    "Bart Merrill",
+  ]);
+
+  // This will be triggered by user pressing Enter or clicking on the list item
+  const onAction = React.useCallback(
+    (
+      event: React.SyntheticEvent | Event,
+      { value: val }: { value: ListItemProps["value"] }
+    ) => {
+      // This prevents the change in selection on click/Enter
+      event.preventDefault();
+      alert(`Triggered custom action on ${val}`);
+    },
+    []
+  );
+
+  return (
+    <List
+      aria-label="People example"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
+      onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
+    >
+      {items.map(({ name, avatar }, index) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          onAction={onAction}
+          checkmark={{ "aria-label": name }}
+          disabledSelection={index === 2}
+        >
+          <Persona
+            name={name}
+            secondaryText="Available"
+            presence={{ status: "available" }}
+            avatar={{
+              image: {
+                src: avatar,
+              },
+            }}
+          />
+        </ListItem>
+      ))}
+    </List>
+  );
+};
+```
+
+### VirtualizedList
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { FixedSizeList } from "react-window";
+import { List, ListItem } from "@fluentui/react-components";
+import { tokens, Text, makeResetStyles } from "@fluentui/react-components";
+
+const countries = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Antigua & Deps",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia Herzegovina",
+  "Botswana",
+  "Brazil",
+  "Brunei",
+  "Bulgaria",
+  "Burkina",
+  "Burundi",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Cape Verde",
+  "Central African Rep",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Comoros",
+  "Congo",
+  "Congo {Democratic Rep}",
+  "Costa Rica",
+  "Croatia",
+  "Cuba",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "East Timor",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Grenada",
+  "Guatemala",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland {Republic}",
+  "Israel",
+  "Italy",
+  "Ivory Coast",
+  "Jamaica",
+  "Japan",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Korea North",
+  "Korea South",
+  "Kosovo",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Macedonia",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Morocco",
+  "Mozambique",
+  "Myanmar, {Burma}",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Qatar",
+  "Romania",
+  "Russian Federation",
+  "Rwanda",
+  "St Kitts & Nevis",
+  "St Lucia",
+  "Saint Vincent & the Grenadines",
+  "Samoa",
+  "San Marino",
+  "Sao Tome & Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Suriname",
+  "Swaziland",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Togo",
+  "Tonga",
+  "Trinidad & Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City",
+  "Venezuela",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
+];
+
+const useTextStyle = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+});
+
+const CountriesList = React.forwardRef<HTMLUListElement>(
+  (props: React.ComponentProps<typeof List>, ref) => (
+    <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
+  )
+);
+
+export const VirtualizedList = (): JSXElement => {
+  const textStyle = useTextStyle();
+  return (
+    <FixedSizeList
+      height={400}
+      itemCount={countries.length}
+      itemSize={20}
+      width="100%"
+      itemData={countries}
+      outerElementType={CountriesList}
+    >
+      {({ index, style, data }) => (
+        <ListItem
+          style={style}
+          aria-setsize={countries.length}
+          aria-posinset={index + 1}
+        >
+          <Text className={textStyle}>{data[index]}</Text>
+        </ListItem>
+      )}
+    </FixedSizeList>
+  );
+};
+```
+
+### VirtualizedListWithActionableItems
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { FixedSizeList } from "react-window";
+import { List, ListItem } from "@fluentui/react-components";
+import { tokens, Text, makeResetStyles } from "@fluentui/react-components";
+
+const countries = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Antigua & Deps",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia Herzegovina",
+  "Botswana",
+  "Brazil",
+  "Brunei",
+  "Bulgaria",
+  "Burkina",
+  "Burundi",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Cape Verde",
+  "Central African Rep",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Comoros",
+  "Congo",
+  "Congo {Democratic Rep}",
+  "Costa Rica",
+  "Croatia",
+  "Cuba",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "East Timor",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Grenada",
+  "Guatemala",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland {Republic}",
+  "Israel",
+  "Italy",
+  "Ivory Coast",
+  "Jamaica",
+  "Japan",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Korea North",
+  "Korea South",
+  "Kosovo",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Macedonia",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Morocco",
+  "Mozambique",
+  "Myanmar, {Burma}",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Qatar",
+  "Romania",
+  "Russian Federation",
+  "Rwanda",
+  "St Kitts & Nevis",
+  "St Lucia",
+  "Saint Vincent & the Grenadines",
+  "Samoa",
+  "San Marino",
+  "Sao Tome & Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Suriname",
+  "Swaziland",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Togo",
+  "Tonga",
+  "Trinidad & Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City",
+  "Venezuela",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
+];
+
+const CountriesList = React.forwardRef<HTMLUListElement>(
+  (props: React.ComponentProps<typeof List>, ref) => (
+    <List navigationMode="items" aria-label="Countries" {...props} ref={ref} />
+  )
+);
+
+const useTextStyle = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+});
+
+export const VirtualizedListWithActionableItems = (): JSXElement => {
+  const textStyle = useTextStyle();
+  return (
+    <FixedSizeList
+      height={400}
+      itemCount={countries.length}
+      itemSize={20}
+      width="100%"
+      itemData={countries}
+      outerElementType={CountriesList}
+    >
+      {({ index, style, data }) => (
+        <ListItem
+          style={style}
+          aria-setsize={countries.length}
+          aria-posinset={index + 1}
+          onAction={() => alert(data[index])}
+        >
+          <Text className={textStyle}>{data[index]}</Text>
+        </ListItem>
+      )}
+    </FixedSizeList>
+  );
+};
+```

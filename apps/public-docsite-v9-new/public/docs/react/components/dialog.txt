@@ -1,0 +1,1397 @@
+# Dialog
+
+## Examples
+
+### Actions
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  CheckboxOnChangeData,
+} from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+  Checkbox,
+} from "@fluentui/react-components";
+
+export const Actions = (): JSXElement => {
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: CheckboxOnChangeData
+  ) => {
+    setChecked(Boolean(data.checked));
+  };
+  return (
+    <Dialog modalType="non-modal">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open campaign dialog</Button>
+      </DialogTrigger>
+      <DialogSurface aria-describedby={undefined}>
+        <DialogBody>
+          <DialogTitle>Delete this campaign?</DialogTitle>
+          <DialogContent>
+            <p>
+              You're about to delete the campaign group "Campaign name that goes
+              up to two lines". This will also delete all associated campaign
+              resources, including the overview page, files, publications,
+              conversations, and so forth. Please back up any content you need
+              before proceeding.
+            </p>
+            <Checkbox
+              checked={checked}
+              onChange={handleChange}
+              label="Yes, delete this campaign and all its associated resources"
+            />
+          </DialogContent>
+          <DialogActions>
+            <DialogTrigger disableButtonEnhancement>
+              <Button disabled={!checked} appearance="primary">
+                Delete
+              </Button>
+            </DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Cancel</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### Alert
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const Alert = (): JSXElement => {
+  return (
+    <Dialog modalType="alert">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open Alert dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Alert dialog title</DialogTitle>
+          <DialogContent>
+            This dialog cannot be dismissed by clicking on the backdrop. Close
+            button should be pressed to dismiss this Alert, or `Escape` keydown.
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### BackdropAppearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogActions,
+  DialogContent,
+  OverlayDrawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  Button,
+  Label,
+  RadioGroup,
+  Radio,
+  useId,
+  tokens,
+  makeStyles,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+import { Dismiss24Regular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  field: {
+    display: "grid",
+    gridRowGap: tokens.spacingVerticalS,
+    marginBottom: tokens.spacingVerticalL,
+  },
+});
+
+type BackdropAppearanceOption = "dimmed" | "transparent";
+
+export const BackdropAppearance = (): JSXElement => {
+  const styles = useStyles();
+  const labelId = useId("backdrop-appearance-label");
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [backdropAppearance, setBackdropAppearance] =
+    React.useState<BackdropAppearanceOption>();
+  const backdropProp = backdropAppearance
+    ? { appearance: backdropAppearance }
+    : undefined;
+
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
+  return (
+    <>
+      <Button
+        appearance="primary"
+        onClick={() => setDrawerOpen(true)}
+        {...restoreFocusTargetAttribute}
+      >
+        Open Drawer
+      </Button>
+
+      <OverlayDrawer
+        open={drawerOpen}
+        onOpenChange={(_, { open }) => setDrawerOpen(open)}
+      >
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setDrawerOpen(false)}
+              />
+            }
+          >
+            Drawer
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <div className={styles.field}>
+            <Label id={labelId}>Backdrop appearance</Label>
+            <RadioGroup
+              value={backdropAppearance}
+              onChange={(_, data) =>
+                setBackdropAppearance(data.value as BackdropAppearanceOption)
+              }
+              aria-labelledby={labelId}
+            >
+              <Radio value="dimmed" label="Dimmed" />
+              <Radio value="transparent" label="Transparent" />
+            </RadioGroup>
+          </div>
+
+          <Dialog>
+            <DialogTrigger disableButtonEnhancement>
+              <Button>Open Dialog</Button>
+            </DialogTrigger>
+            <DialogSurface backdrop={backdropProp}>
+              <DialogBody>
+                <DialogTitle>Dialog</DialogTitle>
+                <DialogContent>
+                  This Dialog is rendered inside an OverlayDrawer, which
+                  internally uses Dialog. By default, nested dialogs have a
+                  backdrop applied based on inner context. Use the{" "}
+                  <code>backdrop</code> prop to override this behavior.
+                </DialogContent>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button appearance="primary">Close</Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+        </DrawerBody>
+      </OverlayDrawer>
+    </>
+  );
+};
+```
+
+### ChangeFocus
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const ChangeFocus = (): JSXElement => {
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (open && buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [open]);
+  return (
+    <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            This dialog focus on the second button instead of the first
+          </DialogContent>
+          <DialogActions position="start">
+            <Button appearance="outline">Third Action</Button>
+          </DialogActions>
+          <DialogActions position="end">
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button ref={buttonRef} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### Confirmation
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  DialogActions,
+  Button,
+  useId,
+} from "@fluentui/react-components";
+
+export const Confirmation = (): JSXElement => {
+  const dialogId = useId("dialog-");
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Delete file</Button>
+      </DialogTrigger>
+      <DialogSurface
+        aria-labelledby={`${dialogId}-title`}
+        aria-describedby={`${dialogId}-content`}
+      >
+        <DialogBody>
+          <DialogTitle id={`${dialogId}-title`}>
+            Delete dialogSpec_final_FINAL_v3.jpg
+          </DialogTitle>
+          <DialogContent id={`${dialogId}-content`}>
+            This action is permanent. Are you sure you want to continue?
+          </DialogContent>
+          <DialogActions>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="primary">Delete file</Button>
+            </DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Cancel</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### ControllingOpenAndClose
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const ControllingOpenAndClose = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            exercitationem cumque repellendus eaque est dolor eius expedita
+            nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates
+            in natus iure cumque eaque?
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### CustomTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Dialog,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  DialogActions,
+  DialogTrigger,
+} from "@fluentui/react-components";
+import type { DialogTriggerChildProps } from "@fluentui/react-components";
+
+const CustomDialogTrigger = React.forwardRef<
+  HTMLButtonElement,
+  DialogTriggerChildProps
+>((props, ref) => {
+  return (
+    <Button {...props} ref={ref}>
+      Custom Trigger
+    </Button>
+  );
+});
+
+export const CustomTrigger = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <CustomDialogTrigger />
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            exercitationem cumque repellendus eaque est dolor eius expedita
+            nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates
+            in natus iure cumque eaque?
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogActions,
+  DialogContent,
+  Button,
+} from "@fluentui/react-components";
+
+export const Default = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            exercitationem cumque repellendus eaque est dolor eius expedita
+            nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates
+            in natus iure cumque eaque?
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### FluidActions
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogActions,
+  DialogContent,
+  Button,
+} from "@fluentui/react-components";
+
+export const FluidActions = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            exercitationem cumque repellendus eaque est dolor eius expedita
+            nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates
+            in natus iure cumque eaque?
+          </DialogContent>
+          <DialogActions fluid>
+            <Button appearance="primary">Do Something</Button>
+            <Button appearance="secondary">Something Else</Button>
+            <Button appearance="secondary">Something Else</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### KeepRenderedInTheDOM
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const KeepRenderedInTheDOM = (): JSXElement => {
+  return (
+    <Dialog unmountOnClose={false}>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+
+          <DialogContent>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
+              pretium fusce id velit ut tortor. Leo vel fringilla est
+              ullamcorper. Eget est lorem ipsum dolor sit amet consectetur
+              adipiscing elit. In mollis nunc sed id semper risus in hendrerit
+              gravida. Ullamcorper sit amet risus nullam eget felis eget. Dolor
+              sed viverra ipsum nunc aliquet bibendum. Facilisi morbi tempus
+              iaculis urna id volutpat. Porta non pulvinar neque laoreet
+              suspendisse. Nunc id cursus metus aliquam eleifend mi in. A
+              iaculis at erat pellentesque adipiscing commodo. Proin nibh nisl
+              condimentum id. In hac habitasse platea dictumst vestibulum
+              rhoncus est. Non tellus orci ac auctor augue mauris augue neque.
+              Enim nulla aliquet porttitor lacus luctus accumsan tortor.
+              Nascetur ridiculus mus mauris vitae ultricies leo integer.
+              Ullamcorper eget nulla facilisi etiam dignissim. Leo in vitae
+              turpis massa sed elementum tempus egestas sed.
+            </p>
+
+            <p>
+              Ut enim blandit volutpat maecenas volutpat. Venenatis urna cursus
+              eget nunc scelerisque viverra mauris. Neque aliquam vestibulum
+              morbi blandit. Porttitor eget dolor morbi non. Nisi quis eleifend
+              quam adipiscing vitae. Aliquam ultrices sagittis orci a
+              scelerisque purus semper. Interdum varius sit amet mattis
+              vulputate enim nulla aliquet. Ut sem viverra aliquet eget sit amet
+              tellus cras. Sit amet tellus cras adipiscing enim eu turpis
+              egestas. Amet cursus sit amet dictum sit amet justo donec enim.
+              Neque gravida in fermentum et sollicitudin ac. Arcu cursus euismod
+              quis viverra nibh cras pulvinar mattis nunc. Ultrices eros in
+              cursus turpis massa tincidunt dui. Nisl rhoncus mattis rhoncus
+              urna neque viverra justo. Odio pellentesque diam volutpat commodo
+              sed egestas. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper.
+              Ipsum nunc aliquet bibendum enim. Faucibus ornare suspendisse sed
+              nisi lacus sed. Sapien nec sagittis aliquam malesuada bibendum
+              arcu vitae elementum. Metus vulputate eu scelerisque felis
+              imperdiet.
+            </p>
+
+            <p>
+              Consequat interdum varius sit amet mattis vulputate enim. Amet
+              cursus sit amet dictum sit amet justo. Eget aliquet nibh praesent
+              tristique magna sit. Ut consequat semper viverra nam libero justo.
+              Pharetra massa massa ultricies mi. Sem viverra aliquet eget sit
+              amet. Pulvinar mattis nunc sed blandit libero volutpat sed.
+              Pharetra diam sit amet nisl suscipit adipiscing bibendum.
+              Consectetur adipiscing elit ut aliquam. Volutpat diam ut venenatis
+              tellus in metus vulputate. Scelerisque in dictum non consectetur a
+              erat. Venenatis lectus magna fringilla urna porttitor rhoncus.
+              Vitae congue mauris rhoncus aenean vel elit. Neque laoreet
+              suspendisse interdum consectetur. Ultrices gravida dictum fusce ut
+              placerat orci. Bibendum ut tristique et egestas quis ipsum
+              suspendisse. Mattis rhoncus urna neque viverra justo nec ultrices
+              dui. Elit duis tristique sollicitudin nibh sit amet.
+            </p>
+
+            <p>
+              At risus viverra adipiscing at. Interdum posuere lorem ipsum dolor
+              sit amet consectetur adipiscing elit. Nunc vel risus commodo
+              viverra maecenas. Sit amet est placerat in egestas erat imperdiet
+              sed euismod. Turpis egestas maecenas pharetra convallis posuere.
+              Egestas tellus rutrum tellus pellentesque eu tincidunt tortor
+              aliquam. Dolor sit amet consectetur adipiscing elit. Aliquam purus
+              sit amet luctus venenatis lectus magna fringilla. Scelerisque
+              fermentum dui faucibus in ornare quam viverra. Egestas maecenas
+              pharetra convallis posuere morbi leo urna. A diam sollicitudin
+              tempor id eu nisl nunc. Lectus sit amet est placerat.
+            </p>
+
+            <p>
+              Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
+              massa eget. At tellus at urna condimentum mattis pellentesque id
+              nibh. Dui faucibus in ornare quam. Tincidunt id aliquet risus
+              feugiat in ante metus dictum. Adipiscing commodo elit at imperdiet
+              dui. Dolor sed viverra ipsum nunc. Sodales neque sodales ut etiam
+              sit amet nisl. Hendrerit dolor magna eget est lorem ipsum dolor
+              sit amet. Mattis molestie a iaculis at erat pellentesque
+              adipiscing. Adipiscing elit duis tristique sollicitudin nibh sit
+              amet commodo nulla. Fringilla urna porttitor rhoncus dolor purus.
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
+              pretium fusce id velit ut tortor. Leo vel fringilla est
+              ullamcorper. Eget est lorem ipsum dolor sit amet consectetur
+              adipiscing elit. In mollis nunc sed id semper risus in hendrerit
+              gravida. Ullamcorper sit amet risus nullam eget felis eget. Dolor
+              sed viverra ipsum nunc aliquet bibendum. Facilisi morbi tempus
+              iaculis urna id volutpat. Porta non pulvinar neque laoreet
+              suspendisse. Nunc id cursus metus aliquam eleifend mi in. A
+              iaculis at erat pellentesque adipiscing commodo. Proin nibh nisl
+              condimentum id. In hac habitasse platea dictumst vestibulum
+              rhoncus est. Non tellus orci ac auctor augue mauris augue neque.
+              Enim nulla aliquet porttitor lacus luctus accumsan tortor.
+              Nascetur ridiculus mus mauris vitae ultricies leo integer.
+              Ullamcorper eget nulla facilisi etiam dignissim. Leo in vitae
+              turpis massa sed elementum tempus egestas sed.
+            </p>
+
+            <p>
+              Ut enim blandit volutpat maecenas volutpat. Venenatis urna cursus
+              eget nunc scelerisque viverra mauris. Neque aliquam vestibulum
+              morbi blandit. Porttitor eget dolor morbi non. Nisi quis eleifend
+              quam adipiscing vitae. Aliquam ultrices sagittis orci a
+              scelerisque purus semper. Interdum varius sit amet mattis
+              vulputate enim nulla aliquet. Ut sem viverra aliquet eget sit amet
+              tellus cras. Sit amet tellus cras adipiscing enim eu turpis
+              egestas. Amet cursus sit amet dictum sit amet justo donec enim.
+              Neque gravida in fermentum et sollicitudin ac. Arcu cursus euismod
+              quis viverra nibh cras pulvinar mattis nunc. Ultrices eros in
+              cursus turpis massa tincidunt dui. Nisl rhoncus mattis rhoncus
+              urna neque viverra justo. Odio pellentesque diam volutpat commodo
+              sed egestas. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper.
+              Ipsum nunc aliquet bibendum enim. Faucibus ornare suspendisse sed
+              nisi lacus sed. Sapien nec sagittis aliquam malesuada bibendum
+              arcu vitae elementum. Metus vulputate eu scelerisque felis
+              imperdiet.
+            </p>
+
+            <p>
+              Consequat interdum varius sit amet mattis vulputate enim. Amet
+              cursus sit amet dictum sit amet justo. Eget aliquet nibh praesent
+              tristique magna sit. Ut consequat semper viverra nam libero justo.
+              Pharetra massa massa ultricies mi. Sem viverra aliquet eget sit
+              amet. Pulvinar mattis nunc sed blandit libero volutpat sed.
+              Pharetra diam sit amet nisl suscipit adipiscing bibendum.
+              Consectetur adipiscing elit ut aliquam. Volutpat diam ut venenatis
+              tellus in metus vulputate. Scelerisque in dictum non consectetur a
+              erat. Venenatis lectus magna fringilla urna porttitor rhoncus.
+              Vitae congue mauris rhoncus aenean vel elit. Neque laoreet
+              suspendisse interdum consectetur. Ultrices gravida dictum fusce ut
+              placerat orci. Bibendum ut tristique et egestas quis ipsum
+              suspendisse. Mattis rhoncus urna neque viverra justo nec ultrices
+              dui. Elit duis tristique sollicitudin nibh sit amet.
+            </p>
+          </DialogContent>
+
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### MotionCustom
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  Field,
+  makeStyles,
+  motionTokens,
+  Slider,
+  Switch,
+  tokens,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+    marginBottom: tokens.spacingVerticalL,
+    padding: tokens.spacingVerticalM,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+});
+
+export const MotionCustom = (): JSXElement => {
+  const classes = useStyles();
+  const [duration, setDuration] = React.useState(600);
+  const [outScale, setOutScale] = React.useState(0.5);
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const [backdropDuration, setBackdropDuration] = React.useState(300);
+
+  const easing = motionTokens.curveDecelerateMid;
+
+  return (
+    <>
+      <div className={classes.controls}>
+        <Field label={`Surface duration: ${duration}ms`}>
+          <Slider
+            min={100}
+            max={2000}
+            step={50}
+            value={duration}
+            onChange={(_, data) => setDuration(data.value)}
+          />
+        </Field>
+        <Field label={`Surface outScale: ${outScale.toFixed(2)}`}>
+          <Slider
+            min={0}
+            max={1}
+            step={0.05}
+            value={outScale}
+            onChange={(_, data) => setOutScale(data.value)}
+          />
+        </Field>
+        <Field label={`Backdrop duration: ${backdropDuration}ms`}>
+          <Slider
+            min={0}
+            max={1000}
+            step={50}
+            value={backdropDuration}
+            onChange={(_, data) => setBackdropDuration(data.value)}
+          />
+        </Field>
+        <Switch
+          label="Surface animateOpacity"
+          checked={animateOpacity}
+          onChange={(_, data) => setAnimateOpacity(data.checked)}
+        />
+      </div>
+
+      <Dialog surfaceMotion={{ duration, outScale, easing, animateOpacity }}>
+        <DialogTrigger disableButtonEnhancement>
+          <Button>Open Dialog</Button>
+        </DialogTrigger>
+        <DialogSurface backdropMotion={{ duration: backdropDuration }}>
+          <DialogBody>
+            <DialogTitle>Dialog with custom motion params</DialogTitle>
+            <DialogContent>
+              This dialog's surface animation is driven by direct{" "}
+              <code>surfaceMotion</code> params (`duration`, `outScale`,
+              `easing`, `animateOpacity`). Its backdrop fade is tuned
+              independently via <code>backdropMotion</code> (`duration`).
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </>
+  );
+};
+```
+
+### NestedDialogsWithTrigger
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const NestedDialogsWithTrigger = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button appearance="primary">Open Outer Dialog</Button>
+      </DialogTrigger>
+
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Outer Dialog</DialogTitle>
+          <DialogContent>
+            This is the outer dialog. Click the button below to open a nested
+            dialog. When using DialogTrigger, focus is automatically restored.
+          </DialogContent>
+          <DialogActions>
+            <Dialog>
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="primary">Open Inner Dialog</Button>
+              </DialogTrigger>
+
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Inner Dialog</DialogTitle>
+                  <DialogContent>
+                    This is a nested dialog inside the outer dialog. Focus will
+                    automatically be restored to the Open Inner Dialog button
+                    when this one closes thanks to DialogTrigger.
+                  </DialogContent>
+                  <DialogActions>
+                    <Button appearance="primary">Confirm</Button>
+                    <DialogTrigger disableButtonEnhancement>
+                      <Button appearance="secondary">Close Inner Dialog</Button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close Outer Dialog</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### NoFocusableElement
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogContent,
+  DialogTitle,
+  DialogBody,
+  Button,
+} from "@fluentui/react-components";
+
+export const NoFocusableElement = (): JSXElement => {
+  return (
+    <>
+      <Dialog>
+        <DialogTrigger disableButtonEnhancement>
+          <Button>Open modal dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogContent>
+              <p>⛔️ A Dialog without focusable elements is not recommended!</p>
+              <p>✅ Escape key works</p>
+              <p>
+                ✅ Backdrop click still works to ensure this modal can be closed
+              </p>
+            </DialogContent>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+      <Dialog modalType="non-modal">
+        <DialogTrigger disableButtonEnhancement>
+          <Button>Open non-modal dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle action={null}>Dialog Title</DialogTitle>
+            <DialogContent>
+              <p>
+                ⛔️ A modal Dialog without focusable elements is not
+                recommended!
+              </p>
+              <p>✅ Escape key works</p>
+            </DialogContent>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </>
+  );
+};
+```
+
+### NonModal
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  Button,
+} from "@fluentui/react-components";
+
+export const NonModal = (): JSXElement => {
+  return (
+    <Dialog modalType="non-modal">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open non-modal dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Non-modal dialog title</DialogTitle>
+          <DialogContent>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
+            explicabo repudiandae impedit doloribus laborum quidem maxime
+            dolores perspiciatis non ipsam, nostrum commodi quis autem sequi,
+            incidunt cum? Consequuntur, repellendus nostrum?
+          </DialogContent>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### ScrollingLongContent
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@fluentui/react-components";
+
+export const ScrollingLongContent = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
+              pretium fusce id velit ut tortor. Leo vel fringilla est
+              ullamcorper. Eget est lorem ipsum dolor sit amet consectetur
+              adipiscing elit. In mollis nunc sed id semper risus in hendrerit
+              gravida. Ullamcorper sit amet risus nullam eget felis eget. Dolor
+              sed viverra ipsum nunc aliquet bibendum. Facilisi morbi tempus
+              iaculis urna id volutpat. Porta non pulvinar neque laoreet
+              suspendisse. Nunc id cursus metus aliquam eleifend mi in. A
+              iaculis at erat pellentesque adipiscing commodo. Proin nibh nisl
+              condimentum id. In hac habitasse platea dictumst vestibulum
+              rhoncus est. Non tellus orci ac auctor augue mauris augue neque.
+              Enim nulla aliquet porttitor lacus luctus accumsan tortor.
+              Nascetur ridiculus mus mauris vitae ultricies leo integer.
+              Ullamcorper eget nulla facilisi etiam dignissim. Leo in vitae
+              turpis massa sed elementum tempus egestas sed.
+            </p>
+            <p>
+              Ut enim blandit volutpat maecenas volutpat. Venenatis urna cursus
+              eget nunc scelerisque viverra mauris. Neque aliquam vestibulum
+              morbi blandit. Porttitor eget dolor morbi non. Nisi quis eleifend
+              quam adipiscing vitae. Aliquam ultrices sagittis orci a
+              scelerisque purus semper. Interdum varius sit amet mattis
+              vulputate enim nulla aliquet. Ut sem viverra aliquet eget sit amet
+              tellus cras. Sit amet tellus cras adipiscing enim eu turpis
+              egestas. Amet cursus sit amet dictum sit amet justo donec enim.
+              Neque gravida in fermentum et sollicitudin ac. Arcu cursus euismod
+              quis viverra nibh cras pulvinar mattis nunc. Ultrices eros in
+              cursus turpis massa tincidunt dui. Nisl rhoncus mattis rhoncus
+              urna neque viverra justo. Odio pellentesque diam volutpat commodo
+              sed egestas. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper.
+              Ipsum nunc aliquet bibendum enim. Faucibus ornare suspendisse sed
+              nisi lacus sed. Sapien nec sagittis aliquam malesuada bibendum
+              arcu vitae elementum. Metus vulputate eu scelerisque felis
+              imperdiet.
+            </p>
+            <p>
+              Consequat interdum varius sit amet mattis vulputate enim. Amet
+              cursus sit amet dictum sit amet justo. Eget aliquet nibh praesent
+              tristique magna sit. Ut consequat semper viverra nam libero justo.
+              Pharetra massa massa ultricies mi. Sem viverra aliquet eget sit
+              amet. Pulvinar mattis nunc sed blandit libero volutpat sed.
+              Pharetra diam sit amet nisl suscipit adipiscing bibendum.
+              Consectetur adipiscing elit ut aliquam. Volutpat diam ut venenatis
+              tellus in metus vulputate. Scelerisque in dictum non consectetur a
+              erat. Venenatis lectus magna fringilla urna porttitor rhoncus.
+              Vitae congue mauris rhoncus aenean vel elit. Neque laoreet
+              suspendisse interdum consectetur. Ultrices gravida dictum fusce ut
+              placerat orci. Bibendum ut tristique et egestas quis ipsum
+              suspendisse. Mattis rhoncus urna neque viverra justo nec ultrices
+              dui. Elit duis tristique sollicitudin nibh sit amet.
+            </p>
+            <p>
+              At risus viverra adipiscing at. Interdum posuere lorem ipsum dolor
+              sit amet consectetur adipiscing elit. Nunc vel risus commodo
+              viverra maecenas. Sit amet est placerat in egestas erat imperdiet
+              sed euismod. Turpis egestas maecenas pharetra convallis posuere.
+              Egestas tellus rutrum tellus pellentesque eu tincidunt tortor
+              aliquam. Dolor sit amet consectetur adipiscing elit. Aliquam purus
+              sit amet luctus venenatis lectus magna fringilla. Scelerisque
+              fermentum dui faucibus in ornare quam viverra. Egestas maecenas
+              pharetra convallis posuere morbi leo urna. A diam sollicitudin
+              tempor id eu nisl nunc. Lectus sit amet est placerat.
+            </p>
+            <p>
+              Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
+              massa eget. At tellus at urna condimentum mattis pellentesque id
+              nibh. Dui faucibus in ornare quam. Tincidunt id aliquet risus
+              feugiat in ante metus dictum. Adipiscing commodo elit at imperdiet
+              dui. Dolor sed viverra ipsum nunc. Sodales neque sodales ut etiam
+              sit amet nisl. Hendrerit dolor magna eget est lorem ipsum dolor
+              sit amet. Mattis molestie a iaculis at erat pellentesque
+              adipiscing. Adipiscing elit duis tristique sollicitudin nibh sit
+              amet commodo nulla. Fringilla urna porttitor rhoncus dolor purus.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
+              pretium fusce id velit ut tortor. Leo vel fringilla est
+              ullamcorper. Eget est lorem ipsum dolor sit amet consectetur
+              adipiscing elit. In mollis nunc sed id semper risus in hendrerit
+              gravida. Ullamcorper sit amet risus nullam eget felis eget. Dolor
+              sed viverra ipsum nunc aliquet bibendum. Facilisi morbi tempus
+              iaculis urna id volutpat. Porta non pulvinar neque laoreet
+              suspendisse. Nunc id cursus metus aliquam eleifend mi in. A
+              iaculis at erat pellentesque adipiscing commodo. Proin nibh nisl
+              condimentum id. In hac habitasse platea dictumst vestibulum
+              rhoncus est. Non tellus orci ac auctor augue mauris augue neque.
+              Enim nulla aliquet porttitor lacus luctus accumsan tortor.
+              Nascetur ridiculus mus mauris vitae ultricies leo integer.
+              Ullamcorper eget nulla facilisi etiam dignissim. Leo in vitae
+              turpis massa sed elementum tempus egestas sed.
+            </p>
+            <p>
+              Ut enim blandit volutpat maecenas volutpat. Venenatis urna cursus
+              eget nunc scelerisque viverra mauris. Neque aliquam vestibulum
+              morbi blandit. Porttitor eget dolor morbi non. Nisi quis eleifend
+              quam adipiscing vitae. Aliquam ultrices sagittis orci a
+              scelerisque purus semper. Interdum varius sit amet mattis
+              vulputate enim nulla aliquet. Ut sem viverra aliquet eget sit amet
+              tellus cras. Sit amet tellus cras adipiscing enim eu turpis
+              egestas. Amet cursus sit amet dictum sit amet justo donec enim.
+              Neque gravida in fermentum et sollicitudin ac. Arcu cursus euismod
+              quis viverra nibh cras pulvinar mattis nunc. Ultrices eros in
+              cursus turpis massa tincidunt dui. Nisl rhoncus mattis rhoncus
+              urna neque viverra justo. Odio pellentesque diam volutpat commodo
+              sed egestas. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper.
+              Ipsum nunc aliquet bibendum enim. Faucibus ornare suspendisse sed
+              nisi lacus sed. Sapien nec sagittis aliquam malesuada bibendum
+              arcu vitae elementum. Metus vulputate eu scelerisque felis
+              imperdiet.
+            </p>
+            <p>
+              Consequat interdum varius sit amet mattis vulputate enim. Amet
+              cursus sit amet dictum sit amet justo. Eget aliquet nibh praesent
+              tristique magna sit. Ut consequat semper viverra nam libero justo.
+              Pharetra massa massa ultricies mi. Sem viverra aliquet eget sit
+              amet. Pulvinar mattis nunc sed blandit libero volutpat sed.
+              Pharetra diam sit amet nisl suscipit adipiscing bibendum.
+              Consectetur adipiscing elit ut aliquam. Volutpat diam ut venenatis
+              tellus in metus vulputate. Scelerisque in dictum non consectetur a
+              erat. Venenatis lectus magna fringilla urna porttitor rhoncus.
+              Vitae congue mauris rhoncus aenean vel elit. Neque laoreet
+              suspendisse interdum consectetur. Ultrices gravida dictum fusce ut
+              placerat orci. Bibendum ut tristique et egestas quis ipsum
+              suspendisse. Mattis rhoncus urna neque viverra justo nec ultrices
+              dui. Elit duis tristique sollicitudin nibh sit amet.
+            </p>
+            <p>
+              At risus viverra adipiscing at. Interdum posuere lorem ipsum dolor
+              sit amet consectetur adipiscing elit. Nunc vel risus commodo
+              viverra maecenas. Sit amet est placerat in egestas erat imperdiet
+              sed euismod. Turpis egestas maecenas pharetra convallis posuere.
+              Egestas tellus rutrum tellus pellentesque eu tincidunt tortor
+              aliquam. Dolor sit amet consectetur adipiscing elit. Aliquam purus
+              sit amet luctus venenatis lectus magna fringilla. Scelerisque
+              fermentum dui faucibus in ornare quam viverra. Egestas maecenas
+              pharetra convallis posuere morbi leo urna. A diam sollicitudin
+              tempor id eu nisl nunc. Lectus sit amet est placerat.
+            </p>
+            <p>
+              Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare
+              massa eget. At tellus at urna condimentum mattis pellentesque id
+              nibh. Dui faucibus in ornare quam. Tincidunt id aliquet risus
+              feugiat in ante metus dictum. Adipiscing commodo elit at imperdiet
+              dui. Dolor sed viverra ipsum nunc. Sodales neque sodales ut etiam
+              sit amet nisl. Hendrerit dolor magna eget est lorem ipsum dolor
+              sit amet. Mattis molestie a iaculis at erat pellentesque
+              adipiscing. Adipiscing elit duis tristique sollicitudin nibh sit
+              amet commodo nulla. Fringilla urna porttitor rhoncus dolor purus.
+            </p>
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### TitleCustomAction
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  Button,
+} from "@fluentui/react-components";
+
+import { Dismiss24Regular } from "@fluentui/react-icons";
+
+export const TitleCustomAction = (): JSXElement => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle
+            action={
+              <DialogTrigger action="close">
+                <Button
+                  appearance="subtle"
+                  aria-label="close"
+                  icon={<Dismiss24Regular />}
+                />
+              </DialogTrigger>
+            }
+          >
+            Dialog title
+          </DialogTitle>
+          <DialogContent>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
+            explicabo repudiandae impedit doloribus laborum quidem maxime
+            dolores perspiciatis non ipsam, nostrum commodi quis autem sequi,
+            incidunt cum? Consequuntur, repellendus nostrum?
+          </DialogContent>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### TitleNoAction
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogBody,
+  Button,
+} from "@fluentui/react-components";
+
+export const TitleNoAction = (): JSXElement => {
+  return (
+    <Dialog modalType="non-modal">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open non-modal dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle action={null}>
+            Non-modal dialog title without an action
+          </DialogTitle>
+          <DialogContent>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
+            explicabo repudiandae impedit doloribus laborum quidem maxime
+            dolores perspiciatis non ipsam, nostrum commodi quis autem sequi,
+            incidunt cum? Consequuntur, repellendus nostrum?
+          </DialogContent>
+          <DialogActions>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="primary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```
+
+### TriggerOutsideDialog
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogTrigger,
+  DialogBody,
+  Button,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+
+export const TriggerOutsideDialog = (): JSXElement => {
+  const [open, setOpen] = React.useState(false);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
+  return (
+    <>
+      <Button
+        // restoreFocusTargetAttribute ensures that focus is restored to this button when the dialog closes
+        {...restoreFocusTargetAttribute}
+        onClick={() => {
+          // it is the user responsibility to open the dialog
+          setOpen(true);
+        }}
+      >
+        Open Dialog
+      </Button>
+
+      <Dialog
+        // this controls the dialog open state
+        open={open}
+        onOpenChange={(event, data) => {
+          // it is the users responsibility to react accordingly to the open state change
+          setOpen(data.open);
+        }}
+      >
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              exercitationem cumque repellendus eaque est dolor eius expedita
+              nulla ullam? Tenetur reprehenderit aut voluptatum impedit
+              voluptates in natus iure cumque eaque?
+            </DialogContent>
+
+            <DialogActions>
+              <Button appearance="primary">Do Something</Button>
+              {/* DialogTrigger inside of a Dialog still works properly */}
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </>
+  );
+};
+```
+
+### WithForm
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+  Input,
+  Label,
+  makeStyles,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "10px",
+  },
+});
+
+export const WithForm = (): JSXElement => {
+  const styles = useStyles();
+  const handleSubmit = (ev: React.FormEvent) => {
+    ev.preventDefault();
+    alert("form submitted!");
+  };
+  return (
+    <Dialog modalType="non-modal">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open formulary dialog</Button>
+      </DialogTrigger>
+      <DialogSurface aria-describedby={undefined}>
+        <form onSubmit={handleSubmit}>
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent className={styles.content}>
+              <Label required htmlFor={"email-input"}>
+                Email input
+              </Label>
+              <Input required type="email" id={"email-input"} />
+              <Label required htmlFor={"password-input"}>
+                Password input
+              </Label>
+              <Input required type="password" id={"password-input"} />
+            </DialogContent>
+            <DialogActions>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+            </DialogActions>
+          </DialogBody>
+        </form>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+```

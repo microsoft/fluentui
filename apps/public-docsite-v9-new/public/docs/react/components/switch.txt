@@ -1,0 +1,179 @@
+# Switch
+
+## Examples
+
+### Checked
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+
+export const Checked = (): JSXElement => {
+  const [checked, setChecked] = React.useState(true);
+  const onChange = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked(ev.currentTarget.checked);
+    },
+    [setChecked]
+  );
+
+  return (
+    <Switch
+      checked={checked}
+      onChange={onChange}
+      label={checked ? "Checked" : "Unchecked"}
+    />
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+import type { SwitchProps } from "@fluentui/react-components";
+
+export const Default = (props: SwitchProps): JSXElement => (
+  <Switch label="This is a switch" {...props} />
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+
+const wrapperStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+export const Disabled = (): JSXElement => (
+  <div style={wrapperStyle}>
+    <Switch disabled label="Unchecked and disabled" />
+    <Switch checked disabled label="Checked and disabled" />
+    <Switch disabledFocusable label="Unchecked and disabled focusable" />
+    <Switch checked disabledFocusable label="Checked and disabled focusable" />
+  </div>
+);
+```
+
+### Label
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+
+const wrapperStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "space-around",
+  width: "100%",
+};
+
+export const Label = (): JSXElement => {
+  const [checked, setChecked] = React.useState(false);
+  const onChange = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked(ev.currentTarget.checked);
+    },
+    [setChecked]
+  );
+  const [checked2, setChecked2] = React.useState(false);
+  const onChange2 = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked2(ev.currentTarget.checked);
+    },
+    [setChecked2]
+  );
+  const [checked3, setChecked3] = React.useState(false);
+  const onChange3 = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked3(ev.currentTarget.checked);
+    },
+    [setChecked3]
+  );
+
+  const checkedString = checked ? "checked" : "unchecked";
+  const checkedString2 = checked2 ? "checked" : "unchecked";
+  const checkedString3 = checked3 ? "checked" : "unchecked";
+
+  return (
+    <div style={wrapperStyle}>
+      <Switch
+        checked={checked}
+        label={`With label before and ${checkedString}`}
+        labelPosition="before"
+        onChange={onChange}
+      />
+
+      <Switch
+        checked={checked2}
+        label={`With label above and ${checkedString2}`}
+        labelPosition="above"
+        onChange={onChange2}
+      />
+
+      <Switch
+        checked={checked3}
+        label={`With label after and ${checkedString3}`}
+        labelPosition="after"
+        onChange={onChange3}
+      />
+    </div>
+  );
+};
+```
+
+### LabelWrapping
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+
+export const LabelWrapping = (): JSXElement => (
+  <Switch
+    style={{ maxWidth: "400px" }}
+    label="Here is an example of a Switch with a long label and it starts to wrap to a second line."
+  />
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+
+export const Required = (): JSXElement => <Switch required label="Required" />;
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Switch } from "@fluentui/react-components";
+import type { SwitchProps } from "@fluentui/react-components";
+
+const wrapperStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+export const Size = (props: SwitchProps): JSXElement => {
+  return (
+    <div style={wrapperStyle}>
+      <Switch label="Small" size="small" {...props} />
+      <Switch label="Medium" size="medium" {...props} />
+    </div>
+  );
+};
+```

@@ -1,0 +1,755 @@
+# Overflow
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
+
+const OverflowMenuItem = ({
+  id,
+}: {
+  id: string;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem}>Item {id}</MenuItem>
+  );
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context.
+ */
+const OverflowMenu = ({
+  ids,
+}: {
+  ids: string[];
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) => (
+            <OverflowMenuItem key={id} id={id} />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * Drag the dashed box's right edge to resize. Items that no longer fit are hidden and the `+N`
+ * button reflects the overflow count; click it to see the overflowed items.
+ */
+export const Default = (): React.ReactElement => (
+  <div className={styles.resizer}>
+    <Overflow>
+      <div className={styles.container}>
+        {itemIds.map((id) => (
+          <OverflowItem key={id} id={id}>
+            <button className={styles.item}>Item {id}</button>
+          </OverflowItem>
+        ))}
+        <OverflowMenu ids={itemIds} />
+      </div>
+    </Overflow>
+  </div>
+);
+```
+
+### LargerDividers
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  OverflowDivider,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+  useIsOverflowGroupVisible,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const GroupDivider = ({ groupId }: { groupId: string }): React.ReactElement => (
+  <OverflowDivider groupId={groupId}>
+    <div className={styles.divider} />
+  </OverflowDivider>
+);
+
+const menuIds = [
+  "1",
+  "divider-1",
+  "2",
+  "divider-2",
+  "3",
+  "4",
+  "divider-3",
+  "5",
+  "6",
+  "7",
+  "divider-4",
+  "8",
+];
+
+const OverflowMenuItem = ({
+  id,
+}: {
+  id: string;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem}>Item {id}</MenuItem>
+  );
+};
+
+const OverflowMenuDivider = ({
+  groupId,
+}: {
+  groupId: string;
+}): React.ReactElement | null => {
+  const groupVisibility = useIsOverflowGroupVisible(groupId);
+  return groupVisibility === "visible" ? null : (
+    <MenuDivider className={styles.menuDivider} />
+  );
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context. Entries prefixed with `divider-` render a group divider (when that
+ * group is overflowing).
+ */
+const OverflowMenu = ({
+  ids,
+}: {
+  ids: string[];
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) =>
+            id.startsWith("divider-") ? (
+              <OverflowMenuDivider
+                key={id}
+                groupId={id.slice("divider-".length)}
+              />
+            ) : (
+              <OverflowMenuItem key={id} id={id} />
+            )
+          )}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * `OverflowDivider` registers a divider with a `groupId` so its width is included in the overflow
+ * calculation. Group dividers are hidden (and rendered in the menu) once their group overflows.
+ */
+export const LargerDividers = (): React.ReactElement => (
+  <div className={styles.resizer}>
+    <Overflow>
+      <div className={styles.container}>
+        <OverflowItem id="1" groupId="1">
+          <button className={styles.item}>Item 1</button>
+        </OverflowItem>
+        <GroupDivider groupId="1" />
+        <OverflowItem id="2" groupId="2">
+          <button className={styles.item}>Item 2</button>
+        </OverflowItem>
+        <GroupDivider groupId="2" />
+        <OverflowItem id="3" groupId="3">
+          <button className={styles.item}>Item 3</button>
+        </OverflowItem>
+        <OverflowItem id="4" groupId="3">
+          <button className={styles.item}>Item 4</button>
+        </OverflowItem>
+        <GroupDivider groupId="3" />
+        <OverflowItem id="5" groupId="4">
+          <button className={styles.item}>Item 5</button>
+        </OverflowItem>
+        <OverflowItem id="6" groupId="4">
+          <button className={styles.item}>Item 6</button>
+        </OverflowItem>
+        <OverflowItem id="7" groupId="4">
+          <button className={styles.item}>Item 7</button>
+        </OverflowItem>
+        <GroupDivider groupId="4" />
+        <OverflowItem id="8" groupId="5">
+          <button className={styles.item}>Item 8</button>
+        </OverflowItem>
+        <OverflowMenu ids={menuIds} />
+      </div>
+    </Overflow>
+  </div>
+);
+```
+
+### Pinned
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
+
+const OverflowMenuItem = ({
+  id,
+  onClick,
+}: {
+  id: string;
+  onClick: () => void;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem} onClick={onClick}>
+      Item {id}
+    </MenuItem>
+  );
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context.
+ */
+const OverflowMenu = ({
+  ids,
+  onItemClick,
+}: {
+  ids: string[];
+  onItemClick: (id: string) => void;
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) => (
+            <OverflowMenuItem
+              key={id}
+              id={id}
+              onClick={() => onItemClick(id)}
+            />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * An item can be pinned (always visible, never overflows) via the `pinned` prop on `OverflowItem` —
+ * useful for selection scenarios. Click items (or menu entries) to toggle their pinned state.
+ */
+export const Pinned = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState<ReadonlySet<string>>(
+    () => new Set(["6"])
+  );
+
+  const toggle = (id: string) =>
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+
+  return (
+    <div className={styles.resizer}>
+      <Overflow>
+        <div className={styles.container}>
+          {itemIds.map((id) => (
+            <OverflowItem key={id} id={id} pinned={selected.has(id)}>
+              <button
+                className={`${styles.item}${
+                  selected.has(id) ? ` ${styles.itemSelected}` : ""
+                }`}
+                aria-pressed={selected.has(id)}
+                onClick={() => toggle(id)}
+              >
+                Item {id}
+              </button>
+            </OverflowItem>
+          ))}
+          <OverflowMenu ids={itemIds} onItemClick={toggle} />
+        </div>
+      </Overflow>
+    </div>
+  );
+};
+```
+
+### PriorityWithDividers
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+  useIsOverflowGroupVisible,
+  useOverflowVisibility,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const GROUPS = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
+
+const menuIds = [
+  "6",
+  "divider-1",
+  "7",
+  "divider-2",
+  "4",
+  "5",
+  "divider-3",
+  "1",
+  "2",
+  "3",
+  "divider-4",
+  "8",
+];
+
+const OverflowMenuItem = ({
+  id,
+}: {
+  id: string;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem}>Item {id}</MenuItem>
+  );
+};
+
+/** In-container divider — hidden once its whole group has overflowed. */
+const ContainerGroupDivider = ({
+  groupId,
+}: {
+  groupId: number;
+}): React.ReactElement | null => {
+  const groupVisibility = useIsOverflowGroupVisible(groupId.toString());
+
+  if (groupVisibility === "hidden") {
+    return null;
+  }
+
+  return <div className={styles.divider} data-group={groupId} />;
+};
+
+/**
+ * Menu divider — because priority differs from DOM order, a divider may be needed in the menu only
+ * when an overflowing group precedes another overflowing group. This mirrors the styled story's
+ * reference implementation.
+ *
+ * Every group's visibility is read from a single `useOverflowVisibility()` subscription rather than
+ * calling `useIsOverflowGroupVisible` once per group — the latter would call a hook inside a loop
+ * and violate the rules of hooks.
+ */
+const MenuGroupDivider = ({
+  groupId,
+}: {
+  groupId: number;
+}): React.ReactElement | null => {
+  const { groupVisibility } = useOverflowVisibility();
+  const groups = Object.values(GROUPS);
+
+  const currentGroupPosition = groups.indexOf(groupId);
+  const precedesOverflowingGroup = groups
+    .slice(currentGroupPosition + 1)
+    .some((group) => groupVisibility[group.toString()] !== "visible");
+
+  if (
+    groupVisibility[groupId.toString()] === "visible" ||
+    !precedesOverflowingGroup
+  ) {
+    return null;
+  }
+
+  return <MenuDivider className={styles.menuDivider} />;
+};
+
+const PriorityOverflowMenu = ({
+  ids,
+}: {
+  ids: string[];
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) =>
+            id.startsWith("divider-") ? (
+              <MenuGroupDivider
+                key={id}
+                groupId={Number(id.slice("divider-".length))}
+              />
+            ) : (
+              <OverflowMenuItem key={id} id={id} />
+            )
+          )}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * Overflow groups respect item `priority`. Managing divider visibility here is non-trivial because
+ * dividers can appear both in the container and the menu — read the code carefully before adopting.
+ */
+export const PriorityWithDividers = (): React.ReactElement => (
+  <div className={styles.resizer}>
+    <Overflow overflowDirection="start" padding={40}>
+      <div className={styles.container}>
+        <OverflowItem id="6" priority={6} groupId={GROUPS.ONE.toString()}>
+          <button className={styles.item}>Priority 6</button>
+        </OverflowItem>
+        <ContainerGroupDivider groupId={GROUPS.ONE} />
+        <OverflowItem id="7" priority={7} groupId={GROUPS.TWO.toString()}>
+          <button className={styles.item}>Priority 7</button>
+        </OverflowItem>
+        <ContainerGroupDivider groupId={GROUPS.TWO} />
+        <OverflowItem id="4" priority={4} groupId={GROUPS.THREE.toString()}>
+          <button className={styles.item}>Priority 4</button>
+        </OverflowItem>
+        <OverflowItem id="5" priority={5} groupId={GROUPS.THREE.toString()}>
+          <button className={styles.item}>Priority 5</button>
+        </OverflowItem>
+        <ContainerGroupDivider groupId={GROUPS.THREE} />
+        <OverflowItem id="1" priority={1} groupId={GROUPS.FOUR.toString()}>
+          <button className={styles.item}>Priority 1</button>
+        </OverflowItem>
+        <OverflowItem id="2" priority={2} groupId={GROUPS.FOUR.toString()}>
+          <button className={styles.item}>Priority 2</button>
+        </OverflowItem>
+        <OverflowItem id="3" priority={3} groupId={GROUPS.FOUR.toString()}>
+          <button className={styles.item}>Priority 3</button>
+        </OverflowItem>
+        <ContainerGroupDivider groupId={GROUPS.FOUR} />
+        <OverflowItem id="8" priority={8} groupId={GROUPS.FIVE.toString()}>
+          <button className={styles.item}>Priority 8</button>
+        </OverflowItem>
+        <PriorityOverflowMenu ids={menuIds} />
+      </div>
+    </Overflow>
+  </div>
+);
+```
+
+### ReverseDomOrder
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
+
+const OverflowMenuItem = ({
+  id,
+}: {
+  id: string;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem}>Item {id}</MenuItem>
+  );
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context.
+ */
+const OverflowMenu = ({
+  ids,
+}: {
+  ids: string[];
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) => (
+            <OverflowMenuItem key={id} id={id} />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * Overflow can happen in reverse DOM order via `overflowDirection="start"` — here the menu is the
+ * first child and items overflow from the start of the container.
+ */
+export const ReverseDomOrder = (): React.ReactElement => (
+  <div className={styles.resizer}>
+    <Overflow overflowDirection="start">
+      <div className={styles.container}>
+        <OverflowMenu ids={itemIds} />
+        {itemIds.map((id) => (
+          <OverflowItem key={id} id={id}>
+            <button className={styles.item}>Item {id}</button>
+          </OverflowItem>
+        ))}
+      </div>
+    </Overflow>
+  </div>
+);
+```
+
+### Vertical
+
+```tsx
+import * as React from "react";
+import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+} from "@fluentui/react-headless-components-preview/overflow";
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from "@fluentui/react-headless-components-preview/menu";
+
+import styles from "./styles/overflow.module.css";
+
+const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
+
+const OverflowMenuItem = ({
+  id,
+}: {
+  id: string;
+}): React.ReactElement | null => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : (
+    <MenuItem className={styles.menuItem}>Item {id}</MenuItem>
+  );
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context.
+ */
+const OverflowMenu = ({
+  ids,
+}: {
+  ids: string[];
+}): React.ReactElement | null => {
+  const { ref, overflowCount, isOverflowing } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button
+          ref={ref}
+          type="button"
+          className={styles.menu}
+          aria-label={`${overflowCount} more items`}
+        >
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map((id) => (
+            <OverflowMenuItem key={id} id={id} />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+/**
+ * Use the `overflowAxis` prop to switch orientation. Drag the dashed box's bottom edge to resize.
+ */
+export const Vertical = (): React.ReactElement => (
+  <div className={styles.resizerVertical}>
+    <Overflow overflowAxis="vertical">
+      <div className={`${styles.container} ${styles.vertical}`}>
+        {itemIds.map((id) => (
+          <OverflowItem key={id} id={id}>
+            <button className={styles.item}>Item {id}</button>
+          </OverflowItem>
+        ))}
+        <OverflowMenu ids={itemIds} />
+      </div>
+    </Overflow>
+  </div>
+);
+```

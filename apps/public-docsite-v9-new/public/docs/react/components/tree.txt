@@ -1,0 +1,2411 @@
+# Tree
+
+## Examples
+
+### FlatTreeStory
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+} from "@fluentui/react-components";
+
+export const FlatTreeStory = (): JSXElement => {
+  const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(
+    () => new Set()
+  );
+  const handleOpenChange = (
+    event: TreeOpenChangeEvent,
+    data: TreeOpenChangeData
+  ) => {
+    setOpenItems(data.openItems);
+  };
+  return (
+    <FlatTree
+      openItems={openItems}
+      onOpenChange={handleOpenChange}
+      aria-label="Flat Tree"
+    >
+      <FlatTreeItem
+        value="1"
+        aria-level={1}
+        aria-setsize={2}
+        aria-posinset={1}
+        itemType="branch"
+      >
+        <TreeItemLayout>Item 1, level 1</TreeItemLayout>
+      </FlatTreeItem>
+      {openItems.has("1") && (
+        <>
+          <FlatTreeItem
+            parentValue="1"
+            value="1-1"
+            aria-level={2}
+            aria-setsize={2}
+            aria-posinset={1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>Item 1, level 2</TreeItemLayout>
+          </FlatTreeItem>
+          <FlatTreeItem
+            parentValue="1"
+            value="1-2"
+            aria-level={2}
+            aria-setsize={2}
+            aria-posinset={2}
+            itemType="leaf"
+          >
+            <TreeItemLayout>Item 1, level 2</TreeItemLayout>
+          </FlatTreeItem>
+        </>
+      )}
+      <FlatTreeItem
+        value="2"
+        aria-level={1}
+        aria-setsize={2}
+        aria-posinset={1}
+        itemType="branch"
+      >
+        <TreeItemLayout>Item 1, level 1</TreeItemLayout>
+      </FlatTreeItem>
+      {openItems.has("2") && (
+        <>
+          <FlatTreeItem
+            parentValue="2"
+            value="2-1"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>Item 1, level 2</TreeItemLayout>
+          </FlatTreeItem>
+          <FlatTreeItem
+            parentValue="2"
+            value="2-2"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={2}
+            itemType="leaf"
+          >
+            <TreeItemLayout>Item 2, level 2</TreeItemLayout>
+          </FlatTreeItem>
+          <FlatTreeItem
+            parentValue="2"
+            value="2-3"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={3}
+            itemType="leaf"
+          >
+            <TreeItemLayout>Item 3, level 2</TreeItemLayout>
+          </FlatTreeItem>
+        </>
+      )}
+    </FlatTree>
+  );
+};
+```
+
+### OpenItemControlled
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
+} from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const OpenItemControlled = (): JSXElement => {
+  const [open, setOpen] = React.useState(true);
+  const handleOpenChange = (
+    event: TreeItemOpenChangeEvent,
+    data: TreeItemOpenChangeData
+  ) => {
+    setOpen(data.open);
+  };
+  return (
+    <Tree aria-label="Open Item Controlled">
+      <TreeItem
+        open={open}
+        onOpenChange={handleOpenChange}
+        itemType="branch"
+        value="tree-item-1"
+      >
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch" value="tree-item-2">
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="tree-item-3">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### OpenItemsControlled
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const OpenItemsControlled = (): JSXElement => {
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
+  const handleOpenChange = (
+    event: TreeOpenChangeEvent,
+    data: TreeOpenChangeData
+  ) => {
+    setOpenItems(data.openItems);
+  };
+  return (
+    <Tree
+      aria-label="Open Items Controlled"
+      openItems={openItems}
+      onOpenChange={handleOpenChange}
+    >
+      <TreeItem itemType="branch" value="tree-item-1">
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch" value="tree-item-2">
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="tree-item-3">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### Actions
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TreeItemProps } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+import { Edit20Regular, MoreHorizontal20Regular } from "@fluentui/react-icons";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+
+type CustomTreeItemProps = TreeItemProps & { children?: React.ReactNode };
+
+const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
+  const focusTargetAttribute = useRestoreFocusTarget();
+  const [layoutChildren, subtree] = React.Children.toArray(children);
+
+  // same items to be used between contextmenu and actions
+  const commonMenuItems = (
+    <>
+      <MenuItem>New </MenuItem>
+      <MenuItem>New Window</MenuItem>
+      <MenuItem disabled>Open File</MenuItem>
+      <MenuItem>Open Folder</MenuItem>
+    </>
+  );
+
+  return (
+    <Menu positioning="below-end" openOnContext>
+      <MenuTrigger disableButtonEnhancement>
+        <TreeItem
+          aria-description="has actions"
+          {...focusTargetAttribute}
+          {...props}
+        >
+          <TreeItemLayout
+            actions={
+              <>
+                <Button
+                  aria-label="Edit"
+                  appearance="subtle"
+                  icon={<Edit20Regular />}
+                />
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <Button
+                      aria-label="More options"
+                      appearance="subtle"
+                      icon={<MoreHorizontal20Regular />}
+                    />
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>{commonMenuItems}</MenuList>
+                  </MenuPopover>
+                </Menu>
+              </>
+            }
+          >
+            {layoutChildren}
+          </TreeItemLayout>
+          {subtree}
+        </TreeItem>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Edit</MenuItem>
+          {commonMenuItems}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+export const Actions = (): JSXElement => {
+  return (
+    <Tree aria-label="Actions">
+      <CustomTreeItem itemType="branch">
+        item 1
+        <Tree>
+          <CustomTreeItem itemType="branch">
+            item 1-1
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 1-1-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-3</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-2</CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-3</CustomTreeItem>
+        </Tree>
+      </CustomTreeItem>
+      <CustomTreeItem itemType="branch">
+        item 2
+        <Tree>
+          <CustomTreeItem itemType="branch">
+            item 2-1
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 2-1-1</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+
+          <CustomTreeItem itemType="branch">
+            item 3
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 3-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-3</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+        </Tree>
+      </CustomTreeItem>
+    </Tree>
+  );
+};
+```
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Avatar,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemPersonaLayout,
+} from "@fluentui/react-components";
+
+export const Appearance = (): JSXElement => {
+  return (
+    <>
+      <Tree aria-label="Default Appearance">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Default appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <Tree aria-label="Subtle Alpha Appearance" appearance="subtle-alpha">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Subtle-alpha appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <Tree aria-label="Transparent Appearance" appearance="transparent">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Transparent appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <hr />
+      <Tree aria-label="Default Appearance">
+        <TreeItem itemType="branch">
+          <TreeItemPersonaLayout
+            media={
+              <Avatar
+                name="Default"
+                aria-label="Default appearance avatar placeholder"
+                color="colorful"
+              />
+            }
+          >
+            Default appearance
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 1
+              </TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <Tree aria-label="Subtle Alpha Appearance" appearance="subtle-alpha">
+        <TreeItem itemType="branch">
+          <TreeItemPersonaLayout
+            media={
+              <Avatar
+                aria-label="Subtle-alpha appearance avatar placeholder"
+                name="Subtle Alpha"
+                color="colorful"
+              />
+            }
+          >
+            Subtle-alpha appearance
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 1
+              </TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <Tree aria-label="Transparent Appearance" appearance="transparent">
+        <TreeItem itemType="branch">
+          <TreeItemPersonaLayout
+            media={
+              <Avatar
+                aria-label="Transparent appearance avatar placeholder"
+                name="Transparent"
+                color="colorful"
+              />
+            }
+          >
+            Transparent appearance
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 1
+              </TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={
+                  <Avatar aria-label="Avatar placeholder" color="colorful" />
+                }
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+```
+
+### Aside
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+import { CounterBadge } from "@fluentui/react-components";
+import type { FluentIconsProps } from "@fluentui/react-icons";
+import { Important16Regular } from "@fluentui/react-icons";
+
+const iconStyleProps: FluentIconsProps = {
+  primaryFill: "red",
+};
+
+const AsideContent = ({
+  isImportant,
+  messageCount,
+}: {
+  isImportant?: boolean;
+  messageCount?: number;
+}) => (
+  <>
+    {isImportant && <Important16Regular {...iconStyleProps} />}
+    {messageCount && messageCount > 0 && (
+      <CounterBadge count={messageCount} color="danger" size="small" />
+    )}
+  </>
+);
+
+export const Aside = (): JSXElement => (
+  <Tree aria-label="Aside">
+    <TreeItem itemType="branch" aria-description="Important, 3 message">
+      <TreeItemLayout
+        aside={<AsideContent isImportant={true} messageCount={3} />}
+      >
+        level 1, item 1
+      </TreeItemLayout>
+      <Tree>
+        <TreeItem itemType="leaf" aria-description="Important">
+          <TreeItemLayout aside={<AsideContent isImportant={true} />}>
+            level 2, item 1
+          </TreeItemLayout>
+        </TreeItem>
+        <TreeItem itemType="leaf" aria-description="2 messages">
+          <TreeItemLayout aside={<AsideContent messageCount={2} />}>
+            level 2, item 2
+          </TreeItemLayout>
+        </TreeItem>
+      </Tree>
+    </TreeItem>
+    <TreeItem itemType="branch" aria-description="Important, 1 message">
+      <TreeItemLayout
+        aside={
+          <>
+            <AsideContent isImportant={true} messageCount={1} />
+          </>
+        }
+      >
+        level 1, item 2
+      </TreeItemLayout>
+
+      <Tree>
+        <TreeItem itemType="branch" aria-description="1 message">
+          <TreeItemLayout aside={<AsideContent messageCount={1} />}>
+            level 2, item 1
+          </TreeItemLayout>
+
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout aside={<AsideContent />}>
+                level 3, item 1
+              </TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </TreeItem>
+  </Tree>
+);
+```
+
+### CustomizingInteraction
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const CustomizingInteraction = (): JSXElement => {
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
+  const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    if (data.type === "Click" || data.type === "Enter") {
+      alert("click on item");
+      return;
+    }
+    setOpenItems(data.openItems);
+  };
+  return (
+    <Tree
+      aria-label="Customizing Interaction"
+      openItems={openItems}
+      onOpenChange={onOpenChange}
+    >
+      <TreeItem itemType="branch" value="default-subtree-1">
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch" value="default-subtree-2">
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="default-subtree-2-1">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const Default = (): JSXElement => {
+  return (
+    <Tree aria-label="Default">
+      <TreeItem itemType="branch">
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch">
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="leaf">
+        <TreeItemLayout>level 1, item 3</TreeItemLayout>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### DefaultOpen
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const DefaultOpen = (): JSXElement => (
+  <Tree
+    aria-label="Default Open"
+    defaultOpenItems={[
+      "default-subtree-1",
+      "default-subtree-2",
+      "default-subtree-2-1",
+    ]}
+  >
+    <TreeItem itemType="branch" value="default-subtree-1">
+      <TreeItemLayout>level 1, item 1</TreeItemLayout>
+      <Tree>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        </TreeItem>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout>level 2, item 2</TreeItemLayout>
+        </TreeItem>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout>level 2, item 3</TreeItemLayout>
+        </TreeItem>
+      </Tree>
+    </TreeItem>
+    <TreeItem itemType="branch" value="default-subtree-2">
+      <TreeItemLayout>level 1, item 2</TreeItemLayout>
+      <Tree>
+        <TreeItem itemType="branch" value="default-subtree-2-1">
+          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 3, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 3, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 3, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </TreeItem>
+  </Tree>
+);
+```
+
+### DragAndDrop
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  HeadlessFlatTreeItemProps,
+  FlatTreeItemProps,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+
+import {
+  DndContext,
+  KeyboardSensor,
+  PointerSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import type { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
+import {
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+type FlatItem = HeadlessFlatTreeItemProps & { layout: string };
+
+const flatTreeItems: FlatItem[] = [
+  { value: "1", layout: "Parent item" },
+  { value: "1-1", parentValue: "1", layout: "Sortable item 1" },
+  { value: "1-2", parentValue: "1", layout: "Sortable item 2" },
+  { value: "1-3", parentValue: "1", layout: "Sortable item 3" },
+  { value: "1-4", parentValue: "1", layout: "Sortable item 4" },
+  { value: "1-5", parentValue: "1", layout: "Sortable item 5" },
+  { value: "1-6", parentValue: "1", layout: "Sortable item 6" },
+  { value: "1-7", parentValue: "1", layout: "Sortable item 7" },
+  { value: "1-8", parentValue: "1", layout: "Sortable item 8" },
+];
+
+const sortItems = (array: FlatItem[], from: number, to: number) => {
+  const newArray = array.slice();
+  const startIndex = from < 0 ? array.length + from : from;
+  const item = newArray.splice(startIndex, 1)[0];
+  const endIndex = to < 0 ? array.length + to : to;
+  newArray.splice(endIndex, 0, item);
+  return newArray;
+};
+
+const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
+  const {
+    attributes,
+    isDragging,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({
+    id: value as UniqueIdentifier,
+  });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 1 : 0,
+  };
+
+  return (
+    <FlatTreeItem
+      ref={setNodeRef}
+      value={value}
+      style={style}
+      {...attributes}
+      {...listeners}
+      {...rest}
+    >
+      {children}
+    </FlatTreeItem>
+  );
+};
+
+export const DragAndDrop = (): JSXElement => {
+  const [items, setItems] = React.useState(flatTreeItems);
+  const virtualTree = useHeadlessFlatTree_unstable(items, {
+    defaultOpenItems: ["1"],
+  });
+
+  const handleDragEnd = React.useCallback((event: DragEndEvent) => {
+    const { active, over } = event;
+    if (active.id !== over?.id) {
+      setItems((prevItems) => {
+        const oldIndex = prevItems.findIndex(
+          (item) => item.value === active.id
+        );
+        const newIndex = prevItems.findIndex((item) => item.value === over?.id);
+        return sortItems(prevItems, oldIndex, newIndex);
+      });
+    }
+  }, []);
+
+  const sortableItems = items
+    .filter((item) => item.parentValue)
+    .map((item) => item.value);
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor)
+  );
+
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
+      <SortableContext
+        items={sortableItems}
+        strategy={verticalListSortingStrategy}
+      >
+        <FlatTree aria-label="Drag And Drop" {...virtualTree.getTreeProps()}>
+          {Array.from(virtualTree.items(), (item) => {
+            const { layout, ...itemProps } = item.getTreeItemProps();
+            return item.itemType === "leaf" ? (
+              <SortableTreeItem key={item.value} {...itemProps}>
+                <TreeItemLayout>{layout}</TreeItemLayout>
+              </SortableTreeItem>
+            ) : (
+              <FlatTreeItem {...itemProps} key={item.value}>
+                <TreeItemLayout>{layout}</TreeItemLayout>
+              </FlatTreeItem>
+            );
+          })}
+        </FlatTree>
+      </SortableContext>
+    </DndContext>
+  );
+};
+```
+
+### ExpandIcon
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+import {
+  AddSquare16Regular,
+  SubtractSquare16Regular,
+} from "@fluentui/react-icons";
+
+export const ExpandIcon = (): JSXElement => {
+  const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
+  const handleOpenChange = (
+    event: TreeOpenChangeEvent,
+    data: TreeOpenChangeData
+  ) => {
+    setOpenItems((curr) =>
+      data.open
+        ? [...curr, data.value]
+        : curr.filter((value) => value !== data.value)
+    );
+  };
+  return (
+    <Tree
+      aria-label="Expand Icon"
+      openItems={openItems}
+      onOpenChange={handleOpenChange}
+    >
+      <TreeItem itemType="branch" value="tree-item-2">
+        <TreeItemLayout
+          expandIcon={
+            openItems.includes("tree-item-2") ? (
+              <SubtractSquare16Regular />
+            ) : (
+              <AddSquare16Regular />
+            )
+          }
+        >
+          level 1, item 1
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="tree-item-3">
+            <TreeItemLayout
+              expandIcon={
+                openItems.includes("tree-item-3") ? (
+                  <SubtractSquare16Regular />
+                ) : (
+                  <AddSquare16Regular />
+                )
+              }
+            >
+              level 2, item 1
+            </TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch" value="tree-item-1">
+        <TreeItemLayout
+          expandIcon={
+            openItems.includes("tree-item-1") ? (
+              <SubtractSquare16Regular />
+            ) : (
+              <AddSquare16Regular />
+            )
+          }
+        >
+          level 1, item 2
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### IconBeforeAndAfter
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+import {
+  Image20Regular,
+  LockClosed20Regular,
+  Person20Regular,
+  Warning20Regular,
+} from "@fluentui/react-icons";
+
+export const IconBeforeAndAfter = (): JSXElement => {
+  return (
+    <Tree aria-label="Icon Before & After">
+      <TreeItem itemType="branch">
+        <TreeItemLayout
+          iconBefore={<Image20Regular />}
+          iconAfter={<LockClosed20Regular />}
+        >
+          level 1, item 1
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout iconBefore={<Person20Regular />}>
+              icon before
+            </TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout iconBefore={<Person20Regular />}>
+              icon before
+            </TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch">
+        <TreeItemLayout
+          iconBefore={<Image20Regular />}
+          iconAfter={<LockClosed20Regular />}
+        >
+          level 1, item 2
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout iconAfter={<Warning20Regular />}>
+              icon after
+            </TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+    </Tree>
+  );
+};
+```
+
+### InfiniteScrolling
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  HeadlessFlatTreeItemProps,
+  TreeItemValue,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+import { makeStyles, Spinner } from "@fluentui/react-components";
+
+const ITEMS_PER_PAGE = 10;
+const MAX_PAGES = 4;
+
+const pinnedItems = [
+  { value: "pinned", name: "Pinned", id: "pinned" },
+  { value: "pinned-item-1", parentValue: "pinned", name: "Pinned item 1" },
+  { value: "pinned-item-2", parentValue: "pinned", name: "Pinned item 2" },
+  { value: "pinned-item-3", parentValue: "pinned", name: "Pinned item 3" },
+];
+
+interface FetchResult {
+  results: { name: string }[];
+}
+
+type CustomItem = HeadlessFlatTreeItemProps & {
+  name: string | React.ReactNode;
+};
+
+const useStyles = makeStyles({
+  container: {
+    height: "400px",
+    paddingBottom: "10px",
+    overflow: "auto",
+  },
+  screenReadersOnly: {
+    position: "absolute",
+    width: "1px",
+    height: "1px",
+    margin: "-1",
+    overflow: "hidden",
+    clip: "rect(0,0,0,0)",
+    whiteSpace: "nowrap",
+  },
+});
+
+export const InfiniteScrolling = (): JSXElement => {
+  const [page, setPage] = React.useState(1);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const [ariaMessage, setAriaMessage] = React.useState("");
+  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
+  const [itemToFocusValue, setItemToFocusValue] =
+    React.useState<TreeItemValue>();
+
+  const peopleItems = useQuery<CustomItem[]>([
+    { value: "people", name: "People" },
+    ...Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
+      value: `person-${index + 1}`,
+      parentValue: "people",
+      name: `Person ${index + 1}`,
+    })),
+  ]);
+
+  const items = React.useMemo<CustomItem[]>(
+    () => [
+      ...pinnedItems,
+      ...peopleItems.value,
+      ...(isLoading
+        ? [
+            {
+              value: "loading-people",
+              parentValue: "people",
+              name: <Spinner aria-label="Loading more people" size="tiny" />,
+            },
+          ]
+        : []),
+    ],
+
+    [isLoading, peopleItems]
+  );
+
+  const styles = useStyles();
+
+  const flatTree = useHeadlessFlatTree_unstable(items, {
+    defaultOpenItems: ["pinned", "people"],
+  });
+
+  const fetchMoreItems = async () => {
+    setIsLoading(true);
+    setAriaMessage(`loading more people...`);
+
+    const json = await mockFetchPeople(page);
+    const fetchedItems = json.results.map<CustomItem>((person) => ({
+      value: `person-${person.name}`,
+      parentValue: "people",
+      name: person.name,
+    }));
+    const firstNewItemValue = fetchedItems[0].value;
+
+    await peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
+
+    setIsLoading(false);
+    setPage((prev) => prev + 1);
+    setAriaMessage(`${fetchedItems.length} new people loaded`);
+    setItemToFocusValue(firstNewItemValue);
+  };
+
+  const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = event.currentTarget;
+    const hasReachedEnd = scrollHeight - scrollTop === clientHeight;
+
+    if (!isLoading && hasReachedEnd && page < MAX_PAGES) {
+      fetchMoreItems();
+    }
+  };
+
+  React.useEffect(() => {
+    if (itemToFocusRef.current) {
+      itemToFocusRef.current.focus();
+      setItemToFocusValue(undefined);
+    }
+  }, [itemToFocusValue]);
+
+  return (
+    <>
+      <FlatTree
+        {...flatTree.getTreeProps()}
+        aria-label="Infinite Scrolling"
+        onScroll={handleScroll}
+        className={styles.container}
+      >
+        {Array.from(flatTree.items(), (flatTreeItem) => {
+          const { name, value, ...treeItemProps } =
+            flatTreeItem.getTreeItemProps();
+          return (
+            <FlatTreeItem
+              {...treeItemProps}
+              key={value}
+              value={value}
+              ref={value === itemToFocusValue ? itemToFocusRef : undefined}
+            >
+              <TreeItemLayout>{name}</TreeItemLayout>
+            </FlatTreeItem>
+          );
+        })}
+      </FlatTree>
+
+      <AriaLive content={ariaMessage} />
+    </>
+  );
+};
+
+const AriaLive = ({ content }: { content: string | undefined }) => {
+  const styles = useStyles();
+  return (
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      className={styles.screenReadersOnly}
+    >
+      {content}
+    </div>
+  );
+};
+
+/**
+ * This function is just for the sake of the example,
+ * a library for fetching data (like react-query) might be a better option
+ */
+function useQuery<Value>(initialValue: Value) {
+  const [queryResult, setQueryResult] = React.useState({
+    value: initialValue,
+    isLoading: false,
+    isLoaded: false,
+  });
+  const query = (fn: () => Promise<Value> | Value) => {
+    setQueryResult((curr) => ({ ...curr, isLoading: true }));
+    Promise.resolve(fn()).then((nextValue) => {
+      setQueryResult({ value: nextValue, isLoaded: true, isLoading: false });
+    });
+  };
+  return { ...queryResult, query } as const;
+}
+
+function mockFetchPeople(page: number): Promise<FetchResult> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const startIndex = page * ITEMS_PER_PAGE + 1;
+      const results = Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
+        name: `Person ${startIndex + index}`,
+      }));
+
+      resolve({ results });
+    }, 1000);
+  });
+}
+```
+
+### InlineStylingTreeItemLevel
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  treeItemLevelToken,
+  useSubtreeContext_unstable,
+} from "@fluentui/react-components";
+
+export const InlineStylingTreeItemLevel = (): JSXElement => {
+  const { level } = useSubtreeContext_unstable();
+  return level === 0 ? (
+    <Tree aria-label="Inline Styling Tree Item Level">
+      <InlineStylingTreeItemLevel />
+    </Tree>
+  ) : (
+    <TreeItem
+      value={level}
+      itemType="branch"
+      style={{ [treeItemLevelToken]: level }}
+    >
+      <TreeItemLayout>{`level ${level}, item 1`}</TreeItemLayout>
+      <Tree>
+        <InlineStylingTreeItemLevel />
+      </Tree>
+    </TreeItem>
+  );
+};
+```
+
+### Layouts
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemPersonaLayout,
+} from "@fluentui/react-components";
+import { Avatar } from "@fluentui/react-components";
+
+export const Layouts = (): JSXElement => {
+  return (
+    <>
+      <Tree aria-label="Default Layout">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Tree using TreeItemLayout</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+
+      <Tree aria-label="Persona Layout">
+        <TreeItem itemType="branch">
+          <TreeItemPersonaLayout media={<Avatar image={{ alt: "avatar" }} />}>
+            Tree using TreeItemPersonaLayout
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={<Avatar image={{ alt: "avatar" }} />}
+                description="with description"
+              >
+                level 2, item 1
+              </TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout
+                media={<Avatar image={{ alt: "avatar" }} shape="square" />}
+                description="square shape media"
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout description="without media">
+                level 2, item 3
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+```
+
+### LazyLoading
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+  Spinner,
+  makeStyles,
+} from "@fluentui/react-components";
+
+interface Entity {
+  name: string;
+  value: string;
+}
+
+type SubtreeProps = {
+  value: TreeItemValue;
+  onDataLoading?(): void;
+  onDataLoaded?(): void;
+};
+
+const useStyles = makeStyles({
+  screenReadersOnly: {
+    position: "absolute",
+    width: "1px",
+    height: "1px",
+    margin: "-1",
+    overflow: "hidden",
+    clip: "rect(0,0,0,0)",
+    whiteSpace: "nowrap",
+  },
+});
+
+export const LazyLoading = (): JSXElement => {
+  const [ariaMessage, setAriaMessage] = React.useState("");
+  const styles = useStyles();
+  return (
+    <>
+      <FlatTree aria-label="Lazy Loading">
+        <Subtree
+          value="People"
+          onDataLoaded={React.useCallback(
+            () => setAriaMessage(`people items loaded`),
+            []
+          )}
+          onDataLoading={React.useCallback(
+            () => setAriaMessage(`loading people items...`),
+            []
+          )}
+        />
+
+        <Subtree
+          value="Planet"
+          onDataLoaded={React.useCallback(
+            () => setAriaMessage(`planet items loaded`),
+            []
+          )}
+          onDataLoading={React.useCallback(
+            () => setAriaMessage(`loading planet items...`),
+            []
+          )}
+        />
+
+        <Subtree
+          value="Starship"
+          onDataLoaded={React.useCallback(
+            () => setAriaMessage(`starship items loaded`),
+            []
+          )}
+          onDataLoading={React.useCallback(
+            () => setAriaMessage(`loading starship items...`),
+            []
+          )}
+        />
+      </FlatTree>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className={styles.screenReadersOnly}
+      >
+        {ariaMessage}
+      </div>
+    </>
+  );
+};
+
+const Subtree: React.FC<SubtreeProps> = ({
+  onDataLoaded,
+  onDataLoading,
+  value,
+}) => {
+  const [open, setOpen] = React.useState(false);
+  // useQuery here is just a helper to simulate async data fetching
+  // you can use any other async data fetching library like react-query, swr, etc.
+  const { query, value: items, state } = useQuery<Entity[]>([]);
+
+  // we need to focus the first item when the subtree is opened
+  const firstItemRef = React.useRef<HTMLDivElement>(null);
+
+  const handleOpenChange = React.useCallback(
+    (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => {
+      setOpen(data.open);
+    },
+    [setOpen]
+  );
+
+  React.useEffect(() => {
+    if (open && state === "idle") {
+      onDataLoading?.();
+      query(async () => {
+        // mockFetch is just a helper to simulate an API endpoint.
+        // you probably will be using some custom API endpoint here.
+        const json = await mockFetch(value.toString());
+        return json.results.map<Entity>((entity) => ({
+          value: `${value}/${entity.name}`,
+          name: entity.name,
+        }));
+      });
+    }
+  }, [open, onDataLoading, query, state, value]);
+
+  React.useEffect(() => {
+    if (open && state === "loaded") {
+      onDataLoaded?.();
+      firstItemRef.current?.focus();
+    }
+  }, [open, state, onDataLoaded]);
+
+  return (
+    <>
+      <FlatTreeItem
+        value={value}
+        aria-level={1}
+        aria-setsize={3}
+        aria-posinset={1}
+        itemType="branch"
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
+        <TreeItemLayout
+          expandIcon={state === "loading" ? <Spinner size="tiny" /> : undefined}
+        >
+          {value.toString()}
+        </TreeItemLayout>
+      </FlatTreeItem>
+      {open &&
+        items.map((item, index) => (
+          <FlatTreeItem
+            key={item.value}
+            ref={index === 0 ? firstItemRef : null}
+            parentValue={value}
+            value={item.value}
+            aria-level={2}
+            aria-setsize={items.length}
+            aria-posinset={index + 1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>{item.name}</TreeItemLayout>
+          </FlatTreeItem>
+        ))}
+    </>
+  );
+};
+```
+
+### Manipulation
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  HeadlessFlatTreeItemProps,
+  TreeItemValue,
+  FlatTreeItemProps,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+import { Delete20Regular } from "@fluentui/react-icons";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+
+type ItemProps = HeadlessFlatTreeItemProps & { content: string };
+
+const subtrees: ItemProps[][] = [
+  [
+    { value: "1", content: "Level 1, item 1" },
+    { value: "1-1", parentValue: "1", content: "Item 1-1" },
+    { value: "1-2", parentValue: "1", content: "Item 1-2" },
+  ],
+
+  [
+    { value: "2", content: "Level 1, item 2" },
+    { value: "2-1", parentValue: "2", content: "Item 2-1" },
+  ],
+];
+
+type CustomTreeItemProps = FlatTreeItemProps & {
+  onRemoveItem?: (value: string) => void;
+};
+
+const CustomTreeItem = React.forwardRef(
+  (
+    { onRemoveItem, ...props }: CustomTreeItemProps,
+    ref: React.Ref<HTMLDivElement> | undefined
+  ) => {
+    const focusTargetAttribute = useRestoreFocusTarget();
+    const level = props["aria-level"];
+    const value = props.value as string;
+    const isItemRemovable = level !== 1 && !value.endsWith("-btn");
+
+    const handleRemoveItem = React.useCallback(() => {
+      onRemoveItem?.(value);
+    }, [value, onRemoveItem]);
+
+    return (
+      <Menu positioning="below-end" openOnContext>
+        <MenuTrigger disableButtonEnhancement>
+          <FlatTreeItem
+            aria-description="has actions"
+            {...focusTargetAttribute}
+            {...props}
+            ref={ref}
+          >
+            <TreeItemLayout
+              actions={
+                isItemRemovable ? (
+                  <Button
+                    aria-label="Remove item"
+                    appearance="subtle"
+                    onClick={handleRemoveItem}
+                    icon={<Delete20Regular />}
+                  />
+                ) : undefined
+              }
+            >
+              {props.children}
+            </TreeItemLayout>
+          </FlatTreeItem>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem onClick={handleRemoveItem}>Remove item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    );
+  }
+);
+
+export const Manipulation = (): JSXElement => {
+  const [trees, setTrees] = React.useState(subtrees);
+  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
+  const [itemToFocusValue, setItemToFocusValue] =
+    React.useState<TreeItemValue>();
+
+  const handleClick = (value: string) => {
+    // casting here to string as no number values are used in this example
+    if (value.endsWith("-btn")) {
+      const subtreeIndex = Number(value[0]) - 1;
+      addFlatTreeItem(subtreeIndex);
+    }
+  };
+
+  const addFlatTreeItem = (subtreeIndex: number) =>
+    setTrees((currentTrees) => {
+      const lastItem =
+        currentTrees[subtreeIndex][currentTrees[subtreeIndex].length - 1];
+      const newItemValue = `${subtreeIndex + 1}-${
+        Number(lastItem.value.toString().slice(2)) + 1
+      }`;
+      setItemToFocusValue(newItemValue);
+      const nextSubTree: ItemProps[] = [
+        ...currentTrees[subtreeIndex],
+        {
+          value: newItemValue,
+          parentValue: currentTrees[subtreeIndex][0].value,
+          content: `New item ${newItemValue}`,
+        },
+      ];
+
+      return [
+        ...currentTrees.slice(0, subtreeIndex),
+        nextSubTree,
+        ...currentTrees.slice(subtreeIndex + 1),
+      ];
+    });
+
+  const removeFlatTreeItem = React.useCallback(
+    (value: string) =>
+      setTrees((currentTrees) => {
+        const subtreeIndex = Number(value[0]) - 1;
+        const currentSubTree = trees[subtreeIndex];
+        const itemIndex = currentSubTree.findIndex(
+          (item) => item.value === value
+        );
+        const nextSubTree = trees[subtreeIndex].filter(
+          (_item, index) => index !== itemIndex
+        );
+
+        const nextItemValue = currentSubTree[itemIndex + 1]?.value;
+        const prevItemValue = currentSubTree[itemIndex - 1]?.value;
+        setItemToFocusValue(nextItemValue || prevItemValue);
+
+        return [
+          ...currentTrees.slice(0, subtreeIndex),
+          nextSubTree,
+          ...currentTrees.slice(subtreeIndex + 1),
+        ];
+      }),
+    [trees]
+  );
+
+  const flatTree = useHeadlessFlatTree_unstable(
+    React.useMemo(
+      () => [
+        ...trees[0],
+        {
+          value: "1-btn",
+          parentValue: "1",
+          content: "Add new item",
+        },
+        ...trees[1],
+        {
+          value: "2-btn",
+          parentValue: "2",
+          content: "Add new item",
+        },
+      ],
+
+      [trees]
+    ),
+    { defaultOpenItems: ["1", "2"] }
+  );
+
+  React.useEffect(() => {
+    if (itemToFocusRef.current) {
+      itemToFocusRef.current.focus();
+      setItemToFocusValue(undefined);
+    }
+  }, [itemToFocusValue]);
+
+  return (
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Manipulation">
+      {Array.from(flatTree.items(), (item) => {
+        const { content, ...treeItemProps } = item.getTreeItemProps();
+        return (
+          <CustomTreeItem
+            {...treeItemProps}
+            key={item.value}
+            onClick={() => handleClick(item.value as string)}
+            onRemoveItem={removeFlatTreeItem}
+            ref={item.value === itemToFocusValue ? itemToFocusRef : undefined}
+          >
+            {content}
+          </CustomTreeItem>
+        );
+      })}
+    </FlatTree>
+  );
+};
+```
+
+### MotionCustom
+
+```tsx
+import * as React from "react";
+import type { JSXElement, PersonaProps } from "@fluentui/react-components";
+import {
+  Field,
+  makeStyles,
+  motionTokens,
+  Persona,
+  Slider,
+  Switch,
+  tokens,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+} from "@fluentui/react-components";
+
+const personaData = [
+  {
+    name: "Kevin Sturgis",
+    image: "persona-male.png",
+    status: "available" as const,
+    useImage: true,
+    secondaryText: "Available",
+  },
+  {
+    name: "Sarah Chen",
+    status: "busy" as const,
+    useImage: false,
+    secondaryText: "In a meeting",
+  },
+  {
+    name: "Jessica Brown",
+    image: "persona-female.png",
+    status: "busy" as const,
+    useImage: true,
+    secondaryText: "Do not disturb",
+  },
+  {
+    name: "Emily Johnson",
+    status: "available" as const,
+    useImage: false,
+    secondaryText: "Available",
+  },
+  {
+    name: "David Kim",
+    status: "offline" as const,
+    useImage: false,
+    secondaryText: "Offline",
+  },
+  {
+    name: "Michael Rodriguez",
+    image: "persona-male.png",
+    status: "away" as const,
+    useImage: true,
+    secondaryText: "Away",
+  },
+];
+
+const avatarFor = (
+  useImage?: boolean,
+  image?: string
+): PersonaProps["avatar"] =>
+  useImage
+    ? {
+        image: {
+          src: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/${image}`,
+        },
+      }
+    : { color: "colorful" };
+
+const useStyles = makeStyles({
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+    marginBottom: tokens.spacingVerticalL,
+    padding: tokens.spacingVerticalM,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+});
+
+export const MotionCustom = (): JSXElement => {
+  const classes = useStyles();
+  const [duration, setDuration] = React.useState(1000);
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+
+  const renderItems = (items: typeof personaData) =>
+    items.map((item) => (
+      <TreeItem key={item.name} itemType="leaf">
+        <TreeItemLayout>
+          <Persona
+            name={item.name}
+            secondaryText={item.secondaryText}
+            presence={{ status: item.status }}
+            avatar={avatarFor(item.useImage, item.image)}
+          />
+        </TreeItemLayout>
+      </TreeItem>
+    ));
+
+  const easing = motionTokens.curveDecelerateMid;
+
+  return (
+    <>
+      <div className={classes.controls}>
+        <Field label={`Duration: ${duration}ms`}>
+          <Slider
+            min={100}
+            max={2000}
+            step={50}
+            value={duration}
+            onChange={(_, data) => setDuration(data.value)}
+          />
+        </Field>
+        <Switch
+          label="Animate opacity"
+          checked={animateOpacity}
+          onChange={(_, data) => setAnimateOpacity(data.checked)}
+        />
+      </div>
+
+      <Tree aria-label="Motion Custom">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Team A</TreeItemLayout>
+          <Tree collapseMotion={{ duration, easing, animateOpacity }}>
+            {renderItems(personaData.slice(0, 3))}
+          </Tree>
+        </TreeItem>
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Team B</TreeItemLayout>
+          <Tree collapseMotion={{ duration, easing, animateOpacity }}>
+            {renderItems(personaData.slice(3))}
+          </Tree>
+        </TreeItem>
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Team C</TreeItemLayout>
+          <Tree collapseMotion={{ duration, easing, animateOpacity }}>
+            {renderItems(personaData)}
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+```
+
+### NavigationModeTreeGrid
+
+```tsx
+import * as React from "react";
+import type { JSXElement, TreeItemProps } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+import { Edit20Regular, MoreHorizontal20Regular } from "@fluentui/react-icons";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+
+type CustomTreeItemProps = TreeItemProps & { children?: React.ReactNode };
+
+const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
+  const focusTargetAttribute = useRestoreFocusTarget();
+  const [layoutChildren, subtree] = React.Children.toArray(children);
+
+  // same items to be used between contextmenu and actions
+  const commonMenuItems = (
+    <>
+      <MenuItem>New </MenuItem>
+      <MenuItem>New Window</MenuItem>
+      <MenuItem disabled>Open File</MenuItem>
+      <MenuItem>Open Folder</MenuItem>
+    </>
+  );
+
+  return (
+    <Menu positioning="below-end" openOnContext>
+      <MenuTrigger disableButtonEnhancement>
+        <TreeItem
+          aria-description="has actions"
+          {...focusTargetAttribute}
+          {...props}
+        >
+          <TreeItemLayout
+            actions={
+              <>
+                <Button
+                  aria-label="Edit"
+                  appearance="subtle"
+                  icon={<Edit20Regular />}
+                />
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <Button
+                      aria-label="More options"
+                      appearance="subtle"
+                      icon={<MoreHorizontal20Regular />}
+                    />
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>{commonMenuItems}</MenuList>
+                  </MenuPopover>
+                </Menu>
+              </>
+            }
+          >
+            {layoutChildren}
+          </TreeItemLayout>
+          {subtree}
+        </TreeItem>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Edit</MenuItem>
+          {commonMenuItems}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+export const NavigationModeTreeGrid = (): JSXElement => {
+  return (
+    <Tree navigationMode="treegrid" aria-label="Actions">
+      <CustomTreeItem itemType="branch">
+        item 1
+        <Tree>
+          <CustomTreeItem itemType="branch">
+            item 1-1
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 1-1-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-3</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-2</CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-3</CustomTreeItem>
+        </Tree>
+      </CustomTreeItem>
+      <CustomTreeItem itemType="branch">
+        item 2
+        <Tree>
+          <CustomTreeItem itemType="branch">
+            item 2-1
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 2-1-1</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+
+          <CustomTreeItem itemType="branch">
+            item 3
+            <Tree>
+              <CustomTreeItem itemType="leaf">item 3-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-3</CustomTreeItem>
+            </Tree>
+          </CustomTreeItem>
+        </Tree>
+      </CustomTreeItem>
+    </Tree>
+  );
+};
+```
+
+### Selection
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  HeadlessFlatTreeItemProps,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  FlatTreeItem,
+  TreeItemLayout,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+
+const SELECTION_MODE = "multiselect"; // change to "single" for single selection
+
+type CustomItem = HeadlessFlatTreeItemProps & { content: string };
+
+const items: CustomItem[] = [
+  { value: "1", content: "Level 1, item 1" },
+  { value: "1-1", parentValue: "1", content: "Level 2, item 1" },
+  { value: "1-2", parentValue: "1", content: "Level 2, item 2" },
+  { value: "2", content: "Level 1, item 2" },
+  { value: "2-1", parentValue: "2", content: "Level 2, item 1" },
+  { value: "2-1-1", parentValue: "2-1", content: "Level 3, item 1" },
+  { value: "2-2", parentValue: "2", content: "Level 2, item 2" },
+  { value: "2-2-1", parentValue: "2-2", content: "Level 3, item 1" },
+  { value: "2-2-2", parentValue: "2-2", content: "Level 3, item 2" },
+  { value: "3", content: "Level 1, item 3" },
+];
+
+export const Selection = (): JSXElement => {
+  const flatTree = useHeadlessFlatTree_unstable(items, {
+    defaultOpenItems: ["1", "2", "2-1", "2-2"],
+    defaultCheckedItems: ["1-2"],
+    selectionMode: SELECTION_MODE,
+  });
+
+  return (
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Selection">
+      {Array.from(flatTree.items(), (flatTreeItem) => {
+        const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+        return (
+          <FlatTreeItem {...treeItemProps} key={flatTreeItem.value}>
+            <TreeItemLayout>{content}</TreeItemLayout>
+          </FlatTreeItem>
+        );
+      })}
+    </FlatTree>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Tree, TreeItem, TreeItemLayout } from "@fluentui/react-components";
+
+export const Size = (): JSXElement => {
+  return (
+    <>
+      <Tree size="small" aria-label="Small Size Tree">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Small size tree</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+      <Tree aria-label="Default Size Tree">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Medium size tree</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+```
+
+### UseHeadlessFlatTree
+
+```tsx
+import * as React from "react";
+import type {
+  JSXElement,
+  HeadlessFlatTreeItemProps,
+} from "@fluentui/react-components";
+import {
+  FlatTree,
+  TreeItem,
+  // flattenTree_unstable,
+  // TreeItemProps,
+  TreeItemLayout,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+import { Edit20Regular, MoreHorizontal20Regular } from "@fluentui/react-icons";
+
+type FlatItem = HeadlessFlatTreeItemProps & { content: string };
+
+const flatTreeItems: FlatItem[] = [
+  { value: "1", content: "Level 1, item 1" },
+  { value: "1-1", parentValue: "1", content: "Level 2, item 1" },
+  { value: "1-2", parentValue: "1", content: "Level 2, item 2" },
+  { value: "1-3", parentValue: "1", content: "Level 2, item 3" },
+  { value: "2", content: "Level 1, item 2" },
+  { value: "2-1", parentValue: "2", content: "Level 2, item 1" },
+  { value: "2-1-1", parentValue: "2-1", content: "Level 3, item 1" },
+  { value: "2-1-1-1", parentValue: "2-1-1", content: "Level 4, item 1" },
+];
+
+// // EXAMPLE OF NESTED TREE ITEMS BEING FLATTEN BY `flattenTree`:
+// type Item = TreeItemProps & { content: React.ReactNode };
+
+// const nestedTreeItems = [
+//   {
+//     value: '1',
+//     content: <>level 1, item 1</>,
+//     subtree: [
+//       {
+//         value: '1-1',
+//         content: <>level 2, item 1</>,
+//       },
+//       {
+//         value: '1-2',
+//         content: <>level 2, item 2</>,
+//       },
+//       {
+//         value: '1-3',
+//         content: <>level 2, item 3</>,
+//       },
+//     ],
+//   },
+//   {
+//     value: '2',
+//     content: <>level 1, item 2</>,
+//     subtree: [
+//       {
+//         value: '2-1',
+//         content: <>level 2, item 1</>,
+//         subtree: [
+//           {
+//             value: '2-1-1',
+//             content: <>level 3, item 1</>,
+//             subtree: [
+//               {
+//                 value: '2-1-1-1',
+//                 content: <>level 4, item 1</>,
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ];
+
+// const flatTreeItems = flattenTree_unstable<Item>(nestedTreeItems);
+
+const ActionsExample = () => (
+  <>
+    <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button
+          aria-label="More options"
+          appearance="subtle"
+          icon={<MoreHorizontal20Regular />}
+        />
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New</MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  </>
+);
+
+export const UseHeadlessFlatTree = (): JSXElement => {
+  const flatTree = useHeadlessFlatTree_unstable(flatTreeItems);
+  const focusTargetAttribute = useRestoreFocusTarget();
+
+  return (
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Flat Tree">
+      {Array.from(flatTree.items(), (flatTreeItem) => {
+        const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+        return (
+          <Menu key={flatTreeItem.value} positioning="below-end" openOnContext>
+            <MenuTrigger disableButtonEnhancement>
+              <TreeItem
+                aria-description="has actions"
+                {...focusTargetAttribute}
+                {...treeItemProps}
+              >
+                <TreeItemLayout actions={<ActionsExample />}>
+                  {content}
+                </TreeItemLayout>
+              </TreeItem>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Edit</MenuItem>
+                <MenuItem>New</MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem disabled>Open File</MenuItem>
+                <MenuItem>Open Folder</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        );
+      })}
+    </FlatTree>
+  );
+};
+```
+
+### Virtualization
+
+```tsx
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import * as React from "react";
+import type {
+  JSXElement,
+  FlatTreeProps,
+  FlatTreeSlots,
+  TreeNavigationData_unstable,
+  TreeNavigationEvent_unstable,
+  HeadlessFlatTreeItemProps,
+  HeadlessFlatTreeItem,
+  ForwardRefComponent,
+} from "@fluentui/react-components";
+import {
+  FlatTreeItem,
+  TreeItemLayout,
+  TreeProvider,
+  useFlatTree_unstable,
+  useFlatTreeStyles_unstable,
+  useFlatTreeContextValues_unstable,
+  useHeadlessFlatTree_unstable,
+} from "@fluentui/react-components";
+import type { FixedSizeListProps, ListChildComponentProps } from "react-window";
+import { FixedSizeList } from "react-window";
+import { assertSlots } from "@fluentui/react-components";
+
+type ItemProps = HeadlessFlatTreeItemProps & { content: string };
+
+const defaultItems: ItemProps[] = [
+  {
+    value: "flatTreeItem_lvl-1_item-1",
+    content: `Level 1, item 1`,
+  },
+  ...Array.from({ length: 300 }, (_, i) => ({
+    value: `flatTreeItem_lvl-1_item-1--child:${i}`,
+    parentValue: "flatTreeItem_lvl-1_item-1",
+    content: `Item ${i + 1}`,
+  })),
+  {
+    value: "flatTreeItem_lvl-1_item-2",
+    content: `Level 1, item 2`,
+  },
+  ...Array.from({ length: 300 }, (_, index) => ({
+    value: `flatTreeItem_lvl-1_item-2--child:${index}`,
+    parentValue: "flatTreeItem_lvl-1_item-2",
+    content: `Item ${index + 1}`,
+  })),
+];
+
+type FixedSizeTreeProps = Omit<FlatTreeProps, "children"> & {
+  listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
+};
+
+/**
+ * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
+ */
+const FixedSizeTree = React.forwardRef<HTMLElement, FixedSizeTreeProps>(
+  (props, ref) => {
+    const state = useFlatTree_unstable(props, ref);
+    useFlatTreeStyles_unstable(state);
+    const contextValues = useFlatTreeContextValues_unstable(state);
+    assertSlots<FlatTreeSlots>(state);
+    const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
+      if (instance) {
+        // This element stays between the tree and treeitem
+        // Due to accessibility issues this element should have role="none"
+        instance.setAttribute("role", "none");
+      }
+    }, []);
+    return (
+      <TreeProvider value={contextValues.tree}>
+        <state.root>
+          <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
+        </state.root>
+      </TreeProvider>
+    );
+  }
+) as ForwardRefComponent<FixedSizeTreeProps>;
+
+interface FixedSizeTreeItemProps extends ListChildComponentProps {
+  data: HeadlessFlatTreeItem<ItemProps>[];
+}
+
+const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
+  const flatTreeItem = props.data[props.index];
+  const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+  return (
+    <FlatTreeItem {...treeItemProps} style={props.style}>
+      <TreeItemLayout>{content}</TreeItemLayout>
+    </FlatTreeItem>
+  );
+};
+
+export const Virtualization = (): JSXElement => {
+  const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
+  const listRef = React.useRef<FixedSizeList>(null);
+  const items = React.useMemo(
+    () => Array.from(headlessTree.items()),
+    [headlessTree]
+  );
+
+  /**
+   * Since navigation is not possible due to the fact that not all items are rendered,
+   * we need to scroll to the next item and then invoke navigation.
+   */
+  const handleNavigation = (
+    event: TreeNavigationEvent_unstable,
+    data: TreeNavigationData_unstable
+  ) => {
+    const nextItem = headlessTree.getNextNavigableItem(items, data);
+    if (!nextItem) {
+      return;
+    }
+    // if the next item is not rendered, scroll to it and try to navigate again
+    if (!headlessTree.getElementFromItem(nextItem)) {
+      event.preventDefault(); // preventing default disables internal navigation.
+      listRef.current?.scrollToItem(nextItem.index);
+      // waiting for the next animation frame to allow the list to be scrolled
+      return requestAnimationFrame(() => headlessTree.navigate(data));
+    }
+  };
+
+  return (
+    <FixedSizeTree
+      {...headlessTree.getTreeProps()}
+      listProps={{
+        ref: listRef,
+        height: 300,
+        itemCount: items.length,
+        itemData: items,
+        itemSize: 32,
+        width: 300,
+        children: FixedSizeTreeItem,
+      }}
+      onNavigation={handleNavigation}
+      aria-label="Virtualization"
+    />
+  );
+};
+```

@@ -1,0 +1,813 @@
+# Motion
+
+## Examples
+
+### CustomMotion
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  createPresenceComponent,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+  makeStyles,
+  motionTokens,
+  tokens,
+} from "@fluentui/react-components";
+import { Dismiss24Regular } from "@fluentui/react-icons";
+
+// --- Custom motions for Dialog ---
+
+const SlideDialogMotion = createPresenceComponent(() => {
+  const keyframes = [
+    {
+      opacity: 1,
+      transform: "translateX(-150%)",
+      boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0.1)",
+    },
+    { opacity: 1, transform: "translateX(0)", boxShadow: tokens.shadow64 },
+  ];
+
+  return {
+    enter: {
+      keyframes,
+      easing: curveSwimSpringSlide,
+      duration: motionTokens.durationUltraSlow * 5,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      easing: motionTokens.curveAccelerateMid,
+      duration: motionTokens.durationGentle,
+    },
+  };
+});
+
+const RadialBackdropMotion = createPresenceComponent(() => {
+  const keyframes = [
+    {
+      opacity: 0,
+      background:
+        "radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)",
+      transform: "scale(0)",
+    },
+    {
+      opacity: 1,
+      background:
+        "radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)",
+      transform: "scale(1)",
+    },
+  ];
+
+  return {
+    enter: {
+      keyframes,
+      easing: motionTokens.curveDecelerateMax,
+      duration: motionTokens.durationGentle,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      easing: motionTokens.curveAccelerateMax,
+      duration: motionTokens.durationGentle,
+    },
+  };
+});
+
+const curveOvershootEnter = `linear(0, .04695 2%, .1207 5%, .2464 10%, .3998 16%, .5288 21%, .5777 23%, .6234 25%, .6659 27%, .7055 29%, .7421 31%, .7759 33%, .807 35%, .8355 37%, .8615 39%, .8852 41%, .9065 43%, .9257 45%, .9428 47%, .9579 49%, .9712 51%, .9827 53%, .9926 55%, 1.001 57%, 1.008 59%, 1.016 62%, 1.021 65%, 1.024 68%, 1.025 71%, 1.023 75%, 1.019 80%, 1.007 90%, 1.002 95%, 1 99%, 1)`;
+
+const curveSoftExit = `linear(0, .006908 1%, .01823 2%, .03216 3%, .04811 4%, .06575 5%, .08487 6%, .1053 7%, .127 8%, .1497 9%, .1983 11%, .2505 13%, .3061 15%, .3647 17%, .4262 19%, .4903 21%, .5569 23%, .6259 25%, .6614 26%, .6937 27%, .7168 28%, .7321 29%, .7428 30%, .7511 31%, .7637 33%, .7737 35%, .7862 38%, .8078 44%, .8877 68%, .9393 83%, .9964 99%, 1)`;
+
+// --- Custom motion for Drawer ---
+
+const CustomSlideMotion = createPresenceComponent(() => {
+  return {
+    enter: {
+      // Slide in from the left
+      keyframes: [{ translate: "-100% 0" }, { translate: "0 0" }],
+      duration: motionTokens.durationUltraSlow * 2,
+      easing: curveOvershootEnter,
+    },
+    exit: {
+      // Slide out to the left
+      keyframes: [{ translate: "0 0" }, { translate: "-100% 0" }],
+      duration: motionTokens.durationUltraSlow * 5,
+      easing: curveSoftExit,
+    },
+  };
+});
+
+// --- Styles ---
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "40px",
+  },
+
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+  sectionTitle: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    margin: "0",
+  },
+  sectionDescription: {
+    fontSize: tokens.fontSizeBase300,
+    color: tokens.colorNeutralForeground3,
+    margin: "0",
+  },
+  buttons: {
+    display: "flex",
+    gap: "12px",
+  },
+
+  drawerContainer: {
+    border: `2px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column-reverse",
+    height: "300px",
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  drawerContent: {
+    flex: "1",
+    padding: "16px",
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "12px",
+  },
+});
+
+const curveSwimSpringSlide = `linear(0, .003149 1%, .01215 2%, .02643 3%, .04544 4%, .06871 5%, .09533 6%, .1204 7%, .1429 8%, .1632 9%, .1814 10%, .1977 11%, .2124 12%, .2257 13%, .2375 14%, .2482 15%, .2664 17%, .2811 19%, .293 21%, .3078 24%, .3181 25%, .3336 26%, .3536 27%, .3778 28%, .4342 30%, .4598 31%, .4827 32%, .5034 33%, .5219 34%, .5386 35%, .5536 36%, .5671 37%, .5792 38%, .5901 39%, .6086 41%, .6236 43%, .6358 45%, .6456 47%, .6537 48%, .6672 49%, .6855 50%, .7081 51%, .7346 52%, .7638 53%, .7908 54%, .8151 55%, .8369 56%, .8565 57%, .8741 58%, .8899 59%, .9041 60%, .9169 61%, .9284 62%, .9387 63%, .9563 65%, .9706 67%, .9821 69%, .9914 71%, .9987 73%, 1.004 75%, 1.008 77%, 1.011 80%, 1.012 83%, 1.01 87%, 1.002 95%, 1 99%, 1)`;
+
+// --- Dialog examples ---
+
+const DialogExample = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.section}>
+      <p className={classes.sectionTitle}>Dialog</p>
+      <p className={classes.sectionDescription}>
+        Override Dialog&apos;s <code>surfaceMotion</code> or
+        DialogSurface&apos;s <code>backdropMotion</code> with a custom animation
+        via a render function.
+      </p>
+
+      <div className={classes.buttons}>
+        <Dialog
+          surfaceMotion={{
+            children: (_, props) => (
+              <SlideDialogMotion {...props}>{props.children}</SlideDialogMotion>
+            ),
+          }}
+        >
+          <DialogTrigger disableButtonEnhancement>
+            <Button>Custom surface (slide)</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogBody>
+              <DialogTitle>Custom surface motion</DialogTitle>
+              <DialogContent>
+                The <code>surfaceMotion</code> slot uses a render function to
+                replace the default scale animation with a slide-in from the
+                left.
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+              </DialogActions>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>
+
+        <Dialog>
+          <DialogTrigger disableButtonEnhancement>
+            <Button>Custom backdrop (radial)</Button>
+          </DialogTrigger>
+          <DialogSurface
+            backdropMotion={{
+              children: (_, props) => (
+                <RadialBackdropMotion {...props}>
+                  {props.children}
+                </RadialBackdropMotion>
+              ),
+            }}
+          >
+            <DialogBody>
+              <DialogTitle>Custom backdrop motion</DialogTitle>
+              <DialogContent>
+                The <code>backdropMotion</code> slot uses a render function to
+                replace the default fade with a radial gradient that scales in.
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+              </DialogActions>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>
+      </div>
+    </div>
+  );
+};
+
+// --- Drawer example ---
+
+const DrawerExample = () => {
+  const classes = useStyles();
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div className={classes.section}>
+      <p className={classes.sectionTitle}>Drawer</p>
+      <p className={classes.sectionDescription}>
+        Override Drawer&apos;s <code>surfaceMotion</code> with a custom
+        animation. This custom motion slides in with an overshoot, and exits
+        like a soft-close drawer (hydraulic).
+      </p>
+
+      <div className={classes.drawerContainer}>
+        <InlineDrawer
+          surfaceMotion={{
+            children: (_, props) => <CustomSlideMotion {...props} />,
+          }}
+          separator
+          open={isOpen}
+          style={{
+            backgroundColor: tokens.colorNeutralBackground6,
+            marginLeft: "-5%",
+            paddingLeft: "5%",
+          }}
+        >
+          <DrawerHeader>
+            <DrawerHeaderTitle
+              action={
+                <Button
+                  appearance="subtle"
+                  aria-label="Close"
+                  icon={<Dismiss24Regular />}
+                  onClick={() => setIsOpen(false)}
+                />
+              }
+            >
+              Custom motion
+            </DrawerHeaderTitle>
+          </DrawerHeader>
+          <DrawerBody>
+            <p>
+              The <code>surfaceMotion</code> slot uses a render function to
+              apply a bouncy slide-in animation.
+            </p>
+          </DrawerBody>
+        </InlineDrawer>
+
+        <div className={classes.drawerContent}>
+          <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+            Toggle drawer
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Story ---
+
+export const CustomMotion = (): JSXElement => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <DialogExample />
+      <DrawerExample />
+    </div>
+  );
+};
+```
+
+### DirectParams
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  Field,
+  makeStyles,
+  Slider,
+  Text,
+  tokens,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalL,
+    width: "100%",
+    maxWidth: "800px",
+    scrollbarGutter: "stable",
+  },
+  controls: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  row: {
+    display: "flex",
+    gap: tokens.spacingHorizontalL,
+    alignItems: "start",
+  },
+  column: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+    flex: 1,
+    minWidth: 0,
+  },
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    overflow: "hidden",
+    overflowWrap: "break-word",
+    wordBreak: "break-word",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+  codeBlock: {
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase200,
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    whiteSpace: "pre",
+    overflow: "auto",
+  },
+  accordionContainer: {
+    minWidth: 0,
+    overflow: "hidden",
+    maxWidth: "100%",
+  },
+  constrainedText: {
+    minWidth: 0,
+    display: "block",
+    overflow: "hidden",
+    overflowWrap: "break-word",
+    wordBreak: "break-word",
+  },
+});
+
+/**
+ * When a component's motion slot type includes generic parameters, those parameters
+ * can be passed directly as props on the slot object — no `children` render function needed.
+ *
+ * Dialog's `surfaceMotion` slot is typed with `ScaleParams`; Accordion's and Tree's
+ * `collapseMotion` slots are typed with `CollapseParams`. Each exposes its own set of
+ * direct props — all following the same pattern as any regular Fluent UI slot
+ * (`badge=&#123;&#123; status: 'available' &#125;&#125;`).
+ */
+export const DirectParams = (): JSXElement => {
+  const classes = useStyles();
+
+  const [duration, setDuration] = React.useState(600);
+  const [outScale, setOutScale] = React.useState(0.5);
+
+  return (
+    <div className={classes.wrapper}>
+      <div className={classes.controls}>
+        <Field label={`Duration: ${duration}ms (shared)`}>
+          <Slider
+            min={100}
+            max={2000}
+            step={50}
+            value={duration}
+            onChange={(_, data) => setDuration(data.value)}
+          />
+        </Field>
+        <Field label={`Dialog outScale: ${outScale.toFixed(2)}`}>
+          <Slider
+            min={0}
+            max={1}
+            step={0.05}
+            value={outScale}
+            onChange={(_, data) => setOutScale(data.value)}
+          />
+        </Field>
+      </div>
+
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Dialog (<code>surfaceMotion</code>)
+        </Text>
+        <div className={classes.row}>
+          <div className={classes.column}>
+            <Text size={200}>Direct params (concise)</Text>
+            <Dialog
+              surfaceMotion={{
+                duration,
+                outScale,
+              }}
+            >
+              <DialogTrigger disableButtonEnhancement>
+                <Button>Open Dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Direct param override</DialogTitle>
+                  <DialogContent>
+                    The <code>duration</code> and <code>outScale</code> props
+                    are passed directly on the <code>surfaceMotion</code> slot
+                    object.
+                  </DialogContent>
+                  <DialogActions>
+                    <DialogTrigger disableButtonEnhancement>
+                      <Button appearance="secondary">Close</Button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <div className={classes.codeBlock}>
+              {`<Dialog
+  surfaceMotion={{
+    duration: ${duration},
+    outScale: ${outScale.toFixed(2)},
+  }}
+>`}
+            </div>
+          </div>
+
+          <div className={classes.column}>
+            <Text size={200}>Children render function (verbose)</Text>
+            <Dialog
+              surfaceMotion={{
+                children: (Motion, props) => (
+                  <Motion {...props} duration={duration} outScale={outScale}>
+                    {props.children}
+                  </Motion>
+                ),
+              }}
+            >
+              <DialogTrigger disableButtonEnhancement>
+                <Button>Open Dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Render function override</DialogTitle>
+                  <DialogContent>
+                    The same override using a <code>children</code> render
+                    function — functionally identical but more verbose.
+                  </DialogContent>
+                  <DialogActions>
+                    <DialogTrigger disableButtonEnhancement>
+                      <Button appearance="secondary">Close</Button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <div className={classes.codeBlock}>
+              {`<Dialog
+  surfaceMotion={{
+    children: (Motion, props) => (
+      <Motion
+        {...props}
+        duration={${duration}}
+        outScale={${outScale.toFixed(2)}}
+      >
+        {props.children}
+      </Motion>
+    ),
+  }}
+>`}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Accordion (<code>collapseMotion</code>)
+        </Text>
+        <Text size={200}>Same pattern — different param shape:</Text>
+        <div className={classes.accordionContainer}>
+          <Accordion collapsible>
+            <AccordionItem value="1">
+              <AccordionHeader>
+                Panel A — tweaks via direct params
+              </AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration }}>
+                <div className={classes.constrainedText}>
+                  <Text>
+                    Expand/collapse timing controlled by <code>duration</code>
+                  </Text>
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem value="2">
+              <AccordionHeader>Panel B</AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration }}>
+                <Text>Panel B content — shares the same motion params.</Text>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className={classes.codeBlock}>
+          {`<AccordionPanel
+  collapseMotion={{
+    duration: ${duration},
+  }}
+>`}
+        </div>
+      </div>
+
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Tree (<code>collapseMotion</code>)
+        </Text>
+        <Text size={200}>Same pattern, applied at subtree level:</Text>
+        <div className={classes.accordionContainer}>
+          <Tree aria-label="Direct params demo">
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team A</TreeItemLayout>
+              <Tree collapseMotion={{ duration }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Alice</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Bob</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team B</TreeItemLayout>
+              <Tree collapseMotion={{ duration }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Carol</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Dan</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        </div>
+        <div className={classes.codeBlock}>
+          {`<Tree
+  collapseMotion={{
+    duration: ${duration},
+  }}
+>`}
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### DisableMotion
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  makeStyles,
+  tokens,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
+} from "@fluentui/react-components";
+import { Dismiss24Regular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "40px",
+  },
+
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+  sectionTitle: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    margin: "0",
+  },
+  sectionDescription: {
+    fontSize: tokens.fontSizeBase300,
+    color: tokens.colorNeutralForeground3,
+    margin: "0",
+  },
+  buttons: {
+    display: "flex",
+    gap: "12px",
+  },
+
+  drawerContainer: {
+    border: `2px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    overflow: "hidden",
+    display: "flex",
+    height: "300px",
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  drawerContent: {
+    flex: "1",
+    padding: "16px",
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "12px",
+  },
+});
+
+// --- Dialog examples ---
+
+const DialogExample = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.section}>
+      <p className={classes.sectionTitle}>Dialog</p>
+      <p className={classes.sectionDescription}>
+        Dialog has two motion slots: <code>surfaceMotion</code> on Dialog and{" "}
+        <code>backdropMotion</code> on DialogSurface. You can disable them
+        independently.
+      </p>
+
+      <div className={classes.buttons}>
+        <Dialog surfaceMotion={null}>
+          <DialogTrigger disableButtonEnhancement>
+            <Button>surfaceMotion disabled</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogBody>
+              <DialogTitle>Surface motion disabled</DialogTitle>
+              <DialogContent>
+                The <code>surfaceMotion</code> slot is set to <code>null</code>,
+                so the dialog surface appears instantly without a scale
+                animation. The backdrop still fades in normally.
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+              </DialogActions>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>
+
+        <Dialog surfaceMotion={null}>
+          <DialogTrigger disableButtonEnhancement>
+            <Button>Both motions disabled</Button>
+          </DialogTrigger>
+          <DialogSurface backdropMotion={null}>
+            <DialogBody>
+              <DialogTitle>All motion disabled</DialogTitle>
+              <DialogContent>
+                Both <code>surfaceMotion</code> and <code>backdropMotion</code>{" "}
+                are set to <code>null</code>, so the dialog and its backdrop
+                appear instantly.
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+              </DialogActions>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>
+      </div>
+    </div>
+  );
+};
+
+// --- Drawer example ---
+
+const DrawerExample = () => {
+  const classes = useStyles();
+  const [isOpen, setIsOpen] = React.useState(false);
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
+  return (
+    <div className={classes.section}>
+      <p className={classes.sectionTitle}>Drawer</p>
+      <p className={classes.sectionDescription}>
+        Drawer has <code>surfaceMotion</code> and <code>backdropMotion</code>{" "}
+        slots. Setting both to <code>null</code> disables the slide and backdrop
+        animations.
+      </p>
+
+      <div className={classes.drawerContainer}>
+        <Drawer
+          type="overlay"
+          surfaceMotion={null}
+          backdropMotion={null}
+          separator
+          open={isOpen}
+          onOpenChange={(_, { open }) => setIsOpen(open)}
+          {...restoreFocusSourceAttributes}
+        >
+          <DrawerHeader>
+            <DrawerHeaderTitle
+              action={
+                <Button
+                  appearance="subtle"
+                  aria-label="Close"
+                  icon={<Dismiss24Regular />}
+                  onClick={() => setIsOpen(false)}
+                />
+              }
+            >
+              Drawer (no motion)
+            </DrawerHeaderTitle>
+          </DrawerHeader>
+          <DrawerBody>
+            <p>
+              Both <code>surfaceMotion</code> and <code>backdropMotion</code>{" "}
+              are <code>null</code>, so this drawer appears instantly without a
+              slide animation.
+            </p>
+          </DrawerBody>
+        </Drawer>
+
+        <div className={classes.drawerContent}>
+          <Button
+            {...restoreFocusTargetAttributes}
+            appearance="primary"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            Open drawer
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Story ---
+
+export const DisableMotion = (): JSXElement => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <DialogExample />
+      <DrawerExample />
+    </div>
+  );
+};
+```

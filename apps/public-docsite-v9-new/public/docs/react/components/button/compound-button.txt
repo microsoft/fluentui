@@ -1,0 +1,319 @@
+# Compound Button
+
+## Examples
+
+### Appearance
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, CompoundButton } from "@fluentui/react-components";
+import {
+  bundleIcon,
+  CalendarMonthFilled,
+  CalendarMonthRegular,
+} from "@fluentui/react-icons";
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Appearance = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        icon={<CalendarMonthRegular />}
+      >
+        Default
+      </CompoundButton>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        appearance="primary"
+        icon={<CalendarMonthRegular />}
+      >
+        Primary
+      </CompoundButton>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        appearance="outline"
+        icon={<CalendarMonth />}
+      >
+        Outline
+      </CompoundButton>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        appearance="subtle"
+        icon={<CalendarMonth />}
+      >
+        Subtle
+      </CompoundButton>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        appearance="transparent"
+        icon={<CalendarMonth />}
+      >
+        Transparent
+      </CompoundButton>
+    </div>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { CompoundButton } from "@fluentui/react-components";
+import { CalendarMonthRegular } from "@fluentui/react-icons";
+import type { CompoundButtonProps } from "@fluentui/react-components";
+
+export const Default = (props: CompoundButtonProps): JSXElement => (
+  <CompoundButton
+    icon={<CalendarMonthRegular />}
+    secondaryContent="Secondary content"
+    {...props}
+  >
+    Example
+  </CompoundButton>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, CompoundButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  innerWrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+  outerWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "15px",
+  },
+});
+
+export const Disabled = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.outerWrapper}>
+      <div className={styles.innerWrapper}>
+        <CompoundButton secondaryContent="Secondary content">
+          Enabled state
+        </CompoundButton>
+        <CompoundButton disabled secondaryContent="Secondary content">
+          Disabled state
+        </CompoundButton>
+        <CompoundButton disabledFocusable secondaryContent="Secondary content">
+          Disabled focusable state
+        </CompoundButton>
+      </div>
+      <div className={styles.innerWrapper}>
+        <CompoundButton
+          appearance="primary"
+          secondaryContent="Secondary content"
+        >
+          Enabled state
+        </CompoundButton>
+        <CompoundButton
+          appearance="primary"
+          disabled
+          secondaryContent="Secondary content"
+        >
+          Disabled state
+        </CompoundButton>
+        <CompoundButton
+          appearance="primary"
+          disabledFocusable
+          secondaryContent="Secondary content"
+        >
+          Disabled focusable state
+        </CompoundButton>
+      </div>
+    </div>
+  );
+};
+```
+
+### Icon
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  makeStyles,
+  CompoundButton,
+  Tooltip,
+} from "@fluentui/react-components";
+import { CalendarMonthRegular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  wrapper: {
+    alignItems: "center",
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Icon = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        icon={<CalendarMonthRegular />}
+      >
+        With calendar icon before contents
+      </CompoundButton>
+      <CompoundButton
+        secondaryContent="Secondary content"
+        icon={<CalendarMonthRegular />}
+        iconPosition="after"
+      >
+        With calendar icon after contents
+      </CompoundButton>
+      <Tooltip content="With calendar icon only" relationship="label">
+        <CompoundButton icon={<CalendarMonthRegular />} />
+      </Tooltip>
+    </div>
+  );
+};
+```
+
+### Shape
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, CompoundButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Shape = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton secondaryContent="Secondary content">
+        Rounded
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" shape="circular">
+        Circular
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" shape="square">
+        Square
+      </CompoundButton>
+    </div>
+  );
+};
+```
+
+### Size
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, CompoundButton } from "@fluentui/react-components";
+import { CalendarMonthRegular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  wrapper: {
+    alignItems: "center",
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const Size = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton
+        icon={<CalendarMonthRegular />}
+        secondaryContent="Secondary content"
+        size="small"
+      >
+        Size: small
+      </CompoundButton>
+      <CompoundButton
+        icon={<CalendarMonthRegular />}
+        secondaryContent="Secondary content"
+        size="medium"
+      >
+        Size: medium
+      </CompoundButton>
+      <CompoundButton
+        icon={<CalendarMonthRegular />}
+        secondaryContent="Secondary content"
+        size="large"
+      >
+        Size: large
+      </CompoundButton>
+    </div>
+  );
+};
+```
+
+### WithLongText
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { makeStyles, CompoundButton } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  longText: {
+    width: "280px",
+  },
+  wrapper: {
+    alignItems: "center",
+    columnGap: "15px",
+    display: "flex",
+    minWidth: "min-content",
+  },
+});
+
+export const WithLongText = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton secondaryContent="Secondary content">
+        Short text
+      </CompoundButton>
+      <CompoundButton
+        className={styles.longText}
+        secondaryContent="Secondary content"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    </div>
+  );
+};
+```

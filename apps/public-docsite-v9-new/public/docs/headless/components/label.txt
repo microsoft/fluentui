@@ -1,0 +1,51 @@
+# Label
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import { Label } from "@fluentui/react-headless-components-preview/label";
+import styles from "./styles/label.module.css";
+
+export const Default = (): React.ReactNode => (
+  <Label className={styles.label}>This is a label</Label>
+);
+```
+
+### Disabled
+
+```tsx
+import * as React from "react";
+import { Label } from "@fluentui/react-headless-components-preview/label";
+import styles from "./styles/label.module.css";
+
+export const Disabled = (): React.ReactNode => (
+  <Label className={styles.label} disabled>
+    Disabled label
+  </Label>
+);
+```
+
+### Required
+
+```tsx
+import * as React from "react";
+import { Label } from "@fluentui/react-headless-components-preview/label";
+import styles from "./styles/label.module.css";
+
+export const Required = (): React.ReactNode => (
+  <div className={styles.demo}>
+    <Label className={styles.label} required>
+      Required label
+    </Label>
+    <Label
+      className={styles.label}
+      required={{ className: styles.required, children: "***" }}
+    >
+      Required label with custom indicator
+    </Label>
+  </div>
+);
+```

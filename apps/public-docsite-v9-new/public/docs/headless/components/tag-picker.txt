@@ -1,0 +1,694 @@
+# Tag Picker
+
+## Examples
+
+### Default
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/tag-picker.module.css";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Default = (): React.ReactNode => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+
+  const availableOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-default-label">
+        Select employees
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl className={styles.control}>
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                value={option}
+                className={styles.tag}
+                media={<Media name={option} />}
+                dismissIcon={{
+                  className: styles.dismissIcon,
+                  "aria-label": "remove",
+                  children: <DismissRegular aria-hidden />,
+                }}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-default-label"
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>
+          {availableOptions.length > 0 ? (
+            availableOptions.map((option) => (
+              <TagPickerOption
+                key={option}
+                value={option}
+                className={styles.option}
+                media={<Media name={option} square />}
+                secondaryContent={{
+                  className: styles.secondaryContent,
+                  children: "Microsoft FTE",
+                }}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption
+              value="no-options"
+              disabled
+              className={styles.option}
+            >
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### Filtering
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+  useTagPickerFilter,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/tag-picker.module.css";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const Filtering = (): React.ReactNode => {
+  const [query, setQuery] = React.useState<string>("");
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  // disable auto focus when no query is present (e.g. opened by keyboard)
+  const disableAutoFocus = query.length === 0;
+
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    if (data.value === "no-matches") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+    setQuery("");
+  };
+
+  const children = useTagPickerFilter({
+    query,
+    options,
+    noOptionsElement: (
+      <TagPickerOption value="no-matches" disabled className={styles.option}>
+        We couldn't find any matches
+      </TagPickerOption>
+    ),
+
+    renderOption: (option) => (
+      <TagPickerOption
+        key={option}
+        value={option}
+        className={styles.option}
+        media={<Media name={option} square />}
+        secondaryContent={{
+          className: styles.secondaryContent,
+          children: "Microsoft FTE",
+        }}
+      >
+        {option}
+      </TagPickerOption>
+    ),
+
+    filter: (option) =>
+      !selectedOptions.includes(option) &&
+      option.toLowerCase().includes(query.toLowerCase()),
+  });
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-filtering-label">
+        Select employees
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+        disableAutoFocus={disableAutoFocus}
+      >
+        <TagPickerControl className={styles.control}>
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option}
+                value={option}
+                className={styles.tag}
+                media={<Media name={option} />}
+                dismissIcon={{
+                  className: styles.dismissIcon,
+                  "aria-label": "remove",
+                  children: <DismissRegular aria-hidden />,
+                }}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-filtering-label"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>{children}</TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### Grouped
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+  TagPickerOptionGroup,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+
+import styles from "./styles/tag-picker.module.css";
+
+const managers = ["John Doe", "Jane Doe", "Max Mustermann", "Erika Mustermann"];
+const devs = ["Pierre Dupont", "Amelie Dupont", "Mario Rossi", "Maria Rossi"];
+
+export const Grouped = (): React.ReactNode => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const unselectedManagers = managers.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+  const unselectedDevs = devs.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-grouped-label">
+        Select employees
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl className={styles.control}>
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <SelectedTag key={option} value={option} />
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-grouped-label"
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>
+          {unselectedManagers.length === 0 && unselectedDevs.length === 0 && (
+            <TagPickerOption
+              value="no-options"
+              disabled
+              className={styles.option}
+            >
+              No options available
+            </TagPickerOption>
+          )}
+          {unselectedManagers.length > 0 && (
+            <TagPickerOptionGroup
+              className={styles.optionGroup}
+              label={{
+                className: styles.optionGroupLabel,
+                children: "Managers",
+              }}
+            >
+              {unselectedManagers.map((option) => (
+                <PersonOption key={option} value={option} />
+              ))}
+            </TagPickerOptionGroup>
+          )}
+          {unselectedDevs.length > 0 && (
+            <TagPickerOptionGroup
+              className={styles.optionGroup}
+              label={{ className: styles.optionGroupLabel, children: "Devs" }}
+            >
+              {unselectedDevs.map((option) => (
+                <PersonOption key={option} value={option} />
+              ))}
+            </TagPickerOptionGroup>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### NoPopover
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+
+import styles from "./styles/tag-picker.module.css";
+
+export const NoPopover = (): React.ReactNode => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState("");
+
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.currentTarget.value);
+  };
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" && inputValue) {
+      setInputValue("");
+      setSelectedOptions((curr) =>
+        curr.includes(inputValue) ? curr : [...curr, inputValue]
+      );
+    }
+  };
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-nopopover-label">
+        Add employees
+      </label>
+      <TagPicker
+        noPopover
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl className={styles.control}>
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <SelectedTag key={option} value={option} />
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-nopopover-label"
+            value={inputValue}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+        </TagPickerControl>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### SecondaryAction
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+
+import styles from "./styles/tag-picker.module.css";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const SecondaryAction = (): React.ReactNode => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+  ]);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+  const availableOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-secondaryaction-label">
+        Select employees
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl
+          className={styles.control}
+          secondaryAction={{
+            children: (
+              <button
+                type="button"
+                className={styles.secondaryAction}
+                onClick={() => setSelectedOptions([])}
+              >
+                All Clear
+              </button>
+            ),
+          }}
+        >
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <SelectedTag key={option} value={option} />
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-secondaryaction-label"
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>
+          {availableOptions.length > 0 ? (
+            availableOptions.map((option) => (
+              <PersonOption key={option} value={option} />
+            ))
+          ) : (
+            <TagPickerOption
+              value="no-options"
+              disabled
+              className={styles.option}
+            >
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### SingleSelect
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+
+import styles from "./styles/tag-picker.module.css";
+
+const options = [
+  "John Doe",
+  "Jane Doe",
+  "Max Mustermann",
+  "Erika Mustermann",
+  "Pierre Dupont",
+  "Amelie Dupont",
+  "Mario Rossi",
+  "Maria Rossi",
+];
+
+export const SingleSelect = (): React.ReactNode => {
+  const [selectedOption, setSelectedOption] = React.useState<
+    string | undefined
+  >();
+  const selectedOptions = React.useMemo(
+    () => (selectedOption ? [selectedOption] : []),
+    [selectedOption]
+  );
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    setSelectedOption(selectedOption === data.value ? undefined : data.value);
+  };
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-singleselect-label">
+        Select an employee
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
+        <TagPickerControl className={styles.control}>
+          {selectedOption && (
+            <TagPickerGroup
+              className={styles.group}
+              aria-label="Selected employee"
+            >
+              <SelectedTag value={selectedOption} />
+            </TagPickerGroup>
+          )}
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-singleselect-label"
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>
+          {options
+            .filter((option) => selectedOption !== option)
+            .map((option) => (
+              <PersonOption key={option} value={option} />
+            ))}
+        </TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```
+
+### TruncatedText
+
+```tsx
+import * as React from "react";
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+} from "@fluentui/react-headless-components-preview/tag-picker";
+import type { TagPickerProps } from "@fluentui/react-headless-components-preview/tag-picker";
+import { Tag } from "@fluentui/react-headless-components-preview/tag";
+import { DismissRegular } from "@fluentui/react-icons";
+
+import styles from "./styles/tag-picker.module.css";
+
+type Option = { value: string; fixedWidth?: boolean };
+
+const options: Option[] = [
+  { value: "John Doe" },
+  { value: "Jane Doe" },
+  { value: "Max Mustermann" },
+  { value: "Erika Mustermann" },
+  {
+    value: "This tag has text truncation based on a fixed width of 50px",
+    fixedWidth: true,
+  },
+  {
+    value:
+      "This tag has text truncation based on its container width. This is a long text that will be truncated when it reaches the end of the container.",
+  },
+];
+
+export const TruncatedText = (): React.ReactNode => {
+  const [selectedOptions, setSelectedOptions] =
+    React.useState<Option[]>(options);
+  const onOptionSelect: TagPickerProps["onOptionSelect"] = (_e, data) => {
+    if (data.value === "no-options") {
+      return;
+    }
+    setSelectedOptions(
+      data.selectedOptions.map(
+        (value) => options.find((o) => o.value === value)!
+      )
+    );
+  };
+  const availableOptions = options.filter(
+    (option) => !selectedOptions.includes(option)
+  );
+
+  return (
+    <div className={styles.demo}>
+      <label className={styles.label} id="tag-picker-truncated-label">
+        Select employees
+      </label>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions.map((option) => option.value)}
+      >
+        <TagPickerControl className={styles.control}>
+          <TagPickerGroup
+            className={styles.group}
+            aria-label="Selected employees"
+          >
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option.value}
+                value={option.value}
+                title={option.value}
+                className={styles.tag}
+                media={<Media name={option.value} />}
+                primaryText={{
+                  className: option.fixedWidth
+                    ? `${styles.truncate} ${styles.truncateFixed}`
+                    : styles.truncate,
+                }}
+                dismissIcon={{
+                  className: styles.dismissIcon,
+                  "aria-label": "remove",
+                  children: <DismissRegular aria-hidden />,
+                }}
+              >
+                {option.value}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput
+            className={styles.input}
+            aria-labelledby="tag-picker-truncated-label"
+          />
+        </TagPickerControl>
+        <TagPickerList className={styles.listbox}>
+          {availableOptions.length > 0 ? (
+            availableOptions.map((option) => (
+              <TagPickerOption
+                key={option.value}
+                value={option.value}
+                text={option.value}
+                title={option.value}
+                className={styles.option}
+                media={<Media name={option.value} square />}
+              >
+                <span className={styles.truncate}>{option.value}</span>
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption
+              value="no-options"
+              disabled
+              className={styles.option}
+            >
+              No options available
+            </TagPickerOption>
+          )}
+        </TagPickerList>
+      </TagPicker>
+    </div>
+  );
+};
+```

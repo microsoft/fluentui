@@ -1,0 +1,671 @@
+# Calendar
+
+## Examples
+
+### CalendarContiguousWorkWeekDays
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Calendar,
+  DateRangeType,
+  DayOfWeek,
+} from "@fluentui/react-calendar-compat";
+
+const workWeekDays = [
+  DayOfWeek.Monday,
+  DayOfWeek.Tuesday,
+  DayOfWeek.Wednesday,
+  DayOfWeek.Thursday,
+  DayOfWeek.Friday,
+];
+
+export const CalendarContiguousWorkWeekDays = (): JSXElement => {
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+      <Calendar
+        dateRangeType={DateRangeType.WorkWeek}
+        highlightSelectedMonth
+        showGoToToday
+        workWeekDays={workWeekDays}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarCustomDayCellRef
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+import type { CalendarDayGridStyles } from "@fluentui/react-calendar-compat";
+
+export const CalendarCustomDayCellRef = (): JSXElement => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback((date: Date): void => {
+    setSelectedDate(date);
+  }, []);
+
+  const customDayCellRef = React.useCallback(
+    (element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => {
+      if (element) {
+        element.title =
+          "custom title from customDayCellRef: " + date.toString();
+        if (date.getDay() === 0 || date.getDay() === 6) {
+          // We need to split the className since we use makeStyles and griffel provides a string of space
+          // separated classnames
+          classNames.dayOutsideBounds &&
+            element.classList.add(...classNames.dayOutsideBounds.split(" "));
+          (element.children[0] as HTMLButtonElement).disabled = true;
+        }
+      }
+    },
+    []
+  );
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        calendarDayProps={{ customDayCellRef }}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarDateBoundaries
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  addMonths,
+  addYears,
+  addDays,
+  Calendar,
+} from "@fluentui/react-calendar-compat";
+
+export const CalendarDateBoundaries = (): JSXElement => {
+  const today = new Date();
+  const minDate = addMonths(today, -1);
+  const maxDate = addYears(today, 1);
+  const restrictedDates = [
+    addDays(today, -2),
+    addDays(today, -8),
+    addDays(today, 2),
+    addDays(today, 8),
+  ];
+
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback((date: Date): void => {
+    setSelectedDate(date);
+  }, []);
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>
+        Date boundary: {minDate.toDateString()}-{maxDate.toDateString()}
+      </div>
+      <div>
+        Disabled dates:{" "}
+        {restrictedDates.map((d) => d.toDateString()).join(", ")}
+      </div>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday={false}
+        minDate={minDate}
+        maxDate={maxDate}
+        restrictedDates={restrictedDates}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### Default
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+import type { CalendarProps } from "@fluentui/react-calendar-compat";
+
+export const Default = (props: CalendarProps): JSXElement => (
+  <Calendar {...props} />
+);
+```
+
+### CalendarMarkedDays
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar, addDays } from "@fluentui/react-calendar-compat";
+import type { CalendarDayProps } from "@fluentui/react-calendar-compat";
+
+const calendarDayProps: Partial<CalendarDayProps> = {
+  getMarkedDays: (startingDate, _) => [
+    addDays(startingDate, 3),
+    addDays(startingDate, 4),
+  ],
+};
+
+export const CalendarMarkedDays = (): JSXElement => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <Calendar
+        showGoToToday
+        onSelectDate={setSelectedDate}
+        value={selectedDate}
+        // Add the marked days
+        calendarDayProps={calendarDayProps}
+      />
+    </>
+  );
+};
+```
+
+### CalendarMonthOnly
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar, DateRangeType } from "@fluentui/react-calendar-compat";
+
+export const CalendarMonthOnly = (): JSXElement => {
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+      <Calendar
+        dateRangeType={DateRangeType.Month}
+        showGoToToday
+        highlightSelectedMonth
+        isDayPickerVisible={false}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarMonthSelection
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Calendar,
+  DateRangeType,
+  DayOfWeek,
+  addDays,
+  getDateRangeArray,
+} from "@fluentui/react-calendar-compat";
+import { Button, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: { height: "360px" },
+});
+const dateRangeType = DateRangeType.Month;
+const firstDayOfWeek = DayOfWeek.Sunday;
+
+export const CalendarMonthSelection = (): JSXElement => {
+  const styles = useStyles();
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  const goPrevious = React.useCallback((): void => {
+    setSelectedDate((prevSelectedDate) => {
+      prevSelectedDate = prevSelectedDate || new Date();
+      const dateRangeArray = getDateRangeArray(
+        prevSelectedDate,
+        dateRangeType,
+        firstDayOfWeek
+      );
+
+      const subtractFrom = new Date(
+        dateRangeArray[0].getFullYear(),
+        dateRangeArray[0].getMonth(),
+        1
+      );
+      const daysToSubtract = 1;
+
+      return addDays(subtractFrom, -daysToSubtract);
+    });
+  }, []);
+
+  const goNext = React.useCallback((): void => {
+    setSelectedDate((prevSelectedDate) => {
+      prevSelectedDate = prevSelectedDate || new Date();
+      const dateRangeArray = getDateRangeArray(
+        prevSelectedDate,
+        dateRangeType,
+        firstDayOfWeek
+      );
+      return addDays(dateRangeArray.pop()!, 1);
+    });
+  }, []);
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+
+      <Calendar
+        dateRangeType={dateRangeType}
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        firstDayOfWeek={firstDayOfWeek}
+      />
+
+      <div>
+        <Button onClick={goPrevious}>Previous</Button>
+        <Button onClick={goNext}>Next</Button>
+      </div>
+    </div>
+  );
+};
+```
+
+### CalendarMultidayDayView
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+import {
+  Dropdown,
+  Field,
+  makeStyles,
+  Option,
+} from "@fluentui/react-components";
+import type {
+  SelectionEvents,
+  OptionOnSelectData,
+} from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: { height: "360px" },
+  dropdown: { width: "230px" },
+});
+
+const dayOptions = ["1", "2", "3", "4", "5", "6"];
+
+export const CalendarMultidayDayView = (): JSXElement => {
+  const styles = useStyles();
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState(4);
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  const onOptionSelect = React.useCallback(
+    (_: SelectionEvents, data: OptionOnSelectData) => {
+      setDaysToSelectInDayView(Number(data.optionText));
+    },
+    []
+  );
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <p>
+        This calendar uses <code>dateRangeType = Day</code> and{" "}
+        <code>daysToSelectInView = 4</code>.
+      </p>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        calendarDayProps={{ daysToSelectInDayView }}
+      />
+
+      <Field label="Choose days to select">
+        <Dropdown className={styles.dropdown} onOptionSelect={onOptionSelect}>
+          {dayOptions.map((option) => (
+            <Option key={option} text={option} value={option}>
+              {option}
+            </Option>
+          ))}
+        </Dropdown>
+      </Field>
+      <h3>Selection with negative date range</h3>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        calendarDayProps={{ daysToSelectInDayView: -daysToSelectInDayView }}
+      />
+    </div>
+  );
+};
+```
+
+### CalendarNonContiguousWorkWeekDays
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  Calendar,
+  DateRangeType,
+  DayOfWeek,
+} from "@fluentui/react-calendar-compat";
+
+const workWeekDays = [
+  DayOfWeek.Tuesday,
+  DayOfWeek.Saturday,
+  DayOfWeek.Wednesday,
+  DayOfWeek.Friday,
+];
+
+export const CalendarNonContiguousWorkWeekDays = (): JSXElement => {
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+
+      <Calendar
+        dateRangeType={DateRangeType.WorkWeek}
+        workWeekDays={workWeekDays}
+        firstDayOfWeek={DayOfWeek.Monday}
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarOverlaidMonth
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+
+export const CalendarOverlaidMonth = (): JSXElement => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback((date: Date): void => {
+    setSelectedDate(date);
+  }, []);
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+
+      <Calendar
+        showMonthPickerAsOverlay
+        highlightSelectedMonth
+        showGoToToday={false}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarSixWeeks
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+
+export const CalendarSixWeeks = (): JSXElement => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback((date: Date): void => {
+    setSelectedDate(date);
+  }, []);
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+
+      <Calendar
+        showSixWeeksByDefault
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarWeekNumbers
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import { Calendar } from "@fluentui/react-calendar-compat";
+
+export const CalendarWeekNumbers = (): JSXElement => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback((date: Date): void => {
+    setSelectedDate(date);
+  }, []);
+
+  return (
+    <>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+
+      <Calendar
+        showWeekNumbers
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+      />
+    </>
+  );
+};
+```
+
+### CalendarWeekSelection
+
+```tsx
+import * as React from "react";
+import type { JSXElement } from "@fluentui/react-components";
+import {
+  addDays,
+  getDateRangeArray,
+  Calendar,
+  DateRangeType,
+  DayOfWeek,
+} from "@fluentui/react-calendar-compat";
+import { Button, makeStyles } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  wrapper: { height: "360px" },
+});
+const dateRangeType = DateRangeType.Week;
+const firstDayOfWeek = DayOfWeek.Sunday;
+
+export const CalendarWeekSelection = (): JSXElement => {
+  const styles = useStyles();
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+
+  const onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[] | undefined): void => {
+      setSelectedDate(date);
+      setSelectedDateRange(selectedDateRangeArray);
+    },
+    []
+  );
+
+  const goPrevious = React.useCallback((): void => {
+    setSelectedDate((prevSelectedDate) => {
+      prevSelectedDate = prevSelectedDate || new Date();
+      const dateRangeArray = getDateRangeArray(
+        prevSelectedDate,
+        dateRangeType,
+        firstDayOfWeek
+      );
+
+      const subtractFrom = new Date(
+        dateRangeArray[0].getFullYear(),
+        dateRangeArray[0].getMonth(),
+        1
+      );
+      const daysToSubtract = 1;
+
+      return addDays(subtractFrom, -daysToSubtract);
+    });
+  }, []);
+
+  const goNext = React.useCallback((): void => {
+    setSelectedDate((prevSelectedDate) => {
+      prevSelectedDate = prevSelectedDate || new Date();
+      const dateRangeArray = getDateRangeArray(
+        prevSelectedDate,
+        dateRangeType,
+        firstDayOfWeek
+      );
+      return addDays(dateRangeArray.pop()!, 1);
+    });
+  }, []);
+
+  let dateRangeString = "Not set";
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toDateString() + "-" + rangeEnd.toDateString();
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <div>Selected date: {selectedDate?.toDateString() || "Not set"}</div>
+      <div>Selected range: {dateRangeString}</div>
+
+      <Calendar
+        dateRangeType={dateRangeType}
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        firstDayOfWeek={firstDayOfWeek}
+      />
+
+      <div>
+        <Button onClick={goPrevious}>Previous</Button>
+        <Button onClick={goNext}>Next</Button>
+      </div>
+    </div>
+  );
+};
+```

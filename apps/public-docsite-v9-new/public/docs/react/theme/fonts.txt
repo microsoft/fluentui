@@ -1,0 +1,27 @@
+# Fonts
+
+<h1 className="sbdocs-title">Fonts</h1>
+
+### Font family
+
+<FluentCanvas>
+  <FontFamily />
+</FluentCanvas>
+
+### Font size
+
+<FluentCanvas>
+  <FontSize />
+</FluentCanvas>
+
+### Font weight
+
+<FluentCanvas>
+  <FontWeight />
+</FluentCanvas>
+
+### Line height
+
+<FluentCanvas>
+  <LineHeight />
+</FluentCanvas>
