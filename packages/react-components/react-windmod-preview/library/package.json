@@ -103,6 +103,16 @@
         "default": "./lib-commonjs/image.cjs"
       }
     },
+    "./input": {
+      "import": {
+        "types": "./dist/input.d.ts",
+        "default": "./lib/input.js"
+      },
+      "require": {
+        "types": "./dist/input.d.cts",
+        "default": "./lib-commonjs/input.cjs"
+      }
+    },
     "./label": {
       "import": {
         "types": "./dist/label.d.ts",

@@ -31,7 +31,9 @@ export function isConformant<TProps = {}>(
 
       // The component must have an export map entry in package.json for proper module
       // resolution and type definitions (this package's dual ESM/CJS shape).
-      'export-map-entry-exists': () => {
+      // The unused parameter is load-bearing: react-conformance schedules an extra test only
+      // when its callback has arity 1.
+      'export-map-entry-exists': (_testInfo: unknown) => {
         const packageJSON = require('../../package.json');
 
         it('component has export map entry in package.json', () => {

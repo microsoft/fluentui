@@ -19,6 +19,9 @@ export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots
 export { Image, imageClassNames, renderImage, useImage, useImageStyles } from './image';
 export type { ImageFit, ImageProps, ImageShape, ImageSlots, ImageState } from './image';
 
+export { Input, inputClassNames, renderInput, useInput, useInputStyles } from './input';
+export type { InputAppearance, InputProps, InputSize, InputSlots, InputState } from './input';
+
 export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
 export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
 

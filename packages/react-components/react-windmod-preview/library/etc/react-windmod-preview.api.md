@@ -20,6 +20,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
 import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
 import type { ImageState as ImageState_2 } from '@fluentui/react-headless-components-preview/image';
+import type { InputProps as InputProps_2 } from '@fluentui/react-headless-components-preview/input';
+import { InputSlots } from '@fluentui/react-headless-components-preview/input';
+import type { InputState as InputState_2 } from '@fluentui/react-headless-components-preview/input';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
 import { LabelSlots } from '@fluentui/react-headless-components-preview/label';
@@ -44,6 +47,7 @@ import { renderButton } from '@fluentui/react-headless-components-preview/button
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
+import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -83,6 +87,7 @@ import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
+import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -237,6 +242,31 @@ export { ImageSlots }
 export type ImageState = ImageState_2 & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
 
 // @public
+export const Input: ForwardRefComponent<InputProps>;
+
+// @public
+export type InputAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const inputClassNames: {
+    root: string;
+};
+
+// @public
+export type InputProps = InputProps_2 & {
+    appearance?: InputAppearance;
+    size?: InputSize;
+};
+
+// @public
+export type InputSize = 'small' | 'medium' | 'large';
+
+export { InputSlots }
+
+// @public
+export type InputState = InputState_2 & Required<Pick<InputProps, 'appearance' | 'size'>>;
+
+// @public
 export const Label: ForwardRefComponent<LabelProps>;
 
 // @public
@@ -369,6 +399,8 @@ export { renderCompoundButton }
 export { renderDivider }
 
 export { renderImage }
+
+export { renderInput }
 
 export { renderLabel }
 
@@ -569,6 +601,11 @@ export { useImage }
 
 // @public
 export const useImageStyles: (state: ImageState) => ImageState;
+
+export { useInput }
+
+// @public
+export const useInputStyles: (state: InputState) => InputState;
 
 export { useLabel }
 
