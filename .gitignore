@@ -69,6 +69,7 @@ screenshots
 apps/public-docsite-v9-new/.react-router
 apps/public-docsite-v9-new/.source
 apps/public-docsite-v9-new/app/generated
+apps/public-docsite-v9-new/public/docs/search-index.json
 !tools/**/lib
 tools/**/__fixtures__/**/lib
 tools/**/__fixtures__/**/lib-commonjs

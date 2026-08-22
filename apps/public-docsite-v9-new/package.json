@@ -6,7 +6,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "react-router build",
+    "build": "node scripts/build-search-index.mjs && react-router build",
+    "build:search": "node scripts/build-search-index.mjs",
     "dev": "react-router dev",
     "docgen": "node scripts/generate-docgen.mjs",
     "lint": "yarn run -T eslint .",
