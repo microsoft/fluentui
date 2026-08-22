@@ -58,7 +58,10 @@ describe('abbreviateSlotType', () => {
 
 describe('getNativeElements', () => {
   it('reads the element union from the `as` prop', () => {
-    assert.deepEqual(getNativeElements({ as: { type: { name: 'enum', value: [{ value: '"a"' }, { value: '"button"' }] } } }), ['a', 'button']);
+    assert.deepEqual(
+      getNativeElements({ as: { type: { name: 'enum', value: [{ value: '"a"' }, { value: '"button"' }] } } }),
+      ['a', 'button'],
+    );
   });
 
   it('returns null when `as` is absent', () => {

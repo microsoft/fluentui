@@ -71,7 +71,15 @@ export default defineConfig(
        * `lib/` can silently win over the source being edited. It also removes the need to
        * hand-maintain one alias per `*-stories` package as more trees are migrated.
        */
-      alias: tsconfigAliases(`${repoRoot}tsconfig.base.json`, repoRoot),
+      alias: [
+        // Migrated pages import helper modules and images that live beside their original
+        // location; this keeps them importing the originals rather than copies that would drift.
+        {
+          find: /^@repo\/(.*)$/,
+          replacement: `${repoRoot}$1`,
+        },
+        ...tsconfigAliases(`${repoRoot}tsconfig.base.json`, repoRoot),
+      ],
     },
     plugins: [
       guardUnsupportedStories(),

@@ -98,9 +98,7 @@ function findEntryPoints(dir, segments = []) {
     const childDir = join(dir, entry.name);
     const childSegments = [...segments, entry.name];
 
-    const hasEntry = ['index.stories.tsx', 'index.stories.ts'].some(candidate =>
-      existsSync(join(childDir, candidate)),
-    );
+    const hasEntry = ['index.stories.tsx', 'index.stories.ts'].some(candidate => existsSync(join(childDir, candidate)));
 
     if (hasEntry) {
       found.push(childSegments);

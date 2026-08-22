@@ -47,7 +47,4 @@ export async function serveStatic(root, port) {
   };
 }
 
-export const distRoot = resolve(
-  dirname(fileURLToPath(import.meta.url)),
-  '../dist/client',
-);
+export const distRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../dist/client');

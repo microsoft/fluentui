@@ -52,9 +52,7 @@ describe('accessibility', () => {
       const violations = await analyse(path);
       const blocking = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
 
-      const detail = blocking
-        .map(v => `${v.impact} · ${v.id} · ${v.help} (${v.nodes.length} node(s))`)
-        .join('\n  ');
+      const detail = blocking.map(v => `${v.impact} · ${v.id} · ${v.help} (${v.nodes.length} node(s))`).join('\n  ');
 
       assert.equal(blocking.length, 0, blocking.length ? `\n  ${detail}` : undefined);
     });
@@ -64,9 +62,9 @@ describe('accessibility', () => {
     const page = await browser.newPage();
     await page.goto(`${server.origin}/docs/react/button/`, { waitUntil: 'networkidle' });
 
-    const levels = await page.locator('h1, h2, h3').evaluateAll(nodes =>
-      nodes.map(node => Number(node.tagName.slice(1))),
-    );
+    const levels = await page
+      .locator('h1, h2, h3')
+      .evaluateAll(nodes => nodes.map(node => Number(node.tagName.slice(1))));
 
     await page.close();
 

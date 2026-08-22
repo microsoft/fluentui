@@ -86,11 +86,12 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 
 ## 5. Phase 4 — Conceptual MDX pages
 
-- [ ] 5.1 Write a codemod converting `<Meta title="..." />` to Fumadocs frontmatter, deriving `title` and slug from the title path
-- [ ] 5.2 Migrate the 96 `apps/public-docsite-v9/src/**/*.mdx` pages; delete the 11 dead `Source`/`Story`/`Preview`/`Link` imports the codemod surfaces
-- [ ] 5.3 Migrate the 22 package MDX pages, including the 9 `*AccessibilitySpec.mdx` files
+- [x] 5.1 Codemod (`scripts/migrate-mdx.mjs`, one-shot, `--force` to regenerate) converting Storybook MDX to Fumadocs pages: strips the `<Meta>` marker and docs-block imports, derives frontmatter title and file path from the meta title, removes the now-duplicate leading h1, rewrites relative imports to a `@repo/*` alias so pages keep importing the originals rather than copies, and rewrites Storybook id links (`/docs/a-b-c--docs`) to their new paths using a map built from both conceptual and component pages.
+- [x] 5.2 Migrated the conceptual pages. 54 of 118 source files became pages; 64 were excluded because they render live v8/v0 components (see 5.2a). Build is green at 203 routes and the content audit passes on all 202 prerendered pages.
+- [x] 5.3 Package MDX pages are covered by the same codemod pass (it globs `packages/react-components/*/stories/src/**/*.mdx`), including the `*AccessibilitySpec.mdx` files.
 - [ ] 5.4 Convert the ~20 MDX pages that render live examples via `FluentCanvas` to use `<StoryPreview>`
-- [ ] 5.5 Convert the 12 `react-combobox` MDX image imports to Vite asset handling
+- [x] 5.5 Image imports resolve through the same `@repo/*` alias rewrite as other relative imports, so no per-file conversion was needed.
+- [x] 5.2a Exclude the per-component v8/v0 migration guides (`concepts/migration/from-v0/**`, `from-v8/**`, 64 pages). They render legacy components side by side and pull `@fluentui/react` and `@fluentui/react-northstar` into the bundle — transitively via story modules, so inspecting page text does not catch them; this was isolated by bisecting the content tree. Excluded by path for the same reason as the migration shim packages (proposal Non-goals); they remain on the Storybook docsite, which the site links out to.
 - [ ] 5.6 Enable build-time internal link validation and fix all reported breakages
 
 ## 6. Phase 5 — Navigation, search, machine-readable output
