@@ -1,0 +1,138 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Root-modifier block order is the cascade: every selector below is :where()-flat, so source
+     order alone arbitrates. .outlineInteractive after .outline, .invalid after every appearance
+     block. */
+  .root {
+    @apply relative m-0 box-border inline-flex rounded-medium p-0 pb-thick align-top;
+  }
+
+  .disabled {
+    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .filled {
+    @apply border-(length:--spacing-thin) border-solid border-transparent-stroke;
+
+    @variant hover, focus-within {
+      @apply border-transparent-stroke-interactive;
+    }
+  }
+
+  .filledDarker {
+    @apply bg-neutral-background-3;
+  }
+
+  .filledLighter {
+    @apply bg-neutral-background-1;
+  }
+
+  .outline {
+    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .interactive {
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    @variant focus-within {
+      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition-duration: 0.01ms;
+        }
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  .outlineInteractive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+
+    @variant focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-compound-brand-stroke;
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .textarea {
+    @apply m-0 box-border h-full grow border-none bg-transparent font-base font-regular text-neutral-foreground-1 outline-none;
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4 opacity-100;
+    }
+
+    @variant group-size-small/fui-textarea {
+      @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs text-base-200 leading-base-200;
+    }
+
+    @variant group-size-medium/fui-textarea {
+      @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge text-base-300 leading-base-300;
+    }
+
+    @variant group-size-large/fui-textarea {
+      @apply max-h-320 min-h-64 px-14 py-vertical-s text-base-400 leading-base-400;
+    }
+
+    @variant group-disabled/fui-textarea {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+
+  .resizeNone {
+    @apply resize-none;
+  }
+
+  .resizeHorizontal {
+    @apply resize-x;
+  }
+
+  .resizeVertical {
+    @apply resize-y;
+  }
+
+  .resizeBoth {
+    @apply resize;
+  }
+}

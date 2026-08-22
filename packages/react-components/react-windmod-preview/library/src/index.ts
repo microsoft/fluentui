@@ -93,6 +93,9 @@ export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './
 export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
 export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
 
+export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
+export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
+
 export {
   renderToggleButton,
   ToggleButton,

@@ -57,6 +57,7 @@ import { renderRatingItem } from '@fluentui/react-headless-components-preview/ra
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
@@ -73,6 +74,9 @@ import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-previ
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsLightV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+import type { TextareaProps as TextareaProps_2 } from '@fluentui/react-headless-components-preview/textarea';
+import { TextareaSlots } from '@fluentui/react-headless-components-preview/textarea';
+import type { TextareaState as TextareaState_2 } from '@fluentui/react-headless-components-preview/textarea';
 import { ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { themeClassNames } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import type { ToggleButtonProps as ToggleButtonProps_2 } from '@fluentui/react-headless-components-preview/toggle-button';
@@ -99,6 +103,7 @@ import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleto
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -420,6 +425,8 @@ export { renderSkeletonItem }
 
 export { renderSpinner }
 
+export { renderTextarea }
+
 export { renderToggleButton }
 
 export { renderTooltip }
@@ -510,6 +517,31 @@ export { teamsHighContrastThemeClassName }
 export { teamsLightThemeClassName }
 
 export { teamsLightV21ThemeClassName }
+
+// @public
+export const Textarea: ForwardRefComponent<TextareaProps>;
+
+// @public
+export type TextareaAppearance = 'outline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const textareaClassNames: {
+    root: string;
+};
+
+// @public
+export type TextareaProps = TextareaProps_2 & {
+    appearance?: TextareaAppearance;
+    size?: TextareaSize;
+};
+
+// @public
+export type TextareaSize = 'small' | 'medium' | 'large';
+
+export { TextareaSlots }
+
+// @public
+export type TextareaState = TextareaState_2 & Required<Pick<TextareaProps, 'appearance' | 'size'>>;
 
 export { ThemeClassName }
 
@@ -652,6 +684,11 @@ export { useSpinner }
 
 // @public
 export const useSpinnerStyles: (state: SpinnerState) => SpinnerState;
+
+export { useTextarea }
+
+// @public
+export const useTextareaStyles: (state: TextareaState) => TextareaState;
 
 export { useToggleButton }
 

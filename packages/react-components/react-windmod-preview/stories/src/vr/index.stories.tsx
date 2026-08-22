@@ -22,6 +22,8 @@ export { SkeletonWindmod } from './SkeletonWindmod.stories';
 export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
+export { TextareaWindmod } from './TextareaWindmod.stories';
+export { TextareaGriffel } from './TextareaGriffel.stories';
 export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';
 export { ToggleButtonGriffel } from './ToggleButtonGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';
