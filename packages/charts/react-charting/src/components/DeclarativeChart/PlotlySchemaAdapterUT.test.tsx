@@ -25,6 +25,7 @@ import {
   resolveXAxisPoint,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
+  sortCategoriesTopologically,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
@@ -1865,5 +1866,54 @@ describe('Constants', () => {
 
   test('SINGLE_REPEAT should be defined', () => {
     expect(SINGLE_REPEAT).toBe('repeat(1, 1fr)');
+  });
+});
+
+describe('sortCategoriesTopologically', () => {
+  it('should return categories in sequential order for a simple linear sequence', () => {
+    const data = [{ x: ['A', 'B', 'C'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result).toEqual(['A', 'B', 'C']);
+  });
+
+  it('should merge sequences into a consistent topological order', () => {
+    const data = [{ x: ['A', 'B'] }, { x: ['B', 'C'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result).toEqual(['A', 'B', 'C']);
+  });
+
+  it('should handle branching sequences', () => {
+    const data = [{ x: ['A', 'B'] }, { x: ['A', 'C'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result).toEqual(['A', 'B', 'C']);
+  });
+
+  it('should return unsorted categories if a cycle exists', () => {
+    const data = [{ x: ['A', 'B'] }, { x: ['B', 'A'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result.sort()).toEqual(['A', 'B']);
+  });
+
+  it('should ignore invalid values', () => {
+    const data = [{ x: ['A', null, 'B', null, 'C'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result).toEqual(['A', 'B', 'C']);
+  });
+
+  it('should handle multiple series and maintain order', () => {
+    const data = [{ x: ['A', 'B', 'C'] }, { x: ['C', 'D'] }, { x: ['B', 'E'] }];
+    const result = sortCategoriesTopologically(data, 'x');
+    expect(result).toEqual(['A', 'B', 'C', 'D', 'E']);
+  });
+
+  it('should return empty array when given empty data', () => {
+    const result = sortCategoriesTopologically([], 'x');
+    expect(result).toEqual([]);
+  });
+
+  it('should handle categories on y axis', () => {
+    const data = [{ y: ['X', 'Y', 'Z'] }];
+    const result = sortCategoriesTopologically(data, 'y');
+    expect(result).toEqual(['X', 'Y', 'Z']);
   });
 });
