@@ -9,7 +9,7 @@ import { distRoot, serveStatic } from './static-server.mjs';
 const require = createRequire(import.meta.url);
 const axeSource = require('fs').readFileSync(require.resolve('axe-core'), 'utf8');
 
-const PAGES = ['/docs/react/button/', '/docs/react/', '/docs/'];
+const PAGES = ['/docs/react/components/button/', '/docs/react/', '/docs/'];
 
 let server;
 let browser;
@@ -60,7 +60,7 @@ describe('accessibility', () => {
 
   it('renders the component page with a coherent heading order', async () => {
     const page = await browser.newPage();
-    await page.goto(`${server.origin}/docs/react/button/`, { waitUntil: 'networkidle' });
+    await page.goto(`${server.origin}/docs/react/components/button/`, { waitUntil: 'networkidle' });
 
     const levels = await page
       .locator('h1, h2, h3')

@@ -98,7 +98,7 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 
 Exit criterion: `docsite/site-navigation` scenarios pass.
 
-- [ ] 6.1 Port the sidebar IA from `options.storySort.order` in `apps/public-docsite-v9/.storybook/preview.js` into `meta.json` files; confirm undeclared pages still appear deterministically
+- [x] 6.1 Ported the sidebar IA. Two parts: the page _positions_ now come from each story's `meta.title` (`Components/Badge/CounterBadge`, `Utilities/...`) rather than its directory — deriving paths from directories had flattened every component to the root and lost the grouping entirely — and the _order_ is transcribed from `options.storySort.order` into `meta.json` files by `scripts/generate-nav.mjs`, with Fumadocs' `...` rest so unlisted pages still appear. Sidebar now reads Concepts, Theme, Components, ... as Storybook does.
 - [ ] 6.2 Configure the two trees as layout tabs with independent navigation roots and client-side switching
 - [ ] 6.3 Enable full-text search using the **static** search client with a prebuilt index; confirm no `api/search` server route exists and that search works from static hosting (design D10)
 - [ ] 6.4 Enable the `llms.txt` summary and per-page plain-text output; verify a page edit is reflected in the same build

@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, existsSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -42,12 +42,24 @@ const TREES = {
   },
 };
 
+/** Which entry-point file a story directory uses. */
+function entryFile(root, segments) {
+  return ['index.stories.tsx', 'index.stories.ts'].find(candidate => existsSync(join(root, ...segments, candidate)));
+}
+
 /** `TeachingPopover` -> `teaching-popover`; used for both the slug and the file name. */
 function toKebab(name) {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase();
+  return (
+    name
+      .trim()
+      // `TeachingPopover` -> `Teaching-Popover`
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      // `ARIALive` -> `ARIA-Live`, but leave `APIs` intact (one trailing lowercase is a plural)
+      .replace(/([A-Z]+)([A-Z][a-z]{2,})/g, '$1-$2')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+  );
 }
 
 /** `TeachingPopover` -> `Teaching Popover`, for the page title. */
@@ -116,7 +128,23 @@ for (const pkg of resolvePackages()) {
 
   for (const segments of findEntryPoints(storiesDir)) {
     const name = segments[segments.length - 1];
-    const slug = segments.map(toKebab).join('/');
+
+    /*
+     * The page's position comes from the story's `title`, not its directory, because the
+     * title is what carries the information architecture Storybook presents
+     * (`Components/Badge/CounterBadge`, `Utilities/...`, `Compat Components/...`). Deriving
+     * paths from directories alone flattened every component to the root and lost it.
+     */
+    const source = readFileSync(join(storiesDir, ...segments, entryFile(storiesDir, segments)), 'utf8');
+    const titleMatch = source.match(/title:\s*'([^']+)'|title:\s*"([^"]+)"/);
+    const titleSegments = (titleMatch?.[1] ?? titleMatch?.[2] ?? name).split('/').map(s => s.trim());
+
+    // `Components/Button/Button` presents as Components > Button; keep the path that shape.
+    if (titleSegments.length > 1 && titleSegments.at(-1) === titleSegments.at(-2)) {
+      titleSegments.pop();
+    }
+
+    const slug = titleSegments.map(toKebab).join('/');
     const outFile = join(outDir, `${slug}.mdx`);
 
     if (existsSync(outFile)) {

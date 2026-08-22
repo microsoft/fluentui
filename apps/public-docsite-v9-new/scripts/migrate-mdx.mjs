@@ -84,10 +84,17 @@ const routeById = new Map(pages.map(page => [page.id, `/react/${page.path}`]));
  * directory, the id from the meta title, so both are read here.
  */
 function toKebabSegment(name) {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase();
+  return (
+    name
+      .trim()
+      // `TeachingPopover` -> `Teaching-Popover`
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      // `ARIALive` -> `ARIA-Live`, but leave `APIs` intact (one trailing lowercase is a plural)
+      .replace(/([A-Z]+)([A-Z][a-z]{2,})/g, '$1-$2')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+  );
 }
 
 for (const file of globSync('packages/react-components/*/stories/src/**/index.stories.{ts,tsx}', { cwd: repoRoot })) {
