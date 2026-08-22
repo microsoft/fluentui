@@ -25,6 +25,9 @@ import type { LinkProps as LinkProps_2 } from '@fluentui/react-headless-componen
 import { LinkSlots } from '@fluentui/react-headless-components-preview/link';
 import type { LinkState as LinkState_2 } from '@fluentui/react-headless-components-preview/link';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
+import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
+import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
+import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
@@ -33,6 +36,7 @@ import { renderDivider } from '@fluentui/react-headless-components-preview/divid
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
+import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
@@ -64,6 +68,7 @@ import { useDivider } from '@fluentui/react-headless-components-preview/divider'
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
+import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
@@ -239,6 +244,35 @@ export type LinkState = LinkState_2 & Required<Pick<LinkProps, 'appearance' | 'i
 
 export { OnVisibleChangeData }
 
+// @public
+export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
+
+// @public
+export const progressBarClassNames: {
+    root: string;
+};
+
+// @public
+export type ProgressBarColor = 'brand' | 'success' | 'warning' | 'error';
+
+// @public
+export type ProgressBarProps = ProgressBarProps_2 & {
+    color?: ProgressBarColor;
+    shape?: ProgressBarShape;
+    thickness?: ProgressBarThickness;
+};
+
+// @public
+export type ProgressBarShape = 'rounded' | 'square';
+
+export { ProgressBarSlots }
+
+// @public
+export type ProgressBarState = ProgressBarState_2 & Required<Pick<ProgressBarProps, 'color' | 'shape' | 'thickness'>>;
+
+// @public
+export type ProgressBarThickness = 'medium' | 'large';
+
 export { Provider }
 
 export { renderBadge }
@@ -252,6 +286,8 @@ export { renderImage }
 export { renderLabel }
 
 export { renderLink }
+
+export { renderProgressBar }
 
 export { renderProvider }
 
@@ -425,6 +461,11 @@ export { useLink }
 
 // @public
 export const useLinkStyles: (state: LinkState) => LinkState;
+
+export { useProgressBar }
+
+// @public
+export const useProgressBarStyles: (state: ProgressBarState) => ProgressBarState;
 
 export { useProvider }
 

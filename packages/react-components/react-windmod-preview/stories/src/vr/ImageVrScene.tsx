@@ -1,3 +1,5 @@
+'use client';
+
 // eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
 import * as React from 'react';
 
@@ -31,6 +33,7 @@ export const useImageSourcesDecoded = (): boolean => {
     Promise.all(
       sources.map(src => {
         // `Image` is the component under test in both story files — never `new Image()`.
+        // eslint-disable-next-line @nx/workspace-no-restricted-globals -- capture-browser-only fixture; no provider in scope
         const el = document.createElement('img');
         el.src = src;
         return el.decode

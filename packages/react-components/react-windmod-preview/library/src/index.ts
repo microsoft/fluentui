@@ -17,6 +17,22 @@ export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
 
 export {
+  ProgressBar,
+  progressBarClassNames,
+  renderProgressBar,
+  useProgressBar,
+  useProgressBarStyles,
+} from './progress-bar';
+export type {
+  ProgressBarColor,
+  ProgressBarProps,
+  ProgressBarShape,
+  ProgressBarSlots,
+  ProgressBarState,
+  ProgressBarThickness,
+} from './progress-bar';
+
+export {
   renderSkeleton,
   Skeleton,
   skeletonClassNames,

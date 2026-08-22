@@ -10,6 +10,8 @@ export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { LinkWindmod } from './LinkWindmod.stories';
 export { LinkGriffel } from './LinkGriffel.stories';
+export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
+export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { SkeletonWindmod } from './SkeletonWindmod.stories';
 export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';

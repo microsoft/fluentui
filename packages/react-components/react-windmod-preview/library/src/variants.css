@@ -44,10 +44,6 @@
 @custom-variant text-position-before (&:where([data-text-position='before']));
 @custom-variant text-position-below (&:where([data-text-position='below']));
 
-/* ProgressBar: thickness */
-@custom-variant thickness-medium (&:where([data-thickness='medium']));
-@custom-variant thickness-large (&:where([data-thickness='large']));
-
 /* Skeleton: animation, appearance, item shape */
 @custom-variant animation-pulse (&:where([data-animation='pulse']));
 @custom-variant appearance-translucent (&:where([data-appearance='translucent']));

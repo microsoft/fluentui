@@ -112,6 +112,16 @@
         "default": "./lib-commonjs/link.cjs"
       }
     },
+    "./progress-bar": {
+      "import": {
+        "types": "./dist/progress-bar.d.ts",
+        "default": "./lib/progress-bar.js"
+      },
+      "require": {
+        "types": "./dist/progress-bar.d.cts",
+        "default": "./lib-commonjs/progress-bar.cjs"
+      }
+    },
     "./provider": {
       "import": {
         "types": "./dist/provider.d.ts",
