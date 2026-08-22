@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: allow locked item interactions and require dwell before dynamic nesting",
+  "packageName": "@fluentui/react-dashboard-grid-preview",
+  "email": "ynagaraj@microsoft.com",
+  "dependentChangeType": "patch"
+}

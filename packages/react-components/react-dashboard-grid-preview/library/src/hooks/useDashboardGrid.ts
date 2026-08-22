@@ -205,6 +205,9 @@ export const createDashboardGridHandle = (
     store.update(id, toDashboardGridEngineItem({ id, ...patch }));
   },
   load: (items, options) => {
+    if (isSerializedGrid(items)) {
+      store.setSerializableOptions(items.options, true);
+    }
     store.load(
       isSerializedGrid(items)
         ? deserializeDashboardGridItems(items, registry, store.id)

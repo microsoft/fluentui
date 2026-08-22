@@ -1,4 +1,8 @@
-import { createDashboardGridDragPreview, sanitizeDashboardGridDragPreview } from './dragPreview';
+import {
+  createDashboardGridDragPreview,
+  resolveDashboardGridDragPreviewHost,
+  sanitizeDashboardGridDragPreview,
+} from './dragPreview';
 
 describe('dashboard grid drag preview', () => {
   it('sanitizes IDs, ARIA relationships, and focusable descendants', () => {
@@ -40,5 +44,45 @@ describe('dashboard grid drag preview', () => {
 
     preview.destroy();
     expect(host.contains(preview.element)).toBe(false);
+  });
+
+  it('resolves body, parent, explicit, and Shadow DOM preview hosts', () => {
+    const parent = document.createElement('div');
+    const item = document.createElement('div');
+    const explicit = document.createElement('div');
+    parent.appendChild(item);
+
+    expect(
+      resolveDashboardGridDragPreviewHost({
+        targetDocument: document,
+        itemElement: item,
+        portal: 'body',
+      }),
+    ).toBe(document.body);
+    expect(
+      resolveDashboardGridDragPreviewHost({
+        targetDocument: document,
+        itemElement: item,
+        portal: 'parent',
+      }),
+    ).toBe(parent);
+    expect(
+      resolveDashboardGridDragPreviewHost({
+        targetDocument: document,
+        itemElement: item,
+        portal: explicit,
+      }),
+    ).toBe(explicit);
+
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    const shadowItem = document.createElement('div');
+    shadowRoot.appendChild(shadowItem);
+    expect(
+      resolveDashboardGridDragPreviewHost({
+        targetDocument: document,
+        itemElement: shadowItem,
+      }),
+    ).toBe(shadowRoot);
   });
 });

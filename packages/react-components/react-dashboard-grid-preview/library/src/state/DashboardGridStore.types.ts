@@ -270,18 +270,52 @@ export type DashboardGridSaveOptions = {
   includeLayouts?: boolean;
 };
 
+/** Serializable pointer-drag options retained with a saved grid. */
+export type DashboardGridSerializableDragOptions = Pick<
+  DashboardGridDragOptions,
+  'handleSelector' | 'cancelSelector' | 'scroll' | 'pause'
+> & {
+  preview?: 'item' | 'clone';
+  portal?: Extract<DashboardGridDragOptions['portal'], 'body' | 'parent'>;
+};
+
+/** Serializable removal-zone options retained with a saved grid. */
+export type DashboardGridSerializableRemovalOptions = {
+  accept?: Extract<DashboardGridRemovalOptions['accept'], string>;
+  decline?: Extract<DashboardGridRemovalOptions['decline'], string>;
+};
+
 /** Serializable options retained with a saved grid. */
 export type DashboardGridSerializableOptions = Pick<
   DashboardGridOptions,
   | 'columns'
+  | 'responsive'
+  | 'rowHeight'
+  | 'rowHeightThrottle'
+  | 'gap'
   | 'minRows'
   | 'maxRows'
   | 'fixedRows'
   | 'float'
+  | 'animate'
+  | 'direction'
+  | 'static'
   | 'disableDrag'
   | 'disableResize'
+  | 'lazyMount'
+  | 'sizeToContent'
   | 'printMode'
->;
+  | 'collision'
+  | 'compactMode'
+  | 'resize'
+  | 'removable'
+  | 'dynamicNesting'
+> & {
+  drag?: DashboardGridSerializableDragOptions;
+  acceptExternal?: boolean | string;
+  removal?: DashboardGridSerializableRemovalOptions;
+  subGridDefaults?: DashboardGridSerializableOptions;
+};
 
 /** Versioned serialized item. */
 export type DashboardGridSerializedItem<TData = unknown> = Omit<
@@ -340,6 +374,7 @@ export type DashboardGridStoreCallbacks = {
 
 export type DashboardGridStoreOptions = Omit<DashboardGridEngineOptions, 'items' | 'onDiagnostic' | 'onError'> & {
   id: string;
+  serializedOptions?: DashboardGridSerializableOptions;
   defaultItems?: readonly DashboardGridItemDefinition[];
   items?: readonly DashboardGridItemDefinition[];
   engine?: DashboardGridEngine;
@@ -361,6 +396,7 @@ export type DashboardGridStore = DashboardGridInteractionStore & {
   isControlled(): boolean;
 
   setCallbacks(callbacks: DashboardGridStoreCallbacks | undefined): void;
+  setSerializableOptions(options: DashboardGridSerializableOptions, replace?: boolean): void;
   setControlledItems(items: readonly DashboardGridItemDefinition[] | undefined): DashboardGridMutationResult | undefined;
   requestControlledReconciliation(): void;
   registerDeclarativeItem(item: DashboardGridItemDefinition): () => void;

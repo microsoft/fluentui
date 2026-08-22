@@ -10,10 +10,7 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import {
-  getDashboardGridItemAriaProps,
-  getDashboardGridResizeHandleAriaProps,
-} from '../../accessibility/aria';
+import { getDashboardGridItemAriaProps, getDashboardGridResizeHandleAriaProps } from '../../accessibility/aria';
 import {
   DashboardGridContextProvider,
   useRequiredDashboardGridContext_unstable,
@@ -23,6 +20,11 @@ import {
   type DashboardGridItemContextValue,
 } from '../../contexts/DashboardGridItemContext';
 import { createDashboardGridKeyboardInteraction } from '../../interaction/keyboardInteraction';
+import {
+  createDashboardGridDragPreview,
+  resolveDashboardGridDragPreviewHost,
+  sanitizeDashboardGridDragPreview,
+} from '../../interaction/dragPreview';
 import { createDashboardGridPointerDrag } from '../../interaction/pointerDrag';
 import { createDashboardGridPointerResize } from '../../interaction/pointerResize';
 import {
@@ -32,16 +34,10 @@ import {
 } from '../../interaction/types';
 import { useDashboardGridLazyMount } from '../../observers/useDashboardGridLazyMount';
 import { useDashboardGridSizeToContent } from '../../observers/useDashboardGridSizeToContent';
-import {
-  getDashboardGridGeometryStyle,
-  getDashboardGridPrintGeometryStyle,
-} from '../../print/printGeometry';
+import { getDashboardGridGeometryStyle, getDashboardGridPrintGeometryStyle } from '../../print/printGeometry';
 import type { DashboardGridItemDefinition } from '../../state/DashboardGridStore.types';
 import { useDashboardGridItemStoreSnapshot } from '../../state/useDashboardGridStore';
-import type {
-  DashboardGridItemProps,
-  DashboardGridItemState,
-} from './DashboardGridItem.types';
+import type { DashboardGridItemProps, DashboardGridItemState } from './DashboardGridItem.types';
 import { getDashboardGridScreenGeometryStyle } from '../DashboardGrid/screenGeometry';
 import { DashboardGrid } from '../DashboardGrid/DashboardGrid';
 
@@ -65,21 +61,14 @@ export type DashboardGridItemInternalState = DashboardGridItemState & {
   print?: DashboardGridItemDefinition['print'];
   animated: boolean;
   handleVisibility: 'hover' | 'always' | 'coarse-pointer';
+  dragPreviewElement: HTMLElement | null;
+  dragPreviewContent: React.ReactNode;
 };
 
 const defaultResizeDirections: readonly DashboardGridResizeEdge[] = ['se'];
 const emptyResizeDirections: readonly DashboardGridResizeEdge[] = [];
 const emptyItemOptions: Partial<Omit<DashboardGridItemDefinition, 'id'>> = {};
-const allResizeDirections: readonly DashboardGridResizeEdge[] = [
-  'n',
-  'e',
-  's',
-  'w',
-  'ne',
-  'nw',
-  'se',
-  'sw',
-];
+const allResizeDirections: readonly DashboardGridResizeEdge[] = ['n', 'e', 's', 'w', 'ne', 'nw', 'se', 'sw'];
 
 export const useDashboardGridItem_unstable = (
   props: DashboardGridItemProps,
@@ -95,63 +84,36 @@ export const useDashboardGridItem_unstable = (
   const direction = useRequiredDashboardGridContext_unstable(context => context.direction);
   const resizeObserver = useRequiredDashboardGridContext_unstable(context => context.resizeObserver);
   const getDomGeometry = useRequiredDashboardGridContext_unstable(context => context.getDomGeometry);
-  const onArrangeModeChange = useRequiredDashboardGridContext_unstable(
-    context => context.onArrangeModeChange,
-  );
+  const onArrangeModeChange = useRequiredDashboardGridContext_unstable(context => context.onArrangeModeChange);
   const printMode = useRequiredDashboardGridContext_unstable(context => context.printMode);
   const rootRole = useRequiredDashboardGridContext_unstable(context => context.rootRole);
   const onDiagnostic = useRequiredDashboardGridContext_unstable(context => context.onDiagnostic);
   const strings = useRequiredDashboardGridContext_unstable(context => context.strings);
-  const layoutMetrics = useRequiredDashboardGridContext_unstable(
-    context => context.layoutMetrics,
-  );
-  const fallbackRowHeight = useRequiredDashboardGridContext_unstable(
-    context => context.fallbackRowHeight,
-  );
+  const layoutMetrics = useRequiredDashboardGridContext_unstable(context => context.layoutMetrics);
+  const fallbackRowHeight = useRequiredDashboardGridContext_unstable(context => context.fallbackRowHeight);
   const columns = useRequiredDashboardGridContext_unstable(context => context.columns);
   const enabled = useRequiredDashboardGridContext_unstable(context => context.enabled);
   const animated = useRequiredDashboardGridContext_unstable(context => context.animate);
   const disableDrag = useRequiredDashboardGridContext_unstable(context => context.disableDrag);
   const disableResize = useRequiredDashboardGridContext_unstable(context => context.disableResize);
-  const defaultLazyMount = useRequiredDashboardGridContext_unstable(
-    context => context.defaultLazyMount,
-  );
-  const defaultSizeToContent = useRequiredDashboardGridContext_unstable(
-    context => context.defaultSizeToContent,
-  );
+  const defaultLazyMount = useRequiredDashboardGridContext_unstable(context => context.defaultLazyMount);
+  const defaultSizeToContent = useRequiredDashboardGridContext_unstable(context => context.defaultSizeToContent);
   const dragOptions = useRequiredDashboardGridContext_unstable(context => context.dragOptions);
   const resizeOptions = useRequiredDashboardGridContext_unstable(context => context.resizeOptions);
-  const componentRegistry = useRequiredDashboardGridContext_unstable(
-    context => context.components,
-  );
-  const renderUnknownComponent = useRequiredDashboardGridContext_unstable(
-    context => context.renderUnknownComponent,
-  );
-  const parentRenderItem = useRequiredDashboardGridContext_unstable(
-    context => context.renderItem,
-  );
-  const subGridDefaults = useRequiredDashboardGridContext_unstable(
-    context => context.subGridDefaults,
-  );
+  const componentRegistry = useRequiredDashboardGridContext_unstable(context => context.components);
+  const renderUnknownComponent = useRequiredDashboardGridContext_unstable(context => context.renderUnknownComponent);
+  const parentRenderItem = useRequiredDashboardGridContext_unstable(context => context.renderItem);
+  const subGridDefaults = useRequiredDashboardGridContext_unstable(context => context.subGridDefaults);
   const refreshDragHandlesVersion = useRequiredDashboardGridContext_unstable(
     context => context.refreshDragHandlesVersion,
   );
   const focusManager = useRequiredDashboardGridContext_unstable(context => context.focusManager);
-  const registerFocusableItem = useRequiredDashboardGridContext_unstable(
-    context => context.registerFocusableItem,
-  );
-  const [ownsDeclarativeRegistration] = React.useState(
-    () => !extendedProps.modelOwned_unstable,
-  );
+  const registerFocusableItem = useRequiredDashboardGridContext_unstable(context => context.registerFocusableItem);
+  const [ownsDeclarativeRegistration] = React.useState(() => !extendedProps.modelOwned_unstable);
   const snapshot = useDashboardGridItemStoreSnapshot(store, props.id);
   const definition = snapshot.definition;
   const itemOptions = props.item ?? emptyItemOptions;
-  const itemLabel =
-    extendedProps.label ??
-    itemOptions.label ??
-    definition?.label ??
-    props['aria-label'] ??
-    props.id;
+  const itemLabel = extendedProps.label ?? itemOptions.label ?? definition?.label ?? props['aria-label'] ?? props.id;
   const resolvedItem = snapshot.item ?? {
     id: props.id,
     column: itemOptions.column ?? 0,
@@ -176,14 +138,14 @@ export const useDashboardGridItem_unstable = (
   const renderedItem = preserveCommittedPointerGeometry
     ? { ...resolvedItem, ...snapshot.preview!.originRect }
     : resolvedItem;
+  const usesOriginalDragPreview = dragOptions?.preview === undefined || dragOptions.preview === 'item';
   const pointerPreview =
+    usesOriginalDragPreview &&
     preserveCommittedPointerGeometry &&
     snapshot.preview?.pixelRect &&
     snapshot.preview.originPixelRect
       ? {
-          x:
-            (snapshot.preview.pixelRect.x - snapshot.preview.originPixelRect.x) *
-            (direction === 'rtl' ? -1 : 1),
+          x: (snapshot.preview.pixelRect.x - snapshot.preview.originPixelRect.x) * (direction === 'rtl' ? -1 : 1),
           y: snapshot.preview.pixelRect.y - snapshot.preview.originPixelRect.y,
         }
       : undefined;
@@ -202,41 +164,29 @@ export const useDashboardGridItem_unstable = (
   const setDragHandleRef = React.useCallback((element: HTMLDivElement | null) => {
     setDragHandleElement(element);
   }, []);
-  const resizeHandleElements = React.useRef<
-    Partial<Record<DashboardGridResizeEdge, HTMLButtonElement | null>>
-  >({});
-  const dragController = React.useRef<
-    ReturnType<typeof createDashboardGridPointerDrag> | undefined
-  >(undefined);
-  const keyboardController = React.useRef<
-    ReturnType<typeof createDashboardGridKeyboardInteraction> | undefined
-  >(undefined);
+  const resizeHandleElements = React.useRef<Partial<Record<DashboardGridResizeEdge, HTMLButtonElement | null>>>({});
+  const dragController = React.useRef<ReturnType<typeof createDashboardGridPointerDrag> | undefined>(undefined);
+  const dragPreviewController = React.useRef<ReturnType<typeof createDashboardGridDragPreview> | undefined>(undefined);
+  const keyboardController = React.useRef<ReturnType<typeof createDashboardGridKeyboardInteraction> | undefined>(
+    undefined,
+  );
   const resizeControllers = React.useRef<
     Partial<Record<DashboardGridResizeEdge, ReturnType<typeof createDashboardGridPointerResize>>>
   >({});
-  const interactionRegistration = React.useRef<DashboardGridItemRegistration | undefined>(
-    undefined,
-  );
+  const interactionRegistration = React.useRef<DashboardGridItemRegistration | undefined>(undefined);
   const [arranging, setArranging] = React.useState(false);
-  const [activeResizeEdge, setActiveResizeEdge] = React.useState<
-    DashboardGridResizeEdge | undefined
-  >(undefined);
+  const [activeResizeEdge, setActiveResizeEdge] = React.useState<DashboardGridResizeEdge | undefined>(undefined);
   const [portalReady, setPortalReady] = React.useState(false);
+  const [dragPreviewElement, setDragPreviewElement] = React.useState<HTMLElement | null>(null);
+  const [dragPreviewActive, setDragPreviewActive] = React.useState(false);
 
-  const lazyMount =
-    extendedProps.lazyMount ??
-    itemOptions.lazyMount ??
-    definition?.lazyMount ??
-    defaultLazyMount;
+  const lazyMount = extendedProps.lazyMount ?? itemOptions.lazyMount ?? definition?.lazyMount ?? defaultLazyMount;
   const lazy = useDashboardGridLazyMount<HTMLDivElement>({
     targetDocument,
     enabled: lazyMount,
   });
   const sizeToContent =
-    extendedProps.sizeToContent ??
-    itemOptions.sizeToContent ??
-    definition?.sizeToContent ??
-    defaultSizeToContent;
+    extendedProps.sizeToContent ?? itemOptions.sizeToContent ?? definition?.sizeToContent ?? defaultSizeToContent;
   const sizeToContentRef = useDashboardGridSizeToContent<HTMLDivElement>({
     controller: resizeObserver,
     id: props.id,
@@ -301,14 +251,46 @@ export const useDashboardGridItem_unstable = (
           itemId: props.id,
         });
     if (content === null) {
-      content =
-        renderUnknownComponent?.(definition, definition.component) ?? (
-          <span data-dashboard-grid-unknown-component="">
-            {`Unknown dashboard component: ${definition.component}`}
-          </span>
-        );
+      content = renderUnknownComponent?.(definition, definition.component) ?? (
+        <span data-dashboard-grid-unknown-component="">{`Unknown dashboard component: ${definition.component}`}</span>
+      );
     }
   }
+
+  const dragPreviewContent =
+    dragPreviewActive && dragPreviewElement ? (
+      dragOptions?.preview === 'clone' ? (
+        <div className={contentElement?.className}>{content}</div>
+      ) : typeof dragOptions?.preview === 'function' ? (
+        dragOptions.preview(resolvedItem)
+      ) : dragOptions?.preview === 'item' ? null : (
+        dragOptions?.preview
+      )
+    ) : null;
+
+  useIsomorphicLayoutEffect(() => {
+    if (dragPreviewActive && dragPreviewElement) {
+      sanitizeDashboardGridDragPreview(dragPreviewElement);
+    }
+  }, [dragPreviewActive, dragPreviewContent, dragPreviewElement]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (dragPreviewActive || !dragPreviewElement) {
+      return;
+    }
+
+    dragPreviewController.current?.destroy();
+    dragPreviewController.current = undefined;
+    setDragPreviewElement(null);
+  }, [dragPreviewActive, dragPreviewElement]);
+
+  React.useEffect(
+    () => () => {
+      dragPreviewController.current?.destroy();
+      dragPreviewController.current = undefined;
+    },
+    [],
+  );
 
   useIsomorphicLayoutEffect(() => {
     const unregister = registry.registerItem({
@@ -316,9 +298,7 @@ export const useDashboardGridItem_unstable = (
       gridId,
       content: lazy.visible ? (
         <DashboardGridContextProvider value={gridContextValue}>
-          <DashboardGridItemContextProvider value={contextValue}>
-            {content}
-          </DashboardGridItemContextProvider>
+          <DashboardGridItemContextProvider value={contextValue}>{content}</DashboardGridItemContextProvider>
         </DashboardGridContextProvider>
       ) : null,
     });
@@ -331,35 +311,20 @@ export const useDashboardGridItem_unstable = (
       registry.detachItemHost(props.id, contentElement);
       unregister();
     };
-  }, [
-    content,
-    contentElement,
-    contextValue,
-    gridContextValue,
-    gridId,
-    lazy.visible,
-    props.id,
-    registry,
-  ]);
+  }, [content, contentElement, contextValue, gridContextValue, gridId, lazy.visible, props.id, registry]);
 
   const configuredResizeDirections =
     extendedProps.resizeDirections ??
     (resizeOptions?.handles === 'all'
       ? allResizeDirections
       : Array.isArray(resizeOptions?.handles)
-        ? resizeOptions.handles
-        : resizeOptions?.handles
-          ? [resizeOptions.handles]
-          : defaultResizeDirections);
-  const resizeDirectionsKey =
-    resizable && !resolvedItem.locked
-      ? configuredResizeDirections.join(',')
-      : '';
+      ? resizeOptions.handles
+      : resizeOptions?.handles
+      ? [resizeOptions.handles]
+      : defaultResizeDirections);
+  const resizeDirectionsKey = resizable ? configuredResizeDirections.join(',') : '';
   const resizeDirections = React.useMemo<readonly DashboardGridResizeEdge[]>(
-    () =>
-      resizeDirectionsKey
-        ? (resizeDirectionsKey.split(',') as DashboardGridResizeEdge[])
-        : emptyResizeDirections,
+    () => (resizeDirectionsKey ? (resizeDirectionsKey.split(',') as DashboardGridResizeEdge[]) : emptyResizeDirections),
     [resizeDirectionsKey],
   );
   const strictSizeToContent = sizeToContent === true;
@@ -380,8 +345,7 @@ export const useDashboardGridItem_unstable = (
       const focusRecord = focusManager.captureFocus(gridId, props.id);
       const host = registry.itemHosts.get(props.id)?.host;
       const containedFocus =
-        !!focusRecord.element &&
-        (rootElement.contains(focusRecord.element) || !!host?.contains(focusRecord.element));
+        !!focusRecord.element && (rootElement.contains(focusRecord.element) || !!host?.contains(focusRecord.element));
       const removedRect = containedFocus ? rootElement.getBoundingClientRect() : undefined;
       if (containedFocus) {
         focusManager.requestPendingFocus(focusRecord);
@@ -399,14 +363,7 @@ export const useDashboardGridItem_unstable = (
         );
       }
     };
-  }, [
-    focusManager,
-    gridId,
-    props.id,
-    registerFocusableItem,
-    registry,
-    rootElement,
-  ]);
+  }, [focusManager, gridId, props.id, registerFocusableItem, registry, rootElement]);
 
   useIsomorphicLayoutEffect(() => {
     if (!interactionRegistration.current) {
@@ -423,15 +380,7 @@ export const useDashboardGridItem_unstable = (
       sizeToContent: strictSizeToContent,
       resizeDirections,
     });
-  }, [
-    dragHandleElement,
-    itemLabel,
-    resizeDirections,
-    resolvedItem.locked,
-    movable,
-    resizable,
-    strictSizeToContent,
-  ]);
+  }, [dragHandleElement, itemLabel, resizeDirections, resolvedItem.locked, movable, resizable, strictSizeToContent]);
 
   useIsomorphicLayoutEffect(() => {
     if (!coordinator || !targetDocument || !rootElement) {
@@ -466,6 +415,26 @@ export const useDashboardGridItem_unstable = (
         handle: dragHandleElement ?? dragOptions?.handleSelector,
         cancel: extendedProps.cancel ?? dragOptions?.cancelSelector,
         getOriginPixelRect: () => geometry.elementToLocalRect(rootElement),
+        onDragStart: usesOriginalDragPreview
+          ? undefined
+          : rect => {
+              dragPreviewController.current?.destroy();
+              const preview = createDashboardGridDragPreview({
+                targetDocument,
+                host: resolveDashboardGridDragPreviewHost({
+                  targetDocument,
+                  itemElement: rootElement,
+                  portal: dragOptions?.portal,
+                }),
+                className: rootElement.className,
+              });
+              preview.update(rect);
+              dragPreviewController.current = preview;
+              setDragPreviewElement(preview.element);
+              setDragPreviewActive(true);
+            },
+        onDragMove: usesOriginalDragPreview ? undefined : rect => dragPreviewController.current?.update(rect),
+        onDragEnd: usesOriginalDragPreview ? undefined : () => setDragPreviewActive(false),
       });
 
       for (const edge of resizeDirections) {
@@ -527,6 +496,7 @@ export const useDashboardGridItem_unstable = (
     extendedProps.cancel,
     dragOptions?.cancelSelector,
     dragOptions?.handleSelector,
+    dragOptions?.portal,
     getDomGeometry,
     gridId,
     onArrangeModeChange,
@@ -536,71 +506,56 @@ export const useDashboardGridItem_unstable = (
     rootElement,
     strictSizeToContent,
     targetDocument,
+    usesOriginalDragPreview,
   ]);
 
   const itemAria = getDashboardGridItemAriaProps({
     rect: renderedItem,
     label: itemLabel,
     rootRole,
-    role:
-      (props.role as 'group' | 'listitem' | 'gridcell' | undefined) ??
-      (rootRole === 'list' ? 'listitem' : 'group'),
+    role: (props.role as 'group' | 'listitem' | 'gridcell' | undefined) ?? (rootRole === 'list' ? 'listitem' : 'group'),
     arranging,
     movable,
     resizable,
     strings,
   });
-  const rootIntrinsicProps = getIntrinsicElementProps(
-    'div',
-    props as unknown as React.HTMLAttributes<HTMLDivElement>,
-  );
+  const rootIntrinsicProps = getIntrinsicElementProps('div', props as unknown as React.HTMLAttributes<HTMLDivElement>);
   const rootSlotProps = {
-      ...rootIntrinsicProps,
-      ...itemAria,
-      className: mergeClasses(
-        itemOptions.className ?? definition?.className,
-        rootIntrinsicProps.className,
-      ),
-      ref: useMergedRefs(
-        ref,
-        React.useCallback((element: HTMLDivElement | null) => {
+    ...rootIntrinsicProps,
+    ...itemAria,
+    className: mergeClasses(itemOptions.className ?? definition?.className, rootIntrinsicProps.className),
+    ref: useMergedRefs(
+      ref,
+      React.useCallback(
+        (element: HTMLDivElement | null) => {
           setRootElement(element);
           lazy.ref(element);
-        }, [lazy]),
+        },
+        [lazy],
       ),
-      tabIndex: props.tabIndex ?? 0,
-      style: {
-        ...getDashboardGridScreenGeometryStyle(
-          renderedItem,
-          layoutMetrics,
-          columns,
-          fallbackRowHeight,
-        ),
-        ...getDashboardGridGeometryStyle(renderedItem),
-        ...getDashboardGridPrintGeometryStyle(
-          renderedItem,
-          printMode,
-          store.getSnapshot().columns,
-        ),
-        ...props.style,
-        ...(pointerPreview
-          ? {
-              transform: `translate3d(${pointerPreview.x}px, ${pointerPreview.y}px, 0)${
-                props.style?.transform ? ` ${props.style.transform}` : ''
-              }`,
-              transition: 'none',
-              willChange: 'transform',
-              zIndex: tokens.zIndexOverlay,
-            }
-          : {}),
-      },
-      onPointerDown: mergeCallbacks(props.onPointerDown, event =>
-        dragController.current?.onPointerDown(event.nativeEvent),
-      ),
-      onKeyDown: mergeCallbacks(props.onKeyDown, event =>
-        keyboardController.current?.onKeyDown(event.nativeEvent),
-      ),
-    } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+    ),
+    tabIndex: props.tabIndex ?? 0,
+    style: {
+      ...getDashboardGridScreenGeometryStyle(renderedItem, layoutMetrics, columns, fallbackRowHeight),
+      ...getDashboardGridGeometryStyle(renderedItem),
+      ...getDashboardGridPrintGeometryStyle(renderedItem, printMode, store.getSnapshot().columns),
+      ...props.style,
+      ...(pointerPreview
+        ? {
+            transform: `translate3d(${pointerPreview.x}px, ${pointerPreview.y}px, 0)${
+              props.style?.transform ? ` ${props.style.transform}` : ''
+            }`,
+            transition: 'none',
+            willChange: 'transform',
+            zIndex: tokens.zIndexOverlay,
+          }
+        : {}),
+    },
+    onPointerDown: mergeCallbacks(props.onPointerDown, event =>
+      dragController.current?.onPointerDown(event.nativeEvent),
+    ),
+    onKeyDown: mergeCallbacks(props.onKeyDown, event => keyboardController.current?.onKeyDown(event.nativeEvent)),
+  } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
   Object.assign(rootSlotProps, { [dashboardGridDataAttributes.item]: props.id });
   const root = slot.always(rootSlotProps, { elementType: 'div' });
   const contentSlot = slot.always(props.content ?? undefined, {
@@ -647,9 +602,7 @@ export const useDashboardGridItem_unstable = (
     ]),
   ) as DashboardGridItemInternalState['resizeHandles'];
   const nestedDefinition = itemOptions.subGrid ?? definition?.subGrid;
-  const nestedOptions = nestedDefinition
-    ? { ...subGridDefaults, ...nestedDefinition }
-    : undefined;
+  const nestedOptions = nestedDefinition ? { ...subGridDefaults, ...nestedDefinition } : undefined;
   const nestedItems = nestedOptions?.items;
   const subGridContent = nestedOptions ? (
     <DashboardGrid
@@ -696,5 +649,11 @@ export const useDashboardGridItem_unstable = (
     print: extendedProps.print ?? itemOptions.print ?? definition?.print,
     animated,
     handleVisibility: resizeOptions?.handleVisibility ?? 'coarse-pointer',
+    dragPreviewElement,
+    dragPreviewContent: dragPreviewElement ? (
+      <DashboardGridContextProvider value={gridContextValue}>
+        <DashboardGridItemContextProvider value={contextValue}>{dragPreviewContent}</DashboardGridItemContextProvider>
+      </DashboardGridContextProvider>
+    ) : null,
   } as DashboardGridItemInternalState;
 };

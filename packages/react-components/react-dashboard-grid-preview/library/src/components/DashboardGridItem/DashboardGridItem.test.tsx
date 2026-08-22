@@ -5,6 +5,8 @@ import { DashboardGrid } from '../DashboardGrid/DashboardGrid';
 import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
 import { DashboardGridItem } from './DashboardGridItem';
 import { createDashboardGridPointerDrag } from '../../interaction/pointerDrag';
+import { isConformant } from '../../testing/isConformant';
+import { createDashboardGridPointerResize } from '../../interaction/pointerResize';
 
 const mockDestroyDrag = jest.fn();
 const mockDestroyResize = jest.fn();
@@ -35,8 +37,58 @@ jest.mock('../../interaction/keyboardInteraction', () => ({
 }));
 
 describe('DashboardGridItem interaction lifecycle', () => {
+  isConformant({
+    Component: DashboardGridItem,
+    displayName: 'DashboardGridItem',
+    requiredProps: { id: 'item' },
+    disabledTests: [
+      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
+    ],
+    getTargetElement: result =>
+      result.container.querySelector('[data-dashboard-grid-item="item"]') as HTMLElement,
+    renderOptions: {
+      wrapper: ({ children }) => (
+        <DashboardGridProvider targetDocument={document}>
+          <DashboardGrid aria-label="Dashboard">{children}</DashboardGrid>
+        </DashboardGridProvider>
+      ),
+    },
+  });
+
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('renders a default state', () => {
+    const { container } = render(
+      <DashboardGridProvider targetDocument={document}>
+        <DashboardGrid aria-label="Dashboard">
+          <DashboardGridItem id="item">Item</DashboardGridItem>
+        </DashboardGrid>
+      </DashboardGridProvider>,
+    );
+
+    const item = container.querySelector('[data-dashboard-grid-item="item"]') as HTMLElement;
+    expect({
+      tagName: item.tagName,
+      role: item.getAttribute('role'),
+      label: item.getAttribute('aria-label'),
+      itemId: item.getAttribute('data-dashboard-grid-item'),
+      text: item.textContent,
+      resizeHandle: item
+        .querySelector('[data-dashboard-grid-resize-handle]')
+        ?.getAttribute('data-dashboard-grid-resize-handle'),
+    }).toMatchInlineSnapshot(`
+      {
+        "itemId": "item",
+        "label": "item",
+        "resizeHandle": "se",
+        "role": "group",
+        "tagName": "DIV",
+        "text": "Item",
+      }
+    `);
   });
 
   it('keeps interaction controllers mounted across geometry snapshot updates', async () => {
@@ -91,5 +143,19 @@ describe('DashboardGridItem interaction lifecycle', () => {
     expect(imperativeRef.current?.getItems()).toEqual([
       expect.objectContaining({ id: 'declarative' }),
     ]);
+  });
+
+  it('creates resize interactions for a locked resizable item', async () => {
+    render(
+      <DashboardGridProvider targetDocument={document}>
+        <DashboardGrid
+          aria-label="Dashboard"
+          defaultItems={[{ id: 'locked', locked: true, resizable: true }]}
+          renderItem={item => <span>{item.id}</span>}
+        />
+      </DashboardGridProvider>,
+    );
+
+    await waitFor(() => expect(createDashboardGridPointerResize).toHaveBeenCalled());
   });
 });

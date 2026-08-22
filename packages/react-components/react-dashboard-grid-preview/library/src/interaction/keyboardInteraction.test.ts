@@ -316,4 +316,68 @@ describe('dashboard grid keyboard interaction', () => {
 
     expect(move).toHaveBeenCalledWith('item', expect.objectContaining({ column: 2 }));
   });
+
+  it('allows a locked item to enter Arrange mode and move by keyboard', () => {
+    const current: DashboardGridResolvedItem = {
+      id: 'item',
+      column: 0,
+      row: 0,
+      columnSpan: 1,
+      rowSpan: 1,
+      movable: true,
+      resizable: true,
+      locked: true,
+    };
+    const move = jest.fn(() => ({ status: 'unchanged' as const, item: current }));
+    const store: DashboardGridInteractionStore = {
+      getSnapshot: () => ({ revision: 0, columns: 4, float: false, items: [current] }),
+      getItem: () => current,
+      beginInteraction: jest.fn(),
+      move,
+      rotate: () => ({ status: 'unchanged', item: current }),
+      commitInteraction: jest.fn(),
+      cancelInteraction: jest.fn(),
+    };
+    const coordinator = createDashboardGridInteractionCoordinator({ targetDocument: document });
+    const grid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    grid.appendChild(itemElement);
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store,
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: itemElement,
+      movable: true,
+      resizable: true,
+      locked: true,
+    });
+    const keyboard = createDashboardGridKeyboardInteraction({
+      targetDocument: document,
+      coordinator,
+      gridId: 'grid',
+      itemId: 'item',
+      itemElement,
+    });
+    itemElement.addEventListener('keydown', keyboard.onKeyDown);
+
+    itemElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'F2', bubbles: true, cancelable: true }));
+    itemElement.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true }),
+    );
+
+    expect(move).toHaveBeenCalledWith('item', expect.objectContaining({ input: 'keyboard', column: 1 }));
+  });
 });

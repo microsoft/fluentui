@@ -9,6 +9,9 @@ import { useDashboardGridItem_unstable } from './useDashboardGridItem';
 import { useDashboardGridItemStyles_unstable } from './useDashboardGridItemStyles.styles';
 import { useDashboardGridPrintItemStyles_unstable } from '../../print/useDashboardGridPrintStyles.styles';
 
+/**
+ * Renders one declarative item within a DashboardGrid.
+ */
 export const DashboardGridItem: ForwardRefComponent<DashboardGridItemProps> = React.forwardRef(
   (props, ref) => {
     const state = useDashboardGridItem_unstable(props, ref);

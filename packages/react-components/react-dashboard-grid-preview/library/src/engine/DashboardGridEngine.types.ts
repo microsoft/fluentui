@@ -67,6 +67,7 @@ export type DashboardGridInteractionContext = Readonly<{
   metrics?: DashboardGridCellMetrics;
   originPixelRect?: DashboardGridPixelRect;
   allowNesting?: boolean;
+  nestingDwell?: boolean | number;
 }>;
 
 export type DashboardGridMoveProposal = Readonly<

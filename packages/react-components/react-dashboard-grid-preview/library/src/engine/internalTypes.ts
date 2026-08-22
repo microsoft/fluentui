@@ -69,6 +69,8 @@ export type InteractionRecord = {
   snapshot: EngineState;
   originalRects: Map<OpaqueNodeKey, InternalRect>;
   targetRects: Map<OpaqueNodeKey, DashboardGridPixelRect>;
+  nestingTargetKey?: OpaqueNodeKey;
+  nestingStartedAt?: number;
 };
 
 export type NormalizedItem = {

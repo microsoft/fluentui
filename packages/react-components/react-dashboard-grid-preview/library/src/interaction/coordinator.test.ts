@@ -47,6 +47,129 @@ const createStore = (order: string[]): DashboardGridInteractionStore => ({
 });
 
 describe('dashboard grid interaction coordinator', () => {
+  it('allows locked items to begin pointer drag, pointer resize, and keyboard interactions', () => {
+    const lockedItem = { ...item, locked: true };
+    const store: DashboardGridInteractionStore = {
+      ...createStore([]),
+      getSnapshot: () => ({ revision: 0, columns: 4, float: false, items: [lockedItem] }),
+      getItem: () => lockedItem,
+    };
+    const coordinator = createDashboardGridInteractionCoordinator({ targetDocument: document });
+    const grid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    const resizeHandle = document.createElement('button');
+    itemElement.appendChild(resizeHandle);
+    grid.appendChild(itemElement);
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store,
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: itemElement,
+      resizeHandles: { e: resizeHandle },
+      movable: true,
+      resizable: true,
+      locked: true,
+      resizeDirections: ['e'],
+    });
+    const pointer = { pointerId: 1, pointerType: 'mouse' as const, isPrimary: true, button: 0 };
+    const pointerRequest = {
+      pointer,
+      timeStamp: 1,
+      point: { clientX: 0, clientY: 0 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceGridId: 'grid',
+      itemId: 'item',
+      ownerElement: itemElement,
+    };
+
+    expect(coordinator.beginPointer({ ...pointerRequest, operation: 'drag' })).not.toBeNull();
+    coordinator.cancel();
+    expect(
+      coordinator.beginPointer({
+        ...pointerRequest,
+        timeStamp: 2,
+        operation: 'resize',
+        resizeEdge: 'e',
+        ownerElement: resizeHandle,
+      }),
+    ).not.toBeNull();
+    coordinator.cancel();
+    expect(
+      coordinator.beginKeyboard({
+        gridId: 'grid',
+        itemId: 'item',
+      }),
+    ).not.toBeNull();
+    coordinator.cancel();
+  });
+
+  it('passes the configured nesting dwell into the public pointer session', () => {
+    const beginInteraction = jest.fn();
+    const coordinator = createDashboardGridInteractionCoordinator({ targetDocument: document });
+    const grid = document.createElement('div');
+    const itemElement = document.createElement('div');
+    grid.appendChild(itemElement);
+    coordinator.registerGrid({
+      id: 'grid',
+      element: grid,
+      direction: 'ltr',
+      store: { ...createStore([]), beginInteraction },
+      getMetrics: () => ({
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      }),
+      nestingDwell: 250,
+    });
+    coordinator.registerItem({
+      id: 'item',
+      gridId: 'grid',
+      element: itemElement,
+      movable: true,
+      resizable: true,
+      locked: false,
+    });
+
+    coordinator.beginPointer({
+      operation: 'drag',
+      pointer: { pointerId: 1, pointerType: 'mouse', isPrimary: true, button: 0 },
+      timeStamp: 1,
+      point: { clientX: 0, clientY: 0 },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      sourceGridId: 'grid',
+      itemId: 'item',
+      ownerElement: itemElement,
+    });
+    coordinator.activatePointer({
+      pixelRect: { x: 0, y: 0, width: 100, height: 100 },
+    });
+
+    expect(beginInteraction).toHaveBeenCalledWith(
+      'item',
+      expect.objectContaining({
+        allowNesting: true,
+        nestingDwell: 250,
+      }),
+    );
+    coordinator.cancel();
+  });
+
   it('orders start before mutation and stop after commit', async () => {
     const order: string[] = [];
     const intents: DashboardGridInteractionIntent[] = [];

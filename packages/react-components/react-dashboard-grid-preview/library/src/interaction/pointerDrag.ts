@@ -1,14 +1,8 @@
 import { Escape } from '@fluentui/keyboard-keys';
 import { createDashboardGridAutoScroll, findNearestDashboardGridScrollAncestor } from './autoScroll';
-import type {
-  DashboardGridPointerCancelRule,
-  DashboardGridPointerHandle,
-} from './cancelSelectors';
+import type { DashboardGridPointerCancelRule, DashboardGridPointerHandle } from './cancelSelectors';
 import { shouldCancelDashboardGridPointerStart } from './cancelSelectors';
-import {
-  dashboardGridPixelRectToRawRect,
-  type DashboardGridDomGeometrySession,
-} from './domGeometry';
+import { dashboardGridPixelRectToRawRect, type DashboardGridDomGeometrySession } from './domGeometry';
 import {
   dashboardGridPixelRectToClientRect,
   createDashboardGridClickSuppressor,
@@ -46,6 +40,9 @@ export const createDashboardGridPointerDrag = (options: {
   cancel?: DashboardGridPointerCancelRule | readonly DashboardGridPointerCancelRule[];
   getOriginPixelRect?: () => DashboardGridPixelRect;
   onTouchTargetChange?: (inside: boolean) => void;
+  onDragStart?: (rect: DashboardGridPixelRect) => void;
+  onDragMove?: (rect: DashboardGridPixelRect) => void;
+  onDragEnd?: () => void;
 }): DashboardGridPointerDragController => {
   const targetWindow = options.targetDocument.defaultView;
   const clickSuppressor = createDashboardGridClickSuppressor(options.targetDocument);
@@ -77,6 +74,9 @@ export const createDashboardGridPointerDrag = (options: {
   };
 
   const reset = () => {
+    if (active) {
+      options.onDragEnd?.();
+    }
     if (frame && targetWindow) {
       targetWindow.cancelAnimationFrame(frame);
     }
@@ -109,13 +109,7 @@ export const createDashboardGridPointerDrag = (options: {
 
   const processPointerMove = (event: PointerEvent) => {
     frame = 0;
-    if (
-      destroyed ||
-      pointerId === undefined ||
-      event.pointerId !== pointerId ||
-      !startPoint ||
-      !currentPixelRect
-    ) {
+    if (destroyed || pointerId === undefined || event.pointerId !== pointerId || !startPoint || !currentPixelRect) {
       return;
     }
 
@@ -141,6 +135,7 @@ export const createDashboardGridPointerDrag = (options: {
 
       active = true;
       options.coordinator.activatePointer({ pixelRect: nextPixelRect, nativeEvent: event });
+      options.onDragStart?.(clientPixelRect);
       const gridElement = options.coordinator.getGrid(options.gridId)?.element;
       const scrollElement = gridElement
         ? findNearestDashboardGridScrollAncestor(gridElement, options.targetDocument)
@@ -186,6 +181,7 @@ export const createDashboardGridPointerDrag = (options: {
       },
       nativeEvent: event,
     });
+    options.onDragMove?.(clientPixelRect);
     autoScroll?.update(event.clientY);
   };
 

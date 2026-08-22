@@ -4,6 +4,7 @@ import {
 } from '@fluentui/react-dashboard-grid-preview';
 
 export { ParityPlayground } from './DashboardGridParityPlayground.stories';
+export { BrowserInteractions } from './DashboardGridBrowserCoverage.stories';
 export { ShadowDom } from './DashboardGridShadowDom.stories';
 export { Print } from './DashboardGridPrint.stories';
 

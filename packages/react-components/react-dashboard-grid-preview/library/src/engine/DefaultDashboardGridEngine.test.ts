@@ -89,6 +89,52 @@ describe('DefaultDashboardGridEngine', () => {
     expect(engine.getItem('item')?.row).toBe(0);
   });
 
+  it('allows direct movement and resize of locked items while keeping them fixed as collision blockers', () => {
+    const engine = createDashboardGridEngine({
+      columns: 4,
+      items: [
+        { id: 'active', column: 0, row: 0 },
+        { id: 'locked', column: 1, row: 0, locked: true },
+      ],
+    });
+
+    expect(
+      engine.move('locked', {
+        input: 'api',
+        column: 2,
+        columnSpan: 2,
+        resizing: true,
+      }).status,
+    ).toBe('accepted');
+    expect(engine.getItem('locked')).toMatchObject({
+      column: 2,
+      columnSpan: 2,
+    });
+    expect(engine.rotate('locked', { input: 'api' }).status).toBe('accepted');
+    expect(engine.getItem('locked')).toMatchObject({
+      columnSpan: 1,
+      rowSpan: 2,
+    });
+
+    expect(
+      engine.move('active', {
+        input: 'api',
+        column: 2,
+        row: 1,
+      }).status,
+    ).toBe('accepted');
+    expect(engine.getItem('locked')).toMatchObject({
+      column: 2,
+      row: 0,
+      columnSpan: 1,
+      rowSpan: 2,
+    });
+    expect(engine.getItem('active')).not.toMatchObject({
+      column: 2,
+      row: 1,
+    });
+  });
+
   it('rotates constraints and cancellation restores the full pre-rotation snapshot', () => {
     const engine = createDashboardGridEngine({
       items: [
@@ -174,7 +220,9 @@ describe('DefaultDashboardGridEngine', () => {
     ).toBe('accepted');
   });
 
-  it('requests nesting only above eighty percent without mutating', () => {
+  it('requires the default dwell above eighty percent before requesting nesting without mutating', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(0);
     const create = () => {
       const engine = createDashboardGridEngine({
         columns: 2,
@@ -217,6 +265,27 @@ describe('DefaultDashboardGridEngine', () => {
         column: 1,
         row: 0,
         pixelRect: { x: 81, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('deferred');
+    expect(above.getSnapshot()).toBe(initial);
+
+    jest.advanceTimersByTime(99);
+    expect(
+      above.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 81, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('deferred');
+
+    jest.advanceTimersByTime(1);
+    expect(
+      above.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 81, y: 0, width: 100, height: 100 },
       }),
     ).toEqual(
       expect.objectContaining({
@@ -225,6 +294,91 @@ describe('DefaultDashboardGridEngine', () => {
       }),
     );
     expect(above.getSnapshot()).toBe(initial);
+    jest.useRealTimers();
+  });
+
+  it('resets dynamic nesting dwell after cancellation', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(0);
+    const engine = createDashboardGridEngine({
+      columns: 2,
+      items: [
+        { id: 'active', column: 0, row: 0 },
+        { id: 'target', column: 1, row: 0 },
+      ],
+    });
+    const begin = () =>
+      engine.beginInteraction('active', {
+        kind: 'drag',
+        source: 'internal',
+        allowNesting: true,
+        metrics: {
+          columnWidth: 100,
+          rowHeight: 100,
+          gapTop: 0,
+          gapRight: 0,
+          gapBottom: 0,
+          gapLeft: 0,
+        },
+        originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      });
+    const move = () =>
+      engine.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 81, y: 0, width: 100, height: 100 },
+      });
+
+    begin();
+    expect(move().status).toBe('deferred');
+    jest.advanceTimersByTime(100);
+    engine.cancelInteraction();
+    begin();
+    expect(move().status).toBe('deferred');
+
+    jest.useRealTimers();
+  });
+
+  it('requires continuous nesting coverage for the dwell duration', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(0);
+    const engine = createDashboardGridEngine({
+      columns: 2,
+      items: [
+        { id: 'active', column: 0, row: 0 },
+        { id: 'target', column: 1, row: 0 },
+      ],
+    });
+    engine.beginInteraction('active', {
+      kind: 'drag',
+      source: 'internal',
+      allowNesting: true,
+      metrics: {
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+    });
+    const move = (x: number) =>
+      engine.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x, y: 0, width: 100, height: 100 },
+      });
+
+    expect(move(81).status).toBe('deferred');
+    jest.advanceTimersByTime(50);
+    expect(move(50).status).toBe('deferred');
+    jest.advanceTimersByTime(50);
+    expect(move(81).status).toBe('deferred');
+
+    jest.useRealTimers();
   });
 
   it('never swaps external items', () => {

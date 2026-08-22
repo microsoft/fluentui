@@ -36,6 +36,7 @@ import { useDashboardGridResizeObserver } from '../../observers/useDashboardGrid
 import { createDashboardGridRegistry } from '../../provider/createDashboardGridRegistry';
 import type { DashboardGridRegistry } from '../../provider/DashboardGridRegistry.types';
 import { createDashboardGridHandle } from '../../hooks/useDashboardGrid';
+import { getDashboardGridSerializableOptions } from '../../serialization/dashboardGridSerialization';
 import { createDashboardGridStore } from '../../state/createDashboardGridStore';
 import type {
   DashboardGridCSSLength,
@@ -56,7 +57,6 @@ import {
 } from './screenGeometry';
 import type {
   DashboardGridProps,
-  DashboardGridSlots,
   DashboardGridState,
 } from './DashboardGrid.types';
 
@@ -334,6 +334,7 @@ export const useDashboardGrid_unstable = (
   const [store] = React.useState(() =>
     createDashboardGridStore({
       id: gridId,
+      serializedOptions: getDashboardGridSerializableOptions(props),
       columns: authoredColumns,
       maxRows: props.fixedRows ?? props.maxRows,
       float: props.float,
@@ -349,6 +350,7 @@ export const useDashboardGrid_unstable = (
       },
     }),
   );
+  store.setSerializableOptions(getDashboardGridSerializableOptions(props));
   const emit = React.useCallback(
     (
       callback: ((event: never, data: never) => void) | undefined,
@@ -985,6 +987,7 @@ export const useDashboardGrid_unstable = (
       direction,
       store,
       getMetrics: resizeObserver.getMetrics,
+      nestingDwell: props.drag?.pause,
       acceptsExternal,
     });
   }, [
@@ -994,6 +997,7 @@ export const useDashboardGrid_unstable = (
     parentGridId,
     parentItemId,
     props['aria-label'],
+    props.drag?.pause,
     acceptsExternal,
     resizeObserver,
     rootElement,

@@ -3,7 +3,6 @@ import type {
   DashboardGridEngineChangeSet,
   DashboardGridEngineSnapshot,
   DashboardGridInteractionContext,
-  DashboardGridLayoutItemPatch,
   DashboardGridMoveProposal,
   DashboardGridMoveResult,
   DashboardGridMutationResult,
@@ -19,7 +18,6 @@ import type {
   DashboardGridSerializedItem,
   DashboardGridSerializedState,
   DashboardGridStore,
-  DashboardGridStoreCallbacks,
   DashboardGridStoreOptions,
   DashboardGridStoreSnapshot,
 } from './DashboardGridStore.types';
@@ -32,6 +30,7 @@ import {
   areDashboardGridLayoutsEqual,
   copyDashboardGridItems,
 } from './reconcileOptions';
+import { getDashboardGridSerializableOptions } from '../serialization/dashboardGridSerialization';
 
 const emptyChangeSet = (snapshot: DashboardGridEngineSnapshot): DashboardGridEngineChangeSet => ({
   revision: snapshot.revision,
@@ -71,16 +70,7 @@ const serializeDefinition = (
     subGrid: subGrid
       ? {
           version: 1,
-          options: {
-            columns: subGrid.columns,
-            minRows: subGrid.minRows,
-            maxRows: subGrid.maxRows,
-            fixedRows: subGrid.fixedRows,
-            float: subGrid.float,
-            disableDrag: subGrid.disableDrag,
-            disableResize: subGrid.disableResize,
-            printMode: subGrid.printMode,
-          },
+          options: getDashboardGridSerializableOptions(subGrid),
           items: (subGrid.items ?? []).map(serializeDefinition),
         }
       : (nestedGrid as DashboardGridSerializedGrid | undefined),
@@ -89,6 +79,8 @@ const serializeDefinition = (
 
 export const createDashboardGridStore = (options: DashboardGridStoreOptions): DashboardGridStore => {
   let callbacks = options.callbacks;
+  let serializedOptions = options.serializedOptions ?? {};
+  let serializedOptionsAreAuthoritative = false;
   let controlledItems = copyDashboardGridItems(options.items);
   let controlledVersion = 0;
   let preview: DashboardGridInteractionPreview | undefined;
@@ -299,6 +291,13 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       callbacks = nextCallbacks;
     },
 
+    setSerializableOptions(nextOptions, replace = false) {
+      serializedOptions = replace
+        ? nextOptions
+        : { ...serializedOptions, ...nextOptions };
+      serializedOptionsAreAuthoritative = serializedOptionsAreAuthoritative || replace;
+    },
+
     requestControlledReconciliation: scheduleControlledReconciliation,
 
     setControlledItems(items) {
@@ -472,6 +471,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
     },
 
     setColumns(columns, layout) {
+      serializedOptions = { ...serializedOptions, columns };
       return applyMutationResult(engine.setColumns(columns, layout));
     },
 
@@ -578,11 +578,17 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       });
       return {
         version: 1,
-        options: {
-          columns: engineState.columns,
-          maxRows: engineState.maxRows,
-          float: engineState.float,
-        },
+        options: serializedOptionsAreAuthoritative
+          ? {
+              ...serializedOptions,
+              ...(saveOptions?.columns !== undefined && { columns: engineState.columns }),
+            }
+          : {
+              columns: engineState.columns,
+              maxRows: engineState.maxRows,
+              float: engineState.float,
+              ...serializedOptions,
+            },
         items: getDefinitionsInLayoutOrder().map(serializeDefinition),
         layouts: engineState.layouts,
         engine: engineState,

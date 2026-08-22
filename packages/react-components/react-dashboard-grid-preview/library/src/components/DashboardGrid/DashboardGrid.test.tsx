@@ -7,6 +7,36 @@ import type { DashboardGridHandle } from '../../hooks/useDashboardGrid';
 import { createDashboardGridEngine } from '../../engine';
 import { useRequiredDashboardGridContext_unstable } from '../../contexts';
 import type { DashboardGridStore } from '../../state/DashboardGridStore.types';
+import { isConformant } from '../../testing/isConformant';
+
+const pointerEvent = (type: string, init: { x: number; y: number; pointerId?: number }): PointerEvent => {
+  const event = new MouseEvent(type, {
+    bubbles: true,
+    cancelable: true,
+    clientX: init.x,
+    clientY: init.y,
+    button: 0,
+  });
+  Object.defineProperties(event, {
+    pointerId: { value: init.pointerId ?? 1 },
+    pointerType: { value: 'mouse' },
+    isPrimary: { value: true },
+  });
+  return event as PointerEvent;
+};
+
+const rect = (left: number, top: number, width: number, height: number): DOMRect =>
+  ({
+    x: left,
+    y: top,
+    left,
+    top,
+    right: left + width,
+    bottom: top + height,
+    width,
+    height,
+    toJSON: () => ({}),
+  } as DOMRect);
 
 const StoreCapture = (props: { onStore: (store: DashboardGridStore) => void }) => {
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
@@ -17,13 +47,43 @@ const StoreCapture = (props: { onStore: (store: DashboardGridStore) => void }) =
 };
 
 describe('DashboardGrid', () => {
+  isConformant({
+    Component: DashboardGrid,
+    displayName: 'DashboardGrid',
+    requiredProps: { 'aria-label': 'Dashboard' },
+    disabledTests: [
+      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
+    ],
+  });
+
+  it('renders a default state', () => {
+    const { container } = render(<DashboardGrid aria-label="Dashboard" gridId="snapshot-grid" />);
+    const root = container.firstElementChild as HTMLElement;
+    const surface = root.firstElementChild as HTMLElement;
+
+    expect({
+      tagName: root.tagName,
+      role: root.getAttribute('role'),
+      label: root.getAttribute('aria-label'),
+      gridId: root.getAttribute('data-dashboard-grid-root'),
+      hasSurface: surface.classList.contains('fui-DashboardGrid__surface'),
+    }).toMatchInlineSnapshot(`
+      {
+        "gridId": "snapshot-grid",
+        "hasSurface": true,
+        "label": "Dashboard",
+        "role": "group",
+        "tagName": "DIV",
+      }
+    `);
+  });
+
   it('renders uncontrolled defaultItems with deterministic geometry', () => {
     render(
       <DashboardGrid
         aria-label="Dashboard"
-        defaultItems={[
-          { id: 'one', column: 2, row: 3, columnSpan: 4, rowSpan: 2 },
-        ]}
+        defaultItems={[{ id: 'one', column: 2, row: 3, columnSpan: 4, rowSpan: 2 }]}
         renderItem={item => <span>{item.id}</span>}
       />,
     );
@@ -33,6 +93,210 @@ describe('DashboardGrid', () => {
     expect((item as HTMLElement).style.getPropertyValue('--dashboard-grid-column')).toBe('2');
     expect((item as HTMLElement).style.getPropertyValue('--dashboard-grid-row-span')).toBe('2');
   });
+
+  it('renders a React-owned custom preview in the body during an internal pointer drag', () => {
+    const frames: FrameRequestCallback[] = [];
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => {
+      frames.push(callback);
+      return frames.length;
+    });
+    jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(() => undefined);
+    const onUnmount = jest.fn();
+    const CustomPreview = () => {
+      React.useEffect(
+        () => () => {
+          onUnmount();
+        },
+        [],
+      );
+      return <span data-testid="custom-drag-preview">Custom preview</span>;
+    };
+
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        columns={4}
+        rowHeight={100}
+        drag={{ preview: <CustomPreview />, portal: 'body' }}
+        defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+        renderItem={item => <span>{item.id}</span>}
+      />,
+    );
+
+    const item = screen.getByText('item').closest('[data-dashboard-grid-item]') as HTMLElement;
+    const surface = item.parentElement as HTMLElement;
+    Object.defineProperties(surface, {
+      offsetWidth: { configurable: true, value: 400 },
+      offsetHeight: { configurable: true, value: 400 },
+    });
+    jest.spyOn(surface, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 400, 400));
+    jest.spyOn(item, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
+
+    act(() => {
+      item.dispatchEvent(pointerEvent('pointerdown', { x: 10, y: 10 }));
+      document.dispatchEvent(pointerEvent('pointermove', { x: 20, y: 10 }));
+      frames.shift()?.(0);
+    });
+
+    const preview = screen.getByTestId('custom-drag-preview').closest('[data-dashboard-grid-preview]');
+    expect(preview?.parentElement).toBe(document.body);
+    expect(item.style.transform).toBe('');
+
+    act(() => {
+      document.dispatchEvent(pointerEvent('pointercancel', { x: 20, y: 10 }));
+    });
+
+    expect(screen.queryByTestId('custom-drag-preview')).not.toBeInTheDocument();
+    expect(onUnmount).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders a clone preview in the item parent and removes it after drop', () => {
+    const frames: FrameRequestCallback[] = [];
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => {
+      frames.push(callback);
+      return frames.length;
+    });
+    jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(() => undefined);
+
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        columns={4}
+        rowHeight={100}
+        drag={{ preview: 'clone', portal: 'parent' }}
+        defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+        renderItem={item => <span data-testid="clone-content">{item.id}</span>}
+      />,
+    );
+
+    const item = screen.getAllByTestId('clone-content')[0].closest('[data-dashboard-grid-item]') as HTMLElement;
+    const surface = item.parentElement as HTMLElement;
+    Object.defineProperties(surface, {
+      offsetWidth: { configurable: true, value: 400 },
+      offsetHeight: { configurable: true, value: 400 },
+    });
+    jest.spyOn(surface, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 400, 400));
+    jest.spyOn(item, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
+
+    act(() => {
+      item.dispatchEvent(pointerEvent('pointerdown', { x: 10, y: 10 }));
+      document.dispatchEvent(pointerEvent('pointermove', { x: 25, y: 15 }));
+      frames.shift()?.(0);
+    });
+
+    expect(screen.getAllByTestId('clone-content')).toHaveLength(2);
+    const preview = surface.querySelector('[data-dashboard-grid-preview]') as HTMLElement;
+    expect(preview).toBeInTheDocument();
+    expect(preview.style.transform).toBe('translate3d(15px, 5px, 0)');
+    expect(item.style.transform).toBe('');
+
+    act(() => {
+      document.dispatchEvent(pointerEvent('pointerup', { x: 25, y: 15 }));
+    });
+    expect(surface.querySelector('[data-dashboard-grid-preview]')).toBeNull();
+  });
+
+  it('renders a functional preview in an explicit portal and cleans it up on unmount', () => {
+    const frames: FrameRequestCallback[] = [];
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => {
+      frames.push(callback);
+      return frames.length;
+    });
+    jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(() => undefined);
+    const portal = document.createElement('div');
+    document.body.appendChild(portal);
+    const onUnmount = jest.fn();
+    const FunctionalPreview = (props: { id: string }) => {
+      React.useEffect(
+        () => () => {
+          onUnmount();
+        },
+        [],
+      );
+      return <span data-testid="functional-preview">{props.id}</span>;
+    };
+
+    const view = render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        columns={4}
+        rowHeight={100}
+        drag={{
+          preview: item => <FunctionalPreview id={item.id} />,
+          portal,
+        }}
+        defaultItems={[{ id: 'explicit', column: 0, row: 0 }]}
+        renderItem={item => <span>{item.id}</span>}
+      />,
+    );
+
+    const item = screen.getByText('explicit').closest('[data-dashboard-grid-item]') as HTMLElement;
+    const surface = item.parentElement as HTMLElement;
+    Object.defineProperties(surface, {
+      offsetWidth: { configurable: true, value: 400 },
+      offsetHeight: { configurable: true, value: 400 },
+    });
+    jest.spyOn(surface, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 400, 400));
+    jest.spyOn(item, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
+
+    act(() => {
+      item.dispatchEvent(pointerEvent('pointerdown', { x: 10, y: 10 }));
+      document.dispatchEvent(pointerEvent('pointermove', { x: 20, y: 10 }));
+      frames.shift()?.(0);
+    });
+
+    expect(portal).toContainElement(screen.getByTestId('functional-preview'));
+
+    view.unmount();
+    expect(portal.querySelector('[data-dashboard-grid-preview]')).toBeNull();
+    expect(onUnmount).toHaveBeenCalledTimes(1);
+    portal.remove();
+  });
+
+  it.each([undefined, 'item'] as const)(
+    'moves the original item without creating a portal preview for %s preview',
+    preview => {
+      const frames: FrameRequestCallback[] = [];
+      jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => {
+        frames.push(callback);
+        return frames.length;
+      });
+      jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(() => undefined);
+
+      render(
+        <DashboardGrid
+          aria-label="Dashboard"
+          columns={4}
+          rowHeight={100}
+          drag={{ preview }}
+          defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+          renderItem={item => <span>{item.id}</span>}
+        />,
+      );
+
+      const item = screen.getByText('item').closest('[data-dashboard-grid-item]') as HTMLElement;
+      const surface = item.parentElement as HTMLElement;
+      Object.defineProperties(surface, {
+        offsetWidth: { configurable: true, value: 400 },
+        offsetHeight: { configurable: true, value: 400 },
+      });
+      jest.spyOn(surface, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 400, 400));
+      jest.spyOn(item, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
+
+      act(() => {
+        item.dispatchEvent(pointerEvent('pointerdown', { x: 10, y: 10 }));
+        document.dispatchEvent(pointerEvent('pointermove', { x: 20, y: 10 }));
+        frames.shift()?.(0);
+      });
+
+      expect(item.style.transform).toContain('translate3d(10px, 0px, 0)');
+      expect(document.querySelector('[data-dashboard-grid-preview]')).toBeNull();
+
+      act(() => {
+        document.dispatchEvent(pointerEvent('pointercancel', { x: 20, y: 10 }));
+      });
+    },
+  );
 
   it('exposes imperative uncontrolled commands separately from the root ref', () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
@@ -105,20 +369,13 @@ describe('DashboardGrid', () => {
   });
 
   it('renders a visible fallback for unknown serialized components', () => {
-    render(
-      <DashboardGrid
-        aria-label="Dashboard"
-        defaultItems={[{ id: 'unknown', component: 'missing-component' }]}
-      />,
-    );
+    render(<DashboardGrid aria-label="Dashboard" defaultItems={[{ id: 'unknown', component: 'missing-component' }]} />);
 
     expect(screen.getByText('Unknown dashboard component: missing-component')).toBeVisible();
   });
 
   it('renders registered components and a caller-provided unknown fallback', () => {
-    const Metric = (props: Record<string, unknown>) => (
-      <span>{`Metric ${String(props.value)}`}</span>
-    );
+    const Metric = (props: Record<string, unknown>) => <span>{`Metric ${String(props.value)}`}</span>;
     render(
       <DashboardGrid
         aria-label="Dashboard"
@@ -204,9 +461,7 @@ describe('DashboardGrid', () => {
         columns={4}
         rowHeight={64}
         float
-        defaultItems={[
-          { id: 'active', column: 1, row: 2, columnSpan: 2, rowSpan: 2 },
-        ]}
+        defaultItems={[{ id: 'active', column: 1, row: 2, columnSpan: 2, rowSpan: 2 }]}
         renderItem={item => <span>{item.id}</span>}
       />,
     );
@@ -257,9 +512,7 @@ describe('DashboardGrid', () => {
     expect(handle.getItem('wide')).toMatchObject({ id: 'wide', columnSpan: 2 });
     expect(handle.getItems()).toHaveLength(1);
     expect(handle.canPlace({ id: 'candidate', column: 3, row: 0 }).fits).toBe(true);
-    expect(
-      handle.isAreaEmpty({ column: 3, row: 0, columnSpan: 1, rowSpan: 1 }),
-    ).toBe(true);
+    expect(handle.isAreaEmpty({ column: 3, row: 0, columnSpan: 1, rowSpan: 1 })).toBe(true);
     expect(handle.getCellFromPoint({ clientX: 0, clientY: 0 })).toEqual({
       column: 0,
       row: 0,
@@ -269,9 +522,7 @@ describe('DashboardGrid', () => {
       options: expect.any(Object),
       items: [expect.objectContaining({ id: 'wide' })],
     });
-    expect(handle.save({ itemsOnly: true })).toEqual([
-      expect.objectContaining({ id: 'wide' }),
-    ]);
+    expect(handle.save({ itemsOnly: true })).toEqual([expect.objectContaining({ id: 'wide' })]);
 
     act(() => {
       handle.batch(() => {
@@ -429,10 +680,7 @@ describe('DashboardGrid', () => {
       store?.events.flush();
     });
 
-    expect(onDrag).toHaveBeenCalledWith(
-      expect.any(Event),
-      expect.objectContaining({ type: 'drag', kind: 'drag' }),
-    );
+    expect(onDrag).toHaveBeenCalledWith(expect.any(Event), expect.objectContaining({ type: 'drag', kind: 'drag' }));
     expect(onResize).toHaveBeenCalledWith(
       expect.any(Event),
       expect.objectContaining({ type: 'resize', kind: 'resize' }),

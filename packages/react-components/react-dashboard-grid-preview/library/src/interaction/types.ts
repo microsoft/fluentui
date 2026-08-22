@@ -163,6 +163,7 @@ export type DashboardGridGridRegistration = {
   direction: DashboardGridDirection;
   store: DashboardGridInteractionStore;
   getMetrics: () => DashboardGridCellMetrics;
+  nestingDwell?: boolean | number;
   acceptsExternal?: (context: DashboardGridDropAcceptanceContext) => boolean;
 };
 

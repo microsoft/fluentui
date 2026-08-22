@@ -7,8 +7,45 @@ import type {
 } from '../../interaction/types';
 import type { DashboardGridRegistry } from '../../provider/DashboardGridRegistry.types';
 import { DashboardGridDropZone } from './DashboardGridDropZone';
+import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
+import { isConformant } from '../../testing/isConformant';
 
 describe('DashboardGridDropZone', () => {
+  isConformant({
+    Component: DashboardGridDropZone,
+    displayName: 'DashboardGridDropZone',
+    requiredProps: { id: 'drop-zone' },
+    disabledTests: ['make-styles-overrides-win'],
+    renderOptions: {
+      wrapper: ({ children }) => <DashboardGridProvider>{children}</DashboardGridProvider>,
+    },
+  });
+
+  it('renders a default state', () => {
+    const { container } = render(
+      <DashboardGridProvider>
+        <DashboardGridDropZone id="drop-zone">Drop here</DashboardGridDropZone>
+      </DashboardGridProvider>,
+    );
+
+    const zone = container.firstElementChild as HTMLElement;
+    expect({
+      tagName: zone.tagName,
+      role: zone.getAttribute('role'),
+      zoneId: zone.getAttribute('data-dashboard-grid-drop-zone'),
+      state: zone.getAttribute('data-dashboard-grid-drop-state'),
+      text: zone.textContent,
+    }).toMatchInlineSnapshot(`
+      {
+        "role": "group",
+        "state": "idle",
+        "tagName": "DIV",
+        "text": "Drop here",
+        "zoneId": "drop-zone",
+      }
+    `);
+  });
+
   it('exposes valid and invalid state without relying only on color', () => {
     let registration: DashboardGridDropZoneRegistration | undefined;
     const coordinator = {

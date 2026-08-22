@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { DashboardGridDragSource } from './DashboardGridDragSource';
+import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
+import { isConformant } from '../../testing/isConformant';
 
 const mockOnPointerDown = jest.fn();
 const mockOnKeyDown = jest.fn();
@@ -15,9 +17,52 @@ jest.mock('../../hooks/useDashboardGridDragSource', () => ({
 }));
 
 describe('DashboardGridDragSource', () => {
+  isConformant({
+    Component: DashboardGridDragSource,
+    displayName: 'DashboardGridDragSource',
+    requiredProps: {
+      id: 'source',
+      descriptor: { id: 'item' },
+    },
+    disabledTests: [
+      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
+    ],
+    renderOptions: {
+      wrapper: ({ children }) => <DashboardGridProvider>{children}</DashboardGridProvider>,
+    },
+  });
+
   beforeEach(() => {
     mockOnPointerDown.mockClear();
     mockOnKeyDown.mockClear();
+  });
+
+  it('renders a default state', () => {
+    const { container } = render(
+      <DashboardGridProvider>
+        <DashboardGridDragSource id="source" descriptor={{ id: 'item' }}>
+          Add item
+        </DashboardGridDragSource>
+      </DashboardGridProvider>,
+    );
+
+    const source = container.firstElementChild as HTMLElement;
+    expect({
+      tagName: source.tagName,
+      role: source.getAttribute('role'),
+      tabIndex: source.getAttribute('tabindex'),
+      sourceId: source.getAttribute('data-dashboard-grid-drag-source'),
+      text: source.textContent,
+    }).toMatchInlineSnapshot(`
+      {
+        "role": "button",
+        "sourceId": "source",
+        "tabIndex": "0",
+        "tagName": "DIV",
+        "text": "Add item",
+      }
+    `);
   });
 
   it('renders an accessible source and hidden dedicated preview slot', () => {

@@ -66,6 +66,25 @@ export type DashboardGridDragPreviewController = {
   destroy(): void;
 };
 
+export const resolveDashboardGridDragPreviewHost = (options: {
+  targetDocument: Document;
+  itemElement: HTMLElement;
+  portal?: 'body' | 'parent' | HTMLElement;
+}): HTMLElement | ShadowRoot => {
+  if (options.portal && options.portal !== 'body' && options.portal !== 'parent') {
+    return options.portal;
+  }
+  if (options.portal === 'parent') {
+    return options.itemElement.parentElement ?? options.targetDocument.body;
+  }
+  if (options.portal === 'body') {
+    return options.targetDocument.body;
+  }
+
+  const rootNode = options.itemElement.getRootNode();
+  return rootNode.nodeType === 11 && 'host' in rootNode ? (rootNode as ShadowRoot) : options.targetDocument.body;
+};
+
 /**
  * Creates empty preview chrome. Content must be rendered specifically for the
  * preview; the active item's DOM subtree is never cloned.

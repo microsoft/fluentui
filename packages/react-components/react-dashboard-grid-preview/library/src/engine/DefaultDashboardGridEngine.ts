@@ -113,6 +113,18 @@ const frozenMoveResult = (
   result: DashboardGridMoveResult,
 ): DashboardGridMoveResult => Object.freeze(result);
 
+const DEFAULT_NESTING_DWELL = 100;
+
+const getNestingDwell = (value: boolean | number | undefined): number => {
+  if (value === false) {
+    return 0;
+  }
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return Math.max(0, value);
+  }
+  return DEFAULT_NESTING_DWELL;
+};
+
 export class DefaultDashboardGridEngine implements DashboardGridEngine {
   private state: EngineState;
   private visibleState: EngineState;
@@ -514,6 +526,8 @@ export class DefaultDashboardGridEngine implements DashboardGridEngine {
           proposal.pixelRect,
         );
         if (selected === undefined) {
+          activeInteraction.nestingTargetKey = undefined;
+          activeInteraction.nestingStartedAt = undefined;
           return frozenMoveResult({
             status: 'deferred',
             reason: 'coverage-threshold',
@@ -526,6 +540,23 @@ export class DefaultDashboardGridEngine implements DashboardGridEngine {
           if (target !== undefined) {
             const coverage = nestingCoverage(proposal.pixelRect, target);
             if (coverage > 0.8) {
+              const now = Date.now();
+              if (activeInteraction.nestingTargetKey !== selected.node.key) {
+                activeInteraction.nestingTargetKey = selected.node.key;
+                activeInteraction.nestingStartedAt = now;
+              }
+              const dwell = getNestingDwell(
+                activeInteraction.context.nestingDwell,
+              );
+              if (
+                now - (activeInteraction.nestingStartedAt ?? now) <
+                dwell
+              ) {
+                return frozenMoveResult({
+                  status: 'deferred',
+                  reason: 'coverage-threshold',
+                });
+              }
               return frozenMoveResult({
                 status: 'nest-requested',
                 targetId: selected.node.id,
@@ -533,10 +564,15 @@ export class DefaultDashboardGridEngine implements DashboardGridEngine {
               });
             }
           }
+          activeInteraction.nestingTargetKey = undefined;
+          activeInteraction.nestingStartedAt = undefined;
         }
       } else {
         preferredCollisionKey = collisions[0].key;
       }
+    } else if (activeInteraction !== undefined) {
+      activeInteraction.nestingTargetKey = undefined;
+      activeInteraction.nestingStartedAt = undefined;
     }
 
     const before = cloneEngineState(this.state);
@@ -634,7 +670,6 @@ export class DefaultDashboardGridEngine implements DashboardGridEngine {
       current.minH !== undefined && current.minH === current.maxH;
     if (
       current.w === current.h ||
-      current.locked ||
       !current.resizable ||
       this.state.resizeDisabled ||
       fixedWidth ||

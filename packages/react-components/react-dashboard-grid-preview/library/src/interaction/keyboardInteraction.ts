@@ -183,8 +183,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
       return false;
     }
 
-    if (!registration || registration.locked) {
-      options.onRejected?.('locked');
+    if (!registration) {
       return false;
     }
     if (

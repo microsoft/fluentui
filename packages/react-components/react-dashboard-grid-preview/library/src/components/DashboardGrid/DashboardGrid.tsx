@@ -9,6 +9,9 @@ import { useDashboardGrid_unstable } from './useDashboardGrid';
 import { useDashboardGridStyles_unstable } from './useDashboardGridStyles.styles';
 import { useDashboardGridPrintStyles_unstable } from '../../print/useDashboardGridPrintStyles.styles';
 
+/**
+ * Renders a responsive dashboard layout with pointer, keyboard, nesting, persistence, and print support.
+ */
 export const DashboardGrid: ForwardRefComponent<DashboardGridProps> = React.forwardRef((props, ref) => {
   const state = useDashboardGrid_unstable(props, ref);
   useDashboardGridStyles_unstable(state);

@@ -7,6 +7,7 @@ import { DashboardGrid } from '../DashboardGrid/DashboardGrid';
 import { DashboardGridProvider } from './DashboardGridProvider';
 import type { DashboardGridHandle } from '../../hooks/useDashboardGrid';
 import type { DashboardGridInteractionCoordinator } from '../../interaction/types';
+import { isConformant } from '../../testing/isConformant';
 
 let capturedRegistry: DashboardGridRegistry | undefined;
 let capturedCoordinator: DashboardGridInteractionCoordinator | undefined;
@@ -42,9 +43,32 @@ const StatefulContent = () => {
 };
 
 describe('DashboardGridProvider', () => {
+  isConformant({
+    Component: DashboardGridProvider,
+    displayName: 'DashboardGridProvider',
+    requiredProps: { children: <div>Dashboard content</div> },
+    disabledTests: [
+      'component-handles-classname',
+      'component-has-root-ref',
+      'component-handles-ref',
+      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
+    ],
+  });
+
   beforeEach(() => {
     capturedRegistry = undefined;
     capturedCoordinator = undefined;
+  });
+
+  it('renders a default state', () => {
+    const { container } = render(
+      <DashboardGridProvider>
+        <div>Dashboard content</div>
+      </DashboardGridProvider>,
+    );
+
+    expect(container.textContent).toMatchInlineSnapshot(`"Dashboard content"`);
   });
 
   it('preserves mounted state and focus across provider-wide transfer', async () => {

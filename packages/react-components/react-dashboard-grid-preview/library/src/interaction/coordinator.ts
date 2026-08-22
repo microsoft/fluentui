@@ -6,9 +6,6 @@ import {
   sortDashboardGridElementsDeepestFirst,
 } from './domGeometry';
 import type {
-  DashboardGridActivatePointerRequest,
-  DashboardGridBeginKeyboardRequest,
-  DashboardGridBeginPointerRequest,
   DashboardGridCoordinatorOptions,
   DashboardGridDragSourceRegistration,
   DashboardGridDropAcceptanceContext,
@@ -28,8 +25,6 @@ import type {
   DashboardGridPointerSession,
   DashboardGridRejectedReason,
   DashboardGridTransferIntent,
-  DashboardGridTransferResult,
-  DashboardGridUpdatePointerRequest,
 } from './types';
 
 type RegistrationEntry<T> = {
@@ -541,7 +536,7 @@ export const createDashboardGridInteractionCoordinator = (
         if (!source || source.disabled) {
           return null;
         }
-      } else if (!grid || !item || item.locked) {
+      } else if (!grid || !item) {
         return null;
       } else if (request.operation === 'drag' && !item.movable) {
         return null;
@@ -599,6 +594,7 @@ export const createDashboardGridInteractionCoordinator = (
           metrics: sourceGrid.getMetrics(),
           originPixelRect: session.originPixelRect,
           allowNesting: true,
+          nestingDwell: sourceGrid.nestingDwell,
         });
       }
 
@@ -777,7 +773,7 @@ export const createDashboardGridInteractionCoordinator = (
       const grid = getGrid(request.gridId);
       const itemRegistration = getItem(request.gridId, request.itemId);
       const item = grid?.store.getItem(request.itemId);
-      if (!grid || !itemRegistration || !item || item.locked) {
+      if (!grid || !itemRegistration || !item) {
         return null;
       }
 
