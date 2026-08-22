@@ -92,7 +92,7 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 - [ ] 5.4 Convert the ~20 MDX pages that render live examples via `FluentCanvas` to use `<StoryPreview>`
 - [x] 5.5 Image imports resolve through the same `@repo/*` alias rewrite as other relative imports, so no per-file conversion was needed.
 - [x] 5.2a Exclude the per-component v8/v0 migration guides (`concepts/migration/from-v0/**`, `from-v8/**`, 64 pages). They render legacy components side by side and pull `@fluentui/react` and `@fluentui/react-northstar` into the bundle — transitively via story modules, so inspecting page text does not catch them; this was isolated by bisecting the content tree. Excluded by path for the same reason as the migration shim packages (proposal Non-goals); they remain on the Storybook docsite, which the site links out to.
-- [ ] 5.6 Enable build-time internal link validation and fix all reported breakages
+- [x] 5.6 Internal link validation (`test-links` target) checks every `/docs/...` link in the built output, resolving page links against the actual routes and asset links against files on disk. It immediately caught a systematic bug: rewritten links included the router `basename`, producing `/docs/docs/react/...` on every migrated page. Links into the excluded v8/v0 subtree are now rewritten to the Storybook docsite so readers still reach that content. 20,759 links across 202 pages resolve.
 
 ## 6. Phase 5 — Navigation, search, machine-readable output
 

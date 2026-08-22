@@ -83,6 +83,13 @@
         "script": "test:content"
       },
       "dependsOn": ["build"]
+    },
+    "test-links": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "test:links"
+      },
+      "dependsOn": ["build"]
     }
   },
   "implicitDependencies": ["tag:type:stories"]

@@ -91,7 +91,7 @@ Inspired by [atomic design](https://bradfrost.com/blog/post/atomic-web-design/),
 
 **Factories** (`createMotionComponent`, `createPresenceComponent`) are the tools you use to assemble atoms into molecules — they turn raw keyframe definitions into React components.
 
-**Most users start with Molecules** — the pre-built components like `<Fade>` and `<Scale>` that work out of the box. When you need a custom effect, you can compose atoms together using the factories. See <a href="?path=/docs/react/motion/components-preview/atoms">Motion Atoms</a> for the full API.
+**Most users start with Molecules** — the pre-built components like `<Fade>` and `<Scale>` that work out of the box. When you need a custom effect, you can compose atoms together using the factories. See <a href="?path=/react/motion/components-preview/atoms">Motion Atoms</a> for the full API.
 
 ## Key Principles
 
@@ -150,7 +150,7 @@ A few commonly used durations to give you a feel for the scale:
 | `durationSlow`      | 300ms    | Large elements, emphasis       |
 | `durationUltraSlow` | 500ms    | Dramatic reveals, onboarding   |
 
-The full set of duration and easing tokens is available on the <a href="?path=/docs/react/motion/tokens">Motion Tokens</a> page.
+The full set of duration and easing tokens is available on the <a href="?path=/react/motion/tokens">Motion Tokens</a> page.
 
 ### Easing Curves (examples)
 
@@ -163,13 +163,13 @@ Easing curves control how an animation accelerates and decelerates. Fluent defin
 | **Easy-ease**  | Smooth start and end        | Elements **moving** within the screen |
 
 Each family has variants (e.g. `curveDecelerateMid`, `curveDecelerateMax`) for different intensities.
-See all curves with interactive previews on the <a href="?path=/docs/react/motion/tokens">Motion Tokens</a> page.
+See all curves with interactive previews on the <a href="?path=/react/motion/tokens">Motion Tokens</a> page.
 
 ### Pre-built Components
 
 Six presence components — **Fade**, **Scale**, **Collapse**, **Slide**, **Blur**, and **Rotate** — handle the most common UI motion patterns. Each comes in **Snappy** and **Relaxed** timing variants.
 
-See all components with interactive demos on the <a href="?path=/docs/react/motion/components-preview/introduction">Motion Components</a> page.
+See all components with interactive demos on the <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> page.
 
 </Card>
 
@@ -187,7 +187,7 @@ The Fluent Motion System distinguishes between two fundamental patterns:
 
 **Two-Way Presence** — Created with `createPresenceComponent()`, manages enter/exit animations controlled by a `visible` prop. This is what the pre-built components (`Fade`, `Scale`, etc.) use under the hood.
 
-For most use cases, you don't need the factories — use the <a href="?path=/docs/react/motion/components-preview/introduction">pre-built Motion Components</a> instead.
+For most use cases, you don't need the factories — use the <a href="?path=/react/motion/components-preview/introduction">pre-built Motion Components</a> instead.
 
 ### Two Packages to Know
 
@@ -211,28 +211,27 @@ For most use cases, you don't need the factories — use the <a href="?path=/doc
   <Card appearance="filled">
     <CardHeader header={<h3>🧩 Use Pre-built Components</h3>} />
     <div>
-      Explore the <a href="?path=/docs/react/motion/components-preview/introduction">Motion Components</a> for
-      ready-to-use animations.
+      Explore the <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> for ready-to-use
+      animations.
     </div>
   </Card>
   <Card appearance="filled">
     <CardHeader header={<h3>🎨 Explore Tokens</h3>} />
     <div>
-      See all available <a href="?path=/docs/react/motion/tokens">Motion Tokens</a> for durations and easing curves.
+      See all available <a href="?path=/react/motion/tokens">Motion Tokens</a> for durations and easing curves.
     </div>
   </Card>
   <Card appearance="filled">
     <CardHeader header={<h3>🔄 Migrate from Other Libraries</h3>} />
     <div>
-      Coming from Framer Motion or GSAP? Check our <a href="?path=/docs/react/motion/migration">Migration Guide</a>.
+      Coming from Framer Motion or GSAP? Check our <a href="?path=/react/motion/migration">Migration Guide</a>.
     </div>
   </Card>
   <Card appearance="filled">
     <CardHeader header={<h3>⚛️ Motion Atoms</h3>} />
     <div>
-      Build custom animations by composing{' '}
-      <a href="?path=/docs/react/motion/components-preview/atoms">low-level atoms</a> like <code>fadeAtom</code> and{' '}
-      <code>scaleAtom</code>.
+      Build custom animations by composing <a href="?path=/react/motion/components-preview/atoms">low-level atoms</a>{' '}
+      like <code>fadeAtom</code> and <code>scaleAtom</code>.
     </div>
   </Card>
 </div>

@@ -75,7 +75,8 @@ function collect() {
 }
 
 const pages = collect();
-const routeById = new Map(pages.map(page => [page.id, `/docs/react/${page.path}`]));
+// Paths are relative to the router basename (`/docs`); including it would yield /docs/docs/...
+const routeById = new Map(pages.map(page => [page.id, `/react/${page.path}`]));
 
 /*
  * Component pages are generated separately (see generate-pages.mjs) but conceptual pages link
@@ -111,6 +112,20 @@ for (const file of globSync('packages/react-components/*/stories/src/**/index.st
 }
 
 const force = process.argv.includes('--force');
+
+/** Pages kept on the Storybook docsite (see the exclusion below). */
+const EXCLUDED_PATH = /^concepts\/migration\/from-v[08]\//;
+const STORYBOOK_DOCSITE = 'https://storybooks.fluentui.dev/react/?path=/docs/';
+
+/*
+ * Links to excluded pages must still reach the reader, so they are pointed at the Storybook
+ * docsite rather than left dangling — the site links out to it for this content anyway.
+ */
+for (const page of pages) {
+  if (EXCLUDED_PATH.test(page.path)) {
+    routeById.set(page.id, `${STORYBOOK_DOCSITE}${page.id}--docs`);
+  }
+}
 const written = [];
 const skippedExisting = [];
 const excludedLegacy = [];
@@ -160,7 +175,7 @@ for (const page of pages) {
    * the same reason as the migration shim packages (proposal Non-goals). They remain on the
    * Storybook docsite, which the site links out to.
    */
-  if (/^concepts\/migration\/from-v[08]\//.test(page.path)) {
+  if (EXCLUDED_PATH.test(page.path)) {
     excludedLegacy.push(page.path);
     continue;
   }
