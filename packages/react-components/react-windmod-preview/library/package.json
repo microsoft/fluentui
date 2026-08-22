@@ -82,6 +82,16 @@
         "default": "./lib-commonjs/divider.cjs"
       }
     },
+    "./image": {
+      "import": {
+        "types": "./dist/image.d.ts",
+        "default": "./lib/image.js"
+      },
+      "require": {
+        "types": "./dist/image.d.cts",
+        "default": "./lib-commonjs/image.cjs"
+      }
+    },
     "./label": {
       "import": {
         "types": "./dist/label.d.ts",

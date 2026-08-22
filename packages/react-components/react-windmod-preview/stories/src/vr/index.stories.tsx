@@ -4,6 +4,8 @@ export { ButtonWindmod } from './ButtonWindmod.stories';
 export { ButtonGriffel } from './ButtonGriffel.stories';
 export { DividerWindmod } from './DividerWindmod.stories';
 export { DividerGriffel } from './DividerGriffel.stories';
+export { ImageWindmod } from './ImageWindmod.stories';
+export { ImageGriffel } from './ImageGriffel.stories';
 export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { LinkWindmod } from './LinkWindmod.stories';

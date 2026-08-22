@@ -7,6 +7,9 @@ export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlot
 export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles } from './divider';
 export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
 
+export { Image, imageClassNames, renderImage, useImage, useImageStyles } from './image';
+export type { ImageFit, ImageProps, ImageShape, ImageSlots, ImageState } from './image';
+
 export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
 export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
 

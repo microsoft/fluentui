@@ -14,6 +14,9 @@ import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-co
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
+import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
+import type { ImageState as ImageState_2 } from '@fluentui/react-headless-components-preview/image';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
 import { LabelSlots } from '@fluentui/react-headless-components-preview/label';
@@ -27,6 +30,7 @@ import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
+import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
@@ -57,6 +61,7 @@ import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
+import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
@@ -157,6 +162,35 @@ export { DividerSlots }
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
 
 // @public
+const Image_2: ForwardRefComponent<ImageProps>;
+export { Image_2 as Image }
+
+// @public
+export const imageClassNames: {
+    root: string;
+};
+
+// @public
+export type ImageFit = 'none' | 'center' | 'contain' | 'cover' | 'default';
+
+// @public
+export type ImageProps = ImageProps_2 & {
+    block?: boolean;
+    bordered?: boolean;
+    fit?: ImageFit;
+    shadow?: boolean;
+    shape?: ImageShape;
+};
+
+// @public
+export type ImageShape = 'square' | 'circular' | 'rounded';
+
+export { ImageSlots }
+
+// @public
+export type ImageState = ImageState_2 & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
+
+// @public
 export const Label: ForwardRefComponent<LabelProps>;
 
 // @public
@@ -212,6 +246,8 @@ export { renderBadge }
 export { renderButton }
 
 export { renderDivider }
+
+export { renderImage }
 
 export { renderLabel }
 
@@ -374,6 +410,11 @@ export { useDivider }
 
 // @public
 export const useDividerStyles: (state: DividerState) => DividerState;
+
+export { useImage }
+
+// @public
+export const useImageStyles: (state: ImageState) => ImageState;
 
 export { useLabel }
 

@@ -1,0 +1,32 @@
+'use client';
+
+import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { renderImage, useImage } from '@fluentui/react-headless-components-preview/image';
+
+import type { ImageProps, ImageState } from './Image.types';
+import { useImageStyles } from './useImageStyles';
+
+/**
+ * An Image displays a picture, icon or other visual content. Windmod Image: the headless
+ * image decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
+ */
+export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, ref) => {
+  // Look props belong to windmod — the headless hook neither accepts nor resolves them.
+  // Defaults mirror @fluentui/react-image's styled useImage.
+  const { block = false, bordered = false, fit = 'default', shadow = false, shape = 'square', ...rest } = props;
+
+  const state: ImageState = {
+    ...useImage(rest, ref),
+    block,
+    bordered,
+    fit,
+    shadow,
+    shape,
+  };
+
+  return renderImage(useImageStyles(state));
+  // Casting is required due to lack of distributive union to support union on @types/react
+}) as ForwardRefComponent<ImageProps>;
+
+Image.displayName = 'Image';
