@@ -97,6 +97,25 @@ describe('CompoundButton', () => {
     expect(containerOf(getByTestId('icon-only'))).toBeNull();
   });
 
+  it('keeps the content container when an icon and secondaryContent arrive without children', () => {
+    const { getByTestId } = render(
+      <CompoundButton data-testid="root" icon={<Glyph />} secondaryContent="Second line" />,
+    );
+
+    const root = getByTestId('root');
+
+    expect(root.hasAttribute('data-icon-only')).toBe(false);
+    expect(root.getAttribute('data-has-secondary-content')).toBe('');
+    expect(root.hasAttribute('data-empty')).toBe(true);
+    expect(root.getAttribute('data-icon-position')).toBe('before');
+
+    const container = containerOf(root);
+
+    expect(container).not.toBeNull();
+    expect(container!.textContent).toBe('Second line');
+    expect(container!.firstElementChild).toHaveClass(styles.secondaryContent);
+  });
+
   it('renders no secondaryContent span when the consumer supplies none', () => {
     const { getByTestId } = render(<CompoundButton data-testid="root">Compound</CompoundButton>);
 
@@ -138,6 +157,25 @@ describe('CompoundButton', () => {
     expect(labelled.hasAttribute('data-empty')).toBe(false);
 
     expect(getByTestId('icon-only').hasAttribute('data-empty')).toBe(true);
+  });
+
+  it('resolves the look-prop defaults and passes an explicit shape through', () => {
+    const { getByTestId } = render(
+      <>
+        <CompoundButton data-testid="default">Compound</CompoundButton>
+        <CompoundButton data-testid="circular" shape="circular">
+          Compound
+        </CompoundButton>
+      </>,
+    );
+
+    const byDefault = getByTestId('default');
+
+    expect(byDefault.getAttribute('data-appearance')).toBe('secondary');
+    expect(byDefault.getAttribute('data-size')).toBe('medium');
+    expect(byDefault).not.toHaveClass(styles.circular);
+
+    expect(getByTestId('circular')).toHaveClass(styles.circular);
   });
 
   it('leaves data-icon-only and data-has-secondary-content to the headless hook', () => {

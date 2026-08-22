@@ -108,6 +108,18 @@
       @variant group-hover-active/fui-compound-button {
         @apply text-neutral-foreground-2-brand-pressed;
       }
+
+      /* Griffel orders every forced-colors rule after every :hover rule regardless of source
+         position, so the high-contrast hover colour outranks this appearance there. */
+      @variant forced-colors {
+        @variant group-hover/fui-compound-button {
+          @apply text-[Highlight];
+        }
+
+        @variant group-hover-active/fui-compound-button {
+          @apply text-[Highlight];
+        }
+      }
     }
 
     @variant group-disabled/fui-compound-button, group-disabled-focusable/fui-compound-button {
