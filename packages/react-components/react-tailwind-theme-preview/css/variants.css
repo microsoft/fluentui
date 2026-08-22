@@ -14,9 +14,12 @@
 @custom-variant rtl (&:where(:dir(rtl)));
 @custom-variant ltr (&:where(:dir(ltr)));
 
-/* orientation */
+/* orientation. The headless library spells vertical orientation two ways: an enumerated
+ * data-orientation (Divider, TabList, ColorSlider, AlphaSlider) and a boolean data-vertical
+ * (Slider, Toolbar and its parts). Separate entries, one spelling each. */
 @custom-variant vertical (&:where([data-orientation='vertical']));
 @custom-variant horizontal (&:where([data-orientation='horizontal']));
+@custom-variant vertical-flag (&:where([data-vertical]));
 
 /* content alignment along the main axis */
 @custom-variant align-content-start (&:where([data-align-content='start']));
@@ -115,9 +118,12 @@
 @custom-variant enabled-control (&:where(:not([disabled], [data-disabled], :disabled, [aria-disabled='true'])));
 
 /* focus visibility: keyborg attribute + native pseudo-class. focus-within keeps the
- * attribute:pseudo pairing — keyborg leaves the attribute behind after focus moves */
+ * attribute:pseudo pairing — keyborg leaves the attribute behind after focus moves.
+ * focus-within-visible drops the native branch: keyborg stamps the attribute only while
+ * navigating with the keyboard, so it is the one that matches createFocusOutlineStyle. */
 @custom-variant focus-visible (&:where([data-fui-focus-visible], :focus-visible));
 @custom-variant focus-within (&:where([data-fui-focus-within]:focus-within, :focus-within));
+@custom-variant focus-within-visible (&:where([data-fui-focus-within]:focus-within));
 
 /* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
 @custom-variant empty (&:where([data-empty], :empty));

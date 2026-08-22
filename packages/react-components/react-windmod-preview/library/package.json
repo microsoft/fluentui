@@ -193,6 +193,16 @@
         "default": "./lib-commonjs/skeleton-item.cjs"
       }
     },
+    "./slider": {
+      "import": {
+        "types": "./dist/slider.d.ts",
+        "default": "./lib/slider.js"
+      },
+      "require": {
+        "types": "./dist/slider.d.cts",
+        "default": "./lib-commonjs/slider.cjs"
+      }
+    },
     "./spinner": {
       "import": {
         "types": "./dist/spinner.d.ts",

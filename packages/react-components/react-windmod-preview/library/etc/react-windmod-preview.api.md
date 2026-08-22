@@ -56,6 +56,7 @@ import { renderRatingDisplay } from '@fluentui/react-headless-components-preview
 import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
+import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
@@ -66,6 +67,9 @@ import type { SkeletonItemState as SkeletonItemState_2 } from '@fluentui/react-h
 import type { SkeletonProps as SkeletonProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { SkeletonSlots } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonState as SkeletonState_2 } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SliderProps as SliderProps_2 } from '@fluentui/react-headless-components-preview/slider';
+import { SliderSlots } from '@fluentui/react-headless-components-preview/slider';
+import type { SliderState as SliderState_2 } from '@fluentui/react-headless-components-preview/slider';
 import type { SpinnerProps as SpinnerProps_2 } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerSlots } from '@fluentui/react-headless-components-preview/spinner';
 import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-components-preview/spinner';
@@ -102,6 +106,7 @@ import { useRatingItem } from '@fluentui/react-headless-components-preview/ratin
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
+import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
@@ -423,6 +428,8 @@ export { renderSkeleton }
 
 export { renderSkeletonItem }
 
+export { renderSlider }
+
 export { renderSpinner }
 
 export { renderTextarea }
@@ -482,6 +489,27 @@ export { SkeletonSlots }
 
 // @public
 export type SkeletonState = SkeletonState_2 & Required<Pick<SkeletonProps, 'animation' | 'appearance'>> & Pick<SkeletonProps, 'shape' | 'size'>;
+
+// @public
+export const Slider: ForwardRefComponent<SliderProps>;
+
+// @public
+export const sliderClassNames: {
+    root: string;
+};
+
+// @public
+export type SliderProps = SliderProps_2 & {
+    size?: SliderSize;
+};
+
+// @public
+export type SliderSize = 'small' | 'medium';
+
+export { SliderSlots }
+
+// @public
+export type SliderState = SliderState_2 & Required<Pick<SliderProps, 'size'>>;
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
@@ -679,6 +707,11 @@ export const useSkeletonItemStyles: (state: SkeletonItemState) => SkeletonItemSt
 
 // @public
 export const useSkeletonStyles: (state: SkeletonState) => SkeletonState;
+
+export { useSlider }
+
+// @public
+export const useSliderStyles: (state: SliderState) => SliderState;
 
 export { useSpinner }
 
