@@ -29,6 +29,12 @@ import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-hea
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
 import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
+import type { RatingDisplayProps as RatingDisplayProps_2 } from '@fluentui/react-headless-components-preview/rating-display';
+import { RatingDisplaySlots } from '@fluentui/react-headless-components-preview/rating-display';
+import type { RatingDisplayState as RatingDisplayState_2 } from '@fluentui/react-headless-components-preview/rating-display';
+import type { RatingItemProps as RatingItemProps_2 } from '@fluentui/react-headless-components-preview/rating';
+import { RatingItemSlots } from '@fluentui/react-headless-components-preview/rating';
+import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headless-components-preview/rating';
 import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
@@ -38,6 +44,8 @@ import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
+import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
+import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
@@ -70,6 +78,9 @@ import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
+import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
+import { useRatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
+import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
@@ -275,6 +286,50 @@ export type ProgressBarThickness = 'medium' | 'large';
 
 export { Provider }
 
+// @public
+export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
+
+// @public
+export const ratingDisplayClassNames: {
+    root: string;
+};
+
+// @public
+export type RatingDisplayColor = 'brand' | 'marigold' | 'neutral';
+
+// @public
+export type RatingDisplayProps = RatingDisplayProps_2 & {
+    color?: RatingDisplayColor;
+    size?: RatingDisplaySize;
+};
+
+// @public
+export type RatingDisplaySize = 'small' | 'medium' | 'large' | 'extra-large';
+
+export { RatingDisplaySlots }
+
+// @public
+export type RatingDisplayState = RatingDisplayState_2 & Required<Pick<RatingDisplayProps, 'color' | 'size'>>;
+
+// @public
+export const RatingItem: ForwardRefComponent<RatingItemProps>;
+
+// @public
+export const ratingItemClassNames: {
+    root: string;
+};
+
+// @public
+export type RatingItemProps = RatingItemProps_2 & {
+    color?: RatingDisplayColor;
+    size?: RatingDisplaySize;
+};
+
+export { RatingItemSlots }
+
+// @public
+export type RatingItemState = RatingItemState_2 & Required<Pick<RatingItemProps, 'color' | 'size'>>;
+
 export { renderBadge }
 
 export { renderButton }
@@ -290,6 +345,10 @@ export { renderLink }
 export { renderProgressBar }
 
 export { renderProvider }
+
+export { renderRatingDisplay }
+
+export { renderRatingItem }
 
 export { renderSkeleton }
 
@@ -468,6 +527,18 @@ export { useProgressBar }
 export const useProgressBarStyles: (state: ProgressBarState) => ProgressBarState;
 
 export { useProvider }
+
+export { useRatingDisplay }
+
+export { useRatingDisplayContextValues }
+
+// @public
+export const useRatingDisplayStyles: (state: RatingDisplayState) => RatingDisplayState;
+
+export { useRatingItem }
+
+// @public
+export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;
 
 export { useSkeleton }
 

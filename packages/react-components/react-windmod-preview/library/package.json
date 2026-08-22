@@ -26,6 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-headless-components-preview": "^0.2.5",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-shared-contexts": "^9.26.3",
     "@fluentui/react-tailwind-theme-preview": "^9.0.0-alpha.0",
     "@fluentui/react-utilities": "^9.26.6",
@@ -130,6 +131,26 @@
       "require": {
         "types": "./dist/provider.d.cts",
         "default": "./lib-commonjs/provider.cjs"
+      }
+    },
+    "./rating-display": {
+      "import": {
+        "types": "./dist/rating-display.d.ts",
+        "default": "./lib/rating-display.js"
+      },
+      "require": {
+        "types": "./dist/rating-display.d.cts",
+        "default": "./lib-commonjs/rating-display.cjs"
+      }
+    },
+    "./rating-item": {
+      "import": {
+        "types": "./dist/rating-item.d.ts",
+        "default": "./lib/rating-item.js"
+      },
+      "require": {
+        "types": "./dist/rating-item.d.cts",
+        "default": "./lib-commonjs/rating-item.cjs"
       }
     },
     "./skeleton": {
