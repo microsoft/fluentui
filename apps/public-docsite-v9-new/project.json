@@ -76,6 +76,13 @@
         "script": "test:a11y"
       },
       "dependsOn": ["build"]
+    },
+    "test-content": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "test:content"
+      },
+      "dependsOn": ["build"]
     }
   },
   "implicitDependencies": ["tag:type:stories"]

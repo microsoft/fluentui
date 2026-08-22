@@ -81,6 +81,9 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 
 - [x] 4.10 Fix component descriptions rendering as JavaScript source. Sibling `*Description.md` imports were being compiled into MDX components by `fumadocs-mdx` rather than read as strings, so every component page rendered `function MDXContent(props = {}) {...}` in place of its prose. The raw-string plugin now redirects those imports to a base64-encoded virtual module id, which the MDX file filter cannot match. Present since the first build; surfaced by the hydration mismatch that async collections introduced.
 
+- [x] 4.11 Add a content audit that sweeps every prerendered page for defects (`test-content` target), rather than relying on spot-checks. Generated pages make "verify one, assume the rest" unsafe: it was exactly that habit which let 4.10 survive across 144 pages.
+- [ ] 4.12 **Slot props leak onto the DOM.** The audit found `[object Object]` on 13 pages. Slot names reach the rendered element as attributes — `<Avatar icon={<GuestRegular/>}/>` emits `icon="[object Object]"` on the root, and headless AvatarGroup emits `root=` and `avatar=`. The icon slot _also_ renders correctly as a child, so the slot is resolved but not stripped from the root props. Persists after hydration, so it is not a prerender artifact. Suspected cause is the source-aliasing in `tsconfig-aliases.ts` yielding two copies of the slot machinery (`@fluentui/react-utilities`). **Confirm by rendering the same component in Storybook** before changing anything — if Storybook leaks too, it is upstream and out of scope.
+
 ## 5. Phase 4 — Conceptual MDX pages
 
 - [ ] 5.1 Write a codemod converting `<Meta title="..." />` to Fumadocs frontmatter, deriving `title` and slug from the title path

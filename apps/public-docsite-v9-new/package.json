@@ -6,14 +6,15 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "dev": "react-router dev",
     "build": "react-router build",
-    "preview": "vite preview",
-    "type-check": "react-router typegen && tsc --noEmit",
-    "lint": "yarn run -T eslint .",
-    "test": "node --test scripts/docgen-transforms.test.mjs scripts/story-order-core.test.mjs",
+    "dev": "react-router dev",
     "docgen": "node scripts/generate-docgen.mjs",
-    "test:a11y": "node --test scripts/accessibility.test.mjs"
+    "lint": "yarn run -T eslint .",
+    "preview": "vite preview",
+    "test": "node --test scripts/docgen-transforms.test.mjs scripts/story-order-core.test.mjs",
+    "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "test:content": "node scripts/audit-content.mjs",
+    "type-check": "react-router typegen && tsc --noEmit"
   },
   "dependencies": {
     "@fluentui/react-components": "*",
