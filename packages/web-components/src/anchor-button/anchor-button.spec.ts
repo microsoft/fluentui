@@ -222,6 +222,26 @@ test.describe('Anchor Button', () => {
     await newPage.close();
   });
 
+  test('should open the provided url in a new tab when middle-clicked', async ({ context, fastPage, page }) => {
+    const { element } = fastPage;
+
+    const expectedUrl = '#foo';
+
+    await fastPage.setTemplate({ attributes: { href: expectedUrl } });
+
+    const newPagePromise = context.waitForEvent('page');
+
+    await element.click({ button: 'middle' });
+
+    const newPage = await newPagePromise;
+
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(newPage.url()).toMatch(expectedUrl);
+
+    await newPage.close();
+  });
+
   test('should navigate to the provided url when `Enter` is pressed via keyboard', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
