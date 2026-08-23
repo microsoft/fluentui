@@ -1,0 +1,150 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-flex;
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+
+    @variant label-below {
+      @apply flex-col items-center;
+    }
+  }
+
+  .input {
+    @apply absolute start-0 top-0 m-0 box-border h-full w-32 opacity-0;
+
+    @variant group-label-below/fui-radio {
+      @apply h-32 w-full;
+    }
+
+    @variant enabled {
+      @apply cursor-pointer;
+    }
+  }
+
+  .indicator {
+    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-(length:--spacing-thin) border-solid fill-current text-[length:calc(12px*var(--base-scale))];
+
+    /* Raw pseudo, never Tailwind's `after` variant: the variant injects
+       `content: var(--tw-content)`, whose registered initial value renders the dot in every
+       state. The checked-only `content` lives in .defaultIndicator. */
+    &::after {
+      @apply absolute size-16 [transform:scale(0.625)] rounded-circular bg-current;
+    }
+
+    @variant peer-enabled/fui-radio {
+      @variant peer-not-checked/fui-radio {
+        @apply border-neutral-stroke-accessible;
+
+        @variant peer-hover/fui-radio {
+          @apply border-neutral-stroke-accessible-hover;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply border-neutral-stroke-accessible-pressed;
+        }
+      }
+
+      @variant peer-checked/fui-radio {
+        @apply border-compound-brand-stroke text-compound-brand-foreground-1;
+
+        @variant peer-hover/fui-radio {
+          @apply border-compound-brand-stroke-hover text-compound-brand-foreground-1-hover;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply border-compound-brand-stroke-pressed text-compound-brand-foreground-1-pressed;
+        }
+      }
+    }
+
+    @variant peer-disabled/fui-radio {
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant forced-colors {
+      @variant peer-enabled/fui-radio {
+        @variant peer-not-checked/fui-radio {
+          @apply border-[ButtonBorder];
+        }
+
+        @variant peer-checked/fui-radio {
+          @apply border-[Highlight] text-[Highlight];
+
+          &::after {
+            @apply bg-[Highlight];
+          }
+        }
+      }
+
+      @variant peer-disabled/fui-radio {
+        @apply border-[GrayText] text-[GrayText];
+
+        &::after {
+          @apply bg-[GrayText];
+        }
+      }
+    }
+  }
+
+  .defaultIndicator {
+    @variant peer-checked/fui-radio {
+      &::after {
+        @apply content-[''];
+      }
+    }
+  }
+
+  .customIndicator {
+    @variant peer-not-checked/fui-radio {
+      & > * {
+        @apply opacity-0;
+      }
+    }
+  }
+
+  .label {
+    @apply self-center px-horizontal-s py-vertical-s font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+
+    @variant group-label-after/fui-radio {
+      --fui-radio-label-offset: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
+
+      @apply my-(--fui-radio-label-offset) ps-horizontal-xs;
+    }
+
+    @variant group-label-below/fui-radio {
+      @apply pt-vertical-xs text-center;
+    }
+
+    @variant peer-enabled/fui-radio {
+      @apply cursor-pointer;
+
+      @variant peer-not-checked/fui-radio {
+        @apply text-neutral-foreground-3;
+
+        @variant peer-hover/fui-radio {
+          @apply text-neutral-foreground-2;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply text-neutral-foreground-1;
+        }
+      }
+    }
+
+    @variant peer-disabled/fui-radio {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

@@ -43,6 +43,12 @@ import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-hea
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
 import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
+import type { RadioGroupProps as RadioGroupProps_2 } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioGroupSlots } from '@fluentui/react-headless-components-preview/radio-group';
+import type { RadioGroupState as RadioGroupState_2 } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioProps } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioSlots } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioState } from '@fluentui/react-headless-components-preview/radio-group';
 import type { RatingDisplayProps as RatingDisplayProps_2 } from '@fluentui/react-headless-components-preview/rating-display';
 import { RatingDisplaySlots } from '@fluentui/react-headless-components-preview/rating-display';
 import type { RatingDisplayState as RatingDisplayState_2 } from '@fluentui/react-headless-components-preview/rating-display';
@@ -62,6 +68,8 @@ import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
+import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
+import { renderRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
 import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { renderSelect } from '@fluentui/react-headless-components-preview/select';
@@ -125,6 +133,9 @@ import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
+import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
+import { useRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
+import { useRadioGroupContextValues } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
@@ -449,6 +460,41 @@ export type ProgressBarThickness = 'medium' | 'large';
 export { Provider }
 
 // @public
+export const Radio: ForwardRefComponent<RadioProps>;
+
+// @public
+export const radioClassNames: {
+    root: string;
+};
+
+// @public
+export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public
+export const radioGroupClassNames: {
+    root: string;
+};
+
+// @public
+export type RadioGroupLayout = 'vertical' | 'horizontal' | 'horizontal-stacked';
+
+// @public
+export type RadioGroupProps = RadioGroupProps_2 & {
+    layout?: RadioGroupLayout;
+};
+
+export { RadioGroupSlots }
+
+// @public
+export type RadioGroupState = RadioGroupState_2 & Required<Pick<RadioGroupProps, 'layout'>>;
+
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
+
+// @public
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
 
 // @public
@@ -515,6 +561,10 @@ export { renderMenuButton }
 export { renderProgressBar }
 
 export { renderProvider }
+
+export { renderRadio }
+
+export { renderRadioGroup }
 
 export { renderRatingDisplay }
 
@@ -851,6 +901,18 @@ export { useProgressBar }
 export const useProgressBarStyles: (state: ProgressBarState) => ProgressBarState;
 
 export { useProvider }
+
+export { useRadio }
+
+export { useRadioGroup }
+
+export { useRadioGroupContextValues }
+
+// @public
+export const useRadioGroupStyles: (state: RadioGroupState) => RadioGroupState;
+
+// @public
+export const useRadioStyles: (state: RadioState) => RadioState;
 
 export { useRatingDisplay }
 

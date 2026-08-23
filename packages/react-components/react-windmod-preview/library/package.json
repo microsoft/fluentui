@@ -173,6 +173,26 @@
         "default": "./lib-commonjs/progress-bar.cjs"
       }
     },
+    "./radio": {
+      "import": {
+        "types": "./dist/radio.d.ts",
+        "default": "./lib/radio.js"
+      },
+      "require": {
+        "types": "./dist/radio.d.cts",
+        "default": "./lib-commonjs/radio.cjs"
+      }
+    },
+    "./radio-group": {
+      "import": {
+        "types": "./dist/radio-group.d.ts",
+        "default": "./lib/radio-group.js"
+      },
+      "require": {
+        "types": "./dist/radio-group.d.cts",
+        "default": "./lib-commonjs/radio-group.cjs"
+      }
+    },
     "./rating-display": {
       "import": {
         "types": "./dist/rating-display.d.ts",
