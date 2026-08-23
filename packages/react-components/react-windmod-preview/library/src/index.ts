@@ -102,6 +102,15 @@ export type { SliderProps, SliderSize, SliderSlots, SliderState } from './slider
 export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
 export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
 
+export {
+  renderSplitButton,
+  SplitButton,
+  splitButtonClassNames,
+  useSplitButton,
+  useSplitButtonStyles,
+} from './split-button';
+export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './split-button';
+
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
 

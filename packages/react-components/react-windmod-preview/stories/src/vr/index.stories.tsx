@@ -28,6 +28,8 @@ export { SliderWindmod } from './SliderWindmod.stories';
 export { SliderGriffel } from './SliderGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
+export { SplitButtonWindmod } from './SplitButtonWindmod.stories';
+export { SplitButtonGriffel } from './SplitButtonGriffel.stories';
 export { TextareaWindmod } from './TextareaWindmod.stories';
 export { TextareaGriffel } from './TextareaGriffel.stories';
 export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';

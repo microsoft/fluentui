@@ -233,6 +233,16 @@
         "default": "./lib-commonjs/spinner.cjs"
       }
     },
+    "./split-button": {
+      "import": {
+        "types": "./dist/split-button.d.ts",
+        "default": "./lib/split-button.js"
+      },
+      "require": {
+        "types": "./dist/split-button.d.cts",
+        "default": "./lib-commonjs/split-button.cjs"
+      }
+    },
     "./textarea": {
       "import": {
         "types": "./dist/textarea.d.ts",

@@ -10,13 +10,15 @@ import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-compon
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
 import { CompoundButtonSlots } from '@fluentui/react-headless-components-preview/compound-button';
 import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/react-headless-components-preview/compound-button';
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
 import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
 import type { ImageState as ImageState_2 } from '@fluentui/react-headless-components-preview/image';
@@ -63,6 +65,7 @@ import { renderSkeleton } from '@fluentui/react-headless-components-preview/skel
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -78,9 +81,13 @@ import type { SkeletonState as SkeletonState_2 } from '@fluentui/react-headless-
 import type { SliderProps as SliderProps_2 } from '@fluentui/react-headless-components-preview/slider';
 import { SliderSlots } from '@fluentui/react-headless-components-preview/slider';
 import type { SliderState as SliderState_2 } from '@fluentui/react-headless-components-preview/slider';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SpinnerProps as SpinnerProps_2 } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerSlots } from '@fluentui/react-headless-components-preview/spinner';
 import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-components-preview/spinner';
+import type { SplitButtonProps as SplitButtonProps_2 } from '@fluentui/react-headless-components-preview/split-button';
+import type { SplitButtonSlots as SplitButtonSlots_2 } from '@fluentui/react-headless-components-preview/split-button';
+import type { SplitButtonState as SplitButtonState_2 } from '@fluentui/react-headless-components-preview/split-button';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -118,6 +125,7 @@ import { useSkeletonContextValues } from '@fluentui/react-headless-components-pr
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
+import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -485,6 +493,8 @@ export { renderSlider }
 
 export { renderSpinner }
 
+export { renderSplitButton }
+
 export { renderTextarea }
 
 export { renderToggleButton }
@@ -613,6 +623,30 @@ export { SpinnerSlots }
 
 // @public
 export type SpinnerState = SpinnerState_2 & Required<Pick<SpinnerProps, 'appearance' | 'size'>>;
+
+// @public
+export const SplitButton: ForwardRefComponent<SplitButtonProps>;
+
+// @public
+export const splitButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Pick<SplitButtonProps_2, 'disabled' | 'disabledFocusable' | 'icon' | 'iconPosition' | 'menuIcon'> & {
+    appearance?: ButtonAppearance;
+    shape?: ButtonShape;
+    size?: ButtonSize;
+};
+
+// @public
+export type SplitButtonSlots = Omit<SplitButtonSlots_2, 'menuButton' | 'primaryActionButton'> & {
+    menuButton?: Slot<typeof MenuButton>;
+    primaryActionButton?: Slot<typeof Button>;
+};
+
+// @public
+export type SplitButtonState = ComponentState<SplitButtonSlots> & Pick<SplitButtonState_2, 'disabled' | 'disabledFocusable' | 'iconPosition'> & Required<Pick<SplitButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 export { teamsDarkThemeClassName }
 
@@ -791,6 +825,11 @@ export { useSpinner }
 
 // @public
 export const useSpinnerStyles: (state: SpinnerState) => SpinnerState;
+
+export { useSplitButton }
+
+// @public
+export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
 
 export { useTextarea }
 

@@ -10,8 +10,9 @@
  */
 
 /*
- * One cascade-layer family. fui.base is levelless (resets); l1 = base components,
- * l2 = compositions, l3–l5 = consumer space. Winner order within a level is in-file
+ * One cascade-layer family. fui.base is levelless (resets); l1 = base components, l2 =
+ * compositions, l3+ = deeper compositions (SplitButton over MenuButton over Button); the
+ * declared stack runs to l5 today and may grow. Winner order within a level is in-file
  * source order (all selectors are :where()-flat). fui.utilities beats component styles
  * but loses to unlayered consumer CSS.
  */
