@@ -383,3 +383,108 @@ describe('compileCssModules — orphaned dist/styles.css', () => {
     expect(existsSync(join(projectRoot, 'dist', 'styles.css'))).toBe(true);
   });
 });
+
+/**
+ * Regression guard for finding C: the commonjs class map of a `"type": "module"` package was
+ * emitted as `<Name>.module.css.js`. Its body is CommonJS, so node parsed it as ESM and threw
+ * `ReferenceError: exports is not defined` — but only for some require orders, which is why it
+ * survived a bare single-file `require()` smoke test and only surfaced through a require CHAIN.
+ *
+ * Two independent halves have to hold, and each one alone reproduces the crash:
+ *  - the emitted FILENAME carries `.cjs`, and
+ *  - the specifier rewrite REACHES the already-renamed `.cjs` component files, so the require
+ *    is not left extensionless (which resolves back onto a `.js` sibling via node's legacy
+ *    extension search).
+ */
+describe('compileCssModules — class-map extension per module output', () => {
+  let projectRoot: string;
+
+  function options(isEsmPackage: boolean): NormalizedOptions {
+    return {
+      absoluteProjectRoot: projectRoot,
+      absoluteSourceRoot: join(projectRoot, 'src'),
+      isEsmPackage,
+      moduleOutput: [
+        { module: 'es6', outputPath: 'lib' },
+        { module: 'commonjs', outputPath: 'lib-commonjs' },
+      ],
+    } as unknown as NormalizedOptions;
+  }
+
+  const MODULE_RELATIVE_PATH = join('components', 'Thing.module.css');
+
+  beforeEach(async () => {
+    projectRoot = await mkdtemp(join(tmpdir(), 'fui-css-modules-ext-'));
+    mkdirSync(join(projectRoot, 'src', 'components'), { recursive: true });
+    mkdirSync(join(projectRoot, 'lib', 'components'), { recursive: true });
+    mkdirSync(join(projectRoot, 'lib-commonjs', 'components'), { recursive: true });
+
+    writeFileSync(join(projectRoot, 'package.json'), JSON.stringify({ name: '@fluentui/react-thing' }));
+    writeFileSync(join(projectRoot, 'src', MODULE_RELATIVE_PATH), '.root { color: blue; }');
+
+    // What SWC emits, per output. The commonjs file is written as `.cjs` because
+    // `cjs-extension.ts` has already renamed it by the time this pass runs.
+    writeFileSync(
+      join(projectRoot, 'lib', 'components', 'useThingStyles.js'),
+      'import styles from "./Thing.module.css";\nexport default styles;\n',
+    );
+    writeFileSync(
+      join(projectRoot, 'lib-commonjs', 'components', 'useThingStyles.cjs'),
+      'const styles = require("./Thing.module.css");\nmodule.exports = styles;\n',
+    );
+  });
+
+  afterEach(async () => {
+    await rm(projectRoot, { recursive: true, force: true });
+  });
+
+  it('emits the commonjs class map as .cjs for a "type": "module" package', async () => {
+    await expect(compileCssModules(options(true))).resolves.toBe(true);
+
+    expect(existsSync(join(projectRoot, 'lib-commonjs', `${MODULE_RELATIVE_PATH}.cjs`))).toBe(true);
+    expect(existsSync(join(projectRoot, 'lib-commonjs', `${MODULE_RELATIVE_PATH}.js`))).toBe(false);
+  });
+
+  it('keeps the ESM class map at .js regardless of the package type', async () => {
+    await expect(compileCssModules(options(true))).resolves.toBe(true);
+
+    expect(existsSync(join(projectRoot, 'lib', `${MODULE_RELATIVE_PATH}.js`))).toBe(true);
+    expect(existsSync(join(projectRoot, 'lib', `${MODULE_RELATIVE_PATH}.cjs`))).toBe(false);
+  });
+
+  it('repoints the require in the already-renamed .cjs component file at the .cjs class map', async () => {
+    await compileCssModules(options(true));
+
+    const emitted = readFileSync(join(projectRoot, 'lib-commonjs', 'components', 'useThingStyles.cjs'), 'utf8');
+
+    expect(emitted).toContain('require("./Thing.module.css.cjs")');
+  });
+
+  it('repoints the ESM import at the .js class map', async () => {
+    await compileCssModules(options(true));
+
+    const emitted = readFileSync(join(projectRoot, 'lib', 'components', 'useThingStyles.js'), 'utf8');
+
+    expect(emitted).toContain('import styles from "./Thing.module.css.js"');
+  });
+
+  /**
+   * A package that is not `"type": "module"` never had the defect: its commonjs output is not
+   * renamed, and `.js` is already CommonJS there. Its emitted filenames must not move.
+   */
+  it('leaves a commonjs package on .js in both outputs', async () => {
+    // Mirror what SWC leaves behind for a non-renamed commonjs output.
+    writeFileSync(
+      join(projectRoot, 'lib-commonjs', 'components', 'useThingStyles.js'),
+      'const styles = require("./Thing.module.css");\nmodule.exports = styles;\n',
+    );
+
+    await expect(compileCssModules(options(false))).resolves.toBe(true);
+
+    expect(existsSync(join(projectRoot, 'lib-commonjs', `${MODULE_RELATIVE_PATH}.js`))).toBe(true);
+    expect(existsSync(join(projectRoot, 'lib-commonjs', `${MODULE_RELATIVE_PATH}.cjs`))).toBe(false);
+    expect(readFileSync(join(projectRoot, 'lib-commonjs', 'components', 'useThingStyles.js'), 'utf8')).toContain(
+      'require("./Thing.module.css.js")',
+    );
+  });
+});

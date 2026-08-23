@@ -20,10 +20,29 @@
  *
  *  2. A generated class-map JS module per `*.module.css`, written next to the compiled
  *     component code in every module output (`lib/`, `lib-commonjs/`, …) as
- *     `<Name>.module.css.js`, plus a post-transform pass that repoints the emitted
- *     `'./<Name>.module.css'` specifiers (SWC emits them verbatim in both the ESM `import`
- *     and the CJS `require`) at it. Without this the shipped JS carries dangling imports
- *     of files that do not exist in the package.
+ *     `<Name>.module.css.js` — or `<Name>.module.css.cjs`, see below — plus a
+ *     post-transform pass that repoints the emitted `'./<Name>.module.css'` specifiers
+ *     (SWC emits them verbatim in both the ESM `import` and the CJS `require`) at it.
+ *     Without this the shipped JS carries dangling imports of files that do not exist in
+ *     the package.
+ *
+ * ── Class-map extension in a `"type": "module"` package (finding C) ─────────────────────
+ * This pass runs AFTER the SWC leg, so for an ESM-first package (`isEsmPackage`) every
+ * sibling file in the commonjs output has already been renamed `.js` → `.cjs` by
+ * {@link 'file://./cjs-extension.ts'}. The class map has to follow, for two reasons:
+ *
+ *  1. Its body is CommonJS text. Left at `.js` inside a `"type": "module"` package, node
+ *     parses it as ESM and throws `ReferenceError: exports is not defined` — not always,
+ *     but whenever the require order reaches it through a path that does not get absorbed
+ *     by the CJS/ESM interop, which makes it a latent crash rather than a build error.
+ *  2. `rewriteCssModuleSpecifiers` has to see those files at all. It globs the output for
+ *     the module extensions in play; a commonjs output whose files are all `.cjs` would
+ *     otherwise be skipped wholesale, leaving `require('./X.module.css')` extensionless
+ *     and resolving only by node's legacy extension search — straight onto the `.js`
+ *     class map that defect 1 makes unloadable.
+ *
+ * Packages that are NOT `"type": "module"` keep `.js` on both sides: their commonjs output
+ * is never renamed, `.js` is already CommonJS there, and their build output is byte-identical.
  *
  * ── Stylesheet auto-loading (D1) ────────────────────────────────────────────────────
  * The side-effect `import '<…>/dist/styles.css'` is emitted into the ESM class map ONLY.
@@ -376,8 +395,12 @@ async function writeClassMaps(compiled: CompiledCssModule[], normalizedOptions: 
       );
     }
 
+    // `.cjs` for the commonjs output of a `"type": "module"` package, matching the rename
+    // `cjs-extension.ts` already applied to every sibling file — see the module header.
+    const extension = !isEsm && normalizedOptions.isEsmPackage ? 'cjs' : 'js';
+
     for (const module of compiled) {
-      const classMapPath = join(outputRoot, `${module.relativePath}.js`);
+      const classMapPath = join(outputRoot, `${module.relativePath}.${extension}`);
       const stylesheetSpecifier = toRelativeSpecifier(dirname(classMapPath), stylesheetPath);
 
       await mkdir(dirname(classMapPath), { recursive: true });
@@ -389,7 +412,7 @@ async function writeClassMaps(compiled: CompiledCssModule[], normalizedOptions: 
       );
     }
 
-    await rewriteCssModuleSpecifiers(outputRoot);
+    await rewriteCssModuleSpecifiers(outputRoot, extension);
   }
 }
 
@@ -433,9 +456,9 @@ function renderCommonJsClassMap(module: CompiledCssModule, outputPath: string): 
  *
  * Class map for src/${module.relativePath}, compiled into ${STYLESHEET_RELATIVE_PATH}.
  *
- * No stylesheet require: \`require('<pkg>/${outputPath}/index.js')\` has to work in plain
- * node, which cannot parse CSS. Consumers of this output load the "./styles.css" export
- * subpath (a <link>, or their bundler's client entry).
+ * No stylesheet require: requiring this package's \`${outputPath}\` entry has to work in
+ * plain node, which cannot parse CSS. Consumers of this output load the "./styles.css"
+ * export subpath (a <link>, or their bundler's client entry).
  */
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -448,15 +471,20 @@ exports.default = classes;
 }
 
 /**
- * Repoints emitted `'./X.module.css'` specifiers at the generated `'./X.module.css.js'`
- * class map, in both the ESM `import` and the CJS `require` form.
+ * Repoints emitted `'./X.module.css'` specifiers at the generated class map
+ * (`'./X.module.css.js'`, or `.cjs` — see the module header), in both the ESM `import` and
+ * the CJS `require` form.
+ *
+ * The glob covers `.cjs` as well as `.js` because an ESM-first package's commonjs output has
+ * already been renamed by the time this runs: globbing `**\/*.js` alone would silently match
+ * nothing there and leave every `require('./X.module.css')` extensionless.
  *
  * Precedent: the Griffel AOT pass ({@link 'file://./babel.ts'}) already post-processes the
  * SWC output in place. Only the specifier string changes, so `.map` files are left alone —
- * the sourcemap for that one import line is off by the three characters of `.js`.
+ * the sourcemap for that one import line is off by the few characters of the extension.
  */
-async function rewriteCssModuleSpecifiers(outputRoot: string): Promise<void> {
-  const files = globSync('**/*.js', { cwd: outputRoot });
+async function rewriteCssModuleSpecifiers(outputRoot: string, extension: string): Promise<void> {
+  const files = globSync('**/*.{js,cjs}', { cwd: outputRoot });
   let rewritten = 0;
 
   for (const fileName of files) {
@@ -469,7 +497,7 @@ async function rewriteCssModuleSpecifiers(outputRoot: string): Promise<void> {
 
     let changed = false;
     const next = code.replace(CSS_MODULE_SPECIFIER, (match, quote: string, specifier: string) => {
-      const resolved = join(dirname(filePath), `${specifier}.js`);
+      const resolved = join(dirname(filePath), `${specifier}.${extension}`);
 
       if (!existsSync(resolved)) {
         logger.warn(`No generated class map for ${specifier} imported by ${filePath} — leaving the import dangling.`);
@@ -477,7 +505,7 @@ async function rewriteCssModuleSpecifiers(outputRoot: string): Promise<void> {
       }
 
       changed = true;
-      return `${quote}${specifier}.js${quote}`;
+      return `${quote}${specifier}.${extension}${quote}`;
     });
 
     if (changed) {
