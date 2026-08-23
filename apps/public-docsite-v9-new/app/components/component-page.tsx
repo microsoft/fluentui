@@ -4,7 +4,8 @@ import { DocsSettingsProvider } from './docs-settings';
 import { ApiDisclosures, PropsTable } from './props-table';
 import { OpenInSandbox } from './open-in-sandbox';
 import { StoryPreview } from './story-preview';
-import { StoryControls, resolveControls, useStoryArgs, type ArgTypes } from './story-controls';
+import { StoryControls, argTypesFromDocgen, resolveControls, useStoryArgs, type ArgTypes } from './story-controls';
+import docgenManifest from '../generated/docgen.json';
 import { StorySource } from './story-source';
 
 /** Matches the anchor scheme used by the Storybook docs page, so deep links stay stable. */
@@ -129,6 +130,7 @@ function Example({
   wrapper,
   decorators,
   metaArgTypes,
+  docgen,
 }: {
   name: string;
   story: Story;
@@ -136,9 +138,21 @@ function Example({
   wrapper?: ComponentType<{ children: ReactNode }>;
   decorators?: import('./story-preview').StoryDecorator[];
   metaArgTypes?: ArgTypes;
+  docgen?: string;
 }) {
   const description = story.parameters?.docs?.description?.story;
-  const controls = resolveControls(metaArgTypes, story.argTypes);
+
+  /*
+   * Authored `argTypes` win. Only when a story declares none is the component's generated API
+   * used, so an explicit choice to expose (or hide) a control is never overridden.
+   */
+  const authored = resolveControls(metaArgTypes, story.argTypes);
+  const manifest = docgenManifest as unknown as Record<
+    string,
+    { props?: Array<{ name: string; type: string; defaultValue: string | null; description: string }> }
+  >;
+  const entry = docgen ? manifest[docgen] : undefined;
+  const controls = authored.length > 0 || !entry ? authored : resolveControls({}, argTypesFromDocgen(entry.props));
   const { args, setArgs } = useStoryArgs(controls, story.args);
 
   return (
@@ -175,7 +189,17 @@ export function ComponentPage({ meta, stories, docgen, order, wrapper, showTheme
 
       {description ? <p>{description}</p> : null}
 
-      {primary ? <Example name={primary[0]} story={primary[1]} docgenTitle={title} wrapper={wrapper} /> : null}
+      {primary ? (
+        <Example
+          name={primary[0]}
+          story={primary[1]}
+          docgenTitle={title}
+          wrapper={wrapper}
+          decorators={meta.decorators}
+          metaArgTypes={meta.argTypes}
+          docgen={docgen}
+        />
+      ) : null}
 
       {showArgsTable ? (
         <>
@@ -194,6 +218,7 @@ export function ComponentPage({ meta, stories, docgen, order, wrapper, showTheme
           wrapper={wrapper}
           decorators={meta.decorators}
           metaArgTypes={meta.argTypes}
+          docgen={docgen}
         />
       ))}
     </DocsSettingsProvider>

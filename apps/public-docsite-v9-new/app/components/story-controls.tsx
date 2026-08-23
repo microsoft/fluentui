@@ -81,6 +81,84 @@ export function initialArgs(controls: Array<[string, ArgType]>, storyArgs: Args 
   return { ...args, ...storyArgs };
 }
 
+/** Props that are never meaningful to vary from a documentation page. */
+const UNCONTROLLABLE = new Set(['as', 'ref', 'children', 'focusgroup', 'focusgroupstart', 'className', 'style']);
+
+/** Beyond this many options a select stops being a control and becomes a wall. */
+const MAX_OPTIONS = 12;
+
+interface DocgenProp {
+  name: string;
+  type: string;
+  defaultValue: string | null;
+  description: string;
+}
+
+/** `"small" | "large"` -> `['small', 'large']`; anything else -> null. */
+function parseUnion(type: string): string[] | null {
+  const parts = type.split('|').map(part => part.trim());
+
+  if (parts.length < 2 || !parts.every(part => /^"[^"]*"$/.test(part))) {
+    return null;
+  }
+
+  return parts.map(part => part.slice(1, -1));
+}
+
+/**
+ * Derives controls from generated API data for stories that declare none.
+ *
+ * Storybook infers controls from the same type information, so without this a story written
+ * as `args` only — which is most of them — renders a fixed example the reader cannot vary.
+ * Only props with an obvious editable shape are offered; slots, refs, handlers and the
+ * enormous `focusgroup` union are left out rather than producing an unusable panel.
+ */
+export function argTypesFromDocgen(props: DocgenProp[] = []): ArgTypes {
+  const argTypes: ArgTypes = {};
+
+  for (const prop of props) {
+    if (UNCONTROLLABLE.has(prop.name) || prop.name.startsWith('on')) {
+      continue;
+    }
+
+    const options = parseUnion(prop.type);
+    const defaultValue = prop.defaultValue?.replace(/^['"]|['"]$/g, '') ?? undefined;
+
+    if (options) {
+      if (options.length > MAX_OPTIONS) {
+        continue;
+      }
+
+      argTypes[prop.name] = { control: 'select', options, defaultValue, description: prop.description };
+      continue;
+    }
+
+    if (prop.type === 'boolean') {
+      argTypes[prop.name] = {
+        control: 'boolean',
+        defaultValue: defaultValue === 'true',
+        description: prop.description,
+      };
+      continue;
+    }
+
+    if (prop.type === 'number') {
+      argTypes[prop.name] = {
+        control: 'number',
+        defaultValue: defaultValue === undefined ? undefined : Number(defaultValue),
+        description: prop.description,
+      };
+      continue;
+    }
+
+    if (prop.type === 'string') {
+      argTypes[prop.name] = { control: 'text', defaultValue, description: prop.description };
+    }
+  }
+
+  return argTypes;
+}
+
 export interface StoryControlsProps {
   controls: Array<[string, ArgType]>;
   args: Args;

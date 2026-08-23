@@ -51,6 +51,25 @@ const SYMPTOMS = [
     },
   },
   {
+    id: 'examples-not-rendering',
+    describe: 'lists examples by heading but renders none of them',
+    /*
+     * Each example emits a heading and a preview. Headings without previews means the content
+     * boundary failed — the page looks populated in outline while showing nothing, which no
+     * other rule detects.
+     */
+    test: html => {
+      // Only component pages, which `<ComponentPage>` marks by rendering its copy control.
+      if (!html.includes('Copy as Markdown')) {
+        return false;
+      }
+
+      const headings = (html.match(/<h2[^>]*id="[^"]*"/g) ?? []).filter(tag => !tag.includes('id="api"'));
+
+      return headings.length > 0 && !html.includes('data-fluent-preview');
+    },
+  },
+  {
     id: 'duplicate-h1',
     describe: 'renders more than one top-level heading',
     /*
