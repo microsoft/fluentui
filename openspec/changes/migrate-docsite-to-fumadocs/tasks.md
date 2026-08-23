@@ -147,7 +147,14 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 - [ ] 7.4 Add a deprecation notice to the Storybook documentation experience. **Deliberately deferred to launch:** `docsite/site-navigation` ties the notice to content parity being reached, and telling readers the workbench is deprecated before its replacement is live would mislead them.
 - [x] 7.5 No existing published address changed and no redirect was introduced. The deploy workflow still copies the four existing trees to `_pages/react`, `_pages/charts`, `_pages/web-components` and `_pages/headless` unchanged; the new site only adds `_pages/docs`.
 - [x] 7.6 Documented where documentation now lives and how to author it: a README for the app covering the no-duplication model, the gates, the one-shot generators and the deliberate exclusions, plus an AGENTS.md entry stating that examples are changed in their story, never in the docs site.
-- [ ] 7.7 Add beachball change files for all touched published packages
+- [x] 7.7 Beachball change files verified with `yarn beachball check`, which reports none are needed.
+      One published package is touched, `@fluentui/react-storybook-addon-export-to-sandbox`, and it has
+      both a minor file for the widened export API and a patch file for the React version alignment.
+      Everything else the branch changes is private or unpublished: the docs app itself, the deploy
+      workflow, `.storybook/preview.js`, the root `package.json` and `tsconfig.base.json`.
+      Note for the PR: the branch's base commit (`a774575c2c`, "docs: design v8 to v9 migration
+      handbook") predates this work and is unrelated to it. It is not on master, so it will be carried
+      into the pull request unless it is rebased out or raised separately.
 
 ## 8. Defects found by closing gaps in the checks
 
