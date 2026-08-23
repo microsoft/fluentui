@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: correct avatar-group, overflow, and menu-button subpath exports",
+  "comment": "fix: correct component subpath exports",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

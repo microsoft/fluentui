@@ -160,10 +160,14 @@
       }
     },
     "./color-picker": {
-      "types": "./dist/color-picker.d.ts",
-      "node": "./lib-commonjs/color-picker.js",
-      "import": "./lib/color-picker.js",
-      "require": "./lib-commonjs/color-picker.js"
+      "import": {
+        "types": "./dist/color-picker.d.ts",
+        "default": "./lib/color-picker.js"
+      },
+      "require": {
+        "types": "./dist/color-picker.d.cts",
+        "default": "./lib-commonjs/color-picker.cjs"
+      }
     },
     "./combobox": {
       "import": {
@@ -176,10 +180,14 @@
       }
     },
     "./compound-button": {
-      "types": "./dist/compound-button.d.ts",
-      "node": "./lib-commonjs/compound-button.js",
-      "import": "./lib/compound-button.js",
-      "require": "./lib-commonjs/compound-button.js"
+      "import": {
+        "types": "./dist/compound-button.d.ts",
+        "default": "./lib/compound-button.js"
+      },
+      "require": {
+        "types": "./dist/compound-button.d.cts",
+        "default": "./lib-commonjs/compound-button.cjs"
+      }
     },
     "./dialog": {
       "import": {
@@ -482,16 +490,24 @@
       }
     },
     "./split-button": {
-      "types": "./dist/split-button.d.ts",
-      "node": "./lib-commonjs/split-button.js",
-      "import": "./lib/split-button.js",
-      "require": "./lib-commonjs/split-button.js"
+      "import": {
+        "types": "./dist/split-button.d.ts",
+        "default": "./lib/split-button.js"
+      },
+      "require": {
+        "types": "./dist/split-button.d.cts",
+        "default": "./lib-commonjs/split-button.cjs"
+      }
     },
     "./swatch-picker": {
-      "types": "./dist/swatch-picker.d.ts",
-      "node": "./lib-commonjs/swatch-picker.js",
-      "import": "./lib/swatch-picker.js",
-      "require": "./lib-commonjs/swatch-picker.js"
+      "import": {
+        "types": "./dist/swatch-picker.d.ts",
+        "default": "./lib/swatch-picker.js"
+      },
+      "require": {
+        "types": "./dist/swatch-picker.d.cts",
+        "default": "./lib-commonjs/swatch-picker.cjs"
+      }
     },
     "./switch": {
       "import": {
@@ -534,10 +550,14 @@
       }
     },
     "./tag-picker": {
-      "types": "./dist/tag-picker.d.ts",
-      "node": "./lib-commonjs/tag-picker.js",
-      "import": "./lib/tag-picker.js",
-      "require": "./lib-commonjs/tag-picker.js"
+      "import": {
+        "types": "./dist/tag-picker.d.ts",
+        "default": "./lib/tag-picker.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker.d.cts",
+        "default": "./lib-commonjs/tag-picker.cjs"
+      }
     },
     "./teaching-popover": {
       "import": {
