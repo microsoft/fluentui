@@ -183,6 +183,16 @@
         "default": "./lib-commonjs/rating-item.cjs"
       }
     },
+    "./select": {
+      "import": {
+        "types": "./dist/select.d.ts",
+        "default": "./lib/select.js"
+      },
+      "require": {
+        "types": "./dist/select.d.cts",
+        "default": "./lib-commonjs/select.cjs"
+      }
+    },
     "./skeleton": {
       "import": {
         "types": "./dist/skeleton.d.ts",

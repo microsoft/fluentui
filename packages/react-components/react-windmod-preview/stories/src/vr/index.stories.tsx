@@ -20,6 +20,8 @@ export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RatingDisplayWindmod } from './RatingDisplayWindmod.stories';
 export { RatingDisplayGriffel } from './RatingDisplayGriffel.stories';
+export { SelectWindmod } from './SelectWindmod.stories';
+export { SelectGriffel } from './SelectGriffel.stories';
 export { SkeletonWindmod } from './SkeletonWindmod.stories';
 export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SliderWindmod } from './SliderWindmod.stories';

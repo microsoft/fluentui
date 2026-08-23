@@ -66,6 +66,9 @@ export type {
 export { RatingItem, ratingItemClassNames, renderRatingItem, useRatingItem, useRatingItemStyles } from './rating-item';
 export type { RatingItemProps, RatingItemSlots, RatingItemState } from './rating-item';
 
+export { renderSelect, Select, selectClassNames, useSelect, useSelectStyles } from './select';
+export type { SelectAppearance, SelectProps, SelectSize, SelectSlots, SelectState } from './select';
+
 export {
   renderSkeleton,
   Skeleton,

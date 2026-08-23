@@ -58,6 +58,7 @@ import { renderProgressBar } from '@fluentui/react-headless-components-preview/p
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
+import { renderSelect } from '@fluentui/react-headless-components-preview/select';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
@@ -65,6 +66,9 @@ import { renderSpinner } from '@fluentui/react-headless-components-preview/spinn
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import type { SelectProps as SelectProps_2 } from '@fluentui/react-headless-components-preview/select';
+import { SelectSlots } from '@fluentui/react-headless-components-preview/select';
+import type { SelectState as SelectState_2 } from '@fluentui/react-headless-components-preview/select';
 import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonItemState as SkeletonItemState_2 } from '@fluentui/react-headless-components-preview/skeleton';
@@ -108,6 +112,7 @@ import { useProvider } from '@fluentui/react-headless-components-preview/provide
 import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
+import { useSelect } from '@fluentui/react-headless-components-preview/select';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
@@ -470,6 +475,8 @@ export { renderRatingDisplay }
 
 export { renderRatingItem }
 
+export { renderSelect }
+
 export { renderSkeleton }
 
 export { renderSkeletonItem }
@@ -483,6 +490,31 @@ export { renderTextarea }
 export { renderToggleButton }
 
 export { renderTooltip }
+
+// @public
+export const Select: ForwardRefComponent<SelectProps>;
+
+// @public
+export type SelectAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const selectClassNames: {
+    root: string;
+};
+
+// @public
+export type SelectProps = SelectProps_2 & {
+    appearance?: SelectAppearance;
+    size?: SelectSize;
+};
+
+// @public
+export type SelectSize = 'small' | 'medium' | 'large';
+
+export { SelectSlots }
+
+// @public
+export type SelectState = SelectState_2 & Required<Pick<SelectProps, 'appearance' | 'size'>>;
 
 // @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
@@ -732,6 +764,11 @@ export { useRatingItem }
 
 // @public
 export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;
+
+export { useSelect }
+
+// @public
+export const useSelectStyles: (state: SelectState) => SelectState;
 
 export { useSkeleton }
 
