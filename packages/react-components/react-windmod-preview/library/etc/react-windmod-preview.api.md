@@ -21,6 +21,9 @@ import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/rea
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
+import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-components-preview/field';
+import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
+import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
 import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
@@ -61,6 +64,7 @@ import { renderButton } from '@fluentui/react-headless-components-preview/button
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
+import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
@@ -126,6 +130,10 @@ import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
+import { useField } from '@fluentui/react-headless-components-preview/field';
+import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
+import { useFieldContextValues } from '@fluentui/react-headless-components-preview/field';
+import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
@@ -285,6 +293,31 @@ export { DividerSlots }
 
 // @public
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
+
+// @public
+export const Field: ForwardRefComponent<FieldProps>;
+
+// @public
+export const fieldClassNames: {
+    root: string;
+};
+
+// @public
+export type FieldOrientation = 'vertical' | 'horizontal';
+
+// @public
+export type FieldProps = FieldProps_2 & {
+    orientation?: FieldOrientation;
+    size?: FieldSize;
+};
+
+// @public
+export type FieldSize = 'small' | 'medium' | 'large';
+
+export { FieldSlots }
+
+// @public
+export type FieldState = FieldState_2 & Required<Pick<FieldProps, 'orientation' | 'size'>>;
 
 // @public
 export const FluentProvider: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLDivElement> & {
@@ -547,6 +580,8 @@ export { renderCheckbox }
 export { renderCompoundButton }
 
 export { renderDivider }
+
+export { renderField }
 
 export { renderImage }
 
@@ -869,6 +904,17 @@ export { useDivider }
 
 // @public
 export const useDividerStyles: (state: DividerState) => DividerState;
+
+export { useField }
+
+export { useFieldContext }
+
+export { useFieldContextValues }
+
+export { useFieldControlProps }
+
+// @public
+export const useFieldStyles: (state: FieldState) => FieldState;
 
 export { useImage }
 

@@ -8,6 +8,8 @@ export { CompoundButtonWindmod } from './CompoundButtonWindmod.stories';
 export { CompoundButtonGriffel } from './CompoundButtonGriffel.stories';
 export { DividerWindmod } from './DividerWindmod.stories';
 export { DividerGriffel } from './DividerGriffel.stories';
+export { FieldWindmod } from './FieldWindmod.stories';
+export { FieldGriffel } from './FieldGriffel.stories';
 export { ImageWindmod } from './ImageWindmod.stories';
 export { ImageGriffel } from './ImageGriffel.stories';
 export { InputWindmod } from './InputWindmod.stories';

@@ -19,6 +19,18 @@ export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } fr
 export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles } from './divider';
 export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
 
+export {
+  Field,
+  fieldClassNames,
+  renderField,
+  useField,
+  useFieldContext,
+  useFieldContextValues,
+  useFieldControlProps,
+  useFieldStyles,
+} from './field';
+export type { FieldOrientation, FieldProps, FieldSize, FieldSlots, FieldState } from './field';
+
 export { Image, imageClassNames, renderImage, useImage, useImageStyles } from './image';
 export type { ImageFit, ImageProps, ImageShape, ImageSlots, ImageState } from './image';
 

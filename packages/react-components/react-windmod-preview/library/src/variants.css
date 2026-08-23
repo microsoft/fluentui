@@ -36,6 +36,11 @@
 @custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
 @custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
 
+/* Field: validation state stamped by the headless useField on the root */
+@custom-variant validate-state-error (&:where([data-validate-state='error']));
+@custom-variant validate-state-warning (&:where([data-validate-state='warning']));
+@custom-variant validate-state-success (&:where([data-validate-state='success']));
+
 /* MessageBar: intent */
 @custom-variant intent-info (&:where([data-intent='info']));
 @custom-variant intent-success (&:where([data-intent='success']));

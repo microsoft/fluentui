@@ -103,6 +103,16 @@
         "default": "./lib-commonjs/divider.cjs"
       }
     },
+    "./field": {
+      "import": {
+        "types": "./dist/field.d.ts",
+        "default": "./lib/field.js"
+      },
+      "require": {
+        "types": "./dist/field.d.cts",
+        "default": "./lib-commonjs/field.cjs"
+      }
+    },
     "./fluent-provider": {
       "import": {
         "types": "./dist/fluent-provider.d.ts",
