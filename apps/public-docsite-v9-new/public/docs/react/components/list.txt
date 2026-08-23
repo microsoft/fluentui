@@ -1,5 +1,19 @@
 # List
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div" \| "ol" \| "ul"` | No |  |  |
+| `defaultSelectedItems` | `SelectionItemId[]` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `navigationMode` | `"items" \| "composite"` | No |  |  |
+| `onSelectionChange` | `EventHandler<OnListSelectionChangeData>` | No |  |  |
+| `ref` | `Ref<HTMLDivElement \| HTMLUListElement>` | No |  |  |
+| `selectedItems` | `SelectionItemId[]` | No |  |  |
+| `selectionMode` | `"single" \| "multiselect"` | No |  |  |
+
 ## Examples
 
 ### ListActiveElement

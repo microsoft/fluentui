@@ -1,5 +1,23 @@
 # Tab List
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"transparent" \| "subtle" \| "subtle-circular" \| "filled-circular"` | No | 'transparent' | A tab list can supports 'transparent' and 'subtle' appearance. - 'subtle': Minimizes emphasis to blend into the background until hovered or focused. - 'transparent': No background and border styling - 'subtle-circular': Adds background and border styling - 'filled-circular': Adds background styling The appearance affects each of the contained tabs. |
+| `as` | `"div"` | No |  |  |
+| `defaultSelectedValue` | `unknown` | No |  | The value of the tab to be selected by default. Typically useful when the selectedValue is uncontrolled. |
+| `disabled` | `boolean` | No | false | A tab list can be set to disable interaction. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `onTabSelect` | `SelectTabEventHandler` | No |  | Raised when a tab is selected. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `reserveSelectedTabSpace` | `boolean` | No | true | Tab size may change between unselected and selected states. The default scenario is a selected tab has bold text. When true, this property requests tabs be the same size whether unselected or selected. |
+| `selectedValue` | `unknown` | No |  | The value of the currently selected tab. |
+| `selectTabOnFocus` | `boolean` | No | false | When true, focusing a tab will select it. |
+| `size` | `"small" \| "medium" \| "large"` | No | 'medium' | A tab list can be either 'small', 'medium', or 'large' size. The size affects each of the contained tabs. |
+| `vertical` | `boolean` | No | false | A tab list can arrange its tabs vertically. |
+
 ## Examples
 
 ### Default

@@ -1,5 +1,23 @@
 # Rating
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `iconFilled` | `ElementType<any, keyof IntrinsicElements>` | No |  | The icon to display when the rating value is greater than or equal to the item's value. |
+| `iconOutline` | `ElementType<any, keyof IntrinsicElements>` | No |  | The icon to display when the rating value is less than the item's value. |
+| `itemLabel` | `(rating: number) => string` | No | (rating) =\> `${rating}` | Prop to generate the aria-label for the rating inputs. |
+| `max` | `number` | No | 5 | The max value of the rating. This controls the number of rating items displayed. Must be a whole number greater than 1. |
+| `name` | `string` | No |  | Name for the Radio inputs. If not provided, one will be automatically generated |
+| `onChange` | `EventHandler<RatingOnChangeEventData>` | No |  | Callback when the rating value is changed by the user. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `size` | `"small" \| "medium" \| "large" \| "extra-large"` | No | extra-large | Sets the size of the Rating items. |
+| `step` | `0.5 \| 1` | No | 1 | Sets the precision to allow half-filled shapes in Rating |
+| `value` | `number` | No |  | The value of the rating |
+
 ## Examples
 
 ### Color

@@ -1,5 +1,31 @@
 # Combobox
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"input"` | No |  |  |
+| `clearable` | `boolean` | No |  | If set, the combobox will show an icon to clear the current value. |
+| `clearIcon` | `Slot<"span">` | No |  | The dropdown clear icon |
+| `defaultOpen` | `boolean` | No |  | The default open state when open is uncontrolled |
+| `defaultSelectedOptions` | `string[]` | No |  | For an uncontrolled component, sets the initial selection. If this is set, the `defaultValue` prop MUST also be set. |
+| `disableAutoFocus` | `boolean` | No | false | Disable auto-focusing on the first item when mounting. |
+| `expandIcon` | `Slot<"span">` | No |  | The dropdown arrow icon |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `freeform` | `boolean` | No |  |  |
+| `input` | `Slot<"input">` | No |  | The primary slot, an input with role="combobox" |
+| `listbox` | `any` | No |  | The dropdown listbox slot |
+| `multiselect` | `boolean` | No | false | Sets the selection type to multiselect. Set this to true for multiselect, even if fully controlling selection state. This enables styles and accessibility properties to be set. |
+| `onActiveOptionChange` | `EventHandler<ActiveOptionChangeData>` | No |  |  |
+| `onOpenChange` | `(e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void` | No |  | Callback when the open/closed state of the dropdown changes |
+| `onOptionSelect` | `(event: SelectionEvents, data: OptionOnSelectData) => void` | No |  | Callback when an option is selected |
+| `open` | `boolean` | No |  | Sets the open/closed state of the dropdown. Use together with onOpenChange to fully control the dropdown's visibility |
+| `positioning` | `PositioningShorthand` | No |  | Configure the positioning of the combobox dropdown. Please refer to the [positioning documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target) for more details. @defaultvalue below |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"div">` | No |  | The root combobox slot |
+| `selectedOptions` | `string[]` | No |  | An array of selected option keys. Use this with `onOptionSelect` to directly control the selected option(s) If this is set, the `value` prop MUST also be controlled. |
+
 ## Examples
 
 ### Controlled

@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -10,18 +10,46 @@ const appRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const repoRoot = resolve(appRoot, '../..');
 
 /**
- * Components documented by the site.
+ * Component source files to document.
  *
- * Phase 0/1 covers Button only; later phases extend this list as pages are migrated.
- * Each entry names the file react-docgen-typescript parses, plus any sub-components
- * documented on the same page.
+ * Discovered rather than listed: a hand-maintained list silently went stale, leaving every
+ * page but Button without a props table. Each package's `library/src/components/<Name>/<Name>.tsx`
+ * is the component entry; hooks, renderers and tests alongside it are not components.
  */
-const COMPONENTS = [
-  {
-    page: 'Button',
-    files: ['packages/react-components/react-button/library/src/components/Button/Button.tsx'],
-  },
-];
+function findComponentFilesByPackage() {
+  const byPackage = new Map();
+  const packagesRoot = join(repoRoot, 'packages/react-components');
+
+  for (const pkg of readdirSync(packagesRoot, { withFileTypes: true })) {
+    if (!pkg.isDirectory()) {
+      continue;
+    }
+
+    const componentsDir = join(packagesRoot, pkg.name, 'library/src/components');
+
+    if (!existsSync(componentsDir)) {
+      continue;
+    }
+
+    for (const dir of readdirSync(componentsDir, { withFileTypes: true })) {
+      if (!dir.isDirectory()) {
+        continue;
+      }
+
+      const candidate = join(componentsDir, dir.name, `${dir.name}.tsx`);
+
+      if (existsSync(candidate)) {
+        if (!byPackage.has(pkg.name)) {
+          byPackage.set(pkg.name, []);
+        }
+
+        byPackage.get(pkg.name).push(candidate);
+      }
+    }
+  }
+
+  return byPackage;
+}
 
 const parser = withCustomConfig(join(repoRoot, 'tsconfig.base.all.json'), {
   // Mirrors Storybook's react-docgen-typescript defaults so both surfaces agree.
@@ -35,31 +63,29 @@ const parser = withCustomConfig(join(repoRoot, 'tsconfig.base.all.json'), {
   },
 });
 
+/*
+ * Parsed one package at a time. Handing react-docgen-typescript every component file at once
+ * yields entries with zero props — the type information does not survive a program that large —
+ * which silently produced empty props tables everywhere.
+ */
 const manifest = {};
 
-for (const { page, files } of COMPONENTS) {
-  const absolute = files.map(file => join(repoRoot, file));
-  const docs = parser.parse(absolute);
+for (const [pkg, files] of findComponentFilesByPackage()) {
+  for (const doc of parser.parse(files)) {
+    if (!doc.displayName || Object.keys(doc.props ?? {}).length === 0) {
+      continue;
+    }
 
-  if (docs.length === 0) {
-    throw new Error(`docgen produced nothing for "${page}". Checked: ${files.join(', ')}`);
+    manifest[doc.displayName] = { ...normalizeComponent(doc), subcomponents: [] };
   }
 
-  const components = docs.map(normalizeComponent);
-  const primary = components.find(component => component.displayName === page) ?? components[0];
-
-  manifest[page] = {
-    ...primary,
-    subcomponents: components.filter(component => component !== primary),
-  };
+  process.stdout.write(`\r  parsed ${pkg}`.padEnd(60));
 }
+
+process.stdout.write('\r'.padEnd(62) + '\r');
 
 const outFile = join(appRoot, 'app/generated/docgen.json');
 mkdirSync(dirname(outFile), { recursive: true });
 writeFileSync(outFile, `${JSON.stringify(manifest, null, 2)}\n`);
 
-const summary = Object.entries(manifest)
-  .map(([page, entry]) => `  ${page}: ${entry.props.length} props, ${entry.subcomponents.length} subcomponents`)
-  .join('\n');
-
-console.log(`docgen manifest written to ${outFile}\n${summary}`);
+console.log(`docgen manifest written to ${outFile} (${Object.keys(manifest).length} components)`);

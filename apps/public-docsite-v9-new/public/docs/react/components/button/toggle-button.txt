@@ -1,5 +1,19 @@
 # Toggle Button
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"a" \| "button"` | No |  |  |
+| `checked` | `boolean` | No | false | Defines the controlled checked state of the `ToggleButton`. If passed, `ToggleButton` ignores the `defaultChecked` property. This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the correct value based on handling `onClick` events and re-rendering. |
+| `disabledFocusable` | `boolean` | No | false false | When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is important to keep a consistent tab order for screen reader and keyboard users. The primary example of this pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons. When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is important to keep a consistent tab order for screen reader and keyboard users. The primary example of this pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No |  | Icon that renders either before or after the `children` as specified by the `iconPosition` prop. |
+| `iconPosition` | `"before" \| "after"` | No | 'before' | A button can format its icon to appear before or after its content. |
+| `isAccessible` | `boolean` | No | false | Defines whether the `ToggleButton` should use the alternate selected styles that have adequate contrast with the rest style |
+| `ref` | `Ref<HTMLAnchorElement \| HTMLButtonElement>` | No |  |  |
+
 ## Examples
 
 ### Appearance

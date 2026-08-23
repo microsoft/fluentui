@@ -1,5 +1,25 @@
 # Search Box
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"outline" \| "underline" \| "filled-darker" \| "filled-lighter" \| "filled-darker-shadow" \| "filled-lighter-shadow"` | No | 'outline' Note: 'filled-darker-shadow' and 'filled-lighter-shadow' are deprecated and will be removed in the future. | Controls the colors and borders of the input. |
+| `as` | `"input"` | No |  |  |
+| `contentAfter` | `Slot<"span">` | No |  | Element after the input text, within the input border |
+| `contentBefore` | `Slot<"span">` | No |  | Element before the input text, within the input border |
+| `defaultValue` | `string` | No |  | Default value of the input. Provide this if the input should be an uncontrolled component which tracks its current state internally; otherwise, use `value`. (This prop is mutually exclusive with `value`.) |
+| `dismiss` | `Slot<"span">` | No |  | Last element in the input, within the input border |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `input` | `Slot<"input">` | No |  | The actual `<input>` element. `type="text"` will be automatically applied unless overridden. This is the "primary" slot, so native props specified directly on the `<Input>` will go here (except `className` and `style`, which go to the `root` slot). The top-level `ref` will also go here. |
+| `onChange` | `(event: SearchBoxChangeEvent, data: InputOnChangeData) => void` | No |  | Custom onChange callback. Will be traditionally supplied with a React.ChangeEvent<HTMLInputElement> for usual character entry. When the dismiss button is clicked, this will be called with an event of type React.MouseEvent<HTMLSpanElement> and an empty string as the `value` property of the data parameter |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"span">` | No |  | Wrapper element which visually appears to be the input and is used for borders, focus styling, etc. (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.) The root slot receives the `className` and `style` specified directly on the `<Input>`. All other top-level native props will be applied to the primary slot, `input`. |
+| `size` | `"small" \| "medium" \| "large"` | No | 'medium' | Size of the input (changes the font size and spacing). |
+| `type` | `"number" \| "search" \| "time" \| "text" \| "email" \| "tel" \| "url" \| "date" \| "password" \| "datetime-local" \| "mo…` | No | 'text' | An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types) based on the type of value the user will enter. Note that no custom styling is currently applied for alternative types, and some types may activate browser-default styling which does not match the Fluent design language. (For non-text-based types such as `button` or `checkbox`, use the appropriate component or an `<input>` element instead.) |
+| `value` | `string` | No |  | Current value of the input. Provide this if the input is a controlled component where you are maintaining its current state; otherwise, use `defaultValue`. (This prop is mutually exclusive with `defaultValue`.) |
+
 ## Examples
 
 ### Appearance

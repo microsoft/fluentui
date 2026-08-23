@@ -1,5 +1,16 @@
 # Dialog
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `defaultOpen` | `boolean` | No | false | Default value for the uncontrolled open state of the dialog. |
+| `inertTrapFocus` | `boolean` | No | false | Enables standard behavior according to the HTML dialog spec where the focus trap involves setting outside elements inert. Native `<dialog showModal()>` always uses inert focus trapping, so this prop is accepted for API parity but does not change behavior. |
+| `modalType` | `"alert" \| "modal" \| "non-modal"` | No | modal | Dialog variations. `modal`: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog. This is the default type of the component. `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. `alert`: is a special type of modal dialog that interrupts the user's workflow to communicate an important message or ask for a decision. |
+| `onOpenChange` | `EventHandler<DialogOpenChangeData>` | No |  | Callback fired when the component changes value from open state. |
+| `open` | `boolean` | No | false | Controls the open state of the dialog. |
+| `unmountOnClose` | `boolean` | No | true | Decides whether the dialog should be removed from the DOM when it is closed. |
+
 ## Examples
 
 ### Actions

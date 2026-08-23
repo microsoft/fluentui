@@ -1,5 +1,22 @@
 # Tag Picker
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled-darker" \| "filled-lighter" \| "outline" \| "underline"` | No | 'outline' | Controls the colors and borders of the combobox trigger. |
+| `defaultOpen` | `boolean` | No |  | The default open state when open is uncontrolled |
+| `defaultSelectedOptions` | `string[]` | No |  | For an uncontrolled component, sets the initial selection. If this is set, the `defaultValue` prop MUST also be set. |
+| `disableAutoFocus` | `boolean` | No | false | Disable auto-focusing on the first item when mounting. |
+| `inline` | `boolean` | No | false | TagPickers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order |
+| `noPopover` | `boolean` | No | false | By default, when a single children is provided, the TagPicker will assume that the children is a popover. By setting this prop to true, the children will be treated as a trigger instead. |
+| `onOpenChange` | `EventHandler<TagPickerOnOpenChangeData>` | No |  |  |
+| `onOptionSelect` | `EventHandler<TagPickerOnOptionSelectData>` | No |  |  |
+| `open` | `boolean` | No |  | Sets the open/closed state of the dropdown. Use together with onOpenChange to fully control the dropdown's visibility |
+| `positioning` | `PositioningShorthand` | No |  | Configure the positioning of the combobox dropdown. Please refer to the [positioning documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target) for more details. @defaultvalue below |
+| `selectedOptions` | `string[]` | No |  | An array of selected option keys. Use this with `onOptionSelect` to directly control the selected option(s) If this is set, the `value` prop MUST also be controlled. |
+| `size` | `"medium" \| "large" \| "extra-large"` | No |  |  |
+
 ## Examples
 
 ### Appearance

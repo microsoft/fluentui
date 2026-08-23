@@ -1,5 +1,22 @@
 # Swatch Picker
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `defaultSelectedValue` | `string` | No |  | Default selected value |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `focusMode` | `"tab" \| "arrow"` | No | 'arrow' | Sets the focus behavior for the SwatchPicker. `arrow` This behavior will cycle through all elements inside of the SwatchPicker when pressing the Arrow key. `tab` This behavior will cycle through all elements inside of the SwatchPicker when pressing the Tab key. |
+| `layout` | `"grid" \| "row"` | No |  | Whether SwatchPicker is row or grid |
+| `onSelectionChange` | `EventHandler<SwatchPickerOnSelectionChangeData>` | No |  | Triggers a callback when the value has been changed |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selectedValue` | `string` | No |  | Controlled selected value |
+| `shape` | `"rounded" \| "square" \| "circular"` | No |  | Swatch shape @defaultvalue 'square' |
+| `size` | `"small" \| "extra-small" \| "medium" \| "large"` | No |  | Swatch size @defaultvalue 'medium' |
+| `spacing` | `"small" \| "medium"` | No |  | Spacing between swatches @defaultvalue 'medium' |
+
 ## Examples
 
 ### ColorSwatchVariants

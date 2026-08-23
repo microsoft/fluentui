@@ -1,5 +1,25 @@
 # Carousel
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `activeIndex` | `number` | No |  | The value of the currently active page. |
+| `align` | `"center" \| "start" \| "end"` | No |  | The alignment of the carousel. |
+| `announcement` | `CarouselAnnouncerFunction` | No |  | Localizes the string used to announce carousel page changes Defaults to: undefined |
+| `appearance` | `"flat" \| "elevated"` | No | 'flat' | Sets visual treatment for the Carousel container. `flat` Retains the minimal styling used by default prior to introducing appearance-based styles. `elevated` Applies rounded corners, background, and shadow tokens so the Carousel is presented as a surfaced container. |
+| `as` | `"div"` | No |  |  |
+| `autoplayInterval` | `number` | No |  | Choose a delay between autoplay transitions in milliseconds. Only active if Autoplay is enabled via CarouselAutoplayButton Defaults: 4000 |
+| `circular` | `boolean` | No |  | Circular enables the carousel to loop back around on navigation past trailing index. |
+| `defaultActiveIndex` | `number` | No |  | The initial page to display in uncontrolled mode. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `groupSize` | `number \| "auto"` | No |  | Controls the number of carousel cards per navigation element, will default to 'auto' Recommended to set to '1' when using full page carousel cards. |
+| `motion` | `CarouselMotion` | No |  | Sets motion type as either 'slide' or 'fade' Defaults: 'slide' Users can also pass 'slide' & duration via CarouselMotion object to control carousel speed. Drag interactions are not affected because duration is then determined by the drag force. Note: Duration is not in milliseconds because Carousel uses an attraction physics simulation when scrolling instead of easings. Only values between 20-60 are recommended, 25 is the default. |
+| `onActiveIndexChange` | `EventHandler<CarouselIndexChangeData>` | No |  | Callback to notify a page change. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `whitespace` | `boolean` | No |  | Adds whitespace to start/end so that 'align' prop is always respected for current index Defaults to: False |
+
 ## Examples
 
 ### AlignmentAndWhitespace

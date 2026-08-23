@@ -1,5 +1,24 @@
 # Counter Badge
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled" \| "ghost"` | No | filled | A Badge can have different appearances that emphasize certain parts of it: - filled: The default appearance if one is not specified. The badge background is filled with color with a contrasting foreground text to match. - ghost: The badge background is transparent, with the foreground text taking color to emphasize it. |
+| `as` | `"div"` | No |  |  |
+| `color` | `"brand" \| "danger" \| "important" \| "informative"` | No | brand | Semantic colors for a counter badge |
+| `count` | `number` | No | 0 | Value displayed by the Badge |
+| `dot` | `boolean` | No | false | If a dot should be displayed without the count |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No |  |  |
+| `iconPosition` | `"before" \| "after"` | No |  | A Badge can position the icon before or after the content. @defaultvalue before |
+| `overflowCount` | `number` | No | 99 | Max number to be displayed |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `shape` | `"circular" \| "rounded"` | No | circular | A Badge can be circular or rounded |
+| `showZero` | `boolean` | No | false | If the badge should be shown when count is 0 |
+| `size` | `"small" \| "tiny" \| "extra-small" \| "medium" \| "large" \| "extra-large"` | No |  | A Badge can be on of several preset sizes. @defaultvalue medium |
+
 ## Examples
 
 ### Appearance

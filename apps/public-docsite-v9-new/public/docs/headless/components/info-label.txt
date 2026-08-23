@@ -1,5 +1,20 @@
 # Info Label
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"label"` | No |  |  |
+| `disabled` | `boolean` | No | false | Renders the label as disabled |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `info` | `any` | No |  | The content of the InfoButton's popover. |
+| `infoButton` | `any` | No |  | The InfoButton component. It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel. |
+| `label` | `Slot` | No |  | The Label component. It is not typically necessary to use this prop. The label text is the child of the `<InfoLabel>`, and other props such as `size` and `required` should be set directly on the `InfoLabel`. This is the PRIMARY slot: all native properties specified directly on `<InfoLabel>` will be applied to this slot, except `className` and `style`, which remain on the root slot. |
+| `ref` | `Ref<HTMLLabelElement>` | No |  |  |
+| `required` | `Slot<"span">` | No | false | Displays an indicator that the label is for a required field. The required prop can be set to true to display an asterisk (*). Or it can be set to a string or jsx content to display a different indicator. |
+| `root` | `Slot<"span">` | No |  |  |
+
 ## Examples
 
 ### Default

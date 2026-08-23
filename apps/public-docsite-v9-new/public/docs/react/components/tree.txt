@@ -1,5 +1,25 @@
 # Tree
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"subtle" \| "subtle-alpha" \| "transparent"` | No | 'subtle' | A tree item can have various appearances: - 'subtle' (default): The default tree item styles. - 'subtle-alpha': Minimizes emphasis on hovered or focused states. - 'transparent': Removes background color. |
+| `as` | `"div"` | No |  |  |
+| `checkedItems` | `Iterable<TreeItemValue \| [TreeItemValue, TreeSelectionValue]>` | No |  | This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state. Controls the state of the checked tree items. These property is ignored for subtrees. |
+| `collapseMotion` | `any` | No |  |  |
+| `defaultOpenItems` | `Iterable<TreeItemValue>` | No |  | This refers to a list of ids of default opened items. This property is ignored for subtrees. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `navigationMode` | `"tree" \| "treegrid"` | No | 'tree' | Indicates how navigation between a treeitem and its actions work - 'tree' (default): The default navigation, pressing right arrow key navigates inward the first inner children of a branch treeitem - 'treegrid': Pressing right arrow key navigate towards the actions of a treeitem |
+| `onCheckedChange` | `(event: ChangeEvent<HTMLElement>, data: TreeCheckedChangeData) => void` | No |  | Callback fired when the component changes value from checked state. These property is ignored for subtrees. @param event - a React's Synthetic event @param data - A data object with relevant information, such as checked value and type of interaction that created the event. |
+| `onNavigation` | `(event: MouseEvent<HTMLElement, MouseEvent> \| KeyboardEvent<HTMLElement>, data: TreeNavigationDataParam) => void` | No |  | Callback fired when navigation happens inside the component. These property is ignored for subtrees. FIXME: This method is not ideal, as navigation should be handled internally by tabster. @param event - a React's Synthetic event @param data - A data object with relevant information, |
+| `onOpenChange` | `(event: MouseEvent<HTMLElement, MouseEvent> \| KeyboardEvent<HTMLElement>, data: TreeOpenChangeData) => void` | No |  | Callback fired when the component changes value from open state. These property is ignored for subtrees. @param event - a React's Synthetic event @param data - A data object with relevant information, such as open value and type of interaction that created the event. |
+| `openItems` | `Iterable<TreeItemValue>` | No |  | This refers to a list of ids of opened tree items. Controls the state of the open tree items. These property is ignored for subtrees. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selectionMode` | `"single" \| "multiselect"` | No | undefined | This refers to the selection mode of the tree. - undefined: No selection can be done. - 'single': Only one tree item can be selected, radio buttons are rendered. - 'multiselect': Multiple tree items can be selected, checkboxes are rendered. |
+| `size` | `"small" \| "medium"` | No | 'medium' | Size of the tree item. |
+
 ## Examples
 
 ### FlatTreeStory

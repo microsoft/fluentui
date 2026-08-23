@@ -1,5 +1,22 @@
 # Tag Group
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled" \| "outline" \| "brand"` | No |  |  |
+| `as` | `"div"` | No |  |  |
+| `defaultSelectedValues` | `string[]` | No |  | Sets selected values for an uncontrolled component. |
+| `disabled` | `boolean` | No | false | A TagGroup can show that it cannot be interacted with. |
+| `dismissible` | `boolean` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `onDismiss` | `TagDismissHandler<string>` | No |  | Callback for when a tag is dismissed |
+| `onTagSelect` | `EventHandler<TagSelectData<string>>` | No |  | Callback for when a tag is selected |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selectedValues` | `string[]` | No |  | Values of the selected tags |
+| `size` | `"small" \| "extra-small" \| "medium"` | No |  |  |
+
 ## Examples
 
 ### Default

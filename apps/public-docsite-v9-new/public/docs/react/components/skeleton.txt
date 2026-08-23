@@ -1,5 +1,19 @@
 # Skeleton
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `animation` | `"wave" \| "pulse"` | No |  | The animation type for the Skeleton @defaultValue wave |
+| `appearance` | `"opaque" \| "translucent"` | No |  | Sets the appearance of the Skeleton. @defaultValue opaque |
+| `as` | `"div" \| "span"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `ref` | `Ref<HTMLSpanElement>` | No |  |  |
+| `shape` | `"circle" \| "square" \| "rectangle"` | No |  | Sets the shape of the SkeletonItems inside the Skeleton. This value can be overridden by the individual SkeletonItem's `shape` prop. |
+| `size` | `8 \| 12 \| 14 \| 16 \| 20 \| 22 \| 24 \| 28 \| 32 \| 36 \| 40 \| 48 \| 52 \| 56 \| 64 \| 72 \| 92 \| 96 \| 120 \| 128` | No |  | Sets the size of the SkeletonItems inside the Skeleton in pixels. Size is restricted to a limited set of values recommended for most uses (see SkeletonItemSize). This value can be overridden by the individual SkeletonItem's `size` prop. |
+| `width` | `string \| number` | No |  | Sets the width value of the skeleton wrapper. @defaultValue 100% @deprecated Use `className` prop to set width |
+
 ## Examples
 
 ### Animation

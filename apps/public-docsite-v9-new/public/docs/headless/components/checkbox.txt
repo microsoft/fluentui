@@ -1,5 +1,22 @@
 # Checkbox
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"input"` | No |  |  |
+| `checked` | `boolean \| "mixed"` | No | false | The controlled value for the checkbox. |
+| `defaultChecked` | `boolean \| "mixed"` | No |  | Whether the checkbox should be rendered as checked by default. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `indicator` | `Slot<"div">` | No |  | The checkbox, with the checkmark icon as its child when checked. |
+| `input` | `Slot<"input">` | No |  | Hidden input that handles the checkbox's functionality. This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot, except `className` and `style`, which remain on the root slot. |
+| `label` | `any` | No |  | The Checkbox's label. |
+| `labelPosition` | `"before" \| "after"` | No | after | The position of the label relative to the checkbox indicator. |
+| `onChange` | `(ev: ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void` | No |  | Callback to be called when the checked state value changes. |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"span">` | No |  | The root element of the Checkbox. The root slot receives the `className` and `style` specified directly on the `<Checkbox>`. All other native props will be applied to the primary slot: `input` |
+
 ## Examples
 
 ### Default

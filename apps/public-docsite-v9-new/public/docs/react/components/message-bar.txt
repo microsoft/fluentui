@@ -1,5 +1,20 @@
 # Message Bar
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `bottomReflowSpacer` | `Slot<"div">` | No |  | Rendered when the component is in multiline layout to guarantee correct spacing even if no actions are rendered. When actions are rendered, the default actions grid area will render over this element NOTE: If you are using this slot, this probably means that you are using the MessageBar without actions, this is not recommended from an accesibility point of view |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"div">` | No |  |  |
+| `intent` | `"info" \| "success" \| "warning" \| "error"` | No | info | Default designs announcement presets |
+| `layout` | `"auto" \| "multiline" \| "singleline"` | No |  |  |
+| `politeness` | `"assertive" \| "polite"` | No |  | @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `shape` | `"square" \| "rounded"` | No | rounded | Use squal for page level messages and rounded for component level messages |
+
 ## Examples
 
 ### Actions

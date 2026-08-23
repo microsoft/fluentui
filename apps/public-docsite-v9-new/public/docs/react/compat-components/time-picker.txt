@@ -1,5 +1,40 @@
 # Time Picker
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled-darker" \| "filled-lighter" \| "outline" \| "underline"` | No | 'outline' | Controls the colors and borders of the combobox trigger. |
+| `as` | `"input"` | No |  |  |
+| `clearable` | `boolean` | No |  | If set, the combobox will show an icon to clear the current value. |
+| `clearIcon` | `Slot<"span">` | No |  | The dropdown clear icon |
+| `dateAnchor` | `Date` | No |  | The date in which all dropdown options are based off of. |
+| `defaultOpen` | `boolean` | No |  | The default open state when open is uncontrolled |
+| `defaultSelectedTime` | `Date` | No |  | Default selected time in the TimePicker, for uncontrolled scenarios. |
+| `endHour` | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10 \| 11 \| 12 \| 13 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \…` | No |  | End hour (exclusive) for the time range, 0-24. |
+| `expandIcon` | `Slot<"span">` | No |  | The dropdown arrow icon |
+| `focusgroup` | `"listbox" \| "menu" \| "none" \| "feed" \| "grid" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "listbox inl…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `formatDateToTimeString` | `(date: Date) => string` | No |  | Customizes the formatting of date strings displayed in dropdown options. |
+| `freeform` | `boolean` | No |  |  |
+| `hourCycle` | `"h11" \| "h12" \| "h23" \| "h24"` | No | undefined | A string value indicating whether the 12-hour format ("h11", "h12") or the 24-hour format ("h23", "h24") should be used. - 'h11' and 'h23' start with hour 0 and go up to 11 and 23 respectively. - 'h12' and 'h24' start with hour 1 and go up to 12 and 24 respectively. |
+| `increment` | `number` | No |  | Time increment, in minutes, of the options in the dropdown. |
+| `inlinePopup` | `boolean` | No |  | Render the combobox's popup inline in the DOM. This has accessibility benefits, particularly for touch screen readers. |
+| `input` | `Slot<"input">` | No |  | The primary slot, an input with role="combobox" |
+| `listbox` | `any` | No |  | The dropdown listbox slot |
+| `mountNode` | `HTMLElement \| { element?: HTMLElement; className?: string; }` | No | a new element on document.body without any styling | Where the portal children are mounted on DOM |
+| `onOpenChange` | `(e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void` | No |  | Callback when the open/closed state of the dropdown changes |
+| `onTimeChange` | `(event: TimeSelectionEvents, data: TimeSelectionData) => void` | No |  | Callback for when a time selection is made. |
+| `open` | `boolean` | No |  | Sets the open/closed state of the dropdown. Use together with onOpenChange to fully control the dropdown's visibility |
+| `parseTimeStringToDate` | `(time: string) => TimeStringValidationResult` | No |  | In the freeform TimePicker, customizes the parsing from the input time string into a Date and provides custom validation. |
+| `positioning` | `PositioningShorthand` | No |  | Configure the positioning of the combobox dropdown. Please refer to the [positioning documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target) for more details. @defaultvalue below |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"div">` | No |  | The root combobox slot |
+| `selectedTime` | `Date` | No |  | Currently selected time in the TimePicker. |
+| `showSeconds` | `boolean` | No |  | If true, show seconds in the dropdown options and consider seconds for default validation purposes. |
+| `size` | `"small" \| "medium" \| "large"` | No | 'medium' | Controls the size of the combobox faceplate |
+| `startHour` | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10 \| 11 \| 12 \| 13 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \…` | No |  | Start hour (inclusive) for the time range, 0-24. |
+
 ## Examples
 
 ### Clearable

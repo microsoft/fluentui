@@ -1,5 +1,25 @@
 # Persona
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `avatar` | `any` | No |  | Avatar to display. If a PresenceBadge and an Avatar are provided, the Avatar will display the PresenceBadge as its presence. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `name` | `string` | No |  | The name of the person or entity represented by the Persona. When `primaryText` is not provided, this will be used as the default value for `primaryText`. |
+| `presence` | `any` | No |  | PresenceBadge to display. If `presenceOnly` is true, the PresenceBadge will be displayed instead of the Avatar. |
+| `presenceOnly` | `boolean` | No | false | Whether to display only the presence. |
+| `primaryText` | `Slot<"span">` | No |  | The first line of text in the Persona, larger than the rest of the lines. `primaryText` defaults to the `name` prop. We recomend to only use `name`, use `primaryText` when the text is different than the `name` prop. |
+| `quaternaryText` | `Slot<"span">` | No |  | The fourth line of text in the Persona. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `secondaryText` | `Slot<"span">` | No |  | The second line of text in the Persona. |
+| `size` | `"small" \| "extra-small" \| "medium" \| "large" \| "extra-large" \| "huge"` | No | medium | The size of a Persona and its text. |
+| `tertiaryText` | `Slot<"span">` | No |  | The third line of text in the Persona. |
+| `textAlignment` | `"center" \| "start"` | No | start | The vertical alignment of the text relative to the avatar/presence. |
+| `textPosition` | `"after" \| "before" \| "below"` | No | after | The position of the text relative to the avatar/presence. |
+
 ## Examples
 
 ### Default

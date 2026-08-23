@@ -1,5 +1,21 @@
 # Spinner
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"primary" \| "inverted"` | No | 'primary' | The appearance of the Spinner. |
+| `as` | `"div" \| "span"` | No |  |  |
+| `delay` | `number` | No | 0 | Time in milliseconds after component mount before spinner is visible. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `label` | `any` | No |  | An optional label for the Spinner. |
+| `labelPosition` | `"above" \| "below" \| "before" \| "after"` | No | 'after' | Where the label is positioned relative to the Spinner |
+| `ref` | `Ref<HTMLSpanElement>` | No |  |  |
+| `size` | `"small" \| "extra-tiny" \| "tiny" \| "extra-small" \| "medium" \| "large" \| "extra-large" \| "huge"` | No | 'medium' | The size of the spinner. |
+| `spinner` | `Slot<"span">` | No |  | The animated spinning ring. |
+| `spinnerTail` | `Slot<"span">` | No |  | The part of the spinner that rotates. |
+
 ## Examples
 
 ### Appearance

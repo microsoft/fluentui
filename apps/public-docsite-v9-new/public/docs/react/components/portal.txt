@@ -1,5 +1,11 @@
 # Portal
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `mountNode` | `HTMLElement \| { element?: HTMLElement; className?: string; }` | No | a new element on document.body without any styling | Where the portal children are mounted on DOM |
+
 ## Examples
 
 ### Default

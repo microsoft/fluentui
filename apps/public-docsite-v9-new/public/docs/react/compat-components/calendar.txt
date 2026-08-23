@@ -1,5 +1,38 @@
 # Calendar
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `allFocusable` | `boolean` | No | false | Allows all dates and buttons to be focused, including disabled ones |
+| `calendarDayProps` | `Partial<CalendarDayProps>` | No |  | Customized props for the calendar day |
+| `calendarMonthProps` | `Partial<CalendarMonthProps>` | No |  | Customized props for the calendar month |
+| `className` | `string` | No |  | Optional class name to add to the root element. |
+| `componentRef` | `RefObject<ICalendar>` | No |  | Optional callback to access the ICalendar interface. Use this instead of ref for accessing the public methods and properties of the component. |
+| `dateRangeType` | `0 \| 1 \| 2 \| 3` | No | DateRangeType.Day | The date range type indicating how many days should be selected as the user selects days |
+| `dateTimeFormatter` | `DateFormatting` | No |  | Apply additional formatting to dates, for example localized date formatting. |
+| `firstDayOfWeek` | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6` | No | DayOfWeek.Sunday | The first day of the week for your locale. |
+| `firstWeekOfYear` | `0 \| 1 \| 2` | No | FirstWeekOfYear.FirstDay | Defines when the first week of the year should start. |
+| `highlightCurrentMonth` | `boolean` | No | false | Whether the month picker should highlight the current month |
+| `highlightSelectedMonth` | `boolean` | No | false | Whether the month picker should highlight the selected month |
+| `id` | `string` | No |  | ID for the calendar |
+| `isDayPickerVisible` | `boolean` | No | true | Whether the day picker is shown beside the month picker or hidden. |
+| `isMonthPickerVisible` | `boolean` | No | true | Whether the month picker is shown beside the day picker or hidden. |
+| `maxDate` | `Date` | No |  | If set the Calendar will not allow navigation to or selection of a date later than this value. |
+| `minDate` | `Date` | No |  | If set the Calendar will not allow navigation to or selection of a date earlier than this value. |
+| `onDismiss` | `() => void` | No |  | Callback for when calendar is closed |
+| `onSelectDate` | `(date: Date, selectedDateRangeArray?: Date[]) => void` | No |  | Callback for when a date is selected @param date - The date the user selected @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component. |
+| `restrictedDates` | `Date[]` | No |  | If set the Calendar will not allow selection of dates in this array. |
+| `showCloseButton` | `boolean` | No | false | Whether the close button should be shown or not |
+| `showGoToToday` | `boolean` | No |  | Whether the "Go to today" link should be shown or not |
+| `showMonthPickerAsOverlay` | `boolean` | No | false | Show month picker on top of date picker when visible. |
+| `showSixWeeksByDefault` | `boolean` | No | false | Whether the calendar should show 6 weeks by default. |
+| `showWeekNumbers` | `boolean` | No | false | Whether the calendar should show the week number (weeks 1 to 53) before each week row |
+| `strings` | `CalendarStrings` | No |  | Localized strings to use in the Calendar |
+| `today` | `Date` | No |  | Value of today. If unspecified, current time in client machine will be used. |
+| `value` | `Date` | No |  | Default value of the Calendar, if any |
+| `workWeekDays` | `DayOfWeek[]` | No | [Monday,Tuesday,Wednesday,Thursday,Friday] | The days that are selectable when `dateRangeType` is `WorkWeek`. If `dateRangeType` is not `WorkWeek` this property does nothing. |
+
 ## Examples
 
 ### CalendarContiguousWorkWeekDays

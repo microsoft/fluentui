@@ -1,5 +1,24 @@
 # Nav
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `defaultOpenCategories` | `string[]` | No |  | Set of categories that are opened by default. Typically useful when the openCategories is uncontrolled. |
+| `defaultSelectedCategoryValue` | `string` | No |  | The value of the navCategory to be selected by default. Typically useful when the selectedValue is uncontrolled. Mutually exclusive with selectedValue. Empty string indicates no selection. |
+| `defaultSelectedValue` | `string` | No |  | The value of the navItem to be selected by default. Typically useful when the selectedValue is uncontrolled. Mutually exclusive with selectedValue. Empty string indicates no selection. |
+| `density` | `"small" \| "medium"` | No | 'medium' | The vertical density of the Nav and it's children |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `multiple` | `boolean` | No | true, indicating that multiple categories can be open at the same time. | Indicates if Nav supports multiple open Categories at the same time. |
+| `onNavCategoryItemToggle` | `EventHandler<OnNavItemSelectData>` | No |  | Callback raised when a NavCategoryItem is toggled. |
+| `onNavItemSelect` | `EventHandler<OnNavItemSelectData>` | No |  | Raised when a navItem is selected. If the navItem is child of a category, the categoryValue will be provided |
+| `openCategories` | `string[]` | No |  | Controls the open categories. For use in controlled scenarios. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selectedCategoryValue` | `string` | No | undefined | Indicates a category that has a selected child Will show the category as selected if it is closed. |
+| `selectedValue` | `string` | No | undefined | The value of the currently selected navItem. Mutually exclusive with defaultSelectedValue. |
+
 ## Examples
 
 ### Controlled

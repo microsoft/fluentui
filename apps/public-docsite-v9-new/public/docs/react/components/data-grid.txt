@@ -1,5 +1,35 @@
 # Data Grid
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div" \| "table"` | No |  |  |
+| `columns` | `TableColumnDefinition<any>[]` | Yes |  | Table columns |
+| `columnSizingOptions` | `TableColumnSizingOptions` | No |  | Options for column resizing, specific for each column |
+| `containerWidthOffset` | `number` | No |  | For column resizing. Allows for a container size to be adjusted by a number of pixels, to make sure the columns don't overflow the table. By default, this value is calculated internally based on other props, but can be overriden. |
+| `defaultSelectedItems` | `Iterable<SelectionItemId>` | No |  | Used in uncontrolled mode to set initial selected items on mount |
+| `defaultSortState` | `SortState` | No |  | Used in uncontrolled mode to set initial sort column and direction on mount |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `focusMode` | `"none" \| "cell" \| "row_unstable" \| "composite"` | No | cell | How focus navigation will work in the datagrid |
+| `getRowId` | `(item: any) => TableRowId` | No |  |  |
+| `items` | `any[]` | Yes |  |  |
+| `noNativeElements` | `boolean` | No | false | Render all table elements as divs instead of semantic table elements Using divs no longer uses `display: table` layout but `display: flex` |
+| `onColumnResize` | `(e: MouseEvent \| KeyboardEvent \| TouchEvent, data: { columnId: TableColumnId; width: number; }) => void` | No |  | A callback triggered when a column is resized. |
+| `onSelectionChange` | `(e: MouseEvent<Element, MouseEvent> \| KeyboardEvent<Element>, data: OnSelectionChangeData) => void` | No |  |  |
+| `onSortChange` | `(e: MouseEvent<Element, MouseEvent>, sortState: SortState) => void` | No |  |  |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `resizableColumns` | `boolean` | No |  | Enables column resizing |
+| `resizableColumnsOptions` | `{ autoFitColumns?: boolean; }` | No |  | Custom options for column resizing. |
+| `selectedItems` | `Iterable<SelectionItemId>` | No |  | Used to control selected items |
+| `selectionAppearance` | `"none" \| "brand" \| "neutral"` | No | brand | Row appearance when selected |
+| `selectionMode` | `"single" \| "multiselect"` | No | false | Enables row selection and sets the selection mode |
+| `size` | `"small" \| "extra-small" \| "medium"` | No | medium | Affects the sizes of all table subcomponents |
+| `sortable` | `boolean` | No | false | Whether the table is sortable |
+| `sortState` | `SortState` | No |  | Used to control sorting |
+| `subtleSelection` | `boolean` | No | false | Enables subtle selection style |
+
 ## Examples
 
 ### CompositeNavigation

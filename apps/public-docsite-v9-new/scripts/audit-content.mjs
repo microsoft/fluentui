@@ -1,7 +1,11 @@
+import { existsSync, readFileSync } from 'node:fs';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { distRoot } from './static-server.mjs';
+
+const docgenPath = new URL('../app/generated/docgen.json', import.meta.url);
+const docgen = existsSync(docgenPath) ? JSON.parse(readFileSync(docgenPath, 'utf8')) : {};
 
 /**
  * Sweeps every prerendered page for content defects.
@@ -26,6 +30,25 @@ const SYMPTOMS = [
     id: 'missing-api-data',
     describe: 'props table could not find generated API data',
     test: html => html.includes('No generated API data'),
+  },
+  {
+    id: 'missing-props-table',
+    describe: 'documents a component with generated API data but renders no props table',
+    /*
+     * Passing no `docgen` prop renders nothing and leaves no error text, so the rule above
+     * cannot see it — which is how every page silently lost its props table. Keyed off the
+     * manifest so pages documenting APIs or concepts, which have no component entry, are not
+     * flagged.
+     */
+    test: (html, route) => {
+      const leaf = route.replace(/\/$/, '').split('/').pop() ?? '';
+      const component = leaf
+        .split('-')
+        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('');
+
+      return Boolean(docgen[component]) && !html.includes('<table');
+    },
   },
   {
     id: 'react-error-placeholder',
@@ -71,7 +94,7 @@ for await (const file of walk(root)) {
   checked++;
 
   for (const symptom of SYMPTOMS) {
-    if (symptom.test(html)) {
+    if (symptom.test(html, route)) {
       failures.push(`${route} — ${symptom.describe} [${symptom.id}]`);
     }
   }

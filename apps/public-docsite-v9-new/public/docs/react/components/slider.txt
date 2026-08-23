@@ -1,5 +1,24 @@
 # Slider
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"input"` | No |  |  |
+| `defaultValue` | `number` | No |  | The starting value for an uncontrolled Slider. Mutually exclusive with `value` prop. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `input` | `Slot<"input">` | No |  | The hidden input for the Slider. This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot, except `className` and `style`, which remain on the root slot. |
+| `onChange` | `(ev: ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void` | No |  | Triggers a callback when the value has been changed. This will be called on every individual step. |
+| `orient` | `"vertical" \| "horizontal"` | No |  | Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally when `vertical` is set to true. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property |
+| `rail` | `Slot<"div">` | No |  | The Slider's base. It is used to visibly display the min and max selectable values. |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"div">` | No |  | The root of the Slider. The root slot receives the `className` and `style` specified directly on the `<Slider>`. All other native props will be applied to the primary slot, `input`. |
+| `size` | `"small" \| "medium"` | No | 'medium' | The size of the Slider. |
+| `thumb` | `Slot<"div">` | No |  | The draggable icon used to select a given value from the Slider. This is the element containing `role = 'slider'`. |
+| `value` | `number` | No |  | The current value of the controlled Slider. Mutually exclusive with `defaultValue` prop. |
+| `vertical` | `boolean` | No | `false` | Render the Slider in a vertical orientation, smallest value on the bottom. |
+
 ## Examples
 
 ### Controlled

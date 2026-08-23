@@ -1,5 +1,46 @@
 # Date Picker
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `allFocusable` | `boolean` | No | false | Allows all elements to be focused, including disabled ones |
+| `allowTextInput` | `boolean` | No | false | Whether the DatePicker allows input a date string directly or not |
+| `borderless` | `boolean` | No | false | Determines if the DatePicker has a border. |
+| `dateTimeFormatter` | `DateFormatting` | No |  | Apply additional formatting to dates, for example localized date formatting. |
+| `defaultOpen` | `boolean` | No | false | Whether the DatePicker should be open by default |
+| `disableAutoFocus` | `boolean` | No | true | Whether the DatePicker should open automatically when the control is focused WARNING: setting this to false creates an accessibility violation and is not recommended |
+| `disabled` | `boolean` | No | false | Disabled state of the DatePicker. |
+| `firstDayOfWeek` | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6` | No | DayOfWeek.Sunday | The first day of the week for your locale. |
+| `firstWeekOfYear` | `0 \| 1 \| 2` | No | FirstWeekOfYear.FirstFullWeek | Defines when the first week of the year should start, FirstWeekOfYear.FirstDay, FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values |
+| `formatDate` | `(date?: Date) => string` | No | date.toString() | Optional method to format the chosen date to a string to display in the DatePicker |
+| `highlightCurrentMonth` | `boolean` | No | false | Whether the month picker should highlight the current month |
+| `highlightSelectedMonth` | `boolean` | No | false | Whether the month picker should highlight the selected month |
+| `initialPickerDate` | `Date` | No |  | The initially highlighted date. |
+| `inlinePopup` | `boolean` | No | false | Whether the DatePicker should render the popup as inline or in a portal |
+| `isMonthPickerVisible` | `boolean` | No | true | Whether the month picker is shown beside the day picker or hidden. |
+| `maxDate` | `Date` | No |  | The maximum allowable date. |
+| `minDate` | `Date` | No |  | The minimum allowable date. |
+| `mountNode` | `HTMLElement \| { element?: HTMLElement; className?: string; }` | No | a new element on document.body without any styling | Where the portal children are mounted on DOM |
+| `onOpenChange` | `(open: boolean) => void` | No |  | Callback to run when the DatePicker's open state changes |
+| `onSelectDate` | `(date: Date) => void` | No |  | Callback issued when a date is selected |
+| `onValidationResult` | `(data: DatePickerValidationResultData) => void` | No |  | Callback to run after the DatePicker's input has been validated |
+| `open` | `boolean` | No | false | Whether the DatePicker is open or not |
+| `openOnClick` | `boolean` | No | true | Whether the DatePicker should open when the input is clicked |
+| `parseDateFromString` | `(dateStr: string) => Date` | No | new Date(Date.parse(dateStr)) | Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true |
+| `placeholder` | `string` | No |  | Placeholder text for the DatePicker |
+| `positioning` | `PositioningProps` | No | below | Configure the positioning of the DatePicker dialog |
+| `ref` | `Ref<any>` | No |  |  |
+| `required` | `boolean` | No | false | Whether the DatePicker is a required field or not. When using `<Field>`, this prop is automatically set. |
+| `showCloseButton` | `boolean` | No |  | Whether the CalendarDay close button should be shown or not. |
+| `showGoToToday` | `boolean` | No |  | Whether the "Go to today" link should be shown or not |
+| `showMonthPickerAsOverlay` | `boolean` | No | false | Show month picker on top of date picker when visible. |
+| `showWeekNumbers` | `boolean` | No | false | Whether the calendar should show the week number (weeks 1 to 53) before each week row |
+| `strings` | `CalendarStrings` | No |  | Localized strings to use in the Calendar |
+| `today` | `Date` | No |  | Value of today. If unspecified, current time in client machine will be used. |
+| `underlined` | `boolean` | No | false | Whether or not the Input of the DatePicker is underlined. |
+| `value` | `Date` | No |  | Default value of the DatePicker, if any When the component is controlled, `null` should be used instead of `undefined` to avoid controlled vs. uncontrolled ambiguity. |
+
 ## Examples
 
 ### Controlled

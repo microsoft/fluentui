@@ -1,5 +1,20 @@
 # Progress Bar
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `bar` | `Slot<"div">` | No |  | The filled portion of the ProgressBar bar. Animated in the indeterminate state, when no value is provided. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `indeterminateMotion` | `any` | No |  | Motion slot for the indeterminate animation. Pass `null` to disable the animation. |
+| `max` | `number` | No | 1 | The maximum value, which indicates the task is complete. The ProgressBar bar will be full when `value` equals `max`. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `shape` | `"rounded" \| "square"` | No | rounded | The shape of the bar and track. |
+| `thickness` | `"medium" \| "large"` | No | medium | The thickness of the ProgressBar bar |
+| `value` | `number` | No |  | A decimal number between `0` and `1` (or between `0` and `max` if given), which specifies how much of the task has been completed. If `undefined` (default), the ProgressBar will display an **indeterminate** state. |
+
 ## Examples
 
 ### Color

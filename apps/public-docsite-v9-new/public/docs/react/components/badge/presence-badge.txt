@@ -1,5 +1,18 @@
 # Presence Badge
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No |  |  |
+| `outOfOffice` | `boolean` | No | false | Modifies the display to indicate that the user is out of office. This can be combined with any status to display an out-of-office version of that status |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `size` | `"small" \| "tiny" \| "extra-small" \| "medium" \| "large" \| "extra-large"` | No |  | A Badge can be on of several preset sizes. @defaultvalue medium |
+| `status` | `"busy" \| "out-of-office" \| "away" \| "available" \| "offline" \| "do-not-disturb" \| "unknown" \| "blocked"` | No | available | Represents several status |
+
 ## Examples
 
 ### Default

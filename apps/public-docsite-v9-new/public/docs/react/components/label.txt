@@ -1,5 +1,18 @@
 # Label
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"label"` | No |  |  |
+| `disabled` | `boolean` | No | false | Renders the label as disabled |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `ref` | `Ref<HTMLLabelElement>` | No |  |  |
+| `required` | `Slot<"span">` | No | false | Displays an indicator that the label is for a required field. The required prop can be set to true to display an asterisk (*). Or it can be set to a string or jsx content to display a different indicator. |
+| `size` | `"small" \| "medium" \| "large"` | No | 'medium' | A label supports different sizes. |
+| `weight` | `"regular" \| "semibold"` | No | regular | A label supports regular and semibold fontweight. |
+
 ## Examples
 
 ### Default

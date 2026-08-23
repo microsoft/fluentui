@@ -1,5 +1,22 @@
 # Rating Display
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `compact` | `boolean` | No | false | Renders a single filled star, with the value written next to it. |
+| `count` | `number` | No |  | The number of ratings represented by the rating value. This will be formatted with a thousands separator (if applicable) and displayed next to the value. |
+| `countText` | `Slot<"span">` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `ElementType<any, keyof IntrinsicElements>` | No | StarFilled | The icon used for rating items. |
+| `max` | `number` | No | 5 | The max value of the rating. This controls the number of rating items displayed. Must be a whole number greater than 1. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `size` | `"small" \| "medium" \| "large" \| "extra-large"` | No | medium | Sets the size of the RatingDisplay items. |
+| `value` | `number` | No |  | The value of the rating |
+| `valueText` | `Slot<"span">` | No |  |  |
+
 ## Examples
 
 ### Compact

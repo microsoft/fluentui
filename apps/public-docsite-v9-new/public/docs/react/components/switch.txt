@@ -1,5 +1,24 @@
 # Switch
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"input"` | No |  |  |
+| `checked` | `boolean` | No | false | Defines the controlled checked state of the Switch. If passed, Switch ignores the `defaultChecked` property. This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the correct value based on handling `onChange` events and re-rendering. |
+| `defaultChecked` | `boolean` | No | false | Defines whether the Switch is initially in a checked state or not when rendered. |
+| `disabledFocusable` | `boolean` | No | false | When set, allows the Switch to be focusable even when it has been disabled. This is used in scenarios where it is important to keep a consistent tab order for screen reader and keyboard users. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `indicator` | `Slot<"div">` | No |  | The track and the thumb sliding over it indicating the on and off status of the Switch. |
+| `input` | `Slot<"input">` | No |  | Hidden input that handles the Switch's functionality. This is the PRIMARY slot: all native properties specified directly on the `<Switch>` tag will be applied to this slot, except `className` and `style`, which remain on the root slot. |
+| `label` | `any` | No |  | The Switch's label. |
+| `labelPosition` | `"above" \| "after" \| "before"` | No | after | The position of the label relative to the Switch. |
+| `onChange` | `(ev: ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void` | No |  | Callback to be called when the checked state value changes. |
+| `ref` | `Ref<HTMLInputElement>` | No |  |  |
+| `root` | `Slot<"div">` | No |  | The root element of the Switch. The root slot receives the `className` and `style` specified directly on the `<Switch>` tag. All other native props will be applied to the primary slot: `input`. |
+| `size` | `"small" \| "medium"` | No | 'medium' | The size of the Switch. |
+
 ## Examples
 
 ### Checked

@@ -1,5 +1,29 @@
 # Popover
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"brand" \| "inverted"` | No |  | A popover can appear styled with brand or inverted. When not specified, the default style is used. |
+| `closeOnIframeFocus` | `boolean` | No | true | Flag to close the Popover when an iframe outside a PopoverSurface is focused |
+| `closeOnScroll` | `boolean` | No | false | Close when scroll outside of it |
+| `defaultOpen` | `boolean` | No | false | Used to set the initial open state of the Popover in uncontrolled mode |
+| `inertTrapFocus` | `boolean` | No | false | Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) where the focus trap involves setting outside elements inert, making navigation leak from the trapped area back to the browser toolbar and vice-versa. |
+| `inline` | `boolean` | No | false | Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order |
+| `legacyTrapFocus` | `boolean` | No |  | Must be used with the `trapFocus` prop Enables older Fluent UI focus trap behavior where the user cannot tab into the window outside of the document. This is now non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) where the focus trap involves setting outside elements inert. @deprecated this behavior is default provided now, to opt-out of it in favor of standard behavior use the `inertTrapFocus` property |
+| `mountNode` | `HTMLElement \| { element?: HTMLElement; className?: string; }` | No | a new element on document.body without any styling | Where the portal children are mounted on DOM |
+| `mouseLeaveDelay` | `number` | No |  | Sets the delay for closing popover on mouse leave |
+| `onOpenChange` | `(e: OpenPopoverEvents, data: OnOpenChangeData) => void` | No |  | Call back when the component requests to change value The `open` value is used as a hint when directly controlling the component |
+| `open` | `boolean` | No | false | Controls the opening of the Popover |
+| `openOnContext` | `boolean` | No | false | Flag to open the Popover as a context menu. Disables all other interactions |
+| `openOnHover` | `boolean` | No | false | Flag to open the Popover by hovering the trigger |
+| `positioning` | `PositioningShorthand` | No |  | Configures the position of the Popover. Explore [Positioning docs](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs) for more options. |
+| `size` | `"small" \| "medium" \| "large"` | No | medium | Determines popover padding and arrow size |
+| `surfaceMotion` | `any` | No |  | Slot for the surface motion animation. For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs). |
+| `trapFocus` | `boolean` | No | false | Should trap focus |
+| `unstable_disableAutoFocus` | `boolean` | No | false | By default Popover focuses the first focusable element in PopoverSurface on open. Specify `disableAutoFocus` to prevent this behavior. |
+| `withArrow` | `boolean` | No | false | Display an arrow pointing to the target. |
+
 ## Examples
 
 ### AnchorToCustomTarget

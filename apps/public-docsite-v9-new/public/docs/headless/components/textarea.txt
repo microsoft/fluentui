@@ -1,5 +1,22 @@
 # Textarea
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"outline" \| "filled-darker" \| "filled-lighter" \| "filled-darker-shadow" \| "filled-lighter-shadow"` | No | outline Note: 'filled-darker-shadow' and 'filled-lighter-shadow' are deprecated and will be removed in the future. | Styling the Textarea should use. |
+| `as` | `"textarea"` | No |  |  |
+| `defaultValue` | `string` | No |  | The default value of the Textarea. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `onChange` | `(ev: ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void` | No |  | Callback for when the user changes the value. |
+| `ref` | `Ref<HTMLTextAreaElement>` | No |  |  |
+| `resize` | `"none" \| "both" \| "horizontal" \| "vertical"` | No | none | Which direction the Textarea is allowed to be resized. |
+| `root` | `Slot<"span">` | No |  | Wrapper element used for displaying the borders for Textarea. This wrapper is needed due to the focus indicator border animation. For more information, see Spec.md The root only receives `className` and `style`. All other props are applied to the `textarea` slot. |
+| `size` | `"small" \| "medium" \| "large"` | No | medium | Size of the Textarea. |
+| `textarea` | `Slot<"textarea">` | No |  | The `<textarea>` element. This is the primary slot, all native props and ref are applied to this slot. |
+| `value` | `string` | No |  | The value of the Textarea. |
+
 ## Examples
 
 ### Default

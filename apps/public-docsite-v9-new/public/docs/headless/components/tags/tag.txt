@@ -1,5 +1,24 @@
 # Tag
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled" \| "outline" \| "brand"` | No | 'filled' | A Tag can have filled, outlined or brand experience. |
+| `as` | `"button" \| "span"` | No |  |  |
+| `dismissible` | `boolean` | No | false | A Tag can be dismissible |
+| `dismissIcon` | `Slot<"span">` | No |  | Slot for the dismiss icon |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No |  | Slot for an icon |
+| `media` | `Slot<"span">` | No |  | Slot for a visual element, usually an avatar |
+| `primaryText` | `Slot<"span">` | No |  | Main text for the Tag. Children of the root slot are automatically rendered here |
+| `ref` | `Ref<HTMLSpanElement>` | No |  |  |
+| `secondaryText` | `Slot<"span">` | No |  | Secondary text that describes or complements the main text |
+| `selected` | `boolean` | No | false | An InteractionTag can be selected. Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup. |
+| `shape` | `"rounded" \| "circular"` | No | 'round' | A Tag can have rounded or circular shape. |
+| `size` | `"small" \| "extra-small" \| "medium"` | No | 'medium' | A Tag has three sizes. |
+
 ## Examples
 
 ### Default

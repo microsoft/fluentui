@@ -1,5 +1,20 @@
 # Radio Group
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `disabled` | `boolean` | No |  | Disable all Radio items in this group. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `layout` | `"horizontal" \| "vertical" \| "horizontal-stacked"` | No | vertical | How the radio items are laid out in the group. |
+| `name` | `string` | No |  | The name of this radio group. This name is applied to all Radio items inside this group. If no name is provided, one will be generated so that all of the Radio items have the same name. |
+| `onChange` | `(ev: FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void` | No |  | Callback when the selected Radio item changes. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `required` | `boolean` | No |  | Require a selection in this group. Adds the `required` prop to all child Radio items. |
+| `value` | `string` | No |  | The selected Radio item in this group. This should be the `value` prop of one of the Radio items inside this group. |
+
 ## Examples
 
 ### ControlledValue

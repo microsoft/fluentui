@@ -1,5 +1,21 @@
 # Card
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `checkbox` | `Slot<"input">` | No |  | The internal checkbox element that renders when the card is selectable. |
+| `defaultSelected` | `boolean` | No | false | Defines whether the card is initially in a selected state when rendered. |
+| `disabled` | `boolean` | No | false | Makes the card and card selection disabled (not propagated to children). |
+| `floatingAction` | `Slot<"div">` | No |  | Floating action that can be rendered on the top-right of a card. Often used together with `selected`, `defaultSelected`, and `onSelectionChange` props |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `onSelectionChange` | `(event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void` | No |  | Callback to be called when the selected state value changes. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selected` | `boolean` | No | false | Defines the controlled selected state of the card. |
+| `shouldRestrictTriggerAction` | `(event: CardOnSelectionChangeEvent) => boolean` | No |  | Predicate function to determine whether the card's selection action should be restricted. |
+
 ## Examples
 
 ### WithAction

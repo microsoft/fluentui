@@ -1,5 +1,19 @@
 # Toolbar
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `checkedValues` | `Record<string, string[]>` | No |  | Map of all checked values |
+| `defaultCheckedValues` | `Record<string, string[]>` | No |  | Default values to be checked on mount |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `onCheckedValueChange` | `(e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void` | No |  | Callback when checked items change for value with a name @param event - React's original SyntheticEvent @param data - A data object with relevant information |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `size` | `"small" \| "medium" \| "large"` | No | medium | Toolbar can have small or medium size |
+| `vertical` | `boolean` | No | false | Toolbar can be vertical styled |
+
 ## Examples
 
 ### Default

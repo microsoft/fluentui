@@ -1,5 +1,27 @@
 # Menu
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `checkedValues` | `Record<string, string[]>` | No |  | Map of all checked values |
+| `closeOnScroll` | `boolean` | No | false | Close when scroll outside of it |
+| `defaultCheckedValues` | `Record<string, string[]>` | No |  | Default values to be checked on mount |
+| `defaultOpen` | `boolean` | No | false | Whether the popup is open by default |
+| `hasCheckmarks` | `boolean` | No |  | States that menu items can contain selectable items and reserve slots for item alignment |
+| `hasIcons` | `boolean` | No |  | States that menu items can contain icons and reserve slots for item alignment |
+| `hoverDelay` | `number` | No |  | Sets the delay for mouse open/close for the popover one mouse enter/leave |
+| `inline` | `boolean` | No | false | Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order This option is disregarded for submenus |
+| `mountNode` | `HTMLElement \| { element?: HTMLElement; className?: string; }` | No | a new element on document.body without any styling | Where the portal children are mounted on DOM |
+| `onCheckedValueChange` | `(e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void` | No |  | Callback when checked items change for value with a name @param event - React's original SyntheticEvent @param data - A data object with relevant information |
+| `onOpenChange` | `(e: MouseEvent \| Event \| React.MouseEvent<...> \| React.MouseEvent<...> \| KeyboardEvent<...> \| TouchEvent, data: Men…` | No |  | Call back when the component requests to change value The `open` value is used as a hint when directly controlling the component |
+| `open` | `boolean` | No | false | Whether the popup is open |
+| `openOnContext` | `boolean` | No | false | Opens the menu on right click (context menu), removes all other menu open interactions |
+| `openOnHover` | `boolean` | No | false | Opens the menu on hover |
+| `persistOnItemClick` | `boolean` | No | false | Do not dismiss the menu when a menu item is clicked |
+| `positioning` | `PositioningShorthand` | No |  | Configures the positioned menu |
+| `surfaceMotion` | `any` | No |  | Slot for the surface motion animation. For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs). |
+
 ## Examples
 
 ### CheckboxItems

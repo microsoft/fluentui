@@ -1,5 +1,20 @@
 # Interaction Tag
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"filled" \| "outline" \| "brand"` | No | 'filled' | An InteractionTag can have filled, outlined or brand experience. |
+| `as` | `"div"` | No |  |  |
+| `disabled` | `boolean` | No | false | An InteractionTag can show that it cannot be interacted with. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `selected` | `boolean` | No | false | An InteractionTag can be selected. Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup. |
+| `shape` | `"rounded" \| "circular"` | No | 'round' | An InteractionTag can have rounded or circular shape. |
+| `size` | `"small" \| "extra-small" \| "medium"` | No | 'medium' | An InteractionTag has three sizes. |
+| `value` | `string` | No |  | Unique value identifying the tag within a TagGroup |
+
 ## Examples
 
 ### Appearance

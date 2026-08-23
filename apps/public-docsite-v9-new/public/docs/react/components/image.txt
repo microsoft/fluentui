@@ -1,5 +1,19 @@
 # Image
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"img"` | No |  |  |
+| `block` | `boolean` | No | false | An image can take up the width of its container. |
+| `bordered` | `boolean` | No | false | An image can appear with a rectangular border. |
+| `fit` | `"center" \| "none" \| "contain" \| "cover" \| "default"` | No | 'default' | An image can set how it should be resized to fit its container. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu block"…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `ref` | `Ref<HTMLImageElement>` | No |  |  |
+| `shadow` | `boolean` | No | false | An image can appear elevated with shadow. |
+| `shape` | `"square" \| "circular" \| "rounded"` | No | 'square' | An image can appear square, circular, or rounded. |
+
 ## Examples
 
 ### Block

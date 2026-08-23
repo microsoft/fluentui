@@ -1,5 +1,19 @@
 # Accordion
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div"` | No |  |  |
+| `collapsible` | `boolean` | No |  | Indicates if Accordion support multiple Panels closed at the same time. |
+| `defaultOpenItems` | `unknown` | No |  | Default value for the uncontrolled state of the panel. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `multiple` | `boolean` | No |  | Indicates if Accordion support multiple Panels opened at the same time. |
+| `onToggle` | `AccordionToggleEventHandler<unknown>` | No |  | Callback to be called when the opened items change. |
+| `openItems` | `unknown` | No |  | Controls the state of the panel. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+
 ## Examples
 
 ### Collapsible

@@ -13,6 +13,13 @@ import { fileURLToPath } from 'node:url';
  */
 
 const appRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
+
+/**
+ * Components with generated API data, so a page only claims a props table when one exists.
+ * Regenerate with `node scripts/generate-docgen.mjs` before running this.
+ */
+const docgenPath = join(appRoot, 'app/generated/docgen.json');
+const docgen = existsSync(docgenPath) ? JSON.parse(readFileSync(docgenPath, 'utf8')) : {};
 const repoRoot = resolve(appRoot, '../..');
 
 const TREES = {
@@ -154,6 +161,10 @@ for (const pkg of resolvePackages()) {
 
     const specifier = `@fluentui/${pkg}-stories/src/${segments.join('/')}/index.stories`;
     const themeProp = tree.showThemePicker ? '' : ' showThemePicker={false}';
+
+    // The docgen manifest is keyed by component display name, which the page title carries.
+    const componentName = name.replace(/\s+/g, '');
+    const docgenProp = docgen[componentName] ? ` docgen="${componentName}"` : '';
     const depth = slug.split('/').length + 1;
     const appPath = `${'../'.repeat(depth)}app/components/component-page`;
 
@@ -168,7 +179,7 @@ title: ${toTitle(name)}
 import meta, * as stories from '${specifier}';
 import { ComponentPage } from '${appPath}';
 
-<ComponentPage meta={meta} stories={stories}${themeProp} />
+<ComponentPage meta={meta} stories={stories}${docgenProp}${themeProp} />
 `,
     );
 

@@ -1,5 +1,18 @@
 # Card Header
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `action` | `Slot<"div">` | No |  | Container that renders on the far end of the footer, used for action buttons. |
+| `as` | `"div"` | No |  |  |
+| `description` | `Slot<"div">` | No |  | Element used to render short descriptions related to the title. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `header` | `Slot<"div">` | No |  | Element used to render the main header title. |
+| `image` | `Slot<"div">` | No |  | Element used to render an image or avatar related to the card. |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+
 ## Examples
 
 ### Default

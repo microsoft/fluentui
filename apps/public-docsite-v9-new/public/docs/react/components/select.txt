@@ -1,5 +1,20 @@
 # Select
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `appearance` | `"outline" \| "underline" \| "filled-darker" \| "filled-lighter"` | No | 'outline' | Controls the colors and borders of the Select. |
+| `as` | `"select"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No |  | the icon, typically a down arrow |
+| `onChange` | `(ev: ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void` | No |  | Called when the user changes the select element's value by selecting an option. |
+| `ref` | `Ref<HTMLSelectElement>` | No |  |  |
+| `root` | `Slot<"span">` | No |  |  |
+| `select` | `Slot<"select">` | No |  | Primary slot: the actual `<select>` element |
+| `size` | `"small" \| "medium" \| "large"` | No | 'medium' | Matches the Input sizes |
+
 ## Examples
 
 ### Appearance

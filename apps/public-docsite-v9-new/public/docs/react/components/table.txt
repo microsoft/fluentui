@@ -1,5 +1,17 @@
 # Table
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"div" \| "table"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `noNativeElements` | `boolean` | No | false | Render all table elements as divs instead of semantic table elements Using divs no longer uses `display: table` layout but `display: flex` |
+| `ref` | `Ref<HTMLDivElement>` | No |  |  |
+| `size` | `"small" \| "extra-small" \| "medium"` | No | medium | Affects the sizes of all table subcomponents |
+| `sortable` | `boolean` | No | false | Whether the table is sortable |
+
 ## Examples
 
 ### CellActions

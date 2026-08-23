@@ -1,5 +1,24 @@
 # Text
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `align` | `"center" \| "start" \| "end" \| "justify"` | No | start | Aligns text based on the parent container. |
+| `as` | `"b" \| "em" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "i" \| "p" \| "pre" \| "span" \| "strong"` | No |  |  |
+| `block` | `boolean` | No | false | Applies a block display for the content. |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu block"…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `font` | `"base" \| "numeric" \| "monospace"` | No | base | Applies the font family to the content. |
+| `italic` | `boolean` | No | false | Applies the italic font style to the content. |
+| `ref` | `Ref<HTMLElement>` | No |  |  |
+| `size` | `100 \| 200 \| 300 \| 400 \| 500 \| 600 \| 700 \| 800 \| 900 \| 1000` | No | 300 | Applies font size and line height based on the theme typography tokens. |
+| `strikethrough` | `boolean` | No | false | Applies the strikethrough text decoration to the content. |
+| `truncate` | `boolean` | No | false | Truncate overflowing text for block displays. |
+| `underline` | `boolean` | No | false | Applies the underline text decoration to the content. |
+| `weight` | `"bold" \| "regular" \| "medium" \| "semibold"` | No | regular | Applies font weight to the content. |
+| `wrap` | `boolean` | No | true | Wraps the text content on white spaces. |
+
 ## Examples
 
 ### Default

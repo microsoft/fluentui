@@ -1,5 +1,18 @@
 # Drawer
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"aside" \| "dialog" \| "div"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `modalType` | `"alert" \| "modal" \| "non-modal"` | No | modal | Dialog variations. `modal`: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog. This is the default type of the component. `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. `alert`: is a special type of modal dialog that interrupts the user's workflow to communicate an important message or ask for a decision. |
+| `onOpenChange` | `EventHandler<DialogOpenChangeData>` | No |  | Callback fired when the component changes value from open state. |
+| `position` | `"start" \| "end" \| "bottom"` | No | 'start' | Position of the drawer. Note: 'bottom' does not supports size, but it supports customized height. |
+| `type` | `"inline" \| "overlay"` | No | overlay | Type of the drawer. Type of the drawer. - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger. - 'inline' - Drawer is stacked with the content. |
+| `unmountOnClose` | `boolean` | No | true true | Decides whether the dialog should be removed from the DOM when it is closed. Decides whether the drawer should be removed from the DOM tree when it is closed. This can be useful when dealing with components that may contain state that should not be reset when the drawer is closed. |
+
 ## Examples
 
 ### AlwaysOpen

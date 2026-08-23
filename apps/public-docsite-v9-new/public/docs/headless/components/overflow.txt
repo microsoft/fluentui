@@ -1,5 +1,16 @@
 # Overflow
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `hasHiddenItems` | `boolean` | No | false | When true, reserve space as if the overflow menu were visible even with no overflowing items. |
+| `minimumVisible` | `number` | No |  | Minimum number of items that must remain visible. |
+| `onOverflowChange` | `(ev: null, data: OverflowState) => void` | No |  |  |
+| `overflowAxis` | `"horizontal" \| "vertical"` | No | horizontal | Overflow axis used for size measurement. |
+| `overflowDirection` | `"start" \| "end"` | No | end | Direction where items are removed when overflow occurs. |
+| `padding` | `number` | No | 10 | Padding in pixels reserved at the end of the container before overflow occurs. Useful for accounting for extra elements (for example an overflow menu button) or margins between items that are difficult to measure in JavaScript. |
+
 ## Examples
 
 ### Default

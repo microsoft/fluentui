@@ -1,5 +1,12 @@
 # Provider
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `dir` | `"ltr" \| "rtl"` | No |  | Sets the direction of text & generated styles. |
+| `targetDocument` | `Document` | No |  | Provides the document, can be undefined during SSR render. |
+
 ## Examples
 
 ### ApplyStylesToPortals

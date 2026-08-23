@@ -1,5 +1,18 @@
 # Avatar
 
+## Props
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `"span"` | No |  |  |
+| `focusgroup` | `"menu" \| "none" \| "feed" \| "grid" \| "listbox" \| "menubar" \| "radiogroup" \| "tablist" \| "toolbar" \| "menu inline…` | No |  | The `focusgroup` attribute is used to indicate that a group of elements should be treated as a single focusable unit for keyboard navigation purposes. It can be used to create accessible components that support keyboard navigation and focus management. |
+| `focusgroupstart` | `string` | No |  | The `focusgroupstart` attribute is used to indicate that an element is the starting point of a focus group. It can be used in conjunction with the `focusgroup` attribute to create accessible components that support keyboard navigation and focus management. |
+| `icon` | `Slot<"span">` | No | `PersonRegular` (the default icon's size depends on the Avatar's size) | Icon to be displayed when the avatar doesn't have an image or initials. |
+| `image` | `Slot<"img">` | No |  | The Avatar's image. Usage e.g.: `image={{ src: '...' }}` |
+| `initials` | `Slot<"span">` | No |  | (optional) Custom initials. It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop, using the `getInitials` function. The initials are displayed when there is no image (including while the image is loading). |
+| `name` | `string` | No |  | The name of the person or entity represented by this Avatar. This should always be provided if it is available. The name is used to determine the initials displayed when there is no image. It is also provided to accessibility tools. |
+| `ref` | `Ref<HTMLSpanElement>` | No |  |  |
+
 ## Examples
 
 ### Default
