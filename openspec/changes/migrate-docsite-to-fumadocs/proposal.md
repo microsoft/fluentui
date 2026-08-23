@@ -103,13 +103,14 @@ None. No existing specs are defined in this project.
 - `.github/workflows/docsite-publish-ghpages.yml` — build the new app and publish it into
   `_pages/docs/`, alongside the existing `react`, `headless`, `charts`, and `web-components` trees.
 - `apps/public-docsite-v9`, `apps/public-docsite-v9-headless` — remain published at their current
-  addresses, minus the `generate-llms-docs` post-build step, plus a deprecation notice once parity is
-  reached.
+  addresses and keep their existing build steps, plus a deprecation notice once parity is reached.
 
 **Removed / deprecated**
 
-- `tools/storybook-llms-extractor` — superseded by Fumadocs' LLM integration once both trees have
-  migrated. Its prop-table formatting helpers are reused; its Playwright scraping layer is deleted.
+- `tools/storybook-llms-extractor` — **retained**. It still serves the Storybook docsite, which stays
+  published and functional, and its output lives at a different address from the new site's, so the
+  new one does not replace it. The new generator does not reuse its helpers: it reads content and
+  runs the source-extraction plugin directly, rather than scraping a built Storybook.
 - The docs-page portion of `@fluentui/react-storybook-addon` becomes redundant for published docs,
   but is retained while Storybook remains the component workbench.
 

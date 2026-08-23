@@ -107,7 +107,7 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 - [x] 6.5 Machine-readable prop output uses the same abbreviated slot types as the rendered page: both read the one docgen manifest, where the abbreviation is applied once at build time (design D6). Confirmed in the output — Button's `icon` is published as `Slot<"span">`, not the expanded `WithSlotShorthandValue<...>` the old extractor emitted.
 - [x] 6.6 Outbound navigation links for charts and the migration guides, marked as external.
 - [x] 6.7 Link from the documentation site to the component workbench, alongside the charts and migration links.
-- [ ] 6.8 Remove the `generate-llms-docs` post-build step from `apps/public-docsite-v9` and `apps/public-docsite-v9-headless`; delete the Playwright scraping layer of `tools/storybook-llms-extractor`, retaining its formatting helpers
+- [x] 6.8 **Re-scoped: keep the workbench's `llms.txt` generator.** Removing it was written before the decision that the workbench stays published and deprecated rather than retired, and it conflicts with `docsite/site-navigation`'s requirement that the deprecated workbench remains functional. Its output is published at `storybooks.fluentui.dev/react/llms.txt` and consumed by the workbench's own copy-as-markdown button; the new site publishes to a different address, so it is not a drop-in replacement and removal would simply break existing consumers. `tools/storybook-llms-extractor` therefore stays as-is, and is revisited only if the workbench is ever retired.
 
 ## 7. Phase 6 — Publish and cross-link
 
