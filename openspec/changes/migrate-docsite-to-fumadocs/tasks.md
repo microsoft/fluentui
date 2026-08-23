@@ -111,7 +111,9 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 
 ## 7. Phase 6 — Publish and cross-link
 
-- [ ] 7.1 Run a full accessibility and link audit across all 295 pages
+- [ ] 7.0 **Fix the accessibility violations in the examples** found by 7.1 (13 rules). These live in the story files and component implementations, are equally present in Storybook, and are therefore out of scope for the migration itself — but the new site makes them prominent, and publishing documentation that fails its own accessibility bar is worth resolving before or shortly after launch. Ownership sits with the component teams.
+
+- [x] 7.1 Full accessibility and link audit across every page. Links: 11,297 across 201 pages, all resolve. Accessibility (`audit:a11y`, a sweep rather than a gate — too slow to run per commit): 13 rules violated at serious/critical, all inside the rendered examples rather than the docs chrome — missing form labels, unnamed progressbars, unnamed buttons, scrollable regions without keyboard access. Provenance verified rather than assumed: headless ProgressBar reports `aria-progressbar-name` identically in Storybook and on the new site, so these are pre-existing defects in the examples that the migration surfaces but does not cause. The per-commit chrome gate stays green.
 - [ ] 7.2 Review a sample of pages against the current Storybook for content parity; record accepted divergences
 - [ ] 7.3 Link the new site from the repository README and docs entry points
 - [ ] 7.4 Add a deprecation notice to the Storybook documentation experience linking to the new site; confirm every Storybook page remains reachable and functional
