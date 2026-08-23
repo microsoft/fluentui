@@ -30,6 +30,9 @@ import type { LabelState as LabelState_2 } from '@fluentui/react-headless-compon
 import type { LinkProps as LinkProps_2 } from '@fluentui/react-headless-components-preview/link';
 import { LinkSlots } from '@fluentui/react-headless-components-preview/link';
 import type { LinkState as LinkState_2 } from '@fluentui/react-headless-components-preview/link';
+import type { MenuButtonProps as MenuButtonProps_2 } from '@fluentui/react-headless-components-preview/menu-button';
+import { MenuButtonSlots } from '@fluentui/react-headless-components-preview/menu-button';
+import type { MenuButtonState as MenuButtonState_2 } from '@fluentui/react-headless-components-preview/menu-button';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -50,6 +53,7 @@ import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
+import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
@@ -98,6 +102,7 @@ import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
+import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
@@ -342,6 +347,26 @@ export { LinkSlots }
 // @public
 export type LinkState = LinkState_2 & Required<Pick<LinkProps, 'appearance' | 'inline'>>;
 
+// @public
+export const MenuButton: ForwardRefComponent<MenuButtonProps>;
+
+// @public
+export const menuButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type MenuButtonProps = MenuButtonProps_2 & {
+    appearance?: ButtonAppearance;
+    shape?: ButtonShape;
+    size?: ButtonSize;
+};
+
+export { MenuButtonSlots }
+
+// @public
+export type MenuButtonState = MenuButtonState_2 & Required<Pick<MenuButtonProps, 'appearance' | 'shape' | 'size'>>;
+
 export { OnVisibleChangeData }
 
 // @public
@@ -434,6 +459,8 @@ export { renderInput }
 export { renderLabel }
 
 export { renderLink }
+
+export { renderMenuButton }
 
 export { renderProgressBar }
 
@@ -681,6 +708,11 @@ export { useLink }
 
 // @public
 export const useLinkStyles: (state: LinkState) => LinkState;
+
+export { useMenuButton }
+
+// @public
+export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 
 export { useProgressBar }
 

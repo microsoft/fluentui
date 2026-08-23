@@ -143,6 +143,16 @@
         "default": "./lib-commonjs/link.cjs"
       }
     },
+    "./menu-button": {
+      "import": {
+        "types": "./dist/menu-button.d.ts",
+        "default": "./lib/menu-button.js"
+      },
+      "require": {
+        "types": "./dist/menu-button.d.cts",
+        "default": "./lib-commonjs/menu-button.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

@@ -1,0 +1,155 @@
+@reference '#theme';
+
+/* Revealing a hidden glyph is only expressible at l1 — see ToggleButton.module.css. Source
+   order inside l1 is what puts these after Button's own swaps, so the disabled swap-back is
+   re-asserted here rather than inherited. */
+@layer fui.components.l1 {
+  .icon {
+    @variant group-open/fui-menu-button {
+      & * {
+        @variant variant-filled {
+          @apply inline!;
+        }
+
+        @variant variant-regular {
+          @apply hidden!;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      & * {
+        @variant group-hover/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+
+        @variant group-hover-active/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+      }
+    }
+  }
+
+  .menuIcon {
+    @variant group-open/fui-menu-button {
+      & * {
+        @variant variant-filled {
+          @apply inline!;
+        }
+
+        @variant variant-regular {
+          @apply hidden!;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      & * {
+        @variant group-hover/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+
+        @variant group-hover-active/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden!;
+          }
+
+          @variant variant-regular {
+            @apply inline!;
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  .root {
+    @variant open {
+      @variant appearance-outline {
+        @apply border-(length:--spacing-thicker);
+      }
+
+      /* Griffel's expanded colours are plain declarations that Button's own :hover and
+         :hover:active rules outrank by selector specificity; layer precedence would invert
+         that, so they are gated to the resting state instead. */
+      @variant at-rest {
+        @variant appearance-secondary {
+          @apply border-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+        }
+
+        @variant appearance-outline {
+          @apply border-neutral-stroke-1-selected text-neutral-foreground-1-selected;
+        }
+
+        @variant appearance-primary {
+          @apply bg-brand-background-selected;
+        }
+
+        @variant appearance-subtle {
+          @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
+        }
+
+        @variant appearance-transparent {
+          @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+        }
+      }
+
+      /* The focus indicator outranks the expanded border in Griffel by an attribute
+         selector; see ToggleButton.module.css for the same repair and why the two
+         declarations stay raw. */
+      @variant focus-visible {
+        border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+        border-width: var(--fui-focus-ring-width, 1px);
+      }
+    }
+  }
+
+  .icon {
+    @variant group-open/fui-menu-button {
+      @variant forced-colors {
+        @variant group-hover/fui-menu-button {
+          @apply text-[Highlight];
+        }
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      @variant forced-colors {
+        @variant group-hover/fui-menu-button {
+          @apply text-[GrayText];
+        }
+      }
+    }
+  }
+
+  .menuIcon {
+    @apply size-12 text-[length:calc(12px*var(--base-scale))] leading-base-200;
+
+    @variant group-size-large/fui-menu-button {
+      @apply size-16 text-[length:calc(16px*var(--base-scale))] leading-base-400;
+    }
+
+    @variant group-not-icon-only/fui-menu-button {
+      @apply ms-horizontal-xs;
+    }
+  }
+}

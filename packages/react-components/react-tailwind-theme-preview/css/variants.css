@@ -72,6 +72,7 @@
 
 /* icon slot states */
 @custom-variant icon-only (&:where([data-icon-only]));
+@custom-variant not-icon-only (&:where(:not([data-icon-only])));
 @custom-variant with-icon (&:where([data-icon-position]));
 @custom-variant icon-before (&:where([data-icon-position='before']));
 @custom-variant icon-after (&:where([data-icon-position='after']));

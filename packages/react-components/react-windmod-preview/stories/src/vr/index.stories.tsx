@@ -14,6 +14,8 @@ export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { LinkWindmod } from './LinkWindmod.stories';
 export { LinkGriffel } from './LinkGriffel.stories';
+export { MenuButtonWindmod } from './MenuButtonWindmod.stories';
+export { MenuButtonGriffel } from './MenuButtonGriffel.stories';
 export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RatingDisplayWindmod } from './RatingDisplayWindmod.stories';

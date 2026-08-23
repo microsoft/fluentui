@@ -28,6 +28,9 @@ export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from 
 export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
 
+export { MenuButton, menuButtonClassNames, renderMenuButton, useMenuButton, useMenuButtonStyles } from './menu-button';
+export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './menu-button';
+
 export {
   ProgressBar,
   progressBarClassNames,
