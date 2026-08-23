@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Spinner, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Spinner } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -7,7 +7,7 @@ const sizes = ['extra-tiny', 'tiny', 'extra-small', 'small', 'medium', 'large', 
 const labelPositions = ['above', 'below', 'before', 'after'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <div className={styles.row}>
         {sizes.map(size => (
@@ -26,5 +26,5 @@ export const Default = (): React.ReactNode => (
         ))}
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

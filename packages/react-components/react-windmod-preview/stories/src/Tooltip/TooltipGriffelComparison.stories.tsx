@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button, ThemeProvider, Tooltip } from '@fluentui/react-windmod-preview';
+import { Button, FluentProvider, Tooltip } from '@fluentui/react-windmod-preview';
 import {
   Button as GriffelButton,
-  FluentProvider,
+  FluentProvider as GriffelFluentProvider,
   Tooltip as GriffelTooltip,
   webLightTheme,
 } from '@fluentui/react-components';
@@ -16,15 +16,15 @@ import styles from '../compare.module.css';
  */
 export const GriffelComparison = (): React.ReactNode => (
   <div className={styles.spacer}>
-    <ThemeProvider>
+    <FluentProvider>
       <Tooltip content={{ children: 'Windmod tooltip', popover: 'manual' }} relationship="label" withArrow visible>
         <Button>Windmod</Button>
       </Tooltip>
-    </ThemeProvider>
-    <FluentProvider theme={webLightTheme}>
+    </FluentProvider>
+    <GriffelFluentProvider theme={webLightTheme}>
       <GriffelTooltip content="Griffel tooltip" relationship="label" withArrow visible>
         <GriffelButton>Griffel</GriffelButton>
       </GriffelTooltip>
-    </FluentProvider>
+    </GriffelFluentProvider>
   </div>
 );

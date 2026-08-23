@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ThemeProvider, Tooltip } from '@fluentui/react-windmod-preview';
+import { Button, FluentProvider, Tooltip } from '@fluentui/react-windmod-preview';
 import type { TooltipProps } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
@@ -21,7 +21,7 @@ const placements = [
 
 /** All 12 placements pinned open — exercises data-placement re-keying + the pure-CSS arrow. */
 export const Placements = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.placementsGrid}>
       {placements.map(positioning => (
         <Tooltip
@@ -38,5 +38,5 @@ export const Placements = (): React.ReactNode => (
         </Tooltip>
       ))}
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

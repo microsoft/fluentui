@@ -26,17 +26,18 @@ theme styles must load first:
 import '@fluentui/react-tailwind-theme-preview/styles.css';
 ```
 
-Then pick a theme with windmod's `ThemeProvider` (a `display: contents` element carrying the theme
-class — any subtree can be themed, and nested providers override):
+Then pick a theme with windmod's `FluentProvider` (a block element carrying the theme class plus
+the suite's base typography, text colour and background — any subtree can be themed, and nested
+providers override):
 
 ```jsx
-import { Button, ThemeProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button, FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
 
 export default function App() {
   return (
-    <ThemeProvider theme={webDarkThemeClassName}>
+    <FluentProvider theme={webDarkThemeClassName}>
       <Button appearance="primary">Hi</Button>
-    </ThemeProvider>
+    </FluentProvider>
   );
 }
 ```

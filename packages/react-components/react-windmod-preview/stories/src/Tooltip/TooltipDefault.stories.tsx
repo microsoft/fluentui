@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button, ThemeProvider, Tooltip } from '@fluentui/react-windmod-preview';
+import { Button, FluentProvider, Tooltip } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.spacer}>
       <Tooltip content="Example tooltip" relationship="label">
         <Button>Hover me</Button>
@@ -16,5 +16,5 @@ export const Default = (): React.ReactNode => (
         <Button>Hover me (inverted)</Button>
       </Tooltip>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

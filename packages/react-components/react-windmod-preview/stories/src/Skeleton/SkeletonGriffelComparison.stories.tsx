@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Skeleton, SkeletonItem, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Skeleton, SkeletonItem } from '@fluentui/react-windmod-preview';
 import {
-  FluentProvider,
+  FluentProvider as GriffelFluentProvider,
   Skeleton as GriffelSkeleton,
   SkeletonItem as GriffelSkeletonItem,
   webLightTheme,
@@ -19,7 +19,7 @@ type GroupProps = {
 type ItemProps = GroupProps;
 
 /**
- * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
+ * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
  * The pair in each row must be pixel-identical.
  */
 export const GriffelComparison = (): React.ReactNode => {
@@ -51,7 +51,7 @@ export const GriffelComparison = (): React.ReactNode => {
         <React.Fragment key={label}>
           <div className={styles.label}>{label}</div>
           <div>
-            <ThemeProvider>
+            <FluentProvider>
               <Skeleton {...group}>
                 <div className={styles.row}>
                   {items.map((item, index) => (
@@ -59,10 +59,10 @@ export const GriffelComparison = (): React.ReactNode => {
                   ))}
                 </div>
               </Skeleton>
-            </ThemeProvider>
+            </FluentProvider>
           </div>
           <div>
-            <FluentProvider theme={webLightTheme}>
+            <GriffelFluentProvider theme={webLightTheme}>
               <GriffelSkeleton {...group}>
                 <div className={styles.row}>
                   {items.map((item, index) => (
@@ -70,7 +70,7 @@ export const GriffelComparison = (): React.ReactNode => {
                   ))}
                 </div>
               </GriffelSkeleton>
-            </FluentProvider>
+            </GriffelFluentProvider>
           </div>
         </React.Fragment>
       ))}

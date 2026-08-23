@@ -7,7 +7,8 @@ Each component composes the corresponding
 hooks (`useX` → `useXStyles` → `renderX`) with build-time-compiled CSS Modules that replicate the
 Griffel suite's visuals. Theming is pure CSS via
 [`@fluentui/react-tailwind-theme-preview`](../../react-tailwind-theme-preview) theme classes,
-applied by `ThemeProvider`. No Griffel, no runtime style injection.
+applied by `FluentProvider`, which renders a block element carrying the suite's base typography,
+text colour and background onto its subtree. No Griffel, no runtime style injection.
 
 > **Preview** — this package tracks `react-headless-components-preview`, which is itself in
 > preview: APIs may change without notice, and coverage is limited to the components the headless
@@ -25,15 +26,15 @@ import '@fluentui/react-tailwind-theme-preview/styles.css';
 ```
 
 ```jsx
-import { Button, Tooltip, ThemeProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button, Tooltip, FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
 
 export default function App() {
   return (
-    <ThemeProvider theme={webDarkThemeClassName}>
+    <FluentProvider theme={webDarkThemeClassName}>
       <Tooltip content="Hello" relationship="label">
         <Button appearance="primary">Hover me</Button>
       </Tooltip>
-    </ThemeProvider>
+    </FluentProvider>
   );
 }
 ```

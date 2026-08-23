@@ -119,6 +119,8 @@ export type {
 } from './tooltip';
 
 export {
+  FluentProvider,
+  fluentProviderClassNames,
   Provider,
   renderProvider,
   teamsDarkThemeClassName,
@@ -127,9 +129,8 @@ export {
   teamsLightThemeClassName,
   teamsLightV21ThemeClassName,
   themeClassNames,
-  ThemeProvider,
   useProvider,
   webDarkThemeClassName,
   webLightThemeClassName,
-} from './provider';
-export type { ThemeClassName, ThemeProviderProps } from './provider';
+} from './fluent-provider';
+export type { ThemeClassName, FluentProviderProps } from './fluent-provider';

@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Spinner, ThemeProvider } from '@fluentui/react-windmod-preview';
-import { FluentProvider, Spinner as GriffelSpinner, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Spinner } from '@fluentui/react-windmod-preview';
+import {
+  FluentProvider as GriffelFluentProvider,
+  Spinner as GriffelSpinner,
+  webLightTheme,
+} from '@fluentui/react-components';
 
 import styles from '../compare.module.css';
 
@@ -12,7 +16,7 @@ type LookProps = {
 };
 
 /**
- * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
+ * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
  * The pair in each row must be pixel-identical.
  */
 export const GriffelComparison = (): React.ReactNode => {
@@ -41,14 +45,14 @@ export const GriffelComparison = (): React.ReactNode => {
         <React.Fragment key={label}>
           <div className={styles.label}>{label}</div>
           <div>
-            <ThemeProvider>
+            <FluentProvider>
               <Spinner {...props} />
-            </ThemeProvider>
+            </FluentProvider>
           </div>
           <div>
-            <FluentProvider theme={webLightTheme}>
+            <GriffelFluentProvider theme={webLightTheme}>
               <GriffelSpinner {...props} />
-            </FluentProvider>
+            </GriffelFluentProvider>
           </div>
         </React.Fragment>
       ))}

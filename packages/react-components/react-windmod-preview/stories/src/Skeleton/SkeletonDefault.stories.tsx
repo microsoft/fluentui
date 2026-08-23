@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Skeleton, SkeletonItem, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Skeleton, SkeletonItem } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
 const shapes = ['rectangle', 'square', 'circle'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <Skeleton>
         <div className={styles.stack} style={{ width: 320 }}>
@@ -38,5 +38,5 @@ export const Default = (): React.ReactNode => (
         </Skeleton>
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

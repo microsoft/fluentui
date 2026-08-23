@@ -21,9 +21,8 @@ type RatingDisplayLike = React.ComponentType<{
   countText?: { children?: React.ReactNode };
 }>;
 
-/* FluentProvider applies body1 typography, a colour and a text alignment to its whole subtree
-   while the windmod ThemeProvider is display:contents and applies none of it; pinning all three
-   identically on both sides keeps the inherited values out of the diff. */
+/* Both providers apply body1 typography, a colour and a text alignment to their whole subtree;
+   pinning all three identically on the scene keeps the inherited values out of the diff. */
 const frame: React.CSSProperties = {
   display: 'inline-flex',
   flexDirection: 'column',

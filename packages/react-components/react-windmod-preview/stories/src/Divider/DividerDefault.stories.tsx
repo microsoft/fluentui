@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { Divider, FluentProvider } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -7,7 +7,7 @@ const alignments = ['start', 'center', 'end'] as const;
 const appearances = ['default', 'brand', 'subtle', 'strong'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       {appearances.map(appearance =>
         alignments.map(alignContent => (
@@ -37,5 +37,5 @@ export const Default = (): React.ReactNode => (
         )),
       )}
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

@@ -18,6 +18,25 @@ import { useProvider } from '@fluentui/react-headless-components-preview/provide
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 
+// @public
+export const FluentProvider: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLDivElement> & {
+    theme?: ThemeClassName | (string & {});
+    dir?: "ltr" | "rtl";
+    targetDocument?: Document;
+} & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const fluentProviderClassNames: {
+    root: string;
+};
+
+// @public (undocumented)
+export type FluentProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
+    theme?: ThemeClassName | (string & {});
+    dir?: 'ltr' | 'rtl';
+    targetDocument?: Document;
+};
+
 export { Provider }
 
 export { renderProvider }
@@ -35,20 +54,6 @@ export { teamsLightV21ThemeClassName }
 export { ThemeClassName }
 
 export { themeClassNames }
-
-// @public
-export const ThemeProvider: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLDivElement> & {
-    theme?: ThemeClassName | (string & {});
-    dir?: "ltr" | "rtl";
-    targetDocument?: Document;
-} & React_2.RefAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export type ThemeProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
-    theme?: ThemeClassName | (string & {});
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document;
-};
 
 export { useProvider }
 

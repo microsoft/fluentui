@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CompoundButton, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { CompoundButton, FluentProvider } from '@fluentui/react-windmod-preview';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 
@@ -12,7 +12,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 const shapes = ['rounded', 'circular', 'square'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       {appearances.map(appearance => (
         <div key={appearance} className={styles.row}>
@@ -49,5 +49,5 @@ export const Default = (): React.ReactNode => (
         ))}
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

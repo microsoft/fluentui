@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Button, ThemeProvider } from '@fluentui/react-windmod-preview';
-import { Button as GriffelButton, FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { Button, FluentProvider } from '@fluentui/react-windmod-preview';
+import {
+  Button as GriffelButton,
+  FluentProvider as GriffelFluentProvider,
+  webLightTheme,
+} from '@fluentui/react-components';
 import { bundleIcon as griffelBundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 
@@ -23,7 +27,7 @@ type LookProps = {
 };
 
 /**
- * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
+ * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
  * The pair in each row must be pixel-identical — this is the pilot's review surface.
  */
 export const GriffelComparison = (): React.ReactNode => {
@@ -45,38 +49,38 @@ export const GriffelComparison = (): React.ReactNode => {
         <React.Fragment key={label}>
           <div className={styles.label}>{label}</div>
           <div>
-            <ThemeProvider>
+            <FluentProvider>
               <Button {...props}>Button</Button>
-            </ThemeProvider>
+            </FluentProvider>
           </div>
           <div>
-            <FluentProvider theme={webLightTheme}>
+            <GriffelFluentProvider theme={webLightTheme}>
               <GriffelButton {...props}>Button</GriffelButton>
-            </FluentProvider>
+            </GriffelFluentProvider>
           </div>
         </React.Fragment>
       ))}
       <div className={styles.label}>with icon</div>
       <div>
-        <ThemeProvider>
+        <FluentProvider>
           <Button icon={<CalendarMonth />}>Button</Button>
-        </ThemeProvider>
+        </FluentProvider>
       </div>
       <div>
-        <FluentProvider theme={webLightTheme}>
+        <GriffelFluentProvider theme={webLightTheme}>
           <GriffelButton icon={<GriffelCalendarMonth />}>Button</GriffelButton>
-        </FluentProvider>
+        </GriffelFluentProvider>
       </div>
       <div className={styles.label}>icon only</div>
       <div>
-        <ThemeProvider>
+        <FluentProvider>
           <Button icon={<CalendarMonth />} aria-label="Calendar" />
-        </ThemeProvider>
+        </FluentProvider>
       </div>
       <div>
-        <FluentProvider theme={webLightTheme}>
+        <GriffelFluentProvider theme={webLightTheme}>
           <GriffelButton icon={<GriffelCalendarMonth />} aria-label="Calendar" />
-        </FluentProvider>
+        </GriffelFluentProvider>
       </div>
     </div>
   );

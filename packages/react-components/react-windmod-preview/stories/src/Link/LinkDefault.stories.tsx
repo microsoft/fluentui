@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Link } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -7,7 +7,7 @@ const appearances = ['default', 'subtle'] as const;
 const inlines = [false, true] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       {appearances.map(appearance =>
         inlines.map(inline => (
@@ -31,5 +31,5 @@ export const Default = (): React.ReactNode => (
         <Link as="span">Span</Link>
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

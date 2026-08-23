@@ -44,7 +44,7 @@
 .surface {
   padding: 16px;
   border-radius: 8px;
-  /* Windmod token — resolves inside a ThemeProvider subtree; transparent elsewhere. */
+  /* Windmod token — resolves inside a FluentProvider subtree; transparent elsewhere. */
   background: var(--color-neutral-background-2, transparent);
 }
 

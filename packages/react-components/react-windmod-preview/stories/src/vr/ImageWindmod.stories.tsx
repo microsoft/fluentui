@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Image, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Image } from '@fluentui/react-windmod-preview';
 
 import { ImageVrScene, useImageSourcesDecoded } from './ImageVrScene';
 
 export const ImageWindmod = (): React.ReactNode => {
-  // ThemeProvider renders a real element, so the gate must sit above it: the runner starts
+  // FluentProvider renders a real element, so the gate must sit above it: the runner starts
   // capturing as soon as #storybook-root has any child.
   const decoded = useImageSourcesDecoded();
 
@@ -13,8 +13,8 @@ export const ImageWindmod = (): React.ReactNode => {
   }
 
   return (
-    <ThemeProvider>
+    <FluentProvider>
       <ImageVrScene Image={Image} />
-    </ThemeProvider>
+    </FluentProvider>
   );
 };

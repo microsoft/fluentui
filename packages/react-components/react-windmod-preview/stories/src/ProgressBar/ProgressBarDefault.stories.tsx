@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProgressBar, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, ProgressBar } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -11,7 +11,7 @@ const colors = ['brand', 'success', 'warning', 'error'] as const;
 const track: React.CSSProperties = { width: 200 };
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <div className={styles.row}>
         {values.map(value => (
@@ -40,5 +40,5 @@ export const Default = (): React.ReactNode => (
         <ProgressBar thickness="large" />
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

@@ -74,10 +74,9 @@ type ImageLike = React.ComponentType<{
   height?: number;
 }>;
 
-/* FluentProvider inherits body1 typography onto its subtree while ThemeProvider inherits
-   nothing; an inline-block img sits on a line-box baseline, so the strut would shift the
-   Griffel side. Pinning font-size and line-height to 0 removes the strut and collapses the
-   whitespace the inline-block adjacency row depends on. */
+/* Both providers inherit body1 typography onto their subtree, and an inline-block img sits on
+   a line-box baseline. Pinning font-size and line-height to 0 removes the strut and collapses
+   the whitespace the inline-block adjacency row depends on. */
 const frame: React.CSSProperties = {
   display: 'inline-flex',
   flexDirection: 'column',

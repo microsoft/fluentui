@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Label } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -7,7 +7,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 const weights = ['regular', 'semibold'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       {sizes.map(size =>
         weights.map(weight => (
@@ -31,5 +31,5 @@ export const Default = (): React.ReactNode => (
         )),
       )}
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

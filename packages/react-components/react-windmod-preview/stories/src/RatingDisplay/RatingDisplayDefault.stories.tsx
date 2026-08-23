@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, RatingDisplay } from '@fluentui/react-windmod-preview';
 import { CircleFilled } from '@fluentui/react-icons/headless/svg/circle';
 
 import styles from '../compare.module.css';
@@ -8,7 +8,7 @@ const colors = ['neutral', 'brand', 'marigold'] as const;
 const sizes = ['small', 'medium', 'large', 'extra-large'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       {colors.map(color => (
         <div className={styles.row} key={color}>
@@ -28,5 +28,5 @@ export const Default = (): React.ReactNode => (
         <RatingDisplay icon={CircleFilled} color="marigold" value={2.5} />
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

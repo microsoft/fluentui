@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { RatingDisplay, ThemeProvider } from '@fluentui/react-windmod-preview';
-import { FluentProvider, RatingDisplay as GriffelRatingDisplay, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, RatingDisplay } from '@fluentui/react-windmod-preview';
+import {
+  FluentProvider as GriffelFluentProvider,
+  RatingDisplay as GriffelRatingDisplay,
+  webLightTheme,
+} from '@fluentui/react-components';
 import { CircleFilled } from '@fluentui/react-icons/headless/svg/circle';
 import { CircleFilled as GriffelCircleFilled } from '@fluentui/react-icons';
 
@@ -16,7 +20,7 @@ type LookProps = {
 };
 
 /**
- * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
+ * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
  * The pair in each row must be pixel-identical.
  */
 export const GriffelComparison = (): React.ReactNode => {
@@ -45,14 +49,14 @@ export const GriffelComparison = (): React.ReactNode => {
         <React.Fragment key={label}>
           <div className={styles.label}>{label}</div>
           <div>
-            <ThemeProvider>
+            <FluentProvider>
               <RatingDisplay {...props} icon={icon ? CircleFilled : undefined} />
-            </ThemeProvider>
+            </FluentProvider>
           </div>
           <div>
-            <FluentProvider theme={webLightTheme}>
+            <GriffelFluentProvider theme={webLightTheme}>
               <GriffelRatingDisplay {...props} icon={icon ? GriffelCircleFilled : undefined} />
-            </FluentProvider>
+            </GriffelFluentProvider>
           </div>
         </React.Fragment>
       ))}

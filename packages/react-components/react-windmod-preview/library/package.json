@@ -2,7 +2,7 @@
   "name": "@fluentui/react-windmod-preview",
   "version": "0.0.0",
   "private": true,
-  "description": "Fluent UI React components styled with Tailwind v4 + CSS Modules ('windmod'). Composes @fluentui/react-headless-components-preview hooks (useX → useXStyles → renderX) with build-time-compiled CSS Modules that replicate the Griffel suite's visuals; theming is pure CSS via @fluentui/react-tailwind-theme-preview theme classes applied by ThemeProvider.",
+  "description": "Fluent UI React components styled with Tailwind v4 + CSS Modules ('windmod'). Composes @fluentui/react-headless-components-preview hooks (useX → useXStyles → renderX) with build-time-compiled CSS Modules that replicate the Griffel suite's visuals; theming is pure CSS via @fluentui/react-tailwind-theme-preview theme classes applied by FluentProvider.",
   "type": "module",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -93,6 +93,16 @@
         "default": "./lib-commonjs/divider.cjs"
       }
     },
+    "./fluent-provider": {
+      "import": {
+        "types": "./dist/fluent-provider.d.ts",
+        "default": "./lib/fluent-provider.js"
+      },
+      "require": {
+        "types": "./dist/fluent-provider.d.cts",
+        "default": "./lib-commonjs/fluent-provider.cjs"
+      }
+    },
     "./image": {
       "import": {
         "types": "./dist/image.d.ts",
@@ -141,16 +151,6 @@
       "require": {
         "types": "./dist/progress-bar.d.cts",
         "default": "./lib-commonjs/progress-bar.cjs"
-      }
-    },
-    "./provider": {
-      "import": {
-        "types": "./dist/provider.d.ts",
-        "default": "./lib/provider.js"
-      },
-      "require": {
-        "types": "./dist/provider.d.cts",
-        "default": "./lib-commonjs/provider.cjs"
       }
     },
     "./rating-display": {

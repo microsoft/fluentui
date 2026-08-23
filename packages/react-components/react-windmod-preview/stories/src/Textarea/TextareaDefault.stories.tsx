@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Textarea, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Textarea } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -8,7 +8,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 const resizes = ['none', 'horizontal', 'vertical', 'both'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <div className={styles.row}>
         {appearances.map(appearance => (
@@ -41,5 +41,5 @@ export const Default = (): React.ReactNode => (
         ))}
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

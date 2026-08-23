@@ -223,6 +223,25 @@ export { DividerSlots }
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
 
 // @public
+export const FluentProvider: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLDivElement> & {
+    theme?: ThemeClassName | (string & {});
+    dir?: "ltr" | "rtl";
+    targetDocument?: Document;
+} & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const fluentProviderClassNames: {
+    root: string;
+};
+
+// @public (undocumented)
+export type FluentProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
+    theme?: ThemeClassName | (string & {});
+    dir?: 'ltr' | 'rtl';
+    targetDocument?: Document;
+};
+
+// @public
 const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
@@ -574,20 +593,6 @@ export type TextareaState = TextareaState_2 & Required<Pick<TextareaProps, 'appe
 export { ThemeClassName }
 
 export { themeClassNames }
-
-// @public
-export const ThemeProvider: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLDivElement> & {
-    theme?: ThemeClassName | (string & {});
-    dir?: "ltr" | "rtl";
-    targetDocument?: Document;
-} & React_2.RefAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export type ThemeProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
-    theme?: ThemeClassName | (string & {});
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document;
-};
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;

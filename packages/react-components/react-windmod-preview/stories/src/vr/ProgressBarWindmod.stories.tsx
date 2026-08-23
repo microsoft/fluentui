@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ProgressBar, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, ProgressBar } from '@fluentui/react-windmod-preview';
 
 import { ProgressBarVrScene } from './ProgressBarVrScene';
 
 export const ProgressBarWindmod = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <ProgressBarVrScene ProgressBar={ProgressBar} />
-  </ThemeProvider>
+  </FluentProvider>
 );

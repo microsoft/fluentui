@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Image } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -17,7 +17,7 @@ const fits = ['default', 'none', 'center', 'contain', 'cover'] as const;
 const shapes = ['square', 'circular', 'rounded'] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <div className={styles.row}>
         {fits.map(fit => (
@@ -40,5 +40,5 @@ export const Default = (): React.ReactNode => (
         <Image alt="" src={src} block bordered />
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

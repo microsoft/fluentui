@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider, ThemeProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider, Slider } from '@fluentui/react-windmod-preview';
 
 import styles from '../compare.module.css';
 
@@ -8,7 +8,7 @@ const values = [0, 25, 50, 75, 100] as const;
 const steps = [10, 25, 50] as const;
 
 export const Default = (): React.ReactNode => (
-  <ThemeProvider>
+  <FluentProvider>
     <div className={styles.stack}>
       <div className={styles.row}>
         {sizes.map(size => (
@@ -42,5 +42,5 @@ export const Default = (): React.ReactNode => (
         <Slider vertical disabled defaultValue={60} />
       </div>
     </div>
-  </ThemeProvider>
+  </FluentProvider>
 );

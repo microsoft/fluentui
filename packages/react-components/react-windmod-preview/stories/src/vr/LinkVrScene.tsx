@@ -35,9 +35,10 @@ const cellStyle: React.CSSProperties = { display: 'inline-block', width: 170 };
 
 /**
  * fontFamily/fontSize/lineHeight/color are inherited by Link (it sets no line-height, and an
- * anchor with an href takes `font-size: inherit`); FluentProvider supplies them on the Griffel
- * side and ThemeProvider supplies nothing, so the scene must supply both. Rows are plain blocks,
- * never flex: a flex parent would blockify the Link and hide its own `display: inline`.
+ * anchor with an href takes `font-size: inherit`); the scene supplies them identically on both
+ * sides so the row's inherited values are fixed here rather than by either provider. Rows are
+ * plain blocks, never flex: a flex parent would blockify the Link and hide its own
+ * `display: inline`.
  */
 export const LinkVrScene = ({ Link }: { Link: LinkLike }): React.ReactNode => (
   <div

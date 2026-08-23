@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Input, ThemeProvider } from '@fluentui/react-windmod-preview';
-import { FluentProvider, Input as GriffelInput, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Input } from '@fluentui/react-windmod-preview';
+import {
+  FluentProvider as GriffelFluentProvider,
+  Input as GriffelInput,
+  webLightTheme,
+} from '@fluentui/react-components';
 import { bundleIcon as griffelBundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 
@@ -25,7 +29,7 @@ const slots = (Icon: React.ComponentType, before: boolean, after: boolean) => ({
 });
 
 /**
- * Every windmod variant next to its Griffel-suite twin (inside a FluentProvider).
+ * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
  * The pair in each row must be pixel-identical.
  */
 export const GriffelComparison = (): React.ReactNode => {
@@ -55,14 +59,14 @@ export const GriffelComparison = (): React.ReactNode => {
         <React.Fragment key={label}>
           <div className={styles.label}>{label}</div>
           <div>
-            <ThemeProvider>
+            <FluentProvider>
               <Input {...props} {...slots(CalendarMonth, before, after)} />
-            </ThemeProvider>
+            </FluentProvider>
           </div>
           <div>
-            <FluentProvider theme={webLightTheme}>
+            <GriffelFluentProvider theme={webLightTheme}>
               <GriffelInput {...props} {...slots(GriffelCalendarMonth, before, after)} />
-            </FluentProvider>
+            </GriffelFluentProvider>
           </div>
         </React.Fragment>
       ))}
