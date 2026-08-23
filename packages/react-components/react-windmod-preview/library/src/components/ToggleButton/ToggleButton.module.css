@@ -45,15 +45,18 @@
         }
       }
 
+      /* Griffel orders every :hover rule after every static rule regardless of source position, so
+         the checked hover and pressed border colours above outrank this appearance there; here the
+         block re-states them because source order alone carries the cascade. */
       @variant appearance-outline {
         @apply border-(length:--spacing-thicker) border-neutral-stroke-1 bg-transparent-background-selected;
 
         @variant hover {
-          @apply bg-transparent-background-hover;
+          @apply border-neutral-stroke-1-hover bg-transparent-background-hover;
         }
 
         @variant hover-active {
-          @apply bg-transparent-background-pressed;
+          @apply border-neutral-stroke-1-pressed bg-transparent-background-pressed;
         }
       }
 
@@ -113,6 +116,13 @@
 
           @variant focus-visible {
             @apply outline-(length:--spacing-thin) -outline-offset-(--spacing-thickest) outline-neutral-foreground-on-brand outline-solid;
+          }
+
+          /* Button's pressed outline reset is a lower layer and cannot reach the inner stroke, so
+             the pressed brand fill only covers it if the reset is repeated here — last, because in
+             Griffel the pressed compound outranks the focus indicator by specificity too. */
+          @variant hover-active {
+            @apply outline-none;
           }
         }
       }
@@ -193,9 +203,13 @@
       }
     }
 
-    /* The subtle pressed icon colour is a token of its own; the hover colour is the same
-       value as the selected colour in every shipped theme. */
+    /* Button's own subtle icon colours live a layer below and cannot reach past the checked and
+       accessible colours above, so they are repeated here after them. */
     @variant group-appearance-subtle/fui-toggle-button {
+      @variant group-hover/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
       @variant group-hover-active/fui-toggle-button {
         @apply text-neutral-foreground-2-brand-pressed;
       }

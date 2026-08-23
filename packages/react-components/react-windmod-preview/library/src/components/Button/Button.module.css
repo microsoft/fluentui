@@ -35,17 +35,6 @@
       }
     }
 
-    @variant focus-visible {
-      @apply fui-focus-ring;
-    }
-
-    /* Mozilla BugID 1857642 */
-    @supports (-moz-appearance: button) {
-      @variant focus-visible {
-        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
-      }
-    }
-
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
     }
@@ -84,13 +73,25 @@
       }
     }
 
+    /* Griffel's focus indicator carries an attribute on top of the class, so it outranks every
+       border recolour by specificity. Here position carries that: the ring trails the disabled
+       sub-block, and every appearance class that recolours the border repeats it after its own. */
     @variant focus-visible {
+      @apply fui-focus-ring;
+
       @variant size-small {
         @apply rounded-small;
       }
 
       @variant size-large {
         @apply rounded-large;
+      }
+    }
+
+    /* Mozilla BugID 1857642 */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible {
+        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
       }
     }
 
@@ -316,7 +317,6 @@
       }
     }
 
-    /* Focus outranks disabled, so it stays after the disabled sub-block. */
     @variant focus-visible {
       @apply border-stroke-focus-2;
 
@@ -395,6 +395,10 @@
         }
       }
     }
+
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+    }
   }
 
   .transparent {
@@ -440,6 +444,10 @@
           @apply text-[GrayText];
         }
       }
+    }
+
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
     }
   }
 
