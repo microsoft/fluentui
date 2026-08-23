@@ -4,6 +4,7 @@ import { DocsSettingsProvider } from './docs-settings';
 import { ApiDisclosures, PropsTable } from './props-table';
 import { OpenInSandbox } from './open-in-sandbox';
 import { StoryPreview } from './story-preview';
+import { StoryControls, resolveControls, useStoryArgs, type ArgTypes } from './story-controls';
 import { StorySource } from './story-source';
 
 /** Matches the anchor scheme used by the Storybook docs page, so deep links stay stable. */
@@ -13,10 +14,13 @@ export function nameToHash(name: string): string {
 
 type Story = ComponentType<Record<string, unknown>> & {
   parameters?: { docs?: { description?: { story?: string } }; fullSource?: string };
+  argTypes?: ArgTypes;
+  args?: Record<string, unknown>;
 };
 
 interface Meta {
   title?: string;
+  argTypes?: ArgTypes;
   decorators?: import('./story-preview').StoryDecorator[];
   parameters?: {
     docs?: { description?: { component?: string }; hideArgsTable?: boolean };
@@ -124,20 +128,25 @@ function Example({
   docgenTitle,
   wrapper,
   decorators,
+  metaArgTypes,
 }: {
   name: string;
   story: Story;
   docgenTitle: string;
   wrapper?: ComponentType<{ children: ReactNode }>;
   decorators?: import('./story-preview').StoryDecorator[];
+  metaArgTypes?: ArgTypes;
 }) {
   const description = story.parameters?.docs?.description?.story;
+  const controls = resolveControls(metaArgTypes, story.argTypes);
+  const { args, setArgs } = useStoryArgs(controls, story.args);
 
   return (
     <section>
       <h2 id={nameToHash(name)}>{name}</h2>
       {description ? <p>{description}</p> : null}
-      <StoryPreview story={story} name={name} wrapper={wrapper} decorators={decorators} />
+      <StoryPreview story={story} name={name} wrapper={wrapper} decorators={decorators} args={args} />
+      <StoryControls controls={controls} args={args} onChange={setArgs} idPrefix={nameToHash(name)} />
       <StorySource story={story} />
       <OpenInSandbox story={story} exportToken={name} description={`${docgenTitle} - ${name}`} />
     </section>
@@ -184,6 +193,7 @@ export function ComponentPage({ meta, stories, docgen, order, wrapper, showTheme
           docgenTitle={title}
           wrapper={wrapper}
           decorators={meta.decorators}
+          metaArgTypes={meta.argTypes}
         />
       ))}
     </DocsSettingsProvider>

@@ -70,6 +70,8 @@ export interface StoryPreviewProps {
   name: string;
   /** Optional per-page wrapper. */
   wrapper?: ComponentType<{ children: ReactNode }>;
+  /** Props the reader has varied through the controls panel. */
+  args?: Record<string, unknown>;
   /**
    * Decorators declared on the story module's meta.
    *
@@ -91,10 +93,10 @@ function applyDecorators(content: ReactNode, decorators: StoryDecorator[] = []):
  * `data-fluent-preview` marks the subtree that Tailwind's preflight must not reach
  * (see app.css). Everything inside is styled solely by Griffel, as in Storybook.
  */
-export function StoryPreview({ story: Story, name, wrapper: Wrapper, decorators }: StoryPreviewProps) {
+export function StoryPreview({ story: Story, name, wrapper: Wrapper, decorators, args }: StoryPreviewProps) {
   const { theme, dir } = usePreviewSettings();
 
-  const decorated = applyDecorators(<Story />, decorators);
+  const decorated = applyDecorators(<Story {...args} />, decorators);
   const content = Wrapper ? <Wrapper>{decorated}</Wrapper> : decorated;
 
   return (

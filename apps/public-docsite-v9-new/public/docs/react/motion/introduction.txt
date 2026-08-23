@@ -198,15 +198,14 @@ For most use cases, you don't need the factories — use the <a href="?path=/rea
     <CardHeader header={<h3>📚 Learn the APIs</h3>} />
     <div>
       Dive into <a href="?path=/docs/react/create-presence-component">createPresenceComponent</a> and{' '}
-      <a href="?path=/docs/react/create-motion-component">createMotionComponent</a> for full API
-      documentation.
+      <a href="?path=/docs/react/create-motion-component">createMotionComponent</a> for full API documentation.
     </div>
   </Card>
   <Card appearance="filled">
     <CardHeader header={<h3>🧩 Use Pre-built Components</h3>} />
     <div>
-      Explore the <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> for
-      ready-to-use animations.
+      Explore the <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> for ready-to-use
+      animations.
     </div>
   </Card>
   <Card appearance="filled">
@@ -224,9 +223,8 @@ For most use cases, you don't need the factories — use the <a href="?path=/rea
   <Card appearance="filled">
     <CardHeader header={<h3>⚛️ Motion Atoms</h3>} />
     <div>
-      Build custom animations by composing{' '}
-      <a href="?path=/react/motion/components-preview/atoms">low-level atoms</a> like <code>fadeAtom</code> and{' '}
-      <code>scaleAtom</code>.
+      Build custom animations by composing <a href="?path=/react/motion/components-preview/atoms">low-level atoms</a>{' '}
+      like <code>fadeAtom</code> and <code>scaleAtom</code>.
     </div>
   </Card>
 </div>

@@ -61,8 +61,8 @@
 
 <div className="atoms-hero">
   <div className="hero-subtitle">
-    The smallest building blocks in the <a href="?path=/docs/react/introduction">Fluent Motion System</a>. Each
-    atom produces a single animation effect that can be composed into richer motion.
+    The smallest building blocks in the <a href="?path=/docs/react/introduction">Fluent Motion System</a>. Each atom
+    produces a single animation effect that can be composed into richer motion.
   </div>
 </div>
 
