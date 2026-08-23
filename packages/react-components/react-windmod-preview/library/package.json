@@ -83,6 +83,46 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./card": {
+      "import": {
+        "types": "./dist/card.d.ts",
+        "default": "./lib/card.js"
+      },
+      "require": {
+        "types": "./dist/card.d.cts",
+        "default": "./lib-commonjs/card.cjs"
+      }
+    },
+    "./card-footer": {
+      "import": {
+        "types": "./dist/card-footer.d.ts",
+        "default": "./lib/card-footer.js"
+      },
+      "require": {
+        "types": "./dist/card-footer.d.cts",
+        "default": "./lib-commonjs/card-footer.cjs"
+      }
+    },
+    "./card-header": {
+      "import": {
+        "types": "./dist/card-header.d.ts",
+        "default": "./lib/card-header.js"
+      },
+      "require": {
+        "types": "./dist/card-header.d.cts",
+        "default": "./lib-commonjs/card-header.cjs"
+      }
+    },
+    "./card-preview": {
+      "import": {
+        "types": "./dist/card-preview.d.ts",
+        "default": "./lib/card-preview.js"
+      },
+      "require": {
+        "types": "./dist/card-preview.d.cts",
+        "default": "./lib-commonjs/card-preview.cjs"
+      }
+    },
     "./checkbox": {
       "import": {
         "types": "./dist/checkbox.d.ts",

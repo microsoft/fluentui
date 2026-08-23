@@ -4,6 +4,8 @@ export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';
 export { ButtonGriffel } from './ButtonGriffel.stories';
+export { CardWindmod } from './CardWindmod.stories';
+export { CardGriffel } from './CardGriffel.stories';
 export { CheckboxWindmod } from './CheckboxWindmod.stories';
 export { CheckboxGriffel } from './CheckboxGriffel.stories';
 export { CompoundButtonWindmod } from './CompoundButtonWindmod.stories';

@@ -13,6 +13,20 @@ import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-compon
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
+import { CardContextValue } from '@fluentui/react-headless-components-preview/card';
+import type { CardFooterProps as CardFooterProps_2 } from '@fluentui/react-headless-components-preview/card';
+import { CardFooterSlots } from '@fluentui/react-headless-components-preview/card';
+import type { CardFooterState as CardFooterState_2 } from '@fluentui/react-headless-components-preview/card';
+import type { CardHeaderProps as CardHeaderProps_2 } from '@fluentui/react-headless-components-preview/card';
+import { CardHeaderSlots } from '@fluentui/react-headless-components-preview/card';
+import type { CardHeaderState as CardHeaderState_2 } from '@fluentui/react-headless-components-preview/card';
+import { CardOnSelectionChangeEvent } from '@fluentui/react-headless-components-preview/card';
+import type { CardPreviewProps as CardPreviewProps_2 } from '@fluentui/react-headless-components-preview/card';
+import { CardPreviewSlots } from '@fluentui/react-headless-components-preview/card';
+import type { CardPreviewState as CardPreviewState_2 } from '@fluentui/react-headless-components-preview/card';
+import type { CardProps as CardProps_2 } from '@fluentui/react-headless-components-preview/card';
+import { CardSlots } from '@fluentui/react-headless-components-preview/card';
+import type { CardState as CardState_2 } from '@fluentui/react-headless-components-preview/card';
 import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckboxSlots } from '@fluentui/react-headless-components-preview/checkbox';
 import type { CheckboxState as CheckboxState_2 } from '@fluentui/react-headless-components-preview/checkbox';
@@ -65,6 +79,10 @@ import * as React_2 from 'react';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
+import { renderCard } from '@fluentui/react-headless-components-preview/card';
+import { renderCardFooter } from '@fluentui/react-headless-components-preview/card';
+import { renderCardHeader } from '@fluentui/react-headless-components-preview/card';
+import { renderCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
@@ -137,6 +155,12 @@ import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
+import { useCard } from '@fluentui/react-headless-components-preview/card';
+import { useCardContext } from '@fluentui/react-headless-components-preview/card';
+import { useCardContextValue } from '@fluentui/react-headless-components-preview/card';
+import { useCardFooter } from '@fluentui/react-headless-components-preview/card';
+import { useCardHeader } from '@fluentui/react-headless-components-preview/card';
+import { useCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
@@ -277,6 +301,87 @@ export { ButtonSlots }
 
 // @public
 export type ButtonState = ButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const Card: ForwardRefComponent<CardProps>;
+
+// @public
+export type CardAppearance = 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+
+// @public
+export const cardClassNames: {
+    root: string;
+};
+
+export { CardContextValue }
+
+// @public
+export const CardFooter: ForwardRefComponent<CardFooterProps>;
+
+// @public
+export const cardFooterClassNames: {
+    root: string;
+};
+
+// @public
+export type CardFooterProps = CardFooterProps_2;
+
+export { CardFooterSlots }
+
+// @public (undocumented)
+export type CardFooterState = CardFooterState_2;
+
+// @public
+export const CardHeader: ForwardRefComponent<CardHeaderProps>;
+
+// @public
+export const cardHeaderClassNames: {
+    root: string;
+};
+
+// @public
+export type CardHeaderProps = CardHeaderProps_2;
+
+export { CardHeaderSlots }
+
+// @public (undocumented)
+export type CardHeaderState = CardHeaderState_2;
+
+export { CardOnSelectionChangeEvent }
+
+// @public
+export type CardOrientation = 'horizontal' | 'vertical';
+
+// @public
+export const CardPreview: ForwardRefComponent<CardPreviewProps>;
+
+// @public
+export const cardPreviewClassNames: {
+    root: string;
+};
+
+// @public
+export type CardPreviewProps = CardPreviewProps_2;
+
+export { CardPreviewSlots }
+
+// @public (undocumented)
+export type CardPreviewState = CardPreviewState_2;
+
+// @public (undocumented)
+export type CardProps = CardProps_2 & {
+    appearance?: CardAppearance;
+    orientation?: CardOrientation;
+    size?: CardSize;
+};
+
+// @public
+export type CardSize = 'small' | 'medium' | 'large';
+
+export { CardSlots }
+
+// @public (undocumented)
+export type CardState = CardState_2 & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -632,6 +737,14 @@ export { renderBadge }
 
 export { renderButton }
 
+export { renderCard }
+
+export { renderCardFooter }
+
+export { renderCardHeader }
+
+export { renderCardPreview }
+
 export { renderCheckbox }
 
 export { renderCompoundButton }
@@ -984,6 +1097,30 @@ export { useButton }
 
 // @public
 export const useButtonStyles: (state: ButtonState) => ButtonState;
+
+export { useCard }
+
+export { useCardContext }
+
+export { useCardContextValue }
+
+export { useCardFooter }
+
+// @public
+export const useCardFooterStyles: (state: CardFooterState) => CardFooterState;
+
+export { useCardHeader }
+
+// @public
+export const useCardHeaderStyles: (state: CardHeaderState) => CardHeaderState;
+
+export { useCardPreview }
+
+// @public
+export const useCardPreviewStyles: (state: CardPreviewState) => CardPreviewState;
+
+// @public
+export const useCardStyles: (state: CardState) => CardState;
 
 export { useCheckbox }
 
