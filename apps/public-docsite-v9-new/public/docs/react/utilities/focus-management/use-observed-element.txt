@@ -1,0 +1,3 @@
+# use Observed Element
+
+<ComponentPage meta={meta} stories={stories} />

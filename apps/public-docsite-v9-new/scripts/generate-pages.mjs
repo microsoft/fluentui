@@ -46,6 +46,7 @@ const TREES = {
       'react-conformance-griffel',
     ],
     showThemePicker: true,
+    appStories: 'apps/public-docsite-v9/src',
   },
 };
 
@@ -130,9 +131,27 @@ function findEntryPoints(dir, segments = []) {
   return found;
 }
 
-for (const pkg of resolvePackages()) {
-  const storiesDir = join(repoRoot, 'packages/react-components', pkg, 'stories/src');
+/*
+ * Story roots contributing to this tree.
+ *
+ * The Storybook docsite ships its own stories alongside the component packages — focus
+ * management and theme utilities, positioning concepts, accessibility scenarios — and they
+ * appear in its sidebar like any other. Scanning only the packages silently dropped them.
+ */
+function resolveStoryRoots() {
+  const roots = resolvePackages().map(pkg => ({
+    dir: join(repoRoot, 'packages/react-components', pkg, 'stories/src'),
+    specifier: `@fluentui/${pkg}-stories/src`,
+  }));
 
+  if (tree.appStories && existsSync(join(repoRoot, tree.appStories))) {
+    roots.push({ dir: join(repoRoot, tree.appStories), specifier: `@repo/${tree.appStories}` });
+  }
+
+  return roots;
+}
+
+for (const { dir: storiesDir, specifier: rootSpecifier } of resolveStoryRoots()) {
   for (const segments of findEntryPoints(storiesDir)) {
     const name = segments[segments.length - 1];
 
@@ -152,14 +171,32 @@ for (const pkg of resolvePackages()) {
     }
 
     const slug = titleSegments.map(toKebab).join('/');
+
+    /*
+     * Skip entry points whose examples render v8/v0 components — importing those libraries
+     * would pull them into the bundle (proposal Non-goals). Checked across the whole story
+     * folder because the import usually sits in an individual example, not the entry point.
+     */
+    const legacy = readdirSync(join(storiesDir, ...segments))
+      .filter(file => file.endsWith('.tsx'))
+      .some(file =>
+        /from '@fluentui\/react'|from '@fluentui\/react-northstar'/.test(
+          readFileSync(join(storiesDir, ...segments, file), 'utf8').replace(/```[\s\S]*?```/g, ''),
+        ),
+      );
+
+    if (legacy) {
+      skipped.push(`${segments.join('/')} (renders v8/v0 components)`);
+      continue;
+    }
     const outFile = join(outDir, `${slug}.mdx`);
 
     if (existsSync(outFile)) {
-      skipped.push(`${pkg}/${segments.join('/')} (page already exists)`);
+      skipped.push(`${segments.join('/')} (page already exists)`);
       continue;
     }
 
-    const specifier = `@fluentui/${pkg}-stories/src/${segments.join('/')}/index.stories`;
+    const specifier = `${rootSpecifier}/${segments.join('/')}/index.stories`;
     const themeProp = tree.showThemePicker ? '' : ' showThemePicker={false}';
 
     // The docgen manifest is keyed by component display name, which the page title carries.

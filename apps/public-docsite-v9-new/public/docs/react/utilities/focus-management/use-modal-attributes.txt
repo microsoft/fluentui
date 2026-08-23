@@ -1,0 +1,3 @@
+# use Modal Attributes
+
+<ComponentPage meta={meta} stories={stories} />

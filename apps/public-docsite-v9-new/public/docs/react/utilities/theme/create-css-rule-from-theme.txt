@@ -1,0 +1,3 @@
+# create CSS Rule From Theme
+
+<ComponentPage meta={meta} stories={stories} />
