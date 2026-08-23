@@ -1,0 +1,36 @@
+@reference '#theme';
+
+/* `shrink-0` and the horizontal `grow` are Card's rules on `> .fui-CardFooter`; they are
+   scoped back to "inside a Card" by the orientation the Card always stamps. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-row gap-12;
+
+    @variant group-horizontal/fui-card, group-vertical/fui-card {
+      @apply shrink-0;
+    }
+
+    @variant group-horizontal/fui-card {
+      &:last-of-type {
+        @apply grow;
+      }
+    }
+
+    @variant forced-colors {
+      @variant group-selected/fui-card {
+        @apply forced-color-adjust-auto;
+      }
+
+      @variant group-interactive/fui-card {
+        @variant group-hover/fui-card, group-active/fui-card {
+          @apply forced-color-adjust-auto;
+        }
+      }
+    }
+  }
+
+  .action {
+    @apply ms-auto;
+  }
+}

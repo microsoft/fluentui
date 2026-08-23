@@ -1,0 +1,224 @@
+@reference '#theme';
+
+/* Block order is the cascade, mirroring Griffel's own root merge order: size, orientation,
+   appearance, interactive, selected, disabled. Every selector is :where()-flat, so source
+   order alone arbitrates. The forced-colors block is authored last because Griffel emits
+   those rules into the `m` bucket, which sorts after `d`, `h` and `a`.
+
+   `--fui-card-size` and `--fui-card-border-radius` are this file's own custom properties;
+   CardPreview.module.css reads --fui-card-size for its flush margins. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border flex gap-(--fui-card-size) overflow-hidden rounded-(--fui-card-border-radius) bg-neutral-background-1 p-(--fui-card-size) text-neutral-foreground-1 shadow-4;
+
+    /* The border lives on ::after so a CardPreview can render behind it. */
+    @variant after {
+      @apply pointer-events-none absolute inset-0 rounded-(--fui-card-border-radius) border-(length:--spacing-thin) border-solid border-transparent-stroke content-[''];
+    }
+
+    @variant size-small {
+      --fui-card-size: calc(8px * var(--base-scale));
+      --fui-card-border-radius: var(--radius-small);
+    }
+
+    @variant size-medium {
+      --fui-card-size: calc(12px * var(--base-scale));
+      --fui-card-border-radius: var(--radius-medium);
+    }
+
+    @variant size-large {
+      --fui-card-size: calc(16px * var(--base-scale));
+      --fui-card-border-radius: var(--radius-large);
+    }
+
+    @variant vertical {
+      @apply flex-col;
+    }
+
+    @variant horizontal {
+      @apply flex-row items-center;
+    }
+
+    @variant appearance-filled-alternative {
+      @apply bg-neutral-background-2;
+    }
+
+    @variant appearance-outline {
+      @apply bg-transparent-background shadow-none;
+
+      @variant after {
+        @apply border-neutral-stroke-1;
+      }
+    }
+
+    @variant appearance-subtle {
+      @apply bg-subtle-background shadow-none;
+    }
+
+    @variant interactive {
+      @apply cursor-pointer;
+
+      @variant hover {
+        @apply bg-neutral-background-1-hover text-neutral-foreground-1-hover shadow-8;
+      }
+
+      @variant active {
+        @apply bg-neutral-background-1-pressed;
+      }
+
+      @variant appearance-filled-alternative {
+        @variant hover {
+          @apply bg-neutral-background-2-hover text-neutral-foreground-2-hover;
+        }
+
+        @variant active {
+          @apply bg-neutral-background-2-pressed;
+        }
+      }
+
+      @variant appearance-outline {
+        @variant hover {
+          @apply bg-transparent-background-hover text-neutral-foreground-1-hover shadow-none;
+
+          @variant after {
+            @apply border-neutral-stroke-1-hover;
+          }
+        }
+
+        @variant active {
+          @apply bg-transparent-background-pressed;
+
+          @variant after {
+            @apply border-neutral-stroke-1-pressed;
+          }
+        }
+      }
+
+      @variant appearance-subtle {
+        @variant hover {
+          @apply bg-subtle-background-hover shadow-none;
+        }
+
+        @variant active {
+          @apply bg-subtle-background-pressed;
+        }
+      }
+    }
+
+    @variant selected {
+      @apply bg-neutral-background-1-selected;
+
+      @variant after {
+        @apply border-neutral-stroke-1-selected;
+      }
+
+      @variant hover {
+        @apply bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+      }
+
+      @variant appearance-filled-alternative {
+        @apply bg-neutral-background-2-selected;
+
+        @variant hover {
+          @apply bg-neutral-background-2-selected text-neutral-foreground-2-selected;
+        }
+      }
+
+      @variant appearance-outline {
+        @apply bg-transparent-background-selected;
+
+        @variant hover {
+          @apply bg-transparent-background-selected text-neutral-foreground-1-selected;
+        }
+      }
+
+      @variant appearance-subtle {
+        @apply bg-subtle-background-selected;
+
+        @variant hover {
+          @apply bg-subtle-background-selected text-neutral-foreground-1-selected;
+        }
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed bg-neutral-background-disabled text-neutral-foreground-disabled shadow-2 select-none;
+
+      /* Overlay that swallows pointer events on the card's own content. */
+      @variant before {
+        @apply absolute inset-0 content-[''];
+
+        z-index: calc(var(--z-index-content, 1) + 1);
+      }
+
+      @variant after {
+        @apply border-neutral-stroke-disabled;
+      }
+
+      @variant appearance-outline {
+        @apply bg-transparent-background shadow-none;
+      }
+    }
+
+    @variant forced-colors {
+      @variant selected {
+        @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+        @variant after {
+          @apply border-[Highlight];
+        }
+      }
+
+      @variant interactive {
+        @variant after {
+          @apply border-[Highlight];
+        }
+
+        @variant hover, active {
+          @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+        }
+      }
+    }
+  }
+
+  /* The two focus rings decorate the same ::after the resting border uses; both blocks follow
+     .root so their equal-specificity ::after rules win. Which one is applied is decided in JS,
+     exactly as Griffel decides it. */
+  .focused {
+    @variant focus-visible {
+      @apply fui-focus-outline;
+
+      --fui-focus-outline-radius: var(--fui-card-border-radius);
+      --fui-focus-outline-offset: -2px;
+    }
+  }
+
+  .selectable-focused {
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+
+      --fui-focus-outline-radius: var(--fui-card-border-radius);
+      --fui-focus-outline-offset: -2px;
+    }
+  }
+
+  .floating-action {
+    @apply absolute end-4 top-4 z-content;
+
+    /* The preview is reached by its public marker class: a module class from another file would
+       be hashed into this module's namespace and match nothing. */
+    @variant group-vertical/fui-card {
+      & + .group\/fui-card-preview {
+        @apply -mt-(--fui-card-size);
+      }
+    }
+  }
+
+  .checkbox {
+    @apply absolute size-px overflow-hidden whitespace-nowrap;
+
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}

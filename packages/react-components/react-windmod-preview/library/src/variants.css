@@ -20,6 +20,9 @@
 @custom-variant appearance-subtle (&:where([data-appearance='subtle']));
 @custom-variant appearance-transparent (&:where([data-appearance='transparent']));
 
+/* Card: appearance-outline and appearance-subtle are shared with Button above */
+@custom-variant appearance-filled-alternative (&:where([data-appearance='filled-alternative']));
+
 /* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
 @custom-variant variant-filled (&:where([data-variant='filled']));
 @custom-variant variant-regular (&:where([data-variant='regular']));
