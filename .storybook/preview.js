@@ -25,8 +25,8 @@ export const parameters = {
     bundler: 'vite',
     requiredDependencies: {
       // for React
-      react: '^18',
-      'react-dom': '^18',
+      react: '^19',
+      'react-dom': '^19',
       // necessary for FluentProvider:
       '@fluentui/react-components': '^9.0.0',
     },

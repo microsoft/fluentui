@@ -15,8 +15,8 @@ const SANDBOX_CONFIG = {
   provider: 'stackblitz-cloud',
   bundler: 'vite',
   requiredDependencies: {
-    react: '^18',
-    'react-dom': '^18',
+    react: '^19',
+    'react-dom': '^19',
     '@fluentui/react-components': '^9.0.0',
   },
   optionalDependencies: {

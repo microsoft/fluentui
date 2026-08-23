@@ -4,7 +4,12 @@ import type { SandboxContext } from './public-types';
 import type { Data } from './sandbox-utils';
 import { serializeJson } from './utils';
 
-const commonDevDeps = { '@types/react': '^17', '@types/react-dom': '^17', typescript: '~4.7.0' };
+/**
+ * Kept in step with the React version both documentation hosts render. Previously these
+ * pinned React 17 types against a React 18 runtime, while the repo ships React 19 — so an
+ * exported sandbox type-checked against a different React than the example was written for.
+ */
+const commonDevDeps = { '@types/react': '^19', '@types/react-dom': '^19', typescript: '~5.7.0' };
 
 export const scaffold = {
   vite: (data: Data): Record<string, string> => {

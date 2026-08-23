@@ -30,9 +30,9 @@ describe(`sabdbox-scaffold`, () => {
           \\"main\\": \\"src/index.tsx\\",
           \\"dependencies\\": {},
           \\"devDependencies\\": {
-            \\"@types/react\\": \\"^17\\",
-            \\"@types/react-dom\\": \\"^17\\",
-            \\"typescript\\": \\"~4.7.0\\",
+            \\"@types/react\\": \\"^19\\",
+            \\"@types/react-dom\\": \\"^19\\",
+            \\"typescript\\": \\"~5.7.0\\",
             \\"react-scripts\\": \\"^5.0.0\\",
             \\"@babel/plugin-proposal-private-property-in-object\\": \\"latest\\"
           },
@@ -147,9 +147,9 @@ describe(`sabdbox-scaffold`, () => {
           \\"main\\": \\"src/index.tsx\\",
           \\"dependencies\\": {},
           \\"devDependencies\\": {
-            \\"@types/react\\": \\"^17\\",
-            \\"@types/react-dom\\": \\"^17\\",
-            \\"typescript\\": \\"~4.7.0\\",
+            \\"@types/react\\": \\"^19\\",
+            \\"@types/react-dom\\": \\"^19\\",
+            \\"typescript\\": \\"~5.7.0\\",
             \\"react-scripts\\": \\"^5.0.0\\",
             \\"@babel/plugin-proposal-private-property-in-object\\": \\"latest\\"
           },
@@ -230,9 +230,9 @@ describe(`sabdbox-scaffold`, () => {
           \\"main\\": \\"src/index.tsx\\",
           \\"dependencies\\": {},
           \\"devDependencies\\": {
-            \\"@types/react\\": \\"^17\\",
-            \\"@types/react-dom\\": \\"^17\\",
-            \\"typescript\\": \\"~4.7.0\\",
+            \\"@types/react\\": \\"^19\\",
+            \\"@types/react-dom\\": \\"^19\\",
+            \\"typescript\\": \\"~5.7.0\\",
             \\"react-scripts\\": \\"^5.0.0\\",
             \\"@babel/plugin-proposal-private-property-in-object\\": \\"latest\\"
           },
@@ -381,9 +381,9 @@ describe(`sabdbox-scaffold`, () => {
           },
           \\"dependencies\\": {},
           \\"devDependencies\\": {
-            \\"@types/react\\": \\"^17\\",
-            \\"@types/react-dom\\": \\"^17\\",
-            \\"typescript\\": \\"~4.7.0\\",
+            \\"@types/react\\": \\"^19\\",
+            \\"@types/react-dom\\": \\"^19\\",
+            \\"typescript\\": \\"~5.7.0\\",
             \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
             \\"vite\\": \\"^5.0.0\\"
           }
@@ -508,9 +508,9 @@ describe(`sabdbox-scaffold`, () => {
           },
           \\"dependencies\\": {},
           \\"devDependencies\\": {
-            \\"@types/react\\": \\"^17\\",
-            \\"@types/react-dom\\": \\"^17\\",
-            \\"typescript\\": \\"~4.7.0\\",
+            \\"@types/react\\": \\"^19\\",
+            \\"@types/react-dom\\": \\"^19\\",
+            \\"typescript\\": \\"~5.7.0\\",
             \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
             \\"vite\\": \\"^5.0.0\\"
           }
