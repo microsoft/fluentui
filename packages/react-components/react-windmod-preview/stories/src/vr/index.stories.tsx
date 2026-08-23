@@ -1,3 +1,5 @@
+export { AvatarWindmod } from './AvatarWindmod.stories';
+export { AvatarGriffel } from './AvatarGriffel.stories';
 export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';

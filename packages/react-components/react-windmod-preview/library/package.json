@@ -53,6 +53,16 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./avatar": {
+      "import": {
+        "types": "./dist/avatar.d.ts",
+        "default": "./lib/avatar.js"
+      },
+      "require": {
+        "types": "./dist/avatar.d.cts",
+        "default": "./lib-commonjs/avatar.cjs"
+      }
+    },
     "./badge": {
       "import": {
         "types": "./dist/badge.d.ts",

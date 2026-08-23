@@ -4,6 +4,9 @@
 
 ```ts
 
+import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
+import { AvatarSlots } from '@fluentui/react-headless-components-preview/avatar';
+import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-components-preview/avatar';
 import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
 import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
@@ -59,6 +62,7 @@ import type { RatingItemProps as RatingItemProps_2 } from '@fluentui/react-headl
 import { RatingItemSlots } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headless-components-preview/rating';
 import * as React_2 from 'react';
+import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
@@ -125,6 +129,7 @@ import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-co
 import { TooltipSlots } from '@fluentui/react-headless-components-preview/tooltip';
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
+import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
@@ -160,6 +165,49 @@ import { useToggleButton } from '@fluentui/react-headless-components-preview/tog
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+
+// @public
+export const Avatar: ForwardRefComponent<AvatarProps>;
+
+// @public
+export type AvatarActive = 'active' | 'inactive' | 'unset';
+
+// @public
+export type AvatarActiveAppearance = 'ring' | 'shadow' | 'ring-shadow';
+
+// @public
+export const avatarClassNames: {
+    root: string;
+};
+
+// @public
+export type AvatarColor = 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+
+// @public
+export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
+
+// @public
+export type AvatarProps = AvatarProps_2 & {
+    active?: AvatarActive;
+    activeAppearance?: AvatarActiveAppearance;
+    color?: AvatarColor;
+    idForColor?: string | undefined;
+    shape?: AvatarShape;
+    size?: AvatarSize;
+};
+
+// @public
+export type AvatarShape = 'circular' | 'square';
+
+// @public
+export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
+export { AvatarSlots }
+
+// @public
+export type AvatarState = AvatarState_2 & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
+    color: Exclude<AvatarColor, 'colorful'>;
+};
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -571,6 +619,8 @@ export { RatingItemSlots }
 // @public
 export type RatingItemState = RatingItemState_2 & Required<Pick<RatingItemProps, 'color' | 'size'>>;
 
+export { renderAvatar }
+
 export { renderBadge }
 
 export { renderButton }
@@ -879,6 +929,11 @@ export type TooltipState = TooltipState_2 & {
 };
 
 export { TooltipTriggerProps }
+
+export { useAvatar }
+
+// @public
+export const useAvatarStyles: (state: AvatarState) => AvatarState;
 
 export { useBadge }
 

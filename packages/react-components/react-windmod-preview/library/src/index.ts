@@ -1,3 +1,16 @@
+export { Avatar, avatarClassNames, renderAvatar, useAvatar, useAvatarStyles } from './avatar';
+export type {
+  AvatarActive,
+  AvatarActiveAppearance,
+  AvatarColor,
+  AvatarNamedColor,
+  AvatarProps,
+  AvatarShape,
+  AvatarSize,
+  AvatarSlots,
+  AvatarState,
+} from './avatar';
+
 export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './badge';
 export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, BadgeSlots, BadgeState } from './badge';
 

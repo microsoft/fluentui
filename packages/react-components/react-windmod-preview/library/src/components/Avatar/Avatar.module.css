@@ -1,0 +1,373 @@
+@reference '#theme';
+
+/* Block order carries the cascade: the text-size, square-radius, ring, shadow and inactive
+   blocks all override `.root` at equal specificity, and `.inactive` comes last because it
+   collapses the ring and shadow it is combined with. The colour blocks declare only custom
+   properties, which the slot classes read, so their position carries no cascade.
+
+   The before/after variants emit `content: var(--tw-content)` unconditionally, so `.root` must
+   neutralise it with `content-none` or both pseudo-elements would paint on every Avatar
+   instead of only under `.ring` / `.shadow`. */
+
+@layer fui.components.l1 {
+  .root {
+    --fui-avatar-size: calc(attr(data-size type(<number>), 32) * 1px);
+
+    @apply relative inline-block size-(--fui-avatar-size) shrink-0 rounded-circular align-middle font-base text-base-300 font-semibold;
+
+    @variant before, after {
+      @apply absolute inset-0 -z-1 rounded-[inherit] content-none;
+
+      margin: calc(-2 * var(--fui-avatar-ring-width, 0px));
+      transition-property: margin, opacity;
+      transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
+      transition-duration: var(--duration-ultra-slow), var(--duration-slower);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    @variant before {
+      @apply border-(length:--fui-avatar-ring-width) border-solid;
+    }
+  }
+
+  .textCaption2Strong {
+    @apply text-base-100;
+  }
+
+  .textCaption1Strong {
+    @apply text-base-200;
+  }
+
+  .textSubtitle2 {
+    @apply text-base-400;
+  }
+
+  .textSubtitle1 {
+    @apply text-base-500;
+  }
+
+  .textTitle3 {
+    @apply text-base-600;
+  }
+
+  .squareSmall {
+    @apply rounded-small;
+  }
+
+  .squareMedium {
+    @apply rounded-medium;
+  }
+
+  .squareLarge {
+    @apply rounded-large;
+  }
+
+  .squareXLarge {
+    @apply rounded-x-large;
+  }
+
+  .activeOrInactive {
+    transform: perspective(1px);
+    transition-property: transform, opacity;
+    transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
+    transition-duration: var(--duration-ultra-slow), var(--duration-faster);
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  .ring {
+    @variant before {
+      @apply content-[''];
+
+      color: var(--fui-avatar-ring-color);
+    }
+  }
+
+  .ringThick {
+    --fui-avatar-ring-width: var(--stroke-width-thick);
+  }
+
+  .ringThicker {
+    --fui-avatar-ring-width: var(--stroke-width-thicker);
+  }
+
+  .ringThickest {
+    --fui-avatar-ring-width: var(--stroke-width-thickest);
+  }
+
+  .shadow {
+    @variant after {
+      @apply content-[''];
+    }
+  }
+
+  .shadow4 {
+    @variant after {
+      @apply shadow-4;
+    }
+  }
+
+  .shadow8 {
+    @variant after {
+      @apply shadow-8;
+    }
+  }
+
+  .shadow16 {
+    @variant after {
+      @apply shadow-16;
+    }
+  }
+
+  .shadow28 {
+    @variant after {
+      @apply shadow-28;
+    }
+  }
+
+  .inactive {
+    @apply opacity-80;
+
+    transform: scale(0.875);
+    transition-timing-function: var(--ease-decelerate-min), var(--ease-linear);
+
+    @variant before, after {
+      @apply m-0 opacity-0;
+
+      transition-timing-function: var(--ease-decelerate-min), var(--ease-linear);
+    }
+  }
+
+  .neutral {
+    --fui-avatar-foreground: var(--color-neutral-foreground-3);
+    --fui-avatar-background: var(--color-neutral-background-6);
+    --fui-avatar-ring-color: var(--color-brand-stroke-1);
+  }
+
+  .brand {
+    --fui-avatar-foreground: var(--color-neutral-foreground-static-inverted);
+    --fui-avatar-background: var(--color-brand-background-static);
+    --fui-avatar-ring-color: var(--color-brand-stroke-1);
+  }
+
+  .dark-red {
+    --fui-avatar-foreground: var(--color-palette-dark-red-foreground-2);
+    --fui-avatar-background: var(--color-palette-dark-red-background-2);
+    --fui-avatar-ring-color: var(--color-palette-dark-red-border-active);
+  }
+
+  .cranberry {
+    --fui-avatar-foreground: var(--color-palette-cranberry-foreground-2);
+    --fui-avatar-background: var(--color-palette-cranberry-background-2);
+    --fui-avatar-ring-color: var(--color-palette-cranberry-border-active);
+  }
+
+  .red {
+    --fui-avatar-foreground: var(--color-palette-red-foreground-2);
+    --fui-avatar-background: var(--color-palette-red-background-2);
+    --fui-avatar-ring-color: var(--color-palette-red-border-active);
+  }
+
+  .pumpkin {
+    --fui-avatar-foreground: var(--color-palette-pumpkin-foreground-2);
+    --fui-avatar-background: var(--color-palette-pumpkin-background-2);
+    --fui-avatar-ring-color: var(--color-palette-pumpkin-border-active);
+  }
+
+  .peach {
+    --fui-avatar-foreground: var(--color-palette-peach-foreground-2);
+    --fui-avatar-background: var(--color-palette-peach-background-2);
+    --fui-avatar-ring-color: var(--color-palette-peach-border-active);
+  }
+
+  .marigold {
+    --fui-avatar-foreground: var(--color-palette-marigold-foreground-2);
+    --fui-avatar-background: var(--color-palette-marigold-background-2);
+    --fui-avatar-ring-color: var(--color-palette-marigold-border-active);
+  }
+
+  .gold {
+    --fui-avatar-foreground: var(--color-palette-gold-foreground-2);
+    --fui-avatar-background: var(--color-palette-gold-background-2);
+    --fui-avatar-ring-color: var(--color-palette-gold-border-active);
+  }
+
+  .brass {
+    --fui-avatar-foreground: var(--color-palette-brass-foreground-2);
+    --fui-avatar-background: var(--color-palette-brass-background-2);
+    --fui-avatar-ring-color: var(--color-palette-brass-border-active);
+  }
+
+  .brown {
+    --fui-avatar-foreground: var(--color-palette-brown-foreground-2);
+    --fui-avatar-background: var(--color-palette-brown-background-2);
+    --fui-avatar-ring-color: var(--color-palette-brown-border-active);
+  }
+
+  .forest {
+    --fui-avatar-foreground: var(--color-palette-forest-foreground-2);
+    --fui-avatar-background: var(--color-palette-forest-background-2);
+    --fui-avatar-ring-color: var(--color-palette-forest-border-active);
+  }
+
+  .seafoam {
+    --fui-avatar-foreground: var(--color-palette-seafoam-foreground-2);
+    --fui-avatar-background: var(--color-palette-seafoam-background-2);
+    --fui-avatar-ring-color: var(--color-palette-seafoam-border-active);
+  }
+
+  .dark-green {
+    --fui-avatar-foreground: var(--color-palette-dark-green-foreground-2);
+    --fui-avatar-background: var(--color-palette-dark-green-background-2);
+    --fui-avatar-ring-color: var(--color-palette-dark-green-border-active);
+  }
+
+  .light-teal {
+    --fui-avatar-foreground: var(--color-palette-light-teal-foreground-2);
+    --fui-avatar-background: var(--color-palette-light-teal-background-2);
+    --fui-avatar-ring-color: var(--color-palette-light-teal-border-active);
+  }
+
+  .teal {
+    --fui-avatar-foreground: var(--color-palette-teal-foreground-2);
+    --fui-avatar-background: var(--color-palette-teal-background-2);
+    --fui-avatar-ring-color: var(--color-palette-teal-border-active);
+  }
+
+  .steel {
+    --fui-avatar-foreground: var(--color-palette-steel-foreground-2);
+    --fui-avatar-background: var(--color-palette-steel-background-2);
+    --fui-avatar-ring-color: var(--color-palette-steel-border-active);
+  }
+
+  .blue {
+    --fui-avatar-foreground: var(--color-palette-blue-foreground-2);
+    --fui-avatar-background: var(--color-palette-blue-background-2);
+    --fui-avatar-ring-color: var(--color-palette-blue-border-active);
+  }
+
+  .royal-blue {
+    --fui-avatar-foreground: var(--color-palette-royal-blue-foreground-2);
+    --fui-avatar-background: var(--color-palette-royal-blue-background-2);
+    --fui-avatar-ring-color: var(--color-palette-royal-blue-border-active);
+  }
+
+  .cornflower {
+    --fui-avatar-foreground: var(--color-palette-cornflower-foreground-2);
+    --fui-avatar-background: var(--color-palette-cornflower-background-2);
+    --fui-avatar-ring-color: var(--color-palette-cornflower-border-active);
+  }
+
+  .navy {
+    --fui-avatar-foreground: var(--color-palette-navy-foreground-2);
+    --fui-avatar-background: var(--color-palette-navy-background-2);
+    --fui-avatar-ring-color: var(--color-palette-navy-border-active);
+  }
+
+  .lavender {
+    --fui-avatar-foreground: var(--color-palette-lavender-foreground-2);
+    --fui-avatar-background: var(--color-palette-lavender-background-2);
+    --fui-avatar-ring-color: var(--color-palette-lavender-border-active);
+  }
+
+  .purple {
+    --fui-avatar-foreground: var(--color-palette-purple-foreground-2);
+    --fui-avatar-background: var(--color-palette-purple-background-2);
+    --fui-avatar-ring-color: var(--color-palette-purple-border-active);
+  }
+
+  .grape {
+    --fui-avatar-foreground: var(--color-palette-grape-foreground-2);
+    --fui-avatar-background: var(--color-palette-grape-background-2);
+    --fui-avatar-ring-color: var(--color-palette-grape-border-active);
+  }
+
+  .lilac {
+    --fui-avatar-foreground: var(--color-palette-lilac-foreground-2);
+    --fui-avatar-background: var(--color-palette-lilac-background-2);
+    --fui-avatar-ring-color: var(--color-palette-lilac-border-active);
+  }
+
+  .pink {
+    --fui-avatar-foreground: var(--color-palette-pink-foreground-2);
+    --fui-avatar-background: var(--color-palette-pink-background-2);
+    --fui-avatar-ring-color: var(--color-palette-pink-border-active);
+  }
+
+  .magenta {
+    --fui-avatar-foreground: var(--color-palette-magenta-foreground-2);
+    --fui-avatar-background: var(--color-palette-magenta-background-2);
+    --fui-avatar-ring-color: var(--color-palette-magenta-border-active);
+  }
+
+  .plum {
+    --fui-avatar-foreground: var(--color-palette-plum-foreground-2);
+    --fui-avatar-background: var(--color-palette-plum-background-2);
+    --fui-avatar-ring-color: var(--color-palette-plum-border-active);
+  }
+
+  .beige {
+    --fui-avatar-foreground: var(--color-palette-beige-foreground-2);
+    --fui-avatar-background: var(--color-palette-beige-background-2);
+    --fui-avatar-ring-color: var(--color-palette-beige-border-active);
+  }
+
+  .mink {
+    --fui-avatar-foreground: var(--color-palette-mink-foreground-2);
+    --fui-avatar-background: var(--color-palette-mink-background-2);
+    --fui-avatar-ring-color: var(--color-palette-mink-border-active);
+  }
+
+  .platinum {
+    --fui-avatar-foreground: var(--color-palette-platinum-foreground-2);
+    --fui-avatar-background: var(--color-palette-platinum-background-2);
+    --fui-avatar-ring-color: var(--color-palette-platinum-border-active);
+  }
+
+  .anchor {
+    --fui-avatar-foreground: var(--color-palette-anchor-foreground-2);
+    --fui-avatar-background: var(--color-palette-anchor-background-2);
+    --fui-avatar-ring-color: var(--color-palette-anchor-border-active);
+  }
+
+  .image {
+    @apply absolute start-0 top-0 size-full rounded-[inherit] bg-(--fui-avatar-background) object-cover align-top text-(--fui-avatar-foreground);
+  }
+
+  .iconInitials {
+    @apply absolute start-0 top-0 box-border flex size-full items-center justify-center rounded-[inherit] border-(length:--spacing-thin) border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-none text-(--fui-avatar-foreground) select-none;
+  }
+
+  .icon12 {
+    @apply text-[length:calc(12px*var(--base-scale))];
+  }
+
+  .icon16 {
+    @apply text-[length:calc(16px*var(--base-scale))];
+  }
+
+  .icon20 {
+    @apply text-[length:calc(20px*var(--base-scale))];
+  }
+
+  .icon24 {
+    @apply text-[length:calc(24px*var(--base-scale))];
+  }
+
+  .icon28 {
+    @apply text-[length:calc(28px*var(--base-scale))];
+  }
+
+  .icon32 {
+    @apply text-[length:calc(32px*var(--base-scale))];
+  }
+
+  .icon48 {
+    @apply text-[length:calc(48px*var(--base-scale))];
+  }
+}
