@@ -119,11 +119,14 @@
 
 /* focus visibility: keyborg attribute + native pseudo-class. focus-within keeps the
  * attribute:pseudo pairing — keyborg leaves the attribute behind after focus moves.
- * focus-within-visible drops the native branch: keyborg stamps the attribute only while
- * navigating with the keyboard, so it is the one that matches createFocusOutlineStyle. */
+ * focus-within-visible is keyboard-only via the browser's native modality heuristic:
+ * :has(:focus-visible) matches createFocusOutlineStyle for non-text controls (range,
+ * radio, checkbox — measured: no match on mouse click, match on keyboard and on a
+ * mouse-then-keyboard modality switch). Text-editable descendants always match, which
+ * is the native behavior text controls want anyway. */
 @custom-variant focus-visible (&:where([data-fui-focus-visible], :focus-visible));
 @custom-variant focus-within (&:where([data-fui-focus-within]:focus-within, :focus-within));
-@custom-variant focus-within-visible (&:where([data-fui-focus-within]:focus-within));
+@custom-variant focus-within-visible (&:where(:has(:focus-visible)));
 
 /* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
 @custom-variant empty (&:where([data-empty], :empty));
