@@ -54,8 +54,18 @@ function PageContent({ page }: { page: Page }) {
  * without leaving the site (`docsite/site-navigation`).
  */
 const TREE_TABS = [
-  { url: '/react', title: 'Fluent UI React v9' },
-  { url: '/headless', title: 'Headless components' },
+  {
+    url: '/react',
+    title: 'Fluent UI React v9',
+    // Each tree is a separate `loader()`, so a tab cannot be bound to one page tree.
+    // `urls` is how Fumadocs determines the active tab in that case.
+    urls: new Set(['/react']),
+  },
+  {
+    url: '/headless',
+    title: 'Headless components',
+    urls: new Set(['/headless']),
+  },
 ];
 
 /**
@@ -90,7 +100,7 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
 
   if (!page) {
     return (
-      <DocsLayout tree={source.pageTree} nav={{ title }} tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
+      <DocsLayout tree={source.pageTree} nav={{ title }} tabMode="top" tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
         <DocsPage>
           <DocsTitle>Not found</DocsTitle>
           <DocsBody>
@@ -102,7 +112,7 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
   }
 
   return (
-    <DocsLayout tree={source.pageTree} nav={{ title }} tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
+    <DocsLayout tree={source.pageTree} nav={{ title }} tabMode="top" tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
       {/*
        * Prerendering resolves this boundary before emitting HTML (see entry.server.tsx), so
        * the fallback is only ever seen during client-side navigation to a not-yet-loaded page.
