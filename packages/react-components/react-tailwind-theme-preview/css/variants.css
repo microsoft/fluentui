@@ -88,6 +88,10 @@
 @custom-variant label-before (&:where([data-label-position='before']));
 @custom-variant label-below (&:where([data-label-position='below']));
 
+/* description presence */
+@custom-variant with-description (&:where([data-description]));
+@custom-variant not-with-description (&:where(:not([data-description])));
+
 /* layout */
 @custom-variant layout-vertical (&:where([data-layout='vertical']));
 @custom-variant layout-horizontal (&:where([data-layout='horizontal']));
