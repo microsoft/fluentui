@@ -39,11 +39,9 @@ Both of the helper functions are powered using the method described above.
 
 #### createFocusOutlineStyle
 
-The [AccordionHeader](?path=/docs/components-accordion--default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
+The [AccordionHeader](/docs/react/accordion#default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
 
-<FluentCanvas>
-  <FluentStory id="components-accordion--default" height={260} />
-</FluentCanvas>
+[See the default example](/docs/react/accordion#default)
 
 ```tsx
 
@@ -73,11 +71,9 @@ function Component() {
 > indicator that you have gotten the necessary feedback from designers and accessibility
 > experts.
 
-The [Link](?path=/docs/components-link--default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
+The [Link](/docs/react/link#default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
 
-<FluentCanvas>
-  <FluentStory id="components-link--default" height={150} />
-</FluentCanvas>
+[See the default example](/docs/react/link#default)
 
 ```tsx
 

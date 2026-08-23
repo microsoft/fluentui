@@ -2,23 +2,19 @@
 title: Typography
 ---
 
-import { FluentCanvas } from '@fluentui/react-storybook-addon';
+import { StoryPreview } from '../../../app/components/story-preview';
 import { Text } from '@fluentui/react-components';
 import { Typography } from '@repo/packages/react-components/react-theme/stories/src/Theme/typography/ThemeTypography.stories';
 import { Example } from '@repo/packages/react-components/react-theme/stories/src/Theme/typography/Example.stories';
 import { Composing } from '@repo/packages/react-components/react-theme/stories/src/Theme/typography/Composing.stories';
 import { MixedStyles } from '@repo/packages/react-components/react-theme/stories/src/Theme/typography/MixedStyles.stories';
 
-<Title>Typography</Title>
-
 Typography style is represented by a set of tokens instead of an individual token. The tokens are used to create and share a consistent look and feel.
 
 > **ℹ️ &nbsp;This page guides you on how to fully leverage the tokens to create a consistent typography system.<br />
 > To take full advantage of the typography system, you should also read the [Text component documentation](./?path=/docs/react/text).**
 
-<FluentCanvas>
-  <Typography />
-</FluentCanvas>
+<StoryPreview story={Typography} name="Typography" />
 
 ## How to use
 
@@ -39,9 +35,7 @@ export const Example = () => {
 };
 ```
 
-<FluentCanvas>
-  <Example />
-</FluentCanvas>
+<StoryPreview story={Example} name="Example" />
 
 ## Composing Tokens
 
@@ -67,9 +61,7 @@ export const Composing = () => {
 };
 ```
 
-<FluentCanvas>
-  <Composing />
-</FluentCanvas>
+<StoryPreview story={Composing} name="Composing" />
 
 ## Mixing tokens and custom styles
 
@@ -106,6 +98,4 @@ export const MixedStyles = () => {
 };
 ```
 
-<FluentCanvas>
-  <MixedStyles />
-</FluentCanvas>
+<StoryPreview story={MixedStyles} name="MixedStyles" />

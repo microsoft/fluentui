@@ -51,6 +51,38 @@ const SYMPTOMS = [
     },
   },
   {
+    id: 'duplicate-h1',
+    describe: 'renders more than one top-level heading',
+    /*
+     * Fumadocs renders the frontmatter title as the page h1, so a heading carried over from the
+     * Storybook source produces a second one. Breaks heading order for screen readers, and the
+     * per-commit accessibility gate only covers three pages.
+     */
+    test: html => {
+      /*
+       * Count only the page's own headings. Examples legitimately render their own h1 —
+       * AccordionHeader does, Image's stories do, the theme designer does — and Storybook shows
+       * the same. The page's title and its MDX headings carry the docs renderer's classes;
+       * anything else belongs to a rendered component.
+       */
+      const pageHeadings = (html.match(/<h1[^>]*>/g) ?? []).filter(
+        tag => tag.includes('text-[1.75em]') || tag.includes('group/heading'),
+      );
+
+      return pageHeadings.length > 1;
+    },
+  },
+  {
+    id: 'unresolved-component',
+    describe: 'references a component that was not imported',
+    /*
+     * Storybook docs-block usage left behind after its import is stripped renders as literal
+     * angle-bracket text or fails at hydration. Cheap to check, and it caught `<Title>`
+     * surviving on a migrated page.
+     */
+    test: html => /&lt;(Title|Subtitle|Primary|Stories|ArgTypes|Canvas|FluentCanvas|FluentStory)\b/.test(html),
+  },
+  {
     id: 'react-error-placeholder',
     describe: 'contains a React application error placeholder',
     test: html => html.includes('Application Error'),

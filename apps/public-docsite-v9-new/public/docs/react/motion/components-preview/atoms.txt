@@ -60,7 +60,6 @@
 </style>
 
 <div className="atoms-hero">
-  <h1>Motion Atoms</h1>
   <div className="hero-subtitle">
     The smallest building blocks in the <a href="?path=/docs/react/introduction">Fluent Motion System</a>. Each
     atom produces a single animation effect that can be composed into richer motion.
@@ -172,7 +171,7 @@ const DynamicSlide = createPresenceComponent(({ element }) => {
 
 ## See Also
 
-- [Motion Components](?path=/react/motion/components-preview/introduction) — Pre-built presence animations (molecules)
-- [createPresenceComponent](?path=/docs/react/create-presence-component) — Factory for presence components
-- [createMotionComponent](?path=/docs/react/create-motion-component) — Factory for one-way motion
-- [Motion Tokens](?path=/react/motion/tokens) — Duration and easing values
+- [Motion Components](/react/motion/components-preview/introduction#docs) — Pre-built presence animations (molecules)
+- [createPresenceComponent](/docs/react/create-presence-component#docs) — Factory for presence components
+- [createMotionComponent](/docs/react/create-motion-component#docs) — Factory for one-way motion
+- [Motion Tokens](/react/motion/tokens#docs) — Duration and easing values

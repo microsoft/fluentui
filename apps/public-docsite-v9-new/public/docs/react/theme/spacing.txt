@@ -1,7 +1,3 @@
 # Spacing
 
-<h1 className="sbdocs-title">Spacing</h1>
-
-<FluentCanvas>
-  <Spacing />
-</FluentCanvas>
+<StoryPreview story={Spacing} name="Spacing" />

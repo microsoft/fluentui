@@ -1,7 +1,5 @@
 # RadioGroup
 
-# Radio and RadioGroup Accessibility Spec
-
 `RadioGroup` and `Radio` together implement the standard radio-button selection pattern: a group of mutually exclusive options where exactly one can be selected at a time. `RadioGroup` provides the `role="radiogroup"` container that aggregates the individual `Radio` items into a single labelled control, and propagates `name`, `value`, `disabled`, and `required` to its children via context.
 
 Each `Radio` renders a real `<input type="radio">` element with a custom visual indicator. As with `Checkbox`, the native input handles all ARIA semantics, focus, and keyboard interaction; the visible circle is `aria-hidden` and purely presentational.

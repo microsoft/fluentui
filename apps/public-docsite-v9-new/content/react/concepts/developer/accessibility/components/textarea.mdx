@@ -2,8 +2,6 @@
 title: Textarea
 ---
 
-# Textarea Accessibility Spec
-
 `Textarea` is a multi-line text entry control. It wraps a native HTML `<textarea>` element in a styled `<span>` container that provides the focus-indicator border animation. There is no slot for in-field decoration — `Textarea` exposes only the wrapper and the textarea itself.
 
 Because the rendered control is a real `<textarea>`, `Textarea` inherits the browser's built-in accessibility behavior for multi-line text fields: caret movement, line wrapping, selection, IME composition, autofill, spellcheck, scrolling, and the platform-native keyboard contract are all handled by the browser. This spec covers what Fluent layers on top: labelling, the `Field` integration, the `resize` prop, validation, and visual considerations.

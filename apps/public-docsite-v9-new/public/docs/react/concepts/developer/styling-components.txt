@@ -4,7 +4,7 @@
 
 Visit the **[Styling handbook](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/styles-handbook.md)** for a comprehensive styling guide, as this article only introduces basics to get you started quickly.
 
-> If you need to build a custom component architecture (not just style existing components), see [Building custom components](?path=/react/concepts/developer/building-custom-controls).
+> If you need to build a custom component architecture (not just style existing components), see [Building custom components](/react/concepts/developer/building-custom-controls#docs).
 
 ### Getting started
 
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
 
 Those tokens are resolved to CSS variable usages. The `FluentProvider` component is responsible for setting the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
 
-For more details on, see [Theming](?path=/react/concepts/developer/theming).
+For more details on, see [Theming](/react/concepts/developer/theming#docs).
 
 ### Incorrect usages
 

@@ -1,7 +1,5 @@
 # Getting Started
 
-# Getting started migrating to v9
-
 If you are considering migrating to Fluent UI React version 9 then we would first like to **_thank you_** and let you know how excited we are for you to experience all the improvements and features we have been working on.
 
 ## Major changes and why we made them

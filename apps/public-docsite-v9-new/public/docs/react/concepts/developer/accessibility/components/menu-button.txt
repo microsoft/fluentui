@@ -1,10 +1,8 @@
 # MenuButton
 
-# MenuButton Accessibility Spec
-
 `MenuButton` is a `Button` that opens a menu when activated. It renders a trailing chevron icon to communicate the presence of an associated menu, and manages `aria-expanded` to reflect whether the menu is currently open.
 
-`MenuButton` extends `Button` and inherits all of its accessibility behavior. This spec only covers what is **specific** to `MenuButton`. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations across appearance variants, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](?path=/react/concepts/developer/accessibility/components/button).
+`MenuButton` extends `Button` and inherits all of its accessibility behavior. This spec only covers what is **specific** to `MenuButton`. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations across appearance variants, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](/react/concepts/developer/accessibility/components/button#docs).
 
 ## Usage
 
@@ -51,7 +49,7 @@ Standalone use is uncommon; prefer the `Menu` + `MenuTrigger` pattern unless the
 
 #### Label
 
-Like `Button`, `MenuButton` requires an accessible label. The label rules from [Button](?path=/react/concepts/developer/accessibility/components/button) apply unchanged.
+Like `Button`, `MenuButton` requires an accessible label. The label rules from [Button](/react/concepts/developer/accessibility/components/button#docs) apply unchanged.
 
 The trailing chevron `menuIcon` is decorative and does not contribute to the accessible name. For an icon-only `MenuButton` (a `MenuButton` with no children), provide an `aria-label` describing what the menu contains, not the chevron itself — for example, `aria-label="More actions"` rather than `aria-label="Expand"`.
 

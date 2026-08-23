@@ -68,7 +68,6 @@
 </style>
 
 <div className="components-hero">
-  <h1>Motion Components</h1>
   <div className="hero-subtitle">
     Pre-built presence animations for common UI patterns — ready to use with intelligent defaults. Part of the{' '}
     <a href="?path=/docs/react/introduction">Fluent Motion System</a>.
@@ -135,7 +134,7 @@ Each component (except Blur and Rotate) comes with pre-configured timing variant
 
 ```bash
 npm install @fluentui/react-motion-components-preview
-# or
+
 yarn add @fluentui/react-motion-components-preview
 ```
 
@@ -268,11 +267,11 @@ function List({ items, visible }) {
 
 ## Next Steps
 
-- **[Fade](?path=/docs/react/fade)** — Simple opacity transitions
-- **[Scale](?path=/docs/react/scale)** — Grow and shrink animations
-- **[Collapse](?path=/docs/react/collapse)** — Expandable height/width
-- **[Slide](?path=/docs/react/slide)** — Directional slide animations
-- **[Blur](?path=/docs/react/blur)** — Focus/blur effects
-- **[Rotate](?path=/docs/react/rotate)** — 3D rotation effects
-- **[Stagger](?path=/docs/react/choreography/stagger)** — Sequential animation choreography
-- **[Motion Atoms](?path=/react/motion/components-preview/atoms)** — Building blocks for custom components
+- **[Fade](/docs/react/fade#docs)** — Simple opacity transitions
+- **[Scale](/docs/react/scale#docs)** — Grow and shrink animations
+- **[Collapse](/docs/react/collapse#docs)** — Expandable height/width
+- **[Slide](/docs/react/slide#docs)** — Directional slide animations
+- **[Blur](/docs/react/blur#docs)** — Focus/blur effects
+- **[Rotate](/docs/react/rotate#docs)** — 3D rotation effects
+- **[Stagger](/docs/react/choreography/stagger#docs)** — Sequential animation choreography
+- **[Motion Atoms](/react/motion/components-preview/atoms#docs)** — Building blocks for custom components

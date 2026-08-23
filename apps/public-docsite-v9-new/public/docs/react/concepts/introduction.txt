@@ -1,10 +1,5 @@
 # Introduction
 
-<h1 className="fluent">
-  <span>Fluent UI React Components</span>
-  <span className="fluent-version">v{pkg.version}</span>
-</h1>
-
 <img
   className="sbdocs-img"
   src={require('../../public/fluentui-wide-banner.webp')}

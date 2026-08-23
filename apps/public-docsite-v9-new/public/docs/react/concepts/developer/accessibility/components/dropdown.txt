@@ -1,7 +1,5 @@
 # Dropdown
 
-# Dropdown Accessibility Spec
-
 `Dropdown` is one of three form selection components that display the current selection, and allow a user to expand a popup to modify the selection. The other two are `Select` and `Combobox`.
 
 The semantics and behavior are roughly similar to a more complex version of the `Select` component (an HTML `<select>` element), but with more functionality and full control over styling. Unlike `Combobox`, `Dropdown` does not allow text input. `Dropdown` supports both single-selection and multi-selection.

@@ -2,8 +2,6 @@
 title: Checkbox
 ---
 
-# Checkbox Accessibility Spec
-
 `Checkbox` lets a user toggle an option on, off, or — in some cases — into a mixed state representing partial selection of a group. Internally it renders a real `<input type="checkbox">` element with a custom visual indicator, and uses the native input for all ARIA semantics and keyboard interaction.
 
 Because the underlying control is a native checkbox, `Checkbox` inherits the browser's built-in accessibility behavior: focus, role, checked state, and the platform keyboard contract are all handled by the browser. The visible square (or circle) the user sees is a separate `aria-hidden` element rendered next to the input; it does not contribute to the accessibility tree.

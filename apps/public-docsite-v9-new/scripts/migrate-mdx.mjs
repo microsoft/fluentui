@@ -149,7 +149,18 @@ for (const page of pages) {
 
   // Fumadocs renders the frontmatter title as the page h1, so a leading duplicate heading
   // would produce two h1s and break heading order.
-  body = body.replace(new RegExp(`^\\s*#\\s+${leaf.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\s*$`, 'm'), '');
+  /*
+   * Drop the page's opening heading whatever it says. Fumadocs renders the frontmatter title as
+   * the h1, and matching only headings equal to that title missed pages whose heading differed
+   * slightly (`Button accessibility spec` under the title `Button`), leaving two h1s.
+   */
+  body = body.replace(/^\s*#\s+.*$/m, '');
+
+  /*
+   * Demote any remaining top-level headings. The frontmatter title owns the page's h1, so a
+   * mid-document `#` would produce a second one — which a few sources do.
+   */
+  body = body.replace(/^# (?!#)/gm, '## ');
 
   /*
    * Relative imports (helper modules, images) were relative to the page's original location,
@@ -166,6 +177,57 @@ for (const page of pages) {
 
     return `from '@repo/${fromRepo.split(sep).join('/')}'`;
   });
+
+  /*
+   * `FluentCanvas` is the Storybook addon's preview wrapper. Rendering it here would pull the
+   * addon into the documentation bundle and bypass this site's own preview chrome (theming,
+   * direction, per-example error boundary), so it is swapped for `<StoryPreview>`.
+   */
+  if (body.includes('FluentCanvas')) {
+    body = body.replace(
+      /<FluentCanvas>\s*<(\w+)\s*\/>\s*<\/FluentCanvas>/g,
+      (_whole, name) => `<StoryPreview story={${name}} name="${name}" />`,
+    );
+    body = body.replace(
+      /import \{ FluentCanvas \} from '@fluentui\/react-storybook-addon';/g,
+      `import { StoryPreview } from '${'../'.repeat(page.path.split('/').length + 1)}app/components/story-preview';`,
+    );
+  }
+
+  /*
+   * `<FluentStory id="components-accordion--default" />` embeds another component's example by
+   * Storybook id. There is no component to hand `<StoryPreview>`, so it becomes a link to that
+   * example's own page and anchor.
+   */
+  body = body.replace(
+    /<FluentCanvas>\s*<FluentStory\s+id="([a-z0-9-]+)--([a-z0-9-]+)"[^>]*\/>\s*<\/FluentCanvas>/g,
+    (whole, id, story) => {
+      const route = routeById.get(id);
+      return route ? `[See the ${story} example](${route}#${story})` : whole;
+    },
+  );
+
+  body = body.replace(/import \{ FluentCanvas, FluentStory \} from '@fluentui\/react-storybook-addon';\s*/g, '');
+
+  // Storybook's own deep links carry the page in a query string rather than the path.
+  body = body.replace(/\(\?path=\/docs\/([a-z0-9-]+)--([a-z0-9-]+)\)/g, (whole, id, story) => {
+    const route = routeById.get(id);
+    return route ? `(${route}#${story})` : whole;
+  });
+
+  /*
+   * Storybook pages carried their own title element. Fumadocs renders the frontmatter title as
+   * the page h1, so leaving this produces two h1s and breaks heading order.
+   */
+  body = body.replace(/<h1[^>]*>[\s\S]*?<\/h1>\s*/g, '');
+
+  /*
+   * Storybook's docs blocks render the page heading and subtitle. Their imports are stripped
+   * above, so any remaining usage would reference an undefined component and break the page at
+   * hydration — which is exactly what happened with `<Title>` on the typography page.
+   */
+  body = body.replace(/<(Title|Subtitle)>[\s\S]*?<\/\1>\s*/g, '');
+  body = body.replace(/<(Primary|Stories|ArgTypes|Controls|Canvas|Source|Description)\b[^>]*\/>\s*/g, '');
 
   // Rewrite Storybook id links to their new paths.
   body = body.replace(/\/docs\/([a-z0-9-]+)--docs/g, (whole, id) => routeById.get(id) ?? whole);

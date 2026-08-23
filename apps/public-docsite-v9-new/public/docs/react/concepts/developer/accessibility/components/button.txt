@@ -1,7 +1,5 @@
 # Button
 
-# Button Accessibility Spec
-
 `Button` triggers an action or event when activated. It is the foundational building block for more specialized button variants in this package — `CompoundButton`, `MenuButton`, `SplitButton`, and `ToggleButton` — each of which has its own accessibility considerations beyond what is covered here.
 
 By default, `Button` renders a native HTML `<button>` element and inherits all of its built-in accessibility behavior. When rendered as an anchor (`as="a"`), additional ARIA attributes and keyboard handlers are applied to make it behave like a button.

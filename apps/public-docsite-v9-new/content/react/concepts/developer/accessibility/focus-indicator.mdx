@@ -2,8 +2,6 @@
 title: Focus indicator
 ---
 
-import { FluentCanvas, FluentStory } from '@fluentui/react-storybook-addon';
-
 ## Focus indicator
 
 Fluent UI components use [tabster](https://github.com/microsoft/tabster) for focus handling functionality, so that they can be easily integrated with application-level tabster functionality such as delooser and cross-iframe focusing.
@@ -43,11 +41,9 @@ Both of the helper functions are powered using the method described above.
 
 #### createFocusOutlineStyle
 
-The [AccordionHeader](?path=/docs/components-accordion--default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
+The [AccordionHeader](/docs/react/accordion#default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
 
-<FluentCanvas>
-  <FluentStory id="components-accordion--default" height={260} />
-</FluentCanvas>
+[See the default example](/docs/react/accordion#default)
 
 ```tsx
 import { makeStyles } from '@fluentui/react-components';
@@ -77,11 +73,9 @@ function Component() {
 > indicator that you have gotten the necessary feedback from designers and accessibility
 > experts.
 
-The [Link](?path=/docs/components-link--default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
+The [Link](/docs/react/link#default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
 
-<FluentCanvas>
-  <FluentStory id="components-link--default" height={150} />
-</FluentCanvas>
+[See the default example](/docs/react/link#default)
 
 ```tsx
 import { makeStyles, createCustomFocusIndicatorStyle } from '@fluentui/react-components';

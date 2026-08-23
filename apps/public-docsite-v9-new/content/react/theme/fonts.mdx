@@ -2,7 +2,7 @@
 title: Fonts
 ---
 
-import { FluentCanvas } from '@fluentui/react-storybook-addon';
+import { StoryPreview } from '../../../app/components/story-preview';
 import {
   FontFamily,
   FontSize,
@@ -10,28 +10,18 @@ import {
   LineHeight,
 } from '@repo/packages/react-components/react-theme/stories/src/Theme/fonts/ThemeFonts.stories';
 
-<h1 className="sbdocs-title">Fonts</h1>
-
 ### Font family
 
-<FluentCanvas>
-  <FontFamily />
-</FluentCanvas>
+<StoryPreview story={FontFamily} name="FontFamily" />
 
 ### Font size
 
-<FluentCanvas>
-  <FontSize />
-</FluentCanvas>
+<StoryPreview story={FontSize} name="FontSize" />
 
 ### Font weight
 
-<FluentCanvas>
-  <FontWeight />
-</FluentCanvas>
+<StoryPreview story={FontWeight} name="FontWeight" />
 
 ### Line height
 
-<FluentCanvas>
-  <LineHeight />
-</FluentCanvas>
+<StoryPreview story={LineHeight} name="LineHeight" />

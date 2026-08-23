@@ -1,7 +1,5 @@
 # Tokens
 
-<h1 className="sbdocs-title">Motion tokens</h1>
-
 Fluent UI React v9 offers predefined tokens for creating custom motions. These tokens can be used as CSS variables or plain JavaScript values, depending on the scenario.
 
 ```ts

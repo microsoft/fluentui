@@ -112,7 +112,6 @@
 </style>
 
 <div className="migration-hero">
-  <h1>Migration & Comparison</h1>
   <p>
     Coming from another animation library? This guide helps you understand how Fluent Motion compares and how to
     migrate.

@@ -45,7 +45,7 @@ Later in this topic, you will find examples covering each of these scenarios.
 - If you want to change how a component behaves, make significant layout and style changes,
   replace non-slot parts, or wrap a component with different props, then consider using the hooks API.
   The hooks API gives you complete control to recompose a component but is more complex than using slots.
-  See [Building custom components](?path=/react/concepts/developer/building-custom-controls) for guidance.
+  See [Building custom components](/react/concepts/developer/building-custom-controls#docs) for guidance.
 
 ### Conditional rendering
 
@@ -159,9 +159,6 @@ Note that you must choose from one of the available element types the slot suppo
 ```
 
 ```html
-<h1 className="fui-AccordionHeader">
-  <a className="fui-AccordionHeader__button"> Accordion Header as h1 </a>
-</h1>
 ```
 
 ### Replacing the entire slot

@@ -1,7 +1,3 @@
 # Border Radii
 
-<h1 className="sbdocs-title">Border Radii</h1>
-
-<FluentCanvas>
-  <BorderRadii />
-</FluentCanvas>
+<StoryPreview story={BorderRadii} name="BorderRadii" />

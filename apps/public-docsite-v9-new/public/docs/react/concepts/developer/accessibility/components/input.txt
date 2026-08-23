@@ -1,7 +1,5 @@
 # Input
 
-# Input Accessibility Spec
-
 `Input` is a single-line text entry control. It wraps a native HTML `<input>` element in a styled `<span>` container, with optional `contentBefore` and `contentAfter` slots for in-field decoration (icons, units, prefixes, or action buttons).
 
 Because the rendered control is a real `<input>`, `Input` inherits the browser's built-in accessibility behavior for text fields: caret movement, selection, IME composition, autofill, password masking, spellcheck, and the platform-native keyboard contract are all handled by the browser. This spec covers what Fluent layers on top: labelling, the `Field` integration, the `contentBefore` / `contentAfter` slots, validation, and visual considerations.

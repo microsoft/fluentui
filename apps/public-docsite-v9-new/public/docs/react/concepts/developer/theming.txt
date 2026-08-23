@@ -47,7 +47,7 @@ export Component = props => {
 }
 ```
 
-For more details, see [Styling components](?path=/react/concepts/developer/styling-components).
+For more details, see [Styling components](/react/concepts/developer/styling-components#docs).
 
 ### Do not use CSS variables directly
 
