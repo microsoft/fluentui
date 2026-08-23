@@ -21,8 +21,8 @@ export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef((props,
 
   // The headless indicator slot ships no thumb so the package needs no icon dependency; windmod
   // restores the Fluent default in a new state object, never on the one the hook returned. A
-  // consumer's own indicator children still win. The slot always renders (see MenuButton.tsx for
-  // the D1 glyph rule and the pre-hook materialisation a removable slot would need instead), so
+  // consumer's own indicator children still win. The slot always renders — unlike MenuButton's
+  // menuIcon, which needs pre-hook materialisation to stay removable (see MenuButton.tsx) — so
   // `indicator={null}` leaves an indicator carrying the default thumb rather than removing it.
   const state: SwitchState = {
     ...base,

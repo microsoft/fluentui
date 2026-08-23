@@ -43,9 +43,9 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((pr
     size,
   };
 
-  // The indicator slot renders by default (see MenuButton.tsx for the D1 uniform glyph rule this
-  // restoration follows), so no pre-hook materialisation is needed; `indicator={null}` still
-  // removes the slot. The fallback value depends on the tri-state the hook resolved.
+  // The indicator slot renders by default, so no pre-hook materialisation is needed (see
+  // MenuButton.tsx for the case that does need it). Consumer-supplied children always win; null or
+  // undefined children fall back to the resolved glyph; `indicator={null}` still removes the slot.
   const styled = useCheckboxStyles(
     state.indicator
       ? {

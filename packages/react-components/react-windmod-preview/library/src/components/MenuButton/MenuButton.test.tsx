@@ -9,6 +9,18 @@ import { menuButtonClassNames, useMenuButtonStyles } from './useMenuButtonStyles
 
 import styles from './MenuButton.module.css';
 
+// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
+// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+jest.mock('@fluentui/react-headless-components-preview/menu-button', () => {
+  const actual = jest.requireActual('@fluentui/react-headless-components-preview/menu-button');
+  const { deepFreezeState } = require('../../testing/freezeState');
+
+  return {
+    ...actual,
+    useMenuButton: (...args: Parameters<typeof actual.useMenuButton>) => deepFreezeState(actual.useMenuButton(...args)),
+  };
+});
+
 // The jest css-module proxy drops the component and hash segments, so Button's `root` and
 // MenuButton's `root` are the same string — only the occurrence count distinguishes them.
 const occurrences = (className: string, target: string): number =>
@@ -141,7 +153,7 @@ describe('MenuButton', () => {
     expect(chevronOf(getByTestId('root'))).toBeNull();
   });
 
-  // The uniform glyph rule falls back on null OR undefined children, so an explicitly emptied
+  // The default-glyph fallback fires on null OR undefined children, so an explicitly emptied
   // children key shows the chevron where the Griffel default-props merge shows an empty span.
   it('falls back to the chevron for an explicitly empty children key', () => {
     const { getByTestId } = render(
@@ -366,5 +378,11 @@ describe('MenuButton', () => {
     expect(styled.icon).toBeUndefined();
     expect(styled.menuIcon).toBeUndefined();
     expect((styled.root as { 'data-icon-position'?: string })['data-icon-position']).toBeUndefined();
+  });
+
+  it('renders the full pipeline against a frozen headless state without throwing', () => {
+    expect(() => render(<MenuButton>Menu</MenuButton>)).not.toThrow();
+    expect(() => render(<MenuButton menuIcon={<Custom />}>Menu</MenuButton>)).not.toThrow();
+    expect(() => render(<MenuButton menuIcon={null}>Menu</MenuButton>)).not.toThrow();
   });
 });

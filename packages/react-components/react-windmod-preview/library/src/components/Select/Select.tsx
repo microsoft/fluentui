@@ -24,9 +24,9 @@ export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props,
     size,
   };
 
-  // Unlike MenuButton's menuIcon, this slot renders by default (see MenuButton.tsx for the D1
-  // uniform glyph rule this restoration follows), so no pre-hook materialisation is needed here;
-  // `icon={null}` still removes the slot.
+  // Unlike MenuButton's menuIcon, this slot renders by default, so no pre-hook materialisation is
+  // needed here (see MenuButton.tsx for that case). Consumer-supplied children always win; null or
+  // undefined children fall back to the chevron; `icon={null}` still removes the slot.
   const styled = useSelectStyles(
     state.icon ? { ...state, icon: { ...state.icon, children: state.icon.children ?? <ChevronDownRegular /> } } : state,
   );

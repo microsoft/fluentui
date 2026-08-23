@@ -14,11 +14,10 @@ type TextareaRootDataAttributes = {
   'data-size'?: TextareaState['size'];
 };
 
-/** Applies the visual contract, returning new state. The headless hook already stamps
- * data-disabled, data-invalid and data-resize; data-invalid is deliberately unused, because it is
- * present for every non-boolean aria-invalid token while the invalid look belongs only to
- * `aria-invalid` true. The root's appearance/invalid/disabled looks and the textarea's resize are
- * module classes because their cascade is carried by block order in Textarea.module.css. */
+/** Applies the visual contract, returning new state — see useInputStyles for the shared
+ * data-invalid and block-order-cascade reasoning. Also stamps data-resize (the headless hook
+ * already sets it); the textarea's resize classes are module classes for the same block-order
+ * reason as the root. */
 export const useTextareaStyles = (state: TextareaState): TextareaState => {
   const { appearance, resize, size } = state;
   const disabled = state.textarea.disabled;

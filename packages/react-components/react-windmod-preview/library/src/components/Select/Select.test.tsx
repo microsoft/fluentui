@@ -8,6 +8,18 @@ import { selectClassNames, useSelectStyles } from './useSelectStyles';
 
 import styles from './Select.module.css';
 
+// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
+// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+jest.mock('@fluentui/react-headless-components-preview/select', () => {
+  const actual = jest.requireActual('@fluentui/react-headless-components-preview/select');
+  const { deepFreezeState } = require('../../testing/freezeState');
+
+  return {
+    ...actual,
+    useSelect: (...args: Parameters<typeof actual.useSelect>) => deepFreezeState(actual.useSelect(...args)),
+  };
+});
+
 const appearances = ['outline', 'underline', 'filled-darker', 'filled-lighter'] as const;
 const sizes = ['small', 'medium', 'large'] as const;
 
@@ -352,5 +364,11 @@ describe('Select', () => {
     expect(styled.root.className).toContain('consumer');
     expect(styled.select.className).toContain('native');
     expect(styled.icon!.className).toContain('glyph');
+  });
+
+  it('renders the full pipeline against a frozen headless state without throwing', () => {
+    expect(() => render(<Select>{options}</Select>)).not.toThrow();
+    expect(() => render(<Select icon={<span data-testid="custom" />}>{options}</Select>)).not.toThrow();
+    expect(() => render(<Select icon={null}>{options}</Select>)).not.toThrow();
   });
 });

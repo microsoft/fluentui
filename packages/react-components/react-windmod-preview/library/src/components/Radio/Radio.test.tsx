@@ -8,6 +8,18 @@ import { radioClassNames, useRadioStyles } from './useRadioStyles';
 
 import styles from './Radio.module.css';
 
+// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
+// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+jest.mock('@fluentui/react-headless-components-preview/radio-group', () => {
+  const actual = jest.requireActual('@fluentui/react-headless-components-preview/radio-group');
+  const { deepFreezeState } = require('../../testing/freezeState');
+
+  return {
+    ...actual,
+    useRadio: (...args: Parameters<typeof actual.useRadio>) => deepFreezeState(actual.useRadio(...args)),
+  };
+});
+
 const positions = ['after', 'below'] as const;
 
 // `input` is the primary slot, so every native prop — data-testid included — lands on the <input>;
@@ -280,5 +292,10 @@ describe('Radio', () => {
     expect(styled.indicator.className).toContain('consumer-indicator');
     expect(styled.indicator.className).toContain(styles.defaultIndicator);
     expect(styled.label!.className).toContain('consumer-label');
+  });
+
+  it('renders the full pipeline against a frozen headless state without throwing', () => {
+    expect(() => render(<Radio label="Hello" value="a" />)).not.toThrow();
+    expect(() => render(<Radio checked value="a" indicator={{ className: 'consumer' }} />)).not.toThrow();
   });
 });

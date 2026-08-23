@@ -8,6 +8,18 @@ import { switchClassNames, useSwitchStyles } from './useSwitchStyles';
 
 import styles from './Switch.module.css';
 
+// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
+// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+jest.mock('@fluentui/react-headless-components-preview/switch', () => {
+  const actual = jest.requireActual('@fluentui/react-headless-components-preview/switch');
+  const { deepFreezeState } = require('../../testing/freezeState');
+
+  return {
+    ...actual,
+    useSwitch: (...args: Parameters<typeof actual.useSwitch>) => deepFreezeState(actual.useSwitch(...args)),
+  };
+});
+
 const sizes = ['medium', 'small'] as const;
 const positions = ['after', 'before', 'above'] as const;
 
@@ -331,5 +343,13 @@ describe('Switch', () => {
     expect(styled.indicator.className).toContain('consumer-indicator');
     expect(styled.indicator.className).toContain(styles.labelAbove);
     expect(styled.label!.className).toContain('consumer-label');
+  });
+
+  it('renders the full pipeline against a frozen headless state without throwing', () => {
+    expect(() => render(<Switch label="Hello" />)).not.toThrow();
+    const onChange = jest.fn();
+
+    expect(() => render(<Switch checked onChange={onChange} />)).not.toThrow();
+    expect(() => render(<Switch checked indicator={{ className: 'consumer' }} onChange={onChange} />)).not.toThrow();
   });
 });

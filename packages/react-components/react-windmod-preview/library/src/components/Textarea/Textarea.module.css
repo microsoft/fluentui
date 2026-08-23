@@ -1,9 +1,8 @@
 @reference '#theme';
 
 @layer fui.components.l1 {
-  /* Root-modifier block order is the cascade: every selector below is :where()-flat, so source
-     order alone arbitrates. .outlineInteractive after .outline, .invalid after every appearance
-     block. */
+  /* Cascade is block order — see Input.module.css. .outlineInteractive after .outline, .invalid
+     after every appearance block. */
   .root {
     @apply relative m-0 box-border inline-flex rounded-medium p-0 pb-thick align-top;
   }

@@ -8,6 +8,18 @@ import { checkboxClassNames, useCheckboxStyles } from './useCheckboxStyles';
 
 import styles from './Checkbox.module.css';
 
+// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
+// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+jest.mock('@fluentui/react-headless-components-preview/checkbox', () => {
+  const actual = jest.requireActual('@fluentui/react-headless-components-preview/checkbox');
+  const { deepFreezeState } = require('../../testing/freezeState');
+
+  return {
+    ...actual,
+    useCheckbox: (...args: Parameters<typeof actual.useCheckbox>) => deepFreezeState(actual.useCheckbox(...args)),
+  };
+});
+
 const sizes = ['medium', 'large'] as const;
 
 // `input` is the primary slot, so every native prop — data-testid included — lands on the <input>;
@@ -338,5 +350,14 @@ describe('Checkbox', () => {
     expect(styled.indicator!.className).toContain('consumer-indicator');
     expect(styled.indicator!.className).toContain(styles.circular);
     expect(styled.label!.className).toContain('consumer-label');
+  });
+
+  it('renders the full pipeline against a frozen headless state without throwing', () => {
+    expect(() => render(<Checkbox label="Hello" />)).not.toThrow();
+    const onChange = jest.fn();
+
+    expect(() => render(<Checkbox checked onChange={onChange} />)).not.toThrow();
+    expect(() => render(<Checkbox checked="mixed" onChange={onChange} />)).not.toThrow();
+    expect(() => render(<Checkbox checked indicator={null} onChange={onChange} />)).not.toThrow();
   });
 });
