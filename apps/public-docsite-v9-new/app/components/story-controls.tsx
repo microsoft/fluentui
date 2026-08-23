@@ -122,7 +122,15 @@ export function argTypesFromDocgen(props: DocgenProp[] = []): ArgTypes {
     }
 
     const options = parseUnion(prop.type);
-    const defaultValue = prop.defaultValue?.replace(/^['"]|['"]$/g, '') ?? undefined;
+
+    /*
+     * Generated defaults are strings, including the literals "undefined" and "null" for props
+     * with no default. Passing those through hands the component the *string* "undefined",
+     * which is not the same as leaving the prop unset — TimePicker's `hourCycle` then reached
+     * `toLocaleTimeString` and threw, taking the whole page's content boundary with it.
+     */
+    const raw = prop.defaultValue?.replace(/^['"]|['"]$/g, '');
+    const defaultValue = raw === undefined || raw === 'undefined' || raw === 'null' ? undefined : raw;
 
     if (options) {
       if (options.length > MAX_OPTIONS) {
