@@ -77,7 +77,18 @@ Exit criterion: CSS Modules render, and survive export with their token styleshe
 - [x] 4.4b **The primary example was missing its props.** Its `<Example>` call site never received `decorators`, `metaArgTypes` or `docgen` — only the secondary examples did — so the most prominent example on every page rendered without its decorator and without controls. Found while checking why derived controls had not appeared.
 - [x] 4.5 Non-standard packages need no special handling: `react-motion` and `react-motion-components-preview` (`.ts` entry points, `*.stories.md` sidecars) and `react-positioning` all generate and render. Verified /docs/react/motion (3 previews), /docs/react/create-motion-component (10) and /docs/react/use-safe-zone-area (1), all 200 with no error boundaries or console errors.
 - [x] 4.6 Entry points with no `component` render correctly (`<ComponentPage>` only uses `docgen` for the props table, which is optional), and `hideArgsTable` is honoured. `skipPrimaryStory` is not implemented; it is set in exactly one file repo-wide (`react-motion`), whose page renders correctly regardless.
-- [ ] 4.7 **Re-scope: do not convert `react-card` assets to local imports.** The hardcoded `raw.githubusercontent.com/.../master/...` base URL is fragile (it pins `master`), but it exists so exported sandboxes can load the images — the sandbox scaffold ships only source and CSS Modules, not story assets, so local imports would 404 in every exported Card sandbox. The fix is to make the URL stable (a versioned tag or CDN), not to localise it. Applies to 12 files.
+- [x] 4.7 **Hardcoded asset URLs in `react-card`: left as they are, deliberately.** Twelve story files
+      reference their images as `raw.githubusercontent.com/.../master/...` rather than importing them.
+      All resolve today (checked, 200), and the reason for the URL is sound: a sandbox exported from the
+      page has no way to resolve a repository-relative import, so making them local would break the
+      CodeSandbox and StackBlitz buttons. Pinning a commit SHA would freeze the images and add a
+      maintenance task for no present benefit.
+      The real risk is not the URL but that nothing connected it to the file: moving or renaming an
+      asset would break the published image silently, in Storybook too. `audit:content` now resolves
+      every such URL against the working tree, needs no network, and fails in the same commit that
+      moves the file — verified by moving one and watching two pages fail.
+      The duplicated `resolveAsset` helper in each of the twelve files is the component team's to
+      tidy; it is their stories, and it is not a documentation defect.
 - [x] 4.8 Migration-shim packages are excluded by the generator and no shim pages exist; no v8/v0 library appears in the output.
 - [x] 4.8a Exported sandbox dependencies now match the React version both hosts render. They pinned `@types/react ^17` against a React `^18` runtime while the repo ships React 19, so an exported project type-checked against a different React than the example was written for. Updated the scaffold's dev dependencies and both hosts' required dependencies; snapshots updated, 53 addon tests pass.
 - [x] 4.9 Code-split the examples. Enabled `docs: { async: true }` so only frontmatter is eager, loaded each page body through `use()` inside a Suspense boundary, and switched the server entry to `prerender` from `react-dom/static` so prerendering waits for those boundaries instead of emitting fallbacks. Largest chunk 10M -> 476K, chunks 22 -> 464, per-page payload ~10M -> ~0.7M. Prerendered HTML still contains full content and Griffel styles (verified with JavaScript disabled).

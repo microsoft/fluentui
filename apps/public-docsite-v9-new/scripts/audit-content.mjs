@@ -1,8 +1,11 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { readdir, readFile, stat } from 'node:fs/promises';
-import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { join, resolve } from 'node:path';
 
 import { distRoot } from './static-server.mjs';
+
+const repoRoot = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../..');
 
 const docgenPath = new URL('../app/generated/docgen.json', import.meta.url);
 const docgen = existsSync(docgenPath) ? JSON.parse(readFileSync(docgenPath, 'utf8')) : {};
@@ -16,6 +19,21 @@ const docgen = existsSync(docgenPath) ? JSON.parse(readFileSync(docgenPath, 'utf
  * enough when pages are generated — every symptom here is checked across the whole site.
  */
 const SYMPTOMS = [
+  {
+    /*
+     * Some examples reference their images by raw URL on the default branch rather than
+     * importing them, because a sandbox exported from the page has no way to resolve a
+     * repository-relative import. Nothing then ties the URL to the file, so moving or renaming
+     * the asset breaks the published image silently. The path is checked against the working
+     * tree, which needs no network and fails in the same commit that moves the file.
+     */
+    id: 'stale-repo-asset',
+    describe: 'references a repository asset by URL that no longer exists at that path',
+    test: html =>
+      [...html.matchAll(/https:\/\/raw\.githubusercontent\.com\/microsoft\/fluentui\/master\/([^"')\s]+)/g)].some(
+        ([, path]) => !existsSync(join(repoRoot, decodeURIComponent(path))),
+      ),
+  },
   {
     id: 'compiled-source-leak',
     describe: 'renders JavaScript source where prose belongs',
