@@ -45,6 +45,8 @@
 @custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
 @custom-variant checked (&:where([data-checked], :checked));
 @custom-variant not-checked (&:where(:not([data-checked], :checked)));
+@custom-variant checked-mixed (&:where([data-checked='mixed'], [aria-checked='mixed']));
+@custom-variant not-checked-mixed (&:where(:not([data-checked='mixed'], [aria-checked='mixed'])));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
 @custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));

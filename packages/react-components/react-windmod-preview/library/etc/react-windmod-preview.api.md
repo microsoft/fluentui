@@ -10,6 +10,9 @@ import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-compon
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
+import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-headless-components-preview/checkbox';
+import { CheckboxSlots } from '@fluentui/react-headless-components-preview/checkbox';
+import type { CheckboxState as CheckboxState_2 } from '@fluentui/react-headless-components-preview/checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
@@ -49,6 +52,7 @@ import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headl
 import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
+import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
@@ -107,6 +111,7 @@ import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-co
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
+import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
@@ -193,6 +198,31 @@ export { ButtonSlots }
 
 // @public
 export type ButtonState = ButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const Checkbox: ForwardRefComponent<CheckboxProps>;
+
+// @public
+export const checkboxClassNames: {
+    root: string;
+};
+
+// @public
+export type CheckboxProps = CheckboxProps_2 & {
+    shape?: CheckboxShape;
+    size?: CheckboxSize;
+};
+
+// @public
+export type CheckboxShape = 'square' | 'circular';
+
+// @public
+export type CheckboxSize = 'medium' | 'large';
+
+export { CheckboxSlots }
+
+// @public
+export type CheckboxState = CheckboxState_2 & Required<Pick<CheckboxProps, 'shape' | 'size'>>;
 
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
@@ -460,6 +490,8 @@ export type RatingItemState = RatingItemState_2 & Required<Pick<RatingItemProps,
 export { renderBadge }
 
 export { renderButton }
+
+export { renderCheckbox }
 
 export { renderCompoundButton }
 
@@ -744,6 +776,11 @@ export { useButton }
 
 // @public
 export const useButtonStyles: (state: ButtonState) => ButtonState;
+
+export { useCheckbox }
+
+// @public
+export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
 
 export { useCompoundButton }
 

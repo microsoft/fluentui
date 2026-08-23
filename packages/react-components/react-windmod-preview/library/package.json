@@ -73,6 +73,16 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./checkbox": {
+      "import": {
+        "types": "./dist/checkbox.d.ts",
+        "default": "./lib/checkbox.js"
+      },
+      "require": {
+        "types": "./dist/checkbox.d.cts",
+        "default": "./lib-commonjs/checkbox.cjs"
+      }
+    },
     "./compound-button": {
       "import": {
         "types": "./dist/compound-button.d.ts",

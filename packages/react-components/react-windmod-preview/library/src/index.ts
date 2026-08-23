@@ -4,6 +4,9 @@ export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, Ba
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
+export { Checkbox, checkboxClassNames, renderCheckbox, useCheckbox, useCheckboxStyles } from './checkbox';
+export type { CheckboxProps, CheckboxShape, CheckboxSize, CheckboxSlots, CheckboxState } from './checkbox';
+
 export {
   CompoundButton,
   compoundButtonClassNames,
