@@ -27,9 +27,9 @@ import { distRoot, serveStatic } from './static-server.mjs';
  */
 const PAGES = [
   { path: '/docs/react/components/button/', minVisible: 2000 },
-  { path: '/docs/react/concepts/introduction/', minVisible: 1000 },
+  { path: '/docs/react/concepts/developer/theming/', minVisible: 1000 },
   { path: '/docs/headless/components/avatar/', minVisible: 1000 },
-  { path: '/docs/react/', minVisible: 100 },
+  { path: '/docs/react/', minVisible: 800 },
 ];
 
 let server;

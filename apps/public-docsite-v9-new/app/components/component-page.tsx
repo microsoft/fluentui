@@ -191,9 +191,10 @@ export function ComponentPage({ meta, stories, docgen, order, wrapper, showTheme
   const title = meta.title ?? docgen ?? 'Component';
 
   return (
-    <DocsSettingsProvider showThemePicker={showThemePicker}>
-      <CopyAsMarkdown markdown={buildMarkdown(meta, entries)} />
-
+    <DocsSettingsProvider
+      showThemePicker={showThemePicker}
+      actions={<CopyAsMarkdown markdown={buildMarkdown(meta, entries)} />}
+    >
       {description ? <p>{description}</p> : null}
 
       {primary ? (

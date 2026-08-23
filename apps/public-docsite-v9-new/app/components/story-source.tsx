@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { createHighlighterCoreSync } from 'shiki/core';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 import tsx from 'shiki/langs/tsx.mjs';
+import githubDark from 'shiki/themes/github-dark.mjs';
 import githubLight from 'shiki/themes/github-light.mjs';
 
 /**
@@ -9,7 +10,7 @@ import githubLight from 'shiki/themes/github-light.mjs';
  * prerendering (Node) and after hydration, so the markup does not shift.
  */
 const highlighter = createHighlighterCoreSync({
-  themes: [githubLight],
+  themes: [githubLight, githubDark],
   langs: [tsx],
   engine: createJavaScriptRegexEngine(),
 });
@@ -31,8 +32,19 @@ export function StorySource({ story, defaultOpen = false }: StorySourceProps) {
 
   const source = story.parameters?.fullSource;
 
+  /*
+   * Both themes are emitted as CSS custom properties on each token rather than one set of
+   * colours, so the panel follows the site theme. Highlighting for light alone left dark text
+   * on a dark page, which is unreadable.
+   */
   const html = useMemo(
-    () => (source ? highlighter.codeToHtml(source, { lang: 'tsx', theme: 'github-light' }) : ''),
+    () =>
+      source
+        ? highlighter.codeToHtml(source, {
+            lang: 'tsx',
+            themes: { light: 'github-light', dark: 'github-dark' },
+          })
+        : '',
     [source],
   );
 
@@ -74,7 +86,7 @@ export function StorySource({ story, defaultOpen = false }: StorySourceProps) {
           tabIndex={0}
           role="region"
           aria-label="Example source code"
-          className="mt-2 overflow-x-auto rounded-lg border p-4 text-sm [&_pre]:bg-transparent"
+          className="mt-2 overflow-x-auto rounded-lg border p-4 text-sm"
           // Shiki output is generated from the build-injected source, not user input.
           dangerouslySetInnerHTML={{ __html: html }}
         />

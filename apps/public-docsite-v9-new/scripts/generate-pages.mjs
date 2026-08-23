@@ -46,6 +46,12 @@ const TREES = {
       'react-storybook-addon-export-to-sandbox',
       'babel-preset-storybook-full-source',
       'react-conformance-griffel',
+      /*
+       * A scaffolded package whose only story renders `<div>Hello world</div>`. It appears in
+       * Storybook's sidebar, but publishing a placeholder as documentation is worse than the
+       * page being absent; `audit:parity` lists it as a deliberate divergence.
+       */
+      'component-selector-preview',
     ],
     showThemePicker: true,
     appStories: 'apps/public-docsite-v9/src',

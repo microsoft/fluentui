@@ -221,3 +221,35 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
       ("Documentation for Fluent UI React v9 components." / "Documentation for Fluent UI React v9.")
       and little else, and their sidebar shows only the Storybook link while component pages show
       Charts and Migration guides too.
+
+## 10. Review of the rendered site
+
+- [x] 10.1 **Headless pages ignored the theme.** The stories package styles its examples with CSS
+      Modules that read tokens from `.storybook/tokens.css`, and that file also carries global
+      element rules — `body`, `a`, `code`, `button`. Under Storybook they are right, because the
+      story is the page. Loaded by the site they styled the site: `body` set its own background and
+      colour and, being unlayered, outranked the theme in `@layer base`, so every headless page
+      rendered white-on-black regardless of the toggle. A Vite plugin now scopes those element rules
+      to the preview subtree, which is the part that stands in for Storybook's canvas, while the
+      custom properties stay global.
+- [x] 10.2 **The source panel was unreadable in dark mode.** It highlighted with `github-light`
+      only. It now emits both palettes and follows the site theme. Three separate rules were needed:
+      Shiki writes the light colours into an inline style, so the dark override has to be important;
+      the token spans must take colour only, or each run of text gets its own background; and
+      Fumadocs' prose styling gives `code` a background, padding and a border, which around an
+      inline element drew a rectangle around every line.
+- [x] 10.3 The theme toggle sat on its own row and stretched the sidebar's full width beside two
+      small icons. Fumadocs' switch is disabled in favour of a footer row holding the outbound
+      Charts link and a compact toggle.
+- [x] 10.4 `Concepts/Introduction` is now the `/react` landing page. `/react` had been a placeholder
+      reading "Documentation for Fluent UI React v9." twice over, so the tree had two introductions
+      and the useful one was a level down. The codemod emits it there too, so re-running it holds.
+- [x] 10.5 Removed the Component Selector page. Its only story renders `<div>Hello world</div>` — a
+      scaffolded placeholder. It is in Storybook's sidebar, and publishing a placeholder as
+      documentation is worse than the page being absent.
+- [x] 10.6 Search results led to `/docs/docs/...`. The index stored `/docs`-prefixed URLs while the
+      router is mounted at `/docs` and prefixes them again — the same mistake as the content links,
+      in a place the link checker cannot see because it reads rendered anchors. The index is _fetched_
+      from `/docs/search-index.json`, a real file path, which keeps its prefix.
+- [x] 10.7 Removed the Storybook link from the sidebar. Storybook stays published and 7.4 still adds
+      its deprecation notice; a permanent link out of the site from every page is a different thing.

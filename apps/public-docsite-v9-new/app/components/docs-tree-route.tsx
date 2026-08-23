@@ -1,5 +1,8 @@
+import { ExternalLink } from 'lucide-react';
+
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
+import { ThemeSwitch } from 'fumadocs-ui/layouts/shared/slots/theme-switch';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 import { Suspense, use } from 'react';
 
@@ -69,19 +72,43 @@ const TREE_TABS = [
 ];
 
 /**
- * Content deliberately left on the component workbench (proposal Non-goals): charts is a
- * separate Storybook, and the v8/v0 migration guides render legacy components. Linking out
- * keeps them reachable rather than simply missing.
+ * Content deliberately left on the component workbench (proposal Non-goals): the v8/v0
+ * migration guides render legacy components side by side. Linking out keeps them reachable
+ * rather than simply missing.
  */
 const OUTBOUND_LINKS = [
-  { text: 'Charts', url: 'https://storybooks.fluentui.dev/charts/', external: true },
   {
     text: 'Migration guides',
     url: 'https://storybooks.fluentui.dev/react/?path=/docs/concepts-migration-getting-started--docs',
     external: true,
   },
-  { text: 'Storybook', url: 'https://storybooks.fluentui.dev/react/', external: true },
 ] as const;
+
+/**
+ * The sidebar footer: the outbound Charts link and the theme toggle on one row.
+ *
+ * Fumadocs' own theme switch is disabled in favour of this, because it renders on its own line
+ * and stretches to the full sidebar width, leaving a wide empty box next to two small icons.
+ * Charts is a separate Storybook with no Fumadocs equivalent, so it can only be linked out, and
+ * it sits down here rather than above the navigation: it leaves the site entirely, and at the
+ * top it had the same prominence as the documentation itself.
+ */
+function SidebarFooter() {
+  return (
+    <div className="flex items-center justify-between gap-2">
+      <a
+        href="https://storybooks.fluentui.dev/charts/"
+        rel="noreferrer"
+        target="_blank"
+        className="inline-flex items-center gap-2 text-sm text-fd-muted-foreground hover:text-fd-accent-foreground"
+      >
+        <ExternalLink className="size-4 shrink-0" />
+        Charts
+      </a>
+      <ThemeSwitch mode="light-dark" />
+    </div>
+  );
+}
 
 export interface DocsTreeRouteProps {
   source: Source;
@@ -100,7 +127,15 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
 
   if (!page) {
     return (
-      <DocsLayout tree={source.pageTree} nav={{ title }} tabMode="top" tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
+      <DocsLayout
+        tree={source.pageTree}
+        nav={{ title }}
+        tabMode="top"
+        tabs={TREE_TABS}
+        links={[...OUTBOUND_LINKS]}
+        sidebar={{ footer: <SidebarFooter /> }}
+        themeSwitch={{ enabled: false }}
+      >
         <DocsPage>
           <DocsTitle>Not found</DocsTitle>
           <DocsBody>
@@ -112,7 +147,15 @@ export function DocsTreeRoute({ source, splat, title }: DocsTreeRouteProps) {
   }
 
   return (
-    <DocsLayout tree={source.pageTree} nav={{ title }} tabMode="top" tabs={TREE_TABS} links={[...OUTBOUND_LINKS]}>
+    <DocsLayout
+      tree={source.pageTree}
+      nav={{ title }}
+      tabMode="top"
+      tabs={TREE_TABS}
+      links={[...OUTBOUND_LINKS]}
+      sidebar={{ footer: <SidebarFooter /> }}
+      themeSwitch={{ enabled: false }}
+    >
       {/*
        * Prerendering resolves this boundary before emitting HTML (see entry.server.tsx), so
        * the fallback is only ever seen during client-side navigation to a not-yet-loaded page.

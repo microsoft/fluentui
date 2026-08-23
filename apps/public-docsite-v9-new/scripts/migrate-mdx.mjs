@@ -34,8 +34,19 @@ function toStorybookId(title) {
     .replace(/^-|-$/g, '');
 }
 
+/*
+ * `Concepts/Introduction` is the tree's landing page rather than a page inside Concepts. It is
+ * the site's front door, and having it sit one level down while `/react` showed a placeholder
+ * gave the tree two introductions, the more useful one hidden.
+ */
+const LANDING_PAGE = 'Concepts/Introduction';
+
 /** `Concepts/Developer/Supported Platforms` -> `concepts/developer/supported-platforms` */
 function toPath(title) {
+  if (title === LANDING_PAGE) {
+    return 'index';
+  }
+
   return title
     .split('/')
     .map(segment =>

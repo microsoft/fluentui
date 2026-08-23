@@ -23,6 +23,11 @@ export interface DocsSettingsProviderProps {
   children: ReactNode;
   /** Omit the theme picker for trees where theming does not apply (e.g. headless). */
   showThemePicker?: boolean;
+  /**
+   * Page-level actions, placed at the end of the settings row rather than on their own line.
+   * Stacking them cost three lines of vertical space above every page's first example.
+   */
+  actions?: ReactNode;
 }
 
 /**
@@ -32,7 +37,7 @@ export interface DocsSettingsProviderProps {
  * Selections persist across navigation via storage. Storage is read in an effect rather
  * than during render so prerendering stays deterministic and hydration cannot mismatch.
  */
-export function DocsSettingsProvider({ children, showThemePicker = true }: DocsSettingsProviderProps) {
+export function DocsSettingsProvider({ children, showThemePicker = true, actions }: DocsSettingsProviderProps) {
   const [themeId, setThemeId] = useState<ThemeId>(DEFAULT_THEME);
   const [dir, setDir] = useState<TextDirection>('ltr');
 
@@ -70,31 +75,34 @@ export function DocsSettingsProvider({ children, showThemePicker = true }: DocsS
 
   return (
     <PreviewSettingsProvider value={value}>
-      <div className="my-4 flex flex-wrap items-center gap-4 text-sm">
-        {showThemePicker ? (
+      <div className="my-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-sm">
+        <div className="flex flex-wrap items-center gap-4">
+          {showThemePicker ? (
+            <label className="flex items-center gap-2">
+              <span>Theme</span>
+              <select
+                value={themeId}
+                onChange={event => setThemeId(event.currentTarget.value as ThemeId)}
+                className="rounded-md border px-2 py-1"
+              >
+                {Object.entries(THEMES).map(([id, { label }]) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : null}
           <label className="flex items-center gap-2">
-            <span>Theme</span>
-            <select
-              value={themeId}
-              onChange={event => setThemeId(event.currentTarget.value as ThemeId)}
-              className="rounded-md border px-2 py-1"
-            >
-              {Object.entries(THEMES).map(([id, { label }]) => (
-                <option key={id} value={id}>
-                  {label}
-                </option>
-              ))}
-            </select>
+            <input
+              type="checkbox"
+              checked={dir === 'rtl'}
+              onChange={event => setDir(event.currentTarget.checked ? 'rtl' : 'ltr')}
+            />
+            <span>Right-to-left</span>
           </label>
-        ) : null}
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={dir === 'rtl'}
-            onChange={event => setDir(event.currentTarget.checked ? 'rtl' : 'ltr')}
-          />
-          <span>Right-to-left</span>
-        </label>
+        </div>
+        {actions}
       </div>
       {children}
     </PreviewSettingsProvider>

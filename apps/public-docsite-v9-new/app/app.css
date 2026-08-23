@@ -57,3 +57,33 @@
 #nd-docs-layout > div[class*='grid-area:main'] {
   align-self: start;
 }
+
+/*
+ * Shiki emits both palettes as custom properties per token and writes the light one into an
+ * inline style. An inline style outranks any rule, so the dark override has to be marked
+ * important — this is the approach Shiki documents for dual themes. Without it the panel kept
+ * the light background and rendered dark text on a dark page.
+ */
+.dark .shiki {
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/*
+ * Colour only. Giving the tokens a background too paints a rectangle behind each run of text,
+ * ending wherever the text ends, which reads as a striped panel.
+ */
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+/*
+ * Fumadocs' prose styles give `code` a background, padding and a border, which is right for
+ * inline code in a sentence. Inside a highlighted block the element is `display: inline`, so
+ * the border wrapped each line fragment and drew a rectangle around every line. The block
+ * itself provides the surface here.
+ */
+.shiki code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}

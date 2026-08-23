@@ -18,9 +18,15 @@ import { createSearchAPI } from 'fumadocs-core/search/server';
 const appRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const contentRoot = join(appRoot, 'content');
 
+/*
+ * Result URLs are basename-relative. The router is mounted at `/docs` (see
+ * react-router.config.ts) and prefixes it when navigating, so a `/docs` here is added twice and
+ * every search result lands on `/docs/docs/...`. The index is *fetched* from `/docs/...`, which
+ * is a real file path rather than a route, and keeps its prefix.
+ */
 const TREES = [
-  { dir: 'react', baseUrl: '/docs/react' },
-  { dir: 'headless', baseUrl: '/docs/headless' },
+  { dir: 'react', baseUrl: '/react' },
+  { dir: 'headless', baseUrl: '/headless' },
 ];
 
 async function* walk(dir) {

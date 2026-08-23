@@ -9,6 +9,7 @@ import * as MdxConfig from './source.config.js';
 import { fullSource } from './vite-plugins/full-source.js';
 import { guardUnsupportedStories } from './vite-plugins/guard-unsupported-stories.js';
 import { markdownAsString } from './vite-plugins/markdown-as-string.js';
+import { scopeStoryGlobals } from './vite-plugins/scope-story-globals.js';
 import { storyOrder } from './vite-plugins/story-order.js';
 import { tsconfigAliases } from './vite-plugins/tsconfig-aliases.js';
 
@@ -84,6 +85,7 @@ export default defineConfig(
     plugins: [
       guardUnsupportedStories(),
       markdownAsString(),
+      scopeStoryGlobals(),
       storyOrder(),
       fullSource({
         importMappings: getImportMappingsForExportToSandboxAddon(),
