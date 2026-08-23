@@ -1,0 +1,184 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border inline-flex items-start;
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+
+    @variant label-above {
+      @apply flex-col;
+    }
+  }
+
+  .input {
+    --fui-switch-input-width: calc(var(--spacing) * 56);
+
+    @apply absolute m-0 box-border h-full w-(--fui-switch-input-width) cursor-pointer opacity-0;
+
+    @variant group-size-small/fui-switch {
+      --fui-switch-input-width: calc(var(--spacing) * 48);
+    }
+
+    @variant disabled-control {
+      @apply cursor-default;
+    }
+  }
+
+  .anchored {
+    @variant group-label-before/fui-switch {
+      @apply end-0 top-0;
+    }
+
+    @variant group-label-after/fui-switch {
+      @apply start-0 top-0;
+    }
+
+    @variant group-label-above/fui-switch {
+      @apply bottom-0 h-28;
+
+      @variant group-size-medium/fui-switch {
+        --fui-switch-input-width: 100%;
+      }
+    }
+  }
+
+  .indicator {
+    --fui-switch-thumb-offset: 0px;
+
+    @apply pointer-events-none mx-horizontal-s my-vertical-s box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid fill-current text-[length:calc(18px*var(--base-scale))] leading-[0] duration-(--duration-normal) ease-(--ease-easy-ease);
+
+    /* Longhands only — see Button.module.css. */
+    transition-property:
+      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.01ms;
+    }
+
+    & > * {
+      @apply [transform:translateX(var(--fui-switch-thumb-offset))] transition-[transform] duration-(--duration-normal) ease-(--ease-easy-ease);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+
+      /* translateX is physical, so the offset needs an explicit RTL negation. */
+      @variant rtl {
+        @apply [transform:translateX(calc(var(--fui-switch-thumb-offset)*-1))];
+      }
+    }
+
+    @variant peer-checked/fui-switch {
+      --fui-switch-thumb-offset: calc(20px * var(--base-scale));
+    }
+
+    @variant group-size-small/fui-switch {
+      @apply h-16 w-32 text-[length:calc(14px*var(--base-scale))];
+
+      @variant peer-checked/fui-switch {
+        --fui-switch-thumb-offset: calc(16px * var(--base-scale));
+      }
+    }
+
+    @variant peer-enabled-control/fui-switch {
+      @variant peer-not-checked/fui-switch {
+        @apply border-neutral-stroke-accessible text-neutral-stroke-accessible;
+
+        @variant peer-hover/fui-switch {
+          @apply border-neutral-stroke-accessible-hover text-neutral-stroke-accessible-hover;
+        }
+
+        @variant peer-hover-active/fui-switch {
+          @apply border-neutral-stroke-accessible-pressed text-neutral-stroke-accessible-pressed;
+        }
+      }
+
+      @variant peer-checked/fui-switch {
+        @apply border-transparent-stroke bg-compound-brand-background text-neutral-foreground-inverted;
+
+        @variant peer-hover/fui-switch {
+          @apply border-transparent-stroke-interactive bg-compound-brand-background-hover;
+        }
+
+        @variant peer-hover-active/fui-switch {
+          @apply border-transparent-stroke-interactive bg-compound-brand-background-pressed;
+        }
+      }
+    }
+
+    @variant peer-disabled-control/fui-switch {
+      @apply text-neutral-foreground-disabled;
+
+      @variant peer-not-checked/fui-switch {
+        @apply border-neutral-stroke-disabled;
+      }
+
+      @variant peer-checked/fui-switch {
+        @apply border-transparent-stroke-disabled bg-neutral-background-disabled;
+      }
+    }
+
+    @variant forced-colors {
+      @variant peer-disabled-control/fui-switch {
+        @apply border-[GrayText] text-[GrayText];
+      }
+
+      @variant peer-enabled-control/fui-switch {
+        @variant peer-checked/fui-switch {
+          @apply bg-[Highlight] text-[Canvas];
+
+          @variant peer-hover/fui-switch {
+            @apply bg-[Highlight] text-[Canvas];
+          }
+
+          @variant peer-hover-active/fui-switch {
+            @apply bg-[Highlight] text-[Canvas];
+          }
+        }
+      }
+    }
+  }
+
+  .labelAbove {
+    @apply mt-0;
+  }
+
+  .label {
+    --fui-switch-label-offset: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
+
+    @apply my-(--fui-switch-label-offset) cursor-pointer px-horizontal-s py-vertical-s font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+
+    @variant group-size-small/fui-switch {
+      --fui-switch-label-offset: calc((16px * var(--base-scale) - var(--leading-base-200)) / 2);
+
+      @apply text-base-200 leading-base-200;
+    }
+
+    @variant group-label-above/fui-switch {
+      @apply w-full py-vertical-xs;
+    }
+
+    @variant group-label-after/fui-switch {
+      @apply ps-horizontal-xs;
+    }
+
+    @variant group-label-before/fui-switch {
+      @apply pe-horizontal-xs;
+    }
+
+    @variant peer-disabled-control/fui-switch {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

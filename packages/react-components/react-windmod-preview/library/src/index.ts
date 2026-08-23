@@ -114,6 +114,9 @@ export {
 } from './split-button';
 export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './split-button';
 
+export { renderSwitch, Switch, switchClassNames, useSwitch, useSwitchStyles } from './switch';
+export type { SwitchProps, SwitchSize, SwitchSlots, SwitchState } from './switch';
+
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
 

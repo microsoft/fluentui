@@ -70,6 +70,7 @@ import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/
 import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
+import { renderSwitch } from '@fluentui/react-headless-components-preview/switch';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -92,6 +93,9 @@ import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-co
 import type { SplitButtonProps as SplitButtonProps_2 } from '@fluentui/react-headless-components-preview/split-button';
 import type { SplitButtonSlots as SplitButtonSlots_2 } from '@fluentui/react-headless-components-preview/split-button';
 import type { SplitButtonState as SplitButtonState_2 } from '@fluentui/react-headless-components-preview/split-button';
+import type { SwitchProps as SwitchProps_2 } from '@fluentui/react-headless-components-preview/switch';
+import { SwitchSlots } from '@fluentui/react-headless-components-preview/switch';
+import type { SwitchState as SwitchState_2 } from '@fluentui/react-headless-components-preview/switch';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -131,6 +135,7 @@ import { useSkeletonItem } from '@fluentui/react-headless-components-preview/ske
 import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
+import { useSwitch } from '@fluentui/react-headless-components-preview/switch';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -527,6 +532,8 @@ export { renderSpinner }
 
 export { renderSplitButton }
 
+export { renderSwitch }
+
 export { renderTextarea }
 
 export { renderToggleButton }
@@ -679,6 +686,27 @@ export type SplitButtonSlots = Omit<SplitButtonSlots_2, 'menuButton' | 'primaryA
 
 // @public
 export type SplitButtonState = ComponentState<SplitButtonSlots> & Pick<SplitButtonState_2, 'disabled' | 'disabledFocusable' | 'iconPosition'> & Required<Pick<SplitButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const Switch: ForwardRefComponent<SwitchProps>;
+
+// @public
+export const switchClassNames: {
+    root: string;
+};
+
+// @public
+export type SwitchProps = SwitchProps_2 & {
+    size?: SwitchSize;
+};
+
+// @public
+export type SwitchSize = 'small' | 'medium';
+
+export { SwitchSlots }
+
+// @public
+export type SwitchState = SwitchState_2 & Required<Pick<SwitchProps, 'size'>>;
 
 export { teamsDarkThemeClassName }
 
@@ -867,6 +895,11 @@ export { useSplitButton }
 
 // @public
 export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
+
+export { useSwitch }
+
+// @public
+export const useSwitchStyles: (state: SwitchState) => SwitchState;
 
 export { useTextarea }
 

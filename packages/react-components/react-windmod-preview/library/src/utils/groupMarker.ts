@@ -10,3 +10,14 @@
 export function componentMarkers(name: string): string {
   return `fui-${name} group/fui-${name}`;
 }
+
+/**
+ * Returns a component's sibling marker class, `peer/fui-<name>` — the sibling analogue of
+ * componentMarkers' named group, for a slot whose own state has to reach following siblings
+ * (a hidden input drives the indicator and the label, because the checked state lives on the
+ * input and not on the root). It must never be first in a class list: see componentMarkers
+ * for why a `/`-bearing classList[0] breaks jsdom.
+ */
+export function peerMarker(name: string): string {
+  return `peer/fui-${name}`;
+}
