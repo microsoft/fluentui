@@ -4517,13 +4517,13 @@ __metadata:
 
 "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::locator=%40fluentui%2Ffluentui-repo%40workspace%3A.":
   version: 2.0.337
-  resolution: "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz#../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::hash=7ae61c&locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
+  resolution: "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz#../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::hash=cf1fd3&locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
   dependencies:
     "@griffel/react": "npm:^1.6.1"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/40161a31aea211780cb49c61626b1d424c3d8e1100edb1b410bbc30ea4d50e9285ec349388e5edbbfc4f4bced751abb767c3b1d74b4b1ca68931ee9800d58962
+  checksum: 10c0/4c15ea982ca2c1b6581355dcd71f7f2d5aec5ed9100fcfdbef973bf7334772514679a4b23968988d9d056b2ee5337f07a155a27d3e3e41dc9e99d5a9e2659eba
   languageName: node
   linkType: hard
 
@@ -6063,6 +6063,7 @@ __metadata:
   resolution: "@fluentui/react-windmod-preview@workspace:packages/react-components/react-windmod-preview/library"
   dependencies:
     "@fluentui/react-headless-components-preview": "npm:^0.2.5"
+    "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
     "@fluentui/react-tailwind-theme-preview": "npm:^9.0.0-alpha.0"
     "@fluentui/react-utilities": "npm:^9.26.6"

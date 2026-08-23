@@ -11,8 +11,8 @@
 /*
  * Headless icons stylesheet, inlined so the single theme import also covers icons. The
  * icons package ships these rules unlayered; layers are compared before specificity, so
- * they must be assigned a layer at import time. fui.components.l1 lets icon state rules
- * arbitrate with base components by source order while l2+, utilities and unlayered
- * consumer CSS still win.
+ * they must be assigned a layer at import time. fui.base sits below every component
+ * layer, so a component revealing a hidden glyph overrides icon state by layer order
+ * rather than by stylesheet insertion order.
  */
-@import '@fluentui/react-icons/headless/styles.css' layer(fui.components.l1);
+@import '@fluentui/react-icons/headless/styles.css' layer(fui.base);

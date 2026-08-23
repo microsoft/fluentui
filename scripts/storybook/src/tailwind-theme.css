@@ -8,6 +8,6 @@
  */
 @import '@fluentui/react-tailwind-theme-preview' source(none);
 
-/* Headless icons stylesheet, layered at l1 for the same reasons as the theme package's
-   own emit.css (which serves published consumers; this copy serves storybooks). */
-@import '@fluentui/react-icons/headless/styles.css' layer(fui.components.l1);
+/* Headless icons stylesheet, layered at fui.base for the same reasons as the theme
+   package's own emit.css (which serves published consumers; this copy serves storybooks). */
+@import '@fluentui/react-icons/headless/styles.css' layer(fui.base);

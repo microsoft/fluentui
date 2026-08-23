@@ -1,86 +1,5 @@
 @reference '#theme';
 
-/* Revealing a hidden glyph is only expressible at l1 — see ToggleButton.module.css. Source
-   order inside l1 is what puts these after Button's own swaps, so the disabled swap-back is
-   re-asserted here rather than inherited. */
-@layer fui.components.l1 {
-  .icon {
-    @variant group-open/fui-menu-button {
-      & * {
-        @variant variant-filled {
-          @apply inline!;
-        }
-
-        @variant variant-regular {
-          @apply hidden!;
-        }
-      }
-    }
-
-    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-      }
-    }
-  }
-
-  .menuIcon {
-    @variant group-open/fui-menu-button {
-      & * {
-        @variant variant-filled {
-          @apply inline!;
-        }
-
-        @variant variant-regular {
-          @apply hidden!;
-        }
-      }
-    }
-
-    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-      }
-    }
-  }
-}
-
 @layer fui.components.l2 {
   .root {
     @variant open {
@@ -130,12 +49,44 @@
           @apply text-[Highlight];
         }
       }
+
+      & * {
+        @variant variant-filled {
+          @apply inline;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
     }
 
     @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
       @variant forced-colors {
         @variant group-hover/fui-menu-button {
           @apply text-[GrayText];
+        }
+      }
+
+      & * {
+        @variant group-hover/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
+        }
+
+        @variant group-hover-active/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
         }
       }
     }
@@ -150,6 +101,42 @@
 
     @variant group-not-icon-only/fui-menu-button {
       @apply ms-horizontal-xs;
+    }
+
+    @variant group-open/fui-menu-button {
+      & * {
+        @variant variant-filled {
+          @apply inline;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      & * {
+        @variant group-hover/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
+        }
+
+        @variant group-hover-active/fui-menu-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
+        }
+      }
     }
   }
 }

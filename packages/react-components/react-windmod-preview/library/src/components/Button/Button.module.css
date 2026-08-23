@@ -169,18 +169,16 @@
     /* Glyph swap on hover, keyed off the data-variant attribute bundleIcon stamps on each
        glyph. Anchored on .icon via the group-composed form so every icon rule shares equal
        specificity and in-block order carries the cascade: appearance-hover swaps before the
-       disabled swap-back, which must win last. `!` keeps the swap in the same importance tier
-       as the icons stylesheet's hidden rule; normal declarations would lose to the icon
-       components' unlayered base classes. */
+       disabled swap-back, which must win last. */
     @variant group-appearance-subtle/fui-button, group-appearance-transparent/fui-button {
       @variant group-hover/fui-button {
         & * {
           @variant variant-filled {
-            @apply inline!;
+            @apply inline;
           }
 
           @variant variant-regular {
-            @apply hidden!;
+            @apply hidden;
           }
         }
       }
@@ -188,11 +186,11 @@
       @variant group-hover-active/fui-button {
         & * {
           @variant variant-filled {
-            @apply inline!;
+            @apply inline;
           }
 
           @variant variant-regular {
-            @apply hidden!;
+            @apply hidden;
           }
         }
       }
@@ -226,21 +224,21 @@
       & * {
         @variant group-hover/fui-button {
           @variant variant-filled {
-            @apply hidden!;
+            @apply hidden;
           }
 
           @variant variant-regular {
-            @apply inline!;
+            @apply inline;
           }
         }
 
         @variant group-hover-active/fui-button {
           @variant variant-filled {
-            @apply hidden!;
+            @apply hidden;
           }
 
           @variant variant-regular {
-            @apply inline!;
+            @apply inline;
           }
         }
       }

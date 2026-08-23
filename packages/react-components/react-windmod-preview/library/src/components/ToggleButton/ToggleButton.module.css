@@ -1,49 +1,5 @@
 @reference '#theme';
 
-/* The icons package pins `[data-fui-icon-hidden] { display: none !important }` into
-   fui.components.l1, and importance inverts cascade-layer order: an important declaration in
-   l2 loses to one in l1 regardless of specificity. Revealing a hidden glyph is therefore only
-   expressible at l1, so the glyph swaps live here while every other rule stays in l2. */
-@layer fui.components.l1 {
-  .icon {
-    @variant group-checked/fui-toggle-button {
-      & * {
-        @variant variant-filled {
-          @apply inline!;
-        }
-
-        @variant variant-regular {
-          @apply hidden!;
-        }
-      }
-    }
-
-    @variant group-disabled/fui-toggle-button, group-disabled-focusable/fui-toggle-button {
-      & * {
-        @variant group-hover/fui-toggle-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-
-        @variant group-hover-active/fui-toggle-button {
-          @variant variant-filled {
-            @apply hidden!;
-          }
-
-          @variant variant-regular {
-            @apply inline!;
-          }
-        }
-      }
-    }
-  }
-}
-
 @layer fui.components.l2 {
   .root {
     @variant appearance-primary {
@@ -225,6 +181,16 @@
       @variant group-accessible/fui-toggle-button {
         @apply text-neutral-foreground-on-brand;
       }
+
+      & * {
+        @variant variant-filled {
+          @apply inline;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
     }
 
     /* The subtle pressed icon colour is a token of its own; the hover colour is the same
@@ -240,6 +206,28 @@
 
       @variant forced-colors {
         @apply text-[GrayText];
+      }
+
+      & * {
+        @variant group-hover/fui-toggle-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
+        }
+
+        @variant group-hover-active/fui-toggle-button {
+          @variant variant-filled {
+            @apply hidden;
+          }
+
+          @variant variant-regular {
+            @apply inline;
+          }
+        }
       }
     }
   }

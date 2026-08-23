@@ -5,14 +5,19 @@ import {
   FluentProvider as GriffelFluentProvider,
   webLightTheme,
 } from '@fluentui/react-components';
-import { bundleIcon as griffelBundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
+import {
+  bundleIcon as griffelBundleIcon,
+  CalendarMonthFilled as GriffelCalendarMonthFilled,
+  CalendarMonthRegular as GriffelCalendarMonthRegular,
+} from '@fluentui/react-icons';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Each side bundles with its own mechanism: headless (data-variant) vs Griffel classic.
+// Each side uses its own atoms and bundler: headless (data-variant) vs Griffel classic.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-const GriffelCalendarMonth = griffelBundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const GriffelCalendarMonth = griffelBundleIcon(GriffelCalendarMonthFilled, GriffelCalendarMonthRegular);
 
 const appearances = ['secondary', 'primary', 'outline', 'subtle', 'transparent'] as const;
 const sizes = ['small', 'medium', 'large'] as const;
