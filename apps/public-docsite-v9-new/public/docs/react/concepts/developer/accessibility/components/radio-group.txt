@@ -67,7 +67,7 @@ Per [WCAG 3.3.2 — Labels or Instructions](https://w3c.github.io/wcag/understan
 
 For radios, the visible label is rendered from the `label` prop. The label slot may contain inline content (text, a `Text` component) or images. It is generally best practice to not include interactive elements in the label — focusable content inside a `<label>` causes the click-to-select behavior to misroute.
 
-For sublabels or extra descriptive text per radio, render the additional text outside the `label` slot and wire it to the radio via `aria-describedby`. The [RadioGroupLabelSubtext](?path=/story/components-radiogroup--label-subtext) story demonstrates this pattern.
+For sublabels or extra descriptive text per radio, render the additional text outside the `label` slot and wire it to the radio via `aria-describedby`. The [RadioGroupLabelSubtext](/react/components/radio-group#label-subtext) story demonstrates this pattern.
 
 ### Field integration
 

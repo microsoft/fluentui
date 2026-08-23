@@ -7,10 +7,17 @@ import { StoryPreview } from './story-preview';
 import { StoryControls, argTypesFromDocgen, resolveControls, useStoryArgs, type ArgTypes } from './story-controls';
 import docgenManifest from '../generated/docgen.json';
 import { StorySource } from './story-source';
+import { toKebab } from '../../scripts/story-route.mjs';
 
-/** Matches the anchor scheme used by the Storybook docs page, so deep links stay stable. */
+/**
+ * Matches the anchor scheme used by the Storybook docs page, so deep links stay stable.
+ *
+ * Storybook derives a story's id by hyphenating the export name (`MotionCustom` becomes
+ * `motion-custom`), which is the form the migrated links use. Lowercasing alone produced
+ * `motioncustom`, so every deep link to an example landed at the top of the page instead.
+ */
 export function nameToHash(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]/gi, '-');
+  return toKebab(name);
 }
 
 type Story = ComponentType<Record<string, unknown>> & {

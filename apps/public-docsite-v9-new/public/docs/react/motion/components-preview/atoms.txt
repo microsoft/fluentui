@@ -61,20 +61,20 @@
 
 <div className="atoms-hero">
   <div className="hero-subtitle">
-    The smallest building blocks in the <a href="?path=/docs/react/introduction">Fluent Motion System</a>. Each atom
-    produces a single animation effect that can be composed into richer motion.
+    The smallest building blocks in the <a href="/react/motion/introduction">Fluent Motion System</a>. Each
+    atom produces a single animation effect that can be composed into richer motion.
   </div>
 </div>
 
 <div className="warning-banner">
   <strong>⚠️ Advanced API:</strong> Atoms are for developers creating custom motion components. For most use cases, use
-  the pre-built <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> like{' '}
+  the pre-built <a href="/react/motion/components-preview/introduction">Motion Components</a> like{' '}
   <code>Fade</code>, <code>Scale</code>, etc.
 </div>
 
 ## What are Motion Atoms?
 
-In the Fluent Motion System's <a href="?path=/docs/react/introduction#an-atomic-motion-system">atomic model</a>, **atoms** are single one-way animations — keyframes changing one property over time. They're the foundation that <a href="?path=/react/motion/components-preview/introduction">Motion Components</a> (molecules) are built from.
+In the Fluent Motion System's <a href="/react/motion/introduction#an-atomic-motion-system">atomic model</a>, **atoms** are single one-way animations — keyframes changing one property over time. They're the foundation that <a href="/react/motion/components-preview/introduction">Motion Components</a> (molecules) are built from.
 
 Each atom is a factory function that returns an `AtomMotion` object — a plain description of keyframes, duration, and easing that the browser can execute directly.
 
@@ -171,7 +171,7 @@ const DynamicSlide = createPresenceComponent(({ element }) => {
 
 ## See Also
 
-- [Motion Components](/react/motion/components-preview/introduction#docs) — Pre-built presence animations (molecules)
-- [createPresenceComponent](/docs/react/create-presence-component#docs) — Factory for presence components
-- [createMotionComponent](/docs/react/create-motion-component#docs) — Factory for one-way motion
-- [Motion Tokens](/react/motion/tokens#docs) — Duration and easing values
+- [Motion Components](/react/motion/components-preview/introduction) — Pre-built presence animations (molecules)
+- [createPresenceComponent](/react/motion/apis/create-presence-component) — Factory for presence components
+- [createMotionComponent](/react/motion/apis/create-motion-component) — Factory for one-way motion
+- [Motion Tokens](/react/motion/tokens) — Duration and easing values

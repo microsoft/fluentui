@@ -2,6 +2,8 @@
 title: Debugging notifications
 ---
 
+import asset0 from '@repo/apps/public-docsite-v9/public/live-region-mutation.webm';
+
 Live region notifications are one of the most temperamental accessibility features, compounded by how difficult they are to debug. A significant part of their functionality is handled within screen reader implementations, and is both undocumented and differs between screen readers. Differences between browsers also tend to be loosely spec'd and undocumented, which means every possible browser + screen reader combination may have unique bugs.
 
 This docs page helps outline a set of steps to determine whether a bug is an authoring issue, a screen reader implementation issue, or not a bug at all.
@@ -59,7 +61,7 @@ If there are multiple `AriaLiveAnnouncer` components in the React tree, there wi
 A quick way to verify whether the live region node or nodes found are being used by the notification you are debugging is to just watch them in the Elements pane to see if they mutate when the notification fires:
 
 <video controls width="600">
-  <source src={require('../../../public/live-region-mutation.webm')} type="video/webm" />
+  <source src={asset0} type="video/webm" />
 </video>
 
 ### Is the live region hidden from the accessibility tree?

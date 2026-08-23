@@ -118,13 +118,18 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 - [x] 6.9 TimePicker's page renders again (6 examples, 30 props, prerendered rather than falling back to client rendering). **Self-inflicted, from 4.4a.** Generated defaults are strings, and for a prop with no default docgen records the literal `"undefined"`; the derived controls passed that through, so the story received `hourCycle="undefined"`. Node's ICU rejects the _string_ "undefined" — the value `undefined` is fine — so `toLocaleTimeString` threw and took the page's content boundary with it. The literals `"undefined"` and `"null"` are now treated as no default.
       Worth recording: the stack pointed into `react-timepicker-compat`, and a fix there looked obvious. Reproducing the throw first showed `hourCycle: undefined` does not throw at all, which is what identified the real cause — otherwise an unrelated published component would have been changed to accommodate a bug introduced here.
 
+- [x] 6.10 `ReferenceError: require is not defined` on three pages resolved. Storybook's webpack build
+      resolved images with `require()` inside JSX; an ES module has no `require`, so those pages threw
+      during prerender and fell back to client rendering. They are now real imports, and the codemod
+      leaves fenced samples alone since a `require()` shown as an example is documentation.
+
 ## 7. Phase 6 — Publish and cross-link
 
 - [ ] 7.0 **Fix the accessibility violations in the examples** found by 7.1 (13 rules). These live in the story files and component implementations, are equally present in Storybook, and are therefore out of scope for the migration itself — but the new site makes them prominent, and publishing documentation that fails its own accessibility bar is worth resolving before or shortly after launch. Ownership sits with the component teams.
 
 - [x] 7.1 Full accessibility and link audit across every page. Links: 11,297 across 201 pages, all resolve. Accessibility (`audit:a11y`, a sweep rather than a gate — too slow to run per commit): 13 rules violated at serious/critical, all inside the rendered examples rather than the docs chrome — missing form labels, unnamed progressbars, unnamed buttons, scrollable regions without keyboard access. Provenance verified rather than assumed: headless ProgressBar reports `aria-progressbar-name` identically in Storybook and on the new site, so these are pre-existing defects in the examples that the migration surfaces but does not cause. The per-commit chrome gate stays green.
 - [x] 7.1a Simulated the GitHub Pages deploy exactly as the workflow performs it: assembled the `_pages` artifact, copied the built site into `_pages/docs`, and served the result as static files. `/docs/react/components/button/` and `/docs/headless/components/accordion/` return 200 with examples and props tables, zero 404s and zero console errors; `llms.txt`, the search index and per-page text all serve; and the existing `/headless` Storybook still returns 200 alongside, confirming the new tree does not disturb it. Previously only local dev/preview had been exercised.
-- [x] 7.2 Content parity checked mechanically rather than by sampling (`audit:parity`), comparing every component Storybook indexes against the examples the new site publishes. Headless: 53/53 components, every story present. React: 99/123, the 24 absent being the 23 migration shims and `useUncontrolledFocus`, all excluded by design because they render v8/v0 components.
+- [x] 7.2 Content parity checked mechanically rather than by sampling (`audit:parity`), comparing every component Storybook indexes against the examples the new site publishes. Headless: 53/53 components, every story present. React: 99/123, the 24 absent being the 23 migration shims and `useUncontrolledFocus`, all excluded by design because they render v8/v0 components. (Held at 99 only after 6.11 below: the page for `Concepts/Developer/Positioning Components` was in fact absent, so this figure was briefly wrong.)
       Accepted divergence: Concepts/Developer/Accessibility/Scenarios publishes none of its 20 stories inline. That matches Storybook, where the page is MDX linking to stories marked `!autodocs` rather than embedding them — though those links point at Storybook story URLs and are worth revisiting.
 - [x] 7.2a **Include the Storybook docsite's own stories.** Parity revealed 10 entry points under `apps/public-docsite-v9/src` — focus-management and theme utilities, positioning concepts, accessibility scenarios — that the generator never scanned because it only looked at component packages. They appear in Storybook's sidebar like any other page and had been silently dropped. Nine are now generated; `useUncontrolledFocus` is excluded because its example renders v8's `FocusTrapZone`.
 - [ ] 7.3 Link the new site from the repository README and docs entry points. **Deliberately deferred to launch:** linking to a site that is published but unannounced is fine; linking before it is actually deployed to Pages is not.
@@ -132,3 +137,47 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 - [x] 7.5 No existing published address changed and no redirect was introduced. The deploy workflow still copies the four existing trees to `_pages/react`, `_pages/charts`, `_pages/web-components` and `_pages/headless` unchanged; the new site only adds `_pages/docs`.
 - [x] 7.6 Documented where documentation now lives and how to author it: a README for the app covering the no-duplication model, the gates, the one-shot generators and the deliberate exclusions, plus an AGENTS.md entry stating that examples are changed in their story, never in the docs site.
 - [ ] 7.7 Add beachball change files for all touched published packages
+
+## 8. Defects found by closing gaps in the checks
+
+- [x] 8.1 **The link checker never looked at anchored links.** Its pattern was `href="(/docs/[^"#?]*)"`,
+      and a class excluding `#` makes an href containing one fail to match at all rather than match its
+      path — so every anchored link was skipped in silence. "~12k links resolve" overstated what was
+      actually being checked. Fixing the pattern immediately surfaced 21 broken links that had been
+      reported clean.
+- [x] 8.2 **Doubled `/docs` prefix.** Component routes were registered as `/docs/<tree>/...` while page
+      routes used `/<tree>/...`; the router adds the basename itself, so 18 links resolved to
+      `/docs/docs/...`.
+- [x] 8.3 **Four derivations of one path.** `generate-pages.mjs` derived a page's path from `meta.title`,
+      while `migrate-mdx.mjs` derived links to that page from the story's _directory_ — so
+      `Components/Accordion` was linked as `/react/accordion` but generated at
+      `/react/components/accordion`. `component-page.tsx` and `audit-parity.mjs` each had a third and
+      fourth copy of the anchor rule. All four now use `scripts/story-route.mjs`, which has tests
+      (`yarn test`, 23 -> 33) because the paths and anchors of the whole site depend on it.
+- [x] 8.4 **Anchors did not match Storybook's ids, contrary to the comment claiming they did.**
+      `nameToHash` lowercased the export name, giving `motioncustom` where Storybook uses
+      `motion-custom`, so every migrated deep link landed at the top of the page.
+- [x] 8.5 **`?path=` links.** 17 links kept Storybook's query-string form and resolved against the
+      current page. A related rule had been placed before the rewrite that produces the route it looks
+      for, so it matched nothing until it was moved after it.
+- [x] 8.6 **Fragments are now verified, not just paths.** A fragment matching no element leaves the
+      reader at the top of the page with no sign anything is wrong. Three remained after the rewrites:
+      two were Storybook's shorter anchor form and are now resolved against the real heading slugs;
+      `#linkTBA` is a placeholder its author left for undocumented API, dead on Storybook too, and is
+      listed as a known-dead fragment rather than invented a target for.
+- [x] 8.7 **A page was missing entirely.** `Concepts/Developer/Positioning Components` had no page;
+      parity reported 98/123 rather than the 99/123 recorded at 7.2, at HEAD as well as here, so the
+      note had been inaccurate for some time. Now generated, rendering 16 examples. Its heading also
+      showed why titles come from the directory rather than `meta.title` — `AvatarGroup` reads better
+      as "Avatar Group" — so `meta.title` is used only where it says something genuinely different,
+      as here ("Positioning" vs "Positioning Components").
+
+### Mistakes made while doing the above, kept as warnings
+
+- Deleting generated directories to force regeneration destroyed 14 pages, because `migrate-mdx.mjs`
+  and `generate-pages.mjs` are one-shot codemods whose output is committed and hand-editable, not
+  build steps. Recovered with `git checkout`; the diff is now inspected by category instead.
+- An import was inserted into `generate-pages.mjs` by finding the last `import` line, which was inside
+  the template literal for generated pages. That broke the generator and would have written a bogus
+  import into every page it produced. Nothing caught it: one-shot scripts are outside type-check and
+  the tests. It was found only by running the script.

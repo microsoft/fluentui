@@ -2,6 +2,8 @@
 title: Theming
 ---
 
+import asset0 from '@repo/apps/public-docsite-v9/public/brand-ramp-example.png';
+
 The Fluent UI Theme is represented by a set of tokens. Each token resolves to a single value which can be assigned to a CSS property.
 
 ```tsx
@@ -20,7 +22,7 @@ No matter what theme is used, the component styles are always the same. The only
 
 Those tokens are resolved to CSS variables. The `FluentProvider` component is responsible for setting the values of the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
 
-Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CSS variables to React portals created with [Portal component](/docs/react/portal).
+Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CSS variables to React portals created with [Portal component](/react/components/portal).
 
 ```jsx
 import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
@@ -49,7 +51,7 @@ export Component = props => {
 }
 ```
 
-For more details, see [Styling components](/react/concepts/developer/styling-components#docs).
+For more details, see [Styling components](/react/concepts/developer/styling-components).
 
 ### Do not use CSS variables directly
 
@@ -80,7 +82,7 @@ Applications can customize a theme in multiple ways.
 
 The brand ramp is a color ramp going from dark to light colors:
 
-<img className="sbdocs-img" src={require('../../public/brand-ramp-example.png')} alt="Example of a brand ramp" />
+<img className="sbdocs-img" src={asset0} alt="Example of a brand ramp" />
 
 A theme is derived from a brand ramp. To use a theme with a custom brand ramp, instead of importing a predefined theme, you can use theme factory functions.
 

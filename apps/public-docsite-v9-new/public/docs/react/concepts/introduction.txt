@@ -2,22 +2,22 @@
 
 <img
   className="sbdocs-img"
-  src={require('../../public/fluentui-wide-banner.webp')}
+  src={asset0}
   alt="An image of many user interface component designs."
 />
 
 <WhatsNewBoxes
   boxes={[
     {
-      image: require('../../public/lightweight.svg'),
+      image: asset1,
       text: 'Lightweight components for smaller bundle size and faster performance.',
     },
     {
-      image: require('../../public/tokens.svg'),
+      image: asset2,
       text: 'New tokens system for frictionless cohesion across OS themes.',
     },
     {
-      image: require('../../public/spring.svg'),
+      image: asset3,
       text: 'New assets to level up Teams add-ins and M365 experiences.',
     },
   ]}

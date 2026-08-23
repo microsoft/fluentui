@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { toKebab } from './story-route.mjs';
 
 /**
  * Content parity check against the Storybook docsite.
@@ -92,7 +93,7 @@ for (const [title, stories] of byTitle) {
   compared++;
 
   // Examples render as headings whose id is the story name, lowercased and hyphenated.
-  const absent = stories.filter(name => !html.includes(`id="${name.toLowerCase().replace(/[^a-z0-9]+/gi, '-')}"`));
+  const absent = stories.filter(name => !html.includes(`id="${toKebab(name)}"`));
 
   if (absent.length > 0) {
     missingExamples.push({ title, absent, total: stories.length });

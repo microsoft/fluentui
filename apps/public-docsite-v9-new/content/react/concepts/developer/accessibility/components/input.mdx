@@ -111,7 +111,7 @@ The button is reached by <kbd>Tab</kbd> after the input (or before it, if placed
 </Field>
 ```
 
-This is the consumer's responsibility — `Input` does not infer the accessible name from `contentBefore` / `contentAfter`. The [ContentBeforeAfter](?path=/story/components-input--content-before-after) story demonstrates all three patterns.
+This is the consumer's responsibility — `Input` does not infer the accessible name from `contentBefore` / `contentAfter`. The [ContentBeforeAfter](/react/components/input#content-before-after) story demonstrates all three patterns.
 
 #### Disabled
 
@@ -123,7 +123,7 @@ Focusable content placed in `contentBefore` / `contentAfter` is **not** automati
 
 #### Validation
 
-When `Input` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<input>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<input>` ([useInputStyles.styles.ts:336](packages/react-components/react-input/library/src/components/Input/useInputStyles.styles.ts#L336)), so styling and ARIA stay in sync.
+When `Input` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<input>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<input>` ([useInputStyles.styles.ts:336](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-input/library/src/components/Input/useInputStyles.styles.ts#L336)), so styling and ARIA stay in sync.
 
 The error **message** itself is not provided by `Input`. Use `Field`'s `validationMessage` (which is automatically wired into `aria-describedby`), or wire your own message element via `aria-describedby`. An `aria-invalid` value with no accompanying description tells the user the field is invalid but does not tell them why.
 

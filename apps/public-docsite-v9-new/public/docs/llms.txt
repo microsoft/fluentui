@@ -154,6 +154,7 @@
 - [Build time styles](/docs/react/concepts/developer/build-time-styles.txt)
 - [Building Custom Controls](/docs/react/concepts/developer/building-custom-controls.txt)
 - [Customizing Components with Slots](/docs/react/concepts/developer/customizing-components-with-slots.txt)
+- [Positioning Components](/docs/react/concepts/developer/positioning-components.txt)
 - [Quick Start](/docs/react/concepts/developer/quick-start.txt)
 - [React Version Support](/docs/react/concepts/developer/react-version-support.txt)
 - [Basic setup](/docs/react/concepts/developer/server-side-rendering/basic-setup.txt)

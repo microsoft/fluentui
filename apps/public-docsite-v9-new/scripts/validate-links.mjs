@@ -36,6 +36,15 @@ async function* walk(dir) {
   }
 }
 
+/**
+ * Fragments that are known to point at nothing, with the reason.
+ *
+ * `#linkTBA` is a placeholder left by the page's author for a hook that has no documentation
+ * yet. It is equally dead on the Storybook docsite. Inventing a target here would be worse
+ * than leaving the authoring task visible, so it is listed rather than rewritten.
+ */
+const KNOWN_DEAD_FRAGMENTS = new Set(['/docs/react/concepts/developer/accessibility/debugging-notifications#linkTBA']);
+
 /** Every route the site actually serves, as a set of `/docs/...` paths. */
 async function collectRoutes() {
   const routes = new Set();
@@ -57,10 +66,16 @@ for await (const file of walk(DOCS_ROOT)) {
   const from = file.slice(distRoot.length).replace(/\/index\.html$/, '');
   pages++;
 
-  for (const [, href] of html.matchAll(/href="(\/docs\/[^"#?]*)"/g)) {
+  /*
+   * The fragment and query are captured separately rather than excluded from the match:
+   * a class of `[^"#?]` makes any anchored link fail to match at all, so they were skipped
+   * silently and 21 broken ones went unreported.
+   */
+  for (const [, href] of html.matchAll(/href="(\/docs\/[^"]*)"/g)) {
     links++;
 
-    const target = href.replace(/\/$/, '');
+    const target = href.replace(/[#?].*$/, '').replace(/\/$/, '');
+    const fragment = href.match(/#([^?]+)/)?.[1];
 
     // Assets are files, not routes; verify them on disk instead.
     if (/\.[a-z0-9]+$/i.test(target)) {
@@ -68,6 +83,24 @@ for await (const file of walk(DOCS_ROOT)) {
         continue;
       }
     } else if (routes.has(target)) {
+      /*
+       * A fragment that matches no element leaves the reader at the top of the page with no
+       * indication anything is wrong, so the anchor is verified too, not just the path.
+       */
+      if (!fragment || KNOWN_DEAD_FRAGMENTS.has(`${target}#${fragment}`)) {
+        continue;
+      }
+
+      const targetHtml = await readFile(join(distRoot, target, 'index.html'), 'utf8');
+
+      if (targetHtml.includes(`id="${fragment}"`)) {
+        continue;
+      }
+
+      if (!broken.has(`${target}#${fragment}`)) {
+        broken.set(`${target}#${fragment}`, new Set());
+      }
+      broken.get(`${target}#${fragment}`).add(from);
       continue;
     }
 

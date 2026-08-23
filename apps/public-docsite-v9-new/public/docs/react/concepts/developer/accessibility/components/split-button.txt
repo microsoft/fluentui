@@ -2,7 +2,7 @@
 
 `SplitButton` is a composite control: it pairs a primary action `Button` with a secondary `MenuButton` that opens a menu of related variations on that action. The two buttons are visually joined but are independently focusable and independently activatable.
 
-`SplitButton` is composed of `Button` and `MenuButton`, and inherits all of their accessibility behavior. This spec only covers what is **specific** to the composite. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](/react/concepts/developer/accessibility/components/button#docs) and the [MenuButton Accessibility Spec](/react/concepts/developer/accessibility/components/menu-button#docs).
+`SplitButton` is composed of `Button` and `MenuButton`, and inherits all of their accessibility behavior. This spec only covers what is **specific** to the composite. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](/react/concepts/developer/accessibility/components/button) and the [MenuButton Accessibility Spec](/react/concepts/developer/accessibility/components/menu-button).
 
 ## Usage
 
@@ -46,7 +46,7 @@ This wires the menu half to the popup correctly (`aria-haspopup`, `aria-expanded
 The two halves of `SplitButton` need separate accessible names because they are separate focusable controls.
 
 - The **primary action button** is labelled the same way any `Button` is labelled — usually by its visible text content, or by `aria-label` if there is none.
-- The **menu button** is labelled by the primary action button by default. `useSplitButton_unstable` assigns `id` to the primary action button and sets `aria-labelledby` on the menu button to point at it, **only** if the consumer has not already provided `aria-label` or `aria-labelledby` on the `menuButton` slot ([useSplitButton.ts:62-69](packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L62-L69)).
+- The **menu button** is labelled by the primary action button by default. `useSplitButton_unstable` assigns `id` to the primary action button and sets `aria-labelledby` on the menu button to point at it, **only** if the consumer has not already provided `aria-label` or `aria-labelledby` on the `menuButton` slot ([useSplitButton.ts:62-69](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L62-L69)).
 
 This default produces a useful fallback announcement: a screen reader announces the menu half with the primary action's text plus the role ("menu button") and the `aria-expanded` state. For the "Send" example, without an `aria-label` the menu button would be announced as "Send, menu button, collapsed".
 
@@ -54,13 +54,13 @@ It is good practice to provide a more descriptive, localized, custom accessible 
 
 #### Disabled state
 
-Setting `disabled` or `disabledFocusable` on `SplitButton` cascades down to both the primary action button and the menu button via the slot default props ([useSplitButton.ts:32-58](packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L32-L58)). The two halves cannot be independently disabled at the top level — to disable only one, pass `disabled` directly on the `primaryActionButton` or `menuButton` slot.
+Setting `disabled` or `disabledFocusable` on `SplitButton` cascades down to both the primary action button and the menu button via the slot default props ([useSplitButton.ts:32-58](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L32-L58)). The two halves cannot be independently disabled at the top level — to disable only one, pass `disabled` directly on the `primaryActionButton` or `menuButton` slot.
 
 The visual disabled styling is applied to both halves, plus a disabled border color on the inner seam between them so the visual joinery still reads as disabled.
 
 #### Target size
 
-The menu half of `SplitButton` is narrower than a standalone `MenuButton` because it does not render text. To meet [WCAG 2.5.8 Target Size (Minimum)](https://w3c.github.io/wcag/understanding/target-size-minimum.html), the styles enforce a minimum width of 24px on the menu button via the `MIN_TARGET_SIZE` constant ([useSplitButtonStyles.styles.ts:17](packages/react-components/react-button/library/src/components/SplitButton/useSplitButtonStyles.styles.ts#L17)).
+The menu half of `SplitButton` is narrower than a standalone `MenuButton` because it does not render text. To meet [WCAG 2.5.8 Target Size (Minimum)](https://w3c.github.io/wcag/understanding/target-size-minimum.html), the styles enforce a minimum width of 24px on the menu button via the `MIN_TARGET_SIZE` constant ([useSplitButtonStyles.styles.ts:17](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/src/components/SplitButton/useSplitButtonStyles.styles.ts#L17)).
 
 When overriding layout styles, authors must verify that **both** halves remain at least 24×24 CSS pixels. This is especially relevant for the menu half at the `small` size, where it is closest to the minimum.
 

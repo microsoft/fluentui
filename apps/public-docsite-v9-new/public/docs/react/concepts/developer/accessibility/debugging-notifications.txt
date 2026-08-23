@@ -57,7 +57,7 @@ If there are multiple `AriaLiveAnnouncer` components in the React tree, there wi
 A quick way to verify whether the live region node or nodes found are being used by the notification you are debugging is to just watch them in the Elements pane to see if they mutate when the notification fires:
 
 <video controls width="600">
-  <source src={require('../../../public/live-region-mutation.webm')} type="video/webm" />
+  <source src={asset0} type="video/webm" />
 </video>
 
 ### Is the live region hidden from the accessibility tree?

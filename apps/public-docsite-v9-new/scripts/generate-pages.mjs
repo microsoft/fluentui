@@ -2,6 +2,8 @@ import { mkdirSync, readdirSync, existsSync, readFileSync, writeFileSync } from 
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { storySlug, storyTitle, toKebab } from './story-route.mjs';
+
 /**
  * One-shot page generator (design D4).
  *
@@ -56,20 +58,6 @@ function entryFile(root, segments) {
 }
 
 /** `TeachingPopover` -> `teaching-popover`; used for both the slug and the file name. */
-function toKebab(name) {
-  return (
-    name
-      .trim()
-      // `TeachingPopover` -> `Teaching-Popover`
-      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-      // `ARIALive` -> `ARIA-Live`, but leave `APIs` intact (one trailing lowercase is a plural)
-      .replace(/([A-Z]+)([A-Z][a-z]{2,})/g, '$1-$2')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '')
-  );
-}
-
 /** `TeachingPopover` -> `Teaching Popover`, for the page title. */
 function toTitle(name) {
   return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
@@ -162,15 +150,17 @@ for (const { dir: storiesDir, specifier: rootSpecifier } of resolveStoryRoots())
      * paths from directories alone flattened every component to the root and lost it.
      */
     const source = readFileSync(join(storiesDir, ...segments, entryFile(storiesDir, segments)), 'utf8');
-    const titleMatch = source.match(/title:\s*'([^']+)'|title:\s*"([^"]+)"/);
-    const titleSegments = (titleMatch?.[1] ?? titleMatch?.[2] ?? name).split('/').map(s => s.trim());
+    const slug = storySlug(source, name);
 
-    // `Components/Button/Button` presents as Components > Button; keep the path that shape.
-    if (titleSegments.length > 1 && titleSegments.at(-1) === titleSegments.at(-2)) {
-      titleSegments.pop();
-    }
-
-    const slug = titleSegments.map(toKebab).join('/');
+    /*
+     * The directory name, spaced out, is the better heading where the two agree on wording:
+     * `AvatarGroup` reads as "Avatar Group". `meta.title` is only preferred when it says
+     * something genuinely different — `Concepts/Developer/Positioning Components` lives in a
+     * directory called `Positioning`, and the extra word belongs in the heading.
+     */
+    const metaTitle = storyTitle(source)?.split('/').at(-1)?.trim();
+    const sameWording = metaTitle && toKebab(metaTitle) === toKebab(name);
+    const pageTitle = !metaTitle || sameWording ? toTitle(name) : metaTitle;
 
     /*
      * Skip entry points whose examples render v8/v0 components — importing those libraries
@@ -210,7 +200,7 @@ for (const { dir: storiesDir, specifier: rootSpecifier } of resolveStoryRoots())
     writeFileSync(
       outFile,
       `---
-title: ${toTitle(name)}
+title: ${pageTitle}
 ---
 
 import meta, * as stories from '${specifier}';

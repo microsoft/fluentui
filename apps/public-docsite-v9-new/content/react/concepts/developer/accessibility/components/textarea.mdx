@@ -94,7 +94,7 @@ When disabled, the focus underline animation and focus outline are suppressed, t
 
 #### Validation
 
-When `Textarea` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<textarea>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<textarea>` ([useTextareaStyles.styles.ts:227](packages/react-components/react-textarea/library/src/components/Textarea/useTextareaStyles.styles.ts#L227)), so styling and ARIA state stay in sync.
+When `Textarea` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<textarea>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<textarea>` ([useTextareaStyles.styles.ts:227](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-textarea/library/src/components/Textarea/useTextareaStyles.styles.ts#L227)), so styling and ARIA state stay in sync.
 
 The error **message** itself is not provided by `Textarea`. Use `Field`'s `validationMessage` (which is automatically wired into `aria-describedby`), or wire your own message element via `aria-describedby`. An `aria-invalid` value with no accompanying description tells the user the field is invalid but does not tell them why.
 
@@ -106,7 +106,7 @@ When using `maxLength` to cap the value, consider also exposing a visible charac
 
 Do **not** put `aria-live="polite"` (or any other live region) directly on the counter element. Firing a live region while the user is actively typing collides with the screen reader's native keyboard echo — the reader is already announcing each typed character, and a simultaneous live-region update either gets dropped, gets queued behind every keystroke, or talks over the echo. As a rule, **never trigger a live-region announcement at the same time the user is typing.**
 
-Instead, use the [`useTypingAnnounce`](https://storybooks.fluentui.dev/react/?path=/docs/react/use-typing-announce) utility, which is designed for exactly this case. It debounces announcements so they fire only after the user pauses typing, which lets the screen reader's typing echo finish without interference and avoids flooding the live region with every keystroke. Trigger it when the remaining character count crosses a meaningful threshold (for example, the last 20 characters), not on every input event.
+Instead, use the [`useTypingAnnounce`](https://storybooks.fluentui.dev/react/?path=/react/utilities/aria-live/use-typing-announce) utility, which is designed for exactly this case. It debounces announcements so they fire only after the user pauses typing, which lets the screen reader's typing echo finish without interference and avoids flooding the live region with every keystroke. Trigger it when the remaining character count crosses a meaningful threshold (for example, the last 20 characters), not on every input event.
 
 `maxLength` itself is a native attribute on `<textarea>` and is enforced by the browser — additional characters past the limit are silently dropped, which can be confusing without a visible counter.
 

@@ -2,27 +2,28 @@
 title: Introduction
 ---
 
+import asset0 from '@repo/apps/public-docsite-v9/public/fluentui-wide-banner.webp';
+import asset1 from '@repo/apps/public-docsite-v9/public/lightweight.svg';
+import asset2 from '@repo/apps/public-docsite-v9/public/tokens.svg';
+import asset3 from '@repo/apps/public-docsite-v9/public/spring.svg';
+
 import pkg from '@fluentui/react-components/package.json';
 import { WhatsNewBoxes } from '@repo/apps/public-docsite-v9/src/Concepts/components/WhatsNewBoxes';
 
-<img
-  className="sbdocs-img"
-  src={require('../../public/fluentui-wide-banner.webp')}
-  alt="An image of many user interface component designs."
-/>
+<img className="sbdocs-img" src={asset0} alt="An image of many user interface component designs." />
 
 <WhatsNewBoxes
   boxes={[
     {
-      image: require('../../public/lightweight.svg'),
+      image: asset1,
       text: 'Lightweight components for smaller bundle size and faster performance.',
     },
     {
-      image: require('../../public/tokens.svg'),
+      image: asset2,
       text: 'New tokens system for frictionless cohesion across OS themes.',
     },
     {
-      image: require('../../public/spring.svg'),
+      image: asset3,
       text: 'New assets to level up Teams add-ins and M365 experiences.',
     },
   ]}
