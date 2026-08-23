@@ -106,11 +106,21 @@ state.root.className = mergeClasses(
 
 ## Package Layout
 
-| Area           | Path                         | Status             |
-| -------------- | ---------------------------- | ------------------ |
-| V9 components  | `packages/react-components/` | Active development |
-| V8 components  | `packages/react/`            | Maintenance only   |
-| Web Components | `packages/web-components/`   | Active             |
-| Charting       | `packages/charts/`           | Active             |
-| Build tooling  | `tools/`                     | Active             |
-| ESLint plugin  | `packages/eslint-plugin/`    | Active             |
+| Area           | Path                          | Status             |
+| -------------- | ----------------------------- | ------------------ |
+| V9 components  | `packages/react-components/`  | Active development |
+| V8 components  | `packages/react/`             | Maintenance only   |
+| Web Components | `packages/web-components/`    | Active             |
+| Charting       | `packages/charts/`            | Active             |
+| Build tooling  | `tools/`                      | Active             |
+| ESLint plugin  | `packages/eslint-plugin/`     | Active             |
+| Docs site      | `apps/public-docsite-v9-new/` | Active (Fumadocs)  |
+
+## Documentation
+
+Component documentation is being migrated from Storybook to a Fumadocs site at
+`apps/public-docsite-v9-new` (see its README). Both are published: the Storybook docsites
+remain at their current addresses, the new site at `/docs/react` and `/docs/headless`.
+
+**Examples are never duplicated.** The site imports the same `*.stories.tsx` modules
+Storybook does. To change an example, change its story — no docs-site edit is needed.

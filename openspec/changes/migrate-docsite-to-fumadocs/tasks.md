@@ -117,6 +117,6 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
 - [ ] 7.2 Review a sample of pages against the current Storybook for content parity; record accepted divergences
 - [ ] 7.3 Link the new site from the repository README and docs entry points
 - [ ] 7.4 Add a deprecation notice to the Storybook documentation experience linking to the new site; confirm every Storybook page remains reachable and functional
-- [ ] 7.5 Confirm no existing published address changed and no redirect was introduced
-- [ ] 7.6 Update `AGENTS.md` and `docs/` to describe where documentation now lives and how to author it
+- [x] 7.5 No existing published address changed and no redirect was introduced. The deploy workflow still copies the four existing trees to `_pages/react`, `_pages/charts`, `_pages/web-components` and `_pages/headless` unchanged; the new site only adds `_pages/docs`.
+- [x] 7.6 Documented where documentation now lives and how to author it: a README for the app covering the no-duplication model, the gates, the one-shot generators and the deliberate exclusions, plus an AGENTS.md entry stating that examples are changed in their story, never in the docs site.
 - [ ] 7.7 Add beachball change files for all touched published packages
