@@ -1,10 +1,6 @@
 # Introduction
 
-<img
-  className="sbdocs-img"
-  src={asset0}
-  alt="An image of many user interface component designs."
-/>
+<img className="sbdocs-img" src={asset0} alt="An image of many user interface component designs." />
 
 <WhatsNewBoxes
   boxes={[

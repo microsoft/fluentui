@@ -17,6 +17,7 @@
     "preview": "vite preview",
     "test": "node --test scripts/docgen-transforms.test.mjs scripts/story-order-core.test.mjs scripts/story-route.test.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "test:render": "node --test scripts/rendering.test.mjs",
     "test:content": "node scripts/audit-content.mjs",
     "test:links": "node scripts/validate-links.mjs",
     "type-check": "react-router typegen && tsc --noEmit"

@@ -199,3 +199,25 @@ Exit criterion: `docsite/site-navigation` scenarios pass.
   the template literal for generated pages. That broke the generator and would have written a bogus
   import into every page it produced. Nothing caught it: one-shot scripts are outside type-check and
   the tests. It was found only by running the script.
+
+## 9. Every page was blank
+
+- [x] 9.1 **The site rendered no content at all, and every gate passed.** `tabMode="top"` renders the
+      tree switcher into the same grid area as the page itself (`[grid-area:main]`). Neither element
+      sets `align-self`, so both stretched to fill the row: the switcher became a 23,936px bar with an
+      opaque background and `z-10`, painted over the article on all 209 pages. Fixed with one rule
+      giving the switcher its own height. Present in fumadocs-ui 16.14.4 and unchanged in 16.15.1, so
+      it is worth reporting upstream.
+- [x] 9.2 **Why nothing caught it.** Every check reads the DOM, and the DOM was correct throughout:
+      links resolved, content audits passed, axe was satisfied, parity matched. Presence was never the
+      property that mattered. `yarn test:render` now asserts that a page's heading is the element you
+      actually hit at its own coordinates, and that a page-appropriate amount of text is visible.
+      Verified by removing the fix and watching all four pages fail with the covering element named.
+- [ ] 9.3 **Descriptions render as raw Markdown on 127 of 209 pages** — literal `##`, `###` and
+      backticks in the component description. `.md` imports become strings, matching Storybook's
+      `asset/source` rule, but Storybook then renders that string as Markdown while the page prints it
+      as text. The rule mirrored the input and not the output.
+- [ ] 9.4 The `/react` and `/headless` landing pages carry two near-duplicate sentences
+      ("Documentation for Fluent UI React v9 components." / "Documentation for Fluent UI React v9.")
+      and little else, and their sidebar shows only the Storybook link while component pages show
+      Charts and Migration guides too.

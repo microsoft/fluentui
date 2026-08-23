@@ -61,15 +61,15 @@
 
 <div className="atoms-hero">
   <div className="hero-subtitle">
-    The smallest building blocks in the <a href="/react/motion/introduction">Fluent Motion System</a>. Each
-    atom produces a single animation effect that can be composed into richer motion.
+    The smallest building blocks in the <a href="/react/motion/introduction">Fluent Motion System</a>. Each atom
+    produces a single animation effect that can be composed into richer motion.
   </div>
 </div>
 
 <div className="warning-banner">
   <strong>⚠️ Advanced API:</strong> Atoms are for developers creating custom motion components. For most use cases, use
-  the pre-built <a href="/react/motion/components-preview/introduction">Motion Components</a> like{' '}
-  <code>Fade</code>, <code>Scale</code>, etc.
+  the pre-built <a href="/react/motion/components-preview/introduction">Motion Components</a> like <code>Fade</code>,{' '}
+  <code>Scale</code>, etc.
 </div>
 
 ## What are Motion Atoms?

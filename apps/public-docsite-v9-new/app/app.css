@@ -43,3 +43,17 @@
 .dark {
   --color-fd-muted-foreground: oklch(78% 0.02 264);
 }
+
+/*
+ * `tabMode="top"` renders the tree switcher into the same grid area as the page itself
+ * (`[grid-area:main]`, fumadocs-ui 16.14.4 and still in 16.15.1). Neither element sets
+ * `align-self`, so both stretch to fill the row: the switcher becomes a full-height bar with an
+ * opaque background and `z-10`, painted over every page on the site. The content was present and
+ * correct in the DOM the whole time, which is why it passed the DOM-based checks.
+ *
+ * The switcher only ever needs its own height. `article` is excluded so the page still fills the
+ * row. Remove this once the upstream layout stops sharing the area.
+ */
+#nd-docs-layout > div[class*='grid-area:main'] {
+  align-self: start;
+}
