@@ -303,6 +303,16 @@
         "default": "./lib-commonjs/switch.cjs"
       }
     },
+    "./tag": {
+      "import": {
+        "types": "./dist/tag.d.ts",
+        "default": "./lib/tag.js"
+      },
+      "require": {
+        "types": "./dist/tag.d.cts",
+        "default": "./lib-commonjs/tag.cjs"
+      }
+    },
     "./textarea": {
       "import": {
         "types": "./dist/textarea.d.ts",

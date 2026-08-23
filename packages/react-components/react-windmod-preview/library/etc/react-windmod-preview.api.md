@@ -87,6 +87,7 @@ import { renderSlider } from '@fluentui/react-headless-components-preview/slider
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { renderSwitch } from '@fluentui/react-headless-components-preview/switch';
+import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -112,6 +113,10 @@ import type { SplitButtonState as SplitButtonState_2 } from '@fluentui/react-hea
 import type { SwitchProps as SwitchProps_2 } from '@fluentui/react-headless-components-preview/switch';
 import { SwitchSlots } from '@fluentui/react-headless-components-preview/switch';
 import type { SwitchState as SwitchState_2 } from '@fluentui/react-headless-components-preview/switch';
+import { TagContextValues } from '@fluentui/react-headless-components-preview/tag';
+import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
+import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
+import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -160,6 +165,8 @@ import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { useSwitch } from '@fluentui/react-headless-components-preview/switch';
+import { useTag } from '@fluentui/react-headless-components-preview/tag';
+import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
@@ -669,6 +676,8 @@ export { renderSplitButton }
 
 export { renderSwitch }
 
+export { renderTag }
+
 export { renderTextarea }
 
 export { renderToggleButton }
@@ -842,6 +851,37 @@ export { SwitchSlots }
 
 // @public
 export type SwitchState = SwitchState_2 & Required<Pick<SwitchProps, 'size'>>;
+
+// @public
+export const Tag: ForwardRefComponent<TagProps>;
+
+// @public
+export type TagAppearance = 'filled' | 'outline' | 'brand';
+
+// @public
+export const tagClassNames: {
+    root: string;
+};
+
+export { TagContextValues }
+
+// @public
+export type TagProps = TagProps_2 & {
+    appearance?: TagAppearance;
+    shape?: TagShape;
+    size?: TagSize;
+};
+
+// @public
+export type TagShape = 'rounded' | 'circular';
+
+// @public
+export type TagSize = 'extra-small' | 'small' | 'medium';
+
+export { TagSlots }
+
+// @public
+export type TagState = TagState_2 & Required<Pick<TagProps, 'appearance' | 'shape' | 'size'>>;
 
 export { teamsDarkThemeClassName }
 
@@ -1063,6 +1103,13 @@ export { useSwitch }
 
 // @public
 export const useSwitchStyles: (state: SwitchState) => SwitchState;
+
+export { useTag }
+
+export { useTagContextValues }
+
+// @public
+export const useTagStyles: (state: TagState) => TagState;
 
 export { useTextarea }
 

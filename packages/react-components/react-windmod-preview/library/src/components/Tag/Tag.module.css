@@ -1,0 +1,195 @@
+@reference '#theme';
+
+/* Block order carries the cascade: `.circular`, the two appearance blocks, `.selected` and the
+   two structural padding blocks all override `.root` at equal specificity, so the order here is
+   the merge order the visual contract requires. `.outline` and `.brand` each re-assert the
+   disabled look they would otherwise win back from `.root`.
+
+   `position: relative` is confined to the extra-small and forced-colors blocks — an
+   unconditional `relative` would make every root a containing block for a consumer's
+   absolutely-positioned child. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply box-border inline-grid w-fit [appearance:button] items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 [text-align:unset] font-[inherit] text-neutral-foreground-2;
+
+    grid-template-areas:
+      'media primary dismissIcon'
+      'media secondary dismissIcon';
+
+    @variant disabled {
+      @apply cursor-not-allowed border-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant size-medium {
+      @apply h-32;
+    }
+
+    @variant size-small {
+      @apply h-24;
+    }
+
+    @variant size-extra-small {
+      @apply relative h-20;
+
+      /* Extends the pointer target to the WCAG 2.2 AA minimum without changing the
+         painted box; the pseudo-elements carry no paint. */
+      @media (forced-colors: none) {
+        @variant before, after {
+          @apply absolute start-0 h-2 w-full content-[''];
+        }
+
+        @variant before {
+          @apply bottom-full;
+        }
+
+        @variant after {
+          @apply top-full;
+        }
+      }
+    }
+
+    @variant focus-visible {
+      @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+    }
+
+    /* A Tag with secondary text gives its primary text a negative margin that covers the
+       top border, so high contrast redraws that edge on a pseudo-element. That edge is a
+       PARTIAL border, so its sides come from per-side width utilities: `border-solid` here
+       would set the style on all four sides and inflate the three unset ones from 0 to the
+       medium initial width. The same holds for `.circular`'s inline sides. */
+    @variant forced-colors {
+      @apply relative;
+
+      @variant before {
+        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin) content-[''];
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+
+    @variant forced-colors {
+      @variant before {
+        @apply rounded-circular border-x-(length:--spacing-thin);
+      }
+    }
+  }
+
+  .outline {
+    @apply border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
+
+    @variant disabled {
+      @apply border-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
+    }
+  }
+
+  .brand {
+    @apply bg-brand-background-2 text-brand-foreground-2;
+
+    @variant disabled {
+      @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+  }
+
+  .selected {
+    @apply border-brand-stroke-1 bg-brand-background text-neutral-foreground-on-brand;
+
+    @variant forced-colors {
+      @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+    }
+  }
+
+  .withoutMedia {
+    @apply ps-7;
+
+    @variant size-small, size-extra-small {
+      @apply ps-5;
+    }
+  }
+
+  .withoutDismiss {
+    @apply pe-7;
+
+    @variant size-small, size-extra-small {
+      @apply pe-5;
+    }
+  }
+
+  .media {
+    @apply flex ps-px pe-horizontal-s [grid-area:media];
+
+    @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
+      @apply pe-horizontal-s-nudge;
+    }
+  }
+
+  .icon {
+    @apply box-content flex w-20 ps-7 pe-horizontal-xs text-[length:calc(20px*var(--base-scale))] [grid-area:media];
+
+    @variant group-size-small/fui-tag {
+      @apply w-16 ps-5 pe-horizontal-xxs text-[length:calc(16px*var(--base-scale))];
+    }
+
+    @variant group-size-extra-small/fui-tag {
+      @apply w-12 ps-5 pe-horizontal-xxs text-[length:calc(12px*var(--base-scale))];
+    }
+  }
+
+  .primaryText {
+    @apply px-horizontal-xxs font-base text-base-300 leading-base-300 font-regular whitespace-nowrap;
+
+    @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
+      @apply text-base-200 leading-base-200;
+    }
+  }
+
+  .withoutSecondaryText {
+    @apply col-start-[primary] row-start-[primary] row-end-[secondary] pb-horizontal-xxs;
+  }
+
+  .withSecondaryText {
+    @apply -mt-2 text-base-200 leading-base-200 [grid-area:primary];
+  }
+
+  .secondaryText {
+    @apply px-horizontal-xxs font-base text-base-100 leading-base-100 font-regular whitespace-nowrap [grid-area:secondary];
+  }
+
+  .dismissIcon {
+    @apply flex ps-horizontal-xs pe-7 text-[length:calc(20px*var(--base-scale))] [grid-area:dismissIcon];
+
+    @variant group-size-small/fui-tag {
+      @apply ps-horizontal-xxs pe-5 text-[length:calc(16px*var(--base-scale))];
+    }
+
+    @variant group-size-extra-small/fui-tag {
+      @apply ps-horizontal-xxs pe-5 text-[length:calc(12px*var(--base-scale))];
+    }
+
+    @variant group-enabled/fui-tag {
+      @variant hover {
+        @apply cursor-pointer text-compound-brand-foreground-1-hover;
+      }
+
+      @variant active {
+        @apply text-compound-brand-foreground-1-pressed;
+      }
+
+      @variant group-selected/fui-tag {
+        @variant hover, active {
+          @apply text-neutral-foreground-on-brand;
+        }
+      }
+    }
+
+    /* Griffel emits these into the `m` bucket, which the bucket order places after `h` and `a`,
+       so they must stay last in this block. */
+    @variant forced-colors {
+      @variant hover, active {
+        @apply text-[Highlight];
+      }
+    }
+  }
+}

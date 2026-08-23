@@ -155,6 +155,9 @@ export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './spl
 export { renderSwitch, Switch, switchClassNames, useSwitch, useSwitchStyles } from './switch';
 export type { SwitchProps, SwitchSize, SwitchSlots, SwitchState } from './switch';
 
+export { renderTag, Tag, tagClassNames, useTag, useTagContextValues, useTagStyles } from './tag';
+export type { TagAppearance, TagContextValues, TagProps, TagShape, TagSize, TagSlots, TagState } from './tag';
+
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
 

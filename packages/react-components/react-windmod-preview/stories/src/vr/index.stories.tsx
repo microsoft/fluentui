@@ -40,6 +40,8 @@ export { SplitButtonWindmod } from './SplitButtonWindmod.stories';
 export { SplitButtonGriffel } from './SplitButtonGriffel.stories';
 export { SwitchWindmod } from './SwitchWindmod.stories';
 export { SwitchGriffel } from './SwitchGriffel.stories';
+export { TagWindmod } from './TagWindmod.stories';
+export { TagGriffel } from './TagGriffel.stories';
 export { TextareaWindmod } from './TextareaWindmod.stories';
 export { TextareaGriffel } from './TextareaGriffel.stories';
 export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';
