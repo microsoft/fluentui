@@ -223,6 +223,46 @@
         "default": "./lib-commonjs/menu-button.cjs"
       }
     },
+    "./message-bar": {
+      "import": {
+        "types": "./dist/message-bar.d.ts",
+        "default": "./lib/message-bar.js"
+      },
+      "require": {
+        "types": "./dist/message-bar.d.cts",
+        "default": "./lib-commonjs/message-bar.cjs"
+      }
+    },
+    "./message-bar-actions": {
+      "import": {
+        "types": "./dist/message-bar-actions.d.ts",
+        "default": "./lib/message-bar-actions.js"
+      },
+      "require": {
+        "types": "./dist/message-bar-actions.d.cts",
+        "default": "./lib-commonjs/message-bar-actions.cjs"
+      }
+    },
+    "./message-bar-body": {
+      "import": {
+        "types": "./dist/message-bar-body.d.ts",
+        "default": "./lib/message-bar-body.js"
+      },
+      "require": {
+        "types": "./dist/message-bar-body.d.cts",
+        "default": "./lib-commonjs/message-bar-body.cjs"
+      }
+    },
+    "./message-bar-title": {
+      "import": {
+        "types": "./dist/message-bar-title.d.ts",
+        "default": "./lib/message-bar-title.js"
+      },
+      "require": {
+        "types": "./dist/message-bar-title.d.cts",
+        "default": "./lib-commonjs/message-bar-title.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

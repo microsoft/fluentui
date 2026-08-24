@@ -87,6 +87,63 @@ export { MenuButton, menuButtonClassNames, renderMenuButton, useMenuButton, useM
 export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './menu-button';
 
 export {
+  MessageBar,
+  messageBarClassNames,
+  renderMessageBar,
+  useMessageBar,
+  useMessageBarContext,
+  useMessageBarContextValues,
+  useMessageBarStyles,
+} from './message-bar';
+export type {
+  MessageBarContextValues,
+  MessageBarIntent,
+  MessageBarProps,
+  MessageBarShape,
+  MessageBarSlots,
+  MessageBarState,
+} from './message-bar';
+
+export {
+  MessageBarActions,
+  messageBarActionsClassNames,
+  renderMessageBarActions,
+  useMessageBarActions,
+  useMessageBarActionsContextValues,
+  useMessageBarActionsStyles,
+} from './message-bar-actions';
+export type {
+  MessageBarActionsContextValues,
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+} from './message-bar-actions';
+
+export {
+  MessageBarBody,
+  messageBarBodyClassNames,
+  renderMessageBarBody,
+  useMessageBarBody,
+  useMessageBarBodyContextValues,
+  useMessageBarBodyStyles,
+} from './message-bar-body';
+export type {
+  MessageBarBodyContextValues,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+} from './message-bar-body';
+
+export {
+  MessageBarTitle,
+  messageBarTitleClassNames,
+  renderMessageBarTitle,
+  useMessageBarTitle,
+  useMessageBarTitleStyles,
+} from './message-bar-title';
+export type { MessageBarTitleProps, MessageBarTitleSlots, MessageBarTitleState } from './message-bar-title';
+
+export {
   ProgressBar,
   progressBarClassNames,
   renderProgressBar,

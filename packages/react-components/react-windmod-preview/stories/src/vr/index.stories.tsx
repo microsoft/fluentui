@@ -24,6 +24,8 @@ export { LinkWindmod } from './LinkWindmod.stories';
 export { LinkGriffel } from './LinkGriffel.stories';
 export { MenuButtonWindmod } from './MenuButtonWindmod.stories';
 export { MenuButtonGriffel } from './MenuButtonGriffel.stories';
+export { MessageBarWindmod } from './MessageBarWindmod.stories';
+export { MessageBarGriffel } from './MessageBarGriffel.stories';
 export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RadioGroupWindmod } from './RadioGroupWindmod.stories';
