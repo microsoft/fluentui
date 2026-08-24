@@ -9,6 +9,3 @@ export type {
   SkeletonSlots,
   SkeletonState,
 } from './Skeleton.types';
-
-export { SkeletonItem, skeletonItemClassNames, useSkeletonItemStyles } from './SkeletonItem';
-export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './SkeletonItem';

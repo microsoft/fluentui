@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { TabState } from './Tab.types';
 
 import styles from './Tab.module.css';

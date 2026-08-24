@@ -3,7 +3,12 @@ import type {
   SkeletonItemState as SkeletonItemHeadlessState,
 } from '@fluentui/react-headless-components-preview/skeleton';
 
-import type { SkeletonAnimation, SkeletonAppearance, SkeletonItemShape, SkeletonItemSize } from '../Skeleton.types';
+import type {
+  SkeletonAnimation,
+  SkeletonAppearance,
+  SkeletonItemShape,
+  SkeletonItemSize,
+} from '../Skeleton/Skeleton.types';
 
 export type { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
 

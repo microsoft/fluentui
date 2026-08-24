@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderSkeletonItem, useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
-import { useSkeletonContext } from '../SkeletonContext';
+import { useSkeletonContext } from '../Skeleton/SkeletonContext';
 import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
 import { useSkeletonItemStyles } from './useSkeletonItemStyles';
 

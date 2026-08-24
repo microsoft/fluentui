@@ -2,15 +2,15 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
-import { Tab } from './Tab';
+import { Tab } from '../Tab/Tab';
 import { TabList } from './TabList';
 import type { TabListState } from './TabList.types';
 import { useTabListContext } from './TabListContext';
 import { tabListClassNames, useTabListStyles } from './useTabListStyles';
-import { tabClassNames } from './Tab/useTabStyles';
+import { tabClassNames } from '../Tab/useTabStyles';
 
 import styles from './TabList.module.css';
-import tabStyles from './Tab/Tab.module.css';
+import tabStyles from '../Tab/Tab.module.css';
 
 // Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.

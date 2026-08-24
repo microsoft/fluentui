@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Skeleton } from '../Skeleton';
+import { isConformant } from '../../testing/isConformant';
+import { Skeleton } from '../Skeleton/Skeleton';
 import { SkeletonItem } from './SkeletonItem';
 import type { SkeletonItemState } from './SkeletonItem.types';
 import { skeletonItemClassNames, useSkeletonItemStyles } from './useSkeletonItemStyles';

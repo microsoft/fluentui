@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { TabList } from '../TabList';
+import { isConformant } from '../../testing/isConformant';
+import { TabList } from '../TabList/TabList';
 import { Tab } from './Tab';
 import type { TabState } from './Tab.types';
 import { useTabAnimatedIndicator } from './useTabAnimatedIndicator';
@@ -14,7 +14,7 @@ import styles from './Tab.module.css';
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/tab-list', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/tab-list');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

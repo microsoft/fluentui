@@ -5,7 +5,7 @@ import { omit, slot } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTab, useTab } from '@fluentui/react-headless-components-preview/tab-list';
 
-import { useTabListContext } from '../TabListContext';
+import { useTabListContext } from '../TabList/TabListContext';
 import type { TabProps, TabState } from './Tab.types';
 import { useTabAnimatedIndicator } from './useTabAnimatedIndicator';
 import { useTabStyles } from './useTabStyles';

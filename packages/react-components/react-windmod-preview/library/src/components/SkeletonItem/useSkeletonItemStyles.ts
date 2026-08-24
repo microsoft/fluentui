@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { SkeletonItemState } from './SkeletonItem.types';
 
 import styles from './SkeletonItem.module.css';

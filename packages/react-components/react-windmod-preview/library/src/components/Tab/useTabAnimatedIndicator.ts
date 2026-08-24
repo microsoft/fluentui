@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 import type { TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 
-import { useTabListContext } from '../TabListContext';
+import { useTabListContext } from '../TabList/TabListContext';
 import type { TabState } from './Tab.types';
 
 /** Read by the ::after transform in Tab.module.css. */

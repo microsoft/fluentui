@@ -5,7 +5,7 @@ import type {
   TabState as TabHeadlessState,
 } from '@fluentui/react-headless-components-preview/tab-list';
 
-import type { TabListProps } from '../TabList.types';
+import type { TabListProps } from '../TabList/TabList.types';
 
 export type { TabSlots, TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 
