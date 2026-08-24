@@ -93,6 +93,16 @@
         "default": "./lib-commonjs/accordion-panel.cjs"
       }
     },
+    "./alpha-slider": {
+      "import": {
+        "types": "./dist/alpha-slider.d.ts",
+        "default": "./lib/alpha-slider.js"
+      },
+      "require": {
+        "types": "./dist/alpha-slider.d.cts",
+        "default": "./lib-commonjs/alpha-slider.cjs"
+      }
+    },
     "./avatar": {
       "import": {
         "types": "./dist/avatar.d.ts",
@@ -211,6 +221,36 @@
       "require": {
         "types": "./dist/checkbox.d.cts",
         "default": "./lib-commonjs/checkbox.cjs"
+      }
+    },
+    "./color-area": {
+      "import": {
+        "types": "./dist/color-area.d.ts",
+        "default": "./lib/color-area.js"
+      },
+      "require": {
+        "types": "./dist/color-area.d.cts",
+        "default": "./lib-commonjs/color-area.cjs"
+      }
+    },
+    "./color-picker": {
+      "import": {
+        "types": "./dist/color-picker.d.ts",
+        "default": "./lib/color-picker.js"
+      },
+      "require": {
+        "types": "./dist/color-picker.d.cts",
+        "default": "./lib-commonjs/color-picker.cjs"
+      }
+    },
+    "./color-slider": {
+      "import": {
+        "types": "./dist/color-slider.d.ts",
+        "default": "./lib/color-slider.js"
+      },
+      "require": {
+        "types": "./dist/color-slider.d.cts",
+        "default": "./lib-commonjs/color-slider.cjs"
       }
     },
     "./color-swatch": {

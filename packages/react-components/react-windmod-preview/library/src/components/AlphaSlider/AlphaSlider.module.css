@@ -1,0 +1,30 @@
+@reference '#theme';
+
+/* l2: every class here overrides a ColorSlider l1 class on the same element. */
+@layer fui.components.l2 {
+  /* The checkerboard is the 10x10 PNG Griffel loads from a CDN, inlined byte-identically as a
+     data URI so the rail never depends on a network fetch. */
+  .rail {
+    @apply border border-solid border-neutral-stroke-1;
+
+    background-image:
+      linear-gradient(var(--fui-AlphaSlider--direction), transparent, var(--fui-AlphaSlider__rail--color)),
+      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==');
+  }
+
+  .thumb {
+    @apply bg-neutral-background-1;
+
+    inset-inline-start: var(--fui-AlphaSlider--progress);
+
+    @variant before {
+      @apply bg-(--fui-AlphaSlider__thumb--color);
+    }
+
+    /* start-auto is required: this layer's unconditional inset-inline-start outranks the l1
+       vertical block that would otherwise clear it. */
+    @variant group-vertical/fui-color-slider {
+      @apply start-auto bottom-(--fui-AlphaSlider--progress);
+    }
+  }
+}

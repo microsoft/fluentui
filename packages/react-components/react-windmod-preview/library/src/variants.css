@@ -27,6 +27,11 @@
 @custom-variant variant-filled (&:where([data-variant='filled']));
 @custom-variant variant-regular (&:where([data-variant='regular']));
 
+/* ColorSlider: colour channel. `hue` is the headless default and the resting look, so it gets
+   no entry. */
+@custom-variant channel-saturation (&:where([data-channel='saturation']));
+@custom-variant channel-value (&:where([data-channel='value']));
+
 /* Drawer: surface edge position */
 @custom-variant position-start (&:where([data-position='start']));
 @custom-variant position-end (&:where([data-position='end']));

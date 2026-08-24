@@ -1,0 +1,54 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* The `--fui-Area*` custom properties are written by the headless hook into the root's inline
+     style and are read only here. */
+  .root {
+    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start rounded-medium border border-solid border-neutral-stroke-1 forced-color-adjust-none;
+
+    --fui-color-area-thumb-size: calc(20px * var(--base-scale));
+
+    /* items-start emits the flexbox `flex-start` keyword, which is a different computed value. */
+    align-items: start;
+
+    background:
+      linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
+      var(--fui-Area--main-color);
+
+    @variant rtl {
+      background:
+        linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
+        var(--fui-Area--main-color);
+    }
+
+    @variant shape-square {
+      @apply rounded-none;
+    }
+  }
+
+  .thumb {
+    @apply pointer-events-none absolute size-(--fui-color-area-thumb-size) -translate-x-1/2 translate-y-1/2 rounded-circular border-(length:--spacing-thin) border-solid border-neutral-foreground-4 bg-(--fui-Area__thumb--color) shadow-4 forced-color-adjust-none outline-none;
+
+    inset-inline-start: var(--fui-AreaX--progress);
+    bottom: var(--fui-AreaY--progress);
+
+    @variant before {
+      @apply absolute inset-0 box-border rounded-circular border-(length:--spacing-thick) border-solid border-neutral-background-1 content-[''];
+    }
+
+    @variant rtl {
+      @apply translate-x-1/2;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+
+      --fui-focus-outline-width: var(--spacing-thick);
+      --fui-focus-outline-radius: var(--radius-circular);
+    }
+  }
+
+  .input {
+    @apply pointer-events-none absolute start-0 top-0 m-0 size-full overflow-hidden p-0 opacity-0;
+  }
+}

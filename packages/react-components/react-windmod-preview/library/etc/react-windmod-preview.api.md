@@ -17,6 +17,9 @@ import type { AccordionPanelState as AccordionPanelState_2 } from '@fluentui/rea
 import type { AccordionProps as AccordionProps_2 } from '@fluentui/react-headless-components-preview/accordion';
 import { AccordionSlots } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionState as AccordionState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import type { AlphaSliderProps as AlphaSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { AlphaSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { AlphaSliderState as AlphaSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
 import { AvatarSlots } from '@fluentui/react-headless-components-preview/avatar';
 import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-components-preview/avatar';
@@ -56,6 +59,16 @@ import type { CardState as CardState_2 } from '@fluentui/react-headless-componen
 import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckboxSlots } from '@fluentui/react-headless-components-preview/checkbox';
 import type { CheckboxState as CheckboxState_2 } from '@fluentui/react-headless-components-preview/checkbox';
+import type { ColorAreaProps as ColorAreaProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorAreaSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorAreaState as ColorAreaState_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorPickerProps as ColorPickerProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorPickerSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorPickerState as ColorPickerState_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorSliderProps as ColorSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorSliderState as ColorSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorSwatchProps as ColorSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ColorSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ColorSwatchState as ColorSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -165,6 +178,7 @@ import { renderAccordion } from '@fluentui/react-headless-components-preview/acc
 import { renderAccordionHeader } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAccordionItem } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
+import { renderAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -177,6 +191,9 @@ import { renderCardFooter } from '@fluentui/react-headless-components-preview/ca
 import { renderCardHeader } from '@fluentui/react-headless-components-preview/card';
 import { renderCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
+import { renderColorArea } from '@fluentui/react-headless-components-preview/color-picker';
+import { renderColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
+import { renderColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
@@ -313,6 +330,7 @@ import { useAccordionHeaderContextValues } from '@fluentui/react-headless-compon
 import { useAccordionItem } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionItemContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
+import { useAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -329,6 +347,11 @@ import { useCardFooter } from '@fluentui/react-headless-components-preview/card'
 import { useCardHeader } from '@fluentui/react-headless-components-preview/card';
 import { useCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
+import { useColorArea } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
@@ -479,6 +502,24 @@ export { AccordionSlots }
 
 // @public
 export type AccordionState = AccordionState_2;
+
+// @public
+export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
+
+// @public
+export const alphaSliderClassNames: {
+    root: string;
+};
+
+// @public
+export type AlphaSliderProps = AlphaSliderProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { AlphaSliderSlots }
+
+// @public
+export type AlphaSliderState = AlphaSliderState_2 & Required<Pick<AlphaSliderProps, 'shape'>>;
 
 // @public
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -761,6 +802,65 @@ export { CheckboxSlots }
 
 // @public
 export type CheckboxState = CheckboxState_2 & Required<Pick<CheckboxProps, 'shape' | 'size'>>;
+
+// @public
+export const ColorArea: ForwardRefComponent<ColorAreaProps>;
+
+// @public
+export const colorAreaClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorAreaProps = ColorAreaProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { ColorAreaSlots }
+
+// @public
+export type ColorAreaState = ColorAreaState_2 & Required<Pick<ColorAreaProps, 'shape'>>;
+
+// @public
+export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
+
+// @public
+export const colorPickerClassNames: {
+    root: string;
+};
+
+export { ColorPickerContextValue }
+
+// @public
+export type ColorPickerProps = ColorPickerProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+// @public
+export type ColorPickerShape = 'rounded' | 'square';
+
+export { ColorPickerSlots }
+
+// @public
+export type ColorPickerState = ColorPickerState_2 & Pick<ColorPickerProps, 'shape'>;
+
+// @public
+export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
+
+// @public
+export const colorSliderClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorSliderProps = ColorSliderProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { ColorSliderSlots }
+
+// @public
+export type ColorSliderState = ColorSliderState_2 & Required<Pick<ColorSliderProps, 'shape'>>;
 
 // @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
@@ -1393,6 +1493,8 @@ export { renderAccordionItem }
 
 export { renderAccordionPanel }
 
+export { renderAlphaSlider }
+
 export { renderAvatar }
 
 export { renderBadge }
@@ -1416,6 +1518,12 @@ export { renderCardHeader }
 export { renderCardPreview }
 
 export { renderCheckbox }
+
+export { renderColorArea }
+
+export { renderColorPicker }
+
+export { renderColorSlider }
 
 export { renderColorSwatch }
 
@@ -2069,6 +2177,11 @@ export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionP
 // @public
 export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
+export { useAlphaSlider }
+
+// @public
+export const useAlphaSliderStyles: (state: AlphaSliderState) => AlphaSliderState;
+
 export { useAvatar }
 
 // @public
@@ -2136,6 +2249,25 @@ export { useCheckbox }
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
+
+export { useColorArea }
+
+// @public
+export const useColorAreaStyles: (state: ColorAreaState) => ColorAreaState;
+
+export { useColorPicker }
+
+export { useColorPickerContextValue }
+
+export { useColorPickerContextValues }
+
+// @public
+export const useColorPickerStyles: (state: ColorPickerState) => ColorPickerState;
+
+export { useColorSlider }
+
+// @public
+export const useColorSliderStyles: (state: ColorSliderState) => ColorSliderState;
 
 export { useColorSwatch }
 
