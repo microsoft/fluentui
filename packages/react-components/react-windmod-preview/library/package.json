@@ -493,6 +493,16 @@
         "default": "./lib-commonjs/nav-sub-item-group.cjs"
       }
     },
+    "./persona": {
+      "import": {
+        "types": "./dist/persona.d.ts",
+        "default": "./lib/persona.js"
+      },
+      "require": {
+        "types": "./dist/persona.d.cts",
+        "default": "./lib-commonjs/persona.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

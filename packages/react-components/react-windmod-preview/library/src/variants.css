@@ -58,10 +58,12 @@
 /* Nav: row density. `medium` is the base look and nothing selects it. */
 @custom-variant density-small (&:where([data-density='small']));
 
-/* Persona: text position */
+/* Persona: text position, and text alignment against the coin. `start` is the resting look and
+   nothing selects it. */
 @custom-variant text-position-after (&:where([data-text-position='after']));
 @custom-variant text-position-before (&:where([data-text-position='before']));
 @custom-variant text-position-below (&:where([data-text-position='below']));
+@custom-variant text-alignment-center (&:where([data-text-alignment='center']));
 
 /* Skeleton: animation, appearance, item shape */
 @custom-variant animation-pulse (&:where([data-animation='pulse']));

@@ -371,6 +371,9 @@ export {
 } from './nav-sub-item-group';
 export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './nav-sub-item-group';
 
+export { Persona, personaClassNames, renderPersona, usePersona, usePersonaStyles } from './persona';
+export type { PersonaProps, PersonaSize, PersonaSlots, PersonaState, PersonaTextAlignment } from './persona';
+
 export {
   ProgressBar,
   progressBarClassNames,

@@ -75,11 +75,13 @@ const firstInitial = (initials: string, rtl: boolean) => {
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-avatar's styled useAvatar, AvatarContext read included: a
-  // container such as Tag publishes both `shape` and `size`, and Griffel resolves them as
-  // `size = contextSize ?? 32` / `shape = contextShape ?? 'circular'`
-  // (react-avatar useAvatar.tsx:19-21). The published shape is disjoint from the `props.*` reads
-  // further down (`initials`, `name`, `aria-label`, `aria-labelledby`), so those keep reading
-  // `props` and are unaffected by the merge.
+  // container such as Tag publishes both `shape` and `size`, and Griffel spells the resolution as
+  // the destructuring defaults `size = contextSize ?? 32` / `shape = contextShape ?? 'circular'`
+  // (react-avatar useAvatar.tsx:19-21). Those fire only when the prop is absent, so Griffel's
+  // precedence is prop, then context, then constant — the order mergeContextProps reproduces, not
+  // the context-first order the spelling reads like. The published shape is disjoint from the
+  // `props.*` reads further down (`initials`, `name`, `aria-label`, `aria-labelledby`), so those
+  // keep reading `props` and are unaffected by the merge.
   const {
     active = 'unset',
     activeAppearance = 'ring',

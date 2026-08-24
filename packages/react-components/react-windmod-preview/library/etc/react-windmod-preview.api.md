@@ -154,6 +154,9 @@ import { NavSubItemSlots } from '@fluentui/react-headless-components-preview/nav
 import type { NavSubItemState as NavSubItemState_2 } from '@fluentui/react-headless-components-preview/nav';
 import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview/nav';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
+import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
+import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
+import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
 import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -217,6 +220,7 @@ import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { renderPersona } from '@fluentui/react-headless-components-preview/persona';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -392,6 +396,7 @@ import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { usePersona } from '@fluentui/react-headless-components-preview/persona';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -1356,6 +1361,36 @@ export { OnNavItemSelectData }
 export { OnVisibleChangeData }
 
 // @public
+export const Persona: ForwardRefComponent<PersonaProps>;
+
+// @public
+export const personaClassNames: {
+    root: string;
+};
+
+// @public
+export type PersonaProps = ComponentProps<PersonaSlots> & Pick<PersonaProps_2, 'name' | 'textPosition'> & {
+    size?: PersonaSize;
+    textAlignment?: PersonaTextAlignment;
+};
+
+// @public
+export type PersonaSize = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+
+// @public
+export type PersonaSlots = Omit<PersonaSlots_2, 'avatar'> & {
+    avatar?: Slot<typeof Avatar>;
+};
+
+// @public
+export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'numTextLines' | 'textPosition'> & {
+    root: PersonaState_2['root'];
+} & Required<Pick<PersonaProps, 'size' | 'textAlignment'>>;
+
+// @public
+export type PersonaTextAlignment = 'center' | 'start';
+
+// @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public
@@ -1575,6 +1610,8 @@ export { renderNavSectionHeader }
 export { renderNavSubItem }
 
 export { renderNavSubItemGroup }
+
+export { renderPersona }
 
 export { renderProgressBar }
 
@@ -2435,6 +2472,11 @@ export const useNavSubItemGroupStyles: (state: NavSubItemGroupState) => NavSubIt
 
 // @public
 export const useNavSubItemStyles: (state: NavSubItemState) => NavSubItemState;
+
+export { usePersona }
+
+// @public
+export const usePersonaStyles: (state: PersonaState) => PersonaState;
 
 export { useProgressBar }
 
