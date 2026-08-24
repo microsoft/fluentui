@@ -383,6 +383,76 @@
         "default": "./lib-commonjs/toggle-button.cjs"
       }
     },
+    "./toolbar": {
+      "import": {
+        "types": "./dist/toolbar.d.ts",
+        "default": "./lib/toolbar.js"
+      },
+      "require": {
+        "types": "./dist/toolbar.d.cts",
+        "default": "./lib-commonjs/toolbar.cjs"
+      }
+    },
+    "./toolbar-button": {
+      "import": {
+        "types": "./dist/toolbar-button.d.ts",
+        "default": "./lib/toolbar-button.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-button.d.cts",
+        "default": "./lib-commonjs/toolbar-button.cjs"
+      }
+    },
+    "./toolbar-divider": {
+      "import": {
+        "types": "./dist/toolbar-divider.d.ts",
+        "default": "./lib/toolbar-divider.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-divider.d.cts",
+        "default": "./lib-commonjs/toolbar-divider.cjs"
+      }
+    },
+    "./toolbar-group": {
+      "import": {
+        "types": "./dist/toolbar-group.d.ts",
+        "default": "./lib/toolbar-group.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-group.d.cts",
+        "default": "./lib-commonjs/toolbar-group.cjs"
+      }
+    },
+    "./toolbar-radio-button": {
+      "import": {
+        "types": "./dist/toolbar-radio-button.d.ts",
+        "default": "./lib/toolbar-radio-button.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-radio-button.d.cts",
+        "default": "./lib-commonjs/toolbar-radio-button.cjs"
+      }
+    },
+    "./toolbar-radio-group": {
+      "import": {
+        "types": "./dist/toolbar-radio-group.d.ts",
+        "default": "./lib/toolbar-radio-group.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-radio-group.d.cts",
+        "default": "./lib-commonjs/toolbar-radio-group.cjs"
+      }
+    },
+    "./toolbar-toggle-button": {
+      "import": {
+        "types": "./dist/toolbar-toggle-button.d.ts",
+        "default": "./lib/toolbar-toggle-button.js"
+      },
+      "require": {
+        "types": "./dist/toolbar-toggle-button.d.cts",
+        "default": "./lib-commonjs/toolbar-toggle-button.cjs"
+      }
+    },
     "./tooltip": {
       "import": {
         "types": "./dist/tooltip.d.ts",
