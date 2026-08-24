@@ -10,7 +10,6 @@ import type { CalendarDayNavigateData } from '../CalendarDay';
 
 /**
  * Resolved configuration and grid data shared with every row and cell in the day grid.
- * @internal
  */
 export type CalendarDayContextValue = {
   /**

@@ -8,7 +8,6 @@ import type { CalendarYearSelectData } from '../CalendarYear';
 
 /**
  * One year cell in the grid.
- * @internal
  */
 export type CalendarYearCell = {
   /**
@@ -35,7 +34,6 @@ export type CalendarYearCell = {
 
 /**
  * Resolved configuration and grid data shared with every row in the year grid.
- * @internal
  */
 export type CalendarYearContextValue = {
   /**

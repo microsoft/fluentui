@@ -10,7 +10,6 @@ import type { CalendarDaySelectData } from '../CalendarDay';
 /**
  * Configuration shared by the Calendar root, every picker below it, and every grid row and cell.
  * Pickers and their descendants read shared configuration directly from this context.
- * @internal
  */
 export type CalendarContextValue = {
   /**

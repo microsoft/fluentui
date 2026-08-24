@@ -50,12 +50,10 @@ export type CalendarBaseState = CalendarState;
 // @public
 export const calendarClassNames: SlotClassNames<CalendarSlots>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "calendarContextDefaultValue" is marked as @public, but its signature references "CalendarContextValue" which is marked as @internal
-//
 // @public
 export const calendarContextDefaultValue: CalendarContextValue;
 
-// @internal
+// @public
 export type CalendarContextValue = {
     allFocusable: boolean;
     dateRangeType: DateRangeType;
@@ -113,7 +111,7 @@ export type CalendarDayBaseState = CalendarDayState;
 // @public
 export const calendarDayClassNames: SlotClassNames<CalendarDaySlots>;
 
-// @internal
+// @public
 export type CalendarDayContextValue = {
     activeDescendantId: string;
     calculateRoundedCorners: (above: boolean, below: boolean, left: boolean, right: boolean) => DayCorners;
@@ -274,8 +272,6 @@ export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> & Pick<
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarDayProvider" is marked as @public, but its signature references "CalendarDayContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const CalendarDayProvider: React_2.Provider<CalendarDayContextValue | undefined> & React_2.FC<React_2.ProviderProps<CalendarDayContextValue | undefined>>;
 
@@ -298,8 +294,6 @@ export type CalendarDaySlots = {
     body: NonNullable<Slot<'tbody'>>;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarDayState" is marked as @public, but its signature references "CalendarDayContextValue" which is marked as @internal
-//
 // @public
 export type CalendarDayState = ComponentState<CalendarDaySlots> & CalendarDayContextValue & {
     monthAndYear: string;
@@ -370,7 +364,7 @@ export type CalendarMonthBaseProps = CalendarMonthProps;
 // @public
 export type CalendarMonthBaseState = CalendarMonthState;
 
-// @internal
+// @public
 export type CalendarMonthCell = {
     index: number;
     label: string;
@@ -385,7 +379,7 @@ export type CalendarMonthCell = {
 // @public
 export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'yearPicker'>>;
 
-// @internal
+// @public
 export type CalendarMonthContextValue = {
     navigatedYear: number;
     monthRows: CalendarMonthCell[][];
@@ -468,8 +462,6 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
     yearPickerHidden?: boolean;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarMonthProvider" is marked as @public, but its signature references "CalendarMonthContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const CalendarMonthProvider: React_2.Provider<CalendarMonthContextValue | undefined> & React_2.FC<React_2.ProviderProps<CalendarMonthContextValue | undefined>>;
 
@@ -528,8 +520,6 @@ export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
     allFocusable?: boolean;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarProvider" is marked as @public, but its signature references "CalendarContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const CalendarProvider: Provider<CalendarContextValue | undefined> & FC<ProviderProps<CalendarContextValue | undefined>>;
 
@@ -550,8 +540,6 @@ export type CalendarSlots = {
     goToTodayButton?: Slot<typeof Button>;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarState" is marked as @public, but its signature references "CalendarContextValue" which is marked as @internal
-//
 // @public
 export type CalendarState = ComponentState<CalendarSlots> & CalendarContextValue & {
     dayPickerRef: React_2.RefObject<CalendarDayHandle | null>;
@@ -588,7 +576,7 @@ export type CalendarYearBaseProps = CalendarYearProps;
 // @public
 export type CalendarYearBaseState = CalendarYearState;
 
-// @internal
+// @public
 export type CalendarYearCell = {
     year: number;
     content: React_2.ReactNode;
@@ -600,7 +588,7 @@ export type CalendarYearCell = {
 // @public
 export const calendarYearClassNames: SlotClassNames<CalendarYearSlots>;
 
-// @internal
+// @public
 export type CalendarYearContextValue = {
     fromYear: number;
     currentYearRef: React_2.RefObject<HTMLButtonElement | null>;
@@ -686,8 +674,6 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
     onHeaderSelect?: EventHandler<CalendarYearHeaderSelectData>;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "CalendarYearProvider" is marked as @public, but its signature references "CalendarYearContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const CalendarYearProvider: React_2.Provider<CalendarYearContextValue | undefined> & React_2.FC<React_2.ProviderProps<CalendarYearContextValue | undefined>>;
 
@@ -749,7 +735,7 @@ export const createCalendarLabelFormatter: (overrides: CalendarLabelOverrides, f
 // @public
 export type DateRangeType = 'day' | 'week' | 'month' | 'workWeek';
 
-// @internal
+// @public
 export interface DayCorners {
     // (undocumented)
     bottomLeft: boolean;
@@ -761,7 +747,7 @@ export interface DayCorners {
     topRight: boolean;
 }
 
-// @internal
+// @public
 export interface DayInfo extends Day {
     // (undocumented)
     onSelected: (ev: React_2.MouseEvent<HTMLTableCellElement> | React_2.KeyboardEvent<HTMLElement>) => void;
@@ -903,8 +889,6 @@ export const TimeConstants: {
 // @public
 export const useCalendarBase_unstable: (props: CalendarBaseProps, ref: React_2.Ref<HTMLDivElement>) => CalendarBaseState;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useCalendarContext_unstable" is marked as @public, but its signature references "CalendarContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const useCalendarContext_unstable: <T>(selector: ContextSelector<CalendarContextValue, T>) => T;
 
@@ -914,8 +898,6 @@ export function useCalendarContextValues_unstable(state: CalendarBaseState): Cal
 // @public
 export const useCalendarDayBase_unstable: (props: CalendarDayBaseProps, ref: React_2.Ref<CalendarDayHandle>) => CalendarDayBaseState;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useCalendarDayContext_unstable" is marked as @public, but its signature references "CalendarDayContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const useCalendarDayContext_unstable: <T>(selector: ContextSelector<CalendarDayContextValue, T>) => T;
 
@@ -961,8 +943,6 @@ export const useCalendarDayStyles_unstable: (state: CalendarDayState) => Calenda
 // @public
 export const useCalendarMonthBase_unstable: (props: CalendarMonthBaseProps, ref: React_2.Ref<CalendarMonthHandle>) => CalendarMonthBaseState;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useCalendarMonthContext_unstable" is marked as @public, but its signature references "CalendarMonthContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const useCalendarMonthContext_unstable: <T>(selector: ContextSelector<CalendarMonthContextValue, T>) => T;
 
@@ -993,8 +973,6 @@ export const useCalendarStyles_unstable: (state: CalendarState) => CalendarState
 // @public
 export const useCalendarYearBase_unstable: (props: CalendarYearBaseProps, ref: React_2.Ref<CalendarYearHandle>) => CalendarYearBaseState;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useCalendarYearContext_unstable" is marked as @public, but its signature references "CalendarYearContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const useCalendarYearContext_unstable: <T>(selector: ContextSelector<CalendarYearContextValue, T>) => T;
 
@@ -1019,42 +997,20 @@ export const useCalendarYearGridRowStyles_unstable: (state: CalendarYearGridRowS
 // @public
 export const useCalendarYearStyles_unstable: (state: CalendarYearState) => CalendarYearState;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useWeekCorners" is marked as @public, but its signature references "DayInfo" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "useWeekCorners" is marked as @public, but its signature references "WeekCorners" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "useWeekCorners" is marked as @public, but its signature references "DayCorners" which is marked as @internal
-//
 // @public (undocumented)
 export function useWeekCorners(props: DayGridOptions): readonly [
 (initialWeeks: DayInfo[][]) => WeekCorners,
 (above: boolean, below: boolean, left: boolean, right: boolean) => DayCorners
 ];
 
-// Warning: (ae-incompatible-release-tags) The symbol "useWeeks" is marked as @public, but its signature references "DayInfo" which is marked as @internal
-//
 // @public (undocumented)
 export function useWeeks(props: UseWeeksOptions, onSelectDate: (ev: React_2.MouseEvent<HTMLTableCellElement> | React_2.KeyboardEvent<HTMLElement>, date: Date) => void, getSetRefCallback: (dayKey: string) => (element: HTMLElement | null) => void): DayInfo[][];
 
-// @internal
+// @public
 export interface WeekCorners {
     // (undocumented)
     [key: string]: DayCorners;
 }
-
-// Warnings were encountered during analysis:
-//
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarDayGridCell/CalendarDayGridCell.types.d.ts:29:5 - (ae-incompatible-release-tags) The symbol "day" is marked as @public, but its signature references "DayInfo" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarDayGridCell/CalendarDayGridCell.types.d.ts:41:5 - (ae-incompatible-release-tags) The symbol "day" is marked as @public, but its signature references "DayInfo" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarDayGridRow/CalendarDayGridRow.types.d.ts:26:5 - (ae-incompatible-release-tags) The symbol "week" is marked as @public, but its signature references "DayInfo" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarMonth/CalendarMonth.types.d.ts:105:5 - (ae-incompatible-release-tags) The symbol "monthRows" is marked as @public, but its signature references "CalendarMonthCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarMonthGridCell/CalendarMonthGridCell.types.d.ts:16:5 - (ae-incompatible-release-tags) The symbol "month" is marked as @public, but its signature references "CalendarMonthCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarMonthGridRow/CalendarMonthGridRow.types.d.ts:35:5 - (ae-incompatible-release-tags) The symbol "cells" is marked as @public, but its signature references "CalendarMonthCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarYear/CalendarYear.types.d.ts:105:5 - (ae-incompatible-release-tags) The symbol "yearRows" is marked as @public, but its signature references "CalendarYearCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarYearGridCell/CalendarYearGridCell.types.d.ts:16:5 - (ae-incompatible-release-tags) The symbol "cell" is marked as @public, but its signature references "CalendarYearCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/components/CalendarYearGridRow/CalendarYearGridRow.types.d.ts:35:5 - (ae-incompatible-release-tags) The symbol "cells" is marked as @public, but its signature references "CalendarYearCell" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/contexts/calendarContext.d.ts:83:5 - (ae-incompatible-release-tags) The symbol "calendar" is marked as @public, but its signature references "CalendarContextValue" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/contexts/calendarDayContext.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "calendarDay" is marked as @public, but its signature references "CalendarDayContextValue" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/contexts/calendarMonthContext.d.ts:66:5 - (ae-incompatible-release-tags) The symbol "calendarMonth" is marked as @public, but its signature references "CalendarMonthContextValue" which is marked as @internal
-// /Users/dmytrokirpa/Projects/fluentui/dist/out-tsc/types/packages/react-components/react-calendar-preview/library/src/contexts/calendarYearContext.d.ts:64:5 - (ae-incompatible-release-tags) The symbol "calendarYear" is marked as @public, but its signature references "CalendarYearContextValue" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

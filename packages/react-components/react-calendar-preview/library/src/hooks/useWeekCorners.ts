@@ -7,7 +7,6 @@ import type { DayInfo } from './useWeeks';
 
 /**
  * Which corners of a day cell sit on the outer edge of its range.
- * @internal
  */
 export interface DayCorners {
   topLeft: boolean;
@@ -18,7 +17,6 @@ export interface DayCorners {
 
 /**
  * Corners for every day in the grid, keyed by `weekIndex_dayIndex`.
- * @internal
  */
 export interface WeekCorners {
   [key: string]: DayCorners;

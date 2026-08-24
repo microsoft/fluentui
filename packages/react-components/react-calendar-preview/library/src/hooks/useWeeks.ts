@@ -7,7 +7,6 @@ import type { Day, DayGridOptions } from '../utils';
 /**
  * A single day in the grid, augmented with the callbacks the grid needs to drive selection and
  * keep a reference to the rendered cell.
- * @internal
  */
 export interface DayInfo extends Day {
   onSelected: (ev: React.MouseEvent<HTMLTableCellElement> | React.KeyboardEvent<HTMLElement>) => void;

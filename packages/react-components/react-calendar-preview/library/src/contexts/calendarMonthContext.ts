@@ -6,7 +6,6 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 
 /**
  * One month cell in the grid.
- * @internal
  */
 export type CalendarMonthCell = {
   /**
@@ -45,7 +44,6 @@ export type CalendarMonthCell = {
 
 /**
  * Resolved configuration and grid data shared with every row in the month grid.
- * @internal
  */
 export type CalendarMonthContextValue = {
   /**
