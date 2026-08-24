@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
 import { Breadcrumb } from './Breadcrumb';
-import { BreadcrumbButton } from './BreadcrumbButton';
-import { BreadcrumbDivider } from './BreadcrumbDivider';
-import { BreadcrumbItem } from './BreadcrumbItem';
+import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
+import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
+import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
 import type { BreadcrumbState } from './Breadcrumb.types';
 import { breadcrumbClassNames, useBreadcrumbStyles } from './useBreadcrumbStyles';
 

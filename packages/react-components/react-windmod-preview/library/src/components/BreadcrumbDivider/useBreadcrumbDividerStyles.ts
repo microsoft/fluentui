@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { BreadcrumbDividerState } from './BreadcrumbDivider.types';
 
 import styles from './BreadcrumbDivider.module.css';

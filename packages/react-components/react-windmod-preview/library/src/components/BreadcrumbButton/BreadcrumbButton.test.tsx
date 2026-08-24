@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Breadcrumb } from '../Breadcrumb';
+import { isConformant } from '../../testing/isConformant';
+import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 import { BreadcrumbButton } from './BreadcrumbButton';
 import type { BreadcrumbButtonState } from './BreadcrumbButton.types';
 import { breadcrumbButtonClassNames, useBreadcrumbButtonStyles } from './useBreadcrumbButtonStyles';
 
-import buttonStyles from '../../Button/Button.module.css';
+import buttonStyles from '../Button/Button.module.css';
 import styles from './BreadcrumbButton.module.css';
 
 // Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/breadcrumb', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/breadcrumb');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

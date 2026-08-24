@@ -3,7 +3,7 @@ import type {
   BreadcrumbDividerState as BreadcrumbDividerHeadlessState,
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
-import type { BreadcrumbProps } from '../Breadcrumb.types';
+import type { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
 export type { BreadcrumbDividerSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
 

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { BreadcrumbItemState } from './BreadcrumbItem.types';
 
 import styles from './BreadcrumbItem.module.css';

@@ -3,8 +3,8 @@ import type {
   BreadcrumbButtonState as BreadcrumbButtonHeadlessState,
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
-import type { BreadcrumbProps } from '../Breadcrumb.types';
-import type { ButtonProps } from '../../Button/Button.types';
+import type { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
+import type { ButtonProps } from '../Button/Button.types';
 
 export type { BreadcrumbButtonSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
 

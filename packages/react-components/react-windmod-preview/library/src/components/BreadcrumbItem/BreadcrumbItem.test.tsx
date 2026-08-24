@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Breadcrumb } from '../Breadcrumb';
+import { isConformant } from '../../testing/isConformant';
+import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import type { BreadcrumbItemState } from './BreadcrumbItem.types';
 import { breadcrumbItemClassNames, useBreadcrumbItemStyles } from './useBreadcrumbItemStyles';
@@ -13,7 +13,7 @@ import styles from './BreadcrumbItem.module.css';
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/breadcrumb', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/breadcrumb');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

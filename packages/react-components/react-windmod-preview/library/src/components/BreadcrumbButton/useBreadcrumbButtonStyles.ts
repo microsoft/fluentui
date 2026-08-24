@@ -2,8 +2,8 @@
 
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
-import { useButtonStyles } from '../../Button/useButtonStyles';
+import { componentMarkers } from '../../utils/groupMarker';
+import { useButtonStyles } from '../Button/useButtonStyles';
 import type { BreadcrumbButtonState } from './BreadcrumbButton.types';
 
 import styles from './BreadcrumbButton.module.css';
