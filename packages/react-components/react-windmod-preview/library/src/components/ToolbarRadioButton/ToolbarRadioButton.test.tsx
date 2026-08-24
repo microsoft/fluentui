@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Toolbar } from '../Toolbar';
+import { isConformant } from '../../testing/isConformant';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarRadioButton } from './ToolbarRadioButton';
 import type { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 import { toolbarRadioButtonClassNames, useToolbarRadioButtonStyles } from './useToolbarRadioButtonStyles';
 
-import buttonStyles from '../../Button/Button.module.css';
+import buttonStyles from '../Button/Button.module.css';
 import styles from './ToolbarRadioButton.module.css';
 
 // The jest css-module proxy drops the component and hash segments, so Button's, ToggleButton's

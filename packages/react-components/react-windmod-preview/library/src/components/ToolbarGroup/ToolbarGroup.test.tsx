@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Toolbar } from '../Toolbar';
+import { isConformant } from '../../testing/isConformant';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarGroup } from './ToolbarGroup';
 import type { ToolbarGroupState } from './ToolbarGroup.types';
 import { toolbarGroupClassNames, useToolbarGroupStyles } from './useToolbarGroupStyles';

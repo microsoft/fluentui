@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import { useToolbarGroupStyles } from '../ToolbarGroup/useToolbarGroupStyles';
 import type { ToolbarRadioGroupState } from './ToolbarRadioGroup.types';
 

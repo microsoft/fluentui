@@ -2,8 +2,8 @@
 
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
-import { useToggleButtonStyles } from '../../ToggleButton/useToggleButtonStyles';
+import { componentMarkers } from '../../utils/groupMarker';
+import { useToggleButtonStyles } from '../ToggleButton/useToggleButtonStyles';
 import type { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 
 import styles from './ToolbarRadioButton.module.css';

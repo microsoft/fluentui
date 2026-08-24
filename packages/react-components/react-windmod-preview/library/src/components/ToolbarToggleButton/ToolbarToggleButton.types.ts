@@ -3,7 +3,7 @@ import type {
   ToolbarToggleButtonState as ToolbarToggleButtonHeadlessState,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
-import type { ButtonState } from '../../Button/Button.types';
+import type { ButtonState } from '../Button/Button.types';
 import type { ToolbarButtonAppearance } from '../ToolbarButton/ToolbarButton.types';
 
 /**

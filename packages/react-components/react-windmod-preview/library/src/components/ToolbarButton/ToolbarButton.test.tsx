@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Toolbar } from '../Toolbar';
+import { isConformant } from '../../testing/isConformant';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarButton } from './ToolbarButton';
 import type { ToolbarButtonState } from './ToolbarButton.types';
 import { toolbarButtonClassNames, useToolbarButtonStyles } from './useToolbarButtonStyles';
 
-import buttonStyles from '../../Button/Button.module.css';
+import buttonStyles from '../Button/Button.module.css';
 import styles from './ToolbarButton.module.css';
 
 // The jest css-module proxy drops the component and hash segments, so Button's `root` and

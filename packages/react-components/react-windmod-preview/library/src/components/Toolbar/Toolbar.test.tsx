@@ -5,12 +5,12 @@ import { isConformant } from '../../testing/isConformant';
 import { Toolbar } from './Toolbar';
 import type { ToolbarState } from './Toolbar.types';
 import { toolbarClassNames, useToolbarStyles } from './useToolbarStyles';
-import { ToolbarButton } from './ToolbarButton';
-import { ToolbarDivider } from './ToolbarDivider';
-import { ToolbarGroup } from './ToolbarGroup';
-import { ToolbarRadioButton } from './ToolbarRadioButton';
-import { ToolbarRadioGroup } from './ToolbarRadioGroup';
-import { ToolbarToggleButton } from './ToolbarToggleButton';
+import { ToolbarButton } from '../ToolbarButton/ToolbarButton';
+import { ToolbarDivider } from '../ToolbarDivider/ToolbarDivider';
+import { ToolbarGroup } from '../ToolbarGroup/ToolbarGroup';
+import { ToolbarRadioButton } from '../ToolbarRadioButton/ToolbarRadioButton';
+import { ToolbarRadioGroup } from '../ToolbarRadioGroup/ToolbarRadioGroup';
+import { ToolbarToggleButton } from '../ToolbarToggleButton/ToolbarToggleButton';
 
 import styles from './Toolbar.module.css';
 

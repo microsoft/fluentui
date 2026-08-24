@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Toolbar } from '../Toolbar';
+import { isConformant } from '../../testing/isConformant';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarDivider } from './ToolbarDivider';
 import type { ToolbarDividerState } from './ToolbarDivider.types';
 import { toolbarDividerClassNames, useToolbarDividerStyles } from './useToolbarDividerStyles';

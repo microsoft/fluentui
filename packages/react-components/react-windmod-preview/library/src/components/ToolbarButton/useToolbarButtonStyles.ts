@@ -2,8 +2,8 @@
 
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
-import { useButtonStyles } from '../../Button/useButtonStyles';
+import { componentMarkers } from '../../utils/groupMarker';
+import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToolbarButtonState } from './ToolbarButton.types';
 
 import styles from './ToolbarButton.module.css';

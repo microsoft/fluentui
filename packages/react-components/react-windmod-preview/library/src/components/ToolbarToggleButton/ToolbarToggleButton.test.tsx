@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Toolbar } from '../Toolbar';
+import { isConformant } from '../../testing/isConformant';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarToggleButton } from './ToolbarToggleButton';
 import type { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
 import { toolbarToggleButtonClassNames, useToolbarToggleButtonStyles } from './useToolbarToggleButtonStyles';
 
-import buttonStyles from '../../Button/Button.module.css';
+import buttonStyles from '../Button/Button.module.css';
 import styles from './ToolbarToggleButton.module.css';
 
 // The jest css-module proxy drops the component and hash segments, so Button's, ToggleButton's

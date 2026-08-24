@@ -3,7 +3,7 @@ import type {
   ToolbarButtonState as ToolbarButtonHeadlessState,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
-import type { ButtonState } from '../../Button/Button.types';
+import type { ButtonState } from '../Button/Button.types';
 
 /** Visual style of a ToolbarButton. `'subtle'` is the base look; the toolbar drops Button's outline and secondary. */
 export type ToolbarButtonAppearance = 'primary' | 'subtle' | 'transparent';
