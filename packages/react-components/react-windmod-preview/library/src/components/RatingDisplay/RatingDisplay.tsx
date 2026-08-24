@@ -10,8 +10,8 @@ import {
 import { StarFilled } from '@fluentui/react-icons/headless/svg/star';
 
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
-import { RatingItem } from './RatingItem';
-import { RatingItemContextProvider } from './RatingItemContext';
+import { RatingItem } from '../RatingItem';
+import { RatingItemContextProvider } from '../RatingItem/RatingItemContext';
 import { useRatingDisplayStyles } from './useRatingDisplayStyles';
 
 /**

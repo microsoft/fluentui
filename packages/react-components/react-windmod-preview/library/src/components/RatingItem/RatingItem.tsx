@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderRatingItem, useRatingItem } from '@fluentui/react-headless-components-preview/rating';
 
-import { useRatingItemContext } from '../RatingItemContext';
+import { useRatingItemContext } from './RatingItemContext';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemStyles } from './useRatingItemStyles';
 

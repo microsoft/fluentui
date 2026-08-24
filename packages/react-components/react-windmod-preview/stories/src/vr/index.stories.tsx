@@ -26,6 +26,8 @@ export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RadioGroupWindmod } from './RadioGroupWindmod.stories';
 export { RadioGroupGriffel } from './RadioGroupGriffel.stories';
+export { RatingWindmod } from './RatingWindmod.stories';
+export { RatingGriffel } from './RatingGriffel.stories';
 export { RatingDisplayWindmod } from './RatingDisplayWindmod.stories';
 export { RatingDisplayGriffel } from './RatingDisplayGriffel.stories';
 export { SelectWindmod } from './SelectWindmod.stories';

@@ -88,6 +88,9 @@ export {
 } from './radio-group';
 export type { RadioGroupLayout, RadioGroupProps, RadioGroupSlots, RadioGroupState } from './radio-group';
 
+export { Rating, ratingClassNames, renderRating, useRating, useRatingContextValues, useRatingStyles } from './rating';
+export type { RatingColor, RatingProps, RatingSize, RatingSlots, RatingState } from './rating';
+
 export {
   RatingDisplay,
   ratingDisplayClassNames,

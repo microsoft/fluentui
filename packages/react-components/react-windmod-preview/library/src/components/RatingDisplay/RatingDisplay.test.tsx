@@ -6,7 +6,7 @@ import { RatingDisplay } from './RatingDisplay';
 import type { RatingDisplayState } from './RatingDisplay.types';
 import { ratingDisplayClassNames, useRatingDisplayStyles } from './useRatingDisplayStyles';
 
-import itemStyles from './RatingItem/RatingItem.module.css';
+import itemStyles from '../RatingItem/RatingItem.module.css';
 import styles from './RatingDisplay.module.css';
 
 const items = (root: HTMLElement) => root.querySelectorAll<HTMLElement>('.fui-rating-item');

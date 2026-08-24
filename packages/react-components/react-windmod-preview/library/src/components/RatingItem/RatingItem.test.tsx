@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { RatingDisplay } from '../RatingDisplay';
+import { isConformant } from '../../testing/isConformant';
+import { Rating } from '../Rating/Rating';
+import { RatingDisplay } from '../RatingDisplay/RatingDisplay';
 import { RatingItem } from './RatingItem';
 import type { RatingItemState } from './RatingItem.types';
 import { ratingItemClassNames, useRatingItemStyles } from './useRatingItemStyles';
@@ -38,6 +39,7 @@ describe('RatingItem', () => {
     expect(root.hasAttribute('data-color')).toBe(false);
     expect(root.hasAttribute('data-size')).toBe(false);
     expect(root.querySelector('input')).toBeNull();
+    expect(root.querySelector(`.${styles.input}`)).toBeNull();
   });
 
   it('renders only the unselected indicator with no rating display above it', () => {
@@ -107,5 +109,94 @@ describe('RatingItem', () => {
     expect(styled.selectedIcon!.className).toContain(styles['lower-half']);
     expect(styled.unselectedIcon!.className).toContain('consumer-unselected');
     expect(styled.unselectedIcon!.className).toContain(styles['upper-half']);
+  });
+
+  it('keeps the muted unselected look for every colour inside a rating display', () => {
+    const colors = ['neutral', 'brand', 'marigold'] as const;
+
+    for (const color of colors) {
+      const { getByTestId } = render(
+        <RatingDisplay color={color} value={0}>
+          <RatingItem data-testid={color} value={1} />
+        </RatingDisplay>,
+      );
+
+      const item = getByTestId(color);
+
+      expect(indicators(item)[0]).toHaveClass(styles[`unselected-${color}`]);
+      expect(indicators(item)[0]).toHaveClass(styles.unselected);
+    }
+  });
+
+  it('draws the unselected glyph in the selected colour family inside an interactive rating', () => {
+    const { getByTestId } = render(
+      <Rating value={0}>
+        <RatingItem data-testid="neutral" value={1} />
+      </Rating>,
+    );
+
+    const neutral = getByTestId('neutral');
+
+    expect(indicators(neutral)[0]).not.toHaveClass(styles.unselected);
+    expect(indicators(neutral)[0]).not.toHaveClass(styles['unselected-neutral']);
+    expect(indicators(neutral)[0]).not.toHaveClass(styles['selected-neutral']);
+
+    const brand = render(
+      <Rating color="brand" value={0}>
+        <RatingItem data-testid="brand" value={1} />
+      </Rating>,
+    ).getByTestId('brand');
+
+    expect(indicators(brand)[0]).toHaveClass(styles['selected-brand']);
+    expect(indicators(brand)[0]).not.toHaveClass(styles.unselected);
+  });
+
+  it('decorates the inputs an interactive rating renders', () => {
+    const whole = render(
+      <Rating step={1} value={0}>
+        <RatingItem data-testid="item" value={1} />
+      </Rating>,
+    ).getByTestId('item');
+
+    const wholeInputs = whole.querySelectorAll<HTMLInputElement>('input');
+
+    expect(wholeInputs).toHaveLength(1);
+    expect(wholeInputs[0]).toHaveClass(styles.input);
+    expect(wholeInputs[0]).not.toHaveClass(styles['input-upper-half']);
+    expect(wholeInputs[0]).not.toHaveClass(styles['input-lower-half']);
+
+    const half = render(
+      <Rating step={0.5} value={0}>
+        <RatingItem data-testid="half-item" value={1} />
+      </Rating>,
+    ).getByTestId('half-item');
+
+    const halfInputs = half.querySelectorAll<HTMLInputElement>('input');
+
+    expect(halfInputs).toHaveLength(2);
+    expect(halfInputs[0]).toHaveClass(styles.input);
+    expect(halfInputs[0]).toHaveClass(styles['input-lower-half']);
+    expect(halfInputs[1]).toHaveClass(styles.input);
+    expect(halfInputs[1]).toHaveClass(styles['input-upper-half']);
+  });
+
+  it('keeps a consumer className on both input slots', () => {
+    const { getByTestId } = render(
+      <Rating step={0.5} value={0}>
+        <RatingItem
+          data-testid="item"
+          value={1}
+          halfValueInput={{ className: 'consumer-half' }}
+          fullValueInput={{ className: 'consumer-full' }}
+        />
+      </Rating>,
+    );
+
+    const [half, full] = Array.from(getByTestId('item').querySelectorAll<HTMLInputElement>('input'));
+
+    expect(half).toHaveClass('consumer-half');
+    expect(half).toHaveClass(styles.input);
+    expect(full).toHaveClass('consumer-full');
+    expect(full).toHaveClass(styles.input);
   });
 });

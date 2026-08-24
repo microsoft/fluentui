@@ -61,6 +61,9 @@ import type { RatingDisplayState as RatingDisplayState_2 } from '@fluentui/react
 import type { RatingItemProps as RatingItemProps_2 } from '@fluentui/react-headless-components-preview/rating';
 import { RatingItemSlots } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headless-components-preview/rating';
+import type { RatingProps as RatingProps_2 } from '@fluentui/react-headless-components-preview/rating';
+import { RatingSlots } from '@fluentui/react-headless-components-preview/rating';
+import type { RatingState as RatingState_2 } from '@fluentui/react-headless-components-preview/rating';
 import * as React_2 from 'react';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
@@ -78,6 +81,7 @@ import { renderProgressBar } from '@fluentui/react-headless-components-preview/p
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
 import { renderRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
+import { renderRating } from '@fluentui/react-headless-components-preview/rating';
 import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { renderSelect } from '@fluentui/react-headless-components-preview/select';
@@ -154,6 +158,8 @@ import { useProvider } from '@fluentui/react-headless-components-preview/provide
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroupContextValues } from '@fluentui/react-headless-components-preview/radio-group';
+import { useRating } from '@fluentui/react-headless-components-preview/rating';
+import { useRatingContextValues } from '@fluentui/react-headless-components-preview/rating';
 import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
@@ -583,6 +589,17 @@ export { RadioSlots }
 export { RadioState }
 
 // @public
+export const Rating: ForwardRefComponent<RatingProps>;
+
+// @public
+export const ratingClassNames: {
+    root: string;
+};
+
+// @public
+export type RatingColor = 'brand' | 'marigold' | 'neutral';
+
+// @public
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
 
 // @public
@@ -626,6 +643,20 @@ export { RatingItemSlots }
 // @public
 export type RatingItemState = RatingItemState_2 & Required<Pick<RatingItemProps, 'color' | 'size'>>;
 
+// @public
+export type RatingProps = RatingProps_2 & {
+    color?: RatingColor;
+    size?: RatingSize;
+};
+
+// @public
+export type RatingSize = 'small' | 'medium' | 'large' | 'extra-large';
+
+export { RatingSlots }
+
+// @public
+export type RatingState = RatingState_2 & Required<Pick<RatingProps, 'color' | 'size'>>;
+
 export { renderAvatar }
 
 export { renderBadge }
@@ -657,6 +688,8 @@ export { renderProvider }
 export { renderRadio }
 
 export { renderRadioGroup }
+
+export { renderRating }
 
 export { renderRatingDisplay }
 
@@ -1055,6 +1088,10 @@ export const useRadioGroupStyles: (state: RadioGroupState) => RadioGroupState;
 // @public
 export const useRadioStyles: (state: RadioState) => RadioState;
 
+export { useRating }
+
+export { useRatingContextValues }
+
 export { useRatingDisplay }
 
 export { useRatingDisplayContextValues }
@@ -1066,6 +1103,9 @@ export { useRatingItem }
 
 // @public
 export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;
+
+// @public
+export const useRatingStyles: (state: RatingState) => RatingState;
 
 export { useSelect }
 

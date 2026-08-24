@@ -6,6 +6,10 @@
 @layer fui.components.l1 {
   .root {
     @apply relative;
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
   }
 
   .small {
@@ -22,6 +26,18 @@
 
   .extra-large {
     @apply size-28 text-[length:calc(28px*var(--base-scale))];
+  }
+
+  .input {
+    @apply absolute inset-0 m-0 box-border h-full cursor-pointer opacity-0;
+  }
+
+  .input-lower-half {
+    @apply end-1/2;
+  }
+
+  .input-upper-half {
+    @apply start-1/2;
   }
 
   .indicator {
