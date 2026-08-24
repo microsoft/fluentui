@@ -60,19 +60,26 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(results)).toContain('test');
   });
 
-  it('should add an optional attw target only when package.json declares exports and is not private', async () => {
+  it('should add the attw target only for published esm first projects that declare exports', async () => {
     await tempFs.createFiles({
       'with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'with-exports/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+      'with-exports/package.json': serializeJson({ type: 'module', exports: { '.': './lib/index.js' } }),
       'no-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'no-exports/package.json': serializeJson({}),
+      'no-exports/package.json': serializeJson({ type: 'module' }),
       'private-with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'private-with-exports/package.json': serializeJson({ private: true, exports: { '.': './lib/index.js' } }),
+      'private-with-exports/package.json': serializeJson({
+        private: true,
+        type: 'module',
+        exports: { '.': './lib/index.js' },
+      }),
+      'commonjs-first/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'commonjs-first/package.json': serializeJson({ exports: { '.': './lib-commonjs/index.js' } }),
     });
 
     const withExports = await createNodesFunction(['with-exports/project.json'], options, context);
     const noExports = await createNodesFunction(['no-exports/project.json'], options, context);
     const privateWithExports = await createNodesFunction(['private-with-exports/project.json'], options, context);
+    const commonjsFirst = await createNodesFunction(['commonjs-first/project.json'], options, context);
 
     expect(getTargetsNames(withExports, 'with-exports')).toContain('attw');
     expect(getTargets(withExports, 'with-exports')?.attw).toMatchObject({
@@ -82,6 +89,8 @@ describe(`workspace-plugin`, () => {
     });
     expect(getTargetsNames(noExports, 'no-exports')).not.toContain('attw');
     expect(getTargetsNames(privateWithExports, 'private-with-exports')).not.toContain('attw');
+    // CommonJS-first packages always report inherent `CJS default export` interop findings
+    expect(getTargetsNames(commonjsFirst, 'commonjs-first')).not.toContain('attw');
   });
 
   it('should add lint,test task only if configuration exists', async () => {
