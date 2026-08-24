@@ -1,8 +1,6 @@
 export { coverTarget } from './coverTarget';
 export type { FlipMiddlewareOptions } from './flip';
 export { flip } from './flip';
-export type { HideMiddlewareOptions } from './hide';
-export { hide } from './hide';
 export { intersecting } from './intersecting';
 export type { MaxSizeMiddlewareOptions } from './maxSize';
 export { maxSize, resetMaxSize } from './maxSize';
