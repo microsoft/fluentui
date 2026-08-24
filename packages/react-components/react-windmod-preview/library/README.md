@@ -14,6 +14,9 @@ text colour and background onto its subtree. No Griffel, no runtime style inject
 > preview: APIs may change without notice, and coverage is limited to the components the headless
 > package ships. Not production-ready.
 
+Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the subpath
+map, the parity contract, every deliberate difference, and what is not shipped.
+
 ## Usage
 
 ```sh
