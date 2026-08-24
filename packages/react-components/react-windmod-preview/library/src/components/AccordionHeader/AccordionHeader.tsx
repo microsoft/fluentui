@@ -9,36 +9,35 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons/headless/svg/chevron-right';
 
-import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
+import type { AccordionHeaderProps } from './AccordionHeader.types';
 import { useAccordionHeaderStyles } from './useAccordionHeaderStyles';
 
 /**
  * An AccordionHeader is the button that toggles one AccordionItem. Windmod AccordionHeader: the
  * headless header decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef((props, ref) => {
-  const { inline = false, size = 'medium', ...rest } = props;
-  const base = useAccordionHeader(rest, ref);
+export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef(
+  ({ inline = false, size = 'medium', ...rest }, ref) => {
+    const base = useAccordionHeader(rest, ref);
 
-  // The headless surface builds the expand-icon slot but leaves it empty. The glyph carries no
-  // rotation of its own: which way it points is a function of open state, icon position and
-  // direction, all of which the stylesheet reads off the header root.
-  const state: AccordionHeaderState = {
-    ...base,
-    inline,
-    size,
-    expandIcon: base.expandIcon && {
-      ...base.expandIcon,
-      children: base.expandIcon.children ?? <ChevronRightRegular />,
-    },
-  };
+    // The headless surface builds the expand-icon slot but leaves it empty. The glyph carries no
+    // rotation of its own: which way it points is a function of open state, icon position and
+    // direction, all of which the stylesheet reads off the header root.
+    const styled = useAccordionHeaderStyles({
+      ...base,
+      inline,
+      size,
+      expandIcon: base.expandIcon && {
+        ...base.expandIcon,
+        children: base.expandIcon.children ?? <ChevronRightRegular />,
+      },
+    });
 
-  const styled = useAccordionHeaderStyles(state);
-
-  // The context values are built from the styled state: the headless state omits `size`, so
-  // children reading the header context see `undefined` unless windmod feeds it back in.
-  return renderAccordionHeader(styled, useAccordionHeaderContextValues(styled));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<AccordionHeaderProps>;
+    // The context values are built from the styled state: the headless state omits `size`, so
+    // children reading the header context see `undefined` unless windmod feeds it back in.
+    return renderAccordionHeader(styled, useAccordionHeaderContextValues(styled));
+    // Casting is required due to lack of distributive union to support union on @types/react
+  },
+) as ForwardRefComponent<AccordionHeaderProps>;
 
 AccordionHeader.displayName = 'AccordionHeader';

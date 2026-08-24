@@ -189,7 +189,7 @@
   }
 
   .icon {
-    @apply -mx-horizontal-xxs my-0 flex text-[length:calc(12px*var(--base-scale))] leading-none;
+    @apply -mx-horizontal-xxs my-0 flex text-icon-12 leading-none;
 
     @variant group-not-empty/fui-badge {
       @variant group-icon-before/fui-badge {
@@ -216,15 +216,15 @@
     }
 
     @variant group-size-extra-small/fui-badge {
-      @apply text-[length:calc(10px*var(--base-scale))];
+      @apply text-base-100;
     }
 
     @variant group-size-large/fui-badge {
-      @apply text-[length:calc(16px*var(--base-scale))];
+      @apply text-icon-16;
     }
 
     @variant group-size-extra-large/fui-badge {
-      @apply text-[length:calc(20px*var(--base-scale))];
+      @apply text-icon-20;
     }
   }
 }

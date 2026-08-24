@@ -7,7 +7,10 @@
 
    The before/after variants emit `content: var(--tw-content)` unconditionally, so `.root` must
    neutralise it with `content-none` or both pseudo-elements would paint on every Avatar
-   instead of only under `.ring` / `.shadow`. */
+   instead of only under `.ring` / `.shadow`. `.root` sets `--tw-content: none` ON THE SAME
+   PSEUDO-ELEMENT, which outranks the `@property` initial value, so `.ring` and `.shadow` each
+   have to set `--tw-content` back — a depth block's own `content: var(--tw-content)` would
+   otherwise resolve to `none` and paint nothing. */
 
 @layer fui.components.l1 {
   .root {
@@ -33,43 +36,43 @@
     }
   }
 
-  .textCaption2Strong {
+  .text-caption-2-strong {
     @apply text-base-100;
   }
 
-  .textCaption1Strong {
+  .text-caption-1-strong {
     @apply text-base-200;
   }
 
-  .textSubtitle2 {
+  .text-subtitle-2 {
     @apply text-base-400;
   }
 
-  .textSubtitle1 {
+  .text-subtitle-1 {
     @apply text-base-500;
   }
 
-  .textTitle3 {
+  .text-title-3 {
     @apply text-base-600;
   }
 
-  .squareSmall {
+  .square-small {
     @apply rounded-small;
   }
 
-  .squareMedium {
+  .square-medium {
     @apply rounded-medium;
   }
 
-  .squareLarge {
+  .square-large {
     @apply rounded-large;
   }
 
-  .squareXLarge {
+  .square-x-large {
     @apply rounded-x-large;
   }
 
-  .activeOrInactive {
+  .active-or-inactive {
     transform: perspective(1px);
     transition-property: transform, opacity;
     transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
@@ -88,15 +91,15 @@
     }
   }
 
-  .ringThick {
+  .ring-thick {
     --fui-avatar-ring-width: var(--stroke-width-thick);
   }
 
-  .ringThicker {
+  .ring-thicker {
     --fui-avatar-ring-width: var(--stroke-width-thicker);
   }
 
-  .ringThickest {
+  .ring-thickest {
     --fui-avatar-ring-width: var(--stroke-width-thickest);
   }
 
@@ -106,25 +109,25 @@
     }
   }
 
-  .shadow4 {
+  .shadow-4 {
     @variant after {
       @apply shadow-4;
     }
   }
 
-  .shadow8 {
+  .shadow-8 {
     @variant after {
       @apply shadow-8;
     }
   }
 
-  .shadow16 {
+  .shadow-16 {
     @variant after {
       @apply shadow-16;
     }
   }
 
-  .shadow28 {
+  .shadow-28 {
     @variant after {
       @apply shadow-28;
     }
@@ -339,35 +342,35 @@
     @apply absolute start-0 top-0 size-full rounded-[inherit] bg-(--fui-avatar-background) object-cover align-top text-(--fui-avatar-foreground);
   }
 
-  .iconInitials {
+  .icon-initials {
     @apply absolute start-0 top-0 box-border flex size-full items-center justify-center rounded-[inherit] border-(length:--spacing-thin) border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-none text-(--fui-avatar-foreground) select-none;
   }
 
-  .icon12 {
-    @apply text-[length:calc(12px*var(--base-scale))];
+  .icon-12 {
+    @apply text-icon-12;
   }
 
-  .icon16 {
-    @apply text-[length:calc(16px*var(--base-scale))];
+  .icon-16 {
+    @apply text-icon-16;
   }
 
-  .icon20 {
-    @apply text-[length:calc(20px*var(--base-scale))];
+  .icon-20 {
+    @apply text-icon-20;
   }
 
-  .icon24 {
-    @apply text-[length:calc(24px*var(--base-scale))];
+  .icon-24 {
+    @apply text-icon-24;
   }
 
-  .icon28 {
-    @apply text-[length:calc(28px*var(--base-scale))];
+  .icon-28 {
+    @apply text-icon-28;
   }
 
-  .icon32 {
-    @apply text-[length:calc(32px*var(--base-scale))];
+  .icon-32 {
+    @apply text-icon-32;
   }
 
-  .icon48 {
-    @apply text-[length:calc(48px*var(--base-scale))];
+  .icon-48 {
+    @apply text-icon-48;
   }
 }

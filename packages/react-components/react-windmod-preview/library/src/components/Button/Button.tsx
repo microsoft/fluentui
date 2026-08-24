@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderButton, useButton, useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { ButtonProps, ButtonState } from './Button.types';
+import type { ButtonProps } from './Button.types';
 import { useButtonStyles } from './useButtonStyles';
 
 /**
@@ -25,14 +25,14 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
     ...rest
   } = mergeContextProps(useButtonContext(), props);
 
-  const state: ButtonState = {
-    ...useButton(rest, ref),
-    appearance,
-    shape,
-    size,
-  };
-
-  return renderButton(useButtonStyles(state));
+  return renderButton(
+    useButtonStyles({
+      ...useButton(rest, ref),
+      appearance,
+      shape,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<ButtonProps>;
 

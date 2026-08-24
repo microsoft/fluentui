@@ -94,12 +94,12 @@ describe('AccordionHeader', () => {
   });
 
   it('stamps data-inline only when inline', () => {
-    expect(renderHeader({ inline: true }).root.getAttribute('data-inline')).toBe('');
+    expect(renderHeader({ inline: true }).root.getAttribute('data-inline')).toBe('true');
     expect(renderHeader().root.hasAttribute('data-inline')).toBe(false);
   });
 
   it('stamps data-icon only when an icon slot resolved', () => {
-    expect(renderHeader({ icon: <i /> }).root.getAttribute('data-icon')).toBe('');
+    expect(renderHeader({ icon: <i /> }).root.getAttribute('data-icon')).toBe('true');
     expect(renderHeader().root.hasAttribute('data-icon')).toBe(false);
     expect(renderHeader({ icon: null }).root.hasAttribute('data-icon')).toBe(false);
   });

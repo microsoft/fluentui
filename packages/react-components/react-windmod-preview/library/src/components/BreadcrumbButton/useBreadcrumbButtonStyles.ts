@@ -14,9 +14,9 @@ export const breadcrumbButtonClassNames: { root: string } = {
 };
 
 type BreadcrumbButtonRootDataAttributes = {
-  'data-disabled'?: string;
-  'data-disabled-focusable'?: string;
-  'data-icon-only'?: string;
+  'data-disabled'?: true;
+  'data-disabled-focusable'?: true;
+  'data-icon-only'?: true;
   'data-icon-position'?: BreadcrumbButtonState['iconPosition'];
 };
 
@@ -33,9 +33,9 @@ export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): Breadcr
 
   const root: BreadcrumbButtonState['root'] & BreadcrumbButtonRootDataAttributes = {
     ...buttonRoot,
-    'data-disabled': state.disabled ? '' : undefined,
-    'data-disabled-focusable': state.disabledFocusable ? '' : undefined,
-    'data-icon-only': state.iconOnly ? '' : undefined,
+    'data-disabled': state.disabled || undefined,
+    'data-disabled-focusable': state.disabledFocusable || undefined,
+    'data-icon-only': state.iconOnly || undefined,
     'data-icon-position': state.icon ? state.iconPosition : undefined,
     className: clsx(breadcrumbButtonClassNames.root, styles.root, buttonRoot.className),
   };

@@ -14,7 +14,8 @@
     --fui-card-header-gap: calc(12px * var(--base-scale));
 
     @variant with-description {
-      @apply grid [grid-auto-columns:min-content_1fr_min-content];
+      @apply grid;
+      grid-auto-columns: min-content 1fr min-content;
     }
 
     @variant group-horizontal/fui-card, group-vertical/fui-card {

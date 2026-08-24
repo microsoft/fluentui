@@ -137,20 +137,20 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
       ? AVATAR_COLORS[getHashCode(idForColor ?? props.name ?? '') % AVATAR_COLORS.length]
       : propColor;
 
-  const state: AvatarState = {
-    ...base,
-    root,
-    icon,
-    initials,
-    activeAriaLabelElement,
-    active,
-    activeAppearance,
-    color,
-    shape,
-    size,
-  };
-
-  return renderAvatar(useAvatarStyles(state));
+  return renderAvatar(
+    useAvatarStyles({
+      ...base,
+      root,
+      icon,
+      initials,
+      activeAriaLabelElement,
+      active,
+      activeAppearance,
+      color,
+      shape,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<AvatarProps>;
 

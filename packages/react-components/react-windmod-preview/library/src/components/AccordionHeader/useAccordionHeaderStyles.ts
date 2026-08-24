@@ -11,8 +11,8 @@ export const accordionHeaderClassNames: { root: string } = {
 };
 
 type AccordionHeaderRootDataAttributes = {
-  'data-icon'?: string;
-  'data-inline'?: string;
+  'data-icon'?: true;
+  'data-inline'?: true;
   'data-size'?: AccordionHeaderState['size'];
 };
 
@@ -21,8 +21,8 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState): Accordion
   const root: AccordionHeaderState['root'] & AccordionHeaderRootDataAttributes = {
     ...state.root,
     // The end-position button reclaims the icon slot's leading padding when no icon is supplied.
-    'data-icon': state.icon ? '' : undefined,
-    'data-inline': state.inline ? '' : undefined,
+    'data-icon': state.icon ? true : undefined,
+    'data-inline': state.inline || undefined,
     'data-size': state.size,
     className: clsx(accordionHeaderClassNames.root, styles.root, state.root.className),
   };

@@ -85,7 +85,8 @@
     @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] m-0 h-(--fui-color-slider-thumb-size) w-full cursor-pointer p-0 opacity-0;
 
     @variant group-vertical/fui-color-slider {
-      @apply h-full w-(--fui-color-slider-thumb-size) [writing-mode:vertical-lr];
+      @apply h-full w-(--fui-color-slider-thumb-size);
+      writing-mode: vertical-lr;
 
       direction: rtl;
 

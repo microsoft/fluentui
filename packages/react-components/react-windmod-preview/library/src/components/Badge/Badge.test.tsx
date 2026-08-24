@@ -107,7 +107,7 @@ describe('Badge', () => {
     expect(root).toHaveClass(styles.root);
     expect(root).toHaveClass(styles.rounded);
     expect(root).toHaveClass(styles.outline);
-    expect(root).toHaveClass(styles['outline-danger']);
+    expect(root).toHaveClass(styles.outlineDanger);
     expect(getByTestId('glyph').parentElement).toHaveClass(styles.icon);
   });
 

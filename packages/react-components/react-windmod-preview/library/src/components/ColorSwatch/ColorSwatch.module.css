@@ -161,18 +161,18 @@
   }
 
   .icon {
-    @apply absolute flex self-center text-[length:calc(20px*var(--base-scale))];
+    @apply absolute flex self-center text-icon-20;
 
     @variant group-size-extra-small/fui-color-swatch, group-size-small/fui-color-swatch {
-      @apply text-[length:calc(16px*var(--base-scale))];
+      @apply text-icon-16;
     }
 
     @variant group-size-large/fui-color-swatch {
-      @apply text-[length:calc(24px*var(--base-scale))];
+      @apply text-icon-24;
     }
   }
 
-  .disabledIcon {
+  .disabled-icon {
     @apply text-neutral-foreground-inverted;
 
     filter: drop-shadow(0 1px 1px rgb(0 0 0 / 1));

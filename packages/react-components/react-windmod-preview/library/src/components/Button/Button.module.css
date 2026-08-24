@@ -4,10 +4,7 @@
   .root {
     @apply m-horizontal-none box-border inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-(--duration-faster) ease-(--ease-easy-ease) outline-none;
 
-    /* Longhands only: a shorthand in transition-property expands to every longhand it
-       covers, and only these six ever change. */
-    transition-property:
-      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
+    transition-property: background, border, color;
 
     @variant hover {
       @apply cursor-pointer border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
@@ -126,7 +123,7 @@
   }
 
   .icon {
-    @apply inline-flex size-20 items-center justify-center text-[length:calc(20px*var(--base-scale))];
+    @apply inline-flex size-20 items-center justify-center text-icon-20;
 
     --fui-button-icon-spacing: calc(6px * var(--base-scale));
 
@@ -141,13 +138,13 @@
     }
 
     @variant group-size-small/fui-button {
-      @apply size-20 text-[length:calc(20px*var(--base-scale))];
+      @apply size-20 text-icon-20;
 
       --fui-button-icon-spacing: calc(4px * var(--base-scale));
     }
 
     @variant group-size-large/fui-button {
-      @apply size-24 text-[length:calc(24px*var(--base-scale))];
+      @apply size-24 text-icon-24;
 
       --fui-button-icon-spacing: calc(6px * var(--base-scale));
     }

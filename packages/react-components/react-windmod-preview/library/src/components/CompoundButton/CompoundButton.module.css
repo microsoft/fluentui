@@ -28,7 +28,7 @@
   }
 
   .icon {
-    @apply size-40 text-[length:calc(40px*var(--base-scale))];
+    @apply size-40 text-hero-900;
 
     @variant group-not-empty/fui-compound-button {
       @variant group-icon-before/fui-compound-button {
@@ -41,11 +41,11 @@
     }
   }
 
-  .contentContainer {
+  .content-container {
     @apply flex flex-col text-start;
   }
 
-  .secondaryContent {
+  .secondary-content {
     @apply text-base-200 leading-[100%] font-regular text-neutral-foreground-2;
 
     @variant group-size-large/fui-compound-button {

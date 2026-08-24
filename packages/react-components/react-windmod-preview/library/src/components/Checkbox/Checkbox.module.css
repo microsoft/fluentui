@@ -54,10 +54,10 @@
   }
 
   .indicator {
-    @apply pointer-events-none mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center self-start overflow-hidden rounded-small border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-[length:calc(12px*var(--base-scale))];
+    @apply pointer-events-none mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center self-start overflow-hidden rounded-small border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-icon-12;
 
     @variant group-size-large/fui-checkbox {
-      @apply size-20 text-[length:calc(16px*var(--base-scale))];
+      @apply size-20 text-icon-16;
     }
 
     @variant group-enabled/fui-checkbox {

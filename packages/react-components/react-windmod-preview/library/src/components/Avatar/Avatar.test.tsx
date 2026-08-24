@@ -229,7 +229,7 @@ describe('Avatar', () => {
 
     // A name with no derivable initials still colours the icon-bearing Avatar.
     expect(renderAvatar({ color: 'colorful', name: '山田 太郎' }).root).toHaveClass(styles.navy);
-    expect(renderAvatar({ color: 'colorful' }).root).toHaveClass(styles['dark-red']);
+    expect(renderAvatar({ color: 'colorful' }).root).toHaveClass(styles.darkRed);
   });
 
   it('seeds the colorful hash from idForColor in preference to name', () => {
@@ -244,10 +244,8 @@ describe('Avatar', () => {
   it('seeds the hash from an empty idForColor rather than falling through to name', () => {
     // The fallback is nullish-coalescing, so an explicit empty string is a seed in its own right —
     // it must not be treated as absent the way undefined is.
-    expect(renderAvatar({ color: 'colorful', idForColor: '', name: 'Katri Athokas' }).root).toHaveClass(
-      styles['dark-red'],
-    );
-    expect(renderAvatar({ color: 'colorful', name: 'Katri Athokas' }).root).not.toHaveClass(styles['dark-red']);
+    expect(renderAvatar({ color: 'colorful', idForColor: '', name: 'Katri Athokas' }).root).toHaveClass(styles.darkRed);
+    expect(renderAvatar({ color: 'colorful', name: 'Katri Athokas' }).root).not.toHaveClass(styles.darkRed);
   });
 
   it('restores the person glyph across every icon shorthand shape', () => {

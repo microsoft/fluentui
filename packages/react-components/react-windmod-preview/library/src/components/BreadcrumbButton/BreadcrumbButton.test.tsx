@@ -133,12 +133,12 @@ describe('BreadcrumbButton', () => {
     expect(plain.hasAttribute('data-icon-only')).toBe(false);
     expect(plain.hasAttribute('data-icon-position')).toBe(false);
 
-    expect(getByTestId('disabled').getAttribute('data-disabled')).toBe('');
-    expect(getByTestId('disabled-focusable').getAttribute('data-disabled-focusable')).toBe('');
+    expect(getByTestId('disabled').getAttribute('data-disabled')).toBe('true');
+    expect(getByTestId('disabled-focusable').getAttribute('data-disabled-focusable')).toBe('true');
 
     const iconOnly = getByTestId('icon-only');
 
-    expect(iconOnly.getAttribute('data-icon-only')).toBe('');
+    expect(iconOnly.getAttribute('data-icon-only')).toBe('true');
     expect(iconOnly.getAttribute('data-icon-position')).toBe('before');
     expect(iconOnly.hasAttribute('data-empty')).toBe(true);
   });
@@ -206,7 +206,7 @@ describe('BreadcrumbButton', () => {
     expect(inert.tagName).toBe('A');
     expect(inert.hasAttribute('href')).toBe(false);
     expect(inert.getAttribute('data-current')).toBe('');
-    expect(inert.getAttribute('data-disabled')).toBe('');
+    expect(inert.getAttribute('data-disabled')).toBe('true');
     expect(inert.getAttribute('aria-disabled')).toBe('true');
   });
 
@@ -243,7 +243,7 @@ describe('BreadcrumbButton', () => {
     expect(state.root.className).toBe('consumer');
     expect(state.root).not.toHaveProperty('data-disabled');
     expect(state.icon!.className).toBe('consumer-icon');
-    expect(stampsOf(styled.root)['data-disabled']).toBe('');
+    expect(stampsOf(styled.root)['data-disabled']).toBe(true);
     expect(stampsOf(styled.root)['data-icon-position']).toBe('before');
     expect(stampsOf(styled.root)['data-size']).toBe('large');
     expect(styled.root.className).toContain('consumer');

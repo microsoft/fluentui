@@ -32,34 +32,34 @@ const getIndicatorGlyph = (checked: 'mixed' | boolean, shape: CheckboxShape, siz
  * A Checkbox is a tri-state control for a single choice. Windmod Checkbox: the headless checkbox
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((props, ref) => {
+export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-checkbox's styled useCheckbox.
-  const { shape = 'square', size = 'medium', ...rest } = props;
+  ({ shape = 'square', size = 'medium', ...rest }, ref) => {
+    const state: CheckboxState = {
+      ...useCheckbox(rest, ref),
+      shape,
+      size,
+    };
 
-  const state: CheckboxState = {
-    ...useCheckbox(rest, ref),
-    shape,
-    size,
-  };
+    // The indicator slot renders by default, so no pre-hook materialisation is needed (see
+    // MenuButton.tsx for the case that does need it). Consumer-supplied children always win; null or
+    // undefined children fall back to the resolved glyph; `indicator={null}` still removes the slot.
+    const styled = useCheckboxStyles(
+      state.indicator
+        ? {
+            ...state,
+            indicator: {
+              ...state.indicator,
+              children: state.indicator.children ?? getIndicatorGlyph(state.checked, shape, size),
+            },
+          }
+        : state,
+    );
 
-  // The indicator slot renders by default, so no pre-hook materialisation is needed (see
-  // MenuButton.tsx for the case that does need it). Consumer-supplied children always win; null or
-  // undefined children fall back to the resolved glyph; `indicator={null}` still removes the slot.
-  const styled = useCheckboxStyles(
-    state.indicator
-      ? {
-          ...state,
-          indicator: {
-            ...state.indicator,
-            children: state.indicator.children ?? getIndicatorGlyph(state.checked, shape, size),
-          },
-        }
-      : state,
-  );
-
-  return renderCheckbox(styled);
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CheckboxProps>;
+    return renderCheckbox(styled);
+    // Casting is required due to lack of distributive union to support union on @types/react
+  },
+) as ForwardRefComponent<CheckboxProps>;
 
 Checkbox.displayName = 'Checkbox';

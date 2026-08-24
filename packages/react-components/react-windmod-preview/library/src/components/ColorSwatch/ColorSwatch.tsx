@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ProhibitedFilled } from '@fluentui/react-icons/headless/svg/prohibited';
 
-import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
+import type { ColorSwatchProps } from './ColorSwatch.types';
 import { useColorSwatchStyles } from './useColorSwatchStyles';
 
 /**
@@ -30,17 +30,17 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps> = React.forwardR
   // still removes it for disabledIcon={null}. Only a disabled swatch renders the slot at all.
   const disabledIconSlot = slot.optional(props.disabledIcon, { renderByDefault: true, elementType: 'span' });
 
-  const state: ColorSwatchState = {
-    ...useColorSwatch(rest, ref),
-    size: sizeProp ?? sizeFromContext ?? 'medium',
-    shape: shapeProp ?? shapeFromContext ?? 'square',
-    disabledIcon: disabledIconSlot && {
-      ...disabledIconSlot,
-      children: disabledIconSlot.children ?? <ProhibitedFilled />,
-    },
-  };
-
-  return renderColorSwatch(useColorSwatchStyles(state));
+  return renderColorSwatch(
+    useColorSwatchStyles({
+      ...useColorSwatch(rest, ref),
+      size: sizeProp ?? sizeFromContext ?? 'medium',
+      shape: shapeProp ?? shapeFromContext ?? 'square',
+      disabledIcon: disabledIconSlot && {
+        ...disabledIconSlot,
+        children: disabledIconSlot.children ?? <ProhibitedFilled />,
+      },
+    }),
+  );
 });
 
 ColorSwatch.displayName = 'ColorSwatch';

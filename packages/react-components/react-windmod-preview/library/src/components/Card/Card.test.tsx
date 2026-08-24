@@ -144,7 +144,7 @@ describe('Card', () => {
     const root = getByTestId('root');
 
     expect(root.classList.contains(styles.focused)).toBe(expected === 'focused');
-    expect(root.classList.contains(styles['selectable-focused'])).toBe(false);
+    expect(root.classList.contains(styles.selectableFocused)).toBe(false);
   });
 
   it('swaps to the selectable focus class while the hidden checkbox holds focus', () => {
@@ -157,14 +157,14 @@ describe('Card', () => {
     const root = getByTestId('root');
     const checkbox = container.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
-    expect(root.classList.contains(styles['selectable-focused'])).toBe(false);
+    expect(root.classList.contains(styles.selectableFocused)).toBe(false);
 
     fireEvent.focus(checkbox);
-    expect(root.classList.contains(styles['selectable-focused'])).toBe(true);
+    expect(root.classList.contains(styles.selectableFocused)).toBe(true);
     expect(root.classList.contains(styles.focused)).toBe(false);
 
     fireEvent.blur(checkbox);
-    expect(root.classList.contains(styles['selectable-focused'])).toBe(false);
+    expect(root.classList.contains(styles.selectableFocused)).toBe(false);
   });
 
   it('decorates the floatingAction slot and keeps its consumer className', () => {
@@ -176,7 +176,7 @@ describe('Card', () => {
 
     const action = cardRoot(container).firstElementChild as HTMLElement;
 
-    expect(action).toHaveClass(styles['floating-action']);
+    expect(action).toHaveClass(styles.floatingAction);
     expect(action).toHaveClass('consumer-action');
     // Content and the slot-level id separate a decorated slot from one rebuilt as a bare
     // className holder: dropping the slot's state spread keeps the class and loses the rest.

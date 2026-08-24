@@ -8,7 +8,7 @@ import {
   useColorPickerContextValue,
 } from '@fluentui/react-headless-components-preview/color-picker';
 
-import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import type { ColorAreaProps } from './ColorArea.types';
 import { useColorAreaStyles } from './useColorAreaStyles';
 
 /**
@@ -19,18 +19,17 @@ import { useColorAreaStyles } from './useColorAreaStyles';
  * writes; the windmod layer never writes to, re-orders or merges into that style — the module
  * reads them.
  */
-export const ColorArea: ForwardRefComponent<ColorAreaProps> = React.forwardRef((props, ref) => {
-  const { shape: shapeProp, ...rest } = props;
+export const ColorArea: ForwardRefComponent<ColorAreaProps> = React.forwardRef(({ shape: shapeProp, ...rest }, ref) => {
   const shapeFromContext = useColorPickerContextValue(ctx => ctx.shape);
 
-  const state: ColorAreaState = {
-    ...useColorArea(rest, ref),
-    // The context's own default value applies only with no picker at all, so a picker that leaves
-    // `shape` unset publishes undefined and the trailing fallback is what resolves it.
-    shape: shapeProp ?? shapeFromContext ?? 'rounded',
-  };
-
-  return renderColorArea(useColorAreaStyles(state));
+  return renderColorArea(
+    useColorAreaStyles({
+      ...useColorArea(rest, ref),
+      // The context's own default value applies only with no picker at all, so a picker that leaves
+      // `shape` unset publishes undefined and the trailing fallback is what resolves it.
+      shape: shapeProp ?? shapeFromContext ?? 'rounded',
+    }),
+  );
 });
 
 ColorArea.displayName = 'ColorArea';

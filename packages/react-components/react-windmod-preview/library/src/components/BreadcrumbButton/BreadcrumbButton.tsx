@@ -8,7 +8,7 @@ import {
   useBreadcrumbContext,
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
-import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
+import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { useBreadcrumbButtonStyles } from './useBreadcrumbButtonStyles';
 
 /**
@@ -21,14 +21,14 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
   // shape and takes size from the breadcrumb, so a size prop on the button is not accepted.
   const { size } = useBreadcrumbContext();
 
-  const state: BreadcrumbButtonState = {
-    ...useBreadcrumbButton(props, ref),
-    appearance: 'subtle',
-    shape: 'rounded',
-    size,
-  };
-
-  return renderBreadcrumbButton(useBreadcrumbButtonStyles(state));
+  return renderBreadcrumbButton(
+    useBreadcrumbButtonStyles({
+      ...useBreadcrumbButton(props, ref),
+      appearance: 'subtle',
+      shape: 'rounded',
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<BreadcrumbButtonProps>;
 

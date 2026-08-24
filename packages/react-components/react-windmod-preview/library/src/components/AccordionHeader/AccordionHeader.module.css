@@ -16,7 +16,9 @@
   /* Griffel's button reset also sets font-family, font-size, line-height and padding; each of
      those is overwritten below at every size, so only the surviving reset values are authored. */
   .button {
-    @apply relative box-border flex min-h-44 w-full cursor-pointer items-center overflow-visible border-0 bg-inherit py-0 ps-horizontal-m-nudge pe-horizontal-m [text-align:unset] font-base text-base-300 leading-base-300 font-regular text-inherit outline-none [-webkit-appearance:button];
+    @apply relative box-border flex min-h-44 w-full cursor-pointer items-center overflow-visible border-0 bg-inherit py-0 ps-horizontal-m-nudge pe-horizontal-m font-base text-base-300 leading-base-300 font-regular text-inherit outline-none;
+    text-align: unset;
+    -webkit-appearance: button;
 
     @variant group-size-small/fui-accordion-header {
       @apply min-h-32 text-base-200;
@@ -51,7 +53,7 @@
     }
   }
 
-  .expandIcon {
+  .expand-icon {
     @apply flex h-full items-center text-base-500 leading-base-500;
 
     @variant group-expand-icon-position-start/fui-accordion-header {

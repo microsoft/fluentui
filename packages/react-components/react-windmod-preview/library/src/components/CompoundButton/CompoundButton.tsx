@@ -6,7 +6,7 @@ import { renderCompoundButton, useCompoundButton } from '@fluentui/react-headles
 import { useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButtonStyles } from './useCompoundButtonStyles';
 
 /**
@@ -24,14 +24,14 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.fo
     ...rest
   } = mergeContextProps(useButtonContext(), props);
 
-  const state: CompoundButtonState = {
-    ...useCompoundButton(rest, ref),
-    appearance,
-    shape,
-    size,
-  };
-
-  return renderCompoundButton(useCompoundButtonStyles(state));
+  return renderCompoundButton(
+    useCompoundButtonStyles({
+      ...useCompoundButton(rest, ref),
+      appearance,
+      shape,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<CompoundButtonProps>;
 

@@ -16,48 +16,82 @@ type AvatarRootDataAttributes = {
 
 // Every size-dependent value except the box edge is a bucket, so the fourteen sizes collapse to
 // these five ladders plus the root's typed attr(). Each boundary is inclusive.
-const textClass = (size: AvatarSize) =>
-  size <= 24
-    ? styles.textCaption2Strong
-    : size <= 28
-      ? styles.textCaption1Strong
-      : size <= 40
-        ? undefined
-        : size <= 56
-          ? styles.textSubtitle2
-          : size <= 96
-            ? styles.textSubtitle1
-            : styles.textTitle3;
+const textClass = (size: AvatarSize) => {
+  if (size <= 24) {
+    return styles.textCaption2Strong;
+  }
+  if (size <= 28) {
+    return styles.textCaption1Strong;
+  }
+  if (size <= 40) {
+    return undefined;
+  }
+  if (size <= 56) {
+    return styles.textSubtitle2;
+  }
+  if (size <= 96) {
+    return styles.textSubtitle1;
+  }
+  return styles.textTitle3;
+};
 
-const squareClass = (size: AvatarSize) =>
-  size <= 24
-    ? styles.squareSmall
-    : size <= 48
-      ? styles.squareMedium
-      : size <= 72
-        ? styles.squareLarge
-        : styles.squareXLarge;
+const squareClass = (size: AvatarSize) => {
+  if (size <= 24) {
+    return styles.squareSmall;
+  }
+  if (size <= 48) {
+    return styles.squareMedium;
+  }
+  if (size <= 72) {
+    return styles.squareLarge;
+  }
+  return styles.squareXLarge;
+};
 
-const ringClass = (size: AvatarSize) =>
-  size <= 48 ? styles.ringThick : size <= 64 ? styles.ringThicker : styles.ringThickest;
+const ringClass = (size: AvatarSize) => {
+  if (size <= 48) {
+    return styles.ringThick;
+  }
+  if (size <= 64) {
+    return styles.ringThicker;
+  }
+  return styles.ringThickest;
+};
 
-const shadowClass = (size: AvatarSize) =>
-  size <= 28 ? styles.shadow4 : size <= 48 ? styles.shadow8 : size <= 64 ? styles.shadow16 : styles.shadow28;
+const shadowClass = (size: AvatarSize) => {
+  if (size <= 28) {
+    return styles.shadow4;
+  }
+  if (size <= 48) {
+    return styles.shadow8;
+  }
+  if (size <= 64) {
+    return styles.shadow16;
+  }
+  return styles.shadow28;
+};
 
-const iconClass = (size: AvatarSize) =>
-  size <= 16
-    ? styles.icon12
-    : size <= 24
-      ? styles.icon16
-      : size <= 40
-        ? styles.icon20
-        : size <= 48
-          ? styles.icon24
-          : size <= 56
-            ? styles.icon28
-            : size <= 72
-              ? styles.icon32
-              : styles.icon48;
+const iconClass = (size: AvatarSize) => {
+  if (size <= 16) {
+    return styles.icon12;
+  }
+  if (size <= 24) {
+    return styles.icon16;
+  }
+  if (size <= 40) {
+    return styles.icon20;
+  }
+  if (size <= 48) {
+    return styles.icon24;
+  }
+  if (size <= 56) {
+    return styles.icon28;
+  }
+  if (size <= 72) {
+    return styles.icon32;
+  }
+  return styles.icon48;
+};
 
 /**
  * Applies the visual contract, returning new state. The headless hook stamps no attributes at
