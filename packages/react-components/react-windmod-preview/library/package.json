@@ -263,6 +263,46 @@
         "default": "./lib-commonjs/message-bar-title.cjs"
       }
     },
+    "./nav": {
+      "import": {
+        "types": "./dist/nav.d.ts",
+        "default": "./lib/nav.js"
+      },
+      "require": {
+        "types": "./dist/nav.d.cts",
+        "default": "./lib-commonjs/nav.cjs"
+      }
+    },
+    "./nav-divider": {
+      "import": {
+        "types": "./dist/nav-divider.d.ts",
+        "default": "./lib/nav-divider.js"
+      },
+      "require": {
+        "types": "./dist/nav-divider.d.cts",
+        "default": "./lib-commonjs/nav-divider.cjs"
+      }
+    },
+    "./nav-item": {
+      "import": {
+        "types": "./dist/nav-item.d.ts",
+        "default": "./lib/nav-item.js"
+      },
+      "require": {
+        "types": "./dist/nav-item.d.cts",
+        "default": "./lib-commonjs/nav-item.cjs"
+      }
+    },
+    "./nav-section-header": {
+      "import": {
+        "types": "./dist/nav-section-header.d.ts",
+        "default": "./lib/nav-section-header.js"
+      },
+      "require": {
+        "types": "./dist/nav-section-header.d.cts",
+        "default": "./lib-commonjs/nav-section-header.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

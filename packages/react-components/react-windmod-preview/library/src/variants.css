@@ -50,6 +50,9 @@
 @custom-variant intent-warning (&:where([data-intent='warning']));
 @custom-variant intent-error (&:where([data-intent='error']));
 
+/* Nav: row density. `medium` is the base look and nothing selects it. */
+@custom-variant density-small (&:where([data-density='small']));
+
 /* Persona: text position */
 @custom-variant text-position-after (&:where([data-text-position='after']));
 @custom-variant text-position-before (&:where([data-text-position='before']));
