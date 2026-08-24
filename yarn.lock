@@ -4367,7 +4367,6 @@ __metadata:
     "@fluentui/react-tooltip": "npm:^9.10.5"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@fluentui/scripts-cypress": "npm:*"
-    "@fluentui/verify-bundle-isolation": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
