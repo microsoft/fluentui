@@ -2,22 +2,6 @@
 
 @layer fui.components.l2 {
   .root {
-    @variant appearance-primary {
-      @variant forced-colors {
-        @apply border-[ButtonBorder] bg-[ButtonFace] text-[ButtonText] forced-color-adjust-auto;
-      }
-
-      @variant disabled, disabled-focusable {
-        @variant forced-colors {
-          @apply border-[GrayText] text-[GrayText];
-
-          @variant focus {
-            @apply border-[GrayText];
-          }
-        }
-      }
-    }
-
     @variant checked {
       @apply border-(length:--spacing-thin) border-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
 
@@ -27,22 +11,6 @@
 
       @variant hover-active {
         @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
-      }
-
-      @variant forced-colors {
-        @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-        @variant hover {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-        }
-
-        @variant hover-active {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-        }
-
-        @variant focus {
-          @apply border border-solid border-[HighlightText] outline-[color:Highlight];
-        }
       }
 
       /* Griffel orders every :hover rule after every static rule regardless of source position, so
@@ -176,6 +144,76 @@
         }
       }
     }
+
+    /* Griffel emits every forced-colors rule into its media style bucket, which its sheet writes
+       after every other bucket, so those rules outrank the checked, appearance, disabled and focus
+       rules whatever their source position; source order is the only equivalent here. Button's own
+       trailing forced-colors block is a layer below and cannot reach past this layer's blocks
+       above, so the focus border it supplies is repeated first. */
+    @variant forced-colors {
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply border-[GrayText];
+        }
+      }
+    }
+
+    @variant appearance-primary {
+      @variant forced-colors {
+        @apply border-[ButtonBorder] bg-[ButtonFace] text-[ButtonText] forced-color-adjust-auto;
+
+        /* Griffel reaches these from Button's own high-contrast rules, where the hover and pressed
+           pseudo-classes outrank this resting appearance by specificity inside the shared media
+           bucket; a whole layer separates them here, so they are repeated. */
+        @variant hover {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+        }
+
+        @variant hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+        }
+
+        @variant disabled, disabled-focusable {
+          @apply border-[GrayText] text-[GrayText];
+
+          @variant focus {
+            @apply border-[GrayText];
+          }
+        }
+      }
+    }
+
+    @variant checked {
+      @variant forced-colors {
+        @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+        @variant hover {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant focus {
+          @apply border border-solid border-[HighlightText] outline-[color:Highlight];
+        }
+      }
+    }
   }
 
   .icon {
@@ -190,6 +228,14 @@
 
       @variant group-accessible/fui-toggle-button {
         @apply text-neutral-foreground-on-brand;
+
+        /* Griffel gates its selected glyph colour on NOT accessible and authors nothing for the
+           accessible case, so the glyph inherits the root colour. That matters only under forced
+           colors, where this slot keeps forced-color-adjust: auto and any colour authored here
+           would be replaced by the system foreground instead of following the root. */
+        @variant forced-colors {
+          @apply text-inherit;
+        }
       }
 
       & * {
@@ -212,6 +258,16 @@
 
       @variant group-hover-active/fui-toggle-button {
         @apply text-neutral-foreground-2-brand-pressed;
+      }
+
+      @variant forced-colors {
+        @variant group-hover/fui-toggle-button {
+          @apply text-[Highlight];
+        }
+
+        @variant group-hover-active/fui-toggle-button {
+          @apply text-[Highlight];
+        }
       }
     }
 

@@ -21,20 +21,6 @@
       transition-duration: 0.01ms;
     }
 
-    @variant forced-colors {
-      @variant focus {
-        @apply border-[ButtonText];
-      }
-
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
-      }
-
-      @variant hover-active {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
-      }
-    }
-
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
     }
@@ -54,22 +40,6 @@
 
       @variant hover-active {
         @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
-      @variant forced-colors {
-        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
       }
     }
 
@@ -116,6 +86,41 @@
 
       @variant size-large {
         @apply max-w-40 min-w-40 p-7;
+      }
+    }
+
+    /* Griffel emits every forced-colors rule into its media style bucket, which its sheet writes
+       after every other bucket, so those rules outrank the resting, hover, disabled and focus
+       rules whatever their source position. Source order is the only equivalent here: the
+       forced-colors look therefore trails every class block, and each appearance class below
+       repeats whatever it would otherwise win back from this one. */
+    @variant forced-colors {
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant hover {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+      }
+
+      @variant hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply border-[GrayText];
+        }
       }
     }
   }
@@ -268,6 +273,30 @@
         @apply bg-transparent-background;
       }
     }
+
+    /* Background only: this class never touches the border or the text, so .root's trailing
+       forced-colors block still supplies both. */
+    @variant forced-colors {
+      @variant hover {
+        @apply bg-[HighlightText];
+      }
+
+      @variant hover-active {
+        @apply bg-[HighlightText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply bg-[ButtonFace];
+
+        @variant hover {
+          @apply bg-[ButtonFace];
+        }
+
+        @variant hover-active {
+          @apply bg-[ButtonFace];
+        }
+      }
+    }
   }
 
   .primary {
@@ -281,18 +310,6 @@
       @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
     }
 
-    @variant forced-colors {
-      @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-    }
-
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
 
@@ -302,18 +319,6 @@
 
       @variant hover-active {
         @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
-      @variant forced-colors {
-        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
       }
     }
 
@@ -349,6 +354,40 @@
         }
       }
     }
+
+    @variant forced-colors {
+      @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+      @variant hover {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      @variant hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      /* Griffel reaches this from the base rule, where the focus pseudo-class outranks this
+         appearance by specificity inside the shared media bucket. */
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply border-[GrayText];
+        }
+      }
+    }
   }
 
   .subtle {
@@ -362,16 +401,6 @@
       @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
     }
 
-    @variant forced-colors {
-      @variant hover {
-        @apply text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply text-[Highlight];
-      }
-    }
-
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
 
@@ -382,22 +411,40 @@
       @variant hover-active {
         @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
       }
-
-      @variant forced-colors {
-        @apply text-[GrayText];
-
-        @variant hover {
-          @apply text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply text-[GrayText];
-        }
-      }
     }
 
     @variant focus-visible {
       border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      @variant hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply border-[GrayText];
+        }
+      }
     }
   }
 
@@ -412,16 +459,6 @@
       @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
     }
 
-    @variant forced-colors {
-      @variant hover {
-        @apply bg-transparent-background text-[Highlight];
-      }
-
-      @variant hover-active {
-        @apply bg-transparent-background text-[Highlight];
-      }
-    }
-
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
 
@@ -432,22 +469,40 @@
       @variant hover-active {
         @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
       }
-
-      @variant forced-colors {
-        @apply text-[GrayText];
-
-        @variant hover {
-          @apply text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply text-[GrayText];
-        }
-      }
     }
 
     @variant focus-visible {
       border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        @apply border-[Highlight] bg-transparent-background text-[Highlight];
+      }
+
+      @variant hover-active {
+        @apply border-[Highlight] bg-transparent-background text-[Highlight];
+      }
+
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+        @variant hover {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply border-[GrayText];
+        }
+      }
     }
   }
 
