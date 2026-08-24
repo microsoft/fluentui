@@ -137,6 +137,15 @@ export { Checkbox, checkboxClassNames, renderCheckbox, useCheckbox, useCheckboxS
 export type { CheckboxProps, CheckboxShape, CheckboxSize, CheckboxSlots, CheckboxState } from './checkbox';
 
 export {
+  ColorSwatch,
+  colorSwatchClassNames,
+  renderColorSwatch,
+  useColorSwatch,
+  useColorSwatchStyles,
+} from './color-swatch';
+export type { ColorSwatchProps, ColorSwatchSlots, ColorSwatchState } from './color-swatch';
+
+export {
   CompoundButton,
   compoundButtonClassNames,
   renderCompoundButton,
@@ -147,6 +156,15 @@ export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } fr
 
 export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles } from './divider';
 export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
+
+export {
+  EmptySwatch,
+  emptySwatchClassNames,
+  renderEmptySwatch,
+  useEmptySwatch,
+  useEmptySwatchStyles,
+} from './empty-swatch';
+export type { EmptySwatchProps, EmptySwatchSlots, EmptySwatchState } from './empty-swatch';
 
 export {
   Field,
@@ -162,6 +180,15 @@ export type { FieldOrientation, FieldProps, FieldSize, FieldSlots, FieldState } 
 
 export { Image, imageClassNames, renderImage, useImage, useImageStyles } from './image';
 export type { ImageFit, ImageProps, ImageShape, ImageSlots, ImageState } from './image';
+
+export {
+  ImageSwatch,
+  imageSwatchClassNames,
+  renderImageSwatch,
+  useImageSwatch,
+  useImageSwatchStyles,
+} from './image-swatch';
+export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './image-swatch';
 
 export { Input, inputClassNames, renderInput, useInput, useInputStyles } from './input';
 export type { InputAppearance, InputProps, InputSize, InputSlots, InputState } from './input';
@@ -362,6 +389,33 @@ export {
   useSplitButtonStyles,
 } from './split-button';
 export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './split-button';
+
+export {
+  renderSwatchPicker,
+  SwatchPicker,
+  swatchPickerClassNames,
+  useSwatchPicker,
+  useSwatchPickerContextValue,
+  useSwatchPickerContextValues,
+  useSwatchPickerStyles,
+} from './swatch-picker';
+export type {
+  SwatchPickerProps,
+  SwatchPickerShape,
+  SwatchPickerSize,
+  SwatchPickerSlots,
+  SwatchPickerSpacing,
+  SwatchPickerState,
+} from './swatch-picker';
+
+export {
+  renderSwatchPickerRow,
+  SwatchPickerRow,
+  swatchPickerRowClassNames,
+  useSwatchPickerRow,
+  useSwatchPickerRowStyles,
+} from './swatch-picker-row';
+export type { SwatchPickerRowProps, SwatchPickerRowSlots, SwatchPickerRowState } from './swatch-picker-row';
 
 export { renderSwitch, Switch, switchClassNames, useSwitch, useSwitchStyles } from './switch';
 export type { SwitchProps, SwitchSize, SwitchSlots, SwitchState } from './switch';

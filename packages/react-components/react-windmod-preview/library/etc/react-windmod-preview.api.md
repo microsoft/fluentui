@@ -56,6 +56,9 @@ import type { CardState as CardState_2 } from '@fluentui/react-headless-componen
 import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckboxSlots } from '@fluentui/react-headless-components-preview/checkbox';
 import type { CheckboxState as CheckboxState_2 } from '@fluentui/react-headless-components-preview/checkbox';
+import type { ColorSwatchProps as ColorSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { ColorSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ColorSwatchState as ColorSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
@@ -64,6 +67,9 @@ import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/rea
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
+import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-components-preview/field';
 import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
 import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
@@ -71,6 +77,9 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
 import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
 import type { ImageState as ImageState_2 } from '@fluentui/react-headless-components-preview/image';
+import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { InputProps as InputProps_2 } from '@fluentui/react-headless-components-preview/input';
 import { InputSlots } from '@fluentui/react-headless-components-preview/input';
 import type { InputState as InputState_2 } from '@fluentui/react-headless-components-preview/input';
@@ -153,10 +162,13 @@ import { renderCardFooter } from '@fluentui/react-headless-components-preview/ca
 import { renderCardHeader } from '@fluentui/react-headless-components-preview/card';
 import { renderCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
+import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
+import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
+import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
@@ -182,6 +194,8 @@ import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/
 import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
+import { renderSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderSwatchPickerRow } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderSwitch } from '@fluentui/react-headless-components-preview/switch';
 import { renderTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
@@ -215,6 +229,12 @@ import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-co
 import type { SplitButtonProps as SplitButtonProps_2 } from '@fluentui/react-headless-components-preview/split-button';
 import type { SplitButtonSlots as SplitButtonSlots_2 } from '@fluentui/react-headless-components-preview/split-button';
 import type { SplitButtonState as SplitButtonState_2 } from '@fluentui/react-headless-components-preview/split-button';
+import type { SwatchPickerProps as SwatchPickerProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { SwatchPickerRowProps as SwatchPickerRowProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { SwatchPickerRowSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { SwatchPickerRowState as SwatchPickerRowState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { SwatchPickerSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { SwatchPickerState as SwatchPickerState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { SwitchProps as SwitchProps_2 } from '@fluentui/react-headless-components-preview/switch';
 import { SwitchSlots } from '@fluentui/react-headless-components-preview/switch';
 import type { SwitchState as SwitchState_2 } from '@fluentui/react-headless-components-preview/switch';
@@ -286,13 +306,16 @@ import { useCardFooter } from '@fluentui/react-headless-components-preview/card'
 import { useCardHeader } from '@fluentui/react-headless-components-preview/card';
 import { useCardPreview } from '@fluentui/react-headless-components-preview/card';
 import { useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
+import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
+import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useField } from '@fluentui/react-headless-components-preview/field';
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
 import { useFieldContextValues } from '@fluentui/react-headless-components-preview/field';
 import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
+import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
@@ -328,6 +351,10 @@ import { useSkeletonItem } from '@fluentui/react-headless-components-preview/ske
 import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
+import { useSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useSwatchPickerContextValue } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useSwatchPickerContextValues } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useSwatchPickerRow } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useSwitch } from '@fluentui/react-headless-components-preview/switch';
 import { useTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTabList } from '@fluentui/react-headless-components-preview/tab-list';
@@ -704,6 +731,25 @@ export { CheckboxSlots }
 export type CheckboxState = CheckboxState_2 & Required<Pick<CheckboxProps, 'shape' | 'size'>>;
 
 // @public
+export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
+
+// @public
+export const colorSwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorSwatchProps = ColorSwatchProps_2 & {
+    size?: SwatchPickerSize;
+    shape?: SwatchPickerShape;
+};
+
+export { ColorSwatchSlots }
+
+// @public
+export type ColorSwatchState = ColorSwatchState_2 & Required<Pick<ColorSwatchProps, 'size' | 'shape'>>;
+
+// @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public
@@ -748,6 +794,25 @@ export { DividerSlots }
 
 // @public
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
+
+// @public
+export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
+
+// @public
+export const emptySwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type EmptySwatchProps = EmptySwatchProps_2 & {
+    size?: SwatchPickerSize;
+    shape?: SwatchPickerShape;
+};
+
+export { EmptySwatchSlots }
+
+// @public
+export type EmptySwatchState = EmptySwatchState_2 & Required<Pick<EmptySwatchProps, 'size' | 'shape'>>;
 
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
@@ -821,6 +886,25 @@ export { ImageSlots }
 
 // @public
 export type ImageState = ImageState_2 & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
+
+// @public
+export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public
+export const imageSwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type ImageSwatchProps = ImageSwatchProps_2;
+
+export { ImageSwatchSlots }
+
+// @public
+export type ImageSwatchState = ImageSwatchState_2 & {
+    size: SwatchPickerSize;
+    shape: SwatchPickerShape;
+};
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -1232,13 +1316,19 @@ export { renderCardPreview }
 
 export { renderCheckbox }
 
+export { renderColorSwatch }
+
 export { renderCompoundButton }
 
 export { renderDivider }
 
+export { renderEmptySwatch }
+
 export { renderField }
 
 export { renderImage }
+
+export { renderImageSwatch }
 
 export { renderInput }
 
@@ -1289,6 +1379,10 @@ export { renderSlider }
 export { renderSpinner }
 
 export { renderSplitButton }
+
+export { renderSwatchPicker }
+
+export { renderSwatchPickerRow }
 
 export { renderSwitch }
 
@@ -1464,6 +1558,53 @@ export type SplitButtonSlots = Omit<SplitButtonSlots_2, 'menuButton' | 'primaryA
 
 // @public
 export type SplitButtonState = ComponentState<SplitButtonSlots> & Pick<SplitButtonState_2, 'disabled' | 'disabledFocusable' | 'iconPosition'> & Required<Pick<SplitButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
+
+// @public
+export const swatchPickerClassNames: {
+    root: string;
+};
+
+// @public
+export type SwatchPickerProps = SwatchPickerProps_2 & {
+    size?: SwatchPickerSize;
+    shape?: SwatchPickerShape;
+    spacing?: SwatchPickerSpacing;
+};
+
+// @public
+export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
+
+// @public
+export const swatchPickerRowClassNames: {
+    root: string;
+};
+
+// @public
+export type SwatchPickerRowProps = SwatchPickerRowProps_2;
+
+export { SwatchPickerRowSlots }
+
+// @public
+export type SwatchPickerRowState = SwatchPickerRowState_2 & {
+    spacing: SwatchPickerSpacing;
+};
+
+// @public
+export type SwatchPickerShape = 'rounded' | 'square' | 'circular';
+
+// @public
+export type SwatchPickerSize = 'extra-small' | 'small' | 'medium' | 'large';
+
+export { SwatchPickerSlots }
+
+// @public
+export type SwatchPickerSpacing = 'small' | 'medium';
+
+// @public
+export type SwatchPickerState = SwatchPickerState_2 & Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
@@ -1860,6 +2001,11 @@ export { useCheckbox }
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
 
+export { useColorSwatch }
+
+// @public
+export const useColorSwatchStyles: (state: ColorSwatchState) => ColorSwatchState;
+
 export { useCompoundButton }
 
 // @public
@@ -1869,6 +2015,11 @@ export { useDivider }
 
 // @public
 export const useDividerStyles: (state: DividerState) => DividerState;
+
+export { useEmptySwatch }
+
+// @public
+export const useEmptySwatchStyles: (state: EmptySwatchState) => EmptySwatchState;
 
 export { useField }
 
@@ -1885,6 +2036,11 @@ export { useImage }
 
 // @public
 export const useImageStyles: (state: ImageState) => ImageState;
+
+export { useImageSwatch }
+
+// @public
+export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
 
 export { useInput }
 
@@ -2027,6 +2183,20 @@ export { useSplitButton }
 
 // @public
 export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
+
+export { useSwatchPicker }
+
+export { useSwatchPickerContextValue }
+
+export { useSwatchPickerContextValues }
+
+export { useSwatchPickerRow }
+
+// @public
+export const useSwatchPickerRowStyles: (state: SwatchPickerRowState) => SwatchPickerRowState;
+
+// @public
+export const useSwatchPickerStyles: (state: SwatchPickerState) => SwatchPickerState;
 
 export { useSwitch }
 

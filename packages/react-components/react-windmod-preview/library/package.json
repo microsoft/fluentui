@@ -213,6 +213,16 @@
         "default": "./lib-commonjs/checkbox.cjs"
       }
     },
+    "./color-swatch": {
+      "import": {
+        "types": "./dist/color-swatch.d.ts",
+        "default": "./lib/color-swatch.js"
+      },
+      "require": {
+        "types": "./dist/color-swatch.d.cts",
+        "default": "./lib-commonjs/color-swatch.cjs"
+      }
+    },
     "./compound-button": {
       "import": {
         "types": "./dist/compound-button.d.ts",
@@ -231,6 +241,16 @@
       "require": {
         "types": "./dist/divider.d.cts",
         "default": "./lib-commonjs/divider.cjs"
+      }
+    },
+    "./empty-swatch": {
+      "import": {
+        "types": "./dist/empty-swatch.d.ts",
+        "default": "./lib/empty-swatch.js"
+      },
+      "require": {
+        "types": "./dist/empty-swatch.d.cts",
+        "default": "./lib-commonjs/empty-swatch.cjs"
       }
     },
     "./field": {
@@ -261,6 +281,16 @@
       "require": {
         "types": "./dist/image.d.cts",
         "default": "./lib-commonjs/image.cjs"
+      }
+    },
+    "./image-swatch": {
+      "import": {
+        "types": "./dist/image-swatch.d.ts",
+        "default": "./lib/image-swatch.js"
+      },
+      "require": {
+        "types": "./dist/image-swatch.d.cts",
+        "default": "./lib-commonjs/image-swatch.cjs"
       }
     },
     "./input": {
@@ -501,6 +531,26 @@
       "require": {
         "types": "./dist/split-button.d.cts",
         "default": "./lib-commonjs/split-button.cjs"
+      }
+    },
+    "./swatch-picker": {
+      "import": {
+        "types": "./dist/swatch-picker.d.ts",
+        "default": "./lib/swatch-picker.js"
+      },
+      "require": {
+        "types": "./dist/swatch-picker.d.cts",
+        "default": "./lib-commonjs/swatch-picker.cjs"
+      }
+    },
+    "./swatch-picker-row": {
+      "import": {
+        "types": "./dist/swatch-picker-row.d.ts",
+        "default": "./lib/swatch-picker-row.js"
+      },
+      "require": {
+        "types": "./dist/swatch-picker-row.d.cts",
+        "default": "./lib-commonjs/swatch-picker-row.cjs"
       }
     },
     "./switch": {

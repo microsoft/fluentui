@@ -70,12 +70,11 @@
 /* Spinner: appearance */
 @custom-variant appearance-inverted (&:where([data-appearance='inverted']));
 
-/* SwatchPicker: active appearance */
-@custom-variant with-active (&:where([data-active]));
-@custom-variant active-inactive (&:where([data-active='inactive']));
-@custom-variant active-appearance-ring (&:where([data-active-appearance='ring']));
-@custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
-@custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
+/* SwatchPicker: swatch shape and inter-swatch spacing. `square` (Skeleton's entry above) and
+ * `medium` are the resting looks, so neither gets a positive twin. */
+@custom-variant spacing-small (&:where([data-spacing='small']));
+@custom-variant shape-rounded (&:where([data-shape='rounded']));
+@custom-variant shape-circular (&:where([data-shape='circular']));
 
 /* TabList: circular appearances, and the selection indicator's armed-transition flag. The flag is
  * present while the indicator rests, which is when a selection change should transition. */

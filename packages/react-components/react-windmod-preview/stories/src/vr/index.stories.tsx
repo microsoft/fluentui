@@ -50,6 +50,8 @@ export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
 export { SplitButtonWindmod } from './SplitButtonWindmod.stories';
 export { SplitButtonGriffel } from './SplitButtonGriffel.stories';
+export { SwatchPickerWindmod } from './SwatchPickerWindmod.stories';
+export { SwatchPickerGriffel } from './SwatchPickerGriffel.stories';
 export { SwitchWindmod } from './SwitchWindmod.stories';
 export { SwitchGriffel } from './SwitchGriffel.stories';
 export { TabListWindmod } from './TabListWindmod.stories';
