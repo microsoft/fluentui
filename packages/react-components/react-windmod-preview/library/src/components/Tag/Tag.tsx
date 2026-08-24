@@ -6,6 +6,7 @@ import { renderTag, useTag, useTagContextValues } from '@fluentui/react-headless
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
 import type { AvatarShape, AvatarSize } from '../Avatar/Avatar.types';
+import { useTagGroupContext } from '../TagGroup/TagGroupContext';
 import type { TagProps, TagState } from './Tag.types';
 import { useTagStyles } from './useTagStyles';
 
@@ -29,8 +30,17 @@ const TAG_AVATAR_SHAPE: Record<NonNullable<TagProps['shape']>, AvatarShape> = {
  */
 export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-tags' styled useTag.
-  const { appearance = 'filled', shape = 'rounded', size = 'medium', ...rest } = props;
+  // Defaults mirror @fluentui/react-tags' styled useTag. A TagGroup publishes both, and Griffel
+  // resolves them the same way — `appearance = contextAppearance ?? 'filled'`, `size = contextSize`
+  // against a context whose own default is `medium` (react-tags/.../useTag.tsx:119-121,
+  // contexts/tagGroupContext.tsx:8-13). `shape` is not published by either library's TagGroup.
+  const { appearance: contextAppearance, size: contextSize } = useTagGroupContext();
+  const {
+    appearance = contextAppearance ?? 'filled',
+    shape = 'rounded',
+    size = contextSize ?? 'medium',
+    ...rest
+  } = props;
 
   const base = useTag(rest, ref);
 
