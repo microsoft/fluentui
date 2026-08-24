@@ -1,6 +1,6 @@
 'use client';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
       transitionProperty: 'none',
     },
     '@media (forced-colors: active)': {
-      ...shorthands.border(tokens.strokeWidthThin, 'solid', 'CanvasText'),
+      border: `${tokens.strokeWidthThin} solid CanvasText`,
       color: 'CanvasText',
       backgroundColor: 'Canvas',
     },
@@ -60,18 +60,26 @@ export const useDashboardGridDragSourceStyles_unstable = (
   state: DashboardGridDragSourceInternalState,
 ): DashboardGridDragSourceInternalState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
-    dashboardGridDragSourceClassNames.root,
-    styles.root,
-    state.disabled && styles.disabled,
-    state.root.className,
-  );
-  if (state.preview) {
-    state.preview.className = mergeClasses(
-      dashboardGridDragSourceClassNames.preview,
-      styles.preview,
-      state.preview.className,
-    );
-  }
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(
+        dashboardGridDragSourceClassNames.root,
+        styles.root,
+        state.disabled && styles.disabled,
+        state.root.className,
+      ),
+    },
+    preview: state.preview
+      ? {
+          ...state.preview,
+          className: mergeClasses(
+            dashboardGridDragSourceClassNames.preview,
+            styles.preview,
+            state.preview.className,
+          ),
+        }
+      : undefined,
+  };
 };

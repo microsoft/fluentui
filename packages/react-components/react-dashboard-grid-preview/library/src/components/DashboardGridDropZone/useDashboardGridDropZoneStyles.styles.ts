@@ -36,11 +36,11 @@ const useStyles = makeStyles({
     opacity: 1,
   },
   valid: {
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
     backgroundColor: tokens.colorBrandBackground2,
   },
   invalid: {
-    ...shorthands.border(tokens.strokeWidthThick, 'dashed', tokens.colorPaletteRedBorder2),
+    border: `${tokens.strokeWidthThick} dashed ${tokens.colorPaletteRedBorder2}`,
     backgroundColor: tokens.colorPaletteRedBackground1,
     transform: 'scale(0.98)',
   },
@@ -57,21 +57,29 @@ export const useDashboardGridDropZoneStyles_unstable = (
   state: DashboardGridDropZoneInternalState,
 ): DashboardGridDropZoneInternalState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
-    dashboardGridDropZoneClassNames.root,
-    styles.root,
-    state.disabled && styles.disabled,
-    state.root.className,
-  );
-  if (state.indicator) {
-    state.indicator.className = mergeClasses(
-      dashboardGridDropZoneClassNames.indicator,
-      styles.indicator,
-      state.dropState.active && styles.active,
-      state.dropState.active && (state.dropState.valid ? styles.valid : styles.invalid),
-      state.dropState.active && styles.forcedColors,
-      state.indicator.className,
-    );
-  }
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(
+        dashboardGridDropZoneClassNames.root,
+        styles.root,
+        state.disabled && styles.disabled,
+        state.root.className,
+      ),
+    },
+    indicator: state.indicator
+      ? {
+          ...state.indicator,
+          className: mergeClasses(
+            dashboardGridDropZoneClassNames.indicator,
+            styles.indicator,
+            state.dropState.active && styles.active,
+            state.dropState.active && (state.dropState.valid ? styles.valid : styles.invalid),
+            state.dropState.active && styles.forcedColors,
+            state.indicator.className,
+          ),
+        }
+      : undefined,
+  };
 };

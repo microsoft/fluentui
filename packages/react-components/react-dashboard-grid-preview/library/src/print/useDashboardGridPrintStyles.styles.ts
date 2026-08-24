@@ -47,17 +47,23 @@ export const useDashboardGridPrintStyles_unstable = <TState extends DashboardGri
 ): TState => {
   usePrintPageStyles();
   const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(styles.root, state.root.className);
-  if (state.surface) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.surface.className = mergeClasses(
-      styles.surface,
-      state.printMode === 'flow' ? styles.flow : styles.exact,
-      state.surface.className,
-    );
-  }
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(styles.root, state.root.className),
+    },
+    surface: state.surface
+      ? {
+          ...state.surface,
+          className: mergeClasses(
+            styles.surface,
+            state.printMode === 'flow' ? styles.flow : styles.exact,
+            state.surface.className,
+          ),
+        }
+      : undefined,
+  } as TState;
 };
 
 const useItemStyles = makeStyles({
@@ -110,20 +116,24 @@ export const useDashboardGridPrintItemStyles_unstable = <TState extends Dashboar
   state: TState,
 ): TState => {
   const styles = useItemStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Reads the legacy page-break field for migration compatibility.
+  const pageBreakBefore = state.print?.pageBreakBefore ?? state.print?.pageBreak;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(
     styles.item,
     state.printMode === 'flow' && styles.flow,
     state.printMode === 'exact' && styles.exact,
     state.print?.hide && styles.hidden,
-    state.printMode === 'exact' &&
-      (state.print?.pageBreakBefore ?? state.print?.pageBreak) &&
-      styles.pageBreak,
-    state.root.className,
-  );
-  if (state.printMode === 'exact' && state.print?.orientation === 'landscape') {
-    // eslint-disable-next-line react-hooks/immutability
-    state.root.style = { ...state.root.style, page: 'dashboard-grid-landscape' };
-  }
-  return state;
+        state.printMode === 'exact' && pageBreakBefore && styles.pageBreak,
+        state.root.className,
+      ),
+      style:
+        state.printMode === 'exact' && state.print?.orientation === 'landscape'
+          ? { ...state.root.style, page: 'dashboard-grid-landscape' }
+          : state.root.style,
+    },
+  } as TState;
 };

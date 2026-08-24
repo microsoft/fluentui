@@ -48,9 +48,11 @@ export const areDashboardGridItemsEqual = (
       item.sizeToContent === candidate.sizeToContent &&
       item.print?.hide === candidate.print?.hide &&
       item.print?.pageBreakBefore === candidate.print?.pageBreakBefore &&
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compares the legacy print field for migration compatibility.
       item.print?.pageBreak === candidate.print?.pageBreak &&
       item.print?.orientation === candidate.print?.orientation &&
       item.subGrid === candidate.subGrid &&
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compares the legacy nested-grid field for migration compatibility.
       item.nestedGrid === candidate.nestedGrid
     );
   });

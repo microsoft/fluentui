@@ -8,6 +8,7 @@ import { createDashboardGridEngine } from '../../engine';
 import { useRequiredDashboardGridContext_unstable } from '../../contexts';
 import type { DashboardGridStore } from '../../state/DashboardGridStore.types';
 import { isConformant } from '../../testing/isConformant';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const pointerEvent = (type: string, init: { x: number; y: number; pointerId?: number }): PointerEvent => {
   const event = new MouseEvent(type, {
@@ -40,9 +41,10 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
 
 const StoreCapture = (props: { onStore: (store: DashboardGridStore) => void }) => {
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
-  React.useLayoutEffect(() => {
-    props.onStore(store);
-  }, [props.onStore, store]);
+  const { onStore } = props;
+  useIsomorphicLayoutEffect(() => {
+    onStore(store);
+  }, [onStore, store]);
   return null;
 };
 
@@ -51,10 +53,7 @@ describe('DashboardGrid', () => {
     Component: DashboardGrid,
     displayName: 'DashboardGrid',
     requiredProps: { 'aria-label': 'Dashboard' },
-    disabledTests: [
-      'component-has-static-classnames-object',
-      'make-styles-overrides-win',
-    ],
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
   });
 
   it('renders a default state', () => {
@@ -69,7 +68,7 @@ describe('DashboardGrid', () => {
       gridId: root.getAttribute('data-dashboard-grid-root'),
       hasSurface: surface.classList.contains('fui-DashboardGrid__surface'),
     }).toMatchInlineSnapshot(`
-      {
+      Object {
         "gridId": "snapshot-grid",
         "hasSurface": true,
         "label": "Dashboard",
@@ -77,6 +76,12 @@ describe('DashboardGrid', () => {
         "tagName": "DIV",
       }
     `);
+  });
+
+  it('sets the resolved direction on the grid root', () => {
+    const { container } = render(<DashboardGrid aria-label="Dashboard" direction="rtl" />);
+
+    expect(container.firstElementChild).toHaveAttribute('dir', 'rtl');
   });
 
   it('renders uncontrolled defaultItems with deterministic geometry', () => {
@@ -416,12 +421,14 @@ describe('DashboardGrid', () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
     const onLayoutChange = jest.fn();
     const onItemsChange = jest.fn();
+
+    const compatibilityProps: Pick<React.ComponentProps<typeof DashboardGrid>, 'onLayoutChange'> = { onLayoutChange };
     render(
       <DashboardGrid
+        {...compatibilityProps}
         aria-label="Dashboard"
         imperativeRef={imperativeRef}
         defaultItems={[]}
-        onLayoutChange={onLayoutChange}
         onItemsChange={onItemsChange}
       />,
     );

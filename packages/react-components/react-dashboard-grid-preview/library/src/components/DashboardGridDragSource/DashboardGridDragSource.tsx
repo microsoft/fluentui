@@ -15,8 +15,7 @@ export const DashboardGridDragSource: ForwardRefComponent<DashboardGridDragSourc
   DashboardGridDragSourceProps
 >(
   (props, ref) => {
-    const state = useDashboardGridDragSource_unstable(props, ref);
-    useDashboardGridDragSourceStyles_unstable(state);
+    const state = useDashboardGridDragSourceStyles_unstable(useDashboardGridDragSource_unstable(props, ref));
     return renderDashboardGridDragSource_unstable(state);
   },
 );

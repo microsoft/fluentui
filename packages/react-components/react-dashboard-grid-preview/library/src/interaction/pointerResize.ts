@@ -138,13 +138,7 @@ export const createDashboardGridPointerResize = (options: {
 
   const processPointerMove = (event: PointerEvent) => {
     frame = 0;
-    if (
-      destroyed ||
-      pointerId === undefined ||
-      event.pointerId !== pointerId ||
-      !startPoint ||
-      !originPixelRect
-    ) {
+    if (destroyed || pointerId === undefined || event.pointerId !== pointerId || !startPoint || !originPixelRect) {
       return;
     }
 
@@ -246,8 +240,8 @@ export const createDashboardGridPointerResize = (options: {
     processPointerMove(event);
 
     if (active) {
-      clickSuppressor.suppressNext();
-      void options.coordinator.commit(event);
+      clickSuppressor.suppressNext({ clientX: event.clientX, clientY: event.clientY });
+      options.coordinator.commit(event);
     } else {
       options.coordinator.cancel(event);
     }

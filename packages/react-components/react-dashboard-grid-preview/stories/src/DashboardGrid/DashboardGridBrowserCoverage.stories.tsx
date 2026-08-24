@@ -17,21 +17,22 @@ const useStyles = makeStyles({
   },
   row: {
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'flex-start',
     gap: tokens.spacingHorizontalL,
   },
   grid: {
-    inlineSize: '480px',
+    inlineSize: 'min(480px, 100%)',
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
   },
   scrollViewport: {
-    inlineSize: '480px',
+    inlineSize: 'min(480px, 100%)',
     blockSize: '220px',
     overflowY: 'auto',
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
   },
   transformHost: {
-    inlineSize: '480px',
+    inlineSize: 'min(480px, 100%)',
     transform: 'scale(0.8)',
     transformOrigin: 'top left',
   },
@@ -123,6 +124,30 @@ export const BrowserInteractions = (): JSXElement => {
             renderItem={renderTile}
           />
         </div>
+
+        <Text weight="semibold">All resize handles</Text>
+        <DashboardGrid
+          aria-label="All resize handles grid"
+          className={styles.grid}
+          data-testid="dashboard-browser-resize-grid"
+          gridId="browser-resize"
+          columns={6}
+          rowHeight={80}
+          minRows={6}
+          float
+          resize={{ handles: 'all', handleVisibility: 'always' }}
+          defaultItems={[
+            {
+              id: 'resize',
+              label: 'All handles resize tile',
+              column: 2,
+              row: 2,
+              columnSpan: 2,
+              rowSpan: 2,
+            },
+          ]}
+          renderItem={renderTile}
+        />
 
         <Text weight="semibold">Transformed geometry</Text>
         <div className={styles.transformHost} data-testid="dashboard-browser-transform-host">

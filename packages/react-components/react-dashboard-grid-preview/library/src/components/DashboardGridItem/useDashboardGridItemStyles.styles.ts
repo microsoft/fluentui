@@ -181,54 +181,62 @@ export const useDashboardGridItemStyles_unstable = <TState extends DashboardGrid
 ): TState => {
   const rootStyles = useRootStyles();
   const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    dashboardGridItemClassNames.root,
-    rootStyles,
-    styles.root,
-    state.animated && styles.animated,
-    state.arranging && styles.arranging,
-    state.handleVisibility !== 'always' && styles.revealHandles,
-    state.root.className,
-  );
-  if (state.content) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.content.className = mergeClasses(
-      dashboardGridItemClassNames.content,
-      styles.content,
-      state.content.className,
-    );
-  }
-  if (state.dragHandle) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.dragHandle.className = mergeClasses(
-      dashboardGridItemClassNames.dragHandle,
-      styles.dragHandle,
-      state.dragHandle.className,
-    );
-  }
-  if (state.subGrid) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.subGrid.className = mergeClasses(
-      dashboardGridItemClassNames.subGrid,
-      styles.subGrid,
-      state.subGrid.className,
-    );
-  }
-  if (state.resizeHandles) {
-    for (const [edge, handle] of Object.entries(state.resizeHandles) as Array<
-      [DashboardGridResizeEdge, { className?: string }]
-    >) {
-      // eslint-disable-next-line react-hooks/immutability
-      handle.className = mergeClasses(
-        dashboardGridItemClassNames.resizeHandle,
-        styles.resizeHandle,
-        state.handleVisibility !== 'always' && styles.hiddenResizeHandle,
-        state.handleVisibility === 'coarse-pointer' && styles.coarseResizeHandle,
-        edgeClass(edge, styles),
-        handle.className,
-      );
-    }
-  }
-  return state;
+  const resizeHandles = state.resizeHandles
+    ? Object.fromEntries(
+        (Object.entries(state.resizeHandles) as Array<[DashboardGridResizeEdge, { className?: string }]>).map(
+          ([edge, handle]) => [
+            edge,
+            {
+              ...handle,
+              className: mergeClasses(
+                dashboardGridItemClassNames.resizeHandle,
+                styles.resizeHandle,
+                state.handleVisibility !== 'always' && styles.hiddenResizeHandle,
+                state.handleVisibility === 'coarse-pointer' && styles.coarseResizeHandle,
+                edgeClass(edge, styles),
+                handle.className,
+              ),
+            },
+          ],
+        ),
+      )
+    : state.resizeHandles;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(
+        dashboardGridItemClassNames.root,
+        rootStyles,
+        styles.root,
+        state.animated && styles.animated,
+        state.arranging && styles.arranging,
+        state.handleVisibility !== 'always' && styles.revealHandles,
+        state.root.className,
+      ),
+    },
+    content: state.content
+      ? {
+          ...state.content,
+          className: mergeClasses(dashboardGridItemClassNames.content, styles.content, state.content.className),
+        }
+      : undefined,
+    dragHandle: state.dragHandle
+      ? {
+          ...state.dragHandle,
+          className: mergeClasses(
+            dashboardGridItemClassNames.dragHandle,
+            styles.dragHandle,
+            state.dragHandle.className,
+          ),
+        }
+      : undefined,
+    subGrid: state.subGrid
+      ? {
+          ...state.subGrid,
+          className: mergeClasses(dashboardGridItemClassNames.subGrid, styles.subGrid, state.subGrid.className),
+        }
+      : undefined,
+    resizeHandles,
+  } as TState;
 };

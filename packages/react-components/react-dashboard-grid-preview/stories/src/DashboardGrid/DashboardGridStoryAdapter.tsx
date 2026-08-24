@@ -1,13 +1,14 @@
+'use client';
+
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   DashboardGrid as DashboardGridComponent,
   DashboardGridProvider as DashboardGridProviderComponent,
 } from '@fluentui/react-dashboard-grid-preview';
+import type { EventHandler } from '@fluentui/react-utilities';
 
-export type DashboardGridStoryCSSLength =
-  | number
-  | `${number}${'px' | 'em' | 'rem' | 'vh' | 'vw' | '%' | 'cm' | 'mm'}`;
+export type DashboardGridStoryCSSLength = number | `${number}${'px' | 'em' | 'rem' | 'vh' | 'vw' | '%' | 'cm' | 'mm'}`;
 
 export type DashboardGridStoryRect = Readonly<{
   column: number;
@@ -16,13 +17,7 @@ export type DashboardGridStoryRect = Readonly<{
   rowSpan: number;
 }>;
 
-export type DashboardGridStoryColumnLayout =
-  | 'list'
-  | 'compact'
-  | 'moveScale'
-  | 'move'
-  | 'scale'
-  | 'none';
+export type DashboardGridStoryColumnLayout = 'list' | 'compact' | 'moveScale' | 'move' | 'scale' | 'none';
 
 export type DashboardGridStoryResponsiveOptions = Readonly<{
   targetColumnWidth?: number;
@@ -46,6 +41,8 @@ export type DashboardGridStoryOptions = Readonly<{
   columns?: number | 'auto';
   responsive?: DashboardGridStoryResponsiveOptions;
   rowHeight?: DashboardGridStoryCSSLength | 'auto' | 'initial';
+  minRows?: number;
+  float?: boolean;
   printMode?: 'flow' | 'exact';
 }>;
 
@@ -94,6 +91,8 @@ export type DashboardGridStoryComponentRegistry = Readonly<
 
 export type DashboardGridStoryEventData = Readonly<
   Record<string, unknown> & {
+    type: string;
+    event: Event | React.SyntheticEvent;
     gridId: string;
     input: 'pointer' | 'keyboard' | 'api' | 'load' | 'responsive' | 'content';
     kind?: 'drag' | 'resize' | 'move' | 'rotate' | 'transfer' | 'remove';
@@ -111,26 +110,18 @@ export type DashboardGridStoryEventData = Readonly<
   }
 >;
 
-export type DashboardGridStoryEventHandler = (
-  event: unknown,
-  data: DashboardGridStoryEventData,
-) => void;
+export type DashboardGridStoryEventReporter = (name: string, data: DashboardGridStoryEventData) => void;
 
 export type DashboardGridStorySerializedGrid = Readonly<{
   version: 1;
   options: Readonly<Record<string, unknown>>;
   items: readonly DashboardGridStoryItemDefinition[];
-  layouts?: Readonly<
-    Record<number, readonly DashboardGridStoryItemDefinition[]>
-  >;
+  layouts?: Readonly<Record<number, readonly DashboardGridStoryItemDefinition[]>>;
 }>;
 
 export type DashboardGridStoryHandle = {
   addItem(item: DashboardGridStoryItemDefinition): void;
-  removeItem(
-    id: string,
-    options?: Readonly<Record<string, unknown>>,
-  ): void;
+  removeItem(id: string, options?: Readonly<Record<string, unknown>>): void;
   load(
     items: readonly DashboardGridStoryItemDefinition[],
     options?: Readonly<{
@@ -142,31 +133,32 @@ export type DashboardGridStoryHandle = {
   save(): DashboardGridStorySerializedGrid | readonly DashboardGridStoryItemDefinition[];
 };
 
+type DashboardGridStoryCallbacks = Readonly<{
+  onEvent?: DashboardGridStoryEventReporter;
+  onItemsChange?: EventHandler<DashboardGridStoryEventData>;
+  onItemAdd?: EventHandler<DashboardGridStoryEventData>;
+  onItemRemove?: EventHandler<DashboardGridStoryEventData>;
+  onItemDrop?: EventHandler<DashboardGridStoryEventData>;
+  onDragStart?: EventHandler<DashboardGridStoryEventData>;
+  onDrag?: EventHandler<DashboardGridStoryEventData>;
+  onDragEnd?: EventHandler<DashboardGridStoryEventData>;
+  onResizeStart?: EventHandler<DashboardGridStoryEventData>;
+  onResize?: EventHandler<DashboardGridStoryEventData>;
+  onResizeEnd?: EventHandler<DashboardGridStoryEventData>;
+  onContentResize?: EventHandler<DashboardGridStoryEventData>;
+  onEnabledChange?: EventHandler<DashboardGridStoryEventData>;
+  onError?: EventHandler<DashboardGridStoryEventData>;
+}>;
+
 export type DashboardGridStoryProps = DashboardGridStoryOptions &
+  DashboardGridStoryCallbacks &
   Readonly<{
     gridId: string;
     items: readonly DashboardGridStoryItemDefinition[];
     imperativeRef?: React.Ref<DashboardGridStoryHandle>;
     renderItem?: (item: DashboardGridStoryItemDefinition) => React.ReactNode;
     components?: DashboardGridStoryComponentRegistry;
-    renderUnknownComponent?: (
-      item: DashboardGridStoryItemDefinition,
-      component: string,
-    ) => React.ReactNode;
-    onEvent?: (name: string, data: DashboardGridStoryEventData) => void;
-    onItemsChange?: DashboardGridStoryEventHandler;
-    onItemAdd?: DashboardGridStoryEventHandler;
-    onItemRemove?: DashboardGridStoryEventHandler;
-    onItemDrop?: DashboardGridStoryEventHandler;
-    onDragStart?: DashboardGridStoryEventHandler;
-    onDrag?: DashboardGridStoryEventHandler;
-    onDragEnd?: DashboardGridStoryEventHandler;
-    onResizeStart?: DashboardGridStoryEventHandler;
-    onResize?: DashboardGridStoryEventHandler;
-    onResizeEnd?: DashboardGridStoryEventHandler;
-    onContentResize?: DashboardGridStoryEventHandler;
-    onEnabledChange?: DashboardGridStoryEventHandler;
-    onError?: DashboardGridStoryEventHandler;
+    renderUnknownComponent?: (item: DashboardGridStoryItemDefinition, component: string) => React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
     'aria-label': string;
@@ -187,28 +179,37 @@ type InterimDashboardGridHandle = {
   ): unknown;
 };
 
+type InterimDashboardGridEventData = Readonly<
+  Record<string, unknown> & {
+    type: string;
+    event: Event | React.SyntheticEvent;
+  }
+>;
+
 type InterimDashboardGridProps = Readonly<{
   gridId: string;
   defaultItems: readonly InterimDashboardGridItemDefinition[];
   columns?: number | 'auto';
   responsive?: DashboardGridStoryResponsiveOptions;
   rowHeight?: number;
+  minRows?: number;
+  float?: boolean;
   printMode?: 'flow' | 'exact';
   imperativeRef?: React.Ref<InterimDashboardGridHandle>;
   renderItem: (item: unknown) => React.ReactNode;
-  onLayoutChange?: (event: unknown, data: Record<string, unknown>) => void;
-  onColumnsChange?: (event: unknown, data: Record<string, unknown>) => void;
-  onArrangeModeChange?: (event: unknown, data: Record<string, unknown>) => void;
-  onItemAdd?: (event: unknown, data: Record<string, unknown>) => void;
-  onItemRemove?: (event: unknown, data: Record<string, unknown>) => void;
-  onDragStart?: (event: unknown, data: Record<string, unknown>) => void;
-  onDragEnd?: (event: unknown, data: Record<string, unknown>) => void;
-  onResizeStart?: (event: unknown, data: Record<string, unknown>) => void;
-  onResizeEnd?: (event: unknown, data: Record<string, unknown>) => void;
-  onTransfer?: (event: unknown, data: Record<string, unknown>) => void;
-  onResizeContent?: (event: unknown, data: Record<string, unknown>) => void;
-  onCancel?: (event: unknown, data: Record<string, unknown>) => void;
-  onError?: (error: unknown) => void;
+  onLayoutChange?: EventHandler<InterimDashboardGridEventData>;
+  onColumnsChange?: EventHandler<InterimDashboardGridEventData>;
+  onArrangeModeChange?: EventHandler<InterimDashboardGridEventData>;
+  onItemAdd?: EventHandler<InterimDashboardGridEventData>;
+  onItemRemove?: EventHandler<InterimDashboardGridEventData>;
+  onDragStart?: EventHandler<InterimDashboardGridEventData>;
+  onDragEnd?: EventHandler<InterimDashboardGridEventData>;
+  onResizeStart?: EventHandler<InterimDashboardGridEventData>;
+  onResizeEnd?: EventHandler<InterimDashboardGridEventData>;
+  onTransfer?: EventHandler<InterimDashboardGridEventData>;
+  onResizeContent?: EventHandler<InterimDashboardGridEventData>;
+  onCancel?: EventHandler<InterimDashboardGridEventData>;
+  onError?: EventHandler<InterimDashboardGridEventData>;
   className?: string;
   style?: React.CSSProperties;
   'aria-label': string;
@@ -229,23 +230,18 @@ type InterimDashboardGridItemDefinition = Omit<
 
 type DashboardGridStoryProviderProps = Readonly<{
   children: React.ReactNode;
-  onError?: (error: unknown) => void;
+  onError?: EventHandler<InterimDashboardGridEventData>;
 }>;
 
-const InterimDashboardGrid = DashboardGridComponent as unknown as (
-  props: InterimDashboardGridProps,
-) => JSXElement;
+const InterimDashboardGrid = DashboardGridComponent as unknown as (props: InterimDashboardGridProps) => JSXElement;
 
-const ProposedDashboardGridProvider =
-  DashboardGridProviderComponent as unknown as (
-    props: DashboardGridStoryProviderProps,
-  ) => JSXElement;
+const ProposedDashboardGridProvider = DashboardGridProviderComponent as unknown as (
+  props: DashboardGridStoryProviderProps,
+) => JSXElement;
 
 const toResolvedItem = (value: unknown): DashboardGridStoryResolvedItem => {
   const candidate =
-    typeof value === 'object' && value !== null
-      ? (value as Partial<DashboardGridStoryResolvedItem>)
-      : {};
+    typeof value === 'object' && value !== null ? (value as Partial<DashboardGridStoryResolvedItem>) : {};
 
   return {
     id: typeof candidate.id === 'string' ? candidate.id : String(value),
@@ -259,9 +255,7 @@ const toResolvedItem = (value: unknown): DashboardGridStoryResolvedItem => {
   };
 };
 
-const toInterimDefinition = (
-  item: DashboardGridStoryItemDefinition,
-): InterimDashboardGridItemDefinition => {
+const toInterimDefinition = (item: DashboardGridStoryItemDefinition): InterimDashboardGridItemDefinition => {
   const definition = { ...item };
   const print = definition.print;
   delete definition.subGrid;
@@ -303,17 +297,10 @@ const fromInterimDefinition = (
     id,
     print: interimPrint
       ? {
-          hide:
-            typeof interimPrint.hide === 'boolean'
-              ? interimPrint.hide
-              : undefined,
-          pageBreakBefore:
-            typeof interimPrint.pageBreak === 'boolean'
-              ? interimPrint.pageBreak
-              : undefined,
+          hide: typeof interimPrint.hide === 'boolean' ? interimPrint.hide : undefined,
+          pageBreakBefore: typeof interimPrint.pageBreak === 'boolean' ? interimPrint.pageBreak : undefined,
           orientation:
-            interimPrint.orientation === 'portrait' ||
-            interimPrint.orientation === 'landscape'
+            interimPrint.orientation === 'portrait' || interimPrint.orientation === 'landscape'
               ? interimPrint.orientation
               : undefined,
         }
@@ -324,9 +311,7 @@ const fromInterimDefinition = (
 const toArchitectureSave = (
   saved: unknown,
   definitions: ReadonlyMap<string, DashboardGridStoryItemDefinition>,
-):
-  | DashboardGridStorySerializedGrid
-  | readonly DashboardGridStoryItemDefinition[] => {
+): DashboardGridStorySerializedGrid | readonly DashboardGridStoryItemDefinition[] => {
   if (Array.isArray(saved)) {
     return saved.map(item => fromInterimDefinition(item, definitions));
   }
@@ -350,14 +335,8 @@ const toArchitectureSave = (
   const layouts = rawLayouts
     ? (Object.fromEntries(
         Object.entries(rawLayouts)
-          .filter(
-            (entry): entry is [string, readonly unknown[]] =>
-              Array.isArray(entry[1]),
-          )
-          .map(([columns, layout]) => [
-            Number(columns),
-            layout.map(item => fromInterimDefinition(item, definitions)),
-          ]),
+          .filter((entry): entry is [string, readonly unknown[]] => Array.isArray(entry[1]))
+          .map(([columns, layout]) => [Number(columns), layout.map(item => fromInterimDefinition(item, definitions))]),
       ) as Record<number, readonly DashboardGridStoryItemDefinition[]>)
     : undefined;
 
@@ -373,9 +352,7 @@ const toArchitectureSave = (
   };
 };
 
-const eventDefaults = (
-  name: string,
-): Pick<DashboardGridStoryEventData, 'input' | 'kind' | 'reason'> => {
+const eventDefaults = (name: string): Pick<DashboardGridStoryEventData, 'input' | 'kind' | 'reason'> => {
   switch (name) {
     case 'columns-change':
       return { input: 'responsive', reason: 'responsive' };
@@ -409,18 +386,22 @@ const eventDefaults = (
 const normalizeEventData = (
   name: string,
   gridId: string,
+  event: Event | React.SyntheticEvent,
   data: Record<string, unknown> = {},
 ): DashboardGridStoryEventData => {
   const defaults = eventDefaults(name);
-  const items = Array.isArray(data.items)
-    ? (data.items as readonly DashboardGridStoryResolvedItem[])
-    : [];
+  const items = Array.isArray(data.items) ? (data.items as readonly DashboardGridStoryResolvedItem[]) : [];
   const affectedItems = Array.isArray(data.affectedItems)
     ? (data.affectedItems as readonly DashboardGridStoryResolvedItem[])
     : items;
 
   return {
     ...data,
+    type: typeof data.type === 'string' ? data.type : name,
+    event:
+      data.event instanceof Event || (typeof data.event === 'object' && data.event !== null)
+        ? (data.event as Event | React.SyntheticEvent)
+        : event,
     gridId: typeof data.gridId === 'string' ? data.gridId : gridId,
     input:
       data.input === 'pointer' ||
@@ -446,8 +427,8 @@ const normalizeEventData = (
       typeof data.rejectedReason === 'string'
         ? data.rejectedReason
         : typeof data.rejectionReason === 'string'
-          ? data.rejectionReason
-          : undefined,
+        ? data.rejectionReason
+        : undefined,
     items,
   };
 };
@@ -456,9 +437,7 @@ const normalizeEventData = (
  * Adapts the architecture-approved API to the concurrently landing preview
  * implementation. Integration changes remain confined to this file.
  */
-export const DashboardGridStory = (
-  props: DashboardGridStoryProps,
-): JSXElement => {
+export const DashboardGridStory = (props: DashboardGridStoryProps): JSXElement => {
   const {
     items,
     components,
@@ -488,33 +467,25 @@ export const DashboardGridStory = (
     enabledChange: !!onEnabledChange,
   });
   const interimHandleRef = React.useRef<InterimDashboardGridHandle>(null);
-  const interimItems = React.useMemo(
-    () => items.map(toInterimDefinition),
-    [items],
-  );
-  const previousItemsRef = React.useRef(items);
-  const definitionsRef = React.useRef(
-    new Map(items.map(item => [item.id, item] as const)),
-  );
+  const interimItems = React.useMemo(() => items.map(toInterimDefinition), [items]);
+  const definitions = React.useMemo(() => new Map(items.map(item => [item.id, item] as const)), [items]);
+  const definitionsRef = React.useRef(definitions);
 
-  if (previousItemsRef.current !== items) {
-    previousItemsRef.current = items;
-    definitionsRef.current = new Map(
-      items.map(item => [item.id, item] as const),
-    );
-  }
+  React.useEffect(() => {
+    definitionsRef.current = definitions;
+  }, [definitions]);
 
   const resolveDefinition = React.useCallback(
     (value: unknown): DashboardGridStoryItemDefinition => {
       const resolved = toResolvedItem(value);
-      const current = definitionsRef.current.get(resolved.id);
+      const current = definitions.get(resolved.id) ?? definitionsRef.current.get(resolved.id);
       return {
         ...current,
         ...resolved,
         id: resolved.id,
       };
     },
-    [],
+    [definitions],
   );
 
   const renderDefinition = React.useCallback(
@@ -549,13 +520,8 @@ export const DashboardGridStory = (
         interimHandleRef.current?.removeItem(id);
       },
       load(nextItems, options) {
-        definitionsRef.current = new Map(
-          nextItems.map(item => [item.id, item] as const),
-        );
-        interimHandleRef.current?.load(
-          nextItems.map(toInterimDefinition),
-          options,
-        );
+        definitionsRef.current = new Map(nextItems.map(item => [item.id, item] as const));
+        interimHandleRef.current?.load(nextItems.map(toInterimDefinition), options);
       },
       save() {
         const saved = interimHandleRef.current?.save();
@@ -567,25 +533,26 @@ export const DashboardGridStory = (
 
   const emit = React.useCallback(
     (
-      name: string,
-      callback?: DashboardGridStoryEventHandler,
-    ): ((event: unknown, data: Record<string, unknown>) => void) =>
+        name: string,
+        callback?: EventHandler<DashboardGridStoryEventData>,
+      ): EventHandler<InterimDashboardGridEventData> =>
       (event, data) => {
-        const normalized = normalizeEventData(name, props.gridId, data);
+        const normalized = normalizeEventData(name, props.gridId, event, data);
         callback?.(event, normalized);
         onEvent?.(name, normalized);
       },
     [onEvent, props.gridId],
   );
 
-  const emitError = React.useCallback(
-    (error: unknown): void => {
-      const normalized = normalizeEventData('error', props.gridId, {
+  const emitError = React.useCallback<EventHandler<InterimDashboardGridEventData>>(
+    (event, data): void => {
+      const error = data.error;
+      const normalized = normalizeEventData('error', props.gridId, event, {
+        ...data,
         error,
-        rejectedReason:
-          error instanceof Error ? error.message : String(error),
+        rejectedReason: error instanceof Error ? error.message : String(error),
       });
-      onError?.(undefined, normalized);
+      onError?.(event, normalized);
       onEvent?.('error', normalized);
     },
     [onError, onEvent, props.gridId],
@@ -615,6 +582,6 @@ export const DashboardGridStory = (
   );
 };
 
-export const DashboardGridStoryProvider = (
-  props: DashboardGridStoryProviderProps,
-): JSXElement => <ProposedDashboardGridProvider {...props} />;
+export const DashboardGridStoryProvider = (props: DashboardGridStoryProviderProps): JSXElement => (
+  <ProposedDashboardGridProvider {...props} />
+);

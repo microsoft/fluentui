@@ -33,9 +33,7 @@ export type UseDashboardGridResizeObserverOptions = {
   onResizeContent?: () => void;
   resizeDelay?: number;
   resolveRowHeight?: (columnWidth: number) => number;
-  measureGaps?: () => Partial<
-    Pick<DashboardGridCellMetrics, 'gapTop' | 'gapRight' | 'gapBottom' | 'gapLeft'>
-  >;
+  measureGaps?: () => Partial<Pick<DashboardGridCellMetrics, 'gapTop' | 'gapRight' | 'gapBottom' | 'gapLeft'>>;
   onMetricsChange?: (metrics: DashboardGridCellMetrics) => void;
 };
 
@@ -101,7 +99,7 @@ export const useDashboardGridResizeObserver = (
   const remeasure = React.useCallback(() => {
     const root = rootRef.current;
     if (root) {
-      const width = root.getBoundingClientRect().width;
+      const width = root.offsetWidth || root.clientWidth || root.getBoundingClientRect().width;
       const currentColumns = store.getSnapshot().columns;
       const columns = Math.max(1, resolveColumns?.(width, currentColumns) ?? currentColumns);
       if (columns !== currentColumns) {

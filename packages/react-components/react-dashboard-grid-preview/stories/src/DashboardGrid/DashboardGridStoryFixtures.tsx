@@ -1,20 +1,16 @@
+'use client';
+
 import * as React from 'react';
-import {
-  Button,
-  Input,
-  Link,
-  Text,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Button, Input, Link, Text } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
 import {
   DashboardGridStory,
-  type DashboardGridStoryEventData,
+  type DashboardGridStoryEventReporter,
   type DashboardGridStoryItemDefinition,
   type DashboardGridStoryResponsiveOptions,
 } from './DashboardGridStoryAdapter';
+import { useTileStyles } from './DashboardGridStoryFixtures.styles';
 
 export const PRIMARY_GRID_ID = 'dashboard-primary-grid';
 export const PARKING_GRID_ID = 'dashboard-parking-grid';
@@ -28,15 +24,14 @@ export const RESPONSIVE_WIDTHS = {
   narrow: 360,
 } as const;
 
-export const DASHBOARD_RESPONSIVE_OPTIONS: DashboardGridStoryResponsiveOptions =
-  {
-    breakpoints: [
-      { maxWidth: 480, columns: 1, layout: 'list' },
-      { maxWidth: 840, columns: 6, layout: 'moveScale' },
-    ],
-    observe: 'grid',
-    layout: 'moveScale',
-  };
+export const DASHBOARD_RESPONSIVE_OPTIONS: DashboardGridStoryResponsiveOptions = {
+  breakpoints: [
+    { maxWidth: 480, columns: 1, layout: 'list' },
+    { maxWidth: 840, columns: 6, layout: 'moveScale' },
+  ],
+  observe: 'grid',
+  layout: 'moveScale',
+};
 
 export const NESTED_ITEMS: readonly DashboardGridStoryItemDefinition[] = [
   {
@@ -150,8 +145,8 @@ export const SHADOW_ITEMS: readonly DashboardGridStoryItemDefinition[] = [
   {
     id: 'shadow-interactive',
     label: 'Shadow DOM interactive tile',
-    column: 6,
-    row: 0,
+    column: 0,
+    row: 2,
     columnSpan: 6,
     rowSpan: 2,
     component: 'interactive',
@@ -190,10 +185,7 @@ export const PRINT_ITEMS: readonly DashboardGridStoryItemDefinition[] = [
   },
 ];
 
-export const createDynamicItem = (
-  id: string,
-  index: number,
-): DashboardGridStoryItemDefinition => ({
+export const createDynamicItem = (id: string, index: number): DashboardGridStoryItemDefinition => ({
   id,
   label: `Dynamic tile ${index}`,
   columnSpan: 3,
@@ -204,54 +196,10 @@ export const createDynamicItem = (
 });
 
 const fixtureDefinitions = new Map(
-  [
-    ...DASHBOARD_ITEMS,
-    ...PARKING_ITEMS,
-    ...NESTED_ITEMS,
-    ...SHADOW_ITEMS,
-    ...PRINT_ITEMS,
-  ].map(item => [item.id, item] as const),
+  [...DASHBOARD_ITEMS, ...PARKING_ITEMS, ...NESTED_ITEMS, ...SHADOW_ITEMS, ...PRINT_ITEMS].map(
+    item => [item.id, item] as const,
+  ),
 );
-
-const useTileStyles = makeStyles({
-  tile: {
-    boxSizing: 'border-box',
-    blockSize: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: 'auto',
-  },
-  tileTitle: {
-    marginBlock: 0,
-  },
-  tileBody: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-  },
-  inlineControls: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    gap: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-  },
-  nestedGrid: {
-    flexGrow: 1,
-  },
-  subdued: {
-    color: tokens.colorNeutralForeground2,
-  },
-  metric: {
-    color: tokens.colorBrandForeground1,
-    fontFamily: tokens.fontFamilyMonospace,
-  },
-});
 
 type TileFrameProps = Readonly<{
   itemId: string;
@@ -259,11 +207,7 @@ type TileFrameProps = Readonly<{
   children: React.ReactNode;
 }>;
 
-const TileFrame = ({
-  itemId,
-  title,
-  children,
-}: TileFrameProps): JSXElement => {
+const TileFrame = ({ itemId, title, children }: TileFrameProps): JSXElement => {
   const styles = useTileStyles();
 
   return (
@@ -276,30 +220,19 @@ const TileFrame = ({
   );
 };
 
-const StatefulTile = ({
-  itemId,
-}: Readonly<{ itemId: string }>): JSXElement => {
+const StatefulTile = ({ itemId }: Readonly<{ itemId: string }>): JSXElement => {
   const styles = useTileStyles();
   const [count, setCount] = React.useState(0);
+  const handleIncrement = React.useCallback(() => setCount(value => value + 1), []);
 
   return (
     <TileFrame itemId={itemId} title="Stateful tile">
-      <Text>
-        Counter state should survive responsive layout changes and cross-grid
-        transfer.
-      </Text>
+      <Text>Counter state should survive responsive layout changes and cross-grid transfer.</Text>
       <div className={styles.inlineControls}>
-        <Button
-          data-testid={`dashboard-counter-${itemId}`}
-          onClick={() => setCount(value => value + 1)}
-        >
+        <Button data-testid={`dashboard-counter-${itemId}`} onClick={handleIncrement}>
           Increment
         </Button>
-        <output
-          className={styles.metric}
-          data-testid={`dashboard-counter-value-${itemId}`}
-          aria-live="polite"
-        >
+        <output className={styles.metric} data-testid={`dashboard-counter-value-${itemId}`} aria-live="polite">
           {count}
         </output>
       </div>
@@ -307,56 +240,50 @@ const StatefulTile = ({
   );
 };
 
-const InteractiveTile = ({
-  itemId,
-}: Readonly<{ itemId: string }>): JSXElement => {
+const InteractiveTile = ({ itemId }: Readonly<{ itemId: string }>): JSXElement => {
   const styles = useTileStyles();
   const [message, setMessage] = React.useState('No descendant action yet.');
+  const handleActivate = React.useCallback(() => setMessage('Descendant button activated.'), []);
 
   return (
     <TileFrame itemId={itemId} title="Interactive descendants">
-      <Input
-        aria-label="Tile note"
-        data-testid={`dashboard-input-${itemId}`}
-        defaultValue="Editable content"
-      />
+      <Input aria-label="Tile note" data-testid={`dashboard-input-${itemId}`} defaultValue="Editable content" />
       <div className={styles.inlineControls}>
-        <Button
-          data-testid={`dashboard-descendant-action-${itemId}`}
-          onClick={() => setMessage('Descendant button activated.')}
-        >
+        <Button data-testid={`dashboard-descendant-action-${itemId}`} onClick={handleActivate}>
           Activate child
         </Button>
         <Link href="#dashboard-diagnostics">Jump to diagnostics</Link>
       </div>
-      <Text
-        className={styles.subdued}
-        data-testid={`dashboard-descendant-status-${itemId}`}
-      >
+      <Text className={styles.subdued} data-testid={`dashboard-descendant-status-${itemId}`}>
         {message}
       </Text>
     </TileFrame>
   );
 };
 
-type DashboardTileContentProps = Readonly<{
-  item: DashboardGridStoryItemDefinition;
-  onEvent?: (name: string, data: DashboardGridStoryEventData) => void;
+type DashboardTileContentCallbacks = Readonly<{
+  onEvent?: DashboardGridStoryEventReporter;
 }>;
 
-export const DashboardTileContent = ({
-  item,
-  onEvent,
-}: DashboardTileContentProps): JSXElement => {
+type DashboardTileContentProps = DashboardTileContentCallbacks &
+  Readonly<{
+    item: DashboardGridStoryItemDefinition;
+  }>;
+
+export const DashboardTileContent = ({ item, onEvent }: DashboardTileContentProps): JSXElement => {
   const styles = useTileStyles();
+  const renderNestedItem = React.useCallback(
+    (nestedItem: DashboardGridStoryItemDefinition) => (
+      <DashboardTileContent item={nestedItem} onEvent={onEvent} />
+    ),
+    [onEvent],
+  );
   const fixtureDefinition = fixtureDefinitions.get(item.id);
   const definition: DashboardGridStoryItemDefinition = {
     ...fixtureDefinition,
     ...item,
     component:
-      item.component ??
-      fixtureDefinition?.component ??
-      (item.id.startsWith('dynamic-') ? 'dynamic' : undefined),
+      item.component ?? fixtureDefinition?.component ?? (item.id.startsWith('dynamic-') ? 'dynamic' : undefined),
   };
 
   switch (definition.component) {
@@ -370,9 +297,7 @@ export const DashboardTileContent = ({
       const subGrid = definition.subGrid;
       return (
         <TileFrame itemId={definition.id} title="Nested dashboard">
-          <Text className={styles.subdued}>
-            The child grid uses automatic columns derived from its parent span.
-          </Text>
+          <Text className={styles.subdued}>The child grid uses automatic columns derived from its parent span.</Text>
           <DashboardGridStory
             aria-label="Nested dashboard grid"
             data-testid="dashboard-grid-nested"
@@ -383,9 +308,7 @@ export const DashboardTileContent = ({
             responsive={subGrid?.responsive}
             rowHeight={subGrid?.rowHeight}
             printMode={subGrid?.printMode}
-            renderItem={nestedItem => (
-              <DashboardTileContent item={nestedItem} onEvent={onEvent} />
-            )}
+            renderItem={renderNestedItem}
             onEvent={onEvent}
           />
         </TileFrame>
@@ -395,13 +318,10 @@ export const DashboardTileContent = ({
     case 'activity':
       return (
         <TileFrame itemId={definition.id} title="Activity">
-          <Text>
-            Items-change callbacks update diagnostics without controlling
-            items.
-          </Text>
+          <Text>Items-change callbacks update diagnostics without controlling items.</Text>
           <Text className={styles.metric}>
-            {definition.columnSpan ?? 1} × {definition.rowSpan ?? 1} cells at{' '}
-            {definition.column ?? 0},{definition.row ?? 0}
+            {definition.columnSpan ?? 1} × {definition.rowSpan ?? 1} cells at {definition.column ?? 0},
+            {definition.row ?? 0}
           </Text>
         </TileFrame>
       );
@@ -409,10 +329,7 @@ export const DashboardTileContent = ({
     case 'parking':
       return (
         <TileFrame itemId={definition.id} title="Transfer target">
-          <Text>
-            Move a tile here to validate provider-wide host, state, and focus
-            preservation.
-          </Text>
+          <Text>Move a tile here to validate provider-wide host, state, and focus preservation.</Text>
         </TileFrame>
       );
 
@@ -426,10 +343,7 @@ export const DashboardTileContent = ({
     case 'print-detail':
       return (
         <TileFrame itemId={definition.id} title="Printable detail">
-          <Text>
-            Exact mode requests a page break and landscape orientation for this
-            tile.
-          </Text>
+          <Text>Exact mode requests a page break and landscape orientation for this tile.</Text>
         </TileFrame>
       );
 
@@ -444,11 +358,7 @@ export const DashboardTileContent = ({
       return (
         <TileFrame
           itemId={definition.id}
-          title={
-            typeof definition.props?.title === 'string'
-              ? definition.props.title
-              : `Nested tile ${definition.id}`
-          }
+          title={typeof definition.props?.title === 'string' ? definition.props.title : `Nested tile ${definition.id}`}
         >
           <Text>Nested model item.</Text>
         </TileFrame>
@@ -463,10 +373,7 @@ export const DashboardTileContent = ({
 
     default:
       return (
-        <TileFrame
-          itemId={definition.id}
-          title={`Tile ${definition.id}`}
-        >
+        <TileFrame itemId={definition.id} title={`Tile ${definition.id}`}>
           <Text>Auto-positioned fixture item.</Text>
           <Text className={styles.metric}>
             {definition.columnSpan ?? 1} × {definition.rowSpan ?? 1} cells

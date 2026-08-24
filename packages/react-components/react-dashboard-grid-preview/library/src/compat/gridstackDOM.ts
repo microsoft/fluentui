@@ -55,8 +55,8 @@ function parseFiniteNumber(value: string | null): number | undefined {
     return undefined;
   }
 
-  const number = Number(value);
-  return Number.isFinite(number) ? number : undefined;
+  const numericValue = Number(value);
+  return Number.isFinite(numericValue) ? numericValue : undefined;
 }
 
 function parseBoolean(value: string | null): boolean | undefined {
@@ -76,8 +76,8 @@ function parseSizeToContent(value: string | null): boolean | number | undefined 
     return parseBoolean(value);
   }
 
-  const number = Number.parseInt(value, 10);
-  return Number.isFinite(number) ? number : undefined;
+  const numericValue = Number.parseInt(value, 10);
+  return Number.isFinite(numericValue) ? numericValue : undefined;
 }
 
 function readDirectChildByClass(element: Element, className: string): HTMLElement | undefined {
@@ -122,13 +122,13 @@ function setOrRemoveAttribute(element: HTMLElement, name: string, value: unknown
 }
 
 function normalizeCoordinate(value: unknown): number {
-  const number = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(number) ? Math.max(0, Math.trunc(number)) : 0;
+  const numericValue = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(numericValue) ? Math.max(0, Math.trunc(numericValue)) : 0;
 }
 
 function normalizeSpan(value: unknown): number {
-  const number = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(number) ? Math.max(1, Math.trunc(number)) : 1;
+  const numericValue = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(numericValue) ? Math.max(1, Math.trunc(numericValue)) : 1;
 }
 
 function getAllElements(root: GridStackSelectorRoot): Element[] {

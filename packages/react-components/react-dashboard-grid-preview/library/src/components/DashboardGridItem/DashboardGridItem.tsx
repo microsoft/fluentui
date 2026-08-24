@@ -14,9 +14,9 @@ import { useDashboardGridPrintItemStyles_unstable } from '../../print/useDashboa
  */
 export const DashboardGridItem: ForwardRefComponent<DashboardGridItemProps> = React.forwardRef(
   (props, ref) => {
-    const state = useDashboardGridItem_unstable(props, ref);
-    useDashboardGridItemStyles_unstable(state);
-    useDashboardGridPrintItemStyles_unstable(state);
+    let state = useDashboardGridItem_unstable(props, ref);
+    state = useDashboardGridItemStyles_unstable(state);
+    state = useDashboardGridPrintItemStyles_unstable(state);
     useCustomStyleHook_unstable('useDashboardGridItemStyles_unstable' as never)(state as never);
     return renderDashboardGridItem_unstable(state);
   },

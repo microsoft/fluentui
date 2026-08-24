@@ -1,6 +1,4 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { DashboardGridProviderContextProvider } from '../../contexts/DashboardGridProviderContext';
 import { DashboardGridHostPortals } from '../../provider/DashboardGridHostPortals';

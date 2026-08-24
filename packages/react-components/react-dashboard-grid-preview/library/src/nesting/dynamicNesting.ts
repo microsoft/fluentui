@@ -44,7 +44,7 @@ export const requestDashboardGridDynamicNesting = (
     coverage: number;
     nativeEvent?: Event;
   },
-) =>
+): ReturnType<DashboardGridRegistry['requestNesting']> =>
   registry.requestNesting({
     sourceGridId: options.sourceGridId,
     targetGridId: options.targetGridId,

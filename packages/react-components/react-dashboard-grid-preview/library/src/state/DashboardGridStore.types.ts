@@ -220,8 +220,10 @@ export type DashboardGridItemDefinition<TData = unknown> = DashboardGridLayoutIt
   /** Nested grid definition. */
   subGrid?: DashboardGridDefinition<TData>;
   /** Per-item print behavior. */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility print options accept the legacy page-break field.
   print?: DashboardGridItemPrintOptions;
   /** @deprecated Use `subGrid`. */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility nested-grid field retains the serialized-state alias.
   nestedGrid?: DashboardGridSerializedState;
 };
 
@@ -268,6 +270,10 @@ export type DashboardGridSaveOptions = {
   columns?: number;
   /** Includes responsive layout caches. */
   includeLayouts?: boolean;
+  /** Includes caller-owned application data. Defaults to true. */
+  includeData?: boolean;
+  /** Includes React-owned item content. Defaults to false. */
+  includeContent?: boolean;
 };
 
 /** Serializable pointer-drag options retained with a saved grid. */
@@ -322,6 +328,8 @@ export type DashboardGridSerializedItem<TData = unknown> = Omit<
   DashboardGridItemDefinition<TData>,
   'content' | 'nestedGrid' | 'subGrid'
 > & {
+  /** Included item content when explicitly requested during save. */
+  content?: React.ReactNode;
   /** Serialized nested grid. */
   subGrid?: DashboardGridSerializedGrid<TData>;
 };
@@ -424,6 +432,7 @@ export type DashboardGridStore = DashboardGridInteractionStore & {
     items: readonly DashboardGridItemDefinition[],
     options?: DashboardGridLoadOptions,
   ): DashboardGridMutationResult;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Save retains the legacy engine envelope during preview migration.
   save(options?: DashboardGridSaveOptions): DashboardGridSerializedState;
   dispose(): void;
 };

@@ -14,6 +14,7 @@ import {
 } from '../contexts';
 import {
   deserializeDashboardGridItems,
+  getDashboardGridSerializedItemColumns,
   serializeDashboardGrid,
 } from '../serialization/dashboardGridSerialization';
 import type { DashboardGridRegistry } from '../provider/DashboardGridRegistry.types';
@@ -215,8 +216,8 @@ export const createDashboardGridHandle = (
       {
         addMissing: true,
         removeMissing: true,
-        ...(isSerializedGrid(items) && items.options.columns
-          ? { sourceColumns: Number(items.options.columns) || undefined }
+        ...(isSerializedGrid(items)
+          ? { sourceColumns: getDashboardGridSerializedItemColumns(items) }
           : {}),
         ...options,
       },

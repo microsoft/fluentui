@@ -44,6 +44,14 @@ export default defineConfig({
         deviceScaleFactor: 1,
       },
     },
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 13'] },
+    },
   ],
   webServer: externalStorybookUrl
     ? undefined

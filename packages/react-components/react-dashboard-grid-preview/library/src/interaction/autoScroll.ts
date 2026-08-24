@@ -111,14 +111,11 @@ export const createDashboardGridAutoScroll = (options: {
     if (nextScrollTop === previousScrollTop) {
       return;
     }
-
-    if (typeof options.scrollElement.scrollTo === 'function') {
-      options.scrollElement.scrollTo({ top: nextScrollTop, behavior: 'auto' });
-    } else {
-      options.scrollElement.scrollTop = nextScrollTop;
-    }
+    options.scrollElement.scrollTop = nextScrollTop;
     options.onScroll();
-    frame = targetWindow.requestAnimationFrame(tick);
+    if (!frame) {
+      frame = targetWindow.requestAnimationFrame(tick);
+    }
   };
 
   const update = (nextPointerY?: number) => {

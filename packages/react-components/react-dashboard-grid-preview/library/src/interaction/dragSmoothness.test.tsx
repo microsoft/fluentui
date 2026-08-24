@@ -5,6 +5,7 @@ import { DashboardGrid } from '../components/DashboardGrid/DashboardGrid';
 import { useRequiredDashboardGridContext_unstable } from '../contexts/DashboardGridContext';
 import type { DashboardGridStore } from '../state/DashboardGridStore.types';
 import { createDashboardGridInteractionCoordinator } from './coordinator';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const rect = (left: number, top: number, width: number, height: number): DOMRect =>
   ({
@@ -24,12 +25,13 @@ const StoreCapture = (props: {
   onStore: (store: DashboardGridStore) => void;
 }) => {
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
+  const { label, onStore } = props;
 
-  React.useLayoutEffect(() => {
-    props.onStore(store);
-  }, [props, store]);
+  useIsomorphicLayoutEffect(() => {
+    onStore(store);
+  }, [onStore, store]);
 
-  return <span>{props.label}</span>;
+  return <span>{label}</span>;
 };
 
 describe('dashboard grid deferred drag rendering', () => {

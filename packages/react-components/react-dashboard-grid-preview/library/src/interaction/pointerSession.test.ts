@@ -22,12 +22,7 @@ describe('dashboard grid pointer session utilities', () => {
   it('normalizes pointer types and computes Manhattan distance', () => {
     expect(normalizeDashboardGridPointerType('mouse')).toBe('mouse');
     expect(normalizeDashboardGridPointerType('vendor-pointer')).toBe('unknown');
-    expect(
-      getDashboardGridManhattanDistance(
-        { clientX: 2, clientY: 3 },
-        { clientX: 8, clientY: 10 },
-      ),
-    ).toBe(13);
+    expect(getDashboardGridManhattanDistance({ clientX: 2, clientY: 3 }, { clientX: 8, clientY: 10 })).toBe(13);
   });
 
   it('delays touch leave by exactly ten milliseconds and cancels it on re-entry', () => {
@@ -68,6 +63,25 @@ describe('dashboard grid pointer session utilities', () => {
 
     expect(suppressedClick.defaultPrevented).toBe(true);
     expect(onClick).toHaveBeenCalledTimes(1);
+    suppressor.dispose();
+    jest.useRealTimers();
+  });
+
+  it('does not suppress an unrelated click after a drag', () => {
+    jest.useFakeTimers();
+    const suppressor = createDashboardGridClickSuppressor(document);
+    const target = document.createElement('button');
+    const onClick = jest.fn();
+    target.addEventListener('click', onClick);
+    document.body.appendChild(target);
+
+    suppressor.suppressNext({ clientX: 10, clientY: 10 });
+    target.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, clientX: 30, clientY: 30 }));
+    const dragClick = new MouseEvent('click', { bubbles: true, cancelable: true, clientX: 10, clientY: 10 });
+    target.dispatchEvent(dragClick);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(dragClick.defaultPrevented).toBe(true);
     suppressor.dispose();
     jest.useRealTimers();
   });

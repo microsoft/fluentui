@@ -61,38 +61,42 @@ export const useDashboardGridStyles_unstable = <TState extends DashboardGridStyl
   const rootStyles = useRootStyles();
   const styles = useStyles();
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    dashboardGridClassNames.root,
-    rootStyles,
-    styles.reducedMotion,
-    state.root.className,
-  );
-  if (state.surface) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.surface.className = mergeClasses(
-      dashboardGridClassNames.surface,
-      styles.surface,
-      styles.reducedMotion,
-      state.surface.className,
-    );
-  }
-  if (state.placeholder) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.placeholder.className = mergeClasses(
-      dashboardGridClassNames.placeholder,
-      styles.placeholder,
-      state.placeholder.className,
-    );
-  }
-  if (state.emptyContent) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.emptyContent.className = mergeClasses(
-      dashboardGridClassNames.emptyContent,
-      styles.emptyContent,
-      state.emptyContent.className,
-    );
-  }
-
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(dashboardGridClassNames.root, rootStyles, styles.reducedMotion, state.root.className),
+    },
+    surface: state.surface
+      ? {
+          ...state.surface,
+          className: mergeClasses(
+            dashboardGridClassNames.surface,
+            styles.surface,
+            styles.reducedMotion,
+            state.surface.className,
+          ),
+        }
+      : undefined,
+    placeholder: state.placeholder
+      ? {
+          ...state.placeholder,
+          className: mergeClasses(
+            dashboardGridClassNames.placeholder,
+            styles.placeholder,
+            state.placeholder.className,
+          ),
+        }
+      : undefined,
+    emptyContent: state.emptyContent
+      ? {
+          ...state.emptyContent,
+          className: mergeClasses(
+            dashboardGridClassNames.emptyContent,
+            styles.emptyContent,
+            state.emptyContent.className,
+          ),
+        }
+      : undefined,
+  } as TState;
 };

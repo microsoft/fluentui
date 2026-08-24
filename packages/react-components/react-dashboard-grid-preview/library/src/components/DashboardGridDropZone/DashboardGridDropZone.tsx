@@ -15,8 +15,7 @@ export const DashboardGridDropZone: ForwardRefComponent<DashboardGridDropZonePro
   DashboardGridDropZoneProps
 >(
   (props, ref) => {
-    const state = useDashboardGridDropZone_unstable(props, ref);
-    useDashboardGridDropZoneStyles_unstable(state);
+    const state = useDashboardGridDropZoneStyles_unstable(useDashboardGridDropZone_unstable(props, ref));
     return renderDashboardGridDropZone_unstable(state);
   },
 );

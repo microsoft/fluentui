@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  RendererProvider,
-  Text,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { RendererProvider, Text, makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 import { createShadowDOMRenderer } from '@griffel/shadow-dom';
 import { createPortal } from 'react-dom';
@@ -14,11 +9,7 @@ import {
   DashboardGridStoryProvider,
   type DashboardGridStoryItemDefinition,
 } from './DashboardGridStoryAdapter';
-import {
-  DashboardTileContent,
-  SHADOW_GRID_ID,
-  SHADOW_ITEMS,
-} from './DashboardGridStoryFixtures';
+import { DashboardTileContent, SHADOW_GRID_ID, SHADOW_ITEMS } from './DashboardGridStoryFixtures';
 
 const useStyles = makeStyles({
   page: {
@@ -59,18 +50,11 @@ const ShadowBoundary = ({ children }: ShadowBoundaryProps): JSXElement => {
     setShadowRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
   }, []);
 
-  const renderer = React.useMemo(
-    () => (shadowRoot ? createShadowDOMRenderer(shadowRoot) : null),
-    [shadowRoot],
-  );
+  const renderer = React.useMemo(() => (shadowRoot ? createShadowDOMRenderer(shadowRoot) : null), [shadowRoot]);
 
   return (
     <>
-      <div
-        ref={hostRef}
-        className={styles.host}
-        data-testid="dashboard-shadow-host"
-      />
+      <div ref={hostRef} className={styles.host} data-testid="dashboard-shadow-host" />
       {shadowRoot && renderer
         ? createPortal(
             <RendererProvider renderer={renderer}>
@@ -86,9 +70,7 @@ const ShadowBoundary = ({ children }: ShadowBoundaryProps): JSXElement => {
 export const ShadowDom = (): JSXElement => {
   const styles = useStyles();
   const renderItem = React.useCallback(
-    (item: DashboardGridStoryItemDefinition) => (
-      <DashboardTileContent item={item} />
-    ),
+    (item: DashboardGridStoryItemDefinition) => <DashboardTileContent item={item} />,
     [],
   );
 
@@ -98,8 +80,8 @@ export const ShadowDom = (): JSXElement => {
         DashboardGrid in an open Shadow DOM
       </Text>
       <Text>
-        The grid is portalled into an open shadow root so composed-path event
-        handling and owner-document behavior can be validated in every browser.
+        The grid is portalled into an open shadow root so composed-path event handling and owner-document behavior can
+        be validated in every browser.
       </Text>
       <ShadowBoundary>
         <DashboardGridStoryProvider>
@@ -109,6 +91,9 @@ export const ShadowDom = (): JSXElement => {
             gridId={SHADOW_GRID_ID}
             items={SHADOW_ITEMS}
             columns={12}
+            rowHeight={80}
+            minRows={5}
+            float
             renderItem={renderItem}
           />
         </DashboardGridStoryProvider>

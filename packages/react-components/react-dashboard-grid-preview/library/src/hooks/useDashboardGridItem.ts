@@ -5,8 +5,9 @@ import {
   useRequiredDashboardGridContext_unstable,
 } from '../contexts';
 import { useDashboardGridItemStoreSnapshot } from '../state/useDashboardGridStore';
+import type { DashboardGridItemStoreSnapshot } from '../state/DashboardGridStore.types';
 
-export const useDashboardGridItem = (itemId?: string) => {
+export const useDashboardGridItem = (itemId?: string): DashboardGridItemStoreSnapshot => {
   const contextItemId = useDashboardGridItemContext_unstable(context => context.id);
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
   const id = itemId ?? contextItemId;

@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  Field,
-  Slider,
-  Text,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Button, Field, Slider, Text, makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
 import {
@@ -125,27 +118,19 @@ const formatUnknown = (value: unknown): string => {
   }
 };
 
-const getLayoutFromEvent = (
-  data: DashboardGridStoryEventData,
-): unknown => data.items ?? data.layout ?? data.current ?? data;
+const getLayoutFromEvent = (data: DashboardGridStoryEventData): unknown =>
+  data.items ?? data.layout ?? data.current ?? data;
 
-const getEventString = (
-  data: Readonly<Record<string, unknown>>,
-  key: string,
-): string | undefined => {
+const getEventString = (data: Readonly<Record<string, unknown>>, key: string): string | undefined => {
   const value = data[key];
   return typeof value === 'string' ? value : undefined;
 };
 
-const getActiveColumns = (
-  data: DashboardGridStoryEventData,
-): number | undefined =>
+const getActiveColumns = (data: DashboardGridStoryEventData): number | undefined =>
   typeof data.columns === 'number' ? data.columns : undefined;
 
 const getSavedItems = (
-  saved:
-    | DashboardGridStorySerializedGrid
-    | readonly DashboardGridStoryItemDefinition[],
+  saved: DashboardGridStorySerializedGrid | readonly DashboardGridStoryItemDefinition[],
 ): readonly DashboardGridStoryItemDefinition[] =>
   Array.isArray(saved)
     ? (saved as readonly DashboardGridStoryItemDefinition[])
@@ -155,21 +140,16 @@ export const ParityPlayground = (): JSXElement => {
   const styles = useStyles();
   const imperativeRef = React.useRef<DashboardGridStoryHandle>(null);
   const savedLayoutRef = React.useRef<
-    | DashboardGridStorySerializedGrid
-    | readonly DashboardGridStoryItemDefinition[]
-  >();
-  const savedLastAddedItem = React.useRef<string>();
+    DashboardGridStorySerializedGrid | readonly DashboardGridStoryItemDefinition[] | undefined
+  >(undefined);
+  const savedLastAddedItem = React.useRef<string | undefined>(undefined);
   const nextDynamicItem = React.useRef(1);
-  const lastAddedItem = React.useRef<string>();
+  const lastAddedItem = React.useRef<string | undefined>(undefined);
   const eventSequence = React.useRef(1);
 
-  const [containerWidth, setContainerWidth] = React.useState(
-    RESPONSIVE_WIDTHS.wide,
-  );
+  const [containerWidth, setContainerWidth] = React.useState<number>(RESPONSIVE_WIDTHS.wide);
   const [activeColumns, setActiveColumns] = React.useState(12);
-  const [layoutJson, setLayoutJson] = React.useState(() =>
-    formatUnknown(DASHBOARD_ITEMS),
-  );
+  const [layoutJson, setLayoutJson] = React.useState(() => formatUnknown(DASHBOARD_ITEMS));
   const [eventLog, setEventLog] = React.useState<readonly EventLogEntry[]>([
     {
       sequence: 0,
@@ -177,38 +157,27 @@ export const ParityPlayground = (): JSXElement => {
       sourceGridId: PRIMARY_GRID_ID,
     },
   ]);
-  const [keyboardDiagnostics, setKeyboardDiagnostics] =
-    React.useState<KeyboardDiagnostics>({
-      mode: 'idle',
-      key: 'None',
-      target: 'None',
-    });
+  const [keyboardDiagnostics, setKeyboardDiagnostics] = React.useState<KeyboardDiagnostics>({
+    mode: 'idle',
+    key: 'None',
+    target: 'None',
+  });
 
-  const appendEvent = React.useCallback(
-    (
-      name: string,
-      data: Readonly<Record<string, unknown>> = {},
-    ): void => {
-      const entry: EventLogEntry = {
-        sequence: eventSequence.current++,
-        name,
-        sourceGridId:
-          getEventString(data, 'sourceGridId') ??
-          getEventString(data, 'gridId'),
-        targetGridId: getEventString(data, 'targetGridId'),
-        itemId:
-          getEventString(data, 'itemId') ??
-          getEventString(data, 'id'),
-        reason:
-          getEventString(data, 'reason') ??
-          getEventString(data, 'rejectedReason') ??
-          getEventString(data, 'rejectionReason'),
-      };
+  const appendEvent = React.useCallback((name: string, data: Readonly<Record<string, unknown>> = {}): void => {
+    const entry: EventLogEntry = {
+      sequence: eventSequence.current++,
+      name,
+      sourceGridId: getEventString(data, 'sourceGridId') ?? getEventString(data, 'gridId'),
+      targetGridId: getEventString(data, 'targetGridId'),
+      itemId: getEventString(data, 'itemId') ?? getEventString(data, 'id'),
+      reason:
+        getEventString(data, 'reason') ??
+        getEventString(data, 'rejectedReason') ??
+        getEventString(data, 'rejectionReason'),
+    };
 
-      setEventLog(current => [...current.slice(-11), entry]);
-    },
-    [],
-  );
+    setEventLog(current => [...current.slice(-11), entry]);
+  }, []);
 
   const handleGridEvent = React.useCallback(
     (name: string, data: DashboardGridStoryEventData): void => {
@@ -229,10 +198,7 @@ export const ParityPlayground = (): JSXElement => {
         setKeyboardDiagnostics(current => ({
           ...current,
           mode: data.active ? 'arranging' : 'idle',
-          target:
-            getEventString(data, 'itemId') ??
-            getEventString(data, 'id') ??
-            current.target,
+          target: getEventString(data, 'itemId') ?? getEventString(data, 'id') ?? current.target,
         }));
       }
     },
@@ -240,9 +206,7 @@ export const ParityPlayground = (): JSXElement => {
   );
 
   const renderItem = React.useCallback(
-    (item: DashboardGridStoryItemDefinition) => (
-      <DashboardTileContent item={item} onEvent={handleGridEvent} />
-    ),
+    (item: DashboardGridStoryItemDefinition) => <DashboardTileContent item={item} onEvent={handleGridEvent} />,
     [handleGridEvent],
   );
 
@@ -336,30 +300,27 @@ export const ParityPlayground = (): JSXElement => {
     appendEvent('toolbar-reset', { gridId: PRIMARY_GRID_ID });
   }, [appendEvent, getHandle]);
 
-  const handleKeyDownCapture = React.useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>): void => {
-      const element = event.target as HTMLElement;
-      const testElement = element.closest<HTMLElement>('[data-testid]');
-      const target =
-        testElement?.getAttribute('data-testid') ??
-        element.getAttribute('data-dashboard-grid-item') ??
-        element.tagName.toLowerCase();
+  const handleKeyDownCapture = React.useCallback((event: React.KeyboardEvent<HTMLDivElement>): void => {
+    const element = event.target as HTMLElement;
+    const testElement = element.closest<HTMLElement>('[data-testid]');
+    const target =
+      testElement?.getAttribute('data-testid') ??
+      element.getAttribute('data-dashboard-grid-item') ??
+      element.tagName.toLowerCase();
 
-      let mode: string | undefined;
-      if (event.key === 'F2' || event.key === 'Enter' || event.key === ' ') {
-        mode = 'arrange requested';
-      } else if (event.key === 'Escape') {
-        mode = 'cancel requested';
-      } else if (event.key.startsWith('Arrow')) {
-        mode = event.shiftKey ? 'resize requested' : 'move requested';
-      }
+    let mode: string | undefined;
+    if (event.key === 'F2' || event.key === 'Enter' || event.key === ' ') {
+      mode = 'arrange requested';
+    } else if (event.key === 'Escape') {
+      mode = 'cancel requested';
+    } else if (event.key.startsWith('Arrow')) {
+      mode = event.shiftKey ? 'resize requested' : 'move requested';
+    }
 
-      if (mode) {
-        setKeyboardDiagnostics({ mode, key: event.key, target });
-      }
-    },
-    [],
-  );
+    if (mode) {
+      setKeyboardDiagnostics({ mode, key: event.key, target });
+    }
+  }, []);
 
   const handleProviderError = React.useCallback(
     (error: unknown): void =>
@@ -371,27 +332,19 @@ export const ParityPlayground = (): JSXElement => {
   );
 
   return (
-    <div
-      className={styles.page}
-      data-testid="dashboard-parity-playground"
-      onKeyDownCapture={handleKeyDownCapture}
-    >
+    <div className={styles.page} data-testid="dashboard-parity-playground" onKeyDownCapture={handleKeyDownCapture}>
       <div>
         <Text as="h1" size={600} weight="semibold" className={styles.heading}>
           DashboardGrid parity playground
         </Text>
         <Text>
-          Uncontrolled items, imperative commands, nested and cross-grid
-          composition, interactive descendants, and responsive 12 → 6 → 1 →
-          12 diagnostics.
+          Uncontrolled items, imperative commands, nested and cross-grid composition, interactive descendants, and
+          responsive 12 → 6 → 1 → 12 diagnostics.
         </Text>
       </div>
 
       <div className={styles.toolbar} role="group" aria-label="Dashboard controls">
-        <Field
-          className={styles.widthField}
-          label={`Container width: ${containerWidth}px`}
-        >
+        <Field className={styles.widthField} label={`Container width: ${containerWidth}px`}>
           <Slider
             min={RESPONSIVE_WIDTHS.narrow}
             max={RESPONSIVE_WIDTHS.wide}
@@ -405,29 +358,16 @@ export const ParityPlayground = (): JSXElement => {
             }}
           />
         </Field>
-        <Button
-          data-testid="dashboard-width-wide"
-          onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.wide, 12)}
-        >
+        <Button data-testid="dashboard-width-wide" onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.wide, 12)}>
           12 columns
         </Button>
-        <Button
-          data-testid="dashboard-width-medium"
-          onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.medium, 6)}
-        >
+        <Button data-testid="dashboard-width-medium" onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.medium, 6)}>
           6 columns
         </Button>
-        <Button
-          data-testid="dashboard-width-narrow"
-          onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.narrow, 1)}
-        >
+        <Button data-testid="dashboard-width-narrow" onClick={() => setResponsiveWidth(RESPONSIVE_WIDTHS.narrow, 1)}>
           1 column
         </Button>
-        <Button
-          appearance="primary"
-          data-testid="dashboard-add-item"
-          onClick={addItem}
-        >
+        <Button appearance="primary" data-testid="dashboard-add-item" onClick={addItem}>
           Add item
         </Button>
         <Button data-testid="dashboard-remove-item" onClick={removeItem}>
@@ -444,20 +384,12 @@ export const ParityPlayground = (): JSXElement => {
         </Button>
       </div>
 
-      <output
-        className={styles.diagnosticValue}
-        data-testid="dashboard-active-columns"
-        aria-live="polite"
-      >
+      <output className={styles.diagnosticValue} data-testid="dashboard-active-columns" aria-live="polite">
         {activeColumns}
       </output>
 
       <DashboardGridStoryProvider onError={handleProviderError}>
-        <div
-          className={styles.viewport}
-          style={{ width: `${containerWidth}px` }}
-          data-testid="dashboard-grid-viewport"
-        >
+        <div className={styles.viewport} style={{ width: `${containerWidth}px` }} data-testid="dashboard-grid-viewport">
           <div className={styles.gridFrame}>
             <DashboardGridStory
               aria-label="Primary dashboard grid"
@@ -489,28 +421,16 @@ export const ParityPlayground = (): JSXElement => {
         </section>
       </DashboardGridStoryProvider>
 
-      <section
-        id="dashboard-diagnostics"
-        className={styles.diagnostics}
-        data-testid="dashboard-diagnostics"
-      >
+      <section id="dashboard-diagnostics" className={styles.diagnostics} data-testid="dashboard-diagnostics">
         <div className={styles.diagnosticPanel}>
-          <Text
-            as="h2"
-            size={400}
-            weight="semibold"
-            className={styles.diagnosticTitle}
-          >
+          <Text as="h2" size={400} weight="semibold" className={styles.diagnosticTitle}>
             Keyboard Arrange mode
           </Text>
           <Text>
-            Focus a tile, then use Space, Enter, or F2. Arrow keys move,
-            Shift+Arrow resizes, and Escape restores the snapshot.
+            Focus a tile, then use Space, Enter, or F2. Arrow keys move, Shift+Arrow resizes, and Escape restores the
+            snapshot.
           </Text>
-          <dl
-            className={styles.diagnosticValue}
-            data-testid="dashboard-arrange-diagnostics"
-          >
+          <dl className={styles.diagnosticValue} data-testid="dashboard-arrange-diagnostics">
             <dt>Mode</dt>
             <dd>{keyboardDiagnostics.mode}</dd>
             <dt>Last key</dt>
@@ -521,12 +441,7 @@ export const ParityPlayground = (): JSXElement => {
         </div>
 
         <div className={styles.diagnosticPanel}>
-          <Text
-            as="h2"
-            size={400}
-            weight="semibold"
-            className={styles.diagnosticTitle}
-          >
+          <Text as="h2" size={400} weight="semibold" className={styles.diagnosticTitle}>
             Layout / saved state JSON
           </Text>
           <pre className={styles.code} data-testid="dashboard-layout-json">
@@ -535,12 +450,7 @@ export const ParityPlayground = (): JSXElement => {
         </div>
 
         <div className={styles.diagnosticPanel}>
-          <Text
-            as="h2"
-            size={400}
-            weight="semibold"
-            className={styles.diagnosticTitle}
-          >
+          <Text as="h2" size={400} weight="semibold" className={styles.diagnosticTitle}>
             Event log
           </Text>
           <ol className={styles.eventList} data-testid="dashboard-event-log">

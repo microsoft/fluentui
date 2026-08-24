@@ -6,7 +6,9 @@ import { mergeClasses } from '@griffel/react';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
+  type RefAttributes,
   slot,
+  useEventCallback,
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -48,6 +50,7 @@ type ExtendedDashboardGridItemProps = DashboardGridItemProps & {
   lazyMount?: boolean;
   sizeToContent?: boolean | number;
   printMode?: 'flow' | 'exact';
+  // eslint-disable-next-line @typescript-eslint/naming-convention -- Compatibility marker retained for declarative ownership.
   modelOwned_unstable?: boolean;
 };
 
@@ -75,6 +78,16 @@ export const useDashboardGridItem_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): DashboardGridItemInternalState => {
   const extendedProps = props as ExtendedDashboardGridItemProps;
+  /* eslint-disable @typescript-eslint/no-deprecated -- Deprecated item props are normalized here for migration compatibility. */
+  const {
+    label: legacyLabel,
+    resizeDirections: legacyResizeDirections,
+    cancel: legacyCancel,
+    lazyMount: legacyLazyMount,
+    sizeToContent: legacySizeToContent,
+    print: legacyPrint,
+  } = extendedProps;
+  /* eslint-enable @typescript-eslint/no-deprecated */
   const gridId = useRequiredDashboardGridContext_unstable(context => context.gridId);
   const gridContextValue = useRequiredDashboardGridContext_unstable(context => context);
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
@@ -113,21 +126,25 @@ export const useDashboardGridItem_unstable = (
   const snapshot = useDashboardGridItemStoreSnapshot(store, props.id);
   const definition = snapshot.definition;
   const itemOptions = props.item ?? emptyItemOptions;
-  const itemLabel = extendedProps.label ?? itemOptions.label ?? definition?.label ?? props['aria-label'] ?? props.id;
-  const resolvedItem = snapshot.item ?? {
-    id: props.id,
-    column: itemOptions.column ?? 0,
-    row: itemOptions.row ?? 0,
-    columnSpan: itemOptions.columnSpan ?? 1,
-    rowSpan: itemOptions.rowSpan ?? 1,
-    minColumnSpan: itemOptions.minColumnSpan,
-    maxColumnSpan: itemOptions.maxColumnSpan,
-    minRowSpan: itemOptions.minRowSpan,
-    maxRowSpan: itemOptions.maxRowSpan,
-    movable: itemOptions.movable ?? true,
-    resizable: itemOptions.resizable ?? true,
-    locked: itemOptions.locked ?? false,
-  };
+  const itemLabel = legacyLabel ?? itemOptions.label ?? definition?.label ?? props['aria-label'] ?? props.id;
+  const fallbackItem = React.useMemo(
+    () => ({
+      id: props.id,
+      column: itemOptions.column ?? 0,
+      row: itemOptions.row ?? 0,
+      columnSpan: itemOptions.columnSpan ?? 1,
+      rowSpan: itemOptions.rowSpan ?? 1,
+      minColumnSpan: itemOptions.minColumnSpan,
+      maxColumnSpan: itemOptions.maxColumnSpan,
+      minRowSpan: itemOptions.minRowSpan,
+      maxRowSpan: itemOptions.maxRowSpan,
+      movable: itemOptions.movable ?? true,
+      resizable: itemOptions.resizable ?? true,
+      locked: itemOptions.locked ?? false,
+    }),
+    [itemOptions, props.id],
+  );
+  const resolvedItem = snapshot.item ?? fallbackItem;
   const movable = enabled && !disableDrag && resolvedItem.movable;
   const resizable = enabled && !disableResize && resolvedItem.resizable;
   const preserveCommittedPointerGeometry =
@@ -135,9 +152,10 @@ export const useDashboardGridItem_unstable = (
     snapshot.preview.sourceGridId === gridId &&
     (snapshot.preview.operation === 'drag' || snapshot.preview.operation === 'resize') &&
     snapshot.preview.originRect;
-  const renderedItem = preserveCommittedPointerGeometry
-    ? { ...resolvedItem, ...snapshot.preview!.originRect }
-    : resolvedItem;
+  const renderedItem = React.useMemo(
+    () => (preserveCommittedPointerGeometry ? { ...resolvedItem, ...snapshot.preview!.originRect } : resolvedItem),
+    [preserveCommittedPointerGeometry, resolvedItem, snapshot.preview],
+  );
   const usesOriginalDragPreview = dragOptions?.preview === undefined || dragOptions.preview === 'item';
   const pointerPreview =
     usesOriginalDragPreview &&
@@ -180,28 +198,41 @@ export const useDashboardGridItem_unstable = (
   const [dragPreviewElement, setDragPreviewElement] = React.useState<HTMLElement | null>(null);
   const [dragPreviewActive, setDragPreviewActive] = React.useState(false);
 
-  const lazyMount = extendedProps.lazyMount ?? itemOptions.lazyMount ?? definition?.lazyMount ?? defaultLazyMount;
+  const lazyMount = legacyLazyMount ?? itemOptions.lazyMount ?? definition?.lazyMount ?? defaultLazyMount;
   const lazy = useDashboardGridLazyMount<HTMLDivElement>({
     targetDocument,
     enabled: lazyMount,
   });
+  const lazyRef = lazy.ref;
   const sizeToContent =
-    extendedProps.sizeToContent ?? itemOptions.sizeToContent ?? definition?.sizeToContent ?? defaultSizeToContent;
+    legacySizeToContent ?? itemOptions.sizeToContent ?? definition?.sizeToContent ?? defaultSizeToContent;
+  const onTextOnlySizeToContent = useEventCallback((id: string) =>
+    onDiagnostic?.({
+      code: 'invalid-custom-layout',
+      message: `Dashboard item "${id}" uses text-only size-to-content content and was not measured.`,
+      severity: 'warning',
+      recoverable: true,
+      itemId: id,
+      details: { feature: 'size-to-content', reason: 'text-only-content' },
+    }),
+  );
   const sizeToContentRef = useDashboardGridSizeToContent<HTMLDivElement>({
     controller: resizeObserver,
     id: props.id,
     enabled: sizeToContent,
     store,
-    onTextOnly: id =>
-      onDiagnostic?.({
-        code: 'invalid-custom-layout',
-        message: `Dashboard item "${id}" uses text-only size-to-content content and was not measured.`,
-        severity: 'warning',
-        recoverable: true,
-        itemId: id,
-        details: { feature: 'size-to-content', reason: 'text-only-content' },
-      }),
+    onTextOnly: onTextOnlySizeToContent,
   });
+  const setContentRef = React.useCallback((element: HTMLDivElement | null) => {
+    setContentElement(element);
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    sizeToContentRef(contentElement);
+    return () => {
+      sizeToContentRef(null);
+    };
+  }, [contentElement, sizeToContentRef]);
 
   useIsomorphicLayoutEffect(() => {
     store.setRuntimeItemState(props.id, {
@@ -222,13 +253,13 @@ export const useDashboardGridItem_unstable = (
       lazyMount,
       sizeToContent,
       content: props.children,
-      label: extendedProps.label ?? itemOptions.label,
-      print: extendedProps.print ?? itemOptions.print,
+      label: legacyLabel ?? itemOptions.label,
+      print: legacyPrint ?? itemOptions.print,
     };
     return store.registerDeclarativeItem(item);
   }, [
-    extendedProps.label,
-    extendedProps.print,
+    legacyLabel,
+    legacyPrint,
     itemOptions,
     lazyMount,
     props.children,
@@ -257,16 +288,19 @@ export const useDashboardGridItem_unstable = (
     }
   }
 
-  const dragPreviewContent =
-    dragPreviewActive && dragPreviewElement ? (
-      dragOptions?.preview === 'clone' ? (
-        <div className={contentElement?.className}>{content}</div>
-      ) : typeof dragOptions?.preview === 'function' ? (
-        dragOptions.preview(resolvedItem)
-      ) : dragOptions?.preview === 'item' ? null : (
-        dragOptions?.preview
-      )
-    ) : null;
+  const dragPreviewContent = React.useMemo(
+    () =>
+      dragPreviewActive && dragPreviewElement ? (
+        dragOptions?.preview === 'clone' ? (
+          <div className={contentElement?.className}>{content}</div>
+        ) : typeof dragOptions?.preview === 'function' ? (
+          dragOptions.preview(resolvedItem)
+        ) : dragOptions?.preview === 'item' ? null : (
+          dragOptions?.preview
+        )
+      ) : null,
+    [content, contentElement?.className, dragOptions, dragPreviewActive, dragPreviewElement, resolvedItem],
+  );
 
   useIsomorphicLayoutEffect(() => {
     if (dragPreviewActive && dragPreviewElement) {
@@ -314,7 +348,7 @@ export const useDashboardGridItem_unstable = (
   }, [content, contentElement, contextValue, gridContextValue, gridId, lazy.visible, props.id, registry]);
 
   const configuredResizeDirections =
-    extendedProps.resizeDirections ??
+    legacyResizeDirections ??
     (resizeOptions?.handles === 'all'
       ? allResizeDirections
       : Array.isArray(resizeOptions?.handles)
@@ -404,6 +438,7 @@ export const useDashboardGridItem_unstable = (
     const unregister = coordinator.registerItem(registration);
 
     const geometry = getDomGeometry();
+    const onPointerDown = (event: PointerEvent) => dragController.current?.onPointerDown(event);
     if (geometry) {
       dragController.current = createDashboardGridPointerDrag({
         targetDocument,
@@ -413,7 +448,7 @@ export const useDashboardGridItem_unstable = (
         itemElement: rootElement,
         geometry,
         handle: dragHandleElement ?? dragOptions?.handleSelector,
-        cancel: extendedProps.cancel ?? dragOptions?.cancelSelector,
+        cancel: legacyCancel ?? dragOptions?.cancelSelector,
         getOriginPixelRect: () => geometry.elementToLocalRect(rootElement),
         onDragStart: usesOriginalDragPreview
           ? undefined
@@ -436,6 +471,7 @@ export const useDashboardGridItem_unstable = (
         onDragMove: usesOriginalDragPreview ? undefined : rect => dragPreviewController.current?.update(rect),
         onDragEnd: usesOriginalDragPreview ? undefined : () => setDragPreviewActive(false),
       });
+      rootElement.addEventListener('pointerdown', onPointerDown);
 
       for (const edge of resizeDirections) {
         const handleElement = resizeHandleElements.current[edge];
@@ -479,6 +515,7 @@ export const useDashboardGridItem_unstable = (
 
     return () => {
       unregister();
+      rootElement.removeEventListener('pointerdown', onPointerDown);
       dragController.current?.destroy();
       dragController.current = undefined;
       keyboardController.current?.cancel();
@@ -493,17 +530,21 @@ export const useDashboardGridItem_unstable = (
     coordinator,
     direction,
     dragHandleElement,
-    extendedProps.cancel,
+    legacyCancel,
     dragOptions?.cancelSelector,
     dragOptions?.handleSelector,
     dragOptions?.portal,
     getDomGeometry,
     gridId,
+    itemLabel,
+    movable,
     onArrangeModeChange,
     props.id,
     resizeDirections,
     refreshDragHandlesVersion,
     rootElement,
+    resolvedItem.locked,
+    resizable,
     strictSizeToContent,
     targetDocument,
     usesOriginalDragPreview,
@@ -529,9 +570,9 @@ export const useDashboardGridItem_unstable = (
       React.useCallback(
         (element: HTMLDivElement | null) => {
           setRootElement(element);
-          lazy.ref(element);
+          lazyRef(element);
         },
-        [lazy],
+        [lazyRef],
       ),
     ),
     tabIndex: props.tabIndex ?? 0,
@@ -551,23 +592,15 @@ export const useDashboardGridItem_unstable = (
           }
         : {}),
     },
-    onPointerDown: mergeCallbacks(props.onPointerDown, event =>
-      dragController.current?.onPointerDown(event.nativeEvent),
-    ),
+    // eslint-disable-next-line react-hooks/refs -- Event handlers read the current interaction controller after render.
     onKeyDown: mergeCallbacks(props.onKeyDown, event => keyboardController.current?.onKeyDown(event.nativeEvent)),
-  } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  } as React.HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>;
   Object.assign(rootSlotProps, { [dashboardGridDataAttributes.item]: props.id });
   const root = slot.always(rootSlotProps, { elementType: 'div' });
   const contentSlot = slot.always(props.content ?? undefined, {
     elementType: 'div',
   }) as NonNullable<DashboardGridItemState['content']>;
-  contentSlot.ref = React.useCallback(
-    (element: HTMLDivElement | null) => {
-      setContentElement(element);
-      sizeToContentRef(element);
-    },
-    [sizeToContentRef],
-  );
+  contentSlot.ref = setContentRef;
   contentSlot['aria-busy'] = lazyMount && !lazy.visible ? true : undefined;
   contentSlot.children = portalReady ? undefined : lazy.visible ? content : null;
   const dragHandle = props.dragHandle
@@ -646,7 +679,7 @@ export const useDashboardGridItem_unstable = (
     portalReady,
     lazyVisible: lazy.visible,
     printMode,
-    print: extendedProps.print ?? itemOptions.print ?? definition?.print,
+    print: legacyPrint ?? itemOptions.print ?? definition?.print,
     animated,
     handleVisibility: resizeOptions?.handleVisibility ?? 'coarse-pointer',
     dragPreviewElement,

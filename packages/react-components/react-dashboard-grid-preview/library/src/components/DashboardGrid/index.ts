@@ -2,8 +2,10 @@ export { DashboardGrid } from './DashboardGrid';
 export type {
   DashboardGridChangeReason,
   DashboardGridDropData,
+  DashboardGridDiagnosticData,
   DashboardGridEnabledData,
   DashboardGridErrorData,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Public compatibility alias.
   DashboardGridEventData,
   DashboardGridEventFields,
   DashboardGridEventType,

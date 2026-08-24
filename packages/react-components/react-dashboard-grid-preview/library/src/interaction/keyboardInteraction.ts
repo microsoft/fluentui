@@ -231,7 +231,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
     }
 
     if (event.key === Tab) {
-      void options.coordinator.commit(event);
+      options.coordinator.commit(event);
       setActiveResizeEdge(undefined);
       options.onArrangeChange?.(false);
       return false;
@@ -239,7 +239,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
 
     if (event.key === Enter || event.key === Space || event.key === 'Spacebar') {
       event.preventDefault();
-      void options.coordinator.commit(event);
+      options.coordinator.commit(event);
       setActiveResizeEdge(undefined);
       options.onArrangeChange?.(false);
       return true;
@@ -263,8 +263,9 @@ export const createDashboardGridKeyboardInteraction = (options: {
 
     event.preventDefault();
     const current = activeSession.lastAcceptedRect;
+    const resizeEdge = activeResizeEdge ?? activeSession.resizeEdge;
 
-    if (activeResizeEdge) {
+    if (resizeEdge) {
       if (!registration.resizable) {
         options.onRejected?.('not-resizable');
         return true;
@@ -277,7 +278,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
 
       const proposal = getDashboardGridKeyboardResizeProposal({
         current,
-        edge: activeResizeEdge,
+        edge: resizeEdge,
         key: event.key,
         direction,
       });

@@ -316,8 +316,6 @@ export function createGridStackEventAdapter(
   let compatibilityDisabled = false;
   let batchDepth = 0;
   let batchStartItems: readonly DashboardGridResolvedItem[] | undefined;
-  let facade: GridStackLikeFacade;
-
   const emitDifferences = (
     before: readonly DashboardGridResolvedItem[],
     after: readonly DashboardGridResolvedItem[],
@@ -400,7 +398,7 @@ export function createGridStackEventAdapter(
   const loadDefinitions = (items: readonly DashboardGridLayoutItemInput[]): unknown =>
     target.load(items, { addMissing: true, removeMissing: true });
 
-  facade = {
+  const facade: GridStackLikeFacade = {
     on(name, callback) {
       for (const eventName of getEventNames(name)) {
         let eventHandlers = handlers.get(eventName);
@@ -586,8 +584,7 @@ export function createGridStackEventAdapter(
       return toNode(resolved, getItemElement);
     },
 
-    removeWidget(element, removeDOM = true, triggerEvent = true) {
-      void removeDOM;
+    removeWidget(element, _removeDOM = true, triggerEvent = true) {
       const ids = resolveElementIds(element, target, options.selectorRoot ?? options.rootElement);
       runMutation(() => {
         for (const id of ids) {
@@ -599,8 +596,7 @@ export function createGridStackEventAdapter(
       return facade;
     },
 
-    removeAll(removeDOM = true, triggerEvent = true) {
-      void removeDOM;
+    removeAll(_removeDOM = true, triggerEvent = true) {
       runMutation(() => {
         const result =
           'removeAll' in target
@@ -791,8 +787,7 @@ export function createGridStackEventAdapter(
       return engine.canPlace(item).fits;
     },
 
-    compact(mode = 'compact', doSort = true) {
-      void doSort;
+    compact(mode = 'compact', _doSort = true) {
       const engine = getEngine(target);
       if (engine) {
         runMutation(() => engine.compact(mode));
@@ -840,8 +835,7 @@ export function createGridStackEventAdapter(
       return facade;
     },
 
-    enable(recurse = true) {
-      void recurse;
+    enable(_recurse = true) {
       compatibilityDisabled = false;
       runMutation(() => {
         const definitions = getDefinitions(target).map(definition => {
@@ -861,8 +855,7 @@ export function createGridStackEventAdapter(
       return facade;
     },
 
-    disable(recurse = true) {
-      void recurse;
+    disable(_recurse = true) {
       compatibilityDisabled = true;
       runMutation(() => {
         const resolvedById = new Map(getItems(target).map(item => [item.id, item]));

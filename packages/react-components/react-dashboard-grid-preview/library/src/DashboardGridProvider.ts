@@ -5,5 +5,6 @@ export {
 } from './components/DashboardGridProvider/index';
 export type {
   DashboardGridCustomDropData,
+  DashboardGridProviderErrorData,
   DashboardGridProviderProps,
 } from './components/DashboardGridProvider/index';

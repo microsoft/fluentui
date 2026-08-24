@@ -6,6 +6,7 @@ export {
   useDashboardGridDragSource_unstable,
 } from './components/DashboardGridDragSource/index';
 export type {
+  DashboardGridDragSourceKeyboardActivateData,
   DashboardGridDragSourceProps,
   DashboardGridDragSourceSlots,
   DashboardGridDragSourceState,

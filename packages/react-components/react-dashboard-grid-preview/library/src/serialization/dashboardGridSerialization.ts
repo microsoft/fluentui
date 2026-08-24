@@ -14,19 +14,45 @@ const serializeDefinition = (
   registry: DashboardGridRegistry,
   gridId: string,
   item: DashboardGridItemDefinition,
+  options?: Pick<DashboardGridSaveOptions, 'includeContent' | 'includeData'>,
 ): DashboardGridSerializedItem => {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Reads the legacy nested-grid field during migration serialization.
   const { content, data, props, subGrid, nestedGrid, ...serializable } = item;
   const serializer = item.component ? registry.serializers.get(item.component) : undefined;
 
   return {
     ...serializable,
-    data: serializer ? serializer.serialize(data, { gridId, itemId: item.id }) : data,
+    ...(options?.includeData !== false &&
+      data !== undefined && {
+        data: serializer ? serializer.serialize(data, { gridId, itemId: item.id }) : data,
+      }),
+    ...(options?.includeContent === true && content !== undefined && { content }),
     props,
     subGrid: subGrid
-      ? serializeGridDefinition(registry, `${gridId}::${item.id}::subgrid`, subGrid)
+      ? serializeGridDefinition(registry, `${gridId}::${item.id}::subgrid`, subGrid, options)
       : nestedGrid,
   };
 };
+
+const applySerializedGeometry = (
+  definition: DashboardGridItemDefinition | undefined,
+  layout: DashboardGridSerializedItem,
+): DashboardGridItemDefinition => ({
+  ...(definition ?? { id: layout.id }),
+  id: layout.id,
+  column: layout.column,
+  row: layout.row,
+  columnSpan: layout.columnSpan,
+  rowSpan: layout.rowSpan,
+  minColumnSpan: layout.minColumnSpan,
+  maxColumnSpan: layout.maxColumnSpan,
+  minRowSpan: layout.minRowSpan,
+  maxRowSpan: layout.maxRowSpan,
+  autoPosition: layout.autoPosition,
+  movable: layout.movable,
+  resizable: layout.resizable,
+  locked: layout.locked,
+});
 
 export const getDashboardGridSerializableOptions = (
   definition: DashboardGridDefinition,
@@ -112,11 +138,12 @@ const serializeGridDefinition = (
   registry: DashboardGridRegistry,
   gridId: string,
   definition: DashboardGridDefinition,
+  options?: Pick<DashboardGridSaveOptions, 'includeContent' | 'includeData'>,
 ): DashboardGridSerializedGrid => ({
   version: 1,
   options: getDashboardGridSerializableOptions(definition),
   items: (definition.items ?? []).map(item =>
-    serializeDefinition(registry, gridId, item),
+    serializeDefinition(registry, gridId, item, options),
   ),
 });
 
@@ -124,18 +151,28 @@ export const serializeDashboardGrid = (
   store: DashboardGridStore,
   registry: DashboardGridRegistry,
   options?: DashboardGridSaveOptions,
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- Serialization retains the legacy engine envelope during preview migration.
 ): DashboardGridSerializedState => {
   const saved = store.save(options);
+  const definitions = new Map(store.getDefinitions().map(item => [item.id, item]));
   return {
     version: 1,
     options: saved.options,
-    items: store.getDefinitions().map(item => serializeDefinition(registry, store.id, item)),
+    items: saved.items.map(item =>
+      serializeDefinition(
+        registry,
+        store.id,
+        applySerializedGeometry(definitions.get(item.id), item),
+        options,
+      ),
+    ),
     layouts: saved.layouts,
     engine: saved.engine,
   };
 };
 
 export const deserializeDashboardGridItems = (
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Deserialization accepts the legacy engine envelope during preview migration.
   state: DashboardGridSerializedState,
   registry: DashboardGridRegistry,
   gridId?: string,
@@ -156,11 +193,36 @@ export const deserializeDashboardGridItems = (
     };
   });
 
+export const getDashboardGridSerializedItemColumns = (
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Loading accepts the legacy engine envelope during preview migration.
+  state: DashboardGridSerializedState,
+): number | undefined => {
+  if ('engine' in state) {
+    const engine = state.engine;
+    if (
+      engine !== null &&
+      typeof engine === 'object' &&
+      'itemColumns' in engine &&
+      typeof engine.itemColumns === 'number'
+    ) {
+      return engine.itemColumns;
+    }
+  }
+
+  return typeof state.options.columns === 'number'
+    ? state.options.columns
+    : undefined;
+};
+
 export const loadSerializedDashboardGrid = (
   store: DashboardGridStore,
   registry: DashboardGridRegistry,
-  state: DashboardGridSerializedState,
-) => {
+  state: DashboardGridSerializedGrid,
+): ReturnType<DashboardGridStore['load']> => {
   store.setSerializableOptions(state.options, true);
-  return store.load(deserializeDashboardGridItems(state, registry, store.id));
+  return store.load(deserializeDashboardGridItems(state, registry, store.id), {
+    addMissing: true,
+    removeMissing: true,
+    sourceColumns: getDashboardGridSerializedItemColumns(state),
+  });
 };

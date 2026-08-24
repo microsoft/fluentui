@@ -1,8 +1,4 @@
-import type {
-  DashboardGridPixelRect,
-  DashboardGridPoint,
-  DashboardGridPointerType,
-} from './types';
+import type { DashboardGridPixelRect, DashboardGridPoint, DashboardGridPointerType } from './types';
 
 export const DASHBOARD_GRID_TOUCH_LEAVE_DELAY = 10;
 
@@ -27,14 +23,10 @@ export const getDashboardGridDeepActiveElement = (targetDocument: Document): HTM
   return activeElement && 'focus' in activeElement ? (activeElement as HTMLElement) : null;
 };
 
-export const getDashboardGridManhattanDistance = (
-  start: DashboardGridPoint,
-  current: DashboardGridPoint,
-): number => Math.abs(current.clientX - start.clientX) + Math.abs(current.clientY - start.clientY);
+export const getDashboardGridManhattanDistance = (start: DashboardGridPoint, current: DashboardGridPoint): number =>
+  Math.abs(current.clientX - start.clientX) + Math.abs(current.clientY - start.clientY);
 
-export const dashboardGridPixelRectToClientRect = (
-  rect: DashboardGridPixelRect,
-): DOMRectReadOnly => ({
+export const dashboardGridPixelRectToClientRect = (rect: DashboardGridPixelRect): DOMRectReadOnly => ({
   x: rect.x,
   y: rect.y,
   top: rect.y,
@@ -46,10 +38,7 @@ export const dashboardGridPixelRectToClientRect = (
   toJSON: () => ({}),
 });
 
-export const releaseDashboardGridPointerCapture = (
-  element: HTMLElement,
-  pointerId: number | undefined,
-): void => {
+export const releaseDashboardGridPointerCapture = (element: HTMLElement, pointerId: number | undefined): void => {
   if (pointerId === undefined || !element.hasPointerCapture?.(pointerId)) {
     return;
   }
@@ -61,10 +50,7 @@ export const releaseDashboardGridPointerCapture = (
   }
 };
 
-export const updateDashboardGridPointerCapture = (
-  element: HTMLElement,
-  event: PointerEvent,
-): void => {
+export const updateDashboardGridPointerCapture = (element: HTMLElement, event: PointerEvent): void => {
   const pointerType = normalizeDashboardGridPointerType(event.pointerType);
   if (pointerType === 'touch' || pointerType === 'pen') {
     releaseDashboardGridPointerCapture(element, event.pointerId);
@@ -81,13 +67,11 @@ export const updateDashboardGridPointerCapture = (
 };
 
 export type DashboardGridClickSuppressor = {
-  suppressNext(): void;
+  suppressNext(point?: DashboardGridPoint): void;
   dispose(): void;
 };
 
-export const createDashboardGridClickSuppressor = (
-  targetDocument: Document,
-): DashboardGridClickSuppressor => {
+export const createDashboardGridClickSuppressor = (targetDocument: Document): DashboardGridClickSuppressor => {
   const targetWindow = targetDocument.defaultView;
   let timer = 0;
   let listener: ((event: MouseEvent) => void) | undefined;
@@ -108,13 +92,22 @@ export const createDashboardGridClickSuppressor = (
   };
 
   return {
-    suppressNext: () => {
+    suppressNext: point => {
       if (!targetWindow) {
         return;
       }
 
       clear();
       listener = event => {
+        if (
+          point &&
+          getDashboardGridManhattanDistance(point, {
+            clientX: event.clientX,
+            clientY: event.clientY,
+          }) > 4
+        ) {
+          return;
+        }
         event.preventDefault();
         event.stopImmediatePropagation();
         clear();
@@ -149,11 +142,7 @@ export const createDashboardGridTouchLeaveController = (options: {
   return {
     cancel,
     onPointerOut: (event, pointerId, pointerType) => {
-      if (
-        event.pointerId !== pointerId ||
-        (pointerType !== 'touch' && pointerType !== 'pen') ||
-        !targetWindow
-      ) {
+      if (event.pointerId !== pointerId || (pointerType !== 'touch' && pointerType !== 'pen') || !targetWindow) {
         return;
       }
 

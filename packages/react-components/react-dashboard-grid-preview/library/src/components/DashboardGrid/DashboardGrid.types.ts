@@ -42,6 +42,12 @@ export type DashboardGridSlots = {
   emptyContent?: Slot<'div'>;
 };
 
+/** Data emitted for lower-level engine diagnostics. */
+export type DashboardGridDiagnosticData = DashboardGridEngineDiagnostic & {
+  type: 'diagnostic';
+  event: Event;
+};
+
 /** Caller-localizable accessibility and announcement strings. */
 export type DashboardGridStrings = DashboardGridAriaStrings & DashboardGridAnnouncementStrings;
 
@@ -237,19 +243,25 @@ export type DashboardGridProps = Omit<
     onError?: EventHandler<DashboardGridErrorData>;
 
     /** Receives lower-level engine diagnostics. */
-    onDiagnostic?: (diagnostic: DashboardGridEngineDiagnostic) => void;
+    onDiagnostic?: EventHandler<DashboardGridDiagnosticData>;
 
     /** @deprecated Use `onItemsChange`. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onLayoutChange?: EventHandler<DashboardGridEventData>;
     /** @deprecated Column changes are included in `onItemsChange`. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onColumnsChange?: EventHandler<DashboardGridEventData>;
     /** @deprecated Arrange changes are announced and reflected by interaction callbacks. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onArrangeModeChange?: EventHandler<DashboardGridEventData>;
     /** @deprecated Use `onItemDrop`. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onTransfer?: EventHandler<DashboardGridEventData>;
     /** @deprecated Rejections and cancellation are surfaced through interaction data. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onCancel?: EventHandler<DashboardGridEventData>;
     /** @deprecated Use `onContentResize`. */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Compatibility callback retains the legacy event payload.
     onResizeContent?: EventHandler<DashboardGridEventData>;
   };
 

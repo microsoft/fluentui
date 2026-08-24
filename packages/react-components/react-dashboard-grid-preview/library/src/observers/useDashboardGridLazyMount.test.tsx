@@ -7,18 +7,25 @@ describe('useDashboardGridLazyMount', () => {
     const original = window.IntersectionObserver;
     let callback: IntersectionObserverCallback | undefined;
     class MockIntersectionObserver {
-      public constructor(nextCallback: IntersectionObserverCallback) {
-        callback = nextCallback;
-      }
-      public observe() {}
-      public unobserve() {}
-      public disconnect() {}
-      public takeRecords() {
-        return [];
-      }
       public readonly root = null;
       public readonly rootMargin = '';
       public readonly thresholds = [];
+
+      public constructor(nextCallback: IntersectionObserverCallback) {
+        callback = nextCallback;
+      }
+      public observe() {
+        return undefined;
+      }
+      public unobserve() {
+        return undefined;
+      }
+      public disconnect() {
+        return undefined;
+      }
+      public takeRecords() {
+        return [];
+      }
     }
     window.IntersectionObserver =
       MockIntersectionObserver as unknown as typeof IntersectionObserver;

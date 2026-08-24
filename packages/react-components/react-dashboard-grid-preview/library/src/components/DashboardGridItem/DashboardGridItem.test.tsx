@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import type { DashboardGridHandle } from '../../hooks/useDashboardGrid';
 import { DashboardGrid } from '../DashboardGrid/DashboardGrid';
 import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
@@ -11,10 +11,11 @@ import { createDashboardGridPointerResize } from '../../interaction/pointerResiz
 const mockDestroyDrag = jest.fn();
 const mockDestroyResize = jest.fn();
 const mockCancelKeyboard = jest.fn();
+const mockPointerDownDrag = jest.fn();
 
 jest.mock('../../interaction/pointerDrag', () => ({
   createDashboardGridPointerDrag: jest.fn(() => ({
-    onPointerDown: jest.fn(),
+    onPointerDown: mockPointerDownDrag,
     cancel: jest.fn(),
     destroy: mockDestroyDrag,
   })),
@@ -41,12 +42,8 @@ describe('DashboardGridItem interaction lifecycle', () => {
     Component: DashboardGridItem,
     displayName: 'DashboardGridItem',
     requiredProps: { id: 'item' },
-    disabledTests: [
-      'component-has-static-classnames-object',
-      'make-styles-overrides-win',
-    ],
-    getTargetElement: result =>
-      result.container.querySelector('[data-dashboard-grid-item="item"]') as HTMLElement,
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    getTargetElement: result => result.container.querySelector('[data-dashboard-grid-item="item"]') as HTMLElement,
     renderOptions: {
       wrapper: ({ children }) => (
         <DashboardGridProvider targetDocument={document}>
@@ -80,7 +77,7 @@ describe('DashboardGridItem interaction lifecycle', () => {
         .querySelector('[data-dashboard-grid-resize-handle]')
         ?.getAttribute('data-dashboard-grid-resize-handle'),
     }).toMatchInlineSnapshot(`
-      {
+      Object {
         "itemId": "item",
         "label": "item",
         "resizeHandle": "se",
@@ -123,6 +120,23 @@ describe('DashboardGridItem interaction lifecycle', () => {
     expect(mockCancelKeyboard.mock.calls.length).toBe(initialKeyboardCleanupCount + 1);
   });
 
+  it('starts pointer interaction from the item root', async () => {
+    render(
+      <DashboardGridProvider targetDocument={document}>
+        <DashboardGrid
+          aria-label="Dashboard"
+          defaultItems={[{ id: 'item', column: 0, row: 0 }]}
+          renderItem={item => <span>{item.id}</span>}
+        />
+      </DashboardGridProvider>,
+    );
+
+    await waitFor(() => expect(createDashboardGridPointerDrag).toHaveBeenCalledTimes(1));
+    fireEvent.pointerDown(screen.getByText('item'));
+
+    expect(mockPointerDownDrag).toHaveBeenCalledTimes(1);
+  });
+
   it('keeps a declarative item registered after its store definition appears', async () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
     render(
@@ -140,9 +154,7 @@ describe('DashboardGridItem interaction lifecycle', () => {
       await Promise.resolve();
     });
 
-    expect(imperativeRef.current?.getItems()).toEqual([
-      expect.objectContaining({ id: 'declarative' }),
-    ]);
+    expect(imperativeRef.current?.getItems()).toEqual([expect.objectContaining({ id: 'declarative' })]);
   });
 
   it('creates resize interactions for a locked resizable item', async () => {

@@ -19,28 +19,19 @@ export const useDashboardGridLazyMount = <TElement extends HTMLElement = HTMLDiv
 ): DashboardGridLazyMountState<TElement> => {
   const { targetDocument, enabled = false, root, rootMargin } = options;
   const [element, setElement] = React.useState<TElement | null>(null);
-  const [visible, setVisible] = React.useState(!enabled);
+  const [intersecting, setIntersecting] = React.useState(false);
+  const IntersectionObserverConstructor = targetDocument?.defaultView?.IntersectionObserver;
+  const visible = !enabled || !IntersectionObserverConstructor || intersecting;
 
   React.useEffect(() => {
-    if (!enabled) {
-      setVisible(true);
-      return;
-    }
-
-    if (!element) {
-      return;
-    }
-
-    const IntersectionObserverConstructor = targetDocument?.defaultView?.IntersectionObserver;
-    if (!IntersectionObserverConstructor) {
-      setVisible(true);
+    if (!enabled || !element || !IntersectionObserverConstructor) {
       return;
     }
 
     const observer = new IntersectionObserverConstructor(
       entries => {
         if (entries.some(entry => entry.isIntersecting)) {
-          setVisible(true);
+          setIntersecting(true);
           observer.disconnect();
         }
       },
@@ -48,7 +39,7 @@ export const useDashboardGridLazyMount = <TElement extends HTMLElement = HTMLDiv
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [element, enabled, root, rootMargin, targetDocument]);
+  }, [element, enabled, root, rootMargin, IntersectionObserverConstructor]);
 
   return {
     ref: React.useCallback((next: TElement | null) => setElement(next), []),

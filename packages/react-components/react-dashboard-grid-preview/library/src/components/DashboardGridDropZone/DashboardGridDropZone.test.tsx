@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { DashboardGridProviderContextProvider } from '../../contexts/DashboardGridProviderContext';
-import type {
-  DashboardGridDropZoneRegistration,
-  DashboardGridInteractionCoordinator,
-} from '../../interaction/types';
+import type { DashboardGridDropZoneRegistration, DashboardGridInteractionCoordinator } from '../../interaction/types';
 import type { DashboardGridRegistry } from '../../provider/DashboardGridRegistry.types';
 import { DashboardGridDropZone } from './DashboardGridDropZone';
 import { DashboardGridProvider } from '../DashboardGridProvider/DashboardGridProvider';
@@ -36,7 +33,7 @@ describe('DashboardGridDropZone', () => {
       state: zone.getAttribute('data-dashboard-grid-drop-state'),
       text: zone.textContent,
     }).toMatchInlineSnapshot(`
-      {
+      Object {
         "role": "group",
         "state": "idle",
         "tagName": "DIV",

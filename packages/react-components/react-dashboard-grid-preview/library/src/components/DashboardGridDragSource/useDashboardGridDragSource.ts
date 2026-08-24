@@ -4,7 +4,9 @@ import * as React from 'react';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
+  type RefAttributes,
   slot,
+  useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useDashboardGridDragSource as useDashboardGridDragSourceHook } from '../../hooks/useDashboardGridDragSource';
@@ -34,12 +36,21 @@ export const useDashboardGridDragSource_unstable = (
     preview: previewShorthand,
     ...rootProps
   } = props;
+  const handleKeyboardActivate = useEventCallback(
+    (registration: Parameters<NonNullable<Parameters<typeof useDashboardGridDragSourceHook>[0]['onKeyboardActivate']>>[0], event: KeyboardEvent) => {
+      onKeyboardActivate?.(event, {
+        type: 'keydown',
+        event,
+        registration,
+      });
+    },
+  );
   const dragSource = useDashboardGridDragSourceHook<HTMLDivElement>({
     id,
     descriptor,
     label,
     disabled,
-    onKeyboardActivate,
+    onKeyboardActivate: onKeyboardActivate ? handleKeyboardActivate : undefined,
   });
   const rootIntrinsicProps = getIntrinsicElementProps(
     'div',
@@ -55,7 +66,7 @@ export const useDashboardGridDragSource_unstable = (
     'aria-disabled': disabled || undefined,
     onPointerDown: mergeCallbacks(rootIntrinsicProps.onPointerDown, dragSource.onPointerDown),
     onKeyDown: mergeCallbacks(rootIntrinsicProps.onKeyDown, dragSource.onKeyDown),
-  } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  } as React.HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>;
   Object.assign(rootSlotProps, { [dashboardGridDataAttributes.dragSource]: id });
   const root = slot.always(rootSlotProps, { elementType: 'div' });
   const previewRef = useMergedRefs<HTMLDivElement>(

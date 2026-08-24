@@ -24,10 +24,7 @@ describe('DashboardGridDragSource', () => {
       id: 'source',
       descriptor: { id: 'item' },
     },
-    disabledTests: [
-      'component-has-static-classnames-object',
-      'make-styles-overrides-win',
-    ],
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
     renderOptions: {
       wrapper: ({ children }) => <DashboardGridProvider>{children}</DashboardGridProvider>,
     },
@@ -55,7 +52,7 @@ describe('DashboardGridDragSource', () => {
       sourceId: source.getAttribute('data-dashboard-grid-drag-source'),
       text: source.textContent,
     }).toMatchInlineSnapshot(`
-      {
+      Object {
         "role": "button",
         "sourceId": "source",
         "tabIndex": "0",

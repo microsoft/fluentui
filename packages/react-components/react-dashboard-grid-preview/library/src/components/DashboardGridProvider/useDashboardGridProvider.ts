@@ -32,7 +32,12 @@ export const useDashboardGridProvider_unstable = (
   const fluent = useFluent();
   const targetDocument =
     props.targetDocument === undefined ? fluent.targetDocument : props.targetDocument;
-  const onError = useEventCallback((error: unknown) => props.onError?.(error));
+  const onError = useEventCallback((error: unknown) => {
+    const event = targetDocument?.defaultView
+      ? new targetDocument.defaultView.Event('error')
+      : new Event('error');
+    props.onError?.(event, { type: 'error', event, error });
+  });
   const onCustomDrop = useEventCallback(
     (intent: DashboardGridTransferIntent): DashboardGridTransferResult => {
       if (!props.onCustomDrop) {
@@ -63,21 +68,28 @@ export const useDashboardGridProvider_unstable = (
   const focusManagerRef = React.useRef<
     ReturnType<typeof useDashboardGridFocusManager> | undefined
   >(undefined);
+  const captureFocus = useEventCallback((gridId: string, itemId: string) =>
+    focusManagerRef.current?.captureFocus(gridId, itemId) ?? {
+      element: null,
+      gridId,
+      itemId,
+    },
+  );
+  const requestPendingFocus = useEventCallback((record: DashboardGridFocusRecord) =>
+    focusManagerRef.current?.requestPendingFocus(record),
+  );
+  const focusAfterRemoval = useEventCallback(
+    (gridId: string, removedRect?: DOMRectReadOnly) =>
+      focusManagerRef.current?.focusAfterRemoval(gridId, removedRect) ?? false,
+  );
 
   const [registry] = React.useState(() =>
     createDashboardGridRegistry({
       onError,
       onCustomDrop,
-      captureFocus: (gridId, itemId) =>
-        focusManagerRef.current?.captureFocus(gridId, itemId) ?? {
-          element: null,
-          gridId,
-          itemId,
-        },
-      requestPendingFocus: (record: DashboardGridFocusRecord) =>
-        focusManagerRef.current?.requestPendingFocus(record),
-      focusAfterRemoval: (gridId, removedRect) =>
-        focusManagerRef.current?.focusAfterRemoval(gridId, removedRect) ?? false,
+      captureFocus,
+      requestPendingFocus,
+      focusAfterRemoval,
     }),
   );
 
@@ -116,16 +128,7 @@ export const useDashboardGridProvider_unstable = (
   });
   const focusManager = React.useMemo(
     () => focusManagerState,
-    [
-      focusManagerState.captureFocus,
-      focusManagerState.focusAfterRemoval,
-      focusManagerState.focusGeometric,
-      focusManagerState.focusItem,
-      focusManagerState.navigationAttributes,
-      focusManagerState.notifyItemRegistered,
-      focusManagerState.requestPendingFocus,
-      focusManagerState.restoreFocus,
-    ],
+    [focusManagerState],
   );
   useIsomorphicLayoutEffect(() => {
     focusManagerRef.current = focusManager;

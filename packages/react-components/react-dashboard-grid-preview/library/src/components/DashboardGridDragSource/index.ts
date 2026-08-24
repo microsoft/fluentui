@@ -1,6 +1,7 @@
 export { DashboardGridDragSource } from './DashboardGridDragSource';
 export type {
   DashboardGridDragSourceProps,
+  DashboardGridDragSourceKeyboardActivateData,
   DashboardGridDragSourceSlots,
   DashboardGridDragSourceState,
 } from './DashboardGridDragSource.types';

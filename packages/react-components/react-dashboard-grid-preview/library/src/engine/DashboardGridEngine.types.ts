@@ -49,9 +49,7 @@ export type DashboardGridLayoutItemInput = Readonly<{
   locked?: boolean;
 }>;
 
-export type DashboardGridLayoutItemPatch = Readonly<
-  Partial<Omit<DashboardGridLayoutItemInput, 'id'>>
->;
+export type DashboardGridLayoutItemPatch = Readonly<Partial<Omit<DashboardGridLayoutItemInput, 'id'>>>;
 
 export type DashboardGridEngineSnapshot = Readonly<{
   revision: number;
@@ -214,9 +212,7 @@ export type DashboardGridColumnLayout =
   | 'move'
   | 'scale'
   | 'none'
-  | ((
-      context: DashboardGridColumnLayoutContext,
-    ) => readonly DashboardGridLayoutItemInput[]);
+  | ((context: DashboardGridColumnLayoutContext) => readonly DashboardGridLayoutItemInput[]);
 
 export type DashboardGridSerializedItem = Readonly<{
   id: string;
@@ -254,6 +250,10 @@ export type DashboardGridEngineOptions = Readonly<{
   maxRows?: number;
   float?: boolean;
   resizeDisabled?: boolean;
+  collision?: Readonly<{
+    dragActivationRatio?: number;
+    nestingActivationRatio?: number;
+  }>;
   items?: readonly DashboardGridLayoutItemInput[];
   serializedState?: DashboardGridEngineSerializedState;
   development?: boolean;
@@ -290,16 +290,10 @@ export interface DashboardGridEngine {
   remove(id: string): DashboardGridMutationResult;
   removeAll(): DashboardGridMutationResult;
   update(id: string, patch: DashboardGridLayoutItemPatch): DashboardGridMutationResult;
-  load(
-    items: readonly DashboardGridLayoutItemInput[],
-    options?: DashboardGridLoadOptions,
-  ): DashboardGridMutationResult;
+  load(items: readonly DashboardGridLayoutItemInput[], options?: DashboardGridLoadOptions): DashboardGridMutationResult;
 
   compact(mode?: 'compact' | 'list'): DashboardGridMutationResult;
-  setColumns(
-    columns: number,
-    layout?: DashboardGridColumnLayout,
-  ): DashboardGridMutationResult;
+  setColumns(columns: number, layout?: DashboardGridColumnLayout): DashboardGridMutationResult;
   save(options?: DashboardGridEngineSaveOptions): DashboardGridEngineSerializedState;
   clone(): DashboardGridEngine;
 }

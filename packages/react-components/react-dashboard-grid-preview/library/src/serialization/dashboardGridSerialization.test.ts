@@ -6,6 +6,143 @@ import {
 } from './dashboardGridSerialization';
 
 describe('dashboard grid serialization', () => {
+  it('saves item geometry from the requested layout and keeps the engine envelope in agreement', () => {
+    const registry = createDashboardGridRegistry();
+    const source = createDashboardGridStore({
+      id: 'source',
+      columns: 12,
+      defaultItems: [
+        { id: 'left', column: 0, row: 0, columnSpan: 6 },
+        { id: 'right', column: 6, row: 0, columnSpan: 6 },
+      ],
+    });
+    source.setColumns(1);
+
+    const highest = serializeDashboardGrid(source, registry);
+    const requested = serializeDashboardGrid(source, registry, { columns: 1 });
+
+    expect(highest.items).toEqual([
+      {
+        id: 'left',
+        column: 0,
+        row: 0,
+        columnSpan: 6,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+      },
+      {
+        id: 'right',
+        column: 6,
+        row: 0,
+        columnSpan: 6,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+      },
+    ]);
+    expect(highest.engine?.items).toEqual(highest.items);
+    expect(requested.items).toEqual([
+      {
+        id: 'left',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+      },
+      {
+        id: 'right',
+        column: 0,
+        row: 1,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+      },
+    ]);
+    expect(requested.engine?.items).toEqual(requested.items);
+  });
+
+  it('round-trips literal application data and content according to save controls', () => {
+    const registry = createDashboardGridRegistry();
+    const source = createDashboardGridStore({
+      id: 'source',
+      columns: 2,
+      defaultItems: [
+        {
+          id: 'literal',
+          column: 0,
+          row: 0,
+          content: 'Visible content',
+          data: { kind: 'metric', value: 42 },
+        },
+      ],
+    });
+
+    const defaults = serializeDashboardGrid(source, registry);
+    const contentOnly = serializeDashboardGrid(source, registry, {
+      includeData: false,
+      includeContent: true,
+    });
+    const geometryOnly = serializeDashboardGrid(source, registry, {
+      includeData: false,
+      includeContent: false,
+    });
+    const target = createDashboardGridStore({ id: 'target', columns: 2 });
+    loadSerializedDashboardGrid(target, registry, contentOnly);
+
+    expect(defaults.items).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+        data: { kind: 'metric', value: 42 },
+      },
+    ]);
+    expect(contentOnly.items).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+        content: 'Visible content',
+      },
+    ]);
+    expect(geometryOnly.items).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+      },
+    ]);
+    expect(
+      serializeDashboardGrid(target, registry, {
+        includeData: false,
+        includeContent: true,
+      }).items,
+    ).toEqual(contentOnly.items);
+  });
+
   it('round-trips complete grid options through the serializer APIs', () => {
     const registry = createDashboardGridRegistry();
     const source = createDashboardGridStore({

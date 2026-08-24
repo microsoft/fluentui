@@ -49,9 +49,7 @@ describe('DefaultDashboardGridEngine', () => {
     });
     const initial = engine.getSnapshot();
 
-    expect(engine.add({ id: 'second', column: 0, row: 0 }).status).toBe(
-      'rejected',
-    );
+    expect(engine.add({ id: 'second', column: 0, row: 0 }).status).toBe('rejected');
     expect(engine.getSnapshot()).toBe(initial);
     expect(onError).toHaveBeenCalled();
   });
@@ -83,13 +81,11 @@ describe('DefaultDashboardGridEngine', () => {
       items: [{ id: 'item', column: 0, row: 0 }],
     });
 
-    expect(engine.move('item', { input: 'api', row: 5 }).status).toBe(
-      'unchanged',
-    );
+    expect(engine.move('item', { input: 'api', row: 5 }).status).toBe('unchanged');
     expect(engine.getItem('item')?.row).toBe(0);
   });
 
-  it('allows direct movement and resize of locked items while keeping them fixed as collision blockers', () => {
+  it('allows direct movement and resize of locked items but rejects rotation', () => {
     const engine = createDashboardGridEngine({
       columns: 4,
       items: [
@@ -110,28 +106,28 @@ describe('DefaultDashboardGridEngine', () => {
       column: 2,
       columnSpan: 2,
     });
-    expect(engine.rotate('locked', { input: 'api' }).status).toBe('accepted');
+    expect(engine.rotate('locked', { input: 'api' }).status).toBe('rejected');
     expect(engine.getItem('locked')).toMatchObject({
-      columnSpan: 1,
-      rowSpan: 2,
+      columnSpan: 2,
+      rowSpan: 1,
     });
 
     expect(
       engine.move('active', {
         input: 'api',
         column: 2,
-        row: 1,
+        row: 0,
       }).status,
     ).toBe('accepted');
     expect(engine.getItem('locked')).toMatchObject({
       column: 2,
       row: 0,
-      columnSpan: 1,
-      rowSpan: 2,
+      columnSpan: 2,
+      rowSpan: 1,
     });
     expect(engine.getItem('active')).not.toMatchObject({
       column: 2,
-      row: 1,
+      row: 0,
     });
   });
 
@@ -155,9 +151,7 @@ describe('DefaultDashboardGridEngine', () => {
       kind: 'keyboard',
       source: 'internal',
     });
-    expect(engine.rotate('item', { input: 'keyboard' }).status).toBe(
-      'accepted',
-    );
+    expect(engine.rotate('item', { input: 'keyboard' }).status).toBe('accepted');
     expect(engine.getItem('item')).toEqual(
       expect.objectContaining({
         columnSpan: 2,
@@ -218,6 +212,98 @@ describe('DefaultDashboardGridEngine', () => {
         pixelRect: { x: 0, y: 0, width: 100, height: 100 },
       }).status,
     ).toBe('accepted');
+  });
+
+  it('uses the configured drag activation ratio', () => {
+    const engine = createDashboardGridEngine({
+      columns: 2,
+      collision: { dragActivationRatio: 0.75 },
+      items: [
+        { id: 'active', column: 0, row: 0 },
+        { id: 'target', column: 1, row: 0 },
+      ],
+    });
+    engine.beginInteraction('active', {
+      kind: 'drag',
+      source: 'internal',
+      metrics: {
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+    });
+
+    expect(
+      engine.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 75, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('deferred');
+    expect(
+      engine.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 76, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('accepted');
+  });
+
+  it('uses the configured nesting activation ratio', () => {
+    const create = () => {
+      const engine = createDashboardGridEngine({
+        columns: 2,
+        collision: { nestingActivationRatio: 0.9 },
+        items: [
+          { id: 'active', column: 0, row: 0 },
+          { id: 'target', column: 1, row: 0 },
+        ],
+      });
+      engine.beginInteraction('active', {
+        kind: 'drag',
+        source: 'internal',
+        allowNesting: true,
+        nestingDwell: false,
+        metrics: {
+          columnWidth: 100,
+          rowHeight: 100,
+          gapTop: 0,
+          gapRight: 0,
+          gapBottom: 0,
+          gapLeft: 0,
+        },
+        originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+      });
+      return engine;
+    };
+
+    expect(
+      create().move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 90, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('accepted');
+    expect(
+      create().move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 91, y: 0, width: 100, height: 100 },
+      }),
+    ).toEqual(
+      expect.objectContaining({
+        status: 'nest-requested',
+        targetId: 'target',
+      }),
+    );
   });
 
   it('requires the default dwell above eighty percent before requesting nesting without mutating', () => {
@@ -409,19 +495,15 @@ describe('DefaultDashboardGridEngine', () => {
       pixelRect: { x: 51, y: 0, width: 100, height: 100 },
     });
 
-    expect(engine.getItem('active')).toEqual(
-      expect.objectContaining({ column: 1, row: 0 }),
-    );
-    expect(engine.getItem('target')).toEqual(
-      expect.objectContaining({ column: 1, row: 1 }),
-    );
+    expect(engine.getItem('active')).toEqual(expect.objectContaining({ column: 1, row: 0 }));
+    expect(engine.getItem('target')).toEqual(expect.objectContaining({ column: 1, row: 1 }));
   });
 
   it('preserves invariants for a seeded 200-item layout', () => {
     const engine = createDashboardGridEngine({ columns: 12 });
     let seed = 0x12345678;
     const random = () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0;
+      seed = (seed * 1664525 + 1013904223) % 2 ** 32;
       return seed / 2 ** 32;
     };
 
@@ -439,10 +521,6 @@ describe('DefaultDashboardGridEngine', () => {
     engine.setColumns(12);
 
     const items = engine.getSnapshot().items;
-    expect(
-      items.some((item, index) =>
-        items.slice(index + 1).some(other => overlaps(item, other)),
-      ),
-    ).toBe(false);
+    expect(items.some((item, index) => items.slice(index + 1).some(other => overlaps(item, other)))).toBe(false);
   });
 });

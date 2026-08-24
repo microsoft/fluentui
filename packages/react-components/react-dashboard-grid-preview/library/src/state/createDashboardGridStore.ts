@@ -14,7 +14,7 @@ import type {
   DashboardGridItemDefinition,
   DashboardGridItemStoreSnapshot,
   DashboardGridRuntimeItemState,
-  DashboardGridSerializedGrid,
+  DashboardGridSaveOptions,
   DashboardGridSerializedItem,
   DashboardGridSerializedState,
   DashboardGridStore,
@@ -63,17 +63,21 @@ const sameResolvedItem = (
 
 const serializeDefinition = (
   item: DashboardGridItemDefinition,
+  options?: Pick<DashboardGridSaveOptions, 'includeContent' | 'includeData'>,
 ): DashboardGridSerializedItem => {
-  const { content, nestedGrid, subGrid, ...serializable } = item;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Reads the legacy nested-grid field during migration serialization.
+  const { content, data, nestedGrid, subGrid, ...serializable } = item;
   return {
     ...serializable,
+    ...(options?.includeData !== false && data !== undefined && { data }),
+    ...(options?.includeContent === true && content !== undefined && { content }),
     subGrid: subGrid
       ? {
           version: 1,
           options: getDashboardGridSerializableOptions(subGrid),
-          items: (subGrid.items ?? []).map(serializeDefinition),
+          items: (subGrid.items ?? []).map(child => serializeDefinition(child, options)),
         }
-      : (nestedGrid as DashboardGridSerializedGrid | undefined),
+      : nestedGrid,
   };
 };
 
@@ -107,6 +111,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       maxRows: options.maxRows,
       float: options.float,
       resizeDisabled: options.resizeDisabled,
+      collision: options.collision,
       serializedState: options.serializedState,
       development: options.development,
       items: initialItems.map(toDashboardGridEngineItem),
@@ -571,11 +576,21 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
       );
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- Save retains the legacy engine envelope during preview migration.
     save(saveOptions): DashboardGridSerializedState {
       const engineState = engine.save({
         columns: saveOptions?.columns,
         includeLayouts: saveOptions?.includeLayouts ?? true,
       });
+      const items = engineState.items.map(item =>
+        serializeDefinition(
+          {
+            ...definitions.get(item.id),
+            ...item,
+          },
+          saveOptions,
+        ),
+      );
       return {
         version: 1,
         options: serializedOptionsAreAuthoritative
@@ -589,7 +604,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
               float: engineState.float,
               ...serializedOptions,
             },
-        items: getDefinitionsInLayoutOrder().map(serializeDefinition),
+        items,
         layouts: engineState.layouts,
         engine: engineState,
       };

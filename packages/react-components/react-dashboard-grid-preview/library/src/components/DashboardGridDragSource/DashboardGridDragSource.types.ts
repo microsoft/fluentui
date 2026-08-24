@@ -1,6 +1,7 @@
 import type {
   ComponentProps,
   ComponentState,
+  EventHandler,
   Slot,
 } from '@fluentui/react-utilities';
 import type {
@@ -16,6 +17,13 @@ export type DashboardGridDragSourceSlots = {
   preview?: Slot<'div'>;
 };
 
+/** Data emitted when keyboard activation needs an explicit destination. */
+export type DashboardGridDragSourceKeyboardActivateData = {
+  type: 'keydown';
+  event: KeyboardEvent;
+  registration: DashboardGridDragSourceRegistration;
+};
+
 /** Props for the DashboardGridDragSource component. */
 export type DashboardGridDragSourceProps = ComponentProps<DashboardGridDragSourceSlots> & {
   /** Stable source identifier within the containing provider. */
@@ -27,10 +35,7 @@ export type DashboardGridDragSourceProps = ComponentProps<DashboardGridDragSourc
   /** Prevents pointer and keyboard activation. */
   disabled?: boolean;
   /** Handles keyboard activation when the provider cannot infer a unique target grid. */
-  onKeyboardActivate?: (
-    registration: DashboardGridDragSourceRegistration,
-    event: KeyboardEvent,
-  ) => void;
+  onKeyboardActivate?: EventHandler<DashboardGridDragSourceKeyboardActivateData>;
 };
 
 /** State used to render the DashboardGridDragSource component. */

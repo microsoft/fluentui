@@ -37,6 +37,10 @@ Use `imperativeRef` for commands such as querying, batching, fitting, compacting
 enabling/disabling, focusing, and refreshing handles. The ordinary forwarded ref always targets the root HTML
 element. The public command handle intentionally does not expose the mutable internal store.
 
+`save()` uses the highest-resolution cached layout by default; pass `columns` to save a specific responsive layout.
+Application `data` is included and React `content` is excluded by default. Use `includeData` and `includeContent` to
+override those defaults. The resulting versioned state can be passed directly to `load()`.
+
 Root and nested grids share the same options for columns, responsive layouts, row height, gap, row constraints,
 drag/resize disablement, external acceptance, removal zones, dynamic nesting, print behavior, and optional engine
 injection. Public callbacks follow Fluent's `(event, data)` convention and include committed item changes,

@@ -5,6 +5,7 @@ import {
 
 export { ParityPlayground } from './DashboardGridParityPlayground.stories';
 export { BrowserInteractions } from './DashboardGridBrowserCoverage.stories';
+export { DragPreviews } from './DashboardGridDragPreviews.stories';
 export { ShadowDom } from './DashboardGridShadowDom.stories';
 export { Print } from './DashboardGridPrint.stories';
 

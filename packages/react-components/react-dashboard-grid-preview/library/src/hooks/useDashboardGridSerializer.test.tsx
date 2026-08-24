@@ -7,6 +7,104 @@ import type { DashboardGridSerializedGrid } from '../state/DashboardGridStore.ty
 import { useDashboardGridSerializer } from './useDashboardGridSerializer';
 
 describe('useDashboardGridSerializer', () => {
+  it('round-trips requested layout geometry and literal save fields through the public APIs', () => {
+    const sourceRef = React.createRef<DashboardGridHandle>();
+    const highestTargetRef = React.createRef<DashboardGridHandle>();
+    const targetRef = React.createRef<DashboardGridHandle>();
+
+    render(
+      <DashboardGridProvider targetDocument={document}>
+        <DashboardGrid
+          aria-label="Source dashboard"
+          imperativeRef={sourceRef}
+          columns={12}
+          defaultItems={[
+            {
+              id: 'literal',
+              column: 0,
+              row: 0,
+              columnSpan: 6,
+              content: 'Visible content',
+              data: { kind: 'metric', value: 42 },
+            },
+          ]}
+        />
+        <DashboardGrid
+          aria-label="Highest-resolution target dashboard"
+          imperativeRef={highestTargetRef}
+          columns={12}
+        />
+        <DashboardGrid aria-label="Target dashboard" imperativeRef={targetRef} columns={1} />
+      </DashboardGridProvider>,
+    );
+
+    sourceRef.current?.setColumns(1);
+    const highest = sourceRef.current?.save();
+    const requested = sourceRef.current?.save({
+      columns: 1,
+      includeData: false,
+      includeContent: true,
+    });
+
+    expect(highest && 'items' in highest ? highest.items : undefined).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 6,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+        data: { kind: 'metric', value: 42 },
+      },
+    ]);
+    expect(requested && 'items' in requested ? requested.items : undefined).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+        content: 'Visible content',
+      },
+    ]);
+
+    if (highest && 'items' in highest) {
+      highestTargetRef.current?.load(highest);
+    }
+    const highestRoundTripped = highestTargetRef.current?.save();
+    expect(
+      highestRoundTripped && 'items' in highestRoundTripped
+        ? highestRoundTripped.items
+        : undefined,
+    ).toEqual(highest && 'items' in highest ? highest.items : undefined);
+
+    if (requested && 'items' in requested) {
+      targetRef.current?.load(requested);
+    }
+    const roundTripped = targetRef.current?.save({
+      includeData: false,
+      includeContent: true,
+    });
+    expect(roundTripped && 'items' in roundTripped ? roundTripped.items : undefined).toEqual([
+      {
+        id: 'literal',
+        column: 0,
+        row: 0,
+        columnSpan: 1,
+        rowSpan: 1,
+        movable: true,
+        resizable: true,
+        locked: false,
+        content: 'Visible content',
+      },
+    ]);
+  });
+
   it('saves the complete serializable grid options with semantic sentinels', () => {
     const imperativeRef = React.createRef<DashboardGridHandle>();
 

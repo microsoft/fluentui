@@ -343,7 +343,7 @@ export const createDashboardGridInteractionCoordinator = (
           activeSession.itemId &&
           options.provider?.requestNesting
         ) {
-          void options.provider.requestNesting({
+          options.provider.requestNesting({
             sourceGridId: activeSession.sourceGridId,
             targetGridId: activeSession.targetGridId,
             itemId: activeSession.itemId,

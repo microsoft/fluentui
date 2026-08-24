@@ -73,4 +73,38 @@ describe('createDashboardGridStore', () => {
     expect(store.getSnapshot().revision).toBe(revision);
     expect(store.getDefinition('a')?.content).toBe('second');
   });
+
+  it('forwards collision activation options to the default engine', () => {
+    const store = createDashboardGridStore({
+      id: 'grid',
+      columns: 2,
+      collision: { dragActivationRatio: 0.75 },
+      defaultItems: [
+        { id: 'active', column: 0, row: 0 },
+        { id: 'target', column: 1, row: 0 },
+      ],
+    });
+    store.beginInteraction('active', {
+      kind: 'drag',
+      source: 'internal',
+      metrics: {
+        columnWidth: 100,
+        rowHeight: 100,
+        gapTop: 0,
+        gapRight: 0,
+        gapBottom: 0,
+        gapLeft: 0,
+      },
+      originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+    });
+
+    expect(
+      store.move('active', {
+        input: 'pointer',
+        column: 1,
+        row: 0,
+        pixelRect: { x: 75, y: 0, width: 100, height: 100 },
+      }).status,
+    ).toBe('deferred');
+  });
 });

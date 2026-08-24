@@ -102,13 +102,13 @@ function toFiniteNumber(value: unknown): number | undefined {
     return undefined;
   }
 
-  const number = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(number) ? number : undefined;
+  const numericValue = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(numericValue) ? numericValue : undefined;
 }
 
 function toPositiveNumber(value: unknown): number | undefined {
-  const number = toFiniteNumber(value);
-  return number !== undefined && number > 0 ? number : undefined;
+  const numericValue = toFiniteNumber(value);
+  return numericValue !== undefined && numericValue > 0 ? numericValue : undefined;
 }
 
 function withUnit(
@@ -424,6 +424,7 @@ export function fromGridStackOptions<TData = unknown>(
         })
       : undefined;
 
+  /* eslint-disable @typescript-eslint/no-deprecated -- Reads accepted GridStack migration metadata. */
   const compatibility = omitUndefined({
     autoImportDom: options.auto,
     cellHeightUnit: options.cellHeightUnit,
@@ -434,6 +435,7 @@ export function fromGridStackOptions<TData = unknown>(
     nonce: options.nonce,
     styleInHead: options.styleInHead,
   });
+  /* eslint-enable @typescript-eslint/no-deprecated */
 
   return omitUndefined({
     items: options.children ? fromGridStackWidgets<TData>(options.children) : undefined,
@@ -593,6 +595,7 @@ export function toGridStackOptions<TData = unknown>(
   assignIfDefined(target, 'subGridDynamic', options.dynamicNesting);
 
   if (options.compatibility) {
+    /* eslint-disable @typescript-eslint/no-deprecated -- Writes accepted GridStack migration metadata. */
     assignIfDefined(target, 'auto', options.compatibility.autoImportDom);
     assignIfDefined(target, 'cellHeightUnit', options.compatibility.cellHeightUnit);
     assignIfDefined(target, 'engineClass', options.compatibility.engineClass);
@@ -601,6 +604,7 @@ export function toGridStackOptions<TData = unknown>(
     assignIfDefined(target, 'marginUnit', options.compatibility.marginUnit);
     assignIfDefined(target, 'nonce', options.compatibility.nonce);
     assignIfDefined(target, 'styleInHead', options.compatibility.styleInHead);
+    /* eslint-enable @typescript-eslint/no-deprecated */
   }
 
   return target;

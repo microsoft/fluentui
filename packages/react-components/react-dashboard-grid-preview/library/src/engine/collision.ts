@@ -1,9 +1,5 @@
 import type { DashboardGridPixelRect } from './DashboardGridEngine.types';
-import {
-  directionalCoverage,
-  intersects,
-  touches,
-} from './geometry';
+import { directionalCoverage, intersects, touches } from './geometry';
 import type {
   CollisionRepairContext,
   CollisionRepairResult,
@@ -19,12 +15,7 @@ export const firstCollision = (
   area: InternalRect,
   secondSkipKey?: OpaqueNodeKey,
 ): InternalNode | undefined =>
-  sortNodesStable(nodes).find(
-    node =>
-      node.key !== skipKey &&
-      node.key !== secondSkipKey &&
-      intersects(node, area),
-  );
+  sortNodesStable(nodes).find(node => node.key !== skipKey && node.key !== secondSkipKey && intersects(node, area));
 
 export const allCollisions = (
   nodes: readonly InternalNode[],
@@ -32,21 +23,17 @@ export const allCollisions = (
   area: InternalRect,
   secondSkipKey?: OpaqueNodeKey,
 ): InternalNode[] =>
-  sortNodesStable(nodes).filter(
-    node =>
-      node.key !== skipKey &&
-      node.key !== secondSkipKey &&
-      intersects(node, area),
-  );
+  sortNodesStable(nodes).filter(node => node.key !== skipKey && node.key !== secondSkipKey && intersects(node, area));
 
 export const selectPointerCollision = (
   candidates: readonly InternalNode[],
   targetRects: ReadonlyMap<OpaqueNodeKey, DashboardGridPixelRect>,
   origin: DashboardGridPixelRect,
   current: DashboardGridPixelRect,
+  activationRatio = 0.5,
 ): Readonly<{ node: InternalNode; coverage: number }> | undefined => {
   let selected: InternalNode | undefined;
-  let selectedCoverage = 0.5;
+  let selectedCoverage = activationRatio;
 
   candidates.forEach(candidate => {
     if (candidate.locked) {
@@ -65,9 +52,7 @@ export const selectPointerCollision = (
     }
   });
 
-  return selected === undefined
-    ? undefined
-    : Object.freeze({ node: selected, coverage: selectedCoverage });
+  return selected === undefined ? undefined : Object.freeze({ node: selected, coverage: selectedCoverage });
 };
 
 export const canSwap = (a: InternalNode, b: InternalNode): boolean => {
@@ -76,9 +61,7 @@ export const canSwap = (a: InternalNode, b: InternalNode): boolean => {
   }
 
   return (
-    (a.w === b.w &&
-      a.h === b.h &&
-      (a.x === b.x || a.y === b.y)) ||
+    (a.w === b.w && a.h === b.h && (a.x === b.x || a.y === b.y)) ||
     (a.w === b.w && a.x === b.x) ||
     (a.h === b.h && a.y === b.y)
   );
@@ -132,9 +115,7 @@ export const repairCollisions = (
   const preferredInitial =
     context.preferredCollisionKey === undefined
       ? undefined
-      : initialCollisions.find(
-          collision => collision.key === context.preferredCollisionKey,
-        );
+      : initialCollisions.find(collision => collision.key === context.preferredCollisionKey);
   const initialCollision = preferredInitial ?? initialCollisions[0];
   if (
     context.allowSwap &&
@@ -146,11 +127,7 @@ export const repairCollisions = (
     return { status: 'accepted', passes, swapped: true };
   }
 
-  const repair = (
-    key: OpaqueNodeKey,
-    next: InternalRect,
-    topLevel: boolean,
-  ): boolean => {
+  const repair = (key: OpaqueNodeKey, next: InternalRect, topLevel: boolean): boolean => {
     if (stack.has(key)) {
       return false;
     }
@@ -167,10 +144,7 @@ export const repairCollisions = (
     node.h = next.h;
 
     while (true) {
-      const useEntireRow =
-        !context.float &&
-        !hasLocked &&
-        (!topLevel || !context.moving || !context.movingDown);
+      const useEntireRow = !context.float && !hasLocked && (!topLevel || !context.moving || !context.movingDown);
       const area = useEntireRow
         ? { x: 0, y: node.y, w: context.columns, h: node.h }
         : { x: node.x, y: node.y, w: node.w, h: node.h };
@@ -188,9 +162,7 @@ export const repairCollisions = (
 
       const preferred =
         topLevel && context.preferredCollisionKey !== undefined
-          ? collisions.find(
-              collision => collision.key === context.preferredCollisionKey,
-            )
+          ? collisions.find(collision => collision.key === context.preferredCollisionKey)
           : undefined;
       const collision = preferred ?? collisions[0];
 

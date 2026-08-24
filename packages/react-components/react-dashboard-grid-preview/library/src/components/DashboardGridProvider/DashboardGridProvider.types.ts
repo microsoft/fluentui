@@ -13,6 +13,13 @@ export type DashboardGridCustomDropData = DashboardGridTransferIntent & {
   event: Event;
 };
 
+/** Data emitted for provider identity and transfer errors. */
+export type DashboardGridProviderErrorData = {
+  type: 'error';
+  event: Event;
+  error: DashboardGridRegistryError | unknown;
+};
+
 /** Props for DashboardGridProvider. */
 export type DashboardGridProviderProps = {
   /** Provider-owned grid and source content. */
@@ -20,7 +27,7 @@ export type DashboardGridProviderProps = {
   /** Document used for DOM ownership, observers, and interaction listeners. */
   targetDocument?: Document | null;
   /** Receives provider identity and transfer errors. */
-  onError?: (error: DashboardGridRegistryError | unknown) => void;
+  onError?: EventHandler<DashboardGridProviderErrorData>;
   /** Handles custom non-grid drop zones. Prevent default to reject the drop. */
   onCustomDrop?: EventHandler<DashboardGridCustomDropData>;
 };

@@ -1,8 +1,41 @@
-export * from './DashboardGrid';
-export * from './DashboardGridDragSource';
-export * from './DashboardGridDropZone';
-export * from './DashboardGridItem';
-export * from './DashboardGridProvider';
+/* eslint-disable @typescript-eslint/no-deprecated -- Public compatibility alias exported in this type list. */
+export type {
+  DashboardGridChangeReason,
+  DashboardGridDiagnosticData,
+  DashboardGridDropData,
+  DashboardGridEnabledData,
+  DashboardGridErrorData,
+
+  DashboardGridEventData,
+  DashboardGridEventFields,
+  DashboardGridEventType,
+  DashboardGridInteractionData,
+  DashboardGridItemsData,
+  DashboardGridLayoutChangeData,
+  DashboardGridProps,
+  DashboardGridSlots,
+  DashboardGridState,
+  DashboardGridStrings,
+} from './DashboardGrid';
+/* eslint-enable @typescript-eslint/no-deprecated */
+export { DashboardGrid, dashboardGridClassNames, renderDashboardGrid_unstable, useDashboardGridStyles_unstable, useDashboardGrid_unstable } from './DashboardGrid';
+export type {
+  DashboardGridDragSourceKeyboardActivateData,
+  DashboardGridDragSourceProps,
+  DashboardGridDragSourceSlots,
+  DashboardGridDragSourceState,
+} from './DashboardGridDragSource';
+export { DashboardGridDragSource, dashboardGridDragSourceClassNames, renderDashboardGridDragSource_unstable, useDashboardGridDragSourceStyles_unstable, useDashboardGridDragSource_unstable } from './DashboardGridDragSource';
+export type { DashboardGridDropZoneProps, DashboardGridDropZoneSlots, DashboardGridDropZoneState } from './DashboardGridDropZone';
+export { DashboardGridDropZone, dashboardGridDropZoneClassNames, renderDashboardGridDropZone_unstable, useDashboardGridDropZoneStyles_unstable, useDashboardGridDropZone_unstable } from './DashboardGridDropZone';
+export type { DashboardGridItemProps, DashboardGridItemSlots, DashboardGridItemState } from './DashboardGridItem';
+export { DashboardGridItem, dashboardGridItemClassNames, renderDashboardGridItem_unstable, useDashboardGridItemStyles_unstable, useDashboardGridItem_unstable } from './DashboardGridItem';
+export type {
+  DashboardGridCustomDropData,
+  DashboardGridProviderErrorData,
+  DashboardGridProviderProps,
+} from './DashboardGridProvider';
+export { DashboardGridProvider, renderDashboardGridProvider_unstable, useDashboardGridProvider_unstable } from './DashboardGridProvider';
 
 export { useDashboardGrid } from './hooks/useDashboardGrid';
 export type { DashboardGridHandle } from './hooks/useDashboardGrid';
@@ -24,6 +57,7 @@ export type {
   DashboardGridDragOptions,
   DashboardGridEngineFactory,
   DashboardGridItemDefinition,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Public compatibility alias.
   DashboardGridItemPrintOptions,
   DashboardGridMutationOptions,
   DashboardGridOptions,
@@ -41,6 +75,7 @@ export type {
   DashboardGridSerializableRemovalOptions,
   DashboardGridSerializedGrid,
   DashboardGridSerializedItem,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Public compatibility alias.
   DashboardGridSerializedState,
 } from './state/DashboardGridStore.types';
 export type {

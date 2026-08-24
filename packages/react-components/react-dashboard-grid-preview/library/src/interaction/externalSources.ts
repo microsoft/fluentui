@@ -243,8 +243,8 @@ export const createDashboardGridExternalSource = (options: {
     processPointerMove(event);
 
     if (active) {
-      clickSuppressor.suppressNext();
-      void options.coordinator.commit(event);
+      clickSuppressor.suppressNext({ clientX: event.clientX, clientY: event.clientY });
+      options.coordinator.commit(event);
     } else {
       options.coordinator.cancel(event);
     }
@@ -399,7 +399,7 @@ export const createDashboardGridExternalSource = (options: {
       clientPixelRect: previewRect,
       nativeEvent: event,
     });
-    void options.coordinator.commit(event);
+    options.coordinator.commit(event);
   };
 
   return {

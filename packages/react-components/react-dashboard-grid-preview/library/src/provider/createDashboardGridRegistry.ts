@@ -484,7 +484,9 @@ export const createDashboardGridRegistry = (
       const focusRecord = options.captureFocus?.(source.id, intent.itemId);
       const host = itemHosts.get(intent.itemId)?.host;
       const itemElement = source.rootElement
-        ? [...source.rootElement.querySelectorAll<HTMLElement>('[data-dashboard-grid-item]')].find(
+        ? Array.from(
+            source.rootElement.querySelectorAll<HTMLElement>('[data-dashboard-grid-item]'),
+          ).find(
             element => element.getAttribute('data-dashboard-grid-item') === intent.itemId,
           )
         : undefined;
