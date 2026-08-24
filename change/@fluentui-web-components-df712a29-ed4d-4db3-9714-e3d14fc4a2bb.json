@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(web-components): show TextArea scrollbar for overflowing content",
+  "comment": "fix: show TextArea scrollbar for overflowing content",
   "packageName": "@fluentui/web-components",
   "email": "198982749+Copilot@users.noreply.github.com",
   "dependentChangeType": "patch"
