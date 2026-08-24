@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
 import type { NavItemState as NavItemHeadlessState } from '@fluentui/react-headless-components-preview/nav';
 
-import { componentMarkers } from '../../../utils/groupMarker';
-import type { NavDensity } from '../Nav.types';
+import { componentMarkers } from '../../utils/groupMarker';
+import type { NavDensity } from '../Nav/Nav.types';
 import type { NavItemState } from './NavItem.types';
 
 import styles from './NavItem.module.css';

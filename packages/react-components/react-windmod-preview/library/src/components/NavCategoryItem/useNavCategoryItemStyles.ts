@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import { navRowClasses } from '../NavItem/useNavItemStyles';
 import type { NavCategoryItemState } from './NavCategoryItem.types';
 

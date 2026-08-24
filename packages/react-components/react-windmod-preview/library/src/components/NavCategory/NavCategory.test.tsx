@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Nav } from '../Nav';
-import { NavCategoryItem } from '../NavCategoryItem';
-import { NavSubItem } from '../NavSubItem';
-import { NavSubItemGroup } from '../NavSubItemGroup';
+import { isConformant } from '../../testing/isConformant';
+import { Nav } from '../Nav/Nav';
+import { NavCategoryItem } from '../NavCategoryItem/NavCategoryItem';
+import { NavSubItem } from '../NavSubItem/NavSubItem';
+import { NavSubItemGroup } from '../NavSubItemGroup/NavSubItemGroup';
 import { NavCategory } from './NavCategory';
 
 describe('NavCategory', () => {

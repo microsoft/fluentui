@@ -1,10 +1,10 @@
-export { NavCategoryItem, navCategoryItemClassNames, useNavCategoryItemStyles } from './components/Nav/NavCategoryItem';
+export { NavCategoryItem, navCategoryItemClassNames, useNavCategoryItemStyles } from './components/NavCategoryItem';
 export type {
   NavCategoryItemContextValues,
   NavCategoryItemProps,
   NavCategoryItemSlots,
   NavCategoryItemState,
-} from './components/Nav/NavCategoryItem';
+} from './components/NavCategoryItem';
 
 /** Headless building blocks, re-exported for consumers composing their own NavCategoryItem. */
 export {

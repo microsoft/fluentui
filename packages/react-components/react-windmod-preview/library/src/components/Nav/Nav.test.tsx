@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
 import { Nav } from './Nav';
-import { NavItem } from './NavItem/NavItem';
+import { NavItem } from '../NavItem/NavItem';
 import type { NavState } from './Nav.types';
 import { navClassNames, useNavStyles } from './useNavStyles';
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Nav } from '../Nav';
-import { NavCategory } from '../NavCategory';
+import { isConformant } from '../../testing/isConformant';
+import { Nav } from '../Nav/Nav';
+import { NavCategory } from '../NavCategory/NavCategory';
 import { NavCategoryItem } from './NavCategoryItem';
 import type { NavCategoryItemState } from './NavCategoryItem.types';
 import { navCategoryItemClassNames, useNavCategoryItemStyles } from './useNavCategoryItemStyles';
@@ -15,7 +15,7 @@ import navItemStyles from '../NavItem/NavItem.module.css';
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/nav', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/nav');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

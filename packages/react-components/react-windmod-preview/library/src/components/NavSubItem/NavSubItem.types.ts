@@ -1,6 +1,6 @@
 import type { NavSubItemState as NavSubItemHeadlessState } from '@fluentui/react-headless-components-preview/nav';
 
-import type { NavDensity } from '../Nav.types';
+import type { NavDensity } from '../Nav/Nav.types';
 
 export type { NavSubItemProps, NavSubItemSlots } from '@fluentui/react-headless-components-preview/nav';
 

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { NavSectionHeaderState } from './NavSectionHeader.types';
 
 import styles from './NavSectionHeader.module.css';

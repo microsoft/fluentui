@@ -2,8 +2,8 @@
 
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
-import { useDividerStyles } from '../../Divider/useDividerStyles';
+import { componentMarkers } from '../../utils/groupMarker';
+import { useDividerStyles } from '../Divider/useDividerStyles';
 import type { NavDividerState } from './NavDivider.types';
 
 import styles from './NavDivider.module.css';

@@ -1,6 +1,6 @@
 import type { NavDividerState as NavDividerHeadlessState } from '@fluentui/react-headless-components-preview/nav';
 
-import type { DividerState } from '../../Divider/Divider.types';
+import type { DividerState } from '../Divider/Divider.types';
 
 export type { NavDividerProps, NavDividerSlots } from '@fluentui/react-headless-components-preview/nav';
 
