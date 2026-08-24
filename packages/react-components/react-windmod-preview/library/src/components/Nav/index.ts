@@ -18,3 +18,20 @@ export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderStat
 
 export { NavDivider, navDividerClassNames, useNavDividerStyles } from './NavDivider';
 export type { NavDividerProps, NavDividerSlots, NavDividerState } from './NavDivider';
+
+export { NavCategory } from './NavCategory';
+export type { NavCategoryContextValues, NavCategoryProps, NavCategoryState } from './NavCategory';
+
+export { NavCategoryItem, navCategoryItemClassNames, useNavCategoryItemStyles } from './NavCategoryItem';
+export type {
+  NavCategoryItemContextValues,
+  NavCategoryItemProps,
+  NavCategoryItemSlots,
+  NavCategoryItemState,
+} from './NavCategoryItem';
+
+export { NavSubItem, navSubItemClassNames, useNavSubItemStyles } from './NavSubItem';
+export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './NavSubItem';
+
+export { NavSubItemGroup, navSubItemGroupClassNames, useNavSubItemGroupStyles } from './NavSubItemGroup';
+export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './NavSubItemGroup';

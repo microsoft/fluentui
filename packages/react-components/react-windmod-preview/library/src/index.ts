@@ -208,6 +208,33 @@ export type {
   OnNavItemSelectData,
 } from './nav';
 
+export {
+  NavCategory,
+  NavCategoryProvider,
+  renderNavCategory,
+  useNavCategory,
+  useNavCategoryContext,
+  useNavCategoryContextValues,
+} from './nav-category';
+export type { NavCategoryContextValues, NavCategoryProps, NavCategoryState } from './nav-category';
+
+export {
+  NavCategoryItem,
+  navCategoryItemClassNames,
+  NavCategoryItemProvider,
+  renderNavCategoryItem,
+  useNavCategoryItem,
+  useNavCategoryItemContext,
+  useNavCategoryItemContextValues,
+  useNavCategoryItemStyles,
+} from './nav-category-item';
+export type {
+  NavCategoryItemContextValues,
+  NavCategoryItemProps,
+  NavCategoryItemSlots,
+  NavCategoryItemState,
+} from './nav-category-item';
+
 export { NavDivider, navDividerClassNames, renderNavDivider, useNavDivider, useNavDividerStyles } from './nav-divider';
 export type { NavDividerProps, NavDividerSlots, NavDividerState } from './nav-divider';
 
@@ -222,6 +249,18 @@ export {
   useNavSectionHeaderStyles,
 } from './nav-section-header';
 export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderState } from './nav-section-header';
+
+export { NavSubItem, navSubItemClassNames, renderNavSubItem, useNavSubItem, useNavSubItemStyles } from './nav-sub-item';
+export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './nav-sub-item';
+
+export {
+  NavSubItemGroup,
+  navSubItemGroupClassNames,
+  renderNavSubItemGroup,
+  useNavSubItemGroup,
+  useNavSubItemGroupStyles,
+} from './nav-sub-item-group';
+export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './nav-sub-item-group';
 
 export {
   ProgressBar,
