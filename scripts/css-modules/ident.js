@@ -179,6 +179,54 @@ function getLocalIdent(loaderContext, _localIdentName, localName) {
 }
 
 /**
+ * The camelCase alias of a kebab-case local. BYTE-IDENTICAL to css-loader's `dashesCamelCase`
+ * (`node_modules/css-loader/dist/utils.js`), which the storybook pipeline runs through
+ * `modules.exportLocalsConvention: 'dashes'`. The package build has no such option and calls
+ * this instead, so the two pipelines cannot drift.
+ *
+ * Class names are authored kebab-case because that is what the DOM shows; hooks address them as
+ * `styles.ringThicker`, matching Griffel's bucket names. Both keys carry the SAME generated
+ * ident, so the alias adds vocabulary and never a second class.
+ *
+ * @param {string} localName
+ * @returns {string} `ring-thicker` → `ringThicker`, `shadow-16` → `shadow16`
+ */
+function toCamelCaseAlias(localName) {
+  return String(localName).replace(/-+(\w)/g, (_match, firstCharacter) => firstCharacter.toUpperCase());
+}
+
+/**
+ * The class map a package ships: every authored key, plus its camelCase alias where the two
+ * differ. An alias that would shadow a DIFFERENT authored local throws — two locals sharing one
+ * exported key is a silent wrong-class bug, and css-loader would resolve it the other way round.
+ *
+ * @param {Record<string, string>} classMap
+ * @returns {Record<string, string>}
+ */
+function withCamelCaseAliases(classMap) {
+  /** @type {Record<string, string>} */
+  const aliased = { ...classMap };
+
+  for (const [localName, generated] of Object.entries(classMap)) {
+    const alias = toCamelCaseAlias(localName);
+
+    if (alias === localName) {
+      continue;
+    }
+    if (alias in aliased && aliased[alias] !== generated) {
+      throw new Error(
+        `Class-map key \`${alias}\` is claimed by both \`${localName}\` (as its camelCase alias) and an ` +
+          'authored local of that name. Rename one of them.',
+      );
+    }
+
+    aliased[alias] = generated;
+  }
+
+  return aliased;
+}
+
+/**
  * The jest half of the scheme.
  *
  * Jest maps EVERY `*.module.css` import to one module (`moduleNameMapper` cannot pass the
@@ -204,5 +252,7 @@ module.exports = {
   createGenerateScopedName,
   resolveIdentContext,
   getLocalIdent,
+  toCamelCaseAlias,
+  withCamelCaseAliases,
   generateTestIdent,
 };

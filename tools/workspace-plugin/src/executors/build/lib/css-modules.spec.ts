@@ -10,6 +10,7 @@ import {
   compileCssModules,
   compileCssModuleSource,
   GENERATED_CLASS_PREFIX,
+  serializeClassMap,
 } from './css-modules';
 import { type NormalizedOptions } from './shared';
 
@@ -51,6 +52,10 @@ const SOURCE = `
 .nonZeroDeterminate {
   width: 50%;
 }
+
+.ring-thicker {
+  border-width: 3px;
+}
 `;
 
 function compile() {
@@ -81,7 +86,7 @@ describe('compileCssModuleSource', () => {
     it('keeps the marker out of the exported class map', async () => {
       const { classMap } = await compile();
 
-      expect(Object.keys(classMap).sort()).toEqual(['nonZeroDeterminate', 'root', 'thumb']);
+      expect(Object.keys(classMap).sort()).toEqual(['nonZeroDeterminate', 'ring-thicker', 'root', 'thumb']);
     });
 
     it('still scopes the module locals around it', async () => {
@@ -124,6 +129,42 @@ describe('compileCssModuleSource', () => {
 
       expect(first.classMap.root).toEqual(second.classMap.root);
       expect(first.classMap.root).not.toEqual(otherPackage.classMap.root);
+    });
+  });
+
+  /**
+   * Class names are authored kebab-case (the DOM shows kebab); hooks read them as
+   * `styles.ringThicker`. Without the alias every renamed local silently reads `undefined` and
+   * the component renders unstyled — no error, no failing type.
+   */
+  describe('camelCase aliases in the shipped class map', () => {
+    // The serializer emits a JS object literal (trailing comma included) rather than JSON.
+    const shipped = (classMap: Record<string, string>) =>
+      JSON.parse(serializeClassMap(classMap).replace(/,(\s*})/g, '$1')) as Record<string, string>;
+
+    it('emits the kebab key and its camelCase alias with the same ident', async () => {
+      const { classMap } = await compile();
+      const serialized = shipped(classMap);
+
+      expect(serialized['ring-thicker']).toEqual(classMap['ring-thicker']);
+      expect(serialized.ringThicker).toEqual(classMap['ring-thicker']);
+    });
+
+    it('adds no key for a local that is already alias-shaped', async () => {
+      const { classMap } = await compile();
+      const serialized = shipped(classMap);
+
+      expect(Object.keys(serialized).sort()).toEqual([
+        'nonZeroDeterminate',
+        'ring-thicker',
+        'ringThicker',
+        'root',
+        'thumb',
+      ]);
+    });
+
+    it('throws when an alias would shadow a different authored local', () => {
+      expect(() => serializeClassMap({ 'ring-thicker': 'fuicm-a', ringThicker: 'fuicm-b' })).toThrow(/claimed by both/);
     });
   });
 

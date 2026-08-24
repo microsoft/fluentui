@@ -91,6 +91,7 @@ const tailwindcss: () => AcceptedPlugin = require('@tailwindcss/postcss');
 const cssModulesIdent: {
   GENERATED_CLASS_PREFIX: string;
   createGenerateScopedName: (args: { packageName: string; relativePath: string }) => (localName: string) => string;
+  withCamelCaseAliases: (classMap: Record<string, string>) => Record<string, string>;
 } = require('../../../../../../scripts/css-modules/ident.js');
 
 /**
@@ -421,10 +422,21 @@ function toRelativeSpecifier(fromDir: string, toFile: string): string {
   return specifier.startsWith('.') ? specifier : `./${specifier}`;
 }
 
-function serializeClassMap(classMap: Record<string, string>): string {
-  const entries = Object.keys(classMap)
+/**
+ * Serializes the shipped class map: every authored (kebab-case) key PLUS its camelCase alias,
+ * both pointing at the same generated ident. Class names are authored kebab-case because that is
+ * what the DOM shows; hooks read them as `styles.ringThicker`. The storybook's css-loader emits
+ * the identical pair through `exportLocalsConvention: 'dashes'` — the shared helper in
+ * scripts/css-modules/ident.js owns the one casing rule both pipelines use.
+ *
+ * Aliasing happens HERE and not in {@link compileCssModuleSource}, so
+ * {@link assertGroupMarkersSurvived} still inspects the raw postcss-modules export.
+ */
+export function serializeClassMap(classMap: Record<string, string>): string {
+  const aliased = cssModulesIdent.withCamelCaseAliases(classMap);
+  const entries = Object.keys(aliased)
     .sort()
-    .map(key => `  ${JSON.stringify(key)}: ${JSON.stringify(classMap[key])},`)
+    .map(key => `  ${JSON.stringify(key)}: ${JSON.stringify(aliased[key])},`)
     .join('\n');
 
   return entries.length > 0 ? `{\n${entries}\n}` : '{}';

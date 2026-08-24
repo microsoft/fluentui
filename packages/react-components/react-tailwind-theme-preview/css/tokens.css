@@ -26,6 +26,9 @@
  * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes
  * carry identical values.
  *
+ * The type ramp (--text-*) carries the same literal calc(<px> * var(--base-scale)) form as
+ * stroke widths: font sizes follow the root font size, not the --spacing density knob.
+ *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
  * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
  *
@@ -992,16 +995,16 @@
     --font-numeric:
       Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto,
       'Helvetica Neue', sans-serif;
-    --text-base-100: 10px;
-    --text-base-200: 12px;
-    --text-base-300: 14px;
-    --text-base-400: 16px;
-    --text-base-500: 20px;
-    --text-base-600: 24px;
-    --text-hero-700: 28px;
-    --text-hero-800: 32px;
-    --text-hero-900: 40px;
-    --text-hero-1000: 68px;
+    --text-base-100: calc(10px * var(--base-scale));
+    --text-base-200: calc(12px * var(--base-scale));
+    --text-base-300: calc(14px * var(--base-scale));
+    --text-base-400: calc(16px * var(--base-scale));
+    --text-base-500: calc(20px * var(--base-scale));
+    --text-base-600: calc(24px * var(--base-scale));
+    --text-hero-700: calc(28px * var(--base-scale));
+    --text-hero-800: calc(32px * var(--base-scale));
+    --text-hero-900: calc(40px * var(--base-scale));
+    --text-hero-1000: calc(68px * var(--base-scale));
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;

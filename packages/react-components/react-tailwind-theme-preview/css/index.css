@@ -51,6 +51,20 @@
   --drop-shadow-*: initial;
   --blur-*: initial;
   --animate-*: initial;
+
+  /*
+   * Icon glyph sizes (text-icon-20, …). Registered here rather than in ./tokens.css
+   * because Fluent ships no glyph-size token family — the sizes come from the icon set
+   * itself. Declared AFTER `--text-*: initial` above, which would otherwise clear them.
+   * Same literal base-scale form as the type ramp and stroke widths.
+   */
+  --text-icon-12: calc(12px * var(--base-scale));
+  --text-icon-16: calc(16px * var(--base-scale));
+  --text-icon-20: calc(20px * var(--base-scale));
+  --text-icon-24: calc(24px * var(--base-scale));
+  --text-icon-28: calc(28px * var(--base-scale));
+  --text-icon-32: calc(32px * var(--base-scale));
+  --text-icon-48: calc(48px * var(--base-scale));
 }
 
 /*

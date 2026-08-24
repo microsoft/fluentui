@@ -124,6 +124,13 @@ const cssModulesRule = {
         modules: {
           getLocalIdent,
           namedExport: false,
+          // Exports each authored kebab-case local ALSO under its camelCase alias, same ident
+          // for both, so `styles.ringThicker` resolves here exactly as it does against the
+          // package build's generated class map (see serializeClassMap in the build executor).
+          // `dashes` — not `camelCase` — because its casing rule IS
+          // scripts/css-modules/ident.js's toCamelCaseAlias; `camelCase` would run the
+          // `camelcase` package instead and the two pipelines could disagree.
+          exportLocalsConvention: 'dashes',
         },
       },
     },

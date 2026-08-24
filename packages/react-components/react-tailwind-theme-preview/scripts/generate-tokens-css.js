@@ -238,6 +238,28 @@ function strokeWidthCanonicalValue(step) {
 }
 
 /**
+ * A theme value rewritten onto the `--base-scale` axis: `14px` → `calc(14px * var(--base-scale))`,
+ * the same literal form stroke widths use. Applies to every namespace carrying
+ * `baseScaled: true` (the type ramp) in EVERY theme, so the whole UI scales coherently with the
+ * root font size. Rendering is unchanged at the default 16px root, where `--base-scale` is 1.
+ *
+ * A non-px value would silently produce `calc(<junk> * var(--base-scale))`, so it throws instead.
+ *
+ * @param {string} tokenName
+ * @param {string} value the raw theme value, e.g. `14px`
+ * @returns {string}
+ */
+function baseScaledValue(tokenName, value) {
+  if (!/^\d+(?:\.\d+)?px$/.test(value)) {
+    throw new Error(
+      `Token \`${tokenName}\` is registered as base-scaled but its value \`${value}\` is not a plain px length.`,
+    );
+  }
+
+  return `calc(${value} * var(--base-scale))`;
+}
+
+/**
  * The spacing-namespace PRIVATE hook value for a stroke width step: an alias of the
  * canonical variable, so utility families and module-authored `var(--spacing-thin)`
  * resolve through the one public definition.
@@ -414,7 +436,7 @@ function readThemeValues() {
  *
  * @param {{ name: string, value: string }[]} tokens parsed tokens.ts entries
  * @returns {{
- *   variantTokens: { name: string, canonical: string }[],
+ *   variantTokens: { name: string, canonical: string, baseScaled: boolean }[],
  *   themes: Record<string, Record<string, string>>,
  *   classNames: Record<string, string>,
  * }}
@@ -435,7 +457,7 @@ function analyzeThemeEmission(tokens) {
     throw new Error(`theme-values.json is missing the default theme \`${DEFAULT_THEME}\`.`);
   }
 
-  /** @type {{ name: string, canonical: string }[]} */
+  /** @type {{ name: string, canonical: string, baseScaled: boolean }[]} */
   const variantTokens = [];
   /** @type {{ name: string, expected: string }[]} */
   const invariantTokens = [];
@@ -453,7 +475,11 @@ function analyzeThemeEmission(tokens) {
     } else if (classification.group.prefix === 'zIndex') {
       themeAbsentTokens.push(name);
     } else {
-      variantTokens.push({ name, canonical: /** @type {string} */ (classification.canonical) });
+      variantTokens.push({
+        name,
+        canonical: /** @type {string} */ (classification.canonical),
+        baseScaled: classification.group.baseScaled === true,
+      });
     }
   }
 
@@ -523,6 +549,7 @@ const NAMESPACES = [
     namespace: 'text',
     utility: 'text-*',
     heading: 'Font sizes',
+    baseScaled: true,
   },
   {
     prefix: 'fontWeight',
@@ -862,6 +889,9 @@ function render(options = {}) {
   out.push(' * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes');
   out.push(' * carry identical values.');
   out.push(' *');
+  out.push(' * The type ramp (--text-*) carries the same literal calc(<px> * var(--base-scale)) form as');
+  out.push(' * stroke widths: font sizes follow the root font size, not the --spacing density knob.');
+  out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
   out.push(' *');
@@ -941,8 +971,8 @@ function render(options = {}) {
     out.push('     * themes are shipped as classes in css/themes.css (same layer); a theme class');
     out.push('     * on any DOM node overrides these for that subtree.');
     out.push('     */');
-    for (const { name, canonical } of variantTokens) {
-      out.push(`    ${canonical}: ${defaultTheme[name]};`);
+    for (const { name, canonical, baseScaled } of variantTokens) {
+      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, defaultTheme[name]) : defaultTheme[name]};`);
     }
     out.push('  }');
     out.push('}');
@@ -1007,8 +1037,8 @@ function renderThemes() {
     out.push(`/* ${themeName} — ${variantTokens.length} tokens */`);
     out.push('@layer fui.theme {');
     out.push(`  .${className} {`);
-    for (const { name, canonical } of variantTokens) {
-      out.push(`    ${canonical}: ${theme[name]};`);
+    for (const { name, canonical, baseScaled } of variantTokens) {
+      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, theme[name]) : theme[name]};`);
     }
     out.push('  }');
     out.push('}');
