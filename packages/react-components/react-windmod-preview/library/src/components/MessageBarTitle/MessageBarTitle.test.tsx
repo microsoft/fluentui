@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MessageBarTitle } from './MessageBarTitle';
 import type { MessageBarTitleState } from './MessageBarTitle.types';
 import { messageBarTitleClassNames, useMessageBarTitleStyles } from './useMessageBarTitleStyles';
@@ -13,7 +13,7 @@ import styles from './MessageBarTitle.module.css';
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/message-bar', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/message-bar');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

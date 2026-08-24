@@ -2,13 +2,13 @@ export {
   MessageBarActions,
   messageBarActionsClassNames,
   useMessageBarActionsStyles,
-} from './components/MessageBar/MessageBarActions';
+} from './components/MessageBarActions';
 export type {
   MessageBarActionsContextValues,
   MessageBarActionsProps,
   MessageBarActionsSlots,
   MessageBarActionsState,
-} from './components/MessageBar/MessageBarActions';
+} from './components/MessageBarActions';
 
 /** Headless building blocks, re-exported for consumers composing their own MessageBarActions. */
 export {

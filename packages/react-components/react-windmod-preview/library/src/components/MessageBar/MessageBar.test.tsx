@@ -8,12 +8,12 @@ import { WarningFilled } from '@fluentui/react-icons/headless/svg/warning';
 import { isConformant } from '../../testing/isConformant';
 import { MessageBar } from './MessageBar';
 import type { MessageBarIntent, MessageBarShape, MessageBarState } from './MessageBar.types';
-import { MessageBarActions } from './MessageBarActions';
-import { MessageBarBody } from './MessageBarBody';
-import { MessageBarTitle } from './MessageBarTitle';
+import { MessageBarActions } from '../MessageBarActions/MessageBarActions';
+import { MessageBarBody } from '../MessageBarBody/MessageBarBody';
+import { MessageBarTitle } from '../MessageBarTitle/MessageBarTitle';
 import { messageBarClassNames, useMessageBarStyles } from './useMessageBarStyles';
 
-import actionsStyles from './MessageBarActions/MessageBarActions.module.css';
+import actionsStyles from '../MessageBarActions/MessageBarActions.module.css';
 import styles from './MessageBar.module.css';
 
 // Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the

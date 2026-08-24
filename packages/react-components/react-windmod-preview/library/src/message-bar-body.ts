@@ -1,14 +1,10 @@
-export {
-  MessageBarBody,
-  messageBarBodyClassNames,
-  useMessageBarBodyStyles,
-} from './components/MessageBar/MessageBarBody';
+export { MessageBarBody, messageBarBodyClassNames, useMessageBarBodyStyles } from './components/MessageBarBody';
 export type {
   MessageBarBodyContextValues,
   MessageBarBodyProps,
   MessageBarBodySlots,
   MessageBarBodyState,
-} from './components/MessageBar/MessageBarBody';
+} from './components/MessageBarBody';
 
 /** Headless building blocks, re-exported for consumers composing their own MessageBarBody. */
 export {

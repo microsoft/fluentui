@@ -8,22 +8,3 @@ export type {
   MessageBarSlots,
   MessageBarState,
 } from './MessageBar.types';
-
-export { MessageBarActions, messageBarActionsClassNames, useMessageBarActionsStyles } from './MessageBarActions';
-export type {
-  MessageBarActionsContextValues,
-  MessageBarActionsProps,
-  MessageBarActionsSlots,
-  MessageBarActionsState,
-} from './MessageBarActions';
-
-export { MessageBarBody, messageBarBodyClassNames, useMessageBarBodyStyles } from './MessageBarBody';
-export type {
-  MessageBarBodyContextValues,
-  MessageBarBodyProps,
-  MessageBarBodySlots,
-  MessageBarBodyState,
-} from './MessageBarBody';
-
-export { MessageBarTitle, messageBarTitleClassNames, useMessageBarTitleStyles } from './MessageBarTitle';
-export type { MessageBarTitleProps, MessageBarTitleSlots, MessageBarTitleState } from './MessageBarTitle';

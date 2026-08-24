@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { MessageBarTitleState } from './MessageBarTitle.types';
 
 import styles from './MessageBarTitle.module.css';
