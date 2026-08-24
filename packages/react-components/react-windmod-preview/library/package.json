@@ -53,6 +53,46 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./accordion": {
+      "import": {
+        "types": "./dist/accordion.d.ts",
+        "default": "./lib/accordion.js"
+      },
+      "require": {
+        "types": "./dist/accordion.d.cts",
+        "default": "./lib-commonjs/accordion.cjs"
+      }
+    },
+    "./accordion-header": {
+      "import": {
+        "types": "./dist/accordion-header.d.ts",
+        "default": "./lib/accordion-header.js"
+      },
+      "require": {
+        "types": "./dist/accordion-header.d.cts",
+        "default": "./lib-commonjs/accordion-header.cjs"
+      }
+    },
+    "./accordion-item": {
+      "import": {
+        "types": "./dist/accordion-item.d.ts",
+        "default": "./lib/accordion-item.js"
+      },
+      "require": {
+        "types": "./dist/accordion-item.d.cts",
+        "default": "./lib-commonjs/accordion-item.cjs"
+      }
+    },
+    "./accordion-panel": {
+      "import": {
+        "types": "./dist/accordion-panel.d.ts",
+        "default": "./lib/accordion-panel.js"
+      },
+      "require": {
+        "types": "./dist/accordion-panel.d.cts",
+        "default": "./lib-commonjs/accordion-panel.cjs"
+      }
+    },
     "./avatar": {
       "import": {
         "types": "./dist/avatar.d.ts",

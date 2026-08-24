@@ -1,3 +1,48 @@
+export {
+  Accordion,
+  accordionClassNames,
+  renderAccordion,
+  useAccordion,
+  useAccordionContext,
+  useAccordionContextValues,
+  useAccordionStyles,
+} from './accordion';
+export type { AccordionContextValues, AccordionProps, AccordionSlots, AccordionState } from './accordion';
+
+export {
+  AccordionHeader,
+  accordionHeaderClassNames,
+  renderAccordionHeader,
+  useAccordionHeader,
+  useAccordionHeaderContextValues,
+  useAccordionHeaderStyles,
+} from './accordion-header';
+export type {
+  AccordionHeaderProps,
+  AccordionHeaderSize,
+  AccordionHeaderSlots,
+  AccordionHeaderState,
+} from './accordion-header';
+
+export {
+  AccordionItem,
+  accordionItemClassNames,
+  renderAccordionItem,
+  useAccordionItem,
+  useAccordionItemContextValues,
+  useAccordionItemStyles,
+} from './accordion-item';
+export type { AccordionItemProps, AccordionItemSlots, AccordionItemState } from './accordion-item';
+
+export {
+  AccordionPanel,
+  accordionPanelClassNames,
+  renderAccordionPanel,
+  useAccordionPanel,
+  useAccordionPanelStyles,
+} from './accordion-panel';
+export type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './accordion-panel';
+
 export { Avatar, avatarClassNames, renderAvatar, useAvatar, useAvatarStyles } from './avatar';
 export type {
   AvatarActive,

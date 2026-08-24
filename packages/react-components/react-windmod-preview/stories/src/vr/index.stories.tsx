@@ -1,3 +1,5 @@
+export { AccordionWindmod } from './AccordionWindmod.stories';
+export { AccordionGriffel } from './AccordionGriffel.stories';
 export { AvatarWindmod } from './AvatarWindmod.stories';
 export { AvatarGriffel } from './AvatarGriffel.stories';
 export { BadgeWindmod } from './BadgeWindmod.stories';

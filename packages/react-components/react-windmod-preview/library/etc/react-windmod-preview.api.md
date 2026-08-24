@@ -4,6 +4,19 @@
 
 ```ts
 
+import { AccordionContextValues } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionHeaderProps as AccordionHeaderProps_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionHeaderSlots } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionHeaderState as AccordionHeaderState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionItemProps as AccordionItemProps_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionItemSlots } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionItemState as AccordionItemState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionPanelProps as AccordionPanelProps_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionPanelSlots } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionPanelState as AccordionPanelState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionProps as AccordionProps_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionSlots } from '@fluentui/react-headless-components-preview/accordion';
+import type { AccordionState as AccordionState_2 } from '@fluentui/react-headless-components-preview/accordion';
 import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
 import { AvatarSlots } from '@fluentui/react-headless-components-preview/avatar';
 import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-components-preview/avatar';
@@ -79,6 +92,10 @@ import type { RatingProps as RatingProps_2 } from '@fluentui/react-headless-comp
 import { RatingSlots } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingState as RatingState_2 } from '@fluentui/react-headless-components-preview/rating';
 import * as React_2 from 'react';
+import { renderAccordion } from '@fluentui/react-headless-components-preview/accordion';
+import { renderAccordionHeader } from '@fluentui/react-headless-components-preview/accordion';
+import { renderAccordionItem } from '@fluentui/react-headless-components-preview/accordion';
+import { renderAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
@@ -188,6 +205,14 @@ import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-co
 import { TooltipSlots } from '@fluentui/react-headless-components-preview/tooltip';
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-headless-components-preview/tooltip';
+import { useAccordion } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionContext } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionContextValues } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionHeader } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionHeaderContextValues } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionItem } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionItemContextValues } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
@@ -246,6 +271,78 @@ import { useToolbarToggleButton } from '@fluentui/react-headless-components-prev
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+
+// @public
+export const Accordion: ForwardRefComponent<AccordionProps>;
+
+// @public
+export const accordionClassNames: {
+    root: string;
+};
+
+export { AccordionContextValues }
+
+// @public
+export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+// @public
+export const accordionHeaderClassNames: {
+    root: string;
+};
+
+// @public
+export type AccordionHeaderProps = AccordionHeaderProps_2 & {
+    inline?: boolean;
+    size?: AccordionHeaderSize;
+};
+
+// @public
+export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
+
+export { AccordionHeaderSlots }
+
+// @public
+export type AccordionHeaderState = AccordionHeaderState_2 & Required<Pick<AccordionHeaderProps, 'inline' | 'size'>>;
+
+// @public
+export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
+
+// @public
+export const accordionItemClassNames: {
+    root: string;
+};
+
+// @public
+export type AccordionItemProps = AccordionItemProps_2;
+
+export { AccordionItemSlots }
+
+// @public
+export type AccordionItemState = AccordionItemState_2;
+
+// @public
+export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
+
+// @public
+export const accordionPanelClassNames: {
+    root: string;
+};
+
+// @public
+export type AccordionPanelProps = AccordionPanelProps_2;
+
+export { AccordionPanelSlots }
+
+// @public
+export type AccordionPanelState = AccordionPanelState_2;
+
+// @public
+export type AccordionProps = AccordionProps_2;
+
+export { AccordionSlots }
+
+// @public
+export type AccordionState = AccordionState_2;
 
 // @public
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -806,6 +903,14 @@ export { RatingSlots }
 // @public
 export type RatingState = RatingState_2 & Required<Pick<RatingProps, 'color' | 'size'>>;
 
+export { renderAccordion }
+
+export { renderAccordionHeader }
+
+export { renderAccordionItem }
+
+export { renderAccordionPanel }
+
 export { renderAvatar }
 
 export { renderBadge }
@@ -1337,6 +1442,34 @@ export type TooltipState = TooltipState_2 & {
 };
 
 export { TooltipTriggerProps }
+
+export { useAccordion }
+
+export { useAccordionContext }
+
+export { useAccordionContextValues }
+
+export { useAccordionHeader }
+
+export { useAccordionHeaderContextValues }
+
+// @public
+export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
+
+export { useAccordionItem }
+
+export { useAccordionItemContextValues }
+
+// @public
+export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+
+export { useAccordionPanel }
+
+// @public
+export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public
+export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
 export { useAvatar }
 

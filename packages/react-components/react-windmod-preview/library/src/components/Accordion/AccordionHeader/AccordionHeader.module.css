@@ -1,0 +1,92 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply m-0 rounded-medium bg-transparent-background text-neutral-foreground-1;
+
+    @variant inline {
+      @apply inline-block;
+    }
+
+    @variant disabled {
+      @apply bg-none text-neutral-foreground-disabled;
+    }
+  }
+
+  /* Griffel's button reset also sets font-family, font-size, line-height and padding; each of
+     those is overwritten below at every size, so only the surviving reset values are authored. */
+  .button {
+    @apply relative box-border flex min-h-44 w-full cursor-pointer items-center overflow-visible border-0 bg-inherit py-0 ps-horizontal-m-nudge pe-horizontal-m [text-align:unset] font-base text-base-300 leading-base-300 font-regular text-inherit outline-none [-webkit-appearance:button];
+
+    @variant group-size-small/fui-accordion-header {
+      @apply min-h-32 text-base-200;
+    }
+
+    @variant group-size-large/fui-accordion-header {
+      @apply text-base-400 leading-base-400;
+    }
+
+    @variant group-size-extra-large/fui-accordion-header {
+      @apply text-base-500 leading-base-500;
+    }
+
+    @variant group-inline/fui-accordion-header {
+      @apply inline-flex;
+    }
+
+    @variant group-expand-icon-position-end/fui-accordion-header {
+      @apply pe-horizontal-m-nudge;
+
+      @variant group-not-icon/fui-accordion-header {
+        @apply ps-horizontal-m;
+      }
+    }
+
+    @variant group-disabled/fui-accordion-header {
+      @apply cursor-not-allowed;
+    }
+
+    @variant focus-visible {
+      @apply fui-focus-outline;
+    }
+  }
+
+  .expandIcon {
+    @apply flex h-full items-center text-base-500 leading-base-500;
+
+    @variant group-expand-icon-position-start/fui-accordion-header {
+      @apply pe-horizontal-s;
+    }
+
+    @variant group-expand-icon-position-end/fui-accordion-header {
+      @apply flex-1 justify-end ps-horizontal-s;
+    }
+
+    /* The chevron carries no module class of its own, so it is reached through the slot. Direct
+       children only: a descendant selector would rotate an svg's own path a second time. The four
+       rotations are equal-specificity, so their source order is the cascade. */
+    & > * {
+      @apply rotate-0 transition-[rotate] duration-(--duration-normal) ease-[ease-out];
+
+      @variant rtl {
+        @apply rotate-180;
+      }
+
+      @variant group-open/fui-accordion-header {
+        @apply rotate-90;
+      }
+
+      @variant group-expand-icon-position-end/fui-accordion-header {
+        @apply rotate-90;
+
+        @variant group-open/fui-accordion-header {
+          @apply -rotate-90;
+        }
+      }
+    }
+  }
+
+  .icon {
+    @apply flex h-full items-center pe-horizontal-s text-base-500 leading-base-500;
+  }
+}
