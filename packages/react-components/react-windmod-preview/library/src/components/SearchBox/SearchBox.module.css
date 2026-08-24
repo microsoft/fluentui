@@ -1,0 +1,80 @@
+@reference '#theme';
+
+/* Overrides windmod Input's fui.components.l1 rules on the same elements; layer order carries
+   every one of them. Inside each block the size variants precede the not-focused padding, which
+   reverses them. */
+@layer fui.components.l2 {
+  .root {
+    @apply max-w-468 gap-x-0 ps-horizontal-s pe-horizontal-s;
+
+    @variant size-small {
+      @apply ps-horizontal-s-nudge pe-horizontal-s-nudge;
+    }
+
+    @variant size-large {
+      @apply ps-horizontal-m-nudge pe-horizontal-m-nudge;
+    }
+
+    @variant not-focused {
+      @apply pe-0;
+    }
+  }
+
+  .input {
+    @apply ps-horizontal-s-nudge pe-0;
+
+    /* Two rules, never one selector list: ::-webkit-search-decoration is unsupported in current
+       Chrome, and one unknown pseudo-element invalidates a whole list. */
+    &::-webkit-search-decoration {
+      @apply hidden;
+    }
+
+    &::-webkit-search-cancel-button {
+      @apply hidden;
+    }
+
+    @variant group-not-focused/fui-search-box {
+      @apply pe-horizontal-s;
+
+      @variant group-size-small/fui-search-box {
+        @apply pe-horizontal-s-nudge;
+      }
+
+      @variant group-size-large/fui-search-box {
+        @apply pe-horizontal-m-nudge;
+      }
+    }
+  }
+
+  .contentAfter {
+    @apply gap-x-horizontal-xs ps-horizontal-m;
+
+    @variant group-not-focused/fui-search-box {
+      @apply h-0 w-0 overflow-hidden ps-0;
+    }
+  }
+
+  .dismiss {
+    @apply box-border flex cursor-pointer text-neutral-foreground-3;
+
+    & > svg {
+      @apply text-[length:calc(20px*var(--base-scale))];
+    }
+
+    @variant group-disabled/fui-search-box {
+      @apply text-neutral-foreground-disabled;
+    }
+
+    @variant group-size-small/fui-search-box {
+      & > svg {
+        @apply text-[length:calc(16px*var(--base-scale))];
+      }
+    }
+
+    @variant group-size-large/fui-search-box {
+      & > svg {
+        @apply text-[length:calc(24px*var(--base-scale))];
+      }
+    }
+  }
+}

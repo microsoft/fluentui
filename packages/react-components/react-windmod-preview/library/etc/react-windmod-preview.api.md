@@ -207,6 +207,7 @@ import { renderRadioGroup } from '@fluentui/react-headless-components-preview/ra
 import { renderRating } from '@fluentui/react-headless-components-preview/rating';
 import { renderRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
+import { renderSearchBox } from '@fluentui/react-headless-components-preview/search-box';
 import { renderSelect } from '@fluentui/react-headless-components-preview/select';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
@@ -230,6 +231,9 @@ import { renderToolbarRadioButton } from '@fluentui/react-headless-components-pr
 import { renderToolbarRadioGroup } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import type { SearchBoxProps as SearchBoxProps_2 } from '@fluentui/react-headless-components-preview/search-box';
+import { SearchBoxSlots } from '@fluentui/react-headless-components-preview/search-box';
+import type { SearchBoxState as SearchBoxState_2 } from '@fluentui/react-headless-components-preview/search-box';
 import type { SelectProps as SelectProps_2 } from '@fluentui/react-headless-components-preview/select';
 import { SelectSlots } from '@fluentui/react-headless-components-preview/select';
 import type { SelectState as SelectState_2 } from '@fluentui/react-headless-components-preview/select';
@@ -375,6 +379,7 @@ import { useRatingContextValues } from '@fluentui/react-headless-components-prev
 import { useRatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
 import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
+import { useSearchBox } from '@fluentui/react-headless-components-preview/search-box';
 import { useSelect } from '@fluentui/react-headless-components-preview/select';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
@@ -1477,6 +1482,8 @@ export { renderRatingDisplay }
 
 export { renderRatingItem }
 
+export { renderSearchBox }
+
 export { renderSelect }
 
 export { renderSkeleton }
@@ -1522,6 +1529,25 @@ export { renderToolbarRadioGroup }
 export { renderToolbarToggleButton }
 
 export { renderTooltip }
+
+// @public
+export const SearchBox: ForwardRefComponent<SearchBoxProps>;
+
+// @public
+export const searchBoxClassNames: {
+    root: string;
+};
+
+// @public
+export type SearchBoxProps = SearchBoxProps_2 & {
+    appearance?: InputAppearance;
+    size?: InputSize;
+};
+
+export { SearchBoxSlots }
+
+// @public
+export type SearchBoxState = SearchBoxState_2 & Required<Pick<SearchBoxProps, 'appearance' | 'size'>>;
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
@@ -2312,6 +2338,11 @@ export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;
 
 // @public
 export const useRatingStyles: (state: RatingState) => RatingState;
+
+export { useSearchBox }
+
+// @public
+export const useSearchBoxStyles: (state: SearchBoxState) => SearchBoxState;
 
 export { useSelect }
 

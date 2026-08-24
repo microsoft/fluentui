@@ -40,6 +40,8 @@ export { RatingWindmod } from './RatingWindmod.stories';
 export { RatingGriffel } from './RatingGriffel.stories';
 export { RatingDisplayWindmod } from './RatingDisplayWindmod.stories';
 export { RatingDisplayGriffel } from './RatingDisplayGriffel.stories';
+export { SearchBoxWindmod } from './SearchBoxWindmod.stories';
+export { SearchBoxGriffel } from './SearchBoxGriffel.stories';
 export { SelectWindmod } from './SelectWindmod.stories';
 export { SelectGriffel } from './SelectGriffel.stories';
 export { SkeletonWindmod } from './SkeletonWindmod.stories';

@@ -513,6 +513,16 @@
         "default": "./lib-commonjs/rating-item.cjs"
       }
     },
+    "./search-box": {
+      "import": {
+        "types": "./dist/search-box.d.ts",
+        "default": "./lib/search-box.js"
+      },
+      "require": {
+        "types": "./dist/search-box.d.cts",
+        "default": "./lib-commonjs/search-box.cjs"
+      }
+    },
     "./select": {
       "import": {
         "types": "./dist/select.d.ts",
