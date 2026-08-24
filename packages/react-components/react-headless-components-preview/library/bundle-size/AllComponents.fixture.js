@@ -21,11 +21,13 @@ import * as InteractionTag from '@fluentui/react-headless-components-preview/int
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
+import * as MenuButton from '@fluentui/react-headless-components-preview/menu-button';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
 import * as Overflow from '@fluentui/react-headless-components-preview/overflow';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
+import * as Positioning from '@fluentui/react-headless-components-preview/positioning';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
@@ -50,6 +52,7 @@ import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
 import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
+import * as Utils from '@fluentui/react-headless-components-preview/utils';
 
 console.log({
   Accordion,
@@ -75,11 +78,13 @@ console.log({
   Label,
   Link,
   Menu,
+  MenuButton,
   MessageBar,
   Nav,
   Overflow,
   Persona,
   Popover,
+  Positioning,
   ProgressBar,
   Provider,
   RadioGroup,
@@ -104,6 +109,7 @@ console.log({
   ToggleButton,
   Toolbar,
   Tooltip,
+  Utils,
 });
 
 export default {
