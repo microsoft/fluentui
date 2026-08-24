@@ -185,6 +185,19 @@ export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './spl
 export { renderSwitch, Switch, switchClassNames, useSwitch, useSwitchStyles } from './switch';
 export type { SwitchProps, SwitchSize, SwitchSlots, SwitchState } from './switch';
 
+export { renderTab, Tab, tabClassNames, useTab, useTabAnimatedIndicator, useTabStyles } from './tab';
+export type { TabProps, TabSlots, TabState } from './tab';
+
+export {
+  renderTabList,
+  TabList,
+  tabListClassNames,
+  useTabList,
+  useTabListContextValues,
+  useTabListStyles,
+} from './tab-list';
+export type { TabAppearance, TabListProps, TabListSlots, TabListState, TabSize, TabValue } from './tab-list';
+
 export { renderTag, Tag, tagClassNames, useTag, useTagContextValues, useTagStyles } from './tag';
 export type { TagAppearance, TagContextValues, TagProps, TagShape, TagSize, TagSlots, TagState } from './tag';
 

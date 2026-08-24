@@ -1,0 +1,538 @@
+@reference '#theme';
+
+/* Both indicators are pseudo-elements of the root and carry no module class, so they are
+   reached with Tailwind's built-in before/after variants: ::before is the pending bar that
+   appears under the pointer, ::after the selection bar. Their geometry is identical, so it is
+   authored once for the pair; only `content` and `background-color` differ, and `content-none`
+   keeps each pseudo-element out of the box tree until its own state sets `content-['']`.
+
+   ::after also carries the slide transform, driven by the two custom properties the component
+   writes inline. At rest they are 0px and 1, so the transform is the identity and the resting
+   look is fully static.
+
+   The circular appearances draw no indicator at all, so the whole indicator group sits inside
+   the two flat appearance values rather than behind a negated variant. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none border-current px-horizontal-m-nudge py-vertical-m font-base leading-base-300 normal-case outline-none;
+
+    @variant vertical {
+      @apply [justify-content:start] py-vertical-s-nudge;
+    }
+
+    @variant size-small {
+      @apply gap-x-horizontal-xxs px-horizontal-s-nudge py-vertical-s-nudge;
+
+      @variant vertical {
+        @apply py-vertical-xxs;
+      }
+    }
+
+    @variant size-large {
+      @apply py-vertical-l;
+
+      @variant vertical {
+        @apply py-vertical-s;
+      }
+    }
+
+    /* The slide is the ::after transform; `overflow-visible` lets the bar travel outside the
+       tab box on its way back from the previously selected tab. Griffel applies this group to
+       every enabled selected tab, circular appearances included, even though only the flat
+       ones generate the pseudo-element. */
+    @variant selected {
+      @variant enabled {
+        @apply overflow-visible;
+
+        @variant after {
+          @apply [transform-origin:left] content-none;
+
+          transform: translateX(var(--fui-tab-indicator-offset)) scaleX(var(--fui-tab-indicator-scale));
+        }
+
+        @variant rtl {
+          @variant after {
+            @apply [transform-origin:right];
+          }
+        }
+
+        @variant vertical {
+          @variant after {
+            @apply [transform-origin:top];
+
+            transform: translateY(var(--fui-tab-indicator-offset)) scaleY(var(--fui-tab-indicator-scale));
+          }
+        }
+
+        @variant animating {
+          @variant after {
+            @apply transition-[transform] duration-(--duration-slow) ease-(--ease-decelerate-max);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            @variant after {
+              @apply transition-none duration-[0.01ms];
+            }
+          }
+        }
+      }
+    }
+
+    @variant appearance-transparent {
+      @apply bg-transparent-background;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-transparent-background-hover;
+        }
+
+        @variant active {
+          @apply bg-transparent-background-pressed;
+        }
+      }
+    }
+
+    @variant appearance-subtle {
+      @apply bg-subtle-background;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-subtle-background-hover;
+        }
+
+        @variant active {
+          @apply bg-subtle-background-pressed;
+        }
+      }
+    }
+
+    @variant appearance-transparent, appearance-subtle {
+      /* Pending indicator: the rail is sized here but `content-none` keeps the pseudo-element
+         out of the box tree, and `absolute`/`rounded-circular` wait for the pointer states —
+         the same split Griffel makes between its geometry class and its :hover/:active rules. */
+      @variant before {
+        @apply start-horizontal-m end-horizontal-m bottom-0 h-thicker content-none;
+      }
+
+      @variant vertical {
+        @variant before {
+          @apply inset-y-vertical-s start-0 end-auto h-auto w-thicker;
+        }
+      }
+
+      @variant size-small {
+        @variant before {
+          @apply start-horizontal-s-nudge end-horizontal-s-nudge h-thick;
+        }
+
+        @variant vertical {
+          @variant before {
+            @apply inset-y-vertical-xs start-0 end-auto h-auto w-thicker;
+          }
+        }
+      }
+
+      @variant size-large {
+        @variant vertical {
+          @variant before {
+            @apply inset-y-vertical-m-nudge;
+          }
+        }
+      }
+
+      @variant hover {
+        @variant before {
+          @apply absolute rounded-circular bg-neutral-stroke-1-hover content-[''];
+        }
+
+        @variant forced-colors {
+          @variant before {
+            @apply bg-[Highlight];
+          }
+        }
+      }
+
+      @variant active {
+        @variant before {
+          @apply absolute rounded-circular bg-neutral-stroke-1-pressed content-[''];
+        }
+
+        @variant forced-colors {
+          @variant before {
+            @apply bg-[Highlight];
+          }
+        }
+      }
+
+      /* Selection indicator: the whole group exists only while the tab is selected. */
+      @variant selected {
+        @variant after {
+          @apply absolute start-horizontal-m end-horizontal-m bottom-0 h-thicker rounded-circular bg-transparent-stroke content-[''];
+        }
+
+        @variant vertical {
+          @variant after {
+            @apply inset-y-vertical-s start-0 end-auto h-auto w-thicker;
+          }
+        }
+
+        @variant size-small {
+          @variant after {
+            @apply start-horizontal-s-nudge end-horizontal-s-nudge h-thick;
+          }
+
+          @variant vertical {
+            @variant after {
+              @apply inset-y-vertical-xs start-0 end-auto h-auto w-thicker;
+            }
+          }
+        }
+
+        @variant size-large {
+          @variant vertical {
+            @variant after {
+              @apply inset-y-vertical-m-nudge;
+            }
+          }
+        }
+
+        @variant enabled {
+          @variant after {
+            @apply bg-compound-brand-stroke;
+          }
+
+          @variant hover {
+            @variant after {
+              @apply bg-compound-brand-stroke-hover;
+            }
+          }
+
+          @variant active {
+            @variant after {
+              @apply bg-compound-brand-stroke-pressed;
+            }
+          }
+
+          @variant forced-colors {
+            @variant after {
+              @apply bg-[ButtonText];
+            }
+          }
+        }
+      }
+
+      @variant disabled {
+        @apply bg-transparent-background;
+
+        @variant hover {
+          @variant before {
+            @apply bg-transparent-stroke;
+          }
+        }
+
+        @variant active {
+          @variant before {
+            @apply bg-transparent-stroke;
+          }
+        }
+
+        @variant selected {
+          @variant after {
+            @apply bg-neutral-foreground-disabled;
+          }
+        }
+
+        @variant forced-colors {
+          @variant hover {
+            @variant before {
+              @apply bg-transparent;
+            }
+          }
+
+          @variant active {
+            @variant before {
+              @apply bg-transparent;
+            }
+          }
+        }
+      }
+    }
+
+    @variant appearance-subtle-circular, appearance-filled-circular {
+      @apply rounded-circular border-(length:--spacing-thin) border-solid border-transparent-stroke py-[calc(var(--spacing-vertical-s-nudge)-var(--spacing-thin))];
+
+      @variant size-small {
+        @apply py-[calc(var(--spacing-vertical-xxs)-var(--spacing-thin))];
+      }
+
+      @variant size-large {
+        @apply py-[calc(var(--spacing-vertical-s)-var(--spacing-thin))];
+      }
+    }
+
+    @variant appearance-subtle-circular {
+      @apply bg-subtle-background text-neutral-foreground-2;
+
+      @variant enabled {
+        @variant hover {
+          @apply border-neutral-stroke-1-hover bg-subtle-background-hover text-neutral-foreground-2-hover;
+        }
+
+        @variant active {
+          @apply border-neutral-stroke-1-pressed bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant forced-colors {
+        @apply border-[Canvas];
+      }
+
+      @variant selected {
+        @apply border-compound-brand-stroke bg-brand-background-2 text-brand-foreground-2;
+
+        @variant enabled {
+          @variant hover {
+            @apply border-compound-brand-stroke-hover bg-brand-background-2-hover text-brand-foreground-2-hover;
+          }
+
+          @variant active {
+            @apply border-compound-brand-stroke-pressed bg-brand-background-2-pressed text-brand-foreground-2-pressed;
+          }
+        }
+
+        @variant forced-colors {
+          @apply border-[Highlight];
+        }
+      }
+
+      @variant disabled {
+        @apply bg-subtle-background text-neutral-foreground-disabled;
+
+        @variant selected {
+          @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+        }
+      }
+    }
+
+    @variant appearance-filled-circular {
+      @apply bg-neutral-background-3 text-neutral-foreground-2;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-neutral-background-3-hover text-neutral-foreground-2-hover;
+
+          @variant forced-colors {
+            @apply bg-[Highlight] forced-color-adjust-none;
+          }
+        }
+
+        @variant active {
+          @apply bg-neutral-background-3-pressed text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant selected {
+        @apply bg-brand-background text-neutral-foreground-on-brand;
+
+        @variant enabled {
+          @variant hover {
+            @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+          }
+
+          @variant active {
+            @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+          }
+
+          @variant forced-colors {
+            @apply bg-[ButtonText];
+          }
+        }
+      }
+
+      @variant disabled {
+        @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+        @variant selected {
+          @apply border-neutral-stroke-disabled;
+        }
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed;
+    }
+
+    /* Focus outranks every appearance and state, so it stays last. */
+    @variant focus-visible {
+      @apply z-1 border-transparent outline-(length:--spacing-thick) outline-transparent outline-solid;
+
+      box-shadow:
+        var(--shadow-4),
+        0 0 0 var(--spacing-thick) var(--color-stroke-focus-2);
+
+      @variant appearance-subtle-circular, appearance-filled-circular {
+        box-shadow:
+          var(--shadow-4),
+          0 0 0 var(--spacing-thick) var(--color-stroke-focus-2),
+          0 0 0 var(--spacing-thin) var(--color-neutral-stroke-on-brand) inset;
+      }
+    }
+  }
+
+  .icon {
+    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-[length:calc(20px*var(--base-scale))];
+
+    @variant group-size-large/fui-tab {
+      @apply size-24 text-[length:calc(24px*var(--base-scale))];
+    }
+
+    @variant group-appearance-transparent/fui-tab, group-appearance-subtle/fui-tab {
+      @apply text-neutral-foreground-2;
+
+      @variant group-enabled/fui-tab {
+        @variant group-hover/fui-tab {
+          @apply text-neutral-foreground-2-hover;
+        }
+
+        @variant group-active/fui-tab {
+          @apply text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant group-selected/fui-tab {
+        @apply text-compound-brand-foreground-1;
+
+        @variant group-enabled/fui-tab {
+          @variant group-hover/fui-tab {
+            @apply text-compound-brand-foreground-1-hover;
+          }
+
+          @variant group-active/fui-tab {
+            @apply text-compound-brand-foreground-1-pressed;
+          }
+        }
+      }
+
+      @variant group-disabled/fui-tab {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+
+    @variant group-appearance-subtle-circular/fui-tab, group-appearance-filled-circular/fui-tab {
+      @apply text-inherit;
+    }
+
+    /* The glyph inherits its colour everywhere except forced colours, where the filled-circular
+       fill is repainted and the glyph has to follow the label onto it. */
+    @variant forced-colors {
+      @variant group-appearance-filled-circular/fui-tab {
+        @variant group-enabled/fui-tab {
+          @variant group-selected/fui-tab {
+            @apply text-[ButtonFace];
+          }
+
+          @variant group-hover/fui-tab {
+            @apply text-[HighlightText];
+          }
+        }
+      }
+    }
+
+    /* Glyph swap on selection, keyed off the data-variant attribute bundleIcon stamps on each
+       glyph. The glyphs carry no module class of their own, so they are reached by descent. */
+    & * {
+      @variant group-selected/fui-tab {
+        @variant variant-filled {
+          @apply inline;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+  }
+
+  .content {
+    @apply col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-regular;
+
+    @variant group-icon/fui-tab {
+      @apply col-start-2;
+    }
+
+    @variant group-size-large/fui-tab {
+      @apply text-base-400 leading-base-400;
+    }
+
+    @variant group-selected/fui-tab {
+      @apply font-semibold;
+    }
+
+    @variant group-appearance-transparent/fui-tab, group-appearance-subtle/fui-tab {
+      @apply text-neutral-foreground-2;
+
+      @variant group-enabled/fui-tab {
+        @variant group-hover/fui-tab {
+          @apply text-neutral-foreground-2-hover;
+        }
+
+        @variant group-active/fui-tab {
+          @apply text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant group-selected/fui-tab {
+        @apply text-neutral-foreground-1;
+
+        @variant group-enabled/fui-tab {
+          @variant group-hover/fui-tab {
+            @apply text-neutral-foreground-1-hover;
+          }
+
+          @variant group-active/fui-tab {
+            @apply text-neutral-foreground-1-pressed;
+          }
+        }
+      }
+
+      @variant group-disabled/fui-tab {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+
+    @variant group-appearance-subtle-circular/fui-tab, group-appearance-filled-circular/fui-tab {
+      @apply text-inherit;
+    }
+
+    /* Only the filled-circular appearance repaints in forced colours, and only while enabled:
+       the selected label sits on the forced ButtonText fill, the hovered one on Highlight. */
+    @variant forced-colors {
+      @variant group-appearance-filled-circular/fui-tab {
+        @variant group-enabled/fui-tab {
+          @variant group-selected/fui-tab {
+            @apply text-[ButtonFace] forced-color-adjust-none;
+          }
+
+          @variant group-hover/fui-tab {
+            @apply text-[HighlightText];
+          }
+        }
+      }
+    }
+  }
+
+  /* A hidden copy of the content at its selected weight, sharing the content's grid cell so an
+     unselected tab is exactly as wide as it will be once selected. */
+  .content-reserved-space {
+    @apply invisible col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-semibold;
+
+    @variant group-icon/fui-tab {
+      @apply col-start-2;
+    }
+
+    @variant group-size-large/fui-tab {
+      @apply text-base-400 leading-base-400;
+    }
+  }
+}

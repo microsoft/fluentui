@@ -1,0 +1,21 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex shrink-0 flex-row flex-nowrap items-stretch;
+
+    @variant vertical {
+      @apply flex-col;
+    }
+
+    /* Only the circular appearances put a gap between tabs; the flat ones butt them together
+       so the selection indicator reads as one continuous rail. */
+    @variant appearance-subtle-circular, appearance-filled-circular {
+      @apply gap-horizontal-s;
+
+      @variant size-small {
+        @apply gap-horizontal-s-nudge;
+      }
+    }
+  }
+}

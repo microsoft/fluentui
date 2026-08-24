@@ -74,5 +74,11 @@
 @custom-variant active-appearance-shadow (&:where([data-active-appearance='shadow']));
 @custom-variant active-appearance-ring-shadow (&:where([data-active-appearance='ring-shadow']));
 
+/* TabList: circular appearances, and the selection indicator's armed-transition flag. The flag is
+ * present while the indicator rests, which is when a selection change should transition. */
+@custom-variant appearance-subtle-circular (&:where([data-appearance='subtle-circular']));
+@custom-variant appearance-filled-circular (&:where([data-appearance='filled-circular']));
+@custom-variant animating (&:where([data-animating]));
+
 /* ToggleButton: opt-in high-contrast selected look */
 @custom-variant accessible (&:where([data-accessible]));
