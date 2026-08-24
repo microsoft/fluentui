@@ -335,6 +335,10 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+    if (overflowMenu === el) {
+      return;
+    }
+
     overflowMenu = el;
 
     if (observing) {
@@ -357,9 +361,14 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+    if (!overflowMenu) {
+      return;
+    }
+
+    const hasInvisibleItems = invisibleItemQueue.size() > 0;
     overflowMenu = undefined;
 
-    if (observing) {
+    if (observing && hasInvisibleItems) {
       forceDispatch = true;
       update();
     }

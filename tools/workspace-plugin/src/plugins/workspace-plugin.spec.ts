@@ -207,6 +207,40 @@ describe(`workspace-plugin`, () => {
     `);
   });
 
+  it('should add the verify-bundle-isolation target only when a bundle-isolation.config.json exists', async () => {
+    await tempFs.createFiles({
+      'with-config/project.json': serializeJson({}),
+      'with-config/package.json': serializeJson({}),
+      'with-config/bundle-isolation.config.json': serializeJson({}),
+      'no-config/project.json': serializeJson({}),
+      'no-config/package.json': serializeJson({}),
+      // a monosize fixtures dir alone must not be mistaken for an isolation opt-in
+      'no-config/bundle-size/A.fixture.js': '',
+    });
+
+    const withConfig = await createNodesFunction(['with-config/project.json'], options, context);
+    const noConfig = await createNodesFunction(['no-config/project.json'], options, context);
+
+    expect(getTargetsNames(noConfig, 'no-config')).not.toContain('verify-bundle-isolation');
+    expect(getTargets(withConfig, 'with-config')?.['verify-bundle-isolation']).toEqual({
+      cache: true,
+      dependsOn: ['build', '^build'],
+      command: 'yarn run -T verify-bundle-isolation',
+      options: { cwd: 'with-config' },
+      inputs: [
+        'default',
+        '^default',
+        '{workspaceRoot}/tools/verify-bundle-isolation/**',
+        { externalDependencies: ['ajv', 'webpack'] },
+      ],
+      outputs: ['{projectRoot}/dist/bundle-isolation'],
+      metadata: {
+        technologies: ['webpack'],
+        description: 'Assert entry points do not bundle runtimes the package is meant to stay free of',
+      },
+    });
+  });
+
   describe(`v9 project nodes`, () => {
     describe(`React Integration Tester config`, () => {
       it(`should not create atomized targets if project doesnt have required configurations`, async () => {

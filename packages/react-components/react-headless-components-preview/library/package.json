@@ -100,10 +100,14 @@
       }
     },
     "./avatar-group": {
-      "types": "./dist/avatar-group.d.ts",
-      "node": "./lib-commonjs/avatar-group.js",
-      "import": "./lib/avatar-group.js",
-      "require": "./lib-commonjs/avatar-group.js"
+      "import": {
+        "types": "./dist/avatar-group.d.ts",
+        "default": "./lib/avatar-group.js"
+      },
+      "require": {
+        "types": "./dist/avatar-group.d.cts",
+        "default": "./lib-commonjs/avatar-group.cjs"
+      }
     },
     "./badge": {
       "import": {
@@ -156,10 +160,14 @@
       }
     },
     "./color-picker": {
-      "types": "./dist/color-picker.d.ts",
-      "node": "./lib-commonjs/color-picker.js",
-      "import": "./lib/color-picker.js",
-      "require": "./lib-commonjs/color-picker.js"
+      "import": {
+        "types": "./dist/color-picker.d.ts",
+        "default": "./lib/color-picker.js"
+      },
+      "require": {
+        "types": "./dist/color-picker.d.cts",
+        "default": "./lib-commonjs/color-picker.cjs"
+      }
     },
     "./combobox": {
       "import": {
@@ -172,10 +180,14 @@
       }
     },
     "./compound-button": {
-      "types": "./dist/compound-button.d.ts",
-      "node": "./lib-commonjs/compound-button.js",
-      "import": "./lib/compound-button.js",
-      "require": "./lib-commonjs/compound-button.js"
+      "import": {
+        "types": "./dist/compound-button.d.ts",
+        "default": "./lib/compound-button.js"
+      },
+      "require": {
+        "types": "./dist/compound-button.d.cts",
+        "default": "./lib-commonjs/compound-button.cjs"
+      }
     },
     "./dialog": {
       "import": {
@@ -298,10 +310,14 @@
       }
     },
     "./menu-button": {
-      "types": "./dist/menu-button.d.ts",
-      "node": "./lib-commonjs/menu-button.js",
-      "import": "./lib/menu-button.js",
-      "require": "./lib-commonjs/menu-button.js"
+      "import": {
+        "types": "./dist/menu-button.d.ts",
+        "default": "./lib/menu-button.js"
+      },
+      "require": {
+        "types": "./dist/menu-button.d.cts",
+        "default": "./lib-commonjs/menu-button.cjs"
+      }
     },
     "./message-bar": {
       "import": {
@@ -324,10 +340,14 @@
       }
     },
     "./overflow": {
-      "types": "./dist/overflow.d.ts",
-      "node": "./lib-commonjs/overflow.js",
-      "import": "./lib/overflow.js",
-      "require": "./lib-commonjs/overflow.js"
+      "import": {
+        "types": "./dist/overflow.d.ts",
+        "default": "./lib/overflow.js"
+      },
+      "require": {
+        "types": "./dist/overflow.d.cts",
+        "default": "./lib-commonjs/overflow.cjs"
+      }
     },
     "./persona": {
       "import": {
@@ -470,16 +490,24 @@
       }
     },
     "./split-button": {
-      "types": "./dist/split-button.d.ts",
-      "node": "./lib-commonjs/split-button.js",
-      "import": "./lib/split-button.js",
-      "require": "./lib-commonjs/split-button.js"
+      "import": {
+        "types": "./dist/split-button.d.ts",
+        "default": "./lib/split-button.js"
+      },
+      "require": {
+        "types": "./dist/split-button.d.cts",
+        "default": "./lib-commonjs/split-button.cjs"
+      }
     },
     "./swatch-picker": {
-      "types": "./dist/swatch-picker.d.ts",
-      "node": "./lib-commonjs/swatch-picker.js",
-      "import": "./lib/swatch-picker.js",
-      "require": "./lib-commonjs/swatch-picker.js"
+      "import": {
+        "types": "./dist/swatch-picker.d.ts",
+        "default": "./lib/swatch-picker.js"
+      },
+      "require": {
+        "types": "./dist/swatch-picker.d.cts",
+        "default": "./lib-commonjs/swatch-picker.cjs"
+      }
     },
     "./switch": {
       "import": {
@@ -522,10 +550,14 @@
       }
     },
     "./tag-picker": {
-      "types": "./dist/tag-picker.d.ts",
-      "node": "./lib-commonjs/tag-picker.js",
-      "import": "./lib/tag-picker.js",
-      "require": "./lib-commonjs/tag-picker.js"
+      "import": {
+        "types": "./dist/tag-picker.d.ts",
+        "default": "./lib/tag-picker.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker.d.cts",
+        "default": "./lib-commonjs/tag-picker.cjs"
+      }
     },
     "./teaching-popover": {
       "import": {
@@ -607,7 +639,6 @@
   },
   "devDependencies": {
     "@fluentui/scripts-cypress": "*",
-    "@fluentui/verify-bundle-isolation": "*",
     "@oddbird/popover-polyfill": "^0.6.1"
   },
   "type": "module"
