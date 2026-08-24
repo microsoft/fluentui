@@ -1,0 +1,65 @@
+{
+  "name": "@fluentui/react-calendar-preview",
+  "version": "0.1.0",
+  "description": "Fluent UI React Calendar components",
+  "type": "module",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.9",
+    "@fluentui/react-button": "^9.11.0",
+    "@fluentui/react-context-selector": "^9.2.19",
+    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-motion": "^9.16.2",
+    "@fluentui/react-motion-components-preview": "^0.15.7",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
+    "@griffel/react": "^1.5.32",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <20.0.0",
+    "@types/react-dom": ">=16.9.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "devDependencies": {
+    "@fluentui/scripts-cypress": "*"
+  }
+}

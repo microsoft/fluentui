@@ -91,6 +91,10 @@
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-calendar-preview": ["packages/react-components/react-calendar-preview/library/src/index.ts"],
+      "@fluentui/react-calendar-preview-stories": [
+        "packages/react-components/react-calendar-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],

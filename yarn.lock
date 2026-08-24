@@ -3566,6 +3566,38 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-calendar-preview-stories@workspace:packages/react-components/react-calendar-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-calendar-preview-stories@workspace:packages/react-components/react-calendar-preview/stories"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-calendar-preview@npm:^0.1.0, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library"
+  dependencies:
+    "@fluentui/keyboard-keys": "npm:^9.0.9"
+    "@fluentui/react-button": "npm:^9.11.0"
+    "@fluentui/react-context-selector": "npm:^9.2.19"
+    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-jsx-runtime": "npm:^9.4.5"
+    "@fluentui/react-motion": "npm:^9.16.2"
+    "@fluentui/react-motion-components-preview": "npm:^0.15.7"
+    "@fluentui/react-shared-contexts": "npm:^9.26.3"
+    "@fluentui/react-tabster": "npm:^9.26.17"
+    "@fluentui/react-theme": "npm:^9.2.2"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@fluentui/scripts-cypress": "npm:*"
+    "@griffel/react": "npm:^1.5.32"
+    "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-card-stories@workspace:packages/react-components/react-card/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-card-stories@workspace:packages/react-components/react-card/stories"
@@ -4322,6 +4354,7 @@ __metadata:
     "@fluentui/react-badge": "npm:^9.5.5"
     "@fluentui/react-breadcrumb": "npm:^9.4.5"
     "@fluentui/react-button": "npm:^9.11.0"
+    "@fluentui/react-calendar-preview": "npm:^0.1.0"
     "@fluentui/react-card": "npm:^9.7.2"
     "@fluentui/react-checkbox": "npm:^9.6.4"
     "@fluentui/react-color-picker": "npm:^9.3.0"
