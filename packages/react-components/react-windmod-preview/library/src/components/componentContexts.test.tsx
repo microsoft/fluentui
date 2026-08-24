@@ -9,6 +9,9 @@ import { Button } from './Button';
 import { CompoundButton } from './CompoundButton';
 import { Field } from './Field';
 import { Input } from './Input';
+import { InteractionTag } from './InteractionTag';
+import { InteractionTagPrimary } from './InteractionTagPrimary';
+import { InteractionTagSecondary } from './InteractionTagSecondary';
 import { Link } from './Link';
 import { MenuButton } from './MenuButton';
 import { ProgressBar } from './ProgressBar';
@@ -396,6 +399,88 @@ describe('component contexts', () => {
       const { container } = render(<Tag>Author</Tag>);
 
       expect(tagIn(container).getAttribute('data-size')).toBe('medium');
+    });
+  });
+
+  describe('InteractionTag family — reads the contexts its Griffel counterpart reads', () => {
+    const interactionTagIn = (container: HTMLElement): HTMLElement =>
+      container.querySelector<HTMLElement>('.fui-interaction-tag')!;
+    const primaryIn = (container: HTMLElement): HTMLElement =>
+      container.querySelector<HTMLElement>('.fui-interaction-tag-primary')!;
+    const secondaryIn = (container: HTMLElement): HTMLElement =>
+      container.querySelector<HTMLElement>('.fui-interaction-tag-secondary')!;
+
+    const composite = (props: React.ComponentProps<typeof InteractionTag> = {}) => (
+      <InteractionTag {...props}>
+        <InteractionTagPrimary hasSecondaryAction>Author</InteractionTagPrimary>
+        <InteractionTagSecondary aria-label="dismiss" />
+      </InteractionTag>
+    );
+
+    it('lets a TagGroup set the tag’s size and appearance', () => {
+      const { container } = render(
+        <TagGroup size="small" appearance="outline">
+          {composite()}
+        </TagGroup>,
+      );
+      const { container: control } = render(composite({ size: 'small', appearance: 'outline' }));
+
+      expect(interactionTagIn(container).getAttribute('data-size')).toBe('small');
+      expect(primaryIn(container).className).toBe(primaryIn(control).className);
+      expect(secondaryIn(container).className).toBe(secondaryIn(control).className);
+    });
+
+    it('lets a local prop on the tag win over the group', () => {
+      const { container } = render(
+        <TagGroup size="extra-small" appearance="brand">
+          {composite({ size: 'medium', appearance: 'outline' })}
+        </TagGroup>,
+      );
+      const { container: control } = render(composite({ size: 'medium', appearance: 'outline' }));
+
+      expect(interactionTagIn(container).getAttribute('data-size')).toBe('medium');
+      expect(primaryIn(container).className).toBe(primaryIn(control).className);
+    });
+
+    it('leaves a tag outside any TagGroup unmoved', () => {
+      const { container } = render(composite());
+
+      expect(interactionTagIn(container).getAttribute('data-size')).toBe('medium');
+    });
+
+    it('carries the tag’s look down to both children', () => {
+      const { container } = render(composite({ size: 'small', shape: 'circular', appearance: 'brand' }));
+      const { container: base } = render(composite());
+
+      expect(primaryIn(container).getAttribute('data-size')).toBe('small');
+      expect(secondaryIn(container).getAttribute('data-size')).toBe('small');
+      // Compared against the DEFAULT look, not against an identical render: the classes have to
+      // actually move, or the look never reached the children.
+      expect(primaryIn(container).className).not.toBe(primaryIn(base).className);
+      expect(secondaryIn(container).className).not.toBe(secondaryIn(base).className);
+    });
+
+    it('leaves children outside any InteractionTag on the base look', () => {
+      const { container } = render(<InteractionTagPrimary>Author</InteractionTagPrimary>);
+      const { container: control } = render(composite());
+
+      expect(primaryIn(container).getAttribute('data-size')).toBe('medium');
+      // The base look is what an unwrapped primary falls back to — filled, rounded, medium.
+      expect(primaryIn(container).getAttribute('data-size')).toBe(primaryIn(control).getAttribute('data-size'));
+    });
+
+    it('cascades the tag’s size into a nested Avatar', () => {
+      const avatarSizes = { medium: '28', small: '20', 'extra-small': '16' } as const;
+
+      (Object.keys(avatarSizes) as Array<keyof typeof avatarSizes>).forEach(size => {
+        const { container } = render(
+          <InteractionTag size={size}>
+            <InteractionTagPrimary media={<Avatar name="Ada Lovelace" />}>Author</InteractionTagPrimary>
+          </InteractionTag>,
+        );
+
+        expect(avatarIn(container).getAttribute('data-size')).toBe(avatarSizes[size]);
+      });
     });
   });
 });

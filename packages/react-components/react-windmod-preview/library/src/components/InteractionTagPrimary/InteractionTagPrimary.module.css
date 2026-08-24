@@ -1,0 +1,215 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-grid h-full items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    appearance: button;
+    text-align: unset;
+
+    grid-template-areas:
+      'media primary'
+      'media secondary';
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-neutral-background-3-hover text-neutral-foreground-2-hover;
+      }
+
+      @variant active {
+        @apply bg-neutral-background-3-pressed text-neutral-foreground-2-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed border-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant size-medium {
+      @apply pe-7;
+    }
+
+    @variant size-small {
+      @apply pe-5;
+    }
+
+    @variant size-extra-small {
+      @apply relative pe-5;
+
+      /* Extends the pointer target to the WCAG 2.2 AA minimum without changing the
+         painted box; the pseudo-elements carry no paint. */
+      @media (forced-colors: none) {
+        @variant before, after {
+          @apply absolute start-0 h-2 w-full content-[''];
+        }
+
+        @variant before {
+          @apply bottom-full;
+        }
+
+        @variant after {
+          @apply top-full;
+        }
+      }
+    }
+
+    @variant focus-visible {
+      @apply z-1 outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+    }
+
+    /* A primary with secondary text gives that text a negative margin that covers the top
+       border, so high contrast redraws that edge on a pseudo-element. The edge is a PARTIAL
+       border: its sides come from per-side width utilities, and its style from a per-side
+       longhand — `border-solid` would set the style on all four sides and inflate the three
+       unset ones from 0 to the medium initial width. Same reasoning in `.circular` and in
+       Tag.module.css. */
+    @variant forced-colors {
+      @apply relative;
+
+      @variant before {
+        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin) content-[''];
+        border-block-start-style: solid;
+      }
+
+      @variant enabled {
+        @variant hover, active {
+          @apply bg-[HighlightText];
+        }
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+
+    @variant forced-colors {
+      @variant before {
+        @apply rounded-s-circular rounded-e-none border-s-(length:--spacing-thin);
+        border-inline-start-style: solid;
+      }
+    }
+  }
+
+  .circular-without-secondary-action {
+    @variant forced-colors {
+      @variant before {
+        @apply rounded-e-circular border-e-(length:--spacing-thin) border-e-transparent;
+        border-inline-end-style: solid;
+      }
+    }
+  }
+
+  .outline {
+    @apply border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-2-hover;
+
+        & * {
+          @variant variant-filled {
+            @apply inline text-neutral-foreground-2-brand-hover;
+          }
+
+          @variant variant-regular {
+            @apply hidden;
+          }
+        }
+      }
+
+      @variant active {
+        @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+
+        & * {
+          @variant variant-filled {
+            @apply inline text-neutral-foreground-2-brand-pressed;
+          }
+
+          @variant variant-regular {
+            @apply hidden;
+          }
+        }
+      }
+    }
+
+    @variant disabled {
+      @apply border-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
+    }
+  }
+
+  .brand {
+    @apply bg-brand-background-2 text-brand-foreground-2;
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-brand-background-2-hover text-compound-brand-foreground-1-hover;
+      }
+
+      @variant active {
+        @apply bg-brand-background-2-pressed text-compound-brand-foreground-1-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+  }
+
+  .selected {
+    @apply border-brand-stroke-1 bg-brand-background text-neutral-foreground-on-brand;
+
+    @variant hover {
+      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+
+      & * {
+        @variant variant-filled {
+          @apply text-neutral-foreground-on-brand;
+        }
+      }
+    }
+
+    @variant active {
+      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+
+      & * {
+        @variant variant-filled {
+          @apply text-neutral-foreground-on-brand;
+        }
+      }
+    }
+
+    @variant forced-colors {
+      @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+      @variant hover, active {
+        @apply bg-[Highlight] text-[HighlightText];
+      }
+    }
+  }
+
+  .without-media {
+    @apply ps-7;
+
+    @variant size-small, size-extra-small {
+      @apply ps-5;
+    }
+  }
+
+  .with-secondary-action {
+    @apply rounded-se-none rounded-ee-none pe-horizontal-s;
+    border-inline-end-style: none;
+
+    @variant size-small, size-extra-small {
+      @apply pe-horizontal-s-nudge;
+    }
+
+    @variant focus-visible {
+      @apply rounded-se-none rounded-ee-none;
+    }
+
+    @variant forced-colors {
+      @variant before {
+        @apply rounded-se-none;
+      }
+    }
+  }
+}
