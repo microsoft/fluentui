@@ -1,0 +1,40 @@
+import { clsx } from 'clsx';
+
+import { componentMarkers } from '../../../utils/groupMarker';
+import type { AccordionHeaderState } from './AccordionHeader.types';
+
+import styles from './AccordionHeader.module.css';
+
+/** The only public classes — see componentMarkers; internals are hashed idents. */
+export const accordionHeaderClassNames: { root: string } = {
+  root: componentMarkers('accordion-header'),
+};
+
+type AccordionHeaderRootDataAttributes = {
+  'data-icon'?: string;
+  'data-inline'?: string;
+  'data-size'?: AccordionHeaderState['size'];
+};
+
+/** Applies the visual contract, returning new state. */
+export const useAccordionHeaderStyles = (state: AccordionHeaderState): AccordionHeaderState => {
+  const root: AccordionHeaderState['root'] & AccordionHeaderRootDataAttributes = {
+    ...state.root,
+    // The end-position button reclaims the icon slot's leading padding when no icon is supplied.
+    'data-icon': state.icon ? '' : undefined,
+    'data-inline': state.inline ? '' : undefined,
+    'data-size': state.size,
+    className: clsx(accordionHeaderClassNames.root, styles.root, state.root.className),
+  };
+
+  return {
+    ...state,
+    root,
+    button: { ...state.button, className: clsx(styles.button, state.button.className) },
+    expandIcon: state.expandIcon && {
+      ...state.expandIcon,
+      className: clsx(styles.expandIcon, state.expandIcon.className),
+    },
+    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+  };
+};
