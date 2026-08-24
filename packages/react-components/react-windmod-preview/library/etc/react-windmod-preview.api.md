@@ -238,6 +238,7 @@ import { renderSwitch } from '@fluentui/react-headless-components-preview/switch
 import { renderTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
+import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderToolbar } from '@fluentui/react-headless-components-preview/toolbar';
@@ -290,6 +291,10 @@ import { TabSlots } from '@fluentui/react-headless-components-preview/tab-list';
 import type { TabState as TabState_2 } from '@fluentui/react-headless-components-preview/tab-list';
 import { TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 import { TagContextValues } from '@fluentui/react-headless-components-preview/tag';
+import { TagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
+import type { TagGroupProps as TagGroupProps_2 } from '@fluentui/react-headless-components-preview/tag-group';
+import { TagGroupSlots } from '@fluentui/react-headless-components-preview/tag-group';
+import type { TagGroupState as TagGroupState_2 } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
 import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
@@ -421,6 +426,8 @@ import { useTabList } from '@fluentui/react-headless-components-preview/tab-list
 import { useTabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
+import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useToolbar } from '@fluentui/react-headless-components-preview/toolbar';
@@ -1618,6 +1625,8 @@ export { renderTabList }
 
 export { renderTag }
 
+export { renderTagGroup }
+
 export { renderTextarea }
 
 export { renderToggleButton }
@@ -1953,6 +1962,33 @@ export const tagClassNames: {
 };
 
 export { TagContextValues }
+
+// @public
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
+
+// @public
+export type TagGroupAppearance = TagAppearance;
+
+// @public
+export const tagGroupClassNames: {
+    root: string;
+};
+
+export { TagGroupContextValues }
+
+// @public
+export type TagGroupProps = TagGroupProps_2 & {
+    appearance?: TagGroupAppearance;
+    size?: TagGroupSize;
+};
+
+// @public
+export type TagGroupSize = TagSize;
+
+export { TagGroupSlots }
+
+// @public
+export type TagGroupState = TagGroupState_2 & Required<Pick<TagGroupProps, 'appearance' | 'size'>>;
 
 // @public
 export type TagProps = TagProps_2 & {
@@ -2553,6 +2589,13 @@ export const useTabStyles: (state: TabState) => TabState;
 export { useTag }
 
 export { useTagContextValues }
+
+export { useTagGroup }
+
+export { useTagGroupContextValues }
+
+// @public
+export const useTagGroupStyles: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles: (state: TagState) => TagState;

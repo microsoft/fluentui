@@ -64,6 +64,8 @@ export { TabListWindmod } from './TabListWindmod.stories';
 export { TabListGriffel } from './TabListGriffel.stories';
 export { TagWindmod } from './TagWindmod.stories';
 export { TagGriffel } from './TagGriffel.stories';
+export { TagGroupWindmod } from './TagGroupWindmod.stories';
+export { TagGroupGriffel } from './TagGroupGriffel.stories';
 export { TextareaWindmod } from './TextareaWindmod.stories';
 export { TextareaGriffel } from './TextareaGriffel.stories';
 export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';

@@ -525,6 +525,23 @@ export type { TabAppearance, TabListProps, TabListSlots, TabListState, TabSize, 
 export { renderTag, Tag, tagClassNames, useTag, useTagContextValues, useTagStyles } from './tag';
 export type { TagAppearance, TagContextValues, TagProps, TagShape, TagSize, TagSlots, TagState } from './tag';
 
+export {
+  renderTagGroup,
+  TagGroup,
+  tagGroupClassNames,
+  useTagGroup,
+  useTagGroupContextValues,
+  useTagGroupStyles,
+} from './tag-group';
+export type {
+  TagGroupAppearance,
+  TagGroupContextValues,
+  TagGroupProps,
+  TagGroupSize,
+  TagGroupSlots,
+  TagGroupState,
+} from './tag-group';
+
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
 

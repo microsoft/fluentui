@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
 import { isConformant } from '../../testing/isConformant';
+import { TagGroup } from '../TagGroup/TagGroup';
 import { Tag } from './Tag';
 import type { TagAppearance, TagShape, TagSize } from './Tag.types';
 import { tagClassNames, useTagStyles } from './useTagStyles';
@@ -298,6 +299,31 @@ describe('Tag', () => {
   it('feeds the headless context values to the renderer', () => {
     // renderTag reads contextValues.avatar; a missing second argument throws.
     expect(() => render(<Tag media={<i />}>Primary</Tag>)).not.toThrow();
+  });
+
+  it('is unmoved outside any TagGroup', () => {
+    // The group context's own default value is `{}`, so the fallbacks stay the literals below.
+    const bare = renderTag().root;
+
+    expect(bare.getAttribute('data-size')).toBe('medium');
+    expect(bare).not.toHaveClass(styles.outline);
+    expect(bare).not.toHaveClass(styles.brand);
+    expect(renderTag({ size: 'small' }).root.getAttribute('data-size')).toBe('small');
+  });
+
+  it('reads no shape from the group context', () => {
+    const inGroup = (props: React.ComponentProps<typeof Tag> = {}) => {
+      const { container } = render(
+        <TagGroup>
+          <Tag {...props}>Primary</Tag>
+        </TagGroup>,
+      );
+
+      return container.querySelector<HTMLElement>('.fui-tag')!;
+    };
+
+    expect(inGroup()).not.toHaveClass(styles.circular);
+    expect(inGroup({ shape: 'circular' })).toHaveClass(styles.circular);
   });
 
   it('covers every look-prop crossing without emitting an undefined class', () => {

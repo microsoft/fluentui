@@ -17,6 +17,7 @@ import { Select } from './Select';
 import { SpinButton } from './SpinButton';
 import { SplitButton } from './SplitButton';
 import { Tag } from './Tag';
+import { TagGroup } from './TagGroup';
 import { Textarea } from './Textarea';
 import { ToggleButton } from './ToggleButton';
 import { Toolbar } from './Toolbar';
@@ -351,6 +352,50 @@ describe('component contexts', () => {
       const { getByRole } = render(<Tag media={<Avatar name="Ada Lovelace" size={48} />}>Author</Tag>);
 
       expect(getByRole('img').getAttribute('data-size')).toBe('48');
+    });
+  });
+
+  describe('Tag — reads the group context its Griffel counterpart reads', () => {
+    const tagIn = (container: HTMLElement): HTMLElement => container.querySelector<HTMLElement>('.fui-tag')!;
+
+    it('lets the container set the Tag’s size and appearance', () => {
+      const { container } = render(
+        <TagGroup size="small" appearance="outline">
+          <Tag>Author</Tag>
+        </TagGroup>,
+      );
+      const { container: control } = render(
+        <Tag size="small" appearance="outline">
+          Author
+        </Tag>,
+      );
+
+      expect(tagIn(container).getAttribute('data-size')).toBe('small');
+      expect(tagIn(container).className).toBe(tagIn(control).className);
+    });
+
+    it('lets a local prop win over the container', () => {
+      const { container } = render(
+        <TagGroup size="extra-small" appearance="brand">
+          <Tag size="medium" appearance="outline">
+            Author
+          </Tag>
+        </TagGroup>,
+      );
+      const { container: control } = render(
+        <Tag size="medium" appearance="outline">
+          Author
+        </Tag>,
+      );
+
+      expect(tagIn(container).getAttribute('data-size')).toBe('medium');
+      expect(tagIn(container).className).toBe(tagIn(control).className);
+    });
+
+    it('leaves a Tag outside any TagGroup unmoved', () => {
+      const { container } = render(<Tag>Author</Tag>);
+
+      expect(tagIn(container).getAttribute('data-size')).toBe('medium');
     });
   });
 });
