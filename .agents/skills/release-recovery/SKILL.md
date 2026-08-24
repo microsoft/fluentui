@@ -138,7 +138,8 @@ Only `npm-ahead` requires recovery.
 
 1. Regenerate bumps + changelogs from the pending change files
 2. Verify the result matches npm exactly
-3. Open a recovery PR
+3. Add `type: none` change files so the PR passes `beachball check`
+4. Open a recovery PR
 
 Release tags are not recreated - see the skill's Scope section.
 ```
@@ -202,10 +203,37 @@ Every previously `npm-ahead` package must now be `in-sync`. If any version overs
 change files landed after the failed release, so a plain replay is not correct — stop, report the
 mismatch, and let the user decide. Never hand-edit versions to force a match.
 
-Commit and open a PR:
+**Satisfy `beachball check`.** A real release pushes straight to `master` and never faces PR
+validation, but a recovery PR does. The `change-files` job in
+[.github/workflows/check-packages.yml](../../../.github/workflows/check-packages.yml) runs
+`beachball check`, sees the bumped `package.json` files as changed packages, and fails with
+`ERROR: Change files are needed!` — because the replay just consumed every change file that covered
+them.
+
+Generate `type: none` change files to cover exactly those packages:
 
 ```bash
-git add -A
+yarn beachball change --type none --no-commit \
+  --message "release recovery: versions already published to npm by the failed pipeline"
+yarn beachball check
+```
+
+`--type none` is the correct type: the next release consumes these files without bumping a version
+or writing a `CHANGELOG.md` entry. They leave only a `"none"` entry in `CHANGELOG.json`, which is a
+useful audit trail of the recovery. Verified empirically on `3.0.0-alpha.7`: a follow-up `bump` with
+38 such files produced 0 `package.json` and 0 `CHANGELOG.md` changes.
+
+Do not skip this because a past recovery PR passed without it. [PR #36364](https://github.com/microsoft/fluentui/pull/36364)
+did, but only by coincidence — unrelated change files had accumulated for the same packages in the
+meantime, and beachball reported `Your local repository already has change files for these packages`.
+That is not a property you can rely on.
+
+Commit and open a PR. Stage explicitly rather than with `git add -A`, so unrelated untracked files in
+the user's tree are not swept into a release commit:
+
+```bash
+git add -u          # bumps, changelogs, lockfile, consumed change files
+git add change/     # the new type:none change files
 git commit -m "release: applying package updates (manual recovery)"
 git push "$PUSH_REMOTE" HEAD
 gh pr create --repo microsoft/fluentui --base master \
@@ -213,13 +241,20 @@ gh pr create --repo microsoft/fluentui --base master \
   --body-file "$PR_BODY_FILE"
 ```
 
+Let the `precommit` git hook run — do not pass `--no-verify`. The manual fixups above replace
+beachball's `precommit` hook, not the repository's.
+
 The PR body must state which pipeline failed and that the packages are already on npm.
 
 ### Step 6 — Restore and report
 
 ```bash
 git switch "$START_REF"
+yarn install
 ```
+
+The reinstall matters: the recovery branch rewrote `yarn.lock`, so the restored branch is left with
+out-of-date `node_modules` otherwise.
 
 Report:
 
@@ -237,6 +272,10 @@ Report:
 - Never hand-edit versions to force agreement with npm. Regenerate with beachball so changelogs and
   dependency ranges stay consistent, and stop if the result disagrees.
 - Never commit directly to `master`; always go through a PR.
+- Never bypass PR validation to land a recovery. Make `beachball check` pass with `type: none` change
+  files rather than merging with an admin override or weakening the `change-files` job.
+- Never `git add -A`. The user's tree may hold unrelated untracked work, and a release commit must not
+  carry it.
 - Never create or push release tags as part of recovery. They would point at a commit the release was
   not built from, and a single release spans dozens of packages.
 - Never assume `origin` points at `microsoft/fluentui` — resolve the remote explicitly.
