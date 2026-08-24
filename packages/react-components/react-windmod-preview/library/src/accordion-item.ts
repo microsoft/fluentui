@@ -1,5 +1,5 @@
-export { AccordionItem, accordionItemClassNames, useAccordionItemStyles } from './components/Accordion/AccordionItem';
-export type { AccordionItemProps, AccordionItemSlots, AccordionItemState } from './components/Accordion/AccordionItem';
+export { AccordionItem, accordionItemClassNames, useAccordionItemStyles } from './components/AccordionItem';
+export type { AccordionItemProps, AccordionItemSlots, AccordionItemState } from './components/AccordionItem';
 
 /** Headless building blocks, re-exported for consumers composing their own AccordionItem. */
 export {

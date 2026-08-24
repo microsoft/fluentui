@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { AccordionItemState } from './AccordionItem.types';
 
 /** The only public classes — see componentMarkers; internals are hashed idents. */

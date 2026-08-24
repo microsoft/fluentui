@@ -2,9 +2,9 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
-import { AccordionHeader } from './AccordionHeader';
-import { AccordionItem } from './AccordionItem';
-import { AccordionPanel } from './AccordionPanel';
+import { AccordionHeader } from '../AccordionHeader/AccordionHeader';
+import { AccordionItem } from '../AccordionItem/AccordionItem';
+import { AccordionPanel } from '../AccordionPanel/AccordionPanel';
 import { Accordion } from './Accordion';
 import type { AccordionState } from './Accordion.types';
 import { accordionClassNames, useAccordionStyles } from './useAccordionStyles';

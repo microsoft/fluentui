@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-import { isConformant } from '../../../testing/isConformant';
-import { Accordion } from '../Accordion';
-import { AccordionHeader } from '../AccordionHeader';
-import { AccordionPanel } from '../AccordionPanel';
+import { isConformant } from '../../testing/isConformant';
+import { Accordion } from '../Accordion/Accordion';
+import { AccordionHeader } from '../AccordionHeader/AccordionHeader';
+import { AccordionPanel } from '../AccordionPanel/AccordionPanel';
 import { AccordionItem } from './AccordionItem';
 import type { AccordionItemState } from './AccordionItem.types';
 import { accordionItemClassNames, useAccordionItemStyles } from './useAccordionItemStyles';
@@ -16,7 +16,7 @@ const mockContextValuesStates: { root?: { className?: string } }[] = [];
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/accordion', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/accordion');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

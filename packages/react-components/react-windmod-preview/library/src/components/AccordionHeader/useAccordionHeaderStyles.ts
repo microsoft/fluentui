@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { AccordionHeaderState } from './AccordionHeader.types';
 
 import styles from './AccordionHeader.module.css';

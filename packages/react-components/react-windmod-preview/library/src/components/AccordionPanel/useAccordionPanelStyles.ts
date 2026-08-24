@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { AccordionPanelState } from './AccordionPanel.types';
 
 import styles from './AccordionPanel.module.css';
