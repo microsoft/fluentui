@@ -18,7 +18,7 @@ export { CalendarNonContiguousWorkWeekDays } from './CalendarNonContiguousWorkWe
 export { CalendarLocalizedFormatting } from './CalendarLocalizedFormatting.stories';
 
 export default {
-  title: 'Components/Calendar',
+  title: 'Preview Components/Calendar',
   component: Calendar,
   parameters: {
     docs: {
