@@ -84,11 +84,11 @@
     }
   }
 
-  .filledDarker {
+  .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  .filledLighter {
+  .filled-lighter {
     @apply bg-neutral-background-1;
   }
 
@@ -96,7 +96,7 @@
     @apply border-transparent-stroke;
   }
 
-  .outlineInteractive {
+  .outline-interactive {
     @variant hover {
       @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
     }
@@ -106,7 +106,7 @@
     }
   }
 
-  .underlineInteractive {
+  .underline-interactive {
     @variant after {
       @apply rounded-none;
     }
@@ -120,7 +120,7 @@
     }
   }
 
-  .filledInteractive {
+  .filled-interactive {
     @variant hover, focus-within {
       @apply border-transparent-stroke-interactive;
     }
@@ -207,7 +207,7 @@
     @apply box-border flex text-neutral-foreground-3;
 
     & > svg {
-      @apply text-[length:calc(20px*var(--base-scale))];
+      @apply text-icon-20;
     }
 
     @variant group-disabled/fui-input {
@@ -216,13 +216,13 @@
 
     @variant group-size-small/fui-input {
       & > svg {
-        @apply text-[length:calc(16px*var(--base-scale))];
+        @apply text-icon-16;
       }
     }
 
     @variant group-size-large/fui-input {
       & > svg {
-        @apply text-[length:calc(24px*var(--base-scale))];
+        @apply text-icon-24;
       }
     }
   }

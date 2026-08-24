@@ -32,7 +32,7 @@ export const useImageStyles = (state: ImageState): ImageState => {
         bordered && styles.bordered,
         shadow && styles.shadow,
         styles[fit],
-        fit !== 'default' && !hasExplicitSize && styles['fit-fill'],
+        fit !== 'default' && !hasExplicitSize && styles.fitFill,
         styles[shape],
         state.root.className,
       ),

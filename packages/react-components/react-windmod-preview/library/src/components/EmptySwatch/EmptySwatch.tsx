@@ -8,25 +8,26 @@ import {
   useSwatchPickerContextValue,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 
-import type { EmptySwatchProps, EmptySwatchState } from './EmptySwatch.types';
+import type { EmptySwatchProps } from './EmptySwatch.types';
 import { useEmptySwatchStyles } from './useEmptySwatchStyles';
 
 /**
  * An EmptySwatch is the dashed placeholder slot inside a SwatchPicker. Windmod EmptySwatch: the
  * headless empty swatch decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardRef((props, ref) => {
-  const { size: sizeProp, shape: shapeProp, ...rest } = props;
-  const sizeFromContext = useSwatchPickerContextValue(ctx => ctx.size);
-  const shapeFromContext = useSwatchPickerContextValue(ctx => ctx.shape);
+export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardRef(
+  ({ size: sizeProp, shape: shapeProp, ...rest }, ref) => {
+    const sizeFromContext = useSwatchPickerContextValue(ctx => ctx.size);
+    const shapeFromContext = useSwatchPickerContextValue(ctx => ctx.shape);
 
-  const state: EmptySwatchState = {
-    ...useEmptySwatch(rest, ref),
-    size: sizeProp ?? sizeFromContext ?? 'medium',
-    shape: shapeProp ?? shapeFromContext ?? 'square',
-  };
-
-  return renderEmptySwatch(useEmptySwatchStyles(state));
-});
+    return renderEmptySwatch(
+      useEmptySwatchStyles({
+        ...useEmptySwatch(rest, ref),
+        size: sizeProp ?? sizeFromContext ?? 'medium',
+        shape: shapeProp ?? shapeFromContext ?? 'square',
+      }),
+    );
+  },
+);
 
 EmptySwatch.displayName = 'EmptySwatch';

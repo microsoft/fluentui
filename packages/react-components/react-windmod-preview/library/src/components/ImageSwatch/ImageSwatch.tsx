@@ -8,7 +8,7 @@ import {
   useSwatchPickerContextValue,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 
-import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
+import type { ImageSwatchProps } from './ImageSwatch.types';
 import { useImageSwatchStyles } from './useImageSwatchStyles';
 
 /**
@@ -22,13 +22,13 @@ export const ImageSwatch: ForwardRefComponent<ImageSwatchProps> = React.forwardR
   const size = useSwatchPickerContextValue(ctx => ctx.size) ?? 'medium';
   const shape = useSwatchPickerContextValue(ctx => ctx.shape) ?? 'square';
 
-  const state: ImageSwatchState = {
-    ...useImageSwatch(props, ref),
-    size,
-    shape,
-  };
-
-  return renderImageSwatch(useImageSwatchStyles(state));
+  return renderImageSwatch(
+    useImageSwatchStyles({
+      ...useImageSwatch(props, ref),
+      size,
+      shape,
+    }),
+  );
 });
 
 ImageSwatch.displayName = 'ImageSwatch';

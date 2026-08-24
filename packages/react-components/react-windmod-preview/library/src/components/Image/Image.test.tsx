@@ -114,11 +114,11 @@ describe('Image', () => {
       </>,
     );
 
-    expect(getByTestId('cover')).toHaveClass(styles['fit-fill']);
-    expect(getByTestId('default')).not.toHaveClass(styles['fit-fill']);
-    expect(getByTestId('width')).not.toHaveClass(styles['fit-fill']);
-    expect(getByTestId('height')).not.toHaveClass(styles['fit-fill']);
-    expect(getByTestId('both')).not.toHaveClass(styles['fit-fill']);
+    expect(getByTestId('cover')).toHaveClass(styles.fitFill);
+    expect(getByTestId('default')).not.toHaveClass(styles.fitFill);
+    expect(getByTestId('width')).not.toHaveClass(styles.fitFill);
+    expect(getByTestId('height')).not.toHaveClass(styles.fitFill);
+    expect(getByTestId('both')).not.toHaveClass(styles.fitFill);
   });
 
   it('counts a zero size as explicit and a null size as absent', () => {
@@ -129,8 +129,8 @@ describe('Image', () => {
       </>,
     );
 
-    expect(getByTestId('zero')).not.toHaveClass(styles['fit-fill']);
-    expect(getByTestId('null')).toHaveClass(styles['fit-fill']);
+    expect(getByTestId('zero')).not.toHaveClass(styles.fitFill);
+    expect(getByTestId('null')).toHaveClass(styles.fitFill);
   });
 
   it('does not mutate the state it is given', () => {

@@ -17,23 +17,24 @@ export const fluentProviderClassNames: { root: string } = {
 /** Themes a subtree: a div carrying the theme class, the provider globals Griffel's
  * FluentProvider authors, and the headless Provider context. The theme stylesheet must be
  * imported once per document; this only selects the theme. */
-export const FluentProvider = React.forwardRef<HTMLDivElement, FluentProviderProps>((props, ref) => {
-  const { theme, dir, targetDocument, className, children, ...rest } = props;
-  const parentContext = useProviderContext();
-  const resolvedDir = dir ?? parentContext.dir;
+export const FluentProvider = React.forwardRef<HTMLDivElement, FluentProviderProps>(
+  ({ theme, dir, targetDocument, className, children, ...rest }, ref) => {
+    const parentContext = useProviderContext();
+    const resolvedDir = dir ?? parentContext.dir;
 
-  return (
-    <Provider dir={resolvedDir} targetDocument={targetDocument}>
-      <div
-        ref={ref}
-        {...rest}
-        dir={resolvedDir}
-        className={clsx(fluentProviderClassNames.root, theme, styles.root, className)}
-      >
-        {children}
-      </div>
-    </Provider>
-  );
-});
+    return (
+      <Provider dir={resolvedDir} targetDocument={targetDocument}>
+        <div
+          ref={ref}
+          {...rest}
+          dir={resolvedDir}
+          className={clsx(fluentProviderClassNames.root, theme, styles.root, className)}
+        >
+          {children}
+        </div>
+      </Provider>
+    );
+  },
+);
 
 FluentProvider.displayName = 'FluentProvider';

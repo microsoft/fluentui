@@ -2,7 +2,9 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-0 box-border inline cursor-pointer [overflow:inherit] bg-transparent p-0 text-start font-base text-base-300 font-regular [text-overflow:inherit] text-brand-foreground-link no-underline decoration-(length:--spacing-thin) select-text;
+    @apply m-0 box-border inline cursor-pointer bg-transparent p-0 text-start font-base text-base-300 font-regular text-brand-foreground-link no-underline decoration-(length:--spacing-thin) select-text;
+    overflow: inherit;
+    text-overflow: inherit;
 
     @variant hover {
       @apply text-brand-foreground-link-hover underline;

@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderLink, useLink, useLinkContext } from '@fluentui/react-headless-components-preview/link';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { LinkProps, LinkState } from './Link.types';
+import type { LinkProps } from './Link.types';
 import { useLinkStyles } from './useLinkStyles';
 
 /**
@@ -23,13 +23,13 @@ export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref
   // owns them.
   const { appearance = 'default', inline = false, ...rest } = mergeContextProps(useLinkContext(), props);
 
-  const state: LinkState = {
-    ...useLink(rest, ref),
-    appearance,
-    inline,
-  };
-
-  return renderLink(useLinkStyles(state));
+  return renderLink(
+    useLinkStyles({
+      ...useLink(rest, ref),
+      appearance,
+      inline,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<LinkProps>;
 

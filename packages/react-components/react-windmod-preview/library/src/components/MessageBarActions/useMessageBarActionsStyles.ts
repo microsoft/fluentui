@@ -22,6 +22,6 @@ export const useMessageBarActionsStyles = (state: MessageBarActionsState): Messa
   },
   containerAction: state.containerAction && {
     ...state.containerAction,
-    className: clsx(styles['container-action'], state.containerAction.className),
+    className: clsx(styles.containerAction, state.containerAction.className),
   },
 });

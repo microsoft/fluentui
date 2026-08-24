@@ -9,11 +9,15 @@
 @layer fui.components.l1 {
   .root {
     @apply box-border grid min-h-36 items-center rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
-    @apply [grid-template-columns:auto_1fr_auto_auto] [grid-template-rows:1fr] [grid-template-areas:'icon_body_secondaryActions_actions'];
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'icon body secondaryActions actions';
 
     @variant layout-multiline {
-      @apply [align-items:start] pt-vertical-m-nudge whitespace-normal;
-      @apply [grid-template-columns:auto_1fr_auto] [grid-template-areas:'icon_body_actions'_'secondaryActions_secondaryActions_secondaryActions'];
+      @apply pt-vertical-m-nudge whitespace-normal;
+      align-items: start;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: 'icon body actions' 'secondaryActions secondaryActions secondaryActions';
     }
 
     @variant shape-square {
@@ -34,7 +38,8 @@
   }
 
   .icon {
-    @apply me-horizontal-s flex items-center text-base-500 text-neutral-foreground-3 [grid-area:icon];
+    @apply me-horizontal-s flex items-center text-base-500 text-neutral-foreground-3;
+    grid-area: icon;
 
     @variant group-intent-error/fui-message-bar {
       @apply text-status-danger-foreground-1;
@@ -50,6 +55,7 @@
   }
 
   .bottom-reflow-spacer {
-    @apply mb-vertical-s [grid-area:secondaryActions];
+    @apply mb-vertical-s;
+    grid-area: secondaryActions;
   }
 }

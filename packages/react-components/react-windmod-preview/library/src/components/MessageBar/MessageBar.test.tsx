@@ -190,7 +190,7 @@ describe('MessageBar', () => {
 
   it('gates the bottom reflow spacer on the resolved layout', () => {
     const spacerOf = (props: React.ComponentProps<typeof MessageBar>) =>
-      renderMessageBar(props).root.querySelector(`.${styles['bottom-reflow-spacer']}`);
+      renderMessageBar(props).root.querySelector(`.${styles.bottomReflowSpacer}`);
 
     expect(spacerOf({ layout: 'multiline' })).toBeTruthy();
     expect(spacerOf({ layout: 'singleline' })).toBeNull();
@@ -199,7 +199,7 @@ describe('MessageBar', () => {
 
   it('keeps a consumer className on the bottom reflow spacer', () => {
     const { root } = renderMessageBar({ layout: 'multiline', bottomReflowSpacer: { className: 'mine' } });
-    const spacer = root.querySelector(`.${styles['bottom-reflow-spacer']}`);
+    const spacer = root.querySelector(`.${styles.bottomReflowSpacer}`);
 
     expect(spacer).toHaveClass('mine');
   });

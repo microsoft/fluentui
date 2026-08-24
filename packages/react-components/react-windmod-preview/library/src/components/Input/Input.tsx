@@ -6,7 +6,7 @@ import { renderInput, useInput } from '@fluentui/react-headless-components-previ
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { InputProps, InputState } from './Input.types';
+import type { InputProps } from './Input.types';
 import { useInputStyles } from './useInputStyles';
 
 /**
@@ -26,13 +26,13 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
     ...rest
   } = mergeContextProps({ size: useFieldContext()?.size }, props);
 
-  const state: InputState = {
-    ...useInput(rest, ref),
-    appearance,
-    size,
-  };
-
-  return renderInput(useInputStyles(state));
+  return renderInput(
+    useInputStyles({
+      ...useInput(rest, ref),
+      appearance,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<InputProps>;
 

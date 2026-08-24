@@ -33,7 +33,7 @@ export const useMessageBarStyles = (state: MessageBarState): MessageBarState => 
     icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
     bottomReflowSpacer: state.bottomReflowSpacer && {
       ...state.bottomReflowSpacer,
-      className: clsx(styles['bottom-reflow-spacer'], state.bottomReflowSpacer.className),
+      className: clsx(styles.bottomReflowSpacer, state.bottomReflowSpacer.className),
     },
   };
 };

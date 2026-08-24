@@ -16,8 +16,7 @@ import { useMessageBarBodyStyles } from './useMessageBarBodyStyles';
  * body decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps> = React.forwardRef((props, ref) => {
-  const state = useMessageBarBody(props, ref);
-  const styled = useMessageBarBodyStyles(state);
+  const styled = useMessageBarBodyStyles(useMessageBarBody(props, ref));
 
   return renderMessageBarBody(styled, useMessageBarBodyContextValues(styled));
 });

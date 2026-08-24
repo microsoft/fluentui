@@ -69,7 +69,7 @@ describe('MessageBarActions', () => {
     expect(root).toHaveClass(styles.root);
     expect(root).toHaveClass('consumer');
     // Negative control against the shared `fuicm-root` — see MessageBar.test.tsx.
-    expect(root).not.toHaveClass(styles['container-action']);
+    expect(root).not.toHaveClass(styles.containerAction);
   });
 
   it('reflects the presence of actions content', () => {
@@ -87,7 +87,7 @@ describe('MessageBarActions', () => {
         <button>act</button>
       </MessageBarActions>,
     );
-    const containerAction = container.querySelector(`.${styles['container-action']}`) as HTMLElement;
+    const containerAction = container.querySelector(`.${styles.containerAction}`) as HTMLElement;
 
     expect(containerAction).toBeTruthy();
     expect(containerAction).toHaveClass('mine');
@@ -105,7 +105,7 @@ describe('MessageBarActions', () => {
       );
       const root = container.firstElementChild as HTMLElement;
       const actions = root.querySelector('.fui-message-bar-actions') as HTMLElement;
-      const containerAction = root.querySelector(`.${styles['container-action']}`) as HTMLElement;
+      const containerAction = root.querySelector(`.${styles.containerAction}`) as HTMLElement;
 
       const siblings = Array.from(root.children);
 
