@@ -58,6 +58,22 @@ import type { LinkState as LinkState_2 } from '@fluentui/react-headless-componen
 import type { MenuButtonProps as MenuButtonProps_2 } from '@fluentui/react-headless-components-preview/menu-button';
 import { MenuButtonSlots } from '@fluentui/react-headless-components-preview/menu-button';
 import type { MenuButtonState as MenuButtonState_2 } from '@fluentui/react-headless-components-preview/menu-button';
+import { MessageBarActionsContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarActionsProps } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarActionsSlots } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarActionsState } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarBodyContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarBodyProps } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarBodySlots } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarBodyState } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarIntent } from '@fluentui/react-headless-components-preview/message-bar';
+import type { MessageBarProps as MessageBarProps_2 } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarSlots } from '@fluentui/react-headless-components-preview/message-bar';
+import type { MessageBarState as MessageBarState_2 } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarTitleProps } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarTitleSlots } from '@fluentui/react-headless-components-preview/message-bar';
+import { MessageBarTitleState } from '@fluentui/react-headless-components-preview/message-bar';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -95,6 +111,10 @@ import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
+import { renderMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
+import { renderMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
+import { renderMessageBarBody } from '@fluentui/react-headless-components-preview/message-bar';
+import { renderMessageBarTitle } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -200,6 +220,14 @@ import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
+import { useMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarActionsContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarBody } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarBodyContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarContext } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarContextValues } from '@fluentui/react-headless-components-preview/message-bar';
+import { useMessageBarTitle } from '@fluentui/react-headless-components-preview/message-bar';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -657,6 +685,77 @@ export { MenuButtonSlots }
 // @public
 export type MenuButtonState = MenuButtonState_2 & Required<Pick<MenuButtonProps, 'appearance' | 'shape' | 'size'>>;
 
+// @public
+export const MessageBar: ForwardRefComponent<MessageBarProps>;
+
+// @public
+export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
+
+// @public
+export const messageBarActionsClassNames: {
+    root: string;
+};
+
+export { MessageBarActionsContextValues }
+
+export { MessageBarActionsProps }
+
+export { MessageBarActionsSlots }
+
+export { MessageBarActionsState }
+
+// @public
+export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
+
+// @public
+export const messageBarBodyClassNames: {
+    root: string;
+};
+
+export { MessageBarBodyContextValues }
+
+export { MessageBarBodyProps }
+
+export { MessageBarBodySlots }
+
+export { MessageBarBodyState }
+
+// @public
+export const messageBarClassNames: {
+    root: string;
+};
+
+export { MessageBarContextValues }
+
+export { MessageBarIntent }
+
+// @public
+export type MessageBarProps = MessageBarProps_2 & {
+    shape?: MessageBarShape;
+};
+
+// @public
+export type MessageBarShape = 'rounded' | 'square';
+
+export { MessageBarSlots }
+
+// @public
+export type MessageBarState = MessageBarState_2 & Required<Pick<MessageBarProps, 'shape'>>;
+
+// @public
+export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
+
+// @public
+export const messageBarTitleClassNames: {
+    root: string;
+};
+
+export { MessageBarTitleProps }
+
+export { MessageBarTitleSlots }
+
+export { MessageBarTitleState }
+
 export { OnVisibleChangeData }
 
 // @public
@@ -825,6 +924,14 @@ export { renderLabel }
 export { renderLink }
 
 export { renderMenuButton }
+
+export { renderMessageBar }
+
+export { renderMessageBarActions }
+
+export { renderMessageBarBody }
+
+export { renderMessageBarTitle }
 
 export { renderProgressBar }
 
@@ -1367,6 +1474,34 @@ export { useMenuButton }
 
 // @public
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
+
+export { useMessageBar }
+
+export { useMessageBarActions }
+
+export { useMessageBarActionsContextValues }
+
+// @public
+export const useMessageBarActionsStyles: (state: MessageBarActionsState) => MessageBarActionsState;
+
+export { useMessageBarBody }
+
+export { useMessageBarBodyContextValues }
+
+// @public
+export const useMessageBarBodyStyles: (state: MessageBarBodyState) => MessageBarBodyState;
+
+export { useMessageBarContext }
+
+export { useMessageBarContextValues }
+
+// @public
+export const useMessageBarStyles: (state: MessageBarState) => MessageBarState;
+
+export { useMessageBarTitle }
+
+// @public
+export const useMessageBarTitleStyles: (state: MessageBarTitleState) => MessageBarTitleState;
 
 export { useProgressBar }
 
