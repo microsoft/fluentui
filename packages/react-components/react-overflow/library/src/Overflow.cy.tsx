@@ -255,6 +255,12 @@ describe('Overflow', () => {
   });
 
   it('should keep the menu visible when one phone number overflows next to a divider', () => {
+    cy.on('uncaught:exception', error => {
+      if (error.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+        return false;
+      }
+    });
+
     const PhoneNumbers = () => {
       const [width, setWidth] = React.useState(280);
 
