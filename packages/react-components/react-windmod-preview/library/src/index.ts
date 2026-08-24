@@ -417,6 +417,15 @@ export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './
 export { renderSlider, Slider, sliderClassNames, useSlider, useSliderStyles } from './slider';
 export type { SliderProps, SliderSize, SliderSlots, SliderState } from './slider';
 
+export { renderSpinButton, SpinButton, spinButtonClassNames, useSpinButton, useSpinButtonStyles } from './spin-button';
+export type {
+  SpinButtonAppearance,
+  SpinButtonProps,
+  SpinButtonSize,
+  SpinButtonSlots,
+  SpinButtonState,
+} from './spin-button';
+
 export { renderSpinner, Spinner, spinnerClassNames, useSpinner, useSpinnerStyles } from './spinner';
 export type { SpinnerAppearance, SpinnerProps, SpinnerSize, SpinnerSlots, SpinnerState } from './spinner';
 

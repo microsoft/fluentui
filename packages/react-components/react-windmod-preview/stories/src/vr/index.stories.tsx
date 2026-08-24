@@ -46,6 +46,8 @@ export { SkeletonWindmod } from './SkeletonWindmod.stories';
 export { SkeletonGriffel } from './SkeletonGriffel.stories';
 export { SliderWindmod } from './SliderWindmod.stories';
 export { SliderGriffel } from './SliderGriffel.stories';
+export { SpinButtonWindmod } from './SpinButtonWindmod.stories';
+export { SpinButtonGriffel } from './SpinButtonGriffel.stories';
 export { SpinnerWindmod } from './SpinnerWindmod.stories';
 export { SpinnerGriffel } from './SpinnerGriffel.stories';
 export { SplitButtonWindmod } from './SplitButtonWindmod.stories';

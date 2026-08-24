@@ -553,6 +553,16 @@
         "default": "./lib-commonjs/slider.cjs"
       }
     },
+    "./spin-button": {
+      "import": {
+        "types": "./dist/spin-button.d.ts",
+        "default": "./lib/spin-button.js"
+      },
+      "require": {
+        "types": "./dist/spin-button.d.cts",
+        "default": "./lib-commonjs/spin-button.cjs"
+      }
+    },
     "./spinner": {
       "import": {
         "types": "./dist/spinner.d.ts",

@@ -211,6 +211,7 @@ import { renderSelect } from '@fluentui/react-headless-components-preview/select
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSlider } from '@fluentui/react-headless-components-preview/slider';
+import { renderSpinButton } from '@fluentui/react-headless-components-preview/spin-button';
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { renderSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -242,6 +243,9 @@ import type { SliderProps as SliderProps_2 } from '@fluentui/react-headless-comp
 import { SliderSlots } from '@fluentui/react-headless-components-preview/slider';
 import type { SliderState as SliderState_2 } from '@fluentui/react-headless-components-preview/slider';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SpinButtonProps as SpinButtonProps_2 } from '@fluentui/react-headless-components-preview/spin-button';
+import { SpinButtonSlots } from '@fluentui/react-headless-components-preview/spin-button';
+import type { SpinButtonState as SpinButtonState_2 } from '@fluentui/react-headless-components-preview/spin-button';
 import type { SpinnerProps as SpinnerProps_2 } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerSlots } from '@fluentui/react-headless-components-preview/spinner';
 import type { SpinnerState as SpinnerState_2 } from '@fluentui/react-headless-components-preview/spinner';
@@ -376,6 +380,7 @@ import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleto
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSlider } from '@fluentui/react-headless-components-preview/slider';
+import { useSpinButton } from '@fluentui/react-headless-components-preview/spin-button';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { useSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -1480,6 +1485,8 @@ export { renderSkeletonItem }
 
 export { renderSlider }
 
+export { renderSpinButton }
+
 export { renderSpinner }
 
 export { renderSplitButton }
@@ -1613,6 +1620,31 @@ export { SliderSlots }
 
 // @public
 export type SliderState = SliderState_2 & Required<Pick<SliderProps, 'size'>>;
+
+// @public
+export const SpinButton: ForwardRefComponent<SpinButtonProps>;
+
+// @public
+export type SpinButtonAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const spinButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type SpinButtonProps = SpinButtonProps_2 & {
+    appearance?: SpinButtonAppearance;
+    size?: SpinButtonSize;
+};
+
+// @public
+export type SpinButtonSize = 'small' | 'medium';
+
+export { SpinButtonSlots }
+
+// @public
+export type SpinButtonState = SpinButtonState_2 & Required<Pick<SpinButtonProps, 'appearance' | 'size'>>;
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
@@ -2302,6 +2334,11 @@ export { useSlider }
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
+
+export { useSpinButton }
+
+// @public
+export const useSpinButtonStyles: (state: SpinButtonState) => SpinButtonState;
 
 export { useSpinner }
 
