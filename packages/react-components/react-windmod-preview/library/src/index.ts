@@ -43,6 +43,15 @@ export {
 } from './accordion-panel';
 export type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './accordion-panel';
 
+export {
+  AlphaSlider,
+  alphaSliderClassNames,
+  renderAlphaSlider,
+  useAlphaSlider,
+  useAlphaSliderStyles,
+} from './alpha-slider';
+export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './alpha-slider';
+
 export { Avatar, avatarClassNames, renderAvatar, useAvatar, useAvatarStyles } from './avatar';
 export type {
   AvatarActive,
@@ -135,6 +144,35 @@ export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './car
 
 export { Checkbox, checkboxClassNames, renderCheckbox, useCheckbox, useCheckboxStyles } from './checkbox';
 export type { CheckboxProps, CheckboxShape, CheckboxSize, CheckboxSlots, CheckboxState } from './checkbox';
+
+export { ColorArea, colorAreaClassNames, renderColorArea, useColorArea, useColorAreaStyles } from './color-area';
+export type { ColorAreaProps, ColorAreaSlots, ColorAreaState } from './color-area';
+
+export {
+  ColorPicker,
+  colorPickerClassNames,
+  renderColorPicker,
+  useColorPicker,
+  useColorPickerContextValue,
+  useColorPickerContextValues,
+  useColorPickerStyles,
+} from './color-picker';
+export type {
+  ColorPickerContextValue,
+  ColorPickerProps,
+  ColorPickerShape,
+  ColorPickerSlots,
+  ColorPickerState,
+} from './color-picker';
+
+export {
+  ColorSlider,
+  colorSliderClassNames,
+  renderColorSlider,
+  useColorSlider,
+  useColorSliderStyles,
+} from './color-slider';
+export type { ColorSliderProps, ColorSliderSlots, ColorSliderState } from './color-slider';
 
 export {
   ColorSwatch,

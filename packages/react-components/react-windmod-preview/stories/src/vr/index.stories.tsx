@@ -12,6 +12,8 @@ export { CardWindmod } from './CardWindmod.stories';
 export { CardGriffel } from './CardGriffel.stories';
 export { CheckboxWindmod } from './CheckboxWindmod.stories';
 export { CheckboxGriffel } from './CheckboxGriffel.stories';
+export { ColorPickerWindmod } from './ColorPickerWindmod.stories';
+export { ColorPickerGriffel } from './ColorPickerGriffel.stories';
 export { CompoundButtonWindmod } from './CompoundButtonWindmod.stories';
 export { CompoundButtonGriffel } from './CompoundButtonGriffel.stories';
 export { DividerWindmod } from './DividerWindmod.stories';
