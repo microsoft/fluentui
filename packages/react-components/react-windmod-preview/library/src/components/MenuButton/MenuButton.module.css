@@ -39,6 +39,34 @@
         border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
         border-width: var(--fui-focus-ring-width, 1px);
       }
+
+      /* Last in the block. Griffel writes every forced-colors rule into its media bucket, which
+         its sheet emits after every other bucket, so under forced colours Button's crossings win
+         and the expanded look above never applies. Layer order inverts that here — the expanded
+         blocks sit a layer above Button's — so each crossing they would swallow is repeated,
+         gated exactly as Button gates it and carrying no value this file invents. */
+      @variant forced-colors {
+        @variant at-rest {
+          /* Only `primary` declares a resting background at forced colours; the other
+             appearances leave Button's resting look alone, and so does this re-assert. */
+          @variant appearance-primary {
+            @apply bg-[Highlight];
+          }
+        }
+
+        @variant focus {
+          @apply border-[ButtonText];
+        }
+
+        /* After the focus crossing, as in Button: the disabled border wins over it. */
+        @variant disabled, disabled-focusable {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+
+          @variant focus {
+            @apply border-[GrayText];
+          }
+        }
+      }
     }
   }
 
