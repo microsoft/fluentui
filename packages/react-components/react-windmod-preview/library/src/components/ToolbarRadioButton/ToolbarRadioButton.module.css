@@ -69,6 +69,10 @@
         @variant hover-active {
           @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
         }
+
+        @variant focus {
+          @apply border-[HighlightText];
+        }
       }
     }
   }
@@ -84,6 +88,16 @@
 
         @variant group-hover-active/fui-toolbar-radio-button {
           @apply text-neutral-foreground-2-brand-pressed;
+        }
+
+        @variant forced-colors {
+          @variant group-hover/fui-toolbar-radio-button {
+            @apply text-[Highlight];
+          }
+
+          @variant group-hover-active/fui-toolbar-radio-button {
+            @apply text-[Highlight];
+          }
         }
       }
 
