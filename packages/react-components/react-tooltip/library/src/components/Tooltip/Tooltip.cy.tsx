@@ -45,7 +45,8 @@ describe('Tooltip', () => {
     });
   });
 
-  describe('static non-scrolling overflow:hidden container (regression: #36604)', () => {
+  // Verifies the fix for regression reported in https://github.com/microsoft/fluentui/issues/36604
+  describe('static non-scrolling overflow:hidden container', () => {
     it('still shows the tooltip when its trigger sits in a tightly-fitted overflow:hidden container', () => {
       mount(
         <div style={{ overflow: 'hidden', display: 'flex' }}>
