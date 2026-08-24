@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderNavSubItem, useNavContext, useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 
-import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
+import type { NavSubItemProps } from './NavSubItem.types';
 import { useNavSubItemStyles } from './useNavSubItemStyles';
 
 /**
@@ -16,12 +16,12 @@ export const NavSubItem: ForwardRefComponent<NavSubItemProps> = React.forwardRef
   // at all; the default is Griffel's own, spelled per-component as Griffel spells it.
   const { density = 'medium' } = useNavContext();
 
-  const state: NavSubItemState = {
-    ...useNavSubItem(props, ref as React.Ref<HTMLButtonElement | HTMLAnchorElement>),
-    density,
-  };
-
-  return renderNavSubItem(useNavSubItemStyles(state));
+  return renderNavSubItem(
+    useNavSubItemStyles({
+      ...useNavSubItem(props, ref as React.Ref<HTMLButtonElement | HTMLAnchorElement>),
+      density,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<NavSubItemProps>;
 

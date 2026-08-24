@@ -6,7 +6,7 @@ import { renderProgressBar, useProgressBar } from '@fluentui/react-headless-comp
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { ProgressBarColor, ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+import type { ProgressBarColor, ProgressBarProps } from './ProgressBar.types';
 import { useProgressBarStyles } from './useProgressBarStyles';
 
 /**
@@ -34,14 +34,14 @@ export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardR
     ...rest
   } = mergeContextProps({ color: contextColor }, props);
 
-  const state: ProgressBarState = {
-    ...useProgressBar(rest, ref),
-    color,
-    shape,
-    thickness,
-  };
-
-  return renderProgressBar(useProgressBarStyles(state));
+  return renderProgressBar(
+    useProgressBarStyles({
+      ...useProgressBar(rest, ref),
+      color,
+      shape,
+      thickness,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<ProgressBarProps>;
 

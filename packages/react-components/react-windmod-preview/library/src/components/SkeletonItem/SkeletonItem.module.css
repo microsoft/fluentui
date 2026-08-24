@@ -35,7 +35,12 @@
     --fui-skeleton-item-size: calc(attr(data-size type(<number>), 16) * 1px);
 
     @variant after {
-      @apply absolute inset-0 block [transform:translate(-100%)] [animation-duration:3s] [animation-iteration-count:infinite] [animation-name:wave] [animation-timing-function:ease-in-out];
+      @apply absolute inset-0 block;
+      transform: translate(-100%);
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-name: wave;
+      animation-timing-function: ease-in-out;
 
       background-image: linear-gradient(
         to right,
@@ -57,7 +62,9 @@
       @apply bg-transparent;
 
       @variant after {
-        @apply transform-none bg-neutral-stencil-1 bg-none [animation-duration:1s] [animation-name:pulse];
+        @apply transform-none bg-neutral-stencil-1 bg-none;
+        animation-duration: 1s;
+        animation-name: pulse;
       }
     }
 
@@ -92,7 +99,8 @@
 
     @media screen and (prefers-reduced-motion: reduce) {
       @variant after {
-        @apply [animation-duration:0.01ms] [animation-iteration-count:1];
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
       }
     }
   }

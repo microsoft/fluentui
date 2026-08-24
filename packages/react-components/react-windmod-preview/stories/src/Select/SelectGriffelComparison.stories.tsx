@@ -36,8 +36,15 @@ const Options = (): React.ReactNode => (
   </>
 );
 
-const icon = (Icon: React.ComponentType, custom: boolean, removed: boolean) =>
-  removed ? { icon: null } : custom ? { icon: <Icon /> } : {};
+const icon = (Icon: React.ComponentType, custom: boolean, removed: boolean) => {
+  if (removed) {
+    return { icon: null };
+  }
+  if (custom) {
+    return { icon: <Icon /> };
+  }
+  return {};
+};
 
 /**
  * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).

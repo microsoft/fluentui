@@ -8,7 +8,7 @@ import {
   useSkeletonContextValues,
 } from '@fluentui/react-headless-components-preview/skeleton';
 
-import type { SkeletonProps, SkeletonState } from './Skeleton.types';
+import type { SkeletonProps } from './Skeleton.types';
 import { SkeletonContextProvider, useSkeletonContext } from './SkeletonContext';
 import { useSkeletonStyles } from './useSkeletonStyles';
 
@@ -16,37 +16,39 @@ import { useSkeletonStyles } from './useSkeletonStyles';
  * A Skeleton is a loading placeholder that groups SkeletonItems. Windmod Skeleton: the headless
  * skeleton decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef((props, ref) => {
-  const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
-  // `size` and `shape` carry no context fallback: a nested Skeleton without them resets them
-  // for its subtree, while `animation` and `appearance` pass through.
-  const {
-    animation = contextAnimation ?? 'wave',
-    appearance = contextAppearance ?? 'opaque',
-    size,
-    shape,
-    ...rest
-  } = props;
+export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef(
+  // The context fallbacks are read in the body, so the look props cannot default in the
+  // parameter list.
+  (props, ref) => {
+    const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
+    // `size` and `shape` carry no context fallback: a nested Skeleton without them resets them
+    // for its subtree, while `animation` and `appearance` pass through.
+    const {
+      animation = contextAnimation ?? 'wave',
+      appearance = contextAppearance ?? 'opaque',
+      size,
+      shape,
+      ...rest
+    } = props;
 
-  const state: SkeletonState = {
-    ...useSkeleton(rest, ref as React.Ref<HTMLDivElement>),
-    animation,
-    appearance,
-    size,
-    shape,
-  };
+    const styled = useSkeletonStyles({
+      ...useSkeleton(rest, ref as React.Ref<HTMLDivElement>),
+      animation,
+      appearance,
+      size,
+      shape,
+    });
+    const contextValues = useSkeletonContextValues(styled);
 
-  const styled = useSkeletonStyles(state);
-  const contextValues = useSkeletonContextValues(styled);
-
-  // renderSkeleton installs the headless group provider; this wrapper populates the windmod one
-  // the windmod SkeletonItem reads. Both providers share the one memoised value object.
-  return (
-    <SkeletonContextProvider value={contextValues.skeletonGroup}>
-      {renderSkeleton(styled, contextValues)}
-    </SkeletonContextProvider>
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<SkeletonProps>;
+    // renderSkeleton installs the headless group provider; this wrapper populates the windmod one
+    // the windmod SkeletonItem reads. Both providers share the one memoised value object.
+    return (
+      <SkeletonContextProvider value={contextValues.skeletonGroup}>
+        {renderSkeleton(styled, contextValues)}
+      </SkeletonContextProvider>
+    );
+    // Casting is required due to lack of distributive union to support union on @types/react
+  },
+) as ForwardRefComponent<SkeletonProps>;
 
 Skeleton.displayName = 'Skeleton';

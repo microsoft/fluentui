@@ -13,9 +13,7 @@ import { useNavSubItemGroupStyles } from './useNavSubItemGroupStyles';
  * closed category renders no group at all.
  */
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps> = React.forwardRef((props, ref) => {
-  const state = useNavSubItemGroup(props, ref as React.Ref<HTMLDivElement>);
-
-  return renderNavSubItemGroup(useNavSubItemGroupStyles(state));
+  return renderNavSubItemGroup(useNavSubItemGroupStyles(useNavSubItemGroup(props, ref as React.Ref<HTMLDivElement>)));
 });
 
 NavSubItemGroup.displayName = 'NavSubItemGroup';

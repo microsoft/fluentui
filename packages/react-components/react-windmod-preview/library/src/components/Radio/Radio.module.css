@@ -30,13 +30,14 @@
   }
 
   .indicator {
-    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-(length:--spacing-thin) border-solid fill-current text-[length:calc(12px*var(--base-scale))];
+    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-(length:--spacing-thin) border-solid fill-current text-icon-12;
 
     /* Raw pseudo, never Tailwind's `after` variant: the variant injects
        `content: var(--tw-content)`, whose registered initial value renders the dot in every
        state. The checked-only `content` lives in .defaultIndicator. */
     &::after {
-      @apply absolute size-16 [transform:scale(0.625)] rounded-circular bg-current;
+      @apply absolute size-16 rounded-circular bg-current;
+      transform: scale(0.625);
     }
 
     @variant peer-enabled/fui-radio {
@@ -94,7 +95,7 @@
     }
   }
 
-  .defaultIndicator {
+  .default-indicator {
     @variant peer-checked/fui-radio {
       &::after {
         @apply content-[''];
@@ -102,7 +103,7 @@
     }
   }
 
-  .customIndicator {
+  .custom-indicator {
     @variant peer-not-checked/fui-radio {
       & > * {
         @apply opacity-0;

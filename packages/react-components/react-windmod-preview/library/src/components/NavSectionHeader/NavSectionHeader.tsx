@@ -12,9 +12,9 @@ import { useNavSectionHeaderStyles } from './useNavSectionHeaderStyles';
  * section header decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useNavSectionHeader(props, ref as React.Ref<HTMLDivElement>);
-
-  return renderNavSectionHeader(useNavSectionHeaderStyles(state));
+  return renderNavSectionHeader(
+    useNavSectionHeaderStyles(useNavSectionHeader(props, ref as React.Ref<HTMLDivElement>)),
+  );
 });
 
 NavSectionHeader.displayName = 'NavSectionHeader';

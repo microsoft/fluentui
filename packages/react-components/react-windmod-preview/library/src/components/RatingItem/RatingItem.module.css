@@ -13,19 +13,19 @@
   }
 
   .small {
-    @apply size-12 text-[length:calc(12px*var(--base-scale))];
+    @apply size-12 text-icon-12;
   }
 
   .medium {
-    @apply size-16 text-[length:calc(16px*var(--base-scale))];
+    @apply size-16 text-icon-16;
   }
 
   .large {
-    @apply size-20 text-[length:calc(20px*var(--base-scale))];
+    @apply size-20 text-icon-20;
   }
 
   .extra-large {
-    @apply size-28 text-[length:calc(28px*var(--base-scale))];
+    @apply size-28 text-icon-28;
   }
 
   .input {

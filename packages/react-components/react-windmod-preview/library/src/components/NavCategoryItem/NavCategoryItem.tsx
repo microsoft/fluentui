@@ -10,7 +10,7 @@ import {
   useNavContext,
 } from '@fluentui/react-headless-components-preview/nav';
 
-import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import type { NavCategoryItemProps } from './NavCategoryItem.types';
 import { useNavCategoryItemStyles } from './useNavCategoryItemStyles';
 
 /**
@@ -32,7 +32,7 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
     ref as React.Ref<HTMLButtonElement>,
   );
 
-  const state: NavCategoryItemState = {
+  const styled = useNavCategoryItemStyles({
     ...headless,
     density,
     expandIcon: headless.expandIcon && {
@@ -40,9 +40,7 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
       ...headless.expandIcon,
       children: headless.expandIcon.children ?? <ChevronDown20Regular />,
     },
-  };
-
-  const styled = useNavCategoryItemStyles(state);
+  });
 
   return renderNavCategoryItem(styled, useNavCategoryItemContextValues(styled));
 });

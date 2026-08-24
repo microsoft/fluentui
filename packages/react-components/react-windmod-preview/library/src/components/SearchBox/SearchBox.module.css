@@ -46,7 +46,7 @@
     }
   }
 
-  .contentAfter {
+  .content-after {
     @apply gap-x-horizontal-xs ps-horizontal-m;
 
     @variant group-not-focused/fui-search-box {
@@ -58,7 +58,7 @@
     @apply box-border flex cursor-pointer text-neutral-foreground-3;
 
     & > svg {
-      @apply text-[length:calc(20px*var(--base-scale))];
+      @apply text-icon-20;
     }
 
     @variant group-disabled/fui-search-box {
@@ -67,13 +67,13 @@
 
     @variant group-size-small/fui-search-box {
       & > svg {
-        @apply text-[length:calc(16px*var(--base-scale))];
+        @apply text-icon-16;
       }
     }
 
     @variant group-size-large/fui-search-box {
       & > svg {
-        @apply text-[length:calc(24px*var(--base-scale))];
+        @apply text-icon-24;
       }
     }
   }

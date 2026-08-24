@@ -83,7 +83,11 @@
     }
 
     @variant group-indeterminate/fui-progress-bar {
-      @apply relative max-w-[33%] [animation-duration:3s] [animation-iteration-count:infinite] [animation-name:indeterminate-slide] [animation-timing-function:linear];
+      @apply relative max-w-[33%];
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-name: indeterminate-slide;
+      animation-timing-function: linear;
 
       background-image: linear-gradient(
         to right,
@@ -93,7 +97,8 @@
       );
 
       @media screen and (prefers-reduced-motion: reduce) {
-        @apply max-w-full [animation-name:indeterminate-pulse];
+        @apply max-w-full;
+        animation-name: indeterminate-pulse;
       }
     }
   }

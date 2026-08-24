@@ -31,18 +31,18 @@ export const useRatingItemStyles = (state: RatingItemState): RatingItemState => 
     },
     halfValueInput: state.halfValueInput && {
       ...state.halfValueInput,
-      className: clsx(styles.input, styles['input-lower-half'], state.halfValueInput.className),
+      className: clsx(styles.input, styles.inputLowerHalf, state.halfValueInput.className),
     },
     fullValueInput: state.fullValueInput && {
       ...state.fullValueInput,
-      className: clsx(styles.input, state.halfValueInput && styles['input-upper-half'], state.fullValueInput.className),
+      className: clsx(styles.input, state.halfValueInput && styles.inputUpperHalf, state.fullValueInput.className),
     },
     selectedIcon: state.selectedIcon && {
       ...state.selectedIcon,
       className: clsx(
         styles.indicator,
         color !== 'neutral' && styles[`selected-${color}`],
-        isHalf && styles['lower-half'],
+        isHalf && styles.lowerHalf,
         state.selectedIcon.className,
       ),
     },
@@ -53,7 +53,7 @@ export const useRatingItemStyles = (state: RatingItemState): RatingItemState => 
         isFilled
           ? [styles[`unselected-${color}`], styles.unselected]
           : color !== 'neutral' && styles[`selected-${color}`],
-        isHalf && styles['upper-half'],
+        isHalf && styles.upperHalf,
         state.unselectedIcon.className,
       ),
     },

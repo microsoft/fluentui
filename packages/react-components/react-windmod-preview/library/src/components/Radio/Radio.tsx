@@ -12,9 +12,7 @@ import { useRadioStyles } from './useRadioStyles';
  * Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
-  const state = useRadio(props, ref);
-
-  return renderRadio(useRadioStyles(state));
+  return renderRadio(useRadioStyles(useRadio(props, ref)));
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<RadioProps>;
 

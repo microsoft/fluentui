@@ -2,6 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply shrink-0 [transform:translateZ(0)] overflow-hidden;
+    @apply shrink-0 overflow-hidden;
+    transform: translateZ(0);
   }
 }

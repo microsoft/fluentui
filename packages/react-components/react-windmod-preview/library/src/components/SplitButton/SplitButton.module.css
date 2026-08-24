@@ -7,7 +7,7 @@
 
   /* The divider between the two buttons is the primary button's inline-end border: the menu
      button drops its own inline-start border width so exactly one line is drawn. */
-  .primaryActionButton {
+  .primary-action-button {
     @apply rounded-e-none;
 
     @variant group-appearance-primary/fui-split-button {
@@ -60,7 +60,7 @@
     }
   }
 
-  .menuButton {
+  .menu-button {
     @apply min-w-24 rounded-s-none border-s-0;
   }
 }

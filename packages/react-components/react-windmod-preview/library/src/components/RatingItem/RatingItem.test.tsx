@@ -50,7 +50,7 @@ describe('RatingItem', () => {
     const root = getByTestId('root');
 
     expect(indicators(root)).toHaveLength(1);
-    expect(indicators(root)[0]).toHaveClass(styles['unselected-neutral']);
+    expect(indicators(root)[0]).toHaveClass(styles.unselectedNeutral);
     expect(indicators(root)[0]).toHaveClass(styles.unselected);
     expect(root).toHaveClass(styles.root);
     expect(root).toHaveClass(styles.medium);
@@ -69,17 +69,17 @@ describe('RatingItem', () => {
     const inherit = getByTestId('inherit');
 
     expect(inherit).toHaveClass(styles.large);
-    expect(indicators(inherit)[0]).toHaveClass(styles['selected-brand']);
+    expect(indicators(inherit)[0]).toHaveClass(styles.selectedBrand);
 
     const override = getByTestId('override');
 
     expect(override).toHaveClass(styles.small);
     expect(override).not.toHaveClass(styles.large);
-    expect(indicators(override)[0]).toHaveClass(styles['selected-marigold']);
+    expect(indicators(override)[0]).toHaveClass(styles.selectedMarigold);
 
     const unselected = getByTestId('unselected');
 
-    expect(indicators(unselected)[0]).toHaveClass(styles['unselected-brand']);
+    expect(indicators(unselected)[0]).toHaveClass(styles.unselectedBrand);
     expect(indicators(unselected)[0]).toHaveClass(styles.unselected);
   });
 
@@ -106,9 +106,9 @@ describe('RatingItem', () => {
     expect(styled.root.className).toContain('consumer');
     expect(styled.root.className).toContain(ratingItemClassNames.root);
     expect(styled.selectedIcon!.className).toContain('consumer-selected');
-    expect(styled.selectedIcon!.className).toContain(styles['lower-half']);
+    expect(styled.selectedIcon!.className).toContain(styles.lowerHalf);
     expect(styled.unselectedIcon!.className).toContain('consumer-unselected');
-    expect(styled.unselectedIcon!.className).toContain(styles['upper-half']);
+    expect(styled.unselectedIcon!.className).toContain(styles.upperHalf);
   });
 
   it('keeps the muted unselected look for every colour inside a rating display', () => {
@@ -138,8 +138,8 @@ describe('RatingItem', () => {
     const neutral = getByTestId('neutral');
 
     expect(indicators(neutral)[0]).not.toHaveClass(styles.unselected);
-    expect(indicators(neutral)[0]).not.toHaveClass(styles['unselected-neutral']);
-    expect(indicators(neutral)[0]).not.toHaveClass(styles['selected-neutral']);
+    expect(indicators(neutral)[0]).not.toHaveClass(styles.unselectedNeutral);
+    expect(indicators(neutral)[0]).not.toHaveClass(styles.selectedNeutral);
 
     const brand = render(
       <Rating color="brand" value={0}>
@@ -147,7 +147,7 @@ describe('RatingItem', () => {
       </Rating>,
     ).getByTestId('brand');
 
-    expect(indicators(brand)[0]).toHaveClass(styles['selected-brand']);
+    expect(indicators(brand)[0]).toHaveClass(styles.selectedBrand);
     expect(indicators(brand)[0]).not.toHaveClass(styles.unselected);
   });
 
@@ -162,8 +162,8 @@ describe('RatingItem', () => {
 
     expect(wholeInputs).toHaveLength(1);
     expect(wholeInputs[0]).toHaveClass(styles.input);
-    expect(wholeInputs[0]).not.toHaveClass(styles['input-upper-half']);
-    expect(wholeInputs[0]).not.toHaveClass(styles['input-lower-half']);
+    expect(wholeInputs[0]).not.toHaveClass(styles.inputUpperHalf);
+    expect(wholeInputs[0]).not.toHaveClass(styles.inputLowerHalf);
 
     const half = render(
       <Rating step={0.5} value={0}>
@@ -175,9 +175,9 @@ describe('RatingItem', () => {
 
     expect(halfInputs).toHaveLength(2);
     expect(halfInputs[0]).toHaveClass(styles.input);
-    expect(halfInputs[0]).toHaveClass(styles['input-lower-half']);
+    expect(halfInputs[0]).toHaveClass(styles.inputLowerHalf);
     expect(halfInputs[1]).toHaveClass(styles.input);
-    expect(halfInputs[1]).toHaveClass(styles['input-upper-half']);
+    expect(halfInputs[1]).toHaveClass(styles.inputUpperHalf);
   });
 
   it('keeps a consumer className on both input slots', () => {

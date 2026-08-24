@@ -153,12 +153,12 @@ describe('RatingDisplay', () => {
     ['small', 'medium'].forEach(id => {
       labels(getByTestId(id)).forEach(label => {
         expect(label).not.toHaveClass(styles.large);
-        expect(label).not.toHaveClass(styles['extra-large']);
+        expect(label).not.toHaveClass(styles.extraLarge);
       });
     });
 
     labels(getByTestId('large')).forEach(label => expect(label).toHaveClass(styles.large));
-    labels(getByTestId('extra-large')).forEach(label => expect(label).toHaveClass(styles['extra-large']));
+    labels(getByTestId('extra-large')).forEach(label => expect(label).toHaveClass(styles.extraLarge));
   });
 
   it('overlays both indicators at a half value, and one at either extreme', () => {

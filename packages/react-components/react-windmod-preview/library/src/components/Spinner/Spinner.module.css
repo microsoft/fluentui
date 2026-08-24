@@ -66,7 +66,11 @@
   }
 
   .spinner {
-    @apply relative shrink-0 bg-brand-stroke-2-contrast text-brand-stroke-1 [animation-duration:1.5s] [animation-iteration-count:infinite] [animation-name:rotate] [animation-timing-function:linear];
+    @apply relative shrink-0 bg-brand-stroke-2-contrast text-brand-stroke-1;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    animation-timing-function: linear;
 
     -webkit-mask-image: radial-gradient(
       closest-side,
@@ -86,7 +90,7 @@
     }
 
     @variant motion-reduce {
-      @apply [animation-duration:1.8s];
+      animation-duration: 1.8s;
     }
 
     @variant group-size-extra-tiny/fui-spinner {
@@ -147,27 +151,32 @@
   }
 
   .tail {
-    @apply absolute block size-full [animation-duration:1.5s] [animation-iteration-count:infinite] [animation-name:tail-rotate] [animation-timing-function:var(--ease-easy-ease)];
+    @apply absolute block size-full;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: tail-rotate;
+    animation-timing-function: var(--ease-easy-ease);
 
     -webkit-mask-image: conic-gradient(transparent 105deg, white 105deg);
     mask-image: conic-gradient(transparent 105deg, white 105deg);
 
     @variant before, after {
-      @apply absolute block size-full [animation:inherit];
+      @apply absolute block size-full;
+      animation: inherit;
 
       background-image: conic-gradient(currentcolor 135deg, transparent 135deg);
     }
 
     @variant before {
-      @apply [animation-name:tail-before-rotate];
+      animation-name: tail-before-rotate;
     }
 
     @variant after {
-      @apply [animation-name:tail-after-rotate];
+      animation-name: tail-after-rotate;
     }
 
     @variant motion-reduce {
-      @apply [animation-iteration-count:0];
+      animation-iteration-count: 0;
 
       background-image: conic-gradient(transparent 120deg, currentcolor 360deg);
 

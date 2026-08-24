@@ -54,16 +54,15 @@
 
     @apply pointer-events-none mx-horizontal-s my-vertical-s box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid fill-current text-[length:calc(18px*var(--base-scale))] leading-[0] duration-(--duration-normal) ease-(--ease-easy-ease);
 
-    /* Longhands only — see Button.module.css. */
-    transition-property:
-      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
+    transition-property: background, border, color;
 
     @media screen and (prefers-reduced-motion: reduce) {
       transition-duration: 0.01ms;
     }
 
     & > * {
-      @apply [transform:translateX(var(--fui-switch-thumb-offset))] transition-[transform] duration-(--duration-normal) ease-(--ease-easy-ease);
+      @apply transition-[transform] duration-(--duration-normal) ease-(--ease-easy-ease);
+      transform: translateX(var(--fui-switch-thumb-offset));
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -71,7 +70,7 @@
 
       /* translateX is physical, so the offset needs an explicit RTL negation. */
       @variant rtl {
-        @apply [transform:translateX(calc(var(--fui-switch-thumb-offset)*-1))];
+        transform: translateX(calc(var(--fui-switch-thumb-offset) * -1));
       }
     }
 
@@ -80,7 +79,7 @@
     }
 
     @variant group-size-small/fui-switch {
-      @apply h-16 w-32 text-[length:calc(14px*var(--base-scale))];
+      @apply h-16 w-32 text-base-300;
 
       @variant peer-checked/fui-switch {
         --fui-switch-thumb-offset: calc(16px * var(--base-scale));
@@ -146,7 +145,7 @@
     }
   }
 
-  .labelAbove {
+  .label-above {
     @apply mt-0;
   }
 

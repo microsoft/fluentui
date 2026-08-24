@@ -61,11 +61,11 @@
     }
   }
 
-  .filledDarker {
+  .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  .filledLighter {
+  .filled-lighter {
     @apply bg-neutral-background-1;
   }
 
@@ -75,7 +75,7 @@
     }
   }
 
-  .outlineInteractive {
+  .outline-interactive {
     @variant hover {
       @variant before {
         @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
@@ -89,7 +89,7 @@
     }
   }
 
-  .underlineInteractive {
+  .underline-interactive {
     @variant after {
       @apply rounded-none;
     }
@@ -107,7 +107,7 @@
     }
   }
 
-  .filledInteractive {
+  .filled-interactive {
     @variant hover, focus-within {
       @variant before {
         @apply border-transparent-stroke-interactive;
@@ -192,7 +192,7 @@
     }
   }
 
-  .buttonFilledDarker {
+  .button-filled-darker {
     @variant enabled {
       @variant hover {
         @apply bg-neutral-background-3-hover;
@@ -204,7 +204,7 @@
     }
   }
 
-  .buttonFilledLighter {
+  .button-filled-lighter {
     @variant enabled {
       @variant hover {
         @apply bg-neutral-background-1-hover;

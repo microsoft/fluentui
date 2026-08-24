@@ -8,7 +8,7 @@ import {
   useSwatchPickerRow,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 
-import type { SwatchPickerRowProps, SwatchPickerRowState } from './SwatchPickerRow.types';
+import type { SwatchPickerRowProps } from './SwatchPickerRow.types';
 import { useSwatchPickerRowStyles } from './useSwatchPickerRowStyles';
 
 /**
@@ -21,12 +21,12 @@ import { useSwatchPickerRowStyles } from './useSwatchPickerRowStyles';
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps> = React.forwardRef((props, ref) => {
   const spacing = useSwatchPickerContextValue(ctx => ctx.spacing) ?? 'medium';
 
-  const state: SwatchPickerRowState = {
-    ...useSwatchPickerRow(props, ref),
-    spacing,
-  };
-
-  return renderSwatchPickerRow(useSwatchPickerRowStyles(state));
+  return renderSwatchPickerRow(
+    useSwatchPickerRowStyles({
+      ...useSwatchPickerRow(props, ref),
+      spacing,
+    }),
+  );
 });
 
 SwatchPickerRow.displayName = 'SwatchPickerRow';

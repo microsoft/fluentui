@@ -33,7 +33,7 @@ export const useProgressBarStyles = (state: ProgressBarState): ProgressBarState 
       className: clsx(
         styles.bar,
         styles[value === undefined ? 'brand' : color],
-        value !== undefined && value > ZERO_THRESHOLD && styles['non-zero-determinate'],
+        value !== undefined && value > ZERO_THRESHOLD && styles.nonZeroDeterminate,
         state.bar.className,
       ),
     },

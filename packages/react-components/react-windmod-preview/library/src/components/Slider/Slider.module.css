@@ -183,7 +183,7 @@
       @apply h-full w-(--fui-slider-thumb-size);
 
       @supports (writing-mode: sideways-lr) {
-        @apply [writing-mode:vertical-lr];
+        writing-mode: vertical-lr;
 
         direction: rtl;
 

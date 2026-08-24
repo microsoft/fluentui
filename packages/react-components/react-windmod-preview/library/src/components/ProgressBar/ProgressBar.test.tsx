@@ -118,11 +118,11 @@ describe('ProgressBar', () => {
       </>,
     );
 
-    expect(barOf(getByTestId('half'))).toHaveClass(styles['non-zero-determinate']);
-    expect(barOf(getByTestId('zero'))).not.toHaveClass(styles['non-zero-determinate']);
-    expect(barOf(getByTestId('at-threshold'))).not.toHaveClass(styles['non-zero-determinate']);
-    expect(barOf(getByTestId('above-threshold'))).toHaveClass(styles['non-zero-determinate']);
-    expect(barOf(getByTestId('indeterminate'))).not.toHaveClass(styles['non-zero-determinate']);
+    expect(barOf(getByTestId('half'))).toHaveClass(styles.nonZeroDeterminate);
+    expect(barOf(getByTestId('zero'))).not.toHaveClass(styles.nonZeroDeterminate);
+    expect(barOf(getByTestId('at-threshold'))).not.toHaveClass(styles.nonZeroDeterminate);
+    expect(barOf(getByTestId('above-threshold'))).toHaveClass(styles.nonZeroDeterminate);
+    expect(barOf(getByTestId('indeterminate'))).not.toHaveClass(styles.nonZeroDeterminate);
   });
 
   it('leaves the bar carrying the headless-computed inline width', () => {
