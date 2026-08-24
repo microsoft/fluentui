@@ -98,6 +98,7 @@
 @custom-variant layout-horizontal-stacked (&:where([data-layout='horizontal-stacked']));
 @custom-variant layout-singleline (&:where([data-layout='singleline']));
 @custom-variant layout-multiline (&:where([data-layout='multiline']));
+@custom-variant layout-grid (&:where([data-layout='grid']));
 
 /* per-component booleans */
 @custom-variant inset (&:where([data-inset]));

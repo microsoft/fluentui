@@ -1,0 +1,27 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply size-28 rounded-none border border-dashed border-neutral-foreground-4 bg-transparent-background;
+
+    @variant size-extra-small {
+      @apply size-20;
+    }
+
+    @variant size-small {
+      @apply size-24;
+    }
+
+    @variant size-large {
+      @apply size-32;
+    }
+
+    @variant shape-rounded {
+      @apply rounded-medium;
+    }
+
+    @variant shape-circular {
+      @apply rounded-circular;
+    }
+  }
+}
