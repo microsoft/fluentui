@@ -4,15 +4,22 @@
 
 ```ts
 
+import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { AvatarContextValue } from '@fluentui/react-avatar';
 import { AvatarBaseProps as AvatarProps } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarBaseState as AvatarState } from '@fluentui/react-avatar';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderAvatar_unstable as renderAvatar } from '@fluentui/react-avatar';
+import { useAvatarContext } from '@fluentui/react-avatar';
 
 // @public
 export const Avatar: ForwardRefComponent<AvatarProps>;
+
+export { AvatarContextProvider }
+
+export { AvatarContextValue }
 
 export { AvatarProps }
 
@@ -24,6 +31,8 @@ export { renderAvatar }
 
 // @public
 export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+export { useAvatarContext }
 
 // (No @packageDocumentation comment for this package)
 

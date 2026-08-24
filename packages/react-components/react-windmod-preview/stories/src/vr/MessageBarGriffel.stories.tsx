@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Button,
   FluentProvider,
+  Link,
   MessageBar,
   MessageBarActions,
   MessageBarBody,
@@ -20,6 +21,7 @@ export const MessageBarGriffel = (): React.ReactNode => (
       MessageBarBody={MessageBarBody}
       MessageBarActions={MessageBarActions}
       Button={Button}
+      Link={Link}
       DismissIcon={DismissRegular}
     />
   </FluentProvider>

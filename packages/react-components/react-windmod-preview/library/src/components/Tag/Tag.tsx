@@ -5,8 +5,23 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTag, useTag, useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
+import type { AvatarShape, AvatarSize } from '../Avatar/Avatar.types';
 import type { TagProps, TagState } from './Tag.types';
 import { useTagStyles } from './useTagStyles';
+
+// The Avatar look a Tag imposes on its `media` slot, keyed by the Tag's own look props. Values are
+// Griffel's `tagAvatarSizeMap`/`tagAvatarShapeMap` (react-tags/.../useTag.tsx:10-19) — the headless
+// state omits both (they are design-only, so `TagBaseState` drops them), so windmod re-derives them.
+const TAG_AVATAR_SIZE: Record<NonNullable<TagProps['size']>, AvatarSize> = {
+  medium: 28,
+  small: 20,
+  'extra-small': 16,
+};
+
+const TAG_AVATAR_SHAPE: Record<NonNullable<TagProps['shape']>, AvatarShape> = {
+  rounded: 'square',
+  circular: 'circular',
+};
 
 /**
  * A Tag represents a keyword or phrase attached to a larger item. Windmod Tag: the headless tag
@@ -29,7 +44,19 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
     children: base.dismissIcon.children ?? <DismissRegular />,
   };
 
-  const state: TagState = { ...base, dismissIcon, appearance, shape, size };
+  // `useTagContextValues` is Griffel's own `useTagAvatarContextValues_unstable`, which reads
+  // `avatarShape`/`avatarSize` off the state it is handed. The headless state carries neither, so
+  // without this derivation the Tag would publish `{ avatar: { size: undefined, shape: undefined } }`
+  // and a nested Avatar would fall back to its own 32/circular defaults instead of the Tag's look.
+  const state: TagState = {
+    ...base,
+    dismissIcon,
+    appearance,
+    avatarShape: TAG_AVATAR_SHAPE[shape],
+    avatarSize: TAG_AVATAR_SIZE[size],
+    shape,
+    size,
+  };
 
   return renderTag(useTagStyles(state), useTagContextValues(state));
   // Casting is required due to lack of distributive union to support union on @types/react
