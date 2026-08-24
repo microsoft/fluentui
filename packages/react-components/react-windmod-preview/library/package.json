@@ -343,6 +343,36 @@
         "default": "./lib-commonjs/input.cjs"
       }
     },
+    "./interaction-tag": {
+      "import": {
+        "types": "./dist/interaction-tag.d.ts",
+        "default": "./lib/interaction-tag.js"
+      },
+      "require": {
+        "types": "./dist/interaction-tag.d.cts",
+        "default": "./lib-commonjs/interaction-tag.cjs"
+      }
+    },
+    "./interaction-tag-primary": {
+      "import": {
+        "types": "./dist/interaction-tag-primary.d.ts",
+        "default": "./lib/interaction-tag-primary.js"
+      },
+      "require": {
+        "types": "./dist/interaction-tag-primary.d.cts",
+        "default": "./lib-commonjs/interaction-tag-primary.cjs"
+      }
+    },
+    "./interaction-tag-secondary": {
+      "import": {
+        "types": "./dist/interaction-tag-secondary.d.ts",
+        "default": "./lib/interaction-tag-secondary.js"
+      },
+      "require": {
+        "types": "./dist/interaction-tag-secondary.d.cts",
+        "default": "./lib-commonjs/interaction-tag-secondary.cjs"
+      }
+    },
     "./label": {
       "import": {
         "types": "./dist/label.d.ts",

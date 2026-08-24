@@ -24,6 +24,8 @@ export { ImageWindmod } from './ImageWindmod.stories';
 export { ImageGriffel } from './ImageGriffel.stories';
 export { InputWindmod } from './InputWindmod.stories';
 export { InputGriffel } from './InputGriffel.stories';
+export { InteractionTagWindmod } from './InteractionTagWindmod.stories';
+export { InteractionTagGriffel } from './InteractionTagGriffel.stories';
 export { LabelWindmod } from './LabelWindmod.stories';
 export { LabelGriffel } from './LabelGriffel.stories';
 export { LinkWindmod } from './LinkWindmod.stories';

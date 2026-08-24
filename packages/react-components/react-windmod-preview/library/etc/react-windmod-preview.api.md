@@ -96,6 +96,17 @@ import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-hea
 import type { InputProps as InputProps_2 } from '@fluentui/react-headless-components-preview/input';
 import { InputSlots } from '@fluentui/react-headless-components-preview/input';
 import type { InputState as InputState_2 } from '@fluentui/react-headless-components-preview/input';
+import { InteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryProps as InteractionTagPrimaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagPrimarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryState as InteractionTagPrimaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagProps as InteractionTagProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryProps as InteractionTagSecondaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagSecondarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryState as InteractionTagSecondaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagSlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagState as InteractionTagState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
 import { LabelSlots } from '@fluentui/react-headless-components-preview/label';
@@ -202,6 +213,9 @@ import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
+import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
@@ -372,6 +386,11 @@ import { useFieldControlProps } from '@fluentui/react-headless-components-previe
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
+import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
@@ -1076,6 +1095,81 @@ export { InputSlots }
 export type InputState = InputState_2 & Required<Pick<InputProps, 'appearance' | 'size'>>;
 
 // @public
+export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
+
+// @public
+export type InteractionTagAppearance = TagAppearance;
+
+// @public
+export const interactionTagClassNames: {
+    root: string;
+};
+
+export { InteractionTagContextValues }
+
+// @public
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
+
+// @public
+export const interactionTagPrimaryClassNames: {
+    root: string;
+};
+
+export { InteractionTagPrimaryContextValues }
+
+// @public
+export type InteractionTagPrimaryProps = InteractionTagPrimaryProps_2;
+
+export { InteractionTagPrimarySlots }
+
+// @public
+export type InteractionTagPrimaryState = InteractionTagPrimaryState_2 & {
+    appearance: InteractionTagAppearance;
+    shape: InteractionTagShape;
+    size: InteractionTagSize;
+    avatarShape: AvatarShape;
+    avatarSize: AvatarSize;
+};
+
+// @public
+export type InteractionTagProps = InteractionTagProps_2 & {
+    appearance?: InteractionTagAppearance;
+    shape?: InteractionTagShape;
+    size?: InteractionTagSize;
+};
+
+// @public
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public
+export const interactionTagSecondaryClassNames: {
+    root: string;
+};
+
+// @public
+export type InteractionTagSecondaryProps = InteractionTagSecondaryProps_2;
+
+export { InteractionTagSecondarySlots }
+
+// @public
+export type InteractionTagSecondaryState = InteractionTagSecondaryState_2 & {
+    appearance: InteractionTagAppearance;
+    shape: InteractionTagShape;
+    size: InteractionTagSize;
+};
+
+// @public
+export type InteractionTagShape = TagShape;
+
+// @public
+export type InteractionTagSize = TagSize;
+
+export { InteractionTagSlots }
+
+// @public
+export type InteractionTagState = InteractionTagState_2 & Required<Pick<InteractionTagProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
 export const Label: ForwardRefComponent<LabelProps>;
 
 // @public
@@ -1552,6 +1646,12 @@ export { renderImage }
 export { renderImageSwatch }
 
 export { renderInput }
+
+export { renderInteractionTag }
+
+export { renderInteractionTagPrimary }
+
+export { renderInteractionTagSecondary }
 
 export { renderLabel }
 
@@ -2379,6 +2479,25 @@ export { useInput }
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;
+
+export { useInteractionTag }
+
+export { useInteractionTagContextValues }
+
+export { useInteractionTagPrimary }
+
+export { useInteractionTagPrimaryContextValues }
+
+// @public
+export const useInteractionTagPrimaryStyles: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
+
+export { useInteractionTagSecondary }
+
+// @public
+export const useInteractionTagSecondaryStyles: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
+
+// @public
+export const useInteractionTagStyles: (state: InteractionTagState) => InteractionTagState;
 
 export { useLabel }
 

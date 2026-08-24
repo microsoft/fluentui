@@ -231,6 +231,52 @@ export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ima
 export { Input, inputClassNames, renderInput, useInput, useInputStyles } from './input';
 export type { InputAppearance, InputProps, InputSize, InputSlots, InputState } from './input';
 
+export {
+  InteractionTag,
+  interactionTagClassNames,
+  renderInteractionTag,
+  useInteractionTag,
+  useInteractionTagContextValues,
+  useInteractionTagStyles,
+} from './interaction-tag';
+export type {
+  InteractionTagAppearance,
+  InteractionTagContextValues,
+  InteractionTagProps,
+  InteractionTagShape,
+  InteractionTagSize,
+  InteractionTagSlots,
+  InteractionTagState,
+} from './interaction-tag';
+
+export {
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary,
+  useInteractionTagPrimary,
+  useInteractionTagPrimaryContextValues,
+  useInteractionTagPrimaryStyles,
+} from './interaction-tag-primary';
+export type {
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+} from './interaction-tag-primary';
+
+export {
+  InteractionTagSecondary,
+  interactionTagSecondaryClassNames,
+  renderInteractionTagSecondary,
+  useInteractionTagSecondary,
+  useInteractionTagSecondaryStyles,
+} from './interaction-tag-secondary';
+export type {
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+} from './interaction-tag-secondary';
+
 export { Label, labelClassNames, renderLabel, useLabel, useLabelStyles } from './label';
 export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from './label';
 
