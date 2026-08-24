@@ -384,6 +384,9 @@ export type {
 export { RatingItem, ratingItemClassNames, renderRatingItem, useRatingItem, useRatingItemStyles } from './rating-item';
 export type { RatingItemProps, RatingItemSlots, RatingItemState } from './rating-item';
 
+export { renderSearchBox, SearchBox, searchBoxClassNames, useSearchBox, useSearchBoxStyles } from './search-box';
+export type { SearchBoxProps, SearchBoxSlots, SearchBoxState } from './search-box';
+
 export { renderSelect, Select, selectClassNames, useSelect, useSelectStyles } from './select';
 export type { SelectAppearance, SelectProps, SelectSize, SelectSlots, SelectState } from './select';
 
