@@ -9,6 +9,12 @@
     "exportMap": {
       "root": true,
       "subpathEntryPoints": ["src/*.ts"]
+    },
+    "bundleSizeFixtures": {
+      "AllComponents.fixture.js": {
+        "kind": "entryPoints",
+        "name": "react-headless-components-preview: entire library"
+      }
     }
   },
   "targets": {
