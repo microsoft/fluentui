@@ -34,6 +34,8 @@ export { MessageBarWindmod } from './MessageBarWindmod.stories';
 export { MessageBarGriffel } from './MessageBarGriffel.stories';
 export { NavWindmod } from './NavWindmod.stories';
 export { NavGriffel } from './NavGriffel.stories';
+export { PersonaWindmod } from './PersonaWindmod.stories';
+export { PersonaGriffel } from './PersonaGriffel.stories';
 export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RadioGroupWindmod } from './RadioGroupWindmod.stories';
