@@ -20,13 +20,11 @@ export const calendarMonthGridCellClassNames: SlotClassNames<CalendarMonthGridCe
 export const useCalendarMonthGridCellStyles_unstable = (
   state: CalendarMonthGridCellState,
 ): CalendarMonthGridCellState => {
-  'use no memo';
-
   const itemStyles = useCalendarItemStyles();
   const highlightCurrentMonth = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
   const highlightSelectedMonth = useCalendarContext_unstable(ctx => ctx.highlightSelected);
 
-  /* eslint-disable react-hooks/immutability */
+  /* eslint-disable-next-line react-hooks/immutability */
   state.root.className = mergeClasses(
     calendarMonthGridCellClassNames.root,
     itemStyles.itemButton,
@@ -35,7 +33,6 @@ export const useCalendarMonthGridCellStyles_unstable = (
     !state.isInBounds && itemStyles.disabled,
     state.root.className,
   );
-  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

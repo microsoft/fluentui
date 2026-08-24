@@ -18,12 +18,10 @@ export const calendarYearGridCellClassNames: SlotClassNames<CalendarYearGridCell
  * Apply styling to the CalendarYearGridCell slots based on the state.
  */
 export const useCalendarYearGridCellStyles_unstable = (state: CalendarYearGridCellState): CalendarYearGridCellState => {
-  'use no memo';
-
   const itemStyles = useCalendarItemStyles();
   const highlightSelectedYear = useCalendarContext_unstable(ctx => ctx.highlightSelected);
 
-  /* eslint-disable react-hooks/immutability */
+  /* eslint-disable-next-line react-hooks/immutability */
   state.root.className = mergeClasses(
     calendarYearGridCellClassNames.root,
     itemStyles.itemButton,
@@ -31,7 +29,6 @@ export const useCalendarYearGridCellStyles_unstable = (state: CalendarYearGridCe
     state.isDisabled && itemStyles.disabled,
     state.root.className,
   );
-  /* eslint-enable react-hooks/immutability */
 
   return state;
 };
