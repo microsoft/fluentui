@@ -119,8 +119,11 @@
 @custom-variant hover-active (&:where(:hover:active, :active:focus-visible));
 @custom-variant at-rest (&:where(:not(:hover, :active:focus-visible)));
 
-/* disabled family */
+/* disabled family. disabled-native is the narrowest: only native form controls match it. A
+ * component that renders as either a button or an anchor needs it to reach the button form
+ * alone, since disabled and disabled-control also match the data-disabled an anchor carries. */
 @custom-variant disabled-focusable (&:where([data-disabled-focusable]));
+@custom-variant disabled-native (&:where(:disabled));
 @custom-variant disabled-control (&:where([disabled], [data-disabled], :disabled, [aria-disabled='true']));
 @custom-variant enabled-control (&:where(:not([disabled], [data-disabled], :disabled, [aria-disabled='true'])));
 

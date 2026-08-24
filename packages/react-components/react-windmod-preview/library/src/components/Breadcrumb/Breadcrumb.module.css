@@ -1,0 +1,7 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .list {
+    @apply m-0 flex list-none items-center p-0;
+  }
+}

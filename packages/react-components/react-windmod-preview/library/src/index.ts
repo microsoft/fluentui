@@ -59,6 +59,50 @@ export type {
 export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './badge';
 export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, BadgeSlots, BadgeState } from './badge';
 
+export {
+  Breadcrumb,
+  breadcrumbClassNames,
+  renderBreadcrumb,
+  useBreadcrumb,
+  useBreadcrumbContext,
+  useBreadcrumbContextValues,
+  useBreadcrumbStyles,
+} from './breadcrumb';
+export type {
+  BreadcrumbContextValues,
+  BreadcrumbProps,
+  BreadcrumbSize,
+  BreadcrumbSlots,
+  BreadcrumbState,
+} from './breadcrumb';
+
+export {
+  BreadcrumbButton,
+  breadcrumbButtonClassNames,
+  renderBreadcrumbButton,
+  useBreadcrumbButton,
+  useBreadcrumbButtonStyles,
+} from './breadcrumb-button';
+export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './breadcrumb-button';
+
+export {
+  BreadcrumbDivider,
+  breadcrumbDividerClassNames,
+  renderBreadcrumbDivider,
+  useBreadcrumbDivider,
+  useBreadcrumbDividerStyles,
+} from './breadcrumb-divider';
+export type { BreadcrumbDividerProps, BreadcrumbDividerSlots, BreadcrumbDividerState } from './breadcrumb-divider';
+
+export {
+  BreadcrumbItem,
+  breadcrumbItemClassNames,
+  renderBreadcrumbItem,
+  useBreadcrumbItem,
+  useBreadcrumbItemStyles,
+} from './breadcrumb-item';
+export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './breadcrumb-item';
+
 export { Button, buttonClassNames, renderButton, useButton, useButtonStyles } from './button';
 export type { ButtonAppearance, ButtonProps, ButtonShape, ButtonSize, ButtonSlots, ButtonState } from './button';
 
