@@ -189,6 +189,41 @@ export {
 export type { MessageBarTitleProps, MessageBarTitleSlots, MessageBarTitleState } from './message-bar-title';
 
 export {
+  Nav,
+  navClassNames,
+  NavProvider,
+  renderNav,
+  useNav,
+  useNavContext,
+  useNavContextValues,
+  useNavStyles,
+} from './nav';
+export type {
+  NavContextValues,
+  NavDensity,
+  NavItemValue,
+  NavProps,
+  NavSlots,
+  NavState,
+  OnNavItemSelectData,
+} from './nav';
+
+export { NavDivider, navDividerClassNames, renderNavDivider, useNavDivider, useNavDividerStyles } from './nav-divider';
+export type { NavDividerProps, NavDividerSlots, NavDividerState } from './nav-divider';
+
+export { NavItem, navItemClassNames, renderNavItem, useNavItem, useNavItemStyles } from './nav-item';
+export type { NavItemProps, NavItemSlots, NavItemState } from './nav-item';
+
+export {
+  NavSectionHeader,
+  navSectionHeaderClassNames,
+  renderNavSectionHeader,
+  useNavSectionHeader,
+  useNavSectionHeaderStyles,
+} from './nav-section-header';
+export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderState } from './nav-section-header';
+
+export {
   ProgressBar,
   progressBarClassNames,
   renderProgressBar,
