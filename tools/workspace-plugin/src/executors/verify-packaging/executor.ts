@@ -1,4 +1,4 @@
-import { type ExecutorContext, type PromiseExecutor, logger, serializeJson } from '@nx/devkit';
+import { type ExecutorContext, type PromiseExecutor, logger, readJsonFile, serializeJson } from '@nx/devkit';
 import { spawnSync } from 'node:child_process';
 
 import micromatch from 'micromatch';
@@ -6,6 +6,7 @@ import micromatch from 'micromatch';
 import { type VerifyPackagingExecutorSchema } from './schema';
 import { join } from 'node:path';
 import { measureEnd, measureStart } from '../../utils';
+import type { PackageJson } from '../../types';
 
 const runExecutor: PromiseExecutor<VerifyPackagingExecutorSchema> = async (schema, context) => {
   measureStart('VerifyTargetExecutor');
@@ -52,6 +53,7 @@ function normalizeOptions(schema: VerifyPackagingExecutorSchema, context: Execut
   const defaults = {};
   const project = context.projectsConfigurations!.projects[context.projectName!];
   const isProduction = Boolean(process.env.FLUENT_PROD_BUILD);
+  const packageJson: PackageJson = readJsonFile(join(context.root, project.root, 'package.json'));
 
   /**
    * @see https://docs.npmjs.com/cli/v10/commands/npm-publish#files-included-in-package
@@ -70,7 +72,7 @@ function normalizeOptions(schema: VerifyPackagingExecutorSchema, context: Execut
 
   const filePatterns = { alwaysPublishedFiles, rootConfigFiles, nonProdAssets };
 
-  return { ...defaults, ...schema, project, isProduction, filePatterns };
+  return { ...defaults, ...schema, project, isProduction, packageJson, filePatterns };
 }
 
 function npmPackOutput(options: NormalizedOptions, context: ExecutorContext) {
@@ -103,8 +105,10 @@ function assertions(
     assertNotEmpty(npmPackResult, nonProdAssets, `wont ship non production code related folders/files`),
     assertEmpty(npmPackResult, 'CHANGELOG.md', 'ships changelog markdown file'),
     assertEmpty(npmPackResult, 'dist/*', 'ships rolluped dts'),
-    assertEmpty(npmPackResult, 'lib-commonjs/**/*.(js|map)', 'ships cjs'),
+    // `type: module` packages emit `.cjs`; without it this only ever matched the sourcemaps
+    assertEmpty(npmPackResult, 'lib-commonjs/**/*.(js|cjs|map)', 'ships cjs'),
     assertNotEmpty(npmPackResult, 'src/*', `wont ship source code from "/src"`),
+    assertExportMapShipped(npmPackResult, options.packageJson),
   ];
 
   if (!isV8package) {
@@ -169,5 +173,63 @@ function assertions(
       matches,
       message,
     };
+  }
+}
+
+/**
+ * The export map is the contract consumers resolve against, and also what `generate-api` derives its
+ * entry points from - an entry pointing at a file that was never built resolves to nothing at runtime.
+ */
+function assertExportMapShipped(npmPackResult: string[], packageJson: PackageJson) {
+  const shipped = new Set(npmPackResult);
+  const missing = collectExportMapPaths(packageJson)
+    // dev only conditions (eg. `./__dev`) resolve to source, which is asserted as never shipped above
+    .filter(filePath => !filePath.startsWith('src/'))
+    .filter(filePath => !isShipped(filePath));
+
+  if (missing.length === 0) {
+    return null;
+  }
+
+  return {
+    matches: missing,
+    message: 'export map declares entry points that are not shipped',
+  };
+
+  function isShipped(filePath: string): boolean {
+    if (!filePath.includes('*')) {
+      return shipped.has(filePath);
+    }
+
+    // an export map `*` is a substitution token matching across path separators, unlike a glob `*`
+    const [prefix, suffix] = filePath.split('*');
+    const pattern = new RegExp(`^${escapeRegExp(prefix)}.*${escapeRegExp(suffix)}$`);
+
+    return npmPackResult.some(shippedPath => pattern.test(shippedPath));
+  }
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function collectExportMapPaths(packageJson: PackageJson): string[] {
+  const paths = new Set<string>();
+
+  collect(packageJson.exports);
+
+  return [...paths].sort();
+
+  function collect(value: unknown) {
+    if (typeof value === 'string') {
+      if (value.startsWith('./')) {
+        paths.add(value.slice('./'.length));
+      }
+      return;
+    }
+
+    if (value && typeof value === 'object') {
+      Object.values(value).forEach(collect);
+    }
   }
 }

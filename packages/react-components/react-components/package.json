@@ -97,7 +97,6 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
-    "./package.json": "./package.json",
     "./unstable": {
       "import": {
         "types": "./dist/unstable.d.ts",
@@ -107,7 +106,8 @@
         "types": "./dist/unstable.d.cts",
         "default": "./lib-commonjs/unstable/index.cjs"
       }
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "*.md",

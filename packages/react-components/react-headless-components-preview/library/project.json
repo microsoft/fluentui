@@ -5,6 +5,18 @@
   "sourceRoot": "packages/react-components/react-headless-components-preview/library/src",
   "tags": ["vNext", "platform:web", "react-headless"],
   "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/*.ts"]
+    },
+    "bundleSizeFixtures": {
+      "AllComponents.fixture.js": {
+        "kind": "entryPoints",
+        "name": "react-headless-components-preview: entire library"
+      }
+    }
+  },
   "targets": {
     "generate-api": {
       "options": {

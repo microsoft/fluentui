@@ -452,8 +452,13 @@ function buildTestTarget(
 }
 
 function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
-  // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
   if (config.packageJSON.private || !config.packageJSON.exports) {
+    return null;
+  }
+
+  // CommonJS-first packages always report `CJS default export` interop findings under the node16
+  // profile - inherent to their shape rather than export map defects, so gating them stays red forever
+  if (config.packageJSON.type !== 'module') {
     return null;
   }
 
@@ -467,7 +472,7 @@ function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): Target
     },
     inputs: ['default', { externalDependencies: ['@arethetypeswrong/cli'] }],
     metadata: {
-      description: 'Validate package types & export map with @arethetypeswrong/cli (optional)',
+      description: 'Validate package types & export map with @arethetypeswrong/cli',
       technologies: ['typescript'],
     },
   };
