@@ -8,5 +8,5 @@ export type {
   RatingDisplayState,
 } from './RatingDisplay.types';
 
-export { RatingItem, ratingItemClassNames, useRatingItemStyles } from './RatingItem';
-export type { RatingItemProps, RatingItemSlots, RatingItemState } from './RatingItem';
+export { RatingItem, ratingItemClassNames, useRatingItemStyles } from '../RatingItem';
+export type { RatingItemProps, RatingItemSlots, RatingItemState } from '../RatingItem';

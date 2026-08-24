@@ -253,6 +253,16 @@
         "default": "./lib-commonjs/radio-group.cjs"
       }
     },
+    "./rating": {
+      "import": {
+        "types": "./dist/rating.d.ts",
+        "default": "./lib/rating.js"
+      },
+      "require": {
+        "types": "./dist/rating.d.cts",
+        "default": "./lib-commonjs/rating.cjs"
+      }
+    },
     "./rating-display": {
       "import": {
         "types": "./dist/rating-display.d.ts",
