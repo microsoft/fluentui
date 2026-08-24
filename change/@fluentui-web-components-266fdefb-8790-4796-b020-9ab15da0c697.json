@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(web-components): prevent unsafe theme token values from injecting CSS",
+  "comment": "fix: correct submenu sizing in WebKit",
   "packageName": "@fluentui/web-components",
   "email": "machi@microsoft.com",
   "dependentChangeType": "patch"

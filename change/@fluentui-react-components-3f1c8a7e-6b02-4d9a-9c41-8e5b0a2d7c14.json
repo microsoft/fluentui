@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: verify bundle isolation of base hooks",
+  "packageName": "@fluentui/react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
