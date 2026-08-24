@@ -1,25 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  slot,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
-import {
-  useDashboardGridContext_unstable,
-  useRequiredDashboardGridProviderContext_unstable,
-} from '../../contexts';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useDashboardGridContext_unstable, useRequiredDashboardGridProviderContext_unstable } from '../../contexts';
 import { createDashboardGridDropZone } from '../../interaction/dropZones';
-import {
-  dashboardGridDataAttributes,
-  type DashboardGridDropZoneVisualState,
-} from '../../interaction/types';
-import type {
-  DashboardGridDropZoneProps,
-  DashboardGridDropZoneState,
-} from './DashboardGridDropZone.types';
+import { dashboardGridDataAttributes, type DashboardGridDropZoneVisualState } from '../../interaction/types';
+import type { DashboardGridDropZoneProps, DashboardGridDropZoneState } from './DashboardGridDropZone.types';
 
 export type DashboardGridDropZoneInternalState = DashboardGridDropZoneState & {
   dropState: DashboardGridDropZoneVisualState;

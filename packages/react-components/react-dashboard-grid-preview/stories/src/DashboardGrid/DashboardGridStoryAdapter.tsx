@@ -532,10 +532,7 @@ export const DashboardGridStory = (props: DashboardGridStoryProps): JSXElement =
   );
 
   const emit = React.useCallback(
-    (
-        name: string,
-        callback?: EventHandler<DashboardGridStoryEventData>,
-      ): EventHandler<InterimDashboardGridEventData> =>
+    (name: string, callback?: EventHandler<DashboardGridStoryEventData>): EventHandler<InterimDashboardGridEventData> =>
       (event, data) => {
         const normalized = normalizeEventData(name, props.gridId, event, data);
         callback?.(event, normalized);

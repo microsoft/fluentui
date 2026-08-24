@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  DashboardGrid,
-  DashboardGridProvider,
-} from '@fluentui/react-dashboard-grid-preview';
+import { DashboardGrid, DashboardGridProvider } from '@fluentui/react-dashboard-grid-preview';
 import { Text, makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
@@ -41,12 +38,8 @@ const PreviewTile = (props: { id: string }): JSXElement => {
 
 export const DragPreviews = (): JSXElement => {
   const styles = useStyles();
-  const [customPortal, setCustomPortal] =
-    React.useState<HTMLDivElement | null>(null);
-  const renderTile = React.useCallback(
-    (item: { id: string }) => <PreviewTile id={item.id} />,
-    [],
-  );
+  const [customPortal, setCustomPortal] = React.useState<HTMLDivElement | null>(null);
+  const renderTile = React.useCallback((item: { id: string }) => <PreviewTile id={item.id} />, []);
 
   return (
     <div className={styles.page} data-testid="dashboard-drag-previews">
@@ -94,11 +87,7 @@ export const DragPreviews = (): JSXElement => {
         />
 
         <Text weight="semibold">Custom preview in an explicit portal</Text>
-        <div
-          ref={setCustomPortal}
-          className={styles.portal}
-          data-testid="dashboard-preview-custom-portal"
-        />
+        <div ref={setCustomPortal} className={styles.portal} data-testid="dashboard-preview-custom-portal" />
         {customPortal ? (
           <DashboardGrid
             aria-label="Custom preview grid"
@@ -109,11 +98,7 @@ export const DragPreviews = (): JSXElement => {
             rowHeight={80}
             minRows={2}
             drag={{
-              preview: item => (
-                <div data-testid="dashboard-custom-drag-preview">
-                  Custom preview for {item.id}
-                </div>
-              ),
+              preview: item => <div data-testid="dashboard-custom-drag-preview">Custom preview for {item.id}</div>,
               portal: customPortal,
             }}
             defaultItems={[

@@ -272,14 +272,14 @@ export const getDashboardGridDirectionalBias = (
     delta.x > 0
       ? cappedDirectionalMargin(metrics.gapRight, metrics.columnWidth)
       : delta.x < 0
-        ? -cappedDirectionalMargin(metrics.gapLeft, metrics.columnWidth)
-        : 0,
+      ? -cappedDirectionalMargin(metrics.gapLeft, metrics.columnWidth)
+      : 0,
   y:
     delta.y > 0
       ? cappedDirectionalMargin(metrics.gapBottom, metrics.rowHeight)
       : delta.y < 0
-        ? -cappedDirectionalMargin(metrics.gapTop, metrics.rowHeight)
-        : 0,
+      ? -cappedDirectionalMargin(metrics.gapTop, metrics.rowHeight)
+      : 0,
 });
 
 export const dashboardGridRectToPixelRect = (
@@ -305,9 +305,7 @@ export const dashboardGridPixelRectToRawRect = (
     columnSpan: Math.round(
       (rect.width + metrics.gapLeft + metrics.gapRight) / finitePositiveOrOne(metrics.columnWidth),
     ),
-    rowSpan: Math.round(
-      (rect.height + metrics.gapTop + metrics.gapBottom) / finitePositiveOrOne(metrics.rowHeight),
-    ),
+    rowSpan: Math.round((rect.height + metrics.gapTop + metrics.gapBottom) / finitePositiveOrOne(metrics.rowHeight)),
   };
 };
 

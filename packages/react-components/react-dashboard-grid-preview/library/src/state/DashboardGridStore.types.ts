@@ -26,20 +26,13 @@ import type {
 import type { DashboardGridEventQueue } from './eventQueue';
 
 /** A numeric pixel value or a supported CSS length string. */
-export type DashboardGridCSSLength =
-  | number
-  | `${number}${'px' | 'em' | 'rem' | 'vh' | 'vw' | '%' | 'cm' | 'mm'}`;
+export type DashboardGridCSSLength = number | `${number}${'px' | 'em' | 'rem' | 'vh' | 'vw' | '%' | 'cm' | 'mm'}`;
+
+/** Measures rendered content for size-to-content layout. */
+export type DashboardGridContentMeasure = (element: HTMLElement) => number | undefined;
 
 /** A resize edge exposed by DashboardGrid resize handles. */
-export type DashboardGridResizeDirection =
-  | 'n'
-  | 'e'
-  | 's'
-  | 'w'
-  | 'ne'
-  | 'nw'
-  | 'se'
-  | 'sw';
+export type DashboardGridResizeDirection = 'n' | 'e' | 's' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
 
 /** Per-item print behavior. */
 export type DashboardGridPrintOptions = {
@@ -82,11 +75,7 @@ export type DashboardGridDragOptions = {
   /** Selector that prevents a drag from starting. */
   cancelSelector?: string;
   /** Visual preview rendered during a drag. */
-  preview?:
-    | 'item'
-    | 'clone'
-    | React.ReactNode
-    | ((item: DashboardGridResolvedItem) => React.ReactNode);
+  preview?: 'item' | 'clone' | React.ReactNode | ((item: DashboardGridResolvedItem) => React.ReactNode);
   /** Portal target for drag preview content. */
   portal?: 'body' | 'parent' | HTMLElement;
   /** Enables functional autoscroll. */
@@ -98,10 +87,7 @@ export type DashboardGridDragOptions = {
 /** Resize handle configuration. */
 export type DashboardGridResizeOptions = {
   /** Enabled resize directions. */
-  handles?:
-    | DashboardGridResizeDirection
-    | readonly DashboardGridResizeDirection[]
-    | 'all';
+  handles?: DashboardGridResizeDirection | readonly DashboardGridResizeDirection[] | 'all';
   /** Resize-handle visibility policy. */
   handleVisibility?: 'hover' | 'always' | 'coarse-pointer';
 };
@@ -135,9 +121,7 @@ export type DashboardGridAcceptPredicate = (
 ) => boolean;
 
 /** Factory for injecting a custom public layout engine. */
-export type DashboardGridEngineFactory = (
-  options?: DashboardGridEngineOptions,
-) => DashboardGridEngine;
+export type DashboardGridEngineFactory = (options?: DashboardGridEngineOptions) => DashboardGridEngine;
 
 /** Grid options shared by root grids and nested definitions. */
 export type DashboardGridOptions = {
@@ -173,6 +157,8 @@ export type DashboardGridOptions = {
   lazyMount?: boolean;
   /** Enables item content-driven row sizing. */
   sizeToContent?: boolean;
+  /** Default custom size-to-content measurement for this grid. */
+  measureSizeToContent?: DashboardGridContentMeasure;
   /** Screen-to-print layout projection. */
   printMode?: 'flow' | 'exact';
   /** Collision activation configuration. */
@@ -217,6 +203,8 @@ export type DashboardGridItemDefinition<TData = unknown> = DashboardGridLayoutIt
   sizeToContent?: boolean | number;
   /** Selector for the element measured by size-to-content. */
   sizeToContentSelector?: string;
+  /** Item-specific custom size-to-content measurement. */
+  measureSizeToContent?: DashboardGridContentMeasure;
   /** Nested grid definition. */
   subGrid?: DashboardGridDefinition<TData>;
   /** Per-item print behavior. */
@@ -234,15 +222,10 @@ export type DashboardGridDefinition<TData = unknown> = DashboardGridOptions & {
 };
 
 /** Component registry used by model-mode rendering. */
-export type DashboardGridComponentRegistry = Record<
-  string,
-  React.ComponentType<Record<string, unknown>>
->;
+export type DashboardGridComponentRegistry = Record<string, React.ComponentType<Record<string, unknown>>>;
 
 /** Model-mode item renderer. */
-export type DashboardGridRenderItem = (
-  item: DashboardGridItemDefinition,
-) => React.ReactNode;
+export type DashboardGridRenderItem = (item: DashboardGridItemDefinition) => React.ReactNode;
 
 /** Fallback renderer for an unknown component key. */
 export type DashboardGridRenderUnknownComponent = (
@@ -405,7 +388,9 @@ export type DashboardGridStore = DashboardGridInteractionStore & {
 
   setCallbacks(callbacks: DashboardGridStoreCallbacks | undefined): void;
   setSerializableOptions(options: DashboardGridSerializableOptions, replace?: boolean): void;
-  setControlledItems(items: readonly DashboardGridItemDefinition[] | undefined): DashboardGridMutationResult | undefined;
+  setControlledItems(
+    items: readonly DashboardGridItemDefinition[] | undefined,
+  ): DashboardGridMutationResult | undefined;
   requestControlledReconciliation(): void;
   registerDeclarativeItem(item: DashboardGridItemDefinition): () => void;
   setItemOwner(id: string, gridId: string): void;
@@ -424,14 +409,8 @@ export type DashboardGridStore = DashboardGridInteractionStore & {
   update(id: string, patch: DashboardGridLayoutItemPatch): DashboardGridMutationResult;
   compact(mode?: 'compact' | 'list'): DashboardGridMutationResult;
   batch<T>(operation: () => T, options?: DashboardGridBatchOptions): T;
-  rotateItem(
-    id: string,
-    pivot?: Readonly<{ column: number; row: number }>,
-  ): DashboardGridMoveResult;
-  load(
-    items: readonly DashboardGridItemDefinition[],
-    options?: DashboardGridLoadOptions,
-  ): DashboardGridMutationResult;
+  rotateItem(id: string, pivot?: Readonly<{ column: number; row: number }>): DashboardGridMoveResult;
+  load(items: readonly DashboardGridItemDefinition[], options?: DashboardGridLoadOptions): DashboardGridMutationResult;
   // eslint-disable-next-line @typescript-eslint/no-deprecated -- Save retains the legacy engine envelope during preview migration.
   save(options?: DashboardGridSaveOptions): DashboardGridSerializedState;
   dispose(): void;
@@ -442,9 +421,7 @@ export const dashboardGridDefaultRuntimeItemState: DashboardGridRuntimeItemState
   mounted: false,
 };
 
-export const toDashboardGridEngineItem = (
-  item: DashboardGridItemDefinition,
-): DashboardGridLayoutItemInput => ({
+export const toDashboardGridEngineItem = (item: DashboardGridItemDefinition): DashboardGridLayoutItemInput => ({
   id: item.id,
   column: item.column,
   row: item.row,

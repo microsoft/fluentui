@@ -1,18 +1,7 @@
-import {
-  canSwap,
-  repairCollisions,
-  selectPointerCollision,
-} from './collision';
+import { canSwap, repairCollisions, selectPointerCollision } from './collision';
 import { asOpaqueNodeKey, type InternalNode } from './internalTypes';
 
-const node = (
-  key: number,
-  x: number,
-  y: number,
-  w = 1,
-  h = 1,
-  locked = false,
-): InternalNode => ({
+const node = (key: number, x: number, y: number, w = 1, h = 1, locked = false): InternalNode => ({
   key: asOpaqueNodeKey(key),
   sequence: key,
   id: String(key),
@@ -28,12 +17,8 @@ const node = (
 describe('dashboard grid collisions', () => {
   it('supports all three touching swap relationships', () => {
     expect(canSwap(node(1, 0, 0), node(2, 1, 0))).toBe(true);
-    expect(canSwap(node(1, 0, 0, 2, 1), node(2, 0, 1, 2, 3))).toBe(
-      true,
-    );
-    expect(canSwap(node(1, 0, 0, 1, 2), node(2, 1, 0, 3, 2))).toBe(
-      true,
-    );
+    expect(canSwap(node(1, 0, 0, 2, 1), node(2, 0, 1, 2, 3))).toBe(true);
+    expect(canSwap(node(1, 0, 0, 1, 2), node(2, 1, 0, 3, 2))).toBe(true);
   });
 
   it('uses the greatest strict directional coverage and ignores locked targets', () => {

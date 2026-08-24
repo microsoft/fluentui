@@ -5,26 +5,16 @@ import type {
   DashboardGridMoveProposal,
 } from './DashboardGridEngine.types';
 import { createDiagnostic } from './diagnostics';
-import type {
-  CachedLayoutNode,
-  InternalNode,
-  InternalRect,
-  NormalizedItem,
-  OpaqueNodeKey,
-} from './internalTypes';
+import type { CachedLayoutNode, InternalNode, InternalRect, NormalizedItem, OpaqueNodeKey } from './internalTypes';
 
 export class DashboardGridNormalizationError extends Error {
-  public constructor(
-    public readonly reason: 'invalid-id' | 'invalid-columns',
-    message: string,
-  ) {
+  public constructor(public readonly reason: 'invalid-id' | 'invalid-columns', message: string) {
     super(message);
     this.name = 'DashboardGridNormalizationError';
   }
 }
 
-const hasOwn = (value: object, property: string): boolean =>
-  Object.prototype.hasOwnProperty.call(value, property);
+const hasOwn = (value: object, property: string): boolean => Object.prototype.hasOwnProperty.call(value, property);
 
 const finiteNumber = (value: unknown): number | undefined => {
   if (typeof value === 'number') {
@@ -71,11 +61,7 @@ export const normalizeMaxRows = (value: unknown): number | undefined => {
   return parsed !== undefined && parsed > 0 ? parsed : undefined;
 };
 
-const constrainSpan = (
-  initial: number,
-  min: number | undefined,
-  max: number | undefined,
-): number => {
+const constrainSpan = (initial: number, min: number | undefined, max: number | undefined): number => {
   let result = initial;
   if (max !== undefined) {
     result = Math.min(result, max);
@@ -116,12 +102,7 @@ export const normalizeInternalBounds = (
 ): InternalRect => {
   const result = { ...rect };
   result.w = Math.max(1, Math.min(options.columns, result.w));
-  result.h = Math.max(
-    1,
-    options.maxRows === undefined
-      ? result.h
-      : Math.min(options.maxRows, result.h),
-  );
+  result.h = Math.max(1, options.maxRows === undefined ? result.h : Math.min(options.maxRows, result.h));
   result.x = Math.max(0, result.x);
   result.y = Math.max(0, result.y);
 
@@ -152,10 +133,7 @@ export const normalizeInternalBounds = (
   return result;
 };
 
-export const estimateSourceColumns = (
-  input: DashboardGridLayoutItemInput,
-  fallback = 12,
-): number => {
+export const estimateSourceColumns = (input: DashboardGridLayoutItemInput, fallback = 12): number => {
   const record = input as Readonly<Record<string, unknown>>;
   const rawX = integer(record.column);
   const rawW = span(record.columnSpan);
@@ -176,18 +154,12 @@ export const normalizeItem = (
   const record = { ...input } as Readonly<Record<string, unknown>>;
   const id = record.id;
   if (typeof id !== 'string' || id.trim() === '') {
-    throw new DashboardGridNormalizationError(
-      'invalid-id',
-      'Dashboard grid items require a non-empty string ID.',
-    );
+    throw new DashboardGridNormalizationError('invalid-id', 'Dashboard grid items require a non-empty string ID.');
   }
 
   const suppliedX = integer(record.column);
   const suppliedY = integer(record.row);
-  const auto =
-    record.autoPosition === true ||
-    suppliedX === undefined ||
-    suppliedY === undefined;
+  const auto = record.autoPosition === true || suppliedX === undefined || suppliedY === undefined;
 
   const minW = positiveConstraint(record.minColumnSpan);
   const maxW = positiveConstraint(record.maxColumnSpan);
@@ -207,11 +179,7 @@ export const normalizeItem = (
   const authoredH = constrainSpan(span(record.rowSpan), minH, maxH);
   const authoredX = Math.max(0, suppliedX ?? 0);
   const authoredY = Math.max(0, suppliedY ?? 0);
-  const sourceColumns = Math.max(
-    options.sourceColumns ?? 12,
-    authoredW,
-    authoredX + authoredW,
-  );
+  const sourceColumns = Math.max(options.sourceColumns ?? 12, authoredW, authoredX + authoredW);
   const authoredLayout: CachedLayoutNode = auto
     ? { w: Math.min(sourceColumns, authoredW), auto: true }
     : {
@@ -261,10 +229,7 @@ const patchValue = <T>(
   patch: DashboardGridLayoutItemPatch,
   property: keyof DashboardGridLayoutItemPatch,
   fallback: T,
-): unknown =>
-  hasOwn(patch, property) && patch[property] !== undefined
-    ? patch[property]
-    : fallback;
+): unknown => (hasOwn(patch, property) && patch[property] !== undefined ? patch[property] : fallback);
 
 export const normalizePatchedNode = (
   existing: InternalNode,
@@ -274,34 +239,20 @@ export const normalizePatchedNode = (
     maxRows?: number;
   },
 ): NormalizedItem => {
-  const autoPosition = hasOwn(patch, 'autoPosition')
-    ? patch.autoPosition === true
-    : false;
+  const autoPosition = hasOwn(patch, 'autoPosition') ? patch.autoPosition === true : false;
   const input: DashboardGridLayoutItemInput = {
     id: existing.id,
     column: patchValue(patch, 'column', existing.x) as number,
     row: patchValue(patch, 'row', existing.y) as number,
     columnSpan: patchValue(patch, 'columnSpan', existing.w) as number,
     rowSpan: patchValue(patch, 'rowSpan', existing.h) as number,
-    minColumnSpan: patchValue(
-      patch,
-      'minColumnSpan',
-      existing.minW,
-    ) as number,
-    maxColumnSpan: patchValue(
-      patch,
-      'maxColumnSpan',
-      existing.maxW,
-    ) as number,
+    minColumnSpan: patchValue(patch, 'minColumnSpan', existing.minW) as number,
+    maxColumnSpan: patchValue(patch, 'maxColumnSpan', existing.maxW) as number,
     minRowSpan: patchValue(patch, 'minRowSpan', existing.minH) as number,
     maxRowSpan: patchValue(patch, 'maxRowSpan', existing.maxH) as number,
     autoPosition,
     movable: patchValue(patch, 'movable', existing.movable) as boolean,
-    resizable: patchValue(
-      patch,
-      'resizable',
-      existing.resizable,
-    ) as boolean,
+    resizable: patchValue(patch, 'resizable', existing.resizable) as boolean,
     locked: patchValue(patch, 'locked', existing.locked) as boolean,
   };
 
@@ -309,8 +260,7 @@ export const normalizePatchedNode = (
     ...options,
     key: existing.key,
     sequence: existing.sequence,
-    resizing:
-      hasOwn(patch, 'columnSpan') || hasOwn(patch, 'rowSpan'),
+    resizing: hasOwn(patch, 'columnSpan') || hasOwn(patch, 'rowSpan'),
     sourceColumns: Math.max(12, options.columns),
   });
 };
@@ -324,24 +274,13 @@ export const normalizeMoveProposal = (
   },
 ): InternalRect => {
   const proposalRecord = proposal as Readonly<Record<string, unknown>>;
-  const requestedW = hasOwn(proposal, 'columnSpan')
-    ? span(proposalRecord.columnSpan)
-    : node.w;
-  const requestedH = hasOwn(proposal, 'rowSpan')
-    ? span(proposalRecord.rowSpan)
-    : node.h;
-  const requestedX = hasOwn(proposal, 'column')
-    ? integer(proposalRecord.column) ?? 0
-    : node.x;
-  const requestedY = hasOwn(proposal, 'row')
-    ? integer(proposalRecord.row) ?? 0
-    : node.y;
+  const requestedW = hasOwn(proposal, 'columnSpan') ? span(proposalRecord.columnSpan) : node.w;
+  const requestedH = hasOwn(proposal, 'rowSpan') ? span(proposalRecord.rowSpan) : node.h;
+  const requestedX = hasOwn(proposal, 'column') ? integer(proposalRecord.column) ?? 0 : node.x;
+  const requestedY = hasOwn(proposal, 'row') ? integer(proposalRecord.row) ?? 0 : node.y;
   const constrainedW = constrainSpan(requestedW, node.minW, node.maxW);
   const constrainedH = constrainSpan(requestedH, node.minH, node.maxH);
-  const resizing =
-    proposal.resizing === true ||
-    constrainedW !== node.w ||
-    constrainedH !== node.h;
+  const resizing = proposal.resizing === true || constrainedW !== node.w || constrainedH !== node.h;
 
   return normalizeInternalBounds(
     {

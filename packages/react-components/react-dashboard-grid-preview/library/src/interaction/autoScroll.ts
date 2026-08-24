@@ -56,8 +56,8 @@ export const getDashboardGridAutoScrollDelta = (
           ? 1
           : -1
         : pointerY >= viewportRect.top + viewportRect.height / 2
-          ? 1
-          : -1;
+        ? 1
+        : -1;
     const clipping = direction > 0 ? bottomClipping : topClipping;
     return direction * getDashboardGridAutoScrollSpeed(clipping, viewportRect.height);
   }

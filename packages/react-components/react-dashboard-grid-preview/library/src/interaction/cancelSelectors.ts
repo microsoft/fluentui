@@ -149,8 +149,6 @@ export const shouldCancelDashboardGridPointerStart = (
   }
 
   return elements.some(
-    element =>
-      (!options.ignoreItemElement || element !== options.itemElement) &&
-      isDefaultInteractiveTarget(element),
+    element => (!options.ignoreItemElement || element !== options.itemElement) && isDefaultInteractiveTarget(element),
   );
 };

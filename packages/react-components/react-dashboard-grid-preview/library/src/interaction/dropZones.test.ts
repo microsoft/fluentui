@@ -1,8 +1,5 @@
 import { createDashboardGridDropZone } from './dropZones';
-import type {
-  DashboardGridDropZoneRegistration,
-  DashboardGridInteractionCoordinator,
-} from './types';
+import type { DashboardGridDropZoneRegistration, DashboardGridInteractionCoordinator } from './types';
 
 describe('dashboard grid drop zones', () => {
   it('registers, publishes non-color validity state, and unregisters', () => {

@@ -123,10 +123,10 @@ export const useDashboardGridPrintItemStyles_unstable = <TState extends Dashboar
     root: {
       ...state.root,
       className: mergeClasses(
-    styles.item,
-    state.printMode === 'flow' && styles.flow,
-    state.printMode === 'exact' && styles.exact,
-    state.print?.hide && styles.hidden,
+        styles.item,
+        state.printMode === 'flow' && styles.flow,
+        state.printMode === 'exact' && styles.exact,
+        state.print?.hide && styles.hidden,
         state.printMode === 'exact' && pageBreakBefore && styles.pageBreak,
         state.root.className,
       ),

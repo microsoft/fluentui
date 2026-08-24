@@ -320,9 +320,7 @@ describe('dashboard grid interaction coordinator', () => {
       { x: 25, y: 28, width: 100, height: 100 },
       { x: 47, y: 35, width: 100, height: 100 },
     ]);
-    expect(previews.every(preview => preview.originPixelRect?.x === 10 && preview.originPixelRect.y === 20)).toBe(
-      true,
-    );
+    expect(previews.every(preview => preview.originPixelRect?.x === 10 && preview.originPixelRect.y === 20)).toBe(true);
     expect(previews.every(preview => preview.rect?.column === 0 && preview.originRect?.column === 0)).toBe(true);
 
     coordinator.cancel();
@@ -531,11 +529,7 @@ describe('dashboard grid interaction coordinator', () => {
       order.push('source-layout', 'target-layout');
     });
     let resolveTransfer:
-      | ((result: {
-          status: 'accepted';
-          targetGridId: string;
-          finalize: () => void;
-        }) => void)
+      | ((result: { status: 'accepted'; targetGridId: string; finalize: () => void }) => void)
       | undefined;
     const transfer = jest.fn(
       () =>
@@ -652,12 +646,7 @@ describe('dashboard grid interaction coordinator', () => {
     await commit;
 
     expect(finalize).toHaveBeenCalledTimes(1);
-    expect(order.slice(-4)).toEqual([
-      'provider-commit',
-      'stop',
-      'source-layout',
-      'target-layout',
-    ]);
+    expect(order.slice(-4)).toEqual(['provider-commit', 'stop', 'source-layout', 'target-layout']);
   });
 
   it('does not emit stop after a rejected external drop', async () => {
@@ -879,11 +868,6 @@ describe('dashboard grid interaction coordinator', () => {
     await expect(coordinator.commit()).resolves.toMatchObject({ status: 'accepted' });
     expect(remove).toHaveBeenCalledTimes(1);
     expect(order.filter(entry => entry === 'rollback')).toHaveLength(1);
-    expect(order.slice(-4)).toEqual([
-      'rollback',
-      'provider-remove',
-      'stop',
-      'source-layout',
-    ]);
+    expect(order.slice(-4)).toEqual(['rollback', 'provider-remove', 'stop', 'source-layout']);
   });
 });

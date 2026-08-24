@@ -1,9 +1,6 @@
 import { createDashboardGridRegistry } from '../provider/createDashboardGridRegistry';
 import { createDashboardGridStore } from '../state/createDashboardGridStore';
-import {
-  loadSerializedDashboardGrid,
-  serializeDashboardGrid,
-} from './dashboardGridSerialization';
+import { loadSerializedDashboardGrid, serializeDashboardGrid } from './dashboardGridSerialization';
 
 describe('dashboard grid serialization', () => {
   it('saves item geometry from the requested layout and keeps the engine envelope in agreement', () => {

@@ -151,10 +151,7 @@ export const createDashboardGridInteractionCoordinator = (
     if (!snapshot) {
       return undefined;
     }
-    const currentRows = snapshot.items.reduce(
-      (rows, item) => Math.max(rows, item.row + item.rowSpan),
-      0,
-    );
+    const currentRows = snapshot.items.reduce((rows, item) => Math.max(rows, item.row + item.rowSpan), 0);
     const itemBottom = rect.row + rect.rowSpan;
     if (itemBottom < currentRows) {
       return undefined;
@@ -197,12 +194,8 @@ export const createDashboardGridInteractionCoordinator = (
     };
   };
 
-  const getIntentOperation = (
-    activeSession: DashboardGridInteractionSession,
-  ): DashboardGridInteractionOperation =>
-    activeSession.operation === 'keyboard' && activeSession.resizeEdge
-      ? 'resize'
-      : activeSession.operation;
+  const getIntentOperation = (activeSession: DashboardGridInteractionSession): DashboardGridInteractionOperation =>
+    activeSession.operation === 'keyboard' && activeSession.resizeEdge ? 'resize' : activeSession.operation;
 
   const deferCancellation = (shouldCancel: () => boolean) => {
     Promise.resolve().then(() => {
@@ -250,8 +243,7 @@ export const createDashboardGridInteractionCoordinator = (
           itemId: activeSession.itemId,
           sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
           originRect: activeSession.originRect,
-          originPixelRect:
-            'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
+          originPixelRect: 'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
           rect: result.item,
           pixelRect: 'currentPixelRect' in activeSession ? activeSession.currentPixelRect : undefined,
           temporaryRows: getTemporaryRows(activeSession.operation, activeSession.targetGridId, result.item),
@@ -282,11 +274,9 @@ export const createDashboardGridInteractionCoordinator = (
           itemId: activeSession.itemId,
           sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
           originRect: activeSession.originRect,
-          originPixelRect:
-            'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
+          originPixelRect: 'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
           rect: activeSession.lastAcceptedRect,
-          pixelRect:
-            'currentPixelRect' in activeSession ? activeSession.currentPixelRect : undefined,
+          pixelRect: 'currentPixelRect' in activeSession ? activeSession.currentPixelRect : undefined,
           temporaryRows: getTemporaryRows(
             activeSession.operation,
             activeSession.targetGridId,
@@ -306,8 +296,7 @@ export const createDashboardGridInteractionCoordinator = (
           itemId: activeSession.itemId,
           sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
           originRect: activeSession.originRect,
-          originPixelRect:
-            'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
+          originPixelRect: 'originPixelRect' in activeSession ? activeSession.originPixelRect : undefined,
           rect: activeSession.lastAcceptedRect,
           pixelRect: 'currentPixelRect' in activeSession ? activeSession.currentPixelRect : undefined,
           temporaryRows: getTemporaryRows(
@@ -359,14 +348,18 @@ export const createDashboardGridInteractionCoordinator = (
     return result;
   };
 
-  const getAcceptanceContext = (activeSession: DashboardGridInteractionSession): DashboardGridDropAcceptanceContext => ({
+  const getAcceptanceContext = (
+    activeSession: DashboardGridInteractionSession,
+  ): DashboardGridDropAcceptanceContext => ({
     operation: activeSession.operation,
     sourceGridId: activeSession.sourceGridId,
     targetGridId: activeSession.targetGridId,
     itemId: activeSession.itemId,
     sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
     descriptor:
-      'sourceId' in activeSession ? getExternalDescriptor(dragSources.get(activeSession.sourceId ?? '')?.value) : undefined,
+      'sourceId' in activeSession
+        ? getExternalDescriptor(dragSources.get(activeSession.sourceId ?? '')?.value)
+        : undefined,
   });
 
   const createGridDropZone = (grid: DashboardGridGridRegistration): DashboardGridDropZoneRegistration => ({
@@ -403,10 +396,7 @@ export const createDashboardGridInteractionCoordinator = (
     return geometry;
   };
 
-  const getCandidateRect = (
-    activeSession: DashboardGridInteractionSession,
-    targetGridId: string | undefined,
-  ) => {
+  const getCandidateRect = (activeSession: DashboardGridInteractionSession, targetGridId: string | undefined) => {
     if (
       activeSession.operation === 'keyboard' ||
       !targetGridId ||
@@ -449,7 +439,9 @@ export const createDashboardGridInteractionCoordinator = (
     sourceId: 'sourceId' in activeSession ? activeSession.sourceId : undefined,
     targetZoneId: activeDropZone?.id,
     descriptor:
-      'sourceId' in activeSession ? getExternalDescriptor(dragSources.get(activeSession.sourceId ?? '')?.value) : undefined,
+      'sourceId' in activeSession
+        ? getExternalDescriptor(dragSources.get(activeSession.sourceId ?? '')?.value)
+        : undefined,
     rect: activeSession.lastAcceptedRect,
     nativeEvent,
   });
@@ -468,10 +460,7 @@ export const createDashboardGridInteractionCoordinator = (
       register(items, itemKey(registration.gridId, registration.id), registration, () => {
         const key = itemKey(registration.gridId, registration.id);
         deferCancellation(
-          () =>
-            !items.has(key) &&
-            session?.sourceGridId === registration.gridId &&
-            session.itemId === registration.id,
+          () => !items.has(key) && session?.sourceGridId === registration.gridId && session.itemId === registration.id,
         );
       }),
     registerDragSource: registration =>
@@ -528,8 +517,7 @@ export const createDashboardGridInteractionCoordinator = (
       });
 
       const grid = getGrid(request.sourceGridId);
-      const item =
-        request.sourceGridId && request.itemId ? getItem(request.sourceGridId, request.itemId) : undefined;
+      const item = request.sourceGridId && request.itemId ? getItem(request.sourceGridId, request.itemId) : undefined;
       const source = request.sourceId ? dragSources.get(request.sourceId)?.value : undefined;
 
       if (request.operation === 'external') {
@@ -703,10 +691,7 @@ export const createDashboardGridInteractionCoordinator = (
         }
 
         selected = candidate;
-        if (
-          session.operation === 'external' ||
-          (candidate.gridId && candidate.gridId !== session.sourceGridId)
-        ) {
+        if (session.operation === 'external' || (candidate.gridId && candidate.gridId !== session.sourceGridId)) {
           session.lastAcceptedRect = preflight?.status === 'accepted' ? preflight.rect ?? candidateRect : candidateRect;
         }
         break;
@@ -827,12 +812,7 @@ export const createDashboardGridInteractionCoordinator = (
         return undefined;
       }
 
-      return applyMoveResult(
-        session,
-        grid.store.rotate(session.itemId, { input: 'keyboard' }),
-        nativeEvent,
-        'rotate',
-      );
+      return applyMoveResult(session, grid.store.rotate(session.itemId, { input: 'keyboard' }), nativeEvent, 'rotate');
     },
     commit: async nativeEvent => {
       if (!session || session.phase === 'cancelled') {
@@ -853,8 +833,8 @@ export const createDashboardGridInteractionCoordinator = (
           activeDropZone?.kind === 'remove'
             ? options.provider?.remove
             : activeDropZone?.kind === 'custom'
-              ? options.provider?.drop ?? options.provider?.transfer
-              : options.provider?.transfer;
+            ? options.provider?.drop ?? options.provider?.transfer
+            : options.provider?.transfer;
         if (!activeDropZone || !providerCommand) {
           transferResult = {
             status: 'rejected',

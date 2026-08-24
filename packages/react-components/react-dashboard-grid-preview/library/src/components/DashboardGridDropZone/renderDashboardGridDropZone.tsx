@@ -6,9 +6,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { DashboardGridDropZoneSlots } from './DashboardGridDropZone.types';
 import type { DashboardGridDropZoneInternalState } from './useDashboardGridDropZone';
 
-export const renderDashboardGridDropZone_unstable = (
-  state: DashboardGridDropZoneInternalState,
-): JSXElement => {
+export const renderDashboardGridDropZone_unstable = (state: DashboardGridDropZoneInternalState): JSXElement => {
   assertSlots<DashboardGridDropZoneSlots>(state);
 
   return (

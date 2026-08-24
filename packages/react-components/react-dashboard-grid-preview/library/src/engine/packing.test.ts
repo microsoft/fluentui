@@ -1,12 +1,7 @@
 import { asOpaqueNodeKey, type InternalNode } from './internalTypes';
 import { compactNodes, packNodes } from './packing';
 
-const node = (
-  key: number,
-  x: number,
-  y: number,
-  locked = false,
-): InternalNode => ({
+const node = (key: number, x: number, y: number, locked = false): InternalNode => ({
   key: asOpaqueNodeKey(key),
   sequence: key,
   id: String(key),

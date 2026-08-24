@@ -23,11 +23,7 @@ import type {
   DashboardGridLoadOptions,
   DashboardGridResolvedItem,
 } from '../engine';
-import {
-  fromGridStackWidgets,
-  toGridStackWidget,
-  toGridStackWidgets,
-} from './gridstackSchema';
+import { fromGridStackWidgets, toGridStackWidget, toGridStackWidgets } from './gridstackSchema';
 import {
   getGridStackElements,
   readGridStackWidgetAttributes,
@@ -58,9 +54,7 @@ function getEngine(target: DashboardGridCompatibilityTarget): DashboardGridEngin
   return target.getStore?.().engine;
 }
 
-function getDefinitions(
-  target: DashboardGridCompatibilityTarget,
-): readonly DashboardGridLayoutItemInput[] {
+function getDefinitions(target: DashboardGridCompatibilityTarget): readonly DashboardGridLayoutItemInput[] {
   if ('getSnapshot' in target) {
     return target.getSnapshot().items;
   }
@@ -118,11 +112,7 @@ function resolveElementIds(
   }
 
   const elements =
-    typeof element === 'string'
-      ? rootElement
-        ? getGridStackElements(element, rootElement)
-        : []
-      : [element];
+    typeof element === 'string' ? (rootElement ? getGridStackElements(element, rootElement) : []) : [element];
 
   return elements
     .map(candidate => candidate.getAttribute('gs-id') || candidate.id)
@@ -141,20 +131,16 @@ function resolveDragInElements(
   }
 
   try {
-    return Array.from(root.querySelectorAll(elements)).filter(
-      (element): element is HTMLElement => {
-        const HTMLElementConstructor = element.ownerDocument.defaultView?.HTMLElement;
-        return HTMLElementConstructor !== undefined && element instanceof HTMLElementConstructor;
-      },
-    );
+    return Array.from(root.querySelectorAll(elements)).filter((element): element is HTMLElement => {
+      const HTMLElementConstructor = element.ownerDocument.defaultView?.HTMLElement;
+      return HTMLElementConstructor !== undefined && element instanceof HTMLElementConstructor;
+    });
   } catch {
     return [];
   }
 }
 
-function getItemsForSave(
-  target: DashboardGridCompatibilityTarget,
-): readonly DashboardGridCompatibilityItem[] {
+function getItemsForSave(target: DashboardGridCompatibilityTarget): readonly DashboardGridCompatibilityItem[] {
   const resolvedItems = getItems(target);
   if ('getSnapshot' in target) {
     return resolvedItems;
@@ -189,9 +175,7 @@ function getEventNames(name: string): GridStackEventName[] {
   return name
     .trim()
     .split(/\s+/)
-    .filter((eventName): eventName is GridStackEventName =>
-      gridStackEventNames.has(eventName as GridStackEventName),
-    );
+    .filter((eventName): eventName is GridStackEventName => gridStackEventNames.has(eventName as GridStackEventName));
 }
 
 function hasSameGeometry(previous: DashboardGridResolvedItem, current: DashboardGridResolvedItem): boolean {
@@ -280,16 +264,12 @@ function toCallbackWidget(item: Readonly<DashboardGridLayoutItemInput>): GridSta
 
 function requireCallbackRoot(options: GridStackEventAdapterOptions): HTMLElement {
   if (!options.rootElement) {
-    throw new Error(
-      'The legacy GridStack load callback overload requires GridStackEventAdapterOptions.rootElement.',
-    );
+    throw new Error('The legacy GridStack load callback overload requires GridStackEventAdapterOptions.rootElement.');
   }
   return options.rootElement;
 }
 
-export function adaptGridStackLoadOptions(
-  addRemove?: GridStackLegacyLoadArgument,
-): DashboardGridLoadOptions {
+export function adaptGridStackLoadOptions(addRemove?: GridStackLegacyLoadArgument): DashboardGridLoadOptions {
   if (addRemove === false) {
     return {
       addMissing: false,
@@ -440,22 +420,12 @@ export function createGridStackEventAdapter(
       emittingEvents.add(name);
       try {
         for (const callback of eventHandlers) {
-          if (
-            name === 'added' ||
-            name === 'change' ||
-            name === 'removed' ||
-            name === 'resizecontent'
-          ) {
+          if (name === 'added' || name === 'change' || name === 'removed' || name === 'resizecontent') {
             const nodesPayload = payload as Readonly<{
               nodes: readonly DashboardGridResolvedItem[];
             }>;
-            const nodes = nodesPayload.nodes.map(item =>
-              toNode(item, getItemElement),
-            );
-            (callback as (event: GridStackCompatibilityEvent, nodes: readonly GridStackNode[]) => void)(
-              event,
-              nodes,
-            );
+            const nodes = nodesPayload.nodes.map(item => toNode(item, getItemElement));
+            (callback as (event: GridStackCompatibilityEvent, nodes: readonly GridStackNode[]) => void)(event, nodes);
           } else if (
             name === 'drag' ||
             name === 'dragstart' ||
@@ -470,10 +440,7 @@ export function createGridStackEventAdapter(
             }>;
             const element = itemPayload.element ?? getItemElement(itemPayload.item.id);
             if (element) {
-              (callback as (event: GridStackCompatibilityEvent, element: HTMLElement) => void)(
-                event,
-                element,
-              );
+              (callback as (event: GridStackCompatibilityEvent, element: HTMLElement) => void)(event, element);
             }
           } else if (name === 'dropped') {
             const dropPayload = payload as GridStackEventPayloadMap['dropped'];
@@ -485,9 +452,7 @@ export function createGridStackEventAdapter(
               ) => void
             )(
               event,
-              dropPayload.previousItem
-                ? toNode(dropPayload.previousItem, getItemElement)
-                : undefined,
+              dropPayload.previousItem ? toNode(dropPayload.previousItem, getItemElement) : undefined,
               toNode(dropPayload.item, getItemElement),
             );
           } else {
@@ -526,11 +491,7 @@ export function createGridStackEventAdapter(
     makeWidget(element, widgetOptions = {}) {
       const selectorRoot = options.selectorRoot ?? options.rootElement;
       const candidate = (
-        typeof element === 'string'
-          ? selectorRoot
-            ? getGridStackElements(element, selectorRoot)
-            : []
-          : [element]
+        typeof element === 'string' ? (selectorRoot ? getGridStackElements(element, selectorRoot) : []) : [element]
       ).find((match): match is HTMLElement => {
         const HTMLElementConstructor = match.ownerDocument.defaultView?.HTMLElement;
         return HTMLElementConstructor !== undefined && match instanceof HTMLElementConstructor;
@@ -599,9 +560,7 @@ export function createGridStackEventAdapter(
     removeAll(_removeDOM = true, triggerEvent = true) {
       runMutation(() => {
         const result =
-          'removeAll' in target
-            ? target.removeAll()
-            : target.load([], { addMissing: false, removeMissing: true });
+          'removeAll' in target ? target.removeAll() : target.load([], { addMissing: false, removeMissing: true });
         callbackElements.clear();
         disabledStates.clear();
         return result;
@@ -705,8 +664,7 @@ export function createGridStackEventAdapter(
           const previousState = disabledStates.get(item.id);
           disabledStates.set(item.id, {
             movable: item.movable ?? previousState?.movable ?? beforeById.get(item.id)?.movable ?? true,
-            resizable:
-              item.resizable ?? previousState?.resizable ?? beforeById.get(item.id)?.resizable ?? true,
+            resizable: item.resizable ?? previousState?.resizable ?? beforeById.get(item.id)?.resizable ?? true,
           });
           return {
             ...item,
@@ -880,10 +838,7 @@ export function createGridStackEventAdapter(
     },
 
     setupDragIn(elements, dragOptions, widgets, root) {
-      const resolvedElements = resolveDragInElements(
-        elements,
-        root ?? options.selectorRoot ?? options.rootElement,
-      );
+      const resolvedElements = resolveDragInElements(elements, root ?? options.selectorRoot ?? options.rootElement);
       resolvedElements.forEach((element, index) => {
         element.setAttribute('data-dashboard-grid-drag-source', 'true');
         const widget = widgets?.[index];
@@ -896,9 +851,7 @@ export function createGridStackEventAdapter(
     },
 
     getDashboardGridEventHandlers() {
-      const getEventItems = (
-        data: DashboardGridCompatibilityEventData,
-      ): readonly DashboardGridResolvedItem[] => {
+      const getEventItems = (data: DashboardGridCompatibilityEventData): readonly DashboardGridResolvedItem[] => {
         if (data.items) {
           return data.items;
         }
@@ -909,9 +862,7 @@ export function createGridStackEventAdapter(
         return [];
       };
 
-      const getChangeItems = (
-        data: DashboardGridCompatibilityEventData,
-      ): readonly DashboardGridResolvedItem[] => {
+      const getChangeItems = (data: DashboardGridCompatibilityEventData): readonly DashboardGridResolvedItem[] => {
         if (!data.changeSet) {
           return getEventItems(data);
         }

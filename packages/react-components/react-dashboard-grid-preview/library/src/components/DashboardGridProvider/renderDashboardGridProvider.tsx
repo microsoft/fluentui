@@ -4,9 +4,7 @@ import { DashboardGridProviderContextProvider } from '../../contexts/DashboardGr
 import { DashboardGridHostPortals } from '../../provider/DashboardGridHostPortals';
 import type { DashboardGridProviderState } from './useDashboardGridProvider';
 
-export const renderDashboardGridProvider_unstable = (
-  state: DashboardGridProviderState,
-): JSXElement => (
+export const renderDashboardGridProvider_unstable = (state: DashboardGridProviderState): JSXElement => (
   <DashboardGridProviderContextProvider value={state.contextValue}>
     {state.children}
     <DashboardGridHostPortals registry={state.registry} />

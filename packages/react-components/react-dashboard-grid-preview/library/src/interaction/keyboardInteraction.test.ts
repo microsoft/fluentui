@@ -1,8 +1,5 @@
 import { createDashboardGridInteractionCoordinator } from './coordinator';
-import {
-  createDashboardGridKeyboardInteraction,
-  getDashboardGridKeyboardResizeProposal,
-} from './keyboardInteraction';
+import { createDashboardGridKeyboardInteraction, getDashboardGridKeyboardResizeProposal } from './keyboardInteraction';
 import type {
   DashboardGridInteractionIntent,
   DashboardGridInteractionStore,
@@ -374,9 +371,7 @@ describe('dashboard grid keyboard interaction', () => {
     itemElement.addEventListener('keydown', keyboard.onKeyDown);
 
     itemElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'F2', bubbles: true, cancelable: true }));
-    itemElement.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true }),
-    );
+    itemElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true }));
 
     expect(move).toHaveBeenCalledWith('item', expect.objectContaining({ input: 'keyboard', column: 1 }));
   });

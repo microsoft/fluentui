@@ -10,9 +10,7 @@ export type DashboardGridNestedGridBinding = {
   columns: number | 'auto' | undefined;
 };
 
-export const synchronizeDashboardGridNestedColumns = (
-  binding: DashboardGridNestedGridBinding,
-): void => {
+export const synchronizeDashboardGridNestedColumns = (binding: DashboardGridNestedGridBinding): void => {
   const parentItem = binding.parentStore.getItem(binding.parentItemId);
   if (!parentItem) {
     return;

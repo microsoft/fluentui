@@ -13,7 +13,7 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
     width,
     height,
     toJSON: () => ({}),
-  }) as DOMRect;
+  } as DOMRect);
 
 describe('dashboard grid cross-grid event ordering', () => {
   it('dispatches stop after commit and before source and target layouts', async () => {

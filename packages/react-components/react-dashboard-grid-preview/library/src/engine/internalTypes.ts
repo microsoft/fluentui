@@ -39,10 +39,7 @@ export type CachedLayoutNode = {
   auto?: true;
 };
 
-export type ResponsiveLayoutCache = Map<
-  number,
-  Map<OpaqueNodeKey, CachedLayoutNode>
->;
+export type ResponsiveLayoutCache = Map<number, Map<OpaqueNodeKey, CachedLayoutNode>>;
 
 export type EngineState = {
   columns: number;
@@ -109,5 +106,4 @@ export type PixelCollisionContext = {
   current: DashboardGridPixelRect;
 };
 
-export const asOpaqueNodeKey = (value: number): OpaqueNodeKey =>
-  value as OpaqueNodeKey;
+export const asOpaqueNodeKey = (value: number): OpaqueNodeKey => value as OpaqueNodeKey;

@@ -87,20 +87,14 @@ export type DashboardGridRegistry = DashboardGridProviderInteractionRegistry & {
   detachItemHost(id: string, container?: HTMLElement | null): void;
   setParkingElement(element: HTMLElement | null): void;
 
-  transfer(
-    intent: DashboardGridTransferIntent,
-  ): Promise<DashboardGridPreparedTransferResult>;
+  transfer(intent: DashboardGridTransferIntent): Promise<DashboardGridPreparedTransferResult>;
   remove(intent: DashboardGridTransferIntent): DashboardGridPreparedTransferResult;
   drop(
     intent: DashboardGridTransferIntent,
-  ):
-    | DashboardGridPreparedTransferResult
-    | Promise<DashboardGridPreparedTransferResult>;
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
   requestNesting(
     intent: DashboardGridNestingIntent,
-  ):
-    | DashboardGridPreparedTransferResult
-    | Promise<DashboardGridPreparedTransferResult>;
+  ): DashboardGridPreparedTransferResult | Promise<DashboardGridPreparedTransferResult>;
   dispose(): void;
 };
 

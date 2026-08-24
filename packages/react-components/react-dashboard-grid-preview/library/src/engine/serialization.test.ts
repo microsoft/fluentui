@@ -52,9 +52,7 @@ describe('dashboard grid serialization', () => {
     engine.remove('item');
 
     const afterRemove = engine.save({ includeLayouts: true });
-    expect(
-      Object.values(afterRemove.layouts ?? {}).flatMap(layout => layout),
-    ).toHaveLength(0);
+    expect(Object.values(afterRemove.layouts ?? {}).flatMap(layout => layout)).toHaveLength(0);
 
     engine.add({ id: 'next', autoPosition: true });
     engine.removeAll();

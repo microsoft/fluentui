@@ -27,8 +27,7 @@ describe('useDashboardGridLazyMount', () => {
         return [];
       }
     }
-    window.IntersectionObserver =
-      MockIntersectionObserver as unknown as typeof IntersectionObserver;
+    window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
 
     const Harness = () => {
       const lazy = useDashboardGridLazyMount<HTMLDivElement>({
@@ -46,10 +45,7 @@ describe('useDashboardGridLazyMount', () => {
     expect(screen.getByTestId('shell')).toHaveTextContent('skeleton');
 
     act(() => {
-      callback?.(
-        [{ isIntersecting: true } as IntersectionObserverEntry],
-        {} as IntersectionObserver,
-      );
+      callback?.([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(screen.getByTestId('shell')).toHaveTextContent('content');
     window.IntersectionObserver = original;

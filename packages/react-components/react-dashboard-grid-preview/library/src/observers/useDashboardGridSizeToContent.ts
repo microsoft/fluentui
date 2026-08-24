@@ -2,20 +2,22 @@
 
 import * as React from 'react';
 import type { DashboardGridResizeObserverController } from './useDashboardGridResizeObserver';
-import type { DashboardGridStore } from '../state/DashboardGridStore.types';
+import type { DashboardGridContentMeasure, DashboardGridStore } from '../state/DashboardGridStore.types';
 
 export type UseDashboardGridSizeToContentOptions = {
   controller: DashboardGridResizeObserverController;
   id: string;
   enabled?: boolean | number;
   store?: DashboardGridStore;
+  selector?: string;
+  measure?: DashboardGridContentMeasure;
   onTextOnly?: (id: string) => void;
 };
 
 export const useDashboardGridSizeToContent = <TElement extends HTMLElement = HTMLDivElement>(
   options: UseDashboardGridSizeToContentOptions,
 ): React.RefCallback<TElement> => {
-  const { controller, id, enabled, onTextOnly, store } = options;
+  const { controller, id, enabled, measure, onTextOnly, selector, store } = options;
   const cleanupRef = React.useRef<(() => void) | undefined>(undefined);
 
   React.useEffect(
@@ -40,9 +42,11 @@ export const useDashboardGridSizeToContent = <TElement extends HTMLElement = HTM
         element,
         store,
         maximumRowSpan: typeof enabled === 'number' ? enabled : undefined,
+        selector,
+        measure,
         onTextOnly,
       });
     },
-    [controller, enabled, id, onTextOnly, store],
+    [controller, enabled, id, measure, onTextOnly, selector, store],
   );
 };

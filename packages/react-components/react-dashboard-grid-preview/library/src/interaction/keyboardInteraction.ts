@@ -1,14 +1,4 @@
-import {
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  Enter,
-  Escape,
-  F2,
-  Space,
-  Tab,
-} from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Escape, F2, Space, Tab } from '@fluentui/keyboard-keys';
 import { mirrorDashboardGridResizeEdge } from './domGeometry';
 import { getDashboardGridDeepActiveElement } from './pointerSession';
 import type {
@@ -59,15 +49,7 @@ export const getDashboardGridKeyboardResizeProposal = (options: {
 }): DashboardGridMoveProposal | undefined => {
   const { current, direction, edge, key } = options;
   const horizontalDelta =
-    key === ArrowLeft
-      ? direction === 'rtl'
-        ? 1
-        : -1
-      : key === ArrowRight
-        ? direction === 'rtl'
-          ? -1
-          : 1
-        : 0;
+    key === ArrowLeft ? (direction === 'rtl' ? 1 : -1) : key === ArrowRight ? (direction === 'rtl' ? -1 : 1) : 0;
   const verticalDelta = key === ArrowUp ? -1 : key === ArrowDown ? 1 : 0;
   const proposal: DashboardGridMoveProposal = {
     input: 'keyboard',
@@ -134,9 +116,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
       element.setAttribute('aria-pressed', String(active));
       element.setAttribute(
         'aria-keyshortcuts',
-        active
-          ? 'ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Escape'
-          : 'Enter Space F2',
+        active ? 'ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Escape' : 'Enter Space F2',
       );
     }
   };
@@ -144,9 +124,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
   const isArranging = () => {
     const session = options.coordinator.getSession();
     return (
-      session?.operation === 'keyboard' &&
-      session.sourceGridId === options.gridId &&
-      session.itemId === options.itemId
+      session?.operation === 'keyboard' && session.sourceGridId === options.gridId && session.itemId === options.itemId
     );
   };
 
@@ -174,10 +152,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
   const begin = (event: KeyboardEvent): boolean => {
     const target = event.target;
     const registration = getRegistration();
-    const resizeEdge = getResizeHandleEdge(
-      target,
-      getResizeHandles(),
-    );
+    const resizeEdge = getResizeHandleEdge(target, getResizeHandles());
     const dragHandleTarget = !!options.dragHandle && containsEventTarget(options.dragHandle, target);
     if (target !== options.itemElement && !dragHandleTarget && !resizeEdge) {
       return false;
@@ -309,8 +284,7 @@ export const createDashboardGridKeyboardInteraction = (options: {
         return true;
       }
 
-      const horizontalDelta =
-        event.key === ArrowRight ? (direction === 'rtl' ? -1 : 1) : direction === 'rtl' ? 1 : -1;
+      const horizontalDelta = event.key === ArrowRight ? (direction === 'rtl' ? -1 : 1) : direction === 'rtl' ? 1 : -1;
       handleResult(
         options.coordinator.moveKeyboard(
           {
@@ -336,10 +310,10 @@ export const createDashboardGridKeyboardInteraction = (options: {
           ? 1
           : -1
         : event.key === ArrowRight
-          ? direction === 'rtl'
-            ? -1
-            : 1
-          : 0;
+        ? direction === 'rtl'
+          ? -1
+          : 1
+        : 0;
     const verticalDelta = event.key === ArrowUp ? -1 : event.key === ArrowDown ? 1 : 0;
 
     handleResult(

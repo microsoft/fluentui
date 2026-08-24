@@ -15,12 +15,7 @@ export type GridStackColumnLayout =
   | 'move'
   | 'scale'
   | 'none'
-  | ((
-      column: number,
-      previousColumn: number,
-      nodes: GridStackWidget[],
-      previousNodes: GridStackWidget[],
-    ) => void);
+  | ((column: number, previousColumn: number, nodes: GridStackWidget[], previousNodes: GridStackWidget[]) => void);
 
 export type GridStackCompactMode = 'list' | 'compact';
 

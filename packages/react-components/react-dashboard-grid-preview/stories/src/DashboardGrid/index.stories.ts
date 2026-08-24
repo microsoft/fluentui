@@ -1,7 +1,4 @@
-import {
-  DashboardGrid,
-  DashboardGridProvider,
-} from '@fluentui/react-dashboard-grid-preview';
+import { DashboardGrid, DashboardGridProvider } from '@fluentui/react-dashboard-grid-preview';
 
 export { ParityPlayground } from './DashboardGridParityPlayground.stories';
 export { BrowserInteractions } from './DashboardGridBrowserCoverage.stories';

@@ -29,11 +29,7 @@ describe('useDashboardGridSerializer', () => {
             },
           ]}
         />
-        <DashboardGrid
-          aria-label="Highest-resolution target dashboard"
-          imperativeRef={highestTargetRef}
-          columns={12}
-        />
+        <DashboardGrid aria-label="Highest-resolution target dashboard" imperativeRef={highestTargetRef} columns={12} />
         <DashboardGrid aria-label="Target dashboard" imperativeRef={targetRef} columns={1} />
       </DashboardGridProvider>,
     );
@@ -77,11 +73,9 @@ describe('useDashboardGridSerializer', () => {
       highestTargetRef.current?.load(highest);
     }
     const highestRoundTripped = highestTargetRef.current?.save();
-    expect(
-      highestRoundTripped && 'items' in highestRoundTripped
-        ? highestRoundTripped.items
-        : undefined,
-    ).toEqual(highest && 'items' in highest ? highest.items : undefined);
+    expect(highestRoundTripped && 'items' in highestRoundTripped ? highestRoundTripped.items : undefined).toEqual(
+      highest && 'items' in highest ? highest.items : undefined,
+    );
 
     if (requested && 'items' in requested) {
       targetRef.current?.load(requested);
@@ -211,9 +205,7 @@ describe('useDashboardGridSerializer', () => {
       subGridDefaults: { columns: 'auto', rowHeight: 'initial', direction: 'auto' },
       dynamicNesting: true,
     });
-    expect(
-      'items' in saved! ? saved.items[0].subGrid?.options : undefined,
-    ).toEqual({
+    expect('items' in saved! ? saved.items[0].subGrid?.options : undefined).toEqual({
       columns: 'auto',
       rowHeight: 'auto',
       direction: 'auto',

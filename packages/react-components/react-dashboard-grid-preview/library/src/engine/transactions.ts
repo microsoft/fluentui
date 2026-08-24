@@ -7,18 +7,12 @@ import type {
 } from './DashboardGridEngine.types';
 import { sameInternalRect, toPublicRect } from './geometry';
 import type { EngineState, InternalNode, OpaqueNodeKey } from './internalTypes';
-import {
-  nodeToResolvedItem,
-  sortNodesStable,
-} from './state';
+import { nodeToResolvedItem, sortNodesStable } from './state';
 
-const freezeItems = (
-  items: DashboardGridResolvedItem[],
-): readonly DashboardGridResolvedItem[] => Object.freeze(items);
+const freezeItems = (items: DashboardGridResolvedItem[]): readonly DashboardGridResolvedItem[] => Object.freeze(items);
 
-const freezeGeometryChanges = (
-  changes: DashboardGridGeometryChange[],
-): readonly DashboardGridGeometryChange[] => Object.freeze(changes);
+const freezeGeometryChanges = (changes: DashboardGridGeometryChange[]): readonly DashboardGridGeometryChange[] =>
+  Object.freeze(changes);
 
 export const createChangeSet = (
   before: EngineState,
@@ -26,12 +20,8 @@ export const createChangeSet = (
   revision: number,
   diagnostics: readonly DashboardGridEngineDiagnostic[] = [],
 ): DashboardGridEngineChangeSet => {
-  const beforeByKey = new Map<OpaqueNodeKey, InternalNode>(
-    before.nodes.map(node => [node.key, node]),
-  );
-  const afterByKey = new Map<OpaqueNodeKey, InternalNode>(
-    after.nodes.map(node => [node.key, node]),
-  );
+  const beforeByKey = new Map<OpaqueNodeKey, InternalNode>(before.nodes.map(node => [node.key, node]));
+  const afterByKey = new Map<OpaqueNodeKey, InternalNode>(after.nodes.map(node => [node.key, node]));
   const removed = sortNodesStable(before.nodes)
     .filter(node => !afterByKey.has(node.key))
     .map(nodeToResolvedItem);
@@ -55,9 +45,7 @@ export const createChangeSet = (
   const ordered: DashboardGridEngineChange[] = [
     ...removed.map(item => Object.freeze({ kind: 'removed' as const, item })),
     ...added.map(item => Object.freeze({ kind: 'added' as const, item })),
-    ...changed.map(change =>
-      Object.freeze({ kind: 'changed' as const, change }),
-    ),
+    ...changed.map(change => Object.freeze({ kind: 'changed' as const, change })),
   ];
 
   return Object.freeze({

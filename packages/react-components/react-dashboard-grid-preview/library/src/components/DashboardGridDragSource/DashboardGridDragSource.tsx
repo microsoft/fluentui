@@ -13,11 +13,9 @@ import { useDashboardGridDragSourceStyles_unstable } from './useDashboardGridDra
 export const DashboardGridDragSource: ForwardRefComponent<DashboardGridDragSourceProps> = React.forwardRef<
   HTMLDivElement,
   DashboardGridDragSourceProps
->(
-  (props, ref) => {
-    const state = useDashboardGridDragSourceStyles_unstable(useDashboardGridDragSource_unstable(props, ref));
-    return renderDashboardGridDragSource_unstable(state);
-  },
-);
+>((props, ref) => {
+  const state = useDashboardGridDragSourceStyles_unstable(useDashboardGridDragSource_unstable(props, ref));
+  return renderDashboardGridDragSource_unstable(state);
+});
 
 DashboardGridDragSource.displayName = 'DashboardGridDragSource';

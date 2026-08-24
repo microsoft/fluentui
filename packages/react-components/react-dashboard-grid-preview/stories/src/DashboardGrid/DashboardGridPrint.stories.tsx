@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  Text,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Button, Text, makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
 import {
@@ -12,11 +7,7 @@ import {
   DashboardGridStoryProvider,
   type DashboardGridStoryItemDefinition,
 } from './DashboardGridStoryAdapter';
-import {
-  DashboardTileContent,
-  PRINT_GRID_ID,
-  PRINT_ITEMS,
-} from './DashboardGridStoryFixtures';
+import { DashboardTileContent, PRINT_GRID_ID, PRINT_ITEMS } from './DashboardGridStoryFixtures';
 
 const useStyles = makeStyles({
   page: {
@@ -52,9 +43,7 @@ export const Print = (): JSXElement => {
   const styles = useStyles();
   const [printMode, setPrintMode] = React.useState<'flow' | 'exact'>('exact');
   const renderItem = React.useCallback(
-    (item: DashboardGridStoryItemDefinition) => (
-      <DashboardTileContent item={item} />
-    ),
+    (item: DashboardGridStoryItemDefinition) => <DashboardTileContent item={item} />,
     [],
   );
 

@@ -21,13 +21,7 @@ describe('dashboard grid print geometry', () => {
       gridRowEnd: 'span 2',
     });
     expect(
-      Number.parseFloat(
-        String(
-          getDashboardGridPrintGeometryStyle(rect, 'flow', 12)[
-            '--dashboard-grid-print-width'
-          ],
-        ),
-      ),
+      Number.parseFloat(String(getDashboardGridPrintGeometryStyle(rect, 'flow', 12)['--dashboard-grid-print-width'])),
     ).toBeCloseTo(100 / 3);
   });
 });

@@ -4,10 +4,7 @@ import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useRequiredDashboardGridProviderContext_unstable } from '../contexts';
 import { createDashboardGridExternalSource } from '../interaction/externalSources';
-import type {
-  DashboardGridDragSourceRegistration,
-  DashboardGridExternalItemDescriptor,
-} from '../interaction/types';
+import type { DashboardGridDragSourceRegistration, DashboardGridExternalItemDescriptor } from '../interaction/types';
 
 /** Options for registering an external DashboardGrid drag source. */
 export type UseDashboardGridDragSourceOptions = {
@@ -20,10 +17,7 @@ export type UseDashboardGridDragSourceOptions = {
   /** Prevents pointer and keyboard activation. */
   disabled?: boolean;
   /** Selects or presents a destination when keyboard activation has multiple targets. */
-  onKeyboardActivate?: (
-    registration: DashboardGridDragSourceRegistration,
-    event: KeyboardEvent,
-  ) => void;
+  onKeyboardActivate?: (registration: DashboardGridDragSourceRegistration, event: KeyboardEvent) => void;
 };
 
 /** Refs and handlers applied by an external drag-source component. */
@@ -49,9 +43,7 @@ export const useDashboardGridDragSource = <TElement extends HTMLElement = HTMLEl
   const { descriptor, disabled, id, label, onKeyboardActivate } = options;
   const [sourceElement, setSourceElement] = React.useState<TElement | null>(null);
   const [previewElement, setPreviewElement] = React.useState<HTMLElement | null>(null);
-  const controllerRef = React.useRef<
-    ReturnType<typeof createDashboardGridExternalSource> | undefined
-  >(undefined);
+  const controllerRef = React.useRef<ReturnType<typeof createDashboardGridExternalSource> | undefined>(undefined);
 
   React.useEffect(() => {
     if (!sourceElement || !coordinator || !targetDocument) {
@@ -80,17 +72,7 @@ export const useDashboardGridDragSource = <TElement extends HTMLElement = HTMLEl
         controllerRef.current = undefined;
       }
     };
-  }, [
-    coordinator,
-    descriptor,
-    disabled,
-    id,
-    label,
-    onKeyboardActivate,
-    previewElement,
-    sourceElement,
-    targetDocument,
-  ]);
+  }, [coordinator, descriptor, disabled, id, label, onKeyboardActivate, previewElement, sourceElement, targetDocument]);
 
   return {
     sourceRef: React.useCallback((element: TElement | null) => setSourceElement(element), []),

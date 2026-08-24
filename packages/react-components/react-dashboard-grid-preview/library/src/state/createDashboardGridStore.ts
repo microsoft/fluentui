@@ -21,15 +21,8 @@ import type {
   DashboardGridStoreOptions,
   DashboardGridStoreSnapshot,
 } from './DashboardGridStore.types';
-import {
-  dashboardGridDefaultRuntimeItemState,
-  toDashboardGridEngineItem,
-} from './DashboardGridStore.types';
-import {
-  areDashboardGridItemsEqual,
-  areDashboardGridLayoutsEqual,
-  copyDashboardGridItems,
-} from './reconcileOptions';
+import { dashboardGridDefaultRuntimeItemState, toDashboardGridEngineItem } from './DashboardGridStore.types';
+import { areDashboardGridItemsEqual, areDashboardGridLayoutsEqual, copyDashboardGridItems } from './reconcileOptions';
 import { getDashboardGridSerializableOptions } from '../serialization/dashboardGridSerialization';
 
 const emptyChangeSet = (snapshot: DashboardGridEngineSnapshot): DashboardGridEngineChangeSet => ({
@@ -297,9 +290,7 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
     },
 
     setSerializableOptions(nextOptions, replace = false) {
-      serializedOptions = replace
-        ? nextOptions
-        : { ...serializedOptions, ...nextOptions };
+      serializedOptions = replace ? nextOptions : { ...serializedOptions, ...nextOptions };
       serializedOptionsAreAuthoritative = serializedOptionsAreAuthoritative || replace;
     },
 
@@ -569,10 +560,13 @@ export const createDashboardGridStore = (options: DashboardGridStoreOptions): Da
         notifyItem(item.id);
       }
       return applyMutationResult(
-        engine.load(items.map(toDashboardGridEngineItem), loadOptions ?? {
-          addMissing: true,
-          removeMissing: true,
-        }),
+        engine.load(
+          items.map(toDashboardGridEngineItem),
+          loadOptions ?? {
+            addMissing: true,
+            removeMissing: true,
+          },
+        ),
       );
     },
 

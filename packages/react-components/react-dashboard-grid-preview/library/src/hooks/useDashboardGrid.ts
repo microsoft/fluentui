@@ -8,10 +8,7 @@ import type {
   DashboardGridRect,
   DashboardGridResolvedItem,
 } from '../engine';
-import {
-  useDashboardGridContext_unstable,
-  useDashboardGridProviderContext_unstable,
-} from '../contexts';
+import { useDashboardGridContext_unstable, useDashboardGridProviderContext_unstable } from '../contexts';
 import {
   deserializeDashboardGridItems,
   getDashboardGridSerializedItemColumns,
@@ -47,15 +44,9 @@ export interface DashboardGridHandle {
   /** Returns the current immutable resolved items. */
   getItems(): readonly DashboardGridResolvedItem[];
   /** Returns one resolved item, optionally searching descendant grids. */
-  getItem(
-    id: string,
-    options?: { recursive?: boolean },
-  ): DashboardGridResolvedItem | undefined;
+  getItem(id: string, options?: { recursive?: boolean }): DashboardGridResolvedItem | undefined;
   /** Adds an item to an uncontrolled grid. */
-  addItem(
-    item: DashboardGridItemDefinition,
-    options?: DashboardGridMutationOptions,
-  ): void;
+  addItem(item: DashboardGridItemDefinition, options?: DashboardGridMutationOptions): void;
   /** Removes one item. */
   removeItem(id: string, options?: DashboardGridRemoveOptions): void;
   /** Removes all items. */
@@ -72,9 +63,7 @@ export interface DashboardGridHandle {
     options?: DashboardGridLoadOptions,
   ): void;
   /** Saves a versioned grid or items-only payload. */
-  save(
-    options?: DashboardGridSaveOptions,
-  ): DashboardGridSerializedGrid | readonly DashboardGridSerializedItem[];
+  save(options?: DashboardGridSaveOptions): DashboardGridSerializedGrid | readonly DashboardGridSerializedItem[];
   /** Coalesces multiple mutations into one engine transaction. */
   batch<T>(operation: () => T, options?: { pack?: boolean }): T;
   /** Explicitly compacts the layout. */
@@ -86,10 +75,7 @@ export interface DashboardGridHandle {
   /** Purely checks whether a cell rectangle is empty. */
   isAreaEmpty(area: DashboardGridRect): boolean;
   /** Converts a client point to a logical grid cell. */
-  getCellFromPoint(point: {
-    clientX: number;
-    clientY: number;
-  }): { column: number; row: number };
+  getCellFromPoint(point: { clientX: number; clientY: number }): { column: number; row: number };
   /** Remeasures a size-to-content item. */
   resizeItemToContent(id: string): void;
   /** Rotates one item around an optional pivot cell. */
@@ -143,9 +129,7 @@ const removeWithFocus = (
   const host = registry.itemHosts.get(id)?.host;
   const itemElement = host?.closest<HTMLElement>('[data-dashboard-grid-item]');
   const containedFocus =
-    !!focusRecord?.element &&
-    (!!itemElement?.contains(focusRecord.element) ||
-      !!host?.contains(focusRecord.element));
+    !!focusRecord?.element && (!!itemElement?.contains(focusRecord.element) || !!host?.contains(focusRecord.element));
   const removedRect = containedFocus ? itemElement?.getBoundingClientRect() : undefined;
   if (containedFocus && focusRecord) {
     focusManager?.requestPendingFocus(focusRecord);
@@ -171,8 +155,7 @@ export const createDashboardGridHandle = (
 ): DashboardGridHandle => ({
   getItems: () => store.getSnapshot().items,
   getItem: (id, options) =>
-    store.getItem(id) ??
-    (options?.recursive ? getRecursiveItem(registry, store.id, id) : undefined),
+    store.getItem(id) ?? (options?.recursive ? getRecursiveItem(registry, store.id, id) : undefined),
   addItem: item => {
     store.add(item);
   },
@@ -209,19 +192,12 @@ export const createDashboardGridHandle = (
     if (isSerializedGrid(items)) {
       store.setSerializableOptions(items.options, true);
     }
-    store.load(
-      isSerializedGrid(items)
-        ? deserializeDashboardGridItems(items, registry, store.id)
-        : items,
-      {
-        addMissing: true,
-        removeMissing: true,
-        ...(isSerializedGrid(items)
-          ? { sourceColumns: getDashboardGridSerializedItemColumns(items) }
-          : {}),
-        ...options,
-      },
-    );
+    store.load(isSerializedGrid(items) ? deserializeDashboardGridItems(items, registry, store.id) : items, {
+      addMissing: true,
+      removeMissing: true,
+      ...(isSerializedGrid(items) ? { sourceColumns: getDashboardGridSerializedItemColumns(items) } : {}),
+      ...options,
+    });
   },
   save: options => {
     const state = serializeDashboardGrid(store, registry, options);
@@ -283,8 +259,7 @@ export const useDashboardGrid = (gridId?: string): DashboardGridHandle => {
       getMetrics: registration?.getMetrics ?? context?.resizeObserver.getMetrics,
       getDomGeometry: registration?.getDomGeometry ?? context?.getDomGeometry,
       setEnabled: registration?.setEnabled ?? context?.setEnabled,
-      refreshDragHandles:
-        registration?.refreshDragHandles ?? context?.refreshDragHandles,
+      refreshDragHandles: registration?.refreshDragHandles ?? context?.refreshDragHandles,
       resizeItemToContent:
         registration?.resizeItemToContent ??
         (context
@@ -297,8 +272,5 @@ export const useDashboardGrid = (gridId?: string): DashboardGridHandle => {
     [context, provider?.focusManager, registration],
   );
 
-  return React.useMemo(
-    () => createDashboardGridHandle(store, registry, environment),
-    [environment, registry, store],
-  );
+  return React.useMemo(() => createDashboardGridHandle(store, registry, environment), [environment, registry, store]);
 };

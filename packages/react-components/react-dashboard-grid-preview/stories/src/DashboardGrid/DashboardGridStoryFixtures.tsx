@@ -273,9 +273,7 @@ type DashboardTileContentProps = DashboardTileContentCallbacks &
 export const DashboardTileContent = ({ item, onEvent }: DashboardTileContentProps): JSXElement => {
   const styles = useTileStyles();
   const renderNestedItem = React.useCallback(
-    (nestedItem: DashboardGridStoryItemDefinition) => (
-      <DashboardTileContent item={nestedItem} onEvent={onEvent} />
-    ),
+    (nestedItem: DashboardGridStoryItemDefinition) => <DashboardTileContent item={nestedItem} onEvent={onEvent} />,
     [onEvent],
   );
   const fixtureDefinition = fixtureDefinitions.get(item.id);

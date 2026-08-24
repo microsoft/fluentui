@@ -8,12 +8,7 @@ import type {
   GridStackSelectorRoot,
   GridStackWidget,
 } from './gridstackTypes';
-import {
-  fromGridStackOptions,
-  fromGridStackWidgets,
-  toGridStackOptions,
-  toGridStackWidgets,
-} from './gridstackSchema';
+import { fromGridStackOptions, fromGridStackWidgets, toGridStackOptions, toGridStackWidgets } from './gridstackSchema';
 
 const defaultMetadataLimit = 100_000;
 const unsafeObjectKeys = new Set(['__proto__', 'constructor', 'prototype']);
@@ -143,18 +138,15 @@ export function readGridStackWidgetMetadata(
   const attributeName = element.hasAttribute('data-gs-widget')
     ? 'data-gs-widget'
     : element.hasAttribute('gridstacknode')
-      ? 'gridstacknode'
-      : undefined;
+    ? 'gridstacknode'
+    : undefined;
 
   if (!attributeName) {
     return undefined;
   }
 
   const serialized = element.getAttribute(attributeName);
-  if (
-    serialized === null ||
-    serialized.length > (options.maxLength ?? defaultMetadataLimit)
-  ) {
+  if (serialized === null || serialized.length > (options.maxLength ?? defaultMetadataLimit)) {
     if (options.consume) {
       element.removeAttribute('data-gs-widget');
       element.removeAttribute('gridstacknode');
@@ -193,8 +185,7 @@ export function readGridStackWidgetAttributes(
   element: HTMLElement,
   options: GridStackDOMReadOptions = {},
 ): GridStackWidget {
-  const metadata =
-    readGridStackWidgetMetadata(element, { maxLength: options.maxMetadataLength }) ?? {};
+  const metadata = readGridStackWidgetMetadata(element, { maxLength: options.maxMetadataLength }) ?? {};
   const widget: GridStackWidget = { ...metadata };
 
   const x = parseFiniteNumber(element.getAttribute('gs-x'));
@@ -358,8 +349,8 @@ export function readGridStackRootOptions(root: Element): GridStackOptions {
     printMode: root.classList.contains('gs-print-exact')
       ? 'exact'
       : root.classList.contains('gs-print-flow')
-        ? 'flow'
-        : undefined,
+      ? 'flow'
+      : undefined,
   };
 
   return options;
@@ -443,10 +434,7 @@ export function readGridStackDOM<TData = unknown>(
   };
 }
 
-export function getGridStackElements(
-  selectorOrElement: string | Element,
-  root: GridStackSelectorRoot,
-): Element[] {
+export function getGridStackElements(selectorOrElement: string | Element, root: GridStackSelectorRoot): Element[] {
   if (typeof selectorOrElement !== 'string') {
     return root === selectorOrElement || root.contains(selectorOrElement) ? [selectorOrElement] : [];
   }

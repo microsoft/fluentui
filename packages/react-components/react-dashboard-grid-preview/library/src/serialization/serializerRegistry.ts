@@ -17,10 +17,7 @@ export type DashboardGridSerializerRegistrySnapshot = {
 };
 
 export type DashboardGridSerializerRegistry = {
-  register<TValue, TSerialized>(
-    key: string,
-    serializer: DashboardGridSerializer<TValue, TSerialized>,
-  ): () => void;
+  register<TValue, TSerialized>(key: string, serializer: DashboardGridSerializer<TValue, TSerialized>): () => void;
   get(key: string): DashboardGridSerializer | undefined;
   serialize(key: string, value: unknown, context?: DashboardGridSerializerContext): unknown;
   deserialize(key: string, value: unknown, context?: DashboardGridSerializerContext): unknown;

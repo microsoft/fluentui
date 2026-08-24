@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { DashboardGridProviderContextProvider } from '../../contexts/DashboardGridProviderContext';
-import type {
-  DashboardGridInteractionCoordinator,
-  DashboardGridDragSourceRegistration,
-} from '../../interaction/types';
+import type { DashboardGridInteractionCoordinator, DashboardGridDragSourceRegistration } from '../../interaction/types';
 import type { DashboardGridRegistry } from '../../provider/DashboardGridRegistry.types';
 import { useDashboardGridDragSource } from '../../hooks/useDashboardGridDragSource';
 

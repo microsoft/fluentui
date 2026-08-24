@@ -13,11 +13,9 @@ import { useDashboardGridDropZoneStyles_unstable } from './useDashboardGridDropZ
 export const DashboardGridDropZone: ForwardRefComponent<DashboardGridDropZoneProps> = React.forwardRef<
   HTMLDivElement,
   DashboardGridDropZoneProps
->(
-  (props, ref) => {
-    const state = useDashboardGridDropZoneStyles_unstable(useDashboardGridDropZone_unstable(props, ref));
-    return renderDashboardGridDropZone_unstable(state);
-  },
-);
+>((props, ref) => {
+  const state = useDashboardGridDropZoneStyles_unstable(useDashboardGridDropZone_unstable(props, ref));
+  return renderDashboardGridDropZone_unstable(state);
+});
 
 DashboardGridDropZone.displayName = 'DashboardGridDropZone';

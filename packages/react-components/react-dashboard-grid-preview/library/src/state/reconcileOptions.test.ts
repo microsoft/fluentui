@@ -1,7 +1,4 @@
-import {
-  areDashboardGridItemsEqual,
-  areDashboardGridLayoutsEqual,
-} from './reconcileOptions';
+import { areDashboardGridItemsEqual, areDashboardGridLayoutsEqual } from './reconcileOptions';
 
 describe('areDashboardGridItemsEqual', () => {
   it('compares supported fields without stringifying callers', () => {

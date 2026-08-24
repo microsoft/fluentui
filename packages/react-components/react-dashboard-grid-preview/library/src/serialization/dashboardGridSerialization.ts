@@ -58,39 +58,26 @@ export const getDashboardGridSerializableOptions = (
   definition: DashboardGridDefinition,
 ): DashboardGridSerializableOptions => {
   const preview =
-    definition.drag?.preview === 'item'
-      ? 'item'
-      : definition.drag?.preview === 'clone'
-        ? 'clone'
-        : undefined;
+    definition.drag?.preview === 'item' ? 'item' : definition.drag?.preview === 'clone' ? 'clone' : undefined;
   const drag: DashboardGridSerializableOptions['drag'] = definition.drag
     ? {
         handleSelector: definition.drag.handleSelector,
         cancelSelector: definition.drag.cancelSelector,
         preview,
         portal:
-          definition.drag.portal === 'body' || definition.drag.portal === 'parent'
-            ? definition.drag.portal
-            : undefined,
+          definition.drag.portal === 'body' || definition.drag.portal === 'parent' ? definition.drag.portal : undefined,
         scroll: definition.drag.scroll,
         pause: definition.drag.pause,
       }
     : undefined;
   const acceptExternal =
-    typeof definition.acceptExternal === 'boolean' ||
-    typeof definition.acceptExternal === 'string'
+    typeof definition.acceptExternal === 'boolean' || typeof definition.acceptExternal === 'string'
       ? definition.acceptExternal
       : undefined;
   const removal: DashboardGridSerializableOptions['removal'] = definition.removal
     ? {
-        accept:
-          typeof definition.removal.accept === 'string'
-            ? definition.removal.accept
-            : undefined,
-        decline:
-          typeof definition.removal.decline === 'string'
-            ? definition.removal.decline
-            : undefined,
+        accept: typeof definition.removal.accept === 'string' ? definition.removal.accept : undefined,
+        decline: typeof definition.removal.decline === 'string' ? definition.removal.decline : undefined,
       }
     : undefined;
 
@@ -142,16 +129,14 @@ const serializeGridDefinition = (
 ): DashboardGridSerializedGrid => ({
   version: 1,
   options: getDashboardGridSerializableOptions(definition),
-  items: (definition.items ?? []).map(item =>
-    serializeDefinition(registry, gridId, item, options),
-  ),
+  items: (definition.items ?? []).map(item => serializeDefinition(registry, gridId, item, options)),
 });
 
 export const serializeDashboardGrid = (
   store: DashboardGridStore,
   registry: DashboardGridRegistry,
   options?: DashboardGridSaveOptions,
-// eslint-disable-next-line @typescript-eslint/no-deprecated -- Serialization retains the legacy engine envelope during preview migration.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Serialization retains the legacy engine envelope during preview migration.
 ): DashboardGridSerializedState => {
   const saved = store.save(options);
   const definitions = new Map(store.getDefinitions().map(item => [item.id, item]));
@@ -159,12 +144,7 @@ export const serializeDashboardGrid = (
     version: 1,
     options: saved.options,
     items: saved.items.map(item =>
-      serializeDefinition(
-        registry,
-        store.id,
-        applySerializedGeometry(definitions.get(item.id), item),
-        options,
-      ),
+      serializeDefinition(registry, store.id, applySerializedGeometry(definitions.get(item.id), item), options),
     ),
     layouts: saved.layouts,
     engine: saved.engine,
@@ -181,9 +161,7 @@ export const deserializeDashboardGridItems = (
     const serializer = item.component ? registry.serializers.get(item.component) : undefined;
     return {
       ...item,
-      data: serializer
-        ? serializer.deserialize(item.data, { gridId, itemId: item.id })
-        : item.data,
+      data: serializer ? serializer.deserialize(item.data, { gridId, itemId: item.id }) : item.data,
       subGrid: item.subGrid
         ? {
             ...item.subGrid.options,
@@ -209,9 +187,7 @@ export const getDashboardGridSerializedItemColumns = (
     }
   }
 
-  return typeof state.options.columns === 'number'
-    ? state.options.columns
-    : undefined;
+  return typeof state.options.columns === 'number' ? state.options.columns : undefined;
 };
 
 export const loadSerializedDashboardGrid = (

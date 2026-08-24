@@ -1,12 +1,5 @@
-import type {
-  ComponentProps,
-  ComponentState,
-  Slot,
-} from '@fluentui/react-utilities';
-import type {
-  DashboardGridDropAcceptanceContext,
-  DashboardGridDropZoneKind,
-} from '../../interaction/types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { DashboardGridDropAcceptanceContext, DashboardGridDropZoneKind } from '../../interaction/types';
 
 /** Slots available on the DashboardGridDropZone component. */
 export type DashboardGridDropZoneSlots = {

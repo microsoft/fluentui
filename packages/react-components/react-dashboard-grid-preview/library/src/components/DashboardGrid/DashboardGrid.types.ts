@@ -1,10 +1,5 @@
 import type * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  EventHandler,
-  Slot,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
 import type {
   DashboardGridEngineChangeSet,
   DashboardGridEngineDiagnostic,
@@ -99,19 +94,9 @@ export type DashboardGridEventFields = {
   /** Grid that surfaced the callback. */
   gridId: string;
   /** Input that initiated the change. */
-  input:
-    | DashboardGridInteractionInput
-    | 'api'
-    | 'load'
-    | 'responsive'
-    | 'content';
+  input: DashboardGridInteractionInput | 'api' | 'load' | 'responsive' | 'content';
   /** Interaction or mutation kind. */
-  kind?:
-    | DashboardGridInteractionOperation
-    | 'move'
-    | 'rotate'
-    | 'transfer'
-    | 'remove';
+  kind?: DashboardGridInteractionOperation | 'move' | 'rotate' | 'transfer' | 'remove';
   /** Primary item associated with the callback. */
   itemId?: string;
   /** Originating grid for cross-grid operations. */
@@ -151,13 +136,7 @@ export type DashboardGridDropData = DashboardGridEventFields & {
 
 /** Data emitted throughout drag and resize interactions. */
 export type DashboardGridInteractionData = DashboardGridEventFields & {
-  type:
-    | 'drag-start'
-    | 'drag'
-    | 'drag-end'
-    | 'resize-start'
-    | 'resize'
-    | 'resize-end';
+  type: 'drag-start' | 'drag' | 'drag-end' | 'resize-start' | 'resize' | 'resize-end';
   kind: 'drag' | 'resize';
 };
 
@@ -185,13 +164,7 @@ export type DashboardGridEventData = DashboardGridEventFields & {
 /** Props for DashboardGrid. */
 export type DashboardGridProps = Omit<
   ComponentProps<Partial<DashboardGridSlots>>,
-  | 'children'
-  | 'onChange'
-  | 'onError'
-  | 'onDrag'
-  | 'onDragStart'
-  | 'onDragEnd'
-  | 'onResize'
+  'children' | 'onChange' | 'onError' | 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onResize'
 > &
   DashboardGridOptions & {
     /** Provider-local grid identity. */

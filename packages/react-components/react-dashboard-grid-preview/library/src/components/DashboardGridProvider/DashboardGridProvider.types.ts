@@ -1,9 +1,7 @@
 import type * as React from 'react';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { DashboardGridRegistryError } from '../../provider/DashboardGridRegistry.types';
-import type {
-  DashboardGridTransferIntent,
-} from '../../interaction/types';
+import type { DashboardGridTransferIntent } from '../../interaction/types';
 
 /** Data emitted for a provider-approved custom non-grid drop. */
 export type DashboardGridCustomDropData = DashboardGridTransferIntent & {

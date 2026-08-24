@@ -8,27 +8,18 @@ describe('dashboard grid normalization', () => {
       { columns: 12, key: asOpaqueNodeKey(1), sequence: 1 },
     );
 
-    expect(result.node).toEqual(
-      expect.objectContaining({ x: 0, y: 0, auto: true }),
-    );
+    expect(result.node).toEqual(expect.objectContaining({ x: 0, y: 0, auto: true }));
   });
 
   it('requests full auto-placement when either coordinate is missing', () => {
-    const missingRow = normalizeItem(
-      { id: 'row', column: 7 },
-      { columns: 12, key: asOpaqueNodeKey(1), sequence: 1 },
-    );
+    const missingRow = normalizeItem({ id: 'row', column: 7 }, { columns: 12, key: asOpaqueNodeKey(1), sequence: 1 });
     const missingColumn = normalizeItem(
       { id: 'column', row: 7 },
       { columns: 12, key: asOpaqueNodeKey(2), sequence: 2 },
     );
 
-    expect(missingRow.node).toEqual(
-      expect.objectContaining({ x: 0, y: 0, auto: true }),
-    );
-    expect(missingColumn.node).toEqual(
-      expect.objectContaining({ x: 0, y: 0, auto: true }),
-    );
+    expect(missingRow.node).toEqual(expect.objectContaining({ x: 0, y: 0, auto: true }));
+    expect(missingColumn.node).toEqual(expect.objectContaining({ x: 0, y: 0, auto: true }));
   });
 
   it('moves placement inward but shrinks resize overflow', () => {
@@ -62,8 +53,6 @@ describe('dashboard grid normalization', () => {
     );
 
     expect(result.node.w).toBe(5);
-    expect(result.diagnostics).toEqual([
-      expect.objectContaining({ code: 'contradictory-constraints' }),
-    ]);
+    expect(result.diagnostics).toEqual([expect.objectContaining({ code: 'contradictory-constraints' })]);
   });
 });

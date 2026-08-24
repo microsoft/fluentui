@@ -9,11 +9,17 @@ export const getDashboardGridScreenGeometryStyle = (
   fallbackRowHeight: number,
 ): React.CSSProperties => {
   if (metrics.columnWidth > 0) {
+    if (metrics.rowHeight === 0 && fallbackRowHeight === 0) {
+      return {
+        insetInlineStart: rect.column * metrics.columnWidth + metrics.gapLeft,
+        width: rect.columnSpan * metrics.columnWidth - metrics.gapLeft - metrics.gapRight,
+      };
+    }
+
     return {
       insetInlineStart: rect.column * metrics.columnWidth + metrics.gapLeft,
       top: rect.row * metrics.rowHeight + metrics.gapTop,
-      width:
-        rect.columnSpan * metrics.columnWidth - metrics.gapLeft - metrics.gapRight,
+      width: rect.columnSpan * metrics.columnWidth - metrics.gapLeft - metrics.gapRight,
       height: rect.rowSpan * metrics.rowHeight - metrics.gapTop - metrics.gapBottom,
     };
   }

@@ -14,9 +14,7 @@ describe('createDashboardGridRegistry', () => {
     registry.registerItem({ id: 'duplicate', gridId: 'second', content: 'second' });
 
     expect(registry.getItemOwner('duplicate')).toBe('first');
-    expect(onError).toHaveBeenCalledWith(
-      expect.objectContaining({ code: 'duplicate-item-id', itemId: 'duplicate' }),
-    );
+    expect(onError).toHaveBeenCalledWith(expect.objectContaining({ code: 'duplicate-item-id', itemId: 'duplicate' }));
   });
 
   it('keeps the source intact when target preflight rejects a transfer', async () => {

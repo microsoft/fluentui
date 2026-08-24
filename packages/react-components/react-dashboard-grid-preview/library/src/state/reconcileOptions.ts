@@ -71,10 +71,7 @@ export const areDashboardGridLayoutsEqual = (
   }
 
   return left.every((item, index) =>
-    areDashboardGridEngineItemsEqual(
-      toDashboardGridEngineItem(item),
-      toDashboardGridEngineItem(right[index]),
-    ),
+    areDashboardGridEngineItemsEqual(toDashboardGridEngineItem(item), toDashboardGridEngineItem(right[index])),
   );
 };
 

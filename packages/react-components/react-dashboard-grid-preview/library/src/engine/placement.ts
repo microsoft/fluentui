@@ -10,18 +10,10 @@ export const findFirstEmptyPosition = (
     maxRows?: number;
   } = {},
 ): InternalRect | undefined => {
-  const start =
-    options.after === undefined
-      ? 0
-      : options.after.y * columns + options.after.x + options.after.w;
-  const contentRows = nodes.reduce(
-    (row, node) => Math.max(row, node.y + node.h),
-    0,
-  );
+  const start = options.after === undefined ? 0 : options.after.y * columns + options.after.x + options.after.w;
+  const contentRows = nodes.reduce((row, node) => Math.max(row, node.y + node.h), 0);
   const lastRow =
-    options.maxRows === undefined
-      ? contentRows + nodes.length * Math.max(1, size.h) + 1
-      : options.maxRows - size.h;
+    options.maxRows === undefined ? contentRows + nodes.length * Math.max(1, size.h) + 1 : options.maxRows - size.h;
 
   for (let index = start; Math.floor(index / columns) <= lastRow; index++) {
     const x = index % columns;

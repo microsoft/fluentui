@@ -1,26 +1,14 @@
-import type {
-  DashboardGridCellMetrics,
-  DashboardGridPixelRect,
-  DashboardGridRect,
-} from './DashboardGridEngine.types';
+import type { DashboardGridCellMetrics, DashboardGridPixelRect, DashboardGridRect } from './DashboardGridEngine.types';
 import type { InternalRect } from './internalTypes';
 
 export const sameInternalRect = (a: InternalRect, b: InternalRect): boolean =>
   a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
 
 export const sameRect = (a: DashboardGridRect, b: DashboardGridRect): boolean =>
-  a.column === b.column &&
-  a.row === b.row &&
-  a.columnSpan === b.columnSpan &&
-  a.rowSpan === b.rowSpan;
+  a.column === b.column && a.row === b.row && a.columnSpan === b.columnSpan && a.rowSpan === b.rowSpan;
 
 export const intersects = (a: InternalRect, b: InternalRect): boolean =>
-  !(
-    a.y >= b.y + b.h ||
-    a.y + a.h <= b.y ||
-    a.x + a.w <= b.x ||
-    a.x >= b.x + b.w
-  );
+  !(a.y >= b.y + b.h || a.y + a.h <= b.y || a.x + a.w <= b.x || a.x >= b.x + b.w);
 
 export const touches = (a: InternalRect, b: InternalRect): boolean =>
   intersects(a, {
@@ -43,10 +31,7 @@ export const overlapArea = (a: InternalRect, b: InternalRect): number => {
   return (right - left) * (bottom - top);
 };
 
-export const pixelOverlapArea = (
-  a: DashboardGridPixelRect,
-  b: DashboardGridPixelRect,
-): number => {
+export const pixelOverlapArea = (a: DashboardGridPixelRect, b: DashboardGridPixelRect): number => {
   const left = Math.max(a.x, b.x);
   const right = Math.min(a.x + a.width, b.x + b.width);
   const top = Math.max(a.y, b.y);
@@ -61,8 +46,7 @@ export const pixelOverlapArea = (
 
 export const rectArea = (rect: InternalRect): number => rect.w * rect.h;
 
-export const pixelRectArea = (rect: DashboardGridPixelRect): number =>
-  rect.width * rect.height;
+export const pixelRectArea = (rect: DashboardGridPixelRect): number => rect.width * rect.height;
 
 export const toPublicRect = (rect: InternalRect): DashboardGridRect =>
   Object.freeze({
@@ -79,10 +63,7 @@ export const toInternalRect = (rect: DashboardGridRect): InternalRect => ({
   h: rect.rowSpan,
 });
 
-export const toPixelRect = (
-  rect: InternalRect,
-  metrics: DashboardGridCellMetrics,
-): DashboardGridPixelRect =>
+export const toPixelRect = (rect: InternalRect, metrics: DashboardGridCellMetrics): DashboardGridPixelRect =>
   Object.freeze({
     x: rect.x * metrics.columnWidth + metrics.gapLeft,
     y: rect.y * metrics.rowHeight + metrics.gapTop,
@@ -136,10 +117,7 @@ export const directionalCoverage = (
   return Math.max(0, Math.min(1, coverage));
 };
 
-export const nestingCoverage = (
-  active: DashboardGridPixelRect,
-  target: DashboardGridPixelRect,
-): number => {
+export const nestingCoverage = (active: DashboardGridPixelRect, target: DashboardGridPixelRect): number => {
   const smallerArea = Math.min(pixelRectArea(active), pixelRectArea(target));
   return smallerArea <= 0 ? 0 : pixelOverlapArea(active, target) / smallerArea;
 };

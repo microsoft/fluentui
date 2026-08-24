@@ -18,12 +18,9 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
     width,
     height,
     toJSON: () => ({}),
-  }) as DOMRect;
+  } as DOMRect);
 
-const StoreCapture = (props: {
-  label: string;
-  onStore: (store: DashboardGridStore) => void;
-}) => {
+const StoreCapture = (props: { label: string; onStore: (store: DashboardGridStore) => void }) => {
   const store = useRequiredDashboardGridContext_unstable(context => context.store);
   const { label, onStore } = props;
 

@@ -308,11 +308,7 @@ export function fromGridStackWidgets<TData = unknown>(
     const preferredId = widget.id && widget.id.length > 0 ? widget.id : fallbackId;
     let id: string;
 
-    if (
-      options.preserveFirstExistingId &&
-      existingIds.has(preferredId) &&
-      !matchedExistingIds.has(preferredId)
-    ) {
+    if (options.preserveFirstExistingId && existingIds.has(preferredId) && !matchedExistingIds.has(preferredId)) {
       id = preferredId;
       matchedExistingIds.add(preferredId);
       allocatedIds.add(preferredId);
@@ -482,10 +478,7 @@ export function fromGridStackOptions<TData = unknown>(
     resize:
       options.resizable || options.alwaysShowResizeHandle !== undefined
         ? omitUndefined({
-            handleVisibility: mapHandleVisibility(
-              options.alwaysShowResizeHandle,
-              options.resizable?.autoHide,
-            ),
+            handleVisibility: mapHandleVisibility(options.alwaysShowResizeHandle, options.resizable?.autoHide),
             handles: options.resizable?.handles,
             element: options.resizable?.element,
           })
@@ -563,18 +556,18 @@ export function toGridStackOptions<TData = unknown>(
       options.resize.handleVisibility === 'always'
         ? true
         : options.resize.handleVisibility === 'hover'
-          ? false
-          : options.resize.handleVisibility === 'coarse-pointer'
-            ? 'mobile'
-            : undefined,
+        ? false
+        : options.resize.handleVisibility === 'coarse-pointer'
+        ? 'mobile'
+        : undefined,
     );
     target.resizable = omitUndefined({
       autoHide:
         options.resize.handleVisibility === 'always'
           ? false
           : options.resize.handleVisibility === 'hover'
-            ? true
-            : undefined,
+          ? true
+          : undefined,
       handles: options.resize.handles,
       element: options.resize.element,
     });

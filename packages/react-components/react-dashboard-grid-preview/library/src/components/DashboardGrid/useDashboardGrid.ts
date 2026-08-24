@@ -273,7 +273,7 @@ export const useDashboardGrid_unstable = (
   const rowHeightOption = props.rowHeight ?? 'auto';
   const rowHeight =
     typeof rowHeightOption === 'number'
-      ? Math.max(1, rowHeightOption)
+      ? Math.max(0, rowHeightOption)
       : typeof rowHeightOption === 'string' && rowHeightOption.endsWith('px')
       ? Math.max(1, Number.parseFloat(rowHeightOption))
       : DEFAULT_ROW_HEIGHT;
@@ -680,7 +680,7 @@ export const useDashboardGrid_unstable = (
         return initialAutoRowHeight.current ?? rowHeight;
       }
       if (typeof rowHeightOption === 'number') {
-        return Math.max(1, rowHeightOption);
+        return Math.max(0, rowHeightOption);
       }
       if (!targetDocument || !surfaceElement) {
         return rowHeight;
@@ -702,16 +702,24 @@ export const useDashboardGrid_unstable = (
     if (!targetWindow || !surfaceElement) {
       return {};
     }
-    const computed = targetWindow.getComputedStyle(surfaceElement);
-    const rowGap = Number.parseFloat(computed.rowGap) || 0;
-    const columnGap = Number.parseFloat(computed.columnGap) || 0;
-    return {
-      gapTop: rowGap / 2,
-      gapBottom: rowGap / 2,
-      gapLeft: columnGap / 2,
-      gapRight: columnGap / 2,
+    const probe = targetDocument.createElement('div');
+    probe.style.position = 'absolute';
+    probe.style.visibility = 'hidden';
+    probe.style.margin =
+      props.gap === undefined
+        ? `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`
+        : toCSSLength(props.gap);
+    surfaceElement.appendChild(probe);
+    const computed = targetWindow.getComputedStyle(probe);
+    const gaps = {
+      gapTop: Number.parseFloat(computed.marginTop) || 0,
+      gapRight: Number.parseFloat(computed.marginRight) || 0,
+      gapBottom: Number.parseFloat(computed.marginBottom) || 0,
+      gapLeft: Number.parseFloat(computed.marginLeft) || 0,
     };
-  }, [surfaceElement, targetDocument]);
+    probe.remove();
+    return gaps;
+  }, [props.gap, surfaceElement, targetDocument]);
   const handleMetricsChange = React.useCallback((metrics: DashboardGridCellMetrics) => {
     setLayoutMetrics(previous =>
       previous.columnWidth === metrics.columnWidth &&
@@ -890,7 +898,7 @@ export const useDashboardGrid_unstable = (
         refreshDragHandles,
         getMetrics: resizeObserver.getMetrics,
         getDomGeometry,
-        resizeItemToContent: () => resizeObserver.remeasure(),
+        resizeItemToContent: id => resizeObserver.remeasure(id),
       }),
     [
       direction,
@@ -1021,7 +1029,7 @@ export const useDashboardGrid_unstable = (
         getDomGeometry,
         setEnabled: setGridEnabled,
         refreshDragHandles,
-        resizeItemToContent: () => resizeObserver.remeasure(),
+        resizeItemToContent: id => resizeObserver.remeasure(id),
         compactMode: props.compactMode,
       }),
     [
@@ -1139,6 +1147,7 @@ export const useDashboardGrid_unstable = (
       disableResize: !enabled || !!props.static || !!props.disableResize,
       defaultLazyMount: props.lazyMount ?? false,
       defaultSizeToContent: props.sizeToContent ?? false,
+      defaultMeasureSizeToContent: props.measureSizeToContent,
       dragOptions: props.drag,
       resizeOptions: props.resize,
       components: props.components,
@@ -1179,6 +1188,7 @@ export const useDashboardGrid_unstable = (
       props.disableResize,
       props.lazyMount,
       props.sizeToContent,
+      props.measureSizeToContent,
       props.drag,
       props.resize,
       props.components,

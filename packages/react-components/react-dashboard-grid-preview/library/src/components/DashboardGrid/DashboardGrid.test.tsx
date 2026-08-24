@@ -599,6 +599,51 @@ describe('DashboardGrid', () => {
     expect(screen.queryByRole('button', { name: /Resize item/i })).toBeNull();
   });
 
+  it('uses selected custom content measurement and remeasures only the requested item', async () => {
+    const firstMeasure = jest.fn((element: HTMLElement) => {
+      expect(element).toHaveClass('measure-first');
+      return 120;
+    });
+    const secondMeasure = jest.fn((element: HTMLElement) => {
+      expect(element).toHaveClass('measure-second');
+      return 80;
+    });
+    const imperativeRef = React.createRef<DashboardGridHandle>();
+
+    render(
+      <DashboardGrid
+        aria-label="Dashboard"
+        rowHeight={40}
+        imperativeRef={imperativeRef}
+        defaultItems={[
+          {
+            id: 'first',
+            sizeToContent: true,
+            sizeToContentSelector: '.measure-first',
+            measureSizeToContent: firstMeasure,
+          },
+          {
+            id: 'second',
+            sizeToContent: true,
+            sizeToContentSelector: '.measure-second',
+            measureSizeToContent: secondMeasure,
+          },
+        ]}
+        renderItem={item => <div className={`measure-${item.id}`}>{item.id}</div>}
+      />,
+    );
+
+    await waitFor(() => expect(screen.getByText('first')).toBeInTheDocument());
+    firstMeasure.mockClear();
+    secondMeasure.mockClear();
+
+    act(() => imperativeRef.current?.resizeItemToContent('first'));
+
+    expect(firstMeasure).toHaveBeenCalledTimes(1);
+    expect(secondMeasure).not.toHaveBeenCalled();
+    expect(imperativeRef.current?.getItem('first')).toMatchObject({ rowSpan: 3 });
+  });
+
   it('positions the placeholder absolutely inside the surface and reserves temporary rows', async () => {
     let store: DashboardGridStore | undefined;
     const { container } = render(

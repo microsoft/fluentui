@@ -1,17 +1,9 @@
 import { intersects, sameInternalRect } from './geometry';
-import type {
-  InternalNode,
-  InternalRect,
-  OpaqueNodeKey,
-} from './internalTypes';
+import type { InternalNode, InternalRect, OpaqueNodeKey } from './internalTypes';
 import { findFirstEmptyPosition } from './placement';
 import { cloneInternalNode, sortNodesStable } from './state';
 
-const collidesAt = (
-  node: InternalNode,
-  area: InternalRect,
-  nodes: readonly InternalNode[],
-): boolean =>
+const collidesAt = (node: InternalNode, area: InternalRect, nodes: readonly InternalNode[]): boolean =>
   nodes.some(other => other.key !== node.key && intersects(area, other));
 
 export const packNodes = (
@@ -64,9 +56,7 @@ export const compactNodes = (
   maxRows?: number,
 ): InternalNode[] => {
   const sorted = sortNodesStable(nodes);
-  const rebuilt: InternalNode[] = sorted
-    .filter(node => node.locked)
-    .map(cloneInternalNode);
+  const rebuilt: InternalNode[] = sorted.filter(node => node.locked).map(cloneInternalNode);
   let previous: InternalNode | undefined;
 
   sorted.forEach(source => {
@@ -77,9 +67,7 @@ export const compactNodes = (
 
     const node = cloneInternalNode(source);
     const position = findFirstEmptyPosition(node, rebuilt, columns, {
-      ...(mode === 'list' && previous !== undefined
-        ? { after: previous }
-        : {}),
+      ...(mode === 'list' && previous !== undefined ? { after: previous } : {}),
       ...(maxRows === undefined ? {} : { maxRows }),
     });
     if (position !== undefined) {

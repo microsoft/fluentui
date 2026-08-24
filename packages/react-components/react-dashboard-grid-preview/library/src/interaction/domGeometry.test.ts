@@ -16,7 +16,7 @@ const domRect = (left: number, top: number, width: number, height: number): DOMR
     width,
     height,
     toJSON: () => ({}),
-  }) as DOMRect;
+  } as DOMRect);
 
 describe('dashboard grid DOM geometry', () => {
   it('caches independent transformed scales until invalidated', () => {
@@ -71,9 +71,9 @@ describe('dashboard grid DOM geometry', () => {
     };
 
     expect(getDashboardGridDirectionalBias(metrics, { x: 1, y: -1 })).toEqual({ x: 10, y: -5 });
-    expect(
-      dashboardGridPixelRectToRawRect({ x: 115, y: 55, width: 175, height: 85 }, metrics, { x: 1, y: 1 }),
-    ).toEqual({ column: 1, row: 1, columnSpan: 2, rowSpan: 3 });
+    expect(dashboardGridPixelRectToRawRect({ x: 115, y: 55, width: 175, height: 85 }, metrics, { x: 1, y: 1 })).toEqual(
+      { column: 1, row: 1, columnSpan: 2, rowSpan: 3 },
+    );
   });
 
   it('mirrors logical horizontal resize edges in RTL', () => {

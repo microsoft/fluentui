@@ -11,12 +11,10 @@ import type { DashboardGridEngineDiagnostic } from '../engine';
 import type { DashboardGridCellMetrics } from '../engine';
 import type { DashboardGridAriaStrings } from '../accessibility/aria';
 import type { DashboardGridAnnouncementStrings } from '../accessibility/announcements';
-import type {
-  DashboardGridFocusableItem,
-  useDashboardGridFocusManager,
-} from '../accessibility/focusManager';
+import type { DashboardGridFocusableItem, useDashboardGridFocusManager } from '../accessibility/focusManager';
 import type {
   DashboardGridComponentRegistry,
+  DashboardGridContentMeasure,
   DashboardGridDragOptions,
   DashboardGridOptions,
   DashboardGridRenderItem,
@@ -51,6 +49,7 @@ export type DashboardGridContextValue = {
   disableResize: boolean;
   defaultLazyMount: boolean;
   defaultSizeToContent: boolean;
+  defaultMeasureSizeToContent?: DashboardGridContentMeasure;
   dragOptions?: DashboardGridDragOptions;
   resizeOptions?: DashboardGridResizeOptions;
   components?: DashboardGridComponentRegistry;
@@ -64,8 +63,9 @@ export type DashboardGridContextValue = {
   refreshDragHandles(id?: string): void;
 };
 
-const DashboardGridContext: Context<DashboardGridContextValue | undefined> =
-  createContext<DashboardGridContextValue | undefined>(undefined);
+const DashboardGridContext: Context<DashboardGridContextValue | undefined> = createContext<
+  DashboardGridContextValue | undefined
+>(undefined);
 
 export const { Provider: DashboardGridContextProvider } = DashboardGridContext;
 
@@ -78,9 +78,7 @@ export const useRequiredDashboardGridContext_unstable = <T>(
 ): T => {
   const context = useContextSelector(DashboardGridContext, value => value);
   if (!context) {
-    throw new Error(
-      '@fluentui/react-dashboard-grid-preview: DashboardGridItem must be used inside a DashboardGrid.',
-    );
+    throw new Error('@fluentui/react-dashboard-grid-preview: DashboardGridItem must be used inside a DashboardGrid.');
   }
   return selector(context);
 };

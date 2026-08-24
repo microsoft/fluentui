@@ -1,13 +1,6 @@
 import type * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  Slot,
-} from '@fluentui/react-utilities';
-import type {
-  DashboardGridItemDefinition,
-  DashboardGridResizeDirection,
-} from '../../state/DashboardGridStore.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { DashboardGridItemDefinition, DashboardGridResizeDirection } from '../../state/DashboardGridStore.types';
 
 /** Slots rendered by DashboardGridItem. */
 export type DashboardGridItemSlots = {
@@ -24,10 +17,7 @@ export type DashboardGridItemSlots = {
 };
 
 /** Props for declarative DashboardGridItem ownership. */
-export type DashboardGridItemProps = Omit<
-  ComponentProps<Partial<DashboardGridItemSlots>>,
-  'id'
-> & {
+export type DashboardGridItemProps = Omit<ComponentProps<Partial<DashboardGridItemSlots>>, 'id'> & {
   /** Grid-local item identity. Provider grids require provider-wide uniqueness. */
   id: string;
   /** Declarative item geometry, behavior, metadata, and nested-grid definition. */

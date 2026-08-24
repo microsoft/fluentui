@@ -10,10 +10,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useDashboardGridDragSource as useDashboardGridDragSourceHook } from '../../hooks/useDashboardGridDragSource';
-import type {
-  DashboardGridDragSourceProps,
-  DashboardGridDragSourceState,
-} from './DashboardGridDragSource.types';
+import type { DashboardGridDragSourceProps, DashboardGridDragSourceState } from './DashboardGridDragSource.types';
 import { dashboardGridDataAttributes } from '../../interaction/types';
 
 export type DashboardGridDragSourceInternalState = DashboardGridDragSourceState & {
@@ -37,7 +34,12 @@ export const useDashboardGridDragSource_unstable = (
     ...rootProps
   } = props;
   const handleKeyboardActivate = useEventCallback(
-    (registration: Parameters<NonNullable<Parameters<typeof useDashboardGridDragSourceHook>[0]['onKeyboardActivate']>>[0], event: KeyboardEvent) => {
+    (
+      registration: Parameters<
+        NonNullable<Parameters<typeof useDashboardGridDragSourceHook>[0]['onKeyboardActivate']>
+      >[0],
+      event: KeyboardEvent,
+    ) => {
       onKeyboardActivate?.(event, {
         type: 'keydown',
         event,
@@ -52,10 +54,7 @@ export const useDashboardGridDragSource_unstable = (
     disabled,
     onKeyboardActivate: onKeyboardActivate ? handleKeyboardActivate : undefined,
   });
-  const rootIntrinsicProps = getIntrinsicElementProps(
-    'div',
-    rootProps as React.HTMLAttributes<HTMLDivElement>,
-  );
+  const rootIntrinsicProps = getIntrinsicElementProps('div', rootProps as React.HTMLAttributes<HTMLDivElement>);
 
   const rootSlotProps = {
     ...rootIntrinsicProps,

@@ -46,12 +46,7 @@ describe('dashboard grid responsive layouts', () => {
     });
     twentyFour.setColumns(1);
     twentyFour.setColumns(24);
-    expect(
-      twentyFour.getSnapshot().items.map(item => [
-        item.column,
-        item.columnSpan,
-      ]),
-    ).toEqual([
+    expect(twentyFour.getSnapshot().items.map(item => [item.column, item.columnSpan])).toEqual([
       [0, 12],
       [12, 12],
     ]);
@@ -84,9 +79,7 @@ describe('dashboard grid responsive layouts', () => {
     engine.add({ id: 'wide', autoPosition: true, columnSpan: 6 });
     engine.setColumns(12);
 
-    expect(engine.getItem('wide')).toEqual(
-      expect.objectContaining({ columnSpan: 6 }),
-    );
+    expect(engine.getItem('wide')).toEqual(expect.objectContaining({ columnSpan: 6 }));
   });
 
   it('never overlaps after repeated switches and invalidates bad custom layouts', () => {
@@ -106,11 +99,7 @@ describe('dashboard grid responsive layouts', () => {
     }
 
     const items = engine.getSnapshot().items;
-    expect(
-      items.some((item, index) =>
-        items.slice(index + 1).some(other => overlaps(item, other)),
-      ),
-    ).toBe(false);
+    expect(items.some((item, index) => items.slice(index + 1).some(other => overlaps(item, other)))).toBe(false);
     expect(engine.setColumns(6, () => []).status).toBe('rejected');
   });
 

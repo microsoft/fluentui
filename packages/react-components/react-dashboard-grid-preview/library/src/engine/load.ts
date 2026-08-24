@@ -7,24 +7,11 @@ import { repairCollisions } from './collision';
 import { createDiagnostic } from './diagnostics';
 import type { EngineState, NormalizedItem } from './internalTypes';
 import { asOpaqueNodeKey } from './internalTypes';
-import {
-  DashboardGridNormalizationError,
-  estimateSourceColumns,
-  normalizeColumns,
-  normalizeItem,
-} from './normalize';
+import { DashboardGridNormalizationError, estimateSourceColumns, normalizeColumns, normalizeItem } from './normalize';
 import { packNodes } from './packing';
 import { findFirstEmptyPosition } from './placement';
-import {
-  cacheAuthoredLayout,
-  removeNodeFromAllLayouts,
-  synchronizeResponsiveCaches,
-} from './responsiveLayouts';
-import {
-  cloneEngineState,
-  getInternalRow,
-  sortNodesStable,
-} from './state';
+import { cacheAuthoredLayout, removeNodeFromAllLayouts, synchronizeResponsiveCaches } from './responsiveLayouts';
+import { cloneEngineState, getInternalRow, sortNodesStable } from './state';
 
 type PlannedItem = {
   normalized: NormalizedItem;
@@ -32,12 +19,9 @@ type PlannedItem = {
   matched: boolean;
 };
 
-const invalidInputDiagnostic = (
-  error: unknown,
-): DashboardGridEngineDiagnostic =>
+const invalidInputDiagnostic = (error: unknown): DashboardGridEngineDiagnostic =>
   createDiagnostic(
-    error instanceof DashboardGridNormalizationError &&
-      error.reason === 'invalid-id'
+    error instanceof DashboardGridNormalizationError && error.reason === 'invalid-id'
       ? 'invalid-id'
       : 'invalid-columns',
     error instanceof Error ? error.message : 'Invalid dashboard grid load input.',
@@ -70,8 +54,7 @@ export const applyLoad = (
     sourceColumns =
       options.sourceColumns === undefined
         ? inputCopies.reduce(
-            (columns, input) =>
-              Math.max(columns, estimateSourceColumns(input, state.columns)),
+            (columns, input) => Math.max(columns, estimateSourceColumns(input, state.columns)),
             state.referenceColumns,
           )
         : normalizeColumns(options.sourceColumns);
@@ -110,8 +93,7 @@ export const applyLoad = (
     });
   } catch (error) {
     const diagnostic =
-      error instanceof DashboardGridNormalizationError &&
-      error.message.startsWith('Duplicate')
+      error instanceof DashboardGridNormalizationError && error.message.startsWith('Duplicate')
         ? createDiagnostic('duplicate-id', error.message, { severity: 'error' })
         : invalidInputDiagnostic(error);
     return {
@@ -138,9 +120,7 @@ export const applyLoad = (
 
   const matchedIds = new Set(planned.filter(item => item.matched).map(item => item.normalized.node.id));
   const inputIds = new Set(planned.map(item => item.normalized.node.id));
-  const removedKeys = state.nodes
-    .filter(node => removeMissing && !inputIds.has(node.id))
-    .map(node => node.key);
+  const removedKeys = state.nodes.filter(node => removeMissing && !inputIds.has(node.id)).map(node => node.key);
   state.nodes = state.nodes.filter(node => {
     if (matchedIds.has(node.id)) {
       return false;
@@ -154,12 +134,7 @@ export const applyLoad = (
     }
 
     const node = item.normalized.node;
-    cacheAuthoredLayout(
-      state,
-      node.key,
-      item.normalized.authoredLayout,
-      item.normalized.sourceColumns,
-    );
+    cacheAuthoredLayout(state, node.key, item.normalized.authoredLayout, item.normalized.sourceColumns);
 
     let autoPlaced = false;
     if (node.auto) {
@@ -170,11 +145,10 @@ export const applyLoad = (
         return {
           accepted: false,
           diagnostics: Object.freeze([
-            createDiagnostic(
-              'max-rows',
-              `Item "${node.id}" cannot be placed within the configured maximum rows.`,
-              { severity: 'error', itemId: node.id },
-            ),
+            createDiagnostic('max-rows', `Item "${node.id}" cannot be placed within the configured maximum rows.`, {
+              severity: 'error',
+              itemId: node.id,
+            }),
           ]),
         };
       }
@@ -200,11 +174,10 @@ export const applyLoad = (
         return {
           accepted: false,
           diagnostics: Object.freeze([
-            createDiagnostic(
-              'collision-cycle',
-              `Loading item "${node.id}" exceeded the collision repair budget.`,
-              { severity: 'error', itemId: node.id },
-            ),
+            createDiagnostic('collision-cycle', `Loading item "${node.id}" exceeded the collision repair budget.`, {
+              severity: 'error',
+              itemId: node.id,
+            }),
           ]),
         };
       }
@@ -219,18 +192,13 @@ export const applyLoad = (
   }
   state.nodes = sortNodesStable(state.nodes);
 
-  if (
-    state.maxRows !== undefined &&
-    getInternalRow(state.nodes) > state.maxRows
-  ) {
+  if (state.maxRows !== undefined && getInternalRow(state.nodes) > state.maxRows) {
     return {
       accepted: false,
       diagnostics: Object.freeze([
-        createDiagnostic(
-          'max-rows',
-          'The loaded layout exceeds the configured maximum row count.',
-          { severity: 'error' },
-        ),
+        createDiagnostic('max-rows', 'The loaded layout exceeds the configured maximum row count.', {
+          severity: 'error',
+        }),
       ]),
     };
   }

@@ -4,17 +4,9 @@ import type {
   DashboardGridLayoutItemInput,
   DashboardGridSerializedItem,
 } from './DashboardGridEngine.types';
-import type {
-  CachedLayoutNode,
-  EngineState,
-  InternalNode,
-  OpaqueNodeKey,
-} from './internalTypes';
+import type { CachedLayoutNode, EngineState, InternalNode, OpaqueNodeKey } from './internalTypes';
 import { applyLoad } from './load';
-import {
-  normalizeColumns,
-  normalizeMaxRows,
-} from './normalize';
+import { normalizeColumns, normalizeMaxRows } from './normalize';
 import {
   applyColumnChange,
   cacheCurrentLayout,
@@ -22,11 +14,7 @@ import {
   highestCachedColumns,
   setCachedLayout,
 } from './responsiveLayouts';
-import {
-  cloneEngineState,
-  createEmptyState,
-  findNodeById,
-} from './state';
+import { cloneEngineState, createEmptyState, findNodeById } from './state';
 
 export class DashboardGridSerializationError extends Error {
   public constructor(message: string) {
@@ -35,10 +23,7 @@ export class DashboardGridSerializationError extends Error {
   }
 }
 
-const serializedItem = (
-  node: InternalNode,
-  layout: CachedLayoutNode,
-): DashboardGridSerializedItem =>
+const serializedItem = (node: InternalNode, layout: CachedLayoutNode): DashboardGridSerializedItem =>
   Object.freeze({
     id: node.id,
     ...(layout.auto || layout.x === undefined || layout.y === undefined
@@ -58,8 +43,7 @@ const serializedItem = (
 const layoutForNode = (
   node: InternalNode,
   layout: ReadonlyMap<OpaqueNodeKey, CachedLayoutNode> | undefined,
-): CachedLayoutNode =>
-  layout?.get(node.key) ?? { x: node.x, y: node.y, w: node.w };
+): CachedLayoutNode => layout?.get(node.key) ?? { x: node.x, y: node.y, w: node.w };
 
 const serializeItems = (
   state: EngineState,
@@ -71,14 +55,8 @@ const serializeItems = (
       layout: layoutForNode(node, layout),
     }))
     .sort((a, b) => {
-      const aAuto =
-        a.layout.auto ||
-        a.layout.x === undefined ||
-        a.layout.y === undefined;
-      const bAuto =
-        b.layout.auto ||
-        b.layout.x === undefined ||
-        b.layout.y === undefined;
+      const aAuto = a.layout.auto || a.layout.x === undefined || a.layout.y === undefined;
+      const bAuto = b.layout.auto || b.layout.x === undefined || b.layout.y === undefined;
       if (aAuto !== bAuto) {
         return aAuto ? 1 : -1;
       }
@@ -98,10 +76,7 @@ export const serializeEngineState = (
   options: DashboardGridEngineSaveOptions = {},
 ): DashboardGridEngineSerializedState => {
   let source = state;
-  let itemColumns =
-    options.columns === undefined
-      ? highestCachedColumns(state)
-      : normalizeColumns(options.columns);
+  let itemColumns = options.columns === undefined ? highestCachedColumns(state) : normalizeColumns(options.columns);
   let selectedLayout = getCachedLayout(state, itemColumns);
 
   if (selectedLayout === undefined && itemColumns !== state.columns) {
@@ -117,29 +92,16 @@ export const serializeEngineState = (
   }
 
   if (selectedLayout === undefined && itemColumns === source.columns) {
-    selectedLayout = new Map(
-      source.nodes.map(node => [
-        node.key,
-        { x: node.x, y: node.y, w: node.w },
-      ]),
-    );
+    selectedLayout = new Map(source.nodes.map(node => [node.key, { x: node.x, y: node.y, w: node.w }]));
   }
 
-  let layouts:
-    | Readonly<Record<number, readonly DashboardGridSerializedItem[]>>
-    | undefined;
+  let layouts: Readonly<Record<number, readonly DashboardGridSerializedItem[]>> | undefined;
   if (options.includeLayouts) {
-    const mutableLayouts: Record<
-      number,
-      readonly DashboardGridSerializedItem[]
-    > = {};
+    const mutableLayouts: Record<number, readonly DashboardGridSerializedItem[]> = {};
     [...state.layouts.keys()]
       .sort((a, b) => a - b)
       .forEach(columns => {
-        mutableLayouts[columns] = serializeItems(
-          state,
-          state.layouts.get(columns),
-        );
+        mutableLayouts[columns] = serializeItems(state, state.layouts.get(columns));
       });
     layouts = Object.freeze(mutableLayouts);
   }
@@ -155,13 +117,9 @@ export const serializeEngineState = (
   });
 };
 
-const serializedToInput = (
-  item: DashboardGridSerializedItem,
-): DashboardGridLayoutItemInput => ({
+const serializedToInput = (item: DashboardGridSerializedItem): DashboardGridLayoutItemInput => ({
   id: item.id,
-  ...(item.autoPosition
-    ? { autoPosition: true }
-    : { column: item.column, row: item.row }),
+  ...(item.autoPosition ? { autoPosition: true } : { column: item.column, row: item.row }),
   columnSpan: item.columnSpan,
   rowSpan: item.rowSpan,
   minColumnSpan: item.minColumnSpan,
@@ -185,9 +143,7 @@ export const deserializeEngineState = (
     serialized.version !== 1 ||
     !Array.isArray(serialized.items)
   ) {
-    throw new DashboardGridSerializationError(
-      'Unsupported or malformed dashboard grid serialized state.',
-    );
+    throw new DashboardGridSerializationError('Unsupported or malformed dashboard grid serialized state.');
   }
 
   let columns: number;
@@ -196,9 +152,7 @@ export const deserializeEngineState = (
     columns = normalizeColumns(serialized.columns);
     itemColumns = normalizeColumns(serialized.itemColumns);
   } catch (error) {
-    throw new DashboardGridSerializationError(
-      error instanceof Error ? error.message : 'Invalid serialized columns.',
-    );
+    throw new DashboardGridSerializationError(error instanceof Error ? error.message : 'Invalid serialized columns.');
   }
 
   const state = createEmptyState({
@@ -207,15 +161,10 @@ export const deserializeEngineState = (
     float: serialized.float === true,
     resizeDisabled: options.resizeDisabled === true,
   });
-  const loaded = applyLoad(
-    state,
-    serialized.items.map(serializedToInput),
-    { sourceColumns: itemColumns },
-  );
+  const loaded = applyLoad(state, serialized.items.map(serializedToInput), { sourceColumns: itemColumns });
   if (!loaded.accepted) {
     throw new DashboardGridSerializationError(
-      loaded.diagnostics[0]?.message ??
-        'The serialized dashboard grid layout could not be loaded.',
+      loaded.diagnostics[0]?.message ?? 'The serialized dashboard grid layout could not be loaded.',
     );
   }
 
@@ -235,9 +184,7 @@ export const deserializeEngineState = (
         }
         layout.set(
           node.key,
-          item.autoPosition ||
-            item.column === undefined ||
-            item.row === undefined
+          item.autoPosition || item.column === undefined || item.row === undefined
             ? { w: item.columnSpan, auto: true }
             : {
                 x: item.column,

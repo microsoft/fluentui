@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  useDashboardGridItemContext_unstable,
-  useRequiredDashboardGridContext_unstable,
-} from '../contexts';
+import { useDashboardGridItemContext_unstable, useRequiredDashboardGridContext_unstable } from '../contexts';
 import { useDashboardGridItemStoreSnapshot } from '../state/useDashboardGridStore';
 import type { DashboardGridItemStoreSnapshot } from '../state/DashboardGridStore.types';
 

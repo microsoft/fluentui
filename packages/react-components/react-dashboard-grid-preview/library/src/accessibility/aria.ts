@@ -12,11 +12,7 @@ export type DashboardGridAriaStrings = {
   /** Formats the localized accessible name for a resize handle. */
   formatResizeHandle?: (edge: DashboardGridResizeEdge, itemLabel?: string) => string;
   /** Formats localized keyboard instructions for a resize handle. */
-  formatResizeHandleInstructions?: (
-    edge: DashboardGridResizeEdge,
-    itemLabel?: string,
-    active?: boolean,
-  ) => string;
+  formatResizeHandleInstructions?: (edge: DashboardGridResizeEdge, itemLabel?: string, active?: boolean) => string;
 };
 
 export type DashboardGridSemanticProjection = {

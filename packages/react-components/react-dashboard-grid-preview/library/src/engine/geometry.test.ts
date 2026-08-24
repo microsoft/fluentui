@@ -1,10 +1,4 @@
-import {
-  directionalCoverage,
-  intersects,
-  nestingCoverage,
-  overlapArea,
-  touches,
-} from './geometry';
+import { directionalCoverage, intersects, nestingCoverage, overlapArea, touches } from './geometry';
 
 describe('dashboard grid geometry', () => {
   it('uses half-open collision edges and separate touching geometry', () => {
@@ -23,22 +17,14 @@ describe('dashboard grid geometry', () => {
     const origin = { x: 0, y: 0, width: 100, height: 100 };
     const target = { x: 100, y: 0, width: 100, height: 100 };
 
-    expect(
-      directionalCoverage(origin, { ...origin, x: 50 }, target),
-    ).toBe(0.5);
-    expect(
-      directionalCoverage(origin, { ...origin, x: 51 }, target),
-    ).toBeGreaterThan(0.5);
+    expect(directionalCoverage(origin, { ...origin, x: 50 }, target)).toBe(0.5);
+    expect(directionalCoverage(origin, { ...origin, x: 51 }, target)).toBeGreaterThan(0.5);
   });
 
   it('keeps nesting activation strictly above four fifths', () => {
     const target = { x: 0, y: 0, width: 100, height: 100 };
 
-    expect(
-      nestingCoverage({ x: 0, y: 0, width: 80, height: 100 }, target),
-    ).toBe(1);
-    expect(
-      nestingCoverage({ x: 20, y: 0, width: 100, height: 100 }, target),
-    ).toBe(0.8);
+    expect(nestingCoverage({ x: 0, y: 0, width: 80, height: 100 }, target)).toBe(1);
+    expect(nestingCoverage({ x: 20, y: 0, width: 100, height: 100 }, target)).toBe(0.8);
   });
 });

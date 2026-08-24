@@ -1,7 +1,4 @@
-import {
-  findDashboardGridGeometricNeighbor,
-  getDashboardGridDeepActiveElement,
-} from './focusManager';
+import { findDashboardGridGeometricNeighbor, getDashboardGridDeepActiveElement } from './focusManager';
 
 const setRect = (element: HTMLElement, left: number, top: number, width = 20, height = 20) => {
   jest.spyOn(element, 'getBoundingClientRect').mockReturnValue({

@@ -6,9 +6,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { DashboardGridDragSourceSlots } from './DashboardGridDragSource.types';
 import type { DashboardGridDragSourceInternalState } from './useDashboardGridDragSource';
 
-export const renderDashboardGridDragSource_unstable = (
-  state: DashboardGridDragSourceInternalState,
-): JSXElement => {
+export const renderDashboardGridDragSource_unstable = (state: DashboardGridDragSourceInternalState): JSXElement => {
   assertSlots<DashboardGridDragSourceSlots>(state);
 
   return (

@@ -11,8 +11,9 @@ export type DashboardGridItemContextValue = {
   snapshot: DashboardGridItemStoreSnapshot;
 };
 
-const DashboardGridItemContext: Context<DashboardGridItemContextValue | undefined> =
-  createContext<DashboardGridItemContextValue | undefined>(undefined);
+const DashboardGridItemContext: Context<DashboardGridItemContextValue | undefined> = createContext<
+  DashboardGridItemContextValue | undefined
+>(undefined);
 
 export const { Provider: DashboardGridItemContextProvider } = DashboardGridItemContext;
 
@@ -25,9 +26,7 @@ export const useRequiredDashboardGridItemContext_unstable = <T>(
 ): T => {
   const context = useContextSelector(DashboardGridItemContext, value => value);
   if (!context) {
-    throw new Error(
-      '@fluentui/react-dashboard-grid-preview: This hook must be used inside a DashboardGridItem.',
-    );
+    throw new Error('@fluentui/react-dashboard-grid-preview: This hook must be used inside a DashboardGridItem.');
   }
   return selector(context);
 };

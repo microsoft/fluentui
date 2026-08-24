@@ -1,13 +1,5 @@
-import type {
-  ComponentProps,
-  ComponentState,
-  EventHandler,
-  Slot,
-} from '@fluentui/react-utilities';
-import type {
-  DashboardGridDragSourceRegistration,
-  DashboardGridExternalItemDescriptor,
-} from '../../interaction/types';
+import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
+import type { DashboardGridDragSourceRegistration, DashboardGridExternalItemDescriptor } from '../../interaction/types';
 
 /** Slots available on the DashboardGridDragSource component. */
 export type DashboardGridDragSourceSlots = {

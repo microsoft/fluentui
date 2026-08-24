@@ -14,9 +14,7 @@ export type DashboardGridContentMeasurement =
 
 export const measureDashboardGridContent = (element: HTMLElement): DashboardGridContentMeasurement => {
   if (element.childElementCount === 0) {
-    return element.textContent?.trim()
-      ? { status: 'text-only', blockSize: 0 }
-      : { status: 'empty', blockSize: 0 };
+    return element.textContent?.trim() ? { status: 'text-only', blockSize: 0 } : { status: 'empty', blockSize: 0 };
   }
 
   const rect = element.getBoundingClientRect();
@@ -27,11 +25,7 @@ export const measureDashboardGridContent = (element: HTMLElement): DashboardGrid
     : { status: 'empty', blockSize: 0 };
 };
 
-export const getDashboardGridContentRowSpan = (
-  blockSize: number,
-  rowHeight: number,
-  maximum?: number,
-): number => {
+export const getDashboardGridContentRowSpan = (blockSize: number, rowHeight: number, maximum?: number): number => {
   const safeRowHeight = Number.isFinite(rowHeight) && rowHeight > 0 ? rowHeight : 1;
   const rowSpan = Math.max(1, Math.ceil(blockSize / safeRowHeight));
   return maximum === undefined ? rowSpan : Math.min(rowSpan, Math.max(1, maximum));

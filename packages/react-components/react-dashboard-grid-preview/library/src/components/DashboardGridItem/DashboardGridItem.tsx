@@ -12,14 +12,12 @@ import { useDashboardGridPrintItemStyles_unstable } from '../../print/useDashboa
 /**
  * Renders one declarative item within a DashboardGrid.
  */
-export const DashboardGridItem: ForwardRefComponent<DashboardGridItemProps> = React.forwardRef(
-  (props, ref) => {
-    let state = useDashboardGridItem_unstable(props, ref);
-    state = useDashboardGridItemStyles_unstable(state);
-    state = useDashboardGridPrintItemStyles_unstable(state);
-    useCustomStyleHook_unstable('useDashboardGridItemStyles_unstable' as never)(state as never);
-    return renderDashboardGridItem_unstable(state);
-  },
-);
+export const DashboardGridItem: ForwardRefComponent<DashboardGridItemProps> = React.forwardRef((props, ref) => {
+  let state = useDashboardGridItem_unstable(props, ref);
+  state = useDashboardGridItemStyles_unstable(state);
+  state = useDashboardGridPrintItemStyles_unstable(state);
+  useCustomStyleHook_unstable('useDashboardGridItemStyles_unstable' as never)(state as never);
+  return renderDashboardGridItem_unstable(state);
+});
 
 DashboardGridItem.displayName = 'DashboardGridItem';

@@ -26,9 +26,7 @@ describe('DashboardGrid keyboard resize integration', () => {
     );
 
     const handle = await waitFor(() => {
-      const element = container.querySelector(
-        '[data-dashboard-grid-resize-handle="se"]',
-      ) as HTMLButtonElement | null;
+      const element = container.querySelector('[data-dashboard-grid-resize-handle="se"]') as HTMLButtonElement | null;
       expect(element).not.toBeNull();
       return element!;
     });

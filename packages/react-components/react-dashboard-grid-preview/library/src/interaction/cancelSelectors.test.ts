@@ -5,7 +5,7 @@ const eventWithPath = (...path: EventTarget[]): Event =>
   ({
     target: path[0],
     composedPath: () => path,
-  }) as unknown as Event;
+  } as unknown as Event);
 
 describe('dashboard grid pointer cancellation', () => {
   it('blocks interactive descendants by default', () => {

@@ -14,9 +14,7 @@ let capturedCoordinator: DashboardGridInteractionCoordinator | undefined;
 
 const CaptureRegistry = () => {
   capturedRegistry = useRequiredDashboardGridProviderContext_unstable(context => context.registry);
-  capturedCoordinator = useRequiredDashboardGridProviderContext_unstable(
-    context => context.coordinator,
-  );
+  capturedCoordinator = useRequiredDashboardGridProviderContext_unstable(context => context.coordinator);
   return null;
 };
 
@@ -31,7 +29,7 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
     width,
     height,
     toJSON: () => ({}),
-  }) as DOMRect;
+  } as DOMRect);
 
 const StatefulContent = () => {
   const [count, setCount] = React.useState(0);
@@ -81,12 +79,7 @@ describe('DashboardGridProvider', () => {
           defaultItems={[{ id: 'stateful', column: 0, row: 0 }]}
           renderItem={() => <StatefulContent />}
         />
-        <DashboardGrid
-          aria-label="Target"
-          gridId="target"
-          defaultItems={[]}
-          renderItem={() => <StatefulContent />}
-        />
+        <DashboardGrid aria-label="Target" gridId="target" defaultItems={[]} renderItem={() => <StatefulContent />} />
       </DashboardGridProvider>,
     );
 
@@ -122,14 +115,12 @@ describe('DashboardGridProvider', () => {
       </DashboardGridProvider>,
     );
 
-    const result = await (
-      Promise.resolve(
-        capturedRegistry?.drop({
-          operation: 'external',
-          sourceId: 'source',
-          targetZoneId: 'custom-zone',
-        }),
-      )
+    const result = await Promise.resolve(
+      capturedRegistry?.drop({
+        operation: 'external',
+        sourceId: 'source',
+        targetZoneId: 'custom-zone',
+      }),
     );
     expect(result).toMatchObject({ status: 'accepted' });
     if (result?.status === 'accepted') {
@@ -157,9 +148,7 @@ describe('DashboardGridProvider', () => {
             { id: 'first', label: 'First tile', column: 0, row: 0 },
             { id: 'second', label: 'Second tile', column: 1, row: 0 },
           ]}
-          renderItem={item =>
-            item.id === 'first' ? <button type="button">First action</button> : <span>Second</span>
-          }
+          renderItem={item => (item.id === 'first' ? <button type="button">First action</button> : <span>Second</span>)}
         />
       </DashboardGridProvider>,
     );
@@ -241,17 +230,11 @@ describe('DashboardGridProvider', () => {
 
     await waitFor(() =>
       expect(
-        document.querySelector(
-          '[data-dashboard-grid-root="target-grid::host-tile::subgrid"]',
-        ),
+        document.querySelector('[data-dashboard-grid-root="target-grid::host-tile::subgrid"]'),
       ).toBeInTheDocument(),
     );
-    expect(capturedRegistry?.getItemOwner('moving-tile')).toBe(
-      'target-grid::host-tile::subgrid',
-    );
-    expect(
-      targetRef.current?.getItem('moving-tile', { recursive: true }),
-    ).toMatchObject({ id: 'moving-tile' });
+    expect(capturedRegistry?.getItemOwner('moving-tile')).toBe('target-grid::host-tile::subgrid');
+    expect(targetRef.current?.getItem('moving-tile', { recursive: true })).toMatchObject({ id: 'moving-tile' });
     expect(screen.getByText('Target moving-tile')).toBeVisible();
   });
 
@@ -278,15 +261,9 @@ describe('DashboardGridProvider', () => {
       </DashboardGridProvider>,
     );
     await waitFor(() => expect(capturedCoordinator?.getItem('order-source', 'moving')).toBeDefined());
-    const sourceRoot = container.querySelector(
-      '[data-dashboard-grid-root="order-source"]',
-    ) as HTMLElement;
-    const targetRoot = container.querySelector(
-      '[data-dashboard-grid-root="order-target"]',
-    ) as HTMLElement;
-    const moving = container.querySelector(
-      '[data-dashboard-grid-item="moving"]',
-    ) as HTMLElement;
+    const sourceRoot = container.querySelector('[data-dashboard-grid-root="order-source"]') as HTMLElement;
+    const targetRoot = container.querySelector('[data-dashboard-grid-root="order-target"]') as HTMLElement;
+    const moving = container.querySelector('[data-dashboard-grid-item="moving"]') as HTMLElement;
     jest.spyOn(sourceRoot, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
     jest.spyOn(targetRoot, 'getBoundingClientRect').mockReturnValue(rect(200, 0, 200, 200));
     const metrics = {
@@ -344,132 +321,114 @@ describe('DashboardGridProvider', () => {
       await Promise.resolve();
     });
 
-    await waitFor(() =>
-      expect(order).toEqual([
-        'drag-end',
-        'source-items',
-        'target-items',
-        'item-drop',
-      ]),
-    );
+    await waitFor(() => expect(order).toEqual(['drag-end', 'source-items', 'target-items', 'item-drop']));
   });
 
   it.each([
     { mode: 'rejected' as const, targetItems: [{ id: 'blocker', column: 0, row: 0 }] },
     { mode: 'cancelled' as const, targetItems: [] },
-  ])(
-    'does not emit committed public callbacks for $mode cross-grid interactions',
-    async ({ mode, targetItems }) => {
-      const sourceItemsChange = jest.fn();
-      const targetItemsChange = jest.fn();
-      const dragEnd = jest.fn();
-      const itemDrop = jest.fn();
-      const sourceId = `${mode}-source`;
-      const targetId = `${mode}-target`;
-      const movingId = `${mode}-moving`;
-      const { container } = render(
-        <DashboardGridProvider targetDocument={document}>
-          <CaptureRegistry />
-          <DashboardGrid
-            aria-label="Source"
-            gridId={sourceId}
-            columns={1}
-            defaultItems={[{ id: movingId, column: 0, row: 0 }]}
-            onItemsChange={sourceItemsChange}
-            renderItem={item => <span>{item.id}</span>}
-          />
-          <DashboardGrid
-            aria-label="Target"
-            gridId={targetId}
-            columns={1}
-            maxRows={1}
-            defaultItems={targetItems}
-            onItemsChange={targetItemsChange}
-            onDragEnd={dragEnd}
-            onItemDrop={itemDrop}
-            renderItem={item => <span>{item.id}</span>}
-          />
-        </DashboardGridProvider>,
-      );
-      await waitFor(() =>
-        expect(capturedCoordinator?.getItem(sourceId, movingId)).toBeDefined(),
-      );
-      const sourceRoot = container.querySelector(
-        `[data-dashboard-grid-root="${sourceId}"]`,
-      ) as HTMLElement;
-      const targetRoot = container.querySelector(
-        `[data-dashboard-grid-root="${targetId}"]`,
-      ) as HTMLElement;
-      const moving = container.querySelector(
-        `[data-dashboard-grid-item="${movingId}"]`,
-      ) as HTMLElement;
-      jest.spyOn(sourceRoot, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
-      jest.spyOn(targetRoot, 'getBoundingClientRect').mockReturnValue(rect(200, 0, 100, 100));
-      const metrics = {
-        columnWidth: 100,
-        rowHeight: 100,
-        gapTop: 0,
-        gapRight: 0,
-        gapBottom: 0,
-        gapLeft: 0,
-      };
-      capturedCoordinator?.registerGrid({
-        id: sourceId,
-        element: sourceRoot,
-        direction: 'ltr',
-        store: capturedRegistry!.getGrid(sourceId)!.store,
-        getMetrics: () => metrics,
-      });
-      capturedCoordinator?.registerGrid({
-        id: targetId,
-        element: targetRoot,
-        direction: 'ltr',
-        store: capturedRegistry!.getGrid(targetId)!.store,
-        getMetrics: () => metrics,
-      });
+  ])('does not emit committed public callbacks for $mode cross-grid interactions', async ({ mode, targetItems }) => {
+    const sourceItemsChange = jest.fn();
+    const targetItemsChange = jest.fn();
+    const dragEnd = jest.fn();
+    const itemDrop = jest.fn();
+    const sourceId = `${mode}-source`;
+    const targetId = `${mode}-target`;
+    const movingId = `${mode}-moving`;
+    const { container } = render(
+      <DashboardGridProvider targetDocument={document}>
+        <CaptureRegistry />
+        <DashboardGrid
+          aria-label="Source"
+          gridId={sourceId}
+          columns={1}
+          defaultItems={[{ id: movingId, column: 0, row: 0 }]}
+          onItemsChange={sourceItemsChange}
+          renderItem={item => <span>{item.id}</span>}
+        />
+        <DashboardGrid
+          aria-label="Target"
+          gridId={targetId}
+          columns={1}
+          maxRows={1}
+          defaultItems={targetItems}
+          onItemsChange={targetItemsChange}
+          onDragEnd={dragEnd}
+          onItemDrop={itemDrop}
+          renderItem={item => <span>{item.id}</span>}
+        />
+      </DashboardGridProvider>,
+    );
+    await waitFor(() => expect(capturedCoordinator?.getItem(sourceId, movingId)).toBeDefined());
+    const sourceRoot = container.querySelector(`[data-dashboard-grid-root="${sourceId}"]`) as HTMLElement;
+    const targetRoot = container.querySelector(`[data-dashboard-grid-root="${targetId}"]`) as HTMLElement;
+    const moving = container.querySelector(`[data-dashboard-grid-item="${movingId}"]`) as HTMLElement;
+    jest.spyOn(sourceRoot, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
+    jest.spyOn(targetRoot, 'getBoundingClientRect').mockReturnValue(rect(200, 0, 100, 100));
+    const metrics = {
+      columnWidth: 100,
+      rowHeight: 100,
+      gapTop: 0,
+      gapRight: 0,
+      gapBottom: 0,
+      gapLeft: 0,
+    };
+    capturedCoordinator?.registerGrid({
+      id: sourceId,
+      element: sourceRoot,
+      direction: 'ltr',
+      store: capturedRegistry!.getGrid(sourceId)!.store,
+      getMetrics: () => metrics,
+    });
+    capturedCoordinator?.registerGrid({
+      id: targetId,
+      element: targetRoot,
+      direction: 'ltr',
+      store: capturedRegistry!.getGrid(targetId)!.store,
+      getMetrics: () => metrics,
+    });
 
-      act(() => {
-        capturedCoordinator?.beginPointer({
-          operation: 'drag',
-          pointer: {
-            pointerId: 1,
-            pointerType: 'mouse',
-            isPrimary: true,
-            button: 0,
-          },
-          timeStamp: 1,
-          point: { clientX: 10, clientY: 10 },
-          originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
-          sourceGridId: sourceId,
-          itemId: movingId,
-          ownerElement: moving,
-        });
-        capturedCoordinator?.activatePointer({
-          pixelRect: { x: 0, y: 0, width: 100, height: 100 },
-        });
-        capturedCoordinator?.updatePointer({
-          point: { clientX: 250, clientY: 50 },
-          pixelRect: { x: 250, y: 50, width: 100, height: 100 },
-          clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
-        });
+    act(() => {
+      capturedCoordinator?.beginPointer({
+        operation: 'drag',
+        pointer: {
+          pointerId: 1,
+          pointerType: 'mouse',
+          isPrimary: true,
+          button: 0,
+        },
+        timeStamp: 1,
+        point: { clientX: 10, clientY: 10 },
+        originPixelRect: { x: 0, y: 0, width: 100, height: 100 },
+        sourceGridId: sourceId,
+        itemId: movingId,
+        ownerElement: moving,
       });
-      await act(async () => {
-        if (mode === 'cancelled') {
-          capturedCoordinator?.cancel();
-        } else {
-          await capturedCoordinator?.commit();
-        }
-        await Promise.resolve();
-        await Promise.resolve();
+      capturedCoordinator?.activatePointer({
+        pixelRect: { x: 0, y: 0, width: 100, height: 100 },
       });
+      capturedCoordinator?.updatePointer({
+        point: { clientX: 250, clientY: 50 },
+        pixelRect: { x: 250, y: 50, width: 100, height: 100 },
+        clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
+      });
+    });
+    await act(async () => {
+      if (mode === 'cancelled') {
+        capturedCoordinator?.cancel();
+      } else {
+        await capturedCoordinator?.commit();
+      }
+      await Promise.resolve();
+      await Promise.resolve();
+    });
 
-      expect(sourceItemsChange).not.toHaveBeenCalled();
-      expect(targetItemsChange).not.toHaveBeenCalled();
-      expect(dragEnd).not.toHaveBeenCalled();
-      expect(itemDrop).not.toHaveBeenCalled();
-      expect(capturedRegistry?.getGrid(sourceId)?.store.getItem(movingId)).toBeDefined();
-    },
-  );
+    expect(sourceItemsChange).not.toHaveBeenCalled();
+    expect(targetItemsChange).not.toHaveBeenCalled();
+    expect(dragEnd).not.toHaveBeenCalled();
+    expect(itemDrop).not.toHaveBeenCalled();
+    expect(capturedRegistry?.getGrid(sourceId)?.store.getItem(movingId)).toBeDefined();
+  });
 
   it('registers selector-backed removal options with the provider coordinator', async () => {
     const { container } = render(
@@ -485,17 +444,9 @@ describe('DashboardGridProvider', () => {
         />
       </DashboardGridProvider>,
     );
-    await waitFor(() =>
-      expect(
-        capturedCoordinator?.getItem('removable-grid', 'removable-item'),
-      ).toBeDefined(),
-    );
-    const root = container.querySelector(
-      '[data-dashboard-grid-root="removable-grid"]',
-    ) as HTMLElement;
-    const item = container.querySelector(
-      '[data-dashboard-grid-item="removable-item"]',
-    ) as HTMLElement;
+    await waitFor(() => expect(capturedCoordinator?.getItem('removable-grid', 'removable-item')).toBeDefined());
+    const root = container.querySelector('[data-dashboard-grid-root="removable-grid"]') as HTMLElement;
+    const item = container.querySelector('[data-dashboard-grid-item="removable-item"]') as HTMLElement;
     const trash = screen.getByTestId('trash');
     jest.spyOn(root, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
     jest.spyOn(trash, 'getBoundingClientRect').mockReturnValue(rect(200, 0, 100, 100));
@@ -559,19 +510,12 @@ describe('DashboardGridProvider', () => {
     render(
       <DashboardGridProvider targetDocument={document}>
         <CaptureRegistry />
-        <DashboardGrid
-          aria-label="Target"
-          gridId="external-target"
-          acceptExternal={item => item.data === 'accepted'}
-        />
+        <DashboardGrid aria-label="Target" gridId="external-target" acceptExternal={item => item.data === 'accepted'} />
       </DashboardGridProvider>,
     );
 
-    await waitFor(() =>
-      expect(capturedCoordinator?.getGrid('external-target')).toBeDefined(),
-    );
-    const acceptsExternal =
-      capturedCoordinator?.getGrid('external-target')?.acceptsExternal;
+    await waitFor(() => expect(capturedCoordinator?.getGrid('external-target')).toBeDefined());
+    const acceptsExternal = capturedCoordinator?.getGrid('external-target')?.acceptsExternal;
     expect(
       acceptsExternal?.({
         operation: 'external',
@@ -594,8 +538,7 @@ describe('DashboardGridProvider', () => {
     const host = document.createElement('div');
     const shadowRoot = host.attachShadow({ mode: 'open' });
     document.body.appendChild(host);
-    const Portal = (props: { children: React.ReactNode }) =>
-      createPortal(props.children, shadowRoot);
+    const Portal = (props: { children: React.ReactNode }) => createPortal(props.children, shadowRoot);
     const { unmount } = render(
       <Portal>
         <DashboardGridProvider targetDocument={document}>
@@ -611,17 +554,9 @@ describe('DashboardGridProvider', () => {
         </DashboardGridProvider>
       </Portal>,
     );
-    await waitFor(() =>
-      expect(
-        capturedCoordinator?.getItem('shadow-removable', 'shadow-item'),
-      ).toBeDefined(),
-    );
-    const root = shadowRoot.querySelector(
-      '[data-dashboard-grid-root="shadow-removable"]',
-    ) as HTMLElement;
-    const item = shadowRoot.querySelector(
-      '[data-dashboard-grid-item="shadow-item"]',
-    ) as HTMLElement;
+    await waitFor(() => expect(capturedCoordinator?.getItem('shadow-removable', 'shadow-item')).toBeDefined());
+    const root = shadowRoot.querySelector('[data-dashboard-grid-root="shadow-removable"]') as HTMLElement;
+    const item = shadowRoot.querySelector('[data-dashboard-grid-item="shadow-item"]') as HTMLElement;
     const trash = shadowRoot.querySelector('[data-shadow-trash]') as HTMLElement;
     jest.spyOn(root, 'getBoundingClientRect').mockReturnValue(rect(0, 0, 100, 100));
     jest.spyOn(trash, 'getBoundingClientRect').mockReturnValue(rect(200, 0, 100, 100));
@@ -666,9 +601,7 @@ describe('DashboardGridProvider', () => {
         clientPixelRect: { x: 250, y: 50, width: 100, height: 100 },
       });
     });
-    let shadowRemovalResult: Awaited<
-      ReturnType<DashboardGridInteractionCoordinator['commit']>
-    >;
+    let shadowRemovalResult: Awaited<ReturnType<DashboardGridInteractionCoordinator['commit']>>;
     await act(async () => {
       shadowRemovalResult = await capturedCoordinator?.commit();
       await Promise.resolve();

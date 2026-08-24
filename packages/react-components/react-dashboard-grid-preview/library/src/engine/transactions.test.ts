@@ -21,10 +21,7 @@ describe('dashboard grid transactions', () => {
 
     const changeSet = engine.commitBatch();
     expect(listener).toHaveBeenCalledTimes(1);
-    expect(changeSet.changed.map(change => change.id)).toEqual([
-      'second',
-      'first',
-    ]);
+    expect(changeSet.changed.map(change => change.id)).toEqual(['second', 'first']);
   });
 
   it('classifies removed, added, then verified changed items without duplication', () => {
@@ -41,11 +38,7 @@ describe('dashboard grid transactions', () => {
     engine.update('changed', { column: 2 });
     const changeSet = engine.commitBatch();
 
-    expect(changeSet.changes.map(change => change.kind)).toEqual([
-      'removed',
-      'added',
-      'changed',
-    ]);
+    expect(changeSet.changes.map(change => change.kind)).toEqual(['removed', 'added', 'changed']);
     expect(changeSet.changed.map(change => change.id)).not.toContain('added');
   });
 

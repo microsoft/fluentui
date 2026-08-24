@@ -1,8 +1,4 @@
-import type {
-  DashboardGridLayoutItemInput,
-  DashboardGridLoadOptions,
-  DashboardGridResolvedItem,
-} from '../engine';
+import type { DashboardGridLayoutItemInput, DashboardGridLoadOptions, DashboardGridResolvedItem } from '../engine';
 import { createDashboardGridEngine } from '../engine';
 import { adaptGridStackLoadOptions, createGridStackEventAdapter } from './gridstackFacade';
 import type { DashboardGridCompatibilityHandle, GridStackNode } from './gridstackTypes';
@@ -38,10 +34,7 @@ class TestCompatibilityHandle implements DashboardGridCompatibilityHandle {
     return this.items;
   }
 
-  public load(
-    inputs: readonly DashboardGridLayoutItemInput[],
-    options: DashboardGridLoadOptions = {},
-  ): void {
+  public load(inputs: readonly DashboardGridLayoutItemInput[], options: DashboardGridLoadOptions = {}): void {
     const addMissing = options.addMissing ?? true;
     const removeMissing = options.removeMissing ?? true;
     const existing = new Map(this.items.map(item => [item.id, item]));
@@ -139,9 +132,7 @@ describe('GridStack event and load compatibility', () => {
     };
     const facade = createGridStackEventAdapter(target);
 
-    expect(facade.save()).toEqual([
-      { x: 0, y: 0, id: 'one', content: '<img src=x onerror=alert(1)>' },
-    ]);
+    expect(facade.save()).toEqual([{ x: 0, y: 0, id: 'one', content: '<img src=x onerror=alert(1)>' }]);
     expect(facade.save(false)).toEqual([{ x: 0, y: 0, id: 'one' }]);
   });
 
@@ -284,10 +275,7 @@ describe('GridStack event and load compatibility', () => {
     facade.batchUpdate(false);
 
     expect(addedHandler).toHaveBeenCalledTimes(1);
-    expect(addedHandler.mock.calls[0][1].map((node: GridStackNode) => node.id)).toEqual([
-      'two',
-      'three',
-    ]);
+    expect(addedHandler.mock.calls[0][1].map((node: GridStackNode) => node.id)).toEqual(['two', 'three']);
   });
 
   it('does not emit compatibility events for rejected public-engine mutations', () => {
@@ -366,9 +354,7 @@ describe('GridStack event and load compatibility', () => {
       setupDragIn,
     });
 
-    facade.setupDragIn('.source', { helper: 'clone' }, [
-      { id: 'external', content: '<img src=x onerror=alert(1)>' },
-    ]);
+    facade.setupDragIn('.source', { helper: 'clone' }, [{ id: 'external', content: '<img src=x onerror=alert(1)>' }]);
 
     expect(source.getAttribute('data-dashboard-grid-drag-source')).toBe('true');
     expect(source.hasAttribute('draggable')).toBe(false);
@@ -376,11 +362,9 @@ describe('GridStack event and load compatibility', () => {
       id: 'external',
       content: '<img src=x onerror=alert(1)>',
     });
-    expect(setupDragIn).toHaveBeenCalledWith(
-      [source],
-      { helper: 'clone' },
-      [{ id: 'external', content: '<img src=x onerror=alert(1)>' }],
-    );
+    expect(setupDragIn).toHaveBeenCalledWith([source], { helper: 'clone' }, [
+      { id: 'external', content: '<img src=x onerror=alert(1)>' },
+    ]);
   });
 
   it('bridges committed public DashboardGrid callbacks to legacy event names', () => {
@@ -433,10 +417,7 @@ describe('GridStack event and load compatibility', () => {
       expect.objectContaining({ type: 'change' }),
       expect.arrayContaining([expect.objectContaining({ id: 'two', x: 2 })]),
     );
-    expect(dragHandler).toHaveBeenCalledWith(
-      expect.objectContaining({ type: 'dragstart' }),
-      itemElement,
-    );
+    expect(dragHandler).toHaveBeenCalledWith(expect.objectContaining({ type: 'dragstart' }), itemElement);
     expect(dropHandler).toHaveBeenCalledWith(
       expect.objectContaining({ type: 'dropped' }),
       undefined,

@@ -1,7 +1,4 @@
-import type {
-  DashboardGridInteractionEventQueue,
-  DashboardGridInteractionIntent,
-} from '../interaction/types';
+import type { DashboardGridInteractionEventQueue, DashboardGridInteractionIntent } from '../interaction/types';
 
 export type DashboardGridLayoutChangeIntent = {
   type: 'layout-change';

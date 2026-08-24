@@ -55,9 +55,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useDashboardGridStyles_unstable = <TState extends DashboardGridStyleSlots>(
-  state: TState,
-): TState => {
+export const useDashboardGridStyles_unstable = <TState extends DashboardGridStyleSlots>(state: TState): TState => {
   const rootStyles = useRootStyles();
   const styles = useStyles();
 
@@ -81,11 +79,7 @@ export const useDashboardGridStyles_unstable = <TState extends DashboardGridStyl
     placeholder: state.placeholder
       ? {
           ...state.placeholder,
-          className: mergeClasses(
-            dashboardGridClassNames.placeholder,
-            styles.placeholder,
-            state.placeholder.className,
-          ),
+          className: mergeClasses(dashboardGridClassNames.placeholder, styles.placeholder, state.placeholder.className),
         }
       : undefined,
     emptyContent: state.emptyContent

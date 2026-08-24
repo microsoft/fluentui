@@ -111,6 +111,9 @@ export const useDashboardGridItem_unstable = (
   const disableResize = useRequiredDashboardGridContext_unstable(context => context.disableResize);
   const defaultLazyMount = useRequiredDashboardGridContext_unstable(context => context.defaultLazyMount);
   const defaultSizeToContent = useRequiredDashboardGridContext_unstable(context => context.defaultSizeToContent);
+  const defaultMeasureSizeToContent = useRequiredDashboardGridContext_unstable(
+    context => context.defaultMeasureSizeToContent,
+  );
   const dragOptions = useRequiredDashboardGridContext_unstable(context => context.dragOptions);
   const resizeOptions = useRequiredDashboardGridContext_unstable(context => context.resizeOptions);
   const componentRegistry = useRequiredDashboardGridContext_unstable(context => context.components);
@@ -206,6 +209,9 @@ export const useDashboardGridItem_unstable = (
   const lazyRef = lazy.ref;
   const sizeToContent =
     legacySizeToContent ?? itemOptions.sizeToContent ?? definition?.sizeToContent ?? defaultSizeToContent;
+  const sizeToContentSelector = itemOptions.sizeToContentSelector ?? definition?.sizeToContentSelector;
+  const measureSizeToContent =
+    itemOptions.measureSizeToContent ?? definition?.measureSizeToContent ?? defaultMeasureSizeToContent;
   const onTextOnlySizeToContent = useEventCallback((id: string) =>
     onDiagnostic?.({
       code: 'invalid-custom-layout',
@@ -220,6 +226,8 @@ export const useDashboardGridItem_unstable = (
     controller: resizeObserver,
     id: props.id,
     enabled: sizeToContent,
+    selector: sizeToContentSelector,
+    measure: measureSizeToContent,
     store,
     onTextOnly: onTextOnlySizeToContent,
   });

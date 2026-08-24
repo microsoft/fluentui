@@ -145,10 +145,7 @@ describe('GridStack DOM compatibility', () => {
 
   it('parses external metadata defensively and writes only data-gs-widget', () => {
     const element = document.createElement('div');
-    element.setAttribute(
-      'gridstacknode',
-      '{"id":"safe","x":1,"__proto__":{"polluted":true},"_runtime":"discard"}',
-    );
+    element.setAttribute('gridstacknode', '{"id":"safe","x":1,"__proto__":{"polluted":true},"_runtime":"discard"}');
 
     expect(readGridStackWidgetMetadata(element, { consume: true })).toEqual({ id: 'safe', x: 1 });
     expect(element.hasAttribute('gridstacknode')).toBe(false);
@@ -188,8 +185,6 @@ describe('GridStack DOM compatibility', () => {
 
     expect(getGridStackElement('123', shadowRoot)?.id).toBe('123');
     expect(getGridStackElement('shadow-class', shadowRoot)?.className).toBe('shadow-class');
-    expect(getGridStackElement('shadow-widget', shadowRoot)?.getAttribute('gs-id')).toBe(
-      'shadow-widget',
-    );
+    expect(getGridStackElement('shadow-widget', shadowRoot)?.getAttribute('gs-id')).toBe('shadow-widget');
   });
 });

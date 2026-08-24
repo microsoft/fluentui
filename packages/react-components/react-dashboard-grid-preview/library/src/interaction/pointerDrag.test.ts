@@ -37,7 +37,7 @@ const rect = (left: number, top: number, width: number, height: number): DOMRect
     width,
     height,
     toJSON: () => ({}),
-  }) as DOMRect;
+  } as DOMRect);
 
 describe('dashboard grid pointer drag', () => {
   it('keeps the source-backed drag and touch-leave thresholds', () => {

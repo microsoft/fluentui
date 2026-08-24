@@ -26,9 +26,7 @@ export const createDiagnostic = (
     severity: options.severity ?? 'warning',
     recoverable: options.recoverable ?? true,
     ...(options.itemId === undefined ? {} : { itemId: options.itemId }),
-    ...(options.details === undefined
-      ? {}
-      : { details: Object.freeze({ ...options.details }) }),
+    ...(options.details === undefined ? {} : { details: Object.freeze({ ...options.details }) }),
   });
 
 export const reportDiagnostic = (

@@ -11,6 +11,8 @@ export type DashboardGridSizeToContentRegistration = {
   element: HTMLElement;
   store?: DashboardGridStore;
   maximumRowSpan?: number;
+  selector?: string;
+  measure?: (element: HTMLElement) => number | undefined;
   onTextOnly?: (id: string) => void;
 };
 
@@ -18,7 +20,7 @@ export type DashboardGridResizeObserverController = {
   rootRef(element: HTMLElement | null): void;
   registerSizeToContent(registration: DashboardGridSizeToContentRegistration): () => void;
   getMetrics(): DashboardGridCellMetrics;
-  remeasure(): void;
+  remeasure(id?: string): void;
 };
 
 export type UseDashboardGridResizeObserverOptions = {
@@ -67,13 +69,39 @@ export const useDashboardGridResizeObserver = (
   const registrationsRef = React.useRef(new Map<string, DashboardGridSizeToContentRegistration>());
   const metricsRef = React.useRef<DashboardGridCellMetrics>({
     ...emptyMetrics,
-    rowHeight: Math.max(1, rowHeight),
+    rowHeight: Math.max(0, rowHeight),
     ...options.gaps,
   });
 
   const measureRegistration = React.useCallback(
     (registration: DashboardGridSizeToContentRegistration) => {
-      const measurement = measureDashboardGridContent(registration.element);
+      const measuredElement = registration.selector
+        ? registration.element.querySelector<HTMLElement>(registration.selector)
+        : registration.element;
+      if (!measuredElement) {
+        return;
+      }
+
+      const customBlockSize = registration.measure?.(measuredElement);
+      if (customBlockSize !== undefined) {
+        if (!Number.isFinite(customBlockSize) || customBlockSize <= 0) {
+          return;
+        }
+        const itemStore = registration.store ?? store;
+        const nextRowSpan = getDashboardGridContentRowSpan(
+          customBlockSize,
+          metricsRef.current.rowHeight,
+          registration.maximumRowSpan,
+        );
+        const item = itemStore.getItem(registration.id);
+        if (item && item.rowSpan !== nextRowSpan) {
+          itemStore.update(registration.id, { rowSpan: nextRowSpan });
+          itemStore.setRuntimeItemState(registration.id, { measuredRowSpan: nextRowSpan });
+        }
+        return;
+      }
+
+      const measurement = measureDashboardGridContent(measuredElement);
       if (measurement.status === 'text-only') {
         registration.onTextOnly?.(registration.id);
         return;
@@ -96,52 +124,62 @@ export const useDashboardGridResizeObserver = (
     [store],
   );
 
-  const remeasure = React.useCallback(() => {
-    const root = rootRef.current;
-    if (root) {
-      const width = root.offsetWidth || root.clientWidth || root.getBoundingClientRect().width;
-      const currentColumns = store.getSnapshot().columns;
-      const columns = Math.max(1, resolveColumns?.(width, currentColumns) ?? currentColumns);
-      if (columns !== currentColumns) {
-        store.setColumns(columns, columnLayout);
+  const remeasure = React.useCallback(
+    (id?: string) => {
+      const root = rootRef.current;
+      if (root) {
+        const width = root.offsetWidth || root.clientWidth || root.getBoundingClientRect().width;
+        const currentColumns = store.getSnapshot().columns;
+        const columns = Math.max(1, resolveColumns?.(width, currentColumns) ?? currentColumns);
+        if (columns !== currentColumns) {
+          store.setColumns(columns, columnLayout);
+        }
+
+        const columnWidth = width > 0 ? width / columns : 0;
+        const nextMetrics: DashboardGridCellMetrics = {
+          ...metricsRef.current,
+          ...measureGaps?.(),
+          columnWidth,
+          rowHeight: Math.max(0, resolveRowHeight?.(columnWidth) ?? rowHeight),
+        };
+        const previousMetrics = metricsRef.current;
+        metricsRef.current = nextMetrics;
+        if (
+          previousMetrics.columnWidth !== nextMetrics.columnWidth ||
+          previousMetrics.rowHeight !== nextMetrics.rowHeight ||
+          previousMetrics.gapTop !== nextMetrics.gapTop ||
+          previousMetrics.gapRight !== nextMetrics.gapRight ||
+          previousMetrics.gapBottom !== nextMetrics.gapBottom ||
+          previousMetrics.gapLeft !== nextMetrics.gapLeft
+        ) {
+          onMetricsChange?.(nextMetrics);
+        }
       }
 
-      const columnWidth = width > 0 ? width / columns : 0;
-      const nextMetrics: DashboardGridCellMetrics = {
-        ...metricsRef.current,
-        ...measureGaps?.(),
-        columnWidth,
-        rowHeight: Math.max(1, resolveRowHeight?.(columnWidth) ?? rowHeight),
-      };
-      const previousMetrics = metricsRef.current;
-      metricsRef.current = nextMetrics;
-      if (
-        previousMetrics.columnWidth !== nextMetrics.columnWidth ||
-        previousMetrics.rowHeight !== nextMetrics.rowHeight ||
-        previousMetrics.gapTop !== nextMetrics.gapTop ||
-        previousMetrics.gapRight !== nextMetrics.gapRight ||
-        previousMetrics.gapBottom !== nextMetrics.gapBottom ||
-        previousMetrics.gapLeft !== nextMetrics.gapLeft
-      ) {
-        onMetricsChange?.(nextMetrics);
+      if (id !== undefined) {
+        const registration = registrationsRef.current.get(id);
+        if (registration) {
+          measureRegistration(registration);
+        }
+      } else {
+        for (const registration of registrationsRef.current.values()) {
+          measureRegistration(registration);
+        }
       }
-    }
-
-    for (const registration of registrationsRef.current.values()) {
-      measureRegistration(registration);
-    }
-    onResizeContent?.();
-  }, [
-    columnLayout,
-    measureGaps,
-    measureRegistration,
-    onMetricsChange,
-    onResizeContent,
-    resolveColumns,
-    resolveRowHeight,
-    rowHeight,
-    store,
-  ]);
+      onResizeContent?.();
+    },
+    [
+      columnLayout,
+      measureGaps,
+      measureRegistration,
+      onMetricsChange,
+      onResizeContent,
+      resolveColumns,
+      resolveRowHeight,
+      rowHeight,
+      store,
+    ],
+  );
 
   React.useEffect(() => {
     if (nested && parentController) {

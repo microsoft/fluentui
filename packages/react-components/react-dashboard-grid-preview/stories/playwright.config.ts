@@ -56,8 +56,7 @@ export default defineConfig({
   webServer: externalStorybookUrl
     ? undefined
     : {
-        command:
-          'yarn nx run react-dashboard-grid-preview-stories:storybook -- --port=6006',
+        command: 'yarn nx run react-dashboard-grid-preview-stories:storybook -- --port=6006',
         url: storybookUrl,
         reuseExistingServer: !isCI,
         timeout: 180_000,

@@ -50,9 +50,7 @@ const mutationReasonToRejectedReason = (reason: string): DashboardGridRejectedRe
   }
 };
 
-const withProviderFinalizer = (
-  result: DashboardGridTransferResult,
-): DashboardGridPreparedTransferResult =>
+const withProviderFinalizer = (result: DashboardGridTransferResult): DashboardGridPreparedTransferResult =>
   result.status === 'accepted'
     ? {
         ...result,
@@ -112,9 +110,7 @@ const definitionAtRect = (
       }
     : definition;
 
-export const createDashboardGridRegistry = (
-  options: DashboardGridRegistryOptions = {},
-): DashboardGridRegistry => {
+export const createDashboardGridRegistry = (options: DashboardGridRegistryOptions = {}): DashboardGridRegistry => {
   const grids = new Map<string, RegisteredGrid>();
   const eventGridParents = new Map<string, string>();
   const items = new Map<string, RegisteredItem>();
@@ -158,9 +154,7 @@ export const createDashboardGridRegistry = (
     return undefined;
   };
 
-  const getTransferDefinition = (
-    intent: DashboardGridTransferIntent,
-  ): DashboardGridItemDefinition | undefined => {
+  const getTransferDefinition = (intent: DashboardGridTransferIntent): DashboardGridItemDefinition | undefined => {
     if (intent.operation === 'external') {
       return intent.descriptor ? descriptorToDefinition(intent.descriptor, intent.rect) : undefined;
     }
@@ -206,9 +200,7 @@ export const createDashboardGridRegistry = (
         };
   };
 
-  const transfer = async (
-    intent: DashboardGridTransferIntent,
-  ): Promise<DashboardGridPreparedTransferResult> => {
+  const transfer = async (intent: DashboardGridTransferIntent): Promise<DashboardGridPreparedTransferResult> => {
     const preflight = preflightTransfer(intent);
     if (preflight.status === 'rejected') {
       return preflight;
@@ -484,9 +476,7 @@ export const createDashboardGridRegistry = (
       const focusRecord = options.captureFocus?.(source.id, intent.itemId);
       const host = itemHosts.get(intent.itemId)?.host;
       const itemElement = source.rootElement
-        ? Array.from(
-            source.rootElement.querySelectorAll<HTMLElement>('[data-dashboard-grid-item]'),
-          ).find(
+        ? Array.from(source.rootElement.querySelectorAll<HTMLElement>('[data-dashboard-grid-item]')).find(
             element => element.getAttribute('data-dashboard-grid-item') === intent.itemId,
           )
         : undefined;
@@ -544,22 +534,17 @@ export const createDashboardGridRegistry = (
         return transfer(intent);
       }
 
-      const result =
-        options.onCustomDrop?.(intent) ?? {
-          status: 'rejected',
-          reason: 'target-rejected' as const,
-        };
+      const result = options.onCustomDrop?.(intent) ?? {
+        status: 'rejected',
+        reason: 'target-rejected' as const,
+      };
       return Promise.resolve(result).then(withProviderFinalizer);
     },
 
     requestNesting(intent: DashboardGridNestingIntent) {
       const nestedTarget = [...grids.values()]
         .map(value => value.registration)
-        .find(
-          grid =>
-            grid.parentGridId === intent.targetGridId &&
-            grid.parentItemId === intent.targetItemId,
-        );
+        .find(grid => grid.parentGridId === intent.targetGridId && grid.parentItemId === intent.targetItemId);
 
       if (!nestedTarget) {
         const source = getGrid(intent.sourceGridId);
@@ -686,10 +671,7 @@ export const createDashboardGridRegistry = (
           rect: {
             column: 0,
             row: 0,
-            columnSpan: Math.min(
-              sourceItem.columnSpan,
-              Number(nestedDefinition.columns) || sourceItem.columnSpan,
-            ),
+            columnSpan: Math.min(sourceItem.columnSpan, Number(nestedDefinition.columns) || sourceItem.columnSpan),
             rowSpan: sourceItem.rowSpan,
           },
           finalize,

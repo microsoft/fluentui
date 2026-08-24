@@ -1,7 +1,4 @@
-import {
-  getDashboardGridScreenGeometryStyle,
-  getDashboardGridSurfaceBlockSize,
-} from './screenGeometry';
+import { getDashboardGridScreenGeometryStyle, getDashboardGridSurfaceBlockSize } from './screenGeometry';
 
 describe('DashboardGrid screen geometry', () => {
   it('projects cells to absolute pixel geometry with directional gaps', () => {
@@ -62,5 +59,26 @@ describe('DashboardGrid screen geometry', () => {
         64,
       ),
     ).toBe(256);
+  });
+
+  it('leaves vertical geometry to the caller when row height is zero', () => {
+    expect(
+      getDashboardGridScreenGeometryStyle(
+        { column: 1, row: 2, columnSpan: 2, rowSpan: 3 },
+        {
+          columnWidth: 100,
+          rowHeight: 0,
+          gapTop: 1,
+          gapRight: 2,
+          gapBottom: 3,
+          gapLeft: 4,
+        },
+        4,
+        0,
+      ),
+    ).toEqual({
+      insetInlineStart: 104,
+      width: 194,
+    });
   });
 });

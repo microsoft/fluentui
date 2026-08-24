@@ -74,11 +74,7 @@ export const useDashboardGridDragSourceStyles_unstable = (
     preview: state.preview
       ? {
           ...state.preview,
-          className: mergeClasses(
-            dashboardGridDragSourceClassNames.preview,
-            styles.preview,
-            state.preview.className,
-          ),
+          className: mergeClasses(dashboardGridDragSourceClassNames.preview, styles.preview, state.preview.className),
         }
       : undefined,
   };

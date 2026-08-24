@@ -28,9 +28,7 @@ export const createDashboardGridNestedOptions = (
 
   const merged = { ...inherited, ...template };
   const columns =
-    merged.columns === 'auto'
-      ? Math.max(1, parentItemColumnSpan, incomingItemColumnSpan)
-      : merged.columns;
+    merged.columns === 'auto' ? Math.max(1, parentItemColumnSpan, incomingItemColumnSpan) : merged.columns;
 
   return {
     ...merged,

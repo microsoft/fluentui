@@ -59,10 +59,10 @@ const defaultFormatAnnouncement = (
     announcement.sourceGridLabel !== announcement.targetGridLabel
       ? ` from ${announcement.sourceGridLabel} to ${announcement.targetGridLabel}`
       : announcement.targetGridLabel
-        ? ` in ${announcement.targetGridLabel}`
-        : announcement.sourceGridLabel
-          ? ` in ${announcement.sourceGridLabel}`
-          : '';
+      ? ` in ${announcement.targetGridLabel}`
+      : announcement.sourceGridLabel
+      ? ` in ${announcement.sourceGridLabel}`
+      : '';
 
   switch (announcement.type) {
     case 'arrange-start':
@@ -85,9 +85,9 @@ const defaultFormatAnnouncement = (
     case 'rotate':
       return `${announcement.itemLabel} rotated to ${position}${sourceAndTarget}.`;
     case 'rejected':
-      return `${announcement.itemLabel} could not be changed: ${
-        (strings.formatRejectedReason ?? defaultFormatRejectedReason)(announcement.reason)
-      }.`;
+      return `${announcement.itemLabel} could not be changed: ${(
+        strings.formatRejectedReason ?? defaultFormatRejectedReason
+      )(announcement.reason)}.`;
     case 'target':
       return `${announcement.itemLabel} over ${announcement.targetLabel ?? announcement.targetGridLabel ?? 'target'}.`;
     case 'drop':

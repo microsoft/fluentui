@@ -1,7 +1,4 @@
-import type {
-  DashboardGridEngineSnapshot,
-  DashboardGridResolvedItem,
-} from './DashboardGridEngine.types';
+import type { DashboardGridEngineSnapshot, DashboardGridResolvedItem } from './DashboardGridEngine.types';
 import { intersects, sameInternalRect, toPublicRect } from './geometry';
 import type {
   CachedLayoutNode,
@@ -27,9 +24,7 @@ const cloneCachedLayoutNode = (node: CachedLayoutNode): CachedLayoutNode => ({
   ...node,
 });
 
-export const cloneResponsiveLayouts = (
-  layouts: ResponsiveLayoutCache,
-): ResponsiveLayoutCache => {
+export const cloneResponsiveLayouts = (layouts: ResponsiveLayoutCache): ResponsiveLayoutCache => {
   const clone: ResponsiveLayoutCache = new Map();
 
   layouts.forEach((layout, columns) => {
@@ -56,15 +51,10 @@ export const cloneEngineState = (state: EngineState): EngineState => ({
 export const compareNodes = (a: InternalNode, b: InternalNode): number =>
   a.y - b.y || a.x - b.x || a.sequence - b.sequence;
 
-export const sortNodesStable = (
-  nodes: readonly InternalNode[],
-  direction: 1 | -1 = 1,
-): InternalNode[] =>
+export const sortNodesStable = (nodes: readonly InternalNode[], direction: 1 | -1 = 1): InternalNode[] =>
   [...nodes].sort((a, b) => direction * compareNodes(a, b));
 
-export const nodeToResolvedItem = (
-  node: InternalNode,
-): DashboardGridResolvedItem =>
+export const nodeToResolvedItem = (node: InternalNode): DashboardGridResolvedItem =>
   Object.freeze({
     id: node.id,
     ...toPublicRect(node),
@@ -77,10 +67,7 @@ export const nodeToResolvedItem = (
     locked: node.locked,
   });
 
-export const createSnapshot = (
-  state: EngineState,
-  revision: number,
-): DashboardGridEngineSnapshot => {
+export const createSnapshot = (state: EngineState, revision: number): DashboardGridEngineSnapshot => {
   const items = sortNodesStable(state.nodes).map(nodeToResolvedItem);
 
   return Object.freeze({
@@ -95,19 +82,13 @@ export const createSnapshot = (
 export const getInternalRow = (nodes: readonly InternalNode[]): number =>
   nodes.reduce((row, node) => Math.max(row, node.y + node.h), 0);
 
-export const findNodeById = (
-  nodes: readonly InternalNode[],
-  id: string,
-): InternalNode | undefined => nodes.find(node => node.id === id);
+export const findNodeById = (nodes: readonly InternalNode[], id: string): InternalNode | undefined =>
+  nodes.find(node => node.id === id);
 
-export const findNodeByKey = (
-  nodes: readonly InternalNode[],
-  key: OpaqueNodeKey,
-): InternalNode | undefined => nodes.find(node => node.key === key);
+export const findNodeByKey = (nodes: readonly InternalNode[], key: OpaqueNodeKey): InternalNode | undefined =>
+  nodes.find(node => node.key === key);
 
-export const createRectMap = (
-  nodes: readonly InternalNode[],
-): Map<OpaqueNodeKey, InternalRect> => {
+export const createRectMap = (nodes: readonly InternalNode[]): Map<OpaqueNodeKey, InternalRect> => {
   const result = new Map<OpaqueNodeKey, InternalRect>();
   nodes.forEach(node => result.set(node.key, cloneInternalRect(node)));
   return result;
@@ -125,10 +106,7 @@ export const hasOverlaps = (nodes: readonly InternalNode[]): boolean => {
   return false;
 };
 
-const sameOptionalNumber = (
-  a: number | undefined,
-  b: number | undefined,
-): boolean => a === b;
+const sameOptionalNumber = (a: number | undefined, b: number | undefined): boolean => a === b;
 
 export const sameNode = (a: InternalNode, b: InternalNode): boolean =>
   a.key === b.key &&
@@ -145,12 +123,7 @@ export const sameNode = (a: InternalNode, b: InternalNode): boolean =>
   a.auto === b.auto;
 
 export const samePublicState = (a: EngineState, b: EngineState): boolean => {
-  if (
-    a.columns !== b.columns ||
-    a.maxRows !== b.maxRows ||
-    a.float !== b.float ||
-    a.nodes.length !== b.nodes.length
-  ) {
+  if (a.columns !== b.columns || a.maxRows !== b.maxRows || a.float !== b.float || a.nodes.length !== b.nodes.length) {
     return false;
   }
 

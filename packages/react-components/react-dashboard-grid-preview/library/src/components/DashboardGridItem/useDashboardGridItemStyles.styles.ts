@@ -152,10 +152,7 @@ const useStyles = makeStyles({
   },
 });
 
-const edgeClass = (
-  edge: DashboardGridResizeEdge,
-  styles: ReturnType<typeof useStyles>,
-): string => {
+const edgeClass = (edge: DashboardGridResizeEdge, styles: ReturnType<typeof useStyles>): string => {
   switch (edge) {
     case 'n':
       return styles.north;

@@ -291,6 +291,7 @@ export type DashboardGridItemDefinition<TData = unknown> = DashboardGridLayoutIt
     lazyMount?: boolean;
     sizeToContent?: boolean | number;
     sizeToContentSelector?: string;
+    measureSizeToContent?: DashboardGridContentMeasure;
     subGrid?: DashboardGridDefinition<TData>;
     print?: DashboardGridItemPrintOptions;
     nestedGrid?: DashboardGridSerializedState;
@@ -370,6 +371,7 @@ export type DashboardGridOptions = {
     disableResize?: boolean;
     lazyMount?: boolean;
     sizeToContent?: boolean;
+    measureSizeToContent?: DashboardGridContentMeasure;
     printMode?: 'flow' | 'exact';
     collision?: DashboardGridCollisionOptions;
     compactMode?: 'compact' | 'list';
