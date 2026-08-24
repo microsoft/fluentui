@@ -108,6 +108,13 @@ import { renderSwitch } from '@fluentui/react-headless-components-preview/switch
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
+import { renderToolbar } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarButton } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarDivider } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarGroup } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarRadioButton } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarRadioGroup } from '@fluentui/react-headless-components-preview/toolbar';
+import { renderToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import type { SelectProps as SelectProps_2 } from '@fluentui/react-headless-components-preview/select';
 import { SelectSlots } from '@fluentui/react-headless-components-preview/select';
@@ -148,6 +155,22 @@ import { themeClassNames } from '@fluentui/react-tailwind-theme-preview/theme-cl
 import type { ToggleButtonProps as ToggleButtonProps_2 } from '@fluentui/react-headless-components-preview/toggle-button';
 import { ToggleButtonSlots } from '@fluentui/react-headless-components-preview/toggle-button';
 import type { ToggleButtonState as ToggleButtonState_2 } from '@fluentui/react-headless-components-preview/toggle-button';
+import type { ToolbarButtonProps as ToolbarButtonProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarButtonState as ToolbarButtonState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import { ToolbarContextValues } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarDividerProps as ToolbarDividerProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarDividerState as ToolbarDividerState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarProps as ToolbarProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarRadioButtonProps as ToolbarRadioButtonProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarRadioButtonState as ToolbarRadioButtonState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import { ToolbarSlots } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarState as ToolbarState_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarToggleButtonProps as ToolbarToggleButtonProps_2 } from '@fluentui/react-headless-components-preview/toolbar';
+import type { ToolbarToggleButtonState as ToolbarToggleButtonState_2 } from '@fluentui/react-headless-components-preview/toolbar';
 import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { TooltipSlots } from '@fluentui/react-headless-components-preview/tooltip';
 import type { TooltipState as TooltipState_2 } from '@fluentui/react-headless-components-preview/tooltip';
@@ -193,6 +216,15 @@ import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
+import { useToolbar } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarButton } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarContext } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarContextValues } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarDivider } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarGroup } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarRadioButton } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarRadioGroup } from '@fluentui/react-headless-components-preview/toolbar';
+import { useToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { webDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -795,6 +827,20 @@ export { renderTextarea }
 
 export { renderToggleButton }
 
+export { renderToolbar }
+
+export { renderToolbarButton }
+
+export { renderToolbarDivider }
+
+export { renderToolbarGroup }
+
+export { renderToolbarRadioButton }
+
+export { renderToolbarRadioGroup }
+
+export { renderToolbarToggleButton }
+
 export { renderTooltip }
 
 // @public
@@ -1056,6 +1102,122 @@ export { ToggleButtonSlots }
 export type ToggleButtonState = ToggleButtonState_2 & Required<Pick<ToggleButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 // @public
+export const Toolbar: ForwardRefComponent<ToolbarProps>;
+
+// @public
+export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
+
+// @public
+export type ToolbarButtonAppearance = 'primary' | 'subtle' | 'transparent';
+
+// @public
+export const toolbarButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarButtonProps = ToolbarButtonProps_2 & {
+    appearance?: ToolbarButtonAppearance;
+};
+
+// @public
+export type ToolbarButtonState = ToolbarButtonState_2 & Required<Pick<ToolbarButtonProps, 'appearance'>> & Required<Pick<ButtonState, 'shape' | 'size'>>;
+
+// @public
+export const toolbarClassNames: {
+    root: string;
+};
+
+export { ToolbarContextValues }
+
+// @public
+export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
+
+// @public
+export const toolbarDividerClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarDividerProps = ToolbarDividerProps_2;
+
+// @public
+export type ToolbarDividerState = ToolbarDividerState_2 & Required<Pick<DividerState, 'alignContent' | 'appearance' | 'inset'>>;
+
+// @public
+export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public
+export const toolbarGroupClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarGroupProps = ToolbarGroupProps_2;
+
+// @public
+export type ToolbarGroupState = ToolbarGroupState_2;
+
+// @public
+export type ToolbarProps = ToolbarProps_2 & {
+    size?: ToolbarSize;
+};
+
+// @public
+export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
+
+// @public
+export const toolbarRadioButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarRadioButtonProps = ToolbarRadioButtonProps_2 & {
+    appearance?: ToolbarButtonAppearance;
+};
+
+// @public
+export type ToolbarRadioButtonState = ToolbarRadioButtonState_2 & Required<Pick<ToolbarRadioButtonProps, 'appearance'>> & Required<Pick<ButtonState, 'shape' | 'size'>>;
+
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public
+export const toolbarRadioGroupClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarRadioGroupProps = ToolbarRadioGroupProps_2;
+
+// @public
+export type ToolbarRadioGroupState = ToolbarRadioGroupState_2;
+
+// @public
+export type ToolbarSize = 'small' | 'medium' | 'large';
+
+export { ToolbarSlots }
+
+// @public
+export type ToolbarState = ToolbarState_2 & Required<Pick<ToolbarProps, 'size'>>;
+
+// @public
+export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
+
+// @public
+export const toolbarToggleButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type ToolbarToggleButtonProps = ToolbarToggleButtonProps_2 & {
+    appearance?: ToolbarButtonAppearance;
+};
+
+// @public
+export type ToolbarToggleButtonState = ToolbarToggleButtonState_2 & Required<Pick<ToolbarToggleButtonProps, 'appearance'>> & Required<Pick<ButtonState, 'shape' | 'size'>>;
+
+// @public
 export const Tooltip: {
     (props: TooltipProps): JSXElement;
     displayName: string;
@@ -1257,6 +1419,45 @@ export { useToggleButton }
 
 // @public
 export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
+
+export { useToolbar }
+
+export { useToolbarButton }
+
+// @public
+export const useToolbarButtonStyles: (state: ToolbarButtonState) => ToolbarButtonState;
+
+export { useToolbarContext }
+
+export { useToolbarContextValues }
+
+export { useToolbarDivider }
+
+// @public
+export const useToolbarDividerStyles: (state: ToolbarDividerState) => ToolbarDividerState;
+
+export { useToolbarGroup }
+
+// @public
+export const useToolbarGroupStyles: (state: ToolbarGroupState) => ToolbarGroupState;
+
+export { useToolbarRadioButton }
+
+// @public
+export const useToolbarRadioButtonStyles: (state: ToolbarRadioButtonState) => ToolbarRadioButtonState;
+
+export { useToolbarRadioGroup }
+
+// @public
+export const useToolbarRadioGroupStyles: (state: ToolbarRadioGroupState) => ToolbarRadioGroupState;
+
+// @public
+export const useToolbarStyles: (state: ToolbarState) => ToolbarState;
+
+export { useToolbarToggleButton }
+
+// @public
+export const useToolbarToggleButtonStyles: (state: ToolbarToggleButtonState) => ToolbarToggleButtonState;
 
 export { useTooltip }
 

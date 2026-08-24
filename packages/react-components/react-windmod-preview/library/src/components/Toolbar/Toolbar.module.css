@@ -1,0 +1,21 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-center px-8 py-4;
+
+    @variant size-small {
+      @apply px-4 py-0;
+    }
+
+    @variant size-large {
+      @apply px-20 py-4;
+    }
+
+    /* Last in the block: a vertical toolbar drops the size padding entirely and keeps the
+       resting one, so this must re-assert it at equal specificity after the size blocks. */
+    @variant vertical-flag {
+      @apply w-fit flex-col px-8 py-4;
+    }
+  }
+}

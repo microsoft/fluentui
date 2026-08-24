@@ -48,6 +48,8 @@ export { TextareaWindmod } from './TextareaWindmod.stories';
 export { TextareaGriffel } from './TextareaGriffel.stories';
 export { ToggleButtonWindmod } from './ToggleButtonWindmod.stories';
 export { ToggleButtonGriffel } from './ToggleButtonGriffel.stories';
+export { ToolbarWindmod } from './ToolbarWindmod.stories';
+export { ToolbarGriffel } from './ToolbarGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';
 export { TooltipGriffel } from './TooltipGriffel.stories';
 

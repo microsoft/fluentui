@@ -1,0 +1,109 @@
+@reference '#theme';
+
+/* Layer order beats every other cascade signal, so an l3 declaration outranks the l2
+   ToggleButton rules for :hover, :active and forced-colors as well as for the resting look.
+   Griffel arbitrates those crossings by style-bucket order instead, and its `d`-bucket toolbar
+   override therefore loses to the `h`-bucket hover and the `m`-bucket high-contrast rules it
+   would win here. The hover, pressed, disabled-hover and high-contrast values below are
+   re-asserted for that reason; the resting checked look is the only thing this layer adds. */
+
+@layer fui.components.l3 {
+  .root {
+    @variant checked {
+      @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
+
+      @variant appearance-primary {
+        @variant hover {
+          @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+        }
+
+        @variant hover-active {
+          @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+        }
+      }
+
+      @variant appearance-subtle {
+        @variant hover {
+          @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
+        }
+
+        @variant hover-active {
+          @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant appearance-transparent {
+        @variant hover {
+          @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+        }
+
+        @variant hover-active {
+          @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+        }
+      }
+
+      @variant disabled, disabled-focusable {
+        @variant hover {
+          @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+        }
+
+        @variant hover-active {
+          @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+        }
+
+        @variant appearance-subtle, appearance-transparent {
+          @variant hover {
+            @apply bg-transparent-background-hover text-neutral-foreground-disabled;
+          }
+
+          @variant hover-active {
+            @apply bg-transparent-background-pressed text-neutral-foreground-disabled;
+          }
+        }
+      }
+
+      @variant forced-colors {
+        @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+        @variant hover {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+      }
+    }
+  }
+
+  .icon {
+    @variant group-checked/fui-toolbar-toggle-button {
+      @apply text-neutral-foreground-2-brand-selected;
+
+      /* Griffel keeps the subtle glyph on its own hover and pressed colours while checked,
+         because those live in the `h` bucket and outrank the toolbar's selected colour; the
+         selected colour above is a whole layer higher here, so it swallows them unless they are
+         repeated after it. Only subtle has them — transparent stays selected in both libraries. */
+      @variant group-appearance-subtle/fui-toolbar-toggle-button {
+        @variant group-hover/fui-toolbar-toggle-button {
+          @apply text-neutral-foreground-2-brand-hover;
+        }
+
+        @variant group-hover-active/fui-toolbar-toggle-button {
+          @apply text-neutral-foreground-2-brand-pressed;
+        }
+      }
+
+      /* Griffel reaches the disabled glyph colour from the button root with a descendant
+         selector, so it outranks the toolbar's icon colour by specificity at rest as well as
+         on hover; here the layer would invert that without this block. */
+      @variant group-disabled/fui-toolbar-toggle-button, group-disabled-focusable/fui-toolbar-toggle-button {
+        @apply text-neutral-foreground-disabled;
+
+        @variant forced-colors {
+          @apply text-[GrayText];
+        }
+      }
+    }
+  }
+}
