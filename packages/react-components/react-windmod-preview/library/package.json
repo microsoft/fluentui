@@ -353,6 +353,26 @@
         "default": "./lib-commonjs/switch.cjs"
       }
     },
+    "./tab": {
+      "import": {
+        "types": "./dist/tab.d.ts",
+        "default": "./lib/tab.js"
+      },
+      "require": {
+        "types": "./dist/tab.d.cts",
+        "default": "./lib-commonjs/tab.cjs"
+      }
+    },
+    "./tab-list": {
+      "import": {
+        "types": "./dist/tab-list.d.ts",
+        "default": "./lib/tab-list.js"
+      },
+      "require": {
+        "types": "./dist/tab-list.d.cts",
+        "default": "./lib-commonjs/tab-list.cjs"
+      }
+    },
     "./tag": {
       "import": {
         "types": "./dist/tag.d.ts",

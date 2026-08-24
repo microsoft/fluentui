@@ -109,6 +109,8 @@ import { renderSlider } from '@fluentui/react-headless-components-preview/slider
 import { renderSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { renderSwitch } from '@fluentui/react-headless-components-preview/switch';
+import { renderTab } from '@fluentui/react-headless-components-preview/tab-list';
+import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
@@ -135,6 +137,13 @@ import type { SplitButtonState as SplitButtonState_2 } from '@fluentui/react-hea
 import type { SwitchProps as SwitchProps_2 } from '@fluentui/react-headless-components-preview/switch';
 import { SwitchSlots } from '@fluentui/react-headless-components-preview/switch';
 import type { SwitchState as SwitchState_2 } from '@fluentui/react-headless-components-preview/switch';
+import type { TabListProps as TabListProps_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import { TabListSlots } from '@fluentui/react-headless-components-preview/tab-list';
+import type { TabListState as TabListState_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import type { TabProps as TabProps_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import { TabSlots } from '@fluentui/react-headless-components-preview/tab-list';
+import type { TabState as TabState_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import { TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 import { TagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
@@ -195,6 +204,9 @@ import { useSlider } from '@fluentui/react-headless-components-preview/slider';
 import { useSpinner } from '@fluentui/react-headless-components-preview/spinner';
 import { useSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { useSwitch } from '@fluentui/react-headless-components-preview/switch';
+import { useTab } from '@fluentui/react-headless-components-preview/tab-list';
+import { useTabList } from '@fluentui/react-headless-components-preview/tab-list';
+import { useTabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
@@ -822,6 +834,10 @@ export { renderSplitButton }
 
 export { renderSwitch }
 
+export { renderTab }
+
+export { renderTabList }
+
 export { renderTag }
 
 export { renderTextarea }
@@ -997,6 +1013,50 @@ export { SwitchSlots }
 
 // @public
 export type SwitchState = SwitchState_2 & Required<Pick<SwitchProps, 'size'>>;
+
+// @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public
+export type TabAppearance = 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
+
+// @public
+export const tabClassNames: {
+    root: string;
+};
+
+// @public
+export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public
+export const tabListClassNames: {
+    root: string;
+};
+
+// @public
+export type TabListProps = TabListProps_2 & {
+    appearance?: TabAppearance;
+    reserveSelectedTabSpace?: boolean;
+    size?: TabSize;
+};
+
+export { TabListSlots }
+
+// @public
+export type TabListState = TabListState_2 & Required<Pick<TabListProps, 'appearance' | 'reserveSelectedTabSpace' | 'size'>>;
+
+// @public
+export type TabProps = TabProps_2;
+
+// @public
+export type TabSize = 'small' | 'medium' | 'large';
+
+export { TabSlots }
+
+// @public
+export type TabState = TabState_2 & Required<Pick<TabListProps, 'appearance' | 'size'>> & Pick<ComponentState<TabInternalSlots>, 'contentReservedSpace'>;
+
+export { TabValue }
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -1280,6 +1340,21 @@ export { useSwitch }
 
 // @public
 export const useSwitchStyles: (state: SwitchState) => SwitchState;
+
+export { useTab }
+
+// @public
+export const useTabAnimatedIndicator: (state: TabState) => TabState;
+
+export { useTabList }
+
+export { useTabListContextValues }
+
+// @public
+export const useTabListStyles: (state: TabListState) => TabListState;
+
+// @public
+export const useTabStyles: (state: TabState) => TabState;
 
 export { useTag }
 
