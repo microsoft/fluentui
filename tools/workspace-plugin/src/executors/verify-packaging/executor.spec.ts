@@ -328,6 +328,107 @@ describe('VerifyPackaging Executor', () => {
       expect(loggerErrorSpy.mock.calls.flat()).toEqual([]);
       expect(output.success).toBe(true);
     });
+
+    describe('wildcard entries', () => {
+      const wildcardPackOutput = `
+        npm notice 686B LICENSE
+        npm notice 686B package.json
+        npm notice 686B README.md
+        npm notice 686B CHANGELOG.md
+        npm notice 738B lib/index.js
+        npm notice 738B lib-commonjs/index.cjs
+        npm notice 738B dist/index.d.ts
+        npm notice 738B dist/index.d.cts
+        npm notice 738B lib/items/one/index.js
+        npm notice 738B lib-commonjs/items/one/index.cjs
+        npm notice 738B dist/items/one/index.d.ts
+        npm notice 738B dist/items/one/index.d.cts
+      `;
+
+      function wildcardPackageJson(): PackageJson {
+        return {
+          name: '@proj/proj',
+          version: '1.0.0',
+          main: 'lib-commonjs/index.cjs',
+          type: 'module',
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './items/*': {
+              import: { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' },
+              require: { types: './dist/items/*/index.d.cts', default: './lib-commonjs/items/*/index.cjs' },
+            },
+            './package.json': './package.json',
+          },
+        };
+      }
+
+      it('should pass when a wildcard entry resolves to shipped files', async () => {
+        const { context } = setup({
+          context: contextMock,
+          enableProdMode: false,
+          projectTags: ['npm:public'],
+          npmPackOutput: wildcardPackOutput,
+          packageJson: wildcardPackageJson(),
+        });
+
+        const output = await executor(options, context);
+
+        expect(loggerErrorSpy.mock.calls.flat()).toEqual([]);
+        expect(output.success).toBe(true);
+      });
+
+      it('should fail when a wildcard entry resolves to nothing shipped', async () => {
+        const packageJson = wildcardPackageJson();
+        (packageJson.exports as Record<string, unknown>)['./missing/*'] = {
+          import: { types: './dist/missing/*/index.d.ts', default: './lib/missing/*/index.js' },
+        };
+
+        const { context } = setup({
+          context: contextMock,
+          enableProdMode: false,
+          projectTags: ['npm:public'],
+          npmPackOutput: wildcardPackOutput,
+          packageJson,
+        });
+
+        const output = await executor(options, context);
+
+        expect(output.success).toBe(false);
+        expect(loggerErrorSpy.mock.calls.flat().join('\n')).toContain('dist/missing/*/index.d.ts');
+      });
+
+      // an export map `*` substitutes across path separators, so a glob matcher would reject this
+      it('should pass when a wildcard entry resolves to a nested subpath', async () => {
+        const { context } = setup({
+          context: contextMock,
+          enableProdMode: false,
+          projectTags: ['npm:public'],
+          npmPackOutput: `
+            npm notice 686B LICENSE
+            npm notice 686B package.json
+            npm notice 686B README.md
+            npm notice 686B CHANGELOG.md
+            npm notice 738B lib/index.js
+            npm notice 738B lib-commonjs/index.cjs
+            npm notice 738B dist/index.d.ts
+            npm notice 738B dist/index.d.cts
+            npm notice 738B lib/items/one/nested/index.js
+            npm notice 738B lib-commonjs/items/one/nested/index.cjs
+            npm notice 738B dist/items/one/nested/index.d.ts
+            npm notice 738B dist/items/one/nested/index.d.cts
+          `,
+          packageJson: wildcardPackageJson(),
+        });
+
+        const output = await executor(options, context);
+
+        expect(loggerErrorSpy.mock.calls.flat()).toEqual([]);
+        expect(output.success).toBe(true);
+      });
+    });
   });
 });
 

@@ -36,12 +36,42 @@ So each multi-entry project declares its own, in `project.json`:
 - `root` — whether a `"."` entry resolved from `src/index.ts` is exposed. Defaults to `true`.
 - `subpathEntryPoints` — globs, relative to the project root, resolving to the source files backing
   non-root subpaths. Defaults to `[]`.
+- `subpathPatterns` — subpath _patterns_, emitted as wildcard export entries rather than expanded.
+  Defaults to `[]`.
 
 Single entry point packages omit `metadata.exportMap` entirely and get `{ root: true,
-subpathEntryPoints: [] }`.
+subpathEntryPoints: [], subpathPatterns: [] }`.
 
 Source file names map to subpaths by stripping `src/` and the extension, so `src/color-picker.ts`
 becomes `./color-picker` and `src/unstable/index.ts` becomes `./unstable`.
+
+## Wildcard subpaths
+
+`subpathPatterns` emits a wildcard entry instead of one entry per directory:
+
+```jsonc
+{ "subpathPatterns": ["src/items/*/index.ts"] }
+```
+
+```jsonc
+"./items/*": {
+  "import": { "types": "./dist/items/*/index.d.ts", "default": "./lib/items/*/index.js" },
+  "require": { "types": "./dist/items/*/index.d.cts", "default": "./lib-commonjs/items/*/index.cjs" }
+}
+```
+
+Each pattern must contain exactly one `*` and end in `/index.ts` — `generate-api` expands a wildcard
+entry by scanning for sub-directories and reading `index.d.ts` from each, so any other shape would be
+silently skipped. Anything else fails with an explicit error.
+
+Note the deliberate asymmetry with exact entries, which flatten their declarations
+(`src/unstable/index.ts` → `./dist/unstable.d.ts`): wildcard declarations stay nested, because that is
+what `generate-api` resolves.
+
+## Entries the declaration cannot produce
+
+The generator owns the whole `exports` object, so an entry it cannot derive would be dropped on the
+next sync. Rather than deleting it silently, it fails and points at the declaration to add.
 
 ## Why a sync generator
 

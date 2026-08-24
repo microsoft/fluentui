@@ -1,4 +1,13 @@
-import { type ProjectConfiguration, type Tree, formatFiles, getProjects, logger, readJson } from '@nx/devkit';
+import {
+  type ProjectConfiguration,
+  type Tree,
+  formatFiles,
+  getProjects,
+  globAsync,
+  joinPathFragments,
+  logger,
+  readJson,
+} from '@nx/devkit';
 
 import { readExportMapConfig, resolveEntryPoints } from '../export-maps-sync/lib/export-map';
 import type { PackageJson } from '../../types';
@@ -78,15 +87,45 @@ async function renderEntryPoints(tree: Tree, projectConfig: ProjectConfiguration
   const packageJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
   const entryPoints = await resolveEntryPoints(tree, projectConfig.root, readExportMapConfig(projectConfig));
 
-  const imports: EntryPointImport[] = entryPoints
+  const imports: EntryPointImport[] = [];
+
+  for (const entryPoint of entryPoints) {
     // the root entry would pull in the whole library and defeat the point of per subpath isolation
-    .filter(entryPoint => entryPoint.key !== '.')
-    .map(entryPoint => ({
-      namespace: toNamespaceBinding(entryPoint.name),
-      moduleSpecifier: `${packageJson.name}/${entryPoint.name}`,
-    }));
+    if (entryPoint.key === '.') {
+      continue;
+    }
+
+    // a wildcard key is not importable as written, so cover every subpath it currently resolves to
+    const subpaths = entryPoint.key.includes('*')
+      ? await expandPattern(tree, projectConfig.root, entryPoint.outputPath)
+      : [entryPoint.name];
+
+    for (const subpath of subpaths) {
+      imports.push({
+        namespace: toNamespaceBinding(subpath),
+        moduleSpecifier: `${packageJson.name}/${subpath}`,
+      });
+    }
+  }
 
   return renderEntryPointsFixture(imports, name);
+}
+
+/**
+ * `items/*\u200b/index` -> every `items/<dir>` that currently exists.
+ */
+async function expandPattern(tree: Tree, projectRoot: string, outputPath: string): Promise<string[]> {
+  const matches = await globAsync(tree, [joinPathFragments(projectRoot, 'src', `${outputPath}.ts`)]);
+  const srcRoot = joinPathFragments(projectRoot, 'src');
+
+  return matches
+    .map(match =>
+      match
+        .slice(srcRoot.length + 1)
+        .replace(/\.[jt]sx?$/, '')
+        .replace(/\/index$/, ''),
+    )
+    .sort();
 }
 
 function renderBaseHooks(

@@ -6,15 +6,15 @@ import type { PackageJson } from '../../../types';
 import type { ExportMapConfig } from '../types';
 
 export interface EntryPoint {
-  /** Export map key, eg. `.` or `./color-picker` */
+  /** Export map key, eg. `.`, `./color-picker` or `./items/*` */
   key: string;
-  /** Flattened basename used for the dts rollup, eg. `index`, `color-picker`, `unstable` */
+  /** Path used for the dts rollup, eg. `index`, `color-picker`, `unstable`, `items/*\/index` */
   name: string;
   /** Compiled path relative to `lib`/`lib-commonjs`, mirroring the source layout, eg. `unstable/index` */
   outputPath: string;
 }
 
-const DEFAULT_CONFIG: ExportMapConfig = { root: true, subpathEntryPoints: [] };
+const DEFAULT_CONFIG: ExportMapConfig = { root: true, subpathEntryPoints: [], subpathPatterns: [] };
 
 export function readExportMapConfig(projectConfig: ProjectConfiguration): ExportMapConfig {
   const metadata = projectConfig.metadata as { exportMap?: Partial<ExportMapConfig> } | undefined;
@@ -32,32 +32,66 @@ export async function resolveEntryPoints(
 ): Promise<EntryPoint[]> {
   const entryPoints: EntryPoint[] = config.root ? [{ key: '.', name: 'index', outputPath: 'index' }] : [];
 
-  if (config.subpathEntryPoints.length === 0) {
-    return entryPoints;
-  }
+  if (config.subpathEntryPoints.length > 0) {
+    const matches = await globAsync(
+      tree,
+      config.subpathEntryPoints.map(glob => joinPathFragments(projectRoot, glob)),
+    );
 
-  const matches = await globAsync(
-    tree,
-    config.subpathEntryPoints.map(glob => joinPathFragments(projectRoot, glob)),
-  );
+    const byName = new Map<string, string>();
+    for (const match of matches) {
+      const outputPath = toOutputPath(path.posix.relative(joinPathFragments(projectRoot, 'src'), match));
 
-  const byName = new Map<string, string>();
-  for (const match of matches) {
-    const outputPath = toOutputPath(path.posix.relative(joinPathFragments(projectRoot, 'src'), match));
+      if (outputPath === null || outputPath === 'index') {
+        continue;
+      }
 
-    if (outputPath === null || outputPath === 'index') {
-      continue;
+      // `unstable/index` -> `unstable`
+      byName.set(outputPath.replace(/\/index$/, ''), outputPath);
     }
 
-    // `unstable/index` -> `unstable`
-    byName.set(outputPath.replace(/\/index$/, ''), outputPath);
+    for (const name of [...byName.keys()].sort()) {
+      entryPoints.push({ key: `./${name}`, name, outputPath: byName.get(name)! });
+    }
   }
 
-  for (const name of [...byName.keys()].sort()) {
-    entryPoints.push({ key: `./${name}`, name, outputPath: byName.get(name)! });
+  // patterns are emitted verbatim rather than expanded, so consumers can resolve any matching subpath
+  for (const pattern of [...config.subpathPatterns].sort()) {
+    entryPoints.push(toPatternEntryPoint(pattern, projectRoot));
   }
 
   return entryPoints;
+}
+
+/**
+ * `src/items/*\/index.ts` -> key `./items/*`, emitted as a wildcard entry.
+ */
+function toPatternEntryPoint(pattern: string, projectRoot: string): EntryPoint {
+  const fail = (reason: string) => {
+    throw new Error(
+      `Invalid "metadata.exportMap.subpathPatterns" entry "${pattern}" in ${projectRoot}: ${reason}.\n` +
+        `Expected a path like "src/items/*/index.ts".`,
+    );
+  };
+
+  if (!pattern.startsWith('src/')) {
+    fail('patterns must live under "src/"');
+  }
+  if (pattern.split('*').length !== 2) {
+    fail('patterns must contain exactly one "*"');
+  }
+  if (!/\/index\.[jt]sx?$/.test(pattern)) {
+    // generate-api expands wildcards by scanning sub-directories for `index.d.ts`
+    fail('patterns must end in "/index.ts"');
+  }
+
+  const fromSrc = pattern.slice('src/'.length).replace(/\.[jt]sx?$/, '');
+
+  return {
+    key: `./${fromSrc.slice(0, fromSrc.indexOf('*') + 1)}`,
+    name: fromSrc,
+    outputPath: fromSrc,
+  };
 }
 
 /**

@@ -17,4 +17,14 @@ export interface ExportMapConfig {
    * @default []
    */
   subpathEntryPoints: string[];
+  /**
+   * Subpath *patterns*, relative to the project root, emitted as wildcard export entries rather than
+   * being expanded. Each must contain exactly one `*` and end in `/index.ts`, so
+   * `src/items/*\/index.ts` becomes `./items/*`.
+   *
+   * The `/index.ts` shape is required by `generate-api`, which expands a wildcard entry by scanning
+   * for sub-directories and reading `index.d.ts` from each.
+   * @default []
+   */
+  subpathPatterns: string[];
 }

@@ -61,6 +61,8 @@ async function syncProject(tree: Tree, projectConfig: ProjectConfiguration): Pro
   const expectedFields = buildEntryPointFields(packageJson);
   const expectedExports = buildExportMap(packageJson, entryPoints);
 
+  assertNoUndeclarableKeys(projectConfig, packageJson, expectedExports);
+
   const fieldsInSync = (Object.keys(expectedFields) as Array<keyof typeof expectedFields>).every(field =>
     isEqual(packageJson[field], expectedFields[field]),
   );
@@ -79,6 +81,30 @@ async function syncProject(tree: Tree, projectConfig: ProjectConfiguration): Pro
   });
 
   return true;
+}
+
+/**
+ * The generator owns the whole `exports` object, so anything it cannot produce would be dropped on
+ * the next sync. Surface that as an error rather than deleting a hand written entry silently.
+ */
+function assertNoUndeclarableKeys(
+  projectConfig: ProjectConfiguration,
+  packageJson: PackageJson,
+  expectedExports: PackageJson['exports'],
+): void {
+  const expectedKeys = new Set(Object.keys(expectedExports ?? {}));
+  const undeclarable = Object.keys(packageJson.exports ?? {}).filter(key => !expectedKeys.has(key));
+
+  if (undeclarable.length === 0) {
+    return;
+  }
+
+  throw new Error(
+    `${projectConfig.name} declares export map entries that "metadata.exportMap" cannot produce:\n` +
+      undeclarable.map(key => `  - ${key}`).join('\n') +
+      `\n\nDeclare them via "subpathEntryPoints" (exact) or "subpathPatterns" (wildcard) in ` +
+      `${projectConfig.root}/project.json, otherwise the next sync would drop them.`,
+  );
 }
 
 function outOfSyncMessage(outOfSync: string[]): string | undefined {

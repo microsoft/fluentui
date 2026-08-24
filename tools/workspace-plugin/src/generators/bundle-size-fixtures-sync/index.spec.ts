@@ -108,6 +108,30 @@ describe('bundle-size-fixtures-sync generator', () => {
         "import * as Tooltip from '@proj/react-headless/tooltip';",
       );
     });
+
+    it('expands a wildcard entry into the subpaths it currently resolves to', async () => {
+      const project = setupProject({
+        name: 'react-headless',
+        packageName: '@proj/react-headless',
+        projectConfig: {
+          metadata: {
+            exportMap: { root: true, subpathEntryPoints: [], subpathPatterns: ['src/items/*/index.ts'] },
+            bundleSizeFixtures: {
+              'AllComponents.fixture.js': { kind: 'entryPoints', name: 'react-headless: entire library' },
+            },
+          },
+        },
+        sourceFiles: { 'src/items/one/index.ts': 'export {};', 'src/items/two/index.ts': 'export {};' },
+      });
+
+      await generator(tree);
+
+      const fixture = project.readFixture('AllComponents.fixture.js');
+      expect(fixture).toContain("import * as ItemsOne from '@proj/react-headless/items/one';");
+      expect(fixture).toContain("import * as ItemsTwo from '@proj/react-headless/items/two';");
+      // the wildcard key itself is not importable
+      expect(fixture).not.toContain('@proj/react-headless/items/*');
+    });
   });
 
   describe('baseHooks fixture', () => {

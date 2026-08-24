@@ -185,7 +185,7 @@ function assertExportMapShipped(npmPackResult: string[], packageJson: PackageJso
   const missing = collectExportMapPaths(packageJson)
     // dev only conditions (eg. `./__dev`) resolve to source, which is asserted as never shipped above
     .filter(filePath => !filePath.startsWith('src/'))
-    .filter(filePath => !shipped.has(filePath));
+    .filter(filePath => !isShipped(filePath));
 
   if (missing.length === 0) {
     return null;
@@ -195,6 +195,22 @@ function assertExportMapShipped(npmPackResult: string[], packageJson: PackageJso
     matches: missing,
     message: 'export map declares entry points that are not shipped',
   };
+
+  function isShipped(filePath: string): boolean {
+    if (!filePath.includes('*')) {
+      return shipped.has(filePath);
+    }
+
+    // an export map `*` is a substitution token matching across path separators, unlike a glob `*`
+    const [prefix, suffix] = filePath.split('*');
+    const pattern = new RegExp(`^${escapeRegExp(prefix)}.*${escapeRegExp(suffix)}$`);
+
+    return npmPackResult.some(shippedPath => pattern.test(shippedPath));
+  }
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function collectExportMapPaths(packageJson: PackageJson): string[] {

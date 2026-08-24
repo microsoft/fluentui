@@ -9,25 +9,26 @@ describe('readExportMapConfig', () => {
     expect(readExportMapConfig({ root: 'packages/react-button' })).toEqual({
       root: true,
       subpathEntryPoints: [],
+      subpathPatterns: [],
     });
   });
 
   it('reads the declaration from project metadata', () => {
     const config = readExportMapConfig({
       root: 'packages/react-headless',
-      metadata: { exportMap: { root: false, subpathEntryPoints: ['src/*.ts'] } },
+      metadata: { exportMap: { root: false, subpathEntryPoints: ['src/*.ts'], subpathPatterns: [] } },
     });
 
-    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'], subpathPatterns: [] });
   });
 
   it('fills in defaults for a partial declaration', () => {
     const config = readExportMapConfig({
       root: 'packages/react-headless',
-      metadata: { exportMap: { subpathEntryPoints: ['src/*.ts'] } },
+      metadata: { exportMap: { subpathEntryPoints: ['src/*.ts'], subpathPatterns: [] } },
     });
 
-    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'], subpathPatterns: [] });
   });
 });
 
@@ -48,7 +49,11 @@ describe('resolveEntryPoints', () => {
   it('resolves only the root entry when no subpaths are declared', async () => {
     writeSourceFiles('src/index.ts', 'src/CompoundButton.ts');
 
-    const entryPoints = await resolveEntryPoints(tree, projectRoot, { root: true, subpathEntryPoints: [] });
+    const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+      root: true,
+      subpathEntryPoints: [],
+      subpathPatterns: [],
+    });
 
     expect(entryPoints).toEqual([{ key: '.', name: 'index', outputPath: 'index' }]);
   });
@@ -56,7 +61,11 @@ describe('resolveEntryPoints', () => {
   it('resolves nothing when the package has neither a root nor declared subpaths', async () => {
     writeSourceFiles('src/index.ts');
 
-    const entryPoints = await resolveEntryPoints(tree, projectRoot, { root: false, subpathEntryPoints: [] });
+    const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+      root: false,
+      subpathEntryPoints: [],
+      subpathPatterns: [],
+    });
 
     expect(entryPoints).toEqual([]);
   });
@@ -64,7 +73,11 @@ describe('resolveEntryPoints', () => {
   it('sorts subpaths alphabetically and keeps the root first', async () => {
     writeSourceFiles('src/index.ts', 'src/tooltip.ts', 'src/badge.ts', 'src/color-picker.ts');
 
-    const entryPoints = await resolveEntryPoints(tree, projectRoot, { root: true, subpathEntryPoints: ['src/*.ts'] });
+    const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+      root: true,
+      subpathEntryPoints: ['src/*.ts'],
+      subpathPatterns: [],
+    });
 
     expect(entryPoints.map(entry => entry.key)).toEqual(['.', './badge', './color-picker', './tooltip']);
   });
@@ -72,7 +85,11 @@ describe('resolveEntryPoints', () => {
   it('never emits the src root index as a subpath', async () => {
     writeSourceFiles('src/index.ts', 'src/badge.ts');
 
-    const entryPoints = await resolveEntryPoints(tree, projectRoot, { root: false, subpathEntryPoints: ['src/*.ts'] });
+    const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+      root: false,
+      subpathEntryPoints: ['src/*.ts'],
+      subpathPatterns: [],
+    });
 
     expect(entryPoints.map(entry => entry.key)).toEqual(['./badge']);
   });
@@ -83,6 +100,7 @@ describe('resolveEntryPoints', () => {
     const entryPoints = await resolveEntryPoints(tree, projectRoot, {
       root: false,
       subpathEntryPoints: ['src/unstable/index.ts'],
+      subpathPatterns: [],
     });
 
     expect(entryPoints).toEqual([{ key: './unstable', name: 'unstable', outputPath: 'unstable/index' }]);
@@ -96,6 +114,7 @@ describe('resolveEntryPoints', () => {
       const entryPoints = await resolveEntryPoints(tree, projectRoot, {
         root: false,
         subpathEntryPoints: ['src/*.ts', 'src/*.tsx'],
+        subpathPatterns: [],
       });
 
       expect(entryPoints).toEqual([]);
@@ -105,7 +124,11 @@ describe('resolveEntryPoints', () => {
   it('supports tsx entry points', async () => {
     writeSourceFiles('src/badge.tsx');
 
-    const entryPoints = await resolveEntryPoints(tree, projectRoot, { root: false, subpathEntryPoints: ['src/*.tsx'] });
+    const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+      root: false,
+      subpathEntryPoints: ['src/*.tsx'],
+      subpathPatterns: [],
+    });
 
     expect(entryPoints).toEqual([{ key: './badge', name: 'badge', outputPath: 'badge' }]);
   });
@@ -116,9 +139,51 @@ describe('resolveEntryPoints', () => {
     const entryPoints = await resolveEntryPoints(tree, projectRoot, {
       root: false,
       subpathEntryPoints: ['src/*.ts', 'src/badge.ts'],
+      subpathPatterns: [],
     });
 
     expect(entryPoints).toEqual([{ key: './badge', name: 'badge', outputPath: 'badge' }]);
+  });
+
+  describe('subpath patterns', () => {
+    function resolve(subpathPatterns: string[]) {
+      return resolveEntryPoints(tree, projectRoot, { root: false, subpathEntryPoints: [], subpathPatterns });
+    }
+
+    it('emits a wildcard entry verbatim rather than expanding it', async () => {
+      writeSourceFiles('src/items/one/index.ts', 'src/items/two/index.ts');
+
+      await expect(resolve(['src/items/*/index.ts'])).resolves.toEqual([
+        { key: './items/*', name: 'items/*/index', outputPath: 'items/*/index' },
+      ]);
+    });
+
+    it('supports a pattern at the src root', async () => {
+      await expect(resolve(['src/*/index.ts'])).resolves.toEqual([
+        { key: './*', name: '*/index', outputPath: '*/index' },
+      ]);
+    });
+
+    it('orders patterns after exact subpaths', async () => {
+      writeSourceFiles('src/badge.ts');
+
+      const entryPoints = await resolveEntryPoints(tree, projectRoot, {
+        root: true,
+        subpathEntryPoints: ['src/*.ts'],
+        subpathPatterns: ['src/items/*/index.ts'],
+      });
+
+      expect(entryPoints.map(entry => entry.key)).toEqual(['.', './badge', './items/*']);
+    });
+
+    it.each([
+      ['a pattern outside src', 'lib/items/*/index.ts', 'must live under "src/"'],
+      ['a pattern with no star', 'src/items/index.ts', 'exactly one "*"'],
+      ['a pattern with two stars', 'src/*/items/*/index.ts', 'exactly one "*"'],
+      ['a pattern not ending in an index', 'src/items/*.ts', 'must end in "/index.ts"'],
+    ])('rejects %s', async (_name, pattern, expectedReason) => {
+      await expect(resolve([pattern])).rejects.toThrow(expectedReason);
+    });
   });
 });
 
@@ -161,6 +226,17 @@ describe('buildExportMap', () => {
       expect(exports!['./unstable']).toEqual({
         import: { types: './dist/unstable.d.ts', default: './lib/unstable/index.js' },
         require: { types: './dist/unstable.d.cts', default: './lib-commonjs/unstable/index.cjs' },
+      });
+    });
+
+    it('carries the wildcard through every condition of a pattern entry', () => {
+      const exports = buildExportMap(esmPackage, [
+        { key: './items/*', name: 'items/*/index', outputPath: 'items/*/index' },
+      ]);
+
+      expect(exports!['./items/*']).toEqual({
+        import: { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' },
+        require: { types: './dist/items/*/index.d.cts', default: './lib-commonjs/items/*/index.cjs' },
       });
     });
 

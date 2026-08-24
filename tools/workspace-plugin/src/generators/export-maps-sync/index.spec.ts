@@ -169,6 +169,46 @@ describe('export-maps-sync generator', () => {
     });
   });
 
+  describe('undeclarable entries', () => {
+    it('fails rather than silently dropping an entry the declaration cannot produce', async () => {
+      setupProject({
+        name: 'react-headless',
+        packageJson: {
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './items/*': {
+              import: { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' },
+            },
+            './package.json': './package.json',
+          },
+        },
+      });
+
+      await expect(generator(tree)).rejects.toThrow('./items/*');
+    });
+
+    it('accepts the entry once it is declared as a pattern', async () => {
+      const project = setupProject({
+        name: 'react-headless',
+        projectConfig: {
+          metadata: { exportMap: { root: true, subpathEntryPoints: [], subpathPatterns: ['src/items/*/index.ts'] } },
+        },
+        sourceFiles: ['src/items/one/index.ts'],
+        packageJson: { exports: undefined },
+      });
+
+      await generator(tree);
+
+      expect(project.readPackageJson().exports!['./items/*']).toEqual({
+        import: { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' },
+        require: { types: './dist/items/*/index.d.cts', default: './lib-commonjs/items/*/index.cjs' },
+      });
+    });
+  });
+
   describe('scope', () => {
     it.each([
       ['a non web platform project', { tags: ['vNext', 'platform:node'] }],
