@@ -79,6 +79,16 @@
     "react-dom": ">=16.14.0 <20.0.0"
   },
   "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
     "./accordion": {
       "import": {
         "types": "./dist/accordion.d.ts",

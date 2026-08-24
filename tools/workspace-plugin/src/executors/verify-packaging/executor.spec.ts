@@ -2,6 +2,7 @@ import { ExecutorContext, logger, stripIndents } from '@nx/devkit';
 import { spawnSync } from 'node:child_process';
 
 import { VerifyPackagingExecutorSchema } from './schema';
+import type { PackageJson } from '../../types';
 import executor from './executor';
 
 const options: VerifyPackagingExecutorSchema = {};
@@ -25,7 +26,16 @@ jest.mock('node:child_process', () => {
   };
 });
 
+jest.mock('@nx/devkit', () => {
+  return {
+    ...jest.requireActual('@nx/devkit'),
+    readJsonFile: jest.fn(),
+  };
+});
+
 const spawnSyncMock = spawnSync as jest.MockedFunction<typeof spawnSync>;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const readJsonFileMock = require('@nx/devkit').readJsonFile as jest.Mock;
 
 describe('VerifyPackaging Executor', () => {
   let loggerErrorSpy: jest.Spied<typeof logger.error>;
@@ -218,6 +228,107 @@ describe('VerifyPackaging Executor', () => {
 
     cleanup();
   });
+
+  describe('export map', () => {
+    const npmPackOutput = `
+      npm notice 686B LICENSE
+      npm notice 686B package.json
+      npm notice 686B README.md
+      npm notice 686B CHANGELOG.md
+      npm notice 738B lib/index.js
+      npm notice 738B lib-commonjs/index.cjs
+      npm notice 738B dist/index.d.ts
+      npm notice 738B dist/index.d.cts
+    `;
+
+    it('should pass when every declared entry point is shipped', async () => {
+      const { context } = setup({
+        context: contextMock,
+        enableProdMode: false,
+        projectTags: ['npm:public'],
+        npmPackOutput,
+        packageJson: {
+          name: '@proj/proj',
+          version: '1.0.0',
+          main: 'lib-commonjs/index.cjs',
+          type: 'module',
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './package.json': './package.json',
+          },
+        },
+      });
+
+      const output = await executor(options, context);
+
+      expect(loggerErrorSpy.mock.calls.flat()).toEqual([]);
+      expect(output.success).toBe(true);
+    });
+
+    it('should fail when a declared entry point was never built', async () => {
+      const { context } = setup({
+        context: contextMock,
+        enableProdMode: false,
+        projectTags: ['npm:public'],
+        npmPackOutput,
+        packageJson: {
+          name: '@proj/proj',
+          version: '1.0.0',
+          main: 'lib-commonjs/index.cjs',
+          type: 'module',
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './nope': {
+              import: { types: './dist/nope.d.ts', default: './lib/nope.js' },
+            },
+            './package.json': './package.json',
+          },
+        },
+      });
+
+      const output = await executor(options, context);
+
+      expect(output.success).toBe(false);
+      expect(loggerErrorSpy.mock.calls.flat().join('\n')).toContain(
+        'export map declares entry points that are not shipped',
+      );
+      expect(loggerErrorSpy.mock.calls.flat().join('\n')).toContain('dist/nope.d.ts');
+      expect(loggerErrorSpy.mock.calls.flat().join('\n')).toContain('lib/nope.js');
+    });
+    it('should ignore dev only conditions that resolve to source', async () => {
+      const { context } = setup({
+        context: contextMock,
+        enableProdMode: false,
+        projectTags: ['npm:public'],
+        npmPackOutput,
+        packageJson: {
+          name: '@proj/proj',
+          version: '1.0.0',
+          main: 'lib-commonjs/index.cjs',
+          type: 'module',
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './__dev': { types: './src/index.ts', node: './src/index.ts', require: './src/index.ts' },
+            './package.json': './package.json',
+          },
+        },
+      });
+
+      const output = await executor(options, context);
+
+      expect(loggerErrorSpy.mock.calls.flat()).toEqual([]);
+      expect(output.success).toBe(true);
+    });
+  });
 });
 
 function setup(config: {
@@ -225,6 +336,7 @@ function setup(config: {
   projectTags: string[];
   npmPackOutput: string;
   enableProdMode: boolean;
+  packageJson?: PackageJson;
 }) {
   if (config.enableProdMode) {
     process.env.FLUENT_PROD_BUILD = 'true';
@@ -234,7 +346,12 @@ function setup(config: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any);
 
-  config.context.projectsConfigurations!.projects[config.context.projectName!].tags?.push(...config.projectTags);
+  readJsonFileMock.mockReturnValue(
+    config.packageJson ?? ({ name: '@proj/proj', version: '1.0.0', main: 'lib-commonjs/index.js' } as PackageJson),
+  );
+
+  // assign rather than push, otherwise tags leak into subsequent tests via the shared context mock
+  config.context.projectsConfigurations!.projects[config.context.projectName!].tags = [...config.projectTags];
 
   return {
     context: config.context,
