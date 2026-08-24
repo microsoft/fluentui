@@ -112,6 +112,63 @@ describe('export-maps-sync generator', () => {
     expect(project.readPackageJson()).toEqual(afterFirstRun);
   });
 
+  describe('key ordering', () => {
+    it('repairs a condition ordered so that default shadows types', async () => {
+      const project = setupProject({
+        name: 'react-button',
+        packageJson: {
+          exports: {
+            '.': {
+              // node resolves the first matching condition, so this silently degrades type resolution
+              import: { default: './lib/index.js', types: './dist/index.d.ts' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './package.json': './package.json',
+          },
+        },
+      });
+
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toContain('react-button');
+      expect(Object.keys(project.readPackageJson().exports!['.'] as object)).toEqual(['import', 'require']);
+      expect(Object.keys((project.readPackageJson().exports!['.'] as Record<string, object>).import)).toEqual([
+        'types',
+        'default',
+      ]);
+    });
+
+    it('repairs subpath keys that are not in canonical order', async () => {
+      const project = setupProject({
+        name: 'react-headless',
+        projectConfig: { metadata: { exportMap: { root: true, subpathEntryPoints: ['src/*.ts'] } } },
+        sourceFiles: ['src/badge.ts', 'src/tooltip.ts'],
+        packageJson: {
+          exports: {
+            '.': {
+              import: { types: './dist/index.d.ts', default: './lib/index.js' },
+              require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+            },
+            './package.json': './package.json',
+            './tooltip': {
+              import: { types: './dist/tooltip.d.ts', default: './lib/tooltip.js' },
+              require: { types: './dist/tooltip.d.cts', default: './lib-commonjs/tooltip.cjs' },
+            },
+            './badge': {
+              import: { types: './dist/badge.d.ts', default: './lib/badge.js' },
+              require: { types: './dist/badge.d.cts', default: './lib-commonjs/badge.cjs' },
+            },
+          },
+        },
+      });
+
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toContain('react-headless');
+      expect(Object.keys(project.readPackageJson().exports!)).toEqual(['.', './badge', './tooltip', './package.json']);
+    });
+  });
+
   describe('scope', () => {
     it.each([
       ['a non web platform project', { tags: ['vNext', 'platform:node'] }],

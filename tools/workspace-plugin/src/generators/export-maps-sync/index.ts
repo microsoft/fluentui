@@ -65,7 +65,9 @@ async function syncProject(tree: Tree, projectConfig: ProjectConfiguration): Pro
     isEqual(packageJson[field], expectedFields[field]),
   );
 
-  if (fieldsInSync && isEqual(packageJson.exports, expectedExports)) {
+  // condition order is load bearing - node resolves the first match, so `types` after `default`
+  // silently degrades type resolution. compare order sensitively rather than with a deep equal.
+  if (fieldsInSync && JSON.stringify(packageJson.exports) === JSON.stringify(expectedExports)) {
     return false;
   }
 
