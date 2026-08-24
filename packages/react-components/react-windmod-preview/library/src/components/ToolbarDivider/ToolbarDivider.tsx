@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderToolbarDivider, useToolbarDivider } from '@fluentui/react-headless-components-preview/toolbar';
 
-import type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider.types';
+import type { ToolbarDividerProps } from './ToolbarDivider.types';
 import { useToolbarDividerStyles } from './useToolbarDividerStyles';
 
 /**
@@ -13,14 +13,14 @@ import { useToolbarDividerStyles } from './useToolbarDividerStyles';
  */
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps> = React.forwardRef((props, ref) => {
   // The toolbar fixes all three Divider look props; none reaches the consumer surface.
-  const state: ToolbarDividerState = {
-    ...useToolbarDivider(props, ref),
-    alignContent: 'center',
-    appearance: 'default',
-    inset: false,
-  };
-
-  return renderToolbarDivider(useToolbarDividerStyles(state));
+  return renderToolbarDivider(
+    useToolbarDividerStyles({
+      ...useToolbarDivider(props, ref),
+      alignContent: 'center',
+      appearance: 'default',
+      inset: false,
+    }),
+  );
 });
 
 ToolbarDivider.displayName = 'ToolbarDivider';

@@ -12,9 +12,7 @@ import { useToolbarGroupStyles } from './useToolbarGroupStyles';
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps> = React.forwardRef((props, ref) => {
-  const state = useToolbarGroup(props, ref);
-
-  return renderToolbarGroup(useToolbarGroupStyles(state));
+  return renderToolbarGroup(useToolbarGroupStyles(useToolbarGroup(props, ref)));
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<ToolbarGroupProps>;
 

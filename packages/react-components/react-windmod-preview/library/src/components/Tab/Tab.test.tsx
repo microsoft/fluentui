@@ -28,7 +28,7 @@ const tabRoots = (container: HTMLElement) => Array.from(container.querySelectorA
 
 /** The reserved-space span is the sibling of the content span carrying its own hashed class. */
 const reservedSpaceOf = (tab: HTMLElement) =>
-  Array.from(tab.children).find(child => child.classList.contains(styles['content-reserved-space'])) ?? null;
+  Array.from(tab.children).find(child => child.classList.contains(styles.contentReservedSpace)) ?? null;
 
 const contentOf = (tab: HTMLElement) =>
   Array.from(tab.children).find(child => child.classList.contains(styles.content)) ?? null;
@@ -93,7 +93,7 @@ describe('Tab', () => {
     // fuicm-content is a prefix of fuicm-content-reserved-space under the jest ident generator,
     // so these must be class-token assertions on distinct elements, never substring checks.
     expect(contentOf(tab)).not.toBe(reservedSpaceOf(tab));
-    expect(contentOf(tab)!.classList.contains(styles['content-reserved-space'])).toBe(false);
+    expect(contentOf(tab)!.classList.contains(styles.contentReservedSpace)).toBe(false);
     expect(reservedSpaceOf(tab)!.classList.contains(styles.content)).toBe(false);
   });
 

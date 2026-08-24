@@ -8,7 +8,7 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
-import type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './ToolbarToggleButton.types';
+import type { ToolbarToggleButtonProps } from './ToolbarToggleButton.types';
 import { useToolbarToggleButtonStyles } from './useToolbarToggleButtonStyles';
 
 /**
@@ -16,20 +16,24 @@ import { useToolbarToggleButtonStyles } from './useToolbarToggleButtonStyles';
  * headless toolbar toggle button decorated with the Fluent visual contract (Tailwind v4 + CSS
  * Modules).
  */
-export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef((props, ref) => {
-  const contextSize = useToolbarContext(ctx => ctx.size);
-  // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-toolbar's styled useToolbarToggleButton.
-  const { appearance = 'subtle', size = contextSize ?? 'medium', ...rest } = props;
+export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef(
+  // The context fallback is read in the body, so the look props cannot default in the
+  // parameter list.
+  (props, ref) => {
+    const contextSize = useToolbarContext(ctx => ctx.size);
+    // Look props belong to windmod — the headless hook neither accepts nor resolves them.
+    // Defaults mirror @fluentui/react-toolbar's styled useToolbarToggleButton.
+    const { appearance = 'subtle', size = contextSize ?? 'medium', ...rest } = props;
 
-  const state: ToolbarToggleButtonState = {
-    ...useToolbarToggleButton(rest, ref),
-    appearance,
-    shape: 'rounded',
-    size,
-  };
-
-  return renderToolbarToggleButton(useToolbarToggleButtonStyles(state));
-});
+    return renderToolbarToggleButton(
+      useToolbarToggleButtonStyles({
+        ...useToolbarToggleButton(rest, ref),
+        appearance,
+        shape: 'rounded',
+        size,
+      }),
+    );
+  },
+);
 
 ToolbarToggleButton.displayName = 'ToolbarToggleButton';

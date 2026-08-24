@@ -23,11 +23,11 @@
     }
   }
 
-  .filledDarker {
+  .filled-darker {
     @apply bg-neutral-background-3;
   }
 
-  .filledLighter {
+  .filled-lighter {
     @apply bg-neutral-background-1;
   }
 
@@ -71,7 +71,7 @@
     }
   }
 
-  .outlineInteractive {
+  .outline-interactive {
     @variant hover {
       @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
     }
@@ -119,19 +119,19 @@
     }
   }
 
-  .resizeNone {
+  .resize-none {
     @apply resize-none;
   }
 
-  .resizeHorizontal {
+  .resize-horizontal {
     @apply resize-x;
   }
 
-  .resizeVertical {
+  .resize-vertical {
     @apply resize-y;
   }
 
-  .resizeBoth {
+  .resize-both {
     @apply resize;
   }
 }

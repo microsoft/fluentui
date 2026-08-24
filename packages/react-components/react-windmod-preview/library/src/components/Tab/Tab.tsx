@@ -6,7 +6,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTab, useTab } from '@fluentui/react-headless-components-preview/tab-list';
 
 import { useTabListContext } from '../TabList/TabListContext';
-import type { TabProps, TabState } from './Tab.types';
+import type { TabProps } from './Tab.types';
 import { useTabAnimatedIndicator } from './useTabAnimatedIndicator';
 import { useTabStyles } from './useTabStyles';
 
@@ -23,19 +23,21 @@ export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) 
   const contentReservedSpace: typeof content =
     content && typeof content === 'object' ? omit(content, ['ref' as keyof typeof content]) : content;
 
-  const state: TabState = {
-    ...base,
-    appearance,
-    size,
-    // The headless base hook declares this slot but never builds it.
-    contentReservedSpace: slot.optional(contentReservedSpace, {
-      renderByDefault: !base.selected && !base.iconOnly && reserveSelectedTabSpace,
-      defaultProps: { children: props.children },
-      elementType: 'span',
-    }),
-  };
-
-  return renderTab(useTabAnimatedIndicator(useTabStyles(state)));
+  return renderTab(
+    useTabAnimatedIndicator(
+      useTabStyles({
+        ...base,
+        appearance,
+        size,
+        // The headless base hook declares this slot but never builds it.
+        contentReservedSpace: slot.optional(contentReservedSpace, {
+          renderByDefault: !base.selected && !base.iconOnly && reserveSelectedTabSpace,
+          defaultProps: { children: props.children },
+          elementType: 'span',
+        }),
+      }),
+    ),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<TabProps>;
 

@@ -11,7 +11,9 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-grid w-fit [appearance:button] items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 [text-align:unset] font-[inherit] text-neutral-foreground-2;
+    @apply box-border inline-grid w-fit items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    appearance: button;
+    text-align: unset;
 
     grid-template-areas:
       'media primary dismissIcon'
@@ -101,7 +103,7 @@
     }
   }
 
-  .withoutMedia {
+  .without-media {
     @apply ps-7;
 
     @variant size-small, size-extra-small {
@@ -109,7 +111,7 @@
     }
   }
 
-  .withoutDismiss {
+  .without-dismiss {
     @apply pe-7;
 
     @variant size-small, size-extra-small {
@@ -118,7 +120,8 @@
   }
 
   .media {
-    @apply flex ps-px pe-horizontal-s [grid-area:media];
+    @apply flex ps-px pe-horizontal-s;
+    grid-area: media;
 
     @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
       @apply pe-horizontal-s-nudge;
@@ -126,18 +129,19 @@
   }
 
   .icon {
-    @apply box-content flex w-20 ps-7 pe-horizontal-xs text-[length:calc(20px*var(--base-scale))] [grid-area:media];
+    @apply box-content flex w-20 ps-7 pe-horizontal-xs text-icon-20;
+    grid-area: media;
 
     @variant group-size-small/fui-tag {
-      @apply w-16 ps-5 pe-horizontal-xxs text-[length:calc(16px*var(--base-scale))];
+      @apply w-16 ps-5 pe-horizontal-xxs text-icon-16;
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply w-12 ps-5 pe-horizontal-xxs text-[length:calc(12px*var(--base-scale))];
+      @apply w-12 ps-5 pe-horizontal-xxs text-icon-12;
     }
   }
 
-  .primaryText {
+  .primary-text {
     @apply px-horizontal-xxs font-base text-base-300 leading-base-300 font-regular whitespace-nowrap;
 
     @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
@@ -145,27 +149,30 @@
     }
   }
 
-  .withoutSecondaryText {
+  .without-secondary-text {
     @apply col-start-[primary] row-start-[primary] row-end-[secondary] pb-horizontal-xxs;
   }
 
-  .withSecondaryText {
-    @apply -mt-2 text-base-200 leading-base-200 [grid-area:primary];
+  .with-secondary-text {
+    @apply -mt-2 text-base-200 leading-base-200;
+    grid-area: primary;
   }
 
-  .secondaryText {
-    @apply px-horizontal-xxs font-base text-base-100 leading-base-100 font-regular whitespace-nowrap [grid-area:secondary];
+  .secondary-text {
+    @apply px-horizontal-xxs font-base text-base-100 leading-base-100 font-regular whitespace-nowrap;
+    grid-area: secondary;
   }
 
-  .dismissIcon {
-    @apply flex ps-horizontal-xs pe-7 text-[length:calc(20px*var(--base-scale))] [grid-area:dismissIcon];
+  .dismiss-icon {
+    @apply flex ps-horizontal-xs pe-7 text-icon-20;
+    grid-area: dismissIcon;
 
     @variant group-size-small/fui-tag {
-      @apply ps-horizontal-xxs pe-5 text-[length:calc(16px*var(--base-scale))];
+      @apply ps-horizontal-xxs pe-5 text-icon-16;
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply ps-horizontal-xxs pe-5 text-[length:calc(12px*var(--base-scale))];
+      @apply ps-horizontal-xxs pe-5 text-icon-12;
     }
 
     @variant group-enabled/fui-tag {

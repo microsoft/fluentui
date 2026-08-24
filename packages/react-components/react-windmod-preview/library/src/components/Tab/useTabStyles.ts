@@ -40,7 +40,7 @@ export const useTabStyles = (state: TabState): TabState => {
     // Griffel appends the CONTENT slot's className here, not the reserved slot's.
     contentReservedSpace: state.contentReservedSpace && {
       ...state.contentReservedSpace,
-      className: clsx(styles['content-reserved-space'], state.content.className),
+      className: clsx(styles.contentReservedSpace, state.content.className),
     },
   };
 };

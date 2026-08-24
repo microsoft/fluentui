@@ -6,7 +6,7 @@ import { renderTextarea, useTextarea } from '@fluentui/react-headless-components
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { TextareaProps, TextareaState } from './Textarea.types';
+import type { TextareaProps } from './Textarea.types';
 import { useTextareaStyles } from './useTextareaStyles';
 
 /**
@@ -26,13 +26,13 @@ export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((pr
     ...rest
   } = mergeContextProps({ size: useFieldContext()?.size }, props);
 
-  const state: TextareaState = {
-    ...useTextarea(rest, ref),
-    appearance,
-    size,
-  };
-
-  return renderTextarea(useTextareaStyles(state));
+  return renderTextarea(
+    useTextareaStyles({
+      ...useTextarea(rest, ref),
+      appearance,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<TextareaProps>;
 

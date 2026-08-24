@@ -18,7 +18,8 @@
     @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none border-current px-horizontal-m-nudge py-vertical-m font-base leading-base-300 normal-case outline-none;
 
     @variant vertical {
-      @apply [justify-content:start] py-vertical-s-nudge;
+      @apply py-vertical-s-nudge;
+      justify-content: start;
     }
 
     @variant size-small {
@@ -46,20 +47,21 @@
         @apply overflow-visible;
 
         @variant after {
-          @apply [transform-origin:left] content-none;
+          @apply content-none;
+          transform-origin: left;
 
           transform: translateX(var(--fui-tab-indicator-offset)) scaleX(var(--fui-tab-indicator-scale));
         }
 
         @variant rtl {
           @variant after {
-            @apply [transform-origin:right];
+            transform-origin: right;
           }
         }
 
         @variant vertical {
           @variant after {
-            @apply [transform-origin:top];
+            transform-origin: top;
 
             transform: translateY(var(--fui-tab-indicator-offset)) scaleY(var(--fui-tab-indicator-scale));
           }
@@ -381,10 +383,10 @@
   }
 
   .icon {
-    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-[length:calc(20px*var(--base-scale))];
+    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-icon-20;
 
     @variant group-size-large/fui-tab {
-      @apply size-24 text-[length:calc(24px*var(--base-scale))];
+      @apply size-24 text-icon-24;
     }
 
     @variant group-appearance-transparent/fui-tab, group-appearance-subtle/fui-tab {

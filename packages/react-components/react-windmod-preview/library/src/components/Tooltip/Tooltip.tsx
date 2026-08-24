@@ -4,7 +4,7 @@ import type { FluentTriggerComponent, JSXElement } from '@fluentui/react-utiliti
 import { renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import { resolvePositioningShorthand } from '@fluentui/react-headless-components-preview/positioning';
 
-import type { TooltipProps, TooltipState } from './Tooltip.types';
+import type { TooltipProps } from './Tooltip.types';
 import { useTooltipStyles } from './useTooltipStyles';
 
 /** Griffel parity: base offset 4; withArrow adds the 6px arrow height (pairs with the
@@ -12,25 +12,38 @@ import { useTooltipStyles } from './useTooltipStyles';
 const TOOLTIP_OFFSET = 4;
 const ARROW_HEIGHT = 6;
 
+type ResolvedOffset = ReturnType<typeof resolvePositioningShorthand>['offset'];
+
+/** A consumer offset is honoured as given; only a numeric one can absorb the arrow height. */
+const tooltipOffset = (offset: ResolvedOffset, withArrow: boolean): ResolvedOffset => {
+  if (offset === undefined) {
+    return TOOLTIP_OFFSET + (withArrow ? ARROW_HEIGHT : 0);
+  }
+  if (typeof offset === 'number' && withArrow) {
+    return offset + ARROW_HEIGHT;
+  }
+  return offset;
+};
+
 /** Tooltip: the headless tooltip (native popover=hint + CSS anchor positioning) with the
  * Fluent visual contract. */
 export const Tooltip = (props: TooltipProps): JSXElement => {
+  // Tooltip is the one component that is not wrapped in forwardRef, so its parameter list is
+  // part of the emitted public signature — the look props destructure in the body instead.
   const { appearance = 'normal', positioning = 'above', withArrow = false, ...rest } = props;
 
   const resolved = resolvePositioningShorthand(positioning);
-  const offset =
-    resolved.offset === undefined
-      ? TOOLTIP_OFFSET + (withArrow ? ARROW_HEIGHT : 0)
-      : typeof resolved.offset === 'number' && withArrow
-        ? resolved.offset + ARROW_HEIGHT
-        : resolved.offset;
 
-  const state: TooltipState = {
-    ...useTooltip({ ...rest, withArrow, positioning: { ...resolved, offset } }),
-    appearance,
-  };
-
-  return renderTooltip(useTooltipStyles(state));
+  return renderTooltip(
+    useTooltipStyles({
+      ...useTooltip({
+        ...rest,
+        withArrow,
+        positioning: { ...resolved, offset: tooltipOffset(resolved.offset, withArrow) },
+      }),
+      appearance,
+    }),
+  );
 };
 
 Tooltip.displayName = 'Tooltip';

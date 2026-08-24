@@ -6,7 +6,7 @@ import { renderToggleButton, useToggleButton } from '@fluentui/react-headless-co
 import { useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
 import { mergeContextProps } from '../../utils/mergeContextProps';
-import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
+import type { ToggleButtonProps } from './ToggleButton.types';
 import { useToggleButtonStyles } from './useToggleButtonStyles';
 
 /**
@@ -25,14 +25,14 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
     ...rest
   } = mergeContextProps(useButtonContext(), props);
 
-  const state: ToggleButtonState = {
-    ...useToggleButton(rest, ref),
-    appearance,
-    shape,
-    size,
-  };
-
-  return renderToggleButton(useToggleButtonStyles(state));
+  return renderToggleButton(
+    useToggleButtonStyles({
+      ...useToggleButton(rest, ref),
+      appearance,
+      shape,
+      size,
+    }),
+  );
   // Casting is required due to lack of distributive union to support union on @types/react
 }) as ForwardRefComponent<ToggleButtonProps>;
 
