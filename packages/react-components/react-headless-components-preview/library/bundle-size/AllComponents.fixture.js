@@ -20,6 +20,7 @@ import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as InteractionTag from '@fluentui/react-headless-components-preview/interaction-tag';
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
+import * as List from '@fluentui/react-headless-components-preview/list';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
@@ -74,6 +75,7 @@ console.log({
   InteractionTag,
   Label,
   Link,
+  List,
   Menu,
   MessageBar,
   Nav,
