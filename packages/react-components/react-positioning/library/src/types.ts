@@ -155,6 +155,9 @@ export interface PositioningOptions {
   /** The element which will define the boundaries of the positioned element for the overflow behavior. */
   overflowBoundary?: PositioningBoundary | null;
 
+  /** The element which will define the boundaries for detecting whether the positioned element is hidden. */
+  hideBoundary?: PositioningBoundary | null;
+
   /**
    * Applies a padding to the overflow bounadry, so that overflow is detected earlier before the
    * positioned surface hits the overflow boundary.
@@ -277,6 +280,7 @@ export interface PositioningProps
     | 'coverTarget'
     | 'fallbackPositions'
     | 'flipBoundary'
+    | 'hideBoundary'
     | 'offset'
     | 'overflowBoundary'
     | 'overflowBoundaryPadding'

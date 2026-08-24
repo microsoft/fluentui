@@ -17,7 +17,7 @@ import {
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
-import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
+import { getBoundary, toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
 import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
@@ -38,6 +38,7 @@ function usePositioningConfigFn(
     coverTarget,
     disableUpdateOnResize,
     flipBoundary,
+    hideBoundary,
     offset,
     overflowBoundary,
     pinned,
@@ -65,6 +66,7 @@ function usePositioningConfigFn(
           strategy,
           coverTarget,
           flipBoundary,
+          hideBoundary,
           overflowBoundary,
           useTransform,
           overflowBoundaryPadding,
@@ -87,6 +89,7 @@ function usePositioningConfigFn(
       strategy,
       coverTarget,
       flipBoundary,
+      hideBoundary,
       overflowBoundary,
       useTransform,
       overflowBoundaryPadding,
@@ -136,6 +139,7 @@ export function usePositioningOptions(options: PositioningOptions): (
         offset,
         coverTarget,
         flipBoundary,
+        hideBoundary,
         overflowBoundary,
         useTransform,
         overflowBoundaryPadding,
@@ -150,6 +154,8 @@ export function usePositioningOptions(options: PositioningOptions): (
         unstable_disableTether,
       } = optionsAfterEnhancement;
       const normalizedAutoSize = normalizeAutoSize(autoSize);
+      const normalizedHideBoundary = getBoundary(container, hideBoundary ?? undefined);
+      const hideBoundaryOptions = normalizedHideBoundary ? { boundary: normalizedHideBoundary } : {};
 
       const middleware = [
         normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
@@ -170,11 +176,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({
-          strategy: 'referenceHidden',
-          boundary: hasScrollableElement ? 'clippingAncestors' : [],
-        }),
-        hideMiddleware({ strategy: 'escaped', boundary: hasScrollableElement ? 'clippingAncestors' : [] }),
+        hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
+        hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),

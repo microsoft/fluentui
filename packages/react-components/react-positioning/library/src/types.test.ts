@@ -10,6 +10,7 @@ describe('PositioningProps', () => {
       autoSize: 'always',
       coverTarget: true,
       flipBoundary: null,
+      hideBoundary: 'scrollParent',
       offset: 0,
       overflowBoundary: null,
       overflowBoundaryPadding: 0,

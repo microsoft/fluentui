@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: do not treat non-scrolling overflow:hidden ancestors as a clipping boundary for the hide middleware's escaped/referenceHidden detection",
+  "type": "minor",
+  "comment": "feat: add a hideBoundary positioning option for customizing escaped and reference-hidden detection",
   "packageName": "@fluentui/react-positioning",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
