@@ -100,6 +100,15 @@ import type { MessageBarState as MessageBarState_2 } from '@fluentui/react-headl
 import { MessageBarTitleProps } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarTitleState } from '@fluentui/react-headless-components-preview/message-bar';
+import { NavCategoryContextValues } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryItemContextValues } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryItemProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryItemProvider } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryItemSlots } from '@fluentui/react-headless-components-preview/nav';
+import type { NavCategoryItemState as NavCategoryItemState_2 } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryProvider } from '@fluentui/react-headless-components-preview/nav';
+import { NavCategoryState } from '@fluentui/react-headless-components-preview/nav';
 import { NavContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { NavDividerProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavDividerSlots } from '@fluentui/react-headless-components-preview/nav';
@@ -115,6 +124,12 @@ import { NavSectionHeaderSlots } from '@fluentui/react-headless-components-previ
 import { NavSectionHeaderState } from '@fluentui/react-headless-components-preview/nav';
 import { NavSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavState as NavState_2 } from '@fluentui/react-headless-components-preview/nav';
+import { NavSubItemGroupProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavSubItemGroupSlots } from '@fluentui/react-headless-components-preview/nav';
+import { NavSubItemGroupState } from '@fluentui/react-headless-components-preview/nav';
+import { NavSubItemProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavSubItemSlots } from '@fluentui/react-headless-components-preview/nav';
+import type { NavSubItemState as NavSubItemState_2 } from '@fluentui/react-headless-components-preview/nav';
 import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview/nav';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -166,9 +181,13 @@ import { renderMessageBarActions } from '@fluentui/react-headless-components-pre
 import { renderMessageBarBody } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarTitle } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderNav } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavCategory } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavCategoryItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavDivider } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -306,11 +325,19 @@ import { useMessageBarContext } from '@fluentui/react-headless-components-previe
 import { useMessageBarContextValues } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarTitle } from '@fluentui/react-headless-components-preview/message-bar';
 import { useNav } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategory } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategoryContext } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategoryContextValues } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategoryItem } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategoryItemContext } from '@fluentui/react-headless-components-preview/nav';
+import { useNavCategoryItemContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { useNavContext } from '@fluentui/react-headless-components-preview/nav';
 import { useNavContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { useNavDivider } from '@fluentui/react-headless-components-preview/nav';
 import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
+import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
+import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -989,6 +1016,41 @@ export { MessageBarTitleState }
 export const Nav: ForwardRefComponent<NavProps>;
 
 // @public
+export const NavCategory: ForwardRefComponent<NavCategoryProps>;
+
+export { NavCategoryContextValues }
+
+// @public
+export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps>;
+
+// @public
+export const navCategoryItemClassNames: {
+    root: string;
+};
+
+export { NavCategoryItemContextValues }
+
+export { NavCategoryItemProps }
+
+export { NavCategoryItemProvider }
+
+export { NavCategoryItemSlots }
+
+// @public
+export type NavCategoryItemState = NavCategoryItemState_2 & {
+    density: NavDensity;
+    root: {
+        'data-density'?: NavDensity;
+    };
+};
+
+export { NavCategoryProps }
+
+export { NavCategoryProvider }
+
+export { NavCategoryState }
+
+// @public
 export const navClassNames: {
     root: string;
 };
@@ -1060,6 +1122,40 @@ export { NavSlots }
 
 // @public
 export type NavState = NavState_2 & Required<Pick<NavProps, 'density'>>;
+
+// @public
+export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
+
+// @public
+export const navSubItemClassNames: {
+    root: string;
+};
+
+// @public
+export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
+
+// @public
+export const navSubItemGroupClassNames: {
+    root: string;
+};
+
+export { NavSubItemGroupProps }
+
+export { NavSubItemGroupSlots }
+
+export { NavSubItemGroupState }
+
+export { NavSubItemProps }
+
+export { NavSubItemSlots }
+
+// @public
+export type NavSubItemState = NavSubItemState_2 & {
+    density: NavDensity;
+    root: {
+        'data-density'?: NavDensity;
+    };
+};
 
 export { OnNavItemSelectData }
 
@@ -1258,11 +1354,19 @@ export { renderMessageBarTitle }
 
 export { renderNav }
 
+export { renderNavCategory }
+
+export { renderNavCategoryItem }
+
 export { renderNavDivider }
 
 export { renderNavItem }
 
 export { renderNavSectionHeader }
+
+export { renderNavSubItem }
+
+export { renderNavSubItemGroup }
 
 export { renderProgressBar }
 
@@ -1936,6 +2040,21 @@ export const useMessageBarTitleStyles: (state: MessageBarTitleState) => MessageB
 
 export { useNav }
 
+export { useNavCategory }
+
+export { useNavCategoryContext }
+
+export { useNavCategoryContextValues }
+
+export { useNavCategoryItem }
+
+export { useNavCategoryItemContext }
+
+export { useNavCategoryItemContextValues }
+
+// @public
+export const useNavCategoryItemStyles: (state: NavCategoryItemState) => NavCategoryItemState;
+
 export { useNavContext }
 
 export { useNavContextValues }
@@ -1957,6 +2076,16 @@ export const useNavSectionHeaderStyles: (state: NavSectionHeaderState) => NavSec
 
 // @public
 export const useNavStyles: (state: NavState) => NavState;
+
+export { useNavSubItem }
+
+export { useNavSubItemGroup }
+
+// @public
+export const useNavSubItemGroupStyles: (state: NavSubItemGroupState) => NavSubItemGroupState;
+
+// @public
+export const useNavSubItemStyles: (state: NavSubItemState) => NavSubItemState;
 
 export { useProgressBar }
 

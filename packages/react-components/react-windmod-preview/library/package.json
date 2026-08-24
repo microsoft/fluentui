@@ -353,6 +353,26 @@
         "default": "./lib-commonjs/nav.cjs"
       }
     },
+    "./nav-category": {
+      "import": {
+        "types": "./dist/nav-category.d.ts",
+        "default": "./lib/nav-category.js"
+      },
+      "require": {
+        "types": "./dist/nav-category.d.cts",
+        "default": "./lib-commonjs/nav-category.cjs"
+      }
+    },
+    "./nav-category-item": {
+      "import": {
+        "types": "./dist/nav-category-item.d.ts",
+        "default": "./lib/nav-category-item.js"
+      },
+      "require": {
+        "types": "./dist/nav-category-item.d.cts",
+        "default": "./lib-commonjs/nav-category-item.cjs"
+      }
+    },
     "./nav-divider": {
       "import": {
         "types": "./dist/nav-divider.d.ts",
@@ -381,6 +401,26 @@
       "require": {
         "types": "./dist/nav-section-header.d.cts",
         "default": "./lib-commonjs/nav-section-header.cjs"
+      }
+    },
+    "./nav-sub-item": {
+      "import": {
+        "types": "./dist/nav-sub-item.d.ts",
+        "default": "./lib/nav-sub-item.js"
+      },
+      "require": {
+        "types": "./dist/nav-sub-item.d.cts",
+        "default": "./lib-commonjs/nav-sub-item.cjs"
+      }
+    },
+    "./nav-sub-item-group": {
+      "import": {
+        "types": "./dist/nav-sub-item-group.d.ts",
+        "default": "./lib/nav-sub-item-group.js"
+      },
+      "require": {
+        "types": "./dist/nav-sub-item-group.d.cts",
+        "default": "./lib-commonjs/nav-sub-item-group.cjs"
       }
     },
     "./progress-bar": {
