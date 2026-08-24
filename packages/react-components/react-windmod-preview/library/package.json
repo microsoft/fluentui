@@ -113,6 +113,46 @@
         "default": "./lib-commonjs/badge.cjs"
       }
     },
+    "./breadcrumb": {
+      "import": {
+        "types": "./dist/breadcrumb.d.ts",
+        "default": "./lib/breadcrumb.js"
+      },
+      "require": {
+        "types": "./dist/breadcrumb.d.cts",
+        "default": "./lib-commonjs/breadcrumb.cjs"
+      }
+    },
+    "./breadcrumb-button": {
+      "import": {
+        "types": "./dist/breadcrumb-button.d.ts",
+        "default": "./lib/breadcrumb-button.js"
+      },
+      "require": {
+        "types": "./dist/breadcrumb-button.d.cts",
+        "default": "./lib-commonjs/breadcrumb-button.cjs"
+      }
+    },
+    "./breadcrumb-divider": {
+      "import": {
+        "types": "./dist/breadcrumb-divider.d.ts",
+        "default": "./lib/breadcrumb-divider.js"
+      },
+      "require": {
+        "types": "./dist/breadcrumb-divider.d.cts",
+        "default": "./lib-commonjs/breadcrumb-divider.cjs"
+      }
+    },
+    "./breadcrumb-item": {
+      "import": {
+        "types": "./dist/breadcrumb-item.d.ts",
+        "default": "./lib/breadcrumb-item.js"
+      },
+      "require": {
+        "types": "./dist/breadcrumb-item.d.cts",
+        "default": "./lib-commonjs/breadcrumb-item.cjs"
+      }
+    },
     "./button": {
       "import": {
         "types": "./dist/button.d.ts",

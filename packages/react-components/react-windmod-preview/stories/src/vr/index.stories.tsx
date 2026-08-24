@@ -4,6 +4,8 @@ export { AvatarWindmod } from './AvatarWindmod.stories';
 export { AvatarGriffel } from './AvatarGriffel.stories';
 export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
+export { BreadcrumbWindmod } from './BreadcrumbWindmod.stories';
+export { BreadcrumbGriffel } from './BreadcrumbGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';
 export { ButtonGriffel } from './ButtonGriffel.stories';
 export { CardWindmod } from './CardWindmod.stories';

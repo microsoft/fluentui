@@ -23,6 +23,19 @@ import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-comp
 import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
 import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { BreadcrumbButtonProps as BreadcrumbButtonProps_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { BreadcrumbButtonSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbButtonState as BreadcrumbButtonState_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { BreadcrumbContextValues } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbDividerProps as BreadcrumbDividerProps_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { BreadcrumbDividerSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbDividerState as BreadcrumbDividerState_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbItemProps as BreadcrumbItemProps_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { BreadcrumbItemSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbItemState as BreadcrumbItemState_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbProps as BreadcrumbProps_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { BreadcrumbSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
+import type { BreadcrumbState as BreadcrumbState_2 } from '@fluentui/react-headless-components-preview/breadcrumb';
 import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
 import { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ButtonState as ButtonState_2 } from '@fluentui/react-headless-components-preview/button';
@@ -130,6 +143,10 @@ import { renderAccordionItem } from '@fluentui/react-headless-components-preview
 import { renderAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { renderBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { renderBreadcrumbDivider } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { renderBreadcrumbItem } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import { renderCard } from '@fluentui/react-headless-components-preview/card';
 import { renderCardFooter } from '@fluentui/react-headless-components-preview/card';
@@ -255,6 +272,12 @@ import { useAccordionItemContextValues } from '@fluentui/react-headless-componen
 import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
+import { useBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { useBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { useBreadcrumbContext } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { useBreadcrumbContextValues } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { useBreadcrumbDivider } from '@fluentui/react-headless-components-preview/breadcrumb';
+import { useBreadcrumbItem } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { useButton } from '@fluentui/react-headless-components-preview/button';
 import { useCard } from '@fluentui/react-headless-components-preview/card';
 import { useCardContext } from '@fluentui/react-headless-components-preview/card';
@@ -473,6 +496,77 @@ export { BadgeSlots }
 
 // @public
 export type BadgeState = BadgeState_2 & Required<Pick<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
+
+// @public
+export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
+
+// @public
+export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
+
+// @public
+export const breadcrumbButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type BreadcrumbButtonProps = BreadcrumbButtonProps_2;
+
+export { BreadcrumbButtonSlots }
+
+// @public
+export type BreadcrumbButtonState = BreadcrumbButtonState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape'>> & Required<Pick<BreadcrumbProps, 'size'>>;
+
+// @public
+export const breadcrumbClassNames: {
+    root: string;
+};
+
+export { BreadcrumbContextValues }
+
+// @public
+export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
+
+// @public
+export const breadcrumbDividerClassNames: {
+    root: string;
+};
+
+// @public
+export type BreadcrumbDividerProps = BreadcrumbDividerProps_2;
+
+export { BreadcrumbDividerSlots }
+
+// @public
+export type BreadcrumbDividerState = BreadcrumbDividerState_2 & Pick<BreadcrumbProps, 'size'>;
+
+// @public
+export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
+
+// @public
+export const breadcrumbItemClassNames: {
+    root: string;
+};
+
+// @public
+export type BreadcrumbItemProps = BreadcrumbItemProps_2;
+
+export { BreadcrumbItemSlots }
+
+// @public
+export type BreadcrumbItemState = BreadcrumbItemState_2;
+
+// @public
+export type BreadcrumbProps = BreadcrumbProps_2 & {
+    size?: BreadcrumbSize;
+};
+
+// @public
+export type BreadcrumbSize = 'small' | 'medium' | 'large';
+
+export { BreadcrumbSlots }
+
+// @public
+export type BreadcrumbState = BreadcrumbState_2 & Required<Pick<BreadcrumbProps, 'size'>>;
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -1118,6 +1212,14 @@ export { renderAvatar }
 
 export { renderBadge }
 
+export { renderBreadcrumb }
+
+export { renderBreadcrumbButton }
+
+export { renderBreadcrumbDivider }
+
+export { renderBreadcrumbItem }
+
 export { renderButton }
 
 export { renderCard }
@@ -1699,6 +1801,30 @@ export { useBadge }
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+export { useBreadcrumb }
+
+export { useBreadcrumbButton }
+
+// @public
+export const useBreadcrumbButtonStyles: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
+
+export { useBreadcrumbContext }
+
+export { useBreadcrumbContextValues }
+
+export { useBreadcrumbDivider }
+
+// @public
+export const useBreadcrumbDividerStyles: (state: BreadcrumbDividerState) => BreadcrumbDividerState;
+
+export { useBreadcrumbItem }
+
+// @public
+export const useBreadcrumbItemStyles: (state: BreadcrumbItemState) => BreadcrumbItemState;
+
+// @public
+export const useBreadcrumbStyles: (state: BreadcrumbState) => BreadcrumbState;
 
 export { useButton }
 

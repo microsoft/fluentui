@@ -1,0 +1,15 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex text-[length:calc(16px*var(--base-scale))];
+
+    @variant size-small {
+      @apply text-[length:calc(12px*var(--base-scale))];
+    }
+
+    @variant size-large {
+      @apply text-[length:calc(20px*var(--base-scale))];
+    }
+  }
+}
