@@ -61,4 +61,42 @@ describe('Tooltip', () => {
       cy.get('[role="tooltip"]').should('be.visible').and('have.text', 'I should still appear');
     });
   });
+
+  // Verifies a static overflow:hidden wrapper nested inside a real scroll parent doesn't interfere with either
+  // the #36604 fix or the #32882 scroll-hide behavior.
+  describe('static overflow:hidden nested inside a scrollable ancestor', () => {
+    it('shows the tooltip while in view, then hides it once its trigger scrolls out of view', () => {
+      mount(
+        <div
+          id="scroll-container"
+          style={{
+            height: '100px',
+            width: '200px',
+            overflow: 'hidden scroll',
+            position: 'relative',
+          }}
+        >
+          <div style={{ height: '400px', paddingTop: '8px' }}>
+            <div style={{ overflow: 'hidden', display: 'flex' }}>
+              <Tooltip content="Nested tooltip" relationship="label">
+                <Button id="trigger">Hover me</Button>
+              </Tooltip>
+            </div>
+          </div>
+        </div>,
+      );
+
+      cy.get('#trigger').realHover();
+
+      cy.get('[role="tooltip"]')
+        .should('be.visible')
+        .then($tooltip => {
+          cy.get('#scroll-container').scrollTo(0, 300);
+          cy.wrap($tooltip).should('not.be.visible');
+
+          cy.get('#scroll-container').scrollTo(0, 0);
+          cy.wrap($tooltip).should('be.visible');
+        });
+    });
+  });
 });
