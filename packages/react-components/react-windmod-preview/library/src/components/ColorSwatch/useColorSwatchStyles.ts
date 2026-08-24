@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { ColorSwatchState } from './ColorSwatch.types';
 
 import styles from './ColorSwatch.module.css';

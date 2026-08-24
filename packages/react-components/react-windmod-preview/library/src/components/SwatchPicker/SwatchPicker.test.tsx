@@ -4,11 +4,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { useSwatchPickerContextValue } from '@fluentui/react-headless-components-preview/swatch-picker';
 
 import { isConformant } from '../../testing/isConformant';
-import { ColorSwatch } from './ColorSwatch';
-import { EmptySwatch } from './EmptySwatch';
-import { ImageSwatch } from './ImageSwatch';
+import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
+import { EmptySwatch } from '../EmptySwatch/EmptySwatch';
+import { ImageSwatch } from '../ImageSwatch/ImageSwatch';
 import { SwatchPicker } from './SwatchPicker';
-import { SwatchPickerRow } from './SwatchPickerRow';
+import { SwatchPickerRow } from '../SwatchPickerRow/SwatchPickerRow';
 import type { SwatchPickerState } from './SwatchPicker.types';
 import { swatchPickerClassNames, useSwatchPickerStyles } from './useSwatchPickerStyles';
 

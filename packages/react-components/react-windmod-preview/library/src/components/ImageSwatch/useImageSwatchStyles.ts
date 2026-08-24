@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { ImageSwatchState } from './ImageSwatch.types';
 
 import styles from './ImageSwatch.module.css';

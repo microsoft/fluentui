@@ -3,7 +3,7 @@ import type {
   EmptySwatchState as EmptySwatchHeadlessState,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 
-import type { SwatchPickerShape, SwatchPickerSize } from '../SwatchPicker.types';
+import type { SwatchPickerShape, SwatchPickerSize } from '../SwatchPicker/SwatchPicker.types';
 
 export type { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { EmptySwatchState } from './EmptySwatch.types';
 
 import styles from './EmptySwatch.module.css';

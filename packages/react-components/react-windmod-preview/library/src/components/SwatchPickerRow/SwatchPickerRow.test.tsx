@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 
 import { SwatchPicker as HeadlessSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
 
-import { isConformant } from '../../../testing/isConformant';
-import { ColorSwatch } from '../ColorSwatch';
-import { SwatchPicker } from '../SwatchPicker';
+import { isConformant } from '../../testing/isConformant';
+import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
+import { SwatchPicker } from '../SwatchPicker/SwatchPicker';
 import { SwatchPickerRow } from './SwatchPickerRow';
 import type { SwatchPickerRowState } from './SwatchPickerRow.types';
 import { swatchPickerRowClassNames, useSwatchPickerRowStyles } from './useSwatchPickerRowStyles';
@@ -16,7 +16,7 @@ import styles from './SwatchPickerRow.module.css';
 // pipeline throws instead of succeeding silently — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/swatch-picker', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/swatch-picker');
-  const { deepFreezeState } = require('../../../testing/freezeState');
+  const { deepFreezeState } = require('../../testing/freezeState');
 
   return {
     ...actual,

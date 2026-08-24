@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../../utils/groupMarker';
+import { componentMarkers } from '../../utils/groupMarker';
 import type { SwatchPickerRowState } from './SwatchPickerRow.types';
 
 import styles from './SwatchPickerRow.module.css';
