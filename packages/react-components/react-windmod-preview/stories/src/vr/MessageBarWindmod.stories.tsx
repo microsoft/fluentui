@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Button,
   FluentProvider,
+  Link,
   MessageBar,
   MessageBarActions,
   MessageBarBody,
@@ -19,6 +20,7 @@ export const MessageBarWindmod = (): React.ReactNode => (
       MessageBarBody={MessageBarBody}
       MessageBarActions={MessageBarActions}
       Button={Button}
+      Link={Link}
       DismissIcon={DismissRegular}
     />
   </FluentProvider>

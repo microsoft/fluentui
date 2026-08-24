@@ -44,7 +44,10 @@ export type TagSize = 'extra-small' | 'small' | 'medium';
 export { TagSlots }
 
 // @public
-export type TagState = TagState_2 & Required<Pick<TagProps, 'appearance' | 'shape' | 'size'>>;
+export type TagState = TagState_2 & Required<Pick<TagProps, 'appearance' | 'shape' | 'size'>> & {
+    avatarShape: AvatarShape;
+    avatarSize: AvatarSize;
+};
 
 export { useTag }
 

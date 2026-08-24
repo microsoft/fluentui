@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { renderButton, useButton } from '@fluentui/react-headless-components-preview/button';
+import { renderButton, useButton, useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { ButtonProps, ButtonState } from './Button.types';
 import { useButtonStyles } from './useButtonStyles';
 
@@ -13,8 +14,16 @@ import { useButtonStyles } from './useButtonStyles';
  */
 export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-button's styled useButton.
-  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = props;
+  // Defaults mirror @fluentui/react-button's styled useButton, ButtonContext read included: a
+  // container like MessageBarActions publishes `size`, and Griffel resolves it as
+  // `size = contextSize ?? 'medium'` (react-button useButton.ts:19-20). The context is Griffel's
+  // own instance, re-exported by headless, because the provider is Griffel's too.
+  const {
+    appearance = 'secondary',
+    shape = 'rounded',
+    size = 'medium',
+    ...rest
+  } = mergeContextProps(useButtonContext(), props);
 
   const state: ButtonState = {
     ...useButton(rest, ref),

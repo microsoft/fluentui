@@ -3,10 +3,11 @@
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { renderAvatar, useAvatar } from '@fluentui/react-headless-components-preview/avatar';
+import { renderAvatar, useAvatar, useAvatarContext } from '@fluentui/react-headless-components-preview/avatar';
 import { useProviderContext } from '@fluentui/react-headless-components-preview/provider';
 import { PersonRegular } from '@fluentui/react-icons/headless/svg/person';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { useAvatarStyles } from './useAvatarStyles';
 
@@ -73,7 +74,12 @@ const firstInitial = (initials: string, rtl: boolean) => {
  */
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-avatar's styled useAvatar.
+  // Defaults mirror @fluentui/react-avatar's styled useAvatar, AvatarContext read included: a
+  // container such as Tag publishes both `shape` and `size`, and Griffel resolves them as
+  // `size = contextSize ?? 32` / `shape = contextShape ?? 'circular'`
+  // (react-avatar useAvatar.tsx:19-21). The published shape is disjoint from the `props.*` reads
+  // further down (`initials`, `name`, `aria-label`, `aria-labelledby`), so those keep reading
+  // `props` and are unaffected by the merge.
   const {
     active = 'unset',
     activeAppearance = 'ring',
@@ -82,7 +88,7 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
     shape = 'circular',
     size = 32,
     ...rest
-  } = props;
+  } = mergeContextProps(useAvatarContext(), props);
 
   const { dir } = useProviderContext();
   const base = useAvatar(rest, ref);

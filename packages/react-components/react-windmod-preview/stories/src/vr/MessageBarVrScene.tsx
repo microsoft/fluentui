@@ -18,12 +18,12 @@ type MessageBarLike = React.ComponentType<{
 type RegionLike = React.ComponentType<{ children?: React.ReactNode }>;
 type ActionsLike = React.ComponentType<{ containerAction?: React.ReactElement; children?: React.ReactNode }>;
 type ButtonLike = React.ComponentType<{
-  size?: 'small';
   appearance?: 'transparent';
   icon?: React.ReactElement;
   'aria-label'?: string;
   children?: React.ReactNode;
 }>;
+type LinkLike = React.ComponentType<{ children?: React.ReactNode }>;
 
 const bar: React.CSSProperties = { width: 460 };
 
@@ -38,6 +38,7 @@ export const MessageBarVrScene = ({
   MessageBarBody,
   MessageBarActions,
   Button,
+  Link,
   DismissIcon,
 }: {
   MessageBar: MessageBarLike;
@@ -45,12 +46,15 @@ export const MessageBarVrScene = ({
   MessageBarBody: RegionLike;
   MessageBarActions: ActionsLike;
   Button: ButtonLike;
+  Link: LinkLike;
   DismissIcon: React.ComponentType;
 }): React.ReactNode => {
-  // The context that would carry size/appearance to the buttons is not read by the windmod
-  // Button, so every cell passes them explicitly on both sides.
-  const dismiss = <Button size="small" appearance="transparent" icon={<DismissIcon />} aria-label="dismiss" />;
-  const action = (label: string) => <Button size="small">{label}</Button>;
+  // No `size` on either button: MessageBarActions publishes `{ size: 'small' }` through
+  // ButtonContext and the button reads it, on both sides. This is the scene's ButtonContext
+  // coverage — pinning the size, as this scene used to, would have hidden a missing read.
+  // `appearance` is not part of the published shape, so the dismiss button still states it.
+  const dismiss = <Button appearance="transparent" icon={<DismissIcon />} aria-label="dismiss" />;
+  const action = (label: string) => <Button>{label}</Button>;
 
   const cell = (key: string, props: React.ComponentProps<MessageBarLike>, children: React.ReactNode) => (
     <MessageBar key={key} style={bar} {...props}>
@@ -147,6 +151,20 @@ export const MessageBarVrScene = ({
           {action('Cancel')}
         </MessageBarActions>,
       ])}
+
+      {/* 11 — LinkContext: MessageBarBody publishes `{ inline: true }`, and the Link reads it.
+          No `inline` prop on either side, mirroring Griffel's own Default/Intent stories. */}
+      {layouts.map(layout =>
+        cell(
+          `b11-${layout}`,
+          { layout },
+          body(
+            <>
+              Message providing information to the user with actionable insights. <Link>Link</Link>
+            </>,
+          ),
+        ),
+      )}
     </div>
   );
 };

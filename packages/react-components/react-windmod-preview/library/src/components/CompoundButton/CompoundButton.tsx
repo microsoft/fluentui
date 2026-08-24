@@ -3,7 +3,9 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderCompoundButton, useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
+import { useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 import { useCompoundButtonStyles } from './useCompoundButtonStyles';
 
@@ -13,8 +15,14 @@ import { useCompoundButtonStyles } from './useCompoundButtonStyles';
  */
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-button's styled useCompoundButton.
-  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = props;
+  // Defaults mirror @fluentui/react-button's styled useCompoundButton, which reads the same
+  // ButtonContext Button does (react-button useCompoundButton.ts:50-51).
+  const {
+    appearance = 'secondary',
+    shape = 'rounded',
+    size = 'medium',
+    ...rest
+  } = mergeContextProps(useButtonContext(), props);
 
   const state: CompoundButtonState = {
     ...useCompoundButton(rest, ref),

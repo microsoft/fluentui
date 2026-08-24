@@ -20,15 +20,27 @@ type TagLike = React.ComponentType<{
   children?: React.ReactNode;
 }>;
 
+type AvatarLike = React.ComponentType<{ name?: string }>;
+
 const row: React.CSSProperties = { display: 'flex', gap: 12, alignItems: 'center' };
 
-// A plain box rather than an Avatar: it isolates Tag's own media geometry from whatever
-// avatar-context values either side supplies.
+// A plain box rather than an Avatar for every band except the last: it isolates Tag's own media
+// geometry from the avatar-context values either side supplies. The last band is the deliberate
+// opposite — a real Avatar with no size or shape of its own, so the context is the only thing that
+// can size it.
 const mediaBox = <i style={{ display: 'block', width: 20, height: 20, background: '#8a8886' }} />;
 const customGlyph = <i style={{ display: 'block', width: 20, height: 20, background: '#107c10' }} />;
 
 /** One scene, two implementations — the VR runner diffs the renders pixel for pixel. */
-export const TagVrScene = ({ Tag, Icon }: { Tag: TagLike; Icon: React.ComponentType }): React.ReactNode => (
+export const TagVrScene = ({
+  Tag,
+  Avatar,
+  Icon,
+}: {
+  Tag: TagLike;
+  Avatar: AvatarLike;
+  Icon: React.ComponentType;
+}): React.ReactNode => (
   <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 16, padding: 24, background: '#fff' }}>
     {shapes.map(shape =>
       appearances.map(appearance => (
@@ -157,5 +169,18 @@ export const TagVrScene = ({ Tag, Icon }: { Tag: TagLike; Icon: React.ComponentT
         </Tag>
       ))}
     </div>
+    {/* AvatarContext: the Tag maps its own size/shape onto the media Avatar (medium→28, small→20,
+        extra-small→16; rounded→square, circular→circular) and publishes them. The Avatars below
+        carry no size or shape of their own, exactly as Griffel's TagMedia/TagSize/TagShape stories
+        write them, so every avatar box here is drawn by the context alone. */}
+    {shapes.map(shape => (
+      <div key={`avatar-${shape}`} style={row}>
+        {sizes.map(size => (
+          <Tag key={size} shape={shape} size={size} media={<Avatar name="Katri Athokas" />}>
+            Primary
+          </Tag>
+        ))}
+      </div>
+    ))}
   </div>
 );
