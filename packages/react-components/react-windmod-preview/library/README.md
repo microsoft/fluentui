@@ -55,3 +55,105 @@ package's `dist/styles.css`); CommonJS/SSR consumers import
   (e.g. `group-disabled/fui-button:text-red-500`) — no group name declaration required.
   Consumers may additionally add their own `group/name` via `className` to disambiguate nested
   instances of the same component, but are never required to.
+
+## Overflow
+
+**There is no windmod `Overflow`, and none is coming — nothing about it needs porting.** Keep
+importing `Overflow` / `OverflowItem` / `useOverflowMenu` from `@fluentui/react-components` and
+compose them with windmod components directly.
+
+`Overflow` is renderless. It emits no element of its own: it clones its single child, drives
+[`@fluentui/priority-overflow`](../../priority-overflow) over that child's subtree, and stamps
+`data-overflowing`, `data-overflow-item`, `data-overflow-menu`, `data-overflow-divider` and
+`data-overflow-group` on the elements the engine measures. A windmod port re-skins a headless
+component; a component with no skin has nothing to re-skin.
+
+The entire Griffel `Overflow` family ships **two** CSS declarations, both token-free and
+theme-free (for scale, windmod `Button` reproduces 105):
+
+```css
+[data-overflowing] {
+  display: none;
+}
+[data-overflow-menu] {
+  flex-shrink: 0;
+}
+```
+
+Neither says anything about how the items look, which is exactly why they are as correct over
+windmod-styled items as over Griffel-styled ones.
+
+```jsx
+import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-windmod-preview';
+
+// `Menu` is not part of this package; a count of what the engine hid needs no extra component.
+const OverflowCount = () => {
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu();
+  return isOverflowing ? (
+    <Button ref={ref} appearance="primary" aria-label={`${overflowCount} more items`}>
+      +{overflowCount}
+    </Button>
+  ) : null;
+};
+
+export const Commands = ({ labels }) => (
+  <Overflow padding={40}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, overflow: 'hidden' }}>
+      {labels.map(label => (
+        <OverflowItem key={label} id={label}>
+          <Button>{label}</Button>
+        </OverflowItem>
+      ))}
+      <OverflowCount />
+    </div>
+  </Overflow>
+);
+```
+
+### Compatibility statement (measured, not assumed)
+
+The live story `Windmod/Overflow → WithWindmodComponents`
+(`stories/src/Overflow/OverflowWithWindmod.stories.tsx`) was driven in headless Chrome over eight
+container widths — 1000, 760, 600, 480, 360, 260, 180 and back to 1000 px — with eight windmod
+`Button`s as the overflow items and a windmod `Button` as the `+N` trigger. All 18 assertions
+passed:
+
+- At every width the number of items the engine marked `data-overflowing` equalled the number of
+  items the browser actually gave `display: none` (0, 2, 4, 5, 6, 7, 8, 0) — the items genuinely
+  disappear, they are not merely marked.
+- Every hidden element carried the `fui-button` identity class, so what disappeared really was a
+  windmod component.
+- The `+N` trigger appeared exactly when items were hidden, reported the correct count, and
+  computed `flex-shrink: 0`.
+- `scrollWidth` equalled `clientWidth` at every width — the strip never spilled its box.
+- Widening back to 1000 px restored all eight items and removed the trigger: the engine is
+  reversible over windmod components.
+
+Why the hiding wins the cascade, also measured: on a hidden item, exactly two rules in the
+document declare `display` — windmod's `.fuicm-button-root-… { display: inline-flex }` inside the
+`fui.components.l1` layer, and Griffel's `[data-overflowing] { display: none }`, which is
+**unlayered**. Unlayered CSS outranks layered CSS regardless of selector weight, so the win does
+not depend on specificity (Griffel's selector happens to be heavier as well).
+
+### If you want the Griffel-free `Overflow`
+
+`@fluentui/react-headless-components-preview/overflow` re-exports Griffel's `OverflowItem`,
+`OverflowDivider` and every hook unchanged, and swaps in an `Overflow` that is Griffel's minus the
+styles hook — that missing hook is the entire delta. It is smaller and pulls in no Griffel, but it
+ships no CSS, so the engine stamps the attributes and nothing acts on them. **Supply the two
+declarations yourself, from an unlayered stylesheet:**
+
+```css
+/* Consumer CSS is unlayered, which is what lets these out-rank the component's own layered
+   `display` — do not wrap them in a `@layer`. */
+.my-overflow-container [data-overflowing] {
+  display: none;
+}
+.my-overflow-container [data-overflow-menu] {
+  flex-shrink: 0;
+}
+```
+
+The same probe run above measured this path side by side with the Griffel one and produced
+identical visibility numbers at all eight widths.
