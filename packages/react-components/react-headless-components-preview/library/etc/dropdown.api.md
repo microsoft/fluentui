@@ -19,6 +19,8 @@ import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
 import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
@@ -29,7 +31,9 @@ import { useListboxContextValues } from '@fluentui/react-combobox';
 export const Dropdown: ForwardRefComponent<DropdownProps>;
 
 // @public (undocumented)
-export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
+export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
+    positioning?: PositioningShorthand;
+};
 
 // @public (undocumented)
 export type DropdownState = DropdownBaseHookState & {

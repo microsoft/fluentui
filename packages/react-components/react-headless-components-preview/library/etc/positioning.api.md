@@ -8,10 +8,8 @@ import { Alignment } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
-import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
 export { Alignment }
 
@@ -38,7 +36,8 @@ export type PositioningReturn = {
     containerRef: React_2.RefCallback<HTMLElement>;
 };
 
-export { PositioningShorthand }
+// @public (undocumented)
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 export { PositioningShorthandValue }
 
@@ -50,7 +49,8 @@ export const POSITIONS: {
     readonly after: "after";
 };
 
-export { resolvePositioningShorthand }
+// @public (undocumented)
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public (undocumented)
 export function usePositioning(options: PositioningProps): PositioningReturn;
