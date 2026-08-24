@@ -2,6 +2,20 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.11.6",
+      "tag": "@fluentui/react-avatar_v9.11.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.14.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.11.5",
       "tag": "@fluentui/react-avatar_v9.11.5",

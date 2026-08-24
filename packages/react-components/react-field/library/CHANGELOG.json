@@ -2,6 +2,20 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.5.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "docs: clarify how `supportsSize` option of `useFieldControlProps_unstable` applies the Field size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:15 GMT",
       "version": "9.5.4",
       "tag": "@fluentui/react-field_v9.5.4",
