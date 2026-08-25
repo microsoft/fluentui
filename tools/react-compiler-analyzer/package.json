@@ -12,14 +12,12 @@
     "lib",
     "lib-commonjs"
   ],
-  "bin": {
-    "react-compiler-analyzer": "./bin/react-compiler-analyzer.js"
-  },
+  "bin": "./bin/react-compiler-analyzer.js",
   "dependencies": {
-    "@swc/helpers": "~0.5.1",
-    "yargs": "^17.7.2",
     "@babel/core": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
-    "babel-plugin-react-compiler": "^1.0.0"
+    "@swc/helpers": "~0.5.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "yargs": "^17.7.2"
   }
 }
