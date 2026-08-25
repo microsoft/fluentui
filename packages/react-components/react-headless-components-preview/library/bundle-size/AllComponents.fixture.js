@@ -4,6 +4,7 @@ import * as AvatarGroup from '@fluentui/react-headless-components-preview/avatar
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
+import * as Calendar from '@fluentui/react-headless-components-preview/calendar';
 import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
 import * as ColorPicker from '@fluentui/react-headless-components-preview/color-picker';
@@ -58,6 +59,7 @@ console.log({
   Badge,
   Breadcrumb,
   Button,
+  Calendar,
   Card,
   Checkbox,
   ColorPicker,
