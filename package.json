@@ -75,6 +75,7 @@
     "@microsoft/api-extractor": "7.51.0",
     "@microsoft/api-extractor-model": "7.31.2",
     "@microsoft/eslint-plugin-sdl": "1.0.1",
+    "@microsoft/esrp-npm-release": "^0.1.2",
     "@microsoft/fast-build": "0.9.0",
     "@microsoft/fast-element": "3.0.0",
     "@microsoft/fast-test-harness": "0.4.0",

@@ -7,7 +7,6 @@ const tokenMsg =
   'Generate one here: https://github.com/settings/tokens\n';
 
 export const argv = yargs
-  .option('token', { describe: 'GitHub personal access token', type: 'string', required: tokenMsg })
   .option('apply', {
     describe: 'Actually apply changes (without this option, do a dry run)',
     type: 'boolean',
@@ -31,12 +30,18 @@ export const argv = yargs
   .version(false)
   .help().argv;
 
-if (!argv.token) {
+const token = process.env.TOKEN;
+
+if (!token) {
   console.error(tokenMsg);
   process.exit(1);
 }
+if (token.startsWith('$')) {
+  console.error('The token appears to be an invalid pipeline variable reference');
+  process.exit(1);
+}
 // check for placeholder token from launch.json
-if (argv.token === 'your token here') {
+if (token === 'your token here') {
   console.error(tokenMsg);
   console.error('To test this script, temporarily update launch.json with your token. DO NOT COMMIT YOUR TOKEN!\n');
   process.exit(1);
@@ -50,5 +55,5 @@ export const repoDetails = {
 // Authenticate with github and set up logging if debug arg is provided
 export const github = new Octokit({
   ...(argv.debug && { log: console }),
-  auth: 'token ' + argv.token,
+  auth: 'token ' + token,
 });
