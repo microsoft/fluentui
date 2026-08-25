@@ -50,7 +50,7 @@ export const POSITIONS: {
 };
 
 // @public (undocumented)
-export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
+export const resolvePositioningShorthand: ResolvePositioningShorthand;
 
 // @public (undocumented)
 export function usePositioning(options: PositioningProps): PositioningReturn;
