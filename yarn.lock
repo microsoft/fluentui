@@ -3275,6 +3275,7 @@ __metadata:
   dependencies:
     "@fluentui/react": "npm:*"
     "@fluentui/react-calendar-compat": "npm:*"
+    "@fluentui/react-calendar-preview": "npm:*"
     "@fluentui/react-components": "npm:*"
     "@fluentui/react-datepicker-compat": "npm:*"
     "@fluentui/react-icons-compat": "npm:*"
@@ -3584,7 +3585,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
+"@fluentui/react-calendar-preview@npm:*, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library"
   dependencies:
