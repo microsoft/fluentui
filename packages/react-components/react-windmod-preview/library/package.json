@@ -533,6 +533,36 @@
         "default": "./lib-commonjs/persona.cjs"
       }
     },
+    "./popover": {
+      "import": {
+        "types": "./dist/popover.d.ts",
+        "default": "./lib/popover.js"
+      },
+      "require": {
+        "types": "./dist/popover.d.cts",
+        "default": "./lib-commonjs/popover.cjs"
+      }
+    },
+    "./popover-surface": {
+      "import": {
+        "types": "./dist/popover-surface.d.ts",
+        "default": "./lib/popover-surface.js"
+      },
+      "require": {
+        "types": "./dist/popover-surface.d.cts",
+        "default": "./lib-commonjs/popover-surface.cjs"
+      }
+    },
+    "./popover-trigger": {
+      "import": {
+        "types": "./dist/popover-trigger.d.ts",
+        "default": "./lib/popover-trigger.js"
+      },
+      "require": {
+        "types": "./dist/popover-trigger.d.cts",
+        "default": "./lib-commonjs/popover-trigger.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

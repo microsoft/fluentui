@@ -13,7 +13,7 @@ no `@griffel/react` in the dependency graph, and no `makeStyles` to migrate.
 
 The goal is a drop-in reskin, not a redesign. Components render the same DOM and take the same props as
 their Griffel counterparts, and every shipped component is compared against its Griffel twin
-pixel-for-pixel at a **zero-difference** threshold — 40 side-by-side scenes, one exception, documented
+pixel-for-pixel at a **zero-difference** threshold — 41 side-by-side scenes, one exception, documented
 under [Tooltip](#27-tooltips-arrow-sits-differently-on-corner-placements).
 
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
@@ -69,7 +69,7 @@ import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
 import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 ```
 
-79 component subpaths ship, all kebab-case:
+82 component subpaths ship, all kebab-case:
 
 | Family        | Subpaths                                                                                                                                        |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -84,6 +84,7 @@ import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 | Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                              |
 | Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`      |
 | People        | `./avatar` `./persona`                                                                                                                          |
+| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                             |
 | Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                   |
 | Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                  |
 | Tabs          | `./tab` `./tab-list`                                                                                                                            |
@@ -417,11 +418,12 @@ The headless positioning layer uses native CSS anchor positioning (`anchor-name`
 floating-ui fallback path anywhere in it.
 
 **On a browser without CSS anchor positioning the surface renders unpositioned at the viewport origin.** As
-of today that means Firefox and Safari. `Tooltip` is the only anchored component this package ships, so the
-exposure is bounded, but it is total on those engines.
+of today that means Firefox and Safari. `Tooltip` and `Popover` are the anchored components this package
+ships, so the exposure is bounded to them, but it is total on those engines. The measured displacement for
+an unpositioned Popover surface is dx −1016.953, dy −419 from its trigger.
 
-If you must support them, either polyfill CSS anchor positioning, or keep `Tooltip` on
-`@fluentui/react-components` — it composes over windmod children without trouble.
+If you must support them, either polyfill CSS anchor positioning, or keep `Tooltip` and `Popover` on
+`@fluentui/react-components` — both compose over windmod children without trouble.
 
 #### 27. `Tooltip`'s arrow sits differently on corner placements
 
@@ -450,7 +452,6 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | Not shipped                                                                                         | Why                                                                                                                                     |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `Menu` and family                                                                                   | headless ships it, windmod has not reskinned it yet; keep it on `@fluentui/react-components`                                            |
-| `Popover`, `PopoverSurface`, `PopoverTrigger`                                                       | as above                                                                                                                                |
 | `Dialog`, `Drawer`                                                                                  | as above                                                                                                                                |
 | `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
 | `TagPicker` and family                                                                              | as above                                                                                                                                |

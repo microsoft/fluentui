@@ -1,0 +1,128 @@
+@reference '#theme';
+
+/* The root is a native <dialog>: popover="auto" when non-modal, showModal() under trapFocus.
+   Placement rides data-placement on this element. The arrow is rendered without a className, so
+   it is reached by descendant selector and keys placement off the root's named group.
+   The arrow's geometry, its per-axis rules and the filter-shadow token gap are documented once in
+   Tooltip.module.css; only what differs here is restated. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply box-border max-h-none max-w-none cursor-default overflow-visible rounded-medium border border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+
+    /* Griffel clamps floating-ui's arrow at 2 × borderRadiusMedium. */
+    --fui-positioning-arrow-cross: 8px;
+
+    filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
+      drop-shadow(0 8px 16px var(--color-neutral-shadow-key));
+
+    /* showModal() paints a translucent user-agent backdrop; the Griffel surface paints none. */
+    @variant backdrop {
+      @apply bg-transparent;
+    }
+
+    /* The height and offset are inherited from the size class on this element. */
+    & [data-arrow] {
+      @apply absolute -z-1 box-border size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
+
+      @variant before {
+        @apply -m-px block size-full rounded-bl-small border border-solid border-transparent-stroke bg-inherit;
+
+        clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+      }
+
+      @variant group-placement-above/fui-popover-surface {
+        @apply bottom-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: -45deg;
+      }
+
+      @variant group-placement-below/fui-popover-surface {
+        @apply top-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 135deg;
+      }
+
+      @variant group-placement-before/fui-popover-surface {
+        @apply right-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 225deg;
+      }
+
+      @variant group-placement-after/fui-popover-surface {
+        @apply left-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 45deg;
+      }
+
+      @variant rtl {
+        @variant group-placement-before/fui-popover-surface {
+          @apply right-auto left-(--fui-positioning-arrow-offset);
+
+          --fui-positioning-arrow-angle: 45deg;
+        }
+
+        @variant group-placement-after/fui-popover-surface {
+          @apply right-(--fui-positioning-arrow-offset) left-auto;
+
+          --fui-positioning-arrow-angle: 225deg;
+        }
+      }
+
+      @variant group-placement-above-centered/fui-popover-surface, group-placement-below-centered/fui-popover-surface {
+        @apply inset-x-0 mx-auto;
+      }
+
+      @variant group-placement-before-centered/fui-popover-surface, group-placement-after-centered/fui-popover-surface {
+        @apply inset-y-0 my-auto;
+      }
+
+      @variant group-placement-start/fui-popover-surface {
+        @apply start-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-end/fui-popover-surface {
+        @apply end-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-top/fui-popover-surface {
+        @apply top-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-bottom/fui-popover-surface {
+        @apply bottom-(--fui-positioning-arrow-cross);
+      }
+    }
+  }
+
+  /* 8.484px = 6px × √2 — paired with ARROW_HEIGHTS in Popover.tsx. */
+  .small {
+    @apply p-12;
+
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+  }
+
+  /* 11.312px = 8px × √2. */
+  .medium {
+    @apply p-16;
+
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+
+  .large {
+    @apply p-20;
+
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+
+  .inverted {
+    @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
+  }
+
+  .brand {
+    @apply bg-brand-background text-neutral-foreground-on-brand;
+  }
+}

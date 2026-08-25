@@ -28,8 +28,8 @@ const tooltipOffset = (offset: ResolvedOffset, withArrow: boolean): ResolvedOffs
 /** Tooltip: the headless tooltip (native popover=hint + CSS anchor positioning) with the
  * Fluent visual contract. */
 export const Tooltip = (props: TooltipProps): JSXElement => {
-  // Tooltip is the one component that is not wrapped in forwardRef, so its parameter list is
-  // part of the emitted public signature — the look props destructure in the body instead.
+  // Not wrapped in forwardRef, so the parameter list is part of the emitted public signature —
+  // the look props destructure in the body instead.
   const { appearance = 'normal', positioning = 'above', withArrow = false, ...rest } = props;
 
   const resolved = resolvePositioningShorthand(positioning);

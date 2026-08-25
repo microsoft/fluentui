@@ -420,6 +420,35 @@ export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState }
 export { Persona, personaClassNames, renderPersona, usePersona, usePersonaStyles } from './persona';
 export type { PersonaProps, PersonaSize, PersonaSlots, PersonaState, PersonaTextAlignment } from './persona';
 
+export { Popover, renderPopover, usePopover, usePopoverContext, usePopoverContextValues } from './popover';
+export type {
+  OnOpenChangeData,
+  OpenPopoverEvents,
+  PopoverAppearance,
+  PopoverContextValue,
+  PopoverProps,
+  PopoverSize,
+  PopoverState,
+} from './popover';
+
+export {
+  PopoverSurface,
+  popoverSurfaceClassNames,
+  renderPopoverSurface,
+  usePopoverSurface,
+  usePopoverSurfaceStyles,
+} from './popover-surface';
+export type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './popover-surface';
+
+export {
+  PopoverTrigger,
+  popoverTriggerClassNames,
+  renderPopoverTrigger,
+  usePopoverTrigger,
+  usePopoverTriggerStyles,
+} from './popover-trigger';
+export type { PopoverTriggerProps, PopoverTriggerState } from './popover-trigger';
+
 export {
   ProgressBar,
   progressBarClassNames,

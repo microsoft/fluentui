@@ -38,6 +38,8 @@ export { NavWindmod } from './NavWindmod.stories';
 export { NavGriffel } from './NavGriffel.stories';
 export { PersonaWindmod } from './PersonaWindmod.stories';
 export { PersonaGriffel } from './PersonaGriffel.stories';
+export { PopoverWindmod } from './PopoverWindmod.stories';
+export { PopoverGriffel } from './PopoverGriffel.stories';
 export { ProgressBarWindmod } from './ProgressBarWindmod.stories';
 export { ProgressBarGriffel } from './ProgressBarGriffel.stories';
 export { RadioGroupWindmod } from './RadioGroupWindmod.stories';

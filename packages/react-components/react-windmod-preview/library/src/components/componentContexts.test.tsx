@@ -14,6 +14,9 @@ import { InteractionTagPrimary } from './InteractionTagPrimary';
 import { InteractionTagSecondary } from './InteractionTagSecondary';
 import { Link } from './Link';
 import { MenuButton } from './MenuButton';
+import { Popover } from './Popover';
+import { PopoverSurface } from './PopoverSurface';
+import { PopoverTrigger } from './PopoverTrigger';
 import { ProgressBar } from './ProgressBar';
 import { SearchBox } from './SearchBox';
 import { Select } from './Select';
@@ -481,6 +484,39 @@ describe('component contexts', () => {
 
         expect(avatarIn(container).getAttribute('data-size')).toBe(avatarSizes[size]);
       });
+    });
+  });
+
+  describe('Popover — container-owned look, read by the surface', () => {
+    const surfaceIn = (container: HTMLElement): HTMLElement =>
+      container.querySelector<HTMLElement>('.fui-popover-surface')!;
+
+    const popover = (props: React.ComponentProps<typeof Popover> = { children: [] as never }) => (
+      <Popover defaultOpen {...props}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>
+    );
+
+    it('lets the popover set the surface’s size and appearance', () => {
+      const { container } = render(popover({ size: 'large', appearance: 'brand' } as never));
+      const { container: base } = render(popover());
+      const { container: sizeOnly } = render(popover({ size: 'large' } as never));
+
+      expect(surfaceIn(container).getAttribute('data-size')).toBe('large');
+      // Compared against the DEFAULT look, not an identical render: the classes have to actually
+      // move, or the look never crossed the child boundary. The size-only render isolates the
+      // second prop — against the default alone, the size class satisfies the comparison by itself.
+      expect(surfaceIn(container).className).not.toBe(surfaceIn(base).className);
+      expect(surfaceIn(container).className).not.toBe(surfaceIn(sizeOnly).className);
+    });
+
+    it('leaves a surface outside any Popover on the base look', () => {
+      const { container } = render(<PopoverSurface>Content</PopoverSurface>);
+
+      expect(surfaceIn(container).getAttribute('data-size')).toBe('medium');
     });
   });
 });

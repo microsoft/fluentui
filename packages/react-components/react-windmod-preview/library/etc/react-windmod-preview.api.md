@@ -164,10 +164,20 @@ import { NavSubItemProps } from '@fluentui/react-headless-components-preview/nav
 import { NavSubItemSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavSubItemState as NavSubItemState_2 } from '@fluentui/react-headless-components-preview/nav';
 import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview/nav';
+import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
+import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
+import { PopoverContextValue } from '@fluentui/react-headless-components-preview/popover';
+import type { PopoverProps as PopoverProps_2 } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverState } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverSurfaceProps } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverSurfaceSlots } from '@fluentui/react-headless-components-preview/popover';
+import type { PopoverSurfaceState as PopoverSurfaceState_2 } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverTriggerProps } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverTriggerState } from '@fluentui/react-headless-components-preview/popover';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
 import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -235,6 +245,9 @@ import { renderNavSectionHeader } from '@fluentui/react-headless-components-prev
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
 import { renderPersona } from '@fluentui/react-headless-components-preview/persona';
+import { renderPopover } from '@fluentui/react-headless-components-preview/popover';
+import { renderPopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import { renderPopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
 import { renderProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
 import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -421,6 +434,11 @@ import { useNavSectionHeader } from '@fluentui/react-headless-components-preview
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
 import { usePersona } from '@fluentui/react-headless-components-preview/persona';
+import { usePopover } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverContextValues } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -1459,7 +1477,11 @@ export type NavSubItemState = NavSubItemState_2 & {
 
 export { OnNavItemSelectData }
 
+export { OnOpenChangeData }
+
 export { OnVisibleChangeData }
+
+export { OpenPopoverEvents }
 
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
@@ -1490,6 +1512,58 @@ export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, '
 
 // @public
 export type PersonaTextAlignment = 'center' | 'start';
+
+// @public
+export const Popover: {
+    (props: PopoverProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export type PopoverAppearance = 'brand' | 'inverted';
+
+export { PopoverContextValue }
+
+// @public
+export type PopoverProps = PopoverProps_2 & {
+    appearance?: PopoverAppearance;
+    size?: PopoverSize;
+};
+
+// @public
+export type PopoverSize = 'small' | 'medium' | 'large';
+
+export { PopoverState }
+
+// @public
+export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
+
+// @public
+export const popoverSurfaceClassNames: {
+    root: string;
+};
+
+export { PopoverSurfaceProps }
+
+export { PopoverSurfaceSlots }
+
+// @public
+export type PopoverSurfaceState = PopoverSurfaceState_2 & {
+    appearance?: PopoverAppearance;
+    size: PopoverSize;
+};
+
+// @public
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+
+// @public
+export const popoverTriggerClassNames: {
+    root: string;
+};
+
+export { PopoverTriggerProps }
+
+export { PopoverTriggerState }
 
 // @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
@@ -1719,6 +1793,12 @@ export { renderNavSubItem }
 export { renderNavSubItemGroup }
 
 export { renderPersona }
+
+export { renderPopover }
+
+export { renderPopoverSurface }
+
+export { renderPopoverTrigger }
 
 export { renderProgressBar }
 
@@ -2632,6 +2712,22 @@ export { usePersona }
 
 // @public
 export const usePersonaStyles: (state: PersonaState) => PersonaState;
+
+export { usePopover }
+
+export { usePopoverContext }
+
+export { usePopoverContextValues }
+
+export { usePopoverSurface }
+
+// @public
+export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
+
+export { usePopoverTrigger }
+
+// @public
+export const usePopoverTriggerStyles: (state: PopoverTriggerState) => PopoverTriggerState;
 
 export { useProgressBar }
 
