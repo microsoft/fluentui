@@ -2,6 +2,21 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:05 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jun 2026 10:28:26 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.7.1",
       "version": "0.7.1",

@@ -31,7 +31,7 @@ describe(`generate change file task`, () => {
         1. Make sure your files are staged
         2. Run following command:
 
-        yarn beachball change --scope \\"!packages/fluentui/*\\" --no-commit --message \\"it iiiiz wat it iiiz\\" --type \\"none\\" --dependent-change-type \\"none\\"
+        yarn beachball change --message \\"it iiiiz wat it iiiz\\" --type \\"none\\" --dependent-change-type \\"none\\"
         "
       `);
     });

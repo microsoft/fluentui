@@ -39,7 +39,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Build packages & create reports
         run: yarn nx affected -t bundle-size --nxBail
@@ -50,9 +50,19 @@ jobs:
         if: ${{ github.event.pull_request.base.ref != 'master' }}
         run: echo "::warning::Bundle size comparison skipped — base reports are only produced for the default branch (master). PR targets '${{ github.event.pull_request.base.ref }}'."
 
+      # `compare-reports` exits 1 when an entry exceeds the size threshold, but its stdout is the
+      # markdown report - without echoing it the job fails with a bare "exit code 1" and no reason.
       - name: Compare bundle size with base
         if: ${{ github.event.pull_request.base.ref == 'master' }}
-        run: npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output=markdown --quiet > ./monosize-report.md
+        run: |
+          exit_code=0
+          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output=markdown --quiet > ./monosize-report.md || exit_code=$?
+          cat ./monosize-report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "$exit_code" -ne 0 ]; then
+            echo "::error::Bundle size threshold exceeded - see the job summary for the full report."
+            cat ./monosize-report.md
+          fi
+          exit "$exit_code"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

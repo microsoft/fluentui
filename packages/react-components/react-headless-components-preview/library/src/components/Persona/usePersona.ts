@@ -19,7 +19,7 @@ export const usePersona = (props: PersonaProps, ref: React.Ref<HTMLDivElement>):
   const { textPosition = 'after', ...baseProps } = props;
   const baseState = usePersonaBase_unstable(baseProps, ref);
 
-  return {
+  const state: PersonaState = {
     ...baseState,
     textPosition,
     components: {
@@ -35,4 +35,8 @@ export const usePersona = (props: PersonaProps, ref: React.Ref<HTMLDivElement>):
       elementType: Avatar,
     }),
   };
+
+  state.root['data-text-position'] = state.textPosition;
+
+  return state;
 };

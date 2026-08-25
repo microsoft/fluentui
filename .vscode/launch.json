@@ -36,24 +36,6 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Debug current open test (v0)",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/scripts/executors/src/debug-test.js",
-      "cwd": "${fileDirname}",
-      "stopOnEntry": false,
-      "args": ["-i", "--testPathPatterns=\\b${fileBasenameNoExtension}", "--watch"],
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      "env": {
-        "NODE_ENV": "test"
-      },
-      "sourceMaps": true,
-      "outFiles": ["${workspaceRoot}/packages/fluentui/*/dist/**/*.js"],
-      "outputCapture": "std",
-      "console": "integratedTerminal"
-    },
-    {
       "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",
@@ -156,24 +138,6 @@
       "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
-      },
-      "sourceMaps": true,
-      "console": "integratedTerminal"
-    },
-    {
-      "name": "Debug gulp task",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
-      "stopOnEntry": false,
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      // You can change the task name and cwd locally as needed
-      "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
-      "env": {
-        "NODE_ENV": "development",
-        // This is used in scripts/babel/index.js to enable sourcemaps
-        "DEBUG": "1"
       },
       "sourceMaps": true,
       "console": "integratedTerminal"

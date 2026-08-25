@@ -5,20 +5,18 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import type { LinkBaseProps } from '@fluentui/react-link';
-import { LinkBaseState } from '@fluentui/react-link';
-import type { LinkSlots as LinkSlots_2 } from '@fluentui/react-link';
+import type { LinkBaseState } from '@fluentui/react-link';
+import { LinkBaseProps as LinkProps } from '@fluentui/react-link';
+import { LinkSlots } from '@fluentui/react-link';
 import type * as React_2 from 'react';
+import { renderLink_unstable as renderLink } from '@fluentui/react-link';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
 
-// @public
-export type LinkProps = LinkBaseProps;
+export { LinkProps }
 
-// @public
-export type LinkSlots = LinkSlots_2;
+export { LinkSlots }
 
 // @public
 export type LinkState = LinkBaseState & {
@@ -28,8 +26,7 @@ export type LinkState = LinkBaseState & {
     };
 };
 
-// @public
-export const renderLink: (state: LinkBaseState) => JSXElement;
+export { renderLink }
 
 // @public
 export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>) => LinkState;

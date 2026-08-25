@@ -21,6 +21,7 @@ export interface TsConfig {
 
 export interface PackageJson {
   bin?: string | Record<string, string>;
+  type?: 'module' | 'commonjs';
   types?: string;
   typings?: string;
   private?: boolean;
@@ -47,7 +48,17 @@ export interface PackageJson {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
-  exports?: Record<string, string | Partial<{ types: string; node: string; import: string; require: string }>>;
+  exports?: Record<
+    string,
+    | string
+    | Partial<{
+        types: string;
+        style: string;
+        node: string | { module: string; default: string };
+        import: string | { types: string; default: string };
+        require: string | { types: string; default: string };
+      }>
+  >;
 }
 
 export interface PackageJsonWithBeachball extends PackageJson {

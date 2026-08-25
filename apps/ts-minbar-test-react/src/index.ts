@@ -44,11 +44,12 @@ async function performTest() {
     generateFiles(scaffoldPathRoot, tempPaths.testApp);
     logger(`✔️ Source and configs were copied`);
 
-    await shEcho(`npx npm-which yarn`);
+    await shEcho(`which yarn`);
 
     await shEcho(`yarn --version`);
-    await shEcho(`yarn tsc --version`);
-    await shEcho(`yarn tsc --version`, tempPaths.testApp);
+    // Use 'yarn run -T' for Yarn Modern compatibility to run binaries from workspace root
+    await shEcho(`yarn run -T tsc --version`);
+    await shEcho(`yarn run -T tsc --version`, tempPaths.testApp);
   } catch (err) {
     console.error('Something went wrong setting up the test:');
     console.error(err instanceof Error ? err?.stack : err);
@@ -56,7 +57,8 @@ async function performTest() {
   }
 
   try {
-    await shEcho(`yarn tsc --noEmit`, tempPaths.testApp);
+    // Use 'yarn run -T' for Yarn Modern compatibility to run binaries from workspace root
+    await shEcho(`yarn run -T tsc --noEmit`, tempPaths.testApp);
     logger(`✔️ Example project was successfully built with typescript@${tsVersion}`);
   } catch (e) {
     console.error(e);

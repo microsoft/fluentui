@@ -6,6 +6,7 @@
   line-height: var(--lineHeightBase200);
   width: 100%;
   background: var(--colorNeutralBackground3);
+  color: var(--colorNeutralForeground3);
   border: 1px solid var(--colorNeutralStroke1);
   padding-inline: var(--spacingHorizontalM);
   border-radius: var(--borderRadiusMedium);
@@ -46,7 +47,6 @@
 
 .content {
   grid-area: body;
-  max-width: 520px;
   padding-block: var(--spacingVerticalMNudge);
   padding-inline: 0;
 }
@@ -89,7 +89,6 @@
 :host([layout='multiline']) ::slotted([slot='dismiss']) {
   align-items: start;
   height: 100%;
-  padding-block-start: var(--spacingVerticalS);
 }
 
 ::slotted(*) {

@@ -603,4 +603,49 @@ describe('styleToClassName with specificityMultiplier', () => {
         '}',
     );
   });
+
+  describe('style tag escaping', () => {
+    const payload = 'red;}</style><script>alert(1)</script><style>.x{color:red';
+
+    it.each(['fill', 'background', 'color', 'content', 'fontFamily', 'backgroundImage'] as const)(
+      'escapes a value that would terminate the style element in %s',
+      property => {
+        styleToClassName({}, { [property]: payload });
+
+        const rules = _stylesheet.getRules();
+
+        expect(rules).not.toContain('</style');
+        expect(rules).not.toContain('<script');
+        expect(rules).not.toContain('<');
+        expect(rules).not.toContain('>');
+      },
+    );
+
+    it('escapes angle brackets as css code points', () => {
+      styleToClassName({}, { content: '"a<b>c"' });
+
+      expect(_stylesheet.getRules()).toEqual('.css-0{content:"a\\3C b\\3E c";}');
+    });
+
+    it('does not escape selectors, so combinators keep working', () => {
+      styleToClassName(
+        {},
+        {
+          selectors: {
+            '& > .foo': { background: 'red' },
+          },
+        },
+      );
+
+      expect(_stylesheet.getRules()).toEqual('.css-0 > .foo{background:red;}');
+    });
+
+    it('keeps escaped values out of the class name cache key', () => {
+      const first = styleToClassName({}, { content: '"<"' });
+      const second = styleToClassName({}, { content: '"<"' });
+
+      expect(second).toEqual(first);
+      expect(_stylesheet.getRules()).toEqual('.css-0{content:"\\3C ";}');
+    });
+  });
 });

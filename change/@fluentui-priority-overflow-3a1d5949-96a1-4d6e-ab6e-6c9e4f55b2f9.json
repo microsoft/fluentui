@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: avoid overflow snapshot updates after unmount",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

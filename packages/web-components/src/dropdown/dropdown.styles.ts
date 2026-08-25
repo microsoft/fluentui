@@ -4,7 +4,7 @@ import {
   typographyBody2Styles,
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
-import { openState, placeholderShownState } from '../styles/states/index.js';
+import { nativeDisabledState, openState, placeholderShownState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -216,18 +216,18 @@ export const styles = css`
     --control-border-color: ${colorTransparentStroke};
   }
 
-  :host(:disabled),
-  :host(:disabled) ::slotted(:where(button, input)) {
+  :host(${nativeDisabledState}),
+  :host(${nativeDisabledState}) ::slotted(:where(button, input)) {
     cursor: not-allowed;
   }
 
-  :host(:disabled) .control::before,
-  :host(:disabled) .control::after {
+  :host(${nativeDisabledState}) .control::before,
+  :host(${nativeDisabledState}) .control::after {
     content: none;
   }
 
-  :host(:disabled) .control:is(*, :active, :hover),
-  :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  :host(${nativeDisabledState}) .control:is(*, :active, :hover),
+  :host(${nativeDisabledState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     --control-border-color: ${colorNeutralStrokeDisabled};
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};
@@ -254,10 +254,10 @@ export const styles = css`
   }
 
   @media (forced-colors: active) {
-    :host(:disabled) .control {
+    :host(${nativeDisabledState}) .control {
       border-color: GrayText;
     }
-    :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+    :host(${nativeDisabledState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
       color: GrayText;
     }
   }

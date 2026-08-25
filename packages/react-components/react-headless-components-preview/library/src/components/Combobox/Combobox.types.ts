@@ -10,18 +10,26 @@ export type {
 export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'>;
 
 export type ComboboxState = BaseComboboxState & {
-  input: {
+  root: {
     /**
-     * Whether the combobox is currently open.
+     * Whether the dropdown is currently open.
      */
-    'data-state'?: 'open' | 'closed';
+    'data-open'?: string;
     /**
-     * Whether the input element is currently disabled.
+     * Whether the trigger element is currently disabled.
      */
     'data-disabled'?: string;
     /**
-     * Whether the input element is currently displaying a placeholder.
+     * Whether the trigger element is currently displaying a placeholder.
      */
     'data-placeholder'?: string;
+    /**
+     * Whether the trigger element is currently invalid.
+     */
+    'data-invalid'?: string;
+    /**
+     * Wether the clear icon is visible.
+     */
+    'data-clearable'?: string;
   };
 };

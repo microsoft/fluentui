@@ -1,6 +1,1 @@
-import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
-
-/**
- * Renders the final JSX of the ToolbarRadioGroup component, given the state.
- */
-export const renderToolbarRadioGroup = renderToolbarGroup_unstable;
+export { renderToolbarGroup_unstable as renderToolbarRadioGroup } from '@fluentui/react-toolbar';

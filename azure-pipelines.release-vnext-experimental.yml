@@ -14,8 +14,6 @@ name: 'v9_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
   - name: tags
@@ -55,11 +53,6 @@ extends:
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
               - task: Bash@3
                 name: validation
                 inputs:
@@ -77,10 +70,6 @@ extends:
                     echo "Branch path: $BRANCH_PATH"
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
-
-              - script: |
-                  yarn install --frozen-lockfile
-                displayName: Install dependencies
 
                 # Deletes all existing changefiles so that only bump that happens is for nightly
               - script: |
@@ -117,11 +106,9 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn beachball publish -b origin/$(validation.branchPath) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
+                  yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
                   git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
+                env:
+                  NPM_TOKEN: $(npmToken)

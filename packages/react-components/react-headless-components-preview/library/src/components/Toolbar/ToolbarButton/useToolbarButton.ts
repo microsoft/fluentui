@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useToolbarButtonBase_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a ToolbarButton component, given its props and ref.
@@ -18,13 +18,13 @@ export const useToolbarButton = (
 
   // Set data attributes for vertical, disabled, disabledFocusable, and iconOnly states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  state.root['data-icon-only'] = toDataAttributeValue(state.iconOnly);
 
   return state;
 };

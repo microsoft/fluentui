@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: align @fluentui/fluent2-theme and @fluentui/react dependency ranges with republished v8 versions",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

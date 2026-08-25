@@ -5,23 +5,20 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import type { SwitchBaseProps } from '@fluentui/react-switch';
-import { SwitchBaseState } from '@fluentui/react-switch';
-import type { SwitchSlots as SwitchSlots_2 } from '@fluentui/react-switch';
+import { renderSwitch_unstable as renderSwitch } from '@fluentui/react-switch';
+import type { SwitchBaseState } from '@fluentui/react-switch';
+import { SwitchBaseProps as SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
 
-// @public
-export const renderSwitch: (state: SwitchBaseState) => JSXElement;
+export { renderSwitch }
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public
-export type SwitchProps = SwitchBaseProps;
+export { SwitchProps }
 
-// @public
-export type SwitchSlots = SwitchSlots_2;
+export { SwitchSlots }
 
 // @public
 export type SwitchState = SwitchBaseState & {
@@ -29,6 +26,7 @@ export type SwitchState = SwitchBaseState & {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-checked'?: string;
+        'data-label-position'?: SwitchBaseState['labelPosition'];
     };
 };
 

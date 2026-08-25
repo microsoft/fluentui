@@ -1,20 +1,5 @@
-import type {
-  CardPreviewSlots as CardPreviewBaseSlots,
-  CardPreviewBaseProps,
-  CardPreviewBaseState,
+export type {
+  CardPreviewSlots,
+  CardPreviewBaseProps as CardPreviewProps,
+  CardPreviewBaseState as CardPreviewState,
 } from '@fluentui/react-card';
-
-/**
- * CardPreview component slots
- */
-export type CardPreviewSlots = CardPreviewBaseSlots;
-
-/**
- * CardPreview component props
- */
-export type CardPreviewProps = CardPreviewBaseProps;
-
-/**
- * CardPreview component state
- */
-export type CardPreviewState = CardPreviewBaseState;

@@ -5,23 +5,20 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import type { SpinnerBaseProps } from '@fluentui/react-spinner';
-import { SpinnerBaseState } from '@fluentui/react-spinner';
-import type { SpinnerSlots as SpinnerSlots_2 } from '@fluentui/react-spinner';
+import { renderSpinner_unstable as renderSpinner } from '@fluentui/react-spinner';
+import type { SpinnerBaseState } from '@fluentui/react-spinner';
+import { SpinnerBaseProps as SpinnerProps } from '@fluentui/react-spinner';
+import { SpinnerSlots } from '@fluentui/react-spinner';
 
-// @public
-export const renderSpinner: (state: SpinnerBaseState) => JSXElement;
+export { renderSpinner }
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
 
-// @public
-export type SpinnerProps = SpinnerBaseProps;
+export { SpinnerProps }
 
-// @public
-export type SpinnerSlots = SpinnerSlots_2;
+export { SpinnerSlots }
 
 // @public
 export type SpinnerState = SpinnerBaseState & {

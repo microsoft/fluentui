@@ -5,33 +5,29 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import type { RatingDisplayBaseProps } from '@fluentui/react-rating';
-import { RatingDisplayBaseState } from '@fluentui/react-rating';
 import { RatingDisplayContextValues } from '@fluentui/react-rating';
-import type { RatingDisplaySlots as RatingDisplaySlots_2 } from '@fluentui/react-rating';
+import { RatingDisplayBaseProps as RatingDisplayProps } from '@fluentui/react-rating';
+import { RatingDisplaySlots } from '@fluentui/react-rating';
+import { RatingDisplayBaseState as RatingDisplayState } from '@fluentui/react-rating';
 import * as React_2 from 'react';
+import { renderRatingDisplay_unstable as renderRatingDisplay } from '@fluentui/react-rating';
 
 // @public
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
 
-// @public
-export type RatingDisplayProps = RatingDisplayBaseProps;
+export { RatingDisplayProps }
 
-// @public
-export type RatingDisplaySlots = RatingDisplaySlots_2;
+export { RatingDisplaySlots }
 
-// @public
-export type RatingDisplayState = RatingDisplayBaseState;
+export { RatingDisplayState }
 
-// @public
-export const renderRatingDisplay: (state: RatingDisplayBaseState, contextValues: RatingDisplayContextValues) => JSXElement;
+export { renderRatingDisplay }
 
 // @public
 export const useRatingDisplay: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
 
 // @public (undocumented)
-export const useRatingDisplayContextValues: (state: RatingDisplayState) => RatingDisplayContextValues_2;
+export const useRatingDisplayContextValues: (state: RatingDisplayState) => RatingDisplayContextValues;
 
 // (No @packageDocumentation comment for this package)
 

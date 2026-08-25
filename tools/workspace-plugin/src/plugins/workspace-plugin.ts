@@ -47,7 +47,14 @@ interface TargetPluginOption {
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
   async (configFiles, options, context) => {
-    const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = { pmc: getPackageManagerCommand('yarn') };
+    const pmc = getPackageManagerCommand('yarn');
+    const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = {
+      pmc: {
+        ...pmc,
+        // Generated targets use binaries installed in the root workspace.
+        exec: 'yarn run -T',
+      },
+    };
 
     measureStart('workspace-plugin');
     const nodes = await createNodesFromFiles(
@@ -190,6 +197,11 @@ function buildWorkspaceProjectConfiguration(
     targets['bundle-size'] = bundleSizeTarget;
   }
 
+  const verifyBundleIsolationTarget = buildVerifyBundleIsolationTarget(projectRoot, options, context, config);
+  if (verifyBundleIsolationTarget) {
+    targets['verify-bundle-isolation'] = verifyBundleIsolationTarget;
+  }
+
   // react v9 lib
   if (config.projectJSON.projectType === 'library' && config.tags.includes('vNext')) {
     // *-stories projects
@@ -274,6 +286,11 @@ function buildWorkspaceProjectConfiguration(
     const verifyPackagingTarget = buildVerifyPackagingTarget(projectRoot, options, context, config);
     if (verifyPackagingTarget) {
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
+    }
+
+    const attwTarget = buildAttwTarget(projectRoot, config);
+    if (attwTarget) {
+      targets.attw = attwTarget;
     }
 
     let metadata: WorkspaceTargets['metadata'];
@@ -405,7 +422,11 @@ function buildTestTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
-  if (!existsSync(join(projectRoot, 'jest.config.js')) && !existsSync(join(projectRoot, 'jest.config.ts'))) {
+  if (
+    !existsSync(join(projectRoot, 'jest.config.js')) &&
+    !existsSync(join(projectRoot, 'jest.config.cjs')) &&
+    !existsSync(join(projectRoot, 'jest.config.ts'))
+  ) {
     return null;
   }
 
@@ -426,6 +447,28 @@ function buildTestTarget(
           },
         },
       },
+    },
+  };
+}
+
+function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
+  // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
+  if (config.packageJSON.private || !config.packageJSON.exports) {
+    return null;
+  }
+
+  return {
+    executor: 'nx:run-commands',
+    cache: true,
+    dependsOn: ['build'],
+    options: {
+      cwd: projectRoot,
+      command: `${config.pmc.exec} attw --pack --profile node16`,
+    },
+    inputs: ['default', { externalDependencies: ['@arethetypeswrong/cli'] }],
+    metadata: {
+      description: 'Validate package types & export map with @arethetypeswrong/cli (optional)',
+      technologies: ['typescript'],
     },
   };
 }
@@ -524,6 +567,37 @@ function buildBundleSizeTarget(
         command: `${config.pmc.exec} monosize measure --help`,
         example: {},
       },
+    },
+  };
+}
+
+function buildVerifyBundleIsolationTarget(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration | null {
+  if (!existsSync(join(projectRoot, 'bundle-isolation.config.json'))) {
+    return null;
+  }
+
+  return {
+    cache: true,
+    // Must bundle built output - resolving to sources makes the verdict meaningless, and the tool errors on it.
+    dependsOn: ['build', '^build'],
+    command: `${config.pmc.exec} verify-bundle-isolation`,
+    options: { cwd: projectRoot },
+    inputs: [
+      'default',
+      '^default',
+      // Also what makes `nx affected` select consumers when the checker itself changes.
+      '{workspaceRoot}/tools/verify-bundle-isolation/**',
+      { externalDependencies: ['ajv', 'webpack'] },
+    ],
+    outputs: ['{projectRoot}/dist/bundle-isolation'],
+    metadata: {
+      technologies: ['webpack'],
+      description: 'Assert entry points do not bundle runtimes the package is meant to stay free of',
     },
   };
 }
@@ -700,6 +774,10 @@ function buildReactIntegrationTesterProjectConfiguration(
     return {};
   }
 
+  // rit is provided by @fluentui/react-integration-tester which is a root devDependency,
+  // so `yarn run -T rit` resolves it correctly.
+  const ritBin = `${config.pmc.exec} rit`;
+
   const targets: Record<string, TargetConfiguration> = {};
   const inputs = [
     'default',
@@ -740,7 +818,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
     if (!skipPrepare) {
       targets[targetNamePrepare] = {
-        command: `${config.pmc.exec} rit --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
+        command: `${ritBin} --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
         options: {
           cwd: '{projectRoot}',
         },
@@ -755,7 +833,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           technologies: ['react-integration-tester'],
           description: `Run react integration tests against React ${reactVersion}`,
           help: {
-            command: `${config.pmc.exec} rit --help`,
+            command: `${ritBin} --help`,
             example: {},
           },
         },
@@ -768,7 +846,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
       if (runOption === 'type-check') {
         const defaultTargetDefinition = {
-          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          command: `${ritBin} --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
           inputs,
@@ -778,7 +856,7 @@ function buildReactIntegrationTesterProjectConfiguration(
             technologies: ['react-integration-tester'],
             description: `Run react integration tests against React ${reactVersion}`,
             help: {
-              command: `${config.pmc.exec} rit --help`,
+              command: `${ritBin} --help`,
               example: {},
             },
           },
@@ -798,7 +876,7 @@ function buildReactIntegrationTesterProjectConfiguration(
         }
       } else {
         targets[targetName] = {
-          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          command: `${ritBin} --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
           inputs,
@@ -810,7 +888,7 @@ function buildReactIntegrationTesterProjectConfiguration(
             technologies: ['react-integration-tester'],
             description: `Run react integration tests against React ${reactVersion}`,
             help: {
-              command: `${config.pmc.exec} rit --help`,
+              command: `${ritBin} --help`,
               example: {},
             },
           },
@@ -841,7 +919,7 @@ function buildReactIntegrationTesterProjectConfiguration(
       technologies: ['react-integration-tester'],
       description: `Run react integration tests against React ${reactVersions.join(', ')}`,
       help: {
-        command: `${config.pmc.exec} rit --help`,
+        command: `${ritBin} --help`,
         example: {},
       },
     },
@@ -864,16 +942,22 @@ function buildReactIntegrationTesterProjectConfiguration(
       hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
       hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
       hasTest:
-        (existsSync(join(projectRootPath, 'jest.config.js')) || existsSync(join(projectRootPath, 'jest.config.ts'))) &&
+        (existsSync(join(projectRootPath, 'jest.config.js')) ||
+          existsSync(join(projectRootPath, 'jest.config.cjs')) ||
+          existsSync(join(projectRootPath, 'jest.config.ts'))) &&
         !storybookAdjacent,
     };
 
-    const ritConfigPathLocal = join(projectRootPath, 'rit.config.js');
+    // web packages ship as `type: module`, so their CommonJS rit config uses `.cjs`; fall back to `.js`
+    const ritConfigPathLocal = [
+      resolve(projectRootPath, 'rit.config.cjs'),
+      resolve(projectRootPath, 'rit.config.js'),
+    ].find(candidate => existsSync(candidate));
 
-    if (existsSync(ritConfigPathLocal)) {
+    if (ritConfigPathLocal) {
       try {
         type RITConfig = { react: Record<string, { runConfig?: Record<string, { configPath: string }> }> };
-        const loaded = require(resolve(projectRootPath, 'rit.config.js'));
+        const loaded = require(ritConfigPathLocal);
         const rit: RITConfig = loaded?.default ?? loaded;
 
         if (rit && typeof rit === 'object' && rit.react && rit.react[reactVersion]) {

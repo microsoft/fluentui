@@ -2,6 +2,29 @@
   "name": "@fluentui/babel-preset-storybook-full-source",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:07 GMT",
+      "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "90a83b2df1d9760a59d2253928999a892119bf29",
+            "comment": "feat: add opt-in `storyGranularity: 'story'` mode that emits a per-story sliced `fullSource` for files with multiple story exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2026 18:28:49 GMT",
       "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.2",
       "version": "0.1.2",
