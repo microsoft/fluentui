@@ -3585,7 +3585,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-calendar-preview@npm:*, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
+"@fluentui/react-calendar-preview@npm:*, @fluentui/react-calendar-preview@npm:^0.1.0, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library"
   dependencies:
@@ -4382,6 +4382,7 @@ __metadata:
     "@fluentui/react-badge": "npm:^9.5.5"
     "@fluentui/react-breadcrumb": "npm:^9.4.5"
     "@fluentui/react-button": "npm:^9.11.0"
+    "@fluentui/react-calendar-preview": "npm:^0.1.0"
     "@fluentui/react-card": "npm:^9.7.2"
     "@fluentui/react-checkbox": "npm:^9.6.4"
     "@fluentui/react-color-picker": "npm:^9.3.0"
