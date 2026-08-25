@@ -107,6 +107,25 @@ import { DialogTriggerState } from '@fluentui/react-headless-components-preview/
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
+import { DrawerBodyProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerBodySlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerBodyState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerProvider } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
+import type { DrawerState as DrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -120,6 +139,9 @@ import type { ImageState as ImageState_2 } from '@fluentui/react-headless-compon
 import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { InlineDrawerProps as InlineDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { InlineDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
+import type { InlineDrawerState as InlineDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { InputProps as InputProps_2 } from '@fluentui/react-headless-components-preview/input';
 import { InputSlots } from '@fluentui/react-headless-components-preview/input';
 import type { InputState as InputState_2 } from '@fluentui/react-headless-components-preview/input';
@@ -194,6 +216,9 @@ import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview
 import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
+import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { OverlayDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
+import type { OverlayDrawerState as OverlayDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
@@ -254,10 +279,17 @@ import { renderDialogHeader } from '@fluentui/react-headless-components-preview/
 import { renderDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
+import { renderDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
 import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -277,6 +309,7 @@ import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { renderOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { renderPersona } from '@fluentui/react-headless-components-preview/persona';
 import { renderPopover } from '@fluentui/react-headless-components-preview/popover';
 import { renderPopoverSurface } from '@fluentui/react-headless-components-preview/popover';
@@ -438,6 +471,14 @@ import { useDialogSurfaceContext } from '@fluentui/react-headless-components-pre
 import { useDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
 import { useDialogTrigger } from '@fluentui/react-headless-components-preview/dialog';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
+import { useDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerContext } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
 import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useField } from '@fluentui/react-headless-components-preview/field';
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
@@ -445,6 +486,7 @@ import { useFieldContextValues } from '@fluentui/react-headless-components-previ
 import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -476,6 +518,7 @@ import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { useOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { usePersona } from '@fluentui/react-headless-components-preview/persona';
 import { usePopover } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
@@ -1144,6 +1187,103 @@ export { DividerSlots }
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
 
 // @public
+export const Drawer: ForwardRefComponent<DrawerProps>;
+
+// @public
+export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
+
+// @public
+export const drawerBodyClassNames: {
+    root: string;
+};
+
+export { DrawerBodyProps }
+
+export { DrawerBodySlots }
+
+export { DrawerBodyState }
+
+// @public
+export const drawerClassNames: {
+    root: string;
+};
+
+export { DrawerContextValue }
+
+// @public
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
+
+// @public
+export const drawerFooterClassNames: {
+    root: string;
+};
+
+export { DrawerFooterProps }
+
+export { DrawerFooterSlots }
+
+export { DrawerFooterState }
+
+// @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public
+export const drawerHeaderClassNames: {
+    root: string;
+};
+
+// @public
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
+
+// @public
+export const drawerHeaderNavigationClassNames: {
+    root: string;
+};
+
+export { DrawerHeaderNavigationProps }
+
+export { DrawerHeaderNavigationSlots }
+
+export { DrawerHeaderNavigationState }
+
+export { DrawerHeaderProps }
+
+export { DrawerHeaderSlots }
+
+export { DrawerHeaderState }
+
+// @public
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
+
+// @public
+export const drawerHeaderTitleClassNames: {
+    root: string;
+};
+
+export { DrawerHeaderTitleProps }
+
+export { DrawerHeaderTitleSlots }
+
+export { DrawerHeaderTitleState }
+
+// @public (undocumented)
+export type DrawerProps = (OverlayDrawerProps & {
+    type?: 'overlay';
+}) | (InlineDrawerProps & {
+    type: 'inline';
+});
+
+export { DrawerProvider }
+
+// @public
+export type DrawerSize = 'small' | 'medium' | 'large' | 'full';
+
+export { DrawerSlots }
+
+// @public (undocumented)
+export type DrawerState = DrawerState_2;
+
+// @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
 
 // @public
@@ -1252,6 +1392,28 @@ export { ImageSwatchSlots }
 export type ImageSwatchState = ImageSwatchState_2 & {
     size: SwatchPickerSize;
     shape: SwatchPickerShape;
+};
+
+// @public
+export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
+
+// @public
+export const inlineDrawerClassNames: {
+    root: string;
+};
+
+// @public
+export type InlineDrawerProps = InlineDrawerProps_2 & {
+    size?: DrawerSize;
+    separator?: boolean;
+};
+
+export { InlineDrawerSlots }
+
+// @public (undocumented)
+export type InlineDrawerState = InlineDrawerState_2 & {
+    size: DrawerSize;
+    separator: boolean;
 };
 
 // @public
@@ -1646,6 +1808,26 @@ export { OnVisibleChangeData }
 export { OpenPopoverEvents }
 
 // @public
+export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
+
+// @public
+export const overlayDrawerClassNames: {
+    root: string;
+};
+
+// @public
+export type OverlayDrawerProps = OverlayDrawerProps_2 & {
+    size?: DrawerSize;
+};
+
+export { OverlayDrawerSlots }
+
+// @public (undocumented)
+export type OverlayDrawerState = OverlayDrawerState_2 & {
+    size: DrawerSize;
+};
+
+// @public
 export const Persona: ForwardRefComponent<PersonaProps>;
 
 // @public
@@ -1920,6 +2102,18 @@ export { renderDialogTitle }
 
 export { renderDivider }
 
+export { renderDrawer }
+
+export { renderDrawerBody }
+
+export { renderDrawerFooter }
+
+export { renderDrawerHeader }
+
+export { renderDrawerHeaderNavigation }
+
+export { renderDrawerHeaderTitle }
+
 export { renderEmptySwatch }
 
 export { renderField }
@@ -1927,6 +2121,8 @@ export { renderField }
 export { renderImage }
 
 export { renderImageSwatch }
+
+export { renderInlineDrawer }
 
 export { renderInput }
 
@@ -1965,6 +2161,8 @@ export { renderNavSectionHeader }
 export { renderNavSubItem }
 
 export { renderNavSubItemGroup }
+
+export { renderOverlayDrawer }
 
 export { renderPersona }
 
@@ -2778,6 +2976,40 @@ export { useDivider }
 // @public
 export const useDividerStyles: (state: DividerState) => DividerState;
 
+export { useDrawer }
+
+export { useDrawerBody }
+
+// @public
+export const useDrawerBodyStyles: (state: DrawerBodyState) => DrawerBodyState;
+
+export { useDrawerContext }
+
+export { useDrawerContextValue }
+
+export { useDrawerFooter }
+
+// @public
+export const useDrawerFooterStyles: (state: DrawerFooterState) => DrawerFooterState;
+
+export { useDrawerHeader }
+
+export { useDrawerHeaderNavigation }
+
+// @public
+export const useDrawerHeaderNavigationStyles: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderStyles: (state: DrawerHeaderState) => DrawerHeaderState;
+
+export { useDrawerHeaderTitle }
+
+// @public
+export const useDrawerHeaderTitleStyles: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
+
+// @public
+export const useDrawerStyles: (state: DrawerState) => DrawerState;
+
 export { useEmptySwatch }
 
 // @public
@@ -2803,6 +3035,11 @@ export { useImageSwatch }
 
 // @public
 export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
+
+export { useInlineDrawer }
+
+// @public
+export const useInlineDrawerStyles: (state: InlineDrawerState) => InlineDrawerState;
 
 export { useInput }
 
@@ -2919,6 +3156,11 @@ export const useNavSubItemGroupStyles: (state: NavSubItemGroupState) => NavSubIt
 
 // @public
 export const useNavSubItemStyles: (state: NavSubItemState) => NavSubItemState;
+
+export { useOverlayDrawer }
+
+// @public
+export const useOverlayDrawerStyles: (state: OverlayDrawerState) => OverlayDrawerState;
 
 export { usePersona }
 

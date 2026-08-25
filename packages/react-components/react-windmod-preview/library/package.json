@@ -293,6 +293,66 @@
         "default": "./lib-commonjs/divider.cjs"
       }
     },
+    "./drawer": {
+      "import": {
+        "types": "./dist/drawer.d.ts",
+        "default": "./lib/drawer.js"
+      },
+      "require": {
+        "types": "./dist/drawer.d.cts",
+        "default": "./lib-commonjs/drawer.cjs"
+      }
+    },
+    "./drawer-body": {
+      "import": {
+        "types": "./dist/drawer-body.d.ts",
+        "default": "./lib/drawer-body.js"
+      },
+      "require": {
+        "types": "./dist/drawer-body.d.cts",
+        "default": "./lib-commonjs/drawer-body.cjs"
+      }
+    },
+    "./drawer-footer": {
+      "import": {
+        "types": "./dist/drawer-footer.d.ts",
+        "default": "./lib/drawer-footer.js"
+      },
+      "require": {
+        "types": "./dist/drawer-footer.d.cts",
+        "default": "./lib-commonjs/drawer-footer.cjs"
+      }
+    },
+    "./drawer-header": {
+      "import": {
+        "types": "./dist/drawer-header.d.ts",
+        "default": "./lib/drawer-header.js"
+      },
+      "require": {
+        "types": "./dist/drawer-header.d.cts",
+        "default": "./lib-commonjs/drawer-header.cjs"
+      }
+    },
+    "./drawer-header-navigation": {
+      "import": {
+        "types": "./dist/drawer-header-navigation.d.ts",
+        "default": "./lib/drawer-header-navigation.js"
+      },
+      "require": {
+        "types": "./dist/drawer-header-navigation.d.cts",
+        "default": "./lib-commonjs/drawer-header-navigation.cjs"
+      }
+    },
+    "./drawer-header-title": {
+      "import": {
+        "types": "./dist/drawer-header-title.d.ts",
+        "default": "./lib/drawer-header-title.js"
+      },
+      "require": {
+        "types": "./dist/drawer-header-title.d.cts",
+        "default": "./lib-commonjs/drawer-header-title.cjs"
+      }
+    },
     "./empty-swatch": {
       "import": {
         "types": "./dist/empty-swatch.d.ts",
@@ -341,6 +401,16 @@
       "require": {
         "types": "./dist/image-swatch.d.cts",
         "default": "./lib-commonjs/image-swatch.cjs"
+      }
+    },
+    "./inline-drawer": {
+      "import": {
+        "types": "./dist/inline-drawer.d.ts",
+        "default": "./lib/inline-drawer.js"
+      },
+      "require": {
+        "types": "./dist/inline-drawer.d.cts",
+        "default": "./lib-commonjs/inline-drawer.cjs"
       }
     },
     "./input": {
@@ -533,6 +603,16 @@
         "default": "./lib-commonjs/nav-sub-item-group.cjs"
       }
     },
+    "./overlay-drawer": {
+      "import": {
+        "types": "./dist/overlay-drawer.d.ts",
+        "default": "./lib/overlay-drawer.js"
+      },
+      "require": {
+        "types": "./dist/overlay-drawer.d.cts",
+        "default": "./lib-commonjs/overlay-drawer.cjs"
+      }
+    },
     "./persona": {
       "import": {
         "types": "./dist/persona.d.ts",
@@ -713,6 +793,7 @@
         "default": "./lib-commonjs/split-button.cjs"
       }
     },
+    "./styles.css": "./dist/styles.css",
     "./swatch-picker": {
       "import": {
         "types": "./dist/swatch-picker.d.ts",
@@ -883,7 +964,6 @@
         "default": "./lib-commonjs/tooltip.cjs"
       }
     },
-    "./styles.css": "./dist/styles.css",
     "./variants.css": "./src/variants.css",
     "./package.json": "./package.json"
   },

@@ -1,0 +1,62 @@
+@reference '#theme';
+
+/* An in-flow <div>: never promoted, never fixed, so it needs none of the user-agent
+   neutralisations OverlayDrawer.module.css documents, and it carries no shadow — Griffel's
+   InlineDrawerMotion animates only transform and opacity, whose rest values are the base style.
+   `separator` recolours the edge border the position bucket already draws; only at `bottom`, where
+   that bucket draws none, does it add one. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border flex h-auto max-h-[100vh] w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
+
+    --fui-drawer-size: 320px;
+
+    @variant size-medium {
+      --fui-drawer-size: 592px;
+    }
+
+    @variant size-large {
+      --fui-drawer-size: 940px;
+    }
+
+    @variant size-full {
+      --fui-drawer-size: 100vw;
+    }
+
+    @variant position-start {
+      @apply start-0 end-auto;
+
+      border-inline-end: var(--stroke-width-thin) solid var(--color-transparent-stroke);
+
+      @variant separator {
+        border-inline-end-color: var(--color-neutral-background-3);
+      }
+    }
+
+    @variant position-end {
+      @apply start-auto end-0;
+
+      border-inline-start: var(--stroke-width-thin) solid var(--color-transparent-stroke);
+
+      @variant separator {
+        border-inline-start-color: var(--color-neutral-background-3);
+      }
+    }
+
+    @variant position-bottom {
+      @apply h-(--fui-drawer-size) w-full;
+
+      inset-block-end: 0;
+      inset-block-start: auto;
+
+      @variant size-full {
+        --fui-drawer-size: 100%;
+      }
+
+      @variant separator {
+        border-block-start: 1px solid var(--color-neutral-background-3);
+      }
+    }
+  }
+}

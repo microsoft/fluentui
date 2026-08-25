@@ -26,6 +26,26 @@ export { DialogScrollWindmod } from './DialogScrollWindmod.stories';
 export { DialogScrollGriffel } from './DialogScrollGriffel.stories';
 export { DividerWindmod } from './DividerWindmod.stories';
 export { DividerGriffel } from './DividerGriffel.stories';
+// Explicit named exports, never `export *` — the CSF indexer does not resolve a star re-export, so
+// a starred band silently produces a storybook without its iframe entry.
+export {
+  DrawerBottomWindmod,
+  DrawerEndWindmod,
+  DrawerFullWindmod,
+  DrawerInlineWindmod,
+  DrawerRtlWindmod,
+  DrawerScrollWindmod,
+  DrawerWindmod,
+} from './DrawerWindmod.stories';
+export {
+  DrawerBottomGriffel,
+  DrawerEndGriffel,
+  DrawerFullGriffel,
+  DrawerGriffel,
+  DrawerInlineGriffel,
+  DrawerRtlGriffel,
+  DrawerScrollGriffel,
+} from './DrawerGriffel.stories';
 export { FieldWindmod } from './FieldWindmod.stories';
 export { FieldGriffel } from './FieldGriffel.stories';
 export { ImageWindmod } from './ImageWindmod.stories';
