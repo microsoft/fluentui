@@ -2,6 +2,31 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "0.6.37",
+      "tag": "@fluentui/react-datepicker-compat_v0.6.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-calendar-compat to v0.4.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.14.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:15 GMT",
       "version": "0.6.36",
       "tag": "@fluentui/react-datepicker-compat_v0.6.36",

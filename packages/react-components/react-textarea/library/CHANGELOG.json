@@ -2,6 +2,20 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.7.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "chore: add TODO for the no-op `supportsSize` field control option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.7.6",
       "tag": "@fluentui/react-textarea_v9.7.6",

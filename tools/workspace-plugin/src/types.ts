@@ -30,6 +30,10 @@ export interface PackageJson {
   main: string;
   module?: string;
   /**
+   * Marks the package as free of side effects so bundlers can tree-shake unused exports.
+   */
+  sideEffects?: boolean | string[];
+  /**
    * Vite and Webpack(sass-loader) consume this field
    * @see https://github.com/microsoft/fluentui/pull/27274
    */

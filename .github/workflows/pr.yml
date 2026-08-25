@@ -51,6 +51,7 @@ jobs:
       - name: Workspace lint
         run: |
           yarn nx run workspace-plugin:check-graph
+          yarn nx sync:check
           yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
           yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
 

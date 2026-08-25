@@ -7,6 +7,7 @@
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { MenuBaseProps } from '@fluentui/react-menu';
 import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuContextValues } from '@fluentui/react-menu';
 import { MenuDividerProps } from '@fluentui/react-menu';
@@ -35,13 +36,12 @@ import { MenuItemSwitchState } from '@fluentui/react-menu';
 import type { MenuListContextValues } from '@fluentui/react-menu';
 import { MenuListProps } from '@fluentui/react-menu';
 import { MenuListSlots } from '@fluentui/react-menu';
-import type { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
+import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
 import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuPopoverProps } from '@fluentui/react-menu';
 import { MenuPopoverSlots } from '@fluentui/react-menu';
 import { MenuPopoverState } from '@fluentui/react-menu';
-import { MenuBaseProps as MenuProps } from '@fluentui/react-menu';
 import { MenuSplitGroupProps } from '@fluentui/react-menu';
 import { MenuSplitGroupSlots } from '@fluentui/react-menu';
 import { MenuSplitGroupState } from '@fluentui/react-menu';
@@ -49,6 +49,8 @@ import { MenuBaseState as MenuState } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { renderMenuDivider_unstable as renderMenuDivider } from '@fluentui/react-menu';
 import { renderMenuGroup_unstable as renderMenuGroup } from '@fluentui/react-menu';
@@ -166,12 +168,7 @@ export { MenuListProps }
 
 export { MenuListSlots }
 
-// @public (undocumented)
-export type MenuListState = MenuListState_2 & {
-    root: {
-        focusgroup?: string;
-    };
-};
+export { MenuListState }
 
 export { MenuOpenChangeData }
 
@@ -186,7 +183,10 @@ export { MenuPopoverSlots }
 
 export { MenuPopoverState }
 
-export { MenuProps }
+// @public (undocumented)
+export type MenuProps = Omit<MenuBaseProps, 'positioning'> & {
+    positioning?: PositioningShorthand;
+};
 
 // @public (undocumented)
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -228,7 +228,7 @@ export { renderMenuItemRadio }
 export { renderMenuItemSwitch }
 
 // @public (undocumented)
-export const renderMenuList: (state: MenuListState_2, contextValues: MenuListContextValues) => JSXElement;
+export const renderMenuList: (state: MenuListState, contextValues: MenuListContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderMenuPopover: (state: MenuPopoverState) => JSXElement;
