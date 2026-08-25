@@ -1,0 +1,25 @@
+@reference '#theme';
+
+/* The heading and action carry react-dialog's DialogTitle reset, which Griffel's
+   useDrawerHeaderTitleStyles delegates to. That reset is written for a grid container while this
+   root is flex, so every grid-* declaration below is inert on both sides; they are authored for
+   computed-style parity. `align-self: start` is the one that paints — inside `items-center` it
+   pins the action box to the top of the heading's line box. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-center justify-between gap-x-horizontal-s;
+  }
+
+  .heading {
+    @apply col-start-1 col-end-3 row-start-1 row-end-1 m-0 font-base text-base-500 leading-base-500 font-semibold;
+  }
+
+  .heading-without-action {
+    grid-column-end: 4;
+  }
+
+  .action {
+    @apply col-start-3 row-start-1 row-end-1 -me-horizontal-s self-start justify-self-end;
+  }
+}
