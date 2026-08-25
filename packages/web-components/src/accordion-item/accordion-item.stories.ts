@@ -2,15 +2,21 @@ import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { AccordionItem as FluentAccordionItem } from './accordion-item.js';
-import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
+import type { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
-type Story = StoryObj<FluentAccordionItem>;
-const { argTypes } = getStorybookHelpers<FluentAccordionItem>('fluent-accordion-item');
+type AccordionItemStoryArgs = FluentAccordionItem & {
+  block?: boolean;
+  'marker-position'?: AccordionItemMarkerPosition;
+  size?: AccordionItemSize;
+};
 
-const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
+type Story = StoryObj<AccordionItemStoryArgs>;
+const { argTypes } = getStorybookHelpers<AccordionItemStoryArgs>('fluent-accordion-item');
+
+const storyTemplate = html<StoryArgs<AccordionItemStoryArgs>>`
   <fluent-accordion-item
     heading-level="${story => story.headinglevel}"
-    marker-position="${story => story.markerPosition}"
+    marker-position="${story => story['marker-position']}"
     size="${story => story.size}"
     ?disabled="${story => story.disabled}"
     ?expanded="${story => story.expanded}"
@@ -28,7 +34,7 @@ export default {
     slottedContent: () => 'Content',
   },
   argTypes,
-} as Meta<FluentAccordionItem>;
+} as Meta<AccordionItemStoryArgs>;
 
 export const Default: Story = {
   args: {
