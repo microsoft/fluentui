@@ -306,6 +306,40 @@ describe('Menu', () => {
     expect(container.contains(getByRole('menu'))).toBe(true);
   });
 
+  it('promotes the MenuPopover with popover="auto" by default', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'auto');
+  });
+
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover popover="manual">
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'manual');
+  });
+
   // Arrow navigation is handled by Tabster (useArrowNavigationGroup).
   // Tabster's behavior is comprehensively tested in @fluentui/react-tabster.
   // E2E and integration tests should verify arrow navigation works correctly in the browser.
