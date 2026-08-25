@@ -1,0 +1,243 @@
+.story {
+  display: block;
+  padding: var(--space-6);
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+
+.calendar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  width: fit-content;
+  padding: var(--space-4);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow-2);
+}
+
+/* ---------------------------------------------------------------- header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-block-end: var(--space-2);
+}
+
+.heading {
+  padding: var(--space-1) var(--space-2);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  text-align: start;
+}
+
+button.heading {
+  cursor: pointer;
+}
+
+button.heading:hover {
+  background: var(--surface-muted);
+}
+
+.navigation {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.navButton {
+  display: grid;
+  place-items: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.navButton[aria-disabled='true'] {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.navButton[aria-disabled='true']:hover {
+  background: none;
+}
+
+/* ------------------------------------------------------------- day grid */
+
+.grid {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.grid th {
+  width: var(--space-8);
+  height: var(--space-8);
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.grid td {
+  padding: 0;
+}
+
+/*
+ * Every day's appearance comes from the data attributes the headless layer emits, so none of this
+ * is coupled to a class name the library owns.
+ */
+.grid td button {
+  display: grid;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: var(--stroke-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.grid td button:hover {
+  background: var(--surface-muted);
+}
+
+.grid td[data-outside-month] button {
+  color: var(--text-faint);
+}
+
+.grid td[data-today] button {
+  border-color: var(--border-stronger);
+  font-weight: 600;
+}
+
+.grid td[data-selected] button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.grid td[data-outside-bounds] button {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.grid td[data-outside-bounds] button:hover {
+  background: none;
+}
+
+/* --------------------------------------------------- month & year picker */
+
+.monthPicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.pickerGrid {
+  display: grid;
+  gap: var(--space-1);
+}
+
+/*
+ * The picker rows carry no class of their own, so they are addressed structurally. Four columns
+ * matches the library's fixed four-per-row layout.
+ */
+.pickerGrid > [role='row'] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+.pickerGrid [role='gridcell'] {
+  padding: var(--space-2) var(--space-1);
+  border: var(--stroke-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.pickerGrid [role='gridcell']:hover {
+  background: var(--surface-muted);
+}
+
+.pickerGrid [role='gridcell'][data-current] {
+  border-color: var(--border-stronger);
+  font-weight: 600;
+}
+
+.pickerGrid [role='gridcell'][data-selected],
+.pickerGrid [role='gridcell'][aria-selected='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds] {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.divider {
+  align-self: stretch;
+  width: var(--stroke-thin);
+  background: var(--border);
+}
+
+.todayButton {
+  padding: var(--space-2);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.todayButton:hover:not(:disabled) {
+  background: var(--surface-muted);
+}
+
+.todayButton:disabled {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+/* The headless layer ships no styling, so the announcement region must be hidden by the consumer. */
+.liveRegion {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.selectedDate {
+  margin-block-start: var(--space-4);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
