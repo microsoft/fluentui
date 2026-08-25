@@ -1,8 +1,7 @@
-import { attr } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { BaseButton } from './button.base.js';
-import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
+import type { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -10,49 +9,14 @@ import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
  *
  * @tag fluent-button
  *
+ * @presentational {ButtonAppearance | undefined} appearance - Indicates the styled appearance of the button.
+ * @presentational {ButtonShape | undefined} shape - The shape of the button.
+ * @presentational {ButtonSize | undefined} size - The size of the button.
+ * @presentational {boolean} icon-only - Indicates that the button should only display as an icon with no text content.
+ *
  * @public
  */
-export class Button extends BaseButton {
-  /**
-   * Indicates the styled appearance of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: ButtonAppearance;
-
-  /**
-   * The shape of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: ButtonShape;
-
-  /**
-   * The size of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: ButtonSize;
-
-  /**
-   * Indicates that the button should only display as an icon with no text content.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `icon-only`
-   */
-  @attr({ attribute: 'icon-only', mode: 'boolean' })
-  public iconOnly: boolean = false;
-}
+export class Button extends BaseButton {}
 
 /**
  * @internal
