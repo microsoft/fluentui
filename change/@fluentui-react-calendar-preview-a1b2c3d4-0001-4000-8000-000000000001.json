@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: scaffold react-calendar-preview package",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
