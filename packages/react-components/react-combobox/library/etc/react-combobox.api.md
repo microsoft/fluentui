@@ -292,6 +292,18 @@ export const useComboboxBaseState: (props: ComboboxBaseProps & {
 // @public (undocumented)
 export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freeform'> & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
 
+// @public
+export function useComboboxExpandIconSlot(expandIconFromProps: Slot<'span'> | undefined | null, options: UseComboboxExpandIconSlotOptions): SlotComponentType<ExtractSlotProps<Slot<'span'>>> | undefined;
+
+// @public (undocumented)
+export type UseComboboxExpandIconSlotOptions = {
+    disabled?: boolean;
+    open: boolean;
+    'aria-label'?: string;
+    'aria-labelledby'?: string;
+    triggerLabelledBy?: string;
+};
+
 // @internal (undocumented)
 export function useComboboxFilter<T extends {
     children: React_2.ReactNode;

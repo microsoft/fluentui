@@ -8,7 +8,6 @@ import {
   getPartitionedNativeProps,
   mergeCallbacks,
   useEventCallback,
-  useId,
   useMergedRefs,
   slot,
   useOnClickOutside,
@@ -26,6 +25,7 @@ import type {
 } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
+import { useComboboxExpandIconSlot } from './useComboboxExpandIconSlot';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
 
@@ -55,7 +55,6 @@ export const useComboboxBase_unstable = (
     baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disableAutoFocus = false, freeform, inlinePopup } = props;
-  const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -108,14 +107,12 @@ export const useComboboxBase_unstable = (
       elementType: 'span',
       renderByDefault: true,
     }),
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-disabled': disabled ? 'true' : undefined,
-        'aria-expanded': open,
-        role: 'button',
-      },
-      elementType: 'span',
+    expandIcon: useComboboxExpandIconSlot(props.expandIcon, {
+      disabled,
+      open,
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+      triggerLabelledBy: triggerSlot['aria-labelledby'],
     }),
     showClearIcon,
     activeDescendantController,
@@ -145,29 +142,6 @@ export const useComboboxBase_unstable = (
 
   if (state.expandIcon) {
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
-
-    // If there is no explicit aria-label, calculate default accName attribute for expandIcon button,
-    // using the following steps:
-    // 1. If there is an aria-label, it is "Open [aria-label]"
-    // 2. If there is an aria-labelledby, it is "Open [aria-labelledby target]" (using aria-labelledby + ids)
-    // 3. If there is no aria-label/ledby attr, it falls back to "Open"
-    // We can't fall back to a label/htmlFor name because of https://github.com/w3c/accname/issues/179
-    const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
-    const defaultOpenString = 'Open'; // this is english-only since it is the fallback
-    if (!hasExpandLabel) {
-      if (props['aria-labelledby']) {
-        const chevronId = state.expandIcon.id ?? `${comboId}-chevron`;
-        const chevronLabelledBy = `${chevronId} ${state.input['aria-labelledby']}`;
-
-        state.expandIcon['aria-label'] = defaultOpenString;
-        state.expandIcon.id = chevronId;
-        state.expandIcon['aria-labelledby'] = chevronLabelledBy;
-      } else if (props['aria-label']) {
-        state.expandIcon['aria-label'] = `${defaultOpenString} ${props['aria-label']}`;
-      } else {
-        state.expandIcon['aria-label'] = defaultOpenString;
-      }
-    }
   }
 
   const onClearIconMouseDown = useEventCallback(
