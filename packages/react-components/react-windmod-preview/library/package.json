@@ -273,6 +273,16 @@
         "default": "./lib-commonjs/compound-button.cjs"
       }
     },
+    "./dialog": {
+      "import": {
+        "types": "./dist/dialog.d.ts",
+        "default": "./lib/dialog.js"
+      },
+      "require": {
+        "types": "./dist/dialog.d.cts",
+        "default": "./lib-commonjs/dialog.cjs"
+      }
+    },
     "./divider": {
       "import": {
         "types": "./dist/divider.d.ts",

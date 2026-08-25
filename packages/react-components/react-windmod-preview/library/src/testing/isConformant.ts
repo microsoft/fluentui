@@ -3,9 +3,16 @@ import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { kebabCase } from 'lodash';
 
 export function isConformant<TProps = {}>(
-  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string; subpath?: string },
 ): void {
-  const name = kebabCase(testInfo.displayName);
+  // A family whose members share one subpath names it here; otherwise a component's subpath is its
+  // own kebab-cased name — which is what every family shipped so far does, Accordion, Card and
+  // Popover included, each giving its members their own subpath even though headless groups them.
+  // Dialog is the first to share one, so this parameter defaults to the existing behaviour and
+  // changes nothing for those families; whether the seven-member shape should become the house
+  // default is a separate call this does not pre-empt.
+  const { subpath, ...options } = testInfo;
+  const name = subpath ?? kebabCase(testInfo.displayName);
 
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
@@ -54,5 +61,5 @@ export function isConformant<TProps = {}>(
     },
   };
 
-  baseIsConformant(defaultOptions, testInfo);
+  baseIsConformant(defaultOptions, options as IsConformantOptions<TProps>);
 }

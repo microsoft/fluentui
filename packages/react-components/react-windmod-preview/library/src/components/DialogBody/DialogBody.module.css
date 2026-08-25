@@ -1,0 +1,18 @@
+@reference '#theme';
+
+/* Row 2 of the surface grid, and the family's scroll container at every height but one: under the
+   short-screen query the surface takes the scrolling over and this drops back to visible, so the
+   two never scroll at once. Griffel hands the role over the same way.
+
+   The padding and its negative twin cancel out: they buy room for a focus ring drawn on content
+   inside the scroller, which `overflow-y: auto` would otherwise clip. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply col-start-1 col-end-4 row-start-2 row-end-2 -m-(--stroke-width-thick) box-border min-h-32 overflow-y-auto p-(--stroke-width-thick) font-base text-base-300 leading-base-300 font-regular;
+
+    @media screen and (max-height: 359px) {
+      @apply overflow-y-visible;
+    }
+  }
+}

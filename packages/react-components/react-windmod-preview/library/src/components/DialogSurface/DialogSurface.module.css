@@ -1,0 +1,55 @@
+@reference '#theme';
+
+/* The root is a native <dialog>: showModal() for modal and alert, popover="manual" for non-modal.
+   It carries BOTH Griffel elements' rules — the surface chrome and the DialogBody grid — because
+   the headless family ships no grid-container member.
+
+   The third grid column is always empty. It reserves the close-button track Griffel's DialogTitle
+   action slot occupies, which the headless family has no slot for, and collapsing it to 0 is what
+   keeps the actions column lines where Griffel's are.
+
+   `w-auto` neutralises the user-agent `width: fit-content` on <dialog>. Griffel's surface declares
+   no width at all, so it resolves against its containing block and max-width clamps it; without
+   this a sparse dialog shrinks to its content instead. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply inset-0 m-auto box-border grid h-fit w-auto max-w-600 grid-cols-[1fr_1fr_auto] grid-rows-[auto_1fr] gap-8 overflow-visible rounded-x-large border border-solid border-transparent-stroke bg-neutral-background-1 p-24 text-neutral-foreground-1 shadow-64 outline-none;
+
+    /* Griffel authors both; the browser keeps whichever it parses. */
+    max-height: 100vh;
+    max-height: 100dvh;
+
+    @variant backdrop {
+      @apply bg-background-overlay;
+    }
+
+    /* Griffel renders no backdrop element for a non-modal dialog, and a shown popover's user-agent
+       ::backdrop is a full-viewport box, not a zero-area one. */
+    @variant modal-type-non-modal {
+      @variant backdrop {
+        @apply bg-transparent;
+      }
+    }
+
+    /* A nested dialog would otherwise paint a second backdrop over the first. */
+    @variant nested {
+      @variant backdrop {
+        @apply bg-transparent;
+      }
+    }
+
+    @variant focus-visible {
+      @apply fui-focus-outline;
+    }
+
+    /* Griffel offsets the scrollbar with transparent borders so it clears the corner radius. */
+    @media screen and (max-height: 359px) {
+      @apply overflow-y-auto border-e-4 border-t-4 border-b-4 pe-20;
+    }
+
+    @media screen and (max-width: 480px) {
+      @apply max-w-[100vw] grid-rows-[auto_1fr_auto];
+    }
+  }
+}

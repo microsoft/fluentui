@@ -32,6 +32,14 @@
 @custom-variant channel-saturation (&:where([data-channel='saturation']));
 @custom-variant channel-value (&:where([data-channel='value']));
 
+/* Dialog: modality and the nested-dialog flag. Only `non-modal` earns a modality entry — the
+   backdrop is painted positively and non-modal is its single override. No `fluid` entry: the fluid
+   rules select on which column the actions occupy, so they reuse `position-start`/`position-end`
+   (shared with Drawer below) and nothing selects on `data-fluid` — the same minimality test that
+   keeps `modal-type-modal` and `modal-type-alert` out. */
+@custom-variant modal-type-non-modal (&:where([data-modal-type='non-modal']));
+@custom-variant nested (&:where([data-nested]));
+
 /* Drawer: surface edge position */
 @custom-variant position-start (&:where([data-position='start']));
 @custom-variant position-end (&:where([data-position='end']));

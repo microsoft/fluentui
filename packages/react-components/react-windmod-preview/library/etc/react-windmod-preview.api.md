@@ -77,6 +77,33 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
 import { CompoundButtonSlots } from '@fluentui/react-headless-components-preview/compound-button';
 import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/react-headless-components-preview/compound-button';
+import type { DialogActionsProps as DialogActionsProps_2 } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogActionsSlots } from '@fluentui/react-headless-components-preview/dialog';
+import type { DialogActionsState as DialogActionsState_2 } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogBodyProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogBodySlots } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogBodyState } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogContextValue } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogContextValues } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogHeaderProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogHeaderSlots } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogHeaderState } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogModalType } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogOpenChangeData } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogOpenChangeEvent } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogOpenChangeEventHandler } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogState } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogSurfaceContextValue } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogSurfaceProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-headless-components-preview/dialog';
+import type { DialogSurfaceState as DialogSurfaceState_2 } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTitleProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTitleSlots } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTitleState } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTriggerAction } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTriggerProps } from '@fluentui/react-headless-components-preview/dialog';
+import { DialogTriggerState } from '@fluentui/react-headless-components-preview/dialog';
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
@@ -220,6 +247,12 @@ import { renderColorPicker } from '@fluentui/react-headless-components-preview/c
 import { renderColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
+import { renderDialog } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogActions } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogBody } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogHeader } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderField } from '@fluentui/react-headless-components-preview/field';
@@ -394,6 +427,16 @@ import { useColorPickerContextValues } from '@fluentui/react-headless-components
 import { useColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
+import { useDialog } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogActions } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogBody } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogContext } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogContextValues } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogHeader } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogSurfaceContext } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
+import { useDialogTrigger } from '@fluentui/react-headless-components-preview/dialog';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useField } from '@fluentui/react-headless-components-preview/field';
@@ -954,6 +997,125 @@ export { CompoundButtonSlots }
 
 // @public
 export type CompoundButtonState = CompoundButtonState_2 & Required<Pick<CompoundButtonProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export const Dialog: React_2.FC<DialogProps>;
+
+// @public
+export const DialogActions: ForwardRefComponent<DialogActionsProps>;
+
+// @public
+export const dialogActionsClassNames: {
+    root: string;
+};
+
+// @public
+export type DialogActionsPosition = 'start' | 'end';
+
+// @public
+export type DialogActionsProps = DialogActionsProps_2 & {
+    position?: DialogActionsPosition;
+    fluid?: boolean;
+};
+
+export { DialogActionsSlots }
+
+// @public
+export type DialogActionsState = DialogActionsState_2 & {
+    position: DialogActionsPosition;
+    fluid: boolean;
+};
+
+// @public
+export const DialogBody: ForwardRefComponent<DialogBodyProps>;
+
+// @public
+export const dialogBodyClassNames: {
+    root: string;
+};
+
+export { DialogBodyProps }
+
+export { DialogBodySlots }
+
+export { DialogBodyState }
+
+export { DialogContextValue }
+
+export { DialogContextValues }
+
+// @public
+export const DialogHeader: ForwardRefComponent<DialogHeaderProps>;
+
+// @public
+export const dialogHeaderClassNames: {
+    root: string;
+};
+
+export { DialogHeaderProps }
+
+export { DialogHeaderSlots }
+
+export { DialogHeaderState }
+
+export { DialogModalType }
+
+export { DialogOpenChangeData }
+
+export { DialogOpenChangeEvent }
+
+export { DialogOpenChangeEventHandler }
+
+export { DialogProps }
+
+export { DialogState }
+
+// @public
+export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
+
+// @public
+export const dialogSurfaceClassNames: {
+    root: string;
+};
+
+export { DialogSurfaceContextValue }
+
+export { DialogSurfaceProps }
+
+export { DialogSurfaceSlots }
+
+// @public
+export type DialogSurfaceState = DialogSurfaceState_2 & {
+    nested: boolean;
+};
+
+// @public
+export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
+
+// @public
+export const dialogTitleClassNames: {
+    root: string;
+};
+
+export { DialogTitleProps }
+
+export { DialogTitleSlots }
+
+export { DialogTitleState }
+
+// @public
+export const DialogTrigger: React_2.FC<DialogTriggerProps>;
+
+export { DialogTriggerAction }
+
+// @public
+export const dialogTriggerClassNames: {
+    root: string;
+};
+
+export { DialogTriggerProps }
+
+export { DialogTriggerState }
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -1743,6 +1905,18 @@ export { renderColorSlider }
 export { renderColorSwatch }
 
 export { renderCompoundButton }
+
+export { renderDialog }
+
+export { renderDialogActions }
+
+export { renderDialogBody }
+
+export { renderDialogHeader }
+
+export { renderDialogSurface }
+
+export { renderDialogTitle }
 
 export { renderDivider }
 
@@ -2560,6 +2734,44 @@ export { useCompoundButton }
 
 // @public
 export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
+
+export { useDialog }
+
+export { useDialogActions }
+
+// @public
+export const useDialogActionsStyles: (state: DialogActionsState) => DialogActionsState;
+
+export { useDialogBody }
+
+// @public
+export const useDialogBodyStyles: (state: DialogBodyState) => DialogBodyState;
+
+export { useDialogContext }
+
+export { useDialogContextValues }
+
+export { useDialogHeader }
+
+// @public
+export const useDialogHeaderStyles: (state: DialogHeaderState) => DialogHeaderState;
+
+export { useDialogSurface }
+
+export { useDialogSurfaceContext }
+
+// @public
+export const useDialogSurfaceStyles: (state: DialogSurfaceState) => DialogSurfaceState;
+
+export { useDialogTitle }
+
+// @public
+export const useDialogTitleStyles: (state: DialogTitleState) => DialogTitleState;
+
+export { useDialogTrigger }
+
+// @public
+export const useDialogTriggerStyles: (state: DialogTriggerState) => DialogTriggerState;
 
 export { useDivider }
 
