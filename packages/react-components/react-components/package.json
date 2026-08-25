@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-accordion": "^9.12.3",
-    "@fluentui/react-alert": "9.0.2-0",
+    "@fluentui/react-alert": "9.0.2-beta.0",
     "@fluentui/react-aria": "^9.17.14",
     "@fluentui/react-avatar": "^9.11.6",
     "@fluentui/react-badge": "^9.5.5",
@@ -29,7 +29,7 @@
     "@fluentui/react-drawer": "^9.13.3",
     "@fluentui/react-field": "^9.5.4",
     "@fluentui/react-image": "^9.4.4",
-    "@fluentui/react-infobutton": "9.0.1-0",
+    "@fluentui/react-infobutton": "9.0.1-beta.0",
     "@fluentui/react-infolabel": "^9.4.25",
     "@fluentui/react-input": "^9.8.6",
     "@fluentui/react-label": "^9.4.4",

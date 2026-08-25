@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infobutton",
-  "version": "9.0.1-0",
+  "version": "9.0.1-beta.0",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -32,7 +32,10 @@
     "disallowedChangeTypes": [
       "major",
       "minor",
-      "patch"
+      "patch",
+      "premajor",
+      "preminor",
+      "prepatch"
     ]
   },
   "exports": {
