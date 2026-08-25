@@ -35,7 +35,7 @@ import { MenuItemSwitchState } from '@fluentui/react-menu';
 import type { MenuListContextValues } from '@fluentui/react-menu';
 import { MenuListProps } from '@fluentui/react-menu';
 import { MenuListSlots } from '@fluentui/react-menu';
-import type { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
+import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
 import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuPopoverProps } from '@fluentui/react-menu';
@@ -166,12 +166,7 @@ export { MenuListProps }
 
 export { MenuListSlots }
 
-// @public (undocumented)
-export type MenuListState = MenuListState_2 & {
-    root: {
-        focusgroup?: string;
-    };
-};
+export { MenuListState }
 
 export { MenuOpenChangeData }
 
@@ -228,7 +223,7 @@ export { renderMenuItemRadio }
 export { renderMenuItemSwitch }
 
 // @public (undocumented)
-export const renderMenuList: (state: MenuListState_2, contextValues: MenuListContextValues) => JSXElement;
+export const renderMenuList: (state: MenuListState, contextValues: MenuListContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderMenuPopover: (state: MenuPopoverState) => JSXElement;
