@@ -65,8 +65,6 @@ function main(argv: yargs.Arguments) {
   tagPackages(argv.token);
 }
 
-if (require.main === module && process.env.RELEASE_VNEXT) {
+if (require.main === module) {
   main(yargs.argv);
-} else {
-  console.log('"RELEASE_VNEXT" not set - skipping');
 }

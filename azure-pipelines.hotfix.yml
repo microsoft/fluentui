@@ -1,17 +1,22 @@
-pr: none
+# ‼️ Due to lack of recent runs, an ADO pipeline was NOT created for this file in the August 2026 project move,
+# but the file is preserved for reference.
 
+pr: none
 trigger: none
 
-name: '$(targetNpmVersion) ($(Rev:r))'
+name: 'v8 hotfix ${{ parameters.targetNpmVersion }} ($(Rev:r))'
 
 parameters:
+  - name: targetNpmVersion
+    displayName: Publish this version to npm
+    type: string
   - name: dryRun
     displayName: Dry Run Mode
     type: boolean
     default: false
 
 variables:
-  - template: .devops/templates/variables.yml
+  - template: /.devops/templates/variables/variables.yml@self
   - name: skipComponentGovernanceDetection
     value: true
   - name: tags
@@ -19,52 +24,62 @@ variables:
 
 resources:
   repositories:
-    - repository: 1esPipelines
+    - repository: OfficePipelineTemplates
       type: git
-      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      name: 1ESPipelineTemplates/OfficePipelineTemplates
       ref: refs/tags/release
 
 extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
   parameters:
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
+    settings:
+      networkIsolationPolicy: AzureActiveDirectory,AzureKeyVault,AzureStorage,GitHub
     stages:
-      - stage: main
+      - stage: build
         jobs:
-          - job: Release
-            dependsOn: Compliance
+          - job: build
+            displayName: Build and pack
             pool:
-              name: '1ES-Host-Ubuntu'
-              image: '1ES-PT-Ubuntu-20.04'
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
               os: linux
             workspace:
               clean: all
-            steps:
-              - script: |
-                  if [[ -z "$(targetNpmVersion)" ]]; then
-                    echo "##vso[task.logissue type=error]targetNpmVersion is not specified"
-                    exit 1
-                  fi
-                displayName: 'Checking for targetNpmVersion variable'
+            variables:
+              - name: pkgArtifactPath
+                value: $(Build.StagingDirectory)/packed
+                readonly: true
+            templateContext:
+              outputParentDirectory: $(Build.StagingDirectory)
+              outputs:
+                - output: pipelineArtifact
+                  artifactName: packed
+                  path: $(pkgArtifactPath)
 
-              - template: .devops/templates/tools.yml@self
+            steps:
+              - template: /.devops/templates/steps/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
               - script: |
-                  if ! yarn semver '$(targetNpmVersion)' >/dev/null; then
-                    echo "##vso[task.logissue type=error]Invalid version specified: $(targetNpmVersion)"
+                  if ! yarn semver "$TARGET_NPM_VERSION" >/dev/null; then
+                    echo "##vso[task.logissue type=error]Invalid version specified: $TARGET_NPM_VERSION"
                     exit 1
                   fi
                 displayName: 'Check targetNpmVersion is valid semver'
+                env:
+                  TARGET_NPM_VERSION: ${{ parameters.targetNpmVersion }}
 
               - script: |
-                  npm version $(targetNpmVersion)
+                  npm version "$TARGET_NPM_VERSION"
                 workingDirectory: 'packages/react'
                 displayName: 'Manually set package version'
+                env:
+                  TARGET_NPM_VERSION: ${{ parameters.targetNpmVersion }}
 
               - script: |
                   yarn nx run react:build --production
@@ -74,11 +89,46 @@ extends:
                 displayName: yarn bundle FUIR
 
               - script: |
-                  npm pack
+                  npm pack --pack-destination '$(pkgArtifactPath)'
                 displayName: 'Create tarball'
                 workingDirectory: 'packages/react'
 
-              - script: |
-                  npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-                displayName: Publish new version
-                condition: not(${{ parameters.dryRun }})
+      - stage: publish
+        displayName: Publish
+        dependsOn: build
+        condition: and(succeeded(), not(${{ parameters.dryRun }}))
+        jobs:
+          - job: publish
+            displayName: Publish npm package
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
+            variables:
+              pkgArtifactPath: $(Build.StagingDirectory)/packed
+            templateContext:
+              type: releaseJob
+              isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: packed
+                  targetPath: $(pkgArtifactPath)
+
+            steps:
+              # Publishing a single package can use the official EsrpRelease task since order doesn't matter
+              - task: EsrpRelease@12
+                displayName: Publish to npm
+                inputs:
+                  connectedservicename: $(esrpReleaseAzureSubscription)
+                  usemanagedidentity: false
+                  keyvaultname: $(esrpReleaseKeyVaultName)
+                  authcertname: $(esrpSecretNameAuthCert)
+                  signcertname: $(esrpSecretNameSignCert)
+                  clientid: $(esrpReleaseClientId)
+                  domaintenantid: $(esrpReleaseTenantId)
+                  contenttype: npm
+                  productstate: $(npmDistTag)
+                  folderlocation: $(pkgArtifactPath)
+                  waitforreleasecompletion: true
+                  owners: $(esrpReleaseUser)
+                  approvers: $(esrpReleaseApprovers)
