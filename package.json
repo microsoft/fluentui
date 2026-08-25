@@ -175,7 +175,7 @@
     "babel-plugin-module-resolver": "5.0.3",
     "babel-plugin-react-compiler": "1.0.0",
     "babel-plugin-tester": "10.1.0",
-    "beachball": "3.0.0-alpha.7",
+    "beachball": "3.0.0-alpha.9",
     "chalk": "4.1.0",
     "chrome-remote-interface": "0.28.2",
     "ci-info": "3.9.0",
@@ -351,6 +351,11 @@
     "typings",
     "starter-templates"
   ],
+  "dependenciesMeta": {
+    "cypress": {
+      "built": true
+    }
+  },
   "resolutions": {
     "@nx/devkit/minimatch": "^9.0.7",
     "@nx/jest/minimatch": "^9.0.7",
@@ -382,5 +387,5 @@
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.18.0"
 }
