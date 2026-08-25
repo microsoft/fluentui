@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: verify bundle isolation of base hooks",
+  "comment": "release recovery: versions already published to npm by the failed pipeline",
   "packageName": "@fluentui/react-components",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"

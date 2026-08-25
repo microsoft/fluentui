@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor",
-  "packageName": "@fluentui/react-motion",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
