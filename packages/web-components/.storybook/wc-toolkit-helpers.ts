@@ -347,6 +347,35 @@ export function getAttributesAndProperties(
     }
   });
 
+  component?.attributes?.forEach(attribute => {
+    if (attribute.fieldName) return;
+
+    const name = attribute.name;
+    const opts = getOptions();
+    const type = opts.typeRef ? attribute[`${opts.typeRef}`]?.text || attribute.type?.text : attribute.type?.text;
+    const attrType = cleanUpType(type);
+    const defaultValue = removeQuotes(attribute.default || '');
+    const control = getControl(attrType, true);
+
+    resets[name] = { name, table: { disable: true } };
+    attrArgs[name] = {
+      name,
+      description: attribute.description,
+      defaultValue: defaultValue || undefined,
+      control: enabled && control ? { type: control } : false,
+      table: {
+        category: 'attributes',
+        defaultValue: { summary: defaultValue },
+        type: { summary: type },
+      },
+    };
+
+    const values = attrType?.split('|');
+    if (values && values.length > 1) {
+      attrArgs[name].options = values.map(value => removeQuotes(value)!);
+    }
+  });
+
   return { resets, propArgs, attrArgs };
 }
 
