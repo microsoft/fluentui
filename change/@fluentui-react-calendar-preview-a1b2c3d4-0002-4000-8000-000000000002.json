@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(react-calendar-preview): implement Calendar, month/year pickers, and day grid components",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
