@@ -44,6 +44,9 @@
 @custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
 @custom-variant not-scroll-state-none (&:where(:not([data-scroll-state='none'])));
 
+/* Drawer: InlineDrawer's visible edge against the content it is stacked with */
+@custom-variant separator (&:where([data-separator]));
+
 /* Field: validation state stamped by the headless useField on the root */
 @custom-variant validate-state-error (&:where([data-validate-state='error']));
 @custom-variant validate-state-warning (&:where([data-validate-state='warning']));

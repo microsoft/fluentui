@@ -1,0 +1,71 @@
+@reference '#theme';
+
+/* The root is the headless DialogSurface — a native <dialog> opened with showModal(). It is not
+   the windmod DialogSurface: Griffel's OverlayDrawerSurface does not apply DialogSurface's reset
+   either, so the drawer owns its whole surface look.
+   A promoted <dialog> arrives with user-agent padding, margin, border, a max-width/height clamp of
+   calc(100% - 2 * (border + padding)), user-select: text and unicode-bidi: normal that Griffel's
+   in-flow <div> never has; p-0, m-0, border-none, the two 100v* clamps, select-auto and
+   unicode-bidi neutralise them. border-none carries the width too — a border-width computes to 0
+   wherever the style is none — and leaving the colour unset keeps it at currentColor, which is
+   what Griffel's <div> resolves it to.
+   The box-shadow is Griffel's motion end keyframe: react-drawer authors no box-shadow rule
+   anywhere, so this is the only place the rest shadow exists. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply fixed inset-y-0 m-0 box-border flex h-auto max-h-[100vh] w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden border-none bg-neutral-background-1 p-0 text-neutral-foreground-1 shadow-64 select-auto;
+
+    --fui-drawer-size: 320px;
+
+    unicode-bidi: isolate;
+
+    &::backdrop {
+      @apply bg-background-overlay;
+    }
+
+    @variant size-medium {
+      --fui-drawer-size: 592px;
+    }
+
+    @variant size-large {
+      --fui-drawer-size: 940px;
+    }
+
+    @variant size-full {
+      --fui-drawer-size: 100vw;
+    }
+
+    @variant position-start {
+      @apply start-0 end-auto;
+
+      border-inline-end: var(--stroke-width-thin) solid var(--color-transparent-stroke);
+    }
+
+    @variant position-end {
+      @apply start-auto end-0;
+
+      border-inline-start: var(--stroke-width-thin) solid var(--color-transparent-stroke);
+    }
+
+    @variant position-bottom {
+      @apply h-(--fui-drawer-size) w-screen;
+
+      inset-block-end: 0;
+      inset-block-start: auto;
+
+      /* Griffel's bottom size scale differs from the inline-axis one only at `full`. */
+      @variant size-full {
+        --fui-drawer-size: 100%;
+      }
+    }
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-visible {
+      @apply fui-focus-outline;
+    }
+  }
+}

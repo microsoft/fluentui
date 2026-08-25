@@ -196,6 +196,61 @@ export { Divider, dividerClassNames, renderDivider, useDivider, useDividerStyles
 export type { DividerAlignContent, DividerAppearance, DividerProps, DividerSlots, DividerState } from './divider';
 
 export {
+  Drawer,
+  drawerClassNames,
+  DrawerProvider,
+  renderDrawer,
+  useDrawer,
+  useDrawerContext,
+  useDrawerContextValue,
+  useDrawerStyles,
+} from './drawer';
+export type { DrawerContextValue, DrawerProps, DrawerSize, DrawerSlots, DrawerState } from './drawer';
+
+export { DrawerBody, drawerBodyClassNames, renderDrawerBody, useDrawerBody, useDrawerBodyStyles } from './drawer-body';
+export type { DrawerBodyProps, DrawerBodySlots, DrawerBodyState } from './drawer-body';
+
+export {
+  DrawerFooter,
+  drawerFooterClassNames,
+  renderDrawerFooter,
+  useDrawerFooter,
+  useDrawerFooterStyles,
+} from './drawer-footer';
+export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './drawer-footer';
+
+export {
+  DrawerHeader,
+  drawerHeaderClassNames,
+  renderDrawerHeader,
+  useDrawerHeader,
+  useDrawerHeaderStyles,
+} from './drawer-header';
+export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './drawer-header';
+
+export {
+  DrawerHeaderNavigation,
+  drawerHeaderNavigationClassNames,
+  renderDrawerHeaderNavigation,
+  useDrawerHeaderNavigation,
+  useDrawerHeaderNavigationStyles,
+} from './drawer-header-navigation';
+export type {
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from './drawer-header-navigation';
+
+export {
+  DrawerHeaderTitle,
+  drawerHeaderTitleClassNames,
+  renderDrawerHeaderTitle,
+  useDrawerHeaderTitle,
+  useDrawerHeaderTitleStyles,
+} from './drawer-header-title';
+export type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './drawer-header-title';
+
+export {
   EmptySwatch,
   emptySwatchClassNames,
   renderEmptySwatch,
@@ -227,6 +282,15 @@ export {
   useImageSwatchStyles,
 } from './image-swatch';
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './image-swatch';
+
+export {
+  InlineDrawer,
+  inlineDrawerClassNames,
+  renderInlineDrawer,
+  useInlineDrawer,
+  useInlineDrawerStyles,
+} from './inline-drawer';
+export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './inline-drawer';
 
 export { Input, inputClassNames, renderInput, useInput, useInputStyles } from './input';
 export type { InputAppearance, InputProps, InputSize, InputSlots, InputState } from './input';
@@ -416,6 +480,15 @@ export {
   useNavSubItemGroupStyles,
 } from './nav-sub-item-group';
 export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './nav-sub-item-group';
+
+export {
+  OverlayDrawer,
+  overlayDrawerClassNames,
+  renderOverlayDrawer,
+  useOverlayDrawer,
+  useOverlayDrawerStyles,
+} from './overlay-drawer';
+export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from './overlay-drawer';
 
 export { Persona, personaClassNames, renderPersona, usePersona, usePersonaStyles } from './persona';
 export type { PersonaProps, PersonaSize, PersonaSlots, PersonaState, PersonaTextAlignment } from './persona';
