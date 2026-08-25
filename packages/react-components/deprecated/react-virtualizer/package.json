@@ -28,7 +28,10 @@
     "disallowedChangeTypes": [
       "major",
       "minor",
-      "patch"
+      "patch",
+      "premajor",
+      "preminor",
+      "prepatch"
     ]
   },
   "exports": {

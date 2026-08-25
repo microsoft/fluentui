@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-alert",
-  "version": "9.0.2-0",
+  "version": "9.0.2-beta.0",
   "description": "An alert component to display brief messages",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -32,7 +32,10 @@
     "disallowedChangeTypes": [
       "major",
       "minor",
-      "patch"
+      "patch",
+      "premajor",
+      "preminor",
+      "prepatch"
     ]
   },
   "exports": {

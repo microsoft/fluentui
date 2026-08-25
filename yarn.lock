@@ -3354,7 +3354,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-alert@npm:9.0.2-0, @fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert":
+"@fluentui/react-alert@npm:9.0.2-beta.0, @fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert"
   dependencies:
@@ -3901,7 +3901,7 @@ __metadata:
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
     "@fluentui/react-accordion": "npm:^9.12.3"
-    "@fluentui/react-alert": "npm:9.0.2-0"
+    "@fluentui/react-alert": "npm:9.0.2-beta.0"
     "@fluentui/react-aria": "npm:^9.17.14"
     "@fluentui/react-avatar": "npm:^9.11.6"
     "@fluentui/react-badge": "npm:^9.5.5"
@@ -3917,7 +3917,7 @@ __metadata:
     "@fluentui/react-drawer": "npm:^9.13.3"
     "@fluentui/react-field": "npm:^9.5.4"
     "@fluentui/react-image": "npm:^9.4.4"
-    "@fluentui/react-infobutton": "npm:9.0.1-0"
+    "@fluentui/react-infobutton": "npm:9.0.1-beta.0"
     "@fluentui/react-infolabel": "npm:^9.4.25"
     "@fluentui/react-input": "npm:^9.8.6"
     "@fluentui/react-label": "npm:^9.4.4"
@@ -4511,7 +4511,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-infobutton@npm:9.0.1-0, @fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton":
+"@fluentui/react-infobutton@npm:9.0.1-beta.0, @fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton"
   dependencies:
