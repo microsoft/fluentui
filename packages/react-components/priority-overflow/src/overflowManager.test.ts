@@ -304,6 +304,51 @@ describe('overflowManager', () => {
     expect(getVisibleIds(manager)).toEqual(['a', 'b']);
   });
 
+  it('should converge when a conditional overflow menu changes item widths', () => {
+    const container = createContainer(110);
+    const menu = createElementWithSize('button', 30);
+    const invisibleItemCounts: number[] = [];
+    let menuAttached = false;
+
+    const manager = createOverflowManager(
+      createObserveOptions({
+        onUpdateOverflow: () => {
+          const invisibleItemCount = manager.getSnapshot().invisibleItemCount;
+          invisibleItemCounts.push(invisibleItemCount);
+
+          // Cap a regression so this test fails with the oscillating states instead of recursing indefinitely.
+          if (invisibleItemCounts.length >= 6) {
+            return;
+          }
+
+          if (invisibleItemCount > 0 && !menuAttached) {
+            menuAttached = true;
+            manager.addOverflowMenu(menu);
+          } else if (invisibleItemCount === 0 && menuAttached) {
+            menuAttached = false;
+            manager.removeOverflowMenu();
+          }
+        },
+      }),
+    );
+
+    const createResponsiveItem = () => {
+      const item = document.createElement('button');
+      Object.defineProperty(item, 'offsetWidth', {
+        configurable: true,
+        get: () => (menuAttached ? 35 : 60),
+      });
+      return item;
+    };
+
+    manager.addItem({ element: createResponsiveItem(), id: 'a', priority: 1 });
+    manager.addItem({ element: createResponsiveItem(), id: 'b', priority: 0 });
+    manager.observe(container, { forceUpdate: true });
+
+    expect(invisibleItemCounts).toEqual([1, 0]);
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+  });
+
   it('should recompute when the overflow menu is removed with hidden items', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(140);
