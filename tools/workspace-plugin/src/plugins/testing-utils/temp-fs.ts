@@ -15,9 +15,9 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'path';
+import { dirname, join } from 'node:path';
 import { tmpdir } from 'os';
-import { joinPathFragments, workspaceRoot } from '@nx/devkit';
+import { workspaceRoot } from '@nx/devkit';
 import { setWorkspaceRoot } from 'nx/src/utils/workspace-root';
 
 type NestedFiles = {
@@ -55,38 +55,38 @@ export class TempFs {
   }
 
   async createFile(filePath: string, content: string) {
-    const dir = joinPathFragments(this.tempDir, dirname(filePath));
+    const dir = join(this.tempDir, dirname(filePath));
     if (!existsSync(dir)) {
       await mkdir(dir, { recursive: true });
     }
-    await writeFile(joinPathFragments(this.tempDir, filePath), content);
+    await writeFile(join(this.tempDir, filePath), content);
   }
 
   createFileSync(filePath: string, content: string) {
-    const dir = joinPathFragments(this.tempDir, dirname(filePath));
+    const dir = join(this.tempDir, dirname(filePath));
     if (!existsSync(dir)) {
       mkdirSync(dir, { recursive: true });
     }
-    writeFileSync(joinPathFragments(this.tempDir, filePath), content);
+    writeFileSync(join(this.tempDir, filePath), content);
   }
 
   async readFile(filePath: string): Promise<string> {
-    return readFile(joinPathFragments(this.tempDir, filePath), 'utf-8');
+    return readFile(join(this.tempDir, filePath), 'utf-8');
   }
 
   removeFileSync(filePath: string): void {
-    unlinkSync(joinPathFragments(this.tempDir, filePath));
+    unlinkSync(join(this.tempDir, filePath));
   }
 
   appendFile(filePath: string, content: string) {
-    appendFileSync(joinPathFragments(this.tempDir, filePath), content);
+    appendFileSync(join(this.tempDir, filePath), content);
   }
 
   writeFile(filePath: string, content: string) {
-    writeFileSync(joinPathFragments(this.tempDir, filePath), content);
+    writeFileSync(join(this.tempDir, filePath), content);
   }
   renameFile(oldPath: string, newPath: string) {
-    renameSync(joinPathFragments(this.tempDir, oldPath), joinPathFragments(this.tempDir, newPath));
+    renameSync(join(this.tempDir, oldPath), join(this.tempDir, newPath));
   }
 
   cleanup() {
