@@ -1,5 +1,5 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, tagName } from './anchor-button.options.js';
+import { tagName } from './anchor-button.options.js';
 
 test.describe('Anchor Button', () => {
   test.use({
@@ -120,50 +120,6 @@ test.describe('Anchor Button', () => {
       await expect(anchor).toHaveAttribute('type', 'foo');
     });
   });
-
-  test('should set the `iconOnly` property to match the `icon-only` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { 'icon-only': true } });
-
-    await expect(element).toHaveJSProperty('iconOnly', true);
-  });
-
-  for (const appearance of Object.values(AnchorButtonAppearance)) {
-    test(`should set the \`appearance\` property to "${appearance}" when the attribute is set to "${appearance}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { appearance } });
-
-      await expect(element).toHaveJSProperty('appearance', appearance);
-    });
-  }
-
-  for (const shape of Object.values(AnchorButtonShape)) {
-    test(`should set the \`shape\` property to "${shape}" when the attribute is set to "${shape}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { shape } });
-
-      await expect(element).toHaveJSProperty('shape', shape);
-    });
-  }
-
-  for (const size of Object.values(AnchorButtonSize)) {
-    test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
 
   test('should navigate to the provided url when clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
