@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: tools_20201022.1
-name: 'tools_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "tools_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun

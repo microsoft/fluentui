@@ -1,14 +1,7 @@
 # Install tools and dependencies and set shared configuration
-parameters:
-  - name: dryRun
-    displayName: Dry Run Mode
-    type: boolean
-
 steps:
-  - script: |
-      echo "DRY RUN mode enabled!"
-    displayName: DRY RUN mode status
-    condition: eq(${{ parameters.dryRun }}, true)
+  - checkout: self
+    fetchTags: false
 
   - task: UseNode@1
     inputs:

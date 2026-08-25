@@ -7,7 +7,7 @@ parameters:
     type: boolean
     default: true
 
-name: 'v9_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v9_experimental_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - template: /.devops/templates/variables/variables.yml@self

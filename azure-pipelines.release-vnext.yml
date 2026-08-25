@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: v9_20201022.1
-name: 'v9_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v9_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun

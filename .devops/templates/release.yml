@@ -107,6 +107,14 @@ extends:
                 - ${{ each output in parameters.extraOutputs }}:
                     - ${{ output }}
             steps:
+              # branchPath is only valid if Build.SourceBranch is a branch, not a tag or PR.
+              - script: |
+                  if [[ "$BUILD_SOURCEBRANCH" != refs/heads/* ]]; then
+                    echo "##vso[task.logissue type=error]This pipeline can only run from a branch."
+                    exit 1
+                  fi
+                displayName: Validate release branch
+
               - ${{ if eq(parameters.releaseType, 'experimental') }}:
                   # For experimental, validate that the branch name starts with "experimental/"
                   # and extract the feature name.
@@ -124,8 +132,6 @@ extends:
 
               # Install tools, authenticate with npm, and install dependencies.
               - template: /.devops/templates/steps/tools.yml@self
-                parameters:
-                  dryRun: ${{ parameters.dryRun }}
 
               # Update versions and change files for an experimental or nightly release.
               - ${{ if ne(parameters.releaseType, 'official') }}:
@@ -176,6 +182,10 @@ extends:
                   FLUENT_PROD_BUILD=true yarn nx run-many -t bundle ${{ parameters.nxScope }} --nxBail
                 displayName: bundle
 
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging ${{ parameters.nxScope }} --nxBail
+                displayName: verify packaged assets
+
               # Create packagesArtifactPath so it exists for the output even if nothing was packed.
               # Also copy the release API tool for use in the publish job (which can't download sources).
               - script: |
@@ -184,31 +194,15 @@ extends:
                   cp node_modules/@microsoft/esrp-npm-release/dist/index.mjs '$(releaseToolArtifactPath)'
                 displayName: Prepare artifact paths
 
-              # Official release
-              - ${{ if eq(parameters.releaseType, 'official') }}:
-                  - script: |
-                      FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging ${{ parameters.nxScope }} --nxBail
-                    displayName: verify packaged assets
-
-                  # Pack packages only (don't push changes to GitHub or publish to npm)
-                  - script: |
-                      yarn beachball publish \
-                        --no-push \
-                        --pack-to-path '$(packagesArtifactPath)' \
-                        --config ${{ parameters.beachballConfig }}
-                    displayName: Pack packages (official)
-                    condition: and(succeeded(), not(${{ parameters.dryRun }}))
-
-              # Nightly or experimental release
-              - ${{ else }}:
-                  - script: |
-                      yarn beachball publish \
-                        --no-push \
-                        --pack-to-path '$(packagesArtifactPath)' \
-                        --config ${{ parameters.beachballConfig }} \
-                        -b 'origin/$(branchPath)'
-                    displayName: Pack packages (${{ parameters.releaseType }})
-                    condition: and(succeeded(), not(${{ parameters.dryRun }}))
+              # Pack packages only (don't push changes to GitHub or publish to npm)
+              - script: |
+                  yarn beachball publish \
+                    --no-push \
+                    --pack-to-path '$(packagesArtifactPath)' \
+                    --config ${{ parameters.beachballConfig }}
+                    -b 'origin/$(branchPath)'
+                displayName: Pack packages
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
 
               - ${{ each step in parameters.postPackSteps }}:
                   - ${{ step }}
@@ -317,8 +311,6 @@ extends:
                   os: linux
                 steps:
                   - template: /.devops/templates/steps/tools.yml@self
-                    parameters:
-                      dryRun: ${{ parameters.dryRun }}
 
                   - script: |
                       FLUENT_PROD_BUILD=true yarn nx run-many -t build ${{ parameters.nxScope }} --nxBail
@@ -340,6 +332,8 @@ extends:
                           --ci-output-name GITHUB_APP_TOKEN
 
                   # Bump again and push the version updates, changelogs, change file deletions, and tags.
+                  # --no-fetch is important so we push the exact set of updates that were published
+                  # (rather than accidentally publishing anything new that was pushed in the meantime).
                   - script: |
                       yarn beachball publish \
                         --no-publish \

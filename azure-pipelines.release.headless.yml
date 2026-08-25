@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include package prefix
 # Example: headless_20201022.1
-name: 'headless_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "headless_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun

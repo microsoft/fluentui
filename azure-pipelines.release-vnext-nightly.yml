@@ -9,7 +9,7 @@ parameters:
 
 # Customize build number to include major version
 # Example: v9_20201022.1
-name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v9_nightly_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - template: /.devops/templates/variables/variables.yml@self

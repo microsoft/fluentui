@@ -9,7 +9,7 @@ parameters:
 
 # Customize build number to include tools experimental prefix
 # Example: tools_experimental_20201022.1
-name: 'tools_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "tools_experimental_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - template: /.devops/templates/variables/variables.yml@self

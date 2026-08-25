@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: v8_20201022.1
-name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v8_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -33,15 +33,15 @@ extends:
     nxScope: -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test
     extraOutputs:
       - output: pipelineArtifact
-        targetPath: $(Build.StagingDirectory)/homepage
+        path: $(Build.StagingDirectory)/homepage
         artifactName: homepage.htm
         displayName: homepage.htm
       - output: pipelineArtifact
-        targetPath: $(Build.StagingDirectory)/site-manifests
+        path: $(Build.StagingDirectory)/site-manifests
         artifactName: site-manifests
         displayName: site-manifests
       - output: pipelineArtifact
-        targetPath: $(Build.StagingDirectory)/fabric-website
+        path: $(Build.StagingDirectory)/fabric-website
         artifactName: fabric-website
         displayName: fabric-website
 
