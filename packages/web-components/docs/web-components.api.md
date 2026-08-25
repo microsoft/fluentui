@@ -112,14 +112,6 @@ export const AccordionTemplate: ElementViewTemplate<Accordion>;
 //
 // @public
 export class AnchorButton extends BaseAnchor {
-    appearance?: AnchorButtonAppearance | undefined;
-    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
-    iconOnly: boolean;
-    iconOnlyChanged(prev: boolean, next: boolean): void;
-    shape?: AnchorButtonShape | undefined;
-    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
-    size?: AnchorButtonSize;
-    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -176,8 +168,6 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends BaseAvatar {
-    active?: AvatarActive | undefined;
-    appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
@@ -191,7 +181,6 @@ export class Avatar extends BaseAvatar {
     generateInitials(): string | void;
     // @internal
     handleChange(source: any, propertyName: string): void;
-    shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
 
@@ -1141,10 +1130,6 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 //
 // @public
 export class Button extends BaseButton {
-    appearance?: ButtonAppearance;
-    iconOnly: boolean;
-    shape?: ButtonShape;
-    size?: ButtonSize;
 }
 
 // @internal (undocumented)
