@@ -35,20 +35,20 @@ describe('Calendar', () => {
     it('moves focus between days with the arrow keys', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('September 18, 2020')).focus().trigger('keydown', { key: 'ArrowRight', bubbles: true });
       cy.focused().find('button').should('have.attr', 'aria-label', 'September 19, 2020');
 
-      cy.focused().realPress('ArrowDown');
+      cy.focused().trigger('keydown', { key: 'ArrowDown', bubbles: true });
       cy.focused().find('button').should('have.attr', 'aria-label', 'September 26, 2020');
 
-      cy.focused().realPress('ArrowLeft');
+      cy.focused().trigger('keydown', { key: 'ArrowLeft', bubbles: true });
       cy.focused().find('button').should('have.attr', 'aria-label', 'September 25, 2020');
     });
 
     it('navigates to the next month when arrowing past the last visible day', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(day('October 3, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('October 3, 2020')).focus().trigger('keydown', { key: 'ArrowRight', bubbles: true });
 
       cy.get(heading).should('have.text', 'October 2020');
       cy.focused().find('button').should('have.attr', 'aria-label', 'October 4, 2020');
@@ -57,10 +57,10 @@ describe('Calendar', () => {
     it('navigates a month with PageUp and a year with Ctrl+PageUp', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(day('September 18, 2020')).focus().realPress('PageUp');
+      cy.get(day('September 18, 2020')).focus().trigger('keydown', { key: 'PageUp', bubbles: true });
       cy.get(heading).should('have.text', 'October 2020');
 
-      cy.get(day('October 18, 2020')).focus().realPress(['Control', 'PageUp']);
+      cy.get(day('October 18, 2020')).focus().trigger('keydown', { key: 'PageUp', ctrlKey: true, bubbles: true });
       cy.get(heading).should('have.text', 'October 2021');
     });
 
