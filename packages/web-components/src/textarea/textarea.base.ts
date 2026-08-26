@@ -108,7 +108,7 @@ export class BaseTextArea extends FASTElement {
     }
 
     this.filteredLabelSlottedNodes.forEach(node => {
-      node.disabled = this.disabled;
+      node.toggleAttribute('disabled', this.disabled);
       node.required = this.required;
     });
   }
@@ -583,7 +583,7 @@ export class BaseTextArea extends FASTElement {
     }
 
     if (this.filteredLabelSlottedNodes?.length) {
-      this.filteredLabelSlottedNodes.forEach(node => (node.disabled = this.disabled));
+      this.filteredLabelSlottedNodes.forEach(node => node.toggleAttribute('disabled', this.disabled));
     }
   }
 
