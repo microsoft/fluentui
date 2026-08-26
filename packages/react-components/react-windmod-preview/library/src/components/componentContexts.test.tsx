@@ -52,12 +52,11 @@ import teachingTitleStyles from './TeachingPopoverTitle/TeachingPopoverTitle.mod
  * These live in one file rather than nine because they exercise one cross-cutting feature through
  * one helper; splitting them would duplicate every provider harness nine times.
  */
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. Button is the one
-// wiring site with no component test file of its own, so this is its only frozen coverage; the
-// other sites carry the guard in their own specs where they materialise slot state (MenuButton,
-// Avatar, Select, Tag, Field). `...actual` keeps ButtonContextProvider, imported above from this
-// same subpath, pointing at the real provider.
+// Frozen-state guard — see testing/freezeState.ts.
+// Button is the one wiring site with no component test file of its own, so this is its only frozen coverage;
+// the other sites carry the guard in their own specs where they materialise slot state (MenuButton, Avatar,
+// Select, Tag, Field). `...actual` keeps ButtonContextProvider, imported above from this same subpath,
+// pointing at the real provider.
 jest.mock('@fluentui/react-headless-components-preview/button', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/button');
   const { deepFreezeState } = require('../testing/freezeState');

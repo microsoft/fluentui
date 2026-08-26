@@ -8,8 +8,7 @@ import { radioClassNames, useRadioStyles } from './useRadioStyles';
 
 import styles from './Radio.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/radio-group', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/radio-group');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -200,8 +199,7 @@ describe('Radio', () => {
 
   it('carries no data-checked on the root in either mode', () => {
     // Canary: the headless Radio publishes no checked state at all, so the peer marker is the only
-    // styling route. If upstream starts stamping it, this test goes red and the decision can be
-    // revisited.
+    // styling route. If upstream starts stamping it, this test goes red.
     const uncontrolled = renderRadio({ defaultChecked: true });
 
     expect(uncontrolled.input.checked).toBe(true);

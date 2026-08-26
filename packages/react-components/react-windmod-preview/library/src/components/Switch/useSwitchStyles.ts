@@ -5,7 +5,7 @@ import type { SwitchState } from './Switch.types';
 
 import styles from './Switch.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const switchClassNames: { root: string } = {
   root: componentMarkers('switch'),
 };
@@ -33,7 +33,6 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     root,
     input: {
       ...state.input,
-      // The module class leads so classList[0] stays slash-free — see componentMarkers.
       className: clsx(styles.input, label && styles.anchored, peerMarker('switch'), state.input.className),
     },
     indicator: {

@@ -19,8 +19,7 @@ const occurrences = (className: string, target: string): number =>
 
 const contextValuesSpy = jest.fn();
 
-// Frozen-state guard: freezes every headless toolbar hook's return so any in-place write
-// anywhere in the pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 // All seven components share this subpath, so one mock covers the whole family, including the
 // two double compositions. The context-values spy records the state the component actually
 // feeds to useToolbarContextValues.

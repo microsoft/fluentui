@@ -9,9 +9,8 @@ import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import type { PopoverProps } from './Popover.types';
 import { Popover } from './Popover';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The same mock
-// records what Popover hands the headless hook, which is where the arrow-offset merge lands.
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records what Popover hands the headless hook, which is where the arrow-offset merge lands.
 jest.mock('@fluentui/react-headless-components-preview/popover', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/popover');
   const { deepFreezeState } = require('../../testing/freezeState');

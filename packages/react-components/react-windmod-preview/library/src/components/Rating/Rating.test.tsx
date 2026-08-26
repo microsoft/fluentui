@@ -12,8 +12,7 @@ import { ratingClassNames, useRatingStyles } from './useRatingStyles';
 import itemStyles from '../RatingItem/RatingItem.module.css';
 import styles from './Rating.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/rating', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/rating');
   const { deepFreezeState } = require('../../testing/freezeState');

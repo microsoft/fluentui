@@ -8,9 +8,8 @@ import { overlayDrawerClassNames, useOverlayDrawerStyles } from './useOverlayDra
 
 import styles from './OverlayDrawer.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The seam is the
-// headless hook's RETURN, not its internals: three headless Drawer hooks write to state.root
+// Frozen-state guard — see testing/freezeState.ts.
+// The seam is the headless hook's RETURN, not its internals: three headless Drawer hooks write to state.root
 // before returning, which is their code and not this layer's convention to enforce.
 jest.mock('@fluentui/react-headless-components-preview/drawer', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/drawer');

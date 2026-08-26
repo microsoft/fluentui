@@ -8,8 +8,7 @@ import { switchClassNames, useSwitchStyles } from './useSwitchStyles';
 
 import styles from './Switch.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/switch', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/switch');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -263,7 +262,7 @@ describe('Switch', () => {
   it('carries no data-checked in uncontrolled mode, before or after a toggle', () => {
     // Canary: the headless hook stamps data-checked from the `checked` prop, so an uncontrolled
     // Switch is genuinely checked with no attribute to show for it. The peer marker exists because
-    // of this; if upstream fixes the stamp, this test goes red and the decision can be revisited.
+    // of this; if upstream fixes the stamp, this test goes red.
     const { root, input } = renderSwitch({ defaultChecked: true });
 
     expect(input.checked).toBe(true);

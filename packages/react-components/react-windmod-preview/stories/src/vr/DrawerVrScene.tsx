@@ -76,7 +76,7 @@ const useSceneSettle = (scrollBody = false): void => {
    showModal() moves focus into the surface, and measured, both sides land on the SAME element —
    the header navigation's first button — and both match :focus-visible. What differs is only the
    ring MECHANISM: windmod's Button draws on native :focus-visible, Griffel's only on keyborg's
-   Tab-only attribute, which programmatic focus never sets. That is the ratified native
+   Tab-only attribute, which programmatic focus never sets. That is a native
    focus-modality delta and it belongs to Button's own scene, not the drawer's, so this rule takes
    it off both sides symmetrically. It reaches only whatever is focused, which is the same element
    in both renders. */

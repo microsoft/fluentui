@@ -9,8 +9,7 @@ import { optionClassNames, useOptionStyles } from './useOptionStyles';
 
 import styles from './Option.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/combobox', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/combobox');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -23,7 +22,7 @@ jest.mock('@fluentui/react-headless-components-preview/combobox', () => {
 
 const CONSUMER = <span data-consumer="">C</span>;
 
-/** The 8-input matrix every D1 consumer re-baselines (CONTEXT.md, GLYPH RULE). */
+/** The 8-input matrix every glyph-rule consumer re-baselines. */
 const INPUTS: ReadonlyArray<readonly [string, OptionProps['checkIcon']]> = [
   ['unsupplied', undefined],
   ['null', null],

@@ -8,8 +8,7 @@ import { spinButtonClassNames, useSpinButtonStyles } from './useSpinButtonStyles
 
 import styles from './SpinButton.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/spin-button', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/spin-button');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -258,7 +257,7 @@ describe('SpinButton', () => {
     const { input } = renderSpinButton({ input: { className: 'mine' } });
 
     expect(input).toHaveClass(styles.input);
-    // classList is an ordered set, so a doubled append is only visible in the raw attribute.
+    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
     expect(
       input
         .getAttribute('class')!
@@ -377,7 +376,7 @@ describe('SpinButton', () => {
   });
 
   it('appends a consumer className to the root exactly once', () => {
-    // classList is an ordered set and would hide a doubled append; read the raw attribute.
+    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
     const { root } = renderSpinButton({ className: 'mine' });
     const occurrences = root
       .getAttribute('class')!

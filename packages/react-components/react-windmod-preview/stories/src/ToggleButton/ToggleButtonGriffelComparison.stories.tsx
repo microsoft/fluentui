@@ -35,7 +35,7 @@ type LookProps = {
 
 /**
  * Every windmod variant next to its Griffel-suite twin (inside a Griffel FluentProvider).
- * The pair in each row must be pixel-identical — this is the pilot's review surface.
+ * The pair in each row must be pixel-identical.
  */
 export const GriffelComparison = (): React.ReactNode => {
   const variants: Array<{ label: string; props: LookProps }> = [

@@ -14,9 +14,9 @@ import { toastTitleClassNames, useToastTitleStyles } from './useToastTitleStyles
 
 import styles from './ToastTitle.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. It is the guard for
-// the D1 media restoration too, which spreads a new slot rather than writing `children` in place.
+// Frozen-state guard — see testing/freezeState.ts.
+// It is the guard for the media restoration too, which spreads a new slot rather than writing `children`
+// in place.
 jest.mock('@fluentui/react-headless-components-preview/toast', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/toast');
   const { deepFreezeState } = require('../../testing/freezeState');

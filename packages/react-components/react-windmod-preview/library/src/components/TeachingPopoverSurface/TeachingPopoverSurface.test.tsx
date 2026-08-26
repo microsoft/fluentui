@@ -56,7 +56,6 @@ describe('TeachingPopoverSurface', () => {
     const { surface } = renderSurface();
     const names = surface.getAttribute('class')!.split(/\s+/);
 
-    // classList[0] must be slash-free — see componentMarkers.
     expect(names[0]).toBe('fui-teaching-popover-surface');
     expect(names.indexOf('fui-teaching-popover-surface')).toBeLessThan(
       names.indexOf('group/fui-teaching-popover-surface'),

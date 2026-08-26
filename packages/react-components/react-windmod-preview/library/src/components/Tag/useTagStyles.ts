@@ -32,9 +32,7 @@ export type TagSlotState = {
  * marker is load-bearing, not decorative: `.media`, `.icon` and `.primary-text` reach `size`
  * through the group variant on it.
  *
- * Not a hook and deliberately not `use`-named — it holds no state and calls nothing. The name
- * matters beyond style: enforce-use-client flags any call whose callee matches /^use.{1,}/ by
- * name alone, so a `use`-named helper would force `'use client';` onto every caller.
+ * Not a hook and deliberately not `use`-named — see `useNavItemStyles`.
  */
 export const tagSlotClasses = <S extends TagSlotState>(state: S): S => ({
   ...state,

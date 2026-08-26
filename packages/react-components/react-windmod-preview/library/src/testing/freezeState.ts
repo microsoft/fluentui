@@ -1,8 +1,8 @@
 /**
- * Test-only deep-freeze for a headless hook's return value. A retrofit spec wraps the hook (see
- * SplitButton.test.tsx's `renderSplitButton` spy for the module-mock shape — `jest.mock` the
- * headless subpath, spread `jest.requireActual`, replace the one hook), passes the frozen state
- * through the real component, and asserts the render does not throw. The styles-hook convention is
+ * Test-only deep-freeze for a headless hook's return value. A spec wraps the hook — `jest.mock` the
+ * headless subpath, spread `jest.requireActual`, replace the one hook with a frozen passthrough —
+ * passes the frozen state through the real component, and asserts the render does not throw. The
+ * styles-hook convention is
  * spread-only (never mutate the state the hook returned); a frozen return value turns any
  * violation, anywhere in the pipeline, into a thrown TypeError instead of a silent in-place write.
  *

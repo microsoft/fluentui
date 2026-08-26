@@ -5,7 +5,7 @@ import type { RadioGroupState } from './RadioGroup.types';
 
 import styles from './RadioGroup.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const radioGroupClassNames: { root: string } = {
   root: componentMarkers('radio-group'),
 };

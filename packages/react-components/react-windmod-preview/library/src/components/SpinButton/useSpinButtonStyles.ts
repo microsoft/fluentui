@@ -31,8 +31,7 @@ const buttonAppearanceClass = (appearance: SpinButtonState['appearance']) => {
 
 /** Applies the visual contract, returning new state. The headless hook already stamps
  * data-disabled, data-spin-state, data-at-bound and data-invalid on the root; data-invalid is
- * deliberately unused, because it is present for every non-boolean aria-invalid token while the
- * invalid look belongs only to `aria-invalid` true. The spin direction is restamped per stepper
+ * deliberately unused — see `useInputStyles`. The spin direction is restamped per stepper
  * because a root-level direction cannot say which of the two buttons is the active one; the bound
  * state needs no CSS, since the headless hook already disables the matching button.
  * The root's appearance/invalid/disabled looks are module classes because their cascade is carried

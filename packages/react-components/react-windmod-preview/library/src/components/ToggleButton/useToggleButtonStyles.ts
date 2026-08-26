@@ -22,8 +22,7 @@ type ToggleButtonRootDataAttributes = {
  * already stamps data-checked/-disabled/-disabled-focusable/-icon-only/-icon-position and
  * useButtonStyles stamps data-appearance/-size/-empty; data-accessible is style-only.
  *
- * Button's icon rules select through `group/fui-button`, so the root must keep Button's
- * marker pair alongside its own.
+ * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
 export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
   const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);

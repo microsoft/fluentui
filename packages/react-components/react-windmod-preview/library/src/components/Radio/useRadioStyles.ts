@@ -5,7 +5,7 @@ import type { RadioState } from './Radio.types';
 
 import styles from './Radio.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const radioClassNames: { root: string } = {
   root: componentMarkers('radio'),
 };
@@ -25,7 +25,6 @@ export const useRadioStyles = (state: RadioState): RadioState => {
     },
     input: {
       ...state.input,
-      // The module class leads so classList[0] stays slash-free — see componentMarkers.
       className: clsx(styles.input, peerMarker('radio'), state.input.className),
     },
     indicator: {

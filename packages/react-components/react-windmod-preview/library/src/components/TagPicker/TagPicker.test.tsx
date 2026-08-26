@@ -126,7 +126,7 @@ describe('TagPicker', () => {
   });
 
   // The frozen headless return above turns an in-place write on the picker state into a thrown
-  // TypeError. The D1 glyph rule is a TagPickerControl pipeline and is guarded in that spec.
+  // TypeError. The glyph rule is a TagPickerControl pipeline and is guarded in that spec.
   it('renders the whole family without mutating the headless state', () => {
     expect(() => renderPicker({ open: true, size: 'large', appearance: 'filled-darker' })).not.toThrow();
   });

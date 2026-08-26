@@ -15,7 +15,7 @@ import { tagPickerControlClassNames, useTagPickerControlStyles } from './useTagP
 import styles from './TagPickerControl.module.css';
 
 // The real hook is kept; the frozen return is the mutation guard — see testing/freezeState.ts. This
-// component is the family's only D1 glyph-rule consumer, so the freeze sits on the hook whose return
+// component is the family's only glyph-rule consumer, so the freeze sits on the hook whose return
 // the rule spreads.
 jest.mock('@fluentui/react-headless-components-preview/tag-picker', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/tag-picker');
@@ -34,7 +34,7 @@ const sizes = ['medium', 'large', 'extra-large'] as const;
 
 const CONSUMER = <span data-consumer="">C</span>;
 
-/** The 8-input matrix every glyph-rule consumer re-baselines (CONTEXT.md, GLYPH RULE). */
+/** The 8-input matrix every glyph-rule consumer re-baselines. */
 const INPUTS: ReadonlyArray<readonly [string, TagPickerControlProps['expandIcon']]> = [
   ['unsupplied', undefined],
   ['null', null],
@@ -257,7 +257,7 @@ describe('TagPickerControl', () => {
     expect(styled.root).toHaveProperty('data-size', 'large');
   });
 
-  // T-9 — the frozen headless return turns an in-place write anywhere in the D1 pipeline into a
+  // The frozen headless return turns an in-place write anywhere in the glyph-rule pipeline into a
   // thrown TypeError. Every glyph-rule input is exercised: the pre-hook materialisation, the
   // post-hook restoration and the slot-removing branch each reach the state by a different path.
   it('applies the glyph rule to a frozen headless state without mutating it', () => {

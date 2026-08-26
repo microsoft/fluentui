@@ -15,8 +15,7 @@ type SelectRootDataAttributes = {
 };
 
 /** Applies the visual contract, returning new state. The headless hook already stamps
- * data-disabled and data-invalid; data-invalid is deliberately unused, because it is present for
- * every non-boolean aria-invalid token while the invalid look belongs only to `aria-invalid` true.
+ * data-disabled and data-invalid; data-invalid is deliberately unused — see `useInputStyles`.
  * The select's appearance/invalid/disabled looks are module classes because their cascade is
  * carried by block order in Select.module.css. */
 export const useSelectStyles = (state: SelectState): SelectState => {

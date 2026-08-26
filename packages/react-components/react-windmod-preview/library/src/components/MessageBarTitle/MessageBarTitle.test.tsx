@@ -9,8 +9,7 @@ import { messageBarTitleClassNames, useMessageBarTitleStyles } from './useMessag
 import actionsStyles from '../MessageBarActions/MessageBarActions.module.css';
 import styles from './MessageBarTitle.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/message-bar', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/message-bar');
   const { deepFreezeState } = require('../../testing/freezeState');

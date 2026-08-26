@@ -11,8 +11,7 @@ import { navCategoryItemClassNames, useNavCategoryItemStyles } from './useNavCat
 import styles from './NavCategoryItem.module.css';
 import navItemStyles from '../NavItem/NavItem.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/nav', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/nav');
   const { deepFreezeState } = require('../../testing/freezeState');

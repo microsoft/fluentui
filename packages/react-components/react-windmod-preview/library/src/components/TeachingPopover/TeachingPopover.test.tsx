@@ -12,8 +12,9 @@ import { TeachingPopover } from './TeachingPopover';
 import headerStyles from '../TeachingPopoverHeader/TeachingPopoverHeader.module.css';
 import popoverSurfaceStyles from '../PopoverSurface/PopoverSurface.module.css';
 
-// Frozen-state guard — see testing/freezeState.ts. The same mock records what TeachingPopover
-// hands the headless hook, which is where the arrow-offset merge lands.
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records what TeachingPopover hands the headless hook, which is where the arrow-offset merge
+// lands.
 jest.mock('@fluentui/react-headless-components-preview/teaching-popover', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/teaching-popover');
   const { deepFreezeState } = require('../../testing/freezeState');

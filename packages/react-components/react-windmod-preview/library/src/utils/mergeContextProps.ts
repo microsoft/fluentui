@@ -3,11 +3,8 @@ import clsx from 'clsx';
 
 /**
  * Folds a component context's published value into a component's own props, so the props a windmod
- * component then destructures already carry the container's defaults. It is the single owner of
- * windmod's context-merge semantics; no wiring site is allowed to spell them out itself.
- *
- * The three rules, per the resolved design (`.scratch/windmod-loop/CONTEXT.md`, COMPONENT CONTEXTS,
- * 2026-08-23):
+ * component then destructures already carry the container's defaults. Four merge rules, one per
+ * kind of prop:
  *
  * - **Scalars and slots — the local prop wins, the context is the default.** `props[key] ?? ctx[key]`,
  *   so a value the consumer passed is never overwritten by a container, and a `key` the consumer
@@ -16,27 +13,19 @@ import clsx from 'clsx';
  * - **Callbacks — both fire, context first.** `mergeCallbacks(ctx[key], props[key])`. A container
  *   that publishes an `onClick` still gets its handler called when the consumer also passes one;
  *   neither silently swallows the other.
- * - **`className` — `clsx(ctx.className, props.className)`, and `style` spreads the same
- *   direction.** Context first, local last, so a local declaration wins the cascade for equal
- *   specificity while the container's classes survive.
+ * - **`className` — `clsx(ctx.className, props.className)`.** Context first, local last, so a local
+ *   declaration wins the cascade for equal specificity while the container's classes survive.
+ * - **`style` — spread in that same direction**, so a local key overwrites the context's.
  *
  * `ref` is deliberately NOT merged — it takes the local-wins branch. Merging two refs requires
  * `useMergedRefs`, which is a hook and cannot live in a pure helper; no context in this library
  * publishes one, and quietly calling a ref with `mergeCallbacks` would break object refs outright.
  *
- * The helper is full-prop-capable from day one even though every context shape shipped today
- * (`{ size }`, `{ inline }`, `{ shape, size }`) is scalar-only — the callback/className/style
- * branches exist so a later, wider context needs no second helper.
+ * Every context shape shipped today is scalar-only, so the callback/`className`/`style` branches are
+ * currently unreached; they exist so a later, wider context needs no second helper.
  *
- * Pure and allocation-light: an `undefined` context (or one whose every key is `undefined`) returns
- * the caller's own props object untouched, so the common no-provider case adds no garbage. The
- * inputs are never mutated.
- *
- * @param contextValue - The context's published value, or `undefined` when no provider is present.
  * Pass a container-owned context (`FieldContext`) already narrowed to the keys the styling layer
  * reads — the wide aria half of that value is the base hooks' business, not this helper's.
- * @param props - The component's own props.
- * @returns `props` when the context contributes nothing, otherwise a new merged props object.
  */
 export function mergeContextProps<TProps extends object>(
   contextValue: Partial<TProps> | undefined,

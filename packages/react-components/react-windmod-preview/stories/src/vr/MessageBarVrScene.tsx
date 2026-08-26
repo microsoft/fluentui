@@ -51,7 +51,7 @@ export const MessageBarVrScene = ({
 }): React.ReactNode => {
   // No `size` on either button: MessageBarActions publishes `{ size: 'small' }` through
   // ButtonContext and the button reads it, on both sides. This is the scene's ButtonContext
-  // coverage — pinning the size, as this scene used to, would have hidden a missing read.
+  // coverage — pinning the size here would hide a missing read.
   // `appearance` is not part of the published shape, so the dismiss button still states it.
   const dismiss = <Button appearance="transparent" icon={<DismissIcon />} aria-label="dismiss" />;
   const action = (label: string) => <Button>{label}</Button>;

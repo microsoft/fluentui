@@ -22,8 +22,7 @@ type ToolbarButtonRootDataAttributes = {
  * hook stamps data-vertical/-disabled/-disabled-focusable/-icon-only but not data-icon-position,
  * which Button's icon spacing rules select on.
  *
- * Button's icon rules select through `group/fui-button`, so the root must keep Button's marker
- * pair alongside its own.
+ * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
 export const useToolbarButtonStyles = (state: ToolbarButtonState): ToolbarButtonState => {
   const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);

@@ -11,9 +11,8 @@ import { tagGroupClassNames, useTagGroupStyles } from './useTagGroupStyles';
 import styles from './TagGroup.module.css';
 import tagStyles from '../Tag/Tag.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The same mock
-// records what each render hands to the Griffel context builder, and what it publishes: the
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records what each render hands to the Griffel context builder, and what it publishes: the
 // headless state omits both look values, so only the styled state can carry them.
 jest.mock('@fluentui/react-headless-components-preview/tag-group', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/tag-group');
