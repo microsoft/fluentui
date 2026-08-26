@@ -22,10 +22,8 @@
     /* The bottom focus border, shared with Input, Select, SpinButton and Combobox. No
        transition-delay and no timing function IN THIS RULE: Griffel writes a curve token into
        transition-delay, which is not a <time> and is dropped at computed-value time, so both sides
-       compute 0s / ease. The reduced-motion block below writes duration only where Griffel also
-       writes a real `transition-delay: 0.01ms` — the same omission Input, Select, SpinButton and
-       Combobox all ship against the same Griffel pair, reproduced here rather than diverged from
-       alone. */
+       compute 0s / ease. The reduced-motion block below writes a real <time> in the same property,
+       so the delay is authored there. */
     @variant after {
       @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
 
@@ -37,6 +35,7 @@
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
+        transition-delay: 0.01ms;
       }
     }
 
@@ -50,6 +49,7 @@
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
         }
       }
 

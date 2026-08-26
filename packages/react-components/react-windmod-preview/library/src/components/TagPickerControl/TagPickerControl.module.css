@@ -10,7 +10,8 @@
 
    The bottom focus border carries no transition-delay and no timing function: Griffel writes a
    curve token into transition-delay, which is not a <time> and is dropped at computed-value time.
-   The reduced-motion block omits the delay as well, where Griffel writes a real 0.01ms one. */
+   The reduced-motion blocks write a real <time> in the same property, so the delay is authored
+   there. */
 
 @layer fui.components.l1 {
   .root {
@@ -43,6 +44,7 @@
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
+        transition-delay: 0.01ms;
       }
     }
 
@@ -56,6 +58,7 @@
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
         }
       }
 
