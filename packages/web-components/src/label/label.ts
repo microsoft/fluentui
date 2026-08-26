@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { LabelSize, LabelWeight } from './label.options.js';
+import type { LabelSize, LabelWeight } from './label.options.js';
 
 /**
  * The base class used for constructing a fluent-label custom element
@@ -9,39 +9,13 @@ import { LabelSize, LabelWeight } from './label.options.js';
  * @slot - The default slot. Accepts the content of the label.
  * @csspart asterisk - The required-field asterisk indicator.
  *
+ * @presentational {LabelSize | undefined} size - Specifies the font size of the label.
+ * @presentational {LabelWeight | undefined} weight - Specifies the font weight of the label.
+ * @presentational {boolean} disabled - Specifies styles for the label when its associated input is disabled.
+ *
  * @public
  */
 export class Label extends FASTElement {
-  /**
-   * 	Specifies font size of a label
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: LabelSize;
-
-  /**
-   * 	Specifies font weight of a label
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: weight
-   */
-  @attr
-  public weight?: LabelWeight;
-
-  /**
-   * 	Specifies styles for label when associated input is disabled
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled
-   */
-  @attr({ mode: 'boolean' })
-  public disabled: boolean = false;
-
   /**
    * 	Specifies styles for label when associated input is a required field
    *
