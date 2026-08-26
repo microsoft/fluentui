@@ -86,6 +86,59 @@ describe('FluentProvider', () => {
     expect(ref.current).toHaveClass('fui-fluent-provider');
   });
 
+  it('T27 renders DOM byte-identical to a bare div carrying the same class', () => {
+    const children = (
+      <>
+        <span>a</span>
+        <button type="button">b</button>
+      </>
+    );
+
+    const { container } = render(<FluentProvider className="probe">{children}</FluentProvider>);
+    const el = container.firstElementChild as HTMLElement;
+
+    // The css-var scope is published through a context provider, which emits no element, and
+    // useMergedRefs sets no attribute — so the markup must not have moved at all.
+    const bare = render(
+      <div dir="ltr" className={el.className}>
+        {children}
+      </div>,
+    );
+
+    expect(container.innerHTML).toBe(bare.container.innerHTML);
+
+    const strict = render(
+      <React.StrictMode>
+        <FluentProvider className="probe">{children}</FluentProvider>
+      </React.StrictMode>,
+    );
+
+    expect(strict.container.innerHTML).toBe(bare.container.innerHTML);
+  });
+
+  it('T28 forwards its ref to the provider element through useMergedRefs', () => {
+    const objectRef = React.createRef<HTMLDivElement>();
+    const callbackTargets: (HTMLDivElement | null)[] = [];
+
+    const { rerender } = render(<FluentProvider ref={objectRef}>content</FluentProvider>);
+
+    expect(objectRef.current).toBeInstanceOf(HTMLDivElement);
+    expect(objectRef.current).toHaveClass('fui-fluent-provider');
+
+    rerender(
+      <FluentProvider
+        ref={(node: HTMLDivElement | null) => {
+          callbackTargets.push(node);
+        }}
+      >
+        content
+      </FluentProvider>,
+    );
+
+    expect(callbackTargets.filter(Boolean)).toHaveLength(1);
+    expect(callbackTargets[callbackTargets.length - 1]).toBeInstanceOf(HTMLDivElement);
+  });
+
   it('provides dir and targetDocument to the headless context', () => {
     const stub = document.implementation.createHTMLDocument('stub');
 
