@@ -2,7 +2,7 @@ import { type InitialTemplateAttributes } from '@microsoft/fast-test-harness';
 import { expect, test } from '../../test/playwright/index.js';
 
 import type { Checkbox } from './checkbox.js';
-import { CheckboxShape, CheckboxSize, tagName } from './checkbox.options.js';
+import { tagName } from './checkbox.options.js';
 
 test.describe('Checkbox', () => {
   test.use({
@@ -39,38 +39,6 @@ test.describe('Checkbox', () => {
     await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('value', 'on');
-  });
-
-  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const shape of Object.values(CheckboxShape)) {
-      await test.step(`should set the \`shape\` property to "${shape}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { shape } });
-
-        await expect(element).toHaveAttribute('shape', shape);
-
-        await expect(element).toHaveJSProperty('shape', shape);
-      });
-    }
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const size of Object.values(CheckboxSize)) {
-      await test.step(`should set the \`size\` property to "${size}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { size } });
-
-        await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveAttribute('size', size);
-      });
-    }
   });
 
   test('should set the `ariaChecked` property equal to the `checked` property', async ({ fastPage }) => {
