@@ -1,7 +1,7 @@
-import { attr, observable } from '@microsoft/fast-element';
-import { swapStates, toggleState } from '../utils/element-internals.js';
+import { observable } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import { BaseCheckbox } from './checkbox.base.js';
-import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
+import type { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
  * A Checkbox Custom HTML Element.
@@ -13,6 +13,9 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  * @slot indeterminate-indicator - The indeterminate indicator
  * @fires { Event } change - Emits a custom change event when the checked state changes
  * @fires { Event } input - Emits a custom input event when the checked state changes
+ *
+ * @presentational {CheckboxShape | undefined} shape - Indicates the shape of the checkbox.
+ * @presentational {CheckboxSize | undefined} size - Indicates the size of the control.
  *
  * @public
  */
@@ -36,26 +39,6 @@ export class Checkbox extends BaseCheckbox {
     this.setAriaChecked();
     toggleState(this.elementInternals, 'indeterminate', next);
   }
-
-  /**
-   * Indicates the shape of the checkbox.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: CheckboxShape;
-
-  /**
-   * Indicates the size of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: CheckboxSize;
 
   constructor() {
     super();
