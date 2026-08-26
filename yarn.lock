@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "@actions/core@npm:1.9.1":
@@ -2675,9 +2675,7 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2723,8 +2721,8 @@ __metadata:
     "@typescript-eslint/utils": "npm:^8.46.2"
     eslint-plugin-eslint-plugin: "npm:6.4.0"
   peerDependencies:
-    eslint: ">= 8.0.0"
-    typescript: ">= 5.0.0"
+    eslint: ^8.57.0 || ^9.0.0
+    typescript: ">=5.0.0 <6.0.0"
     typescript-eslint: ">= 8.46.2"
   languageName: unknown
   linkType: soft
@@ -2932,7 +2930,7 @@ __metadata:
     babel-plugin-module-resolver: "npm:5.0.3"
     babel-plugin-react-compiler: "npm:1.0.0"
     babel-plugin-tester: "npm:10.1.0"
-    beachball: "npm:3.0.0-alpha.7"
+    beachball: "npm:3.0.0-alpha.9"
     chalk: "npm:4.1.0"
     chrome-remote-interface: "npm:0.28.2"
     ci-info: "npm:3.9.0"
@@ -3087,6 +3085,11 @@ __metadata:
     webpack-merge: "npm:5.10.0"
     yargs: "npm:13.3.2"
     yargs-parser: "npm:13.1.2"
+  dependenciesMeta:
+    cypress:
+      built: true
+    puppeteer:
+      built: true
   languageName: unknown
   linkType: soft
 
@@ -3125,9 +3128,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3348,9 +3352,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3369,9 +3374,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3393,9 +3399,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3424,9 +3431,10 @@ __metadata:
     es6-weak-map: "npm:^2.0.2"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3449,9 +3457,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3503,9 +3512,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3531,9 +3541,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3560,9 +3571,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3587,9 +3599,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3637,9 +3650,10 @@ __metadata:
     embla-carousel-fade: "npm:^8.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3762,9 +3776,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3788,9 +3803,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3805,9 +3821,7 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -3837,9 +3851,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3964,9 +3980,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -3979,8 +3996,11 @@ __metadata:
   peerDependencies:
     "@fluentui/react-conformance": ^0.20.1
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
     typescript: ^4.3.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4013,10 +4033,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
     scheduler: ">=0.19.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4062,9 +4083,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4094,9 +4116,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4118,9 +4141,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4175,9 +4199,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4270,9 +4295,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4371,9 +4397,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4424,9 +4451,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4505,9 +4533,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4526,9 +4555,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4554,9 +4584,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4579,9 +4610,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4606,6 +4638,9 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4627,9 +4662,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4653,9 +4689,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4681,9 +4718,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4710,9 +4748,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4743,9 +4782,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4772,9 +4812,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4802,9 +4843,10 @@ __metadata:
   peerDependencies:
     "@fluentui/react-northstar": ^0.66.5
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4828,9 +4870,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4878,9 +4921,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4899,9 +4943,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4933,9 +4978,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5028,9 +5074,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5054,9 +5101,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5086,9 +5134,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5100,6 +5149,9 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5114,6 +5166,9 @@ __metadata:
     "@fluentui/react-components": ^9.74.7
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5134,9 +5189,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5157,12 +5214,13 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
-    use-sync-external-store: "npm:^1.2.0"
+    use-sync-external-store: "npm:^1.4.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5186,9 +5244,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5224,9 +5283,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5251,9 +5311,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5277,9 +5338,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5303,9 +5365,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5329,9 +5392,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5350,6 +5414,9 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5372,9 +5439,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5398,9 +5466,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5425,9 +5494,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5450,9 +5520,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5495,10 +5566,11 @@ __metadata:
     "@storybook/icons": ^1.3.2
     "@storybook/react-webpack5": ^9.1.17
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
     storybook: ^9.1.17
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5524,9 +5596,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5552,9 +5625,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5584,9 +5658,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5610,9 +5685,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5629,9 +5705,10 @@ __metadata:
     tabster: "npm:^8.8.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5663,9 +5740,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5692,9 +5771,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5721,12 +5801,13 @@ __metadata:
     "@fluentui/scripts-cypress": "npm:*"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
-    use-sync-external-store: "npm:^1.2.0"
+    use-sync-external-store: "npm:^1.4.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5748,9 +5829,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5773,9 +5855,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5823,9 +5906,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5854,9 +5938,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5883,9 +5968,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5911,9 +5997,10 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5946,9 +6033,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5970,9 +6059,7 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.8.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5986,6 +6073,9 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -6000,9 +6090,11 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -6058,9 +6150,7 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6386,9 +6476,7 @@ __metadata:
     dedent: "npm:^1.2.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
-    "@types/react-dom": ">=16.9.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
   languageName: unknown
   linkType: soft
 
@@ -13454,21 +13542,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"beachball@npm:3.0.0-alpha.7":
-  version: 3.0.0-alpha.7
-  resolution: "beachball@npm:3.0.0-alpha.7"
+"beachball@npm:3.0.0-alpha.9":
+  version: 3.0.0-alpha.9
+  resolution: "beachball@npm:3.0.0-alpha.9"
   dependencies:
     "@vercel/detect-agent": "npm:^1.2.1"
     commander: "npm:^14.0.3"
     nano-spawn: "npm:^2.1.0"
-    p-graph: "npm:^3.0.0-alpha.4"
+    p-graph: "npm:^3.0.0-alpha.6"
     p-limit: "npm:^3.1.0"
     prompts: "npm:^2.4.2"
     semver: "npm:^7.7.4"
     workspace-tools: "npm:^0.42.0"
   bin:
     beachball: bin/beachball.js
-  checksum: 10c0/5f4bd3f00bf5c99dcd40887fcc099ef808f80f4c939066fed0c2ff12217e65a644f53dac1f3f08babac52e3d82970ce9cbac67890886a5a8fde1d2748f54f41c
+    beachball-auth-helper: bin/beachball-auth-helper.js
+  checksum: 10c0/51d5ec3258ddfed2dd9125437d0140f8d52e37d609a2678483b4223ed3bcb8c09fd92448bf86527cfb4fa9864522a35947ed3d2d7027cae9662767817b322a0e
   languageName: node
   linkType: hard
 
@@ -25862,10 +25951,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-graph@npm:^3.0.0-alpha.4":
-  version: 3.0.0-alpha.4
-  resolution: "p-graph@npm:3.0.0-alpha.4"
-  checksum: 10c0/84452847e6cb761aedcfe1d2d02faff2fd8e9155807e97e7beb90006d2e14e46c2f55c51b3578198a1d28b9c3e576bef9980a063e47b5ff681655d1433c6a03f
+"p-graph@npm:^3.0.0-alpha.6":
+  version: 3.0.0-alpha.6
+  resolution: "p-graph@npm:3.0.0-alpha.6"
+  checksum: 10c0/c68616f581c0fd0f4803ac35e9edadca048913e6dce465d7860b22ec8643921c52d288fc52b9817d3ac565d3da1732d3afa34c6904d505e29bc4ecc3baf7a1c9
   languageName: node
   linkType: hard
 
@@ -28118,20 +28207,20 @@ __metadata:
 
 "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>":
   version: 1.22.8
-  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=9bd1a5"
   dependencies:
     is-core-module: "npm:^2.13.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10c0/0446f024439cd2e50c6c8fa8ba77eaa8370b4180f401a96abf3d1ebc770ac51c1955e12764cde449fde3fff480a61f84388e3505ecdbab778f4bef5f8212c729
+  checksum: 10c0/4bc6de64a713422234e0e773bff296767d77d6e545b98042ff90a796d356f2b131853f4fa1d54e2c415aa6efa6dc2eed5b3f501f63164f834619fda900e33b8e
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@npm%3A^1.1.6#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.1.7#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.11.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.11.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.12.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.19.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.11#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.8#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A~1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A~1.22.2#optional!builtin<compat/resolve>":
   version: 1.22.12
-  resolution: "resolve@patch:resolve@npm%3A1.22.12#optional!builtin<compat/resolve>::version=1.22.12&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.12#optional!builtin<compat/resolve>::version=1.22.12&hash=9bd1a5"
   dependencies:
     es-errors: "npm:^1.3.0"
     is-core-module: "npm:^2.16.1"
@@ -28139,29 +28228,29 @@ __metadata:
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10c0/fc6519984ae1f894d877c0060ba8b1f5ba3bc0e85a02f74e141929c118c23d74d9735619a9cc2965397387e514884245c65d72a40731dcb6cfc84c7bcdc8321e
+  checksum: 10c0/e12af106e16e652bd83060e8afacece4ee3dcbd0f4cf028e3d9ad178e6ced9ecb1c87ee60158b239582313902a717f8adc57a9b76ea54b1994141ba15f420c65
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@npm%3A^2.0.0-next.5#optional!builtin<compat/resolve>":
   version: 2.0.0-next.5
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.5#optional!builtin<compat/resolve>::version=2.0.0-next.5&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.5#optional!builtin<compat/resolve>::version=2.0.0-next.5&hash=9bd1a5"
   dependencies:
     is-core-module: "npm:^2.13.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10c0/78ad6edb8309a2bfb720c2c1898f7907a37f858866ce11a5974643af1203a6a6e05b2fa9c53d8064a673a447b83d42569260c306d43628bff5bb101969708355
+  checksum: 10c0/9f2cb75a47ee17edca53b3a4e96883e82fe92dadc323a19868621b897da5136f7dd3189b7bac4d4e7715bb3b2fd5c1e8c5145ebccc7e0368b1546206f9644c12
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@npm%3A~1.17.0#optional!builtin<compat/resolve>":
   version: 1.17.0
-  resolution: "resolve@patch:resolve@npm%3A1.17.0#optional!builtin<compat/resolve>::version=1.17.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.17.0#optional!builtin<compat/resolve>::version=1.17.0&hash=9bd1a5"
   dependencies:
     path-parse: "npm:^1.0.6"
-  checksum: 10c0/e072e52be3c3dbfd086761115db4a5136753e7aefc0e665e66e7307ddcd9d6b740274516055c74aee44921625e95993f03570450aa310b8d73b1c9daa056c4cd
+  checksum: 10c0/7ee56dea424a67d324beea1e203719e4bd14b1aa73ed510bdcda233d214d331e80fc87624b2ad7330cce5ddcdece42a68867d6ab7f6c137b3e7b7733c783c448
   languageName: node
   linkType: hard
 
@@ -31845,12 +31934,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.2.0":
-  version: 1.2.2
-  resolution: "use-sync-external-store@npm:1.2.2"
+"use-sync-external-store@npm:^1.4.0":
+  version: 1.6.0
+  resolution: "use-sync-external-store@npm:1.6.0"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/23b1597c10adf15b26ade9e8c318d8cc0abc9ec0ab5fc7ca7338da92e89c2536abd150a5891bf076836c352fdfa104fc7231fb48f806fd9960e0cbe03601abaf
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/35e1179f872a53227bdf8a827f7911da4c37c0f4091c29b76b1e32473d1670ebe7bcd880b808b7549ba9a5605c233350f800ffab963ee4a4ee346ee983b6019b
   languageName: node
   linkType: hard
 

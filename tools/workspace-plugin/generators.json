@@ -70,6 +70,11 @@
       "schema": "./src/generators/normalize-package-dependencies/schema.json",
       "description": "Normalizes all projects dependencies within package.json (used on CI)"
     },
+    "verify-peer-dependencies": {
+      "implementation": "./src/generators/verify-peer-dependencies/index.ts",
+      "schema": "./src/generators/verify-peer-dependencies/schema.json",
+      "description": "Verifies peer dependency forwarding chains and peer metadata across all projects (used on CI)"
+    },
     "version-bump": {
       "implementation": "./src/generators/version-bump/index.ts",
       "schema": "./src/generators/version-bump/schema.json",

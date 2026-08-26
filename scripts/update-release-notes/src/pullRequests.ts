@@ -53,7 +53,7 @@ async function getMatchingRecentPullRequest(entry: ChangelogEntry): Promise<IPul
   }
 
   try {
-    if (author) {
+    if (author && authorEmail) {
       // Get this author's recent PRs and look for one or more with a matching commit message and email
       possiblePrs = (await getRecentPrsByAuthor(author, authorEmail)).filter(pr =>
         (pr.commits ?? []).some(commit => commit.message === message && commit.authorEmail === authorEmail),
