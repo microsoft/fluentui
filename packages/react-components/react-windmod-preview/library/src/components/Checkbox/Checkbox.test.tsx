@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Checkbox } from './Checkbox';
 import type { CheckboxState } from './Checkbox.types';
@@ -310,11 +311,8 @@ describe('Checkbox', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderCheckbox({ className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    const tokens = root.getAttribute('class')!.split(/\s+/);
-
-    expect(tokens.filter(token => token === 'consumer')).toHaveLength(1);
-    expect(tokens.filter(token => token === styles.root)).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {

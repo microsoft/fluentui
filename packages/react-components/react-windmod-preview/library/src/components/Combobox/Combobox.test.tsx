@@ -5,6 +5,7 @@ import { renderCombobox, useCombobox } from '@fluentui/react-headless-components
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field/Field';
 import { Listbox } from '../Listbox/Listbox';
@@ -246,8 +247,8 @@ describe('Combobox', () => {
     expect(root.hasAttribute('data-clearable')).toBe(false);
   });
 
-  // T-7, slot-scoped. The expandIcon assertion is glyph-only: Griffel additionally gives that slot
-  // role="button", aria-expanded and a computed name, which the headless slot does not ship (G2).
+  // The expandIcon assertion is glyph-only: Griffel additionally gives that slot
+  // role="button", aria-expanded and a computed name, which the headless slot does not ship.
   describe.each([
     ['expandIcon', {} as ComboboxProps, ChevronDownRegular, DismissRegular],
     [
@@ -256,7 +257,7 @@ describe('Combobox', () => {
       DismissRegular,
       ChevronDownRegular,
     ],
-  ] as const)('%s D1 matrix', (slotName, extra, Glyph, SiblingGlyph) => {
+  ] as const)('%s glyph rule matrix', (slotName, extra, Glyph, SiblingGlyph) => {
     it.each(INPUTS.map(([label]) => label))('reproduces Griffel for %s', label => {
       const value = INPUTS.find(([name]) => name === label)![1];
       const parts = renderCombo({ ...extra, [slotName]: value });
@@ -385,13 +386,7 @@ describe('Combobox', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root, input } = renderCombo({ root: { className: 'consumer' } });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(input).not.toHaveClass('consumer');
   });
 

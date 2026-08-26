@@ -6,6 +6,7 @@ import { DiamondDismiss12Filled } from '@fluentui/react-icons/headless/svg/diamo
 import { Warning12Filled } from '@fluentui/react-icons/headless/svg/warning';
 
 import { Input } from '../Input';
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from './Field';
 import type { FieldState } from './Field.types';
@@ -429,11 +430,8 @@ describe('Field', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderField({ className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    const tokens = root.getAttribute('class')!.split(/\s+/);
-
-    expect(tokens.filter(token => token === 'consumer')).toHaveLength(1);
-    expect(tokens.filter(token => token === styles.root)).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('stamps data attributes on the root alone', () => {

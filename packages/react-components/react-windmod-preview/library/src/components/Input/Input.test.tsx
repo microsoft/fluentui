@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Input } from './Input';
 import type { InputState } from './Input.types';
@@ -260,13 +261,7 @@ describe('Input', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root, input } = renderInput({ className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(root).toHaveClass(styles.root);
     expect(input).not.toHaveClass('consumer');
   });

@@ -27,7 +27,7 @@ describe('BreadcrumbItem', () => {
     displayName: 'BreadcrumbItem',
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<BreadcrumbItem data-testid="root">Home</BreadcrumbItem>);
 
     const root = getByTestId('root');

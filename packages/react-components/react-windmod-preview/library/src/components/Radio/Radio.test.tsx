@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from './Radio';
 import type { RadioState } from './Radio.types';
@@ -37,13 +38,6 @@ const renderRadio = (props: React.ComponentProps<typeof Radio> = {}) => {
   return parts(container.firstElementChild as HTMLElement);
 };
 
-// classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-const occurrences = (element: Element, token: string) =>
-  element
-    .getAttribute('class')!
-    .split(/\s+/)
-    .filter(candidate => candidate === token).length;
-
 describe('Radio', () => {
   isConformant({
     Component: Radio,
@@ -64,7 +58,7 @@ describe('Radio', () => {
     const { root, input, indicator, label } = renderRadio({ label: 'A' });
 
     expect(input).toHaveClass('peer/fui-radio');
-    expect(occurrences(input, 'peer/fui-radio')).toBe(1);
+    expect(classOccurrences(input, 'peer/fui-radio')).toBe(1);
     expect(root).not.toHaveClass('peer/fui-radio');
     expect(indicator).not.toHaveClass('peer/fui-radio');
     expect(label).not.toHaveClass('peer/fui-radio');
@@ -256,8 +250,8 @@ describe('Radio', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderRadio({ className: 'consumer' });
 
-    expect(occurrences(root, 'consumer')).toBe(1);
-    expect(occurrences(root, styles.root)).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Listbox } from '../Listbox/Listbox';
 import { Option } from './Option';
@@ -117,15 +118,15 @@ describe('Option', () => {
     expect(renderOption(MULTI_SELECTED).root!.getAttribute('aria-checked')).toBe('true');
   });
 
-  // T-7, slot-scoped, with a glyph-identity column: Griffel's three states emit three different
-  // glyphs (CheckmarkFilled / nothing / Checkmark12Filled), and only viewBox distinguishes the two
-  // that are SVGs — comparing SVG-stripped markup would not catch a swap. Expectations are the
-  // Griffel output recorded by combobox-probe/out/c2-glyph-seam.json, per slot.
+  // Glyph-identity column: Griffel's three states emit three different glyphs
+  // (CheckmarkFilled / nothing / Checkmark12Filled), and only viewBox distinguishes the two
+  // that are SVGs — comparing SVG-stripped markup would not catch a swap. Expectations are
+  // Griffel's measured output, per slot.
   describe.each([
     ['single-select', SINGLE, { viewBox: '0 0 20 20' }],
     ['multiselect, unselected', MULTI_UNSELECTED, { viewBox: null }],
     ['multiselect, selected', MULTI_SELECTED, { viewBox: '0 0 12 12' }],
-  ] as const)('checkIcon D1 matrix — %s', (_name, mode, fallback) => {
+  ] as const)('checkIcon glyph rule matrix — %s', (_name, mode, fallback) => {
     it.each(INPUTS.map(([label]) => label))('reproduces Griffel for %s', label => {
       const value = INPUTS.find(([name]) => name === label)![1];
       const { checkIcon } = renderOption(mode, { checkIcon: value });
@@ -172,13 +173,7 @@ describe('Option', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderOption(SINGLE, { className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root!
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root!, 'consumer')).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {

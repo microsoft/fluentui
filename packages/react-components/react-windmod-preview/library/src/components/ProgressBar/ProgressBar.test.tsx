@@ -60,7 +60,7 @@ describe('ProgressBar', () => {
   });
 
   it('adds one shape class and one thickness class at a time', () => {
-    // The css-module proxy answers every key, so these pin the lookup keys, not class existence.
+    // The css-module proxy answers every key — see testing/classOccurrences.ts.
     const { getByTestId } = render(
       <>
         <ProgressBar data-testid="default" />

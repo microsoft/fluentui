@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Persona } from './Persona';
 import type { PersonaState } from './Persona.types';
@@ -248,9 +249,6 @@ describe('Persona', () => {
   });
 
   it('keeps a consumer className on each slot exactly once', () => {
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    const tokensOf = (element: HTMLElement) => element.getAttribute('class')!.split(/\s+/);
-
     const { root, coin, primaryText } = renderPersona({
       ...fourLines,
       avatar: { className: 'consumer-coin' },
@@ -258,14 +256,14 @@ describe('Persona', () => {
       primaryText: { children: 'Kevin Sturgis', className: 'consumer-primary' },
     });
 
-    expect(tokensOf(root).filter(token => token === 'consumer')).toHaveLength(1);
-    expect(tokensOf(root).filter(token => token === styles.root)).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
 
-    expect(tokensOf(coin!).filter(token => token === 'consumer-coin')).toHaveLength(1);
-    expect(tokensOf(coin!).filter(token => token === styles.avatar)).toHaveLength(1);
+    expect(classOccurrences(coin!, 'consumer-coin')).toBe(1);
+    expect(classOccurrences(coin!, styles.avatar)).toBe(1);
 
-    expect(tokensOf(primaryText!).filter(token => token === 'consumer-primary')).toHaveLength(1);
-    expect(tokensOf(primaryText!).filter(token => token === styles.primaryText)).toHaveLength(1);
+    expect(classOccurrences(primaryText!, 'consumer-primary')).toBe(1);
+    expect(classOccurrences(primaryText!, styles.primaryText)).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {

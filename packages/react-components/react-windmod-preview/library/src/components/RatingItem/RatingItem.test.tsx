@@ -57,7 +57,7 @@ describe('RatingItem', () => {
   });
 
   it('resolves colour and size from the owning RatingDisplay, then lets an own prop win', () => {
-    // The css-module proxy answers every key, so these pin the lookup keys, not class existence.
+    // The css-module proxy answers every key — see testing/classOccurrences.ts.
     const { getByTestId } = render(
       <RatingDisplay color="brand" size="large" value={2}>
         <RatingItem data-testid="inherit" value={1} />

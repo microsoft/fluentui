@@ -37,7 +37,7 @@ describe('NavSubItemGroup', () => {
     renderOptions: { wrapper: OpenCategory },
   });
 
-  it('stamps its marker pair with the slash-free class first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(
       <OpenCategory>
         <NavSubItemGroup data-testid="root" />

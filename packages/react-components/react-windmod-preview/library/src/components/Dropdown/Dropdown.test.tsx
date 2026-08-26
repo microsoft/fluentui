@@ -8,6 +8,7 @@ import { renderDropdown, useDropdown } from '@fluentui/react-headless-components
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field/Field';
 import { Listbox } from '../Listbox/Listbox';
@@ -291,7 +292,7 @@ describe('Dropdown', () => {
       { clearable: true, defaultSelectedOptions: ['a'], defaultValue: 'One' } as DropdownProps,
       DismissRegular,
     ],
-  ] as const)('%s D1 matrix', (slotName, extra, Glyph) => {
+  ] as const)('%s glyph rule matrix', (slotName, extra, Glyph) => {
     it.each(INPUTS.map(([label]) => label))('reproduces Griffel for %s', label => {
       const value = INPUTS.find(([name]) => name === label)![1];
       const parts = renderDrop({ ...extra, [slotName]: value });
@@ -376,7 +377,7 @@ describe('Dropdown', () => {
     expect(renderDrop({ open: true, listbox: { popover: 'manual' } }).listbox!.getAttribute('popover')).toBe('manual');
   });
 
-  // T-7. jsdom drops the inline `width: anchor-size(width)` that matchTargetSize writes, so the
+  // jsdom drops the inline `width: anchor-size(width)` that matchTargetSize writes, so the
   // width restoration is proved by the browser probe and the dropdown-width VR scenes; the other
   // five defaults leave traces jsdom keeps.
   it('restores Griffel positioning defaults the headless layer drops', () => {
@@ -501,13 +502,7 @@ describe('Dropdown', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root, button } = renderDrop({ root: { className: 'consumer' } });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(button).not.toHaveClass('consumer');
   });
 

@@ -35,7 +35,7 @@ describe('ColorSwatch', () => {
     requiredProps: { value: 'a', color: '#f00' },
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<ColorSwatch data-testid="root" value="a" color="#f00" />);
 
     const root = getByTestId('root');

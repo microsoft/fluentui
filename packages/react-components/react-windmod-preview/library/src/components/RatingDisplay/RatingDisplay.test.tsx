@@ -115,7 +115,7 @@ describe('RatingDisplay', () => {
       </>,
     );
 
-    // The css-module proxy answers every key, so these pin the lookup keys, not class existence.
+    // The css-module proxy answers every key — see testing/classOccurrences.ts.
     expect(labels(getByTestId('bare'))).toHaveLength(0);
 
     const value = labels(getByTestId('value'));

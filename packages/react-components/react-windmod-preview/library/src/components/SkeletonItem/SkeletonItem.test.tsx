@@ -92,7 +92,7 @@ describe('SkeletonItem', () => {
       </>,
     );
 
-    // The css-module proxy answers every key, so these pin the lookup keys, not class existence.
+    // The css-module proxy answers every key — see testing/classOccurrences.ts.
     const span = getByTestId('span');
 
     expect(span.tagName).toBe('SPAN');

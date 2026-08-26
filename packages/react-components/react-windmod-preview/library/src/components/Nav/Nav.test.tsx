@@ -30,7 +30,7 @@ describe('Nav', () => {
     displayName: 'Nav',
   });
 
-  it('stamps its marker pair with the slash-free class first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<Nav data-testid="root" />);
 
     const root = getByTestId('root');

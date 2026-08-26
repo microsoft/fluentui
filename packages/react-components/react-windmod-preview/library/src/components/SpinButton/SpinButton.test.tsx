@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { SpinButton } from './SpinButton';
 import type { SpinButtonState } from './SpinButton.types';
@@ -257,13 +258,7 @@ describe('SpinButton', () => {
     const { input } = renderSpinButton({ input: { className: 'mine' } });
 
     expect(input).toHaveClass(styles.input);
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      input
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'mine'),
-    ).toHaveLength(1);
+    expect(classOccurrences(input, 'mine')).toBe(1);
   });
 
   it.each([
@@ -376,14 +371,9 @@ describe('SpinButton', () => {
   });
 
   it('appends a consumer className to the root exactly once', () => {
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
     const { root } = renderSpinButton({ className: 'mine' });
-    const occurrences = root
-      .getAttribute('class')!
-      .split(/\s+/)
-      .filter(name => name === 'mine');
 
-    expect(occurrences).toHaveLength(1);
+    expect(classOccurrences(root, 'mine')).toBe(1);
   });
 
   it('stamps data-size on the root and nothing else of its own', () => {

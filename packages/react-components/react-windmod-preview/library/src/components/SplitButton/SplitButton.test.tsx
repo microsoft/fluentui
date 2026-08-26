@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { renderSplitButton } from '@fluentui/react-headless-components-preview/split-button';
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
@@ -21,12 +22,6 @@ jest.mock('@fluentui/react-headless-components-preview/split-button', () => {
 });
 
 const renderSpy = renderSplitButton as unknown as jest.Mock;
-
-// The jest css-module proxy drops the component and hash segments, so SplitButton's `root`,
-// Button's `root` and MenuButton's `root` are the same string — only the occurrence count
-// distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const buttonsOf = (root: HTMLElement): HTMLButtonElement[] => Array.from(root.querySelectorAll('button'));
 
@@ -51,7 +46,7 @@ describe('SplitButton', () => {
     displayName: 'SplitButton',
   });
 
-  it('stamps its marker pair first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<SplitButton data-testid="root">Send</SplitButton>);
 
     const root = getByTestId('root');
@@ -67,13 +62,13 @@ describe('SplitButton', () => {
 
     const root = getByTestId('root');
     const total = [root, primaryOf(root), menuOf(root)].reduce(
-      (count, element) => count + occurrences(element.className, styles.root),
+      (count, element) => count + classOccurrences(element, styles.root),
       0,
     );
 
     // SplitButton root + the primary Button root + MenuButton's own root and Button's beneath it.
     expect(total).toBe(4);
-    expect(occurrences(root.className, styles.root)).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('renders the two children as the windmod Button and MenuButton', () => {

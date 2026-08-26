@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import { PersonRegular } from '@fluentui/react-icons/headless/svg/person';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import type { AvatarNamedColor, AvatarSize, AvatarState } from './Avatar.types';
@@ -79,11 +80,8 @@ describe('Avatar', () => {
     expect(root).toHaveClass(styles.root);
     expect(root).toHaveClass('consumer');
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    const tokens = root.getAttribute('class')!.split(/\s+/);
-
-    expect(tokens.filter(token => token === 'consumer')).toHaveLength(1);
-    expect(tokens.filter(token => token === styles.root)).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('picks the text bucket by size, with no class in the base band', () => {

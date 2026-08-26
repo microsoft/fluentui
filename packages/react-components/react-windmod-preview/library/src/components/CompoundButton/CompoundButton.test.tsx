@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { CompoundButton } from './CompoundButton';
 import type { CompoundButtonState } from './CompoundButton.types';
 import { compoundButtonClassNames, useCompoundButtonStyles } from './useCompoundButtonStyles';
 
 import styles from './CompoundButton.module.css';
-
-// The jest css-module proxy drops the component and hash segments, so Button's `root` and
-// CompoundButton's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>(`span.${styles.icon}`);
@@ -50,7 +46,7 @@ describe('CompoundButton', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<CompoundButton data-testid="root">Compound</CompoundButton>);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('carries the icon class of both stylesheets', () => {
@@ -60,7 +56,7 @@ describe('CompoundButton', () => {
       </CompoundButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(2);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(2);
   });
 
   it('styles the content container and the secondary content', () => {
@@ -218,7 +214,7 @@ describe('CompoundButton', () => {
     const root = getByTestId('root');
 
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
 
     expect(iconOf(root).id).toBe('consumer-icon');
 
@@ -226,13 +222,13 @@ describe('CompoundButton', () => {
 
     expect(container!.id).toBe('consumer-container');
     expect(container).toHaveClass('consumer-container');
-    expect(occurrences(container!.className, 'consumer-container')).toBe(1);
+    expect(classOccurrences(container!, 'consumer-container')).toBe(1);
 
     const secondary = root.querySelector<HTMLElement>(`span.${styles.secondaryContent}`);
 
     expect(secondary!.id).toBe('consumer-secondary');
     expect(secondary).toHaveClass('consumer-secondary');
-    expect(occurrences(secondary!.className, 'consumer-secondary')).toBe(1);
+    expect(classOccurrences(secondary!, 'consumer-secondary')).toBe(1);
   });
 
   it('passes disabled and disabledFocusable through to the root', () => {
@@ -289,7 +285,7 @@ describe('CompoundButton', () => {
     expect(styled.root.className).toContain(compoundButtonClassNames.root);
     expect(styled.root['data-icon-only']).toBe('');
     expect((styled.root as { 'data-icon-position'?: string })['data-icon-position']).toBe('after');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(2);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(2);
     expect(styled.contentContainer.className).toContain(styles.contentContainer);
     expect(styled.contentContainer.className).toContain('consumer-container');
     expect(styled.secondaryContent!.className).toContain(styles.secondaryContent);

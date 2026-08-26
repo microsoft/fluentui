@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 import { BreadcrumbButton } from './BreadcrumbButton';
 import type { BreadcrumbButtonState } from './BreadcrumbButton.types';
@@ -24,11 +26,6 @@ jest.mock('@fluentui/react-headless-components-preview/breadcrumb', () => {
 
 const sizes = ['small', 'medium', 'large'] as const;
 
-// The jest css-module proxy drops the component and hash segments, so Button's `root` and
-// BreadcrumbButton's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
-
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>('span');
 
@@ -38,10 +35,6 @@ const iconOf = (root: HTMLElement): HTMLElement => {
 
   return icon;
 };
-
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
 
 const Glyph = (): React.ReactElement => <i data-testid="glyph" />;
 
@@ -67,7 +60,7 @@ describe('BreadcrumbButton', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<BreadcrumbButton data-testid="root">Go</BreadcrumbButton>);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('carries the icon class of both stylesheets', () => {
@@ -77,7 +70,7 @@ describe('BreadcrumbButton', () => {
       </BreadcrumbButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(2);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(2);
   });
 
   it('pins appearance and shape', () => {
@@ -220,7 +213,7 @@ describe('BreadcrumbButton', () => {
 
     expect(root.id).toBe('bc-btn');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(root.style.margin).toBe('2px');
   });
 
@@ -246,7 +239,7 @@ describe('BreadcrumbButton', () => {
     expect(stampsOf(styled.root)['data-icon-position']).toBe('before');
     expect(stampsOf(styled.root)['data-size']).toBe('large');
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(2);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(2);
   });
 
   it('renders no icon slot when the consumer supplies none', () => {

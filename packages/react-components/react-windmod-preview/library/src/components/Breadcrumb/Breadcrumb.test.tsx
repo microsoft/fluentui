@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
@@ -24,17 +25,13 @@ jest.mock('@fluentui/react-headless-components-preview/breadcrumb', () => {
 
 const sizes = ['small', 'medium', 'large'] as const;
 
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
-
 describe('Breadcrumb', () => {
   isConformant({
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
   });
 
-  it('stamps its marker pair, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<Breadcrumb data-testid="root" />);
 
     const root = getByTestId('root');

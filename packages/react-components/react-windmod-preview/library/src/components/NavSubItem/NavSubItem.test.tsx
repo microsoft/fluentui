@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Nav } from '../Nav/Nav';
 import { NavSubItem } from './NavSubItem';
@@ -24,11 +25,6 @@ jest.mock('@fluentui/react-headless-components-preview/nav', () => {
 // The styles hook widens the root with its data attribute internally but returns the declared
 // state type, so the stamp is read back through this cast.
 const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
-
-// The jest css-module proxy drops the component and hash segments, so NavItem's `root` and
-// NavSubItem's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 describe('NavSubItem', () => {
   isConformant({
@@ -61,7 +57,7 @@ describe('NavSubItem', () => {
       </NavSubItem>,
     );
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('renders a button by default and an anchor when href is given', () => {
@@ -155,7 +151,7 @@ describe('NavSubItem', () => {
     expect(root.getAttribute('aria-label')).toBe('Sub page');
     expect(root.style.zIndex).toBe('3');
     expect(classes[classes.length - 1]).toBe('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(ref.current).toBe(root);
   });
 
@@ -175,6 +171,6 @@ describe('NavSubItem', () => {
     expect(state.root.className).toBe('consumer');
     expect(state.root).not.toHaveProperty('data-density');
     expect(stampsOf(styled.root)['data-density']).toBe('small');
-    expect(occurrences(styled.root.className!, styles.root)).toBe(2);
+    expect(classOccurrences(styled.root.className!, styles.root)).toBe(2);
   });
 });

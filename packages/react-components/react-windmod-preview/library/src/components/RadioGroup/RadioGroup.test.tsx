@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from '../Radio';
 import { RadioGroup } from './RadioGroup';
@@ -29,13 +30,6 @@ const renderGroup = (props: React.ComponentProps<typeof RadioGroup> = {}, values
     inputs: Array.from(root.querySelectorAll<HTMLInputElement>('input')),
   };
 };
-
-// classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-const occurrences = (element: Element, token: string) =>
-  element
-    .getAttribute('class')!
-    .split(/\s+/)
-    .filter(candidate => candidate === token).length;
 
 describe('RadioGroup', () => {
   isConformant({
@@ -156,8 +150,8 @@ describe('RadioGroup', () => {
   it('keeps a consumer className and style on the root', () => {
     const { root } = renderGroup({ className: 'consumer', style: { width: 160 } });
 
-    expect(occurrences(root, 'consumer')).toBe(1);
-    expect(occurrences(root, styles.root)).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
     expect(root.style.width).toBe('160px');
   });
 

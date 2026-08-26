@@ -55,7 +55,7 @@ describe('Image', () => {
   });
 
   it('adds the boolean look classes only when the prop is on', () => {
-    // The css-module proxy answers every key, so these pin the lookup keys, not class existence.
+    // The css-module proxy answers every key — see testing/classOccurrences.ts.
     const { getByTestId } = render(
       <>
         <Image data-testid="plain" alt="" src={src} />

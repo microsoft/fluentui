@@ -72,7 +72,7 @@ describe('InlineDrawer', () => {
     expect(renderDrawer().root.getAttribute('data-size')).toBe('small');
   });
 
-  it('stamps data-separator with the ratified presence spelling, and defaults it off', () => {
+  it('stamps data-separator as "true" when set, and leaves it absent otherwise', () => {
     expect(renderDrawer({ separator: true }).root.getAttribute('data-separator')).toBe('true');
 
     const { root } = renderDrawer();

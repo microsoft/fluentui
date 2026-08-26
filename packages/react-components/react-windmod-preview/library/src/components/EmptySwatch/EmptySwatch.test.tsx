@@ -34,7 +34,7 @@ describe('EmptySwatch', () => {
     displayName: 'EmptySwatch',
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<EmptySwatch data-testid="root" />);
 
     const root = getByTestId('root');

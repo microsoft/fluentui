@@ -26,7 +26,7 @@ describe('NavSectionHeader', () => {
     displayName: 'NavSectionHeader',
   });
 
-  it('stamps its marker pair with the slash-free class first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<NavSectionHeader data-testid="root">Section</NavSectionHeader>);
 
     const root = getByTestId('root');

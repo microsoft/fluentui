@@ -98,7 +98,7 @@ describe('MenuItem', () => {
     expect(indicator).toHaveClass(styles.submenuIndicator);
   });
 
-  it('stamps data-multiline only when subText is present, in the ratified spelling', () => {
+  it('stamps data-multiline as "true" only when subText is present', () => {
     const withSubText = renderItem({ subText: 'sub' }).item;
 
     // The presence spelling is `true`/absent — never the headless library's own `''`.

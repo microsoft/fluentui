@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 import colorSliderStyles from '../ColorSlider/ColorSlider.module.css';
@@ -23,16 +24,6 @@ jest.mock('@fluentui/react-headless-components-preview/color-picker', () => {
 });
 
 const teal = { a: 0.5, h: 180, s: 0.5, v: 0.6 };
-
-// The jest css-module proxy drops the component and hash segments, so AlphaSlider's `rail` and
-// the ColorSlider `rail` it composes are the same string — only the raw attribute's occurrence
-// count shows both classes are present. classList is an ordered set, so a duplicated token is only
-// visible in the raw attribute.
-const occurrences = (element: HTMLElement, target: string): number =>
-  element
-    .getAttribute('class')!
-    .split(/\s+/)
-    .filter(name => name === target).length;
 
 const slotsOf = (root: HTMLElement) => {
   const [input, rail, thumb] = Array.from(root.children) as HTMLElement[];
@@ -68,9 +59,9 @@ describe('AlphaSlider', () => {
     const { rail, root, thumb } = renderAlphaSlider();
 
     expect(styles.rail).toBe(colorSliderStyles.rail);
-    expect(occurrences(rail, styles.rail)).toBe(2);
-    expect(occurrences(thumb, styles.thumb)).toBe(2);
-    expect(occurrences(root, colorSliderStyles.root)).toBe(1);
+    expect(classOccurrences(rail, styles.rail)).toBe(2);
+    expect(classOccurrences(thumb, styles.thumb)).toBe(2);
+    expect(classOccurrences(root, colorSliderStyles.root)).toBe(1);
   });
 
   it('inherits the composed input class and peer marker untouched', () => {
@@ -155,10 +146,10 @@ describe('AlphaSlider', () => {
       thumb: { className: 't' },
     });
 
-    expect(occurrences(root, 'consumer')).toBe(1);
-    expect(occurrences(rail, 'r')).toBe(1);
-    expect(occurrences(thumb, 't')).toBe(1);
-    expect(occurrences(input, 'i')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(rail, 'r')).toBe(1);
+    expect(classOccurrences(thumb, 't')).toBe(1);
+    expect(classOccurrences(input, 'i')).toBe(1);
   });
 
   it('lands native props on the primary slot', () => {

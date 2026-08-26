@@ -3,6 +3,7 @@ import { act, fireEvent, render } from '@testing-library/react';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 import { SearchRegular } from '@fluentui/react-icons/headless/svg/search';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { SearchBox } from './SearchBox';
 import type { SearchBoxState } from './SearchBox.types';
@@ -21,11 +22,6 @@ jest.mock('@fluentui/react-headless-components-preview/search-box', () => {
     useSearchBox: (...args: Parameters<typeof actual.useSearchBox>) => deepFreezeState(actual.useSearchBox(...args)),
   };
 });
-
-// The jest css-module proxy drops the component and hash segments, so Input's `root` and
-// SearchBox's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const appearances = ['outline', 'underline', 'filled-darker', 'filled-lighter'] as const;
 const sizes = ['small', 'medium', 'large'] as const;
@@ -77,13 +73,13 @@ describe('SearchBox', () => {
   it('carries the root class of both stylesheets', () => {
     const { root } = renderSearchBox();
 
-    expect(occurrences(root.className, styles.root)).toBe(2);
+    expect(classOccurrences(root, styles.root)).toBe(2);
   });
 
   it('carries the input class of both stylesheets', () => {
     const { input } = renderSearchBox();
 
-    expect(occurrences(input.className, styles.input)).toBe(2);
+    expect(classOccurrences(input, styles.input)).toBe(2);
   });
 
   it('applies one module class per slot', () => {
@@ -429,13 +425,7 @@ describe('SearchBox', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root, input } = renderSearchBox({ className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(input).not.toHaveClass('consumer');
   });
 

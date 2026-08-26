@@ -4,6 +4,7 @@ import { ChevronLeftRegular } from '@fluentui/react-icons/headless/svg/chevron-l
 import { ChevronRightRegular } from '@fluentui/react-icons/headless/svg/chevron-right';
 
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 import type { BreadcrumbDividerState } from './BreadcrumbDivider.types';
@@ -26,10 +27,6 @@ jest.mock('@fluentui/react-headless-components-preview/breadcrumb', () => {
 
 const sizes = ['small', 'medium', 'large'] as const;
 
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
-
 const pathOf = (element: HTMLElement): string | null => element.querySelector('svg path')?.getAttribute('d') ?? null;
 
 const glyphPath = (glyph: React.ReactElement): string | null => {
@@ -44,7 +41,7 @@ describe('BreadcrumbDivider', () => {
     displayName: 'BreadcrumbDivider',
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<BreadcrumbDivider data-testid="root" />);
 
     const root = getByTestId('root');

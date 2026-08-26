@@ -2,6 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { ColorArea } from '../ColorArea/ColorArea';
 import { ColorSlider } from '../ColorSlider/ColorSlider';
@@ -142,13 +143,7 @@ describe('ColorPicker', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderColorPicker({ className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('lands native props on the root', () => {

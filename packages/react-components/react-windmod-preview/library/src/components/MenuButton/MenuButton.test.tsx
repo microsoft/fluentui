@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { MenuButton } from './MenuButton';
 import type { MenuButtonState } from './MenuButton.types';
@@ -19,11 +20,6 @@ jest.mock('@fluentui/react-headless-components-preview/menu-button', () => {
     useMenuButton: (...args: Parameters<typeof actual.useMenuButton>) => deepFreezeState(actual.useMenuButton(...args)),
   };
 });
-
-// The jest css-module proxy drops the component and hash segments, so Button's `root` and
-// MenuButton's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>(`span.${styles.icon}`);
@@ -66,7 +62,7 @@ describe('MenuButton', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<MenuButton data-testid="root">Menu</MenuButton>);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('carries the icon class of both stylesheets', () => {
@@ -76,7 +72,7 @@ describe('MenuButton', () => {
       </MenuButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(2);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(2);
   });
 
   it('carries the menuIcon class once', () => {
@@ -85,7 +81,7 @@ describe('MenuButton', () => {
     const menuIcon = menuIconOf(getByTestId('root'));
 
     expect(menuIcon).not.toBeNull();
-    expect(occurrences(menuIcon!.className, styles.menuIcon)).toBe(1);
+    expect(classOccurrences(menuIcon!, styles.menuIcon)).toBe(1);
   });
 
   it('renders the default chevron when no menuIcon is supplied', () => {
@@ -138,7 +134,7 @@ describe('MenuButton', () => {
     expect(chevronOf(root)).not.toBeNull();
     expect(menuIcon!.id).toBe('consumer-menu-icon');
     expect(menuIcon).toHaveClass('consumer-menu-icon');
-    expect(occurrences(menuIcon!.className, 'consumer-menu-icon')).toBe(1);
+    expect(classOccurrences(menuIcon!, 'consumer-menu-icon')).toBe(1);
   });
 
   it('lets a consumer glyph replace the chevron', () => {
@@ -302,7 +298,7 @@ describe('MenuButton', () => {
     const root = getByTestId('root');
 
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('passes disabled and disabledFocusable through to the root', () => {
@@ -357,7 +353,7 @@ describe('MenuButton', () => {
     expect(styled.root.className).toContain(menuButtonClassNames.root);
     expect(styled.root['data-open']).toBe('');
     expect((styled.root as { 'data-icon-position'?: string })['data-icon-position']).toBe('before');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(2);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(2);
     expect(styled.menuIcon!.className).toContain(styles.menuIcon);
     expect(styled.menuIcon!.className).toContain('consumer-menu-icon');
   });

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { NavDivider } from './NavDivider';
 import type { NavDividerState } from './NavDivider.types';
@@ -19,11 +20,6 @@ jest.mock('@fluentui/react-headless-components-preview/nav', () => {
     useNavDivider: (...args: Parameters<typeof actual.useNavDivider>) => deepFreezeState(actual.useNavDivider(...args)),
   };
 });
-
-// The jest css-module proxy drops the component and hash segments, so Divider's `root` and
-// NavDivider's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 describe('NavDivider', () => {
   isConformant({
@@ -47,7 +43,7 @@ describe('NavDivider', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<NavDivider data-testid="root" />);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('pins the three Divider look props', () => {
@@ -106,7 +102,7 @@ describe('NavDivider', () => {
     expect(root.getAttribute('aria-label')).toBe('Break');
     expect(root.style.zIndex).toBe('3');
     expect(classes[classes.length - 1]).toBe('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(ref.current).toBe(root);
   });
 
@@ -126,6 +122,6 @@ describe('NavDivider', () => {
     expect(styled.root).not.toBe(state.root);
     expect(state.root.className).toBe('consumer');
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.root.className!, styles.root)).toBe(2);
+    expect(classOccurrences(styled.root.className!, styles.root)).toBe(2);
   });
 });

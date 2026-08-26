@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 import { ColorSlider } from './ColorSlider';
@@ -37,8 +38,7 @@ const renderColorSlider = (props: React.ComponentProps<typeof ColorSlider> = {})
   return slotsOf(container.firstElementChild as HTMLElement);
 };
 
-// The jest css-module proxy drops the component and hash segments, so every `root` in the
-// package is the same string; a slider inside a picker is found by position, never by class.
+// A slider inside a picker is found by position, never by class — see testing/classOccurrences.ts.
 const sliderInPicker = (picker: HTMLElement) => slotsOf(picker.firstElementChild as HTMLElement);
 
 describe('ColorSlider', () => {
@@ -194,13 +194,7 @@ describe('ColorSlider', () => {
       thumb: { className: 't' },
     });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(rail).toHaveClass('r');
     expect(thumb).toHaveClass('t');
     expect(input).toHaveClass('i');

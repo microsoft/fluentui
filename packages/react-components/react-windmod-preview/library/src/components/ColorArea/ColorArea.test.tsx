@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 import { ColorArea } from './ColorArea';
@@ -148,13 +149,7 @@ describe('ColorArea', () => {
       thumb: { className: 't' },
     });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(thumb).toHaveClass('t');
     expect(inputX).toHaveClass('x');
     expect(inputY).toHaveClass('y');
