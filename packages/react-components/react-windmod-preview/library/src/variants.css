@@ -60,7 +60,7 @@
 @custom-variant validate-state-warning (&:where([data-validate-state='warning']));
 @custom-variant validate-state-success (&:where([data-validate-state='success']));
 
-/* MessageBar: intent */
+/* MessageBar and Toast: intent */
 @custom-variant intent-info (&:where([data-intent='info']));
 @custom-variant intent-success (&:where([data-intent='success']));
 @custom-variant intent-warning (&:where([data-intent='warning']));
@@ -85,7 +85,7 @@
 /* SpinButton: held spin repeat — persists across the repeat interval, unlike :active */
 @custom-variant spin-active (&:where([data-spin-active]));
 
-/* Spinner: appearance */
+/* Spinner and Toast: appearance */
 @custom-variant appearance-inverted (&:where([data-appearance='inverted']));
 
 /* SwatchPicker: swatch shape and inter-swatch spacing. `square` (Skeleton's entry above) and
@@ -99,6 +99,16 @@
 @custom-variant appearance-subtle-circular (&:where([data-appearance='subtle-circular']));
 @custom-variant appearance-filled-circular (&:where([data-appearance='filled-circular']));
 @custom-variant animating (&:where([data-animating]));
+
+/* Toast: the Toaster's six position containers. Deliberately prefixed — a bare `position-start`
+ * belongs to Drawer, and these select a different attribute with a different vocabulary. The
+ * inverted surface reuses `appearance-inverted` above, as the intent set reuses MessageBar's. */
+@custom-variant toaster-position-top (&:where([data-toaster-position='top']));
+@custom-variant toaster-position-top-start (&:where([data-toaster-position='top-start']));
+@custom-variant toaster-position-top-end (&:where([data-toaster-position='top-end']));
+@custom-variant toaster-position-bottom (&:where([data-toaster-position='bottom']));
+@custom-variant toaster-position-bottom-start (&:where([data-toaster-position='bottom-start']));
+@custom-variant toaster-position-bottom-end (&:where([data-toaster-position='bottom-end']));
 
 /* ToggleButton: opt-in high-contrast selected look */
 @custom-variant accessible (&:where([data-accessible]));

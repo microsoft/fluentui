@@ -8,7 +8,7 @@ import {
   useMessageBarContextValues,
 } from '@fluentui/react-headless-components-preview/message-bar';
 
-import { getIntentIcon } from './getIntentIcon';
+import { getIntentIcon } from '../../utils/getIntentIcon';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { useMessageBarStyles } from './useMessageBarStyles';
 
