@@ -2,6 +2,8 @@ import { mkdtempSync, readFileSync, cpSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
+import { compileFile } from '../compiler';
+import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import type { FunctionAnalysis, AnnotateMode } from '../types';
 
@@ -13,6 +15,12 @@ function createTempFixture(fixtureName: string): string {
   const destPath = join(tempDir, 'input.tsx');
   cpSync(inputPath, destPath);
   return destPath;
+}
+
+/** Derive analyses the way the CLI does, so `existingDirectives` reflects the real AST. */
+async function analyzeReal(filePath: string): Promise<FunctionAnalysis[]> {
+  const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false);
+  return deriveCoverage(compiled);
 }
 
 function makeAnalysis(filePath: string, line: number, bodyInsertionLine: number): FunctionAnalysis {
@@ -80,9 +88,8 @@ describe('applyAnnotations', () => {
 
   it('skips functions that already have use memo directive', async () => {
     const filePath = createTempFixture('already-annotated');
-    const results: FunctionAnalysis[] = [makeAnalysis(filePath, 3, 4)];
 
-    const outcome = await applyAnnotations(results, 'manual-memo');
+    const outcome = await applyAnnotations(await analyzeReal(filePath), 'manual-memo');
 
     expect(outcome.filesModified).toBe(0);
     expect(outcome.functionsAnnotated).toBe(0);
@@ -284,28 +291,7 @@ describe('applyAnnotations', () => {
 
   it('is idempotent — skips already-annotated functions in all mode regardless of quote style', async () => {
     const filePath = createTempFixture('already-annotated-all-mode');
-    const results: FunctionAnalysis[] = [
-      {
-        filePath,
-        packageName: 'test-pkg',
-        line: 3,
-        column: 0,
-        functionName: 'SingleQuoteAnnotated',
-        status: 'compiled',
-        compilerEvent: 'CompileSuccess',
-        bodyInsertionLine: 4,
-      },
-      {
-        filePath,
-        packageName: 'test-pkg',
-        line: 9,
-        column: 0,
-        functionName: 'DoubleQuoteAnnotated',
-        status: 'compiled',
-        compilerEvent: 'CompileSuccess',
-        bodyInsertionLine: 10,
-      },
-    ];
+    const results = await analyzeReal(filePath);
 
     // First run — nothing should be inserted (both already annotated)
     const first = await applyAnnotations(results, 'all');
@@ -320,6 +306,54 @@ describe('applyAnnotations', () => {
     const second = await applyAnnotations(results, 'all');
     expect(second.filesModified).toBe(0);
     expect(second.functionsAnnotated).toBe(0);
+  });
+
+  it("does not add 'use memo' to a function that already opts out", async () => {
+    const filePath = createTempFixture('existing-no-memo');
+    const results = await analyzeReal(filePath);
+
+    const outcome = await applyAnnotations(results, 'all');
+
+    expect(outcome.functionsAnnotated).toBe(0);
+    expect(outcome.filesModified).toBe(0);
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).not.toContain('use memo');
+    expect(actual).toBe(readFileSync(join(FIXTURES_DIR, 'existing-no-memo', 'output.tsx'), 'utf-8'));
+  });
+
+  it('annotates a function whose neighbour carries the directive', async () => {
+    // The previous text-window check looked +/- a few lines and would see the *next* function's
+    // directive, silently skipping this one.
+    const filePath = createTempFixture('directive-on-neighbour');
+    const results = await analyzeReal(filePath);
+
+    const outcome = await applyAnnotations(results, 'all');
+
+    expect(outcome.functionsAnnotated).toBe(1);
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).toBe(readFileSync(join(FIXTURES_DIR, 'directive-on-neighbour', 'output.tsx'), 'utf-8'));
+  });
+
+  describe('--quote', () => {
+    it('emits double-quoted directives when asked', async () => {
+      const filePath = createTempFixture('single-function');
+      const outcome = await applyAnnotations(await analyzeReal(filePath), 'all', { quote: 'double' });
+
+      expect(outcome.functionsAnnotated).toBe(1);
+      expect(readFileSync(filePath, 'utf-8')).toContain('"use memo";');
+    });
+
+    it('stays idempotent across quote styles', async () => {
+      const filePath = createTempFixture('single-function');
+      await applyAnnotations(await analyzeReal(filePath), 'all', { quote: 'double' });
+
+      // Re-analyze: the file now carries a double-quoted directive. A single-quoted run must
+      // recognize it rather than inserting a second one.
+      const second = await applyAnnotations(await analyzeReal(filePath), 'all', { quote: 'single' });
+
+      expect(second.functionsAnnotated).toBe(0);
+      expect(readFileSync(filePath, 'utf-8').match(/use memo/g)).toHaveLength(1);
+    });
   });
 });
 
@@ -399,6 +433,20 @@ describe("applyAnnotations — 'all-safe' mode", () => {
     expect(actual).not.toContain("export function Risky() {\n  'use memo';");
   });
 
+  it('ignores risks on functions that did not compile', async () => {
+    const filePath = writeTemp(SOURCE);
+    // Risk findings now attach to non-compiled functions too; they must not be annotated.
+    const notCompiled: FunctionAnalysis = {
+      ...riskyFn(filePath),
+      status: 'error',
+      compilerEvent: 'CompileError',
+    };
+    const outcome = await applyAnnotations([notCompiled], 'all-safe');
+
+    expect(outcome).toEqual({ filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 });
+    expect(readFileSync(filePath, 'utf-8')).toBe(SOURCE);
+  });
+
   it("'all' mode annotates the risky function with 'use memo' (no bailout)", async () => {
     const filePath = writeTemp(SOURCE);
     const outcome = await applyAnnotations([safeFn(filePath), riskyFn(filePath)], 'all');
@@ -429,6 +477,7 @@ describe("applyAnnotations — 'all-safe' mode", () => {
       status: 'compiled',
       compilerEvent: 'CompileSuccess',
       bodyInsertionLine: 2,
+      existingDirectives: { useMemo: false, useNoMemo: true },
       risks: [
         {
           ruleId: 'nonreactive-store-read',
@@ -445,5 +494,80 @@ describe("applyAnnotations — 'all-safe' mode", () => {
     expect(outcome.functionsBailedOut).toBe(0);
     expect(outcome.filesModified).toBe(0);
     expect(readFileSync(filePath, 'utf-8')).toBe(preAnnotated);
+  });
+});
+
+describe("applyAnnotations — 'bailout-only' mode", () => {
+  function writeTemp(content: string): string {
+    const tempDir = mkdtempSync(join(tmpdir(), 'annotate-bailout-only-'));
+    const filePath = join(tempDir, 'input.tsx');
+    writeFileSync(filePath, content);
+    return filePath;
+  }
+
+  const SOURCE = [
+    'export function Safe() {',
+    '  const a = 1;',
+    '  return <div>{a}</div>;',
+    '}',
+    '',
+    'export function Risky() {',
+    '  const id = getAppStore().getState().id;',
+    '  return <div>{id}</div>;',
+    '}',
+    '',
+  ].join('\n');
+
+  function analysis(overrides: Partial<FunctionAnalysis>): FunctionAnalysis {
+    return {
+      filePath: '',
+      packageName: 'test-pkg',
+      line: 1,
+      column: 0,
+      functionName: 'Fn',
+      status: 'compiled',
+      compilerEvent: 'CompileSuccess',
+      bodyInsertionLine: 2,
+      ...overrides,
+    };
+  }
+
+  it('writes only bailouts, leaving safe functions untouched', async () => {
+    const filePath = writeTemp(SOURCE);
+    const safe = analysis({ filePath, functionName: 'Safe', line: 1, bodyInsertionLine: 2 });
+    const risky = analysis({
+      filePath,
+      functionName: 'Risky',
+      line: 6,
+      bodyInsertionLine: 7,
+      risks: [
+        {
+          ruleId: 'nonreactive-store-read',
+          severity: 'high',
+          line: 7,
+          column: 13,
+          symbol: 'getAppStore().getState',
+          message: 'imperative store snapshot …',
+        },
+      ],
+    });
+
+    const outcome = await applyAnnotations([safe, risky], 'bailout-only');
+
+    expect(outcome.functionsAnnotated).toBe(0);
+    expect(outcome.functionsBailedOut).toBe(1);
+
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).toContain('export function Safe() {\n  const a = 1;');
+    expect(actual).toMatch(/export function Risky\(\) \{\n {2}'use no memo'; \/\/ justified:/);
+    expect(actual.match(/'use memo'/g)).toBeNull();
+  });
+
+  it('does nothing when risk detection found nothing', async () => {
+    const filePath = writeTemp(SOURCE);
+    const outcome = await applyAnnotations([analysis({ filePath, functionName: 'Safe' })], 'bailout-only');
+
+    expect(outcome).toEqual({ filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 });
+    expect(readFileSync(filePath, 'utf-8')).toBe(SOURCE);
   });
 });

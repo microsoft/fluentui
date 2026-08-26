@@ -112,13 +112,16 @@ export function deriveCoverage(result: FileCompilationResult, options: DeriveCov
       }
     }
 
-    // Attach runtime-risk findings — only meaningful for functions the compiler
-    // will actually memoize (CompileSuccess).
-    if (r.status === 'compiled') {
-      const risks = result.risks.get(key);
-      if (risks && risks.length > 0) {
-        r.risks = risks;
-      }
+    // Attach runtime-risk findings. Risks on non-compiled functions are kept but reported
+    // separately: they become live the moment the compile error or opt-out is resolved.
+    const risks = result.risks.get(result.riskKeyAliases.get(key) ?? key);
+    if (risks && risks.length > 0) {
+      r.risks = risks;
+    }
+
+    const directives = result.existingDirectives.get(key);
+    if (directives) {
+      r.existingDirectives = directives;
     }
   }
 

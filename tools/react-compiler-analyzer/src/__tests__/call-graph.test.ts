@@ -46,6 +46,22 @@ describe('call-graph wrapper analysis', () => {
     const findings = analyzer({ selectorHookProperties: ['use'] }).analyzeFile(COMPONENT);
     expect(findings).toHaveLength(0);
   });
+
+  it('follows a wrapper whose risky read goes through a local binding', () => {
+    const findings = analyzer({ storeAccessorPattern: 'Store$' }).analyzeFile(COMPONENT);
+    const viaBinding = findings.filter(f => f.risk.chain.includes('readCurrentIdViaBinding'));
+    expect(viaBinding).toHaveLength(1);
+    expect(viaBinding[0].risk.leaf.symbol).toBe('getAppStore');
+    expect(viaBinding[0].risk.leaf.message).toContain('local binding');
+  });
+
+  it('follows a wrapper in a .ts file that uses an angle-bracket type assertion', () => {
+    // Parsing that module with JSX enabled would fail, silently making it an opaque boundary.
+    const findings = analyzer({ detectGetStateReads: true }).analyzeFile(COMPONENT);
+    const viaCast = findings.filter(f => f.risk.chain.includes('readCastActiveId'));
+    expect(viaCast).toHaveLength(1);
+    expect(viaCast[0].risk.leaf.symbol).toBe('getCastStore().getState');
+  });
 });
 
 describe('wrapper analysis integration — compileFile + deriveCoverage', () => {

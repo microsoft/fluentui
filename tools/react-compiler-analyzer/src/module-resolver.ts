@@ -19,6 +19,25 @@ export interface ResolverOptions {
   aliases?: PathAlias[];
   /** File extensions to try, in order. Defaults to `.ts`, `.tsx`. */
   extensions?: string[];
+  /**
+   * Counters incremented as specifiers are resolved. A run that reports zero risks but also
+   * zero resolved bare specifiers means the aliases are misconfigured, not that the code is clean.
+   */
+  stats?: ResolverStats;
+}
+
+/** Tally of what the resolver could and could not reach. */
+export interface ResolverStats {
+  /** Specifiers resolved to first-party source. */
+  resolved: number;
+  /** Relative/absolute specifiers that pointed at nothing analyzable. */
+  unresolvedRelative: number;
+  /** Bare specifiers no alias matched — i.e. stopped at the package boundary. */
+  unresolvedBare: number;
+}
+
+export function createResolverStats(): ResolverStats {
+  return { resolved: 0, unresolvedRelative: 0, unresolvedBare: 0 };
 }
 
 const DEFAULT_EXTENSIONS = ['.ts', '.tsx'];
@@ -107,14 +126,21 @@ export function createModuleResolver(options: ResolverOptions = {}) {
    * or `null` when it can't be resolved to analyzable source (package import, missing file, etc.).
    */
   return function resolveModule(specifier: string, fromFile: string): string | null {
-    if (specifier.startsWith('.')) {
-      return resolveFileCandidate(resolve(dirname(fromFile), specifier));
-    }
-    if (isAbsolute(specifier)) {
-      return resolveFileCandidate(specifier);
+    const stats = options.stats;
+    if (specifier.startsWith('.') || isAbsolute(specifier)) {
+      const base = specifier.startsWith('.') ? resolve(dirname(fromFile), specifier) : specifier;
+      const hit = resolveFileCandidate(base);
+      if (stats) {
+        hit ? stats.resolved++ : stats.unresolvedRelative++;
+      }
+      return hit;
     }
     // Bare specifier: try aliases; otherwise it's a package boundary — stop here.
-    return resolveAlias(specifier);
+    const hit = resolveAlias(specifier);
+    if (stats) {
+      hit ? stats.resolved++ : stats.unresolvedBare++;
+    }
+    return hit;
   };
 }
 

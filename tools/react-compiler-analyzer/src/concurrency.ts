@@ -1,35 +1,32 @@
 import type { FileEntry } from './types';
 
 /**
- * Process files with concurrency-limited parallelism.
- * Generic worker pool that runs `processFn` on each file entry.
+ * Run `processFn` over every file with a bounded worker pool, discarding each result once the
+ * callback has consumed it. Nothing is accumulated here, so a large scan stays flat in memory.
+ *
+ * Files are handed out as workers free up, so completion order does not track input order —
+ * callers that render or serialize results must sort them first.
  */
-export async function processFilesConcurrently<T>(
+export async function forEachFileConcurrently(
   files: FileEntry[],
-  processFn: (entry: FileEntry) => Promise<T[]>,
+  processFn: (entry: FileEntry) => Promise<void>,
   options: { concurrency: number; verbose: boolean },
-): Promise<T[]> {
-  const allResults: T[] = [];
+): Promise<void> {
   const { concurrency, verbose } = options;
 
   let index = 0;
 
   async function worker(): Promise<void> {
     while (index < files.length) {
-      const current = index++;
-      const entry = files[current];
+      const entry = files[index++];
 
       if (verbose) {
         console.log(`Analyzing: ${entry.filePath}`);
       }
 
-      const results = await processFn(entry);
-      allResults.push(...results);
+      await processFn(entry);
     }
   }
 
-  const workers = Array.from({ length: Math.min(concurrency, files.length) }, () => worker());
-  await Promise.all(workers);
-
-  return allResults;
+  await Promise.all(Array.from({ length: Math.min(concurrency, files.length) }, () => worker()));
 }

@@ -1,7 +1,14 @@
 import type { PluginObj, NodePath } from '@babel/core';
-import type { Function as BabelFunction, CallExpression } from '@babel/types';
+import type { Function as BabelFunction } from '@babel/types';
 
-import { buildLeafConfig, hasAnyLeafRule, matchRiskyCall } from './risk-patterns';
+import {
+  buildLeafConfig,
+  hasAnyLeafRule,
+  isSnapshotRead,
+  matchAccessorInit,
+  matchRiskyCall,
+  type LeafRiskConfig,
+} from './risk-patterns';
 import type { RiskConfig, RiskFinding } from './types';
 
 export interface RiskPluginOptions extends RiskConfig {
@@ -11,6 +18,17 @@ export interface RiskPluginOptions extends RiskConfig {
    * coverage analyzer can merge them onto `CompileSuccess` rows.
    */
   results: Map<string, RiskFinding[]>;
+  /**
+   * Maps a function's *body* start key to its declaration key. `CompileSkip` events locate a
+   * function at its body, so the coverage merge needs this to find risks for opted-out functions.
+   */
+  keyAliases?: Map<string, string>;
+}
+
+/** Per-file plugin state; the resolved config is built once instead of per visited node. */
+interface RiskPluginState {
+  opts: RiskPluginOptions;
+  leafConfig?: LeafRiskConfig;
 }
 
 function fnKey(loc: { line: number; column: number }): string {
@@ -35,7 +53,8 @@ function enclosingFunction(path: NodePath): NodePath<BabelFunction> | null {
  *   (`store.getState()`, `getXStore().field`, `const { x } = getXStore()`). The compiler hoists
  *   it into a compute-once cache slot, so it runs on the first render and is **never re-read**,
  *   freezing the value across store transitions. Enabled by `detectGetStateReads` (for
- *   `.getState()`) and `storeAccessorPattern` (a regex, for `getXStore()`).
+ *   `.getState()`) and `storeAccessorPattern` (a regex, for `getXStore()`). Also follows one step
+ *   of local dataflow — `const s = getXStore(); … s.field` — via Babel scope bindings.
  * - **`hidden-selector-hook`** — a selector accessed via property chain (`store.use.field()`)
  *   that calls a real hook (`useStore`) internally but isn't `useXxx()`-named at the call site.
  *   Neither the compiler nor the `react-hooks` lint recognizes it as a hook, so the compiler may
@@ -53,35 +72,66 @@ export function riskPlugin(): PluginObj {
     name: 'react-compiler-risk-detection',
     visitor: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
+      Program(_path, state) {
+        const s = state as unknown as RiskPluginState;
+        s.leafConfig = buildLeafConfig(s.opts);
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {
-        const opts = state.opts as unknown as RiskPluginOptions;
-        const cfg = buildLeafConfig(opts);
-        if (!hasAnyLeafRule(cfg)) {
+        const { opts, leafConfig } = state as unknown as RiskPluginState;
+        if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
           return;
         }
 
-        const match = matchRiskyCall(path.node, path.parent, cfg);
+        const match = matchRiskyCall(path.node, path.parent, leafConfig);
         if (match) {
-          record(path, opts.results, match);
+          record(path, opts, match);
+        }
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      VariableDeclarator(path, state) {
+        const { opts, leafConfig } = state as unknown as RiskPluginState;
+        if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
+          return;
+        }
+
+        const { id, init } = path.node;
+        if (!init || id.type !== 'Identifier') {
+          return;
+        }
+
+        const match = matchAccessorInit(init, leafConfig, id.name);
+        if (!match) {
+          return;
+        }
+
+        // Scope bindings resolve shadowing for free — a same-named inner binding is a
+        // different `Binding` and its references never appear here.
+        const binding = path.scope.getBinding(id.name);
+        for (const ref of binding?.referencePaths ?? []) {
+          if (isSnapshotRead(ref.node, ref.parent)) {
+            record(ref, opts, match);
+          }
         }
       },
     },
   };
 }
 
-/** Record a finding against the enclosing function, with the offending call's own location. */
-function record(
-  path: NodePath<CallExpression>,
-  results: Map<string, RiskFinding[]>,
-  finding: Omit<RiskFinding, 'line' | 'column'>,
-): void {
+/** Record a finding against the enclosing function, with the offending expression's own location. */
+function record(path: NodePath, opts: RiskPluginOptions, finding: Omit<RiskFinding, 'line' | 'column'>): void {
   const fnPath = enclosingFunction(path);
   if (!fnPath || !fnPath.node.loc) {
     return;
   }
   const callLoc = path.node.loc?.start ?? fnPath.node.loc.start;
   const key = fnKey(fnPath.node.loc.start);
-  const list = results.get(key) ?? [];
+  const list = opts.results.get(key) ?? [];
   list.push({ ...finding, line: callLoc.line, column: callLoc.column });
-  results.set(key, list);
+  opts.results.set(key, list);
+
+  const bodyLoc = fnPath.node.body.loc;
+  if (bodyLoc) {
+    opts.keyAliases?.set(fnKey(bodyLoc.start), key);
+  }
 }

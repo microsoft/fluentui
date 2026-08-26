@@ -4,15 +4,30 @@ import { extname } from 'node:path';
 import { parseSync, traverse } from '@babel/core';
 import type { File, Node, CallExpression, Function as BabelFunction } from '@babel/types';
 
-import type { ModuleResolver } from './module-resolver';
-import { buildLeafConfig, hasAnyLeafRule, matchRiskyCall, type LeafMatch, type LeafRiskConfig } from './risk-patterns';
+import type { ModuleResolver, ResolverStats } from './module-resolver';
+import {
+  buildLeafConfig,
+  hasAnyLeafRule,
+  isSnapshotRead,
+  matchAccessorInit,
+  matchRiskyCall,
+  type LeafMatch,
+  type LeafRiskConfig,
+} from './risk-patterns';
 import type { RiskConfig } from './types';
+
+/** A read of a local binding that holds a store snapshot (`const s = getStore(); … s.field`). */
+interface BindingRead {
+  node: Node;
+  match: LeafMatch;
+}
 
 /** A user-defined function within a module, plus the calls lexically inside it. */
 interface FnInfo {
   key: string;
   node: BabelFunction;
   calls: { node: CallExpression; parent: Node | null }[];
+  bindingReads: BindingRead[];
 }
 
 /** What a top-level export name resolves to within (or beyond) a module. */
@@ -53,6 +68,13 @@ export interface IndirectFinding {
 
 const MAX_DEPTH = 12;
 
+/**
+ * Cap on retained module ASTs. Parsed modules dominate memory on a large scan, and re-parsing an
+ * evicted one is cheap next to holding every AST for the whole run. `reachCache` is deliberately
+ * not bounded: it stores plain results, not ASTs, and keeps evictions from costing repeat work.
+ */
+const MAX_CACHED_MODULES = 2000;
+
 function fnKey(loc: { line: number; column: number }): string {
   return `${loc.line}:${loc.column}`;
 }
@@ -74,7 +96,7 @@ function isUserFunction(node: Node): node is BabelFunction {
  * the first-party source boundary but deliberately stops at packages (`node_modules`), dynamic
  * dispatch, and method calls on inferred receivers, which a syntactic pass cannot follow.
  */
-export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskConfig) {
+export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskConfig, stats?: ResolverStats) {
   const leafConfig = buildLeafConfig(config);
   const moduleCache = new Map<string, ModuleModel | null>();
   // Memoized reachesRisk result per `${filePath}::${fnKey}`.
@@ -95,15 +117,27 @@ export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskCo
         presets: [
           [
             require.resolve('@babel/preset-typescript'),
-            { isTSX: ext === '.tsx' || ext === '.ts', allExtensions: true },
+            // Enabling JSX for `.ts` would make `<Foo>bar` parse as an unterminated JSX element,
+            // silently turning a resolvable wrapper module into an opaque boundary.
+            { isTSX: ext === '.tsx', allExtensions: true },
           ],
         ],
       }) as File | null;
       if (ast) {
-        model = buildModuleModel(filePath, ast);
+        model = buildModuleModel(filePath, ast, leafConfig);
       }
     } catch {
       model = null; // unparseable / unreadable → treat as opaque boundary
+    }
+    if (moduleCache.size >= MAX_CACHED_MODULES) {
+      // Map iterates in insertion order, so this drops the least recently added quarter.
+      let toDrop = Math.floor(MAX_CACHED_MODULES / 4);
+      for (const key of moduleCache.keys()) {
+        if (toDrop-- <= 0) {
+          break;
+        }
+        moduleCache.delete(key);
+      }
     }
     moduleCache.set(filePath, model);
     return model;
@@ -200,8 +234,10 @@ export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskCo
     }
     stack.add(cacheKey);
 
-    let result: IndirectRisk | null = null;
-    for (const { node, parent } of fn.calls) {
+    // A snapshot read through a local binding is a leaf just like a direct risky call.
+    let result: IndirectRisk | null = fn.bindingReads[0] ? { leaf: fn.bindingReads[0].match, chain: [] } : null;
+
+    for (const { node, parent } of result ? [] : fn.calls) {
       // Direct leaf inside this function.
       const leaf = matchRiskyCall(node, parent, leafConfig);
       if (leaf) {
@@ -257,6 +293,8 @@ export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskCo
   return {
     /** Whether any leaf rule is enabled — callers can skip the whole pass when not. */
     enabled: hasAnyLeafRule(leafConfig),
+    /** Import-resolution tally, so a clean report can be told apart from a run that resolved nothing. */
+    stats,
     /**
      * Analyze a first-party file: for every function in it, report risks reachable through a
      * first-party wrapper call. Direct-leaf cases are skipped (the in-file plugin reports those).
@@ -285,7 +323,7 @@ export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskCo
 export type CallGraphAnalyzer = ReturnType<typeof createCallGraphAnalyzer>;
 
 /** Build the indexed model for one module from its parsed AST. */
-function buildModuleModel(filePath: string, ast: File): ModuleModel {
+function buildModuleModel(filePath: string, ast: File, leafConfig: LeafRiskConfig): ModuleModel {
   const fnByKey = new Map<string, FnInfo>();
   const localFns = new Map<string, FnInfo>();
   const imports = new Map<string, { source: string; importedName: string }>();
@@ -298,14 +336,13 @@ function buildModuleModel(filePath: string, ast: File): ModuleModel {
     const key = node.loc ? fnKey(node.loc.start) : `anon-${fnByKey.size}`;
     let info = fnByKey.get(key);
     if (!info) {
-      info = { key, node, calls: [] };
+      info = { key, node, calls: [], bindingReads: [] };
       fnByKey.set(key, info);
     }
     return info;
   }
 
   traverse(ast, {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     Function: {
       enter(path) {
         fnStack.push(infoFor(path.node as BabelFunction));
@@ -319,6 +356,29 @@ function buildModuleModel(filePath: string, ast: File): ModuleModel {
       const top = fnStack[fnStack.length - 1];
       if (top) {
         top.calls.push({ node: path.node, parent: path.parent });
+      }
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    VariableDeclarator(path) {
+      const { id, init } = path.node;
+      if (!init || id.type !== 'Identifier') {
+        return;
+      }
+      const match = matchAccessorInit(init, leafConfig, id.name);
+      if (!match) {
+        return;
+      }
+      const binding = path.scope.getBinding(id.name);
+      for (const ref of binding?.referencePaths ?? []) {
+        if (!isSnapshotRead(ref.node, ref.parent)) {
+          continue;
+        }
+        // Attribute the read to the function it sits in, which may be nested below the
+        // declarator's — and may not have been traversed yet, hence `infoFor`.
+        const owner = ref.getFunctionParent();
+        if (owner?.node.loc) {
+          infoFor(owner.node as BabelFunction).bindingReads.push({ node: ref.node, match });
+        }
       }
     },
     // eslint-disable-next-line @typescript-eslint/naming-convention

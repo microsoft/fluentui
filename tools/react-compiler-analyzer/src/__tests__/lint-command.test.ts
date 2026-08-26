@@ -4,7 +4,7 @@ import { tmpdir } from 'os';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
-import { lintCommand } from '../commands/lint';
+import { lintCommand, runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
@@ -416,10 +416,104 @@ describe('single-file path lint', () => {
   });
 });
 
+describe('lint exit codes', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+
+  beforeEach(() => {
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'lint-exit-test-')));
+    mkdirSync(join(tempDir, 'src'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'exit-test-pkg' }));
+    originalLog = console.log;
+    console.log = () => undefined;
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  function baseArgv(overrides: Record<string, unknown> = {}) {
+    return {
+      paths: [tempDir],
+      verbose: false,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      fix: false,
+      mode: 'infer' as const,
+      format: 'md' as const,
+      ...overrides,
+    };
+  }
+
+  it('exits 0 when every directive is healthy', async () => {
+    writeFileSync(
+      join(tempDir, 'src', 'Ok.tsx'),
+      `import { useState } from 'react';
+
+export function Ok({ label }: { label: string }) {
+  'use memo';
+  const [n, setN] = useState(0);
+  return <div onClick={() => setN(c => c + 1)}>{label}{n}</div>;
+}
+`,
+    );
+    await expect(runLint(baseArgv() as never)).resolves.toBe(0);
+  });
+
+  it('exits 1 on a redundant directive', async () => {
+    writeFileSync(
+      join(tempDir, 'src', 'Redundant.tsx'),
+      `import { useRef } from 'react';
+
+export function useUncompilable() {
+  'use no memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+    );
+    await expect(runLint(baseArgv() as never)).resolves.toBe(1);
+  });
+
+  it('exits 0 with --fix once the redundant directive is repaired', async () => {
+    writeFileSync(
+      join(tempDir, 'src', 'Redundant.tsx'),
+      `import { useRef } from 'react';
+
+export function useUncompilable() {
+  'use no memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+    );
+    await expect(runLint(baseArgv({ fix: true }) as never)).resolves.toBe(0);
+  });
+
+  it("exits 1 with --fix when a broken 'use memo' remains, which --fix cannot repair", async () => {
+    // `useUncompilable` cannot compile, so its 'use memo' is broken — there is no autofix for it.
+    writeFileSync(
+      join(tempDir, 'src', 'Broken.tsx'),
+      `import { useRef } from 'react';
+
+export function useUncompilable() {
+  'use memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+    );
+    await expect(runLint(baseArgv({ fix: true }) as never)).resolves.toBe(1);
+  });
+});
+
 describe('lint command — scan log wrapping', () => {
   let tempDir: string;
   let originalLog: typeof console.log;
-  let originalExit: typeof process.exit;
   let captured: string[];
 
   beforeEach(() => {
@@ -434,14 +528,10 @@ describe('lint command — scan log wrapping', () => {
     console.log = (...args: unknown[]) => {
       captured.push(args.map(String).join(' '));
     };
-
-    originalExit = process.exit;
-    process.exit = ((_code?: number) => undefined) as never;
   });
 
   afterEach(() => {
     console.log = originalLog;
-    process.exit = originalExit;
   });
 
   it('wraps scan + both compile passes in a single <details> block', async () => {

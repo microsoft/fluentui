@@ -2,9 +2,11 @@ import {
   printCoverageReport as printCoverageReportImpl,
   printCoverageSummary as printCoverageSummaryImpl,
   printMigrationCandidates as printMigrationCandidatesImpl,
+  printRuntimeRisks as printRuntimeRisksImpl,
+  printUnparseableFiles as printUnparseableFilesImpl,
 } from '../coverage-reporter';
 import { createFormatter } from '../formatter';
-import type { FunctionAnalysis } from '../types';
+import type { FunctionAnalysis, RiskFinding } from '../types';
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
 function printCoverageReport(
@@ -24,6 +26,23 @@ function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): vo
 /** Render via the markdown formatter so existing snapshots stay stable. */
 function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
   printMigrationCandidatesImpl(createFormatter('md'), results, workspaceRoot);
+}
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printRuntimeRisks(results: FunctionAnalysis[], workspaceRoot: string): void {
+  printRuntimeRisksImpl(createFormatter('md'), results, workspaceRoot);
+}
+
+function makeRisk(overrides: Partial<RiskFinding> = {}): RiskFinding {
+  return {
+    ruleId: 'nonreactive-store-read',
+    severity: 'high',
+    line: 7,
+    column: 2,
+    symbol: 'getAppStore',
+    message: 'non-reactive store read',
+    ...overrides,
+  };
 }
 
 function makeFunctionAnalysis(overrides: Partial<FunctionAnalysis>): FunctionAnalysis {
@@ -451,5 +470,125 @@ describe('printCoverageReport — error grouping', () => {
     const summaryOutput = logOutput.join('\n');
     expect(summaryOutput).toContain('- **Errors** (compiler bailout): 1 (50.0%)');
     expect(summaryOutput).toContain('**1** function(s) caused compiler errors');
+  });
+});
+
+describe('printUnparseableFiles', () => {
+  let logOutput: string[];
+  const originalLog = console.log;
+
+  beforeEach(() => {
+    logOutput = [];
+    console.log = (...args: unknown[]) => {
+      logOutput.push(args.join(' '));
+    };
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  it('prints nothing when every file parsed', () => {
+    printUnparseableFilesImpl(createFormatter('md'), [], '/workspace');
+    expect(logOutput.join('\n')).toBe('');
+  });
+
+  it('lists each rejected file with a workspace-relative path and reason', () => {
+    printUnparseableFilesImpl(
+      createFormatter('md'),
+      [
+        {
+          file: '/workspace/src/Legacy.tsx',
+          error: "/workspace/src/Legacy.tsx: Support for 'decorators' isn't enabled (9:1)",
+        },
+      ],
+      '/workspace',
+    );
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('Not Analyzed');
+    expect(output).toContain('src/Legacy.tsx');
+    expect(output).toContain("Support for 'decorators' isn't enabled (9:1)");
+    // The absolute path Babel prefixes onto the message is noise in a table cell.
+    expect(output).not.toContain('/workspace/src/Legacy.tsx:');
+  });
+
+  it('reports the count in the summary so it is visible without expanding', () => {
+    printCoverageSummaryImpl(createFormatter('md'), [makeFunctionAnalysis({})], false, 3);
+    expect(logOutput.join('\n')).toContain('**Not analyzed** (file could not be parsed): 3 file(s)');
+  });
+
+  it('omits the summary line when nothing was skipped', () => {
+    printCoverageSummaryImpl(createFormatter('md'), [makeFunctionAnalysis({})], false, 0);
+    expect(logOutput.join('\n')).not.toContain('Not analyzed');
+  });
+});
+
+describe('printRuntimeRisks', () => {
+  let logOutput: string[];
+  const originalLog = console.log;
+
+  beforeEach(() => {
+    logOutput = [];
+    console.log = (...args: unknown[]) => {
+      logOutput.push(args.join(' '));
+    };
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  it('prints nothing when no result carries a risk', () => {
+    printRuntimeRisks([makeFunctionAnalysis({})], '/workspace');
+    expect(logOutput.join('\n')).toBe('');
+  });
+
+  it('lists compiled risky functions under "Compiled but Risky"', () => {
+    printRuntimeRisks([makeFunctionAnalysis({ risks: [makeRisk()] })], '/workspace');
+    const output = logOutput.join('\n');
+    expect(output).toContain('Compiled but Risky');
+    expect(output).not.toContain('Risky but Not Compiled');
+    expect(output).toContain('src/Component.tsx:7');
+  });
+
+  it('separates risky functions that did not compile into their own section', () => {
+    printRuntimeRisks(
+      [
+        makeFunctionAnalysis({
+          functionName: 'ErroredRisky',
+          status: 'error',
+          compilerEvent: 'CompileError',
+          memoStats: undefined,
+          risks: [makeRisk()],
+        }),
+      ],
+      '/workspace',
+    );
+    const output = logOutput.join('\n');
+    expect(output).toContain('Risky but Not Compiled');
+    expect(output).toContain('not hazardous yet');
+    expect(output).not.toContain('Compiled but Risky');
+  });
+
+  it('renders both sections when compiled and non-compiled risks coexist', () => {
+    printRuntimeRisks(
+      [
+        makeFunctionAnalysis({ functionName: 'CompiledRisky', risks: [makeRisk()] }),
+        makeFunctionAnalysis({
+          functionName: 'SkippedRisky',
+          status: 'skipped',
+          compilerEvent: 'CompileSkip',
+          memoStats: undefined,
+          risks: [makeRisk({ severity: 'medium' })],
+        }),
+      ],
+      '/workspace',
+    );
+    const output = logOutput.join('\n');
+    expect(output).toContain('Compiled but Risky');
+    expect(output).toContain('Risky but Not Compiled');
+    expect(output).toContain('**1** runtime-risk finding(s) across **1** compiled function(s).');
+    expect(output).toContain('**1** runtime-risk finding(s) across **1** non-compiled function(s).');
   });
 });

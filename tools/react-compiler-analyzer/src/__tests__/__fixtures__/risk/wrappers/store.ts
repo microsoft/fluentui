@@ -21,3 +21,9 @@ export function useActiveId(): string {
 export function readLabel(label: string): string {
   return label.trim();
 }
+
+// Plain helper that binds the accessor result before reading it — one step of local dataflow.
+export function readCurrentIdViaBinding(): string {
+  const s = getAppStore();
+  return s.currentId;
+}

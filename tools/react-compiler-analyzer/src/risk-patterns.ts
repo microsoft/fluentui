@@ -1,4 +1,4 @@
-import type { CallExpression, Node } from '@babel/types';
+import type { CallExpression, MemberExpression, Node } from '@babel/types';
 
 import type { RiskConfig, RiskFinding, RiskRuleId, RiskSeverity } from './types';
 
@@ -15,6 +15,46 @@ export interface LeafMatch {
   severity: RiskSeverity;
   symbol: string;
   message: string;
+}
+
+const GET_STATE_MESSAGE =
+  'imperative store snapshot via `.getState()` takes no tracked inputs — memoization caches a stale value across store transitions';
+
+function accessorMessage(calleeName: string): string {
+  return `non-reactive store read via \`${calleeName}()\` — memoization may cache a stale snapshot across store transitions`;
+}
+
+/**
+ * Render a receiver expression as a readable symbol prefix so findings stay traceable to source
+ * when the receiver is not a plain identifier (`useFooStore(x).use.bar()` → `useFooStore()`).
+ */
+function describeReceiver(node: Node): string {
+  switch (node.type) {
+    case 'Identifier':
+      return node.name;
+    case 'ThisExpression':
+      return 'this';
+    case 'CallExpression':
+      return node.callee.type === 'Identifier' ? `${node.callee.name}()` : `${describeReceiver(node.callee)}()`;
+    case 'MemberExpression': {
+      const property = memberName(node);
+      const object = describeReceiver(node.object);
+      return property === null ? object : `${object}.${property}`;
+    }
+    default:
+      return 'store';
+  }
+}
+
+/** Static property name of a member access, covering both `a.b` and `a['b']`. */
+function memberName(node: MemberExpression): string | null {
+  if (!node.computed && node.property.type === 'Identifier') {
+    return node.property.name;
+  }
+  if (node.computed && node.property.type === 'StringLiteral') {
+    return node.property.value;
+  }
+  return null;
 }
 
 /** Build the resolved leaf-detection config once from raw {@link RiskConfig}. */
@@ -43,25 +83,20 @@ export function matchRiskyCall(call: CallExpression, parent: Node | null, cfg: L
   const callee = call.callee;
 
   // ── Hidden selector hook via property chain, e.g. `store.use.field()` ──
-  if (
-    cfg.hiddenHookProps.size > 0 &&
-    callee.type === 'MemberExpression' &&
-    !callee.computed &&
-    callee.property.type === 'Identifier' &&
-    callee.object.type === 'MemberExpression' &&
-    !callee.object.computed &&
-    callee.object.property.type === 'Identifier' &&
-    cfg.hiddenHookProps.has(callee.object.property.name)
-  ) {
-    const propName = callee.object.property.name;
-    const fieldName = callee.property.name;
-    const baseName = callee.object.object.type === 'Identifier' ? callee.object.object.name : 'store';
-    return {
-      ruleId: 'hidden-selector-hook',
-      severity: 'high',
-      symbol: `${baseName}.${propName}.${fieldName}`,
-      message: `hidden hook \`${baseName}.${propName}.${fieldName}()\` is a selector accessed via property chain — not \`useXxx()\`-named, so the compiler may memoize around it and move the hidden hook into a cache branch, causing a hook-order crash (\`areHookInputsEqual\`)`,
-    };
+  // The receiver is deliberately unconstrained: `useFooStore(x).use.bar()` and `a.b.use.bar()`
+  // resolve to the same hidden hook at runtime as the plain-identifier form.
+  if (cfg.hiddenHookProps.size > 0 && callee.type === 'MemberExpression' && callee.object.type === 'MemberExpression') {
+    const fieldName = memberName(callee);
+    const propName = memberName(callee.object);
+    if (fieldName !== null && propName !== null && cfg.hiddenHookProps.has(propName)) {
+      const baseName = describeReceiver(callee.object.object);
+      return {
+        ruleId: 'hidden-selector-hook',
+        severity: 'high',
+        symbol: `${baseName}.${propName}.${fieldName}`,
+        message: `hidden hook \`${baseName}.${propName}.${fieldName}()\` is a selector accessed via property chain — not \`useXxx()\`-named, so the compiler may memoize around it and move the hidden hook into a cache branch, causing a hook-order crash (\`areHookInputsEqual\`)`,
+      };
+    }
   }
 
   // ── `.getState()` imperative snapshot read ──
@@ -72,39 +107,78 @@ export function matchRiskyCall(call: CallExpression, parent: Node | null, cfg: L
     callee.property.name === 'getState' &&
     !callee.computed
   ) {
-    const objectName =
-      callee.object.type === 'CallExpression' && callee.object.callee.type === 'Identifier'
-        ? callee.object.callee.name
-        : callee.object.type === 'Identifier'
-        ? callee.object.name
-        : 'store';
     return {
       ruleId: 'nonreactive-store-read',
       severity: 'high',
-      symbol: `${objectName}.getState`,
-      message:
-        'imperative store snapshot via `.getState()` takes no tracked inputs — memoization caches a stale value across store transitions',
+      symbol: `${describeReceiver(callee.object)}.getState`,
+      message: GET_STATE_MESSAGE,
     };
   }
 
   // ── `getXStore().field` / `const { field } = getXStore()` accessor read ──
   if (cfg.storeAccessorRe && callee.type === 'Identifier' && cfg.storeAccessorRe.test(callee.name)) {
     const calleeName = callee.name;
-    const isMemberRead =
-      parent?.type === 'MemberExpression' &&
-      parent.object === call &&
-      !(parent.property.type === 'Identifier' && parent.property.name === 'getState');
-    const isDestructured =
-      parent?.type === 'VariableDeclarator' && parent.init === call && parent.id.type === 'ObjectPattern';
-    if (isMemberRead || isDestructured) {
+    if (isSnapshotRead(call, parent)) {
       return {
         ruleId: 'nonreactive-store-read',
         severity: 'medium',
         symbol: calleeName,
-        message: `non-reactive store read via \`${calleeName}()\` — memoization may cache a stale snapshot across store transitions`,
+        message: accessorMessage(calleeName),
       };
     }
   }
 
   return null;
+}
+
+/**
+ * Match a `VariableDeclarator` initializer that produces a store snapshot, so callers can treat
+ * later reads of that binding as accessor reads (`const s = getChatStore(); … s.field`).
+ *
+ * One step of local dataflow past {@link matchRiskyCall}, which only ever sees the call site.
+ * `bindingName` is woven into the message so the report points at the variable to inspect.
+ */
+export function matchAccessorInit(init: Node, cfg: LeafRiskConfig, bindingName: string): LeafMatch | null {
+  if (init.type !== 'CallExpression') {
+    return null;
+  }
+  const callee = init.callee;
+  const via = `(read through local binding \`${bindingName}\`)`;
+
+  if (
+    cfg.detectGetState &&
+    callee.type === 'MemberExpression' &&
+    !callee.computed &&
+    callee.property.type === 'Identifier' &&
+    callee.property.name === 'getState'
+  ) {
+    return {
+      ruleId: 'nonreactive-store-read',
+      severity: 'high',
+      symbol: `${describeReceiver(callee.object)}.getState`,
+      message: `${GET_STATE_MESSAGE} ${via}`,
+    };
+  }
+
+  if (cfg.storeAccessorRe && callee.type === 'Identifier' && cfg.storeAccessorRe.test(callee.name)) {
+    return {
+      ruleId: 'nonreactive-store-read',
+      severity: 'medium',
+      symbol: callee.name,
+      message: `${accessorMessage(callee.name)} ${via}`,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * True when `parent` reads a value off `node` in a way that surfaces store state — a static member
+ * access or an object-destructuring bind. `.getState()` is excluded: {@link matchRiskyCall} owns it.
+ */
+export function isSnapshotRead(node: Node, parent: Node | null): boolean {
+  if (parent?.type === 'MemberExpression' && parent.object === node) {
+    return memberName(parent) !== 'getState';
+  }
+  return parent?.type === 'VariableDeclarator' && parent.init === node && parent.id.type === 'ObjectPattern';
 }

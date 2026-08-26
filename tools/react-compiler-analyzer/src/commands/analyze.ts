@@ -1,9 +1,9 @@
 import type { CommandModule, Argv } from 'yargs';
 
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, isAbsolute, resolve } from 'node:path';
 
-import { compileFiles } from '../compiler';
+import { compileFilesStreaming } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import {
@@ -11,28 +11,17 @@ import {
   printCoverageSummary,
   printMigrationCandidates,
   printRuntimeRisks,
+  printUnparseableFiles,
 } from '../coverage-reporter';
-import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
-import type { AnnotateMode, CompilationMode, FileEntry, OutputFormat, RiskConfig } from '../types';
-import {
-  closeScanLog,
-  openScanLog,
-  sharedOptions,
-  validateConcurrency,
-  validatePaths,
-  withReportOutput,
-} from './shared';
+import { discoverAllFiles } from '../discovery';
+import { toAnalysisDocument, writeDocument } from '../serializer';
+import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RiskConfig } from '../types';
+import { CliError, runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
 
-type AnalyzeArgv = {
-  paths: string[];
-  verbose: boolean;
-  concurrency: number;
-  'full-reasons': boolean;
-  exclude: string[];
-  mode: CompilationMode;
-  format: OutputFormat;
+type AnalyzeArgv = SharedArgv & {
   annotate: AnnotateMode | undefined;
   'risk-config': string | undefined;
+  quote: QuoteStyle;
 };
 
 /** Keys allowed in a risk-config file, mirroring `risk-config.schema.json`. */
@@ -46,7 +35,7 @@ export const RISK_CONFIG_KEYS = new Set([
 ]);
 
 /** Load and validate an optional risk-detection config JSON file. */
-function loadRiskConfig(path: string | undefined): RiskConfig {
+export function loadRiskConfig(path: string | undefined): RiskConfig {
   if (!path) {
     return {};
   }
@@ -55,26 +44,161 @@ function loadRiskConfig(path: string | undefined): RiskConfig {
   try {
     parsed = JSON.parse(readFileSync(resolved, 'utf-8'));
   } catch (err) {
-    console.error(`Error: could not read risk config '${resolved}': ${(err as Error).message}`);
-    process.exit(1);
+    throw new CliError(`could not read risk config '${resolved}': ${(err as Error).message}`);
   }
   if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
-    console.error(`Error: risk config '${resolved}' must be a JSON object.`);
-    process.exit(1);
+    throw new CliError(`risk config '${resolved}' must be a JSON object.`);
   }
 
   const unknownKeys = Object.keys(parsed).filter(k => !RISK_CONFIG_KEYS.has(k));
   if (unknownKeys.length > 0) {
-    console.error(
-      `Error: risk config '${resolved}' has unknown key(s): ${unknownKeys.join(', ')}. ` +
+    throw new CliError(
+      `risk config '${resolved}' has unknown key(s): ${unknownKeys.join(', ')}. ` +
         'See risk-config.schema.json for the supported options.',
     );
-    process.exit(1);
   }
 
   // `$schema` is an editor-only hint; strip it before handing the config to the plugin.
   const { $schema: _schema, ...config } = parsed as RiskConfig & { $schema?: string };
+
+  if (config.pathAliases) {
+    // Anchor a relative baseUrl to the config file, not the cwd — otherwise running from the
+    // wrong directory silently resolves nothing and still exits 0.
+    const { baseUrl } = config.pathAliases;
+    const absoluteBaseUrl = isAbsolute(baseUrl) ? baseUrl : resolve(dirname(resolved), baseUrl);
+    if (!existsSync(absoluteBaseUrl)) {
+      throw new CliError(
+        `risk config '${resolved}' has pathAliases.baseUrl '${baseUrl}' which resolves to ` +
+          `'${absoluteBaseUrl}', but that directory does not exist.`,
+      );
+    }
+    config.pathAliases = { ...config.pathAliases, baseUrl: absoluteBaseUrl };
+  }
+
+  warnOnNoOpConfig(config, resolved);
+
   return config;
+}
+
+/**
+ * Flag configurations that produce a clean report because nothing ran, rather than because
+ * nothing was found. Both cases below exit 0 with an empty risk section.
+ */
+function warnOnNoOpConfig(config: RiskConfig, configPath: string): void {
+  if (!config.resolveWrappers) {
+    return;
+  }
+  const hasLeafRule =
+    config.detectGetStateReads === true ||
+    typeof config.storeAccessorPattern === 'string' ||
+    (config.selectorHookProperties?.length ?? 0) > 0;
+
+  if (!hasLeafRule) {
+    console.warn(
+      `Warning: risk config '${configPath}' sets resolveWrappers but enables no leaf rule ` +
+        '(detectGetStateReads / storeAccessorPattern / selectorHookProperties), so wrapper ' +
+        'resolution will not run.',
+    );
+  }
+  if (!config.pathAliases) {
+    console.warn(
+      `Warning: risk config '${configPath}' sets resolveWrappers without pathAliases — wrappers ` +
+        'imported through workspace aliases will not resolve. Relative imports still work.',
+    );
+  }
+}
+
+/** Command body, separated from the yargs wiring so tests can assert on the exit code. */
+export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
+  const riskConfig = loadRiskConfig(argv['risk-config']);
+
+  if (argv.annotate && argv.mode === 'annotation') {
+    // In annotation mode the compiler only reports functions that already carry 'use memo', so
+    // there is nothing left for --annotate to discover. Generate annotations with infer or all.
+    console.warn(
+      "Warning: --annotate does nothing under --mode annotation, which only compiles functions that already have 'use memo'. " +
+        'Run with --mode infer or --mode all to discover functions to annotate.',
+    );
+  }
+
+  return runReport(argv, {
+    title: 'React Compiler Analysis',
+    discover: discoverAllFiles,
+    emptyMessage: 'No TypeScript files found.',
+    countLabel: 'Files to analyze',
+    run: async ({ f, files, endScanLog }) => {
+      // Derive the compact analysis per file and drop the compilation result immediately — see
+      // compileFilesStreaming for why retaining them does not scale.
+      const coverageResults: FunctionAnalysis[] = [];
+      const unparseable: { file: string; error: string }[] = [];
+      await compileFilesStreaming(
+        files,
+        {
+          concurrency: argv.concurrency,
+          verbose: argv.verbose,
+          compilationMode: argv.mode,
+          riskConfig,
+          onResolverStats: stats => {
+            if (!stats) {
+              return;
+            }
+            const baseUrl = riskConfig.pathAliases?.baseUrl ?? '(none)';
+            f.line(
+              `Wrapper resolution: ${stats.resolved} import(s) resolved, ` +
+                `${stats.unresolvedBare} stopped at the package boundary, ` +
+                `${stats.unresolvedRelative} unresolvable. baseUrl: ${baseUrl}`,
+            );
+          },
+        },
+        result => {
+          if (result.error) {
+            unparseable.push({ file: result.filePath, error: result.error.message });
+          }
+          coverageResults.push(...deriveCoverage(result, { fullReasons: argv['full-reasons'] }));
+        },
+      );
+
+      endScanLog();
+
+      sortByLocation(coverageResults);
+
+      const workspaceRoot = process.cwd();
+
+      if (argv.format === 'json') {
+        writeDocument(toAnalysisDocument(coverageResults, { mode: argv.mode, workspaceRoot, unparseable }));
+        return 0;
+      }
+      printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
+      printRuntimeRisks(f, coverageResults, workspaceRoot);
+      printUnparseableFiles(f, unparseable, workspaceRoot);
+      printMigrationCandidates(f, coverageResults, workspaceRoot);
+      printCoverageSummary(f, coverageResults, argv.verbose, unparseable.length);
+
+      if (argv.annotate) {
+        const outcome = await applyAnnotations(coverageResults, argv.annotate, { quote: argv.quote });
+        const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
+        if (touched > 0) {
+          f.blank();
+          const parts: string[] = [];
+          if (outcome.functionsAnnotated > 0) {
+            parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
+          }
+          if (outcome.functionsBailedOut > 0) {
+            parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
+          }
+          f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
+        } else {
+          f.blank();
+          f.line('No functions to annotate.');
+        }
+      }
+
+      f.blank();
+      f.line('> **Tip:** Run `lint <path>` for directive health checks.');
+
+      return 0;
+    },
+  });
 }
 
 export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
@@ -85,8 +209,14 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       .option('annotate', {
         type: 'string' as const,
         describe:
-          "Insert directives into compilable functions. 'manual-memo': 'use memo' on those with useMemo/useCallback/React.memo. 'all': 'use memo' on all. 'all-safe': like 'all' but risky functions (per --risk-config) get a justified 'use no memo' bailout instead.",
-        choices: ['manual-memo', 'all', 'all-safe'] as const,
+          "Insert directives into compilable functions. 'manual-memo': 'use memo' on those with useMemo/useCallback/React.memo. 'all': 'use memo' on all. 'all-safe': like 'all' but risky functions (per --risk-config) get a justified 'use no memo' bailout instead. 'bailout-only': write only the bailouts, no opt-ins.",
+        choices: ['manual-memo', 'all', 'all-safe', 'bailout-only'] as const,
+      })
+      .option('quote', {
+        type: 'string' as const,
+        describe: 'Quote style for directives written by --annotate',
+        choices: ['single', 'double'] as const,
+        default: 'single' as QuoteStyle,
       })
       .option('risk-config', {
         type: 'string' as const,
@@ -94,88 +224,6 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
           'Path to a JSON file enabling risk detection (storeAccessorPattern, detectGetStateReads, selectorHookProperties).',
       }) as Argv<AnalyzeArgv>,
   handler: async argv => {
-    const resolvedPaths = validatePaths(argv.paths);
-    validateConcurrency(argv.concurrency);
-
-    await withReportOutput(
-      argv.format,
-      'React Compiler Analysis',
-      async f => {
-        openScanLog(f, 'Scan & compile log');
-
-        const collected: FileEntry[] = [];
-
-        for (const resolvedPath of resolvedPaths) {
-          const packageName = await findPackageName(resolvedPath);
-
-          f.heading(2, `Scanning: ${resolvedPath}`);
-          f.line(`   Package: ${packageName}`);
-          f.line(`   Mode: ${argv.mode}`);
-          f.blank();
-
-          const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
-          collected.push(...discovered);
-        }
-
-        // Combining overlapping paths (e.g. a directory plus a file inside it) can surface
-        // the same file more than once — process each file a single time.
-        const files = dedupeFileEntries(collected);
-
-        if (files.length === 0) {
-          closeScanLog(f);
-          f.line('No TypeScript files found.');
-          return 0;
-        }
-
-        f.line(`Files to analyze: ${files.length}`);
-        f.blank();
-
-        // Single compilation pass for all files
-        const compilationResults = await compileFiles(files, {
-          concurrency: argv.concurrency,
-          verbose: argv.verbose,
-          compilationMode: argv.mode,
-          riskConfig: loadRiskConfig(argv['risk-config']),
-        });
-
-        closeScanLog(f);
-
-        // Derive coverage from compilation results
-        const coverageResults = compilationResults.flatMap(r =>
-          deriveCoverage(r, { fullReasons: argv['full-reasons'] }),
-        );
-
-        const workspaceRoot = process.cwd();
-        printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
-        printRuntimeRisks(f, coverageResults, workspaceRoot);
-        printMigrationCandidates(f, coverageResults, workspaceRoot);
-        printCoverageSummary(f, coverageResults, argv.verbose);
-
-        if (argv.annotate) {
-          const outcome = await applyAnnotations(coverageResults, argv.annotate);
-          const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
-          if (touched > 0) {
-            f.blank();
-            const parts: string[] = [];
-            if (outcome.functionsAnnotated > 0) {
-              parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
-            }
-            if (outcome.functionsBailedOut > 0) {
-              parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
-            }
-            f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
-          } else {
-            f.blank();
-            f.line('No functions to annotate.');
-          }
-        }
-
-        f.blank();
-        f.line('> **Tip:** Run `lint <path>` for directive health checks.');
-
-        return 0;
-      },
-      [{ label: 'Mode', value: argv.mode }],
-    );
+    process.exitCode = await runAnalyze(argv);
   },
 };

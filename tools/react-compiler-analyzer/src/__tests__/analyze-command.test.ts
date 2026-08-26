@@ -323,7 +323,6 @@ describe('dedupeFileEntries', () => {
 describe('mixed directory + file path analyze', () => {
   let tempDir: string;
   let originalLog: typeof console.log;
-  let originalExit: typeof process.exit;
   let captured: string[];
 
   beforeEach(() => {
@@ -341,14 +340,10 @@ describe('mixed directory + file path analyze', () => {
     console.log = (...args: unknown[]) => {
       captured.push(args.map(String).join(' '));
     };
-
-    originalExit = process.exit;
-    process.exit = ((_code?: number) => undefined) as never;
   });
 
   afterEach(() => {
     console.log = originalLog;
-    process.exit = originalExit;
   });
 
   it('accepts a directory combined with explicit files without crashing', async () => {
@@ -395,7 +390,6 @@ describe('mixed directory + file path analyze', () => {
 describe('analyze command — scan log wrapping', () => {
   let tempDir: string;
   let originalLog: typeof console.log;
-  let originalExit: typeof process.exit;
   let captured: string[];
 
   beforeEach(() => {
@@ -410,14 +404,10 @@ describe('analyze command — scan log wrapping', () => {
     console.log = (...args: unknown[]) => {
       captured.push(args.map(String).join(' '));
     };
-
-    originalExit = process.exit;
-    process.exit = ((_code?: number) => undefined) as never;
   });
 
   afterEach(() => {
     console.log = originalLog;
-    process.exit = originalExit;
   });
 
   it('wraps scan + compile output in a single <details> block', async () => {

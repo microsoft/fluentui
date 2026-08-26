@@ -4,13 +4,13 @@ import { readFile } from 'node:fs/promises';
 import { transformAsync } from '@babel/core';
 import type { PluginItem } from '@babel/core';
 
-import { processFilesConcurrently } from './concurrency';
+import { forEachFileConcurrently } from './concurrency';
 import { manualMemoPlugin } from './manual-memo-plugin';
-import type { ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
+import type { ExistingDirectives, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
 import { riskPlugin } from './risk-plugin';
 import type { RiskPluginOptions } from './risk-plugin';
 import { createCallGraphAnalyzer, type CallGraphAnalyzer } from './call-graph';
-import { createModuleResolver, compilePathAliases } from './module-resolver';
+import { createModuleResolver, compilePathAliases, createResolverStats } from './module-resolver';
 import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
 
 export interface CompilerEvent {
@@ -197,7 +197,6 @@ export async function compileSource(
   };
 
   const ext = extname(filePath);
-  const isTSX = ext === '.tsx';
 
   const extraPlugins = options.plugins ?? [];
   const compilerPluginConfig: [string, Record<string, unknown>] = [
@@ -221,7 +220,9 @@ export async function compileSource(
         [
           require.resolve('@babel/preset-typescript'),
           {
-            isTSX: isTSX || ext === '.ts',
+            // Must track the extension: enabling JSX for `.ts` makes the parser read an
+            // angle-bracket type assertion (`<Foo>bar`) as an unterminated JSX element.
+            isTSX: ext === '.tsx',
             allExtensions: true,
           },
         ],
@@ -245,8 +246,12 @@ export interface FileCompilationResult {
   error?: Error;
   manualMemo: Map<string, ManualMemoEntry>;
   bodyInsertionLines: Map<string, number>;
+  /** Memo directives already present on each function, keyed by `line:column`. */
+  existingDirectives: Map<string, ExistingDirectives>;
   /** Runtime-risk findings keyed by `line:column` of the enclosing function start. */
   risks: Map<string, RiskFinding[]>;
+  /** Maps a function's body-start key to its declaration key (see {@link RiskPluginOptions}). */
+  riskKeyAliases: Map<string, string>;
 }
 
 /**
@@ -264,12 +269,14 @@ export async function compileFile(
   const manualMemo = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
   const risks = new Map<string, RiskFinding[]>();
+  const riskKeyAliases = new Map<string, string>();
+  const existingDirectives = new Map<string, ExistingDirectives>();
 
   const { events, error } = await compileSource(source, entry.filePath, {
     compilationMode,
     plugins: [
-      [manualMemoPlugin, { results: manualMemo, bodyInsertionLines } as ManualMemoPluginOptions],
-      [riskPlugin, { ...riskConfig, results: risks } as RiskPluginOptions],
+      [manualMemoPlugin, { results: manualMemo, bodyInsertionLines, existingDirectives } as ManualMemoPluginOptions],
+      [riskPlugin, { ...riskConfig, results: risks, keyAliases: riskKeyAliases } as RiskPluginOptions],
     ],
   });
 
@@ -308,23 +315,57 @@ export async function compileFile(
     error,
     manualMemo,
     bodyInsertionLines,
+    existingDirectives,
     risks,
+    riskKeyAliases,
   };
 }
 
 /**
  * Compile multiple files with concurrency-limited parallelism.
  */
-export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
+/**
+ * Compile every file with concurrency-limited parallelism, handing each result to `onResult`
+ * as soon as it is ready.
+ *
+ * Streaming rather than collecting is what keeps a whole-repo scan viable: a
+ * {@link FileCompilationResult} holds the file's entire source text plus its event and risk maps,
+ * so retaining one per file costs gigabytes at tens of thousands of files. Deriving the compact
+ * analysis inside `onResult` lets each result be collected immediately after use.
+ */
+export async function compileFilesStreaming(
+  files: FileEntry[],
+  options: CompileFilesOptions,
+  onResult: (result: FileCompilationResult) => void | Promise<void>,
+): Promise<void> {
   // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
   // across files. Only built when wrapper resolution is opted into.
   const callGraph = buildCallGraph(options.riskConfig);
 
-  return processFilesConcurrently(
+  await forEachFileConcurrently(
     files,
-    entry => compileFile(entry, options.compilationMode, options.verbose, options.riskConfig, callGraph).then(r => [r]),
+    async entry => {
+      const result = await compileFile(entry, options.compilationMode, options.verbose, options.riskConfig, callGraph);
+      await onResult(result);
+    },
     { concurrency: options.concurrency, verbose: options.verbose },
   );
+
+  options.onResolverStats?.(callGraph?.stats);
+}
+
+/**
+ * Collect every compilation result into an array.
+ *
+ * Prefer {@link compileFilesStreaming} for real scans — this retains every file's source text
+ * and is only appropriate for small, bounded inputs.
+ */
+export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
+  const results: FileCompilationResult[] = [];
+  await compileFilesStreaming(files, options, result => {
+    results.push(result);
+  });
+  return results;
 }
 
 /** Construct the cross-file analyzer when `resolveWrappers` is enabled; otherwise `undefined`. */
@@ -335,6 +376,7 @@ function buildCallGraph(riskConfig?: RiskConfig): CallGraphAnalyzer | undefined 
   const aliases = riskConfig.pathAliases
     ? compilePathAliases(riskConfig.pathAliases.paths, riskConfig.pathAliases.baseUrl)
     : [];
-  const resolver = createModuleResolver({ aliases });
-  return createCallGraphAnalyzer(resolver, riskConfig);
+  const stats = createResolverStats();
+  const resolver = createModuleResolver({ aliases, stats });
+  return createCallGraphAnalyzer(resolver, riskConfig, stats);
 }

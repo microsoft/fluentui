@@ -16,6 +16,14 @@ export interface ManualMemoPluginOptions {
   results: Map<string, ManualMemoEntry>;
   /** Body insertion lines for ALL functions, keyed by `line:column` */
   bodyInsertionLines?: Map<string, number>;
+  /** Directives already present on each function, keyed by `line:column`. */
+  existingDirectives?: Map<string, ExistingDirectives>;
+}
+
+/** Which memo directives a function body already declares. */
+export interface ExistingDirectives {
+  useMemo: boolean;
+  useNoMemo: boolean;
 }
 
 function fnKey(loc: { line: number; column: number }): string {
@@ -34,17 +42,25 @@ function getBodyInsertionLine(fnPath: NodePath<BabelFunction>): number {
   return 0;
 }
 
-function hasUseMemoDirective(fnPath: NodePath<BabelFunction>): boolean {
+/** Read the memo directives declared at the top of a function body. */
+function readDirectives(fnPath: NodePath<BabelFunction>): ExistingDirectives {
   const body = fnPath.node.body;
+  const found: ExistingDirectives = { useMemo: false, useNoMemo: false };
   if (body.type !== 'BlockStatement') {
-    return false;
+    return found;
   }
   for (const directive of body.directives ?? []) {
     if (directive.value.value === 'use memo') {
-      return true;
+      found.useMemo = true;
+    } else if (directive.value.value === 'use no memo') {
+      found.useNoMemo = true;
     }
   }
-  return false;
+  return found;
+}
+
+function hasUseMemoDirective(fnPath: NodePath<BabelFunction>): boolean {
+  return readDirectives(fnPath).useMemo;
 }
 
 /**
@@ -110,6 +126,7 @@ export function manualMemoPlugin(): PluginObj {
         if (insertionLine > 0) {
           opts.bodyInsertionLines?.set(key, insertionLine);
         }
+        opts.existingDirectives?.set(key, readDirectives(path as NodePath<BabelFunction>));
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {

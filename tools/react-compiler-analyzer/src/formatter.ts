@@ -1,4 +1,4 @@
-import type { OutputFormat } from './types';
+import type { RenderedFormat } from './types';
 
 /** A single table cell value. Numbers are stringified during rendering. */
 export type Cell = string | number;
@@ -41,7 +41,7 @@ export interface FoldableSectionOptions {
  */
 export interface Formatter {
   /** The active output format. */
-  readonly format: OutputFormat;
+  readonly format: RenderedFormat;
   /** Write a line verbatim to the sink (no transformation). Used for format-specific wrappers. */
   raw(line: string): void;
   /**
@@ -635,7 +635,7 @@ const HTML_NAV_SCRIPT = `
  *   `html` for a styled HTML document.
  * @param write - Line sink. Defaults to `console.log`.
  */
-export function createFormatter(format: OutputFormat, write: Writer = defaultWrite): Formatter {
+export function createFormatter(format: RenderedFormat, write: Writer = defaultWrite): Formatter {
   switch (format) {
     case 'md':
       return new MarkdownFormatter(write);

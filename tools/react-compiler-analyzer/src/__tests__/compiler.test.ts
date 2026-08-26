@@ -1,10 +1,63 @@
 import {
+  compileSource,
   extractDetailLoc,
   extractDetailReason,
   extractFullDiagnostic,
   resolveSkipReason,
   type CompilerEvent,
 } from '../compiler';
+
+describe('compileSource — TypeScript parsing per extension', () => {
+  it('parses an angle-bracket type assertion in a .ts file', async () => {
+    // Legal TypeScript, but ambiguous with JSX — only parseable when isTSX is off.
+    const source = [
+      'interface Foo { a: number }',
+      'const bar: unknown = { a: 1 };',
+      'const foo = <Foo>bar;',
+      'export const a = foo.a;',
+    ].join('\n');
+
+    const { error } = await compileSource(source, '/virtual/cast.ts');
+
+    expect(error).toBeUndefined();
+  });
+
+  it('parses JSX in a .tsx file', async () => {
+    const source = [
+      "import { useState } from 'react';",
+      'export function C({ label }: { label: string }) {',
+      '  const [n, setN] = useState(0);',
+      '  return <div onClick={() => setN(c => c + 1)}>{label}{n}</div>;',
+      '}',
+    ].join('\n');
+
+    const { error, events } = await compileSource(source, '/virtual/C.tsx');
+
+    expect(error).toBeUndefined();
+    expect(events.some(e => e.kind === 'CompileSuccess')).toBe(true);
+  });
+
+  it('still compiles hook-bearing .ts files', async () => {
+    const source = [
+      "import { useState } from 'react';",
+      'export function useCounter(start: number) {',
+      '  const [n, setN] = useState(start);',
+      '  return { n, inc: () => setN(c => c + 1) };',
+      '}',
+    ].join('\n');
+
+    const { error, events } = await compileSource(source, '/virtual/useCounter.ts');
+
+    expect(error).toBeUndefined();
+    expect(events.some(e => e.kind === 'CompileSuccess')).toBe(true);
+  });
+
+  it('reports JSX inside a .ts file as an error, matching tsc', async () => {
+    const { error } = await compileSource('export const el = <div />;\n', '/virtual/bad.ts');
+
+    expect(error).toBeDefined();
+  });
+});
 
 describe('extractDetailLoc', () => {
   it('returns the line/column from a detail loc', () => {

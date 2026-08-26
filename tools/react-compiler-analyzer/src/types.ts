@@ -1,5 +1,7 @@
 // ── Shared types ──
 
+import type { ResolverStats } from './module-resolver';
+
 export interface FileEntry {
   filePath: string;
   packageName: string;
@@ -10,8 +12,12 @@ export interface FileEntry {
  * - `cli` — terminal-friendly plain text (default)
  * - `md` — GitHub-flavored markdown
  * - `html` — self-contained styled HTML document
+ * - `json` — machine-readable document on stdout; all diagnostics go to stderr
  */
-export type OutputFormat = 'cli' | 'md' | 'html';
+export type OutputFormat = 'cli' | 'md' | 'html' | 'json';
+
+/** Formats rendered through the {@link Formatter} abstraction. `json` bypasses it. */
+export type RenderedFormat = Exclude<OutputFormat, 'json'>;
 
 // ── Directive analysis types ──
 
@@ -132,13 +138,25 @@ export interface FunctionAnalysis {
   manualMemo?: ManualMemoization;
   bodyInsertionLine?: number;
   /**
-   * Heuristic runtime-risk findings for `CompileSuccess` functions — patterns that
-   * compile cleanly but are unsafe to memoize. Empty/undefined when none were found.
+   * Memo directives the function already declares. Read from the AST, so the annotator never
+   * adds a directive that contradicts one already there.
+   */
+  existingDirectives?: { useMemo: boolean; useNoMemo: boolean };
+  /**
+   * Heuristic runtime-risk findings — patterns that compile cleanly but are unsafe to memoize.
+   * Also populated for non-compiled functions, which the reporter lists separately: they are not
+   * hazardous until the compile error is fixed or the opt-out is removed.
    */
   risks?: RiskFinding[];
 }
 
-export type AnnotateMode = 'manual-memo' | 'all' | 'all-safe';
+export type AnnotateMode = 'manual-memo' | 'all' | 'all-safe' | 'bailout-only';
+
+/**
+ * Quote style for emitted directives. Defaults to single, but a codebase that writes
+ * `"use memo"` should set `double` so plain greps for its own convention keep working.
+ */
+export type QuoteStyle = 'single' | 'double';
 
 export interface AnnotateResult {
   filesModified: number;
@@ -153,6 +171,8 @@ export interface CompileFilesOptions {
   compilationMode: CompilationMode;
   /** Optional risk-detection configuration. When omitted, no risk rules run. */
   riskConfig?: RiskConfig;
+  /** Receives the import-resolution tally once the run finishes, when wrapper resolution is on. */
+  onResolverStats?: (stats: ResolverStats | undefined) => void;
 }
 
 /**
@@ -162,14 +182,19 @@ export interface CompileFilesOptions {
 export interface RiskConfig {
   /**
    * Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`).
-   * When set, enables `getXStore().field` snapshot detection (`nonreactive-store-read`). Omit to disable.
+   * When set, enables `getXStore().field` snapshot detection (`nonreactive-store-read`), including
+   * one level of local binding (`const s = getAppStore(); … s.field`). Omit to disable.
    */
   storeAccessorPattern?: string;
-  /** Enable detection of imperative `.getState()` snapshot reads (`nonreactive-store-read`). Default `false`. */
+  /**
+   * Enable detection of imperative `.getState()` snapshot reads (`nonreactive-store-read`),
+   * including one level of local binding. Default `false`.
+   */
   detectGetStateReads?: boolean;
   /**
    * Marker property names that identify a hidden selector hook accessed via property chain,
-   * e.g. `["use"]` matches `store.use.field()` (`hidden-selector-hook`). Empty/omitted disables it.
+   * e.g. `["use"]` matches `store.use.field()` (`hidden-selector-hook`). The receiver may be any
+   * expression, so `useFooStore(x).use.field()` matches too. Empty/omitted disables it.
    */
   selectorHookProperties?: string[];
   /**
@@ -187,4 +212,83 @@ export interface RiskConfig {
     baseUrl: string;
     paths: Record<string, string[]>;
   };
+}
+
+// ── Machine-readable output (`--format json`) ──
+
+/** Fields shared by every emitted document, so consumers can dispatch on `command`. */
+interface DocumentEnvelope {
+  /** Bumped only on a breaking change to the document shape. */
+  schemaVersion: number;
+  tool: 'react-compiler-analyzer';
+  command: 'analyze' | 'lint';
+  mode: CompilationMode;
+}
+
+export interface JsonFunction {
+  file: string;
+  package: string;
+  line: number;
+  column: number;
+  name: string | null;
+  status: FunctionStatus;
+  compilerEvent: FunctionAnalysis['compilerEvent'];
+  reason?: string;
+  memoStats?: MemoStats;
+  manualMemo?: ManualMemoization;
+}
+
+export interface JsonFinding {
+  file: string;
+  package: string;
+  line: number;
+  column: number;
+  rule: RiskRuleId;
+  severity: RiskSeverity;
+  symbol: string;
+  message: string;
+  function: string | null;
+  /** False when the enclosing function is not memoized today, making the risk latent. */
+  compiled: boolean;
+}
+
+export interface AnalysisDocument extends DocumentEnvelope {
+  command: 'analyze';
+  summary: {
+    functions: number;
+    compiled: number;
+    skipped: number;
+    errors: number;
+    findings: number;
+    findingsOnCompiled: number;
+    unparseableFiles: number;
+  };
+  functions: JsonFunction[];
+  findings: JsonFinding[];
+  /** Files the parser rejected outright — they contribute nothing to the counts above. */
+  unparseable: { file: string; error: string }[];
+}
+
+export interface JsonDirective {
+  file: string;
+  package: string;
+  line: number;
+  directive: DirectiveType;
+  status: DirectiveStatus;
+  compilerEvent: DirectiveAnalysis['compilerEvent'];
+  function: string | null;
+  reason?: string;
+}
+
+export interface LintDocument extends DocumentEnvelope {
+  command: 'lint';
+  summary: {
+    directives: number;
+    active: number;
+    redundant: number;
+    broken: number;
+    conflicting: number;
+    skipped: number;
+  };
+  directives: JsonDirective[];
 }

@@ -58,6 +58,12 @@ export async function applyFixes(results: DirectiveAnalysis[]): Promise<FixResul
   let directivesJustified = 0;
 
   for (const [filePath, actions] of byFile) {
+    // A `conflicting` result whose directive is the 'use memo' half contributes no action, so a
+    // file can reach here with nothing to do. Rewriting it would report a phantom modification.
+    if (actions.length === 0) {
+      continue;
+    }
+
     const source = await readFile(filePath, 'utf-8');
     const lines = source.split('\n');
 

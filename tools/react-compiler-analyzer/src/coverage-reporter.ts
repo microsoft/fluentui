@@ -186,7 +186,12 @@ function printErrorGroups(
 /**
  * Print an overall coverage summary.
  */
-export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], verbose: boolean): void {
+export function printCoverageSummary(
+  f: Formatter,
+  results: FunctionAnalysis[],
+  verbose: boolean,
+  unparseableCount = 0,
+): void {
   const compiledResults = results.filter(r => r.status === 'compiled');
   const compiled = compiledResults.length;
   const migrationCandidates = compiledResults.filter(r => r.manualMemo).length;
@@ -205,6 +210,9 @@ export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], 
   f.line(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
   f.line(`- **Skipped** (opted out or not a component/hook): ${skipped} (${pct(skipped, total)})`);
   f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
+  if (unparseableCount > 0) {
+    f.line(`- **Not analyzed** (file could not be parsed): ${unparseableCount} file(s)`);
+  }
   f.blank();
 
   const riskyFunctions = compiledResults.filter(r => r.risks && r.risks.length > 0).length;
@@ -327,6 +335,43 @@ function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspac
   f.blank();
 }
 
+/** A file the parser rejected outright, so it contributed no functions to the report. */
+export interface UnparseableFile {
+  file: string;
+  error: string;
+}
+
+/**
+ * Print the files that could not be parsed at all.
+ *
+ * Without this the totals silently shrink: a file that fails to parse yields no functions, so a
+ * report can look clean simply because nothing was read. The React Compiler's own loaders parse
+ * with a fixed plugin set (`jsx`, `typescript`), so a file rejected here is equally invisible to a
+ * real build — it is a genuine coverage hole, not an analyzer quirk.
+ */
+export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], workspaceRoot: string): void {
+  if (files.length === 0) {
+    return;
+  }
+
+  f.foldableSection({ title: 'Not Analyzed', status: 'warning', count: files.length }, () => {
+    f.line(
+      'These files could not be parsed, so they contributed **no functions** to the counts above. ' +
+        'The React Compiler cannot process them in a real build either.',
+    );
+    f.blank();
+
+    const rows: Cell[][] = files.map(u => [
+      relative(workspaceRoot, u.file),
+      // Babel prefixes the absolute path onto the message; the location suffix is the useful part.
+      u.error.split('\n')[0].replace(/^.*?:\s*/, ''),
+    ]);
+
+    f.table(['File', 'Reason'], rows);
+    f.blank();
+  });
+}
+
 /** Order risk findings high → medium so the most dangerous appear first. */
 const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
 
@@ -339,26 +384,53 @@ const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
  *
  * Unlike compiler errors, these functions will be silently memoized — so they are the
  * highest-value rows in the report for anyone enabling the compiler ring-by-ring.
+ *
+ * Risky functions that did *not* compile are reported in a companion section: they are not
+ * hazardous today, but become so the moment the compile error or opt-out is resolved.
  */
 export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
-  const risky = results.filter(r => r.status === 'compiled' && r.risks && r.risks.length > 0);
+  const withRisks = results.filter(r => r.risks && r.risks.length > 0);
+  const risky = withRisks.filter(r => r.status === 'compiled');
+  const pending = withRisks.filter(r => r.status !== 'compiled');
 
-  if (risky.length === 0) {
-    return;
-  }
-
-  const totalFindings = risky.reduce((sum, r) => sum + (r.risks?.length ?? 0), 0);
-
-  f.foldableSection({ title: 'Compiled but Risky', status: 'warning', count: totalFindings }, () => {
-    f.line(
-      'These functions **compile successfully** but contain patterns that break at runtime ' +
+  if (risky.length > 0) {
+    printRiskTable(f, risky, workspaceRoot, {
+      title: 'Compiled but Risky',
+      intro:
+        'These functions **compile successfully** but contain patterns that break at runtime ' +
         'once memoized — the compiler cannot detect them. Review each before opting into the ' +
         "compiler, or add a justified `'use no memo'` opt-out.",
-    );
+      subject: 'compiled function(s)',
+    });
+  }
+
+  if (pending.length > 0) {
+    printRiskTable(f, pending, workspaceRoot, {
+      title: 'Risky but Not Compiled',
+      intro:
+        'These functions contain the same runtime-risk patterns but are **not memoized today** ' +
+        '(the compiler errored or skipped them), so they are not hazardous yet. They become ' +
+        'live the moment the compile error is fixed or the opt-out is removed.',
+      subject: 'non-compiled function(s)',
+    });
+  }
+}
+
+interface RiskTableCopy {
+  title: string;
+  intro: string;
+  subject: string;
+}
+
+function printRiskTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot: string, copy: RiskTableCopy): void {
+  const totalFindings = entries.reduce((sum, r) => sum + (r.risks?.length ?? 0), 0);
+
+  f.foldableSection({ title: copy.title, status: 'warning', count: totalFindings }, () => {
+    f.line(copy.intro);
     f.blank();
 
     const rows: Cell[][] = [];
-    for (const r of risky) {
+    for (const r of entries) {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const sorted = [...r.risks!].sort(
@@ -379,7 +451,7 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
 
     f.table(['Location', 'Function', 'Severity', 'Rule', 'Reason'], rows);
     f.blank();
-    f.line(`> **${totalFindings}** runtime-risk finding(s) across **${risky.length}** compiled function(s).`);
+    f.line(`> **${totalFindings}** runtime-risk finding(s) across **${entries.length}** ${copy.subject}.`);
     f.blank();
   });
 }
