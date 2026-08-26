@@ -9,7 +9,9 @@
   .root {
     @apply relative;
 
-    /* Consumer media fills the preview; the logo is positioned and must keep its own box. */
+    /* The media is consumer children with no slot to carry a class, so the fill is reachable only as
+       an exclusion. Excluding the logo — the one child that IS a slot — keeps the two `size`
+       declarations from meeting, so nothing here depends on block order to settle them. */
     & > :not(.logo) {
       @apply block size-full;
     }
