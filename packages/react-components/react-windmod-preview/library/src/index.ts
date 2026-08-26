@@ -330,6 +330,16 @@ export {
 export type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './drawer-header-title';
 
 export {
+  Dropdown,
+  dropdownClassNames,
+  renderDropdown,
+  useDropdown,
+  useDropdownContextValues,
+  useDropdownStyles,
+} from './dropdown';
+export type { DropdownAppearance, DropdownProps, DropdownSize, DropdownState } from './dropdown';
+
+export {
   EmptySwatch,
   emptySwatchClassNames,
   renderEmptySwatch,

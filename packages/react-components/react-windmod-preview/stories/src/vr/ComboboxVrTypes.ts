@@ -51,3 +51,9 @@ export type ComboboxFamily = {
   /** Windmod only — see ComboboxLike.listbox. */
   listbox?: Record<string, unknown>;
 };
+
+/**
+ * Dropdown shares this file rather than copying it: its trigger is a button where Combobox's is an
+ * input, but every prop the scenes pass exists on both, so the loose trigger shape is unchanged.
+ */
+export type DropdownFamily = { Dropdown: ComboboxLike } & Omit<ComboboxFamily, 'Combobox'>;

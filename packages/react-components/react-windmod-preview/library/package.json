@@ -363,6 +363,16 @@
         "default": "./lib-commonjs/drawer-header-title.cjs"
       }
     },
+    "./dropdown": {
+      "import": {
+        "types": "./dist/dropdown.d.ts",
+        "default": "./lib/dropdown.js"
+      },
+      "require": {
+        "types": "./dist/dropdown.d.cts",
+        "default": "./lib-commonjs/dropdown.cjs"
+      }
+    },
     "./empty-swatch": {
       "import": {
         "types": "./dist/empty-swatch.d.ts",

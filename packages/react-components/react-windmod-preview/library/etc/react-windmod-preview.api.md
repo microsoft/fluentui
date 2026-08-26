@@ -129,6 +129,8 @@ import { DrawerHeaderTitleState } from '@fluentui/react-headless-components-prev
 import { DrawerProvider } from '@fluentui/react-headless-components-preview/drawer';
 import { DrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { DrawerState as DrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
+import type { DropdownProps as DropdownProps_2 } from '@fluentui/react-headless-components-preview/dropdown';
+import type { DropdownState as DropdownState_2 } from '@fluentui/react-headless-components-preview/dropdown';
 import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -299,6 +301,7 @@ import { renderDrawerFooter } from '@fluentui/react-headless-components-preview/
 import { renderDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
 import { renderDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
 import { renderDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDropdown } from '@fluentui/react-headless-components-preview/dropdown';
 import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
@@ -499,6 +502,8 @@ import { useDrawerFooter } from '@fluentui/react-headless-components-preview/dra
 import { useDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
 import { useDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
 import { useDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
+import { useDropdown } from '@fluentui/react-headless-components-preview/dropdown';
+import { useDropdownContextValues } from '@fluentui/react-headless-components-preview/dropdown';
 import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useField } from '@fluentui/react-headless-components-preview/field';
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
@@ -1331,6 +1336,29 @@ export { DrawerSlots }
 
 // @public (undocumented)
 export type DrawerState = DrawerState_2;
+
+// @public
+export const Dropdown: ForwardRefComponent<DropdownProps>;
+
+// @public
+export type DropdownAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const dropdownClassNames: {
+    root: string;
+};
+
+// @public
+export type DropdownProps = DropdownProps_2 & {
+    appearance?: DropdownAppearance;
+    size?: DropdownSize;
+};
+
+// @public
+export type DropdownSize = 'small' | 'medium' | 'large';
+
+// @public
+export type DropdownState = DropdownState_2 & Required<Pick<DropdownProps, 'appearance' | 'size'>>;
 
 // @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
@@ -2209,6 +2237,8 @@ export { renderDrawerHeader }
 export { renderDrawerHeaderNavigation }
 
 export { renderDrawerHeaderTitle }
+
+export { renderDropdown }
 
 export { renderEmptySwatch }
 
@@ -3120,6 +3150,13 @@ export const useDrawerHeaderTitleStyles: (state: DrawerHeaderTitleState) => Draw
 
 // @public
 export const useDrawerStyles: (state: DrawerState) => DrawerState;
+
+export { useDropdown }
+
+export { useDropdownContextValues }
+
+// @public
+export const useDropdownStyles: (state: DropdownState) => DropdownState;
 
 export { useEmptySwatch }
 
