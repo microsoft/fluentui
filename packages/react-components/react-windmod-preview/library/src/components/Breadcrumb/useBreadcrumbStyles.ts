@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { BreadcrumbState } from './Breadcrumb.types';
 
 import styles from './Breadcrumb.module.css';
@@ -31,6 +32,6 @@ export const useBreadcrumbStyles = (state: BreadcrumbState): BreadcrumbState => 
   return {
     ...state,
     root,
-    list: state.list && { ...state.list, className: clsx(styles.list, state.list.className) },
+    list: slotClasses(state.list, styles.list),
   };
 };

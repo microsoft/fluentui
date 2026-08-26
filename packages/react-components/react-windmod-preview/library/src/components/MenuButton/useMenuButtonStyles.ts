@@ -1,8 +1,8 @@
 'use client';
 
-import { clsx } from 'clsx';
-
 import { componentMarkers } from '../../utils/groupMarker';
+import { restackOver } from '../../utils/restackOver';
+import { slotClasses } from '../../utils/slotClasses';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
 
@@ -24,21 +24,14 @@ type MenuButtonRootDataAttributes = {
  * with-icon padding select on that the menu state does not carry at all — the menu shape renders
  * the icon before the children unconditionally, so it is fixed to `before`.
  *
- * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
+ * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
-  const { root: buttonRoot, icon: buttonIcon } = useButtonStyles({ ...state, iconPosition: 'before' });
-
-  const root: MenuButtonState['root'] & MenuButtonRootDataAttributes = {
-    ...buttonRoot,
-    'data-icon-position': state.icon ? 'before' : undefined,
-    className: clsx(menuButtonClassNames.root, styles.root, buttonRoot.className),
-  };
-
-  return {
-    ...state,
-    root,
-    icon: buttonIcon && { ...buttonIcon, className: clsx(styles.icon, buttonIcon.className) },
-    menuIcon: state.menuIcon && { ...state.menuIcon, className: clsx(styles.menuIcon, state.menuIcon.className) },
-  };
-};
+export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => ({
+  ...restackOver(state, useButtonStyles({ ...state, iconPosition: 'before' }), {
+    marker: menuButtonClassNames.root,
+    root: styles.root,
+    icon: styles.icon,
+    rootAttributes: { 'data-icon-position': state.icon ? 'before' : undefined } satisfies MenuButtonRootDataAttributes,
+  }),
+  menuIcon: slotClasses(state.menuIcon, styles.menuIcon),
+});

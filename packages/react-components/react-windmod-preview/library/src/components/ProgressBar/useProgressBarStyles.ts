@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ProgressBarState } from './ProgressBar.types';
 
 import styles from './ProgressBar.module.css';
@@ -28,14 +29,11 @@ export const useProgressBarStyles = (state: ProgressBarState): ProgressBarState 
       ...state.root,
       className: clsx(progressBarClassNames.root, styles.root, styles[shape], styles[thickness], state.root.className),
     },
-    bar: state.bar && {
-      ...state.bar,
-      className: clsx(
-        styles.bar,
-        styles[value === undefined ? 'brand' : color],
-        value !== undefined && value > ZERO_THRESHOLD && styles.nonZeroDeterminate,
-        state.bar.className,
-      ),
-    },
+    bar: slotClasses(
+      state.bar,
+      styles.bar,
+      styles[value === undefined ? 'brand' : color],
+      value !== undefined && value > ZERO_THRESHOLD && styles.nonZeroDeterminate,
+    ),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { InfoButtonSize, InfoButtonState } from './InfoButton.types';
 
 import styles from './InfoButton.module.css';
@@ -39,9 +40,6 @@ export const useInfoButtonStyles = (state: InfoButtonState): InfoButtonState => 
   return {
     ...state,
     root,
-    info: {
-      ...state.info,
-      className: clsx(styles.info, infoTypographyClass(size), state.info.className),
-    },
+    info: slotClasses(state.info, styles.info, infoTypographyClass(size)),
   };
 };

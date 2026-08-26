@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 
 import styles from './DrawerHeaderTitle.module.css';
@@ -21,15 +22,10 @@ export const useDrawerHeaderTitleStyles = (state: DrawerHeaderTitleState): Drawe
     className: clsx(drawerHeaderTitleClassNames.root, styles.root, state.root.className),
   };
 
-  const heading = state.heading && {
-    ...state.heading,
-    className: clsx(styles.heading, !state.action && styles.headingWithoutAction, state.heading.className),
+  return {
+    ...state,
+    root,
+    heading: slotClasses(state.heading, styles.heading, !state.action && styles.headingWithoutAction),
+    action: slotClasses(state.action, styles.action),
   };
-
-  const action = state.action && {
-    ...state.action,
-    className: clsx(styles.action, state.action.className),
-  };
-
-  return { ...state, root, heading, action };
 };

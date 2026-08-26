@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { OptionGroupState } from './OptionGroup.types';
 
 import styles from './OptionGroup.module.css';
@@ -17,8 +18,5 @@ export const useOptionGroupStyles = (state: OptionGroupState): OptionGroupState 
     ...state.root,
     className: clsx(optionGroupClassNames.root, styles.root, state.root.className),
   },
-  label: state.label && {
-    ...state.label,
-    className: clsx(styles.label, state.label.className),
-  },
+  label: slotClasses(state.label, styles.label),
 });

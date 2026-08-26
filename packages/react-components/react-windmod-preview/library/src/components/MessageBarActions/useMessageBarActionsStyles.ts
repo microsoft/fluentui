@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { MessageBarActionsState } from './MessageBarActions.types';
 
 import styles from './MessageBarActions.module.css';
@@ -20,8 +21,5 @@ export const useMessageBarActionsStyles = (state: MessageBarActionsState): Messa
     ...state.root,
     className: clsx(messageBarActionsClassNames.root, styles.root, state.root.className),
   },
-  containerAction: state.containerAction && {
-    ...state.containerAction,
-    className: clsx(styles.containerAction, state.containerAction.className),
-  },
+  containerAction: slotClasses(state.containerAction, styles.containerAction),
 });

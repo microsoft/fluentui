@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import type { NavItemState as NavItemHeadlessState } from '@fluentui/react-headless-components-preview/nav';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { NavDensity } from '../Nav/Nav.types';
 import type { NavItemState } from './NavItem.types';
 
@@ -41,7 +42,7 @@ export const navRowClasses = <S extends NavRowState>(state: S): S => ({
     'data-density': state.density,
     className: clsx(navItemClassNames.root, styles.root, state.root.className),
   },
-  icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+  icon: slotClasses(state.icon, styles.icon),
 });
 
 /** Applies the visual contract, returning new state. */

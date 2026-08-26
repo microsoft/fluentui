@@ -2,6 +2,7 @@ import * as React from 'react';
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { BadgeState } from './Badge.types';
 
 import styles from './Badge.module.css';
@@ -40,6 +41,6 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   return {
     ...state,
     root,
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+    icon: slotClasses(state.icon, styles.icon),
   };
 };

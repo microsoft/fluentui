@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { RatingItemState } from './RatingItem.types';
 
 import styles from './RatingItem.module.css';
@@ -29,33 +30,21 @@ export const useRatingItemStyles = (state: RatingItemState): RatingItemState => 
       ...state.root,
       className: clsx(ratingItemClassNames.root, styles.root, styles[size], state.root.className),
     },
-    halfValueInput: state.halfValueInput && {
-      ...state.halfValueInput,
-      className: clsx(styles.input, styles.inputLowerHalf, state.halfValueInput.className),
-    },
-    fullValueInput: state.fullValueInput && {
-      ...state.fullValueInput,
-      className: clsx(styles.input, state.halfValueInput && styles.inputUpperHalf, state.fullValueInput.className),
-    },
-    selectedIcon: state.selectedIcon && {
-      ...state.selectedIcon,
-      className: clsx(
-        styles.indicator,
-        color !== 'neutral' && styles[`selected-${color}`],
-        isHalf && styles.lowerHalf,
-        state.selectedIcon.className,
-      ),
-    },
-    unselectedIcon: state.unselectedIcon && {
-      ...state.unselectedIcon,
-      className: clsx(
-        styles.indicator,
-        isFilled
-          ? [styles[`unselected-${color}`], styles.unselected]
-          : color !== 'neutral' && styles[`selected-${color}`],
-        isHalf && styles.upperHalf,
-        state.unselectedIcon.className,
-      ),
-    },
+    halfValueInput: slotClasses(state.halfValueInput, styles.input, styles.inputLowerHalf),
+    fullValueInput: slotClasses(state.fullValueInput, styles.input, state.halfValueInput && styles.inputUpperHalf),
+    selectedIcon: slotClasses(
+      state.selectedIcon,
+      styles.indicator,
+      color !== 'neutral' && styles[`selected-${color}`],
+      isHalf && styles.lowerHalf,
+    ),
+    unselectedIcon: slotClasses(
+      state.unselectedIcon,
+      styles.indicator,
+      isFilled
+        ? [styles[`unselected-${color}`], styles.unselected]
+        : color !== 'neutral' && styles[`selected-${color}`],
+      isHalf && styles.upperHalf,
+    ),
   };
 };

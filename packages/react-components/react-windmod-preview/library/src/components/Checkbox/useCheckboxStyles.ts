@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { CheckboxState } from './Checkbox.types';
 
 import styles from './Checkbox.module.css';
@@ -30,11 +31,8 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   return {
     ...state,
     root,
-    input: { ...state.input, className: clsx(styles.input, state.input.className) },
-    indicator: state.indicator && {
-      ...state.indicator,
-      className: clsx(styles.indicator, shape === 'circular' && styles.circular, state.indicator.className),
-    },
-    label: state.label && { ...state.label, className: clsx(styles.label, state.label.className) },
+    input: slotClasses(state.input, styles.input),
+    indicator: slotClasses(state.indicator, styles.indicator, shape === 'circular' && styles.circular),
+    label: slotClasses(state.label, styles.label),
   };
 };

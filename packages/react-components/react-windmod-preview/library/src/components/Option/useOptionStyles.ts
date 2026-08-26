@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { OptionState } from './Option.types';
 
 import styles from './Option.module.css';
@@ -21,8 +22,5 @@ export const useOptionStyles = (state: OptionState): OptionState => ({
     ...state.root,
     className: clsx(optionClassNames.root, styles.root, state.root.className),
   },
-  checkIcon: state.checkIcon && {
-    ...state.checkIcon,
-    className: clsx(styles.checkIcon, state.checkIcon.className),
-  },
+  checkIcon: slotClasses(state.checkIcon, styles.checkIcon),
 });

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers, peerMarker } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { RadioState } from './Radio.types';
 
 import styles from './Radio.module.css';
@@ -23,18 +24,12 @@ export const useRadioStyles = (state: RadioState): RadioState => {
       ...state.root,
       className: clsx(radioClassNames.root, styles.root, state.root.className),
     },
-    input: {
-      ...state.input,
-      className: clsx(styles.input, peerMarker('radio'), state.input.className),
-    },
-    indicator: {
-      ...indicator,
-      className: clsx(
-        styles.indicator,
-        indicator.children ? styles.customIndicator : styles.defaultIndicator,
-        indicator.className,
-      ),
-    },
-    label: label && { ...label, className: clsx(styles.label, label.className) },
+    input: slotClasses(state.input, styles.input, peerMarker('radio')),
+    indicator: slotClasses(
+      indicator,
+      styles.indicator,
+      indicator.children ? styles.customIndicator : styles.defaultIndicator,
+    ),
+    label: slotClasses(label, styles.label),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { CardState } from './Card.types';
 
 import styles from './Card.module.css';
@@ -48,10 +49,7 @@ export const useCardStyles = (state: CardState): CardState => {
   return {
     ...state,
     root,
-    floatingAction: state.floatingAction && {
-      ...state.floatingAction,
-      className: clsx(styles.floatingAction, state.floatingAction.className),
-    },
-    checkbox: state.checkbox && { ...state.checkbox, className: clsx(styles.checkbox, state.checkbox.className) },
+    floatingAction: slotClasses(state.floatingAction, styles.floatingAction),
+    checkbox: slotClasses(state.checkbox, styles.checkbox),
   };
 };

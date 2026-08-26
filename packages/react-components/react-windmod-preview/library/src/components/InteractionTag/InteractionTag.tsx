@@ -8,6 +8,7 @@ import {
   useInteractionTagContextValues,
 } from '@fluentui/react-headless-components-preview/interaction-tag';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import { useTagGroupContext } from '../TagGroup/TagGroupContext';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
 import { InteractionTagContextProvider } from './InteractionTagContext';
@@ -22,14 +23,12 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.fo
   // Look props belong to windmod — the headless hook neither accepts nor resolves them. Defaults
   // mirror @fluentui/react-tags' styled useInteractionTag, including its TagGroup fallbacks, whose
   // own context default is `medium`/`filled`. `shape` is published by neither library's TagGroup.
-  // The defaults read a context hook, so props destructures in the body, not the parameter list.
-  const { appearance: contextAppearance, size: contextSize } = useTagGroupContext();
   const {
-    appearance = contextAppearance ?? 'filled',
+    appearance = 'filled',
     shape = 'rounded',
-    size = contextSize ?? 'medium',
+    size = 'medium',
     ...rest
-  } = props;
+  } = mergeContextProps(useTagGroupContext(), props);
 
   const styled: InteractionTagState = { ...useInteractionTag(rest, ref), appearance, shape, size };
 

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { CardPreviewState } from './CardPreview.types';
 
 import styles from './CardPreview.module.css';
@@ -14,5 +15,5 @@ export const cardPreviewClassNames: { root: string } = {
 export const useCardPreviewStyles = (state: CardPreviewState): CardPreviewState => ({
   ...state,
   root: { ...state.root, className: clsx(cardPreviewClassNames.root, styles.root, state.root.className) },
-  logo: state.logo && { ...state.logo, className: clsx(styles.logo, state.logo.className) },
+  logo: slotClasses(state.logo, styles.logo),
 });

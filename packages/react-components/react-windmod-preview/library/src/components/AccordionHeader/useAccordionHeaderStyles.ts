@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { AccordionHeaderState } from './AccordionHeader.types';
 
 import styles from './AccordionHeader.module.css';
@@ -30,11 +31,8 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState): Accordion
   return {
     ...state,
     root,
-    button: { ...state.button, className: clsx(styles.button, state.button.className) },
-    expandIcon: state.expandIcon && {
-      ...state.expandIcon,
-      className: clsx(styles.expandIcon, state.expandIcon.className),
-    },
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+    button: slotClasses(state.button, styles.button),
+    expandIcon: slotClasses(state.expandIcon, styles.expandIcon),
+    icon: slotClasses(state.icon, styles.icon),
   };
 };

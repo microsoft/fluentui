@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { FieldState } from './Field.types';
 
 import styles from './Field.module.css';
@@ -40,20 +41,14 @@ export const useFieldStyles = (state: FieldState): FieldState => {
   return {
     ...state,
     root,
-    label: state.label && { ...state.label, className: clsx(styles.label, state.label.className) },
-    validationMessage: state.validationMessage && {
-      ...state.validationMessage,
-      className: clsx(
-        styles.secondaryText,
-        styles.validationMessage,
-        state.validationMessageIcon && styles.withIcon,
-        state.validationMessage.className,
-      ),
-    },
-    validationMessageIcon: state.validationMessageIcon && {
-      ...state.validationMessageIcon,
-      className: clsx(styles.validationMessageIcon, state.validationMessageIcon.className),
-    },
-    hint: state.hint && { ...state.hint, className: clsx(styles.secondaryText, state.hint.className) },
+    label: slotClasses(state.label, styles.label),
+    validationMessage: slotClasses(
+      state.validationMessage,
+      styles.secondaryText,
+      styles.validationMessage,
+      state.validationMessageIcon && styles.withIcon,
+    ),
+    validationMessageIcon: slotClasses(state.validationMessageIcon, styles.validationMessageIcon),
+    hint: slotClasses(state.hint, styles.secondaryText),
   };
 };

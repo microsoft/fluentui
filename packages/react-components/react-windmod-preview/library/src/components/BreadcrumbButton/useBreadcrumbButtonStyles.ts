@@ -1,8 +1,7 @@
 'use client';
 
-import { clsx } from 'clsx';
-
 import { componentMarkers } from '../../utils/groupMarker';
+import { restackOver } from '../../utils/restackOver';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { BreadcrumbButtonState } from './BreadcrumbButton.types';
 
@@ -25,23 +24,17 @@ type BreadcrumbButtonRootDataAttributes = {
  * button routes through Griffel's base hook rather than the headless one, so none of the four
  * Button stamps below reach the root on their own.
  *
- * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
+ * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
-  const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);
-
-  const root: BreadcrumbButtonState['root'] & BreadcrumbButtonRootDataAttributes = {
-    ...buttonRoot,
-    'data-disabled': state.disabled || undefined,
-    'data-disabled-focusable': state.disabledFocusable || undefined,
-    'data-icon-only': state.iconOnly || undefined,
-    'data-icon-position': state.icon ? state.iconPosition : undefined,
-    className: clsx(breadcrumbButtonClassNames.root, styles.root, buttonRoot.className),
-  };
-
-  return {
-    ...state,
-    root,
-    icon: buttonIcon && { ...buttonIcon, className: clsx(styles.icon, buttonIcon.className) },
-  };
-};
+export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): BreadcrumbButtonState =>
+  restackOver(state, useButtonStyles(state), {
+    marker: breadcrumbButtonClassNames.root,
+    root: styles.root,
+    icon: styles.icon,
+    rootAttributes: {
+      'data-disabled': state.disabled || undefined,
+      'data-disabled-focusable': state.disabledFocusable || undefined,
+      'data-icon-only': state.iconOnly || undefined,
+      'data-icon-position': state.icon ? state.iconPosition : undefined,
+    } satisfies BreadcrumbButtonRootDataAttributes,
+  });

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { AvatarSize } from '../Avatar';
 import { groupChildClasses } from '../AvatarGroupItem/groupChildClasses';
 import type { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
@@ -102,10 +103,7 @@ export const useAvatarGroupPopoverStyles = (state: AvatarGroupPopoverState): Ava
   return {
     ...state,
     triggerButton,
-    content: { ...state.content, className: clsx(styles.content, state.content.className) },
-    popoverSurface: {
-      ...state.popoverSurface,
-      className: clsx(styles.popoverSurface, state.popoverSurface.className),
-    },
+    content: slotClasses(state.content, styles.content),
+    popoverSurface: slotClasses(state.popoverSurface, styles.popoverSurface),
   };
 };

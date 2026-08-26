@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { PersonaState } from './Persona.types';
 
 import styles from './Persona.module.css';
@@ -36,22 +37,10 @@ export const usePersonaStyles = (state: PersonaState): PersonaState => {
   return {
     ...state,
     root,
-    avatar: state.avatar && { ...state.avatar, className: clsx(styles.avatar, state.avatar.className) },
-    primaryText: state.primaryText && {
-      ...state.primaryText,
-      className: clsx(styles.primaryText, state.primaryText.className),
-    },
-    secondaryText: state.secondaryText && {
-      ...state.secondaryText,
-      className: clsx(styles.optionalText, styles.secondaryText, state.secondaryText.className),
-    },
-    tertiaryText: state.tertiaryText && {
-      ...state.tertiaryText,
-      className: clsx(styles.optionalText, styles.tertiaryText, state.tertiaryText.className),
-    },
-    quaternaryText: state.quaternaryText && {
-      ...state.quaternaryText,
-      className: clsx(styles.optionalText, styles.quaternaryText, state.quaternaryText.className),
-    },
+    avatar: slotClasses(state.avatar, styles.avatar),
+    primaryText: slotClasses(state.primaryText, styles.primaryText),
+    secondaryText: slotClasses(state.secondaryText, styles.optionalText, styles.secondaryText),
+    tertiaryText: slotClasses(state.tertiaryText, styles.optionalText, styles.tertiaryText),
+    quaternaryText: slotClasses(state.quaternaryText, styles.optionalText, styles.quaternaryText),
   };
 };

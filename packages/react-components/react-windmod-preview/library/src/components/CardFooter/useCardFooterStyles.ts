@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { CardFooterState } from './CardFooter.types';
 
 import styles from './CardFooter.module.css';
@@ -14,5 +15,5 @@ export const cardFooterClassNames: { root: string } = {
 export const useCardFooterStyles = (state: CardFooterState): CardFooterState => ({
   ...state,
   root: { ...state.root, className: clsx(cardFooterClassNames.root, styles.root, state.root.className) },
-  action: state.action && { ...state.action, className: clsx(styles.action, state.action.className) },
+  action: slotClasses(state.action, styles.action),
 });

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { MessageBarState } from './MessageBar.types';
 
 import styles from './MessageBar.module.css';
@@ -30,10 +31,7 @@ export const useMessageBarStyles = (state: MessageBarState): MessageBarState => 
   return {
     ...state,
     root,
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
-    bottomReflowSpacer: state.bottomReflowSpacer && {
-      ...state.bottomReflowSpacer,
-      className: clsx(styles.bottomReflowSpacer, state.bottomReflowSpacer.className),
-    },
+    icon: slotClasses(state.icon, styles.icon),
+    bottomReflowSpacer: slotClasses(state.bottomReflowSpacer, styles.bottomReflowSpacer),
   };
 };

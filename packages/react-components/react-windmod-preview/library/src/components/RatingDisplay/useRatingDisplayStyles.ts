@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { RatingDisplayState } from './RatingDisplay.types';
 
 import styles from './RatingDisplay.module.css';
@@ -24,13 +25,7 @@ export const useRatingDisplayStyles = (state: RatingDisplayState): RatingDisplay
       ...state.root,
       className: clsx(ratingDisplayClassNames.root, styles.root, state.root.className),
     },
-    valueText: state.valueText && {
-      ...state.valueText,
-      className: clsx(styles.label, styles.strong, sizeClass, state.valueText.className),
-    },
-    countText: state.countText && {
-      ...state.countText,
-      className: clsx(styles.label, sizeClass, state.valueText && styles.divider, state.countText.className),
-    },
+    valueText: slotClasses(state.valueText, styles.label, styles.strong, sizeClass),
+    countText: slotClasses(state.countText, styles.label, sizeClass, state.valueText && styles.divider),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { InputState } from './Input.types';
 
 import styles from './Input.module.css';
@@ -51,14 +52,8 @@ export const useInputStyles = (state: InputState): InputState => {
   return {
     ...state,
     root,
-    input: { ...state.input, className: clsx(styles.input, state.input.className) },
-    contentBefore: state.contentBefore && {
-      ...state.contentBefore,
-      className: clsx(styles.content, state.contentBefore.className),
-    },
-    contentAfter: state.contentAfter && {
-      ...state.contentAfter,
-      className: clsx(styles.content, state.contentAfter.className),
-    },
+    input: slotClasses(state.input, styles.input),
+    contentBefore: slotClasses(state.contentBefore, styles.content),
+    contentAfter: slotClasses(state.contentAfter, styles.content),
   };
 };

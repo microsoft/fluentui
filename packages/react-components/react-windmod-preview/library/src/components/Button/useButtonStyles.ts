@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ButtonState } from './Button.types';
 
 import styles from './Button.module.css';
@@ -34,6 +35,6 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
   return {
     ...state,
     root,
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+    icon: slotClasses(state.icon, styles.icon),
   };
 };

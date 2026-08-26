@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ColorAreaState } from './ColorArea.types';
 
 import styles from './ColorArea.module.css';
@@ -31,8 +32,8 @@ export const useColorAreaStyles = (state: ColorAreaState): ColorAreaState => {
   return {
     ...state,
     root,
-    thumb: { ...state.thumb, className: clsx(styles.thumb, state.thumb.className) },
-    inputX: { ...state.inputX, className: clsx(styles.input, state.inputX.className) },
-    inputY: { ...state.inputY, className: clsx(styles.input, state.inputY.className) },
+    thumb: slotClasses(state.thumb, styles.thumb),
+    inputX: slotClasses(state.inputX, styles.input),
+    inputY: slotClasses(state.inputY, styles.input),
   };
 };

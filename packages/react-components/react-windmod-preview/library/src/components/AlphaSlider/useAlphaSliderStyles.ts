@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import { useColorSliderStyles } from '../ColorSlider/useColorSliderStyles';
 import type { AlphaSliderState } from './AlphaSlider.types';
 
@@ -25,8 +26,8 @@ export const useAlphaSliderStyles = (state: AlphaSliderState): AlphaSliderState 
   return {
     ...state,
     root: { ...root, className: clsx(alphaSliderClassNames.root, root.className) },
-    rail: { ...rail, className: clsx(styles.rail, rail.className) },
-    thumb: { ...thumb, className: clsx(styles.thumb, thumb.className) },
+    rail: slotClasses(rail, styles.rail),
+    thumb: slotClasses(thumb, styles.thumb),
     input,
   };
 };

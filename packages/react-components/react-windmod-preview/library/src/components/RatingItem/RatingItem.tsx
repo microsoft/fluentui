@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderRatingItem, useRatingItem } from '@fluentui/react-headless-components-preview/rating';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import { useRatingItemContext } from './RatingItemContext';
 import type { RatingItemProps } from './RatingItem.types';
 import { useRatingItemStyles } from './useRatingItemStyles';
@@ -13,11 +14,9 @@ import { useRatingItemStyles } from './useRatingItemStyles';
  * with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef(
-  // The context fallbacks are read in the body, so the look props cannot default in the
-  // parameter list.
+  // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
-    const { color: contextColor, size: contextSize } = useRatingItemContext();
-    const { color = contextColor ?? 'neutral', size = contextSize ?? 'medium', ...rest } = props;
+    const { color = 'neutral', size = 'medium', ...rest } = mergeContextProps(useRatingItemContext(), props);
 
     return renderRatingItem(
       useRatingItemStyles({

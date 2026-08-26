@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { AvatarSize, AvatarState } from './Avatar.types';
 
 import styles from './Avatar.module.css';
@@ -129,14 +130,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   return {
     ...state,
     root,
-    image: state.image && { ...state.image, className: clsx(styles.image, state.image.className) },
-    initials: state.initials && {
-      ...state.initials,
-      className: clsx(styles.iconInitials, state.initials.className),
-    },
-    icon: state.icon && {
-      ...state.icon,
-      className: clsx(styles.iconInitials, iconClass(size), state.icon.className),
-    },
+    image: slotClasses(state.image, styles.image),
+    initials: slotClasses(state.initials, styles.iconInitials),
+    icon: slotClasses(state.icon, styles.iconInitials, iconClass(size)),
   };
 };

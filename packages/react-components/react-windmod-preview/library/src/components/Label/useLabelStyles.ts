@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { LabelState } from './Label.types';
 
 import styles from './Label.module.css';
@@ -28,6 +29,6 @@ export const useLabelStyles = (state: LabelState): LabelState => {
   return {
     ...state,
     root,
-    required: state.required && { ...state.required, className: clsx(styles.required, state.required.className) },
+    required: slotClasses(state.required, styles.required),
   };
 };

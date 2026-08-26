@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import { navRowClasses } from '../NavItem/useNavItemStyles';
 import type { NavCategoryItemState } from './NavCategoryItem.types';
 
@@ -23,9 +24,6 @@ export const useNavCategoryItemStyles = (state: NavCategoryItemState): NavCatego
     ...state,
     icon,
     root: { ...root, className: clsx(navCategoryItemClassNames.root, root.className) },
-    expandIcon: state.expandIcon && {
-      ...state.expandIcon,
-      className: clsx(styles.expandIcon, state.expandIcon.className),
-    },
+    expandIcon: slotClasses(state.expandIcon, styles.expandIcon),
   };
 };

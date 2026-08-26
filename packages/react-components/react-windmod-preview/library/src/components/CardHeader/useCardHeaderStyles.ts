@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { CardHeaderState } from './CardHeader.types';
 
 import styles from './CardHeader.module.css';
@@ -27,12 +28,9 @@ export const useCardHeaderStyles = (state: CardHeaderState): CardHeaderState => 
   return {
     ...state,
     root,
-    image: state.image && { ...state.image, className: clsx(styles.image, state.image.className) },
-    header: state.header && { ...state.header, className: clsx(styles.header, state.header.className) },
-    description: state.description && {
-      ...state.description,
-      className: clsx(styles.description, state.description.className),
-    },
-    action: state.action && { ...state.action, className: clsx(styles.action, state.action.className) },
+    image: slotClasses(state.image, styles.image),
+    header: slotClasses(state.header, styles.header),
+    description: slotClasses(state.description, styles.description),
+    action: slotClasses(state.action, styles.action),
   };
 };

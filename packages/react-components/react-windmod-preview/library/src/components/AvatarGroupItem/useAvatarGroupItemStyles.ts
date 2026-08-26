@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { AvatarSize } from '../Avatar';
 import type { AvatarGroupItemState } from './AvatarGroupItem.types';
 import { groupChildClasses } from './groupChildClasses';
@@ -56,17 +57,11 @@ export const useAvatarGroupItemStyles = (state: AvatarGroupItemState): AvatarGro
   return {
     ...state,
     root,
-    avatar: {
-      ...state.avatar,
-      className: clsx(
-        !isOverflowItem && styles.avatarNonOverflow,
-        layout === 'pie' && styles.avatarPie,
-        state.avatar.className,
-      ),
-    },
-    overflowLabel: state.overflowLabel && {
-      ...state.overflowLabel,
-      className: clsx(styles.overflowLabel, state.overflowLabel.className),
-    },
+    avatar: slotClasses(
+      state.avatar,
+      !isOverflowItem && styles.avatarNonOverflow,
+      layout === 'pie' && styles.avatarPie,
+    ),
+    overflowLabel: slotClasses(state.overflowLabel, styles.overflowLabel),
   };
 };

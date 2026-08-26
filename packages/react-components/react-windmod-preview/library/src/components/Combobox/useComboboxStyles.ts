@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ComboboxState } from './Combobox.types';
 
 import styles from './Combobox.module.css';
@@ -52,15 +53,9 @@ export const useComboboxStyles = (state: ComboboxState): ComboboxState => {
   return {
     ...state,
     root,
-    input: { ...state.input, className: clsx(styles.input, state.input.className) },
-    listbox: state.listbox && { ...state.listbox, className: clsx(styles.listbox, state.listbox.className) },
-    expandIcon: state.expandIcon && {
-      ...state.expandIcon,
-      className: clsx(iconClasses(false, !!showClearIcon), state.expandIcon.className),
-    },
-    clearIcon: state.clearIcon && {
-      ...state.clearIcon,
-      className: clsx(iconClasses(!showClearIcon, false), state.clearIcon.className),
-    },
+    input: slotClasses(state.input, styles.input),
+    listbox: slotClasses(state.listbox, styles.listbox),
+    expandIcon: slotClasses(state.expandIcon, iconClasses(false, !!showClearIcon)),
+    clearIcon: slotClasses(state.clearIcon, iconClasses(!showClearIcon, false)),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ColorSwatchState } from './ColorSwatch.types';
 
 import styles from './ColorSwatch.module.css';
@@ -31,10 +32,7 @@ export const useColorSwatchStyles = (state: ColorSwatchState): ColorSwatchState 
   return {
     ...state,
     root,
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
-    disabledIcon: state.disabledIcon && {
-      ...state.disabledIcon,
-      className: clsx(styles.icon, styles.disabledIcon, state.disabledIcon.className),
-    },
+    icon: slotClasses(state.icon, styles.icon),
+    disabledIcon: slotClasses(state.disabledIcon, styles.icon, styles.disabledIcon),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { DropdownState } from './Dropdown.types';
 
 import styles from './Dropdown.module.css';
@@ -51,15 +52,9 @@ export const useDropdownStyles = (state: DropdownState): DropdownState => {
   return {
     ...state,
     root,
-    button: { ...state.button, className: clsx(styles.button, state.button.className) },
-    listbox: state.listbox && { ...state.listbox, className: clsx(styles.listbox, state.listbox.className) },
-    expandIcon: state.expandIcon && {
-      ...state.expandIcon,
-      className: clsx(iconClasses(!!showClearButton), state.expandIcon.className),
-    },
-    clearButton: state.clearButton && {
-      ...state.clearButton,
-      className: clsx(styles.clearButton, iconClasses(!showClearButton), state.clearButton.className),
-    },
+    button: slotClasses(state.button, styles.button),
+    listbox: slotClasses(state.listbox, styles.listbox),
+    expandIcon: slotClasses(state.expandIcon, iconClasses(!!showClearButton)),
+    clearButton: slotClasses(state.clearButton, styles.clearButton, iconClasses(!showClearButton)),
   };
 };

@@ -1,8 +1,8 @@
 'use client';
 
-import { clsx } from 'clsx';
-
 import { componentMarkers } from '../../utils/groupMarker';
+import { restackOver } from '../../utils/restackOver';
+import { slotClasses } from '../../utils/slotClasses';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
@@ -30,29 +30,18 @@ type CompoundButtonRootDataAttributes = {
  * CompoundButton renders inside the content container, so the gap has to stay. Button's answer
  * is already on this root as `data-empty`; reusing it here would drop the gap beside visible text.
  *
- * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
+ * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
-  const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);
-
-  const root: CompoundButtonState['root'] & CompoundButtonRootDataAttributes = {
-    ...buttonRoot,
-    'data-icon-position': state.icon ? state.iconPosition : undefined,
-    'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
-    className: clsx(compoundButtonClassNames.root, styles.root, buttonRoot.className),
-  };
-
-  return {
-    ...state,
-    root,
-    icon: buttonIcon && { ...buttonIcon, className: clsx(styles.icon, buttonIcon.className) },
-    contentContainer: {
-      ...state.contentContainer,
-      className: clsx(styles.contentContainer, state.contentContainer.className),
-    },
-    secondaryContent: state.secondaryContent && {
-      ...state.secondaryContent,
-      className: clsx(styles.secondaryContent, state.secondaryContent.className),
-    },
-  };
-};
+export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => ({
+  ...restackOver(state, useButtonStyles(state), {
+    marker: compoundButtonClassNames.root,
+    root: styles.root,
+    icon: styles.icon,
+    rootAttributes: {
+      'data-icon-position': state.icon ? state.iconPosition : undefined,
+      'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
+    } satisfies CompoundButtonRootDataAttributes,
+  }),
+  contentContainer: slotClasses(state.contentContainer, styles.contentContainer),
+  secondaryContent: slotClasses(state.secondaryContent, styles.secondaryContent),
+});
