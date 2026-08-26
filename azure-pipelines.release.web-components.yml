@@ -65,6 +65,14 @@ extends:
                   githubPAT: $(githubPAT)
 
               - script: |
+                  node -r ./scripts/ts-node/src/register ./scripts/beachball/src/validateReleaseCredentials.ts
+                env:
+                  GITHUB_PAT: $(githubPAT)
+                  NPM_TOKEN: $(npmToken)
+                displayName: Validate release credentials
+                condition: not(${{ parameters.dryRun }})
+
+              - script: |
                   yarn nx run-many -t format:check lint test build -p tag:web-components --exclude vr-tests-web-components --nxBail
                 displayName: Build, Test, Lint
 
