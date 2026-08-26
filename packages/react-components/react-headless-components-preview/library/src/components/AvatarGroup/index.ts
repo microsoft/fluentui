@@ -2,6 +2,7 @@ export { AvatarGroup } from './AvatarGroup';
 export { renderAvatarGroup } from './renderAvatarGroup';
 export { useAvatarGroup } from './useAvatarGroup';
 export { useAvatarGroupContextValues } from './useAvatarGroupContextValues';
+export { useAvatarGroupContext, AvatarGroupProvider } from './avatarGroupContext';
 export type {
   AvatarGroupSlots,
   AvatarGroupProps,

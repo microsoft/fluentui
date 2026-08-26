@@ -5,6 +5,9 @@ import { ButtonContextProvider } from '@fluentui/react-headless-components-previ
 import { LinkContextProvider } from '@fluentui/react-headless-components-preview/link';
 
 import { Avatar } from './Avatar';
+import { AvatarGroup } from './AvatarGroup';
+import { AvatarGroupItem } from './AvatarGroupItem';
+import { AvatarGroupPopover } from './AvatarGroupPopover';
 import { Button } from './Button';
 import { CompoundButton } from './CompoundButton';
 import { Field } from './Field';
@@ -484,6 +487,57 @@ describe('component contexts', () => {
 
         expect(avatarIn(container).getAttribute('data-size')).toBe(avatarSizes[size]);
       });
+    });
+  });
+
+  describe('AvatarGroup — container-owned size, read by the item and the overflow trigger', () => {
+    // Two hops, and they answer differently: the group publishes `size` on the context the
+    // headless value drops, and the item forwards it to its Avatar as a slot prop.
+    it('carries size from the group to the item root and on to its Avatar', () => {
+      const { container } = render(
+        <AvatarGroup size={56} layout="stack">
+          <AvatarGroupItem name="Ada Lovelace" />
+        </AvatarGroup>,
+      );
+      const item = container.querySelector<HTMLElement>('.fui-avatar-group-item')!;
+
+      expect(item.getAttribute('data-size')).toBe('56');
+      expect(item.querySelector('.fui-avatar')?.getAttribute('data-size')).toBe('56');
+    });
+
+    it('carries the group size to the overflow trigger button', () => {
+      const { container } = render(
+        <AvatarGroup size={56} layout="stack">
+          <AvatarGroupPopover>
+            <AvatarGroupItem name="Grace Hopper" />
+          </AvatarGroupPopover>
+        </AvatarGroup>,
+      );
+
+      expect(container.querySelector('.fui-avatar-group-popover')?.getAttribute('data-size')).toBe('56');
+    });
+
+    it('re-publishes the overflow size inside the surface, where isOverflow is true', () => {
+      const { container } = render(
+        <AvatarGroup size={96}>
+          <AvatarGroupPopover open>
+            <AvatarGroupItem name="Grace Hopper" />
+          </AvatarGroupPopover>
+        </AvatarGroup>,
+      );
+      const overflowItem = container.querySelector<HTMLElement>('[data-popover-surface] .fui-avatar-group-item')!;
+
+      expect(overflowItem.tagName).toBe('LI');
+      expect(overflowItem.getAttribute('data-size')).toBe('24');
+      expect(overflowItem.querySelector('.fui-avatar')?.getAttribute('data-size')).toBe('24');
+    });
+
+    it('leaves an item outside any group on the base size', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const { container } = render(<AvatarGroupItem name="Ada Lovelace" />);
+
+      expect(container.querySelector('.fui-avatar-group-item')?.getAttribute('data-size')).toBe('32');
+      warn.mockRestore();
     });
   });
 

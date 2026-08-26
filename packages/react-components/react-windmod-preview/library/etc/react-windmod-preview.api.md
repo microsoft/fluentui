@@ -20,6 +20,19 @@ import type { AccordionState as AccordionState_2 } from '@fluentui/react-headles
 import type { AlphaSliderProps as AlphaSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { AlphaSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { AlphaSliderState as AlphaSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { AvatarGroupContextValue } from '@fluentui/react-headless-components-preview/avatar-group';
+import { AvatarGroupContextValues } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemProps as AvatarGroupItemProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemSlots as AvatarGroupItemSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemState as AvatarGroupItemState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverPopoverProps } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverProps as AvatarGroupPopoverProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverSlots as AvatarGroupPopoverSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverState as AvatarGroupPopoverState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import { AvatarGroupProvider } from '@fluentui/react-headless-components-preview/avatar-group';
+import { AvatarGroupSlots } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupState as AvatarGroupState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
 import { AvatarSlots } from '@fluentui/react-headless-components-preview/avatar';
 import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-components-preview/avatar';
@@ -266,6 +279,9 @@ import { OptionState } from '@fluentui/react-headless-components-preview/combobo
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
 import { OverlayDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { OverlayDrawerState as OverlayDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { PartitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
+import { partitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
@@ -303,6 +319,9 @@ import { renderAccordionItem } from '@fluentui/react-headless-components-preview
 import { renderAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
+import { renderAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
+import { renderAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
+import { renderAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { renderBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -534,6 +553,10 @@ import { useAccordionItemContextValues } from '@fluentui/react-headless-componen
 import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { useAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
+import { useAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
+import { useAvatarGroupContext } from '@fluentui/react-headless-components-preview/avatar-group';
+import { useAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
+import { useAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { useBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -805,6 +828,81 @@ export const avatarClassNames: {
 
 // @public
 export type AvatarColor = 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+
+// @public
+export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
+
+// @public
+export const avatarGroupClassNames: {
+    root: string;
+};
+
+export { AvatarGroupContextValue }
+
+export { AvatarGroupContextValues }
+
+// @public
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+
+// @public
+export const avatarGroupItemClassNames: {
+    root: string;
+};
+
+// @public
+export type AvatarGroupItemProps = AvatarGroupItemProps_2 & {
+    color?: AvatarColor;
+    idForColor?: string | undefined;
+};
+
+// @public
+export type AvatarGroupItemSlots = Omit<AvatarGroupItemSlots_2, 'avatar'> & {
+    avatar: NonNullable<Slot<typeof Avatar>>;
+};
+
+// @public
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & Pick<AvatarGroupItemState_2, 'isOverflowItem' | 'layout'> & {
+    size: AvatarSize;
+};
+
+// @public
+export const AvatarGroupPopover: {
+    (props: AvatarGroupPopoverProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export const avatarGroupPopoverClassNames: {
+    triggerButton: string;
+};
+
+export { AvatarGroupPopoverPopoverProps }
+
+// @public
+export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & Pick<AvatarGroupPopoverProps_2, 'children' | 'count' | 'indicator'>;
+
+// @public
+export type AvatarGroupPopoverSlots = Omit<AvatarGroupPopoverSlots_2, 'popoverSurface' | 'tooltip'> & {
+    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    tooltip: NonNullable<Slot<typeof Tooltip>>;
+};
+
+// @public
+export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Pick<AvatarGroupPopoverState_2, 'count' | 'indicator' | 'layout' | 'popover' | 'popoverOpen'> & {
+    size: AvatarSize;
+};
+
+// @public
+export type AvatarGroupProps = AvatarGroupProps_2 & {
+    size?: AvatarSize;
+};
+
+export { AvatarGroupProvider }
+
+export { AvatarGroupSlots }
+
+// @public
+export type AvatarGroupState = AvatarGroupState_2 & Required<Pick<AvatarGroupProps, 'size'>>;
 
 // @public
 export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
@@ -2198,6 +2296,12 @@ export type OverlayDrawerState = OverlayDrawerState_2 & {
     size: DrawerSize;
 };
 
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
+
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
 
@@ -2426,6 +2530,12 @@ export { renderAccordionPanel }
 export { renderAlphaSlider }
 
 export { renderAvatar }
+
+export { renderAvatarGroup }
+
+export { renderAvatarGroupItem }
+
+export { renderAvatarGroupPopover }
 
 export { renderBadge }
 
@@ -3353,6 +3463,23 @@ export { useAlphaSlider }
 export const useAlphaSliderStyles: (state: AlphaSliderState) => AlphaSliderState;
 
 export { useAvatar }
+
+export { useAvatarGroup }
+
+export { useAvatarGroupContext }
+
+export { useAvatarGroupItem }
+
+// @public
+export const useAvatarGroupItemStyles: (state: AvatarGroupItemState) => AvatarGroupItemState;
+
+export { useAvatarGroupPopover }
+
+// @public
+export const useAvatarGroupPopoverStyles: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
+
+// @public
+export const useAvatarGroupStyles: (state: AvatarGroupState) => AvatarGroupState;
 
 // @public
 export const useAvatarStyles: (state: AvatarState) => AvatarState;

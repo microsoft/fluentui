@@ -65,6 +65,49 @@ export type {
   AvatarState,
 } from './avatar';
 
+export {
+  AvatarGroup,
+  AvatarGroupProvider,
+  avatarGroupClassNames,
+  partitionAvatarGroupItems,
+  renderAvatarGroup,
+  useAvatarGroup,
+  useAvatarGroupContext,
+  useAvatarGroupStyles,
+} from './avatar-group';
+export type {
+  AvatarGroupContextValue,
+  AvatarGroupContextValues,
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+  PartitionAvatarGroupItems,
+  PartitionAvatarGroupItemsOptions,
+} from './avatar-group';
+
+export {
+  AvatarGroupItem,
+  avatarGroupItemClassNames,
+  renderAvatarGroupItem,
+  useAvatarGroupItem,
+  useAvatarGroupItemStyles,
+} from './avatar-group-item';
+export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './avatar-group-item';
+
+export {
+  AvatarGroupPopover,
+  avatarGroupPopoverClassNames,
+  renderAvatarGroupPopover,
+  useAvatarGroupPopover,
+  useAvatarGroupPopoverStyles,
+} from './avatar-group-popover';
+export type {
+  AvatarGroupPopoverPopoverProps,
+  AvatarGroupPopoverProps,
+  AvatarGroupPopoverSlots,
+  AvatarGroupPopoverState,
+} from './avatar-group-popover';
+
 export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './badge';
 export type { BadgeAppearance, BadgeColor, BadgeProps, BadgeShape, BadgeSize, BadgeSlots, BadgeState } from './badge';
 

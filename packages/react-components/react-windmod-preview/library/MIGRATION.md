@@ -69,7 +69,7 @@ import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
 import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 ```
 
-82 component subpaths ship, all kebab-case:
+85 component subpaths ship, all kebab-case:
 
 | Family        | Subpaths                                                                                                                                        |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -83,7 +83,7 @@ import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 | Field & label | `./field` `./label`                                                                                                                             |
 | Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                              |
 | Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`      |
-| People        | `./avatar` `./persona`                                                                                                                          |
+| People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                          |
 | Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                             |
 | Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                   |
 | Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                  |
@@ -126,7 +126,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Twenty-eight differences, each one a decision rather than a defect.
+Thirty-seven differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -445,6 +445,75 @@ Consequence: on an **offline, air-gapped or CSP-restricted origin the windmod `A
 checkerboard and the Griffel one does not**, and windmod issues no network request for it at all. A
 deliberate improvement; listed here because it is a behavioural difference you may be measuring.
 
+### AvatarGroup
+
+#### 29. The overflow button's ARIA is different
+
+It carries `aria-haspopup="true"`; Griffel's carries a `data-tabster` focus-restorer instead. The accessible
+name (`View more people.`) and `aria-expanded` are identical on both. A snapshot test pinning the button's
+attributes needs updating.
+
+#### 30. A consumer's own trigger-button children are honoured
+
+Griffel overwrites `triggerButton.children` with its glyph whenever `indicator="icon"`, discarding whatever
+the consumer passed. windmod follows the library-wide default-glyph rule: the glyph is a fallback, and
+consumer children always win. `triggerButton={{ children: null }}` falls back to the glyph on both
+libraries, so only a non-nullish value diverges.
+
+#### 31. The overflow popover no longer traps focus by default
+
+Griffel's `AvatarGroupPopover` set `trapFocus: true`. The headless surface forwards `trapFocus` but leaves
+it unset, and windmod does not add a default, because turning it on switches the native `<dialog>` from
+`popover="auto"` to `showModal()` and makes the rest of the page inert. Pass `trapFocus` explicitly to
+restore the old behaviour.
+
+#### 32. `AvatarGroupItem` no longer reads the provider direction
+
+Griffel's item calls `useFluent()` and merges a second class set under RTL; windmod's pie geometry is
+direction-aware in CSS. Behaviour is identical inside a provider; outside one, windmod follows the
+document's actual `dir` while Griffel falls back to `ltr`.
+
+#### 33. The overflow popover's arrow is off-centre on aligned placements
+
+`withArrow` is forwarded and not defaulted on either library, so no arrow renders out of the box. If you
+opt in on an aligned placement (`above-start`, `below-end`, `before-top`, `after-bottom`), the arrow's
+cross-axis position sits a fixed 8px from the aligned edge rather than centred on the trigger, because CSS
+anchor positioning has no equivalent of floating-ui's arrow middleware — the same mechanism as
+[delta 27](#27-tooltips-arrow-sits-differently-on-corner-placements). Centred placements are pixel-exact.
+
+### Popover surfaces
+
+These four apply to every component built on `PopoverSurface` — `Popover`, `Tooltip` and the
+`AvatarGroup` overflow popover.
+
+#### 34. A focus-trapping surface carries no `aria-modal`
+
+Griffel sets `aria-modal` when `trapFocus` is on. The headless surface is a native `<dialog>` opened with
+`showModal()`, and `dialog:modal` already conveys modality to assistive technology, so no attribute is
+written. An assertion pinning `aria-modal` needs updating; the announced modality is unchanged.
+
+#### 35. There is no enter motion
+
+Griffel fades and slides its surface in (`appear: true`). The headless surface ships no motion slot and
+windmod adds none, so the surface appears at its final position immediately. Nothing about the resting
+render differs.
+
+#### 36. A surface outside every provider reads the document root's theme
+
+The surface is rendered inline and promoted to the top layer, so it inherits theme variables from its
+position in the DOM. A trigger that sits outside every `FluentProvider` therefore renders its surface with
+the document root's theme. Griffel's portalled surface has the same fallback for a different reason — it
+derives its theme from React context. Wrap the trigger in a `FluentProvider` to control the surface's
+theme.
+
+#### 37. The surface inherits arbitrary CSS from its DOM ancestors
+
+Because the surface stays where it is written, any inherited property set on an element between the
+provider and the trigger — `letter-spacing`, `text-transform`, `font-variant`, a `color` on a wrapper —
+reaches it. Griffel's portalled surface sees none of it; only the theme class travels with the portal. If
+you relied on a portal isolating the surface from an ancestor's inherited styles, set those properties
+explicitly on the surface.
+
 ## What is not shipped
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
@@ -456,7 +525,6 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
 | `TagPicker` and family                                                                              | as above                                                                                                                                |
 | `TeachingPopover`, `Toast`/`Toaster`, `InfoLabel`                                                   | as above                                                                                                                                |
-| `AvatarGroup` and family                                                                            | as above                                                                                                                                |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
 | `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |
