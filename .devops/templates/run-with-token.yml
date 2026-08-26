@@ -18,7 +18,7 @@ steps:
           --app-client-id Iv23ligBoU5jc9SIFnGR \
           --key-id https://fluentui-oss-release-kv.vault.azure.net/keys/office-ogx-auth-helper-key \
           --repository '$(Build.Repository.Name)' \
-          --permissions contents:write \
+          --permissions contents:write,pull_requests:read \
           --ci-output-name GITHUB_APP_TOKEN
 
   - ${{ each step in parameters.steps }}:
