@@ -28,7 +28,7 @@ export const DropdownAppearance = {
   filledLighter: 'filled-lighter',
   outline: 'outline',
   transparent: 'transparent',
-};
+} as const;
 
 /** @public */
 export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;

@@ -69,6 +69,7 @@ export const styles = css`
   }
 
   .control {
+    --control-border-color: ${colorNeutralStroke1};
     appearance: none;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
@@ -143,6 +144,7 @@ export const styles = css`
   }
 
   .control::before {
+    background-color: ${colorNeutralStrokeAccessible};
     height: ${strokeWidthThin};
   }
 
@@ -170,42 +172,42 @@ export const styles = css`
     transition-timing-function: ${curveAccelerateMid};
   }
 
-  :host(:where([appearance='outline'], [appearance='transparent'])) .control::before {
-    background-color: ${colorNeutralStrokeAccessible};
-  }
-
   :host([appearance='transparent']) .control {
     --control-border-color: ${colorTransparentStrokeInteractive};
     background-color: ${colorTransparentBackground};
     border-radius: ${borderRadiusNone};
   }
 
-  :host([appearance='outline']) .control {
-    --control-border-color: ${colorNeutralStroke1};
-  }
-
-  :host([appearance='outline']) .control:hover {
+  .control:hover {
     --control-border-color: ${colorNeutralStroke1Hover};
   }
 
-  :host(:where([appearance='outline'], [appearance='transparent'])) .control:hover::before {
+  .control:hover::before {
     background-color: ${colorNeutralStrokeAccessibleHover};
   }
 
-  :host([appearance='outline']) .control:hover::after {
+  .control:hover::after {
     background-color: ${colorCompoundBrandBackgroundHover};
   }
 
-  :host([appearance='outline']) .control:active {
+  .control:active {
     --control-border-color: ${colorNeutralStroke1Pressed};
   }
 
-  :host(:where([appearance='outline'], [appearance='transparent'])) .control:active::before {
+  .control:active::before {
     background-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
-  :host(:where([appearance='outline'], [appearance='transparent'])) .control:active::after {
+  .control:active::after {
     background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host([appearance='transparent']) .control:is(:hover, :active) {
+    --control-border-color: ${colorTransparentStrokeInteractive};
+  }
+
+  :host([appearance='transparent']) .control:hover::after {
+    background-color: ${colorCompoundBrandStroke};
   }
 
   :host([appearance='filled-darker']) .control {
@@ -214,6 +216,18 @@ export const styles = css`
 
   :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control {
     --control-border-color: ${colorTransparentStroke};
+  }
+
+  :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active) {
+    --control-border-color: ${colorTransparentStroke};
+  }
+
+  :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control::before {
+    background-color: initial;
+  }
+
+  :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active)::after {
+    background-color: ${colorCompoundBrandStroke};
   }
 
   :host(${nativeDisabledState}),
