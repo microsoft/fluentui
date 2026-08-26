@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
 
 import styles from './TeachingPopoverHeader.module.css';
@@ -23,13 +24,7 @@ export const useTeachingPopoverHeaderStyles = (state: TeachingPopoverHeaderState
       ...state.root,
       className: clsx(teachingPopoverHeaderClassNames.root, styles.root, isBrand && styles.brand, state.root.className),
     },
-    icon: state.icon && {
-      ...state.icon,
-      className: clsx(styles.icon, isBrand && styles.iconBrand, state.icon.className),
-    },
-    dismissButton: state.dismissButton && {
-      ...state.dismissButton,
-      className: clsx(styles.dismissButton, isBrand && styles.dismissBrand, state.dismissButton.className),
-    },
+    icon: slotClasses(state.icon, styles.icon, isBrand && styles.iconBrand),
+    dismissButton: slotClasses(state.dismissButton, styles.dismissButton, isBrand && styles.dismissBrand),
   };
 };

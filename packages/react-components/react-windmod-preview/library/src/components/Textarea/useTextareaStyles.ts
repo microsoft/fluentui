@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TextareaState } from './Textarea.types';
 
 import styles from './Textarea.module.css';
@@ -45,16 +46,13 @@ export const useTextareaStyles = (state: TextareaState): TextareaState => {
   return {
     ...state,
     root,
-    textarea: {
-      ...state.textarea,
-      className: clsx(
-        styles.textarea,
-        resize === 'none' && styles.resizeNone,
-        resize === 'horizontal' && styles.resizeHorizontal,
-        resize === 'vertical' && styles.resizeVertical,
-        resize === 'both' && styles.resizeBoth,
-        state.textarea.className,
-      ),
-    },
+    textarea: slotClasses(
+      state.textarea,
+      styles.textarea,
+      resize === 'none' && styles.resizeNone,
+      resize === 'horizontal' && styles.resizeHorizontal,
+      resize === 'vertical' && styles.resizeVertical,
+      resize === 'both' && styles.resizeBoth,
+    ),
   };
 };

@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderSkeletonItem, useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import { useSkeletonContext } from '../Skeleton/SkeletonContext';
 import type { SkeletonItemProps } from './SkeletonItem.types';
 import { useSkeletonItemStyles } from './useSkeletonItemStyles';
@@ -13,22 +14,15 @@ import { useSkeletonItemStyles } from './useSkeletonItemStyles';
  * item decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps> = React.forwardRef(
-  // The context fallbacks are read in the body, so the look props cannot default in the
-  // parameter list.
+  // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
     const {
-      animation: contextAnimation,
-      appearance: contextAppearance,
-      size: contextSize,
-      shape: contextShape,
-    } = useSkeletonContext();
-    const {
-      animation = contextAnimation ?? 'wave',
-      appearance = contextAppearance ?? 'opaque',
-      size = contextSize ?? 16,
-      shape = contextShape ?? 'rectangle',
+      animation = 'wave',
+      appearance = 'opaque',
+      size = 16,
+      shape = 'rectangle',
       ...rest
-    } = props;
+    } = mergeContextProps(useSkeletonContext(), props);
 
     return renderSkeletonItem(
       useSkeletonItemStyles({

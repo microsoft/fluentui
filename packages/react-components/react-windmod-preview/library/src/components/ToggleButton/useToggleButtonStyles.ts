@@ -1,8 +1,7 @@
 'use client';
 
-import { clsx } from 'clsx';
-
 import { componentMarkers } from '../../utils/groupMarker';
+import { restackOver } from '../../utils/restackOver';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
@@ -22,20 +21,12 @@ type ToggleButtonRootDataAttributes = {
  * already stamps data-checked/-disabled/-disabled-focusable/-icon-only/-icon-position and
  * useButtonStyles stamps data-appearance/-size/-empty; data-accessible is style-only.
  *
- * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
+ * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
-  const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);
-
-  const root: ToggleButtonState['root'] & ToggleButtonRootDataAttributes = {
-    ...buttonRoot,
-    'data-accessible': state.isAccessible || undefined,
-    className: clsx(toggleButtonClassNames.root, styles.root, buttonRoot.className),
-  };
-
-  return {
-    ...state,
-    root,
-    icon: buttonIcon && { ...buttonIcon, className: clsx(styles.icon, buttonIcon.className) },
-  };
-};
+export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState =>
+  restackOver(state, useButtonStyles(state), {
+    marker: toggleButtonClassNames.root,
+    root: styles.root,
+    icon: styles.icon,
+    rootAttributes: { 'data-accessible': state.isAccessible || undefined } satisfies ToggleButtonRootDataAttributes,
+  });

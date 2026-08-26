@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TagState } from './Tag.types';
 
 import styles from './Tag.module.css';
@@ -36,20 +37,14 @@ export type TagSlotState = {
  */
 export const tagSlotClasses = <S extends TagSlotState>(state: S): S => ({
   ...state,
-  media: state.media && { ...state.media, className: clsx(styles.media, state.media.className) },
-  icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
-  primaryText: state.primaryText && {
-    ...state.primaryText,
-    className: clsx(
-      styles.primaryText,
-      state.secondaryText ? styles.withSecondaryText : styles.withoutSecondaryText,
-      state.primaryText.className,
-    ),
-  },
-  secondaryText: state.secondaryText && {
-    ...state.secondaryText,
-    className: clsx(styles.secondaryText, state.secondaryText.className),
-  },
+  media: slotClasses(state.media, styles.media),
+  icon: slotClasses(state.icon, styles.icon),
+  primaryText: slotClasses(
+    state.primaryText,
+    styles.primaryText,
+    state.secondaryText ? styles.withSecondaryText : styles.withoutSecondaryText,
+  ),
+  secondaryText: slotClasses(state.secondaryText, styles.secondaryText),
 });
 
 /**
@@ -82,9 +77,6 @@ export const useTagStyles = (state: TagState): TagState => {
   return {
     ...tagSlotClasses(state),
     root,
-    dismissIcon: state.dismissIcon && {
-      ...state.dismissIcon,
-      className: clsx(styles.dismissIcon, state.dismissIcon.className),
-    },
+    dismissIcon: slotClasses(state.dismissIcon, styles.dismissIcon),
   };
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TeachingPopoverBodyState } from './TeachingPopoverBody.types';
 
 import styles from './TeachingPopoverBody.module.css';
@@ -31,9 +32,6 @@ export const useTeachingPopoverBodyStyles = (state: TeachingPopoverBodyState): T
       ...state.root,
       className: clsx(teachingPopoverBodyClassNames.root, styles.root, state.root.className),
     },
-    media: state.media && {
-      ...state.media,
-      className: clsx(styles.media, mediaLengthClass(state.mediaLength), state.media.className),
-    },
+    media: slotClasses(state.media, styles.media, mediaLengthClass(state.mediaLength)),
   };
 };

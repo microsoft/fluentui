@@ -8,6 +8,7 @@ import {
   useSkeletonContextValues,
 } from '@fluentui/react-headless-components-preview/skeleton';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { SkeletonProps } from './Skeleton.types';
 import { SkeletonContextProvider, useSkeletonContext } from './SkeletonContext';
 import { useSkeletonStyles } from './useSkeletonStyles';
@@ -17,19 +18,19 @@ import { useSkeletonStyles } from './useSkeletonStyles';
  * skeleton decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef(
-  // The context fallbacks are read in the body, so the look props cannot default in the
-  // parameter list.
+  // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
-    const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
-    // `size` and `shape` carry no context fallback: a nested Skeleton without them resets them
-    // for its subtree, while `animation` and `appearance` pass through.
+    // Only two keys are folded in: `size` and `shape` carry no context fallback, because a nested
+    // Skeleton without them resets them for its subtree while `animation` and `appearance` pass
+    // through.
+    const context = useSkeletonContext();
     const {
-      animation = contextAnimation ?? 'wave',
-      appearance = contextAppearance ?? 'opaque',
+      animation = 'wave',
+      appearance = 'opaque',
       size,
       shape,
       ...rest
-    } = props;
+    } = mergeContextProps({ animation: context.animation, appearance: context.appearance }, props);
 
     const styled = useSkeletonStyles({
       ...useSkeleton(rest, ref as React.Ref<HTMLDivElement>),

@@ -8,6 +8,7 @@ import {
   useToolbarRadioButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { ToolbarRadioButtonProps } from './ToolbarRadioButton.types';
 import { useToolbarRadioButtonStyles } from './useToolbarRadioButtonStyles';
 
@@ -17,14 +18,16 @@ import { useToolbarRadioButtonStyles } from './useToolbarRadioButtonStyles';
  * contract (Tailwind v4 + CSS Modules).
  */
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps> = React.forwardRef(
-  // The context fallback is read in the body, so the look props cannot default in the
-  // parameter list.
+  // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
-    const contextSize = useToolbarContext(ctx => ctx.size);
     // Look props belong to windmod — the headless hook neither accepts nor resolves them.
     // Defaults mirror @fluentui/react-toolbar's styled useToolbarRadioButton, which unlike its
-    // toggle sibling has no 'medium' fallback: the context's own default supplies it.
-    const { appearance = 'subtle', size = contextSize, ...rest } = props;
+    // toggle sibling has no 'medium' fallback: the context's own default supplies it. Only `size`
+    // is folded in — the Toolbar publishes no appearance — and the destructuring default restates
+    // the merged value because `Partial` widens the merged `size` to optional while the context
+    // always supplies one.
+    const context = { size: useToolbarContext(ctx => ctx.size) };
+    const { appearance = 'subtle', size = context.size, ...rest } = mergeContextProps(context, props);
 
     return renderToolbarRadioButton(
       useToolbarRadioButtonStyles({

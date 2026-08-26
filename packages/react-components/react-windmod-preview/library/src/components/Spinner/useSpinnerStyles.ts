@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SpinnerState } from './Spinner.types';
 
 import styles from './Spinner.module.css';
@@ -32,11 +33,8 @@ export const useSpinnerStyles = (state: SpinnerState): SpinnerState => {
   return {
     ...state,
     root,
-    spinner: state.spinner && { ...state.spinner, className: clsx(styles.spinner, state.spinner.className) },
-    spinnerTail: state.spinnerTail && {
-      ...state.spinnerTail,
-      className: clsx(styles.tail, state.spinnerTail.className),
-    },
-    label: state.label && { ...state.label, className: clsx(styles.label, state.label.className) },
+    spinner: slotClasses(state.spinner, styles.spinner),
+    spinnerTail: slotClasses(state.spinnerTail, styles.tail),
+    label: slotClasses(state.label, styles.label),
   };
 };

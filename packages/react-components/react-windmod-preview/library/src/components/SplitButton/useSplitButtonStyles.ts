@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SplitButtonState } from './SplitButton.types';
 
 import styles from './SplitButton.module.css';
@@ -33,13 +34,7 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
   return {
     ...state,
     root,
-    primaryActionButton: state.primaryActionButton && {
-      ...state.primaryActionButton,
-      className: clsx(styles.primaryActionButton, state.primaryActionButton.className),
-    },
-    menuButton: state.menuButton && {
-      ...state.menuButton,
-      className: clsx(styles.menuButton, state.menuButton.className),
-    },
+    primaryActionButton: slotClasses(state.primaryActionButton, styles.primaryActionButton),
+    menuButton: slotClasses(state.menuButton, styles.menuButton),
   };
 };

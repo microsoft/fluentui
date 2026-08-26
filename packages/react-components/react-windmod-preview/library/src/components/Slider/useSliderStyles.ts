@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SliderState } from './Slider.types';
 
 import styles from './Slider.module.css';
@@ -30,8 +31,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   return {
     ...state,
     root,
-    rail: { ...state.rail, className: clsx(styles.rail, state.rail.className) },
-    thumb: { ...state.thumb, className: clsx(styles.thumb, state.thumb.className) },
-    input: { ...state.input, className: clsx(styles.input, state.input.className) },
+    rail: slotClasses(state.rail, styles.rail),
+    thumb: slotClasses(state.thumb, styles.thumb),
+    input: slotClasses(state.input, styles.input),
   };
 };

@@ -1,8 +1,7 @@
 'use client';
 
-import { clsx } from 'clsx';
-
 import { componentMarkers } from '../../utils/groupMarker';
+import { restackOver } from '../../utils/restackOver';
 import { useToggleButtonStyles } from '../ToggleButton/useToggleButtonStyles';
 import type { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
 
@@ -24,18 +23,12 @@ type ToolbarToggleButtonRootDataAttributes = {
  * ToggleButton's glyph-swap rules select through `group/fui-toggle-button` and Button's icon
  * spacing through `group/fui-button`, so the root must keep both marker pairs alongside its own.
  */
-export const useToolbarToggleButtonStyles = (state: ToolbarToggleButtonState): ToolbarToggleButtonState => {
-  const { root: toggleRoot, icon: toggleIcon } = useToggleButtonStyles(state);
-
-  const root: ToolbarToggleButtonState['root'] & ToolbarToggleButtonRootDataAttributes = {
-    ...toggleRoot,
-    'data-icon-position': state.icon ? state.iconPosition : undefined,
-    className: clsx(toolbarToggleButtonClassNames.root, styles.root, toggleRoot.className),
-  };
-
-  return {
-    ...state,
-    root,
-    icon: toggleIcon && { ...toggleIcon, className: clsx(styles.icon, toggleIcon.className) },
-  };
-};
+export const useToolbarToggleButtonStyles = (state: ToolbarToggleButtonState): ToolbarToggleButtonState =>
+  restackOver(state, useToggleButtonStyles(state), {
+    marker: toolbarToggleButtonClassNames.root,
+    root: styles.root,
+    icon: styles.icon,
+    rootAttributes: {
+      'data-icon-position': state.icon ? state.iconPosition : undefined,
+    } satisfies ToolbarToggleButtonRootDataAttributes,
+  });

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TagPickerControlState } from './TagPickerControl.types';
 
 import styles from './TagPickerControl.module.css';
@@ -48,14 +49,8 @@ export const useTagPickerControlStyles = (state: TagPickerControlState): TagPick
   return {
     ...state,
     root,
-    aside: state.aside && { ...state.aside, className: clsx(styles.aside, state.aside.className) },
-    expandIcon: state.expandIcon && {
-      ...state.expandIcon,
-      className: clsx(styles.expandIcon, state.expandIcon.className),
-    },
-    secondaryAction: state.secondaryAction && {
-      ...state.secondaryAction,
-      className: clsx(styles.secondaryAction, state.secondaryAction.className),
-    },
+    aside: slotClasses(state.aside, styles.aside),
+    expandIcon: slotClasses(state.expandIcon, styles.expandIcon),
+    secondaryAction: slotClasses(state.secondaryAction, styles.secondaryAction),
   };
 };

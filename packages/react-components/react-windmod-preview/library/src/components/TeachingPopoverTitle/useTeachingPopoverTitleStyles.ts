@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 
 import styles from './TeachingPopoverTitle.module.css';
@@ -23,9 +24,6 @@ export const useTeachingPopoverTitleStyles = (state: TeachingPopoverTitleState):
       ...state.root,
       className: clsx(teachingPopoverTitleClassNames.root, styles.root, isBrand && styles.brand, state.root.className),
     },
-    dismissButton: state.dismissButton && {
-      ...state.dismissButton,
-      className: clsx(styles.dismissButton, isBrand && styles.dismissBrand, state.dismissButton.className),
-    },
+    dismissButton: slotClasses(state.dismissButton, styles.dismissButton, isBrand && styles.dismissBrand),
   };
 };

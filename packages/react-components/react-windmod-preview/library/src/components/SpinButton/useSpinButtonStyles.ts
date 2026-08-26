@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SpinButtonState } from './SpinButton.types';
 
 import styles from './SpinButton.module.css';
@@ -78,7 +79,7 @@ export const useSpinButtonStyles = (state: SpinButtonState): SpinButtonState => 
   return {
     ...state,
     root,
-    input: { ...state.input, className: clsx(styles.input, state.input.className) },
+    input: slotClasses(state.input, styles.input),
     incrementButton,
     decrementButton,
   };

@@ -5,6 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTag, useTag, useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { AvatarShape, AvatarSize } from '../Avatar/Avatar.types';
 import { useTagGroupContext } from '../TagGroup/TagGroupContext';
 import type { TagProps, TagState } from './Tag.types';
@@ -34,14 +35,12 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
   // resolves them the same way — `appearance = contextAppearance ?? 'filled'`, `size = contextSize`
   // against a context whose own default is `medium` (react-tags/.../useTag.tsx:119-121,
   // contexts/tagGroupContext.tsx:8-13). `shape` is not published by either library's TagGroup.
-  // The defaults read the context hook, so props destructures in the body, not the parameter list.
-  const { appearance: contextAppearance, size: contextSize } = useTagGroupContext();
   const {
-    appearance = contextAppearance ?? 'filled',
+    appearance = 'filled',
     shape = 'rounded',
-    size = contextSize ?? 'medium',
+    size = 'medium',
     ...rest
-  } = props;
+  } = mergeContextProps(useTagGroupContext(), props);
   const base = useTag(rest, ref);
 
   // The headless dismissIcon slot ships no glyph of its own, and the renderer draws it on every

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers, peerMarker } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SwitchState } from './Switch.types';
 
 import styles from './Switch.module.css';
@@ -31,18 +32,8 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   return {
     ...state,
     root,
-    input: {
-      ...state.input,
-      className: clsx(styles.input, label && styles.anchored, peerMarker('switch'), state.input.className),
-    },
-    indicator: {
-      ...state.indicator,
-      className: clsx(
-        styles.indicator,
-        label && labelPosition === 'above' && styles.labelAbove,
-        state.indicator.className,
-      ),
-    },
-    label: label && { ...label, className: clsx(styles.label, label.className) },
+    input: slotClasses(state.input, styles.input, label && styles.anchored, peerMarker('switch')),
+    indicator: slotClasses(state.indicator, styles.indicator, label && labelPosition === 'above' && styles.labelAbove),
+    label: slotClasses(label, styles.label),
   };
 };

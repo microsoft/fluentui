@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TabState } from './Tab.types';
 
 import styles from './Tab.module.css';
@@ -35,8 +36,8 @@ export const useTabStyles = (state: TabState): TabState => {
   return {
     ...state,
     root,
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
-    content: { ...state.content, className: clsx(styles.content, state.content.className) },
+    icon: slotClasses(state.icon, styles.icon),
+    content: slotClasses(state.content, styles.content),
     // Griffel appends the CONTENT slot's className here, not the reserved slot's.
     contentReservedSpace: state.contentReservedSpace && {
       ...state.contentReservedSpace,

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { ToastTitleState } from './ToastTitle.types';
 
 import styles from './ToastTitle.module.css';
@@ -22,6 +23,6 @@ export const useToastTitleStyles = (state: ToastTitleState): ToastTitleState => 
     ...state.root,
     className: clsx(toastTitleClassNames.root, styles.root, state.root.className),
   },
-  media: state.media && { ...state.media, className: clsx(styles.media, state.media.className) },
-  action: state.action && { ...state.action, className: clsx(styles.action, state.action.className) },
+  media: slotClasses(state.media, styles.media),
+  action: slotClasses(state.action, styles.action),
 });

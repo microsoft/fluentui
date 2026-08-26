@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import { useInputStyles } from '../Input/useInputStyles';
 import type { SearchBoxState } from './SearchBox.types';
 
@@ -32,15 +33,9 @@ export const useSearchBoxStyles = (state: SearchBoxState): SearchBoxState => {
   return {
     ...state,
     root,
-    input: { ...input, className: clsx(styles.input, input.className) },
+    input: slotClasses(input, styles.input),
     contentBefore,
-    contentAfter: contentAfter && {
-      ...contentAfter,
-      className: clsx(styles.contentAfter, contentAfter.className),
-    },
-    dismiss: state.dismiss && {
-      ...state.dismiss,
-      className: clsx(styles.dismiss, state.dismiss.className),
-    },
+    contentAfter: slotClasses(contentAfter, styles.contentAfter),
+    dismiss: slotClasses(state.dismiss, styles.dismiss),
   };
 };

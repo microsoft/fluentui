@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { TagPickerOptionState } from './TagPickerOption.types';
 
 import styles from './TagPickerOption.module.css';
@@ -30,9 +31,6 @@ export const useTagPickerOptionStyles = (state: TagPickerOptionState): TagPicker
       state.root.className,
     ),
   },
-  media: state.media && { ...state.media, className: clsx(styles.media, state.media.className) },
-  secondaryContent: state.secondaryContent && {
-    ...state.secondaryContent,
-    className: clsx(styles.secondaryContent, state.secondaryContent.className),
-  },
+  media: slotClasses(state.media, styles.media),
+  secondaryContent: slotClasses(state.secondaryContent, styles.secondaryContent),
 });

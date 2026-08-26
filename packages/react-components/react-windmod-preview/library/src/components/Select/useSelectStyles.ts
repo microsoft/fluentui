@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
+import { slotClasses } from '../../utils/slotClasses';
 import type { SelectState } from './Select.types';
 
 import styles from './Select.module.css';
@@ -33,22 +34,19 @@ export const useSelectStyles = (state: SelectState): SelectState => {
   return {
     ...state,
     root,
-    select: {
-      ...state.select,
-      className: clsx(
-        styles.select,
-        appearance === 'outline' && styles.outline,
-        underline && styles.underline,
-        appearance === 'filled-lighter' && styles.filledLighter,
-        appearance === 'filled-darker' && styles.filledDarker,
-        !disabled && appearance === 'outline' && styles.outlineInteractive,
-        !disabled && invalid && !underline && styles.invalid,
-        !disabled && invalid && underline && styles.invalidUnderline,
-        disabled && styles.disabled,
-        disabled && underline && styles.disabledUnderline,
-        state.select.className,
-      ),
-    },
-    icon: state.icon && { ...state.icon, className: clsx(styles.icon, state.icon.className) },
+    select: slotClasses(
+      state.select,
+      styles.select,
+      appearance === 'outline' && styles.outline,
+      underline && styles.underline,
+      appearance === 'filled-lighter' && styles.filledLighter,
+      appearance === 'filled-darker' && styles.filledDarker,
+      !disabled && appearance === 'outline' && styles.outlineInteractive,
+      !disabled && invalid && !underline && styles.invalid,
+      !disabled && invalid && underline && styles.invalidUnderline,
+      disabled && styles.disabled,
+      disabled && underline && styles.disabledUnderline,
+    ),
+    icon: slotClasses(state.icon, styles.icon),
   };
 };

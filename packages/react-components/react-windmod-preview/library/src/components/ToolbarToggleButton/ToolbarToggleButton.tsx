@@ -8,6 +8,7 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
 import type { ToolbarToggleButtonProps } from './ToolbarToggleButton.types';
 import { useToolbarToggleButtonStyles } from './useToolbarToggleButtonStyles';
 
@@ -17,13 +18,16 @@ import { useToolbarToggleButtonStyles } from './useToolbarToggleButtonStyles';
  * Modules).
  */
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef(
-  // The context fallback is read in the body, so the look props cannot default in the
-  // parameter list.
+  // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
-    const contextSize = useToolbarContext(ctx => ctx.size);
     // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-    // Defaults mirror @fluentui/react-toolbar's styled useToolbarToggleButton.
-    const { appearance = 'subtle', size = contextSize ?? 'medium', ...rest } = props;
+    // Defaults mirror @fluentui/react-toolbar's styled useToolbarToggleButton. Only `size` is
+    // folded in: the Toolbar publishes no appearance.
+    const {
+      appearance = 'subtle',
+      size = 'medium',
+      ...rest
+    } = mergeContextProps({ size: useToolbarContext(ctx => ctx.size) }, props);
 
     return renderToolbarToggleButton(
       useToolbarToggleButtonStyles({
