@@ -3880,7 +3880,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
-    "@swc/helpers": "npm:~0.5.1"
+    "@babel/types": "npm:7.29.0"
     babel-plugin-react-compiler: "npm:^1.0.0"
     yargs: "npm:^17.7.2"
   bin:

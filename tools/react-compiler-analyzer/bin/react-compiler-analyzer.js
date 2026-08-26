@@ -2,7 +2,7 @@
 
 // @ts-check
 
-const { cli } = require('../dist/src/cli');
+const { cli } = require('../dist/cli');
 
 cli().catch(err => {
   console.error(err);

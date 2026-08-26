@@ -2,22 +2,22 @@
   "name": "@fluentui/react-compiler-analyzer",
   "version": "0.0.0",
   "type": "commonjs",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "bin",
     "*.md",
     "risk-config.schema.json",
-    "dist",
-    "lib",
-    "lib-commonjs"
+    "dist"
   ],
   "bin": "./bin/react-compiler-analyzer.js",
   "dependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
-    "@swc/helpers": "~0.5.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@babel/types": "7.29.0"
   }
 }
