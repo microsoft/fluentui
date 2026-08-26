@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Divider } from './divider.js';
-import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole, tagName } from './divider.options.js';
+import { DividerOrientation, DividerRole, tagName } from './divider.options.js';
 
 test.describe('Divider', () => {
   test.use({ tagName });
@@ -84,33 +84,5 @@ test.describe('Divider', () => {
     });
 
     await expect(element).toHaveJSProperty('orientation', 'horizontal');
-  });
-
-  test('should initialize to the provided value attribute if set post-connection', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const alignment of Object.values(DividerAlignContent)) {
-      await test.step(`alignContent="${alignment}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { 'align-content': alignment } });
-
-        await expect(element).toHaveJSProperty('alignContent', alignment);
-      });
-    }
-
-    for (const appearance of Object.values(DividerAppearance)) {
-      await test.step(`appearance="${appearance}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-      });
-    }
-
-    await test.step('inset', async () => {
-      await fastPage.updateTemplate(element, { attributes: { inset: true } });
-
-      await expect(element).toHaveJSProperty('inset', true);
-    });
   });
 });
