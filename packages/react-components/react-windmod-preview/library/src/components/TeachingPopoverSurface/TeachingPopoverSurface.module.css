@@ -1,0 +1,11 @@
+@reference '#theme';
+
+/* Denser than a Popover: one padding on both axes regardless of size, a larger corner, and a
+   floor width. The size class underneath still supplies the arrow's height and offset constants,
+   so it must never be suppressed — only its padding is overridden here. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply box-border min-w-320 rounded-x-large p-vertical-l;
+  }
+}
