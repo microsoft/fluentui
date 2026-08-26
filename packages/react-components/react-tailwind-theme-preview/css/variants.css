@@ -156,3 +156,11 @@
 /* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
 @custom-variant empty (&:where([data-empty], :empty));
 @custom-variant not-empty (&:where(:not([data-empty], :empty)));
+
+/* content presence, nullish reading — data-content-empty mirrors 'children is null or undefined',
+   so the falsy-but-rendered `0` and `''` still count as present. Griffel needs both readings on
+   one element (CompoundButton gates its icon margin nullishly, Button's gate is falsiness), so
+   the two cannot share an attribute. No :empty fallback: the roots that carry it always have
+   slot children, and the unstamped case is exactly the one that must not match. */
+@custom-variant content-empty (&:where([data-content-empty]));
+@custom-variant not-content-empty (&:where(:not([data-content-empty])));

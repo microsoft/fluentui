@@ -159,6 +159,58 @@ describe('CompoundButton', () => {
     expect(getByTestId('icon-only').hasAttribute('data-empty')).toBe(true);
   });
 
+  // Griffel gates CompoundButton's own icon spacing on a nullish test —
+  // `state.root.children !== undefined && state.root.children !== null`
+  // (react-button/src/components/CompoundButton/useCompoundButtonStyles.styles.ts:303) — not on
+  // Button's `!!state.root.children`. The two disagree for every falsy-but-present child, and
+  // CompoundButton's class is merged last, so its predicate is the one that decides the margin.
+  // `data-empty` cannot serve this rule: it carries Button's answer, not this one.
+  it('stamps data-content-empty on the nullish children Griffel treats as absent', () => {
+    const { getByTestId } = render(
+      <>
+        <CompoundButton data-testid="text" icon={<Glyph />} secondaryContent="Second line">
+          Label
+        </CompoundButton>
+        <CompoundButton data-testid="zero" icon={<Glyph />} secondaryContent="Second line">
+          {0}
+        </CompoundButton>
+        <CompoundButton data-testid="emptyString" icon={<Glyph />} secondaryContent="Second line">
+          {''}
+        </CompoundButton>
+        <CompoundButton data-testid="false" icon={<Glyph />} secondaryContent="Second line">
+          {false}
+        </CompoundButton>
+        <CompoundButton data-testid="null" icon={<Glyph />} secondaryContent="Second line">
+          {null}
+        </CompoundButton>
+        <CompoundButton data-testid="none" icon={<Glyph />} secondaryContent="Second line" />
+      </>,
+    );
+
+    expect(getByTestId('text').hasAttribute('data-content-empty')).toBe(false);
+    expect(getByTestId('zero').hasAttribute('data-content-empty')).toBe(false);
+    expect(getByTestId('emptyString').hasAttribute('data-content-empty')).toBe(false);
+    expect(getByTestId('false').hasAttribute('data-content-empty')).toBe(false);
+    expect(getByTestId('null').hasAttribute('data-content-empty')).toBe(true);
+    expect(getByTestId('none').hasAttribute('data-content-empty')).toBe(true);
+  });
+
+  it('keeps Button’s falsiness answer in data-empty beside its own nullish answer', () => {
+    const { getByTestId } = render(
+      <CompoundButton data-testid="zero" icon={<Glyph />} secondaryContent="Second line">
+        {0}
+      </CompoundButton>,
+    );
+
+    const root = getByTestId('zero');
+
+    // The two predicates disagree here, which is why they need separate attributes.
+    expect(root.hasAttribute('data-empty')).toBe(true);
+    expect(root.hasAttribute('data-content-empty')).toBe(false);
+    // The child renders, so the gap Griffel keeps is a gap beside visible text.
+    expect(containerOf(root)!.textContent).toBe('0Second line');
+  });
+
   it('resolves the look-prop defaults and passes an explicit shape through', () => {
     const { getByTestId } = render(
       <>

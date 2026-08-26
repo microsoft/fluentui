@@ -85,5 +85,23 @@ export const CompoundButtonVrScene = ({
         <CompoundButton key={shape} shape={shape} icon={<Icon />} aria-label="icon" />
       ))}
     </div>
+    {/* Falsy-but-rendered children. Griffel keeps the icon margin for anything that is not
+        null/undefined, so `0` and `''` hold the gap while `null` drops it — the one row where a
+        falsiness reading of the children and a nullish one disagree. */}
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <CompoundButton icon={<Icon />} secondaryContent={secondary}>
+        {0}
+      </CompoundButton>
+      <CompoundButton icon={<Icon />} iconPosition="after" secondaryContent={secondary}>
+        {0}
+      </CompoundButton>
+      <CompoundButton icon={<Icon />} secondaryContent={secondary}>
+        {''}
+      </CompoundButton>
+      <CompoundButton icon={<Icon />} secondaryContent={secondary}>
+        {null}
+      </CompoundButton>
+      <CompoundButton icon={<Icon />} secondaryContent={secondary} />
+    </div>
   </div>
 );
