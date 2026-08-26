@@ -907,3 +907,6 @@ export {
   webLightThemeClassName,
 } from './fluent-provider';
 export type { ThemeClassName, FluentProviderProps } from './fluent-provider';
+
+export { invalidateCssVars, useCssVarValue } from './use-css-var-value';
+export type { CssVarValues, UseCssVarValueOptions } from './use-css-var-value';

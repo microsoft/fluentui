@@ -1096,6 +1096,11 @@ export { CompoundButtonSlots }
 export type CompoundButtonState = CompoundButtonState_2 & Required<Pick<CompoundButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 // @public
+export type CssVarValues<T extends Record<string, string>> = {
+    [K in keyof T]: string | undefined;
+};
+
+// @public
 export const Dialog: React_2.FC<DialogProps>;
 
 // @public
@@ -1592,6 +1597,9 @@ export { InteractionTagSlots }
 
 // @public
 export type InteractionTagState = InteractionTagState_2 & Required<Pick<InteractionTagProps, 'appearance' | 'shape' | 'size'>>;
+
+// @public
+export function invalidateCssVars(): void;
 
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
@@ -3073,6 +3081,18 @@ export { useCompoundButton }
 
 // @public
 export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
+
+// @public
+export function useCssVarValue(variableName: string, elementRef: React_2.RefObject<HTMLElement | null>, options?: UseCssVarValueOptions): string | undefined;
+
+// @public
+export function useCssVarValue<T extends Record<string, string>>(variableNames: T, elementRef: React_2.RefObject<HTMLElement | null>, options?: UseCssVarValueOptions): CssVarValues<T>;
+
+// @public
+export interface UseCssVarValueOptions {
+    fallback?: string;
+    forceOnRender?: boolean;
+}
 
 export { useDialog }
 

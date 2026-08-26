@@ -31,7 +31,8 @@
     "@fluentui/react-tailwind-theme-preview": "^9.0.0-alpha.0",
     "@fluentui/react-utilities": "^9.26.6",
     "@swc/helpers": "^0.5.1",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "use-sync-external-store": "^1.2.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
@@ -1012,6 +1013,16 @@
       "require": {
         "types": "./dist/tooltip.d.cts",
         "default": "./lib-commonjs/tooltip.cjs"
+      }
+    },
+    "./use-css-var-value": {
+      "import": {
+        "types": "./dist/use-css-var-value.d.ts",
+        "default": "./lib/use-css-var-value.js"
+      },
+      "require": {
+        "types": "./dist/use-css-var-value.d.cts",
+        "default": "./lib-commonjs/use-css-var-value.cjs"
       }
     },
     "./variants.css": "./src/variants.css",

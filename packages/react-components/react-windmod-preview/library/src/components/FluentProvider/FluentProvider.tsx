@@ -4,7 +4,10 @@ import * as React from 'react';
 import { clsx } from 'clsx';
 import { Provider, useProviderContext } from '@fluentui/react-headless-components-preview/provider';
 
+import { useMergedRefs } from '@fluentui/react-utilities';
+
 import { componentMarkers } from '../../utils/groupMarker';
+import { CssVarInvalidationContext, useCssVarInvalidationScope } from '../../hooks/cssVarInvalidation';
 import type { FluentProviderProps } from './FluentProvider.types';
 
 import styles from './FluentProvider.module.css';
@@ -21,16 +24,19 @@ export const FluentProvider = React.forwardRef<HTMLDivElement, FluentProviderPro
   ({ theme, dir, targetDocument, className, children, ...rest }, ref) => {
     const parentContext = useProviderContext();
     const resolvedDir = dir ?? parentContext.dir;
+    const resolvedClassName = clsx(fluentProviderClassNames.root, theme, styles.root, className);
+
+    // The css-var invalidation observer must be installed by a hook on THIS fiber: React
+    // attaches host refs in commit order, so the same logic in a child component would run its
+    // layout effect before this div's ref is populated. Hence the internal ref.
+    const elementRef = React.useRef<HTMLDivElement>(null);
+    const mergedRef = useMergedRefs(ref, elementRef);
+    const cssVarScope = useCssVarInvalidationScope(elementRef, resolvedClassName, rest.style);
 
     return (
       <Provider dir={resolvedDir} targetDocument={targetDocument}>
-        <div
-          ref={ref}
-          {...rest}
-          dir={resolvedDir}
-          className={clsx(fluentProviderClassNames.root, theme, styles.root, className)}
-        >
-          {children}
+        <div ref={mergedRef} {...rest} dir={resolvedDir} className={resolvedClassName}>
+          <CssVarInvalidationContext.Provider value={cssVarScope}>{children}</CssVarInvalidationContext.Provider>
         </div>
       </Provider>
     );
