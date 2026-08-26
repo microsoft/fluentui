@@ -88,6 +88,11 @@ export type StoryHelpers<T> = {
   events: string[];
 };
 
+const defaultOptions: StorybookHelpersOptions = {
+  typeRef: 'parsedType',
+  categoryOrder: ['attributes', 'properties', 'slots', 'cssProps', 'cssParts', 'cssStates', 'methods', 'events'],
+};
+
 // ---------------------------------------------------------------------------
 // CEM Utilities (inlined from @wc-toolkit/cem-utilities to avoid extra dep)
 // ---------------------------------------------------------------------------
@@ -290,7 +295,10 @@ type ArgSet = {
 };
 
 function getOptions(): StorybookHelpersOptions {
-  return (globalThis as any)?.__WC_STORYBOOK_HELPERS_CONFIG__ || {};
+  return {
+    ...defaultOptions,
+    ...((globalThis as any)?.__WC_STORYBOOK_HELPERS_CONFIG__ || {}),
+  };
 }
 
 export function getAttributesAndProperties(
@@ -348,9 +356,9 @@ export function getAttributesAndProperties(
   });
 
   component?.attributes?.forEach(attribute => {
-    if (attribute.fieldName) return;
-
     const name = attribute.name;
+    if (attribute.fieldName || attrArgs[name]) return;
+
     const opts = getOptions();
     const type = opts.typeRef ? attribute[`${opts.typeRef}`]?.text || attribute.type?.text : attribute.type?.text;
     const attrType = cleanUpType(type);
@@ -591,12 +599,7 @@ export function logEvent(name: string, event: Event) {
 // Main API
 // ---------------------------------------------------------------------------
 
-let userOptions: StorybookHelpersOptions = (globalThis as any)?.__WC_STORYBOOK_HELPERS_CONFIG__ || {};
-
-const defaultOptions: StorybookHelpersOptions = {
-  typeRef: 'parsedType',
-  categoryOrder: ['attributes', 'properties', 'slots', 'cssProps', 'cssParts', 'cssStates', 'methods', 'events'],
-};
+let userOptions: StorybookHelpersOptions = getOptions();
 
 /**
  * Sets the global config for the Storybook helpers.
@@ -618,7 +621,7 @@ export function setStorybookHelpersConfig(options: StorybookHelpersOptions) {
  * @param options - optional configuration
  */
 export function getStorybookHelpers<T>(tagName: string, options?: StoryOptions): StoryHelpers<T> {
-  userOptions = (globalThis as any)?.__WC_STORYBOOK_HELPERS_CONFIG__ || {};
+  userOptions = getOptions();
   const cem = getManifest();
   const component = getComponent(cem, tagName);
   const eventNames = component?.events?.map((event: any) => event.name) || [];
