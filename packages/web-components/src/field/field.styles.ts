@@ -53,6 +53,8 @@ export const styles = css`
     align-items: center;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
+    grid-template-areas: 'label' 'input' 'message';
+    row-gap: ${spacingVerticalXXS};
   }
 
   :has([slot='message']) {
@@ -76,11 +78,6 @@ export const styles = css`
 
   :host([label-position='after']) ::slotted([slot='input']) {
     margin-inline-end: ${spacingHorizontalM};
-  }
-
-  :host([label-position='above']) {
-    grid-template-areas: 'label' 'input' 'message';
-    row-gap: ${spacingVerticalXXS};
   }
 
   :host([label-position='below']) {
