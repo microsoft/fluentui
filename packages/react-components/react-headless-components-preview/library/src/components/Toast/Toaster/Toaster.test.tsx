@@ -70,7 +70,15 @@ describe('Toaster', () => {
     const Test = () => {
       dispatchToast = useToastController(toasterId).dispatchToast;
       return (
-        <Toaster toasterId={toasterId} position="top" timeout={1000} pauseOnWindowBlur pauseOnHover priority={1} />
+        <Toaster
+          toasterId={toasterId}
+          position="top"
+          timeout={1000}
+          pauseOnWindowBlur
+          pauseOnHover={false}
+          priority={1}
+          offset={{ horizontal: 10 }}
+        />
       );
     };
     render(<Test />);
@@ -85,9 +93,10 @@ describe('Toaster', () => {
         position: 'top',
         timeout: 1000,
         pauseOnWindowBlur: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         priority: 1,
       }),
     );
+    expect(onStatusChange.mock.calls[0][1]).not.toHaveProperty('offset');
   });
 });
