@@ -1,7 +1,7 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/start-end.js';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
+import type { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 /**
  * The base class used for constructing a fluent-badge custom element
@@ -11,50 +11,14 @@ import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.opti
  * @slot start - Content which can be provided before the badge content.
  * @slot end - Content which can be provided after the badge content.
  *
+ * @presentational {BadgeAppearance} [appearance=filled] - The appearance the badge should have.
+ * @presentational {BadgeColor} [color=brand] - The color the badge should have.
+ * @presentational {BadgeShape | undefined} shape - The shape the badge should have.
+ * @presentational {BadgeSize | undefined} size - The size the badge should have.
+ *
  * @public
  */
-export class Badge extends FASTElement {
-  /**
-   * The appearance the badge should have.
-   *
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance: BadgeAppearance = BadgeAppearance.filled;
-
-  /**
-   * The color the badge should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: color
-   */
-  @attr
-  public color: BadgeColor = BadgeColor.brand;
-
-  /**
-   * The shape the badge should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: BadgeShape;
-
-  /**
-   * The size the badge should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: BadgeSize;
-}
+export class Badge extends FASTElement {}
 
 /**
  * Mark internal because exporting class and interface of the same name
