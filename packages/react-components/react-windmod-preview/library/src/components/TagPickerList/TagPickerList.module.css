@@ -1,0 +1,16 @@
+@reference '#theme';
+
+/* l2, and the whole file: this module's only class lands on the windmod Listbox's own root, whose
+   rules are l1. Griffel authors box-sizing: border-box on this bucket, and the surface takes its
+   width from the anchor's BORDER-box.
+
+   The same three-declaration surface look lands on a different element in Combobox and in Dropdown.
+
+   No `.collapsed`: the surface is a native top-layer popover whose visibility the headless listbox
+   slot drives, and the TagPicker root renders the popover only while open or focused. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply box-border max-h-[80vh] rounded-medium shadow-16;
+  }
+}

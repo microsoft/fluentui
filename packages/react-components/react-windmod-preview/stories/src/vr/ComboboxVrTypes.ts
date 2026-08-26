@@ -57,3 +57,96 @@ export type ComboboxFamily = {
  * input, but every prop the scenes pass exists on both, so the loose trigger shape is unchanged.
  */
 export type DropdownFamily = { Dropdown: ComboboxLike } & Omit<ComboboxFamily, 'Combobox'>;
+
+export const pickerSizes = ['medium', 'large', 'extra-large'] as const;
+
+/**
+ * The TagPicker family.
+ *
+ * `TagPickerLike` types `children` as ReactNode where the real prop is a two-element tuple, so a
+ * story assigns the real component through one cast.
+ *
+ * `inline` is GRIFFEL-ONLY: Griffel portals the popover to document.body unless it is set, and a
+ * portalled surface leaves the captured tree. Windmod has no portals and does not declare the prop.
+ * `list` is WINDMOD-ONLY: `popover: 'manual'` is what lets one page hold more than one open
+ * surface, and a popover attribute on Griffel's portalled div would hide the surface outright.
+ */
+export type TagPickerLike = React.ComponentType<{
+  appearance?: (typeof appearances)[number];
+  size?: (typeof pickerSizes)[number];
+  disabled?: boolean;
+  inline?: boolean;
+  noPopover?: boolean;
+  open?: boolean;
+  selectedOptions?: string[];
+  children?: React.ReactNode;
+}>;
+
+// Slot types reject `false`, so a shim can never widen a slot prop to ReactNode — the same
+// limitation TagVrScene.tsx records.
+export type TagPickerControlLike = React.ComponentType<{
+  'aria-invalid'?: boolean;
+  expandIcon?: null;
+  secondaryAction?: { children: string };
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}>;
+
+export type TagPickerGroupLike = React.ComponentType<{
+  'aria-label'?: string;
+  children?: React.ReactNode;
+}>;
+
+export type TagPickerInputLike = React.ComponentType<{
+  'aria-label'?: string;
+  value?: string;
+}>;
+
+export type TagPickerButtonLike = React.ComponentType<{ children?: React.ReactNode }>;
+
+export type TagPickerListLike = React.ComponentType<{
+  popover?: '' | 'auto' | 'manual' | 'hint';
+  children?: React.ReactNode;
+}>;
+
+export type TagPickerOptionLike = React.ComponentType<{
+  disabled?: boolean;
+  media?: React.ReactElement;
+  secondaryContent?: string;
+  value: string;
+  children: string;
+}>;
+
+export type TagLike = React.ComponentType<{
+  media?: React.ReactElement;
+  value?: string;
+  children?: React.ReactNode;
+}>;
+
+export type AvatarLike = React.ComponentType<{ name?: string }>;
+
+// A TagPickerControl is invalid ONLY through a Field ancestor whose validationState is 'error' —
+// the control reads useFieldContext_unstable and has no invalid prop of its own on either
+// implementation, so an aria-invalid on the picker reaches nothing.
+export type FieldLike = React.ComponentType<{
+  validationState?: 'error';
+  children?: React.ReactNode;
+}>;
+
+export type TagPickerFamily = {
+  TagPicker: TagPickerLike;
+  TagPickerControl: TagPickerControlLike;
+  TagPickerGroup: TagPickerGroupLike;
+  TagPickerInput: TagPickerInputLike;
+  TagPickerButton: TagPickerButtonLike;
+  TagPickerList: TagPickerListLike;
+  TagPickerOption: TagPickerOptionLike;
+  TagPickerOptionGroup: OptionGroupLike;
+  Tag: TagLike;
+  Avatar: AvatarLike;
+  Field: FieldLike;
+  /** Windmod only — see the note above. */
+  list?: { popover: 'manual' };
+  /** Griffel only — see the note above. */
+  inline?: boolean;
+};

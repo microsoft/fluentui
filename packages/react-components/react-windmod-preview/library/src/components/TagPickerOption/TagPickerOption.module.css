@@ -1,0 +1,48 @@
+@reference '#theme';
+
+/* The three applicable Option buckets are CLONED here rather than reached through windmod's Option
+   module. Griffel calls useOptionStyles_unstable with disabled, selected and multiselect forced
+   false or undefined, while the headless hook still stamps data-disabled, data-selected and
+   data-multiselect on this root — TagPickerList sets multiselect, so every option carries it.
+   Reusing Option's .root would grey a disabled option and remove its hover; Griffel's stays black,
+   keeps cursor: pointer and still hovers.
+
+   NO STATE-ATTRIBUTE SELECTOR MAY BE AUTHORED IN THIS FILE. `data-selected` and `data-multiselect`
+   reach no rendered element here — the renderer draws no check icon and Griffel's selected bucket is
+   empty — so such a selector would be a live divergence that renders zero pixels and no pixel, jest
+   or browser guard could ever see it. The spec asserts the absence directly.
+
+   The hover and active blocks are therefore UNGATED, unlike Option's own, which sit behind
+   `enabled`: a disabled option here keeps rgb(36,36,36), cursor: pointer and its hover. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex cursor-pointer items-center gap-x-horizontal-xs rounded-medium px-horizontal-s py-vertical-s-nudge font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+
+    @variant hover {
+      @apply bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+    }
+
+    @variant active {
+      @apply bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+    }
+
+    @variant activedescendant-focusvisible {
+      @variant after {
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-2 border-solid border-stroke-focus-2 content-[''];
+      }
+    }
+  }
+
+  .with-secondary-content {
+    @apply grid grid-cols-[auto_1fr];
+  }
+
+  .media {
+    @apply row-span-2;
+  }
+
+  .secondary-content {
+    @apply col-start-2 row-start-2 text-base-200 leading-base-200;
+  }
+}

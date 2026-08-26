@@ -847,6 +847,99 @@ export type {
   TagGroupState,
 } from './tag-group';
 
+export {
+  renderTagPicker,
+  TagPicker,
+  useTagPicker,
+  useTagPickerContext_unstable,
+  useTagPickerContextValues,
+  useTagPickerFilter,
+} from './tag-picker';
+export type {
+  TagPickerAppearance,
+  TagPickerContextValue,
+  TagPickerContextValues,
+  TagPickerOnOpenChangeData,
+  TagPickerOnOptionSelectData,
+  TagPickerProps,
+  TagPickerSize,
+  TagPickerSlots,
+  TagPickerState,
+} from './tag-picker';
+
+export {
+  renderTagPickerButton,
+  TagPickerButton,
+  tagPickerButtonClassNames,
+  useTagPickerButton,
+  useTagPickerButtonStyles,
+} from './tag-picker-button';
+export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './tag-picker-button';
+
+export {
+  renderTagPickerControl,
+  TagPickerControl,
+  tagPickerControlClassNames,
+  useTagPickerControl,
+  useTagPickerControlStyles,
+} from './tag-picker-control';
+export type {
+  TagPickerControlInternalSlots,
+  TagPickerControlProps,
+  TagPickerControlSlots,
+  TagPickerControlState,
+} from './tag-picker-control';
+
+export {
+  renderTagPickerGroup,
+  TagPickerGroup,
+  tagPickerGroupClassNames,
+  useTagPickerGroup,
+  useTagPickerGroupContextValues,
+  useTagPickerGroupStyles,
+} from './tag-picker-group';
+export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './tag-picker-group';
+
+export {
+  renderTagPickerInput,
+  TagPickerInput,
+  tagPickerInputClassNames,
+  useTagPickerInput,
+  useTagPickerInputStyles,
+} from './tag-picker-input';
+export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } from './tag-picker-input';
+
+export {
+  renderTagPickerList,
+  TagPickerList,
+  tagPickerListClassNames,
+  useTagPickerList,
+  useTagPickerListStyles,
+} from './tag-picker-list';
+export type { TagPickerListProps, TagPickerListSlots, TagPickerListState } from './tag-picker-list';
+
+export {
+  renderTagPickerOption,
+  TagPickerOption,
+  tagPickerOptionClassNames,
+  useTagPickerOption,
+  useTagPickerOptionStyles,
+} from './tag-picker-option';
+export type { TagPickerOptionProps, TagPickerOptionSlots, TagPickerOptionState } from './tag-picker-option';
+
+export {
+  renderTagPickerOptionGroup,
+  TagPickerOptionGroup,
+  tagPickerOptionGroupClassNames,
+  useTagPickerOptionGroup,
+  useTagPickerOptionGroupStyles,
+} from './tag-picker-option-group';
+export type {
+  TagPickerOptionGroupProps,
+  TagPickerOptionGroupSlots,
+  TagPickerOptionGroupState,
+} from './tag-picker-option-group';
+
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';
 

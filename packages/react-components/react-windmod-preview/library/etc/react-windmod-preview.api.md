@@ -417,6 +417,14 @@ import { renderTab } from '@fluentui/react-headless-components-preview/tab-list'
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { renderTagPicker } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerButton } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerControl } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerGroup } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerInput } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerList } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerOption } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToast } from '@fluentui/react-headless-components-preview/toast';
 import { renderToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -479,6 +487,36 @@ import { TagGroupContextValues } from '@fluentui/react-headless-components-previ
 import type { TagGroupProps as TagGroupProps_2 } from '@fluentui/react-headless-components-preview/tag-group';
 import { TagGroupSlots } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupState as TagGroupState_2 } from '@fluentui/react-headless-components-preview/tag-group';
+import { TagPickerButtonProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerButtonSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerButtonState } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerContextValue } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerControlInternalSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerControlProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerControlSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import type { TagPickerControlState as TagPickerControlState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerGroupProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import type { TagPickerGroupState as TagPickerGroupState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerInputProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerInputSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerInputState } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerListProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerListSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerListState } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOnOpenChangeData } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOnOptionSelectData } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionGroupProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionGroupSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionGroupState } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionProps } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerOptionState } from '@fluentui/react-headless-components-preview/tag-picker';
+import type { TagPickerProps as TagPickerProps_2 } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerSize } from '@fluentui/react-headless-components-preview/tag-picker';
+import { TagPickerSlots } from '@fluentui/react-headless-components-preview/tag-picker';
+import type { TagPickerState as TagPickerState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
 import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
@@ -698,6 +736,18 @@ import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
+import { useTagPicker } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerButton } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerContext_unstable } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerControl } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerFilter } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerGroup } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerGroupContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerInput } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerList } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerOption } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToast } from '@fluentui/react-headless-components-preview/toast';
 import { useToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -2727,6 +2777,22 @@ export { renderTag }
 
 export { renderTagGroup }
 
+export { renderTagPicker }
+
+export { renderTagPickerButton }
+
+export { renderTagPickerControl }
+
+export { renderTagPickerGroup }
+
+export { renderTagPickerInput }
+
+export { renderTagPickerList }
+
+export { renderTagPickerOption }
+
+export { renderTagPickerOptionGroup }
+
 export { renderTextarea }
 
 export { renderToast }
@@ -3101,6 +3167,145 @@ export { TagGroupSlots }
 
 // @public
 export type TagGroupState = TagGroupState_2 & Required<Pick<TagGroupProps, 'appearance' | 'size'>>;
+
+// @public
+export const TagPicker: {
+    ({ appearance, size, ...rest }: TagPickerProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export type TagPickerAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
+
+// @public
+export const tagPickerButtonClassNames: {
+    root: string;
+};
+
+export { TagPickerButtonProps }
+
+export { TagPickerButtonSlots }
+
+export { TagPickerButtonState }
+
+export { TagPickerContextValue }
+
+export { TagPickerContextValues }
+
+// @public
+export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
+
+// @public
+export const tagPickerControlClassNames: {
+    root: string;
+};
+
+export { TagPickerControlInternalSlots }
+
+export { TagPickerControlProps }
+
+export { TagPickerControlSlots }
+
+// @public
+export type TagPickerControlState = TagPickerControlState_2 & {
+    appearance: TagPickerAppearance;
+    size: TagPickerSize;
+};
+
+// @public
+export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
+
+// @public
+export const tagPickerGroupClassNames: {
+    root: string;
+};
+
+export { TagPickerGroupProps }
+
+export { TagPickerGroupSlots }
+
+// @public
+export type TagPickerGroupState = TagPickerGroupState_2 & {
+    appearance: TagAppearance;
+    size: TagSize;
+    pickerSize: TagPickerSize;
+};
+
+// @public
+export const TagPickerInput: ForwardRefComponent<TagPickerInputProps>;
+
+// @public
+export const tagPickerInputClassNames: {
+    root: string;
+};
+
+export { TagPickerInputProps }
+
+export { TagPickerInputSlots }
+
+export { TagPickerInputState }
+
+// @public
+export const TagPickerList: ForwardRefComponent<TagPickerListProps>;
+
+// @public
+export const tagPickerListClassNames: {
+    root: string;
+};
+
+export { TagPickerListProps }
+
+export { TagPickerListSlots }
+
+export { TagPickerListState }
+
+export { TagPickerOnOpenChangeData }
+
+export { TagPickerOnOptionSelectData }
+
+// @public
+export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
+
+// @public
+export const tagPickerOptionClassNames: {
+    root: string;
+};
+
+// @public
+export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps>;
+
+// @public
+export const tagPickerOptionGroupClassNames: {
+    root: string;
+};
+
+export { TagPickerOptionGroupProps }
+
+export { TagPickerOptionGroupSlots }
+
+export { TagPickerOptionGroupState }
+
+export { TagPickerOptionProps }
+
+export { TagPickerOptionSlots }
+
+export { TagPickerOptionState }
+
+// @public
+export type TagPickerProps = TagPickerProps_2 & {
+    appearance?: TagPickerAppearance;
+    size?: TagPickerState_2['size'];
+};
+
+export { TagPickerSize }
+
+export { TagPickerSlots }
+
+// @public
+export type TagPickerState = TagPickerState_2;
 
 // @public
 export type TagProps = TagProps_2 & {
@@ -4050,6 +4255,51 @@ export { useTagGroupContextValues }
 
 // @public
 export const useTagGroupStyles: (state: TagGroupState) => TagGroupState;
+
+export { useTagPicker }
+
+export { useTagPickerButton }
+
+// @public
+export const useTagPickerButtonStyles: (state: TagPickerButtonState) => TagPickerButtonState;
+
+export { useTagPickerContext_unstable }
+
+export { useTagPickerContextValues }
+
+export { useTagPickerControl }
+
+// @public
+export const useTagPickerControlStyles: (state: TagPickerControlState) => TagPickerControlState;
+
+export { useTagPickerFilter }
+
+export { useTagPickerGroup }
+
+export { useTagPickerGroupContextValues }
+
+// @public
+export const useTagPickerGroupStyles: (state: TagPickerGroupState) => TagPickerGroupState;
+
+export { useTagPickerInput }
+
+// @public
+export const useTagPickerInputStyles: (state: TagPickerInputState) => TagPickerInputState;
+
+export { useTagPickerList }
+
+// @public
+export const useTagPickerListStyles: (state: TagPickerListState) => TagPickerListState;
+
+export { useTagPickerOption }
+
+export { useTagPickerOptionGroup }
+
+// @public
+export const useTagPickerOptionGroupStyles: (state: TagPickerOptionGroupState) => TagPickerOptionGroupState;
+
+// @public
+export const useTagPickerOptionStyles: (state: TagPickerOptionState) => TagPickerOptionState;
 
 // @public
 export const useTagStyles: (state: TagState) => TagState;
