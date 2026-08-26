@@ -1,0 +1,80 @@
+@reference '#theme';
+
+/* Block order inside .check-icon is the cascade: Griffel reaches the indicator from the row with a
+   (0,3,0) descendant selector — `.<interactive>:hover .fui-Option__checkIcon`, two classes and a
+   pseudo-class (useOptionStyles.styles.ts, the `interactive` bucket) — which outranks the
+   indicator's own (0,1,0) selected-brand border, so the hover/active blocks must come after the
+   multiselect block here. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex cursor-pointer items-center gap-x-horizontal-xs rounded-medium px-horizontal-s py-vertical-s-nudge font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+
+    @variant enabled {
+      @variant hover {
+        @apply bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+      }
+
+      @variant active {
+        @apply bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+
+    @variant activedescendant-focusvisible {
+      @variant after {
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-2 border-solid border-stroke-focus-2 content-[''];
+      }
+    }
+  }
+
+  /* invisible, never hidden: the box stays so selecting an option does not reflow its row. */
+  .check-icon {
+    @apply invisible -ms-horizontal-xxs me-horizontal-xxs block shrink-0 text-icon-16;
+
+    & svg {
+      @apply block;
+    }
+
+    @variant group-selected/fui-option {
+      @apply visible;
+    }
+
+    @variant group-multiselect/fui-option {
+      @apply visible box-border flex size-16 items-center justify-center rounded-small border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-icon-12;
+
+      @variant group-selected/fui-option {
+        @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;
+      }
+    }
+
+    @variant group-enabled/fui-option {
+      @variant group-hover/fui-option {
+        @apply border-neutral-foreground-1-hover;
+      }
+
+      @variant group-active/fui-option {
+        @apply border-neutral-foreground-1-hover;
+      }
+    }
+
+    @variant group-disabled/fui-option {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+
+      @variant group-multiselect/fui-option {
+        @apply border-neutral-foreground-disabled;
+      }
+    }
+  }
+}

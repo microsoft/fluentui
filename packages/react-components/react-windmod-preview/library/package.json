@@ -263,6 +263,16 @@
         "default": "./lib-commonjs/color-swatch.cjs"
       }
     },
+    "./combobox": {
+      "import": {
+        "types": "./dist/combobox.d.ts",
+        "default": "./lib/combobox.js"
+      },
+      "require": {
+        "types": "./dist/combobox.d.cts",
+        "default": "./lib-commonjs/combobox.cjs"
+      }
+    },
     "./compound-button": {
       "import": {
         "types": "./dist/compound-button.d.ts",
@@ -473,6 +483,16 @@
         "default": "./lib-commonjs/link.cjs"
       }
     },
+    "./listbox": {
+      "import": {
+        "types": "./dist/listbox.d.ts",
+        "default": "./lib/listbox.js"
+      },
+      "require": {
+        "types": "./dist/listbox.d.cts",
+        "default": "./lib-commonjs/listbox.cjs"
+      }
+    },
     "./menu-button": {
       "import": {
         "types": "./dist/menu-button.d.ts",
@@ -601,6 +621,26 @@
       "require": {
         "types": "./dist/nav-sub-item-group.d.cts",
         "default": "./lib-commonjs/nav-sub-item-group.cjs"
+      }
+    },
+    "./option": {
+      "import": {
+        "types": "./dist/option.d.ts",
+        "default": "./lib/option.js"
+      },
+      "require": {
+        "types": "./dist/option.d.cts",
+        "default": "./lib-commonjs/option.cjs"
+      }
+    },
+    "./option-group": {
+      "import": {
+        "types": "./dist/option-group.d.ts",
+        "default": "./lib/option-group.js"
+      },
+      "require": {
+        "types": "./dist/option-group.d.cts",
+        "default": "./lib-commonjs/option-group.cjs"
       }
     },
     "./overlay-drawer": {

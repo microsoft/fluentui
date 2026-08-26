@@ -1,0 +1,22 @@
+@reference '#theme';
+
+/* The separator's negative inline margin is the exact inverse of the Listbox root's padding, so the
+   rule bleeds to the surface's full width. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-col gap-y-horizontal-xxs;
+
+    @variant not-last {
+      @variant after {
+        @apply -mx-horizontal-xs mt-0 mb-vertical-xs block border-b-(length:--spacing-thin) border-b-neutral-stroke-2 pb-horizontal-xs content-[''];
+      }
+    }
+  }
+
+  /* py-horizontal-s is not a typo: Griffel spells this padding with a horizontal token on the
+     block axis. */
+  .label {
+    @apply block rounded-medium px-horizontal-s-nudge py-horizontal-s text-base-200 leading-base-200 font-semibold text-neutral-foreground-3;
+  }
+}

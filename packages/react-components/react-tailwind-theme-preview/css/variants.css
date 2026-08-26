@@ -49,6 +49,7 @@
 @custom-variant not-checked-mixed (&:where(:not([data-checked='mixed'], [aria-checked='mixed'])));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
 @custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
+@custom-variant multiselect (&:where([data-multiselect]));
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
 @custom-variant open (&:where([open], [data-open], :open));
 @custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
@@ -138,6 +139,10 @@
 @custom-variant focus-visible (&:where([data-fui-focus-visible], :focus-visible));
 @custom-variant focus-within (&:where(:focus-within));
 @custom-variant focus-within-visible (&:where(:has(:focus-visible)));
+
+/* The active-descendant ring, written by @fluentui/react-aria under keyboard navigation only.
+   The attribute is identical on both implementations, so it needs a name rather than a mapping. */
+@custom-variant activedescendant-focusvisible (&:where([data-activedescendant-focusvisible]));
 
 /* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
 @custom-variant empty (&:where([data-empty], :empty));

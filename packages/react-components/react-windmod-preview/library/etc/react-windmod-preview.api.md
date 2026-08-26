@@ -72,60 +72,17 @@ import type { ColorSliderState as ColorSliderState_2 } from '@fluentui/react-hea
 import type { ColorSwatchProps as ColorSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ColorSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ColorSwatchState as ColorSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ComboboxProps as ComboboxProps_2 } from '@fluentui/react-headless-components-preview/combobox';
+import { ComboboxSlots } from '@fluentui/react-headless-components-preview/combobox';
+import type { ComboboxState as ComboboxState_2 } from '@fluentui/react-headless-components-preview/combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
 import { CompoundButtonSlots } from '@fluentui/react-headless-components-preview/compound-button';
 import type { CompoundButtonState as CompoundButtonState_2 } from '@fluentui/react-headless-components-preview/compound-button';
-import type { DialogActionsProps as DialogActionsProps_2 } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogActionsSlots } from '@fluentui/react-headless-components-preview/dialog';
-import type { DialogActionsState as DialogActionsState_2 } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogBodyProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogBodySlots } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogBodyState } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogContextValue } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogContextValues } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogHeaderProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogHeaderSlots } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogHeaderState } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogModalType } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogOpenChangeData } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogOpenChangeEvent } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogOpenChangeEventHandler } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogState } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogSurfaceContextValue } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogSurfaceProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogSurfaceSlots } from '@fluentui/react-headless-components-preview/dialog';
-import type { DialogSurfaceState as DialogSurfaceState_2 } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTitleProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTitleSlots } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTitleState } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTriggerAction } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTriggerProps } from '@fluentui/react-headless-components-preview/dialog';
-import { DialogTriggerState } from '@fluentui/react-headless-components-preview/dialog';
 import type { DividerProps as DividerProps_2 } from '@fluentui/react-headless-components-preview/divider';
 import { DividerSlots } from '@fluentui/react-headless-components-preview/divider';
 import type { DividerState as DividerState_2 } from '@fluentui/react-headless-components-preview/divider';
-import { DrawerBodyProps } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerBodySlots } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerBodyState } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerFooterProps } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerFooterSlots } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerFooterState } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderNavigationProps } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderNavigationSlots } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderNavigationState } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderProps } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderSlots } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderState } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderTitleProps } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderTitleSlots } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerHeaderTitleState } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerProvider } from '@fluentui/react-headless-components-preview/drawer';
-import { DrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
-import type { DrawerState as DrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -139,9 +96,6 @@ import type { ImageState as ImageState_2 } from '@fluentui/react-headless-compon
 import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
-import type { InlineDrawerProps as InlineDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
-import { InlineDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
-import type { InlineDrawerState as InlineDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { InputProps as InputProps_2 } from '@fluentui/react-headless-components-preview/input';
 import { InputSlots } from '@fluentui/react-headless-components-preview/input';
 import type { InputState as InputState_2 } from '@fluentui/react-headless-components-preview/input';
@@ -163,6 +117,10 @@ import type { LabelState as LabelState_2 } from '@fluentui/react-headless-compon
 import type { LinkProps as LinkProps_2 } from '@fluentui/react-headless-components-preview/link';
 import { LinkSlots } from '@fluentui/react-headless-components-preview/link';
 import type { LinkState as LinkState_2 } from '@fluentui/react-headless-components-preview/link';
+import { ListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxProps } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxState } from '@fluentui/react-headless-components-preview/combobox';
 import type { MenuButtonProps as MenuButtonProps_2 } from '@fluentui/react-headless-components-preview/menu-button';
 import { MenuButtonSlots } from '@fluentui/react-headless-components-preview/menu-button';
 import type { MenuButtonState as MenuButtonState_2 } from '@fluentui/react-headless-components-preview/menu-button';
@@ -216,9 +174,12 @@ import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview
 import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
-import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
-import { OverlayDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
-import type { OverlayDrawerState as OverlayDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { OptionGroupProps } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionGroupSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionGroupState } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionProps } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionState } from '@fluentui/react-headless-components-preview/combobox';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
@@ -271,31 +232,20 @@ import { renderColorArea } from '@fluentui/react-headless-components-preview/col
 import { renderColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderCombobox } from '@fluentui/react-headless-components-preview/combobox';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
-import { renderDialog } from '@fluentui/react-headless-components-preview/dialog';
-import { renderDialogActions } from '@fluentui/react-headless-components-preview/dialog';
-import { renderDialogBody } from '@fluentui/react-headless-components-preview/dialog';
-import { renderDialogHeader } from '@fluentui/react-headless-components-preview/dialog';
-import { renderDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
-import { renderDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
-import { renderDrawer } from '@fluentui/react-headless-components-preview/drawer';
-import { renderDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
-import { renderDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
-import { renderDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
-import { renderDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
-import { renderDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
 import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
-import { renderInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
+import { renderListbox } from '@fluentui/react-headless-components-preview/combobox';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { renderMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -309,7 +259,8 @@ import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
-import { renderOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { renderOption } from '@fluentui/react-headless-components-preview/combobox';
+import { renderOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
 import { renderPersona } from '@fluentui/react-headless-components-preview/persona';
 import { renderPopover } from '@fluentui/react-headless-components-preview/popover';
 import { renderPopoverSurface } from '@fluentui/react-headless-components-preview/popover';
@@ -459,26 +410,11 @@ import { useColorPickerContextValue } from '@fluentui/react-headless-components-
 import { useColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useCombobox } from '@fluentui/react-headless-components-preview/combobox';
+import { useComboboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
+import { useComboboxFilter } from '@fluentui/react-headless-components-preview/combobox';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
-import { useDialog } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogActions } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogBody } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogContext } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogContextValues } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogHeader } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogSurfaceContext } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
-import { useDialogTrigger } from '@fluentui/react-headless-components-preview/dialog';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
-import { useDrawer } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerContext } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
-import { useDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
 import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useField } from '@fluentui/react-headless-components-preview/field';
 import { useFieldContext } from '@fluentui/react-headless-components-preview/field';
@@ -486,7 +422,6 @@ import { useFieldContextValues } from '@fluentui/react-headless-components-previ
 import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
-import { useInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -495,6 +430,8 @@ import { useInteractionTagPrimaryContextValues } from '@fluentui/react-headless-
 import { useInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
+import { useListbox } from '@fluentui/react-headless-components-preview/combobox';
+import { useListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { useMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -518,7 +455,8 @@ import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
-import { useOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { useOption } from '@fluentui/react-headless-components-preview/combobox';
+import { useOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
 import { usePersona } from '@fluentui/react-headless-components-preview/persona';
 import { usePopover } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
@@ -1022,6 +960,31 @@ export { ColorSwatchSlots }
 export type ColorSwatchState = ColorSwatchState_2 & Required<Pick<ColorSwatchProps, 'size' | 'shape'>>;
 
 // @public
+export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+// @public
+export type ComboboxAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const comboboxClassNames: {
+    root: string;
+};
+
+// @public
+export type ComboboxProps = ComboboxProps_2 & {
+    appearance?: ComboboxAppearance;
+    size?: ComboboxSize;
+};
+
+// @public
+export type ComboboxSize = 'small' | 'medium' | 'large';
+
+export { ComboboxSlots }
+
+// @public
+export type ComboboxState = ComboboxState_2 & Required<Pick<ComboboxProps, 'appearance' | 'size'>>;
+
+// @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public
@@ -1040,125 +1003,6 @@ export { CompoundButtonSlots }
 
 // @public
 export type CompoundButtonState = CompoundButtonState_2 & Required<Pick<CompoundButtonProps, 'appearance' | 'shape' | 'size'>>;
-
-// @public
-export const Dialog: React_2.FC<DialogProps>;
-
-// @public
-export const DialogActions: ForwardRefComponent<DialogActionsProps>;
-
-// @public
-export const dialogActionsClassNames: {
-    root: string;
-};
-
-// @public
-export type DialogActionsPosition = 'start' | 'end';
-
-// @public
-export type DialogActionsProps = DialogActionsProps_2 & {
-    position?: DialogActionsPosition;
-    fluid?: boolean;
-};
-
-export { DialogActionsSlots }
-
-// @public
-export type DialogActionsState = DialogActionsState_2 & {
-    position: DialogActionsPosition;
-    fluid: boolean;
-};
-
-// @public
-export const DialogBody: ForwardRefComponent<DialogBodyProps>;
-
-// @public
-export const dialogBodyClassNames: {
-    root: string;
-};
-
-export { DialogBodyProps }
-
-export { DialogBodySlots }
-
-export { DialogBodyState }
-
-export { DialogContextValue }
-
-export { DialogContextValues }
-
-// @public
-export const DialogHeader: ForwardRefComponent<DialogHeaderProps>;
-
-// @public
-export const dialogHeaderClassNames: {
-    root: string;
-};
-
-export { DialogHeaderProps }
-
-export { DialogHeaderSlots }
-
-export { DialogHeaderState }
-
-export { DialogModalType }
-
-export { DialogOpenChangeData }
-
-export { DialogOpenChangeEvent }
-
-export { DialogOpenChangeEventHandler }
-
-export { DialogProps }
-
-export { DialogState }
-
-// @public
-export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
-
-// @public
-export const dialogSurfaceClassNames: {
-    root: string;
-};
-
-export { DialogSurfaceContextValue }
-
-export { DialogSurfaceProps }
-
-export { DialogSurfaceSlots }
-
-// @public
-export type DialogSurfaceState = DialogSurfaceState_2 & {
-    nested: boolean;
-};
-
-// @public
-export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
-
-// @public
-export const dialogTitleClassNames: {
-    root: string;
-};
-
-export { DialogTitleProps }
-
-export { DialogTitleSlots }
-
-export { DialogTitleState }
-
-// @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps>;
-
-export { DialogTriggerAction }
-
-// @public
-export const dialogTriggerClassNames: {
-    root: string;
-};
-
-export { DialogTriggerProps }
-
-export { DialogTriggerState }
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -1185,103 +1029,6 @@ export { DividerSlots }
 
 // @public
 export type DividerState = DividerState_2 & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset'>>;
-
-// @public
-export const Drawer: ForwardRefComponent<DrawerProps>;
-
-// @public
-export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
-
-// @public
-export const drawerBodyClassNames: {
-    root: string;
-};
-
-export { DrawerBodyProps }
-
-export { DrawerBodySlots }
-
-export { DrawerBodyState }
-
-// @public
-export const drawerClassNames: {
-    root: string;
-};
-
-export { DrawerContextValue }
-
-// @public
-export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
-
-// @public
-export const drawerFooterClassNames: {
-    root: string;
-};
-
-export { DrawerFooterProps }
-
-export { DrawerFooterSlots }
-
-export { DrawerFooterState }
-
-// @public
-export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
-
-// @public
-export const drawerHeaderClassNames: {
-    root: string;
-};
-
-// @public
-export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
-
-// @public
-export const drawerHeaderNavigationClassNames: {
-    root: string;
-};
-
-export { DrawerHeaderNavigationProps }
-
-export { DrawerHeaderNavigationSlots }
-
-export { DrawerHeaderNavigationState }
-
-export { DrawerHeaderProps }
-
-export { DrawerHeaderSlots }
-
-export { DrawerHeaderState }
-
-// @public
-export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
-
-// @public
-export const drawerHeaderTitleClassNames: {
-    root: string;
-};
-
-export { DrawerHeaderTitleProps }
-
-export { DrawerHeaderTitleSlots }
-
-export { DrawerHeaderTitleState }
-
-// @public (undocumented)
-export type DrawerProps = (OverlayDrawerProps & {
-    type?: 'overlay';
-}) | (InlineDrawerProps & {
-    type: 'inline';
-});
-
-export { DrawerProvider }
-
-// @public
-export type DrawerSize = 'small' | 'medium' | 'large' | 'full';
-
-export { DrawerSlots }
-
-// @public (undocumented)
-export type DrawerState = DrawerState_2;
 
 // @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
@@ -1392,28 +1139,6 @@ export { ImageSwatchSlots }
 export type ImageSwatchState = ImageSwatchState_2 & {
     size: SwatchPickerSize;
     shape: SwatchPickerShape;
-};
-
-// @public
-export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
-
-// @public
-export const inlineDrawerClassNames: {
-    root: string;
-};
-
-// @public
-export type InlineDrawerProps = InlineDrawerProps_2 & {
-    size?: DrawerSize;
-    separator?: boolean;
-};
-
-export { InlineDrawerSlots }
-
-// @public (undocumented)
-export type InlineDrawerState = InlineDrawerState_2 & {
-    size: DrawerSize;
-    separator: boolean;
 };
 
 // @public
@@ -1562,6 +1287,22 @@ export { LinkSlots }
 
 // @public
 export type LinkState = LinkState_2 & Required<Pick<LinkProps, 'appearance' | 'inline'>>;
+
+// @public
+export const Listbox: ForwardRefComponent<ListboxProps>;
+
+// @public
+export const listboxClassNames: {
+    root: string;
+};
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxSlots }
+
+export { ListboxState }
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
@@ -1808,24 +1549,33 @@ export { OnVisibleChangeData }
 export { OpenPopoverEvents }
 
 // @public
-export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
+const Option_2: ForwardRefComponent<OptionProps>;
+export { Option_2 as Option }
 
 // @public
-export const overlayDrawerClassNames: {
+export const optionClassNames: {
     root: string;
 };
 
 // @public
-export type OverlayDrawerProps = OverlayDrawerProps_2 & {
-    size?: DrawerSize;
+export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
+
+// @public
+export const optionGroupClassNames: {
+    root: string;
 };
 
-export { OverlayDrawerSlots }
+export { OptionGroupProps }
 
-// @public (undocumented)
-export type OverlayDrawerState = OverlayDrawerState_2 & {
-    size: DrawerSize;
-};
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
 
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
@@ -2086,33 +1836,11 @@ export { renderColorSlider }
 
 export { renderColorSwatch }
 
+export { renderCombobox }
+
 export { renderCompoundButton }
 
-export { renderDialog }
-
-export { renderDialogActions }
-
-export { renderDialogBody }
-
-export { renderDialogHeader }
-
-export { renderDialogSurface }
-
-export { renderDialogTitle }
-
 export { renderDivider }
-
-export { renderDrawer }
-
-export { renderDrawerBody }
-
-export { renderDrawerFooter }
-
-export { renderDrawerHeader }
-
-export { renderDrawerHeaderNavigation }
-
-export { renderDrawerHeaderTitle }
 
 export { renderEmptySwatch }
 
@@ -2121,8 +1849,6 @@ export { renderField }
 export { renderImage }
 
 export { renderImageSwatch }
-
-export { renderInlineDrawer }
 
 export { renderInput }
 
@@ -2135,6 +1861,8 @@ export { renderInteractionTagSecondary }
 export { renderLabel }
 
 export { renderLink }
+
+export { renderListbox }
 
 export { renderMenuButton }
 
@@ -2162,7 +1890,9 @@ export { renderNavSubItem }
 
 export { renderNavSubItemGroup }
 
-export { renderOverlayDrawer }
+export { renderOption }
+
+export { renderOptionGroup }
 
 export { renderPersona }
 
@@ -2928,87 +2658,24 @@ export { useColorSwatch }
 // @public
 export const useColorSwatchStyles: (state: ColorSwatchState) => ColorSwatchState;
 
+export { useCombobox }
+
+export { useComboboxContextValues }
+
+export { useComboboxFilter }
+
+// @public
+export const useComboboxStyles: (state: ComboboxState) => ComboboxState;
+
 export { useCompoundButton }
 
 // @public
 export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
 
-export { useDialog }
-
-export { useDialogActions }
-
-// @public
-export const useDialogActionsStyles: (state: DialogActionsState) => DialogActionsState;
-
-export { useDialogBody }
-
-// @public
-export const useDialogBodyStyles: (state: DialogBodyState) => DialogBodyState;
-
-export { useDialogContext }
-
-export { useDialogContextValues }
-
-export { useDialogHeader }
-
-// @public
-export const useDialogHeaderStyles: (state: DialogHeaderState) => DialogHeaderState;
-
-export { useDialogSurface }
-
-export { useDialogSurfaceContext }
-
-// @public
-export const useDialogSurfaceStyles: (state: DialogSurfaceState) => DialogSurfaceState;
-
-export { useDialogTitle }
-
-// @public
-export const useDialogTitleStyles: (state: DialogTitleState) => DialogTitleState;
-
-export { useDialogTrigger }
-
-// @public
-export const useDialogTriggerStyles: (state: DialogTriggerState) => DialogTriggerState;
-
 export { useDivider }
 
 // @public
 export const useDividerStyles: (state: DividerState) => DividerState;
-
-export { useDrawer }
-
-export { useDrawerBody }
-
-// @public
-export const useDrawerBodyStyles: (state: DrawerBodyState) => DrawerBodyState;
-
-export { useDrawerContext }
-
-export { useDrawerContextValue }
-
-export { useDrawerFooter }
-
-// @public
-export const useDrawerFooterStyles: (state: DrawerFooterState) => DrawerFooterState;
-
-export { useDrawerHeader }
-
-export { useDrawerHeaderNavigation }
-
-// @public
-export const useDrawerHeaderNavigationStyles: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
-
-// @public
-export const useDrawerHeaderStyles: (state: DrawerHeaderState) => DrawerHeaderState;
-
-export { useDrawerHeaderTitle }
-
-// @public
-export const useDrawerHeaderTitleStyles: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
-
-// @public
-export const useDrawerStyles: (state: DrawerState) => DrawerState;
 
 export { useEmptySwatch }
 
@@ -3035,11 +2702,6 @@ export { useImageSwatch }
 
 // @public
 export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
-
-export { useInlineDrawer }
-
-// @public
-export const useInlineDrawerStyles: (state: InlineDrawerState) => InlineDrawerState;
 
 export { useInput }
 
@@ -3074,6 +2736,13 @@ export { useLink }
 
 // @public
 export const useLinkStyles: (state: LinkState) => LinkState;
+
+export { useListbox }
+
+export { useListboxContextValues }
+
+// @public
+export const useListboxStyles: (state: ListboxState) => ListboxState;
 
 export { useMenuButton }
 
@@ -3157,10 +2826,15 @@ export const useNavSubItemGroupStyles: (state: NavSubItemGroupState) => NavSubIt
 // @public
 export const useNavSubItemStyles: (state: NavSubItemState) => NavSubItemState;
 
-export { useOverlayDrawer }
+export { useOption }
+
+export { useOptionGroup }
 
 // @public
-export const useOverlayDrawerStyles: (state: OverlayDrawerState) => OverlayDrawerState;
+export const useOptionGroupStyles: (state: OptionGroupState) => OptionGroupState;
+
+// @public
+export const useOptionStyles: (state: OptionState) => OptionState;
 
 export { usePersona }
 
