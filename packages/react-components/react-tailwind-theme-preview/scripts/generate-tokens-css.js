@@ -240,8 +240,9 @@ function strokeWidthCanonicalValue(step) {
 /**
  * A theme value rewritten onto the `--base-scale` axis: `14px` → `calc(14px * var(--base-scale))`,
  * the same literal form stroke widths use. Applies to every namespace carrying
- * `baseScaled: true` (the type ramp) in EVERY theme, so the whole UI scales coherently with the
- * root font size. Rendering is unchanged at the default 16px root, where `--base-scale` is 1.
+ * `baseScaled: true` (the type ramp — font sizes and their paired line heights) in EVERY theme,
+ * so the whole UI scales coherently with the root font size. Rendering is unchanged at the
+ * default 16px root, where `--base-scale` is 1.
  *
  * A non-px value would silently produce `calc(<junk> * var(--base-scale))`, so it throws instead.
  *
@@ -562,6 +563,10 @@ const NAMESPACES = [
     namespace: 'leading',
     utility: 'leading-*',
     heading: 'Line heights',
+    // Line heights pair 1:1 with the font sizes above and must ride the same axis:
+    // a scaled --text-base-300 against a fixed --leading-base-300 collapses the
+    // line-box ratio (1.43 → 1.14 at a 20px root), and the hero steps clip.
+    baseScaled: true,
   },
   {
     prefix: 'spacingHorizontal',
@@ -889,8 +894,10 @@ function render(options = {}) {
   out.push(' * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes');
   out.push(' * carry identical values.');
   out.push(' *');
-  out.push(' * The type ramp (--text-*) carries the same literal calc(<px> * var(--base-scale)) form as');
-  out.push(' * stroke widths: font sizes follow the root font size, not the --spacing density knob.');
+  out.push(' * The type ramp (--text-* and its paired --leading-*) carries the same literal');
+  out.push(' * calc(<px> * var(--base-scale)) form as stroke widths: type follows the root font size,');
+  out.push(' * not the --spacing density knob. Both halves scale together so the line-box ratio holds');
+  out.push(' * at any root size. Radii and shadow offsets deliberately stay unscaled.');
   out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');

@@ -74,7 +74,9 @@
 
       @variant forced-colors {
         @variant after {
-          @apply outline-2 -outline-offset-2 outline-transparent-stroke outline-solid;
+          @apply outline-(length:--spacing-thick) outline-transparent-stroke outline-solid;
+
+          outline-offset: calc(var(--spacing-thick) * -1);
         }
       }
     }

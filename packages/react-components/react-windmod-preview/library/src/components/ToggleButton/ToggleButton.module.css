@@ -136,7 +136,7 @@
        outranks every recolour above by specificity; here position alone carries that. */
     @variant focus-visible {
       border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
-      border-width: var(--fui-focus-ring-width, 1px);
+      border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
 
       @variant checked {
         @variant appearance-outline {
@@ -210,7 +210,7 @@
         }
 
         @variant focus {
-          @apply border border-solid border-[HighlightText] outline-[color:Highlight];
+          @apply border-(length:--spacing-thin) border-solid border-[HighlightText] outline-[color:Highlight];
         }
       }
     }

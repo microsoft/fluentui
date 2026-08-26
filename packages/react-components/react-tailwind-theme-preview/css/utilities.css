@@ -29,9 +29,10 @@
   @variant after {
     @apply pointer-events-none absolute z-1;
 
-    border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--color-stroke-focus-2));
+    border: var(--fui-focus-outline-width, var(--stroke-width-thick)) solid
+      var(--fui-focus-outline-color, var(--color-stroke-focus-2));
     border-radius: var(--fui-focus-outline-radius, var(--radius-medium));
-    inset: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    inset: calc(0px - var(--fui-focus-outline-width, var(--stroke-width-thick)) - var(--fui-focus-outline-offset, 0px));
   }
 
   @variant forced-colors {
@@ -51,7 +52,7 @@
 
   border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
   border-radius: var(--fui-focus-ring-radius, var(--radius-medium));
-  border-width: var(--fui-focus-ring-width, 1px);
+  border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
 
   @apply outline-(length:--spacing-thick) outline-transparent-stroke outline-solid;
 

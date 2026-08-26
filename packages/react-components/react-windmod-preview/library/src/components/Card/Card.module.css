@@ -190,7 +190,7 @@
       @apply fui-focus-outline;
 
       --fui-focus-outline-radius: var(--fui-card-border-radius);
-      --fui-focus-outline-offset: -2px;
+      --fui-focus-outline-offset: calc(var(--stroke-width-thick) * -1);
     }
   }
 
@@ -199,7 +199,7 @@
       @apply fui-focus-outline;
 
       --fui-focus-outline-radius: var(--fui-card-border-radius);
-      --fui-focus-outline-offset: -2px;
+      --fui-focus-outline-offset: calc(var(--stroke-width-thick) * -1);
     }
   }
 

@@ -24,14 +24,14 @@
   }
 
   .icon {
-    --fui-breadcrumb-icon-size: calc(16px * var(--base-scale));
+    --fui-breadcrumb-icon-size: var(--text-icon-16);
 
     @apply me-horizontal-xs size-(--fui-breadcrumb-icon-size) text-[length:var(--fui-breadcrumb-icon-size)] leading-base-400;
 
     @variant group-size-small/fui-breadcrumb-button {
       @apply leading-base-200;
 
-      --fui-breadcrumb-icon-size: calc(12px * var(--base-scale));
+      --fui-breadcrumb-icon-size: var(--text-icon-12);
     }
 
     @variant group-size-large/fui-breadcrumb-button {

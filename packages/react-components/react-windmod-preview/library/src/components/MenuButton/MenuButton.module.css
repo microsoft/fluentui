@@ -37,7 +37,7 @@
          declarations stay raw. */
       @variant focus-visible {
         border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
-        border-width: var(--fui-focus-ring-width, 1px);
+        border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
       }
 
       /* Last in the block. Griffel writes every forced-colors rule into its media bucket, which

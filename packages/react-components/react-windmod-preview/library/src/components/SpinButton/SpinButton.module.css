@@ -14,10 +14,10 @@
     /* border-solid is deliberately absent: a lone border-bottom width with an explicit style
        gives the other three sides a computed width and grows the box. */
     @variant after {
-      @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-2 border-b-compound-brand-stroke content-[''];
+      @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
 
-      height: max(calc(var(--spacing) * 2), var(--radius-medium));
-      clip-path: inset(calc(100% - var(--spacing) * 2) 0 0 0);
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
       transform: scaleX(0);
       transition-property: transform;
       transition-duration: var(--duration-ultra-fast);
@@ -35,7 +35,7 @@
     }
 
     @variant focus-within {
-      @apply outline-2 outline-transparent outline-solid;
+      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);

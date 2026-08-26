@@ -31,6 +31,6 @@
        is not a box property, so a property list assembled by eye misses it. */
     position-anchor: none;
 
-    @apply box-border flex min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto bg-neutral-background-1 p-horizontal-xs outline-1 outline-transparent-stroke;
+    @apply box-border flex min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto bg-neutral-background-1 p-horizontal-xs outline-(length:--spacing-thin) outline-transparent-stroke;
   }
 }

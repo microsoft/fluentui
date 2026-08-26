@@ -56,7 +56,7 @@
   }
 
   .validation-message-icon {
-    @apply ms-[calc(var(--spacing)*-12-var(--spacing-horizontal-xs))] me-horizontal-xs inline-block align-[calc(var(--spacing)*-1)] text-[length:calc(var(--spacing)*12)] leading-[0];
+    @apply ms-[calc(var(--spacing)*-12-var(--spacing-horizontal-xs))] me-horizontal-xs inline-block align-[calc(var(--spacing)*-1)] text-icon-12 leading-[0];
 
     @variant group-validate-state-error/fui-field {
       @apply text-palette-red-foreground-1;

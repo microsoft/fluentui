@@ -27,10 +27,10 @@
        Combobox all ship against the same Griffel pair, reproduced here rather than diverged from
        alone. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-2 border-b-compound-brand-stroke content-[''];
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
 
-      height: max(calc(var(--spacing) * 2), var(--radius-medium));
-      clip-path: inset(calc(100% - var(--spacing) * 2) 0 0 0);
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
       transform: scaleX(0);
       transition-property: transform;
       transition-duration: var(--duration-ultra-fast);
@@ -41,7 +41,7 @@
     }
 
     @variant focus-within {
-      @apply outline-2 outline-transparent outline-solid;
+      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);
@@ -176,7 +176,7 @@
       @apply border-transparent;
 
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-2 border-solid border-stroke-focus-2 content-[''];
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2 content-[''];
 
         @variant forced-colors {
           @apply border-[Highlight];

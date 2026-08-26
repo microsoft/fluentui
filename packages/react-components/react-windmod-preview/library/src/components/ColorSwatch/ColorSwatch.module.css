@@ -11,7 +11,7 @@
 
     /* --fui-SwatchPicker--color and --fui-SwatchPicker--borderColor are per-instance custom
        properties the headless base hook writes as an inline style. */
-    border: 1px solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
+    border: var(--stroke-width-thin) solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
 
     @variant hover {
       @apply cursor-pointer border-none border-current;

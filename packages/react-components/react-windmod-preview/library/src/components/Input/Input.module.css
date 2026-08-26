@@ -8,10 +8,10 @@
     @apply relative box-border inline-flex min-h-32 flex-nowrap items-center gap-horizontal-xxs rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1 align-middle font-base text-base-300 leading-base-300 font-regular;
 
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-2 border-b-compound-brand-stroke content-[''];
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
 
-      height: max(calc(var(--spacing) * 2), var(--radius-medium));
-      clip-path: inset(calc(100% - var(--spacing) * 2) 0 0 0);
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
       transform: scaleX(0);
       transition-property: transform;
       transition-duration: var(--duration-ultra-fast);
@@ -56,7 +56,7 @@
     }
 
     @variant focus-within {
-      @apply outline-2 outline-transparent outline-solid;
+      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);

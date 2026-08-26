@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply size-28 rounded-none border border-dashed border-neutral-foreground-4 bg-transparent-background;
+    @apply size-28 rounded-none border-(length:--spacing-thin) border-dashed border-neutral-foreground-4 bg-transparent-background;
 
     @variant size-extra-small {
       @apply size-20;

@@ -4,7 +4,7 @@
   /* The `--fui-Area*` custom properties are written by the headless hook into the root's inline
      style and are read only here. */
   .root {
-    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start rounded-medium border border-solid border-neutral-stroke-1 forced-color-adjust-none;
+    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 forced-color-adjust-none;
 
     --fui-color-area-thumb-size: calc(20px * var(--base-scale));
 
