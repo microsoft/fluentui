@@ -340,10 +340,6 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 //
 // @public
 export class Badge extends FASTElement {
-    appearance: BadgeAppearance;
-    color: BadgeColor;
-    shape?: BadgeShape;
-    size?: BadgeSize;
 }
 
 // @internal
