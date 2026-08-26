@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarGroup } from './ToolbarGroup';
@@ -8,9 +9,6 @@ import type { ToolbarGroupState } from './ToolbarGroup.types';
 import { toolbarGroupClassNames, useToolbarGroupStyles } from './useToolbarGroupStyles';
 
 import styles from './ToolbarGroup.module.css';
-
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 describe('ToolbarGroup', () => {
   isConformant({
@@ -27,7 +25,7 @@ describe('ToolbarGroup', () => {
     expect(root).toHaveClass('group/fui-toolbar-group');
     expect(root.classList[0]).toBe('fui-toolbar-group');
     expect(toolbarGroupClassNames.root).toBe('fui-toolbar-group group/fui-toolbar-group');
-    expect(occurrences(root.className, styles.root)).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('renders a presentation role', () => {
@@ -71,7 +69,7 @@ describe('ToolbarGroup', () => {
 
     expect(root.id).toBe('tb-group');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(root.style.gap).toBe('6px');
     expect(root.textContent).toBe('child');
   });
@@ -88,6 +86,6 @@ describe('ToolbarGroup', () => {
     expect(styled.root).not.toBe(state.root);
     expect(state.root.className).toBe('consumer');
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.root.className!, styles.root)).toBe(1);
+    expect(classOccurrences(styled.root.className!, styles.root)).toBe(1);
   });
 });

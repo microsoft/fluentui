@@ -4,6 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useSwatchPickerContextValue } from '@fluentui/react-headless-components-preview/swatch-picker';
 
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
 import { EmptySwatch } from '../EmptySwatch/EmptySwatch';
 import { ImageSwatch } from '../ImageSwatch/ImageSwatch';
@@ -28,10 +29,6 @@ jest.mock('@fluentui/react-headless-components-preview/swatch-picker', () => {
 
 const spacings = ['small', 'medium'] as const;
 
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
-
 // Reads the context the picker publishes, which is the only place the difference between
 // "shape left undefined" and "shape defaulted to square" is observable — every swatch resolves
 // square for itself either way.
@@ -49,7 +46,7 @@ describe('SwatchPicker', () => {
     displayName: 'SwatchPicker',
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<SwatchPicker data-testid="root" />);
 
     const root = getByTestId('root');

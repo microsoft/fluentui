@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarToggleButton } from './ToolbarToggleButton';
 import type { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
@@ -9,11 +11,6 @@ import { toolbarToggleButtonClassNames, useToolbarToggleButtonStyles } from './u
 
 import buttonStyles from '../Button/Button.module.css';
 import styles from './ToolbarToggleButton.module.css';
-
-// The jest css-module proxy drops the component and hash segments, so Button's, ToggleButton's
-// and ToolbarToggleButton's `root` are one string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>('span');
@@ -24,10 +21,6 @@ const iconOf = (root: HTMLElement): HTMLElement => {
 
   return icon;
 };
-
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
 
 const Glyph = (): React.ReactElement => <i data-testid="glyph" />;
 
@@ -66,7 +59,7 @@ describe('ToolbarToggleButton', () => {
       </ToolbarToggleButton>,
     );
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(3);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(3);
   });
 
   it('carries the icon class of all three stylesheets', () => {
@@ -76,7 +69,7 @@ describe('ToolbarToggleButton', () => {
       </ToolbarToggleButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(3);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(3);
   });
 
   // The toolbar surface exposes no iconPosition prop (Griffel's toolbar props omit it), so
@@ -196,7 +189,7 @@ describe('ToolbarToggleButton', () => {
 
     expect(root.id).toBe('tb-toggle');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {
@@ -220,7 +213,7 @@ describe('ToolbarToggleButton', () => {
     expect(styled.checked).toBe(true);
     expect(stampsOf(styled.root)['data-icon-position']).toBe('before');
     expect(stampsOf(styled.root)['data-checked']).toBe('');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(3);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(3);
   });
 
   it('renders no icon slot when the consumer supplies none', () => {

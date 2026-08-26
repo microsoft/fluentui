@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Toolbar } from './Toolbar';
 import type { ToolbarState } from './Toolbar.types';
@@ -13,9 +14,6 @@ import { ToolbarRadioGroup } from '../ToolbarRadioGroup/ToolbarRadioGroup';
 import { ToolbarToggleButton } from '../ToolbarToggleButton/ToolbarToggleButton';
 
 import styles from './Toolbar.module.css';
-
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const contextValuesSpy = jest.fn();
 
@@ -83,7 +81,7 @@ describe('Toolbar', () => {
     expect(root).toHaveClass('group/fui-toolbar');
     expect(root.classList[0]).toBe('fui-toolbar');
     expect(toolbarClassNames.root).toBe('fui-toolbar group/fui-toolbar');
-    expect(occurrences(root.className, styles.root)).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('stamps data-size, defaulting to medium', () => {
@@ -206,6 +204,6 @@ describe('Toolbar', () => {
     expect(styled.size).toBe('large');
     expect(styled.vertical).toBe(true);
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.root.className!, styles.root)).toBe(1);
+    expect(classOccurrences(styled.root.className!, styles.root)).toBe(1);
   });
 });

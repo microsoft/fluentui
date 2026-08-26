@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarRadioButton } from './ToolbarRadioButton';
 import type { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
@@ -9,11 +11,6 @@ import { toolbarRadioButtonClassNames, useToolbarRadioButtonStyles } from './use
 
 import buttonStyles from '../Button/Button.module.css';
 import styles from './ToolbarRadioButton.module.css';
-
-// The jest css-module proxy drops the component and hash segments, so Button's, ToggleButton's
-// and ToolbarRadioButton's `root` are one string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>('span');
@@ -24,10 +21,6 @@ const iconOf = (root: HTMLElement): HTMLElement => {
 
   return icon;
 };
-
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
 
 const Glyph = (): React.ReactElement => <i data-testid="glyph" />;
 
@@ -60,8 +53,8 @@ describe('ToolbarRadioButton', () => {
 
     const root = getByTestId('root');
 
-    expect(occurrences(root.className, styles.root)).toBe(3);
-    expect(occurrences(iconOf(root).className, styles.icon)).toBe(3);
+    expect(classOccurrences(root, styles.root)).toBe(3);
+    expect(classOccurrences(iconOf(root), styles.icon)).toBe(3);
   });
 
   // The toolbar surface exposes no iconPosition prop (Griffel's toolbar props omit it), so
@@ -158,7 +151,7 @@ describe('ToolbarRadioButton', () => {
 
     expect(root.id).toBe('tb-radio');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {
@@ -180,7 +173,7 @@ describe('ToolbarRadioButton', () => {
     expect(state.root).not.toHaveProperty('data-icon-position');
     expect(state.icon!.className).toBe('consumer-icon');
     expect(stampsOf(styled.root)['data-icon-position']).toBe('before');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(3);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(3);
   });
 
   it('renders no icon slot when the consumer supplies none', () => {

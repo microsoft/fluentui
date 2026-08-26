@@ -1,22 +1,15 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
+import { stampsOf } from '../../testing/stampsOf';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarDivider } from './ToolbarDivider';
 import type { ToolbarDividerState } from './ToolbarDivider.types';
 import { toolbarDividerClassNames, useToolbarDividerStyles } from './useToolbarDividerStyles';
 
 import styles from './ToolbarDivider.module.css';
-
-// The jest css-module proxy drops the component and hash segments, so Divider's `root` and
-// ToolbarDivider's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
-
-// The styles hooks widen the root with their data attributes internally but return the
-// component's declared state type, so a stamp is read back through this cast.
-const stampsOf = (root: object): Record<string, string | undefined> => root as Record<string, string | undefined>;
 
 describe('ToolbarDivider', () => {
   isConformant({
@@ -40,7 +33,7 @@ describe('ToolbarDivider', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<ToolbarDivider data-testid="root" />);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('stamps data-orientation, inverted against the toolbar', () => {
@@ -90,7 +83,7 @@ describe('ToolbarDivider', () => {
 
     expect(root.id).toBe('tb-div');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {
@@ -110,7 +103,7 @@ describe('ToolbarDivider', () => {
     expect(state.root).not.toHaveProperty('data-orientation');
     expect(stampsOf(styled.root)['data-orientation']).toBe('vertical');
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.root.className!, styles.root)).toBe(2);
+    expect(classOccurrences(styled.root.className!, styles.root)).toBe(2);
   });
 
   it('spells a horizontal line when the divider is not vertical', () => {

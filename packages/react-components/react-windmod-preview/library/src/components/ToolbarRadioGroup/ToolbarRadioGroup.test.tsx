@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarRadioGroup } from './ToolbarRadioGroup';
@@ -9,9 +10,6 @@ import { toolbarRadioGroupClassNames, useToolbarRadioGroupStyles } from './useTo
 
 // This component ships no stylesheet of its own: the look is ToolbarGroup's in full.
 import groupStyles from '../ToolbarGroup/ToolbarGroup.module.css';
-
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 describe('ToolbarRadioGroup', () => {
   isConformant({
@@ -37,7 +35,7 @@ describe('ToolbarRadioGroup', () => {
   it('carries the ToolbarGroup root class exactly once', () => {
     const { getByTestId } = render(<ToolbarRadioGroup data-testid="root" />);
 
-    expect(occurrences(getByTestId('root').className, groupStyles.root)).toBe(1);
+    expect(classOccurrences(getByTestId('root'), groupStyles.root)).toBe(1);
   });
 
   it('renders a radiogroup role', () => {
@@ -79,7 +77,7 @@ describe('ToolbarRadioGroup', () => {
 
     expect(root.id).toBe('tb-radio-group');
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
     expect(root.textContent).toBe('child');
   });
 
@@ -95,6 +93,6 @@ describe('ToolbarRadioGroup', () => {
     expect(styled.root).not.toBe(state.root);
     expect(state.root.className).toBe('consumer');
     expect(styled.root.className).toContain('consumer');
-    expect(occurrences(styled.root.className!, groupStyles.root)).toBe(1);
+    expect(classOccurrences(styled.root.className!, groupStyles.root)).toBe(1);
   });
 });

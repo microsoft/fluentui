@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { Switch } from './Switch';
 import type { SwitchState } from './Switch.types';
@@ -50,13 +51,6 @@ const glyph = (indicator: HTMLElement | null) => {
   );
 };
 
-// classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-const occurrences = (element: Element, token: string) =>
-  element
-    .getAttribute('class')!
-    .split(/\s+/)
-    .filter(candidate => candidate === token).length;
-
 describe('Switch', () => {
   isConformant({
     Component: Switch,
@@ -77,7 +71,7 @@ describe('Switch', () => {
     const { root, input, indicator, label } = renderSwitch({ label: 'Hello' });
 
     expect(input).toHaveClass('peer/fui-switch');
-    expect(occurrences(input, 'peer/fui-switch')).toBe(1);
+    expect(classOccurrences(input, 'peer/fui-switch')).toBe(1);
     expect(root).not.toHaveClass('peer/fui-switch');
     expect(indicator).not.toHaveClass('peer/fui-switch');
     expect(label).not.toHaveClass('peer/fui-switch');
@@ -305,8 +299,8 @@ describe('Switch', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderSwitch({ className: 'consumer' });
 
-    expect(occurrences(root, 'consumer')).toBe(1);
-    expect(occurrences(root, styles.root)).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
+    expect(classOccurrences(root, styles.root)).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {

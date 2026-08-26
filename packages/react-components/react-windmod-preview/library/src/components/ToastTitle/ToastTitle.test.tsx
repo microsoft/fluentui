@@ -132,7 +132,7 @@ describe('ToastTitle', () => {
     expect(glyphPath(renderTitle().media)).toBe(container.querySelector('path')?.getAttribute('d'));
   });
 
-  // The D1 rule fires on null OR undefined children, so an empty media object still gets the
+  // The glyph rule fires on null OR undefined children, so an empty media object still gets the
   // glyph where Griffel blanks it. Removing the slot is still spelled `media={null}`.
   it('restores the glyph for a media slot with empty children', () => {
     expect(glyphPath(renderTitle({ media: {} }, 'success').media)).not.toBeNull();

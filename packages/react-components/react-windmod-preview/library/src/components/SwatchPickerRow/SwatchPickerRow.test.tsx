@@ -32,7 +32,7 @@ describe('SwatchPickerRow', () => {
     displayName: 'SwatchPickerRow',
   });
 
-  it('stamps its marker pair and module class, slash-free first', () => {
+  it('stamps its marker pair, slash-free class first', () => {
     const { getByTestId } = render(<SwatchPickerRow data-testid="root" />);
 
     const root = getByTestId('root');

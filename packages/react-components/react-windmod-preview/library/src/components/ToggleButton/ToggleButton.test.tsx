@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { ToggleButton } from './ToggleButton';
 import type { ToggleButtonState } from './ToggleButton.types';
 import { toggleButtonClassNames, useToggleButtonStyles } from './useToggleButtonStyles';
 
 import styles from './ToggleButton.module.css';
-
-// The jest css-module proxy drops the component and hash segments, so Button's `root` and
-// ToggleButton's `root` are the same string — only the occurrence count distinguishes them.
-const occurrences = (className: string, target: string): number =>
-  className.split(' ').filter(name => name === target).length;
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>('span');
@@ -47,7 +43,7 @@ describe('ToggleButton', () => {
   it('carries the root class of both stylesheets', () => {
     const { getByTestId } = render(<ToggleButton data-testid="root">Toggle</ToggleButton>);
 
-    expect(occurrences(getByTestId('root').className, styles.root)).toBe(2);
+    expect(classOccurrences(getByTestId('root'), styles.root)).toBe(2);
   });
 
   it('keeps a consumer className on the root', () => {
@@ -60,7 +56,7 @@ describe('ToggleButton', () => {
     const root = getByTestId('root');
 
     expect(root).toHaveClass('consumer');
-    expect(occurrences(root.className, 'consumer')).toBe(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('carries the icon class of both stylesheets', () => {
@@ -70,7 +66,7 @@ describe('ToggleButton', () => {
       </ToggleButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(2);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(2);
   });
 
   it('keeps the data attributes useButtonStyles resolves', () => {
@@ -126,7 +122,7 @@ describe('ToggleButton', () => {
       </ToggleButton>,
     );
 
-    expect(occurrences(iconOf(getByTestId('root')).className, styles.icon)).toBe(2);
+    expect(classOccurrences(iconOf(getByTestId('root')), styles.icon)).toBe(2);
   });
 
   it('spells the toggled state as aria-checked under role="checkbox"', () => {
@@ -241,7 +237,7 @@ describe('ToggleButton', () => {
     expect(styled.root.className).toContain(toggleButtonClassNames.root);
     expect(styled.root['data-checked']).toBe('');
     expect(styled.icon!.className).toContain('consumer-icon');
-    expect(occurrences(styled.icon!.className!, styles.icon)).toBe(2);
+    expect(classOccurrences(styled.icon!.className!, styles.icon)).toBe(2);
   });
 
   it('renders no icon slot when the consumer supplies none', () => {

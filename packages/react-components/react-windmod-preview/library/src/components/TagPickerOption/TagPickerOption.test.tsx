@@ -41,7 +41,7 @@ describe('TagPickerOption', () => {
     requiredProps: { value: 'cat', children: 'Cat' } as Partial<TagPickerOptionProps>,
   });
 
-  // T-7 / M12. `fui-Option` is react-combobox's literal string, injected by the headless hook and
+  // `fui-Option` is react-combobox's literal string, injected by the headless hook and
   // carried through `state.root.className`, which every windmod clsx puts LAST. It is load-bearing
   // behaviour: the picker's active-descendant controller finds options by exactly that class, and
   // its capital O keeps it from ever activating windmod's own lowercase `fui-option` group variants.

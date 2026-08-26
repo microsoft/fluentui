@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
+import { classOccurrences } from '../../testing/classOccurrences';
 import { isConformant } from '../../testing/isConformant';
 import { TagPicker } from '../TagPicker';
 import type { TagPickerProps } from '../TagPicker/TagPicker.types';
@@ -222,13 +223,7 @@ describe('TagPickerControl', () => {
   it('keeps a consumer className on the root exactly once', () => {
     const { root } = renderControl({}, { className: 'consumer' });
 
-    // classList is an ordered set, so a duplicated token is only visible in the raw attribute.
-    expect(
-      root
-        .getAttribute('class')!
-        .split(/\s+/)
-        .filter(name => name === 'consumer'),
-    ).toHaveLength(1);
+    expect(classOccurrences(root, 'consumer')).toBe(1);
   });
 
   it('does not mutate the state it is given', () => {
