@@ -52,5 +52,20 @@ export const ButtonVrScene = ({ Button, Icon }: { Button: ButtonLike; Icon: Reac
         <Button key={shape} shape={shape} icon={<Icon />} aria-label="icon" />
       ))}
     </div>
+    {/* Falsy children beside an icon. Griffel reads these as icon-only, so it drops both the text
+        and the gap; the row pins that Button's gap follows plain falsiness rather than a count of
+        rendered children. The trailing pair keeps a truthy `0`-like string and an empty array,
+        the two values a counting predicate would get wrong in the other direction. */}
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <Button icon={<Icon />}>{0}</Button>
+      <Button icon={<Icon />} iconPosition="after">
+        {0}
+      </Button>
+      <Button icon={<Icon />}>{''}</Button>
+      <Button icon={<Icon />}>{null}</Button>
+      <Button icon={<Icon />} aria-label="icon" />
+      <Button icon={<Icon />}>{'0'}</Button>
+      <Button icon={<Icon />}>{[]}</Button>
+    </div>
   </div>
 );

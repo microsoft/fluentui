@@ -30,7 +30,7 @@
   .icon {
     @apply size-40 text-hero-900;
 
-    @variant group-not-empty/fui-compound-button {
+    @variant group-not-content-empty/fui-compound-button {
       @variant group-icon-before/fui-compound-button {
         @apply me-horizontal-m;
       }

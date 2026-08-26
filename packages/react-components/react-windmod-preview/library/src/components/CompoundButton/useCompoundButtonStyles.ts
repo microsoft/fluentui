@@ -15,6 +15,7 @@ export const compoundButtonClassNames: { root: string } = {
 
 type CompoundButtonRootDataAttributes = {
   'data-icon-position'?: CompoundButtonState['iconPosition'];
+  'data-content-empty'?: true;
 };
 
 /**
@@ -22,6 +23,12 @@ type CompoundButtonRootDataAttributes = {
  * data-disabled/-disabled-focusable/-icon-only/-has-secondary-content and useButtonStyles stamps
  * data-appearance/-size/-empty; data-icon-position is the one attribute the headless compound
  * hook omits that Button's and this component's icon spacing both select on.
+ *
+ * `data-content-empty` must test for nullish, not falsiness: this component's icon margin is
+ * gated on `children !== undefined && children !== null` while Button's is gated on
+ * `!!children`, and the two disagree for `children={0}` and `children=""` — both of which
+ * CompoundButton renders inside the content container, so the gap has to stay. Button's answer
+ * is already on this root as `data-empty`; reusing it here would drop the gap beside visible text.
  *
  * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
@@ -31,6 +38,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const root: CompoundButtonState['root'] & CompoundButtonRootDataAttributes = {
     ...buttonRoot,
     'data-icon-position': state.icon ? state.iconPosition : undefined,
+    'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
     className: clsx(compoundButtonClassNames.root, styles.root, buttonRoot.className),
   };
 
