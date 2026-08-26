@@ -36,33 +36,36 @@ import { Persona } from '@fluentui/react-components';
 />;
 ```
 
-### Text Position
+### Avatar Only
 
 ```tsx
-// v9 — text below avatar (was hidePersonaDetails=false + layout)
-<Persona name="Alice Northwood" secondaryText="Engineer" textPosition="below" size="large" />
+// v8
+<Persona text="Alice Northwood" imageUrl={avatarSrc} hidePersonaDetails />;
+
+// v9 — omit Persona text slots
+<Persona avatar={{ name: 'Alice Northwood', image: { src: avatarSrc } }} />;
 ```
 
 ## Prop Mapping
 
-| v8 `IPersonaProps`     | v9 `PersonaProps`                         | Notes                                                                 |
-| ---------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| `text` / `primaryText` | `name` (or `primaryText` slot)            | `name` is the default for `primaryText`; use slots for custom content |
-| `secondaryText`        | `secondaryText` slot                      |                                                                       |
-| `tertiaryText`         | `tertiaryText` slot                       |                                                                       |
-| `optionalText`         | `quaternaryText` slot                     | Renamed                                                               |
-| `imageUrl`             | `avatar={{ image: { src: '...' } }}`      | Passed as shorthand to the `avatar` slot                              |
-| `imageInitials`        | `avatar={{ initials: '...' }}`            |                                                                       |
-| `initialsColor`        | `avatar={{ color: '...' }}`               | v9 uses token-based colors or `"colorful"`                            |
-| `presence`             | `presence={{ status: '...' }}`            | `PersonaPresence` enum → string status (see table below)              |
-| `presenceTitle`        | `presence={{ title: '...' }}`             |                                                                       |
-| `size`                 | `size`                                    | Different enum — see size table below                                 |
-| `hidePersonaDetails`   | `textPosition="below"` or omit text slots | Use slot composition                                                  |
-| `showSecondaryText`    | Include `secondaryText` slot              | v9 shows it unconditionally when provided                             |
-| `coinSize`             | `size` on the `avatar` slot               | Use token sizes                                                       |
-| `styles`               | `className` + `makeStyles`                |                                                                       |
-| `theme`                | —                                         | Use `FluentProvider`                                                  |
-| `componentRef`         | `ref`                                     |                                                                       |
+| v8 `IPersonaProps`     | v9 `PersonaProps`                    | Notes                                                                 |
+| ---------------------- | ------------------------------------ | --------------------------------------------------------------------- |
+| `text` / `primaryText` | `name` (or `primaryText` slot)       | `name` is the default for `primaryText`; use slots for custom content |
+| `secondaryText`        | `secondaryText` slot                 |                                                                       |
+| `tertiaryText`         | `tertiaryText` slot                  |                                                                       |
+| `optionalText`         | `quaternaryText` slot                | Renamed                                                               |
+| `imageUrl`             | `avatar={{ image: { src: '...' } }}` | Passed as shorthand to the `avatar` slot                              |
+| `imageInitials`        | `avatar={{ initials: '...' }}`       |                                                                       |
+| `initialsColor`        | `avatar={{ color: '...' }}`          | v9 uses token-based colors or `"colorful"`                            |
+| `presence`             | `presence={{ status: '...' }}`       | `PersonaPresence` enum → string status (see table below)              |
+| `presenceTitle`        | `presence={{ title: '...' }}`        |                                                                       |
+| `size`                 | `size`                               | Different enum — see size table below                                 |
+| `hidePersonaDetails`   | Omit Persona text slots              | Keep the accessible name on the `avatar` slot                         |
+| `showSecondaryText`    | Include `secondaryText` slot         | v9 shows it unconditionally when provided                             |
+| `coinSize`             | `size` on the `avatar` slot          | Use token sizes                                                       |
+| `styles`               | `className` + `makeStyles`           |                                                                       |
+| `theme`                | —                                    | Use `FluentProvider`                                                  |
+| `componentRef`         | `ref`                                |                                                                       |
 
 ### Presence Status Mapping
 

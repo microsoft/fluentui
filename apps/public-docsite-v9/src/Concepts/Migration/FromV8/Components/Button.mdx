@@ -64,7 +64,7 @@ See the [Menu migration guide](/docs/concepts-migration-from-v8-components-menu-
 | disabled                 | disabled                                                                     |
 | getClassNames            |                                                                              |
 | getSplitButtonClassNames | (use SplitButton)                                                            |
-| href                     | (use Link)                                                                   |
+| href                     | `Button as="a" href="..."`                                                   |
 | iconProps                | icon (slot)                                                                  |
 | key                      | key                                                                          |
 | keyTipProps              |                                                                              |
@@ -77,7 +77,7 @@ See the [Menu migration guide](/docs/concepts-migration-from-v8-components-menu-
 | onRenderChildren         | children                                                                     |
 | onRenderDescription      | (use CompoundButton secondaryContent slot)                                   |
 | onRenderIcon             | icon (slot)                                                                  |
-| onRenderMenuIcon         | (use MenuButton icon)                                                        |
+| onRenderMenuIcon         | (use MenuButton menuIcon slot)                                               |
 | onRenderText             | children                                                                     |
 | persistMenu              | (use Menu)                                                                   |
 | primary                  | appearance=primary                                                           |

@@ -61,6 +61,9 @@ If wrapping a custom component that does not forward `ref`, use `React.forwardRe
 
 ```tsx
 // v9 — custom trigger component must forward ref
+import * as React from 'react';
+import { Tooltip } from '@fluentui/react-components';
+
 const MyTrigger = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>((props, ref) => (
   <button ref={ref} {...props} />
 ));
@@ -74,18 +77,25 @@ const MyTrigger = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLB
 
 ```tsx
 // v9 — show/hide programmatically
-const [visible, setVisible] = React.useState(false);
+import * as React from 'react';
+import { Button, Tooltip } from '@fluentui/react-components';
 
-<Tooltip
-  content="Programmatic tooltip"
-  relationship="description"
-  visible={visible}
-  onVisibleChange={(_, data) => setVisible(data.visible)}
->
-  <Button onFocus={() => setVisible(true)} onBlur={() => setVisible(false)}>
-    Focus me
-  </Button>
-</Tooltip>;
+const ControlledTooltip = () => {
+  const [visible, setVisible] = React.useState(false);
+
+  return (
+    <Tooltip
+      content="Programmatic tooltip"
+      relationship="description"
+      visible={visible}
+      onVisibleChange={(_, data) => setVisible(data.visible)}
+    >
+      <Button onFocus={() => setVisible(true)} onBlur={() => setVisible(false)}>
+        Focus me
+      </Button>
+    </Tooltip>
+  );
+};
 ```
 
 ## Prop Mapping

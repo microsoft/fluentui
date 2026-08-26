@@ -67,6 +67,7 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 const CustomModal = () => {
   const { modalAttributes, triggerAttributes } = useModalAttributes({
     trapFocus: true,
+    legacyTrapFocus: true,
   });
 
   return (
@@ -103,19 +104,24 @@ component.
 
 ### FocusTrapZone API mapping
 
-| v8 `FocusTrapZone`                               | v9 approach                                                                                   |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `forceFocusInsideTrap`                           | `useModalAttributes({ trapFocus: true })` or an owning overlay component                      |
-| Focus restoration                                | `triggerAttributes`/`modalAttributes`, or `useRestoreFocusTarget` and `useRestoreFocusSource` |
-| `firstFocusableSelector`, `firstFocusableTarget` | Owning component's initial-focus API or app-owned ref logic                                   |
-| `disableRestoreFocus`                            | Omit restore attributes only when restoration is intentionally app-owned                      |
-| `disableFirstFocus`                              | App-owned initial-focus decision                                                              |
-| `enableAriaHiddenSiblings`                       | Modalizer behavior; do not manipulate sibling `aria-hidden` manually                          |
-| `isClickableOutsideFocusTrap`                    | Choose modal or non-modal behavior in the owning component                                    |
+| v8 `FocusTrapZone`                               | v9 approach                                                                                     |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `forceFocusInsideTrap`                           | `useModalAttributes({ trapFocus: true, legacyTrapFocus: true })` or an owning overlay component |
+| Focus restoration                                | `triggerAttributes`/`modalAttributes`, or `useRestoreFocusTarget` and `useRestoreFocusSource`   |
+| `firstFocusableSelector`, `firstFocusableTarget` | Owning component's initial-focus API or app-owned ref logic                                     |
+| `disableRestoreFocus`                            | Omit restore attributes only when restoration is intentionally app-owned                        |
+| `disableFirstFocus`                              | App-owned initial-focus decision                                                                |
+| `enableAriaHiddenSiblings`                       | Modalizer behavior; do not manipulate sibling `aria-hidden` manually                            |
+| `isClickableOutsideFocusTrap`                    | Choose modal or non-modal behavior in the owning component                                      |
 
 `focusPreviouslyFocusedInnerElement` and other imperative trap details have no
 direct prop mapping. Verify the user-visible behavior rather than reproducing
 the v8 implementation.
+
+`legacyTrapFocus` preserves v8's strict `forceFocusInsideTrap` behavior. Without
+it, Tabster still makes the rest of the page inert, but allows focus to move to
+browser chrome like the native `<dialog>` element. Prefer an owning v9 overlay
+unless a custom surface specifically requires the legacy behavior.
 
 ## Accessibility
 
