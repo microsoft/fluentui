@@ -6,6 +6,7 @@ import * as ts from 'typescript';
 
 const componentsDirectory = path.join(__dirname, 'Components');
 const componentMappingPath = path.join(__dirname, 'ComponentMapping.mdx');
+const colorMappingPath = path.join(__dirname, 'ThemeColors/ColorMapping.mdx');
 const storybookPreviewPath = path.join(__dirname, '../../../../.storybook/preview.js');
 
 const guidesWithoutPropMapping = new Set(['Charts.mdx', 'GroupedList.mdx', 'Theme.mdx']);
@@ -141,11 +142,17 @@ describe('v8 migration guide documentation', () => {
 
   test.each(allGuideFiles)('%s uses the component migration guide structure', fileName => {
     const source = stripCodeFences(readGuide(fileName));
-    const header = source.match(/^#\s+.+\r?\n\r?\n---\r?\n\r?\n## Overview\r?\n\r?\n([\s\S]*?)(?=\r?\n##\s|$)/m);
+    const header = source.match(/^#\s+.+\r?\n\r?\n## Overview\r?\n\r?\n([\s\S]*?)(?=\r?\n##\s|$)/m);
     const propMappingHeadings = source.match(/^## Prop Mapping$/gm) ?? [];
 
     expect(header?.[1].trim().length).toBeGreaterThan(0);
     expect(propMappingHeadings).toHaveLength(guidesWithoutPropMapping.has(fileName) ? 0 : 1);
+  });
+
+  test('uses one explicit title divider on Color Mapping, which has no Overview heading', () => {
+    const source = stripCodeFences(fs.readFileSync(colorMappingPath, 'utf8'));
+
+    expect(source).toMatch(/^# Color Mapping\r?\n\r?\n---\r?\n\r?\n\S/m);
   });
 
   test('lists component guides before the component mapping in Storybook', () => {

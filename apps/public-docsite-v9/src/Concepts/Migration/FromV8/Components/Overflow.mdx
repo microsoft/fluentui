@@ -4,8 +4,6 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # OverflowSet → Overflow Migration
 
----
-
 ## Overview
 
 v8 `OverflowSet` used render callbacks (`onRenderItem`, `onRenderOverflowButton`) with static `items` / `overflowItems` arrays. v9 `Overflow` is hook-based: every child wraps itself in `<OverflowItem>` and a set of utility hooks drives visibility and menu state.
