@@ -1,0 +1,42 @@
+variables:
+  - group: ogx-oss-release
+
+  - template: /.devops/templates/variables/readonly-variables.yml@self
+    parameters:
+      variables:
+        # Prevents failures on CI when "caniuse-lite" becomes outdated
+        BROWSERSLIST_IGNORE_OLD_DATA: true
+
+        NX_PARALLEL: 8
+        NX_PREFER_TS_NODE: true
+        NX_VERBOSE_LOGGING: true
+
+        # Force multiline bash scripts to exit with an error if any line fails
+        # (includes ADO defaults plus errexit:errtrace)
+        SHELLOPTS: braceexpand:hashall:interactive-comments:errexit:errtrace
+
+        # Internal npm feed (with npmjs.org as upstream) for build/publish in 1ES PT
+        REGISTRY_URL: https://pkgs.dev.azure.com/office/_packaging/Office/npm/registry/
+        # Yarn v4 doesn't respect .npmrc, so set config with YARN_* env
+        YARN_NPM_REGISTRY_SERVER: $(REGISTRY_URL)
+        YARN_NPM_ALWAYS_AUTH: 1
+        YARN_NPMRC_AUTH_ENABLED: 1
+
+        # TODO figure out who should be listed as owners/approvers (it's not very important since it's auto-approved)
+        esrpReleaseUser: TODO_EMAIL_HERE@microsoft.com
+        esrpReleaseApprovers: TODO_EMAIL_HERE@microsoft.com
+
+        # Map in variable group values as readonly (with this syntax, they'll be empty strings if unset)
+        esrpReleaseAzureSubscription: $[variables.grp_esrpReleaseAzureSubscription]
+        esrpReleaseClientId: $[variables.grp_esrpReleaseClientId]
+        esrpReleaseKeyVaultName: $[variables.grp_esrpReleaseKeyVaultName]
+        esrpReleaseTenantId: $[variables.grp_esrpReleaseTenantId]
+        esrpSecretNameAuthCert: $[variables.grp_esrpSecretNameAuthCert]
+        esrpSecretNameSignCert: $[variables.grp_esrpSecretNameSignCert]
+        esrpStagingAzureSubscription: $[variables.grp_esrpStagingAzureSubscription]
+        esrpStagingStorageAccount: $[variables.grp_esrpStagingStorageAccount]
+        ghaClientId: $[variables.grp_ghaClientId]
+        ghaTokenAzureSubscription: $[variables.grp_ghaTokenAzureSubscription]
+        ghaTokenKeyId: $[variables.grp_ghaTokenKeyId]
+        ghaUserName: $[variables.grp_ghaUserName]
+        ghaUserEmail: $[variables.grp_ghaUserEmail]

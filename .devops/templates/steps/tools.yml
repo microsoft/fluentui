@@ -1,0 +1,51 @@
+# Install tools and dependencies and set shared configuration
+steps:
+  - checkout: self
+    fetchTags: false
+
+  - task: UseNode@1
+    inputs:
+      # 👉 NOTE: we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
+      version: '22.x'
+    displayName: 'Install Node.js'
+    retryCountOnTaskFailure: 1
+
+  # Do NOT run `corepack enable` - it's not needed since yarn is checked into the repo, and
+  # it causes a network request attempting to download yarn, which is not allowed.
+
+  - script: |
+      echo "nodejs:" && node -v
+      echo "yarn:" && yarn -v
+      echo "npm:" && npm -v
+    displayName: 'print NodeJS,package managers versions'
+
+  - script: |
+      git config user.name '$(ghaUserName)'
+      git config user.email '$(ghaUserEmail)'
+    displayName: Configure git user
+
+  - script: echo 'registry=$(REGISTRY_URL)' >> .npmrc
+    displayName: Configure npm registry
+
+  # Log all the environment variables since it can be useful for debugging.
+  # (This happens automatically for the built-in agents, but not for custom agents.)
+  - script: |
+      printenv | sort
+      echo "SHELLOPTS $SHELLOPTS"
+      echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+      set -x
+      git --no-pager config list
+      npm config list
+      yarn config --no-defaults
+    displayName: Log environment
+
+  - task: npmAuthenticate@0
+    displayName: npm authenticate
+    inputs:
+      workingFile: $(Build.SourcesDirectory)/.npmrc
+
+  - script: yarn npm info beachball
+    displayName: Verify registry authentication
+
+  - script: yarn install --immutable
+    displayName: yarn install

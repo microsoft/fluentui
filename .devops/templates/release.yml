@@ -1,0 +1,356 @@
+# This is the main release pipeline template.
+
+parameters:
+  # Release type
+  - name: releaseType
+    type: string
+    values:
+      - official
+      - experimental
+      - nightly
+  # Beachball configuration file
+  - name: beachballConfig
+    type: string
+  # Release label for change files and commit messages
+  - name: label
+    type: string
+  # Nx project selection arguments to build/test/lint/bundle
+  - name: nxScope
+    type: string
+  # npm distribution tag override.
+  # Defaults to 'latest' for official releases and `${{ parameters.releaseType }}` otherwise.
+  - name: npmTag
+    type: string
+    default: ''
+  # Required for experimental/nightly: this script should invoke @fluentui/workspace-plugin:version-bump
+  # with arguments to bump the appropriate packages to the desired version.
+  # For releaseType: 'experimental', the variable `experimentalFeatureName` will be available.
+  - name: bumpUnofficialVersionsScript
+    type: string
+    # This is not run for official releases, and is required for experimental/nightly.
+    default: 'echo "##vso[task.logissue type=error]bumpUnofficialVersionsScript must be specified for unofficial releases" && exit 1'
+  # Extra output artifacts for the build job.
+  # The directories must be under outputParentDirectory (see below) for compliance scanning.
+  - name: extraOutputs
+    type: object
+    default: []
+  # Extra steps to run in the build job before packages are actually built.
+  - name: preBuildSteps
+    type: stepList
+    default: []
+  # Extra steps to run in the build job after packages are packed.
+  - name: postPackSteps
+    type: stepList
+    default: []
+  # Extra steps to run in the push job after pushing package updates.
+  # The github token is available as $(createToken.GITHUB_APP_TOKEN).
+  # It's up to the caller to skip in dry run mode if needed.
+  - name: postPushSteps
+    type: stepList
+    default: []
+
+  # Dry run mode (set in the UI)
+  - name: dryRun
+    type: boolean
+
+  # Not intended to be overridden - this just ensures they're available when expanding templates
+  - name: packagesArtifactName
+    type: string
+    default: packed-packages
+  - name: releaseToolArtifactName
+    type: string
+    default: release-api-tool
+
+extends:
+  template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need Windows because compliance tasks only run on Windows.
+    settings:
+      networkIsolationPolicy: AzureActiveDirectory,AzureKeyVault,AzureStorage,GitHub
+    stages:
+      # Build and test, then generate packed packages and other artifacts to release.
+      - stage: build
+        jobs:
+          - job: build_pack
+            displayName: Build and pack
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
+            timeoutInMinutes: 90
+            workspace:
+              clean: all
+            # Variables must be declared for each job, NOT at the top level of the template
+            # (that causes a misleading error "Unexpected value 'extends'" -- actually the issue is
+            # a template can have `extends` or `variables` but not both)
+            variables:
+              - template: /.devops/templates/variables/variables.yml@self
+              - template: /.devops/templates/variables/readonly-variables.yml@self
+                parameters:
+                  variables:
+                    packagesArtifactPath: $(Build.StagingDirectory)/${{ parameters.packagesArtifactName }}
+                    releaseToolArtifactPath: $(Build.StagingDirectory)/${{ parameters.releaseToolArtifactName }}
+                    branchPath: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+            templateContext:
+              # Setting this ensures that compliance scans are only run once per pipeline, not per artifact.
+              outputParentDirectory: $(Build.StagingDirectory)
+              outputs:
+                - output: pipelineArtifact
+                  artifactName: ${{ parameters.packagesArtifactName }}
+                  path: $(packagesArtifactPath)
+                - output: pipelineArtifact
+                  artifactName: ${{ parameters.releaseToolArtifactName }}
+                  path: $(releaseToolArtifactPath)
+                - ${{ each output in parameters.extraOutputs }}:
+                    - ${{ output }}
+            steps:
+              # branchPath is only valid if Build.SourceBranch is a branch, not a tag or PR.
+              - script: |
+                  if [[ "$BUILD_SOURCEBRANCH" != refs/heads/* ]]; then
+                    echo "##vso[task.logissue type=error]This pipeline can only run from a branch."
+                    exit 1
+                  fi
+                displayName: Validate release branch
+
+              - ${{ if eq(parameters.releaseType, 'experimental') }}:
+                  # For experimental, validate that the branch name starts with "experimental/"
+                  # and extract the feature name.
+                  - script: |
+                      if [[ ! $BRANCH =~ refs/heads/experimental/ ]]; then
+                        echo "##vso[task.logissue type=error]Branch '$BRANCH' must start with 'refs/heads/experimental/'"
+                        exit 1
+                      fi
+                      FEATURE_NAME=${BRANCH#refs/heads/experimental/}
+                      echo "##vso[task.setvariable variable=experimentalFeatureName]$FEATURE_NAME"
+                      echo "Feature name: $FEATURE_NAME"
+                    displayName: Validate experimental branch
+                    env:
+                      BRANCH: $(Build.SourceBranch)
+
+              # Install tools, authenticate with npm, and install dependencies.
+              - template: /.devops/templates/steps/tools.yml@self
+
+              # Update versions and change files for an experimental or nightly release.
+              - ${{ if ne(parameters.releaseType, 'official') }}:
+                  # Deletes all existing change files so that only bump that happens is for experimental/nightly.
+                  - script: |
+                      rm -f change/*
+                    displayName: 'Delete existing change files'
+
+                  - script: ${{ parameters.bumpUnofficialVersionsScript }}
+                    displayName: 'Bump ${{ parameters.releaseType }} versions'
+
+                  # Create temporary change files and make a temporary commit.
+                  # The messages aren't very important since the changelog and commit won't be pushed.
+                  - script: |
+                      git add .
+                      yarn change \
+                        --config "$BEACHBALL_CONFIG" \
+                        --type prerelease \
+                        --message "Release ${{ parameters.label }}" \
+                        --dependent-change-type prerelease
+
+                      git commit -m "bump ${{ parameters.label }} versions"
+                    displayName: 'Create and commit prerelease change files'
+                    env:
+                      BEACHBALL_CONFIG: ${{ parameters.beachballConfig }}
+
+              - script: |
+                  echo "Packages in the release scope:"
+                  yarn nx show projects ${{ parameters.nxScope }}
+                displayName: Show packages
+
+              - ${{ each step in parameters.preBuildSteps }}:
+                  - ${{ step }}
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build ${{ parameters.nxScope }} --nxBail
+                displayName: build
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test ${{ parameters.nxScope }} --nxBail
+                displayName: test
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint ${{ parameters.nxScope }} --nxBail
+                displayName: lint
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t bundle ${{ parameters.nxScope }} --nxBail
+                displayName: bundle
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging ${{ parameters.nxScope }} --nxBail
+                displayName: verify packaged assets
+
+              # Create packagesArtifactPath so it exists for the output even if nothing was packed.
+              # Also copy the release API tool for use in the publish job (which can't download sources).
+              - script: |
+                  mkdir -p '$(packagesArtifactPath)'
+                  mkdir -p '$(releaseToolArtifactPath)'
+                  cp node_modules/@microsoft/esrp-npm-release/dist/index.mjs '$(releaseToolArtifactPath)'
+                displayName: Prepare artifact paths
+
+              # Pack packages only (don't push changes to GitHub or publish to npm)
+              - script: |
+                  yarn beachball publish \
+                    --no-push \
+                    --pack-to-path '$(packagesArtifactPath)' \
+                    --config ${{ parameters.beachballConfig }}
+                    -b 'origin/$(branchPath)'
+                displayName: Pack packages
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
+
+              - ${{ each step in parameters.postPackSteps }}:
+                  - ${{ step }}
+
+      # Publish the packed packages to npm using the ESRP Release API.
+      - stage: publish
+        displayName: Publish
+        dependsOn: build
+        jobs:
+          - job: npm_publish
+            displayName: Publish npm packages
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
+            variables:
+              - template: /.devops/templates/variables/variables.yml@self
+              - template: /.devops/templates/variables/readonly-variables.yml@self
+                parameters:
+                  variables:
+                    packagesArtifactPath: $(Agent.BuildDirectory)/${{ parameters.packagesArtifactName }}
+                    releaseToolArtifactPath: $(Agent.BuildDirectory)/${{ parameters.releaseToolArtifactName }}
+                    releaseToolArtifactBin: $(releaseToolArtifactPath)/index.mjs
+            templateContext:
+              type: releaseJob
+              isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: ${{ parameters.packagesArtifactName }}
+                  targetPath: $(packagesArtifactPath)
+                - input: pipelineArtifact
+                  artifactName: ${{ parameters.releaseToolArtifactName }}
+                  targetPath: $(releaseToolArtifactPath)
+
+            steps:
+              - script: |
+                  ls -R '$(packagesArtifactPath)'
+                  ls -R '$(releaseToolArtifactPath)'
+                displayName: Show artifact contents
+
+              - task: UseNode@1
+                displayName: Install Node.js 22
+                retryCountOnTaskFailure: 1
+                inputs:
+                  version: 22.x
+                  checkLatest: false
+
+              - task: AzureCLI@2
+                displayName: Get credentials for staging blob storage
+                inputs:
+                  azureSubscription: $(esrpStagingAzureSubscription)
+                  scriptType: bash
+                  scriptLocation: inlineScript
+                  addSpnToEnvironment: true
+                  inlineScript: |
+                    echo "##vso[task.setvariable variable=STAGING_TENANT_ID]$tenantId"
+                    echo "##vso[task.setvariable variable=STAGING_CLIENT_ID]$servicePrincipalId"
+                    echo "##vso[task.setvariable variable=STAGING_ID_TOKEN;issecret=true]$idToken"
+
+              - task: AzureKeyVault@2
+                displayName: Get ESRP certificates from Key Vault
+                inputs:
+                  azureSubscription: $(esrpReleaseAzureSubscription)
+                  KeyVaultName: $(esrpReleaseKeyVaultName)
+                  SecretsFilter: OGX-JSHost-Auth4,OGX-JSHost-Sign3
+
+              # Release packages using the ESRP API. If this stage fails or times out, it's safe to
+              # manually re-run the stage unless the result in the logs is failDoNotRetry.
+              # https://github.com/microsoft/beachball/blob/main/packages/esrp-npm-release/README.md
+              - script: node '$(releaseToolArtifactBin)'
+                displayName: Publish npm packages using ESRP Release API
+                # For a dry run, skip only the publish step (still verify that getting creds worked).
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
+                env:
+                  PACKED_PACKAGES_PATH: $(packagesArtifactPath)
+                  ESRP_PRODUCT_NAME: 'fluentui - ${{ parameters.label }}'
+                  ${{ if ne(parameters.npmTag, '') }}:
+                    ESRP_NPM_TAG: ${{ parameters.npmTag }}
+                  ${{ elseif eq(parameters.releaseType, 'official') }}:
+                    ESRP_NPM_TAG: latest
+                  ${{ else }}:
+                    ESRP_NPM_TAG: ${{ parameters.releaseType }}
+                  ESRP_USER: $(esrpReleaseUser)
+                  ESRP_APPROVERS: $(esrpReleaseApprovers)
+                  ESRP_TENANT_ID: $(esrpReleaseTenantId)
+                  ESRP_CLIENT_ID: $(esrpReleaseClientId)
+                  ESRP_AUTH_CERT: $(OGX-JSHost-Auth4)
+                  ESRP_REQUEST_SIGNING_CERT: $(OGX-JSHost-Sign3)
+                  STAGING_STORAGE_ACCOUNT_NAME: $(esrpStagingStorageAccount)
+                  STAGING_CLIENT_ID: $(STAGING_CLIENT_ID)
+                  STAGING_TENANT_ID: $(STAGING_TENANT_ID)
+                  STAGING_ID_TOKEN: $(STAGING_ID_TOKEN)
+
+      # Only for official releases: push package updates back to GitHub after publishing to npm.
+      - ${{ if eq(parameters.releaseType, 'official') }}:
+          - stage: push
+            displayName: Push to git
+            dependsOn: publish
+            jobs:
+              - job: push
+                variables:
+                  - template: /.devops/templates/variables/variables.yml@self
+                pool:
+                  name: Azure-Pipelines-1ESPT-ExDShared
+                  image: ubuntu-latest
+                  os: linux
+                steps:
+                  - template: /.devops/templates/steps/tools.yml@self
+
+                  - script: |
+                      FLUENT_PROD_BUILD=true yarn nx run-many -t build ${{ parameters.nxScope }} --nxBail
+                    displayName: Build
+
+                  - task: AzureCLI@2
+                    name: createToken
+                    displayName: Create GitHub App token
+                    inputs:
+                      azureSubscription: $(ghaTokenAzureSubscription)
+                      scriptType: bash
+                      scriptLocation: inlineScript
+                      inlineScript: |
+                        yarn beachball-auth-helper create-github-app-token \
+                          --app-client-id '$(ghaClientId)' \
+                          --key-id '$(ghaTokenKeyId)' \
+                          --repository '$(Build.Repository.Name)' \
+                          --permissions contents:write \
+                          --ci-output-name GITHUB_APP_TOKEN
+
+                  # Bump again and push the version updates, changelogs, change file deletions, and tags.
+                  # --no-fetch is important so we push the exact set of updates that were published
+                  # (rather than accidentally publishing anything new that was pushed in the meantime).
+                  - script: |
+                      yarn beachball publish \
+                        --no-publish \
+                        --no-fetch \
+                        --config '${{ parameters.beachballConfig }}' \
+                        --message 'release: applying package updates - ${{ parameters.label }}'
+                    displayName: Push package updates
+                    condition: and(succeeded(), not(${{ parameters.dryRun }}))
+                    env:
+                      BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
+
+                  # These steps should be able to use the token.
+                  - ${{ each step in parameters.postPushSteps }}:
+                      - ${{ step }}
+
+                  - script: yarn beachball-auth-helper revoke-github-app-token
+                    displayName: Revoke GitHub App token
+                    condition: and(always(), ne(variables['createToken.GITHUB_APP_TOKEN'], ''))
+                    env:
+                      TOKEN: $(createToken.GITHUB_APP_TOKEN)
