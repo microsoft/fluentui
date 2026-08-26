@@ -4,30 +4,34 @@ import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } 
 import { repoDetails, github } from './init';
 import { IExtendedPullRequest } from './types';
 
+const pullRequestCache = new Map<string, IPullRequest | undefined>();
+
 /**
- * Get the single pull request associated with the given changelog entry.
+ * Get the single pull request associated with the given changelog entry, with caching.
  */
 export async function getPullRequest(entry: ChangelogEntry): Promise<IPullRequest | undefined> {
   const { commit, author: authorEmail } = entry;
   if (!commit || commit === 'not available') {
     return undefined;
   }
-  const pr = await getPullRequestForCommit({
-    commit,
-    github,
-    repoDetails,
-    authorEmail,
-    verbose: true,
-  });
-  if (pr) {
-    return pr;
+  if (!pullRequestCache.has(commit)) {
+    let pr = await getPullRequestForCommit({
+      commit,
+      github,
+      repoDetails,
+      authorEmail,
+      verbose: true,
+    });
+    if (!pr) {
+      // Backup approach: check recent PRs for a commit with a matching message and author
+      // (the commit referenced in the change file might not directly exist in a PR if the PR was rebased)
+      console.log(`Could not find a PR matching ${commit}.`);
+      console.log(`Checking for a commit with a matching message recent PRs by ${authorEmail} instead...`);
+      pr = await getMatchingRecentPullRequest(entry);
+    }
+    pullRequestCache.set(commit, pr);
   }
-
-  // Backup approach: check recent PRs for a commit with a matching message and author
-  // (the commit referenced in the change file might not directly exist in a PR if the PR was rebased)
-  console.log(`Could not find a PR matching ${commit}.`);
-  console.log(`Checking for a commit with a matching message recent PRs by ${authorEmail} instead...`);
-  return getMatchingRecentPullRequest(entry);
+  return pullRequestCache.get(commit);
 }
 
 /**

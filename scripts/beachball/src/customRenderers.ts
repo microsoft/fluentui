@@ -4,9 +4,9 @@ import { fluentRepoDetails, getPullRequestForCommit } from '@fluentui/scripts-gi
 import { Octokit } from '@octokit/rest';
 import { ChangelogEntry, PackageChangelogRenderInfo } from 'beachball';
 
-const githubPAT = process.env.GITHUB_PAT;
+const githubPAT = process.env.BEACHBALL_GIT_TOKEN;
 if (!githubPAT && (process.argv.includes('bump') || process.argv.includes('publish'))) {
-  console.warn('\nGITHUB_PAT environment variable not found. GitHub requests may be rate-limited.\n');
+  console.warn('\nBEACHBALL_GIT_TOKEN environment variable not found. GitHub requests may be rate-limited.\n');
 }
 
 const github = new Octokit({
@@ -41,7 +41,12 @@ export async function renderEntry(entry: ChangelogEntry): Promise<string> {
   return `- ${entry.comment} (${commitLink} by ${entry.author})`;
 }
 
+const prNumberCache = new Map<ChangelogEntry, number | undefined>();
+
 async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> {
+  if (prNumberCache.has(entry)) {
+    return prNumberCache.get(entry);
+  }
   if (!entry.commit || entry.commit === 'not available') {
     return undefined;
   }
@@ -51,9 +56,11 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
     const logResult = spawnSync('git', ['log', '--pretty=format:%s', '-n', '1', entry.commit]);
     if (logResult.status === 0) {
       const message = logResult.stdout.toString().trim();
-      const prMatch = message.split(/\r?\n/)[0].match(/\(#(\d+)\)$/m);
+      const prMatch = message.match(/\(#(\d+)\)$/m);
       if (prMatch) {
-        return Number(prMatch[1]);
+        const prNumber = Number(prMatch[1]);
+        prNumberCache.set(entry, prNumber);
+        return prNumber;
       }
     }
   } catch (ex) {
@@ -63,6 +70,7 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
   // Or fetch from GitHub API
   console.log(`Attempting to fetch pull request corresponding to ${entry.commit}...`);
   const pr = await getPullRequestForCommit({ commit: entry.commit, github, repoDetails: fluentRepoDetails });
+  prNumberCache.set(entry, pr?.number);
   if (pr) {
     console.log('...success!'); // failure message is logged by getPullRequestForCommit
     return pr.number;
