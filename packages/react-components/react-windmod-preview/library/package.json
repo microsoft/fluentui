@@ -925,6 +925,56 @@
         "default": "./lib-commonjs/textarea.cjs"
       }
     },
+    "./toast": {
+      "import": {
+        "types": "./dist/toast.d.ts",
+        "default": "./lib/toast.js"
+      },
+      "require": {
+        "types": "./dist/toast.d.cts",
+        "default": "./lib-commonjs/toast.cjs"
+      }
+    },
+    "./toast-body": {
+      "import": {
+        "types": "./dist/toast-body.d.ts",
+        "default": "./lib/toast-body.js"
+      },
+      "require": {
+        "types": "./dist/toast-body.d.cts",
+        "default": "./lib-commonjs/toast-body.cjs"
+      }
+    },
+    "./toast-footer": {
+      "import": {
+        "types": "./dist/toast-footer.d.ts",
+        "default": "./lib/toast-footer.js"
+      },
+      "require": {
+        "types": "./dist/toast-footer.d.cts",
+        "default": "./lib-commonjs/toast-footer.cjs"
+      }
+    },
+    "./toast-title": {
+      "import": {
+        "types": "./dist/toast-title.d.ts",
+        "default": "./lib/toast-title.js"
+      },
+      "require": {
+        "types": "./dist/toast-title.d.cts",
+        "default": "./lib-commonjs/toast-title.cjs"
+      }
+    },
+    "./toaster": {
+      "import": {
+        "types": "./dist/toaster.d.ts",
+        "default": "./lib/toaster.js"
+      },
+      "require": {
+        "types": "./dist/toaster.d.cts",
+        "default": "./lib-commonjs/toaster.cjs"
+      }
+    },
     "./toggle-button": {
       "import": {
         "types": "./dist/toggle-button.d.ts",

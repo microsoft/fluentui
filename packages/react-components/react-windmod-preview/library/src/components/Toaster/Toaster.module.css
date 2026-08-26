@@ -1,0 +1,69 @@
+@reference '#theme';
+
+/* One class for all six position containers — Griffel gives them one class too.
+
+   `inset: auto` is load-bearing and must come FIRST: the [popover] UA sheet sets all four insets
+   to 0, and every position block is :where()-flat, so source order alone decides. Authored after
+   the variants it collapses all six containers; omitted entirely it over-constrains the box
+   against `w-292` and CSS drops the end edge, which breaks the two `-end` corners while leaving
+   the `-start` corners and the centred pair looking correct.
+
+   The `> [role='listitem']` block is the ToastContainer's look. The headless Toaster constructs
+   those elements itself from a direct import, so no class can reach them; the child combinator
+   confines the rule to this Toaster's own children, two levels above any consumer content. */
+
+@layer fui.components.l1 {
+  .position {
+    @apply pointer-events-none fixed m-0 w-292 overflow-visible border-none bg-transparent p-0 text-inherit;
+
+    inset: auto;
+    --fui-toaster-offset-inline: 20px;
+    --fui-toaster-offset-block: 16px;
+
+    @variant toaster-position-top-start {
+      inset-block-start: var(--fui-toaster-offset-block);
+      inset-inline-start: var(--fui-toaster-offset-inline);
+    }
+
+    @variant toaster-position-top-end {
+      inset-block-start: var(--fui-toaster-offset-block);
+      inset-inline-end: var(--fui-toaster-offset-inline);
+    }
+
+    @variant toaster-position-bottom-start {
+      inset-block-end: var(--fui-toaster-offset-block);
+      inset-inline-start: var(--fui-toaster-offset-inline);
+    }
+
+    @variant toaster-position-bottom-end {
+      inset-block-end: var(--fui-toaster-offset-block);
+      inset-inline-end: var(--fui-toaster-offset-inline);
+    }
+
+    /* The centred positions stay PHYSICAL: Griffel emits the same `left` in both directions here,
+       and their default horizontal offset is 0. */
+    @variant toaster-position-top {
+      @apply -translate-x-1/2;
+
+      --fui-toaster-offset-inline: 0px;
+      top: var(--fui-toaster-offset-block);
+      left: calc(50% + var(--fui-toaster-offset-inline));
+    }
+
+    @variant toaster-position-bottom {
+      @apply -translate-x-1/2;
+
+      --fui-toaster-offset-inline: 0px;
+      bottom: var(--fui-toaster-offset-block);
+      left: calc(50% + var(--fui-toaster-offset-inline));
+    }
+
+    & > [role='listitem'] {
+      @apply pointer-events-auto mt-vertical-l box-border rounded-medium;
+
+      @variant focus-visible {
+        @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      }
+    }
+  }
+}

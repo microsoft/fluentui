@@ -357,6 +357,12 @@ import { renderTabList } from '@fluentui/react-headless-components-preview/tab-l
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
+import { renderToast } from '@fluentui/react-headless-components-preview/toast';
+import { renderToastBody } from '@fluentui/react-headless-components-preview/toast';
+import { renderToastContainer } from '@fluentui/react-headless-components-preview/toast';
+import { renderToaster } from '@fluentui/react-headless-components-preview/toast';
+import { renderToastFooter } from '@fluentui/react-headless-components-preview/toast';
+import { renderToastTitle } from '@fluentui/react-headless-components-preview/toast';
 import { renderToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { renderToolbar } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderToolbarButton } from '@fluentui/react-headless-components-preview/toolbar';
@@ -425,6 +431,34 @@ import { TextareaSlots } from '@fluentui/react-headless-components-preview/texta
 import type { TextareaState as TextareaState_2 } from '@fluentui/react-headless-components-preview/textarea';
 import { ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { themeClassNames } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+import { ToastBodyProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToastBodySlots } from '@fluentui/react-headless-components-preview/toast';
+import { ToastBodyState } from '@fluentui/react-headless-components-preview/toast';
+import { ToastChangeData } from '@fluentui/react-headless-components-preview/toast';
+import { ToastChangeHandler } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainer } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainerContextValue } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainerProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainerSlots } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainerState } from '@fluentui/react-headless-components-preview/toast';
+import { ToasterId } from '@fluentui/react-headless-components-preview/toast';
+import { ToasterProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToasterState } from '@fluentui/react-headless-components-preview/toast';
+import { ToastFooterProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToastFooterSlots } from '@fluentui/react-headless-components-preview/toast';
+import { ToastFooterState } from '@fluentui/react-headless-components-preview/toast';
+import { ToastId } from '@fluentui/react-headless-components-preview/toast';
+import { ToastImperativeRef } from '@fluentui/react-headless-components-preview/toast';
+import { ToastIntent } from '@fluentui/react-headless-components-preview/toast';
+import { ToastPoliteness } from '@fluentui/react-headless-components-preview/toast';
+import { ToastPosition } from '@fluentui/react-headless-components-preview/toast';
+import type { ToastProps as ToastProps_2 } from '@fluentui/react-headless-components-preview/toast';
+import { ToastSlots } from '@fluentui/react-headless-components-preview/toast';
+import type { ToastState as ToastState_2 } from '@fluentui/react-headless-components-preview/toast';
+import { ToastStatus } from '@fluentui/react-headless-components-preview/toast';
+import { ToastTitleProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToastTitleSlots } from '@fluentui/react-headless-components-preview/toast';
+import { ToastTitleState } from '@fluentui/react-headless-components-preview/toast';
 import type { ToggleButtonProps as ToggleButtonProps_2 } from '@fluentui/react-headless-components-preview/toggle-button';
 import { ToggleButtonSlots } from '@fluentui/react-headless-components-preview/toggle-button';
 import type { ToggleButtonState as ToggleButtonState_2 } from '@fluentui/react-headless-components-preview/toggle-button';
@@ -586,6 +620,15 @@ import { useTagContextValues } from '@fluentui/react-headless-components-preview
 import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
+import { useToast } from '@fluentui/react-headless-components-preview/toast';
+import { useToastBody } from '@fluentui/react-headless-components-preview/toast';
+import { useToastContainer } from '@fluentui/react-headless-components-preview/toast';
+import { useToastContainerContext } from '@fluentui/react-headless-components-preview/toast';
+import { useToastContainerContextValues } from '@fluentui/react-headless-components-preview/toast';
+import { useToastController } from '@fluentui/react-headless-components-preview/toast';
+import { useToaster } from '@fluentui/react-headless-components-preview/toast';
+import { useToastFooter } from '@fluentui/react-headless-components-preview/toast';
+import { useToastTitle } from '@fluentui/react-headless-components-preview/toast';
 import { useToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { useToolbar } from '@fluentui/react-headless-components-preview/toolbar';
 import { useToolbarButton } from '@fluentui/react-headless-components-preview/toolbar';
@@ -2358,6 +2401,18 @@ export { renderTagGroup }
 
 export { renderTextarea }
 
+export { renderToast }
+
+export { renderToastBody }
+
+export { renderToastContainer }
+
+export { renderToaster }
+
+export { renderToastFooter }
+
+export { renderToastTitle }
+
 export { renderToggleButton }
 
 export { renderToolbar }
@@ -2778,6 +2833,109 @@ export type TextareaState = TextareaState_2 & Required<Pick<TextareaProps, 'appe
 export { ThemeClassName }
 
 export { themeClassNames }
+
+// @public
+export const Toast: ForwardRefComponent<ToastProps>;
+
+// @public
+export type ToastAppearance = 'inverted';
+
+// @public
+export const ToastBody: ForwardRefComponent<ToastBodyProps>;
+
+// @public
+export const toastBodyClassNames: {
+    root: string;
+};
+
+export { ToastBodyProps }
+
+export { ToastBodySlots }
+
+export { ToastBodyState }
+
+export { ToastChangeData }
+
+export { ToastChangeHandler }
+
+// @public
+export const toastClassNames: {
+    root: string;
+};
+
+export { ToastContainer }
+
+export { ToastContainerContextValue }
+
+export { ToastContainerProps }
+
+export { ToastContainerSlots }
+
+export { ToastContainerState }
+
+// @public
+export const Toaster: React_2.FC<ToasterProps>;
+
+// @public
+export const toasterClassNames: {
+    root: string;
+};
+
+export { ToasterId }
+
+export { ToasterProps }
+
+export { ToasterState }
+
+// @public
+export const ToastFooter: ForwardRefComponent<ToastFooterProps>;
+
+// @public
+export const toastFooterClassNames: {
+    root: string;
+};
+
+export { ToastFooterProps }
+
+export { ToastFooterSlots }
+
+export { ToastFooterState }
+
+export { ToastId }
+
+export { ToastImperativeRef }
+
+export { ToastIntent }
+
+export { ToastPoliteness }
+
+export { ToastPosition }
+
+// @public
+export type ToastProps = ToastProps_2 & {
+    appearance?: ToastAppearance;
+};
+
+export { ToastSlots }
+
+// @public
+export type ToastState = ToastState_2 & Pick<ToastProps, 'appearance'>;
+
+export { ToastStatus }
+
+// @public
+export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
+
+// @public
+export const toastTitleClassNames: {
+    root: string;
+};
+
+export { ToastTitleProps }
+
+export { ToastTitleSlots }
+
+export { ToastTitleState }
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
@@ -3500,6 +3658,39 @@ export { useTextarea }
 
 // @public
 export const useTextareaStyles: (state: TextareaState) => TextareaState;
+
+export { useToast }
+
+export { useToastBody }
+
+// @public
+export const useToastBodyStyles: (state: ToastBodyState) => ToastBodyState;
+
+export { useToastContainer }
+
+export { useToastContainerContext }
+
+export { useToastContainerContextValues }
+
+export { useToastController }
+
+export { useToaster }
+
+// @public
+export const useToasterStyles: (state: ToasterState) => ToasterState;
+
+export { useToastFooter }
+
+// @public
+export const useToastFooterStyles: (state: ToastFooterState) => ToastFooterState;
+
+// @public
+export const useToastStyles: (state: ToastState) => ToastState;
+
+export { useToastTitle }
+
+// @public
+export const useToastTitleStyles: (state: ToastTitleState) => ToastTitleState;
 
 export { useToggleButton }
 
