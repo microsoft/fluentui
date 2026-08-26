@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
@@ -132,6 +132,33 @@ export function Risky({ label }: { label: string }) {
       expect(doc.summary.unparseableFiles).toBe(1);
       expect(doc.unparseable[0].file).toContain('Broken.tsx');
       expect(doc.unparseable[0].error).toBeTruthy();
+    });
+
+    describe('with --annotate', () => {
+      it('still writes directives to disk', async () => {
+        const before = readFileSync(join(tempDir, 'src', 'Risky.tsx'), 'utf-8');
+        expect(before).not.toContain('use memo');
+
+        await captureJson<AnalysisDocument>(() => runAnalyze(argv({ annotate: 'all' }) as never));
+
+        expect(readFileSync(join(tempDir, 'src', 'Risky.tsx'), 'utf-8')).toContain("'use memo'");
+      });
+
+      it('reports the annotation outcome in the document', async () => {
+        const { doc } = await captureJson<AnalysisDocument>(() => runAnalyze(argv({ annotate: 'all' }) as never));
+
+        expect(doc.annotate).toMatchObject({
+          mode: 'all',
+          functionsAnnotated: expect.any(Number),
+          filesModified: expect.any(Number),
+        });
+        expect(doc.annotate!.functionsAnnotated).toBeGreaterThan(0);
+      });
+
+      it('omits the annotate key when --annotate was not requested', async () => {
+        const { doc } = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));
+        expect(doc.annotate).toBeUndefined();
+      });
     });
   });
 

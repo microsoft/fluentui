@@ -173,6 +173,12 @@ export function resolveSkipReason(event: CompilerEvent, source: string): string 
 export interface CompileOptions {
   compilationMode?: CompilationMode;
   plugins?: PluginItem[];
+  /**
+   * Extra Babel *parser* plugins, e.g. `['decorators-legacy']`. Needed when the consuming build
+   * parses with a wider grammar than `typescript` + `jsx`; without a match, files the build
+   * compiles are reported as unparseable and silently leave the analyzed scope.
+   */
+  parserPlugins?: string[];
 }
 
 export interface CompileResult {
@@ -216,6 +222,7 @@ export async function compileSource(
       code: false,
       babelrc: false,
       configFile: false,
+      ...(options.parserPlugins?.length ? { parserOpts: { plugins: [...options.parserPlugins] } } : {}),
       presets: [
         [
           require.resolve('@babel/preset-typescript'),
@@ -264,6 +271,7 @@ export async function compileFile(
   verbose: boolean,
   riskConfig: RiskConfig = {},
   callGraph?: CallGraphAnalyzer,
+  parserPlugins: string[] = [],
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
   const manualMemo = new Map<string, ManualMemoEntry>();
@@ -274,6 +282,7 @@ export async function compileFile(
 
   const { events, error } = await compileSource(source, entry.filePath, {
     compilationMode,
+    parserPlugins,
     plugins: [
       [manualMemoPlugin, { results: manualMemo, bodyInsertionLines, existingDirectives } as ManualMemoPluginOptions],
       [riskPlugin, { ...riskConfig, results: risks, keyAliases: riskKeyAliases } as RiskPluginOptions],
@@ -340,12 +349,19 @@ export async function compileFilesStreaming(
 ): Promise<void> {
   // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
   // across files. Only built when wrapper resolution is opted into.
-  const callGraph = buildCallGraph(options.riskConfig);
+  const callGraph = buildCallGraph(options.riskConfig, options.parserPlugins);
 
   await forEachFileConcurrently(
     files,
     async entry => {
-      const result = await compileFile(entry, options.compilationMode, options.verbose, options.riskConfig, callGraph);
+      const result = await compileFile(
+        entry,
+        options.compilationMode,
+        options.verbose,
+        options.riskConfig,
+        callGraph,
+        options.parserPlugins,
+      );
       await onResult(result);
     },
     { concurrency: options.concurrency, verbose: options.verbose },
@@ -369,7 +385,7 @@ export async function compileFiles(files: FileEntry[], options: CompileFilesOpti
 }
 
 /** Construct the cross-file analyzer when `resolveWrappers` is enabled; otherwise `undefined`. */
-function buildCallGraph(riskConfig?: RiskConfig): CallGraphAnalyzer | undefined {
+function buildCallGraph(riskConfig?: RiskConfig, parserPlugins?: string[]): CallGraphAnalyzer | undefined {
   if (!riskConfig?.resolveWrappers) {
     return undefined;
   }
@@ -378,5 +394,5 @@ function buildCallGraph(riskConfig?: RiskConfig): CallGraphAnalyzer | undefined 
     : [];
   const stats = createResolverStats();
   const resolver = createModuleResolver({ aliases, stats });
-  return createCallGraphAnalyzer(resolver, riskConfig, stats);
+  return createCallGraphAnalyzer(resolver, riskConfig, stats, parserPlugins);
 }

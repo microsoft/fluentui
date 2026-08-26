@@ -96,7 +96,12 @@ function isUserFunction(node: Node): node is BabelFunction {
  * the first-party source boundary but deliberately stops at packages (`node_modules`), dynamic
  * dispatch, and method calls on inferred receivers, which a syntactic pass cannot follow.
  */
-export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskConfig, stats?: ResolverStats) {
+export function createCallGraphAnalyzer(
+  resolver: ModuleResolver,
+  config: RiskConfig,
+  stats?: ResolverStats,
+  parserPlugins: string[] = [],
+) {
   const leafConfig = buildLeafConfig(config);
   const moduleCache = new Map<string, ModuleModel | null>();
   // Memoized reachesRisk result per `${filePath}::${fnKey}`.
@@ -114,6 +119,7 @@ export function createCallGraphAnalyzer(resolver: ModuleResolver, config: RiskCo
         filename: filePath,
         babelrc: false,
         configFile: false,
+        ...(parserPlugins.length ? { parserOpts: { plugins: [...parserPlugins] } } : {}),
         presets: [
           [
             require.resolve('@babel/preset-typescript'),

@@ -138,6 +138,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           verbose: argv.verbose,
           compilationMode: argv.mode,
           riskConfig,
+          parserPlugins: argv['parser-plugin'],
           onResolverStats: stats => {
             if (!stats) {
               return;
@@ -164,8 +165,14 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
 
       const workspaceRoot = process.cwd();
 
+      // Annotation writes to disk and is independent of how the report is rendered, so it must
+      // run before the format branches — otherwise `--format json --annotate` silently does nothing.
+      const annotate = argv.annotate
+        ? { mode: argv.annotate, ...(await applyAnnotations(coverageResults, argv.annotate, { quote: argv.quote })) }
+        : undefined;
+
       if (argv.format === 'json') {
-        writeDocument(toAnalysisDocument(coverageResults, { mode: argv.mode, workspaceRoot, unparseable }));
+        writeDocument(toAnalysisDocument(coverageResults, { mode: argv.mode, workspaceRoot, unparseable, annotate }));
         return 0;
       }
       printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
@@ -174,21 +181,19 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
       printMigrationCandidates(f, coverageResults, workspaceRoot);
       printCoverageSummary(f, coverageResults, argv.verbose, unparseable.length);
 
-      if (argv.annotate) {
-        const outcome = await applyAnnotations(coverageResults, argv.annotate, { quote: argv.quote });
-        const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
+      if (annotate) {
+        const touched = annotate.functionsAnnotated + annotate.functionsBailedOut;
+        f.blank();
         if (touched > 0) {
-          f.blank();
           const parts: string[] = [];
-          if (outcome.functionsAnnotated > 0) {
-            parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
+          if (annotate.functionsAnnotated > 0) {
+            parts.push(`annotated ${annotate.functionsAnnotated} function(s) with 'use memo'`);
           }
-          if (outcome.functionsBailedOut > 0) {
-            parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
+          if (annotate.functionsBailedOut > 0) {
+            parts.push(`bailed out ${annotate.functionsBailedOut} risky function(s) with justified 'use no memo'`);
           }
-          f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
+          f.line(`✓ ${parts.join('; ')} in ${annotate.filesModified} file(s) (mode: ${annotate.mode}).`);
         } else {
-          f.blank();
           f.line('No functions to annotate.');
         }
       }

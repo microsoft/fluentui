@@ -171,6 +171,8 @@ export interface CompileFilesOptions {
   compilationMode: CompilationMode;
   /** Optional risk-detection configuration. When omitted, no risk rules run. */
   riskConfig?: RiskConfig;
+  /** Extra Babel parser plugins, so the analyzed scope can match the build's parser config. */
+  parserPlugins?: string[];
   /** Receives the import-resolution tally once the run finishes, when wrapper resolution is on. */
   onResolverStats?: (stats: ResolverStats | undefined) => void;
 }
@@ -267,6 +269,8 @@ export interface AnalysisDocument extends DocumentEnvelope {
   findings: JsonFinding[];
   /** Files the parser rejected outright — they contribute nothing to the counts above. */
   unparseable: { file: string; error: string }[];
+  /** Present only when `--annotate` ran; directives are written to disk regardless of format. */
+  annotate?: AnnotateResult & { mode: AnnotateMode };
 }
 
 export interface JsonDirective {

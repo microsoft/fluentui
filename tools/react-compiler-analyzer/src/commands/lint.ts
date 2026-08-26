@@ -40,6 +40,7 @@ export async function runLint(argv: LintArgv): Promise<number> {
           concurrency: argv.concurrency,
           verbose: argv.verbose,
           compilationMode: argv.mode,
+          parserPlugins: argv['parser-plugin'],
         },
         async compiled => {
           // 'use memo' statuses come directly from first compilation (no recompile)

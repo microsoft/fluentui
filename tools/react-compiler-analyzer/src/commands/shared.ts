@@ -39,6 +39,7 @@ export interface SharedArgv {
   mode: CompilationMode;
   format: OutputFormat;
   'strict-paths': boolean;
+  'parser-plugin': string[];
 }
 
 export const DEFAULT_EXCLUDE = [
@@ -100,6 +101,13 @@ export function sharedOptions<T>(yarg: Argv<T>) {
       type: 'boolean' as const,
       describe: 'Fail instead of warning when a given path does not exist',
       default: false,
+    })
+    .option('parser-plugin', {
+      type: 'string' as const,
+      array: true as const,
+      describe:
+        "Extra Babel parser plugins, e.g. --parser-plugin decorators-legacy. Match your build's parser config, otherwise files it compiles are reported as unparseable.",
+      default: [] as string[],
     });
 }
 
@@ -155,6 +163,56 @@ export function validatePaths(rawPaths: string[], options: { strict?: boolean } 
 export function validateConcurrency(concurrency: number): void {
   if (concurrency < 1) {
     throw new CliError('--concurrency must be >= 1');
+  }
+}
+
+/**
+ * Babel parser plugin names accepted by `--parser-plugin`.
+ *
+ * Babel silently ignores unrecognized plugin names, so a typo would produce a run that looks
+ * successful and analyzed nothing extra. This list exists purely to turn that into an error;
+ * add to it if Babel gains a plugin you need.
+ */
+const KNOWN_PARSER_PLUGINS = new Set([
+  'asyncDoExpressions',
+  'decimal',
+  'decorators',
+  'decorators-legacy',
+  'decoratorAutoAccessors',
+  'deferredImportEvaluation',
+  'destructuringPrivate',
+  'doExpressions',
+  'explicitResourceManagement',
+  'exportDefaultFrom',
+  'flow',
+  'flowComments',
+  'functionBind',
+  'functionSent',
+  'importAssertions',
+  'importAttributes',
+  'importReflection',
+  'jsx',
+  'moduleBlocks',
+  'moduleStringNames',
+  'optionalChainingAssign',
+  'partialApplication',
+  'pipelineOperator',
+  'placeholders',
+  'recordAndTuple',
+  'sourcePhaseImports',
+  'throwExpressions',
+  'typescript',
+  'v8intrinsic',
+]);
+
+export function validateParserPlugins(plugins: string[] = []): void {
+  const unknown = plugins.filter(p => !KNOWN_PARSER_PLUGINS.has(p));
+  if (unknown.length > 0) {
+    throw new CliError(
+      `unknown --parser-plugin value(s): ${unknown.join(', ')}. ` +
+        `Babel ignores unrecognized plugin names silently, so this would have analyzed nothing extra. ` +
+        `Known plugins: ${[...KNOWN_PARSER_PLUGINS].sort().join(', ')}`,
+    );
   }
 }
 
@@ -308,6 +366,7 @@ export interface ReportSpec {
 export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<number> {
   const resolvedPaths = validatePaths(argv.paths, { strict: argv['strict-paths'] });
   validateConcurrency(argv.concurrency);
+  validateParserPlugins(argv['parser-plugin']);
 
   return withReportOutput(
     argv.format,

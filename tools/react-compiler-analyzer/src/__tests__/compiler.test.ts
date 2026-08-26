@@ -59,6 +59,54 @@ describe('compileSource — TypeScript parsing per extension', () => {
   });
 });
 
+describe('compileSource — extra parser plugins', () => {
+  // A build whose loader enables `decorators-legacy` compiles these; the analyzer must be able to
+  // match that parser configuration or its analyzed scope silently excludes them.
+  const DECORATED = [
+    "import * as React from 'react';",
+    'declare function customizable(name: string): ClassDecorator;',
+    '',
+    "@customizable('Widget')",
+    'export class Widget extends React.Component<{}, {}> {',
+    '  public render() {',
+    '    return null;',
+    '  }',
+    '}',
+  ].join('\n');
+
+  it('rejects decorators by default', async () => {
+    const { error } = await compileSource(DECORATED, '/virtual/Widget.tsx');
+
+    expect(error).toBeDefined();
+    expect(String(error?.message)).toContain('decorators');
+  });
+
+  it('accepts them when the plugin is supplied', async () => {
+    const { error } = await compileSource(DECORATED, '/virtual/Widget.tsx', {
+      parserPlugins: ['decorators-legacy'],
+    });
+
+    expect(error).toBeUndefined();
+  });
+
+  it('still parses ordinary files with extra plugins enabled', async () => {
+    const source = [
+      "import { useState } from 'react';",
+      'export function C({ label }: { label: string }) {',
+      '  const [n, setN] = useState(0);',
+      '  return <div onClick={() => setN(c => c + 1)}>{label}{n}</div>;',
+      '}',
+    ].join('\n');
+
+    const { error, events } = await compileSource(source, '/virtual/C.tsx', {
+      parserPlugins: ['decorators-legacy'],
+    });
+
+    expect(error).toBeUndefined();
+    expect(events.some(e => e.kind === 'CompileSuccess')).toBe(true);
+  });
+});
+
 describe('extractDetailLoc', () => {
   it('returns the line/column from a detail loc', () => {
     expect(extractDetailLoc({ loc: { start: { line: 50, column: 25 } } })).toEqual({ line: 50, column: 25 });

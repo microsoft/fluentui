@@ -341,11 +341,17 @@ A file the parser rejects yields no functions, so without a signal the totals wo
 and the report would look clean because nothing was read. Such files are listed in a **Not Analyzed**
 section, counted in the summary, and exposed as `unparseable` in `--format json`.
 
-This is a real coverage hole, not an analyzer quirk: the React Compiler's loaders parse with a fixed
-plugin set (`jsx`, `typescript`), so a file rejected here cannot be compiled in a real build either.
-The common case in this repo is v8 class components using legacy decorators (`@customizable(…)`).
-Widening the analyzer's parser to accept them would only make it disagree with the build — it would
-report functions as compilable that the build can never reach.
+**If your build compiles these files, fix it with `--parser-plugin`.** The analyzer parses with
+`typescript` + `jsx` only; a build whose loader enables a wider grammar (commonly
+`decorators-legacy`) compiles files the analyzer cannot read, leaving analyzed scope smaller than
+compiled scope. Match the two:
+
+```bash
+react-compiler-analyzer analyze ./src --parser-plugin decorators-legacy
+```
+
+Anything still listed after matching your build's parser config is a genuine hole — the React
+Compiler cannot process it either.
 
 #### Examples
 
@@ -374,17 +380,30 @@ react-compiler-analyzer analyze ./library/src --risk-config risk.json --annotate
 
 ## Shared options
 
-| Argument / Flag  | Type       | Default | Description                                                                                                                        |
-| ---------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `<paths..>`      | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
-| `--format`       | `string`   | `"cli"` | Output format: `cli`, `md`, `html`, or `json` (machine-readable)                                                                   |
-| `--verbose`      | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
-| `--full-reasons` | `boolean`  | `false` | Show the compiler's full code-framed diagnostics instead of one-line summaries                                                     |
-| `--concurrency`  | `number`   | `10`    | Max parallel file processing                                                                                                       |
-| `--exclude`      | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
-| `--strict-paths` | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
+| Argument / Flag   | Type       | Default | Description                                                                                                                        |
+| ----------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `<paths..>`       | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
+| `--format`        | `string`   | `"cli"` | Output format: `cli`, `md`, `html`, or `json` (machine-readable)                                                                   |
+| `--verbose`       | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
+| `--full-reasons`  | `boolean`  | `false` | Show the compiler's full code-framed diagnostics instead of one-line summaries                                                     |
+| `--concurrency`   | `number`   | `10`    | Max parallel file processing                                                                                                       |
+| `--exclude`       | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
+| `--strict-paths`  | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
+| `--parser-plugin` | `string[]` | `[]`    | Extra Babel parser plugins, e.g. `decorators-legacy`. Match your build's parser config — see **Not Analyzed**                      |
 
 _(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`
+
+### `--parser-plugin`
+
+The analyzer parses with `typescript` + `jsx`. If your build's loader enables more, pass the same
+plugins here so the analyzed scope matches the compiled scope:
+
+```bash
+react-compiler-analyzer analyze ./src --parser-plugin decorators-legacy
+```
+
+Unknown names are rejected. Babel ignores unrecognized parser plugins silently, so a typo would
+otherwise produce a run that looks successful and analyzed nothing extra.
 
 ### Missing paths
 
@@ -492,6 +511,8 @@ react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
   unchanged sources produce byte-identical documents and `diff` shows only real changes.
 - `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array) and
   keeps its usual exit code.
+- `--annotate` still writes directives to disk under `--format json`; the outcome is reported in an
+  `annotate` key (`{ mode, filesModified, functionsAnnotated, functionsBailedOut }`).
 
 Section headings are color-coded by compiler state — **Compiled** (green), **Errors** (red), **Skipped** (yellow),
 and **Migration Candidates** (blue). In `cli` format, colors use ANSI and are emitted only when stdout is an

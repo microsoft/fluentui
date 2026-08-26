@@ -8,6 +8,7 @@ import {
   closeScanLog,
   openScanLog,
   validateConcurrency,
+  validateParserPlugins,
   validatePath,
   validatePaths,
 } from '../commands/shared';
@@ -48,6 +49,26 @@ describe('validatePath', () => {
   it('rejects a path that does not exist', () => {
     expect(() => validatePath(join(tempDir, 'missing'))).toThrow(CliError);
     expect(() => validatePath(join(tempDir, 'missing'))).toThrow(/does not exist/);
+  });
+});
+
+describe('validateParserPlugins', () => {
+  it('accepts known Babel parser plugins', () => {
+    expect(() => validateParserPlugins([])).not.toThrow();
+    expect(() => validateParserPlugins(['decorators-legacy', 'typescript'])).not.toThrow();
+  });
+
+  it('rejects an unknown name, which Babel would otherwise ignore silently', () => {
+    expect(() => validateParserPlugins(['not-a-real-plugin'])).toThrow(CliError);
+    expect(() => validateParserPlugins(['not-a-real-plugin'])).toThrow(/analyzed nothing extra/);
+  });
+
+  it('catches a casing typo of a real plugin', () => {
+    expect(() => validateParserPlugins(['decoratorsLegacy'])).toThrow(/unknown --parser-plugin/);
+  });
+
+  it('lists the known plugins so the error is actionable', () => {
+    expect(() => validateParserPlugins(['nope'])).toThrow(/decorators-legacy/);
   });
 });
 

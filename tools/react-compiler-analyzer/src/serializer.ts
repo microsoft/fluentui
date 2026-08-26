@@ -23,6 +23,8 @@ export interface DocumentMeta {
   workspaceRoot: string;
   /** Files the parser could not read at all; they contribute no functions to the report. */
   unparseable?: { file: string; error: string }[];
+  /** Outcome of `--annotate`, when it ran. */
+  annotate?: AnalysisDocument['annotate'];
 }
 
 /** Build the machine-readable form of an `analyze` run. Input is expected pre-sorted. */
@@ -79,6 +81,7 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: DocumentMe
     functions,
     findings,
     unparseable: unparseable.map(u => ({ file: toRelative(u.file, meta.workspaceRoot), error: u.error })),
+    ...(meta.annotate ? { annotate: meta.annotate } : {}),
   };
 }
 
