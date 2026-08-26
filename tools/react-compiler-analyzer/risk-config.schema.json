@@ -21,7 +21,7 @@
     },
     "selectorHookProperties": {
       "type": "array",
-      "description": "Marker property names identifying a hidden selector hook accessed via property chain, e.g. [\"use\"] matches `store.use.field()` (`hidden-selector-hook`, `high`). The receiver may be any expression — `useFooStore(x).use.field()` and `a.b.use.field()` match too. Empty/omitted disables the rule.",
+      "description": "Marker property names identifying a hidden selector hook accessed via property chain, e.g. [\"use\"] matches `store.use.field()` (`hidden-selector-hook`, `high`). The receiver may be any expression — `useFooStore(x).use.field()`, `a.b.use.field()` and optional-chained `store?.use.field()` match too. Empty/omitted disables the rule.",
       "items": { "type": "string", "minLength": 1 },
       "uniqueItems": true
     },

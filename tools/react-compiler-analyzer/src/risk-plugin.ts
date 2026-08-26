@@ -7,6 +7,7 @@ import {
   isSnapshotRead,
   matchAccessorInit,
   matchRiskyCall,
+  type AnyCall,
   type LeafRiskConfig,
 } from './risk-patterns';
 import type { RiskConfig, RiskFinding } from './types';
@@ -76,9 +77,8 @@ export function riskPlugin(): PluginObj {
         const s = state as unknown as RiskPluginState;
         s.leafConfig = buildLeafConfig(s.opts);
       },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      CallExpression(path, state) {
-        const { opts, leafConfig } = state as unknown as RiskPluginState;
+      'CallExpression|OptionalCallExpression'(path: NodePath<AnyCall>, state: unknown) {
+        const { opts, leafConfig } = state as RiskPluginState;
         if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
           return;
         }

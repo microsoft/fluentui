@@ -269,6 +269,49 @@ describe('risk integration — compileFile + deriveCoverage', () => {
     expect(risky).toHaveLength(0);
   });
 
+  describe('optional-chained receivers', () => {
+    // `store?.use.field()` parses as OptionalCallExpression/OptionalMemberExpression — distinct
+    // node types that survived earlier sweeps unflagged.
+    const config: RiskConfig = {
+      selectorHookProperties: ['use'],
+      detectGetStateReads: true,
+      storeAccessorPattern: 'Store$',
+    };
+
+    it('flags a hidden selector hook reached through `?.`', async () => {
+      const findings = await runPlugin('optional-chained.tsx', config);
+      const hidden = findings.filter(f => f.ruleId === 'hidden-selector-hook');
+      const symbols = hidden.map(f => f.symbol);
+
+      expect(symbols).toContain('store.use.source');
+      expect(symbols).toContain('store.use.hostContext');
+      expect(hidden.every(f => f.severity === 'high')).toBe(true);
+    });
+
+    it('flags a hidden selector hook when the marker property itself is optional', async () => {
+      const findings = await runPlugin('optional-chained.tsx', config);
+      // `store?.use?.source()` — both links optional.
+      expect(findings.filter(f => f.symbol === 'store.use.source')).toHaveLength(2);
+    });
+
+    it('flags an optional-chained `.getState()` read', async () => {
+      const findings = await runPlugin('optional-chained.tsx', config);
+      expect(findings.map(f => f.symbol)).toContain('itemStore.getState');
+    });
+
+    it('flags an accessor read through an optional member access', async () => {
+      const findings = await runPlugin('optional-chained.tsx', config);
+      const line = lineOf('optional-chained.tsx', 'getChatStore()?.sendingData');
+      expect(findings.some(f => f.line === line && f.symbol === 'getChatStore')).toBe(true);
+    });
+
+    it('flags an optional read of a bound accessor result', async () => {
+      const findings = await runPlugin('optional-chained.tsx', config);
+      const line = lineOf('optional-chained.tsx', 's?.draft');
+      expect(findings.some(f => f.line === line && f.message.includes('local binding'))).toBe(true);
+    });
+  });
+
   describe('risks on non-compiled functions', () => {
     // The fixture holds exactly one compiled, one errored and one opted-out risky function.
     const config: RiskConfig = { storeAccessorPattern: 'Store$' };

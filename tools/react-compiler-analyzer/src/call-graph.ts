@@ -11,6 +11,7 @@ import {
   isSnapshotRead,
   matchAccessorInit,
   matchRiskyCall,
+  type AnyCall,
   type LeafMatch,
   type LeafRiskConfig,
 } from './risk-patterns';
@@ -357,8 +358,7 @@ function buildModuleModel(filePath: string, ast: File, leafConfig: LeafRiskConfi
         fnStack.pop();
       },
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    CallExpression(path) {
+    'CallExpression|OptionalCallExpression'(path: NodePath<AnyCall>) {
       const top = fnStack[fnStack.length - 1];
       if (top) {
         top.calls.push({ node: path.node, parent: path.parent });

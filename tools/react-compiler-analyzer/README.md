@@ -224,6 +224,10 @@ flagging real, compiler-introduced bugs:
 | `nonreactive-store-read` | Imperative store snapshots: `store.getState().field`, `getXStore().field`, `const { field } = getXStore()`, and one level of local binding — `const s = getXStore(); … s.field` _(opt-in)_ | The read has no tracked inputs, so the compiler hoists it into a compute-once cache slot — it runs on the first render and is **never re-read**, freezing the value.                                                  |
 | `hidden-selector-hook`   | Selector hooks accessed via property chain: `store.use.field()`, on **any** receiver — `useFooStore(x).use.field()`, `a.b.use.field()`, `store.use['field']()` _(opt-in)_                  | `.use.field()` calls a real hook (`useStore`) internally but isn't `useXxx()`-named, so the compiler memoizes around it — running the hidden hook only on the first render → hook-order crash (`areHookInputsEqual`). |
 
+Both rules match **optional-chained** forms too — `store?.use.field()`, `store?.use?.field()`,
+`store?.getState()`, `getXStore()?.field`, `const s = getXStore(); … s?.field`. Babel parses these as
+`OptionalCallExpression`/`OptionalMemberExpression`, distinct node types from their plain
+counterparts, so a rule that only matched the latter would let `?.` slip through unflagged.
 Both are verifiable in the compiler's own output: the call is wrapped in a
 `Symbol.for("react.memo_cache_sentinel")` slot that computes once and then always returns the
 cached value. For a plain snapshot that freezes the value; for a hidden hook that means the

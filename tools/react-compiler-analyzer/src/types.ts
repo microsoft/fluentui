@@ -196,7 +196,8 @@ export interface RiskConfig {
   /**
    * Marker property names that identify a hidden selector hook accessed via property chain,
    * e.g. `["use"]` matches `store.use.field()` (`hidden-selector-hook`). The receiver may be any
-   * expression, so `useFooStore(x).use.field()` matches too. Empty/omitted disables it.
+   * expression, and optional-chained forms (`store?.use.field()`) match too. Empty/omitted
+   * disables it.
    */
   selectorHookProperties?: string[];
   /**
