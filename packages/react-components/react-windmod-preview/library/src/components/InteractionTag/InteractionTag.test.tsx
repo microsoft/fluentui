@@ -13,9 +13,8 @@ import { interactionTagClassNames, useInteractionTagStyles } from './useInteract
 
 import styles from './InteractionTag.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The same mock
-// records what each render publishes to the Griffel context: the headless state omits all three
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records what each render publishes to the Griffel context: the headless state omits all three
 // look values, so only the styled state can carry them.
 jest.mock('@fluentui/react-headless-components-preview/interaction-tag', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/interaction-tag');

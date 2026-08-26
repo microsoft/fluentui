@@ -14,9 +14,8 @@ import { interactionTagPrimaryClassNames } from './useInteractionTagPrimaryStyle
 import styles from './InteractionTagPrimary.module.css';
 import tagStyles from '../Tag/Tag.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The same mock
-// records the avatar context each render publishes: the headless state omits avatarSize and
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records the avatar context each render publishes: the headless state omits avatarSize and
 // avatarShape, so only the derived state can carry them.
 jest.mock('@fluentui/react-headless-components-preview/interaction-tag', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/interaction-tag');

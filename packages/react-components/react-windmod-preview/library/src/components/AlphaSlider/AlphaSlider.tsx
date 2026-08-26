@@ -15,8 +15,8 @@ import { useAlphaSliderStyles } from './useAlphaSliderStyles';
  * An AlphaSlider picks the alpha channel of a colour. Windmod AlphaSlider: the headless slider
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  *
- * The per-instance colour and geometry are inline custom properties the headless base hook writes;
- * the windmod layer never writes to, re-orders or merges into that style — the module reads them.
+ * The per-instance colour and geometry are inline custom properties the headless base hook writes —
+ * see `ColorArea` for the rule the windmod layer follows around them.
  */
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps> = React.forwardRef(
   ({ shape: shapeProp, ...rest }, ref) => {
@@ -25,8 +25,7 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps> = React.forwardR
     return renderAlphaSlider(
       useAlphaSliderStyles({
         ...useAlphaSlider(rest, ref),
-        // The context's own default value applies only with no picker at all, so a picker that leaves
-        // `shape` unset publishes undefined and the trailing fallback is what resolves it.
+        // The trailing fallback, not the context default, is what resolves `shape` — see `ColorArea`.
         shape: shapeProp ?? shapeFromContext ?? 'rounded',
       }),
     );

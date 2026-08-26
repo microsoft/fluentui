@@ -23,8 +23,7 @@ type CompoundButtonRootDataAttributes = {
  * data-appearance/-size/-empty; data-icon-position is the one attribute the headless compound
  * hook omits that Button's and this component's icon spacing both select on.
  *
- * Button's icon rules select through `group/fui-button`, so the root must keep Button's marker
- * pair alongside its own.
+ * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
 export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
   const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);

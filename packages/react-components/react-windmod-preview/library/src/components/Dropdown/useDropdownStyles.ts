@@ -21,9 +21,8 @@ const iconClasses = (hidden: boolean): string => clsx(styles.icon, hidden && sty
 /**
  * Applies the visual contract, returning new state. The headless hook already stamps data-open,
  * data-disabled, data-placeholder, data-invalid and data-clearable; data-placeholder is the channel
- * the button's placeholder colour reads through, and data-invalid is deliberately unused, because
- * it is present for every non-boolean aria-invalid token while the invalid look belongs only to
- * `aria-invalid` true. Unlike Input, the invalid look is NOT gated on `!disabled` — Griffel's
+ * the button's placeholder colour reads through, and data-invalid is deliberately unused — see
+ * `useInputStyles`. Unlike Input, the invalid look is NOT gated on `!disabled` — Griffel's
  * Dropdown paints a disabled invalid field red, and the strict pixel gate is against it.
  */
 export const useDropdownStyles = (state: DropdownState): DropdownState => {

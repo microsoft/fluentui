@@ -24,8 +24,7 @@ type MenuButtonRootDataAttributes = {
  * with-icon padding select on that the menu state does not carry at all — the menu shape renders
  * the icon before the children unconditionally, so it is fixed to `before`.
  *
- * Button's icon rules select through `group/fui-button`, so the root must keep Button's marker
- * pair alongside its own.
+ * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
 export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
   const { root: buttonRoot, icon: buttonIcon } = useButtonStyles({ ...state, iconPosition: 'before' });

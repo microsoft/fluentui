@@ -14,10 +14,9 @@ import { useButtonStyles } from './useButtonStyles';
  */
 export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
-  // Defaults mirror @fluentui/react-button's styled useButton, ButtonContext read included: a
-  // container like MessageBarActions publishes `size`, and Griffel resolves it as
-  // `size = contextSize ?? 'medium'` (react-button useButton.ts:19-20). The context is Griffel's
-  // own instance, re-exported by headless, because the provider is Griffel's too.
+  // The context is merged before destructuring, so a container that publishes `size` supplies the
+  // default while an explicit prop still wins. The context instance is Griffel's own, re-exported
+  // by headless, because the provider is Griffel's too.
   const {
     appearance = 'secondary',
     shape = 'rounded',

@@ -12,8 +12,7 @@ import { menuItemClassNames, useMenuItemStyles } from './useMenuItemStyles';
 
 import styles from './MenuItem.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/menu', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/menu');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -102,7 +101,7 @@ describe('MenuItem', () => {
   it('stamps data-multiline only when subText is present, in the ratified spelling', () => {
     const withSubText = renderItem({ subText: 'sub' }).item;
 
-    // The ratified presence spelling is `true`/absent — never the headless library's own `''`.
+    // The presence spelling is `true`/absent — never the headless library's own `''`.
     expect(withSubText.getAttribute('data-multiline')).toBe('true');
     expect(renderItem().item.hasAttribute('data-multiline')).toBe(false);
   });
@@ -128,7 +127,7 @@ describe('MenuItem', () => {
   });
 
   it('restores the default chevron on every nullish input and never overrides a consumer', () => {
-    // The D1 8-input matrix, as a test. `??` fires on null and undefined only.
+    // The glyph rule's 8-input matrix, as a test. `??` fires on null and undefined only.
     const hasGlyph = (props: MenuItemProps) => {
       const { item } = renderSubmenuItem(props);
       const indicator = item.lastElementChild as HTMLElement;

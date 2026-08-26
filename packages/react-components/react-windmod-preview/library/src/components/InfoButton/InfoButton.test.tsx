@@ -11,8 +11,7 @@ import styles from './InfoButton.module.css';
 // Every props object the headless hook was called with, in call order.
 const hookCalls: Record<string, unknown>[] = [];
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/info-label', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/info-label');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -109,8 +108,8 @@ describe('InfoButton', () => {
     expect(button.querySelector('[data-consumer]')).toBeTruthy();
   });
 
-  // Ratified D1 divergence: the fallback fires on null as well as undefined, so `null` restores
-  // the glyph here while Griffel renders nothing. Migration note MN-7.
+  // A deliberate divergence from Griffel: the fallback fires on null as well as undefined, so
+  // `null` restores the glyph here while Griffel renders nothing.
   it('renders the default glyph for null children', () => {
     const { baseElement } = render(<InfoButton info="i">{null}</InfoButton>);
 

@@ -38,7 +38,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 
 const CONSUMER = <span data-consumer="">C</span>;
 
-/** The 8-input matrix every D1 consumer re-baselines (CONTEXT.md, GLYPH RULE). */
+/** The 8-input matrix every glyph-rule consumer re-baselines. */
 const INPUTS: ReadonlyArray<readonly [string, ComboboxProps['expandIcon']]> = [
   ['unsupplied', undefined],
   ['null', null],
@@ -299,7 +299,7 @@ describe('Combobox', () => {
     expect(pathOf(expandIcon)).not.toBe(pathOf(clearIcon));
   });
 
-  // T-9. `fui-listbox` is windmod Listbox's marker pair and nothing else emits it, which is the only
+  // `fui-listbox` is windmod Listbox's marker pair and nothing else emits it, which is the only
   // structural discriminator jest has — the css-module proxy makes every module's `root` one string.
   it('renders windmod Listbox as the surface, with the resolved slot intact', () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);

@@ -12,10 +12,9 @@ import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles';
 
 import styles from './AvatarGroupPopover.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The same mock
-// records what AvatarGroupPopover hands the headless hook, which is where the resolved indicator
-// and the materialised glyph land.
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock records what AvatarGroupPopover hands the headless hook, which is where the resolved
+// indicator and the materialised glyph land.
 jest.mock('@fluentui/react-headless-components-preview/avatar-group', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/avatar-group');
   const { deepFreezeState } = require('../../testing/freezeState');

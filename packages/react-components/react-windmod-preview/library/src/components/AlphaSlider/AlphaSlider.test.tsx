@@ -10,8 +10,7 @@ import { alphaSliderClassNames, useAlphaSliderStyles } from './useAlphaSliderSty
 
 import styles from './AlphaSlider.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/color-picker', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/color-picker');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -27,7 +26,8 @@ const teal = { a: 0.5, h: 180, s: 0.5, v: 0.6 };
 
 // The jest css-module proxy drops the component and hash segments, so AlphaSlider's `rail` and
 // the ColorSlider `rail` it composes are the same string — only the raw attribute's occurrence
-// count shows both classes are present. classList is an ordered set and would hide it.
+// count shows both classes are present. classList is an ordered set, so a duplicated token is only
+// visible in the raw attribute.
 const occurrences = (element: HTMLElement, target: string): number =>
   element
     .getAttribute('class')!

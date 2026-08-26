@@ -14,10 +14,8 @@ import {
 
 import styles from './InteractionTagSecondary.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The glyph
-// restoration runs on this exact frozen value, so a `??=` in place of the immutable spread fails
-// here rather than in review.
+// Frozen-state guard — see testing/freezeState.ts.
+// The glyph restoration runs on this exact frozen value, so a `??=` in place of the immutable spread throws.
 jest.mock('@fluentui/react-headless-components-preview/interaction-tag', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/interaction-tag');
   const { deepFreezeState } = require('../../testing/freezeState');

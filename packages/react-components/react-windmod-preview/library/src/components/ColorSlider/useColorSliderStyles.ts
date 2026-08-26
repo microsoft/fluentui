@@ -5,7 +5,7 @@ import type { ColorSliderState } from './ColorSlider.types';
 
 import styles from './ColorSlider.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const colorSliderClassNames: { root: string } = {
   root: componentMarkers('color-slider'),
 };
@@ -36,7 +36,6 @@ export const useColorSliderStyles = (state: ColorSliderState): ColorSliderState 
     thumb: { ...state.thumb, className: clsx(styles.thumb, state.thumb.className) },
     input: {
       ...state.input,
-      // The module class leads so classList[0] stays slash-free — see componentMarkers.
       className: clsx(styles.input, peerMarker('color-slider'), state.input.className),
     },
   };

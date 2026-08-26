@@ -12,9 +12,8 @@ import previewStyles from '../CardPreview/CardPreview.module.css';
 
 const mockContextValue = jest.fn();
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts. The context-value
-// spy records the state the component actually feeds to renderCard.
+// Frozen-state guard — see testing/freezeState.ts.
+// The context-value spy records the state the component actually feeds to renderCard.
 jest.mock('@fluentui/react-headless-components-preview/card', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/card');
   const { deepFreezeState } = require('../../testing/freezeState');

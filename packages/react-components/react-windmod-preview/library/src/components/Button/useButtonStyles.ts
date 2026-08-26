@@ -17,7 +17,9 @@ type ButtonRootDataAttributes = {
 };
 
 /** Applies the visual contract, returning new state. The headless hook already stamps
- * data-disabled/-disabled-focusable/-icon-only/-icon-position; these three are style-only. */
+ * data-disabled/-disabled-focusable/-icon-only/-icon-position; these three are style-only.
+ * The icon rules select through `group/fui-button`, so a hook composing this one must keep
+ * Button's marker pair on its root alongside its own. */
 export const useButtonStyles = (state: ButtonState): ButtonState => {
   const { appearance, shape, size } = state;
 

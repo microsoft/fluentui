@@ -41,7 +41,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 
 const CONSUMER = <span data-consumer="">C</span>;
 
-/** The 8-input matrix every D1 consumer re-baselines (CONTEXT.md, GLYPH RULE). */
+/** The 8-input matrix every glyph-rule consumer re-baselines. */
 const INPUTS: ReadonlyArray<readonly [string, DropdownProps['expandIcon']]> = [
   ['unsupplied', undefined],
   ['null', null],
@@ -407,7 +407,7 @@ describe('Dropdown', () => {
     expect(listbox!.getAttribute('style')).toContain('margin-block-start: 24px');
   });
 
-  // T-9. Typeahead writes no class and nothing distinguishing on the trigger; every DOM effect is
+  // Typeahead writes no class and nothing distinguishing on the trigger; every DOM effect is
   // an active-descendant attribute on an Option, and the trigger's text never changes.
   it('opens on the first typed character while closed', () => {
     const { root, button } = renderDrop({}, FRUIT);

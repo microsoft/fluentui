@@ -13,8 +13,7 @@ import styles from './AccordionHeader.module.css';
 // Every state the component hands to the headless context-values helper, in call order.
 const mockContextValuesStates: { size?: string; inline?: boolean }[] = [];
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/accordion', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/accordion');
   const { deepFreezeState } = require('../../testing/freezeState');

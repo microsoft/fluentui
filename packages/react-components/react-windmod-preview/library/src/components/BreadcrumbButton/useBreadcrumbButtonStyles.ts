@@ -25,8 +25,7 @@ type BreadcrumbButtonRootDataAttributes = {
  * button routes through Griffel's base hook rather than the headless one, so none of the four
  * Button stamps below reach the root on their own.
  *
- * Button's icon rules select through `group/fui-button`, so the root must keep Button's marker
- * pair alongside its own.
+ * The root keeps Button's marker pair alongside its own — see `useButtonStyles`.
  */
 export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
   const { root: buttonRoot, icon: buttonIcon } = useButtonStyles(state);

@@ -5,7 +5,7 @@ import type { ColorAreaState } from './ColorArea.types';
 
 import styles from './ColorArea.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const colorAreaClassNames: { root: string } = {
   root: componentMarkers('color-area'),
 };

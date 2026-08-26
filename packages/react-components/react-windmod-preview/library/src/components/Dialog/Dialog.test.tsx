@@ -6,8 +6,8 @@ import { DialogSurface } from '../DialogSurface/DialogSurface';
 import type { DialogProps } from './Dialog.types';
 import { Dialog } from './Dialog';
 
-// Frozen-state guard — see testing/freezeState.ts. The same mock also records what Dialog hands
-// the headless hook, which is where a look prop would leak.
+// Frozen-state guard — see testing/freezeState.ts.
+// The same mock also records what Dialog hands the headless hook, which is where a look prop would leak.
 jest.mock('@fluentui/react-headless-components-preview/dialog', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/dialog');
   const { deepFreezeState } = require('../../testing/freezeState');

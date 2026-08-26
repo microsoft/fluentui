@@ -9,8 +9,7 @@ import { colorSliderClassNames, useColorSliderStyles } from './useColorSliderSty
 
 import styles from './ColorSlider.module.css';
 
-// Frozen-state guard: freezes the headless hook's return so any in-place write anywhere in the
-// pipeline throws instead of succeeding silently — see testing/freezeState.ts.
+// Frozen-state guard — see testing/freezeState.ts.
 jest.mock('@fluentui/react-headless-components-preview/color-picker', () => {
   const actual = jest.requireActual('@fluentui/react-headless-components-preview/color-picker');
   const { deepFreezeState } = require('../../testing/freezeState');
@@ -80,7 +79,6 @@ describe('ColorSlider', () => {
     const { input, rail, root, thumb } = renderColorSlider();
 
     expect(input).toHaveClass('peer/fui-color-slider');
-    // classList[0] must stay slash-free — see componentMarkers.
     expect(input.classList[0]).toBe(styles.input);
 
     [rail, root, thumb].forEach(slot => expect(slot).not.toHaveClass('peer/fui-color-slider'));

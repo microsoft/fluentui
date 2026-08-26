@@ -8,7 +8,7 @@ import type { AlphaSliderState } from './AlphaSlider.types';
 
 import styles from './AlphaSlider.module.css';
 
-/** The only public identity classes — see componentMarkers; internals are hashed idents. */
+/** The only public classes — see componentMarkers; internals are hashed idents. */
 export const alphaSliderClassNames: { root: string } = {
   root: componentMarkers('alpha-slider'),
 };
