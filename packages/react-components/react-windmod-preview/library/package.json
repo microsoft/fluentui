@@ -27,6 +27,7 @@
   "dependencies": {
     "@fluentui/react-headless-components-preview": "^0.2.5",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
     "@fluentui/react-shared-contexts": "^9.26.3",
     "@fluentui/react-tailwind-theme-preview": "^9.0.0-alpha.0",
     "@fluentui/react-utilities": "^9.26.6",
@@ -1144,6 +1145,76 @@
       "require": {
         "types": "./dist/tag-picker-option-group.d.cts",
         "default": "./lib-commonjs/tag-picker-option-group.cjs"
+      }
+    },
+    "./teaching-popover": {
+      "import": {
+        "types": "./dist/teaching-popover.d.ts",
+        "default": "./lib/teaching-popover.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover.d.cts",
+        "default": "./lib-commonjs/teaching-popover.cjs"
+      }
+    },
+    "./teaching-popover-body": {
+      "import": {
+        "types": "./dist/teaching-popover-body.d.ts",
+        "default": "./lib/teaching-popover-body.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-body.d.cts",
+        "default": "./lib-commonjs/teaching-popover-body.cjs"
+      }
+    },
+    "./teaching-popover-footer": {
+      "import": {
+        "types": "./dist/teaching-popover-footer.d.ts",
+        "default": "./lib/teaching-popover-footer.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-footer.d.cts",
+        "default": "./lib-commonjs/teaching-popover-footer.cjs"
+      }
+    },
+    "./teaching-popover-header": {
+      "import": {
+        "types": "./dist/teaching-popover-header.d.ts",
+        "default": "./lib/teaching-popover-header.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-header.d.cts",
+        "default": "./lib-commonjs/teaching-popover-header.cjs"
+      }
+    },
+    "./teaching-popover-surface": {
+      "import": {
+        "types": "./dist/teaching-popover-surface.d.ts",
+        "default": "./lib/teaching-popover-surface.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-surface.d.cts",
+        "default": "./lib-commonjs/teaching-popover-surface.cjs"
+      }
+    },
+    "./teaching-popover-title": {
+      "import": {
+        "types": "./dist/teaching-popover-title.d.ts",
+        "default": "./lib/teaching-popover-title.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-title.d.cts",
+        "default": "./lib-commonjs/teaching-popover-title.cjs"
+      }
+    },
+    "./teaching-popover-trigger": {
+      "import": {
+        "types": "./dist/teaching-popover-trigger.d.ts",
+        "default": "./lib/teaching-popover-trigger.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-trigger.d.cts",
+        "default": "./lib-commonjs/teaching-popover-trigger.cjs"
       }
     },
     "./textarea": {

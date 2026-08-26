@@ -945,6 +945,97 @@ export type {
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
 } from './tag-picker-option-group';
+export {
+  renderTeachingPopover,
+  TeachingPopover,
+  useTeachingPopover,
+  useTeachingPopoverContextValues,
+} from './teaching-popover';
+export type {
+  TeachingPopoverBaseBridgedContextValue,
+  TeachingPopoverContextValues,
+  TeachingPopoverProps,
+  TeachingPopoverState,
+} from './teaching-popover';
+
+export {
+  renderTeachingPopoverBody,
+  TeachingPopoverBody,
+  teachingPopoverBodyClassNames,
+  useTeachingPopoverBody,
+  useTeachingPopoverBodyStyles,
+} from './teaching-popover-body';
+export type {
+  TeachingPopoverBodyProps,
+  TeachingPopoverBodySlots,
+  TeachingPopoverBodyState,
+} from './teaching-popover-body';
+
+export {
+  renderTeachingPopoverFooter,
+  TeachingPopoverFooter,
+  teachingPopoverFooterClassNames,
+  useTeachingPopoverFooter,
+  useTeachingPopoverFooterStyles,
+} from './teaching-popover-footer';
+export type {
+  TeachingPopoverFooterButtonSlot,
+  TeachingPopoverFooterProps,
+  TeachingPopoverFooterSlots,
+  TeachingPopoverFooterState,
+} from './teaching-popover-footer';
+
+export {
+  renderTeachingPopoverHeader,
+  TeachingPopoverHeader,
+  teachingPopoverHeaderClassNames,
+  useTeachingPopoverHeader,
+  useTeachingPopoverHeaderStyles,
+} from './teaching-popover-header';
+export type {
+  TeachingPopoverHeaderProps,
+  TeachingPopoverHeaderSlots,
+  TeachingPopoverHeaderState,
+} from './teaching-popover-header';
+
+export {
+  renderTeachingPopoverSurface,
+  TeachingPopoverSurface,
+  teachingPopoverSurfaceClassNames,
+  useTeachingPopoverSurface,
+  useTeachingPopoverSurfaceStyles,
+} from './teaching-popover-surface';
+export type {
+  TeachingPopoverSurfaceProps,
+  TeachingPopoverSurfaceSlots,
+  TeachingPopoverSurfaceState,
+} from './teaching-popover-surface';
+
+export {
+  renderTeachingPopoverTitle,
+  TeachingPopoverTitle,
+  teachingPopoverTitleClassNames,
+  useTeachingPopoverTitle,
+  useTeachingPopoverTitleStyles,
+} from './teaching-popover-title';
+export type {
+  TeachingPopoverTitleProps,
+  TeachingPopoverTitleSlots,
+  TeachingPopoverTitleState,
+} from './teaching-popover-title';
+
+export {
+  renderTeachingPopoverTrigger,
+  TeachingPopoverTrigger,
+  teachingPopoverTriggerClassNames,
+  useTeachingPopoverTrigger,
+  useTeachingPopoverTriggerStyles,
+} from './teaching-popover-trigger';
+export type {
+  TeachingPopoverTriggerChildProps,
+  TeachingPopoverTriggerProps,
+  TeachingPopoverTriggerState,
+} from './teaching-popover-trigger';
 
 export { renderTextarea, Textarea, textareaClassNames, useTextarea, useTextareaStyles } from './textarea';
 export type { TextareaAppearance, TextareaProps, TextareaSize, TextareaSlots, TextareaState } from './textarea';

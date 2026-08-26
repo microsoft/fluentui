@@ -1,0 +1,38 @@
+@reference '#theme';
+
+/* The icon box is 12px square with content-box sizing while its default glyph is a 16px SVG, so
+   the glyph overflows the box. That is Griffel's geometry and is reproduced, not corrected. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply my-0 flex flex-row items-center pb-vertical-xs text-base-200 leading-base-200 font-semibold text-neutral-foreground-3;
+  }
+
+  .brand {
+    @apply text-neutral-foreground-on-brand;
+  }
+
+  .icon {
+    @apply relative me-horizontal-xs box-content inline-flex size-(--text-base-200) items-center justify-center bg-transparent-background align-middle text-base-200 leading-base-200 text-neutral-foreground-2 no-underline;
+  }
+
+  .icon-brand {
+    @apply text-neutral-foreground-on-brand;
+  }
+
+  /* The corner and the inline-end border are flattened so the button can sit flush against the
+     surface edge. */
+  .dismiss-button {
+    @apply relative ms-auto box-border flex cursor-pointer items-center rounded-e-none border-(length:--spacing-thin) border-solid border-transparent-stroke bg-transparent-background px-horizontal-xs py-vertical-xs font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2;
+
+    border-inline-end-style: none;
+
+    @variant focus-visible {
+      @apply rounded-medium border-transparent outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+    }
+  }
+
+  .dismiss-brand {
+    @apply text-neutral-foreground-on-brand;
+  }
+}

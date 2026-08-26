@@ -20,19 +20,6 @@ import type { AccordionState as AccordionState_2 } from '@fluentui/react-headles
 import type { AlphaSliderProps as AlphaSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { AlphaSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { AlphaSliderState as AlphaSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
-import { AvatarGroupContextValue } from '@fluentui/react-headless-components-preview/avatar-group';
-import { AvatarGroupContextValues } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupItemProps as AvatarGroupItemProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupItemSlots as AvatarGroupItemSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupItemState as AvatarGroupItemState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupPopoverPopoverProps } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupPopoverProps as AvatarGroupPopoverProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupPopoverSlots as AvatarGroupPopoverSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupPopoverState as AvatarGroupPopoverState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
-import { AvatarGroupProvider } from '@fluentui/react-headless-components-preview/avatar-group';
-import { AvatarGroupSlots } from '@fluentui/react-headless-components-preview/avatar-group';
-import type { AvatarGroupState as AvatarGroupState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
 import { AvatarSlots } from '@fluentui/react-headless-components-preview/avatar';
 import type { AvatarState as AvatarState_2 } from '@fluentui/react-headless-components-preview/avatar';
@@ -147,6 +134,7 @@ import type { DropdownState as DropdownState_2 } from '@fluentui/react-headless-
 import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-components-preview/field';
 import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
 import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
@@ -157,12 +145,6 @@ import type { ImageState as ImageState_2 } from '@fluentui/react-headless-compon
 import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
-import type { InfoButtonProps as InfoButtonProps_2 } from '@fluentui/react-headless-components-preview/info-label';
-import { InfoButtonSlots } from '@fluentui/react-headless-components-preview/info-label';
-import type { InfoButtonState as InfoButtonState_2 } from '@fluentui/react-headless-components-preview/info-label';
-import type { InfoLabelProps as InfoLabelProps_2 } from '@fluentui/react-headless-components-preview/info-label';
-import { InfoLabelSlots } from '@fluentui/react-headless-components-preview/info-label';
-import type { InfoLabelState as InfoLabelState_2 } from '@fluentui/react-headless-components-preview/info-label';
 import type { InlineDrawerProps as InlineDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
 import { InlineDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { InlineDrawerState as InlineDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
@@ -194,38 +176,6 @@ import { ListboxState } from '@fluentui/react-headless-components-preview/combob
 import type { MenuButtonProps as MenuButtonProps_2 } from '@fluentui/react-headless-components-preview/menu-button';
 import { MenuButtonSlots } from '@fluentui/react-headless-components-preview/menu-button';
 import type { MenuButtonState as MenuButtonState_2 } from '@fluentui/react-headless-components-preview/menu-button';
-import { MenuContextValue } from '@fluentui/react-headless-components-preview/menu';
-import { MenuContextValues } from '@fluentui/react-headless-components-preview/menu';
-import { MenuDividerProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuDividerSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuDividerState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupHeaderProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupHeaderSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupHeaderState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuGroupState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemCheckboxProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemCheckboxState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemRadioProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemRadioState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuItemState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuListProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuListSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuListState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuOpenChangeData } from '@fluentui/react-headless-components-preview/menu';
-import { MenuOpenEvent } from '@fluentui/react-headless-components-preview/menu';
-import { MenuPopoverProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuPopoverSlots } from '@fluentui/react-headless-components-preview/menu';
-import { MenuPopoverState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuState } from '@fluentui/react-headless-components-preview/menu';
-import { MenuTriggerChildProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuTriggerProps } from '@fluentui/react-headless-components-preview/menu';
-import { MenuTriggerState } from '@fluentui/react-headless-components-preview/menu';
 import { MessageBarActionsContextValues } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-headless-components-preview/message-bar';
@@ -285,9 +235,6 @@ import { OptionState } from '@fluentui/react-headless-components-preview/combobo
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
 import { OverlayDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { OverlayDrawerState as OverlayDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
-import { PartitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
-import { partitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
-import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
@@ -325,9 +272,6 @@ import { renderAccordionItem } from '@fluentui/react-headless-components-preview
 import { renderAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { renderAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderAvatar } from '@fluentui/react-headless-components-preview/avatar';
-import { renderAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
-import { renderAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
-import { renderAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
 import { renderBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { renderBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -363,8 +307,6 @@ import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/s
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
-import { renderInfoButton } from '@fluentui/react-headless-components-preview/info-label';
-import { renderInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import { renderInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -373,17 +315,7 @@ import { renderInteractionTagSecondary } from '@fluentui/react-headless-componen
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
 import { renderListbox } from '@fluentui/react-headless-components-preview/combobox';
-import { renderMenu } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
-import { renderMenuDivider } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuGroup } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuItem } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuList } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuPopover } from '@fluentui/react-headless-components-preview/menu';
-import { renderMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 import { renderMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarBody } from '@fluentui/react-headless-components-preview/message-bar';
@@ -425,14 +357,13 @@ import { renderTab } from '@fluentui/react-headless-components-preview/tab-list'
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
-import { renderTagPicker } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerButton } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerControl } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerGroup } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerInput } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerList } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerOption } from '@fluentui/react-headless-components-preview/tag-picker';
-import { renderTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
+import { renderTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverTitle } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverTrigger } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToast } from '@fluentui/react-headless-components-preview/toast';
 import { renderToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -465,6 +396,7 @@ import type { SliderProps as SliderProps_2 } from '@fluentui/react-headless-comp
 import { SliderSlots } from '@fluentui/react-headless-components-preview/slider';
 import type { SliderState as SliderState_2 } from '@fluentui/react-headless-components-preview/slider';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { SpinButtonProps as SpinButtonProps_2 } from '@fluentui/react-headless-components-preview/spin-button';
 import { SpinButtonSlots } from '@fluentui/react-headless-components-preview/spin-button';
 import type { SpinButtonState as SpinButtonState_2 } from '@fluentui/react-headless-components-preview/spin-button';
@@ -495,39 +427,29 @@ import { TagGroupContextValues } from '@fluentui/react-headless-components-previ
 import type { TagGroupProps as TagGroupProps_2 } from '@fluentui/react-headless-components-preview/tag-group';
 import { TagGroupSlots } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupState as TagGroupState_2 } from '@fluentui/react-headless-components-preview/tag-group';
-import { TagPickerButtonProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerButtonSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerButtonState } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerContextValue } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerControlInternalSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerControlProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerControlSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import type { TagPickerControlState as TagPickerControlState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerGroupProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerGroupSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import type { TagPickerGroupState as TagPickerGroupState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerInputProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerInputSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerInputState } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerListProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerListSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerListState } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOnOpenChangeData } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOnOptionSelectData } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionGroupProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionGroupSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionGroupState } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionProps } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerOptionState } from '@fluentui/react-headless-components-preview/tag-picker';
-import type { TagPickerProps as TagPickerProps_2 } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerSize } from '@fluentui/react-headless-components-preview/tag-picker';
-import { TagPickerSlots } from '@fluentui/react-headless-components-preview/tag-picker';
-import type { TagPickerState as TagPickerState_2 } from '@fluentui/react-headless-components-preview/tag-picker';
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
 import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
+import { TeachingPopoverBaseBridgedContextValue } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodyProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodySlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodyState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverFooterProps as TeachingPopoverFooterProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverFooterState as TeachingPopoverFooterState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverHeaderProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverHeaderSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverHeaderState as TeachingPopoverHeaderState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverProps as TeachingPopoverProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverSurfaceProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverSurfaceSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTitleProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTitleSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverTitleState as TeachingPopoverTitleState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerChildProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerState } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -599,10 +521,6 @@ import { useAccordionItemContextValues } from '@fluentui/react-headless-componen
 import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 import { useAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useAvatar } from '@fluentui/react-headless-components-preview/avatar';
-import { useAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
-import { useAvatarGroupContext } from '@fluentui/react-headless-components-preview/avatar-group';
-import { useAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
-import { useAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useBreadcrumb } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { useBreadcrumbButton } from '@fluentui/react-headless-components-preview/breadcrumb';
@@ -656,8 +574,6 @@ import { useFieldContextValues } from '@fluentui/react-headless-components-previ
 import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
-import { useInfoButton } from '@fluentui/react-headless-components-preview/info-label';
-import { useInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import { useInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -669,21 +585,7 @@ import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
 import { useListbox } from '@fluentui/react-headless-components-preview/combobox';
 import { useListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
-import { useMenu } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
-import { useMenuContext } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuContextValues } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuDivider } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuGroup } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuItem } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuList } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuPopover } from '@fluentui/react-headless-components-preview/menu';
-import { useMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 import { useMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarActionsContextValues } from '@fluentui/react-headless-components-preview/message-bar';
@@ -746,18 +648,14 @@ import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
-import { useTagPicker } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerButton } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerContext_unstable } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerControl } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerFilter } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerGroup } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerGroupContextValues } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerInput } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerList } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerOption } from '@fluentui/react-headless-components-preview/tag-picker';
-import { useTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
+import { useTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverTitle } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverTrigger } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToast } from '@fluentui/react-headless-components-preview/toast';
 import { useToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -888,81 +786,6 @@ export const avatarClassNames: {
 
 // @public
 export type AvatarColor = 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-
-// @public
-export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
-
-// @public
-export const avatarGroupClassNames: {
-    root: string;
-};
-
-export { AvatarGroupContextValue }
-
-export { AvatarGroupContextValues }
-
-// @public
-export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
-
-// @public
-export const avatarGroupItemClassNames: {
-    root: string;
-};
-
-// @public
-export type AvatarGroupItemProps = AvatarGroupItemProps_2 & {
-    color?: AvatarColor;
-    idForColor?: string | undefined;
-};
-
-// @public
-export type AvatarGroupItemSlots = Omit<AvatarGroupItemSlots_2, 'avatar'> & {
-    avatar: NonNullable<Slot<typeof Avatar>>;
-};
-
-// @public
-export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & Pick<AvatarGroupItemState_2, 'isOverflowItem' | 'layout'> & {
-    size: AvatarSize;
-};
-
-// @public
-export const AvatarGroupPopover: {
-    (props: AvatarGroupPopoverProps): JSXElement;
-    displayName: string;
-};
-
-// @public
-export const avatarGroupPopoverClassNames: {
-    triggerButton: string;
-};
-
-export { AvatarGroupPopoverPopoverProps }
-
-// @public
-export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & Pick<AvatarGroupPopoverProps_2, 'children' | 'count' | 'indicator'>;
-
-// @public
-export type AvatarGroupPopoverSlots = Omit<AvatarGroupPopoverSlots_2, 'popoverSurface' | 'tooltip'> & {
-    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
-    tooltip: NonNullable<Slot<typeof Tooltip>>;
-};
-
-// @public
-export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Pick<AvatarGroupPopoverState_2, 'count' | 'indicator' | 'layout' | 'popover' | 'popoverOpen'> & {
-    size: AvatarSize;
-};
-
-// @public
-export type AvatarGroupProps = AvatarGroupProps_2 & {
-    size?: AvatarSize;
-};
-
-export { AvatarGroupProvider }
-
-export { AvatarGroupSlots }
-
-// @public
-export type AvatarGroupState = AvatarGroupState_2 & Required<Pick<AvatarGroupProps, 'size'>>;
 
 // @public
 export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
@@ -1734,49 +1557,6 @@ export type ImageSwatchState = ImageSwatchState_2 & {
 };
 
 // @public
-export const InfoButton: ForwardRefComponent<InfoButtonProps>;
-
-// @public
-export const infoButtonClassNames: {
-    root: string;
-};
-
-// @public
-export type InfoButtonProps = Omit<InfoButtonProps_2, 'popover'> & {
-    popover?: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
-    size?: InfoButtonSize;
-};
-
-// @public
-export type InfoButtonSize = 'small' | 'medium' | 'large';
-
-export { InfoButtonSlots }
-
-// @public
-export type InfoButtonState = InfoButtonState_2 & Required<Pick<InfoButtonProps, 'size'>>;
-
-// @public
-export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
-
-// @public
-export const infoLabelClassNames: {
-    root: string;
-};
-
-// @public
-export type InfoLabelProps = Omit<InfoLabelProps_2, 'infoButton' | 'label'> & {
-    label?: NonNullable<Slot<typeof Label>>;
-    infoButton?: Slot<typeof InfoButton>;
-    size?: LabelSize;
-    weight?: LabelWeight;
-};
-
-export { InfoLabelSlots }
-
-// @public
-export type InfoLabelState = InfoLabelState_2 & Required<Pick<InfoLabelProps, 'size'>>;
-
-// @public
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
 // @public
@@ -1965,12 +1745,6 @@ export { ListboxSlots }
 export { ListboxState }
 
 // @public
-export const Menu: {
-    (props: MenuProps): JSXElement;
-    displayName: string;
-};
-
-// @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
 // @public
@@ -1989,142 +1763,6 @@ export { MenuButtonSlots }
 
 // @public
 export type MenuButtonState = MenuButtonState_2 & Required<Pick<MenuButtonProps, 'appearance' | 'shape' | 'size'>>;
-
-export { MenuContextValue }
-
-export { MenuContextValues }
-
-// @public
-export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
-
-// @public
-export const menuDividerClassNames: {
-    root: string;
-};
-
-export { MenuDividerProps }
-
-export { MenuDividerSlots }
-
-export { MenuDividerState }
-
-// @public
-export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
-
-// @public
-export const menuGroupClassNames: {
-    root: string;
-};
-
-export { MenuGroupContextValues }
-
-// @public
-export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
-
-// @public
-export const menuGroupHeaderClassNames: {
-    root: string;
-};
-
-export { MenuGroupHeaderProps }
-
-export { MenuGroupHeaderSlots }
-
-export { MenuGroupHeaderState }
-
-export { MenuGroupProps }
-
-export { MenuGroupSlots }
-
-export { MenuGroupState }
-
-// @public
-export const MenuItem: ForwardRefComponent<MenuItemProps>;
-
-// @public
-export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
-
-// @public
-export const menuItemCheckboxClassNames: {
-    root: string;
-};
-
-export { MenuItemCheckboxProps }
-
-export { MenuItemCheckboxState }
-
-// @public
-export const menuItemClassNames: {
-    root: string;
-};
-
-export { MenuItemProps }
-
-// @public
-export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
-
-// @public
-export const menuItemRadioClassNames: {
-    root: string;
-};
-
-export { MenuItemRadioProps }
-
-export { MenuItemRadioState }
-
-export { MenuItemSlots }
-
-export { MenuItemState }
-
-// @public
-export const MenuList: ForwardRefComponent<MenuListProps>;
-
-// @public
-export const menuListClassNames: {
-    root: string;
-};
-
-export { MenuListProps }
-
-export { MenuListSlots }
-
-export { MenuListState }
-
-export { MenuOpenChangeData }
-
-export { MenuOpenEvent }
-
-// @public
-export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
-
-// @public
-export const menuPopoverClassNames: {
-    root: string;
-};
-
-export { MenuPopoverProps }
-
-export { MenuPopoverSlots }
-
-export { MenuPopoverState }
-
-export { MenuProps }
-
-export { MenuState }
-
-// @public
-export const MenuTrigger: React_2.FC<MenuTriggerProps>;
-
-export { MenuTriggerChildProps }
-
-// @public
-export const menuTriggerClassNames: {
-    root: string;
-};
-
-export { MenuTriggerProps }
-
-export { MenuTriggerState }
 
 // @public
 export const MessageBar: ForwardRefComponent<MessageBarProps>;
@@ -2399,12 +2037,6 @@ export type OverlayDrawerState = OverlayDrawerState_2 & {
     size: DrawerSize;
 };
 
-export { PartitionAvatarGroupItems }
-
-export { partitionAvatarGroupItems }
-
-export { PartitionAvatarGroupItemsOptions }
-
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
 
@@ -2634,12 +2266,6 @@ export { renderAlphaSlider }
 
 export { renderAvatar }
 
-export { renderAvatarGroup }
-
-export { renderAvatarGroupItem }
-
-export { renderAvatarGroupPopover }
-
 export { renderBadge }
 
 export { renderBreadcrumb }
@@ -2710,10 +2336,6 @@ export { renderImage }
 
 export { renderImageSwatch }
 
-export { renderInfoButton }
-
-export { renderInfoLabel }
-
 export { renderInlineDrawer }
 
 export { renderInput }
@@ -2730,27 +2352,7 @@ export { renderLink }
 
 export { renderListbox }
 
-export { renderMenu }
-
 export { renderMenuButton }
-
-export { renderMenuDivider }
-
-export { renderMenuGroup }
-
-export { renderMenuGroupHeader }
-
-export { renderMenuItem }
-
-export { renderMenuItemCheckbox }
-
-export { renderMenuItemRadio }
-
-export { renderMenuList }
-
-export { renderMenuPopover }
-
-export { renderMenuTrigger }
 
 export { renderMessageBar }
 
@@ -2834,21 +2436,19 @@ export { renderTag }
 
 export { renderTagGroup }
 
-export { renderTagPicker }
+export { renderTeachingPopover }
 
-export { renderTagPickerButton }
+export { renderTeachingPopoverBody }
 
-export { renderTagPickerControl }
+export { renderTeachingPopoverFooter }
 
-export { renderTagPickerGroup }
+export { renderTeachingPopoverHeader }
 
-export { renderTagPickerInput }
+export { renderTeachingPopoverSurface }
 
-export { renderTagPickerList }
+export { renderTeachingPopoverTitle }
 
-export { renderTagPickerOption }
-
-export { renderTagPickerOptionGroup }
+export { renderTeachingPopoverTrigger }
 
 export { renderTextarea }
 
@@ -3226,145 +2826,6 @@ export { TagGroupSlots }
 export type TagGroupState = TagGroupState_2 & Required<Pick<TagGroupProps, 'appearance' | 'size'>>;
 
 // @public
-export const TagPicker: {
-    ({ appearance, size, ...rest }: TagPickerProps): JSXElement;
-    displayName: string;
-};
-
-// @public
-export type TagPickerAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
-
-// @public
-export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
-
-// @public
-export const tagPickerButtonClassNames: {
-    root: string;
-};
-
-export { TagPickerButtonProps }
-
-export { TagPickerButtonSlots }
-
-export { TagPickerButtonState }
-
-export { TagPickerContextValue }
-
-export { TagPickerContextValues }
-
-// @public
-export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
-
-// @public
-export const tagPickerControlClassNames: {
-    root: string;
-};
-
-export { TagPickerControlInternalSlots }
-
-export { TagPickerControlProps }
-
-export { TagPickerControlSlots }
-
-// @public
-export type TagPickerControlState = TagPickerControlState_2 & {
-    appearance: TagPickerAppearance;
-    size: TagPickerSize;
-};
-
-// @public
-export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
-
-// @public
-export const tagPickerGroupClassNames: {
-    root: string;
-};
-
-export { TagPickerGroupProps }
-
-export { TagPickerGroupSlots }
-
-// @public
-export type TagPickerGroupState = TagPickerGroupState_2 & {
-    appearance: TagAppearance;
-    size: TagSize;
-    pickerSize: TagPickerSize;
-};
-
-// @public
-export const TagPickerInput: ForwardRefComponent<TagPickerInputProps>;
-
-// @public
-export const tagPickerInputClassNames: {
-    root: string;
-};
-
-export { TagPickerInputProps }
-
-export { TagPickerInputSlots }
-
-export { TagPickerInputState }
-
-// @public
-export const TagPickerList: ForwardRefComponent<TagPickerListProps>;
-
-// @public
-export const tagPickerListClassNames: {
-    root: string;
-};
-
-export { TagPickerListProps }
-
-export { TagPickerListSlots }
-
-export { TagPickerListState }
-
-export { TagPickerOnOpenChangeData }
-
-export { TagPickerOnOptionSelectData }
-
-// @public
-export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
-
-// @public
-export const tagPickerOptionClassNames: {
-    root: string;
-};
-
-// @public
-export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps>;
-
-// @public
-export const tagPickerOptionGroupClassNames: {
-    root: string;
-};
-
-export { TagPickerOptionGroupProps }
-
-export { TagPickerOptionGroupSlots }
-
-export { TagPickerOptionGroupState }
-
-export { TagPickerOptionProps }
-
-export { TagPickerOptionSlots }
-
-export { TagPickerOptionState }
-
-// @public
-export type TagPickerProps = TagPickerProps_2 & {
-    appearance?: TagPickerAppearance;
-    size?: TagPickerState_2['size'];
-};
-
-export { TagPickerSize }
-
-export { TagPickerSlots }
-
-// @public
-export type TagPickerState = TagPickerState_2;
-
-// @public
 export type TagProps = TagProps_2 & {
     appearance?: TagAppearance;
     shape?: TagShape;
@@ -3384,6 +2845,128 @@ export type TagState = TagState_2 & Required<Pick<TagProps, 'appearance' | 'shap
     avatarShape: AvatarShape;
     avatarSize: AvatarSize;
 };
+
+// @public
+export const TeachingPopover: {
+    (props: TeachingPopoverProps): JSXElement;
+    displayName: string;
+};
+
+export { TeachingPopoverBaseBridgedContextValue }
+
+// @public
+export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
+
+// @public
+export const teachingPopoverBodyClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverBodyProps }
+
+export { TeachingPopoverBodySlots }
+
+export { TeachingPopoverBodyState }
+
+export { TeachingPopoverContextValues }
+
+// @public
+export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
+
+// @public
+export type TeachingPopoverFooterButtonSlot = SlotComponentType<ExtractSlotProps<TeachingPopoverFooterSlots['primary']>>;
+
+// @public
+export const teachingPopoverFooterClassNames: {
+    root: string;
+};
+
+// @public
+export type TeachingPopoverFooterProps = TeachingPopoverFooterProps_2 & Partial<TeachingPopoverFooterSlots>;
+
+// @public
+export type TeachingPopoverFooterSlots = {
+    primary: NonNullable<Slot<typeof Button>>;
+    secondary?: Slot<typeof Button>;
+};
+
+// @public
+export type TeachingPopoverFooterState = TeachingPopoverFooterState_2 & {
+    appearance?: PopoverAppearance;
+    primary: TeachingPopoverFooterButtonSlot;
+    secondary?: TeachingPopoverFooterButtonSlot;
+};
+
+// @public
+export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
+
+// @public
+export const teachingPopoverHeaderClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverHeaderProps }
+
+export { TeachingPopoverHeaderSlots }
+
+// @public
+export type TeachingPopoverHeaderState = TeachingPopoverHeaderState_2 & {
+    appearance?: PopoverAppearance;
+};
+
+// @public
+export type TeachingPopoverProps = TeachingPopoverProps_2 & {
+    appearance?: PopoverAppearance;
+    size?: PopoverSize;
+};
+
+export { TeachingPopoverState }
+
+// @public
+export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;
+
+// @public
+export const teachingPopoverSurfaceClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverSurfaceProps }
+
+export { TeachingPopoverSurfaceSlots }
+
+// @public
+export type TeachingPopoverSurfaceState = PopoverSurfaceState;
+
+// @public
+export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps>;
+
+// @public
+export const teachingPopoverTitleClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverTitleProps }
+
+export { TeachingPopoverTitleSlots }
+
+// @public
+export type TeachingPopoverTitleState = TeachingPopoverTitleState_2 & {
+    appearance?: PopoverAppearance;
+};
+
+// @public
+export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
+
+export { TeachingPopoverTriggerChildProps }
+
+// @public
+export const teachingPopoverTriggerClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverTriggerProps }
+
+export { TeachingPopoverTriggerState }
 
 export { teamsDarkThemeClassName }
 
@@ -3726,23 +3309,6 @@ export const useAlphaSliderStyles: (state: AlphaSliderState) => AlphaSliderState
 
 export { useAvatar }
 
-export { useAvatarGroup }
-
-export { useAvatarGroupContext }
-
-export { useAvatarGroupItem }
-
-// @public
-export const useAvatarGroupItemStyles: (state: AvatarGroupItemState) => AvatarGroupItemState;
-
-export { useAvatarGroupPopover }
-
-// @public
-export const useAvatarGroupPopoverStyles: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
-
-// @public
-export const useAvatarGroupStyles: (state: AvatarGroupState) => AvatarGroupState;
-
 // @public
 export const useAvatarStyles: (state: AvatarState) => AvatarState;
 
@@ -3969,16 +3535,6 @@ export { useImageSwatch }
 // @public
 export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
 
-export { useInfoButton }
-
-// @public
-export const useInfoButtonStyles: (state: InfoButtonState) => InfoButtonState;
-
-export { useInfoLabel }
-
-// @public
-export const useInfoLabelStyles: (state: InfoLabelState) => InfoLabelState;
-
 export { useInlineDrawer }
 
 // @public
@@ -4025,65 +3581,10 @@ export { useListboxContextValues }
 // @public
 export const useListboxStyles: (state: ListboxState) => ListboxState;
 
-export { useMenu }
-
 export { useMenuButton }
 
 // @public
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
-
-export { useMenuContext }
-
-export { useMenuContextValues }
-
-export { useMenuDivider }
-
-// @public
-export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
-
-export { useMenuGroup }
-
-export { useMenuGroupContextValues }
-
-export { useMenuGroupHeader }
-
-// @public
-export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
-
-// @public
-export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;
-
-export { useMenuItem }
-
-export { useMenuItemCheckbox }
-
-// @public
-export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
-
-export { useMenuItemRadio }
-
-// @public
-export const useMenuItemRadioStyles: (state: MenuItemRadioState) => MenuItemRadioState;
-
-// @public
-export const useMenuItemStyles: (state: MenuItemState) => MenuItemState;
-
-export { useMenuList }
-
-export { useMenuListContextValues }
-
-// @public
-export const useMenuListStyles: (state: MenuListState) => MenuListState;
-
-export { useMenuPopover }
-
-// @public
-export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
-
-export { useMenuTrigger }
-
-// @public
-export const useMenuTriggerStyles: (state: MenuTriggerState) => MenuTriggerState;
 
 export { useMessageBar }
 
@@ -4323,53 +3824,42 @@ export { useTagGroupContextValues }
 // @public
 export const useTagGroupStyles: (state: TagGroupState) => TagGroupState;
 
-export { useTagPicker }
-
-export { useTagPickerButton }
-
-// @public
-export const useTagPickerButtonStyles: (state: TagPickerButtonState) => TagPickerButtonState;
-
-export { useTagPickerContext_unstable }
-
-export { useTagPickerContextValues }
-
-export { useTagPickerControl }
-
-// @public
-export const useTagPickerControlStyles: (state: TagPickerControlState) => TagPickerControlState;
-
-export { useTagPickerFilter }
-
-export { useTagPickerGroup }
-
-export { useTagPickerGroupContextValues }
-
-// @public
-export const useTagPickerGroupStyles: (state: TagPickerGroupState) => TagPickerGroupState;
-
-export { useTagPickerInput }
-
-// @public
-export const useTagPickerInputStyles: (state: TagPickerInputState) => TagPickerInputState;
-
-export { useTagPickerList }
-
-// @public
-export const useTagPickerListStyles: (state: TagPickerListState) => TagPickerListState;
-
-export { useTagPickerOption }
-
-export { useTagPickerOptionGroup }
-
-// @public
-export const useTagPickerOptionGroupStyles: (state: TagPickerOptionGroupState) => TagPickerOptionGroupState;
-
-// @public
-export const useTagPickerOptionStyles: (state: TagPickerOptionState) => TagPickerOptionState;
-
 // @public
 export const useTagStyles: (state: TagState) => TagState;
+
+export { useTeachingPopover }
+
+export { useTeachingPopoverBody }
+
+// @public
+export const useTeachingPopoverBodyStyles: (state: TeachingPopoverBodyState) => TeachingPopoverBodyState;
+
+export { useTeachingPopoverContextValues }
+
+export { useTeachingPopoverFooter }
+
+// @public
+export const useTeachingPopoverFooterStyles: (state: TeachingPopoverFooterState) => TeachingPopoverFooterState;
+
+export { useTeachingPopoverHeader }
+
+// @public
+export const useTeachingPopoverHeaderStyles: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
+
+export { useTeachingPopoverSurface }
+
+// @public
+export const useTeachingPopoverSurfaceStyles: (state: TeachingPopoverSurfaceState) => TeachingPopoverSurfaceState;
+
+export { useTeachingPopoverTitle }
+
+// @public
+export const useTeachingPopoverTitleStyles: (state: TeachingPopoverTitleState) => TeachingPopoverTitleState;
+
+export { useTeachingPopoverTrigger }
+
+// @public
+export const useTeachingPopoverTriggerStyles: (state: TeachingPopoverTriggerState) => TeachingPopoverTriggerState;
 
 export { useTextarea }
 

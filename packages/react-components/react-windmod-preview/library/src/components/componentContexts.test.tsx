@@ -28,10 +28,21 @@ import { SpinButton } from './SpinButton';
 import { SplitButton } from './SplitButton';
 import { Tag } from './Tag';
 import { TagGroup } from './TagGroup';
+import { TeachingPopover } from './TeachingPopover';
+import { TeachingPopoverBody } from './TeachingPopoverBody';
+import { TeachingPopoverFooter } from './TeachingPopoverFooter';
+import { TeachingPopoverHeader } from './TeachingPopoverHeader';
+import { TeachingPopoverSurface } from './TeachingPopoverSurface';
+import { TeachingPopoverTitle } from './TeachingPopoverTitle';
+import { TeachingPopoverTrigger } from './TeachingPopoverTrigger';
 import { Textarea } from './Textarea';
 import { ToggleButton } from './ToggleButton';
 import { Toolbar } from './Toolbar';
 import { ToolbarButton } from './ToolbarButton';
+
+import teachingFooterStyles from './TeachingPopoverFooter/TeachingPopoverFooter.module.css';
+import teachingHeaderStyles from './TeachingPopoverHeader/TeachingPopoverHeader.module.css';
+import teachingTitleStyles from './TeachingPopoverTitle/TeachingPopoverTitle.module.css';
 
 /**
  * Component-context parity. Each block covers one wiring site: the component reads the context its
@@ -609,6 +620,57 @@ describe('component contexts', () => {
 
       expect(surfaceIn(large.baseElement).getAttribute('data-size')).toBe('medium');
       expect(surfaceIn(large.baseElement).className).not.toBe(mediumClassName);
+    });
+  });
+
+  describe('TeachingPopover — the same look context, read by four parts', () => {
+    const teachingPopover = (appearance?: 'brand' | 'inverted', size?: 'small' | 'large') => (
+      <TeachingPopover defaultOpen {...(appearance ? { appearance } : {})} {...(size ? { size } : {})}>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverHeader>Header</TeachingPopoverHeader>
+          <TeachingPopoverTitle dismissButton={{}}>Title</TeachingPopoverTitle>
+          <TeachingPopoverBody>Body</TeachingPopoverBody>
+          <TeachingPopoverFooter primary={{ children: 'Next' }} secondary={{ children: 'Back' }} />
+        </TeachingPopoverSurface>
+      </TeachingPopover>
+    );
+
+    it('reaches Surface, Header, Title and Footer rendered as separate children', () => {
+      const { container } = render(teachingPopover('brand', 'large'));
+
+      expect(container.querySelector('.fui-teaching-popover-surface')!.getAttribute('data-size')).toBe('large');
+      expect(container.querySelector('.fui-teaching-popover-header')).toHaveClass(teachingHeaderStyles.brand);
+      expect(container.querySelector('.fui-teaching-popover-title')).toHaveClass(teachingTitleStyles.brand);
+      // The footer publishes appearance per slot rather than as a class on its own root.
+      expect(container.querySelectorAll('.fui-teaching-popover-footer .fui-button')[1]).toHaveClass(
+        teachingFooterStyles.brandSecondary,
+      );
+    });
+
+    it('leaves every part on its neutral look with no appearance', () => {
+      const { container } = render(teachingPopover());
+
+      expect(container.querySelector('.fui-teaching-popover-header')).not.toHaveClass(teachingHeaderStyles.brand);
+      expect(container.querySelector('.fui-teaching-popover-title')).not.toHaveClass(teachingTitleStyles.brand);
+      expect(container.querySelectorAll('.fui-teaching-popover-footer .fui-button')[0]).not.toHaveClass(
+        teachingFooterStyles.brandPrimary,
+      );
+    });
+
+    it('lets a footer Button still resolve an OUTER ButtonContext size', () => {
+      // The footer neither provides nor reads ButtonContext — Griffel's package references none,
+      // and ButtonContextValue carries only `size`, which is not what the footer publishes. The
+      // Buttons keep their own read, so a container above the popover still reaches them.
+      const { container } = render(
+        <ButtonContextProvider value={{ size: 'small' }}>{teachingPopover()}</ButtonContextProvider>,
+      );
+
+      const primary = container.querySelectorAll<HTMLElement>('.fui-teaching-popover-footer .fui-button')[0];
+
+      expect(primary.getAttribute('data-size')).toBe('small');
     });
   });
 });

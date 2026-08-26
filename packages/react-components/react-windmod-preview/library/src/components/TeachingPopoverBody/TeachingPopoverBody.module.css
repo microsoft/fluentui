@@ -1,0 +1,40 @@
+@reference '#theme';
+
+/* `grid-area: media` is inert here — the root is a flex column, so the named area resolves to
+   nothing. It is reproduced for computed-value parity. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-col pb-12;
+  }
+
+  .media {
+    @apply mb-12 flex w-auto justify-center overflow-hidden align-middle;
+
+    grid-area: media;
+  }
+
+  .short {
+    @apply aspect-[288/117];
+
+    @supports not (aspect-ratio) {
+      @apply h-117;
+    }
+  }
+
+  .medium {
+    @apply aspect-[288/176];
+
+    @supports not (aspect-ratio) {
+      @apply h-176;
+    }
+  }
+
+  .tall {
+    @apply aspect-square;
+
+    @supports not (aspect-ratio) {
+      @apply h-288;
+    }
+  }
+}
