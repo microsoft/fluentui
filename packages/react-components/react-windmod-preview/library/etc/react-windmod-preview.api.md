@@ -72,6 +72,9 @@ import type { ColorSliderState as ColorSliderState_2 } from '@fluentui/react-hea
 import type { ColorSwatchProps as ColorSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ColorSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ColorSwatchState as ColorSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ComboboxProps as ComboboxProps_2 } from '@fluentui/react-headless-components-preview/combobox';
+import { ComboboxSlots } from '@fluentui/react-headless-components-preview/combobox';
+import type { ComboboxState as ComboboxState_2 } from '@fluentui/react-headless-components-preview/combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CompoundButtonProps as CompoundButtonProps_2 } from '@fluentui/react-headless-components-preview/compound-button';
@@ -114,6 +117,10 @@ import type { LabelState as LabelState_2 } from '@fluentui/react-headless-compon
 import type { LinkProps as LinkProps_2 } from '@fluentui/react-headless-components-preview/link';
 import { LinkSlots } from '@fluentui/react-headless-components-preview/link';
 import type { LinkState as LinkState_2 } from '@fluentui/react-headless-components-preview/link';
+import { ListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxProps } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { ListboxState } from '@fluentui/react-headless-components-preview/combobox';
 import type { MenuButtonProps as MenuButtonProps_2 } from '@fluentui/react-headless-components-preview/menu-button';
 import { MenuButtonSlots } from '@fluentui/react-headless-components-preview/menu-button';
 import type { MenuButtonState as MenuButtonState_2 } from '@fluentui/react-headless-components-preview/menu-button';
@@ -167,6 +174,12 @@ import { OnNavItemSelectData } from '@fluentui/react-headless-components-preview
 import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OnVisibleChangeData } from '@fluentui/react-headless-components-preview/tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
+import { OptionGroupProps } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionGroupSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionGroupState } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionProps } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionSlots } from '@fluentui/react-headless-components-preview/combobox';
+import { OptionState } from '@fluentui/react-headless-components-preview/combobox';
 import type { PersonaProps as PersonaProps_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaSlots as PersonaSlots_2 } from '@fluentui/react-headless-components-preview/persona';
 import type { PersonaState as PersonaState_2 } from '@fluentui/react-headless-components-preview/persona';
@@ -219,6 +232,7 @@ import { renderColorArea } from '@fluentui/react-headless-components-preview/col
 import { renderColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderCombobox } from '@fluentui/react-headless-components-preview/combobox';
 import { renderCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { renderDivider } from '@fluentui/react-headless-components-preview/divider';
 import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -231,6 +245,7 @@ import { renderInteractionTagPrimary } from '@fluentui/react-headless-components
 import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderLabel } from '@fluentui/react-headless-components-preview/label';
 import { renderLink } from '@fluentui/react-headless-components-preview/link';
+import { renderListbox } from '@fluentui/react-headless-components-preview/combobox';
 import { renderMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { renderMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -244,6 +259,8 @@ import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { renderOption } from '@fluentui/react-headless-components-preview/combobox';
+import { renderOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
 import { renderPersona } from '@fluentui/react-headless-components-preview/persona';
 import { renderPopover } from '@fluentui/react-headless-components-preview/popover';
 import { renderPopoverSurface } from '@fluentui/react-headless-components-preview/popover';
@@ -393,6 +410,9 @@ import { useColorPickerContextValue } from '@fluentui/react-headless-components-
 import { useColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useCombobox } from '@fluentui/react-headless-components-preview/combobox';
+import { useComboboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
+import { useComboboxFilter } from '@fluentui/react-headless-components-preview/combobox';
 import { useCompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { useDivider } from '@fluentui/react-headless-components-preview/divider';
 import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -410,6 +430,8 @@ import { useInteractionTagPrimaryContextValues } from '@fluentui/react-headless-
 import { useInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useLabel } from '@fluentui/react-headless-components-preview/label';
 import { useLink } from '@fluentui/react-headless-components-preview/link';
+import { useListbox } from '@fluentui/react-headless-components-preview/combobox';
+import { useListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import { useMenuButton } from '@fluentui/react-headless-components-preview/menu-button';
 import { useMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -433,6 +455,8 @@ import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItemGroup } from '@fluentui/react-headless-components-preview/nav';
+import { useOption } from '@fluentui/react-headless-components-preview/combobox';
+import { useOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
 import { usePersona } from '@fluentui/react-headless-components-preview/persona';
 import { usePopover } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
@@ -936,6 +960,31 @@ export { ColorSwatchSlots }
 export type ColorSwatchState = ColorSwatchState_2 & Required<Pick<ColorSwatchProps, 'size' | 'shape'>>;
 
 // @public
+export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+// @public
+export type ComboboxAppearance = 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+
+// @public
+export const comboboxClassNames: {
+    root: string;
+};
+
+// @public
+export type ComboboxProps = ComboboxProps_2 & {
+    appearance?: ComboboxAppearance;
+    size?: ComboboxSize;
+};
+
+// @public
+export type ComboboxSize = 'small' | 'medium' | 'large';
+
+export { ComboboxSlots }
+
+// @public
+export type ComboboxState = ComboboxState_2 & Required<Pick<ComboboxProps, 'appearance' | 'size'>>;
+
+// @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public
@@ -1240,6 +1289,22 @@ export { LinkSlots }
 export type LinkState = LinkState_2 & Required<Pick<LinkProps, 'appearance' | 'inline'>>;
 
 // @public
+export const Listbox: ForwardRefComponent<ListboxProps>;
+
+// @public
+export const listboxClassNames: {
+    root: string;
+};
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxSlots }
+
+export { ListboxState }
+
+// @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
 // @public
@@ -1482,6 +1547,35 @@ export { OnOpenChangeData }
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
+
+// @public
+const Option_2: ForwardRefComponent<OptionProps>;
+export { Option_2 as Option }
+
+// @public
+export const optionClassNames: {
+    root: string;
+};
+
+// @public
+export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
+
+// @public
+export const optionGroupClassNames: {
+    root: string;
+};
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
 
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
@@ -1742,6 +1836,8 @@ export { renderColorSlider }
 
 export { renderColorSwatch }
 
+export { renderCombobox }
+
 export { renderCompoundButton }
 
 export { renderDivider }
@@ -1765,6 +1861,8 @@ export { renderInteractionTagSecondary }
 export { renderLabel }
 
 export { renderLink }
+
+export { renderListbox }
 
 export { renderMenuButton }
 
@@ -1791,6 +1889,10 @@ export { renderNavSectionHeader }
 export { renderNavSubItem }
 
 export { renderNavSubItemGroup }
+
+export { renderOption }
+
+export { renderOptionGroup }
 
 export { renderPersona }
 
@@ -2556,6 +2658,15 @@ export { useColorSwatch }
 // @public
 export const useColorSwatchStyles: (state: ColorSwatchState) => ColorSwatchState;
 
+export { useCombobox }
+
+export { useComboboxContextValues }
+
+export { useComboboxFilter }
+
+// @public
+export const useComboboxStyles: (state: ComboboxState) => ComboboxState;
+
 export { useCompoundButton }
 
 // @public
@@ -2625,6 +2736,13 @@ export { useLink }
 
 // @public
 export const useLinkStyles: (state: LinkState) => LinkState;
+
+export { useListbox }
+
+export { useListboxContextValues }
+
+// @public
+export const useListboxStyles: (state: ListboxState) => ListboxState;
 
 export { useMenuButton }
 
@@ -2707,6 +2825,16 @@ export const useNavSubItemGroupStyles: (state: NavSubItemGroupState) => NavSubIt
 
 // @public
 export const useNavSubItemStyles: (state: NavSubItemState) => NavSubItemState;
+
+export { useOption }
+
+export { useOptionGroup }
+
+// @public
+export const useOptionGroupStyles: (state: OptionGroupState) => OptionGroupState;
+
+// @public
+export const useOptionStyles: (state: OptionState) => OptionState;
 
 export { usePersona }
 

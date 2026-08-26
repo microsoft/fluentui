@@ -184,6 +184,17 @@ export {
 export type { ColorSwatchProps, ColorSwatchSlots, ColorSwatchState } from './color-swatch';
 
 export {
+  Combobox,
+  comboboxClassNames,
+  renderCombobox,
+  useCombobox,
+  useComboboxContextValues,
+  useComboboxFilter,
+  useComboboxStyles,
+} from './combobox';
+export type { ComboboxAppearance, ComboboxProps, ComboboxSize, ComboboxSlots, ComboboxState } from './combobox';
+
+export {
   CompoundButton,
   compoundButtonClassNames,
   renderCompoundButton,
@@ -282,6 +293,16 @@ export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from 
 
 export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
+
+export {
+  Listbox,
+  listboxClassNames,
+  renderListbox,
+  useListbox,
+  useListboxContextValues,
+  useListboxStyles,
+} from './listbox';
+export type { ListboxContextValues, ListboxProps, ListboxSlots, ListboxState } from './listbox';
 
 export { MenuButton, menuButtonClassNames, renderMenuButton, useMenuButton, useMenuButtonStyles } from './menu-button';
 export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './menu-button';
@@ -416,6 +437,18 @@ export {
   useNavSubItemGroupStyles,
 } from './nav-sub-item-group';
 export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './nav-sub-item-group';
+
+export { Option, optionClassNames, renderOption, useOption, useOptionStyles } from './option';
+export type { OptionProps, OptionSlots, OptionState } from './option';
+
+export {
+  OptionGroup,
+  optionGroupClassNames,
+  renderOptionGroup,
+  useOptionGroup,
+  useOptionGroupStyles,
+} from './option-group';
+export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './option-group';
 
 export { Persona, personaClassNames, renderPersona, usePersona, usePersonaStyles } from './persona';
 export type { PersonaProps, PersonaSize, PersonaSlots, PersonaState, PersonaTextAlignment } from './persona';
