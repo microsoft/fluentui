@@ -1,0 +1,50 @@
+@reference '#theme';
+
+/* `.visually-hidden` is authored LAST and is JS-gated on a selected option. It overlaps `.root` on
+   padding and position, and Griffel merges the collapse after the base bucket, so only source order
+   can reproduce the winner here — every selector is :where()-flat.
+
+   min-h-32 is unconditional: Griffel's shared `button` bucket writes it and no size bucket overrides
+   it, so the control's own min-height does all the sizing. */
+
+@layer fui.components.l1 {
+  .root {
+    /* NO display: Griffel's bucket authors none, so the button blockifies as a flex item of the
+       control and its own align-items and column-gap are inert. Both are authored anyway, because
+       Griffel authors both — computed-value parity, not layout.
+
+       border-current pairs with border-none, the spelling Combobox established: Griffel's
+       `border: none` shorthand also resets the colour to currentColor, and the user-agent's own
+       button border colour would otherwise survive as a computed-value divergence behind a zero
+       width. */
+    @apply box-border min-h-32 grow cursor-pointer items-center gap-x-horizontal-xxs border-none border-current bg-transparent-background text-start font-base text-neutral-foreground-1;
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant group-size-medium/fui-tag-picker-control {
+      @apply py-3 pe-horizontal-s-nudge text-base-200 leading-base-200;
+
+      padding-inline-start: calc(var(--spacing-horizontal-s-nudge) + var(--spacing-horizontal-xxs));
+    }
+
+    @variant group-size-large/fui-tag-picker-control {
+      @apply py-5 pe-horizontal-m-nudge text-base-300 leading-base-300;
+
+      padding-inline-start: calc(var(--spacing-horizontal-m-nudge) + var(--spacing-horizontal-xxs));
+    }
+
+    @variant group-size-extra-large/fui-tag-picker-control {
+      @apply gap-x-horizontal-s-nudge py-7 pe-horizontal-m text-base-400 leading-base-400;
+
+      padding-inline-start: calc(var(--spacing-horizontal-m) + var(--spacing-horizontal-s-nudge));
+    }
+  }
+
+  .visually-hidden {
+    @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
+
+    clip: rect(0px, 0px, 0px, 0px);
+  }
+}

@@ -1,0 +1,54 @@
+@reference '#theme';
+
+/* border-current pairs with border-none: Griffel's `border: none` shorthand also resets the colour
+   to currentColor, and the user-agent's own input border colour would otherwise survive as a
+   computed-value divergence behind a zero width.
+
+   The type ramp is body1 at ALL THREE sizes — Griffel spells `body1` in every size bucket — so only
+   the block padding steps with the picker size. */
+
+@layer fui.components.l1 {
+  .root {
+    /* px-0 is a reset, not a look. Griffel's three size buckets each write the four-value `padding`
+       shorthand with 0 on the inline axis, cancelling the user-agent input's own 2px; only a cell
+       with text in it can see the difference, so it hides from every empty-input band. */
+    @apply box-border max-w-full min-w-24 grow border-none border-current bg-transparent-background px-0 font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+
+    /* Written inline as 100% by the headless input hook once the text overflows; 0 otherwise, so
+       flex-grow decides the resting width and a full row is taken only when needed. The custom
+       property name is fixed by that hook, camel segment and double underscore included. */
+    width: var(--fluent-TagPickerInput__width, 0);
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4 opacity-100;
+    }
+
+    @variant after {
+      @apply invisible whitespace-pre-wrap;
+    }
+
+    @variant group-size-medium/fui-tag-picker-control {
+      @apply py-vertical-s-nudge;
+    }
+
+    @variant group-size-large/fui-tag-picker-control {
+      @apply py-vertical-m-nudge;
+    }
+
+    @variant group-size-extra-large/fui-tag-picker-control {
+      @apply py-vertical-m;
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed bg-transparent-background text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+}
