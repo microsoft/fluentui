@@ -915,6 +915,86 @@
         "default": "./lib-commonjs/tag-group.cjs"
       }
     },
+    "./tag-picker": {
+      "import": {
+        "types": "./dist/tag-picker.d.ts",
+        "default": "./lib/tag-picker.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker.d.cts",
+        "default": "./lib-commonjs/tag-picker.cjs"
+      }
+    },
+    "./tag-picker-button": {
+      "import": {
+        "types": "./dist/tag-picker-button.d.ts",
+        "default": "./lib/tag-picker-button.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-button.d.cts",
+        "default": "./lib-commonjs/tag-picker-button.cjs"
+      }
+    },
+    "./tag-picker-control": {
+      "import": {
+        "types": "./dist/tag-picker-control.d.ts",
+        "default": "./lib/tag-picker-control.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-control.d.cts",
+        "default": "./lib-commonjs/tag-picker-control.cjs"
+      }
+    },
+    "./tag-picker-group": {
+      "import": {
+        "types": "./dist/tag-picker-group.d.ts",
+        "default": "./lib/tag-picker-group.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-group.d.cts",
+        "default": "./lib-commonjs/tag-picker-group.cjs"
+      }
+    },
+    "./tag-picker-input": {
+      "import": {
+        "types": "./dist/tag-picker-input.d.ts",
+        "default": "./lib/tag-picker-input.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-input.d.cts",
+        "default": "./lib-commonjs/tag-picker-input.cjs"
+      }
+    },
+    "./tag-picker-list": {
+      "import": {
+        "types": "./dist/tag-picker-list.d.ts",
+        "default": "./lib/tag-picker-list.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-list.d.cts",
+        "default": "./lib-commonjs/tag-picker-list.cjs"
+      }
+    },
+    "./tag-picker-option": {
+      "import": {
+        "types": "./dist/tag-picker-option.d.ts",
+        "default": "./lib/tag-picker-option.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-option.d.cts",
+        "default": "./lib-commonjs/tag-picker-option.cjs"
+      }
+    },
+    "./tag-picker-option-group": {
+      "import": {
+        "types": "./dist/tag-picker-option-group.d.ts",
+        "default": "./lib/tag-picker-option-group.js"
+      },
+      "require": {
+        "types": "./dist/tag-picker-option-group.d.cts",
+        "default": "./lib-commonjs/tag-picker-option-group.cjs"
+      }
+    },
     "./textarea": {
       "import": {
         "types": "./dist/textarea.d.ts",

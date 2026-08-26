@@ -69,29 +69,30 @@ import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
 import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 ```
 
-82 component subpaths ship, all kebab-case:
+The component subpaths, all kebab-case:
 
-| Family        | Subpaths                                                                                                                                        |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                       |
-| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                 |
-| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                               |
-| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                       |
-| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                              |
-| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                       |
-| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                   |
-| Field & label | `./field` `./label`                                                                                                                             |
-| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                              |
-| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`      |
-| People        | `./avatar` `./persona`                                                                                                                          |
-| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                             |
-| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                   |
-| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                  |
-| Tabs          | `./tab` `./tab-list`                                                                                                                            |
-| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                             |
-| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button` |
-| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                               |
-| Provider      | `./fluent-provider`                                                                                                                             |
+| Family        | Subpaths                                                                                                                                                                    |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                                                   |
+| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                                             |
+| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                                                           |
+| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                                                   |
+| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                          |
+| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                   |
+| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                               |
+| Field & label | `./field` `./label`                                                                                                                                                         |
+| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                          |
+| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                  |
+| People        | `./avatar` `./persona`                                                                                                                                                      |
+| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                         |
+| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                                               |
+| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                                              |
+| Tabs          | `./tab` `./tab-list`                                                                                                                                                        |
+| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                                                         |
+| Tag picker    | `./tag-picker` `./tag-picker-button` `./tag-picker-control` `./tag-picker-group` `./tag-picker-input` `./tag-picker-list` `./tag-picker-option` `./tag-picker-option-group` |
+| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button`                             |
+| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                           |
+| Provider      | `./fluent-provider`                                                                                                                                                         |
 
 Three non-component subpaths:
 
@@ -126,7 +127,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Twenty-eight differences, each one a decision rather than a defect.
+Twenty-nine differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -445,6 +446,20 @@ Consequence: on an **offline, air-gapped or CSP-restricted origin the windmod `A
 checkerboard and the Griffel one does not**, and windmod issues no network request for it at all. A
 deliberate improvement; listed here because it is a behavioural difference you may be measuring.
 
+### Component defaults
+
+#### 29. `TagPicker` resolves an unrecognised `size` to a `medium` tag, where Griffel resolves `extra-small`
+
+A `TagPicker`'s `size` selects the size of the `Tag`s in its group: `medium` → `extra-small`,
+`large` → `small`, `extra-large` → `medium`. The three listed values map identically in both
+libraries. They differ only in the fallback: windmod's returns `medium` — windmod `Tag`'s own
+unresolved size — where Griffel's returns `extra-small`, so the windmod tag family has one
+unresolved-size answer rather than two.
+
+`TagPickerProps['size']` is a closed union, so TypeScript cannot reach this branch. It decides only
+what a JavaScript caller passing an unlisted value gets: a 32px-tall tag under windmod against a
+20px one under Griffel. Pass one of the three documented sizes and the two libraries agree exactly.
+
 ## What is not shipped
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
@@ -454,7 +469,6 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | `Menu` and family                                                                                   | headless ships it, windmod has not reskinned it yet; keep it on `@fluentui/react-components`                                            |
 | `Dialog`, `Drawer`                                                                                  | as above                                                                                                                                |
 | `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
-| `TagPicker` and family                                                                              | as above                                                                                                                                |
 | `TeachingPopover`, `Toast`/`Toaster`, `InfoLabel`                                                   | as above                                                                                                                                |
 | `AvatarGroup` and family                                                                            | as above                                                                                                                                |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
