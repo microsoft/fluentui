@@ -504,6 +504,16 @@
         "default": "./lib-commonjs/listbox.cjs"
       }
     },
+    "./menu": {
+      "import": {
+        "types": "./dist/menu.d.ts",
+        "default": "./lib/menu.js"
+      },
+      "require": {
+        "types": "./dist/menu.d.cts",
+        "default": "./lib-commonjs/menu.cjs"
+      }
+    },
     "./menu-button": {
       "import": {
         "types": "./dist/menu-button.d.ts",
@@ -512,6 +522,96 @@
       "require": {
         "types": "./dist/menu-button.d.cts",
         "default": "./lib-commonjs/menu-button.cjs"
+      }
+    },
+    "./menu-divider": {
+      "import": {
+        "types": "./dist/menu-divider.d.ts",
+        "default": "./lib/menu-divider.js"
+      },
+      "require": {
+        "types": "./dist/menu-divider.d.cts",
+        "default": "./lib-commonjs/menu-divider.cjs"
+      }
+    },
+    "./menu-group": {
+      "import": {
+        "types": "./dist/menu-group.d.ts",
+        "default": "./lib/menu-group.js"
+      },
+      "require": {
+        "types": "./dist/menu-group.d.cts",
+        "default": "./lib-commonjs/menu-group.cjs"
+      }
+    },
+    "./menu-group-header": {
+      "import": {
+        "types": "./dist/menu-group-header.d.ts",
+        "default": "./lib/menu-group-header.js"
+      },
+      "require": {
+        "types": "./dist/menu-group-header.d.cts",
+        "default": "./lib-commonjs/menu-group-header.cjs"
+      }
+    },
+    "./menu-item": {
+      "import": {
+        "types": "./dist/menu-item.d.ts",
+        "default": "./lib/menu-item.js"
+      },
+      "require": {
+        "types": "./dist/menu-item.d.cts",
+        "default": "./lib-commonjs/menu-item.cjs"
+      }
+    },
+    "./menu-item-checkbox": {
+      "import": {
+        "types": "./dist/menu-item-checkbox.d.ts",
+        "default": "./lib/menu-item-checkbox.js"
+      },
+      "require": {
+        "types": "./dist/menu-item-checkbox.d.cts",
+        "default": "./lib-commonjs/menu-item-checkbox.cjs"
+      }
+    },
+    "./menu-item-radio": {
+      "import": {
+        "types": "./dist/menu-item-radio.d.ts",
+        "default": "./lib/menu-item-radio.js"
+      },
+      "require": {
+        "types": "./dist/menu-item-radio.d.cts",
+        "default": "./lib-commonjs/menu-item-radio.cjs"
+      }
+    },
+    "./menu-list": {
+      "import": {
+        "types": "./dist/menu-list.d.ts",
+        "default": "./lib/menu-list.js"
+      },
+      "require": {
+        "types": "./dist/menu-list.d.cts",
+        "default": "./lib-commonjs/menu-list.cjs"
+      }
+    },
+    "./menu-popover": {
+      "import": {
+        "types": "./dist/menu-popover.d.ts",
+        "default": "./lib/menu-popover.js"
+      },
+      "require": {
+        "types": "./dist/menu-popover.d.cts",
+        "default": "./lib-commonjs/menu-popover.cjs"
+      }
+    },
+    "./menu-trigger": {
+      "import": {
+        "types": "./dist/menu-trigger.d.ts",
+        "default": "./lib/menu-trigger.js"
+      },
+      "require": {
+        "types": "./dist/menu-trigger.d.cts",
+        "default": "./lib-commonjs/menu-trigger.cjs"
       }
     },
     "./message-bar": {
@@ -664,6 +764,7 @@
         "default": "./lib-commonjs/overlay-drawer.cjs"
       }
     },
+    "./package.json": "./package.json",
     "./persona": {
       "import": {
         "types": "./dist/persona.d.ts",
@@ -1075,8 +1176,7 @@
         "default": "./lib-commonjs/use-css-var-value.cjs"
       }
     },
-    "./variants.css": "./src/variants.css",
-    "./package.json": "./package.json"
+    "./variants.css": "./src/variants.css"
   },
   "beachball": {
     "disallowedChangeTypes": [

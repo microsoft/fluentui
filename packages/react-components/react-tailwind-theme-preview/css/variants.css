@@ -110,6 +110,7 @@
 @custom-variant content-after (&:where([data-content-after]));
 @custom-variant has-actions (&:where([data-has-actions]));
 @custom-variant not-has-actions (&:where(:not([data-has-actions])));
+@custom-variant submenu-open (&:where([data-submenu-open]));
 
 /* interaction */
 @custom-variant hover (&:where(:hover));

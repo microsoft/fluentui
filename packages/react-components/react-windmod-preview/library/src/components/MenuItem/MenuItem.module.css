@@ -1,0 +1,297 @@
+@reference '#theme';
+
+/* Every state this file selects on is stamped by the headless hooks — data-disabled,
+   data-checked, data-has-submenu, data-submenu-open — except data-multiline, which the styles
+   hook adds. Slot classes reach the root's state through group-<variant>/fui-menu-item, and each
+   slot's group-disabled block is authored LAST so it wins over group-hover at equal specificity:
+   every catalog variant is :where()-flat, so source order is what reproduces Griffel's explicit
+   disabled-undo rules. The one place source order is not equivalent is a background Griffel paints
+   only on hover, which is nested instead so it cannot reach the resting row.
+   MenuItemCheckbox and MenuItemRadio carry the fui-menu-item marker pair as well as their own, so
+   every group variant below resolves for them too. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border flex min-h-32 max-w-[290px] shrink-0 cursor-pointer gap-4 rounded-medium bg-neutral-background-1 p-vertical-s-nudge text-base-300 text-neutral-foreground-2 select-none;
+
+    /* Griffel authors the logical `start`; items-start would compile to `flex-start`, which is a
+       computed-value divergence even though it lays out identically. */
+    align-items: start;
+
+    @variant hover {
+      @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
+    }
+
+    @variant submenu-open {
+      @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;
+    }
+
+    @variant focus, focus-visible {
+      @apply outline-none;
+    }
+
+    /* The ring is an outset ::after, not the inset fui-focus-ring shape. */
+    @variant focus-visible {
+      @apply border-transparent;
+
+      @variant after {
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-2 border-solid border-stroke-focus-2 content-[''];
+      }
+    }
+
+    @variant disabled {
+      @apply text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply cursor-not-allowed bg-neutral-background-1 text-neutral-foreground-disabled;
+      }
+
+      @variant hover-active {
+        @apply bg-neutral-background-1 text-neutral-foreground-disabled;
+      }
+
+      @variant focus {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+
+    /* Griffel emits every forced-colors rule into its media bucket, which its sheet writes after
+       every other bucket. Source order is the only equivalent, so this block trails the rest. */
+    @variant forced-colors {
+      @variant hover {
+        @apply border-[Highlight] bg-[Canvas] text-[Highlight];
+      }
+
+      @variant submenu-open {
+        @apply bg-[Canvas] text-[Highlight];
+      }
+
+      @variant focus-visible {
+        @variant after {
+          @apply border-[Highlight];
+        }
+      }
+
+      @variant disabled {
+        @apply text-[GrayText];
+
+        @variant hover {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+      }
+    }
+  }
+
+  /* An unchecked selectable item still renders a full 16px glyph: the reserved gutter is what
+     aligns every row, so the checked look is a visibility flip and never a display one. A plain
+     item under hasCheckmarks carries this class, never data-checked, and stays the spacer. */
+  .checkmark {
+    @apply invisible mt-2 size-16 shrink-0;
+
+    @variant group-checked/fui-menu-item {
+      @apply visible;
+    }
+  }
+
+  .icon {
+    @apply inline-flex size-20 shrink-0 items-center justify-center text-icon-20 leading-[0];
+
+    @variant group-hover/fui-menu-item {
+      @apply text-neutral-foreground-2-brand-selected;
+
+      & * {
+        @variant variant-filled {
+          @apply block;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant group-submenu-open/fui-menu-item {
+      @apply text-neutral-foreground-2-brand-selected;
+
+      & * {
+        @variant variant-filled {
+          @apply block;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-menu-item {
+      @apply text-neutral-foreground-disabled;
+
+      & * {
+        @variant variant-filled {
+          @apply hidden;
+        }
+
+        @variant variant-regular {
+          @apply block;
+        }
+      }
+    }
+
+    @variant forced-colors {
+      @variant group-disabled/fui-menu-item {
+        @apply text-[GrayText];
+
+        @variant group-hover/fui-menu-item {
+          @apply bg-[Canvas];
+        }
+      }
+    }
+  }
+
+  .content {
+    @apply grow bg-transparent px-2;
+
+    @variant group-multiline/fui-menu-item {
+      @apply flex flex-col;
+    }
+  }
+
+  /* The shortcut text brightens on ITS OWN hover, not the row's — Griffel puts :hover and :focus
+     on this element. Reproduced literally; the migration notes name it. */
+  .secondary-content {
+    @apply px-2 font-base text-base-200 leading-base-300 font-regular text-neutral-foreground-3;
+
+    @variant hover, focus {
+      @apply text-neutral-foreground-3-hover;
+    }
+
+    @variant group-multiline/fui-menu-item {
+      @apply self-center;
+    }
+
+    @variant group-disabled/fui-menu-item {
+      @apply text-neutral-foreground-disabled;
+
+      @variant hover {
+        @apply cursor-not-allowed bg-neutral-background-1 text-neutral-foreground-disabled;
+      }
+
+      @variant hover-active {
+        @apply bg-neutral-background-1 text-neutral-foreground-disabled;
+      }
+
+      @variant focus {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+
+    @variant forced-colors {
+      @variant group-disabled/fui-menu-item {
+        @apply text-[GrayText];
+
+        @variant hover {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+
+        @variant hover-active {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+
+        @variant focus {
+          @apply bg-[Canvas] text-[GrayText];
+        }
+      }
+    }
+  }
+
+  .sub-text {
+    @apply font-base text-base-100 leading-base-100 font-regular text-neutral-foreground-3;
+
+    @variant group-hover/fui-menu-item {
+      @apply text-neutral-foreground-3-hover;
+    }
+
+    @variant group-hover-active/fui-menu-item {
+      @apply text-neutral-foreground-3-pressed;
+    }
+
+    @variant group-submenu-open/fui-menu-item {
+      @apply text-neutral-foreground-3-hover;
+    }
+
+    @variant group-disabled/fui-menu-item {
+      @apply text-neutral-foreground-disabled;
+    }
+
+    @variant forced-colors {
+      @variant group-disabled/fui-menu-item {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  /* One glyph serves both directions: the chevron is mirrored under rtl rather than swapped for a
+     separate Left glyph, so a consumer-supplied icon is mirrored too.
+     Griffel reaches the filled/regular swap with a descendant selector from the ROW, so it lands
+     on this slot's chevron as well as on the icon slot's glyph — measured; both are reproduced. */
+  .submenu-indicator {
+    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[0];
+
+    @variant rtl {
+      @apply scale-x-[-1];
+    }
+
+    @variant group-hover/fui-menu-item {
+      & * {
+        @variant variant-filled {
+          @apply block;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant group-submenu-open/fui-menu-item {
+      & * {
+        @variant variant-filled {
+          @apply block;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant group-multiline/fui-menu-item {
+      @apply self-center;
+    }
+
+    @variant group-disabled/fui-menu-item {
+      & * {
+        @variant variant-filled {
+          @apply hidden;
+        }
+
+        @variant variant-regular {
+          @apply block;
+        }
+      }
+    }
+  }
+}
