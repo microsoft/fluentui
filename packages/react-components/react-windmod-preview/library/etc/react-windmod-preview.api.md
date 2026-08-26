@@ -134,6 +134,7 @@ import type { DropdownState as DropdownState_2 } from '@fluentui/react-headless-
 import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-components-preview/field';
 import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
 import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
@@ -356,6 +357,13 @@ import { renderTab } from '@fluentui/react-headless-components-preview/tab-list'
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { renderTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverTitle } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverTrigger } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { renderToast } from '@fluentui/react-headless-components-preview/toast';
 import { renderToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -388,6 +396,7 @@ import type { SliderProps as SliderProps_2 } from '@fluentui/react-headless-comp
 import { SliderSlots } from '@fluentui/react-headless-components-preview/slider';
 import type { SliderState as SliderState_2 } from '@fluentui/react-headless-components-preview/slider';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { SpinButtonProps as SpinButtonProps_2 } from '@fluentui/react-headless-components-preview/spin-button';
 import { SpinButtonSlots } from '@fluentui/react-headless-components-preview/spin-button';
 import type { SpinButtonState as SpinButtonState_2 } from '@fluentui/react-headless-components-preview/spin-button';
@@ -421,6 +430,26 @@ import type { TagGroupState as TagGroupState_2 } from '@fluentui/react-headless-
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
 import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
+import { TeachingPopoverBaseBridgedContextValue } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodyProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodySlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverBodyState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverFooterProps as TeachingPopoverFooterProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverFooterState as TeachingPopoverFooterState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverHeaderProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverHeaderSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverHeaderState as TeachingPopoverHeaderState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverProps as TeachingPopoverProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverSurfaceProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverSurfaceSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTitleProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTitleSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverTitleState as TeachingPopoverTitleState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerChildProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverTriggerState } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { teamsDarkThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsDarkV21ThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
 import { teamsHighContrastThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
@@ -619,6 +648,14 @@ import { useTag } from '@fluentui/react-headless-components-preview/tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
 import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
+import { useTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverTitle } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverTrigger } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import { useToast } from '@fluentui/react-headless-components-preview/toast';
 import { useToastBody } from '@fluentui/react-headless-components-preview/toast';
@@ -2399,6 +2436,20 @@ export { renderTag }
 
 export { renderTagGroup }
 
+export { renderTeachingPopover }
+
+export { renderTeachingPopoverBody }
+
+export { renderTeachingPopoverFooter }
+
+export { renderTeachingPopoverHeader }
+
+export { renderTeachingPopoverSurface }
+
+export { renderTeachingPopoverTitle }
+
+export { renderTeachingPopoverTrigger }
+
 export { renderTextarea }
 
 export { renderToast }
@@ -2794,6 +2845,128 @@ export type TagState = TagState_2 & Required<Pick<TagProps, 'appearance' | 'shap
     avatarShape: AvatarShape;
     avatarSize: AvatarSize;
 };
+
+// @public
+export const TeachingPopover: {
+    (props: TeachingPopoverProps): JSXElement;
+    displayName: string;
+};
+
+export { TeachingPopoverBaseBridgedContextValue }
+
+// @public
+export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
+
+// @public
+export const teachingPopoverBodyClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverBodyProps }
+
+export { TeachingPopoverBodySlots }
+
+export { TeachingPopoverBodyState }
+
+export { TeachingPopoverContextValues }
+
+// @public
+export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
+
+// @public
+export type TeachingPopoverFooterButtonSlot = SlotComponentType<ExtractSlotProps<TeachingPopoverFooterSlots['primary']>>;
+
+// @public
+export const teachingPopoverFooterClassNames: {
+    root: string;
+};
+
+// @public
+export type TeachingPopoverFooterProps = TeachingPopoverFooterProps_2 & Partial<TeachingPopoverFooterSlots>;
+
+// @public
+export type TeachingPopoverFooterSlots = {
+    primary: NonNullable<Slot<typeof Button>>;
+    secondary?: Slot<typeof Button>;
+};
+
+// @public
+export type TeachingPopoverFooterState = TeachingPopoverFooterState_2 & {
+    appearance?: PopoverAppearance;
+    primary: TeachingPopoverFooterButtonSlot;
+    secondary?: TeachingPopoverFooterButtonSlot;
+};
+
+// @public
+export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
+
+// @public
+export const teachingPopoverHeaderClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverHeaderProps }
+
+export { TeachingPopoverHeaderSlots }
+
+// @public
+export type TeachingPopoverHeaderState = TeachingPopoverHeaderState_2 & {
+    appearance?: PopoverAppearance;
+};
+
+// @public
+export type TeachingPopoverProps = TeachingPopoverProps_2 & {
+    appearance?: PopoverAppearance;
+    size?: PopoverSize;
+};
+
+export { TeachingPopoverState }
+
+// @public
+export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;
+
+// @public
+export const teachingPopoverSurfaceClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverSurfaceProps }
+
+export { TeachingPopoverSurfaceSlots }
+
+// @public
+export type TeachingPopoverSurfaceState = PopoverSurfaceState;
+
+// @public
+export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps>;
+
+// @public
+export const teachingPopoverTitleClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverTitleProps }
+
+export { TeachingPopoverTitleSlots }
+
+// @public
+export type TeachingPopoverTitleState = TeachingPopoverTitleState_2 & {
+    appearance?: PopoverAppearance;
+};
+
+// @public
+export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
+
+export { TeachingPopoverTriggerChildProps }
+
+// @public
+export const teachingPopoverTriggerClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverTriggerProps }
+
+export { TeachingPopoverTriggerState }
 
 export { teamsDarkThemeClassName }
 
@@ -3653,6 +3826,40 @@ export const useTagGroupStyles: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles: (state: TagState) => TagState;
+
+export { useTeachingPopover }
+
+export { useTeachingPopoverBody }
+
+// @public
+export const useTeachingPopoverBodyStyles: (state: TeachingPopoverBodyState) => TeachingPopoverBodyState;
+
+export { useTeachingPopoverContextValues }
+
+export { useTeachingPopoverFooter }
+
+// @public
+export const useTeachingPopoverFooterStyles: (state: TeachingPopoverFooterState) => TeachingPopoverFooterState;
+
+export { useTeachingPopoverHeader }
+
+// @public
+export const useTeachingPopoverHeaderStyles: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
+
+export { useTeachingPopoverSurface }
+
+// @public
+export const useTeachingPopoverSurfaceStyles: (state: TeachingPopoverSurfaceState) => TeachingPopoverSurfaceState;
+
+export { useTeachingPopoverTitle }
+
+// @public
+export const useTeachingPopoverTitleStyles: (state: TeachingPopoverTitleState) => TeachingPopoverTitleState;
+
+export { useTeachingPopoverTrigger }
+
+// @public
+export const useTeachingPopoverTriggerStyles: (state: TeachingPopoverTriggerState) => TeachingPopoverTriggerState;
 
 export { useTextarea }
 

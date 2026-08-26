@@ -13,8 +13,10 @@ no `@griffel/react` in the dependency graph, and no `makeStyles` to migrate.
 
 The goal is a drop-in reskin, not a redesign. Components render the same DOM and take the same props as
 their Griffel counterparts, and every shipped component is compared against its Griffel twin
-pixel-for-pixel at a **zero-difference** threshold — 41 side-by-side scenes, one exception, documented
-under [Tooltip](#27-tooltips-arrow-sits-differently-on-corner-placements).
+pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list grows with the package
+and lives in the VR harness's `scenes.json`, which also records any per-scene allowance. The one
+deliberate visual exception is documented under
+[Tooltip](#27-tooltips-arrow-sits-differently-on-corner-placements).
 
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
 > preview. APIs may change without notice and coverage is limited to the components the headless package
@@ -69,29 +71,30 @@ import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
 import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 ```
 
-82 component subpaths ship, all kebab-case:
+109 component subpaths ship, all kebab-case:
 
-| Family        | Subpaths                                                                                                                                        |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                       |
-| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                 |
-| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                               |
-| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                       |
-| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                              |
-| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                       |
-| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                   |
-| Field & label | `./field` `./label`                                                                                                                             |
-| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                              |
-| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`      |
-| People        | `./avatar` `./persona`                                                                                                                          |
-| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                             |
-| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                   |
-| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                  |
-| Tabs          | `./tab` `./tab-list`                                                                                                                            |
-| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                             |
-| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button` |
-| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                               |
-| Provider      | `./fluent-provider`                                                                                                                             |
+| Family        | Subpaths                                                                                                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                                                                   |
+| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                                                             |
+| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                                                                           |
+| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                                                                   |
+| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                                          |
+| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                                   |
+| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                                               |
+| Field & label | `./field` `./label`                                                                                                                                                                         |
+| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                                          |
+| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                                  |
+| People        | `./avatar` `./persona`                                                                                                                                                                      |
+| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                                         |
+| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                                                               |
+| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                                                              |
+| Tabs          | `./tab` `./tab-list`                                                                                                                                                                        |
+| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                                                                         |
+| Teaching      | `./teaching-popover` `./teaching-popover-trigger` `./teaching-popover-surface` `./teaching-popover-header` `./teaching-popover-title` `./teaching-popover-body` `./teaching-popover-footer` |
+| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button`                                             |
+| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                           |
+| Provider      | `./fluent-provider`                                                                                                                                                                         |
 
 Three non-component subpaths:
 
@@ -445,6 +448,41 @@ Consequence: on an **offline, air-gapped or CSP-restricted origin the windmod `A
 checkerboard and the Griffel one does not**, and windmod issues no network request for it at all. A
 deliberate improvement; listed here because it is a behavioural difference you may be measuring.
 
+### Teaching and guidance
+
+#### 29. `TeachingPopover` no longer traps focus by default
+
+Griffel's `TeachingPopover` sets `trapFocus: true` by default, "because the default TeachingPopover view
+has buttons/carousel". The headless component does not, so the surface is a light-dismissable
+`popover="auto"` rather than a modal dialog, and its role is `group` rather than `dialog`. Nothing moves
+visually — the trap adds `aria-modal` and a tabster configuration and paints nothing.
+
+Pass `trapFocus` explicitly to restore the old default.
+
+#### 30. `TeachingPopoverFooter`'s buttons are slots again, and only one of them closes
+
+The headless base hook drops the `primary` and `secondary` Button slots and takes buttons as children of
+the root instead. windmod restores both slots on the windmod `Button`, exactly as Griffel has them —
+including the brand role inversion (on a brand surface the emphasis moves to `secondary`) and the
+auto-close handler, which is wired to the `secondary` where there is one and to the `primary` otherwise,
+never to both.
+
+Consequence for code written against the headless footer: **children still win.** A footer given its own
+children renders them and ignores the two slots, so a headless-shaped call site keeps working unchanged.
+
+One state-shape difference goes with the slots: Griffel's footer state lists the slot components on
+`state.components` (`{ root, primary: Button, secondary: Button }`), while windmod's keeps the headless
+state's `{ root: 'div' }` and carries the resolved `primary`/`secondary` slots on the state itself. Nothing
+renders differently — `components` is `@deprecated` in `@fluentui/react-utilities` and no windmod render
+function reads it — but code that introspects `state.components` to discover the footer's slot elements
+will not find them there.
+
+#### 31. The `TeachingPopover` carousel is not shipped
+
+`TeachingPopoverCarousel` and its six family members have no windmod component yet. The seven core members
+ship; keep the carousel on `@fluentui/react-components`, where it composes over windmod children without a
+shim like everything else in the table below.
+
 ## What is not shipped
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
@@ -455,7 +493,7 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | `Dialog`, `Drawer`                                                                                  | as above                                                                                                                                |
 | `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
 | `TagPicker` and family                                                                              | as above                                                                                                                                |
-| `TeachingPopover`, `Toast`/`Toaster`, `InfoLabel`                                                   | as above                                                                                                                                |
+| `Toast`/`Toaster`, `InfoLabel`                                                                      | as above                                                                                                                                |
 | `AvatarGroup` and family                                                                            | as above                                                                                                                                |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
