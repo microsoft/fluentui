@@ -16,5 +16,7 @@
     "tabster",
     "use-sync-external-store"
   ],
-  "allowedViolations": {}
+  "fixtures": {
+    "engine.fixture.js": {}
+  }
 }
