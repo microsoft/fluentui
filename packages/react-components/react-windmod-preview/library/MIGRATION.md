@@ -80,7 +80,7 @@ The component subpaths, all kebab-case:
 | Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                          |
 | Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                   |
 | Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                               |
-| Field & label | `./field` `./label`                                                                                                                                                         |
+| Field & label | `./field` `./label` `./info-label` `./info-button`                                                                                                                          |
 | Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                          |
 | Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                  |
 | People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                                                      |
@@ -127,7 +127,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Thirty-eight differences, each one a decision rather than a defect.
+Forty-one differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -529,6 +529,41 @@ unresolved-size answer rather than two.
 what a JavaScript caller passing an unlisted value gets: a 32px-tall tag under windmod against a
 20px one under Griffel. Pass one of the three documented sizes and the two libraries agree exactly.
 
+### `InfoLabel` and `InfoButton`
+
+#### 39. `InfoButton` has no `inline` prop, and its popover is always in the top layer
+
+Griffel's `InfoButton` took an `inline` prop (default `true`) choosing between rendering the popover inline
+and portaling it. The headless surface is always promoted into the browser's native top layer, so there is
+no inline/portal switch to make and the prop is not re-added. Everything [delta 26](#26-anchored-components-require-css-anchor-positioning--with-no-fallback)
+says about anchored components applies here unchanged, and so does [delta 27](#27-tooltips-arrow-sits-differently-on-corner-placements):
+`InfoButton`'s **default** placement is `above-start`, an aligned one, so the arrow displacement is the
+out-of-the-box appearance rather than an edge case. Because the trigger is a 24px button — narrower than
+twice the arrow's inset from the surface edge — floating-ui compensates by translating the whole surface
+(measured 1px at `size="medium"`, 3px at `size="large"`) where CSS anchor positioning pins the surface edge
+to the trigger edge. Centred placements (`above`, `below`, `before`, `after`) are pixel-exact.
+
+#### 40. `InfoButton` moves focus to the popover, and closes when focus leaves to nothing
+
+Two behaviours come from the headless hook, not from the styled layer:
+
+- **Opening the popover focuses the surface**, so a screen reader reads the info before anything else.
+  Griffel leaves focus on the button.
+- **The popover closes when focus leaves to nothing** — a window blur, or a click on the page background.
+  Griffel keeps it open in that case.
+
+The trigger's ARIA is also richer: it carries `aria-haspopup="true"` always and `aria-details` pointing at
+the surface while open, where Griffel carries neither and relies on tabster's focus restorer. Nothing is
+lost — the `aria-labelledby` pairing of the label and the button is identical on both — but a snapshot test
+pinning the button's attributes needs updating.
+
+#### 41. `<InfoButton children={null}>` renders the default glyph
+
+Across windmod, a slot's default content is restored with a `??` fallback, which fires on `null` as well as
+`undefined`. `<InfoButton>{null}</InfoButton>` therefore renders the info glyph where Griffel renders
+nothing. Any other value — a string, an element, a fragment — wins over the default on both libraries. To
+render a button with no glyph, pass an empty element rather than `null`.
+
 ## What is not shipped
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
@@ -538,7 +573,7 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | `Menu` and family                                                                                   | headless ships it, windmod has not reskinned it yet; keep it on `@fluentui/react-components`                                            |
 | `Dialog`, `Drawer`                                                                                  | as above                                                                                                                                |
 | `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
-| `TeachingPopover`, `Toast`/`Toaster`, `InfoLabel`                                                   | as above                                                                                                                                |
+| `TeachingPopover`, `Toast`/`Toaster`                                                                | as above                                                                                                                                |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
 | `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |

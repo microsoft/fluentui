@@ -454,6 +454,26 @@
         "default": "./lib-commonjs/image-swatch.cjs"
       }
     },
+    "./info-button": {
+      "import": {
+        "types": "./dist/info-button.d.ts",
+        "default": "./lib/info-button.js"
+      },
+      "require": {
+        "types": "./dist/info-button.d.cts",
+        "default": "./lib-commonjs/info-button.cjs"
+      }
+    },
+    "./info-label": {
+      "import": {
+        "types": "./dist/info-label.d.ts",
+        "default": "./lib/info-label.js"
+      },
+      "require": {
+        "types": "./dist/info-label.d.cts",
+        "default": "./lib-commonjs/info-label.cjs"
+      }
+    },
     "./inline-drawer": {
       "import": {
         "types": "./dist/inline-drawer.d.ts",

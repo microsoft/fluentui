@@ -1,0 +1,93 @@
+@reference '#theme';
+
+/* l2: `.info` overrides PopoverSurface's l1 typography. The whole file sits one level up so the
+   module keeps a single @layer block. */
+
+@layer fui.components.l2 {
+  /* Block order is Griffel's merge order (base, highContrast, focusIndicator, selected, large),
+     not state severity: highContrast's own hover override must beat the resting hover, and the
+     open background must beat highContrast's CanvasText. Every catalog variant is :where()-flat,
+     so source order alone decides. */
+  .root {
+    /* The ring is drawn by the ::after of fui-focus-outline, so the user-agent's own ring is
+       suppressed here as every other focusable windmod root suppresses it. */
+    @apply relative m-0 box-border inline-flex items-center justify-center rounded-medium border-none bg-transparent-background px-horizontal-xs py-vertical-xs align-middle text-neutral-foreground-2 no-underline outline-none;
+
+    /* The glyphs carry no module class — see Button.module.css. */
+    & * {
+      @variant variant-filled {
+        @apply hidden;
+      }
+
+      @variant variant-regular {
+        @apply inline-flex;
+      }
+    }
+
+    @variant hover {
+      @apply cursor-pointer bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+
+      & * {
+        @variant variant-filled {
+          @apply inline-flex;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+    }
+
+    @variant forced-colors {
+      @apply text-[CanvasText];
+
+      @variant hover, hover-active {
+        @apply bg-[Highlight] text-[Canvas] forced-color-adjust-none;
+      }
+    }
+
+    @variant focus-visible {
+      @apply fui-focus-outline;
+    }
+
+    @variant open {
+      @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+
+      & * {
+        @variant variant-filled {
+          @apply inline-flex;
+        }
+
+        @variant variant-regular {
+          @apply hidden;
+        }
+      }
+
+      @variant forced-colors {
+        @apply bg-[Highlight] text-[Canvas];
+      }
+    }
+
+    @variant size-large {
+      @apply p-vertical-xxs;
+    }
+  }
+
+  .info {
+    @apply max-w-264;
+  }
+
+  /* Restated rather than omitted: Griffel authors body1 explicitly on the large surface, and a
+     class that only repeats the l1 default is a no-op no mutation could kill. */
+  .info-small-medium {
+    @apply text-base-200 leading-base-200;
+  }
+
+  .info-large {
+    @apply text-base-300 leading-base-300;
+  }
+}

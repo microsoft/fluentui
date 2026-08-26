@@ -1,0 +1,28 @@
+@reference '#theme';
+
+/* l3: `.label` overrides the Label's l1 colour and `.info-button` overrides the InfoButton's l2
+   vertical-align. Only l3 clears both. */
+
+@layer fui.components.l3 {
+  .label {
+    @apply cursor-[inherit] align-top text-inherit;
+
+    /* Cascade layers are not selector-scoped, so `color: inherit` displaces BOTH of the Label's
+       l1 disabled rules. Griffel's atomic resolution displaces only the plain one — its
+       forced-colors rule carries a media query and survives — so the media-queried half is
+       re-asserted here. */
+    @variant disabled {
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  .info-button {
+    @apply -my-vertical-xxs align-top;
+
+    @variant size-large {
+      @apply -my-px;
+    }
+  }
+}

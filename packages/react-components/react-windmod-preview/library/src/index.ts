@@ -415,6 +415,12 @@ export {
 } from './image-swatch';
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './image-swatch';
 
+export { InfoButton, infoButtonClassNames, renderInfoButton, useInfoButton, useInfoButtonStyles } from './info-button';
+export type { InfoButtonProps, InfoButtonSize, InfoButtonSlots, InfoButtonState } from './info-button';
+
+export { InfoLabel, infoLabelClassNames, renderInfoLabel, useInfoLabel, useInfoLabelStyles } from './info-label';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from './info-label';
+
 export {
   InlineDrawer,
   inlineDrawerClassNames,
