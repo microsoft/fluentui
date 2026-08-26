@@ -283,8 +283,95 @@ export type { LabelProps, LabelSize, LabelSlots, LabelState, LabelWeight } from 
 export { Link, linkClassNames, renderLink, useLink, useLinkStyles } from './link';
 export type { LinkAppearance, LinkProps, LinkSlots, LinkState } from './link';
 
+export { Menu, renderMenu, useMenu, useMenuContext, useMenuContextValues } from './menu';
+export type {
+  MenuContextValue,
+  MenuContextValues,
+  MenuOpenChangeData,
+  MenuOpenEvent,
+  MenuProps,
+  MenuState,
+} from './menu';
+
 export { MenuButton, menuButtonClassNames, renderMenuButton, useMenuButton, useMenuButtonStyles } from './menu-button';
 export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './menu-button';
+
+export {
+  MenuDivider,
+  menuDividerClassNames,
+  renderMenuDivider,
+  useMenuDivider,
+  useMenuDividerStyles,
+} from './menu-divider';
+export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './menu-divider';
+
+export {
+  MenuGroup,
+  menuGroupClassNames,
+  renderMenuGroup,
+  useMenuGroup,
+  useMenuGroupContextValues,
+  useMenuGroupStyles,
+} from './menu-group';
+export type { MenuGroupContextValues, MenuGroupProps, MenuGroupSlots, MenuGroupState } from './menu-group';
+
+export {
+  MenuGroupHeader,
+  menuGroupHeaderClassNames,
+  renderMenuGroupHeader,
+  useMenuGroupHeader,
+  useMenuGroupHeaderStyles,
+} from './menu-group-header';
+export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from './menu-group-header';
+
+export { MenuItem, menuItemClassNames, renderMenuItem, useMenuItem, useMenuItemStyles } from './menu-item';
+export type { MenuItemProps, MenuItemSlots, MenuItemState } from './menu-item';
+
+export {
+  MenuItemCheckbox,
+  menuItemCheckboxClassNames,
+  renderMenuItemCheckbox,
+  useMenuItemCheckbox,
+  useMenuItemCheckboxStyles,
+} from './menu-item-checkbox';
+export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './menu-item-checkbox';
+
+export {
+  MenuItemRadio,
+  menuItemRadioClassNames,
+  renderMenuItemRadio,
+  useMenuItemRadio,
+  useMenuItemRadioStyles,
+} from './menu-item-radio';
+export type { MenuItemRadioProps, MenuItemRadioState } from './menu-item-radio';
+
+export {
+  MenuList,
+  menuListClassNames,
+  renderMenuList,
+  useMenuList,
+  useMenuListContextValues,
+  useMenuListStyles,
+} from './menu-list';
+export type { MenuListProps, MenuListSlots, MenuListState } from './menu-list';
+
+export {
+  MenuPopover,
+  menuPopoverClassNames,
+  renderMenuPopover,
+  useMenuPopover,
+  useMenuPopoverStyles,
+} from './menu-popover';
+export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './menu-popover';
+
+export {
+  MenuTrigger,
+  menuTriggerClassNames,
+  renderMenuTrigger,
+  useMenuTrigger,
+  useMenuTriggerStyles,
+} from './menu-trigger';
+export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './menu-trigger';
 
 export {
   MessageBar,
