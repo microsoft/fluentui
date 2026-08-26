@@ -322,13 +322,13 @@ test.describe('TextArea', () => {
         `,
       });
 
-      await expect(label).toHaveJSProperty('disabled', true);
+      await expect(label).toHaveAttribute('disabled');
 
       await element.evaluate((el: TextArea) => {
         el.disabled = false;
       });
 
-      await expect(label).toHaveJSProperty('disabled', false);
+      await expect(label).not.toHaveAttribute('disabled');
     });
 
     for (const size of Object.values(TextAreaSize)) {
@@ -343,7 +343,7 @@ test.describe('TextArea', () => {
           `,
         });
 
-        await expect(label).toHaveJSProperty('size', size);
+        await expect(label).toHaveAttribute('size', size);
       });
     }
   });

@@ -13,7 +13,11 @@ export class TextArea extends BaseTextArea {
     super.labelSlottedNodesChanged();
 
     this.labelSlottedNodes.forEach(node => {
-      node.size = this.size;
+      if (this.size) {
+        node.setAttribute('size', this.size);
+      } else {
+        node.removeAttribute('size');
+      }
     });
   }
 
@@ -54,7 +58,11 @@ export class TextArea extends BaseTextArea {
     switch (propertyName) {
       case 'size':
         this.labelSlottedNodes.forEach(node => {
-          node.size = this.size;
+          if (this.size) {
+            node.setAttribute('size', this.size);
+          } else {
+            node.removeAttribute('size');
+          }
         });
         break;
     }
