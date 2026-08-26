@@ -8,6 +8,15 @@
  * At-rule variants (forced-colors) cannot take a group prefix; nest the group variant
  * inside them. No union entries: comma-separate variants at the call site
  * (@variant hover, focus { … }).
+ *
+ * A catalog entry is vocabulary, not a usage index, so having no in-repo consumer is not by
+ * itself a reason to delete one. Three kinds of entry stay unconsumed on purpose: names that
+ * shadow a Tailwind built-in whose selector is narrower and not `:where()`-flat (`invalid`,
+ * `required`, `read-only`, `ltr` — dropping the entry silently substitutes the built-in); the
+ * unused half of a polarity pair (`focused`, `not-selected`, `not-indeterminate`,
+ * `has-actions`); and the unstyled member of a live enumeration (`layout-horizontal`,
+ * `layout-horizontal-stacked`, `layout-singleline`, `scroll-state-none`). Delete an entry only
+ * when its selector can match nothing the tree renders, or when it can never be false.
  */
 
 /* direction (computed, correct under nesting) */
@@ -53,7 +62,6 @@
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
 @custom-variant open (&:where([open], [data-open], :open));
 @custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
-@custom-variant pressed (&:where([data-pressed], :active));
 @custom-variant invalid (&:where([data-invalid], :invalid, [aria-invalid='true']));
 @custom-variant required (&:where([required], [data-required], :required));
 @custom-variant read-only (&:where([readonly], [data-readonly], :read-only));
@@ -82,8 +90,8 @@
 @custom-variant icon (&:where([data-icon]));
 @custom-variant not-icon (&:where(:not([data-icon])));
 
-/* label presence/position */
-@custom-variant with-label (&:where([data-label-position]));
+/* label position. Every producer stamps data-label-position unconditionally, so a
+ * presence-only entry over it can never be false — select on the value. */
 @custom-variant label-above (&:where([data-label-position='above']));
 @custom-variant label-after (&:where([data-label-position='after']));
 @custom-variant label-before (&:where([data-label-position='before']));
