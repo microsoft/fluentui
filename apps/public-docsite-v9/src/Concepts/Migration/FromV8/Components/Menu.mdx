@@ -4,6 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Menu Migration
 
+---
+
+## Overview
+
 **v8**
 
 - A menu can be displayed by passing menuProps to Button, or by showing/hiding a ContextualMenu.
@@ -16,23 +20,59 @@ import { Meta } from '@storybook/addon-docs/blocks';
 - There are children that act as containers and coordinate behavior including MenuTrigger, MenuPopover, MenuList, and MenuGroup.
 - There are individual components for different types of items including MenuItem, MenuDivider, MenuItemCheckbox, MenuItemRadio, MenuGroup, and MenuSplitGroup.
 
+## Basic Migration
+
+### v8
+
+```tsx
+import { DefaultButton } from '@fluentui/react';
+
+type FileMenuProps = {
+  fileId: string;
+  onOpen: (fileId: string) => void;
+  onSave: (fileId: string) => void;
+};
+
+const FileMenu = ({ fileId, onOpen, onSave }: FileMenuProps) => (
+  <DefaultButton
+    text="File"
+    menuProps={{
+      items: [
+        { key: 'open', text: 'Open', onClick: () => onOpen(fileId) },
+        { key: 'save', text: 'Save', onClick: () => onSave(fileId) },
+      ],
+    }}
+  />
+);
+```
+
+### v9
+
 `MenuButton` is only a trigger visual; it does not render a menu. Replace
 `menuProps` with the full composition:
 
 ```tsx
 import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-<Menu>
-  <MenuTrigger disableButtonEnhancement>
-    <MenuButton>File</MenuButton>
-  </MenuTrigger>
-  <MenuPopover>
-    <MenuList>
-      <MenuItem onClick={() => openFile(fileId)}>Open</MenuItem>
-      <MenuItem onClick={() => saveFile(fileId)}>Save</MenuItem>
-    </MenuList>
-  </MenuPopover>
-</Menu>;
+type FileMenuProps = {
+  fileId: string;
+  onOpen: (fileId: string) => void;
+  onSave: (fileId: string) => void;
+};
+
+const FileMenu = ({ fileId, onOpen, onSave }: FileMenuProps) => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <MenuButton>File</MenuButton>
+    </MenuTrigger>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem onClick={() => onOpen(fileId)}>Open</MenuItem>
+        <MenuItem onClick={() => onSave(fileId)}>Save</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
 ```
 
 The v8 item object is not passed to a v9 `MenuItem` callback. `onClick` receives

@@ -4,7 +4,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Card Migration
 
+---
+
+## Overview
+
 Fluent UI v8 provides the `DocumentCard` component and its variants. Fluent UI v9 provides a `Card` control with a different API. `Card` is more generic and less opinionated about its content.
+
+## Prop Mapping
 
 This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
 
@@ -20,7 +26,7 @@ This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
 | theme         | n/a       | Use `FluentProvider` to customize themes |
 | type          | n/a       | see Migrate `type` prop in this document |
 
-## Migrate `type` prop
+### Migrate `type` prop
 
 The `type` prop is no longer supported. To migrate, the property `orientation="horizontal"` can be used to achieve the same effect.
 

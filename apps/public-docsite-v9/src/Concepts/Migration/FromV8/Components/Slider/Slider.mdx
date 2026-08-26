@@ -4,6 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Slider Migration
 
+---
+
+## Overview
+
 Fluent UI V8 provides the `Slider` control to represents an input that allows user to choose a value from within a specific range.
 Fluent UI v9 provides a `Slider` control with a different API.
 
@@ -118,7 +122,7 @@ export const V9FormattedValueExample = () => {
 
 ## Prop Mapping
 
-## Migration from v8
+### Migration Notes
 
 - `ariaLabel` => use `aria-label` instead
 - `ariaValueText` => explicitly set `aria-valuetext`
@@ -135,7 +139,7 @@ export const V9FormattedValueExample = () => {
 - `styles` => pass classNames to individual slots
 - `theme` => use `FluentProvider` HOC instead
 
-## Property mapping
+### Property Table
 
 | v8 `Slider`         | v9 `Slider`              |
 | ------------------- | ------------------------ |

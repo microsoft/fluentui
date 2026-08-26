@@ -33,7 +33,7 @@ export const parameters = {
             'Keeping Design Consistent',
             'Handling Breaking Changes',
             'from v8',
-            ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
+            ['Components', 'Component Mapping', 'Color Mapping', 'Troubleshooting'],
             'from v0',
           ],
           'Recipes',

@@ -4,7 +4,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # CardPreview Migration
 
+---
+
+## Overview
+
 Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview` with a completely different API.
+
+## Prop Mapping
 
 This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
 
@@ -18,7 +24,7 @@ This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
 | styles                       | className |                                                                  |
 | theme                        | n/a       | Use `FluentProvider` to customize themes                         |
 
-## Migrate `previewImages` prop
+### Migrate `previewImages` prop
 
 The `previewImages` prop is no longer supported and has no other alternatives. The new CardPreview component accepts any element as children and can be used to render images.
 
@@ -59,7 +65,7 @@ export const Component = () => {
 };
 ```
 
-## Migrate `getOverflowDocumentCountText` prop
+### Migrate `getOverflowDocumentCountText` prop
 
 The `getOverflowDocumentCountText` and `maxDisplayCount` prop are no longer supported. The main `Card` can be used to implement a similar functionality.
 

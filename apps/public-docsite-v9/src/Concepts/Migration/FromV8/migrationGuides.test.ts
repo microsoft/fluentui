@@ -6,6 +6,9 @@ import * as ts from 'typescript';
 
 const componentsDirectory = path.join(__dirname, 'Components');
 const componentMappingPath = path.join(__dirname, 'ComponentMapping.mdx');
+const storybookPreviewPath = path.join(__dirname, '../../../../.storybook/preview.js');
+
+const guidesWithoutPropMapping = new Set(['Charts.mdx', 'GroupedList.mdx', 'Theme.mdx']);
 
 const addedGuideFiles = [
   'Breadcrumb.mdx',
@@ -134,6 +137,23 @@ describe('v8 migration guide documentation', () => {
     });
 
     expect(new Set(docsIds).size).toBe(docsIds.length);
+  });
+
+  test.each(allGuideFiles)('%s uses the component migration guide structure', fileName => {
+    const source = stripCodeFences(readGuide(fileName));
+    const header = source.match(/^#\s+.+\r?\n\r?\n---\r?\n\r?\n## Overview\r?\n\r?\n([\s\S]*?)(?=\r?\n##\s|$)/m);
+    const propMappingHeadings = source.match(/^## Prop Mapping$/gm) ?? [];
+
+    expect(header?.[1].trim().length).toBeGreaterThan(0);
+    expect(propMappingHeadings).toHaveLength(guidesWithoutPropMapping.has(fileName) ? 0 : 1);
+  });
+
+  test('lists component guides before the component mapping in Storybook', () => {
+    const preview = fs.readFileSync(storybookPreviewPath, 'utf8');
+    const fromV8Order = preview.match(/'from v8',\s*\[([^\]]+)\]/)?.[1];
+
+    expect(fromV8Order).toBeDefined();
+    expect(fromV8Order!.indexOf("'Components'")).toBeLessThan(fromV8Order!.indexOf("'Component Mapping'"));
   });
 
   test('migration guide links in the component mapping resolve to component MDX pages', () => {

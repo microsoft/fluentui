@@ -5,12 +5,22 @@ import { CodeComparison, CodeExample } from './utils.stories';
 
 # Stack.Item Migration
 
+---
+
+## Overview
+
 Fluent UI v9 does not provide a native `Stack.Item` component. Replace it with
 an element styled using CSS flex item properties. During an incremental
 migration, `StackItemShim` from `@fluentui/react-migration-v8-v9` accepts the
 v8 `Stack.Item` props.
 
-## Default state
+## Prop Mapping
+
+The sections below map each v8 `Stack.Item` prop to CSS flex-item properties or
+the corresponding v9 migration approach; there is no native v9 `Stack.Item`
+prop API.
+
+### Default state
 
 <CodeComparison>
   <CodeExample title="Render">
@@ -69,9 +79,7 @@ MDN documentation:
 
 ---
 
----
-
-## align
+### align
 
 _`center` is used below as an example value_
 
@@ -104,13 +112,13 @@ MDN documentation:
 
 ---
 
-## className
+### className
 
 This is just an override to apply the class name to the rendered node.
 
 ---
 
-## disableShrink
+### disableShrink
 
 <CodeComparison>
   <CodeExample>
@@ -141,7 +149,7 @@ MDN documentation:
 
 ---
 
-## grow
+### grow
 
 <CodeComparison>
   <CodeExample>
@@ -172,7 +180,7 @@ MDN documentation:
 
 ---
 
-## order
+### order
 
 _`1` is used below as an example value_
 
@@ -205,7 +213,7 @@ MDN documentation:
 
 ---
 
-## shrink
+### shrink
 
 _`1` is used below as an example value_
 
@@ -238,7 +246,7 @@ MDN documentation:
 
 ---
 
-## verticalFill
+### verticalFill
 
 <CodeComparison>
   <CodeExample>
