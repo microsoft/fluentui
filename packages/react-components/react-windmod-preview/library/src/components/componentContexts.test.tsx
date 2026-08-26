@@ -8,6 +8,7 @@ import { Avatar } from './Avatar';
 import { Button } from './Button';
 import { CompoundButton } from './CompoundButton';
 import { Field } from './Field';
+import { InfoLabel } from './InfoLabel';
 import { Input } from './Input';
 import { InteractionTag } from './InteractionTag';
 import { InteractionTagPrimary } from './InteractionTagPrimary';
@@ -517,6 +518,43 @@ describe('component contexts', () => {
       const { container } = render(<PopoverSurface>Content</PopoverSurface>);
 
       expect(surfaceIn(container).getAttribute('data-size')).toBe('medium');
+    });
+  });
+
+  describe('InfoLabel — the look channel survives the composition', () => {
+    const surfaceIn = (baseElement: HTMLElement): HTMLElement =>
+      baseElement.querySelector<HTMLElement>('.fui-popover-surface')!;
+
+    it('publishes the InfoButton’s mapped popover size down to the surface', () => {
+      const { baseElement } = render(
+        <InfoLabel info="Info" size="medium" infoButton={{ popover: { open: true } }}>
+          Label
+        </InfoLabel>,
+      );
+
+      // The button's own size is medium; the popover it builds is small. Reading `small` here
+      // proves the value crossed both the InfoButton→Popover and the Popover→surface boundaries.
+      expect(surfaceIn(baseElement).getAttribute('data-size')).toBe('small');
+    });
+
+    it('moves the surface look when the InfoButton size moves', () => {
+      const medium = render(
+        <InfoLabel info="Info" infoButton={{ popover: { open: true } }}>
+          Label
+        </InfoLabel>,
+      );
+      const mediumClassName = surfaceIn(medium.baseElement).className;
+
+      medium.unmount();
+
+      const large = render(
+        <InfoLabel info="Info" size="large" infoButton={{ popover: { open: true } }}>
+          Label
+        </InfoLabel>,
+      );
+
+      expect(surfaceIn(large.baseElement).getAttribute('data-size')).toBe('medium');
+      expect(surfaceIn(large.baseElement).className).not.toBe(mediumClassName);
     });
   });
 });

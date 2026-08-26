@@ -144,6 +144,12 @@ import type { ImageState as ImageState_2 } from '@fluentui/react-headless-compon
 import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { InfoButtonProps as InfoButtonProps_2 } from '@fluentui/react-headless-components-preview/info-label';
+import { InfoButtonSlots } from '@fluentui/react-headless-components-preview/info-label';
+import type { InfoButtonState as InfoButtonState_2 } from '@fluentui/react-headless-components-preview/info-label';
+import type { InfoLabelProps as InfoLabelProps_2 } from '@fluentui/react-headless-components-preview/info-label';
+import { InfoLabelSlots } from '@fluentui/react-headless-components-preview/info-label';
+import type { InfoLabelState as InfoLabelState_2 } from '@fluentui/react-headless-components-preview/info-label';
 import type { InlineDrawerProps as InlineDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
 import { InlineDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { InlineDrawerState as InlineDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
@@ -306,6 +312,8 @@ import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/s
 import { renderField } from '@fluentui/react-headless-components-preview/field';
 import { renderImage } from '@fluentui/react-headless-components-preview/image';
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderInfoButton } from '@fluentui/react-headless-components-preview/info-label';
+import { renderInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import { renderInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { renderInput } from '@fluentui/react-headless-components-preview/input';
 import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -545,6 +553,8 @@ import { useFieldContextValues } from '@fluentui/react-headless-components-previ
 import { useFieldControlProps } from '@fluentui/react-headless-components-preview/field';
 import { useImage } from '@fluentui/react-headless-components-preview/image';
 import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useInfoButton } from '@fluentui/react-headless-components-preview/info-label';
+import { useInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import { useInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { useInput } from '@fluentui/react-headless-components-preview/input';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -1520,6 +1530,49 @@ export type ImageSwatchState = ImageSwatchState_2 & {
 };
 
 // @public
+export const InfoButton: ForwardRefComponent<InfoButtonProps>;
+
+// @public
+export const infoButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type InfoButtonProps = Omit<InfoButtonProps_2, 'popover'> & {
+    popover?: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
+    size?: InfoButtonSize;
+};
+
+// @public
+export type InfoButtonSize = 'small' | 'medium' | 'large';
+
+export { InfoButtonSlots }
+
+// @public
+export type InfoButtonState = InfoButtonState_2 & Required<Pick<InfoButtonProps, 'size'>>;
+
+// @public
+export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
+
+// @public
+export const infoLabelClassNames: {
+    root: string;
+};
+
+// @public
+export type InfoLabelProps = Omit<InfoLabelProps_2, 'infoButton' | 'label'> & {
+    label?: NonNullable<Slot<typeof Label>>;
+    infoButton?: Slot<typeof InfoButton>;
+    size?: LabelSize;
+    weight?: LabelWeight;
+};
+
+export { InfoLabelSlots }
+
+// @public
+export type InfoLabelState = InfoLabelState_2 & Required<Pick<InfoLabelProps, 'size'>>;
+
+// @public
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
 // @public
@@ -2298,6 +2351,10 @@ export { renderField }
 export { renderImage }
 
 export { renderImageSwatch }
+
+export { renderInfoButton }
+
+export { renderInfoLabel }
 
 export { renderInlineDrawer }
 
@@ -3361,6 +3418,16 @@ export { useImageSwatch }
 
 // @public
 export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
+
+export { useInfoButton }
+
+// @public
+export const useInfoButtonStyles: (state: InfoButtonState) => InfoButtonState;
+
+export { useInfoLabel }
+
+// @public
+export const useInfoLabelStyles: (state: InfoLabelState) => InfoLabelState;
 
 export { useInlineDrawer }
 
