@@ -626,6 +626,16 @@
         "default": "./lib-commonjs/menu-item-checkbox.cjs"
       }
     },
+    "./menu-item-link": {
+      "import": {
+        "types": "./dist/menu-item-link.d.ts",
+        "default": "./lib/menu-item-link.js"
+      },
+      "require": {
+        "types": "./dist/menu-item-link.d.cts",
+        "default": "./lib-commonjs/menu-item-link.cjs"
+      }
+    },
     "./menu-item-radio": {
       "import": {
         "types": "./dist/menu-item-radio.d.ts",
@@ -634,6 +644,16 @@
       "require": {
         "types": "./dist/menu-item-radio.d.cts",
         "default": "./lib-commonjs/menu-item-radio.cjs"
+      }
+    },
+    "./menu-item-switch": {
+      "import": {
+        "types": "./dist/menu-item-switch.d.ts",
+        "default": "./lib/menu-item-switch.js"
+      },
+      "require": {
+        "types": "./dist/menu-item-switch.d.cts",
+        "default": "./lib-commonjs/menu-item-switch.cjs"
       }
     },
     "./menu-list": {

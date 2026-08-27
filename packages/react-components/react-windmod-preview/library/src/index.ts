@@ -1243,6 +1243,15 @@ export {
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './menu-item-checkbox';
 
 export {
+  MenuItemLink,
+  menuItemLinkClassNames,
+  renderMenuItemLink,
+  useMenuItemLink,
+  useMenuItemLinkStyles,
+} from './menu-item-link';
+export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './menu-item-link';
+
+export {
   MenuItemRadio,
   menuItemRadioClassNames,
   renderMenuItemRadio,
@@ -1250,6 +1259,15 @@ export {
   useMenuItemRadioStyles,
 } from './menu-item-radio';
 export type { MenuItemRadioProps, MenuItemRadioState } from './menu-item-radio';
+
+export {
+  MenuItemSwitch,
+  menuItemSwitchClassNames,
+  renderMenuItemSwitch,
+  useMenuItemSwitch,
+  useMenuItemSwitchStyles,
+} from './menu-item-switch';
+export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } from './menu-item-switch';
 
 export {
   MenuList,

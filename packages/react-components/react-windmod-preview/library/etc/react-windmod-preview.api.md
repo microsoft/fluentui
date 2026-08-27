@@ -209,11 +209,17 @@ import { MenuGroupSlots } from '@fluentui/react-headless-components-preview/menu
 import { MenuGroupState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemCheckboxProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemCheckboxState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemRadioProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemRadioState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListState } from '@fluentui/react-headless-components-preview/menu';
@@ -381,7 +387,9 @@ import { renderMenuGroup } from '@fluentui/react-headless-components-preview/men
 import { renderMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuItem } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemLink } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuList } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuPopover } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
@@ -708,7 +716,9 @@ import { useMenuGroupContextValues } from '@fluentui/react-headless-components-p
 import { useMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItem } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemLink } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuList } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuPopover } from '@fluentui/react-headless-components-preview/menu';
@@ -2095,6 +2105,20 @@ export const menuItemClassNames: {
     root: string;
 };
 
+// @public
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+
+// @public
+export const menuItemLinkClassNames: {
+    root: string;
+};
+
+export { MenuItemLinkProps }
+
+export { MenuItemLinkSlots }
+
+export { MenuItemLinkState }
+
 export { MenuItemProps }
 
 // @public
@@ -2112,6 +2136,20 @@ export { MenuItemRadioState }
 export { MenuItemSlots }
 
 export { MenuItemState }
+
+// @public
+export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
+
+// @public
+export const menuItemSwitchClassNames: {
+    root: string;
+};
+
+export { MenuItemSwitchProps }
+
+export { MenuItemSwitchSlots }
+
+export { MenuItemSwitchState }
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
@@ -2781,7 +2819,11 @@ export { renderMenuItem }
 
 export { renderMenuItemCheckbox }
 
+export { renderMenuItemLink }
+
 export { renderMenuItemRadio }
+
+export { renderMenuItemSwitch }
 
 export { renderMenuList }
 
@@ -4233,6 +4275,11 @@ export { useMenuItemCheckbox }
 // @public
 export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
 
+export { useMenuItemLink }
+
+// @public
+export const useMenuItemLinkStyles: (state: MenuItemLinkState) => MenuItemLinkState;
+
 export { useMenuItemRadio }
 
 // @public
@@ -4240,6 +4287,11 @@ export const useMenuItemRadioStyles: (state: MenuItemRadioState) => MenuItemRadi
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => MenuItemState;
+
+export { useMenuItemSwitch }
+
+// @public
+export const useMenuItemSwitchStyles: (state: MenuItemSwitchState) => MenuItemSwitchState;
 
 export { useMenuList }
 
