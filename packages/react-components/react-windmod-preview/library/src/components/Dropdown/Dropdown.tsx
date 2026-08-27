@@ -34,8 +34,9 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
     ...rest
   } = mergeContextProps({ size: useFieldContext()?.size }, props);
 
-  // The six values react-combobox's useComboboxPositioning supplies and the headless layer drops,
-  // restored verbatim with the consumer spread last — see Combobox.tsx, which calls the same helper.
+  // The five values react-combobox's useComboboxPositioning supplies that the headless layer both
+  // drops and still honours, restored verbatim with the consumer spread last — see Combobox.tsx,
+  // which calls the same helper and records why `autoSize` is not among them.
   const base = useDropdown(
     {
       ...rest,
@@ -45,7 +46,6 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
         offset: { crossAxis: 0, mainAxis: 2 },
         fallbackPositions: ['above', 'after', 'after-top', 'before', 'before-top'],
         matchTargetSize: 'width',
-        autoSize: true,
         ...resolvePositioningShorthand(rest.positioning),
       },
     },

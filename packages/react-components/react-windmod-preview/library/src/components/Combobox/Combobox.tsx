@@ -35,9 +35,11 @@ export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((pr
   } = mergeContextProps({ size: useFieldContext()?.size }, props);
 
   // Griffel parity: the headless layer passes usePositioning nothing, so its own above-centre,
-  // fit-content defaults take over. These six values decide where and how large the surface renders,
+  // fit-content defaults take over. These five values decide where and how large the surface renders,
   // and are spelled exactly as react-combobox's useComboboxPositioning spells them — including the
-  // consumer spread last, so a consumer's positioning still wins.
+  // consumer spread last, so a consumer's positioning still wins. react-combobox's sixth value,
+  // `autoSize: true`, has no headless counterpart: nothing in usePositioning reads it, so the
+  // listbox is not clamped to the space below the trigger the way floating-ui clamps Griffel's.
   const base = useCombobox(
     {
       ...rest,
@@ -47,7 +49,6 @@ export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((pr
         offset: { crossAxis: 0, mainAxis: 2 },
         fallbackPositions: ['above', 'after', 'after-top', 'before', 'before-top'],
         matchTargetSize: 'width',
-        autoSize: true,
         ...resolvePositioningShorthand(rest.positioning),
       },
     },

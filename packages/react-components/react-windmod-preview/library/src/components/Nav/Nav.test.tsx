@@ -48,7 +48,10 @@ describe('Nav', () => {
     const root = getByTestId('root');
 
     expect(root.getAttribute('role')).toBe('navigation');
-    expect(root.getAttribute('focusgroup')).toBe('toolbar block wrap');
+    // Nav rows are reached with Tab, not the arrow keys: the headless hook stopped stamping
+    // `focusgroup` and our layer must not put one back. Toolbar, TabList, TagGroup and
+    // SwatchPicker still carry theirs — this is Nav-only.
+    expect(root.hasAttribute('focusgroup')).toBe(false);
   });
 
   it('does not stamp data-density on itself', () => {

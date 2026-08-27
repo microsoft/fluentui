@@ -323,10 +323,15 @@ capture focus.
 
 #### 15. Arrow-key navigation comes from `focusgroup`, not tabster
 
-`Toolbar`, `TabList`, `Nav`, `TagGroup` and `SwatchPicker` publish the `focusgroup` attribute where Griffel
+`Toolbar`, `TabList`, `TagGroup` and `SwatchPicker` publish the `focusgroup` attribute where Griffel
 emits a `data-tabster` mover configuration. Behaviour is broadly equivalent but not identical, and
 `focusgroup` needs browser support or a polyfill. This is the headless layer's choice; windmod passes it
 through.
+
+`Nav` is the exception: it publishes no `focusgroup` at all, so its rows are reached with **Tab**, one stop
+per row, where Griffel's tabster mover makes the whole nav a single tab stop with arrow keys moving between
+rows. A keyboard user tabbing past a long navigation therefore passes through every row instead of skipping
+the block in one press. This too is the headless layer's choice; windmod passes it through.
 
 #### 16. `Accordion`'s `navigation` and `BreadcrumbButton`'s `focusMode` do nothing
 
@@ -673,6 +678,19 @@ will not find them there.
 `TeachingPopoverCarousel` and its six family members have no windmod component yet. The seven core members
 ship; keep the carousel on `@fluentui/react-components`, where it composes over windmod children without a
 shim like everything else in the table below.
+
+#### 46. A `Combobox` or `Dropdown` listbox is not clamped to the space around the trigger
+
+Griffel passes `autoSize: true` to floating-ui, which shrinks the listbox to whatever room is left between
+the trigger and the viewport edge and scrolls the remainder. The headless positioning layer has no
+`autoSize` — nothing reads it, and since the `positioning` prop was narrowed to the props the layer actually
+honours, the key is no longer even accepted. A listbox with more options than fit below the trigger
+therefore flips to `above` (the fallback positions still apply) and, failing that, extends past the viewport
+edge rather than shrinking. Cap it yourself when the option count is unbounded:
+
+```tsx
+<Combobox listbox={{ style: { maxHeight: '20rem', overflowY: 'auto' } }} />
+```
 
 ## What is not shipped
 
