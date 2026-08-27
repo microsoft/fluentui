@@ -1,19 +1,21 @@
 ---
 name: verify-v8-v9-migration-docs
 description: >-
-  Audit Fluent UI v8-to-v9 component migration guides and verify them with
-  sealed documentation-only migrations. Use when asked to prove the migration
-  guides are accurate or exhaustive, add one scenario per guide, classify
-  documentation gaps versus agent mistakes, rerun corrected guides, or publish
-  a verification matrix.
+  Generate, audit, and verify Fluent UI v8-to-v9 component migration guides.
+  Use when asked to inventory v8 components, inspect their v8 and v9 source,
+  produce missing per-component documentation, prove the guides are accurate
+  or exhaustive with sealed migrations, classify documentation gaps versus
+  agent mistakes, or publish a verification matrix.
 ---
 
-# Verify v8-to-v9 migration documentation
+# Generate and verify v8-to-v9 migration documentation
 
-Prove the guides from two complementary directions:
+Build and prove the documentation in three stages:
 
-1. Audit every guide against authoritative v8 and v9 source.
-2. Give a migration agent only one v8 microcase and its relevant guide, then
+1. Inventory every public v8 component and determine its v9 destination.
+2. Inspect authoritative v8 and v9 source, then create or correct the
+   per-component migration guide.
+3. Give a migration agent only one v8 microcase and its relevant guide, then
    evaluate the generated v9 code against a hidden source-derived checklist.
 
 Keep manifests, generated migrations, evaluation ledgers, and runner artifacts
@@ -24,6 +26,9 @@ in the documentation pull request.
 
 Do not describe the documentation as exhaustive until:
 
+- every public v8 component has a reviewed migration disposition;
+- every supported mapping has a guide, or a deliberate umbrella-guide entry;
+- generated guides are indexed and structurally consistent;
 - every component guide has exactly one focused scenario;
 - every focused run launches, builds, lints, and passes the isolation audit;
 - every documentation-attributable finding has been corrected and rerun;
@@ -55,7 +60,123 @@ scenarios, but do not hardcode those counts after the guide set changes.
 Record the initial worktree status. Never use broad restore or checkout
 commands while an audit contains intentional uncommitted corrections.
 
-## 2. Source-audit every guide
+## 2. Inventory v8 components and map destinations
+
+Build a coverage ledger from public exports, not from the existing guide list.
+The ledger must contain one row per public v8 component with:
+
+- v8 component and package/import path;
+- v8 source, type, style, test, and story locations;
+- v9 replacement component or composition;
+- destination package and import path;
+- mapping kind;
+- guide path;
+- evidence and review status.
+
+Use these mapping kinds:
+
+| Kind            | Meaning                                                                        |
+| --------------- | ------------------------------------------------------------------------------ |
+| `direct`        | The component and core behavior have a v9 replacement.                         |
+| `renamed`       | The destination component has a different name.                                |
+| `decomposed`    | One v8 component becomes several v9 primitives.                                |
+| `composed`      | Product-owned composition is required to preserve behavior.                    |
+| `compat`        | The supported destination is a v9 compatibility package.                       |
+| `shim`          | A migration shim is intentionally recommended as an intermediate step.         |
+| `no-equivalent` | V9 has no supported equivalent; document alternatives and limitations.         |
+| `umbrella`      | The component is fully covered by another guide; record that guide explicitly. |
+
+Do not silently omit deprecated, specialized, or package-specific components.
+Give each one a disposition, even when the result is `no-equivalent` or
+`umbrella`. Keep internal implementation helpers out of the public inventory.
+
+Cross-check the ledger against:
+
+- v8 package barrel exports and component directories;
+- existing component mapping/index documents;
+- v9 root exports, subpackages, compat packages, and migration shims;
+- all migration guide files.
+
+Fail coverage validation on duplicate components, missing dispositions, broken
+guide paths, or guides that have no inventory row.
+
+## 3. Research each v8/v9 component pair
+
+For the v8 side, inspect:
+
+- public prop and enum types;
+- default values in base/state hooks and tests;
+- callback argument shapes and controlled-state behavior;
+- rendered markup, roles, focus zones, keyboard handlers, and announcements;
+- style functions, size tables, breakpoints, and visual-state defaults;
+- stories and tests that demonstrate supported behavior;
+- imperative refs and helper utilities.
+
+For the v9 side, inspect:
+
+- the actual exported package and component API;
+- slot structure and declarative composition;
+- default props, state hooks, event-data types, and controlled patterns;
+- keyboard, Tabster, focus restoration, positioning, and dismissal contracts;
+- ARIA behavior and native element semantics;
+- design-token, `makeStyles`, size, layout, and responsive behavior;
+- compat or shim behavior and known limitations;
+- stories and tests for the proposed replacement.
+
+Trace behavior to implementation source when types or stories are ambiguous.
+Do not infer defaults from naming, and do not treat an existing migration guide
+as authoritative evidence for itself.
+
+For every v8 prop or behavior, record one outcome:
+
+- direct prop or slot mapping;
+- renamed value or callback-data mapping;
+- changed default that must be set explicitly;
+- manual composition with enough implementation guidance;
+- unsupported behavior with a clear limitation;
+- intentionally dropped behavior with rationale.
+
+## 4. Produce or update the documentation
+
+Create a guide for every uncovered supported mapping. Update an existing guide
+when research proves it incomplete or inconsistent. If multiple v8 components
+belong in one umbrella guide, make every covered component discoverable from
+the mapping index and from the guide itself.
+
+Follow the neighboring FromV8 MDX structure exactly. A complete guide normally
+contains:
+
+1. Storybook `Meta`, component migration title, and the standard title divider.
+2. A concise destination decision, including the exact v9 package.
+3. Import and composition changes.
+4. A self-contained v8 example and behavior-equivalent v9 example.
+5. A prop, enum, callback, and slot mapping table.
+6. Changed defaults and behavioral differences.
+7. Controlled/uncontrolled state and event-data guidance.
+8. Accessibility, keyboard, focus, and dismissal guidance.
+9. Styling, sizing, tokens, layout, and responsive differences.
+10. Removed features, manual replacements, compat/shim limits, and
+    no-equivalent cases.
+
+The guide must be actionable without dependency source access. Include enough
+per-component instruction for an isolated agent to implement the migration,
+but do not paste entire source files or duplicate generic v9 documentation.
+
+Examples must:
+
+- use valid public imports;
+- compile as TSX after normal surrounding declarations are supplied;
+- preserve v8 observable behavior, not merely render a similar component;
+- use `(event, data)` callback values when required by v9;
+- preserve accessible naming, descriptions, roles, and focus behavior;
+- distinguish source-faithful behavior from a documented product decision.
+
+Update the component mapping/index and structural regression tests whenever a
+new guide or umbrella mapping is added. Structural tests should detect missing
+titles or dividers, duplicate registrations, broken paths, malformed fences,
+and invalid TSX snippets.
+
+## 5. Source-audit every guide
 
 For each guide, verify claims against source rather than other prose:
 
@@ -77,7 +198,7 @@ proves them. Keep style homogeneous with neighboring migration guides:
 - do not present semantic presets as pixel-exact aliases;
 - state important omitted-prop defaults explicitly.
 
-## 3. Create one reviewed scenario per guide
+## 6. Create one reviewed scenario per guide
 
 Author scenarios deliberately; do not extract code fences automatically when a
 guide interleaves v8 and v9 examples.
@@ -115,7 +236,7 @@ Validate before running:
 - every source has a default export and no destination imports;
 - every checklist is non-empty.
 
-## 4. Prepare destination dependencies
+## 7. Prepare destination dependencies
 
 Start from a normal v9 application template and its installed dependencies.
 Add every destination package referenced by the guides, including compat,
@@ -125,7 +246,7 @@ Generated builds may resolve installed packages, but the migration agent must
 not inspect dependency source or type declarations. Validate the untouched
 template with its existing build and lint commands before launching agents.
 
-## 5. Seal each migration workspace
+## 8. Seal each migration workspace
 
 Create a fresh workspace per scenario containing only:
 
@@ -159,7 +280,7 @@ Capture a trajectory log. Reject runs that use a non-allowlisted tool, cross
 the workspace boundary, read dependencies directly, or receive hidden
 evaluation material.
 
-## 6. Run focused and integration matrices
+## 9. Run focused and integration matrices
 
 Run focused scenarios in bounded parallel batches. Keep every iteration in a
 new output directory so corrective runs remain auditable.
@@ -175,7 +296,7 @@ Retain multi-component scenarios as an integration layer. Focused scenarios
 prove one guide at a time; integration scenarios prove that mappings compose
 in realistic workflows.
 
-## 7. Hidden-evaluate source fidelity
+## 10. Hidden-evaluate source fidelity
 
 The migration agent must never see this step's requirements.
 
@@ -201,7 +322,7 @@ Judge from source unless runtime inspection is explicitly part of the oracle.
 Do not turn every generated-code defect into more documentation; overfitting a
 guide to one agent output makes it noisy and less authoritative.
 
-## 8. Correct and rerun narrowly
+## 11. Correct and rerun narrowly
 
 For every `DOC_GAP`:
 
@@ -215,7 +336,7 @@ For every `DOC_GAP`:
 If a rerun produces an `AGENT_MISS`, verify that the guide is explicit before
 keeping the classification. Preserve all iterations in the ledger.
 
-## 9. Perform a senior review
+## 12. Perform a senior review
 
 After the matrix reaches zero documentation gaps, review the complete diff
 against source and neighboring guide style. Look specifically for:
@@ -230,7 +351,7 @@ against source and neighboring guide style. Look specifically for:
 
 Fix high-confidence findings and rerun the affected focused scenarios.
 
-## 10. Publish evidence
+## 13. Publish evidence
 
 Before committing:
 
@@ -266,6 +387,7 @@ Keep an auditable external structure such as:
 
 ```text
 migration-verification/
+  component-coverage-ledger.csv
   focused-component-scenarios.json
   runs/
     iteration-1/scenarios/<id>/
