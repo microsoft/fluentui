@@ -72,9 +72,11 @@
             @apply transition-[transform] duration-(--duration-slow) ease-(--ease-decelerate-max);
           }
 
+          /* transition-property, which the theme's reduced-motion floor does not author: Griffel
+             writes `transitionProperty: none` here and the indicator must not tween at all. */
           @media (prefers-reduced-motion: reduce) {
             @variant after {
-              @apply transition-none duration-[0.01ms];
+              @apply transition-none;
             }
           }
         }

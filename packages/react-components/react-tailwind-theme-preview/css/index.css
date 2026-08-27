@@ -77,3 +77,69 @@
 /* Generated theme classes (.fui-theme-web-dark, …), custom properties only; the
    `:root, :host` defaults in tokens.css stay web light. */
 @import './themes.css';
+
+/*
+ * House-wide `prefers-reduced-motion` floor: one rule in place of the per-component
+ * suppression blocks every motion-bearing component used to carry.
+ *
+ * Deliberately UNLAYERED, and deliberately without `!important`. Layers are compared
+ * before specificity and unlayered author declarations outrank every layered one, so a
+ * bare `*` beats component rules in `fui.components.*` even though it would lose every
+ * specificity contest inside a layer. Never wrap this in `@layer` — the layerlessness IS
+ * the mechanism.
+ *
+ * It lives here rather than in `./emit.css` because two entries emit this theme —
+ * `./emit.css` for published consumers and `scripts/storybook/src/tailwind-theme.css` for
+ * storybooks — and `index.css` is the only file both share. Component modules reach it
+ * through `@reference '#theme'`, which emits nothing, so no component stylesheet carries
+ * a copy.
+ *
+ * Consequences that are intentional, not oversights:
+ * - Consumer inline styles, and consumer unlayered CSS ordered after this sheet, still
+ *   win. Applications keep the last word on their own motion.
+ * - `animation-iteration-count: 1` stops infinite animations (the SkeletonItem shimmer, the
+ *   indeterminate ProgressBar pulse) after a single 1ms pass; they render static. Griffel
+ *   suppresses both too, so that is parity. The Spinner is the one motion carved back out —
+ *   see the exception below.
+ * - This is broader than Griffel, which suppresses per component and leaves several
+ *   motions running under the preference. See the windmod package's MIGRATION.md.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms;
+    transition-delay: 1ms;
+    animation-duration: 1ms;
+    animation-delay: 1ms;
+    animation-iteration-count: 1;
+  }
+
+  /*
+   * Spinner exception — essential motion, and Griffel parity.
+   *
+   * A loading indicator that does not move stops being a loading indicator, so the Spinner's
+   * rotation is exempt from the floor. Griffel makes the same call: its own reduced-motion CSS
+   * slows the ring to 1.8s rather than stopping it, and that is the value restored here.
+   * Everything else about the Spinner stays suppressed — the tail keeps the static full-ring
+   * conic its component rule swaps in under the preference, exactly as Griffel's tail sits at
+   * `animation-iteration-count: 0`.
+   *
+   * Inside the floor's own media query, so it is equally a no-op without the preference. After
+   * the floor in source order and higher in specificity, so it wins on both counts.
+   *
+   * `.fui-spinner > span` is the only hook available: windmod stamps public identity classes on
+   * component ROOTS (`utils/groupMarker.ts`), while slot classes are hashed CSS-module idents the
+   * theme cannot name. The child step is safe rather than merely likely — this rule restores
+   * `animation-duration` and `animation-iteration-count` only, both of which are inert on an
+   * element whose `animation-name` is `none`. The rotating ring is the sole animated direct child
+   * of a Spinner root; the tail is a grandchild and is deliberately not reached.
+   *
+   * `animation-delay` is left at the floor's 1ms on purpose: it matches what Griffel computes
+   * under the preference, and 1ms is unobservable on a rotation that never ends.
+   */
+  .fui-spinner > span {
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+  }
+}

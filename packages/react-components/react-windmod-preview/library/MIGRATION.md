@@ -16,7 +16,7 @@ their Griffel counterparts, and every shipped component is compared against its 
 pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list grows with the package
 and lives in the VR harness's `scenes.json`, which also records any per-scene allowance. The one
 deliberate visual exception is documented under
-[Tooltip](#27-tooltips-arrow-sits-differently-on-corner-placements).
+[Tooltip](#28-tooltips-arrow-sits-differently-on-corner-placements).
 
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
 > preview. APIs may change without notice and coverage is limited to the components the headless package
@@ -123,7 +123,7 @@ or the component subpath is the sanctioned entry point either way.
   `LinkContext`, `AvatarContext`, `TagGroupContext`, `InteractionTagContext`, `FieldContext`. A `Button`
   inside `MessageBarActions`, a `Tag` inside a `TagGroup`, an `Avatar` inside a `Persona` all pick up the
   container's `size`/`appearance` without being told. (One merge rule differs — see
-  [delta 22](#22-a-local-prop-beats-a-context-value).)
+  [delta 23](#23-a-local-prop-beats-a-context-value).)
 - **TabList's animated indicator**, ported mechanism-for-mechanism: measured rects → custom properties →
   CSS transition.
 - **Slot `className` merging.** Your class lands last on every slot, as it does today.
@@ -373,9 +373,81 @@ constrain the height.
   the call is a no-op. Nest windmod inside a Griffel `FluentProvider` if you need the live region, or
   announce yourself.
 
+#### 22. `prefers-reduced-motion` is suppressed globally, not per component
+
+Griffel suppresses motion piecemeal: `react-motion` swaps every presence atom for a 1ms one when the
+preference is set, and about a dozen components additionally author their own
+`@media (prefers-reduced-motion: reduce)` CSS. Motion that neither path covers keeps running.
+
+windmod suppresses once, in the theme. `@fluentui/react-tailwind-theme-preview` ships one rule and one
+deliberate exception to it; no windmod component authors a duration override of its own:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms;
+    transition-delay: 1ms;
+    animation-duration: 1ms;
+    animation-delay: 1ms;
+    animation-iteration-count: 1;
+  }
+
+  /* Essential motion, exempt on purpose — see below. */
+  .fui-spinner > span {
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+  }
+}
+```
+
+The rule is **unlayered**, not `!important`. Layers are compared before specificity, so an unlayered
+declaration outranks everything in `fui.components.*` (see
+[delta 10](#10-cascade-layers-replace-specificity-juggling)) while your own unlayered CSS and your inline
+styles still beat it. If one motion has to survive the preference in your app, re-declare its duration
+from unlayered CSS or inline — there is no `!important` to fight.
+
+**Where the two libraries visibly differ.** Measured under emulated `prefers-reduced-motion: reduce`:
+the Spinner's rotation is the only thing in windmod that computes a duration above 1ms, while Griffel
+still moves in these places.
+
+| Motion                                      | Griffel under `reduce`                 | windmod under `reduce` |
+| ------------------------------------------- | -------------------------------------- | ---------------------- |
+| `ProgressBar` determinate `width`           | tweens over 0.3s on every value change | jumps                  |
+| `AccordionHeader` chevron                   | rotates over 0.2s                      | jumps                  |
+| `Nav` row background (hover, selection)     | 0.1s                                   | instant                |
+| `NavItem` selection indicator and icon swap | 0.1s keyframes                         | instant                |
+
+The `Spinner` is not in that table, and the exception in the rule above is why.
+
+It closes one gap in the other direction too: the `NavCategoryItem` chevron used to keep its 0.15s
+rotation under the preference, where Griffel's equivalent was already suppressed. It no longer does.
+
+**The `Spinner` keeps spinning — deliberately.** A loading indicator that does not move stops being a
+loading indicator, so the Spinner's rotation is the one motion carved out of the floor, at Griffel's own
+under-reduce value: **1.8s, linear, infinite** — slower than the 1.5s it runs at without the preference,
+never stopped. Measured under `reduce`, both libraries report the identical animation on the ring
+(`duration 1800ms, iterations Infinity, running`). Only the rotation is exempt; the Spinner's tail still
+takes the floor and rests as the static full-ring conic its own rule swaps in, which is what Griffel's
+tail does too (Griffel pins it at `animation-iteration-count: 0`).
+
+Infinite animations are otherwise the class to watch. `animation-iteration-count: 1` means the
+`SkeletonItem` shimmer and the indeterminate `ProgressBar` pulse each run exactly one 1ms pass and then
+render their un-animated state — a flat block and a static full-width bar. Both match Griffel, which
+suppresses both as well.
+
+If you have your own essential motion, the same escape hatch is open to you: the floor is unlayered but
+selector-less, so any rule of your own with a class in it already outranks it.
+
+One consequence of the bare `*`: `transition-property` defaults to `all`, so under the preference every
+element in the document — yours included, styled by Fluent or not — carries a 1ms transition on every
+animatable property. It is imperceptible, but `transitionend` now fires where it previously would not.
+Do not key logic on a `transitionend` arriving only for elements you styled.
+
 ### Composition and context
 
-#### 22. A local prop beats a context value
+#### 23. A local prop beats a context value
 
 Where Griffel spells `size = contextSize ?? 32` (context wins even over an explicit prop), windmod's merge
 helper gives the **local prop** priority and falls back to context. Callbacks compose rather than replace
@@ -385,7 +457,7 @@ Concretely: an `Avatar` with an explicit `size` inside a container publishing a 
 size under windmod and takes the container's under Griffel. If you were relying on a container to override
 explicit sizes, remove the explicit prop.
 
-#### 23. `Field` does not push `size` into its control
+#### 24. `Field` does not push `size` into its control
 
 `Field` sizes its own `Label` and layout but does not propagate `size` to the control it wraps.
 `aria-invalid` and `required` do propagate. Measured cost of the gap: 8px of control height and 2px of font
@@ -399,11 +471,11 @@ Pass `size` to both:
 </Field>
 ```
 
-#### 24. A nested `Field` renders its label with the outer Field's orientation and size
+#### 25. A nested `Field` renders its label with the outer Field's orientation and size
 
 Griffel does not. Avoid nesting `Field`s, or set the inner label's props explicitly.
 
-#### 25. `Card` selection is not focus-aware
+#### 26. `Card` selection is not focus-aware
 
 Griffel builds a focus-aware predicate so that clicking a focusable element _inside_ a selectable card does
 not toggle the card. The headless surface exposes `shouldRestrictTriggerAction` but supplies no default, so
@@ -415,7 +487,7 @@ focusable by itself and never traps Tab.
 
 ### Browser and network behaviour
 
-#### 26. Anchored components require CSS anchor positioning — with no fallback
+#### 27. Anchored components require CSS anchor positioning — with no fallback
 
 The headless positioning layer uses native CSS anchor positioning (`anchor-name`, `position-area`,
 `position-try-fallbacks`). There is **no** `@supports` guard, no feature detection, no polyfill and no
@@ -429,7 +501,7 @@ an unpositioned Popover surface is dx −1016.953, dy −419 from its trigger.
 If you must support them, either polyfill CSS anchor positioning, or keep `Tooltip` and `Popover` on
 `@fluentui/react-components` — both compose over windmod children without trouble.
 
-#### 27. `Tooltip`'s arrow sits differently on corner placements
+#### 28. `Tooltip`'s arrow sits differently on corner placements
 
 Griffel's floating-ui centres the arrow on the target; CSS anchor positioning pins it near the edge. On the
 aligned corner placements (`above-start`, `below-end`, and their siblings) the arrow is displaced by
@@ -440,7 +512,7 @@ Both CSS routes to close the arrow gap (`anchor-center`, an `anchor-size()` clam
 neither works. Edge-centred placements (`above`, `below`, `before`, `after`) are unaffected. This is the one
 component with a non-zero pixel allowance in the parity gate.
 
-#### 28. The `AlphaSlider` checkerboard is inlined — it works offline
+#### 29. The `AlphaSlider` checkerboard is inlined — it works offline
 
 Griffel fetches the transparency checkerboard from a CDN. windmod embeds the same 94-byte PNG as a `data:`
 URI in its stylesheet, byte-for-byte identical to the asset Griffel downloads.
@@ -451,58 +523,58 @@ deliberate improvement; listed here because it is a behavioural difference you m
 
 ### AvatarGroup
 
-#### 29. The overflow button's ARIA is different
+#### 30. The overflow button's ARIA is different
 
 It carries `aria-haspopup="true"`; Griffel's carries a `data-tabster` focus-restorer instead. The accessible
 name (`View more people.`) and `aria-expanded` are identical on both. A snapshot test pinning the button's
 attributes needs updating.
 
-#### 30. A consumer's own trigger-button children are honoured
+#### 31. A consumer's own trigger-button children are honoured
 
 Griffel overwrites `triggerButton.children` with its glyph whenever `indicator="icon"`, discarding whatever
 the consumer passed. windmod follows the library-wide default-glyph rule: the glyph is a fallback, and
 consumer children always win. `triggerButton={{ children: null }}` falls back to the glyph on both
 libraries, so only a non-nullish value diverges.
 
-#### 31. The overflow popover no longer traps focus by default
+#### 32. The overflow popover no longer traps focus by default
 
 Griffel's `AvatarGroupPopover` set `trapFocus: true`. The headless surface forwards `trapFocus` but leaves
 it unset, and windmod does not add a default, because turning it on switches the native `<dialog>` from
 `popover="auto"` to `showModal()` and makes the rest of the page inert. Pass `trapFocus` explicitly to
 restore the old behaviour.
 
-#### 32. `AvatarGroupItem` no longer reads the provider direction
+#### 33. `AvatarGroupItem` no longer reads the provider direction
 
 Griffel's item calls `useFluent()` and merges a second class set under RTL; windmod's pie geometry is
 direction-aware in CSS. Behaviour is identical inside a provider; outside one, windmod follows the
 document's actual `dir` while Griffel falls back to `ltr`.
 
-#### 33. The overflow popover's arrow is off-centre on aligned placements
+#### 34. The overflow popover's arrow is off-centre on aligned placements
 
 `withArrow` is forwarded and not defaulted on either library, so no arrow renders out of the box. If you
 opt in on an aligned placement (`above-start`, `below-end`, `before-top`, `after-bottom`), the arrow's
 cross-axis position sits a fixed 8px from the aligned edge rather than centred on the trigger, because CSS
 anchor positioning has no equivalent of floating-ui's arrow middleware — the same mechanism as
-[delta 27](#27-tooltips-arrow-sits-differently-on-corner-placements). Centred placements are pixel-exact.
+[delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements). Centred placements are pixel-exact.
 
 ### Popover surfaces
 
 These four apply to every component built on `PopoverSurface` — `Popover`, `Tooltip` and the
 `AvatarGroup` overflow popover.
 
-#### 34. A focus-trapping surface carries no `aria-modal`
+#### 35. A focus-trapping surface carries no `aria-modal`
 
 Griffel sets `aria-modal` when `trapFocus` is on. The headless surface is a native `<dialog>` opened with
 `showModal()`, and `dialog:modal` already conveys modality to assistive technology, so no attribute is
 written. An assertion pinning `aria-modal` needs updating; the announced modality is unchanged.
 
-#### 35. There is no enter motion
+#### 36. There is no enter motion
 
 Griffel fades and slides its surface in (`appear: true`). The headless surface ships no motion slot and
 windmod adds none, so the surface appears at its final position immediately. Nothing about the resting
 render differs.
 
-#### 36. A surface outside every provider reads the document root's theme
+#### 37. A surface outside every provider reads the document root's theme
 
 The surface is rendered inline and promoted to the top layer, so it inherits theme variables from its
 position in the DOM. A trigger that sits outside every `FluentProvider` therefore renders its surface with
@@ -510,7 +582,7 @@ the document root's theme. Griffel's portalled surface has the same fallback for
 derives its theme from React context. Wrap the trigger in a `FluentProvider` to control the surface's
 theme.
 
-#### 37. The surface inherits arbitrary CSS from its DOM ancestors
+#### 38. The surface inherits arbitrary CSS from its DOM ancestors
 
 Because the surface stays where it is written, any inherited property set on an element between the
 provider and the trigger — `letter-spacing`, `text-transform`, `font-variant`, a `color` on a wrapper —
@@ -520,7 +592,7 @@ explicitly on the surface.
 
 ### Component defaults
 
-#### 38. `TagPicker` resolves an unrecognised `size` to a `medium` tag, where Griffel resolves `extra-small`
+#### 39. `TagPicker` resolves an unrecognised `size` to a `medium` tag, where Griffel resolves `extra-small`
 
 A `TagPicker`'s `size` selects the size of the `Tag`s in its group: `medium` → `extra-small`,
 `large` → `small`, `extra-large` → `medium`. The three listed values map identically in both
@@ -534,19 +606,19 @@ what a JavaScript caller passing an unlisted value gets: a 32px-tall tag under w
 
 ### `InfoLabel` and `InfoButton`
 
-#### 39. `InfoButton` has no `inline` prop, and its popover is always in the top layer
+#### 40. `InfoButton` has no `inline` prop, and its popover is always in the top layer
 
 Griffel's `InfoButton` took an `inline` prop (default `true`) choosing between rendering the popover inline
 and portaling it. The headless surface is always promoted into the browser's native top layer, so there is
-no inline/portal switch to make and the prop is not re-added. Everything [delta 26](#26-anchored-components-require-css-anchor-positioning--with-no-fallback)
-says about anchored components applies here unchanged, and so does [delta 27](#27-tooltips-arrow-sits-differently-on-corner-placements):
+no inline/portal switch to make and the prop is not re-added. Everything [delta 27](#27-anchored-components-require-css-anchor-positioning--with-no-fallback)
+says about anchored components applies here unchanged, and so does [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements):
 `InfoButton`'s **default** placement is `above-start`, an aligned one, so the arrow displacement is the
 out-of-the-box appearance rather than an edge case. Because the trigger is a 24px button — narrower than
 twice the arrow's inset from the surface edge — floating-ui compensates by translating the whole surface
 (measured 1px at `size="medium"`, 3px at `size="large"`) where CSS anchor positioning pins the surface edge
 to the trigger edge. Centred placements (`above`, `below`, `before`, `after`) are pixel-exact.
 
-#### 40. `InfoButton` moves focus to the popover, and closes when focus leaves to nothing
+#### 41. `InfoButton` moves focus to the popover, and closes when focus leaves to nothing
 
 Two behaviours come from the headless hook, not from the styled layer:
 
@@ -560,7 +632,7 @@ the surface while open, where Griffel carries neither and relies on tabster's fo
 lost — the `aria-labelledby` pairing of the label and the button is identical on both — but a snapshot test
 pinning the button's attributes needs updating.
 
-#### 41. `<InfoButton children={null}>` renders the default glyph
+#### 42. `<InfoButton children={null}>` renders the default glyph
 
 Across windmod, a slot's default content is restored with a `??` fallback, which fires on `null` as well as
 `undefined`. `<InfoButton>{null}</InfoButton>` therefore renders the info glyph where Griffel renders
@@ -569,7 +641,7 @@ render a button with no glyph, pass an empty element rather than `null`.
 
 ### Teaching and guidance
 
-#### 42. `TeachingPopover` no longer traps focus by default
+#### 43. `TeachingPopover` no longer traps focus by default
 
 Griffel's `TeachingPopover` sets `trapFocus: true` by default, "because the default TeachingPopover view
 has buttons/carousel". The headless component does not, so the surface is a light-dismissable
@@ -578,7 +650,7 @@ visually — the trap adds `aria-modal` and a tabster configuration and paints n
 
 Pass `trapFocus` explicitly to restore the old default.
 
-#### 43. `TeachingPopoverFooter`'s buttons are slots again, and only one of them closes
+#### 44. `TeachingPopoverFooter`'s buttons are slots again, and only one of them closes
 
 The headless base hook drops the `primary` and `secondary` Button slots and takes buttons as children of
 the root instead. windmod restores both slots on the windmod `Button`, exactly as Griffel has them —
@@ -596,7 +668,7 @@ renders differently — `components` is `@deprecated` in `@fluentui/react-utilit
 function reads it — but code that introspects `state.components` to discover the footer's slot elements
 will not find them there.
 
-#### 44. The `TeachingPopover` carousel is not shipped
+#### 45. The `TeachingPopover` carousel is not shipped
 
 `TeachingPopoverCarousel` and its six family members have no windmod component yet. The seven core members
 ship; keep the carousel on `@fluentui/react-components`, where it composes over windmod children without a

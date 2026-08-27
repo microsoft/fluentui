@@ -14,10 +14,6 @@
       @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed outline-none;
     }
 
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition-duration: 0.01ms;
-    }
-
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
     }

@@ -8,12 +8,6 @@
   .expand-icon {
     @apply ms-auto h-20 rotate-0 transition-[rotate] duration-(--duration-fast) ease-(--ease-easy-ease);
 
-    /* Griffel suppresses this rotation in JS (react-motion collapses it to 1ms under
-       prefers-reduced-motion); with the animation in CSS the suppression must be authored here. */
-    @variant motion-reduce {
-      transition-duration: 1ms;
-    }
-
     @variant group-open/fui-nav-category-item {
       @apply rotate-180;
     }

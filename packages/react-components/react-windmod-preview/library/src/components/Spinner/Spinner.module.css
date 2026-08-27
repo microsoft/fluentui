@@ -89,10 +89,6 @@
       @apply bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
     }
 
-    @variant motion-reduce {
-      animation-duration: 1.8s;
-    }
-
     @variant group-size-extra-tiny/fui-spinner {
       @apply size-16;
 
@@ -175,9 +171,10 @@
       animation-name: tail-after-rotate;
     }
 
+    /* Appearance only — the theme's reduced-motion floor already stops the rotation. This swaps
+       the tail for the full-ring conic the static spinner is meant to rest at, and drops the two
+       pseudo-element segments that only read correctly while rotating. */
     @variant motion-reduce {
-      animation-iteration-count: 0;
-
       background-image: conic-gradient(transparent 120deg, currentcolor 360deg);
 
       @variant before, after {

@@ -16,10 +16,9 @@
     @apply relative box-border inline-grid min-w-250 grid-cols-[1fr_auto] items-center justify-between gap-x-horizontal-xxs rounded-medium align-middle;
 
     /* The bottom focus border, shared with Input, Select and SpinButton. No transition-delay and no
-       timing function IN THIS RULE: Griffel writes a curve token into transition-delay, which is
-       not a <time> and is dropped at computed-value time, so both sides compute 0s / ease. The
-       reduced-motion block below writes a real <time> in the same property, so the delay is
-       authored there. */
+       timing function: Griffel writes a curve token into transition-delay, which is not a <time>
+       and is dropped at computed-value time, so both sides compute 0s / ease. Reduced motion is
+       suppressed house-wide by the theme, not here. */
     @variant after {
       @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
 
@@ -28,11 +27,6 @@
       transform: scaleX(0);
       transition-property: transform;
       transition-duration: var(--duration-ultra-fast);
-
-      @media screen and (prefers-reduced-motion: reduce) {
-        transition-duration: 0.01ms;
-        transition-delay: 0.01ms;
-      }
     }
 
     @variant size-small {
@@ -54,11 +48,6 @@
         transform: scaleX(1);
         transition-property: transform;
         transition-duration: var(--duration-normal);
-
-        @media screen and (prefers-reduced-motion: reduce) {
-          transition-duration: 0.01ms;
-          transition-delay: 0.01ms;
-        }
       }
 
       @variant active {

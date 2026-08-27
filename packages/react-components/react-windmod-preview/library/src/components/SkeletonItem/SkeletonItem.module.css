@@ -4,9 +4,8 @@
    the wave keyframes declare only a `to` step, so the implicit `from` is the element's own
    `transform`. Routing the offset elsewhere would start the sweep from `none` and halve it. */
 
-/* Block order carries the cascade. The reduced-motion query is last so it beats the pulse
-   block's animation-duration; the forced-colors block is first, inside the resting `::after`,
-   so the pulse block's background-color beats it. */
+/* Block order carries the cascade: the forced-colors block is first, inside the resting
+   `::after`, so the pulse block's background-color beats it. */
 
 @keyframes wave {
   to {
@@ -95,13 +94,6 @@
 
     @variant shape-circle {
       @apply size-(--fui-skeleton-item-size) rounded-[50%];
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-      @variant after {
-        animation-duration: 0.01ms;
-        animation-iteration-count: 1;
-      }
     }
   }
 

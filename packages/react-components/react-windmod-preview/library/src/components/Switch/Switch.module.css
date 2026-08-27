@@ -56,17 +56,9 @@
 
     transition-property: background, border, color;
 
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition-duration: 0.01ms;
-    }
-
     & > * {
       @apply transition-[transform] duration-(--duration-normal) ease-(--ease-easy-ease);
       transform: translateX(var(--fui-switch-thumb-offset));
-
-      @media screen and (prefers-reduced-motion: reduce) {
-        transition-duration: 0.01ms;
-      }
 
       /* translateX is physical, so the offset needs an explicit RTL negation. */
       @variant rtl {

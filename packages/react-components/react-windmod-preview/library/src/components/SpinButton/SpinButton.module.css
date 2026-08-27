@@ -21,11 +21,6 @@
       transform: scaleX(0);
       transition-property: transform;
       transition-duration: var(--duration-ultra-fast);
-
-      @media screen and (prefers-reduced-motion: reduce) {
-        transition-duration: 0.01ms;
-        transition-delay: 0.01ms;
-      }
     }
 
     /* All four typography halves are restated, not just the two that change: family and weight
@@ -42,11 +37,6 @@
         transform: scaleX(1);
         transition-property: transform;
         transition-duration: var(--duration-normal);
-
-        @media screen and (prefers-reduced-motion: reduce) {
-          transition-duration: 0.01ms;
-          transition-delay: 0.01ms;
-        }
       }
 
       @variant active {

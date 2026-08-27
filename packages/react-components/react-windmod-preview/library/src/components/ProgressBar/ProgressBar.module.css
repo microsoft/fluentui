@@ -96,6 +96,10 @@
         var(--color-neutral-background-6) 100%
       );
 
+      /* Kept: neither max-width nor animation-name is one of the five properties the theme's
+         reduced-motion floor authors. The floor does clamp the pulse it selects here to a single
+         1ms iteration, so the bar renders full-width and static rather than pulsing — Griffel's
+         WAAPI pulse stops for the same reason, at its own layer. */
       @media screen and (prefers-reduced-motion: reduce) {
         @apply max-w-full;
         animation-name: indeterminate-pulse;

@@ -25,10 +25,6 @@
       transition-property: margin, opacity;
       transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
       transition-duration: var(--duration-ultra-slow), var(--duration-slower);
-
-      @media screen and (prefers-reduced-motion: reduce) {
-        transition-duration: 0.01ms;
-      }
     }
 
     @variant before {
@@ -77,10 +73,6 @@
     transition-property: transform, opacity;
     transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
     transition-duration: var(--duration-ultra-slow), var(--duration-faster);
-
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition-duration: 0.01ms;
-    }
   }
 
   .ring {
