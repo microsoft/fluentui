@@ -746,6 +746,46 @@
         "default": "./lib-commonjs/nav-divider.cjs"
       }
     },
+    "./nav-drawer": {
+      "import": {
+        "types": "./dist/nav-drawer.d.ts",
+        "default": "./lib/nav-drawer.js"
+      },
+      "require": {
+        "types": "./dist/nav-drawer.d.cts",
+        "default": "./lib-commonjs/nav-drawer.cjs"
+      }
+    },
+    "./nav-drawer-body": {
+      "import": {
+        "types": "./dist/nav-drawer-body.d.ts",
+        "default": "./lib/nav-drawer-body.js"
+      },
+      "require": {
+        "types": "./dist/nav-drawer-body.d.cts",
+        "default": "./lib-commonjs/nav-drawer-body.cjs"
+      }
+    },
+    "./nav-drawer-footer": {
+      "import": {
+        "types": "./dist/nav-drawer-footer.d.ts",
+        "default": "./lib/nav-drawer-footer.js"
+      },
+      "require": {
+        "types": "./dist/nav-drawer-footer.d.cts",
+        "default": "./lib-commonjs/nav-drawer-footer.cjs"
+      }
+    },
+    "./nav-drawer-header": {
+      "import": {
+        "types": "./dist/nav-drawer-header.d.ts",
+        "default": "./lib/nav-drawer-header.js"
+      },
+      "require": {
+        "types": "./dist/nav-drawer-header.d.cts",
+        "default": "./lib-commonjs/nav-drawer-header.cjs"
+      }
+    },
     "./nav-item": {
       "import": {
         "types": "./dist/nav-item.d.ts",

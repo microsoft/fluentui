@@ -256,6 +256,16 @@ import { NavContextValues } from '@fluentui/react-headless-components-preview/na
 import { NavDividerProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavDividerSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavDividerState as NavDividerState_2 } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerBodyProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerBodySlots } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerBodyState } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerFooterProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerFooterSlots } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerFooterState } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerHeaderProps } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerHeaderSlots } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerHeaderState } from '@fluentui/react-headless-components-preview/nav';
+import type { NavDrawerState as NavDrawerState_2 } from '@fluentui/react-headless-components-preview/nav';
 import { NavItemProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavItemSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavItemState as NavItemState_2 } from '@fluentui/react-headless-components-preview/nav';
@@ -393,6 +403,10 @@ import { renderNav } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavCategory } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavCategoryItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavDivider } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavDrawer } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavDrawerBody } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavDrawerFooter } from '@fluentui/react-headless-components-preview/nav';
+import { renderNavDrawerHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { renderNavSubItem } from '@fluentui/react-headless-components-preview/nav';
@@ -731,6 +745,10 @@ import { useNavCategoryItemContextValues } from '@fluentui/react-headless-compon
 import { useNavContext } from '@fluentui/react-headless-components-preview/nav';
 import { useNavContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { useNavDivider } from '@fluentui/react-headless-components-preview/nav';
+import { useNavDrawer } from '@fluentui/react-headless-components-preview/nav';
+import { useNavDrawerBody } from '@fluentui/react-headless-components-preview/nav';
+import { useNavDrawerFooter } from '@fluentui/react-headless-components-preview/nav';
+import { useNavDrawerHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavItem } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSectionHeader } from '@fluentui/react-headless-components-preview/nav';
 import { useNavSubItem } from '@fluentui/react-headless-components-preview/nav';
@@ -2298,6 +2316,64 @@ export { NavDividerSlots }
 export type NavDividerState = NavDividerState_2 & Required<Pick<DividerState, 'alignContent' | 'appearance' | 'inset'>>;
 
 // @public
+export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
+
+// @public
+export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps>;
+
+// @public
+export const navDrawerBodyClassNames: {
+    root: string;
+};
+
+export { NavDrawerBodyProps }
+
+export { NavDrawerBodySlots }
+
+export { NavDrawerBodyState }
+
+// @public
+export const navDrawerClassNames: {
+    root: string;
+};
+
+// @public
+export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
+
+// @public
+export const navDrawerFooterClassNames: {
+    root: string;
+};
+
+export { NavDrawerFooterProps }
+
+export { NavDrawerFooterSlots }
+
+export { NavDrawerFooterState }
+
+// @public
+export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
+
+// @public
+export const navDrawerHeaderClassNames: {
+    root: string;
+};
+
+export { NavDrawerHeaderProps }
+
+export { NavDrawerHeaderSlots }
+
+export { NavDrawerHeaderState }
+
+// @public
+export type NavDrawerProps = DrawerProps & NavProps;
+
+// @public
+export type NavDrawerState = NavDrawerState_2 & {
+    size?: DrawerSize;
+};
+
+// @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
 
 // @public
@@ -2804,6 +2880,14 @@ export { renderNavCategory }
 export { renderNavCategoryItem }
 
 export { renderNavDivider }
+
+export { renderNavDrawer }
+
+export { renderNavDrawerBody }
+
+export { renderNavDrawerFooter }
+
+export { renderNavDrawerHeader }
 
 export { renderNavItem }
 
@@ -4311,6 +4395,26 @@ export { useNavDivider }
 
 // @public
 export const useNavDividerStyles: (state: NavDividerState) => NavDividerState;
+
+export { useNavDrawer }
+
+export { useNavDrawerBody }
+
+// @public
+export const useNavDrawerBodyStyles: (state: NavDrawerBodyState) => NavDrawerBodyState;
+
+export { useNavDrawerFooter }
+
+// @public
+export const useNavDrawerFooterStyles: (state: NavDrawerFooterState) => NavDrawerFooterState;
+
+export { useNavDrawerHeader }
+
+// @public
+export const useNavDrawerHeaderStyles: (state: NavDrawerHeaderState) => NavDrawerHeaderState;
+
+// @public
+export const useNavDrawerStyles: (state: NavDrawerState) => NavDrawerState;
 
 export { useNavItem }
 

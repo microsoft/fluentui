@@ -102,6 +102,8 @@ export { MessageBarWindmod } from './MessageBarWindmod.stories';
 export { MessageBarGriffel } from './MessageBarGriffel.stories';
 export { NavWindmod } from './NavWindmod.stories';
 export { NavGriffel } from './NavGriffel.stories';
+export { NavDrawerInlineWindmod, NavDrawerRtlWindmod, NavDrawerWindmod } from './NavDrawerWindmod.stories';
+export { NavDrawerGriffel, NavDrawerInlineGriffel, NavDrawerRtlGriffel } from './NavDrawerGriffel.stories';
 export { PersonaWindmod } from './PersonaWindmod.stories';
 export { PersonaGriffel } from './PersonaGriffel.stories';
 export { PopoverWindmod } from './PopoverWindmod.stories';

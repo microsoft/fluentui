@@ -605,6 +605,36 @@ export type {
 export { NavDivider, navDividerClassNames, renderNavDivider, useNavDivider, useNavDividerStyles } from './nav-divider';
 export type { NavDividerProps, NavDividerSlots, NavDividerState } from './nav-divider';
 
+export { NavDrawer, navDrawerClassNames, renderNavDrawer, useNavDrawer, useNavDrawerStyles } from './nav-drawer';
+export type { NavDrawerProps, NavDrawerState } from './nav-drawer';
+
+export {
+  NavDrawerBody,
+  navDrawerBodyClassNames,
+  renderNavDrawerBody,
+  useNavDrawerBody,
+  useNavDrawerBodyStyles,
+} from './nav-drawer-body';
+export type { NavDrawerBodyProps, NavDrawerBodySlots, NavDrawerBodyState } from './nav-drawer-body';
+
+export {
+  NavDrawerFooter,
+  navDrawerFooterClassNames,
+  renderNavDrawerFooter,
+  useNavDrawerFooter,
+  useNavDrawerFooterStyles,
+} from './nav-drawer-footer';
+export type { NavDrawerFooterProps, NavDrawerFooterSlots, NavDrawerFooterState } from './nav-drawer-footer';
+
+export {
+  NavDrawerHeader,
+  navDrawerHeaderClassNames,
+  renderNavDrawerHeader,
+  useNavDrawerHeader,
+  useNavDrawerHeaderStyles,
+} from './nav-drawer-header';
+export type { NavDrawerHeaderProps, NavDrawerHeaderSlots, NavDrawerHeaderState } from './nav-drawer-header';
+
 export { NavItem, navItemClassNames, renderNavItem, useNavItem, useNavItemStyles } from './nav-item';
 export type { NavItemProps, NavItemSlots, NavItemState } from './nav-item';
 

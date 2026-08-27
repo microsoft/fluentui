@@ -147,7 +147,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Forty-eight differences, each one a decision rather than a defect.
+Fifty differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -731,6 +731,25 @@ stray descendant combinator, so the pressed styling matches active _descendants_
 card (8 forced-colors cells measured). windmod authors `:active` on the card itself. Copying Griffel
 would have imported the typo; it is filed upstream instead. A windmod `Card` therefore shows a pressed
 state where a Griffel `Card` shows none.
+
+### NavDrawer
+
+#### 49. The navigation landmark sits on the drawer body, not the drawer root
+
+Griffel's `NavDrawer` stamps `role="navigation"` on the drawer root; the headless render puts it on
+the `NavDrawerBody`, and windmod inherits the headless placement. The landmark is announced either
+way and its contents are identical — but assistive technology reports it on a different element, and
+a selector or test targeting `[role="navigation"]` finds the body rather than the root. A test (T8)
+pins the headless placement so a future upstream move is caught.
+
+#### 50. `NavDrawer` has no `tabbable` prop
+
+Griffel adds `tabbable` on `NavDrawerProps` and feeds it to `useArrowNavigationGroup` in the body.
+The headless state omits the prop and its context helper pins the value `false`, so windmod cannot
+forward what never arrives. With Nav's move to Tab-per-row navigation (see
+[delta 15](#15-arrow-key-navigation-comes-from-focusgroup-not-tabster)) the prop's original role has
+narrowed; consumers who set `tabbable` today should verify their keyboard order against the headless
+model.
 
 ## Where the pixels are allowed to differ
 

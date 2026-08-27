@@ -1,0 +1,9 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @apply py-5 ps-14;
+
+    margin: unset;
+  }
+}

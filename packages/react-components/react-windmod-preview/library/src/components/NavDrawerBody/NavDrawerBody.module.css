@@ -1,0 +1,13 @@
+@reference '#theme';
+
+/* The block paddings are deliberately absent: DrawerBody's own first/last-child rules own the
+   edge-adjacent pixel and Griffel's shorthand loses them on specificity, so declaring padding-block
+   here would win by layer and print 0 where Griffel prints 25px. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply flex flex-col gap-y-vertical-xxs ps-horizontal-m-nudge pe-horizontal-xs;
+
+    align-items: unset;
+  }
+}
