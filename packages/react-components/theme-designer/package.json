@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.6",
+    "@fluentui/react-components": "^9.74.7",
     "@fluentui/react-context-selector": "^9.2.19",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.3.1",
@@ -26,9 +26,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

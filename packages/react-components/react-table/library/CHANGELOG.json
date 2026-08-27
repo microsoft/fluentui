@@ -2,6 +2,20 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.19.20",
+      "tag": "@fluentui/react-table_v9.19.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.11.6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.19.19",
       "tag": "@fluentui/react-table_v9.19.19",

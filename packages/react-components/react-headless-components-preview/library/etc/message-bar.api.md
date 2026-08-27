@@ -15,7 +15,7 @@ import { MessageBarBodyProps } from '@fluentui/react-message-bar';
 import { MessageBarBodySlots } from '@fluentui/react-message-bar';
 import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { MessageBarContextValues } from '@fluentui/react-message-bar';
-import type { MessageBarIntent } from '@fluentui/react-message-bar';
+import { MessageBarIntent } from '@fluentui/react-message-bar';
 import { MessageBarBaseProps as MessageBarProps } from '@fluentui/react-message-bar';
 import { MessageBarSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';

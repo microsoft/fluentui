@@ -14,8 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.web_components # Used to scope beachball to release only vnext packages
     value: true
   - name: tags
@@ -66,29 +64,17 @@ extends:
                   dryRun: ${{ parameters.dryRun }}
 
               - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-                displayName: Authenticate git for pushes
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
-
-              - script: |
                   yarn nx run-many -t format:check lint test build -p tag:web-components --exclude vr-tests-web-components --nxBail
                 displayName: Build, Test, Lint
 
-              - script: |
-                  yarn beachball publish --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
-                  git reset --hard origin/master
-                env:
-                  GITHUB_PAT: $(githubPAT)
-                  NPM_TOKEN: $(npmToken)
-                displayName: Publish changes and bump versions
-                condition: not(${{ parameters.dryRun }})
-
-              - template: .devops/templates/cleanup.yml@self
+              - template: .devops/templates/run-with-token.yml@self
                 parameters:
-                  checkForModifiedFiles: false
+                  steps:
+                    - script: |
+                        yarn beachball publish --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
+                        git reset --hard origin/master
+                      env:
+                        BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
+                        BEACHBALL_NPM_TOKEN: $(npmToken)
+                      displayName: Publish changes and bump versions
+                      condition: not(${{ parameters.dryRun }})

@@ -1,4 +1,4 @@
-# Install versions of Node and Yarn required by build pipelines.
+# Install tools and dependencies and set shared configuration
 parameters:
   - name: dryRun
     displayName: Dry Run Mode
@@ -25,9 +25,6 @@ steps:
     displayName: 'Install Node.js'
     retryCountOnTaskFailure: 1
 
-  - script: corepack enable
-    displayName: 'Enable Corepack'
-
   - script: |
       echo "nodejs:" && node -v
       echo "yarn:" && yarn -v
@@ -48,10 +45,16 @@ steps:
   - script: |
       printenv | sort
       echo "SHELLOPTS $SHELLOPTS"
-      echo 'deployBasePath "$(deployBasePath)"'
-      echo 'deployUrl "$(deployUrl)"'
-      echo 'isPR "$(isPR)"'
-      echo 'targetBranch "$(targetBranch)"'
       echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
     displayName: Log environment variables (Linux)
     condition: eq(variables['Agent.OS'], 'Linux')
+
+  - script: |
+      git config user.name "OGX bot"
+      git config user.email "257645319+office-ogx-auth-helper[bot]@users.noreply.github.com"
+    displayName: Configure git user (used by beachball)
+
+  - script: |
+      corepack enable
+      yarn install --immutable
+    displayName: yarn install

@@ -13,7 +13,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
@@ -224,10 +225,40 @@ export { TeachingPopoverHeaderSlots }
 export { TeachingPopoverHeaderState }
 
 // @public
-export type TeachingPopoverProps = PopoverProps;
+export type TeachingPopoverProps = {
+    children: [JSXElement, JSXElement] | JSXElement;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: EventHandler<OnOpenChangeData>;
+    openOnHover?: boolean;
+    openOnContext?: boolean;
+    mouseLeaveDelay?: number;
+    positioning?: PositioningShorthand;
+    withArrow?: boolean;
+    id?: string;
+    trapFocus?: boolean;
+};
 
 // @public
-export type TeachingPopoverState = PopoverState;
+export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    toggleOpen: (e: OpenPopoverEvents) => void;
+    triggerRef: React_2.RefObject<HTMLElement | null>;
+    contentRef: React_2.RefObject<HTMLElement | null>;
+    arrowRef: React_2.RefObject<HTMLDivElement | null>;
+    popoverTrigger: React_2.ReactElement | undefined;
+    popoverSurface: React_2.ReactElement | undefined;
+    contextTarget: {
+        x: number;
+        y: number;
+    } | undefined;
+    setContextTarget: (target: {
+        x: number;
+        y: number;
+    } | undefined) => void;
+    positioning: PositioningReturn;
+    surfaceId: string;
+};
 
 // @public
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;

@@ -14,8 +14,6 @@ name: 'tools_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
 
@@ -55,11 +53,6 @@ extends:
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
               - task: Bash@3
                 name: validation
                 inputs:
@@ -77,11 +70,6 @@ extends:
                     echo "Branch path: $BRANCH_PATH"
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
-
-              - script: |
-                  corepack enable
-                  yarn install --immutable
-                displayName: Install dependencies
 
                 # Deletes all existing changefiles so that only bump that happens is for experimental
               - script: |
@@ -122,8 +110,4 @@ extends:
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
-                  NPM_TOKEN: $(npmToken)
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
+                  BEACHBALL_NPM_TOKEN: $(npmToken)

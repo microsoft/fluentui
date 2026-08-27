@@ -11,7 +11,8 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import { renderTagPickerButton_unstable as renderTagPickerButton } from '@fluentui/react-tag-picker';
 import { renderTagPickerControl_unstable as renderTagPickerControl } from '@fluentui/react-tag-picker';
@@ -34,7 +35,7 @@ import { TagPickerControlInternalSlots } from '@fluentui/react-tag-picker';
 import { TagPickerControlProps } from '@fluentui/react-tag-picker';
 import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerGroupBaseState } from '@fluentui/react-tag-picker';
-import type { TagPickerGroupSlots as TagPickerGroupSlots_2 } from '@fluentui/react-tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerInputBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerInputBaseProps as TagPickerInputProps } from '@fluentui/react-tag-picker';
 import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
@@ -113,8 +114,7 @@ export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 // @public
 export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> & Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
-// @public (undocumented)
-export type TagPickerGroupSlots = TagPickerGroupSlots_2;
+export { TagPickerGroupSlots }
 
 // @public
 export type TagPickerGroupState = TagPickerGroupBaseState & {
@@ -191,7 +191,7 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 export type TagPickerOptionState = OptionState & ComponentState<TagPickerOptionSlots>;
 
 // @public (undocumented)
-export type TagPickerProps = TagPickerBaseProps & {
+export type TagPickerProps = Omit<TagPickerBaseProps, 'positioning'> & {
     positioning?: PositioningShorthand;
 };
 
