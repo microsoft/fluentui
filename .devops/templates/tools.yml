@@ -4,10 +4,6 @@ parameters:
     displayName: Dry Run Mode
     type: boolean
     default: false
-  - name: githubPAT
-    displayName: GitHub Personal Access Token
-    type: string
-    default: ''
 
 steps:
   # Logs a message when dry run mode is enabled.
@@ -54,14 +50,9 @@ steps:
     condition: eq(variables['Agent.OS'], 'Linux')
 
   - script: |
-      git config user.name "Fluent UI Build"
-      git config user.email "fluentui-internal@service.microsoft.com"
+      git config user.name "OGX bot"
+      git config user.email "257645319+office-ogx-auth-helper[bot]@users.noreply.github.com"
     displayName: Configure git user (used by beachball)
-
-  - script: |
-      git remote set-url origin https://fabricteam:$(githubPAT)@github.com/microsoft/fluentui.git
-    displayName: Authenticate git for pushes
-    condition: and(succeeded(), ne('${{ parameters.githubPAT }}', ''))
 
   - script: |
       corepack enable
