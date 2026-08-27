@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getNativeProps, divProperties, inputProperties, anchorProperties, buttonProperties } from './properties';
+import { getNativeProps, divProperties, inputProperties, anchorProperties, buttonProperties, imgProperties } from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
@@ -108,6 +108,27 @@ describe('getNativeProps', () => {
       target: '_blank',
       referrerPolicy: 'no-referrer',
       download: 'file.txt',
+    });
+
+    expect(result).not.toHaveProperty('foobar');
+  });
+
+  it('can pass through img props including loading', () => {
+    const result = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(
+      {
+        src: 'https://example.com/image.png',
+        alt: 'An image',
+        loading: 'lazy',
+        // Non-img property
+        foobar: 1,
+      },
+      imgProperties,
+    );
+
+    expect(result).toMatchObject({
+      src: 'https://example.com/image.png',
+      alt: 'An image',
+      loading: 'lazy',
     });
 
     expect(result).not.toHaveProperty('foobar');
