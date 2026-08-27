@@ -56,31 +56,40 @@ const options: FruitOption[] = [
 const toOptionId = (key: string | number) => `${typeof key}:${String(key)}`;
 const optionsById = new Map(options.map(option => [toOptionId(option.key), option]));
 
-const [selectedId, setSelectedId] = React.useState('');
-const [displayValue, setDisplayValue] = React.useState('');
+function FruitDropdown() {
+  const [selectedId, setSelectedId] = React.useState('');
+  const [displayValue, setDisplayValue] = React.useState('');
 
-<Field label="Fruit">
-  <Dropdown
-    placeholder="Select an option"
-    value={displayValue}
-    selectedOptions={selectedId ? [selectedId] : []}
-    onOptionSelect={(_, data) => {
-      const nextId = data.optionValue ?? '';
-      const option = optionsById.get(nextId);
-      setSelectedId(option ? nextId : '');
-      setDisplayValue(option?.text ?? '');
-      if (option) {
-        selectFruit(option);
-      }
-    }}
-  >
-    {options.map(option => (
-      <Option key={toOptionId(option.key)} value={toOptionId(option.key)} text={option.text} disabled={option.disabled}>
-        {option.text}
-      </Option>
-    ))}
-  </Dropdown>
-</Field>;
+  return (
+    <Field label="Fruit">
+      <Dropdown
+        placeholder="Select an option"
+        value={displayValue}
+        selectedOptions={selectedId ? [selectedId] : []}
+        onOptionSelect={(_, data) => {
+          const nextId = data.optionValue ?? '';
+          const option = optionsById.get(nextId);
+          setSelectedId(option ? nextId : '');
+          setDisplayValue(option?.text ?? '');
+          if (option) {
+            selectFruit(option);
+          }
+        }}
+      >
+        {options.map(option => (
+          <Option
+            key={toOptionId(option.key)}
+            value={toOptionId(option.key)}
+            text={option.text}
+            disabled={option.disabled}
+          >
+            {option.text}
+          </Option>
+        ))}
+      </Dropdown>
+    </Field>
+  );
+}
 ```
 
 v8 option keys can be strings or numbers and the callback returns the original
@@ -107,27 +116,195 @@ Render each selectable item as an `Option`; v9 has no `OptionDivider`.
 A v8 `ComboBox` with `allowFreeform` maps to a v9 `Combobox` with `freeform`:
 
 ```tsx
+import * as React from 'react';
 import { Combobox, Field, Option } from '@fluentui/react-components';
 
-<Field label="Fruit">
-  <Combobox
-    value={inputValue}
-    selectedOptions={selectedKey ? [selectedKey] : []}
-    onChange={event => {
-      setInputValue(event.target.value);
-      setSelectedKey('');
-    }}
-    onOptionSelect={(_, data) => {
-      setSelectedKey(data.optionValue ?? '');
-      setInputValue(data.optionText ?? '');
-    }}
-    freeform
-  >
-    <Option value="apple">Apple</Option>
-    <Option value="banana">Banana</Option>
-  </Combobox>
-</Field>;
+function FreeformFruitPicker({ preserveV8InlineAutocomplete }: Props) {
+  const options = [
+    { key: 'apple', text: 'Apple' },
+    { key: 'banana', text: 'Banana' },
+  ];
+  const optionsByKey = new Map(options.map(option => [option.key, option]));
+  const [inputValue, setInputValue] = React.useState('');
+  const [selectedKey, setSelectedKey] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+  const committed = React.useRef({ inputValue: '', selectedKey: '' });
+  const dirty = React.useRef(false);
+  const keyboardNavigated = React.useRef(false);
+  const activeOptionText = React.useRef<string | undefined>(undefined);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const comboboxRootRef = React.useRef<HTMLDivElement>(null);
+
+  const activeOptionMatchesInput = (inputValue: string) => {
+    const normalizedActiveText = activeOptionText.current?.toLocaleLowerCase();
+    const normalizedInput = inputValue.toLocaleLowerCase();
+    return normalizedActiveText === normalizedInput;
+  };
+
+  const findExactOption = (text: string) =>
+    options.find(option => option.text.toLocaleLowerCase() === text.toLocaleLowerCase());
+
+  const findPrefixOption = (text: string) =>
+    text ? options.find(option => option.text.toLocaleLowerCase().startsWith(text.toLocaleLowerCase())) : undefined;
+
+  const selectOption = (option: (typeof options)[number]) => {
+    setSelectedKey(option.key);
+    setInputValue(option.text);
+    committed.current = { inputValue: option.text, selectedKey: option.key };
+    onOptionCommit(option);
+  };
+
+  const restoreCommitted = () => {
+    dirty.current = false;
+    keyboardNavigated.current = false;
+    setInputValue(committed.current.inputValue);
+    setSelectedKey(committed.current.selectedKey);
+  };
+
+  const commitFreeform = (text: string) => {
+    if (!dirty.current) {
+      return;
+    }
+    dirty.current = false;
+    keyboardNavigated.current = false;
+    setOpen(false);
+
+    const matchingOption = findExactOption(text);
+    if (matchingOption) {
+      selectOption(matchingOption);
+      return;
+    }
+
+    const validationValue = text.trim();
+    if (!validationValue || !isValidFreeformValue(validationValue)) {
+      setInputValue(committed.current.inputValue);
+      setSelectedKey(committed.current.selectedKey);
+      return;
+    }
+
+    setSelectedKey('');
+    setInputValue(text);
+    committed.current = { inputValue: text, selectedKey: '' };
+    onFreeformCommit(text);
+  };
+
+  return (
+    <Field label="Fruit">
+      <Combobox
+        ref={inputRef}
+        root={{ ref: comboboxRootRef }}
+        inlinePopup
+        open={open}
+        value={inputValue}
+        selectedOptions={selectedKey ? [selectedKey] : []}
+        onOpenChange={(_, data) => setOpen(data.open)}
+        onActiveOptionChange={(_, data) => {
+          activeOptionText.current = data.nextOption?.text;
+        }}
+        onChange={event => {
+          const typedValue = event.target.value;
+          const inputEvent = event.nativeEvent as InputEvent;
+          const isDeletion = inputEvent.inputType?.startsWith('delete');
+          const caretAtEnd = event.target.selectionStart === typedValue.length;
+          const prefixOption = findPrefixOption(typedValue);
+          dirty.current = true;
+          keyboardNavigated.current = false;
+          activeOptionText.current = prefixOption?.text;
+          setSelectedKey('');
+          const completion = preserveV8InlineAutocomplete && !isDeletion && caretAtEnd ? prefixOption : undefined;
+          setInputValue(completion?.text ?? typedValue);
+          if (completion && completion.text.length > typedValue.length) {
+            requestAnimationFrame(() => inputRef.current?.setSelectionRange(typedValue.length, completion.text.length));
+          }
+        }}
+        onOptionSelect={(_, data) => {
+          const option = data.optionValue ? optionsByKey.get(data.optionValue) : undefined;
+          if (!option) {
+            return;
+          }
+
+          dirty.current = false;
+          selectOption(option);
+        }}
+        onKeyDownCapture={event => {
+          if (event.key === 'Escape' && dirty.current) {
+            restoreCommitted();
+            return;
+          }
+          if (['ArrowDown', 'ArrowUp', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+            keyboardNavigated.current = true;
+            return;
+          }
+          if (
+            (event.key === 'Enter' || event.key === 'Tab') &&
+            dirty.current &&
+            !keyboardNavigated.current &&
+            !activeOptionMatchesInput(event.currentTarget.value)
+          ) {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+            }
+            event.stopPropagation();
+            commitFreeform(event.currentTarget.value);
+          }
+        }}
+        onBlur={event => {
+          const nextTarget = event.relatedTarget as Node | null;
+          if (!nextTarget || !comboboxRootRef.current?.contains(nextTarget)) {
+            commitFreeform(inputValue);
+          }
+        }}
+        freeform
+      >
+        {options.map(option => (
+          <Option key={option.key} value={option.key} text={option.text}>
+            {option.text}
+          </Option>
+        ))}
+      </Combobox>
+    </Field>
+  );
+}
 ```
+
+`freeform` permits unmatched text, but it does not turn that text into an
+option selection. `onOptionSelect` runs only when a concrete active `Option` is
+selected. It also runs with `optionValue: undefined` and an empty
+`selectedOptions` array when a single selection is cleared, including when
+typing away from a selected option or using the clear button, so guard that
+case. If v8 `allowFreeform` committed unmatched text, add explicit Enter, Tab,
+and blur handling as above: parse and validate the input, update the domain
+value, and either normalize the display string or restore the last committed
+value and selected key. Track whether input is dirty so keyboard commit followed
+by blur, selection followed by blur, and an untouched blur do not fire the
+domain callback twice. On blur, resolve an untrimmed, case-normalized exact
+option match before committing unmatched text. A v8 autocomplete prefix counts
+as a match only while its completed suffix remains in the input; after deletion
+or a mid-string edit, the remaining prefix follows the freeform path. Use
+capture-phase handling for unmatched Enter and Tab input; the base Combobox may
+keep an unrelated option active and handles its own bubble-phase key event
+before a normal `onKeyDown` callback. Prevent the default action for Enter, but
+not Tab, so focus can still move. Let unedited Enter/Tab, keyboard navigation,
+and an exact active option reach the base handler. Restore the last committed
+input and selection on Escape, then let the base handler close the popup. The
+example uses `inlinePopup` and a root ref so moving focus into the listbox is
+not mistaken for leaving the complete control. A captured freeform Enter
+bypasses the base close behavior, so control `open` and close it explicitly
+after committing.
+
+v8 `autoComplete="on"` performs inline option completion. The same-named v9
+prop is the native HTML autocomplete attribute and does not reproduce that
+behavior. The example preserves it by replacing a typed prefix with the first
+matching option and selecting only the completed suffix through the forwarded
+input ref. Skip completion for deletions and edits made away from the end of the
+input so users can erase or edit the completed value. Omit that branch for v8
+`autoComplete="off"`; otherwise treat removal of inline completion as an
+intentional UX change.
+
+`allowFreeInput` has a different v8 contract from `allowFreeform`: it permits
+temporary unmatched typing while focused, but on blur it selects a matching
+option or restores the previous selection. For that prop, keep the typed value
+as pending UI state and do not call the unmatched-value commit callback.
 
 Filter the rendered `Option` children for autocomplete. `VirtualizedComboBox`
 has no direct replacement; preserve virtualization separately and verify
@@ -169,20 +346,20 @@ keyboard navigation and active-option announcements.
 
 ### IComboBoxProps → ComboboxProps
 
-| v8                   | v9                               | Notes                                                       |
-| -------------------- | -------------------------------- | ----------------------------------------------------------- |
-| `options`            | `<Option>` children              |                                                             |
-| `selectedKey`        | `selectedOptions={[key]}`        |                                                             |
-| `onChange`           | `onOptionSelect` + `onChange`    | `onOptionSelect` for list picks; `onChange` for typed input |
-| `allowFreeform`      | `freeform`                       |                                                             |
-| `allowFreeInput`     | `freeform` + controlled state    | Preserve its unmatched-value behavior in app logic          |
-| `autoComplete`       | `autoComplete`                   | `"on"` or `"off"`                                           |
-| `label`              | `<Field label="...">` wrapper    |                                                             |
-| `placeholder`        | `placeholder`                    |                                                             |
-| `disabled`           | `disabled`                       |                                                             |
-| `multiSelect`        | `multiselect`                    |                                                             |
-| `text` (display val) | `value`                          | The text shown in the input                                 |
-| `errorMessage`       | `validationMessage` on `<Field>` |                                                             |
-| `styles`             | `className` + `makeStyles`       |                                                             |
-| `theme`              | `FluentProvider`                 |                                                             |
-| `componentRef`       | `ref`                            |                                                             |
+| v8                   | v9                                    | Notes                                                                                   |
+| -------------------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
+| `options`            | `<Option>` children                   |                                                                                         |
+| `selectedKey`        | `selectedOptions={[key]}`             |                                                                                         |
+| `onChange`           | `onOptionSelect` + input handlers     | List picks select options; unmatched text needs explicit Enter/blur commit              |
+| `allowFreeform`      | `freeform`                            |                                                                                         |
+| `allowFreeInput`     | `freeform` + controlled pending state | Match an option or restore the previous selection on blur; do not commit unmatched text |
+| `autoComplete`       | Custom controlled behavior            | v9's native attribute does not reproduce v8 inline option completion                    |
+| `label`              | `<Field label="...">` wrapper         |                                                                                         |
+| `placeholder`        | `placeholder`                         |                                                                                         |
+| `disabled`           | `disabled`                            |                                                                                         |
+| `multiSelect`        | `multiselect`                         |                                                                                         |
+| `text` (display val) | `value`                               | The text shown in the input                                                             |
+| `errorMessage`       | `validationMessage` on `<Field>`      |                                                                                         |
+| `styles`             | `className` + `makeStyles`            |                                                                                         |
+| `theme`              | `FluentProvider`                      |                                                                                         |
+| `componentRef`       | `ref`                                 |                                                                                         |

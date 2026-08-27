@@ -55,19 +55,47 @@ Move `menuProps.items` into `MenuItem` children and migrate menu open state,
 checked items, callbacks, and positioning to the corresponding `Menu` APIs.
 See the [Menu migration guide](/docs/concepts-migration-from-v8-components-menu-migration--docs).
 
+### Split menu buttons
+
+`SplitButton` contains two buttons. Pass the `MenuTrigger` render-function
+props specifically to its `menuButton` slot; do not wrap the whole
+`SplitButton` as a normal trigger. Wrapping the whole component attaches menu
+behavior to its outer element and can make the primary action open the menu.
+
+```tsx
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import type { MenuButtonProps } from '@fluentui/react-components';
+
+<Menu positioning="below-end">
+  <MenuTrigger disableButtonEnhancement>
+    {(triggerProps: MenuButtonProps) => (
+      <SplitButton primaryActionButton={{ onClick: saveDocument }} menuButton={triggerProps}>
+        Save
+      </SplitButton>
+    )}
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem onClick={saveAsCopy}>Save as copy</MenuItem>
+      <MenuItem onClick={saveAsTemplate}>Save as template</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>;
+```
+
 ## Button Variant Mapping
 
-| v8 Button variant    | v9 Button variant                        |
-| -------------------- | ---------------------------------------- |
-| DefaultButton        | Button                                   |
-| ActionButton         | Button appearance="transparent"          |
-| CommandButton        | Button                                   |
-| CommandBarButton     | Button                                   |
-| CompoundButton       | CompoundButton                           |
-| ContextualMenuButton | Menu composition with MenuButton trigger |
-| PrimaryButton        | Button appearance="primary"              |
-| Button split         | SplitButton                              |
-| Button toggle        | ToggleButton                             |
+| v8 Button variant    | v9 Button variant                                    |
+| -------------------- | ---------------------------------------------------- |
+| DefaultButton        | Button                                               |
+| ActionButton         | Button appearance="transparent"                      |
+| CommandButton        | Button                                               |
+| CommandBarButton     | Button                                               |
+| CompoundButton       | CompoundButton                                       |
+| ContextualMenuButton | Menu composition with MenuButton trigger             |
+| PrimaryButton        | Button appearance="primary"                          |
+| Button split         | SplitButton with `MenuTrigger` props on `menuButton` |
+| Button toggle        | ToggleButton                                         |
 
 ## Prop Mapping
 
@@ -108,7 +136,7 @@ See the [Menu migration guide](/docs/concepts-migration-from-v8-components-menu-
 | secondaryText            | (use CompoundButton secondaryContent)                                        |
 | split                    | (use SplitButton)                                                            |
 | splitButtonAriaLabel     | HTML aria-label                                                              |
-| splitButtonMenuProps     | (use Menu and SplitButton)                                                   |
+| splitButtonMenuProps     | `Menu` plus `MenuTrigger` render props on `SplitButton.menuButton`           |
 | styles                   | (use makeStyles and className)                                               |
 | text                     | children                                                                     |
 | theme                    | (use FluentProvider)                                                         |

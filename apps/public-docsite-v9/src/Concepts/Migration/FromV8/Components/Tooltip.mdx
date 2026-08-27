@@ -14,6 +14,9 @@ verified Fluent triggers support this. Custom components generally need
 `React.forwardRef` and prop forwarding. The trigger receives the necessary
 ARIA attributes.
 
+v8 tooltips show a beak by default, while v9 `Tooltip` defaults to no arrow.
+Add `withArrow={true}` when preserving the v8 visual treatment.
+
 ## Examples
 
 ### Basic Migration
@@ -32,9 +35,9 @@ import { DefaultButton } from '@fluentui/react';
 The equivalent v9 usage is:
 
 ```tsx
-import { Tooltip, Button } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 
-<Tooltip content="This button deletes the item" relationship="description" positioning="below">
+<Tooltip content="This button deletes the item" relationship="description" positioning="below" withArrow>
   <Button>Delete</Button>
 </Tooltip>;
 ```
@@ -144,7 +147,7 @@ Note: For icon-only buttons where the tooltip is the accessible name, use `relat
 | `calloutProps`         | —                          | No direct equivalent; use `positioning` for placement |
 | `hostClassName`        | —                          | Removed                                               |
 | `directionalHintFixed` | —                          | Use `positioning` with an offset                      |
-| `isBeakVisible`        | `withArrow`                | `withArrow={true}` shows the arrow                    |
+| `isBeakVisible`        | `withArrow`                | v8 defaults to `true`; v9 defaults to `false`         |
 | `beakWidth`            | —                          | Removed                                               |
 | `onRenderContent`      | `content` slot             | Pass ReactNode to `content`                           |
 | `styles`               | `className` + `makeStyles` |                                                       |

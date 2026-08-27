@@ -67,6 +67,36 @@ import {
 </Dialog>;
 ```
 
+### Dialogs with forms or complex content
+
+By default, v9 uses the complete `DialogContent` as the dialog's accessible
+description. That is appropriate when the content is only the short v8
+`subText`, as above. When `DialogContent` also contains fields, lists, or other
+interactive content, point `DialogSurface` at only the migrated `subText` so a
+screen reader does not announce the whole form as the description:
+
+```tsx
+import { DialogBody, DialogContent, DialogSurface, DialogTitle, Field, Input, useId } from '@fluentui/react-components';
+
+function RenameDialogContent() {
+  const descriptionId = useId('rename-description');
+
+  return (
+    <DialogSurface aria-describedby={descriptionId}>
+      <DialogBody>
+        <DialogTitle>Rename document</DialogTitle>
+        <DialogContent>
+          <p id={descriptionId}>Enter a new document name.</p>
+          <Field label="Name">
+            <Input />
+          </Field>
+        </DialogContent>
+      </DialogBody>
+    </DialogSurface>
+  );
+}
+```
+
 ### Modal → Dialog
 
 v8 `Modal` also maps to v9 `Dialog`. Replace `isOpen` with `open`, use
@@ -77,20 +107,20 @@ required dismissal behavior.
 
 ### IDialogProps → DialogProps
 
-| v8                              | v9                                          | Notes                                        |
-| ------------------------------- | ------------------------------------------- | -------------------------------------------- |
-| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`             |
-| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close |
-| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                    |
-| `dialogContentProps.subText`    | `<DialogContent>`                           | JSX child                                    |
-| `dialogContentProps.type`       | `modalType` on `<Dialog>`                   | See table above                              |
-| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                              |
-| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                              |
-| `modalProps.isBlocking`         | `modalType`                                 | Normal blocking maps to `"modal"`            |
-| `modalProps.layerProps`         | —                                           | Not supported                                |
-| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                              |
-| `styles`                        | `className` + `makeStyles`                  |                                              |
-| `theme`                         | `FluentProvider`                            |                                              |
+| v8                              | v9                                          | Notes                                                         |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------- |
+| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`                              |
+| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close                  |
+| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                                     |
+| `dialogContentProps.subText`    | `<DialogContent>` + `aria-describedby`      | Give only the short description an ID when content is complex |
+| `dialogContentProps.type`       | `modalType` on `<Dialog>`                   | See table above                                               |
+| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                                               |
+| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                                               |
+| `modalProps.isBlocking`         | `modalType`                                 | Normal blocking maps to `"modal"`                             |
+| `modalProps.layerProps`         | —                                           | Not supported                                                 |
+| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                                               |
+| `styles`                        | `className` + `makeStyles`                  |                                                               |
+| `theme`                         | `FluentProvider`                            |                                                               |
 
 ### IModalProps → DialogProps
 

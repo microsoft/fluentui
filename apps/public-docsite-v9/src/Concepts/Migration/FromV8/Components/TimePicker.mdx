@@ -22,6 +22,11 @@ If the v8 experience is a general-purpose `ComboBox`, migrate it to the v9
 `Combobox` instead. `TimePickerCompat` is for time-specific selection and
 freeform entry.
 
+`@fluentui/react-timepicker-compat` is a separate package; add it as a direct
+application dependency before importing `TimePicker`. If the package cannot be
+added, preserve the app-generated options with `Combobox` and `Option` from
+`@fluentui/react-components` as described below.
+
 ## Examples
 
 ### Basic Migration
@@ -65,6 +70,204 @@ Read the selected value from the callback data, not from the event target:
 Freeform migrations should handle those states explicitly instead of silently
 accepting an unparseable value.
 
+### Direct Combobox fallback
+
+When preserving a custom parser or an app-specific option model, keep the
+existing parse/format functions and commit unmatched text explicitly:
+
+```tsx
+import * as React from 'react';
+import { Combobox, Option } from '@fluentui/react-components';
+
+type TimeOption = { key: string; date: Date };
+const timeOptions: TimeOption[] = createTimeOptions();
+
+function CustomTimePicker({ preserveV8InlineAutocomplete = true }: Props) {
+  const [selectedKey, setSelectedKey] = React.useState('');
+  const [inputValue, setInputValue] = React.useState(formatTime(initialTime));
+  const [open, setOpen] = React.useState(false);
+  const committed = React.useRef({
+    selectedKey: '',
+    inputValue: formatTime(initialTime),
+  });
+  const dirty = React.useRef(false);
+  const keyboardNavigated = React.useRef(false);
+  const activeOptionText = React.useRef<string | undefined>(undefined);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const comboboxRootRef = React.useRef<HTMLDivElement>(null);
+  const optionsByKey = React.useMemo(() => new Map(timeOptions.map(option => [option.key, option])), [timeOptions]);
+
+  const activeOptionMatchesInput = (inputValue: string) => {
+    const normalizedActiveText = activeOptionText.current?.toLocaleLowerCase();
+    const normalizedInput = inputValue.toLocaleLowerCase();
+    return normalizedActiveText === normalizedInput;
+  };
+
+  const findExactOption = (text: string) =>
+    timeOptions.find(option => formatTime(option.date).toLocaleLowerCase() === text.toLocaleLowerCase());
+
+  const findPrefixOption = (text: string) =>
+    text
+      ? timeOptions.find(option => formatTime(option.date).toLocaleLowerCase().startsWith(text.toLocaleLowerCase()))
+      : undefined;
+
+  const selectTimeOption = (option: (typeof timeOptions)[number]) => {
+    const formatted = formatTime(option.date);
+    committed.current = { selectedKey: option.key, inputValue: formatted };
+    setSelectedKey(option.key);
+    setInputValue(formatted);
+    onTimeChange(option.date);
+  };
+
+  const restoreCommitted = () => {
+    dirty.current = false;
+    keyboardNavigated.current = false;
+    setSelectedKey(committed.current.selectedKey);
+    setInputValue(committed.current.inputValue);
+  };
+
+  const commitText = (text: string) => {
+    if (!dirty.current) {
+      return;
+    }
+    dirty.current = false;
+    keyboardNavigated.current = false;
+    setOpen(false);
+
+    const matchingOption = findExactOption(text);
+    if (matchingOption) {
+      selectTimeOption(matchingOption);
+      return;
+    }
+
+    const parsed = parseTime(text);
+    if (!parsed || !isWithinBounds(parsed)) {
+      setSelectedKey(committed.current.selectedKey);
+      setInputValue(committed.current.inputValue);
+      return;
+    }
+
+    const formatted = formatTime(parsed);
+    const normalizedOption = findExactOption(formatted);
+    if (normalizedOption) {
+      selectTimeOption(normalizedOption);
+      return;
+    }
+    committed.current = { selectedKey: '', inputValue: formatted };
+    setSelectedKey('');
+    setInputValue(formatted);
+    onTimeChange(parsed);
+  };
+
+  return (
+    <Combobox
+      ref={inputRef}
+      root={{ ref: comboboxRootRef }}
+      inlinePopup
+      freeform
+      open={open}
+      value={inputValue}
+      selectedOptions={selectedKey ? [selectedKey] : []}
+      onOpenChange={(_, data) => setOpen(data.open)}
+      onActiveOptionChange={(_, data) => {
+        activeOptionText.current = data.nextOption?.text;
+      }}
+      onChange={event => {
+        const typedValue = event.target.value;
+        const inputEvent = event.nativeEvent as InputEvent;
+        const isDeletion = inputEvent.inputType?.startsWith('delete');
+        const caretAtEnd = event.target.selectionStart === typedValue.length;
+        const prefixOption = findPrefixOption(typedValue);
+        dirty.current = true;
+        keyboardNavigated.current = false;
+        activeOptionText.current = prefixOption ? formatTime(prefixOption.date) : undefined;
+        setSelectedKey('');
+        const completion = preserveV8InlineAutocomplete && !isDeletion && caretAtEnd ? prefixOption : undefined;
+        setInputValue(completion ? formatTime(completion.date) : typedValue);
+        const completedValue = completion ? formatTime(completion.date) : '';
+        if (completedValue.length > typedValue.length) {
+          requestAnimationFrame(() => inputRef.current?.setSelectionRange(typedValue.length, completedValue.length));
+        }
+      }}
+      onOptionSelect={(_, data) => {
+        const option = data.optionValue ? optionsByKey.get(data.optionValue) : undefined;
+        if (option) {
+          dirty.current = false;
+          selectTimeOption(option);
+        }
+      }}
+      onKeyDownCapture={event => {
+        if (event.key === 'Escape' && dirty.current) {
+          restoreCommitted();
+          return;
+        }
+        if (['ArrowDown', 'ArrowUp', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+          keyboardNavigated.current = true;
+          return;
+        }
+        if (
+          (event.key === 'Enter' || event.key === 'Tab') &&
+          dirty.current &&
+          !keyboardNavigated.current &&
+          !activeOptionMatchesInput(event.currentTarget.value)
+        ) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+          }
+          event.stopPropagation();
+          commitText(event.currentTarget.value);
+        }
+      }}
+      onBlur={event => {
+        const nextTarget = event.relatedTarget as Node | null;
+        if (!nextTarget || !comboboxRootRef.current?.contains(nextTarget)) {
+          commitText(inputValue);
+        }
+      }}
+    >
+      {timeOptions.map(option => (
+        <Option key={option.key} value={option.key} text={formatTime(option.date)}>
+          {formatTime(option.date)}
+        </Option>
+      ))}
+    </Combobox>
+  );
+}
+```
+
+The base v9 `Combobox` does not call `onOptionSelect` for unmatched typed text.
+The `onChange` handler only controls the displayed input; it does not commit a
+domain value. Preserve the v8 callback behavior by parsing on Enter and blur,
+normalizing valid input, and reverting both `value` and `selectedOptions` for
+invalid input. Resolve an untrimmed, case-normalized exact option match before
+committing parsed freeform text. A prefix remains an option match only while
+the completed suffix remains in the input; deletion or a mid-string edit sends
+the remaining text through the freeform path. Track a dirty ref so Enter or Tab
+followed by blur, option selection followed by blur, and untouched blur commit
+at most once. Use `onKeyDownCapture` for unmatched Enter and Tab input because
+the base Combobox may keep an unrelated option active and process it before a
+normal `onKeyDown` handler. Prevent the default action for Enter, but let Tab
+continue moving focus. Let unedited Enter/Tab, explicit keyboard navigation,
+and matching active options reach the base handler. Restore the last committed
+input and selection on Escape, then let the base handler close the popup. Use
+an inline popup and check focus against the complete Combobox root so moving
+focus into the listbox does not commit prematurely.
+
+Set `preserveV8InlineAutocomplete` only when the source used
+`autoComplete="on"`. With v8 `autoComplete="off"`, accept only an exact option
+text match; a prefix must remain a freeform value. For `"on"`, also replace the
+typed prefix with the first matching formatted option and select the completed
+suffix through the forwarded input ref, as in the example. Skip completion for
+deletions and edits away from the end of the input.
+
+Because capturing unmatched Enter bypasses the base Combobox close action,
+control `open` and close the popup explicitly after committing.
+
+The v8 `autoComplete="on"` prop provides inline option completion. The v9
+`Combobox` prop with the same name is the native HTML autocomplete attribute,
+not a migration of that behavior. Add controlled matching/completion logic if
+the original inline completion is required.
+
 ### Localization
 
 Use `hourCycle` to match the user's locale and
@@ -85,6 +288,7 @@ the displayed text, selected value, and error state remain consistent.
 | `onChange`                        | `onTimeChange(event, data)`                                         |
 | Custom option text                | `formatDateToTimeString(date)`                                      |
 | Custom freeform parser            | `parseTimeStringToDate(time)`                                       |
+| v8 inline `autoComplete`          | Custom controlled matching/completion logic                         |
 | 12/24-hour option generation      | `hourCycle`                                                         |
 | Options with seconds              | `showSeconds`                                                       |
 | Callout positioning               | `positioning`, `inlinePopup`, and `mountNode`                       |

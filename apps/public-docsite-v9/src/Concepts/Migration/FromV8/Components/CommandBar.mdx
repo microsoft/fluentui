@@ -120,6 +120,57 @@ const FormattingToolbar = () => {
 Wrap a `ToolbarButton` in `MenuTrigger` when a v8 item has `subMenuProps`;
 render the submenu entries as `MenuItem` children.
 
+For an item with both `split` and `subMenuProps`, use the `MenuTrigger`
+render-function form and spread its props onto `SplitButton.menuButton`. Do not
+wrap the whole `SplitButton`; its `primaryActionButton` must remain independent
+from the menu trigger. See the
+[Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs)
+for the complete composition.
+
+When that split item moves into the overflow menu, preserve both actions with
+`MenuSplitGroup`; replacing it with one submenu-only `MenuItem` drops the v8
+primary action:
+
+```tsx
+import { Menu, MenuItem, MenuList, MenuPopover, MenuSplitGroup, MenuTrigger } from '@fluentui/react-components';
+import { ArrowDownloadRegular } from '@fluentui/react-icons';
+
+<MenuList>
+  {/* Other overflowed commands */}
+  <Menu>
+    <MenuSplitGroup>
+      <MenuItem icon={<ArrowDownloadRegular />} onClick={downloadDefault}>
+        Download
+      </MenuItem>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuItem aria-label="More download options" />
+      </MenuTrigger>
+    </MenuSplitGroup>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem onClick={downloadPdf}>As PDF</MenuItem>
+        <MenuItem onClick={downloadDocument}>As Word</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+</MenuList>;
+```
+
+### Icon-only commands
+
+v8 `CommandBar` automatically shows a `TooltipHost` for `iconOnly` items whose
+text or tooltip content is defined. Preserve both discoverability and the
+accessible name with a v9 tooltip:
+
+```tsx
+<Tooltip content="Information" relationship="label">
+  <ToolbarButton icon={<InfoRegular />} />
+</Tooltip>
+```
+
+Do not add a second `aria-label` when `relationship="label"` supplies the
+accessible name.
+
 ### Overflow Handling
 
 Wrap the toolbar in `Overflow`, wrap each measured item in `OverflowItem`,
@@ -127,33 +178,115 @@ and compose the overflow menu with `useOverflowMenu` and
 `useIsOverflowItemVisible`. Unlike v8, overflow items are detected rather than
 provided as a separate static array.
 
+When `farItems` must remain visible, keep them outside the element measured by
+`Overflow`. The measured primary region should flex into the space left by the
+fixed far-items region:
+
+```tsx
+import { Overflow, OverflowItem, Toolbar, ToolbarButton, ToolbarDivider, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    width: '100%',
+  },
+  primary: {
+    display: 'flex',
+    flexGrow: 1,
+    minWidth: 0,
+    overflow: 'hidden',
+  },
+  farItems: {
+    display: 'flex',
+    flexShrink: 0,
+  },
+});
+
+function MigratedCommandBar() {
+  const styles = useStyles();
+
+  return (
+    <Toolbar className={styles.root} aria-label="Document commands">
+      <Overflow>
+        <div className={styles.primary}>
+          {items.map(item => (
+            <OverflowItem key={item.id} id={item.id}>
+              <ToolbarButton icon={item.icon} onClick={item.onClick}>
+                {item.text}
+              </ToolbarButton>
+            </OverflowItem>
+          ))}
+          <OverflowMenuButton items={items} />
+        </div>
+      </Overflow>
+
+      <ToolbarDivider />
+      <div className={styles.farItems}>
+        {farItems.map(item => (
+          <ToolbarButton key={item.id} icon={item.icon} onClick={item.onClick}>
+            {item.text}
+          </ToolbarButton>
+        ))}
+      </div>
+    </Toolbar>
+  );
+}
+```
+
+`Overflow` calculates occupied width from registered `OverflowItem` elements,
+registered dividers, and its registered overflow-menu trigger. An unregistered
+far item placed inside the measured element is visible but is not included in
+that calculation, so primary commands can overflow at the wrong widths. Either
+use the sibling layout above or register an always-visible command as
+`<OverflowItem pinned>` so its width is measured. See the
+[Overflow migration guide](/docs/concepts-migration-from-v8-components-overflowset-migration--docs)
+for the menu implementation.
+
 ## Prop Mapping
 
 ### ICommandBarProps → ToolbarProps
 
-| v8                 | v9                                      | Notes                                                     |
-| ------------------ | --------------------------------------- | --------------------------------------------------------- |
-| `items`            | `children` (`ToolbarButton`, etc.)      | JSX children replace the items array                      |
-| `overflowItems`    | `Overflow` + `OverflowItem` pattern     | Compose measured items and an overflow menu               |
-| `farItems`         | `ToolbarDivider` + `marginLeft: 'auto'` | Push items to the far end with a styled divider or spacer |
-| `buttonAs`         | —                                       | Wrap in `ToolbarButton` directly                          |
-| `overflowButtonAs` | Custom `ToolbarButton` in overflow menu | Use it as the overflow menu trigger                       |
-| `className`        | `className`                             |                                                           |
-| `styles`           | `className` + `makeStyles`              |                                                           |
-| `theme`            | `FluentProvider`                        |                                                           |
+| v8                 | v9                                      | Notes                                                                    |
+| ------------------ | --------------------------------------- | ------------------------------------------------------------------------ |
+| `items`            | `children` (`ToolbarButton`, etc.)      | JSX children replace the items array                                     |
+| `overflowItems`    | `Overflow` + `OverflowItem` pattern     | Compose measured items and an overflow menu                              |
+| `farItems`         | Fixed sibling region or pinned items    | Keep outside the measured region, or register with `OverflowItem pinned` |
+| `buttonAs`         | —                                       | Wrap in `ToolbarButton` directly                                         |
+| `overflowButtonAs` | Custom `ToolbarButton` in overflow menu | Use it as the overflow menu trigger                                      |
+| `className`        | `className`                             |                                                                          |
+| `styles`           | `className` + `makeStyles`              |                                                                          |
+| `theme`            | `FluentProvider`                        |                                                                          |
 
 ### ICommandBarItemProps → ToolbarButtonProps
 
-| v8 item prop   | v9                              | Notes                                                                                                 |
-| -------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `text`         | `children`                      | Move to JSX children                                                                                  |
-| `key`          | `key`                           | React key on the JSX element                                                                          |
-| `iconProps`    | `icon` slot                     | Pass `<IconComponent />`                                                                              |
-| `onClick`      | `onClick`                       |                                                                                                       |
-| `disabled`     | `disabled`                      |                                                                                                       |
-| `checked`      | `checkedValues` on `Toolbar`    | Use a `ToolbarToggleButton` with `name` and `value`; update the named group in `onCheckedValueChange` |
-| `subMenuProps` | Wrap in `Menu` + `MenuTrigger`  | Render submenu entries as `MenuItem` children                                                         |
-| `split`        | `SplitButton`                   | See the [Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs)  |
-| `iconOnly`     | No `children`, add `aria-label` | Keep `icon` slot, omit text children                                                                  |
-| `ariaLabel`    | `aria-label`                    |                                                                                                       |
-| `styles`       | `className` + `makeStyles`      |                                                                                                       |
+| v8 item prop       | v9                               | Notes                                                                                                                                      |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `text`             | `children`                       | Move to JSX children                                                                                                                       |
+| `key`              | `key`                            | React key on the JSX element                                                                                                               |
+| `iconProps`        | `icon` slot                      | Pass `<IconComponent />`                                                                                                                   |
+| `onClick`          | `onClick`                        |                                                                                                                                            |
+| `disabled`         | `disabled`                       |                                                                                                                                            |
+| `checked`          | `checkedValues` on `Toolbar`     | Use a `ToolbarToggleButton` with `name` and `value`; update the named group in `onCheckedValueChange`                                      |
+| `subMenuProps`     | Wrap in `Menu` + `MenuTrigger`   | Render submenu entries as `MenuItem` children                                                                                              |
+| `split`            | `SplitButton`                    | Put `MenuTrigger` render props on `menuButton`; see the [Button guide](/docs/concepts-migration-from-v8-components-button-migration--docs) |
+| `iconOnly`         | No `children`; wrap in `Tooltip` | Use `relationship="label"` to preserve v8's visible tooltip and accessible name                                                            |
+| `ariaLabel`        | `aria-label`                     |                                                                                                                                            |
+| `tooltipHostProps` | `Tooltip` props                  | Map content, relationship, positioning, and delays                                                                                         |
+| `styles`           | `className` + `makeStyles`       |                                                                                                                                            |
+
+v8 `iconProps.iconName` values use the MDL2 catalog; do not replace them with
+one generic icon. Choose the closest semantic Fluent System Icon from
+`@fluentui/react-icons` and verify each mapping individually. Common CommandBar
+mappings include:
+
+| v8 MDL2 name    | v9 icon                   |
+| --------------- | ------------------------- |
+| `TeamsLogo`     | `PeopleTeamRegular`       |
+| `PDF`           | `DocumentPdfRegular`      |
+| `WordDocument`  | `DocumentTextRegular`     |
+| `ExcelDocument` | `DocumentTableRegular`    |
+| `MoveToFolder`  | `FolderArrowRightRegular` |
+
+These are semantic replacements, not glyph-identical aliases. Preserve
+distinct source icons for distinct actions, and consult the current icon
+catalog when no direct name appears in this table.
