@@ -7,8 +7,14 @@
    Tooltip.module.css; only what differs here is restated. */
 
 @layer fui.components.l1 {
+  /* No box-sizing here, deliberately: Griffel's surface declares none and so computes content-box,
+     and consumers that pin a length against it (InfoButton's max-width, AvatarGroupPopover's width)
+     are authoring Griffel's numbers for that box. `max-h-none`, `max-w-none` and `overflow-visible`
+     are not preferences either — they undo native <dialog> UA defaults that would otherwise clamp
+     the surface and clip the arrow. Nor is there a `cursor`: Griffel's Popover authors none, so the
+     body copy keeps its I-beam. Tooltip is the component that authors `cursor: default`. */
   .root {
-    @apply box-border max-h-none max-w-none cursor-default overflow-visible rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+    @apply max-h-none max-w-none overflow-visible rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
 
     /* Griffel clamps floating-ui's arrow at 2 × borderRadiusMedium. */
     --fui-positioning-arrow-cross: 8px;

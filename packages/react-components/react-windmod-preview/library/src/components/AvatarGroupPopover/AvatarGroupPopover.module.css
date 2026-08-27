@@ -25,13 +25,11 @@
     @apply m-0 flex list-none flex-col p-0;
   }
 
-  /* `box-content` is load-bearing, not a preference: these four lengths are Griffel's own numbers,
-     and Griffel authors them against the browser's default content-box — its popover surface
-     declares no box-sizing, and the theme ships no reset either. The border-box comes from
-     PopoverSurface.module.css's own `.root`, which would otherwise fold the 8px padding and the
-     1px border into all three, rendering a surface 18px narrower and shorter than the Griffel one. */
+  /* The three lengths are Griffel's own numbers, authored against the content-box the popover
+     surface computes on both libraries. A box-sizing override here would fold the 8px padding and
+     the 1px border into all three and render the surface 18px narrower and shorter than Griffel's. */
   .popover-surface {
-    @apply box-content max-h-220 min-h-80 w-220 overflow-x-hidden overflow-y-scroll px-horizontal-s py-vertical-s;
+    @apply max-h-220 min-h-80 w-220 overflow-x-hidden overflow-y-scroll px-horizontal-s py-vertical-s;
   }
 
   .border-thin {
