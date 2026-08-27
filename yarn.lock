@@ -6155,11 +6155,13 @@ __metadata:
   dependencies:
     "@fluentui/react-headless-components-preview": "npm:^0.2.5"
     "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-jsx-runtime": "npm:^9.4.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
     "@fluentui/react-tailwind-theme-preview": "npm:^9.0.0-alpha.0"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
+    use-sync-external-store: "npm:^1.2.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -32503,7 +32505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.4.0":
+"use-sync-external-store@npm:^1.2.0, use-sync-external-store@npm:^1.4.0":
   version: 1.6.0
   resolution: "use-sync-external-store@npm:1.6.0"
   peerDependencies:
