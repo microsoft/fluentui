@@ -1,9 +1,8 @@
 type TsOriginalCompilerOptions = import('typescript').CompilerOptions;
-interface CompilerOptions
-  extends Omit<
-    RemoveRecordIndexSignature<TsOriginalCompilerOptions>,
-    'module' | 'target' | 'jsx' | 'moduleResolution'
-  > {
+interface CompilerOptions extends Omit<
+  RemoveRecordIndexSignature<TsOriginalCompilerOptions>,
+  'module' | 'target' | 'jsx' | 'moduleResolution'
+> {
   module?: keyof typeof import('typescript').ModuleKind;
   target?: keyof typeof import('typescript').ScriptTarget;
   jsx?: 'none' | 'preserve' | 'react' | 'react-native' | 'react-jsx' | 'react-jsxdev';
@@ -30,6 +29,10 @@ export interface PackageJson {
   main: string;
   module?: string;
   /**
+   * Marks the package as free of side effects so bundlers can tree-shake unused exports.
+   */
+  sideEffects?: boolean | string[];
+  /**
    * Vite and Webpack(sass-loader) consume this field
    * @see https://github.com/microsoft/fluentui/pull/27274
    */
@@ -48,6 +51,7 @@ export interface PackageJson {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
+  peerDependenciesMeta?: Record<string, { optional?: boolean }>;
   exports?: Record<
     string,
     | string

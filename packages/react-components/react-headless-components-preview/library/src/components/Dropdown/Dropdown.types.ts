@@ -1,4 +1,5 @@
 import type { DropdownBaseHookState, DropdownBaseHookProps } from '@fluentui/react-combobox';
+import type { PositioningShorthand } from '../../positioning';
 
 export type {
   DropdownSlots,
@@ -7,7 +8,9 @@ export type {
   DropdownOpenEvents,
 } from '@fluentui/react-combobox';
 
-export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
+export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
+  positioning?: PositioningShorthand;
+};
 
 export type DropdownState = DropdownBaseHookState & {
   root: DropdownBaseHookState['root'] & {

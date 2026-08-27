@@ -25,35 +25,17 @@ no longer uses is not reported.
 
 ## Usage
 
-Add the tool as a devDependency of the package to check and give it a target:
+Add a `bundle-isolation.config.json` to the package root. That is the whole setup — the workspace plugin infers the
+`verify-bundle-isolation` target from the presence of that file, the same way it infers `bundle-size` from a
+`bundle-size/` directory. Nothing to add to `project.json`, and the tool does not need to be a devDependency of the
+package.
 
-```jsonc
-// package.json
-{ "devDependencies": { "@fluentui/verify-bundle-isolation": "*" } }
+```
+yarn nx run <project>:verify-bundle-isolation
 ```
 
-```jsonc
-// project.json
-{
-  "targets": {
-    "verify-bundle-isolation": {
-      "cache": true,
-      "dependsOn": ["build", "^build"],
-      "command": "yarn run -T verify-bundle-isolation",
-      "options": { "cwd": "{projectRoot}" },
-      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
-      "outputs": ["{projectRoot}/dist/bundle-isolation"]
-    }
-  }
-}
-```
-
-The check must run against built output, hence `dependsOn`. It reports an error if bundling resolves to package sources
-instead, because the verdict would not reflect what ships.
-
-`^default` is what makes the cache correct: this task's result depends on every dependency's files, and on the tool
-itself, which is a dependency by virtue of the devDependency. Replacing it with a hand-written input list silently
-serves stale verdicts after a dependency changes.
+The target runs against built output. Bundling that resolves to package sources is reported as an error, because the
+verdict would not reflect what ships.
 
 The repo pins webpack to a single version through `resolutions` in the root `package.json`. That is deliberate - the
 verdict is only meaningful if it comes from the same bundler that produces the bundle-size numbers, and webpack 5.109

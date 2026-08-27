@@ -89,7 +89,6 @@
 :host([layout='multiline']) ::slotted([slot='dismiss']) {
   align-items: start;
   height: 100%;
-  padding-block-start: var(--spacingVerticalS);
 }
 
 ::slotted(*) {

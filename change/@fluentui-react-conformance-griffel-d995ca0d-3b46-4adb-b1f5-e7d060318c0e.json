@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: declare react-dom peer dependency (used at runtime), remove unused @types/react-dom, mark @types/react as optional",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

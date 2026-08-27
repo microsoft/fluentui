@@ -1,4 +1,5 @@
 import type { BaseComboboxState, BaseComboboxProps } from '@fluentui/react-combobox';
+import type { PositioningShorthand } from '../../positioning';
 
 export type {
   ComboboxSlots,
@@ -7,7 +8,9 @@ export type {
   ComboboxOpenEvents,
 } from '@fluentui/react-combobox';
 
-export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'>;
+export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
+  positioning?: PositioningShorthand;
+};
 
 export type ComboboxState = BaseComboboxState & {
   root: {

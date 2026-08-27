@@ -13,6 +13,9 @@ export function isConformant<TProps = {}>(
 ): void {
   const name = kebabCase(testInfo.displayName);
 
+  // Subcomponents have no top-level entry file and therefore no export map entry of their own.
+  const isSubcomponent = Boolean(testInfo.disabledTests?.includes('has-top-level-file-extra'));
+
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
@@ -23,6 +26,7 @@ export function isConformant<TProps = {}>(
       'has-top-level-file',
       // Headless components don't have static classnames, so we need to disable this test
       'component-has-static-classnames-object',
+      ...(isSubcomponent ? ['export-map-entry-exists'] : []),
     ],
     disableTypeTests: true,
     extraTests: {
@@ -36,17 +40,23 @@ export function isConformant<TProps = {}>(
 
       // This test ensures that the component has an export map entry in the package.json file,
       // which is required for proper module resolution and type definitions.
-      'export-map-entry-exists': () => {
+      // Note: the single parameter is required - react-conformance only runs extra tests with arity 1
+      // when `disableTypeTests` is enabled.
+      'export-map-entry-exists': (_options: IsConformantOptions<TProps>) => {
         const packageJSON = require('../../package.json');
 
         it('component has export map entry in package.json', () => {
           const exportEntry = `./${name}`;
 
           expect(packageJSON.exports[exportEntry]).toEqual({
-            types: `./dist/${name}.d.ts`,
-            node: `./lib-commonjs/${name}.js`,
-            require: `./lib-commonjs/${name}.js`,
-            import: `./lib/${name}.js`,
+            import: {
+              types: `./dist/${name}.d.ts`,
+              default: `./lib/${name}.js`,
+            },
+            require: {
+              types: `./dist/${name}.d.cts`,
+              default: `./lib-commonjs/${name}.cjs`,
+            },
           });
         });
       },
