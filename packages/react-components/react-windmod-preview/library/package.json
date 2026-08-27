@@ -44,6 +44,7 @@
   "imports": {
     "#theme": "./src/theme.css"
   },
+  "//exports": "HAND-AUTHORED ASSET SUBPATHS — ./styles.css and ./variants.css are not generated from src/*.ts and no generator knows about them. The `export-maps-sync` Nx generator (tools/workspace-plugin, wired into CI as `yarn nx sync:check`) REBUILDS this whole map from project.json's metadata.exportMap and keeps nothing else, so it would DELETE both. This package is out of its scope today ONLY because of `private: true` above — project.json already carries the required `vNext` + `platform:web` tags. Before un-privating this package for publish, either teach the generator to preserve non-source entries or the two CSS subpaths vanish; ./variants.css is a documented public export.",
   "exports": {
     ".": {
       "import": {

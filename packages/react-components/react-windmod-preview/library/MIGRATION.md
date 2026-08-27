@@ -13,10 +13,11 @@ no `@griffel/react` in the dependency graph, and no `makeStyles` to migrate.
 
 The goal is a drop-in reskin, not a redesign. Components render the same DOM and take the same props as
 their Griffel counterparts, and every shipped component is compared against its Griffel twin
-pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list grows with the package
-and lives in the VR harness's `scenes.json`, which also records any per-scene allowance. The one
-deliberate visual exception is documented under
-[Tooltip](#28-tooltips-arrow-sits-differently-on-corner-placements).
+pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list lives in the VR harness's
+`scenes.json` and grows with the package: **83 scenes, 70 of them at strict zero.** The remaining
+thirteen carry an explicit, individually ratified pixel allowance, each one recorded on its scene with
+the control that bounds it. They are enumerated in
+[Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
 > preview. APIs may change without notice and coverage is limited to the components the headless package
@@ -62,7 +63,7 @@ export const App = () => (
 
 The root barrel `@fluentui/react-windmod-preview` exports everything. Every component also has its own
 subpath, which is the recommended route for tree-shaking-sensitive apps. **A component subpath exports only
-that component** — there are no family barrels, so `CardHeader` comes from `./card-header`, not `./card`.
+that component** — so `CardHeader` comes from `./card-header`, not `./card`.
 
 ```tsx
 import { Button } from '@fluentui/react-windmod-preview/button';
@@ -71,7 +72,17 @@ import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
 import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
 ```
 
-The component subpaths, all kebab-case:
+**`./dialog` is the single exception.** `Dialog` and its six parts — `DialogTrigger`, `DialogSurface`,
+`DialogBody`, `DialogHeader`, `DialogTitle`, `DialogActions` — share one subpath rather than seven, and
+are the only components in the package without one of their own:
+
+```tsx
+import { Dialog, DialogSurface, DialogTitle, DialogActions } from '@fluentui/react-windmod-preview/dialog';
+```
+
+Every other family, `Drawer` and `Menu` and `Toast` included, is one subpath per component.
+
+**131 component subpaths**, all kebab-case:
 
 | Family        | Subpaths                                                                                                                                                                                    |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -82,8 +93,13 @@ The component subpaths, all kebab-case:
 | Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                                          |
 | Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                                   |
 | Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                                               |
+| Selection     | `./combobox` `./dropdown` `./listbox` `./option` `./option-group`                                                                                                                           |
 | Field & label | `./field` `./label` `./info-label` `./info-button`                                                                                                                                          |
+| Dialog        | `./dialog` — the whole family, see above                                                                                                                                                    |
+| Drawer        | `./drawer` `./inline-drawer` `./overlay-drawer` `./drawer-body` `./drawer-header` `./drawer-header-title` `./drawer-header-navigation` `./drawer-footer`                                    |
+| Menu          | `./menu` `./menu-trigger` `./menu-popover` `./menu-list` `./menu-item` `./menu-item-checkbox` `./menu-item-radio` `./menu-group` `./menu-group-header` `./menu-divider`                     |
 | Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                                          |
+| Toast         | `./toaster` `./toast` `./toast-title` `./toast-body` `./toast-footer`                                                                                                                       |
 | Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                                  |
 | People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                                                                      |
 | Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                                         |
@@ -97,13 +113,14 @@ The component subpaths, all kebab-case:
 | Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                           |
 | Provider      | `./fluent-provider`                                                                                                                                                                         |
 
-Three non-component subpaths:
+Four non-component subpaths:
 
-| Subpath          | What it is                                                                                            |
-| ---------------- | ----------------------------------------------------------------------------------------------------- |
-| `./styles.css`   | the compiled component stylesheet                                                                     |
-| `./variants.css` | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states |
-| `./package.json` | —                                                                                                     |
+| Subpath               | What it is                                                                                            |
+| --------------------- | ----------------------------------------------------------------------------------------------------- |
+| `./styles.css`        | the compiled component stylesheet                                                                     |
+| `./variants.css`      | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states |
+| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching   |
+| `./package.json`      | —                                                                                                     |
 
 If you were importing from an internal Fluent package directly (`@fluentui/react-button`,
 `@fluentui/react-overflow`, …), note that `@fluentui/no-restricted-imports` blocks that route; the barrel
@@ -130,7 +147,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Forty-four differences, each one a decision rather than a defect.
+Forty-eight differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -514,8 +531,9 @@ roughly **−36.6px / +35.0px** relative to Griffel. Surfaces also land on fract
 floating-ui writes integer transforms, a 0.047–0.375px offset that shifts glyph rasterization.
 
 Both CSS routes to close the arrow gap (`anchor-center`, an `anchor-size()` clamp) were measured and
-neither works. Edge-centred placements (`above`, `below`, `before`, `after`) are unaffected. This is the one
-component with a non-zero pixel allowance in the parity gate.
+neither works. Edge-centred placements (`above`, `below`, `before`, `after`) are unaffected. This is the
+mechanism behind four of the thirteen ratified pixel allowances — see
+[Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
 #### 29. The `AlphaSlider` checkerboard is inlined — it works offline
 
@@ -692,18 +710,75 @@ edge rather than shrinking. Cap it yourself when the option count is unbounded:
 <Combobox listbox={{ style: { maxHeight: '20rem', overflowY: 'auto' } }} />
 ```
 
+### Two places windmod renders more correctly than Griffel
+
+Both were found by the forced-colors survey and are invisible to every VR scene. In each case matching
+Griffel exactly would have meant importing a defect, so windmod keeps the correct rendering. Listed here
+so a pixel-diffing migration audit is not surprised by them.
+
+#### 47. A current `BreadcrumbButton` keeps its hover and press styling
+
+Griffel's cascade lets a later rule beat the current-item styling it evidently intends: under forced
+colors the current breadcrumb's hover and press states lose their system colours, and in normal mode its
+press state loses too (16 cells measured). windmod's layer order applies the current-item styling as
+written, so a pressed current breadcrumb looks the way the design intends. Matching Griffel would have
+required deliberately making a windmod rule lose in normal mode as well. No action needed.
+
+#### 48. Pressing a `Card` styles the card, not its descendants
+
+Griffel's compiled interaction selector is `.card:hover, .card :active` — the space before `:active` is a
+stray descendant combinator, so the pressed styling matches active _descendants_ instead of the pressed
+card (8 forced-colors cells measured). windmod authors `:active` on the card itself. Copying Griffel
+would have imported the typo; it is filed upstream instead. A windmod `Card` therefore shows a pressed
+state where a Griffel `Card` shows none.
+
+## Where the pixels are allowed to differ
+
+The parity gate is strict zero: pixelmatch at threshold 0, one differing pixel fails the scene. Seventy of
+the eighty-three scenes hold that unconditionally. The thirteen below carry a numeric `allowedStrictDiff`
+in `scenes.json`, each granted individually and each recorded with the control that bounds it. **No
+allowance is a tolerance band** — every one names a specific mechanism, and a diff that does not decompose
+the documented way fails the scene even when it sits under the ceiling.
+
+Two of the thirteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are strict
+zero, which is the strongest statement in the table — the CSS is exactly correct. The rest split into
+genuine geometry (survives software rasterization) and rows where the no-GPU mode is itself the noisier
+one and the GPU gate stays authoritative.
+
+| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                            | Under `--disable-gpu`                                                                                                        |
+| ----------------------------------------------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                   | **0 — completely compliant**                                                                                                 |
+| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                         | **0 — completely compliant**                                                                                                 |
+| `teaching-popover-placements`                         | 8883             | P        | 5824 px of decision-G arrow displacement plus 3059 px of the same rasterization as the row above.                                                                                                                                    | 5824 — the predicted arrow share survives                                                                                    |
+| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                 | 8107 — persists (positioning, not compositing)                                                                               |
+| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                              | 4219 — both mechanisms survive                                                                                               |
+| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                  | 4366 — arrow and fringe survive                                                                                              |
+| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                     | 1335 — persists in full, 0% GPU component                                                                                    |
+| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes. | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                |
+| `menu`, `menu-rtl`                                    | 413 / 409        | I        | The same top-layer compositing class as the TagPicker rows.                                                                                                                                                                          | `menu-rtl` regresses to 9486; `menu` is bimodal under the flag and carries no no-GPU expectation. **GPU gate authoritative** |
+
+**Why `--disable-gpu` is not simply a cleaner baseline.** Software rasterization does not put the two
+surfaces back on the same path — it puts them on a _different pair_ of paths. Shipped-green strict-zero
+control scenes (`combobox-open-ltr`, `dropdown-open-ltr`, …) measure 8964 under the flag with a
+byte-identical diff signature to the TagPicker and Menu rows, which is exactly how those rows are known to
+be harness noise rather than a windmod defect. A no-GPU number is also never the GPU number minus a
+component: both captures move, by roughly 43 000 px each.
+
+**None of this is consumer-visible.** Every row is a sub-pixel or few-pixel rendering artifact on one
+scene; the two libraries agree on layout, colour and type everywhere in the table. It is recorded here
+because a team taking the package on deserves to know precisely which pixels were signed off and on what
+evidence, and because a VR harness pointed at this package will reproduce these numbers.
+
 ## What is not shipped
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
 
 | Not shipped                                                                                         | Why                                                                                                                                     |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `Menu` and family                                                                                   | headless ships it, windmod has not reskinned it yet; keep it on `@fluentui/react-components`                                            |
-| `Dialog`, `Drawer`                                                                                  | as above                                                                                                                                |
-| `Combobox`, `Dropdown`, `Option`, `OptionGroup`                                                     | as above                                                                                                                                |
-| `Toast`/`Toaster`                                                                                   | as above                                                                                                                                |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
+| `TeachingPopoverCarousel` and its six family members                                                | headless ships them, windmod has not reskinned them yet (see [delta 45](#45-the-teachingpopover-carousel-is-not-shipped))               |
+| `MenuItemSwitch`, `MenuSplitGroup`                                                                  | headless ships both, windmod has not reskinned them yet; the other ten `Menu` subpaths all ship                                         |
 | `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |
 | `Persona`'s `presence` slot and `presenceOnly` prop                                                 | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                     |
 
