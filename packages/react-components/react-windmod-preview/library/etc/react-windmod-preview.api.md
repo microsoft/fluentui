@@ -17,6 +17,8 @@ import type { AccordionPanelState as AccordionPanelState_2 } from '@fluentui/rea
 import type { AccordionProps as AccordionProps_2 } from '@fluentui/react-headless-components-preview/accordion';
 import { AccordionSlots } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionState as AccordionState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { Alignment } from '@fluentui/react-headless-components-preview/positioning';
+import { ALIGNMENTS } from '@fluentui/react-headless-components-preview/positioning';
 import type { AlphaSliderProps as AlphaSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { AlphaSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { AlphaSliderState as AlphaSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
@@ -152,6 +154,7 @@ import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-compon
 import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
 import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getPlacementString } from '@fluentui/react-headless-components-preview/positioning';
 import type { ImageProps as ImageProps_2 } from '@fluentui/react-headless-components-preview/image';
 import { ImageSlots } from '@fluentui/react-headless-components-preview/image';
 import type { ImageState as ImageState_2 } from '@fluentui/react-headless-components-preview/image';
@@ -310,6 +313,13 @@ import { PopoverSurfaceSlots } from '@fluentui/react-headless-components-preview
 import type { PopoverSurfaceState as PopoverSurfaceState_2 } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverTriggerProps } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverTriggerState } from '@fluentui/react-headless-components-preview/popover';
+import { Position } from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningImperativeRef } from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningReturn } from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningShorthand } from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningShorthandValue } from '@fluentui/react-headless-components-preview/positioning';
+import { POSITIONS } from '@fluentui/react-headless-components-preview/positioning';
 import type { ProgressBarProps as ProgressBarProps_2 } from '@fluentui/react-headless-components-preview/progress-bar';
 import { ProgressBarSlots } from '@fluentui/react-headless-components-preview/progress-bar';
 import type { ProgressBarState as ProgressBarState_2 } from '@fluentui/react-headless-components-preview/progress-bar';
@@ -471,6 +481,7 @@ import { renderToolbarRadioButton } from '@fluentui/react-headless-components-pr
 import { renderToolbarRadioGroup } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { renderTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import { resolvePositioningShorthand } from '@fluentui/react-headless-components-preview/positioning';
 import type { SearchBoxProps as SearchBoxProps_2 } from '@fluentui/react-headless-components-preview/search-box';
 import { SearchBoxSlots } from '@fluentui/react-headless-components-preview/search-box';
 import type { SearchBoxState as SearchBoxState_2 } from '@fluentui/react-headless-components-preview/search-box';
@@ -762,6 +773,7 @@ import { usePopoverContext } from '@fluentui/react-headless-components-preview/p
 import { usePopoverContextValues } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
+import { usePositioning } from '@fluentui/react-headless-components-preview/positioning';
 import { useProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 import { useProvider } from '@fluentui/react-headless-components-preview/provider';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
@@ -908,6 +920,10 @@ export { AccordionSlots }
 
 // @public
 export type AccordionState = AccordionState_2;
+
+export { Alignment }
+
+export { ALIGNMENTS }
 
 // @public
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
@@ -1739,6 +1755,8 @@ export type FluentProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
 };
+
+export { getPlacementString }
 
 // @public
 const Image_2: ForwardRefComponent<ImageProps>;
@@ -2600,6 +2618,20 @@ export { PopoverTriggerProps }
 
 export { PopoverTriggerState }
 
+export { Position }
+
+export { PositioningImperativeRef }
+
+export { PositioningProps }
+
+export { PositioningReturn }
+
+export { PositioningShorthand }
+
+export { PositioningShorthandValue }
+
+export { POSITIONS }
+
 // @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
@@ -3016,6 +3048,8 @@ export { renderToolbarRadioGroup }
 export { renderToolbarToggleButton }
 
 export { renderTooltip }
+
+export { resolvePositioningShorthand }
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
@@ -4474,6 +4508,8 @@ export { usePopoverTrigger }
 
 // @public
 export const usePopoverTriggerStyles: (state: PopoverTriggerState) => PopoverTriggerState;
+
+export { usePositioning }
 
 export { useProgressBar }
 

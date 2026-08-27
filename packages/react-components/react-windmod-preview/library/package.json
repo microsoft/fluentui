@@ -897,6 +897,16 @@
         "default": "./lib-commonjs/popover-trigger.cjs"
       }
     },
+    "./positioning": {
+      "import": {
+        "types": "./dist/positioning.d.ts",
+        "default": "./lib/positioning.js"
+      },
+      "require": {
+        "types": "./dist/positioning.d.cts",
+        "default": "./lib-commonjs/positioning.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

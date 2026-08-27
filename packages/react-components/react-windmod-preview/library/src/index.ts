@@ -712,6 +712,17 @@ export {
 } from './popover-trigger';
 export type { PopoverTriggerProps, PopoverTriggerState } from './popover-trigger';
 
+export { ALIGNMENTS, getPlacementString, POSITIONS, resolvePositioningShorthand, usePositioning } from './positioning';
+export type {
+  Alignment,
+  Position,
+  PositioningImperativeRef,
+  PositioningProps,
+  PositioningReturn,
+  PositioningShorthand,
+  PositioningShorthandValue,
+} from './positioning';
+
 export {
   ProgressBar,
   progressBarClassNames,
