@@ -9,8 +9,15 @@ import { CodeComparison, CodeExample } from './utils.stories';
 
 Fluent UI v9 does not provide a native `Stack.Item` component. Replace it with
 an element styled using CSS flex item properties. During an incremental
-migration, `StackItemShim` from `@fluentui/react-migration-v8-v9` accepts the
-v8 `Stack.Item` props.
+migration, `StackItemShim` from `@fluentui/react-migration-v8-v9` provides
+partial compatibility for `align`, `className`, `disableShrink`, `grow`,
+`order`, `shrink`, `verticalFill`, and `children`.
+
+`StackItemShim` is not a complete replacement for v8 `Stack.Item`. It ignores
+`basis`, `tokens`, `styles`, and native HTML attributes. Its generated lookup
+tables also support only a bounded set of `grow` and `order` values, and any
+truthy `shrink` value maps to `flex-shrink: 1`. Prefer a native element and CSS
+for a complete migration.
 
 ## Prop Mapping
 
@@ -38,7 +45,7 @@ prop API.
       item: {
         height: 'auto',
         width: 'auto',
-        flexShrink: 1,
+        flexShrink: 0,
       },
     })
     ```
@@ -62,7 +69,7 @@ prop API.
     .flex-item {
       height: auto;
       width: auto;
-      flex-shrink: 1;
+      flex-shrink: 0;
     }
     ```
 
@@ -74,6 +81,13 @@ MDN documentation:
 - [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 - [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+The v8 `Stack.Item` styles default to `flex-shrink: 0` when the item is
+rendered by itself. A v8 `Stack` normally injects `shrink={true}` into its
+direct `Stack.Item` children, making their effective value `flex-shrink: 1`;
+`<Stack disableShrink>` instead injects `shrink={false}`. Preserve the value
+from the item's actual parent context rather than applying one default to every
+migrated item.
 
 ---
 
@@ -112,7 +126,41 @@ MDN documentation:
 
 ### className
 
-This is just an override to apply the class name to the rendered node.
+Pass the class name to the replacement element. Combine generated classes with
+`mergeClasses` when necessary.
+
+---
+
+### basis
+
+Map `basis` to `flex-basis`. `StackItemShim` does not implement this prop.
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexBasis: '12rem',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-basis: 12rem;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
 
 ---
 
@@ -241,6 +289,54 @@ _`1` is used below as an example value_
 MDN documentation:
 
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+### tokens
+
+Map `tokens.margin` and `tokens.padding` to the CSS `margin` and `padding`
+properties. `StackItemShim` ignores `tokens`.
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        margin: '8px',
+        padding: '4px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      margin: 8px;
+      padding: 4px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+---
+
+### styles
+
+Replace the v8 slot-based `styles` prop with a class created by `makeStyles`,
+then apply it to the native replacement element. `StackItemShim` ignores
+`styles`.
+
+---
+
+### Native HTML attributes
+
+Apply attributes such as `id`, `role`, `aria-*`, `data-*`, and event handlers
+directly to the replacement element. Although `IStackItemProps` extends native
+HTML attributes, `StackItemShim` does not forward them.
 
 ---
 

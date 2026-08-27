@@ -17,10 +17,15 @@ Both v8 components map to v9 `TeachingPopover`. It uses the same composable trig
 <TeachingPopover>
   <TeachingPopoverTrigger>   — the element that opens it
   <TeachingPopoverSurface>
-    <TeachingPopoverHeader>  — title + close button
-    <TeachingPopoverBody>    — content + optional media slot
-    <TeachingPopoverFooter>  — action buttons
+    <TeachingPopoverHeader>  — optional eyebrow/icon + dismiss button
+    <TeachingPopoverBody>    — title, content, and optional media slot
+    <TeachingPopoverFooter>  — primary and optional secondary button slots
 ```
+
+Unlike v8 `TeachingBubble`, a v9 popover is closed initially. Use
+`defaultOpen` to preserve the common v8 behavior where mounting the component
+shows it, or use `open` with `onOpenChange` when the application owns its
+lifecycle.
 
 ## Examples
 
@@ -50,39 +55,138 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverHeader,
   TeachingPopoverBody,
+  TeachingPopoverTitle,
   TeachingPopoverFooter,
   Button,
 } from '@fluentui/react-components';
 
-<TeachingPopover>
-  <TeachingPopoverTrigger disableButtonEnhancement>
-    <Button id="my-button">Feature</Button>
-  </TeachingPopoverTrigger>
-  <TeachingPopoverSurface>
-    <TeachingPopoverHeader>Discover this feature</TeachingPopoverHeader>
-    <TeachingPopoverBody>Here's how to use this new feature.</TeachingPopoverBody>
-    <TeachingPopoverFooter>
-      <Button appearance="primary" onClick={handleNext}>
-        Next
-      </Button>
-      <Button onClick={handleDismiss}>Dismiss</Button>
-    </TeachingPopoverFooter>
-  </TeachingPopoverSurface>
-</TeachingPopover>;
+const handleNext = () => {
+  console.log('Next');
+};
+
+const handleDismiss = () => {
+  console.log('Dismiss');
+};
+
+export const MigratedTeachingBubble = () => (
+  <TeachingPopover
+    defaultOpen
+    onOpenChange={(_, data) => {
+      if (!data.open) {
+        handleDismiss();
+      }
+    }}
+  >
+    <TeachingPopoverTrigger>
+      <Button id="my-button">Feature</Button>
+    </TeachingPopoverTrigger>
+    <TeachingPopoverSurface aria-labelledby="teaching-title" aria-describedby="teaching-description">
+      <TeachingPopoverHeader>Tip</TeachingPopoverHeader>
+      <TeachingPopoverBody>
+        <TeachingPopoverTitle id="teaching-title">Discover this feature</TeachingPopoverTitle>
+        <div id="teaching-description">Here's how to use this new feature.</div>
+      </TeachingPopoverBody>
+      <TeachingPopoverFooter primary={{ children: 'Next', onClick: handleNext }} secondary={{ children: 'Dismiss' }} />
+    </TeachingPopoverSurface>
+  </TeachingPopover>
+);
 ```
 
 ## Prop Mapping
 
-| v8 `ITeachingBubbleProps`      | v9 equivalent                                                | Notes                                                                         |
-| ------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| `headline`                     | `<TeachingPopoverHeader>` children                           |                                                                               |
-| `primaryButtonProps`           | `<Button>` in `<TeachingPopoverFooter>`                      |                                                                               |
-| `secondaryButtonProps`         | `<Button>` in `<TeachingPopoverFooter>`                      |                                                                               |
-| `illustrationImage`            | `media` slot on `<TeachingPopoverBody>`                      |                                                                               |
-| `hasCloseButton`               | `<TeachingPopoverHeader>` includes a close button by default |                                                                               |
-| `footerContent`                | `<TeachingPopoverFooter>` children                           |                                                                               |
-| `onDismiss`                    | `onOpenChange` on `<TeachingPopover>`                        | `(_, data) => !data.open`                                                     |
-| `calloutProps.target`          | `<TeachingPopoverTrigger>` wrapping target                   | Or `positioning` prop on `<TeachingPopover>`                                  |
-| `calloutProps.directionalHint` | `positioning` on `<TeachingPopover>`                         | See [Positioning docs](/docs/concepts-developer-positioning-components--docs) |
-| `styles`                       | `className` on sub-components                                |                                                                               |
-| `theme`                        | —                                                            | Use `FluentProvider`                                                          |
+| v8 `ITeachingBubbleProps`      | v9 equivalent                                    | Notes                                                                         |
+| ------------------------------ | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `headline`                     | `<TeachingPopoverTitle>` in the body             | Header children are not the main title                                        |
+| `primaryButtonProps`           | `TeachingPopoverFooter.primary`                  | Required slot; pass text and handlers as slot props                           |
+| `secondaryButtonProps`         | `TeachingPopoverFooter.secondary`                | Optional slot                                                                 |
+| `illustrationImage`            | `media` slot on `<TeachingPopoverBody>`          | Preserve useful image alt text                                                |
+| `hasCloseButton`               | `TeachingPopoverHeader.dismissButton`            | Rendered by default; pass `null` to remove it                                 |
+| `footerContent`                | Compose in `TeachingPopoverBody`                 | Footer does not accept arbitrary children                                     |
+| `onDismiss`                    | `onOpenChange` on `<TeachingPopover>`            | Call only when `data.open` is `false`                                         |
+| `target` / `targetElement`     | `<TeachingPopoverTrigger>` wrapping target       | Use external positioning only when wrapping is impossible                     |
+| `calloutProps.directionalHint` | `positioning` on `<TeachingPopover>`             | See [Positioning docs](/docs/concepts-developer-positioning-components--docs) |
+| `ariaLabelledBy`               | `aria-labelledby` on `<TeachingPopoverSurface>`  | Point to the title element's id                                               |
+| `ariaDescribedBy`              | `aria-describedby` on `<TeachingPopoverSurface>` | Point to the body description's id                                            |
+| `styles`                       | `className` on sub-components                    |                                                                               |
+| `theme`                        | —                                                | Use `FluentProvider`                                                          |
+
+`TeachingPopoverFooter` is slot-based: `primary` is required and `secondary`
+is optional. It does not render button children. When both slots exist, the
+secondary button performs the footer's default close behavior; when only the
+primary slot exists, the primary button does. Use controlled `open` state when
+an action must keep the popover open.
+
+`TeachingPopoverHeader` renders its lightbulb icon and dismiss button by
+default. It is not the semantic headline. Put `TeachingPopoverTitle` inside
+`TeachingPopoverBody`, and connect the surface to that title with
+`aria-labelledby`. To preserve `hasCloseButton={false}`, use:
+
+```tsx
+<TeachingPopoverHeader dismissButton={null}>Tip</TeachingPopoverHeader>
+```
+
+Move arbitrary `footerContent` into the body before the footer, because the v9
+footer exposes only button slots.
+
+### Targets and controlled state
+
+Wrap the target in `TeachingPopoverTrigger` whenever possible. The trigger
+provides the event, ref, and ARIA relationship required by the popover. For an
+external DOM target that cannot be wrapped, use the v9 positioning APIs and
+keep the target ref synchronized; see the
+[Callout migration guide](./Callout.mdx) for the complete external-target
+pattern.
+
+For a controlled migration, update state for every `onOpenChange`, and invoke
+the v8 dismissal callback only on close:
+
+```tsx
+import * as React from 'react';
+import { Button, TeachingPopover, TeachingPopoverTrigger } from '@fluentui/react-components';
+
+export const ControlledTeachingPopover = () => {
+  const [open, setOpen] = React.useState(true);
+
+  return (
+    <TeachingPopover
+      open={open}
+      onOpenChange={(_, data) => {
+        setOpen(data.open);
+        if (!data.open) {
+          console.log('Dismissed');
+        }
+      }}
+    >
+      <TeachingPopoverTrigger>
+        <Button>Feature</Button>
+      </TeachingPopoverTrigger>
+    </TeachingPopover>
+  );
+};
+```
+
+Keep the full surface composition shown in the basic example when using the
+controlled pattern.
+
+## Coachmark gaps
+
+`Coachmark` is not merely an open TeachingBubble. Its collapsed pulsing beacon,
+mouse-proximity expansion, delayed and staged animations, persistent beak,
+custom beacon colors, and animation callbacks have no direct
+`TeachingPopover` equivalents. Do not imply that the table above preserves
+those behaviors.
+
+- Recreate the beacon and its animation as a separate app component, then use
+  controlled `open` state to show a `TeachingPopover`.
+- Implement `delayBeforeMouseOpen`, `mouseProximityOffset`,
+  `delayBeforeCoachmarkAnimation`, `onAnimationOpenStart`, and
+  `onAnimationOpenEnd` in application state and animation code.
+- Map positioning to `positioning`, but test viewport fitting and arrow
+  behavior rather than assuming v8 `isPositionForced` or `persistentBeak`
+  semantics.
+- Recreate `ariaAlertText` with an intentional live-region announcement.
+  Continue to label and describe the popover surface; a live region does not
+  replace `aria-labelledby` or `aria-describedby`.
+- Review focus explicitly. v9 TeachingPopover enables trapped focus and an
+  arrow by default, while v8 Coachmark exposes different
+  `preventFocusOnMount` and lost-focus dismissal controls.

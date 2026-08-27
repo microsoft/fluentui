@@ -124,42 +124,46 @@ export const V9FormattedValueExample = () => {
 
 - `ariaLabel` => use `aria-label` instead
 - `ariaValueText` => explicitly set `aria-valuetext`
-- `buttonProps` => Slider props, other than className and id, are passed to `input` element
+- `buttonProps` => pass its native input attributes directly to v9 `Slider`; pass its `id` as `id`, and migrate its
+  `className` with `input={{ className: buttonProps.className }}`
 - `componentRef` => use `ref` instead.
 - `inline` => use css, or wrap in flex parent
 - `label` => Use `Label` control with `htmlFor` and `id`
 - `onChanged` => recreate commit behavior with native pointer, keyboard, and blur events
-- `origin` => no longer supported
 - `originFromZero` => no longer supported
 - `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
 - `showValue` and `valueFormat` => use explicitly rendered value instead
-- `snapToStep` => use `step` instead
-- `styles` => pass classNames to individual slots
+- `step` => maps directly to v9 `step`
+- `snapToStep` => do not replace this with `step`: v8 `step` maps to v9 `step`, while `snapToStep` changes v8
+  thumb movement/transition behavior; v9 has no separate equivalent
+- `styles` => use `className` for the root and slot props such as `input={{ className }}` for individual elements
 - `theme` => use `FluentProvider` HOC instead
+
+The default `max` changed from 10 in v8 to 100 in v9. Set `max={10}` when the
+v8 usage relied on its default.
 
 ### Property Table
 
-| v8 `Slider`         | v9 `Slider`              |
-| ------------------- | ------------------------ |
-|                     |                          |
-| `ariaLabel`         | `aria-label`             |
-| `ariaValueText`     | `aria-valuetext`         |
-| `buttonProps`       |                          |
-| `componentRef`      | `ref`                    |
-| `defaultLowerValue` |                          |
-| `inline`            |                          |
-| `input`             | `input`                  |
-| `label`             |                          |
-| `lowerValue`        |                          |
-| `onChanged`         | App-owned commit handler |
-| `origin`            |                          |
-| `originFromZero`    |                          |
-| `ranged`            |                          |
-| `showValue`         |                          |
-| `snapToStep`        | `step`                   |
-| `styles`            | `className`              |
-| `theme`             |                          |
-| `valueFormat`       |                          |
+| v8 `Slider`         | v9 `Slider`                    |
+| ------------------- | ------------------------------ |
+| `ariaLabel`         | `aria-label`                   |
+| `ariaValueText`     | `aria-valuetext`               |
+| `buttonProps`       | Native props / `input` slot    |
+| `componentRef`      | `ref`                          |
+| `defaultLowerValue` | —                              |
+| `inline`            | CSS layout                     |
+| `label`             | Separate `Label`               |
+| `lowerValue`        | —                              |
+| `max`               | `max` (set 10 to keep default) |
+| `onChanged`         | App-owned commit handler       |
+| `originFromZero`    | —                              |
+| `ranged`            | —                              |
+| `showValue`         | Explicitly rendered value      |
+| `snapToStep`        | —                              |
+| `step`              | `step`                         |
+| `styles`            | `className` / slot class names |
+| `theme`             | `FluentProvider`               |
+| `valueFormat`       | Explicitly rendered value      |
 
 ### Preserving `onChanged` commit timing
 

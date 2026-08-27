@@ -78,13 +78,18 @@ import { MessageBar, MessageBarBody } from '@fluentui/react-components';
 
 ```tsx
 // v8
-<>
-  <MessageBar isMultiline={true}>Long message that wraps to multiple lines.</MessageBar>
-  <MessageBar layout="multiline">
-    <MessageBarBody>Long message that wraps to multiple lines.</MessageBarBody>
-  </MessageBar>
-</>
+<MessageBar isMultiline={true}>Long message that wraps to multiple lines.</MessageBar>;
+
+// v9
+<MessageBar layout="multiline">
+  <MessageBarBody>Long message that wraps to multiple lines.</MessageBarBody>
+</MessageBar>;
 ```
+
+V8 defaults `isMultiline` to `true`. When the v8 prop is omitted, use
+`layout="multiline"` explicitly to preserve its action placement and wrapping.
+V9's default `layout="auto"` is responsive behavior, not the v8 multiline
+default.
 
 ### Controlled Visibility Pattern
 
@@ -126,18 +131,18 @@ const [visible, setVisible] = React.useState(true);
 
 ### IMessageBarProps → MessageBarProps
 
-| v8                        | v9                                   | Notes                                                 |
-| ------------------------- | ------------------------------------ | ----------------------------------------------------- |
-| `messageBarType`          | `intent`                             | See table above                                       |
-| `isMultiline`             | `layout`                             | `"singleline"` \| `"multiline"` \| `"auto"` (default) |
-| `onDismiss`               | Button in `containerAction` slot     | Provide `<Button onClick={...}>` explicitly           |
-| `dismissButtonAriaLabel`  | `aria-label` on the dismiss `Button` |                                                       |
-| `actions`                 | `<MessageBarActions>` children       |                                                       |
-| `isBlocking`              | —                                    | Removed; v9 MessageBar never blocks the page          |
-| `overflowButtonAriaLabel` | —                                    | Removed                                               |
-| `truncated`               | —                                    | Removed; handled via `layout`                         |
-| `expandButtonProps`       | —                                    | Removed                                               |
-| `messageBarIconProps`     | `icon` slot on `<MessageBar>`        | Pass `<IconComponent />` to `icon` slot               |
-| `className`               | `className`                          |                                                       |
-| `styles`                  | `className` + `makeStyles`           |                                                       |
-| `theme`                   | `FluentProvider`                     |                                                       |
+| v8                        | v9                                   | Notes                                                    |
+| ------------------------- | ------------------------------------ | -------------------------------------------------------- |
+| `messageBarType`          | `intent`                             | See table above                                          |
+| `isMultiline`             | `layout`                             | Omitted/`true` → `"multiline"`; `false` → `"singleline"` |
+| `onDismiss`               | Button in `containerAction` slot     | Provide `<Button onClick={...}>` explicitly              |
+| `dismissButtonAriaLabel`  | `aria-label` on the dismiss `Button` |                                                          |
+| `actions`                 | `<MessageBarActions>` children       |                                                          |
+| `isBlocking`              | —                                    | Removed; v9 MessageBar never blocks the page             |
+| `overflowButtonAriaLabel` | —                                    | Removed                                                  |
+| `truncated`               | —                                    | Removed; handled via `layout`                            |
+| `expandButtonProps`       | —                                    | Removed                                                  |
+| `messageBarIconProps`     | `icon` slot on `<MessageBar>`        | Pass `<IconComponent />` to `icon` slot                  |
+| `className`               | `className`                          |                                                          |
+| `styles`                  | `className` + `makeStyles`           |                                                          |
+| `theme`                   | `FluentProvider`                     |                                                          |

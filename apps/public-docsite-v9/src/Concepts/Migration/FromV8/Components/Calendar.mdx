@@ -63,28 +63,64 @@ they can be replaced when a native v9 calendar becomes available.
 
 Most behavioral props remain available in the compatibility package.
 
-| v8 `Calendar`                                     | v9 `CalendarCompat`                                            |
-| ------------------------------------------------- | -------------------------------------------------------------- |
-| `value`, `today`                                  | Same props                                                     |
-| `minDate`, `maxDate`, `restrictedDates`           | Same props                                                     |
-| `dateRangeType`, `workWeekDays`                   | Same props                                                     |
-| `firstDayOfWeek`, `firstWeekOfYear`               | Same props                                                     |
-| `strings`, `dateTimeFormatter`                    | Same localization hooks                                        |
-| `isMonthPickerVisible`, `isDayPickerVisible`      | Same props                                                     |
-| `showMonthPickerAsOverlay`                        | Same legacy overlay behavior                                   |
-| `showGoToToday`, `showWeekNumbers`                | Same props                                                     |
-| `showSixWeeksByDefault`                           | Same prop                                                      |
-| `highlightCurrentMonth`, `highlightSelectedMonth` | Same props                                                     |
-| `calendarDayProps`, `calendarMonthProps`          | Same nested customization props                                |
-| `componentRef`                                    | Still exposes `ICalendar.focus()`                              |
-| `onSelectDate`                                    | Still receives the selected `Date` and optional selected range |
-| `onDismiss`                                       | Same callback                                                  |
-| `styles`, `theme`                                 | Replace with `className`, `makeStyles`, and v9 design tokens   |
+| v8 `Calendar`                                     | v9 `CalendarCompat`                                                                                                                 |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `value`, `today`                                  | Same props                                                                                                                          |
+| `minDate`, `maxDate`, `restrictedDates`           | Same props                                                                                                                          |
+| `dateRangeType`, `workWeekDays`                   | Same props                                                                                                                          |
+| `firstDayOfWeek`, `firstWeekOfYear`               | Same props                                                                                                                          |
+| `strings`, `dateTimeFormatter`                    | Same localization hooks                                                                                                             |
+| `isMonthPickerVisible`, `isDayPickerVisible`      | Same props                                                                                                                          |
+| `showMonthPickerAsOverlay`                        | Same legacy overlay behavior                                                                                                        |
+| `showGoToToday`, `showWeekNumbers`                | Same props                                                                                                                          |
+| `showSixWeeksByDefault`                           | Same prop                                                                                                                           |
+| `highlightCurrentMonth`, `highlightSelectedMonth` | Same props                                                                                                                          |
+| `showCloseButton`                                 | Same prop; defaults to `false`                                                                                                      |
+| `allFocusable`                                    | Same prop; defaults to `false`                                                                                                      |
+| `id`, `className`                                 | Same root-element props                                                                                                             |
+| `calendarDayProps`                                | Same nested day/grid customization props; nested values override matching top-level values                                          |
+| `calendarMonthProps`                              | Same nested month/year customization props; nested values override matching top-level values                                        |
+| `navigationIcons`                                 | Move to `calendarDayProps.navigationIcons` and `calendarMonthProps.navigationIcons`; values are JSX elements, not icon-name strings |
+| `componentRef`                                    | Still exposes `ICalendar.focus()`                                                                                                   |
+| `onSelectDate`                                    | Still receives the selected `Date` and optional selected range                                                                      |
+| `onDismiss`                                       | Same callback                                                                                                                       |
+| `styles`, `theme`                                 | Replace with `className`, `makeStyles`, and v9 design tokens                                                                        |
+
+The compatibility component keeps the v8 defaults for the main behavioral
+props: day and month pickers are visible, "Go to today" is shown,
+`dateRangeType` is `Day`, the week starts on Sunday, and overlay, week-number,
+six-week, highlight, close-button, and `allFocusable` options default to
+`false`.
+
+v8 navigation icons were Fabric icon-name strings. The compatibility package
+accepts JSX for each nested picker:
+
+```tsx
+import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';
+
+const navigationIcons = {
+  upNavigation: <ArrowUpRegular />,
+  downNavigation: <ArrowDownRegular />,
+  dismiss: <DismissRegular />,
+};
+
+<Calendar calendarDayProps={{ navigationIcons }} calendarMonthProps={{ navigationIcons }} />;
+```
+
+`calendarDayProps` can also override day-specific values such as
+`showCloseButton`, `allFocusable`, `showWeekNumbers`, date limits, and
+formatting. `calendarMonthProps` can override month-specific values such as
+`highlightCurrentMonth`, `highlightSelectedMonth`, `allFocusable`, date limits,
+and formatting. Prefer the top-level prop when both pickers should share the
+same behavior, and use a nested prop only for a deliberate per-picker
+override.
 
 ## Accessibility
 
 Continue to provide localized `strings` and `dateTimeFormatter` values. Set
 `firstDayOfWeek` and `firstWeekOfYear` according to the user's locale.
 
-`allFocusable` puts disabled dates and controls in the tab order. Preserve it
-only when the existing experience specifically depends on that behavior.
+`allFocusable` allows disabled dates and buttons to receive focus; it does not
+make them actionable. Preserve it only when the existing experience
+specifically depends on that behavior. If `showCloseButton` is enabled, provide
+the localized `strings.closeButtonAriaLabel` and an `onDismiss` callback.

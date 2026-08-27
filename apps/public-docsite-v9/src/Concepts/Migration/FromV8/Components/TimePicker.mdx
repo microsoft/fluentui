@@ -6,13 +6,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview
 
-Use `TimePicker` from `@fluentui/react-timepicker-compat` for v8 time-entry
-experiences. The compatibility component is built on the v9 `Combobox` and
-generates its options from a time range.
+Migrate the v8 `TimePicker` to `TimePicker` from
+`@fluentui/react-timepicker-compat`. The compatibility component is built on
+the v9 `Combobox` and generates its options from a time range.
 
 ```tsx
 // v8
-import { ComboBox } from '@fluentui/react';
+import { TimePicker } from '@fluentui/react';
 
 // v9 compatibility package
 import { TimePicker } from '@fluentui/react-timepicker-compat';
@@ -33,7 +33,7 @@ added, preserve the app-generated options with `Combobox` and `Option` from
 
 ```tsx
 // v8
-<ComboBox allowFreeform options={timeOptions} selectedKey={selectedTimeKey} onChange={handleTimeChange} />
+<TimePicker value={selectedTime} onChange={(_event, time) => setSelectedTime(time)} />
 ```
 
 ```tsx
@@ -43,12 +43,36 @@ import { TimePicker } from '@fluentui/react-timepicker-compat';
 <TimePicker
   freeform
   selectedTime={selectedTime}
-  startHour={8}
-  endHour={18}
+  value={selectedTimeText}
+  hourCycle="h23"
   increment={30}
   onTimeChange={(_event, data) => {
-    setSelectedTime(data.errorType ? null : data.selectedTime);
+    if (!data.errorType) {
+      setSelectedTime(data.selectedTime);
+    }
+    setSelectedTimeText(data.selectedTimeText ?? '');
   }}
+  onInput={event => setSelectedTimeText(event.currentTarget.value)}
+/>;
+```
+
+The selected domain value and the displayed input are separate controlled
+states. Pair `selectedTime` with `value`, and update the string from both
+`onInput` and `data.selectedTimeText`. Controlling only `selectedTime` does not
+control what the underlying `Combobox` displays.
+
+For an uncontrolled initial selection, pair `defaultSelectedTime` with a
+formatted `defaultValue`:
+
+```tsx
+import { TimePicker, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
+
+const initialTime = new Date(2026, 0, 1, 12, 30);
+
+<TimePicker
+  defaultSelectedTime={initialTime}
+  defaultValue={formatDateToTimeString(initialTime, { hourCycle: 'h23' })}
+  hourCycle="h23"
 />;
 ```
 
@@ -277,9 +301,34 @@ the displayed text, selected value, and error state remain consistent.
 
 ## Prop Mapping
 
-### API mapping
+### v8 `TimePicker` API mapping
 
-| v8 time-picker pattern            | v9 `TimePickerCompat`                                               |
+The v8 component defaults to `increments={30}`, `showSeconds={false}`,
+`allowFreeform={true}`, and `useHour12={false}`. The v9 compatibility component
+defaults to `increment={30}`, `showSeconds={false}`, and `freeform={false}`;
+its omitted `hourCycle` follows `Intl.DateTimeFormat`. Set `freeform` and
+`hourCycle="h23"` explicitly to preserve the v8 defaults.
+
+| v8 `TimePicker`                  | v9 `TimePicker` compatibility package                  |
+| -------------------------------- | ------------------------------------------------------ |
+| `value: Date`                    | `selectedTime: Date \| null` plus controlled `value`   |
+| `defaultValue: Date`             | `defaultSelectedTime` plus formatted `defaultValue`    |
+| `onChange(event, time)`          | `onTimeChange(event, data)`                            |
+| `increments` (default `30`)      | `increment` (default `30`)                             |
+| `allowFreeform` (default `true`) | `freeform` (default `false`)                           |
+| `useHour12` (default `false`)    | `hourCycle` (`"h23"` preserves the v8 default)         |
+| `timeRange: { start, end }`      | `startHour`, `endHour`                                 |
+| `dateAnchor`                     | `dateAnchor`                                           |
+| `showSeconds` (default `false`)  | `showSeconds` (default `false`)                        |
+| `onFormatDate`                   | `formatDateToTimeString`                               |
+| `onValidateUserInput`            | `parseTimeStringToDate`                                |
+| `onValidationResult`             | Inspect `data.errorType` in `onTimeChange`             |
+| `label`, validation message      | Wrap the picker in a v9 `Field`                        |
+| `styles`, `theme`                | Slots, `className`, `makeStyles`, and v9 design tokens |
+
+### v8 `ComboBox` time-entry pattern
+
+| v8 `ComboBox` pattern             | v9 `TimePicker` compatibility package                               |
 | --------------------------------- | ------------------------------------------------------------------- |
 | App-generated `IComboBoxOption[]` | `startHour`, `endHour`, and `increment`                             |
 | `selectedKey` or selected option  | `selectedTime: Date \| null`                                        |

@@ -23,7 +23,11 @@ This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
 
 ### Migrate `views` prop
 
-The `views` prop is no longer supported. To migrate, create an element that displays the number of views and pass it to the `CardFooter` `action` prop.
+`DocumentCardActions.actions` is required in v8. Recreate every required action
+as a v9 `Button` child and preserve its accessible label and handler. The
+`views` prop is no longer supported. To migrate it, render a positive count in
+the `CardFooter` `action` slot. Give the count an accessible name rather than
+relying on the eye icon to communicate its meaning.
 
 Before:
 
@@ -54,7 +58,7 @@ export const DocumentCardCompleteExample: React.FunctionComponent = () => (
 
 After:
 
-```jsx
+```tsx
 import * as React from 'react';
 import { Button, Card, CardFooter, makeStyles, shorthands } from '@fluentui/react-components';
 import { Pin20Regular, Share20Regular, ServiceBell20Regular, Eye20Regular } from '@fluentui/react-icons';
@@ -70,25 +74,46 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
+  visuallyHidden: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: 0,
+  },
 });
 
 export const Default = () => {
   const styles = useStyles();
+  const views = 432;
 
   return (
     <Card size="small" className={styles.card}>
       <CardFooter
         action={
-          <div className={styles.actions}>
-            <Eye20Regular /> 432
-          </div>
+          views > 0 ? (
+            <span className={styles.actions}>
+              <Eye20Regular aria-hidden />
+              <span>{views}</span>
+              <span className={styles.visuallyHidden}> views</span>
+            </span>
+          ) : undefined
         }
       >
-        <Button appearance="transparent" icon={<Share20Regular />} aria-label="Share" />
-        <Button appearance="transparent" icon={<Pin20Regular />} aria-label="Pin" />
-        <Button appearance="transparent" icon={<ServiceBell20Regular />} aria-label="Notifications" />
+        <Button appearance="transparent" icon={<Share20Regular />} aria-label="Share document" />
+        <Button appearance="transparent" icon={<Pin20Regular />} aria-label="Pin document" />
+        <Button appearance="transparent" icon={<ServiceBell20Regular />} aria-label="Manage document notifications" />
       </CardFooter>
     </Card>
   );
 };
 ```
+
+Do not announce a misleading “0 views” value merely to fill the `action` slot;
+omit the slot when the value is absent or not positive. If a zero value is
+meaningful in the product, render it intentionally with the same accessible
+name. Icon-only action buttons always need an `aria-label`.

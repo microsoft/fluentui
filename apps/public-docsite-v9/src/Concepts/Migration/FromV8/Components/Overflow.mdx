@@ -6,68 +6,66 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview
 
-v8 `OverflowSet` used render callbacks (`onRenderItem`, `onRenderOverflowButton`) with static `items` / `overflowItems` arrays. v9 `Overflow` is hook-based: every child wraps itself in `<OverflowItem>` and a set of utility hooks drives visibility and menu state.
+v8 `OverflowSet` renders explicit `items` and `overflowItems` arrays through callbacks. v9 `Overflow` measures
+`OverflowItem` elements and reports which responsive items no longer fit. These are separate concepts:
 
-| v8 `OverflowSet`           | v9 `Overflow` + `OverflowItem`                |
-| -------------------------- | --------------------------------------------- |
-| `items` array prop         | `<OverflowItem>` children                     |
-| `overflowItems` array prop | Detected automatically by the overflow engine |
-| `onRenderItem` callback    | Each item renders itself                      |
-| `onRenderOverflowButton`   | `useOverflowMenu` hook + `<Menu>` you compose |
-| No priority concept        | `priority` prop on `<OverflowItem>`           |
+- Convert v8 `items` into measured `<OverflowItem>` children.
+- Keep v8 `overflowItems` as explicit menu-only commands; they are **not** detected by measurement.
+- Build one menu containing explicit commands plus measured items for which `useIsOverflowItemVisible(id)` is false.
+- Show the trigger when either explicit menu-only commands exist or measured items overflow. Set `hasHiddenItems` when
+  explicit hidden commands exist so the overflow manager reserves and reports the trigger.
 
-## Examples
-
-### Basic Migration
-
-Basic v8 usage:
-
-```tsx
-import { OverflowSet } from '@fluentui/react';
-
-<OverflowSet
-  items={[
-    { key: 'item1', name: 'Item 1', onClick: () => {} },
-    { key: 'item2', name: 'Item 2', onClick: () => {} },
-  ]}
-  overflowItems={[{ key: 'overflow1', name: 'More', onClick: () => {} }]}
-  onRenderItem={item => <CommandBarButton text={item.name} onClick={item.onClick} />}
-  onRenderOverflowButton={items => <CommandBarButton menuProps={{ items }} text="..." />}
-/>;
-```
-
-The equivalent v9 usage is:
+## Responsive and explicit items
 
 ```tsx
 import {
-  Overflow,
-  OverflowItem,
   Button,
   Menu,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  useOverflowMenu,
+  Overflow,
+  OverflowItem,
   useIsOverflowItemVisible,
-  makeStyles,
-  mergeClasses,
+  useOverflowMenu,
 } from '@fluentui/react-components';
 
-const itemIds = ['item1', 'item2', 'item3'];
+const commands = [
+  { id: 'new', label: 'New', onClick: createDocument },
+  { id: 'share', label: 'Share', onClick: shareDocument },
+];
+const explicitOverflowCommands = [{ id: 'settings', label: 'Settings', onClick: openSettings }];
+
+function ResponsiveMenuItem({ command }: { command: (typeof commands)[number] }) {
+  const isVisible = useIsOverflowItemVisible(command.id);
+  return isVisible ? null : <MenuItem onClick={command.onClick}>{command.label}</MenuItem>;
+}
 
 function OverflowMenuButton() {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
-  if (!isOverflowing) return null;
+  const hasExplicitItems = explicitOverflowCommands.length > 0;
+
+  if (!isOverflowing && !hasExplicitItems) {
+    return null;
+  }
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <Button ref={ref}>+ more</Button>
+        <Button ref={ref} aria-label="More commands">
+          More
+        </Button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          {itemIds.map(id => (
-            <OverflowMenuItem key={id} id={id} />
+          {commands.map(command => (
+            <ResponsiveMenuItem key={command.id} command={command} />
+          ))}
+          {explicitOverflowCommands.map(command => (
+            <MenuItem key={command.id} onClick={command.onClick}>
+              {command.label}
+            </MenuItem>
           ))}
         </MenuList>
       </MenuPopover>
@@ -75,17 +73,11 @@ function OverflowMenuButton() {
   );
 }
 
-function OverflowMenuItem({ id }: { id: string }) {
-  const isVisible = useIsOverflowItemVisible(id);
-  if (isVisible) return null;
-  return <MenuItem>{id}</MenuItem>;
-}
-
-<Overflow>
-  <div style={{ display: 'flex', overflow: 'hidden' }}>
-    {itemIds.map(id => (
-      <OverflowItem key={id} id={id}>
-        <Button>{id}</Button>
+<Overflow hasHiddenItems={explicitOverflowCommands.length > 0}>
+  <div role="toolbar" aria-label="Document commands" style={{ display: 'flex', overflow: 'hidden' }}>
+    {commands.map(command => (
+      <OverflowItem key={command.id} id={command.id}>
+        <Button onClick={command.onClick}>{command.label}</Button>
       </OverflowItem>
     ))}
     <OverflowMenuButton />
@@ -93,39 +85,51 @@ function OverflowMenuItem({ id }: { id: string }) {
 </Overflow>;
 ```
 
-> **Note**: custom `OverflowItem` children generally need to forward the
-> measured element ref and relevant props. Verify the installed Overflow API;
-> native elements and compatible Fluent components may not need a wrapper.
+Both `Overflow` and `OverflowItem` require exactly one React element child. They clone that child and attach a
+measurement ref and props to its root. A custom component used as either child must forward its ref to the measured
+HTMLElement and spread the supplied root props; an extra fragment or non-forwarding wrapper breaks measurement.
+
+## Defaults, direction, and trigger placement
+
+v9 defaults are `overflowAxis="horizontal"`, `overflowDirection="end"`, `padding={10}`, `minimumVisible={0}`, and
+`hasHiddenItems={false}`. `overflowDirection` selects the end from which measured items are removed. It does **not**
+place the menu button.
+
+v8 `overflowSide` controls whether the button is laid out before or after the items while preserving keyboard order.
+In v9, place `<OverflowMenuButton />` at the start or end of the single flex child yourself, then choose the matching
+`overflowDirection` if items should disappear from that same end. v8 `vertical` maps to
+`overflowAxis="vertical"`; update the child layout and `aria-orientation` at the same time.
+
+## Semantics and keyboard behavior
+
+`Overflow` supplies measurement, not application semantics or a focus-management policy. Put the correct role and
+accessible name on its single container child (`toolbar`, `menubar`, `tablist`, or no widget role), and implement the
+keyboard model required by that role. The Fluent `Menu` owns menu-trigger activation, focus transfer, menu navigation,
+Escape, and focus return. The surrounding toolbar/menubar owns navigation among visible commands and the trigger.
+Preserve command labels and handlers in both the visible and menu renderings.
 
 ## Prop Mapping
 
-### Key v9 Hooks
+| v8 `OverflowSet`         | v9 equivalent                                                    |
+| ------------------------ | ---------------------------------------------------------------- |
+| `items`                  | Measured `<OverflowItem id="...">` children                      |
+| `overflowItems`          | Explicit menu-only items plus `hasHiddenItems`                   |
+| `onRenderItem`           | Declarative visible item JSX                                     |
+| `onRenderOverflowButton` | `useOverflowMenu` + a composed `Menu`                            |
+| `vertical`               | `overflowAxis="vertical"` plus vertical layout/orientation       |
+| `overflowSide`           | Trigger location in child layout; optionally `overflowDirection` |
+| `styles`                 | `className`/`makeStyles` on the child and item elements          |
+| `role`                   | Role on the single container child                               |
+| `componentRef.focus*`    | Application refs/focus management                                |
 
-| Hook                       | Returns                                                        |
-| -------------------------- | -------------------------------------------------------------- |
-| `useOverflowMenu`          | `ref` to register the overflow button; `isOverflowing` boolean |
-| `useIsOverflowItemVisible` | Whether a specific item is currently visible                   |
-| `useOverflowCount`         | Number of currently hidden items                               |
-| `useOverflowGroupVisible`  | Visibility of an overflow group                                |
+There is no v8 `overflowMenuProps` prop to migrate. Configure the v9 `Menu`, trigger, popover, and list directly.
 
-### OverflowSet
-
-| v8                       | v9 equivalent                                 | Notes |
-| ------------------------ | --------------------------------------------- | ----- |
-| `items`                  | `<OverflowItem id="...">` children            |       |
-| `overflowItems`          | Auto-detected by `Overflow`                   |       |
-| `onRenderItem`           | Item renders itself                           |       |
-| `onRenderOverflowButton` | `useOverflowMenu` + your `<Menu>` composition |       |
-| `vertical`               | `overflowAxis="vertical"` on `<Overflow>`     |       |
-| `overflowMenuProps`      | Pass to your `<Menu>` directly                |       |
-| `styles`                 | `className` + `makeStyles`                    |       |
-| `role`                   | `role` on the container element               |       |
-
-### OverflowItem Props
-
-| Prop       | Type      | Notes                                                                    |
-| ---------- | --------- | ------------------------------------------------------------------------ |
-| `id`       | `string`  | Required; unique identifier used by the overflow engine                  |
-| `priority` | `number`  | Higher = overflows later (mutually exclusive with `pinned`)              |
-| `pinned`   | `boolean` | Never overflows (mutually exclusive with `priority`)                     |
-| `groupId`  | `string`  | Assign to a group; watch group visibility with `useOverflowGroupVisible` |
+| v9 API                          | Purpose                                                        |
+| ------------------------------- | -------------------------------------------------------------- |
+| `useOverflowMenu`               | Trigger ref and whether any responsive/declared items overflow |
+| `useIsOverflowItemVisible(id)`  | Whether one measured item is visible                           |
+| `useOverflowCount()`            | Number of measured hidden items                                |
+| `useIsOverflowGroupVisible(id)` | Visibility state for an item group                             |
+| `OverflowItem.priority`         | Higher values overflow later; exclusive with `pinned`          |
+| `OverflowItem.pinned`           | Never overflow; exclusive with `priority`                      |
+| `OverflowItem.groupId`          | Associates an item with a visibility group                     |

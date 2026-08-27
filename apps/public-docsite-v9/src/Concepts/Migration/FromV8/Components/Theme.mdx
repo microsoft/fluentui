@@ -38,17 +38,23 @@ In v9, themes are seeded with `BrandVariants` along with the set of global color
 `IPalette` consists of 12 neutral colors, 9 theme colors, and 28 shared colors.
 `BrandVariants` consists of a ramp of 16 theme colors.
 
-### Theme.ComponentStyles -> tokens
+### Theme.semanticColors -> tokens
 
 v8 has a set of semantic colors that apply to specific parts of controls.
 For example, `buttonBackgroundHovered`.
-These component styles are used through a theme parameter when creating style objects.
+These values live on `theme.semanticColors` and are used through a theme
+parameter when creating style objects.
 
 v9 provides a collection of global tokens and alias tokens.
 The global tokens define specific color, layout, and effect values but aren't used directly when applying theme styles in the code.
 The alias tokens define general purpose color, layout, and effect values useful across many types of controls.
 For example, 'colorNeutralBackground1Hover'.
 A component like button would use this token when styling the background in the hover state.
+
+`theme.components` is a separate, experimental v8 feature containing
+component-level `styles` overrides keyed by component name. It is not the
+source of v8 semantic colors and has no direct v9 theme equivalent. Migrate
+those overrides to component `className` values and `makeStyles`.
 
 ### CSS-in-JS style objects -> makeStyles
 
@@ -61,10 +67,15 @@ The makeStyles function returns a hook that can be used during component render.
 
 ### mergeStyles -> mergeClasses
 
-In v8, mergeStyles combines a set of style objects to return a merged style object.
-The ordering of the parameters determines which styles overwrote preceding styles.
+In v8, `mergeStyles` accepts style objects and class names, registers the
+resulting styles, and returns a class-name string. It does not return a merged
+style object. The ordering of the parameters determines which style
+declarations take precedence.
 
-In v9, mergeClasses takes a list of class names from makeStyles and returns the class names optimized for de-duping and minimal bundle size.
+In v9, `mergeClasses` accepts class-name strings, including the strings
+returned by `makeStyles` hooks, and returns one combined class-name string. It
+does not accept v8 style objects; convert those objects with `makeStyles`
+first.
 
 ### styles -> className
 
@@ -105,14 +116,76 @@ If you want to minimize visual differences, you can make the themes more alike.
 
 We recommend making your v8 theme look more like v9.
 You can do this through the [`createV8Theme`](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-migration-v8-v9) shim function from `@fluentui/react-migration-v8-v9`.
-This function takes a v9 theme and brand variants to produce a v8 theme with matching styles.
+Its exact signature is:
+
+```ts
+createV8Theme(
+  brandColors: BrandVariants,
+  themeV9: ThemeV9,
+  isDarkTheme?: boolean,
+  themeV8?: ThemeV8,
+): ThemeV8
+```
+
+For example:
+
+```tsx
+import { ThemeProvider } from '@fluentui/react';
+import { brandWeb, createV8Theme } from '@fluentui/react-migration-v8-v9';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+const themeV8 = createV8Theme(brandWeb, webLightTheme);
+
+<ThemeProvider theme={themeV8}>
+  <FluentProvider theme={webLightTheme}>{children}</FluentProvider>
+</ThemeProvider>;
+```
+
+The function overlays the v9 palette mappings, semantic colors, fonts, and
+effects on the optional v8 base theme, and applies the Fluent 2 v8 component
+styles.
 
 In the case you want to keep things looking like v8 for now, you have a couple of options.
 
 You can use the [`createBrandVariants`](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-migration-v8-v9) shim function from `@fluentui/react-migration-v8-v9`.
-This function takes a v8 `IPalette` and returns a `BrandVariants` you can use to create a v9 theme.
+Its exact signature is:
+
+```ts
+createBrandVariants(
+  palette: IPalette,
+  interpolation?: 'pairs' | 'primaryAndEnds',
+): BrandVariants
+```
+
+It takes a v8 `IPalette` and returns `BrandVariants` that can seed
+`createLightTheme` or `createDarkTheme`.
 The brand colors are created from the palette using one of the available interpolation algorithms.
 This is a good approach when you are concerned only about color compatibility.
 
+```ts
+import { DefaultPalette } from '@fluentui/react';
+import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
+import { createLightTheme } from '@fluentui/react-components';
+
+const brand = createBrandVariants(DefaultPalette, 'pairs');
+const themeV9 = createLightTheme(brand);
+```
+
 You can use the [`createV9Theme`](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-migration-v8-v9) shim function from `@fluentui/react-migration-v8-v9`.
-This function takes a v8 theme and returns a v9 theme with as closely matching styles as possible.
+Its exact signature is:
+
+```ts
+createV9Theme(themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9
+```
+
+It maps the v8 palette, shadows, and border radii onto `webLightTheme` by
+default. Pass a different v9 base theme explicitly when needed.
+
+```ts
+import { createTheme } from '@fluentui/react';
+import { createV9Theme } from '@fluentui/react-migration-v8-v9';
+import { webDarkTheme } from '@fluentui/react-components';
+
+const themeV8 = createTheme({ isInverted: true });
+const themeV9 = createV9Theme(themeV8, webDarkTheme);
+```

@@ -6,12 +6,15 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview
 
-v9 `Link` is a near drop-in replacement with improved accessibility and an `inline` prop for use alongside body text.
+v9 `Link` preserves the basic anchor-or-button behavior, but it is not a
+complete drop-in replacement. In particular, v8's `as` accepts any
+`React.ElementType`, while v9 narrows the root to `"a"`, `"button"`, or
+`"span"`.
 
 - Renders as `<a>` when `href` is provided, as `<button>` otherwise (same as v8)
 - New `appearance="subtle"` removes the brand color for a neutral look
-- New `inline` prop adds an underline and adjusts spacing for use inside prose text
-- `disabledFocusable` keeps the link in the tab order while disabled (accessibility improvement)
+- Replace v8 `underline` with v9 `inline` for a link alongside text; `inline` adds an underline
+- `disabledFocusable`, used with `disabled`, keeps a disabled link in the tab order
 - No `styles` prop — use `className` + `makeStyles`
 
 ## Examples
@@ -36,7 +39,8 @@ import { Link } from '@fluentui/react-components';
 
 ### Inline Text Link
 
-When a link appears inside a sentence, add `inline` to get proper underline and spacing:
+When a link appears inside a sentence, replace v8 `underline` with v9 `inline`
+to keep the underline visible:
 
 ```tsx
 // v9
@@ -49,7 +53,8 @@ When a link appears inside a sentence, add `inline` to get proper underline and 
 </p>
 ```
 
-Without `inline`, the link uses no underline by default — only appropriate in visually discrete nav areas.
+`inline` changes the underline treatment; it does not add spacing. Preserve
+prose spacing in the surrounding text, as in the example above.
 
 ### Subtle Appearance
 
@@ -61,7 +66,9 @@ Without `inline`, the link uses no underline by default — only appropriate in 
 
 ### Render as `<span>`
 
-Renders as `<span role="button">` — wraps correctly in multiline text unlike `<button>`:
+v9 supports `"a"`, `"button"`, and `"span"` roots. It does not accept the
+arbitrary intrinsic elements or custom components that v8 allowed through
+`as`. A span root receives `role="button"`:
 
 ```tsx
 <Link as="span" inline onClick={handleClick}>
@@ -71,21 +78,29 @@ Renders as `<span role="button">` — wraps correctly in multiline text unlike `
 
 ## Prop Mapping
 
-| v8 `ILinkProps` | v9 `LinkProps`      | Notes                                             |
-| --------------- | ------------------- | ------------------------------------------------- |
-| `href`          | `href`              |                                                   |
-| `target`        | `target`            |                                                   |
-| `rel`           | `rel`               |                                                   |
-| `onClick`       | `onClick`           |                                                   |
-| `disabled`      | `disabled`          |                                                   |
-| `componentRef`  | `ref`               |                                                   |
-| `styles`        | `className`         | Use `makeStyles`                                  |
-| `theme`         | —                   | Use `FluentProvider`                              |
-| —               | `appearance`        | New: `"default"` \| `"subtle"`                    |
-| —               | `inline`            | New: underlined, inline-text variant              |
-| —               | `disabledFocusable` | New: focusable while disabled (for accessibility) |
-| —               | `as`                | New: `"a"` \| `"button"` \| `"span"`              |
+| v8 `ILinkProps` | v9 `LinkProps`      | Notes                                                                                      |
+| --------------- | ------------------- | ------------------------------------------------------------------------------------------ |
+| `href`          | `href`              |                                                                                            |
+| `target`        | `target`            |                                                                                            |
+| `rel`           | `rel`               |                                                                                            |
+| `onClick`       | `onClick`           |                                                                                            |
+| `disabled`      | `disabled`          |                                                                                            |
+| `componentRef`  | `ref`               |                                                                                            |
+| `styles`        | `className`         | Use `makeStyles`.                                                                          |
+| `theme`         | —                   | Use `FluentProvider`.                                                                      |
+| `underline`     | `inline`            | `inline` applies the persistent underline used alongside text; it does not change spacing. |
+| `as`            | `as`                | Narrowed from any `React.ElementType` to `"a"` \| `"button"` \| `"span"`.                  |
+| —               | `appearance`        | New: `"default"` \| `"subtle"`.                                                            |
+| —               | `disabledFocusable` | New: use with `disabled` to keep the disabled control focusable.                           |
 
 ## Accessibility
 
 Links **must** have an underline (use `inline`) unless they are in a visually discrete region containing only links or interactive controls, or all links have an icon indicating interactivity.
+
+For a disabled link that must remain reachable in a stable tab order, set both
+`disabled` and `disabledFocusable`. v9 removes an anchor's `href`, prevents
+pointer activation and Enter/Space activation, and sets `aria-disabled`.
+Unlike a normally disabled button, a button rendered this way does not receive
+the native `disabled` attribute, so it remains focusable. Do not use
+`disabledFocusable` as an enabled-but-focusable mode: the implementation treats
+it as disabled behavior even if `disabled` is omitted.

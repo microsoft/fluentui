@@ -12,18 +12,200 @@ Fluent UI v9 does not have a one-to-one migration from v8's `GroupedList` so thi
 
 ## Choosing a v9 replacement
 
-### I'm using `GroupedList` to display hierarchical data that expands and collapses
+Choose a replacement from both the **shape of the data** and the **interaction and accessibility semantics**. Do not choose from visual appearance alone.
 
-In this case consider migrating to [Fluent UI v9's `Tree` component](?path=/docs/components-tree--default) which is a hierarchical list control for displaying expandable and collapsible data.
+| Data and interaction                                                                             | v9 direction                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hierarchy is the primary structure; rows expand and collapse but do not form a multi-column grid | [`Tree`](?path=/docs/components-tree--default)                                                                                                                                                     |
+| Flat, non-tabular content                                                                        | [`List`](?path=/docs/preview-components-list--default)                                                                                                                                             |
+| Flat tabular content with no built-in sorting or selection required                              | [`Table`](?path=/docs/components-table--default)                                                                                                                                                   |
+| Flat tabular content that needs built-in sorting, focus management, or row selection             | [`DataGrid`](?path=/docs/components-datagrid--default)                                                                                                                                             |
+| Hierarchical, multi-column tabular content that must retain `treegrid` behavior                  | There is no direct v9 replacement. Redesign the experience as a `Tree` plus a separate details view, flatten the data into a `DataGrid`, or build and test a purpose-specific accessible treegrid. |
 
-### I'm using `GroupedList` to display a flat or nested list of items that does not expand or collapse
+`Table` is a set of presentational table primitives and does **not** have built-in selection. Selection can be composed separately with `useTableFeatures` and `useTableSelection`, but [`DataGrid`](?path=/docs/components-datagrid--default) is the v9 component with a built-in `selectionMode`, `selectedItems`, and `onSelectionChange` API.
 
-For lists, look at migrating to [Fluent UI v9's `List` component](?path=/docs/preview-components-list--default) which renders vertically list elements that can be interactive or non-interactive.
+### Hierarchy only: migrate to `Tree`
 
-### I'm using `GroupedList` to display tabular data
+Use [`Tree`](?path=/docs/components-tree--default) when the group hierarchy and expand/collapse interaction are the important parts of the experience. A nested `Tree` maps naturally to recursive `IGroup.children`. A `FlatTree` can be easier when searching, reordering, or virtualizing a large hierarchy.
 
-For tabular data (i.e., a grid), consider migrating to [Fluent UI v9's `Table` component](?path=/docs/components-table--default) or [`DataGrid` component](?path=/docs/components-datagrid--default).
-Both components are designed to render tabular data and support selection.
+Do not use a `Tree` merely to indent cells in a table. Although `Tree` has a `navigationMode="treegrid"` option for navigating between an item and its actions, it is not a multi-column replacement for v8 `GroupedList`'s complete `treegrid` surface.
+
+### Flat tabular data: migrate to `Table` or `DataGrid`
+
+Use `Table` for static, flat tabular markup. Use `DataGrid` when the flat rows need selection, sorting, or grid keyboard behavior. Flattening groups should be an explicit product decision: preserve group information in a column or filter, and verify that removing expand/collapse does not hide a required relationship.
+
+### Hierarchical tabular data: redesign
+
+Neither `Tree` nor `DataGrid` alone preserves a hierarchy, multiple aligned columns, expandable rows, and `treegrid` keyboard/ARIA behavior. Splitting the experience into a navigation `Tree` and a flat details `DataGrid` is often clearer. If the combined treegrid interaction is essential, treat it as a custom widget migration and include keyboard and assistive-technology testing in the work.
+
+## Inventory behavior before migrating
+
+`GroupedList` combines data projection, rendering, selection, imperative control, virtualization, and accessibility. Record every behavior your usage relies on before replacing the component.
+
+| v8 behavior or API                                                                                                 | Migration mapping                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `groups`, `IGroup.startIndex`, `count`, and `children`                                                             | Build the destination model explicitly. For `Tree`, recursively render each group's `children` and use each group's `[startIndex, startIndex + count)` range to associate items with it; account for nested ranges so an item is not rendered twice. For a flat `Table`/`DataGrid`, create one row per item and retain group metadata in the row model if users still need it.                                                       |
+| `IGroup.isCollapsed`                                                                                               | Make open state controlled. A v9 `TreeItem` value is present in `openItems` when expanded, so initialize `openItems` with group keys where `isCollapsed !== true` and update it in `onOpenChange`.                                                                                                                                                                                                                                   |
+| `selection` and `selectionMode`                                                                                    | Do not carry the mutable v8 `Selection` object forward. For `Tree`, map single/multiple selection to `selectionMode="single"`/`"multiselect"` and own `checkedItems` through `onCheckedChange`. For a flat grid, use `DataGrid`'s controlled `selectedItems` and `onSelectionChange`. `Table` alone does not provide selection. Preserve stable item IDs rather than array indexes when rows can move.                               |
+| `groupProps.onRenderHeader`, `onRenderFooter`, `onRenderShowAll`, `headerProps`, `footerProps`, and `showAllProps` | Replace renderer callbacks with ordinary JSX composition. Put group labels and actions in `TreeItemLayout`, render supporting content adjacent to the relevant branch, and keep “show all” limits/loading state in application state. There is no renderer-prop translation.                                                                                                                                                         |
+| `getGroupItemLimit`, `isShowingAll`, and `hasMoreData`                                                             | Store the visible limit or loading state by group key. Render only the visible children and expose a labeled button that increases the limit or loads the next page. Ensure hidden items are not announced as currently present.                                                                                                                                                                                                     |
+| `dragDropEvents`, `dragDropHelper`, and registered events                                                          | Reimplement drag and drop deliberately. `Tree` has no built-in drag-and-drop behavior; the v9 examples compose `FlatTree` with a third-party library such as `@dnd-kit`. Preserve keyboard reordering, drop announcements, allowed-target rules, and model updates—not only pointer dragging.                                                                                                                                        |
+| `componentRef`, `forceUpdate`, scrolling methods, and `toggleCollapseAll`                                          | Prefer declarative React state. Keep DOM refs only for focus/scroll targets; use `scrollIntoView` or the chosen virtualizer's scroll API. Collapse all by setting `openItems` to an empty set and expand all by setting it to all branch keys. A `forceUpdate` call should normally become a state/prop update.                                                                                                                      |
+| `onShouldVirtualize`, `usePageCache`, `getGroupHeight`, and list/page height assumptions                           | Reassess performance with production-sized data. `Tree` does not virtualize by default. For large hierarchies, use `FlatTree`/`useHeadlessFlatTree_unstable` with a virtualizer such as `react-window`; fixed or measured row heights and scrolling are owned by that integration. Virtualization also requires custom handling so keyboard navigation can scroll an unmounted item into view before focusing it.                    |
+| `focusZoneProps`, custom `role`, and group/item ARIA fields                                                        | Start with the destination component's native semantics: `Tree` for hierarchical navigation and `DataGrid` for a flat interactive grid. Preserve accessible names, selection announcements, expansion state, focus order, and arrow-key behavior. Do not copy v8 roles or `aria-*` values mechanically onto a different structure. A custom hierarchical table must implement and test the complete treegrid keyboard/ARIA contract. |
+
+Also inventory empty groups, compact density, custom styles, asynchronous loading, item actions, and whether selection applies to group headers, leaf items, or both.
+
+## Example: controlled nested `Tree`
+
+The application owns expansion and selection state in this example. In a real migration, derive the nested JSX from `groups` and use each stable `IGroup.key` as the branch value.
+
+```tsx
+import * as React from 'react';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  type TreeItemValue,
+  type TreeSelectionValue,
+} from '@fluentui/react-components';
+
+export function GroupedFilesTree() {
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>(['engineering', 'web']);
+  const [checkedItems, setCheckedItems] = React.useState<Map<TreeItemValue, TreeSelectionValue>>(() => new Map());
+
+  return (
+    <Tree
+      aria-label="Files by team"
+      selectionMode="multiselect"
+      openItems={openItems}
+      onOpenChange={(_, data) => setOpenItems(data.openItems)}
+      checkedItems={checkedItems}
+      onCheckedChange={(_, data) => setCheckedItems(data.checkedItems)}
+    >
+      <TreeItem itemType="branch" value="engineering">
+        <TreeItemLayout>Engineering</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="web">
+            <TreeItemLayout>Web</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf" value="design-system">
+                <TreeItemLayout>Design system</TreeItemLayout>
+              </TreeItem>
+              <TreeItem itemType="leaf" value="storefront">
+                <TreeItemLayout>Storefront</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="mobile">
+            <TreeItemLayout>Mobile</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="leaf" value="support">
+        <TreeItemLayout>Support</TreeItemLayout>
+      </TreeItem>
+    </Tree>
+  );
+}
+```
+
+To implement collapse/expand all, set `openItems` to `new Set()` or to a set containing every branch value. If only initial state is needed, use `defaultOpenItems` instead of controlled state.
+
+## Example: controlled flat `DataGrid`
+
+This is appropriate only after deciding that the group hierarchy can be flattened. Group is retained as ordinary row data, and selection uses stable row IDs.
+
+```tsx
+import * as React from 'react';
+import {
+  DataGrid,
+  DataGridBody,
+  DataGridCell,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridRow,
+  TableCellLayout,
+  createTableColumn,
+  type DataGridProps,
+  type TableColumnDefinition,
+  type TableRowId,
+} from '@fluentui/react-components';
+
+type FileRow = {
+  id: string;
+  name: string;
+  group: string;
+  owner: string;
+};
+
+const items: FileRow[] = [
+  { id: 'design-system', name: 'Design system', group: 'Engineering / Web', owner: 'Adele' },
+  { id: 'storefront', name: 'Storefront', group: 'Engineering / Web', owner: 'Megan' },
+  { id: 'mobile', name: 'Mobile', group: 'Engineering', owner: 'Nestor' },
+];
+
+const columns: TableColumnDefinition<FileRow>[] = [
+  createTableColumn<FileRow>({
+    columnId: 'name',
+    renderHeaderCell: () => 'Name',
+    renderCell: item => <TableCellLayout>{item.name}</TableCellLayout>,
+  }),
+  createTableColumn<FileRow>({
+    columnId: 'group',
+    renderHeaderCell: () => 'Group',
+    renderCell: item => item.group,
+  }),
+  createTableColumn<FileRow>({
+    columnId: 'owner',
+    renderHeaderCell: () => 'Owner',
+    renderCell: item => item.owner,
+  }),
+];
+
+export function FilesGrid() {
+  const [selectedItems, setSelectedItems] = React.useState<Set<TableRowId>>(() => new Set(['design-system']));
+  const onSelectionChange: DataGridProps['onSelectionChange'] = (_, data) => {
+    setSelectedItems(data.selectedItems);
+  };
+
+  return (
+    <DataGrid
+      aria-label="Files"
+      items={items}
+      columns={columns}
+      getRowId={item => item.id}
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
+      onSelectionChange={onSelectionChange}
+    >
+      <DataGridHeader>
+        <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<FileRow>>
+        {({ item, rowId }) => (
+          <DataGridRow<FileRow>
+            key={rowId}
+            selectionCell={{ checkboxIndicator: { 'aria-label': `Select ${item.name}` } }}
+          >
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+}
+```
+
+## Verification checklist
+
+- Expansion, selection, “show all”, loading, actions, drag/drop, and collapse-all behavior are either preserved or intentionally removed.
+- Every branch and row has a stable value/ID, including after filtering, sorting, and reordering.
+- Arrow keys, Enter/Space, Tab, focus restoration, and scrolling work with collapsed and virtualized content.
+- The rendered role matches the experience (`tree`, flat `grid`/`table`, or a deliberately implemented `treegrid`) and accessible names and states are announced correctly.
+- Large-data performance is tested with the chosen rendering and virtualization strategy.
 
 ### I'm using `GroupedList` in some other way
 

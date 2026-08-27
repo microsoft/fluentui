@@ -6,25 +6,62 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview
 
-Fluent Charting controls are built on Fluent UI v8.
-They can work with v9 themes by using `createV8Theme` from `@fluentui/react-migration-v8-v9`.
+For new v9 code, use the native chart components from
+`@fluentui/react-charts`. They consume the v9 theme from `FluentProvider` and
+use v9 type names such as `ChartProps` (without the v8 `I` prefix).
 
-Currently charts are brand invariant and don't require a BrandVariant palette to render correctly.
-This would evolve as we onboard new products and their unique theme requirements.
+`@fluentui/react-charting` is the legacy v8 package. Keep the v8 theme bridge
+only while an application still renders those legacy charts; do not wrap
+native `@fluentui/react-charts` charts in a v8 `ThemeProvider`.
 
-Richer integration with v9 components is WIP and coming soon.
+## Native v9 chart
 
-Complete [this](https://aka.ms/chartingv9survey) short survey to share your data viz scenarios for v9.
+Install `@fluentui/react-charts` as a direct dependency and render it under the
+same `FluentProvider` as the rest of the v9 application.
 
-See below examples for different v9 use cases with charts.
+```tsx
+import * as React from 'react';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { DataVizPalette, DonutChart, getColorFromToken } from '@fluentui/react-charts';
 
-Refer to [Fluent v8 charts](https://aka.ms/fluentCharting) for detailed examples and code snippets of available charts.
+const data: ChartProps = {
+  chartTitle: 'Donut chart v9 example',
+  chartData: [
+    { legend: 'First', data: 40, color: getColorFromToken(DataVizPalette.color1) },
+    { legend: 'Second', data: 20, color: getColorFromToken(DataVizPalette.color2) },
+    { legend: 'Third', data: 30, color: getColorFromToken(DataVizPalette.color3) },
+    { legend: 'Fourth', data: 10, color: getColorFromToken(DataVizPalette.color4) },
+  ],
+};
 
-You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
+export function ChartExample() {
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <DonutChart
+        data={data}
+        innerRadius={35}
+        legendProps={{ allowFocusOnLegends: true }}
+        hideLabels={false}
+        showLabelsInPercent
+        valueInsideDonut={100}
+      />
+    </FluentProvider>
+  );
+}
+```
 
-## Examples
+Rename v8 chart types when moving imports: for example, `IChartProps` becomes
+`ChartProps` and `IVerticalStackedBarChartProps` becomes
+`VerticalStackedBarChartProps`. Recheck each chart's current props rather than
+assuming every v8 prop is unchanged.
 
-### Basic Donut Chart
+## Legacy v8 chart bridge
+
+If a chart cannot yet be migrated, isolate the compatibility bridge around
+that legacy `@fluentui/react-charting` subtree. `createV8Theme` translates the
+parent v9 theme for the v8 `ThemeProvider`; it is not needed by the native
+package.
 
 ```tsx
 import { brandWeb, createV8Theme } from '@fluentui/react-migration-v8-v9';
@@ -68,7 +105,11 @@ export function ChartWrapperDocsite() {
 }
 ```
 
-### Custom styling with color tokens
+The following styling and custom-callout examples apply to the legacy v8
+package only. Convert them to the native chart's current slots, props, and v9
+tokens as part of a full migration.
+
+### Legacy custom styling with color tokens
 
 ```tsx
 const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
@@ -100,7 +141,7 @@ const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
 };
 ```
 
-### Custom jsx control
+### Legacy custom JSX control
 
 Wrap any custom jsx element like `HoverCard`, or `Callout` in an explicit `FluentProvider` context.
 
@@ -143,3 +184,9 @@ export default function BarChartHoverCard(props: BarChartHoverCardProps) {
 ```
 
 Refer to the [sample application](https://github.com/microsoft/fluentui-charting-contrib/tree/main/tools/v9-migration) for complete source code to use charts in v9 context.
+
+Refer to the [`@fluentui/react-charts` stories](https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charts/stories/src)
+for native v9 chart examples. For legacy examples, see
+[Fluent v8 charts](https://aka.ms/fluentCharting). You can reach the charting
+team by tagging `@microsoft/charting-team` in
+[discussions](https://github.com/microsoft/fluentui/discussions).

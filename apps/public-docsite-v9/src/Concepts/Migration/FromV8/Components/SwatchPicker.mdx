@@ -38,7 +38,7 @@ import { SwatchColorPicker } from '@fluentui/react';
 <SwatchColorPicker
   columnCount={4}
   selectedId={selected}
-  onChange={(_, item) => setSelected(item?.id ?? '')}
+  onChange={(_, id) => setSelected(id ?? '')}
   colorCells={[
     { id: 'red', label: 'Red', color: '#d13438' },
     { id: 'blue', label: 'Blue', color: '#0078d4' },
@@ -51,17 +51,24 @@ import { SwatchColorPicker } from '@fluentui/react';
 The equivalent v9 usage is:
 
 ```tsx
-import { SwatchPicker, SwatchPickerRow, ColorSwatch } from '@fluentui/react-components';
+import { SwatchPicker, ColorSwatch } from '@fluentui/react-components';
 
-<SwatchPicker selectedValue={selected} onSelectionChange={(_, data) => setSelected(data.selectedValue)}>
-  <SwatchPickerRow>
-    <ColorSwatch value="red" color="#d13438" aria-label="Red" />
-    <ColorSwatch value="blue" color="#0078d4" aria-label="Blue" />
-    <ColorSwatch value="green" color="#107c10" aria-label="Green" />
-    <ColorSwatch value="yellow" color="#fce100" aria-label="Yellow" />
-  </SwatchPickerRow>
+<SwatchPicker
+  aria-label="Colors"
+  selectedValue={selected}
+  onSelectionChange={(_, data) => setSelected(data.selectedValue)}
+>
+  <ColorSwatch value="red" color="#d13438" aria-label="Red" />
+  <ColorSwatch value="blue" color="#0078d4" aria-label="Blue" />
+  <ColorSwatch value="green" color="#107c10" aria-label="Green" />
+  <ColorSwatch value="yellow" color="#fce100" aria-label="Yellow" />
 </SwatchPicker>;
 ```
+
+The second v8 `onChange` argument is the cell `id` string (the optional third
+argument is its color), not a cell object. In v9,
+`data.selectedValue` is the swatch `value` and `data.selectedSwatch` is its
+color or image source.
 
 ### Grid Layout Utility
 
@@ -75,35 +82,100 @@ const colors = [
   { value: 'blue', color: '#0078d4', 'aria-label': 'Blue' },
 ];
 
-<SwatchPicker selectedValue={selected} onSelectionChange={(_, data) => setSelected(data.selectedValue)}>
+<SwatchPicker
+  layout="grid"
+  aria-label="Colors"
+  selectedValue={selected}
+  onSelectionChange={(_, data) => setSelected(data.selectedValue)}
+>
   {renderSwatchPickerGrid({ items: colors, columnCount: 4 })}
 </SwatchPicker>;
 ```
 
+For a single row, render swatches directly under the default row-layout
+`SwatchPicker`. For a grid, set `layout="grid"` and provide
+`SwatchPickerRow` children, either explicitly or through
+`renderSwatchPickerGrid`. The layout prop changes the accessibility role as
+well as the visual arrangement.
+
 ### Image Swatches
 
 ```tsx
-<SwatchPicker>
-  <SwatchPickerRow>
-    <ImageSwatch value="pattern1" src="/pattern1.png" aria-label="Pattern 1" />
-    <ImageSwatch value="pattern2" src="/pattern2.png" aria-label="Pattern 2" />
-    <EmptySwatch aria-label="No pattern" />
-  </SwatchPickerRow>
+<SwatchPicker aria-label="Patterns">
+  <ImageSwatch value="pattern1" src="/pattern1.png" aria-label="Pattern 1" />
+  <ImageSwatch value="pattern2" src="/pattern2.png" aria-label="Pattern 2" />
+  <EmptySwatch disabled aria-label="No pattern" />
 </SwatchPicker>
 ```
 
 ## Prop Mapping
 
-| v8                         | v9                                 | Notes                                                        |
-| -------------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| `colorCells`               | `<ColorSwatch>` children           | Render one `<ColorSwatch value={id} color={color}>` per cell |
-| `selectedId`               | `selectedValue`                    | Must match the `value` prop on a `<ColorSwatch>`             |
-| `defaultSelectedId`        | `defaultSelectedValue`             |                                                              |
-| `onChange`                 | `onSelectionChange`                | `(ev, data: { selectedValue, selectedSwatch }) => void`      |
-| `columnCount`              | `<SwatchPickerRow>` children count | Layout is CSS-driven; use rows and CSS grid                  |
-| `cellHeight` / `cellWidth` | `size` on swatch                   | `"extra-small"` \| `"small"` \| `"medium"` \| `"large"`      |
-| `cellShape`                | `shape`                            | `"circular"` \| `"rounded"` \| `"square"`                    |
-| `disabled`                 | `disabled`                         |                                                              |
-| `isControlled`             | Use `selectedValue`                | Pass `selectedValue` for controlled mode                     |
-| `styles`                   | `className`                        | Use `makeStyles`                                             |
-| `theme`                    | —                                  | Use `FluentProvider`                                         |
+| v8                         | v9                         | Notes                                                                                                      |
+| -------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `colorCells`               | `<ColorSwatch>` children   | Render one `<ColorSwatch value={id} color={color}>` per cell                                               |
+| `selectedId`               | `selectedValue`            | Must match the `value` prop on a `<ColorSwatch>`                                                           |
+| `defaultSelectedId`        | `defaultSelectedValue`     |                                                                                                            |
+| `onChange`                 | `onSelectionChange`        | `(ev, data: { selectedValue, selectedSwatch }) => void`                                                    |
+| `columnCount`              | `renderSwatchPickerGrid`   | Set `layout="grid"` and pass `columnCount` to the utility                                                  |
+| `cellHeight` / `cellWidth` | `size` on picker or swatch | Semantic sizes replace arbitrary dimensions; use CSS for a custom size                                     |
+| `cellMargin`               | `spacing`                  | `"small"` or `"medium"`                                                                                    |
+| `cellShape`                | `shape`                    | Map v8 `"circle"` to v9 `"circular"`; `"square"` is unchanged                                              |
+| `disabled`                 | `disabled` on each swatch  | The v9 container has no disabled prop; fan it out to every `ColorSwatch`, `ImageSwatch`, and `EmptySwatch` |
+| `isControlled`             | Use `selectedValue`        | Pass `selectedValue` for controlled mode                                                                   |
+| `styles`                   | `className`                | Use `makeStyles`                                                                                           |
+| `theme`                    | —                          | Use `FluentProvider`                                                                                       |
+
+## Behavioral and visual differences
+
+- v8 defaults to 20px circular cells with a 10px margin. v9 defaults to
+  `size="medium"`, `shape="square"`, and `spacing="medium"`. V9
+  `size="extra-small"` supplies the 20px cell, but its spacing presets are only
+  2px (`"small"`) and 4px (`"medium"`). For an approximate migration, set
+  `shape="circular"`, `size="extra-small"`, and a semantic `spacing`. For the
+  exact v8 default geometry, override the picker gap:
+
+```tsx
+const useStyles = makeStyles({
+  v8DefaultSpacing: {
+    gap: '10px',
+  },
+});
+
+const styles = useStyles();
+
+<SwatchPicker
+  className={styles.v8DefaultSpacing}
+  shape="circular"
+  size="extra-small"
+  selectedValue={selected}
+  onSelectionChange={(_, data) => setSelected(data.selectedValue)}
+>
+  <ColorSwatch value="red" color="#d13438" aria-label="Red" />
+  <ColorSwatch value="blue" color="#0078d4" aria-label="Blue" />
+</SwatchPicker>;
+```
+
+- Arbitrary v8 `cellHeight`/`cellWidth` values have no semantic-size
+  equivalent. Apply a `makeStyles` class with explicit `width` and `height` to
+  each swatch when those exact dimensions are part of the product layout.
+- v9 `onSelectionChange` runs for every enabled swatch activation, including an
+  activation of the already-selected value. v8 `onChange` was guarded by a
+  selected-id change. Compare `data.selectedValue` with the current value if
+  migrated side effects must run only on an actual change.
+- v8 container-level `disabled` is not supported. Apply `disabled` to every
+  child, including placeholder `EmptySwatch` buttons.
+
+The following v8 behaviors have no container-level v9 equivalent:
+
+- hover and focus notifications: `onCellHovered` and `onCellFocused`;
+- custom cell render callbacks: `onRenderColorCell` and
+  `onRenderColorCellContent` (compose or wrap v9 swatches instead);
+- hover-driven focus: `focusOnHover` and `mouseLeaveParentSelector`;
+- FocusZone controls: `doNotContainWithinFocusZone`,
+  `shouldFocusCircularNavigate`, `ariaPosInSet`, and `ariaSetSize`;
+- cell-specific styling callbacks and dimensions: `getColorGridCellStyles`,
+  `cellBorderWidth`, and arbitrary pixel sizing.
+
+Do not pass those props through. Reimplement only behavior the product still
+requires, using native events, composition, `makeStyles`, and the v9
+`focusMode`, `layout`, `size`, `shape`, and `spacing` APIs where applicable.

@@ -13,7 +13,13 @@ Fluent UI v8 provides the `DocumentCardDetails`, `DocumentCardTitle`, and `Docum
 `DocumentCardDetails` => `CardHeader` <br />
 `DocumentCardTitle` => No equivalent, but can be achieved with a `Text` component <br />
 `DocumentCardActivity` with `activity` prop => `CardHeader` with `description` prop <br />
-`DocumentCardActivity` with `people` prop => `CardHeader` with `image` and `header` props <br />
+`DocumentCardActivity` with `people` prop => Compose `Avatar` elements in the `CardHeader` `image` slot <br />
+
+`DocumentCardActivity.people` is an array, not a single person. Preserve the
+visible people and an accessible `+N` overflow indicator instead of silently
+using only the first person. `DocumentCardTitle.shouldTruncate` defaults to
+`true`; v9 does not apply that behavior automatically, so add `truncate` and a
+native `title` containing the complete text.
 
 Before:
 
@@ -32,10 +38,20 @@ const Component = () => (
       <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate />
       <DocumentCardActivity
         activity="Created a few minutes ago"
-        people={{
-          name: 'Annie Lindqvist',
-          profileImageSrc: TestImages.personaFemale,
-        }}
+        people={[
+          {
+            name: 'Annie Lindqvist',
+            profileImageSrc: TestImages.personaFemale,
+          },
+          {
+            name: 'Miguel Garcia',
+            profileImageSrc: TestImages.personaMale,
+          },
+          {
+            name: 'Mona Kane',
+            profileImageSrc: TestImages.personaFemale,
+          },
+        ]}
       />
     </DocumentCardDetails>
   </DocumentCard>
@@ -44,20 +60,90 @@ const Component = () => (
 
 After:
 
-```jsx
+```tsx
 import * as React from 'react';
-import { Caption1, Card, CardHeader, Text } from '@fluentui/react-components';
+import { Avatar, Caption1, Card, CardHeader, makeStyles, Text } from '@fluentui/react-components';
+
+const people = [
+  { name: 'Annie Lindqvist', image: 'annie.jpg' },
+  { name: 'Miguel Garcia', image: 'miguel.jpg' },
+  { name: 'Mona Kane', image: 'mona.jpg' },
+];
+
+const maxVisiblePeople = 2;
+
+const useStyles = makeStyles({
+  card: {
+    minWidth: 0,
+    width: '320px',
+  },
+  people: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+  },
+  title: {
+    display: 'block',
+    minWidth: 0,
+  },
+  visuallyHidden: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: 0,
+  },
+});
 
 export const Component = () => {
+  const styles = useStyles();
+  const visiblePeople = people.slice(0, maxVisiblePeople);
+  const overflowCount = people.length - visiblePeople.length;
+
   return (
-    <Card>
-      <Text size={400}>Revenue stream proposal fiscal year 2016 version02.pptx</Text>
+    <Card className={styles.card}>
       <CardHeader
-        image={<img className="sbdocs-img" src="powerpoint_logo.svg" alt="" />}
-        header={<Text weight="bold">Annie Lindqvist</Text>}
+        image={
+          <div className={styles.people}>
+            {visiblePeople.map(person => (
+              <Avatar key={person.name} name={person.name} image={{ src: person.image }} size={24} />
+            ))}
+            {overflowCount > 0 ? (
+              <>
+                <Text aria-hidden>+{overflowCount}</Text>
+                <span className={styles.visuallyHidden}>
+                  {overflowCount} additional {overflowCount === 1 ? 'person' : 'people'}:{' '}
+                  {people
+                    .slice(maxVisiblePeople)
+                    .map(person => person.name)
+                    .join(', ')}
+                </span>
+              </>
+            ) : null}
+          </div>
+        }
+        header={
+          <Text
+            className={styles.title}
+            weight="bold"
+            truncate
+            title="Revenue stream proposal fiscal year 2016 version02.pptx"
+          >
+            Revenue stream proposal fiscal year 2016 version02.pptx
+          </Text>
+        }
         description={<Caption1>Created a few minutes ago</Caption1>}
       />
     </Card>
   );
 };
 ```
+
+When only one person is present, a single `Avatar` is sufficient. The v8
+`allowPhoneInitials` and `initialsColor` behavior does not map one-to-one; set
+the v9 `Avatar` name, image, color, and initials behavior explicitly when those
+details are important.

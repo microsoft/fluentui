@@ -9,12 +9,16 @@ import { Meta } from '@storybook/addon-docs/blocks';
 v9 `Rating` has a cleaner API. The main differences are the `value` prop rename, a new `RatingDisplay` component for read-only display, and half-star support via `step`.
 
 - `rating` prop renamed to `value`
+- `defaultRating` prop renamed to `defaultValue`
 - Read-only display → use `RatingDisplay` instead of `readOnly` prop
-- `icon` (string icon name) → `iconFilled` / `iconOutline` (React element types from `@fluentui/react-icons`)
+- `icon` / `unselectedIcon` (string icon names) → `iconFilled` / `iconOutline` (React element types from `@fluentui/react-icons`)
 - `onChange` signature changed
 - New `step={0.5}` for half-star ratings
 - New `color` prop: `"neutral"` (default) \| `"brand"` \| `"marigold"`
 - `ariaLabelFormat` → `itemLabel` (function)
+
+The uncontrolled defaults also differ. v8 displays 1 when neither `rating` nor
+`defaultRating` is supplied (unless `allowZeroStars` is set), while v9 starts at 0. Set `defaultValue={1}` to preserve the v8 default.
 
 ## Examples
 
@@ -76,23 +80,30 @@ import { HeartFilled, HeartRegular } from '@fluentui/react-icons';
 
 ## Prop Mapping
 
-| v8 `IRatingProps`        | v9 `RatingProps`             | Notes                                                       |
-| ------------------------ | ---------------------------- | ----------------------------------------------------------- |
-| `rating`                 | `value`                      | Renamed                                                     |
-| `max`                    | `max`                        | Default 5                                                   |
-| `min` / `allowZeroStars` | —                            | Use `value={0}` as initial value                            |
-| `readOnly`               | Use `<RatingDisplay>`        | Separate component for display-only                         |
-| `icon`                   | `iconFilled` / `iconOutline` | Pass a React component type (not an icon name string)       |
-| `size`                   | `size`                       | Values changed: see size table below                        |
-| `onChange`               | `onChange`                   | Type: `EventHandler<RatingOnChangeEventData>`; `data.value` |
-| `ariaLabelFormat`        | `itemLabel`                  | Now a function: `(rating) => string`                        |
-| `styles`                 | `className`                  | Use `makeStyles`                                            |
-| `theme`                  | —                            | Use `FluentProvider`                                        |
+| v8 `IRatingProps` | v9 `RatingProps`      | Notes                                                                                                    |
+| ----------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| `rating`          | `value`               | Renamed                                                                                                  |
+| `defaultRating`   | `defaultValue`        | Renamed; use `defaultValue={1}` to preserve the v8 default                                               |
+| `max`             | `max`                 | Default 5 in both versions                                                                               |
+| `min`             | —                     | v9 always renders values 1 through `max`; enforce a higher minimum in controlled app state if required   |
+| `allowZeroStars`  | —                     | v9 can start at or be controlled to 0 without a prop; as in v8, 0 is not selectable by mouse or keyboard |
+| `readOnly`        | Use `<RatingDisplay>` | Separate component for display-only                                                                      |
+| `disabled`        | Use `<RatingDisplay>` | v9 `Rating` has no disabled state; reproduce any distinct disabled styling separately                    |
+| `icon`            | `iconFilled`          | Pass an icon component type, not a v8 icon-name string                                                   |
+| `unselectedIcon`  | `iconOutline`         | Pass an icon component type, not a v8 icon-name string                                                   |
+| `size`            | `size`                | Values changed: see size table below                                                                     |
+| `onChange`        | `onChange`            | Type: `EventHandler<RatingOnChangeEventData>`; read the new rating from `data.value`                     |
+| `ariaLabelFormat` | `itemLabel`           | Now a function: `(rating) => string`                                                                     |
+| `styles`          | `className`           | Use `makeStyles`                                                                                         |
+| `theme`           | —                     | Use `FluentProvider`                                                                                     |
 
 ### Size Mapping
 
-| v8 `RatingSize`    | v9 `size`                    |
-| ------------------ | ---------------------------- |
-| `RatingSize.Small` | `"small"`                    |
-| `RatingSize.Large` | `"large"`                    |
-| (default)          | `"extra-large"` (v9 default) |
+| v8 `RatingSize`                 | v9 `size`  |
+| ------------------------------- | ---------- |
+| `RatingSize.Small` (v8 default) | `"medium"` |
+| `RatingSize.Large`              | `"large"`  |
+
+v9 also provides `"small"` and `"extra-large"` sizes, but they do not correspond
+to either v8 size. The v9 default is `"extra-large"`, so always set `size` when
+preserving v8 dimensions.
