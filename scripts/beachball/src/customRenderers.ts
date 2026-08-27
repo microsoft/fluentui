@@ -4,16 +4,6 @@ import { fluentRepoDetails, getPullRequestForCommit } from '@fluentui/scripts-gi
 import { Octokit } from '@octokit/rest';
 import { ChangelogEntry, PackageChangelogRenderInfo } from 'beachball';
 
-const githubPAT = process.env.BEACHBALL_GIT_TOKEN;
-if (!githubPAT && (process.argv.includes('bump') || process.argv.includes('publish'))) {
-  console.warn('\nBEACHBALL_GIT_TOKEN environment variable not found. GitHub requests may be rate-limited.\n');
-}
-
-const github = new Octokit({
-  ...fluentRepoDetails,
-  ...(githubPAT && { auth: 'token ' + githubPAT }),
-});
-
 const repoUrl = `https://github.com/${fluentRepoDetails.owner}/${fluentRepoDetails.repo}`;
 
 export async function renderHeader(renderInfo: PackageChangelogRenderInfo): Promise<string> {
@@ -41,14 +31,14 @@ export async function renderEntry(entry: ChangelogEntry): Promise<string> {
   return `- ${entry.comment} (${commitLink} by ${entry.author})`;
 }
 
-const prNumberCache = new Map<ChangelogEntry, number | undefined>();
+const prNumberCache = new Map<string, number | undefined>();
 
 async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> {
-  if (prNumberCache.has(entry)) {
-    return prNumberCache.get(entry);
-  }
   if (!entry.commit || entry.commit === 'not available') {
     return undefined;
+  }
+  if (prNumberCache.has(entry.commit)) {
+    return prNumberCache.get(entry.commit);
   }
   // Look for (presumably) the PR number at the end of the first line of the commit
   try {
@@ -59,7 +49,7 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
       const prMatch = message.match(/\(#(\d+)\)$/m);
       if (prMatch) {
         const prNumber = Number(prMatch[1]);
-        prNumberCache.set(entry, prNumber);
+        prNumberCache.set(entry.commit, prNumber);
         return prNumber;
       }
     }
@@ -69,10 +59,30 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
 
   // Or fetch from GitHub API
   console.log(`Attempting to fetch pull request corresponding to ${entry.commit}...`);
+  const github = getGithubClient();
   const pr = await getPullRequestForCommit({ commit: entry.commit, github, repoDetails: fluentRepoDetails });
-  prNumberCache.set(entry, pr?.number);
+  prNumberCache.set(entry.commit, pr?.number);
   if (pr) {
     console.log('...success!'); // failure message is logged by getPullRequestForCommit
     return pr.number;
   }
+}
+
+let _github: Octokit | undefined;
+
+function getGithubClient(): Octokit {
+  if (_github) {
+    return _github;
+  }
+
+  const githubToken = process.env.BEACHBALL_GIT_TOKEN;
+  if (!githubToken) {
+    console.warn('\nBEACHBALL_GIT_TOKEN environment variable not found. GitHub requests may be rate-limited.\n');
+  }
+  _github = new Octokit({
+    ...fluentRepoDetails,
+    ...(githubToken && { auth: 'token ' + githubToken }),
+  });
+
+  return _github;
 }
