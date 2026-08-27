@@ -207,6 +207,41 @@ describe('Toast (headless)', () => {
     cy.get('#make').click().get(TOAST).trigger('mouseenter').wait(700).get(TOAST).should('exist');
   });
 
+  it('should pause all toasts while focus is in the toaster', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is another toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().get(TOAST_CONTAINER).first().focus().wait(700);
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
+    cy.get('#make').focus().wait(700);
+    cy.get(TOAST_CONTAINER).should('not.exist');
+  });
+
   it('should follow lifecycle', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();

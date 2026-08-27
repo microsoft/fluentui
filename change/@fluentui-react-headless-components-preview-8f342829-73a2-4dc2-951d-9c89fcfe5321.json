@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add native focus navigation and pause timeouts while focus is in a toast stack",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -37,27 +37,42 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     ...rest
   } = props;
 
-  const { toastsToRender, isToastVisible, tryRestoreFocus, closeAllToasts } = useToasterState<HTMLDivElement>({
-    toasterId,
-    position,
-    timeout,
-    pauseOnWindowBlur,
-    pauseOnHover,
-    priority,
-    shortcuts,
-    limit,
-  });
+  const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
+    useToasterState<HTMLDivElement>({
+      toasterId,
+      position,
+      timeout,
+      pauseOnWindowBlur,
+      pauseOnHover,
+      priority,
+      shortcuts,
+      limit,
+    });
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
-  const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always(
-    getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest),
-    {
-      elementType: 'div',
-    },
-  );
+  const {
+    onBlur: onBlurProp,
+    onFocus: onFocusProp,
+    onKeyDown: onKeyDownProp,
+    ...rootProps
+  } = slot.always(getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest), {
+    elementType: 'div',
+  });
+  const onFocus = useEventCallback((e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      pauseAllToasts();
+    }
+    onFocusProp?.(e);
+  });
+  const onBlur = useEventCallback((e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      playAllToasts();
+    }
+    onBlurProp?.(e);
+  });
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === Escape) {
       e.preventDefault();
@@ -104,6 +119,9 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
+        focusgroup: 'toolbar block itemcontrols',
+        onBlur,
+        onFocus,
         onKeyDown,
         popover: 'manual' as const,
         'data-toaster-position': toastPosition,
