@@ -1,0 +1,42 @@
+@reference '#theme';
+
+/* The seam overrides ride to the group's halves on the item context and are authored as one class
+   those halves carry, so nothing here reaches out of the group root. Positional selection is
+   Griffel's own: :nth-of-type matches by ELEMENT TYPE, so a group whose two halves are different
+   elements matches neither positional rule — identically in both implementations. The seam side is
+   logical, which is what Griffel's build-time physical pair resolves to in each direction. The
+   level sits one above MenuItem's own radius and padding, which is what carries the override.
+
+   INVARIANT — the level only outranks MenuItem. A half's own flavour module may itself sit in l2
+   (MenuItemLink's .root does; MenuItemSwitch's l2 block declares no .root, and the checkbox and
+   radio flavours ship no module of their own), and at EQUAL layer precedence falls back to
+   specificity and then source order — the thing the layer was chosen to avoid. It holds today only
+   because no l2 flavour module declares a property this block sets, so none of them may ever
+   declare a radius, an inline-start padding, `flex` or `align-self`. The day one does, this block
+   moves to a later layer rather than resting on the tie-break. */
+@layer fui.components.l2 {
+  .root {
+    @apply flex;
+  }
+
+  .item {
+    &:nth-of-type(1) {
+      @apply flex-1;
+    }
+
+    &:nth-of-type(2) {
+      @apply rounded-s-none ps-0;
+
+      &::before {
+        @apply h-20 w-thin bg-neutral-stroke-1 content-[''];
+      }
+    }
+
+    /* Griffel routes multiline through a child callback that stamps the group, then selects the
+       second half from it. The condition reads off the reporting half instead, which the item's
+       own styles hook already stamps. */
+    &[data-multiline] ~ &:nth-of-type(2) {
+      @apply self-center;
+    }
+  }
+}

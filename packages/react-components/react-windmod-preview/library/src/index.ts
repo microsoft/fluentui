@@ -1271,8 +1271,16 @@ export {
 } from './menu-group-header';
 export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from './menu-group-header';
 
-export { MenuItem, menuItemClassNames, renderMenuItem, useMenuItem, useMenuItemStyles } from './menu-item';
-export type { MenuItemProps, MenuItemSlots, MenuItemState } from './menu-item';
+export {
+  MenuItem,
+  MenuItemContextProvider,
+  menuItemClassNames,
+  renderMenuItem,
+  useMenuItem,
+  useMenuItemContext,
+  useMenuItemStyles,
+} from './menu-item';
+export type { MenuItemContextValue, MenuItemProps, MenuItemSlots, MenuItemState } from './menu-item';
 
 export {
   MenuItemCheckbox,
@@ -1328,6 +1336,15 @@ export {
   useMenuPopoverStyles,
 } from './menu-popover';
 export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './menu-popover';
+
+export {
+  MenuSplitGroup,
+  menuSplitGroupClassNames,
+  renderMenuSplitGroup,
+  useMenuSplitGroup,
+  useMenuSplitGroupStyles,
+} from './menu-split-group';
+export type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './menu-split-group';
 
 export {
   MenuTrigger,

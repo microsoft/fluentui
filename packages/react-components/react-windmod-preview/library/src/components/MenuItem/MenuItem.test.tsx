@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { ChevronLeftFilled, ChevronLeftRegular } from '@fluentui/react-icons/headless/svg/chevron-left';
+import { ChevronRightFilled, ChevronRightRegular } from '@fluentui/react-icons/headless/svg/chevron-right';
 
 import { isConformant } from '../../testing/isConformant';
+import { FluentProvider } from '../FluentProvider';
 import { Menu } from '../Menu/Menu';
 import { MenuList } from '../MenuList/MenuList';
 import { MenuPopover } from '../MenuPopover/MenuPopover';
@@ -51,6 +54,13 @@ const renderItem = (itemProps: MenuItemProps = {}, listFlags: ListFlags = {}) =>
 const renderSubmenuItem = (itemProps: MenuItemProps = {}) => renderItem({ hasSubmenu: true, ...itemProps });
 
 const Consumer = () => <i data-consumer="" />;
+
+/** Every `d` a glyph paints, in document order — bundleIcon renders the filled and regular pair. */
+const pathsIn = (scope: Element): (string | null)[] =>
+  Array.from(scope.querySelectorAll('path'), path => path.getAttribute('d'));
+
+const glyphPaths = (...glyphs: React.ReactElement[]): (string | null)[] =>
+  glyphs.flatMap(glyph => pathsIn(render(glyph).container));
 
 describe('MenuItem', () => {
   isConformant({
@@ -150,6 +160,46 @@ describe('MenuItem', () => {
 
     // 8: an empty string is falsy but NOT nullish, so no glyph is injected — `||` would inject one.
     expect(hasGlyph({ submenuIndicator: '' }).svg).toBeNull();
+  });
+
+  it('swaps the default chevron for the provider direction instead of mirroring one glyph', () => {
+    // Griffel's own default is a per-direction glyph SWAP (useMenuItem.tsx), and a CSS mirror is
+    // not the same picture: a flipped raster antialiases differently from the natively drawn Left
+    // outline. Asserting the `d` attributes pins the glyph identity, which a transform cannot fake.
+    const right = glyphPaths(<ChevronRightFilled />, <ChevronRightRegular />);
+    const left = glyphPaths(<ChevronLeftFilled />, <ChevronLeftRegular />);
+
+    expect(right).not.toEqual(left);
+
+    const chevronUnder = (dir: 'ltr' | 'rtl', itemProps: MenuItemProps = {}) => {
+      const { container } = render(
+        <FluentProvider dir={dir}>
+          <Menu open>
+            <MenuTrigger>
+              <button>Trigger</button>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem hasSubmenu {...itemProps}>
+                  Item
+                </MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </FluentProvider>,
+      );
+
+      return container.querySelector<HTMLElement>(`.${styles.submenuIndicator}`)!;
+    };
+
+    expect(pathsIn(chevronUnder('ltr'))).toEqual(right);
+    expect(pathsIn(chevronUnder('rtl'))).toEqual(left);
+
+    // A CONSUMER glyph is never swapped and never mirrored — Griffel's `??=` only fills the default,
+    // so the rtl row must paint the consumer's own outline untouched.
+    const consumerGlyph = { submenuIndicator: { children: <ChevronRightRegular /> } };
+
+    expect(pathsIn(chevronUnder('rtl', consumerGlyph))).toEqual(glyphPaths(<ChevronRightRegular />));
   });
 
   it('renders no submenu indicator without a submenu', () => {

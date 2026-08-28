@@ -232,6 +232,9 @@ import { MenuPopoverProps } from '@fluentui/react-headless-components-preview/me
 import { MenuPopoverSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuPopoverState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuTriggerChildProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuTriggerProps } from '@fluentui/react-headless-components-preview/menu';
@@ -412,6 +415,7 @@ import { renderMenuItemRadio } from '@fluentui/react-headless-components-preview
 import { renderMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuList } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuPopover } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuSplitGroup } from '@fluentui/react-headless-components-preview/menu';
 import { renderMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 import { renderMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { renderMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -747,6 +751,7 @@ import { useMenuItemSwitch } from '@fluentui/react-headless-components-preview/m
 import { useMenuList } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuPopover } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuSplitGroup } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 import { useMessageBar } from '@fluentui/react-headless-components-preview/message-bar';
 import { useMessageBarActions } from '@fluentui/react-headless-components-preview/message-bar';
@@ -2141,6 +2146,12 @@ export const menuItemClassNames: {
     root: string;
 };
 
+// @internal (undocumented)
+export const MenuItemContextProvider: React_2.Provider<MenuItemContextValue | undefined>;
+
+// @internal
+export type MenuItemContextValue = Partial<MenuItemProps> & Partial<MenuItemLinkProps>;
+
 // @public
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
 
@@ -2220,6 +2231,20 @@ export { MenuPopoverSlots }
 export { MenuPopoverState }
 
 export { MenuProps }
+
+// @public
+export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
+
+// @public
+export const menuSplitGroupClassNames: {
+    root: string;
+};
+
+export { MenuSplitGroupProps }
+
+export { MenuSplitGroupSlots }
+
+export { MenuSplitGroupState }
 
 export { MenuState }
 
@@ -2936,6 +2961,8 @@ export { renderMenuItemSwitch }
 export { renderMenuList }
 
 export { renderMenuPopover }
+
+export { renderMenuSplitGroup }
 
 export { renderMenuTrigger }
 
@@ -4393,6 +4420,9 @@ export { useMenuItemCheckbox }
 // @public
 export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
 
+// @internal (undocumented)
+export const useMenuItemContext: () => MenuItemContextValue;
+
 export { useMenuItemLink }
 
 // @public
@@ -4422,6 +4452,11 @@ export { useMenuPopover }
 
 // @public
 export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+
+export { useMenuSplitGroup }
+
+// @public
+export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 export { useMenuTrigger }
 

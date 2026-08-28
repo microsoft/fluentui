@@ -5,6 +5,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItemSwitch, useMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
 import { CircleFilled } from '@fluentui/react-icons/headless/svg/circle';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
+import { useMenuItemContext } from '../MenuItem/menuItemContext';
 import type { MenuItemSwitchProps, MenuItemSwitchState } from './MenuItemSwitch.types';
 import { useMenuItemSwitchStyles } from './useMenuItemSwitchStyles';
 
@@ -27,10 +29,15 @@ const withThumb = (state: MenuItemSwitchState): MenuItemSwitchState =>
 /**
  * A MenuItemSwitch is a menu item that toggles a setting. Windmod MenuItemSwitch: the headless item
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
+ *
+ * It reads MenuItem's context for the reason MenuItemCheckbox does — Griffel's split-group seam
+ * reaches a selectable half through `.fui-MenuItem`. See MenuItem.
  */
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef(
   (props: MenuItemSwitchProps, ref: React.Ref<HTMLDivElement>) =>
-    renderMenuItemSwitch(useMenuItemSwitchStyles(withThumb(useMenuItemSwitch(props, ref)))),
+    renderMenuItemSwitch(
+      useMenuItemSwitchStyles(withThumb(useMenuItemSwitch(mergeContextProps(useMenuItemContext(), props), ref))),
+    ),
 ) as ForwardRefComponent<MenuItemSwitchProps>;
 
 MenuItemSwitch.displayName = 'MenuItemSwitch';

@@ -6,6 +6,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItemRadio, useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
 import { Checkmark16Filled } from '@fluentui/react-icons/headless/svg/checkmark';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
+import { useMenuItemContext } from '../MenuItem/menuItemContext';
 import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemRadioStyles } from './useMenuItemRadioStyles';
 
@@ -21,10 +23,15 @@ const withCheckmark = (state: MenuItemRadioState): MenuItemRadioState =>
 /**
  * A MenuItemRadio is a menu item that selects one of a group. Windmod MenuItemRadio: the
  * headless item decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
+ *
+ * It reads MenuItem's context for the reason MenuItemCheckbox does — Griffel's split-group seam
+ * reaches a selectable half through `.fui-MenuItem`. See MenuItem.
  */
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef(
   (props: MenuItemRadioProps, ref: React.Ref<ARIAButtonElement<'div'>>) =>
-    renderMenuItemRadio(useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(props, ref)))),
+    renderMenuItemRadio(
+      useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(mergeContextProps(useMenuItemContext(), props), ref))),
+    ),
   // Casting is required due to lack of distributive union to support union on @types/react
 ) as ForwardRefComponent<MenuItemRadioProps>;
 

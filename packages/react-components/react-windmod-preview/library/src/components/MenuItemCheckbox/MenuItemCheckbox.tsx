@@ -6,6 +6,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItemCheckbox, useMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
 import { Checkmark16Filled } from '@fluentui/react-icons/headless/svg/checkmark';
 
+import { mergeContextProps } from '../../utils/mergeContextProps';
+import { useMenuItemContext } from '../MenuItem/menuItemContext';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuItemCheckboxStyles } from './useMenuItemCheckboxStyles';
 
@@ -25,10 +27,18 @@ const withCheckmark = (state: MenuItemCheckboxState): MenuItemCheckboxState =>
 /**
  * A MenuItemCheckbox is a menu item that toggles. Windmod MenuItemCheckbox: the headless item
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
+ *
+ * It reads MenuItem's context because it IS a menu item: Griffel's split-group seam selects
+ * `.fui-MenuItem`, which this row's shared MenuItem styles put on its root, so a selectable half
+ * takes the seam there — and takes it here only if it reads the channel. See MenuItem.
  */
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef(
   (props: MenuItemCheckboxProps, ref: React.Ref<ARIAButtonElement<'div'>>) =>
-    renderMenuItemCheckbox(useMenuItemCheckboxStyles(withCheckmark(useMenuItemCheckbox(props, ref)))),
+    renderMenuItemCheckbox(
+      useMenuItemCheckboxStyles(
+        withCheckmark(useMenuItemCheckbox(mergeContextProps(useMenuItemContext(), props), ref)),
+      ),
+    ),
   // Casting is required due to lack of distributive union to support union on @types/react
 ) as ForwardRefComponent<MenuItemCheckboxProps>;
 

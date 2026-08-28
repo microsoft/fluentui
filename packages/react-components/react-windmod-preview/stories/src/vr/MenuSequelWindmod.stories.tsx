@@ -4,11 +4,13 @@ import {
   FluentProvider,
   Menu,
   MenuDivider,
+  MenuItem,
   MenuItemCheckbox,
   MenuItemLink,
   MenuItemSwitch,
   MenuList,
   MenuPopover,
+  MenuSplitGroup,
   MenuTrigger,
 } from '@fluentui/react-windmod-preview';
 import { bundleIcon } from '@fluentui/react-icons/headless';
@@ -28,9 +30,11 @@ export const MenuSequelWindmod = (): React.ReactNode => (
       MenuTrigger={MenuTrigger as never}
       MenuPopover={MenuPopover as never}
       MenuList={MenuList as never}
+      MenuItem={MenuItem as never}
       MenuItemCheckbox={MenuItemCheckbox as never}
       MenuItemLink={MenuItemLink as never}
       MenuItemSwitch={MenuItemSwitch as never}
+      MenuSplitGroup={MenuSplitGroup as never}
       MenuDivider={MenuDivider as never}
       Button={Button}
       Icon={CalendarMonth}

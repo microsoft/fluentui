@@ -797,7 +797,6 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
 | `TeachingPopoverCarousel` and its six family members                                                | headless ships them, windmod has not reskinned them yet (see [delta 45](#45-the-teachingpopover-carousel-is-not-shipped))               |
-| `MenuItemSwitch`, `MenuSplitGroup`                                                                  | headless ships both, windmod has not reskinned them yet; the other ten `Menu` subpaths all ship                                         |
 | `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |
 | `Persona`'s `presence` slot and `presenceOnly` prop                                                 | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                     |
 
@@ -868,6 +867,12 @@ one. They are listed because they are consumer-actionable, not because migrating
 - **A disabled `ColorSwatch` loses its 1px border on hover.** The hover reset is not undone by the disabled
   rule, so the swatch outline disappears under the cursor while `cursor: not-allowed` still shows.
   Reproduced faithfully from Griffel.
+- **A `MenuSplitGroup` whose two halves are different elements loses its seam styling.** The group selects
+  its halves positionally with `:nth-of-type`, which counts by ELEMENT TYPE — so a `MenuItemLink` action
+  half (an `<a>`) beside a `MenuItem` trigger half (a `<div>`) makes each half the _first_ of its own type.
+  The zeroed inner radii, the leading padding and the 1px divider all stop applying, and both halves take
+  `flex: 1` instead of only the first. Griffel's selector has the same shape and misfires identically, so
+  both libraries render this the same wrong way. Keep both halves on the same element type.
 
 ### Mixing windmod with `@fluentui/react-components`
 

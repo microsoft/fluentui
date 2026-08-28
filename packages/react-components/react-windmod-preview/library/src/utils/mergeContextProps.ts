@@ -21,8 +21,10 @@ import clsx from 'clsx';
  * `useMergedRefs`, which is a hook and cannot live in a pure helper; no context in this library
  * publishes one, and quietly calling a ref with `mergeCallbacks` would break object refs outright.
  *
- * Every context shape shipped today is scalar-only, so the callback/`className`/`style` branches are
- * currently unreached; they exist so a later, wider context needs no second helper.
+ * The `className` branch is NOT decorative. MenuItemContext publishes the MenuSplitGroup seam class
+ * on it, and that merge — context first, local last — is the whole mechanism by which a split group
+ * styles halves it can neither class nor slot. The callback and `style` branches are still unreached
+ * by any shipped context; they exist so a later, wider one needs no second helper.
  *
  * Pass a container-owned context (`FieldContext`) already narrowed to the keys the styling layer
  * reads — the wide aria half of that value is the base hooks' business, not this helper's.

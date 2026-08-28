@@ -243,16 +243,14 @@
     }
   }
 
-  /* One glyph serves both directions: the chevron is mirrored under rtl rather than swapped for a
-     separate Left glyph, so a consumer-supplied icon is mirrored too.
+  /* No rtl mirror here: the direction-correct glyph is chosen in MenuItem.tsx, the way Griffel and
+     BreadcrumbDivider both do it. A CSS flip rasterises a mirrored outline rather than the natively
+     drawn Left one — measurably different antialiasing that survives layer promotion — and it would
+     flip a consumer-supplied indicator, which Griffel's default-only swap never does.
      Griffel reaches the filled/regular swap with a descendant selector from the ROW, so it lands
      on this slot's chevron as well as on the icon slot's glyph — measured; both are reproduced. */
   .submenu-indicator {
     @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[0];
-
-    @variant rtl {
-      @apply scale-x-[-1];
-    }
 
     @variant group-hover/fui-menu-item {
       & * {

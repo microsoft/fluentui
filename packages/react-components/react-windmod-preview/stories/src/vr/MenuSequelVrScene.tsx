@@ -6,10 +6,12 @@ import * as React from 'react';
 import type {
   ButtonLike,
   LinkItemLike,
+  MenuItemLike,
   MenuListLike,
   MenuLike,
   MenuPopoverLike,
   MenuTriggerLike,
+  PlainLike,
   SelectableItemLike,
 } from './menuSurfaceHarness';
 import {
@@ -26,9 +28,11 @@ export type MenuSequelVrSceneProps = {
   MenuTrigger: MenuTriggerLike;
   MenuPopover: MenuPopoverLike;
   MenuList: MenuListLike;
+  MenuItem: MenuItemLike;
   MenuItemCheckbox: SelectableItemLike;
   MenuItemLink: LinkItemLike;
   MenuItemSwitch: SelectableItemLike;
+  MenuSplitGroup: PlainLike;
   MenuDivider: React.ComponentType<Record<string, never>>;
   Button: ButtonLike;
   Icon: React.ComponentType;
@@ -56,9 +60,11 @@ export const MenuSequelVrScene = ({
   MenuTrigger,
   MenuPopover,
   MenuList,
+  MenuItem,
   MenuItemCheckbox,
   MenuItemLink,
   MenuItemSwitch,
+  MenuSplitGroup,
   MenuDivider,
   Button,
   Icon,
@@ -194,8 +200,45 @@ export const MenuSequelVrScene = ({
         </MenuList>
       </Cell>
 
-      {/* 6 and 7 — RESERVED for MenuSplitGroup (split basic, split multiline). Held out of this
-          cycle; the slots stay empty so adding them moves nothing else. */}
+      {/* 6 — the flex-1 on the action half, the seam's zeroed start radii and leading padding on
+          the trigger half, and the divider that half draws before itself. Stacked twice: the
+          plain list, then hasIcons, where the trigger half must DROP the reserved icon gutter —
+          which only happens when the group provides its own context. */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 120 }}>
+        <Cell label="split basic" {...common}>
+          <MenuList>
+            <MenuSplitGroup>
+              <MenuItem>
+                <Label>Send</Label>
+              </MenuItem>
+              <MenuItem hasSubmenu />
+            </MenuSplitGroup>
+          </MenuList>
+        </Cell>
+        <Cell label="split icons" {...common}>
+          <MenuList hasIcons>
+            <MenuSplitGroup>
+              <MenuItem icon={<Icon />}>
+                <Label>Send</Label>
+              </MenuItem>
+              <MenuItem hasSubmenu />
+            </MenuSplitGroup>
+          </MenuList>
+        </Cell>
+      </div>
+
+      {/* 7 — the trigger half centres itself against a multiline action half. Griffel routes that
+          through a child callback stamping the group; this reads the reporting half's own stamp. */}
+      <Cell label="split multiline" {...common}>
+        <MenuList>
+          <MenuSplitGroup>
+            <MenuItem subText="Supporting text">
+              <Label>Send</Label>
+            </MenuItem>
+            <MenuItem hasSubmenu />
+          </MenuSplitGroup>
+        </MenuList>
+      </Cell>
 
       {/* 8 — inter-item rhythm across the two new roots and a shipped one, that the indicator's own
           hover ladder does not leak to the row, and that the new roots coexist with MenuDivider. */}
@@ -212,6 +255,12 @@ export const MenuSequelVrScene = ({
             <MenuItemSwitch name="mixed" value="off" icon={<Icon />}>
               <Label>Switch off</Label>
             </MenuItemSwitch>
+            <MenuSplitGroup>
+              <MenuItem icon={<Icon />}>
+                <Label>Split</Label>
+              </MenuItem>
+              <MenuItem hasSubmenu />
+            </MenuSplitGroup>
           </MenuList>
         </Cell>
       </div>

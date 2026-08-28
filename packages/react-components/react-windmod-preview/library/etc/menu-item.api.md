@@ -5,9 +5,11 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { MenuItemLinkProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemState } from '@fluentui/react-headless-components-preview/menu';
+import * as React_2 from 'react';
 import { renderMenuItem } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItem } from '@fluentui/react-headless-components-preview/menu';
 
@@ -19,6 +21,12 @@ export const menuItemClassNames: {
     root: string;
 };
 
+// @internal (undocumented)
+export const MenuItemContextProvider: React_2.Provider<MenuItemContextValue | undefined>;
+
+// @internal
+export type MenuItemContextValue = Partial<MenuItemProps> & Partial<MenuItemLinkProps>;
+
 export { MenuItemProps }
 
 export { MenuItemSlots }
@@ -28,6 +36,9 @@ export { MenuItemState }
 export { renderMenuItem }
 
 export { useMenuItem }
+
+// @internal (undocumented)
+export const useMenuItemContext: () => MenuItemContextValue;
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => MenuItemState;

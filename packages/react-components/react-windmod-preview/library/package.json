@@ -676,6 +676,16 @@
         "default": "./lib-commonjs/menu-popover.cjs"
       }
     },
+    "./menu-split-group": {
+      "import": {
+        "types": "./dist/menu-split-group.d.ts",
+        "default": "./lib/menu-split-group.js"
+      },
+      "require": {
+        "types": "./dist/menu-split-group.d.cts",
+        "default": "./lib-commonjs/menu-split-group.cjs"
+      }
+    },
     "./menu-trigger": {
       "import": {
         "types": "./dist/menu-trigger.d.ts",
