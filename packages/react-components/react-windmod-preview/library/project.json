@@ -9,7 +9,7 @@
     "exportMap": {
       "root": true,
       "subpathEntryPoints": ["src/*.ts"],
-      "staticSubpaths": ["./styles.css", "./variants.css"]
+      "staticSubpaths": ["./base.css", "./css/*", "./styles.css", "./variants.css"]
     }
   },
   "targets": {

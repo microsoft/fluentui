@@ -7,18 +7,28 @@
  *
  * Per package that owns at least one `*.module.css` this emits:
  *
- *  1. `dist/styles.css` — one aggregated, plain-CSS, layered stylesheet. The canonical
- *     `@layer` order statement is PREPENDED verbatim: Tailwind v4 is free to rewrite or
- *     trim a multi-name `@layer` statement while compiling a module, so its output is not
- *     trusted to carry it (D13). Re-declaring an identical order later in the file is a
- *     no-op (CSS Cascade 5), so whatever Tailwind emitted stays harmless.
- *     The stylesheet contains component rules ONLY — the theme emission
- *     (`--base-scale`, `--spacing`, …) is a standalone root artifact imported once per
- *     document and is NEVER embedded per package (D13). Modules only `@reference '#theme'`,
- *     which emits nothing, so the compiled rules merely *reference* those custom
- *     properties (`calc(var(--spacing, calc(1px * var(--base-scale))) * 8)`).
+ *  1. `dist/base.css` — the ROOT stylesheet. The canonical `@layer` order statement plus the
+ *     deduplicated `@property` registrations Tailwind emits per module (422 blocks collapse to
+ *     32 distinct on windmod). Consumers import it once per document, head-of-document, either
+ *     directly or at the top of their own root stylesheet. It is the runtime counterpart of the
+ *     authoring-time `@reference '#theme'`.
  *
- *  2. A generated class-map JS module per `*.module.css`, written next to the compiled
+ *  2. `dist/css/<source path>.css` — one chunk per `*.module.css`, carrying that component's
+ *     rules and its own `@keyframes` (all `fuicm-`-hashed, so module-owned). A chunk declares
+ *     layer BLOCKS only; the layer ORDER statement is the root sheet's exclusively, and the root
+ *     sheet must reach the document first — see {@link writeComponentChunks}.
+ *
+ *  3. `dist/styles.css` — the batteries-included aggregate: the root sheet followed by every
+ *     chunk, assembled from those very pieces so the two delivery modes cannot drift. Retained
+ *     as the public `"./styles.css"` for zero-config, SSR and CommonJS consumers.
+ *
+ *     None of the three carry theme emission: the theme (`--base-scale`, `--spacing`, the token
+ *     families, the resets) is a standalone artifact of the theme package, imported once per
+ *     document and NEVER embedded per package (D13). Modules only `@reference '#theme'`, which
+ *     emits nothing, so the compiled rules merely *reference* those custom properties
+ *     (`calc(var(--spacing, calc(1px * var(--base-scale))) * 8)`).
+ *
+ *  4. A generated class-map JS module per `*.module.css`, written next to the compiled
  *     component code in every module output (`lib/`, `lib-commonjs/`, …) as
  *     `<Name>.module.css.js` — or `<Name>.module.css.cjs`, see below — plus a
  *     post-transform pass that repoints the emitted `'./<Name>.module.css'` specifiers
@@ -45,10 +55,12 @@
  * is never renamed, `.js` is already CommonJS there, and their build output is byte-identical.
  *
  * ── Stylesheet auto-loading (D1) ────────────────────────────────────────────────────
- * The side-effect `import '<…>/dist/styles.css'` is emitted into the ESM class map ONLY.
+ * The side-effect `import '<…>/dist/css/<component>.css'` is emitted into the ESM class map ONLY,
+ * and points at that component's OWN chunk.
  *
  *  - Bundler consumers resolve `@fluentui/<pkg>` through `exports.import` / the `module`
- *    field → `lib/` → they import the class map → they get the stylesheet automatically.
+ *    field → `lib/` → they import the class map → they get that component's chunk
+ *    automatically, and nothing else.
  *    `"sideEffects": ["**\/*.css"]` keeps that import from being tree-shaken (without the
  *    allowlist the import is dropped and the component renders unstyled).
  *  - `require()` in plain node resolves through `exports.node` / `exports.require` →
@@ -63,7 +75,7 @@
 
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { dirname, join, relative, sep } from 'node:path';
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 
 import { logger, readJsonFile } from '@nx/devkit';
 import { globSync } from 'fast-glob';
@@ -114,13 +126,38 @@ export const CANONICAL_LAYER_STATEMENT =
   '@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;';
 
 const CSS_MODULE_GLOB = '**/*.module.css';
+
 /**
- * One aggregated stylesheet per package. Splitting per component was evaluated and
- * dropped: the per-fixture size regression only appears in single-component
- * micro-bundles and washes out in aggregate, while N stylesheet subpaths would break
- * the public ./styles.css export for SSR/CJS consumers.
+ * The batteries-included aggregate: every chunk concatenated after the root sheet. Retained as
+ * the zero-config entry (`"./styles.css"`) for SSR/CJS consumers and for anyone who would rather
+ * ship one file than let the bundler collect chunks. Per-component delivery is now the default
+ * for bundler consumers — see {@link CHUNK_DIRECTORY} — so this file is no longer what the ESM
+ * class maps import.
  */
 const STYLESHEET_RELATIVE_PATH = 'dist/styles.css';
+
+/**
+ * The ROOT stylesheet: the `@layer` order statement plus the deduplicated `@property`
+ * registrations lifted out of every component chunk. Imported once per document, head-of-document
+ * (directly, or transitively through the consumer's own root sheet — both modes are documented in
+ * the package's MIGRATION.md). It is the runtime counterpart of the authoring-time
+ * `@reference '#theme'`.
+ *
+ * Plain CSS with no Tailwind and no CSS-Modules syntax, so it works identically as a bundler
+ * import, a `<link href>`, or a raw CSS `@import` target.
+ */
+const ROOT_STYLESHEET_RELATIVE_PATH = 'dist/base.css';
+
+/**
+ * Per-component chunks, mirroring the source-relative path
+ * (`dist/css/components/Button/Button.css`). The ESM class map side-effect-imports ITS OWN chunk,
+ * so a consumer downloads exactly the components it uses.
+ *
+ * `dist/` rather than `lib/`: `dist/` already owns the aggregate, so every CSS artifact stays in
+ * one place, and a `.css` sitting beside `Button.module.css.js` would share a namespace with the
+ * specifier-rewrite pass ({@link rewriteCssModuleSpecifiers}) for no benefit.
+ */
+const CHUNK_DIRECTORY = 'dist/css';
 
 /**
  * Re-exported for tests and for the `dist/styles.css` probe; the value itself is owned by
@@ -158,6 +195,23 @@ interface CompiledCssModule {
   classMap: Record<string, string>;
 }
 
+/** A compiled module after its globally-scoped `@property` registrations have been lifted out. */
+/**
+ * `css` is deliberately dropped rather than carried alongside `chunkCss`.
+ *
+ * Both are "the module's CSS", but only `chunkCss` has had the `@property` registrations lifted
+ * out. Keeping the pre-split text in scope means one mistyped identifier in the chunk writer or
+ * the aggregate assembler silently restores all 30 KB of duplication, with every test still green
+ * — the split is invisible to anything that checks rules rather than bytes. Omitting the field
+ * turns that mistake into a compile error.
+ */
+interface SplitCssModule extends Omit<CompiledCssModule, 'css'> {
+  /** The module's own rules — everything except the hoisted `@property` blocks. */
+  chunkCss: string;
+  /** `'--tw-border-style'` → the full `@property` block text, for the root sheet. */
+  properties: Map<string, string>;
+}
+
 /**
  * No-ops for every package that owns no `*.module.css` — which is all of them but three
  * today. Unconverted packages pay one glob and their build output is byte-identical.
@@ -173,13 +227,17 @@ export async function compileCssModules(normalizedOptions: NormalizedOptions): P
   logger.log(`🎨 Compiling CSS Modules: ${sourceFiles.length} files`);
 
   const packageName = readPackageName(normalizedOptions);
-  const compiled: CompiledCssModule[] = [];
+  const compiled: SplitCssModule[] = [];
 
   for (const fileName of sourceFiles) {
-    compiled.push(await compileOne(fileName, packageName, normalizedOptions));
+    compiled.push(splitCssModule(await compileOne(fileName, packageName, normalizedOptions)));
   }
 
-  await writeAggregatedStylesheet(compiled, packageName, normalizedOptions);
+  const rootStylesheet = renderRootStylesheet(compiled, packageName);
+
+  await writeRootStylesheet(rootStylesheet, normalizedOptions);
+  await writeComponentChunks(compiled, packageName, normalizedOptions);
+  await writeAggregatedStylesheet(rootStylesheet, compiled, packageName, normalizedOptions);
   await writeClassMaps(compiled, normalizedOptions);
 
   return true;
@@ -209,21 +267,88 @@ export async function compileCssModules(normalizedOptions: NormalizedOptions): P
  * everything else under `dist/` is untouched.
  */
 async function removeOrphanedStylesheet(normalizedOptions: NormalizedOptions): Promise<void> {
-  const stylesheetPath = join(normalizedOptions.absoluteProjectRoot, STYLESHEET_RELATIVE_PATH);
+  for (const relativePath of [STYLESHEET_RELATIVE_PATH, ROOT_STYLESHEET_RELATIVE_PATH]) {
+    const stylesheetPath = join(normalizedOptions.absoluteProjectRoot, relativePath);
 
-  if (!existsSync(stylesheetPath)) {
-    return;
+    if (!existsSync(stylesheetPath)) {
+      continue;
+    }
+
+    const existing = await readFile(stylesheetPath, 'utf8');
+
+    if (!existing.includes(GENERATED_STYLESHEET_SENTINEL)) {
+      // Authored or copied by some other build step — not ours to delete.
+      continue;
+    }
+
+    await rm(stylesheetPath, { force: true });
+    logger.log(`🎨 Removed orphaned ${relativePath} (package owns no *.module.css)`);
   }
 
-  const existing = await readFile(stylesheetPath, 'utf8');
+  // A package that drops its last `*.module.css` would otherwise keep publishing dead chunks.
+  if (await removeChunkDirectory(normalizedOptions)) {
+    logger.log(`🎨 Removed orphaned ${CHUNK_DIRECTORY} (package owns no *.module.css)`);
+  }
+}
 
-  if (!existing.includes(GENERATED_STYLESHEET_SENTINEL)) {
-    // Authored or copied by some other build step — not ours to delete.
-    return;
+/**
+ * Recursively deletes `<projectRoot>/dist/css`, but only once it has proven the directory is ours.
+ *
+ * This is the executor's only recursive delete, and it runs on EVERY build of EVERY package in the
+ * repo — including the orphan path, which every package without CSS Modules takes. The two
+ * stylesheets beside it are protected by {@link GENERATED_STYLESHEET_SENTINEL}; this applies the
+ * same discipline to a directory, plus a path check, so a malformed `absoluteProjectRoot` cannot
+ * turn it into a recursive delete somewhere unexpected.
+ *
+ * Refuses (loudly, without deleting) when:
+ *  - the resolved path is not exactly `<projectRoot>/dist/css` — i.e. path traversal or an
+ *    unexpected project root;
+ *  - the project root is not an absolute path;
+ *  - any file underneath is not a `.css` file carrying our provenance sentinel — meaning something
+ *    other than this executor put it there.
+ *
+ * @returns whether anything was deleted.
+ */
+async function removeChunkDirectory(normalizedOptions: NormalizedOptions): Promise<boolean> {
+  const projectRoot = normalizedOptions.absoluteProjectRoot;
+  const chunkRoot = join(projectRoot, CHUNK_DIRECTORY);
+
+  if (!existsSync(chunkRoot)) {
+    return false;
   }
 
-  await rm(stylesheetPath, { force: true });
-  logger.log(`🎨 Removed orphaned ${STYLESHEET_RELATIVE_PATH} (package owns no *.module.css)`);
+  // `resolve` collapses any `..`; the result must still sit exactly where we intend to delete.
+  if (!isAbsolute(projectRoot) || resolve(chunkRoot) !== resolve(projectRoot, CHUNK_DIRECTORY)) {
+    logger.warn(`Refusing to remove ${chunkRoot}: it does not resolve inside the project's own ${CHUNK_DIRECTORY}.`);
+    return false;
+  }
+
+  const contents = globSync('**/*', { cwd: chunkRoot, onlyFiles: true });
+  const foreign: string[] = [];
+
+  for (const fileName of contents) {
+    if (!fileName.endsWith('.css')) {
+      foreign.push(fileName);
+      continue;
+    }
+
+    const body = await readFile(join(chunkRoot, fileName), 'utf8');
+
+    if (!body.includes(GENERATED_STYLESHEET_SENTINEL)) {
+      foreign.push(fileName);
+    }
+  }
+
+  if (foreign.length > 0) {
+    logger.warn(
+      `Refusing to remove ${chunkRoot}: ${foreign.length} file(s) were not generated by this executor ` +
+        `(e.g. ${foreign.slice(0, 3).join(', ')}). Delete them by hand if that directory is genuinely stale.`,
+    );
+    return false;
+  }
+
+  await rm(chunkRoot, { recursive: true, force: true });
+  return true;
 }
 
 function readPackageName(normalizedOptions: NormalizedOptions): string {
@@ -331,8 +456,207 @@ function assertGroupMarkersSurvived(relativePath: string, classMap: Record<strin
   }
 }
 
+/**
+ * Lifts a module's top-level `@property` registrations out of its chunk.
+ *
+ * Tailwind re-emits the same registrations into every module that uses the corresponding utility —
+ * measured on windmod: 422 blocks for 32 distinct properties, 33,307 bytes where the distinct set
+ * is 2,491. Re-registering an identical `@property` is legal and idempotent, so the duplication is
+ * *correct*; it is simply 30,816 bytes that buy nothing once a mandatory root sheet exists.
+ *
+ * The registrations are document-global by definition — `@property` has no scoping — so hoisting
+ * them changes nothing about how they apply. Registration is what gives `--tw-border-style` its
+ * `initial-value`, so a chunk loaded WITHOUT the root sheet renders visibly broken borders and
+ * shadows on every component: a loud, deterministic failure that the FluentProvider dev check
+ * names outright, which is the trade this dedup accepts.
+ *
+ * `@keyframes` are deliberately NOT hoisted: every name is a `fuicm-`-hashed, module-owned ident
+ * (`fuicm-spinner-tail-rotate-cfd226`), so they are component content, not shared content.
+ */
+function splitCssModule(module: CompiledCssModule): SplitCssModule {
+  const root = postcss.parse(module.css);
+  const properties = new Map<string, string>();
+
+  root.walkAtRules('property', atRule => {
+    // Only top-level registrations are global. A nested one (inside `@media`, say) is not
+    // something Tailwind emits today, but leaving it in place is the safe reading.
+    if (atRule.parent?.type !== 'root') {
+      return;
+    }
+
+    properties.set(atRule.params, normalizeProperty(atRule));
+    atRule.remove();
+  });
+
+  const { css: _preSplitCss, ...rest } = module;
+
+  return { ...rest, chunkCss: root.toString().trim(), properties };
+}
+
+/**
+ * Canonical text for an `@property` block: descriptors sorted by name, one per line.
+ *
+ * Tailwind emits the same registration with the descriptors in DIFFERENT ORDER depending on the
+ * module — `Divider` gets `syntax / initial-value / inherits` while `DrawerFooter` gets
+ * `syntax / inherits / initial-value`. Descriptor order carries no meaning, so those are the same
+ * registration, but a byte comparison calls them different. Normalizing first is what lets
+ * {@link renderRootStylesheet}'s divergence check mean "these registrations actually disagree"
+ * rather than "Tailwind shuffled the lines".
+ */
+function normalizeProperty(atRule: import('postcss').AtRule): string {
+  // `nodes` is optional on AtRule — a statement at-rule (`@layer a, b;`) has none. An `@property`
+  // without descriptors is not something Tailwind emits, but an empty list is the correct reading.
+  const descriptors = (atRule.nodes ?? [])
+    .filter((node): node is import('postcss').Declaration => node.type === 'decl')
+    .map(node => `  ${node.prop}: ${node.value};`)
+    .sort();
+
+  return `@property ${atRule.params} {\n${descriptors.join('\n')}\n}`;
+}
+
+/**
+ * The root stylesheet: the canonical `@layer` order statement, then every distinct `@property`
+ * registration collected across the package's modules.
+ *
+ * Deterministic output — properties are emitted in sorted order — so a rebuild with unchanged
+ * sources is byte-identical and nx caching stays honest.
+ */
+function renderRootStylesheet(compiled: SplitCssModule[], packageName: string): string {
+  const properties = new Map<string, string>();
+  const origin = new Map<string, string>();
+
+  for (const module of compiled) {
+    for (const [name, text] of module.properties) {
+      const seen = properties.get(name);
+
+      // Dedup is only sound while every emission of a name is identical. Collapsing 422 blocks
+      // into 32 would silently pick a winner otherwise, and a wrong `initial-value` on, say,
+      // `--tw-border-style` is a whole-suite visual defect with no other symptom.
+      //
+      // BELT-ONLY, and known to be unreachable today: Tailwind emits these registrations itself
+      // and already deduplicates them per module, so an authored conflicting `@property` never
+      // survives to this point (verified by appending one to a module and rebuilding — Tailwind
+      // discarded it and the output was byte-identical). Only a Tailwind version skew *within a
+      // single build* could trigger this, which cannot currently happen. Kept because the cost is
+      // one comparison and the failure it guards is silent and suite-wide; do NOT cite it as
+      // proof that the emissions agree — it cannot fail today.
+      if (seen !== undefined && seen !== text) {
+        throw new Error(
+          `${packageName}: conflicting @property ${name} registrations cannot be deduplicated into ` +
+            `${ROOT_STYLESHEET_RELATIVE_PATH}.\n` +
+            `  ${origin.get(name)} emits: ${seen.replace(/\s+/g, ' ')}\n` +
+            `  ${module.relativePath} emits: ${text.replace(/\s+/g, ' ')}`,
+        );
+      }
+
+      properties.set(name, text);
+      origin.set(name, module.relativePath);
+    }
+  }
+
+  const banner = [
+    '/*',
+    ` * ${packageName} — root stylesheet.`,
+    ' *',
+    ` * ${GENERATED_STYLESHEET_SENTINEL} from this package's "src" CSS Modules.`,
+    ' *',
+    ' * Import this ONCE per document, ahead of everything else — either directly, or by',
+    ' * importing it at the top of your own root stylesheet. It carries the cascade-layer order',
+    ' * statement and the global custom-property registrations that every component chunk',
+    ' * assumes. Without it, layers resolve in first-use order and registered properties lose',
+    ' * their initial values.',
+    ' *',
+    ' * It defines no tokens: those come from the theme package, which this does not replace.',
+    ' */',
+  ].join('\n');
+
+  assertNoPrematureCommentEnd(banner);
+
+  const registrations = [...properties.keys()].sort().map(name => properties.get(name));
+
+  return `${CANONICAL_LAYER_STATEMENT}\n\n${banner}\n\n${registrations.join('\n')}\n`;
+}
+
+async function writeRootStylesheet(contents: string, normalizedOptions: NormalizedOptions): Promise<void> {
+  const rootPath = join(normalizedOptions.absoluteProjectRoot, ROOT_STYLESHEET_RELATIVE_PATH);
+
+  await mkdir(dirname(rootPath), { recursive: true });
+  await writeFile(rootPath, contents);
+
+  logger.log(`🎨 Emitted ${ROOT_STYLESHEET_RELATIVE_PATH} (${Buffer.byteLength(contents)} bytes)`);
+}
+
+/**
+ * Per-component chunk path for a module: `dist/css/components/Button/Button.css`.
+ *
+ * The `.module` segment is dropped — these are plain compiled stylesheets, and keeping
+ * `.module.css` in a shipped artifact name invites a consumer's bundler to apply CSS-Modules
+ * handling to already-compiled output.
+ */
+function chunkRelativePath(module: Pick<CompiledCssModule, 'relativePath'>): string {
+  return `${CHUNK_DIRECTORY}/${module.relativePath.replace(/\.module\.css$/, '.css')}`;
+}
+
+/**
+ * One stylesheet per `*.module.css`, each carrying that component's rules and its own
+ * `@keyframes`.
+ *
+ * ── Chunks carry NO `@layer` order statement (operator ruling 2026-08-28) ────────────────────
+ * The campaign contract allows exactly one owner of the layer ORDER declaration, and for this
+ * package that owner is the ROOT SHEET ({@link ROOT_STYLESHEET_RELATIVE_PATH}). A chunk declares
+ * layer BLOCKS (`@layer fui.components.l1 { … }`) and nothing else.
+ *
+ * The consequence is real and is handled by contract rather than by armour: cascade layers are
+ * established in FIRST-USE order, so a document that loads a component chunk BEFORE the root
+ * sheet gets its layer family established by that chunk, and inter-component precedence inverts
+ * (a `fui.components.l2` chunk arriving first sorts `l2` below `l1`, so ToggleButton loses
+ * contested properties to Button). That is a violation of the documented head-of-document
+ * contract, not a supported configuration. The handling is:
+ *
+ *   1. the contract itself — the root sheet is imported once, ahead of everything else, either
+ *      directly or at the top of the consumer's own root stylesheet (both modes documented in
+ *      the package's MIGRATION.md); and
+ *   2. a development-mode check in `FluentProvider` that detects the missing order declaration
+ *      and names precisely this mistake.
+ */
+async function writeComponentChunks(
+  compiled: SplitCssModule[],
+  packageName: string,
+  normalizedOptions: NormalizedOptions,
+): Promise<void> {
+  // Chunks are named from source paths, so a deleted or renamed module would otherwise leave a
+  // stale stylesheet behind that a consumer's older class map could still resolve. Same guarded
+  // removal as the orphan path — it refuses rather than deleting anything it did not write.
+  await removeChunkDirectory(normalizedOptions);
+
+  let bytes = 0;
+
+  for (const module of compiled) {
+    const chunkPath = join(normalizedOptions.absoluteProjectRoot, chunkRelativePath(module));
+    const banner = `/* ${packageName} — ${module.relativePath}. ${GENERATED_STYLESHEET_SENTINEL}. */`;
+
+    // Same guard the other two banners get: this one interpolates a package name AND a source
+    // path, and it leads all 131 files, so a stray `*/` in either would corrupt every chunk.
+    assertNoPrematureCommentEnd(banner);
+
+    const contents = `${banner}\n${module.chunkCss}\n`;
+
+    await mkdir(dirname(chunkPath), { recursive: true });
+    await writeFile(chunkPath, contents);
+    bytes += Buffer.byteLength(contents);
+  }
+
+  logger.log(`🎨 Emitted ${compiled.length} component chunks under ${CHUNK_DIRECTORY} (${bytes} bytes)`);
+}
+
+/**
+ * The aggregate, assembled from the very same pieces the split delivery ships — root sheet first,
+ * then every chunk — so the two delivery modes cannot drift apart. It stays the public
+ * `"./styles.css"` for zero-config, SSR and CommonJS consumers.
+ */
 async function writeAggregatedStylesheet(
-  compiled: CompiledCssModule[],
+  rootStylesheet: string,
+  compiled: SplitCssModule[],
   packageName: string,
   normalizedOptions: NormalizedOptions,
 ): Promise<void> {
@@ -352,13 +676,17 @@ async function writeAggregatedStylesheet(
     ' * property referenced below is DEFINED elsewhere — Fluent design tokens by',
     ' * FluentProvider at runtime, Tailwind theme variables by the shared theme stylesheet the',
     ' * document imports exactly once. This file declares none of them.',
+    ' *',
+    ' * Batteries included: the root stylesheet is inlined at the top, so importing this ALONE is',
+    ' * a complete setup and the separate root import is not needed. Bundler consumers get the',
+    ' * per-component chunks instead, automatically, through each component class map.',
     ' */',
   ].join('\n');
 
-  const body = compiled.map(module => `/* ${module.relativePath} */\n${module.css.trim()}`).join('\n\n');
+  // Assembled from the pieces the split delivery ships, so the two modes cannot drift apart.
+  const body = compiled.map(module => `/* ${module.relativePath} */\n${module.chunkCss}`).join('\n\n');
 
-  // The canonical order statement goes FIRST and verbatim — see the module header.
-  const contents = `${CANONICAL_LAYER_STATEMENT}\n\n${banner}\n\n${body}\n`;
+  const contents = `${rootStylesheet}\n${banner}\n\n${body}\n`;
 
   assertNoPrematureCommentEnd(banner);
 
@@ -378,14 +706,13 @@ function assertNoPrematureCommentEnd(banner: string): void {
 
   if (terminator !== banner.length - 2) {
     throw new Error(
-      `Generated dist/styles.css banner closes its comment early (at index ${terminator}) — the rest would be parsed as CSS.`,
+      `Generated stylesheet banner closes its comment early (at index ${terminator}) — the rest would be parsed as CSS.\n` +
+        `  ${banner.slice(0, 200)}`,
     );
   }
 }
 
-async function writeClassMaps(compiled: CompiledCssModule[], normalizedOptions: NormalizedOptions): Promise<void> {
-  const stylesheetPath = join(normalizedOptions.absoluteProjectRoot, STYLESHEET_RELATIVE_PATH);
-
+async function writeClassMaps(compiled: SplitCssModule[], normalizedOptions: NormalizedOptions): Promise<void> {
   for (const outputConfig of normalizedOptions.moduleOutput) {
     const outputRoot = join(normalizedOptions.absoluteProjectRoot, outputConfig.outputPath);
     const isEsm = outputConfig.module === 'es6';
@@ -402,14 +729,15 @@ async function writeClassMaps(compiled: CompiledCssModule[], normalizedOptions: 
 
     for (const module of compiled) {
       const classMapPath = join(outputRoot, `${module.relativePath}.${extension}`);
-      const stylesheetSpecifier = toRelativeSpecifier(dirname(classMapPath), stylesheetPath);
+      // Its OWN chunk, not the aggregate: this is what makes the consumer download exactly the
+      // components it uses.
+      const chunkPath = join(normalizedOptions.absoluteProjectRoot, chunkRelativePath(module));
+      const chunkSpecifier = toRelativeSpecifier(dirname(classMapPath), chunkPath);
 
       await mkdir(dirname(classMapPath), { recursive: true });
       await writeFile(
         classMapPath,
-        isEsm
-          ? renderEsmClassMap(module, stylesheetSpecifier)
-          : renderCommonJsClassMap(module, outputConfig.outputPath),
+        isEsm ? renderEsmClassMap(module, chunkSpecifier) : renderCommonJsClassMap(module, outputConfig.outputPath),
       );
     }
 
@@ -442,18 +770,23 @@ export function serializeClassMap(classMap: Record<string, string>): string {
   return entries.length > 0 ? `{\n${entries}\n}` : '{}';
 }
 
-function renderEsmClassMap(module: CompiledCssModule, stylesheetSpecifier: string): string {
+function renderEsmClassMap(module: SplitCssModule, chunkSpecifier: string): string {
   return `/**
  * GENERATED by @fluentui/workspace-plugin:build — do not edit.
  *
- * Class map for src/${module.relativePath}, compiled into ${STYLESHEET_RELATIVE_PATH}.
+ * Class map for src/${module.relativePath}, compiled into ${chunkRelativePath(module)}.
  *
- * The side-effect import below is what makes the package self-styling for bundler
- * consumers; it is present in the ESM output only, because node cannot require a raw
- * stylesheet. It survives tree-shaking through the package's "sideEffects": ["**\\/*.css"]
- * allowlist. SSR/commonjs consumers load the "./styles.css" export subpath themselves.
+ * The side-effect import below is what makes the package self-styling for bundler consumers, and
+ * it points at THIS component's own chunk — a consumer downloads only the components it uses. It
+ * is present in the ESM output only, because node cannot require a raw stylesheet, and it
+ * survives tree-shaking through the package's "sideEffects": ["**\\/*.css"] allowlist.
+ *
+ * The chunk assumes the package's root stylesheet ("./base.css") is already in the document: the
+ * root sheet carries the cascade-layer order and the global custom-property registrations.
+ * SSR/commonjs consumers load "./styles.css" instead, which inlines the root sheet and every
+ * chunk into one file.
  */
-import ${JSON.stringify(stylesheetSpecifier)};
+import ${JSON.stringify(chunkSpecifier)};
 
 const classes = ${serializeClassMap(module.classMap)};
 
@@ -461,12 +794,12 @@ export default classes;
 `;
 }
 
-function renderCommonJsClassMap(module: CompiledCssModule, outputPath: string): string {
+function renderCommonJsClassMap(module: SplitCssModule, outputPath: string): string {
   return `"use strict";
 /**
  * GENERATED by @fluentui/workspace-plugin:build — do not edit.
  *
- * Class map for src/${module.relativePath}, compiled into ${STYLESHEET_RELATIVE_PATH}.
+ * Class map for src/${module.relativePath}, compiled into ${chunkRelativePath(module)}.
  *
  * No stylesheet require: requiring this package's \`${outputPath}\` entry has to work in
  * plain node, which cannot parse CSS. Consumers of this output load the "./styles.css"

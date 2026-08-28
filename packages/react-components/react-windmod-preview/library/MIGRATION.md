@@ -38,15 +38,68 @@ paints identically and behaves differently.
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
 ```
 
-Two stylesheets, both loaded once per document:
+Component CSS is delivered **per component**: each component's class map side-effect-imports its
+own compiled stylesheet, so a bundler ships exactly the components you use and nothing else. That
+leaves two small root stylesheets to load by hand, once per document, ahead of everything else.
+
+#### Mode 1 — direct
+
+Import them in your entry module, or link them at the top of the document head.
 
 ```js
-// The theme: palette, type ramp, spacing scale, and the seven theme classes. Load it before your own CSS.
+// The theme: palette, type ramp, spacing scale, the seven theme classes, the cascade-layer order.
 import '@fluentui/react-tailwind-theme-preview/styles.css';
 
-// The component styles. ESM consumers get this automatically as a side effect of importing any
-// component; CommonJS and some SSR setups need it explicitly.
-import '@fluentui/react-windmod-preview/styles.css';
+// windmod's root sheet: the cascade-layer order and the global custom-property registrations that
+// every component chunk assumes. ~3 KB. The components themselves arrive automatically.
+import '@fluentui/react-windmod-preview/base.css';
+```
+
+#### Mode 2 — composed into your own root stylesheet
+
+If you already have a root stylesheet — global styles, a custom theme, your own Tailwind entry —
+`@import` ours at the **top** of it. Your root sheet is what loads first in the document, which
+transitively guarantees ours precedes everything.
+
+```css
+/* app/src/root.css — the first stylesheet the document loads */
+@import '@fluentui/react-tailwind-theme-preview/styles.css';
+@import '@fluentui/react-windmod-preview/base.css';
+
+/* your own global styles, your custom theme class, your Tailwind entry, … */
+.my-brand-theme {
+  --color-brand-background: #6b21a8;
+}
+```
+
+This works because an `@import`ed sheet is treated as if written at the import site, so the layer
+order declaration inside `base.css` still executes at the very top of your sheet. `base.css` is
+plain CSS — no Tailwind syntax, no CSS-Modules syntax — so it is equally valid as a bundler
+import, a `<link href>`, or a raw `@import`.
+
+#### Why the order matters
+
+Cascade layers are established in **first-use order**, and the root stylesheet is the single
+declared owner of the `fui.*` layer order — component chunks contain layer _blocks_ only. So if a
+component chunk reaches the document before the root stylesheet, that chunk defines the order
+instead, and inter-component precedence inverts: a `ToggleButton` chunk arriving first puts
+`fui.components.l2` _below_ `fui.components.l1`, and `ToggleButton` then loses contested
+properties to the `Button` it builds on.
+
+Loading the root stylesheet first is therefore a requirement, not a recommendation. A development
+build warns once per document when no order declaration is found, and distinguishes the two ways
+to get there — root stylesheet never loaded, or loaded after a component chunk.
+
+#### Fallback — the batteries-included monolith
+
+`./styles.css` is still published and still contains everything: the root sheet plus every
+component, in one file. Loading it alone is a complete, correct setup, and `base.css` is then not
+needed. Use it for CommonJS and SSR setups, for a `<link>`-only pipeline, or any time one file is
+simpler than letting the bundler collect chunks.
+
+```js
+import '@fluentui/react-tailwind-theme-preview/styles.css';
+import '@fluentui/react-windmod-preview/styles.css'; // instead of base.css
 ```
 
 Then swap the import specifier:

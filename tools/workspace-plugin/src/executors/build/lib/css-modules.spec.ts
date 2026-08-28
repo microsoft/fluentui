@@ -529,3 +529,235 @@ describe('compileCssModules — class-map extension per module output', () => {
     );
   });
 });
+
+/**
+ * Per-component CSS delivery (operator ruling 2026-08-28).
+ *
+ * Three artifacts have to stay consistent with each other: the root sheet, the per-component
+ * chunks the ESM class maps import, and the aggregate that SSR/CJS consumers still load. Each
+ * guard below covers a failure that is silent in the sense that matters — the build succeeds and
+ * the CSS parses, but consumers get the wrong cascade or the wrong bytes.
+ */
+describe('compileCssModules — per-component delivery', () => {
+  let projectRoot: string;
+
+  function options(): NormalizedOptions {
+    return {
+      absoluteProjectRoot: projectRoot,
+      absoluteSourceRoot: join(projectRoot, 'src'),
+      isEsmPackage: true,
+      moduleOutput: [
+        { module: 'es6', outputPath: 'lib' },
+        { module: 'commonjs', outputPath: 'lib-commonjs' },
+      ],
+    } as unknown as NormalizedOptions;
+  }
+
+  const ALPHA = join('components', 'Alpha.module.css');
+  const BETA = join('components', 'Beta.module.css');
+
+  const read = (...segments: string[]) => readFileSync(join(projectRoot, ...segments), 'utf8');
+
+  beforeEach(async () => {
+    projectRoot = await mkdtemp(join(tmpdir(), 'fui-css-modules-split-'));
+    mkdirSync(join(projectRoot, 'src', 'components'), { recursive: true });
+    writeFileSync(join(projectRoot, 'package.json'), JSON.stringify({ name: '@fluentui/react-thing' }));
+
+    // The `content-[…]` utility makes Tailwind register `--tw-content` in BOTH modules, which is
+    // the duplication the root sheet exists to collapse. It is used rather than a more typical
+    // utility because this fixture has no `@reference '#theme'`, so only utilities that need no
+    // theme lookup resolve here.
+    writeFileSync(
+      join(projectRoot, 'src', ALPHA),
+      "@layer fui.components.l1 { .root { @apply content-['x']; color: blue; } }",
+    );
+    writeFileSync(
+      join(projectRoot, 'src', BETA),
+      "@layer fui.components.l2 { .root { @apply content-['x']; color: red; } }",
+    );
+  });
+
+  afterEach(async () => {
+    await rm(projectRoot, { recursive: true, force: true });
+  });
+
+  it('emits one chunk per module, named without the .module segment', async () => {
+    await expect(compileCssModules(options())).resolves.toBe(true);
+
+    expect(existsSync(join(projectRoot, 'dist', 'css', 'components', 'Alpha.css'))).toBe(true);
+    expect(existsSync(join(projectRoot, 'dist', 'css', 'components', 'Beta.css'))).toBe(true);
+  });
+
+  /**
+   * The whole point of the split: a consumer that imports one component must not pull the other's
+   * rules in with it.
+   */
+  it('keeps each component to its own chunk', async () => {
+    await compileCssModules(options());
+
+    const alpha = read('dist', 'css', 'components', 'Alpha.css');
+    const beta = read('dist', 'css', 'components', 'Beta.css');
+
+    expect(alpha).toContain('color: blue');
+    expect(alpha).not.toContain('color: red');
+    expect(beta).toContain('color: red');
+    expect(beta).not.toContain('color: blue');
+  });
+
+  /**
+   * Campaign contract (operator ruling 2026-08-28): exactly ONE owner of the `@layer` ORDER
+   * declaration, and for this package that owner is the root stylesheet. Chunks carry layer
+   * BLOCKS only.
+   *
+   * Guards against the statement creeping back into chunks as "defensive" duplication. The
+   * contract is that the root sheet reaches the document first, enforced by documentation and the
+   * FluentProvider dev-mode check rather than by repetition.
+   */
+  it('emits no layer order statement in any chunk — the root sheet is the sole owner', async () => {
+    await compileCssModules(options());
+
+    for (const chunk of ['Alpha.css', 'Beta.css']) {
+      const css = read('dist', 'css', 'components', chunk);
+
+      expect(css).not.toContain(CANONICAL_LAYER_STATEMENT);
+      // The layer BLOCK stays — only the ORDER statement belongs to the root sheet.
+      expect(css).toContain('@layer fui.components.l');
+    }
+
+    expect(read('dist', 'base.css').startsWith(CANONICAL_LAYER_STATEMENT)).toBe(true);
+  });
+
+  /**
+   * The aggregate is self-contained and keeps carrying the order statement exactly as it did
+   * before per-component delivery existed: once, as the very first thing in the file.
+   */
+  it('keeps exactly one layer order statement in the aggregate, at the top', async () => {
+    await compileCssModules(options());
+
+    const aggregate = read('dist', 'styles.css');
+    const occurrences = aggregate.split(CANONICAL_LAYER_STATEMENT).length - 1;
+
+    expect(aggregate.startsWith(CANONICAL_LAYER_STATEMENT)).toBe(true);
+    expect(occurrences).toBe(1);
+  });
+
+  it('hoists @property registrations into the root sheet, deduplicated, and leaves none behind', async () => {
+    await compileCssModules(options());
+
+    const base = read('dist', 'base.css');
+    const registrations = base.match(/@property --tw-content/g) ?? [];
+
+    expect(base.startsWith(CANONICAL_LAYER_STATEMENT)).toBe(true);
+    // Both modules emitted it; the root sheet carries exactly one.
+    expect(registrations).toHaveLength(1);
+
+    for (const chunk of ['Alpha.css', 'Beta.css']) {
+      expect(read('dist', 'css', 'components', chunk)).not.toContain('@property');
+    }
+  });
+
+  /** `@keyframes` names are module-owned hashed idents, so they belong to the component. */
+  it('leaves @keyframes in the component chunk rather than the root sheet', async () => {
+    writeFileSync(
+      join(projectRoot, 'src', ALPHA),
+      '@layer fui.components.l1 { .root { animation: spin 1s; } }\n@keyframes spin { to { rotate: 360deg; } }',
+    );
+
+    await compileCssModules(options());
+
+    expect(read('dist', 'css', 'components', 'Alpha.css')).toContain('@keyframes');
+    expect(read('dist', 'base.css')).not.toContain('@keyframes');
+  });
+
+  /** The side-effect import is what makes delivery per-component rather than all-or-nothing. */
+  it('points each ESM class map at its own chunk, not at the aggregate', async () => {
+    await compileCssModules(options());
+
+    const classMap = read('lib', `${ALPHA}.js`);
+
+    expect(classMap).toContain('import "../../dist/css/components/Alpha.css"');
+    expect(classMap).not.toContain('dist/styles.css');
+  });
+
+  /**
+   * The aggregate is assembled from the root sheet and the chunks, so the two delivery modes
+   * cannot drift. If this breaks, bundler and SSR consumers silently get different CSS.
+   */
+  it('assembles the aggregate from the same root sheet and chunks it ships separately', async () => {
+    await compileCssModules(options());
+
+    const aggregate = read('dist', 'styles.css');
+
+    expect(aggregate.startsWith(read('dist', 'base.css'))).toBe(true);
+    expect(aggregate).toContain('color: blue');
+    expect(aggregate).toContain('color: red');
+  });
+
+  /**
+   * Same hazard the orphaned-stylesheet guard covers: a renamed or deleted module would otherwise
+   * keep publishing a chunk that an older class map still resolves.
+   */
+  it('clears stale chunks whose source module is gone', async () => {
+    await compileCssModules(options());
+    expect(existsSync(join(projectRoot, 'dist', 'css', 'components', 'Beta.css'))).toBe(true);
+
+    await rm(join(projectRoot, 'src', BETA));
+    await compileCssModules(options());
+
+    expect(existsSync(join(projectRoot, 'dist', 'css', 'components', 'Beta.css'))).toBe(false);
+    expect(existsSync(join(projectRoot, 'dist', 'css', 'components', 'Alpha.css'))).toBe(true);
+  });
+
+  it('removes the root sheet and the chunk directory when the package owns no *.module.css', async () => {
+    await compileCssModules(options());
+
+    await rm(join(projectRoot, 'src', ALPHA));
+    await rm(join(projectRoot, 'src', BETA));
+    await expect(compileCssModules(options())).resolves.toBe(true);
+
+    expect(existsSync(join(projectRoot, 'dist', 'base.css'))).toBe(false);
+    expect(existsSync(join(projectRoot, 'dist', 'css'))).toBe(false);
+    expect(existsSync(join(projectRoot, 'dist', 'styles.css'))).toBe(false);
+  });
+});
+
+/**
+ * Ties together the two INDEPENDENTLY AUTHORED copies of the cascade-layer order.
+ *
+ * Post-revert the whole architecture rests on one order declaration reaching the document first,
+ * and there are exactly two places a human can write that declaration:
+ *
+ *  1. `CANONICAL_LAYER_STATEMENT` here, which produces `dist/base.css` and the aggregate's first
+ *     line, and
+ *  2. `react-tailwind-theme-preview/css/index.css`, whose compiled `dist/styles.css` is a hard
+ *     prerequisite of every documented setup and therefore ALWAYS loads first.
+ *
+ * They are currently byte-identical, and nothing else enforces that. If the theme copy drifted —
+ * a layer added, renamed, or reordered on one side only — the theme sheet would silently establish
+ * a different order than every component chunk was compiled against, and no other test in the repo
+ * would notice: the CSS stays valid, the build stays green, and components simply start losing
+ * cascade contests to each other.
+ */
+describe('CANONICAL_LAYER_STATEMENT — cross-package drift guard', () => {
+  const THEME_INDEX_CSS = join(
+    __dirname,
+    '../../../../../../packages/react-components/react-tailwind-theme-preview/css/index.css',
+  );
+
+  it('matches the theme package’s authored copy byte for byte', () => {
+    const authored = readFileSync(THEME_INDEX_CSS, 'utf8');
+
+    expect(authored).toContain(CANONICAL_LAYER_STATEMENT);
+  });
+
+  /**
+   * The statement must be a standalone line, not a fragment of a longer one — `toContain` alone
+   * would pass on `@layer fui.theme, …, fui.utilities, fui.extra;`, which is precisely the kind of
+   * additive drift this guard exists to catch.
+   */
+  it('appears in the theme package as a whole line', () => {
+    const lines = readFileSync(THEME_INDEX_CSS, 'utf8').split(/\r?\n/);
+
+    expect(lines.filter(line => line.trim().startsWith('@layer fui.theme'))).toEqual([CANONICAL_LAYER_STATEMENT]);
+  });
+});
