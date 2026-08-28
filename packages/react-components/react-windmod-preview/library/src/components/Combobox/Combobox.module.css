@@ -20,7 +20,7 @@
        and is dropped at computed-value time, so both sides compute 0s / ease. Reduced motion is
        suppressed house-wide by the theme, not here. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -157,7 +157,7 @@
     }
 
     @variant after {
-      @apply absolute inset-0 content-[''];
+      @apply absolute inset-0;
     }
 
     @variant group-size-small/fui-combobox {

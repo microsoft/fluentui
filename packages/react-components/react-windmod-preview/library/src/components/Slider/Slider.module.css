@@ -106,7 +106,7 @@
     );
 
     @variant before {
-      @apply absolute -inset-x-px h-(--fui-slider-rail-size) content-[''];
+      @apply absolute -inset-x-px h-(--fui-slider-rail-size);
 
       background-image: repeating-linear-gradient(
         var(--fui-Slider--direction),
@@ -150,7 +150,7 @@
     box-shadow: 0 0 0 calc(var(--fui-slider-thumb-size) * 0.2) var(--color-neutral-background-1) inset;
 
     @variant before {
-      @apply absolute inset-0 box-border rounded-circular content-[''];
+      @apply absolute inset-0 box-border rounded-circular;
 
       border: calc(var(--fui-slider-thumb-size) * 0.05) solid var(--color-neutral-stroke-1);
     }

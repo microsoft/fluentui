@@ -300,6 +300,44 @@ The catalog is two files and **variants are never defined in a component module*
 rules. If a needed variant is missing, add it in `&:where([data-…])` form to whichever catalog it
 belongs to, one selector per entry.
 
+### Pseudo-elements: `content` comes free
+
+Tailwind's `before`/`after` variants already emit `content: var(--tw-content)` into the rule they
+open, and `dist/base.css` registers `@property --tw-content { syntax: "*"; inherits: false;
+initial-value: "" }`. A `content-['']` inside such a block therefore writes `--tw-content` the value
+it already holds. **Never author `content-['']` merely to make a pseudo-element exist** — the variant
+did that. Drop it and the rule keeps its injected `content`, resolving to `""` off the initial value.
+
+```css
+/* ❌ redundant — the variant already supplies `content: var(--tw-content)`, initial-value "" */
+@variant after {
+  @apply absolute inset-0 content-[''];
+}
+
+/* ✅ */
+@variant after {
+  @apply absolute inset-0;
+}
+```
+
+**The exception class — an explicit `content` is required whenever it changes the default:**
+
+- **A different value.** `content-['_']` (MessageBarTitle's literal space), `content-['·_']`
+  (RatingDisplay's separator), `content: unset` (Input `.disabled`, suppressing the focus underline).
+- **Suppression, then restoration — the load-bearing pair.** A block writes `content-none` to keep a
+  pseudo-element out of the box tree, and a later block writes `content-['']` to put it back.
+  `--tw-content: none` lands **on the same pseudo-element**, so it outranks the `@property` initial
+  value and the restoring `content-['']` is doing real work — deleting it leaves the element
+  unpainted. `Avatar.module.css` is the canonical case (`.root` neutralises both pseudo-elements;
+  `.ring` and `.shadow` each set theirs back), and `Tab.module.css` repeats the shape for its pending
+  and selection indicators. Both carry a header comment saying so; keep it with the code.
+- **A raw `&::before` / `&::after` selector.** No variant, so no injection, so the `content` is the
+  only one there. Used when the variant's automatic `content` would itself be the bug — see
+  `Radio.module.css`, whose indicator dot would otherwise render in every state.
+
+`Divider.module.css`'s header comment is the canonical statement of the mechanism; read it before
+adding a `content` anywhere.
+
 ### Tokens
 
 Kebab-case theme tokens only. Never hardcode a palette value — compare against the Griffel source to

@@ -38,7 +38,7 @@
          painted box; the pseudo-elements carry no paint. */
       @media (forced-colors: none) {
         @variant before, after {
-          @apply absolute start-0 h-2 w-full content-[''];
+          @apply absolute start-0 h-2 w-full;
         }
 
         @variant before {
@@ -64,7 +64,7 @@
       @apply relative;
 
       @variant before {
-        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin) content-[''];
+        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin);
       }
     }
   }
