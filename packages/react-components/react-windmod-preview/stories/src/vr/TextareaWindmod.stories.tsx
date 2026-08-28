@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Textarea } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Textarea } from '@fluentui/react-windmod-preview/textarea';
 
 import { TextareaVrScene } from './TextareaVrScene';
 

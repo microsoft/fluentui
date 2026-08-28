@@ -210,10 +210,10 @@
       "@fluentui/react-utilities-compat-stories": [
         "packages/react-components/react-utilities-compat/stories/src/index.ts"
       ],
-      "@fluentui/react-windmod-preview": ["packages/react-components/react-windmod-preview/library/src/index.ts"],
       "@fluentui/react-windmod-preview-stories": [
         "packages/react-components/react-windmod-preview/stories/src/index.ts"
       ],
+      "@fluentui/react-windmod-preview/*": ["packages/react-components/react-windmod-preview/library/src/*.ts"],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/storybook-llms-extractor": ["tools/storybook-llms-extractor/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],

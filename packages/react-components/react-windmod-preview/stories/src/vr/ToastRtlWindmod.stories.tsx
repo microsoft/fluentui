@@ -1,14 +1,14 @@
 import * as React from 'react';
+import { Link } from '@fluentui/react-windmod-preview/link';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
-  FluentProvider,
-  Link,
   Toast,
   ToastBody,
   ToastFooter,
-  Toaster,
   ToastTitle,
+  Toaster,
   useToastController,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/toast';
 
 import { POSITION_CELLS, ToastVrScene } from './ToastVrScene';
 

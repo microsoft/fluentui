@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
-  FluentProvider,
   Toolbar,
   ToolbarButton,
   ToolbarDivider,
@@ -8,7 +8,7 @@ import {
   ToolbarRadioButton,
   ToolbarRadioGroup,
   ToolbarToggleButton,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/toolbar';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 

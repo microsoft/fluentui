@@ -26,7 +26,7 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverTitle,
   TeachingPopoverTrigger,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/teaching-popover';
 
 /** windmod's surfaces share one top layer, so a scene that pins several open needs the manual hint
  *  mode; Griffel portals each surface to its own node and needs nothing. */
