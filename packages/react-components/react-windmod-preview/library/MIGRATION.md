@@ -51,7 +51,7 @@ Import them in your entry module, or link them at the top of the document head.
 import '@fluentui/react-tailwind-theme-preview/styles.css';
 
 // windmod's root sheet: the cascade-layer order and the global custom-property registrations that
-// every component chunk assumes. ~3 KB. The components themselves arrive automatically.
+// every component chunk assumes. 3.3 KB raw, 729 bytes gzipped. Components arrive automatically.
 import '@fluentui/react-windmod-preview/base.css';
 ```
 
@@ -94,8 +94,14 @@ to get there — root stylesheet never loaded, or loaded after a component chunk
 
 `./styles.css` is still published and still contains everything: the root sheet plus every
 component, in one file. Loading it alone is a complete, correct setup, and `base.css` is then not
-needed. Use it for CommonJS and SSR setups, for a `<link>`-only pipeline, or any time one file is
-simpler than letting the bundler collect chunks.
+needed. Use it where the class maps do not deliver chunks for you: **CommonJS** consumers (those
+class maps carry no `require` — node cannot parse CSS), **SSR** setups that load CSS out of band, and
+`<link>`-only pipelines with no module graph.
+
+> **Do not add it on top of ESM component imports.** It is not an opt-out from per-component
+> delivery — the class maps still import their chunks, so you ship the whole sheet _and_ the chunks
+> again. Measured on a Button-only app: 35,358 gzip that way, against 2,277 gzip importing
+> `base.css` instead. If your bundler resolves the components, `base.css` is the right root sheet.
 
 ```js
 import '@fluentui/react-tailwind-theme-preview/styles.css';
@@ -176,15 +182,17 @@ Every other family, `Drawer` and `Menu` and `Toast` included, is one subpath per
 | Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                                                                                                                                                                                                                                                                                                 |
 | Provider      | `./fluent-provider`                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-Five non-component subpaths:
+Seven non-component subpaths:
 
-| Subpath               | What it is                                                                                            |
-| --------------------- | ----------------------------------------------------------------------------------------------------- |
-| `./styles.css`        | the compiled component stylesheet                                                                     |
-| `./variants.css`      | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states |
-| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching   |
-| `./positioning`       | the headless positioning primitives (`usePositioning`, `resolvePositioningShorthand`, …), re-exported |
-| `./package.json`      | —                                                                                                     |
+| Subpath               | What it is                                                                                                                                                                                                |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `./base.css`          | the root stylesheet — cascade-layer order + global custom-property registrations; load it head-of-document ([above](#installation-and-imports))                                                           |
+| `./styles.css`        | the batteries-included monolith — the root sheet plus all 131 component chunks in one file                                                                                                                |
+| `./css/*`             | the individual component chunks (`./css/components/Button/Button.css`, …). Your bundler reaches these through the class maps; the key exists for SSR/CommonJS pipelines that want to collect them by hand |
+| `./variants.css`      | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states                                                                                                     |
+| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching                                                                                                       |
+| `./positioning`       | the headless positioning primitives (`usePositioning`, `resolvePositioningShorthand`, …), re-exported                                                                                                     |
+| `./package.json`      | —                                                                                                                                                                                                         |
 
 If you were importing from an internal Fluent package directly (`@fluentui/react-button`,
 `@fluentui/react-overflow`, …), note that `@fluentui/no-restricted-imports` blocks that route; the barrel
