@@ -19,6 +19,15 @@ explicit, individually ratified pixel allowance, each one recorded on its scene 
 bounds it. They are enumerated in
 [Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
+Worth stating precisely what that threshold asserts, because it is the number everything else in this
+guide rests on. The comparison runs pixelmatch at threshold 0 with its antialiasing classifier on, so
+**zero means zero non-antialiasing differences**: sub-perceptual rasterization noise along glyph and
+border edges is absorbed, and every other difference — a moved edge, a changed colour, a missing shadow
+— counts. The eighteen allowances are counted under that same rule, which is why each one still had to
+be measured, decomposed and bounded by a control. Pixel counting is also not the only gate: per-component
+computed-style parity passes compare the resolved CSS directly, catching the class of divergence that
+paints identically and behaves differently.
+
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
 > preview. APIs may change without notice and coverage is limited to the components the headless package
 > ships. Not production-ready.
@@ -879,10 +888,11 @@ that value. Take a Griffel measurement of this cell from an isolated harness rat
 
 ## Where the pixels are allowed to differ
 
-The parity gate is strict zero: pixelmatch at threshold 0, one differing pixel fails the scene.
-Seventy-three of the ninety-one scenes hold that unconditionally. The remaining eighteen carry a numeric
-ceiling recorded on the scene itself, each granted individually and each recorded with the control that
-bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
+The parity gate is strict zero: pixelmatch at threshold 0, with the antialiasing classifier absorbing
+sub-perceptual rasterization noise. One differing pixel that is not classified as antialiasing fails the
+scene. Seventy-three of the ninety-one scenes hold that unconditionally. The remaining eighteen carry a
+numeric ceiling — counted under the same rule — recorded on the scene itself, each granted individually
+and each recorded with the control that bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
 not decompose the documented way fails the scene even when it sits under the ceiling. All eighteen are
 below.
 
