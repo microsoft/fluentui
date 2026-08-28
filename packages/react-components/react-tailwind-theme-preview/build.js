@@ -47,8 +47,14 @@ async function compile(entry, output) {
     map: false,
   });
 
-  writeFileSync(output, result.css);
-  return result.css;
+  // Checkout line endings must not leak into published artifacts: `core.autocrlf` gives
+  // Windows working copies CRLF sources, PostCSS preserves whatever it is fed, and the
+  // route-equivalence matching below is LF-exact. Normalizing here keeps the shipped bytes
+  // identical on every platform — the same normalization the generator's `--check` applies.
+  const css = result.css.replace(/\r\n/g, '\n');
+
+  writeFileSync(output, css);
+  return css;
 }
 
 /**
