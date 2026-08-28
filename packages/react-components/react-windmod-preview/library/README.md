@@ -48,9 +48,16 @@ export default function App() {
 }
 ```
 
-Component styles load automatically with the components (an ESM side-effect import of this
-package's `dist/styles.css`); CommonJS/SSR consumers import
-`@fluentui/react-windmod-preview/styles.css` themselves.
+Component styles are delivered **per component**: each component's class map side-effect-imports
+its own compiled stylesheet, so a bundler ships only what the app uses. Alongside them, load this
+package's root sheet — `@fluentui/react-windmod-preview/base.css` (~3 KB: the cascade-layer order
+and the global `@property` registrations) — once per document, ahead of everything else, either
+directly or by `@import`ing it at the top of your own root stylesheet.
+
+CommonJS/SSR consumers instead import `@fluentui/react-windmod-preview/styles.css`, the
+batteries-included aggregate carrying the root sheet and every component in one file.
+
+See [MIGRATION.md](./MIGRATION.md#installation-and-imports) for both setups.
 
 ## Styling contract
 

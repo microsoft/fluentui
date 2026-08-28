@@ -106,13 +106,21 @@ Two audiences, one skill:
 - **Is `@fluentui/react-tailwind-theme-preview/styles.css` imported, once, before my own CSS?**
   Nothing renders correctly without it, and its position fixes how any layers of _yours_ sort against
   `fui.*`. It does not affect an unlayered rule, which wins either way.
+- **Is `@fluentui/react-windmod-preview/base.css` loaded once, ahead of everything else?** Component
+  CSS ships per component and every chunk assumes this root sheet (the layer order and the
+  `@property` registrations). Directly, or `@import`ed at the top of the app's own root stylesheet —
+  both work.
 - **Is this a CommonJS or SSR build?** Then import `@fluentui/react-windmod-preview/styles.css`
-  explicitly; only ESM gets it as a side effect.
+  instead — it bundles the root sheet and every component into one file. Only ESM gets the
+  per-component chunks as a side effect.
 
 ## Setup Requirements
 
-**CRITICAL: two stylesheets and one provider. Missing any of them produces symptoms that read as
-styling bugs.**
+**CRITICAL: two root stylesheets and one provider. Missing any of them produces symptoms that read
+as styling bugs.**
+
+Component CSS itself needs no setup: each component's class map side-effect-imports its own chunk,
+so the bundler ships exactly what the app uses.
 
 ```sh
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
@@ -123,10 +131,22 @@ npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-previ
 // Palette, type ramp, spacing scale, the seven theme classes, and the fui.* layer order.
 import '@fluentui/react-tailwind-theme-preview/styles.css';
 
-// The component styles. ESM consumers get this automatically as a side effect of importing any
-// component; CommonJS and some SSR setups need it explicitly.
-import '@fluentui/react-windmod-preview/styles.css';
+// windmod's root sheet (~3 KB): the fui.* layer order and the global @property registrations that
+// every component chunk assumes. The components arrive automatically, per component.
+import '@fluentui/react-windmod-preview/base.css';
 ```
+
+If the app has its own root stylesheet, `@import` both at the TOP of it instead — that sheet loads
+first, so ours transitively precedes everything:
+
+```css
+@import '@fluentui/react-tailwind-theme-preview/styles.css';
+@import '@fluentui/react-windmod-preview/base.css';
+```
+
+For CommonJS/SSR, or any time one file is simpler, swap `base.css` for
+`@fluentui/react-windmod-preview/styles.css` — the aggregate carrying the root sheet plus all 131
+components.
 
 ```tsx
 import { Button, FluentProvider, Tooltip, webDarkThemeClassName } from '@fluentui/react-windmod-preview';

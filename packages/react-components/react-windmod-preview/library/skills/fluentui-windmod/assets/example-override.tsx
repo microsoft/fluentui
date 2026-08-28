@@ -21,10 +21,11 @@ import { useCssVarValue } from '@fluentui/react-windmod-preview/use-css-var-valu
 
 import './example-override.css';
 
-// Two required stylesheets, loaded once per document. The theme goes FIRST — it declares the
-// cascade-layer family, and layer order is first-appearance.
+// Two required root stylesheets, loaded once per document, ahead of everything else. The theme
+// goes FIRST — it declares the cascade-layer family, and layer order is first-appearance.
+// Component CSS needs no import: each component pulls its own chunk automatically.
 //   import '@fluentui/react-tailwind-theme-preview/styles.css';
-//   import '@fluentui/react-windmod-preview/styles.css';   // ESM gets this automatically
+//   import '@fluentui/react-windmod-preview/base.css';
 
 const pickTheme = (dark: boolean): ThemeClassName =>
   dark ? themeClassNames.webDarkTheme : themeClassNames.webLightTheme;

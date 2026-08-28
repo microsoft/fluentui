@@ -13,6 +13,8 @@
     "*.md",
     "dist/*.d.ts",
     "dist/*.d.cts",
+    "dist/base.css",
+    "dist/css",
     "dist/styles.css",
     "lib",
     "lib-commonjs",
@@ -159,6 +161,7 @@
         "default": "./lib-commonjs/badge.cjs"
       }
     },
+    "./base.css": "./dist/base.css",
     "./breadcrumb": {
       "import": {
         "types": "./dist/breadcrumb.d.ts",
@@ -319,6 +322,7 @@
         "default": "./lib-commonjs/compound-button.cjs"
       }
     },
+    "./css/*": "./dist/css/*",
     "./dialog": {
       "import": {
         "types": "./dist/dialog.d.ts",

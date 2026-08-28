@@ -117,9 +117,37 @@ Fluent system fails loudly instead of diverging silently.
 references resolve to nothing.
 
 **Cause 2:** CommonJS or an SSR setup that drops the ESM side-effect import of the component
-stylesheet.
+chunks.
 
-**Fix:** import `@fluentui/react-windmod-preview/styles.css` explicitly.
+**Fix:** import `@fluentui/react-windmod-preview/styles.css` explicitly — the aggregate carrying
+the root sheet and every component in one file.
+
+## "Borders and shadows are missing, or the wrong component wins"
+
+**Cause:** `@fluentui/react-windmod-preview/base.css` is not loaded. Component CSS ships per
+component; the root sheet carries the two things that cannot live in a chunk — the `@property`
+registrations that give Tailwind's `--tw-*` variables their initial values (missing ⇒ borders,
+shadows and rings lose their values), and the cascade-layer order (missing ⇒ layers resolve in
+whatever order chunks happened to load, so a composed component can lose to its own base).
+
+A development build logs a warning naming this. It looks for the layer-order declaration rather
+than a specific stylesheet URL, so it does not false-positive when `base.css` is `@import`ed into
+the app's own root stylesheet.
+
+**Fix:** load it once, ahead of everything else:
+
+```js
+import '@fluentui/react-windmod-preview/base.css';
+```
+
+or at the top of the app's own root stylesheet:
+
+```css
+@import '@fluentui/react-windmod-preview/base.css';
+```
+
+Loading `@fluentui/react-windmod-preview/styles.css` instead also fixes it — it inlines the root
+sheet.
 
 ## "Everything is the wrong size"
 
