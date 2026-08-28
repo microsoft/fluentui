@@ -11,7 +11,7 @@
     @apply relative box-border flex flex-nowrap items-center font-base;
 
     @variant after {
-      @apply absolute inset-x-0 bottom-0 box-border h-(--radius-medium) rounded-b-medium content-[''];
+      @apply absolute inset-x-0 bottom-0 box-border h-(--radius-medium) rounded-b-medium;
 
       background-image: linear-gradient(
         0deg,

@@ -24,7 +24,7 @@
        which is not a <time> and is dropped at computed-value time, so both sides compute 0s / ease.
        Reduced motion is suppressed house-wide by the theme, not here. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke content-[''];
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -165,7 +165,7 @@
       @apply border-transparent;
 
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2 content-[''];
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2;
 
         @variant forced-colors {
           @apply border-[Highlight];

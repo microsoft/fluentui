@@ -106,9 +106,12 @@ const iconClass = (size: AvatarSize) => {
  */
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const { active, activeAppearance, color, shape, size } = state;
-  const animated = active === 'active' || active === 'inactive';
-  const ring = animated && (activeAppearance === 'ring' || activeAppearance === 'ring-shadow');
-  const shadow = animated && (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow');
+  // True when the `active` prop is set at all, either value: that is what enables the
+  // activity-indicator machinery. Named for Griffel's own bucket (`activeOrInactive`, its
+  // useAvatarStyles.styles.ts) so the flag and the class it gates read as one vocabulary.
+  const isActiveOrInactive = active === 'active' || active === 'inactive';
+  const ring = isActiveOrInactive && (activeAppearance === 'ring' || activeAppearance === 'ring-shadow');
+  const shadow = isActiveOrInactive && (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow');
 
   const root: AvatarState['root'] & AvatarRootDataAttributes = {
     ...state.root,
@@ -118,7 +121,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
       styles.root,
       textClass(size),
       shape === 'square' && squareClass(size),
-      animated && styles.activeOrInactive,
+      isActiveOrInactive && styles.activeOrInactive,
       ring && [styles.ring, ringClass(size)],
       shadow && [styles.shadow, shadowClass(size)],
       active === 'inactive' && styles.inactive,

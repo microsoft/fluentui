@@ -63,7 +63,7 @@
     inset-inline-start: var(--fui-Slider--progress);
 
     @variant before {
-      @apply absolute inset-0 box-border rounded-circular border-(length:--spacing-thick) border-solid border-neutral-background-1 content-[''];
+      @apply absolute inset-0 box-border rounded-circular border-(length:--spacing-thick) border-solid border-neutral-background-1;
     }
 
     @variant rtl {
