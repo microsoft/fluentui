@@ -315,7 +315,8 @@ would not). Verify per module with a computed-style equality check.
 
 ### Icon variants
 
-The filled/regular glyph swap selects on `data-variant`, stamped by the headless `bundleIcon`:
+The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless
+`bundleIcon`:
 
 ```css
 & .icon * {

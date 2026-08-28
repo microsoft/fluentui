@@ -89,7 +89,7 @@ describe('InfoButton', () => {
       const { glyphs } = parts(scoped.baseElement);
 
       expect(glyphs).toHaveLength(2);
-      expect(glyphs.map(glyph => glyph.getAttribute('data-variant'))).toEqual(['filled', 'regular']);
+      expect(glyphs.map(glyph => glyph.getAttribute('data-fui-icon-variant'))).toEqual(['filled', 'regular']);
       // Presence alone would pass against a constant glyph; the rendered box is the identity.
       expect(glyphs.map(glyph => glyph.getAttribute('width'))).toEqual([widths[size], widths[size]]);
       scoped.unmount();

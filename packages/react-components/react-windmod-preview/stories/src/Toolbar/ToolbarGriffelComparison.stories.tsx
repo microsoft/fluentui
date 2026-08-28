@@ -30,7 +30,7 @@ import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Each side uses its own atoms and bundler: headless (data-variant) vs Griffel classic.
+// Each side uses its own atoms and bundler: headless (data-fui-icon-variant) vs Griffel classic.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const GriffelCalendarMonth = griffelBundleIcon(GriffelCalendarMonthFilled, GriffelCalendarMonthRegular);
 

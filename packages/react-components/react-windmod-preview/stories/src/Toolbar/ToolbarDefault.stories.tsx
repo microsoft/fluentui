@@ -14,7 +14,7 @@ import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Bundled pair: a checked toolbar toggle swaps regular → filled via data-variant.
+// Bundled pair: a checked toolbar toggle swaps regular → filled via data-fui-icon-variant.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const sizes = ['small', 'medium', 'large'] as const;

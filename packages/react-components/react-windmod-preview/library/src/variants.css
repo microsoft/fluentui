@@ -24,8 +24,8 @@
 @custom-variant appearance-filled-alternative (&:where([data-appearance='filled-alternative']));
 
 /* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
-@custom-variant variant-filled (&:where([data-variant='filled']));
-@custom-variant variant-regular (&:where([data-variant='regular']));
+@custom-variant variant-filled (&:where([data-fui-icon-variant='filled']));
+@custom-variant variant-regular (&:where([data-fui-icon-variant='regular']));
 
 /* ColorSlider: colour channel. `hue` is the headless default and the resting look, so it gets
    no entry. */

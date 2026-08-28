@@ -443,7 +443,7 @@
       }
     }
 
-    /* Glyph swap on selection, keyed off the data-variant attribute bundleIcon stamps on each
+    /* Glyph swap on selection, keyed off the data-fui-icon-variant attribute bundleIcon stamps on each
        glyph. The glyphs carry no module class of their own, so they are reached by descent. */
     & * {
       @variant group-selected/fui-tab {

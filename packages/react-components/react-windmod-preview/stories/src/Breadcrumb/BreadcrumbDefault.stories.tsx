@@ -11,7 +11,7 @@ import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Bundled pair: a hovered breadcrumb button swaps regular → filled via data-variant, and a
+// Bundled pair: a hovered breadcrumb button swaps regular → filled via data-fui-icon-variant, and a
 // current one swaps back.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 

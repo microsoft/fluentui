@@ -5,7 +5,7 @@ import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Bundled pair: an expanded MenuButton swaps regular → filled via data-variant.
+// Bundled pair: an expanded MenuButton swaps regular → filled via data-fui-icon-variant.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const appearances = ['secondary', 'primary', 'outline', 'subtle', 'transparent'] as const;
