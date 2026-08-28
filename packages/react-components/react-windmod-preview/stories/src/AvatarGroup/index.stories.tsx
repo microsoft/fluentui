@@ -1,4 +1,4 @@
-import { AvatarGroup } from '@fluentui/react-windmod-preview';
+import { AvatarGroup } from '@fluentui/react-windmod-preview/avatar-group';
 
 export { Default } from './AvatarGroupDefault.stories';
 export { GriffelComparison } from './AvatarGroupGriffelComparison.stories';

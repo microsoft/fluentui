@@ -3,9 +3,9 @@ import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
-  FluentProvider,
   partitionAvatarGroupItems,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/avatar-group';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

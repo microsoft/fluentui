@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, FluentProvider } from '@fluentui/react-windmod-preview';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover } from '@fluentui/react-windmod-preview/avatar-group';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   AvatarGroup as GriffelAvatarGroup,
   AvatarGroupItem as GriffelAvatarGroupItem,

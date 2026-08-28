@@ -4,8 +4,8 @@ import {
   BreadcrumbButton,
   BreadcrumbDivider,
   BreadcrumbItem,
-  FluentProvider,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/breadcrumb';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   Breadcrumb as GriffelBreadcrumb,
   BreadcrumbButton as GriffelBreadcrumbButton,

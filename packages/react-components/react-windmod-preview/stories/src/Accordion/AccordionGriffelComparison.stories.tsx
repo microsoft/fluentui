@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  FluentProvider,
-} from '@fluentui/react-windmod-preview';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-windmod-preview/accordion';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   Accordion as GriffelAccordion,
   AccordionHeader as GriffelAccordionHeader,

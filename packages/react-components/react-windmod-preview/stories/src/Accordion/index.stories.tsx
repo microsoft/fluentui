@@ -1,4 +1,4 @@
-import { Accordion } from '@fluentui/react-windmod-preview';
+import { Accordion } from '@fluentui/react-windmod-preview/accordion';
 
 export { Default } from './AccordionDefault.stories';
 export { GriffelComparison } from './AccordionGriffelComparison.stories';

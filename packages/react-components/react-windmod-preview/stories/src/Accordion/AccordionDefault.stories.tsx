@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  FluentProvider,
-} from '@fluentui/react-windmod-preview';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-windmod-preview/accordion';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 
