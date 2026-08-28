@@ -13,10 +13,10 @@ no `@griffel/react` in the dependency graph, and no `makeStyles` to migrate.
 
 The goal is a drop-in reskin, not a redesign. Components render the same DOM and take the same props as
 their Griffel counterparts, and every shipped component is compared against its Griffel twin
-pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list lives in the VR harness's
-`scenes.json` and grows with the package: **91 scenes, 73 of them at strict zero.** The remaining
-eighteen carry an explicit, individually ratified pixel allowance, each one recorded on its scene with
-the control that bounds it. They are enumerated in
+pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list is maintained alongside
+the package and grows with it: **91 scenes, 73 of them at strict zero.** The remaining eighteen carry an
+explicit, individually ratified pixel allowance, each one recorded on its scene with the control that
+bounds it. They are enumerated in
 [Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
 > **Preview.** This package tracks `@fluentui/react-headless-components-preview`, which is itself in
@@ -149,7 +149,7 @@ or the component subpath is the sanctioned entry point either way.
 
 ## What differs deliberately
 
-Fifty differences, each one a decision rather than a defect.
+Fifty-six differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -315,6 +315,22 @@ Tailwind's shadow and ring utilities prepend fully transparent layers, so
 `getComputedStyle(el).boxShadow` returns a longer string than Griffel's `var(--shadow4)` — same painted
 result. `shadow-none` likewise computes to five transparent layers rather than the literal `none`. Snapshot
 tests that assert on computed `box-shadow` strings need updating; nothing about the rendering does.
+
+Translucent colours are the other case. Where Griffel spells an alpha mix as `color-mix(in srgb, …)`,
+windmod writes Tailwind's slash modifier — `bg-(--token)/30` — which compiles to `color-mix(in oklab, …)`,
+oklab being Tailwind's default interpolation space and the one the modern web has settled on. These are
+**alpha-only** mixes: the same colour on both sides, only its opacity changing, so premultiplied
+interpolation lands on the same painted result whichever space names it. Only the serialization differs —
+`oklab(… / 0.3)` against `color(srgb … / 0.3)` — which a computed-style diff of the two libraries will
+show. [Delta 55](#55-unselected-carousel-dots-are-mixed-in-oklab-not-srgb) prints the two side by side on
+the one component where they are worth reading.
+
+Griffel pairs each such mix with an `@supports not (color-mix(…))` fallback. **windmod deliberately carries
+none.** `color-mix()` shipped in every engine in early 2023, comfortably inside the CSS anchor positioning
+floor this package already requires
+([delta 27](#27-anchored-components-require-css-anchor-positioning--with-no-fallback)) — a browser that
+cannot mix two colours cannot position an anchored surface either, so the fallback would only ever run on
+an engine that has already failed elsewhere.
 
 #### 13. Text alignment is logical, not physical
 
@@ -534,7 +550,7 @@ floating-ui writes integer transforms, a 0.047–0.375px offset that shifts glyp
 
 Both CSS routes to close the arrow gap (`anchor-center`, an `anchor-size()` clamp) were measured and
 neither works. Edge-centred placements (`above`, `below`, `before`, `after`) are unaffected. This is the
-mechanism behind four of the thirteen ratified pixel allowances — see
+mechanism behind four of the eighteen ratified pixel allowances — see
 [Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
 #### 29. The `AlphaSlider` checkerboard is inlined — it works offline
@@ -761,8 +777,8 @@ state where a Griffel `Card` shows none.
 Griffel's `NavDrawer` stamps `role="navigation"` on the drawer root; the headless render puts it on
 the `NavDrawerBody`, and windmod inherits the headless placement. The landmark is announced either
 way and its contents are identical — but assistive technology reports it on a different element, and
-a selector or test targeting `[role="navigation"]` finds the body rather than the root. A test (T8)
-pins the headless placement so a future upstream move is caught.
+a selector or test targeting `[role="navigation"]` finds the body rather than the root. The package's
+own test suite pins the headless placement so a future upstream move is caught.
 
 #### 50. `NavDrawer` has no `tabbable` prop
 
@@ -820,8 +836,9 @@ handler firing on a `disabledFocusable` nav button will stop receiving it.
 The unselected dot is the component's one translucent colour. Griffel authors it as
 `color-mix(in srgb, …)`; windmod authors it with Tailwind's opacity modifier, which compiles to
 `color-mix(in oklab, …)` — oklab is Tailwind's default interpolation space, and windmod does not fight it.
-The two computed values differ in serialization on the two unselected dots and are identical on the two
-selected ones:
+[Delta 12](#12-some-computed-style-strings-differ-without-any-visual-difference) states the rule; this is
+the one component where the numbers are worth printing. The two computed values differ in serialization on
+the two unselected dots and are identical on the two selected ones:
 
 | dot                 | windmod (oklab)                                   | Griffel (`in srgb`)                             |
 | ------------------- | ------------------------------------------------- | ----------------------------------------------- |
@@ -864,31 +881,34 @@ that value. Take a Griffel measurement of this cell from an isolated harness rat
 
 The parity gate is strict zero: pixelmatch at threshold 0, one differing pixel fails the scene.
 Seventy-three of the ninety-one scenes hold that unconditionally. The remaining eighteen carry a numeric
-`allowedStrictDiff` in `scenes.json`, each granted individually and each recorded with the control that
+ceiling recorded on the scene itself, each granted individually and each recorded with the control that
 bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
-not decompose the documented way fails the scene even when it sits under the ceiling. Sixteen of the
-eighteen are described below; the two `menu-sequel` rows carry their ratified rationale in `scenes.json`
-only.
+not decompose the documented way fails the scene even when it sits under the ceiling. All eighteen are
+below.
 
-Four of the sixteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are strict
-zero, which is the strongest statement in the table — the CSS is exactly correct. The rest split into
-genuine geometry (survives software rasterization) and rows where the no-GPU mode is itself the noisier
-one and the GPU gate stays authoritative.
+Four of the eighteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are
+strict zero, which is the strongest statement in the table — the CSS is exactly correct. The rest split
+into genuine geometry (survives software rasterization) and rows where the no-GPU mode is itself the
+noisier one and the GPU gate stays authoritative.
 
-| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                            | Under `--disable-gpu`                                                                                                                                                  |
-| ----------------------------------------------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                   | **0 — completely compliant**                                                                                                                                           |
-| `teaching-popover-carousel`                           | 18386            | Q6       | The same top-layer compositing texture as `teaching-popover`, over the larger carousel surface. No CSS component: the promoted Griffel-vs-Griffel identity control reads 0 in both raster modes.                                     | **0 — completely compliant** (proven ×5)                                                                                                                               |
-| `teaching-popover-carousel-brand`                     | 17816            | Q6       | Same class and same procedure as the row above, on the brand surface.                                                                                                                                                                | **0 — completely compliant** (proven ×5)                                                                                                                               |
-| `teaching-popover-carousel-rtl`                       | 18386            | Q6       | Same class as the two rows above. Geometry is byte-identical — a full-precision rect walk reads 0 — after the `PopoverSurface` 1/64 px RTL arrow fix that shipped with this cycle.                                                   | 6 — a settle-pass harness artifact, not windmod: `getAnimations().cancel()` de-promotes only the Griffel side, and a Griffel-vs-Griffel control bounds it at exactly 6 |
-| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                         | **0 — completely compliant**                                                                                                                                           |
-| `teaching-popover-placements`                         | 8883             | P        | 5824 px of decision-G arrow displacement plus 3059 px of the same rasterization as the row above.                                                                                                                                    | 5824 — the predicted arrow share survives                                                                                                                              |
-| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                 | 8107 — persists (positioning, not compositing)                                                                                                                         |
-| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                              | 4219 — both mechanisms survive                                                                                                                                         |
-| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                  | 4366 — arrow and fringe survive                                                                                                                                        |
-| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                     | 1335 — persists in full, 0% GPU component                                                                                                                              |
-| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes. | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                                                          |
-| `menu`, `menu-rtl`                                    | 413 / 409        | I        | The same top-layer compositing class as the TagPicker rows.                                                                                                                                                                          | `menu-rtl` regresses to 9486; `menu` is bimodal under the flag and carries no no-GPU expectation. **GPU gate authoritative**                                           |
+The **Decision** column is the identifier the allowance was ratified under; rows sharing one were granted
+together, as a single class on a single body of evidence.
+
+| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                                                                                                                                                                                                                                    | Under `--disable-gpu`                                                                                                                                                  |
+| ----------------------------------------------------- | ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                                                                                                                                                                                                                           | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-carousel`                           | 18386            | Q6       | The same top-layer compositing texture as `teaching-popover`, over the larger carousel surface. No CSS component: the promoted Griffel-vs-Griffel identity control reads 0 in both raster modes.                                                                                                                                                                                                                                             | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-brand`                     | 17816            | Q6       | Same class and same procedure as the row above, on the brand surface.                                                                                                                                                                                                                                                                                                                                                                        | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-rtl`                       | 18386            | Q6       | Same class as the two rows above. Geometry is byte-identical — a full-precision rect walk reads 0 — after the `PopoverSurface` 1/64 px RTL arrow fix that shipped with this cycle.                                                                                                                                                                                                                                                           | 6 — a settle-pass harness artifact, not windmod: `getAnimations().cancel()` de-promotes only the Griffel side, and a Griffel-vs-Griffel control bounds it at exactly 6 |
+| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                                                                                                                                                                                                                                 | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-placements`                         | 8883             | P        | 5824 px of the arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements) plus 3059 px of the same top-layer rasterization as `teaching-popover`.                                                                                                                                                                                                                                                            | 5824 — the predicted arrow share survives                                                                                                                              |
+| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                                                                                                                                                                                                                         | 8107 — persists (positioning, not compositing)                                                                                                                         |
+| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                                                                                                                                                                                                                                      | 4219 — both mechanisms survive                                                                                                                                         |
+| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                                                                                                                                                                                                                          | 4366 — arrow and fringe survive                                                                                                                                        |
+| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                                                                                                                                                                                                                             | 1335 — persists in full, 0% GPU component                                                                                                                              |
+| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes.                                                                                                                                                                                                         | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                                                          |
+| `menu`, `menu-rtl`                                    | 413 / 409        | I        | The same top-layer compositing class as the TagPicker rows.                                                                                                                                                                                                                                                                                                                                                                                  | `menu-rtl` regresses to 9486; `menu` is bimodal under the flag and carries no no-GPU expectation. **GPU gate authoritative**                                           |
+| `menu-sequel`, `menu-sequel-rtl`                      | 462 / 460        | Q5       | The same top-layer GPU-compositing class as the `menu` rows, over the larger menu the scene opens: shadow quantisation at the surface edges plus switch-thumb anti-aliasing, on byte-identical rects (138 px from the plain menu items, 322 px from the split-group cells). Promoting Griffel's own menu popover onto that compositing path reproduces the gate exactly — overlap 460/460, nothing on either side alone, in both directions. | No no-GPU expectation, as on the `menu` rows: software rasterization is bimodal for this family. **GPU gate authoritative**                                            |
 
 **Why `--disable-gpu` is not simply a cleaner baseline.** Software rasterization does not put the two
 surfaces back on the same path — it puts them on a _different pair_ of paths. Shipped-green strict-zero
@@ -906,12 +926,12 @@ evidence, and because a VR harness pointed at this package will reproduce these 
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
 
-| Not shipped                                                                                         | Why                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
-| `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
-| `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |
-| `Persona`'s `presence` slot and `presenceOnly` prop                                                 | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                     |
+| Not shipped                                                                                                        | Why                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Text` and the typography components, `Table`/`DataGrid`, `Tree`, the standalone `Carousel`, `Virtualizer`, `List` | no headless counterpart (the teaching-popover carousel is a different component and does ship — see [the teaching carousel](#the-teaching-carousel)) |
+| `MessageBarGroup`                                                                                                  | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce))              |
+| `Overflow` and family                                                                                              | **scoped out permanently** — see below                                                                                                               |
+| `Persona`'s `presence` slot and `presenceOnly` prop                                                                | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                                  |
 
 All of these compose over windmod components without a shim: they are Griffel-styled containers around
 windmod-styled children, and nothing in either library's CSS fights the other.
