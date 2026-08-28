@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-windmod-preview",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Fluent UI React components styled with Tailwind v4 + CSS Modules ('windmod'). Composes @fluentui/react-headless-components-preview hooks (useX → useXStyles → renderX) with build-time-compiled CSS Modules that replicate the Griffel suite's visuals; theming is pure CSS via @fluentui/react-tailwind-theme-preview theme classes applied by FluentProvider.",
   "type": "module",
@@ -29,7 +29,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.4.5",
     "@fluentui/react-shared-contexts": "^9.26.3",
-    "@fluentui/react-tailwind-theme-preview": "^9.0.0-alpha.0",
+    "@fluentui/react-tailwind-theme-preview": "^0.1.0",
     "@fluentui/react-utilities": "^9.26.6",
     "@swc/helpers": "^0.5.1",
     "clsx": "^2.1.1",
@@ -44,7 +44,7 @@
   "imports": {
     "#theme": "./src/theme.css"
   },
-  "//exports": "HAND-AUTHORED ASSET SUBPATHS — ./styles.css and ./variants.css are not generated from src/*.ts and no generator knows about them. The `export-maps-sync` Nx generator (tools/workspace-plugin, wired into CI as `yarn nx sync:check`) REBUILDS this whole map from project.json's metadata.exportMap and keeps nothing else, so it would DELETE both. This package is out of its scope today ONLY because of `private: true` above — project.json already carries the required `vNext` + `platform:web` tags. Before un-privating this package for publish, either teach the generator to preserve non-source entries or the two CSS subpaths vanish; ./variants.css is a documented public export.",
+  "//exports": "HAND-AUTHORED ASSET SUBPATHS — ./styles.css and ./variants.css are not generated from src/*.ts and no generator knows about them. The `export-maps-sync` Nx generator (tools/workspace-plugin, wired into CI as `yarn nx sync:check`) REBUILDS this whole map from project.json's metadata.exportMap and keeps nothing else, so it would DELETE both. This package is out of its scope today ONLY because of `private: true` above — project.json already carries the required `vNext` + `platform:web` tags. MEASURED 2026-08-27, un-privating this package and running `nx sync`: with project.json carrying NO metadata.exportMap the generator falls back to `{ root: true, subpathEntryPoints: [] }` and collapses the map to `.` + `./package.json`, destroying all 149 subpaths; after adding `metadata.exportMap: { root: true, subpathEntryPoints: ['src/*.ts'] }` (the shape react-headless-components-preview uses) the loss narrows to exactly two entries — ./styles.css and ./variants.css — and all 149 TS subpaths including ./positioning regenerate byte-identically. Before un-privating this package for publish, both changes are required: add the metadata.exportMap block AND teach the generator to preserve non-source entries; ./variants.css is a documented public export.",
   "exports": {
     ".": {
       "import": {

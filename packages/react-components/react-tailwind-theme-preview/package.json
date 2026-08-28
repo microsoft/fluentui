@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tailwind-theme-preview",
-  "version": "9.0.0-alpha.0",
+  "version": "0.1.0",
   "description": "Fluent UI themes and design tokens as a Tailwind v4 CSS layer: cascade layer order, custom variants, the base-scale spacing bridge, the generated Fluent token registration (css/tokens.css, `@theme inline` utility names over kebab-case custom properties), and the 7 shipped themes as static CSS classes (css/themes.css — apply `fui-theme-web-dark` etc. to any element to theme its subtree; web-light values are the `:root, :host` defaults). Spacing registers the 22 named tokens as aliases of the numeric axis (one density knob, --spacing); stroke widths keep literal base-scale values under --stroke-width-* on purpose (borders must not thin with layout density). The kebab-case variable namespace is self-contained by design — it does not interoperate with classic FluentProvider runtime theming (camelCase variables). Pairs with @fluentui/react-windmod-preview, and is equally usable for styling @fluentui/react-headless-components-preview directly.",
   "license": "MIT",
   "repository": {
@@ -10,8 +10,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "scripts": {

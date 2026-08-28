@@ -2,7 +2,7 @@
   "$schema": "fluent-theme-values",
   "description": "Committed snapshot of the shipped Fluent theme objects (theme key -> value). Consumed by scripts/generate-tokens-css.js to emit the static theme CSS classes. Regenerate after yarn nx run tokens:build.",
   "generatedBy": "packages/react-components/react-tailwind-theme-preview/scripts/generate-theme-values.js",
-  "source": "@fluentui/react-tailwind-theme-preview@9.0.0-alpha.0",
+  "source": "@fluentui/react-tailwind-theme-preview@0.1.0",
   "themes": {
     "webLightTheme": {
       "borderRadiusNone": "0",
