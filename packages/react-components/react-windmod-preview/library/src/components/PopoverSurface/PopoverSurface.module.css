@@ -75,8 +75,14 @@
         }
       }
 
+      /* An explicit inset, not `inset-x-0 mx-auto`. Over-constrained auto margins leave one
+         LayoutUnit (1/64 px) of the free space unassigned, and Blink hands that quantum to the
+         margin on the containing block's end side — so the same box lands 1/64 px further right
+         under `dir="rtl"` than under `dir="ltr"`. Griffel pins floating-ui's own numeric inset,
+         which has no such term. This calc reproduces that inset to the LayoutUnit at every surface
+         width in both directions. */
       @variant group-placement-above-centered/fui-popover-surface, group-placement-below-centered/fui-popover-surface {
-        @apply inset-x-0 mx-auto;
+        left: calc(50% - var(--fui-positioning-arrow-height) / 2);
       }
 
       @variant group-placement-before-centered/fui-popover-surface, group-placement-after-centered/fui-popover-surface {
