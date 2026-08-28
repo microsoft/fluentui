@@ -4,15 +4,66 @@
 
 ```ts
 
+import type { AlphaSliderProps as AlphaSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { AlphaSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { AlphaSliderState as AlphaSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorAreaProps as ColorAreaProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorAreaSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorAreaState as ColorAreaState_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { ColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorPickerProps as ColorPickerProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { ColorPickerSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorPickerState as ColorPickerState_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorSliderProps as ColorSliderProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorSliderSlots } from '@fluentui/react-headless-components-preview/color-picker';
+import type { ColorSliderState as ColorSliderState_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { renderAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
+import { renderColorArea } from '@fluentui/react-headless-components-preview/color-picker';
 import { renderColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
+import { renderColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
+import { useAlphaSlider } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorArea } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorPicker } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
 import { useColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';
+import { useColorSlider } from '@fluentui/react-headless-components-preview/color-picker';
+
+// @public
+export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
+
+// @public
+export const alphaSliderClassNames: {
+    root: string;
+};
+
+// @public
+export type AlphaSliderProps = AlphaSliderProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { AlphaSliderSlots }
+
+// @public
+export type AlphaSliderState = AlphaSliderState_2 & Required<Pick<AlphaSliderProps, 'shape'>>;
+
+// @public
+export const ColorArea: ForwardRefComponent<ColorAreaProps>;
+
+// @public
+export const colorAreaClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorAreaProps = ColorAreaProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { ColorAreaSlots }
+
+// @public
+export type ColorAreaState = ColorAreaState_2 & Required<Pick<ColorAreaProps, 'shape'>>;
 
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
@@ -37,7 +88,41 @@ export { ColorPickerSlots }
 // @public
 export type ColorPickerState = ColorPickerState_2 & Pick<ColorPickerProps, 'shape'>;
 
+// @public
+export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
+
+// @public
+export const colorSliderClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorSliderProps = ColorSliderProps_2 & {
+    shape?: ColorPickerShape;
+};
+
+export { ColorSliderSlots }
+
+// @public
+export type ColorSliderState = ColorSliderState_2 & Required<Pick<ColorSliderProps, 'shape'>>;
+
+export { renderAlphaSlider }
+
+export { renderColorArea }
+
 export { renderColorPicker }
+
+export { renderColorSlider }
+
+export { useAlphaSlider }
+
+// @public
+export const useAlphaSliderStyles: (state: AlphaSliderState) => AlphaSliderState;
+
+export { useColorArea }
+
+// @public
+export const useColorAreaStyles: (state: ColorAreaState) => ColorAreaState;
 
 export { useColorPicker }
 
@@ -47,6 +132,11 @@ export { useColorPickerContextValues }
 
 // @public
 export const useColorPickerStyles: (state: ColorPickerState) => ColorPickerState;
+
+export { useColorSlider }
+
+// @public
+export const useColorSliderStyles: (state: ColorSliderState) => ColorSliderState;
 
 // (No @packageDocumentation comment for this package)
 

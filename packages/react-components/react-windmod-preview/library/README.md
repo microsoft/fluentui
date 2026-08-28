@@ -20,7 +20,7 @@ travels in the tarball, so it stays in step with the version you installed — p
 `node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod/SKILL.md`
 ([how](./skills/fluentui-windmod/README.md)).
 
-Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the subpath
+Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the family
 map, the parity contract, every deliberate difference, and what is not shipped.
 
 ## Usage
@@ -35,7 +35,9 @@ import '@fluentui/react-tailwind-theme-preview/styles.css';
 ```
 
 ```jsx
-import { Button, Tooltip, FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 
 export default function App() {
   return (
@@ -101,7 +103,7 @@ windmod-styled items as over Griffel-styled ones.
 
 ```jsx
 import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
 
 // `Menu` is not part of this package; a count of what the engine hid needs no extra component.
 const OverflowCount = () => {

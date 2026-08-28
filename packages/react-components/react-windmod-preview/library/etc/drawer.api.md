@@ -4,20 +4,67 @@
 
 ```ts
 
+import { DrawerBodyProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerBodySlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerBodyState } from '@fluentui/react-headless-components-preview/drawer';
 import { DrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerFooterState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderNavigationState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderState } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleSlots } from '@fluentui/react-headless-components-preview/drawer';
+import { DrawerHeaderTitleState } from '@fluentui/react-headless-components-preview/drawer';
 import { DrawerProvider } from '@fluentui/react-headless-components-preview/drawer';
 import { DrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
 import type { DrawerState as DrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerProps as InlineDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { InlineDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
+import type { InlineDrawerState as InlineDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-headless-components-preview/drawer';
+import { OverlayDrawerSlots } from '@fluentui/react-headless-components-preview/drawer';
+import type { OverlayDrawerState as OverlayDrawerState_2 } from '@fluentui/react-headless-components-preview/drawer';
 import { renderDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
+import { renderDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
+import { renderInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { renderOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
 import { useDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerBody } from '@fluentui/react-headless-components-preview/drawer';
 import { useDrawerContext } from '@fluentui/react-headless-components-preview/drawer';
 import { useDrawerContextValue } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerFooter } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeader } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeaderNavigation } from '@fluentui/react-headless-components-preview/drawer';
+import { useDrawerHeaderTitle } from '@fluentui/react-headless-components-preview/drawer';
+import { useInlineDrawer } from '@fluentui/react-headless-components-preview/drawer';
+import { useOverlayDrawer } from '@fluentui/react-headless-components-preview/drawer';
 
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
+
+// @public
+export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
+
+// @public
+export const drawerBodyClassNames: {
+    root: string;
+};
+
+export { DrawerBodyProps }
+
+export { DrawerBodySlots }
+
+export { DrawerBodyState }
 
 // @public
 export const drawerClassNames: {
@@ -25,6 +72,62 @@ export const drawerClassNames: {
 };
 
 export { DrawerContextValue }
+
+// @public
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
+
+// @public
+export const drawerFooterClassNames: {
+    root: string;
+};
+
+export { DrawerFooterProps }
+
+export { DrawerFooterSlots }
+
+export { DrawerFooterState }
+
+// @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public
+export const drawerHeaderClassNames: {
+    root: string;
+};
+
+// @public
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
+
+// @public
+export const drawerHeaderNavigationClassNames: {
+    root: string;
+};
+
+export { DrawerHeaderNavigationProps }
+
+export { DrawerHeaderNavigationSlots }
+
+export { DrawerHeaderNavigationState }
+
+export { DrawerHeaderProps }
+
+export { DrawerHeaderSlots }
+
+export { DrawerHeaderState }
+
+// @public
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
+
+// @public
+export const drawerHeaderTitleClassNames: {
+    root: string;
+};
+
+export { DrawerHeaderTitleProps }
+
+export { DrawerHeaderTitleSlots }
+
+export { DrawerHeaderTitleState }
 
 // @public (undocumented)
 export type DrawerProps = (OverlayDrawerProps & {
@@ -43,16 +146,107 @@ export { DrawerSlots }
 // @public (undocumented)
 export type DrawerState = DrawerState_2;
 
+// @public
+export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
+
+// @public
+export const inlineDrawerClassNames: {
+    root: string;
+};
+
+// @public
+export type InlineDrawerProps = InlineDrawerProps_2 & {
+    size?: DrawerSize;
+    separator?: boolean;
+};
+
+export { InlineDrawerSlots }
+
+// @public (undocumented)
+export type InlineDrawerState = InlineDrawerState_2 & {
+    size: DrawerSize;
+    separator: boolean;
+};
+
+// @public
+export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
+
+// @public
+export const overlayDrawerClassNames: {
+    root: string;
+};
+
+// @public
+export type OverlayDrawerProps = OverlayDrawerProps_2 & {
+    size?: DrawerSize;
+};
+
+export { OverlayDrawerSlots }
+
+// @public (undocumented)
+export type OverlayDrawerState = OverlayDrawerState_2 & {
+    size: DrawerSize;
+};
+
 export { renderDrawer }
 
+export { renderDrawerBody }
+
+export { renderDrawerFooter }
+
+export { renderDrawerHeader }
+
+export { renderDrawerHeaderNavigation }
+
+export { renderDrawerHeaderTitle }
+
+export { renderInlineDrawer }
+
+export { renderOverlayDrawer }
+
 export { useDrawer }
+
+export { useDrawerBody }
+
+// @public
+export const useDrawerBodyStyles: (state: DrawerBodyState) => DrawerBodyState;
 
 export { useDrawerContext }
 
 export { useDrawerContextValue }
 
+export { useDrawerFooter }
+
+// @public
+export const useDrawerFooterStyles: (state: DrawerFooterState) => DrawerFooterState;
+
+export { useDrawerHeader }
+
+export { useDrawerHeaderNavigation }
+
+// @public
+export const useDrawerHeaderNavigationStyles: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderStyles: (state: DrawerHeaderState) => DrawerHeaderState;
+
+export { useDrawerHeaderTitle }
+
+// @public
+export const useDrawerHeaderTitleStyles: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
+
 // @public
 export const useDrawerStyles: (state: DrawerState) => DrawerState;
+
+export { useInlineDrawer }
+
+// @public
+export const useInlineDrawerStyles: (state: InlineDrawerState) => InlineDrawerState;
+
+export { useOverlayDrawer }
+
+// @public
+export const useOverlayDrawerStyles: (state: OverlayDrawerState) => OverlayDrawerState;
 
 // (No @packageDocumentation comment for this package)
 

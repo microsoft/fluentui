@@ -6,12 +6,24 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryProps as InteractionTagPrimaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagPrimarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryState as InteractionTagPrimaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
 import type { InteractionTagProps as InteractionTagProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryProps as InteractionTagSecondaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagSecondarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryState as InteractionTagSecondaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { InteractionTagSlots } from '@fluentui/react-headless-components-preview/interaction-tag';
 import type { InteractionTagState as InteractionTagState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -27,10 +39,54 @@ export const interactionTagClassNames: {
 export { InteractionTagContextValues }
 
 // @public
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
+
+// @public
+export const interactionTagPrimaryClassNames: {
+    root: string;
+};
+
+export { InteractionTagPrimaryContextValues }
+
+// @public
+export type InteractionTagPrimaryProps = InteractionTagPrimaryProps_2;
+
+export { InteractionTagPrimarySlots }
+
+// @public
+export type InteractionTagPrimaryState = InteractionTagPrimaryState_2 & {
+    appearance: InteractionTagAppearance;
+    shape: InteractionTagShape;
+    size: InteractionTagSize;
+    avatarShape: AvatarShape;
+    avatarSize: AvatarSize;
+};
+
+// @public
 export type InteractionTagProps = InteractionTagProps_2 & {
     appearance?: InteractionTagAppearance;
     shape?: InteractionTagShape;
     size?: InteractionTagSize;
+};
+
+// @public
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public
+export const interactionTagSecondaryClassNames: {
+    root: string;
+};
+
+// @public
+export type InteractionTagSecondaryProps = InteractionTagSecondaryProps_2;
+
+export { InteractionTagSecondarySlots }
+
+// @public
+export type InteractionTagSecondaryState = InteractionTagSecondaryState_2 & {
+    appearance: InteractionTagAppearance;
+    shape: InteractionTagShape;
+    size: InteractionTagSize;
 };
 
 // @public
@@ -46,9 +102,25 @@ export type InteractionTagState = InteractionTagState_2 & Required<Pick<Interact
 
 export { renderInteractionTag }
 
+export { renderInteractionTagPrimary }
+
+export { renderInteractionTagSecondary }
+
 export { useInteractionTag }
 
 export { useInteractionTagContextValues }
+
+export { useInteractionTagPrimary }
+
+export { useInteractionTagPrimaryContextValues }
+
+// @public
+export const useInteractionTagPrimaryStyles: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
+
+export { useInteractionTagSecondary }
+
+// @public
+export const useInteractionTagSecondaryStyles: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
 
 // @public
 export const useInteractionTagStyles: (state: InteractionTagState) => InteractionTagState;

@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Re-export of the Griffel Link context, mirroring how `Field` re-exports `useFieldContext`
  * (`../Field/useFieldContextValues.ts`).

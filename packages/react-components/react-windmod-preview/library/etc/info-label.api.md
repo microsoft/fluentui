@@ -6,14 +6,40 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InfoButtonProps as InfoButtonProps_2 } from '@fluentui/react-headless-components-preview/info-label';
+import { InfoButtonSlots } from '@fluentui/react-headless-components-preview/info-label';
+import type { InfoButtonState as InfoButtonState_2 } from '@fluentui/react-headless-components-preview/info-label';
 import type { InfoLabelProps as InfoLabelProps_2 } from '@fluentui/react-headless-components-preview/info-label';
 import { InfoLabelSlots } from '@fluentui/react-headless-components-preview/info-label';
 import type { InfoLabelState as InfoLabelState_2 } from '@fluentui/react-headless-components-preview/info-label';
 import type { LabelProps as LabelProps_2 } from '@fluentui/react-headless-components-preview/label';
 import type { PopoverProps as PopoverProps_2 } from '@fluentui/react-headless-components-preview/popover';
+import { renderInfoButton } from '@fluentui/react-headless-components-preview/info-label';
 import { renderInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import type { Slot } from '@fluentui/react-utilities';
+import { useInfoButton } from '@fluentui/react-headless-components-preview/info-label';
 import { useInfoLabel } from '@fluentui/react-headless-components-preview/info-label';
+
+// @public
+export const InfoButton: ForwardRefComponent<InfoButtonProps>;
+
+// @public
+export const infoButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type InfoButtonProps = Omit<InfoButtonProps_2, 'popover'> & {
+    popover?: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
+    size?: InfoButtonSize;
+};
+
+// @public
+export type InfoButtonSize = 'small' | 'medium' | 'large';
+
+export { InfoButtonSlots }
+
+// @public
+export type InfoButtonState = InfoButtonState_2 & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
@@ -36,7 +62,14 @@ export { InfoLabelSlots }
 // @public
 export type InfoLabelState = InfoLabelState_2 & Required<Pick<InfoLabelProps, 'size'>>;
 
+export { renderInfoButton }
+
 export { renderInfoLabel }
+
+export { useInfoButton }
+
+// @public
+export const useInfoButtonStyles: (state: InfoButtonState) => InfoButtonState;
 
 export { useInfoLabel }
 

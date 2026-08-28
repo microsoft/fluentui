@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Re-export of the Griffel AvatarGroup context, mirroring `../Avatar/avatarContext.ts`.
  *

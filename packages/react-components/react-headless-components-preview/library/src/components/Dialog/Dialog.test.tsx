@@ -115,7 +115,11 @@ describe('Dialog', () => {
       });
 
     afterEach(() => {
-      delete (document.documentElement as Partial<HTMLElement>).clientWidth;
+      // `setScrollbarWidth` installs a configurable OWN property shadowing the prototype getter, so
+      // removing that own property restores the getter. `delete` cannot express this — `clientWidth`
+      // is typed `readonly`, which `Partial<HTMLElement>` preserves — while `Reflect.deleteProperty`
+      // has identical runtime semantics and needs no cast.
+      Reflect.deleteProperty(document.documentElement, 'clientWidth');
       document.documentElement.style.removeProperty('scrollbar-gutter');
       document.body.style.removeProperty('overflow');
     });

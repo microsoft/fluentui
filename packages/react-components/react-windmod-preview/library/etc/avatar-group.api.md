@@ -6,17 +6,35 @@
 
 import { AvatarGroupContextValue } from '@fluentui/react-headless-components-preview/avatar-group';
 import { AvatarGroupContextValues } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemProps as AvatarGroupItemProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemSlots as AvatarGroupItemSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupItemState as AvatarGroupItemState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverPopoverProps } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverProps as AvatarGroupPopoverProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverSlots as AvatarGroupPopoverSlots_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarGroupPopoverState as AvatarGroupPopoverState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-headless-components-preview/avatar-group';
 import { AvatarGroupProvider } from '@fluentui/react-headless-components-preview/avatar-group';
 import { AvatarGroupSlots } from '@fluentui/react-headless-components-preview/avatar-group';
 import type { AvatarGroupState as AvatarGroupState_2 } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { AvatarProps as AvatarProps_2 } from '@fluentui/react-headless-components-preview/avatar';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PartitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
 import { partitionAvatarGroupItems } from '@fluentui/react-headless-components-preview/avatar-group';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-headless-components-preview/avatar-group';
+import { PopoverSurfaceProps } from '@fluentui/react-headless-components-preview/popover';
 import { renderAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
+import { renderAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
+import { renderAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
+import type { Slot } from '@fluentui/react-utilities';
+import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-headless-components-preview/tooltip';
 import { useAvatarGroup } from '@fluentui/react-headless-components-preview/avatar-group';
 import { useAvatarGroupContext } from '@fluentui/react-headless-components-preview/avatar-group';
+import { useAvatarGroupItem } from '@fluentui/react-headless-components-preview/avatar-group';
+import { useAvatarGroupPopover } from '@fluentui/react-headless-components-preview/avatar-group';
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -29,6 +47,57 @@ export const avatarGroupClassNames: {
 export { AvatarGroupContextValue }
 
 export { AvatarGroupContextValues }
+
+// @public
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+
+// @public
+export const avatarGroupItemClassNames: {
+    root: string;
+};
+
+// @public
+export type AvatarGroupItemProps = AvatarGroupItemProps_2 & {
+    color?: AvatarColor;
+    idForColor?: string | undefined;
+};
+
+// @public
+export type AvatarGroupItemSlots = Omit<AvatarGroupItemSlots_2, 'avatar'> & {
+    avatar: NonNullable<Slot<typeof Avatar>>;
+};
+
+// @public
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & Pick<AvatarGroupItemState_2, 'isOverflowItem' | 'layout'> & {
+    size: AvatarSize;
+};
+
+// @public
+export const AvatarGroupPopover: {
+    (props: AvatarGroupPopoverProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export const avatarGroupPopoverClassNames: {
+    triggerButton: string;
+};
+
+export { AvatarGroupPopoverPopoverProps }
+
+// @public
+export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & Pick<AvatarGroupPopoverProps_2, 'children' | 'count' | 'indicator'>;
+
+// @public
+export type AvatarGroupPopoverSlots = Omit<AvatarGroupPopoverSlots_2, 'popoverSurface' | 'tooltip'> & {
+    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    tooltip: NonNullable<Slot<typeof Tooltip>>;
+};
+
+// @public
+export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Pick<AvatarGroupPopoverState_2, 'count' | 'indicator' | 'layout' | 'popover' | 'popoverOpen'> & {
+    size: AvatarSize;
+};
 
 // @public
 export type AvatarGroupProps = AvatarGroupProps_2 & {
@@ -50,9 +119,23 @@ export { PartitionAvatarGroupItemsOptions }
 
 export { renderAvatarGroup }
 
+export { renderAvatarGroupItem }
+
+export { renderAvatarGroupPopover }
+
 export { useAvatarGroup }
 
 export { useAvatarGroupContext }
+
+export { useAvatarGroupItem }
+
+// @public
+export const useAvatarGroupItemStyles: (state: AvatarGroupItemState) => AvatarGroupItemState;
+
+export { useAvatarGroupPopover }
+
+// @public
+export const useAvatarGroupPopoverStyles: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
 
 // @public
 export const useAvatarGroupStyles: (state: AvatarGroupState) => AvatarGroupState;

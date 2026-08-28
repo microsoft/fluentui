@@ -108,15 +108,21 @@ import '@fluentui/react-tailwind-theme-preview/styles.css';
 import '@fluentui/react-windmod-preview/styles.css'; // instead of base.css
 ```
 
-Then swap the import specifier:
+Then rewrite the imports. **The names do not change; the paths do.** windmod ships no root barrel, so
+one `@fluentui/react-components` import becomes one import per _family_ — the same grouping the headless
+package uses:
 
 ```diff
 -import { Button, FluentProvider, Tooltip, webDarkTheme } from '@fluentui/react-components';
-+import { Button, FluentProvider, Tooltip, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
++import { Button } from '@fluentui/react-windmod-preview/button';
++import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
++import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 ```
 
 ```tsx
-import { Button, FluentProvider, Tooltip, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 
 export const App = () => (
   <FluentProvider theme={webDarkThemeClassName}>
@@ -127,76 +133,121 @@ export const App = () => (
 );
 ```
 
-### The subpath map
+A family import is one line no matter how many of its parts you use, so a `Dialog` or `Menu` migration is
+usually a _shorter_ import block than the Griffel original:
 
-The root barrel `@fluentui/react-windmod-preview` exports everything. Every component also has its own
-subpath, which is the recommended route for tree-shaking-sensitive apps. **A component subpath exports only
-that component** — so `CardHeader` comes from `./card-header`, not `./card`.
+```diff
+-import { Dialog, DialogSurface, DialogTitle, DialogBody, DialogActions } from '@fluentui/react-components';
++import { Dialog, DialogSurface, DialogTitle, DialogBody, DialogActions } from '@fluentui/react-windmod-preview/dialog';
+```
+
+### The family map
+
+**There is no root barrel.** `@fluentui/react-windmod-preview` exports nothing — every component is
+imported from its **family** subpath. The families are the ones
+[`@fluentui/react-headless-components-preview`](https://www.npmjs.com/package/@fluentui/react-headless-components-preview)
+already uses, so the two layers have the same shape: whatever `.../react-headless-components-preview/menu`
+gives you the hooks for, `.../react-windmod-preview/menu` gives you the styled components for.
+
+A family is the unit you actually build with. Implementing a menu means `Menu`, `MenuTrigger`,
+`MenuPopover`, `MenuList` and `MenuItem` — five imports from one subpath, one line:
 
 ```tsx
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-windmod-preview/menu';
 import { Button } from '@fluentui/react-windmod-preview/button';
-import { Card } from '@fluentui/react-windmod-preview/card';
-import { CardHeader } from '@fluentui/react-windmod-preview/card-header';
-import { CardPreview } from '@fluentui/react-windmod-preview/card-preview';
+import { CardHeader, CardPreview } from '@fluentui/react-windmod-preview/card';
 ```
 
-**`./dialog` is the single exception.** `Dialog` and its six parts — `DialogTrigger`, `DialogSurface`,
-`DialogBody`, `DialogHeader`, `DialogTitle`, `DialogActions` — share one subpath rather than seven, and
-are the only components in the package without one of their own:
+**What this costs and what it saves.** A family barrel's **JavaScript still tree-shakes**: import one
+component and its unused siblings' code is dropped (measured — importing only `MenuItem` from `./menu`
+retains 6 windmod modules against 36 for the whole family). Its **CSS comes along**, because each class
+map side-effect-imports its own chunk and the family barrel keeps the family's chunks reachable. That is
+intentional: families are used together, and the cost is bounded by the family rather than by the suite.
+If you need one component from a large family and nothing else, the CSS you pay for is that family's,
+not the library's.
 
-```tsx
-import { Dialog, DialogSurface, DialogTitle, DialogActions } from '@fluentui/react-windmod-preview/dialog';
-```
+**52 family subpaths** carry components. All are kebab-case, and all but `./use-css-var-value` match a
+headless subpath one-for-one.
 
-Every other family, `Drawer` and `Menu` and `Toast` included, is one subpath per component.
+| Subpath              | Components                                                                                                                                                                                                                                                                                                                                                                         |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `./accordion`        | Accordion, AccordionHeader, AccordionItem, AccordionPanel                                                                                                                                                                                                                                                                                                                          |
+| `./avatar`           | Avatar                                                                                                                                                                                                                                                                                                                                                                             |
+| `./avatar-group`     | AvatarGroup, AvatarGroupItem, AvatarGroupPopover                                                                                                                                                                                                                                                                                                                                   |
+| `./badge`            | Badge                                                                                                                                                                                                                                                                                                                                                                              |
+| `./breadcrumb`       | Breadcrumb, BreadcrumbButton, BreadcrumbDivider, BreadcrumbItem                                                                                                                                                                                                                                                                                                                    |
+| `./button`           | Button                                                                                                                                                                                                                                                                                                                                                                             |
+| `./card`             | Card, CardFooter, CardHeader, CardPreview                                                                                                                                                                                                                                                                                                                                          |
+| `./checkbox`         | Checkbox                                                                                                                                                                                                                                                                                                                                                                           |
+| `./color-picker`     | ColorPicker, AlphaSlider, ColorArea, ColorSlider                                                                                                                                                                                                                                                                                                                                   |
+| `./combobox`         | Combobox, Listbox, Option, OptionGroup                                                                                                                                                                                                                                                                                                                                             |
+| `./compound-button`  | CompoundButton                                                                                                                                                                                                                                                                                                                                                                     |
+| `./dialog`           | Dialog, DialogSurface, DialogTrigger, DialogHeader, DialogTitle, DialogBody, DialogActions                                                                                                                                                                                                                                                                                         |
+| `./divider`          | Divider                                                                                                                                                                                                                                                                                                                                                                            |
+| `./drawer`           | Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerHeaderTitle, InlineDrawer, OverlayDrawer                                                                                                                                                                                                                                                             |
+| `./dropdown`         | Dropdown                                                                                                                                                                                                                                                                                                                                                                           |
+| `./field`            | Field                                                                                                                                                                                                                                                                                                                                                                              |
+| `./image`            | Image                                                                                                                                                                                                                                                                                                                                                                              |
+| `./info-label`       | InfoLabel, InfoButton                                                                                                                                                                                                                                                                                                                                                              |
+| `./input`            | Input                                                                                                                                                                                                                                                                                                                                                                              |
+| `./interaction-tag`  | InteractionTag, InteractionTagPrimary, InteractionTagSecondary                                                                                                                                                                                                                                                                                                                     |
+| `./label`            | Label                                                                                                                                                                                                                                                                                                                                                                              |
+| `./link`             | Link                                                                                                                                                                                                                                                                                                                                                                               |
+| `./menu`             | Menu, MenuDivider, MenuGroup, MenuGroupHeader, MenuItem, MenuItemContextProvider, MenuItemCheckbox, MenuItemLink, MenuItemRadio, MenuItemSwitch, MenuList, MenuPopover, MenuSplitGroup, MenuTrigger                                                                                                                                                                                |
+| `./menu-button`      | MenuButton                                                                                                                                                                                                                                                                                                                                                                         |
+| `./message-bar`      | MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle                                                                                                                                                                                                                                                                                                                     |
+| `./nav`              | Nav, NavCategory, NavCategoryItem, NavDivider, NavDrawer, NavDrawerBody, NavDrawerFooter, NavDrawerHeader, NavItem, NavSectionHeader, NavSubItem, NavSubItemGroup                                                                                                                                                                                                                  |
+| `./persona`          | Persona                                                                                                                                                                                                                                                                                                                                                                            |
+| `./popover`          | Popover, PopoverSurface, PopoverTrigger                                                                                                                                                                                                                                                                                                                                            |
+| `./progress-bar`     | ProgressBar                                                                                                                                                                                                                                                                                                                                                                        |
+| `./provider`         | FluentProvider                                                                                                                                                                                                                                                                                                                                                                     |
+| `./radio-group`      | RadioGroup, Radio                                                                                                                                                                                                                                                                                                                                                                  |
+| `./rating`           | Rating, RatingItem                                                                                                                                                                                                                                                                                                                                                                 |
+| `./rating-display`   | RatingDisplay                                                                                                                                                                                                                                                                                                                                                                      |
+| `./search-box`       | SearchBox                                                                                                                                                                                                                                                                                                                                                                          |
+| `./select`           | Select                                                                                                                                                                                                                                                                                                                                                                             |
+| `./skeleton`         | Skeleton, SkeletonItem                                                                                                                                                                                                                                                                                                                                                             |
+| `./slider`           | Slider                                                                                                                                                                                                                                                                                                                                                                             |
+| `./spin-button`      | SpinButton                                                                                                                                                                                                                                                                                                                                                                         |
+| `./spinner`          | Spinner                                                                                                                                                                                                                                                                                                                                                                            |
+| `./split-button`     | SplitButton                                                                                                                                                                                                                                                                                                                                                                        |
+| `./swatch-picker`    | SwatchPicker, ColorSwatch, EmptySwatch, ImageSwatch, SwatchPickerRow                                                                                                                                                                                                                                                                                                               |
+| `./switch`           | Switch                                                                                                                                                                                                                                                                                                                                                                             |
+| `./tab-list`         | TabList, Tab                                                                                                                                                                                                                                                                                                                                                                       |
+| `./tag`              | Tag                                                                                                                                                                                                                                                                                                                                                                                |
+| `./tag-group`        | TagGroup                                                                                                                                                                                                                                                                                                                                                                           |
+| `./tag-picker`       | TagPicker, TagPickerButton, TagPickerControl, TagPickerGroup, TagPickerInput, TagPickerList, TagPickerOption, TagPickerOptionGroup                                                                                                                                                                                                                                                 |
+| `./teaching-popover` | TeachingPopover, TeachingPopoverBody, TeachingPopoverCarousel, TeachingPopoverCarouselCard, TeachingPopoverCarouselFooter, TeachingPopoverCarouselFooterButton, TeachingPopoverCarouselNav, TeachingPopoverCarouselNavButton, TeachingPopoverCarouselPageCount, TeachingPopoverFooter, TeachingPopoverHeader, TeachingPopoverSurface, TeachingPopoverTitle, TeachingPopoverTrigger |
+| `./textarea`         | Textarea                                                                                                                                                                                                                                                                                                                                                                           |
+| `./toast`            | Toast, ToastBody, ToastFooter, ToastTitle, Toaster                                                                                                                                                                                                                                                                                                                                 |
+| `./toggle-button`    | ToggleButton                                                                                                                                                                                                                                                                                                                                                                       |
+| `./toolbar`          | Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup, ToolbarRadioButton, ToolbarRadioGroup, ToolbarToggleButton                                                                                                                                                                                                                                                                   |
+| `./tooltip`          | Tooltip                                                                                                                                                                                                                                                                                                                                                                            |
 
-**145 component subpaths**, all kebab-case:
+`FluentProvider` lives at `./provider` rather than `./fluent-provider` because that is where headless
+puts its `Provider` — the family is "the provider", and windmod's is the themed one. The subpath also
+carries the theme class names, so the provider and its themes come from one import.
 
-| Family        | Subpaths                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                                                                                                                                                                                                                                                                                                                                         |
-| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                                                                                                                                                                                                                                                                                                                                   |
-| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                                                                                                                                                                                                                                                                                                                                                 |
-| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                                                                                                                                                                                                                                                                                                                |
-| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                                                                                                                                                                                                                                                                                                         |
-| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                                                                                                                                                                                                                                                                                                                     |
-| Selection     | `./combobox` `./dropdown` `./listbox` `./option` `./option-group`                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Field & label | `./field` `./label` `./info-label` `./info-button`                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Dialog        | `./dialog` — the whole family, see above                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| Drawer        | `./drawer` `./inline-drawer` `./overlay-drawer` `./drawer-body` `./drawer-header` `./drawer-header-title` `./drawer-header-navigation` `./drawer-footer`                                                                                                                                                                                                                                                                                                          |
-| Menu          | `./menu` `./menu-trigger` `./menu-popover` `./menu-list` `./menu-item` `./menu-item-checkbox` `./menu-item-radio` `./menu-item-link` `./menu-item-switch` `./menu-split-group` `./menu-group` `./menu-group-header` `./menu-divider`                                                                                                                                                                                                                              |
-| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                                                                                                                                                                                                                                                                                                                |
-| Toast         | `./toaster` `./toast` `./toast-title` `./toast-body` `./toast-footer`                                                                                                                                                                                                                                                                                                                                                                                             |
-| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                                                                                                                                                                                                                                                                                                        |
-| Nav drawer    | `./nav-drawer` `./nav-drawer-body` `./nav-drawer-header` `./nav-drawer-footer`                                                                                                                                                                                                                                                                                                                                                                                    |
-| People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                                                                                                                                                                                                                                                                                                                                            |
-| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| Tabs          | `./tab` `./tab-list`                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                                                                                                                                                                                                                                                                                                                                               |
-| Tag picker    | `./tag-picker` `./tag-picker-button` `./tag-picker-control` `./tag-picker-group` `./tag-picker-input` `./tag-picker-list` `./tag-picker-option` `./tag-picker-option-group`                                                                                                                                                                                                                                                                                       |
-| Teaching      | `./teaching-popover` `./teaching-popover-trigger` `./teaching-popover-surface` `./teaching-popover-header` `./teaching-popover-title` `./teaching-popover-body` `./teaching-popover-footer` `./teaching-popover-carousel` `./teaching-popover-carousel-card` `./teaching-popover-carousel-nav` `./teaching-popover-carousel-nav-button` `./teaching-popover-carousel-footer` `./teaching-popover-carousel-footer-button` `./teaching-popover-carousel-page-count` |
-| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button`                                                                                                                                                                                                                                                                                                                   |
-| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                                                                                                                                                                                                                                                                                                 |
-| Provider      | `./fluent-provider`                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+Two subpaths export no component:
 
-Seven non-component subpaths:
+| Subpath               | What it is                                                                                                                                     |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `./positioning`       | the headless positioning primitives (`usePositioning`, `resolvePositioningShorthand`, …), re-exported — windmod adds no styling layer here     |
+| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching. windmod-only; headless has no counterpart |
 
-| Subpath               | What it is                                                                                                                                                                                                |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `./base.css`          | the root stylesheet — cascade-layer order + global custom-property registrations; load it head-of-document ([above](#installation-and-imports))                                                           |
-| `./styles.css`        | the batteries-included monolith — the root sheet plus all 131 component chunks in one file                                                                                                                |
-| `./css/*`             | the individual component chunks (`./css/components/Button/Button.css`, …). Your bundler reaches these through the class maps; the key exists for SSR/CommonJS pipelines that want to collect them by hand |
-| `./variants.css`      | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states                                                                                                     |
-| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching                                                                                                       |
-| `./positioning`       | the headless positioning primitives (`usePositioning`, `resolvePositioningShorthand`, …), re-exported                                                                                                     |
-| `./package.json`      | —                                                                                                                                                                                                         |
+Five more subpaths are not JavaScript at all:
+
+| Subpath          | What it is                                                                                                                                                                                                |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `./base.css`     | the root stylesheet — cascade-layer order + global custom-property registrations; load it head-of-document ([above](#installation-and-imports))                                                           |
+| `./styles.css`   | the batteries-included monolith — the root sheet plus all 131 component chunks in one file                                                                                                                |
+| `./css/*`        | the individual component chunks (`./css/components/Button/Button.css`, …). Your bundler reaches these through the class maps; the key exists for SSR/CommonJS pipelines that want to collect them by hand |
+| `./variants.css` | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states                                                                                                     |
+| `./package.json` | —                                                                                                                                                                                                         |
 
 If you were importing from an internal Fluent package directly (`@fluentui/react-button`,
-`@fluentui/react-overflow`, …), note that `@fluentui/no-restricted-imports` blocks that route; the barrel
-or the component subpath is the sanctioned entry point either way.
+`@fluentui/react-overflow`, …), note that `@fluentui/no-restricted-imports` blocks that route; the family
+subpath is the sanctioned entry point here.
 
 ## What is identical
 
@@ -231,7 +282,7 @@ class; the variables are already in the stylesheet.
 ```diff
 -import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
 -<FluentProvider theme={webDarkTheme}>
-+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
++import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
 +<FluentProvider theme={webDarkThemeClassName}>
 ```
 
@@ -241,7 +292,7 @@ All seven themes ship as class names —`webLightThemeClassName`, `webDarkThemeC
 `ThemeClassName` type:
 
 ```tsx
-import { themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/fluent-provider';
+import { themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/provider';
 
 export const pickTheme = (dark: boolean): ThemeClassName =>
   dark ? themeClassNames.webDarkTheme : themeClassNames.webLightTheme;
@@ -313,9 +364,12 @@ no equivalent: internal slots use hashed idents and `data-*` state attributes (`
 No `group` name declaration is required — the marker is already on the root. You may still add your own
 `group/name` via `className` to disambiguate nested instances.
 
-#### 6. Component subpaths are single-component
+#### 6. There is no root barrel — every import names a family
 
-See [the subpath map](#the-subpath-map). `import { CardHeader } from '.../card'` does not resolve.
+`import { Button } from '@fluentui/react-windmod-preview'` does not resolve. Components come from their
+family subpath, matching the headless package's own grouping: see [the family map](#the-family-map). The
+exported names are unchanged, so a migration is a path rewrite, not an API rewrite — and a codemod-able
+one, since the family of every name is fixed.
 
 #### 7. `Input` and `Textarea` drop the deprecated shadow appearances
 
@@ -1013,7 +1067,7 @@ Keep importing it from `@fluentui/react-components`:
 
 ```tsx
 import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
 ```
 
 `Overflow` is renderless. It emits no element of its own — it clones its single child, drives the
