@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, InfoButton } from '@fluentui/react-windmod-preview';
+import { InfoButton } from '@fluentui/react-windmod-preview/info-label';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import { InfoLabelOpenVrScene } from './InfoLabelOpenVrScene';
 

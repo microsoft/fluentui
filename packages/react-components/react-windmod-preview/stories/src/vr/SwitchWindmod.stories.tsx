@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Switch } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Switch } from '@fluentui/react-windmod-preview/switch';
 
 import { SwitchVrScene } from './SwitchVrScene';
 

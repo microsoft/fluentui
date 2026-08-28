@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
   DrawerHeaderNavigation,
   DrawerHeaderTitle,
-  FluentProvider,
   InlineDrawer,
   OverlayDrawer,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/drawer';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import { DrawerInlineVrScene, DrawerOverlayVrBand } from './DrawerVrScene';
 

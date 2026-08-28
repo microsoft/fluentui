@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  FluentProvider,
   Nav,
   NavCategory,
   NavCategoryItem,
@@ -9,7 +8,8 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/nav';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import { HomeFilled, HomeRegular } from '@fluentui/react-icons/headless/svg/home';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 

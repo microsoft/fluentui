@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Radio, RadioGroup } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Radio, RadioGroup } from '@fluentui/react-windmod-preview/radio-group';
 
 import { RadioGroupVrScene } from './RadioGroupVrScene';
 

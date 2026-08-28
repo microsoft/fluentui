@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { FluentProvider, Tag, TagGroup } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Tag } from '@fluentui/react-windmod-preview/tag';
+import { TagGroup } from '@fluentui/react-windmod-preview/tag-group';
 
 import { TagGroupVrScene } from './TagGroupVrScene';
 

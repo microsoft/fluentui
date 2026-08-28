@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Dropdown, FluentProvider, Listbox, Option, OptionGroup } from '@fluentui/react-windmod-preview';
+import { Listbox, Option, OptionGroup } from '@fluentui/react-windmod-preview/combobox';
+import { Dropdown } from '@fluentui/react-windmod-preview/dropdown';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import { DropdownVrScene } from './DropdownVrScene';
 

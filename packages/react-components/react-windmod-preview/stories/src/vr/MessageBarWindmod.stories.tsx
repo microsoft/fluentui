@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { Link } from '@fluentui/react-windmod-preview/link';
 import {
-  Button,
-  FluentProvider,
-  Link,
   MessageBar,
   MessageBarActions,
   MessageBarBody,
   MessageBarTitle,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/message-bar';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import { DismissRegular } from '@fluentui/react-icons/headless/svg/dismiss';
 
 import { MessageBarVrScene } from './MessageBarVrScene';

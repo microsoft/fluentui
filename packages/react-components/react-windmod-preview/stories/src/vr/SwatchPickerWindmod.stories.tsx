@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   ColorSwatch,
   EmptySwatch,
-  FluentProvider,
   ImageSwatch,
   SwatchPicker,
   SwatchPickerRow,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/swatch-picker';
 
 import { SwatchPickerVrScene } from './SwatchPickerVrScene';
 

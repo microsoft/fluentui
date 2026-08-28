@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Spinner } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Spinner } from '@fluentui/react-windmod-preview/spinner';
 
 import { SpinnerVrScene } from './SpinnerVrScene';
 

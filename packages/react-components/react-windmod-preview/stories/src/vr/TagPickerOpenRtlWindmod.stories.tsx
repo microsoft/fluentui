@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { Avatar } from '@fluentui/react-windmod-preview/avatar';
+import { Field } from '@fluentui/react-windmod-preview/field';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Tag } from '@fluentui/react-windmod-preview/tag';
 import {
-  Avatar,
-  Field,
-  FluentProvider,
-  Tag,
   TagPicker,
   TagPickerButton,
   TagPickerControl,
@@ -12,7 +12,7 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerOptionGroup,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/tag-picker';
 
 import type { TagPickerLike } from './ComboboxVrTypes';
 import { TagPickerOpenVrScene } from './TagPickerOpenVrScene';

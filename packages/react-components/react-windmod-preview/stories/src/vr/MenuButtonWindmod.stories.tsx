@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, MenuButton } from '@fluentui/react-windmod-preview';
+import { MenuButton } from '@fluentui/react-windmod-preview/menu-button';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 

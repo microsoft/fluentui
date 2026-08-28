@@ -1,16 +1,18 @@
 // eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
+import { Button } from '@fluentui/react-windmod-preview/button';
+// eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogBody,
   DialogHeader,
   DialogSurface,
   DialogTitle,
-  FluentProvider,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/dialog';
+// eslint-disable-next-line import/no-extraneous-dependencies -- story-only helper outside the *.stories.tsx devDependencies exemption
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import type { DialogVrBand } from './DialogVrScene';
 import { DialogVrScene } from './DialogVrScene';

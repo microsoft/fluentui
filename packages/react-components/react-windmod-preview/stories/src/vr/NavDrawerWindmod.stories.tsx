@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
-  FluentProvider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerFooter,
   NavDrawerHeader,
   NavItem,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/nav';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import { NavDrawerInlineVrScene, NavDrawerOverlayVrBand } from './NavDrawerVrScene';
 

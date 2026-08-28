@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Skeleton, SkeletonItem } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Skeleton, SkeletonItem } from '@fluentui/react-windmod-preview/skeleton';
 
 import { SkeletonVrScene } from './SkeletonVrScene';
 
