@@ -25,7 +25,6 @@ describe('DialogTitle', () => {
   isConformant({
     Component: DialogTitle,
     displayName: 'DialogTitle',
-    subpath: 'dialog',
   });
 
   it('carries the marker pair first, in the fixed order, then its own class', () => {

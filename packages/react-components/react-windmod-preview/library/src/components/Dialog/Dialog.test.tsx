@@ -45,7 +45,6 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
-    subpath: 'dialog',
     requiredProps: { children: <DialogSurface>Content</DialogSurface> } as never,
     // Dialog renders no element of its own, so there is no root to take a ref, a className or
     // native props.

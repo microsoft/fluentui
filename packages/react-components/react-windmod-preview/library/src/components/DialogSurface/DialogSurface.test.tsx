@@ -34,7 +34,6 @@ describe('DialogSurface', () => {
   isConformant({
     Component: DialogSurface,
     displayName: 'DialogSurface',
-    subpath: 'dialog',
     // The surface only renders inside an open Dialog: closed and unmountOnClose (the default) it
     // deliberately returns null.
     renderOptions: { wrapper: Open },

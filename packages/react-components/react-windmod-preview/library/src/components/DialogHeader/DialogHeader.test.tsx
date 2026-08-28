@@ -23,7 +23,6 @@ describe('DialogHeader', () => {
   isConformant({
     Component: DialogHeader,
     displayName: 'DialogHeader',
-    subpath: 'dialog',
   });
 
   it('carries the marker pair first, in the fixed order, then its own class', () => {

@@ -30,7 +30,6 @@ describe('DialogActions', () => {
   isConformant({
     Component: DialogActions,
     displayName: 'DialogActions',
-    subpath: 'dialog',
   });
 
   it('carries the marker pair first, in the fixed order, then its own class', () => {

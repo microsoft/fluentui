@@ -12,7 +12,6 @@ describe('DialogTrigger', () => {
   isConformant({
     Component: DialogTrigger,
     displayName: 'DialogTrigger',
-    subpath: 'dialog',
     requiredProps: { children: <button>Open</button> } as never,
     // The trigger renders the consumer's own element, so there is no root of its own to take a
     // ref, a className or native props.
