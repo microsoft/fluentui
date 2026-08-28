@@ -24,11 +24,39 @@ loses to Tailwind's utilities too.
 }
 ```
 
-**Cause 2 — the theme stylesheet loaded after your CSS.**
-Cascade layer order is first-appearance. If `@fluentui/react-tailwind-theme-preview/styles.css` arrives
-late, the `fui.*` order is not the one documented.
+**Cause 2 — the rule is layered and you never wrote `@layer`.**
+This is Cause 1 with nothing to find in your own file, which is why it survives the first fix and is the
+version that actually reaches a bug report. `@layer components { … }` is ordinary Tailwind idiom that
+predates windmod in most codebases; some frameworks and bundler CSS pipelines also wrap imported global
+stylesheets in a layer of their own.
 
-Fix: import it first, before any of your own CSS.
+```css
+/* ❌ a house convention, not a windmod decision — and it still loses */
+@layer components {
+  .cta {
+    background: rebeccapurple;
+  }
+}
+```
+
+Fix: unlayer the rule, or declare your own layer after `fui.utilities`:
+
+```css
+@layer fui.theme, fui.base, fui.components, fui.utilities, app;
+```
+
+**How to tell Cause 1 from Cause 2 in ten seconds.** Do not reason about it — look. DevTools' Styles
+pane labels every matched rule with the layer it landed in (unlayered rules carry no label) and strikes
+through the declarations that lost. If your rule shows a layer name you did not write, it is Cause 2. If
+it is unlayered and still struck through, the winner is another unlayered rule of yours and this is an
+ordinary specificity question, not a windmod one.
+
+**A note on import order, because it is the usual suspect and it is usually innocent here.** Loading
+`@fluentui/react-tailwind-theme-preview/styles.css` first is genuinely required — without it the
+components' `var()` references resolve to nothing — and first-appearance order settles how _your_ named
+layers sort against `fui.*`. But it cannot break a plain unlayered override: unlayered author CSS
+outranks every layer in the origin regardless of which sheet loaded first. If your rule is unlayered and
+not applying, import order is not the reason. Keep looking.
 
 **Cause 3 — the selector targets something that is not public.**
 A hashed ident (`fuicm-button-icon-a1b2c3`), a Griffel-era class (`.fui-Button`, `.fui-Button__icon`),

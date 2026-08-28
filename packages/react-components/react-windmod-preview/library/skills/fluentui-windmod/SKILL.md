@@ -38,8 +38,8 @@ Two audiences, one skill:
 - **NEVER use PascalCase Fluent class names** — Griffel's `.fui-Button` is `.fui-button` here, and
   there are no per-slot public classes at all. Griffel's `fui-Button__icon` has no equivalent.
 - **NEVER target a component's internals by class** — every slot below the root carries a hashed
-  ident (`fuicm-button-icon-a1b2c3`) that changes when the source changes. Reach internals through
-  the root's group variants and the published `data-*` attributes instead.
+  ident of the shape `fuicm-<component>-<slot>-<hash>` that changes when the source changes. Reach
+  internals through the root's group variants and the published `data-*` attributes instead.
 - **NEVER declare a `group` of your own just to use a group variant** — the marker `group/fui-<component>`
   is already on the root. `group-disabled/fui-button:line-through` works with no configuration. Adding
   your own `group/name` is allowed, but only to disambiguate nested instances of the same component.
@@ -104,8 +104,8 @@ Two audiences, one skill:
 ### Setup
 
 - **Is `@fluentui/react-tailwind-theme-preview/styles.css` imported, once, before my own CSS?**
-  Nothing renders correctly without it, and load order decides whether your unlayered rules come after
-  the package's.
+  Nothing renders correctly without it, and its position fixes how any layers of _yours_ sort against
+  `fui.*`. It does not affect an unlayered rule, which wins either way.
 - **Is this a CommonJS or SSR build?** Then import `@fluentui/react-windmod-preview/styles.css`
   explicitly; only ESM gets it as a side effect.
 
@@ -140,9 +140,13 @@ export const App = () => (
 );
 ```
 
-**Why the order matters.** The theme stylesheet declares the cascade-layer family. Cascade layer order
-is first-appearance, so a sheet that arrives after your CSS has already established a different order
-will not behave as documented.
+**Why the order matters.** The theme stylesheet declares the cascade-layer family, and layer order is
+first-appearance. It is load-bearing for exactly two things: nothing resolves without the theme sheet,
+because the components' `var()` references have nothing to read; and if _you_ declare layers of your
+own, whichever sheet appeared first fixes their order against `fui.*`. It does **not** decide whether a
+plain unlayered rule of yours wins. Unlayered author CSS outranks every layer in the author origin no
+matter which sheet loaded first, so an override that is genuinely unlayered cannot be broken by import
+order.
 
 **`FluentProvider` is a real element and it paints.** It renders a `div` carrying base typography, text
 colour and `background-color: var(--color-neutral-background-1)`. If you wrap children in a provider
@@ -194,6 +198,14 @@ trigger.
 - **MANDATORY**: Load [references/tokens-and-scale.md](references/tokens-and-scale.md) when picking a
   colour/typography/radius token, when layout is the wrong size, or when `--base-scale` comes up.
 - **Do NOT Load**: variant-catalog.md unless also selecting on state.
+
+**Theming — switching themes, theming part of a page, or building a custom one:**
+
+- **MANDATORY**: Load [references/tokens-and-scale.md](references/tokens-and-scale.md), whose "Custom
+  themes" section is the whole story: what a theme class is, why a partial one is fine, and how nesting
+  a provider scopes a theme to a subtree. [Theming](#theming) above has the short version.
+- **Do NOT Load**: overriding.md — a theme moves tokens, which is a different move from overriding a
+  rule, and its theming paragraph only repeats what you already have.
 
 **Porting an app off `@fluentui/react-components`, or explaining a behaviour difference:**
 
@@ -257,8 +269,15 @@ first and your incoming `className` last, so your declaration wins at equal spec
 <Button icon={{ className: 'text-red-500' }}>Delete</Button>
 ```
 
-Full worked patterns — per-slot overrides, scoping to a subtree, when to use a layer deliberately — in
-[references/overriding.md](references/overriding.md).
+Full worked patterns — per-slot overrides, confining a selector to a subtree, when to use a layer
+deliberately — in [references/overriding.md](references/overriding.md). Scoping a _theme_ to a subtree
+is a different mechanism and lives under [Theming](#theming).
+
+**When the task turns on what a component already does** — "drop the hover elevation", "match the
+current focus ring" — read that component's own `src/components/<Name>/<Name>.module.css`. It is shipped
+source, it is short, and it is the only authority on the current state; the references here teach the
+override mechanism, not per-component behaviour. Confirming that the thing you are removing exists beats
+writing a defensive rule that quietly does nothing.
 
 ## The public class surface
 
@@ -278,7 +297,9 @@ document.querySelectorAll('.fui-button'); // ✅
 document.querySelectorAll('.' + buttonClassNames.root); // ❌ invalid selector — it is a pair
 ```
 
-The class-name records expose `root` only. Internals use hashed idents and `data-*` state attributes.
+The class-name records expose **one public key**, almost always `root`. The single exception is
+`avatarGroupPopoverClassNames`, whose key is `triggerButton` — that component renders no root element of
+its own. Internals use hashed idents and `data-*` state attributes.
 
 ## Targeting internals with group variants
 
@@ -349,8 +370,25 @@ export const pickTheme = (dark: boolean): ThemeClassName =>
 `teamsDarkV21ThemeClassName`.
 
 **A custom theme is a CSS class that redeclares the token custom properties.** `theme` accepts any
-string, so your own class name works. Do not port a Griffel theme object — there is nothing to pass it
-to.
+string, so your own class name works — in plain global CSS, since a CSS-Modules class would arrive
+hashed. Redeclare only the tokens you are changing; the rest inherit. Do not port a Griffel theme object
+— there is nothing to pass it to. Details in
+[references/tokens-and-scale.md](references/tokens-and-scale.md).
+
+**To theme part of a page, nest a second provider.** Tokens are inherited custom properties, so the
+inner provider redeclares them for its subtree and the rest of the app keeps the outer theme.
+
+```tsx
+<FluentProvider theme={webLightThemeClassName}>
+  <main>{content}</main>
+  <FluentProvider theme={webDarkThemeClassName} className="telemetry-rail">
+    <TelemetryRail />
+  </FluentProvider>
+</FluentProvider>
+```
+
+Remember the provider is a real element: the inner one becomes the flex or grid item in your layout, not
+the rail's children.
 
 **Anchored surfaces inherit from their DOM position.** `Tooltip`, `Popover` and the `AvatarGroup`
 overflow surface are rendered inline and promoted to the native top layer, so they inherit theme
@@ -370,9 +408,11 @@ import { Card } from '@fluentui/react-windmod-preview/card';
 import { CardHeader } from '@fluentui/react-windmod-preview/card-header'; // not from ./card
 ```
 
-`./dialog` is the single exception: `Dialog` and its six parts share one subpath.
+`./dialog` is the single exception among component subpaths: `Dialog` and its six parts share one.
 
-Non-component subpaths: `./styles.css`, `./variants.css`, `./use-css-var-value`, `./positioning`.
+Non-component subpaths: `./styles.css`, `./variants.css`, `./use-css-var-value`, `./positioning`, and
+`./fluent-provider` — which is the mixed one, exporting `FluentProvider` alongside the seven theme
+class-name constants, the `themeClassNames` record and the `ThemeClassName` type.
 
 ## Reading token values in JavaScript
 
@@ -400,10 +440,14 @@ escape hatch for changes the observers cannot see. Details in
 
 **Fix:** take it out of the layer.
 
-**Cause 2:** the theme stylesheet is imported _after_ your CSS, so the `fui.*` order was established
-later than you assumed.
+**Cause 2:** the rule is layered without your having written `@layer` around it. `@layer components { … }`
+is ordinary Tailwind idiom, and some frameworks and bundler CSS pipelines wrap imported global
+stylesheets in a layer of their own. This is Cause 1 with nothing to see in your file, which is why it
+outlives the first fix.
 
-**Fix:** import `@fluentui/react-tailwind-theme-preview/styles.css` first.
+**Fix:** look before theorising. DevTools' Styles pane labels each rule with the layer it landed in and
+strikes through whatever lost, so one glance tells you which cause you actually have. Then unlayer the
+rule, or move your layer after `fui.utilities` in the declaration.
 
 **Cause 3:** the selector targets a hashed ident or a Griffel-era class name (`.fui-Button`,
 `.fui-Button__icon`).
@@ -416,45 +460,21 @@ later than you assumed.
 
 **Fix:** query `.fui-<component>` directly. Use the constant only in `className`.
 
-### Issue: a `group-…/fui-x` class does nothing
+### The rest, in one line each
 
-**Cause 1:** the variant is not in either catalog under that name.
+Symptom, cause, and where the worked answer is. Every one of these is written out in
+[references/troubleshooting.md](references/troubleshooting.md), which also covers the symptoms that only
+show up in tests.
 
-**Cause 2:** your Tailwind build has not been given the catalogs, so the variant compiled to nothing.
-
-**Fix:** `@import` both catalog files into your Tailwind entry stylesheet — see
-[references/setup.md](references/setup.md).
-
-### Issue: everything is the wrong size
-
-**Cause:** the app sets a non-16px root font size. `--base-scale` is `calc(1rem / 16px)`, so spacing,
-control heights, radii and the whole type ramp scale with it — coherently, but away from Griffel's
-fixed pixels.
-
-**Fix:** keep `html { font-size: 16px }` for Griffel parity, or accept the rescale deliberately. Do not
-try to correct it on a provider: `--base-scale` is declared at the document root.
-
-### Issue: overriding a spacing token changes nothing
-
-**Cause:** Tailwind's `--spacing-*` namespace resolves at compile time.
-
-**Fix:** use `--base-scale` for density, or set the property you actually want on your own class.
-
-### Issue: `Tooltip` or `Popover` renders in the corner of the page
-
-**Cause:** the browser does not support CSS anchor positioning. There is no fallback path anywhere in
-the positioning layer.
-
-**Fix:** polyfill CSS anchor positioning, or keep those two components on `@fluentui/react-components`
-— Griffel containers compose over windmod children without trouble.
-
-### Issue: an animation stopped working
-
-**Cause:** the theme ships a global `prefers-reduced-motion` floor — one unlayered rule setting 1ms
-durations on `*`, `*::before`, `*::after`, with `animation-iteration-count: 1`.
-
-**Fix:** it is unlayered but selector-less, so any rule of yours with a class in it already outranks
-it. Re-declare the duration from unlayered CSS or inline. There is no `!important` to fight.
+| Symptom                                        | Cause                                                                                              | Fix                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| a `group-…/fui-x` class does nothing           | the name is in neither catalog, or your Tailwind build was never given the catalogs                | `@import` both catalogs — [setup.md](references/setup.md)                             |
+| everything is the wrong size                   | a non-16px root font size; `--base-scale` is `calc(1rem / 16px)` and the whole UI rides it         | keep `html { font-size: 16px }`, or accept the rescale — never patch it on a provider |
+| overriding a spacing token changes nothing     | Tailwind's `--spacing-*` resolves at compile time, so there is no live `var()` to move             | use `--base-scale` for density, or set the property directly                          |
+| `Tooltip`/`Popover` renders in the page corner | no CSS anchor positioning in that engine, and no fallback anywhere in the positioning layer        | polyfill it, or keep those two on `@fluentui/react-components`                        |
+| an animation stopped working                   | the theme's global `prefers-reduced-motion` floor — unlayered, 1ms, `animation-iteration-count: 1` | it is selector-less, so any rule of yours with a class already outranks it            |
+| a Tailwind class fails the build               | the theme sets Tailwind's own palette, ramp, radii and shadows to `initial`, deliberately          | use a Fluent token — [tokens-and-scale.md](references/tokens-and-scale.md)            |
+| a snapshot broke after migrating               | computed `box-shadow` strings, `aria-modal`, lower-case class names                                | [griffel-deltas.md](references/griffel-deltas.md)                                     |
 
 ## Important Notes
 

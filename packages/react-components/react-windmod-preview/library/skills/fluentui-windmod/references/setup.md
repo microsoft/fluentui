@@ -29,7 +29,10 @@ import '@fluentui/react-windmod-preview/styles.css';
 1. Nothing renders correctly without the theme sheet — the components' `var()` references resolve to
    nothing.
 2. The theme sheet declares the cascade-layer family, and **cascade layer order is first-appearance**.
-   A sheet that arrives after your CSS establishes a different order than the one documented here.
+   A sheet that arrives after CSS of yours that already named layers establishes a different order than
+   the one documented here. Note the scope of that: it decides how _your_ named layers sort against
+   `fui.*`. It has no bearing on a plain unlayered rule, which outranks every layer in the origin
+   whatever the load order — so import order is never the reason an unlayered override fails.
 
 The windmod package declares `"sideEffects": ["**/*.css"]`, so bundlers keep the automatic ESM import.
 

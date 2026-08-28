@@ -55,7 +55,7 @@ Best for anything reused. Target the identity class, or your own class on the co
   letter-spacing: 0.01em;
 }
 
-/* scoped to a subtree */
+/* a selector confined to a subtree — for scoping a *theme* to one, nest a provider instead */
 .marketing-surface .fui-button {
   border-radius: 999px;
 }
@@ -243,8 +243,12 @@ document root for density. See [tokens-and-scale.md](tokens-and-scale.md).
 
 ## Checklist before shipping an override
 
-- [ ] The rule is unlayered (or deliberately in `fui.components.l4`/`l5`).
-- [ ] The theme stylesheet is imported before it.
+- [ ] The rule is unlayered (or deliberately in `fui.components.l4`/`l5`) — and checked in DevTools, not
+      assumed. A house `@layer components { … }` or a framework that layers imported global CSS puts you
+      in a layer you never wrote.
+- [ ] The theme stylesheet is imported, and imported first. It has to be there for `var()` to resolve at
+      all, and its position fixes how any layers of _yours_ sort against `fui.*` — though it cannot
+      decide whether an unlayered rule wins, which it always does.
 - [ ] The selector targets `.fui-<component>`, a published `data-*`, or a class you added — never a
       hashed ident or structural position.
 - [ ] A token change was considered first.

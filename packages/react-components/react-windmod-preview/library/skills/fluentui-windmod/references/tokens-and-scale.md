@@ -167,6 +167,20 @@ The seven shipped themes are exactly this — generated classes carrying custom 
 why a theme class can be applied to any element, not just a provider. The `:root, :host` defaults are
 web light.
 
+**A partial theme is the normal case.** You redeclare the handful of tokens you are actually changing;
+every token you leave out inherits from the theme stacked above, by ordinary cascade. There is no
+"complete theme" checklist to satisfy — a four-token brand class layered over `webLightThemeClassName`
+is a legitimate theme.
+
+**Write it as plain global CSS.** `theme` takes a literal class-name string, so a CSS-Modules class
+would arrive hashed and select nothing.
+
+**To theme one part of a page, nest a second `FluentProvider` around it** with the inner `theme`. Tokens
+are inherited custom properties, so the inner provider redeclares them for its subtree and the rest of
+the app keeps the outer theme. A bare `<div className={themeClass}>` moves the tokens too, but only the
+provider paints the base background and typography — and, being a real element, the provider becomes the
+flex or grid item in your layout.
+
 Do not port a Griffel theme object; there is nothing to pass it to.
 
 ## Computed-value gotchas

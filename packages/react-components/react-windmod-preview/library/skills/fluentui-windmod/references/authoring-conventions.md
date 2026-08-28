@@ -7,6 +7,20 @@ are what keep the cascade predictable.
 `Button` and `Tooltip` are the reference implementations. Read them first and copy their patterns
 exactly.
 
+**Where things are.** This file is long; jump to what you need.
+
+| Section                                                                           | Read it when                                            |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [Composition](#composition)                                                       | wiring a component's hook, look props and context       |
+| [Re-slotting one component into another](#re-slotting-one-component-into-another) | one component becomes another's slot `elementType`      |
+| [The styles hook](#the-styles-hook)                                               | writing or changing a `use<Name>Styles.ts`              |
+| [Markers](#markers) · [Data attributes](#data-attributes)                         | class-name records, group/peer markers, `data-*` stamps |
+| [CSS authoring](#css-authoring)                                                   | touching any `*.module.css` — layers, blocks, tokens    |
+| [Code style](#code-style) · [Comments policy](#comments-policy)                   | before review                                           |
+| [Definition of done](#definition-of-done)                                         | deciding whether the change is finished                 |
+| [Verification](#verification)                                                     | the pixel gate, allowances, mutation tables, probes     |
+| [Scope](#scope)                                                                   | deciding whether the feature is windmod's to add at all |
+
 ## Composition
 
 A styled component is: headless hook + local look-props + styles hook + headless render.
@@ -102,6 +116,12 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
 };
 ```
 
+- **Note what is _not_ in that `clsx` call.** `appearance` and `shape` each contribute a class per
+  value; `size` is destructured, stamped as `data-size`, and then never composed. Sizes are almost
+  always attribute-driven — one `.root` block with `@variant size-*` nested inside it — so do not go
+  looking for a `styles.extraLarge` sibling class, and do not add one. Adding a size means adding a
+  `@variant` block to the existing `.root` (and to `.icon` where the glyph scales), not a new module
+  class. The same holds for any look prop whose values differ only in measurements.
 - Named `use<Component>Styles.ts`. The filename must **not** contain a `.styles.` segment (Griffel's AOT
   glob would pick it up).
 - A styles hook that composes another component's styles hook must carry `'use client';` —
@@ -336,6 +356,18 @@ A permitted nested-selector exception — glyphs carry no module class. Copy `Bu
 
 ## Verification
 
+**Where these rules live, and where the runner does not.** The VR scenes are checked in —
+`stories/src/vr/` carries a `<Name>VrScene.tsx` plus its Griffel and windmod story pair per component,
+and that is what a runner captures. The pixel-diff runner itself is **not** in this package: no
+`pixelmatch` reference, no `scenes.json`, no gate script exists under
+`packages/react-components/react-windmod-preview`. The recorded numbers and the allowance rows in
+`library/MIGRATION.md` come from a harness pointed at this package from outside it.
+
+So do not spend a cycle hunting for a command that is not there. What you can run here are the four
+nx targets — `build`, `type-check`, `lint`, `test` — plus `generate-api`. Everything below is the
+standard the parity work is held to and the protocol for reporting it honestly; treat a claim you cannot
+currently reproduce as exactly that, and say so rather than implying a gate you did not run.
+
 ### The pixel gate
 
 **Zero means zero, under a stated rule.** The runner diffs the two captures with pixelmatch at
@@ -439,3 +471,14 @@ occurrence count — never by a bare class-name comparison.
 
 Replicate **only** what the headless component ships. Do not invent props or features the Griffel
 component has but headless lacks; do not add speculative abstractions.
+
+**The generic catalog is vocabulary, not permission.** `variants.css` defines `size-huge` and
+`size-full` because _some_ component needs them; that a variant name resolves says nothing about whether
+the component in front of you may adopt it. Before adding a value to any look-prop union, read the prop's
+type on the Griffel twin in `packages/react-components/react-<name>` — if Griffel's `size` stops at
+`extra-large`, so does windmod's, however available `size-huge` looks. This is the easiest way to write
+a change that compiles, renders, passes review-by-eyeball, and is still out of scope.
+
+Check the value does not already exist before planning to add it. Sizes and appearances arrived with
+their components rather than one at a time, so the union in `<Name>.types.ts` is the fastest answer to
+"is this already here", and it is a cheaper read than the CSS.
