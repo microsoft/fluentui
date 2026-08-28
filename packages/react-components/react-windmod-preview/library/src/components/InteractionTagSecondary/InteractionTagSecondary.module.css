@@ -37,7 +37,7 @@
 
       @media (forced-colors: none) {
         @variant before, after {
-          @apply absolute start-0 h-2 w-full content-[''];
+          @apply absolute start-0 h-2 w-full;
         }
 
         @variant before {
