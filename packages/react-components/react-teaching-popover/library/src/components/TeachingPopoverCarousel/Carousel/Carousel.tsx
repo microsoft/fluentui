@@ -4,7 +4,7 @@ import * as React from 'react';
 import { isHTMLElement, useMergedRefs, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { CAROUSEL_ITEM } from './constants';
+import { CAROUSEL_ITEM, CAROUSEL_TITLE } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
 import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
@@ -80,7 +80,11 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     const callback: MutationCallback = mutationList => {
       for (const mutation of mutationList) {
         for (const addedNode of Array.from(mutation.addedNodes)) {
-          if (isHTMLElement(addedNode) && addedNode.hasAttribute(CAROUSEL_ITEM)) {
+          if (!isHTMLElement(addedNode)) {
+            continue;
+          }
+
+          if (addedNode.hasAttribute(CAROUSEL_ITEM)) {
             const newValue = addedNode.getAttribute(CAROUSEL_ITEM)!;
             const newNode = carouselWalker.find(newValue);
             if (!newNode?.value) {
@@ -90,6 +94,16 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
             const previousNode = carouselWalker.prevPage(newNode?.value);
             store.insertValue(newValue, previousNode?.value ?? null);
           }
+
+          // Move focus to the new page's title (if present) once it has actually mounted in the DOM, so
+          // assistive technology can announce the updated heading (and any aria-describedby'd step count) in a
+          // single pass, instead of relying solely on the `announcement` live region. Because this only runs for
+          // nodes added after the observer starts, the initial page's title is left untouched on mount.
+          const titleEl = addedNode.matches(`[${CAROUSEL_TITLE}]`)
+            ? addedNode
+            : addedNode.querySelector<HTMLElement>(`[${CAROUSEL_TITLE}]`);
+
+          titleEl?.focus({ preventScroll: true });
         }
 
         for (const removedNode of Array.from(mutation.removedNodes)) {
