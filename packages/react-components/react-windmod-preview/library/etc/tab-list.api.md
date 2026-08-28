@@ -4,19 +4,36 @@
 
 ```ts
 
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { renderTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
+import type { Slot } from '@fluentui/react-utilities';
 import type { TabListProps as TabListProps_2 } from '@fluentui/react-headless-components-preview/tab-list';
 import { TabListSlots } from '@fluentui/react-headless-components-preview/tab-list';
 import type { TabListState as TabListState_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import type { TabProps as TabProps_2 } from '@fluentui/react-headless-components-preview/tab-list';
+import { TabSlots } from '@fluentui/react-headless-components-preview/tab-list';
+import type { TabState as TabState_2 } from '@fluentui/react-headless-components-preview/tab-list';
 import { TabValue } from '@fluentui/react-headless-components-preview/tab-list';
+import { useTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
+
+export { renderTab }
 
 export { renderTabList }
 
 // @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public
 export type TabAppearance = 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
+
+// @public
+export const tabClassNames: {
+    root: string;
+};
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
@@ -39,9 +56,22 @@ export { TabListSlots }
 export type TabListState = TabListState_2 & Required<Pick<TabListProps, 'appearance' | 'reserveSelectedTabSpace' | 'size'>>;
 
 // @public
+export type TabProps = TabProps_2;
+
+// @public
 export type TabSize = 'small' | 'medium' | 'large';
 
+export { TabSlots }
+
+// @public
+export type TabState = TabState_2 & Required<Pick<TabListProps, 'appearance' | 'size'>> & Pick<ComponentState<TabInternalSlots>, 'contentReservedSpace'>;
+
 export { TabValue }
+
+export { useTab }
+
+// @public
+export const useTabAnimatedIndicator: (state: TabState) => TabState;
 
 export { useTabList }
 
@@ -49,6 +79,9 @@ export { useTabListContextValues }
 
 // @public
 export const useTabListStyles: (state: TabListState) => TabListState;
+
+// @public
+export const useTabStyles: (state: TabState) => TabState;
 
 // (No @packageDocumentation comment for this package)
 

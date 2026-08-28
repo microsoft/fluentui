@@ -6,13 +6,20 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
+import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
+import type { SkeletonItemState as SkeletonItemState_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonProps as SkeletonProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { SkeletonSlots } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonState as SkeletonState_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
+import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
 export { renderSkeleton }
+
+export { renderSkeletonItem }
 
 // @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
@@ -29,10 +36,31 @@ export const skeletonClassNames: {
 };
 
 // @public
+export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public
+export const skeletonItemClassNames: {
+    root: string;
+};
+
+// @public
+export type SkeletonItemProps = SkeletonItemProps_2 & {
+    animation?: SkeletonAnimation;
+    appearance?: SkeletonAppearance;
+    shape?: SkeletonItemShape;
+    size?: SkeletonItemSize;
+};
+
+// @public
 export type SkeletonItemShape = 'circle' | 'rectangle' | 'square';
 
 // @public
 export type SkeletonItemSize = NonNullable<SkeletonProps_2['size']>;
+
+export { SkeletonItemSlots }
+
+// @public
+export type SkeletonItemState = SkeletonItemState_2 & Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'shape' | 'size'>>;
 
 // @public
 export type SkeletonProps = SkeletonProps_2 & {
@@ -48,6 +76,11 @@ export type SkeletonState = SkeletonState_2 & Required<Pick<SkeletonProps, 'anim
 export { useSkeleton }
 
 export { useSkeletonContextValues }
+
+export { useSkeletonItem }
+
+// @public
+export const useSkeletonItemStyles: (state: SkeletonItemState) => SkeletonItemState;
 
 // @public
 export const useSkeletonStyles: (state: SkeletonState) => SkeletonState;

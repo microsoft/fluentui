@@ -5,12 +5,17 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { RatingItemProps as RatingItemProps_2 } from '@fluentui/react-headless-components-preview/rating';
+import { RatingItemSlots } from '@fluentui/react-headless-components-preview/rating';
+import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingProps as RatingProps_2 } from '@fluentui/react-headless-components-preview/rating';
 import { RatingSlots } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingState as RatingState_2 } from '@fluentui/react-headless-components-preview/rating';
 import { renderRating } from '@fluentui/react-headless-components-preview/rating';
+import { renderRatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { useRating } from '@fluentui/react-headless-components-preview/rating';
 import { useRatingContextValues } from '@fluentui/react-headless-components-preview/rating';
+import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
@@ -22,6 +27,25 @@ export const ratingClassNames: {
 
 // @public
 export type RatingColor = 'brand' | 'marigold' | 'neutral';
+
+// @public
+export const RatingItem: ForwardRefComponent<RatingItemProps>;
+
+// @public
+export const ratingItemClassNames: {
+    root: string;
+};
+
+// @public
+export type RatingItemProps = RatingItemProps_2 & {
+    color?: RatingDisplayColor;
+    size?: RatingDisplaySize;
+};
+
+export { RatingItemSlots }
+
+// @public
+export type RatingItemState = RatingItemState_2 & Required<Pick<RatingItemProps, 'color' | 'size'>>;
 
 // @public
 export type RatingProps = RatingProps_2 & {
@@ -39,9 +63,16 @@ export type RatingState = RatingState_2 & Required<Pick<RatingProps, 'color' | '
 
 export { renderRating }
 
+export { renderRatingItem }
+
 export { useRating }
 
 export { useRatingContextValues }
+
+export { useRatingItem }
+
+// @public
+export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;
 
 // @public
 export const useRatingStyles: (state: RatingState) => RatingState;

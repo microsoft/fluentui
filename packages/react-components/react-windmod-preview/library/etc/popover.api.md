@@ -4,16 +4,27 @@
 
 ```ts
 
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverContextValue } from '@fluentui/react-headless-components-preview/popover';
 import type { PopoverProps as PopoverProps_2 } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverState } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverSurfaceProps } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverSurfaceSlots } from '@fluentui/react-headless-components-preview/popover';
+import type { PopoverSurfaceState as PopoverSurfaceState_2 } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverTriggerProps } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverTriggerState } from '@fluentui/react-headless-components-preview/popover';
+import type * as React_2 from 'react';
 import { renderPopover } from '@fluentui/react-headless-components-preview/popover';
+import { renderPopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import { renderPopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
 import { usePopover } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContextValues } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
 
 export { OnOpenChangeData }
 
@@ -41,13 +52,57 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 
 export { PopoverState }
 
+// @public
+export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
+
+// @public
+export const popoverSurfaceClassNames: {
+    root: string;
+};
+
+export { PopoverSurfaceProps }
+
+export { PopoverSurfaceSlots }
+
+// @public
+export type PopoverSurfaceState = PopoverSurfaceState_2 & {
+    appearance?: PopoverAppearance;
+    size: PopoverSize;
+};
+
+// @public
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+
+// @public
+export const popoverTriggerClassNames: {
+    root: string;
+};
+
+export { PopoverTriggerProps }
+
+export { PopoverTriggerState }
+
 export { renderPopover }
+
+export { renderPopoverSurface }
+
+export { renderPopoverTrigger }
 
 export { usePopover }
 
 export { usePopoverContext }
 
 export { usePopoverContextValues }
+
+export { usePopoverSurface }
+
+// @public
+export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
+
+export { usePopoverTrigger }
+
+// @public
+export const usePopoverTriggerStyles: (state: PopoverTriggerState) => PopoverTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

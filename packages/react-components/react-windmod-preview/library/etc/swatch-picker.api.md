@@ -4,16 +4,101 @@
 
 ```ts
 
+import type { ColorSwatchProps as ColorSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { ColorSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ColorSwatchState as ColorSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { EmptySwatchProps as EmptySwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { EmptySwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { EmptySwatchState as EmptySwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ImageSwatchProps as ImageSwatchProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { ImageSwatchSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { ImageSwatchState as ImageSwatchState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { renderSwatchPickerRow } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { SwatchPickerProps as SwatchPickerProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { SwatchPickerRowProps as SwatchPickerRowProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { SwatchPickerRowSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+import type { SwatchPickerRowState as SwatchPickerRowState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { SwatchPickerSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { SwatchPickerState as SwatchPickerState_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useColorSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useEmptySwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useSwatchPickerContextValue } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { useSwatchPickerContextValues } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { useSwatchPickerRow } from '@fluentui/react-headless-components-preview/swatch-picker';
+
+// @public
+export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
+
+// @public
+export const colorSwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type ColorSwatchProps = ColorSwatchProps_2 & {
+    size?: SwatchPickerSize;
+    shape?: SwatchPickerShape;
+};
+
+export { ColorSwatchSlots }
+
+// @public
+export type ColorSwatchState = ColorSwatchState_2 & Required<Pick<ColorSwatchProps, 'size' | 'shape'>>;
+
+// @public
+export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
+
+// @public
+export const emptySwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type EmptySwatchProps = EmptySwatchProps_2 & {
+    size?: SwatchPickerSize;
+    shape?: SwatchPickerShape;
+};
+
+export { EmptySwatchSlots }
+
+// @public
+export type EmptySwatchState = EmptySwatchState_2 & Required<Pick<EmptySwatchProps, 'size' | 'shape'>>;
+
+// @public
+export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public
+export const imageSwatchClassNames: {
+    root: string;
+};
+
+// @public
+export type ImageSwatchProps = ImageSwatchProps_2;
+
+export { ImageSwatchSlots }
+
+// @public
+export type ImageSwatchState = ImageSwatchState_2 & {
+    size: SwatchPickerSize;
+    shape: SwatchPickerShape;
+};
+
+export { renderColorSwatch }
+
+export { renderEmptySwatch }
+
+export { renderImageSwatch }
 
 export { renderSwatchPicker }
+
+export { renderSwatchPickerRow }
 
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
@@ -31,6 +116,24 @@ export type SwatchPickerProps = SwatchPickerProps_2 & {
 };
 
 // @public
+export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
+
+// @public
+export const swatchPickerRowClassNames: {
+    root: string;
+};
+
+// @public
+export type SwatchPickerRowProps = SwatchPickerRowProps_2;
+
+export { SwatchPickerRowSlots }
+
+// @public
+export type SwatchPickerRowState = SwatchPickerRowState_2 & {
+    spacing: SwatchPickerSpacing;
+};
+
+// @public
 export type SwatchPickerShape = 'rounded' | 'square' | 'circular';
 
 // @public
@@ -44,11 +147,31 @@ export type SwatchPickerSpacing = 'small' | 'medium';
 // @public
 export type SwatchPickerState = SwatchPickerState_2 & Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
 
+export { useColorSwatch }
+
+// @public
+export const useColorSwatchStyles: (state: ColorSwatchState) => ColorSwatchState;
+
+export { useEmptySwatch }
+
+// @public
+export const useEmptySwatchStyles: (state: EmptySwatchState) => EmptySwatchState;
+
+export { useImageSwatch }
+
+// @public
+export const useImageSwatchStyles: (state: ImageSwatchState) => ImageSwatchState;
+
 export { useSwatchPicker }
 
 export { useSwatchPickerContextValue }
 
 export { useSwatchPickerContextValues }
+
+export { useSwatchPickerRow }
+
+// @public
+export const useSwatchPickerRowStyles: (state: SwatchPickerRowState) => SwatchPickerRowState;
 
 // @public
 export const useSwatchPickerStyles: (state: SwatchPickerState) => SwatchPickerState;

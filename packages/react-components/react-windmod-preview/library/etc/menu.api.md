@@ -4,17 +4,80 @@
 
 ```ts
 
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuContextValue } from '@fluentui/react-headless-components-preview/menu';
 import { MenuContextValues } from '@fluentui/react-headless-components-preview/menu';
+import { MenuDividerProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuDividerSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuDividerState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupHeaderProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupHeaderSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupHeaderState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemCheckboxProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemCheckboxState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemLinkState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemRadioProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemRadioState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemSwitchState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuListProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuListSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuListState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuOpenChangeData } from '@fluentui/react-headless-components-preview/menu';
 import { MenuOpenEvent } from '@fluentui/react-headless-components-preview/menu';
+import { MenuPopoverProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuPopoverSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuPopoverState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupSlots } from '@fluentui/react-headless-components-preview/menu';
+import { MenuSplitGroupState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuTriggerChildProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuTriggerProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuTriggerState } from '@fluentui/react-headless-components-preview/menu';
+import * as React_2 from 'react';
 import { renderMenu } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuDivider } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuGroup } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItem } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemLink } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuList } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuPopover } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuSplitGroup } from '@fluentui/react-headless-components-preview/menu';
+import { renderMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 import { useMenu } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuContext } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuContextValues } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuDivider } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuGroup } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItem } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemLink } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuList } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuPopover } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuSplitGroup } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuTrigger } from '@fluentui/react-headless-components-preview/menu';
 
 // @public
 export const Menu: {
@@ -26,21 +89,284 @@ export { MenuContextValue }
 
 export { MenuContextValues }
 
+// @public
+export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
+
+// @public
+export const menuDividerClassNames: {
+    root: string;
+};
+
+export { MenuDividerProps }
+
+export { MenuDividerSlots }
+
+export { MenuDividerState }
+
+// @public
+export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
+
+// @public
+export const menuGroupClassNames: {
+    root: string;
+};
+
+export { MenuGroupContextValues }
+
+// @public
+export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
+
+// @public
+export const menuGroupHeaderClassNames: {
+    root: string;
+};
+
+export { MenuGroupHeaderProps }
+
+export { MenuGroupHeaderSlots }
+
+export { MenuGroupHeaderState }
+
+export { MenuGroupProps }
+
+export { MenuGroupSlots }
+
+export { MenuGroupState }
+
+// @public
+export const MenuItem: ForwardRefComponent<MenuItemProps>;
+
+// @public
+export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
+
+// @public
+export const menuItemCheckboxClassNames: {
+    root: string;
+};
+
+export { MenuItemCheckboxProps }
+
+export { MenuItemCheckboxState }
+
+// @public
+export const menuItemClassNames: {
+    root: string;
+};
+
+// @internal (undocumented)
+export const MenuItemContextProvider: React_2.Provider<MenuItemContextValue | undefined>;
+
+// @internal
+export type MenuItemContextValue = Partial<MenuItemProps> & Partial<MenuItemLinkProps>;
+
+// @public
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+
+// @public
+export const menuItemLinkClassNames: {
+    root: string;
+};
+
+export { MenuItemLinkProps }
+
+export { MenuItemLinkSlots }
+
+export { MenuItemLinkState }
+
+export { MenuItemProps }
+
+// @public
+export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
+
+// @public
+export const menuItemRadioClassNames: {
+    root: string;
+};
+
+export { MenuItemRadioProps }
+
+export { MenuItemRadioState }
+
+export { MenuItemSlots }
+
+export { MenuItemState }
+
+// @public
+export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
+
+// @public
+export const menuItemSwitchClassNames: {
+    root: string;
+};
+
+export { MenuItemSwitchProps }
+
+export { MenuItemSwitchSlots }
+
+export { MenuItemSwitchState }
+
+// @public
+export const MenuList: ForwardRefComponent<MenuListProps>;
+
+// @public
+export const menuListClassNames: {
+    root: string;
+};
+
+export { MenuListProps }
+
+export { MenuListSlots }
+
+export { MenuListState }
+
 export { MenuOpenChangeData }
 
 export { MenuOpenEvent }
 
+// @public
+export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
+
+// @public
+export const menuPopoverClassNames: {
+    root: string;
+};
+
+export { MenuPopoverProps }
+
+export { MenuPopoverSlots }
+
+export { MenuPopoverState }
+
 export { MenuProps }
+
+// @public
+export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
+
+// @public
+export const menuSplitGroupClassNames: {
+    root: string;
+};
+
+export { MenuSplitGroupProps }
+
+export { MenuSplitGroupSlots }
+
+export { MenuSplitGroupState }
 
 export { MenuState }
 
+// @public
+export const MenuTrigger: React_2.FC<MenuTriggerProps>;
+
+export { MenuTriggerChildProps }
+
+// @public
+export const menuTriggerClassNames: {
+    root: string;
+};
+
+export { MenuTriggerProps }
+
+export { MenuTriggerState }
+
 export { renderMenu }
+
+export { renderMenuDivider }
+
+export { renderMenuGroup }
+
+export { renderMenuGroupHeader }
+
+export { renderMenuItem }
+
+export { renderMenuItemCheckbox }
+
+export { renderMenuItemLink }
+
+export { renderMenuItemRadio }
+
+export { renderMenuItemSwitch }
+
+export { renderMenuList }
+
+export { renderMenuPopover }
+
+export { renderMenuSplitGroup }
+
+export { renderMenuTrigger }
 
 export { useMenu }
 
 export { useMenuContext }
 
 export { useMenuContextValues }
+
+export { useMenuDivider }
+
+// @public
+export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
+
+export { useMenuGroup }
+
+export { useMenuGroupContextValues }
+
+export { useMenuGroupHeader }
+
+// @public
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
+
+// @public
+export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;
+
+export { useMenuItem }
+
+export { useMenuItemCheckbox }
+
+// @public
+export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
+
+// @internal (undocumented)
+export const useMenuItemContext: () => MenuItemContextValue;
+
+export { useMenuItemLink }
+
+// @public
+export const useMenuItemLinkStyles: (state: MenuItemLinkState) => MenuItemLinkState;
+
+export { useMenuItemRadio }
+
+// @public
+export const useMenuItemRadioStyles: (state: MenuItemRadioState) => MenuItemRadioState;
+
+// @public
+export const useMenuItemStyles: (state: MenuItemState) => MenuItemState;
+
+export { useMenuItemSwitch }
+
+// @public
+export const useMenuItemSwitchStyles: (state: MenuItemSwitchState) => MenuItemSwitchState;
+
+export { useMenuList }
+
+export { useMenuListContextValues }
+
+// @public
+export const useMenuListStyles: (state: MenuListState) => MenuListState;
+
+export { useMenuPopover }
+
+// @public
+export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+
+export { useMenuSplitGroup }
+
+// @public
+export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
+
+export { useMenuTrigger }
+
+// @public
+export const useMenuTriggerStyles: (state: MenuTriggerState) => MenuTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

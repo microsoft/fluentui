@@ -8,9 +8,22 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { RadioGroupProps as RadioGroupProps_2 } from '@fluentui/react-headless-components-preview/radio-group';
 import { RadioGroupSlots } from '@fluentui/react-headless-components-preview/radio-group';
 import type { RadioGroupState as RadioGroupState_2 } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioProps } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioSlots } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioState } from '@fluentui/react-headless-components-preview/radio-group';
+import { renderRadio } from '@fluentui/react-headless-components-preview/radio-group';
 import { renderRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
+import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroupContextValues } from '@fluentui/react-headless-components-preview/radio-group';
+
+// @public
+export const Radio: ForwardRefComponent<RadioProps>;
+
+// @public
+export const radioClassNames: {
+    root: string;
+};
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
@@ -33,7 +46,17 @@ export { RadioGroupSlots }
 // @public
 export type RadioGroupState = RadioGroupState_2 & Required<Pick<RadioGroupProps, 'layout'>>;
 
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
+
+export { renderRadio }
+
 export { renderRadioGroup }
+
+export { useRadio }
 
 export { useRadioGroup }
 
@@ -41,6 +64,9 @@ export { useRadioGroupContextValues }
 
 // @public
 export const useRadioGroupStyles: (state: RadioGroupState) => RadioGroupState;
+
+// @public
+export const useRadioStyles: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 
