@@ -1,0 +1,24 @@
+@reference '#theme';
+
+/* The gap is hoisted to the resting block: the reference declares it in each of the two layout
+   buckets, which are mutually exclusive and exhaustive, so one declaration is byte-equivalent.
+
+   `.offset`'s auto margin reaches the row's own first child only. The reference's selector is a
+   descendant combinator, which also catches the first pagination dot inside a nested nav and pushes
+   the remaining dots apart. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-row gap-8;
+  }
+
+  .centered {
+    @apply justify-between;
+  }
+
+  .offset {
+    & > :first-child {
+      @apply me-auto;
+    }
+  }
+}

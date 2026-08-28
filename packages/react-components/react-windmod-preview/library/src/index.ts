@@ -1013,6 +1013,103 @@ export type {
 } from './teaching-popover-body';
 
 export {
+  renderTeachingPopoverCarousel,
+  TeachingPopoverCarousel,
+  teachingPopoverCarouselClassNames,
+  useTeachingPopoverCarousel,
+  useTeachingPopoverCarouselContextValues,
+  useTeachingPopoverCarouselStyles,
+} from './teaching-popover-carousel';
+export type {
+  TeachingPopoverCarouselContextValues,
+  TeachingPopoverCarouselProps,
+  TeachingPopoverCarouselSlots,
+  TeachingPopoverCarouselState,
+} from './teaching-popover-carousel';
+
+export {
+  renderTeachingPopoverCarouselCard,
+  TeachingPopoverCarouselCard,
+  teachingPopoverCarouselCardClassNames,
+  useTeachingPopoverCarouselCard,
+  useTeachingPopoverCarouselCardStyles,
+} from './teaching-popover-carousel-card';
+export type {
+  TeachingPopoverCarouselCardProps,
+  TeachingPopoverCarouselCardSlots,
+  TeachingPopoverCarouselCardState,
+} from './teaching-popover-carousel-card';
+
+export {
+  renderTeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselFooter,
+  teachingPopoverCarouselFooterClassNames,
+  useTeachingPopoverCarouselFooter,
+  useTeachingPopoverCarouselFooterStyles,
+} from './teaching-popover-carousel-footer';
+export type {
+  TeachingPopoverCarouselFooterButtonSlot,
+  TeachingPopoverCarouselFooterLayout,
+  TeachingPopoverCarouselFooterProps,
+  TeachingPopoverCarouselFooterSlots,
+  TeachingPopoverCarouselFooterState,
+} from './teaching-popover-carousel-footer';
+
+export {
+  renderTeachingPopoverCarouselFooterButton,
+  TeachingPopoverCarouselFooterButton,
+  teachingPopoverCarouselFooterButtonClassNames,
+  useTeachingPopoverCarouselFooterButton,
+  useTeachingPopoverCarouselFooterButtonStyles,
+} from './teaching-popover-carousel-footer-button';
+export type {
+  TeachingPopoverCarouselFooterButtonProps,
+  TeachingPopoverCarouselFooterButtonSlots,
+  TeachingPopoverCarouselFooterButtonState,
+} from './teaching-popover-carousel-footer-button';
+
+export {
+  renderTeachingPopoverCarouselNav,
+  TeachingPopoverCarouselNav,
+  teachingPopoverCarouselNavClassNames,
+  useTeachingPopoverCarouselNav,
+  useTeachingPopoverCarouselNavStyles,
+} from './teaching-popover-carousel-nav';
+export type {
+  NavButtonRenderFunction,
+  TeachingPopoverCarouselNavProps,
+  TeachingPopoverCarouselNavSlots,
+  TeachingPopoverCarouselNavState,
+} from './teaching-popover-carousel-nav';
+
+export {
+  renderTeachingPopoverCarouselNavButton,
+  TeachingPopoverCarouselNavButton,
+  teachingPopoverCarouselNavButtonClassNames,
+  useTeachingPopoverCarouselNavButton,
+  useTeachingPopoverCarouselNavButtonStyles,
+} from './teaching-popover-carousel-nav-button';
+export type {
+  TeachingPopoverCarouselNavButtonProps,
+  TeachingPopoverCarouselNavButtonSlots,
+  TeachingPopoverCarouselNavButtonState,
+} from './teaching-popover-carousel-nav-button';
+
+export {
+  renderTeachingPopoverCarouselPageCount,
+  TeachingPopoverCarouselPageCount,
+  teachingPopoverCarouselPageCountClassNames,
+  useTeachingPopoverCarouselPageCount,
+  useTeachingPopoverCarouselPageCountStyles,
+} from './teaching-popover-carousel-page-count';
+export type {
+  TeachingPopoverCarouselPageCountProps,
+  TeachingPopoverCarouselPageCountRenderFunction,
+  TeachingPopoverCarouselPageCountSlots,
+  TeachingPopoverCarouselPageCountState,
+} from './teaching-popover-carousel-page-count';
+
+export {
   renderTeachingPopoverFooter,
   TeachingPopoverFooter,
   teachingPopoverFooterClassNames,

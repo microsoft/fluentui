@@ -255,6 +255,7 @@ import type { MessageBarState as MessageBarState_2 } from '@fluentui/react-headl
 import { MessageBarTitleProps } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-headless-components-preview/message-bar';
 import { MessageBarTitleState } from '@fluentui/react-headless-components-preview/message-bar';
+import { NavButtonRenderFunction } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { NavCategoryContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { NavCategoryItemContextValues } from '@fluentui/react-headless-components-preview/nav';
 import { NavCategoryItemProps } from '@fluentui/react-headless-components-preview/nav';
@@ -472,6 +473,13 @@ import { renderTagPickerOption } from '@fluentui/react-headless-components-previ
 import { renderTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
 import { renderTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarousel } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselCard } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselFooterButton } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselNav } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselNavButton } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { renderTeachingPopoverCarouselPageCount } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { renderTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
@@ -578,6 +586,26 @@ import { TeachingPopoverBaseBridgedContextValue } from '@fluentui/react-headless
 import { TeachingPopoverBodyProps } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { TeachingPopoverBodySlots } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { TeachingPopoverBodyState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselCardProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselCardSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselCardState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselFooterButtonSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverCarouselFooterProps as TeachingPopoverCarouselFooterProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverCarouselFooterState as TeachingPopoverCarouselFooterState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselNavButtonProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import type { TeachingPopoverCarouselNavButtonState as TeachingPopoverCarouselNavButtonState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselNavProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselNavSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselNavState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselPageCountProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselPageCountRenderFunction } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselPageCountSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselProps } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { TeachingPopoverCarouselState } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { TeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
 import type { TeachingPopoverFooterProps as TeachingPopoverFooterProps_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import type { TeachingPopoverFooterState as TeachingPopoverFooterState_2 } from '@fluentui/react-headless-components-preview/teaching-popover';
@@ -834,6 +862,14 @@ import { useTagPickerOption } from '@fluentui/react-headless-components-preview/
 import { useTagPickerOptionGroup } from '@fluentui/react-headless-components-preview/tag-picker';
 import { useTeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverBody } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarousel } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselCard } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselFooterButton } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselNav } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselNavButton } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { useTeachingPopoverCarouselPageCount } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverFooter } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverHeader } from '@fluentui/react-headless-components-preview/teaching-popover';
@@ -2336,6 +2372,8 @@ export { MessageBarTitleState }
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
 
+export { NavButtonRenderFunction }
+
 // @public
 export const NavCategory: ForwardRefComponent<NavCategoryProps>;
 
@@ -3076,6 +3114,20 @@ export { renderTeachingPopover }
 
 export { renderTeachingPopoverBody }
 
+export { renderTeachingPopoverCarousel }
+
+export { renderTeachingPopoverCarouselCard }
+
+export { renderTeachingPopoverCarouselFooter }
+
+export { renderTeachingPopoverCarouselFooterButton }
+
+export { renderTeachingPopoverCarouselNav }
+
+export { renderTeachingPopoverCarouselNavButton }
+
+export { renderTeachingPopoverCarouselPageCount }
+
 export { renderTeachingPopoverFooter }
 
 export { renderTeachingPopoverHeader }
@@ -3644,6 +3696,136 @@ export { TeachingPopoverBodyProps }
 export { TeachingPopoverBodySlots }
 
 export { TeachingPopoverBodyState }
+
+// @public
+export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps>;
+
+// @public
+export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps>;
+
+// @public
+export const teachingPopoverCarouselCardClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverCarouselCardProps }
+
+export { TeachingPopoverCarouselCardSlots }
+
+export { TeachingPopoverCarouselCardState }
+
+// @public
+export const teachingPopoverCarouselClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverCarouselContextValues }
+
+// @public
+export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
+
+// @public
+export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps>;
+
+// @public
+export const teachingPopoverCarouselFooterButtonClassNames: {
+    root: string;
+};
+
+// @public
+export type TeachingPopoverCarouselFooterButtonProps = ButtonProps & {
+    navType: 'next' | 'prev';
+    altText: React_2.ReactNode;
+};
+
+// @public
+export type TeachingPopoverCarouselFooterButtonSlot = SlotComponentType<ExtractSlotProps<TeachingPopoverCarouselFooterSlots['next']>>;
+
+export { TeachingPopoverCarouselFooterButtonSlots }
+
+// @public
+export type TeachingPopoverCarouselFooterButtonState = ButtonState & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+    popoverAppearance?: PopoverAppearance;
+};
+
+// @public
+export const teachingPopoverCarouselFooterClassNames: {
+    root: string;
+};
+
+// @public
+export type TeachingPopoverCarouselFooterLayout = 'offset' | 'centered';
+
+// @public
+export type TeachingPopoverCarouselFooterProps = Omit<TeachingPopoverCarouselFooterProps_2, 'previous' | 'next'> & Omit<TeachingPopoverCarouselFooterSlots, 'root'> & {
+    layout?: TeachingPopoverCarouselFooterLayout;
+};
+
+// @public
+export type TeachingPopoverCarouselFooterSlots = {
+    root: NonNullable<Slot<'div'>>;
+    previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
+    next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
+};
+
+// @public
+export type TeachingPopoverCarouselFooterState = Omit<TeachingPopoverCarouselFooterState_2, 'previous' | 'next'> & Required<Pick<TeachingPopoverCarouselFooterProps, 'layout'>> & {
+    previous?: TeachingPopoverCarouselFooterButtonSlot;
+    next: TeachingPopoverCarouselFooterButtonSlot;
+};
+
+// @public
+export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
+
+// @public
+export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
+
+// @public
+export const teachingPopoverCarouselNavButtonClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverCarouselNavButtonProps }
+
+export { TeachingPopoverCarouselNavButtonSlots }
+
+// @public
+export type TeachingPopoverCarouselNavButtonState = TeachingPopoverCarouselNavButtonState_2 & {
+    appearance?: PopoverAppearance;
+};
+
+// @public
+export const teachingPopoverCarouselNavClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverCarouselNavProps }
+
+export { TeachingPopoverCarouselNavSlots }
+
+export { TeachingPopoverCarouselNavState }
+
+// @public
+export const TeachingPopoverCarouselPageCount: ForwardRefComponent<TeachingPopoverCarouselPageCountProps>;
+
+// @public
+export const teachingPopoverCarouselPageCountClassNames: {
+    root: string;
+};
+
+export { TeachingPopoverCarouselPageCountProps }
+
+export { TeachingPopoverCarouselPageCountRenderFunction }
+
+export { TeachingPopoverCarouselPageCountSlots }
+
+export { TeachingPopoverCarouselPageCountState }
+
+export { TeachingPopoverCarouselProps }
+
+export { TeachingPopoverCarouselSlots }
+
+export { TeachingPopoverCarouselState }
 
 export { TeachingPopoverContextValues }
 
@@ -4777,6 +4959,43 @@ export { useTeachingPopoverBody }
 
 // @public
 export const useTeachingPopoverBodyStyles: (state: TeachingPopoverBodyState) => TeachingPopoverBodyState;
+
+export { useTeachingPopoverCarousel }
+
+export { useTeachingPopoverCarouselCard }
+
+// @public
+export const useTeachingPopoverCarouselCardStyles: (state: TeachingPopoverCarouselCardState) => TeachingPopoverCarouselCardState;
+
+export { useTeachingPopoverCarouselContextValues }
+
+export { useTeachingPopoverCarouselFooter }
+
+export { useTeachingPopoverCarouselFooterButton }
+
+// @public
+export const useTeachingPopoverCarouselFooterButtonStyles: (state: TeachingPopoverCarouselFooterButtonState) => TeachingPopoverCarouselFooterButtonState;
+
+// @public
+export const useTeachingPopoverCarouselFooterStyles: (state: TeachingPopoverCarouselFooterState) => TeachingPopoverCarouselFooterState;
+
+export { useTeachingPopoverCarouselNav }
+
+export { useTeachingPopoverCarouselNavButton }
+
+// @public
+export const useTeachingPopoverCarouselNavButtonStyles: (state: TeachingPopoverCarouselNavButtonState) => TeachingPopoverCarouselNavButtonState;
+
+// @public
+export const useTeachingPopoverCarouselNavStyles: (state: TeachingPopoverCarouselNavState) => TeachingPopoverCarouselNavState;
+
+export { useTeachingPopoverCarouselPageCount }
+
+// @public
+export const useTeachingPopoverCarouselPageCountStyles: (state: TeachingPopoverCarouselPageCountState) => TeachingPopoverCarouselPageCountState;
+
+// @public
+export const useTeachingPopoverCarouselStyles: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
 
 export { useTeachingPopoverContextValues }
 

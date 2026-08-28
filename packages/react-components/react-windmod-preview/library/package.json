@@ -1248,6 +1248,76 @@
         "default": "./lib-commonjs/teaching-popover-body.cjs"
       }
     },
+    "./teaching-popover-carousel": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel.d.ts",
+        "default": "./lib/teaching-popover-carousel.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel.cjs"
+      }
+    },
+    "./teaching-popover-carousel-card": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-card.d.ts",
+        "default": "./lib/teaching-popover-carousel-card.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-card.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-card.cjs"
+      }
+    },
+    "./teaching-popover-carousel-footer": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-footer.d.ts",
+        "default": "./lib/teaching-popover-carousel-footer.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-footer.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-footer.cjs"
+      }
+    },
+    "./teaching-popover-carousel-footer-button": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-footer-button.d.ts",
+        "default": "./lib/teaching-popover-carousel-footer-button.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-footer-button.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-footer-button.cjs"
+      }
+    },
+    "./teaching-popover-carousel-nav": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-nav.d.ts",
+        "default": "./lib/teaching-popover-carousel-nav.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-nav.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-nav.cjs"
+      }
+    },
+    "./teaching-popover-carousel-nav-button": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-nav-button.d.ts",
+        "default": "./lib/teaching-popover-carousel-nav-button.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-nav-button.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-nav-button.cjs"
+      }
+    },
+    "./teaching-popover-carousel-page-count": {
+      "import": {
+        "types": "./dist/teaching-popover-carousel-page-count.d.ts",
+        "default": "./lib/teaching-popover-carousel-page-count.js"
+      },
+      "require": {
+        "types": "./dist/teaching-popover-carousel-page-count.d.cts",
+        "default": "./lib-commonjs/teaching-popover-carousel-page-count.cjs"
+      }
+    },
     "./teaching-popover-footer": {
       "import": {
         "types": "./dist/teaching-popover-footer.d.ts",

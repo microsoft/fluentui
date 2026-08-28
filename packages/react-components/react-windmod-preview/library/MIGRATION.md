@@ -14,8 +14,8 @@ no `@griffel/react` in the dependency graph, and no `makeStyles` to migrate.
 The goal is a drop-in reskin, not a redesign. Components render the same DOM and take the same props as
 their Griffel counterparts, and every shipped component is compared against its Griffel twin
 pixel-for-pixel at a **zero-difference** threshold. The side-by-side scene list lives in the VR harness's
-`scenes.json` and grows with the package: **83 scenes, 70 of them at strict zero.** The remaining
-thirteen carry an explicit, individually ratified pixel allowance, each one recorded on its scene with
+`scenes.json` and grows with the package: **91 scenes, 73 of them at strict zero.** The remaining
+eighteen carry an explicit, individually ratified pixel allowance, each one recorded on its scene with
 the control that bounds it. They are enumerated in
 [Where the pixels are allowed to differ](#where-the-pixels-are-allowed-to-differ).
 
@@ -82,44 +82,46 @@ import { Dialog, DialogSurface, DialogTitle, DialogActions } from '@fluentui/rea
 
 Every other family, `Drawer` and `Menu` and `Toast` included, is one subpath per component.
 
-**131 component subpaths**, all kebab-case:
+**145 component subpaths**, all kebab-case:
 
-| Family        | Subpaths                                                                                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                                                                   |
-| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                                                             |
-| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                                                                           |
-| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                                                                   |
-| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                                          |
-| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                                   |
-| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                                               |
-| Selection     | `./combobox` `./dropdown` `./listbox` `./option` `./option-group`                                                                                                                           |
-| Field & label | `./field` `./label` `./info-label` `./info-button`                                                                                                                                          |
-| Dialog        | `./dialog` — the whole family, see above                                                                                                                                                    |
-| Drawer        | `./drawer` `./inline-drawer` `./overlay-drawer` `./drawer-body` `./drawer-header` `./drawer-header-title` `./drawer-header-navigation` `./drawer-footer`                                    |
-| Menu          | `./menu` `./menu-trigger` `./menu-popover` `./menu-list` `./menu-item` `./menu-item-checkbox` `./menu-item-radio` `./menu-group` `./menu-group-header` `./menu-divider`                     |
-| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                                          |
-| Toast         | `./toaster` `./toast` `./toast-title` `./toast-body` `./toast-footer`                                                                                                                       |
-| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                                  |
-| People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                                                                      |
-| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                                         |
-| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                                                               |
-| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                                                              |
-| Tabs          | `./tab` `./tab-list`                                                                                                                                                                        |
-| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                                                                         |
-| Tag picker    | `./tag-picker` `./tag-picker-button` `./tag-picker-control` `./tag-picker-group` `./tag-picker-input` `./tag-picker-list` `./tag-picker-option` `./tag-picker-option-group`                 |
-| Teaching      | `./teaching-popover` `./teaching-popover-trigger` `./teaching-popover-surface` `./teaching-popover-header` `./teaching-popover-title` `./teaching-popover-body` `./teaching-popover-footer` |
-| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button`                                             |
-| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                           |
-| Provider      | `./fluent-provider`                                                                                                                                                                         |
+| Family        | Subpaths                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accordion     | `./accordion` `./accordion-header` `./accordion-item` `./accordion-panel`                                                                                                                                                                                                                                                                                                                                                                                         |
+| Breadcrumb    | `./breadcrumb` `./breadcrumb-button` `./breadcrumb-divider` `./breadcrumb-item`                                                                                                                                                                                                                                                                                                                                                                                   |
+| Buttons       | `./button` `./compound-button` `./menu-button` `./split-button` `./toggle-button`                                                                                                                                                                                                                                                                                                                                                                                 |
+| Card          | `./card` `./card-footer` `./card-header` `./card-preview`                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Color picking | `./color-picker` `./color-area` `./color-slider` `./alpha-slider` `./color-swatch`                                                                                                                                                                                                                                                                                                                                                                                |
+| Swatches      | `./swatch-picker` `./swatch-picker-row` `./empty-swatch` `./image-swatch`                                                                                                                                                                                                                                                                                                                                                                                         |
+| Form controls | `./checkbox` `./input` `./radio` `./radio-group` `./search-box` `./select` `./slider` `./spin-button` `./switch` `./textarea`                                                                                                                                                                                                                                                                                                                                     |
+| Selection     | `./combobox` `./dropdown` `./listbox` `./option` `./option-group`                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Field & label | `./field` `./label` `./info-label` `./info-button`                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Dialog        | `./dialog` — the whole family, see above                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Drawer        | `./drawer` `./inline-drawer` `./overlay-drawer` `./drawer-body` `./drawer-header` `./drawer-header-title` `./drawer-header-navigation` `./drawer-footer`                                                                                                                                                                                                                                                                                                          |
+| Menu          | `./menu` `./menu-trigger` `./menu-popover` `./menu-list` `./menu-item` `./menu-item-checkbox` `./menu-item-radio` `./menu-item-link` `./menu-item-switch` `./menu-split-group` `./menu-group` `./menu-group-header` `./menu-divider`                                                                                                                                                                                                                              |
+| Messaging     | `./message-bar` `./message-bar-actions` `./message-bar-body` `./message-bar-title`                                                                                                                                                                                                                                                                                                                                                                                |
+| Toast         | `./toaster` `./toast` `./toast-title` `./toast-body` `./toast-footer`                                                                                                                                                                                                                                                                                                                                                                                             |
+| Nav           | `./nav` `./nav-category` `./nav-category-item` `./nav-divider` `./nav-item` `./nav-section-header` `./nav-sub-item` `./nav-sub-item-group`                                                                                                                                                                                                                                                                                                                        |
+| Nav drawer    | `./nav-drawer` `./nav-drawer-body` `./nav-drawer-header` `./nav-drawer-footer`                                                                                                                                                                                                                                                                                                                                                                                    |
+| People        | `./avatar` `./avatar-group` `./avatar-group-item` `./avatar-group-popover` `./persona`                                                                                                                                                                                                                                                                                                                                                                            |
+| Popover       | `./popover` `./popover-surface` `./popover-trigger`                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Rating        | `./rating` `./rating-display` `./rating-item`                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Skeleton      | `./skeleton` `./skeleton-item`                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Tabs          | `./tab` `./tab-list`                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Tags          | `./tag` `./tag-group` `./interaction-tag` `./interaction-tag-primary` `./interaction-tag-secondary`                                                                                                                                                                                                                                                                                                                                                               |
+| Tag picker    | `./tag-picker` `./tag-picker-button` `./tag-picker-control` `./tag-picker-group` `./tag-picker-input` `./tag-picker-list` `./tag-picker-option` `./tag-picker-option-group`                                                                                                                                                                                                                                                                                       |
+| Teaching      | `./teaching-popover` `./teaching-popover-trigger` `./teaching-popover-surface` `./teaching-popover-header` `./teaching-popover-title` `./teaching-popover-body` `./teaching-popover-footer` `./teaching-popover-carousel` `./teaching-popover-carousel-card` `./teaching-popover-carousel-nav` `./teaching-popover-carousel-nav-button` `./teaching-popover-carousel-footer` `./teaching-popover-carousel-footer-button` `./teaching-popover-carousel-page-count` |
+| Toolbar       | `./toolbar` `./toolbar-button` `./toolbar-divider` `./toolbar-group` `./toolbar-radio-button` `./toolbar-radio-group` `./toolbar-toggle-button`                                                                                                                                                                                                                                                                                                                   |
+| Content       | `./badge` `./divider` `./image` `./link` `./progress-bar` `./spinner` `./tooltip`                                                                                                                                                                                                                                                                                                                                                                                 |
+| Provider      | `./fluent-provider`                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-Four non-component subpaths:
+Five non-component subpaths:
 
 | Subpath               | What it is                                                                                            |
 | --------------------- | ----------------------------------------------------------------------------------------------------- |
 | `./styles.css`        | the compiled component stylesheet                                                                     |
 | `./variants.css`      | the component-specific variant catalog, so your own Tailwind CSS can compose against windmod's states |
 | `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars` — read a token's resolved value off an element, with caching   |
+| `./positioning`       | the headless positioning primitives (`usePositioning`, `resolvePositioningShorthand`, …), re-exported |
 | `./package.json`      | —                                                                                                     |
 
 If you were importing from an internal Fluent package directly (`@fluentui/react-button`,
@@ -691,11 +693,31 @@ renders differently — `components` is `@deprecated` in `@fluentui/react-utilit
 function reads it — but code that introspects `state.components` to discover the footer's slot elements
 will not find them there.
 
-#### 45. The `TeachingPopover` carousel is not shipped
+#### 45. `TeachingPopoverCarouselFooter` has no `initialStepText` or `finalStepText`
 
-`TeachingPopoverCarousel` and its six family members have no windmod component yet. The seven core members
-ship; keep the carousel on `@fluentui/react-components`, where it composes over windmod children without a
-shim like everything else in the table below.
+The carousel now ships — `TeachingPopoverCarousel` and its six family members each have a windmod component
+and a subpath. Its one breaking API change is here: Griffel's footer takes `initialStepText` and
+`finalStepText` as **required** footer props and feeds them into each nav button's `altText` default. The
+headless footer this component composes drops both, and windmod does not restore them. Trailing-step text is
+supplied per button instead, as the `altText` the headless slot type already declares:
+
+```tsx
+// Griffel
+<TeachingPopoverCarouselFooter initialStepText="Close" finalStepText="Done" />
+
+// windmod
+<TeachingPopoverCarouselFooter
+  previous={{ navType: 'prev', altText: 'Close' }}
+  next={{ navType: 'next', altText: 'Done' }}
+/>
+```
+
+Neither half of the port fails silently. `altText` and `navType` are both **required** on the slot — exactly
+as Griffel's own footer-button props declare them — so a port that drops the text does not compile; and
+`initialStepText` / `finalStepText` are absent from windmod's footer props type, so passing them is a type
+error rather than an accepted no-op.
+
+The rest of the family's deltas are grouped under [the teaching carousel](#the-teaching-carousel) below.
 
 #### 46. A `Combobox` or `Dropdown` listbox is not clamped to the space around the trigger
 
@@ -751,30 +773,122 @@ forward what never arrives. With Nav's move to Tab-per-row navigation (see
 narrowed; consumers who set `tabbable` today should verify their keyboard order against the headless
 model.
 
+### The teaching carousel
+
+The carousel family ships as of this release. Its one breaking prop change is
+[delta 45](#45-teachingpopovercarouselfooter-has-no-initialsteptext-or-finalsteptext); the rest of the
+family's differences are below. Two of them are places windmod renders or behaves more correctly than
+Griffel, kept rather than matched, and marked as such.
+
+#### 51. Every carousel dot is in the tab order
+
+Griffel's `TeachingPopoverCarouselNav` wires tabster arrow navigation over the dots and marks the selected
+one as the group's default focusable, so the whole nav is a single tab stop and the arrow keys move between
+dots. The headless nav ships neither, and windmod inherits that: each dot is its own tab stop and the arrow
+keys do nothing. Nothing paints differently — this is keyboard order only. It is the same headless move
+that [delta 15](#15-arrow-key-navigation-comes-from-focusgroup-not-tabster) records for `Nav`.
+
+#### 52. `layout="offset"` right-alignment reaches only the footer's own children
+
+Griffel's compiled selector for the offset footer's right-aligned region is a **descendant** combinator, so
+it also catches nested first children — the first dot of a `TeachingPopoverCarouselNav` placed inside the
+footer picks up the alignment along with the footer's own first child. windmod authors a direct-child
+selector, which is what the rule evidently intends. Reproducing Griffel here would have meant importing the
+combinator; it is filed upstream instead. A footer whose layout depends on the wider match will need the
+alignment stated on the nested element.
+
+#### 53. `appearance={undefined}` on a carousel footer button no longer clobbers the derived appearance
+
+`TeachingPopoverCarouselFooterButton` derives its `appearance` from the surrounding surface's appearance and
+its own `navType`. Griffel spreads the consumer's props over that derived value (`{appearance: derived,
+...props}`), so an **explicit** `appearance={undefined}` overwrites it and the button falls back to
+`secondary`. windmod resolves `appearance ?? derived`, which fires on `undefined` and keeps the derived
+value. Only an explicit-undefined call site is affected; passing a real appearance overrides on both
+libraries, and passing nothing derives on both. **windmod is the more correct of the two here**, and the
+behaviour matches how windmod treats every other look prop.
+
+#### 54. `disabledFocusable` on a carousel footer button actually blocks the click
+
+Griffel's carousel footer button renders on the base root and discards the ARIA button layer, so a
+`disabledFocusable` button stays focusable — as intended — but still fires its `onClick`. windmod composes
+through the windmod `Button`, which keeps `useARIAButtonProps`' guarded handler, so the click is blocked
+while focus is retained. **windmod is the more correct of the two here.** A call site that relied on the
+handler firing on a `disabledFocusable` nav button will stop receiving it.
+
+#### 55. Unselected carousel dots are mixed in oklab, not sRGB
+
+The unselected dot is the component's one translucent colour. Griffel authors it as
+`color-mix(in srgb, …)`; windmod authors it with Tailwind's opacity modifier, which compiles to
+`color-mix(in oklab, …)` — oklab is Tailwind's default interpolation space, and windmod does not fight it.
+The two computed values differ in serialization on the two unselected dots and are identical on the two
+selected ones:
+
+| dot                 | windmod (oklab)                                   | Griffel (`in srgb`)                             |
+| ------------------- | ------------------------------------------------- | ----------------------------------------------- |
+| neutral, unselected | `oklab(0.526287 -0.0470482 -0.141687 / 0.3)`      | `color(srgb 0.0588235 0.423529 0.741176 / 0.3)` |
+| brand, unselected   | `oklab(0.999994 0.0000455678 0.0000200868 / 0.3)` | `color(srgb 1 1 1 / 0.3)`                       |
+| neutral, selected   | `rgb(15, 108, 189)`                               | `rgb(15, 108, 189)` — identical                 |
+| brand, selected     | `rgb(255, 255, 255)`                              | `rgb(255, 255, 255)` — identical                |
+
+**This costs nothing in pixels.** The two LTR carousel scenes reach strict zero under `--disable-gpu`, so
+at 30% over the surfaces this family paints on the two mixes rasterize the same; no pixel allowance was
+needed or granted for the colour. (The RTL scene's residual 6 px under the flag is a harness settle-pass
+artifact, not a colour term — see the table below.) It is recorded here because a computed-style diff of
+the two libraries will show the two rows above, and because it is a divergence windmod authored
+deliberately rather than one it inherited.
+
+Griffel also carries an `@supports not (color-mix(…))` fallback; windmod deliberately carries none.
+Tailwind emits an opaque `background-color` outside its own `@supports` guard, which is unreachable inside
+windmod's documented browser floor. Measured with the guard's contents removed from the live stylesheet,
+that emission paints the neutral dot `rgb(15, 108, 189)` and the brand dot `rgb(255, 255, 255)`, both fully
+opaque — identical on the neutral dot to what windmod paints with no fallback at all, and closer to the
+intended look on the brand dot. Griffel's own fallback paints **both** dots `rgb(15, 108, 189)` at 30%, so
+its brand dot comes out brand blue rather than white; that is a bug in it. So on a browser without
+`color-mix` windmod loses the 30% dimming that Griffel's fallback keeps, and Griffel keeps the dimming on
+the wrong hue.
+
+#### 56. The footer button's brand press styling is authored to Griffel's measured rendering
+
+Where a Griffel declaration on this family is defeated by Griffel's own `mergeClasses` ordering and never
+paints, windmod omits it rather than reviving it — otherwise windmod would paint a button Griffel never
+paints. That is a parity decision, not a divergence, with one exception worth stating.
+
+The pressed background of a `previous` button on a **brand** surface has no stable value in Griffel: two
+atomic rules paint it at equal specificity with different selector keys, so both survive `mergeClasses` and
+document insertion order decides. In the composed component — the only arrangement a consumer can render —
+Griffel's later Button-outline rule wins and the surface shows through (`rgba(0, 0, 0, 0)`). windmod authors
+that value. Take a Griffel measurement of this cell from an isolated harness rather than from a real
+`TeachingPopover` and you will read `rgb(12, 59, 94)` instead, from the same Griffel build.
+
 ## Where the pixels are allowed to differ
 
-The parity gate is strict zero: pixelmatch at threshold 0, one differing pixel fails the scene. Seventy of
-the eighty-three scenes hold that unconditionally. The thirteen below carry a numeric `allowedStrictDiff`
-in `scenes.json`, each granted individually and each recorded with the control that bounds it. **No
-allowance is a tolerance band** — every one names a specific mechanism, and a diff that does not decompose
-the documented way fails the scene even when it sits under the ceiling.
+The parity gate is strict zero: pixelmatch at threshold 0, one differing pixel fails the scene.
+Seventy-three of the ninety-one scenes hold that unconditionally. The remaining eighteen carry a numeric
+`allowedStrictDiff` in `scenes.json`, each granted individually and each recorded with the control that
+bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
+not decompose the documented way fails the scene even when it sits under the ceiling. Sixteen of the
+eighteen are described below; the two `menu-sequel` rows carry their ratified rationale in `scenes.json`
+only.
 
-Two of the thirteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are strict
+Four of the sixteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are strict
 zero, which is the strongest statement in the table — the CSS is exactly correct. The rest split into
 genuine geometry (survives software rasterization) and rows where the no-GPU mode is itself the noisier
 one and the GPU gate stays authoritative.
 
-| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                            | Under `--disable-gpu`                                                                                                        |
-| ----------------------------------------------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                   | **0 — completely compliant**                                                                                                 |
-| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                         | **0 — completely compliant**                                                                                                 |
-| `teaching-popover-placements`                         | 8883             | P        | 5824 px of decision-G arrow displacement plus 3059 px of the same rasterization as the row above.                                                                                                                                    | 5824 — the predicted arrow share survives                                                                                    |
-| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                 | 8107 — persists (positioning, not compositing)                                                                               |
-| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                              | 4219 — both mechanisms survive                                                                                               |
-| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                  | 4366 — arrow and fringe survive                                                                                              |
-| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                     | 1335 — persists in full, 0% GPU component                                                                                    |
-| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes. | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                |
-| `menu`, `menu-rtl`                                    | 413 / 409        | I        | The same top-layer compositing class as the TagPicker rows.                                                                                                                                                                          | `menu-rtl` regresses to 9486; `menu` is bimodal under the flag and carries no no-GPU expectation. **GPU gate authoritative** |
+| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                            | Under `--disable-gpu`                                                                                                                                                  |
+| ----------------------------------------------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                   | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-carousel`                           | 18386            | Q6       | The same top-layer compositing texture as `teaching-popover`, over the larger carousel surface. No CSS component: the promoted Griffel-vs-Griffel identity control reads 0 in both raster modes.                                     | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-brand`                     | 17816            | Q6       | Same class and same procedure as the row above, on the brand surface.                                                                                                                                                                | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-rtl`                       | 18386            | Q6       | Same class as the two rows above. Geometry is byte-identical — a full-precision rect walk reads 0 — after the `PopoverSurface` 1/64 px RTL arrow fix that shipped with this cycle.                                                   | 6 — a settle-pass harness artifact, not windmod: `getAnimations().cancel()` de-promotes only the Griffel side, and a Griffel-vs-Griffel control bounds it at exactly 6 |
+| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                         | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-placements`                         | 8883             | P        | 5824 px of decision-G arrow displacement plus 3059 px of the same rasterization as the row above.                                                                                                                                    | 5824 — the predicted arrow share survives                                                                                                                              |
+| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                 | 8107 — persists (positioning, not compositing)                                                                                                                         |
+| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                              | 4219 — both mechanisms survive                                                                                                                                         |
+| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                  | 4366 — arrow and fringe survive                                                                                                                                        |
+| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                     | 1335 — persists in full, 0% GPU component                                                                                                                              |
+| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes. | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                                                          |
+| `menu`, `menu-rtl`                                    | 413 / 409        | I        | The same top-layer compositing class as the TagPicker rows.                                                                                                                                                                          | `menu-rtl` regresses to 9486; `menu` is bimodal under the flag and carries no no-GPU expectation. **GPU gate authoritative**                                           |
 
 **Why `--disable-gpu` is not simply a cleaner baseline.** Software rasterization does not put the two
 surfaces back on the same path — it puts them on a _different pair_ of paths. Shipped-green strict-zero
@@ -796,7 +910,6 @@ windmod reskins what the headless package ships and invents nothing. These have 
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `Text` and the typography components, `Table`/`DataGrid`, `Tree`, `Carousel`, `Virtualizer`, `List` | no headless counterpart                                                                                                                 |
 | `MessageBarGroup`                                                                                   | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce)) |
-| `TeachingPopoverCarousel` and its six family members                                                | headless ships them, windmod has not reskinned them yet (see [delta 45](#45-the-teachingpopover-carousel-is-not-shipped))               |
 | `Overflow` and family                                                                               | **scoped out permanently** — see below                                                                                                  |
 | `Persona`'s `presence` slot and `presenceOnly` prop                                                 | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                     |
 
