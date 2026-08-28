@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Rating } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Rating } from '@fluentui/react-windmod-preview/rating';
 import {
   FluentProvider as GriffelFluentProvider,
   Rating as GriffelRating,

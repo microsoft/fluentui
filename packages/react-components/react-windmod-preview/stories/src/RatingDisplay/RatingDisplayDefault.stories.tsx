@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, RatingDisplay } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { RatingDisplay } from '@fluentui/react-windmod-preview/rating-display';
 import { CircleFilled } from '@fluentui/react-icons/headless/svg/circle';
 
 import styles from '../compare.module.css';

@@ -1,4 +1,4 @@
-import { Select } from '@fluentui/react-windmod-preview';
+import { Select } from '@fluentui/react-windmod-preview/select';
 
 export { Default } from './SelectDefault.stories';
 export { GriffelComparison } from './SelectGriffelComparison.stories';

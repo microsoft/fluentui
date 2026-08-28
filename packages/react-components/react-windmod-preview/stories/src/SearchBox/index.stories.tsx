@@ -1,4 +1,4 @@
-import { SearchBox } from '@fluentui/react-windmod-preview';
+import { SearchBox } from '@fluentui/react-windmod-preview/search-box';
 
 export { Default } from './SearchBoxDefault.stories';
 export { GriffelComparison } from './SearchBoxGriffelComparison.stories';

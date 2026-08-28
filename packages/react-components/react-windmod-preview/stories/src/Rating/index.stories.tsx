@@ -1,4 +1,4 @@
-import { Rating } from '@fluentui/react-windmod-preview';
+import { Rating } from '@fluentui/react-windmod-preview/rating';
 
 export { Default } from './RatingDefault.stories';
 export { GriffelComparison } from './RatingGriffelComparison.stories';

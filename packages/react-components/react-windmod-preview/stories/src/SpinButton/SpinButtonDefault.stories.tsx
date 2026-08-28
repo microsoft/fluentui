@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, SpinButton } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { SpinButton } from '@fluentui/react-windmod-preview/spin-button';
 
 import styles from '../compare.module.css';
 

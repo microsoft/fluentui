@@ -1,4 +1,4 @@
-import { Switch } from '@fluentui/react-windmod-preview';
+import { Switch } from '@fluentui/react-windmod-preview/switch';
 
 export { Default } from './SwitchDefault.stories';
 export { GriffelComparison } from './SwitchGriffelComparison.stories';

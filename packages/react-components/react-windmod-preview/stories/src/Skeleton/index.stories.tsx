@@ -1,4 +1,4 @@
-import { Skeleton } from '@fluentui/react-windmod-preview';
+import { Skeleton } from '@fluentui/react-windmod-preview/skeleton';
 
 export { Default } from './SkeletonDefault.stories';
 export { GriffelComparison } from './SkeletonGriffelComparison.stories';

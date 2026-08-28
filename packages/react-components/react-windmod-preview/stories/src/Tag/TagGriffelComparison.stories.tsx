@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Tag } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Tag } from '@fluentui/react-windmod-preview/tag';
 import { FluentProvider as GriffelFluentProvider, Tag as GriffelTag, webLightTheme } from '@fluentui/react-components';
 
 import styles from '../compare.module.css';

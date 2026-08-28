@@ -1,4 +1,4 @@
-import { TabList } from '@fluentui/react-windmod-preview';
+import { TabList } from '@fluentui/react-windmod-preview/tab-list';
 
 export { Default } from './TabListDefault.stories';
 export { GriffelComparison } from './TabListGriffelComparison.stories';

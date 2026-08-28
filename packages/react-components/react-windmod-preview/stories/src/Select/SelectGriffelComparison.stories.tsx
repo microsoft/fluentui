@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Select } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Select } from '@fluentui/react-windmod-preview/select';
 import {
   FluentProvider as GriffelFluentProvider,
   Select as GriffelSelect,

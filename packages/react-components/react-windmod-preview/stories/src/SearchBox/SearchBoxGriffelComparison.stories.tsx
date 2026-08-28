@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, SearchBox } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { SearchBox } from '@fluentui/react-windmod-preview/search-box';
 import {
   FluentProvider as GriffelFluentProvider,
   SearchBox as GriffelSearchBox,

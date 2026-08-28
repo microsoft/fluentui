@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Tag } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Tag } from '@fluentui/react-windmod-preview/tag';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 

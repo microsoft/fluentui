@@ -1,4 +1,4 @@
-import { RadioGroup } from '@fluentui/react-windmod-preview';
+import { RadioGroup } from '@fluentui/react-windmod-preview/radio-group';
 
 export { Default } from './RadioGroupDefault.stories';
 export { GriffelComparison } from './RadioGroupGriffelComparison.stories';

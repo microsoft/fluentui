@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Tab, TabList } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Tab, TabList } from '@fluentui/react-windmod-preview/tab-list';
 import {
   FluentProvider as GriffelFluentProvider,
   Tab as GriffelTab,

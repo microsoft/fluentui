@@ -1,4 +1,4 @@
-import { SplitButton } from '@fluentui/react-windmod-preview';
+import { SplitButton } from '@fluentui/react-windmod-preview/split-button';
 
 export { Default } from './SplitButtonDefault.stories';
 export { GriffelComparison } from './SplitButtonGriffelComparison.stories';
