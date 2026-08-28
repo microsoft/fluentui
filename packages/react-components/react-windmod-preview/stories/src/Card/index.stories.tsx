@@ -1,4 +1,4 @@
-import { Card } from '@fluentui/react-windmod-preview';
+import { Card } from '@fluentui/react-windmod-preview/card';
 
 export { Default } from './CardDefault.stories';
 export { GriffelComparison } from './CardGriffelComparison.stories';

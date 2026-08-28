@@ -1,4 +1,4 @@
-import { Dialog } from '@fluentui/react-windmod-preview';
+import { Dialog } from '@fluentui/react-windmod-preview/dialog';
 
 export { Default } from './DialogDefault.stories';
 export { ModalTypes } from './DialogModalTypes.stories';

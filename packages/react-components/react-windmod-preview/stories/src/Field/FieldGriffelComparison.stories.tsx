@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Field, FluentProvider, Input } from '@fluentui/react-windmod-preview';
+import { Field } from '@fluentui/react-windmod-preview/field';
+import { Input } from '@fluentui/react-windmod-preview/input';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   Field as GriffelField,
   FluentProvider as GriffelFluentProvider,

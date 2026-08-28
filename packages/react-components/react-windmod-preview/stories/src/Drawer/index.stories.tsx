@@ -1,4 +1,4 @@
-import { Drawer } from '@fluentui/react-windmod-preview';
+import { Drawer } from '@fluentui/react-windmod-preview/drawer';
 
 export { Default } from './DrawerDefault.stories';
 export { Positions } from './DrawerPositions.stories';

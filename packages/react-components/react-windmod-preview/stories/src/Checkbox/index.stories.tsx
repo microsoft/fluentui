@@ -1,4 +1,4 @@
-import { Checkbox } from '@fluentui/react-windmod-preview';
+import { Checkbox } from '@fluentui/react-windmod-preview/checkbox';
 
 export { Default } from './CheckboxDefault.stories';
 export { GriffelComparison } from './CheckboxGriffelComparison.stories';

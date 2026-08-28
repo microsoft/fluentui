@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Checkbox, FluentProvider } from '@fluentui/react-windmod-preview';
+import { Checkbox } from '@fluentui/react-windmod-preview/checkbox';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   Checkbox as GriffelCheckbox,
   FluentProvider as GriffelFluentProvider,

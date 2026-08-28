@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
   FluentProvider,
   teamsDarkThemeClassName,
   teamsHighContrastThemeClassName,
-  Tooltip,
   webDarkThemeClassName,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/provider';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 
 import styles from '../compare.module.css';
 

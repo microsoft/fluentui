@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
-  FluentProvider,
-  InlineDrawer,
-} from '@fluentui/react-windmod-preview';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-windmod-preview/drawer';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 /** `separator` draws a visible edge where the position bucket already reserves one. */
 export const Inline = (): React.ReactNode => (

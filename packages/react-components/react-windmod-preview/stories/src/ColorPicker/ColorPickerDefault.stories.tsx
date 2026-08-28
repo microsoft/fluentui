@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { AlphaSlider, ColorArea, ColorPicker, ColorSlider, FluentProvider } from '@fluentui/react-windmod-preview';
+import { AlphaSlider, ColorArea, ColorPicker, ColorSlider } from '@fluentui/react-windmod-preview/color-picker';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

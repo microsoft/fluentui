@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
   DrawerHeaderTitle,
-  FluentProvider,
   InlineDrawer,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/drawer';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   Button as GriffelButton,
   DrawerBody as GriffelDrawerBody,

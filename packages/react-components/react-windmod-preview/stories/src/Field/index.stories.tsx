@@ -1,4 +1,4 @@
-import { Field } from '@fluentui/react-windmod-preview';
+import { Field } from '@fluentui/react-windmod-preview/field';
 
 export { Default } from './FieldDefault.stories';
 export { GriffelComparison } from './FieldGriffelComparison.stories';

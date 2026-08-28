@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-windmod-preview';
+import { Divider } from '@fluentui/react-windmod-preview/divider';
 
 export { Default } from './DividerDefault.stories';
 export { GriffelComparison } from './DividerGriffelComparison.stories';

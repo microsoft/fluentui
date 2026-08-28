@@ -1,4 +1,4 @@
-import { CompoundButton } from '@fluentui/react-windmod-preview';
+import { CompoundButton } from '@fluentui/react-windmod-preview/compound-button';
 
 export { Default } from './CompoundButtonDefault.stories';
 export { GriffelComparison } from './CompoundButtonGriffelComparison.stories';

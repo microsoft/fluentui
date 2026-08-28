@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CompoundButton, FluentProvider } from '@fluentui/react-windmod-preview';
+import { CompoundButton } from '@fluentui/react-windmod-preview/compound-button';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   CompoundButton as GriffelCompoundButton,
   FluentProvider as GriffelFluentProvider,

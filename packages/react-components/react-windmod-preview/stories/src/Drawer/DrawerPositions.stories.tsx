@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
-  FluentProvider,
-  InlineDrawer,
-} from '@fluentui/react-windmod-preview';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-windmod-preview/drawer';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 const positions = ['start', 'end', 'bottom'] as const;
 

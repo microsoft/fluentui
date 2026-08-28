@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Image } from '@fluentui/react-windmod-preview';
+import { Image } from '@fluentui/react-windmod-preview/image';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   FluentProvider as GriffelFluentProvider,
   Image as GriffelImage,

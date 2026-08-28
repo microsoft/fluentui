@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react-windmod-preview';
+import { Dropdown } from '@fluentui/react-windmod-preview/dropdown';
 
 export { Default } from './DropdownDefault.stories';
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Combobox, FluentProvider, Option, OptionGroup } from '@fluentui/react-windmod-preview';
+import { Combobox, Option, OptionGroup } from '@fluentui/react-windmod-preview/combobox';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

@@ -1,4 +1,4 @@
-import { FluentProvider } from '@fluentui/react-windmod-preview';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 export { NestedThemes } from './FluentProviderNestedThemes.stories';
 

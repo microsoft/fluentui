@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogBody,
@@ -8,8 +8,8 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-  FluentProvider,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/dialog';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Divider, FluentProvider } from '@fluentui/react-windmod-preview';
+import { Divider } from '@fluentui/react-windmod-preview/divider';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

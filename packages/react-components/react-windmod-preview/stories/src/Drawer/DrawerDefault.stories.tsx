@@ -1,14 +1,14 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
   DrawerHeaderNavigation,
   DrawerHeaderTitle,
-  FluentProvider,
   InlineDrawer,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/drawer';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 /** The whole anatomy in one drawer: navigation, title with an action, a scrolling body, a footer. */
 export const Default = (): React.ReactNode => (

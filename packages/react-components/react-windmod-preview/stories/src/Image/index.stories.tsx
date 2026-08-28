@@ -1,4 +1,4 @@
-import { Image } from '@fluentui/react-windmod-preview';
+import { Image } from '@fluentui/react-windmod-preview/image';
 
 export { Default } from './ImageDefault.stories';
 export { GriffelComparison } from './ImageGriffelComparison.stories';

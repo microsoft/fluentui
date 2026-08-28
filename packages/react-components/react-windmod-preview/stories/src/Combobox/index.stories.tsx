@@ -1,4 +1,4 @@
-import { Combobox } from '@fluentui/react-windmod-preview';
+import { Combobox } from '@fluentui/react-windmod-preview/combobox';
 
 export { Default } from './ComboboxDefault.stories';
 

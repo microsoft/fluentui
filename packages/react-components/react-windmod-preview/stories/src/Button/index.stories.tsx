@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
 
 export { Default } from './ButtonDefault.stories';
 export { GriffelComparison } from './ButtonGriffelComparison.stories';
