@@ -1,18 +1,31 @@
 /*
- * Build entry for dist/styles.css — the one stylesheet a document imports.
+ * Build entry for dist/base.css — the THEME-LESS base sheet, loaded once per document.
  *
  * `css/index.css` is the `@reference` target and emits nothing from component modules;
- * something must emit the theme declarations once per document, and it is this file.
- * `source(none)` is mandatory: without it Tailwind content-scans this package and dumps
- * utilities into a layer that outranks every component layer.
+ * something must emit the theme layer's declarations once per document, and it is this
+ * file. `source(none)` is mandatory: without it Tailwind content-scans this package and
+ * dumps utilities into a layer that outranks every component layer.
+ *
+ * What lands here: the `@layer` ORDER statement (this sheet is the head-of-document owner
+ * of the fui.* family), the Tailwind theme/utility registrations, the custom variants, the
+ * theme-INVARIANT `:root, :host` values, and the unlayered `prefers-reduced-motion` floor
+ * with its Spinner exception.
+ *
+ * What does NOT land here: any theme's values. Per the operator ruling of 2026-08-28 there
+ * is no baked default — a document is themed only by importing `dist/themes/<name>.css` and
+ * applying that theme's class, mirroring Griffel's `import { webLightTheme }` + `theme={…}`.
+ * `css/emit-monolith.css` builds the all-in-one artifact for zero-config consumers.
  */
 @import './index.css' source(none);
 
 /*
- * Headless icons stylesheet, inlined so the single theme import also covers icons. The
- * icons package ships these rules unlayered; layers are compared before specificity, so
- * they must be assigned a layer at import time. fui.base sits below every component
- * layer, so a component revealing a hidden glyph overrides icon state by layer order
- * rather than by stylesheet insertion order.
+ * Headless icons stylesheet, inlined so the base import also covers icons. The icons
+ * package ships these rules unlayered; layers are compared before specificity, so they must
+ * be assigned a layer at import time. fui.base sits below every component layer, so a
+ * component revealing a hidden glyph overrides icon state by layer order rather than by
+ * stylesheet insertion order.
+ *
+ * Icon rules carry no token values, so they are theme-invariant and belong to the base
+ * rather than to any one theme file.
  */
 @import '@fluentui/react-icons/headless/styles.css' layer(fui.base);

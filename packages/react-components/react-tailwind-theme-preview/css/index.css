@@ -68,15 +68,30 @@
 }
 
 /*
- * Generated Fluent token registration (`bg-neutral-background-1`, `rounded-medium`, …).
+ * Generated Fluent token registration (`bg-neutral-background-1`, `rounded-medium`, …)
+ * plus the theme-INVARIANT `:root, :host` values (the spacing scale and stroke widths —
+ * identical in all seven shipped themes, asserted by the generator).
  * Must stay AFTER the `@theme static` block — the `initial` resets above clear only
  * what is registered before them.
  */
 @import './tokens.css';
 
-/* Generated theme classes (.fui-theme-web-dark, …), custom properties only; the
-   `:root, :host` defaults in tokens.css stay web light. */
-@import './themes.css';
+/*
+ * NO THEME IS IMPORTED HERE, DELIBERATELY.
+ *
+ * Operator ruling 2026-08-28 ("Theme delivery"): this package mirrors Griffel's contract
+ * exactly. Griffel makes a consumer `import { webLightTheme }` and pass it to
+ * `<FluentProvider theme={…}>`; there is no baked default, and without one the tokens are
+ * simply unset. So this file is THEME-LESS — it registers every token NAME and the
+ * invariant values, and nothing here gives those names a colour.
+ *
+ * A consumer imports the theme file(s) their app ships (`./themes/web-light.css`, …) and
+ * applies the matching class; `./themes.css` aggregates all seven for the two entries that
+ * genuinely want the whole catalog (the `./styles.css` monolith and the storybook harness).
+ *
+ * Do NOT re-add a default here. It would make one theme free and every other a surcharge,
+ * and would silently theme documents that never asked for it.
+ */
 
 /*
  * House-wide `prefers-reduced-motion` floor: one rule in place of the per-component

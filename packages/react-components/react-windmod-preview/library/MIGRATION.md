@@ -40,19 +40,72 @@ npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-previ
 
 Component CSS is delivered **per component**: each component's class map side-effect-imports its
 own compiled stylesheet, so a bundler ships exactly the components you use and nothing else. That
-leaves two small root stylesheets to load by hand, once per document, ahead of everything else.
+leaves the root stylesheets to load by hand, once per document, ahead of everything else — two
+small base sheets, plus one file per theme you ship.
+
+**Themes work exactly like Griffel's.** Griffel makes you `import { webLightTheme }` and pass it to
+the provider; there is no default, and without one every token is unset. windmod is that same
+contract expressed in CSS: import the theme's stylesheet, then apply its class. You pay for the
+themes you ship and no others.
 
 #### Mode 1 — direct
 
 Import them in your entry module, or link them at the top of the document head.
 
 ```js
-// The theme: palette, type ramp, spacing scale, the seven theme classes, the cascade-layer order.
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+// The theme-less base: token registrations, the spacing scale, the type ramp, the reduced-motion
+// floor, the cascade-layer order. 3.5 KB raw, 833 bytes gzipped. No colours — that is the next line.
+import '@fluentui/react-tailwind-theme-preview/base.css';
+
+// One import per theme you ship. 23.4 KB raw, ~3.9 KB gzipped each.
+import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';
 
 // windmod's root sheet: the cascade-layer order and the global custom-property registrations that
 // every component chunk assumes. 3.3 KB raw, 729 bytes gzipped. Components arrive automatically.
 import '@fluentui/react-windmod-preview/base.css';
+```
+
+Then apply the theme's class — usually once, on the provider at the root of the app:
+
+```tsx
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-windmod-preview/provider';
+
+<FluentProvider theme={webLightThemeClassName}>
+  <App />
+</FluentProvider>;
+```
+
+The class can equally sit on `<html>` or any other ancestor — custom properties cascade, and a
+provider with no `theme` prop inherits whatever encloses it. A development build warns once per
+document when no theme reaches a provider; Griffel has no such diagnostic, which is why forgetting
+it there reads as a component bug rather than a missing import.
+
+The seven shipped themes, their subpaths, and their class constants:
+
+| import                                                          | class                           | constant                          |
+| --------------------------------------------------------------- | ------------------------------- | --------------------------------- |
+| `…/react-tailwind-theme-preview/themes/web-light.css`           | `fui-theme-web-light`           | `webLightThemeClassName`          |
+| `…/react-tailwind-theme-preview/themes/web-dark.css`            | `fui-theme-web-dark`            | `webDarkThemeClassName`           |
+| `…/react-tailwind-theme-preview/themes/teams-light.css`         | `fui-theme-teams-light`         | `teamsLightThemeClassName`        |
+| `…/react-tailwind-theme-preview/themes/teams-dark.css`          | `fui-theme-teams-dark`          | `teamsDarkThemeClassName`         |
+| `…/react-tailwind-theme-preview/themes/teams-high-contrast.css` | `fui-theme-teams-high-contrast` | `teamsHighContrastThemeClassName` |
+| `…/react-tailwind-theme-preview/themes/teams-light-v21.css`     | `fui-theme-teams-light-v21`     | `teamsLightV21ThemeClassName`     |
+| `…/react-tailwind-theme-preview/themes/teams-dark-v21.css`      | `fui-theme-teams-dark-v21`      | `teamsDarkV21ThemeClassName`      |
+
+An app offering a light/dark toggle imports two of them and swaps the class:
+
+```tsx
+import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';
+import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
+import {
+  FluentProvider,
+  webDarkThemeClassName,
+  webLightThemeClassName,
+} from '@fluentui/react-windmod-preview/provider';
+
+<FluentProvider theme={dark ? webDarkThemeClassName : webLightThemeClassName}>
+  <App />
+</FluentProvider>;
 ```
 
 #### Mode 2 — composed into your own root stylesheet
@@ -63,7 +116,8 @@ transitively guarantees ours precedes everything.
 
 ```css
 /* app/src/root.css — the first stylesheet the document loads */
-@import '@fluentui/react-tailwind-theme-preview/styles.css';
+@import '@fluentui/react-tailwind-theme-preview/base.css';
+@import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';
 @import '@fluentui/react-windmod-preview/base.css';
 
 /* your own global styles, your custom theme class, your Tailwind entry, … */
@@ -71,6 +125,12 @@ transitively guarantees ours precedes everything.
   --color-brand-background: #6b21a8;
 }
 ```
+
+A custom theme is just one more class in this sheet — and with no baked default, it starts from a
+clean slate rather than from web light. A class that redeclares the full token set is a complete
+theme on its own; a class layered over a shipped theme (`<FluentProvider theme="fui-theme-web-light
+my-brand-theme">`) overrides only the tokens it names, because it comes later in the same
+`fui.theme` layer.
 
 This works because an `@import`ed sheet is treated as if written at the import site, so the layer
 order declaration inside `base.css` still executes at the very top of your sheet. `base.css` is
@@ -104,9 +164,15 @@ class maps carry no `require` — node cannot parse CSS), **SSR** setups that lo
 > `base.css` instead. If your bundler resolves the components, `base.css` is the right root sheet.
 
 ```js
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+import '@fluentui/react-tailwind-theme-preview/styles.css'; // base + all seven themes
 import '@fluentui/react-windmod-preview/styles.css'; // instead of base.css
 ```
+
+The theme package publishes its own monolith on the same terms: `./styles.css` is its base sheet
+plus all seven themes, 159 KB raw / 14.6 KB gzipped against 27 KB / 4.6 KB for base + one theme.
+It still bakes no default — a theme class still has to be applied — so it buys one import, not one
+fewer step. Reach for it only when you genuinely offer every theme, or when a `<link>`-only
+pipeline makes counting files worse than counting bytes.
 
 Then rewrite the imports. **The names do not change; the paths do.** windmod ships no root barrel, so
 one `@fluentui/react-components` import becomes one import per _family_ — the same grouping the headless
@@ -279,9 +345,14 @@ Fifty-six differences, each one a decision rather than a defect.
 Griffel's provider takes a JS theme object and writes CSS custom properties at runtime. windmod's applies a
 class; the variables are already in the stylesheet.
 
+The two steps are the same as Griffel's — import the theme, hand it to the provider — with a CSS
+import standing in for the JS one. Passing a theme is equally **required** in both: neither has a
+default, and neither renders correct colours without one.
+
 ```diff
 -import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
 -<FluentProvider theme={webDarkTheme}>
++import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 +import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
 +<FluentProvider theme={webDarkThemeClassName}>
 ```
@@ -298,15 +369,31 @@ export const pickTheme = (dark: boolean): ThemeClassName =>
   dark ? themeClassNames.webDarkTheme : themeClassNames.webLightTheme;
 ```
 
+Each name has a matching stylesheet subpath — `themeClassNames.webDarkTheme` is the class in
+`…/themes/web-dark.css` — so importing the right file is mechanical: kebab-case the theme name
+without its `Theme` suffix.
+
 **If you built a custom theme** by passing a modified theme object, port it to a CSS class that redeclares
 the token custom properties. `theme` accepts any string, so your own class name works:
-`<FluentProvider theme="my-brand-theme">`.
+`<FluentProvider theme="my-brand-theme">`. With no baked default, a class that declares the whole
+token set needs no shipped theme file at all; one that declares a few overrides is applied
+alongside a shipped class (`theme="fui-theme-web-light my-brand-theme"`) and wins by source order
+within the shared `fui.theme` layer.
 
-#### 2. The theme stylesheet is a separate, required import
+#### 2. The theme is a separate, required import — one file per theme
 
-`@fluentui/react-tailwind-theme-preview/styles.css` carries the palette, type ramp, spacing scale and the
-theme classes. Nothing renders correctly without it. Load it before your own CSS so your rules stay
-unlayered (see [delta 10](#10-cascade-layers-replace-specificity-juggling)).
+`@fluentui/react-tailwind-theme-preview/base.css` carries the type ramp, the spacing scale and the
+token registrations; each `…/themes/<name>.css` carries one theme's palette. Nothing renders
+correctly without the base, and nothing is _coloured_ without a theme file plus its class.
+
+This is the same shape as Griffel, where the theme is a separate JS import you pass to the
+provider — only the cost model changes with it. Griffel's themes are JS objects, so an app that
+imports one ships one; the CSS equivalent has to be per-file for that to stay true, which is what
+these subpaths are. Importing web light alone is 27 KB raw / 4.6 KB gzipped against the 159 KB /
+14.6 KB of all seven.
+
+Load them before your own CSS so your rules stay unlayered
+(see [delta 10](#10-cascade-layers-replace-specificity-juggling)).
 
 #### 3. The provider is a real element, and it paints
 

@@ -2,7 +2,11 @@
 /**
  * Generates `css/tokens.css` — the `@theme inline reference` registration giving every
  * Fluent token a Tailwind utility name (`bg-neutral-background-1`, `rounded-medium`, …)
- * — and `css/themes.css` — one class per shipped theme.
+ * plus the theme-INVARIANT `:root, :host` values — and `css/themes/<name>.css`, ONE FILE
+ * PER SHIPPED THEME, each carrying exactly its own class. `css/themes.css` is a generated
+ * all-seven aggregate of `@import`s for the two entries that want the whole catalog.
+ *
+ * There is NO DEFAULT THEME anywhere in the output — see the note below the constants.
  *
  * `inline` substitutes the token variable into each utility so it resolves per-element;
  * a plain `@theme` alias would freeze resolution at `:root`. `reference` suppresses the
@@ -38,10 +42,24 @@ const STROKE_WIDTHS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'strokeW
 const THEME_VALUES_SOURCE = path.join(PACKAGE_ROOT, 'theme-values.json');
 const THEME_CLASSNAMES_SOURCE = path.join(PACKAGE_ROOT, 'theme-class-names.mjs');
 const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
+const THEMES_DIR = path.join(PACKAGE_ROOT, 'css', 'themes');
+/** Aggregate that pulls in all seven — the monolith build entry's one import. */
 const THEMES_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'themes.css');
 
-/** The theme whose values are emitted as the `:root, :host` defaults. */
-const DEFAULT_THEME = 'webLightTheme';
+/**
+ * NO DEFAULT THEME — operator ruling 2026-08-28 ("Theme delivery").
+ *
+ * Windmod mirrors Griffel's contract exactly: Griffel makes the consumer
+ * `import { webLightTheme }` and pass it to `<FluentProvider theme={…}>`, with no baked
+ * default (tokens are simply unset without one). So `:root, :host` carries ONLY the
+ * theme-INVARIANT values here, and every theme's 433 variables live in their own file
+ * under `css/themes/`, reaching a document only when the consumer imports that file and
+ * applies its class.
+ *
+ * The previous design emitted `webLightTheme` at `:root, :host`, which made light free and
+ * every other theme a surcharge. Removing it makes the cost symmetric, the contract
+ * explicit, and the pay-per-theme story real.
+ */
 
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js';
 
@@ -454,9 +472,8 @@ function analyzeThemeEmission(tokens) {
         `[${constantThemes}]. Regenerate the snapshot and/or update the constants.`,
     );
   }
-  if (!themes[DEFAULT_THEME]) {
-    throw new Error(`theme-values.json is missing the default theme \`${DEFAULT_THEME}\`.`);
-  }
+  // No default-theme guard: there is no default theme (see the NO DEFAULT THEME note at the
+  // top). The set equality above already proves every named theme has a snapshot.
 
   /** @type {{ name: string, canonical: string, baseScaled: boolean }[]} */
   const variantTokens = [];
@@ -784,11 +801,10 @@ function render(options = {}) {
   // upstream scale change throws here instead of silently shipping a stale hardcoded value.
   readSpacingScale();
   readStrokeWidthScale();
-  // Theming the static-theme model: the default (web light) theme values are emitted at `:root, :host`
-  // right below the spacing/stroke block — this artifact is now the SOLE value source for
-  // the canonical token variables (FluentProvider's runtime theme style tag is gone).
-  const { variantTokens, themes } = analyzeThemeEmission(tokens);
-  const defaultTheme = themes[DEFAULT_THEME];
+  // Theme-VARIANT values are NOT emitted here — they ship one file per theme under
+  // `css/themes/` (see NO DEFAULT THEME at the top). `analyzeThemeEmission` still runs for
+  // its assertions: it is what proves the spacing/stroke set below really is invariant.
+  analyzeThemeEmission(tokens);
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
@@ -936,12 +952,18 @@ function render(options = {}) {
     out.push(' * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)');
     out.push(' * ARE GONE for the ENTIRE token set: single');
     out.push(' * vocabulary, documented major break for hand-written consumer CSS. Theming');
-    out.push(" * the static-theme model removed FluentProvider's runtime theme style tag, so this block (plus");
-    out.push(' * the theme classes in css/themes.css) is the ONLY writer of token values.');
+    out.push(" * the static-theme model removed FluentProvider's runtime theme style tag, so this block");
+    out.push(' * (plus the per-theme classes in css/themes/) is the ONLY writer of token values.');
+    out.push(' *');
+    out.push(' * THEME-INVARIANT ONLY. Every value below is identical in all seven shipped themes');
+    out.push(' * (asserted by `analyzeThemeEmission`), so it belongs to the base sheet rather than');
+    out.push(' * to any one theme. The theme-VARIANT variables are NOT emitted here — there is no');
+    out.push(' * default theme; a consumer imports the theme file(s) they use and applies the class,');
+    out.push(' * exactly as Griffel makes them import `webLightTheme` and pass it to the provider.');
     out.push(' *');
     out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
     out.push(' * `*.module.css` output stays free of theme declarations; css/emit.css compiles it');
-    out.push(' * into dist/styles.css alongside --base-scale and --spacing, which utility-sourced');
+    out.push(' * into dist/base.css alongside --base-scale and --spacing, which utility-sourced');
     out.push(' * spacing already depends on identically.');
     out.push(' *');
     out.push(' * `:root, :host` — not bare `:root` — matches the selector Tailwind emits its own');
@@ -970,17 +992,6 @@ function render(options = {}) {
     out.push('');
     out.push('    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */');
     out.push(...emittedVariables);
-    out.push('');
-    out.push('    /*');
-    out.push('     * DEFAULT THEME VALUES (web light). Since the removal of');
-    out.push("     * FluentProvider's runtime theme style tag, these declarations are the sole");
-    out.push('     * default value source for the theme-variant canonical variables. Non-default');
-    out.push('     * themes are shipped as classes in css/themes.css (same layer); a theme class');
-    out.push('     * on any DOM node overrides these for that subtree.');
-    out.push('     */');
-    for (const { name, canonical, baseScaled } of variantTokens) {
-      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, defaultTheme[name]) : defaultTheme[name]};`);
-    }
     out.push('  }');
     out.push('}');
   }
@@ -993,29 +1004,58 @@ function render(options = {}) {
 }
 
 /**
- * Renders `css/themes.css` — one CSS class per shipped theme.
+ * A theme's file stem under `css/themes/`, derived from its class name so the two can never
+ * drift: `fui-theme-teams-dark-v21` → `teams-dark-v21`. The class names themselves are
+ * asserted against `theme-class-names.mjs` on every run, which makes this derivation the
+ * single source of truth for the published `./themes/<stem>.css` subpaths too.
  *
- * THE THEMING CONTRACT: a theme class on ANY DOM node themes that node's subtree (custom
- * properties cascade); FluentProvider's `themeClassName` prop applies one to its root and
- * propagates it to portals. Theme classes contain ONLY custom-property declarations —
- * never styling rules — and live in `@layer fui.theme`, same as the `:root, :host`
- * default emission they override.
+ * @param {string} className
+ * @returns {string}
+ */
+function themeFileStem(className) {
+  const stem = className.replace(/^fui-theme-/, '');
+  if (stem === className || stem === '') {
+    throw new Error(`Theme class name \`${className}\` does not have the expected \`fui-theme-\` prefix.`);
+  }
+  return stem;
+}
+
+/**
+ * Renders ONE theme's file — `css/themes/<stem>.css`, carrying exactly that theme's class.
+ *
+ * THE THEMING CONTRACT (operator ruling 2026-08-28, "Theme delivery"): mirroring Griffel's
+ * `import { webLightTheme }` + `theme={…}`, a consumer imports the file for each theme they
+ * use and applies its class. Nothing is themed by default — there is no baked default, so a
+ * document that imports no theme file resolves no theme variables at all, exactly as a
+ * Griffel app renders unset tokens without a theme object.
+ *
+ * A theme class on ANY DOM node themes that node's subtree (custom properties cascade);
+ * FluentProvider's `theme` prop applies one to its root. Theme classes contain ONLY
+ * custom-property declarations — never styling rules — and live in `@layer fui.theme`,
+ * alongside the invariant `:root, :host` emission in the base sheet.
  *
  * Each class carries the theme's 433 THEME-VARIANT canonical variables. The 26
  * spacing/stroke tokens are EXCLUDED on purpose: they are theme-invariant (asserted in
- * `analyzeThemeEmission`) and already emitted at `:root, :host` in their density-knob
- * calc form — a literal per-theme re-emission would freeze `--spacing` overrides inside
- * themed subtrees. zIndex tokens are theme-absent; their defaults ride the `tokens.*`
- * var() fallback.
+ * `analyzeThemeEmission`) and emitted once by the base sheet in their density-knob calc
+ * form — a literal per-theme re-emission would freeze `--spacing` overrides inside themed
+ * subtrees. zIndex tokens are theme-absent; their defaults ride the `tokens.*` var()
+ * fallback.
  *
+ * The file carries NO `@layer` ORDER statement. Per the campaign contract the order
+ * statement has exactly one owner, the base sheet, which a document loads first; a theme
+ * file only wraps its block in the already-ordered `fui.theme` layer.
+ *
+ * @param {string} themeName
+ * @param {string} className
  * @returns {string}
  */
-function renderThemes() {
+function renderTheme(themeName, className) {
   const tokensPackage = JSON.parse(fs.readFileSync(path.join(TOKENS_PACKAGE, 'package.json'), 'utf8'));
   const tokens = readTokens();
   readSpacingScale();
   readStrokeWidthScale();
-  const { variantTokens, themes, classNames } = analyzeThemeEmission(tokens);
+  const { variantTokens, themes } = analyzeThemeEmission(tokens);
+  const theme = themes[themeName];
 
   const out = [];
   out.push('/*');
@@ -1026,31 +1066,100 @@ function renderThemes() {
   out.push(` * Regenerate: node ${GENERATOR_ID}`);
   out.push(` * Verify:     node ${GENERATOR_ID} --check`);
   out.push(' *');
-  out.push(' * SHIPPED THEME CLASSES. Applying one of these classes to any');
-  out.push(' * DOM node themes that subtree — custom properties cascade. They contain ONLY');
-  out.push(' * custom-property declarations, in the same fui.theme layer as the web-light');
-  out.push(' * defaults at :root/:host (css/tokens.css), which they override element-locally.');
-  out.push(' * The JS constants for these class names ship from @fluentui/tokens /');
-  out.push(' * @fluentui/react-theme (webLightThemeClassName, …) — the generator asserts the');
-  out.push(' * lockstep on every run.');
+  out.push(` * ${themeName} — ${variantTokens.length} custom properties, nothing else.`);
   out.push(' *');
-  out.push(' * The 26 spacing/strokeWidth tokens are deliberately absent: theme-invariant,');
-  out.push(' * emitted once at :root/:host in density-knob form (see css/tokens.css).');
+  out.push(' * Import this file and apply `.' + className + '` to theme a subtree. There is no');
+  out.push(' * default theme: without a theme file + class, these variables are unset (Griffel');
+  out.push(' * parity — its tokens are equally unset without a `theme` object). The class-name');
+  out.push(' * constant ships from ./theme-class-names; the generator asserts the lockstep.');
+  out.push(' *');
+  out.push(' * Pairs with the base sheet (./base.css), which owns the @layer order statement, the');
+  out.push(' * utility registrations and the theme-INVARIANT spacing/stroke values. Load the base');
+  out.push(' * sheet first; this file only fills an already-ordered fui.theme layer.');
   out.push(' */');
+  out.push('');
+  out.push('@layer fui.theme {');
+  out.push(`  .${className} {`);
+  for (const { name, canonical, baseScaled } of variantTokens) {
+    out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, theme[name]) : theme[name]};`);
+  }
+  out.push('  }');
+  out.push('}');
+  out.push('');
 
-  for (const [themeName, className] of Object.entries(classNames)) {
-    const theme = themes[themeName];
-    out.push('');
-    out.push(`/* ${themeName} — ${variantTokens.length} tokens */`);
-    out.push('@layer fui.theme {');
-    out.push(`  .${className} {`);
-    for (const { name, canonical, baseScaled } of variantTokens) {
-      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, theme[name]) : theme[name]};`);
-    }
-    out.push('  }');
-    out.push('}');
+  const contents = out.join('\n');
+  assertCommentsAreWellFormed(contents);
+  return contents;
+}
+
+/**
+ * Asserts `package.json` declares exactly one `./themes/<stem>.css` subpath per shipped
+ * theme, each pointing at the file this generator emits.
+ *
+ * The subpaths are hand-authored (this package has no project.json and is out of the
+ * export-maps-sync generator's scope), so nothing else would catch a theme added upstream
+ * that never got a published entry point — the file would build and be unreachable.
+ *
+ * @param {Record<string, string>} classNames
+ */
+function assertThemeSubpaths(classNames) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8'));
+
+  const expected = Object.values(classNames).map(className => `./themes/${themeFileStem(className)}.css`);
+  const declared = Object.keys(manifest.exports ?? {}).filter(key => key.startsWith('./themes/'));
+
+  const missing = expected.filter(key => !declared.includes(key));
+  const extra = declared.filter(key => !expected.includes(key));
+
+  if (missing.length || extra.length) {
+    throw new Error(
+      `package.json theme subpaths are out of step with the shipped themes.` +
+        (missing.length ? ` Missing: [${missing}].` : '') +
+        (extra.length ? ` Not a shipped theme: [${extra}].` : ''),
+    );
   }
 
+  for (const key of expected) {
+    const target = `./dist/${key.slice('./'.length)}`;
+    if (manifest.exports[key] !== target) {
+      throw new Error(`package.json maps "${key}" to "${manifest.exports[key]}"; expected "${target}".`);
+    }
+  }
+}
+
+/**
+ * Renders `css/themes.css` — the all-seven aggregate.
+ *
+ * It exists for the two entries that legitimately want every theme at once: the
+ * `./styles.css` monolith build (zero-config parity with the windmod package's own monolith)
+ * and the storybook harness, which catalogs all seven. It is a list of `@import`s and holds
+ * no declarations of its own, so the per-theme files stay the single source of values.
+ *
+ * @returns {string}
+ */
+function renderThemesAggregate() {
+  const tokens = readTokens();
+  const { classNames } = analyzeThemeEmission(tokens);
+
+  const out = [];
+  out.push('/*');
+  out.push(' * DO NOT EDIT — generated file.');
+  out.push(' *');
+  out.push(` * Generator:  ${GENERATOR_ID}`);
+  out.push(` * Regenerate: node ${GENERATOR_ID}`);
+  out.push(` * Verify:     node ${GENERATOR_ID} --check`);
+  out.push(' *');
+  out.push(' * ALL SEVEN SHIPPED THEMES. A convenience aggregate, not the recommended import:');
+  out.push(' * pulling this in costs every theme. Import only `./css/themes/<name>.css` for the');
+  out.push(' * themes an application actually offers.');
+  out.push(' *');
+  out.push(' * Used by the `./styles.css` monolith build and by the storybook harness, both of');
+  out.push(' * which want the whole catalog by definition.');
+  out.push(' */');
+  out.push('');
+  for (const className of Object.values(classNames)) {
+    out.push(`@import './themes/${themeFileStem(className)}.css';`);
+  }
   out.push('');
 
   const contents = out.join('\n');
@@ -1104,12 +1213,48 @@ function main() {
   const format = (filePath, contents) =>
     prettier.format(contents, { ...(prettier.resolveConfig(filePath) ?? {}), filepath: filePath });
 
+  // The theme files are only written/checked alongside the canonical tokens.css — `--out`
+  // runs are probe runs of the registration block.
+  const classNames = readThemeClassNames();
+
+  if (outIndex < 0) {
+    assertThemeSubpaths(classNames);
+  }
+
+  const themeFiles =
+    outIndex >= 0
+      ? []
+      : Object.entries(classNames).map(([themeName, className]) => {
+          const filePath = path.join(THEMES_DIR, `${themeFileStem(className)}.css`);
+          return { path: filePath, contents: format(filePath, renderTheme(themeName, className)) };
+        });
+
   const files = [
     { path: outPath, contents: format(outPath, render({ modifiers })) },
-    // themes.css is only written/checked alongside the canonical tokens.css — `--out`
-    // runs are probe runs of the registration block.
-    ...(outIndex >= 0 ? [] : [{ path: THEMES_OUTPUT, contents: format(THEMES_OUTPUT, renderThemes()) }]),
+    ...themeFiles,
+    ...(outIndex >= 0 ? [] : [{ path: THEMES_OUTPUT, contents: format(THEMES_OUTPUT, renderThemesAggregate()) }]),
   ];
+
+  // A theme removed upstream must not leave a stale published file behind — the export map
+  // would keep resolving it and consumers would keep applying a class no longer in the
+  // contract. Only files this generator owns (`css/themes/*.css`) are considered.
+  const expectedThemeFiles = new Set(themeFiles.map(file => path.basename(file.path)));
+  const staleThemeFiles =
+    outIndex >= 0 || !fs.existsSync(THEMES_DIR)
+      ? []
+      : fs.readdirSync(THEMES_DIR).filter(name => name.endsWith('.css') && !expectedThemeFiles.has(name));
+
+  for (const name of staleThemeFiles) {
+    const relative = path.relative(REPO_ROOT, path.join(THEMES_DIR, name));
+    if (check) {
+      console.error(`[generate-tokens-css] STALE: ${relative} is not a shipped theme.`);
+      console.error(`[generate-tokens-css] Run: node ${GENERATOR_ID}`);
+      process.exitCode = 1;
+      continue;
+    }
+    fs.unlinkSync(path.join(THEMES_DIR, name));
+    console.log(`[generate-tokens-css] removed ${relative} (no longer a shipped theme)`);
+  }
 
   for (const file of files) {
     const relative = path.relative(REPO_ROOT, file.path);
@@ -1152,7 +1297,10 @@ module.exports = {
   readThemeValues,
   analyzeThemeEmission,
   render,
-  renderThemes,
+  assertThemeSubpaths,
+  renderTheme,
+  renderThemesAggregate,
+  themeFileStem,
   spacingTokenValue,
   strokeWidthValue,
   strokeWidthCanonicalName,
