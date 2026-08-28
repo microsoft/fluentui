@@ -6,16 +6,15 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { DividerBaseProps } from '@fluentui/react-divider';
-import { DividerBaseState } from '@fluentui/react-divider';
-import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
-import { DrawerFooterState } from '@fluentui/react-drawer';
-import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { DividerBaseProps } from '@fluentui/react-divider';
+import type { DividerBaseState } from '@fluentui/react-divider';
+import type { DrawerFooterState } from '@fluentui/react-drawer';
+import type { DrawerHeaderState } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InlineDrawerBaseProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { NavCategoryContextValues } from '@fluentui/react-nav';
 import { NavCategoryItemProvider } from '@fluentui/react-nav';
 import { NavCategoryProps } from '@fluentui/react-nav';
@@ -23,6 +22,7 @@ import { NavCategoryProvider } from '@fluentui/react-nav';
 import { NavCategoryState } from '@fluentui/react-nav';
 import { NavContextValue } from '@fluentui/react-nav';
 import { NavContextValues } from '@fluentui/react-nav';
+import { DividerSlots as NavDividerSlots } from '@fluentui/react-divider';
 import { DrawerBodyProps as NavDrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots as NavDrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState as NavDrawerBodyState } from '@fluentui/react-drawer';
@@ -30,8 +30,8 @@ import { DrawerFooterProps as NavDrawerFooterProps } from '@fluentui/react-drawe
 import { DrawerFooterSlots as NavDrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderProps as NavDrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots as NavDrawerHeaderSlots } from '@fluentui/react-drawer';
-import type { NavItemBaseProps } from '@fluentui/react-nav';
 import type { NavItemBaseState } from '@fluentui/react-nav';
+import { NavItemBaseProps as NavItemProps } from '@fluentui/react-nav';
 import { NavItemRegisterData } from '@fluentui/react-nav';
 import { NavItemSlots } from '@fluentui/react-nav';
 import { NavItemValue } from '@fluentui/react-nav';
@@ -47,6 +47,10 @@ import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react
 import * as React_2 from 'react';
 import { RegisterNavItemEventHandler } from '@fluentui/react-nav';
 import { renderNavCategory_unstable as renderNavCategory } from '@fluentui/react-nav';
+import { renderDivider_unstable as renderNavDivider } from '@fluentui/react-divider';
+import { renderDrawerBody_unstable as renderNavDrawerBody } from '@fluentui/react-drawer';
+import { renderDrawerFooter_unstable as renderNavDrawerFooter } from '@fluentui/react-drawer';
+import { renderDrawerHeader_unstable as renderNavDrawerHeader } from '@fluentui/react-drawer';
 import type { Slot } from '@fluentui/react-utilities';
 import { useNavCategory_unstable as useNavCategory } from '@fluentui/react-nav';
 import { useNavCategoryContext_unstable as useNavCategoryContext } from '@fluentui/react-nav';
@@ -117,13 +121,16 @@ export { NavContextValues }
 export const NavDivider: ForwardRefComponent<NavDividerProps>;
 
 // @public
-export type NavDividerProps = Omit<DividerProps, 'vertical'>;
+export type NavDividerProps = Omit<DividerBaseProps, 'vertical'>;
+
+export { NavDividerSlots }
 
 // @public (undocumented)
-export type NavDividerSlots = DividerSlots;
-
-// @public
-export type NavDividerState = DividerState;
+export type NavDividerState = DividerBaseState & {
+    root: {
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
 
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
@@ -174,8 +181,7 @@ export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextVal
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
 
-// @public (undocumented)
-export type NavItemProps = NavItemBaseProps;
+export { NavItemProps }
 
 export { NavItemRegisterData }
 
@@ -254,20 +260,16 @@ export { renderNavCategory }
 // @public
 export const renderNavCategoryItem: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSXElement;
 
-// @public
-export const renderNavDivider: (state: DividerBaseState) => JSXElement;
+export { renderNavDivider }
 
 // @public (undocumented)
 export const renderNavDrawer: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
-// @public
-export const renderNavDrawerBody: (state: NavDrawerBodyState) => JSXElement;
+export { renderNavDrawerBody }
 
-// @public
-export const renderNavDrawerFooter: (state: DrawerFooterState) => JSXElement;
+export { renderNavDrawerFooter }
 
-// @public
-export const renderNavDrawerHeader: (state: DrawerHeaderState) => JSXElement;
+export { renderNavDrawerHeader }
 
 // @public (undocumented)
 export const renderNavItem: (state: NavItemState) => JSXElement;

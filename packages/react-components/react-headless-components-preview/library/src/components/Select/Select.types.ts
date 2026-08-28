@@ -1,11 +1,6 @@
-import type { SelectSlots as SelectBaseSlots, SelectBaseProps, SelectBaseState } from '@fluentui/react-select';
+import type { SelectBaseState } from '@fluentui/react-select';
 
-export type SelectSlots = SelectBaseSlots;
-
-/**
- * Select Props
- */
-export type SelectProps = SelectBaseProps;
+export type { SelectSlots, SelectBaseProps as SelectProps } from '@fluentui/react-select';
 
 /**
  * State used in rendering Select

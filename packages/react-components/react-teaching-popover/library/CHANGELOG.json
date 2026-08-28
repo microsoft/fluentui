@@ -2,6 +2,26 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.7.5",
+      "tag": "@fluentui/react-teaching-popover_v9.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-popover to v9.14.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.7.4",
       "tag": "@fluentui/react-teaching-popover_v9.7.4",

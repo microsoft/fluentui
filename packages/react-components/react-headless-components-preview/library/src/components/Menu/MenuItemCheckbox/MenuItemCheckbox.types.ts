@@ -1,9 +1,6 @@
-import type {
-  MenuItemCheckboxProps as MenuItemCheckboxBaseProps,
-  MenuItemCheckboxState as MenuItemCheckboxBaseState,
-} from '@fluentui/react-menu';
+import type { MenuItemCheckboxState as MenuItemCheckboxBaseState } from '@fluentui/react-menu';
 
-export type MenuItemCheckboxProps = MenuItemCheckboxBaseProps;
+export type { MenuItemCheckboxProps } from '@fluentui/react-menu';
 
 export type MenuItemCheckboxState = MenuItemCheckboxBaseState & {
   root: {

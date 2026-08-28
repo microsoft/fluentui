@@ -14,12 +14,11 @@
     "dedupe": "yarn dedupe --strategy highest",
     "change": "beachball change",
     "check:change": "beachball check",
-    "check:modified-files": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-modified-files",
     "check:affected": "node ./scripts/executors/src/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
     "create-component": "nx g @fluentui/workspace-plugin:react-component",
     "create-package": "nx g @fluentui/workspace-plugin:react-library",
-    "format": "node scripts/executors/src/format.js",
+    "format": "nx format",
     "generate-version-files": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/generate-version-files",
     "postinstall": "husky && node ./scripts/package-manager/src/postinstall.js",
     "preinstall": "node ./scripts/package-manager/src/preinstall.js",
@@ -176,7 +175,7 @@
     "babel-plugin-module-resolver": "5.0.3",
     "babel-plugin-react-compiler": "1.0.0",
     "babel-plugin-tester": "10.1.0",
-    "beachball": "3.0.0-alpha.7",
+    "beachball": "3.0.0-alpha.9",
     "chalk": "4.1.0",
     "chrome-remote-interface": "0.28.2",
     "ci-info": "3.9.0",
@@ -352,6 +351,14 @@
     "typings",
     "starter-templates"
   ],
+  "dependenciesMeta": {
+    "cypress": {
+      "built": true
+    },
+    "puppeteer": {
+      "built": true
+    }
+  },
   "resolutions": {
     "@nx/devkit/minimatch": "^9.0.7",
     "@nx/jest/minimatch": "^9.0.7",
@@ -383,5 +390,5 @@
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.18.0"
 }

@@ -2,6 +2,26 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.10.18",
+      "tag": "@fluentui/react-migration-v8-v9_v9.10.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.74.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.10.17",
       "tag": "@fluentui/react-migration-v8-v9_v9.10.17",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu-grid-preview",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -22,9 +22,9 @@
     "@fluentui/keyboard-keys": "^9.0.9",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.4.5",
-    "@fluentui/react-menu": "^9.25.3",
+    "@fluentui/react-menu": "^9.25.4",
     "@fluentui/react-shared-contexts": "^9.26.3",
-    "@fluentui/react-table": "^9.19.19",
+    "@fluentui/react-table": "^9.19.20",
     "@fluentui/react-tabster": "^9.26.17",
     "@fluentui/react-theme": "^9.2.2",
     "@fluentui/react-utilities": "^9.26.6",
@@ -33,9 +33,12 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "exports": {
     ".": {

@@ -315,7 +315,8 @@ describe('split-library-in-two generator', () => {
       export const tags = ['autodocs'];
       "
     `);
-  });
+    // Test was sometimes timing out in CI
+  }, 10_000);
 });
 
 function setup(tree: Tree) {

@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Aug 2026 04:08:41 GMT",
+      "version": "3.1.2",
+      "tag": "@fluentui/web-components_v3.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "06cbcbe0b17381ae1f8f4e31a106dcfeb33a0d5b",
+            "comment": "fix(web-components): prevent unsafe theme token values from injecting CSS"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2026 04:08:27 GMT",
+      "version": "3.1.1",
+      "tag": "@fluentui/web-components_v3.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "jibinjose884@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1964e7ce05f25771f4a476ec6b2fdbfb3d5e4bf7",
+            "comment": "fix: remove padding-block-start in multiline dismiss slot to fix alignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2026 04:10:22 GMT",
       "version": "3.1.0",
       "tag": "@fluentui/web-components_v3.1.0",

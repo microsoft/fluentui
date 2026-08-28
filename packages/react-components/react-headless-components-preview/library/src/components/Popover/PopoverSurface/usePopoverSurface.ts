@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -35,7 +35,7 @@ export const usePopoverSurface = (
         id: surfaceId,
         popover: trapFocus ? undefined : 'auto',
         'data-popover-surface': '',
-        'data-open': stringifyDataAttribute(open),
+        'data-open': toDataAttributeValue(open),
       },
       { elementType: 'dialog' },
     ),

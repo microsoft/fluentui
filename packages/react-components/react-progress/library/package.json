@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-progress",
-  "version": "9.5.4",
+  "version": "9.5.5",
   "description": "Progress component for FluentUI v9",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@fluentui/react-field": "^9.5.4",
     "@fluentui/react-jsx-runtime": "^9.4.5",
-    "@fluentui/react-motion": "^9.16.2",
+    "@fluentui/react-motion": "^9.16.3",
     "@fluentui/react-shared-contexts": "^9.26.3",
     "@fluentui/react-theme": "^9.2.2",
     "@fluentui/react-utilities": "^9.26.6",
@@ -23,9 +23,12 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "beachball": {
     "disallowedChangeTypes": [

@@ -1,7 +1,7 @@
 export type {
+  MenuListState,
   MenuListProps,
   MenuListSlots,
-  MenuListState,
   MenuCheckedValueChangeData,
   MenuCheckedValueChangeEvent,
 } from '@fluentui/react-menu';

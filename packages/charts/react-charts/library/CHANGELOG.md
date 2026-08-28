@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charts
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.25)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.24..@fluentui/react-charts_v9.3.25)
+
+### Patches
+
+- Bump @fluentui/react-overflow to v9.9.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.24)
 

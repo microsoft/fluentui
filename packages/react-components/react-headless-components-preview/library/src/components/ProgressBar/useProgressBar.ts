@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useProgressBarBase_unstable } from '@fluentui/react-progress';
 
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Create the state required to render ProgressBar.
@@ -19,7 +19,7 @@ export const useProgressBar = (props: ProgressBarProps, ref: React.Ref<HTMLDivEl
   const state: ProgressBarState = useProgressBarBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-indeterminate'] = stringifyDataAttribute(state.value === undefined);
+  state.root['data-indeterminate'] = toDataAttributeValue(state.value === undefined);
 
   if (state.bar && state.value !== undefined) {
     // eslint-disable-next-line react-hooks/immutability

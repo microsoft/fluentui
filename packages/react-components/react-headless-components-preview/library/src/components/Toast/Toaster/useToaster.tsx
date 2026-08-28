@@ -23,13 +23,29 @@ const SUPPORTS_POPOVER_OPEN_SELECTOR =
  * Create the state required to render the Toaster.
  */
 export const useToaster = (props: ToasterProps): ToasterState => {
-  const { toasterId, offset, shortcuts, announce: announceProp, ...rest } = props;
+  const {
+    toasterId,
+    position,
+    timeout,
+    pauseOnWindowBlur,
+    pauseOnHover,
+    priority,
+    offset,
+    shortcuts,
+    limit,
+    announce: announceProp,
+    ...rest
+  } = props;
 
   const { toastsToRender, isToastVisible, tryRestoreFocus, closeAllToasts } = useToasterState<HTMLDivElement>({
     toasterId,
-    offset,
+    position,
+    timeout,
+    pauseOnWindowBlur,
+    pauseOnHover,
+    priority,
     shortcuts,
-    pauseOnHover: true,
+    limit,
   });
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);

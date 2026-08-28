@@ -2,6 +2,25 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.8.3",
+      "tag": "@fluentui/react-toast_v9.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.16.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.8.2",
       "tag": "@fluentui/react-toast_v9.8.2",
