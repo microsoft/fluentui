@@ -1,4 +1,4 @@
-import { InfoLabel } from '@fluentui/react-windmod-preview';
+import { InfoLabel } from '@fluentui/react-windmod-preview/info-label';
 
 export { Default } from './InfoLabelDefault.stories';
 export { Size } from './InfoLabelSize.stories';

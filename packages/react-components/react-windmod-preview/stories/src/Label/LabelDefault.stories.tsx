@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Label } from '@fluentui/react-windmod-preview';
+import { Label } from '@fluentui/react-windmod-preview/label';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react-windmod-preview';
+import { Menu } from '@fluentui/react-windmod-preview/menu';
 
 export { Default } from './MenuDefault.stories';
 export { SelectionGroups } from './MenuSelectionGroups.stories';

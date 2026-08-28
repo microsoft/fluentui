@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Button, FluentProvider, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-windmod-preview';
-import type { PopoverProps } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-windmod-preview/popover';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import type { PopoverProps } from '@fluentui/react-windmod-preview/popover';
 
 import styles from '../compare.module.css';
 

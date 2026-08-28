@@ -35,7 +35,8 @@ import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-compone
 // swaps in an `Overflow` that is Griffel's minus the styles hook — the entire delta between the
 // two panels below.
 import { Overflow as HeadlessOverflow } from '@fluentui/react-headless-components-preview/overflow';
-import { Button, FluentProvider } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from './OverflowWithWindmod.module.css';
 

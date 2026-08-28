@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { Avatar } from '@fluentui/react-windmod-preview/avatar';
 import {
-  Avatar,
-  FluentProvider,
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagSecondary,
-  TagGroup,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/interaction-tag';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { TagGroup } from '@fluentui/react-windmod-preview/tag-group';
 import { CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons/headless/svg/calendar-month';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 

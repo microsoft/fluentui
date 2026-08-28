@@ -1,4 +1,4 @@
-import { MessageBar } from '@fluentui/react-windmod-preview';
+import { MessageBar } from '@fluentui/react-windmod-preview/message-bar';
 
 export { Default } from './MessageBarDefault.stories';
 export { GriffelComparison } from './MessageBarGriffelComparison.stories';

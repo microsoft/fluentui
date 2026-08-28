@@ -1,4 +1,4 @@
-import { NavDrawer } from '@fluentui/react-windmod-preview';
+import { NavDrawer } from '@fluentui/react-windmod-preview/nav';
 
 export { Default } from './NavDrawerDefault.stories';
 export { Overlay } from './NavDrawerOverlay.stories';

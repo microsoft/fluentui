@@ -1,4 +1,4 @@
-import { Popover } from '@fluentui/react-windmod-preview';
+import { Popover } from '@fluentui/react-windmod-preview/popover';
 
 export { Default } from './PopoverDefault.stories';
 export { Placements } from './PopoverPlacements.stories';

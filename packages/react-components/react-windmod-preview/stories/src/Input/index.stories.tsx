@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react-windmod-preview';
+import { Input } from '@fluentui/react-windmod-preview/input';
 
 export { Default } from './InputDefault.stories';
 export { GriffelComparison } from './InputGriffelComparison.stories';

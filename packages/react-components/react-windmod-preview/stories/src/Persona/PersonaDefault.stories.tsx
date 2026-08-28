@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Persona } from '@fluentui/react-windmod-preview';
+import { Persona } from '@fluentui/react-windmod-preview/persona';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

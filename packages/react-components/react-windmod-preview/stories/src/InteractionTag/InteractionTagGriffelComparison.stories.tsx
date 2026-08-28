@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  FluentProvider,
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagSecondary,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/interaction-tag';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   FluentProvider as GriffelFluentProvider,
   InteractionTag as GriffelInteractionTag,

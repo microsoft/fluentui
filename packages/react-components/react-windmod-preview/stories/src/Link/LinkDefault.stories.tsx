@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, Link } from '@fluentui/react-windmod-preview';
+import { Link } from '@fluentui/react-windmod-preview/link';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

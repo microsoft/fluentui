@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FluentProvider, ProgressBar } from '@fluentui/react-windmod-preview';
+import { ProgressBar } from '@fluentui/react-windmod-preview/progress-bar';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
   FluentProvider as GriffelFluentProvider,
   ProgressBar as GriffelProgressBar,

@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
-  FluentProvider,
   Menu,
   MenuDivider,
   MenuGroup,
@@ -11,7 +10,8 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/menu';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import styles from '../compare.module.css';
 

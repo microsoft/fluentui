@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
 import {
-  Button,
-  FluentProvider,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerFooter,
   NavDrawerHeader,
-  NavDivider,
   NavItem,
   NavSectionHeader,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/nav';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import { HomeFilled, HomeRegular } from '@fluentui/react-icons/headless/svg/home';
 import { SettingsFilled, SettingsRegular } from '@fluentui/react-icons/headless/svg/settings';
 import { bundleIcon } from '@fluentui/react-icons/headless';
