@@ -2621,9 +2621,10 @@ __metadata:
   resolution: "@fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source"
   dependencies:
     "@babel/core": "npm:^7.10.4"
+    "@prettier/sync": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
     pkg-up: "npm:^3.1.0"
-    prettier: "npm:^2.8.8"
+    prettier: "npm:^3.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5817,7 +5818,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tailwind-theme-preview@npm:^9.0.0-alpha.0, @fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview":
+"@fluentui/react-tailwind-theme-preview@npm:^0.1.0, @fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tailwind-theme-preview@workspace:packages/react-components/react-tailwind-theme-preview"
   languageName: unknown
@@ -6157,7 +6158,7 @@ __metadata:
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
-    "@fluentui/react-tailwind-theme-preview": "npm:^9.0.0-alpha.0"
+    "@fluentui/react-tailwind-theme-preview": "npm:^0.1.0"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
@@ -8980,7 +8981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prettier/sync@npm:0.6.1":
+"@prettier/sync@npm:0.6.1, @prettier/sync@npm:^0.6.1":
   version: 0.6.1
   resolution: "@prettier/sync@npm:0.6.1"
   dependencies:
@@ -27507,7 +27508,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.9.6":
+"prettier@npm:3.9.6, prettier@npm:^3.0.0":
   version: 3.9.6
   resolution: "prettier@npm:3.9.6"
   bin:
@@ -27516,7 +27517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.0.1, prettier@npm:^2.8.8":
+"prettier@npm:^2.0.1":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
