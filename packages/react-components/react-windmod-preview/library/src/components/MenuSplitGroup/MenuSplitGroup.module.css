@@ -27,8 +27,8 @@
     &:nth-of-type(2) {
       @apply rounded-s-none ps-0;
 
-      &::before {
-        @apply h-20 w-thin bg-neutral-stroke-1 content-[''];
+      @variant before {
+        @apply h-20 w-thin bg-neutral-stroke-1;
       }
     }
 

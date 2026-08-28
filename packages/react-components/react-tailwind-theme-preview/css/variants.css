@@ -15,8 +15,11 @@
  * `required`, `read-only`, `ltr` — dropping the entry silently substitutes the built-in); the
  * unused half of a polarity pair (`focused`, `not-selected`, `not-indeterminate`,
  * `has-actions`); and the unstyled member of a live enumeration (`layout-horizontal`,
- * `layout-horizontal-stacked`, `layout-singleline`, `scroll-state-none`). Delete an entry only
- * when its selector can match nothing the tree renders, or when it can never be false.
+ * `layout-horizontal-stacked`, `layout-singleline`). A positive entry consumed only through
+ * Tailwind's automatic `not-` compound (`scroll-state-none` via `@variant not-scroll-state-none`)
+ * is load-bearing, not unconsumed — the derivation needs it and emits the same zero specificity.
+ * Delete an entry only when its selector can match nothing the tree renders, or when it can
+ * never be false.
  */
 
 /* direction (computed, correct under nesting) */
