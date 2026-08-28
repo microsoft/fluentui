@@ -16,83 +16,53 @@ type AvatarRootDataAttributes = {
 };
 
 // Every size-dependent value except the box edge is a bucket, so the fourteen sizes collapse to
-// these five ladders plus the root's typed attr(). Each boundary is inclusive.
-const textClass = (size: AvatarSize) => {
-  if (size <= 24) {
-    return styles.textCaption2Strong;
-  }
-  if (size <= 28) {
-    return styles.textCaption1Strong;
-  }
-  if (size <= 40) {
-    return undefined;
-  }
-  if (size <= 56) {
-    return styles.textSubtitle2;
-  }
-  if (size <= 96) {
-    return styles.textSubtitle1;
-  }
-  return styles.textTitle3;
-};
+// these five ladders plus the root's typed attr(). Each range is written in full and both its
+// boundaries are inclusive, so the keys partition AvatarSize with no implied else. `+()` coerces
+// a condition to 1 or 0 because TS rejects a bare boolean computed key (TS2464).
+const textClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 24)]: styles.textCaption2Strong,
+    [+(size > 24 && size <= 28)]: styles.textCaption1Strong,
+    // 32–40 is Griffel's base bucket: it names no font of its own, so no class is merged.
+    [+(size > 28 && size <= 40)]: undefined,
+    [+(size > 40 && size <= 56)]: styles.textSubtitle2,
+    [+(size > 56 && size <= 96)]: styles.textSubtitle1,
+    [+(size > 96)]: styles.textTitle3,
+  })[1];
 
-const squareClass = (size: AvatarSize) => {
-  if (size <= 24) {
-    return styles.squareSmall;
-  }
-  if (size <= 48) {
-    return styles.squareMedium;
-  }
-  if (size <= 72) {
-    return styles.squareLarge;
-  }
-  return styles.squareXLarge;
-};
+const squareClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 24)]: styles.squareSmall,
+    [+(size > 24 && size <= 48)]: styles.squareMedium,
+    [+(size > 48 && size <= 72)]: styles.squareLarge,
+    [+(size > 72)]: styles.squareXLarge,
+  })[1];
 
-const ringClass = (size: AvatarSize) => {
-  if (size <= 48) {
-    return styles.ringThick;
-  }
-  if (size <= 64) {
-    return styles.ringThicker;
-  }
-  return styles.ringThickest;
-};
+const ringClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 48)]: styles.ringThick,
+    [+(size > 48 && size <= 64)]: styles.ringThicker,
+    [+(size > 64)]: styles.ringThickest,
+  })[1];
 
-const shadowClass = (size: AvatarSize) => {
-  if (size <= 28) {
-    return styles.shadow4;
-  }
-  if (size <= 48) {
-    return styles.shadow8;
-  }
-  if (size <= 64) {
-    return styles.shadow16;
-  }
-  return styles.shadow28;
-};
+const shadowClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 28)]: styles.shadow4,
+    [+(size > 28 && size <= 48)]: styles.shadow8,
+    [+(size > 48 && size <= 64)]: styles.shadow16,
+    [+(size > 64)]: styles.shadow28,
+  })[1];
 
-const iconClass = (size: AvatarSize) => {
-  if (size <= 16) {
-    return styles.icon12;
-  }
-  if (size <= 24) {
-    return styles.icon16;
-  }
-  if (size <= 40) {
-    return styles.icon20;
-  }
-  if (size <= 48) {
-    return styles.icon24;
-  }
-  if (size <= 56) {
-    return styles.icon28;
-  }
-  if (size <= 72) {
-    return styles.icon32;
-  }
-  return styles.icon48;
-};
+const iconClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 16)]: styles.icon12,
+    [+(size > 16 && size <= 24)]: styles.icon16,
+    [+(size > 24 && size <= 40)]: styles.icon20,
+    [+(size > 40 && size <= 48)]: styles.icon24,
+    [+(size > 48 && size <= 56)]: styles.icon28,
+    [+(size > 56 && size <= 72)]: styles.icon32,
+    [+(size > 72)]: styles.icon48,
+  })[1];
 
 /**
  * Applies the visual contract, returning new state. The headless hook stamps no attributes at

@@ -368,8 +368,43 @@ A permitted nested-selector exception — glyphs carry no module class. Copy `Bu
 
 ## Code style
 
-- **No nested ternaries.** Bucket ladders and any multi-branch selection are flat if-return functions. A
-  single non-nested ternary is fine.
+- **No nested ternaries.** Never chain `? :`. A single non-nested ternary is fine.
+- **Bucket ladders are condition-key lookups.** Three or more mutually exclusive branches selecting a
+  class become an object literal keyed by each condition coerced to `1`/`0`, indexed by `1`. The `+()`
+  is load-bearing: TS rejects a bare boolean computed key (TS2464). Two-branch selections are a plain
+  ternary, not a lookup.
+
+  ```ts
+  // ✅ every range written in full, so the keys partition the domain
+  const textClass = (size: AvatarSize) =>
+    ({
+      [+(size <= 24)]: styles.text100,
+      [+(size > 24 && size <= 28)]: styles.text200,
+      [+(size > 28)]: styles.text300,
+    })[1];
+  ```
+
+  ```ts
+  // ❌ cumulative boundaries and an implied else
+  const textClass = (size: AvatarSize) =>
+    ({
+      [+(size <= 24)]: styles.text100,
+      [+(size <= 28)]: styles.text200, // overlaps the first key — at size 20 BOTH are 1 and the
+    })[1]; // later one silently wins; and sizes above 28 fall out as undefined
+  ```
+
+  Two gotchas, both fatal and both silent:
+  - **Mutual exclusivity.** Unlike an if-return chain, no branch shadows a later one — every key is
+    evaluated. Two true conditions both write key `1` and the last one wins. Spell out both bounds of
+    every range (`size > 24 && size <= 28`), never the cumulative `size <= 28` an if-chain allowed.
+  - **Explicit final bucket.** There is no `else`. The last bucket needs its own condition, and every
+    member of an enum domain needs its own key — including the ones whose value is `undefined`. Miss
+    one and the lookup returns `undefined` at runtime while TS still types it `string`.
+
+  An intentionally class-less bucket is written out with an `undefined` value and a comment saying why
+  (`useAvatarStyles`' 32–40 base bucket). TS then types the helper `string | undefined` on its own —
+  no `satisfies` or return annotation is needed to keep the lookup honest.
+
 - **Component shape**: a value used exactly once earns no intermediate const — destructure `props`
   directly in the parameter list when the body never references `props` itself, and pass the state object
   literal inline into the styles hook. A value used twice or more stays a named const.
