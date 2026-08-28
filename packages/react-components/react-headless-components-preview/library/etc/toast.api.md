@@ -10,6 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { renderToastFooter_unstable as renderToastFooter } from '@fluentui/react-toast';
+import { renderToastTrigger_unstable as renderToastTrigger } from '@fluentui/react-toast';
 import type { Slot } from '@fluentui/react-utilities';
 import type { ToastAnnounce } from '@fluentui/react-toast';
 import type { ToastBaseState } from '@fluentui/react-toast';
@@ -37,11 +38,14 @@ import { ToastStatus } from '@fluentui/react-toast';
 import { ToastTitleBaseProps as ToastTitleProps } from '@fluentui/react-toast';
 import { ToastTitleSlots } from '@fluentui/react-toast';
 import { ToastTitleBaseState as ToastTitleState } from '@fluentui/react-toast';
+import { ToastTriggerProps } from '@fluentui/react-toast';
+import { ToastTriggerState } from '@fluentui/react-toast';
 import { useToastBodyBase_unstable as useToastBody } from '@fluentui/react-toast';
 import { useToastContainerContext } from '@fluentui/react-toast';
 import { useToastController } from '@fluentui/react-toast';
 import { useToastFooter_unstable as useToastFooter } from '@fluentui/react-toast';
 import { useToastTitleBase_unstable as useToastTitle } from '@fluentui/react-toast';
+import { useToastTrigger_unstable as useToastTrigger } from '@fluentui/react-toast';
 
 // @public
 export const renderToast: (state: ToastState) => JSXElement;
@@ -59,6 +63,8 @@ export { renderToastFooter }
 
 // @public (undocumented)
 export const renderToastTitle: (state: ToastTitleState) => JSXElement;
+
+export { renderToastTrigger }
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
@@ -155,6 +161,13 @@ export { ToastTitleSlots }
 export { ToastTitleState }
 
 // @public
+export const ToastTrigger: (props: ToastTriggerProps) => JSXElement | null;
+
+export { ToastTriggerProps }
+
+export { ToastTriggerState }
+
+// @public
 export const useToast: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
 
 export { useToastBody }
@@ -175,6 +188,8 @@ export const useToaster: (props: ToasterProps) => ToasterState;
 export { useToastFooter }
 
 export { useToastTitle }
+
+export { useToastTrigger }
 
 // (No @packageDocumentation comment for this package)
 

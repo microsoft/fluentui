@@ -14,6 +14,9 @@ export type { ToastBodyProps, ToastBodyState, ToastBodySlots } from './ToastBody
 export { ToastFooter, renderToastFooter, useToastFooter } from './ToastFooter';
 export type { ToastFooterProps, ToastFooterSlots, ToastFooterState } from './ToastFooter';
 
+export { ToastTrigger, renderToastTrigger, useToastTrigger } from './ToastTrigger';
+export type { ToastTriggerProps, ToastTriggerState } from './ToastTrigger';
+
 // ─── Toaster DX (state-machine-driven) ───────────────────────────────────────
 export { Toaster, renderToaster, useToaster } from './Toaster';
 export type { ToasterProps, ToasterState } from './Toaster';

@@ -1,7 +1,7 @@
-export { Toast, renderToast, useToast } from './components/Toast';
-export type { ToastProps, ToastState, ToastSlots, ToastIntent } from './components/Toast';
-
 export {
+  Toast,
+  renderToast,
+  useToast,
   ToastTitle,
   renderToastTitle,
   useToastTitle,
@@ -18,8 +18,17 @@ export {
   renderToastContainer,
   useToastContainer,
   useToastContainerContextValues,
+  ToastTrigger,
+  renderToastTrigger,
+  useToastTrigger,
+  useToastController,
+  useToastContainerContext,
 } from './components/Toast';
 export type {
+  ToastProps,
+  ToastState,
+  ToastSlots,
+  ToastIntent,
   ToastTitleProps,
   ToastTitleState,
   ToastTitleSlots,
@@ -35,11 +44,8 @@ export type {
   ToastContainerSlots,
   ToastContainerState,
   ToastContainerContextValue,
-} from './components/Toast';
-
-// ─── Re-exported from @fluentui/react-toast ──────────────────────────────────
-export { useToastController, useToastContainerContext } from './components/Toast';
-export type {
+  ToastTriggerProps,
+  ToastTriggerState,
   ToastId,
   ToasterId,
   ToastStatus,

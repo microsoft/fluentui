@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add ToastTrigger component and related exports",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
