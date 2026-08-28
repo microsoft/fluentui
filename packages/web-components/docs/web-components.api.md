@@ -538,6 +538,8 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
+    // @internal
+    protected dirtyChecked: boolean;
     disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
@@ -1219,6 +1221,13 @@ export type ButtonType = ValuesOf<typeof ButtonType>;
 // @public
 export class Checkbox extends BaseCheckbox {
     constructor();
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    defaultIndeterminate?: boolean;
+    // @internal
+    protected defaultIndeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    formResetCallback(): void;
     indeterminate?: boolean;
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
