@@ -15,15 +15,14 @@ type PopoverSurfaceRootDataAttributes = {
   'data-size'?: PopoverSurfaceState['size'];
 };
 
-const paddingClass = (size: PopoverSize): string => {
-  if (size === 'small') {
-    return styles.small;
-  }
-  if (size === 'large') {
-    return styles.large;
-  }
-  return styles.medium;
-};
+// One key per PopoverSize member, so the keys partition the union with no implied else; `+()`
+// coerces a condition to 1 or 0 because TS rejects a bare boolean computed key (TS2464).
+const paddingClass = (size: PopoverSize): string =>
+  ({
+    [+(size === 'small')]: styles.small,
+    [+(size === 'medium')]: styles.medium,
+    [+(size === 'large')]: styles.large,
+  })[1];
 
 /**
  * Applies the visual contract, returning new state. The headless hook already stamps data-open,

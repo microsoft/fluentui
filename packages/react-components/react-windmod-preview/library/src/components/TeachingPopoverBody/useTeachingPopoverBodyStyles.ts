@@ -11,15 +11,14 @@ export const teachingPopoverBodyClassNames: { root: string } = {
   root: componentMarkers('teaching-popover-body'),
 };
 
-const mediaLengthClass = (mediaLength: TeachingPopoverBodyState['mediaLength']): string => {
-  if (mediaLength === 'medium') {
-    return styles.medium;
-  }
-  if (mediaLength === 'tall') {
-    return styles.tall;
-  }
-  return styles.short;
-};
+// One key per mediaLength member, so the keys partition the union with no implied else; `+()`
+// coerces a condition to 1 or 0 because TS rejects a bare boolean computed key (TS2464).
+const mediaLengthClass = (mediaLength: TeachingPopoverBodyState['mediaLength']): string =>
+  ({
+    [+(mediaLength === 'short')]: styles.short,
+    [+(mediaLength === 'medium')]: styles.medium,
+    [+(mediaLength === 'tall')]: styles.tall,
+  })[1];
 
 /**
  * Applies the visual contract, returning new state. The headless hook already resolves
