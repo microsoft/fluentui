@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Avatar, FluentProvider } from '@fluentui/react-windmod-preview';
+import { Avatar } from '@fluentui/react-windmod-preview/avatar';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 
 import { AvatarVrScene, useAvatarImageDecoded } from './AvatarVrScene';
 

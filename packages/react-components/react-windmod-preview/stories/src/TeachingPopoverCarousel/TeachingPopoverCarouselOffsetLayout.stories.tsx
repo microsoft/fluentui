@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
-  Button,
-  FluentProvider,
   TeachingPopover,
   TeachingPopoverBody,
   TeachingPopoverCarousel,
@@ -12,7 +12,7 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverTitle,
   TeachingPopoverTrigger,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/teaching-popover';
 
 import styles from '../compare.module.css';
 

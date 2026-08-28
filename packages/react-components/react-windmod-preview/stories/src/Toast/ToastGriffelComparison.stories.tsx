@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { FluentProvider, Link, Toast, ToastBody, ToastFooter, ToastTitle } from '@fluentui/react-windmod-preview';
+import { Link } from '@fluentui/react-windmod-preview/link';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Toast, ToastBody, ToastFooter, ToastTitle } from '@fluentui/react-windmod-preview/toast';
 import {
   FluentProvider as GriffelFluentProvider,
   Link as GriffelLink,

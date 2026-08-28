@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { Link } from '@fluentui/react-windmod-preview/link';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
 import {
-  Button,
-  FluentProvider,
-  Link,
   Toast,
   ToastBody,
   ToastFooter,
-  Toaster,
   ToastTitle,
+  Toaster,
   useToastController,
-} from '@fluentui/react-windmod-preview';
+} from '@fluentui/react-windmod-preview/toast';
 
 const TOASTER_ID = 'toast-default';
 

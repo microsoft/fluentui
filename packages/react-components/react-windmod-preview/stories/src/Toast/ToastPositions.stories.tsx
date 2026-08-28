@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  Button,
-  FluentProvider,
-  Toast,
-  ToastBody,
-  Toaster,
-  ToastTitle,
-  useToastController,
-} from '@fluentui/react-windmod-preview';
-import type { ToastPosition } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider } from '@fluentui/react-windmod-preview/provider';
+import { Toast, ToastBody, ToastTitle, Toaster, useToastController } from '@fluentui/react-windmod-preview/toast';
+import type { ToastPosition } from '@fluentui/react-windmod-preview/toast';
 
 const TOASTER_ID = 'toast-positions';
 const positions: ToastPosition[] = ['top-start', 'top', 'top-end', 'bottom-start', 'bottom', 'bottom-end'];

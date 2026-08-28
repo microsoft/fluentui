@@ -1,4 +1,4 @@
-import { Textarea } from '@fluentui/react-windmod-preview';
+import { Textarea } from '@fluentui/react-windmod-preview/textarea';
 
 export { Default } from './TextareaDefault.stories';
 export { GriffelComparison } from './TextareaGriffelComparison.stories';

@@ -1,4 +1,4 @@
-import { Toast } from '@fluentui/react-windmod-preview';
+import { Toast } from '@fluentui/react-windmod-preview/toast';
 
 export { Default } from './ToastDefault.stories';
 export { Intents } from './ToastIntents.stories';

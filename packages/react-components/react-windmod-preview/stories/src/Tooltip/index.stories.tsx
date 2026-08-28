@@ -1,4 +1,4 @@
-import { Tooltip } from '@fluentui/react-windmod-preview';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 
 export { Default } from './TooltipDefault.stories';
 export { Placements } from './TooltipPlacements.stories';
