@@ -29,7 +29,7 @@ Start here, because it is most of the surface:
 | 3   | The provider is a real element **and it paints**               | It is the flex/grid item, not its children; it repaints coloured surfaces. `background: transparent` via `className` if unwanted. |
 | 4   | No `useCustomStyleHook_unstable`                               | Restyle through CSS.                                                                                                              |
 | 5   | Public classes are lower-case; `classNames.root` is a **pair** | `.fui-button`, not `.fui-Button`. No per-slot classes at all.                                                                     |
-| 6   | Component subpaths are single-component                        | `from '…/card-header'`, not `from '…/card'`.                                                                                      |
+| 6   | No root barrel — every import names a family                   | `CardHeader` from `'…/card'`, `MenuItem` from `'…/menu'`. Names unchanged; paths change.                                          |
 | 7   | `Input`/`Textarea` drop the deprecated shadow appearances      | Map `filled-*-shadow` to its non-shadow twin.                                                                                     |
 | 8   | `required` renders no asterisk on `Checkbox`/`Switch`          | Wrap in a `Field` with `required` if you need the `*`. The attribute still reaches the input.                                     |
 
@@ -133,7 +133,7 @@ windmod-styled children, and neither library's CSS fights the other. Keep import
 
 ```tsx
 import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
 ```
 
 `Overflow`'s whole family ships two token-free declarations —

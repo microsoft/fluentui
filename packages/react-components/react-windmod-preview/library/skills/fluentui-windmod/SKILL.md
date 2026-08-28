@@ -149,7 +149,9 @@ For CommonJS/SSR, or any time one file is simpler, swap `base.css` for
 components.
 
 ```tsx
-import { Button, FluentProvider, Tooltip, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 
 export const App = () => (
   <FluentProvider theme={webDarkThemeClassName}>
@@ -379,7 +381,7 @@ vocabulary and the import recipe.
 Seven themes ship as class names, plus a record and a type:
 
 ```tsx
-import { themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/fluent-provider';
+import { themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/provider';
 
 export const pickTheme = (dark: boolean): ThemeClassName =>
   dark ? themeClassNames.webDarkTheme : themeClassNames.webLightTheme;
@@ -418,21 +420,34 @@ in a `FluentProvider` to control it.
 
 ## Imports and subpaths
 
-The root barrel exports everything. Every component also has a kebab-case subpath, which is the
-recommended route for tree-shaking-sensitive apps. **A component subpath exports only that
-component**:
+**There is no root barrel** — `@fluentui/react-windmod-preview` exports nothing. Every component comes
+from its **family** subpath, and the families are the ones
+`@fluentui/react-headless-components-preview` already uses, so the two layers have the same shape. A
+family is one kebab-case subpath exporting every part of that family:
 
 ```tsx
 import { Button } from '@fluentui/react-windmod-preview/button';
-import { Card } from '@fluentui/react-windmod-preview/card';
-import { CardHeader } from '@fluentui/react-windmod-preview/card-header'; // not from ./card
+import { Card, CardHeader, CardPreview } from '@fluentui/react-windmod-preview/card';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-windmod-preview/menu';
 ```
 
-`./dialog` is the single exception among component subpaths: `Dialog` and its six parts share one.
+Rules of thumb when writing an import:
 
-Non-component subpaths: `./styles.css`, `./variants.css`, `./use-css-var-value`, `./positioning`, and
-`./fluent-provider` — which is the mixed one, exporting `FluentProvider` alongside the seven theme
-class-name constants, the `themeClassNames` record and the `ThemeClassName` type.
+- Look up the family, not the component. `CardHeader` → `./card`. `MenuItem` → `./menu`. `Tab` →
+  `./tab-list`. `Radio` → `./radio-group`. `Option` and `Listbox` → `./combobox`. `InfoButton` →
+  `./info-label`. `ColorArea`, `ColorSlider` and `AlphaSlider` → `./color-picker`. `ColorSwatch`,
+  `EmptySwatch` and `ImageSwatch` → `./swatch-picker`. `InlineDrawer` and `OverlayDrawer` → `./drawer`.
+  `NavDrawer` and its parts → `./nav`. `Toaster` → `./toast`.
+- `FluentProvider` is at **`./provider`** (headless's name for the family), together with the seven
+  theme class-name constants, the `themeClassNames` record and the `ThemeClassName` type.
+- One family, one import line, however many parts you use.
+
+Family JS still tree-shakes — unused siblings' code is dropped. Family **CSS** comes along, because each
+class map side-effect-imports its own chunk and the barrel keeps the family's chunks reachable. That is
+the deliberate trade: the styling cost is bounded by the family you reached for, not by the suite.
+
+Subpaths exporting no component: `./positioning` (the headless positioning primitives, re-exported) and
+`./use-css-var-value`. Non-JavaScript subpaths: `./base.css`, `./styles.css`, `./css/*`, `./variants.css`.
 
 ## Reading token values in JavaScript
 

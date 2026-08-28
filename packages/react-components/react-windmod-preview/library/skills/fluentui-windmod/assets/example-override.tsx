@@ -6,17 +6,12 @@
  */
 
 import * as React from 'react';
-import {
-  Button,
-  Card,
-  FluentProvider,
-  MessageBar,
-  Switch,
-  Tooltip,
-  themeClassNames,
-  type ThemeClassName,
-} from '@fluentui/react-windmod-preview';
-import { buttonClassNames } from '@fluentui/react-windmod-preview/button';
+import { Button, buttonClassNames } from '@fluentui/react-windmod-preview/button';
+import { Card } from '@fluentui/react-windmod-preview/card';
+import { MessageBar } from '@fluentui/react-windmod-preview/message-bar';
+import { FluentProvider, themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/provider';
+import { Switch } from '@fluentui/react-windmod-preview/switch';
+import { Tooltip } from '@fluentui/react-windmod-preview/tooltip';
 import { useCssVarValue } from '@fluentui/react-windmod-preview/use-css-var-value';
 
 import './example-override.css';

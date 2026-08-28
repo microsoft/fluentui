@@ -86,7 +86,8 @@ chunks.
 ## The provider
 
 ```tsx
-import { Button, FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
 
 export const App = () => (
   <FluentProvider theme={webDarkThemeClassName}>
@@ -127,34 +128,46 @@ It renders a `div` carrying base typography, text colour and
 `targetDocument` and `dir` are supported. `customStyleHooks_unstable`, `overrides_unstable` and
 `applyStylesToPortals` are not.
 
-## Subpath imports
+## Family imports
 
-The root barrel exports everything. Component subpaths are kebab-case and **single-component**:
+**There is no root barrel** — `@fluentui/react-windmod-preview` exports nothing. Every component comes
+from its **family** subpath, kebab-case, and the families are the ones
+`@fluentui/react-headless-components-preview` already uses. A family exports every part of that family:
 
 ```tsx
 import { Button } from '@fluentui/react-windmod-preview/button';
-import { Card } from '@fluentui/react-windmod-preview/card';
-import { CardHeader } from '@fluentui/react-windmod-preview/card-header'; // NOT from ./card
-```
-
-`./dialog` is the single exception — `Dialog` and its six parts (`DialogTrigger`, `DialogSurface`,
-`DialogBody`, `DialogHeader`, `DialogTitle`, `DialogActions`) share one subpath:
-
-```tsx
+import { Card, CardHeader, CardPreview } from '@fluentui/react-windmod-preview/card';
 import { Dialog, DialogSurface, DialogTitle, DialogActions } from '@fluentui/react-windmod-preview/dialog';
 ```
 
-Every other family — `Drawer`, `Menu`, `Toast`, `Nav`, `TagPicker`, `TeachingPopover` — is one subpath
-per component. There are 145 of them.
+**52 family subpaths** carry components. The ones whose name is not simply the component's own:
+`CardHeader`/`CardFooter`/`CardPreview` → `./card` · `Tab` → `./tab-list` · `Radio` → `./radio-group` ·
+`Option`/`OptionGroup`/`Listbox` → `./combobox` · `InfoButton` → `./info-label` ·
+`ColorArea`/`ColorSlider`/`AlphaSlider` → `./color-picker` ·
+`ColorSwatch`/`EmptySwatch`/`ImageSwatch`/`SwatchPickerRow` → `./swatch-picker` ·
+`InlineDrawer`/`OverlayDrawer` and every `Drawer*` part → `./drawer` · every `Nav*` **and** every
+`NavDrawer*` part → `./nav` · `Toaster` → `./toast` · `FluentProvider` → `./provider` (with the theme
+class names) · every `Menu*`, `Toolbar*`, `TagPicker*`, `TeachingPopover*`, `MessageBar*`,
+`Breadcrumb*`, `Accordion*`, `AvatarGroup*`, `InteractionTag*`, `Popover*` and `Skeleton*` part → its
+family root.
 
-Non-component subpaths:
+Family JS tree-shakes; family CSS comes along, by design.
 
-| Subpath               | What it is                                                    |
-| --------------------- | ------------------------------------------------------------- |
-| `./styles.css`        | the compiled component stylesheet                             |
-| `./variants.css`      | the component-specific variant catalog, for your own Tailwind |
-| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars`                        |
-| `./positioning`       | the headless positioning primitives, re-exported              |
+Subpaths that export no component:
+
+| Subpath               | What it is                                       |
+| --------------------- | ------------------------------------------------ |
+| `./positioning`       | the headless positioning primitives, re-exported |
+| `./use-css-var-value` | `useCssVarValue` / `invalidateCssVars`           |
+
+Non-JavaScript subpaths:
+
+| Subpath          | What it is                                                    |
+| ---------------- | ------------------------------------------------------------- |
+| `./base.css`     | the root stylesheet — layer order + `@property` registrations |
+| `./styles.css`   | the batteries-included monolith                               |
+| `./css/*`        | the individual per-component chunks                           |
+| `./variants.css` | the component-specific variant catalog, for your own Tailwind |
 
 ## Plain-CSS consumers: no setup at all
 

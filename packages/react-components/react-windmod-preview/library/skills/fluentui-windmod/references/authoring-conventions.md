@@ -335,10 +335,14 @@ A permitted nested-selector exception — glyphs carry no module class. Copy `Bu
 - **Component shape**: a value used exactly once earns no intermediate const — destructure `props`
   directly in the parameter list when the body never references `props` itself, and pass the state object
   literal inline into the styles hook. A value used twice or more stays a named const.
-- Match the existing files exactly: import order, `type Props`, forwardRef pattern, barrel files
-  (`src/<component>.ts` re-exports headless types + windmod component), `library/src/index.ts` additions.
-- Adding a component means adding its subpath to `library/package.json` `exports` **and**
-  `project.json`'s generate-api `exportSubpaths`.
+- Match the existing files exactly: import order, `type Props`, forwardRef pattern, and the **family
+  barrel** (`src/<family>.ts` re-exports the windmod component plus the headless building blocks for
+  that family). `library/src/index.ts` stays `export {}` — there is no root barrel.
+- Adding a component means adding its exports to its family's `src/<family>.ts`. That is the whole
+  registration: `nx sync` derives the export map from `src/*.ts`, and `generate-api` follows it. A
+  component in a **new** family adds one `src/<family>.ts` file; nothing else is hand-edited.
+- `isConformant` reads the component→family map straight out of `src/*.ts`, so a component added to the
+  wrong family (or to none) fails its `has-top-level-file` assertion rather than checking a wrong subpath.
 
 ## Comments policy
 
