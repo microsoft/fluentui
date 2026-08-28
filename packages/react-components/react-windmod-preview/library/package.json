@@ -17,7 +17,11 @@
     "dist/styles.css",
     "lib",
     "lib-commonjs",
+    "skills",
     "src/variants.css"
+  ],
+  "keywords": [
+    "tanstack-intent"
   ],
   "repository": {
     "type": "git",

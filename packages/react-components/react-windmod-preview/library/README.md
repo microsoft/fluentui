@@ -14,6 +14,12 @@ text colour and background onto its subtree. No Griffel, no runtime style inject
 > preview: APIs may change without notice, and coverage is limited to the components the headless
 > package ships. Not production-ready.
 
+Using a coding agent? This package ships an [Agent Skill](./skills/fluentui-windmod/SKILL.md) covering
+the override model, the class and `data-*` surface, the variant catalog and the theme classes. It
+travels in the tarball, so it stays in step with the version you installed — point your agent at
+`node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod/SKILL.md`
+([how](./skills/fluentui-windmod/README.md)).
+
 Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the subpath
 map, the parity contract, every deliberate difference, and what is not shipped.
 
