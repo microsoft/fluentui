@@ -8,10 +8,10 @@ import { Provider } from '../Provider';
 /**
  * Selectors used by the headless tests. Unlike the styled v9 layer, the headless
  * Toast does not emit Griffel class names — we target structural roles and the
- * `data-intent` attribute the headless `Toast` adds to its root.
+ * structural roles on the headless `ToastContainer` root.
  */
 const TOAST_CONTAINER = '[role="listitem"]';
-const TOAST = '[data-intent]';
+const TOAST = TOAST_CONTAINER;
 
 const mount = (element: JSXElement) =>
   mountBase(
