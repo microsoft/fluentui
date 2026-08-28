@@ -79,4 +79,35 @@ describe('TeachingPopoverCarousel', () => {
 
     expect(screen.getByText('Step one')).not.toHaveFocus();
   });
+
+  it('does not move focus when a title mounts on the active page outside of a navigation', async () => {
+    const AsyncTitle = () => {
+      const [loaded, setLoaded] = React.useState(false);
+
+      React.useEffect(() => {
+        setLoaded(true);
+      }, []);
+
+      return loaded ? <TeachingPopoverTitle>Async step one</TeachingPopoverTitle> : null;
+    };
+
+    render(
+      <TeachingPopoverCarousel defaultValue="one">
+        <TeachingPopoverCarouselCard value="one">
+          <button type="button">Focus me</button>
+          <AsyncTitle />
+        </TeachingPopoverCarouselCard>
+      </TeachingPopoverCarousel>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Focus me' });
+    button.focus();
+
+    // Wait for the async title to mount, plus any pending microtasks (e.g. the carousel's mutation observer).
+    await waitFor(() => expect(screen.getByText('Async step one')).toBeInTheDocument());
+    await Promise.resolve();
+
+    expect(button).toHaveFocus();
+    expect(screen.getByText('Async step one')).not.toHaveFocus();
+  });
 });

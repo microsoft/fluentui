@@ -40,6 +40,21 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
 
   const { announce } = useAnnounce();
 
+  // Tracks the value of a carousel page that is in the process of becoming active, so that focus is only moved
+  // to a page's title when its DOM node mounts *because of* a navigation - not whenever any
+  // `[data-carousel-title]` node happens to be added anywhere under the carousel (e.g. unrelated async content).
+  const pendingFocusValueRef = React.useRef<string | null>(null);
+  const isInitialRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      return;
+    }
+
+    pendingFocusValueRef.current = value;
+  }, [value]);
+
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
@@ -95,15 +110,25 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
             store.insertValue(newValue, previousNode?.value ?? null);
           }
 
-          // Move focus to the new page's title (if present) once it has actually mounted in the DOM, so
-          // assistive technology can announce the updated heading (and any aria-describedby'd step count) in a
-          // single pass, instead of relying solely on the `announcement` live region. Because this only runs for
-          // nodes added after the observer starts, the initial page's title is left untouched on mount.
-          const titleEl = addedNode.matches(`[${CAROUSEL_TITLE}]`)
-            ? addedNode
-            : addedNode.querySelector<HTMLElement>(`[${CAROUSEL_TITLE}]`);
+          // Move focus to a page's title only when it mounts as part of an actual navigation to it (tracked via
+          // `pendingFocusValueRef`), so assistive technology announces the updated heading (and any
+          // aria-describedby'd step count) in a single pass. A page's own root element (marked with
+          // `data-carousel-item`) is never removed/re-added on navigation - only its children toggle - so the
+          // title's *owning* item is resolved via the closest `[data-carousel-item]` ancestor and compared
+          // against the pending value. This ensures unrelated title mounts elsewhere in the carousel - e.g. async
+          // content added to a page that isn't the one just navigated to - never steal focus.
+          if (pendingFocusValueRef.current !== null) {
+            const titleEl = addedNode.matches(`[${CAROUSEL_TITLE}]`)
+              ? addedNode
+              : addedNode.querySelector<HTMLElement>(`[${CAROUSEL_TITLE}]`);
 
-          titleEl?.focus({ preventScroll: true });
+            const owningItemValue = titleEl?.closest(`[${CAROUSEL_ITEM}]`)?.getAttribute(CAROUSEL_ITEM);
+
+            if (titleEl && owningItemValue === pendingFocusValueRef.current) {
+              titleEl.focus({ preventScroll: true });
+              pendingFocusValueRef.current = null;
+            }
+          }
         }
 
         for (const removedNode of Array.from(mutation.removedNodes)) {
