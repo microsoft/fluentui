@@ -358,20 +358,56 @@ verbatim, e.g. Button's `background, border, color` — never an expanded longha
 and also narrows behaviour (Griffel's `border` would animate width and style changes; a longhand list
 would not). Verify per module with a computed-style equality check.
 
+### Identical variant bodies: delete before collapsing
+
+Sibling `@variant` blocks with identical bodies collapse to a comma list — `@variant hover,
+hover-active { … }` compiles to one nested rule per member in list order, byte-identical to the
+separate blocks, with per-member specificity (never a `:is()` wrap). Collapse only CONSECUTIVE
+siblings: hoisting a block across an intervening sibling that touches any of the same properties
+reorders the cascade.
+
+Before collapsing, test the null hypothesis: a nested `hover`/`hover-active`/`focus` arm that only
+re-asserts declarations its parent state block already carries is usually DEAD — every catalog
+variant is `:where()`-flat, so the parent base (later in source than the interaction blocks it
+outranks) already wins on order alone. Delete such arms rather than collapsing them, and prove the
+deletion with a computed-style A/B across the pseudo-state × forced-colors matrix. The identity
+custom variant (`@custom-variant self (&)`) that would let a base join a comma list compiles
+safely, but no shipped site has needed it — a re-assertion arm that measures redundant is deleted
+instead.
+
 ### Icon variants
 
 The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless
-`bundleIcon`:
+`bundleIcon` on each of the two sibling glyphs it renders directly inside the slot element. The
+`icon-filled` / `icon-regular` variants are direct-child selectors applied to the class that owns
+the glyphs — no descendant wrapper:
 
 ```css
-& .icon * {
-  @variant variant-filled {
-    display: none;
+.icon {
+  @variant group-hover/fui-button {
+    @variant icon-filled {
+      @apply inline;
+    }
+
+    @variant icon-regular {
+      @apply hidden;
+    }
   }
 }
 ```
 
-A permitted nested-selector exception — glyphs carry no module class. Copy `Button.module.css`.
+Copy `Button.module.css`. Two constraints:
+
+- **State-guard placement.** A group-state guard wraps the icon variants from the OWNING class's
+  block, and that class must be a **descendant** of the group root. On a block anchored on the group
+  root itself the compiled group check fails silently — verify with a computed-style probe before
+  anchoring a guarded swap on a root class.
+- **Direct-child reach.** `icon-filled`/`icon-regular` reach only glyphs that are direct children of
+  the anchor. Where the glyphs sit deeper (InteractionTagPrimary anchors on root appearance classes
+  while the glyphs live inside the tag icon slot), use the glyph-self spellings `variant-filled` /
+  `variant-regular` inside a `& *` wrapper — the one remaining permitted nested-selector form for
+  glyphs. A consumer who wraps their bundled icon in an extra element takes the glyphs out of
+  direct-child reach by design.
 
 ## Code style
 

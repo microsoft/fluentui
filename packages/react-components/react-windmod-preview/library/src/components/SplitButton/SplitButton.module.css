@@ -19,11 +19,7 @@
       @variant forced-colors {
         @apply border-e-[HighlightText];
 
-        @variant group-hover/fui-split-button {
-          @apply border-e-[Highlight];
-        }
-
-        @variant group-hover-active/fui-split-button {
+        @variant group-hover/fui-split-button, group-hover-active/fui-split-button {
           @apply border-e-[Highlight];
         }
       }

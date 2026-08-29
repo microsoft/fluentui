@@ -5,7 +5,7 @@
 
 @layer fui.components.l1 {
   .content {
-    @apply box-border max-w-240 cursor-default overflow-visible rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1 px-11 pt-vertical-xs pb-vertical-s-nudge font-base text-base-200 leading-base-200 break-words text-neutral-foreground-1;
+    @apply box-border max-w-240 cursor-default overflow-visible rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 px-11 pt-vertical-xs pb-vertical-s-nudge font-base text-base-200 leading-base-200 break-words text-neutral-foreground-1;
 
     /* Cross-axis inset for aligned arrows; on the surface so consumer overrides inherit. */
     --fui-positioning-arrow-cross: 8px;
@@ -32,7 +32,7 @@
     --fui-positioning-arrow-offset: -4.242px;
 
     @variant before {
-      @apply -m-(--spacing-thin) block size-full rounded-bl-small border-(length:--spacing-thin) border-solid border-transparent-stroke bg-inherit;
+      @apply -m-thin block size-full rounded-bl-small border-thin border-solid border-transparent-stroke bg-inherit;
 
       clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
     }

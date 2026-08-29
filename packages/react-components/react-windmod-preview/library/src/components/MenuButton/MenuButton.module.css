@@ -4,7 +4,7 @@
   .root {
     @variant open {
       @variant appearance-outline {
-        @apply border-(length:--spacing-thicker);
+        @apply border-thicker;
       }
 
       /* Griffel's expanded colours are plain declarations that Button's own :hover and
@@ -61,10 +61,6 @@
         /* After the focus crossing, as in Button: the disabled border wins over it. */
         @variant disabled, disabled-focusable {
           @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-          @variant focus {
-            @apply border-[GrayText];
-          }
         }
       }
     }
@@ -78,14 +74,12 @@
         }
       }
 
-      & * {
-        @variant variant-filled {
-          @apply inline;
-        }
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
@@ -96,25 +90,13 @@
         }
       }
 
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
         }
 
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }
@@ -134,37 +116,23 @@
     }
 
     @variant group-open/fui-menu-button {
-      & * {
-        @variant variant-filled {
-          @apply inline;
-        }
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
         }
 
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }

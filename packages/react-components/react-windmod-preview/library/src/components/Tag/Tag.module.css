@@ -11,7 +11,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-grid w-fit items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply box-border inline-grid w-fit items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 
@@ -36,7 +36,7 @@
 
       /* Extends the pointer target to the WCAG 2.2 AA minimum without changing the
          painted box; the pseudo-elements carry no paint. */
-      @media (forced-colors: none) {
+      @variant not-forced-colors {
         @variant before, after {
           @apply absolute start-0 h-2 w-full;
         }
@@ -52,7 +52,7 @@
     }
 
     @variant focus-visible {
-      @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply outline-thick outline-stroke-focus-2 outline-solid;
     }
 
     /* A Tag with secondary text gives its primary text a negative margin that covers the
@@ -64,7 +64,7 @@
       @apply relative;
 
       @variant before {
-        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin);
+        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-thin;
       }
     }
   }
@@ -74,7 +74,7 @@
 
     @variant forced-colors {
       @variant before {
-        @apply rounded-circular border-x-(length:--spacing-thin);
+        @apply rounded-circular border-x-thin;
       }
     }
   }

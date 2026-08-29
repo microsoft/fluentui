@@ -23,12 +23,12 @@
   /* The corner and the inline-end border are flattened so the button can sit flush against the
      surface edge. */
   .dismiss-button {
-    @apply relative ms-auto box-border flex cursor-pointer items-center rounded-e-none border-(length:--spacing-thin) border-solid border-transparent-stroke bg-transparent-background px-horizontal-xs py-vertical-xs font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2;
+    @apply relative ms-auto box-border flex cursor-pointer items-center rounded-e-none border-thin border-solid border-transparent-stroke bg-transparent-background px-horizontal-xs py-vertical-xs font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2;
 
     border-inline-end-style: none;
 
     @variant focus-visible {
-      @apply rounded-medium border-transparent outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2 outline-solid;
     }
   }
 

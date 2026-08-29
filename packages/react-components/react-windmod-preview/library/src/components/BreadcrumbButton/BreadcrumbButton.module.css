@@ -24,20 +24,14 @@
   }
 
   .icon {
-    --fui-breadcrumb-icon-size: var(--text-icon-16);
-
-    @apply me-horizontal-xs size-(--fui-breadcrumb-icon-size) text-[length:var(--fui-breadcrumb-icon-size)] leading-base-400;
+    @apply me-horizontal-xs size-16 text-icon-16 leading-base-400;
 
     @variant group-size-small/fui-breadcrumb-button {
-      @apply leading-base-200;
-
-      --fui-breadcrumb-icon-size: var(--text-icon-12);
+      @apply size-12 text-icon-12 leading-base-200;
     }
 
     @variant group-size-large/fui-breadcrumb-button {
-      @apply leading-base-600;
-
-      --fui-breadcrumb-icon-size: calc(20px * var(--base-scale));
+      @apply size-20 text-icon-20 leading-base-600;
     }
 
     /* A current entry is not an affordance, so it undoes Button's interactive glyph swap as
@@ -48,14 +42,12 @@
         group-disabled-native/fui-breadcrumb-button {
         @apply text-inherit;
 
-        & * {
-          @variant variant-filled {
-            @apply hidden;
-          }
+        @variant icon-filled {
+          @apply hidden;
+        }
 
-          @variant variant-regular {
-            @apply inline;
-          }
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }

@@ -11,6 +11,6 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border w-max max-w-[300px] min-w-[138px] overflow-x-hidden rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1 p-4 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-16;
+    @apply box-border w-max max-w-[300px] min-w-[138px] overflow-x-hidden rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-4 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-16;
   }
 }

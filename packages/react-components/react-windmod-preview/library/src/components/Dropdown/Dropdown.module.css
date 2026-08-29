@@ -22,7 +22,7 @@
        which is not a <time> and is dropped at computed-value time, so both sides compute 0s / ease.
        Reduced motion is suppressed house-wide by the theme, not here. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -32,7 +32,7 @@
     }
 
     @variant focus-within {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);
@@ -49,12 +49,11 @@
 
     /* Focus inside the clear button must NOT reveal the field's focus underline. Tailwind has no
        child-state-to-parent primitive; the module-local reference is rewritten to the built ident
-       inside :has(), which is what makes this reachable at all. */
-    @supports selector(:has(*)) {
-      &:has(.clear-button:focus)::after {
-        border-bottom-color: initial;
-        transform: scaleX(0);
-      }
+       inside :has(), which is what makes this reachable at all. Griffel wraps this rule in
+       @supports selector(:has(*)); the browser floor has :has, so the guard is dropped. */
+    &:has(.clear-button:focus)::after {
+      border-bottom-color: initial;
+      transform: scaleX(0);
     }
   }
 
@@ -62,22 +61,22 @@
      every block spells its own border and why .underline omits border-solid. Dropdown diverges on
      .filled-* alone. */
   .outline {
-    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
   }
 
   .underline {
-    @apply rounded-none border-b-(length:--spacing-thin) border-b-neutral-stroke-accessible bg-transparent-background;
+    @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
   }
 
   /* border-transparent, NOT border-transparent-stroke: Griffel's Dropdown writes the literal
      keyword where its Combobox, Input and TagPickerControl write the token, and the two resolve
      differently in teams-high-contrast (#ffffff), which the web-light pixel gate cannot see. */
   .filled-lighter {
-    @apply border-(length:--spacing-thin) border-solid border-transparent bg-neutral-background-1;
+    @apply border-thin border-solid border-transparent bg-neutral-background-1;
   }
 
   .filled-darker {
-    @apply border-(length:--spacing-thin) border-solid border-transparent bg-neutral-background-3;
+    @apply border-thin border-solid border-transparent bg-neutral-background-3;
   }
 
   /* Griffel ships no underline or filled interactive bucket on Dropdown, only on Input; the
@@ -163,7 +162,7 @@
       @apply border-transparent;
 
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2;
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-thick border-solid border-stroke-focus-2;
 
         @variant forced-colors {
           @apply border-[Highlight];

@@ -62,7 +62,7 @@
       @apply pointer-events-auto mt-vertical-l box-border rounded-medium;
 
       @variant focus-visible {
-        @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+        @apply outline-thick outline-stroke-focus-2 outline-solid;
       }
     }
   }

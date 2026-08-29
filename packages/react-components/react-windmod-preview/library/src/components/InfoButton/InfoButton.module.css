@@ -12,28 +12,24 @@
        the user agent draws it. */
     @apply relative m-0 box-border inline-flex items-center justify-center rounded-medium border-none bg-transparent-background px-horizontal-xs py-vertical-xs align-middle text-neutral-foreground-2 no-underline outline-none;
 
-    /* The glyphs carry no module class — see Button.module.css. */
-    & * {
-      @variant variant-filled {
-        @apply hidden;
-      }
+    /* The glyphs are this root's direct children — InfoButton has no icon slot. */
+    @variant icon-filled {
+      @apply hidden;
+    }
 
-      @variant variant-regular {
-        @apply inline-flex;
-      }
+    @variant icon-regular {
+      @apply inline-flex;
     }
 
     @variant hover {
       @apply cursor-pointer bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
 
-      & * {
-        @variant variant-filled {
-          @apply inline-flex;
-        }
+      @variant icon-filled {
+        @apply inline-flex;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
@@ -56,14 +52,12 @@
     @variant open {
       @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
 
-      & * {
-        @variant variant-filled {
-          @apply inline-flex;
-        }
+      @variant icon-filled {
+        @apply inline-flex;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
 
       @variant forced-colors {

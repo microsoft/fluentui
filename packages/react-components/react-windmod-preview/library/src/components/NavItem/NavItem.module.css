@@ -42,7 +42,7 @@
   .root {
     /* `border-none` sets only border-style; the UA button border-color would survive it.
        Griffel's `border: none` shorthand also resets the colour to currentColor. */
-    @apply relative box-border flex w-full cursor-pointer items-start gap-vertical-l rounded-medium border-none border-current bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-(--duration-faster) ease-(--ease-linear);
+    @apply relative box-border flex w-full cursor-pointer items-start gap-vertical-l rounded-medium border-none border-current bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
 
     justify-content: start;
     transition-property: background;
@@ -52,7 +52,7 @@
     }
 
     @variant focus-visible {
-      @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply outline-thick outline-stroke-focus-2 outline-solid;
 
       outline-offset: calc(var(--spacing-thick) * -1);
     }
@@ -74,7 +74,7 @@
 
       @variant forced-colors {
         @variant after {
-          @apply outline-(length:--spacing-thick) outline-transparent-stroke outline-solid;
+          @apply outline-thick outline-transparent-stroke outline-solid;
 
           outline-offset: calc(var(--spacing-thick) * -1);
         }
@@ -85,34 +85,30 @@
   .icon {
     @apply grid min-h-20 min-w-20 justify-center overflow-hidden;
 
-    & * {
-      @variant variant-filled {
-        @apply hidden text-transparent;
-        grid-area: overlay-area;
-      }
+    @variant icon-filled {
+      @apply hidden text-transparent;
+      grid-area: overlay-area;
+    }
 
-      @variant variant-regular {
-        @apply inline;
-        grid-area: overlay-area;
-      }
+    @variant icon-regular {
+      @apply inline;
+      grid-area: overlay-area;
     }
 
     @variant group-selected/fui-nav-item {
-      & * {
-        @variant variant-filled {
-          @apply inline;
-          animation-duration: var(--duration-faster);
-          animation-fill-mode: both;
-          animation-name: nav-icon-filled-enter;
-          animation-timing-function: var(--ease-linear);
-        }
+      @variant icon-filled {
+        @apply inline;
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-filled-enter;
+        animation-timing-function: var(--ease-linear);
+      }
 
-        @variant variant-regular {
-          animation-duration: var(--duration-faster);
-          animation-fill-mode: both;
-          animation-name: nav-icon-regular-exit;
-          animation-timing-function: var(--ease-linear);
-        }
+      @variant icon-regular {
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-regular-exit;
+        animation-timing-function: var(--ease-linear);
       }
     }
   }

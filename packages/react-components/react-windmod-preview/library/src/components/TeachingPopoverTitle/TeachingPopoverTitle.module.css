@@ -15,12 +15,12 @@
   /* Same button as the header's, minus its resting colour and its padding — see
      TeachingPopoverHeader.module.css. */
   .dismiss-button {
-    @apply relative ms-auto box-border flex cursor-pointer items-center rounded-e-none border-(length:--spacing-thin) border-solid border-transparent-stroke bg-transparent-background font-base text-base-300 leading-base-300 font-regular;
+    @apply relative ms-auto box-border flex cursor-pointer items-center rounded-e-none border-thin border-solid border-transparent-stroke bg-transparent-background font-base text-base-300 leading-base-300 font-regular;
 
     border-inline-end-style: none;
 
     @variant focus-visible {
-      @apply rounded-medium border-transparent outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2 outline-solid;
     }
   }
 

@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply inline-grid h-full items-center rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply inline-grid h-full items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 
@@ -37,7 +37,7 @@
 
       /* Extends the pointer target to the WCAG 2.2 AA minimum without changing the
          painted box; the pseudo-elements carry no paint. */
-      @media (forced-colors: none) {
+      @variant not-forced-colors {
         @variant before, after {
           @apply absolute start-0 h-2 w-full;
         }
@@ -53,7 +53,7 @@
     }
 
     @variant focus-visible {
-      @apply z-1 outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply z-1 outline-thick outline-stroke-focus-2 outline-solid;
     }
 
     /* A primary with secondary text gives that text a negative margin that covers the top
@@ -66,7 +66,7 @@
       @apply relative;
 
       @variant before {
-        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-(length:--spacing-thin);
+        @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-thin;
         border-block-start-style: solid;
       }
 
@@ -83,7 +83,7 @@
 
     @variant forced-colors {
       @variant before {
-        @apply rounded-s-circular rounded-e-none border-s-(length:--spacing-thin);
+        @apply rounded-s-circular rounded-e-none border-s-thin;
         border-inline-start-style: solid;
       }
     }
@@ -92,7 +92,7 @@
   .circular-without-secondary-action {
     @variant forced-colors {
       @variant before {
-        @apply rounded-e-circular border-e-(length:--spacing-thin) border-e-transparent;
+        @apply rounded-e-circular border-e-thin border-e-transparent;
         border-inline-end-style: solid;
       }
     }
@@ -101,6 +101,9 @@
   .outline {
     @apply border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
 
+    /* Glyph-self variant spelling, not icon-filled/icon-regular: the swap anchors on this ROOT
+       appearance class (Griffel's shape), and the glyphs sit inside the tag icon slot — not
+       direct children — so the direct-child variants cannot reach them. See variants.css. */
     @variant enabled {
       @variant hover {
         @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-2-hover;
@@ -179,10 +182,6 @@
 
     @variant forced-colors {
       @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-      @variant hover, active {
-        @apply bg-[Highlight] text-[HighlightText];
-      }
     }
   }
 

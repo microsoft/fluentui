@@ -68,7 +68,7 @@
        children only: a descendant selector would rotate an svg's own path a second time. The four
        rotations are equal-specificity, so their source order is the cascade. */
     & > * {
-      @apply rotate-0 transition-[rotate] duration-(--duration-normal) ease-[ease-out];
+      @apply rotate-0 transition-[rotate] duration-normal ease-[ease-out];
 
       @variant rtl {
         @apply rotate-180;

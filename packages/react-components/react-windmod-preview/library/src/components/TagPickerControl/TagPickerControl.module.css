@@ -33,7 +33,7 @@
     }
 
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -43,7 +43,7 @@
     }
 
     @variant focus-within {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);
@@ -60,22 +60,22 @@
   }
 
   .outline {
-    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
   }
 
   .underline {
-    @apply rounded-none border-b-(length:--spacing-thin) border-b-neutral-stroke-accessible bg-transparent-background;
+    @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
   }
 
   /* border-transparent-stroke, NOT the literal keyword: Griffel's TagPickerControl writes the token
      where its Dropdown writes `transparent`, and the two resolve differently in
      teams-high-contrast, which the web-light pixel gate cannot see. */
   .filled-lighter {
-    @apply border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1;
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-1;
   }
 
   .filled-darker {
-    @apply border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-3;
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-3;
   }
 
   .outline-interactive {

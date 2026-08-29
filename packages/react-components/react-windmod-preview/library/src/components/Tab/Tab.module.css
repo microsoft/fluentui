@@ -69,7 +69,7 @@
 
         @variant animating {
           @variant after {
-            @apply transition-[transform] duration-(--duration-slow) ease-(--ease-decelerate-max);
+            @apply transition-[transform] duration-slow ease-decelerate-max;
           }
 
           /* transition-property, which the theme's reduced-motion floor does not author: Griffel
@@ -229,13 +229,7 @@
       @variant disabled {
         @apply bg-transparent-background;
 
-        @variant hover {
-          @variant before {
-            @apply bg-transparent-stroke;
-          }
-        }
-
-        @variant active {
+        @variant hover, active {
           @variant before {
             @apply bg-transparent-stroke;
           }
@@ -248,13 +242,7 @@
         }
 
         @variant forced-colors {
-          @variant hover {
-            @variant before {
-              @apply bg-transparent;
-            }
-          }
-
-          @variant active {
+          @variant hover, active {
             @variant before {
               @apply bg-transparent;
             }
@@ -264,7 +252,7 @@
     }
 
     @variant appearance-subtle-circular, appearance-filled-circular {
-      @apply rounded-circular border-(length:--spacing-thin) border-solid border-transparent-stroke py-[calc(var(--spacing-vertical-s-nudge)-var(--spacing-thin))];
+      @apply rounded-circular border-thin border-solid border-transparent-stroke py-[calc(var(--spacing-vertical-s-nudge)-var(--spacing-thin))];
 
       @variant size-small {
         @apply py-[calc(var(--spacing-vertical-xxs)-var(--spacing-thin))];
@@ -369,7 +357,7 @@
 
     /* Focus outranks every appearance and state, so it stays last. */
     @variant focus-visible {
-      @apply z-1 border-transparent outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply z-1 border-transparent outline-thick outline-transparent outline-solid;
 
       box-shadow:
         var(--shadow-4),
@@ -443,17 +431,15 @@
       }
     }
 
-    /* Glyph swap on selection, keyed off the data-fui-icon-variant attribute bundleIcon stamps on each
-       glyph. The glyphs carry no module class of their own, so they are reached by descent. */
-    & * {
-      @variant group-selected/fui-tab {
-        @variant variant-filled {
-          @apply inline;
-        }
+    /* Glyph swap on selection — the icon-filled/icon-regular variants select the glyphs as this
+       slot's direct children. */
+    @variant group-selected/fui-tab {
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
   }

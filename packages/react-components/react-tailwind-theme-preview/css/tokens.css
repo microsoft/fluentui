@@ -472,7 +472,7 @@
   --shadow-28-brand: var(--shadow-28-brand);
   --shadow-64-brand: var(--shadow-64-brand);
 
-  /* Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths) */
+  /* Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for ring widths) */
   --spacing-thin: var(--stroke-width-thin);
   --spacing-thick: var(--stroke-width-thick);
   --spacing-thicker: var(--stroke-width-thicker);
@@ -534,6 +534,30 @@
   --z-index-floating: var(--z-index-floating, 4000);
   --z-index-priority: var(--z-index-priority, 5000);
   --z-index-debug: var(--z-index-debug, 6000);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --border-width-* (border-* border-t/b/s/e/x/y-* divide-*) */
+  --border-width-thin: var(--spacing-thin);
+  --border-width-thick: var(--spacing-thick);
+  --border-width-thicker: var(--spacing-thicker);
+  --border-width-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --outline-width-* (outline-*) */
+  --outline-width-thin: var(--spacing-thin);
+  --outline-width-thick: var(--spacing-thick);
+  --outline-width-thicker: var(--spacing-thicker);
+  --outline-width-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --outline-offset-* (outline-offset-*) */
+  --outline-offset-thin: var(--spacing-thin);
+  --outline-offset-thick: var(--spacing-thick);
+  --outline-offset-thicker: var(--spacing-thicker);
+  --outline-offset-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --text-decoration-thickness-* (decoration-*) */
+  --text-decoration-thickness-thin: var(--spacing-thin);
+  --text-decoration-thickness-thick: var(--spacing-thick);
+  --text-decoration-thickness-thicker: var(--spacing-thicker);
+  --text-decoration-thickness-thickest: var(--spacing-thickest);
 }
 
 /*
@@ -541,12 +565,11 @@
  *
  * `@theme inline` above registers utility NAMES and emits no variables, which is
  * correct for every other namespace. The spacing namespace needs real variables:
- * border-width, outline-width, ring-width, divide-*, underline-offset and
- * text-decoration-thickness do NOT consume the --spacing-* namespace (v4 border
- * widths are a fixed bare-number px progression), so modules author those as a
- * direct var(--spacing-thin); and the `tokens.*` JS constants in @fluentui/tokens
- * are var() reference strings against the canonical names emitted here (charts
- * inline styles etc.).
+ * the border/outline/decoration widths have named utilities via the width-namespace
+ * mirrors above, but ring-width, divide-* values and underline-offset have no
+ * themable namespace and are authored as a direct var(--spacing-thin); and the
+ * `tokens.*` JS constants in @fluentui/tokens are var() reference strings against
+ * the canonical names emitted here (charts inline styles etc.).
  *
  * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)
  * ARE GONE for the ENTIRE token set: single

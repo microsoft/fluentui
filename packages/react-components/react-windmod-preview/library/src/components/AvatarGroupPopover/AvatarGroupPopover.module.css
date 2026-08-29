@@ -24,19 +24,19 @@
   }
 
   .border-thin {
-    @apply border-(length:--spacing-thin);
+    @apply border-thin;
   }
 
   .border-thick {
-    @apply border-(length:--spacing-thick);
+    @apply border-thick;
   }
 
   .border-thicker {
-    @apply border-(length:--spacing-thicker);
+    @apply border-thicker;
   }
 
   .border-thickest {
-    @apply border-(length:--spacing-thickest);
+    @apply border-thickest;
   }
 
   .trigger-button {
@@ -53,7 +53,7 @@
     }
 
     @variant focus-visible {
-      @apply border-(length:--spacing-thick) border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-solid border-stroke-focus-2 outline-none;
     }
 
     @variant hover {
@@ -73,7 +73,7 @@
     }
 
     @variant focus-visible {
-      @apply border-(length:--spacing-thick) border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-solid border-stroke-focus-2 outline-none;
     }
   }
 

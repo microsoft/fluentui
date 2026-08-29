@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-flex size-28 rounded-none border-(length:--spacing-thin) border-transparent-stroke bg-cover bg-no-repeat p-0 outline-none;
+    @apply box-border inline-flex size-28 rounded-none border-thin border-transparent-stroke bg-cover bg-no-repeat p-0 outline-none;
 
     @variant hover {
       @apply cursor-pointer border-none border-current;

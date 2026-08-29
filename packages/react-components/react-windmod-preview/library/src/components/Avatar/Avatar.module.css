@@ -335,7 +335,7 @@
   }
 
   .icon-initials {
-    @apply absolute start-0 top-0 box-border flex size-full items-center justify-center rounded-[inherit] border-(length:--spacing-thin) border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-none text-(--fui-avatar-foreground) select-none;
+    @apply absolute start-0 top-0 box-border flex size-full items-center justify-center rounded-[inherit] border-thin border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-none text-(--fui-avatar-foreground) select-none;
   }
 
   .icon-12 {

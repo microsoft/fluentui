@@ -14,7 +14,7 @@
   }
 
   .bordered {
-    @apply border-(length:--spacing-thin) border-solid;
+    @apply border-thin border-solid;
   }
 
   .shadow {

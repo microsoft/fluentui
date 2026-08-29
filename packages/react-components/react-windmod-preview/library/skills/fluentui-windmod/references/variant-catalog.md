@@ -187,7 +187,8 @@ Sectioned by owning component, in
 Accordion       expand-icon-position-start|end
 Button          appearance-secondary|primary|outline|subtle|transparent
 Card            appearance-filled-alternative        (outline, subtle shared with Button)
-bundleIcon      variant-filled  variant-regular      — the glyph swap
+bundleIcon      icon-filled  icon-regular         — the glyph swap, direct-child form
+                variant-filled  variant-regular      — glyph-self form for deeper-nested glyphs
 ColorSlider     channel-saturation  channel-value    (hue is the resting look, no entry)
 Dialog          modal-type-non-modal  nested
 Drawer          position-start|end|bottom

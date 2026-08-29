@@ -5,7 +5,7 @@
   /* The checkerboard is the 10x10 PNG Griffel loads from a CDN, inlined byte-identically as a
      data URI so the rail never depends on a network fetch. */
   .rail {
-    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-1;
+    @apply border-thin border-solid border-neutral-stroke-1;
 
     background-image:
       linear-gradient(var(--fui-AlphaSlider--direction), transparent, var(--fui-AlphaSlider__rail--color)),

@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex h-full items-center rounded-ss-none rounded-se-medium rounded-ee-medium rounded-es-none border-(length:--spacing-thin) border-solid border-transparent-stroke border-s-neutral-stroke-1 bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply flex h-full items-center rounded-ss-none rounded-se-medium rounded-ee-medium rounded-es-none border-thin border-solid border-transparent-stroke border-s-neutral-stroke-1 bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 
@@ -35,7 +35,7 @@
     @variant size-extra-small {
       @apply relative px-5 text-icon-12;
 
-      @media (forced-colors: none) {
+      @variant not-forced-colors {
         @variant before, after {
           @apply absolute start-0 h-2 w-full;
         }
@@ -51,11 +51,11 @@
     }
 
     @variant focus-visible {
-      @apply outline-(length:--spacing-thick) outline-stroke-focus-2 outline-solid;
+      @apply outline-thick outline-stroke-focus-2 outline-solid;
     }
 
     @variant forced-colors {
-      @apply border-y-(length:--spacing-thin);
+      @apply border-y-thin;
 
       @variant enabled {
         @variant hover, active {
@@ -70,7 +70,7 @@
   }
 
   .outline {
-    @apply border-y-(length:--spacing-thin) border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
+    @apply border-y-thin border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
 
     @variant enabled {
       @variant hover {
@@ -118,10 +118,6 @@
 
     @variant forced-colors {
       @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-      @variant hover, active {
-        @apply bg-[Highlight] text-[HighlightText];
-      }
     }
   }
 }

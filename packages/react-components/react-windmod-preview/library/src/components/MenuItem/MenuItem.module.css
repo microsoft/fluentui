@@ -39,7 +39,7 @@
       @apply border-transparent;
 
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2;
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-thick border-solid border-stroke-focus-2;
       }
     }
 
@@ -52,10 +52,6 @@
 
       @variant hover-active {
         @apply bg-neutral-background-1 text-neutral-foreground-disabled;
-      }
-
-      @variant focus {
-        @apply text-neutral-foreground-disabled;
       }
     }
 
@@ -79,15 +75,7 @@
       @variant disabled {
         @apply text-[GrayText];
 
-        @variant hover {
-          @apply bg-[Canvas] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply bg-[Canvas] text-[GrayText];
-        }
-
-        @variant focus {
+        @variant hover, hover-active, focus {
           @apply bg-[Canvas] text-[GrayText];
         }
       }
@@ -108,45 +96,27 @@
   .icon {
     @apply inline-flex size-20 shrink-0 items-center justify-center text-icon-20 leading-[0];
 
-    @variant group-hover/fui-menu-item {
+    @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
       @apply text-neutral-foreground-2-brand-selected;
 
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
-
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-filled {
+        @apply block;
       }
-    }
 
-    @variant group-submenu-open/fui-menu-item {
-      @apply text-neutral-foreground-2-brand-selected;
-
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
-
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-disabled/fui-menu-item {
       @apply text-neutral-foreground-disabled;
 
-      & * {
-        @variant variant-filled {
-          @apply hidden;
-        }
+      @variant icon-filled {
+        @apply hidden;
+      }
 
-        @variant variant-regular {
-          @apply block;
-        }
+      @variant icon-regular {
+        @apply block;
       }
     }
 
@@ -192,25 +162,13 @@
       @variant hover-active {
         @apply bg-neutral-background-1 text-neutral-foreground-disabled;
       }
-
-      @variant focus {
-        @apply text-neutral-foreground-disabled;
-      }
     }
 
     @variant forced-colors {
       @variant group-disabled/fui-menu-item {
         @apply text-[GrayText];
 
-        @variant hover {
-          @apply bg-[Canvas] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply bg-[Canvas] text-[GrayText];
-        }
-
-        @variant focus {
+        @variant hover, hover-active, focus {
           @apply bg-[Canvas] text-[GrayText];
         }
       }
@@ -252,27 +210,13 @@
   .submenu-indicator {
     @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[0];
 
-    @variant group-hover/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
-
-        @variant variant-regular {
-          @apply hidden;
-        }
+    @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
+      @variant icon-filled {
+        @apply block;
       }
-    }
 
-    @variant group-submenu-open/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
-
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
@@ -281,14 +225,12 @@
     }
 
     @variant group-disabled/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply hidden;
-        }
+      @variant icon-filled {
+        @apply hidden;
+      }
 
-        @variant variant-regular {
-          @apply block;
-        }
+      @variant icon-regular {
+        @apply block;
       }
     }
   }
