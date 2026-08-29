@@ -70,7 +70,7 @@ export const CalendarWeekSelection = (): JSXElement => {
 CalendarWeekSelection.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to set a selection range of weeks instead of selecting a single day.',
+      story: 'A Calendar allows you to set a selection range of weeks instead of selecting a single day.',
     },
   },
 };

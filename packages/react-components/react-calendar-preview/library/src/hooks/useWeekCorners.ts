@@ -122,7 +122,7 @@ export function useWeekCorners(
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = dateRangeType === 'workWeek' ? 'week' : dateRangeType;
 
-    // we do not pass daysToSelectInDayView because we handle setting those styles dyanamically in onMouseOver
+    // we do not pass daysToSelectInDayView because we handle setting those styles dynamically in onMouseOver
     const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
 
     if (date1Selected !== date2Selected) {

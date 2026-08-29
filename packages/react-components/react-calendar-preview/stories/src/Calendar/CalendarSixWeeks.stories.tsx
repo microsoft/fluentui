@@ -22,7 +22,7 @@ export const CalendarSixWeeks = (): JSXElement => {
 CalendarSixWeeks.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to set a six week month.',
+      story: 'A Calendar allows you to set a six-week month.',
     },
   },
 };
