@@ -20,8 +20,13 @@
 @custom-variant appearance-subtle (&:where([data-appearance='subtle']));
 @custom-variant appearance-transparent (&:where([data-appearance='transparent']));
 
-/* Card: appearance-outline and appearance-subtle are shared with Button above */
+/* Card: appearance-outline and appearance-subtle are shared with Button above.
+   after-floating-action is CardPreview's structural reach — a preview immediately following the
+   floating action. Class-based (the peer marker), not data-based: the condition is sibling
+   adjacency, not state. Adjacent (+) on purpose, matching Griffel's
+   `> .fui-Card__floatingAction + .fui-CardPreview` rule. */
 @custom-variant appearance-filled-alternative (&:where([data-appearance='filled-alternative']));
+@custom-variant after-floating-action (:where(.peer\/fui-card-floating-action) + &);
 
 /* bundled-icon glyph variants, selecting the data-fui-icon-variant attribute
  * @fluentui/react-icons/headless bundleIcon stamps on each glyph.

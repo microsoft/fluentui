@@ -51,12 +51,11 @@
 
     /* Focus inside the clear button must NOT reveal the field's focus underline. Tailwind has no
        child-state-to-parent primitive; the module-local reference is rewritten to the built ident
-       inside :has(), which is what makes this reachable at all. */
-    @supports selector(:has(*)) {
-      &:has(.clear-button:focus)::after {
-        border-bottom-color: initial;
-        transform: scaleX(0);
-      }
+       inside :has(), which is what makes this reachable at all. Griffel wraps this rule in
+       @supports selector(:has(*)); the browser floor has :has, so the guard is dropped. */
+    &:has(.clear-button:focus)::after {
+      border-bottom-color: initial;
+      transform: scaleX(0);
     }
   }
 

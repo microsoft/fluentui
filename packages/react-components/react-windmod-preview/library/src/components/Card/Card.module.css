@@ -205,14 +205,6 @@
 
   .floating-action {
     @apply absolute end-4 top-4 z-content;
-
-    /* The preview is reached by its public marker class: a module class from another file would
-       be hashed into this module's namespace and match nothing. */
-    @variant group-vertical/fui-card {
-      & + .group\/fui-card-preview {
-        @apply -mt-(--fui-card-size);
-      }
-    }
   }
 
   .checkbox {

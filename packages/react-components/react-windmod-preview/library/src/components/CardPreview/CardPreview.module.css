@@ -35,6 +35,12 @@
         @apply -mt-(--fui-card-size);
       }
 
+      /* A preview behind the floating action still sits flush with the card's top edge:
+         the action is the first painted child, so :first-of-type misses the preview. */
+      @variant after-floating-action {
+        @apply -mt-(--fui-card-size);
+      }
+
       &:last-of-type {
         @apply -mb-(--fui-card-size);
       }

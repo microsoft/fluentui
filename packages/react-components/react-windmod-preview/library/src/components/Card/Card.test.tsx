@@ -118,7 +118,7 @@ describe('Card', () => {
     expect(root.getAttribute('data-interactive')).toBe(expected ? 'true' : null);
   });
 
-  it('does not stamp a floating-action attribute — the preview reaches it by sibling combinator', () => {
+  it('does not stamp a floating-action attribute — CardPreview selects the adjacency by the peer marker class', () => {
     const { getByTestId } = render(
       <Card data-testid="root" floatingAction={{ children: <button>A</button> }}>
         Card
@@ -176,6 +176,8 @@ describe('Card', () => {
     const action = cardRoot(container).firstElementChild as HTMLElement;
 
     expect(action).toHaveClass(styles.floatingAction);
+    // The sibling marker CardPreview's after-floating-action variant selects on.
+    expect(action).toHaveClass('peer/fui-card-floating-action');
     expect(action).toHaveClass('consumer-action');
     // Content and the slot-level id separate a decorated slot from one rebuilt as a bare
     // className holder: dropping the slot's state spread keeps the class and loses the rest.

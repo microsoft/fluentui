@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 
-import { componentMarkers } from '../../utils/groupMarker';
+import { componentMarkers, peerMarker } from '../../utils/groupMarker';
 import { slotClasses } from '../../utils/slotClasses';
 import type { CardState } from './Card.types';
 
@@ -49,7 +49,8 @@ export const useCardStyles = (state: CardState): CardState => {
   return {
     ...state,
     root,
-    floatingAction: slotClasses(state.floatingAction, styles.floatingAction),
+    // The peer marker lets CardPreview's own module see the adjacency (after-floating-action).
+    floatingAction: slotClasses(state.floatingAction, styles.floatingAction, peerMarker('card-floating-action')),
     checkbox: slotClasses(state.checkbox, styles.checkbox),
   };
 };
