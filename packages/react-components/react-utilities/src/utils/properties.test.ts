@@ -1,5 +1,12 @@
 import type * as React from 'react';
-import { getNativeProps, divProperties, inputProperties, anchorProperties, buttonProperties, imgProperties } from './properties';
+import {
+  getNativeProps,
+  divProperties,
+  inputProperties,
+  anchorProperties,
+  buttonProperties,
+  imgProperties,
+} from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
