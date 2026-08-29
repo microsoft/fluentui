@@ -6,7 +6,7 @@
      authored in CSS instead. `rotate-0` matches Griffel's computed resting value: a closed
      Griffel chevron computes 0deg, not none. */
   .expand-icon {
-    @apply ms-auto h-20 rotate-0 transition-[rotate] duration-(--duration-fast) ease-(--ease-easy-ease);
+    @apply ms-auto h-20 rotate-0 transition-[rotate] duration-fast ease-easy-ease;
 
     @variant group-open/fui-nav-category-item {
       @apply rotate-180;

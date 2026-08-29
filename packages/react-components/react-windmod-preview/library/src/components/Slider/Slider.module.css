@@ -96,7 +96,7 @@
   /* The steps gradient resolves to `none` whenever --fui-Slider--steps-percent is absent, which
      the headless hook does for step <= 0 and for no step at all. */
   .rail {
-    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-slider-rail-size) w-full rounded-x-large outline-(length:--spacing-thin) outline-transparent-stroke forced-color-adjust-none outline-solid;
+    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-slider-rail-size) w-full rounded-x-large outline-thin outline-transparent-stroke forced-color-adjust-none outline-solid;
 
     background-image: linear-gradient(
       var(--fui-Slider--direction),

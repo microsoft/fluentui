@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-horizontal-none box-border inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-(--duration-faster) ease-(--ease-easy-ease) outline-none;
+    @apply m-horizontal-none box-border inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
 
     transition-property: background, border, color;
 

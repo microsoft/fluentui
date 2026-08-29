@@ -9,7 +9,7 @@
 
     @variant not-last {
       @variant after {
-        @apply -mx-horizontal-xs mt-0 mb-vertical-xs block border-b-(length:--spacing-thin) border-b-neutral-stroke-2 pb-horizontal-xs;
+        @apply -mx-horizontal-xs mt-0 mb-vertical-xs block border-b-thin border-b-neutral-stroke-2 pb-horizontal-xs;
       }
     }
   }

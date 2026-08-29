@@ -4,7 +4,7 @@
   .root {
     @variant open {
       @variant appearance-outline {
-        @apply border-(length:--spacing-thicker);
+        @apply border-thicker;
       }
 
       /* Griffel's expanded colours are plain declarations that Button's own :hover and

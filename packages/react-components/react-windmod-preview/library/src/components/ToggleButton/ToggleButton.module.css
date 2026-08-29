@@ -3,7 +3,7 @@
 @layer fui.components.l2 {
   .root {
     @variant checked {
-      @apply border-(length:--spacing-thin) border-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+      @apply border-thin border-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
 
       @variant hover {
         @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
@@ -17,7 +17,7 @@
          the checked hover and pressed border colours above outrank this appearance there; here the
          block re-states them because source order alone carries the cascade. */
       @variant appearance-outline {
-        @apply border-(length:--spacing-thicker) border-neutral-stroke-1 bg-transparent-background-selected;
+        @apply border-thicker border-neutral-stroke-1 bg-transparent-background-selected;
 
         @variant hover {
           @apply border-neutral-stroke-1-hover bg-transparent-background-hover;
@@ -76,14 +76,14 @@
         }
 
         @variant appearance-outline {
-          @apply border-(length:--spacing-thin);
+          @apply border-thin;
         }
 
         @variant appearance-primary {
-          @apply outline-(length:--spacing-thin) -outline-offset-(--spacing-thicker) outline-neutral-foreground-on-brand outline-solid;
+          @apply outline-thin -outline-offset-thicker outline-neutral-foreground-on-brand outline-solid;
 
           @variant focus-visible {
-            @apply outline-(length:--spacing-thin) -outline-offset-(--spacing-thickest) outline-neutral-foreground-on-brand outline-solid;
+            @apply outline-thin -outline-offset-thickest outline-neutral-foreground-on-brand outline-solid;
           }
 
           /* Button's pressed outline reset is a lower layer and cannot reach the inner stroke, so
@@ -210,7 +210,7 @@
         }
 
         @variant focus {
-          @apply border-(length:--spacing-thin) border-solid border-[HighlightText] outline-[color:Highlight];
+          @apply border-thin border-solid border-[HighlightText] outline-[color:Highlight];
         }
       }
     }

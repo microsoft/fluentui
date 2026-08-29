@@ -8,7 +8,7 @@
   }
 
   .disabled {
-    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-disabled bg-transparent-background;
+    @apply border-thin border-solid border-neutral-stroke-disabled bg-transparent-background;
 
     @variant forced-colors {
       @apply border-[GrayText];
@@ -16,7 +16,7 @@
   }
 
   .filled {
-    @apply border-(length:--spacing-thin) border-solid border-transparent-stroke;
+    @apply border-thin border-solid border-transparent-stroke;
 
     @variant hover, focus-within {
       @apply border-transparent-stroke-interactive;
@@ -32,12 +32,12 @@
   }
 
   .outline {
-    @apply border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
   }
 
   .interactive {
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -47,7 +47,7 @@
     }
 
     @variant focus-within {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);

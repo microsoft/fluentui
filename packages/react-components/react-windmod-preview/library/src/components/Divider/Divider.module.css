@@ -20,7 +20,7 @@
       @apply w-full;
 
       @variant before, after {
-        @apply min-w-8 border-t-(length:--spacing-thin);
+        @apply min-w-8 border-t-thin;
       }
 
       @variant inset {
@@ -66,7 +66,7 @@
       @apply min-h-20 flex-col;
 
       @variant before, after {
-        @apply min-h-8 border-e-(length:--spacing-thin);
+        @apply min-h-8 border-e-thin;
       }
 
       @variant not-empty {

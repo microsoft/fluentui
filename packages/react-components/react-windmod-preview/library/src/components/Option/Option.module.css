@@ -30,7 +30,7 @@
 
     @variant activedescendant-focusvisible {
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2;
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-thick border-solid border-stroke-focus-2;
       }
     }
   }
@@ -48,7 +48,7 @@
     }
 
     @variant group-multiselect/fui-option {
-      @apply visible box-border flex size-16 items-center justify-center rounded-small border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-icon-12;
+      @apply visible box-border flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12;
 
       @variant group-selected/fui-option {
         @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;

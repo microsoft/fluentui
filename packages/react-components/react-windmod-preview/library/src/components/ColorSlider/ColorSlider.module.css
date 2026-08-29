@@ -28,7 +28,7 @@
      axis, so they need an explicit rtl counterpart; the hue gradient reads the hook's
      direction custom property, which is already direction-aware. */
   .rail {
-    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-color-slider-rail-size) w-full rounded-medium outline-(length:--spacing-thin) outline-transparent-stroke forced-color-adjust-none outline-solid;
+    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-color-slider-rail-size) w-full rounded-medium outline-thin outline-transparent-stroke forced-color-adjust-none outline-solid;
 
     background-image: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
 
@@ -58,12 +58,12 @@
   }
 
   .thumb {
-    @apply pointer-events-none absolute col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-(length:--spacing-thin) border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
+    @apply pointer-events-none absolute col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
 
     inset-inline-start: var(--fui-Slider--progress);
 
     @variant before {
-      @apply absolute inset-0 box-border rounded-circular border-(length:--spacing-thick) border-solid border-neutral-background-1;
+      @apply absolute inset-0 box-border rounded-circular border-thick border-solid border-neutral-background-1;
     }
 
     @variant rtl {
@@ -77,7 +77,7 @@
     /* Keyed off the input's own focus, matching Griffel's sibling selector: the range input is
        the only focusable element in the tree and it always precedes the thumb. */
     @variant peer-focus-visible/fui-color-slider {
-      @apply rounded-circular border-(length:--spacing-thick) border-solid border-stroke-focus-2 outline-(length:--spacing-thick) outline-transparent-stroke outline-solid;
+      @apply rounded-circular border-thick border-solid border-stroke-focus-2 outline-thick outline-transparent-stroke outline-solid;
     }
   }
 

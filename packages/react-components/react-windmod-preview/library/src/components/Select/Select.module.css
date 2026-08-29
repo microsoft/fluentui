@@ -35,10 +35,10 @@
   }
 
   .select {
-    @apply box-border h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-(length:--spacing-thin) border-solid border-transparent py-0 ps-horizontal-m pe-34 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-none;
+    @apply box-border h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent py-0 ps-horizontal-m pe-34 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-none;
 
     @variant focus {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
     }
 
     @variant group-size-small/fui-select {

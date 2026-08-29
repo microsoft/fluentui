@@ -10,7 +10,7 @@
     @apply relative box-border inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge py-0 font-base text-base-200 leading-base-200 font-semibold;
 
     @variant after {
-      @apply absolute inset-0 rounded-[inherit] border-(length:--spacing-thin) border-solid border-inherit;
+      @apply absolute inset-0 rounded-[inherit] border-thin border-solid border-inherit;
     }
 
     @variant size-small, size-extra-small, size-tiny {

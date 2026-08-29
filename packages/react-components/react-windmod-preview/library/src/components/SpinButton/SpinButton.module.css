@@ -8,13 +8,13 @@
     @apply relative isolate inline-grid min-h-32 grid-cols-[1fr_calc(var(--spacing)*24)] grid-rows-[1fr_1fr] gap-x-horizontal-xs gap-y-0 rounded-medium bg-neutral-background-1 py-0 ps-horizontal-m-nudge pe-0 align-middle;
 
     @variant before {
-      @apply pointer-events-none absolute inset-0 z-10 box-border rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
+      @apply pointer-events-none absolute inset-0 z-10 box-border rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
     }
 
     /* border-solid is deliberately absent: a lone border-bottom width with an explicit style
        gives the other three sides a computed width and grows the box. */
     @variant after {
-      @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
+      @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -31,7 +31,7 @@
     }
 
     @variant focus-within {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);

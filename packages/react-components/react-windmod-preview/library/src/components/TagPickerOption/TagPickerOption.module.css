@@ -29,7 +29,7 @@
 
     @variant activedescendant-focusvisible {
       @variant after {
-        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-(length:--spacing-thick) border-solid border-stroke-focus-2;
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-thick border-solid border-stroke-focus-2;
       }
     }
   }

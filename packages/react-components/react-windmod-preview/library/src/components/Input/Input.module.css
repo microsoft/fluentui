@@ -5,10 +5,10 @@
      order alone arbitrates. .filled before .filledInteractive, .invalid after every appearance
      block, .disabled last. */
   .root {
-    @apply relative box-border inline-flex min-h-32 flex-nowrap items-center gap-horizontal-xxs rounded-medium border-(length:--spacing-thin) border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1 align-middle font-base text-base-300 leading-base-300 font-regular;
+    @apply relative box-border inline-flex min-h-32 flex-nowrap items-center gap-horizontal-xxs rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1 align-middle font-base text-base-300 leading-base-300 font-regular;
 
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-(length:--spacing-thick) border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -52,7 +52,7 @@
     }
 
     @variant focus-within {
-      @apply outline-(length:--spacing-thick) outline-transparent outline-solid;
+      @apply outline-thick outline-transparent outline-solid;
 
       @variant after {
         transform: scaleX(1);
