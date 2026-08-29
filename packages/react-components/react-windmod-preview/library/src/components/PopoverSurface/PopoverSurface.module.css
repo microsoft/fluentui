@@ -14,7 +14,7 @@
      the surface and clip the arrow. Nor is there a `cursor`: Griffel's Popover authors none, so the
      body copy keeps its I-beam. Tooltip is the component that authors `cursor: default`. */
   .root {
-    @apply max-h-none max-w-none overflow-visible rounded-medium border-(length:--spacing-thin) border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+    @apply max-h-none max-w-none overflow-visible rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
 
     /* Griffel clamps floating-ui's arrow at 2 × borderRadiusMedium. */
     --fui-positioning-arrow-cross: 8px;
@@ -32,7 +32,7 @@
       @apply absolute -z-1 box-border size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
 
       @variant before {
-        @apply -m-(--spacing-thin) block size-full rounded-bl-small border-(length:--spacing-thin) border-solid border-transparent-stroke bg-inherit;
+        @apply -m-thin block size-full rounded-bl-small border-thin border-solid border-transparent-stroke bg-inherit;
 
         clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
       }
