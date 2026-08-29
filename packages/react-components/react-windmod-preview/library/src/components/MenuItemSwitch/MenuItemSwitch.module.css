@@ -7,7 +7,7 @@
    transition-duration and outranks any layered rule.
    Both absences are asserted from this file's bytes in MenuItemSwitch.test.tsx, so the two names
    are deliberately spelled nowhere in it. */
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   .switch-indicator {
     --fui-menu-item-switch-thumb-offset: 0px;
 

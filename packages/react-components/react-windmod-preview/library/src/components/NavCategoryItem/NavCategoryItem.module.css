@@ -1,6 +1,6 @@
 @reference '#theme';
 
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   /* Griffel rotates this slot with a Web Animations API presence motion whose end state persists
      (fill: forwards), so an open category rests at 180deg. The rest state and the transition are
      authored in CSS instead. `rotate-0` matches Griffel's computed resting value: a closed

@@ -4,9 +4,13 @@
 
 Windmod component packages ship plain, precompiled CSS that references theme-level custom
 properties — the design tokens, the cascade `@layer` order, `--base-scale`, `--spacing` and the
-stroke widths. Something has to emit those **once per document**: this package. It ships the seven
-theme classes (`.fui-theme-web-light`, `.fui-theme-web-dark`, `.fui-theme-teams-light`, …, each
-containing only custom-property declarations) plus the web-light values as `:root, :host` defaults.
+stroke widths. Something has to emit those **once per document**: this package.
+
+It ships in two parts. `base.css` is **theme-less**: the layer order, the token registrations, the
+spacing scale, the type ramp, the stroke widths, the `prefers-reduced-motion` floor — everything
+that is identical in every theme. Each theme is then its own file (`themes/web-light.css`, …)
+carrying nothing but that theme's 433 custom properties inside one class.
+
 It deliberately registers **no** `@property` rules (a non-empty registry puts Blink's
 transition-start on a page-global slow path).
 
@@ -18,20 +22,22 @@ The only JavaScript export is the theme class-name constants; everything else is
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
 ```
 
-Import the emitted stylesheet **exactly once**, at your document root, before your own styles —
-theme styles must load first:
+Import the base **exactly once**, at your document root, then one file per theme you ship — all
+before your own styles, since theme styles must load first:
 
 ```js
 // src/main.jsx (or _app.tsx, root layout, etc.)
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+import '@fluentui/react-tailwind-theme-preview/base.css';
+import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 ```
 
-Then pick a theme with windmod's `FluentProvider` (a block element carrying the theme class plus
-the suite's base typography, text colour and background — any subtree can be themed, and nested
-providers override):
+Then apply that theme's class. windmod's `FluentProvider` is the usual way (a block element
+carrying the theme class plus the suite's base typography, text colour and background — any subtree
+can be themed, and nested providers override):
 
 ```jsx
-import { Button, FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview';
+import { Button } from '@fluentui/react-windmod-preview/button';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
 
 export default function App() {
   return (
@@ -42,14 +48,40 @@ export default function App() {
 }
 ```
 
-No provider is needed for the default web-light theme. This package also works standalone for teams
-styling `@fluentui/react-headless-components-preview` directly — apply a theme class to any element
-and reference the tokens.
+**There is no default theme.** This mirrors Griffel exactly: there you `import { webDarkTheme }`
+and pass it to `FluentProvider`, and a provider given no theme leaves every token unset. Here the
+import is CSS and the value is a class name, but the contract — and the cost model, where you pay
+only for the themes you ship — is the same.
 
-### If you skip the import
+This package also works standalone for styling `@fluentui/react-headless-components-preview`
+directly: import the base and a theme, apply the class to any element, reference the tokens.
 
-The theme's custom properties are missing entirely: color tokens resolve to nothing and numeric
-spacing utilities compute to `0px` — components render unthemed with collapsed metrics.
+### The seven themes
+
+| Subpath                          | Class                           | Constant                          |
+| -------------------------------- | ------------------------------- | --------------------------------- |
+| `themes/web-light.css`           | `fui-theme-web-light`           | `webLightThemeClassName`          |
+| `themes/web-dark.css`            | `fui-theme-web-dark`            | `webDarkThemeClassName`           |
+| `themes/teams-light.css`         | `fui-theme-teams-light`         | `teamsLightThemeClassName`        |
+| `themes/teams-dark.css`          | `fui-theme-teams-dark`          | `teamsDarkThemeClassName`         |
+| `themes/teams-high-contrast.css` | `fui-theme-teams-high-contrast` | `teamsHighContrastThemeClassName` |
+| `themes/teams-light-v21.css`     | `fui-theme-teams-light-v21`     | `teamsLightV21ThemeClassName`     |
+| `themes/teams-dark-v21.css`      | `fui-theme-teams-dark-v21`      | `teamsDarkV21ThemeClassName`      |
+
+Each is 23.4 KB raw / ~3.9 KB gzipped (high contrast is smaller, 23.2 KB / 3.0 KB, because it
+repeats far fewer distinct colours). With the 3.5 KB / 833 B base, a single-theme application loads
+**27 KB raw / 4.6 KB gzipped** — against 159 KB / 14.6 KB if it took all seven.
+
+### If you skip an import
+
+Without **`base.css`**, the theme's custom properties are missing entirely: numeric spacing
+utilities compute to `0px` and the cascade-layer order is undefined — components render with
+collapsed metrics and invert each other's overrides.
+
+Without a **theme file, or its class**, the structure is right but nothing is coloured: colour
+tokens resolve to nothing, so backgrounds go transparent and text inherits. windmod's
+`FluentProvider` warns once per document in development builds when no theme reaches it, naming
+both halves of the fix — a diagnostic Griffel does not have for the equivalent mistake.
 
 ## Layering
 
@@ -76,11 +108,14 @@ and one-off overrides that should still lose to your unlayered CSS.
 
 ## Subpath exports
 
-| Subpath                                                    | What it is                                                                                                     |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `@fluentui/react-tailwind-theme-preview/styles.css`        | The emitted, plain-CSS root artifact. **This is the consumer entry point.**                                    |
-| `@fluentui/react-tailwind-theme-preview/theme-class-names` | The theme class-name constants (`webLightThemeClassName`, …) and the `ThemeClassName` type.                    |
-| `@fluentui/react-tailwind-theme-preview`                   | `css/index.css` — Tailwind **source**, for `@reference`/`@import` from a Tailwind v4 build. Not plain CSS.     |
-| `@fluentui/react-tailwind-theme-preview/css/*`             | The individual source layers (`index.css`, `tokens.css`, `variants.css`, `utilities.css`) for advanced setups. |
+| Subpath                                                    | What it is                                                                                                                     |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `@fluentui/react-tailwind-theme-preview/base.css`          | The emitted, plain-CSS base — theme-less. **Import this once, first.**                                                         |
+| `@fluentui/react-tailwind-theme-preview/themes/<name>.css` | One theme's class, plain CSS. Seven of them ([above](#the-seven-themes)). **Import the ones you ship.**                        |
+| `@fluentui/react-tailwind-theme-preview/styles.css`        | The base plus all seven themes in one file. Convenience only — it still bakes no default, so a class is still applied by hand. |
+| `@fluentui/react-tailwind-theme-preview/theme-class-names` | The theme class-name constants (`webLightThemeClassName`, …) and the `ThemeClassName` type.                                    |
+| `@fluentui/react-tailwind-theme-preview`                   | `css/index.css` — Tailwind **source**, for `@reference`/`@import` from a Tailwind v4 build. Not plain CSS.                     |
+| `@fluentui/react-tailwind-theme-preview/css/*`             | The individual source layers (`index.css`, `tokens.css`, `themes/*.css`, `variants.css`, `utilities.css`) for advanced setups. |
 
-Only `styles.css` and `theme-class-names` are consumable without a Tailwind toolchain.
+Only `base.css`, `themes/*.css`, `styles.css` and `theme-class-names` are consumable without a
+Tailwind toolchain.

@@ -1,7 +1,7 @@
 # Setup
 
-Installing windmod, loading its two root stylesheets, and — if you run Tailwind yourself — wiring your
-own build against its variant catalogs.
+Installing windmod, loading its root stylesheets and theme files, and — if you run Tailwind yourself —
+wiring your own build against its variant catalogs.
 
 ## Install
 
@@ -9,9 +9,9 @@ own build against its variant catalogs.
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
 ```
 
-Both packages are required. The theme package carries the palette, type ramp, spacing scale, the seven
-theme classes and the cascade-layer declaration; the component package carries the components and their
-compiled CSS.
+Both packages are required. The theme package carries the type ramp, spacing scale, cascade-layer
+declaration and the seven theme classes — **one file per theme**, none of them loaded by default; the
+component package carries the components and their compiled CSS.
 
 ## How component CSS is delivered
 
@@ -24,7 +24,9 @@ those imports away.
 What is NOT per component is a small root stylesheet that every chunk depends on. That has to be
 loaded once, ahead of everything else.
 
-## The two root stylesheets
+## The root stylesheets
+
+Two base sheets, plus one file per theme the app ships.
 
 ### Mode 1 — direct
 
@@ -32,21 +34,34 @@ The app imports them itself, in the entry module or as `<link>` elements at the 
 
 ```js
 // Once per document, BEFORE your own CSS.
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+// The theme-less base (3.5 KB / 833 B gzip): token registrations, spacing scale, type ramp,
+// reduced-motion floor, layer order. No colours.
+import '@fluentui/react-tailwind-theme-preview/base.css';
+
+// One per theme the app ships (23.4 KB / ~3.9 KB gzip each). There is NO default.
+import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 
 // windmod's root sheet (~3 KB): the cascade-layer order plus the global @property registrations
 // that every component chunk assumes. The components themselves arrive automatically.
 import '@fluentui/react-windmod-preview/base.css';
 ```
 
+Stems are the theme class names without their `fui-theme-` prefix: `web-light`, `web-dark`,
+`teams-light`, `teams-dark`, `teams-high-contrast`, `teams-light-v21`, `teams-dark-v21`.
+
+`@fluentui/react-tailwind-theme-preview/styles.css` bundles the base and all seven into one file.
+It still bakes no default — a theme class is still applied by hand — so it saves imports, not
+steps, and costs 14.6 KB gzip against 4.6 KB for base + one theme.
+
 ### Mode 2 — composed into the app's own root stylesheet
 
-When the app already has a root stylesheet, `@import` both at the **top** of it. The app's sheet loads
+When the app already has a root stylesheet, `@import` them at the **top** of it. The app's sheet loads
 first in the document, so ours transitively precedes everything.
 
 ```css
 /* app/src/root.css — the first stylesheet the document loads */
-@import '@fluentui/react-tailwind-theme-preview/styles.css';
+@import '@fluentui/react-tailwind-theme-preview/base.css';
+@import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';
 @import '@fluentui/react-windmod-preview/base.css';
 
 /* the app's own globals, custom theme class, Tailwind entry, … */
@@ -55,12 +70,12 @@ first in the document, so ours transitively precedes everything.
 An `@import`ed sheet is treated as if written at the import site, so the layer order declaration inside
 `base.css` still executes at the very top. `base.css` is plain CSS — no Tailwind syntax, no CSS-Modules
 syntax — so it works as a bundler import, a `<link href>`, or a raw `@import` identically. This mode is
-also the natural home for a custom theme: declare it after the two imports and it wins normally.
+also the natural home for a custom theme: declare it after the imports above and it wins normally.
 
 **Order is load-bearing for three reasons.**
 
-1. Nothing renders correctly without the theme sheet — the components' `var()` references resolve to
-   nothing.
+1. Nothing renders correctly without the theme base — the components' `var()` references resolve to
+   nothing — and nothing is coloured without a theme file _and_ its class.
 2. The root sheets are the **sole declared owners** of the cascade-layer order; component chunks carry
    layer _blocks_ only. **Cascade layer order is first-appearance**, so a component chunk that reaches
    the document before the root sheet defines the order itself, inverting inter-component precedence
@@ -73,8 +88,9 @@ also the natural home for a custom theme: declare it after the two imports and i
 
 A development build warns once per document if no layer-order declaration is found, and distinguishes
 the two ways to get there — root sheet never loaded, or loaded after a component chunk — naming the
-fix for each. The check looks for the layer statement rather than a specific stylesheet URL, so
-Mode 2 does not trip it.
+fix for each. A second warning fires when no theme reaches a provider, whether because the theme
+file was never imported or because its class was never applied. Both read computed values off real
+elements rather than looking for a stylesheet URL, so Mode 2 does not trip either.
 
 ### Fallback — one file
 
@@ -96,8 +112,12 @@ export const App = () => (
 );
 ```
 
-`theme` takes a **class name string**, not a Griffel theme object. Any string works, so a custom theme
-is a class of your own that redeclares the token custom properties:
+`theme` takes a **class name string**, not a Griffel theme object — but it is equally required.
+Griffel makes you `import { webDarkTheme }` and pass it, and leaves tokens unset without one; here
+you import `themes/web-dark.css` and pass its class. Same two steps, same absence of a default.
+
+Any string works, so a custom theme is a class of your own that redeclares the token custom
+properties:
 
 ```tsx
 <FluentProvider theme="my-brand-theme">…</FluentProvider>
@@ -112,7 +132,11 @@ is a class of your own that redeclares the token custom properties:
 ```
 
 A theme class is custom properties only, so it may be applied to **any** element — you do not need a
-provider to scope a theme, though you do need one for the base typography and background.
+provider to scope a theme, though you do need one for the base typography and background. With no
+baked default, a custom class that declares the full token set is a standalone theme; one that
+declares only overrides is applied alongside a shipped class
+(`theme="fui-theme-web-light my-brand-theme"`) and wins by source order in the shared `fui.theme`
+layer.
 
 ### The provider is a real element and it paints
 
@@ -231,10 +255,16 @@ deliberately unlike an app Tailwind setup:
   per-element custom properties
 - Tailwind's default palette, type ramp, radii and shadows are set to `initial`
 
-Individual layers are available at `@fluentui/react-tailwind-theme-preview/css/*` — `index.css`,
-`tokens.css`, `variants.css`, `utilities.css`, `themes.css` — for advanced setups.
+Note that `css/index.css` is theme-less, like the emitted `base.css` it compiles to — referencing it
+registers every token NAME but gives none of them a value. A Tailwind build that also wants the
+values imports the theme sources it needs alongside.
 
-Only `styles.css` and `theme-class-names` are consumable **without** a Tailwind toolchain.
+Individual layers are available at `@fluentui/react-tailwind-theme-preview/css/*` — `index.css`,
+`tokens.css`, `themes/<name>.css`, `themes.css` (the all-seven aggregate), `variants.css`,
+`utilities.css` — for advanced setups.
+
+Only `base.css`, `themes/*.css`, `styles.css` and `theme-class-names` are consumable **without** a
+Tailwind toolchain.
 
 ## What the layers are for
 

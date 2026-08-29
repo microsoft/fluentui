@@ -1,11 +1,6 @@
 @reference '#theme';
 
-/* The button classes land on a windmod Button, whose own rules are l1, so the whole module is l2
-   and the overrides win by layer order. The layout buckets re-assert the Button's own resting
-   minimum width and radius: Griffel authors them, and a consumer who reshapes the Button must
-   still get them here. */
-
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   .root {
     @apply flex gap-8 pt-12;
   }
@@ -17,7 +12,13 @@
   .vertical {
     @apply flex-col;
   }
+}
 
+/* The button classes land on a windmod Button, whose own rules are l1, so they sit at l2 and win
+   by layer order. The layout buckets re-assert the Button's own resting minimum width and radius:
+   Griffel authors them, and a consumer who reshapes the Button must still get them here. */
+
+@layer fui.components.l2 {
   .button-horizontal {
     @apply min-w-96 rounded-medium;
   }

@@ -1,8 +1,12 @@
 /**
- * Class names for the shipped themes (emitted in css/themes.css; apply one to any
- * element to theme its subtree — web-light is the :root default). The generator asserts
- * these constants match the emitted classes; rename both together. Keep
- * theme-class-names.cjs identical.
+ * Class names for the shipped themes. Each has its own stylesheet — `css/themes/<name>.css`,
+ * published as `./themes/<name>.css` — whose file stem is the class name without its
+ * `fui-theme-` prefix. Import that file and apply the class to any element to theme its
+ * subtree. There is NO default theme, so nothing is themed until you do; that is Griffel's
+ * contract, where a provider given no theme object leaves every token unset.
+ *
+ * The generator asserts these constants match the emitted classes AND the package's
+ * `./themes/*` export keys; rename all three together. Keep theme-class-names.cjs identical.
  */
 
 export const webLightThemeClassName = 'fui-theme-web-light';

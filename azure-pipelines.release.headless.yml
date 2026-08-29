@@ -52,7 +52,6 @@ extends:
               - template: .devops/templates/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
-                  githubPAT: $(githubPAT)
 
               - script: |
                   echo "Following packages will be published (if they contain changes):"
@@ -71,11 +70,14 @@ extends:
                   FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:react-headless,!tag:npm:private,!tag:type:stories' --exclude 'apps/**' --nxBail
                 displayName: lint
 
-              - script: |
-                  yarn beachball publish --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless'
-                  git reset --hard origin/master
-                env:
-                  GITHUB_PAT: $(githubPAT)
-                  NPM_TOKEN: $(npmToken)
-                displayName: Publish changes and bump versions
-                condition: not(${{ parameters.dryRun }})
+              - template: .devops/templates/run-with-token.yml@self
+                parameters:
+                  steps:
+                    - script: |
+                        yarn beachball publish --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless'
+                        git reset --hard origin/master
+                      env:
+                        BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
+                        BEACHBALL_NPM_TOKEN: $(npmToken)
+                      displayName: Publish changes and bump versions
+                      condition: not(${{ parameters.dryRun }})

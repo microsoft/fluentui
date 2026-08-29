@@ -21,62 +21,39 @@ type TriggerButtonDataAttributes = {
   'data-selected'?: true;
 };
 
-// Exclusive boundaries, unlike the two content ladders below.
-const borderClass = (size: AvatarSize) => {
-  if (size < 36) {
-    return styles.borderThin;
-  }
-  if (size < 56) {
-    return styles.borderThick;
-  }
-  if (size < 72) {
-    return styles.borderThicker;
-  }
-  return styles.borderThickest;
-};
+// Exclusive upper boundaries, unlike the two content ladders below. Every range is written in full
+// so the keys partition AvatarSize with no implied else; `+()` coerces a condition to 1 or 0
+// because TS rejects a bare boolean computed key (TS2464).
+const borderClass = (size: AvatarSize) =>
+  ({
+    [+(size < 36)]: styles.borderThin,
+    [+(size >= 36 && size < 56)]: styles.borderThick,
+    [+(size >= 56 && size < 72)]: styles.borderThicker,
+    [+(size >= 72)]: styles.borderThickest,
+  })[1];
 
 // Typography lives here and never on `.trigger-button`: Griffel's base bucket sets no font, and
 // under `indicator="icon"` no typography class is merged at all.
-const countClass = (size: AvatarSize) => {
-  if (size <= 24) {
-    return styles.textCaption2Strong;
-  }
-  if (size <= 28) {
-    return styles.textCaption1Strong;
-  }
-  if (size <= 40) {
-    return styles.textBody1Strong;
-  }
-  if (size <= 56) {
-    return styles.textSubtitle2;
-  }
-  if (size <= 96) {
-    return styles.textSubtitle1;
-  }
-  return styles.textTitle3;
-};
+const countClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 24)]: styles.textCaption2Strong,
+    [+(size > 24 && size <= 28)]: styles.textCaption1Strong,
+    [+(size > 28 && size <= 40)]: styles.textBody1Strong,
+    [+(size > 40 && size <= 56)]: styles.textSubtitle2,
+    [+(size > 56 && size <= 96)]: styles.textSubtitle1,
+    [+(size > 96)]: styles.textTitle3,
+  })[1];
 
-const iconClass = (size: AvatarSize) => {
-  if (size <= 16) {
-    return styles.icon12;
-  }
-  if (size <= 24) {
-    return styles.icon16;
-  }
-  if (size <= 40) {
-    return styles.icon20;
-  }
-  if (size <= 48) {
-    return styles.icon24;
-  }
-  if (size <= 56) {
-    return styles.icon28;
-  }
-  if (size <= 72) {
-    return styles.icon32;
-  }
-  return styles.icon48;
-};
+const iconClass = (size: AvatarSize) =>
+  ({
+    [+(size <= 16)]: styles.icon12,
+    [+(size > 16 && size <= 24)]: styles.icon16,
+    [+(size > 24 && size <= 40)]: styles.icon20,
+    [+(size > 40 && size <= 48)]: styles.icon24,
+    [+(size > 48 && size <= 56)]: styles.icon28,
+    [+(size > 56 && size <= 72)]: styles.icon32,
+    [+(size > 72)]: styles.icon48,
+  })[1];
 
 /**
  * Applies the visual contract, returning new state. `data-selected` mirrors the JS gate Griffel

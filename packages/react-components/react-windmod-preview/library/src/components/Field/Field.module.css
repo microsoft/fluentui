@@ -1,10 +1,9 @@
 @reference '#theme';
 
-@layer fui.components.l2 {
-  /* The label slot renders a windmod Label, so every rule below sits one level above Label's
-     own block. Block order is the cascade: every selector is :where()-flat, so source order
-     alone arbitrates — .horizontalNoLabel replaces the horizontal track list and must follow
-     .root, and .withIcon adds the icon gutter after .validationMessage's colour. */
+@layer fui.components.l1 {
+  /* Block order is the cascade: every selector is :where()-flat, so source order alone
+     arbitrates — .horizontal-no-label replaces the horizontal track list and must follow
+     .root, and .with-icon adds the icon gutter after .validation-message's colour. */
   .root {
     @apply grid;
 
@@ -15,30 +14,6 @@
 
   .horizontal-no-label {
     @apply grid-cols-[1fr] ps-[33%];
-  }
-
-  .label {
-    @apply max-h-max max-w-max;
-
-    @variant group-vertical/fui-field {
-      @apply mb-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
-
-      @variant group-size-large/fui-field {
-        @apply mb-vertical-xs pt-1 pb-1;
-      }
-    }
-
-    @variant group-horizontal/fui-field {
-      @apply row-start-1 row-end-[-1] me-horizontal-m pt-vertical-s-nudge pb-vertical-s-nudge;
-
-      @variant group-size-small/fui-field {
-        @apply pt-vertical-xs pb-vertical-xs;
-      }
-
-      @variant group-size-large/fui-field {
-        @apply pt-9 pb-9;
-      }
-    }
   }
 
   .secondary-text {
@@ -68,6 +43,33 @@
 
     @variant group-validate-state-success/fui-field {
       @apply text-palette-green-foreground-1;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* The label slot renders a windmod Label; this block overrides Label's own level-1 styles. */
+  .label {
+    @apply max-h-max max-w-max;
+
+    @variant group-vertical/fui-field {
+      @apply mb-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
+
+      @variant group-size-large/fui-field {
+        @apply mb-vertical-xs pt-1 pb-1;
+      }
+    }
+
+    @variant group-horizontal/fui-field {
+      @apply row-start-1 row-end-[-1] me-horizontal-m pt-vertical-s-nudge pb-vertical-s-nudge;
+
+      @variant group-size-small/fui-field {
+        @apply pt-vertical-xs pb-vertical-xs;
+      }
+
+      @variant group-size-large/fui-field {
+        @apply pt-9 pb-9;
+      }
     }
   }
 }

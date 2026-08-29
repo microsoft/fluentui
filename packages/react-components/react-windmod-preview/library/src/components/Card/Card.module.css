@@ -14,7 +14,7 @@
 
     /* The border lives on ::after so a CardPreview can render behind it. */
     @variant after {
-      @apply pointer-events-none absolute inset-0 rounded-(--fui-card-border-radius) border-(length:--spacing-thin) border-solid border-transparent-stroke content-[''];
+      @apply pointer-events-none absolute inset-0 rounded-(--fui-card-border-radius) border-(length:--spacing-thin) border-solid border-transparent-stroke;
     }
 
     @variant size-small {
@@ -147,7 +147,7 @@
 
       /* Overlay that swallows pointer events on the card's own content. */
       @variant before {
-        @apply absolute inset-0 content-[''];
+        @apply absolute inset-0;
 
         z-index: calc(var(--z-index-content, 1) + 1);
       }

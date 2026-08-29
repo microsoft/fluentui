@@ -4,9 +4,9 @@ import type * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 /**
- * Development-only guard: warns once per document when this package's root stylesheet
- * (`@fluentui/react-windmod-preview/base.css`) is missing, or when a component chunk reached the
- * document ahead of it.
+ * Development-only guard covering the two setup mistakes that render silently wrong: this
+ * package's root stylesheet missing (or arriving after a component chunk), and no theme reaching
+ * the provider's subtree.
  *
  * Per-component CSS delivery makes the root sheet a hard prerequisite. Each chunk carries only its
  * own rules; the root sheet carries the two things that are global by nature:
@@ -29,11 +29,34 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
  * custom properties at all (verified: zero `@property` at-rules), so `--tw-border-style` resolving
  * to its registered initial value is evidence of THIS package's root sheet — or of `styles.css`,
  * which inlines it, and is equally valid. `@import` nesting is irrelevant to a computed value.
+ *
+ * ── The theme check ───────────────────────────────────────────────────────────────────────────
+ * `@fluentui/react-tailwind-theme-preview` bakes no default theme (operator ruling 2026-08-28):
+ * its base sheet registers every token NAME and gives none of them a value, so a document is
+ * themed only by importing a theme file AND applying its class. Griffel behaves the same way —
+ * without a `theme` object its tokens are unset — but says nothing when you forget, and unset
+ * tokens do not fail loudly: components render with transparent backgrounds and inherited text
+ * colours, which reads as a styling bug rather than a missing import.
+ *
+ * So the same measurement idea is applied a second time: read a token that only a theme can
+ * supply off the provider's OWN element. The value is empty exactly when no theme class covers
+ * this subtree — whether the theme file was never imported, or imported but never applied.
+ * Because it is a computed read, it is agnostic to where the class sits (the provider itself, the
+ * `<html>` element, any ancestor), which is the freedom the contract deliberately allows.
  */
 
 /** Registered by `base.css` as `syntax: "*"; inherits: false; initial-value: solid`. */
 const PROBE_PROPERTY = '--tw-border-style';
 const PROBE_EXPECTED = 'solid';
+
+/**
+ * A token every theme defines and no theme-less sheet does.
+ *
+ * Chosen over a more exotic token because a consumer-authored theme class is an explicitly
+ * supported case: any class claiming to be a Fluent theme carries the neutral background, so this
+ * probe recognises custom themes as readily as the seven shipped ones.
+ */
+const THEME_PROBE_PROPERTY = '--color-neutral-background-1';
 
 /** The layer family whose ordering the root sheet owns. */
 const LAYER_PREFIX = 'fui.components';
@@ -68,6 +91,27 @@ function registrationsActive(doc: Document): boolean {
   } finally {
     probe.remove();
   }
+}
+
+/**
+ * True when a theme's custom properties reach this element.
+ *
+ * Read on the provider's own host element rather than on a synthetic probe at `<body>`, because
+ * theming is subtree-scoped: the class may sit on this element (the `theme` prop), on `<html>`,
+ * or on any ancestor, and only a read from inside the subtree answers "is THIS provider themed".
+ * An unset custom property computes to the empty string, which is precisely the signal.
+ *
+ * A detached element is not measurable, so an element with no owner window is reported as themed
+ * — staying quiet beats guessing, the same rule the sheet checks follow.
+ */
+function themeResolved(element: HTMLElement): boolean {
+  const view = element.ownerDocument?.defaultView;
+
+  if (!view) {
+    return true;
+  }
+
+  return view.getComputedStyle(element).getPropertyValue(THEME_PROBE_PROPERTY).trim() !== '';
 }
 
 type LayerRule = CSSRule & {
@@ -216,6 +260,39 @@ export function diagnoseRootStylesheet(active: boolean, firstReference: 'stateme
   return `@fluentui/react-windmod-preview: ${diagnosis}${consequence}\n\n${FIX}`;
 }
 
+const THEME_FIX =
+  'Import the theme(s) you ship and apply one, the same two steps Griffel asks for:\n\n' +
+  "    import '@fluentui/react-tailwind-theme-preview/base.css';\n" +
+  "    import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';\n\n" +
+  "    import { webLightThemeClassName } from '@fluentui/react-windmod-preview/provider';\n" +
+  '    <FluentProvider theme={webLightThemeClassName}>…</FluentProvider>\n\n' +
+  'The class can equally live on <html> or any ancestor — custom properties cascade. Seven ' +
+  'themes ship (web-light/dark, teams-light/dark, teams-high-contrast, teams-light-v21, ' +
+  "teams-dark-v21); '@fluentui/react-tailwind-theme-preview/styles.css' bundles the base and " +
+  'all seven at once, but a class still has to be applied.';
+
+/**
+ * The theme decision, separated from the DOM for the same reason as `diagnoseRootStylesheet`.
+ *
+ * Returns `null` when a theme reaches this subtree, or the warning text otherwise. There is
+ * deliberately no "theme file loaded but class not applied" refinement: the two failures have the
+ * same fix and the same symptom, and distinguishing them would mean scanning stylesheets — the
+ * approach the sheet check already abandoned as unreliable in both directions.
+ */
+export function diagnoseThemeClass(themed: boolean): string | null {
+  if (themed) {
+    return null;
+  }
+
+  return (
+    '@fluentui/react-windmod-preview: no Fluent theme reaches this FluentProvider — its token ' +
+    'variables resolve to nothing.\n\nThe theme package bakes no default: importing a theme file ' +
+    'makes its class available, and the class still has to be applied. Until then components ' +
+    'render with unset colours (transparent backgrounds, inherited text), which looks like a ' +
+    `styling bug rather than a missing import.\n\n${THEME_FIX}`
+  );
+}
+
 export function useRootStylesheetCheck(
   elementRef: React.RefObject<HTMLElement | null>,
   targetDocument: Document | null | undefined,
@@ -233,16 +310,27 @@ export function useRootStylesheetCheck(
       return;
     }
 
-    const message = diagnoseRootStylesheet(registrationsActive(doc), firstLayerReference(doc));
+    const element = elementRef.current;
 
-    if (!message) {
+    const messages = [
+      diagnoseRootStylesheet(registrationsActive(doc), firstLayerReference(doc)),
+      // Only measurable against a mounted host element. A provider rendering into a portal keeps
+      // its own host in the tree, so this is present whenever the effect runs in a browser.
+      element ? diagnoseThemeClass(themeResolved(element)) : null,
+    ].filter((message): message is string => message !== null);
+
+    if (messages.length === 0) {
       return;
     }
 
+    // One latch for both verdicts: a document missing the root sheet is usually missing the theme
+    // too, and two stacked walls of text per document helps nobody. They are emitted together.
     warned.add(doc);
 
-    // eslint-disable-next-line no-console
-    console.warn(message);
+    for (const message of messages) {
+      // eslint-disable-next-line no-console
+      console.warn(message);
+    }
   }, [elementRef, targetDocument]);
 }
 

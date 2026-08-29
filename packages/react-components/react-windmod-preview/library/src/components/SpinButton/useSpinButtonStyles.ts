@@ -19,16 +19,19 @@ type SpinButtonButtonDataAttributes = {
   'data-spin-active'?: true;
 };
 
-/** `underline` needs no stepper class: its Griffel slice repeats the stepper reset token for token. */
-const buttonAppearanceClass = (appearance: SpinButtonState['appearance']) => {
-  if (appearance === 'filled-darker') {
-    return styles.buttonFilledDarker;
-  }
-  if (appearance === 'filled-lighter') {
-    return styles.buttonFilledLighter;
-  }
-  return undefined;
-};
+/**
+ * `outline` is the base look and `underline` needs no stepper class either: its Griffel slice
+ * repeats the stepper reset token for token. Both are spelled out rather than left to an implied
+ * else, so the keys partition SpinButtonAppearance; `+()` coerces a condition to 1 or 0 because TS
+ * rejects a bare boolean computed key (TS2464).
+ */
+const buttonAppearanceClass = (appearance: SpinButtonState['appearance']) =>
+  ({
+    [+(appearance === 'outline')]: undefined,
+    [+(appearance === 'underline')]: undefined,
+    [+(appearance === 'filled-darker')]: styles.buttonFilledDarker,
+    [+(appearance === 'filled-lighter')]: styles.buttonFilledLighter,
+  })[1];
 
 /** Applies the visual contract, returning new state. The headless hook already stamps
  * data-disabled, data-spin-state, data-at-bound and data-invalid on the root; data-invalid is

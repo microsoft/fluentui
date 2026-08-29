@@ -1,11 +1,14 @@
 @reference '#theme';
 
-@layer fui.components.l3 {
+@layer fui.components.l1 {
   .root {
     @apply relative inline-flex justify-stretch align-middle;
   }
+}
 
-  /* The divider between the two buttons is the primary button's inline-end border: the menu
+@layer fui.components.l2 {
+  /* The primary action slot renders a windmod Button; this block overrides its l1 styles.
+     The divider between the two buttons is the primary button's inline-end border: the menu
      button drops its own inline-start border width so exactly one line is drawn. */
   .primary-action-button {
     @apply rounded-e-none;
@@ -59,7 +62,10 @@
       }
     }
   }
+}
 
+@layer fui.components.l3 {
+  /* The menu button slot renders a windmod MenuButton, whose own root block is l2. */
   .menu-button {
     @apply min-w-24 rounded-s-none border-s-0;
   }

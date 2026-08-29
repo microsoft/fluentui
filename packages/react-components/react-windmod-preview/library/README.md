@@ -30,8 +30,9 @@ npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-previ
 ```
 
 ```js
-// Once per document, before your own styles:
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+// Once per document, before your own styles: the theme-less base, then one file per theme you ship.
+import '@fluentui/react-tailwind-theme-preview/base.css';
+import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 ```
 
 ```jsx
@@ -56,8 +57,13 @@ package's root sheet — `@fluentui/react-windmod-preview/base.css` (~3 KB: the 
 and the global `@property` registrations) — once per document, ahead of everything else, either
 directly or by `@import`ing it at the top of your own root stylesheet.
 
+Themes follow Griffel's contract: there is **no default**, so you import the theme's stylesheet and
+pass its class — the same two steps as `import { webDarkTheme }` + `theme={webDarkTheme}`, and you
+pay for only the themes you ship (4.6 KB gzip for base + one, against 14.6 KB for all seven).
+
 CommonJS/SSR consumers instead import `@fluentui/react-windmod-preview/styles.css`, the
-batteries-included aggregate carrying the root sheet and every component in one file.
+batteries-included aggregate carrying the root sheet and every component in one file; the theme
+package's `styles.css` is the matching all-in-one for base + all seven themes.
 
 See [MIGRATION.md](./MIGRATION.md#installation-and-imports) for both setups.
 

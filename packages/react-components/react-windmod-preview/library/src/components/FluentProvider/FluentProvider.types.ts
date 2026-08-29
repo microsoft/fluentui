@@ -6,8 +6,14 @@ export type { ThemeClassName };
 export type FluentProviderProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
    * Theme class to apply to the subtree — one of the constants re-exported from this
-   * package's `/fluent-provider` entry (e.g. `webDarkThemeClassName`). Omit it for the default
-   * web-light values, which are emitted at `:root, :host` by the theme stylesheet.
+   * package's `/provider` entry (e.g. `webDarkThemeClassName`).
+   *
+   * THERE IS NO DEFAULT THEME. The theme stylesheet bakes none, mirroring Griffel, where a
+   * provider given no theme object leaves every token unset. Omit this prop only when an
+   * ancestor already carries a theme class — an outer provider, or the application's root
+   * element — since custom properties cascade into the subtree. Otherwise import the theme's
+   * CSS file (`@fluentui/react-tailwind-theme-preview/themes/web-light.css`) and pass its
+   * class; a development-only check warns when neither happened.
    *
    * Typed as the shipped union but open to any string so consumer-authored theme classes
    * (same custom-property contract) work too.

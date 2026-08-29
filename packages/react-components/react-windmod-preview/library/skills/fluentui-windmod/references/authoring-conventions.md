@@ -165,12 +165,19 @@ the headless library's own `''` spelling; that is theirs, not ours.
 
 ### Layers
 
-- **All** component styles live in `fui.components.l<level>`. `l1` for leaf components, `l2+` for
-  compositions.
+- **All** component styles live in `fui.components.l<level>`.
 - `fui.base` belongs to the theme, for global element resets **only**. Components never author into it.
-- **One `@layer` block per `module.css`.**
-- A component building on another's styles authors its overrides in the **next level up** — layer order
-  carries the override, **never** cross-file source order.
+- **The level is assigned per RULE, not per file.** A rule styling the component's own DOM — its root,
+  its plain-element slots — is a base style and sits at `l1`, no matter what the rest of the file does.
+  A rule that overrides ANOTHER component's styles (a slot rendering a windmod Label, Button,
+  Listbox, …) sits one level above the overridden rules — `l2` over an `l1` base, `l3` over an `l2`
+  one. Layer order carries the override, **never** cross-file source order. Never park a rule higher
+  than the rule it overrides requires; wholesale-levelling a file grows the stack for nothing
+  (Field's root is a plain div and sits at `l1` even though its label block, overriding the windmod
+  Label, sits at `l2`).
+- **One `@layer` block per level per `module.css`** — a mixed file carries at most one block for each
+  level it uses. Same-element rules must share a level so block order keeps arbitrating between them;
+  only rules for disjoint elements may sit at different levels.
 - **Never** write an `@layer` ORDER statement anywhere except the theme package, which is its sole
   owner.
 
@@ -300,6 +307,44 @@ The catalog is two files and **variants are never defined in a component module*
 rules. If a needed variant is missing, add it in `&:where([data-…])` form to whichever catalog it
 belongs to, one selector per entry.
 
+### Pseudo-elements: `content` comes free
+
+Tailwind's `before`/`after` variants already emit `content: var(--tw-content)` into the rule they
+open, and `dist/base.css` registers `@property --tw-content { syntax: "*"; inherits: false;
+initial-value: "" }`. A `content-['']` inside such a block therefore writes `--tw-content` the value
+it already holds. **Never author `content-['']` merely to make a pseudo-element exist** — the variant
+did that. Drop it and the rule keeps its injected `content`, resolving to `""` off the initial value.
+
+```css
+/* ❌ redundant — the variant already supplies `content: var(--tw-content)`, initial-value "" */
+@variant after {
+  @apply absolute inset-0 content-[''];
+}
+
+/* ✅ */
+@variant after {
+  @apply absolute inset-0;
+}
+```
+
+**The exception class — an explicit `content` is required whenever it changes the default:**
+
+- **A different value.** `content-['_']` (MessageBarTitle's literal space), `content-['·_']`
+  (RatingDisplay's separator), `content: unset` (Input `.disabled`, suppressing the focus underline).
+- **Suppression, then restoration — the load-bearing pair.** A block writes `content-none` to keep a
+  pseudo-element out of the box tree, and a later block writes `content-['']` to put it back.
+  `--tw-content: none` lands **on the same pseudo-element**, so it outranks the `@property` initial
+  value and the restoring `content-['']` is doing real work — deleting it leaves the element
+  unpainted. `Avatar.module.css` is the canonical case (`.root` neutralises both pseudo-elements;
+  `.ring` and `.shadow` each set theirs back), and `Tab.module.css` repeats the shape for its pending
+  and selection indicators. Both carry a header comment saying so; keep it with the code.
+- **A raw `&::before` / `&::after` selector.** No variant, so no injection, so the `content` is the
+  only one there. Used when the variant's automatic `content` would itself be the bug — see
+  `Radio.module.css`, whose indicator dot would otherwise render in every state.
+
+`Divider.module.css`'s header comment is the canonical statement of the mechanism; read it before
+adding a `content` anywhere.
+
 ### Tokens
 
 Kebab-case theme tokens only. Never hardcode a palette value — compare against the Griffel source to
@@ -330,8 +375,43 @@ A permitted nested-selector exception — glyphs carry no module class. Copy `Bu
 
 ## Code style
 
-- **No nested ternaries.** Bucket ladders and any multi-branch selection are flat if-return functions. A
-  single non-nested ternary is fine.
+- **No nested ternaries.** Never chain `? :`. A single non-nested ternary is fine.
+- **Bucket ladders are condition-key lookups.** Three or more mutually exclusive branches selecting a
+  class become an object literal keyed by each condition coerced to `1`/`0`, indexed by `1`. The `+()`
+  is load-bearing: TS rejects a bare boolean computed key (TS2464). Two-branch selections are a plain
+  ternary, not a lookup.
+
+  ```ts
+  // ✅ every range written in full, so the keys partition the domain
+  const textClass = (size: AvatarSize) =>
+    ({
+      [+(size <= 24)]: styles.text100,
+      [+(size > 24 && size <= 28)]: styles.text200,
+      [+(size > 28)]: styles.text300,
+    })[1];
+  ```
+
+  ```ts
+  // ❌ cumulative boundaries and an implied else
+  const textClass = (size: AvatarSize) =>
+    ({
+      [+(size <= 24)]: styles.text100,
+      [+(size <= 28)]: styles.text200, // overlaps the first key — at size 20 BOTH are 1 and the
+    })[1]; // later one silently wins; and sizes above 28 fall out as undefined
+  ```
+
+  Two gotchas, both fatal and both silent:
+  - **Mutual exclusivity.** Unlike an if-return chain, no branch shadows a later one — every key is
+    evaluated. Two true conditions both write key `1` and the last one wins. Spell out both bounds of
+    every range (`size > 24 && size <= 28`), never the cumulative `size <= 28` an if-chain allowed.
+  - **Explicit final bucket.** There is no `else`. The last bucket needs its own condition, and every
+    member of an enum domain needs its own key — including the ones whose value is `undefined`. Miss
+    one and the lookup returns `undefined` at runtime while TS still types it `string`.
+
+  An intentionally class-less bucket is written out with an `undefined` value and a comment saying why
+  (`useAvatarStyles`' 32–40 base bucket). TS then types the helper `string | undefined` on its own —
+  no `satisfies` or return annotation is needed to keep the lookup honest.
+
 - **Component shape**: a value used exactly once earns no intermediate const — destructure `props`
   directly in the parameter list when the body never references `props` itself, and pass the state object
   literal inline into the styles hook. A value used twice or more stays a named const.

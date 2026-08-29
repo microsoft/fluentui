@@ -19,15 +19,12 @@ type AvatarGroupItemRootDataAttributes = {
 
 // Shares its boundaries with the stack ring ladder but never its class: one emits a box-shadow,
 // the other a custom property, and they are never applied together.
-const pieDividerClass = (size: AvatarSize) => {
-  if (size < 56) {
-    return styles.pieDividerThick;
-  }
-  if (size < 72) {
-    return styles.pieDividerThicker;
-  }
-  return styles.pieDividerThickest;
-};
+const pieDividerClass = (size: AvatarSize) =>
+  ({
+    [+(size < 56)]: styles.pieDividerThick,
+    [+(size >= 56 && size < 72)]: styles.pieDividerThicker,
+    [+(size >= 72)]: styles.pieDividerThickest,
+  })[1];
 
 /**
  * Applies the visual contract, returning new state. The headless hook stamps no attributes at

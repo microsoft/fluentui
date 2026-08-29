@@ -1,8 +1,6 @@
 @reference '#theme';
 
-/* l2: `.avatar-non-overflow` and `.avatar-pie` override the windmod Avatar's own l1 root
-   (`position: relative`, `rounded-circular`), so they have to sit one level above it. */
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   .root {
     @apply relative inline-flex shrink-0 items-center;
   }
@@ -15,14 +13,6 @@
 
   .overflow-item {
     @apply px-horizontal-xs py-vertical-xs;
-  }
-
-  .avatar-non-overflow {
-    @apply absolute;
-  }
-
-  .avatar-pie {
-    @apply rounded-none;
   }
 
   .overflow-label {
@@ -157,5 +147,17 @@
 
   .pie-divider-thickest {
     --fui-avatar-group-item-divider-width: var(--stroke-width-thickest);
+  }
+}
+
+@layer fui.components.l2 {
+  /* The avatar slot renders a windmod Avatar; these blocks override its own l1 root
+     (`position: relative`, `rounded-circular`), so they sit one level above it. */
+  .avatar-non-overflow {
+    @apply absolute;
+  }
+
+  .avatar-pie {
+    @apply rounded-none;
   }
 }

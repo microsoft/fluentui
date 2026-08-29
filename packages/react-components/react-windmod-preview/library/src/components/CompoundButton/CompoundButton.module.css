@@ -40,7 +40,9 @@
       }
     }
   }
+}
 
+@layer fui.components.l1 {
   .content-container {
     @apply flex flex-col text-start;
   }
