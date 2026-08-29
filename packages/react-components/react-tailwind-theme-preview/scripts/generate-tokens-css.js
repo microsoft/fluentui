@@ -240,7 +240,8 @@ function strokeWidthCanonicalValue(step) {
 /**
  * A theme value rewritten onto the `--base-scale` axis: `14px` → `calc(14px * var(--base-scale))`,
  * the same literal form stroke widths use. Applies to every namespace carrying
- * `baseScaled: true` (the type ramp — font sizes and their paired line heights) in EVERY theme,
+ * `baseScaled: true` with no `scaleValue` override (the type ramp — font sizes and their paired
+ * line heights; shadows are base-scaled too but composite, so they use shadowScaledValue) in EVERY theme,
  * so the whole UI scales coherently with the root font size. Rendering is unchanged at the
  * default 16px root, where `--base-scale` is 1.
  *
@@ -258,6 +259,65 @@ function baseScaledValue(tokenName, value) {
   }
 
   return `calc(${value} * var(--base-scale))`;
+}
+
+/**
+ * A shadow theme value with every LENGTH rewritten onto the `--base-scale` axis, leaving the
+ * colour components untouched: `0 1px 2px rgba(0, 0, 0, .14)` →
+ * `0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, .14)`.
+ *
+ * WHY SHADOWS SCALE, AND WHY THERE IS NO UNITLESS ALTERNATIVE
+ * ----------------------------------------------------------
+ * An elevation is a proportional cue: `--shadow-16`'s 8px drop reads as "this surface floats"
+ * only relative to the box casting it. Once the type ramp and the spacing axis both follow the
+ * root font size, a frozen-px shadow shrinks visually as everything around it grows — at a 32px
+ * root the whole UI doubles while the shadow stays put, and the elevation ladder (2/4/8/16/28/64)
+ * compresses into visual noise. Unlike line-height, `box-shadow` has no unitless form, so the
+ * calc ramp is the only spelling available.
+ *
+ * `0` is left bare rather than rewritten to `calc(0px * …)`: it is already scale-invariant, and
+ * the shorter form keeps the emitted value readable.
+ *
+ * Anything that is neither a bare `0`, a px length, nor a colour function throws — a silent
+ * `calc(<junk> * var(--base-scale))` would be far worse than a failed build.
+ *
+ * @param {string} tokenName
+ * @param {string} value the raw theme value, e.g. `0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14)`
+ * @returns {string}
+ */
+function shadowScaledValue(tokenName, value) {
+  // Split on the commas SEPARATING layers, not the commas inside rgba(...).
+  const layers = [];
+  let depth = 0;
+  let current = '';
+  for (const char of value) {
+    if (char === '(') depth++;
+    if (char === ')') depth--;
+    if (char === ',' && depth === 0) {
+      layers.push(current);
+      current = '';
+      continue;
+    }
+    current += char;
+  }
+  layers.push(current);
+
+  return layers
+    .map(layer => {
+      const parts = layer.trim().split(/\s+(?![^(]*\))/);
+      return parts
+        .map(part => {
+          if (part === '0') return part;
+          if (/^-?\d+(?:\.\d+)?px$/.test(part)) return `calc(${part} * var(--base-scale))`;
+          if (/^(?:rgba?|hsla?|color)\(/.test(part) || /^#[0-9a-f]{3,8}$/i.test(part)) return part;
+          throw new Error(
+            `Token \`${tokenName}\` is registered as base-scaled but its component \`${part}\` ` +
+              `(in \`${value}\`) is neither a bare 0, a px length, nor a colour.`,
+          );
+        })
+        .join(' ');
+    })
+    .join(', ');
 }
 
 /**
@@ -437,7 +497,7 @@ function readThemeValues() {
  *
  * @param {{ name: string, value: string }[]} tokens parsed tokens.ts entries
  * @returns {{
- *   variantTokens: { name: string, canonical: string, baseScaled: boolean }[],
+ *   variantTokens: { name: string, canonical: string, scaleValue: ((tokenName: string, value: string) => string) | null }[],
  *   themes: Record<string, Record<string, string>>,
  *   classNames: Record<string, string>,
  * }}
@@ -458,7 +518,7 @@ function analyzeThemeEmission(tokens) {
     throw new Error(`theme-values.json is missing the default theme \`${DEFAULT_THEME}\`.`);
   }
 
-  /** @type {{ name: string, canonical: string, baseScaled: boolean }[]} */
+  /** @type {{ name: string, canonical: string, scaleValue: ((tokenName: string, value: string) => string) | null }[]} */
   const variantTokens = [];
   /** @type {{ name: string, expected: string }[]} */
   const invariantTokens = [];
@@ -479,7 +539,10 @@ function analyzeThemeEmission(tokens) {
       variantTokens.push({
         name,
         canonical: /** @type {string} */ (classification.canonical),
-        baseScaled: classification.group.baseScaled === true,
+        // Namespaces on the base-scale axis carry a rewrite; `scaleValue` lets a namespace whose
+        // values are composite (shadows) override the plain-px default.
+        scaleValue:
+          classification.group.baseScaled === true ? (classification.group.scaleValue ?? baseScaledValue) : null,
       });
     }
   }
@@ -566,6 +629,26 @@ const NAMESPACES = [
     // Line heights pair 1:1 with the font sizes above and must ride the same axis:
     // a scaled --text-base-300 against a fixed --leading-base-300 collapses the
     // line-box ratio (1.43 → 1.14 at a 20px root), and the hero steps clip.
+    //
+    // WHY THESE ARE LENGTHS AND NOT THE IDIOMATIC UNITLESS RATIO
+    // ----------------------------------------------------------
+    // A unitless line-height is the usual CSS answer and needs no --base-scale, since it
+    // multiplies the element's own font-size. Two forms of it were implemented and measured
+    // against the px ramp, and both were REJECTED. The blocker is inheritance, not authoring:
+    // `line-height` inherits, so a root setting `text-base-300 leading-base-300` hands its whole
+    // subtree a COMPUTED 20px line box whatever each descendant's own font-size is. A ratio
+    // inherits as a NUMBER instead, so every descendant re-multiplies by its own size.
+    //
+    //   global token swap  — 1323 elements across the 91-scene VR corpus change used value.
+    //   per-site ratios    — feasible and exact IN CHROME (1323/1323 verified), but it costs 73
+    //                        explicit `ancestorLineHeight / ownFontSize` ratios across ~24
+    //                        components, and the largest cohort (184 elements, Tab's root, which
+    //                        authors no font-size) would have to divide by Chrome's UA <button>
+    //                        default of 13.3333px — a user-agent constant, not a token. The px
+    //                        form is engine-invariant there; a ratio is not.
+    //
+    // Probes: .scratch/leading-shadow/{lineheight-probe,mismatch-signatures,partition-probe,
+    // ratio-exactness-probe,rule-surface-probe}.mjs.
     baseScaled: true,
   },
   {
@@ -606,6 +689,11 @@ const NAMESPACES = [
     namespace: 'shadow',
     utility: 'shadow-*',
     heading: 'Shadows',
+    // Offsets and blur radii ride the base-scale axis so an elevation keeps its proportion to
+    // the box it lifts; a frozen-px shadow visually shrinks as the rest of the UI scales up.
+    // Composite value, so the lengths are rewritten individually — see shadowScaledValue.
+    baseScaled: true,
+    scaleValue: shadowScaledValue,
   },
   {
     prefix: 'curve',
@@ -897,7 +985,11 @@ function render(options = {}) {
   out.push(' * The type ramp (--text-* and its paired --leading-*) carries the same literal');
   out.push(' * calc(<px> * var(--base-scale)) form as stroke widths: type follows the root font size,');
   out.push(' * not the --spacing density knob. Both halves scale together so the line-box ratio holds');
-  out.push(' * at any root size. Radii and shadow offsets deliberately stay unscaled.');
+  out.push(' * at any root size. Line heights stay LENGTHS rather than the idiomatic unitless ratio');
+  out.push(' * because line-height inherits — see the generator source for the measurements.');
+  out.push(' * Shadow offsets and blur radii ride the base-scale axis, so an elevation');
+  out.push(' * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner');
+  out.push(' * radius is a fixed design constant, not a function of the root font size.');
   out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
@@ -978,8 +1070,10 @@ function render(options = {}) {
     out.push('     * themes are shipped as classes in css/themes.css (same layer); a theme class');
     out.push('     * on any DOM node overrides these for that subtree.');
     out.push('     */');
-    for (const { name, canonical, baseScaled } of variantTokens) {
-      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, defaultTheme[name]) : defaultTheme[name]};`);
+    for (const { name, canonical, scaleValue } of variantTokens) {
+      out.push(
+        `    ${canonical}: ${scaleValue ? scaleValue(name, defaultTheme[name], defaultTheme) : defaultTheme[name]};`,
+      );
     }
     out.push('  }');
     out.push('}');
@@ -1044,8 +1138,8 @@ function renderThemes() {
     out.push(`/* ${themeName} — ${variantTokens.length} tokens */`);
     out.push('@layer fui.theme {');
     out.push(`  .${className} {`);
-    for (const { name, canonical, baseScaled } of variantTokens) {
-      out.push(`    ${canonical}: ${baseScaled ? baseScaledValue(name, theme[name]) : theme[name]};`);
+    for (const { name, canonical, scaleValue } of variantTokens) {
+      out.push(`    ${canonical}: ${scaleValue ? scaleValue(name, theme[name], theme) : theme[name]};`);
     }
     out.push('  }');
     out.push('}');

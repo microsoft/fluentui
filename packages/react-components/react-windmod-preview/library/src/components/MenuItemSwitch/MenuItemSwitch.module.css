@@ -11,7 +11,7 @@
   .switch-indicator {
     --fui-menu-item-switch-thumb-offset: 0px;
 
-    @apply me-horizontal-xs box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-[length:calc(18px*var(--base-scale))] leading-[0] text-neutral-stroke-accessible duration-(--duration-normal) ease-(--ease-easy-ease);
+    @apply me-horizontal-xs box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid border-neutral-stroke-accessible fill-current text-18 leading-[0] text-neutral-stroke-accessible duration-(--duration-normal) ease-(--ease-easy-ease);
 
     transition-property: background, border, color;
 

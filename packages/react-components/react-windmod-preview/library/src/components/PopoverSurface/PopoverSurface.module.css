@@ -19,8 +19,12 @@
     /* Griffel clamps floating-ui's arrow at 2 × borderRadiusMedium. */
     --fui-positioning-arrow-cross: 8px;
 
-    filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
-      drop-shadow(0 8px 16px var(--color-neutral-shadow-key));
+    /* `filter` takes no box-shadow, so the elevation is spelled as two `drop-shadow()` calls
+       and cannot read a `--shadow-*` token. The geometry is `--shadow-16`'s, so it repeats that
+       token's base-scale ramp by hand — otherwise this would be one of the only elevations in
+       the tree still frozen in px as the root font size grows. */
+    filter: drop-shadow(0 0 calc(2px * var(--base-scale)) var(--color-neutral-shadow-ambient))
+      drop-shadow(0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) var(--color-neutral-shadow-key));
 
     /* showModal() paints a translucent user-agent backdrop; the Griffel surface paints none. */
     @variant backdrop {

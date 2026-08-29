@@ -18,11 +18,11 @@
     }
 
     @variant size-tiny {
-      @apply size-6 min-w-auto p-0 text-[length:calc(4px*var(--base-scale))] leading-[calc(4px*var(--base-scale))];
+      @apply size-6 min-w-auto p-0 text-4 leading-[calc(4px*var(--base-scale))];
     }
 
     @variant size-extra-small {
-      @apply size-10 min-w-auto p-0 text-[length:calc(6px*var(--base-scale))] leading-[calc(6px*var(--base-scale))];
+      @apply size-10 min-w-auto p-0 text-6 leading-[calc(6px*var(--base-scale))];
     }
 
     @variant size-small {
@@ -212,7 +212,7 @@
     }
 
     @variant group-size-tiny/fui-badge {
-      @apply text-[length:calc(6px*var(--base-scale))];
+      @apply text-6;
     }
 
     @variant group-size-extra-small/fui-badge {

@@ -11,9 +11,11 @@
     --fui-positioning-arrow-cross: 8px;
 
     /* `filter` takes no box-shadow, so the elevation is spelled as two `drop-shadow()` calls
-       and cannot read a `--shadow-*` token. */
-    filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
-      drop-shadow(0 4px 8px var(--color-neutral-shadow-key));
+       and cannot read a `--shadow-*` token. The geometry is `--shadow-8`'s, so it repeats that
+       token's base-scale ramp by hand — otherwise this would be one of the only elevations in
+       the tree still frozen in px as the root font size grows. */
+    filter: drop-shadow(0 0 calc(2px * var(--base-scale)) var(--color-neutral-shadow-ambient))
+      drop-shadow(0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) var(--color-neutral-shadow-key));
   }
 
   /* `appearance` is a look prop — it rides a module class. */

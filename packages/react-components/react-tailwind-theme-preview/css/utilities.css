@@ -17,6 +17,30 @@
  * reintroduce `@property` without re-running that perf gate.
  */
 
+/*
+ * Numeric font sizes on the base-scale axis: `text-18` → `calc(18px * var(--base-scale))`.
+ *
+ * The counterpart of the numeric SPACING axis. `p-12` compiles to `calc(var(--spacing) * 12)`
+ * and so reads as px while computing through `--base-scale`; font sizes had no such axis, so a
+ * size with no named Fluent token had to be written as a bracket escape
+ * (`text-[length:calc(18px*var(--base-scale))]`). Those spellings restate the scale mechanism at
+ * every call site, which is exactly where it drifts — a hand-written bracket form that forgets
+ * `var(--base-scale)` is invisible at the default root and silently freezes at every other.
+ *
+ * NAMESPACE, and why it does not collide. This is a FUNCTIONAL utility matching a bare integer
+ * only: `--value(integer)` rejects any candidate that is not one, so `text-base-300`,
+ * `text-icon-16` and `text-neutral-foreground-1` do not match it and fall through to the core
+ * `text-*` utility, which resolves them against `--text-*` / `--color-*` as before. Fluent
+ * registers no bare-numeric `--text-<n>` key, so the integer space is unclaimed — verified by
+ * building the windmod package and diffing the compiled declarations, not by reading the docs.
+ *
+ * Scope: sizes with no named token. A size that HAS one (`text-base-300`, `text-icon-16`) must
+ * still use it — the token carries the design intent, `text-14` merely carries a number.
+ */
+@utility text-* {
+  font-size: calc(--value(integer) * 1px * var(--base-scale));
+}
+
 /* Default ring (`createFocusOutlineStyle()`): a ::after inset by the outline width. */
 @utility fui-focus-outline {
   --fui-focus-outline-width: initial;

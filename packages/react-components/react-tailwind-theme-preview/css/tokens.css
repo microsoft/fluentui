@@ -29,7 +29,11 @@
  * The type ramp (--text-* and its paired --leading-*) carries the same literal
  * calc(<px> * var(--base-scale)) form as stroke widths: type follows the root font size,
  * not the --spacing density knob. Both halves scale together so the line-box ratio holds
- * at any root size. Radii and shadow offsets deliberately stay unscaled.
+ * at any root size. Line heights stay LENGTHS rather than the idiomatic unitless ratio
+ * because line-height inherits — see the generator source for the measurements.
+ * Shadow offsets and blur radii ride the base-scale axis, so an elevation
+ * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner
+ * radius is a fixed design constant, not a function of the root font size.
  *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
  * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
@@ -1021,18 +1025,42 @@
     --leading-hero-800: calc(40px * var(--base-scale));
     --leading-hero-900: calc(52px * var(--base-scale));
     --leading-hero-1000: calc(92px * var(--base-scale));
-    --shadow-2: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
-    --shadow-4: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.14);
-    --shadow-8: 0 0 2px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.14);
-    --shadow-16: 0 0 2px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.14);
-    --shadow-28: 0 0 8px rgba(0, 0, 0, 0.12), 0 14px 28px rgba(0, 0, 0, 0.14);
-    --shadow-64: 0 0 8px rgba(0, 0, 0, 0.12), 0 32px 64px rgba(0, 0, 0, 0.14);
-    --shadow-2-brand: 0 0 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.25);
-    --shadow-4-brand: 0 0 2px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.25);
-    --shadow-8-brand: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.25);
-    --shadow-16-brand: 0 0 2px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25);
-    --shadow-28-brand: 0 0 8px rgba(0, 0, 0, 0.3), 0 14px 28px rgba(0, 0, 0, 0.25);
-    --shadow-64-brand: 0 0 8px rgba(0, 0, 0, 0.3), 0 32px 64px rgba(0, 0, 0, 0.25);
+    --shadow-2:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-4:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(2px * var(--base-scale)) calc(4px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-8:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-16:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-28:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(14px * var(--base-scale)) calc(28px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-64:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.12),
+      0 calc(32px * var(--base-scale)) calc(64px * var(--base-scale)) rgba(0, 0, 0, 0.14);
+    --shadow-2-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-4-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(2px * var(--base-scale)) calc(4px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-8-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-16-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-28-brand:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(14px * var(--base-scale)) calc(28px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-64-brand:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(32px * var(--base-scale)) calc(64px * var(--base-scale)) rgba(0, 0, 0, 0.25);
     --duration-ultra-fast: 50ms;
     --duration-faster: 100ms;
     --duration-fast: 150ms;

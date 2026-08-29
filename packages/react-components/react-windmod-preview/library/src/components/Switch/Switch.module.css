@@ -52,7 +52,7 @@
   .indicator {
     --fui-switch-thumb-offset: 0px;
 
-    @apply pointer-events-none mx-horizontal-s my-vertical-s box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid fill-current text-[length:calc(18px*var(--base-scale))] leading-[0] duration-(--duration-normal) ease-(--ease-easy-ease);
+    @apply pointer-events-none mx-horizontal-s my-vertical-s box-border h-20 w-40 shrink-0 rounded-circular border-(length:--spacing-thin) border-solid fill-current text-18 leading-[0] duration-(--duration-normal) ease-(--ease-easy-ease);
 
     transition-property: background, border, color;
 
