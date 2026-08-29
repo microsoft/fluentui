@@ -378,6 +378,23 @@ instead.
 
 ### Icon variants
 
+Glyph styling never uses a raw `svg` type selector. Every `@fluentui/react-icons` icon stamps
+`data-fui-icon` (SVG icons: empty string; font icons: `"font"`), so the generic `icon` variant
+(`(& > :where([data-fui-icon]))`) selects any direct-child Fluent glyph regardless of bundling —
+it is the spelling for shaping a single glyph (`display`, `text-icon-*`, `flex-none`):
+
+```css
+.icon {
+  @variant icon {
+    @apply block;
+  }
+}
+```
+
+Note it matches font icons too, and it does NOT match a consumer's arbitrary `<svg>` — that
+behavioural delta vs Griffel's `& svg` is documented in MIGRATION.md (stamp `data-fui-icon` to
+opt in).
+
 The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless
 `bundleIcon` on each of the two sibling glyphs it renders directly inside the slot element. The
 `icon-filled` / `icon-regular` variants are direct-child selectors applied to the class that owns
@@ -403,12 +420,13 @@ Copy `Button.module.css`. Two constraints:
   block, and that class must be a **descendant** of the group root. On a block anchored on the group
   root itself the compiled group check fails silently — verify with a computed-style probe before
   anchoring a guarded swap on a root class.
-- **Direct-child reach.** `icon-filled`/`icon-regular` reach only glyphs that are direct children of
-  the anchor. Where the glyphs sit deeper (InteractionTagPrimary anchors on root appearance classes
-  while the glyphs live inside the tag icon slot), use the glyph-self spellings `variant-filled` /
-  `variant-regular` inside a `& *` wrapper — the one remaining permitted nested-selector form for
-  glyphs. A consumer who wraps their bundled icon in an extra element takes the glyphs out of
-  direct-child reach by design.
+- **Direct-child reach.** `icon`, `icon-filled` and `icon-regular` reach only glyphs that are
+  direct children of the anchor. Where the glyphs sit deeper (InteractionTagPrimary anchors on root
+  appearance classes while the glyphs live inside the tag icon slot), use the glyph-self spellings
+  `variant-filled` / `variant-regular` inside a `& *` wrapper — the one remaining permitted
+  nested-selector form for glyphs. Never widen a catalog variant to descendant reach for such a
+  site. A consumer who wraps their icon in an extra element takes the glyphs out of direct-child
+  reach by design.
 
 ## Code style
 

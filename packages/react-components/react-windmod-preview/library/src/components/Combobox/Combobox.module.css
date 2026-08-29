@@ -150,7 +150,7 @@
   .icon {
     @apply relative box-border block cursor-pointer text-icon-20 text-neutral-stroke-accessible;
 
-    & svg {
+    @variant icon {
       @apply block;
     }
 

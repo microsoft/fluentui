@@ -174,7 +174,7 @@
   .icon {
     @apply col-start-[icon] col-end-[end] box-border block text-neutral-stroke-accessible;
 
-    & svg {
+    @variant icon {
       @apply block;
     }
 

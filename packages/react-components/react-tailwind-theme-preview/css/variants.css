@@ -90,8 +90,8 @@
 @custom-variant with-icon (&:where([data-icon-position]));
 @custom-variant icon-before (&:where([data-icon-position='before']));
 @custom-variant icon-after (&:where([data-icon-position='after']));
-@custom-variant icon (&:where([data-icon]));
-@custom-variant not-icon (&:where(:not([data-icon])));
+@custom-variant icon-present (&:where([data-icon]));
+@custom-variant not-icon-present (&:where(:not([data-icon])));
 
 /* label position. Every producer stamps data-label-position unconditionally, so a
  * presence-only entry over it can never be false — select on the value. */

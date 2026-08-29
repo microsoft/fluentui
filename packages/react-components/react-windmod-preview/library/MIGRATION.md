@@ -1088,6 +1088,17 @@ Griffel's later Button-outline rule wins and the surface shows through (`rgba(0,
 that value. Take a Griffel measurement of this cell from an isolated harness rather than from a real
 `TeachingPopover` and you will read `rgb(12, 59, 94)` instead, from the same Griffel build.
 
+### Icon slots
+
+#### 57. Fluent icons are the styled contract — a bring-your-own `<svg>` is not restyled
+
+Where Griffel shapes a slot's glyph with an `& svg` selector, windmod selects `[data-fui-icon]` — the
+attribute every `@fluentui/react-icons` icon stamps (SVG icons an empty value, font icons `"font"`). For
+any Fluent icon, bundled or not, the two are identical; a font icon additionally picks up the slot's glyph
+sizing that an svg-type selector never reached. The divergence is an arbitrary `<svg>` a consumer passes
+into an icon slot (an `Input` `contentBefore`, an `Option` `checkIcon`, …): Griffel would restyle it,
+windmod leaves it alone. Stamp `data-fui-icon` on it to opt in.
+
 ## Where the pixels are allowed to differ
 
 The parity gate is strict zero: pixelmatch at threshold 0, with the antialiasing classifier absorbing

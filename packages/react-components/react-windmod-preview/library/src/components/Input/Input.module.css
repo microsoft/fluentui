@@ -198,7 +198,7 @@
   .content {
     @apply box-border flex text-neutral-foreground-3;
 
-    & > svg {
+    @variant icon {
       @apply text-icon-20;
     }
 
@@ -207,13 +207,13 @@
     }
 
     @variant group-size-small/fui-input {
-      & > svg {
+      @variant icon {
         @apply text-icon-16;
       }
     }
 
     @variant group-size-large/fui-input {
-      & > svg {
+      @variant icon {
         @apply text-icon-24;
       }
     }

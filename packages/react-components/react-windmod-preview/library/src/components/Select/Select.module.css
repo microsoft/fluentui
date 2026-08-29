@@ -111,7 +111,7 @@
   .icon {
     @apply pointer-events-none absolute end-horizontal-m-nudge box-border block size-20 text-icon-20 text-neutral-stroke-accessible;
 
-    & svg {
+    @variant icon {
       @apply block;
     }
 

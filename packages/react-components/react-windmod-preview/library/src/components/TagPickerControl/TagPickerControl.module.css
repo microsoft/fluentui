@@ -128,7 +128,7 @@
   .expand-icon {
     @apply box-border flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
 
-    & svg {
+    @variant icon {
       @apply block;
     }
 

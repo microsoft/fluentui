@@ -445,7 +445,7 @@
   .content {
     @apply col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-regular;
 
-    @variant group-icon/fui-tab {
+    @variant group-icon-present/fui-tab {
       @apply col-start-2;
     }
 
@@ -515,7 +515,7 @@
   .content-reserved-space {
     @apply invisible col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-semibold;
 
-    @variant group-icon/fui-tab {
+    @variant group-icon-present/fui-tab {
       @apply col-start-2;
     }
 

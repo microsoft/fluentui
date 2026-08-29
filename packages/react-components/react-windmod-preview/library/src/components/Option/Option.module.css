@@ -39,7 +39,7 @@
   .check-icon {
     @apply invisible -ms-horizontal-xxs me-horizontal-xxs block shrink-0 text-icon-16;
 
-    & svg {
+    @variant icon {
       @apply block;
     }
 

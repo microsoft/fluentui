@@ -39,7 +39,7 @@
     @variant group-expand-icon-position-end/fui-accordion-header {
       @apply pe-horizontal-m-nudge;
 
-      @variant group-not-icon/fui-accordion-header {
+      @variant group-not-icon-present/fui-accordion-header {
         @apply ps-horizontal-m;
       }
     }

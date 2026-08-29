@@ -153,7 +153,7 @@ A multi-component vocabulary; not every component uses every step.
 icon-only / not-icon-only        [data-icon-only]
 with-icon                        [data-icon-position] present
 icon-before / icon-after         the position value
-icon / not-icon                  [data-icon]
+icon-present / not-icon-present  [data-icon]
 ```
 
 ### Content presence
@@ -187,6 +187,7 @@ Sectioned by owning component, in
 Accordion       expand-icon-position-start|end
 Button          appearance-secondary|primary|outline|subtle|transparent
 Card            appearance-filled-alternative        (outline, subtle shared with Button)
+icons           icon                                 — any direct-child Fluent glyph ([data-fui-icon], SVG or font)
 bundleIcon      icon-filled  icon-regular         — the glyph swap, direct-child form
                 variant-filled  variant-regular      — glyph-self form for deeper-nested glyphs
 ColorSlider     channel-saturation  channel-value    (hue is the resting look, no entry)

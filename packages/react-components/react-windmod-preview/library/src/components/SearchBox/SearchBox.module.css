@@ -60,7 +60,7 @@
   .dismiss {
     @apply box-border flex cursor-pointer text-neutral-foreground-3;
 
-    & > svg {
+    @variant icon {
       @apply text-icon-20;
     }
 
@@ -69,13 +69,13 @@
     }
 
     @variant group-size-small/fui-search-box {
-      & > svg {
+      @variant icon {
         @apply text-icon-16;
       }
     }
 
     @variant group-size-large/fui-search-box {
-      & > svg {
+      @variant icon {
         @apply text-icon-24;
       }
     }

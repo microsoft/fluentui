@@ -75,7 +75,7 @@
   .lower-half {
     @apply end-1/2;
 
-    & > svg {
+    @variant icon {
       @apply flex-none;
     }
   }
