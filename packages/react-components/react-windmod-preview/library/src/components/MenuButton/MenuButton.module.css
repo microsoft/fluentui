@@ -61,10 +61,6 @@
         /* After the focus crossing, as in Button: the disabled border wins over it. */
         @variant disabled, disabled-focusable {
           @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-          @variant focus {
-            @apply border-[GrayText];
-          }
         }
       }
     }
@@ -94,17 +90,7 @@
         }
       }
 
-      @variant group-hover/fui-menu-button {
-        @variant icon-filled {
-          @apply hidden;
-        }
-
-        @variant icon-regular {
-          @apply inline;
-        }
-      }
-
-      @variant group-hover-active/fui-menu-button {
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
         @variant icon-filled {
           @apply hidden;
         }
@@ -138,17 +124,7 @@
     }
 
     @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
-      @variant group-hover/fui-menu-button {
-        @variant icon-filled {
-          @apply hidden;
-        }
-
-        @variant icon-regular {
-          @apply inline;
-        }
-      }
-
-      @variant group-hover-active/fui-menu-button {
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
         @variant icon-filled {
           @apply hidden;
         }

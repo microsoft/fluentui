@@ -33,16 +33,8 @@
     @variant disabled {
       @apply cursor-not-allowed text-neutral-foreground-disabled no-underline;
 
-      @variant hover, active {
-        @apply text-neutral-foreground-disabled no-underline;
-      }
-
       @variant forced-colors {
         @apply text-[GrayText];
-
-        @variant hover, active {
-          @apply text-[GrayText];
-        }
       }
     }
 

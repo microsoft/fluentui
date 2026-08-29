@@ -40,11 +40,7 @@
       }
 
       @variant disabled, disabled-focusable {
-        @variant hover {
-          @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
         }
 
@@ -62,11 +58,7 @@
       @variant forced-colors {
         @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
 
-        @variant hover {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
         }
 
@@ -91,11 +83,7 @@
         }
 
         @variant forced-colors {
-          @variant group-hover/fui-toolbar-radio-button {
-            @apply text-[Highlight];
-          }
-
-          @variant group-hover-active/fui-toolbar-radio-button {
+          @variant group-hover/fui-toolbar-radio-button, group-hover-active/fui-toolbar-radio-button {
             @apply text-[Highlight];
           }
         }

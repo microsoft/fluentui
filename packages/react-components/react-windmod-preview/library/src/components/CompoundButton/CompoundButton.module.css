@@ -61,11 +61,7 @@
     }
 
     @variant forced-colors {
-      @variant group-hover/fui-compound-button {
-        @apply text-[Highlight];
-      }
-
-      @variant group-hover-active/fui-compound-button {
+      @variant group-hover/fui-compound-button, group-hover-active/fui-compound-button {
         @apply text-[Highlight];
       }
     }
@@ -78,11 +74,7 @@
 
         /* Griffel reaches this from the root with a :hover compound that outranks the
            appearance rule by specificity; here position alone carries it. */
-        @variant group-hover/fui-compound-button {
-          @apply text-[Highlight];
-        }
-
-        @variant group-hover-active/fui-compound-button {
+        @variant group-hover/fui-compound-button, group-hover-active/fui-compound-button {
           @apply text-[Highlight];
         }
       }
@@ -90,11 +82,7 @@
 
     @variant group-appearance-subtle/fui-compound-button {
       @variant forced-colors {
-        @variant group-hover/fui-compound-button {
-          @apply text-[Canvas];
-        }
-
-        @variant group-hover-active/fui-compound-button {
+        @variant group-hover/fui-compound-button, group-hover-active/fui-compound-button {
           @apply text-[Canvas];
         }
       }
@@ -112,11 +100,7 @@
       /* Griffel orders every forced-colors rule after every :hover rule regardless of source
          position, so the high-contrast hover colour outranks this appearance there. */
       @variant forced-colors {
-        @variant group-hover/fui-compound-button {
-          @apply text-[Highlight];
-        }
-
-        @variant group-hover-active/fui-compound-button {
+        @variant group-hover/fui-compound-button, group-hover-active/fui-compound-button {
           @apply text-[Highlight];
         }
       }

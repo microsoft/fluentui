@@ -229,13 +229,7 @@
       @variant disabled {
         @apply bg-transparent-background;
 
-        @variant hover {
-          @variant before {
-            @apply bg-transparent-stroke;
-          }
-        }
-
-        @variant active {
+        @variant hover, active {
           @variant before {
             @apply bg-transparent-stroke;
           }
@@ -248,13 +242,7 @@
         }
 
         @variant forced-colors {
-          @variant hover {
-            @variant before {
-              @apply bg-transparent;
-            }
-          }
-
-          @variant active {
+          @variant hover, active {
             @variant before {
               @apply bg-transparent;
             }

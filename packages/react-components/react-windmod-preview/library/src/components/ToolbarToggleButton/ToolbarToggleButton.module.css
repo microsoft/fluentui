@@ -43,11 +43,7 @@
       }
 
       @variant disabled, disabled-focusable {
-        @variant hover {
-          @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
         }
 
@@ -65,11 +61,7 @@
       @variant forced-colors {
         @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
 
-        @variant hover {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
         }
 
@@ -106,11 +98,7 @@
            them for the system foreground — this slot keeps forced-color-adjust: auto. Only a
            system colour authored at this layer survives that swap. */
         @variant forced-colors {
-          @variant group-hover/fui-toolbar-toggle-button {
-            @apply text-[Highlight];
-          }
-
-          @variant group-hover-active/fui-toolbar-toggle-button {
+          @variant group-hover/fui-toolbar-toggle-button, group-hover-active/fui-toolbar-toggle-button {
             @apply text-[Highlight];
           }
         }

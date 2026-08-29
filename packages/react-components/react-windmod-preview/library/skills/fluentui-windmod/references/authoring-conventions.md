@@ -351,6 +351,23 @@ verbatim, e.g. Button's `background, border, color` — never an expanded longha
 and also narrows behaviour (Griffel's `border` would animate width and style changes; a longhand list
 would not). Verify per module with a computed-style equality check.
 
+### Identical variant bodies: delete before collapsing
+
+Sibling `@variant` blocks with identical bodies collapse to a comma list — `@variant hover,
+hover-active { … }` compiles to one nested rule per member in list order, byte-identical to the
+separate blocks, with per-member specificity (never a `:is()` wrap). Collapse only CONSECUTIVE
+siblings: hoisting a block across an intervening sibling that touches any of the same properties
+reorders the cascade.
+
+Before collapsing, test the null hypothesis: a nested `hover`/`hover-active`/`focus` arm that only
+re-asserts declarations its parent state block already carries is usually DEAD — every catalog
+variant is `:where()`-flat, so the parent base (later in source than the interaction blocks it
+outranks) already wins on order alone. Delete such arms rather than collapsing them, and prove the
+deletion with a computed-style A/B across the pseudo-state × forced-colors matrix. The identity
+custom variant (`@custom-variant self (&)`) that would let a base join a comma list compiles
+safely, but no shipped site has needed it — a re-assertion arm that measures redundant is deleted
+instead.
+
 ### Icon variants
 
 The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless

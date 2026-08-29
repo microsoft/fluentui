@@ -182,10 +182,6 @@
 
     @variant forced-colors {
       @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
-
-      @variant hover, active {
-        @apply bg-[Highlight] text-[HighlightText];
-      }
     }
   }
 

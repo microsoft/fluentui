@@ -99,24 +99,8 @@
     @variant disabled, disabled-focusable {
       @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
-      @variant hover {
-        @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
-      @variant hover-active {
-        @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
       @variant appearance-primary {
         @apply border-transparent;
-
-        @variant hover {
-          @apply border-transparent;
-        }
-
-        @variant hover-active {
-          @apply border-transparent;
-        }
       }
 
       @variant appearance-subtle, appearance-transparent {
@@ -157,18 +141,6 @@
 
       @variant disabled, disabled-focusable {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
       }
     }
 
@@ -179,20 +151,12 @@
         /* Griffel reaches these from Button's own high-contrast rules, where the hover and pressed
            pseudo-classes outrank this resting appearance by specificity inside the shared media
            bucket; a whole layer separates them here, so they are repeated. */
-        @variant hover {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
         }
 
         @variant disabled, disabled-focusable {
           @apply border-[GrayText] text-[GrayText];
-
-          @variant focus {
-            @apply border-[GrayText];
-          }
         }
       }
     }
@@ -201,11 +165,7 @@
       @variant forced-colors {
         @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
 
-        @variant hover {
-          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-        }
-
-        @variant hover-active {
+        @variant hover, hover-active {
           @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
         }
 
@@ -259,11 +219,7 @@
       }
 
       @variant forced-colors {
-        @variant group-hover/fui-toggle-button {
-          @apply text-[Highlight];
-        }
-
-        @variant group-hover-active/fui-toggle-button {
+        @variant group-hover/fui-toggle-button, group-hover-active/fui-toggle-button {
           @apply text-[Highlight];
         }
       }
@@ -276,17 +232,7 @@
         @apply text-[GrayText];
       }
 
-      @variant group-hover/fui-toggle-button {
-        @variant icon-filled {
-          @apply hidden;
-        }
-
-        @variant icon-regular {
-          @apply inline;
-        }
-      }
-
-      @variant group-hover-active/fui-toggle-button {
+      @variant group-hover/fui-toggle-button, group-hover-active/fui-toggle-button {
         @variant icon-filled {
           @apply hidden;
         }

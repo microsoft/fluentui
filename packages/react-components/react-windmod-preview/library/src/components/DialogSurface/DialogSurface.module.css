@@ -26,18 +26,13 @@
 
     /* Griffel renders no backdrop element for a non-modal dialog, and a shown popover's user-agent
        ::backdrop is a full-viewport box, not a zero-area one. */
-    @variant modal-type-non-modal {
+    @variant modal-type-non-modal, nested {
       @variant backdrop {
         @apply bg-transparent;
       }
     }
 
     /* A nested dialog would otherwise paint a second backdrop over the first. */
-    @variant nested {
-      @variant backdrop {
-        @apply bg-transparent;
-      }
-    }
 
     @variant focus-visible {
       @apply fui-focus-outline;

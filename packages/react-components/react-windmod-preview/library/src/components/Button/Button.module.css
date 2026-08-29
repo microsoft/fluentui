@@ -26,14 +26,6 @@
        re-asserts the disabled background and foreground it would otherwise win back. */
     @variant disabled, disabled-focusable {
       @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-      @variant hover {
-        @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
-      @variant hover-active {
-        @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
     }
 
     /* Griffel's focus indicator carries an attribute on top of the class, so it outranks every
@@ -92,28 +84,12 @@
         @apply border-[ButtonText];
       }
 
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
-      }
-
-      @variant hover-active {
+      @variant hover, hover-active {
         @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
       }
 
       @variant disabled, disabled-focusable {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
       }
     }
   }
@@ -155,11 +131,7 @@
       }
 
       @variant forced-colors {
-        @variant group-hover/fui-button {
-          @apply text-[Highlight];
-        }
-
-        @variant group-hover-active/fui-button {
+        @variant group-hover/fui-button, group-hover-active/fui-button {
           @apply text-[Highlight];
         }
       }
@@ -170,17 +142,7 @@
        carries the cascade: appearance-hover swaps before the disabled swap-back, which must
        win last. */
     @variant group-appearance-subtle/fui-button, group-appearance-transparent/fui-button {
-      @variant group-hover/fui-button {
-        @variant icon-filled {
-          @apply inline;
-        }
-
-        @variant icon-regular {
-          @apply hidden;
-        }
-      }
-
-      @variant group-hover-active/fui-button {
+      @variant group-hover/fui-button, group-hover-active/fui-button {
         @variant icon-filled {
           @apply inline;
         }
@@ -196,37 +158,19 @@
     @variant group-disabled/fui-button, group-disabled-focusable/fui-button {
       @apply text-neutral-foreground-disabled;
 
-      @variant group-hover/fui-button {
-        @apply text-neutral-foreground-disabled;
-      }
-
-      @variant group-hover-active/fui-button {
+      @variant group-hover/fui-button, group-hover-active/fui-button {
         @apply text-neutral-foreground-disabled;
       }
 
       @variant forced-colors {
         @apply text-[GrayText];
 
-        @variant group-hover/fui-button {
-          @apply text-[GrayText];
-        }
-
-        @variant group-hover-active/fui-button {
+        @variant group-hover/fui-button, group-hover-active/fui-button {
           @apply text-[GrayText];
         }
       }
 
-      @variant group-hover/fui-button {
-        @variant icon-filled {
-          @apply hidden;
-        }
-
-        @variant icon-regular {
-          @apply inline;
-        }
-      }
-
-      @variant group-hover-active/fui-button {
+      @variant group-hover/fui-button, group-hover-active/fui-button {
         @variant icon-filled {
           @apply hidden;
         }
@@ -251,37 +195,17 @@
 
     @variant disabled, disabled-focusable {
       @apply bg-transparent-background;
-
-      @variant hover {
-        @apply bg-transparent-background;
-      }
-
-      @variant hover-active {
-        @apply bg-transparent-background;
-      }
     }
 
     /* Background only: this class never touches the border or the text, so .root's trailing
        forced-colors block still supplies both. */
     @variant forced-colors {
-      @variant hover {
-        @apply bg-[HighlightText];
-      }
-
-      @variant hover-active {
+      @variant hover, hover-active {
         @apply bg-[HighlightText];
       }
 
       @variant disabled, disabled-focusable {
         @apply bg-[ButtonFace];
-
-        @variant hover {
-          @apply bg-[ButtonFace];
-        }
-
-        @variant hover-active {
-          @apply bg-[ButtonFace];
-        }
       }
     }
   }
@@ -299,14 +223,6 @@
 
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-      @variant hover {
-        @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
-
-      @variant hover-active {
-        @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
-      }
     }
 
     @variant focus-visible {
@@ -345,11 +261,7 @@
     @variant forced-colors {
       @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
 
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-
-      @variant hover-active {
+      @variant hover, hover-active {
         @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
       }
 
@@ -361,18 +273,6 @@
 
       @variant disabled, disabled-focusable {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
       }
     }
   }
@@ -390,14 +290,6 @@
 
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-
-      @variant hover {
-        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-      }
-
-      @variant hover-active {
-        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-      }
     }
 
     @variant focus-visible {
@@ -405,11 +297,7 @@
     }
 
     @variant forced-colors {
-      @variant hover {
-        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
-      }
-
-      @variant hover-active {
+      @variant hover, hover-active {
         @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
       }
 
@@ -419,18 +307,6 @@
 
       @variant disabled, disabled-focusable {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
       }
     }
   }
@@ -448,14 +324,6 @@
 
     @variant disabled, disabled-focusable {
       @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-
-      @variant hover {
-        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-      }
-
-      @variant hover-active {
-        @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
-      }
     }
 
     @variant focus-visible {
@@ -463,11 +331,7 @@
     }
 
     @variant forced-colors {
-      @variant hover {
-        @apply border-[Highlight] bg-transparent-background text-[Highlight];
-      }
-
-      @variant hover-active {
+      @variant hover, hover-active {
         @apply border-[Highlight] bg-transparent-background text-[Highlight];
       }
 
@@ -477,18 +341,6 @@
 
       @variant disabled, disabled-focusable {
         @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-
-        @variant hover {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant hover-active {
-          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
-        }
-
-        @variant focus {
-          @apply border-[GrayText];
-        }
       }
     }
   }

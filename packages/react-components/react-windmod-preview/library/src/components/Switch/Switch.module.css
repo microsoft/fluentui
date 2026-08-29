@@ -125,11 +125,7 @@
         @variant peer-checked/fui-switch {
           @apply bg-[Highlight] text-[Canvas];
 
-          @variant peer-hover/fui-switch {
-            @apply bg-[Highlight] text-[Canvas];
-          }
-
-          @variant peer-hover-active/fui-switch {
+          @variant peer-hover/fui-switch, peer-hover-active/fui-switch {
             @apply bg-[Highlight] text-[Canvas];
           }
         }
