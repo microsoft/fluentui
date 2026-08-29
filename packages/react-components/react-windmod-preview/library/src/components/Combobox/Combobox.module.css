@@ -7,11 +7,9 @@
    block, which Griffel orders the other way; the two sets share no declaration (sizes author
    height, padding-inline-end and column-gap; appearances author background-color, the border
    longhands and border-radius), so the reorder cannot change a winner — the same zero-overlap check
-   that licenses this file's layer.
-   The whole file sits in l2, not just the .listbox block: .listbox overrides windmod Listbox's own
-   l1 rules on the same element, and a file has one layer. */
+   that licenses this file's layer. */
 
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   .root {
     @apply relative box-border inline-grid min-w-250 grid-cols-[1fr_auto] items-center justify-between gap-x-horizontal-xxs rounded-medium align-middle;
 
@@ -200,7 +198,10 @@
 
     clip: rect(0px, 0px, 0px, 0px);
   }
+}
 
+@layer fui.components.l2 {
+  /* Overrides windmod Listbox's own level-1 rules on the same element. */
   .listbox {
     @apply max-h-[80vh] rounded-medium shadow-16;
   }

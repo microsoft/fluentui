@@ -119,7 +119,9 @@
       }
     }
   }
+}
 
+@layer fui.components.l1 {
   .menu-icon {
     @apply size-12 text-icon-12 leading-base-200;
 

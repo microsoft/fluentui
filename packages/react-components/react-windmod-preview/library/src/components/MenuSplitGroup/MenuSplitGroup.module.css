@@ -14,11 +14,14 @@
    because no l2 flavour module declares a property this block sets, so none of them may ever
    declare a radius, an inline-start padding, `flex` or `align-self`. The day one does, this block
    moves to a later layer rather than resting on the tie-break. */
-@layer fui.components.l2 {
+
+@layer fui.components.l1 {
   .root {
     @apply flex;
   }
+}
 
+@layer fui.components.l2 {
   .item {
     &:nth-of-type(1) {
       @apply flex-1;

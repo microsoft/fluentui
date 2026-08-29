@@ -165,12 +165,19 @@ the headless library's own `''` spelling; that is theirs, not ours.
 
 ### Layers
 
-- **All** component styles live in `fui.components.l<level>`. `l1` for leaf components, `l2+` for
-  compositions.
+- **All** component styles live in `fui.components.l<level>`.
 - `fui.base` belongs to the theme, for global element resets **only**. Components never author into it.
-- **One `@layer` block per `module.css`.**
-- A component building on another's styles authors its overrides in the **next level up** — layer order
-  carries the override, **never** cross-file source order.
+- **The level is assigned per RULE, not per file.** A rule styling the component's own DOM — its root,
+  its plain-element slots — is a base style and sits at `l1`, no matter what the rest of the file does.
+  A rule that overrides ANOTHER component's styles (a slot rendering a windmod Label, Button,
+  Listbox, …) sits one level above the overridden rules — `l2` over an `l1` base, `l3` over an `l2`
+  one. Layer order carries the override, **never** cross-file source order. Never park a rule higher
+  than the rule it overrides requires; wholesale-levelling a file grows the stack for nothing
+  (Field's root is a plain div and sits at `l1` even though its label block, overriding the windmod
+  Label, sits at `l2`).
+- **One `@layer` block per level per `module.css`** — a mixed file carries at most one block for each
+  level it uses. Same-element rules must share a level so block order keeps arbitrating between them;
+  only rules for disjoint elements may sit at different levels.
 - **Never** write an `@layer` ORDER statement anywhere except the theme package, which is its sole
   owner.
 

@@ -1,9 +1,9 @@
 @reference '#theme';
 
-/* l3: `.label` overrides the Label's l1 colour and `.info-button` overrides the InfoButton's l2
-   vertical-align. Only l3 clears both. */
+/* l2: `.label` overrides the Label's l1 colour and `.info-button` overrides the InfoButton's l1
+   root look. */
 
-@layer fui.components.l3 {
+@layer fui.components.l2 {
   .label {
     @apply cursor-[inherit] align-top text-inherit;
 
