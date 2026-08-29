@@ -11,7 +11,7 @@ export const useCalendarPickerStyles = makeStyles({
   root: {
     boxSizing: 'content-box',
     overflow: 'hidden',
-    padding: '12px',
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
     width: '196px',
   },
   normalize: {

@@ -29,7 +29,7 @@ CalendarOverlaidMonth.parameters = {
   docs: {
     description: {
       story:
-        'A Calendar Compat allows you to render the month picker over the day picker. This is useful' +
+        'A Calendar allows you to render the month picker over the day picker. This is useful' +
         ' when there are width constraints and the month picker is needed.',
     },
   },
