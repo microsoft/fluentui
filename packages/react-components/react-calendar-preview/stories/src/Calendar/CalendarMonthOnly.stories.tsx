@@ -37,7 +37,7 @@ export const CalendarMonthOnly = (): JSXElement => {
 CalendarMonthOnly.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to only show the month and year picker leaving the day picker hidden.',
+      story: 'A Calendar allows you to only show the month and year picker, leaving the day picker hidden.',
     },
   },
 };

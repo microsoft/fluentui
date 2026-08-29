@@ -26,7 +26,7 @@ export const calendarDayClassNames: SlotClassNames<CalendarDaySlots> = {
 const useRootStyles = makeStyles({
   base: {
     boxSizing: 'content-box',
-    padding: '12px',
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
     width: '196px',
   },
   normalize: {

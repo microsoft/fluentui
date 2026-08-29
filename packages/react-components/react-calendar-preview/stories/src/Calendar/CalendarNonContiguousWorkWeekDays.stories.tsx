@@ -41,7 +41,7 @@ export const CalendarNonContiguousWorkWeekDays = (): JSXElement => {
 CalendarNonContiguousWorkWeekDays.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat can be modified to allow selecting a non contiguous (7 day) week.',
+      story: 'A Calendar can be modified to allow selecting a non-contiguous (7-day) week.',
     },
   },
 };

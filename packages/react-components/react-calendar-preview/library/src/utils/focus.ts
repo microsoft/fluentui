@@ -10,7 +10,7 @@ export function focusAsync(
   element: HTMLElement | { focus: () => void } | undefined | null,
   win: Window | undefined | null,
 ): void {
-  if (element) {
+  if (element && win) {
     // An element was already queued to be focused, so replace that one with the new element
     if (targetToFocusOnNextRepaint) {
       targetToFocusOnNextRepaint = element;
@@ -19,14 +19,12 @@ export function focusAsync(
 
     targetToFocusOnNextRepaint = element;
 
-    if (win) {
-      // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
-      win.requestAnimationFrame(() => {
-        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+    win.requestAnimationFrame(() => {
+      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
 
-        // We are done focusing for this frame, so reset the queued focus element
-        targetToFocusOnNextRepaint = undefined;
-      });
-    }
+      // We are done focusing for this frame, so reset the queued focus element
+      targetToFocusOnNextRepaint = undefined;
+    });
   }
 }

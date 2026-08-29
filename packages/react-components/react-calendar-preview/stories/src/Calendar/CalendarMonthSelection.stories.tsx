@@ -70,7 +70,7 @@ export const CalendarMonthSelection = (): JSXElement => {
 CalendarMonthSelection.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to set a selection range of months instead of selecting a single day.',
+      story: 'A Calendar allows you to set a selection range of months instead of selecting a single day.',
     },
   },
 };

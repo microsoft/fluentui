@@ -22,7 +22,7 @@ export const CalendarWeekNumbers = (): JSXElement => {
 CalendarWeekNumbers.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to show the week numbers next to the day grid for their respective week.',
+      story: 'A Calendar allows you to show the week numbers next to the day grid for their respective week.',
     },
   },
 };

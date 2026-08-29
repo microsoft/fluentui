@@ -30,7 +30,7 @@ CalendarMarkedDays.parameters = {
   docs: {
     description: {
       story:
-        'A Calendar Compat allows you to pass a callback that returns an array of number that should be' +
+        'A Calendar allows you to pass a callback that returns an array of numbers that should be ' +
         'marked. This callback provides a starting date and an ending date.',
     },
   },

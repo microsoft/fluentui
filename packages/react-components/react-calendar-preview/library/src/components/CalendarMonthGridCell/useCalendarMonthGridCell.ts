@@ -39,7 +39,7 @@ export const useCalendarMonthGridCell_unstable = (props: CalendarMonthGridCellPr
             }
           : undefined,
         'aria-label': month.ariaLabel,
-        'aria-selected': month.isNavigated,
+        'aria-selected': month.isSelected,
         'data-current': stringifyDataAttribute(month.isCurrent),
         'data-selected': stringifyDataAttribute(month.isSelected),
         'data-outside-bounds': stringifyDataAttribute(!month.isInBounds),
