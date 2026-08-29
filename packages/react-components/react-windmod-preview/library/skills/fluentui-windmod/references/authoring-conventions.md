@@ -9,17 +9,18 @@ exactly.
 
 **Where things are.** This file is long; jump to what you need.
 
-| Section                                                                           | Read it when                                            |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [Composition](#composition)                                                       | wiring a component's hook, look props and context       |
-| [Re-slotting one component into another](#re-slotting-one-component-into-another) | one component becomes another's slot `elementType`      |
-| [The styles hook](#the-styles-hook)                                               | writing or changing a `use<Name>Styles.ts`              |
-| [Markers](#markers) · [Data attributes](#data-attributes)                         | class-name records, group/peer markers, `data-*` stamps |
-| [CSS authoring](#css-authoring)                                                   | touching any `*.module.css` — layers, blocks, tokens    |
-| [Code style](#code-style) · [Comments policy](#comments-policy)                   | before review                                           |
-| [Definition of done](#definition-of-done)                                         | deciding whether the change is finished                 |
-| [Verification](#verification)                                                     | the pixel gate, allowances, mutation tables, probes     |
-| [Scope](#scope)                                                                   | deciding whether the feature is windmod's to add at all |
+| Section                                                                           | Read it when                                                                                  |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [Composition](#composition)                                                       | wiring a component's hook, look props and context                                             |
+| [Re-slotting one component into another](#re-slotting-one-component-into-another) | one component becomes another's slot `elementType`                                            |
+| [The styles hook](#the-styles-hook)                                               | writing or changing a `use<Name>Styles.ts`                                                    |
+| [Markers](#markers) · [Data attributes](#data-attributes)                         | class-name records, group/peer markers, `data-*` stamps                                       |
+| [CSS authoring](#css-authoring)                                                   | touching any `*.module.css` — layers, blocks, tokens                                          |
+| [Code style](#code-style) · [Comments policy](#comments-policy)                   | before review                                                                                 |
+| [Definition of done](#definition-of-done)                                         | deciding whether the change is finished                                                       |
+| [Verification](#verification)                                                     | the pixel gate, allowances, mutation tables, probes                                           |
+| [Scope](#scope)                                                                   | deciding whether the feature is windmod's to add at all                                       |
+| [failure-modes.md](failure-modes.md)                                              | before calling any style change done — the recurring defect classes and their detection greps |
 
 ## Composition
 

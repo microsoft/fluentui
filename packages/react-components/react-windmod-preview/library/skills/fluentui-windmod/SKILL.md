@@ -248,7 +248,9 @@ verifying one — VR scenes, mutation tables, probes, pixel allowances:**
 - **MANDATORY**: Load [references/authoring-conventions.md](references/authoring-conventions.md)
   completely. The authoring rules are strict and violations are rejected, and the same file carries
   the verification protocol: what the pixel gate actually asserts, what a pixel allowance requires,
-  and the probe and mutation-table rules that keep a "measured" claim honest.
+  and the probe and mutation-table rules that keep a "measured" claim honest. Before calling the
+  change done, check the diff against [references/failure-modes.md](references/failure-modes.md) —
+  the defect classes prior reviews caught, each with its detection grep.
 - **Do NOT Load**: overriding.md — the consumer override model does not apply inside the library.
 
 **Diagnosing a style that will not apply:**
