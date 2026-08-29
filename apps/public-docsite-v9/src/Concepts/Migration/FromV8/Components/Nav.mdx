@@ -10,16 +10,17 @@ v8 `Nav` used a `groups` array of `INavLinkGroup` with nested `INavLink` items. 
 
 Import from `@fluentui/react-components` — no separate package required.
 
-| v8                         | v9                                     |
-| -------------------------- | -------------------------------------- |
-| `groups` array prop        | `<NavCategory>` / `<NavItem>` children |
-| `INavLink.name`            | `<NavItem>` children (text)            |
-| `INavLink.url`             | `href` on `<NavItem>`                  |
-| `INavLink.onClick`         | `onClick` on `<NavItem>`               |
-| `INavLink.links` (nesting) | `<NavCategory>` + `<NavCategoryItem>`  |
-| `onLinkClick`              | `onNavItemSelect` on `<Nav>`           |
-| `onLinkExpandClick`        | `onNavCategoryItemToggle` on `<Nav>`   |
-| `selectedKey`              | `selectedValue` on `<Nav>`             |
+| v8                         | v9                                                   |
+| -------------------------- | ---------------------------------------------------- |
+| `groups` array prop        | `<NavCategory>` / `<NavItem>` children               |
+| `INavLink.name`            | `<NavItem>` children (text)                          |
+| `INavLink.url`             | `href` on `<NavItem>`                                |
+| `INavLink.onClick`         | `onClick` on `<NavItem>`                             |
+| `INavLink.links` (nesting) | `<NavCategory>` + `<NavCategoryItem>`                |
+| `onLinkClick`              | `onNavItemSelect` on `<Nav>`                         |
+| `onLinkExpandClick`        | `onNavCategoryItemToggle`; read `data.categoryValue` |
+| `selectedKey`              | `selectedValue` on `<Nav>`                           |
+| `INavLink.isExpanded`      | Membership in controlled `openCategories`            |
 
 ```tsx
 import {
@@ -82,36 +83,54 @@ import { Nav } from '@fluentui/react';
 The equivalent v9 usage is:
 
 ```tsx
+import * as React from 'react';
 import { Nav, NavItem, NavCategory, NavCategoryItem, NavSubItemGroup, NavSubItem } from '@fluentui/react-components';
 import { HomeRegular, SettingsRegular } from '@fluentui/react-icons';
 
-<Nav selectedValue="home" onNavItemSelect={(_, data) => navigate(data.value as string)}>
-  <NavItem icon={<HomeRegular />} value="home" href="/">
-    Home
-  </NavItem>
-  <NavCategory value="settings">
-    <NavCategoryItem icon={<SettingsRegular />}>Settings</NavCategoryItem>
-    <NavSubItemGroup>
-      <NavSubItem value="profile" href="/profile">
-        Profile
-      </NavSubItem>
-    </NavSubItemGroup>
-  </NavCategory>
-</Nav>;
+const [openCategories, setOpenCategories] = React.useState<Iterable<string>>(['settings']);
+
+<nav aria-label="Primary">
+  <Nav
+    selectedValue="home"
+    openCategories={openCategories}
+    onNavItemSelect={(_, data) => navigate(data.value as string)}
+    onNavCategoryItemToggle={(_, data) =>
+      setOpenCategories(current => {
+        const next = new Set(current);
+        next.has(data.categoryValue) ? next.delete(data.categoryValue) : next.add(data.categoryValue);
+        return next;
+      })
+    }
+  >
+    <NavItem icon={<HomeRegular />} value="home" href="/">
+      Home
+    </NavItem>
+    <NavCategory value="settings">
+      <NavCategoryItem icon={<SettingsRegular />}>Settings</NavCategoryItem>
+      <NavSubItemGroup>
+        <NavSubItem value="profile" href="/profile">
+          Profile
+        </NavSubItem>
+      </NavSubItemGroup>
+    </NavCategory>
+  </Nav>
+</nav>;
 ```
 
 ## Prop Mapping
 
-| v8 `INavProps`       | v9 `NavProps`              | Notes                     |
-| -------------------- | -------------------------- | ------------------------- |
-| `groups`             | JSX children               |                           |
-| `selectedKey`        | `selectedValue`            |                           |
-| `initialSelectedKey` | `defaultSelectedValue`     |                           |
-| `onLinkClick`        | `onNavItemSelect`          | `(_, data) => data.value` |
-| `onLinkExpandClick`  | `onNavCategoryItemToggle`  |                           |
-| `isOnTop`            | Use `NavDrawer`            |                           |
-| `styles`             | `className` + `makeStyles` |                           |
-| `theme`              | —                          | Use `FluentProvider`      |
+| v8 `INavProps`        | v9 `NavProps`               | Notes                                                         |
+| --------------------- | --------------------------- | ------------------------------------------------------------- |
+| `groups`              | JSX children                |                                                               |
+| `selectedKey`         | `selectedValue`             |                                                               |
+| `initialSelectedKey`  | `defaultSelectedValue`      |                                                               |
+| `onLinkClick`         | `onNavItemSelect`           | `(_, data) => data.value`                                     |
+| `onLinkExpandClick`   | `onNavCategoryItemToggle`   | Read `data.categoryValue`, not selected-item `data.value`     |
+| `INavLink.isExpanded` | `openCategories` membership | Initialize and update controlled category keys                |
+| `ariaLabel`           | Owning `<nav aria-label>`   | Standalone `Nav` does not itself create a navigation landmark |
+| `isOnTop`             | Use `NavDrawer`             |                                                               |
+| `styles`              | `className` + `makeStyles`  |                                                               |
+| `theme`               | —                           | Use `FluentProvider`                                          |
 
 ## Accessibility
 

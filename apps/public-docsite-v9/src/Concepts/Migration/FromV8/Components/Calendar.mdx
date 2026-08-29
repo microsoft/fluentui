@@ -92,8 +92,13 @@ props: day and month pickers are visible, "Go to today" is shown,
 six-week, highlight, close-button, and `allFocusable` options default to
 `false`.
 
-v8 navigation icons were Fabric icon-name strings. The compatibility package
-accepts JSX for each nested picker:
+v8 navigation icons were Fabric icon-name strings. `CalendarNavigationIcons`
+accepts `upNavigation`, `downNavigation`, and `dismiss`. In the day picker,
+`upNavigation` controls previous-month navigation and `downNavigation`
+controls next-month navigation. Map v8 `leftNavigation` and
+`rightNavigation` to those slots, and map `closeIcon` to `dismiss`. Do not
+carry the v8 key names into the compatibility object. The compatibility
+package accepts JSX for each nested picker:
 
 ```tsx
 import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';

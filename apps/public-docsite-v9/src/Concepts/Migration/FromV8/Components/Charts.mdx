@@ -51,6 +51,13 @@ export function ChartExample() {
 }
 ```
 
+Do not automatically carry literal v8 series colors into native v9 charts.
+When color only differentiates otherwise unordered series, use
+`getColorFromToken(DataVizPalette.colorN)` while retaining series order and
+contrast. Preserve an explicit literal only when the source establishes that
+the exact color represents product, brand, threshold, or domain data rather
+than a default presentation choice.
+
 Rename v8 chart types when moving imports: for example, `IChartProps` becomes
 `ChartProps` and `IVerticalStackedBarChartProps` becomes
 `VerticalStackedBarChartProps`. Recheck each chart's current props rather than

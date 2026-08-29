@@ -127,6 +127,10 @@ from the menu trigger. See the
 [Button migration guide](/docs/concepts-migration-from-v8-components-button-migration--docs)
 for the complete composition.
 
+When a `SplitButton` is a peer of `ToolbarButton` controls, give it the same
+visual treatment, normally `appearance="subtle"` unless the source gives that
+command additional emphasis.
+
 When that split item moves into the overflow menu, preserve both actions with
 `MenuSplitGroup`; replacing it with one submenu-only `MenuItem` drops the v8
 primary action:
@@ -172,6 +176,11 @@ Do not add a second `aria-label` when `relationship="label"` supplies the
 accessible name.
 
 ### Overflow Handling
+
+Every `OverflowItem` must receive a DOM element or a component that forwards
+the measurement ref and supplied root props. For split-button or menu
+compositions, use a real wrapper as the direct child or explicitly forward
+those values; do not pass a plain function component that discards them.
 
 Wrap the toolbar in `Overflow`, wrap each measured item in `OverflowItem`,
 and compose the overflow menu with `useOverflowMenu` and

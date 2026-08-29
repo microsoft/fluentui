@@ -51,6 +51,13 @@ The alias tokens define general purpose color, layout, and effect values useful 
 For example, 'colorNeutralBackground1Hover'.
 A component like button would use this token when styling the background in the hover state.
 
+Translate semantic values by meaning rather than visual similarity. Common
+mappings include `bodyBackground` to `colorNeutralBackground1`, `bodyText` to
+`colorNeutralForeground1`, and `buttonBackgroundHovered` to
+`colorNeutralBackground1Hover`. Preserve component-state overrides with
+`makeStyles` selectors when the value was supplied through a v8 `styles`
+callback.
+
 `theme.components` is a separate, experimental v8 feature containing
 component-level `styles` overrides keyed by component name. It is not the
 source of v8 semantic colors and has no direct v9 theme equivalent. Migrate
@@ -76,6 +83,11 @@ In v9, `mergeClasses` accepts class-name strings, including the strings
 returned by `makeStyles` hooks, and returns one combined class-name string. It
 does not accept v8 style objects; convert those objects with `makeStyles`
 first.
+
+Preserve declaration order by creating one class for each source layer and
+passing those classes to `mergeClasses` in the same order. Do not delete an
+earlier declaration merely because a later layer overrides it; the class may
+still be reused independently.
 
 ### styles -> className
 
@@ -113,6 +125,14 @@ If this is too tedious a process, you can use shim methods to more easily create
 ### Compatible themes
 
 If you want to minimize visual differences, you can make the themes more alike.
+
+`createV9Theme` and `createBrandVariants` require v8 theme or palette input, so
+use them at a migration boundary where that input still exists and pass the
+resulting v9 theme into fully migrated code. A single `themePrimary` value does
+not define the remaining `BrandVariants` ramp; do not invent undocumented
+shades. Obtain an approved complete ramp, perform the shim conversion before
+removing v8 dependencies, or preserve only explicitly mapped semantic values
+and record unsupported derived states.
 
 We recommend making your v8 theme look more like v9.
 You can do this through the [`createV8Theme`](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-migration-v8-v9) shim function from `@fluentui/react-migration-v8-v9`.

@@ -162,6 +162,12 @@ class.
 Set `resizableColumns` and provide widths through `columnSizingOptions`.
 The option keys must match the column IDs.
 
+Treat migrated `minWidth` values as column lower bounds, not as a substitute
+for container sizing. Place a resizable grid in a container that can shrink
+within its parent, typically with `width: 100%`, `min-width: 0`, and
+`box-sizing: border-box`. Do not convert v8 minimum widths into fixed CSS
+widths.
+
 ### Activation, focus, and keyboard behavior
 
 `onItemInvoked` is an invocation action: v8 invokes it for Enter on the
@@ -176,6 +182,13 @@ because focus moved there, including keyboard navigation. Track row focus
 row) and call the migrated active-item callback there. `DataGrid` supplies grid
 keyboard navigation; keep the row/cell focus model intact when adding handlers
 and do not make every cell an independent tab stop.
+
+When a cell contains an independently interactive control such as a button,
+link, input, or menu trigger, configure that `DataGridCell` for grouped
+interaction, for example `focusMode="group"` where supported. Preserve the
+grid's cell-navigation model while allowing keyboard users to enter the cell
+and operate the nested control. Continue excluding nested-control events from
+row invocation.
 
 ### Stable row identity and virtualization
 

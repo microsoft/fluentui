@@ -79,3 +79,8 @@ The styling story in version 9 is very different to what existed in version 8. F
 We are also moving away from `mergeStyles` in favor of `makeStyles` from [`@griffel/react`](https://github.com/microsoft/griffel), a new in-house CSS-in-JS solution that allows for things like atomic classes and build-time optimization of styles.
 
 If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--docs).
+
+Within `makeStyles`, prefer Fluent tokens for spacing, stroke widths, colors,
+and other design-system values. Carry dimensions forward when the source
+establishes them; otherwise preserve flexible or container-defined sizing
+rather than introducing arbitrary pixel constraints.

@@ -95,10 +95,28 @@ v9 defaults are `overflowAxis="horizontal"`, `overflowDirection="end"`, `padding
 `hasHiddenItems={false}`. `overflowDirection` selects the end from which measured items are removed. It does **not**
 place the menu button.
 
-v8 `overflowSide` controls whether the button is laid out before or after the items while preserving keyboard order.
-In v9, place `<OverflowMenuButton />` at the start or end of the single flex child yourself, then choose the matching
-`overflowDirection` if items should disappear from that same end. v8 `vertical` maps to
-`overflowAxis="vertical"`; update the child layout and `aria-orientation` at the same time.
+v8 `overflowSide` maps only to the overflow trigger's position in the child
+layout. Do not copy it to `overflowDirection`. Unless the source independently
+establishes a different removal order, retain v9's default
+`overflowDirection="end"`. Set `"start"` only when measured items are
+intentionally removed from that end. v8 `vertical` maps to
+`overflowAxis="vertical"`; update the child layout and `aria-orientation` at
+the same time.
+
+Responsive overflow requires finite available space along `overflowAxis`. Let
+the surrounding layout provide that constraint: permit horizontal children to
+shrink with `minWidth: 0`. For vertical overflow, apply `minHeight: 0` and
+`overflow: hidden` only when an ancestor already provides a finite block size.
+If the source and integration point establish no finite size, do not invent
+one and do not force clipping: preserve the natural visible layout and record
+responsive verification as unresolved until the host supplies a constraint.
+A parent-provided size does not mean `100vh`, `100vw`, or another
+viewport-sized substitute.
+
+Keep `minimumVisible` at its default unless the source explicitly requires a
+minimum number of commands to remain visible. Never set it to the measured item
+count merely to preserve the initial rendering; doing so disables responsive
+overflow for every measured item.
 
 ## Semantics and keyboard behavior
 
@@ -110,17 +128,17 @@ Preserve command labels and handlers in both the visible and menu renderings.
 
 ## Prop Mapping
 
-| v8 `OverflowSet`         | v9 equivalent                                                    |
-| ------------------------ | ---------------------------------------------------------------- |
-| `items`                  | Measured `<OverflowItem id="...">` children                      |
-| `overflowItems`          | Explicit menu-only items plus `hasHiddenItems`                   |
-| `onRenderItem`           | Declarative visible item JSX                                     |
-| `onRenderOverflowButton` | `useOverflowMenu` + a composed `Menu`                            |
-| `vertical`               | `overflowAxis="vertical"` plus vertical layout/orientation       |
-| `overflowSide`           | Trigger location in child layout; optionally `overflowDirection` |
-| `styles`                 | `className`/`makeStyles` on the child and item elements          |
-| `role`                   | Role on the single container child                               |
-| `componentRef.focus*`    | Application refs/focus management                                |
+| v8 `OverflowSet`         | v9 equivalent                                                      |
+| ------------------------ | ------------------------------------------------------------------ |
+| `items`                  | Measured `<OverflowItem id="...">` children                        |
+| `overflowItems`          | Explicit menu-only items plus `hasHiddenItems`                     |
+| `onRenderItem`           | Declarative visible item JSX                                       |
+| `onRenderOverflowButton` | `useOverflowMenu` + a composed `Menu`                              |
+| `vertical`               | `overflowAxis="vertical"` plus vertical layout/orientation         |
+| `overflowSide`           | Trigger location in child layout; removal direction is independent |
+| `styles`                 | `className`/`makeStyles` on the child and item elements            |
+| `role`                   | Role on the single container child                                 |
+| `componentRef.focus*`    | Application refs/focus management                                  |
 
 There is no v8 `overflowMenuProps` prop to migrate. Configure the v9 `Menu`, trigger, popover, and list directly.
 

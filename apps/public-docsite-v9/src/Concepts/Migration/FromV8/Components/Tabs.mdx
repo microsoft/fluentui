@@ -52,6 +52,12 @@ To migrate from `Pivot` to `TabList`
 - add the `onTabSelect` event handler to set the selected tab value as state
 - update the content element to render the selected tabs content.
 
+Moving panels outside `TabList` also makes their surrounding layout explicit.
+Preserve the source's fill and width behavior, and style the tab strip, panel
+region, fields, and adjacent status or help content as one composition. Use
+Fluent spacing tokens for gaps and padding; do not add arbitrary maximum
+widths merely to compact the example.
+
 For example, here is the previous `Pivot` example migrated to use `TabList`
 
 ```tsx

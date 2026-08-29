@@ -24,6 +24,16 @@ Choose a replacement from both the **shape of the data** and the **interaction a
 
 `Table` is a set of presentational table primitives and does **not** have built-in selection. Selection can be composed separately with `useTableFeatures` and `useTableSelection`, but [`DataGrid`](?path=/docs/components-datagrid--default) is the v9 component with a built-in `selectionMode`, `selectedItems`, and `onSelectionChange` API.
 
+Before choosing `Tree`, inspect the item renderer. Repeated fields arranged as
+grid or flex columns are tabular even when no column component is used. If
+those fields must align across different hierarchy depths, do not place a
+separate grid inside each `TreeItemLayout`: tree indentation changes each
+row's available origin and prevents shared column alignment. Choose a Tree
+plus details view, flatten to a DataGrid when acceptable, or treat the result
+as a custom treegrid migration. When the source requires aligned hierarchical
+columns and no product-approved redesign is available, preserve that contract
+with a custom treegrid rather than silently falling back to `Tree`.
+
 ### Hierarchy only: migrate to `Tree`
 
 Use [`Tree`](?path=/docs/components-tree--default) when the group hierarchy and expand/collapse interaction are the important parts of the experience. A nested `Tree` maps naturally to recursive `IGroup.children`. A `FlatTree` can be easier when searching, reordering, or virtualizing a large hierarchy.
@@ -37,6 +47,15 @@ Use `Table` for static, flat tabular markup. Use `DataGrid` when the flat rows n
 ### Hierarchical tabular data: redesign
 
 Neither `Tree` nor `DataGrid` alone preserves a hierarchy, multiple aligned columns, expandable rows, and `treegrid` keyboard/ARIA behavior. Splitting the experience into a navigation `Tree` and a flat details `DataGrid` is often clearer. If the combined treegrid interaction is essential, treat it as a custom widget migration and include keyboard and assistive-technology testing in the work.
+
+A custom treegrid needs one shared column-track definition across every row;
+do not create independently sized grids inside indented branches. At minimum,
+preserve `treegrid`, `row`, and `gridcell` semantics; row and column counts and
+indexes; hierarchy level, expanded state, and position within each sibling set;
+stable roving focus; vertical row navigation; horizontal cell navigation; and
+the source's row and group selection actions. Flattening the render model is
+often necessary so indentation can be represented inside the first shared
+column without shifting later column origins.
 
 ## Inventory behavior before migrating
 

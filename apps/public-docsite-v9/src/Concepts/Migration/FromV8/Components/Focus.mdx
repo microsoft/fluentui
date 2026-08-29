@@ -49,11 +49,25 @@ const CustomToolbar = () => {
 Do not use `role="toolbar"` as a generic replacement for `FocusZone`; choose the
 ARIA role that matches the widget being implemented.
 
+Do not add a manual roving `tabIndex` implementation around
+`useArrowNavigationGroup`. Keep the group's interactive descendants normally
+focusable and let Tabster manage the group's single Tab stop and arrow
+movement. Setting non-current controls to `tabIndex={-1}` can remove them from
+arrow-navigation discovery. Map `defaultTabbableElement` through the verified
+default-descendant or focus-finder mechanism instead of manual tab indexes.
+
 ### FocusTrapZone
 
 `Dialog`, `Popover`, and other overlay components already manage focus. Do not
 wrap them in another focus trap. For a custom modal surface, use
 `useModalAttributes`.
+
+If the trapped surface has dialog or modal semantics, migrate the whole
+composition to v9 `Dialog`, even when the v8 source used a native
+`role="dialog"` element. Reserve `useModalAttributes` for custom modal surfaces
+not represented by a shipped owning component. A controlled `Dialog` must pair
+`open` with `onOpenChange`; keep its opener in `DialogTrigger`, or use the
+documented restore-focus attributes when that is impossible.
 
 ```tsx
 // v8
@@ -87,17 +101,17 @@ const CustomModal = () => {
 
 ### FocusZone API mapping
 
-| v8 `FocusZone`                                 | v9 approach                                                         |
-| ---------------------------------------------- | ------------------------------------------------------------------- |
-| `direction`                                    | `useArrowNavigationGroup({ axis })`                                 |
-| `isCircularNavigation`                         | `circular`                                                          |
-| `shouldFocusOnMount`, `defaultTabbableElement` | Owning component's initial-focus behavior or focus-finder hooks     |
-| Nested zones                                   | Nested semantic components and Tabster mover/grouper hooks          |
-| `shouldEnterInnerZone`                         | Model nested widget behavior explicitly; no direct prop             |
-| `allowTabKey`, `handleTabKey`                  | `tabbable` where appropriate, otherwise app-owned keyboard behavior |
-| `focus()`, `focusLast()`, `focusElement()`     | App-owned refs and focus helpers; no direct instance API            |
-| `setFocusAlignment()`                          | No direct equivalent                                                |
-| `styles`, `theme`                              | Replace with `className`, `makeStyles`, and v9 design tokens        |
+| v8 `FocusZone`                                 | v9 approach                                                                                                          |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `direction`                                    | `useArrowNavigationGroup({ axis })`                                                                                  |
+| `isCircularNavigation`                         | `circular`                                                                                                           |
+| `shouldFocusOnMount`, `defaultTabbableElement` | Owning component's verified initial-focus/default-descendant behavior; do not emulate with manual roving tab indexes |
+| Nested zones                                   | Nested semantic components and Tabster mover/grouper hooks                                                           |
+| `shouldEnterInnerZone`                         | Model nested widget behavior explicitly; no direct prop                                                              |
+| `allowTabKey`, `handleTabKey`                  | `tabbable` where appropriate, otherwise app-owned keyboard behavior                                                  |
+| `focus()`, `focusLast()`, `focusElement()`     | App-owned refs and focus helpers; no direct instance API                                                             |
+| `setFocusAlignment()`                          | No direct equivalent                                                                                                 |
+| `styles`, `theme`                              | Replace with `className`, `makeStyles`, and v9 design tokens                                                         |
 
 `allowFocusRoot`, `shouldRaiseClicks`, `pagingSupportDisabled`,
 `checkForNoWrap`, and `preventFocusRestoration` do not have reliable one-to-one
