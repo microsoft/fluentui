@@ -54,10 +54,8 @@
   border-radius: var(--fui-focus-ring-radius, var(--radius-medium));
   border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
 
-  @apply outline-(length:--spacing-thick) outline-transparent-stroke outline-solid;
+  @apply z-1 outline-thick outline-transparent-stroke outline-solid;
 
   box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--spacing-thin))
     var(--fui-focus-ring-color, var(--color-stroke-focus-2)) inset;
-
-  @apply z-1;
 }

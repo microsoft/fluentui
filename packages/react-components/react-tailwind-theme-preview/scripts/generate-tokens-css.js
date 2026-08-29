@@ -148,25 +148,25 @@ const SPACING_SCALE = [
  * Fluent's stroke widths — border/outline/divider thickness — joining the SAME `--spacing-*`
  * namespace as SPACING_SCALE, on the same literal-value terms ().
  *
- * WHY THE SPACING NAMESPACE AND NOT A `--border-width-*` NAMESPACE
- * ---------------------------------------------------------------
- * There is no `--border-width-*` namespace in Tailwind v4 — border widths are a fixed bare-
- * number progression (`border-2` → `border-width: 2px`, a hardcoded px literal, NOT a theme
- * lookup). The only width namespace that exists, `--stroke-width-*`, drives SVG `stroke-width`
- * (`stroke-2` → `stroke-width: 2`), which is the wrong property. So there is nothing to
- * register these against that would give `border-thin` a meaning.
- *
- * PROBE-MEASURED, not reasoned:
+ * THE SPACING NAMESPACE PLUS FOUR WIDTH-NAMESPACE MIRRORS
+ * -------------------------------------------------------
+ * PROBE-MEASURED against the installed registry (v4.3.3), not reasoned:
  *   CONSUMES `--spacing-*`  p m gap space-x w h min-w max-w size inset top start basis
  *                           translate scroll-m scroll-p indent leading (+ every axis/side form)
- *   DOES NOT               border border-t/b/s/x divide-x outline outline-offset ring
- *                           ring-offset inset-ring underline-offset decoration stroke
+ *   OWN NAMESPACES          border-* (+ every side form; divide-* reads the same
+ *                           `--border-width` key) → `--border-width-*`; outline-* →
+ *                           `--outline-width-*`; outline-offset-* → `--outline-offset-*`;
+ *                           decoration-* → `--text-decoration-thickness-*`
+ *   NO NAMESPACE            ring ring-offset inset-ring underline-offset stroke
  *
- * So registration buys real utilities (`w-thin`, `h-thick`, `p-thin`, `gap-thin` — dimensional
- * uses of a stroke width, which Fluent components do have) but CANNOT give `border-thin` a
- * meaning. Border-ish properties are authored as a direct `var(--spacing-thin)` — which is why
- * these four, alone in the namespace, are ALSO emitted as real custom properties (`emit: true`
- * on the NAMESPACES entry). `@theme inline` emits no variables.
+ * Spacing registration buys the dimensional utilities (`w-thin`, `h-thick`, `p-thin`,
+ * `gap-thin`); the width-namespace MIRRORS (`mirrorNamespaces` on the NAMESPACES entry) buy
+ * the border-ish named forms (`border-thin`, `outline-thick`, `-outline-offset-thickest`,
+ * `decoration-thin`). Each mirror registers `var(--spacing-<step>)`, so a named utility
+ * compiles byte-identically to the `border-(length:--spacing-thin)` var-reference spelling it
+ * replaces. The four steps are ALSO emitted as real custom properties (`emit: true` on the
+ * NAMESPACES entry) for the ring/underline families that have no themable namespace and for
+ * raw `var(--spacing-thin)` declarations. `@theme inline` emits no variables.
  *
  * CANONICAL `--stroke-width-*` VALUES STAY LITERAL `calc(<px> * var(--base-scale))` —
  * DELIBERATELY NOT `--spacing`-COUPLED
@@ -606,11 +606,21 @@ const NAMESPACES = [
   {
     prefix: 'strokeWidth',
     namespace: 'spacing',
-    utility: 'w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths',
+    utility: 'w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for ring widths',
     heading: 'Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables',
     scale: STROKE_WIDTH_SCALE,
     value: strokeWidthValue,
     emit: true,
+    // Width-namespace mirrors: register the same four steps under every width namespace the
+    // installed registry themes, so the named forms (border-thin, outline-thick, …) exist.
+    // Each mirror value is var(--spacing-<step>) — byte-identical compiled output to the
+    // var-reference spelling it replaces (see the STROKE_WIDTH_SCALE doc block).
+    mirrorNamespaces: [
+      { namespace: 'border-width', utility: 'border-* border-t/b/s/e/x/y-* divide-*' },
+      { namespace: 'outline-width', utility: 'outline-*' },
+      { namespace: 'outline-offset', utility: 'outline-offset-*' },
+      { namespace: 'text-decoration-thickness', utility: 'decoration-*' },
+    ],
   },
   {
     prefix: 'borderRadius',
@@ -818,6 +828,8 @@ function render(options = {}) {
   const excluded = new Map();
   /** @type {Map<string, string>} */
   const seenThemeKeys = new Map();
+  /** Width-namespace mirror registrations. @type {Map<string, { mirror: { namespace: string, utility: string }, lines: string[] }>} */
+  const mirrorSections = new Map();
 
   for (const { name, value } of tokens) {
     const classification = classify(name);
@@ -856,6 +868,18 @@ function render(options = {}) {
     const section = sections.get(group.prefix) || { group, lines: [] };
     section.lines.push(`  ${themeKey}: ${resolved};`);
     sections.set(group.prefix, section);
+
+    if (group.mirrorNamespaces) {
+      for (const mirror of group.mirrorNamespaces) {
+        const mirrorKey = `--${mirror.namespace}-${classification.step.utility}`;
+        if (seenThemeKeys.has(mirrorKey)) {
+          throw new Error(`Mirror theme key \`${mirrorKey}\` collides with \`${seenThemeKeys.get(mirrorKey)}\`.`);
+        }
+        const bucket = mirrorSections.get(mirror.namespace) || { mirror, lines: [] };
+        bucket.lines.push(`  ${mirrorKey}: var(${themeKey});`);
+        mirrorSections.set(mirror.namespace, bucket);
+      }
+    }
 
     if (group.emit) {
       if (group.prefix === 'strokeWidth') {
@@ -933,6 +957,14 @@ function render(options = {}) {
     out.push(...lines);
   }
 
+  for (const { mirror, lines } of mirrorSections.values()) {
+    out.push('');
+    out.push(
+      `  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — ${lines.length} tokens → --${mirror.namespace}-* (${mirror.utility}) */`,
+    );
+    out.push(...lines);
+  }
+
   out.push('}');
 
   if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length > 0) {
@@ -942,12 +974,11 @@ function render(options = {}) {
     out.push(' *');
     out.push(' * `@theme inline` above registers utility NAMES and emits no variables, which is');
     out.push(' * correct for every other namespace. The spacing namespace needs real variables:');
-    out.push(' * border-width, outline-width, ring-width, divide-*, underline-offset and');
-    out.push(' * text-decoration-thickness do NOT consume the --spacing-* namespace (v4 border');
-    out.push(' * widths are a fixed bare-number px progression), so modules author those as a');
-    out.push(' * direct var(--spacing-thin); and the `tokens.*` JS constants in @fluentui/tokens');
-    out.push(' * are var() reference strings against the canonical names emitted here (charts');
-    out.push(' * inline styles etc.).');
+    out.push(' * the border/outline/decoration widths have named utilities via the width-namespace');
+    out.push(' * mirrors above, but ring-width, divide-* values and underline-offset have no');
+    out.push(' * themable namespace and are authored as a direct var(--spacing-thin); and the');
+    out.push(' * `tokens.*` JS constants in @fluentui/tokens are var() reference strings against');
+    out.push(' * the canonical names emitted here (charts inline styles etc.).');
     out.push(' *');
     out.push(' * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)');
     out.push(' * ARE GONE for the ENTIRE token set: single');
