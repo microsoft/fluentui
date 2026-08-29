@@ -354,17 +354,36 @@ would not). Verify per module with a computed-style equality check.
 ### Icon variants
 
 The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless
-`bundleIcon`:
+`bundleIcon` on each of the two sibling glyphs it renders directly inside the slot element. The
+`icon-filled` / `icon-regular` variants are direct-child selectors applied to the class that owns
+the glyphs — no descendant wrapper:
 
 ```css
-& .icon * {
-  @variant variant-filled {
-    display: none;
+.icon {
+  @variant group-hover/fui-button {
+    @variant icon-filled {
+      @apply inline;
+    }
+
+    @variant icon-regular {
+      @apply hidden;
+    }
   }
 }
 ```
 
-A permitted nested-selector exception — glyphs carry no module class. Copy `Button.module.css`.
+Copy `Button.module.css`. Two constraints:
+
+- **State-guard placement.** A group-state guard wraps the icon variants from the OWNING class's
+  block, and that class must be a **descendant** of the group root. On a block anchored on the group
+  root itself the compiled group check fails silently — verify with a computed-style probe before
+  anchoring a guarded swap on a root class.
+- **Direct-child reach.** `icon-filled`/`icon-regular` reach only glyphs that are direct children of
+  the anchor. Where the glyphs sit deeper (InteractionTagPrimary anchors on root appearance classes
+  while the glyphs live inside the tag icon slot), use the glyph-self spellings `variant-filled` /
+  `variant-regular` inside a `& *` wrapper — the one remaining permitted nested-selector form for
+  glyphs. A consumer who wraps their bundled icon in an extra element takes the glyphs out of
+  direct-child reach by design.
 
 ## Code style
 

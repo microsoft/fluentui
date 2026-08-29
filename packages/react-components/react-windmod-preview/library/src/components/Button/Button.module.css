@@ -165,32 +165,28 @@
       }
     }
 
-    /* Glyph swap on hover, keyed off the data-fui-icon-variant attribute bundleIcon stamps on each
-       glyph. Anchored on .icon via the group-composed form so every icon rule shares equal
-       specificity and in-block order carries the cascade: appearance-hover swaps before the
-       disabled swap-back, which must win last. */
+    /* Glyph swap on hover — the icon-filled/icon-regular variants select the glyphs as this
+       slot's direct children. Every icon rule shares equal specificity, so in-block order
+       carries the cascade: appearance-hover swaps before the disabled swap-back, which must
+       win last. */
     @variant group-appearance-subtle/fui-button, group-appearance-transparent/fui-button {
       @variant group-hover/fui-button {
-        & * {
-          @variant variant-filled {
-            @apply inline;
-          }
+        @variant icon-filled {
+          @apply inline;
+        }
 
-          @variant variant-regular {
-            @apply hidden;
-          }
+        @variant icon-regular {
+          @apply hidden;
         }
       }
 
       @variant group-hover-active/fui-button {
-        & * {
-          @variant variant-filled {
-            @apply inline;
-          }
+        @variant icon-filled {
+          @apply inline;
+        }
 
-          @variant variant-regular {
-            @apply hidden;
-          }
+        @variant icon-regular {
+          @apply hidden;
         }
       }
     }
@@ -220,25 +216,23 @@
         }
       }
 
-      & * {
-        @variant group-hover/fui-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover/fui-button {
+        @variant icon-filled {
+          @apply hidden;
         }
 
-        @variant group-hover-active/fui-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
 
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover-active/fui-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }

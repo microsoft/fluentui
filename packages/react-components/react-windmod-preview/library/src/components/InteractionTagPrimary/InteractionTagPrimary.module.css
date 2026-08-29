@@ -101,6 +101,9 @@
   .outline {
     @apply border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
 
+    /* Glyph-self variant spelling, not icon-filled/icon-regular: the swap anchors on this ROOT
+       appearance class (Griffel's shape), and the glyphs sit inside the tag icon slot — not
+       direct children — so the direct-child variants cannot reach them. See variants.css. */
     @variant enabled {
       @variant hover {
         @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-2-hover;

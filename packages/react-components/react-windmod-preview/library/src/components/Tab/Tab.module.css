@@ -443,17 +443,15 @@
       }
     }
 
-    /* Glyph swap on selection, keyed off the data-fui-icon-variant attribute bundleIcon stamps on each
-       glyph. The glyphs carry no module class of their own, so they are reached by descent. */
-    & * {
-      @variant group-selected/fui-tab {
-        @variant variant-filled {
-          @apply inline;
-        }
+    /* Glyph swap on selection — the icon-filled/icon-regular variants select the glyphs as this
+       slot's direct children. */
+    @variant group-selected/fui-tab {
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
   }

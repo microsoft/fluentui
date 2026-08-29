@@ -78,14 +78,12 @@
         }
       }
 
-      & * {
-        @variant variant-filled {
-          @apply inline;
-        }
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
@@ -96,25 +94,23 @@
         }
       }
 
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
         }
 
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
 
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }
@@ -132,37 +128,33 @@
     }
 
     @variant group-open/fui-menu-button {
-      & * {
-        @variant variant-filled {
-          @apply inline;
-        }
+      @variant icon-filled {
+        @apply inline;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
-      & * {
-        @variant group-hover/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
-
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
         }
 
-        @variant group-hover-active/fui-menu-button {
-          @variant variant-filled {
-            @apply hidden;
-          }
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
 
-          @variant variant-regular {
-            @apply inline;
-          }
+      @variant group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
         }
       }
     }

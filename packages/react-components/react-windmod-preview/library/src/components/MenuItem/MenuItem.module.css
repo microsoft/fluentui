@@ -111,42 +111,36 @@
     @variant group-hover/fui-menu-item {
       @apply text-neutral-foreground-2-brand-selected;
 
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
+      @variant icon-filled {
+        @apply block;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-submenu-open/fui-menu-item {
       @apply text-neutral-foreground-2-brand-selected;
 
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
+      @variant icon-filled {
+        @apply block;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-disabled/fui-menu-item {
       @apply text-neutral-foreground-disabled;
 
-      & * {
-        @variant variant-filled {
-          @apply hidden;
-        }
+      @variant icon-filled {
+        @apply hidden;
+      }
 
-        @variant variant-regular {
-          @apply block;
-        }
+      @variant icon-regular {
+        @apply block;
       }
     }
 
@@ -253,26 +247,22 @@
     @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[0];
 
     @variant group-hover/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
+      @variant icon-filled {
+        @apply block;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
     @variant group-submenu-open/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply block;
-        }
+      @variant icon-filled {
+        @apply block;
+      }
 
-        @variant variant-regular {
-          @apply hidden;
-        }
+      @variant icon-regular {
+        @apply hidden;
       }
     }
 
@@ -281,14 +271,12 @@
     }
 
     @variant group-disabled/fui-menu-item {
-      & * {
-        @variant variant-filled {
-          @apply hidden;
-        }
+      @variant icon-filled {
+        @apply hidden;
+      }
 
-        @variant variant-regular {
-          @apply block;
-        }
+      @variant icon-regular {
+        @apply block;
       }
     }
   }

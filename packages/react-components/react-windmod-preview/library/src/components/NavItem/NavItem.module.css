@@ -85,34 +85,30 @@
   .icon {
     @apply grid min-h-20 min-w-20 justify-center overflow-hidden;
 
-    & * {
-      @variant variant-filled {
-        @apply hidden text-transparent;
-        grid-area: overlay-area;
-      }
+    @variant icon-filled {
+      @apply hidden text-transparent;
+      grid-area: overlay-area;
+    }
 
-      @variant variant-regular {
-        @apply inline;
-        grid-area: overlay-area;
-      }
+    @variant icon-regular {
+      @apply inline;
+      grid-area: overlay-area;
     }
 
     @variant group-selected/fui-nav-item {
-      & * {
-        @variant variant-filled {
-          @apply inline;
-          animation-duration: var(--duration-faster);
-          animation-fill-mode: both;
-          animation-name: nav-icon-filled-enter;
-          animation-timing-function: var(--ease-linear);
-        }
+      @variant icon-filled {
+        @apply inline;
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-filled-enter;
+        animation-timing-function: var(--ease-linear);
+      }
 
-        @variant variant-regular {
-          animation-duration: var(--duration-faster);
-          animation-fill-mode: both;
-          animation-name: nav-icon-regular-exit;
-          animation-timing-function: var(--ease-linear);
-        }
+      @variant icon-regular {
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-regular-exit;
+        animation-timing-function: var(--ease-linear);
       }
     }
   }

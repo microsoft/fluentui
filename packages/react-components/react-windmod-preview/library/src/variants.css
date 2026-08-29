@@ -23,7 +23,21 @@
 /* Card: appearance-outline and appearance-subtle are shared with Button above */
 @custom-variant appearance-filled-alternative (&:where([data-appearance='filled-alternative']));
 
-/* bundled-icon glyph variant, stamped by @fluentui/react-icons/headless bundleIcon */
+/* bundled-icon glyph variants, selecting the data-fui-icon-variant attribute
+ * @fluentui/react-icons/headless bundleIcon stamps on each glyph.
+ *
+ * icon-filled/icon-regular are the standard spelling: applied to the class that OWNS the glyphs,
+ * they select the glyph as a direct child (bundleIcon renders its two glyphs as siblings directly
+ * inside the slot element; a wrapper element a consumer adds around their icon takes it out of
+ * reach). State-guard placement: a group-state variant must wrap these from the owning class's
+ * block, and the owning class must be a DESCENDANT of the group root — on the group root itself
+ * the compiled group check fails.
+ *
+ * variant-filled/variant-regular are the glyph-self spelling for the one case direct-child cannot
+ * express: an anchor class whose glyphs sit deeper than one level (InteractionTagPrimary anchors
+ * on root appearance classes while the glyphs live inside the tag icon slot). */
+@custom-variant icon-filled (& > :where([data-fui-icon-variant='filled']));
+@custom-variant icon-regular (& > :where([data-fui-icon-variant='regular']));
 @custom-variant variant-filled (&:where([data-fui-icon-variant='filled']));
 @custom-variant variant-regular (&:where([data-fui-icon-variant='regular']));
 
