@@ -86,7 +86,7 @@
          which has no such term. This calc reproduces that inset to the LayoutUnit at every surface
          width in both directions. */
       @variant group-placement-above-centered/fui-popover-surface, group-placement-below-centered/fui-popover-surface {
-        left: calc(50% - var(--fui-positioning-arrow-height) / 2);
+        @apply left-[calc(50%-var(--fui-positioning-arrow-height)/2)];
       }
 
       @variant group-placement-before-centered/fui-popover-surface, group-placement-after-centered/fui-popover-surface {

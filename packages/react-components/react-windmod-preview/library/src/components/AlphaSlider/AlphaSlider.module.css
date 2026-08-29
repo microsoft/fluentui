@@ -13,9 +13,7 @@
   }
 
   .thumb {
-    @apply bg-neutral-background-1;
-
-    inset-inline-start: var(--fui-AlphaSlider--progress);
+    @apply start-(--fui-AlphaSlider--progress) bg-neutral-background-1;
 
     @variant before {
       @apply bg-(--fui-AlphaSlider__thumb--color);

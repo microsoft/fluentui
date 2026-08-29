@@ -12,11 +12,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex min-h-32 max-w-[290px] shrink-0 cursor-pointer gap-4 rounded-medium bg-neutral-background-1 p-vertical-s-nudge text-base-300 text-neutral-foreground-2 select-none;
-
-    /* Griffel authors the logical `start`; items-start would compile to `flex-start`, which is a
-       computed-value divergence even though it lays out identically. */
-    align-items: start;
+    @apply relative box-border flex min-h-32 max-w-[290px] shrink-0 cursor-pointer items-start gap-4 rounded-medium bg-neutral-background-1 p-vertical-s-nudge text-base-300 text-neutral-foreground-2 select-none;
 
     @variant hover {
       @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;

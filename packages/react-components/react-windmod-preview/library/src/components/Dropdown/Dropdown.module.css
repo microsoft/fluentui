@@ -115,11 +115,7 @@
     /* border-current pairs with border-none: Griffel's `border: none` shorthand also resets the
        colour to currentColor, and the user-agent's own button border colour would otherwise
        survive as a computed-value divergence behind a zero width. */
-    @apply grid w-full cursor-pointer items-center justify-between gap-x-horizontal-xxs border-none border-current bg-transparent-background text-start font-base text-neutral-foreground-1;
-
-    /* Named grid lines have no utility spelling, and the bracket form would be a banned
-       arbitrary-property utility. */
-    grid-template-columns: [content] 1fr [icon] auto [end];
+    @apply grid w-full cursor-pointer grid-cols-[[content]_1fr_[icon]_auto_[end]] items-center justify-between gap-x-horizontal-xxs border-none border-current bg-transparent-background text-start font-base text-neutral-foreground-1;
 
     @variant focus {
       @apply outline-none;
@@ -176,10 +172,7 @@
      authors it on the shared bucket just the same. Griffel's base font-size is dead — all three
      size blocks override it. */
   .icon {
-    @apply box-border block text-neutral-stroke-accessible;
-
-    grid-column-start: icon;
-    grid-column-end: end;
+    @apply col-start-[icon] col-end-[end] box-border block text-neutral-stroke-accessible;
 
     & svg {
       @apply block;

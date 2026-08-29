@@ -15,11 +15,7 @@
   }
 
   .position-start {
-    @apply col-start-1 col-end-2;
-
-    /* The utility compiles to `flex-start`, which lays out identically in a grid but is a
-       different computed value from the `start` Griffel authors. */
-    justify-self: start;
+    @apply col-start-1 col-end-2 justify-self-start;
 
     @media screen and (max-width: 480px) {
       @apply col-end-4 row-start-3 row-end-auto justify-self-stretch;
@@ -27,9 +23,7 @@
   }
 
   .position-end {
-    @apply col-start-2 col-end-4;
-
-    justify-self: end;
+    @apply col-start-2 col-end-4 justify-self-end;
 
     @media screen and (max-width: 480px) {
       @apply col-start-1 row-start-4 row-end-auto justify-self-stretch;

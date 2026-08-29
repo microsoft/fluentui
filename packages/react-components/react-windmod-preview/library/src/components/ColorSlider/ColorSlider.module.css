@@ -6,19 +6,13 @@
      file's own. The resting look is the horizontal one, so every block that sets a main-axis
      property carries a `vertical` counterpart resetting it. */
   .root {
-    @apply relative inline-grid min-h-32 min-w-200 touch-none items-center justify-items-center;
+    @apply relative inline-grid min-h-32 min-w-200 touch-none grid-cols-[1fr_100%_1fr] grid-rows-[1fr_var(--fui-color-slider-thumb-size)_1fr] items-center justify-items-center;
 
     --fui-color-slider-thumb-size: calc(20px * var(--base-scale));
     --fui-color-slider-rail-size: calc(20px * var(--base-scale));
 
-    grid-template-rows: 1fr var(--fui-color-slider-thumb-size) 1fr;
-    grid-template-columns: 1fr 100% 1fr;
-
     @variant vertical {
-      @apply min-h-280 min-w-auto;
-
-      grid-template-rows: 1fr 100% 1fr;
-      grid-template-columns: 1fr var(--fui-color-slider-thumb-size) 1fr;
+      @apply min-h-280 min-w-auto grid-cols-[1fr_var(--fui-color-slider-thumb-size)_1fr] grid-rows-[1fr_100%_1fr];
     }
   }
 
@@ -58,9 +52,7 @@
   }
 
   .thumb {
-    @apply pointer-events-none absolute col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
-
-    inset-inline-start: var(--fui-Slider--progress);
+    @apply pointer-events-none absolute start-(--fui-Slider--progress) col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
 
     @variant before {
       @apply absolute inset-0 box-border rounded-circular border-thick border-solid border-neutral-background-1;

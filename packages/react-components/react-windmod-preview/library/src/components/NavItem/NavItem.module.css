@@ -42,9 +42,8 @@
   .root {
     /* `border-none` sets only border-style; the UA button border-color would survive it.
        Griffel's `border: none` shorthand also resets the colour to currentColor. */
-    @apply relative box-border flex w-full cursor-pointer items-start gap-vertical-l rounded-medium border-none border-current bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
+    @apply relative box-border flex w-full cursor-pointer items-start justify-start gap-vertical-l rounded-medium border-none border-current bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
 
-    justify-content: start;
     transition-property: background;
 
     @variant hover {
@@ -52,9 +51,7 @@
     }
 
     @variant focus-visible {
-      @apply outline-thick outline-stroke-focus-2 outline-solid;
-
-      outline-offset: calc(var(--spacing-thick) * -1);
+      @apply outline-thick -outline-offset-(--spacing-thick) outline-stroke-focus-2 outline-solid;
     }
 
     @variant density-small {
@@ -74,9 +71,7 @@
 
       @variant forced-colors {
         @variant after {
-          @apply outline-thick outline-transparent-stroke outline-solid;
-
-          outline-offset: calc(var(--spacing-thick) * -1);
+          @apply outline-thick -outline-offset-(--spacing-thick) outline-transparent-stroke outline-solid;
         }
       }
     }

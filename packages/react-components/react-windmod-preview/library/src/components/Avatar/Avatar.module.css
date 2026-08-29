@@ -77,9 +77,7 @@
 
   .ring {
     @variant before {
-      @apply content-[''];
-
-      color: var(--fui-avatar-ring-color);
+      @apply text-(--fui-avatar-ring-color) content-[''];
     }
   }
 

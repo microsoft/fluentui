@@ -16,7 +16,7 @@
   }
 
   .heading-without-action {
-    grid-column-end: 4;
+    @apply col-end-4;
   }
 
   .action {

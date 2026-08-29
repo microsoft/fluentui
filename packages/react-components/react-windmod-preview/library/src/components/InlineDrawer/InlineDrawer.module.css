@@ -8,7 +8,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex h-auto max-h-[100vh] w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
+    @apply relative box-border flex h-auto max-h-screen w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
 
     --fui-drawer-size: 320px;
 
@@ -30,7 +30,7 @@
       border-inline-end: var(--stroke-width-thin) solid var(--color-transparent-stroke);
 
       @variant separator {
-        border-inline-end-color: var(--color-neutral-background-3);
+        @apply border-e-neutral-background-3;
       }
     }
 
@@ -40,7 +40,7 @@
       border-inline-start: var(--stroke-width-thin) solid var(--color-transparent-stroke);
 
       @variant separator {
-        border-inline-start-color: var(--color-neutral-background-3);
+        @apply border-s-neutral-background-3;
       }
     }
 

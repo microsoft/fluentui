@@ -48,7 +48,7 @@
   }
 
   .secondary-content {
-    @apply text-base-200 leading-[100%] font-regular text-neutral-foreground-2;
+    @apply text-base-200 leading-none font-regular text-neutral-foreground-2;
 
     @variant group-size-large/fui-compound-button {
       @apply text-base-300;

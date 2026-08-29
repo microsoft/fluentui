@@ -9,14 +9,11 @@
   /* PascalCase custom properties (--fui-Slider--*) are written by the headless hook into the
      root's inline style and are read only. The kebab-case ones are this file's own. */
   .root {
-    @apply relative inline-grid min-w-120 touch-none items-center justify-items-center;
+    @apply relative inline-grid min-w-120 touch-none grid-cols-[1fr_calc(100%-var(--fui-slider-thumb-size))_1fr] grid-rows-[1fr_var(--fui-slider-thumb-size)_1fr] items-center justify-items-center;
 
     --fui-slider-rail-color: var(--color-neutral-stroke-accessible);
     --fui-slider-progress-color: var(--color-compound-brand-background);
     --fui-slider-thumb-color: var(--color-compound-brand-background);
-
-    grid-template-rows: 1fr var(--fui-slider-thumb-size) 1fr;
-    grid-template-columns: 1fr calc(100% - var(--fui-slider-thumb-size)) 1fr;
 
     @variant forced-colors {
       --fui-slider-rail-color: CanvasText;
@@ -75,19 +72,16 @@
       @apply fui-focus-outline;
 
       @variant after {
-        inset: 0 calc(var(--spacing) * 2);
+        @apply inset-x-2 inset-y-0;
       }
     }
 
     @variant vertical-flag {
-      @apply min-h-120 min-w-auto;
-
-      grid-template-rows: 1fr calc(100% - var(--fui-slider-thumb-size)) 1fr;
-      grid-template-columns: 1fr var(--fui-slider-thumb-size) 1fr;
+      @apply min-h-120 min-w-auto grid-cols-[1fr_var(--fui-slider-thumb-size)_1fr] grid-rows-[1fr_calc(100%-var(--fui-slider-thumb-size))_1fr];
 
       @variant focus-within-visible {
         @variant after {
-          inset: 0 calc(var(--spacing) * -6);
+          @apply -inset-x-6 inset-y-0;
         }
       }
     }
@@ -138,7 +132,7 @@
   }
 
   .thumb {
-    @apply pointer-events-none absolute col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-slider-thumb-size) -translate-x-1/2 rounded-circular bg-(--fui-slider-thumb-color) forced-color-adjust-none outline-none;
+    @apply pointer-events-none absolute start-(--fui-slider-thumb-position) col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-slider-thumb-size) -translate-x-1/2 rounded-circular bg-(--fui-slider-thumb-color) forced-color-adjust-none outline-none;
 
     --fui-slider-thumb-position: clamp(
       var(--fui-slider-inner-thumb-radius),
@@ -146,7 +140,6 @@
       calc(100% - var(--fui-slider-inner-thumb-radius))
     );
 
-    inset-inline-start: var(--fui-slider-thumb-position);
     box-shadow: 0 0 0 calc(var(--fui-slider-thumb-size) * 0.2) var(--color-neutral-background-1) inset;
 
     @variant before {

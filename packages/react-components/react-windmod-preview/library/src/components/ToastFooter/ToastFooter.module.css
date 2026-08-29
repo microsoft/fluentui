@@ -1,13 +1,9 @@
 @reference '#theme';
 
-/* The two column longhands are plain declarations — see ToastTitle.module.css. ToastFooter has no
-   inverted branch: Griffel ships it no makeStyles at all. */
+/* ToastFooter has no inverted branch: Griffel ships it no makeStyles at all. */
 
 @layer fui.components.l1 {
   .root {
-    @apply flex items-center gap-14 pt-vertical-l;
-
-    grid-column-start: 2;
-    grid-column-end: 3;
+    @apply col-start-2 col-end-3 flex items-center gap-14 pt-vertical-l;
   }
 }

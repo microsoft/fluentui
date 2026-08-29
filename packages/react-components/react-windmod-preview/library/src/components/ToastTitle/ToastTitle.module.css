@@ -6,15 +6,12 @@
    the four inverted intent colours. Reordering the last two groups hands an inverted toast its
    non-inverted intent colour.
 
-   `grid-column-end` has no utility that reaches a bare `-1`, so the three column longhands are
-   plain declarations. `wrap-anywhere` reproduces Griffel's deprecated `word-break: break-word` on
-   both wrapping and min-content sizing, where `break-words` does not. */
+   `wrap-anywhere` reproduces Griffel's deprecated `word-break: break-word` on both wrapping and
+   min-content sizing, where `break-words` does not. */
 
 @layer fui.components.l1 {
   .root {
-    @apply flex wrap-anywhere text-neutral-foreground-1;
-
-    grid-column-end: 3;
+    @apply col-end-3 flex wrap-anywhere text-neutral-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted-2;
@@ -22,9 +19,7 @@
   }
 
   .media {
-    @apply flex pe-horizontal-s pt-vertical-xxs text-icon-16 text-neutral-foreground-1;
-
-    grid-column-end: 2;
+    @apply col-end-2 flex pe-horizontal-s pt-vertical-xxs text-icon-16 text-neutral-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted;
@@ -66,9 +61,7 @@
   }
 
   .action {
-    @apply flex items-start ps-horizontal-m text-brand-foreground-1;
-
-    grid-column-end: -1;
+    @apply col-end-[-1] flex items-start ps-horizontal-m text-brand-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-brand-foreground-inverted;

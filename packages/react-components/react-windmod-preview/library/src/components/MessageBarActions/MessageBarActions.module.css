@@ -8,8 +8,7 @@
     /* Griffel pads this edge with a VERTICAL token in multiline only; the authored token follows
        it rather than the horizontal one the base block uses. */
     @variant layout-multiline {
-      @apply me-0 mt-vertical-m-nudge mb-vertical-s pe-vertical-m;
-      justify-content: end;
+      @apply me-0 mt-vertical-m-nudge mb-vertical-s justify-end pe-vertical-m;
     }
 
     @variant not-has-actions {

@@ -13,7 +13,7 @@
     @apply box-border flex size-8 cursor-pointer bg-brand-background outline-thin outline-transparent outline-solid;
 
     @variant not-selected {
-      @apply rounded-[50%] border-none bg-brand-background/30 p-0;
+      @apply rounded-full border-none bg-brand-background/30 p-0;
     }
 
     @variant selected {

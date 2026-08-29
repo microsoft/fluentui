@@ -31,52 +31,52 @@
     box-shadow: 0 0 0 var(--stroke-width-thickest) var(--color-neutral-background-2);
   }
 
-  /* `:not(:first-child)` selects the element's own class, not a descendant, and a single logical
-     margin reproduces the physical left/right pair Griffel picks between by reading `dir`. */
+  /* A single logical margin reproduces the physical left/right pair Griffel picks between by
+     reading `dir`. */
   .stack-gap-xxs {
-    &:not(:first-child) {
+    @variant not-first {
       @apply -ms-horizontal-xxs;
     }
   }
 
   .stack-gap-xs {
-    &:not(:first-child) {
+    @variant not-first {
       @apply -ms-horizontal-xs;
     }
   }
 
   .stack-gap-s {
-    &:not(:first-child) {
+    @variant not-first {
       @apply -ms-horizontal-s;
     }
   }
 
   .stack-gap-l {
-    &:not(:first-child) {
+    @variant not-first {
       @apply -ms-horizontal-l;
     }
   }
 
   .spread-gap-s {
-    &:not(:first-child) {
+    @variant not-first {
       @apply ms-horizontal-s;
     }
   }
 
   .spread-gap-m-nudge {
-    &:not(:first-child) {
+    @variant not-first {
       @apply ms-horizontal-m-nudge;
     }
   }
 
   .spread-gap-l {
-    &:not(:first-child) {
+    @variant not-first {
       @apply ms-horizontal-l;
     }
   }
 
   .spread-gap-xl {
-    &:not(:first-child) {
+    @variant not-first {
       @apply ms-horizontal-xl;
     }
   }
@@ -90,25 +90,25 @@
   .pie-slices {
     &:nth-of-type(1):nth-last-of-type(2),
     &:nth-of-type(1):nth-last-of-type(3) {
-      @apply -start-[25%];
+      @apply -start-1/4;
 
       clip-path: inset(0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)) 0 25%);
     }
 
     &:nth-of-type(2):nth-last-of-type(1) {
-      @apply start-[25%];
+      @apply start-1/4;
 
       clip-path: inset(0 25% 0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)));
     }
 
     &:nth-of-type(2):nth-last-of-type(2) {
-      @apply start-1/2 origin-top-left transform-[scale(0.5)];
+      @apply start-1/2 origin-top-left scale-50;
 
       clip-path: inset(0 0 var(--fui-avatar-group-item-divider-width) var(--fui-avatar-group-item-divider-width));
     }
 
     &:nth-of-type(3):nth-last-of-type(1) {
-      @apply start-1/2 top-1/2 origin-top-left transform-[scale(0.5)];
+      @apply start-1/2 top-1/2 origin-top-left scale-50;
 
       clip-path: inset(var(--fui-avatar-group-item-divider-width) 0 0 var(--fui-avatar-group-item-divider-width));
     }

@@ -4,12 +4,9 @@
   /* The `--fui-Area*` custom properties are written by the headless hook into the root's inline
      style and are read only here. */
   .root {
-    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start rounded-medium border-thin border-solid border-neutral-stroke-1 forced-color-adjust-none;
+    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none items-start justify-items-start rounded-medium border-thin border-solid border-neutral-stroke-1 forced-color-adjust-none;
 
     --fui-color-area-thumb-size: calc(20px * var(--base-scale));
-
-    /* items-start emits the flexbox `flex-start` keyword, which is a different computed value. */
-    align-items: start;
 
     background:
       linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
@@ -27,10 +24,7 @@
   }
 
   .thumb {
-    @apply pointer-events-none absolute size-(--fui-color-area-thumb-size) -translate-x-1/2 translate-y-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Area__thumb--color) shadow-4 forced-color-adjust-none outline-none;
-
-    inset-inline-start: var(--fui-AreaX--progress);
-    bottom: var(--fui-AreaY--progress);
+    @apply pointer-events-none absolute start-(--fui-AreaX--progress) bottom-(--fui-AreaY--progress) size-(--fui-color-area-thumb-size) -translate-x-1/2 translate-y-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Area__thumb--color) shadow-4 forced-color-adjust-none outline-none;
 
     @variant before {
       @apply absolute inset-0 box-border rounded-circular border-thick border-solid border-neutral-background-1;

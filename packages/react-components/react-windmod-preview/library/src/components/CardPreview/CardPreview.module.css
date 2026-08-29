@@ -19,11 +19,11 @@
     @variant group-horizontal/fui-card {
       @apply -my-(--fui-card-size);
 
-      &:first-of-type {
+      @variant first-of-type {
         @apply -ms-(--fui-card-size);
       }
 
-      &:last-of-type {
+      @variant last-of-type {
         @apply -me-(--fui-card-size);
       }
     }
@@ -31,7 +31,7 @@
     @variant group-vertical/fui-card {
       @apply -mx-(--fui-card-size);
 
-      &:first-of-type {
+      @variant first-of-type {
         @apply -mt-(--fui-card-size);
       }
 
@@ -41,7 +41,7 @@
         @apply -mt-(--fui-card-size);
       }
 
-      &:last-of-type {
+      @variant last-of-type {
         @apply -mb-(--fui-card-size);
       }
     }

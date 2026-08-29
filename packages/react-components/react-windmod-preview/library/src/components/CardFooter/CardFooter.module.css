@@ -12,7 +12,7 @@
     }
 
     @variant group-horizontal/fui-card {
-      &:last-of-type {
+      @variant last-of-type {
         @apply grow;
       }
     }

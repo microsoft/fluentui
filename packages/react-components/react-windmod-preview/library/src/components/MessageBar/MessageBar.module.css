@@ -14,8 +14,7 @@
     grid-template-areas: 'icon body secondaryActions actions';
 
     @variant layout-multiline {
-      @apply pt-vertical-m-nudge whitespace-normal;
-      align-items: start;
+      @apply items-start pt-vertical-m-nudge whitespace-normal;
       grid-template-columns: auto 1fr auto;
       grid-template-areas: 'icon body actions' 'secondaryActions secondaryActions secondaryActions';
     }

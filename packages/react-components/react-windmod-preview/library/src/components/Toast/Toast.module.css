@@ -8,9 +8,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply grid rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-12 text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 shadow-8;
-
-    grid-template-columns: auto 1fr auto;
+    @apply grid grid-cols-[auto_1fr_auto] rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-12 text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 shadow-8;
 
     @variant appearance-inverted {
       @apply bg-neutral-background-inverted text-neutral-foreground-inverted-2;

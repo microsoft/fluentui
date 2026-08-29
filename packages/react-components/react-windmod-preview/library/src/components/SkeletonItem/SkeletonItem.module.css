@@ -93,7 +93,7 @@
     }
 
     @variant shape-circle {
-      @apply size-(--fui-skeleton-item-size) rounded-[50%];
+      @apply size-(--fui-skeleton-item-size) rounded-full;
     }
   }
 

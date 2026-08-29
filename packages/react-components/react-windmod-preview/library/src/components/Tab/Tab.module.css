@@ -18,8 +18,7 @@
     @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none border-current px-horizontal-m-nudge py-vertical-m font-base leading-base-300 normal-case outline-none;
 
     @variant vertical {
-      @apply py-vertical-s-nudge;
-      justify-content: start;
+      @apply justify-start py-vertical-s-nudge;
     }
 
     @variant size-small {
@@ -47,21 +46,20 @@
         @apply overflow-visible;
 
         @variant after {
-          @apply content-none;
-          transform-origin: left;
+          @apply origin-left content-none;
 
           transform: translateX(var(--fui-tab-indicator-offset)) scaleX(var(--fui-tab-indicator-scale));
         }
 
         @variant rtl {
           @variant after {
-            transform-origin: right;
+            @apply origin-right;
           }
         }
 
         @variant vertical {
           @variant after {
-            transform-origin: top;
+            @apply origin-top;
 
             transform: translateY(var(--fui-tab-indicator-offset)) scaleY(var(--fui-tab-indicator-scale));
           }
@@ -74,7 +72,7 @@
 
           /* transition-property, which the theme's reduced-motion floor does not author: Griffel
              writes `transitionProperty: none` here and the indicator must not tween at all. */
-          @media (prefers-reduced-motion: reduce) {
+          @variant motion-reduce {
             @variant after {
               @apply transition-none;
             }

@@ -3,15 +3,11 @@
 /* Griffel sets the subtitle's line-height to a FONT-SIZE token; the measured 16px subtitle height
    depends on it, so it is authored verbatim rather than normalised to a leading token.
 
-   The two column longhands are plain declarations for the same reason as ToastTitle's, and
    `wrap-anywhere` reproduces Griffel's `word-break: break-word` — see ToastTitle.module.css. */
 
 @layer fui.components.l1 {
   .root {
-    @apply pt-vertical-s-nudge text-base-300 leading-base-300 font-regular wrap-anywhere text-neutral-foreground-1;
-
-    grid-column-start: 2;
-    grid-column-end: 3;
+    @apply col-start-2 col-end-3 pt-vertical-s-nudge text-base-300 leading-base-300 font-regular wrap-anywhere text-neutral-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted-2;
@@ -19,11 +15,7 @@
   }
 
   .subtitle {
-    @apply pt-vertical-xs text-base-200 font-regular text-neutral-foreground-2;
-
-    grid-column-start: 2;
-    grid-column-end: 3;
-    line-height: var(--text-base-200);
+    @apply col-start-2 col-end-3 pt-vertical-xs text-base-200 leading-(--text-base-200) font-regular text-neutral-foreground-2;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted-2;

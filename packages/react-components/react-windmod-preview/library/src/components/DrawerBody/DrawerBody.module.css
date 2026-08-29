@@ -9,11 +9,11 @@
     @apply relative z-1 flex-1 self-stretch overflow-auto px-horizontal-xxl py-0;
 
     @variant first {
-      padding-top: calc(var(--spacing-horizontal-xxl) + 1px);
+      @apply pt-[calc(var(--spacing-horizontal-xxl)+1px)];
     }
 
     @variant last {
-      padding-bottom: calc(var(--spacing-horizontal-xxl) + 1px);
+      @apply pb-[calc(var(--spacing-horizontal-xxl)+1px)];
     }
   }
 }

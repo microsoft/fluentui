@@ -20,42 +20,43 @@
     --fui-toaster-offset-inline: 20px;
     --fui-toaster-offset-block: 16px;
 
+    /* The block-axis halves stay raw: no v4 utility reaches inset-block-start/end. */
     @variant toaster-position-top-start {
+      @apply start-(--fui-toaster-offset-inline);
+
       inset-block-start: var(--fui-toaster-offset-block);
-      inset-inline-start: var(--fui-toaster-offset-inline);
     }
 
     @variant toaster-position-top-end {
+      @apply end-(--fui-toaster-offset-inline);
+
       inset-block-start: var(--fui-toaster-offset-block);
-      inset-inline-end: var(--fui-toaster-offset-inline);
     }
 
     @variant toaster-position-bottom-start {
+      @apply start-(--fui-toaster-offset-inline);
+
       inset-block-end: var(--fui-toaster-offset-block);
-      inset-inline-start: var(--fui-toaster-offset-inline);
     }
 
     @variant toaster-position-bottom-end {
+      @apply end-(--fui-toaster-offset-inline);
+
       inset-block-end: var(--fui-toaster-offset-block);
-      inset-inline-end: var(--fui-toaster-offset-inline);
     }
 
     /* The centred positions stay PHYSICAL: Griffel emits the same `left` in both directions here,
        and their default horizontal offset is 0. */
     @variant toaster-position-top {
-      @apply -translate-x-1/2;
+      @apply top-(--fui-toaster-offset-block) left-[calc(50%+var(--fui-toaster-offset-inline))] -translate-x-1/2;
 
       --fui-toaster-offset-inline: 0px;
-      top: var(--fui-toaster-offset-block);
-      left: calc(50% + var(--fui-toaster-offset-inline));
     }
 
     @variant toaster-position-bottom {
-      @apply -translate-x-1/2;
+      @apply bottom-(--fui-toaster-offset-block) left-[calc(50%+var(--fui-toaster-offset-inline))] -translate-x-1/2;
 
       --fui-toaster-offset-inline: 0px;
-      bottom: var(--fui-toaster-offset-block);
-      left: calc(50% + var(--fui-toaster-offset-inline));
     }
 
     & > [role='listitem'] {
