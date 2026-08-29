@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 
 import { componentMarkers } from '../../utils/groupMarker';
 import { slotClasses } from '../../utils/slotClasses';
-import type { InfoButtonSize, InfoButtonState } from './InfoButton.types';
+import type { InfoButtonState } from './InfoButton.types';
 
 import styles from './InfoButton.module.css';
 
@@ -13,15 +13,6 @@ export const infoButtonClassNames: { root: string } = {
 
 type InfoButtonRootDataAttributes = {
   'data-size'?: InfoButtonState['size'];
-};
-
-/** Keyed off the button's own size, never off the surface's: a consumer may set the popover's
- * size directly, and Griffel still resolves the typography from the button. */
-const infoTypographyClass = (size: InfoButtonSize): string => {
-  if (size === 'large') {
-    return styles.infoLarge;
-  }
-  return styles.infoSmallMedium;
 };
 
 /**
@@ -40,6 +31,8 @@ export const useInfoButtonStyles = (state: InfoButtonState): InfoButtonState => 
   return {
     ...state,
     root,
-    info: slotClasses(state.info, styles.info, infoTypographyClass(size)),
+    /* Keyed off the button's own size, never off the surface's: a consumer may set the popover's
+     * size directly, and Griffel still resolves the typography from the button. */
+    info: slotClasses(state.info, styles.info, size === 'large' ? styles.infoLarge : styles.infoSmallMedium),
   };
 };
