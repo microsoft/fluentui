@@ -1,9 +1,6 @@
 @reference '#theme';
 
-/* l2: `.info` overrides PopoverSurface's l1 typography. The whole file sits one level up so the
-   module keeps a single @layer block. */
-
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   /* Block order is Griffel's merge order (base, highContrast, focusIndicator, selected, large),
      not state severity: highContrast's own hover override must beat the resting hover, and the
      open background must beat highContrast's CanvasText. Every catalog variant is :where()-flat,
@@ -78,7 +75,10 @@
       @apply p-vertical-xxs;
     }
   }
+}
 
+@layer fui.components.l2 {
+  /* The info slot renders a windmod PopoverSurface; these blocks override its l1 typography. */
   .info {
     @apply max-w-264;
   }

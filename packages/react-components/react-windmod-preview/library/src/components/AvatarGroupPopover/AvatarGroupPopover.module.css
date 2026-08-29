@@ -1,8 +1,6 @@
 @reference '#theme';
 
-/* l2: `.popover-surface` overrides the windmod PopoverSurface's own l1 padding and sizing.
-
-   Block order carries the whole cascade. Every catalog variant is `:where()`-flat, so every block
+/* Block order carries the whole cascade. Every catalog variant is `:where()`-flat, so every block
    inside `.trigger-button` sits at equal specificity and source order alone decides. Griffel does
    NOT settle these by source order — it settles them by sheet order AND selector specificity, and
    the two disagree in three places, so the order below is that resolution written out rather than
@@ -20,16 +18,9 @@
        re-assert BOTH the forced-colors border and the focus ring: Griffel merges its focus
        indicator unconditionally, pie included, and that indicator outranks the pie bucket, so a
        pie trigger without the re-assertion would show no focus ring at all. */
-@layer fui.components.l2 {
+@layer fui.components.l1 {
   .content {
     @apply m-0 flex list-none flex-col p-0;
-  }
-
-  /* The three lengths are Griffel's own numbers, authored against the content-box the popover
-     surface computes on both libraries. A box-sizing override here would fold the 8px padding and
-     the 1px border into all three and render the surface 18px narrower and shorter than Griffel's. */
-  .popover-surface {
-    @apply max-h-220 min-h-80 w-220 overflow-x-hidden overflow-y-scroll px-horizontal-s py-vertical-s;
   }
 
   .border-thin {
@@ -136,5 +127,15 @@
 
   .icon-48 {
     @apply text-icon-48;
+  }
+}
+
+@layer fui.components.l2 {
+  /* Overrides the windmod PopoverSurface's own l1 padding and sizing.
+     The three lengths are Griffel's own numbers, authored against the content-box the popover
+     surface computes on both libraries. A box-sizing override here would fold the 8px padding and
+     the 1px border into all three and render the surface 18px narrower and shorter than Griffel's. */
+  .popover-surface {
+    @apply max-h-220 min-h-80 w-220 overflow-x-hidden overflow-y-scroll px-horizontal-s py-vertical-s;
   }
 }

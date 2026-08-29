@@ -279,9 +279,10 @@ The declared layer order, which the theme package owns:
   fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
-- `fui.components.l1` — leaf components (Button, Label, Input)
-- `fui.components.l2` — compositions over them (ToggleButton over Button)
-- `fui.components.l3+` — deeper compositions
+- `fui.components.l1` — every component's own base styles (Button, Label, Input; also a
+  composition's rules for its own plain elements)
+- `fui.components.l2` — rules overriding another component's `l1` styles (ToggleButton over Button)
+- `fui.components.l3+` — rules overriding `l2` rules (deeper compositions)
 - `fui.utilities` — Tailwind's utility layer; beats component styles, still loses to your unlayered CSS
 
 **Slot `className` merges last.** Every slot re-stacks its class list with the component's own classes
