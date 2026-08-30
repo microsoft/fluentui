@@ -9,6 +9,7 @@ import {
   type ExtractorMessage,
   type ExtractorResult,
 } from '@microsoft/api-extractor';
+import * as path from 'node:path';
 import { basename, join } from 'node:path';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -18,6 +19,7 @@ import { type TsConfig } from '../../types';
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
 import { isCI } from './lib/shared';
+import { getExportSubpathConfigs } from './lib/utils';
 
 const fixturesRootDir = join(__dirname, '__fixtures__');
 
@@ -346,6 +348,31 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       expect(cfg.reportFilePath).toBe(join(paths.projRoot, 'etc', `${name}.api.md`));
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(cfg.reportTempFilePath).toBe(join(paths.projRoot, 'temp', `${name}.api.md`));
+    }
+  });
+
+  it('resolves declaration base correctly when path.resolve returns Windows-style backslashes', async () => {
+    const subDirs = ['alpha'];
+    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs });
+
+    const resolveSpy = jest.spyOn(path, 'resolve').mockImplementation((...args) => {
+      const posixPath = path.posix.resolve(...args);
+      return posixPath.replace(/\//g, '\\');
+    });
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    try {
+      const output = await executor({ ...options, exportSubpaths: true }, context);
+
+      expect(capturedConfigs).toHaveLength(1 + subDirs.length);
+      expect(output.success).toBe(true);
+    } finally {
+      resolveSpy.mockRestore();
     }
   });
 
