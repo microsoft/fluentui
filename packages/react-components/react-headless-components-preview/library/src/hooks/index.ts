@@ -1,4 +1,4 @@
-export { usePositioning } from './usePositioning';
+export { usePositioning, preloadPositioning } from './usePositioning';
 export type {
   Position,
   Alignment,

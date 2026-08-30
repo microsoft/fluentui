@@ -7,9 +7,12 @@
 import { Alignment } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
 export { Alignment }
 
@@ -27,19 +30,20 @@ export { Position }
 
 export { PositioningImperativeRef }
 
-// @public (undocumented)
-export type PositioningProps = Pick<PositioningProps_2, 'align' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
+export { PositioningProps }
 
 // @public (undocumented)
 export type PositioningReturn = {
     targetRef: React_2.RefCallback<HTMLElement>;
     containerRef: React_2.RefCallback<HTMLElement>;
+    arrowRef: React_2.RefCallback<HTMLElement>;
 };
 
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+export { PositioningShorthand }
 
 export { PositioningShorthandValue }
+
+export { PositioningVirtualElement }
 
 // @public (undocumented)
 export const POSITIONS: {
@@ -49,10 +53,12 @@ export const POSITIONS: {
     readonly after: "after";
 };
 
-// @public (undocumented)
-export const resolvePositioningShorthand: ResolvePositioningShorthand;
+// @public
+export function preloadPositioning(options?: PositioningProps): Promise<unknown>;
 
-// @public (undocumented)
+export { resolvePositioningShorthand }
+
+// @public
 export function usePositioning(options: PositioningProps): PositioningReturn;
 
 // (No @packageDocumentation comment for this package)

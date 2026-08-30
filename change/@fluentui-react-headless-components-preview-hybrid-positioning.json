@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add native-first hybrid positioning with lazy Floating UI fallbacks",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -6,9 +6,11 @@ export type {
   PositioningImperativeRef,
   PositioningShorthand,
   PositioningShorthandValue,
+  PositioningVirtualElement,
 } from './hooks/usePositioning';
 export {
   usePositioning,
+  preloadPositioning,
   POSITIONS,
   ALIGNMENTS,
   getPlacementString,
