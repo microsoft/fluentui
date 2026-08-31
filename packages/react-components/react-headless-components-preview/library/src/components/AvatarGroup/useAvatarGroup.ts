@@ -17,3 +17,8 @@ export const useAvatarGroup = (props: AvatarGroupProps, ref: React.Ref<HTMLDivEl
 
   return state;
 };
+
+/**
+ * Returns a selected value from the nearest AvatarGroup context.
+ */
+export { useAvatarGroupContext_unstable as useAvatarGroupContext } from '@fluentui/react-avatar';
