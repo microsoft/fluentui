@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: expose ToastTitle intent state via data attribute",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

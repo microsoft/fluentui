@@ -8,10 +8,9 @@ import { Provider } from '../Provider';
 /**
  * Selectors used by the headless tests. Unlike the styled v9 layer, the headless
  * Toast does not emit Griffel class names — we target structural roles and the
- * `data-intent` attribute the headless `Toast` adds to its root.
+ * structural roles on the headless `ToastContainer` root.
  */
 const TOAST_CONTAINER = '[role="listitem"]';
-const TOAST = '[data-intent]';
 
 const mount = (element: JSXElement) =>
   mountBase(
@@ -43,7 +42,7 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('button').click().get(TOAST).should('exist');
+    cy.get('button').click().get(TOAST_CONTAINER).should('exist');
   });
 
   it('should dismiss toast', () => {
@@ -73,8 +72,8 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
-    cy.get('#dismiss').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
+    cy.get('#dismiss').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should dismiss all toasts', () => {
@@ -105,8 +104,8 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('have.length', 5);
-    cy.get('#dismiss').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('have.length', 5);
+    cy.get('#dismiss').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should play and pause toast', () => {
@@ -138,9 +137,9 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
-    cy.get('#pause').click().wait(1000).get(TOAST).should('exist');
-    cy.get('#play').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
+    cy.get('#pause').click().wait(1000).get(TOAST_CONTAINER).should('exist');
+    cy.get('#play').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should update toast content', () => {
@@ -178,7 +177,7 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
     cy.get('#update').click().get('body').contains('Foo');
   });
 
@@ -204,7 +203,7 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).trigger('mouseenter').wait(700).get(TOAST).should('exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).trigger('mouseenter').wait(700).get(TOAST_CONTAINER).should('exist');
   });
 
   it('should follow lifecycle', () => {
