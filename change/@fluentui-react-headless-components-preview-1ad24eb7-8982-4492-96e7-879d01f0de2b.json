@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: publish context readers (and providers where the package owns them) from the avatar-group, button, link and avatar subpaths so consumers can read the look context the package's own renderers provide",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

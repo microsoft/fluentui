@@ -12,6 +12,7 @@ import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
 import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
 import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
+import { AvatarGroupProvider } from '@fluentui/react-avatar';
 import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -29,6 +30,7 @@ import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react
 import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
+import { useAvatarGroupContext_unstable as useAvatarGroupContext } from '@fluentui/react-avatar';
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -80,6 +82,8 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & 
 
 export { AvatarGroupProps }
 
+export { AvatarGroupProvider }
+
 export { AvatarGroupSlots }
 
 // @public (undocumented)
@@ -104,6 +108,8 @@ export const renderAvatarGroupPopover: (state: AvatarGroupPopoverState, contextV
 
 // @public
 export const useAvatarGroup: (props: AvatarGroupProps, ref: React_2.Ref<HTMLDivElement>) => AvatarGroupState;
+
+export { useAvatarGroupContext }
 
 // @public
 export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;
