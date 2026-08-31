@@ -128,16 +128,14 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
         if (t.isVariableDeclaration(declaration) && declaration.declarations.length === 1) {
           const declarator = declaration.declarations[0];
           const id = declarator.id;
-          if (!t.isIdentifier(id) || !isComponentLikeName(id.name)) {
+          if (t.isIdentifier(id) && isComponentLikeName(id.name)) {
+            storyName = id.name;
+            storyNames.push(id.name);
+            if (declarator.init && hasObjectProperty(t, unwrapExpression(t, declarator.init), 'parameters')) {
+              storiesWithParameters.add(id.name);
+            }
             return;
           }
-
-          storyName = id.name;
-          storyNames.push(id.name);
-          if (declarator.init && hasObjectProperty(t, unwrapExpression(t, declarator.init), 'parameters')) {
-            storiesWithParameters.add(id.name);
-          }
-          return;
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
