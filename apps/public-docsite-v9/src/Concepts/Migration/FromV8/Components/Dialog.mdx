@@ -51,7 +51,18 @@ import {
   Button,
 } from '@fluentui/react-components';
 
-<Dialog open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)}>
+<Dialog
+  open={isOpen}
+  modalType="modal"
+  onOpenChange={(event, data) => {
+    if (data.type === 'backdropClick') {
+      event.preventDefault();
+      return;
+    }
+
+    setIsOpen(data.open);
+  }}
+>
   <DialogSurface>
     <DialogBody>
       <DialogTitle>Delete item</DialogTitle>
@@ -135,7 +146,13 @@ const restoreFocusTargetAttributes = useRestoreFocusTarget();
 
 v8 `Modal` also maps to v9 `Dialog`. Replace `isOpen` with `open`, use
 the same declarative dialog children shown above, and choose `modalType` for the
-required dismissal behavior.
+required modality. Preserve dismissal behavior separately in `onOpenChange`.
+
+`DialogType` controls the v8 title treatment, not modality. Preserve
+`DialogType.normal` or `DialogType.largeHeader` through `DialogTitle`
+composition and styling. For `DialogType.close`, add an explicit close action
+to `DialogTitle`. Choose v9 `modalType` independently from the source dialog's
+interaction and ARIA requirements.
 
 ## Prop Mapping
 
@@ -147,10 +164,10 @@ required dismissal behavior.
 | `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close                  |
 | `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                                     |
 | `dialogContentProps.subText`    | `<DialogContent>` + `aria-describedby`      | Give only the short description an ID when content is complex |
-| `dialogContentProps.type`       | `modalType` on `<Dialog>`                   | See table above                                               |
+| `dialogContentProps.type`       | `<DialogTitle>` composition and styling     | Add an explicit close action for `DialogType.close`           |
 | `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                                               |
 | `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                                               |
-| `modalProps.isBlocking`         | `modalType`                                 | Normal blocking maps to `"modal"`                             |
+| `modalProps.isBlocking`         | `modalType="modal"` + `onOpenChange` guard  | Reject `data.type === "backdropClick"` when blocking          |
 | `modalProps.layerProps`         | —                                           | Not supported                                                 |
 | `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                                               |
 | `styles`                        | `className` + `makeStyles`                  |                                                               |
@@ -159,17 +176,17 @@ required dismissal behavior.
 
 ### IModalProps → DialogProps
 
-| v8                           | v9                               | Notes                             |
-| ---------------------------- | -------------------------------- | --------------------------------- |
-| `isOpen`                     | `open`                           |                                   |
-| `onDismiss`                  | `onOpenChange`                   |                                   |
-| `isBlocking`                 | `modalType`                      | Normal blocking maps to `"modal"` |
-| `isDarkOverlay`              | CSS on `DialogSurface` backdrop  |                                   |
-| `scrollableContentClassName` | `className` on `<DialogSurface>` |                                   |
-| `containerClassName`         | `className` on `<DialogSurface>` |                                   |
-| `layerProps`                 | —                                | Not supported                     |
-| `styles`                     | `className` + `makeStyles`       |                                   |
-| `theme`                      | `FluentProvider`                 |                                   |
+| v8                           | v9                                         | Notes                                                |
+| ---------------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| `isOpen`                     | `open`                                     |                                                      |
+| `onDismiss`                  | `onOpenChange`                             |                                                      |
+| `isBlocking`                 | `modalType="modal"` + `onOpenChange` guard | Reject `data.type === "backdropClick"` when blocking |
+| `isDarkOverlay`              | CSS on `DialogSurface` backdrop            |                                                      |
+| `scrollableContentClassName` | `className` on `<DialogSurface>`           |                                                      |
+| `containerClassName`         | `className` on `<DialogSurface>`           |                                                      |
+| `layerProps`                 | —                                          | Not supported                                        |
+| `styles`                     | `className` + `makeStyles`                 |                                                      |
+| `theme`                      | `FluentProvider`                           |                                                      |
 
 | v9 `modalType` | Behavior                                                        | v8 equivalent                                       |
 | -------------- | --------------------------------------------------------------- | --------------------------------------------------- |

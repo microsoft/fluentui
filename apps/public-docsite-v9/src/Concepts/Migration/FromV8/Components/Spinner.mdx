@@ -30,7 +30,7 @@ An equivalent `Spinner` in v9 is
 import * as React from 'react';
 import { Spinner } from '@fluentui/react-components';
 
-const SpinnerV9BasicExample = () => <Spinner />;
+const SpinnerV9BasicExample = () => <Spinner size="tiny" />;
 
 export default SpinnerV9BasicExample;
 ```
@@ -39,14 +39,18 @@ export default SpinnerV9BasicExample;
 
 This table maps `Spinner` v8 props to the `Spinner` v9 equivalent.
 
-| v8              | v9              | Notes                                    |
-| --------------- | --------------- | ---------------------------------------- |
-| `aria-label`    | `aria-label`    | Applied to the root element              |
-| `aria-live`     | `aria-live`     | Applied to the root element              |
-| `className`     | `className`     |                                          |
-| `componentRef`  | `ref`           | Provides access to the root DOM element  |
-| `label`         | `label`         |                                          |
-| `labelPosition` | `labelPosition` | Default changes from `bottom` to `after` |
-| `size`          | `size`          |                                          |
-| `styles`        | `className`     |                                          |
-| `theme`         | n/a             | Use `FluentProvider` to customize themes |
+| v8              | v9              | Notes                                                                                                            |
+| --------------- | --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `aria-label`    | `aria-label`    | Applied to the root element                                                                                      |
+| `aria-live`     | `aria-live`     | Applied to the root element                                                                                      |
+| `className`     | `className`     |                                                                                                                  |
+| `componentRef`  | `ref`           | Provides access to the root DOM element                                                                          |
+| `label`         | `label`         |                                                                                                                  |
+| `labelPosition` | `labelPosition` | `top` → `"above"`, `bottom` → `"below"`, `left` → `"before"`, `right` → `"after"`                                |
+| `size`          | `size`          | Map by dimensions: `xSmall` → `"extra-tiny"`, `small` → `"extra-tiny"`, `medium` → `"tiny"`, `large` → `"small"` |
+| `styles`        | `className`     |                                                                                                                  |
+| `theme`         | n/a             | Use `FluentProvider` to customize themes                                                                         |
+
+The v8 default is `medium` (20px), while the v9 default is `medium` (32px).
+Set `size="tiny"` to preserve the v8 default dimensions. There is no exact v9
+equivalent for v8 `xSmall` (12px); `"extra-tiny"` is the closest at 16px.

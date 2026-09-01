@@ -138,20 +138,31 @@ Note: For icon-only buttons where the tooltip is the accessible name, use `relat
 
 ### ITooltipProps → TooltipProps
 
-| v8                     | v9                         | Notes                                                 |
-| ---------------------- | -------------------------- | ----------------------------------------------------- |
-| `content`              | `content`                  | ReactNode in both                                     |
-| `directionalHint`      | `positioning`              | See table above                                       |
-| `delay`                | `showDelay` / `hideDelay`  | Separate delays in v9; milliseconds                   |
-| `id`                   | —                          | ID is auto-managed via `relationship` ARIA wiring     |
-| `calloutProps`         | —                          | No direct equivalent; use `positioning` for placement |
-| `hostClassName`        | —                          | Removed                                               |
-| `directionalHintFixed` | —                          | Use `positioning` with an offset                      |
-| `isBeakVisible`        | `withArrow`                | v8 defaults to `true`; v9 defaults to `false`         |
-| `beakWidth`            | —                          | Removed                                               |
-| `onRenderContent`      | `content` slot             | Pass ReactNode to `content`                           |
-| `styles`               | `className` + `makeStyles` |                                                       |
-| `theme`                | `FluentProvider`           |                                                       |
-| —                      | `relationship`             | **Required** — controls ARIA semantics                |
-| —                      | `visible`                  | New — controlled visibility                           |
-| —                      | `onVisibleChange`          | New — `(ev, data) => data.visible`                    |
+Convert the v8 `TooltipDelay` enum to the millisecond values used by v9:
+
+| v8 `delay`            | v9                |
+| --------------------- | ----------------- |
+| `TooltipDelay.zero`   | `showDelay={0}`   |
+| `TooltipDelay.medium` | `showDelay={300}` |
+| `TooltipDelay.long`   | `showDelay={500}` |
+
+The v8 `delay` controls opening only. Configure v9 `hideDelay` separately when
+the application requires a delayed close.
+
+| v8                     | v9                         | Notes                                                            |
+| ---------------------- | -------------------------- | ---------------------------------------------------------------- |
+| `content`              | `content`                  | ReactNode in both                                                |
+| `directionalHint`      | `positioning`              | See table above                                                  |
+| `delay`                | `showDelay`                | Convert `TooltipDelay` to milliseconds as shown above            |
+| `id`                   | —                          | ID is auto-managed via `relationship` ARIA wiring                |
+| `calloutProps`         | —                          | No direct equivalent; use `positioning` for placement            |
+| `hostClassName`        | —                          | Removed                                                          |
+| `directionalHintFixed` | `positioning.pinned`       | For example, `positioning={{ position: 'below', pinned: true }}` |
+| `isBeakVisible`        | `withArrow`                | v8 defaults to `true`; v9 defaults to `false`                    |
+| `beakWidth`            | —                          | Removed                                                          |
+| `onRenderContent`      | `content` slot             | Pass ReactNode to `content`                                      |
+| `styles`               | `className` + `makeStyles` |                                                                  |
+| `theme`                | `FluentProvider`           |                                                                  |
+| —                      | `relationship`             | **Required** — controls ARIA semantics                           |
+| —                      | `visible`                  | New — controlled visibility                                      |
+| —                      | `onVisibleChange`          | New — `(ev, data) => data.visible`                               |

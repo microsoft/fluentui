@@ -49,11 +49,11 @@ const RadioGroupBasicExample = () => {
       <Label id={labelId} required>
         Pick One
       </Label>
-      <RadioGroup aria-labelledby={labelId} defaultValue="B">
-        <Radio value="A" label="Option A" required />
-        <Radio value="B" label="Option B" required />
-        <Radio value="C" label="Option C" disabled required />
-        <Radio value="D" label="Option D" required />
+      <RadioGroup aria-labelledby={labelId} defaultValue="B" required>
+        <Radio value="A" label="Option A" />
+        <Radio value="B" label="Option B" />
+        <Radio value="C" label="Option C" disabled />
+        <Radio value="D" label="Option D" />
       </RadioGroup>
     </>
   );

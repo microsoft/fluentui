@@ -99,7 +99,7 @@ const PeoplePicker = ({
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
   const registry = React.useRef(new Map<string, Person>());
   const requestSequence = React.useRef(0);
-  const selectionSequence = React.useRef(0);
+  const pendingSelections = React.useRef(new Set<string>());
 
   React.useEffect(() => {
     const sequence = ++requestSequence.current;
@@ -142,7 +142,6 @@ const PeoplePicker = ({
   }, [onSelectedPeopleChange, selectedIds]);
 
   const onOptionSelect: TagPickerProps['onOptionSelect'] = async (_, data) => {
-    const sequence = ++selectionSequence.current;
     const addedId = data.selectedOptions.find(id => !selectedIds.includes(id));
     if (!addedId) {
       setSelectedIds(data.selectedOptions);
@@ -153,15 +152,27 @@ const PeoplePicker = ({
     }
 
     const candidate = registry.current.get(addedId);
-    if (!candidate) {
+    if (!candidate || pendingSelections.current.has(addedId)) {
       return;
     }
-    const accepted = await validateAndTransform(candidate);
-    if (sequence !== selectionSequence.current || !accepted) {
+    pendingSelections.current.add(addedId);
+    let accepted: Person | null;
+    try {
+      accepted = await validateAndTransform(candidate);
+    } finally {
+      pendingSelections.current.delete(addedId);
+    }
+    if (!accepted) {
       return;
     }
-    registry.current.set(accepted.id, accepted);
-    setSelectedIds(ids => [...ids, accepted.id]);
+    const acceptedPerson = accepted;
+    registry.current.set(acceptedPerson.id, acceptedPerson);
+    setSelectedIds(ids => {
+      if (ids.includes(acceptedPerson.id) || ids.length >= itemLimit) {
+        return ids;
+      }
+      return [...ids, acceptedPerson.id];
+    });
     setQuery('');
   };
 
