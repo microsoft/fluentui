@@ -36,6 +36,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-components';
+import type { NavItemValue } from '@fluentui/react-components';
 ```
 
 | v9 Component       | Purpose                                          |
@@ -85,9 +86,10 @@ The equivalent v9 usage is:
 ```tsx
 import * as React from 'react';
 import { Nav, NavItem, NavCategory, NavCategoryItem, NavSubItemGroup, NavSubItem } from '@fluentui/react-components';
+import type { NavItemValue } from '@fluentui/react-components';
 import { HomeRegular, SettingsRegular } from '@fluentui/react-icons';
 
-const [openCategories, setOpenCategories] = React.useState<Iterable<string>>(['settings']);
+const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['settings']);
 
 <nav aria-label="Primary">
   <Nav
@@ -95,11 +97,11 @@ const [openCategories, setOpenCategories] = React.useState<Iterable<string>>(['s
     openCategories={openCategories}
     onNavItemSelect={(_, data) => navigate(data.value as string)}
     onNavCategoryItemToggle={(_, data) =>
-      setOpenCategories(current => {
-        const next = new Set(current);
-        next.has(data.categoryValue) ? next.delete(data.categoryValue) : next.add(data.categoryValue);
-        return next;
-      })
+      setOpenCategories(current =>
+        current.includes(data.categoryValue)
+          ? current.filter(value => value !== data.categoryValue)
+          : [...current, data.categoryValue],
+      )
     }
   >
     <NavItem icon={<HomeRegular />} value="home" href="/">

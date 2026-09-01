@@ -81,6 +81,7 @@ documented restore-focus attributes when that is impossible.
 import { useModalAttributes } from '@fluentui/react-tabster';
 
 const CustomModal = () => {
+  const [open, setOpen] = React.useState(false);
   const { modalAttributes, triggerAttributes } = useModalAttributes({
     trapFocus: true,
     legacyTrapFocus: true,
@@ -88,10 +89,15 @@ const CustomModal = () => {
 
   return (
     <>
-      <button {...triggerAttributes}>Open</button>
-      <div role="dialog" aria-modal="true" {...modalAttributes}>
-        {content}
-      </div>
+      <button {...triggerAttributes} onClick={() => setOpen(true)}>
+        Open
+      </button>
+      {open && (
+        <div role="dialog" aria-modal="true" {...modalAttributes}>
+          {content}
+          <button onClick={() => setOpen(false)}>Close</button>
+        </div>
+      )}
     </>
   );
 };

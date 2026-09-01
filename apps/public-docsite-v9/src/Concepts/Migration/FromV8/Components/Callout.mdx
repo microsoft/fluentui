@@ -83,7 +83,12 @@ const ExternalTargetPopover = () => {
 
   return (
     <>
-      <Button {...restoreFocusTargetAttributes} ref={buttonRef} onClick={() => setOpen(value => !value)}>
+      <Button
+        {...restoreFocusTargetAttributes}
+        ref={buttonRef}
+        aria-expanded={open}
+        onClick={() => setOpen(value => !value)}
+      >
         Toggle popover
       </Button>
       <Popover

@@ -42,7 +42,12 @@ compatibility component does not expose a `defaultValue` date prop.
 The compatibility component makes popup state and placement explicit:
 
 ```tsx
-<DatePicker open={isOpen} onOpenChange={setIsOpen} positioning="below-start" inlinePopup />
+<DatePicker
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  positioning={{ position: 'below', align: 'start' }}
+  inlinePopup
+/>
 ```
 
 Use `inlinePopup` when rendering the popup next to the trigger improves screen
