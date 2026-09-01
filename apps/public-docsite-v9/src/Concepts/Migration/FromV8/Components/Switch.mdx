@@ -41,11 +41,13 @@ const [on, setOn] = React.useState(false);
 ### Label Position
 
 ```tsx
-// v9 — v8 inlineLabel with onText/offText places the main label before the control
-<Switch label="Dark mode" labelPosition="before" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
+<>
+  {/* v8 inlineLabel with onText/offText places the main label before the control */}
+  <Switch label="Dark mode" labelPosition="before" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
 
-// v9 — v8 inlineLabel without onText/offText places the label after the control
-<Switch label="Dark mode" labelPosition="after" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
+  {/* v8 inlineLabel without onText/offText places the label after the control */}
+  <Switch label="Dark mode" labelPosition="after" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
+</>
 ```
 
 ## Prop Mapping
