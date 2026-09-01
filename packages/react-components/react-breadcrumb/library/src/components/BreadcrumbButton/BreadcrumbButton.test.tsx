@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
-import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
+import type { BreadcrumbButtonBaseProps, BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
 import { ArrowRight16Filled } from '@fluentui/react-icons';
@@ -66,5 +66,21 @@ describe('BreadcrumbButton', () => {
         </button>
       </div>
     `);
+  });
+
+  // Type-level regression test for https://github.com/microsoft/fluentui/issues/36645.
+  // `BreadcrumbButtonBaseProps` used a plain `Omit`, which collapsed the distributive ARIA button
+  // union and dropped the anchor arm's `href`. These assignments are validated by the package's
+  // type-check target.
+  it('keeps both arms of the ARIA button union assignable to BreadcrumbButtonBaseProps', () => {
+    const anchorProps: BreadcrumbButtonBaseProps = { as: 'a', href: '/somewhere' };
+    const buttonProps: BreadcrumbButtonBaseProps = { as: 'button' };
+
+    // @ts-expect-error - `size` is omitted from BreadcrumbButtonBaseProps
+    const sizeProps: BreadcrumbButtonBaseProps = { as: 'button', size: 'small' };
+
+    expect(anchorProps).toBeDefined();
+    expect(buttonProps).toBeDefined();
+    expect(sizeProps).toBeDefined();
   });
 });
