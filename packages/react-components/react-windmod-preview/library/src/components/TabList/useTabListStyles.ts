@@ -17,11 +17,14 @@ type TabListRootDataAttributes = {
 
 /** Applies the visual contract, returning new state. */
 export const useTabListStyles = (state: TabListState): TabListState => {
+  const { appearance } = state;
+  const isRounded = appearance === 'subtle-circular' || appearance === 'filled-circular';
+
   const root: TabListState['root'] & TabListRootDataAttributes = {
     ...state.root,
-    'data-appearance': state.appearance,
+    'data-appearance': appearance,
     'data-size': state.size,
-    className: clsx(tabListClassNames.root, styles.root, state.root.className),
+    className: clsx(tabListClassNames.root, styles.root, isRounded && styles.rounded, state.root.className),
   };
 
   return { ...state, root };

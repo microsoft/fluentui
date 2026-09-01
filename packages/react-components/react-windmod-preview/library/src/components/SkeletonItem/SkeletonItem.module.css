@@ -29,6 +29,8 @@
 
 @layer fui.components.l1 {
   .root {
+    /* rounded-[4px], not rounded-medium: Griffel authors the literal here, not the radius token,
+       and radii sit off the base-scale ramp. */
     @apply relative h-(--fui-skeleton-item-size) w-full overflow-hidden rounded-[4px] bg-neutral-stencil-1;
 
     --fui-skeleton-item-size: calc(attr(data-size type(<number>), 16) * 1px);
@@ -67,33 +69,34 @@
       }
     }
 
-    @variant appearance-translucent {
-      @apply bg-neutral-stencil-1-alpha;
-
-      @variant after {
-        background-image: linear-gradient(
-          to right,
-          transparent 0%,
-          var(--color-neutral-stencil-1-alpha) 50%,
-          transparent 100%
-        );
-      }
-
-      @variant animation-pulse {
-        @apply bg-transparent;
-
-        @variant after {
-          @apply bg-neutral-stencil-1-alpha;
-        }
-      }
-    }
-
     @variant shape-square {
       @apply size-(--fui-skeleton-item-size) rounded-none;
     }
 
     @variant shape-circle {
       @apply size-(--fui-skeleton-item-size) rounded-full;
+    }
+  }
+
+  /* Appearance is a look prop — it rides a module class; see Tooltip.module.css. */
+  .translucent {
+    @apply bg-neutral-stencil-1-alpha;
+
+    @variant after {
+      background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--color-neutral-stencil-1-alpha) 50%,
+        transparent 100%
+      );
+    }
+
+    @variant animation-pulse {
+      @apply bg-transparent;
+
+      @variant after {
+        @apply bg-neutral-stencil-1-alpha;
+      }
     }
   }
 

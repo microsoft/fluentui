@@ -50,6 +50,11 @@ describe('Toast', () => {
     expect(renderToast().root.getAttribute('data-appearance')).toBeNull();
   });
 
+  it('composes the inverted module class only for the inverted appearance', () => {
+    expect(renderToast({ appearance: 'inverted' }).root).toHaveClass(styles.inverted);
+    expect(renderToast().root).not.toHaveClass(styles.inverted);
+  });
+
   it('leaves data-intent to the headless layer and never sends the look prop to it', () => {
     // Outside a Toaster there is no container context, so the headless hook resolves no intent.
     expect(renderToast({ appearance: 'inverted' }).root.getAttribute('data-intent')).toBeNull();

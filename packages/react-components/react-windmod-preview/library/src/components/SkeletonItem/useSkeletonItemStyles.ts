@@ -33,6 +33,7 @@ export const useSkeletonItemStyles = (state: SkeletonItemState): SkeletonItemSta
     className: clsx(
       skeletonItemClassNames.root,
       styles.root,
+      appearance === 'translucent' && styles.translucent,
       state.root.as === 'span' && styles.block,
       state.root.className,
     ),

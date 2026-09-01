@@ -40,6 +40,8 @@ describe('SkeletonItem', () => {
     expect(custom.getAttribute('data-appearance')).toBe('translucent');
     expect(custom.getAttribute('data-shape')).toBe('circle');
     expect(custom.getAttribute('data-size')).toBe('48');
+    expect(custom).toHaveClass(styles.translucent);
+    expect(fallback).not.toHaveClass(styles.translucent);
   });
 
   it('resolves each dimension against the group, then lets an own prop win', () => {

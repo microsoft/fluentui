@@ -95,6 +95,22 @@ describe('TabList', () => {
     }
   });
 
+  it('composes the rounded module class only for the circular appearances', () => {
+    for (const appearance of ['subtle-circular', 'filled-circular'] as const) {
+      const { getByTestId, unmount } = render(<TabList data-testid="root" appearance={appearance} />);
+
+      expect(getByTestId('root')).toHaveClass(styles.rounded);
+      unmount();
+    }
+
+    for (const appearance of ['transparent', 'subtle'] as const) {
+      const { getByTestId, unmount } = render(<TabList data-testid="root" appearance={appearance} />);
+
+      expect(getByTestId('root')).not.toHaveClass(styles.rounded);
+      unmount();
+    }
+  });
+
   it('falls back to the default look values for a tab rendered outside any list', () => {
     const { getByTestId } = render(<Tab data-testid="tab" value="a" />);
 

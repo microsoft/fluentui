@@ -23,7 +23,12 @@ export const useToastStyles = (state: ToastState): ToastState => {
   const root: ToastState['root'] & ToastRootDataAttributes = {
     ...state.root,
     'data-appearance': state.appearance,
-    className: clsx(toastClassNames.root, styles.root, state.root.className),
+    className: clsx(
+      toastClassNames.root,
+      styles.root,
+      state.appearance === 'inverted' && styles.inverted,
+      state.root.className,
+    ),
   };
 
   return { ...state, root };

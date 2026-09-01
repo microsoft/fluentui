@@ -7,15 +7,17 @@
     @variant vertical {
       @apply flex-col;
     }
+  }
 
-    /* Only the circular appearances put a gap between tabs; the flat ones butt them together
-       so the selection indicator reads as one continuous rail. */
-    @variant appearance-subtle-circular, appearance-filled-circular {
-      @apply gap-horizontal-s;
+  /* Only the circular appearances put a gap between tabs; the flat ones butt them together
+     so the selection indicator reads as one continuous rail. Appearance is a look prop — it
+     rides a module class (see Tooltip.module.css); both circular values share this one,
+     matching Griffel's single `rounded` bucket. */
+  .rounded {
+    @apply gap-horizontal-s;
 
-      @variant size-small {
-        @apply gap-horizontal-s-nudge;
-      }
+    @variant size-small {
+      @apply gap-horizontal-s-nudge;
     }
   }
 }
