@@ -2,28 +2,53 @@
  * The `#theme` reference target for component `*.module.css` files.
  *
  * Library constraints (deliberately unlike an app Tailwind setup):
- * - Preflight SHIPS, in `fui.preflight` — the LOWEST layer of the fui.* family, so every
- *   authored theme/component rule outranks it by layer order alone. Consumer documents get
- *   a normalized base instead of per-browser UA defaults; components author over that clean
- *   base rather than inheriting the same UA quirks Griffel inherits. This is a deliberate
- *   divergence from Griffel's no-reset posture (operator ruling 2026-08-28, Decision U).
- *   Utilities still reach consumers only inlined through `@apply`.
+ * - Preflight SHIPS, at the HEAD of `fui.base` — the same placement Tailwind itself gives it
+ *   (its `base` layer), per the operator ruling of 2026-09-01 refining Decision U (2026-08-28).
+ *   Every component rule outranks it by layer order (`fui.components.*` > `fui.base`), and
+ *   anything else authored into `fui.base` outranks it by source order or specificity — see
+ *   the icon-defaults note below the import. Consumer documents get a normalized base instead
+ *   of per-browser UA defaults; components author over that clean base rather than inheriting
+ *   the same UA quirks Griffel inherits. This is a deliberate divergence from Griffel's
+ *   no-reset posture. Utilities still reach consumers only inlined through `@apply`.
  * - Tokens register via `@theme inline` (./tokens.css), substituting `var(--token)`
  *   into each utility so values stay per-element CSS custom properties. A non-inline
  *   `@theme` alias would freeze resolution at `:root` and must not be used.
  */
 
 /*
- * One cascade-layer family. fui.preflight sits FIRST — the global reset loses every cascade
- * contest against authored rules. fui.base is levelless (element resets); l1 = base
- * components, l2 = compositions, l3+ = deeper compositions (SplitButton over MenuButton over
- * Button); the declared stack runs to l5 today and may grow. Winner order within a level is
- * in-file source order (all selectors are :where()-flat). fui.utilities beats component
- * styles but loses to unlayered consumer CSS.
+ * One cascade-layer family. fui.base is levelless (the global reset at its head, then element
+ * resets such as the headless icon defaults); l1 = base components, l2 = compositions, l3+ =
+ * deeper compositions (SplitButton over MenuButton over Button); the declared stack runs to l5
+ * today and may grow. Winner order within a level is in-file source order (all selectors are
+ * :where()-flat). fui.utilities beats component styles but loses to unlayered consumer CSS.
  */
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-@import 'tailwindcss/preflight.css' layer(fui.preflight);
+/*
+ * Preflight is the FIRST content of `fui.base` — this import must stay ahead of everything
+ * else that lands in the layer (the icon defaults imported by ./emit.css and the storybook
+ * harness), so any same-layer authored rule beats it on source order at equal specificity.
+ */
+@import 'tailwindcss/preflight.css' layer(fui.base);
+
+/*
+ * Icon-defaults guard, immediately AFTER preflight in the same layer.
+ *
+ * The one `fui.base` occupant that cannot defend itself by source order is the headless icons
+ * sheet's `:where([data-fui-icon]) { display: inline; … }` — deliberately ZERO specificity so
+ * any class wins over it. Preflight's replaced-elements rule (`img, svg, … { display: block;
+ * vertical-align: middle }`) carries element specificity (0,0,1), which beats `:where()`
+ * regardless of order once they share a layer. This rule re-asserts the icon display default
+ * at the same (0,0,1) specificity, later in source order, so it wins the tie against
+ * preflight — restoring exactly the computed state the icons sheet had when preflight lived
+ * in a lower layer. `line-height: 0` needs no re-assertion (preflight does not contest it),
+ * and `vertical-align: middle` is left to preflight (it was unopposed before, too).
+ */
+@layer fui.base {
+  svg:where([data-fui-icon]) {
+    display: inline;
+  }
+}
 @import 'tailwindcss/theme.css' layer(fui.theme);
 @import 'tailwindcss/utilities.css' layer(fui.utilities);
 

@@ -43,7 +43,7 @@ Start here, because it is most of the surface:
 | 12  | Some computed style strings differ with no visual difference           | Update snapshot tests asserting on computed `box-shadow`.                                                                      |
 | 13  | Text alignment is logical, not physical                                | Only diverges in a `dir`-flipped subtree inside an opposite-direction provider.                                                |
 | 22  | **`prefers-reduced-motion` is suppressed globally**, not per component | One unlayered floor rule. Your classed rules already outrank it.                                                               |
-| 58  | **Tailwind's preflight ships**, in the lowest `fui.preflight` layer    | Document-global reset; any rule you author outranks it. Re-check markup that relied on UA defaults.                            |
+| 58  | **Tailwind's preflight ships**, at the head of the `fui.base` layer    | Document-global reset; any rule you author outranks it. Re-check markup that relied on UA defaults.                            |
 | 59  | **Leading tokens are unitless ratios**, not lengths                    | A `--leading-*` read is a number; multiply by the paired `--text-*` for a length. Descendants inherit the ratio, not a px box. |
 
 Delta 22 in detail, because it changes behaviour you may be measuring. The floor sets 1ms durations and

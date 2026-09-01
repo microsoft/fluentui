@@ -758,6 +758,6 @@ describe('CANONICAL_LAYER_STATEMENT — cross-package drift guard', () => {
   it('appears in the theme package as a whole line', () => {
     const lines = readFileSync(THEME_INDEX_CSS, 'utf8').split(/\r?\n/);
 
-    expect(lines.filter(line => line.trim().startsWith('@layer fui.preflight'))).toEqual([CANONICAL_LAYER_STATEMENT]);
+    expect(lines.filter(line => line.trim().startsWith('@layer fui.theme'))).toEqual([CANONICAL_LAYER_STATEMENT]);
   });
 });

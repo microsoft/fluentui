@@ -167,12 +167,13 @@ the headless library's own `''` spelling; that is theirs, not ours.
 ### Layers
 
 - **All** component styles live in `fui.components.l<level>`.
-- `fui.preflight` is the theme's and holds exactly one thing: Tailwind's preflight. The order
-  statement **leads** with it — `@layer fui.preflight, fui.theme, fui.base, fui.components, …` — so
-  it is the lowest-priority layer in the document and every authored rule outranks it by
-  construction. Never author into it, and never lean on a preflight value: a component declares
-  what its rendering depends on rather than inheriting the reset's answer.
-- `fui.base` belongs to the theme, for global element resets **only**. Components never author into it.
+- Tailwind's preflight ships at the **head of `fui.base`** — the first content of that layer, so
+  every component rule outranks it by layer order and the theme's other element resets beat it by
+  source order (or, for the zero-specificity icon defaults, by the theme's own guard rule). Never
+  lean on a preflight value: a component declares what its rendering depends on rather than
+  inheriting the reset's answer.
+- `fui.base` belongs to the theme, for the preflight and global element resets **only**. Components
+  never author into it.
 - **The level is assigned per RULE, not per file.** A rule styling the component's own DOM — its root,
   its plain-element slots — is a base style and sits at `l1`, no matter what the rest of the file does.
   A rule that overrides ANOTHER component's styles (a slot rendering a windmod Label, Button,

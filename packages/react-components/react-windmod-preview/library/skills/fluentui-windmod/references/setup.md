@@ -213,14 +213,15 @@ That is the whole override story. See [overriding.md](overriding.md).
 Cascade layer order is first-appearance, so declare the `fui` family **before** importing Tailwind:
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 ```
 
 Without that line, Tailwind's own layers are declared first and `fui.utilities` outranks them.
-Keep `fui.preflight` in the list and first: layer order is first-appearance, so omitting it here
-would let the theme sheet's own statement introduce it _after_ the layers you named — above the
-component layers instead of below everything.
+Copy the list exactly — layer order is first-appearance, so omitting or reordering a name here
+would let the theme sheet's own statement introduce it in a different position than every
+component chunk was compiled against. (Tailwind's preflight ships inside `fui.base`, at its
+head, so it needs no name of its own.)
 
 ### Compose against windmod's states
 
@@ -229,7 +230,7 @@ exist. Both catalogs are shipped source and importable:
 
 ```css
 /* your Tailwind entry stylesheet */
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 
 /* the generic vocabulary — state, structure, positioning, size */
@@ -253,10 +254,10 @@ Both files are pure `@custom-variant` declarations and emit no CSS of their own.
 **source**, not plain CSS. It is the reference target the library's own modules use, and it is
 deliberately unlike an app Tailwind setup:
 
-- **preflight ships, in its own lowest layer** — Tailwind's preflight is imported into
-  `fui.preflight`, first in the order statement, so every authored rule (the library's and yours)
-  outranks it by construction; components author over a normalized base instead of inheriting UA
-  quirks. Nothing else is authored into that layer
+- **preflight ships, at the head of `fui.base`** — Tailwind's preflight is imported as the first
+  content of `fui.base` (the same placement Tailwind itself gives it), so every component rule —
+  the library's and yours — outranks it, and the rest of the layer's element resets beat it by
+  source order; components author over a normalized base instead of inheriting UA quirks
 - tokens register via `@theme inline`, so `var(--token)` substitutes into each utility and values stay
   per-element custom properties
 - Tailwind's default palette, type ramp, radii and shadows are set to `initial`
@@ -275,13 +276,13 @@ Tailwind toolchain.
 ## What the layers are for
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
   fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
-`fui.preflight` holds Tailwind's preflight and nothing else. It leads the statement, so it is the
-lowest-priority layer in the document: every authored rule — the theme's, the components', yours —
-outranks it by construction.
+`fui.base` opens with Tailwind's preflight, followed by the theme's global element resets (the
+headless icon defaults). Every component rule — and any rule of yours, layered above or unlayered —
+outranks the reset; within the layer the resets that follow preflight beat it by source order.
 
 The theme package's README describes `l3`–`l5` as available for app-global, per-page and one-off
 overrides that should still lose to your unlayered CSS.

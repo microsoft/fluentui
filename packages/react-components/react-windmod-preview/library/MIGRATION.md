@@ -384,7 +384,7 @@ within the shared `fui.theme` layer.
 #### 2. The theme is a separate, required import — one file per theme
 
 `@fluentui/react-tailwind-theme-preview/base.css` carries the preflight
-([delta 58](#58-tailwinds-preflight-ships--in-the-lowest-layer)), the type ramp, the spacing scale
+([delta 58](#58-tailwinds-preflight-ships--at-the-head-of-the-base-layer)), the type ramp, the spacing scale
 and the token registrations; each `…/themes/<name>.css` carries one theme's palette. Nothing renders
 correctly without the base, and nothing is _coloured_ without a theme file plus its class.
 
@@ -1103,16 +1103,17 @@ windmod leaves it alone. Stamp `data-fui-icon` on it to opt in.
 
 ### The base sheet and the type ramp
 
-#### 58. Tailwind's preflight ships — in the lowest layer
+#### 58. Tailwind's preflight ships — at the head of the base layer
 
 The theme package includes Tailwind's preflight. This is a deliberate divergence from Griffel's
 posture: `@fluentui/react-components` ships no global reset and renders over whatever element
 defaults the document brings; windmod authors every component over a normalized base instead.
 
-The guarantee that makes it safe is the layer. Preflight lives in `fui.preflight`, the **first** name
-in the `@layer` order statement — below `fui.theme`, `fui.base` and every component layer — so every
-authored rule in both packages outranks it by construction, and your own unlayered CSS beats it the
-same way it beats everything else in the library. Nothing else is ever authored into that layer.
+The guarantee that makes it safe is the layering. Preflight ships at the **head of `fui.base`** —
+the same placement Tailwind itself gives it — below every component layer, so every component rule
+in both packages outranks it by construction, and your own unlayered CSS beats it the same way it
+beats everything else in the library. The rest of `fui.base` (the theme's global element resets)
+follows it in source order and wins any same-layer contest.
 
 What to check when migrating: the reset is document-global, exactly like the preflight of a Tailwind
 app — element defaults (heading sizes, list markers and margins, button font, `fieldset`/`legend`,

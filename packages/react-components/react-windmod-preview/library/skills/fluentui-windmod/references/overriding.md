@@ -34,7 +34,7 @@ This is the whole story for most overrides. The corollary is the one thing to re
 ### The declared order
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
   fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 

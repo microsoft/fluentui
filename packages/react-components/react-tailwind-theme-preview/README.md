@@ -6,8 +6,8 @@ Windmod component packages ship plain, precompiled CSS that references theme-lev
 properties — the design tokens, the cascade `@layer` order, `--base-scale`, `--spacing` and the
 stroke widths. Something has to emit those **once per document**: this package.
 
-It ships in two parts. `base.css` is **theme-less**: the layer order, Tailwind's preflight (in
-`fui.preflight`, the lowest layer — see Layering below), the token registrations, the spacing
+It ships in two parts. `base.css` is **theme-less**: the layer order, Tailwind's preflight (at
+the head of `fui.base` — see Layering below), the token registrations, the spacing
 scale, the type ramp, the stroke widths, the `prefers-reduced-motion` floor — everything that is
 identical in every theme. Each theme is then its own file (`themes/web-light.css`, …) carrying
 nothing but that theme's 423 custom properties inside one class.
@@ -90,22 +90,23 @@ All Fluent styles live in one cascade-layer family, declared by this package's s
 why it must load before component styles):
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
   fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
-- **`fui.preflight`** holds Tailwind's preflight and nothing else. It leads the statement, so it is
-  the lowest-priority layer in the document: every authored rule — this package's, the components',
-  yours — outranks it by construction.
+- **`fui.base`** opens with Tailwind's preflight — the same placement Tailwind itself gives it —
+  followed by this package's global element resets (the headless icon defaults). Every component
+  rule, and any rule of yours, outranks the reset; within the layer the resets that follow
+  preflight beat it by source order.
 - **Plain CSS consumers** need no setup. Unlayered CSS beats every layer, so your own selectors win
   by default.
 - **Tailwind consumers** who want their own utilities to beat Fluent component styles should declare
-  the `fui` layers before importing Tailwind (cascade layer order is first-appearance — keep
-  `fui.preflight` in the list and first, or the theme sheet's own statement will introduce it above
-  the layers you named):
+  the `fui` layers before importing Tailwind (cascade layer order is first-appearance — copy the
+  list exactly, or the theme sheet's own statement will introduce the missing names in a different
+  position than the components were compiled against):
 
   ```css
-  @layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
+  @layer fui.theme, fui.base, fui.components, fui.utilities;
   @import 'tailwindcss';
   ```
 

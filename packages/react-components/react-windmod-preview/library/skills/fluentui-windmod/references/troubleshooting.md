@@ -42,7 +42,7 @@ stylesheets in a layer of their own.
 Fix: unlayer the rule, or declare your own layer after `fui.utilities`:
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities, app;
+@layer fui.theme, fui.base, fui.components, fui.utilities, app;
 ```
 
 **How to tell Cause 1 from Cause 2 in ten seconds.** Do not reason about it — look. DevTools' Styles

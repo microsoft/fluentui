@@ -180,7 +180,7 @@ you drop one onto a coloured surface it repaints that surface — set `backgroun
 utilities beat Fluent component styles:
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 ```
 
@@ -277,11 +277,11 @@ Overriding a component is a one-class rule with no `!important` and no specifici
 The declared layer order, which the theme package owns:
 
 ```css
-@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
   fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
-- `fui.preflight` — Tailwind's preflight, alone and lowest; every authored rule outranks it
+- `fui.base` — opens with Tailwind's preflight, then the theme's element resets (icon defaults); every component rule outranks both
 - `fui.components.l1` — every component's own base styles (Button, Label, Input; also a
   composition's rules for its own plain elements)
 - `fui.components.l2` — rules overriding another component's `l1` styles (ToggleButton over Button)
@@ -520,9 +520,9 @@ show up in tests.
 - **Tailwind's default theme is removed.** The theme sets `--color-*`, `--font-*`, `--text-*`,
   `--radius-*`, `--shadow-*` and more to `initial`. A stray `text-red-500` or `rounded-lg` fails the
   build rather than diverging from Fluent. Structural utilities (flex, grid, positioning) remain.
-- **Preflight ships, in the lowest layer.** The theme includes Tailwind's preflight in
-  `fui.preflight`, first in the `@layer` order statement — below everything, so every authored rule
-  (the library's and yours, layered or not) outranks it by construction. It is document-global:
+- **Preflight ships, at the head of `fui.base`.** The theme includes Tailwind's preflight as the
+  first content of `fui.base` — the same placement Tailwind itself gives it — below every component
+  layer, so every component rule (and yours, layered above or unlayered) outranks it. It is document-global:
   markup of your own that relied on UA default styling (heading sizes, list markers, button font,
   default margins) should be re-checked. Utilities still reach you only inlined through the
   components' own `@apply`, unless you run Tailwind yourself.
