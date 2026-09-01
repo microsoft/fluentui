@@ -351,6 +351,17 @@ adding a `content` anywhere.
 Kebab-case theme tokens only. Never hardcode a palette value — compare against the Griffel source to
 find the right token.
 
+### Line-height never rides without font-size
+
+- Never author a `leading-*` without a `text-*` on the same element. A leading token is a length
+  designed against one font-size step; authored alone it welds the element's line box to whatever
+  font-size inheritance delivers. `leading-[0]` is the one exemption — zero computes the same
+  against any font-size (Spinner's root, matching Griffel's bare `lineHeight: 0`).
+- Native interactive elements (`button`, `input`, `select`, `textarea`) author their `text-*` step
+  even when nothing in the box visibly depends on it. Preflight resets them to `font: inherit`, so
+  the component declares its metrics rather than riding the surrounding context — `Tab.module.css`
+  and `InfoButton.module.css` roots are the precedent.
+
 ### Transition-property parity
 
 Spell `transition-property` **exactly as the Griffel source authors it** — shorthands and order

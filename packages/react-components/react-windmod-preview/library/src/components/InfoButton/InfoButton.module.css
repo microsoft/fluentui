@@ -10,7 +10,7 @@
        suppressed here. Resting placement is one of the two spellings this package uses; the other
        authors the same reset inside a `@variant focus` block. Both suppress the ring in every state
        the user agent draws it. */
-    @apply relative m-0 box-border inline-flex items-center justify-center rounded-medium border-none bg-transparent-background px-horizontal-xs py-vertical-xs align-middle text-neutral-foreground-2 no-underline outline-none;
+    @apply relative m-0 box-border inline-flex items-center justify-center rounded-medium border-none bg-transparent-background px-horizontal-xs py-vertical-xs align-middle text-base-300 text-neutral-foreground-2 no-underline outline-none;
 
     /* The glyphs are this root's direct children — InfoButton has no icon slot. */
     @variant icon-filled {
