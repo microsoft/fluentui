@@ -8,6 +8,7 @@ export { ShorthandPositions } from './PositioningShorthandPositions.stories';
 export { Offset } from './PositioningOffset.stories';
 export { CoverTarget } from './PositioningCoverTarget.stories';
 export { MatchTargetSize } from './PositioningMatchTargetSize.stories';
+export { AutoSize } from './PositioningAutoSize.stories';
 export { FallbackPositions } from './PositioningFallbackPositions.stories';
 export { FlippingBlock } from './PositioningFlippingBlock.stories';
 export { FlippingInline } from './PositioningFlippingInline.stories';

@@ -10,17 +10,24 @@ import { computePosition, debounce } from './utils';
  * or content reflow — consumers can style the surface (arrows, animations)
  * via `[data-placement^="above"]` and friends and stay in sync.
  *
+ * @param onUpdate - Invoked on every tick, before the placement read-back. Lets other positioning
+ * concerns reuse this observer's listeners instead of registering their own. Called before the
+ * read-back bails so that it still runs when the surface overlaps its anchor and no placement can
+ * be detected.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
   targetEl: HTMLElement | null,
   targetDocument: Document | undefined,
   disabled = false,
+  onUpdate?: () => void,
 ): () => void {
   const update = useEventCallback(() => {
     if (!containerEl || !targetEl) {
       return;
     }
+
+    onUpdate?.();
 
     const result = computePosition(targetEl, containerEl);
     if (!result) {
