@@ -14,3 +14,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
   return state;
 };
+
+/**
+ * Returns the value from the nearest Avatar context.
+ */
+export { useAvatarContext } from '@fluentui/react-avatar';
