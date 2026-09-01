@@ -230,9 +230,12 @@ rather than as a selectable option.
 
 v8 `onItemSelected` could synchronously or asynchronously transform an item,
 or reject it by returning `null`. Preserve that policy before updating
-`selectedOptions`, as `validateAndTransform` does above. Sequence validation
-requests too, and surface a validation error in the surrounding `Field` when
-rejection needs explanation.
+`selectedOptions`, as `validateAndTransform` does above. Validate each
+candidate independently; do not use one global latest-request-wins sequence,
+because a later independent selection must not discard an earlier accepted
+candidate. Reconcile accepted candidates with a functional state update that
+checks duplicates and `itemLimit`. Surface a validation error in the
+surrounding `Field` when rejection needs explanation.
 
 ## Prop Mapping
 
