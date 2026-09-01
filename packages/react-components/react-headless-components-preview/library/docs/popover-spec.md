@@ -178,23 +178,59 @@ Placement is handled entirely by the `usePositioning` hook, which writes native 
 
 ### Options (all optional)
 
-| Option              | Type                                                  | Default      | Effect                                                                                                                                                                               |
-| ------------------- | ----------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `position`          | `'above' \| 'below' \| 'before' \| 'after'`           | `'above'`    | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized.                                                                           |
-| `align`             | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'`   | `'center'`   | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases).                                                                                                                |
-| `offset`            | `number \| { mainAxis?: number; crossAxis?: number }` | `0`          | Logical-margin offset from the anchor.                                                                                                                                               |
-| `fallbackPositions` | `PositioningShorthandValue[]`                         | `[]`         | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`.                                                                      |
-| `coverTarget`       | `boolean`                                             | `false`      | Overlap the anchor instead of sitting beside it.                                                                                                                                     |
-| `pinned`            | `boolean`                                             | `false`      | Disable fallback flipping; surface stays at the requested placement even if it overflows.                                                                                            |
-| `matchTargetSize`   | `'width'`                                             | —            | Sets the surface's `width` to `anchor-size(width)`.                                                                                                                                  |
-| `strategy`          | `'fixed' \| 'absolute'`                               | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
-| `target`            | `HTMLElement \| RefObject`                            | —            | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                                                    |
-| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —            | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates.                                                                    |
+| Option              | Type                                                  | Default     | Effect                                                                                                                                                                                                                                               |
+| ------------------- | ----------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `position`          | `'above' \| 'below' \| 'before' \| 'after'`           | `'above'`   | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized.                                                                                                                                           |
+| `align`             | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'`   | `'center'`  | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases).                                                                                                                                                                                |
+| `offset`            | `number \| { mainAxis?: number; crossAxis?: number }` | `0`         | Logical-margin offset from the anchor.                                                                                                                                                                                                               |
+| `fallbackPositions` | `PositioningShorthandValue[]`                         | `[]`        | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`.                                                                                                                                      |
+| `coverTarget`       | `boolean`                                             | `false`     | Overlap the anchor instead of sitting beside it.                                                                                                                                                                                                     |
+| `pinned`            | `boolean`                                             | `false`     | Disable fallback flipping; surface stays at the requested placement even if it overflows.                                                                                                                                                            |
+| `matchTargetSize`   | `'width'`                                             | —           | Sets the surface's `width` to `anchor-size(width)`.                                                                                                                                                                                                  |
+| `strategy`          | `'fixed' \| 'absolute'`                               | `'fixed'`   | CSS `position` property value on the surface. Defaults to `'fixed'` because the surface is promoted to the top layer, where it must escape transformed / `contain: layout` ancestors. Use `'absolute'` only for a surface that stays in normal flow. |
+| `target`            | `HTMLElement \| RefObject`                            | —           | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                                                                                                                    |
+| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —           | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates.                                                                                                                                    |
+| `engine`            | `'default' \| PositioningEngine`                      | `'default'` | Which positioning implementation places the surface. See _Positioning engines_ below.                                                                                                                                                                |
+
+### Positioning engines
+
+Placement is performed by an _engine_. The default engine uses native CSS anchor positioning and is
+what every surface gets unless `positioning.engine` says otherwise.
+
+CSS anchor positioning cannot express everything the canonical positioning contract offers — it
+flips between discrete fallbacks rather than sliding, and it needs a real DOM node to anchor to. A
+consumer who needs those behaviours supplies a JavaScript engine:
+
+```tsx
+import { usePositioning } from '@fluentui/react-positioning';
+
+<Menu positioning={{ autoSize: 'height', engine: usePositioning }} />;
+```
+
+`usePositioning` satisfies the engine contract directly — this library ships no adapter, and nothing
+in its default entry points references a JavaScript positioner, so bundles that do not supply one
+contain no positioning library. That guarantee is enforced by the package's bundle isolation check.
+
+Options unsupported by the default engine are rejected at compile time unless an engine is
+supplied, so `positioning={{ autoSize: 'height' }}` does not silently do nothing.
+
+Notes:
+
+- **The engine is passed uncalled and invoked by the component**, with options the component has
+  already merged. Configuration a component derives internally — a submenu's placement, a
+  pointer-derived context target — therefore reaches the engine without the consumer restating it.
+- **The engine's identity must be stable** for the lifetime of the component instance, because it is
+  invoked as a hook. Pass a module-scope import, not an inline function — changing it mid-life fails
+  as a React hook-order error.
+- **Two concerns stay with the component regardless of engine**, because they belong to the surface
+  rather than the positioner: the top-layer `inset`/`margin` reset, and reporting resolved placement
+  through `data-placement`. Consumer styling keyed on placement keeps working across engines.
+- Consumers supplying `@fluentui/react-positioning` need it in their own dependencies.
 
 ### Rendering
 
 - The hook writes `anchor-name: --popover-anchor-<id>` on the anchor (trigger or custom target) via `useIsomorphicLayoutEffect`.
-- On the surface it writes `position: absolute` (or `fixed` if `strategy: 'fixed'`); `inset: auto; margin: 0; position-anchor: --popover-anchor-<id>; position-area: <value>; position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline`. The `inset: auto; margin: 0` reset is required because the UA popover stylesheet sets `inset: 0; margin: auto`, which fights `position-area`.
+- On the surface it writes `position: fixed` (or `absolute` if `strategy: 'absolute'`); `inset: auto; margin: 0; position-anchor: --popover-anchor-<id>; position-area: <value>; position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline`. The `inset: auto; margin: 0` reset is required because the UA popover stylesheet sets `inset: 0; margin: auto`, which fights `position-area`.
 - For center alignment, the hook also writes `place-self: anchor-center` as a workaround for https://crbug.com/438334710 (Chromium <=130 doesn't reliably apply the implicit anchor-center self-alignment to single-keyword `position-area` values).
 - `data-placement` is set to the requested placement and then live-updated by `usePlacementObserver` (ResizeObserver + scroll listener) to reflect the browser's post-flip decision.
 

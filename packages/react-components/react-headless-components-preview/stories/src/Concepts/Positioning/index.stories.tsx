@@ -12,6 +12,7 @@ export { FallbackPositions } from './PositioningFallbackPositions.stories';
 export { FlippingBlock } from './PositioningFlippingBlock.stories';
 export { FlippingInline } from './PositioningFlippingInline.stories';
 export { FlippingCorner } from './PositioningFlippingCorner.stories';
+export { Engine } from './PositioningEngine.stories';
 
 export default {
   title: 'Concepts/Positioning',
