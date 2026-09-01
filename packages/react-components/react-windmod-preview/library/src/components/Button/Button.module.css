@@ -95,7 +95,7 @@
   }
 
   .icon {
-    @apply inline-flex size-20 items-center justify-center text-icon-20;
+    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[calc(20/20)];
 
     --fui-button-icon-spacing: calc(6px * var(--base-scale));
 
@@ -110,13 +110,13 @@
     }
 
     @variant group-size-small/fui-button {
-      @apply size-20 text-icon-20;
+      @apply size-20 text-icon-20 leading-[calc(16/20)];
 
       --fui-button-icon-spacing: calc(4px * var(--base-scale));
     }
 
     @variant group-size-large/fui-button {
-      @apply size-24 text-icon-24;
+      @apply size-24 text-icon-24 leading-[calc(22/24)];
 
       --fui-button-icon-spacing: calc(6px * var(--base-scale));
     }

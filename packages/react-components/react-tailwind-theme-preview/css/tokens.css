@@ -26,11 +26,12 @@
  * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes
  * carry identical values.
  *
- * The type ramp (--text-* and its paired --leading-*) carries the same literal
- * calc(<px> * var(--base-scale)) form as stroke widths: type follows the root font size,
- * not the --spacing density knob. Both halves scale together so the line-box ratio holds
- * at any root size. Line heights stay LENGTHS rather than the idiomatic unitless ratio
- * because line-height inherits — see the generator source for the measurements.
+ * Font sizes (--text-*) carry the same literal calc(<px> * var(--base-scale)) form as
+ * stroke widths: type follows the root font size, not the --spacing density knob. Their
+ * paired line heights (--leading-*) are UNITLESS RATIOS of the ramp pairing (Decision U:
+ * --leading-base-300 = 20px/14px = calc(20 / 14)) — the ratio multiplies the element’s
+ * own font-size, which already rides base-scale, so line boxes scale for free. They are
+ * theme-invariant (ramp asserted identical across themes) and emitted below, not per theme.
  * Shadow offsets and blur radii ride the base-scale axis, so an elevation
  * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner
  * radius is a fixed design constant, not a function of the root font size.
@@ -446,7 +447,7 @@
   --font-weight-semibold: var(--font-weight-semibold);
   --font-weight-bold: var(--font-weight-bold);
 
-  /* Line heights — 10 tokens → --leading-* (leading-*) */
+  /* Line heights — UNITLESS ratios of the paired font sizes — 10 tokens → --leading-* (leading-*) */
   --leading-base-100: var(--leading-base-100);
   --leading-base-200: var(--leading-base-200);
   --leading-base-300: var(--leading-base-300);
@@ -638,5 +639,23 @@
     --spacing-vertical-xl: calc(var(--spacing) * 20);
     --spacing-vertical-xxl: calc(var(--spacing) * 24);
     --spacing-vertical-xxxl: calc(var(--spacing) * 32);
+
+    /*
+     * Line heights — UNITLESS ratios of the 1:1 ramp pairing (Decision U), derived at
+     * generation time (--leading-base-300 = 20px/14px). Theme-INVARIANT: the type ramp
+     * is asserted byte-identical across all shipped themes, so these live in the base
+     * sheet, not the per-theme files. No --base-scale factor — the paired --text-*
+     * carries it, and a ratio multiplies the element’s own computed font-size.
+     */
+    --leading-base-100: 1.4;
+    --leading-base-200: calc(16 / 12);
+    --leading-base-300: calc(20 / 14);
+    --leading-base-400: 1.375;
+    --leading-base-500: 1.4;
+    --leading-base-600: calc(32 / 24);
+    --leading-hero-700: calc(36 / 28);
+    --leading-hero-800: 1.25;
+    --leading-hero-900: 1.3;
+    --leading-hero-1000: calc(92 / 68);
   }
 }

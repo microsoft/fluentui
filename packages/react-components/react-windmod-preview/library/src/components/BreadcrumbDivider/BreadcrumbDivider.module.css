@@ -2,14 +2,14 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex text-icon-16;
+    @apply flex text-icon-16 leading-[calc(20/16)];
 
     @variant size-small {
-      @apply text-icon-12;
+      @apply text-icon-12 leading-[calc(20/12)];
     }
 
     @variant size-large {
-      @apply text-icon-20;
+      @apply text-icon-20 leading-[calc(20/20)];
     }
   }
 }

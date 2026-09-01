@@ -371,10 +371,10 @@
   }
 
   .icon {
-    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-icon-20;
+    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-icon-20 leading-[calc(20/20)];
 
     @variant group-size-large/fui-tab {
-      @apply size-24 text-icon-24;
+      @apply size-24 text-icon-24 leading-[calc(20/24)];
     }
 
     @variant group-appearance-transparent/fui-tab, group-appearance-subtle/fui-tab {

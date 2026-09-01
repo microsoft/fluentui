@@ -138,12 +138,12 @@
   }
 
   .label {
-    --fui-switch-label-offset: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
+    --fui-switch-label-offset: calc((20px * var(--base-scale) - var(--text-base-300) * var(--leading-base-300)) / 2);
 
     @apply my-(--fui-switch-label-offset) cursor-pointer px-horizontal-s py-vertical-s font-base text-base-300 leading-base-300 text-neutral-foreground-1;
 
     @variant group-size-small/fui-switch {
-      --fui-switch-label-offset: calc((16px * var(--base-scale) - var(--leading-base-200)) / 2);
+      --fui-switch-label-offset: calc((16px * var(--base-scale) - var(--text-base-200) * var(--leading-base-200)) / 2);
 
       @apply text-base-200 leading-base-200;
     }

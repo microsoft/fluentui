@@ -31,7 +31,7 @@
     }
 
     @variant group-size-large/fui-breadcrumb-button {
-      @apply size-20 text-icon-20 leading-base-600;
+      @apply size-20 text-icon-20 leading-[calc(32/20)];
     }
 
     /* A current entry is not an affordance, so it undoes Button's interactive glyph swap as

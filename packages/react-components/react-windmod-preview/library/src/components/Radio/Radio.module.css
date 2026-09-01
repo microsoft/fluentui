@@ -30,7 +30,7 @@
   }
 
   .indicator {
-    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12;
+    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-[calc(20/12)];
 
     /* Raw pseudo, never Tailwind's `after` variant: the variant injects
        `content: var(--tw-content)`, whose registered initial value renders the dot in every
@@ -115,7 +115,7 @@
     @apply self-center px-horizontal-s py-vertical-s font-base text-base-300 leading-base-300 text-neutral-foreground-1;
 
     @variant group-label-after/fui-radio {
-      --fui-radio-label-offset: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
+      --fui-radio-label-offset: calc((16px * var(--base-scale) - var(--text-base-300) * var(--leading-base-300)) / 2);
 
       @apply my-(--fui-radio-label-offset) ps-horizontal-xs;
     }

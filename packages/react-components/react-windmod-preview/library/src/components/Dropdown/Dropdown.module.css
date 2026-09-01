@@ -179,17 +179,34 @@
     }
 
     @variant group-size-small/fui-dropdown {
-      @apply ms-horizontal-xxs text-icon-16;
+      @apply ms-horizontal-xxs text-icon-16 leading-[calc(16/16)];
     }
 
     @variant group-size-medium/fui-dropdown {
-      @apply ms-horizontal-xxs text-icon-20;
+      @apply ms-horizontal-xxs text-icon-20 leading-[calc(20/20)];
     }
 
     /* The 24px glyph is what makes the large field 40px tall: lineHeightBase400 is 22px, and the
        icon shares the button's grid row under align-items: center. */
     @variant group-size-large/fui-dropdown {
-      @apply ms-horizontal-s-nudge text-icon-24;
+      @apply ms-horizontal-s-nudge text-icon-24 leading-[calc(22/24)];
+    }
+
+    /* The ratios above divide the TRIGGER's per-size line box, which is what the chevron (a grid
+       item of the button) inherits. The clear slot is a button-element flex child of the ROOT,
+       whose line box is 20px at every size, so its ratios divide 20 instead. */
+    &:is(button) {
+      @variant group-size-small/fui-dropdown {
+        @apply leading-[calc(20/16)];
+      }
+
+      @variant group-size-medium/fui-dropdown {
+        @apply leading-[calc(20/20)];
+      }
+
+      @variant group-size-large/fui-dropdown {
+        @apply leading-[calc(20/24)];
+      }
     }
 
     @variant group-disabled/fui-dropdown {

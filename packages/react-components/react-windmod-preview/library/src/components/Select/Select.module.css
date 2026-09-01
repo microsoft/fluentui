@@ -109,7 +109,7 @@
   }
 
   .icon {
-    @apply pointer-events-none absolute end-horizontal-m-nudge box-border block size-20 text-icon-20 text-neutral-stroke-accessible;
+    @apply pointer-events-none absolute end-horizontal-m-nudge box-border block size-20 text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;
@@ -124,11 +124,11 @@
     }
 
     @variant group-size-small/fui-select {
-      @apply end-horizontal-s-nudge size-16 text-icon-16;
+      @apply end-horizontal-s-nudge size-16 text-icon-16 leading-[calc(20/16)];
     }
 
     @variant group-size-large/fui-select {
-      @apply end-horizontal-m size-24 text-icon-24;
+      @apply end-horizontal-m size-24 text-icon-24 leading-[calc(20/24)];
     }
   }
 }

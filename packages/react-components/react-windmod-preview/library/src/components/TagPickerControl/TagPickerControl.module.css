@@ -133,15 +133,15 @@
     }
 
     @variant group-size-medium/fui-tag-picker-control {
-      @apply ms-horizontal-xxs min-h-32 text-icon-16;
+      @apply ms-horizontal-xxs min-h-32 text-icon-16 leading-[calc(20/16)];
     }
 
     @variant group-size-large/fui-tag-picker-control {
-      @apply ms-horizontal-xxs min-h-40 text-icon-20;
+      @apply ms-horizontal-xxs min-h-40 text-icon-20 leading-[calc(20/20)];
     }
 
     @variant group-size-extra-large/fui-tag-picker-control {
-      @apply ms-horizontal-s-nudge min-h-44 text-icon-24;
+      @apply ms-horizontal-s-nudge min-h-44 text-icon-24 leading-[calc(20/24)];
     }
 
     @variant group-disabled/fui-tag-picker-control {

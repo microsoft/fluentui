@@ -15,7 +15,7 @@
   }
 
   .subtitle {
-    @apply col-start-2 col-end-3 pt-vertical-xs text-base-200 leading-(--text-base-200) font-regular text-neutral-foreground-2;
+    @apply col-start-2 col-end-3 pt-vertical-xs text-base-200 leading-[1] font-regular text-neutral-foreground-2;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted-2;

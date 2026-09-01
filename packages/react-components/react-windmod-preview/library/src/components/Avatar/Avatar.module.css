@@ -33,23 +33,23 @@
   }
 
   .text-caption-2-strong {
-    @apply text-base-100;
+    @apply text-base-100 leading-[calc(20/10)];
   }
 
   .text-caption-1-strong {
-    @apply text-base-200;
+    @apply text-base-200 leading-[calc(20/12)];
   }
 
   .text-subtitle-2 {
-    @apply text-base-400;
+    @apply text-base-400 leading-[calc(20/16)];
   }
 
   .text-subtitle-1 {
-    @apply text-base-500;
+    @apply text-base-500 leading-[calc(20/20)];
   }
 
   .text-title-3 {
-    @apply text-base-600;
+    @apply text-base-600 leading-[calc(20/24)];
   }
 
   .square-small {

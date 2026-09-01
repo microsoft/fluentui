@@ -161,14 +161,14 @@
   }
 
   .icon {
-    @apply absolute flex self-center text-icon-20;
+    @apply absolute flex self-center text-icon-20 leading-[calc(20/20)];
 
     @variant group-size-extra-small/fui-color-swatch, group-size-small/fui-color-swatch {
-      @apply text-icon-16;
+      @apply text-icon-16 leading-[calc(20/16)];
     }
 
     @variant group-size-large/fui-color-swatch {
-      @apply text-icon-24;
+      @apply text-icon-24 leading-[calc(20/24)];
     }
   }
 

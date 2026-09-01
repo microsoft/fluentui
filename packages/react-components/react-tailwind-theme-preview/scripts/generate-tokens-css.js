@@ -280,6 +280,46 @@ function baseScaledValue(tokenName, value) {
 }
 
 /**
+ * The unitless line-height ratio for a `lineHeight*` token: canonical ramp px divided by the
+ * 1:1-paired `fontSize*` token's px (Decision U — see the lineHeight NAMESPACES entry).
+ *
+ * Emits an exact decimal when the division is finite (`22px / 16px` → `1.375`) and an exact
+ * `calc(A / B)` fraction when it repeats (`20px / 14px` → `calc(20 / 14)`) — a rounded decimal
+ * would be a silent visual change, and calc division is exact by construction. Finiteness is
+ * decided arithmetically: the reduced fraction's denominator must factor into 2s and 5s only.
+ *
+ * @param {string} tokenName      the lineHeight token, for errors
+ * @param {string} lineHeightValue raw theme value, e.g. `20px`
+ * @param {string} fontSizeValue   the paired fontSize token's raw theme value, e.g. `14px`
+ * @returns {string}
+ */
+function unitlessLeadingValue(tokenName, lineHeightValue, fontSizeValue) {
+  const parsePx = (value, role) => {
+    const match = /^(\d+)px$/.exec(value);
+    if (!match) {
+      throw new Error(
+        `Token \`${tokenName}\`: ${role} value \`${value}\` is not an integer px length — ` +
+          'the unitless ratio derivation only understands the integer-px type ramp.',
+      );
+    }
+    return Number(match[1]);
+  };
+
+  const lineHeightPx = parsePx(lineHeightValue, 'line-height');
+  const fontSizePx = parsePx(fontSizeValue, 'paired font-size');
+  if (fontSizePx === 0) {
+    throw new Error(`Token \`${tokenName}\`: paired font-size is 0px — cannot form a ratio.`);
+  }
+
+  const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+  let denominator = fontSizePx / gcd(lineHeightPx, fontSizePx);
+  while (denominator % 2 === 0) denominator /= 2;
+  while (denominator % 5 === 0) denominator /= 5;
+
+  return denominator === 1 ? String(lineHeightPx / fontSizePx) : `calc(${lineHeightPx} / ${fontSizePx})`;
+}
+
+/**
  * A shadow theme value with every LENGTH rewritten onto the `--base-scale` axis, leaving the
  * colour components untouched: `0 1px 2px rgba(0, 0, 0, .14)` →
  * `0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, .14)`.
@@ -511,11 +551,17 @@ function readThemeValues() {
  * - every theme's spacing/stroke values must equal the pinned scales — those 26 tokens
  *   are THEME-INVARIANT and already emitted at `:root, :host` in their density-knob
  *   calc form, which a literal per-theme re-emission would silently break, so they are
- *   asserted identical and EXCLUDED from the per-theme classes.
+ *   asserted identical and EXCLUDED from the per-theme classes;
+ * - every theme's lineHeight values AND their 1:1-paired fontSize values must be
+ *   byte-identical across themes — the unitless `--leading-*` ratios (Decision U) are
+ *   derived from the pairing and emitted ONCE at `:root, :host` in the base sheet, so a
+ *   theme with a divergent ramp needs a design decision, not a silently wrong shared ratio.
+ *   They are likewise EXCLUDED from the per-theme classes.
  *
  * @param {{ name: string, value: string }[]} tokens parsed tokens.ts entries
  * @returns {{
  *   variantTokens: { name: string, canonical: string, scaleValue: ((tokenName: string, value: string) => string) | null }[],
+ *   leadingTokens: { name: string, canonical: string, value: string }[],
  *   themes: Record<string, Record<string, string>>,
  *   classNames: Record<string, string>,
  * }}
@@ -541,6 +587,8 @@ function analyzeThemeEmission(tokens) {
   const invariantTokens = [];
   /** @type {string[]} */
   const themeAbsentTokens = [];
+  /** @type {{ name: string, canonical: string, fontSizeName: string, value: string }[]} */
+  const leadingTokens = [];
 
   for (const { name } of tokens) {
     const classification = classify(name);
@@ -552,6 +600,13 @@ function analyzeThemeEmission(tokens) {
       invariantTokens.push({ name, expected: px === 0 ? '0' : `${px}px` });
     } else if (classification.group.prefix === 'zIndex') {
       themeAbsentTokens.push(name);
+    } else if (classification.group.unitlessRatio === true) {
+      leadingTokens.push({
+        name,
+        canonical: /** @type {string} */ (classification.canonical),
+        fontSizeName: `fontSize${name.slice(classification.group.prefix.length)}`,
+        value: '', // derived below, once the themes are proven to agree
+      });
     } else {
       variantTokens.push({
         name,
@@ -564,7 +619,11 @@ function analyzeThemeEmission(tokens) {
     }
   }
 
-  const expectedKeys = [...variantTokens.map(token => token.name), ...invariantTokens.map(token => token.name)].sort();
+  const expectedKeys = [
+    ...variantTokens.map(token => token.name),
+    ...invariantTokens.map(token => token.name),
+    ...leadingTokens.map(token => token.name),
+  ].sort();
 
   for (const [themeName, theme] of Object.entries(themes)) {
     const themeKeys = Object.keys(theme).sort();
@@ -594,7 +653,34 @@ function analyzeThemeEmission(tokens) {
     }
   }
 
-  return { variantTokens, themes, classNames };
+  // Unitless leading ratios (Decision U): prove the whole pairing is theme-invariant —
+  // BOTH halves, since a ratio derived from theme A silently misdescribes a theme whose
+  // line-height OR font-size diverges — then derive each ratio once.
+  const themeEntries = Object.entries(themes);
+  const [referenceThemeName, referenceTheme] = themeEntries[0];
+  for (const token of leadingTokens) {
+    if (!(token.fontSizeName in referenceTheme)) {
+      throw new Error(
+        `Token \`${token.name}\` has no 1:1-paired \`${token.fontSizeName}\` in the theme snapshot — ` +
+          'the unitless ratio derivation depends on the ramp pairing.',
+      );
+    }
+    for (const [themeName, theme] of themeEntries) {
+      for (const key of [token.name, token.fontSizeName]) {
+        if (theme[key] !== referenceTheme[key]) {
+          throw new Error(
+            `Theme \`${themeName}\` has \`${key}: ${theme[key]}\` but \`${referenceThemeName}\` has ` +
+              `\`${referenceTheme[key]}\`. The type ramp must be theme-invariant for the shared unitless ` +
+              '`--leading-*` ratios in the base sheet to be correct — a genuinely divergent ramp needs a ' +
+              'design decision, not a silently wrong shared ratio.',
+          );
+        }
+      }
+    }
+    token.value = unitlessLeadingValue(token.name, referenceTheme[token.name], referenceTheme[token.fontSizeName]);
+  }
+
+  return { variantTokens, leadingTokens, themes, classNames };
 }
 
 /**
@@ -642,31 +728,30 @@ const NAMESPACES = [
     prefix: 'lineHeight',
     namespace: 'leading',
     utility: 'leading-*',
-    heading: 'Line heights',
-    // Line heights pair 1:1 with the font sizes above and must ride the same axis:
-    // a scaled --text-base-300 against a fixed --leading-base-300 collapses the
-    // line-box ratio (1.43 → 1.14 at a 20px root), and the hero steps clip.
+    heading: 'Line heights — UNITLESS ratios of the paired font sizes',
+    // UNITLESS RATIOS — Decision U (2026-08-28), superseding the earlier px-length rejection.
+    // --------------------------------------------------------------------------------------
+    // Each `--leading-*` is the idiomatic unitless line-height: the ramp's canonical px
+    // divided by its 1:1-paired font size (`--leading-base-300` = 20px/14px = calc(20 / 14)).
+    // Ratios are DERIVED from theme-values.json at generation time, never hardcoded — an
+    // exact decimal where the division is finite, a `calc(A / B)` fraction where it repeats.
+    // No `--base-scale` factor: the paired `--text-*` carries base-scale, and a ratio
+    // multiplies the element's own computed font-size, so line boxes scale with it for free.
     //
-    // WHY THESE ARE LENGTHS AND NOT THE IDIOMATIC UNITLESS RATIO
-    // ----------------------------------------------------------
-    // A unitless line-height is the usual CSS answer and needs no --base-scale, since it
-    // multiplies the element's own font-size. Two forms of it were implemented and measured
-    // against the px ramp, and both were REJECTED. The blocker is inheritance, not authoring:
-    // `line-height` inherits, so a root setting `text-base-300 leading-base-300` hands its whole
-    // subtree a COMPUTED 20px line box whatever each descendant's own font-size is. A ratio
-    // inherits as a NUMBER instead, so every descendant re-multiplies by its own size.
+    // The lane-D measurement that previously rejected this (1323 elements changing used
+    // value, because `line-height` inherits a ratio as a NUMBER where a length inherited a
+    // fixed px line box) still holds mechanically — it is COMPENSATED in the windmod
+    // modules: every rule whose descendants relied on inheriting a px line box authors its
+    // own explicit ratio paired against its authored font-size (lane-D's rule-surface map,
+    // .scratch/leading-shadow/rule-surface.txt). The one cohort that BLOCKED per-site
+    // ratios — Tab's root dividing by Chrome's UA <button> font-size, an engine constant —
+    // was dissolved when preflight (S1) + explicit font-size authoring (S2) gave every
+    // leading site an authored `text-*` step, making every denominator a token.
     //
-    //   global token swap  — 1323 elements across the 91-scene VR corpus change used value.
-    //   per-site ratios    — feasible and exact IN CHROME (1323/1323 verified), but it costs 73
-    //                        explicit `ancestorLineHeight / ownFontSize` ratios across ~24
-    //                        components, and the largest cohort (184 elements, Tab's root, which
-    //                        authors no font-size) would have to divide by Chrome's UA <button>
-    //                        default of 13.3333px — a user-agent constant, not a token. The px
-    //                        form is engine-invariant there; a ratio is not.
-    //
-    // Probes: .scratch/leading-shadow/{lineheight-probe,mismatch-signatures,partition-probe,
-    // ratio-exactness-probe,rule-surface-probe}.mjs.
-    baseScaled: true,
+    // THEME-INVARIANT: the type ramp is asserted byte-identical across all shipped themes
+    // (analyzeThemeEmission), so the ratios are emitted ONCE at `:root, :host` in the base
+    // sheet rather than per theme file. `unitlessRatio` routes them there.
+    unitlessRatio: true,
   },
   {
     prefix: 'spacingHorizontal',
@@ -900,9 +985,10 @@ function render(options = {}) {
   readSpacingScale();
   readStrokeWidthScale();
   // Theme-VARIANT values are NOT emitted here — they ship one file per theme under
-  // `css/themes/` (see NO DEFAULT THEME at the top). `analyzeThemeEmission` still runs for
-  // its assertions: it is what proves the spacing/stroke set below really is invariant.
-  analyzeThemeEmission(tokens);
+  // `css/themes/` (see NO DEFAULT THEME at the top). `analyzeThemeEmission` runs for its
+  // assertions — it is what proves the spacing/stroke set below really is invariant — and
+  // yields the theme-invariant unitless `--leading-*` ratios this sheet owns (Decision U).
+  const { leadingTokens } = analyzeThemeEmission(tokens);
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
@@ -1022,11 +1108,12 @@ function render(options = {}) {
   out.push(' * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes');
   out.push(' * carry identical values.');
   out.push(' *');
-  out.push(' * The type ramp (--text-* and its paired --leading-*) carries the same literal');
-  out.push(' * calc(<px> * var(--base-scale)) form as stroke widths: type follows the root font size,');
-  out.push(' * not the --spacing density knob. Both halves scale together so the line-box ratio holds');
-  out.push(' * at any root size. Line heights stay LENGTHS rather than the idiomatic unitless ratio');
-  out.push(' * because line-height inherits — see the generator source for the measurements.');
+  out.push(' * Font sizes (--text-*) carry the same literal calc(<px> * var(--base-scale)) form as');
+  out.push(' * stroke widths: type follows the root font size, not the --spacing density knob. Their');
+  out.push(' * paired line heights (--leading-*) are UNITLESS RATIOS of the ramp pairing (Decision U:');
+  out.push(' * --leading-base-300 = 20px/14px = calc(20 / 14)) — the ratio multiplies the element’s');
+  out.push(' * own font-size, which already rides base-scale, so line boxes scale for free. They are');
+  out.push(' * theme-invariant (ramp asserted identical across themes) and emitted below, not per theme.');
   out.push(' * Shadow offsets and blur radii ride the base-scale axis, so an elevation');
   out.push(' * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner');
   out.push(' * radius is a fixed design constant, not a function of the root font size.');
@@ -1059,7 +1146,10 @@ function render(options = {}) {
 
   out.push('}');
 
-  if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length > 0) {
+  /** Theme-invariant unitless leading ratios (Decision U). @type {string[]} */
+  const leadingLines = leadingTokens.map(token => `    ${token.canonical}: ${token.value};`);
+
+  if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length + leadingLines.length > 0) {
     out.push('');
     out.push('/*');
     out.push(' * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.');
@@ -1115,6 +1205,15 @@ function render(options = {}) {
     out.push('');
     out.push('    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */');
     out.push(...emittedVariables);
+    out.push('');
+    out.push('    /*');
+    out.push('     * Line heights — UNITLESS ratios of the 1:1 ramp pairing (Decision U), derived at');
+    out.push('     * generation time (--leading-base-300 = 20px/14px). Theme-INVARIANT: the type ramp');
+    out.push('     * is asserted byte-identical across all shipped themes, so these live in the base');
+    out.push('     * sheet, not the per-theme files. No --base-scale factor — the paired --text-*');
+    out.push('     * carries it, and a ratio multiplies the element’s own computed font-size.');
+    out.push('     */');
+    out.push(...leadingLines);
     out.push('  }');
     out.push('}');
   }
@@ -1425,6 +1524,7 @@ module.exports = {
   renderThemesAggregate,
   themeFileStem,
   spacingTokenValue,
+  unitlessLeadingValue,
   strokeWidthValue,
   strokeWidthCanonicalName,
   strokeWidthCanonicalValue,

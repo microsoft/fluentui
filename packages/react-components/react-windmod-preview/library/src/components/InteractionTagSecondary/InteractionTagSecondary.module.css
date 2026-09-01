@@ -25,15 +25,15 @@
     }
 
     @variant size-medium {
-      @apply px-5 text-icon-20;
+      @apply px-5 text-icon-20 leading-[calc(20/20)];
     }
 
     @variant size-small {
-      @apply px-3 text-icon-16;
+      @apply px-3 text-icon-16 leading-[calc(20/16)];
     }
 
     @variant size-extra-small {
-      @apply relative px-5 text-icon-12;
+      @apply relative px-5 text-icon-12 leading-[calc(20/12)];
 
       @variant not-forced-colors {
         @variant before, after {

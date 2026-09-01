@@ -19,7 +19,7 @@
   }
 
   .media {
-    @apply col-end-2 flex pe-horizontal-s pt-vertical-xxs text-icon-16 text-neutral-foreground-1;
+    @apply col-end-2 flex pe-horizontal-s pt-vertical-xxs text-icon-16 leading-[calc(20/16)] text-neutral-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted;

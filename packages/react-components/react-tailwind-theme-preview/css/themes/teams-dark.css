@@ -6,7 +6,7 @@
  * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
  * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
  *
- * teamsDarkTheme — 433 custom properties, nothing else.
+ * teamsDarkTheme — 423 custom properties, nothing else.
  *
  * Import this file and apply `.fui-theme-teams-dark` to theme a subtree. There is no
  * default theme: without a theme file + class, these variables are unset (Griffel
@@ -417,16 +417,6 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    --leading-base-100: calc(14px * var(--base-scale));
-    --leading-base-200: calc(16px * var(--base-scale));
-    --leading-base-300: calc(20px * var(--base-scale));
-    --leading-base-400: calc(22px * var(--base-scale));
-    --leading-base-500: calc(28px * var(--base-scale));
-    --leading-base-600: calc(32px * var(--base-scale));
-    --leading-hero-700: calc(36px * var(--base-scale));
-    --leading-hero-800: calc(40px * var(--base-scale));
-    --leading-hero-900: calc(52px * var(--base-scale));
-    --leading-hero-1000: calc(92px * var(--base-scale));
     --shadow-2:
       0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.24),
       0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.28);

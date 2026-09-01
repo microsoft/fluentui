@@ -21,7 +21,7 @@
     -webkit-appearance: button;
 
     @variant group-size-small/fui-accordion-header {
-      @apply min-h-32 text-base-200;
+      @apply min-h-32 text-base-200 leading-[calc(20/12)];
     }
 
     @variant group-size-large/fui-accordion-header {

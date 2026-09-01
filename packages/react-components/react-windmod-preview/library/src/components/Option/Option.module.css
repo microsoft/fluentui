@@ -37,7 +37,7 @@
 
   /* invisible, never hidden: the box stays so selecting an option does not reflow its row. */
   .check-icon {
-    @apply invisible -ms-horizontal-xxs me-horizontal-xxs block shrink-0 text-icon-16;
+    @apply invisible -ms-horizontal-xxs me-horizontal-xxs block shrink-0 text-icon-16 leading-[calc(20/16)];
 
     @variant icon {
       @apply block;
@@ -48,7 +48,7 @@
     }
 
     @variant group-multiselect/fui-option {
-      @apply visible box-border flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12;
+      @apply visible box-border flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-[calc(20/12)];
 
       @variant group-selected/fui-option {
         @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;

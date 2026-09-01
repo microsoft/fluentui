@@ -148,7 +148,7 @@
   /* One bucket for both icon slots, as Griffel shares it. The ::after extends the hit target over
      the root's padding-inline-end dead zone, so its end inset tracks that padding per size. */
   .icon {
-    @apply relative box-border block cursor-pointer text-icon-20 text-neutral-stroke-accessible;
+    @apply relative box-border block cursor-pointer text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;
@@ -159,7 +159,7 @@
     }
 
     @variant group-size-small/fui-combobox {
-      @apply ms-horizontal-xxs text-icon-16;
+      @apply ms-horizontal-xxs text-icon-16 leading-[calc(20/16)];
 
       @variant after {
         @apply -end-horizontal-s-nudge;
@@ -175,7 +175,7 @@
     }
 
     @variant group-size-large/fui-combobox {
-      @apply ms-horizontal-s-nudge text-icon-24;
+      @apply ms-horizontal-s-nudge text-icon-24 leading-[calc(20/24)];
 
       @variant after {
         @apply -end-horizontal-m;
