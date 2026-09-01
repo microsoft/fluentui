@@ -42,7 +42,7 @@ stylesheets in a layer of their own.
 Fix: unlayer the rule, or declare your own layer after `fui.utilities`:
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.utilities, app;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities, app;
 ```
 
 **How to tell Cause 1 from Cause 2 in ten seconds.** Do not reason about it — look. DevTools' Styles
@@ -227,7 +227,7 @@ Likely one of:
 
 ## "A component behaves differently from its Griffel twin"
 
-Check [griffel-deltas.md](griffel-deltas.md) first — there are fifty-six documented differences and this
+Check [griffel-deltas.md](griffel-deltas.md) first — there are fifty-nine documented differences and this
 is very likely one of them. The high-traffic ones: closed `Accordion` panels stay mounted (state
 persists), a local prop beats a context value, `Field` does not push `size` into its control,
 `TagGroup` does not restore focus after a dismiss, `Card` selection is not focus-aware.

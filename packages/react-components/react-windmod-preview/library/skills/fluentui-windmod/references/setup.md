@@ -34,15 +34,15 @@ The app imports them itself, in the entry module or as `<link>` elements at the 
 
 ```js
 // Once per document, BEFORE your own CSS.
-// The theme-less base (3.5 KB / 833 B gzip): token registrations, spacing scale, type ramp,
-// reduced-motion floor, layer order. No colours.
+// The theme-less base (7.7 KB / 2.2 KB gzip): preflight, token registrations, spacing scale,
+// type ramp, reduced-motion floor, layer order. No colours.
 import '@fluentui/react-tailwind-theme-preview/base.css';
 
-// One per theme the app ships (23.4 KB / ~3.9 KB gzip each). There is NO default.
+// One per theme the app ships (23.4 KB / ~3.8 KB gzip each). There is NO default.
 import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 
-// windmod's root sheet (~3 KB): the cascade-layer order plus the global @property registrations
-// that every component chunk assumes. The components themselves arrive automatically.
+// windmod's root sheet (3.8 KB / 805 B gzip): the cascade-layer order plus the global @property
+// registrations that every component chunk assumes. The components themselves arrive automatically.
 import '@fluentui/react-windmod-preview/base.css';
 ```
 
@@ -51,7 +51,7 @@ Stems are the theme class names without their `fui-theme-` prefix: `web-light`, 
 
 `@fluentui/react-tailwind-theme-preview/styles.css` bundles the base and all seven into one file.
 It still bakes no default — a theme class is still applied by hand — so it saves imports, not
-steps, and costs 14.6 KB gzip against 4.6 KB for base + one theme.
+steps, and costs 15.4 KB gzip against 5.9 KB for base + one theme.
 
 ### Mode 2 — composed into the app's own root stylesheet
 
@@ -213,11 +213,14 @@ That is the whole override story. See [overriding.md](overriding.md).
 Cascade layer order is first-appearance, so declare the `fui` family **before** importing Tailwind:
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 ```
 
 Without that line, Tailwind's own layers are declared first and `fui.utilities` outranks them.
+Keep `fui.preflight` in the list and first: layer order is first-appearance, so omitting it here
+would let the theme sheet's own statement introduce it _after_ the layers you named — above the
+component layers instead of below everything.
 
 ### Compose against windmod's states
 
@@ -226,7 +229,7 @@ exist. Both catalogs are shipped source and importable:
 
 ```css
 /* your Tailwind entry stylesheet */
-@layer fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 
 /* the generic vocabulary — state, structure, positioning, size */
@@ -250,7 +253,10 @@ Both files are pure `@custom-variant` declarations and emit no CSS of their own.
 **source**, not plain CSS. It is the reference target the library's own modules use, and it is
 deliberately unlike an app Tailwind setup:
 
-- **no preflight** — a component library must not ship global resets
+- **preflight ships, in its own lowest layer** — Tailwind's preflight is imported into
+  `fui.preflight`, first in the order statement, so every authored rule (the library's and yours)
+  outranks it by construction; components author over a normalized base instead of inheriting UA
+  quirks. Nothing else is authored into that layer
 - tokens register via `@theme inline`, so `var(--token)` substitutes into each utility and values stay
   per-element custom properties
 - Tailwind's default palette, type ramp, radii and shadows are set to `initial`
@@ -269,9 +275,13 @@ Tailwind toolchain.
 ## What the layers are for
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3,
-  fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+  fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
+
+`fui.preflight` holds Tailwind's preflight and nothing else. It leads the statement, so it is the
+lowest-priority layer in the document: every authored rule — the theme's, the components', yours —
+outranks it by construction.
 
 The theme package's README describes `l3`–`l5` as available for app-global, per-page and one-off
 overrides that should still lose to your unlayered CSS.

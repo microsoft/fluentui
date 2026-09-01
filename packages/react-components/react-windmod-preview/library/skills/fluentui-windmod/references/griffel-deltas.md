@@ -1,6 +1,6 @@
 # Differences from `@fluentui/react-components`
 
-The package's `MIGRATION.md` enumerates **fifty-six** deliberate differences in full. This is the
+The package's `MIGRATION.md` enumerates **fifty-nine** deliberate differences in full. This is the
 routing layer: the ones that change how you style, test or debug, grouped by what they break. Load the
 full document from
 `node_modules/@fluentui/react-windmod-preview/MIGRATION.md` when a specific delta needs its detail.
@@ -35,14 +35,16 @@ Start here, because it is most of the surface:
 
 ## The styling model
 
-| #   | Delta                                                                  | What to do                                                                                     |
-| --- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| 9   | Everything scales with the root font size                              | Keep `html { font-size: 16px }` for Griffel parity. `--base-scale` lives at the document root. |
-| 10  | **Cascade layers replace specificity juggling**                        | Your unlayered one-class rule wins. Do **not** wrap overrides in `@layer`.                     |
-| 11  | Spacing tokens are inlined at build time                               | Runtime spacing-token overrides do nothing. Use `--base-scale`, or set the property directly.  |
-| 12  | Some computed style strings differ with no visual difference           | Update snapshot tests asserting on computed `box-shadow`.                                      |
-| 13  | Text alignment is logical, not physical                                | Only diverges in a `dir`-flipped subtree inside an opposite-direction provider.                |
-| 22  | **`prefers-reduced-motion` is suppressed globally**, not per component | One unlayered floor rule. Your classed rules already outrank it.                               |
+| #   | Delta                                                                  | What to do                                                                                                                     |
+| --- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| 9   | Everything scales with the root font size                              | Keep `html { font-size: 16px }` for Griffel parity. `--base-scale` lives at the document root.                                 |
+| 10  | **Cascade layers replace specificity juggling**                        | Your unlayered one-class rule wins. Do **not** wrap overrides in `@layer`.                                                     |
+| 11  | Spacing tokens are inlined at build time                               | Runtime spacing-token overrides do nothing. Use `--base-scale`, or set the property directly.                                  |
+| 12  | Some computed style strings differ with no visual difference           | Update snapshot tests asserting on computed `box-shadow`.                                                                      |
+| 13  | Text alignment is logical, not physical                                | Only diverges in a `dir`-flipped subtree inside an opposite-direction provider.                                                |
+| 22  | **`prefers-reduced-motion` is suppressed globally**, not per component | One unlayered floor rule. Your classed rules already outrank it.                                                               |
+| 58  | **Tailwind's preflight ships**, in the lowest `fui.preflight` layer    | Document-global reset; any rule you author outranks it. Re-check markup that relied on UA defaults.                            |
+| 59  | **Leading tokens are unitless ratios**, not lengths                    | A `--leading-*` read is a number; multiply by the paired `--text-*` for a length. Descendants inherit the ratio, not a px box. |
 
 Delta 22 in detail, because it changes behaviour you may be measuring. The floor sets 1ms durations and
 delays on `*`, `*::before`, `*::after` plus `animation-iteration-count: 1`, with one carve-out: the

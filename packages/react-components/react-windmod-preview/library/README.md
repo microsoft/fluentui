@@ -53,13 +53,13 @@ export default function App() {
 
 Component styles are delivered **per component**: each component's class map side-effect-imports
 its own compiled stylesheet, so a bundler ships only what the app uses. Alongside them, load this
-package's root sheet — `@fluentui/react-windmod-preview/base.css` (~3 KB: the cascade-layer order
+package's root sheet — `@fluentui/react-windmod-preview/base.css` (3.8 KB: the cascade-layer order
 and the global `@property` registrations) — once per document, ahead of everything else, either
 directly or by `@import`ing it at the top of your own root stylesheet.
 
 Themes follow Griffel's contract: there is **no default**, so you import the theme's stylesheet and
 pass its class — the same two steps as `import { webDarkTheme }` + `theme={webDarkTheme}`, and you
-pay for only the themes you ship (4.6 KB gzip for base + one, against 14.6 KB for all seven).
+pay for only the themes you ship (5.9 KB gzip for base + one, against 15.4 KB for all seven).
 
 CommonJS/SSR consumers instead import `@fluentui/react-windmod-preview/styles.css`, the
 batteries-included aggregate carrying the root sheet and every component in one file; the theme

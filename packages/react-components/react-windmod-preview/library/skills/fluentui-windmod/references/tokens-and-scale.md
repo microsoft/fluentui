@@ -64,7 +64,7 @@ from the rendered colour.
 ```
 --text-base-100 … --text-base-600          font sizes
 --text-hero-700 … --text-hero-1000
---leading-base-100 … --leading-base-600     paired line heights
+--leading-base-100 … --leading-base-600     paired line heights (unitless ratios)
 --leading-hero-700 … --leading-hero-1000
 --text-icon-12|16|20|24|28|32|48            glyph sizes
 --font-base | --font-monospace | --font-numeric
@@ -72,7 +72,10 @@ from the rendered colour.
 ```
 
 Sizes and line heights are **paired by number** — `text-base-300` goes with `leading-base-300`. Use the
-pair; picking a line height from a different step is how type drifts off the ramp.
+pair; picking a line height from a different step is how type drifts off the ramp. A leading token is a
+**unitless ratio** of its paired step (`--leading-base-300` is `calc(20 / 14)`), so it is not a length:
+it multiplies the element's own font-size, descendants inherit the ratio rather than a px box, and a
+JS read wanting a length must multiply by the paired `--text-*` token.
 
 The icon glyph family has no Fluent token equivalent — the sizes come from the icon set itself, so they
 are registered by the theme rather than generated from Fluent's token set.

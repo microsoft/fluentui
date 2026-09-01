@@ -98,7 +98,7 @@ function readCssVar(targetWindow: Window, element: HTMLElement, variableName: st
  * | `--color-*` | 366 | 0 |
  * | `--shadow-*` | 12 | 0 |
  * | `--radius-*` | 11 | 0 |
- * | `--leading-*` | 10 | 0 |
+ * | `--leading-*` | 5 | 5 |
  * | `--ease-*` | 9 | 0 |
  * | `--duration-*` | 8 | 0 |
  * | `--font-*` | 7 | 0 |
@@ -106,12 +106,15 @@ function readCssVar(targetWindow: Window, element: HTMLElement, variableName: st
  * | `--text-*` | 0 | 17 |
  * | `--stroke-*` | 0 | 4 |
  * | `--base-scale` | 0 | 1 |
- * | **Total** | **425** | **47** |
+ * | **Total** | **420** | **52** |
  *
- * So colour, shadow, radius, leading, ease, duration and font read as usable values
+ * So colour, shadow, radius, ease, duration and font read as usable values
  * (`#242424`, `150ms`, `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`), while text, spacing, stroke
  * and base-scale read as unevaluated `calc()` strings (`calc(14px * calc(1rem / 16px))`) that
- * are invariant under both a theme change and a root font-size change. A theme-class change
+ * are invariant under both a theme change and a root font-size change. Leading splits down the
+ * middle of the ramp's arithmetic: the finite ratios read as unitless numbers (`1.4`) and the
+ * repeating ones as unevaluated division strings (`calc(20 / 14)`) — either way a RATIO, never
+ * a length; a length is `calc(var(--text-base-300) * var(--leading-base-300))`. A theme-class change
  * moves 315 tokens and every one of them is a literal, so for exactly the tokens theme
  * switching changes, the value is real and scope-correct.
  *

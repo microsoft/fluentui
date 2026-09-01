@@ -80,7 +80,7 @@ substituted and **`calc()` not evaluated**. Measured over all 472 declared token
 | `--color-*`    | 366                | 0                          |
 | `--shadow-*`   | 12                 | 0                          |
 | `--radius-*`   | 11                 | 0                          |
-| `--leading-*`  | 10                 | 0                          |
+| `--leading-*`  | 5                  | 5                          |
 | `--ease-*`     | 9                  | 0                          |
 | `--duration-*` | 8                  | 0                          |
 | `--font-*`     | 7                  | 0                          |
@@ -88,12 +88,15 @@ substituted and **`calc()` not evaluated**. Measured over all 472 declared token
 | `--text-*`     | 0                  | 17                         |
 | `--stroke-*`   | 0                  | 4                          |
 | `--base-scale` | 0                  | 1                          |
-| **Total**      | **425**            | **47**                     |
+| **Total**      | **420**            | **52**                     |
 
-So colour, shadow, radius, leading, ease, duration and font read as usable values — `#242424`, `150ms`,
+So colour, shadow, radius, ease, duration and font read as usable values — `#242424`, `150ms`,
 `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`. Text, spacing, stroke and `--base-scale` read as unevaluated
 strings such as `calc(14px * calc(1rem / 16px))`, invariant under both a theme change and a root
-font-size change.
+font-size change. Leading splits down the middle of the ramp's arithmetic: the finite ratios read as
+unitless numbers (`1.4`) and the repeating ones as unevaluated division strings (`calc(20 / 14)`) —
+either way a **ratio**, never a length. A length is
+`calc(var(--text-base-300) * var(--leading-base-300))`.
 
 The practical consequence: **this hook is for colour and other literal tokens.** For a resolved _length_
 you want `getComputedStyle` on a real property, not on the token.

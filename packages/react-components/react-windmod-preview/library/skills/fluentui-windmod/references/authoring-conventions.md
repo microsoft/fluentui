@@ -167,6 +167,11 @@ the headless library's own `''` spelling; that is theirs, not ours.
 ### Layers
 
 - **All** component styles live in `fui.components.l<level>`.
+- `fui.preflight` is the theme's and holds exactly one thing: Tailwind's preflight. The order
+  statement **leads** with it — `@layer fui.preflight, fui.theme, fui.base, fui.components, …` — so
+  it is the lowest-priority layer in the document and every authored rule outranks it by
+  construction. Never author into it, and never lean on a preflight value: a component declares
+  what its rendering depends on rather than inheriting the reset's answer.
 - `fui.base` belongs to the theme, for global element resets **only**. Components never author into it.
 - **The level is assigned per RULE, not per file.** A rule styling the component's own DOM — its root,
   its plain-element slots — is a base style and sits at `l1`, no matter what the rest of the file does.
@@ -353,10 +358,14 @@ find the right token.
 
 ### Line-height never rides without font-size
 
-- Never author a `leading-*` without a `text-*` on the same element. A leading token is a length
-  designed against one font-size step; authored alone it welds the element's line box to whatever
-  font-size inheritance delivers. `leading-[0]` is the one exemption — zero computes the same
-  against any font-size (Spinner's root, matching Griffel's bare `lineHeight: 0`).
+- Never author a `leading-*` without a `text-*` on the same element. A leading token is a unitless
+  ratio derived against one font-size step — `--leading-base-300` is `calc(20 / 14)` — so authored
+  alone it multiplies whatever font-size inheritance delivers and the line box drifts off the ramp.
+  Pair the token with its own step (`text-base-300 leading-base-300`). Where a rule needs a ramp
+  line-height over a **different** authored font-size, spell the ratio as the self-documenting
+  fraction `leading-[calc(target/ownFontSize)]` in the same rule as the font-size. `leading-[0]` is
+  the one exemption — zero computes the same against any font-size (Spinner's root, matching
+  Griffel's bare `lineHeight: 0`).
 - Native interactive elements (`button`, `input`, `select`, `textarea`) author their `text-*` step
   even when nothing in the box visibly depends on it. Preflight resets them to `font: inherit`, so
   the component declares its metrics rather than riding the surrounding context — `Tab.module.css`

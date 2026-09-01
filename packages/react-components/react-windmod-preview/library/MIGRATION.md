@@ -53,15 +53,16 @@ themes you ship and no others.
 Import them in your entry module, or link them at the top of the document head.
 
 ```js
-// The theme-less base: token registrations, the spacing scale, the type ramp, the reduced-motion
-// floor, the cascade-layer order. 3.5 KB raw, 833 bytes gzipped. No colours — that is the next line.
+// The theme-less base: preflight, token registrations, the spacing scale, the type ramp, the
+// reduced-motion floor, the cascade-layer order. 7.7 KB raw, 2.2 KB gzipped. No colours — that is
+// the next line.
 import '@fluentui/react-tailwind-theme-preview/base.css';
 
-// One import per theme you ship. 23.4 KB raw, ~3.9 KB gzipped each.
+// One import per theme you ship. 23.4 KB raw, ~3.8 KB gzipped each.
 import '@fluentui/react-tailwind-theme-preview/themes/web-light.css';
 
 // windmod's root sheet: the cascade-layer order and the global custom-property registrations that
-// every component chunk assumes. 3.3 KB raw, 729 bytes gzipped. Components arrive automatically.
+// every component chunk assumes. 3.8 KB raw, 805 bytes gzipped. Components arrive automatically.
 import '@fluentui/react-windmod-preview/base.css';
 ```
 
@@ -169,7 +170,7 @@ import '@fluentui/react-windmod-preview/styles.css'; // instead of base.css
 ```
 
 The theme package publishes its own monolith on the same terms: `./styles.css` is its base sheet
-plus all seven themes, 159 KB raw / 14.6 KB gzipped against 27 KB / 4.6 KB for base + one theme.
+plus all seven themes, 163 KB raw / 15.4 KB gzipped against 31 KB / 5.9 KB for base + one theme.
 It still bakes no default — a theme class still has to be applied — so it buys one import, not one
 fewer step. Reach for it only when you genuinely offer every theme, or when a `<link>`-only
 pipeline makes counting files worse than counting bytes.
@@ -336,7 +337,7 @@ subpath is the sanctioned entry point here.
 
 ## What differs deliberately
 
-Fifty-six differences, each one a decision rather than a defect.
+Fifty-nine differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 
@@ -382,15 +383,16 @@ within the shared `fui.theme` layer.
 
 #### 2. The theme is a separate, required import — one file per theme
 
-`@fluentui/react-tailwind-theme-preview/base.css` carries the type ramp, the spacing scale and the
-token registrations; each `…/themes/<name>.css` carries one theme's palette. Nothing renders
+`@fluentui/react-tailwind-theme-preview/base.css` carries the preflight
+([delta 58](#58-tailwinds-preflight-ships--in-the-lowest-layer)), the type ramp, the spacing scale
+and the token registrations; each `…/themes/<name>.css` carries one theme's palette. Nothing renders
 correctly without the base, and nothing is _coloured_ without a theme file plus its class.
 
 This is the same shape as Griffel, where the theme is a separate JS import you pass to the
 provider — only the cost model changes with it. Griffel's themes are JS objects, so an app that
 imports one ships one; the CSS equivalent has to be per-file for that to stay true, which is what
-these subpaths are. Importing web light alone is 27 KB raw / 4.6 KB gzipped against the 159 KB /
-14.6 KB of all seven.
+these subpaths are. Importing web light alone is 31 KB raw / 5.9 KB gzipped against the 163 KB /
+15.4 KB of all seven.
 
 Load them before your own CSS so your rules stay unlayered
 (see [delta 10](#10-cascade-layers-replace-specificity-juggling)).
@@ -1098,6 +1100,48 @@ any Fluent icon, bundled or not, the two are identical; a font icon additionally
 sizing that an svg-type selector never reached. The divergence is an arbitrary `<svg>` a consumer passes
 into an icon slot (an `Input` `contentBefore`, an `Option` `checkIcon`, …): Griffel would restyle it,
 windmod leaves it alone. Stamp `data-fui-icon` on it to opt in.
+
+### The base sheet and the type ramp
+
+#### 58. Tailwind's preflight ships — in the lowest layer
+
+The theme package includes Tailwind's preflight. This is a deliberate divergence from Griffel's
+posture: `@fluentui/react-components` ships no global reset and renders over whatever element
+defaults the document brings; windmod authors every component over a normalized base instead.
+
+The guarantee that makes it safe is the layer. Preflight lives in `fui.preflight`, the **first** name
+in the `@layer` order statement — below `fui.theme`, `fui.base` and every component layer — so every
+authored rule in both packages outranks it by construction, and your own unlayered CSS beats it the
+same way it beats everything else in the library. Nothing else is ever authored into that layer.
+
+What to check when migrating: the reset is document-global, exactly like the preflight of a Tailwind
+app — element defaults (heading sizes, list markers and margins, button font, `fieldset`/`legend`,
+table borders) are normalized everywhere the theme sheet loads, not only under the provider. Re-check
+any markup of your own that relied on UA default styling, inside the provider especially; markup you
+style yourself is unaffected, because any rule you author outranks the reset.
+
+#### 59. Leading tokens are unitless ratios, not lengths
+
+Griffel's line-height tokens are px strings — `tokens.lineHeightBase300` is `'20px'`. windmod's
+`--leading-*` tokens are the same ramp expressed as unitless ratios of their paired font-size:
+`--leading-base-300` is `calc(20 / 14)`, `--leading-base-400` is `1.375`, and so on down the ramp —
+always the ramp's line-height px over its paired font-size px. Because the ratios are theme-invariant,
+they are declared once in `./base.css` rather than per theme.
+
+Rendered boxes do not move: every windmod rule that sets a `leading-*` sets an authored font-size on
+the same element, so the ratio multiplies exactly the font-size the old length encoded (verified with
+an element-keyed probe across all 91 scenes — zero rect changes).
+
+Two things do change:
+
+- **Inheritance.** A length line-height inherits as that computed length; a number inherits as a
+  ratio and recomputes against every descendant's own font-size. A descendant of a windmod element
+  that sets only `font-size` and counted on inheriting Griffel's fixed px line box now gets
+  `font-size × ratio` instead.
+- **Reading the token.** `getComputedStyle(el).getPropertyValue('--leading-base-300')` — or
+  `useCssVarValue` — no longer returns a length. Multiply by the paired font-size token to get one:
+  `calc(var(--text-base-300) * var(--leading-base-300))` is the windmod spelling of Griffel's
+  `lineHeightBase300`.
 
 ## Where the pixels are allowed to differ
 

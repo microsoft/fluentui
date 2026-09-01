@@ -152,7 +152,7 @@ export const Cta = () => <Button className="cta-button">Get started</Button>;
 - [SKILL.md](SKILL.md) — the full rule set
 - [AGENTS.md](AGENTS.md) — quick reference
 - [references/](references/) — detailed catalogs and guides
-- The package's own `MIGRATION.md` — all fifty-six deliberate differences from
+- The package's own `MIGRATION.md` — all fifty-nine deliberate differences from
   `@fluentui/react-components`
 
 ## Preview

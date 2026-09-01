@@ -65,7 +65,7 @@ Two audiences, one skill:
   detection and no polyfill. On an engine without it the surface renders unpositioned at the viewport
   origin.
 - **NEVER assume a windmod component is a drop-in for its Griffel twin without checking the delta
-  list** — there are fifty-six deliberate differences. The ones that bite while styling are in
+  list** — there are fifty-nine deliberate differences. The ones that bite while styling are in
   [references/griffel-deltas.md](references/griffel-deltas.md).
 
 ## Before You Style, Ask
@@ -180,7 +180,7 @@ you drop one onto a coloured surface it repaints that surface — set `backgroun
 utilities beat Fluent component styles:
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
 @import 'tailwindcss';
 ```
 
@@ -277,10 +277,11 @@ Overriding a component is a one-class rule with no `!important` and no specifici
 The declared layer order, which the theme package owns:
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3,
-  fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+  fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
+- `fui.preflight` — Tailwind's preflight, alone and lowest; every authored rule outranks it
 - `fui.components.l1` — every component's own base styles (Button, Label, Input; also a
   composition's rules for its own plain elements)
 - `fui.components.l2` — rules overriding another component's `l1` styles (ToggleButton over Button)
@@ -519,8 +520,12 @@ show up in tests.
 - **Tailwind's default theme is removed.** The theme sets `--color-*`, `--font-*`, `--text-*`,
   `--radius-*`, `--shadow-*` and more to `initial`. A stray `text-red-500` or `rounded-lg` fails the
   build rather than diverging from Fluent. Structural utilities (flex, grid, positioning) remain.
-- **No preflight.** The theme ships no global reset — a component library must not. Utilities reach
-  you only inlined through the components' own `@apply`, unless you run Tailwind yourself.
+- **Preflight ships, in the lowest layer.** The theme includes Tailwind's preflight in
+  `fui.preflight`, first in the `@layer` order statement — below everything, so every authored rule
+  (the library's and yours, layered or not) outranks it by construction. It is document-global:
+  markup of your own that relied on UA default styling (heading sizes, list markers, button font,
+  default margins) should be re-checked. Utilities still reach you only inlined through the
+  components' own `@apply`, unless you run Tailwind yourself.
 - **The DOM and the props are Griffel's.** Element structure, slot names, roles and ARIA match, because
   both libraries render through the same headless renderers. Props are the headless props plus the same
   look props with the same defaults.

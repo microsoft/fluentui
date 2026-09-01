@@ -6,10 +6,11 @@ Windmod component packages ship plain, precompiled CSS that references theme-lev
 properties — the design tokens, the cascade `@layer` order, `--base-scale`, `--spacing` and the
 stroke widths. Something has to emit those **once per document**: this package.
 
-It ships in two parts. `base.css` is **theme-less**: the layer order, the token registrations, the
-spacing scale, the type ramp, the stroke widths, the `prefers-reduced-motion` floor — everything
-that is identical in every theme. Each theme is then its own file (`themes/web-light.css`, …)
-carrying nothing but that theme's 433 custom properties inside one class.
+It ships in two parts. `base.css` is **theme-less**: the layer order, Tailwind's preflight (in
+`fui.preflight`, the lowest layer — see Layering below), the token registrations, the spacing
+scale, the type ramp, the stroke widths, the `prefers-reduced-motion` floor — everything that is
+identical in every theme. Each theme is then its own file (`themes/web-light.css`, …) carrying
+nothing but that theme's 423 custom properties inside one class.
 
 It deliberately registers **no** `@property` rules (a non-empty registry puts Blink's
 transition-start on a page-global slow path).
@@ -68,9 +69,9 @@ directly: import the base and a theme, apply the class to any element, reference
 | `themes/teams-light-v21.css`     | `fui-theme-teams-light-v21`     | `teamsLightV21ThemeClassName`     |
 | `themes/teams-dark-v21.css`      | `fui-theme-teams-dark-v21`      | `teamsDarkV21ThemeClassName`      |
 
-Each is 23.4 KB raw / ~3.9 KB gzipped (high contrast is smaller, 23.2 KB / 3.0 KB, because it
-repeats far fewer distinct colours). With the 3.5 KB / 833 B base, a single-theme application loads
-**27 KB raw / 4.6 KB gzipped** — against 159 KB / 14.6 KB if it took all seven.
+Each is 23.4 KB raw / ~3.8 KB gzipped (high contrast is smaller, 23.1 KB / 2.9 KB, because it
+repeats far fewer distinct colours). With the 7.7 KB / 2.2 KB base, a single-theme application loads
+**31 KB raw / 5.9 KB gzipped** — against 163 KB / 15.4 KB if it took all seven.
 
 ### If you skip an import
 
@@ -89,17 +90,22 @@ All Fluent styles live in one cascade-layer family, declared by this package's s
 why it must load before component styles):
 
 ```css
-@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3,
-  fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2,
+  fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
+- **`fui.preflight`** holds Tailwind's preflight and nothing else. It leads the statement, so it is
+  the lowest-priority layer in the document: every authored rule — this package's, the components',
+  yours — outranks it by construction.
 - **Plain CSS consumers** need no setup. Unlayered CSS beats every layer, so your own selectors win
   by default.
 - **Tailwind consumers** who want their own utilities to beat Fluent component styles should declare
-  the `fui` layer before importing Tailwind (cascade layer order is first-appearance):
+  the `fui` layers before importing Tailwind (cascade layer order is first-appearance — keep
+  `fui.preflight` in the list and first, or the theme sheet's own statement will introduce it above
+  the layers you named):
 
   ```css
-  @layer fui.theme, fui.base, fui.components, fui.utilities;
+  @layer fui.preflight, fui.theme, fui.base, fui.components, fui.utilities;
   @import 'tailwindcss';
   ```
 
