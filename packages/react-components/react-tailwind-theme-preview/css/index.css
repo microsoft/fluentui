@@ -2,22 +2,28 @@
  * The `#theme` reference target for component `*.module.css` files.
  *
  * Library constraints (deliberately unlike an app Tailwind setup):
- * - No preflight — a component library must not ship global resets. Utilities reach
- *   consumers only inlined through `@apply`.
+ * - Preflight SHIPS, in `fui.preflight` — the LOWEST layer of the fui.* family, so every
+ *   authored theme/component rule outranks it by layer order alone. Consumer documents get
+ *   a normalized base instead of per-browser UA defaults; components author over that clean
+ *   base rather than inheriting the same UA quirks Griffel inherits. This is a deliberate
+ *   divergence from Griffel's no-reset posture (operator ruling 2026-08-28, Decision U).
+ *   Utilities still reach consumers only inlined through `@apply`.
  * - Tokens register via `@theme inline` (./tokens.css), substituting `var(--token)`
  *   into each utility so values stay per-element CSS custom properties. A non-inline
  *   `@theme` alias would freeze resolution at `:root` and must not be used.
  */
 
 /*
- * One cascade-layer family. fui.base is levelless (resets); l1 = base components, l2 =
- * compositions, l3+ = deeper compositions (SplitButton over MenuButton over Button); the
- * declared stack runs to l5 today and may grow. Winner order within a level is in-file
- * source order (all selectors are :where()-flat). fui.utilities beats component styles
- * but loses to unlayered consumer CSS.
+ * One cascade-layer family. fui.preflight sits FIRST — the global reset loses every cascade
+ * contest against authored rules. fui.base is levelless (element resets); l1 = base
+ * components, l2 = compositions, l3+ = deeper compositions (SplitButton over MenuButton over
+ * Button); the declared stack runs to l5 today and may grow. Winner order within a level is
+ * in-file source order (all selectors are :where()-flat). fui.utilities beats component
+ * styles but loses to unlayered consumer CSS.
  */
-@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
+@import 'tailwindcss/preflight.css' layer(fui.preflight);
 @import 'tailwindcss/theme.css' layer(fui.theme);
 @import 'tailwindcss/utilities.css' layer(fui.utilities);
 

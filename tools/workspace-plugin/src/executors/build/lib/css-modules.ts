@@ -123,7 +123,7 @@ import { type NormalizedOptions } from './shared';
  * component module repeats after its `@reference`.
  */
 export const CANONICAL_LAYER_STATEMENT =
-  '@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;';
+  '@layer fui.preflight, fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;';
 
 const CSS_MODULE_GLOB = '**/*.module.css';
 
