@@ -37,16 +37,36 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     ...rest
   } = props;
 
-  const { toastsToRender, isToastVisible, tryRestoreFocus, closeAllToasts } = useToasterState<HTMLDivElement>({
-    toasterId,
-    position,
-    timeout,
-    pauseOnWindowBlur,
-    pauseOnHover,
-    priority,
-    shortcuts,
-    limit,
-  });
+  const playAllToastsRef = React.useRef<() => void>(() => undefined);
+  const toasterShortcuts = React.useMemo(
+    () =>
+      shortcuts
+        ? {
+            focus: (e: KeyboardEvent) => {
+              const isFocusShortcut = shortcuts.focus(e);
+              if (isFocusShortcut) {
+                Promise.resolve().then(() => playAllToastsRef.current());
+              }
+              return isFocusShortcut;
+            },
+          }
+        : undefined,
+    [shortcuts],
+  );
+  const { toastsToRender, isToastVisible, playAllToasts, tryRestoreFocus, closeAllToasts } =
+    useToasterState<HTMLDivElement>({
+      toasterId,
+      position,
+      timeout,
+      pauseOnWindowBlur,
+      pauseOnHover,
+      priority,
+      shortcuts: toasterShortcuts,
+      limit,
+    });
+  useIsomorphicLayoutEffect(() => {
+    playAllToastsRef.current = playAllToasts;
+  }, [playAllToasts]);
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
@@ -104,6 +124,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
+        focusgroup: 'toolbar block itemcontrols',
         onKeyDown,
         popover: 'manual' as const,
         'data-toaster-position': toastPosition,
