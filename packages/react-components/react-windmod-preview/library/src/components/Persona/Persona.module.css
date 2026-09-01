@@ -49,7 +49,7 @@
   }
 
   .secondary-text {
-    @apply -mt-[2px];
+    @apply -mt-2;
 
     @variant group-text-alignment-center/fui-persona {
       @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {

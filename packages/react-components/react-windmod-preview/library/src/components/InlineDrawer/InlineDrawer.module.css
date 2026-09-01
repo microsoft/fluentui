@@ -55,7 +55,7 @@
       }
 
       @variant separator {
-        border-block-start: 1px solid var(--color-neutral-background-3);
+        border-block-start: var(--stroke-width-thin) solid var(--color-neutral-background-3);
       }
     }
   }

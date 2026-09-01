@@ -7,7 +7,5 @@
 @layer fui.components.l2 {
   .root {
     @apply flex flex-col gap-y-vertical-xxs ps-horizontal-m-nudge pe-horizontal-xs;
-
-    align-items: unset;
   }
 }
