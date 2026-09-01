@@ -1,0 +1,26 @@
+'use client';
+
+import type * as React from 'react';
+import { useCounterBadgeBase_unstable } from '@fluentui/react-badge';
+
+import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+
+/**
+ * Returns the state for a CounterBadge component, given its props and ref.
+ * The returned state can be modified with hooks before being passed to `renderCounterBadge`.
+ */
+export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLDivElement>): CounterBadgeState => {
+  const state = useCounterBadgeBase_unstable(props, ref);
+  const overflowCount = props.overflowCount ?? 99;
+
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      'data-count': String(state.count),
+      'data-dot': state.dot ? '' : undefined,
+      'data-hidden': !state.root.children && !state.dot ? '' : undefined,
+      'data-overflowed': state.count > overflowCount ? '' : undefined,
+    },
+  };
+};
