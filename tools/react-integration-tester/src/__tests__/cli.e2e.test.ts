@@ -156,6 +156,11 @@ describe('rit CLI e2e', () => {
           "tslib": "^2.8.0",
           "typescript": "5.7.3",
         },
+        "dependenciesMeta": Object {
+          "cypress": Object {
+            "built": true,
+          },
+        },
         "license": "UNLICENSED",
         "name": "@rit/react-18-root",
         "private": true,
@@ -363,8 +368,11 @@ describe('rit CLI e2e', () => {
       "import { join, resolve } from 'node:path';
       import baseConfig from '../../../../proj/cypress.config.ts';
 
-      // Resolve dependencies from the shared react-version root folder (injected by CLI)
-      const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
+      // Resolve dependencies from the shared react-version root folder (injected by CLI).
+      // Cypress executes this config with \`cwd\` set to the prepared project root (where this file lives),
+      // so \`process.cwd()\` is equivalent to the config directory and works in both CommonJS and ESM
+      // (\`type: module\`) sandboxes — unlike \`__dirname\`, which is undefined under native ESM.
+      const usedNodeModulesPath = join(process.cwd(), '..', 'node_modules');
 
       const config = { ...baseConfig };
 

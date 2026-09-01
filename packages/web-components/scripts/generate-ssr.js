@@ -55,9 +55,12 @@ async function main() {
     console.log(chalk.bold(`🎬 ${label} start`));
 
     console.log(chalk.blueBright(`${label}: compiling src → ${tempDir}`));
-    execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl . --outDir ${tempDir} --declaration false`, {
-      stdio: 'inherit',
-    });
+    execSync(
+      `yarn run -T tsc -p tsconfig.lib.json --rootDir ./src --baseUrl . --outDir ${tempDir} --declaration false`,
+      {
+        stdio: 'inherit',
+      },
+    );
 
     console.log(chalk.blueBright(`${label}: writing *.template.html → ${outDir}/`));
     await generateFTemplates({

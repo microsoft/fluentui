@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useBreadcrumbButtonBase_unstable } from '@fluentui/react-breadcrumb';
 
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a BreadcrumbButton component, given its props and ref.
@@ -18,7 +18,7 @@ export const useBreadcrumbButton = (
 
   // Set data attribute for current state to simplify styling of the active breadcrumb item.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-current'] = stringifyDataAttribute(state.current);
+  state.root['data-current'] = toDataAttributeValue(state.current);
 
   return state;
 };

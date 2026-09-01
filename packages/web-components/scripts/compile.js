@@ -33,7 +33,7 @@ async function compile() {
   execSync(`node ./scripts/generate-tokens`, { stdio: 'inherit' });
 
   console.log(chalk.blueBright(`compile: running tsc`));
-  execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
+  execSync(`yarn run -T tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
 
   console.log(chalk.blueBright(`compile: copying SSR assets`));
   await copySsrAssets();

@@ -828,6 +828,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -845,6 +846,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -862,6 +864,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -879,6 +882,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4940,6 +4944,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -4957,6 +4962,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -4974,6 +4980,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -5592,6 +5599,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -5609,6 +5617,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -5626,6 +5635,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -7098,6 +7108,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="String One"
                   dy="0.32em"
                   fill="currentColor"
@@ -7121,6 +7132,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="String Two"
                   dy="0.32em"
                   fill="currentColor"
@@ -7144,6 +7156,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="String Three"
                   dy="0.32em"
                   fill="currentColor"
@@ -7167,6 +7180,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="String Four"
                   dy="0.32em"
                   fill="currentColor"
@@ -7625,6 +7639,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 data-full="String One"
                 dy="0.32em"
                 fill="currentColor"
@@ -7648,6 +7663,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 data-full="String Two"
                 dy="0.32em"
                 fill="currentColor"
@@ -7671,6 +7687,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 data-full="String Three"
                 dy="0.32em"
                 fill="currentColor"
@@ -7694,6 +7711,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 data-full="String Four"
                 dy="0.32em"
                 fill="currentColor"
@@ -8211,6 +8229,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -8228,6 +8247,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -8245,6 +8265,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -8262,6 +8283,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -8709,6 +8731,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -8726,6 +8749,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -8743,6 +8767,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -8760,6 +8785,7 @@ Object {
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"

@@ -37,10 +37,10 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 };
 
 /**
- * Link props without design-specific props (appearance).
+ * Link props without design-specific props (appearance, inline).
  * Use this when building a base link that is unstyled or uses a custom design system.
  */
-export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
+export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance' | 'inline'>;
 
 export type LinkState = ComponentState<LinkSlots> &
   Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
@@ -48,6 +48,6 @@ export type LinkState = ComponentState<LinkSlots> &
   };
 
 /**
- * Link state without design-specific state (appearance, backgroundAppearance).
+ * Link state without design-specific state (appearance, backgroundAppearance, inline).
  */
-export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance'>;
+export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance' | 'inline'>;

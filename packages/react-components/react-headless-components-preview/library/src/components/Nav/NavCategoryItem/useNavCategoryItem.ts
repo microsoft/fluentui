@@ -5,6 +5,7 @@ import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from
 import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Create the state required to render NavCategoryItem.
@@ -34,7 +35,7 @@ export const useNavCategoryItem = (
   const selected = selectedCategoryValue === value && !open;
   const validAriaCurrent: 'page' | 'false' = selected ? 'page' : 'false';
 
-  return {
+  const state: NavCategoryItemState = {
     open,
     value,
     selected,
@@ -60,4 +61,9 @@ export const useNavCategoryItem = (
       expandIcon: 'span',
     },
   };
+
+  state.root['data-open'] = toDataAttributeValue(state.open);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
+
+  return state;
 };

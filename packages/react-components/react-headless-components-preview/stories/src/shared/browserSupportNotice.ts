@@ -14,13 +14,14 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Menu: ['popover', 'anchor-positioning', 'focusgroup'],
   Dropdown: ['popover', 'anchor-positioning'],
   Combobox: ['popover', 'anchor-positioning'],
+  TagPicker: ['popover', 'anchor-positioning', 'focusgroup'],
   Dialog: ['dialog', 'popover'],
   Drawer: ['dialog', 'popover'],
   Toast: ['popover'],
   TagGroup: ['focusgroup'],
   Toolbar: ['focusgroup'],
   TabList: ['focusgroup'],
-  Nav: ['focusgroup'],
+  SwatchPicker: ['focusgroup'],
 };
 
 const BROWSER_SUPPORT_DOCS_PATH = '?path=/docs/overview-browser-support--docs';

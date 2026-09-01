@@ -10,7 +10,7 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
@@ -196,7 +196,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         onKeyDown: handleKeyDown,
         onClick: handleClick,
         popover: modalType === 'non-modal' ? ('manual' as const) : undefined,
-        'data-open': stringifyDataAttribute(open),
+        'data-open': toDataAttributeValue(open),
         'data-modal-type': modalType,
       }),
       { elementType: 'dialog' },

@@ -1,8 +1,55 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 07 Jul 2026 04:09:49 GMT and should not be manually modified.
+<!-- This log was last generated on Fri, 21 Aug 2026 04:08:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.2)
+
+Fri, 21 Aug 2026 04:08:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.1..@fluentui/web-components_v3.1.2)
+
+### Patches
+
+- fix(web-components): prevent unsafe theme token values from injecting CSS ([PR #36600](https://github.com/microsoft/fluentui/pull/36600) by machi@microsoft.com)
+
+## [3.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.1)
+
+Wed, 19 Aug 2026 04:08:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.0..@fluentui/web-components_v3.1.1)
+
+### Patches
+
+- fix: remove padding-block-start in multiline dismiss slot to fix alignment ([PR #36547](https://github.com/microsoft/fluentui/pull/36547) by jibinjose884@gmail.com)
+
+## [3.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.0)
+
+Thu, 13 Aug 2026 04:10:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.3..@fluentui/web-components_v3.1.0)
+
+### Minor changes
+
+- Remove max-width from MessageBar component ([PR #36521](https://github.com/microsoft/fluentui/pull/36521) by jolud@microsoft.com)
+
+## [3.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.3)
+
+Mon, 10 Aug 2026 17:06:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.2..@fluentui/web-components_v3.0.3)
+
+### Patches
+
+- remove using data-indent for styling ([PR #36457](https://github.com/microsoft/fluentui/pull/36457) by machi@microsoft.com)
+- make native disabled state support SSR better ([PR #36441](https://github.com/microsoft/fluentui/pull/36441) by machi@microsoft.com)
+- fix: select a tab when click() is called on it ([PR #36395](https://github.com/microsoft/fluentui/pull/36395) by machi@microsoft.com)
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.2)
+
+Mon, 13 Jul 2026 04:09:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.1..@fluentui/web-components_v3.0.2)
+
+### Patches
+
+- fix focusgroup in tree when focusgroup is natively supported ([PR #36379](https://github.com/microsoft/fluentui/pull/36379) by machi@microsoft.com)
 
 ## [3.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.1)
 

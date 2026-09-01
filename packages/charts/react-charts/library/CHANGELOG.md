@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.25)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.24..@fluentui/react-charts_v9.3.25)
+
+### Patches
+
+- Bump @fluentui/react-overflow to v9.9.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.24)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.23..@fluentui/react-charts_v9.3.24)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-overflow to v9.9.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.23)
+
+Tue, 04 Aug 2026 10:12:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.22..@fluentui/react-charts_v9.3.23)
+
+### Patches
+
+- voice control accessibility bug fix ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by 132879294+v-baambati@users.noreply.github.com)
+- Accessibility bug fixe ([PR #36426](https://github.com/microsoft/fluentui/pull/36426) by 132879294+v-baambati@users.noreply.github.com)
+- HorizontalBarChart bug fixes ([PR #36494](https://github.com/microsoft/fluentui/pull/36494) by 132879294+v-baambati@users.noreply.github.com)
+- Bump @fluentui/react-popover to v9.14.5 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.4 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.22)
 

@@ -9,29 +9,38 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
-import type { DrawerContextValue } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots } from '@fluentui/react-drawer';
-import { DrawerFooterState as DrawerFooterState_2 } from '@fluentui/react-drawer';
+import type { DrawerFooterState as DrawerFooterState_2 } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
 import { DrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots } from '@fluentui/react-drawer';
-import { DrawerHeaderState as DrawerHeaderState_2 } from '@fluentui/react-drawer';
+import type { DrawerHeaderState as DrawerHeaderState_2 } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerBaseState } from '@fluentui/react-drawer';
 import { InlineDrawerBaseProps as InlineDrawerProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
-import { Ref } from 'react';
+import { renderDrawerBody_unstable as renderDrawerBody } from '@fluentui/react-drawer';
+import { renderDrawerFooter_unstable as renderDrawerFooter } from '@fluentui/react-drawer';
+import { renderDrawerHeader_unstable as renderDrawerHeader } from '@fluentui/react-drawer';
+import { renderDrawerHeaderNavigation_unstable as renderDrawerHeaderNavigation } from '@fluentui/react-drawer';
+import { renderDrawerHeaderTitle_unstable as renderDrawerHeaderTitle } from '@fluentui/react-drawer';
 import type { Slot } from '@fluentui/react-utilities';
+import { useDrawerBody_unstable as useDrawerBody } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable as useDrawerContext } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigation_unstable as useDrawerHeaderNavigation } from '@fluentui/react-drawer';
 
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
@@ -44,6 +53,8 @@ export { DrawerBodyProps }
 export { DrawerBodySlots }
 
 export { DrawerBodyState }
+
+export { DrawerContextValue }
 
 // @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
@@ -98,6 +109,8 @@ export type DrawerProps = (ComponentProps<DrawerSlots> & {
     type: 'inline';
 } & InlineDrawerProps);
 
+export { DrawerProvider }
+
 // @public (undocumented)
 export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
 
@@ -141,20 +154,15 @@ export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Re
 // @public
 export const renderDrawer: (state: DrawerState) => JSXElement;
 
-// @public
-export const renderDrawerBody: (state: DrawerBodyState) => JSXElement;
+export { renderDrawerBody }
 
-// @public
-export const renderDrawerFooter: (state: DrawerFooterState_2) => JSXElement;
+export { renderDrawerFooter }
 
-// @public
-export const renderDrawerHeader: (state: DrawerHeaderState_2) => JSXElement;
+export { renderDrawerHeader }
 
-// @public
-export const renderDrawerHeaderNavigation: (state: DrawerHeaderNavigationState) => JSXElement;
+export { renderDrawerHeaderNavigation }
 
-// @public
-export const renderDrawerHeaderTitle: (state: DrawerHeaderTitleState) => JSXElement;
+export { renderDrawerHeaderTitle }
 
 // @public
 export const renderInlineDrawer: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSXElement | null;
@@ -165,8 +173,11 @@ export const renderOverlayDrawer: (state: OverlayDrawerState, contextValue: Draw
 // @public
 export const useDrawer: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
 
-// @public
-export const useDrawerBody: (props: DrawerBodyProps, ref: Ref<HTMLElement>) => DrawerBodyState;
+export { useDrawerBody }
+
+export { useDrawerContext }
+
+export { useDrawerContextValue }
 
 // @public
 export const useDrawerFooter: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;
@@ -174,8 +185,7 @@ export const useDrawerFooter: (props: DrawerFooterProps, ref: React_2.Ref<HTMLEl
 // @public
 export const useDrawerHeader: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
 
-// @public
-export const useDrawerHeaderNavigation: (props: DrawerHeaderNavigationProps, ref: Ref<HTMLElement>) => DrawerHeaderNavigationState;
+export { useDrawerHeaderNavigation }
 
 // @public
 export const useDrawerHeaderTitle: (props: DrawerHeaderTitleProps, ref: React_2.Ref<HTMLDivElement>) => DrawerHeaderTitleState;

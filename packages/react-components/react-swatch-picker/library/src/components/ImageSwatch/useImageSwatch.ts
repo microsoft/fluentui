@@ -2,25 +2,27 @@
 
 import type * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
+import type {
+  ImageSwatchBaseProps,
+  ImageSwatchBaseState,
+  ImageSwatchProps,
+  ImageSwatchState,
+} from './ImageSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 
 /**
- * Create the state required to render ImageSwatch.
+ * Create the base state required to render unstyled ImageSwatch.
  *
- * The returned state can be modified with hooks such as useImageSwatchStyles_unstable,
- * before being passed to renderImageSwatch_unstable.
+ * The returned state can be modified with hooks before being passed to renderImageSwatch_unstable.
  *
  * @param props - props from this instance of ImageSwatch
  * @param ref - reference to root HTMLDivElement of ImageSwatch
  */
-export const useImageSwatch_unstable = (
-  props: ImageSwatchProps,
+export const useImageSwatchBase_unstable = (
+  props: ImageSwatchBaseProps,
   ref: React.Ref<HTMLButtonElement>,
-): ImageSwatchState => {
+): ImageSwatchBaseState => {
   const { src, value, onClick, style, ...rest } = props;
-  const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
-  const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
@@ -62,7 +64,32 @@ export const useImageSwatch_unstable = (
     ),
     value,
     selected,
-    size,
-    shape,
+  };
+};
+
+/**
+ * Create the state required to render ImageSwatch.
+ *
+ * The returned state can be modified with hooks such as useImageSwatchStyles_unstable,
+ * before being passed to renderImageSwatch_unstable.
+ *
+ * @param props - props from this instance of ImageSwatch
+ * @param ref - reference to root HTMLDivElement of ImageSwatch
+ */
+export const useImageSwatch_unstable = (
+  props: ImageSwatchProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ImageSwatchState => {
+  const sizeFromContext = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const shapeFromContext = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+
+  const { size: _size, shape: _shape, ...rest } = props;
+
+  const baseState = useImageSwatchBase_unstable(rest, ref);
+
+  return {
+    ...baseState,
+    size: sizeFromContext,
+    shape: shapeFromContext,
   };
 };

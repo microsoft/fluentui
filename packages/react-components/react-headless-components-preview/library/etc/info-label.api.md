@@ -10,8 +10,9 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { LabelBaseProps } from '@fluentui/react-label';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import { LabelBaseProps } from '@fluentui/react-label';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
@@ -31,7 +32,11 @@ export type InfoButtonSlots = {
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & {
+    root: {
+        'data-open'?: string;
+    };
+};
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;

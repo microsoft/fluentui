@@ -6,6 +6,8 @@
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
 import type { TooltipBaseState } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
@@ -23,12 +25,18 @@ export const Tooltip: {
 };
 
 // @public
-export type TooltipProps = Omit<TooltipBaseProps, 'mountNode'>;
+export type TooltipProps = Omit<TooltipBaseProps, 'mountNode' | 'positioning'> & {
+    positioning?: PositioningShorthand;
+};
 
 export { TooltipSlots }
 
 // @public
-export type TooltipState = Omit<TooltipBaseState, 'mountNode'>;
+export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'hidden'> & {
+    content: {
+        'data-open'?: string;
+    };
+};
 
 export { TooltipTriggerProps }
 

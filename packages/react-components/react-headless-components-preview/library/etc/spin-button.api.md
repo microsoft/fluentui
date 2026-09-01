@@ -7,20 +7,18 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderSpinButton_unstable as renderSpinButton } from '@fluentui/react-spinbutton';
-import type { SpinButtonBaseProps } from '@fluentui/react-spinbutton';
 import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
-import type { SpinButtonSlots as SpinButtonSlots_2 } from '@fluentui/react-spinbutton';
+import { SpinButtonBaseProps as SpinButtonProps } from '@fluentui/react-spinbutton';
+import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 
 export { renderSpinButton }
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
-// @public
-export type SpinButtonProps = SpinButtonBaseProps;
+export { SpinButtonProps }
 
-// @public
-export type SpinButtonSlots = SpinButtonSlots_2;
+export { SpinButtonSlots }
 
 // @public
 export type SpinButtonState = SpinButtonBaseState & {
@@ -28,6 +26,7 @@ export type SpinButtonState = SpinButtonBaseState & {
         'data-disabled'?: string;
         'data-spin-state'?: string;
         'data-at-bound'?: string;
+        'data-invalid'?: string;
     };
 };
 
