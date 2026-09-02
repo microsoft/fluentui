@@ -387,15 +387,15 @@
     --color-status-danger-border-1: #c50f1f;
     --color-status-danger-border-2: #dc626d;
     --radius-none: 0;
-    --radius-small: 2px;
-    --radius-medium: 4px;
-    --radius-large: 6px;
-    --radius-x-large: 8px;
-    --radius-2-x-large: 12px;
-    --radius-3-x-large: 16px;
-    --radius-4-x-large: 24px;
-    --radius-5-x-large: 32px;
-    --radius-6-x-large: 40px;
+    --radius-small: calc(2px * var(--base-scale));
+    --radius-medium: calc(4px * var(--base-scale));
+    --radius-large: calc(6px * var(--base-scale));
+    --radius-x-large: calc(8px * var(--base-scale));
+    --radius-2-x-large: calc(12px * var(--base-scale));
+    --radius-3-x-large: calc(16px * var(--base-scale));
+    --radius-4-x-large: calc(24px * var(--base-scale));
+    --radius-5-x-large: calc(32px * var(--base-scale));
+    --radius-6-x-large: calc(40px * var(--base-scale));
     --radius-circular: 10000px;
     --font-base:
       'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',

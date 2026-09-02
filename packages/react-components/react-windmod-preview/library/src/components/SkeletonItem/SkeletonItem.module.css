@@ -29,9 +29,10 @@
 
 @layer fui.components.l1 {
   .root {
-    /* rounded-[4px], not rounded-medium: Griffel authors the literal here, not the radius token,
-       and radii sit off the base-scale ramp. */
-    @apply relative h-(--fui-skeleton-item-size) w-full overflow-hidden rounded-[4px] bg-neutral-stencil-1;
+    /* rounded-medium (Griffel authors the literal 4px): radii ride the base-scale ramp
+       (operator ruling 2026-09-02), so the token is the responsive spelling — computed-identical
+       at the default root, and it scales with the rest of the control everywhere else. */
+    @apply relative h-(--fui-skeleton-item-size) w-full overflow-hidden rounded-medium bg-neutral-stencil-1;
 
     --fui-skeleton-item-size: calc(attr(data-size type(<number>), 16) * 1px);
 

@@ -484,6 +484,7 @@ single density knob:
 --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
 --spacing: calc(1px * var(--base-scale));
 --text-base-300: calc(14px * var(--base-scale));
+--radius-medium: calc(4px * var(--base-scale));
 ```
 
 At the default 16px root font size the two libraries are identical — that is the parity condition. Change
@@ -495,10 +496,16 @@ the document root, so a raw override has to go there too, not on a provider or a
 
 A handful of literals stay fixed by design where Griffel is also fixed (stroke widths, a few 1px nudges).
 
+Border radii are part of the scaled system too: under a non-default root font size a windmod corner grows
+with the control it rounds, where Griffel's stays at its literal px. At the default 16px root the two are
+identical, like every other family on the knob. (`--radius-none` is 0 and `--radius-circular` is the
+10000px fully-round sentinel the browser clamps to half the box — neither meaningfully scales, so both
+stay literal.)
+
 **New capability — subtree scaling.** Griffel has no equivalent of scaling one part of a page; windmod
 ships `ScaleRegion` (exported from `/provider`) for exactly that. `<ScaleRegion scale={1.5}>` multiplies
-the ambient base scale for its subtree — spacing, control geometry, strokes, the type ramp, icon glyphs
-and shadow geometry all follow; border radii stay fixed, as under the root font size. The factor is
+the ambient base scale for its subtree — spacing, control geometry, strokes, the type ramp, icon glyphs,
+shadow geometry and border radii all follow, exactly as under the root font size. The factor is
 absolute (nested regions replace, never compound), the rendered div is `display: contents`, and the region
 must sit inside a themed `FluentProvider`. See the README's ScaleRegion section.
 

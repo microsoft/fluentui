@@ -78,11 +78,10 @@ import { FluentProvider, ScaleRegion, webDarkThemeClassName } from '@fluentui/re
 ```
 
 `scale` is a **unitless multiplier on the ambient base scale**: spacing, control geometry, stroke
-widths, the type ramp, icon glyphs and shadow geometry all follow it coherently, exactly as the
-whole UI already follows the browser's root font size (a region at `scale={1.5}` in a document
-whose root font size the user bumped 2× renders 3× the design size). It works in both directions —
-`> 1` for a zoomed tutorial highlight, `< 1` for condensed density. Border radii stay fixed by
-design, as they do under the root font size too.
+widths, the type ramp, icon glyphs, shadow geometry and border radii all follow it coherently,
+exactly as the whole UI already follows the browser's root font size (a region at `scale={1.5}` in
+a document whose root font size the user bumped 2× renders 3× the design size). It works in both
+directions — `> 1` for a zoomed tutorial highlight, `< 1` for condensed density.
 
 Steps are **absolute**: a nested `ScaleRegion` replaces the ambient factor with its own — factors
 never compound, and a nested region without `scale` resets its subtree to 1. The region renders a

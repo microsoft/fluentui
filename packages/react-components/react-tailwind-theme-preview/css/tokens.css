@@ -33,8 +33,9 @@
  * own font-size, which already rides base-scale, so line boxes scale for free. They are
  * theme-invariant (ramp asserted identical across themes) and emitted below, not per theme.
  * Shadow offsets and blur radii ride the base-scale axis, so an elevation
- * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner
- * radius is a fixed design constant, not a function of the root font size.
+ * keeps its proportion to the box it lifts. Border radii ride the same axis, so a
+ * corner keeps its proportion to the control it rounds (0 and the 10000px circular
+ * sentinel excepted — neither meaningfully scales).
  *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
  * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.

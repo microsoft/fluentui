@@ -116,10 +116,12 @@ Two custom utilities the theme adds on top: `fui-focus-outline` and `fui-focus-r
 --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
 --spacing: calc(1px * var(--base-scale));
 --text-base-300: calc(14px * var(--base-scale));
+--radius-medium: calc(4px * var(--base-scale));
 ```
 
-Griffel writes literal pixels. windmod puts **spacing, control heights, radii and the whole type ramp**
-on one knob.
+Griffel writes literal pixels. windmod puts **spacing, control heights, radii, shadows and the whole
+type ramp** on one knob. (`--radius-none` is 0 and `--radius-circular` is the 10000px fully-round
+sentinel the browser clamps to half the box — neither meaningfully scales, so both stay literal.)
 
 - At a 16px root font size the two libraries are identical. That is the parity condition, and it is what
   the pixel gate verifies.

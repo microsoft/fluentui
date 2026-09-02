@@ -421,6 +421,41 @@ function shadowScaledValue(tokenName, value) {
 }
 
 /**
+ * A radius theme value on the `--base-scale` axis, with the two non-scaling members of the
+ * family carried through untouched:
+ *
+ * - `borderRadiusNone` is `0` — already scale-invariant, and `calc(0 * …)` would be noise;
+ * - `borderRadiusCircular` is the `10000px` fully-round SENTINEL: the browser clamps a
+ *   border-radius to half the box at used-value time, so its rendered value never equals
+ *   10000px and multiplying it by `--base-scale` changes nothing while making the emitted
+ *   value unrecognizable. It stays literal, and its value is asserted so an upstream retune
+ *   to a real length trips the build instead of silently shipping unscaled.
+ *
+ * Every other step is a plain px length and rides the ramp via `baseScaledValue`
+ * (operator ruling 2026-09-02, superseding the scale batch's B-17 radii-off-the-ramp
+ * reading: radii scale "consistent with the rest of the system").
+ *
+ * @param {string} tokenName
+ * @param {string} value the raw theme value, e.g. `4px`
+ * @returns {string}
+ */
+function radiusScaledValue(tokenName, value) {
+  if (value === '0') {
+    return value;
+  }
+  if (tokenName === 'borderRadiusCircular') {
+    if (value !== '10000px') {
+      throw new Error(
+        `Token \`borderRadiusCircular\` is \`${value}\`, not the 10000px fully-round sentinel this ` +
+          'generator leaves unscaled. A real length here needs a decision: scale it or re-justify the carve-out.',
+      );
+    }
+    return value;
+  }
+  return baseScaledValue(tokenName, value);
+}
+
+/**
  * The spacing-namespace PRIVATE hook value for a stroke width step: an alias of the
  * canonical variable, so utility families and module-authored `var(--spacing-thin)`
  * resolve through the one public definition.
@@ -837,6 +872,13 @@ const NAMESPACES = [
     namespace: 'radius',
     utility: 'rounded-* rounded-s-* rounded-e-* …',
     heading: 'Border radii',
+    // Radii ride the base-scale axis like the rest of the system (operator ruling 2026-09-02,
+    // superseding the earlier fixed-design-constant reading): under a non-default root font
+    // size a corner keeps its proportion to the control it rounds. `none` (0) and `circular`
+    // (the 10000px fully-round sentinel, clamped by the browser to half the box) do not
+    // meaningfully scale and stay literal — see radiusScaledValue.
+    baseScaled: true,
+    scaleValue: radiusScaledValue,
   },
   {
     prefix: 'shadow',
@@ -1157,8 +1199,9 @@ function render(options = {}) {
   out.push(' * own font-size, which already rides base-scale, so line boxes scale for free. They are');
   out.push(' * theme-invariant (ramp asserted identical across themes) and emitted below, not per theme.');
   out.push(' * Shadow offsets and blur radii ride the base-scale axis, so an elevation');
-  out.push(' * keeps its proportion to the box it lifts. Radii deliberately stay unscaled: a corner');
-  out.push(' * radius is a fixed design constant, not a function of the root font size.');
+  out.push(' * keeps its proportion to the box it lifts. Border radii ride the same axis, so a');
+  out.push(' * corner keeps its proportion to the control it rounds (0 and the 10000px circular');
+  out.push(' * sentinel excepted — neither meaningfully scales).');
   out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
