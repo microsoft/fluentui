@@ -95,7 +95,9 @@ const ExternalTargetPopover = () => {
         open={open}
         positioning={{ positioningRef }}
         onOpenChange={(event, data) => {
-          if (event.target !== buttonRef.current) {
+          const target = event.target;
+          const cameFromTrigger = target instanceof Node && buttonRef.current?.contains(target);
+          if (!cameFromTrigger) {
             setOpen(data.open);
           }
         }}
@@ -107,6 +109,10 @@ const ExternalTargetPopover = () => {
 };
 ```
 
+The guard prevents the trigger click and Popover's outside-click handling from
+applying two competing state updates. Test containment rather than strict
+identity because a button click can originate from an icon or text descendant.
+
 ### Focus behavior
 
 By default, `Popover` focuses the first focusable element in `PopoverSurface`
@@ -114,6 +120,11 @@ when it opens. Use `trapFocus` when focus must remain inside. When
 `inertTrapFocus` is also set, content outside the trap becomes inert according
 to standard dialog behavior. These props replace app-owned `FocusTrapCallout`
 or `FocusTrapZone` composition; they are not interchangeable with autofocus.
+
+`PopoverSurface` defaults to `role="group"` without `trapFocus` and
+`role="dialog"` with it. Preserve an explicit v8 `role` and `ariaLabel` by
+setting `role` and `aria-label` on `PopoverSurface`; do not enable `trapFocus`
+solely to obtain dialog semantics.
 
 ## Prop Mapping
 
@@ -146,6 +157,14 @@ For `gapSpace`, pass positioning as an object:
 </>
 ```
 
+When converting a string placement to object form, use `start`/`end` for the
+inline alignment of `above`/`below`, and `top`/`bottom` for the block alignment
+of `before`/`after`. For example, `rightTopEdge` with a gap becomes:
+
+```tsx
+<Popover positioning={{ position: 'after', align: 'top', offset: { mainAxis: 8 } }} />
+```
+
 ### ICalloutProps → PopoverProps
 
 | v8                          | v9                                       | Notes                                                      |
@@ -153,6 +172,8 @@ For `gapSpace`, pass positioning as an object:
 | `target`                    | `<PopoverTrigger>` child                 | Replaces ref-based targeting; trigger is co-located in JSX |
 | `hidden`                    | `open` (inverted)                        | Closed popovers unmount; there is no keep-mounted prop     |
 | `onDismiss`                 | `onOpenChange`                           | `(ev, data) => data.open === false` on close               |
+| `role`                      | `role` on `<PopoverSurface>`             | Preserve the explicit surface role                         |
+| `ariaLabel`                 | `aria-label` on `<PopoverSurface>`       | Preserve the accessible name                               |
 | `directionalHint`           | `positioning`                            | String or object; see table above                          |
 | `directionalHintFixed`      | `positioning.pinned`                     | Set `pinned: true` to prevent automatic repositioning      |
 | `directionalHintForRTL`     | —                                        | Logical start/end positioning is RTL-aware                 |

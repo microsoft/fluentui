@@ -79,7 +79,7 @@ export const ColorPickerV9BasicExample = () => {
 
   return (
     <>
-      <ColorPicker color={color} onColorChange={handleChange}>
+      <ColorPicker role="group" aria-label={`Color picker, ${hex} selected`} color={color} onColorChange={handleChange}>
         <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
         <ColorSlider channel="hue" aria-label="Hue" />
         <AlphaSlider aria-label="Alpha" />
@@ -128,8 +128,26 @@ export const ColorPickerV9BasicExample = () => {
 The picker is controlled by one HSV value. The RGB, alpha, and hex fields are
 equivalent app-owned controls derived from that value; validate and clamp
 production input as appropriate. `ColorArea` exposes two native input slots, so
-label both `inputX` and `inputY`. The preview is passive output rather than a
-`ColorSwatch`, which is an interactive selection control.
+label both `inputX` and `inputY`. They implement the two axes of one composite
+control and use roving tab focus, so do not force both inputs into the tab
+sequence. The preview is passive output rather than a `ColorSwatch`, which is
+an interactive selection control.
+
+V8 `IColor` and v9 HSV values use different units. Keep hue in the `0`-`360`
+range, but divide v8 `s`, `v`, and `a` percentage values by `100` when creating
+the v9 color. Multiply those v9 fractions by `100` when adapting back to code
+that still expects v8 percentages. If the v8 value originated from an
+eight-digit hex color, parse it rather than treating the byte alpha (`0`-`255`)
+as either API's alpha unit.
+
+The `ColorPicker` root is a `div` without a default landmark role. When
+preserving `strings.rootAriaLabelFormat`, add an appropriate role such as
+`group` together with the localized `aria-label`; an `aria-label` on an
+unclassified `div` alone does not create a named container.
+
+Color callbacks should read the next color from the callback data, not assume a
+specific React event target. Pointer interaction in `ColorArea` can originate
+from native pointer events while input and keyboard changes use React events.
 
 ## Prop Mapping
 
@@ -141,7 +159,7 @@ This table maps v8 `ColorPicker` component props to their v9 equivalents.
 | ------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `alphaType`         | `AlphaSlider`    | Render it for `"alpha"`; set `transparency` for `"transparency"`; omit it for `"none"`.                                            |
 | `alphaSliderHidden` | Remove           | Deprecated in v8. Omit `AlphaSlider` when no alpha control is wanted.                                                              |
-| `color`             | `color`          | Type changed `IColor, string`->`HSV`                                                                                               |
+| `color`             | `color`          | Type changed `IColor, string`->`HSV`; convert `s`, `v`, and `a` from 0-100 percentages to 0-1 fractions                          |
 | `className`         | `className`      | Applied to the root slot.                                                                                                          |
 | `componentRef`      | `not supported`  |                                                                                                                                    |
 | `hexLabel`          | App-owned input  | Deprecated in v8; label the replacement hex input.                                                                                 |
@@ -152,7 +170,7 @@ This table maps v8 `ColorPicker` component props to their v9 equivalents.
 | `onChange`          | `onColorChange`  | Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>` |
 | `no equivalent`     | `shape`          | New prop, `shape` of the ColorPicker.                                                                                              |
 | `showPreview`       | App-owned output | Render a passive preview; do not use interactive `ColorSwatch` solely as a preview.                                                |
-| `strings`           | Native labels    | Apply localized visible labels and ARIA attributes to the composed controls and input slots.                                       |
+| `strings`           | Native labels    | Apply localized visible labels and ARIA attributes to the composed controls and input slots; preserve `rootAriaLabelFormat` with a named group. |
 | `styles`            | `not supported`  | Use style customization through `className` instead.                                                                               |
 | `theme`             | `not supported`  |                                                                                                                                    |
 | `tooltipProps`      | `not supported`  | Use `Tooltip` component instead.                                                                                                   |
@@ -166,7 +184,7 @@ This table maps changes between `ColorRectangle` and `ColorArea` equivalent in v
 | `ariaLabel`       | `inputX`, `inputY` | Set native `aria-label` values on both input slots.         |
 | `ariaValueFormat` | Native ARIA        | Compute `aria-valuetext` for both input slots if needed.    |
 | `ariaDescription` | Native ARIA        | Use `aria-describedby` on both input slots.                 |
-| `color`           | `color`            | Type changed `IColor`->`HSV`                                |
+| `color`           | `color`            | Type changed `IColor`->`HSV`; convert percentage channels to 0-1 fractions |
 | `no equivalent`   | `defaultColor`     | Default color for an uncontrolled `ColorArea`               |
 | `minSize`         | `not supported`    |                                                             |
 | `onChange`        | `onChange`         | Type changed to `EventHandler<ColorAreaOnColorChangeData>`. |
@@ -178,7 +196,7 @@ This table maps changes between `ColorRectangle` and `ColorArea` equivalent in v
 | --------------- | ---------------- | --------------------------------------------------------------------------------------------------- |
 | `type`          | `channel`        | Color channel. Supported values are `hue`, `saturation`, and `value`. For alpha, use `AlphaSlider`. |
 | `value`         | `color[channel]` | Control the slider with the relevant field of the HSV `color`; updates return the complete color.   |
-| `color`         | `color`          | Type changed `IColor`->`HSV`                                                                        |
+| `color`         | `color`          | Type changed `IColor`->`HSV`; convert percentage channels to 0-1 fractions                          |
 | `no equivalent` | `defaultColor`   | Default color for an uncontrolled `ColorSlider`                                                     |
 | `minValue`      | Remove           | Deprecated in v8; v9 derives the range from `channel`.                                              |
 | `maxValue`      | Remove           | Deprecated in v8; v9 derives the range from `channel`.                                              |

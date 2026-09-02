@@ -56,12 +56,23 @@ protection:
 import * as React from 'react';
 import { Field, Input } from '@fluentui/react-components';
 
-const ValidatedInput = ({ validate }: { validate: (value: string) => Promise<string> }) => {
+const ValidatedInput = ({
+  validate,
+  validateOnLoad = false,
+}: {
+  validate: (value: string) => Promise<string>;
+  validateOnLoad?: boolean;
+}) => {
   const [value, setValue] = React.useState('');
   const [message, setMessage] = React.useState('');
+  const [validationRequest, setValidationRequest] = React.useState(validateOnLoad ? 1 : 0);
   const requestSequence = React.useRef(0);
 
   React.useEffect(() => {
+    if (validationRequest === 0) {
+      return;
+    }
+
     const sequence = ++requestSequence.current;
     const timer = window.setTimeout(async () => {
       const nextMessage = await validate(value);
@@ -70,11 +81,17 @@ const ValidatedInput = ({ validate }: { validate: (value: string) => Promise<str
       }
     }, 200);
     return () => window.clearTimeout(timer);
-  }, [validate, value]);
+  }, [validate, validationRequest, value]);
 
   return (
     <Field label="Account name" validationState={message ? 'error' : 'none'} validationMessage={message || undefined}>
-      <Input value={value} onChange={(_, data) => setValue(data.value)} />
+      <Input
+        value={value}
+        onChange={(_, data) => {
+          setValue(data.value);
+          setValidationRequest(request => request + 1);
+        }}
+      />
     </Field>
   );
 };
@@ -87,7 +104,9 @@ the validator on mount or skipping the initial effect/event until the first
 requested validation. `deferredValidationTime` becomes the app-owned debounce.
 Keep the last-request-wins guard (or cancellation) for promise validators.
 Only update `validationMessage` when a result is current so stale errors are
-not announced.
+not announced. Prefer an explicit validation-request counter or event-driven
+validator over a one-time mount ref: React Strict Mode can replay mount effects,
+which makes a ref latch accidentally validate despite `validateOnLoad={false}`.
 
 An equivalent `Input` usage is:
 
@@ -175,7 +194,7 @@ This table maps v8 `TextField` props to the v9 `Input` equivalent.
 | `borderless`               | Custom `className` + `makeStyles`          | No v9 appearance is borderless; remove the root border with custom styling           |
 | `label`                    | Use `Label` component                      | Be sure to associate `Label` with `Input` via `htmlFor`                              |
 | `onRenderLabel`            | n/a                                        | Use slots to customize `Input`                                                       |
-| `description`              | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
+| `description`              | `Field hint`                               | Use the `hint` slot to preserve field layout and the accessible description          |
 | `onRenderDescription`      | n/a                                        |                                                                                      |
 | `onRenderInput`            | n/a                                        | Use slots to customize `Input`                                                       |
 | `prefix`                   | `contentBefore`                            | This is a slot not a `string`                                                        |

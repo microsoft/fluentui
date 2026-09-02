@@ -94,10 +94,18 @@ const useStyles = makeStyles({
 
 const Component = () => {
   const [isLoaded, setLoaded] = useState(false);
+  const imageRef = React.useRef<HTMLImageElement>(null);
   const styles = useStyles();
+
+  React.useEffect(() => {
+    if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, []);
 
   return (
     <Image
+      ref={imageRef}
       src="https://via.placeholder.com/300x300"
       alt="Example image"
       onLoad={() => setLoaded(true)}
@@ -109,7 +117,10 @@ const Component = () => {
 
 Apply the animation class only after `onLoad` changes the state. Applying it
 while the image is still loading starts the animation on mount and can finish
-before any pixels are available.
+before any pixels are available. Also check the image element's `complete` and
+`naturalWidth` values after mount so cached, data-URL, or hydrated images do not
+remain hidden if loading completed before the React handler was attached.
+Reset the app-owned load state when `src` changes if the source is dynamic.
 
 ### shouldStartVisible
 
@@ -185,7 +196,7 @@ The table below presents a mapping of props between the v8 and v9 `Image` compon
 | `className`            | `className`                                                                |
 | `coverStyle`           | `fit="cover"`                                                              |
 | `imageFit`             | `fit`; compose `centerCover`/`centerContain` to preserve no-upscale rules  |
-| `maximizeFrame`        | `block`.                                                                   |
+| `maximizeFrame`        | `block`, for width only; preserve height/frame sizing separately           |
 | `styles`               | `className`                                                                |
 | `loading`              | `loading`                                                                  |
 | `onLoadingStateChange` | Not supported -> use onLoad and onError events                             |
@@ -196,3 +207,8 @@ The table below presents a mapping of props between the v8 and v9 `Image` compon
 In v9, the boolean props from [IImageStyleProps](https://developer.microsoft.com/en-us/fluentui#/controls/web/image#IImageStyleProps)
 — such as `isCenter`, `isCenterCover`, `isCenterContain`, `isContain`, `isLandscape`, `isNone`, `isError`, `isLoaded`, and `isNotImageFit` — are no longer supported.
 Use the className prop for custom styling and the fit prop to control image fitting instead.
+
+`block` sets the v9 image width to `100%`; it does not maximize height and can
+override an explicit `width`. Do not combine it with a fixed-width frame when
+the v8 image was intended to remain square or circular. Preserve that frame
+with explicit width and height (or a clipping wrapper) and omit `block`.
