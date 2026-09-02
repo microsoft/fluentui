@@ -228,10 +228,24 @@ Both rules match **optional-chained** forms too — `store?.use.field()`, `store
 `store?.getState()`, `getXStore()?.field`, `const s = getXStore(); … s?.field`. Babel parses these as
 `OptionalCallExpression`/`OptionalMemberExpression`, distinct node types from their plain
 counterparts, so a rule that only matched the latter would let `?.` slip through unflagged.
-Both are verifiable in the compiler's own output: the call is wrapped in a
-`Symbol.for("react.memo_cache_sentinel")` slot that computes once and then always returns the
-cached value. For a plain snapshot that freezes the value; for a hidden hook that means the
-underlying `useStore` runs only once, changing the hook count between renders and crashing.
+
+`storeAccessorPattern` **never matches a `useXxx`-named callee**, even when the regex would.
+`Store$` is the obvious pattern for "my stores are named `*Store`", and it also matches `useStore`,
+`useToastStore` and `useSyncExternalStore`. Verified against the compiler's output: a hook call is
+never placed in a `Symbol.for("react.memo_cache_sentinel")` slot — doing so would break the Rules of
+Hooks — so its result is recomputed every render and cannot go stale. The hazard's precondition does
+not exist, which makes such a finding a false positive by construction.
+
+The exclusion is deliberately confined to `storeAccessorPattern`:
+
+- `detectGetStateReads` is unaffected — `useStoreApi().getState().field` is a genuine non-reactive
+  read and still fires.
+- `hidden-selector-hook` is unaffected — `store.use.field()` is the opposite case, where the compiler
+  _fails_ to recognize a hook.
+  Both are verifiable in the compiler's own output: the call is wrapped in a
+  `Symbol.for("react.memo_cache_sentinel")` slot that computes once and then always returns the
+  cached value. For a plain snapshot that freezes the value; for a hidden hook that means the
+  underlying `useStore` runs only once, changing the hook count between renders and crashing.
 
 Findings are severity-ranked:
 

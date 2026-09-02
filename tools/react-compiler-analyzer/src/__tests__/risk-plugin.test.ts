@@ -219,6 +219,50 @@ describe('riskPlugin', () => {
     });
   });
 
+  describe('hook-named accessors', () => {
+    // `Store$` is the obvious regex for "my stores are named *Store", and it also matches
+    // useStore / useToastStore / useSyncExternalStore. A hook result is re-read every render —
+    // the compiler never puts it in a compute-once cache slot — so it cannot go stale.
+    const config: RiskConfig = { storeAccessorPattern: 'Store$', detectGetStateReads: true };
+
+    it('does not flag a value bound from a useXxx-named call', async () => {
+      const findings = await runPlugin('hook-named-accessor.tsx', config);
+      expect(findings.filter(f => f.symbol === 'useStore')).toHaveLength(0);
+    });
+
+    it('does not flag a direct read off a useXxx-named call', async () => {
+      const findings = await runPlugin('hook-named-accessor.tsx', config);
+      expect(findings.filter(f => f.symbol === 'useToastStore')).toHaveLength(0);
+    });
+
+    it('does not flag useSyncExternalStore, which also ends in Store', async () => {
+      const findings = await runPlugin('hook-named-accessor.tsx', config);
+      expect(findings.filter(f => f.symbol === 'useSyncExternalStore')).toHaveLength(0);
+    });
+
+    it('still flags a genuine accessor bound to a local', async () => {
+      const findings = await runPlugin('hook-named-accessor.tsx', config);
+      const real = findings.filter(f => f.symbol === 'getChatStore');
+      expect(real).toHaveLength(1);
+      expect(real[0].severity).toBe('medium');
+    });
+
+    it('still flags `.getState()` on a hook-returned store API', async () => {
+      // detectGetStateReads is independent of the accessor-name match and must keep firing.
+      const findings = await runPlugin('hook-named-accessor.tsx', config);
+      expect(findings.map(f => f.symbol)).toContain('useStoreApi().getState');
+    });
+
+    it('leaves the hidden-selector-hook rule untouched on a hook receiver', async () => {
+      // `store.use.field()` is the opposite case: the compiler fails to recognize it as a hook.
+      const findings = await runPlugin('hidden-selector-receivers.tsx', {
+        ...config,
+        selectorHookProperties: ['use'],
+      });
+      expect(findings.some(f => f.symbol === 'useWithSelectorsStore().use.locale')).toBe(true);
+    });
+  });
+
   describe('safe code', () => {
     it('does not flag anything in a component with no store reads', async () => {
       const findings = await runPlugin('safe.tsx', {

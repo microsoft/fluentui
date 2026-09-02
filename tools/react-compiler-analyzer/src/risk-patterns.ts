@@ -25,6 +25,15 @@ export function isAnyMember(node: Node | null | undefined): node is AnyMember {
   return node?.type === 'MemberExpression' || node?.type === 'OptionalMemberExpression';
 }
 
+/**
+ * A `useXxx`-named callee, which the React Compiler recognizes as a hook.
+ *
+ * Shared with the call-graph so both halves agree on what a hook is.
+ */
+export function isHookName(name: string): boolean {
+  return /^use[A-Z]/.test(name);
+}
+
 /** Resolved, ready-to-use form of the leaf-detection knobs from {@link RiskConfig}. */
 export interface LeafRiskConfig {
   detectGetState: boolean;
@@ -135,7 +144,15 @@ export function matchRiskyCall(call: AnyCall, parent: Node | null, cfg: LeafRisk
   }
 
   // ── `getXStore().field` / `const { field } = getXStore()` accessor read ──
-  if (cfg.storeAccessorRe && callee.type === 'Identifier' && cfg.storeAccessorRe.test(callee.name)) {
+  // A `useXxx`-named callee is excluded: the compiler never hoists a hook call into a
+  // compute-once cache slot (that would break the Rules of Hooks), so its result is re-read
+  // every render and cannot go stale. `Store$` matches `useStore` too, hence the guard.
+  if (
+    cfg.storeAccessorRe &&
+    callee.type === 'Identifier' &&
+    !isHookName(callee.name) &&
+    cfg.storeAccessorRe.test(callee.name)
+  ) {
     const calleeName = callee.name;
     if (isSnapshotRead(call, parent)) {
       return {
@@ -173,7 +190,14 @@ export function matchAccessorInit(init: Node, cfg: LeafRiskConfig, bindingName: 
     };
   }
 
-  if (cfg.storeAccessorRe && callee.type === 'Identifier' && cfg.storeAccessorRe.test(callee.name)) {
+  // Same hook exclusion as {@link matchRiskyCall}: a hook's return value is recomputed every
+  // render, so binding it to a local does not make it a stale snapshot.
+  if (
+    cfg.storeAccessorRe &&
+    callee.type === 'Identifier' &&
+    !isHookName(callee.name) &&
+    cfg.storeAccessorRe.test(callee.name)
+  ) {
     return {
       ruleId: 'nonreactive-store-read',
       severity: 'medium',

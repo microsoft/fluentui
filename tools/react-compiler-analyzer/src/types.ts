@@ -185,7 +185,8 @@ export interface RiskConfig {
   /**
    * Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`).
    * When set, enables `getXStore().field` snapshot detection (`nonreactive-store-read`), including
-   * one level of local binding (`const s = getAppStore(); … s.field`). Omit to disable.
+   * one level of local binding (`const s = getAppStore(); … s.field`). `useXxx`-named callees are
+   * never matched, since a hook result is recomputed every render. Omit to disable.
    */
   storeAccessorPattern?: string;
   /**

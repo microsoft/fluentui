@@ -8,6 +8,8 @@ import type { ModuleResolver, ResolverStats } from './module-resolver';
 import {
   buildLeafConfig,
   hasAnyLeafRule,
+  isAnyCall,
+  isHookName,
   isSnapshotRead,
   matchAccessorInit,
   matchRiskyCall,
@@ -163,7 +165,7 @@ export function createCallGraphAnalyzer(
     // A `useXxx()`-named callee is a hook the compiler *recognizes*: it does not memoize around
     // it, and any risky leaf inside it is reported at the hook's own definition. Following it
     // would double-report and produce false positives at the caller.
-    if (/^use[A-Z]/.test(callee.name)) {
+    if (isHookName(callee.name)) {
       return null;
     }
     return resolveName(callee.name, model, depth);
