@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "release recovery: versions already published to npm by the failed pipeline",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

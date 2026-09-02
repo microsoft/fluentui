@@ -2,6 +2,143 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:03 GMT",
+      "version": "9.74.7",
+      "tag": "@fluentui/react-components_v9.74.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e7a4695d76211fc7ccb525f2cc7d51343aba6c4e",
+            "comment": "fix: avoid redundant overflow work during menu teardown and unchanged visibility updates"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "fix: remove no-op `supportsSize` field control option from `TagPickerInput`"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "9a56ae0628aced94edc36149c77f6bd15db6de30",
+            "comment": "Keep motion ref handling out of the headless MessageBar base hook."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "e7a4695d76211fc7ccb525f2cc7d51343aba6c4e",
+            "comment": "fix: synchronously measure overflowing managers when the overflow menu attaches"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b5ec47fc035849b21b35d6f6054d60c0a64ff3db",
+            "comment": "fix: avoid redundant overflow recomputation after conditional menu removal"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "7ebf7c11eb83621193a7ae43979cb02755f557bf",
+            "comment": "fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "chore: add TODO for the no-op `supportsSize` field control option"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "chore: add TODO for the no-op `supportsSize` field control option"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c1f8330299439d342c6aa5a5d2b6e4db08aa5451",
+            "comment": "chore: verify bundle isolation of base hooks"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2a47ecebbc1a822e60145acacef718f450079b55",
+            "comment": "docs: clarify how `supportsSize` option of `useFieldControlProps_unstable` applies the Field size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:13 GMT",
       "version": "9.74.6",
       "tag": "@fluentui/react-components_v9.74.6",

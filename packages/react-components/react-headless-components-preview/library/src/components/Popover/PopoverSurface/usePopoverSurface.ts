@@ -33,11 +33,15 @@ export const usePopoverSurface = (
         role: trapFocus ? 'dialog' : 'group',
         ...props,
         id: surfaceId,
-        popover: trapFocus ? undefined : 'auto',
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),
       },
-      { elementType: 'dialog' },
+      {
+        defaultProps: {
+          popover: trapFocus ? undefined : 'auto',
+        },
+        elementType: 'dialog',
+      },
     ),
     'data-open': open ? 'true' : 'false',
   };

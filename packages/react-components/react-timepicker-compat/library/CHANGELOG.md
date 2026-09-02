@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-timepicker-compat
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.4.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.4.39)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat_v0.4.38..@fluentui/react-timepicker-compat_v0.4.39)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
 
 ## [0.4.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.4.38)
 

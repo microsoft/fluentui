@@ -118,4 +118,4 @@ extends:
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
-                  NPM_TOKEN: $(npmToken)
+                  BEACHBALL_NPM_TOKEN: $(npmToken)

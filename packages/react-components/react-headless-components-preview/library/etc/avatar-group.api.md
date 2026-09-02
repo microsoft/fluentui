@@ -22,12 +22,14 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
+import { useAvatarGroupContext_unstable as useAvatarGroupContext } from '@fluentui/react-avatar';
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -103,6 +105,8 @@ export const renderAvatarGroupPopover: (state: AvatarGroupPopoverState, contextV
 
 // @public
 export const useAvatarGroup: (props: AvatarGroupProps, ref: React_2.Ref<HTMLDivElement>) => AvatarGroupState;
+
+export { useAvatarGroupContext }
 
 // @public
 export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;
