@@ -25,8 +25,7 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps> = React.forwardRef
     const contextValues = useRadioGroupContextValues(styled);
 
     return renderRadioGroup(styled, contextValues);
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<RadioGroupProps>;
+);
 
 RadioGroup.displayName = 'RadioGroup';

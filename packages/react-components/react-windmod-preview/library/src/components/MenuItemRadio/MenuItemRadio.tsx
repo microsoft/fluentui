@@ -32,7 +32,6 @@ export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forw
     renderMenuItemRadio(
       useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(mergeContextProps(useMenuItemContext(), props), ref))),
     ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuItemRadioProps>;
+);
 
 MenuItemRadio.displayName = 'MenuItemRadio';

@@ -75,7 +75,7 @@ export const ScaleRegion: ForwardRefComponent<ScaleRegionProps> = React.forwardR
       </div>
     );
   },
-) as ForwardRefComponent<ScaleRegionProps>;
+);
 
 ScaleRegion.displayName = 'ScaleRegion';
 

@@ -39,8 +39,7 @@ export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef(
     return (
       <RatingItemContextProvider value={itemContext}>{renderRating(styled, contextValues)}</RatingItemContextProvider>
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<RatingProps>;
+);
 
 Rating.displayName = 'Rating';

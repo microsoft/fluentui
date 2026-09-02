@@ -33,8 +33,7 @@ export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef(
     const look = React.useMemo(() => ({ appearance, size }), [appearance, size]);
 
     return <TagGroupContextProvider value={look}>{renderTagGroup(styled, contextValues)}</TagGroupContextProvider>;
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<TagGroupProps>;
+);
 
 TagGroup.displayName = 'TagGroup';

@@ -38,6 +38,6 @@ export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.fo
     renderMenuItemSwitch(
       useMenuItemSwitchStyles(withThumb(useMenuItemSwitch(mergeContextProps(useMenuItemContext(), props), ref))),
     ),
-) as ForwardRefComponent<MenuItemSwitchProps>;
+);
 
 MenuItemSwitch.displayName = 'MenuItemSwitch';

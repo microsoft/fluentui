@@ -14,7 +14,6 @@ import { useNavDrawerFooterStyles } from './useNavDrawerFooterStyles';
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps> = React.forwardRef(
   (props: NavDrawerFooterProps, ref: React.Ref<HTMLElement>) =>
     renderNavDrawerFooter(useNavDrawerFooterStyles(useNavDrawerFooter(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerFooterProps>;
+);
 
 NavDrawerFooter.displayName = 'NavDrawerFooter';

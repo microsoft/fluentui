@@ -30,8 +30,7 @@ export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef(
         indicator: { ...base.indicator, children: base.indicator.children ?? <CircleFilled /> },
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SwitchProps>;
+);
 
 Switch.displayName = 'Switch';

@@ -39,7 +39,6 @@ export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = Reac
         withCheckmark(useMenuItemCheckbox(mergeContextProps(useMenuItemContext(), props), ref)),
       ),
     ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuItemCheckboxProps>;
+);
 
 MenuItemCheckbox.displayName = 'MenuItemCheckbox';

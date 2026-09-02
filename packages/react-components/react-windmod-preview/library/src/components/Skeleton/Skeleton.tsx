@@ -48,8 +48,7 @@ export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef(
         {renderSkeleton(styled, contextValues)}
       </SkeletonContextProvider>
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SkeletonProps>;
+);
 
 Skeleton.displayName = 'Skeleton';

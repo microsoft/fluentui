@@ -22,8 +22,7 @@ export const Slider: ForwardRefComponent<SliderProps> = React.forwardRef(
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SliderProps>;
+);
 
 Slider.displayName = 'Slider';

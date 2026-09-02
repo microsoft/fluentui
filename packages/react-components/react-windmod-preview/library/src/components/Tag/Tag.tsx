@@ -68,7 +68,6 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
   };
 
   return renderTag(useTagStyles(state), useTagContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TagProps>;
+});
 
 Tag.displayName = 'Tag';

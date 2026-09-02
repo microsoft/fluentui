@@ -34,8 +34,7 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef
     };
 
     return renderSpinButton(useSpinButtonStyles({ ...base, incrementButton, decrementButton, appearance, size }));
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SpinButtonProps>;
+);
 
 SpinButton.displayName = 'SpinButton';

@@ -45,7 +45,6 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardR
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<SplitButtonProps>;
+});
 
 SplitButton.displayName = 'SplitButton';

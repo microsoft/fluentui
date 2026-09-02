@@ -14,7 +14,6 @@ import { useNavDrawerHeaderStyles } from './useNavDrawerHeaderStyles';
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef(
   (props: NavDrawerHeaderProps, ref: React.Ref<HTMLElement>) =>
     renderNavDrawerHeader(useNavDrawerHeaderStyles(useNavDrawerHeader(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerHeaderProps>;
+);
 
 NavDrawerHeader.displayName = 'NavDrawerHeader';

@@ -22,7 +22,6 @@ export const NavSubItem: ForwardRefComponent<NavSubItemProps> = React.forwardRef
       density,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<NavSubItemProps>;
+});
 
 NavSubItem.displayName = 'NavSubItem';

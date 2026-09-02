@@ -16,7 +16,6 @@ import { usePopoverSurfaceStyles } from './usePopoverSurfaceStyles';
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef(
   (props: PopoverSurfaceProps, ref: React.Ref<HTMLDialogElement>) =>
     renderPopoverSurface(usePopoverSurfaceStyles({ ...usePopoverSurface(props, ref), ...usePopoverLook() })),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<PopoverSurfaceProps>;
+);
 
 PopoverSurface.displayName = 'PopoverSurface';

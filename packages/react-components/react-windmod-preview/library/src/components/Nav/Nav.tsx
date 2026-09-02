@@ -24,8 +24,7 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef(
     // The headless context-values helper writes a literal 'medium' because its state type omits
     // density; overriding it here is the whole mechanism by which a row ever reads 'small'.
     return renderNav(styled, { ...contextValues, nav: { ...contextValues.nav, density } });
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<NavProps>;
+);
 
 Nav.displayName = 'Nav';

@@ -33,8 +33,7 @@ export const SkeletonItem: ForwardRefComponent<SkeletonItemProps> = React.forwar
         shape,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SkeletonItemProps>;
+);
 
 SkeletonItem.displayName = 'SkeletonItem';

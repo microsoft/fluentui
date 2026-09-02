@@ -25,8 +25,7 @@ export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<RatingItemProps>;
+);
 
 RatingItem.displayName = 'RatingItem';

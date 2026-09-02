@@ -41,7 +41,6 @@ export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props,
   );
 
   return renderSelect(styled);
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<SelectProps>;
+});
 
 Select.displayName = 'Select';

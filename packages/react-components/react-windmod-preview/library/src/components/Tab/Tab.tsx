@@ -38,7 +38,6 @@ export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) 
       }),
     ),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TabProps>;
+});
 
 Tab.displayName = 'Tab';

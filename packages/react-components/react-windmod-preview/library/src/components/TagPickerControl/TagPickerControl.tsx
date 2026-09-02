@@ -39,6 +39,6 @@ export const TagPickerControl: ForwardRefComponent<TagPickerControlProps> = Reac
     : base;
 
   return renderTagPickerControl(useTagPickerControlStyles({ ...withGlyph, appearance, size }));
-}) as ForwardRefComponent<TagPickerControlProps>;
+});
 
 TagPickerControl.displayName = 'TagPickerControl';

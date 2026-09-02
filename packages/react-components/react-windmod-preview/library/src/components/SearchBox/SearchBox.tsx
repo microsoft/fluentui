@@ -38,8 +38,7 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps> = React.forwardRef(
     });
 
     return renderSearchBox(styled);
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SearchBoxProps>;
+);
 
 SearchBox.displayName = 'SearchBox';

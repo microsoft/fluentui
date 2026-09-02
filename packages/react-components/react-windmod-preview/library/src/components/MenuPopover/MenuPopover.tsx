@@ -15,7 +15,6 @@ import { useMenuPopoverStyles } from './useMenuPopoverStyles';
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef(
   (props: MenuPopoverProps, ref: React.Ref<HTMLElement>) =>
     renderMenuPopover(useMenuPopoverStyles(useMenuPopover(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuPopoverProps>;
+);
 
 MenuPopover.displayName = 'MenuPopover';

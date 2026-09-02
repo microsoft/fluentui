@@ -34,7 +34,6 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef(
 
     return renderNavDrawer(styled, { ...contextValues, nav: { ...contextValues.nav, density } });
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerProps>;
+);
 
 NavDrawer.displayName = 'NavDrawer';

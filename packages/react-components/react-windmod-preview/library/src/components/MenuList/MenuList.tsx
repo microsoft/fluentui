@@ -34,7 +34,6 @@ export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef(
       </MenuItemContextProvider>
     );
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuListProps>;
+);
 
 MenuList.displayName = 'MenuList';

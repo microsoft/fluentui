@@ -28,6 +28,6 @@ export const TagPickerList: ForwardRefComponent<TagPickerListProps> = React.forw
       root: slot.always({ ...base.root }, { elementType: Listbox }),
     }),
   );
-}) as ForwardRefComponent<TagPickerListProps>;
+});
 
 TagPickerList.displayName = 'TagPickerList';

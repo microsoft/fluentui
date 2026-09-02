@@ -13,7 +13,6 @@ import { useRadioStyles } from './useRadioStyles';
  */
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
   return renderRadio(useRadioStyles(useRadio(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<RadioProps>;
+});
 
 Radio.displayName = 'Radio';

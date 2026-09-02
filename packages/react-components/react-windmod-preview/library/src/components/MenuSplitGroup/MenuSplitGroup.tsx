@@ -31,6 +31,6 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.fo
       </MenuItemContextProvider>
     );
   },
-) as ForwardRefComponent<MenuSplitGroupProps>;
+);
 
 MenuSplitGroup.displayName = 'MenuSplitGroup';

@@ -17,6 +17,6 @@ import { useTagPickerOptionGroupStyles } from './useTagPickerOptionGroupStyles';
  */
 export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps> = React.forwardRef((props, ref) => {
   return renderTagPickerOptionGroup(useTagPickerOptionGroupStyles(useTagPickerOptionGroup(props, ref)));
-}) as ForwardRefComponent<TagPickerOptionGroupProps>;
+});
 
 TagPickerOptionGroup.displayName = 'TagPickerOptionGroup';

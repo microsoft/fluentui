@@ -22,8 +22,7 @@ export const Spinner: ForwardRefComponent<SpinnerProps> = React.forwardRef(
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SpinnerProps>;
+);
 
 Spinner.displayName = 'Spinner';

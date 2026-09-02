@@ -14,6 +14,6 @@ import { useTagPickerInputStyles } from './useTagPickerInputStyles';
  */
 export const TagPickerInput: ForwardRefComponent<TagPickerInputProps> = React.forwardRef((props, ref) => {
   return renderTagPickerInput(useTagPickerInputStyles(useTagPickerInput(props, ref)));
-}) as ForwardRefComponent<TagPickerInputProps>;
+});
 
 TagPickerInput.displayName = 'TagPickerInput';

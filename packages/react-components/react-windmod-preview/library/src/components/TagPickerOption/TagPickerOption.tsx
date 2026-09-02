@@ -16,6 +16,6 @@ import { useTagPickerOptionStyles } from './useTagPickerOptionStyles';
  */
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps> = React.forwardRef((props, ref) => {
   return renderTagPickerOption(useTagPickerOptionStyles(useTagPickerOption(props, ref)));
-}) as ForwardRefComponent<TagPickerOptionProps>;
+});
 
 TagPickerOption.displayName = 'TagPickerOption';

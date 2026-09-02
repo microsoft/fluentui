@@ -34,8 +34,7 @@ export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef(
     );
 
     return <TabListContextProvider value={tabContext}>{renderTabList(styled, contextValues)}</TabListContextProvider>;
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<TabListProps>;
+);
 
 TabList.displayName = 'TabList';

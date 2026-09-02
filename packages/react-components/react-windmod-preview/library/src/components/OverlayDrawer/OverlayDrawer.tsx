@@ -22,7 +22,6 @@ export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = React.forw
 
     return renderOverlayDrawer(useOverlayDrawerStyles({ ...useOverlayDrawer(rest, ref), size }), contextValue);
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<OverlayDrawerProps>;
+);
 
 OverlayDrawer.displayName = 'OverlayDrawer';

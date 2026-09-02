@@ -23,6 +23,6 @@ import { useMenuItemLinkStyles } from './useMenuItemLinkStyles';
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwardRef(
   (props: MenuItemLinkProps, ref: React.Ref<HTMLAnchorElement>) =>
     renderMenuItemLink(useMenuItemLinkStyles(useMenuItemLink(mergeContextProps(useMenuItemContext(), props), ref))),
-) as ForwardRefComponent<MenuItemLinkProps>;
+);
 
 MenuItemLink.displayName = 'MenuItemLink';

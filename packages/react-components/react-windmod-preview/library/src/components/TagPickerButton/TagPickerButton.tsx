@@ -14,6 +14,6 @@ import { useTagPickerButtonStyles } from './useTagPickerButtonStyles';
  */
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps> = React.forwardRef((props, ref) => {
   return renderTagPickerButton(useTagPickerButtonStyles(useTagPickerButton(props, ref)));
-}) as ForwardRefComponent<TagPickerButtonProps>;
+});
 
 TagPickerButton.displayName = 'TagPickerButton';

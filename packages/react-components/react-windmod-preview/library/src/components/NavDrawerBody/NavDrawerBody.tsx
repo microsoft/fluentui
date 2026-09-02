@@ -14,7 +14,6 @@ import { useNavDrawerBodyStyles } from './useNavDrawerBodyStyles';
 export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps> = React.forwardRef(
   (props: NavDrawerBodyProps, ref: React.Ref<HTMLDivElement>) =>
     renderNavDrawerBody(useNavDrawerBodyStyles(useNavDrawerBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerBodyProps>;
+);
 
 NavDrawerBody.displayName = 'NavDrawerBody';

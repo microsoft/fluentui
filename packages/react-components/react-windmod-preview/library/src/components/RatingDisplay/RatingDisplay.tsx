@@ -47,8 +47,7 @@ export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forw
         {renderRatingDisplay(styled, contextValues)}
       </RatingItemContextProvider>
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<RatingDisplayProps>;
+);
 
 RatingDisplay.displayName = 'RatingDisplay';
