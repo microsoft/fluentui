@@ -192,7 +192,7 @@ of `before`/`after`. For example, `rightTopEdge` with a gap becomes:
 | v8                          | v9                                              | Notes                                                                          |
 | --------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------ |
 | `target`                    | `<PopoverTrigger>` child                        | Replaces ref-based targeting; trigger is co-located in JSX                     |
-| `hidden`                    | `open` (inverted)                               | Closed popovers unmount; there is no keep-mounted prop                         |
+| `hidden`                    | `open` (inverted)                               | Keep `Popover` mounted while closed when using an imperative external target   |
 | `onDismiss`                 | `onOpenChange`                                  | `(ev, data) => data.open === false` on close                                   |
 | `role`                      | `role` on `<PopoverSurface>`                    | Preserve the explicit surface role                                             |
 | `ariaLabel`                 | `aria-label` on `<PopoverSurface>`              | Preserve the accessible name                                                   |
@@ -200,7 +200,7 @@ of `before`/`after`. For example, `rightTopEdge` with a gap becomes:
 | `directionalHintFixed`      | `positioning.pinned`                            | Set `pinned: true` to prevent automatic repositioning                          |
 | `directionalHintForRTL`     | —                                               | Logical start/end positioning is RTL-aware                                     |
 | `gapSpace`                  | `positioning={{ offset: { mainAxis } }}`        | Pass positioning as object with `offset`                                       |
-| `isBeakVisible`             | `withArrow`                                     |                                                                                |
+| `isBeakVisible`             | `withArrow`                                     | V8 defaults true and v9 defaults false; set `withArrow` when omitted in v8     |
 | `beakWidth`                 | —                                               | Removed                                                                        |
 | `setInitialFocus`           | Default autofocus / `unstable_disableAutoFocus` | Keep default autofocus when true; disable it when false or omitted             |
 | `calloutMaxHeight`          | `style` on `<PopoverSurface>`                   | `<PopoverSurface style={{ maxHeight: '...' }}>`                                |
@@ -212,7 +212,7 @@ of `before`/`after`. For example, `rightTopEdge` with a gap becomes:
 | `bounds`                    | `flipBoundary` + `overflowBoundary`             | Set both through the `positioning` object                                      |
 | `doNotLayer`                | `inline`                                        | Render the popover inline instead of through a portal                          |
 | `layerProps.hostId`         | `mountNode`                                     | Select a specific portal container                                             |
-| `shouldUpdateWhenHidden`    | —                                               | Closed popovers unmount; keep persistent state outside                         |
+| `shouldUpdateWhenHidden`    | —                                               | Surface content unmounts while closed; keep persistent state outside           |
 | `onRestoreFocus`            | Trigger-owned restoration                       | External targets use `useRestoreFocusTarget` and `useRestoreFocusSource`       |
 | `styles`                    | `className` on `<PopoverSurface>`               |                                                                                |
 | `theme`                     | `FluentProvider`                                |                                                                                |
@@ -228,3 +228,9 @@ resize-dismiss or lost-focus-dismiss switches. Preserve the v8 defaults as well
 as explicit props: an omitted `preventDismissOnResize` still means the v8
 Callout dismissed on resize, so add app-owned resize handling unless the source
 explicitly prevented that dismissal.
+
+Keep the `Popover` component mounted while its controlled `open` state is
+false. Only `PopoverSurface` content is removed while closed. Conditionally
+mounting the entire `Popover` prevents the external-target effect from calling
+`positioningRef.current.setTarget`, because the imperative positioning handle
+does not exist until `Popover` mounts.

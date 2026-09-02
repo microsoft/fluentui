@@ -129,10 +129,17 @@ Below is an example showcasing this:
 
 ```jsx
 import { useState } from 'react';
-import { Image } from '@fluentui/react-components';
+import { Image, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  hidden: {
+    display: 'none',
+  },
+});
 
 const Component = () => {
   const [isVisible, setVisible] = useState(true);
+  const styles = useStyles();
 
   return (
     <Image
@@ -140,11 +147,17 @@ const Component = () => {
       alt="Example image"
       onLoad={() => setVisible(true)}
       onError={() => setVisible(false)}
-      hidden={!isVisible}
+      className={!isVisible ? styles.hidden : undefined}
     />
   );
 };
 ```
+
+Do not use the native `hidden` attribute for this replacement. The v9 Image
+base class sets `display`, which can override the browser's default
+`[hidden] { display: none }` rule. Use a class that explicitly sets
+`display: none`, or conditionally render the image when retry behavior is not
+required.
 
 ### styles
 

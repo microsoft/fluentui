@@ -73,7 +73,8 @@ export const ColorPickerV9BasicExample = () => {
     }
     const next = tinycolor(value);
     if (next.isValid) {
-      setColor(next.toHsv());
+      const parsed = next.toHsv();
+      applyColor({ ...parsed, a: value.length === 7 ? color.a : parsed.a });
     }
   };
 
@@ -139,6 +140,13 @@ the v9 color. Multiply those v9 fractions by `100` when adapting back to code
 that still expects v8 percentages. If the v8 value originated from an
 eight-digit hex color, parse it rather than treating the byte alpha (`0`-`255`)
 as either API's alpha unit.
+
+V9 `color.a` always stores opacity as a `0`-`1` fraction, even when
+`<AlphaSlider transparency />` displays the inverse transparency percentage.
+Convert v8 `IColor.a` with `a / 100`, or convert `IColor.t` with
+`1 - t / 100`; do not store `t / 100` in `color.a`. When a six-digit hex edit
+omits alpha, preserve the current `color.a` instead of resetting transparency
+to fully opaque. An eight-digit hex edit may replace alpha explicitly.
 
 The `ColorPicker` root is a `div` without a default landmark role. When
 preserving `strings.rootAriaLabelFormat`, add an appropriate role such as
