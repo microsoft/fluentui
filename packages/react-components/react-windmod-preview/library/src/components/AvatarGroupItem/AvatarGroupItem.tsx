@@ -41,7 +41,6 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.
       }),
     );
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<AvatarGroupItemProps>;
+);
 
 AvatarGroupItem.displayName = 'AvatarGroupItem';

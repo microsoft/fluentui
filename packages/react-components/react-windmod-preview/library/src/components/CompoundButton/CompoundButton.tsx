@@ -32,7 +32,6 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.fo
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CompoundButtonProps>;
+});
 
 CompoundButton.displayName = 'CompoundButton';

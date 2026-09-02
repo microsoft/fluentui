@@ -13,7 +13,6 @@ import { useCardPreviewStyles } from './useCardPreviewStyles';
  */
 export const CardPreview: ForwardRefComponent<CardPreviewProps> = React.forwardRef((props, ref) => {
   return renderCardPreview(useCardPreviewStyles(useCardPreview(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CardPreviewProps>;
+});
 
 CardPreview.displayName = 'CardPreview';

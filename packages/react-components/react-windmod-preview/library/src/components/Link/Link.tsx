@@ -30,7 +30,6 @@ export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref
       inline,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<LinkProps>;
+});
 
 Link.displayName = 'Link';

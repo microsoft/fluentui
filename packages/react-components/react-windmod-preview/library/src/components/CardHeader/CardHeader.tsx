@@ -13,7 +13,6 @@ import { useCardHeaderStyles } from './useCardHeaderStyles';
  */
 export const CardHeader: ForwardRefComponent<CardHeaderProps> = React.forwardRef((props, ref) => {
   return renderCardHeader(useCardHeaderStyles(useCardHeader(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CardHeaderProps>;
+});
 
 CardHeader.displayName = 'CardHeader';

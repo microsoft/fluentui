@@ -29,7 +29,6 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<BreadcrumbButtonProps>;
+});
 
 BreadcrumbButton.displayName = 'BreadcrumbButton';

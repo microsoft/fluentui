@@ -14,7 +14,6 @@ import { useDrawerBodyStyles } from './useDrawerBodyStyles';
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps> = React.forwardRef(
   (props: DrawerBodyProps, ref: React.Ref<HTMLDivElement>) =>
     renderDrawerBody(useDrawerBodyStyles(useDrawerBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerBodyProps>;
+);
 
 DrawerBody.displayName = 'DrawerBody';

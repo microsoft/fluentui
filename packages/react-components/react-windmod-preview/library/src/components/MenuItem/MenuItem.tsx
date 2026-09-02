@@ -54,7 +54,6 @@ export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef(
       useMenuItemStyles(withSubmenuIndicator(useMenuItem(mergeContextProps(useMenuItemContext(), props), ref), dir)),
     );
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuItemProps>;
+);
 
 MenuItem.displayName = 'MenuItem';

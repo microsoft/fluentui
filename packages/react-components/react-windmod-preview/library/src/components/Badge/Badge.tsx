@@ -24,8 +24,7 @@ export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef(
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<BadgeProps>;
+);
 
 Badge.displayName = 'Badge';

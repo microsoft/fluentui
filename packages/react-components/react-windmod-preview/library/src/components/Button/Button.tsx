@@ -32,7 +32,6 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ButtonProps>;
+});
 
 Button.displayName = 'Button';

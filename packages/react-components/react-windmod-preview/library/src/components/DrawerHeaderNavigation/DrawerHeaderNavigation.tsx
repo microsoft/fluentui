@@ -17,7 +17,6 @@ import { useDrawerHeaderNavigationStyles } from './useDrawerHeaderNavigationStyl
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef(
   (props: DrawerHeaderNavigationProps, ref: React.Ref<HTMLElement>) =>
     renderDrawerHeaderNavigation(useDrawerHeaderNavigationStyles(useDrawerHeaderNavigation(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerHeaderNavigationProps>;
+);
 
 DrawerHeaderNavigation.displayName = 'DrawerHeaderNavigation';

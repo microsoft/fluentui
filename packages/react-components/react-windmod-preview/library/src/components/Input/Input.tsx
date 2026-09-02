@@ -33,7 +33,6 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<InputProps>;
+});
 
 Input.displayName = 'Input';

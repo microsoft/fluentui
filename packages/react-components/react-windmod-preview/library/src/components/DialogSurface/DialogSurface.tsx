@@ -24,7 +24,6 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forw
     renderDialogSurface(
       useDialogSurfaceStyles({ ...useDialogSurface(props, ref), nested: useDialogContext().isNestedDialog }),
     ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogSurfaceProps>;
+);
 
 DialogSurface.displayName = 'DialogSurface';

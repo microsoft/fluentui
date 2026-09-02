@@ -74,7 +74,6 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
   };
 
   return renderDropdown(useDropdownStyles(state), useDropdownContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<DropdownProps>;
+});
 
 Dropdown.displayName = 'Dropdown';

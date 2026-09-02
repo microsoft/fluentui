@@ -22,7 +22,6 @@ export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwar
 
     return renderInlineDrawer(useInlineDrawerStyles({ ...useInlineDrawer(rest, ref), size, separator }), contextValue);
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<InlineDrawerProps>;
+);
 
 InlineDrawer.displayName = 'InlineDrawer';

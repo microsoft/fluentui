@@ -44,7 +44,6 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef
   );
 
   return renderMenuButton(styled);
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<MenuButtonProps>;
+});
 
 MenuButton.displayName = 'MenuButton';

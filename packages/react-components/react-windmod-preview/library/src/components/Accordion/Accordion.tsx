@@ -19,7 +19,6 @@ export const Accordion: ForwardRefComponent<AccordionProps> = React.forwardRef((
   const styled = useAccordionStyles(useAccordion(props, ref));
 
   return renderAccordion(styled, useAccordionContextValues(styled));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<AccordionProps>;
+});
 
 Accordion.displayName = 'Accordion';

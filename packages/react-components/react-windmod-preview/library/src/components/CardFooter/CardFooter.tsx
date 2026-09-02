@@ -13,7 +13,6 @@ import { useCardFooterStyles } from './useCardFooterStyles';
  */
 export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef((props, ref) => {
   return renderCardFooter(useCardFooterStyles(useCardFooter(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CardFooterProps>;
+});
 
 CardFooter.displayName = 'CardFooter';

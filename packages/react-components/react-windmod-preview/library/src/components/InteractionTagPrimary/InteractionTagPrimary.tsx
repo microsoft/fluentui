@@ -47,7 +47,6 @@ export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryPro
     useInteractionTagPrimaryStyles(state),
     useInteractionTagPrimaryContextValues(state),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<InteractionTagPrimaryProps>;
+});
 
 InteractionTagPrimary.displayName = 'InteractionTagPrimary';

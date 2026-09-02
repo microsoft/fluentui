@@ -33,8 +33,7 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef(
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<InfoLabelProps>;
+);
 
 InfoLabel.displayName = 'InfoLabel';

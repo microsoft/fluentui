@@ -80,7 +80,6 @@ export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((pr
   };
 
   return renderCombobox(useComboboxStyles(state), useComboboxContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ComboboxProps>;
+});
 
 Combobox.displayName = 'Combobox';

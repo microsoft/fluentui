@@ -24,7 +24,6 @@ export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef(
         },
       }),
     ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerProps>;
+);
 
 Drawer.displayName = 'Drawer';

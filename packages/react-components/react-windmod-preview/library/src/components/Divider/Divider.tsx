@@ -24,8 +24,7 @@ export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef(
         inset,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<DividerProps>;
+);
 
 Divider.displayName = 'Divider';

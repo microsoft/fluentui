@@ -14,7 +14,6 @@ import { useDrawerFooterStyles } from './useDrawerFooterStyles';
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef(
   (props: DrawerFooterProps, ref: React.Ref<HTMLElement>) =>
     renderDrawerFooter(useDrawerFooterStyles(useDrawerFooter(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerFooterProps>;
+);
 
 DrawerFooter.displayName = 'DrawerFooter';

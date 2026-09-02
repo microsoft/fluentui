@@ -15,7 +15,6 @@ import { useDialogBodyStyles } from './useDialogBodyStyles';
 export const DialogBody: ForwardRefComponent<DialogBodyProps> = React.forwardRef(
   (props: DialogBodyProps, ref: React.Ref<HTMLDivElement>) =>
     renderDialogBody(useDialogBodyStyles(useDialogBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogBodyProps>;
+);
 
 DialogBody.displayName = 'DialogBody';

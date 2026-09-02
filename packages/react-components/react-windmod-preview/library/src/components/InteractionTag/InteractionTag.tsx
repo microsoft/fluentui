@@ -43,7 +43,6 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.fo
       {renderInteractionTag(useInteractionTagStyles(styled), useInteractionTagContextValues(styled))}
     </InteractionTagContextProvider>
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<InteractionTagProps>;
+});
 
 InteractionTag.displayName = 'InteractionTag';

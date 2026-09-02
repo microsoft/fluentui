@@ -25,8 +25,7 @@ export const Image: ForwardRefComponent<ImageProps> = React.forwardRef(
         shape,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<ImageProps>;
+);
 
 Image.displayName = 'Image';

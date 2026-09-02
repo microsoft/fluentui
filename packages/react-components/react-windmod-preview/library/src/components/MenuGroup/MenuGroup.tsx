@@ -21,7 +21,6 @@ export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef(
 
     return renderMenuGroup(state, useMenuGroupContextValues(state));
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuGroupProps>;
+);
 
 MenuGroup.displayName = 'MenuGroup';

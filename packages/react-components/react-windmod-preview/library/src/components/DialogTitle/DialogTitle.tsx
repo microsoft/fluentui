@@ -14,7 +14,6 @@ import { useDialogTitleStyles } from './useDialogTitleStyles';
 export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef(
   (props: DialogTitleProps, ref: React.Ref<HTMLHeadingElement>) =>
     renderDialogTitle(useDialogTitleStyles(useDialogTitle(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogTitleProps>;
+);
 
 DialogTitle.displayName = 'DialogTitle';

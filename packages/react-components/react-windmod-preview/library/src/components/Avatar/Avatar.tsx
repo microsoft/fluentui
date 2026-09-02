@@ -153,7 +153,6 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<AvatarProps>;
+});
 
 Avatar.displayName = 'Avatar';

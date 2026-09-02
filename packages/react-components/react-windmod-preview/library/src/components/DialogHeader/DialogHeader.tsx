@@ -14,7 +14,6 @@ import { useDialogHeaderStyles } from './useDialogHeaderStyles';
 export const DialogHeader: ForwardRefComponent<DialogHeaderProps> = React.forwardRef(
   (props: DialogHeaderProps, ref: React.Ref<HTMLElement>) =>
     renderDialogHeader(useDialogHeaderStyles(useDialogHeader(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogHeaderProps>;
+);
 
 DialogHeader.displayName = 'DialogHeader';

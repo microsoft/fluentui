@@ -14,7 +14,6 @@ import { useMenuDividerStyles } from './useMenuDividerStyles';
 export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardRef(
   (props: MenuDividerProps, ref: React.Ref<HTMLElement>) =>
     renderMenuDivider(useMenuDividerStyles(useMenuDivider(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuDividerProps>;
+);
 
 MenuDivider.displayName = 'MenuDivider';

@@ -24,8 +24,7 @@ export const Card: ForwardRefComponent<CardProps> = React.forwardRef(
     });
 
     return renderCard(styled, useCardContextValue(styled));
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<CardProps>;
+);
 
 Card.displayName = 'Card';

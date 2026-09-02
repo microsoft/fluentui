@@ -69,8 +69,7 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef
         size,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<InfoButtonProps>;
+);
 
 InfoButton.displayName = 'InfoButton';

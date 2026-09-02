@@ -14,7 +14,6 @@ import { useDrawerHeaderTitleStyles } from './useDrawerHeaderTitleStyles';
 export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps> = React.forwardRef(
   (props: DrawerHeaderTitleProps, ref: React.Ref<HTMLDivElement>) =>
     renderDrawerHeaderTitle(useDrawerHeaderTitleStyles(useDrawerHeaderTitle(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerHeaderTitleProps>;
+);
 
 DrawerHeaderTitle.displayName = 'DrawerHeaderTitle';

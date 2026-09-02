@@ -15,7 +15,6 @@ import { useDialogActionsStyles } from './useDialogActionsStyles';
 export const DialogActions: ForwardRefComponent<DialogActionsProps> = React.forwardRef(
   ({ position = 'end', fluid = false, ...rest }: DialogActionsProps, ref: React.Ref<HTMLDivElement>) =>
     renderDialogActions(useDialogActionsStyles({ ...useDialogActions(rest, ref), position, fluid })),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogActionsProps>;
+);
 
 DialogActions.displayName = 'DialogActions';

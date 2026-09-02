@@ -72,7 +72,6 @@ export const Field: ForwardRefComponent<FieldProps> = React.forwardRef((props, r
   // which already carries the resolved orientation and size, so a control sees what the Griffel
   // Field publishes.
   return renderField(styled, useFieldContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<FieldProps>;
+});
 
 Field.displayName = 'Field';

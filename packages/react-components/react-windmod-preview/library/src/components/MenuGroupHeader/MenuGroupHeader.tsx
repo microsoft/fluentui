@@ -14,7 +14,6 @@ import { useMenuGroupHeaderStyles } from './useMenuGroupHeaderStyles';
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps> = React.forwardRef(
   (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>) =>
     renderMenuGroupHeader(useMenuGroupHeaderStyles(useMenuGroupHeader(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuGroupHeaderProps>;
+);
 
 MenuGroupHeader.displayName = 'MenuGroupHeader';

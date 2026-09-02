@@ -58,8 +58,7 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef(
     );
 
     return renderCheckbox(styled);
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<CheckboxProps>;
+);
 
 Checkbox.displayName = 'Checkbox';

@@ -22,8 +22,7 @@ export const Label: ForwardRefComponent<LabelProps> = React.forwardRef(
         weight,
       }),
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<LabelProps>;
+);
 
 Label.displayName = 'Label';
