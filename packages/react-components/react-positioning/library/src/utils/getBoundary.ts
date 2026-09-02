@@ -1,17 +1,19 @@
 import type { Boundary as FloatingUIBoundary } from '@floating-ui/dom';
 
 import { getScrollParent } from './getScrollParent';
-import type { PositioningBoundary } from '../types';
+import type { PositioningBoundary, TargetElement } from '../types';
 
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.
  */
 export function getBoundary(
-  element: HTMLElement | null,
+  element: TargetElement | null,
   boundary?: PositioningBoundary,
 ): FloatingUIBoundary | undefined {
+  const boundaryElement = element && 'contextElement' in element ? element.contextElement : element;
+
   if (boundary === 'window') {
-    return element?.ownerDocument!.documentElement;
+    return boundaryElement?.ownerDocument!.documentElement;
   }
 
   if (boundary === 'clippingParents') {
@@ -19,10 +21,10 @@ export function getBoundary(
   }
 
   if (boundary === 'scrollParent') {
-    let boundariesNode: HTMLElement | undefined = getScrollParent(element);
+    let boundariesNode: HTMLElement | undefined = getScrollParent(boundaryElement ?? null);
 
     if (boundariesNode.nodeName === 'BODY') {
-      boundariesNode = element?.ownerDocument!.documentElement;
+      boundariesNode = boundaryElement?.ownerDocument!.documentElement;
     }
 
     return boundariesNode;

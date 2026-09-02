@@ -6,7 +6,7 @@
 
 'use client';
 
-export const getParentNode = (node: HTMLElement): HTMLElement => {
+export const getParentNode = (node: Element): Element => {
   if (node.nodeName === 'HTML') {
     return node;
   }
@@ -20,7 +20,7 @@ export const getParentNode = (node: HTMLElement): HTMLElement => {
  * @param node - DOM node.
  * @returns - CSS styles.
  */
-export const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
+export const getStyleComputedProperty = (node: Element): Partial<CSSStyleDeclaration> => {
   if (node.nodeType !== 1) {
     return {};
   }
@@ -39,9 +39,9 @@ export const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDec
  * @param node - DOM node.
  * @returns - the first scrollable parent.
  */
-export const getScrollParent = (node: Document | HTMLElement | null): HTMLElement => {
+export const getScrollParent = (node: Document | Element | null): HTMLElement => {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
-  const parentNode = node && getParentNode(node as HTMLElement);
+  const parentNode = node && getParentNode(node);
   // eslint-disable-next-line
   if (!parentNode) return document.body;
 
@@ -62,7 +62,7 @@ export const getScrollParent = (node: Document | HTMLElement | null): HTMLElemen
   return getScrollParent(parentNode);
 };
 
-export const hasScrollParent = (node: Document | HTMLElement | null): boolean => {
+export const hasScrollParent = (node: Document | Element | null): boolean => {
   const scrollParentElement: HTMLElement = getScrollParent(node);
 
   return scrollParentElement ? scrollParentElement !== scrollParentElement.ownerDocument?.body : false;

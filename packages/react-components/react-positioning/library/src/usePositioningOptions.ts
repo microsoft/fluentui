@@ -16,7 +16,12 @@ import {
   intersecting as intersectingMiddleware,
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
-import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
+import type {
+  PositioningConfigurationFn,
+  PositioningConfigurationFnOptions,
+  PositioningOptions,
+  TargetElement,
+} from './types';
 import { getBoundary, toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
 import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
@@ -110,6 +115,7 @@ function usePositioningConfigFn(
  */
 export function usePositioningOptions(options: PositioningOptions): (
   container: HTMLElement,
+  target: TargetElement,
   arrow: HTMLElement | null,
 ) => {
   placement: Placement | undefined;
@@ -128,7 +134,7 @@ export function usePositioningOptions(options: PositioningOptions): (
   } = options;
 
   return React.useCallback(
-    (container: HTMLElement, arrow: HTMLElement | null) => {
+    (container: HTMLElement, target: TargetElement, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const optionsAfterEnhancement = configFn(container, arrow);
@@ -154,7 +160,7 @@ export function usePositioningOptions(options: PositioningOptions): (
         unstable_disableTether,
       } = optionsAfterEnhancement;
       const normalizedAutoSize = normalizeAutoSize(autoSize);
-      const normalizedHideBoundary = getBoundary(container, hideBoundary ?? undefined);
+      const normalizedHideBoundary = getBoundary(target, hideBoundary ?? undefined);
       const hideBoundaryOptions = normalizedHideBoundary ? { boundary: normalizedHideBoundary } : {};
 
       const middleware = [

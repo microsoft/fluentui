@@ -2,6 +2,7 @@ import { act, render } from '@testing-library/react';
 import * as React from 'react';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
+import { createPositionManager } from './createPositionManager';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
 
 // Mock createPositionManager to avoid @floating-ui/dom dependency in this test.
@@ -47,7 +48,32 @@ const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioni
   );
 };
 
+const ScrollBoundaryTestComponent = () => {
+  const { targetRef, containerRef } = usePositioning({ hideBoundary: 'scrollParent' });
+
+  return (
+    <>
+      <div data-testid="scroll-parent" style={{ overflow: 'scroll' }}>
+        <button ref={targetRef}>Target</button>
+      </div>
+      <div ref={containerRef}>Portaled container</div>
+    </>
+  );
+};
+
 describe('usePositioning', () => {
+  it('uses the target scroll parent as the hide boundary for a portaled container', () => {
+    const { getByTestId } = render(<ScrollBoundaryTestComponent />);
+    const calls = jest.mocked(createPositionManager).mock.calls;
+    const { middleware } = calls[calls.length - 1][0];
+
+    const hideMiddleware = middleware.filter(item => item.name === 'hide');
+    expect(hideMiddleware).toHaveLength(2);
+    hideMiddleware.forEach(item => {
+      expect(item.options).toEqual(expect.objectContaining({ boundary: getByTestId('scroll-parent') }));
+    });
+  });
+
   describe('onPositioningEnd', () => {
     it('calls onPositioningEnd with the positioning event', async () => {
       const onPositioningEnd = jest.fn();
