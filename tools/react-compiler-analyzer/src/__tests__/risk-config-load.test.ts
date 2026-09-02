@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 
 import { loadRiskConfig, runAnalyze } from '../commands/analyze';
 import { CliError } from '../commands/shared';
-import { createModuleResolver, createResolverStats, compilePathAliases } from '../module-resolver';
+import { createModuleResolver, createResolverStats, compilePathAliases, findDeadAliases } from '../module-resolver';
 
 describe('loadRiskConfig', () => {
   let tempDir: string;
@@ -101,6 +101,21 @@ describe('loadRiskConfig', () => {
         }),
       );
       expect(warnings).toHaveLength(0);
+    });
+
+    it('warns when a pathAlias target directory does not exist', () => {
+      loadRiskConfig(
+        writeConfig('dead-alias.json', {
+          detectGetStateReads: true,
+          resolveWrappers: true,
+          pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'], '@ghost/*': ['ghost/*'] } },
+        }),
+      );
+
+      const warning = warnings.find(w => w.includes('target'));
+      expect(warning).toBeDefined();
+      expect(warning).toContain('@ghost/');
+      expect(warning).toContain('can never resolve');
     });
 
     it('stays quiet when wrapper resolution is off', () => {
@@ -202,11 +217,31 @@ describe('wrapper resolution reporting', () => {
 
     await runAnalyze(argv(configPath) as never);
 
-    const line = captured.find(l => l.includes('Wrapper resolution:'));
-    expect(line).toBeDefined();
-    expect(line).toMatch(/\d+ import\(s\) resolved/);
-    expect(line).toContain('stopped at the package boundary');
-    expect(line).toContain('baseUrl: (none)');
+    const output = captured.join('\n');
+    expect(output).toMatch(/Wrapper resolution: \d+ import\(s\) resolved/);
+    expect(output).toContain('stopped at the package boundary');
+    expect(output).toContain('baseUrl: (none configured)');
+  });
+
+  it('lists per-alias hit counts so an alias that never matched is obvious', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'wrap-alias-'));
+    mkdirSync(join(dir, 'live'), { recursive: true });
+    mkdirSync(join(dir, 'idle'), { recursive: true });
+    const configPath = join(dir, 'rc.json');
+    writeFileSync(
+      configPath,
+      JSON.stringify({
+        detectGetStateReads: true,
+        resolveWrappers: true,
+        pathAliases: { baseUrl: dir, paths: { '@live/*': ['live/*'], '@idle/*': ['idle/*'] } },
+      }),
+    );
+
+    await runAnalyze(argv(configPath) as never);
+
+    const output = captured.join('\n');
+    expect(output).toContain('aliases: 0/2 matched at least one import');
+    expect(output).toContain('never matched');
   });
 
   it('omits the line entirely when wrapper resolution is off', async () => {
@@ -241,7 +276,12 @@ describe('resolver stats', () => {
     expect(resolve('react', from)).toBeNull();
     expect(resolve('./nope', from)).toBeNull();
 
-    expect(stats).toEqual({ resolved: 2, unresolvedBare: 1, unresolvedRelative: 1 });
+    expect(stats).toEqual({
+      resolved: 2,
+      unresolvedBare: 1,
+      unresolvedRelative: 1,
+      aliasHits: new Map([['@app/', 1]]),
+    });
   });
 
   it('reports zero resolved bare specifiers when aliases are missing', () => {
@@ -252,5 +292,37 @@ describe('resolver stats', () => {
     // This is the shape of a "clean report that means nothing".
     expect(stats.resolved).toBe(0);
     expect(stats.unresolvedBare).toBe(1);
+  });
+
+  it('seeds every configured alias so one that never matches shows as 0', () => {
+    const stats = createResolverStats();
+    createModuleResolver({
+      aliases: compilePathAliases({ '@app/*': ['*'], '@never/*': ['nope/*'] }, join(tempDir, 'src')),
+      stats,
+    });
+
+    expect(stats.aliasHits.get('@app/')).toBe(0);
+    expect(stats.aliasHits.get('@never/')).toBe(0);
+  });
+});
+
+describe('findDeadAliases', () => {
+  let tempDir: string;
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'dead-alias-'));
+    mkdirSync(join(tempDir, 'real'), { recursive: true });
+  });
+
+  it('flags aliases whose every target directory is absent', () => {
+    const aliases = compilePathAliases({ '@real/*': ['real/*'], '@ghost/*': ['ghost/*'] }, tempDir);
+
+    expect(findDeadAliases(aliases).map(a => a.prefix)).toEqual(['@ghost/']);
+  });
+
+  it('keeps an alias when at least one target exists', () => {
+    const aliases = compilePathAliases({ '@mixed/*': ['ghost/*', 'real/*'] }, tempDir);
+
+    expect(findDeadAliases(aliases)).toHaveLength(0);
   });
 });

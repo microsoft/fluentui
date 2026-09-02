@@ -297,6 +297,31 @@ purely **syntactic and first-party**: `useXxx()`-named callees are skipped (the 
 recognizes those as hooks and they're flagged at their own definition), and it stops at the
 `node_modules` boundary, dynamic dispatch, and method calls on inferred receivers.
 
+##### Verifying that resolution actually worked
+
+A misconfigured `pathAliases` resolves nothing and still exits 0, so an empty risk section would be
+indistinguishable from clean code. Every run therefore prints what resolution reached — on **stderr**,
+so it survives `--format json`:
+
+```text
+Wrapper resolution: 812 import(s) resolved, 5140 stopped at the package boundary, 12 unresolvable.
+  baseUrl: /abs/repo/src
+  aliases: 2/3 matched at least one import
+    @app/                        802
+    @shared/                      10
+    @legacy/                       0   ← never matched
+```
+
+An alias sitting at `0` resolved nothing all run. On top of that:
+
+- `pathAliases` whose target directories do not exist are reported at config load, by name —
+  the usual cause of a wrong `baseUrl`.
+- If **no** alias matched anything while bare imports were seen, the run says so explicitly and
+  states that the risk report below covers none of them.
+
+`baseUrl` is resolved relative to the **risk-config file**, not the working directory, so the same
+config behaves identically wherever it is run from.
+
 > **Why these and not `unstable-hook-arg`?** An earlier draft also flagged fresh inline arguments
 > passed to selector hooks (`useSelector(fn, { id })`). That was removed after verifying against the
 > compiler's output: for a `CompileSuccess` function the compiler **memoizes** those inline

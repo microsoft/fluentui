@@ -34,10 +34,20 @@ export interface ResolverStats {
   unresolvedRelative: number;
   /** Bare specifiers no alias matched — i.e. stopped at the package boundary. */
   unresolvedBare: number;
+  /**
+   * Imports matched per alias prefix, seeded with `0` for every configured alias. An alias sitting
+   * at zero resolved nothing all run, which is the signature of a misconfigured `pathAliases`.
+   */
+  aliasHits: Map<string, number>;
 }
 
 export function createResolverStats(): ResolverStats {
-  return { resolved: 0, unresolvedRelative: 0, unresolvedBare: 0 };
+  return { resolved: 0, unresolvedRelative: 0, unresolvedBare: 0, aliasHits: new Map() };
+}
+
+/** Alias entries whose every target directory is absent, so they can never resolve anything. */
+export function findDeadAliases(aliases: PathAlias[]): PathAlias[] {
+  return aliases.filter(alias => alias.targets.every(target => !existsSync(target)));
 }
 
 const DEFAULT_EXTENSIONS = ['.ts', '.tsx'];
@@ -76,6 +86,18 @@ export function createModuleResolver(options: ResolverOptions = {}) {
   const extensions = options.extensions ?? DEFAULT_EXTENSIONS;
   const aliases = options.aliases ?? [];
 
+  // Seed every alias so one that never matches is reported as 0 rather than being absent.
+  for (const alias of aliases) {
+    options.stats?.aliasHits.set(alias.prefix, 0);
+  }
+
+  function recordAliasHit(prefix: string): void {
+    const hits = options.stats?.aliasHits;
+    if (hits) {
+      hits.set(prefix, (hits.get(prefix) ?? 0) + 1);
+    }
+  }
+
   /** Try `base` itself (if it has an extension), then `base + ext`, then `base/index + ext`. */
   function resolveFileCandidate(base: string): string | null {
     if (/\.(ts|tsx)$/.test(base) && isFile(base)) {
@@ -106,6 +128,7 @@ export function createModuleResolver(options: ResolverOptions = {}) {
         for (const target of alias.targets) {
           const hit = resolveFileCandidate(rest ? join(target, rest) : target);
           if (hit) {
+            recordAliasHit(alias.prefix);
             return hit;
           }
         }
@@ -113,6 +136,7 @@ export function createModuleResolver(options: ResolverOptions = {}) {
         for (const target of alias.targets) {
           const hit = resolveFileCandidate(target);
           if (hit) {
+            recordAliasHit(alias.prefix);
             return hit;
           }
         }

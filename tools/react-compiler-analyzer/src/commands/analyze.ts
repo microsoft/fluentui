@@ -14,6 +14,7 @@ import {
   printUnparseableFiles,
 } from '../coverage-reporter';
 import { discoverAllFiles } from '../discovery';
+import { compilePathAliases, findDeadAliases, type ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
 import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RiskConfig } from '../types';
 import { CliError, runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
@@ -105,6 +106,52 @@ function warnOnNoOpConfig(config: RiskConfig, configPath: string): void {
       `Warning: risk config '${configPath}' sets resolveWrappers without pathAliases — wrappers ` +
         'imported through workspace aliases will not resolve. Relative imports still work.',
     );
+    return;
+  }
+
+  // A target directory that does not exist can never resolve, so the alias is dead weight and the
+  // run would report nothing for everything behind it.
+  const dead = findDeadAliases(compilePathAliases(config.pathAliases.paths, config.pathAliases.baseUrl));
+  if (dead.length > 0) {
+    console.warn(
+      `Warning: risk config '${configPath}' has ${dead.length} pathAlias(es) whose target ` +
+        `directories do not exist, so they can never resolve: ` +
+        dead.map(a => `${a.prefix}* -> ${a.targets.join(', ')}`).join('; '),
+    );
+  }
+}
+
+/**
+ * Report what wrapper resolution actually reached.
+ *
+ * Written with `console.log` rather than the formatter on purpose: under `--format json` the
+ * formatter sink is discarded, and this is the one diagnostic that distinguishes "no risks found"
+ * from "nothing resolved, so nothing could be found". `withReportOutput` redirects `console.log`
+ * to stderr for json and into the buffer for html, so it survives every format.
+ */
+function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['pathAliases']): void {
+  console.log(
+    `Wrapper resolution: ${stats.resolved} import(s) resolved, ` +
+      `${stats.unresolvedBare} stopped at the package boundary, ` +
+      `${stats.unresolvedRelative} unresolvable.`,
+  );
+  console.log(`  baseUrl: ${pathAliases?.baseUrl ?? '(none configured)'}`);
+
+  const hits = [...stats.aliasHits.entries()];
+  if (hits.length > 0) {
+    const used = hits.filter(([, n]) => n > 0).length;
+    console.log(`  aliases: ${used}/${hits.length} matched at least one import`);
+    for (const [prefix, n] of hits.sort((a, b) => b[1] - a[1])) {
+      console.log(`    ${prefix.padEnd(24)} ${String(n).padStart(6)}${n === 0 ? '   ← never matched' : ''}`);
+    }
+  }
+
+  if (stats.unresolvedBare > 0 && hits.every(([, n]) => n === 0)) {
+    console.warn(
+      `Warning: wrapper resolution matched no aliases, so all ${stats.unresolvedBare} bare import(s) ` +
+        'stopped at the package boundary. Cross-package wrappers were not followed and any clean ' +
+        'risk report below says nothing about them. Check pathAliases.baseUrl and paths.',
+    );
   }
 }
 
@@ -140,15 +187,9 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           riskConfig,
           parserPlugins: argv['parser-plugin'],
           onResolverStats: stats => {
-            if (!stats) {
-              return;
+            if (stats) {
+              reportWrapperResolution(stats, riskConfig.pathAliases);
             }
-            const baseUrl = riskConfig.pathAliases?.baseUrl ?? '(none)';
-            f.line(
-              `Wrapper resolution: ${stats.resolved} import(s) resolved, ` +
-                `${stats.unresolvedBare} stopped at the package boundary, ` +
-                `${stats.unresolvedRelative} unresolvable. baseUrl: ${baseUrl}`,
-            );
           },
         },
         result => {
