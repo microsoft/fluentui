@@ -595,29 +595,14 @@
  * GROUPED into the same rule: a scale region re-declares every invariant formula at
  * the region element, so each one re-substitutes the region’s `--fui-scale` there
  * (an inherited custom property arrives pre-substituted; only a re-declaration at or
- * below the region can pick the local factor up). Same declarations, one more
- * selector — at `:root`/`:host` this changes nothing.
+ * below the region can pick the local factor up). The Tailwind-owned scale axis is
+ * NOT repeated here — `@theme` already covers `:root`/`:host`; its mirror lives in
+ * the region-only rule below, the one place it is needed.
  */
 @layer fui.theme {
   :root,
   :host,
   .fui-scale-region {
-    /*
-     * Scale axis — mirrored from css/index.css’s `@theme static` block (the
-     * generator reads the values out of that file; see readScaleAxisDeclarations).
-     * Tailwind emits them at `:root, :host` only, and a scale region needs them
-     * re-declared here to respond to its `--fui-scale`.
-     */
-    --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
-    --spacing: calc(1px * var(--base-scale));
-    --text-icon-12: calc(12px * var(--base-scale));
-    --text-icon-16: calc(16px * var(--base-scale));
-    --text-icon-20: calc(20px * var(--base-scale));
-    --text-icon-24: calc(24px * var(--base-scale));
-    --text-icon-28: calc(28px * var(--base-scale));
-    --text-icon-32: calc(32px * var(--base-scale));
-    --text-icon-48: calc(48px * var(--base-scale));
-
     /*
      * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately
      * NOT coupled to the --spacing density knob: borders must not thin when layout
@@ -695,5 +680,21 @@
    */
   .fui-scale-region {
     --fui-scale: attr(data-fui-scale type(<number>), 1);
+
+    /*
+     * Scale axis — mirrored from css/index.css’s `@theme static` block (the
+     * generator reads the values out of that file; see readScaleAxisDeclarations).
+     * Tailwind emits these at `:root, :host` only — covered there — so the mirror
+     * exists ONLY here, where the region’s `--fui-scale` must reach it.
+     */
+    --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
+    --spacing: calc(1px * var(--base-scale));
+    --text-icon-12: calc(12px * var(--base-scale));
+    --text-icon-16: calc(16px * var(--base-scale));
+    --text-icon-20: calc(20px * var(--base-scale));
+    --text-icon-24: calc(24px * var(--base-scale));
+    --text-icon-28: calc(28px * var(--base-scale));
+    --text-icon-32: calc(32px * var(--base-scale));
+    --text-icon-48: calc(48px * var(--base-scale));
   }
 }

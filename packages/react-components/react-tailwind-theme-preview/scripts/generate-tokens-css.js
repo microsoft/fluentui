@@ -263,10 +263,11 @@ function strokeWidthCanonicalValue(step) {
  * mechanism needs every scale-riding formula re-declared AT the region element so it
  * re-substitutes the region's `--fui-scale` (an inherited custom property is already
  * substituted where its declaration wins; descendants inherit the resolved stream). The
- * grouped `:root, :host, .fui-scale-region` emission therefore repeats these three families.
- * They are READ out of css/index.css rather than duplicated as text, so a formula edit there
- * flows into the next generator run and a drift fails `--check`; at `:root`/`:host` the
- * repeat is byte-identical to the `@theme` emission and computes to the same values.
+ * region-only `.fui-scale-region` rule therefore repeats these three families — ONLY there:
+ * at `:root`/`:host` Tailwind's own emission already covers them, so repeating them in the
+ * grouped rule would be a pure no-op (operator-caught 2026-09-02 and removed). They are READ
+ * out of css/index.css rather than duplicated as text, so a formula edit there flows into the
+ * next generator run and a drift fails `--check`.
  *
  * @returns {string[]} declaration lines, indented for the fui.theme block
  */
@@ -1226,8 +1227,9 @@ function render(options = {}) {
     out.push(' * GROUPED into the same rule: a scale region re-declares every invariant formula at');
     out.push(' * the region element, so each one re-substitutes the region’s `--fui-scale` there');
     out.push(' * (an inherited custom property arrives pre-substituted; only a re-declaration at or');
-    out.push(' * below the region can pick the local factor up). Same declarations, one more');
-    out.push(' * selector — at `:root`/`:host` this changes nothing.');
+    out.push(' * below the region can pick the local factor up). The Tailwind-owned scale axis is');
+    out.push(' * NOT repeated here — `@theme` already covers `:root`/`:host`; its mirror lives in');
+    out.push(' * the region-only rule below, the one place it is needed.');
     out.push(' */');
     out.push('@layer fui.theme {');
     // Selector split across multiple lines: prettier formats grouped selectors that way, and
@@ -1236,14 +1238,6 @@ function render(options = {}) {
     out.push('  :root,');
     out.push('  :host,');
     out.push('  .fui-scale-region {');
-    out.push('    /*');
-    out.push('     * Scale axis — mirrored from css/index.css’s `@theme static` block (the');
-    out.push('     * generator reads the values out of that file; see readScaleAxisDeclarations).');
-    out.push('     * Tailwind emits them at `:root, :host` only, and a scale region needs them');
-    out.push('     * re-declared here to respond to its `--fui-scale`.');
-    out.push('     */');
-    out.push(...readScaleAxisDeclarations());
-    out.push('');
     out.push('    /*');
     out.push('     * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately');
     out.push('     * NOT coupled to the --spacing density knob: borders must not thin when layout');
@@ -1285,6 +1279,14 @@ function render(options = {}) {
     out.push('   */');
     out.push('  .fui-scale-region {');
     out.push('    --fui-scale: attr(data-fui-scale type(<number>), 1);');
+    out.push('');
+    out.push('    /*');
+    out.push('     * Scale axis — mirrored from css/index.css’s `@theme static` block (the');
+    out.push('     * generator reads the values out of that file; see readScaleAxisDeclarations).');
+    out.push('     * Tailwind emits these at `:root, :host` only — covered there — so the mirror');
+    out.push('     * exists ONLY here, where the region’s `--fui-scale` must reach it.');
+    out.push('     */');
+    out.push(...readScaleAxisDeclarations());
     out.push('  }');
     out.push('}');
   }
