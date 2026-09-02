@@ -14,9 +14,8 @@ import { useDrawerHeaderNavigationStyles } from './useDrawerHeaderNavigationStyl
  * A DrawerHeaderNavigation holds navigation controls inside a drawer header. Windmod DrawerHeaderNavigation: the headless part decorated with the Fluent visual contract
  * (Tailwind v4 + CSS Modules).
  */
-export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef(
-  (props: DrawerHeaderNavigationProps, ref: React.Ref<HTMLElement>) =>
-    renderDrawerHeaderNavigation(useDrawerHeaderNavigationStyles(useDrawerHeaderNavigation(props, ref))),
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef((props, ref) =>
+  renderDrawerHeaderNavigation(useDrawerHeaderNavigationStyles(useDrawerHeaderNavigation(props, ref))),
 );
 
 DrawerHeaderNavigation.displayName = 'DrawerHeaderNavigation';

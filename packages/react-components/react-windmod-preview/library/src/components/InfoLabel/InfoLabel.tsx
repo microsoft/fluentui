@@ -18,7 +18,7 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them, and it
   // forwards `size` to neither child. Defaults mirror @fluentui/react-infolabel's styled
   // useInfoLabel. `weight` is not destructured: it rides `...rest` into the label slot.
-  ({ size = 'medium', ...rest }: InfoLabelProps, ref: React.Ref<HTMLLabelElement>) => {
+  ({ size = 'medium', ...rest }, ref) => {
     const state = useInfoLabel(rest, ref);
 
     return renderInfoLabel(

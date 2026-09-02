@@ -11,9 +11,8 @@ import { useMenuDividerStyles } from './useMenuDividerStyles';
  * A MenuDivider separates groups of menu items. Windmod MenuDivider: the headless divider
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardRef(
-  (props: MenuDividerProps, ref: React.Ref<HTMLElement>) =>
-    renderMenuDivider(useMenuDividerStyles(useMenuDivider(props, ref))),
+export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardRef((props, ref) =>
+  renderMenuDivider(useMenuDividerStyles(useMenuDivider(props, ref))),
 );
 
 MenuDivider.displayName = 'MenuDivider';

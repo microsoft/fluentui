@@ -11,9 +11,8 @@ import { useNavDrawerFooterStyles } from './useNavDrawerFooterStyles';
  * A NavDrawerFooter holds a nav drawer's actions. Windmod NavDrawerFooter: the headless part
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps> = React.forwardRef(
-  (props: NavDrawerFooterProps, ref: React.Ref<HTMLElement>) =>
-    renderNavDrawerFooter(useNavDrawerFooterStyles(useNavDrawerFooter(props, ref))),
+export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps> = React.forwardRef((props, ref) =>
+  renderNavDrawerFooter(useNavDrawerFooterStyles(useNavDrawerFooter(props, ref))),
 );
 
 NavDrawerFooter.displayName = 'NavDrawerFooter';

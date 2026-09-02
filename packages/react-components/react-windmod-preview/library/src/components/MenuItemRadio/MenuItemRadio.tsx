@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItemRadio, useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
 import { Checkmark16Filled } from '@fluentui/react-icons/headless/svg/checkmark';
@@ -27,11 +26,10 @@ const withCheckmark = (state: MenuItemRadioState): MenuItemRadioState =>
  * It reads MenuItem's context for the reason MenuItemCheckbox does — Griffel's split-group seam
  * reaches a selectable half through `.fui-MenuItem`. See MenuItem.
  */
-export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef(
-  (props: MenuItemRadioProps, ref: React.Ref<ARIAButtonElement<'div'>>) =>
-    renderMenuItemRadio(
-      useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(mergeContextProps(useMenuItemContext(), props), ref))),
-    ),
+export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef((props, ref) =>
+  renderMenuItemRadio(
+    useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(mergeContextProps(useMenuItemContext(), props), ref))),
+  ),
 );
 
 MenuItemRadio.displayName = 'MenuItemRadio';

@@ -11,9 +11,8 @@ import { useDrawerHeaderStyles } from './useDrawerHeaderStyles';
  * A DrawerHeader holds a drawer's title and navigation. Windmod DrawerHeader: the headless part decorated with the Fluent visual contract
  * (Tailwind v4 + CSS Modules).
  */
-export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps> = React.forwardRef(
-  (props: DrawerHeaderProps, ref: React.Ref<HTMLElement>) =>
-    renderDrawerHeader(useDrawerHeaderStyles(useDrawerHeader(props, ref))),
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps> = React.forwardRef((props, ref) =>
+  renderDrawerHeader(useDrawerHeaderStyles(useDrawerHeader(props, ref))),
 );
 
 DrawerHeader.displayName = 'DrawerHeader';

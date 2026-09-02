@@ -24,16 +24,14 @@ const NEW_ITEM_SCOPE = {};
  * A MenuList holds a menu's items. Windmod MenuList: the headless list decorated with the Fluent
  * visual contract (Tailwind v4 + CSS Modules).
  */
-export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef(
-  (props: MenuListProps, ref: React.Ref<HTMLElement>) => {
-    const state = useMenuListStyles(useMenuList(props, ref));
+export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
+  const state = useMenuListStyles(useMenuList(props, ref));
 
-    return (
-      <MenuItemContextProvider value={NEW_ITEM_SCOPE}>
-        {renderMenuList(state, useMenuListContextValues(state))}
-      </MenuItemContextProvider>
-    );
-  },
-);
+  return (
+    <MenuItemContextProvider value={NEW_ITEM_SCOPE}>
+      {renderMenuList(state, useMenuListContextValues(state))}
+    </MenuItemContextProvider>
+  );
+});
 
 MenuList.displayName = 'MenuList';

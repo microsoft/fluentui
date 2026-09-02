@@ -11,9 +11,8 @@ import { useNavDrawerHeaderStyles } from './useNavDrawerHeaderStyles';
  * A NavDrawerHeader holds a nav drawer's title and navigation. Windmod NavDrawerHeader: the
  * headless part decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef(
-  (props: NavDrawerHeaderProps, ref: React.Ref<HTMLElement>) =>
-    renderNavDrawerHeader(useNavDrawerHeaderStyles(useNavDrawerHeader(props, ref))),
+export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef((props, ref) =>
+  renderNavDrawerHeader(useNavDrawerHeaderStyles(useNavDrawerHeader(props, ref))),
 );
 
 NavDrawerHeader.displayName = 'NavDrawerHeader';

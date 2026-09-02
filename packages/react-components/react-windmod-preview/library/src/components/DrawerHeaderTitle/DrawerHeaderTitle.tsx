@@ -11,9 +11,8 @@ import { useDrawerHeaderTitleStyles } from './useDrawerHeaderTitleStyles';
  * A DrawerHeaderTitle holds a drawer's accessible heading and an optional action. Windmod DrawerHeaderTitle: the headless part decorated with the Fluent visual contract
  * (Tailwind v4 + CSS Modules).
  */
-export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps> = React.forwardRef(
-  (props: DrawerHeaderTitleProps, ref: React.Ref<HTMLDivElement>) =>
-    renderDrawerHeaderTitle(useDrawerHeaderTitleStyles(useDrawerHeaderTitle(props, ref))),
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps> = React.forwardRef((props, ref) =>
+  renderDrawerHeaderTitle(useDrawerHeaderTitleStyles(useDrawerHeaderTitle(props, ref))),
 );
 
 DrawerHeaderTitle.displayName = 'DrawerHeaderTitle';

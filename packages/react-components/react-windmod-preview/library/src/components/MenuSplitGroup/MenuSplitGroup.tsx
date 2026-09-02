@@ -17,20 +17,18 @@ import { menuSplitGroupItemContext, useMenuSplitGroupStyles } from './useMenuSpl
  * useIsInMenuSplitGroup true for those halves, so the trigger half drops its icon and checkmark
  * gutters; its identity has to be stable, and setMultiline stays the headless no-op.
  */
-export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.forwardRef(
-  (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>) => {
-    const state = useMenuSplitGroup(props, ref);
-    const contexts = React.useMemo(
-      () => ({ menuSplitGroup: { setMultiline: state.setMultiline } }),
-      [state.setMultiline],
-    );
+export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.forwardRef((props, ref) => {
+  const state = useMenuSplitGroup(props, ref);
+  const contexts = React.useMemo(
+    () => ({ menuSplitGroup: { setMultiline: state.setMultiline } }),
+    [state.setMultiline],
+  );
 
-    return (
-      <MenuItemContextProvider value={menuSplitGroupItemContext}>
-        {renderMenuSplitGroup(useMenuSplitGroupStyles(state), contexts)}
-      </MenuItemContextProvider>
-    );
-  },
-);
+  return (
+    <MenuItemContextProvider value={menuSplitGroupItemContext}>
+      {renderMenuSplitGroup(useMenuSplitGroupStyles(state), contexts)}
+    </MenuItemContextProvider>
+  );
+});
 
 MenuSplitGroup.displayName = 'MenuSplitGroup';

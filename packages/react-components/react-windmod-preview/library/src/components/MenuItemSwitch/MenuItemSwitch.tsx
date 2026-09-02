@@ -33,11 +33,10 @@ const withThumb = (state: MenuItemSwitchState): MenuItemSwitchState =>
  * It reads MenuItem's context for the reason MenuItemCheckbox does — Griffel's split-group seam
  * reaches a selectable half through `.fui-MenuItem`. See MenuItem.
  */
-export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef(
-  (props: MenuItemSwitchProps, ref: React.Ref<HTMLDivElement>) =>
-    renderMenuItemSwitch(
-      useMenuItemSwitchStyles(withThumb(useMenuItemSwitch(mergeContextProps(useMenuItemContext(), props), ref))),
-    ),
+export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef((props, ref) =>
+  renderMenuItemSwitch(
+    useMenuItemSwitchStyles(withThumb(useMenuItemSwitch(mergeContextProps(useMenuItemContext(), props), ref))),
+  ),
 );
 
 MenuItemSwitch.displayName = 'MenuItemSwitch';

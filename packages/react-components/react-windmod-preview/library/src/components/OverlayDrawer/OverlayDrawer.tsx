@@ -17,7 +17,7 @@ import { useOverlayDrawerStyles } from './useOverlayDrawerStyles';
  * with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = React.forwardRef(
-  ({ size = 'small', ...rest }: OverlayDrawerProps, ref: React.Ref<HTMLDialogElement>) => {
+  ({ size = 'small', ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
     return renderOverlayDrawer(useOverlayDrawerStyles({ ...useOverlayDrawer(rest, ref), size }), contextValue);

@@ -19,7 +19,7 @@ import { useNavDrawerStyles } from './useNavDrawerStyles';
  * development-time slot assertion, so both have to be moved for a production build to be styled.
  */
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef(
-  ({ density = 'medium', ...rest }: NavDrawerProps, ref: React.Ref<HTMLElement>) => {
+  ({ density = 'medium', ...rest }, ref) => {
     const headless = useNavDrawer(rest, ref);
     const styled = useNavDrawerStyles({
       ...headless,

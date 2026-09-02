@@ -12,9 +12,8 @@ import { useMenuPopoverStyles } from './useMenuPopoverStyles';
  * Windmod MenuPopover: the headless surface decorated with the Fluent visual contract
  * (Tailwind v4 + CSS Modules).
  */
-export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef(
-  (props: MenuPopoverProps, ref: React.Ref<HTMLElement>) =>
-    renderMenuPopover(useMenuPopoverStyles(useMenuPopover(props, ref))),
+export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef((props, ref) =>
+  renderMenuPopover(useMenuPopoverStyles(useMenuPopover(props, ref))),
 );
 
 MenuPopover.displayName = 'MenuPopover';

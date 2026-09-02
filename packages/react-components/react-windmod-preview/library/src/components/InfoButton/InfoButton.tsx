@@ -44,7 +44,7 @@ const popoverSizeMap: Record<InfoButtonSize, PopoverSize> = {
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-infolabel's styled useInfoButton.
-  ({ size = 'medium', ...rest }: InfoButtonProps, ref: React.Ref<HTMLButtonElement>) => {
+  ({ size = 'medium', ...rest }, ref) => {
     const state = useInfoButton(rest, ref);
     const Glyph = defaultGlyphs[size];
 

@@ -19,11 +19,10 @@ import { useDialogSurfaceStyles } from './useDialogSurfaceStyles';
  * It also carries the grid Griffel puts on a separate DialogBody element — see
  * DialogSurface.module.css for why the two rule sets merge onto one element, and what it costs.
  */
-export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forwardRef(
-  (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>) =>
-    renderDialogSurface(
-      useDialogSurfaceStyles({ ...useDialogSurface(props, ref), nested: useDialogContext().isNestedDialog }),
-    ),
+export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forwardRef((props, ref) =>
+  renderDialogSurface(
+    useDialogSurfaceStyles({ ...useDialogSurface(props, ref), nested: useDialogContext().isNestedDialog }),
+  ),
 );
 
 DialogSurface.displayName = 'DialogSurface';

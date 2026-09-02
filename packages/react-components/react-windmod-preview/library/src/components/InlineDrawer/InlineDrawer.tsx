@@ -17,7 +17,7 @@ import { useInlineDrawerStyles } from './useInlineDrawerStyles';
  * (Tailwind v4 + CSS Modules).
  */
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwardRef(
-  ({ size = 'small', separator = false, ...rest }: InlineDrawerProps, ref: React.Ref<HTMLElement>) => {
+  ({ size = 'small', separator = false, ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
     return renderInlineDrawer(useInlineDrawerStyles({ ...useInlineDrawer(rest, ref), size, separator }), contextValue);

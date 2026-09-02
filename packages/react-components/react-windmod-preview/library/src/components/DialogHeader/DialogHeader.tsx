@@ -11,9 +11,8 @@ import { useDialogHeaderStyles } from './useDialogHeaderStyles';
  * A DialogHeader is the `<header>` row of the dialog — the title beside whatever close affordance
  * the consumer supplies. It has no Griffel counterpart; windmod defines its look.
  */
-export const DialogHeader: ForwardRefComponent<DialogHeaderProps> = React.forwardRef(
-  (props: DialogHeaderProps, ref: React.Ref<HTMLElement>) =>
-    renderDialogHeader(useDialogHeaderStyles(useDialogHeader(props, ref))),
+export const DialogHeader: ForwardRefComponent<DialogHeaderProps> = React.forwardRef((props, ref) =>
+  renderDialogHeader(useDialogHeaderStyles(useDialogHeader(props, ref))),
 );
 
 DialogHeader.displayName = 'DialogHeader';

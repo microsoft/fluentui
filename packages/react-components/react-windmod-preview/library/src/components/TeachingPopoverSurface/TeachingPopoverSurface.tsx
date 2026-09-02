@@ -16,11 +16,10 @@ import { useTeachingPopoverSurfaceStyles } from './useTeachingPopoverSurfaceStyl
  * promotes into the top layer. Windmod TeachingPopoverSurface: the windmod PopoverSurface with the
  * teaching chrome layered over it.
  */
-export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps> = React.forwardRef(
-  (props: TeachingPopoverSurfaceProps, ref: React.Ref<HTMLDialogElement>) =>
-    renderTeachingPopoverSurface(
-      useTeachingPopoverSurfaceStyles({ ...useTeachingPopoverSurface(props, ref), ...usePopoverLook() }),
-    ),
+export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps> = React.forwardRef((props, ref) =>
+  renderTeachingPopoverSurface(
+    useTeachingPopoverSurfaceStyles({ ...useTeachingPopoverSurface(props, ref), ...usePopoverLook() }),
+  ),
 );
 
 TeachingPopoverSurface.displayName = 'TeachingPopoverSurface';

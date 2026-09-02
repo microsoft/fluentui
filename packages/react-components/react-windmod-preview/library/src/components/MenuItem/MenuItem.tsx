@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItem, useMenuItem } from '@fluentui/react-headless-components-preview/menu';
 import { useProviderContext } from '@fluentui/react-headless-components-preview/provider';
@@ -46,14 +45,12 @@ const withSubmenuIndicator = (state: MenuItemState, dir: 'ltr' | 'rtl'): MenuIte
  * The context is merged before the headless hook, so a container that publishes a value supplies
  * the default while an explicit prop still wins; MenuSplitGroup is what publishes into it today.
  */
-export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef(
-  (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>) => {
-    const { dir } = useProviderContext();
+export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((props, ref) => {
+  const { dir } = useProviderContext();
 
-    return renderMenuItem(
-      useMenuItemStyles(withSubmenuIndicator(useMenuItem(mergeContextProps(useMenuItemContext(), props), ref), dir)),
-    );
-  },
-);
+  return renderMenuItem(
+    useMenuItemStyles(withSubmenuIndicator(useMenuItem(mergeContextProps(useMenuItemContext(), props), ref), dir)),
+  );
+});
 
 MenuItem.displayName = 'MenuItem';

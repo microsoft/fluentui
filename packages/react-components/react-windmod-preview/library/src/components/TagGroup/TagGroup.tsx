@@ -17,7 +17,7 @@ import { useTagGroupStyles } from './useTagGroupStyles';
  * the headless tag group decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef(
-  ({ appearance = 'filled', size = 'medium', ...rest }: TagGroupProps, ref: React.Ref<HTMLDivElement>) => {
+  ({ appearance = 'filled', size = 'medium', ...rest }, ref) => {
     // Look props belong to windmod — the headless hook neither accepts nor resolves them. Defaults
     // mirror @fluentui/react-tags' styled useTagGroup. Everything else stays in `rest`: `disabled`
     // and `dismissible` are behaviour the base hook publishes to the Tags through Griffel's own
