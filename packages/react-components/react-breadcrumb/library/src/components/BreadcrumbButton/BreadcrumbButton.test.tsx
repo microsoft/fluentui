@@ -83,4 +83,17 @@ describe('BreadcrumbButton', () => {
       root: { as: 'a', href: '/somewhere' },
     });
   });
+
+  // Regression test for the controlType operator-precedence bug: `as ?? href ? 'a' : 'button'`
+  // parses as `(as ?? href) ? 'a' : 'button'`, so an explicit `as: 'button'` (truthy) computed
+  // controlType 'a' and the ARIA button pipeline emitted the anchor arm (`as: 'a'`, role="button")
+  // for a caller who asked for a real <button>.
+  it('keeps an explicit as="button" on the button arm of the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'button' }, React.createRef<HTMLButtonElement>()),
+    );
+
+    expect(result.current.root.as).toBe('button');
+    expect(result.current.root.role).toBeUndefined();
+  });
 });
