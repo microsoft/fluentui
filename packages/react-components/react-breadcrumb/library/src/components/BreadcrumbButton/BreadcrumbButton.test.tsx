@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
-import type { BreadcrumbButtonBaseProps, BreadcrumbButtonProps } from './BreadcrumbButton.types';
+import { useBreadcrumbButtonBase_unstable } from './useBreadcrumbButton';
+import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
 import { ArrowRight16Filled } from '@fluentui/react-icons';
@@ -68,19 +69,18 @@ describe('BreadcrumbButton', () => {
     `);
   });
 
-  // Type-level regression test for https://github.com/microsoft/fluentui/issues/36645.
-  // `BreadcrumbButtonBaseProps` used a plain `Omit`, which collapsed the distributive ARIA button
-  // union and dropped the anchor arm's `href`. These assignments are validated by the package's
-  // type-check target.
-  it('keeps both arms of the ARIA button union assignable to BreadcrumbButtonBaseProps', () => {
-    const anchorProps: BreadcrumbButtonBaseProps = { as: 'a', href: '/somewhere' };
-    const buttonProps: BreadcrumbButtonBaseProps = { as: 'button' };
+  // Regression test for https://github.com/microsoft/fluentui/issues/36645: a plain `Omit`
+  // collapsed the distributive ARIA button union, so the anchor arm's `href` was not assignable.
+  // Type-check runs against tests, so this covers the base hook and the types together.
+  it('accepts the anchor arm of the ARIA button union in the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'a', href: '/somewhere' }, React.createRef<HTMLAnchorElement>()),
+    );
 
-    // @ts-expect-error - `size` is omitted from BreadcrumbButtonBaseProps
-    const sizeProps: BreadcrumbButtonBaseProps = { as: 'button', size: 'small' };
-
-    expect(anchorProps).toBeDefined();
-    expect(buttonProps).toBeDefined();
-    expect(sizeProps).toBeDefined();
+    // `components.root` stays 'button' (the slot's declared default); the anchor arm resolves
+    // through the slot props, where useARIAButtonProps carries `as: 'a'` to the render layer.
+    expect(result.current).toMatchObject({
+      root: { as: 'a', href: '/somewhere' },
+    });
   });
 });
