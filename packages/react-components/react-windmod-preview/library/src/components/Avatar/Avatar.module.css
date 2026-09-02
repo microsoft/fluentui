@@ -33,23 +33,23 @@
   }
 
   .text-caption-2-strong {
-    @apply text-base-100 leading-[calc(20/10)];
+    @apply text-base-100 leading-200;
   }
 
   .text-caption-1-strong {
-    @apply text-base-200 leading-[calc(20/12)];
+    @apply text-base-200 leading-167;
   }
 
   .text-subtitle-2 {
-    @apply text-base-400 leading-[calc(20/16)];
+    @apply text-base-400 leading-125;
   }
 
   .text-subtitle-1 {
-    @apply text-base-500 leading-[calc(20/20)];
+    @apply text-base-500 leading-100;
   }
 
   .text-title-3 {
-    @apply text-base-600 leading-[calc(20/24)];
+    @apply text-base-600 leading-083;
   }
 
   .square-small {
@@ -333,7 +333,7 @@
   }
 
   .icon-initials {
-    @apply absolute start-0 top-0 flex size-full items-center justify-center rounded-[inherit] border-thin border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-none text-(--fui-avatar-foreground) select-none;
+    @apply absolute start-0 top-0 flex size-full items-center justify-center rounded-[inherit] border-thin border-solid border-transparent-stroke bg-(--fui-avatar-background) text-center leading-100 text-(--fui-avatar-foreground) select-none;
   }
 
   .icon-12 {

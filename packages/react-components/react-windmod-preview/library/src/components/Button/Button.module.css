@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-horizontal-none inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
+    @apply m-horizontal-none inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-143 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
 
     transition-property: background, border, color;
 
@@ -15,11 +15,11 @@
     }
 
     @variant size-small {
-      @apply min-w-64 px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
+      @apply min-w-64 px-horizontal-s py-3 text-base-200 leading-133 font-regular;
     }
 
     @variant size-large {
-      @apply px-horizontal-l py-vertical-s text-base-400 leading-base-400;
+      @apply px-horizontal-l py-vertical-s text-base-400 leading-137;
     }
 
     /* The appearance blocks all follow this one at equal specificity, so each of them
@@ -95,7 +95,7 @@
   }
 
   .icon {
-    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-[calc(20/20)];
+    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-100;
 
     --fui-button-icon-spacing: calc(6px * var(--base-scale));
 
@@ -110,13 +110,13 @@
     }
 
     @variant group-size-small/fui-button {
-      @apply leading-[calc(16/20)];
+      @apply leading-080;
 
       --fui-button-icon-spacing: calc(4px * var(--base-scale));
     }
 
     @variant group-size-large/fui-button {
-      @apply size-24 text-icon-24 leading-[calc(22/24)];
+      @apply size-24 text-icon-24 leading-092;
     }
 
     @variant group-appearance-subtle/fui-button {

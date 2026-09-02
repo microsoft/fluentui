@@ -5,15 +5,15 @@
     @apply font-base text-neutral-foreground-1;
 
     @variant size-small {
-      @apply text-base-200 leading-base-200;
+      @apply text-base-200 leading-133;
     }
 
     @variant size-medium {
-      @apply text-base-300 leading-base-300;
+      @apply text-base-300 leading-143;
     }
 
     @variant size-large {
-      @apply text-base-400 leading-base-400 font-semibold;
+      @apply text-base-400 leading-137 font-semibold;
     }
 
     @variant disabled {

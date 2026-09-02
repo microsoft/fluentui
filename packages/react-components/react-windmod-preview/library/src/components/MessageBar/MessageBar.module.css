@@ -34,7 +34,7 @@
   }
 
   .icon {
-    @apply me-horizontal-s flex items-center text-base-500 leading-[calc(20/20)] text-neutral-foreground-3;
+    @apply me-horizontal-s flex items-center text-base-500 leading-100 text-neutral-foreground-3;
     grid-area: icon;
 
     @variant group-intent-error/fui-message-bar {

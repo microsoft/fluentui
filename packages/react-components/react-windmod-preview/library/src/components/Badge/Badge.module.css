@@ -7,22 +7,22 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge font-base text-base-200 leading-base-200 font-semibold;
+    @apply relative inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge font-base text-base-200 leading-133 font-semibold;
 
     @variant after {
       @apply absolute inset-0 rounded-[inherit] border-thin border-solid border-inherit;
     }
 
     @variant size-small, size-extra-small, size-tiny {
-      @apply text-base-100 leading-base-100;
+      @apply text-base-100 leading-140;
     }
 
     @variant size-tiny {
-      @apply size-6 min-w-auto p-0 text-4 leading-[1];
+      @apply size-6 min-w-auto p-0 text-4 leading-100;
     }
 
     @variant size-extra-small {
-      @apply size-10 min-w-auto p-0 text-6 leading-[1];
+      @apply size-10 min-w-auto p-0 text-6 leading-100;
     }
 
     @variant size-small {
@@ -189,7 +189,7 @@
   }
 
   .icon {
-    @apply -mx-horizontal-xxs flex text-icon-12 leading-none;
+    @apply -mx-horizontal-xxs flex text-icon-12 leading-100;
 
     @variant group-not-empty/fui-badge {
       @variant group-icon-before/fui-badge {

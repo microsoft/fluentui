@@ -78,27 +78,27 @@
   }
 
   .text-caption-2-strong {
-    @apply font-base text-base-100 leading-base-100 font-semibold;
+    @apply font-base text-base-100 leading-140 font-semibold;
   }
 
   .text-caption-1-strong {
-    @apply font-base text-base-200 leading-base-200 font-semibold;
+    @apply font-base text-base-200 leading-133 font-semibold;
   }
 
   .text-body-1-strong {
-    @apply font-base text-base-300 leading-base-300 font-semibold;
+    @apply font-base text-base-300 leading-143 font-semibold;
   }
 
   .text-subtitle-2 {
-    @apply font-base text-base-400 leading-base-400 font-semibold;
+    @apply font-base text-base-400 leading-137 font-semibold;
   }
 
   .text-subtitle-1 {
-    @apply font-base text-base-500 leading-base-500 font-semibold;
+    @apply font-base text-base-500 leading-140 font-semibold;
   }
 
   .text-title-3 {
-    @apply font-base text-base-600 leading-base-600 font-semibold;
+    @apply font-base text-base-600 leading-133 font-semibold;
   }
 
   .icon-12 {

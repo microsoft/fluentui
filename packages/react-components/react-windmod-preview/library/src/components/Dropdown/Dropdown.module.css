@@ -127,15 +127,15 @@
     }
 
     @variant group-size-small/fui-dropdown {
-      @apply py-3 ps-8 pe-horizontal-s-nudge text-base-200 leading-base-200 font-regular;
+      @apply py-3 ps-8 pe-horizontal-s-nudge text-base-200 leading-133 font-regular;
     }
 
     @variant group-size-medium/fui-dropdown {
-      @apply py-5 ps-12 pe-horizontal-m-nudge text-base-300 leading-base-300 font-regular;
+      @apply py-5 ps-12 pe-horizontal-m-nudge text-base-300 leading-143 font-regular;
     }
 
     @variant group-size-large/fui-dropdown {
-      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m text-base-400 leading-base-400 font-regular;
+      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m text-base-400 leading-137 font-regular;
     }
   }
 
@@ -176,17 +176,17 @@
     }
 
     @variant group-size-small/fui-dropdown {
-      @apply ms-horizontal-xxs text-icon-16 leading-[calc(16/16)];
+      @apply ms-horizontal-xxs text-icon-16 leading-100;
     }
 
     @variant group-size-medium/fui-dropdown {
-      @apply ms-horizontal-xxs text-icon-20 leading-[calc(20/20)];
+      @apply ms-horizontal-xxs text-icon-20 leading-100;
     }
 
     /* The 24px glyph is what makes the large field 40px tall: lineHeightBase400 is 22px, and the
        icon shares the button's grid row under align-items: center. */
     @variant group-size-large/fui-dropdown {
-      @apply ms-horizontal-s-nudge text-icon-24 leading-[calc(22/24)];
+      @apply ms-horizontal-s-nudge text-icon-24 leading-092;
     }
 
     /* The ratios above divide the TRIGGER's per-size line box, which is what the chevron (a grid
@@ -194,15 +194,15 @@
        whose line box is 20px at every size, so its ratios divide 20 instead. */
     &:is(button) {
       @variant group-size-small/fui-dropdown {
-        @apply leading-[calc(20/16)];
+        @apply leading-125;
       }
 
       @variant group-size-medium/fui-dropdown {
-        @apply leading-[calc(20/20)];
+        @apply leading-100;
       }
 
       @variant group-size-large/fui-dropdown {
-        @apply leading-[calc(20/24)];
+        @apply leading-083;
       }
     }
 

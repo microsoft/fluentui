@@ -17,7 +17,7 @@
   }
 
   .secondary-text {
-    @apply mt-vertical-xxs font-base text-base-200 leading-base-200 font-regular text-neutral-foreground-3;
+    @apply mt-vertical-xxs font-base text-base-200 leading-133 font-regular text-neutral-foreground-3;
   }
 
   .validation-message {
@@ -31,7 +31,7 @@
   }
 
   .validation-message-icon {
-    @apply ms-[calc(var(--spacing)*-12-var(--spacing-horizontal-xs))] me-horizontal-xs inline-block align-[calc(var(--spacing)*-1)] text-icon-12 leading-[0];
+    @apply ms-[calc(var(--spacing)*-12-var(--spacing-horizontal-xs))] me-horizontal-xs inline-block align-[calc(var(--spacing)*-1)] text-icon-12 leading-000;
 
     @variant group-validate-state-error/fui-field {
       @apply text-palette-red-foreground-1;

@@ -2,14 +2,14 @@
 
 @layer fui.components.l2 {
   .root {
-    @apply h-32 min-w-[unset] p-horizontal-s-nudge text-base-300 leading-base-300 font-regular text-nowrap;
+    @apply h-32 min-w-[unset] p-horizontal-s-nudge text-base-300 leading-143 font-regular text-nowrap;
 
     @variant size-small {
-      @apply h-24 text-base-200 leading-base-200;
+      @apply h-24 text-base-200 leading-133;
     }
 
     @variant size-large {
-      @apply h-40 p-horizontal-s text-base-400 leading-base-400;
+      @apply h-40 p-horizontal-s text-base-400 leading-137;
     }
 
     /* Griffel keys this branch off the native `:disabled` pseudo-class, so it must not reach the
@@ -24,14 +24,14 @@
   }
 
   .icon {
-    @apply me-horizontal-xs size-16 text-icon-16 leading-base-400;
+    @apply me-horizontal-xs size-16 text-icon-16 leading-137;
 
     @variant group-size-small/fui-breadcrumb-button {
-      @apply size-12 text-icon-12 leading-base-200;
+      @apply size-12 text-icon-12 leading-133;
     }
 
     @variant group-size-large/fui-breadcrumb-button {
-      @apply size-20 text-icon-20 leading-[calc(32/20)];
+      @apply size-20 text-icon-20 leading-160;
     }
 
     /* A current entry is not an affordance, so it undoes Button's interactive glyph swap as

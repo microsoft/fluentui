@@ -105,10 +105,10 @@
 
 @layer fui.components.l1 {
   .menu-icon {
-    @apply size-12 text-icon-12 leading-base-200;
+    @apply size-12 text-icon-12 leading-133;
 
     @variant group-size-large/fui-menu-button {
-      @apply size-16 text-icon-16 leading-base-400;
+      @apply size-16 text-icon-16 leading-137;
     }
 
     @variant group-not-icon-only/fui-menu-button {

@@ -16,7 +16,7 @@
   }
 
   .overflow-label {
-    @apply ms-horizontal-s font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+    @apply ms-horizontal-s font-base text-base-300 leading-143 font-regular text-neutral-foreground-1;
   }
 
   .stack-thick {

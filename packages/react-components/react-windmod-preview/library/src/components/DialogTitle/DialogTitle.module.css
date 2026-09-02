@@ -6,6 +6,6 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply col-start-1 col-end-4 row-start-1 row-end-1 font-base text-base-500 leading-base-500 font-semibold;
+    @apply col-start-1 col-end-4 row-start-1 row-end-1 font-base text-base-500 leading-140 font-semibold;
   }
 }
