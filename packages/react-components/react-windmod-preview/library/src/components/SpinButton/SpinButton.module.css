@@ -12,7 +12,8 @@
     }
 
     /* border-solid is deliberately absent: a lone border-bottom width with an explicit style
-       gives the other three sides a computed width and grows the box. */
+       gives the other three sides a computed width and grows the box. Underline geometry — see
+       Input.module.css. */
     @variant after {
       @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
@@ -148,8 +149,10 @@
     }
   }
 
+  /* A placed grid item where the reference positions absolutely: the 24px column and the two 1fr
+     rows are fixed, so a static button lands in the same box and adds nothing to track sizing. */
   .button {
-    @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center rounded-none border-0 bg-transparent px-5 py-0 text-neutral-foreground-3 outline-none;
+    @apply col-start-2 inline-flex h-16 w-24 items-center justify-center rounded-none border-0 bg-transparent px-5 py-0 text-neutral-foreground-3 outline-none;
 
     @variant enabled {
       @variant hover {
