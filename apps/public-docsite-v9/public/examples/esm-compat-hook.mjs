@@ -5,6 +5,9 @@
 //
 // Bundlers are unaffected — they honor the `module` field that Node ignores.
 //
+// Fix in flight upstream: https://github.com/microsoft/tabster/pull/588 — once it ships and the
+// dependency is bumped, this hook and the `--import` flag can be dropped.
+//
 // Usage: node --import ./esm-compat-hook.mjs native-esm-node.mjs
 
 import { register } from 'node:module';

@@ -169,8 +169,9 @@ SyntaxError: Named export 'createTabster' not found. The requested module 'tabst
 ```
 
 This still reproduces on the latest release (`tabster@8.8.0`); `keyborg`, by contrast, already ships
-a proper `exports` map. Until it is fixed upstream, a resolve hook redirecting the specifier to the
-ESM build works around it:
+a proper `exports` map. A fix is in flight upstream
+([microsoft/tabster#588](https://github.com/microsoft/tabster/pull/588)) — until it lands, a resolve
+hook redirecting the specifier to the ESM build works around it:
 
 ```js
 // esm-compat-hook.mjs

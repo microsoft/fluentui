@@ -10,7 +10,7 @@
 //
 // A fresh install matters: `@fluentui/react-icons` builds older than ~2.0.339 emit extensionless
 // relative imports that Node rejects. Running this file in place inside the fluentui repo will
-// not work — it resolves to the workspace's own (older, pinned) dependency graph.
+// not work until the pinned icons version is bumped.
 
 import * as React from 'react';
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
