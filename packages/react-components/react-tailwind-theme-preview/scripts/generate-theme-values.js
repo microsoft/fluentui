@@ -24,7 +24,10 @@ const PACKAGE_ROOT = path.resolve(__dirname, '..');
 const REPO_ROOT = path.resolve(PACKAGE_ROOT, '..', '..', '..');
 const OUTPUT = path.join(PACKAGE_ROOT, 'theme-values.json');
 
-/** The shipped themes. Keep in sync with `src/themes/index.ts` and `src/themes/themeClassNames.ts`. */
+/**
+ * The shipped themes. Keep in sync with `packages/tokens/src/themes/index.ts` and this package's
+ * `theme-class-names.mjs`; `generate-tokens-css.js` asserts the snapshot's set equals the latter.
+ */
 const THEME_NAMES = [
   'webLightTheme',
   'webDarkTheme',

@@ -551,15 +551,15 @@ function readStrokeWidthScale() {
 }
 
 /**
- * Reads `packages/tokens/src/themes/themeClassNames.ts` as text and extracts the shipped
+ * Reads this package's `theme-class-names.mjs` as text and extracts the shipped
  * theme → class-name constants, asserting each class name equals its derivation from the
  * theme export name (`fui-theme-` + kebab of the name minus `Theme`; digits attach to the
  * preceding segment, so `teamsDarkV21Theme` → `fui-theme-teams-dark-v21` — deliberately
  * NOT this file's `kebabCase`, whose letter→digit rule would produce `v-21`).
  *
  * Text extraction for the same reason as `readTokens`: no build step, no dependency edge
- * on @fluentui/tokens. `themeClassNames.test.ts` in packages/tokens asserts the same
- * derivation from the jest side.
+ * on @fluentui/tokens. This assertion is the only guard on the derivation; `--check` is
+ * what runs it.
  *
  * @returns {Record<string, string>} theme export name → class name
  */
@@ -593,19 +593,20 @@ function readThemeClassNames() {
 }
 
 /**
- * Reads the committed `packages/tokens/theme-values.json` snapshot — the VALUE source for
- * the theme emission. The snapshot exists because theme values are
- * computed (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way
- * `tokens.ts` is; `packages/tokens/src/themes/themeValues.test.ts` asserts on every jest
- * run that it deep-equals the computed themes.
+ * Reads this package's committed `theme-values.json` snapshot — the VALUE source for the
+ * theme emission. The snapshot exists because theme values are computed
+ * (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way `tokens.ts` is.
+ * Its freshness against the built tokens package is asserted by
+ * `scripts/generate-theme-values.js --check`, a dependency of this package's build target.
  *
  * @returns {Record<string, Record<string, string>>} theme export name → (token → value)
  */
 function readThemeValues() {
   if (!fs.existsSync(THEME_VALUES_SOURCE)) {
     throw new Error(
-      `${THEME_VALUES_SOURCE} is missing. Run \`yarn workspace @fluentui/tokens generate-theme-values\` ` +
-        '(after building packages/tokens) and commit the result.',
+      `${THEME_VALUES_SOURCE} is missing. Run \`yarn nx run tokens:build\`, then ` +
+        '`node packages/react-components/react-tailwind-theme-preview/scripts/generate-theme-values.js`, ' +
+        'and commit the result.',
     );
   }
 
@@ -651,7 +652,7 @@ function analyzeThemeEmission(tokens) {
   const constantThemes = Object.keys(classNames).sort();
   if (JSON.stringify(snapshotThemes) !== JSON.stringify(constantThemes)) {
     throw new Error(
-      `Shipped-theme sets disagree: theme-values.json has [${snapshotThemes}] but themeClassNames.ts has ` +
+      `Shipped-theme sets disagree: theme-values.json has [${snapshotThemes}] but theme-class-names.mjs has ` +
         `[${constantThemes}]. Regenerate the snapshot and/or update the constants.`,
     );
   }
@@ -1400,7 +1401,10 @@ function renderTheme(themeName, className) {
   out.push(' * DO NOT EDIT — generated file.');
   out.push(' *');
   out.push(` * Generator:  ${GENERATOR_ID}`);
-  out.push(` * Source:     ${tokensPackage.name}@${tokensPackage.version} (packages/tokens/theme-values.json)`);
+  out.push(
+    ` * Source:     ${tokensPackage.name}@${tokensPackage.version} ` +
+      '(packages/react-components/react-tailwind-theme-preview/theme-values.json)',
+  );
   out.push(` * Regenerate: node ${GENERATOR_ID}`);
   out.push(` * Verify:     node ${GENERATOR_ID} --check`);
   out.push(' *');

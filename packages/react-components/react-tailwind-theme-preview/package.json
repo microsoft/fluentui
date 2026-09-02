@@ -57,16 +57,32 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "//nx:verify": "The committed generator outputs (css/tokens.css, css/themes/*.css, theme-values.json) are only as fresh as the last hand run of the generators, so their `--check` scripts gate the build: `verify-tokens-css` re-derives the CSS from packages/tokens source and the snapshot; `verify-theme-values` re-derives the snapshot from the BUILT tokens package, hence its dependency on tokens:build.",
   "nx": {
     "name": "react-tailwind-theme-preview",
     "targets": {
       "build": {
+        "dependsOn": [
+          "^build",
+          "verify-tokens-css",
+          "verify-theme-values"
+        ],
         "inputs": [
           "{projectRoot}/css/**",
           "{projectRoot}/build.js"
         ],
         "outputs": [
           "{projectRoot}/dist"
+        ]
+      },
+      "verify-theme-values": {
+        "dependsOn": [
+          {
+            "projects": [
+              "tokens"
+            ],
+            "target": "build"
+          }
         ]
       }
     }
