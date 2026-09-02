@@ -8,10 +8,9 @@
 // Node resolves `@fluentui/react-components` through the package's `import` export condition,
 // which points at its native ESM build (`lib/index.js`). No `module` field, no interop shim.
 //
-// A fresh install matters: some older transitive versions are not resolvable by Node's ESM
-// loader. See esm-compat-hook.mjs for the gaps that remain even on latest. Running this file
-// in place inside the fluentui repo will not work — it resolves to the workspace's own
-// (older, hoisted) dependency graph.
+// A fresh install matters: `@fluentui/react-icons` builds older than ~2.0.339 emit extensionless
+// relative imports that Node rejects. Running this file in place inside the fluentui repo will
+// not work — it resolves to the workspace's own (older, pinned) dependency graph.
 
 import * as React from 'react';
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';

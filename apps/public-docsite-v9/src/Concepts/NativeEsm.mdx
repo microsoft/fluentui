@@ -157,8 +157,9 @@ node --import ./esm-compat-hook.mjs native-esm-node.mjs > index.html
 
 ### Known gaps
 
-Node's ESM resolution is stricter than any bundler's, and a few dependencies are not yet published
-in a shape it accepts. Bundlers are unaffected, so these only surface when running Node without one.
+Node's ESM resolution is stricter than any bundler's, and a couple of dependencies are not yet
+published in a shape it accepts. Bundlers are unaffected, so these only surface when running Node
+without one.
 
 **`tabster`** (via `@fluentui/react-tabster`) ships an ESM build in `dist/esm/` and declares
 `"type": "module"`, but has no `exports` map and a CommonJS `main` — so Node picks the CJS entry:
@@ -167,40 +168,27 @@ in a shape it accepts. Bundlers are unaffected, so these only surface when runni
 SyntaxError: Named export 'createTabster' not found. The requested module 'tabster' is a CommonJS module
 ```
 
-This still reproduces on the latest release (`tabster@8.8.0`); `keyborg@3.0.0`, by contrast, already
-ships a proper `exports` map.
-
-**`use-sync-external-store/shim`** (via `@fluentui/react-positioning`) is a directory import. Node
-only accepts it when the installed copy has an `exports` map, which `use-sync-external-store` gained
-in **1.5.0** — but the declared range is `^1.4.0`, so an older resolution fails with
-`ERR_UNSUPPORTED_DIR_IMPORT`.
-
-Until both are fixed upstream, a resolve hook redirecting the two specifiers works around them:
+This still reproduces on the latest release (`tabster@8.8.0`); `keyborg`, by contrast, already ships
+a proper `exports` map. Until it is fixed upstream, a resolve hook redirecting the specifier to the
+ESM build works around it:
 
 ```js
 // esm-compat-hook.mjs
 import { register } from 'node:module';
 
-const redirects = {
-  tabster: 'tabster/dist/esm/index.js',
-  'use-sync-external-store/shim': 'use-sync-external-store/shim/index.js',
-};
-
 // Resolve hooks run on a separate thread, so they must be a standalone module.
 const hook = `
-  const redirects = ${JSON.stringify(redirects)};
-
   export function resolve(specifier, context, nextResolve) {
-    return nextResolve(redirects[specifier] ?? specifier, context);
+    return nextResolve(specifier === 'tabster' ? 'tabster/dist/esm/index.js' : specifier, context);
   }
 `;
 
 register(`data:text/javascript,${encodeURIComponent(hook)}`, import.meta.url);
 ```
 
-> ⚠️ Install fresh. Older builds of `@fluentui/react-icons` (for example `2.0.311`) emit
-> extensionless relative imports such as `export * from './icons/chunk-0'`, which Node rejects
-> outright. Current releases emit `./icons/chunk-0.js`.
+**`@fluentui/react-icons`** needs to be reasonably current. Older builds — for example `2.0.311` —
+emit extensionless relative imports such as `export * from './icons/chunk-0'`, which Node rejects
+outright with `ERR_MODULE_NOT_FOUND`. Current releases emit `./icons/chunk-0.js`.
 
 ## Caveats
 
