@@ -10,7 +10,7 @@
 
     @variant not-scroll-state-none {
       @variant after {
-        @apply absolute inset-x-0 h-px bg-neutral-stroke-1 opacity-0 duration-normal ease-easy-ease;
+        @apply absolute inset-x-0 h-thin bg-neutral-stroke-1 opacity-0 duration-normal ease-easy-ease;
 
         inset-block-end: 0;
         transition-property: opacity;

@@ -9,11 +9,11 @@
     @apply relative z-1 flex-1 self-stretch overflow-auto px-horizontal-xxl;
 
     @variant first {
-      @apply pt-[calc(var(--spacing-horizontal-xxl)+1px)];
+      @apply pt-[calc(var(--spacing-horizontal-xxl)+var(--spacing-thin))];
     }
 
     @variant last {
-      @apply pb-[calc(var(--spacing-horizontal-xxl)+1px)];
+      @apply pb-[calc(var(--spacing-horizontal-xxl)+var(--spacing-thin))];
     }
   }
 }

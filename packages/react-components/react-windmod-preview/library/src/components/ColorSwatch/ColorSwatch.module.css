@@ -82,7 +82,7 @@
 
       box-shadow:
         inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-1),
-        inset 0 0 0 5px var(--color-stroke-focus-1);
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
 
       @variant size-extra-small, size-small {
         box-shadow:
@@ -95,19 +95,19 @@
       @variant focus-visible {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-2),
-          inset 0 0 0 5px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-hover),
-          inset 0 0 0 6px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(6px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover-active {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-pressed),
-          inset 0 0 0 7px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(7px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant size-extra-small, size-small {
@@ -139,7 +139,7 @@
       @variant selected {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-2-pressed),
-          inset 0 0 0 5px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover {
