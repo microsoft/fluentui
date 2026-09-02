@@ -681,14 +681,14 @@ function analyzeThemeEmission(tokens) {
     } else if (classification.group.unitlessRatio === true) {
       leadingTokens.push({
         name,
-        canonical: /** @type {string} */ (classification.canonical),
+        canonical: classification.canonical,
         fontSizeName: `fontSize${name.slice(classification.group.prefix.length)}`,
         value: '', // derived below, once the themes are proven to agree
       });
     } else {
       variantTokens.push({
         name,
-        canonical: /** @type {string} */ (classification.canonical),
+        canonical: classification.canonical,
         // Namespaces on the base-scale axis carry a rewrite; `scaleValue` lets a namespace whose
         // values are composite (shadows) override the plain-px default.
         scaleValue:
@@ -1004,7 +1004,14 @@ function readTokens() {
 
 /**
  * @param {string} name
- * @returns {{ kind: 'register', group: typeof NAMESPACES[number], themeKey: string, value?: string } | { kind: 'exclude', prefix: string, reason: string }}
+ * @returns {{
+ *   kind: 'register',
+ *   group: typeof NAMESPACES[number],
+ *   themeKey: string,
+ *   value?: string,
+ *   step?: { suffix: string, utility: string, global: string, px: number },
+ *   canonical?: string,
+ * } | { kind: 'exclude', prefix: string, reason: string }}
  */
 function classify(name) {
   for (const group of NAMESPACES) {
