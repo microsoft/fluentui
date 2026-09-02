@@ -15,13 +15,14 @@ export const Spinner: ForwardRefComponent<SpinnerProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-spinner's styled useSpinner.
   ({ appearance = 'primary', size = 'medium', ...rest }, ref) => {
-    return renderSpinner(
-      useSpinnerStyles({
-        ...useSpinner(rest, ref),
-        appearance,
-        size,
-      }),
-    );
+    const state = useSpinner(rest, ref);
+    const styled = useSpinnerStyles({
+      ...state,
+      appearance,
+      size,
+    });
+
+    return renderSpinner(styled);
   },
 );
 

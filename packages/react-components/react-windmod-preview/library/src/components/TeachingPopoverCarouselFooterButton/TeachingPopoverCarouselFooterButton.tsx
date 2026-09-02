@@ -53,7 +53,8 @@ const navAppearance = (
  */
 export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps> =
   React.forwardRef((props, ref) => {
-    const { appearance, shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(useButtonContext(), props);
+    const context = useButtonContext();
+    const { appearance, shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
     const { appearance: popoverAppearance } = usePopoverLook();
 
     // The base hook owns the carousel wiring and nothing else: the page-change click and the
@@ -74,17 +75,18 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
       children: base.root.children,
     } as ButtonHeadlessProps;
 
-    return renderTeachingPopoverCarouselFooterButton(
-      useTeachingPopoverCarouselFooterButtonStyles({
-        ...useButton(buttonProps, ref),
-        navType,
-        altText,
-        appearance: appearance ?? navAppearance(navType, popoverAppearance),
-        shape,
-        size,
-        popoverAppearance,
-      }),
-    );
+    const button = useButton(buttonProps, ref);
+    const styled = useTeachingPopoverCarouselFooterButtonStyles({
+      ...button,
+      navType,
+      altText,
+      appearance: appearance ?? navAppearance(navType, popoverAppearance),
+      shape,
+      size,
+      popoverAppearance,
+    });
+
+    return renderTeachingPopoverCarouselFooterButton(styled);
   });
 
 TeachingPopoverCarouselFooterButton.displayName = 'TeachingPopoverCarouselFooterButton';

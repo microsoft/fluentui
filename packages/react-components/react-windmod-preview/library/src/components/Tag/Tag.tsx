@@ -35,12 +35,8 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
   // resolves them the same way — `appearance = contextAppearance ?? 'filled'`, `size = contextSize`
   // against a context whose own default is `medium` (react-tags/.../useTag.tsx:119-121,
   // contexts/tagGroupContext.tsx:8-13). `shape` is not published by either library's TagGroup.
-  const {
-    appearance = 'filled',
-    shape = 'rounded',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps(useTagGroupContext(), props);
+  const context = useTagGroupContext();
+  const { appearance = 'filled', shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
   const base = useTag(rest, ref);
 
   // The headless dismissIcon slot ships no glyph of its own, and the renderer draws it on every
@@ -67,7 +63,10 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
     size,
   };
 
-  return renderTag(useTagStyles(state), useTagContextValues(state));
+  const styled = useTagStyles(state);
+  const contextValues = useTagContextValues(state);
+
+  return renderTag(styled, contextValues);
 });
 
 Tag.displayName = 'Tag';

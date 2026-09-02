@@ -22,7 +22,8 @@ export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef(
     // mirror @fluentui/react-tags' styled useTagGroup. Everything else stays in `rest`: `disabled`
     // and `dismissible` are behaviour the base hook publishes to the Tags through Griffel's own
     // context, and pulling either out here would silently stop it reaching them.
-    const state: TagGroupState = { ...useTagGroup(rest, ref), appearance, size };
+    const base = useTagGroup(rest, ref);
+    const state: TagGroupState = { ...base, appearance, size };
 
     const styled = useTagGroupStyles(state);
     // Two contexts, two audiences. The Griffel values are built from the styled state so a Griffel

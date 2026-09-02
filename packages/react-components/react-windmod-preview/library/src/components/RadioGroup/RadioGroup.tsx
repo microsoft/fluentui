@@ -21,7 +21,8 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps> = React.forwardRef
   ({ layout = 'vertical', ...rest }, ref) => {
     // `layout` has to be back in the state before the context hook reads it: it is the only route
     // by which a child Radio learns that horizontal-stacked puts its label below the indicator.
-    const styled = useRadioGroupStyles({ ...useRadioGroup(rest, ref), layout });
+    const state = useRadioGroup(rest, ref);
+    const styled = useRadioGroupStyles({ ...state, layout });
     const contextValues = useRadioGroupContextValues(styled);
 
     return renderRadioGroup(styled, contextValues);

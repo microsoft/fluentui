@@ -34,7 +34,9 @@ export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderPro
     appearance,
   };
 
-  return renderTeachingPopoverHeader(useTeachingPopoverHeaderStyles(state));
+  const styled = useTeachingPopoverHeaderStyles(state);
+
+  return renderTeachingPopoverHeader(styled);
 });
 
 TeachingPopoverHeader.displayName = 'TeachingPopoverHeader';

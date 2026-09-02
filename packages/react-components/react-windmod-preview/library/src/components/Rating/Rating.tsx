@@ -28,8 +28,9 @@ export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef(
       [max],
     );
 
+    const state = useRating({ children, iconFilled, iconOutline, ...rest }, ref as React.Ref<HTMLDivElement>);
     const styled = useRatingStyles({
-      ...useRating({ children, iconFilled, iconOutline, ...rest }, ref as React.Ref<HTMLDivElement>),
+      ...state,
       color,
       size,
     });

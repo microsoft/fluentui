@@ -22,14 +22,17 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps> = React.forwar
   ({ size = 'medium', shape, spacing = 'medium', ...rest }, ref) => {
     // The headless state omits all three look props, so the context values must be built from the
     // state that carries them — otherwise the swatches read `undefined` instead of the picker's.
+    const state = useSwatchPicker(rest, ref);
     const styled = useSwatchPickerStyles({
-      ...useSwatchPicker(rest, ref),
+      ...state,
       size,
       shape,
       spacing,
     });
 
-    return renderSwatchPicker(styled, useSwatchPickerContextValues(styled));
+    const contextValues = useSwatchPickerContextValues(styled);
+
+    return renderSwatchPicker(styled, contextValues);
   },
 );
 

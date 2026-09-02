@@ -34,7 +34,9 @@ export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps
     appearance,
   };
 
-  return renderTeachingPopoverTitle(useTeachingPopoverTitleStyles(state));
+  const styled = useTeachingPopoverTitleStyles(state);
+
+  return renderTeachingPopoverTitle(styled);
 });
 
 TeachingPopoverTitle.displayName = 'TeachingPopoverTitle';

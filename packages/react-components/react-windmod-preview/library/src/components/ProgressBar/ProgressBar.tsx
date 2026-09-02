@@ -34,14 +34,15 @@ export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardR
     ...rest
   } = mergeContextProps({ color: contextColor }, props);
 
-  return renderProgressBar(
-    useProgressBarStyles({
-      ...useProgressBar(rest, ref),
-      color,
-      shape,
-      thickness,
-    }),
-  );
+  const state = useProgressBar(rest, ref);
+  const styled = useProgressBarStyles({
+    ...state,
+    color,
+    shape,
+    thickness,
+  });
+
+  return renderProgressBar(styled);
 });
 
 ProgressBar.displayName = 'ProgressBar';

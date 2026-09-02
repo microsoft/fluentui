@@ -17,9 +17,12 @@ import { useTeachingPopoverCarouselStyles } from './useTeachingPopoverCarouselSt
  */
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps> = React.forwardRef(
   (props, ref) => {
-    const styled = useTeachingPopoverCarouselStyles(useTeachingPopoverCarousel(props, ref));
+    const state = useTeachingPopoverCarousel(props, ref);
+    const styled = useTeachingPopoverCarouselStyles(state);
 
-    return renderTeachingPopoverCarousel(styled, useTeachingPopoverCarouselContextValues(styled));
+    const contextValues = useTeachingPopoverCarouselContextValues(styled);
+
+    return renderTeachingPopoverCarousel(styled, contextValues);
   },
 );
 

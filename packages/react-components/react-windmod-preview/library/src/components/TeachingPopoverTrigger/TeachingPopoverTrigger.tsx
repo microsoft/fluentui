@@ -17,7 +17,12 @@ import { useTeachingPopoverTriggerStyles } from './useTeachingPopoverTriggerStyl
  */
 export const TeachingPopoverTrigger: React.FC<TeachingPopoverTriggerProps> = (
   props: TeachingPopoverTriggerProps,
-): JSXElement | null => renderTeachingPopoverTrigger(useTeachingPopoverTriggerStyles(useTeachingPopoverTrigger(props)));
+): JSXElement | null => {
+  const state = useTeachingPopoverTrigger(props);
+  const styled = useTeachingPopoverTriggerStyles(state);
+
+  return renderTeachingPopoverTrigger(styled);
+};
 
 TeachingPopoverTrigger.displayName = 'TeachingPopoverTrigger';
 

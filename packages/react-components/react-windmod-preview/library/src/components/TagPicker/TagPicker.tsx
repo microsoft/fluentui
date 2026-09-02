@@ -35,7 +35,9 @@ export const TagPicker = ({ appearance = 'outline', size = 'medium', ...rest }: 
   // family reads them from — no member takes either from its own props.
   const state: TagPickerState = { ...base, appearance, size };
 
-  return renderTagPicker(state, useTagPickerContextValues(state));
+  const contextValues = useTagPickerContextValues(state);
+
+  return renderTagPicker(state, contextValues);
 };
 
 TagPicker.displayName = 'TagPicker';

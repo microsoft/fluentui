@@ -34,8 +34,9 @@ export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forw
       [compact, max],
     );
 
+    const state = useRatingDisplay({ children, compact, icon, max, ...rest }, ref as React.Ref<HTMLDivElement>);
     const styled = useRatingDisplayStyles({
-      ...useRatingDisplay({ children, compact, icon, max, ...rest }, ref as React.Ref<HTMLDivElement>),
+      ...state,
       color,
       size,
     });

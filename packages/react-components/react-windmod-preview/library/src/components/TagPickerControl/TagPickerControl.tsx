@@ -38,7 +38,9 @@ export const TagPickerControl: ForwardRefComponent<TagPickerControlProps> = Reac
     ? { ...base, expandIcon: { ...base.expandIcon, children: base.expandIcon.children ?? <ChevronDownRegular /> } }
     : base;
 
-  return renderTagPickerControl(useTagPickerControlStyles({ ...withGlyph, appearance, size }));
+  const styled = useTagPickerControlStyles({ ...withGlyph, appearance, size });
+
+  return renderTagPickerControl(styled);
 });
 
 TagPickerControl.displayName = 'TagPickerControl';

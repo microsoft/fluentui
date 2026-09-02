@@ -23,13 +23,13 @@ export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef(
     // consumer's own indicator children still win. The slot always renders — unlike MenuButton's
     // menuIcon, which needs pre-hook materialisation to stay removable (see MenuButton.tsx) — so
     // `indicator={null}` leaves an indicator carrying the default thumb rather than removing it.
-    return renderSwitch(
-      useSwitchStyles({
-        ...base,
-        size,
-        indicator: { ...base.indicator, children: base.indicator.children ?? <CircleFilled /> },
-      }),
-    );
+    const styled = useSwitchStyles({
+      ...base,
+      size,
+      indicator: { ...base.indicator, children: base.indicator.children ?? <CircleFilled /> },
+    });
+
+    return renderSwitch(styled);
   },
 );
 

@@ -25,7 +25,9 @@ export const Popover = (props: PopoverProps): JSXElement => {
 
   const look = React.useMemo(() => ({ appearance, size }), [appearance, size]);
 
-  return <PopoverLookProvider value={look}>{renderPopover(state, usePopoverContextValues(state))}</PopoverLookProvider>;
+  const contextValues = usePopoverContextValues(state);
+
+  return <PopoverLookProvider value={look}>{renderPopover(state, contextValues)}</PopoverLookProvider>;
 };
 
 Popover.displayName = 'Popover';

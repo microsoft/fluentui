@@ -16,23 +16,25 @@ import { useSkeletonItemStyles } from './useSkeletonItemStyles';
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps> = React.forwardRef(
   // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
+    const context = useSkeletonContext();
     const {
       animation = 'wave',
       appearance = 'opaque',
       size = 16,
       shape = 'rectangle',
       ...rest
-    } = mergeContextProps(useSkeletonContext(), props);
+    } = mergeContextProps(context, props);
 
-    return renderSkeletonItem(
-      useSkeletonItemStyles({
-        ...useSkeletonItem(rest, ref as React.Ref<HTMLDivElement>),
-        animation,
-        appearance,
-        size,
-        shape,
-      }),
-    );
+    const state = useSkeletonItem(rest, ref as React.Ref<HTMLDivElement>);
+    const styled = useSkeletonItemStyles({
+      ...state,
+      animation,
+      appearance,
+      size,
+      shape,
+    });
+
+    return renderSkeletonItem(styled);
   },
 );
 

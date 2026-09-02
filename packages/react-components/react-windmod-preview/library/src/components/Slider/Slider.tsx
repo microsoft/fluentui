@@ -16,12 +16,13 @@ export const Slider: ForwardRefComponent<SliderProps> = React.forwardRef(
   // `size` must be destructured out: it is on react-utilities' input allow-list and the headless
   // input is the primary slot, so a forwarded `size` reaches the range input.
   ({ size = 'medium', ...rest }, ref) => {
-    return renderSlider(
-      useSliderStyles({
-        ...useSlider(rest, ref),
-        size,
-      }),
-    );
+    const state = useSlider(rest, ref);
+    const styled = useSliderStyles({
+      ...state,
+      size,
+    });
+
+    return renderSlider(styled);
   },
 );
 

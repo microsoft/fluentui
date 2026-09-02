@@ -20,14 +20,14 @@ export const TagPickerList: ForwardRefComponent<TagPickerListProps> = React.forw
   // The surface element type is re-stamped on the slot as well as in the components map: the map
   // alone is read only by the development-mode renderer, so a components-only swap is inert in a
   // production build. The slot is `root` here and takes no renderByDefault, unlike Combobox's.
-  return renderTagPickerList(
-    useTagPickerListStyles({
-      ...base,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-      components: { ...base.components, root: Listbox },
-      root: slot.always({ ...base.root }, { elementType: Listbox }),
-    }),
-  );
+  const styled = useTagPickerListStyles({
+    ...base,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+    components: { ...base.components, root: Listbox },
+    root: slot.always({ ...base.root }, { elementType: Listbox }),
+  });
+
+  return renderTagPickerList(styled);
 });
 
 TagPickerList.displayName = 'TagPickerList';

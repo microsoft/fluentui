@@ -39,20 +39,20 @@ export const Persona: ForwardRefComponent<PersonaProps> = React.forwardRef((prop
   // windmod's own Avatar and receives the size Griffel's Persona maps from its own. Rebuilding the
   // slot rather than spreading the headless one keeps every prop windmod-typed: windmod's Avatar
   // narrows `color`, so the headless slot's wider type is not assignable here.
-  return renderPersona(
-    usePersonaStyles({
-      ...base,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-      components: { ...base.components, avatar: Avatar },
-      avatar: slot.optional(avatar, {
-        renderByDefault: true,
-        defaultProps: { name: props.name, size: avatarSizes[size] },
-        elementType: Avatar,
-      }),
-      size,
-      textAlignment,
+  const styled = usePersonaStyles({
+    ...base,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+    components: { ...base.components, avatar: Avatar },
+    avatar: slot.optional(avatar, {
+      renderByDefault: true,
+      defaultProps: { name: props.name, size: avatarSizes[size] },
+      elementType: Avatar,
     }),
-  );
+    size,
+    textAlignment,
+  });
+
+  return renderPersona(styled);
 });
 
 Persona.displayName = 'Persona';

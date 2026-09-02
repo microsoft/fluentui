@@ -12,8 +12,12 @@ import { usePopoverTriggerStyles } from './usePopoverTriggerStyles';
  * PopoverTrigger: the headless trigger plus the marker pair, so a consumer can compose against
  * the trigger the same way they compose against any windmod component.
  */
-export const PopoverTrigger: React.FC<PopoverTriggerProps> = (props: PopoverTriggerProps): JSXElement | null =>
-  renderPopoverTrigger(usePopoverTriggerStyles(usePopoverTrigger(props)));
+export const PopoverTrigger: React.FC<PopoverTriggerProps> = (props: PopoverTriggerProps): JSXElement | null => {
+  const state = usePopoverTrigger(props);
+  const styled = usePopoverTriggerStyles(state);
+
+  return renderPopoverTrigger(styled);
+};
 
 PopoverTrigger.displayName = 'PopoverTrigger';
 

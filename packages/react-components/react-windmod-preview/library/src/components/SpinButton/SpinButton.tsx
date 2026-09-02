@@ -33,7 +33,9 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef
       children: base.decrementButton.children ?? <ChevronDown16Regular />,
     };
 
-    return renderSpinButton(useSpinButtonStyles({ ...base, incrementButton, decrementButton, appearance, size }));
+    const styled = useSpinButtonStyles({ ...base, incrementButton, decrementButton, appearance, size });
+
+    return renderSpinButton(styled);
   },
 );
 

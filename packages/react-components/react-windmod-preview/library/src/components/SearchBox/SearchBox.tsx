@@ -19,8 +19,9 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps> = React.forwardRef(
   // spread below. Defaults mirror @fluentui/react-search's styled useSearchBox, minus its
   // Field-context and overrides-context fallbacks, which windmod ships no counterpart for.
   ({ appearance = 'outline', size = 'medium', ...rest }, ref) => {
+    const base = useSearchBox(rest, ref);
     const state: SearchBoxState = {
-      ...useSearchBox(rest, ref),
+      ...base,
       appearance,
       size,
     };

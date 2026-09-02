@@ -13,7 +13,10 @@ import { useTagPickerButtonStyles } from './useTagPickerButtonStyles';
  * visual contract (Tailwind v4 + CSS Modules).
  */
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps> = React.forwardRef((props, ref) => {
-  return renderTagPickerButton(useTagPickerButtonStyles(useTagPickerButton(props, ref)));
+  const state = useTagPickerButton(props, ref);
+  const styled = useTagPickerButtonStyles(state);
+
+  return renderTagPickerButton(styled);
 });
 
 TagPickerButton.displayName = 'TagPickerButton';
