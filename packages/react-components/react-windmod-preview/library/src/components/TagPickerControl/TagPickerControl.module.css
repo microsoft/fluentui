@@ -32,6 +32,7 @@
       @apply min-h-44;
     }
 
+    /* Underline geometry — see Input.module.css. */
     @variant after {
       @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 

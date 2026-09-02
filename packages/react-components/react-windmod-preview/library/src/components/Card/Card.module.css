@@ -207,6 +207,7 @@
     @apply absolute end-4 top-4 z-content;
   }
 
+  /* Visually hidden but kept in the accessibility tree: the card surface is the visible control. */
   .checkbox {
     @apply absolute size-px overflow-hidden whitespace-nowrap;
 
