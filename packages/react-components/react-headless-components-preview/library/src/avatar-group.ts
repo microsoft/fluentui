@@ -4,7 +4,6 @@ export {
   useAvatarGroup,
   useAvatarGroupContext,
   useAvatarGroupContextValues,
-  useAvatarGroupContext,
   AvatarGroupProvider,
   AvatarGroupItem,
   renderAvatarGroupItem,

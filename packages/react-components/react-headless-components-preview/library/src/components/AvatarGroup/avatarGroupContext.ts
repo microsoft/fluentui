@@ -10,4 +10,4 @@
  * `isOverflow`), so nothing in the headless layer consumes it — a styling layer does, which is why
  * it is published rather than used here.
  */
-export { useAvatarGroupContext_unstable as useAvatarGroupContext, AvatarGroupProvider } from '@fluentui/react-avatar';
+export { AvatarGroupProvider } from '@fluentui/react-avatar';
