@@ -18,8 +18,10 @@ The base sheet also carries the **scale-region mechanism**: the invariant values
 which `--base-scale` multiplies in. An element carrying the class, the attribute and a theme
 class scales its whole subtree; the windmod package's `ScaleRegion` component stamps all three.
 
-It deliberately registers **no** `@property` rules (a non-empty registry puts Blink's
-transition-start on a page-global slow path).
+It deliberately registers **no** `@property` rules: a token reads back through
+`getComputedStyle` as its unevaluated `var()`/`calc()` stream, and an unset token stays
+guaranteed-invalid (`var()` fallbacks and the missing-theme check depend on that). `build.js`
+fails on any registration.
 
 The only JavaScript export is the theme class-name constants; everything else is CSS.
 

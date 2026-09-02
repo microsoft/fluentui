@@ -12,9 +12,9 @@
  * leaks into a nested component (SplitButton nests Buttons); override a knob AFTER the
  * `@apply`, from a higher layer, or (for fui-focus-outline) on the ::after itself.
  *
- * Knobs are deliberately NOT `@property`-registered: any non-empty registry puts Blink's
- * transition-start on a page-global slow path (~9.4 µs per started transition). Do not
- * reintroduce `@property` without re-running that perf gate.
+ * Knobs are deliberately NOT `@property`-registered: the `initial` reset above only unsets
+ * an UNREGISTERED property (a registered one resets to its initial value), and the theme
+ * ships no registrations at all — build.js fails on any `@property`.
  */
 
 /*

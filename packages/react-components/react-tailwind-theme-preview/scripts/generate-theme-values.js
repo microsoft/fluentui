@@ -22,9 +22,13 @@ const path = require('path');
 
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
 const REPO_ROOT = path.resolve(PACKAGE_ROOT, '..', '..', '..');
+const TOKENS_PACKAGE = path.join(REPO_ROOT, 'packages', 'tokens');
 const OUTPUT = path.join(PACKAGE_ROOT, 'theme-values.json');
 
-/** The shipped themes. Keep in sync with `src/themes/index.ts` and `src/themes/themeClassNames.ts`. */
+/**
+ * The shipped themes. Keep in sync with `packages/tokens/src/themes/index.ts` and this package's
+ * `theme-class-names.mjs`; `generate-tokens-css.js` asserts the snapshot's set equals the latter.
+ */
 const THEME_NAMES = [
   'webLightTheme',
   'webDarkTheme',
@@ -36,7 +40,7 @@ const THEME_NAMES = [
 ];
 
 function loadThemes() {
-  const libEntry = path.join(REPO_ROOT, 'packages', 'tokens', 'lib-commonjs', 'index.cjs');
+  const libEntry = path.join(TOKENS_PACKAGE, 'lib-commonjs', 'index.cjs');
 
   if (!fs.existsSync(libEntry)) {
     throw new Error(
@@ -65,7 +69,8 @@ function loadThemes() {
 
 function render() {
   const themes = loadThemes();
-  const packageJson = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8'));
+  // `source` names the package the values were computed from, not the one that wrote the file.
+  const tokensPackageJson = JSON.parse(fs.readFileSync(path.join(TOKENS_PACKAGE, 'package.json'), 'utf8'));
 
   const document = {
     $schema: 'fluent-theme-values',
@@ -74,7 +79,7 @@ function render() {
       'Consumed by scripts/generate-tokens-css.js to emit the static theme CSS classes. ' +
       'Regenerate after yarn nx run tokens:build.',
     generatedBy: 'packages/react-components/react-tailwind-theme-preview/scripts/generate-theme-values.js',
-    source: `${packageJson.name}@${packageJson.version}`,
+    source: `${tokensPackageJson.name}@${tokensPackageJson.version}`,
     themes,
   };
 

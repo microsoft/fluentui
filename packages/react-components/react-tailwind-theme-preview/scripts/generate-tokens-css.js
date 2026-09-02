@@ -146,7 +146,7 @@ const SPACING_SCALE = [
 
 /**
  * Fluent's stroke widths — border/outline/divider thickness — joining the SAME `--spacing-*`
- * namespace as SPACING_SCALE, on the same literal-value terms ().
+ * namespace as SPACING_SCALE.
  *
  * THE SPACING NAMESPACE PLUS FOUR WIDTH-NAMESPACE MIRRORS
  * -------------------------------------------------------
@@ -171,8 +171,8 @@ const SPACING_SCALE = [
  * CANONICAL `--stroke-width-*` VALUES STAY LITERAL `calc(<px> * var(--base-scale))` —
  * DELIBERATELY NOT `--spacing`-COUPLED
  * -----------------------------------------------------------------------------------
- * Theming the alias model () rebased the 22 spacing tokens onto the
- * `--spacing` numeric axis; these four are the intentional exception. `--spacing` is the
+ * The 22 spacing tokens are aliases of the `--spacing` numeric axis; these four are the
+ * intentional exception. `--spacing` is the
  * layout DENSITY knob — a subtree that halves it should compress padding and gaps, but
  * borders must NOT thin with it: a 1px hairline is a 1px hairline at any density. Stroke
  * widths therefore keep the raw `--base-scale` form and ignore `--spacing` overrides.
@@ -551,15 +551,15 @@ function readStrokeWidthScale() {
 }
 
 /**
- * Reads `packages/tokens/src/themes/themeClassNames.ts` as text and extracts the shipped
+ * Reads this package's `theme-class-names.mjs` as text and extracts the shipped
  * theme → class-name constants, asserting each class name equals its derivation from the
  * theme export name (`fui-theme-` + kebab of the name minus `Theme`; digits attach to the
  * preceding segment, so `teamsDarkV21Theme` → `fui-theme-teams-dark-v21` — deliberately
  * NOT this file's `kebabCase`, whose letter→digit rule would produce `v-21`).
  *
  * Text extraction for the same reason as `readTokens`: no build step, no dependency edge
- * on @fluentui/tokens. `themeClassNames.test.ts` in packages/tokens asserts the same
- * derivation from the jest side.
+ * on @fluentui/tokens. This assertion is the only guard on the derivation; `--check` is
+ * what runs it.
  *
  * @returns {Record<string, string>} theme export name → class name
  */
@@ -593,19 +593,20 @@ function readThemeClassNames() {
 }
 
 /**
- * Reads the committed `packages/tokens/theme-values.json` snapshot — the VALUE source for
- * the theme emission. The snapshot exists because theme values are
- * computed (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way
- * `tokens.ts` is; `packages/tokens/src/themes/themeValues.test.ts` asserts on every jest
- * run that it deep-equals the computed themes.
+ * Reads this package's committed `theme-values.json` snapshot — the VALUE source for the
+ * theme emission. The snapshot exists because theme values are computed
+ * (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way `tokens.ts` is.
+ * Its freshness against the built tokens package is asserted by
+ * `scripts/generate-theme-values.js --check`, a dependency of this package's build target.
  *
  * @returns {Record<string, Record<string, string>>} theme export name → (token → value)
  */
 function readThemeValues() {
   if (!fs.existsSync(THEME_VALUES_SOURCE)) {
     throw new Error(
-      `${THEME_VALUES_SOURCE} is missing. Run \`yarn workspace @fluentui/tokens generate-theme-values\` ` +
-        '(after building packages/tokens) and commit the result.',
+      `${THEME_VALUES_SOURCE} is missing. Run \`yarn nx run tokens:build\`, then ` +
+        '`node packages/react-components/react-tailwind-theme-preview/scripts/generate-theme-values.js`, ' +
+        'and commit the result.',
     );
   }
 
@@ -651,7 +652,7 @@ function analyzeThemeEmission(tokens) {
   const constantThemes = Object.keys(classNames).sort();
   if (JSON.stringify(snapshotThemes) !== JSON.stringify(constantThemes)) {
     throw new Error(
-      `Shipped-theme sets disagree: theme-values.json has [${snapshotThemes}] but themeClassNames.ts has ` +
+      `Shipped-theme sets disagree: theme-values.json has [${snapshotThemes}] but theme-class-names.mjs has ` +
         `[${constantThemes}]. Regenerate the snapshot and/or update the constants.`,
     );
   }
@@ -680,14 +681,14 @@ function analyzeThemeEmission(tokens) {
     } else if (classification.group.unitlessRatio === true) {
       leadingTokens.push({
         name,
-        canonical: /** @type {string} */ (classification.canonical),
+        canonical: classification.canonical,
         fontSizeName: `fontSize${name.slice(classification.group.prefix.length)}`,
         value: '', // derived below, once the themes are proven to agree
       });
     } else {
       variantTokens.push({
         name,
-        canonical: /** @type {string} */ (classification.canonical),
+        canonical: classification.canonical,
         // Namespaces on the base-scale axis carry a rewrite; `scaleValue` lets a namespace whose
         // values are composite (shadows) override the plain-px default.
         scaleValue:
@@ -902,9 +903,9 @@ const NAMESPACES = [
     namespace: 'transition-duration',
     // Durations are the ONE Phase-2a family whose canonical RUNTIME variable
     // (`--duration-fast`) differs from its Tailwind theme key
-    // (`--transition-duration-fast`): the family keeps the shorter custom namespace
-    //, while the theme key must be what the installed
-    // utility registry reads. The registered value `var(--duration-fast)` carries the
+    // (`--transition-duration-fast`): the family keeps the shorter custom namespace, while
+    // the theme key must be what the installed utility registry reads. The registered value
+    // `var(--duration-fast)` carries the
     // canonical reference into `duration-*` utilities verbatim.
     canonicalNamespace: 'duration',
     utility: 'duration-*',
@@ -982,8 +983,7 @@ function readTokens() {
   }
 
   // Every token value must be a var() reference, optionally with a fallback (zIndex*).
-  // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names
-  //.
+  // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names.
   for (const { name, value } of tokens) {
     if (!/^var\(--[A-Za-z][A-Za-z0-9_-]*(?:, ?[^)]+)?\)$/.test(value)) {
       throw new Error(`${TOKENS_SOURCE}: token \`${name}\` has an unexpected value \`${value}\`.`);
@@ -1003,7 +1003,14 @@ function readTokens() {
 
 /**
  * @param {string} name
- * @returns {{ kind: 'register', group: typeof NAMESPACES[number], themeKey: string, value?: string } | { kind: 'exclude', prefix: string, reason: string }}
+ * @returns {{
+ *   kind: 'register',
+ *   group: typeof NAMESPACES[number],
+ *   themeKey: string,
+ *   value?: string,
+ *   step?: { suffix: string, utility: string, global: string, px: number },
+ *   canonical?: string,
+ * } | { kind: 'exclude', prefix: string, reason: string }}
  */
 function classify(name) {
   for (const group of NAMESPACES) {
@@ -1400,7 +1407,10 @@ function renderTheme(themeName, className) {
   out.push(' * DO NOT EDIT — generated file.');
   out.push(' *');
   out.push(` * Generator:  ${GENERATOR_ID}`);
-  out.push(` * Source:     ${tokensPackage.name}@${tokensPackage.version} (packages/tokens/theme-values.json)`);
+  out.push(
+    ` * Source:     ${tokensPackage.name}@${tokensPackage.version} ` +
+      '(packages/react-components/react-tailwind-theme-preview/theme-values.json)',
+  );
   out.push(` * Regenerate: node ${GENERATOR_ID}`);
   out.push(` * Verify:     node ${GENERATOR_ID} --check`);
   out.push(' *');

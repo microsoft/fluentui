@@ -19,6 +19,7 @@
     "verify-tokens-css": "node scripts/generate-tokens-css.js --check",
     "generate-theme-values": "node scripts/generate-theme-values.js",
     "verify-theme-values": "node scripts/generate-theme-values.js --check",
+    "verify-scripts": "tsc --noEmit --allowJs --checkJs --target es2022 --module commonjs --types node scripts/generate-tokens-css.js scripts/generate-theme-values.js",
     "test-spacing-behavior": "node scripts/probe-spacing-behavior.mjs",
     "prepack": "node build.js"
   },
@@ -57,16 +58,33 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "//nx:verify": "The committed generator outputs (css/tokens.css, css/themes/*.css, theme-values.json) are only as fresh as the last hand run of the generators, so their `--check` scripts gate the build: `verify-tokens-css` re-derives the CSS from packages/tokens source and the snapshot; `verify-theme-values` re-derives the snapshot from the BUILT tokens package, hence its dependency on tokens:build. `verify-scripts` type-checks the two `// @ts-check` generators, which have no other type-check venue (no project.json, so no inferred type-check target).",
   "nx": {
     "name": "react-tailwind-theme-preview",
     "targets": {
       "build": {
+        "dependsOn": [
+          "^build",
+          "verify-tokens-css",
+          "verify-theme-values",
+          "verify-scripts"
+        ],
         "inputs": [
           "{projectRoot}/css/**",
           "{projectRoot}/build.js"
         ],
         "outputs": [
           "{projectRoot}/dist"
+        ]
+      },
+      "verify-theme-values": {
+        "dependsOn": [
+          {
+            "projects": [
+              "tokens"
+            ],
+            "target": "build"
+          }
         ]
       }
     }
