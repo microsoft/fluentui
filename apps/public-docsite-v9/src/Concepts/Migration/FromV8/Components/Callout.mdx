@@ -66,7 +66,13 @@ target:
 
 ```tsx
 import * as React from 'react';
-import { Button, Popover, PopoverSurface, useRestoreFocusTarget } from '@fluentui/react-components';
+import {
+  Button,
+  Popover,
+  PopoverSurface,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
+} from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 
 const ExternalTargetPopover = () => {
@@ -74,6 +80,7 @@ const ExternalTargetPopover = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   React.useEffect(() => {
     if (buttonRef.current) {
@@ -102,7 +109,9 @@ const ExternalTargetPopover = () => {
           }
         }}
       >
-        <PopoverSurface aria-label="Popover content">Content</PopoverSurface>
+        <PopoverSurface {...restoreFocusSourceAttributes} aria-label="Popover content">
+          Content
+        </PopoverSurface>
       </Popover>
     </>
   );
@@ -112,6 +121,8 @@ const ExternalTargetPopover = () => {
 The guard prevents the trigger click and Popover's outside-click handling from
 applying two competing state updates. Test containment rather than strict
 identity because a button click can originate from an icon or text descendant.
+`useRestoreFocusTarget` marks the external trigger as a destination, while
+`useRestoreFocusSource` marks the unmounting surface that should restore focus.
 
 ### Focus behavior
 
@@ -167,39 +178,40 @@ of `before`/`after`. For example, `rightTopEdge` with a gap becomes:
 
 ### ICalloutProps → PopoverProps
 
-| v8                          | v9                                       | Notes                                                      |
-| --------------------------- | ---------------------------------------- | ---------------------------------------------------------- |
-| `target`                    | `<PopoverTrigger>` child                 | Replaces ref-based targeting; trigger is co-located in JSX |
-| `hidden`                    | `open` (inverted)                        | Closed popovers unmount; there is no keep-mounted prop     |
-| `onDismiss`                 | `onOpenChange`                           | `(ev, data) => data.open === false` on close               |
-| `role`                      | `role` on `<PopoverSurface>`             | Preserve the explicit surface role                         |
-| `ariaLabel`                 | `aria-label` on `<PopoverSurface>`       | Preserve the accessible name                               |
-| `directionalHint`           | `positioning`                            | String or object; see table above                          |
-| `directionalHintFixed`      | `positioning.pinned`                     | Set `pinned: true` to prevent automatic repositioning      |
-| `directionalHintForRTL`     | —                                        | Logical start/end positioning is RTL-aware                 |
-| `gapSpace`                  | `positioning={{ offset: { mainAxis } }}` | Pass positioning as object with `offset`                   |
-| `isBeakVisible`             | `withArrow`                              |                                                            |
-| `beakWidth`                 | —                                        | Removed                                                    |
-| `setInitialFocus`           | Default autofocus                        | Use `trapFocus` only when focus must remain inside         |
-| `calloutMaxHeight`          | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxHeight: '...' }}>`            |
-| `calloutMaxWidth`           | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxWidth: '...' }}>`             |
-| `preventDismissOnScroll`    | `closeOnScroll`                          | Inverted: set `closeOnScroll={!preventDismissOnScroll}`    |
-| `preventDismissOnResize`    | —                                        | No direct equivalent; implement the policy in app logic    |
-| `preventDismissOnLostFocus` | —                                        | No direct equivalent; test the required focus policy       |
-| `coverTarget`               | `positioning={{ coverTarget: true }}`    | Now part of the shared positioning API                     |
-| `bounds`                    | `flipBoundary` + `overflowBoundary`      | Set both through the `positioning` object                  |
-| `doNotLayer`                | `inline`                                 | Render the popover inline instead of through a portal      |
-| `layerProps.hostId`         | `mountNode`                              | Select a specific portal container                         |
-| `shouldUpdateWhenHidden`    | —                                        | Closed popovers unmount; keep persistent state outside     |
-| `onRestoreFocus`            | Trigger-owned restoration                | External targets use `useRestoreFocusTarget`               |
-| `styles`                    | `className` on `<PopoverSurface>`        |                                                            |
-| `theme`                     | `FluentProvider`                         |                                                            |
-| `componentRef`              | `ref` on `<PopoverSurface>`              |                                                            |
-| —                           | `trapFocus`                              | New — moves focus in and traps it                          |
-| —                           | `inertTrapFocus`                         | Use with `trapFocus` for standard inert outside content    |
+| v8                          | v9                                       | Notes                                                                    |
+| --------------------------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| `target`                    | `<PopoverTrigger>` child                 | Replaces ref-based targeting; trigger is co-located in JSX               |
+| `hidden`                    | `open` (inverted)                        | Closed popovers unmount; there is no keep-mounted prop                   |
+| `onDismiss`                 | `onOpenChange`                           | `(ev, data) => data.open === false` on close                             |
+| `role`                      | `role` on `<PopoverSurface>`             | Preserve the explicit surface role                                       |
+| `ariaLabel`                 | `aria-label` on `<PopoverSurface>`       | Preserve the accessible name                                             |
+| `directionalHint`           | `positioning`                            | String or object; see table above                                        |
+| `directionalHintFixed`      | `positioning.pinned`                     | Set `pinned: true` to prevent automatic repositioning                    |
+| `directionalHintForRTL`     | —                                        | Logical start/end positioning is RTL-aware                               |
+| `gapSpace`                  | `positioning={{ offset: { mainAxis } }}` | Pass positioning as object with `offset`                                 |
+| `isBeakVisible`             | `withArrow`                              |                                                                          |
+| `beakWidth`                 | —                                        | Removed                                                                  |
+| `setInitialFocus`           | Default autofocus                        | Use `trapFocus` only when focus must remain inside                       |
+| `calloutMaxHeight`          | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxHeight: '...' }}>`                          |
+| `calloutMaxWidth`           | `style` on `<PopoverSurface>`            | `<PopoverSurface style={{ maxWidth: '...' }}>`                           |
+| `preventDismissOnScroll`    | `closeOnScroll`                          | Inverted: set `closeOnScroll={!preventDismissOnScroll}`                  |
+| `preventDismissOnResize`    | —                                        | No direct equivalent; implement the policy in app logic                  |
+| `preventDismissOnLostFocus` | —                                        | No direct equivalent; test the required focus policy                     |
+| `coverTarget`               | `positioning={{ coverTarget: true }}`    | Now part of the shared positioning API                                   |
+| `bounds`                    | `flipBoundary` + `overflowBoundary`      | Set both through the `positioning` object                                |
+| `doNotLayer`                | `inline`                                 | Render the popover inline instead of through a portal                    |
+| `layerProps.hostId`         | `mountNode`                              | Select a specific portal container                                       |
+| `shouldUpdateWhenHidden`    | —                                        | Closed popovers unmount; keep persistent state outside                   |
+| `onRestoreFocus`            | Trigger-owned restoration                | External targets use `useRestoreFocusTarget` and `useRestoreFocusSource` |
+| `styles`                    | `className` on `<PopoverSurface>`        |                                                                          |
+| `theme`                     | `FluentProvider`                         |                                                                          |
+| `componentRef`              | `ref` on `<PopoverSurface>`              |                                                                          |
+| —                           | `trapFocus`                              | New — moves focus in and traps it                                        |
+| —                           | `inertTrapFocus`                         | Use with `trapFocus` for standard inert outside content                  |
 
 `PopoverTrigger` supplies popup semantics and restores focus automatically.
 For a triggerless popover, the external trigger must provide the equivalent
-keyboard and ARIA behavior and use `useRestoreFocusTarget`. V9 has no direct
-replacement for resize-dismiss or lost-focus-dismiss switches, so preserve
-those policies explicitly only when the product still requires them.
+keyboard and ARIA behavior, use `useRestoreFocusTarget`, and apply
+`useRestoreFocusSource` to the surface. V9 has no direct replacement for
+resize-dismiss or lost-focus-dismiss switches, so preserve those policies
+explicitly only when the product still requires them.
