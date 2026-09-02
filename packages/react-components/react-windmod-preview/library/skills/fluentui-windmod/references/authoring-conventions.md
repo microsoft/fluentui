@@ -373,14 +373,23 @@ find the right token.
 
 ### Line-height never rides without font-size
 
-- Never author a `leading-*` without a `text-*` on the same element. A leading token is a unitless
-  ratio derived against one font-size step — `--leading-base-300` is `calc(20 / 14)` — so authored
-  alone it multiplies whatever font-size inheritance delivers and the line box drifts off the ramp.
-  Pair the token with its own step (`text-base-300 leading-base-300`). Where a rule needs a ramp
-  line-height over a **different** authored font-size, spell the ratio as the self-documenting
-  fraction `leading-[calc(target/ownFontSize)]` in the same rule as the font-size. `leading-[0]` is
-  the one exemption — zero computes the same against any font-size (Spinner's root, matching
-  Griffel's bare `lineHeight: 0`).
+- **Leading is ONE generic value-named ratio ramp — no font-size pairing implied** (AR2). A label
+  is the ratio itself (`leading-140` is `1.4`, `leading-143` is `calc(20 / 14)`), never a step index
+  — there is no "the leading that goes with `text-base-300`" the way there was under the old
+  `leading-base-300` naming. Pick the `--leading-*` value that gives the line box you want.
+- Never author a `leading-*` without a `text-*` on the same element regardless — a leading value is
+  still a unitless ratio, so authored alone it multiplies whatever font-size inheritance delivers and
+  the line box drifts off the ramp. Compute the ratio against the element's OWN authored font-size
+  and pick (or add) the `--leading-*` label matching that ratio. `leading-000` is the one exemption —
+  zero computes the same against any font-size (Spinner's root, matching Griffel's bare
+  `lineHeight: 0`).
+- If no existing label matches the ratio a site needs, spell it as the self-documenting fraction
+  `leading-[calc(target/ownFontSize)]` in the same rule as the font-size — this is a deliberate
+  escape hatch, not a dead end: `.scratch/windmod-loop/leading-ramp/census.mjs` FAILS LOUDLY on any
+  `leading-*` form whose ratio matches no label in the shared ramp, so an arbitrary bracket form
+  forces a ruling (either an existing label was missed, or the ratio is genuinely new and gets
+  promoted into the shared ramp — label = 3-digit truncation of `ratio * 100`, collision-checked).
+  Do not leave a shipped module authoring a bracket ratio the census would flag.
 - Native interactive elements (`button`, `input`, `select`, `textarea`) author their `text-*` step
   even when nothing in the box visibly depends on it. Preflight resets them to `font: inherit`, so
   the component declares its metrics rather than riding the surrounding context — `Tab.module.css`

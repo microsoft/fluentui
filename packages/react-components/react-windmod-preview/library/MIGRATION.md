@@ -1147,14 +1147,17 @@ style yourself is unaffected, because any rule you author outranks the reset.
 #### 59. Leading tokens are unitless ratios, not lengths
 
 Griffel's line-height tokens are px strings — `tokens.lineHeightBase300` is `'20px'`. windmod's
-`--leading-*` tokens are the same ramp expressed as unitless ratios of their paired font-size:
-`--leading-base-300` is `calc(20 / 14)`, `--leading-base-400` is `1.375`, and so on down the ramp —
-always the ramp's line-height px over its paired font-size px. Because the ratios are theme-invariant,
-they are declared once in `./base.css` rather than per theme.
+`--leading-*` tokens are unitless ratios: `--leading-143` is `calc(20 / 14)`, `--leading-137` is
+`1.375`, and so on down the ramp — always a ramp line-height px over the font-size px it was
+measured against. Because the ratios are theme-invariant, they are declared once in `./base.css`
+rather than per theme. (Naming history: `--leading-143` was called `--leading-base-300` before the
+AR2 rename in entry 61 below — same ratio, same value, new name.)
 
 Rendered boxes do not move: every windmod rule that sets a `leading-*` sets an authored font-size on
 the same element, so the ratio multiplies exactly the font-size the old length encoded (verified with
-an element-keyed probe across all 91 scenes — zero rect changes).
+an element-keyed probe across all 91 scenes — zero rect changes; re-verified after the AR2 rename
+with a full pre/post declaration-level diff of the built component CSS — zero computed line-height
+changes across all 172 authored sites).
 
 Two things do change:
 
@@ -1162,10 +1165,39 @@ Two things do change:
   ratio and recomputes against every descendant's own font-size. A descendant of a windmod element
   that sets only `font-size` and counted on inheriting Griffel's fixed px line box now gets
   `font-size × ratio` instead.
-- **Reading the token.** `getComputedStyle(el).getPropertyValue('--leading-base-300')` — or
-  `useCssVarValue` — no longer returns a length. Multiply by the paired font-size token to get one:
-  `calc(var(--text-base-300) * var(--leading-base-300))` is the windmod spelling of Griffel's
-  `lineHeightBase300`.
+- **Reading the token.** `getComputedStyle(el).getPropertyValue('--leading-143')` — or
+  `useCssVarValue` — no longer returns a length. Multiply by the element's own computed font-size to
+  get one: `calc(var(--text-base-300) * var(--leading-143))` is the windmod spelling of Griffel's
+  `lineHeightBase300` for an element authoring the `text-base-300` step (there is no PAIRED font-size
+  token any more — `--leading-143` names a ratio, not a step; see entry 61).
+
+#### 61. The leading ramp is one generic value-named scale, not per-step names (AR2)
+
+The `--leading-*` namespace was redesigned from ten per-step names
+(`--leading-base-100…600`, `--leading-hero-700…1000`, each implying "the line height that pairs
+with this font-size step") to ONE flat, generic, value-named ramp: the label IS the ratio, truncated
+to 3 digits (`ratio * 100`), with no font-size pairing implied by the name — `--leading-140` is
+`1.4` full stop, usable next to any font-size step that wants that ratio. `--leading-hero-700/800/
+900/1000` are gone entirely (zero sites in the shipped corpus ever used them). The font-SIZE ramp is
+unaffected and keeps its base/hero split — this delta is leading-only.
+
+Consumer mapping (old name → new name, same ratio, same computed value — nothing about rendering
+changes, only the custom-property name):
+
+| Old                  | New             | Old                   | New                 |
+| -------------------- | --------------- | --------------------- | ------------------- |
+| `--leading-base-100` | `--leading-140` | `--leading-hero-700`  | _(removed, unused)_ |
+| `--leading-base-200` | `--leading-133` | `--leading-hero-800`  | _(removed, unused)_ |
+| `--leading-base-300` | `--leading-143` | `--leading-hero-900`  | _(removed, unused)_ |
+| `--leading-base-400` | `--leading-137` | `--leading-hero-1000` | _(removed, unused)_ |
+| `--leading-base-500` | `--leading-140` | `leading-none`        | `leading-100`       |
+| `--leading-base-600` | `--leading-133` | `leading-[0]`         | `leading-000`       |
+
+Any consumer CSS or JS reading one of the old `--leading-base-*`/`--leading-hero-*` custom
+properties directly (via a raw `var()` reference or `getComputedStyle`/`useCssVarValue`) must switch
+to the corresponding new name from the table above. A consumer relying only on the Tailwind
+`leading-*` utility classes in their own markup is unaffected unless they used one of the removed
+`leading-base-*`/`leading-hero-*`/`leading-none` spellings directly against this theme package.
 
 ## Where the pixels are allowed to differ
 

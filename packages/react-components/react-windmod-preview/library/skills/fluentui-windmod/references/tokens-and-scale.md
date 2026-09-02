@@ -64,18 +64,35 @@ from the rendered colour.
 ```
 --text-base-100 … --text-base-600          font sizes
 --text-hero-700 … --text-hero-1000
---leading-base-100 … --leading-base-600     paired line heights (unitless ratios)
---leading-hero-700 … --leading-hero-1000
+--leading-000|050|055|080|083|092|100|125|133|137|140|143|160|167|200
+                                             ONE generic ratio ramp — no font-size pairing
 --text-icon-12|16|20|24|28|32|48            glyph sizes
 --font-base | --font-monospace | --font-numeric
 --font-weight-regular|medium|semibold|bold
 ```
 
-Sizes and line heights are **paired by number** — `text-base-300` goes with `leading-base-300`. Use the
-pair; picking a line height from a different step is how type drifts off the ramp. A leading token is a
-**unitless ratio** of its paired step (`--leading-base-300` is `calc(20 / 14)`), so it is not a length:
-it multiplies the element's own font-size, descendants inherit the ratio rather than a px box, and a
-JS read wanting a length must multiply by the paired `--text-*` token.
+**Font size keeps a base/hero split; line height does not.** `--leading-*` is one flat, generic,
+value-named ramp: the label is the ratio itself (a 3-digit truncation of `ratio * 100`), not a
+step index — `leading-140` is the ratio `1.4`, full stop. There is no `leading-base-300` implying
+"the line height that goes with `text-base-300`" — pick whichever `--leading-*` value gives the
+line box you actually want on the element you're styling, the same way you'd pick a spacing value.
+
+| Label | Ratio         | Label | Ratio         |
+| ----- | ------------- | ----- | ------------- |
+| `000` | `0`           | `133` | `calc(16/12)` |
+| `050` | `0.5`         | `137` | `1.375`       |
+| `055` | `0.55`        | `140` | `1.4`         |
+| `080` | `0.8`         | `143` | `calc(20/14)` |
+| `083` | `calc(20/24)` | `160` | `1.6`         |
+| `092` | `calc(22/24)` | `167` | `calc(20/12)` |
+| `100` | `1`           | `200` | `2`           |
+| `125` | `1.25`        |       |               |
+
+A leading token is a **unitless ratio**, so it is not a length: it multiplies the element's own
+font-size, descendants inherit the ratio rather than a px box, and a JS read wanting a length must
+multiply the value back out by the element's own computed font-size (there is no paired `--text-*`
+token to multiply by — see the authoring rule in authoring-conventions.md for how a site picks its
+ratio against its OWN font-size).
 
 The icon glyph family has no Fluent token equivalent — the sizes come from the icon set itself, so they
 are registered by the theme rather than generated from Fluent's token set.
