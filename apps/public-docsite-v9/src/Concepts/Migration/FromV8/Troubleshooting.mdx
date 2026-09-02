@@ -94,8 +94,9 @@ component migrated, verify the following:
   Explicitly preserve changed defaults for placement, autofocus, dismissal,
   arrows, selection, sizing, and announcement behavior.
 - **Controlled state:** Keep editable text separate from committed parsed state
-  when users must pass through temporarily invalid values. Editing one channel
-  must not reset unrelated state such as alpha.
+  when users must pass through temporarily invalid values. Define the commit
+  boundary and resynchronize or revert invalid text on blur. Editing one
+  channel must not reset unrelated state such as alpha.
 - **Units and inversions:** Document and test value ranges and inverted
   semantics such as opacity versus transparency. Include a non-symmetric test
   value; 50% can hide an accidental inversion.
