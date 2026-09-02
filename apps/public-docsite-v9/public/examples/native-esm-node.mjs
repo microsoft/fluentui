@@ -1,14 +1,17 @@
 // Native ESM in Node — no bundler, no build step, no JSX.
 //
-// Requires: npm install react react-dom @fluentui/react-components
-// Run with: node --import ./tabster-esm-hook.mjs native-esm-node.mjs > index.html
+// Copy this file and esm-compat-hook.mjs into an empty directory, then:
+//
+//   npm install react react-dom @fluentui/react-components
+//   node --import ./esm-compat-hook.mjs native-esm-node.mjs > index.html
 //
 // Node resolves `@fluentui/react-components` through the package's `import` export condition,
 // which points at its native ESM build (`lib/index.js`). No `module` field, no interop shim.
 //
-// The `--import` hook is a temporary workaround: `tabster` ships ESM but has no `exports` map,
-// so Node falls back to its CommonJS `main` and the named imports inside
-// `@fluentui/react-tabster` fail. See tabster-esm-hook.mjs.
+// A fresh install matters: some older transitive versions are not resolvable by Node's ESM
+// loader. See esm-compat-hook.mjs for the gaps that remain even on latest. Running this file
+// in place inside the fluentui repo will not work — it resolves to the workspace's own
+// (older, hoisted) dependency graph.
 
 import * as React from 'react';
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
