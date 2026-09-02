@@ -149,10 +149,11 @@
     }
   }
 
-  /* A placed grid item where the reference positions absolutely: the 24px column and the two 1fr
-     rows are fixed, so a static button lands in the same box and adds nothing to track sizing. */
+  /* Absolutely positioned on top of the grid placement, as the reference is. The placement alone
+     lands each button in the same box (the 24px column and 1fr rows are fixed), but a static grid
+     item rasterizes the stepper glyph's antialiased edge one grey level off the reference. */
   .button {
-    @apply col-start-2 inline-flex h-16 w-24 items-center justify-center rounded-none border-0 bg-transparent px-5 py-0 text-neutral-foreground-3 outline-none;
+    @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center rounded-none border-0 bg-transparent px-5 py-0 text-neutral-foreground-3 outline-none;
 
     @variant enabled {
       @variant hover {
