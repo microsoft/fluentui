@@ -56,7 +56,16 @@
 @import './utilities.css';
 
 @theme static {
-  --base-scale: calc(1rem / 16px);
+  /*
+   * --fui-scale is the ScaleRegion knob: 1 everywhere by default, set per subtree by the
+   * generated `.fui-scale-region` rule (css/tokens.css) from the element's data-fui-scale
+   * attribute. At the default the factor is 1, so this computes exactly calc(1rem / 16px).
+   * Tailwind emits `@theme` values at `:root, :host` only; the generated grouped emission
+   * re-declares --base-scale, --spacing and --text-icon-* at `.fui-scale-region` so a
+   * region's --fui-scale re-substitutes there — the generator reads the values from THIS
+   * block, so the two emissions cannot drift.
+   */
+  --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
 
   /*
    * Numeric spacing utilities (p-12, gap-8, …) read as px but compute to rem via

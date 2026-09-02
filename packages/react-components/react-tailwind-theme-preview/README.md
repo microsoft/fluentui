@@ -12,6 +12,12 @@ scale, the type ramp, the stroke widths, the `prefers-reduced-motion` floor — 
 identical in every theme. Each theme is then its own file (`themes/web-light.css`, …) carrying
 nothing but that theme's 423 custom properties inside one class.
 
+The base sheet also carries the **scale-region mechanism**: the invariant values are emitted at
+`:root, :host, .fui-scale-region`, and a `.fui-scale-region` rule derives a unitless
+`--fui-scale` factor from the element's `data-fui-scale` attribute (typed attr(), fallback 1),
+which `--base-scale` multiplies in. An element carrying the class, the attribute and a theme
+class scales its whole subtree; the windmod package's `ScaleRegion` component stamps all three.
+
 It deliberately registers **no** `@property` rules (a non-empty registry puts Blink's
 transition-start on a page-global slow path).
 

@@ -256,6 +256,47 @@ function strokeWidthCanonicalValue(step) {
 }
 
 /**
+ * The scale-axis declarations css/index.css owns (`@theme static`): `--base-scale`, the
+ * numeric `--spacing` axis, and the `--text-icon-*` glyph sizes.
+ *
+ * Tailwind emits `@theme` values at `:root, :host` — a fixed selector — while the scale-region
+ * mechanism needs every scale-riding formula re-declared AT the region element so it
+ * re-substitutes the region's `--fui-scale` (an inherited custom property is already
+ * substituted where its declaration wins; descendants inherit the resolved stream). The
+ * grouped `:root, :host, .fui-scale-region` emission therefore repeats these three families.
+ * They are READ out of css/index.css rather than duplicated as text, so a formula edit there
+ * flows into the next generator run and a drift fails `--check`; at `:root`/`:host` the
+ * repeat is byte-identical to the `@theme` emission and computes to the same values.
+ *
+ * @returns {string[]} declaration lines, indented for the fui.theme block
+ */
+function readScaleAxisDeclarations() {
+  const source = fs.readFileSync(path.join(PACKAGE_ROOT, 'css', 'index.css'), 'utf8');
+  const names = [
+    '--base-scale',
+    '--spacing',
+    '--text-icon-12',
+    '--text-icon-16',
+    '--text-icon-20',
+    '--text-icon-24',
+    '--text-icon-28',
+    '--text-icon-32',
+    '--text-icon-48',
+  ];
+
+  return names.map(name => {
+    const match = source.match(new RegExp(`^  ${name}: ([^;\\n]+);`, 'm'));
+    if (!match) {
+      throw new Error(
+        `css/index.css no longer declares \`${name}\` on a single line in its @theme block — ` +
+          `the scale-region emission mirrors that declaration and cannot proceed without it.`,
+      );
+    }
+    return `    ${name}: ${match[1]};`;
+  });
+}
+
+/**
  * A theme value rewritten onto the `--base-scale` axis: `14px` → `calc(14px * var(--base-scale))`,
  * the same literal form stroke widths use. Applies to every namespace carrying
  * `baseScaled: true` with no `scaleValue` override (the type ramp — font sizes and their paired
@@ -1181,14 +1222,28 @@ function render(options = {}) {
     out.push(' *');
     out.push(' * `:root, :host` — not bare `:root` — matches the selector Tailwind emits its own');
     out.push(' * `@theme` block on, so a shadow-DOM consumer that sees --base-scale/--spacing sees');
-    out.push(' * these too (verified in the compiled dist/styles.css).');
+    out.push(' * these too (verified in the compiled dist/styles.css). `.fui-scale-region` is');
+    out.push(' * GROUPED into the same rule: a scale region re-declares every invariant formula at');
+    out.push(' * the region element, so each one re-substitutes the region’s `--fui-scale` there');
+    out.push(' * (an inherited custom property arrives pre-substituted; only a re-declaration at or');
+    out.push(' * below the region can pick the local factor up). Same declarations, one more');
+    out.push(' * selector — at `:root`/`:host` this changes nothing.');
     out.push(' */');
     out.push('@layer fui.theme {');
-    // Selector split across two lines: prettier formats `:root, :host {` that way, and this
-    // file is prettier-checked in CI — a single-line form makes the generator's `--check`
+    // Selector split across multiple lines: prettier formats grouped selectors that way, and
+    // this file is prettier-checked in CI — a single-line form makes the generator's `--check`
     // and the formatter disagree forever.
     out.push('  :root,');
-    out.push('  :host {');
+    out.push('  :host,');
+    out.push('  .fui-scale-region {');
+    out.push('    /*');
+    out.push('     * Scale axis — mirrored from css/index.css’s `@theme static` block (the');
+    out.push('     * generator reads the values out of that file; see readScaleAxisDeclarations).');
+    out.push('     * Tailwind emits them at `:root, :host` only, and a scale region needs them');
+    out.push('     * re-declared here to respond to its `--fui-scale`.');
+    out.push('     */');
+    out.push(...readScaleAxisDeclarations());
+    out.push('');
     out.push('    /*');
     out.push('     * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately');
     out.push('     * NOT coupled to the --spacing density knob: borders must not thin when layout');
@@ -1214,6 +1269,22 @@ function render(options = {}) {
     out.push('     * carries it, and a ratio multiplies the element’s own computed font-size.');
     out.push('     */');
     out.push(...leadingLines);
+    out.push('  }');
+    out.push('');
+    out.push('  /*');
+    out.push('   * The scale-region knob. `--fui-scale` is a unitless factor on `--base-scale`');
+    out.push('   * (css/index.css: `calc(1rem / 16px * var(--fui-scale, 1))`), read off the');
+    out.push('   * element’s own data-fui-scale attribute via typed attr() — the same coercion');
+    out.push('   * the component packages use for data-size. No attribute coerces to the');
+    out.push('   * fallback 1, so a bare `.fui-scale-region` is inert. Because the factor is an');
+    out.push('   * attribute read on THIS element, nested regions replace the scale absolutely —');
+    out.push('   * they never compound. The class must be co-located with a theme class: theme');
+    out.push('   * tokens (type ramp, shadows) re-substitute only where their theme-class');
+    out.push('   * declarations re-apply, which is what FluentProvider’s ScaleRegion component');
+    out.push('   * arranges.');
+    out.push('   */');
+    out.push('  .fui-scale-region {');
+    out.push('    --fui-scale: attr(data-fui-scale type(<number>), 1);');
     out.push('  }');
     out.push('}');
   }
