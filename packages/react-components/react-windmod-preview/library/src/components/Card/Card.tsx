@@ -16,14 +16,17 @@ export const Card: ForwardRefComponent<CardProps> = React.forwardRef(
   // Defaults mirror @fluentui/react-card's styled useCard.
   ({ appearance = 'filled', orientation = 'vertical', size = 'medium', ...rest }, ref) => {
     // The context value is built from the styled state, and renderCard requires it.
+    const state = useCard(rest, ref as React.Ref<HTMLDivElement>);
     const styled = useCardStyles({
-      ...useCard(rest, ref as React.Ref<HTMLDivElement>),
+      ...state,
       appearance,
       orientation,
       size,
     });
 
-    return renderCard(styled, useCardContextValue(styled));
+    const context = useCardContextValue(styled);
+
+    return renderCard(styled, context);
   },
 );
 

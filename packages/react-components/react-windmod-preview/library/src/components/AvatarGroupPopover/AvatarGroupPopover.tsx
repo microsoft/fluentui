@@ -57,27 +57,22 @@ export const AvatarGroupPopover = (props: AvatarGroupPopoverProps): JSXElement =
   // items' size, and without it every overflow row would fall back to the group default.
   const avatarGroup = React.useMemo(() => ({ isOverflow: true, size: OVERFLOW_ITEM_SIZE }) as const, []);
 
-  return (
-    <PopoverLookProvider value={look}>
-      {renderAvatarGroupPopover(
-        useAvatarGroupPopoverStyles({
-          ...base,
-          // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-          components: { ...base.components, popoverSurface: PopoverSurface, tooltip: Tooltip },
-          // Both slots are re-created with the windmod element types rather than swapped in
-          // `components` alone — see Combobox.tsx.
-          popoverSurface: slot.always({ ...base.popoverSurface }, { elementType: PopoverSurface }),
-          tooltip: slot.always({ ...base.tooltip }, { elementType: Tooltip }),
-          popover: {
-            ...base.popover,
-            ...resolvePopoverArrow(base.popover.positioning, base.popover.withArrow ?? false, 'small'),
-          },
-          size,
-        }),
-        { avatarGroup },
-      )}
-    </PopoverLookProvider>
-  );
+  const styled = useAvatarGroupPopoverStyles({
+    ...base,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+    components: { ...base.components, popoverSurface: PopoverSurface, tooltip: Tooltip },
+    // Both slots are re-created with the windmod element types rather than swapped in
+    // `components` alone — see Combobox.tsx.
+    popoverSurface: slot.always({ ...base.popoverSurface }, { elementType: PopoverSurface }),
+    tooltip: slot.always({ ...base.tooltip }, { elementType: Tooltip }),
+    popover: {
+      ...base.popover,
+      ...resolvePopoverArrow(base.popover.positioning, base.popover.withArrow ?? false, 'small'),
+    },
+    size,
+  });
+
+  return <PopoverLookProvider value={look}>{renderAvatarGroupPopover(styled, { avatarGroup })}</PopoverLookProvider>;
 };
 
 AvatarGroupPopover.displayName = 'AvatarGroupPopover';

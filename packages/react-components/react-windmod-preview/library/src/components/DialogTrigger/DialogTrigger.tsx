@@ -12,8 +12,11 @@ import { useDialogTriggerStyles } from './useDialogTriggerStyles';
  * DialogTrigger: the headless trigger plus the marker pair, so a consumer can compose against the
  * trigger the same way they compose against any windmod component.
  */
-export const DialogTrigger: React.FC<DialogTriggerProps> = (props: DialogTriggerProps): JSXElement | null =>
-  useDialogTriggerStyles(useDialogTrigger(props)).children;
+export const DialogTrigger: React.FC<DialogTriggerProps> = (props: DialogTriggerProps): JSXElement | null => {
+  const state = useDialogTrigger(props);
+
+  return useDialogTriggerStyles(state).children;
+};
 
 DialogTrigger.displayName = 'DialogTrigger';
 

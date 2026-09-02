@@ -12,8 +12,11 @@ import { useDialogBodyStyles } from './useDialogBodyStyles';
  * decorated with the Fluent visual contract — which is Griffel's DialogContent look, the member
  * this one corresponds to.
  */
-export const DialogBody: ForwardRefComponent<DialogBodyProps> = React.forwardRef((props, ref) =>
-  renderDialogBody(useDialogBodyStyles(useDialogBody(props, ref))),
-);
+export const DialogBody: ForwardRefComponent<DialogBodyProps> = React.forwardRef((props, ref) => {
+  const state = useDialogBody(props, ref);
+  const styled = useDialogBodyStyles(state);
+
+  return renderDialogBody(styled);
+});
 
 DialogBody.displayName = 'DialogBody';

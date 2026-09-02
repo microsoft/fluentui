@@ -26,8 +26,10 @@ type BreadcrumbButtonRootDataAttributes = {
  *
  * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): BreadcrumbButtonState =>
-  restackOver(state, useButtonStyles(state), {
+export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
+  const styled = useButtonStyles(state);
+
+  return restackOver(state, styled, {
     marker: breadcrumbButtonClassNames.root,
     root: styles.root,
     icon: styles.icon,
@@ -38,3 +40,4 @@ export const useBreadcrumbButtonStyles = (state: BreadcrumbButtonState): Breadcr
       'data-icon-position': state.icon ? state.iconPosition : undefined,
     } satisfies BreadcrumbButtonRootDataAttributes,
   });
+};

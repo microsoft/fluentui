@@ -32,16 +32,20 @@ type CompoundButtonRootDataAttributes = {
  *
  * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => ({
-  ...restackOver(state, useButtonStyles(state), {
-    marker: compoundButtonClassNames.root,
-    root: styles.root,
-    icon: styles.icon,
-    rootAttributes: {
-      'data-icon-position': state.icon ? state.iconPosition : undefined,
-      'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
-    } satisfies CompoundButtonRootDataAttributes,
-  }),
-  contentContainer: slotClasses(state.contentContainer, styles.contentContainer),
-  secondaryContent: slotClasses(state.secondaryContent, styles.secondaryContent),
-});
+export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
+  const styled = useButtonStyles(state);
+
+  return {
+    ...restackOver(state, styled, {
+      marker: compoundButtonClassNames.root,
+      root: styles.root,
+      icon: styles.icon,
+      rootAttributes: {
+        'data-icon-position': state.icon ? state.iconPosition : undefined,
+        'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
+      } satisfies CompoundButtonRootDataAttributes,
+    }),
+    contentContainer: slotClasses(state.contentContainer, styles.contentContainer),
+    secondaryContent: slotClasses(state.secondaryContent, styles.secondaryContent),
+  };
+};

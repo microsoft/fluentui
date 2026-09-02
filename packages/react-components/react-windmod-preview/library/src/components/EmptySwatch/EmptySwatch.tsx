@@ -20,13 +20,14 @@ export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardR
     const sizeFromContext = useSwatchPickerContextValue(ctx => ctx.size);
     const shapeFromContext = useSwatchPickerContextValue(ctx => ctx.shape);
 
-    return renderEmptySwatch(
-      useEmptySwatchStyles({
-        ...useEmptySwatch(rest, ref),
-        size: sizeProp ?? sizeFromContext ?? 'medium',
-        shape: shapeProp ?? shapeFromContext ?? 'square',
-      }),
-    );
+    const state = useEmptySwatch(rest, ref);
+    const styled = useEmptySwatchStyles({
+      ...state,
+      size: sizeProp ?? sizeFromContext ?? 'medium',
+      shape: shapeProp ?? shapeFromContext ?? 'square',
+    });
+
+    return renderEmptySwatch(styled);
   },
 );
 

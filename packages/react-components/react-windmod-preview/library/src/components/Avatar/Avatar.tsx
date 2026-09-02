@@ -82,6 +82,7 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
   // the context-first order the spelling reads like. The published shape is disjoint from the
   // `props.*` reads further down (`initials`, `name`, `aria-label`, `aria-labelledby`), so those
   // keep reading `props` and are unaffected by the merge.
+  const context = useAvatarContext();
   const {
     active = 'unset',
     activeAppearance = 'ring',
@@ -90,7 +91,7 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
     shape = 'circular',
     size = 32,
     ...rest
-  } = mergeContextProps(useAvatarContext(), props);
+  } = mergeContextProps(context, props);
 
   const { dir } = useProviderContext();
   const base = useAvatar(rest, ref);
@@ -139,20 +140,20 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
       ? AVATAR_COLORS[getHashCode(idForColor ?? props.name ?? '') % AVATAR_COLORS.length]
       : propColor;
 
-  return renderAvatar(
-    useAvatarStyles({
-      ...base,
-      root,
-      icon,
-      initials,
-      activeAriaLabelElement,
-      active,
-      activeAppearance,
-      color,
-      shape,
-      size,
-    }),
-  );
+  const styled = useAvatarStyles({
+    ...base,
+    root,
+    icon,
+    initials,
+    activeAriaLabelElement,
+    active,
+    activeAppearance,
+    color,
+    shape,
+    size,
+  });
+
+  return renderAvatar(styled);
 });
 
 Avatar.displayName = 'Avatar';

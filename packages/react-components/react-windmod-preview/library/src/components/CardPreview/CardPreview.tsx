@@ -12,7 +12,10 @@ import { useCardPreviewStyles } from './useCardPreviewStyles';
  * headless card preview decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const CardPreview: ForwardRefComponent<CardPreviewProps> = React.forwardRef((props, ref) => {
-  return renderCardPreview(useCardPreviewStyles(useCardPreview(props, ref)));
+  const state = useCardPreview(props, ref);
+  const styled = useCardPreviewStyles(state);
+
+  return renderCardPreview(styled);
 });
 
 CardPreview.displayName = 'CardPreview';

@@ -31,15 +31,15 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.
     // The avatar slot is re-created with the windmod element type — see Persona.tsx for what the
     // headless Avatar cannot carry, and Combobox.tsx for why the components swap alone is not
     // enough. The look defaults sit ahead of the resolved slot so consumer props still win.
-    return renderAvatarGroupItem(
-      useAvatarGroupItemStyles({
-        ...base,
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-        components: { ...base.components, avatar: Avatar },
-        avatar: slot.always({ size, color, idForColor, ...base.avatar }, { elementType: Avatar }),
-        size,
-      }),
-    );
+    const styled = useAvatarGroupItemStyles({
+      ...base,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+      components: { ...base.components, avatar: Avatar },
+      avatar: slot.always({ size, color, idForColor, ...base.avatar }, { elementType: Avatar }),
+      size,
+    });
+
+    return renderAvatarGroupItem(styled);
   },
 );
 

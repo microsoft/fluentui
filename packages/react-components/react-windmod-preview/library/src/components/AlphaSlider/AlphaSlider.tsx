@@ -22,13 +22,14 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps> = React.forwardR
   ({ shape: shapeProp, ...rest }, ref) => {
     const shapeFromContext = useColorPickerContextValue(ctx => ctx.shape);
 
-    return renderAlphaSlider(
-      useAlphaSliderStyles({
-        ...useAlphaSlider(rest, ref),
-        // The trailing fallback, not the context default, is what resolves `shape` — see `ColorArea`.
-        shape: shapeProp ?? shapeFromContext ?? 'rounded',
-      }),
-    );
+    const state = useAlphaSlider(rest, ref);
+    const styled = useAlphaSliderStyles({
+      ...state,
+      // The trailing fallback, not the context default, is what resolves `shape` — see `ColorArea`.
+      shape: shapeProp ?? shapeFromContext ?? 'rounded',
+    });
+
+    return renderAlphaSlider(styled);
   },
 );
 

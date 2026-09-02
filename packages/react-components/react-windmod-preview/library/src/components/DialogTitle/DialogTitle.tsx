@@ -11,8 +11,11 @@ import { useDialogTitleStyles } from './useDialogTitleStyles';
  * A DialogTitle is the dialog's heading, and the target of the surface's `aria-labelledby`.
  * Windmod DialogTitle: the headless title decorated with the Fluent visual contract.
  */
-export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef((props, ref) =>
-  renderDialogTitle(useDialogTitleStyles(useDialogTitle(props, ref))),
-);
+export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef((props, ref) => {
+  const state = useDialogTitle(props, ref);
+  const styled = useDialogTitleStyles(state);
+
+  return renderDialogTitle(styled);
+});
 
 DialogTitle.displayName = 'DialogTitle';

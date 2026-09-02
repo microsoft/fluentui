@@ -16,14 +16,15 @@ export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef(
   // Defaults mirror @fluentui/react-divider's styled useDivider. `vertical` is deliberately
   // absent: the headless hook owns it and derives data-orientation from it.
   ({ alignContent = 'center', appearance = 'default', inset = false, ...rest }, ref) => {
-    return renderDivider(
-      useDividerStyles({
-        ...useDivider(rest, ref),
-        alignContent,
-        appearance,
-        inset,
-      }),
-    );
+    const state = useDivider(rest, ref);
+    const styled = useDividerStyles({
+      ...state,
+      alignContent,
+      appearance,
+      inset,
+    });
+
+    return renderDivider(styled);
   },
 );
 

@@ -17,21 +17,18 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
   // The context is merged before destructuring, so a container that publishes `size` supplies the
   // default while an explicit prop still wins. The context instance is Griffel's own, re-exported
   // by headless, because the provider is Griffel's too.
-  const {
-    appearance = 'secondary',
-    shape = 'rounded',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps(useButtonContext(), props);
+  const context = useButtonContext();
+  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
 
-  return renderButton(
-    useButtonStyles({
-      ...useButton(rest, ref),
-      appearance,
-      shape,
-      size,
-    }),
-  );
+  const state = useButton(rest, ref);
+  const styled = useButtonStyles({
+    ...state,
+    appearance,
+    shape,
+    size,
+  });
+
+  return renderButton(styled);
 });
 
 Button.displayName = 'Button';

@@ -22,14 +22,15 @@ import { useColorAreaStyles } from './useColorAreaStyles';
 export const ColorArea: ForwardRefComponent<ColorAreaProps> = React.forwardRef(({ shape: shapeProp, ...rest }, ref) => {
   const shapeFromContext = useColorPickerContextValue(ctx => ctx.shape);
 
-  return renderColorArea(
-    useColorAreaStyles({
-      ...useColorArea(rest, ref),
-      // The context's own default value applies only with no picker at all, so a picker that leaves
-      // `shape` unset publishes undefined and the trailing fallback is what resolves it.
-      shape: shapeProp ?? shapeFromContext ?? 'rounded',
-    }),
-  );
+  const state = useColorArea(rest, ref);
+  const styled = useColorAreaStyles({
+    ...state,
+    // The context's own default value applies only with no picker at all, so a picker that leaves
+    // `shape` unset publishes undefined and the trailing fallback is what resolves it.
+    shape: shapeProp ?? shapeFromContext ?? 'rounded',
+  });
+
+  return renderColorArea(styled);
 });
 
 ColorArea.displayName = 'ColorArea';

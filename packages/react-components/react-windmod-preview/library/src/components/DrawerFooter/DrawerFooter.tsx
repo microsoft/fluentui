@@ -11,8 +11,11 @@ import { useDrawerFooterStyles } from './useDrawerFooterStyles';
  * A DrawerFooter holds a drawer's actions. Windmod DrawerFooter: the headless part decorated with the Fluent visual contract
  * (Tailwind v4 + CSS Modules).
  */
-export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef((props, ref) =>
-  renderDrawerFooter(useDrawerFooterStyles(useDrawerFooter(props, ref))),
-);
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef((props, ref) => {
+  const state = useDrawerFooter(props, ref);
+  const styled = useDrawerFooterStyles(state);
+
+  return renderDrawerFooter(styled);
+});
 
 DrawerFooter.displayName = 'DrawerFooter';

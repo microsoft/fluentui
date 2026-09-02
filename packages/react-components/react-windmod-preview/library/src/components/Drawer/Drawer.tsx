@@ -14,15 +14,16 @@ import { useDrawerStyles } from './useDrawerStyles';
  * either an overlay surface or an inline panel. Windmod Drawer: the headless type switch pointed at
  * the styled drawers, since the headless one selects its unstyled pair.
  */
-export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) =>
-  renderDrawer(
-    useDrawerStyles({
-      ...useDrawer(props, ref),
-      components: {
-        root: (props.type === 'inline' ? InlineDrawer : OverlayDrawer) as DrawerState['components']['root'],
-      },
-    }),
-  ),
-);
+export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) => {
+  const state = useDrawer(props, ref);
+  const styled = useDrawerStyles({
+    ...state,
+    components: {
+      root: (props.type === 'inline' ? InlineDrawer : OverlayDrawer) as DrawerState['components']['root'],
+    },
+  });
+
+  return renderDrawer(styled);
+});
 
 Drawer.displayName = 'Drawer';

@@ -35,7 +35,9 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
 
     // The context values are built from the styled state: the headless state omits `size`, so
     // children reading the header context see `undefined` unless windmod feeds it back in.
-    return renderAccordionHeader(styled, useAccordionHeaderContextValues(styled));
+    const contextValues = useAccordionHeaderContextValues(styled);
+
+    return renderAccordionHeader(styled, contextValues);
   },
 );
 

@@ -23,7 +23,9 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardR
     // useAvatarGroupContextValues.
     const avatarGroup = React.useMemo(() => ({ layout: state.layout, size }), [state.layout, size]);
 
-    return renderAvatarGroup(useAvatarGroupStyles({ ...state, size }), { avatarGroup });
+    const styled = useAvatarGroupStyles({ ...state, size });
+
+    return renderAvatarGroup(styled, { avatarGroup });
   },
 );
 
