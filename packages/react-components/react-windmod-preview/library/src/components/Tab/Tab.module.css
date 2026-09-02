@@ -15,7 +15,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none px-horizontal-m-nudge py-vertical-m font-base text-base-300 leading-base-300 normal-case outline-none;
+    @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none px-horizontal-m-nudge py-vertical-m font-base text-base-300 leading-143 normal-case outline-none;
 
     @variant vertical {
       @apply justify-start py-vertical-s-nudge;
@@ -371,10 +371,10 @@
   }
 
   .icon {
-    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-icon-20 leading-[calc(20/20)];
+    @apply col-start-1 row-start-1 inline-flex size-20 items-center justify-center overflow-hidden text-icon-20 leading-100;
 
     @variant group-size-large/fui-tab {
-      @apply size-24 text-icon-24 leading-[calc(20/24)];
+      @apply size-24 text-icon-24 leading-083;
     }
 
     @variant group-appearance-transparent/fui-tab, group-appearance-subtle/fui-tab {
@@ -443,14 +443,14 @@
   }
 
   .content {
-    @apply col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-regular;
+    @apply col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-143 font-regular;
 
     @variant group-icon-present/fui-tab {
       @apply col-start-2;
     }
 
     @variant group-size-large/fui-tab {
-      @apply text-base-400 leading-base-400;
+      @apply text-base-400 leading-137;
     }
 
     @variant group-selected/fui-tab {
@@ -513,14 +513,14 @@
   /* A hidden copy of the content at its selected weight, sharing the content's grid cell so an
      unselected tab is exactly as wide as it will be once selected. */
   .content-reserved-space {
-    @apply invisible col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-base-300 font-semibold;
+    @apply invisible col-start-1 row-start-1 overflow-hidden px-horizontal-xxs py-vertical-none font-base text-base-300 leading-143 font-semibold;
 
     @variant group-icon-present/fui-tab {
       @apply col-start-2;
     }
 
     @variant group-size-large/fui-tab {
-      @apply text-base-400 leading-base-400;
+      @apply text-base-400 leading-137;
     }
   }
 }

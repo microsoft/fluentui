@@ -126,23 +126,23 @@
   }
 
   .icon {
-    @apply box-content flex w-20 ps-7 pe-horizontal-xs text-icon-20 leading-[calc(20/20)];
+    @apply box-content flex w-20 ps-7 pe-horizontal-xs text-icon-20 leading-100;
     grid-area: media;
 
     @variant group-size-small/fui-tag {
-      @apply w-16 ps-5 pe-horizontal-xxs text-icon-16 leading-[calc(20/16)];
+      @apply w-16 ps-5 pe-horizontal-xxs text-icon-16 leading-125;
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply w-12 ps-5 pe-horizontal-xxs text-icon-12 leading-[calc(20/12)];
+      @apply w-12 ps-5 pe-horizontal-xxs text-icon-12 leading-167;
     }
   }
 
   .primary-text {
-    @apply px-horizontal-xxs font-base text-base-300 leading-base-300 font-regular whitespace-nowrap;
+    @apply px-horizontal-xxs font-base text-base-300 leading-143 font-regular whitespace-nowrap;
 
     @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
-      @apply text-base-200 leading-base-200;
+      @apply text-base-200 leading-133;
     }
   }
 
@@ -151,25 +151,25 @@
   }
 
   .with-secondary-text {
-    @apply -mt-2 text-base-200 leading-base-200;
+    @apply -mt-2 text-base-200 leading-133;
     grid-area: primary;
   }
 
   .secondary-text {
-    @apply px-horizontal-xxs font-base text-base-100 leading-base-100 font-regular whitespace-nowrap;
+    @apply px-horizontal-xxs font-base text-base-100 leading-140 font-regular whitespace-nowrap;
     grid-area: secondary;
   }
 
   .dismiss-icon {
-    @apply flex ps-horizontal-xs pe-7 text-icon-20 leading-[calc(20/20)];
+    @apply flex ps-horizontal-xs pe-7 text-icon-20 leading-100;
     grid-area: dismissIcon;
 
     @variant group-size-small/fui-tag {
-      @apply ps-horizontal-xxs pe-5 text-icon-16 leading-[calc(20/16)];
+      @apply ps-horizontal-xxs pe-5 text-icon-16 leading-125;
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply ps-horizontal-xxs pe-5 text-icon-12 leading-[calc(20/12)];
+      @apply ps-horizontal-xxs pe-5 text-icon-12 leading-167;
     }
 
     @variant group-enabled/fui-tag {

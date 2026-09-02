@@ -2,6 +2,6 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply my-8 ms-10 font-base text-base-200 leading-base-200 font-semibold;
+    @apply my-8 ms-10 font-base text-base-200 leading-133 font-semibold;
   }
 }

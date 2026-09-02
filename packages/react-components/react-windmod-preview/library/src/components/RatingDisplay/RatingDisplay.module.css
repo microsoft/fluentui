@@ -9,7 +9,7 @@
   }
 
   .label {
-    @apply ms-horizontal-xs font-base text-base-200 leading-base-200 font-regular text-neutral-foreground-1;
+    @apply ms-horizontal-xs font-base text-base-200 leading-133 font-regular text-neutral-foreground-1;
   }
 
   .strong {
@@ -17,11 +17,11 @@
   }
 
   .large {
-    @apply ms-horizontal-s-nudge text-base-300 leading-base-300;
+    @apply ms-horizontal-s-nudge text-base-300 leading-143;
   }
 
   .extra-large {
-    @apply ms-horizontal-s text-base-400 leading-base-400;
+    @apply ms-horizontal-s text-base-400 leading-137;
   }
 
   .divider {

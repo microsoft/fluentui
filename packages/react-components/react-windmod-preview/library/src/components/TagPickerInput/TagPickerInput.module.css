@@ -5,7 +5,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply max-w-full min-w-24 grow border-none bg-transparent-background font-base text-base-300 leading-base-300 text-neutral-foreground-1;
+    @apply max-w-full min-w-24 grow border-none bg-transparent-background font-base text-base-300 leading-143 text-neutral-foreground-1;
 
     /* Written inline as 100% by the headless input hook once the text overflows; 0 otherwise, so
        flex-grow decides the resting width and a full row is taken only when needed. The custom

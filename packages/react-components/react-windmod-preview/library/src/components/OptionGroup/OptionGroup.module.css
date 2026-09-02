@@ -17,6 +17,6 @@
   /* py-horizontal-s is not a typo: Griffel spells this padding with a horizontal token on the
      block axis. */
   .label {
-    @apply block rounded-medium px-horizontal-s-nudge py-horizontal-s text-base-200 leading-base-200 font-semibold text-neutral-foreground-3;
+    @apply block rounded-medium px-horizontal-s-nudge py-horizontal-s text-base-200 leading-133 font-semibold text-neutral-foreground-3;
   }
 }

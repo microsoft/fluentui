@@ -48,7 +48,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex min-w-min items-center justify-center gap-8 overflow-hidden leading-[0];
+    @apply flex min-w-min items-center justify-center gap-8 overflow-hidden leading-000;
 
     @variant label-above, label-below {
       @apply flex-col;
@@ -175,14 +175,14 @@
   }
 
   .label {
-    @apply font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+    @apply font-base text-base-300 leading-143 font-regular text-neutral-foreground-1;
 
     @variant group-size-medium/fui-spinner, group-size-large/fui-spinner, group-size-extra-large/fui-spinner {
-      @apply text-base-400 leading-base-400 font-semibold;
+      @apply text-base-400 leading-137 font-semibold;
     }
 
     @variant group-size-huge/fui-spinner {
-      @apply text-base-500 leading-base-500 font-semibold;
+      @apply text-base-500 leading-140 font-semibold;
     }
 
     @variant group-appearance-inverted/fui-spinner {

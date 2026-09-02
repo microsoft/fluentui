@@ -92,15 +92,15 @@
     }
 
     @variant group-size-small/fui-textarea {
-      @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs text-base-200 leading-base-200;
+      @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs text-base-200 leading-133;
     }
 
     @variant group-size-medium/fui-textarea {
-      @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge text-base-300 leading-base-300;
+      @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge text-base-300 leading-143;
     }
 
     @variant group-size-large/fui-textarea {
-      @apply max-h-320 min-h-64 px-14 py-vertical-s text-base-400 leading-base-400;
+      @apply max-h-320 min-h-64 px-14 py-vertical-s text-base-400 leading-137;
     }
 
     @variant group-disabled/fui-textarea {
