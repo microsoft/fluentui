@@ -84,3 +84,38 @@ Within `makeStyles`, prefer Fluent tokens for spacing, stroke widths, colors,
 and other design-system values. Carry dimensions forward when the source
 establishes them; otherwise preserve flexible or container-defined sizing
 rather than introducing arbitrary pixel constraints.
+
+## Migration verification checklist
+
+A migration can compile and still change behavior. Before considering a
+component migrated, verify the following:
+
+- **Defaults:** Compare v8 and v9 defaults even when the v8 prop is absent.
+  Explicitly preserve changed defaults for placement, autofocus, dismissal,
+  arrows, selection, sizing, and announcement behavior.
+- **Controlled state:** Keep editable text separate from committed parsed state
+  when users must pass through temporarily invalid values. Editing one channel
+  must not reset unrelated state such as alpha.
+- **Units and inversions:** Document and test value ranges and inverted
+  semantics such as opacity versus transparency. Include a non-symmetric test
+  value; 50% can hide an accidental inversion.
+- **Callbacks:** Preserve when callbacks fire, which transitions they
+  represent, and whether the event can be native or React-owned. Prefer the
+  documented callback data over assumptions about `event.target`.
+- **Focus and lifecycle:** Verify initial focus, trapping, restoration, portal
+  behavior, and conditional mounting. Triggerless overlays may need both a
+  restore-focus target and source, and imperative handles do not exist before
+  their owning component mounts.
+- **Accessible composition:** Preserve names, descriptions, roles, live-region
+  behavior, required indicators, and native constraint validation. A composed
+  field may require responsibilities on both its wrapper and control.
+- **CSS versus native attributes:** Confirm component styles do not override
+  native behavior. For example, a component class that sets `display` can
+  override the browser's default styling for the `hidden` attribute.
+- **Async effects:** Preserve validation timing and stale-result protection,
+  including React Strict Mode effect replay and source changes after mount.
+
+Run a standalone TypeScript check in addition to the production build, then
+render the migrated component in a browser. Review screenshots for relevant
+open, error, selected, or loaded states rather than only the initial resting
+state, and exercise keyboard and pointer interactions that carry state.
