@@ -20,7 +20,7 @@
        pie trigger without the re-assertion would show no focus ring at all. */
 @layer fui.components.l1 {
   .content {
-    @apply m-0 flex list-none flex-col p-0;
+    @apply flex flex-col;
   }
 
   .border-thin {
@@ -42,7 +42,7 @@
   .trigger-button {
     --fui-avatar-group-popover-size: calc(attr(data-size type(<number>), 32) * 1px);
 
-    @apply relative inline-flex size-(--fui-avatar-group-popover-size) shrink-0 items-center justify-center rounded-circular border-solid border-neutral-stroke-1 bg-neutral-background-1 p-0 text-neutral-foreground-1;
+    @apply relative inline-flex size-(--fui-avatar-group-popover-size) shrink-0 items-center justify-center rounded-circular border-solid border-neutral-stroke-1 bg-neutral-background-1 text-neutral-foreground-1;
 
     @variant selected {
       @apply border-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
@@ -53,7 +53,7 @@
     }
 
     @variant focus-visible {
-      @apply border-thick border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-stroke-focus-2 outline-none;
     }
 
     @variant hover {
@@ -73,7 +73,7 @@
     }
 
     @variant focus-visible {
-      @apply border-thick border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-stroke-focus-2 outline-none;
     }
   }
 

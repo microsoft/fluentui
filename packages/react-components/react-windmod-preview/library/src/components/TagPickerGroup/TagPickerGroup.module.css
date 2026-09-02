@@ -15,7 +15,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border flex cursor-text flex-wrap;
+    @apply flex cursor-text flex-wrap;
 
     @variant size-medium {
       @apply gap-x-horizontal-xs gap-y-horizontal-xs py-vertical-s-nudge;

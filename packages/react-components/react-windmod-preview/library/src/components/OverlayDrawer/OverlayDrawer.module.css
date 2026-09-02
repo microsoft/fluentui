@@ -3,18 +3,17 @@
 /* The root is the headless DialogSurface — a native <dialog> opened with showModal(). It is not
    the windmod DialogSurface: Griffel's OverlayDrawerSurface does not apply DialogSurface's reset
    either, so the drawer owns its whole surface look.
-   A promoted <dialog> arrives with user-agent padding, margin, border, a max-width/height clamp of
+   A promoted <dialog> arrives with a user-agent border style, a max-width/height clamp of
    calc(100% - 2 * (border + padding)), user-select: text and unicode-bidi: normal that Griffel's
-   in-flow <div> never has; p-0, m-0, border-none, the two 100v* clamps, select-auto and
-   unicode-bidi neutralise them. border-none carries the width too — a border-width computes to 0
-   wherever the style is none — and leaving the colour unset keeps it at currentColor, which is
-   what Griffel's <div> resolves it to.
+   in-flow <div> never has (its padding, margin and border width fall to the base sheet's reset);
+   border-none, the two 100v* clamps, select-auto and unicode-bidi neutralise them. Leaving the
+   border colour unset keeps it at currentColor, which is what Griffel's <div> resolves it to.
    The box-shadow is Griffel's motion end keyframe: react-drawer authors no box-shadow rule
    anywhere, so this is the only place the rest shadow exists. */
 
 @layer fui.components.l1 {
   .root {
-    @apply fixed inset-y-0 m-0 box-border flex h-auto max-h-screen w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden border-none bg-neutral-background-1 p-0 text-neutral-foreground-1 shadow-64 select-auto;
+    @apply fixed inset-y-0 flex h-auto max-h-screen w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden border-none bg-neutral-background-1 text-neutral-foreground-1 shadow-64 select-auto;
 
     --fui-drawer-size: 320px;
 

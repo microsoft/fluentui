@@ -15,14 +15,14 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border inline-flex min-w-250 rounded-medium align-middle;
+    @apply relative inline-flex min-w-250 rounded-medium align-middle;
 
     /* The bottom focus border, shared with Input, Select, SpinButton and Combobox. No
        transition-delay and no timing function: Griffel writes a curve token into transition-delay,
        which is not a <time> and is dropped at computed-value time, so both sides compute 0s / ease.
        Reduced motion is suppressed house-wide by the theme, not here. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -112,10 +112,7 @@
   }
 
   .button {
-    /* border-current pairs with border-none: Griffel's `border: none` shorthand also resets the
-       colour to currentColor, and the user-agent's own button border colour would otherwise
-       survive as a computed-value divergence behind a zero width. */
-    @apply grid w-full cursor-pointer grid-cols-[[content]_1fr_[icon]_auto_[end]] items-center justify-between gap-x-horizontal-xxs border-none border-current bg-transparent-background text-start font-base text-neutral-foreground-1;
+    @apply grid w-full cursor-pointer grid-cols-[[content]_1fr_[icon]_auto_[end]] items-center justify-between gap-x-horizontal-xxs border-none bg-transparent-background text-start font-base text-neutral-foreground-1;
 
     @variant focus {
       @apply outline-none;
@@ -145,7 +142,7 @@
   /* Griffel's clear-button look is a makeResetStyles; the icon bucket lands on the same element and
      overrides margin-inline-start from its size blocks, which is why .icon follows this block. */
   .clear-button {
-    @apply relative m-0 me-horizontal-m-nudge h-fit cursor-pointer self-center border-none border-current bg-transparent-background p-0;
+    @apply relative me-horizontal-m-nudge h-fit cursor-pointer self-center border-none bg-transparent-background;
 
     /* createFocusOutlineStyle() emits an outline reset for BOTH :focus and :focus-visible; the
        focus-visible catalog entry is a union with the keyborg attribute and structurally cannot
@@ -172,7 +169,7 @@
      authors it on the shared bucket just the same. Griffel's base font-size is dead — all three
      size blocks override it. */
   .icon {
-    @apply col-start-[icon] col-end-[end] box-border block text-neutral-stroke-accessible;
+    @apply col-start-[icon] col-end-[end] block text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;

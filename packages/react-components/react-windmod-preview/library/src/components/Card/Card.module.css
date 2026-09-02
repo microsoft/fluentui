@@ -10,7 +10,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex gap-(--fui-card-size) overflow-hidden rounded-(--fui-card-border-radius) bg-neutral-background-1 p-(--fui-card-size) text-neutral-foreground-1 shadow-4;
+    @apply relative flex gap-(--fui-card-size) overflow-hidden rounded-(--fui-card-border-radius) bg-neutral-background-1 p-(--fui-card-size) text-neutral-foreground-1 shadow-4;
 
     /* The border lives on ::after so a CardPreview can render behind it. */
     @variant after {

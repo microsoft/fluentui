@@ -6,16 +6,12 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex grow flex-row items-center text-center font-base text-base-200 leading-base-200 font-regular;
+    @apply relative flex grow flex-row items-center text-center font-base text-base-200 leading-base-200 font-regular;
 
     @variant before, after {
-      @apply box-border flex grow;
+      @apply flex grow;
     }
 
-    /* No `border-solid` anywhere below: it sets border-style on all four sides, and with only
-       one side's width declared the other three fall back to `medium` and draw a full box. The
-       per-side width utilities emit their own `border-*-style: var(--tw-border-style)`, whose
-       registered initial-value is solid. */
     @variant horizontal {
       @apply w-full;
 

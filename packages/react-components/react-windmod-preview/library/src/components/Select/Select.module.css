@@ -8,10 +8,10 @@
      cascade. .disabledUnderline re-asserts its forced-colors border because Griffel wins that pair
      through @griffel/core's media-bucket ordering, which flat source order inverts. */
   .root {
-    @apply relative box-border flex flex-nowrap items-center font-base;
+    @apply relative flex flex-nowrap items-center font-base;
 
     @variant after {
-      @apply absolute inset-x-0 bottom-0 box-border h-(--radius-medium) rounded-b-medium;
+      @apply absolute inset-x-0 bottom-0 h-(--radius-medium) rounded-b-medium;
 
       background-image: linear-gradient(
         0deg,
@@ -35,7 +35,7 @@
   }
 
   .select {
-    @apply box-border h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent py-0 ps-horizontal-m pe-34 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-none;
+    @apply h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent ps-horizontal-m pe-34 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1 shadow-none;
 
     @variant focus {
       @apply outline-thick outline-transparent outline-solid;
@@ -109,7 +109,7 @@
   }
 
   .icon {
-    @apply pointer-events-none absolute end-horizontal-m-nudge box-border block size-20 text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
+    @apply pointer-events-none absolute end-horizontal-m-nudge block size-20 text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;

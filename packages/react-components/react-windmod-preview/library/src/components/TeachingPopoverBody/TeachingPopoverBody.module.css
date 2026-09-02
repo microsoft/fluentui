@@ -20,7 +20,7 @@
   }
 
   .short {
-    @apply aspect-[288/117];
+    @apply aspect-288/117;
 
     @supports not (aspect-ratio) {
       @apply h-117;
@@ -28,7 +28,7 @@
   }
 
   .medium {
-    @apply aspect-[288/176];
+    @apply aspect-288/176;
 
     @supports not (aspect-ratio) {
       @apply h-176;

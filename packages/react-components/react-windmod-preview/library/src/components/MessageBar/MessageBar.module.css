@@ -8,7 +8,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border grid min-h-36 grid-cols-[auto_1fr_auto_auto] grid-rows-[1fr] items-center rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
+    @apply grid min-h-36 grid-cols-[auto_1fr_auto_auto] grid-rows-[1fr] items-center rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
     grid-template-areas: 'icon body secondaryActions actions';
 
     @variant layout-multiline {

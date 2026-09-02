@@ -6,7 +6,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-block rounded-none border-neutral-stroke-1;
+    @apply inline-block rounded-none border-neutral-stroke-1;
   }
 
   .block {

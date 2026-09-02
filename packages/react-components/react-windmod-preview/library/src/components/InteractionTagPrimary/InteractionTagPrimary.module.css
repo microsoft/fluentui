@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply inline-grid h-full items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply inline-grid h-full items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 
@@ -57,17 +57,12 @@
     }
 
     /* A primary with secondary text gives that text a negative margin that covers the top
-       border, so high contrast redraws that edge on a pseudo-element. The edge is a PARTIAL
-       border: its sides come from per-side width utilities, and its style from a per-side
-       longhand — `border-solid` would set the style on all four sides and inflate the three
-       unset ones from 0 to the medium initial width. Same reasoning in `.circular` and in
-       Tag.module.css. */
+       border, so high contrast redraws that edge on a pseudo-element. */
     @variant forced-colors {
       @apply relative;
 
       @variant before {
         @apply absolute -inset-1 rounded-ss-medium rounded-se-medium border-t-thin;
-        border-block-start-style: solid;
       }
 
       @variant enabled {
@@ -84,7 +79,6 @@
     @variant forced-colors {
       @variant before {
         @apply rounded-s-circular rounded-e-none border-s-thin;
-        border-inline-start-style: solid;
       }
     }
   }
@@ -93,7 +87,6 @@
     @variant forced-colors {
       @variant before {
         @apply rounded-e-circular border-e-thin border-e-transparent;
-        border-inline-end-style: solid;
       }
     }
   }
@@ -135,7 +128,7 @@
     }
 
     @variant disabled {
-      @apply border-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
     }
   }
 
@@ -161,7 +154,7 @@
     @apply border-brand-stroke-1 bg-brand-background text-neutral-foreground-on-brand;
 
     @variant hover {
-      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+      @apply bg-brand-background-hover;
 
       & * {
         @variant variant-filled {
@@ -171,7 +164,7 @@
     }
 
     @variant active {
-      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+      @apply bg-brand-background-pressed;
 
       & * {
         @variant variant-filled {
@@ -199,10 +192,6 @@
 
     @variant size-small, size-extra-small {
       @apply pe-horizontal-s-nudge;
-    }
-
-    @variant focus-visible {
-      @apply rounded-se-none rounded-ee-none;
     }
 
     @variant forced-colors {

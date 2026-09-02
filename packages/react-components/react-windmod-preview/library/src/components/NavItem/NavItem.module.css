@@ -40,9 +40,7 @@
 
 @layer fui.components.l1 {
   .root {
-    /* `border-none` sets only border-style; the UA button border-color would survive it.
-       Griffel's `border: none` shorthand also resets the colour to currentColor. */
-    @apply relative box-border flex w-full cursor-pointer items-start justify-start gap-vertical-l rounded-medium border-none border-current bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
+    @apply relative flex w-full cursor-pointer items-start justify-start gap-vertical-l rounded-medium border-none bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
 
     transition-property: background;
 

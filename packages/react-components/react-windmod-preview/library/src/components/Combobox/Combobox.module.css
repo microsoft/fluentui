@@ -11,14 +11,14 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border inline-grid min-w-250 grid-cols-[1fr_auto] items-center justify-between gap-x-horizontal-xxs rounded-medium align-middle;
+    @apply relative inline-grid min-w-250 grid-cols-[1fr_auto] items-center justify-between gap-x-horizontal-xxs rounded-medium align-middle;
 
     /* The bottom focus border, shared with Input, Select and SpinButton. No transition-delay and no
        timing function: Griffel writes a curve token into transition-delay, which is not a <time>
        and is dropped at computed-value time, so both sides compute 0s / ease. Reduced motion is
        suppressed house-wide by the theme, not here. */
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -61,8 +61,6 @@
     @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
   }
 
-  /* Bottom border only — a border-solid here would give the other three sides a computed width and
-     grow the box. */
   .underline {
     @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
   }
@@ -115,17 +113,14 @@
   }
 
   .input {
-    /* border-current pairs with border-none: Griffel's `border: none` shorthand also resets the
-       colour to currentColor, and the user-agent's own input border colour would otherwise survive
-       as a computed-value divergence behind a zero width. */
-    @apply self-stretch border-none border-current bg-transparent-background py-0 ps-horizontal-m pe-0 font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
+    @apply self-stretch border-none bg-transparent-background ps-horizontal-m font-base text-base-300 leading-base-300 font-regular text-neutral-foreground-1;
 
     @variant focus {
       @apply outline-none;
     }
 
     @variant placeholder {
-      @apply text-neutral-foreground-4 opacity-100;
+      @apply text-neutral-foreground-4;
     }
 
     @variant group-size-small/fui-combobox {
@@ -137,7 +132,7 @@
     }
 
     @variant group-disabled/fui-combobox {
-      @apply cursor-not-allowed bg-transparent-background text-neutral-foreground-disabled;
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
 
       @variant placeholder {
         @apply text-neutral-foreground-disabled;
@@ -148,7 +143,7 @@
   /* One bucket for both icon slots, as Griffel shares it. The ::after extends the hit target over
      the root's padding-inline-end dead zone, so its end inset tracks that padding per size. */
   .icon {
-    @apply relative box-border block cursor-pointer text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
+    @apply relative block cursor-pointer text-icon-20 leading-[calc(20/20)] text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;
@@ -194,7 +189,7 @@
   /* The expand icon stays in the accessibility tree while the clear affordance shows, so it is
      clipped rather than removed. */
   .icon-visually-hidden {
-    @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
+    @apply absolute -m-1 h-1 w-1 overflow-hidden;
 
     clip: rect(0px, 0px, 0px, 0px);
   }

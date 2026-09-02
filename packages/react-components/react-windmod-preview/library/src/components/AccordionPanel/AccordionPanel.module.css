@@ -5,7 +5,7 @@
      carried both the collapse animation and its unmount, keeping only tabIndex and inert.
      State inside a closed panel therefore survives a close/open cycle. */
   .root {
-    @apply mx-horizontal-m my-0 hidden;
+    @apply mx-horizontal-m hidden;
 
     @variant open {
       @apply block;

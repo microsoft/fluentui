@@ -10,18 +10,18 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border flex size-8 cursor-pointer bg-brand-background outline-thin outline-transparent outline-solid;
+    @apply flex size-8 cursor-pointer bg-brand-background outline-thin outline-transparent outline-solid;
 
     @variant not-selected {
-      @apply rounded-full border-none bg-brand-background/30 p-0;
+      @apply rounded-full border-none bg-brand-background/30;
     }
 
     @variant selected {
-      @apply w-16 rounded-medium border-none p-0;
+      @apply w-16 rounded-medium border-none;
     }
 
     @variant focus-visible {
-      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2 outline-solid;
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2;
     }
   }
 

@@ -44,7 +44,7 @@
     @apply block font-base text-base-200 leading-base-200 font-regular text-neutral-foreground-2;
 
     @variant group-size-huge/fui-persona {
-      @apply text-base-300 leading-base-300 font-regular;
+      @apply text-base-300 leading-base-300;
     }
   }
 

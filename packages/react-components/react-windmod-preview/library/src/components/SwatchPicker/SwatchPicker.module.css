@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex flex-row gap-4 p-0;
+    @apply flex flex-row gap-4;
 
     @variant layout-grid {
       @apply flex-col;

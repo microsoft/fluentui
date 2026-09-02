@@ -58,7 +58,7 @@
 @layer fui.components.l1 {
   /* The dismiss slot is this component's own; Input classes only its parent. */
   .dismiss {
-    @apply box-border flex cursor-pointer text-neutral-foreground-3;
+    @apply flex cursor-pointer text-neutral-foreground-3;
 
     @variant icon {
       @apply text-icon-20;

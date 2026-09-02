@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-0 box-border inline cursor-pointer bg-transparent p-0 text-start font-base text-base-300 font-regular text-brand-foreground-link no-underline decoration-thin select-text;
+    @apply inline cursor-pointer text-start font-base text-base-300 font-regular text-brand-foreground-link no-underline decoration-thin select-text;
     overflow: inherit;
     text-overflow: inherit;
 

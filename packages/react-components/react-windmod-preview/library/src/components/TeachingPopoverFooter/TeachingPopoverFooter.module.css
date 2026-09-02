@@ -31,11 +31,11 @@
     @apply bg-neutral-foreground-on-brand text-brand-foreground-1;
 
     @variant hover {
-      @apply bg-neutral-foreground-on-brand text-compound-brand-foreground-1-hover;
+      @apply text-compound-brand-foreground-1-hover;
     }
 
     @variant hover-active {
-      @apply bg-neutral-foreground-on-brand text-compound-brand-foreground-1-pressed;
+      @apply text-compound-brand-foreground-1-pressed;
     }
   }
 

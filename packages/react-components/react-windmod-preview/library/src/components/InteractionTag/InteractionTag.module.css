@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-flex w-fit items-center rounded-medium;
+    @apply inline-flex w-fit items-center rounded-medium;
 
     @variant size-medium {
       @apply h-32;

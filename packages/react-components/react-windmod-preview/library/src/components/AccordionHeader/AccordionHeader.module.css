@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-0 rounded-medium bg-transparent-background text-neutral-foreground-1;
+    @apply rounded-medium bg-transparent-background text-neutral-foreground-1;
 
     @variant inline {
       @apply inline-block;
@@ -16,7 +16,7 @@
   /* Griffel's button reset also sets font-family, font-size, line-height and padding; each of
      those is overwritten below at every size, so only the surviving reset values are authored. */
   .button {
-    @apply relative box-border flex min-h-44 w-full cursor-pointer items-center overflow-visible border-0 bg-inherit py-0 ps-horizontal-m-nudge pe-horizontal-m font-base text-base-300 leading-base-300 font-regular text-inherit outline-none;
+    @apply relative flex min-h-44 w-full cursor-pointer items-center overflow-visible bg-inherit ps-horizontal-m-nudge pe-horizontal-m font-base text-base-300 leading-base-300 font-regular outline-none;
     text-align: unset;
     -webkit-appearance: button;
 

@@ -182,9 +182,12 @@ ambient theme class (theme-owned formulas re-substitute only where the theme cla
 - **All** component styles live in `fui.components.l<level>`.
 - Tailwind's preflight ships at the **head of `fui.base`** — the first content of that layer, so
   every component rule outranks it by layer order and the theme's other element resets beat it by
-  source order (or, for the zero-specificity icon defaults, by the theme's own guard rule). Never
-  lean on a preflight value: a component declares what its rendering depends on rather than
-  inheriting the reset's answer.
+  source order (or, for the zero-specificity icon defaults, by the theme's own guard rule).
+  Components depend on that reset: a declaration that only restates a preflight value —
+  `box-border`, `m-0`/`p-0` on an element the universal rule already zeroes, `border-current`
+  beside `border-none`, `font-*: inherit` on a form control — is dead and is not authored. A zero
+  or inherit is authored only where it undoes an author rule (see the restated-reset row in
+  [failure-modes.md](failure-modes.md)).
 - `fui.base` belongs to the theme, for the preflight and global element resets **only**. Components
   never author into it.
 - **The level is assigned per RULE, not per file.** A rule styling the component's own DOM — its root,

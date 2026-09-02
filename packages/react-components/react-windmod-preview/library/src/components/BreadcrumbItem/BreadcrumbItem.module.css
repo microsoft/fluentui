@@ -2,6 +2,6 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border flex items-center text-nowrap text-neutral-foreground-2;
+    @apply flex items-center text-nowrap text-neutral-foreground-2;
   }
 }

@@ -48,7 +48,7 @@
     }
 
     @variant group-multiselect/fui-option {
-      @apply visible box-border flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-[calc(20/12)];
+      @apply visible flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-[calc(20/12)];
 
       @variant group-selected/fui-option {
         @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;

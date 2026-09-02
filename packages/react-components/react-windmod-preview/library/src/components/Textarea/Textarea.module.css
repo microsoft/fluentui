@@ -4,7 +4,7 @@
   /* Cascade is block order — see Input.module.css. .outlineInteractive after .outline, .invalid
      after every appearance block. */
   .root {
-    @apply relative m-0 box-border inline-flex rounded-medium p-0 pb-thick align-top;
+    @apply relative inline-flex rounded-medium pb-thick align-top;
   }
 
   .disabled {
@@ -37,7 +37,7 @@
 
   .interactive {
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -84,10 +84,10 @@
   }
 
   .textarea {
-    @apply m-0 box-border h-full grow border-none bg-transparent font-base font-regular text-neutral-foreground-1 outline-none;
+    @apply h-full grow border-none font-base font-regular text-neutral-foreground-1 outline-none;
 
     @variant placeholder {
-      @apply text-neutral-foreground-4 opacity-100;
+      @apply text-neutral-foreground-4;
     }
 
     @variant group-size-small/fui-textarea {

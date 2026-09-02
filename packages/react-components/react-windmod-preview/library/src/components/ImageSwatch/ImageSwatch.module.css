@@ -2,7 +2,9 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-flex size-28 rounded-none border-thin border-transparent-stroke bg-cover bg-no-repeat p-0 outline-none;
+    /* The border style is the base sheet's `border: 0 solid` reset; only width and colour are
+       authored. border-current in the state blocks: see ColorSwatch.module.css. */
+    @apply inline-flex size-28 border-thin border-transparent-stroke bg-cover bg-no-repeat outline-none;
 
     @variant hover {
       @apply cursor-pointer border-none border-current;
@@ -53,24 +55,24 @@
 
       box-shadow:
         inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-1),
-        inset 0 0 0 5px var(--color-stroke-focus-1);
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
 
       @variant focus-visible {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-2),
-          inset 0 0 0 5px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-hover),
-          inset 0 0 0 6px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(6px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover-active {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-pressed),
-          inset 0 0 0 7px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(7px * var(--base-scale)) var(--color-stroke-focus-1);
       }
     }
 
@@ -80,7 +82,7 @@
       @variant selected {
         box-shadow:
           inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-2-pressed),
-          inset 0 0 0 5px var(--color-stroke-focus-1);
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
       }
 
       @variant hover {

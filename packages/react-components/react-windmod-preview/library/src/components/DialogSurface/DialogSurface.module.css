@@ -14,7 +14,11 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply inset-0 m-auto box-border grid h-fit w-auto max-w-600 grid-cols-[1fr_1fr_auto] grid-rows-[auto_1fr] gap-8 overflow-visible rounded-x-large border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-24 text-neutral-foreground-1 shadow-64 outline-none;
+    @apply inset-0 m-auto grid h-fit w-auto max-w-600 grid-cols-[1fr_1fr_auto] grid-rows-[auto_1fr] gap-8 overflow-visible rounded-x-large border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-24 text-neutral-foreground-1 shadow-64 outline-none select-auto;
+
+    /* A <dialog> in the top layer computes user-select: text and, unlike a <div>, unicode-bidi:
+       normal; Griffel's surface is a <div>. See OverlayDrawer.module.css. */
+    unicode-bidi: isolate;
 
     /* Griffel authors both; the browser keeps whichever it parses. */
     max-height: 100vh;

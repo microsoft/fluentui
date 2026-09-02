@@ -11,13 +11,8 @@
   .root {
     /* NO display: Griffel's bucket authors none, so the button blockifies as a flex item of the
        control and its own align-items and column-gap are inert. Both are authored anyway, because
-       Griffel authors both — computed-value parity, not layout.
-
-       border-current pairs with border-none, the spelling Combobox established: Griffel's
-       `border: none` shorthand also resets the colour to currentColor, and the user-agent's own
-       button border colour would otherwise survive as a computed-value divergence behind a zero
-       width. */
-    @apply box-border min-h-32 grow cursor-pointer items-center gap-x-horizontal-xxs border-none border-current bg-transparent-background text-start font-base text-neutral-foreground-1;
+       Griffel authors both — computed-value parity, not layout. */
+    @apply min-h-32 grow cursor-pointer items-center gap-x-horizontal-xxs border-none bg-transparent-background text-start font-base text-neutral-foreground-1;
 
     @variant focus {
       @apply outline-none;

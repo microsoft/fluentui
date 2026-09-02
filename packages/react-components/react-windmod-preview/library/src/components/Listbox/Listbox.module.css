@@ -1,15 +1,12 @@
 @reference '#theme';
 
-/* box-border is load-bearing, not decorative: a Combobox surface takes its width from the restored
-   matchTargetSize, which usePositioning writes as `width: anchor-size(width)`. anchor-size() returns
-   the anchor's BORDER-box width, so only a border-box surface reproduces the anchor's outer width.
-
-   The neutralisation below cancels the user-agent `[popover]` box, which applies to this element
-   whether or not it is showing — a 3px solid border, fixed/inset-0/margin-auto placement,
-   fit-content sizing, a CanvasText colour and `position-anchor: auto`, none of which the Griffel
-   Listbox has. The placement three and position-anchor are inert on a promoted surface
-   (usePositioning writes position, inset, margin and position-anchor inline, which outrank an
-   authored rule); the placement three are what makes an unpromoted standalone Listbox sit in flow.
+/* The neutralisation below cancels the user-agent `[popover]` box, which applies to this element
+   whether or not it is showing — a solid border style, fixed/inset-0 placement, fit-content sizing,
+   a CanvasText colour and `position-anchor: auto`, none of which the Griffel Listbox has (its 3px
+   border width, margin and padding already fall to the base sheet's reset). The placement pair and
+   position-anchor are inert on a promoted surface (usePositioning writes position, inset, margin
+   and position-anchor inline, which outrank an authored rule); the placement pair is what makes an
+   unpromoted standalone Listbox sit in flow.
    overflow and the max-* pair are deliberately NOT neutralised: the authored overflow-y already
    computes both axes to Griffel's `auto`, and the user-agent max-* pair belongs to showModal().
    The user-agent also hides an unpromoted popover outright — `[popover]:not(:popover-open)
@@ -25,7 +22,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply static inset-auto m-0 box-border flex h-auto w-auto min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto border-none bg-neutral-background-1 p-horizontal-xs text-inherit outline-thin outline-transparent-stroke;
+    @apply static inset-auto flex h-auto w-auto min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto border-none bg-neutral-background-1 p-horizontal-xs text-inherit outline-thin outline-transparent-stroke;
 
     /* No Tailwind utility exists for this one; it is the fifth user-agent row and the only one that
        is not a box property, so a property list assembled by eye misses it. */

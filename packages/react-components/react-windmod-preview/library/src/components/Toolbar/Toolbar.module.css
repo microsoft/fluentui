@@ -9,7 +9,7 @@
     }
 
     @variant size-large {
-      @apply px-20 py-4;
+      @apply px-20;
     }
 
     /* Last in the block: a vertical toolbar drops the size padding entirely and keeps the

@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply m-horizontal-none box-border inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
+    @apply m-horizontal-none inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-base-300 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
 
     transition-property: background, border, color;
 
@@ -11,15 +11,15 @@
     }
 
     @variant hover-active {
-      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed outline-none;
+      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
     }
 
     @variant size-small {
-      @apply min-w-64 rounded-medium px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
+      @apply min-w-64 px-horizontal-s py-3 text-base-200 leading-base-200 font-regular;
     }
 
     @variant size-large {
-      @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s text-base-400 leading-base-400 font-semibold;
+      @apply px-horizontal-l py-vertical-s text-base-400 leading-base-400;
     }
 
     /* The appearance blocks all follow this one at equal specificity, so each of them
@@ -110,15 +110,13 @@
     }
 
     @variant group-size-small/fui-button {
-      @apply size-20 text-icon-20 leading-[calc(16/20)];
+      @apply leading-[calc(16/20)];
 
       --fui-button-icon-spacing: calc(4px * var(--base-scale));
     }
 
     @variant group-size-large/fui-button {
       @apply size-24 text-icon-24 leading-[calc(22/24)];
-
-      --fui-button-icon-spacing: calc(6px * var(--base-scale));
     }
 
     @variant group-appearance-subtle/fui-button {
@@ -214,15 +212,15 @@
     @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
 
     @variant hover {
-      @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+      @apply bg-brand-background-hover;
     }
 
     @variant hover-active {
-      @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+      @apply bg-brand-background-pressed;
     }
 
     @variant disabled, disabled-focusable {
-      @apply border-transparent bg-neutral-background-disabled text-neutral-foreground-disabled;
+      @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
     }
 
     @variant focus-visible {
@@ -281,15 +279,15 @@
     @apply border-transparent bg-subtle-background text-neutral-foreground-2;
 
     @variant hover {
-      @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
+      @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
     }
 
     @variant hover-active {
-      @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+      @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
     }
 
     @variant disabled, disabled-focusable {
-      @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+      @apply bg-transparent-background text-neutral-foreground-disabled;
     }
 
     @variant focus-visible {
@@ -315,15 +313,15 @@
     @apply border-transparent bg-transparent-background text-neutral-foreground-2;
 
     @variant hover {
-      @apply border-transparent bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+      @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
     }
 
     @variant hover-active {
-      @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
     }
 
     @variant disabled, disabled-focusable {
-      @apply border-transparent bg-transparent-background text-neutral-foreground-disabled;
+      @apply bg-transparent-background text-neutral-foreground-disabled;
     }
 
     @variant focus-visible {
@@ -347,17 +345,9 @@
 
   .circular {
     @apply rounded-circular;
-
-    @variant focus-visible {
-      @apply rounded-circular;
-    }
   }
 
   .square {
     @apply rounded-none;
-
-    @variant focus-visible {
-      @apply rounded-none;
-    }
   }
 }
