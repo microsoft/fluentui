@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Native ESM" />
+
+# Native ESM
+
+Fluent UI v9 packages ship native ES modules, so they can run in a browser directly from a CDN —
+no bundler, no build step, no `node_modules`. This page explains how, and links to a working
+single-file example.
+
+<a href="examples/native-esm.html" target="_blank" rel="noopener noreferrer">
+  Open the example in a new tab
+</a>
+
+<iframe
+  src="examples/native-esm.html"
+  title="Fluent UI v9 loaded as native ESM"
+  style={{ width: '100%', height: '160px', border: '1px solid #d1d1d1', borderRadius: '4px' }}
+/>
+
+## Why an import map is needed
+
+Every `@fluentui/*` v9 package declares `"type": "module"` and its `lib/` output is plain ESM.
+However, that output imports **bare specifiers**:
+
+```js
+// @fluentui/react-components/lib/index.js
+export { Button } from '@fluentui/react-button';
+export { makeStyles } from '@griffel/react';
+```
+
+Browsers have no module resolution algorithm for bare specifiers — that is a bundler/Node
+concern. An [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)
+supplies the missing mapping.
+
+Mapping all ~70 transitive dependencies (`@griffel/react`, `@griffel/core`, `tabster`, `keyborg`,
+`@floating-ui/dom`, `@swc/helpers`, and the 60+ `@fluentui/react-*` packages) by hand is
+impractical. Instead, an ESM CDN such as [esm.sh](https://esm.sh) rewrites the bare specifiers
+inside the served files, so the import map only needs the entry points:
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@19.2.0",
+      "react/": "https://esm.sh/react@19.2.0/",
+      "react-dom": "https://esm.sh/react-dom@19.2.0?external=react",
+      "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?external=react",
+      "@fluentui/react-components": "https://esm.sh/@fluentui/react-components@9.74.7?external=react,react-dom"
+    }
+  }
+</script>
+```
+
+> ⚠️ `?external=react,react-dom` is not optional. Without it the CDN inlines its own copy of React
+> into the Fluent UI bundle. Two React instances on the page produce "invalid hook call" errors and
+> broken context — including `FluentProvider`'s theme context.
+
+The `<script type="importmap">` element must appear **before** any module script that relies on it.
+
+## No JSX without a build step
+
+JSX is not part of the language, so it cannot be parsed by the browser. Use the factory function
+JSX would have compiled to:
+
+```html
+<script type="module">
+  import * as React from 'react';
+  import { createRoot } from 'react-dom/client';
+  import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+  const h = React.createElement;
+
+  function App() {
+    const [count, setCount] = React.useState(0);
+
+    return h(
+      FluentProvider,
+      { theme: webLightTheme },
+      h('p', null, `Clicked ${count} times`),
+      h(Button, { appearance: 'primary', onClick: () => setCount(c => c + 1) }, 'Click me'),
+    );
+  }
+
+  createRoot(document.getElementById('root')).render(h(App));
+</script>
+```
+
+Styling needs no extra setup: `FluentProvider` creates the Griffel DOM renderer and injects the
+theme's CSS variables, exactly as it does in a bundled app.
+
+## Caveats
+
+This is a demonstration of what the packages support, **not a recommended production setup**:
+
+- **Request waterfall.** Each module is a separate HTTP request, and the dependency graph is deep.
+- **No tree shaking.** Importing from `@fluentui/react-components` pulls in the whole library.
+- **No build-time style optimization.** Griffel resolves styles at runtime on first render; see
+  [Build time styles](?path=/docs/concepts-developer-build-time-styles--docs).
+- **Manual version management.** Versions are pinned in the import map and must be bumped by hand.
+- **Browser support.** Import maps require a modern browser; there is no graceful degradation.
+
+For production, install the packages from npm and bundle them with Webpack, Vite, or rspack.

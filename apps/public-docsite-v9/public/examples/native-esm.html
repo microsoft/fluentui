@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fluent UI v9 — native ESM via import maps</title>
+
+    <!--
+      Every `@fluentui/*` v9 package is `"type": "module"` and its ESM output imports bare
+      specifiers (`@fluentui/react-button`, `@griffel/react`, …) which browsers cannot resolve on
+      their own. The import map below delegates that resolution to esm.sh, which rewrites the
+      bare specifiers of all ~70 transitive dependencies to absolute URLs.
+
+      `?external=react,react-dom` is required: without it esm.sh inlines its own copy of React
+      into the Fluent bundle, and two React instances break hooks and context.
+
+      Versions are pinned on purpose and must be bumped by hand.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19.2.0",
+          "react/": "https://esm.sh/react@19.2.0/",
+          "react-dom": "https://esm.sh/react-dom@19.2.0?external=react",
+          "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?external=react",
+          "@fluentui/react-components": "https://esm.sh/@fluentui/react-components@9.74.7?external=react,react-dom"
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>This example requires JavaScript modules and import map support.</noscript>
+
+    <script type="module">
+      import * as React from 'react';
+      import { createRoot } from 'react-dom/client';
+      import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+      // No build step means no JSX — `h` is the element factory JSX would have compiled to.
+      const h = React.createElement;
+
+      function App() {
+        const [count, setCount] = React.useState(0);
+
+        return h(
+          FluentProvider,
+          { theme: webLightTheme, style: { padding: 24 } },
+          h('p', null, `Clicked ${count} ${count === 1 ? 'time' : 'times'}`),
+          h(Button, { appearance: 'primary', onClick: () => setCount(c => c + 1) }, 'Click me')
+        );
+      }
+
+      createRoot(document.getElementById('root')).render(h(App));
+    </script>
+  </body>
+</html>
