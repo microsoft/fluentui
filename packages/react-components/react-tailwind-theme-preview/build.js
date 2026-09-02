@@ -1,7 +1,7 @@
 /**
  * Emits the package's published CSS: everything a component sheet references, nothing a
- * component sheet duplicates. Every artifact must contain zero `@property` rules — a
- * non-empty registry puts Blink's transition-start on a page-global slow path.
+ * component sheet duplicates. Every artifact must contain zero `@property` rules — see
+ * `assertNoRegisteredProperties`.
  *
  *   css/emit.css           → dist/base.css              the THEME-LESS base sheet
  *   css/themes/<name>.css  → dist/themes/<name>.css     one file per shipped theme
@@ -58,14 +58,26 @@ async function compile(entry, output) {
 }
 
 /**
- * `@property` in a published artifact is a measured perf regression — fail the build.
+ * Registration gives a custom property a typed, evaluated computed value and an initial
+ * value on every element; the theme relies on a token having neither:
+ *
+ *  - `useCssVarValue` (react-windmod-preview) reads tokens back through `getComputedStyle`
+ *    and gets the specified stream with `calc()` unevaluated. A typed registration would
+ *    make that readback resolve, and move with the root font size.
+ *  - An unset token must stay guaranteed-invalid: `var(--x, fallback)` fallbacks (zIndex),
+ *    `--knob: initial` resets (the focus-ring utilities) and FluentProvider's missing-theme
+ *    check (an unthemed subtree reads as empty) all depend on it, and an initial value
+ *    would satisfy every one of them silently.
+ *
+ * Tailwind's own `--tw-*` registrations live in the component package's root sheet; a theme
+ * artifact carries none.
  *
  * @param {string} name
  * @param {string} css
  */
 function assertNoRegisteredProperties(name, css) {
   if (/@property\b/.test(css)) {
-    throw new Error(`${name} contains an @property rule; a non-empty registry slows transition-start page-wide.`);
+    throw new Error(`${name} contains an @property rule; theme tokens must stay unregistered.`);
   }
 }
 
