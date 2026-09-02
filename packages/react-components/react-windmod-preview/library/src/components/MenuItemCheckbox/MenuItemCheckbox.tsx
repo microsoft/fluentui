@@ -31,10 +31,12 @@ const withCheckmark = (state: MenuItemCheckboxState): MenuItemCheckboxState =>
  * `.fui-MenuItem`, which this row's shared MenuItem styles put on its root, so a selectable half
  * takes the seam there — and takes it here only if it reads the channel. See MenuItem.
  */
-export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef((props, ref) =>
-  renderMenuItemCheckbox(
-    useMenuItemCheckboxStyles(withCheckmark(useMenuItemCheckbox(mergeContextProps(useMenuItemContext(), props), ref))),
-  ),
-);
+export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef((props, ref) => {
+  const context = useMenuItemContext();
+  const base = useMenuItemCheckbox(mergeContextProps(context, props), ref);
+  const styled = useMenuItemCheckboxStyles(withCheckmark(base));
+
+  return renderMenuItemCheckbox(styled);
+});
 
 MenuItemCheckbox.displayName = 'MenuItemCheckbox';

@@ -22,13 +22,14 @@ export const ImageSwatch: ForwardRefComponent<ImageSwatchProps> = React.forwardR
   const size = useSwatchPickerContextValue(ctx => ctx.size) ?? 'medium';
   const shape = useSwatchPickerContextValue(ctx => ctx.shape) ?? 'square';
 
-  return renderImageSwatch(
-    useImageSwatchStyles({
-      ...useImageSwatch(props, ref),
-      size,
-      shape,
-    }),
-  );
+  const state = useImageSwatch(props, ref);
+  const styled = useImageSwatchStyles({
+    ...state,
+    size,
+    shape,
+  });
+
+  return renderImageSwatch(styled);
 });
 
 ImageSwatch.displayName = 'ImageSwatch';

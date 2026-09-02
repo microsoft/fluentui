@@ -18,18 +18,20 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-button's styled useMenuButton, which reads the same
   // ButtonContext Button does (react-button useMenuButton.tsx:63-64).
+  const context = useButtonContext();
   const {
     appearance = 'secondary',
     menuIcon,
     shape = 'rounded',
     size = 'medium',
     ...rest
-  } = mergeContextProps(useButtonContext(), props);
+  } = mergeContextProps(context, props);
 
   // The headless menuIcon slot exists only when the consumer passes a value, so an empty object
   // materialises it for the glyph default below; `null` still removes the slot.
+  const base = useMenuButton({ ...rest, menuIcon: menuIcon === undefined ? {} : menuIcon }, ref);
   const state: MenuButtonState = {
-    ...useMenuButton({ ...rest, menuIcon: menuIcon === undefined ? {} : menuIcon }, ref),
+    ...base,
     appearance,
     shape,
     size,

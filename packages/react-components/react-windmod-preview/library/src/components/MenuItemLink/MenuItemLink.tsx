@@ -20,8 +20,12 @@ import { useMenuItemLinkStyles } from './useMenuItemLinkStyles';
  * It reads MenuItem's context because it IS a menu item: a container publishing to the items it
  * holds reaches an anchor-rooted one on the same channel. See MenuItem.
  */
-export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwardRef((props, ref) =>
-  renderMenuItemLink(useMenuItemLinkStyles(useMenuItemLink(mergeContextProps(useMenuItemContext(), props), ref))),
-);
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwardRef((props, ref) => {
+  const context = useMenuItemContext();
+  const state = useMenuItemLink(mergeContextProps(context, props), ref);
+  const styled = useMenuItemLinkStyles(state);
+
+  return renderMenuItemLink(styled);
+});
 
 MenuItemLink.displayName = 'MenuItemLink';

@@ -34,8 +34,9 @@ const AVATAR_SHAPE: Record<NonNullable<InteractionTagPrimaryState['shape']>, Ava
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps> = React.forwardRef((props, ref) => {
   const { appearance = 'filled', shape = 'rounded', size = 'medium' } = useInteractionTagContext();
 
+  const base = useInteractionTagPrimary(props, ref);
   const state: InteractionTagPrimaryState = {
-    ...useInteractionTagPrimary(props, ref),
+    ...base,
     appearance,
     avatarShape: AVATAR_SHAPE[shape],
     avatarSize: AVATAR_SIZE[size],
@@ -43,10 +44,10 @@ export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryPro
     size,
   };
 
-  return renderInteractionTagPrimary(
-    useInteractionTagPrimaryStyles(state),
-    useInteractionTagPrimaryContextValues(state),
-  );
+  const styled = useInteractionTagPrimaryStyles(state);
+  const contextValues = useInteractionTagPrimaryContextValues(state);
+
+  return renderInteractionTagPrimary(styled, contextValues);
 });
 
 InteractionTagPrimary.displayName = 'InteractionTagPrimary';

@@ -15,8 +15,9 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-nav's styled useNav.
   ({ density = 'medium', ...rest }, ref) => {
+    const state = useNav(rest, ref as React.Ref<HTMLDivElement>);
     const styled = useNavStyles({
-      ...useNav(rest, ref as React.Ref<HTMLDivElement>),
+      ...state,
       density,
     });
     const contextValues = useNavContextValues(styled);

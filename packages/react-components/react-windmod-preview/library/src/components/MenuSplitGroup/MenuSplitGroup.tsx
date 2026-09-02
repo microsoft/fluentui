@@ -24,9 +24,11 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.fo
     [state.setMultiline],
   );
 
+  const styled = useMenuSplitGroupStyles(state);
+
   return (
     <MenuItemContextProvider value={menuSplitGroupItemContext}>
-      {renderMenuSplitGroup(useMenuSplitGroupStyles(state), contexts)}
+      {renderMenuSplitGroup(styled, contexts)}
     </MenuItemContextProvider>
   );
 });

@@ -32,7 +32,9 @@ export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondar
       size,
     };
 
-    return renderInteractionTagSecondary(useInteractionTagSecondaryStyles(state));
+    const styled = useInteractionTagSecondaryStyles(state);
+
+    return renderInteractionTagSecondary(styled);
   },
 );
 

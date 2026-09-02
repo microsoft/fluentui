@@ -48,9 +48,11 @@ const withSubmenuIndicator = (state: MenuItemState, dir: 'ltr' | 'rtl'): MenuIte
 export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((props, ref) => {
   const { dir } = useProviderContext();
 
-  return renderMenuItem(
-    useMenuItemStyles(withSubmenuIndicator(useMenuItem(mergeContextProps(useMenuItemContext(), props), ref), dir)),
-  );
+  const context = useMenuItemContext();
+  const base = useMenuItem(mergeContextProps(context, props), ref);
+  const styled = useMenuItemStyles(withSubmenuIndicator(base, dir));
+
+  return renderMenuItem(styled);
 });
 
 MenuItem.displayName = 'MenuItem';

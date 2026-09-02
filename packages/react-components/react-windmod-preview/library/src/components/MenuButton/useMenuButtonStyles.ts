@@ -26,12 +26,18 @@ type MenuButtonRootDataAttributes = {
  *
  * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => ({
-  ...restackOver(state, useButtonStyles({ ...state, iconPosition: 'before' }), {
-    marker: menuButtonClassNames.root,
-    root: styles.root,
-    icon: styles.icon,
-    rootAttributes: { 'data-icon-position': state.icon ? 'before' : undefined } satisfies MenuButtonRootDataAttributes,
-  }),
-  menuIcon: slotClasses(state.menuIcon, styles.menuIcon),
-});
+export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
+  const styled = useButtonStyles({ ...state, iconPosition: 'before' });
+
+  return {
+    ...restackOver(state, styled, {
+      marker: menuButtonClassNames.root,
+      root: styles.root,
+      icon: styles.icon,
+      rootAttributes: {
+        'data-icon-position': state.icon ? 'before' : undefined,
+      } satisfies MenuButtonRootDataAttributes,
+    }),
+    menuIcon: slotClasses(state.menuIcon, styles.menuIcon),
+  };
+};

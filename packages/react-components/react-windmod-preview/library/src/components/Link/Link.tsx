@@ -21,15 +21,17 @@ export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref
   // `mergeContextProps` skips, leaving the destructuring default to supply `false`.
   // `as`, `href`, `disabled` and `disabledFocusable` are deliberately absent: the headless hook
   // owns them.
-  const { appearance = 'default', inline = false, ...rest } = mergeContextProps(useLinkContext(), props);
+  const context = useLinkContext();
+  const { appearance = 'default', inline = false, ...rest } = mergeContextProps(context, props);
 
-  return renderLink(
-    useLinkStyles({
-      ...useLink(rest, ref),
-      appearance,
-      inline,
-    }),
-  );
+  const state = useLink(rest, ref);
+  const styled = useLinkStyles({
+    ...state,
+    appearance,
+    inline,
+  });
+
+  return renderLink(styled);
 });
 
 Link.displayName = 'Link';

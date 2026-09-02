@@ -25,12 +25,13 @@ const NEW_ITEM_SCOPE = {};
  * visual contract (Tailwind v4 + CSS Modules).
  */
 export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
-  const state = useMenuListStyles(useMenuList(props, ref));
+  const base = useMenuList(props, ref);
+  const state = useMenuListStyles(base);
+
+  const contextValues = useMenuListContextValues(state);
 
   return (
-    <MenuItemContextProvider value={NEW_ITEM_SCOPE}>
-      {renderMenuList(state, useMenuListContextValues(state))}
-    </MenuItemContextProvider>
+    <MenuItemContextProvider value={NEW_ITEM_SCOPE}>{renderMenuList(state, contextValues)}</MenuItemContextProvider>
   );
 });
 

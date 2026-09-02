@@ -16,9 +16,12 @@ import { useMenuGroupStyles } from './useMenuGroupStyles';
  * headless group decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGroupStyles(useMenuGroup(props, ref));
+  const base = useMenuGroup(props, ref);
+  const state = useMenuGroupStyles(base);
 
-  return renderMenuGroup(state, useMenuGroupContextValues(state));
+  const contextValues = useMenuGroupContextValues(state);
+
+  return renderMenuGroup(state, contextValues);
 });
 
 MenuGroup.displayName = 'MenuGroup';

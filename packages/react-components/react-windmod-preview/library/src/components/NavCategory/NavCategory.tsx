@@ -18,7 +18,9 @@ import type { NavCategoryProps } from './NavCategory.types';
 export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardRef((props, ref) => {
   const state = useNavCategory(props, ref as React.Ref<HTMLDivElement>);
 
-  return renderNavCategory(state, useNavCategoryContextValues(state));
+  const contextValues = useNavCategoryContextValues(state);
+
+  return renderNavCategory(state, contextValues);
 });
 
 NavCategory.displayName = 'NavCategory';

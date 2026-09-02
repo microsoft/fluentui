@@ -42,7 +42,9 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
     },
   });
 
-  return renderNavCategoryItem(styled, useNavCategoryItemContextValues(styled));
+  const contextValues = useNavCategoryItemContextValues(styled);
+
+  return renderNavCategoryItem(styled, contextValues);
 });
 
 NavCategoryItem.displayName = 'NavCategoryItem';

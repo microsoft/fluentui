@@ -12,7 +12,10 @@ import { useOptionGroupStyles } from './useOptionGroupStyles';
  * headless group decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> = React.forwardRef((props, ref) => {
-  return renderOptionGroup(useOptionGroupStyles(useOptionGroup(props, ref)));
+  const state = useOptionGroup(props, ref);
+  const styled = useOptionGroupStyles(state);
+
+  return renderOptionGroup(styled);
 });
 
 OptionGroup.displayName = 'OptionGroup';

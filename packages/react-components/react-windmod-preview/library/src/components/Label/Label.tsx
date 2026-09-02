@@ -15,13 +15,14 @@ export const Label: ForwardRefComponent<LabelProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-label's styled useLabel.
   ({ size = 'medium', weight = 'regular', ...rest }, ref) => {
-    return renderLabel(
-      useLabelStyles({
-        ...useLabel(rest, ref),
-        size,
-        weight,
-      }),
-    );
+    const state = useLabel(rest, ref);
+    const styled = useLabelStyles({
+      ...state,
+      size,
+      weight,
+    });
+
+    return renderLabel(styled);
   },
 );
 

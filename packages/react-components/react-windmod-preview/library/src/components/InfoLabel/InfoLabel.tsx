@@ -21,18 +21,18 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef(
   ({ size = 'medium', ...rest }, ref) => {
     const state = useInfoLabel(rest, ref);
 
-    return renderInfoLabel(
-      useInfoLabelStyles({
-        ...state,
-        // Both slots are re-slotted, not merely swapped in components — see InfoButton.tsx.
-        // `size` first so a consumer's own label/infoButton shorthand still wins.
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-        components: { ...state.components, label: Label, infoButton: InfoButton },
-        label: slot.always({ size, ...state.label }, { elementType: Label }),
-        infoButton: state.infoButton && slot.always({ size, ...state.infoButton }, { elementType: InfoButton }),
-        size,
-      }),
-    );
+    const styled = useInfoLabelStyles({
+      ...state,
+      // Both slots are re-slotted, not merely swapped in components — see InfoButton.tsx.
+      // `size` first so a consumer's own label/infoButton shorthand still wins.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+      components: { ...state.components, label: Label, infoButton: InfoButton },
+      label: slot.always({ size, ...state.label }, { elementType: Label }),
+      infoButton: state.infoButton && slot.always({ size, ...state.infoButton }, { elementType: InfoButton }),
+      size,
+    });
+
+    return renderInfoLabel(styled);
   },
 );
 

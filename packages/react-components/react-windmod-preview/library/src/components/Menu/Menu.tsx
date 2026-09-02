@@ -15,7 +15,9 @@ import type { MenuProps } from './Menu.types';
 export const Menu = (props: MenuProps): JSXElement => {
   const state = useMenu(props);
 
-  return renderMenu(state, useMenuContextValues(state));
+  const contextValues = useMenuContextValues(state);
+
+  return renderMenu(state, contextValues);
 };
 
 Menu.displayName = 'Menu';

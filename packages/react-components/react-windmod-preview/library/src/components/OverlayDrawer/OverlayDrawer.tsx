@@ -20,7 +20,10 @@ export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = React.forw
   ({ size = 'small', ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
-    return renderOverlayDrawer(useOverlayDrawerStyles({ ...useOverlayDrawer(rest, ref), size }), contextValue);
+    const state = useOverlayDrawer(rest, ref);
+    const styled = useOverlayDrawerStyles({ ...state, size });
+
+    return renderOverlayDrawer(styled, contextValue);
   },
 );
 

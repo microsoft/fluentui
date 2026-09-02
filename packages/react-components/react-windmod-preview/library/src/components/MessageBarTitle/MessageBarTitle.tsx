@@ -13,7 +13,10 @@ import { useMessageBarTitleStyles } from './useMessageBarTitleStyles';
  */
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps> = React.forwardRef((props, ref) => {
   // The headless title accepts the wider HTMLElement ref that its span root implies.
-  return renderMessageBarTitle(useMessageBarTitleStyles(useMessageBarTitle(props, ref as React.Ref<HTMLElement>)));
+  const state = useMessageBarTitle(props, ref as React.Ref<HTMLElement>);
+  const styled = useMessageBarTitleStyles(state);
+
+  return renderMessageBarTitle(styled);
 });
 
 MessageBarTitle.displayName = 'MessageBarTitle';

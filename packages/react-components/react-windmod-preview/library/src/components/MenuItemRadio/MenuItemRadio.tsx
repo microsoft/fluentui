@@ -26,10 +26,12 @@ const withCheckmark = (state: MenuItemRadioState): MenuItemRadioState =>
  * It reads MenuItem's context for the reason MenuItemCheckbox does — Griffel's split-group seam
  * reaches a selectable half through `.fui-MenuItem`. See MenuItem.
  */
-export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef((props, ref) =>
-  renderMenuItemRadio(
-    useMenuItemRadioStyles(withCheckmark(useMenuItemRadio(mergeContextProps(useMenuItemContext(), props), ref))),
-  ),
-);
+export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef((props, ref) => {
+  const context = useMenuItemContext();
+  const base = useMenuItemRadio(mergeContextProps(context, props), ref);
+  const styled = useMenuItemRadioStyles(withCheckmark(base));
+
+  return renderMenuItemRadio(styled);
+});
 
 MenuItemRadio.displayName = 'MenuItemRadio';

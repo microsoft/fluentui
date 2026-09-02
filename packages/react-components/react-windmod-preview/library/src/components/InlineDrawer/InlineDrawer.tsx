@@ -20,7 +20,10 @@ export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwar
   ({ size = 'small', separator = false, ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
-    return renderInlineDrawer(useInlineDrawerStyles({ ...useInlineDrawer(rest, ref), size, separator }), contextValue);
+    const state = useInlineDrawer(rest, ref);
+    const styled = useInlineDrawerStyles({ ...state, size, separator });
+
+    return renderInlineDrawer(styled, contextValue);
   },
 );
 
