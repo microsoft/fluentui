@@ -80,7 +80,7 @@
     @apply border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
 
     @variant disabled {
-      @apply border-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
     }
   }
 

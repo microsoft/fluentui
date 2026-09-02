@@ -69,7 +69,7 @@
     /* Keyed off the input's own focus, matching Griffel's sibling selector: the range input is
        the only focusable element in the tree and it always precedes the thumb. */
     @variant peer-focus-visible/fui-color-slider {
-      @apply rounded-circular border-thick border-solid border-stroke-focus-2 outline-thick outline-transparent-stroke outline-solid;
+      @apply border-thick border-stroke-focus-2 outline-thick outline-transparent-stroke outline-solid;
     }
   }
 

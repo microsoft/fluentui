@@ -128,7 +128,7 @@
     }
 
     @variant disabled {
-      @apply border-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
     }
   }
 
@@ -154,7 +154,7 @@
     @apply border-brand-stroke-1 bg-brand-background text-neutral-foreground-on-brand;
 
     @variant hover {
-      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+      @apply bg-brand-background-hover;
 
       & * {
         @variant variant-filled {
@@ -164,7 +164,7 @@
     }
 
     @variant active {
-      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+      @apply bg-brand-background-pressed;
 
       & * {
         @variant variant-filled {
@@ -192,10 +192,6 @@
 
     @variant size-small, size-extra-small {
       @apply pe-horizontal-s-nudge;
-    }
-
-    @variant focus-visible {
-      @apply rounded-se-none rounded-ee-none;
     }
 
     @variant forced-colors {

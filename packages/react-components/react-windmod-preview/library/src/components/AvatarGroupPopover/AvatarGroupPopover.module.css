@@ -53,7 +53,7 @@
     }
 
     @variant focus-visible {
-      @apply border-thick border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-stroke-focus-2 outline-none;
     }
 
     @variant hover {
@@ -73,7 +73,7 @@
     }
 
     @variant focus-visible {
-      @apply border-thick border-solid border-stroke-focus-2 outline-none;
+      @apply border-thick border-stroke-focus-2 outline-none;
     }
   }
 

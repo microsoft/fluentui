@@ -37,7 +37,7 @@
     }
 
     @variant disabled {
-      @apply cursor-not-allowed bg-transparent-background text-neutral-foreground-disabled;
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
 
       @variant placeholder {
         @apply text-neutral-foreground-disabled;

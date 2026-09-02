@@ -21,7 +21,7 @@
     }
 
     @variant focus-visible {
-      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2 outline-solid;
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2;
     }
   }
 
