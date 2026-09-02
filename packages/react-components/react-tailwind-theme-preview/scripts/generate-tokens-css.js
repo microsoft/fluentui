@@ -146,7 +146,7 @@ const SPACING_SCALE = [
 
 /**
  * Fluent's stroke widths — border/outline/divider thickness — joining the SAME `--spacing-*`
- * namespace as SPACING_SCALE, on the same literal-value terms ().
+ * namespace as SPACING_SCALE.
  *
  * THE SPACING NAMESPACE PLUS FOUR WIDTH-NAMESPACE MIRRORS
  * -------------------------------------------------------
@@ -171,8 +171,8 @@ const SPACING_SCALE = [
  * CANONICAL `--stroke-width-*` VALUES STAY LITERAL `calc(<px> * var(--base-scale))` —
  * DELIBERATELY NOT `--spacing`-COUPLED
  * -----------------------------------------------------------------------------------
- * Theming the alias model () rebased the 22 spacing tokens onto the
- * `--spacing` numeric axis; these four are the intentional exception. `--spacing` is the
+ * The 22 spacing tokens are aliases of the `--spacing` numeric axis; these four are the
+ * intentional exception. `--spacing` is the
  * layout DENSITY knob — a subtree that halves it should compress padding and gaps, but
  * borders must NOT thin with it: a 1px hairline is a 1px hairline at any density. Stroke
  * widths therefore keep the raw `--base-scale` form and ignore `--spacing` overrides.
@@ -903,9 +903,9 @@ const NAMESPACES = [
     namespace: 'transition-duration',
     // Durations are the ONE Phase-2a family whose canonical RUNTIME variable
     // (`--duration-fast`) differs from its Tailwind theme key
-    // (`--transition-duration-fast`): the family keeps the shorter custom namespace
-    //, while the theme key must be what the installed
-    // utility registry reads. The registered value `var(--duration-fast)` carries the
+    // (`--transition-duration-fast`): the family keeps the shorter custom namespace, while
+    // the theme key must be what the installed utility registry reads. The registered value
+    // `var(--duration-fast)` carries the
     // canonical reference into `duration-*` utilities verbatim.
     canonicalNamespace: 'duration',
     utility: 'duration-*',
@@ -983,8 +983,7 @@ function readTokens() {
   }
 
   // Every token value must be a var() reference, optionally with a fallback (zIndex*).
-  // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names
-  //.
+  // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names.
   for (const { name, value } of tokens) {
     if (!/^var\(--[A-Za-z][A-Za-z0-9_-]*(?:, ?[^)]+)?\)$/.test(value)) {
       throw new Error(`${TOKENS_SOURCE}: token \`${name}\` has an unexpected value \`${value}\`.`);

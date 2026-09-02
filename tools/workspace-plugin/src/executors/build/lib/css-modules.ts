@@ -1,8 +1,7 @@
 /**
  * Package-build CSS emission for Tailwind-flavoured CSS Modules.
  *
- * Implements + D13:
- * source of truth is `src/**\/*.module.css`; the PACKAGE BUILD compiles it so that
+ * The source of truth is `src/**\/*.module.css`; the PACKAGE BUILD compiles it so that
  * consumers never run Tailwind and never see CSS-Modules syntax.
  *
  * Per package that owns at least one `*.module.css` this emits:
@@ -118,9 +117,10 @@ const globalizeGroupMarkers: (options?: {
 import { type NormalizedOptions } from './shared';
 
 /**
- * D2 amendment 4 — the final `fui.*` layer family. Kept byte-identical to
- * `packages/react-components/react-tailwind-theme/css/index.css` and to the statement every
- * component module repeats after its `@reference`.
+ * The `fui.*` layer family, byte-identical to the statement in
+ * `packages/react-components/react-tailwind-theme-preview/css/index.css` (the spec's
+ * cross-package drift guard enforces it). Component modules declare layer BLOCKS only; this is
+ * the one order statement a component package emits.
  */
 export const CANONICAL_LAYER_STATEMENT =
   '@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;';

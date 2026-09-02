@@ -225,9 +225,8 @@ const FIX =
 /**
  * The decision, separated from the DOM so it can be tested directly.
  *
- * Returns `null` when the setup is correct, or the warning text otherwise. The three inputs map
- * onto the measured matrix (`.scratch/css-splitting/detector-matrix.mjs`, 8 documents served over
- * HTTP against the shipped artifacts):
+ * Returns `null` when the setup is correct, or the warning text otherwise. The verdicts were
+ * measured against the shipped artifacts served over HTTP:
  *
  * | registrations active | first layer reference | verdict |
  * |---|---|---|
