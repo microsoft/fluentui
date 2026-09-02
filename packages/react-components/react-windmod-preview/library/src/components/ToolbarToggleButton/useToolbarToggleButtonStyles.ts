@@ -23,8 +23,10 @@ type ToolbarToggleButtonRootDataAttributes = {
  * ToggleButton's glyph-swap rules select through `group/fui-toggle-button` and Button's icon
  * spacing through `group/fui-button`, so the root must keep both marker pairs alongside its own.
  */
-export const useToolbarToggleButtonStyles = (state: ToolbarToggleButtonState): ToolbarToggleButtonState =>
-  restackOver(state, useToggleButtonStyles(state), {
+export const useToolbarToggleButtonStyles = (state: ToolbarToggleButtonState): ToolbarToggleButtonState => {
+  const styled = useToggleButtonStyles(state);
+
+  return restackOver(state, styled, {
     marker: toolbarToggleButtonClassNames.root,
     root: styles.root,
     icon: styles.icon,
@@ -32,3 +34,4 @@ export const useToolbarToggleButtonStyles = (state: ToolbarToggleButtonState): T
       'data-icon-position': state.icon ? state.iconPosition : undefined,
     } satisfies ToolbarToggleButtonRootDataAttributes,
   });
+};

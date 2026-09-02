@@ -23,20 +23,18 @@ export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> 
     // Look props belong to windmod — the headless hook neither accepts nor resolves them.
     // Defaults mirror @fluentui/react-toolbar's styled useToolbarToggleButton. Only `size` is
     // folded in: the Toolbar publishes no appearance.
-    const {
-      appearance = 'subtle',
-      size = 'medium',
-      ...rest
-    } = mergeContextProps({ size: useToolbarContext(ctx => ctx.size) }, props);
+    const contextSize = useToolbarContext(ctx => ctx.size);
+    const { appearance = 'subtle', size = 'medium', ...rest } = mergeContextProps({ size: contextSize }, props);
 
-    return renderToolbarToggleButton(
-      useToolbarToggleButtonStyles({
-        ...useToolbarToggleButton(rest, ref),
-        appearance,
-        shape: 'rounded',
-        size,
-      }),
-    );
+    const state = useToolbarToggleButton(rest, ref);
+    const styled = useToolbarToggleButtonStyles({
+      ...state,
+      appearance,
+      shape: 'rounded',
+      size,
+    });
+
+    return renderToolbarToggleButton(styled);
   },
 );
 

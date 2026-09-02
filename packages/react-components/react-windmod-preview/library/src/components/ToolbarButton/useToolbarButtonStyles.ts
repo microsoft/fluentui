@@ -23,8 +23,10 @@ type ToolbarButtonRootDataAttributes = {
  *
  * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useToolbarButtonStyles = (state: ToolbarButtonState): ToolbarButtonState =>
-  restackOver(state, useButtonStyles(state), {
+export const useToolbarButtonStyles = (state: ToolbarButtonState): ToolbarButtonState => {
+  const styled = useButtonStyles(state);
+
+  return restackOver(state, styled, {
     marker: toolbarButtonClassNames.root,
     root: styles.root,
     icon: styles.icon,
@@ -32,3 +34,4 @@ export const useToolbarButtonStyles = (state: ToolbarButtonState): ToolbarButton
       'data-icon-position': state.icon ? state.iconPosition : undefined,
     } satisfies ToolbarButtonRootDataAttributes,
   });
+};

@@ -24,21 +24,21 @@ export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps> = 
     // Defaults mirror @fluentui/react-toolbar's styled useToolbarRadioButton, which unlike its
     // toggle sibling has no 'medium' fallback: the context's own default supplies it. Only `size`
     // is folded in — the Toolbar publishes no appearance — and the destructuring default restates
-    // the merged value because `Partial` widens the merged `size` to optional while the context
+    // the context value because `Partial` widens the merged `size` to optional while the context
     // always supplies one.
-    const context = { size: useToolbarContext(ctx => ctx.size) };
-    const { appearance = 'subtle', size = context.size, ...rest } = mergeContextProps(context, props);
+    const contextSize = useToolbarContext(ctx => ctx.size);
+    const { appearance = 'subtle', size = contextSize, ...rest } = mergeContextProps({ size: contextSize }, props);
 
-    return renderToolbarRadioButton(
-      useToolbarRadioButtonStyles({
-        ...useToolbarRadioButton(rest, ref),
-        appearance,
-        shape: 'rounded',
-        size,
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const state = useToolbarRadioButton(rest, ref);
+    const styled = useToolbarRadioButtonStyles({
+      ...state,
+      appearance,
+      shape: 'rounded',
+      size,
+    });
+
+    return renderToolbarRadioButton(styled);
   },
-) as ForwardRefComponent<ToolbarRadioButtonProps>;
+);
 
 ToolbarRadioButton.displayName = 'ToolbarRadioButton';

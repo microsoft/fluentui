@@ -13,8 +13,10 @@ import { useToolbarRadioGroupStyles } from './useToolbarRadioGroupStyles';
  * (Tailwind v4 + CSS Modules).
  */
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = React.forwardRef((props, ref) => {
-  return renderToolbarRadioGroup(useToolbarRadioGroupStyles(useToolbarRadioGroup(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ToolbarRadioGroupProps>;
+  const state = useToolbarRadioGroup(props, ref);
+  const styled = useToolbarRadioGroupStyles(state);
+
+  return renderToolbarRadioGroup(styled);
+});
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';

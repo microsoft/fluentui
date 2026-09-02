@@ -16,16 +16,16 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forw
   // Defaults mirror @fluentui/react-toolbar's styled useToolbarButton, which pins shape and
   // size rather than reading the toolbar's size the way the two toggle buttons do.
   ({ appearance = 'subtle', ...rest }, ref) => {
-    return renderToolbarButton(
-      useToolbarButtonStyles({
-        ...useToolbarButton(rest, ref),
-        appearance,
-        shape: 'rounded',
-        size: 'medium',
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const state = useToolbarButton(rest, ref);
+    const styled = useToolbarButtonStyles({
+      ...state,
+      appearance,
+      shape: 'rounded',
+      size: 'medium',
+    });
+
+    return renderToolbarButton(styled);
   },
-) as ForwardRefComponent<ToolbarButtonProps>;
+);
 
 ToolbarButton.displayName = 'ToolbarButton';

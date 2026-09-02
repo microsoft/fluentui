@@ -12,15 +12,16 @@ import { useToolbarDividerStyles } from './useToolbarDividerStyles';
  * divider decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps> = React.forwardRef((props, ref) => {
+  const state = useToolbarDivider(props, ref);
   // The toolbar fixes all three Divider look props; none reaches the consumer surface.
-  return renderToolbarDivider(
-    useToolbarDividerStyles({
-      ...useToolbarDivider(props, ref),
-      alignContent: 'center',
-      appearance: 'default',
-      inset: false,
-    }),
-  );
+  const styled = useToolbarDividerStyles({
+    ...state,
+    alignContent: 'center',
+    appearance: 'default',
+    inset: false,
+  });
+
+  return renderToolbarDivider(styled);
 });
 
 ToolbarDivider.displayName = 'ToolbarDivider';

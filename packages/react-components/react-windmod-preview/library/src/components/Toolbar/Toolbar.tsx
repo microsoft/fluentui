@@ -19,14 +19,13 @@ export const Toolbar: ForwardRefComponent<ToolbarProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-toolbar's styled useToolbar.
   ({ size = 'medium', ...rest }, ref) => {
+    const state = useToolbar(rest, ref);
     // The headless state omits `size`, so the context values must be built from the state that
     // carries it — otherwise the children read `undefined` and fall back to medium.
-    const styled = useToolbarStyles({
-      ...useToolbar(rest, ref),
-      size,
-    });
+    const styled = useToolbarStyles({ ...state, size });
+    const contextValues = useToolbarContextValues(styled);
 
-    return renderToolbar(styled, useToolbarContextValues(styled));
+    return renderToolbar(styled, contextValues);
   },
 );
 
