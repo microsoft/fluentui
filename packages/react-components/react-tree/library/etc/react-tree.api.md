@@ -34,10 +34,10 @@ import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated (undocumented)
 export const flattenTree_unstable: <Props extends TreeItemProps>(items: FlattenTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
     value: TreeItemValue;
     subtree?: FlattenTreeItem<Props>[];
