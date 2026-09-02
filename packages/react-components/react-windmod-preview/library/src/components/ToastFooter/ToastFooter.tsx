@@ -11,8 +11,11 @@ import { useToastFooterStyles } from './useToastFooterStyles';
  * A ToastFooter holds a toast's actions. Windmod ToastFooter: the headless toast footer decorated
  * with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardRef((props, ref) =>
-  renderToastFooter(useToastFooterStyles(useToastFooter(props, ref))),
-);
+export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardRef((props, ref) => {
+  const state = useToastFooter(props, ref);
+  const styled = useToastFooterStyles(state);
+
+  return renderToastFooter(styled);
+});
 
 ToastFooter.displayName = 'ToastFooter';

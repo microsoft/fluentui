@@ -11,8 +11,11 @@ import { useToastBodyStyles } from './useToastBodyStyles';
  * A ToastBody carries a toast's message. Windmod ToastBody: the headless toast body decorated with
  * the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const ToastBody: ForwardRefComponent<ToastBodyProps> = React.forwardRef((props, ref) =>
-  renderToastBody(useToastBodyStyles(useToastBody(props, ref))),
-);
+export const ToastBody: ForwardRefComponent<ToastBodyProps> = React.forwardRef((props, ref) => {
+  const state = useToastBody(props, ref);
+  const styled = useToastBodyStyles(state);
+
+  return renderToastBody(styled);
+});
 
 ToastBody.displayName = 'ToastBody';

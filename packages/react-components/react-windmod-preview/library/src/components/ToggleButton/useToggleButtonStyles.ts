@@ -23,10 +23,13 @@ type ToggleButtonRootDataAttributes = {
  *
  * The root keeps Button's marker pair alongside its own — see `restackOver`.
  */
-export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState =>
-  restackOver(state, useButtonStyles(state), {
+export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
+  const styled = useButtonStyles(state);
+
+  return restackOver(state, styled, {
     marker: toggleButtonClassNames.root,
     root: styles.root,
     icon: styles.icon,
     rootAttributes: { 'data-accessible': state.isAccessible || undefined } satisfies ToggleButtonRootDataAttributes,
   });
+};
