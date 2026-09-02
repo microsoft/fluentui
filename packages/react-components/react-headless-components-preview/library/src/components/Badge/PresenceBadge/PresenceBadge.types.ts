@@ -19,6 +19,6 @@ export type PresenceBadgeState = PresenceBadgeBaseState & {
     /**
      * Present when out-of-office status is combined with the current presence.
      */
-    'data-out-of-office'?: '';
+    'data-out-of-office'?: string;
   };
 };

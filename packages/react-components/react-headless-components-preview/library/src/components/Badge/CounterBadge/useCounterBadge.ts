@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import { useCounterBadgeBase_unstable } from '@fluentui/react-badge';
 
+import { toDataAttributeValue } from '../../../utils';
 import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
 
 /**
@@ -18,9 +19,9 @@ export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLDiv
     root: {
       ...state.root,
       'data-count': String(state.count),
-      'data-dot': state.dot ? '' : undefined,
-      'data-hidden': !state.root.children && !state.dot ? '' : undefined,
-      'data-overflowed': state.count > overflowCount ? '' : undefined,
+      'data-dot': toDataAttributeValue(state.dot),
+      'data-hidden': toDataAttributeValue(!state.root.children && state.root.children !== 0 && !state.dot),
+      'data-overflowed': toDataAttributeValue(state.count > overflowCount),
     },
   };
 };

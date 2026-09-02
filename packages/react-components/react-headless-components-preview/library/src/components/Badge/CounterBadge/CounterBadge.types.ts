@@ -15,16 +15,16 @@ export type CounterBadgeState = CounterBadgeBaseState & {
     /**
      * Present when the badge renders as a dot.
      */
-    'data-dot'?: '';
+    'data-dot'?: string;
 
     /**
      * Present when the badge has no visible count or dot.
      */
-    'data-hidden'?: '';
+    'data-hidden'?: string;
 
     /**
      * Present when the count exceeds the configured overflow count.
      */
-    'data-overflowed'?: '';
+    'data-overflowed'?: string;
   };
 };

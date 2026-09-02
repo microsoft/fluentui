@@ -26,6 +26,13 @@ describe('CounterBadge', () => {
     expect(screen.getByTestId('counter')).not.toHaveAttribute('data-hidden');
   });
 
+  it('does not hide an explicit zero child', () => {
+    render(<CounterBadge data-testid="counter">{0}</CounterBadge>);
+
+    expect(screen.getByTestId('counter')).toHaveTextContent('0');
+    expect(screen.getByTestId('counter')).not.toHaveAttribute('data-hidden');
+  });
+
   it('renders a dot without count content', () => {
     render(<CounterBadge count={4} dot data-testid="counter" />);
 

@@ -39,9 +39,9 @@ export { CounterBadgeProps }
 export type CounterBadgeState = CounterBadgeBaseState & {
     root: {
         'data-count': string;
-        'data-dot'?: '';
-        'data-hidden'?: '';
-        'data-overflowed'?: '';
+        'data-dot'?: string;
+        'data-hidden'?: string;
+        'data-overflowed'?: string;
     };
 };
 
@@ -54,7 +54,7 @@ export { PresenceBadgeProps }
 export type PresenceBadgeState = PresenceBadgeBaseState & {
     root: {
         'data-status': PresenceBadgeBaseState['status'];
-        'data-out-of-office'?: '';
+        'data-out-of-office'?: string;
     };
 };
 

@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import { usePresenceBadgeBase_unstable } from '@fluentui/react-badge';
 
+import { toDataAttributeValue } from '../../../utils';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 /**
@@ -17,7 +18,7 @@ export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLD
     root: {
       ...state.root,
       'data-status': state.status,
-      'data-out-of-office': state.outOfOffice ? '' : undefined,
+      'data-out-of-office': toDataAttributeValue(state.outOfOffice),
     },
   };
 };

@@ -8,7 +8,7 @@
   border-radius: var(--radius-pill);
   background: var(--brand);
   color: var(--text-on-accent);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .counterBadge[data-dot] {
@@ -19,6 +19,14 @@
 
 .counterBadge[data-hidden] {
   display: none;
+}
+
+.notificationButton {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
 }
 
 .demo {
