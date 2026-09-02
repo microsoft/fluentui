@@ -4,6 +4,12 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Native ESM
 
+> **⚠️ Not a production setup**
+>
+> Everything on this page demonstrates what the packages support, not how you should ship them.
+> **For production, install the packages from npm and bundle them with Webpack, Vite, or rspack.**
+> See [Caveats](#caveats) for why.
+
 Fluent UI v9 packages are `"type": "module"` and publish a dual build — native ESM in `lib/`,
 CommonJS in `lib-commonjs/`. That makes it possible to run them with no bundler and no build step
 at all: straight from a CDN in the browser, or straight from `node_modules` in Node.js.
@@ -202,5 +208,3 @@ These are demonstrations of what the packages support, **not a recommended produ
   [Build time styles](?path=/docs/concepts-developer-build-time-styles--docs).
 - **Manual version management.** Versions are pinned in the import map and must be bumped by hand.
 - **Browser support.** Import maps require a modern browser; there is no graceful degradation.
-
-For production, install the packages from npm and bundle them with Webpack, Vite, or rspack.
