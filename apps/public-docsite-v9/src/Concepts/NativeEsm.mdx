@@ -4,9 +4,14 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Native ESM
 
-Fluent UI v9 packages ship native ES modules, so they can run in a browser directly from a CDN —
-no bundler, no build step, no `node_modules`. This page explains how, and links to a working
-single-file example.
+Fluent UI v9 packages are `"type": "module"` and publish a dual build — native ESM in `lib/`,
+CommonJS in `lib-commonjs/`. That makes it possible to run them with no bundler and no build step
+at all: straight from a CDN in the browser, or straight from `node_modules` in Node.js.
+
+Both examples below are runnable and use `React.createElement` instead of JSX, since JSX is not
+part of the language and cannot be parsed without a compiler.
+
+## In the browser
 
 <a href="examples/native-esm.html" target="_blank" rel="noopener noreferrer">
   Open the example in a new tab
@@ -18,7 +23,7 @@ single-file example.
   style={{ width: '100%', height: '160px', border: '1px solid #d1d1d1', borderRadius: '4px' }}
 />
 
-## Why an import map is needed
+### Why an import map is needed
 
 Every `@fluentui/*` v9 package declares `"type": "module"` and its `lib/` output is plain ESM.
 However, that output imports **bare specifiers**:
@@ -58,7 +63,7 @@ inside the served files, so the import map only needs the entry points:
 
 The `<script type="importmap">` element must appear **before** any module script that relies on it.
 
-## No JSX without a build step
+### No JSX without a build step
 
 JSX is not part of the language, so it cannot be parsed by the browser. Use the factory function
 JSX would have compiled to:
@@ -89,11 +94,100 @@ JSX would have compiled to:
 Styling needs no extra setup: `FluentProvider` creates the Griffel DOM renderer and injects the
 theme's CSS variables, exactly as it does in a bundled app.
 
+## In Node.js
+
+Node needs no import map — it resolves bare specifiers itself, and picks the ESM build through the
+`import` export condition:
+
+```jsonc
+// @fluentui/react-components/package.json
+{
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./lib/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./lib-commonjs/index.cjs" }
+    }
+  }
+}
+```
+
+So a plain `.mjs` file can server-render Fluent UI with nothing but `npm install`:
+
+<a href="examples/native-esm-node.mjs" target="_blank" rel="noopener noreferrer">
+  View the full Node example
+</a>
+
+```js
+// native-esm-node.mjs
+import * as React from 'react';
+import { renderToStaticMarkup, renderToString } from 'react-dom/server';
+import {
+  Button,
+  createDOMRenderer,
+  FluentProvider,
+  RendererProvider,
+  renderToStyleElements,
+  SSRProvider,
+  webLightTheme,
+} from '@fluentui/react-components';
+
+const h = React.createElement;
+const renderer = createDOMRenderer();
+
+const app = h(
+  RendererProvider,
+  { renderer },
+  h(SSRProvider, null, h(FluentProvider, { theme: webLightTheme }, h(Button, { appearance: 'primary' }, 'Click me'))),
+);
+
+const body = renderToString(app);
+const styles = renderToStaticMarkup(h(React.Fragment, null, renderToStyleElements(renderer)));
+```
+
+The provider stack is the same one described in
+[Server-Side Rendering](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs) —
+Griffel collects the styles used during render and `renderToStyleElements` emits them into `<head>`.
+
+### Known gap: `tabster`
+
+`tabster`, a transitive dependency of `@fluentui/react-tabster`, ships an ESM build but has no
+`exports` map, so Node falls back to its CommonJS `main` and the named imports inside
+`@fluentui/react-tabster` fail:
+
+```text
+SyntaxError: Named export 'createTabster' not found. The requested module 'tabster' is a CommonJS module
+```
+
+Until that is fixed upstream, a resolve hook redirecting the specifier to tabster's ESM build works
+around it:
+
+```js
+// tabster-esm-hook.mjs
+import { register } from 'node:module';
+
+const hook = `
+  export function resolve(specifier, context, nextResolve) {
+    return nextResolve(specifier === 'tabster' ? 'tabster/dist/esm/index.js' : specifier, context);
+  }
+`;
+
+register(`data:text/javascript,${encodeURIComponent(hook)}`, import.meta.url);
+```
+
+```sh
+npm install react react-dom @fluentui/react-components
+node --import ./tabster-esm-hook.mjs native-esm-node.mjs > index.html
+```
+
+Bundlers are unaffected — they honor the `module` field that Node ignores.
+
 ## Caveats
 
-This is a demonstration of what the packages support, **not a recommended production setup**:
+These are demonstrations of what the packages support, **not a recommended production setup**:
 
-- **Request waterfall.** Each module is a separate HTTP request, and the dependency graph is deep.
+- **Request waterfall.** In the browser each module is a separate HTTP request, and the dependency
+  graph is deep.
 - **No tree shaking.** Importing from `@fluentui/react-components` pulls in the whole library.
 - **No build-time style optimization.** Griffel resolves styles at runtime on first render; see
   [Build time styles](?path=/docs/concepts-developer-build-time-styles--docs).
