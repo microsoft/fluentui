@@ -101,8 +101,10 @@ CSS class that redeclares the token custom properties.
 
 ### One density knob
 
-`--base-scale: calc(1rem / 16px)` drives spacing, control heights, radii and the whole type ramp. At a
-16px root font size windmod is pixel-identical to Griffel — that is the parity condition.
+`--base-scale: calc(1rem / 16px * var(--fui-scale, 1))` drives spacing, control heights, radii and the
+whole type ramp. At a 16px root font size windmod is pixel-identical to Griffel — that is the parity
+condition. `ScaleRegion` (from `/provider`) multiplies the factor for one subtree; steps are absolute
+and nested regions replace, never compound.
 
 ## Examples
 

@@ -110,7 +110,7 @@ function readCssVar(targetWindow: Window, element: HTMLElement, variableName: st
  *
  * So colour, shadow, radius, ease, duration and font read as usable values
  * (`#242424`, `150ms`, `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`), while text, spacing, stroke
- * and base-scale read as unevaluated `calc()` strings (`calc(14px * calc(1rem / 16px))`) that
+ * and base-scale read as unevaluated `calc()` strings (`calc(14px * calc(1rem / 16px * 1))`) that
  * are invariant under both a theme change and a root font-size change. Leading splits down the
  * middle of the ramp's arithmetic: the finite ratios read as unitless numbers (`1.4`) and the
  * repeating ones as unevaluated division strings (`calc(20 / 14)`) — either way a RATIO, never

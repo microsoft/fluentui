@@ -9,6 +9,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { componentMarkers } from '../../utils/groupMarker';
 import { CssVarInvalidationContext, useCssVarInvalidationScope } from '../../hooks/cssVarInvalidation';
 import { useRootStylesheetCheck } from '../../hooks/rootStylesheetCheck';
+import { ThemeClassContext } from './themeClassContext';
 import type { FluentProviderProps } from './FluentProvider.types';
 
 import styles from './FluentProvider.module.css';
@@ -26,6 +27,10 @@ export const FluentProvider = React.forwardRef<HTMLDivElement, FluentProviderPro
     const parentContext = useProviderContext();
     const resolvedDir = dir ?? parentContext.dir;
     const resolvedClassName = clsx(fluentProviderClassNames.root, theme, styles.root, className);
+    // The subtree's governing theme class: this provider's, or — themeless nested provider —
+    // the enclosing provider's, so ScaleRegion always sees the class that actually themes it.
+    const parentThemeClass = React.useContext(ThemeClassContext);
+    const resolvedThemeClass = theme ?? parentThemeClass;
 
     // The css-var invalidation observer must be installed by a hook on THIS fiber: React
     // attaches host refs in commit order, so the same logic in a child component would run its
@@ -42,7 +47,9 @@ export const FluentProvider = React.forwardRef<HTMLDivElement, FluentProviderPro
     return (
       <Provider dir={resolvedDir} targetDocument={targetDocument}>
         <div ref={mergedRef} {...rest} dir={resolvedDir} className={resolvedClassName}>
-          <CssVarInvalidationContext.Provider value={cssVarScope}>{children}</CssVarInvalidationContext.Provider>
+          <ThemeClassContext.Provider value={resolvedThemeClass}>
+            <CssVarInvalidationContext.Provider value={cssVarScope}>{children}</CssVarInvalidationContext.Provider>
+          </ThemeClassContext.Provider>
         </div>
       </Provider>
     );

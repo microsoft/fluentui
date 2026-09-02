@@ -98,7 +98,7 @@ function TokenReader() {
 
   // ⚠️ Spacing, text, stroke and --base-scale read back as UNEVALUATED calc() strings, because
   // the theme leaves its knobs unregistered. For a resolved length, read a real property.
-  //   useCssVarValue('--text-base-300', ref)  →  'calc(14px * calc(1rem / 16px))'
+  //   useCssVarValue('--text-base-300', ref)  →  'calc(14px * calc(1rem / 16px * 1))'
 
   return (
     <div ref={ref}>

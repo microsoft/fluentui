@@ -481,7 +481,7 @@ Griffel writes literal pixels. windmod puts spacing, control heights, radii and 
 single density knob:
 
 ```css
---base-scale: calc(1rem / 16px);
+--base-scale: calc(1rem / 16px * var(--fui-scale, 1));
 --spacing: calc(1px * var(--base-scale));
 --text-base-300: calc(14px * var(--base-scale));
 ```
@@ -491,9 +491,16 @@ At the default 16px root font size the two libraries are identical — that is t
 text. This is an improvement, but it _is_ a difference: if your app sets a non-16px root font size, expect
 windmod controls to be larger or smaller than the Griffel ones they replace. Keep the root font size at
 16px to keep the two libraries pixel-aligned; `--base-scale` and the scales derived from it are declared at
-the document root, so any override has to go there too, not on a provider or a subtree.
+the document root, so a raw override has to go there too, not on a provider or a subtree.
 
 A handful of literals stay fixed by design where Griffel is also fixed (stroke widths, a few 1px nudges).
+
+**New capability — subtree scaling.** Griffel has no equivalent of scaling one part of a page; windmod
+ships `ScaleRegion` (exported from `/provider`) for exactly that. `<ScaleRegion scale={1.5}>` multiplies
+the ambient base scale for its subtree — spacing, control geometry, strokes, the type ramp, icon glyphs
+and shadow geometry all follow; border radii stay fixed, as under the root font size. The factor is
+absolute (nested regions replace, never compound), the rendered div is `display: contents`, and the region
+must sit inside a themed `FluentProvider`. See the README's ScaleRegion section.
 
 #### 10. Cascade layers replace specificity juggling
 

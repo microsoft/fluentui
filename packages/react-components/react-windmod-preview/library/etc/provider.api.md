@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React_2 from 'react';
 import { renderProvider } from '@fluentui/react-headless-components-preview/provider';
@@ -40,6 +41,14 @@ export type FluentProviderProps = React_2.HTMLAttributes<HTMLDivElement> & {
 export { Provider }
 
 export { renderProvider }
+
+// @public
+export const ScaleRegion: ForwardRefComponent<ScaleRegionProps>;
+
+// @public (undocumented)
+export type ScaleRegionProps = React_2.HTMLAttributes<HTMLDivElement> & {
+    scale?: number;
+};
 
 export { teamsDarkThemeClassName }
 

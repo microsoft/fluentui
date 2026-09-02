@@ -67,6 +67,30 @@ package's `styles.css` is the matching all-in-one for base + all seven themes.
 
 See [MIGRATION.md](./MIGRATION.md#installation-and-imports) for both setups.
 
+## Scaling a subtree — ScaleRegion
+
+```jsx
+import { FluentProvider, ScaleRegion, webDarkThemeClassName } from '@fluentui/react-windmod-preview/provider';
+
+<FluentProvider theme={webDarkThemeClassName}>
+  <ScaleRegion scale={1.5}>{/* everything in here renders half again as large */}</ScaleRegion>
+</FluentProvider>;
+```
+
+`scale` is a **unitless multiplier on the ambient base scale**: spacing, control geometry, stroke
+widths, the type ramp, icon glyphs and shadow geometry all follow it coherently, exactly as the
+whole UI already follows the browser's root font size (a region at `scale={1.5}` in a document
+whose root font size the user bumped 2× renders 3× the design size). It works in both directions —
+`> 1` for a zoomed tutorial highlight, `< 1` for condensed density. Border radii stay fixed by
+design, as they do under the root font size too.
+
+Steps are **absolute**: a nested `ScaleRegion` replaces the ambient factor with its own — factors
+never compound, and a nested region without `scale` resets its subtree to 1. The region renders a
+`display: contents` div, so it adds no box to your layout. It must sit inside a themed
+`FluentProvider` (it re-stamps the provider's theme class; a development-only warning fires
+otherwise). Components that render into the top layer (Menu, Dialog, Tooltip, …) keep the scale —
+top-layer elements stay in the DOM tree for inheritance.
+
 ## Styling contract
 
 - Slot `className` props merge last — your classes win via cascade layers (consumer CSS is

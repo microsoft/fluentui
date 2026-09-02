@@ -505,15 +505,15 @@ Symptom, cause, and where the worked answer is. Every one of these is written ou
 [references/troubleshooting.md](references/troubleshooting.md), which also covers the symptoms that only
 show up in tests.
 
-| Symptom                                        | Cause                                                                                              | Fix                                                                                   |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| a `group-…/fui-x` class does nothing           | the name is in neither catalog, or your Tailwind build was never given the catalogs                | `@import` both catalogs — [setup.md](references/setup.md)                             |
-| everything is the wrong size                   | a non-16px root font size; `--base-scale` is `calc(1rem / 16px)` and the whole UI rides it         | keep `html { font-size: 16px }`, or accept the rescale — never patch it on a provider |
-| overriding a spacing token changes nothing     | Tailwind's `--spacing-*` resolves at compile time, so there is no live `var()` to move             | use `--base-scale` for density, or set the property directly                          |
-| `Tooltip`/`Popover` renders in the page corner | no CSS anchor positioning in that engine, and no fallback anywhere in the positioning layer        | polyfill it, or keep those two on `@fluentui/react-components`                        |
-| an animation stopped working                   | the theme's global `prefers-reduced-motion` floor — unlayered, 1ms, `animation-iteration-count: 1` | it is selector-less, so any rule of yours with a class already outranks it            |
-| a Tailwind class fails the build               | the theme sets Tailwind's own palette, ramp, radii and shadows to `initial`, deliberately          | use a Fluent token — [tokens-and-scale.md](references/tokens-and-scale.md)            |
-| a snapshot broke after migrating               | computed `box-shadow` strings, `aria-modal`, lower-case class names                                | [griffel-deltas.md](references/griffel-deltas.md)                                     |
+| Symptom                                        | Cause                                                                                              | Fix                                                                                                                                |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| a `group-…/fui-x` class does nothing           | the name is in neither catalog, or your Tailwind build was never given the catalogs                | `@import` both catalogs — [setup.md](references/setup.md)                                                                          |
+| everything is the wrong size                   | a non-16px root font size; `--base-scale` rides `calc(1rem / 16px)` and the whole UI follows it    | keep `html { font-size: 16px }`, or accept the rescale — never patch it on a provider (scaling one subtree is `ScaleRegion`'s job) |
+| overriding a spacing token changes nothing     | Tailwind's `--spacing-*` resolves at compile time, so there is no live `var()` to move             | use `--base-scale` for density, or set the property directly                                                                       |
+| `Tooltip`/`Popover` renders in the page corner | no CSS anchor positioning in that engine, and no fallback anywhere in the positioning layer        | polyfill it, or keep those two on `@fluentui/react-components`                                                                     |
+| an animation stopped working                   | the theme's global `prefers-reduced-motion` floor — unlayered, 1ms, `animation-iteration-count: 1` | it is selector-less, so any rule of yours with a class already outranks it                                                         |
+| a Tailwind class fails the build               | the theme sets Tailwind's own palette, ramp, radii and shadows to `initial`, deliberately          | use a Fluent token — [tokens-and-scale.md](references/tokens-and-scale.md)                                                         |
+| a snapshot broke after migrating               | computed `box-shadow` strings, `aria-modal`, lower-case class names                                | [griffel-deltas.md](references/griffel-deltas.md)                                                                                  |
 
 ## Important Notes
 

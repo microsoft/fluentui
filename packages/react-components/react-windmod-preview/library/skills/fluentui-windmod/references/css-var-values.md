@@ -92,7 +92,7 @@ substituted and **`calc()` not evaluated**. Measured over all 472 declared token
 
 So colour, shadow, radius, ease, duration and font read as usable values — `#242424`, `150ms`,
 `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`. Text, spacing, stroke and `--base-scale` read as unevaluated
-strings such as `calc(14px * calc(1rem / 16px))`, invariant under both a theme change and a root
+strings such as `calc(14px * calc(1rem / 16px * 1))`, invariant under both a theme change and a root
 font-size change. Leading splits down the middle of the ramp's arithmetic: the finite ratios read as
 unitless numbers (`1.4`) and the repeating ones as unevaluated division strings (`calc(20 / 14)`) —
 either way a **ratio**, never a length. A length is

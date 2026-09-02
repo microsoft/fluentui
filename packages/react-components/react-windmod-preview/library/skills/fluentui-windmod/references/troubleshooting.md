@@ -151,13 +151,14 @@ sheet.
 
 ## "Everything is the wrong size"
 
-**Cause:** the app sets a non-16px root font size. `--base-scale` is `calc(1rem / 16px)`, and spacing,
-control heights, radii and the whole type ramp ride it — so the entire UI rescales coherently, away from
-Griffel's fixed pixels.
+**Cause:** the app sets a non-16px root font size. `--base-scale` is
+`calc(1rem / 16px * var(--fui-scale, 1))`, and spacing, control heights, radii and the whole type ramp
+ride it — so the entire UI rescales coherently, away from Griffel's fixed pixels.
 
 **Fix:** keep `html { font-size: 16px }` for Griffel parity, or accept the rescale deliberately. Do not
-try to correct it on a provider — `--base-scale` is declared at the **document root** and an override
-has to go there too.
+try to correct it with a raw `--base-scale` override on a provider — the declaration lives at the
+**document root** and an override has to go there too. If the goal is scaling one subtree (not
+correcting the document), that is what the `ScaleRegion` component is for.
 
 ## "Overriding a spacing token changes nothing"
 

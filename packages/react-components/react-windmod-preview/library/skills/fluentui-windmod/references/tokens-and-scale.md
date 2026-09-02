@@ -113,7 +113,7 @@ Two custom utilities the theme adds on top: `fui-focus-outline` and `fui-focus-r
 ## The density knob
 
 ```css
---base-scale: calc(1rem / 16px);
+--base-scale: calc(1rem / 16px * var(--fui-scale, 1));
 --spacing: calc(1px * var(--base-scale));
 --text-base-300: calc(14px * var(--base-scale));
 ```
@@ -126,8 +126,13 @@ on one knob.
 - Change `html { font-size: … }` and the whole windmod UI scales coherently, where Griffel's would only
   move its text. That is an improvement, but it is a **difference**: an app with a non-16px root font
   size will see windmod controls larger or smaller than the Griffel ones they replace.
-- **`--base-scale` and everything derived from it are declared at the document root.** An override has
-  to go there too — setting it on a provider or a subtree does nothing.
+- **`--base-scale` and everything derived from it are declared at the document root.** A raw custom-property
+  override has to go there too — setting `--base-scale` on a provider or a subtree does nothing, because
+  descendants inherit the already-substituted token stream. To scale ONE subtree, use the `ScaleRegion`
+  component (`/provider` export): it stamps the theme package's `.fui-scale-region` class, which is grouped
+  into the `:root, :host` invariant emission so every scale-riding formula re-substitutes at the region, and
+  it sets the region's `--fui-scale` factor from `data-fui-scale` via typed attr(). Factors are absolute —
+  nested regions replace, never compound.
 
 A handful of literals stay fixed by design where Griffel is also fixed: stroke widths (borders must not
 thin with layout density) and a few 1px nudges.

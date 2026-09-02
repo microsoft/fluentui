@@ -162,6 +162,19 @@ value (`data-size`, `data-color`, …).
 Headless already stamps its own state attributes — do not duplicate them. Headless-stamped attrs keep
 the headless library's own `''` spelling; that is theirs, not ours.
 
+### Subtree token knobs: the grouped-selector mechanism
+
+A `:root`-declared token cannot be re-tuned mid-tree by overriding an input variable — descendants
+inherit the already-substituted stream; a formula responds to a local knob only where its declaration
+re-applies. The sanctioned shape (ScaleRegion is the precedent) is theme-owned: the knob's completion
+class is **grouped into the invariant emission's selector** (`:root, :host, .fui-scale-region` — same
+declarations, one more selector, a computed no-op at the root), and the knob value is derived from a
+data attribute on the same element via typed attr() coercion
+(`--fui-scale: attr(data-fui-scale type(<number>), 1)` — the same coercion `data-size` uses, see
+[variant-catalog.md](variant-catalog.md)). Attribute-derived knobs are absolute per element: nested
+regions replace the factor, never compound it. The component stamps the class, the attribute, and the
+ambient theme class (theme-owned formulas re-substitute only where the theme class re-applies).
+
 ## CSS authoring
 
 ### Layers
