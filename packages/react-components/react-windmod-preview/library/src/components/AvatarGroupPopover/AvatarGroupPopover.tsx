@@ -11,7 +11,7 @@ import {
 import { MoreHorizontalRegular } from '@fluentui/react-icons/headless/svg/more-horizontal';
 
 import { PopoverLookProvider } from '../Popover/PopoverContext';
-import { resolvePopoverArrow } from '../Popover/popoverArrow';
+import { resolvePopoverArrow } from '../Popover/popoverOffset';
 import { PopoverSurface } from '../PopoverSurface';
 import { Tooltip } from '../Tooltip';
 import type { AvatarGroupPopoverProps } from './AvatarGroupPopover.types';

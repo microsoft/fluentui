@@ -10,7 +10,7 @@ import {
 
 import type { PopoverProps } from './Popover.types';
 import { PopoverLookProvider } from './PopoverContext';
-import { resolvePopoverArrow } from './popoverArrow';
+import { resolvePopoverArrow } from './popoverOffset';
 
 /**
  * A Popover displays content on top of other content. Windmod Popover: the headless popover
