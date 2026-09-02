@@ -10,7 +10,8 @@ import type { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 import { toolbarRadioButtonClassNames, useToolbarRadioButtonStyles } from './useToolbarRadioButtonStyles';
 
 import buttonStyles from '../Button/Button.module.css';
-import styles from './ToolbarRadioButton.module.css';
+// The radio button owns no stylesheet: its root and icon carry ToolbarToggleButton's classes.
+import styles from '../ToolbarToggleButton/ToolbarToggleButton.module.css';
 
 const iconOf = (root: HTMLElement): HTMLElement => {
   const icon = root.querySelector<HTMLElement>('span');
@@ -31,7 +32,7 @@ describe('ToolbarRadioButton', () => {
     requiredProps: { name: 'a', value: 'x' },
   });
 
-  it('stamps all three marker pairs of the composition', () => {
+  it('stamps all four marker pairs of the composition', () => {
     const { getByTestId } = render(<ToolbarRadioButton data-testid="root" name="a" value="x" />);
 
     const root = getByTestId('root');
@@ -40,6 +41,8 @@ describe('ToolbarRadioButton', () => {
     // every module's hashed `root` collapses to one string under the jest proxy.
     expect(root).toHaveClass('fui-toolbar-radio-button');
     expect(root).toHaveClass('group/fui-toolbar-radio-button');
+    expect(root).toHaveClass('fui-toolbar-toggle-button');
+    expect(root).toHaveClass('group/fui-toolbar-toggle-button');
     expect(root).toHaveClass('fui-toggle-button');
     expect(root).toHaveClass('group/fui-toggle-button');
     expect(root).toHaveClass('fui-button');
@@ -48,7 +51,7 @@ describe('ToolbarRadioButton', () => {
     expect(toolbarRadioButtonClassNames.root).toBe('fui-toolbar-radio-button group/fui-toolbar-radio-button');
   });
 
-  it('carries the root and icon classes of all three stylesheets', () => {
+  it('carries the root and icon classes of the three stylesheets it composes', () => {
     const { getByTestId } = render(<ToolbarRadioButton data-testid="root" name="a" value="x" icon={<Glyph />} />);
 
     const root = getByTestId('root');
