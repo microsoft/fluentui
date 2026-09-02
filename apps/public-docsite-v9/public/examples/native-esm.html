@@ -53,7 +53,8 @@
         return h(
           FluentProvider,
           { theme: webLightTheme, style: { padding: 24 } },
-          h('p', null, `Clicked ${count} ${count === 1 ? 'time' : 'times'}`),
+          // Focus stays on the button, so the count has to announce itself.
+          h('p', { role: 'status' }, `Clicked ${count} ${count === 1 ? 'time' : 'times'}`),
           h(Button, { appearance: 'primary', onClick: () => setCount(c => c + 1) }, 'Click me')
         );
       }

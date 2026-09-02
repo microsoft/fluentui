@@ -88,7 +88,7 @@ JSX would have compiled to:
     return h(
       FluentProvider,
       { theme: webLightTheme },
-      h('p', null, `Clicked ${count} times`),
+      h('p', { role: 'status' }, `Clicked ${count} times`),
       h(Button, { appearance: 'primary', onClick: () => setCount(c => c + 1) }, 'Click me'),
     );
   }
@@ -96,6 +96,11 @@ JSX would have compiled to:
   createRoot(document.getElementById('root')).render(h(App));
 </script>
 ```
+
+The count carries `role="status"` because focus stays on the button when it updates — without a
+live region the new value is never announced. The element is rendered up front and only its text
+changes, which is what makes the announcement fire; see
+[Notification best practices](?path=/docs/concepts-developer-accessibility-notification-best-practices--docs).
 
 Styling needs no extra setup: `FluentProvider` creates the Griffel DOM renderer and injects the
 theme's CSS variables, exactly as it does in a bundled app.
