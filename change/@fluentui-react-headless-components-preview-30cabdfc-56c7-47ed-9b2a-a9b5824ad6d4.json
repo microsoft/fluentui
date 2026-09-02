@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: expose the Avatar and AvatarGroup context readers from the headless entry points",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
