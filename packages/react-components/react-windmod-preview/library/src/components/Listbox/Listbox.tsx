@@ -17,9 +17,12 @@ import { useListboxStyles } from './useListboxStyles';
  * CSS Modules).
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
-  const state = useListboxStyles(useListbox(props, ref));
+  const base = useListbox(props, ref);
+  const state = useListboxStyles(base);
 
-  return renderListbox(state, useListboxContextValues(state));
+  const contextValues = useListboxContextValues(state);
+
+  return renderListbox(state, contextValues);
 });
 
 Listbox.displayName = 'Listbox';

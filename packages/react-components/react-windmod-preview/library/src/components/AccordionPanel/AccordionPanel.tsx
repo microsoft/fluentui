@@ -11,9 +11,11 @@ import { useAccordionPanelStyles } from './useAccordionPanelStyles';
  * An AccordionPanel is the content an AccordionHeader reveals. Windmod AccordionPanel: the
  * headless panel decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const AccordionPanel: ForwardRefComponent<AccordionPanelProps> = React.forwardRef(
-  (props, ref) => renderAccordionPanel(useAccordionPanelStyles(useAccordionPanel(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<AccordionPanelProps>;
+export const AccordionPanel: ForwardRefComponent<AccordionPanelProps> = React.forwardRef((props, ref) => {
+  const state = useAccordionPanel(props, ref);
+  const styled = useAccordionPanelStyles(state);
+
+  return renderAccordionPanel(styled);
+});
 
 AccordionPanel.displayName = 'AccordionPanel';

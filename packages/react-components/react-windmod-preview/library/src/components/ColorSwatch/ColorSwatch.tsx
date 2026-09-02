@@ -30,17 +30,18 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps> = React.forwardR
   // still removes it for disabledIcon={null}. Only a disabled swatch renders the slot at all.
   const disabledIconSlot = slot.optional(props.disabledIcon, { renderByDefault: true, elementType: 'span' });
 
-  return renderColorSwatch(
-    useColorSwatchStyles({
-      ...useColorSwatch(rest, ref),
-      size: sizeProp ?? sizeFromContext ?? 'medium',
-      shape: shapeProp ?? shapeFromContext ?? 'square',
-      disabledIcon: disabledIconSlot && {
-        ...disabledIconSlot,
-        children: disabledIconSlot.children ?? <ProhibitedFilled />,
-      },
-    }),
-  );
+  const state = useColorSwatch(rest, ref);
+  const styled = useColorSwatchStyles({
+    ...state,
+    size: sizeProp ?? sizeFromContext ?? 'medium',
+    shape: shapeProp ?? shapeFromContext ?? 'square',
+    disabledIcon: disabledIconSlot && {
+      ...disabledIconSlot,
+      children: disabledIconSlot.children ?? <ProhibitedFilled />,
+    },
+  });
+
+  return renderColorSwatch(styled);
 });
 
 ColorSwatch.displayName = 'ColorSwatch';

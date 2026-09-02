@@ -20,20 +20,17 @@ export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((pr
   // Only the look half of FieldContext is read here — its aria half is already applied by the
   // headless base hook via useFieldControlProps.
   // The overrides-context appearance fallback stays out: windmod ships no counterpart for it.
-  const {
-    appearance = 'outline',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps({ size: useFieldContext()?.size }, props);
+  const context = useFieldContext();
+  const { appearance = 'outline', size = 'medium', ...rest } = mergeContextProps({ size: context?.size }, props);
 
-  return renderTextarea(
-    useTextareaStyles({
-      ...useTextarea(rest, ref),
-      appearance,
-      size,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TextareaProps>;
+  const state = useTextarea(rest, ref);
+  const styled = useTextareaStyles({
+    ...state,
+    appearance,
+    size,
+  });
+
+  return renderTextarea(styled);
+});
 
 Textarea.displayName = 'Textarea';

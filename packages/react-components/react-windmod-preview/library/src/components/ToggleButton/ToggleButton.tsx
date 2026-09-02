@@ -18,22 +18,18 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
   // Defaults mirror @fluentui/react-button's styled useToggleButton, which inherits the
   // ButtonContext read by composing useButton_unstable (react-button useToggleButton.ts:19). The
   // headless toggle hook carries no look props, so the read has to be made here explicitly.
-  const {
-    appearance = 'secondary',
-    shape = 'rounded',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps(useButtonContext(), props);
+  const context = useButtonContext();
+  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
 
-  return renderToggleButton(
-    useToggleButtonStyles({
-      ...useToggleButton(rest, ref),
-      appearance,
-      shape,
-      size,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ToggleButtonProps>;
+  const state = useToggleButton(rest, ref);
+  const styled = useToggleButtonStyles({
+    ...state,
+    appearance,
+    shape,
+    size,
+  });
+
+  return renderToggleButton(styled);
+});
 
 ToggleButton.displayName = 'ToggleButton';

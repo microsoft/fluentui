@@ -10,7 +10,7 @@ import {
 
 import type { PopoverProps } from './Popover.types';
 import { PopoverLookProvider } from './PopoverContext';
-import { resolvePopoverArrow } from './popoverArrow';
+import { resolvePopoverArrow } from './popoverOffset';
 
 /**
  * A Popover displays content on top of other content. Windmod Popover: the headless popover
@@ -25,7 +25,9 @@ export const Popover = (props: PopoverProps): JSXElement => {
 
   const look = React.useMemo(() => ({ appearance, size }), [appearance, size]);
 
-  return <PopoverLookProvider value={look}>{renderPopover(state, usePopoverContextValues(state))}</PopoverLookProvider>;
+  const contextValues = usePopoverContextValues(state);
+
+  return <PopoverLookProvider value={look}>{renderPopover(state, contextValues)}</PopoverLookProvider>;
 };
 
 Popover.displayName = 'Popover';

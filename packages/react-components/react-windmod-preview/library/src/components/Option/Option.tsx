@@ -31,19 +31,19 @@ export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props,
 
   // The headless surface ships no glyph; windmod restores the Fluent default in a new state
   // object, never on the one the hook returned. Consumer children always win.
-  return renderOption(
-    useOptionStyles(
-      state.checkIcon
-        ? {
-            ...state,
-            checkIcon: {
-              ...state.checkIcon,
-              children: state.checkIcon.children ?? checkGlyph(state.multiselect, state.selected),
-            },
-          }
-        : state,
-    ),
+  const styled = useOptionStyles(
+    state.checkIcon
+      ? {
+          ...state,
+          checkIcon: {
+            ...state.checkIcon,
+            children: state.checkIcon.children ?? checkGlyph(state.multiselect, state.selected),
+          },
+        }
+      : state,
   );
+
+  return renderOption(styled);
 });
 
 Option.displayName = 'Option';

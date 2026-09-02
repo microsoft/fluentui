@@ -13,7 +13,11 @@ import { useToasterStyles } from './useToasterStyles';
  * contract (Tailwind v4 + CSS Modules). It renders no element of its own — the containers carry
  * the whole look.
  */
-export const Toaster: React.FC<ToasterProps> = (props: ToasterProps): JSXElement =>
-  renderToaster(useToasterStyles(useToaster(props)));
+export const Toaster: React.FC<ToasterProps> = (props: ToasterProps): JSXElement => {
+  const state = useToaster(props);
+  const styled = useToasterStyles(state);
+
+  return renderToaster(styled);
+};
 
 Toaster.displayName = 'Toaster';

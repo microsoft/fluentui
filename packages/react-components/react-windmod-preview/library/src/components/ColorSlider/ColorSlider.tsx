@@ -22,13 +22,14 @@ export const ColorSlider: ForwardRefComponent<ColorSliderProps> = React.forwardR
   ({ shape: shapeProp, ...rest }, ref) => {
     const shapeFromContext = useColorPickerContextValue(ctx => ctx.shape);
 
-    return renderColorSlider(
-      useColorSliderStyles({
-        ...useColorSlider(rest, ref),
-        // The trailing fallback, not the context default, is what resolves `shape` — see `ColorArea`.
-        shape: shapeProp ?? shapeFromContext ?? 'rounded',
-      }),
-    );
+    const state = useColorSlider(rest, ref);
+    const styled = useColorSliderStyles({
+      ...state,
+      // The trailing fallback, not the context default, is what resolves `shape` — see `ColorArea`.
+      shape: shapeProp ?? shapeFromContext ?? 'rounded',
+    });
+
+    return renderColorSlider(styled);
   },
 );
 

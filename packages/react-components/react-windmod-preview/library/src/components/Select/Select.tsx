@@ -21,14 +21,12 @@ export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props,
   // the look half of FieldContext is read here — its aria half is already applied by the headless
   // base hook via useFieldControlProps.
   // The overrides-context appearance fallback stays out: windmod ships no counterpart for it.
-  const {
-    appearance = 'outline',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps({ size: useFieldContext()?.size }, props);
+  const context = useFieldContext();
+  const { appearance = 'outline', size = 'medium', ...rest } = mergeContextProps({ size: context?.size }, props);
 
+  const base = useSelect(rest, ref);
   const state: SelectState = {
-    ...useSelect(rest, ref),
+    ...base,
     appearance,
     size,
   };
@@ -41,7 +39,6 @@ export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props,
   );
 
   return renderSelect(styled);
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<SelectProps>;
+});
 
 Select.displayName = 'Select';

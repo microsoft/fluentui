@@ -23,22 +23,20 @@ export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) 
   const contentReservedSpace: typeof content =
     content && typeof content === 'object' ? omit(content, ['ref' as keyof typeof content]) : content;
 
-  return renderTab(
-    useTabAnimatedIndicator(
-      useTabStyles({
-        ...base,
-        appearance,
-        size,
-        // The headless base hook declares this slot but never builds it.
-        contentReservedSpace: slot.optional(contentReservedSpace, {
-          renderByDefault: !base.selected && !base.iconOnly && reserveSelectedTabSpace,
-          defaultProps: { children: props.children },
-          elementType: 'span',
-        }),
-      }),
-    ),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TabProps>;
+  const styled = useTabStyles({
+    ...base,
+    appearance,
+    size,
+    // The headless base hook declares this slot but never builds it.
+    contentReservedSpace: slot.optional(contentReservedSpace, {
+      renderByDefault: !base.selected && !base.iconOnly && reserveSelectedTabSpace,
+      defaultProps: { children: props.children },
+      elementType: 'span',
+    }),
+  });
+  const tabAnimatedIndicator = useTabAnimatedIndicator(styled);
+
+  return renderTab(tabAnimatedIndicator);
+});
 
 Tab.displayName = 'Tab';

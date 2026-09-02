@@ -28,8 +28,9 @@ export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef(
       [max],
     );
 
+    const state = useRating({ children, iconFilled, iconOutline, ...rest }, ref as React.Ref<HTMLDivElement>);
     const styled = useRatingStyles({
-      ...useRating({ children, iconFilled, iconOutline, ...rest }, ref as React.Ref<HTMLDivElement>),
+      ...state,
       color,
       size,
     });
@@ -39,8 +40,7 @@ export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef(
     return (
       <RatingItemContextProvider value={itemContext}>{renderRating(styled, contextValues)}</RatingItemContextProvider>
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<RatingProps>;
+);
 
 Rating.displayName = 'Rating';

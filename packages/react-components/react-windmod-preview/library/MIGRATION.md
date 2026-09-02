@@ -1104,6 +1104,15 @@ Griffel's later Button-outline rule wins and the surface shows through (`rgba(0,
 that value. Take a Griffel measurement of this cell from an isolated harness rather than from a real
 `TeachingPopover` and you will read `rgb(12, 59, 94)` instead, from the same Griffel build.
 
+#### 60. `layout="offset"` keeps the previous button first in the DOM
+
+Griffel's offset footer renders the previous button after the footer's own children, so reading and
+tab order follow the visual order: children, previous, next. The headless footer renders previous,
+children, next in every layout and offers no way to change that order
+([#36684](https://github.com/microsoft/fluentui/issues/36684)). windmod keeps the headless DOM order
+and produces the offset look with CSS `order` on the two buttons: the pixels match Griffel's, but Tab
+and a screen reader reach the previous button **before** the page count rather than after it.
+
 ### Icon slots
 
 #### 57. Fluent icons are the styled contract — a bring-your-own `<svg>` is not restyled

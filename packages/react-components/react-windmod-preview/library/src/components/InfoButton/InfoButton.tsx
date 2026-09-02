@@ -44,33 +44,32 @@ const popoverSizeMap: Record<InfoButtonSize, PopoverSize> = {
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-infolabel's styled useInfoButton.
-  ({ size = 'medium', ...rest }: InfoButtonProps, ref: React.Ref<HTMLButtonElement>) => {
+  ({ size = 'medium', ...rest }, ref) => {
     const state = useInfoButton(rest, ref);
     const Glyph = defaultGlyphs[size];
 
-    return renderInfoButton(
-      useInfoButtonStyles({
-        ...state,
-        // The element type that renders is the slot's own metadata, so a components swap alone is
-        // inert outside development; every swapped slot is re-slotted too, and the components
-        // entry keeps assertSlots warning in development when the two disagree. The already
-        // resolved slot is passed back as the shorthand so nothing is merged a second time.
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-        components: { ...state.components, popover: Popover, info: PopoverSurface },
-        // The slot's props are partial while the component's children are required, so the
-        // element type is widened exactly as the headless hook widens its own.
-        popover: slot.always<Partial<PopoverProps>>(
-          { size: popoverSizeMap[size], ...state.popover },
-          { elementType: Popover as React.FC<Partial<PopoverProps>> },
-        ),
-        info: slot.always({ ...state.info }, { elementType: PopoverSurface }),
-        // The headless surface ships no glyph. Consumer children always win.
-        root: { ...state.root, children: state.root.children ?? <Glyph /> },
-        size,
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const styled = useInfoButtonStyles({
+      ...state,
+      // The element type that renders is the slot's own metadata, so a components swap alone is
+      // inert outside development; every swapped slot is re-slotted too, and the components
+      // entry keeps assertSlots warning in development when the two disagree. The already
+      // resolved slot is passed back as the shorthand so nothing is merged a second time.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+      components: { ...state.components, popover: Popover, info: PopoverSurface },
+      // The slot's props are partial while the component's children are required, so the
+      // element type is widened exactly as the headless hook widens its own.
+      popover: slot.always<Partial<PopoverProps>>(
+        { size: popoverSizeMap[size], ...state.popover },
+        { elementType: Popover as React.FC<Partial<PopoverProps>> },
+      ),
+      info: slot.always({ ...state.info }, { elementType: PopoverSurface }),
+      // The headless surface ships no glyph. Consumer children always win.
+      root: { ...state.root, children: state.root.children ?? <Glyph /> },
+      size,
+    });
+
+    return renderInfoButton(styled);
   },
-) as ForwardRefComponent<InfoButtonProps>;
+);
 
 InfoButton.displayName = 'InfoButton';

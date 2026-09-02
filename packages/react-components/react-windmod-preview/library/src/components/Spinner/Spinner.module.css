@@ -62,6 +62,7 @@
     animation-name: rotate;
     animation-timing-function: linear;
 
+    /* The mask cuts the ring out of a solid disc; the 1px stops give both edges a soft ramp. */
     -webkit-mask-image: radial-gradient(
       closest-side,
       transparent calc(100% - var(--fui-spinner-stroke-width) - 1px),

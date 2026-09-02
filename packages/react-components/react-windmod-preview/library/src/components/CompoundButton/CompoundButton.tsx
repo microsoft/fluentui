@@ -17,22 +17,18 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.fo
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-button's styled useCompoundButton, which reads the same
   // ButtonContext Button does (react-button useCompoundButton.ts:50-51).
-  const {
-    appearance = 'secondary',
-    shape = 'rounded',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps(useButtonContext(), props);
+  const context = useButtonContext();
+  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
 
-  return renderCompoundButton(
-    useCompoundButtonStyles({
-      ...useCompoundButton(rest, ref),
-      appearance,
-      shape,
-      size,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CompoundButtonProps>;
+  const state = useCompoundButton(rest, ref);
+  const styled = useCompoundButtonStyles({
+    ...state,
+    appearance,
+    shape,
+    size,
+  });
+
+  return renderCompoundButton(styled);
+});
 
 CompoundButton.displayName = 'CompoundButton';

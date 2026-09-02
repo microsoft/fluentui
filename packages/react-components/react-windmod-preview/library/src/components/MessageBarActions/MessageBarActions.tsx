@@ -16,10 +16,11 @@ import { useMessageBarActionsStyles } from './useMessageBarActionsStyles';
  * actions region decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps> = React.forwardRef((props, ref) => {
-  return renderMessageBarActions(
-    useMessageBarActionsStyles(useMessageBarActions(props, ref)),
-    useMessageBarActionsContextValues(),
-  );
+  const state = useMessageBarActions(props, ref);
+  const styled = useMessageBarActionsStyles(state);
+  const contextValues = useMessageBarActionsContextValues();
+
+  return renderMessageBarActions(styled, contextValues);
 });
 
 MessageBarActions.displayName = 'MessageBarActions';

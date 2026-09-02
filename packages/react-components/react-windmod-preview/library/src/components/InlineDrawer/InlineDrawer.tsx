@@ -17,12 +17,14 @@ import { useInlineDrawerStyles } from './useInlineDrawerStyles';
  * (Tailwind v4 + CSS Modules).
  */
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwardRef(
-  ({ size = 'small', separator = false, ...rest }: InlineDrawerProps, ref: React.Ref<HTMLElement>) => {
+  ({ size = 'small', separator = false, ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
-    return renderInlineDrawer(useInlineDrawerStyles({ ...useInlineDrawer(rest, ref), size, separator }), contextValue);
+    const state = useInlineDrawer(rest, ref);
+    const styled = useInlineDrawerStyles({ ...state, size, separator });
+
+    return renderInlineDrawer(styled, contextValue);
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<InlineDrawerProps>;
+);
 
 InlineDrawer.displayName = 'InlineDrawer';

@@ -26,7 +26,9 @@ export const useTeachingPopoverCarouselFooterButtonStyles = (
 ): TeachingPopoverCarouselFooterButtonState => {
   const isBrand = state.popoverAppearance === 'brand';
 
-  return restackOver(state, useButtonStyles(state), {
+  const styled = useButtonStyles(state);
+
+  return restackOver(state, styled, {
     marker: teachingPopoverCarouselFooterButtonClassNames.root,
     root: clsx(
       isBrand && state.navType === 'prev' && styles.brandPrevious,

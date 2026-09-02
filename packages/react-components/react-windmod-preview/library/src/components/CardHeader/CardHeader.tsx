@@ -12,8 +12,10 @@ import { useCardHeaderStyles } from './useCardHeaderStyles';
  * headless card header decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const CardHeader: ForwardRefComponent<CardHeaderProps> = React.forwardRef((props, ref) => {
-  return renderCardHeader(useCardHeaderStyles(useCardHeader(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CardHeaderProps>;
+  const state = useCardHeader(props, ref);
+  const styled = useCardHeaderStyles(state);
+
+  return renderCardHeader(styled);
+});
 
 CardHeader.displayName = 'CardHeader';

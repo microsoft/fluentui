@@ -1,5 +1,3 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
 'use client';
 
 import * as React from 'react';
@@ -31,8 +29,8 @@ const renderTeachingPopoverCarouselFooter = renderTeachingPopoverCarouselFooterH
 
 /**
  * The navigation row of a TeachingPopoverCarousel. Windmod TeachingPopoverCarouselFooter: the
- * headless footer with its two buttons re-resolved onto windmod's own, the layout look prop the
- * headless surface omits, and the ordering that look prop drives.
+ * headless footer with its two buttons re-resolved onto windmod's own, plus the layout look prop
+ * the headless surface omits.
  */
 export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps> = React.forwardRef(
   (props, ref) => {
@@ -66,29 +64,11 @@ export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverC
 
     assertSlots<TeachingPopoverCarouselFooterSlots>(state);
 
-    // The offset layout moves the previous button behind the row's own children, which the headless
-    // renderer draws in one fixed order. Composing it into those children is what puts it there in
-    // the DOM, and therefore in reading and tab order too.
-    const rendered: TeachingPopoverCarouselFooterState =
-      layout === 'offset' && state.previous
-        ? {
-            ...state,
-            previous: undefined,
-            root: {
-              ...state.root,
-              children: (
-                <>
-                  {state.root.children}
-                  <state.previous />
-                </>
-              ),
-            },
-          }
-        : state;
-
-    return renderTeachingPopoverCarouselFooter(rendered);
-    // Casting is required due to lack of distributive union to support union on @types/react
+    // The headless renderer draws previous, the row's own children, then next in every layout
+    // (https://github.com/microsoft/fluentui/issues/36684). The offset look is CSS order alone, so
+    // reading and tab order stay in that DOM order — see MIGRATION.md.
+    return renderTeachingPopoverCarouselFooter(state);
   },
-) as ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
+);
 
 TeachingPopoverCarouselFooter.displayName = 'TeachingPopoverCarouselFooter';

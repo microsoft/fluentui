@@ -13,10 +13,12 @@ import { usePopoverSurfaceStyles } from './usePopoverSurfaceStyles';
  * the top layer. Windmod PopoverSurface: the headless surface decorated with the Fluent visual
  * contract (Tailwind v4 + CSS Modules).
  */
-export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef(
-  (props: PopoverSurfaceProps, ref: React.Ref<HTMLDialogElement>) =>
-    renderPopoverSurface(usePopoverSurfaceStyles({ ...usePopoverSurface(props, ref), ...usePopoverLook() })),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<PopoverSurfaceProps>;
+export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef((props, ref) => {
+  const state = usePopoverSurface(props, ref);
+  const context = usePopoverLook();
+  const styled = usePopoverSurfaceStyles({ ...state, ...context });
+
+  return renderPopoverSurface(styled);
+});
 
 PopoverSurface.displayName = 'PopoverSurface';

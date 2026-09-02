@@ -13,9 +13,12 @@ import { useDialogActionsStyles } from './useDialogActionsStyles';
  * props Griffel declares on this same component.
  */
 export const DialogActions: ForwardRefComponent<DialogActionsProps> = React.forwardRef(
-  ({ position = 'end', fluid = false, ...rest }: DialogActionsProps, ref: React.Ref<HTMLDivElement>) =>
-    renderDialogActions(useDialogActionsStyles({ ...useDialogActions(rest, ref), position, fluid })),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DialogActionsProps>;
+  ({ position = 'end', fluid = false, ...rest }, ref) => {
+    const state = useDialogActions(rest, ref);
+    const styled = useDialogActionsStyles({ ...state, position, fluid });
+
+    return renderDialogActions(styled);
+  },
+);
 
 DialogActions.displayName = 'DialogActions';

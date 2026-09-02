@@ -71,8 +71,9 @@ export const Field: ForwardRefComponent<FieldProps> = React.forwardRef((props, r
   // The context needs the two look props the headless state omits; it reads them off `state`,
   // which already carries the resolved orientation and size, so a control sees what the Griffel
   // Field publishes.
-  return renderField(styled, useFieldContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<FieldProps>;
+  const contextValues = useFieldContextValues(state);
+
+  return renderField(styled, contextValues);
+});
 
 Field.displayName = 'Field';

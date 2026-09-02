@@ -12,8 +12,10 @@ import { useRadioStyles } from './useRadioStyles';
  * Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
-  return renderRadio(useRadioStyles(useRadio(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<RadioProps>;
+  const state = useRadio(props, ref);
+  const styled = useRadioStyles(state);
+
+  return renderRadio(styled);
+});
 
 Radio.displayName = 'Radio';

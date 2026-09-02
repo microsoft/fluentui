@@ -12,8 +12,12 @@ import { useMenuTriggerStyles } from './useMenuTriggerStyles';
  * the headless trigger plus the marker pair, so a consumer can compose against the trigger the
  * same way they compose against any windmod component.
  */
-export const MenuTrigger: React.FC<MenuTriggerProps> = (props: MenuTriggerProps): JSXElement | null =>
-  renderMenuTrigger(useMenuTriggerStyles(useMenuTrigger(props)));
+export const MenuTrigger: React.FC<MenuTriggerProps> = (props: MenuTriggerProps): JSXElement | null => {
+  const state = useMenuTrigger(props);
+  const styled = useMenuTriggerStyles(state);
+
+  return renderMenuTrigger(styled);
+};
 
 MenuTrigger.displayName = 'MenuTrigger';
 

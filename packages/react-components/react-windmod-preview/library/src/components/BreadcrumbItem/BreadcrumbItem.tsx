@@ -12,7 +12,10 @@ import { useBreadcrumbItemStyles } from './useBreadcrumbItemStyles';
  * breadcrumb item decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps> = React.forwardRef((props, ref) => {
-  return renderBreadcrumbItem(useBreadcrumbItemStyles(useBreadcrumbItem(props, ref)));
+  const state = useBreadcrumbItem(props, ref);
+  const styled = useBreadcrumbItemStyles(state);
+
+  return renderBreadcrumbItem(styled);
 });
 
 BreadcrumbItem.displayName = 'BreadcrumbItem';

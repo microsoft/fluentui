@@ -11,6 +11,7 @@
       @apply pointer-events-none absolute inset-0 z-10 rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
     }
 
+    /* Underline geometry — see Input.module.css. */
     @variant after {
       @apply absolute inset-x-0 bottom-0 z-20 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
@@ -141,6 +142,9 @@
     }
   }
 
+  /* Absolutely positioned on top of the grid placement, as the reference is. The placement alone
+     lands each button in the same box (the 24px column and 1fr rows are fixed), but a static grid
+     item rasterizes the stepper glyph's antialiased edge one grey level off the reference. */
   .button {
     @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center px-5 text-neutral-foreground-3 outline-none;
 

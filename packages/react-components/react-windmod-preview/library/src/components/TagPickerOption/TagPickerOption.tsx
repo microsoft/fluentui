@@ -15,7 +15,10 @@ import { useTagPickerOptionStyles } from './useTagPickerOptionStyles';
  * whole selection indicator by calling the shared option styles with checkIcon undefined.
  */
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps> = React.forwardRef((props, ref) => {
-  return renderTagPickerOption(useTagPickerOptionStyles(useTagPickerOption(props, ref)));
-}) as ForwardRefComponent<TagPickerOptionProps>;
+  const state = useTagPickerOption(props, ref);
+  const styled = useTagPickerOptionStyles(state);
+
+  return renderTagPickerOption(styled);
+});
 
 TagPickerOption.displayName = 'TagPickerOption';

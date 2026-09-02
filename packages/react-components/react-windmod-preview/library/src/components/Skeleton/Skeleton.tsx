@@ -32,8 +32,9 @@ export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef(
       ...rest
     } = mergeContextProps({ animation: context.animation, appearance: context.appearance }, props);
 
+    const state = useSkeleton(rest, ref as React.Ref<HTMLDivElement>);
     const styled = useSkeletonStyles({
-      ...useSkeleton(rest, ref as React.Ref<HTMLDivElement>),
+      ...state,
       animation,
       appearance,
       size,
@@ -48,8 +49,7 @@ export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef(
         {renderSkeleton(styled, contextValues)}
       </SkeletonContextProvider>
     );
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<SkeletonProps>;
+);
 
 Skeleton.displayName = 'Skeleton';

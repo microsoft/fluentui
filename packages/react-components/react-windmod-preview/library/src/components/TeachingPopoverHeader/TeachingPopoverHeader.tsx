@@ -34,8 +34,9 @@ export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderPro
     appearance,
   };
 
-  return renderTeachingPopoverHeader(useTeachingPopoverHeaderStyles(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TeachingPopoverHeaderProps>;
+  const styled = useTeachingPopoverHeaderStyles(state);
+
+  return renderTeachingPopoverHeader(styled);
+});
 
 TeachingPopoverHeader.displayName = 'TeachingPopoverHeader';

@@ -74,6 +74,6 @@ export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps> = React.fo
   const look = React.useMemo(() => ({ appearance, size }), [appearance, size]);
 
   return <TagGroupContextProvider value={look}>{renderTagPickerGroup(styled, contextValues)}</TagGroupContextProvider>;
-}) as ForwardRefComponent<TagPickerGroupProps>;
+});
 
 TagPickerGroup.displayName = 'TagPickerGroup';

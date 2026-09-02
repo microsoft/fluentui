@@ -16,10 +16,12 @@ import { useAccordionItemStyles } from './useAccordionItemStyles';
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
-  const styled = useAccordionItemStyles(useAccordionItem(props, ref));
+  const state = useAccordionItem(props, ref);
+  const styled = useAccordionItemStyles(state);
 
-  return renderAccordionItem(styled, useAccordionItemContextValues(styled));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<AccordionItemProps>;
+  const contextValues = useAccordionItemContextValues(styled);
+
+  return renderAccordionItem(styled, contextValues);
+});
 
 AccordionItem.displayName = 'AccordionItem';

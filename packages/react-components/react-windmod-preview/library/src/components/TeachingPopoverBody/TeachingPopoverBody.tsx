@@ -15,9 +15,11 @@ import { useTeachingPopoverBodyStyles } from './useTeachingPopoverBodyStyles';
  * TeachingPopoverBody: the headless body decorated with the Fluent visual contract. It takes no
  * look props — mediaLength is already resolved onto the headless state.
  */
-export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps> = React.forwardRef(
-  (props, ref) => renderTeachingPopoverBody(useTeachingPopoverBodyStyles(useTeachingPopoverBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<TeachingPopoverBodyProps>;
+export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps> = React.forwardRef((props, ref) => {
+  const state = useTeachingPopoverBody(props, ref);
+  const styled = useTeachingPopoverBodyStyles(state);
+
+  return renderTeachingPopoverBody(styled);
+});
 
 TeachingPopoverBody.displayName = 'TeachingPopoverBody';

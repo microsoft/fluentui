@@ -17,11 +17,13 @@ import { useTeachingPopoverCarouselStyles } from './useTeachingPopoverCarouselSt
  */
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps> = React.forwardRef(
   (props, ref) => {
-    const styled = useTeachingPopoverCarouselStyles(useTeachingPopoverCarousel(props, ref));
+    const state = useTeachingPopoverCarousel(props, ref);
+    const styled = useTeachingPopoverCarouselStyles(state);
 
-    return renderTeachingPopoverCarousel(styled, useTeachingPopoverCarouselContextValues(styled));
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const contextValues = useTeachingPopoverCarouselContextValues(styled);
+
+    return renderTeachingPopoverCarousel(styled, contextValues);
   },
-) as ForwardRefComponent<TeachingPopoverCarouselProps>;
+);
 
 TeachingPopoverCarousel.displayName = 'TeachingPopoverCarousel';

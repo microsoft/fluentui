@@ -15,9 +15,12 @@ import { useDrawerHeaderNavigationStyles } from './useDrawerHeaderNavigationStyl
  * (Tailwind v4 + CSS Modules).
  */
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef(
-  (props: DrawerHeaderNavigationProps, ref: React.Ref<HTMLElement>) =>
-    renderDrawerHeaderNavigation(useDrawerHeaderNavigationStyles(useDrawerHeaderNavigation(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<DrawerHeaderNavigationProps>;
+  (props, ref) => {
+    const state = useDrawerHeaderNavigation(props, ref);
+    const styled = useDrawerHeaderNavigationStyles(state);
+
+    return renderDrawerHeaderNavigation(styled);
+  },
+);
 
 DrawerHeaderNavigation.displayName = 'DrawerHeaderNavigation';

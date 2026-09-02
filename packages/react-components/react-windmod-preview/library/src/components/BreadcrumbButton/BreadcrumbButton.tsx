@@ -21,15 +21,15 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
   // shape and takes size from the breadcrumb, so a size prop on the button is not accepted.
   const { size } = useBreadcrumbContext();
 
-  return renderBreadcrumbButton(
-    useBreadcrumbButtonStyles({
-      ...useBreadcrumbButton(props, ref),
-      appearance: 'subtle',
-      shape: 'rounded',
-      size,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<BreadcrumbButtonProps>;
+  const state = useBreadcrumbButton(props, ref);
+  const styled = useBreadcrumbButtonStyles({
+    ...state,
+    appearance: 'subtle',
+    shape: 'rounded',
+    size,
+  });
+
+  return renderBreadcrumbButton(styled);
+});
 
 BreadcrumbButton.displayName = 'BreadcrumbButton';

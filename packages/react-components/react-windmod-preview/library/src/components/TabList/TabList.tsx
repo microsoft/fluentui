@@ -18,8 +18,9 @@ import { useTabListStyles } from './useTabListStyles';
  */
 export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef(
   ({ appearance = 'transparent', reserveSelectedTabSpace = true, size = 'medium', ...rest }, ref) => {
+    const state = useTabList(rest, ref as React.Ref<HTMLElement>);
     const styled = useTabListStyles({
-      ...useTabList(rest, ref as React.Ref<HTMLElement>),
+      ...state,
       appearance,
       reserveSelectedTabSpace,
       size,
@@ -34,8 +35,7 @@ export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef(
     );
 
     return <TabListContextProvider value={tabContext}>{renderTabList(styled, contextValues)}</TabListContextProvider>;
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<TabListProps>;
+);
 
 TabList.displayName = 'TabList';

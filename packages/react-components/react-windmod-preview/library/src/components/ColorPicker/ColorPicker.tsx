@@ -22,13 +22,16 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps> = React.forwardR
   ({ shape, ...rest }, ref) => {
     // The headless state omits the look prop, so the context values must be built from the state
     // that carries it — otherwise the controls read `undefined` even when a shape was set.
+    const base = useColorPicker(rest, ref);
     const state: ColorPickerState = {
-      ...useColorPicker(rest, ref),
+      ...base,
       shape,
     };
     const contextValues = useColorPickerContextValues(state);
 
-    return renderColorPicker(useColorPickerStyles(state), contextValues);
+    const styled = useColorPickerStyles(state);
+
+    return renderColorPicker(styled, contextValues);
   },
 );
 

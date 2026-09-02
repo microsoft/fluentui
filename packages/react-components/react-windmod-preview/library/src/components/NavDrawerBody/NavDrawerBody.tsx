@@ -11,10 +11,11 @@ import { useNavDrawerBodyStyles } from './useNavDrawerBodyStyles';
  * A NavDrawerBody holds a nav drawer's scrollable list of destinations. Windmod NavDrawerBody: the
  * headless part decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps> = React.forwardRef(
-  (props: NavDrawerBodyProps, ref: React.Ref<HTMLDivElement>) =>
-    renderNavDrawerBody(useNavDrawerBodyStyles(useNavDrawerBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerBodyProps>;
+export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps> = React.forwardRef((props, ref) => {
+  const state = useNavDrawerBody(props, ref);
+  const styled = useNavDrawerBodyStyles(state);
+
+  return renderNavDrawerBody(styled);
+});
 
 NavDrawerBody.displayName = 'NavDrawerBody';

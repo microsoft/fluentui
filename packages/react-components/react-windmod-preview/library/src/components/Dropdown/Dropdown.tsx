@@ -28,11 +28,8 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
   // mirror @fluentui/react-combobox's styled useDropdown, including its Field-context size fallback.
   // Only the look half of FieldContext is read here — its aria half is already applied by the
   // headless base hook via useFieldControlProps, so folding the whole value in would double-apply it.
-  const {
-    appearance = 'outline',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps({ size: useFieldContext()?.size }, props);
+  const context = useFieldContext();
+  const { appearance = 'outline', size = 'medium', ...rest } = mergeContextProps({ size: context?.size }, props);
 
   // The five values react-combobox's useComboboxPositioning supplies that the headless layer both
   // drops and still honours, restored verbatim with the consumer spread last — see Combobox.tsx,
@@ -73,8 +70,10 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
     },
   };
 
-  return renderDropdown(useDropdownStyles(state), useDropdownContextValues(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<DropdownProps>;
+  const styled = useDropdownStyles(state);
+  const contextValues = useDropdownContextValues(state);
+
+  return renderDropdown(styled, contextValues);
+});
 
 Dropdown.displayName = 'Dropdown';

@@ -17,12 +17,14 @@ import { useOverlayDrawerStyles } from './useOverlayDrawerStyles';
  * with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = React.forwardRef(
-  ({ size = 'small', ...rest }: OverlayDrawerProps, ref: React.Ref<HTMLDialogElement>) => {
+  ({ size = 'small', ...rest }, ref) => {
     const contextValue = useDrawerContextValue();
 
-    return renderOverlayDrawer(useOverlayDrawerStyles({ ...useOverlayDrawer(rest, ref), size }), contextValue);
+    const state = useOverlayDrawer(rest, ref);
+    const styled = useOverlayDrawerStyles({ ...state, size });
+
+    return renderOverlayDrawer(styled, contextValue);
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<OverlayDrawerProps>;
+);
 
 OverlayDrawer.displayName = 'OverlayDrawer';

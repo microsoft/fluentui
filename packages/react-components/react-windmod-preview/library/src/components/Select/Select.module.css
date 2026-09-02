@@ -10,6 +10,8 @@
   .root {
     @apply relative flex flex-nowrap items-center font-base;
 
+    /* The gradient paints the bottom half of a radius-tall box for the reason Input's clip trims
+       one — see Input.module.css. */
     @variant after {
       @apply absolute inset-x-0 bottom-0 h-(--radius-medium) rounded-b-medium;
 

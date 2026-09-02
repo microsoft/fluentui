@@ -36,8 +36,9 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-checkbox's styled useCheckbox.
   ({ shape = 'square', size = 'medium', ...rest }, ref) => {
+    const base = useCheckbox(rest, ref);
     const state: CheckboxState = {
-      ...useCheckbox(rest, ref),
+      ...base,
       shape,
       size,
     };
@@ -58,8 +59,7 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef(
     );
 
     return renderCheckbox(styled);
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<CheckboxProps>;
+);
 
 Checkbox.displayName = 'Checkbox';

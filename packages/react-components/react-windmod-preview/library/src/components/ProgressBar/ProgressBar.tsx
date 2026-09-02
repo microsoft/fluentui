@@ -34,15 +34,15 @@ export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardR
     ...rest
   } = mergeContextProps({ color: contextColor }, props);
 
-  return renderProgressBar(
-    useProgressBarStyles({
-      ...useProgressBar(rest, ref),
-      color,
-      shape,
-      thickness,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ProgressBarProps>;
+  const state = useProgressBar(rest, ref);
+  const styled = useProgressBarStyles({
+    ...state,
+    color,
+    shape,
+    thickness,
+  });
+
+  return renderProgressBar(styled);
+});
 
 ProgressBar.displayName = 'ProgressBar';

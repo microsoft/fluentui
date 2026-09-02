@@ -7,6 +7,9 @@
   .root {
     @apply relative inline-flex min-h-32 flex-nowrap items-center gap-horizontal-xxs rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1 align-middle font-base text-base-300 leading-base-300 font-regular;
 
+    /* The underline box is as tall as the radius so its bottom corners can round, and the clip keeps
+       only the bottom stroke width in paint: a border-bottom on a box that short would flare into two
+       horns at the ends. max() keeps the underline visible when the radius token is 0. */
     @variant after {
       @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 

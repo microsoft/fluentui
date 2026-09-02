@@ -16,7 +16,10 @@ import { useTagPickerOptionGroupStyles } from './useTagPickerOptionGroupStyles';
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps> = React.forwardRef((props, ref) => {
-  return renderTagPickerOptionGroup(useTagPickerOptionGroupStyles(useTagPickerOptionGroup(props, ref)));
-}) as ForwardRefComponent<TagPickerOptionGroupProps>;
+  const state = useTagPickerOptionGroup(props, ref);
+  const styled = useTagPickerOptionGroupStyles(state);
+
+  return renderTagPickerOptionGroup(styled);
+});
 
 TagPickerOptionGroup.displayName = 'TagPickerOptionGroup';

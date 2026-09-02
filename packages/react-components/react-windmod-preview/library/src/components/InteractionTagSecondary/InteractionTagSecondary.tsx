@@ -32,9 +32,10 @@ export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondar
       size,
     };
 
-    return renderInteractionTagSecondary(useInteractionTagSecondaryStyles(state));
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const styled = useInteractionTagSecondaryStyles(state);
+
+    return renderInteractionTagSecondary(styled);
   },
-) as ForwardRefComponent<InteractionTagSecondaryProps>;
+);
 
 InteractionTagSecondary.displayName = 'InteractionTagSecondary';

@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderMenuItemCheckbox, useMenuItemCheckbox } from '@fluentui/react-headless-components-preview/menu';
 import { Checkmark16Filled } from '@fluentui/react-icons/headless/svg/checkmark';
@@ -32,14 +31,12 @@ const withCheckmark = (state: MenuItemCheckboxState): MenuItemCheckboxState =>
  * `.fui-MenuItem`, which this row's shared MenuItem styles put on its root, so a selectable half
  * takes the seam there — and takes it here only if it reads the channel. See MenuItem.
  */
-export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef(
-  (props: MenuItemCheckboxProps, ref: React.Ref<ARIAButtonElement<'div'>>) =>
-    renderMenuItemCheckbox(
-      useMenuItemCheckboxStyles(
-        withCheckmark(useMenuItemCheckbox(mergeContextProps(useMenuItemContext(), props), ref)),
-      ),
-    ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuItemCheckboxProps>;
+export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef((props, ref) => {
+  const context = useMenuItemContext();
+  const base = useMenuItemCheckbox(mergeContextProps(context, props), ref);
+  const styled = useMenuItemCheckboxStyles(withCheckmark(base));
+
+  return renderMenuItemCheckbox(styled);
+});
 
 MenuItemCheckbox.displayName = 'MenuItemCheckbox';

@@ -21,12 +21,13 @@ import { useSwatchPickerRowStyles } from './useSwatchPickerRowStyles';
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps> = React.forwardRef((props, ref) => {
   const spacing = useSwatchPickerContextValue(ctx => ctx.spacing) ?? 'medium';
 
-  return renderSwatchPickerRow(
-    useSwatchPickerRowStyles({
-      ...useSwatchPickerRow(props, ref),
-      spacing,
-    }),
-  );
+  const state = useSwatchPickerRow(props, ref);
+  const styled = useSwatchPickerRowStyles({
+    ...state,
+    spacing,
+  });
+
+  return renderSwatchPickerRow(styled);
 });
 
 SwatchPickerRow.displayName = 'SwatchPickerRow';

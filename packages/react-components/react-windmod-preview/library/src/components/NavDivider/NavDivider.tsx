@@ -13,14 +13,15 @@ import { useNavDividerStyles } from './useNavDividerStyles';
  */
 export const NavDivider: ForwardRefComponent<NavDividerProps> = React.forwardRef((props, ref) => {
   // The nav fixes all three Divider look props; none reaches the consumer surface.
-  return renderNavDivider(
-    useNavDividerStyles({
-      ...useNavDivider(props, ref as React.Ref<HTMLDivElement>),
-      alignContent: 'center',
-      appearance: 'strong',
-      inset: false,
-    }),
-  );
+  const state = useNavDivider(props, ref as React.Ref<HTMLDivElement>);
+  const styled = useNavDividerStyles({
+    ...state,
+    alignContent: 'center',
+    appearance: 'strong',
+    inset: false,
+  });
+
+  return renderNavDivider(styled);
 });
 
 NavDivider.displayName = 'NavDivider';

@@ -28,27 +28,25 @@ A styled component is: headless hook + local look-props + styles hook + headless
 
 ```tsx
 export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
-  const {
-    appearance = 'secondary',
-    shape = 'rounded',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps(useButtonContext(), props);
+  const context = useButtonContext();
+  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = mergeContextProps(context, props);
+  const state = useButton(rest, ref);
+  const styled = useButtonStyles({ ...state, appearance, shape, size });
 
-  return renderButton(
-    useButtonStyles({
-      ...useButton(rest, ref),
-      appearance,
-      shape,
-      size,
-    }),
-  );
-}) as ForwardRefComponent<ButtonProps>;
+  return renderButton(styled);
+});
 ```
 
 Look props (`appearance`/`shape`/`size`/…) live in the windmod layer with defaults matching Griffel's.
 Everything else passes through to the headless hook untouched. Context is merged **before**
 destructuring, so a container supplies the default while an explicit prop still wins.
+
+Every hook call is its own statement-level `const`, in call order — `context`, `state`, `styled`,
+`contextValues` — never nested inside an object literal or a call argument. Hooks are ordered
+effects under the rules of hooks, and that unconditional order has to be readable as a sequence of
+statements rather than reconstructed from an expression tree. The `ForwardRefComponent<Props>`
+annotation on the const types both parameters and the emitted declaration on its own; no trailing
+cast and no inline parameter annotations.
 
 ## Re-slotting one component into another
 
@@ -506,7 +504,12 @@ Copy `Button.module.css`. Two constraints:
 
 - **Component shape**: a value used exactly once earns no intermediate const — destructure `props`
   directly in the parameter list when the body never references `props` itself, and pass the state object
-  literal inline into the styles hook. A value used twice or more stays a named const.
+  literal inline into the styles hook. A value used twice or more stays a named const. **Hook calls are
+  the named exception**: a hook's result is always a top-of-body const, even when used once, and a hook
+  call never sits inside an object literal or a call argument (`useXStyles({ ...useX(rest, ref) })`,
+  `renderX(useXStyles(state))`, `mergeContextProps(useXContext(), props)` are all the banned shape). The
+  names are fixed — `state` for the headless hook, `styled` for the styles hook, `contextValues` for the
+  context-values hook, `context` for a context read; `base` when a derived `state` object follows.
 - Match the existing files exactly: import order, `type Props`, forwardRef pattern, and the **family
   barrel** (`src/<family>.ts` re-exports the windmod component plus the headless building blocks for
   that family). `library/src/index.ts` stays `export {}` — there is no root barrel.

@@ -34,16 +34,17 @@ export const Tooltip = (props: TooltipProps): JSXElement => {
 
   const resolved = resolvePositioningShorthand(positioning);
 
-  return renderTooltip(
-    useTooltipStyles({
-      ...useTooltip({
-        ...rest,
-        withArrow,
-        positioning: { ...resolved, offset: tooltipOffset(resolved.offset, withArrow) },
-      }),
-      appearance,
-    }),
-  );
+  const state = useTooltip({
+    ...rest,
+    withArrow,
+    positioning: { ...resolved, offset: tooltipOffset(resolved.offset, withArrow) },
+  });
+  const styled = useTooltipStyles({
+    ...state,
+    appearance,
+  });
+
+  return renderTooltip(styled);
 };
 
 Tooltip.displayName = 'Tooltip';

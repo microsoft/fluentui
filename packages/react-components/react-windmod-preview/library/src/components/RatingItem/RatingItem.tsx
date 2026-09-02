@@ -16,17 +16,18 @@ import { useRatingItemStyles } from './useRatingItemStyles';
 export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef(
   // The context is read in the body, so the look props cannot default in the parameter list.
   (props, ref) => {
-    const { color = 'neutral', size = 'medium', ...rest } = mergeContextProps(useRatingItemContext(), props);
+    const context = useRatingItemContext();
+    const { color = 'neutral', size = 'medium', ...rest } = mergeContextProps(context, props);
 
-    return renderRatingItem(
-      useRatingItemStyles({
-        ...useRatingItem(rest, ref as React.Ref<HTMLSpanElement>),
-        color,
-        size,
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const state = useRatingItem(rest, ref as React.Ref<HTMLSpanElement>);
+    const styled = useRatingItemStyles({
+      ...state,
+      color,
+      size,
+    });
+
+    return renderRatingItem(styled);
   },
-) as ForwardRefComponent<RatingItemProps>;
+);
 
 RatingItem.displayName = 'RatingItem';

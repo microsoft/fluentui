@@ -20,20 +20,17 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
   // look half of FieldContext is read here — its aria half is already applied by the headless base
   // hook via useFieldControlProps, so folding the whole value in would double-apply it.
   // The overrides-context appearance fallback stays out: windmod ships no counterpart for it.
-  const {
-    appearance = 'outline',
-    size = 'medium',
-    ...rest
-  } = mergeContextProps({ size: useFieldContext()?.size }, props);
+  const context = useFieldContext();
+  const { appearance = 'outline', size = 'medium', ...rest } = mergeContextProps({ size: context?.size }, props);
 
-  return renderInput(
-    useInputStyles({
-      ...useInput(rest, ref),
-      appearance,
-      size,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<InputProps>;
+  const state = useInput(rest, ref);
+  const styled = useInputStyles({
+    ...state,
+    appearance,
+    size,
+  });
+
+  return renderInput(styled);
+});
 
 Input.displayName = 'Input';

@@ -33,7 +33,9 @@ export const MessageBar: ForwardRefComponent<MessageBarProps> = React.forwardRef
     const styled = useMessageBarStyles({ ...base, icon, shape });
 
     // renderMessageBar reads the context off its second argument and throws without one.
-    return renderMessageBar(styled, useMessageBarContextValues(styled));
+    const contextValues = useMessageBarContextValues(styled);
+
+    return renderMessageBar(styled, contextValues);
   },
 );
 

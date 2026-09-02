@@ -41,11 +41,9 @@ export const TeachingPopover = (props: TeachingPopoverProps): JSXElement => {
 
   const look = React.useMemo(() => ({ appearance, size }), [appearance, size]);
 
-  return (
-    <PopoverLookProvider value={look}>
-      {renderTeachingPopover(state, useTeachingPopoverContextValues(state))}
-    </PopoverLookProvider>
-  );
+  const contextValues = useTeachingPopoverContextValues(state);
+
+  return <PopoverLookProvider value={look}>{renderTeachingPopover(state, contextValues)}</PopoverLookProvider>;
 };
 
 TeachingPopover.displayName = 'TeachingPopover';

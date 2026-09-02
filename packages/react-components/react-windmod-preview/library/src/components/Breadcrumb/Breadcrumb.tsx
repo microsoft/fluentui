@@ -21,9 +21,12 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = React.forwardRef
   ({ size = 'medium', ...rest }, ref) => {
     // The headless state omits `size`, so the context values must be built from the state that
     // carries it — otherwise the children read `undefined` instead of the breadcrumb's size.
-    const styled = useBreadcrumbStyles({ ...useBreadcrumb(rest, ref), size });
+    const state = useBreadcrumb(rest, ref);
+    const styled = useBreadcrumbStyles({ ...state, size });
 
-    return renderBreadcrumb(styled, useBreadcrumbContextValues(styled));
+    const contextValues = useBreadcrumbContextValues(styled);
+
+    return renderBreadcrumb(styled, contextValues);
   },
 );
 

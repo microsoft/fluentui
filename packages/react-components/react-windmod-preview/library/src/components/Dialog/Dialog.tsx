@@ -14,7 +14,9 @@ import type { DialogProps } from './Dialog.types';
 export const Dialog: React.FC<DialogProps> = (props: DialogProps): JSXElement => {
   const state = useDialog(props);
 
-  return renderDialog(state, useDialogContextValues(state));
+  const contextValues = useDialogContextValues(state);
+
+  return renderDialog(state, contextValues);
 };
 
 Dialog.displayName = 'Dialog';

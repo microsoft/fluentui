@@ -19,7 +19,7 @@ import { useNavDrawerStyles } from './useNavDrawerStyles';
  * development-time slot assertion, so both have to be moved for a production build to be styled.
  */
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef(
-  ({ density = 'medium', ...rest }: NavDrawerProps, ref: React.Ref<HTMLElement>) => {
+  ({ density = 'medium', ...rest }, ref) => {
     const headless = useNavDrawer(rest, ref);
     const styled = useNavDrawerStyles({
       ...headless,
@@ -34,7 +34,6 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef(
 
     return renderNavDrawer(styled, { ...contextValues, nav: { ...contextValues.nav, density } });
   },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<NavDrawerProps>;
+);
 
 NavDrawer.displayName = 'NavDrawer';

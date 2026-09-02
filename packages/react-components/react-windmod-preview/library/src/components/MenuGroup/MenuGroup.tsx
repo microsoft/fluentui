@@ -15,13 +15,13 @@ import { useMenuGroupStyles } from './useMenuGroupStyles';
  * A MenuGroup clusters related menu items under an optional header. Windmod MenuGroup: the
  * headless group decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
-export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef(
-  (props: MenuGroupProps, ref: React.Ref<HTMLElement>) => {
-    const state = useMenuGroupStyles(useMenuGroup(props, ref));
+export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef((props, ref) => {
+  const base = useMenuGroup(props, ref);
+  const state = useMenuGroupStyles(base);
 
-    return renderMenuGroup(state, useMenuGroupContextValues(state));
-  },
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<MenuGroupProps>;
+  const contextValues = useMenuGroupContextValues(state);
+
+  return renderMenuGroup(state, contextValues);
+});
 
 MenuGroup.displayName = 'MenuGroup';

@@ -16,13 +16,13 @@ export const NavSubItem: ForwardRefComponent<NavSubItemProps> = React.forwardRef
   // at all; the default is Griffel's own, spelled per-component as Griffel spells it.
   const { density = 'medium' } = useNavContext();
 
-  return renderNavSubItem(
-    useNavSubItemStyles({
-      ...useNavSubItem(props, ref as React.Ref<HTMLButtonElement | HTMLAnchorElement>),
-      density,
-    }),
-  );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<NavSubItemProps>;
+  const state = useNavSubItem(props, ref as React.Ref<HTMLButtonElement | HTMLAnchorElement>);
+  const styled = useNavSubItemStyles({
+    ...state,
+    density,
+  });
+
+  return renderNavSubItem(styled);
+});
 
 NavSubItem.displayName = 'NavSubItem';

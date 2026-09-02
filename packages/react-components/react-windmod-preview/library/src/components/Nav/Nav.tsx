@@ -15,8 +15,9 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-nav's styled useNav.
   ({ density = 'medium', ...rest }, ref) => {
+    const state = useNav(rest, ref as React.Ref<HTMLDivElement>);
     const styled = useNavStyles({
-      ...useNav(rest, ref as React.Ref<HTMLDivElement>),
+      ...state,
       density,
     });
     const contextValues = useNavContextValues(styled);
@@ -24,8 +25,7 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef(
     // The headless context-values helper writes a literal 'medium' because its state type omits
     // density; overriding it here is the whole mechanism by which a row ever reads 'small'.
     return renderNav(styled, { ...contextValues, nav: { ...contextValues.nav, density } });
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<NavProps>;
+);
 
 Nav.displayName = 'Nav';

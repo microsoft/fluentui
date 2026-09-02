@@ -76,6 +76,9 @@
   .input {
     @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-color-slider-thumb-size) w-full cursor-pointer opacity-0;
 
+    /* vertical-lr stands the native range on end and rtl runs its value axis upward, so the maximum
+       sits at the top; the nested rule is the reference's RTL mirror of that direction, keyed off
+       the root because a :dir(rtl) on the input would read the direction this block sets. */
     @variant group-vertical/fui-color-slider {
       @apply h-full w-(--fui-color-slider-thumb-size);
       writing-mode: vertical-lr;

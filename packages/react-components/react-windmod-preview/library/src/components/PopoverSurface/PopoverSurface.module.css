@@ -111,7 +111,7 @@
     }
   }
 
-  /* 8.484px = 6px × √2 — paired with ARROW_HEIGHTS in Popover.tsx. */
+  /* 8.484px = 6px × √2 — paired with ARROW_HEIGHTS in popoverOffset.ts. */
   .small {
     @apply p-12;
 

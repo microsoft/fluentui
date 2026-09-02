@@ -18,23 +18,22 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them, and it
   // forwards `size` to neither child. Defaults mirror @fluentui/react-infolabel's styled
   // useInfoLabel. `weight` is not destructured: it rides `...rest` into the label slot.
-  ({ size = 'medium', ...rest }: InfoLabelProps, ref: React.Ref<HTMLLabelElement>) => {
+  ({ size = 'medium', ...rest }, ref) => {
     const state = useInfoLabel(rest, ref);
 
-    return renderInfoLabel(
-      useInfoLabelStyles({
-        ...state,
-        // Both slots are re-slotted, not merely swapped in components — see InfoButton.tsx.
-        // `size` first so a consumer's own label/infoButton shorthand still wins.
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
-        components: { ...state.components, label: Label, infoButton: InfoButton },
-        label: slot.always({ size, ...state.label }, { elementType: Label }),
-        infoButton: state.infoButton && slot.always({ size, ...state.infoButton }, { elementType: InfoButton }),
-        size,
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const styled = useInfoLabelStyles({
+      ...state,
+      // Both slots are re-slotted, not merely swapped in components — see InfoButton.tsx.
+      // `size` first so a consumer's own label/infoButton shorthand still wins.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- reading base.components to keep every other slot's element type
+      components: { ...state.components, label: Label, infoButton: InfoButton },
+      label: slot.always({ size, ...state.label }, { elementType: Label }),
+      infoButton: state.infoButton && slot.always({ size, ...state.infoButton }, { elementType: InfoButton }),
+      size,
+    });
+
+    return renderInfoLabel(styled);
   },
-) as ForwardRefComponent<InfoLabelProps>;
+);
 
 InfoLabel.displayName = 'InfoLabel';

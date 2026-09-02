@@ -24,7 +24,9 @@ export const ToastTitle: ForwardRefComponent<ToastTitleProps> = React.forwardRef
     children: base.media.children ?? getIntentIcon(base.intent),
   };
 
-  return renderToastTitle(useToastTitleStyles({ ...base, media }));
+  const styled = useToastTitleStyles({ ...base, media });
+
+  return renderToastTitle(styled);
 });
 
 ToastTitle.displayName = 'ToastTitle';

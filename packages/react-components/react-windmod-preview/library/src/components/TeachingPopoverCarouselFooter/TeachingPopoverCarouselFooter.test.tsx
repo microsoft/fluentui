@@ -131,26 +131,39 @@ describe('TeachingPopoverCarouselFooter', () => {
     expect(buttons[1]).toHaveTextContent('Next');
   });
 
-  it('orders previous before the row’s children when centered and after them when offset', () => {
+  it('keeps the headless DOM order — previous, children, next — in both layouts', () => {
+    // The offset look is CSS order only; a DOM reorder would change reading and tab order.
     const positionOf = (root: HTMLElement) => {
       const children = Array.from(root.children);
-      const previous = children.findIndex(child =>
-        child.classList.contains('fui-teaching-popover-carousel-footer-button'),
-      );
-      const pageCount = children.findIndex(child =>
-        child.classList.contains('fui-teaching-popover-carousel-page-count'),
-      );
+      const isButton = (child: Element) => child.classList.contains('fui-teaching-popover-carousel-footer-button');
 
-      return { previous, pageCount };
+      return {
+        previous: children.findIndex(isButton),
+        pageCount: children.findIndex(child => child.classList.contains('fui-teaching-popover-carousel-page-count')),
+        next: children.length - 1 - [...children].reverse().findIndex(isButton),
+      };
     };
 
-    const centered = positionOf(renderFooter().root);
+    for (const layout of ['centered', 'offset'] as const) {
+      const order = positionOf(renderFooter({ ...defaultFooter, layout }).root);
 
-    expect(centered.previous).toBeLessThan(centered.pageCount);
+      expect(order.previous).toBe(0);
+      expect(order.previous).toBeLessThan(order.pageCount);
+      expect(order.pageCount).toBeLessThan(order.next);
+    }
+  });
 
-    const offset = positionOf(renderFooter({ ...defaultFooter, layout: 'offset' }).root);
+  it('stamps the trailing-order class on both buttons only when offset', () => {
+    for (const button of renderFooter().buttons) {
+      expect(button).not.toHaveClass(styles.offsetButton);
+    }
 
-    expect(offset.pageCount).toBeLessThan(offset.previous);
+    const { buttons } = renderFooter({ ...defaultFooter, layout: 'offset' });
+
+    expect(buttons).toHaveLength(2);
+    for (const button of buttons) {
+      expect(button).toHaveClass(styles.offsetButton);
+    }
   });
 
   it('keeps a consumer className exactly once', () => {

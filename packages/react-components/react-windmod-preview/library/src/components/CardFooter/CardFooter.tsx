@@ -12,8 +12,10 @@ import { useCardFooterStyles } from './useCardFooterStyles';
  * footer decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef((props, ref) => {
-  return renderCardFooter(useCardFooterStyles(useCardFooter(props, ref)));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<CardFooterProps>;
+  const state = useCardFooter(props, ref);
+  const styled = useCardFooterStyles(state);
+
+  return renderCardFooter(styled);
+});
 
 CardFooter.displayName = 'CardFooter';

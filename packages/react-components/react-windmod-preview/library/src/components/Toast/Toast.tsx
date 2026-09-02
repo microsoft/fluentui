@@ -14,7 +14,12 @@ import { useToastStyles } from './useToastStyles';
 export const Toast: ForwardRefComponent<ToastProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them. There is
   // no default: an absent appearance is the normal surface.
-  ({ appearance, ...rest }, ref) => renderToast(useToastStyles({ ...useToast(rest, ref), appearance })),
+  ({ appearance, ...rest }, ref) => {
+    const state = useToast(rest, ref);
+    const styled = useToastStyles({ ...state, appearance });
+
+    return renderToast(styled);
+  },
 );
 
 Toast.displayName = 'Toast';

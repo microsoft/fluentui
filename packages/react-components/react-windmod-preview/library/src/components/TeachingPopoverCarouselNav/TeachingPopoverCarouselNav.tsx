@@ -15,9 +15,12 @@ import { useTeachingPopoverCarouselNavStyles } from './useTeachingPopoverCarouse
  * decorated with the Fluent visual contract (Tailwind v4 + CSS Modules).
  */
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps> = React.forwardRef(
-  (props, ref) =>
-    renderTeachingPopoverCarouselNav(useTeachingPopoverCarouselNavStyles(useTeachingPopoverCarouselNav(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<TeachingPopoverCarouselNavProps>;
+  (props, ref) => {
+    const state = useTeachingPopoverCarouselNav(props, ref);
+    const styled = useTeachingPopoverCarouselNavStyles(state);
+
+    return renderTeachingPopoverCarouselNav(styled);
+  },
+);
 
 TeachingPopoverCarouselNav.displayName = 'TeachingPopoverCarouselNav';

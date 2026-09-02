@@ -15,17 +15,17 @@ export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef(
   // Look props belong to windmod — the headless hook neither accepts nor resolves them.
   // Defaults mirror @fluentui/react-badge's styled useBadge.
   ({ appearance = 'filled', color = 'brand', shape = 'circular', size = 'medium', ...rest }, ref) => {
-    return renderBadge(
-      useBadgeStyles({
-        ...useBadge(rest, ref),
-        appearance,
-        color,
-        shape,
-        size,
-      }),
-    );
-    // Casting is required due to lack of distributive union to support union on @types/react
+    const state = useBadge(rest, ref);
+    const styled = useBadgeStyles({
+      ...state,
+      appearance,
+      color,
+      shape,
+      size,
+    });
+
+    return renderBadge(styled);
   },
-) as ForwardRefComponent<BadgeProps>;
+);
 
 Badge.displayName = 'Badge';

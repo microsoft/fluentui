@@ -163,8 +163,8 @@
     }
   }
 
-  /* The RTL flip keys off the root, not the input: a bare :dir(rtl) here would resolve against
-     the very `direction` this block sets. */
+  /* The vertical incantation and its root-keyed RTL flip — see ColorSlider.module.css. Support for
+     sideways-lr is the signal that range inputs honour writing-mode at all. */
   .input {
     @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-slider-thumb-size) w-full cursor-pointer opacity-0;
 
