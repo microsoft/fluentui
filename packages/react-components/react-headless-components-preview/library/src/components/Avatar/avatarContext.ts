@@ -11,5 +11,5 @@
  * The value is look-only (`{ shape, size }`), so nothing in the headless layer consumes it — a
  * styling layer does, which is why it is published rather than used here.
  */
-export { useAvatarContext, AvatarContextProvider } from '@fluentui/react-avatar';
+export { AvatarContextProvider } from '@fluentui/react-avatar';
 export type { AvatarContextValue } from '@fluentui/react-avatar';

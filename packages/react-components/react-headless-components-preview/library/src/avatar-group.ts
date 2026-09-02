@@ -2,6 +2,7 @@ export {
   AvatarGroup,
   renderAvatarGroup,
   useAvatarGroup,
+  useAvatarGroupContext,
   useAvatarGroupContextValues,
   useAvatarGroupContext,
   AvatarGroupProvider,
