@@ -55,7 +55,16 @@ import {
 } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 
-<OverlayDrawer open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)} position="end" size="medium">
+<OverlayDrawer
+  open={isOpen}
+  onOpenChange={(event, data) => {
+    if (!data.open) {
+      handleClose(event);
+    }
+  }}
+  position="end"
+  size="medium"
+>
   <DrawerHeader>
     <DrawerHeaderTitle
       action={<Button appearance="subtle" icon={<DismissRegular />} onClick={handleClose} aria-label="Close" />}
@@ -123,33 +132,38 @@ only when `data.type === 'backdropClick'`.
 | `Medium`         | `"end"`       | `"medium"` |                                               |
 | `Large`          | `"end"`       | `"large"`  |                                               |
 | `LargeFixed`     | `"end"`       | `"large"`  |                                               |
-| `ExtraLarge`     | `"end"`       | `"full"`   |                                               |
+| `ExtraLarge`     | `"end"`       | custom CSS | Preserve the responsive leading margin        |
 | `Custom`         | `"end"`       | custom CSS | `style={{ width: '...' }}` on `OverlayDrawer` |
 | `CustomNear`     | `"start"`     | custom CSS |                                               |
 
+`PanelType.extraLarge` retains a 176px leading margin at the largest v8
+breakpoint, while `size="full"` fills the viewport. Preserve that responsive
+behavior with `makeStyles`, for example by applying
+`width: calc(100vw - 176px)` at the matching breakpoint.
+
 ### IPanelProps → OverlayDrawerProps
 
-| v8                      | v9                                          | Notes                                        |
-| ----------------------- | ------------------------------------------- | -------------------------------------------- |
-| `isOpen`                | `open`                                      |                                              |
-| `onDismiss`             | `onOpenChange`                              | `(ev, data) => data.open === false` on close |
-| `type`                  | `position` + `size`                         | See table above                              |
-| `headerText`            | `<DrawerHeaderTitle>` children              |                                              |
-| `onRenderHeader`        | `<DrawerHeader>` children                   |                                              |
-| `hasCloseButton`        | Button in `DrawerHeaderTitle` `action` slot | See example above                            |
-| `isBlocking`            | `modalType`                                 | The v8 default (`true`) maps to `"modal"`    |
-| `isLightDismiss`        | `onOpenChange` backdrop branch              | Do not change background interactivity       |
-| `onLightDismissClick`   | `data.type === "backdropClick"`             | Preserve callback effects in that branch     |
-| `isHiddenOnDismiss`     | `unmountOnClose={false}`                    | Keeps drawer content mounted while closed    |
-| `onRenderFooterContent` | `<DrawerFooter>` children                   |                                              |
-| `onRenderBody`          | `<DrawerBody>` children                     |                                              |
-| `onRenderNavigation`    | `<DrawerHeaderNavigation>` children         |                                              |
-| `customWidth`           | `style` or `className` on `OverlayDrawer`   |                                              |
-| `styles`                | `className` + `makeStyles`                  |                                              |
-| `theme`                 | `FluentProvider`                            |                                              |
-| `layerProps.hostId`     | `mountNode`                                 | Maps only the portal host behavior           |
-| `focusTrapZoneProps`    | —                                           | Re-evaluate individual focus requirements    |
-| `componentRef`          | `ref`                                       |                                              |
+| v8                      | v9                                          | Notes                                                      |
+| ----------------------- | ------------------------------------------- | ---------------------------------------------------------- |
+| `isOpen`                | `open`                                      |                                                            |
+| `onDismiss`             | `onOpenChange`                              | Invoke the original callback whenever `data.open` is false |
+| `type`                  | `position` + `size`                         | See table above                                            |
+| `headerText`            | `<DrawerHeaderTitle>` children              |                                                            |
+| `onRenderHeader`        | `<DrawerHeader>` children                   |                                                            |
+| `hasCloseButton`        | Button in `DrawerHeaderTitle` `action` slot | See example above                                          |
+| `isBlocking`            | `modalType`                                 | The v8 default (`true`) maps to `"modal"`                  |
+| `isLightDismiss`        | `onOpenChange` backdrop branch              | Do not change background interactivity                     |
+| `onLightDismissClick`   | `data.type === "backdropClick"`             | Preserve callback effects in that branch                   |
+| `isHiddenOnDismiss`     | `unmountOnClose={false}`                    | Keeps drawer content mounted while closed                  |
+| `onRenderFooterContent` | `<DrawerFooter>` children                   |                                                            |
+| `onRenderBody`          | `<DrawerBody>` children                     |                                                            |
+| `onRenderNavigation`    | `<DrawerHeaderNavigation>` children         |                                                            |
+| `customWidth`           | `style` or `className` on `OverlayDrawer`   |                                                            |
+| `styles`                | `className` + `makeStyles`                  |                                                            |
+| `theme`                 | `FluentProvider`                            |                                                            |
+| `layerProps.hostId`     | `mountNode`                                 | Maps only the portal host behavior                         |
+| `focusTrapZoneProps`    | —                                           | Re-evaluate individual focus requirements                  |
+| `componentRef`          | `ref`                                       |                                                            |
 
 | v9 `modalType` | v8 equivalent                                      | Behavior                                   |
 | -------------- | -------------------------------------------------- | ------------------------------------------ |

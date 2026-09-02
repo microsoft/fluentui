@@ -121,11 +121,12 @@ const CustomHeightProgress = () => {
 ### Custom progress rendering
 
 v8 `onRenderProgress` replaced the complete progress-track rendering. v9 does
-not have an equivalent render callback. Use the `root` and `bar` slots when the
-customization still has ProgressBar semantics and structure:
+not have an equivalent render callback. Pass native root attributes directly
+to `ProgressBar`, and use the `bar` slot when the customization still has
+ProgressBar semantics and structure:
 
 ```tsx
-<ProgressBar value={0.5} root={{ 'data-testid': 'upload-progress' }} bar={{ className: styles.customBar }} />
+<ProgressBar value={0.5} data-testid="upload-progress" bar={{ className: styles.customBar }} />
 ```
 
 If the v8 callback replaced the structure or added content around the track,

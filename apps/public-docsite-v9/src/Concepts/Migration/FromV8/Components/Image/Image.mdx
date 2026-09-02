@@ -118,26 +118,18 @@ Below is an example showcasing this:
 
 ```jsx
 import { useState } from 'react';
-import { Image, makeStyles } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'none',
-  },
-});
+import { Image } from '@fluentui/react-components';
 
 const Component = () => {
-  const [isLoaded, setLoaded] = useState(false);
-
-  const styles = useStyles();
+  const [isVisible, setVisible] = useState(true);
 
   return (
     <Image
       src="https://via.placeholder.com/300x300"
       alt="Example image"
-      onLoad={() => setLoaded(true)}
-      onError={() => setLoaded(false)}
-      hidden={!isLoaded}
+      onLoad={() => setVisible(true)}
+      onError={() => setVisible(false)}
+      hidden={!isVisible}
     />
   );
 };

@@ -53,13 +53,14 @@ const MigratedSearch = ({
   onClear,
 }: {
   onEscape: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  onClear: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClear: (event: React.SyntheticEvent<HTMLElement>) => void;
 }) => {
   const [query, setQuery] = React.useState('');
 
   return (
     <SearchBox
       value={query}
+      dismiss={{ onClick: onClear }}
       onChange={(_, data) => setQuery(data.value)}
       onKeyDown={event => {
         if (event.key !== 'Escape') {
@@ -80,9 +81,10 @@ const MigratedSearch = ({
 };
 ```
 
-The dismiss button already calls v9 `onChange` with `data.value === ''`. Its
-event is a `React.MouseEvent<HTMLSpanElement>`, while typed changes use
-`React.ChangeEvent<HTMLInputElement>`.
+Use the `dismiss` slot to preserve the explicit clear-button callback.
+Do not infer a clear action from `onChange` receiving an empty value, because
+ordinary typing also produces an empty value when the user deletes the final
+character.
 
 ### With Field (label + validation)
 
@@ -104,23 +106,23 @@ import { Field, SearchBox } from '@fluentui/react-components';
 | —                   | `"filled-darker"`     |
 | —                   | `"filled-lighter"`    |
 
-| v8 `ISearchBoxProps` | v9 `SearchBoxProps`        | Notes                                                                                        |
-| -------------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
-| `value`              | `value`                    |                                                                                              |
-| `defaultValue`       | `defaultValue`             |                                                                                              |
-| `placeholder`        | `placeholder`              |                                                                                              |
-| `onChange`           | `onChange`                 | Type changed: `(_, data: InputOnChangeData) => void`; dismiss fires with `data.value === ''` |
-| `onSearch`           | —                          | Use native `onKeyDown` checking `event.key === 'Enter'`                                      |
-| `onClear`            | `onChange` with `''`       | Dismiss button calls `onChange` with empty string                                            |
-| `onEscape`           | Native input `onKeyDown`   | Call the app callback first; clear only a non-empty value and honor `preventDefault()`       |
-| `iconProps`          | `contentBefore` slot       | Pass `<SearchRegular />` or custom icon                                                      |
-| `underlined`         | `appearance="underline"`   |                                                                                              |
-| `disableAnimation`   | —                          | Not supported                                                                                |
-| `disabled`           | `disabled`                 |                                                                                              |
-| `className`          | `className`                | Applies to the outer wrapper                                                                 |
-| `styles`             | `className` + `makeStyles` |                                                                                              |
-| `theme`              | —                          | Use `FluentProvider`                                                                         |
-| `componentRef`       | `ref`                      |                                                                                              |
+| v8 `ISearchBoxProps` | v9 `SearchBoxProps`                | Notes                                                                                        |
+| -------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| `value`              | `value`                            |                                                                                              |
+| `defaultValue`       | `defaultValue`                     |                                                                                              |
+| `placeholder`        | `placeholder`                      |                                                                                              |
+| `onChange`           | `onChange`                         | Type changed: `(_, data: InputOnChangeData) => void`; dismiss fires with `data.value === ''` |
+| `onSearch`           | —                                  | Use native `onKeyDown` checking `event.key === 'Enter'`                                      |
+| `onClear`            | `dismiss.onClick` + Escape handler | Preserve explicit clear actions; do not infer from an empty `onChange` value                 |
+| `onEscape`           | Native input `onKeyDown`           | Call the app callback first; clear only a non-empty value and honor `preventDefault()`       |
+| `iconProps`          | `contentBefore` slot               | Pass `<SearchRegular />` or custom icon                                                      |
+| `underlined`         | `appearance="underline"`           |                                                                                              |
+| `disableAnimation`   | —                                  | Not supported                                                                                |
+| `disabled`           | `disabled`                         |                                                                                              |
+| `className`          | `className`                        | Applies to the outer wrapper                                                                 |
+| `styles`             | `className` + `makeStyles`         |                                                                                              |
+| `theme`              | —                                  | Use `FluentProvider`                                                                         |
+| `componentRef`       | `ref`                              |                                                                                              |
 
 ## Accessibility
 

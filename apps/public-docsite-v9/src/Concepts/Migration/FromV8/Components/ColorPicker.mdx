@@ -43,20 +43,34 @@ import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import { AlphaSlider, ColorArea, ColorPicker, ColorSlider, type ColorPickerProps } from '@fluentui/react-color-picker';
 
+type HsvaColor = { h: number; s: number; v: number; a?: number };
+
 export const ColorPickerV9BasicExample = () => {
-  const [color, setColor] = React.useState({ h: 109, s: 1, v: 0.9, a: 1 });
+  const initialColor: HsvaColor = { h: 109, s: 1, v: 0.9, a: 1 };
+  const [color, setColor] = React.useState<HsvaColor>(initialColor);
+  const [hexText, setHexText] = React.useState(() => tinycolor(initialColor).toHex8String());
   const rgb = tinycolor(color).toRgb();
   const hex = tinycolor(color).toHex8String();
 
+  const applyColor = (nextColor: HsvaColor) => {
+    const normalized = { ...nextColor, a: nextColor.a ?? 1 };
+    setColor(normalized);
+    setHexText(tinycolor(normalized).toHex8String());
+  };
+
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
-    setColor({ ...data.color, a: data.color.a ?? 1 });
+    applyColor(data.color);
   };
 
   const updateRgb = (channel: 'r' | 'g' | 'b', value: number) => {
-    setColor(tinycolor({ ...rgb, [channel]: value, a: color.a }).toHsv());
+    applyColor(tinycolor({ ...rgb, [channel]: value, a: color.a }).toHsv());
   };
 
   const updateHex = (value: string) => {
+    setHexText(value);
+    if (!/^#[0-9a-f]{6}([0-9a-f]{2})?$/i.test(value)) {
+      return;
+    }
     const next = tinycolor(value);
     if (next.isValid) {
       setColor(next.toHsv());
@@ -73,7 +87,7 @@ export const ColorPickerV9BasicExample = () => {
 
       <label>
         Hex
-        <input value={hex} onChange={event => updateHex(event.currentTarget.value)} />
+        <input value={hexText} onChange={event => updateHex(event.currentTarget.value)} />
       </label>
       {(['r', 'g', 'b'] as const).map(channel => (
         <label key={channel}>
@@ -95,7 +109,7 @@ export const ColorPickerV9BasicExample = () => {
           max={1}
           step={0.01}
           value={color.a ?? 1}
-          onChange={event => setColor({ ...color, a: Number(event.currentTarget.value) })}
+          onChange={event => applyColor({ ...color, a: Number(event.currentTarget.value) })}
         />
       </label>
 

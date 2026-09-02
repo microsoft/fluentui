@@ -158,21 +158,21 @@ interaction and ARIA requirements.
 
 ### IDialogProps → DialogProps
 
-| v8                              | v9                                          | Notes                                                         |
-| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------- |
-| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`                              |
-| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close                  |
-| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                                     |
-| `dialogContentProps.subText`    | `<DialogContent>` + `aria-describedby`      | Give only the short description an ID when content is complex |
-| `dialogContentProps.type`       | `<DialogTitle>` composition and styling     | Add an explicit close action for `DialogType.close`           |
-| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                                               |
-| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                                               |
-| `modalProps.isBlocking`         | `modalType="modal"` + `onOpenChange` guard  | Reject `data.type === "backdropClick"` when blocking          |
-| `modalProps.layerProps`         | —                                           | Not supported                                                 |
-| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                                               |
-| `styles`                        | `className` + `makeStyles`                  |                                                               |
-| `theme`                         | `FluentProvider`                            |                                                               |
-| External opener                 | `useRestoreFocusTarget()`                   | Prefer `DialogTrigger` when the opener can be a child         |
+| v8                              | v9                                          | Notes                                                          |
+| ------------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
+| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`                               |
+| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close                   |
+| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                                      |
+| `dialogContentProps.subText`    | `<DialogContent>` + `aria-describedby`      | Give only the short description an ID when content is complex  |
+| `dialogContentProps.type`       | `<DialogTitle>` composition and styling     | Add an explicit close action for `DialogType.close`            |
+| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                                                |
+| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                                                |
+| `modalProps.isBlocking`         | `modalType="modal"` + `onOpenChange` guard  | Reject `data.type === "backdropClick"` when blocking           |
+| `modalProps.layerProps.hostId`  | `mountNode` on `<DialogSurface>`            | Resolve the host element; review other `LayerProps` separately |
+| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                                                |
+| `styles`                        | `className` + `makeStyles`                  |                                                                |
+| `theme`                         | `FluentProvider`                            |                                                                |
+| External opener                 | `useRestoreFocusTarget()`                   | Prefer `DialogTrigger` when the opener can be a child          |
 
 ### IModalProps → DialogProps
 

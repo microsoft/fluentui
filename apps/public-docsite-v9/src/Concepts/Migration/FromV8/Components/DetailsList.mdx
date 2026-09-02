@@ -109,7 +109,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 const isInteractiveTarget = (target: EventTarget) =>
-  target instanceof HTMLElement &&
+  target instanceof Element &&
   target.closest('a, button, input, select, textarea, [role="button"], [role="link"]') !== null;
 
 <DataGrid

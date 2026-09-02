@@ -47,12 +47,7 @@ import { DismissRegular } from '@fluentui/react-icons';
   </MessageBarBody>
   <MessageBarActions
     containerAction={
-      <Button
-        appearance="transparent"
-        icon={<DismissRegular />}
-        onClick={() => setVisible(false)}
-        aria-label="Dismiss"
-      />
+      <Button appearance="transparent" icon={<DismissRegular />} onClick={() => setVisible(false)} aria-label="Close" />
     }
   >
     <Button onClick={handleAction}>Retry</Button>
@@ -99,7 +94,7 @@ const [visible, setVisible] = React.useState(true);
 
 {
   visible && (
-    <MessageBar intent="warning">
+    <MessageBar intent="warning" politeness="polite">
       <MessageBarBody>Warning: your session will expire soon.</MessageBarBody>
       <MessageBarActions
         containerAction={
@@ -120,14 +115,14 @@ const [visible, setVisible] = React.useState(true);
 
 ### MessageBarType → intent
 
-| v8 `MessageBarType`            | v9 `intent` | Notes                                      |
-| ------------------------------ | ----------- | ------------------------------------------ |
-| `MessageBarType.info`          | `"info"`    | Default                                    |
-| `MessageBarType.success`       | `"success"` |                                            |
-| `MessageBarType.warning`       | `"warning"` |                                            |
-| `MessageBarType.severeWarning` | `"warning"` | No separate "severe" in v9                 |
-| `MessageBarType.error`         | `"error"`   |                                            |
-| `MessageBarType.blocked`       | `"error"`   | No direct equivalent; use `"error"` intent |
+| v8 `MessageBarType`            | v9 `intent` | Notes                                                          |
+| ------------------------------ | ----------- | -------------------------------------------------------------- |
+| `MessageBarType.info`          | `"info"`    | Default                                                        |
+| `MessageBarType.success`       | `"success"` |                                                                |
+| `MessageBarType.warning`       | `"warning"` | Set `politeness="polite"` to preserve v8 announcement behavior |
+| `MessageBarType.severeWarning` | `"warning"` | Keep the v9 default assertive behavior                         |
+| `MessageBarType.error`         | `"error"`   |                                                                |
+| `MessageBarType.blocked`       | `"error"`   | No direct equivalent; use `"error"` intent                     |
 
 ### IMessageBarProps → MessageBarProps
 

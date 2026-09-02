@@ -154,6 +154,7 @@ For `gapSpace`, pass positioning as an object:
 | `hidden`                    | `open` (inverted)                        | Closed popovers unmount; there is no keep-mounted prop     |
 | `onDismiss`                 | `onOpenChange`                           | `(ev, data) => data.open === false` on close               |
 | `directionalHint`           | `positioning`                            | String or object; see table above                          |
+| `directionalHintFixed`      | `positioning.pinned`                     | Set `pinned: true` to prevent automatic repositioning      |
 | `directionalHintForRTL`     | —                                        | Logical start/end positioning is RTL-aware                 |
 | `gapSpace`                  | `positioning={{ offset: { mainAxis } }}` | Pass positioning as object with `offset`                   |
 | `isBeakVisible`             | `withArrow`                              |                                                            |

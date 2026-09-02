@@ -93,7 +93,7 @@ An equivalent `Input` usage is:
 
 ```tsx
 import * as React from 'react';
-import { makeStyles, Text, Label, Input } from '@fluentui/react-components';
+import { Field, makeStyles, Text, Label, Input } from '@fluentui/react-components';
 import { useId } from '@fluentui/react-utilities';
 
 const useStackStyles = makeStyles({
@@ -119,8 +119,6 @@ const InputV9BasicExample = () => {
   const disabledId = useId('disabled');
   const readonlyId = useId('readonly');
   const requiredId = useId('required');
-  const errorId = useId('error');
-  const errorMessageId = useId('error-message');
 
   return (
     <div className={stackStyles.root}>
@@ -154,11 +152,9 @@ const InputV9BasicExample = () => {
         />
       </div>
 
-      <div>
-        <Label htmlFor={errorId}>With Error Message</Label>
-        <Input id={errorId} aria-describedby={errorMessageId} />
-        <Text id={errorMessageId}>Error message</Text>
-      </div>
+      <Field label="With Error Message" validationState="error" validationMessage="Error message">
+        <Input />
+      </Field>
     </div>
   );
 };
@@ -175,8 +171,8 @@ This table maps v8 `TextField` props to the v9 `Input` equivalent.
 | `multiline`                | n/a                                        | Use `Textarea`                                                                       |
 | `resizable`                | n/a                                        |                                                                                      |
 | `autoAdjustHeight`         | n/a                                        | See `Textarea` docs                                                                  |
-| `underlined`               | `appearance`                               |                                                                                      |
-| `borderless`               | `appearance`                               |                                                                                      |
+| `underlined`               | `appearance="underline"`                   |                                                                                      |
+| `borderless`               | Custom `className` + `makeStyles`          | No v9 appearance is borderless; remove the root border with custom styling           |
 | `label`                    | Use `Label` component                      | Be sure to associate `Label` with `Input` via `htmlFor`                              |
 | `onRenderLabel`            | n/a                                        | Use slots to customize `Input`                                                       |
 | `description`              | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |

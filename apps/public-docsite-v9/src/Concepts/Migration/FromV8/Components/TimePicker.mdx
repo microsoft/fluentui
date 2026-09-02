@@ -38,7 +38,13 @@ added, preserve the app-generated options with `Combobox` and `Option` from
 
 ```tsx
 // v9
-import { TimePicker } from '@fluentui/react-timepicker-compat';
+import * as React from 'react';
+import { TimePicker, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
+
+const [selectedTime, setSelectedTime] = React.useState<Date | null>(new Date(2026, 0, 1, 12, 30));
+const [selectedTimeText, setSelectedTimeText] = React.useState(() =>
+  selectedTime ? formatDateToTimeString(selectedTime, { hourCycle: 'h23' }) : '',
+);
 
 <TimePicker
   freeform
