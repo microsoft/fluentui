@@ -35,7 +35,6 @@ export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps
   };
 
   return renderTeachingPopoverTitle(useTeachingPopoverTitleStyles(state));
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TeachingPopoverTitleProps>;
+});
 
 TeachingPopoverTitle.displayName = 'TeachingPopoverTitle';

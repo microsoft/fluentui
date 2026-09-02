@@ -14,7 +14,6 @@ import { useToastFooterStyles } from './useToastFooterStyles';
 export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardRef(
   (props: ToastFooterProps, ref: React.Ref<HTMLElement>) =>
     renderToastFooter(useToastFooterStyles(useToastFooter(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<ToastFooterProps>;
+);
 
 ToastFooter.displayName = 'ToastFooter';

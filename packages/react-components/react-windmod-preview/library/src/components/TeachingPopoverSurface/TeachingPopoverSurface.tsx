@@ -21,7 +21,6 @@ export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceP
     renderTeachingPopoverSurface(
       useTeachingPopoverSurfaceStyles({ ...useTeachingPopoverSurface(props, ref), ...usePopoverLook() }),
     ),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<TeachingPopoverSurfaceProps>;
+);
 
 TeachingPopoverSurface.displayName = 'TeachingPopoverSurface';

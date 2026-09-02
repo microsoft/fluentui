@@ -33,7 +33,6 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<ToggleButtonProps>;
+});
 
 ToggleButton.displayName = 'ToggleButton';

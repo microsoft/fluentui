@@ -87,8 +87,7 @@ export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverC
         : state;
 
     return renderTeachingPopoverCarouselFooter(rendered);
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
+);
 
 TeachingPopoverCarouselFooter.displayName = 'TeachingPopoverCarouselFooter';

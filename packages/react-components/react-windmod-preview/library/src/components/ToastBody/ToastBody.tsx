@@ -13,7 +13,6 @@ import { useToastBodyStyles } from './useToastBodyStyles';
  */
 export const ToastBody: ForwardRefComponent<ToastBodyProps> = React.forwardRef(
   (props: ToastBodyProps, ref: React.Ref<HTMLElement>) => renderToastBody(useToastBodyStyles(useToastBody(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<ToastBodyProps>;
+);
 
 ToastBody.displayName = 'ToastBody';

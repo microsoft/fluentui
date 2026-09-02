@@ -33,7 +33,6 @@ export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((pr
       size,
     }),
   );
-  // Casting is required due to lack of distributive union to support union on @types/react
-}) as ForwardRefComponent<TextareaProps>;
+});
 
 Textarea.displayName = 'Textarea';

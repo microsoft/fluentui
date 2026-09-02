@@ -20,8 +20,7 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
     const styled = useTeachingPopoverCarouselStyles(useTeachingPopoverCarousel(props, ref));
 
     return renderTeachingPopoverCarousel(styled, useTeachingPopoverCarouselContextValues(styled));
-    // Casting is required due to lack of distributive union to support union on @types/react
   },
-) as ForwardRefComponent<TeachingPopoverCarouselProps>;
+);
 
 TeachingPopoverCarousel.displayName = 'TeachingPopoverCarousel';

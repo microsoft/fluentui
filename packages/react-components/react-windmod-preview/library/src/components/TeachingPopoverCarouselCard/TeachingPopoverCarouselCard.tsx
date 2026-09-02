@@ -17,7 +17,6 @@ import { useTeachingPopoverCarouselCardStyles } from './useTeachingPopoverCarous
 export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps> = React.forwardRef(
   (props, ref) =>
     renderTeachingPopoverCarouselCard(useTeachingPopoverCarouselCardStyles(useTeachingPopoverCarouselCard(props, ref))),
-  // Casting is required due to lack of distributive union to support union on @types/react
-) as ForwardRefComponent<TeachingPopoverCarouselCardProps>;
+);
 
 TeachingPopoverCarouselCard.displayName = 'TeachingPopoverCarouselCard';

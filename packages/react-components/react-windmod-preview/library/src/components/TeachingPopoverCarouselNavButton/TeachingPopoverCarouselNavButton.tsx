@@ -22,7 +22,6 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
     const { appearance } = usePopoverLook();
 
     return renderTeachingPopoverCarouselNavButton(useTeachingPopoverCarouselNavButtonStyles({ ...base, appearance }));
-    // Casting is required due to lack of distributive union to support union on @types/react
-  }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
+  });
 
 TeachingPopoverCarouselNavButton.displayName = 'TeachingPopoverCarouselNavButton';
