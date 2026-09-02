@@ -7,7 +7,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge py-0 font-base text-base-200 leading-base-200 font-semibold;
+    @apply relative inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge font-base text-base-200 leading-base-200 font-semibold;
 
     @variant after {
       @apply absolute inset-0 rounded-[inherit] border-thin border-solid border-inherit;
@@ -189,7 +189,7 @@
   }
 
   .icon {
-    @apply -mx-horizontal-xxs my-0 flex text-icon-12 leading-none;
+    @apply -mx-horizontal-xxs flex text-icon-12 leading-none;
 
     @variant group-not-empty/fui-badge {
       @variant group-icon-before/fui-badge {

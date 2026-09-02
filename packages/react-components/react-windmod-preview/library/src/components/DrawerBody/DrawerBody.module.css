@@ -6,7 +6,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative z-1 flex-1 self-stretch overflow-auto px-horizontal-xxl py-0;
+    @apply relative z-1 flex-1 self-stretch overflow-auto px-horizontal-xxl;
 
     @variant first {
       @apply pt-[calc(var(--spacing-horizontal-xxl)+1px)];

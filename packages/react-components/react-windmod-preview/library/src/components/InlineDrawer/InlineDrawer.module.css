@@ -8,7 +8,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex h-auto max-h-screen w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
+    @apply relative flex h-auto max-h-screen w-(--fui-drawer-size) max-w-[100vw] flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
 
     --fui-drawer-size: 320px;
 

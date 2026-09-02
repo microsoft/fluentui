@@ -2,7 +2,9 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-flex size-28 rounded-none border-thin border-transparent-stroke bg-cover bg-no-repeat p-0 outline-none;
+    /* The border style is the base sheet's `border: 0 solid` reset; only width and colour are
+       authored. border-current in the state blocks: see ColorSwatch.module.css. */
+    @apply inline-flex size-28 border-thin border-transparent-stroke bg-cover bg-no-repeat outline-none;
 
     @variant hover {
       @apply cursor-pointer border-none border-current;

@@ -12,7 +12,7 @@
   }
 
   .heading {
-    @apply col-start-1 col-end-3 row-start-1 row-end-1 m-0 font-base text-base-500 leading-base-500 font-semibold;
+    @apply col-start-1 col-end-3 row-start-1 row-end-1 font-base text-base-500 leading-base-500 font-semibold;
   }
 
   .heading-without-action {

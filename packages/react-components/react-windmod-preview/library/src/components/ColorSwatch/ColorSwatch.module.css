@@ -7,12 +7,14 @@
      hover ones, forced-colors last. Every catalog variant is :where()-flat, so source order is
      the only thing deciding between these blocks. */
   .root {
-    @apply box-border inline-flex size-28 shrink-0 items-center justify-center overflow-hidden rounded-none bg-(--fui-SwatchPicker--color) p-0 outline-none;
+    @apply inline-flex size-28 shrink-0 items-center justify-center overflow-hidden bg-(--fui-SwatchPicker--color) outline-none;
 
     /* --fui-SwatchPicker--color and --fui-SwatchPicker--borderColor are per-instance custom
        properties the headless base hook writes as an inline style. */
     border: var(--stroke-width-thin) solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
 
+    /* border-current beside border-none: the resting colour above must not survive into these
+       states — Griffel's `border: none` shorthand resets it to currentColor. */
     @variant hover {
       @apply cursor-pointer border-none border-current;
 

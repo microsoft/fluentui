@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex h-full items-center rounded-ss-none rounded-se-medium rounded-ee-medium rounded-es-none border-thin border-solid border-transparent-stroke border-s-neutral-stroke-1 bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply flex h-full items-center rounded-ss-none rounded-se-medium rounded-ee-medium rounded-es-none border-thin border-solid border-transparent-stroke border-s-neutral-stroke-1 bg-neutral-background-3 text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 

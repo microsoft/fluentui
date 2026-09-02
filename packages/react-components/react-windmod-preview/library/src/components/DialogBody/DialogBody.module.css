@@ -9,7 +9,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply col-start-1 col-end-4 row-start-2 row-end-2 -m-thick box-border min-h-32 overflow-y-auto p-thick font-base text-base-300 leading-base-300 font-regular;
+    @apply col-start-1 col-end-4 row-start-2 row-end-2 -m-thick min-h-32 overflow-y-auto p-thick font-base text-base-300 leading-base-300 font-regular;
 
     @media screen and (max-height: 359px) {
       @apply overflow-y-visible;

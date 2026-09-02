@@ -5,7 +5,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative z-2 box-border flex w-full max-w-full items-center justify-start gap-x-horizontal-s px-horizontal-xxl pt-vertical-l pb-vertical-xxl;
+    @apply relative z-2 flex w-full max-w-full items-center justify-start gap-x-horizontal-s px-horizontal-xxl pt-vertical-l pb-vertical-xxl;
 
     @variant not-scroll-state-none {
       @variant before {

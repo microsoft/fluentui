@@ -7,7 +7,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply row-start-3 row-end-3 box-border flex h-fit gap-8;
+    @apply row-start-3 row-end-3 flex h-fit gap-8;
 
     @media screen and (max-width: 480px) {
       @apply flex-col;

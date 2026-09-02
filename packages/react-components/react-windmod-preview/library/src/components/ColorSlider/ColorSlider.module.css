@@ -55,7 +55,7 @@
     @apply pointer-events-none absolute start-(--fui-Slider--progress) col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
 
     @variant before {
-      @apply absolute inset-0 box-border rounded-circular border-thick border-solid border-neutral-background-1;
+      @apply absolute inset-0 rounded-circular border-thick border-solid border-neutral-background-1;
     }
 
     @variant rtl {
@@ -74,7 +74,7 @@
   }
 
   .input {
-    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] m-0 h-(--fui-color-slider-thumb-size) w-full cursor-pointer p-0 opacity-0;
+    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-color-slider-thumb-size) w-full cursor-pointer opacity-0;
 
     @variant group-vertical/fui-color-slider {
       @apply h-full w-(--fui-color-slider-thumb-size);
