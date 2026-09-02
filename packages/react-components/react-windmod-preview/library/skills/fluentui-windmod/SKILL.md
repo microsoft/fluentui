@@ -54,7 +54,9 @@ Two audiences, one skill:
   `calc(var(--spacing) * 12)` here. Colour, typography and stroke tokens are still live `var()`
   references and do respond. Use `--base-scale` for density.
 - **NEVER set `--base-scale` on a provider or a subtree** — it and every scale derived from it are
-  declared at the document root. An override has to go there too.
+  declared at the document root, so descendants inherit the already-substituted stream and a
+  mid-tree override is inert. Scaling one subtree is `ScaleRegion`'s job (`/provider` export):
+  `<ScaleRegion scale={1.5}>` — absolute factors, nested regions replace rather than compound.
 - **NEVER hardcode a palette value** — use the kebab-case Fluent theme tokens
   (`var(--color-neutral-foreground-1)`, `bg-neutral-background-1`). The theme drops Tailwind's default
   palette entirely, so a stray `text-red-500` fails the build rather than silently diverging.
