@@ -14,7 +14,7 @@
 
 @layer fui.components.l1 {
   .position {
-    @apply pointer-events-none fixed m-0 w-292 overflow-visible border-none bg-transparent p-0 text-inherit;
+    @apply pointer-events-none fixed w-292 overflow-visible border-none bg-transparent text-inherit;
 
     inset: auto;
     --fui-toaster-offset-inline: 20px;
@@ -60,7 +60,7 @@
     }
 
     & > [role='listitem'] {
-      @apply pointer-events-auto mt-vertical-l box-border rounded-medium;
+      @apply pointer-events-auto mt-vertical-l rounded-medium;
 
       @variant focus-visible {
         @apply outline-thick outline-stroke-focus-2 outline-solid;

@@ -143,7 +143,7 @@
     box-shadow: 0 0 0 calc(var(--fui-slider-thumb-size) * 0.2) var(--color-neutral-background-1) inset;
 
     @variant before {
-      @apply absolute inset-0 box-border rounded-circular;
+      @apply absolute inset-0 rounded-circular;
 
       border: calc(var(--fui-slider-thumb-size) * 0.05) solid var(--color-neutral-stroke-1);
     }
@@ -166,7 +166,7 @@
   /* The RTL flip keys off the root, not the input: a bare :dir(rtl) here would resolve against
      the very `direction` this block sets. */
   .input {
-    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] m-0 h-(--fui-slider-thumb-size) w-full cursor-pointer p-0 opacity-0;
+    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-slider-thumb-size) w-full cursor-pointer opacity-0;
 
     @variant group-disabled/fui-slider {
       @apply cursor-default;

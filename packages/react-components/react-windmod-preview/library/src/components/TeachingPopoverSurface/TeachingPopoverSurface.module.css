@@ -6,6 +6,6 @@
 
 @layer fui.components.l2 {
   .root {
-    @apply box-border min-w-320 rounded-x-large p-vertical-l;
+    @apply min-w-320 rounded-x-large p-vertical-l;
   }
 }

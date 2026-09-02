@@ -18,7 +18,7 @@
   }
 
   .input {
-    @apply absolute start-0 top-0 m-0 box-border h-full w-32 opacity-0;
+    @apply absolute start-0 top-0 h-full w-32 opacity-0;
 
     @variant group-label-below/fui-radio {
       @apply h-32 w-full;
@@ -30,7 +30,7 @@
   }
 
   .indicator {
-    @apply pointer-events-none relative mx-horizontal-s my-vertical-s box-border flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-[calc(20/12)];
+    @apply pointer-events-none relative mx-horizontal-s my-vertical-s flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-[calc(20/12)];
 
     /* Raw pseudo, never Tailwind's `after` variant: the variant injects
        `content: var(--tw-content)`, whose registered initial value renders the dot in every

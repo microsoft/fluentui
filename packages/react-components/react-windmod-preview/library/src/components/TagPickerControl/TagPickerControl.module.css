@@ -14,7 +14,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative box-border flex min-w-250 flex-wrap items-center gap-x-horizontal-xxs rounded-medium ps-horizontal-m;
+    @apply relative flex min-w-250 flex-wrap items-center gap-x-horizontal-xxs rounded-medium ps-horizontal-m;
 
     /* The aside is absolutely positioned over this padding. The custom property is written inline
        by the headless control hook and its name is fixed by that hook, camel segment included. */
@@ -33,7 +33,7 @@
     }
 
     @variant after {
-      @apply absolute -inset-x-1 -bottom-1 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -126,7 +126,7 @@
   }
 
   .expand-icon {
-    @apply box-border flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
+    @apply flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
 
     @variant icon {
       @apply block;

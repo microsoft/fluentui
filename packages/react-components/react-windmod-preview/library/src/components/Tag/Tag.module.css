@@ -11,7 +11,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply box-border inline-grid w-fit items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 p-0 font-[inherit] text-neutral-foreground-2;
+    @apply inline-grid w-fit items-center rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-3 text-neutral-foreground-2;
     appearance: button;
     text-align: unset;
 
@@ -56,10 +56,7 @@
     }
 
     /* A Tag with secondary text gives its primary text a negative margin that covers the
-       top border, so high contrast redraws that edge on a pseudo-element. That edge is a
-       PARTIAL border, so its sides come from per-side width utilities: `border-solid` here
-       would set the style on all four sides and inflate the three unset ones from 0 to the
-       medium initial width. The same holds for `.circular`'s inline sides. */
+       top border, so high contrast redraws that edge on a pseudo-element. */
     @variant forced-colors {
       @apply relative;
 

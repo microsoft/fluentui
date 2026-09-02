@@ -5,16 +5,14 @@
      order alone arbitrates. .filled before .filledInteractive, .invalid after every interactive
      block, .disabled last. */
   .root {
-    @apply relative isolate inline-grid min-h-32 grid-cols-[1fr_calc(var(--spacing)*24)] grid-rows-[1fr_1fr] gap-x-horizontal-xs gap-y-0 rounded-medium bg-neutral-background-1 py-0 ps-horizontal-m-nudge pe-0 align-middle;
+    @apply relative isolate inline-grid min-h-32 grid-cols-[1fr_calc(var(--spacing)*24)] grid-rows-[1fr_1fr] gap-x-horizontal-xs gap-y-0 rounded-medium bg-neutral-background-1 ps-horizontal-m-nudge align-middle;
 
     @variant before {
-      @apply pointer-events-none absolute inset-0 z-10 box-border rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
+      @apply pointer-events-none absolute inset-0 z-10 rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
     }
 
-    /* border-solid is deliberately absent: a lone border-bottom width with an explicit style
-       gives the other three sides a computed width and grows the box. */
     @variant after {
-      @apply absolute inset-x-0 bottom-0 z-20 box-border rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+      @apply absolute inset-x-0 bottom-0 z-20 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
 
       height: max(var(--spacing-thick), var(--radius-medium));
       clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
@@ -128,15 +126,10 @@
   }
 
   .input {
-    @apply col-start-1 col-end-2 row-start-1 row-end-3 w-full border-0 bg-transparent p-0 text-neutral-foreground-1 outline-none;
-
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
+    @apply col-start-1 col-end-2 row-start-1 row-end-3 w-full text-neutral-foreground-1 outline-none;
 
     @variant placeholder {
-      @apply text-neutral-foreground-4 opacity-100;
+      @apply text-neutral-foreground-4;
     }
 
     @variant group-disabled/fui-spin-button {
@@ -149,7 +142,7 @@
   }
 
   .button {
-    @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center rounded-none border-0 bg-transparent px-5 py-0 text-neutral-foreground-3 outline-none;
+    @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center px-5 text-neutral-foreground-3 outline-none;
 
     @variant enabled {
       @variant hover {

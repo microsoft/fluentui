@@ -29,7 +29,7 @@
   }
 
   .input {
-    @apply absolute inset-0 m-0 box-border h-full cursor-pointer opacity-0;
+    @apply absolute inset-0 h-full cursor-pointer opacity-0;
   }
 
   .input-lower-half {

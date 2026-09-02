@@ -33,7 +33,7 @@
 
     /* The height and offset are inherited from the size class on this element. */
     & [data-arrow] {
-      @apply absolute -z-1 box-border size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
+      @apply absolute -z-1 size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
 
       @variant before {
         @apply -m-thin block size-full rounded-bl-small border-thin border-solid border-transparent-stroke bg-inherit;

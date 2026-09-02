@@ -15,7 +15,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none border-current px-horizontal-m-nudge py-vertical-m font-base text-base-300 leading-base-300 normal-case outline-none;
+    @apply relative grid shrink-0 cursor-pointer grid-flow-col grid-cols-[auto] grid-rows-[auto] items-center justify-center gap-x-horizontal-s-nudge overflow-hidden rounded-medium border-none px-horizontal-m-nudge py-vertical-m font-base text-base-300 leading-base-300 normal-case outline-none;
 
     @variant vertical {
       @apply justify-start py-vertical-s-nudge;
