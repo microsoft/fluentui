@@ -36,6 +36,9 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
     ...headless,
     density,
     expandIcon: headless.expandIcon && {
+      // Griffel stamps aria-hidden on the chevron and the headless nav drops it
+      // (https://github.com/microsoft/fluentui/issues/36685); restored ahead of the spread so a
+      // consumer's own value still wins.
       'aria-hidden': true,
       ...headless.expandIcon,
       children: headless.expandIcon.children ?? <ChevronDown20Regular />,
