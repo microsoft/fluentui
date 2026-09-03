@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Link Migration" />
+
+# Link Migration
+
+## Overview
+
+v9 `Link` preserves the basic anchor-or-button behavior, but it is not a
+complete drop-in replacement. In particular, v8's `as` accepts any
+`React.ElementType`, while v9 narrows the root to `"a"`, `"button"`, or
+`"span"`.
+
+- Renders as `<a>` when `href` is provided, as `<button>` otherwise (same as v8)
+- New `appearance="subtle"` removes the brand color for a neutral look
+- Replace v8 `underline` with v9 `inline` for a link alongside text; `inline` adds an underline
+- `disabledFocusable`, used with `disabled`, keeps a disabled link in the tab order
+- No `styles` prop — use `className` + `makeStyles`
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Link } from '@fluentui/react';
+<Link href="/docs">Read the docs</Link>;
+<Link onClick={handleClick}>Click me</Link>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Link } from '@fluentui/react-components';
+<Link href="/docs">Read the docs</Link>;
+<Link onClick={handleClick}>Click me</Link>;
+```
+
+### Inline Text Link
+
+When a link appears inside a sentence, replace v8 `underline` with v9 `inline`
+to keep the underline visible:
+
+```tsx
+// v9
+<p>
+  See the{' '}
+  <Link href="/docs" inline>
+    documentation
+  </Link>{' '}
+  for details.
+</p>
+```
+
+`inline` changes the underline treatment; it does not add spacing. Preserve
+prose spacing in the surrounding text, as in the example above.
+
+### Subtle Appearance
+
+```tsx
+<Link href="/help" appearance="subtle">
+  Help
+</Link>
+```
+
+### Render as `<span>`
+
+v9 supports `"a"`, `"button"`, and `"span"` roots. It does not accept the
+arbitrary intrinsic elements or custom components that v8 allowed through
+`as`. A span root receives `role="button"`:
+
+```tsx
+<Link as="span" inline onClick={handleClick}>
+  Terms of service
+</Link>
+```
+
+## Prop Mapping
+
+| v8 `ILinkProps` | v9 `LinkProps`      | Notes                                                                                      |
+| --------------- | ------------------- | ------------------------------------------------------------------------------------------ |
+| `href`          | `href`              |                                                                                            |
+| `target`        | `target`            |                                                                                            |
+| `rel`           | `rel`               |                                                                                            |
+| `onClick`       | `onClick`           |                                                                                            |
+| `disabled`      | `disabled`          |                                                                                            |
+| `componentRef`  | `ref`               |                                                                                            |
+| `styles`        | `className`         | Use `makeStyles`.                                                                          |
+| `theme`         | —                   | Use `FluentProvider`.                                                                      |
+| `underline`     | `inline`            | `inline` applies the persistent underline used alongside text; it does not change spacing. |
+| `as`            | `as`                | Narrowed from any `React.ElementType` to `"a"` \| `"button"` \| `"span"`.                  |
+| —               | `appearance`        | New: `"default"` \| `"subtle"`.                                                            |
+| —               | `disabledFocusable` | New: use with `disabled` to keep the disabled control focusable.                           |
+
+## Accessibility
+
+Links **must** have an underline (use `inline`) unless they are in a visually discrete region containing only links or interactive controls, or all links have an icon indicating interactivity.
+
+For a disabled link that must remain reachable in a stable tab order, set both
+`disabled` and `disabledFocusable`. v9 removes an anchor's `href`, prevents
+pointer activation and Enter/Space activation, and sets `aria-disabled`.
+Unlike a normally disabled button, a button rendered this way does not receive
+the native `disabled` attribute, so it remains focusable. Do not use
+`disabledFocusable` as an enabled-but-focusable mode: the implementation treats
+it as disabled behavior even if `disabled` is omitted.
