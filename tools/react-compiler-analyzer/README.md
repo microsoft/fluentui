@@ -128,6 +128,34 @@ react-compiler-analyzer lint ./library/src --fix
 react-compiler-analyzer lint ./src --full-reasons
 ```
 
+#### Retiring a `'use no memo'` directive
+
+A directive that is doing nothing and one that is preventing a crash both produce **no live
+finding** — that is the point of the opt-out. So "the analyzer reports nothing here" is not
+evidence that a directive is safe to delete, and bulk-removing on that basis will silently
+re-introduce every hazard the directives were holding back.
+
+`analyze` reports the risks inside opted-out functions rather than hiding them. Use the
+`suppressed` field to tell the two cases apart without touching the source:
+
+```bash
+# Load-bearing: removing the directive makes these live.
+react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
+  | jq -r '.findings[] | select(.suppressed) | "\(.file):\(.line)"' | sort -u
+
+# Files that contain at least one load-bearing directive — exclude these from bulk removal.
+react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
+  | jq -r '.findings[] | select(.suppressed) | .file' | sort -u
+```
+
+Note the two lists key on different lines: a finding is reported where the **risk** is, not where
+the directive is, so subtract at file granularity rather than by line. A `'use no memo'` whose file
+never appears above is a safe removal candidate; `lint` enumerates the full directive set to
+subtract from.
+
+The human-readable report splits the same way, under **Suppressed by 'use no memo'** versus
+**Risky but Not Compiled** — the latter is now reserved for genuine compile failures.
+
 ### `analyze` — Coverage + migration report
 
 ```bash
@@ -533,6 +561,7 @@ react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
     "errors": 1,
     "findings": 21,
     "findingsOnCompiled": 19,
+    "findingsSuppressed": 1,
     "unparseableFiles": 0
   },
   "functions": [
@@ -563,6 +592,10 @@ react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
 
 - `compiled` on a finding distinguishes a **live** hazard from a latent one — see
   **Risky but Not Compiled** above.
+- `suppressed` is present (`"use no memo"`) when the enclosing function opted out, so the directive
+  is the only thing keeping the finding latent. `compiled: false` alone cannot tell you that: it is
+  equally true of a function that failed to compile. See
+  [Retiring a `'use no memo'` directive](#retiring-a-use-no-memo-directive).
 - `unparseable` lists files the parser rejected outright. They contribute nothing to the other
   counts, so a shrinking `functions` total is never silently caused by a parse failure.
 - Paths are workspace-relative and POSIX-separated.

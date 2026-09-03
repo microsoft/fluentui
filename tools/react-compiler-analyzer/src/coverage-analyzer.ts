@@ -114,12 +114,15 @@ export function deriveCoverage(result: FileCompilationResult, options: DeriveCov
 
     // Attach runtime-risk findings. Risks on non-compiled functions are kept but reported
     // separately: they become live the moment the compile error or opt-out is resolved.
-    const risks = result.risks.get(result.riskKeyAliases.get(key) ?? key);
+    // A CompileSkip locates a function at its body, so resolve back to the declaration key that
+    // the AST-driven maps below are keyed by.
+    const declKey = result.riskKeyAliases.get(key) ?? key;
+    const risks = result.risks.get(declKey);
     if (risks && risks.length > 0) {
       r.risks = risks;
     }
 
-    const directives = result.existingDirectives.get(key);
+    const directives = result.existingDirectives.get(declKey);
     if (directives) {
       r.existingDirectives = directives;
     }

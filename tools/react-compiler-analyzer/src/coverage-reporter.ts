@@ -385,13 +385,16 @@ const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
  * Unlike compiler errors, these functions will be silently memoized — so they are the
  * highest-value rows in the report for anyone enabling the compiler ring-by-ring.
  *
- * Risky functions that did *not* compile are reported in a companion section: they are not
- * hazardous today, but become so the moment the compile error or opt-out is resolved.
+ * Risky functions that did *not* compile are reported in companion sections, split by why they are
+ * dormant: a `'use no memo'` opt-out that is actively holding the risk back, versus a compile
+ * failure. The two demand opposite actions, so they must not be conflated.
  */
 export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
   const withRisks = results.filter(r => r.risks && r.risks.length > 0);
   const risky = withRisks.filter(r => r.status === 'compiled');
-  const pending = withRisks.filter(r => r.status !== 'compiled');
+  const notCompiled = withRisks.filter(r => r.status !== 'compiled');
+  const suppressed = notCompiled.filter(r => r.existingDirectives?.useNoMemo);
+  const pending = notCompiled.filter(r => !r.existingDirectives?.useNoMemo);
 
   if (risky.length > 0) {
     printRiskTable(f, risky, workspaceRoot, {
@@ -404,13 +407,25 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
     });
   }
 
+  if (suppressed.length > 0) {
+    printRiskTable(f, suppressed, workspaceRoot, {
+      title: "Suppressed by 'use no memo'",
+      intro:
+        "These functions carry a `'use no memo'` opt-out **and** still contain a runtime-risk " +
+        'pattern, so the directive is load-bearing: removing it makes the finding live. They are ' +
+        'listed separately because an unnecessary opt-out and a working one otherwise look ' +
+        'identical — both simply produce no live finding.',
+      subject: 'opted-out function(s)',
+    });
+  }
+
   if (pending.length > 0) {
     printRiskTable(f, pending, workspaceRoot, {
       title: 'Risky but Not Compiled',
       intro:
         'These functions contain the same runtime-risk patterns but are **not memoized today** ' +
         '(the compiler errored or skipped them), so they are not hazardous yet. They become ' +
-        'live the moment the compile error is fixed or the opt-out is removed.',
+        'live the moment the compile error is fixed.',
       subject: 'non-compiled function(s)',
     });
   }

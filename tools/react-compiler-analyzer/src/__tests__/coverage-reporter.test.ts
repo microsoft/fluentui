@@ -591,4 +591,42 @@ describe('printRuntimeRisks', () => {
     expect(output).toContain('**1** runtime-risk finding(s) across **1** compiled function(s).');
     expect(output).toContain('**1** runtime-risk finding(s) across **1** non-compiled function(s).');
   });
+
+  it('gives directive-suppressed risks their own section', () => {
+    printRuntimeRisks(
+      [
+        makeFunctionAnalysis({
+          functionName: 'Guarded',
+          status: 'skipped',
+          compilerEvent: 'CompileSkip',
+          memoStats: undefined,
+          existingDirectives: { useMemo: false, useNoMemo: true },
+          risks: [makeRisk()],
+        }),
+      ],
+      '/workspace',
+    );
+    const output = logOutput.join('\n');
+    expect(output).toContain("Suppressed by 'use no memo'");
+    expect(output).not.toContain('Risky but Not Compiled');
+    expect(output).toContain('**1** runtime-risk finding(s) across **1** opted-out function(s).');
+  });
+
+  it('keeps an uncompiled risk without a directive out of the suppressed section', () => {
+    printRuntimeRisks(
+      [
+        makeFunctionAnalysis({
+          functionName: 'ErroredRisky',
+          status: 'error',
+          compilerEvent: 'CompileError',
+          memoStats: undefined,
+          risks: [makeRisk()],
+        }),
+      ],
+      '/workspace',
+    );
+    const output = logOutput.join('\n');
+    expect(output).toContain('Risky but Not Compiled');
+    expect(output).not.toContain("Suppressed by 'use no memo'");
+  });
 });

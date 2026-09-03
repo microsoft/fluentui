@@ -58,6 +58,7 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: DocumentMe
         // Whether the enclosing function is actually memoized — a risk in a non-compiled
         // function is latent, not live.
         compiled: r.status === 'compiled',
+        ...(r.status !== 'compiled' && r.existingDirectives?.useNoMemo ? { suppressed: 'use no memo' as const } : {}),
       });
     }
   }
@@ -76,6 +77,7 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: DocumentMe
       errors: results.filter(r => r.status === 'error').length,
       findings: findings.length,
       findingsOnCompiled: findings.filter(f => f.compiled).length,
+      findingsSuppressed: findings.filter(f => f.suppressed).length,
       unparseableFiles: unparseable.length,
     },
     functions,

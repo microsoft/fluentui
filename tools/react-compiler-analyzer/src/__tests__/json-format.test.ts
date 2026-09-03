@@ -113,6 +113,78 @@ export function Risky({ label }: { label: string }) {
       }
     });
 
+    describe('findings suppressed by a directive', () => {
+      beforeEach(() => {
+        writeFileSync(
+          join(tempDir, 'src', 'Suppressed.tsx'),
+          `declare function getAppStore(): { currentId: string };
+
+export function Guarded() {
+  'use no memo';
+  const id = getAppStore().currentId;
+  return <div>{id}</div>;
+}
+`,
+        );
+      });
+
+      /** A load-bearing opt-out must be distinguishable from a function that has no risk at all. */
+      it('marks a finding whose function opted out with `use no memo`', async () => {
+        const { doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        );
+
+        const suppressed = doc.findings.filter(finding => finding.file.includes('Suppressed.tsx'));
+        expect(suppressed).toHaveLength(1);
+        expect(suppressed[0]).toMatchObject({ compiled: false, suppressed: 'use no memo' });
+      });
+
+      it('omits the suppressed key for a live finding', async () => {
+        const { doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        );
+
+        const live = doc.findings.find(finding => finding.file.includes('Risky.tsx'));
+        expect(live).toMatchObject({ compiled: true });
+        expect(live!.suppressed).toBeUndefined();
+      });
+
+      it('counts suppressed findings separately in the summary', async () => {
+        const { doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        );
+
+        expect(doc.summary.findings).toBe(2);
+        expect(doc.summary.findingsOnCompiled).toBe(1);
+        expect(doc.summary.findingsSuppressed).toBe(1);
+      });
+
+      /** A compile failure is also `compiled: false`, so the two must not be conflated. */
+      it('does not mark a finding that is merely uncompiled as suppressed', async () => {
+        writeFileSync(
+          join(tempDir, 'src', 'Bail.tsx'),
+          `declare function getAppStore(): { currentId: string };
+
+export function Bail() {
+  const id = getAppStore().currentId;
+  try {
+    return <div>{id}</div>;
+  } finally {
+    console.log('x');
+  }
+}
+`,
+        );
+        const { doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        );
+
+        const bail = doc.findings.find(finding => finding.file.includes('Bail.tsx'));
+        expect(bail).toBeDefined();
+        expect(bail!.suppressed).toBeUndefined();
+      });
+    });
+
     it('produces byte-identical output across runs', async () => {
       const first = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));
       const second = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));

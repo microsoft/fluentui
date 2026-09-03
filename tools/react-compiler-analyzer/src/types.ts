@@ -254,6 +254,12 @@ export interface JsonFinding {
   function: string | null;
   /** False when the enclosing function is not memoized today, making the risk latent. */
   compiled: boolean;
+  /**
+   * Present when the enclosing function opted out with `'use no memo'`, so the directive is the
+   * only thing keeping this risk latent. Distinguishes a load-bearing opt-out from the other
+   * reason a finding is not live — the function failed to compile — which `compiled` alone conflates.
+   */
+  suppressed?: 'use no memo';
 }
 
 export interface AnalysisDocument extends DocumentEnvelope {
@@ -265,6 +271,8 @@ export interface AnalysisDocument extends DocumentEnvelope {
     errors: number;
     findings: number;
     findingsOnCompiled: number;
+    /** Findings held latent only by a `'use no memo'` opt-out; they go live if it is removed. */
+    findingsSuppressed: number;
     unparseableFiles: number;
   };
   functions: JsonFunction[];
