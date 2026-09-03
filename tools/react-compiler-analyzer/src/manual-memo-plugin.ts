@@ -18,6 +18,12 @@ export interface ManualMemoPluginOptions {
   bodyInsertionLines?: Map<string, number>;
   /** Directives already present on each function, keyed by `line:column`. */
   existingDirectives?: Map<string, ExistingDirectives>;
+  /**
+   * Body-start key → declaration-start key, for every function. A `CompileSkip` event locates a
+   * function at its body, so results for opted-out functions arrive under a key none of the
+   * AST-derived maps above use.
+   */
+  keyAliases?: Map<string, string>;
 }
 
 /** Which memo directives a function body already declares. */
@@ -127,6 +133,10 @@ export function manualMemoPlugin(): PluginObj {
           opts.bodyInsertionLines?.set(key, insertionLine);
         }
         opts.existingDirectives?.set(key, readDirectives(path as NodePath<BabelFunction>));
+        const bodyLoc = fnNode.body.loc;
+        if (bodyLoc) {
+          opts.keyAliases?.set(fnKey(bodyLoc.start), key);
+        }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {

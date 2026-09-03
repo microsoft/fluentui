@@ -183,6 +183,73 @@ export function Bail() {
         expect(bail).toBeDefined();
         expect(bail!.suppressed).toBeUndefined();
       });
+
+      /**
+       * The cross-file resolver keys findings by function declaration while a CompileSkip locates
+       * the function at its body, so an opted-out wrapper risk must still reach the report.
+       */
+      describe('reached through the cross-file wrapper resolver', () => {
+        beforeEach(() => {
+          writeFileSync(
+            join(tempDir, 'src', 'logStore.ts'),
+            `declare function getStore(): { getState(): { logs: string[] } };
+
+export function getAllLogs() {
+  return getStore().getState().logs;
+}
+`,
+          );
+          writeFileSync(
+            join(tempDir, 'src', 'Wrapped.tsx'),
+            `import { getAllLogs } from './logStore';
+
+export function GuardedWrapper() {
+  'use no memo';
+  const logs = getAllLogs();
+  return <div>{logs.length}</div>;
+}
+
+export function LiveWrapper() {
+  const logs = getAllLogs();
+  return <div>{logs.length}</div>;
+}
+`,
+          );
+          writeFileSync(
+            join(tempDir, 'wrappers.json'),
+            JSON.stringify({ detectGetStateReads: true, resolveWrappers: true }),
+          );
+        });
+
+        it('reports a wrapper-resolved risk inside an opted-out function', async () => {
+          const { doc } = await captureJson<AnalysisDocument>(() =>
+            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+          );
+
+          const guarded = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && !f.compiled);
+          expect(guarded).toHaveLength(1);
+          expect(guarded[0].message).toContain('reached via');
+          expect(guarded[0].suppressed).toBe('use no memo');
+        });
+
+        it('still reports the equivalent risk when no directive is present', async () => {
+          const { doc } = await captureJson<AnalysisDocument>(() =>
+            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+          );
+
+          const live = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && f.compiled);
+          expect(live).toHaveLength(1);
+          expect(live[0].suppressed).toBeUndefined();
+        });
+
+        it('counts the suppressed wrapper finding in the summary', async () => {
+          const { doc } = await captureJson<AnalysisDocument>(() =>
+            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+          );
+
+          expect(doc.summary.findingsSuppressed).toBe(1);
+        });
+      });
     });
 
     it('produces byte-identical output across runs', async () => {

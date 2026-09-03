@@ -257,8 +257,12 @@ export interface FileCompilationResult {
   existingDirectives: Map<string, ExistingDirectives>;
   /** Runtime-risk findings keyed by `line:column` of the enclosing function start. */
   risks: Map<string, RiskFinding[]>;
-  /** Maps a function's body-start key to its declaration key (see {@link RiskPluginOptions}). */
-  riskKeyAliases: Map<string, string>;
+  /**
+   * Maps a function's body-start key to its declaration key, for every function in the file.
+   * Populated independently of any risk producer, so an indirectly-reached finding resolves the
+   * same way an in-file one does.
+   */
+  fnKeyAliases: Map<string, string>;
 }
 
 /**
@@ -277,15 +281,23 @@ export async function compileFile(
   const manualMemo = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
   const risks = new Map<string, RiskFinding[]>();
-  const riskKeyAliases = new Map<string, string>();
+  const fnKeyAliases = new Map<string, string>();
   const existingDirectives = new Map<string, ExistingDirectives>();
 
   const { events, error } = await compileSource(source, entry.filePath, {
     compilationMode,
     parserPlugins,
     plugins: [
-      [manualMemoPlugin, { results: manualMemo, bodyInsertionLines, existingDirectives } as ManualMemoPluginOptions],
-      [riskPlugin, { ...riskConfig, results: risks, keyAliases: riskKeyAliases } as RiskPluginOptions],
+      [
+        manualMemoPlugin,
+        {
+          results: manualMemo,
+          bodyInsertionLines,
+          existingDirectives,
+          keyAliases: fnKeyAliases,
+        } as ManualMemoPluginOptions,
+      ],
+      [riskPlugin, { ...riskConfig, results: risks, keyAliases: fnKeyAliases } as RiskPluginOptions],
     ],
   });
 
@@ -326,7 +338,7 @@ export async function compileFile(
     bodyInsertionLines,
     existingDirectives,
     risks,
-    riskKeyAliases,
+    fnKeyAliases,
   };
 }
 

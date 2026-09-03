@@ -153,6 +153,12 @@ the directive is, so subtract at file granularity rather than by line. A `'use n
 never appears above is a safe removal candidate; `lint` enumerates the full directive set to
 subtract from.
 
+`suppressed` covers indirectly-reached risks too, so the audit stays valid under
+`resolveWrappers: true` — a directive guarding only a hazard several calls away is still reported
+as load-bearing, with the `reached via` chain in the message. Run the audit with the **same risk
+config** the bail-out set was generated under; a narrower config finds fewer risks and will
+mislabel load-bearing directives as stale.
+
 The human-readable report splits the same way, under **Suppressed by 'use no memo'** versus
 **Risky but Not Compiled** — the latter is now reserved for genuine compile failures.
 

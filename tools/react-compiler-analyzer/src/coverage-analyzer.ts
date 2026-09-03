@@ -116,7 +116,7 @@ export function deriveCoverage(result: FileCompilationResult, options: DeriveCov
     // separately: they become live the moment the compile error or opt-out is resolved.
     // A CompileSkip locates a function at its body, so resolve back to the declaration key that
     // the AST-driven maps below are keyed by.
-    const declKey = result.riskKeyAliases.get(key) ?? key;
+    const declKey = result.fnKeyAliases.get(key) ?? key;
     const risks = result.risks.get(declKey);
     if (risks && risks.length > 0) {
       r.risks = risks;
