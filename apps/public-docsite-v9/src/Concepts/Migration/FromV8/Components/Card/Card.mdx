@@ -4,23 +4,129 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Card Migration
 
-Fluent UI v8 provides the `DocumentCard` component and it's variants. Fluent UI v9 provides a `Card` control, but has a different API. `Card` is more generic is less opinionated about its content.
+## Overview
+
+Fluent UI v8 provides the `DocumentCard` component and its variants. Fluent UI v9 provides a `Card` control with a different API. `Card` is more generic and less opinionated about its content.
+
+## Prop Mapping
 
 This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
 
-| v8            | v9        | Notes                                    |
-| ------------- | --------- | ---------------------------------------- |
-| className     | className |                                          |
-| componentRef  | ref       |                                          |
-| onClick       | onClick   |                                          |
-| onClickHref   | n/a       | Can be implemented using `onClick`       |
-| onClickTarget | n/a       | Can be implemented using `onClick`       |
-| role          | role      |                                          |
-| styles        | className |                                          |
-| theme         | n/a       | Use `FluentProvider` to customize themes |
-| type          | n/a       | see Migrate `type` prop in this document |
+| v8            | v9          | Notes                                    |
+| ------------- | ----------- | ---------------------------------------- |
+| className     | className   |                                          |
+| componentRef  | ref         | The v9 ref is the root `HTMLDivElement`  |
+| onClick       | onClick     |                                          |
+| onClickHref   | Link href   | Preserve native link semantics           |
+| onClickTarget | Link target | Preserve native link semantics           |
+| role          | role        |                                          |
+| styles        | className   |                                          |
+| theme         | n/a         | Use `FluentProvider` to customize themes |
+| type          | n/a         | see Migrate `type` prop in this document |
 
-## Migrate `type` prop
+## Migrate activation and links
+
+An actionable v8 `DocumentCard` handles Enter and Space and supplies button or
+link semantics based on `onClick` or `onClickHref`. A click handler on a v9
+`Card` does not provide those semantics by itself. Keep a real `Button` or
+`Link` inside the card as the keyboard, screen-reader, touch-screen-reader, and
+voice-control target. A root click may forward to that same action to preserve
+whole-card pointer activation.
+
+Do not replace `onClickHref` with `window.open`. Put the URL and target on a
+`Link`, so browser link behavior such as opening in a new tab, copying the URL,
+and the context menu remains available. Validate untrusted URL protocols before
+passing them to `href`.
+
+```tsx
+import * as React from 'react';
+import { Card, CardHeader, Link, Text } from '@fluentui/react-components';
+
+export const LinkedCard = () => {
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
+
+  return (
+    <Card
+      onClick={event => {
+        const target = event.target as HTMLElement;
+        if (!target.closest('a, button, input, select, textarea')) {
+          linkRef.current?.click();
+        }
+      }}
+      focusMode="off"
+    >
+      <CardHeader
+        header={
+          <Text as="h2" size={400} weight="semibold">
+            <Link ref={linkRef} href="https://www.microsoft.com/" target="_blank" rel="noreferrer">
+              Quarterly report
+            </Link>
+          </Text>
+        }
+        description={<Text>Open the report in a new tab</Text>}
+      />
+    </Card>
+  );
+};
+```
+
+If all visible card content should activate an action rather than navigate,
+provide a real button that invokes the same callback. Stop propagation from
+that button if the card root also has a click handler.
+
+```tsx
+import * as React from 'react';
+import { Button, Card, CardFooter, Text } from '@fluentui/react-components';
+
+export const ActionCard = () => {
+  const openReport = () => {
+    console.log('Open report');
+  };
+
+  return (
+    <Card onClick={openReport} focusMode="off">
+      <Text weight="semibold">Quarterly report</Text>
+      <CardFooter>
+        <Button
+          appearance="primary"
+          onClick={event => {
+            event.stopPropagation();
+            openReport();
+          }}
+        >
+          Open
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+```
+
+## Behavioral differences
+
+- v8 defaults to `DocumentCardType.normal`. v9 defaults to
+  `orientation="vertical"`, `appearance="filled"`, `size="medium"`, and
+  `focusMode="off"`.
+- `role` does not make a v9 card operable. Prefer a semantic `Link` or `Button`;
+  add a custom role only when the matching keyboard interaction and accessible
+  name are also implemented.
+- v8 `componentRef` exposes `focus()`. A v9 `ref` points to the root element.
+  With `focusMode="off"` that root is not automatically tabbable; focus the
+  semantic link or button, or explicitly provide appropriate focus semantics.
+- `focusMode` controls how focus moves among interactive descendants. It does
+  not turn a root `onClick` into an accessible button or link. Review Enter,
+  Space, Tab, and Escape behavior when choosing `no-tab`, `tab-exit`, or
+  `tab-only`.
+- Supplying `selected`, `defaultSelected`, or `onSelectionChange` makes
+  selection app-owned. Use `defaultSelected` for uncontrolled initialization,
+  or update `selected` from `data.selected` for controlled selection. Do not
+  mix selection and whole-card navigation without defining which interaction
+  wins.
+- `disabled` disables card activation and selection, but it is not propagated
+  to child controls. Disable each nested `Button`, `Link`, input, or menu
+  separately.
+
+### Migrate `type` prop
 
 The `type` prop is no longer supported. To migrate, the property `orientation="horizontal"` can be used to achieve the same effect.
 
@@ -63,12 +169,9 @@ After:
 
 ```tsx
 import * as React from 'react';
-import { Text, Avatar, Caption1 } from '@fluentui/react-components';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+import { Avatar, Caption1, Card, CardHeader, CardPreview, Text } from '@fluentui/react-components';
 
 export const SizedCard = () => {
-  const styles = useStyles();
-
   return (
     <Card size="small" orientation="horizontal">
       <CardPreview>

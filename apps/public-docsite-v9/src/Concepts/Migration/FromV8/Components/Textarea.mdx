@@ -4,9 +4,11 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Textarea Migration
 
+## Overview
+
 Fluent UI v8 provides the `TextField` control to allow users to enter and edit text. Fluent UI v9 provides a `Textarea` control, but has a different API.
 
-v9 takes a different approach than v8 with respect to text inputs, and instead of using a single `TextField` component instaed uses separate `Input` and `Textarea` components. v9's `Input` in this case is equivalent to the general v8's `TextField`, while v9's `Textarea` is equivalent to v8's `TextField` with the `multiline` prop set to `true`.
+v9 takes a different approach to text inputs. Instead of a single `TextField` component, it uses separate `Input` and `Textarea` components. v9's `Input` replaces a single-line v8 `TextField`, while v9's `Textarea` replaces a v8 `TextField` with `multiline`.
 
 ## Examples
 
@@ -18,27 +20,37 @@ Basic usage of `TextField` v8
 import React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
 
-const TextAreaV0BasicExample = () => {
+const TextareaV8BasicExample = () => {
   return (
     <>
       <TextField label="Standard" multiline rows={3} />
-      <TextField label="Disabled" multiline rows={3} disabled defaultValue={dummyText} />
+      <TextField label="Disabled" multiline rows={3} disabled defaultValue="Example text" />
       <TextField label="Non-resizable" multiline resizable={false} />
     </>
   );
 };
 
-export default TextAreaExample;
+export default TextareaV8BasicExample;
 ```
 
 An equivalent `Textarea` in v9 is
 
 ```tsx
 import * as React from 'react';
-import { Label, Textarea } from '@fluentui/react-components';
+import { Field, Label, Textarea, makeStyles } from '@fluentui/react-components';
 import { useId } from '@fluentui/react-utilities';
 
+const useStyles = makeStyles({
+  borderless: {
+    border: 'none',
+    ':hover': { border: 'none' },
+    ':focus-within': { border: 'none' },
+    '::after': { border: 'none' },
+  },
+});
+
 const TextareaV9BasicExample = () => {
+  const styles = useStyles();
   const standardTextareaId = useId('standard');
   const disabledTextareaId = useId('disabled');
   const nonResizableTextareaId = useId('nonResizable');
@@ -47,64 +59,118 @@ const TextareaV9BasicExample = () => {
     <>
       <div>
         <Label htmlFor={standardTextareaId}>Standard</Label>
-        <Textarea id={standardTextareaId} />
+        <Textarea id={standardTextareaId} rows={3} resize="both" />
       </div>
       <div>
         <Label disabled htmlFor={disabledTextareaId}>
           Disabled
         </Label>
-        <Textarea defaultValue={dummyText} disabled id={disabledTextareaId} />
+        <Textarea defaultValue="Example text" disabled id={disabledTextareaId} rows={3} />
       </div>
       <div>
         <Label htmlFor={nonResizableTextareaId}>Non-resizable</Label>
         <Textarea resize="none" id={nonResizableTextareaId} />
       </div>
+      <Field label="Borderless" hint="Additional information about this field">
+        <Textarea className={styles.borderless} />
+      </Field>
     </>
   );
 };
 ```
 
-## Props Mapping
+v8 multiline `TextField` is resizable by default, while v9 `Textarea` defaults
+to `resize="none"`. Set `resize="both"` to preserve the v8 behavior.
+
+`borderless` does not map to a v9 `appearance`. The supported non-deprecated
+appearance values are `"outline"`, `"filled-darker"`, and `"filled-lighter"`;
+the filled appearances add a background rather than reproducing v8's
+borderless styling. Use `makeStyles`, as above, when the borderless visual
+treatment must be preserved.
+
+### Validation
+
+Wrap `Textarea` in `Field` for validation. `Field validationState` and
+`validationMessage` provide the visual state, `aria-invalid`, message
+association, and error/warning announcement behavior:
+
+```tsx
+import * as React from 'react';
+import { Field, Textarea } from '@fluentui/react-components';
+import type { TextareaProps } from '@fluentui/react-components';
+
+const ValidatedTextarea = ({ validate }: { validate: (value: string) => Promise<string> }) => {
+  const [value, setValue] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const requestSequence = React.useRef(0);
+
+  const onChange: TextareaProps['onChange'] = (_, data) => {
+    requestSequence.current += 1;
+    setValue(data.value);
+  };
+  const validateCurrentValue = async () => {
+    const sequence = ++requestSequence.current;
+    const nextMessage = await validate(value);
+    if (sequence === requestSequence.current) {
+      setMessage(nextMessage);
+    }
+  };
+
+  return (
+    <Field label="Description" validationState={message ? 'error' : 'none'} validationMessage={message || undefined}>
+      <Textarea value={value} onChange={onChange} onBlur={validateCurrentValue} />
+    </Field>
+  );
+};
+```
+
+This example matches `validateOnFocusOut`. For `validateOnFocusIn`, call the
+sequenced validator from `onFocus`; when both v8 flags were true, validate on
+both. For the default v8 change-driven policy, debounce validation from
+`onChange` by `deferredValidationTime`. Preserve `validateOnLoad` by running
+validation on mount only when the old control did. Cancel or sequence async
+requests so stale results cannot replace or announce the current result.
+
+## Prop Mapping
 
 This table maps `TextField` v8 props to the `Textarea` v9 equivalent.
 
-| v0                         | v9             | Notes                                                                                                            |
-| -------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `ariaLabel`                | aria-label     |                                                                                                                  |
-| `autoAdjustHeight`         | n/a            | Auto-resize will be added in the future. See spec for more information                                           |
-| `className`                | `className`    | To use a custom className for the container use as follows: `<textarea root={{ className: customClassName }} />` |
-| `autoComplete`             | `autoComplete` |                                                                                                                  |
-| `borderless`               | `appearance`   | Equivalent `appearance` could be either `filledLighter` or `filledDarker`                                        |
-| `canRevealPassword`        | n/a            |                                                                                                                  |
-| `className`                | `className`    |                                                                                                                  |
-| `componentRef`             | ref            |                                                                                                                  |
-| `defaultValue`             | `defaultValue` | Mutually exclusive with `value`                                                                                  |
-| `deferredValidationTime`   | n/a            |                                                                                                                  |
-| `description`              | n/a            |                                                                                                                  |
-| `disabled`                 | `disabled`     |                                                                                                                  |
-| `errorMessage`             | n/a            |                                                                                                                  |
-| `iconProps`                | n/a            |                                                                                                                  |
-| `inputClassName`           | `className`    |                                                                                                                  |
-| `invalid`                  | n/a            |                                                                                                                  |
-| `label`                    | n/a            | To add a label, use the `Label` component                                                                        |
-| `multiline`                | n/a            | `Textarea` is multiline by default                                                                               |
-| `onChange`                 | `onChange`     |                                                                                                                  |
-| `onGetErrorMessage`        | n/a            |                                                                                                                  |
-| `onNotifyValidationResult` | n/a            |                                                                                                                  |
-| `onRenderDescription`      | n/a            |                                                                                                                  |
-| `onRenderInput`            | n/a            |                                                                                                                  |
-| `onRenderLabel`            | n/a            |                                                                                                                  |
-| `onRenderPrefix`           | n/a            |                                                                                                                  |
-| `onRenderSuffix`           | n/a            |                                                                                                                  |
-| `prefix`                   | n/a            |                                                                                                                  |
-| `readOnly`                 | `readonly`     | This is handled by native component                                                                              |
-| `resizable`                | `resize`       |                                                                                                                  |
-| `revealPasswordAriaLabel`  | n/a            |                                                                                                                  |
-| `styles`                   | `className`    |                                                                                                                  |
-| `suffix`                   | n/a            |                                                                                                                  |
-| `theme`                    | n/a            | use `FluentProvider` to customize themes                                                                         |
-| `underlined`               | n/a            |                                                                                                                  |
-| `validateOnFocusIn`        | n/a            |                                                                                                                  |
-| `validateOnFocusOut`       | n/a            |                                                                                                                  |
-| `validateOnLoad`           | n/a            |                                                                                                                  |
-| `value`                    | `value`        | Mutually exclusive with `defaultValue`                                                                           |
+| v8                         | v9                              | Notes                                                                        |
+| -------------------------- | ------------------------------- | ---------------------------------------------------------------------------- |
+| `ariaLabel`                | aria-label                      |                                                                              |
+| `autoAdjustHeight`         | n/a                             | Implement content-based autosizing separately                                |
+| `className`                | `className`                     | Applies to the root wrapper                                                  |
+| `autoComplete`             | `autoComplete`                  |                                                                              |
+| `borderless`               | Custom `className`              | No v9 appearance is borderless; remove the root border with `makeStyles`     |
+| `canRevealPassword`        | n/a                             |                                                                              |
+| `componentRef`             | `ref`                           | v9 provides access to the underlying `<textarea>` element                    |
+| `defaultValue`             | `defaultValue`                  | Mutually exclusive with `value`                                              |
+| `deferredValidationTime`   | App-owned debounce              | Preserve the v8 validation delay                                             |
+| `description`              | `Field hint`                    | Wrap the control in `<Field hint="…">` to associate descriptive text         |
+| `disabled`                 | `disabled`                      |                                                                              |
+| `errorMessage`             | `Field validationMessage`       | `Field` associates and announces the message                                 |
+| `iconProps`                | n/a                             |                                                                              |
+| `inputClassName`           | `textarea`                      | Pass a class name through the `textarea` slot                                |
+| `invalid`                  | `Field validationState="error"` | `Field` supplies invalid semantics                                           |
+| `label`                    | n/a                             | To add a label, use the `Label` component                                    |
+| `multiline`                | n/a                             | `Textarea` is multiline by default                                           |
+| `onChange`                 | `onChange`                      |                                                                              |
+| `onGetErrorMessage`        | App-owned validator + `Field`   | Preserve async behavior and stale-result protection                          |
+| `onNotifyValidationResult` | App-owned validation state      | Notify only when the current result is applied                               |
+| `onRenderDescription`      | n/a                             |                                                                              |
+| `onRenderInput`            | n/a                             |                                                                              |
+| `onRenderLabel`            | n/a                             |                                                                              |
+| `onRenderPrefix`           | n/a                             |                                                                              |
+| `onRenderSuffix`           | n/a                             |                                                                              |
+| `prefix`                   | n/a                             |                                                                              |
+| `readOnly`                 | `readOnly`                      | This is a native HTML prop applied to the `<textarea>`                       |
+| `resizable`                | `resize`                        | v8 defaults to resizable; v9 defaults to `"none"`, so set `"both"` when true |
+| `revealPasswordAriaLabel`  | n/a                             |                                                                              |
+| `styles`                   | `className`                     |                                                                              |
+| `suffix`                   | n/a                             |                                                                              |
+| `theme`                    | n/a                             | Use `FluentProvider` to customize themes                                     |
+| `underlined`               | n/a                             |                                                                              |
+| `validateOnFocusIn`        | Validate from `onFocus`         | Preserve v8 timing policy                                                    |
+| `validateOnFocusOut`       | Validate from `onBlur`          | Preserve v8 timing policy                                                    |
+| `validateOnLoad`           | Initial app-owned validation    | Run or skip validation on mount to match v8                                  |
+| `value`                    | `value`                         | Mutually exclusive with `defaultValue`                                       |

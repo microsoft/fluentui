@@ -29,5 +29,5 @@ export type ChannelActions<T> = {
  * @returns {T} - The result of the action corresponding to the specified channel, or the hue action if the channel is not found.
  */
 export function adjustChannel<T>(channel: ColorChannel, actions: ChannelActions<T>): T {
-  return actions[channel] || actions.hue;
+  return actions[channel] ?? actions.hue;
 }
