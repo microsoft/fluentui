@@ -26,6 +26,7 @@ export const parameters = {
             'Positioning Components',
             'Server-Side Rendering',
             ['Basic setup', 'Next.js setup', 'Limitations with Portals'],
+            'Native ESM',
           ],
           'Migration',
           [
