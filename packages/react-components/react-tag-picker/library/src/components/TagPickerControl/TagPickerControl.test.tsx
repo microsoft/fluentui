@@ -19,13 +19,14 @@ describe('TagPickerControl', () => {
 
   describe('the aside width custom property', () => {
     // useTagPickerControl schedules the write of --fui-TagPickerControl-aside-width from the
-    // ResizeObserver callback, and cancels that frame from an effect. The observer is attached by
-    // a ref callback, so `observe()` runs in the COMMIT phase -- before React flushes the passive
-    // effect. A ResizeObserver whose `observe()` invokes its callback synchronously therefore
-    // reproduces, deterministically, the ordering that the production race lands on 8-11 times out
-    // of 12: a frame is already pending by the time the effect runs. If the cancel sits in the
-    // effect BODY it kills that frame and the property is never written; in the effect's CLEANUP
-    // it only runs on unmount, which is what these two tests pin.
+    // ResizeObserver callback, and cancels that frame when the observer's callback ref
+    // receives null (element unmount), alongside ResizeObserver.disconnect() -- not from a
+    // passive effect's cleanup. That keeps the frame's lifecycle tied to the same event that
+    // owns it (the ref attach/detach that starts and stops the observation) instead of an
+    // effect whose cleanup timing is independent of it. A ResizeObserver whose `observe()`
+    // invokes its callback synchronously reproduces, deterministically, a frame already being
+    // in flight by the time the ref detaches -- without depending on real async timing, which
+    // jsdom cannot reproduce.
     const realRaf = window.requestAnimationFrame;
     const realCaf = window.cancelAnimationFrame;
     const realResizeObserver = window.ResizeObserver;
@@ -92,6 +93,31 @@ describe('TagPickerControl', () => {
 
       expect(cancelledBeforeUnmount).not.toContain(frames[0].id);
       expect(cancelledIds).toContain(frames[0].id);
+    });
+
+    it('writes the property after mount inside React.StrictMode', () => {
+      // Regression test for https://github.com/microsoft/fluentui/pull/36667#discussion_r3925809333:
+      // StrictMode mounts, simulates an unmount/remount of the render output (detaching and
+      // reattaching refs, and replaying effects), then settles. Cancelling the pending frame
+      // from a passive effect's cleanup -- rather than from the observer ref's own detach path
+      // -- risked cancelling the frame during that replay with nothing left to reschedule it,
+      // since callback refs are not necessarily re-invoked the same way effects are replayed.
+      // Asserting the property IS set after the dust settles pins the fix: the frame's
+      // cancellation now lives on the same ref-detach path as ResizeObserver.disconnect(), so
+      // it only ever cancels a frame that its own detach actually orphaned, and any reattach
+      // schedules its own fresh frame that survives.
+      const result = render(
+        <React.StrictMode>
+          <TagPickerControl>Default PickerControl</TagPickerControl>
+        </React.StrictMode>,
+      );
+
+      act(() => {
+        frames.forEach(frame => frame.callback(0));
+      });
+
+      const control = result.container.querySelector('.fui-TagPickerControl') as HTMLElement;
+      expect(control.style.getPropertyValue('--fui-TagPickerControl-aside-width')).toBe(`${ASIDE_WIDTH}px`);
     });
   });
 });
