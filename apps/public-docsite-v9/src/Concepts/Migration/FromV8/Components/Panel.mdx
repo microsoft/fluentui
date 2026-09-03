@@ -126,20 +126,24 @@ only when `data.type === 'backdropClick'`.
 
 | v8 `PanelType`   | v9 `position` | v9 `size`  | Notes                                         |
 | ---------------- | ------------- | ---------- | --------------------------------------------- |
-| `SmallFixedFar`  | `"end"`       | `"small"`  | Default                                       |
-| `SmallFixedNear` | `"start"`     | `"small"`  |                                               |
-| `SmallFluid`     | `"end"`       | `"small"`  | Full height; custom width via CSS             |
-| `Medium`         | `"end"`       | `"medium"` |                                               |
-| `Large`          | `"end"`       | `"large"`  |                                               |
-| `LargeFixed`     | `"end"`       | `"large"`  |                                               |
-| `ExtraLarge`     | `"end"`       | custom CSS | Preserve the responsive leading margin        |
-| `Custom`         | `"end"`       | custom CSS | `style={{ width: '...' }}` on `OverlayDrawer` |
-| `CustomNear`     | `"start"`     | custom CSS |                                               |
+| `smallFixedFar`  | `"end"`       | `"small"`  | Default                                       |
+| `smallFixedNear` | `"start"`     | `"small"`  |                                               |
+| `smallFluid`     | `"end"`       | `"full"`   | Full-screen width                             |
+| `medium`         | `"end"`       | `"medium"` |                                               |
+| `large`          | `"end"`       | `"large"`  |                                               |
+| `largeFixed`     | `"end"`       | `"large"`  |                                               |
+| `extraLarge`     | `"end"`       | custom CSS | Preserve the responsive leading margin        |
+| `custom`         | `"end"`       | custom CSS | `style={{ width: '...' }}` on `OverlayDrawer` |
+| `customNear`     | `"start"`     | custom CSS |                                               |
 
 `PanelType.extraLarge` retains a 176px leading margin at the largest v8
 breakpoint, while `size="full"` fills the viewport. Preserve that responsive
 behavior with `makeStyles`, for example by applying
 `width: calc(100vw - 176px)` at the matching breakpoint.
+
+The named Drawer sizes are the nearest v9 presets, not exact responsive
+replacements. V8 panel widths change across breakpoints, so preserve exact
+layout behavior with responsive custom styles when those dimensions matter.
 
 ### IPanelProps → OverlayDrawerProps
 

@@ -132,14 +132,24 @@ const PeoplePicker = ({
     };
   }, [onSuggestionError, query, resolveEmptyPeople, resolvePeople, selectedIds]);
 
+  const onSelectedPeopleChangeRef = React.useRef(onSelectedPeopleChange);
   React.useEffect(() => {
-    onSelectedPeopleChange(
+    onSelectedPeopleChangeRef.current = onSelectedPeopleChange;
+  }, [onSelectedPeopleChange]);
+
+  const lastNotifiedSelection = React.useRef(selectedIds);
+  React.useEffect(() => {
+    if (lastNotifiedSelection.current === selectedIds) {
+      return;
+    }
+    lastNotifiedSelection.current = selectedIds;
+    onSelectedPeopleChangeRef.current(
       selectedIds.flatMap(id => {
         const person = registry.current.get(id);
         return person ? [person] : [];
       }),
     );
-  }, [onSelectedPeopleChange, selectedIds]);
+  }, [selectedIds]);
 
   const onOptionSelect: TagPickerProps['onOptionSelect'] = async (_, data) => {
     const addedId = data.selectedOptions.find(id => !selectedIds.includes(id));

@@ -176,17 +176,17 @@ interaction and ARIA requirements.
 
 ### IModalProps → DialogProps
 
-| v8                           | v9                                         | Notes                                                |
-| ---------------------------- | ------------------------------------------ | ---------------------------------------------------- |
-| `isOpen`                     | `open`                                     |                                                      |
-| `onDismiss`                  | `onOpenChange`                             |                                                      |
-| `isBlocking`                 | `modalType="modal"` + `onOpenChange` guard | Reject `data.type === "backdropClick"` when blocking |
-| `isDarkOverlay`              | CSS on `DialogSurface` backdrop            |                                                      |
-| `scrollableContentClassName` | `className` on `<DialogSurface>`           |                                                      |
-| `containerClassName`         | `className` on `<DialogSurface>`           |                                                      |
-| `layerProps`                 | —                                          | Not supported                                        |
-| `styles`                     | `className` + `makeStyles`                 |                                                      |
-| `theme`                      | `FluentProvider`                           |                                                      |
+| v8                           | v9                                         | Notes                                                          |
+| ---------------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| `isOpen`                     | `open`                                     |                                                                |
+| `onDismiss`                  | `onOpenChange`                             |                                                                |
+| `isBlocking`                 | `modalType="modal"` + `onOpenChange` guard | Reject `data.type === "backdropClick"` when blocking           |
+| `isDarkOverlay`              | CSS on `DialogSurface` backdrop            |                                                                |
+| `scrollableContentClassName` | `className` on `<DialogSurface>`           |                                                                |
+| `containerClassName`         | `className` on `<DialogSurface>`           |                                                                |
+| `layerProps.hostId`          | `mountNode` on `<DialogSurface>`           | Resolve the host element; review other `LayerProps` separately |
+| `styles`                     | `className` + `makeStyles`                 |                                                                |
+| `theme`                      | `FluentProvider`                           |                                                                |
 
 | v9 `modalType` | Behavior                                                        | v8 equivalent                                       |
 | -------------- | --------------------------------------------------------------- | --------------------------------------------------- |
