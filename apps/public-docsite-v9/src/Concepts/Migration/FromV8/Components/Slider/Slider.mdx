@@ -4,6 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Slider Migration
 
+## Overview
+
 Fluent UI V8 provides the `Slider` control to represents an input that allows user to choose a value from within a specific range.
 Fluent UI v9 provides a `Slider` control with a different API.
 
@@ -55,7 +57,7 @@ export const V9BasicExample = () => {
   return (
     <>
       <Label htmlFor={basicId}>Basic V9 example</Label>
-      <Slider id={basicId} />
+      <Slider id={basicId} max={10} />
     </>
   );
 };
@@ -116,45 +118,95 @@ export const V9FormattedValueExample = () => {
 };
 ```
 
-## Props Mapping
+## Prop Mapping
 
-## Migration from v8
+### Migration Notes
 
 - `ariaLabel` => use `aria-label` instead
 - `ariaValueText` => explicitly set `aria-valuetext`
-- `buttonProps` => Slider props, other than className and id, are passed to `input` element
+- `buttonProps` => pass its native input attributes directly to v9 `Slider`; pass its `id` as `id`, and migrate its
+  `className` with `input={{ className: buttonProps.className }}`
 - `componentRef` => use `ref` instead.
 - `inline` => use css, or wrap in flex parent
 - `label` => Use `Label` control with `htmlFor` and `id`
-- `onChanged` => use onChange and onMouse events
-- `origin` => no longer supported
+- `onChanged` => recreate commit behavior with native pointer, keyboard, and blur events
 - `originFromZero` => no longer supported
 - `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
 - `showValue` and `valueFormat` => use explicitly rendered value instead
-- `snapToStep` => use `step` instead
-- `styles` => pass classNames to individual slots
+- `step` => maps directly to v9 `step`
+- `snapToStep` => do not replace this with `step`: v8 `step` maps to v9 `step`, while `snapToStep` changes v8
+  thumb movement/transition behavior; v9 has no separate equivalent
+- `styles` => use `className` for the root and slot props such as `input={{ className }}` for individual elements
 - `theme` => use `FluentProvider` HOC instead
 
-## Property mapping
+The default `max` changed from 10 in v8 to 100 in v9. Set `max={10}` when the
+v8 usage relied on its default.
 
-| v8 `Slider`         | v9 `Slider`      |
-| ------------------- | ---------------- |
-|                     |                  |
-| `ariaLabel`         | `aria-label`     |
-| `ariaValueText`     | `aria-valuetext` |
-| `buttonProps`       |                  |
-| `componentRef`      | `ref`            |
-| `defaultLowerValue` |                  |
-| `inline`            |                  |
-| `input`             | `input`          |
-| `label`             |                  |
-| `lowerValue`        |                  |
-| `onChanged`         | `onChange`       |
-| `origin`            |                  |
-| `originFromZero`    |                  |
-| `ranged`            |                  |
-| `showValue`         |                  |
-| `snapToStep`        | `step`           |
-| `styles`            | `className`      |
-| `theme`             |                  |
-| `valueFormat`       |                  |
+### Property Table
+
+| v8 `Slider`         | v9 `Slider`                    |
+| ------------------- | ------------------------------ |
+| `ariaLabel`         | `aria-label`                   |
+| `ariaValueText`     | `aria-valuetext`               |
+| `buttonProps`       | Native props / `input` slot    |
+| `componentRef`      | `ref`                          |
+| `defaultLowerValue` | —                              |
+| `inline`            | CSS layout                     |
+| `label`             | Separate `Label`               |
+| `lowerValue`        | —                              |
+| `max`               | `max` (set 10 to keep default) |
+| `onChanged`         | App-owned commit handler       |
+| `originFromZero`    | —                              |
+| `ranged`            | —                              |
+| `showValue`         | Explicitly rendered value      |
+| `snapToStep`        | —                              |
+| `step`              | `step`                         |
+| `styles`            | `className` / slot class names |
+| `theme`             | `FluentProvider`               |
+| `valueFormat`       | Explicitly rendered value      |
+
+### Preserving `onChanged` commit timing
+
+v8 `onChange` runs for every step, while `onChanged(event, value)` runs on
+mouse up, touch end, or after keyboard changes stop. v9 `onChange` also runs on
+every individual step and is not a commit event. Do not move expensive
+persistence, analytics, or network work directly from v8 `onChanged` to v9
+`onChange`.
+
+`Slider`'s primary slot is the native `<input type="range">`, so native event
+props passed to `Slider` are applied to that input. Keep the latest value in a
+ref and commit it on pointer release and blur; use key-up for supported range
+keys when immediate keyboard commit is appropriate for the app:
+
+```tsx
+import * as React from 'react';
+import { Slider } from '@fluentui/react-components';
+import type { SliderProps } from '@fluentui/react-components';
+
+const CommitSlider = ({ onCommit }: { onCommit: (value: number) => void }) => {
+  const [value, setValue] = React.useState(20);
+  const latestValue = React.useRef(value);
+  const lastCommittedValue = React.useRef(value);
+  const commit = () => {
+    if (latestValue.current !== lastCommittedValue.current) {
+      lastCommittedValue.current = latestValue.current;
+      onCommit(latestValue.current);
+    }
+  };
+  const onChange: SliderProps['onChange'] = (_, data) => {
+    latestValue.current = data.value;
+    setValue(data.value);
+  };
+  const onKeyUp: React.KeyboardEventHandler<HTMLInputElement> = event => {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+      commit();
+    }
+  };
+
+  return <Slider value={value} onChange={onChange} onPointerUp={commit} onKeyUp={onKeyUp} onBlur={commit} />;
+};
+```
+
+If keyboard persistence must match v8's idle-delay batching exactly, debounce
+the commit from `onChange` for keyboard input and flush it on blur instead of
+committing every key-up.
