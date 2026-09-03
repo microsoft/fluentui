@@ -15,7 +15,7 @@ export const OverflowMenu: React.FC<{
   let displayLabel = title;
   displayLabel = title === '' ? `+${overflowCount} items` : `+${overflowCount} ${title}`;
 
-  if (!isOverflowing) {
+  if (!isOverflowing || overflowCount > itemIds.length) {
     return null;
   }
   const remainingItemsCount = itemIds.length - overflowCount;
@@ -23,6 +23,9 @@ export const OverflowMenu: React.FC<{
   const menuList = [];
   for (let i = remainingItemsCount; i < itemIds.length; i++) {
     const buttonElement = items[i];
+    if (!buttonElement) {
+      continue;
+    }
     const value = `${buttonElement.props['data-title'] ?? i}`;
     if (buttonElement.props['data-selected']) {
       checkedLegends.push(value);
