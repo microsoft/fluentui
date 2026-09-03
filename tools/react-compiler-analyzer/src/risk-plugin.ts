@@ -4,10 +4,12 @@ import type { Function as BabelFunction } from '@babel/types';
 import {
   buildLeafConfig,
   hasAnyLeafRule,
+  isAnyMember,
   isSnapshotRead,
   matchAccessorInit,
   matchRiskyCall,
   type AnyCall,
+  type AnyMember,
   type LeafRiskConfig,
 } from './risk-patterns';
 import type { RiskConfig, RiskFinding } from './types';
@@ -42,6 +44,38 @@ function enclosingFunction(path: NodePath): NodePath<BabelFunction> | null {
     p => p.isFunctionDeclaration() || p.isFunctionExpression() || p.isArrowFunctionExpression(),
   ) as NodePath<BabelFunction> | null;
   return fnPath && fnPath.node.loc ? fnPath : null;
+}
+
+const SYNC_EXTERNAL_STORE = 'useSyncExternalStore';
+
+/**
+ * True when `path` sits anywhere inside a `useSyncExternalStore(…)` call.
+ *
+ * That API *is* the reactive subscription — React drives `subscribe` and re-invokes `getSnapshot`
+ * on every store transition — so nothing within it can be a non-reactive read, whether it is an
+ * accessor passed by reference or a read inside the `getSnapshot` callback.
+ */
+function insideSyncExternalStore(path: NodePath): boolean {
+  return (
+    path.findParent(p => {
+      if (!p.isCallExpression() && !p.isOptionalCallExpression()) {
+        return false;
+      }
+      const callee = (p.node as AnyCall).callee;
+      if (callee.type === 'Identifier') {
+        return callee.name === SYNC_EXTERNAL_STORE;
+      }
+      return isAnyMember(callee) && memberNameOf(callee) === SYNC_EXTERNAL_STORE;
+    }) !== null
+  );
+}
+
+/** Static property name of a member access, for matching `React.useSyncExternalStore`. */
+function memberNameOf(node: AnyMember): string | null {
+  if (!node.computed && node.property.type === 'Identifier') {
+    return node.property.name;
+  }
+  return null;
 }
 
 /**
@@ -120,6 +154,9 @@ export function riskPlugin(): PluginObj {
 
 /** Record a finding against the enclosing function, with the offending expression's own location. */
 function record(path: NodePath, opts: RiskPluginOptions, finding: Omit<RiskFinding, 'line' | 'column'>): void {
+  if (insideSyncExternalStore(path)) {
+    return;
+  }
   const fnPath = enclosingFunction(path);
   if (!fnPath || !fnPath.node.loc) {
     return;

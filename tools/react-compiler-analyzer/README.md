@@ -242,10 +242,27 @@ The exclusion is deliberately confined to `storeAccessorPattern`:
   read and still fires.
 - `hidden-selector-hook` is unaffected — `store.use.field()` is the opposite case, where the compiler
   _fails_ to recognize a hook.
-  Both are verifiable in the compiler's own output: the call is wrapped in a
+  Two further shapes are never reported, because the value read is not state:
+
+- **Store-API method references.** `subscribe`, `setState`, `destroy`, `getInitialState` and
+  `getState` yield a _function_, so `const unsubscribe = store.subscribe` cannot cache a stale
+  snapshot. A state **value** passed as an argument — `log(store.currentId)` — is still a read and
+  still fires.
+- **Anything inside `useSyncExternalStore(…)`.** That API is React's sanctioned reactive
+  subscription: it drives `subscribe` and re-invokes `getSnapshot` on every store transition. Both
+  the by-reference form and a read inside the `getSnapshot` callback are therefore reactive:
+
+  ````tsx
+  // not flagged — neither accessor is invoked during render
+  React.useSyncExternalStore(promptLabConfigStore.subscribe, promptLabConfigStore.getState);
+
+  // not flagged — React re-invokes this callback on every transition
+  useSyncExternalStore(store.subscribe, () => store.getState().enabled);
+  ```  Both are verifiable in the compiler's own output: the call is wrapped in a
   `Symbol.for("react.memo_cache_sentinel")` slot that computes once and then always returns the
   cached value. For a plain snapshot that freezes the value; for a hidden hook that means the
   underlying `useStore` runs only once, changing the hook count between renders and crashing.
+  ````
 
 Findings are severity-ranked:
 

@@ -263,6 +263,52 @@ describe('riskPlugin', () => {
     });
   });
 
+  describe('store-API references and useSyncExternalStore', () => {
+    const config: RiskConfig = { storeAccessorPattern: 'Store$', detectGetStateReads: true };
+
+    it('does not flag `.subscribe` / `.getState` handed to useSyncExternalStore', async () => {
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      const line = lineOf('store-api-reference.tsx', 'React.useSyncExternalStore(promptLabConfigStore.subscribe');
+      expect(findings.some(f => f.line === line)).toBe(false);
+    });
+
+    it('does not flag the un-namespaced useSyncExternalStore call', async () => {
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      const line = lineOf('store-api-reference.tsx', 'const snap = useSyncExternalStore(');
+      expect(findings.some(f => f.line === line)).toBe(false);
+    });
+
+    it('does not flag a read inside the getSnapshot callback', async () => {
+      // useSyncExternalStore drives that callback, so the read is reactive by construction.
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      const line = lineOf('store-api-reference.tsx', '() => promptLabConfigStore.getState().enabled');
+      expect(findings.some(f => f.line === line)).toBe(false);
+    });
+
+    it('does not flag store-API methods referenced elsewhere', async () => {
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      expect(
+        findings.some(f => f.line === lineOf('store-api-reference.tsx', 'const unsubscribe = store.subscribe')),
+      ).toBe(false);
+      expect(
+        findings.some(f => f.line === lineOf('store-api-reference.tsx', 'store.setState({ enabled: true })')),
+      ).toBe(false);
+    });
+
+    it('still flags a genuine state read during render', async () => {
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      const line = lineOf('store-api-reference.tsx', 'String(s.sendingData)');
+      expect(findings.some(f => f.line === line && f.symbol === 'getChatStore')).toBe(true);
+    });
+
+    it('still flags a state value passed as an argument', async () => {
+      // Deliberately not excluded: `log(s.currentId)` reads the value now, unlike a method reference.
+      const findings = await runPlugin('store-api-reference.tsx', config);
+      const line = lineOf('store-api-reference.tsx', 'log(s.currentId)');
+      expect(findings.some(f => f.line === line && f.symbol === 'getChatStore')).toBe(true);
+    });
+  });
+
   describe('safe code', () => {
     it('does not flag anything in a component with no store reads', async () => {
       const findings = await runPlugin('safe.tsx', {

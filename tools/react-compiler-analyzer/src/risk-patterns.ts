@@ -210,12 +210,22 @@ export function matchAccessorInit(init: Node, cfg: LeafRiskConfig, bindingName: 
 }
 
 /**
+ * Store-API surface. Reading one of these yields a *function*, never state, so it cannot be a
+ * stale snapshot however it is used — `useSyncExternalStore(store.subscribe, store.getState)`
+ * passes both by reference and invokes neither during render.
+ */
+const STORE_API_MEMBERS = new Set(['getState', 'setState', 'subscribe', 'destroy', 'getInitialState']);
+
+/**
  * True when `parent` reads a value off `node` in a way that surfaces store state — a static member
- * access or an object-destructuring bind. `.getState()` is excluded: {@link matchRiskyCall} owns it.
+ * access or an object-destructuring bind. Store-API methods are excluded: `.getState` is owned by
+ * {@link matchRiskyCall}, and the rest are function references rather than state.
  */
 export function isSnapshotRead(node: Node, parent: Node | null): boolean {
   if (isAnyMember(parent) && parent.object === node) {
-    return memberName(parent) !== 'getState';
+    const name = memberName(parent);
+    // A dynamic key (`s[k]`) could be anything, so keep treating it as a read.
+    return name === null || !STORE_API_MEMBERS.has(name);
   }
   return parent?.type === 'VariableDeclarator' && parent.init === node && parent.id.type === 'ObjectPattern';
 }
