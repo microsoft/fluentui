@@ -23,10 +23,11 @@ function readPackageJson(packageJsonPath: string): unknown {
 }
 
 /**
- * Safely resolves package-contained `.d.ts` entry points declared as direct string `types` targets in an
+ * Safely resolves package-contained `.d.ts` entry points declared as string `types` targets in an
  * `exports` map, such as API Extractor rollups.
  *
- * Nested conditions, package self-references, and non-object export values are ignored.
+ * Supports direct `types` conditions and `import.types` conditions. Other nested conditions, package
+ * self-references, and non-object export values are ignored.
  */
 export function getExportedTypeEntryPoints(packageRoot: string): string[] {
   if (!path.isAbsolute(packageRoot)) {
@@ -54,15 +55,27 @@ export function getExportedTypeEntryPoints(packageRoot: string): string[] {
       continue;
     }
 
-    if (!('types' in exportValue)) {
+    // Prefer a direct `types` condition; fall back to a nested `import.types` condition.
+    let typesOwner: UnknownRecord | undefined;
+    let typesPath: 'types' | 'import.types' | undefined;
+
+    if ('types' in exportValue) {
+      typesOwner = exportValue;
+      typesPath = 'types';
+    } else if (isRecord(exportValue.import) && 'types' in exportValue.import) {
+      typesOwner = exportValue.import;
+      typesPath = 'import.types';
+    }
+
+    if (!typesOwner) {
       continue;
     }
 
-    const typesValue = exportValue.types;
+    const typesValue = typesOwner.types;
 
     if (typeof typesValue !== 'string') {
       throw new Error(
-        `getExportedTypeEntryPoints: exports["${exportKey}"].types in "${packageJsonPath}" must be a string, received ${typeof typesValue}`,
+        `getExportedTypeEntryPoints: exports["${exportKey}"].${typesPath} in "${packageJsonPath}" must be a string, received ${typeof typesValue}`,
       );
     }
 
@@ -71,19 +84,19 @@ export function getExportedTypeEntryPoints(packageRoot: string): string[] {
 
     if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot)) {
       throw new Error(
-        `getExportedTypeEntryPoints: exports["${exportKey}"].types ("${typesValue}") escapes packageRoot "${packageRoot}"`,
+        `getExportedTypeEntryPoints: exports["${exportKey}"].${typesPath} ("${typesValue}") escapes packageRoot "${packageRoot}"`,
       );
     }
 
     if (!resolved.endsWith('.d.ts')) {
       throw new Error(
-        `getExportedTypeEntryPoints: exports["${exportKey}"].types ("${typesValue}") must point to a ".d.ts" file`,
+        `getExportedTypeEntryPoints: exports["${exportKey}"].${typesPath} ("${typesValue}") must point to a ".d.ts" file`,
       );
     }
 
     if (!fs.existsSync(resolved)) {
       throw new Error(
-        `getExportedTypeEntryPoints: exports["${exportKey}"].types resolves to "${resolved}", which does not exist`,
+        `getExportedTypeEntryPoints: exports["${exportKey}"].${typesPath} resolves to "${resolved}", which does not exist`,
       );
     }
 
@@ -94,9 +107,7 @@ export function getExportedTypeEntryPoints(packageRoot: string): string[] {
   }
 
   if (entryPoints.length === 0) {
-    throw new Error(
-      `getExportedTypeEntryPoints: no direct export map "types" entry points found in "${packageJsonPath}"`,
-    );
+    throw new Error(`getExportedTypeEntryPoints: no export map "types" entry points found in "${packageJsonPath}"`);
   }
 
   return entryPoints;
