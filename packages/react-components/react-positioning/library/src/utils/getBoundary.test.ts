@@ -34,7 +34,7 @@ describe('getBoundary', () => {
   // `referenceHidden` to report true even though nothing was actually scrolled out of view. `getBoundary` with
   // `'scrollParent'` is what the fix now uses instead, and it must only stop at ancestors that can actually scroll.
   describe("'scrollParent' boundary", () => {
-    it('skips a static overflow:hidden ancestor that cannot scroll, falling back to the document element', () => {
+    it('skips a static overflow:hidden ancestor that cannot scroll, falling back to the root boundary', () => {
       const staticHiddenContainer = document.createElement('div');
       const trigger = document.createElement('button');
 
@@ -47,7 +47,7 @@ describe('getBoundary', () => {
       staticHiddenContainer.appendChild(trigger);
       document.body.appendChild(staticHiddenContainer);
 
-      expect(getBoundary(trigger, 'scrollParent')).toBe(document.documentElement);
+      expect(getBoundary(trigger, 'scrollParent')).toEqual([]);
     });
 
     it('resolves to the nearest real scroll parent, ignoring an intermediate static overflow:hidden container', () => {
@@ -71,7 +71,7 @@ describe('getBoundary', () => {
       expect(getBoundary(trigger, 'scrollParent')).toBe(scrollableAncestor);
     });
 
-    it('returns the document element when the resolved scroll parent is BODY', () => {
+    it('returns an empty boundary list when the resolved scroll parent is BODY', () => {
       const trigger = document.createElement('button');
       document.body.appendChild(trigger);
 
@@ -81,7 +81,7 @@ describe('getBoundary', () => {
         overflowY: '',
       } as CSSStyleDeclaration);
 
-      expect(getBoundary(trigger, 'scrollParent')).toBe(document.documentElement);
+      expect(getBoundary(trigger, 'scrollParent')).toEqual([]);
     });
   });
 });

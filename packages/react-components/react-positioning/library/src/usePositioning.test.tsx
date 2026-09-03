@@ -61,7 +61,26 @@ const ScrollBoundaryTestComponent = () => {
   );
 };
 
+const NoScrollBoundaryTestComponent = () => {
+  const { targetRef, containerRef } = usePositioning({ hideBoundary: 'scrollParent' });
+
+  return (
+    <>
+      <button ref={targetRef}>Target</button>
+      <div ref={containerRef}>Portaled container</div>
+    </>
+  );
+};
+
 describe('usePositioning', () => {
+  it('omits hide middleware when the target has no scroll parent', () => {
+    render(<NoScrollBoundaryTestComponent />);
+    const calls = jest.mocked(createPositionManager).mock.calls;
+    const { middleware } = calls[calls.length - 1][0];
+
+    expect(middleware.filter(item => item.name === 'hide')).toHaveLength(0);
+  });
+
   it('uses the target scroll parent as the hide boundary for a portaled container', () => {
     const { getByTestId } = render(<ScrollBoundaryTestComponent />);
     const calls = jest.mocked(createPositionManager).mock.calls;

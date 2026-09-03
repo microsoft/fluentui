@@ -27,7 +27,7 @@ export function getBoundary(
     const boundariesNode = targetElement && getScrollParent(targetElement);
 
     if (!boundariesNode || boundariesNode.nodeName === 'BODY') {
-      return targetElement?.ownerDocument?.documentElement;
+      return [];
     }
 
     return boundariesNode;

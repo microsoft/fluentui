@@ -162,6 +162,8 @@ export function usePositioningOptions(options: PositioningOptions): (
       const normalizedAutoSize = normalizeAutoSize(autoSize);
       const normalizedHideBoundary = getBoundary(target, hideBoundary ?? undefined);
       const hideBoundaryOptions = normalizedHideBoundary ? { boundary: normalizedHideBoundary } : {};
+      const shouldUseHideMiddleware =
+        hideBoundary !== 'scrollParent' || !Array.isArray(normalizedHideBoundary) || normalizedHideBoundary.length > 0;
 
       const middleware = [
         normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
@@ -182,8 +184,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
-        hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
+        shouldUseHideMiddleware && hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
+        shouldUseHideMiddleware && hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
