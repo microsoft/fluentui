@@ -66,6 +66,38 @@ react-compiler-analyzer lint ./library/src --mode infer
 # (forward-compatible for switching to annotation mode later)
 ```
 
+## Configuration
+
+Both commands read stable defaults from an optional `rca.config.json` in the current working
+directory. Use `--config <path>` to select a different file. RCA does not search parent
+directories. When no implicit config exists, the built-in defaults apply.
+
+```jsonc
+{
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/rca.config.schema.json",
+  "mode": "infer",
+  "concurrency": 10,
+  "exclude": ["**/__tests__/**", "**/*.test.*"],
+  "parserPlugins": ["decorators-legacy"],
+  "analyze": {
+    "quote": "single",
+    "risks": {
+      "detectGetStateReads": true,
+      "storeAccessorPattern": "Store$",
+      "selectorHookProperties": ["use"]
+    }
+  }
+}
+```
+
+The shipped `rca.config.schema.json` provides editor validation and is also used for runtime
+validation. Unknown keys and invalid nested values fail the run. Explicit CLI options override
+config values. JSON uses camelCase (`fullReasons`, `strictPaths`, `parserPlugins`), while CLI flags
+retain kebab-case (`--full-reasons`, `--strict-paths`, `--parser-plugin`).
+
+Scan paths remain required positional arguments. Source-writing operations are intentionally not
+persistent configuration: use `--annotate` and `--fix` explicitly on each run.
+
 ## Commands
 
 ### `lint` — Directive health gate
@@ -140,11 +172,11 @@ re-introduce every hazard the directives were holding back.
 
 ```bash
 # Load-bearing: removing the directive makes these live.
-react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
+react-compiler-analyzer analyze ./src --format json \
   | jq -r '.findings[] | select(.suppressed) | "\(.file):\(.line)"' | sort -u
 
 # Files that contain at least one load-bearing directive — exclude these from bulk removal.
-react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
+react-compiler-analyzer analyze ./src --format json \
   | jq -r '.findings[] | select(.suppressed) | .file' | sort -u
 ```
 
@@ -172,12 +204,11 @@ Reports which functions the React Compiler will memoize, skip, or bail out on ac
 
 #### Options
 
-| Flag            | Type     | Default    | Description                                                                              |
-| --------------- | -------- | ---------- | ---------------------------------------------------------------------------------------- |
-| `--mode`        | `string` | `"infer"`  | Compilation mode used to **discover** functions: `infer`, `annotation`, `all`            |
-| `--annotate`    | `string` | —          | Insert directives: `manual-memo`, `all`, `all-safe`, or `bailout-only` (see below)       |
-| `--quote`       | `string` | `"single"` | Quote style for directives written by `--annotate`: `single` or `double`                 |
-| `--risk-config` | `string` | —          | Path to a JSON file enabling opt-in runtime-risk detection (see **Compiled but Risky**). |
+| Flag         | Type     | Default    | Description                                                                        |
+| ------------ | -------- | ---------- | ---------------------------------------------------------------------------------- |
+| `--mode`     | `string` | `"infer"`  | Compilation mode used to **discover** functions: `infer`, `annotation`, `all`      |
+| `--annotate` | `string` | —          | Insert directives: `manual-memo`, `all`, `all-safe`, or `bailout-only` (see below) |
+| `--quote`    | `string` | `"single"` | Quote style for directives written by `--annotate`: `single` or `double`           |
 
 #### `--annotate`
 
@@ -210,14 +241,14 @@ will run — which is not necessarily the `--mode` you scanned with:
 
 ```bash
 # Target build = infer: only mark what is unsafe
-react-compiler-analyzer analyze ./src --annotate bailout-only --risk-config rc.json
+react-compiler-analyzer analyze ./src --annotate bailout-only
 
 # Target build = annotation: opt in the safe functions, bail out the risky ones
-react-compiler-analyzer analyze ./src --mode all --annotate all-safe --risk-config rc.json
+react-compiler-analyzer analyze ./src --mode all --annotate all-safe
 ```
 
-Both find risky functions only when risk detection is enabled via `--risk-config`; without it,
-`all-safe` degrades to `all` and `bailout-only` does nothing.
+Both find risky functions only when risk detection is enabled under `analyze.risks` in
+`rca.config.json`; without it, `all-safe` degrades to `all` and `bailout-only` does nothing.
 
 ##### `--mode` selects what is _discoverable_, not what your build does
 
@@ -303,25 +334,27 @@ Findings are severity-ranked:
 - `medium` — a `getXStore().field` read matching a configured store-accessor pattern.
 
 All rules are **off by default** — their `.getState()` / `getXStore()` / `.use.field()`
-conventions are app-specific, so they only run when you opt in via `--risk-config`:
+conventions are app-specific, so they only run when you opt in under `analyze.risks`:
 
 ```jsonc
 {
   // Optional: enables editor IntelliSense + validation against the shipped schema.
-  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/risk-config.schema.json",
-  // Enable `nonreactive-store-read` for `.getState()` snapshot reads (default: false).
-  "detectGetStateReads": true,
-  // Enable `nonreactive-store-read` for `getXStore().field`. Regex matching accessor names. Omit to disable.
-  "storeAccessorPattern": "Store$",
-  // Enable `hidden-selector-hook` for property-chain selectors. Marker property names, e.g.
-  // ["use"] matches `store.use.field()`. Empty/omitted disables the rule.
-  "selectorHookProperties": ["use"]
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/rca.config.schema.json",
+  "analyze": {
+    "risks": {
+      // Enable `nonreactive-store-read` for `.getState()` snapshot reads (default: false).
+      "detectGetStateReads": true,
+      // Enable `nonreactive-store-read` for `getXStore().field`. Omit to disable.
+      "storeAccessorPattern": "Store$",
+      // ["use"] matches `store.use.field()`. Empty/omitted disables the rule.
+      "selectorHookProperties": ["use"]
+    }
+  }
 }
 ```
 
-The config is validated on load: unknown keys are rejected. A JSON schema ships with the package
-at `risk-config.schema.json` (copied to the published root on build) — point your editor's
-`$schema` at it, as shown above, for autocomplete and inline validation.
+The config is validated on load against the same JSON schema used by the editor. The schema ships
+at the package root as `rca.config.schema.json`.
 
 ##### Following wrappers across files (`resolveWrappers`)
 
@@ -346,11 +379,15 @@ to the leaf, reporting the finding at the call site with the resolution chain:
 
 ```jsonc
 {
-  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/risk-config.schema.json",
-  "detectGetStateReads": true,
-  "resolveWrappers": true,
-  // Only needed if wrappers are imported via tsconfig path aliases (not plain relative imports).
-  "pathAliases": { "baseUrl": "/abs/repo/src", "paths": { "@app/*": ["app/*"] } }
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/rca.config.schema.json",
+  "analyze": {
+    "risks": {
+      "detectGetStateReads": true,
+      "resolveWrappers": true,
+      // Only needed for tsconfig path aliases. Relative baseUrl values are config-relative.
+      "pathAliases": { "baseUrl": "./src", "paths": { "@app/*": ["app/*"] } }
+    }
+  }
 }
 ```
 
@@ -383,7 +420,7 @@ An alias sitting at `0` resolved nothing all run. On top of that:
 - If **no** alias matched anything while bare imports were seen, the run says so explicitly and
   states that the risk report below covers none of them.
 
-`baseUrl` is resolved relative to the **risk-config file**, not the working directory, so the same
+`baseUrl` is resolved relative to **the RCA config file**, not the working directory, so the same
 config behaves identically wherever it is run from.
 
 > **Why these and not `unstable-hook-arg`?** An earlier draft also flagged fresh inline arguments
@@ -468,7 +505,7 @@ react-compiler-analyzer analyze ./library/src --annotate manual-memo
 react-compiler-analyzer analyze ./library/src --annotate all
 
 # Opt in everything EXCEPT risk-flagged functions, which get a justified 'use no memo' bailout
-react-compiler-analyzer analyze ./library/src --risk-config risk.json --annotate all-safe
+react-compiler-analyzer analyze ./library/src --annotate all-safe
 ```
 
 ## Shared options
@@ -483,6 +520,7 @@ react-compiler-analyzer analyze ./library/src --risk-config risk.json --annotate
 | `--exclude`       | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
 | `--strict-paths`  | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
 | `--parser-plugin` | `string[]` | `[]`    | Extra Babel parser plugins, e.g. `decorators-legacy`. Match your build's parser config — see **Not Analyzed**                      |
+| `--config`        | `string`   | —       | Use this RCA config instead of an optional `./rca.config.json`                                                                     |
 
 _(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`
 
@@ -550,7 +588,7 @@ scraping text. **stdout carries only the document** — the scan log and per-fil
 redirected to stderr — so it pipes straight into a parser:
 
 ```bash
-react-compiler-analyzer analyze ./src --format json --risk-config rc.json \
+react-compiler-analyzer analyze ./src --format json \
   | jq '.findings[] | select(.compiled) | {file, line, rule, severity}'
 ```
 
@@ -651,6 +689,7 @@ Each write-up carries a minimal reproduction and the exact versions it was verif
 ```
 src/
 ├── cli.ts                — CLI entry: yargs with lint + analyze commands
+├── config.ts             — rca.config.json lookup, schema validation, path normalization
 ├── commands/
 │   ├── shared.ts         — Shared options, validation, DEFAULT_EXCLUDE
 │   ├── lint.ts           — 'lint' command (directive health CI gate)

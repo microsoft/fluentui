@@ -53,7 +53,7 @@ describe('--format json', () => {
       format: 'json' as const,
       'strict-paths': false,
       annotate: undefined,
-      'risk-config': undefined,
+      riskConfig: undefined,
       fix: false,
       ...overrides,
     };
@@ -74,13 +74,11 @@ export function Risky({ label }: { label: string }) {
 }
 `,
       );
-      const configPath = join(tempDir, 'rc.json');
-      writeFileSync(configPath, JSON.stringify({ storeAccessorPattern: 'Store$' }));
     });
 
     it('emits a versioned envelope on stdout', async () => {
       const { doc, code } = await captureJson<AnalysisDocument>(() =>
-        runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
       );
 
       expect(code).toBe(0);
@@ -92,7 +90,7 @@ export function Risky({ label }: { label: string }) {
 
     it('emits findings with the requested field shape', async () => {
       const { doc } = await captureJson<AnalysisDocument>(() =>
-        runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+        runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
       );
 
       expect(doc.findings).toHaveLength(1);
@@ -131,7 +129,7 @@ export function Guarded() {
       /** A load-bearing opt-out must be distinguishable from a function that has no risk at all. */
       it('marks a finding whose function opted out with `use no memo`', async () => {
         const { doc } = await captureJson<AnalysisDocument>(() =>
-          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+          runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
         const suppressed = doc.findings.filter(finding => finding.file.includes('Suppressed.tsx'));
@@ -141,7 +139,7 @@ export function Guarded() {
 
       it('omits the suppressed key for a live finding', async () => {
         const { doc } = await captureJson<AnalysisDocument>(() =>
-          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+          runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
         const live = doc.findings.find(finding => finding.file.includes('Risky.tsx'));
@@ -151,7 +149,7 @@ export function Guarded() {
 
       it('counts suppressed findings separately in the summary', async () => {
         const { doc } = await captureJson<AnalysisDocument>(() =>
-          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+          runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
         expect(doc.summary.findings).toBe(2);
@@ -176,7 +174,7 @@ export function Bail() {
 `,
         );
         const { doc } = await captureJson<AnalysisDocument>(() =>
-          runAnalyze(argv({ 'risk-config': join(tempDir, 'rc.json') }) as never),
+          runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
         const bail = doc.findings.find(finding => finding.file.includes('Bail.tsx'));
@@ -215,15 +213,11 @@ export function LiveWrapper() {
 }
 `,
           );
-          writeFileSync(
-            join(tempDir, 'wrappers.json'),
-            JSON.stringify({ detectGetStateReads: true, resolveWrappers: true }),
-          );
         });
 
         it('reports a wrapper-resolved risk inside an opted-out function', async () => {
           const { doc } = await captureJson<AnalysisDocument>(() =>
-            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+            runAnalyze(argv({ riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never),
           );
 
           const guarded = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && !f.compiled);
@@ -234,7 +228,7 @@ export function LiveWrapper() {
 
         it('still reports the equivalent risk when no directive is present', async () => {
           const { doc } = await captureJson<AnalysisDocument>(() =>
-            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+            runAnalyze(argv({ riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never),
           );
 
           const live = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && f.compiled);
@@ -244,7 +238,7 @@ export function LiveWrapper() {
 
         it('counts the suppressed wrapper finding in the summary', async () => {
           const { doc } = await captureJson<AnalysisDocument>(() =>
-            runAnalyze(argv({ 'risk-config': join(tempDir, 'wrappers.json') }) as never),
+            runAnalyze(argv({ riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never),
           );
 
           expect(doc.summary.findingsSuppressed).toBe(1);

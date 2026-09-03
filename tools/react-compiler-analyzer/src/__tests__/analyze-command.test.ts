@@ -3,13 +3,15 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 import { compileFile, compileFiles } from '../compiler';
-import { analyzeCommand } from '../commands/analyze';
+import { createAnalyzeCommand } from '../commands/analyze';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+
+const analyzeCommand = createAnalyzeCommand({});
 
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);

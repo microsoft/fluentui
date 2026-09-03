@@ -4,12 +4,14 @@ import { tmpdir } from 'os';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
-import { lintCommand, runLint } from '../commands/lint';
+import { createLintCommand, runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+
+const lintCommand = createLintCommand({});
 
 /**
  * Normalize captured CLI output for snapshotting:

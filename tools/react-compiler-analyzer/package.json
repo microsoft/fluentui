@@ -7,13 +7,14 @@
   "files": [
     "bin",
     "*.md",
-    "risk-config.schema.json",
+    "rca.config.schema.json",
     "dist"
   ],
   "bin": "./bin/react-compiler-analyzer.js",
   "dependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
+    "ajv": "^8.13.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "yargs": "^17.7.2"
   },

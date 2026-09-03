@@ -6,7 +6,7 @@ import { discoverFilesWithDirectives } from '../discovery';
 import { applyFixes } from '../fixer';
 import { printReport, printSummary } from '../reporter';
 import { toLintDocument, writeDocument } from '../serializer';
-import type { DirectiveAnalysis } from '../types';
+import type { DirectiveAnalysis, RcaConfig } from '../types';
 import { runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
 
 type LintArgv = SharedArgv & { fix: boolean };
@@ -98,16 +98,18 @@ export async function runLint(argv: LintArgv): Promise<number> {
   });
 }
 
-export const lintCommand: CommandModule<{}, LintArgv> = {
-  command: 'lint <paths..>',
-  describe: "Lint 'use no memo' and 'use memo' directives for redundancy (CI gate)",
-  builder: yarg =>
-    sharedOptions(yarg).option('fix', {
-      type: 'boolean' as const,
-      describe: 'Auto-remove redundant directives and resolve conflicts',
-      default: false,
-    }),
-  handler: async argv => {
-    process.exitCode = await runLint(argv);
-  },
-};
+export function createLintCommand(config: RcaConfig): CommandModule<{}, LintArgv> {
+  return {
+    command: 'lint <paths..>',
+    describe: "Lint 'use no memo' and 'use memo' directives for redundancy (CI gate)",
+    builder: yarg =>
+      sharedOptions(yarg, config).option('fix', {
+        type: 'boolean' as const,
+        describe: 'Auto-remove redundant directives and resolve conflicts',
+        default: false,
+      }),
+    handler: async argv => {
+      process.exitCode = await runLint(argv);
+    },
+  };
+}

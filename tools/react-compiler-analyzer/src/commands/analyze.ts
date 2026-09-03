@@ -1,8 +1,5 @@
 import type { CommandModule, Argv } from 'yargs';
 
-import { existsSync, readFileSync } from 'node:fs';
-import { dirname, isAbsolute, resolve } from 'node:path';
-
 import { compileFilesStreaming } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
@@ -14,112 +11,16 @@ import {
   printUnparseableFiles,
 } from '../coverage-reporter';
 import { discoverAllFiles } from '../discovery';
-import { compilePathAliases, findDeadAliases, type ResolverStats } from '../module-resolver';
+import type { ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
-import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RiskConfig } from '../types';
-import { CliError, runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
+import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RcaConfig, RiskConfig } from '../types';
+import { runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
 
 type AnalyzeArgv = SharedArgv & {
   annotate: AnnotateMode | undefined;
-  'risk-config': string | undefined;
   quote: QuoteStyle;
+  riskConfig?: RiskConfig;
 };
-
-/** Keys allowed in a risk-config file, mirroring `risk-config.schema.json`. */
-export const RISK_CONFIG_KEYS = new Set([
-  '$schema',
-  'storeAccessorPattern',
-  'detectGetStateReads',
-  'selectorHookProperties',
-  'resolveWrappers',
-  'pathAliases',
-]);
-
-/** Load and validate an optional risk-detection config JSON file. */
-export function loadRiskConfig(path: string | undefined): RiskConfig {
-  if (!path) {
-    return {};
-  }
-  const resolved = resolve(path);
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(readFileSync(resolved, 'utf-8'));
-  } catch (err) {
-    throw new CliError(`could not read risk config '${resolved}': ${(err as Error).message}`);
-  }
-  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
-    throw new CliError(`risk config '${resolved}' must be a JSON object.`);
-  }
-
-  const unknownKeys = Object.keys(parsed).filter(k => !RISK_CONFIG_KEYS.has(k));
-  if (unknownKeys.length > 0) {
-    throw new CliError(
-      `risk config '${resolved}' has unknown key(s): ${unknownKeys.join(', ')}. ` +
-        'See risk-config.schema.json for the supported options.',
-    );
-  }
-
-  // `$schema` is an editor-only hint; strip it before handing the config to the plugin.
-  const { $schema: _schema, ...config } = parsed as RiskConfig & { $schema?: string };
-
-  if (config.pathAliases) {
-    // Anchor a relative baseUrl to the config file, not the cwd — otherwise running from the
-    // wrong directory silently resolves nothing and still exits 0.
-    const { baseUrl } = config.pathAliases;
-    const absoluteBaseUrl = isAbsolute(baseUrl) ? baseUrl : resolve(dirname(resolved), baseUrl);
-    if (!existsSync(absoluteBaseUrl)) {
-      throw new CliError(
-        `risk config '${resolved}' has pathAliases.baseUrl '${baseUrl}' which resolves to ` +
-          `'${absoluteBaseUrl}', but that directory does not exist.`,
-      );
-    }
-    config.pathAliases = { ...config.pathAliases, baseUrl: absoluteBaseUrl };
-  }
-
-  warnOnNoOpConfig(config, resolved);
-
-  return config;
-}
-
-/**
- * Flag configurations that produce a clean report because nothing ran, rather than because
- * nothing was found. Both cases below exit 0 with an empty risk section.
- */
-function warnOnNoOpConfig(config: RiskConfig, configPath: string): void {
-  if (!config.resolveWrappers) {
-    return;
-  }
-  const hasLeafRule =
-    config.detectGetStateReads === true ||
-    typeof config.storeAccessorPattern === 'string' ||
-    (config.selectorHookProperties?.length ?? 0) > 0;
-
-  if (!hasLeafRule) {
-    console.warn(
-      `Warning: risk config '${configPath}' sets resolveWrappers but enables no leaf rule ` +
-        '(detectGetStateReads / storeAccessorPattern / selectorHookProperties), so wrapper ' +
-        'resolution will not run.',
-    );
-  }
-  if (!config.pathAliases) {
-    console.warn(
-      `Warning: risk config '${configPath}' sets resolveWrappers without pathAliases — wrappers ` +
-        'imported through workspace aliases will not resolve. Relative imports still work.',
-    );
-    return;
-  }
-
-  // A target directory that does not exist can never resolve, so the alias is dead weight and the
-  // run would report nothing for everything behind it.
-  const dead = findDeadAliases(compilePathAliases(config.pathAliases.paths, config.pathAliases.baseUrl));
-  if (dead.length > 0) {
-    console.warn(
-      `Warning: risk config '${configPath}' has ${dead.length} pathAlias(es) whose target ` +
-        `directories do not exist, so they can never resolve: ` +
-        dead.map(a => `${a.prefix}* -> ${a.targets.join(', ')}`).join('; '),
-    );
-  }
-}
 
 /**
  * Report what wrapper resolution actually reached.
@@ -157,7 +58,7 @@ function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['
 
 /** Command body, separated from the yargs wiring so tests can assert on the exit code. */
 export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
-  const riskConfig = loadRiskConfig(argv['risk-config']);
+  const riskConfig = argv.riskConfig ?? {};
 
   if (argv.annotate && argv.mode === 'annotation') {
     // In annotation mode the compiler only reports functions that already carry 'use memo', so
@@ -247,29 +148,26 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
   });
 }
 
-export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
-  command: 'analyze <paths..>',
-  describe: 'Analyze React Compiler coverage and migration potential',
-  builder: yarg =>
-    sharedOptions(yarg)
-      .option('annotate', {
-        type: 'string' as const,
-        describe:
-          "Insert directives into compilable functions. 'manual-memo': 'use memo' on those with useMemo/useCallback/React.memo. 'all': 'use memo' on all. 'all-safe': like 'all' but risky functions (per --risk-config) get a justified 'use no memo' bailout instead. 'bailout-only': write only the bailouts, no opt-ins.",
-        choices: ['manual-memo', 'all', 'all-safe', 'bailout-only'] as const,
-      })
-      .option('quote', {
-        type: 'string' as const,
-        describe: 'Quote style for directives written by --annotate',
-        choices: ['single', 'double'] as const,
-        default: 'single' as QuoteStyle,
-      })
-      .option('risk-config', {
-        type: 'string' as const,
-        describe:
-          'Path to a JSON file enabling risk detection (storeAccessorPattern, detectGetStateReads, selectorHookProperties).',
-      }) as Argv<AnalyzeArgv>,
-  handler: async argv => {
-    process.exitCode = await runAnalyze(argv);
-  },
-};
+export function createAnalyzeCommand(config: RcaConfig): CommandModule<{}, AnalyzeArgv> {
+  return {
+    command: 'analyze <paths..>',
+    describe: 'Analyze React Compiler coverage and migration potential',
+    builder: yarg =>
+      sharedOptions(yarg, config)
+        .option('annotate', {
+          type: 'string' as const,
+          describe:
+            "Insert directives into compilable functions. 'manual-memo': 'use memo' on those with useMemo/useCallback/React.memo. 'all': 'use memo' on all. 'all-safe': like 'all' but risky functions (per rca.config.json) get a justified 'use no memo' bailout instead. 'bailout-only': write only the bailouts, no opt-ins.",
+          choices: ['manual-memo', 'all', 'all-safe', 'bailout-only'] as const,
+        })
+        .option('quote', {
+          type: 'string' as const,
+          describe: 'Quote style for directives written by --annotate',
+          choices: ['single', 'double'] as const,
+          default: config.analyze?.quote ?? ('single' as QuoteStyle),
+        }) as Argv<AnalyzeArgv>,
+    handler: async argv => {
+      process.exitCode = await runAnalyze({ ...argv, riskConfig: config.analyze?.risks });
+    },
+  };
+}

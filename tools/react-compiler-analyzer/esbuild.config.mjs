@@ -13,7 +13,7 @@ const outdir = join(projectRoot, 'dist');
  * and bundling yargs makes esbuild pick its `import` condition, whose `cliui/index.mjs` swaps
  * `wrap-ansi` for a char-slicing fallback that mangles `--help`.
  */
-const external = ['@babel/core', '@babel/preset-typescript', 'babel-plugin-react-compiler', 'yargs'];
+const external = ['@babel/core', '@babel/preset-typescript', 'ajv', 'babel-plugin-react-compiler', 'yargs'];
 
 await rm(outdir, { recursive: true, force: true });
 

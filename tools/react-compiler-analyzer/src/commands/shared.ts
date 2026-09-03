@@ -5,7 +5,7 @@ import type { Argv } from 'yargs';
 
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import { dedupeFileEntries, findPackageName } from '../discovery';
-import type { CompilationMode, FileEntry, OutputFormat } from '../types';
+import type { CompilationMode, FileEntry, OutputFormat, RcaConfig } from '../types';
 
 /**
  * A user-facing failure (bad path, bad flag, unreadable config). Thrown rather than exiting so
@@ -55,7 +55,7 @@ export const DEFAULT_EXCLUDE = [
 /**
  * Add shared CLI options common to all subcommands.
  */
-export function sharedOptions<T>(yarg: Argv<T>) {
+export function sharedOptions<T>(yarg: Argv<T>, config: RcaConfig = {}) {
   return yarg
     .positional('paths', {
       type: 'string' as const,
@@ -66,48 +66,48 @@ export function sharedOptions<T>(yarg: Argv<T>) {
     .option('verbose', {
       type: 'boolean' as const,
       describe: 'Show per-function compiler events in the output',
-      default: false,
+      default: config.verbose ?? false,
     })
     .option('concurrency', {
       type: 'number' as const,
       describe: 'Max parallel file processing',
-      default: 10,
+      default: config.concurrency ?? 10,
     })
     .option('full-reasons', {
       type: 'boolean' as const,
       describe: 'Show full compiler error reasons instead of truncated summaries',
-      default: false,
+      default: config.fullReasons ?? false,
     })
     .option('exclude', {
       type: 'string' as const,
       array: true as const,
       describe: 'Glob patterns passed to fs.globSync exclude',
-      default: DEFAULT_EXCLUDE,
+      default: config.exclude ?? DEFAULT_EXCLUDE,
     })
     .option('mode', {
       type: 'string' as const,
       describe: 'React Compiler compilation mode',
       choices: ['infer', 'annotation', 'all'] as const,
-      default: 'infer' as CompilationMode,
+      default: config.mode ?? ('infer' as CompilationMode),
     })
     .option('format', {
       type: 'string' as const,
       describe:
         'Output format: cli (terminal-friendly), md (GitHub-flavored markdown), html (styled document), or json (machine-readable on stdout, diagnostics on stderr)',
       choices: ['cli', 'md', 'html', 'json'] as const,
-      default: 'cli' as OutputFormat,
+      default: config.format ?? ('cli' as OutputFormat),
     })
     .option('strict-paths', {
       type: 'boolean' as const,
       describe: 'Fail instead of warning when a given path does not exist',
-      default: false,
+      default: config.strictPaths ?? false,
     })
     .option('parser-plugin', {
       type: 'string' as const,
       array: true as const,
       describe:
         "Extra Babel parser plugins, e.g. --parser-plugin decorators-legacy. Match your build's parser config, otherwise files it compiles are reported as unparseable.",
-      default: [] as string[],
+      default: config.parserPlugins ?? ([] as string[]),
     });
 }
 

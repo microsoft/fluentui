@@ -218,6 +218,24 @@ export interface RiskConfig {
   };
 }
 
+/** Stable command defaults read from `rca.config.json`. */
+export interface RcaConfig {
+  /** Editor-only reference to the shipped JSON schema. */
+  $schema?: string;
+  mode?: CompilationMode;
+  verbose?: boolean;
+  concurrency?: number;
+  fullReasons?: boolean;
+  exclude?: string[];
+  format?: OutputFormat;
+  strictPaths?: boolean;
+  parserPlugins?: string[];
+  analyze?: {
+    quote?: QuoteStyle;
+    risks?: RiskConfig;
+  };
+}
+
 // ── Machine-readable output (`--format json`) ──
 
 /** Fields shared by every emitted document, so consumers can dispatch on `command`. */

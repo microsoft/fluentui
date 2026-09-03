@@ -2,128 +2,8 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
-import { loadRiskConfig, runAnalyze } from '../commands/analyze';
-import { CliError } from '../commands/shared';
+import { runAnalyze } from '../commands/analyze';
 import { createModuleResolver, createResolverStats, compilePathAliases, findDeadAliases } from '../module-resolver';
-
-describe('loadRiskConfig', () => {
-  let tempDir: string;
-  let warnings: string[];
-  let originalWarn: typeof console.warn;
-  const originalCwd = process.cwd();
-
-  beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'risk-config-'));
-    mkdirSync(join(tempDir, 'app', 'src'), { recursive: true });
-    warnings = [];
-    originalWarn = console.warn;
-    console.warn = (...args: unknown[]) => {
-      warnings.push(args.map(String).join(' '));
-    };
-  });
-
-  afterEach(() => {
-    console.warn = originalWarn;
-    process.chdir(originalCwd);
-  });
-
-  function writeConfig(name: string, config: unknown): string {
-    const configPath = join(tempDir, 'app', name);
-    writeFileSync(configPath, JSON.stringify(config));
-    return configPath;
-  }
-
-  it('returns an empty config when no path is given', () => {
-    expect(loadRiskConfig(undefined)).toEqual({});
-  });
-
-  it('rejects unknown keys', () => {
-    const configPath = writeConfig('bad.json', { nope: true });
-    expect(() => loadRiskConfig(configPath)).toThrow(/unknown key/);
-  });
-
-  describe('pathAliases.baseUrl', () => {
-    it('resolves a relative baseUrl against the config file, not the cwd', () => {
-      const configPath = writeConfig('rc.json', {
-        detectGetStateReads: true,
-        resolveWrappers: true,
-        pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'] } },
-      });
-
-      // Same config, two very different working directories — must resolve identically.
-      process.chdir(tempDir);
-      const fromParent = loadRiskConfig(configPath);
-      process.chdir(originalCwd);
-      const fromRepoRoot = loadRiskConfig(configPath);
-
-      expect(fromParent.pathAliases!.baseUrl).toBe(join(tempDir, 'app', 'src'));
-      expect(fromRepoRoot.pathAliases!.baseUrl).toBe(fromParent.pathAliases!.baseUrl);
-    });
-
-    it('leaves an absolute baseUrl untouched', () => {
-      const absolute = join(tempDir, 'app', 'src');
-      const configPath = writeConfig('abs.json', {
-        detectGetStateReads: true,
-        resolveWrappers: true,
-        pathAliases: { baseUrl: absolute, paths: { '@app/*': ['*'] } },
-      });
-      expect(loadRiskConfig(configPath).pathAliases!.baseUrl).toBe(absolute);
-    });
-
-    it('fails when baseUrl points at a directory that does not exist', () => {
-      const configPath = writeConfig('missing.json', {
-        detectGetStateReads: true,
-        resolveWrappers: true,
-        pathAliases: { baseUrl: './not-here', paths: { '@app/*': ['*'] } },
-      });
-      expect(() => loadRiskConfig(configPath)).toThrow(CliError);
-      expect(() => loadRiskConfig(configPath)).toThrow(/does not exist/);
-    });
-  });
-
-  describe('no-op warnings', () => {
-    it('warns when resolveWrappers is set with no leaf rule', () => {
-      loadRiskConfig(writeConfig('no-leaf.json', { resolveWrappers: true }));
-      expect(warnings.some(w => w.includes('enables no leaf rule'))).toBe(true);
-    });
-
-    it('warns when resolveWrappers is set without pathAliases', () => {
-      loadRiskConfig(writeConfig('no-alias.json', { detectGetStateReads: true, resolveWrappers: true }));
-      expect(warnings.some(w => w.includes('without pathAliases'))).toBe(true);
-    });
-
-    it('stays quiet for a fully configured wrapper setup', () => {
-      loadRiskConfig(
-        writeConfig('ok.json', {
-          detectGetStateReads: true,
-          resolveWrappers: true,
-          pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'] } },
-        }),
-      );
-      expect(warnings).toHaveLength(0);
-    });
-
-    it('warns when a pathAlias target directory does not exist', () => {
-      loadRiskConfig(
-        writeConfig('dead-alias.json', {
-          detectGetStateReads: true,
-          resolveWrappers: true,
-          pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'], '@ghost/*': ['ghost/*'] } },
-        }),
-      );
-
-      const warning = warnings.find(w => w.includes('target'));
-      expect(warning).toBeDefined();
-      expect(warning).toContain('@ghost/');
-      expect(warning).toContain('can never resolve');
-    });
-
-    it('stays quiet when wrapper resolution is off', () => {
-      loadRiskConfig(writeConfig('local-only.json', { detectGetStateReads: true }));
-      expect(warnings).toHaveLength(0);
-    });
-  });
-});
 
 describe('--annotate under --mode annotation', () => {
   const WRAPPERS = join(__dirname, '__fixtures__', 'risk', 'wrappers');
@@ -157,7 +37,7 @@ describe('--annotate under --mode annotation', () => {
       format: 'md' as const,
       'strict-paths': false,
       annotate: undefined,
-      'risk-config': undefined,
+      riskConfig: undefined,
       quote: 'single' as const,
       ...overrides,
     };
@@ -196,7 +76,7 @@ describe('wrapper resolution reporting', () => {
     console.log = originalLog;
   });
 
-  function argv(riskConfigPath: string) {
+  function argv(riskConfig: Record<string, unknown>) {
     return {
       paths: [WRAPPERS],
       verbose: false,
@@ -207,15 +87,13 @@ describe('wrapper resolution reporting', () => {
       format: 'md' as const,
       'strict-paths': false,
       annotate: undefined,
-      'risk-config': riskConfigPath,
+      riskConfig,
+      quote: 'single' as const,
     };
   }
 
   it('reports how many imports resolved, so a clean report can be trusted', async () => {
-    const configPath = join(mkdtempSync(join(tmpdir(), 'wrap-stats-')), 'rc.json');
-    writeFileSync(configPath, JSON.stringify({ detectGetStateReads: true, resolveWrappers: true }));
-
-    await runAnalyze(argv(configPath) as never);
+    await runAnalyze(argv({ detectGetStateReads: true, resolveWrappers: true }) as never);
 
     const output = captured.join('\n');
     expect(output).toMatch(/Wrapper resolution: \d+ import\(s\) resolved/);
@@ -227,17 +105,13 @@ describe('wrapper resolution reporting', () => {
     const dir = mkdtempSync(join(tmpdir(), 'wrap-alias-'));
     mkdirSync(join(dir, 'live'), { recursive: true });
     mkdirSync(join(dir, 'idle'), { recursive: true });
-    const configPath = join(dir, 'rc.json');
-    writeFileSync(
-      configPath,
-      JSON.stringify({
+    await runAnalyze(
+      argv({
         detectGetStateReads: true,
         resolveWrappers: true,
         pathAliases: { baseUrl: dir, paths: { '@live/*': ['live/*'], '@idle/*': ['idle/*'] } },
-      }),
+      }) as never,
     );
-
-    await runAnalyze(argv(configPath) as never);
 
     const output = captured.join('\n');
     expect(output).toContain('aliases: 0/2 matched at least one import');
@@ -245,10 +119,7 @@ describe('wrapper resolution reporting', () => {
   });
 
   it('omits the line entirely when wrapper resolution is off', async () => {
-    const configPath = join(mkdtempSync(join(tmpdir(), 'wrap-off-')), 'rc.json');
-    writeFileSync(configPath, JSON.stringify({ detectGetStateReads: true }));
-
-    await runAnalyze(argv(configPath) as never);
+    await runAnalyze(argv({ detectGetStateReads: true }) as never);
 
     expect(captured.some(l => l.includes('Wrapper resolution:'))).toBe(false);
   });

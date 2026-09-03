@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "React Compiler Analyzer configuration",
+  "description": "Configuration for react-compiler-analyzer. Command-line options override values from this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional reference to this JSON schema for editor IntelliSense."
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["infer", "annotation", "all"],
+      "description": "React Compiler compilation mode used by both commands."
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Show per-function compiler events in the output."
+    },
+    "concurrency": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum number of files processed in parallel."
+    },
+    "fullReasons": {
+      "type": "boolean",
+      "description": "Show full compiler error reasons instead of truncated summaries."
+    },
+    "exclude": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Glob patterns excluded when scanning directories."
+    },
+    "format": {
+      "type": "string",
+      "enum": ["cli", "md", "html", "json"],
+      "description": "Report output format used by both commands."
+    },
+    "strictPaths": {
+      "type": "boolean",
+      "description": "Fail instead of warning when a scan path does not exist."
+    },
+    "parserPlugins": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Additional Babel parser plugins used to match the build grammar."
+    },
+    "analyze": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Stable settings specific to the analyze command.",
+      "properties": {
+        "quote": {
+          "type": "string",
+          "enum": ["single", "double"],
+          "description": "Quote style for directives written by --annotate."
+        },
+        "risks": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Opt-in detection for known React Compiler runtime risks.",
+          "properties": {
+            "storeAccessorPattern": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Regex source matching non-hook store-accessor names such as getAppStore."
+            },
+            "detectGetStateReads": {
+              "type": "boolean",
+              "description": "Detect imperative .getState() snapshot reads."
+            },
+            "selectorHookProperties": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true,
+              "description": "Property names identifying hidden selector hooks, such as use in store.use.field()."
+            },
+            "resolveWrappers": {
+              "type": "boolean",
+              "description": "Follow first-party wrapper calls and re-export barrels to risky leaves."
+            },
+            "pathAliases": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["baseUrl", "paths"],
+              "description": "TypeScript-style aliases used while resolving first-party wrappers.",
+              "properties": {
+                "baseUrl": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Directory against which path alias targets are resolved."
+                },
+                "paths": {
+                  "type": "object",
+                  "description": "Map of alias patterns to target patterns.",
+                  "additionalProperties": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

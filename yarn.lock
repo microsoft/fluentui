@@ -3881,6 +3881,7 @@ __metadata:
     "@babel/core": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
     "@babel/types": "npm:7.29.0"
+    ajv: "npm:^8.13.0"
     babel-plugin-react-compiler: "npm:^1.0.0"
     yargs: "npm:^17.7.2"
   bin:
