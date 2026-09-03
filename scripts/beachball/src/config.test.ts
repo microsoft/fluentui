@@ -13,7 +13,6 @@ jest.mock('child_process', () => ({
 }));
 
 describe(`beachball configs`, () => {
-  const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
   const execSyncMock = jest.mocked(execSync);
   const precommit = sharedConfig.hooks.precommit;
 
@@ -28,7 +27,10 @@ describe(`beachball configs`, () => {
 
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
+      access: 'public',
+      branch: 'origin/master',
       changehint: "Run 'yarn change' to generate a change file",
+      commit: false,
       disallowedChangeTypes: ['major'],
       generateChangelog: true,
       hooks: {
@@ -47,6 +49,8 @@ describe(`beachball configs`, () => {
         '**/stories/**',
         '**/.storybook/**',
         '**/bundle-size/**',
+        '**/monosize.config.mjs',
+        '**/bundle-isolation.config.json',
         '**/common/isConformant.ts',
         '**/src/testing/**',
         '**/src/e2e/**',
@@ -55,7 +59,7 @@ describe(`beachball configs`, () => {
         '**/SPEC*.md',
         '**/tests/**',
       ],
-      scope: ['!packages/fluentui/*'],
+      registry: 'https://registry.npmjs.org',
       tag: 'latest',
       changelog: {
         customRenderers: {
@@ -93,7 +97,6 @@ describe(`beachball configs`, () => {
   it(`should generate v8 release config`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
         'packages/azure-themes',
         'packages/cra-template',
         'packages/date-time-utilities',
@@ -125,18 +128,12 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    expect(vNextConfig.scope).toEqual(expect.arrayContaining(excludedPackagesFromReleaseProcess));
-
-    expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
-
-    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackagesFromReleaseProcess.includes(scope));
-
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
       {
         changelogPath: 'packages/react-components/react-components',
-        masterPackageName: '@fluentui/react-components',
-        include: includeScopes,
+        mainPackageName: '@fluentui/react-components',
+        include: vNextConfig.scope,
       },
     ]);
 
@@ -149,11 +146,7 @@ describe(`beachball configs`, () => {
 
   it(`should generate web-components release config`, () => {
     expect(webComponentsConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/vr-tests-web-components',
-        'packages/web-components',
-      ]),
+      expect.arrayContaining(['apps/vr-tests-web-components', 'packages/web-components']),
     );
 
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);

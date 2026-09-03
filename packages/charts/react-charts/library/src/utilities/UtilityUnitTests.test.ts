@@ -15,7 +15,7 @@ import * as vbcUtils from './vbc-utils';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { fireEvent } from '@testing-library/react';
 const { Timezone } = require('../../scripts/constants');
-const env = require('../../config/tests');
+const env = require('../../config/tests.cjs');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 const X_ORIGIN = 0;

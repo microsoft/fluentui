@@ -38,6 +38,17 @@ describe('Dropdown', () => {
     expect(getAllByRole('option')).toHaveLength(3);
   });
 
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Dropdown open listbox={{ popover: 'manual' }} placeholder="Select an option">
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+      </Dropdown>,
+    );
+
+    expect(getByRole('listbox')).toHaveAttribute('popover', 'manual');
+  });
+
   it('sets data-selected="true" on the selected option', () => {
     const { getAllByRole } = render(
       <Dropdown open defaultSelectedOptions={['Dog']} placeholder="Select">

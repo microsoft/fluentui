@@ -2,6 +2,97 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Fri, 21 Aug 2026 04:08:41 GMT",
+      "version": "0.0.96",
+      "tag": "@fluentui/chart-web-components_v0.0.96",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.1.2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2026 04:08:27 GMT",
+      "version": "0.0.95",
+      "tag": "@fluentui/chart-web-components_v0.0.95",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.1.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2026 04:10:22 GMT",
+      "version": "0.0.94",
+      "tag": "@fluentui/chart-web-components_v0.0.94",
+      "comments": {
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "32b42a5bf79c1836047dfc7fae07b1320731bce4",
+            "comment": "package bump due to a partial publish"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.1.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2026 17:06:43 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.93",
+      "version": "0.0.93",
+      "comments": {
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "7ed216e116af3d202b028d568dc6c4c975b74ad0",
+            "comment": "chore: fixing package bump issue to latest published version"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "a7f23fff45fe9d7832098b34a2d1151c69a80894",
+            "comment": "chore: security dependency remediation for S360 CVEs"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.3",
+            "commit": "7ed216e116af3d202b028d568dc6c4c975b74ad0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2026 04:09:41 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.92",
       "version": "0.0.92",

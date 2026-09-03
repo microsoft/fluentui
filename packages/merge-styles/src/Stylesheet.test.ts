@@ -90,6 +90,7 @@ describe('Stylesheet', () => {
 
       it('returns a new instance on mismatched global', () => {
         // We need to modify internals in order to mock this behaviour.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (_stylesheet as any)._lastStyleElement = { ownerDocument: {} };
 
         const newInstance = Stylesheet.getInstance();
@@ -407,6 +408,15 @@ describe('Stylesheet', () => {
           // eslint-disable-next-line @fluentui/max-len
           '{"classNameToArgs":{"css-1":{"args":[{"background":"red"}],"rules":["a { background: red };"]}},"counter":2,"keyToClassName":{"kobzol":"css-1"},"preservedRules":[],"rules":["a { background: red };"]}',
         );
+      });
+
+      it('escapes `<` so the result is safe to embed in an inline script element', () => {
+        _stylesheet.insertRule('a { content: "</script>" };');
+
+        const serializedStylesheet = _stylesheet.serialize();
+
+        expect(serializedStylesheet).not.toContain('<');
+        expect(JSON.parse(serializedStylesheet).rules).toEqual(['a { content: "</script>" };']);
       });
 
       it('can be deserialized', () => {

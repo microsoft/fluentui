@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/global-context",
-  "version": "9.0.0-beta.103",
+  "version": "9.0.0-beta.104",
   "description": "Extension of React createContext to be a true singleton on the global scope",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,15 +12,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.2.18",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-context-selector": "^9.2.19",
+    "@fluentui/react-utilities": "^9.26.6",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -31,17 +34,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

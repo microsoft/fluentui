@@ -1,0 +1,152 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/FocusZone and FocusTrapZone Migration" />
+
+# FocusZone and FocusTrapZone Migration
+
+## Overview
+
+Fluent UI React v9 does not provide direct `FocusZone` or `FocusTrapZone`
+components. Prefer a v9 component that already owns the required semantics and
+keyboard behavior, such as `TabList`, `Menu`, `Tree`, `Accordion`, `Dialog`, or
+`Popover`. Use hooks from `@fluentui/react-tabster` only for custom composite
+widgets or focus-management scenarios.
+
+## Examples
+
+### FocusZone
+
+For a custom arrow-navigated group, replace `FocusZone` with
+`useArrowNavigationGroup`.
+
+```tsx
+// v8
+import { FocusZone, FocusZoneDirection } from '@fluentui/react';
+
+<FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation>
+  {items}
+</FocusZone>;
+```
+
+```tsx
+// v9
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+
+const CustomToolbar = () => {
+  const navigationAttributes = useArrowNavigationGroup({
+    axis: 'horizontal',
+    circular: true,
+  });
+
+  return (
+    <div role="toolbar" {...navigationAttributes}>
+      {items}
+    </div>
+  );
+};
+```
+
+Do not use `role="toolbar"` as a generic replacement for `FocusZone`; choose the
+ARIA role that matches the widget being implemented.
+
+Do not add a manual roving `tabIndex` implementation around
+`useArrowNavigationGroup`. Keep the group's interactive descendants normally
+focusable and let Tabster manage the group's single Tab stop and arrow
+movement. Setting non-current controls to `tabIndex={-1}` can remove them from
+arrow-navigation discovery. Map `defaultTabbableElement` through the verified
+default-descendant or focus-finder mechanism instead of manual tab indexes.
+
+### FocusTrapZone
+
+`Dialog`, `Popover`, and other overlay components already manage focus. Do not
+wrap them in another focus trap. For a custom modal surface, use
+`useModalAttributes`.
+
+If the trapped surface has dialog or modal semantics, migrate the whole
+composition to v9 `Dialog`, even when the v8 source used a native
+`role="dialog"` element. Reserve `useModalAttributes` for custom modal surfaces
+not represented by a shipped owning component. A controlled `Dialog` must pair
+`open` with `onOpenChange`; keep its opener in `DialogTrigger`, or use the
+documented restore-focus attributes when that is impossible.
+
+```tsx
+// v8
+<FocusTrapZone forceFocusInsideTrap disableRestoreFocus={false}>
+  {content}
+</FocusTrapZone>
+```
+
+```tsx
+// v9 custom modal surface
+import { useModalAttributes } from '@fluentui/react-tabster';
+
+const CustomModal = () => {
+  const [open, setOpen] = React.useState(false);
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: true,
+    legacyTrapFocus: true,
+  });
+
+  return (
+    <>
+      <button {...triggerAttributes} onClick={() => setOpen(true)}>
+        Open
+      </button>
+      {open && (
+        <div role="dialog" aria-modal="true" {...modalAttributes}>
+          {content}
+          <button onClick={() => setOpen(false)}>Close</button>
+        </div>
+      )}
+    </>
+  );
+};
+```
+
+## Prop Mapping
+
+### FocusZone API mapping
+
+| v8 `FocusZone`                                 | v9 approach                                                                                                          |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `direction`                                    | `useArrowNavigationGroup({ axis })`                                                                                  |
+| `isCircularNavigation`                         | `circular`                                                                                                           |
+| `shouldFocusOnMount`, `defaultTabbableElement` | Owning component's verified initial-focus/default-descendant behavior; do not emulate with manual roving tab indexes |
+| Nested zones                                   | Nested semantic components and Tabster mover/grouper hooks                                                           |
+| `shouldEnterInnerZone`                         | Model nested widget behavior explicitly; no direct prop                                                              |
+| `allowTabKey`, `handleTabKey`                  | `tabbable` where appropriate, otherwise app-owned keyboard behavior                                                  |
+| `focus()`, `focusLast()`, `focusElement()`     | App-owned refs and focus helpers; no direct instance API                                                             |
+| `setFocusAlignment()`                          | No direct equivalent                                                                                                 |
+| `styles`, `theme`                              | Replace with `className`, `makeStyles`, and v9 design tokens                                                         |
+
+`allowFocusRoot`, `shouldRaiseClicks`, `pagingSupportDisabled`,
+`checkForNoWrap`, and `preventFocusRestoration` do not have reliable one-to-one
+replacements. Re-evaluate the behavior in the context of the owning v9
+component.
+
+### FocusTrapZone API mapping
+
+| v8 `FocusTrapZone`                               | v9 approach                                                                                     |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `forceFocusInsideTrap`                           | `useModalAttributes({ trapFocus: true, legacyTrapFocus: true })` or an owning overlay component |
+| Focus restoration                                | `triggerAttributes`/`modalAttributes`, or `useRestoreFocusTarget` and `useRestoreFocusSource`   |
+| `firstFocusableSelector`, `firstFocusableTarget` | Owning component's initial-focus API or app-owned ref logic                                     |
+| `disableRestoreFocus`                            | Omit restore attributes only when restoration is intentionally app-owned                        |
+| `disableFirstFocus`                              | App-owned initial-focus decision                                                                |
+| `enableAriaHiddenSiblings`                       | Modalizer behavior; do not manipulate sibling `aria-hidden` manually                            |
+| `isClickableOutsideFocusTrap`                    | Choose modal or non-modal behavior in the owning component                                      |
+
+`focusPreviouslyFocusedInnerElement` and other imperative trap details have no
+direct prop mapping. Verify the user-visible behavior rather than reproducing
+the v8 implementation.
+
+`legacyTrapFocus` preserves v8's strict `forceFocusInsideTrap` behavior. Without
+it, Tabster still makes the rest of the page inert, but allows focus to move to
+browser chrome like the native `<dialog>` element. Prefer an owning v9 overlay
+unless a custom surface specifically requires the legacy behavior.
+
+## Accessibility
+
+Test keyboard entry and exit, arrow-key movement, nested widgets, focus
+restoration after unmount, Escape behavior, and browser zoom. A focus migration
+is complete only when the semantic component and its keyboard model agree.

@@ -14,8 +14,6 @@ name: 'headless_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
 
@@ -49,15 +47,6 @@ extends:
                   targetPath: $(System.DefaultWorkingDirectory)
                   artifactName: output
             steps:
-              - template: .devops/templates/tools.yml@self
-                parameters:
-                  dryRun: ${{ parameters.dryRun }}
-
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
               - task: Bash@3
                 name: validation
                 inputs:
@@ -76,10 +65,9 @@ extends:
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
 
-              - script: |
-                  corepack enable
-                  yarn install --immutable
-                displayName: Install dependencies
+              - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
                 # Deletes all existing changefiles so that only the experimental bump happens
               - script: |
@@ -125,11 +113,9 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn beachball publish -b origin/$(validation.branchPath) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-headless.config.js
+                  yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-headless.config.js
                   git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
+                env:
+                  BEACHBALL_NPM_TOKEN: $(npmToken)

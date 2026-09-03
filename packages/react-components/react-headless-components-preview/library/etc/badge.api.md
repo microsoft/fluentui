@@ -4,21 +4,24 @@
 
 ```ts
 
-import type { BadgeBaseProps } from '@fluentui/react-badge';
 import type { BadgeBaseState } from '@fluentui/react-badge';
-import type { BadgeSlots as BadgeSlots_2 } from '@fluentui/react-badge';
+import { BadgeBaseProps as BadgeProps } from '@fluentui/react-badge';
+import { BadgeSlots } from '@fluentui/react-badge';
+import type { CounterBadgeBaseState } from '@fluentui/react-badge';
+import { CounterBadgeBaseProps as CounterBadgeProps } from '@fluentui/react-badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PresenceBadgeBaseState } from '@fluentui/react-badge';
+import { PresenceBadgeBaseProps as PresenceBadgeProps } from '@fluentui/react-badge';
+import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import type * as React_2 from 'react';
-import { renderBadge_unstable as renderBadge } from '@fluentui/react-badge';
+import { renderBadge_unstable } from '@fluentui/react-badge';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
-// @public
-export type BadgeProps = BadgeBaseProps;
+export { BadgeProps }
 
-// @public
-export type BadgeSlots = BadgeSlots_2;
+export { BadgeSlots }
 
 // @public
 export type BadgeState = BadgeBaseState & {
@@ -27,10 +30,48 @@ export type BadgeState = BadgeBaseState & {
     };
 };
 
-export { renderBadge }
+// @public
+export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+export { CounterBadgeProps }
+
+// @public
+export type CounterBadgeState = CounterBadgeBaseState & {
+    root: {
+        'data-count': string;
+        'data-dot'?: string;
+        'data-hidden'?: string;
+        'data-overflowed'?: string;
+    };
+};
+
+// @public
+export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+export { PresenceBadgeProps }
+
+// @public
+export type PresenceBadgeState = PresenceBadgeBaseState & {
+    root: {
+        'data-status': PresenceBadgeBaseState['status'];
+        'data-out-of-office'?: string;
+    };
+};
+
+export { PresenceBadgeStatus }
+
+export { renderBadge_unstable as renderBadge }
+export { renderBadge_unstable as renderCounterBadge }
+export { renderBadge_unstable as renderPresenceBadge }
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLDivElement>) => BadgeState;
+
+// @public
+export const useCounterBadge: (props: CounterBadgeProps, ref: React_2.Ref<HTMLDivElement>) => CounterBadgeState;
+
+// @public
+export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLDivElement>) => PresenceBadgeState;
 
 // (No @packageDocumentation comment for this package)
 
