@@ -69,25 +69,16 @@ describe('BreadcrumbButton', () => {
     `);
   });
 
-  // Regression test for https://github.com/microsoft/fluentui/issues/36645: a plain `Omit`
-  // collapsed the distributive ARIA button union, so the anchor arm's `href` was not assignable.
-  // Type-check runs against tests, so this covers the base hook and the types together.
   it('accepts the anchor arm of the ARIA button union in the base hook', () => {
     const { result } = renderHook(() =>
       useBreadcrumbButtonBase_unstable({ as: 'a', href: '/somewhere' }, React.createRef<HTMLAnchorElement>()),
     );
 
-    // `components.root` stays 'button' (the slot's declared default); the anchor arm resolves
-    // through the slot props, where useARIAButtonProps carries `as: 'a'` to the render layer.
     expect(result.current).toMatchObject({
       root: { as: 'a', href: '/somewhere' },
     });
   });
 
-  // Regression test for the controlType operator-precedence bug: `as ?? href ? 'a' : 'button'`
-  // parses as `(as ?? href) ? 'a' : 'button'`, so an explicit `as: 'button'` (truthy) computed
-  // controlType 'a' and the ARIA button pipeline emitted the anchor arm (`as: 'a'`, role="button")
-  // for a caller who asked for a real <button>.
   it('keeps an explicit as="button" on the button arm of the base hook', () => {
     const { result } = renderHook(() =>
       useBreadcrumbButtonBase_unstable({ as: 'button' }, React.createRef<HTMLButtonElement>()),
