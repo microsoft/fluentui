@@ -27,6 +27,14 @@ The following table will help you navigate the 3 projects and understand their d
 
 > Why are there two React versions? Fluent UI v8 is still widely used. We encourage you to migrate to Fluent UI v9. See the [Migration overview](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-component-mapping--docs).
 
+## Multi-framework design system
+
+Fluent UI keeps shared tokens, guidance, and framework integrations in one
+repository. React components live under `packages/react-components/`; the
+Flask/Jinja integration scaffold lives under `packages/flask-ui/`. See the
+[design system repository structure](docs/design-system-repository.md) for
+branching and ownership guidance.
+
 ## FluentUI Insights
 
 [Fluent UI Insights](https://docs.microsoft.com/en-us/shows/fluent-ui-insights?utm_source=github) is a series that describes the design and decisions behind the Fluent UI design system.
