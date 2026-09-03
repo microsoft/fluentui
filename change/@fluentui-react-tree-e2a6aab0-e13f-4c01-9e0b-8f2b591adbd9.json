@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: default selection behavior is accessible, with warnings",
+  "packageName": "@fluentui/react-tree",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
