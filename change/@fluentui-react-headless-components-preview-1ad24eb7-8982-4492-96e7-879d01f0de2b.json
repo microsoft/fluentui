@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: export context readers from the avatar, avatar-group, button and link subpaths",
+  "comment": "fix: export context providers from the avatar and avatar-group subpaths, and context readers/providers from the button and link subpaths",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "array.knight@gmail.com",
   "dependentChangeType": "patch"
