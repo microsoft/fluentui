@@ -6,13 +6,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview
 
-v9 `Breadcrumb` uses composable JSX children (`BreadcrumbItem`, `BreadcrumbButton`, `BreadcrumbLink`, `BreadcrumbDivider`) instead of an `items` array.
+v9 `Breadcrumb` uses composable JSX children (`BreadcrumbItem`, `BreadcrumbButton`, `BreadcrumbDivider`) instead of an `items` array.
 
 | v8                                     | v9                                                                                                                                      |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `items` array prop                     | Declarative JSX children                                                                                                                |
 | `IBreadcrumbItem.text`                 | `<BreadcrumbButton>` children                                                                                                           |
-| `IBreadcrumbItem.href`                 | `<BreadcrumbLink href="...">`                                                                                                           |
+| `IBreadcrumbItem.href`                 | `<BreadcrumbButton href="...">`                                                                                                         |
 | `IBreadcrumbItem.onClick`              | `onClick` on `<BreadcrumbButton>`                                                                                                       |
 | `IBreadcrumbItem.isCurrentItem`        | `current` on `<BreadcrumbButton>`                                                                                                       |
 | `maxDisplayedItems` + `overflowIndex`  | Use `<Overflow>` + `<OverflowItem>` — see [Overflow migration](/docs/concepts-migration-from-v8-components-overflowset-migration--docs) |
@@ -20,22 +20,15 @@ v9 `Breadcrumb` uses composable JSX children (`BreadcrumbItem`, `BreadcrumbButto
 | `dividerAs`                            | `<BreadcrumbDivider>` (place manually between items)                                                                                    |
 
 ```tsx
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbButton,
-  BreadcrumbLink,
-  BreadcrumbDivider,
-} from '@fluentui/react-components';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider } from '@fluentui/react-components';
 ```
 
 | v9 Component        | Purpose                                                                         |
 | ------------------- | ------------------------------------------------------------------------------- |
 | `Breadcrumb`        | Container (`<nav>` element)                                                     |
 | `BreadcrumbItem`    | `<li>` wrapper — use around every item                                          |
-| `BreadcrumbLink`    | An `<a>` tag — use for navigable crumbs                                         |
 | `BreadcrumbDivider` | Separator between items (must be placed manually between each `BreadcrumbItem`) |
-| `BreadcrumbButton`  | A `<button>` — use for the current/last crumb or click handlers                 |
+| `BreadcrumbButton`  | Interactive crumb; pass `href` for navigation or use it as a button             |
 
 ## Examples
 
@@ -57,21 +50,15 @@ import { Breadcrumb } from '@fluentui/react';
 The equivalent v9 usage is:
 
 ```tsx
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbButton,
-  BreadcrumbLink,
-  BreadcrumbDivider,
-} from '@fluentui/react-components';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider } from '@fluentui/react-components';
 
 <Breadcrumb aria-label="Breadcrumb">
   <BreadcrumbItem>
-    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    <BreadcrumbButton href="/">Home</BreadcrumbButton>
   </BreadcrumbItem>
   <BreadcrumbDivider />
   <BreadcrumbItem>
-    <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+    <BreadcrumbButton href="/docs">Docs</BreadcrumbButton>
   </BreadcrumbItem>
   <BreadcrumbDivider />
   <BreadcrumbItem>
