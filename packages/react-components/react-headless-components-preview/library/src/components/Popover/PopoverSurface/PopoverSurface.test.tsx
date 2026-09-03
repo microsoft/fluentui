@@ -57,6 +57,19 @@ describe('PopoverSurface', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
   });
 
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Popover defaultOpen>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface popover="manual">Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'manual');
+  });
+
   it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
     const onOpenChange = jest.fn();
 

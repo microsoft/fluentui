@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use nullish fallback in adjustChannel so a channel whose value is 0 resolves to its own action instead of hue's",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

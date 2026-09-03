@@ -13,6 +13,8 @@ export const useToast = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastS
 
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = state.intent;
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.focusgroup = 'none';
 
   return state;
 };
