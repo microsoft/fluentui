@@ -285,14 +285,13 @@ describe('riskPlugin', () => {
       expect(findings.some(f => f.line === line)).toBe(false);
     });
 
-    it('does not flag store-API methods referenced elsewhere', async () => {
+    it('still flags a store-API method reference outside useSyncExternalStore', async () => {
+      // No type info, so a bare `store.subscribe` is indistinguishable from a state read and is
+      // still reported. Excluding it would need a hardcoded list of one library's method names.
       const findings = await runPlugin('store-api-reference.tsx', config);
       expect(
         findings.some(f => f.line === lineOf('store-api-reference.tsx', 'const unsubscribe = store.subscribe')),
-      ).toBe(false);
-      expect(
-        findings.some(f => f.line === lineOf('store-api-reference.tsx', 'store.setState({ enabled: true })')),
-      ).toBe(false);
+      ).toBe(true);
     });
 
     it('still flags a genuine state read during render', async () => {

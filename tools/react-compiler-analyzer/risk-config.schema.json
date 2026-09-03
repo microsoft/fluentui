@@ -11,7 +11,7 @@
     },
     "storeAccessorPattern": {
       "type": "string",
-      "description": "Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`). When set, enables `getXStore().field` non-reactive snapshot detection (`nonreactive-store-read`, `medium`), including one level of local binding: `const s = getAppStore(); … s.field`. Never matches `useXxx`-named callees (a hook result is recomputed every render), store-API method references (`subscribe`, `setState`, `destroy`, …), or anything inside `useSyncExternalStore(…)`. Omit to disable.",
+      "description": "Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`). When set, enables `getXStore().field` non-reactive snapshot detection (`nonreactive-store-read`, `medium`), including one level of local binding: `const s = getAppStore(); … s.field`. Never matches `useXxx`-named callees (a hook result is recomputed every render), and never fires inside a `useSyncExternalStore(…)` call. Omit to disable.",
       "minLength": 1
     },
     "detectGetStateReads": {

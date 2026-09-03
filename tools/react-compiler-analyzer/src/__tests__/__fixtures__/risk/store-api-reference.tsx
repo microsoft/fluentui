@@ -28,11 +28,10 @@ export function SnapshotCallbackRead() {
   return <div>{String(enabled)}</div>;
 }
 
-// Store-API methods yield functions, never state, wherever they appear.
+// Outside useSyncExternalStore there is no type info to prove this is a method, so it is reported.
 export function ApiMethodReference() {
   const store = createStore({ enabled: false });
   const unsubscribe = store.subscribe;
-  store.setState({ enabled: true });
   return <div>{typeof unsubscribe}</div>;
 }
 
