@@ -82,15 +82,15 @@
   }
 
   .text-caption-1-strong {
-    @apply font-base text-base-200 leading-133 font-semibold;
+    @apply font-base text-base-200 leading-16/12 font-semibold;
   }
 
   .text-body-1-strong {
-    @apply font-base text-base-300 leading-143 font-semibold;
+    @apply font-base text-base-300 leading-20/14 font-semibold;
   }
 
   .text-subtitle-2 {
-    @apply font-base text-base-400 leading-137 font-semibold;
+    @apply font-base text-base-400 leading-11/8 font-semibold;
   }
 
   .text-subtitle-1 {
@@ -98,7 +98,7 @@
   }
 
   .text-title-3 {
-    @apply font-base text-base-600 leading-133 font-semibold;
+    @apply font-base text-base-600 leading-16/12 font-semibold;
   }
 
   .icon-12 {

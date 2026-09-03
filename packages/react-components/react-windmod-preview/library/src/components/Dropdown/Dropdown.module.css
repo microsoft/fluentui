@@ -127,15 +127,15 @@
     }
 
     @variant group-size-small/fui-dropdown {
-      @apply py-3 ps-8 pe-horizontal-s-nudge text-base-200 leading-133 font-regular;
+      @apply py-3 ps-8 pe-horizontal-s-nudge text-base-200 leading-16/12 font-regular;
     }
 
     @variant group-size-medium/fui-dropdown {
-      @apply py-5 ps-12 pe-horizontal-m-nudge text-base-300 leading-143 font-regular;
+      @apply py-5 ps-12 pe-horizontal-m-nudge text-base-300 leading-20/14 font-regular;
     }
 
     @variant group-size-large/fui-dropdown {
-      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m text-base-400 leading-137 font-regular;
+      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m text-base-400 leading-11/8 font-regular;
     }
   }
 
@@ -186,7 +186,7 @@
     /* The 24px glyph is what makes the large field 40px tall: lineHeightBase400 is 22px, and the
        icon shares the button's grid row under align-items: center. */
     @variant group-size-large/fui-dropdown {
-      @apply ms-horizontal-s-nudge text-icon-24 leading-092;
+      @apply ms-horizontal-s-nudge text-icon-24 leading-22/24;
     }
 
     /* The ratios above divide the TRIGGER's per-size line box, which is what the chevron (a grid
@@ -202,7 +202,7 @@
       }
 
       @variant group-size-large/fui-dropdown {
-        @apply leading-083;
+        @apply leading-20/24;
       }
     }
 

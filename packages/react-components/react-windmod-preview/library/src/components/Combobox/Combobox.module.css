@@ -113,7 +113,7 @@
   }
 
   .input {
-    @apply self-stretch border-none bg-transparent-background ps-horizontal-m font-base text-base-300 leading-143 font-regular text-neutral-foreground-1;
+    @apply self-stretch border-none bg-transparent-background ps-horizontal-m font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
 
     @variant focus {
       @apply outline-none;
@@ -124,11 +124,11 @@
     }
 
     @variant group-size-small/fui-combobox {
-      @apply ps-horizontal-s text-base-200 leading-133;
+      @apply ps-horizontal-s text-base-200 leading-16/12;
     }
 
     @variant group-size-large/fui-combobox {
-      @apply ps-18 text-base-400 leading-137;
+      @apply ps-18 text-base-400 leading-11/8;
     }
 
     @variant group-disabled/fui-combobox {
@@ -170,7 +170,7 @@
     }
 
     @variant group-size-large/fui-combobox {
-      @apply ms-horizontal-s-nudge text-icon-24 leading-083;
+      @apply ms-horizontal-s-nudge text-icon-24 leading-20/24;
 
       @variant after {
         @apply -end-horizontal-m;

@@ -16,16 +16,16 @@
   /* Griffel's button reset also sets font-family, font-size, line-height and padding; each of
      those is overwritten below at every size, so only the surviving reset values are authored. */
   .button {
-    @apply relative flex min-h-44 w-full cursor-pointer items-center overflow-visible bg-inherit ps-horizontal-m-nudge pe-horizontal-m font-base text-base-300 leading-143 font-regular outline-none;
+    @apply relative flex min-h-44 w-full cursor-pointer items-center overflow-visible bg-inherit ps-horizontal-m-nudge pe-horizontal-m font-base text-base-300 leading-20/14 font-regular outline-none;
     text-align: unset;
     -webkit-appearance: button;
 
     @variant group-size-small/fui-accordion-header {
-      @apply min-h-32 text-base-200 leading-167;
+      @apply min-h-32 text-base-200 leading-20/12;
     }
 
     @variant group-size-large/fui-accordion-header {
-      @apply text-base-400 leading-137;
+      @apply text-base-400 leading-11/8;
     }
 
     @variant group-size-extra-large/fui-accordion-header {

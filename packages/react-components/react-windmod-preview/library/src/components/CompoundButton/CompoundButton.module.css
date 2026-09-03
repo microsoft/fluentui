@@ -2,14 +2,14 @@
 
 @layer fui.components.l2 {
   .root {
-    @apply h-auto px-horizontal-m pt-14 pb-horizontal-l text-base-300 leading-143;
+    @apply h-auto px-horizontal-m pt-14 pb-horizontal-l text-base-300 leading-20/14;
 
     @variant size-small {
       @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
     }
 
     @variant size-large {
-      @apply px-horizontal-l pt-18 pb-horizontal-xl text-base-400 leading-137;
+      @apply px-horizontal-l pt-18 pb-horizontal-xl text-base-400 leading-11/8;
     }
 
     @variant icon-only {
@@ -28,10 +28,10 @@
   }
 
   .icon {
-    @apply size-40 text-hero-900 leading-050;
+    @apply size-40 text-hero-900 leading-50;
 
     @variant group-size-large/fui-compound-button {
-      @apply leading-055;
+      @apply leading-55;
     }
 
     @variant group-not-content-empty/fui-compound-button {

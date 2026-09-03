@@ -7,7 +7,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge font-base text-base-200 leading-133 font-semibold;
+    @apply relative inline-flex h-20 min-w-20 items-center justify-center rounded-circular border-transparent-stroke px-horizontal-s-nudge font-base text-base-200 leading-16/12 font-semibold;
 
     @variant after {
       @apply absolute inset-0 rounded-[inherit] border-thin border-solid border-inherit;

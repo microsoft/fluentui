@@ -142,7 +142,7 @@
     }
 
     @variant group-size-extra-large/fui-tag-picker-control {
-      @apply ms-horizontal-s-nudge min-h-44 text-icon-24 leading-083;
+      @apply ms-horizontal-s-nudge min-h-44 text-icon-24 leading-20/24;
     }
 
     @variant group-disabled/fui-tag-picker-control {

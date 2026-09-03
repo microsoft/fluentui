@@ -27,10 +27,10 @@
   }
 
   .primary-text {
-    @apply block font-base text-base-300 leading-143 font-regular text-neutral-foreground-1;
+    @apply block font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
 
     @variant group-size-extra-large/fui-persona, group-size-huge/fui-persona {
-      @apply text-base-400 leading-137 font-semibold;
+      @apply text-base-400 leading-11/8 font-semibold;
     }
 
     @variant group-text-alignment-center/fui-persona {
@@ -41,10 +41,10 @@
   }
 
   .optional-text {
-    @apply block font-base text-base-200 leading-133 font-regular text-neutral-foreground-2;
+    @apply block font-base text-base-200 leading-16/12 font-regular text-neutral-foreground-2;
 
     @variant group-size-huge/fui-persona {
-      @apply text-base-300 leading-143;
+      @apply text-base-300 leading-20/14;
     }
   }
 

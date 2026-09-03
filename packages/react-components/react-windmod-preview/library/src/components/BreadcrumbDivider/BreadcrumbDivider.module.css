@@ -5,7 +5,7 @@
     @apply flex text-icon-16 leading-125;
 
     @variant size-small {
-      @apply text-icon-12 leading-167;
+      @apply text-icon-12 leading-20/12;
     }
 
     @variant size-large {

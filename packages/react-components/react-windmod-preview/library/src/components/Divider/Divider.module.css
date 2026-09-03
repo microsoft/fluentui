@@ -6,7 +6,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative flex grow flex-row items-center text-center font-base text-base-200 leading-133 font-regular;
+    @apply relative flex grow flex-row items-center text-center font-base text-base-200 leading-16/12 font-regular;
 
     @variant before, after {
       @apply flex grow;

@@ -108,6 +108,21 @@
 }
 
 /*
+ * integers = hundredths of a ratio; a/b = exact ratio for values a decimal can't express — BOTH
+ * arms wrapped in calc(): a bare `--value(ratio)` substitutes literal `A / B` text, which is not
+ * a valid <number>/<length> for line-height (only <ratio>-accepting properties like aspect-ratio
+ * take that raw form) — Chrome silently drops the unwrapped declaration and falls back to
+ * `normal` (browser-verified: .scratch/windmod-loop/leading-ramp/browser-probe.mjs); calc()
+ * evaluates the division into a real <number>, which line-height does accept;
+ * the built-in px form still emits first and the integer arm wins by order (last declaration);
+ * bracket/paren forms pass through as explicit opt-outs.
+ */
+@utility leading-* {
+  line-height: calc(--value(ratio));
+  line-height: calc(--value(integer) / 100);
+}
+
+/*
  * Generated Fluent token registration (`bg-neutral-background-1`, `rounded-medium`, …)
  * plus the theme-INVARIANT `:root, :host` values (the spacing scale and stroke widths —
  * identical in all seven shipped themes, asserted by the generator).

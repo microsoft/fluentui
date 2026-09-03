@@ -134,15 +134,15 @@
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply w-12 ps-5 pe-horizontal-xxs text-icon-12 leading-167;
+      @apply w-12 ps-5 pe-horizontal-xxs text-icon-12 leading-20/12;
     }
   }
 
   .primary-text {
-    @apply px-horizontal-xxs font-base text-base-300 leading-143 font-regular whitespace-nowrap;
+    @apply px-horizontal-xxs font-base text-base-300 leading-20/14 font-regular whitespace-nowrap;
 
     @variant group-size-small/fui-tag, group-size-extra-small/fui-tag {
-      @apply text-base-200 leading-133;
+      @apply text-base-200 leading-16/12;
     }
   }
 
@@ -151,7 +151,7 @@
   }
 
   .with-secondary-text {
-    @apply -mt-2 text-base-200 leading-133;
+    @apply -mt-2 text-base-200 leading-16/12;
     grid-area: primary;
   }
 
@@ -169,7 +169,7 @@
     }
 
     @variant group-size-extra-small/fui-tag {
-      @apply ps-horizontal-xxs pe-5 text-icon-12 leading-167;
+      @apply ps-horizontal-xxs pe-5 text-icon-12 leading-20/12;
     }
 
     @variant group-enabled/fui-tag {

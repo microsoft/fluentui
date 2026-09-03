@@ -7,7 +7,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply col-start-2 col-end-3 pt-vertical-s-nudge text-base-300 leading-143 font-regular wrap-anywhere text-neutral-foreground-1;
+    @apply col-start-2 col-end-3 pt-vertical-s-nudge text-base-300 leading-20/14 font-regular wrap-anywhere text-neutral-foreground-1;
 
     @variant group-appearance-inverted/fui-toast {
       @apply text-neutral-foreground-inverted-2;

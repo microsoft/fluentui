@@ -33,7 +33,7 @@
     }
 
     @variant size-extra-small {
-      @apply relative px-5 text-icon-12 leading-167;
+      @apply relative px-5 text-icon-12 leading-20/12;
 
       @variant not-forced-colors {
         @variant before, after {

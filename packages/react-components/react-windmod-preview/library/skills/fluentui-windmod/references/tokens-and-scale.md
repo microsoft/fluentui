@@ -64,35 +64,44 @@ from the rendered colour.
 ```
 --text-base-100 … --text-base-600          font sizes
 --text-hero-700 … --text-hero-1000
---leading-000|050|055|080|083|092|100|125|133|137|140|143|160|167|200
-                                             ONE generic ratio ramp — no font-size pairing
+leading-<n>                                 n / 100, for ANY bare integer n — pure arithmetic
+leading-<a>/<b>                             exact ratio a/b, for a value n/100 can't express
 --text-icon-12|16|20|24|28|32|48            glyph sizes
 --font-base | --font-monospace | --font-numeric
 --font-weight-regular|medium|semibold|bold
 ```
 
-**Font size keeps a base/hero split; line height does not.** `--leading-*` is one flat, generic,
-value-named ramp: the label is the ratio itself (a 3-digit truncation of `ratio * 100`), not a
-step index — `leading-140` is the ratio `1.4`, full stop. There is no `leading-base-300` implying
-"the line height that goes with `text-base-300`" — pick whichever `--leading-*` value gives the
-line box you actually want on the element you're styling, the same way you'd pick a spacing value.
+**Font size keeps a base/hero split; line height does not — and line height is not a token at
+all.** There is no `--leading-*` token registry: `leading-*` is a functional `@utility` in
+`css/index.css` that compiles a class straight into a `line-height` declaration, with no backing
+custom property and nothing to look up.
 
-| Label | Ratio         | Label | Ratio         |
-| ----- | ------------- | ----- | ------------- |
-| `000` | `0`           | `133` | `calc(16/12)` |
-| `050` | `0.5`         | `137` | `1.375`       |
-| `055` | `0.55`        | `140` | `1.4`         |
-| `080` | `0.8`         | `143` | `calc(20/14)` |
-| `083` | `calc(20/24)` | `160` | `1.6`         |
-| `092` | `calc(22/24)` | `167` | `calc(20/12)` |
-| `100` | `1`           | `200` | `2`           |
-| `125` | `1.25`        |       |               |
+- **`leading-<n>`** — any bare integer `n`, compiles to `calc(n / 100)`. `leading-140` is `1.4`;
+  `leading-83` is `0.83`; `leading-200` is `2`. There is no fixed vocabulary and no
+  `leading-base-300` implying "the line height that goes with `text-base-300`" — pick whichever
+  integer gives the ratio you actually want on the element you're styling, the same way you'd pick
+  a spacing value. `--value(integer)` rejects zero-padded spellings at compile time — `leading-083`
+  silently compiles to nothing; use `leading-83`.
+- **`leading-<a>/<b>`** — an exact ratio, for a value two hundredths-of-a-ratio digits can't
+  express: `leading-20/14` is exactly `20/14` (`1.428571…`), not the `1.43` that `leading-143`
+  would give. Reach for this only when the exact fraction matters — most of the corpus's
+  historically-repeating ratios (former labels 143, 133, 167, 83, 92, 137) now use this form.
+- **Bracket/paren forms pass through as explicit opt-outs** — `leading-[1.5]`, `leading-(--my-var)`
+  — Tailwind's own arbitrary-value handling for the `leading` root, untouched by this package's
+  `@utility`, since it claims only the bare-integer and `a/b` shapes. Neither form is used in this
+  library's own corpus (`guard.mjs` enforces `leading-<int>` / `leading-<int>/<nonzero int>` only)
+  — they exist for consuming applications.
+- **`leading-none` is not part of the vocabulary.** It is a real Tailwind static utility
+  (`line-height: 1`) and still compiles — nothing in this package's setup suppresses it — but it
+  reads as "no line-height" rather than "ratio 1", so this corpus never authors it. Use
+  `leading-100`.
 
-A leading token is a **unitless ratio**, so it is not a length: it multiplies the element's own
+A leading value is a **unitless ratio**, so it is not a length: it multiplies the element's own
 font-size, descendants inherit the ratio rather than a px box, and a JS read wanting a length must
-multiply the value back out by the element's own computed font-size (there is no paired `--text-*`
-token to multiply by — see the authoring rule in authoring-conventions.md for how a site picks its
-ratio against its OWN font-size).
+multiply the value back out by the element's own computed font-size — see the authoring rule in
+authoring-conventions.md for how a site picks its ratio against its OWN font-size, and
+`css-var-values.md` / `useCssVarValue`'s doc comment for why a leading ratio specifically cannot be
+read back through a custom-property hook (there is no custom property to read).
 
 The icon glyph family has no Fluent token equivalent — the sizes come from the icon set itself, so they
 are registered by the theme rather than generated from Fluent's token set.

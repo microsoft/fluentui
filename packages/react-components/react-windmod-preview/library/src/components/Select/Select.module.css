@@ -37,18 +37,18 @@
   }
 
   .select {
-    @apply h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent ps-horizontal-m pe-34 font-base text-base-300 leading-143 font-regular text-neutral-foreground-1 shadow-none;
+    @apply h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent ps-horizontal-m pe-34 font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1 shadow-none;
 
     @variant focus {
       @apply outline-thick outline-transparent outline-solid;
     }
 
     @variant group-size-small/fui-select {
-      @apply h-24 ps-horizontal-s pe-26 text-base-200 leading-133;
+      @apply h-24 ps-horizontal-s pe-26 text-base-200 leading-16/12;
     }
 
     @variant group-size-large/fui-select {
-      @apply h-40 ps-18 pe-48 text-base-400 leading-137;
+      @apply h-40 ps-18 pe-48 text-base-400 leading-11/8;
     }
   }
 
@@ -130,7 +130,7 @@
     }
 
     @variant group-size-large/fui-select {
-      @apply end-horizontal-m size-24 text-icon-24 leading-083;
+      @apply end-horizontal-m size-24 text-icon-24 leading-20/24;
     }
   }
 }

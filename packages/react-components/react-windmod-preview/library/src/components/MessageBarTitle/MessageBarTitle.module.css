@@ -2,7 +2,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply font-base text-base-300 leading-143 font-semibold;
+    @apply font-base text-base-300 leading-20/14 font-semibold;
 
     /* Separates the title from the body text that follows it in the same grid area. Tailwind's
        underscore is a literal space. */

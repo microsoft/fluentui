@@ -91,15 +91,17 @@ function readCssVar(targetWindow: Window, element: HTMLElement, variableName: st
  *
  * The theme deliberately leaves its knobs unregistered (no `@property`), so a custom property's
  * computed value is the specified token stream with `var()` substituted and `calc()` NOT
- * evaluated. Measured over all 477 declared tokens (AR2 added 5 net `--leading-*` declarations —
- * 15 generic-ramp labels replacing the previous 10 per-step base/hero names):
+ * evaluated. Measured over all 462 declared tokens (a follow-up to AR2 DELETED `--leading-*`
+ * entirely — leading-<n> is now pure arithmetic, n / 100 for any bare integer n, compiled
+ * straight into `line-height` by a functional `@utility` override in css/index.css with no
+ * backing custom property at all, so the 15 `--leading-*` declarations the original AR2 landing
+ * added are gone, not renamed — see the note below the table):
  *
  * | Family | Literal | calc-string |
  * | --- | --- | --- |
  * | `--color-*` | 366 | 0 |
  * | `--shadow-*` | 12 | 0 |
  * | `--radius-*` | 11 | 0 |
- * | `--leading-*` | 10 | 5 |
  * | `--ease-*` | 9 | 0 |
  * | `--duration-*` | 8 | 0 |
  * | `--font-*` | 7 | 0 |
@@ -107,19 +109,20 @@ function readCssVar(targetWindow: Window, element: HTMLElement, variableName: st
  * | `--text-*` | 0 | 17 |
  * | `--stroke-*` | 0 | 4 |
  * | `--base-scale` | 0 | 1 |
- * | **Total** | **425** | **52** |
+ * | **Total** | **415** | **47** |
  *
  * So colour, shadow, radius, ease, duration and font read as usable values
  * (`#242424`, `150ms`, `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`), while text, spacing, stroke
  * and base-scale read as unevaluated `calc()` strings (`calc(14px * calc(1rem / 16px * 1))`) that
- * are invariant under both a theme change and a root font-size change. Leading splits down the
- * ramp's arithmetic: the finite ratios (`--leading-140`, `--leading-137`, …) read as unitless
- * numbers (`1.4`) and the repeating ones (`--leading-143`, `--leading-133`, …) as unevaluated
- * division strings (`calc(20 / 14)`) — either way a RATIO, never a length; a length is
- * `calc(var(--text-base-300) * var(--leading-143))` for an element authoring the `text-base-300`
- * step (leading no longer names a step pairing — pick the ratio, multiply by whatever font-size
- * the element itself authors). A theme-class change moves 315 tokens and every one of them is a
- * literal, so for exactly the tokens theme switching changes, the value is real and scope-correct.
+ * are invariant under both a theme change and a root font-size change. Leading is ABSENT from
+ * this table on purpose: `leading-140` and `leading-20/14` alike compile straight into a
+ * `line-height` declaration (`calc(140 / 100)`, the unevaluated ratio `20 / 14`) with no
+ * `--leading-*` custom property ever declared, so there is nothing for this hook to read — asking
+ * for `leading` returns `fallback` (or `undefined`), the same as asking for any other name
+ * nothing declares. A ratio consumed in a calc formula is authored as a literal fraction directly
+ * (e.g. `calc(20 / 14)`; see Checkbox.module.css / Radio.module.css), not read back through this
+ * hook. A theme-class change moves 315 tokens and every one of them is a literal, so for exactly
+ * the tokens theme switching changes, the value is real and scope-correct.
  *
  * A bare root `font-size` change (a zoom control) therefore moves nothing an unregistered token
  * can report; the invalidation still fires and the re-read returns the same string. A zoom

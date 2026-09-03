@@ -19,15 +19,15 @@
     }
 
     @variant group-size-medium/fui-tag-picker-control {
-      @apply py-3 ps-[calc(var(--spacing-horizontal-s-nudge)+var(--spacing-horizontal-xxs))] pe-horizontal-s-nudge text-base-200 leading-133;
+      @apply py-3 ps-[calc(var(--spacing-horizontal-s-nudge)+var(--spacing-horizontal-xxs))] pe-horizontal-s-nudge text-base-200 leading-16/12;
     }
 
     @variant group-size-large/fui-tag-picker-control {
-      @apply py-5 ps-[calc(var(--spacing-horizontal-m-nudge)+var(--spacing-horizontal-xxs))] pe-horizontal-m-nudge text-base-300 leading-143;
+      @apply py-5 ps-[calc(var(--spacing-horizontal-m-nudge)+var(--spacing-horizontal-xxs))] pe-horizontal-m-nudge text-base-300 leading-20/14;
     }
 
     @variant group-size-extra-large/fui-tag-picker-control {
-      @apply gap-x-horizontal-s-nudge py-7 ps-[calc(var(--spacing-horizontal-m)+var(--spacing-horizontal-s-nudge))] pe-horizontal-m text-base-400 leading-137;
+      @apply gap-x-horizontal-s-nudge py-7 ps-[calc(var(--spacing-horizontal-m)+var(--spacing-horizontal-s-nudge))] pe-horizontal-m text-base-400 leading-11/8;
     }
   }
 

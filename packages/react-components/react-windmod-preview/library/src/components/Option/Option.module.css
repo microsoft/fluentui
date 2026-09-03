@@ -8,7 +8,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative flex cursor-pointer items-center gap-x-horizontal-xs rounded-medium px-horizontal-s py-vertical-s-nudge font-base text-base-300 leading-143 text-neutral-foreground-1;
+    @apply relative flex cursor-pointer items-center gap-x-horizontal-xs rounded-medium px-horizontal-s py-vertical-s-nudge font-base text-base-300 leading-20/14 text-neutral-foreground-1;
 
     @variant enabled {
       @variant hover {
@@ -48,7 +48,7 @@
     }
 
     @variant group-multiselect/fui-option {
-      @apply visible flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-167;
+      @apply visible flex size-16 items-center justify-center rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-20/12;
 
       @variant group-selected/fui-option {
         @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;

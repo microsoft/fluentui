@@ -170,7 +170,7 @@
     }
 
     @variant group-size-large/fui-color-swatch {
-      @apply text-icon-24 leading-083;
+      @apply text-icon-24 leading-20/24;
     }
   }
 

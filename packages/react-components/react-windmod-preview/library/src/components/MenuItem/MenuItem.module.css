@@ -90,7 +90,7 @@
   }
 
   .icon {
-    @apply inline-flex size-20 shrink-0 items-center justify-center text-icon-20 leading-000;
+    @apply inline-flex size-20 shrink-0 items-center justify-center text-icon-20 leading-0;
 
     @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
       @apply text-neutral-foreground-2-brand-selected;
@@ -138,7 +138,7 @@
   /* The shortcut text brightens on ITS OWN hover, not the row's — Griffel puts :hover and :focus
      on this element. Reproduced literally; the migration notes name it. */
   .secondary-content {
-    @apply px-2 font-base text-base-200 leading-167 font-regular text-neutral-foreground-3;
+    @apply px-2 font-base text-base-200 leading-20/12 font-regular text-neutral-foreground-3;
 
     @variant hover, focus {
       @apply text-neutral-foreground-3-hover;
@@ -204,7 +204,7 @@
      Griffel reaches the filled/regular swap with a descendant selector from the ROW, so it lands
      on this slot's chevron as well as on the icon slot's glyph — measured; both are reproduced. */
   .submenu-indicator {
-    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-000;
+    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-0;
 
     @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
       @variant icon-filled {

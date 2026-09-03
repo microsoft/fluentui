@@ -73,15 +73,17 @@ independent entries and shares them with any single-name read of the same variab
 
 **Not every token reads back as a usable value.** The theme deliberately leaves its knobs unregistered
 (no `@property`), so a custom property's computed value is the specified token stream with `var()`
-substituted and **`calc()` not evaluated**. Measured over all 477 declared tokens (AR2 added 5 net
-`--leading-*` declarations — 15 generic-ramp labels replacing the previous 10 per-step base/hero names):
+substituted and **`calc()` not evaluated**. Measured over all 462 declared tokens (a follow-up to
+AR2 DELETED `--leading-*` entirely — `leading-<n>` is now pure arithmetic, `n / 100` for any bare
+integer `n`, or `leading-<a>/<b>` for an exact ratio, compiled straight into `line-height` by a
+functional `@utility` override in `css/index.css` with no backing custom property at all, so the
+15 `--leading-*` declarations the original AR2 landing added are gone, not renamed):
 
 | Family         | Reads as a literal | Reads as a `calc()` string |
 | -------------- | ------------------ | -------------------------- |
 | `--color-*`    | 366                | 0                          |
 | `--shadow-*`   | 12                 | 0                          |
 | `--radius-*`   | 11                 | 0                          |
-| `--leading-*`  | 10                 | 5                          |
 | `--ease-*`     | 9                  | 0                          |
 | `--duration-*` | 8                  | 0                          |
 | `--font-*`     | 7                  | 0                          |
@@ -89,17 +91,17 @@ substituted and **`calc()` not evaluated**. Measured over all 477 declared token
 | `--text-*`     | 0                  | 17                         |
 | `--stroke-*`   | 0                  | 4                          |
 | `--base-scale` | 0                  | 1                          |
-| **Total**      | **425**            | **52**                     |
+| **Total**      | **415**            | **47**                     |
 
 So colour, shadow, radius, ease, duration and font read as usable values — `#242424`, `150ms`,
 `12px`, `cubic-bezier(0.9, 0.1, 1, 0.2)`. Text, spacing, stroke and `--base-scale` read as unevaluated
 strings such as `calc(14px * calc(1rem / 16px * 1))`, invariant under both a theme change and a root
-font-size change. Leading splits down the ramp's arithmetic: the finite ratios (`--leading-140`,
-`--leading-137`, …) read as unitless numbers (`1.4`) and the repeating ones (`--leading-143`,
-`--leading-133`, …) as unevaluated division strings (`calc(20 / 14)`) — either way a **ratio**, never
-a length. A leading token no longer names a font-size pairing (AR2: one generic value-named ramp), so
-a length is `calc(var(--text-base-300) * var(--leading-143))` for whatever font-size step the element
-you're reading actually authors — not necessarily "the paired one", because there is no paired one.
+font-size change. Leading is **absent from this table on purpose**: `leading-140` and
+`leading-20/14` alike compile straight into a `line-height` declaration (`calc(140 / 100)`, the
+unevaluated ratio `calc(20 / 14)`) with no `--leading-*` custom property ever declared, so there is
+nothing for this hook to read — asking for `leading` returns `fallback` (or `undefined`), the same
+as asking for any other name nothing declares. A ratio consumed in a calc formula (a label-offset
+margin, say) is authored as a literal fraction directly in the CSS, not read back through this hook.
 
 The practical consequence: **this hook is for colour and other literal tokens.** For a resolved _length_
 you want `getComputedStyle` on a real property, not on the token.

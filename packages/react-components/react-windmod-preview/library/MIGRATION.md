@@ -1144,20 +1144,28 @@ table borders) are normalized everywhere the theme sheet loads, not only under t
 any markup of your own that relied on UA default styling, inside the provider especially; markup you
 style yourself is unaffected, because any rule you author outranks the reset.
 
-#### 59. Leading tokens are unitless ratios, not lengths
+#### 59. Leading is not a token at all — it's arithmetic
 
 Griffel's line-height tokens are px strings — `tokens.lineHeightBase300` is `'20px'`. windmod's
-`--leading-*` tokens are unitless ratios: `--leading-143` is `calc(20 / 14)`, `--leading-137` is
-`1.375`, and so on down the ramp — always a ramp line-height px over the font-size px it was
-measured against. Because the ratios are theme-invariant, they are declared once in `./base.css`
-rather than per theme. (Naming history: `--leading-143` was called `--leading-base-300` before the
-AR2 rename in entry 61 below — same ratio, same value, new name.)
+`leading-*` is not a token family at all any more: there is no `--leading-*` custom property
+anywhere in the theme. `leading-<n>` (any bare integer `n`) compiles straight into
+`line-height: calc(n / 100)`; `leading-<a>/<b>` compiles into the exact ratio `calc(a / b)`, for a
+value two hundredths-digits can't express. Both forms are a functional `@utility` in
+`css/index.css` — no `@theme` registration, nothing declared at `:root`, nothing to `var()`
+reference. (History: this package shipped an AR2-landed 15-token generic ratio ramp
+— `--leading-000` … `--leading-200` — for one cycle before this redesign deleted the whole
+registry in favor of pure arithmetic; if you're migrating from THAT intermediate scheme rather
+than from Griffel directly, every one of its 15 labels maps onto the corresponding bare integer
+one-for-one — `--leading-140` becomes `leading-140`, `--leading-083` becomes `leading-83` — except
+the six whose true ratio didn't terminate within two decimal digits, which now use the exact
+`leading-<a>/<b>` form instead of the label's truncated approximation — see entry 61.)
 
 Rendered boxes do not move: every windmod rule that sets a `leading-*` sets an authored font-size on
 the same element, so the ratio multiplies exactly the font-size the old length encoded (verified with
-an element-keyed probe across all 91 scenes — zero rect changes; re-verified after the AR2 rename
-with a full pre/post declaration-level diff of the built component CSS — zero computed line-height
-changes across all 172 authored sites).
+an element-keyed probe across all 91 scenes — zero rect changes; re-verified at each of the two
+subsequent leading redesigns with a full pre/post declaration-level diff of the built component
+CSS — zero computed line-height RATIO changes across all 172 authored sites each time; see entry 62
+for the sub-pixel rendering caveat this does NOT cover).
 
 Two things do change:
 
@@ -1165,49 +1173,99 @@ Two things do change:
   ratio and recomputes against every descendant's own font-size. A descendant of a windmod element
   that sets only `font-size` and counted on inheriting Griffel's fixed px line box now gets
   `font-size × ratio` instead.
-- **Reading the token.** `getComputedStyle(el).getPropertyValue('--leading-143')` — or
-  `useCssVarValue` — no longer returns a length. Multiply by the element's own computed font-size to
-  get one: `calc(var(--text-base-300) * var(--leading-143))` is the windmod spelling of Griffel's
-  `lineHeightBase300` for an element authoring the `text-base-300` step (there is no PAIRED font-size
-  token any more — `--leading-143` names a ratio, not a step; see entry 61).
+- **Reading the value.** There is no token to read: `getComputedStyle(el).getPropertyValue('--leading-143')`
+  and `useCssVarValue({ leading: ... })` alike return nothing, because nothing declares that custom
+  property. A length is authored as a literal fraction directly in the CSS that needs it —
+  `calc(var(--text-base-300) * calc(20 / 14))` is the windmod spelling of Griffel's
+  `lineHeightBase300` for an element authoring the `text-base-300` step (see Checkbox.module.css /
+  Radio.module.css for real examples) — not read back through a hook.
 
-#### 61. The leading ramp is one generic value-named scale, not per-step names (AR2)
+#### 61. The leading ramp is pure arithmetic, not any kind of named scale (this redesign)
 
-The `--leading-*` namespace was redesigned from ten per-step names
-(`--leading-base-100…600`, `--leading-hero-700…1000`, each implying "the line height that pairs
-with this font-size step") to ONE flat, generic, value-named ramp: the label IS the ratio, truncated
-to 3 digits (`ratio * 100`), with no font-size pairing implied by the name — `--leading-140` is
-`1.4` full stop, usable next to any font-size step that wants that ratio. `--leading-hero-700/800/
-900/1000` are gone entirely (zero sites in the shipped corpus ever used them). The font-SIZE ramp is
-unaffected and keeps its base/hero split — this delta is leading-only.
+Leading went through two designs in successive cycles. AR2 (one cycle before this) replaced ten
+per-step token names (`--leading-base-100…600`, `--leading-hero-700…1000`) with ONE flat,
+generic, value-named 15-token ramp (`--leading-000` … `--leading-200`, label = 3-digit truncation
+of `ratio * 100`). THIS redesign deletes that registry entirely: `leading-<n>` is `n / 100` for
+ANY bare integer `n` — not a fixed vocabulary of 15 labels, arithmetic. A label that happened to
+be an EXACT 2-decimal-digit ratio (`000`, `050`, `055`, `080`, `100`, `125`, `140`, `160`, `200`)
+carries over as the same bare integer unchanged. A label that was a **truncated approximation** of
+a repeating or 3-decimal ratio (`083`, `092`, `133`, `137`, `143`, `167`) is NOT reproducible by
+any integer divided by 100 — `leading-143` would give `1.43`, not the `20/14 = 1.428571…` the old
+token actually held — so those six now use the exact `leading-<a>/<b>` ratio form instead:
 
-Consumer mapping (old name → new name, same ratio, same computed value — nothing about rendering
-changes, only the custom-property name):
+| AR2 label | AR2 ratio     | This redesign   | Exact?                        |
+| --------- | ------------- | --------------- | ----------------------------- |
+| `000`     | `0`           | `leading-0`     | yes                           |
+| `050`     | `0.5`         | `leading-50`    | yes                           |
+| `055`     | `0.55`        | `leading-55`    | yes                           |
+| `080`     | `0.8`         | `leading-80`    | yes                           |
+| `083`     | `calc(20/24)` | `leading-20/24` | yes (was truncated to `.83`)  |
+| `092`     | `calc(22/24)` | `leading-22/24` | yes (was truncated to `.92`)  |
+| `100`     | `1`           | `leading-100`   | yes                           |
+| `125`     | `1.25`        | `leading-125`   | yes                           |
+| `133`     | `calc(16/12)` | `leading-16/12` | yes (was truncated to `.133`) |
+| `137`     | `1.375`       | `leading-11/8`  | yes (was truncated to `.137`) |
+| `140`     | `1.4`         | `leading-140`   | yes                           |
+| `143`     | `calc(20/14)` | `leading-20/14` | yes (was truncated to `.143`) |
+| `160`     | `1.6`         | `leading-160`   | yes                           |
+| `167`     | `calc(20/12)` | `leading-20/12` | yes (was truncated to `.167`) |
+| `200`     | `2`           | `leading-200`   | yes                           |
 
-| Old                  | New             | Old                   | New                 |
-| -------------------- | --------------- | --------------------- | ------------------- |
-| `--leading-base-100` | `--leading-140` | `--leading-hero-700`  | _(removed, unused)_ |
-| `--leading-base-200` | `--leading-133` | `--leading-hero-800`  | _(removed, unused)_ |
-| `--leading-base-300` | `--leading-143` | `--leading-hero-900`  | _(removed, unused)_ |
-| `--leading-base-400` | `--leading-137` | `--leading-hero-1000` | _(removed, unused)_ |
-| `--leading-base-500` | `--leading-140` | `leading-none`        | `leading-100`       |
-| `--leading-base-600` | `--leading-133` | `leading-[0]`         | `leading-000`       |
+The font-SIZE ramp is unaffected and keeps its base/hero split — this delta is leading-only.
+`leading-none` (a real Tailwind static utility, `line-height: 1`) is deliberately NOT part of this
+vocabulary — use `leading-100`. Any consumer CSS or JS reading one of the AR2 `--leading-*` custom
+properties directly (`var()`, `getComputedStyle`, `useCssVarValue`) has nothing left to read — see
+entry 59. A consumer relying only on the Tailwind `leading-*` utility classes in their own markup
+picks up the new arithmetic vocabulary automatically; bracket/paren forms (`leading-[1.5]`,
+`leading-(--my-var)`) continue to work as plain Tailwind arbitrary values, unaffected by this
+package either way.
 
-Any consumer CSS or JS reading one of the old `--leading-base-*`/`--leading-hero-*` custom
-properties directly (via a raw `var()` reference or `getComputedStyle`/`useCssVarValue`) must switch
-to the corresponding new name from the table above. A consumer relying only on the Tailwind
-`leading-*` utility classes in their own markup is unaffected unless they used one of the removed
-`leading-base-*`/`leading-hero-*`/`leading-none` spellings directly against this theme package.
+#### 62. A sub-pixel VR residue from this leading redesign is an accepted rendering artifact, not a value change
+
+Chrome's Blink layout engine stores line-box geometry as `LayoutUnit`, a 1/64px fixed-point type.
+A leading value evaluated directly on a utility rule — this redesign's `calc()` form, a pre-resolved
+decimal, or a bracket form, every spelling tested — can resolve exactly one `LayoutUnit` (1/64px)
+short of the whole-pixel value the AR2 token form produced, purely as a rendering-path artifact of
+where the arithmetic happens (a custom property declared once and referenced vs. evaluated at the
+element), not a value difference: a resolved-ratio diff across all 172 authored sites shows **zero**
+changes (`.scratch/windmod-loop/leading-ramp/lineheight-diff2.mjs`) at both this redesign and the
+AR2 rename before it. Fourteen VR scenes carry a measured, ratified allowance for this —
+`.scratch/windmod-vr/scenes.json`, cited to Decision X (`MORNING-DECISIONS.md`) — see
+"Where the pixels are allowed to differ" below for the table. If your own consuming application's
+visual-regression tooling flags a similar sub-pixel diff after upgrading, look for the same
+signature (a computed height/position ending in `.984375`/`.96875`/etc., concentrated at row edges
+or rounded corners) before treating it as a real regression.
+
+#### 63. `Switch`'s indicator/label centering moved from root `items-start` to `items-center`
+
+`Switch.module.css`'s root previously used `items-start` for both inline label positions
+(`before`/`after`) and the stacked `label-above` position, relying on a `--fui-switch-label-offset`
+margin whose formula was verified (this redesign) to be an exact algebraic tautology — `0px` at
+every state, at both sizes — since the indicator's own height and the label's line-height (derived
+from `text-base-*` × its paired leading ratio) were deliberately chosen to match exactly. The root
+now uses `items-center` for the inline positions (a no-op for single-line labels, since matching
+heights make `items-start` and `items-center` render identically); `label-above` explicitly
+restores `items-start` under its own variant, since flipping to `flex-col` changes what that
+property controls (the CROSS axis becomes horizontal — left-alignment of the stacked track/label,
+not vertical centering) and needs to keep its own value regardless of the base rule. The dead
+offset custom property and its margin are deleted. Net effect for a single-line label: none
+(verified, VR strict-zero for the `switch` scene modulo the accepted `layoutunit-1/64` residue,
+entry 62). For a WRAPPING (multi-line) label, this is a deliberate behavior change: the indicator
+now centers against the whole wrapped label block instead of aligning with its first line — closer
+to how `Checkbox`/`Radio` already center their own labels. `Checkbox` and `Radio`'s analogous offset
+math was verified NOT tautological (a real, non-zero correction at some sizes) and was left
+unchanged, with the removed `var(--leading-*)` reference in their calc formulas replaced by the
+literal fraction the token held (e.g. `calc(20 / 14)`) — see Checkbox.module.css / Radio.module.css.
 
 ## Where the pixels are allowed to differ
 
 The parity gate is strict zero: pixelmatch at threshold 0, with the antialiasing classifier absorbing
 sub-perceptual rasterization noise. One differing pixel that is not classified as antialiasing fails the
-scene. Seventy-three of the ninety-one scenes hold that unconditionally. The remaining eighteen carry a
+scene. Sixty-four of the ninety-one scenes hold that unconditionally. The remaining twenty-seven carry a
 numeric ceiling — counted under the same rule — recorded on the scene itself, each granted individually
 and each recorded with the control that bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
-not decompose the documented way fails the scene even when it sits under the ceiling. All eighteen are
-below.
+not decompose the documented way fails the scene even when it sits under the ceiling. The original
+eighteen are below, followed by the nine added for this redesign's `layoutunit-1/64` class (Decision X).
 
 Four of the eighteen are known to be pure GPU rasterization: re-run with `--disable-gpu` and they are
 strict zero, which is the strongest statement in the table — the CSS is exactly correct. The rest split
@@ -1217,21 +1275,41 @@ noisier one and the GPU gate stays authoritative.
 The **Decision** column is the identifier the allowance was ratified under; rows sharing one were granted
 together, as a single class on a single body of evidence.
 
-| Scene(s)                                              | Ceiling          | Decision | Mechanism                                                                                                                                                                                                                                                                                                                                                                                                                                    | Under `--disable-gpu`                                                                                                                                                  |
-| ----------------------------------------------------- | ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `teaching-popover`                                    | 21093            | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                                                                                                                                                                                                                           | **0 — completely compliant**                                                                                                                                           |
-| `teaching-popover-carousel`                           | 18386            | Q6       | The same top-layer compositing texture as `teaching-popover`, over the larger carousel surface. No CSS component: the promoted Griffel-vs-Griffel identity control reads 0 in both raster modes.                                                                                                                                                                                                                                             | **0 — completely compliant** (proven ×5)                                                                                                                               |
-| `teaching-popover-carousel-brand`                     | 17816            | Q6       | Same class and same procedure as the row above, on the brand surface.                                                                                                                                                                                                                                                                                                                                                                        | **0 — completely compliant** (proven ×5)                                                                                                                               |
-| `teaching-popover-carousel-rtl`                       | 18386            | Q6       | Same class as the two rows above. Geometry is byte-identical — a full-precision rect walk reads 0 — after the `PopoverSurface` 1/64 px RTL arrow fix that shipped with this cycle.                                                                                                                                                                                                                                                           | 6 — a settle-pass harness artifact, not windmod: `getAnimations().cancel()` de-promotes only the Griffel side, and a Griffel-vs-Griffel control bounds it at exactly 6 |
-| `toast-inverted`                                      | 8                | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                                                                                                                                                                                                                                 | **0 — completely compliant**                                                                                                                                           |
-| `teaching-popover-placements`                         | 8883             | P        | 5824 px of the arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements) plus 3059 px of the same top-layer rasterization as `teaching-popover`.                                                                                                                                                                                                                                                            | 5824 — the predicted arrow share survives                                                                                                                              |
-| `info-label-open`                                     | 8545             | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                                                                                                                                                                                                                         | 8107 — persists (positioning, not compositing)                                                                                                                         |
-| `tooltip`                                             | 8164             | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                                                                                                                                                                                                                                      | 4219 — both mechanisms survive                                                                                                                                         |
-| `popover`                                             | 6551             | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                                                                                                                                                                                                                          | 4366 — arrow and fringe survive                                                                                                                                        |
-| `dialog-scroll`                                       | 1335             | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                                                                                                                                                                                                                             | 1335 — persists in full, 0% GPU component                                                                                                                              |
-| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44 | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes.                                                                                                                                                                                                         | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                                                          |
-| `menu`, `menu-rtl`                                    | 413 / 412        | I        | The same top-layer compositing class as the TagPicker rows. Both ceilings cover measured bimodal GPU modes (`menu` 403–413, `menu-rtl` 402–412).                                                                                                                                                                                                                                                                                             | Both rows are bimodal under the flag and carry no no-GPU expectation. **GPU gate authoritative**                                                                       |
-| `menu-sequel`, `menu-sequel-rtl`                      | 462 / 460        | Q5       | The same top-layer GPU-compositing class as the `menu` rows, over the larger menu the scene opens: shadow quantisation at the surface edges plus switch-thumb anti-aliasing, on byte-identical rects (138 px from the plain menu items, 322 px from the split-group cells). Promoting Griffel's own menu popover onto that compositing path reproduces the gate exactly — overlap 460/460, nothing on either side alone, in both directions. | No no-GPU expectation, as on the `menu` rows: software rasterization is bimodal for this family. **GPU gate authoritative**                                            |
+| Scene(s)                                              | Ceiling                   | Decision | Mechanism                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Under `--disable-gpu`                                                                                                                                                  |
+| ----------------------------------------------------- | ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `teaching-popover`                                    | 21093                     | P        | GPU rasterization of the UA-mandated `position: fixed` top-layer surface. No CSS component at all.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-carousel`                           | 18386                     | Q6       | The same top-layer compositing texture as `teaching-popover`, over the larger carousel surface. No CSS component: the promoted Griffel-vs-Griffel identity control reads 0 in both raster modes.                                                                                                                                                                                                                                                                                                                                                                       | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-brand`                     | 17816                     | Q6       | Same class and same procedure as the row above, on the brand surface.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | **0 — completely compliant** (proven ×5)                                                                                                                               |
+| `teaching-popover-carousel-rtl`                       | 18386                     | Q6       | Same class as the two rows above. Geometry is byte-identical — a full-precision rect walk reads 0 — after the `PopoverSurface` 1/64 px RTL arrow fix that shipped with this cycle.                                                                                                                                                                                                                                                                                                                                                                                     | 6 — a settle-pass harness artifact, not windmod: `getAnimations().cancel()` de-promotes only the Griffel side, and a Griffel-vs-Griffel control bounds it at exactly 6 |
+| `toast-inverted`                                      | 8                         | J        | A 1-ULP blend split in _Griffel's own_ bimodal rasterization of the inverted error glyph; windmod is byte-stable on Griffel's majority face.                                                                                                                                                                                                                                                                                                                                                                                                                           | **0 — completely compliant**                                                                                                                                           |
+| `teaching-popover-placements`                         | 13003 (was 8883)          | P + X    | 5824 px of the arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements) plus 3059 px of the same top-layer rasterization as `teaching-popover`, **plus 4120 px of `layoutunit-1/64` (Decision X, entry 62)** — the migration's sub-pixel leading residue lands at the same rounded-corner edges arrow displacement already touches; original mechanism unchanged and still primary.                                                                                                                                                  | 5824 — the predicted arrow share survives                                                                                                                              |
+| `info-label-open`                                     | 8545                      | O        | Whole-assembly translation, dx=1 at `medium` and dx=3 at `large`; the surface bands are byte-identical once shifted.                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 8107 — persists (positioning, not compositing)                                                                                                                         |
+| `tooltip`                                             | 8164                      | G        | Sub-pixel glyph displacement (six cells) plus the `above-start`/`below-end` arrow displacement of [delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements).                                                                                                                                                                                                                                                                                                                                                                                                | 4219 — both mechanisms survive                                                                                                                                         |
+| `popover`                                             | 6551                      | G        | 1274 px arrow paint ([delta 28](#28-tooltips-arrow-sits-differently-on-corner-placements)'s mechanism) + 3398 px of its shadow derivative + 1949 px of fixed-vs-absolute drop-shadow rasterization.                                                                                                                                                                                                                                                                                                                                                                    | 4366 — arrow and fringe survive                                                                                                                                        |
+| `dialog-scroll`                                       | 1335                      | H        | A 2px scroller-height delta: windmod's grid tracks resolve inside the content box where Griffel's separate scroller overflows its parent by the border. Structurally unclosable.                                                                                                                                                                                                                                                                                                                                                                                       | 1335 — persists in full, 0% GPU component                                                                                                                              |
+| `tag-picker-open-ltr` / `-rtl`, `-width-ltr` / `-rtl` | 19 / 2 / 57 / 44          | N        | Coverage-gamma anti-aliasing: Chrome blends windmod's native top-layer listbox linearly while Griffel's inline surface takes the gamma path. A Griffel-vs-Griffel control reproduces windmod pixel-identically on 3 of the 4 scenes.                                                                                                                                                                                                                                                                                                                                   | Regresses to 9348/9348/4673/4673 — **GPU gate authoritative**                                                                                                          |
+| `menu`, `menu-rtl`                                    | 433 / 432 (was 413 / 412) | I + X    | The same top-layer compositing class as the TagPicker rows; GPU-mode ceilings covered measured bimodal modes (`menu` 403–413, `menu-rtl` 402–412) **plus 20 px each of `layoutunit-1/64` (Decision X, entry 62)**. Original shadow-quantisation mechanism unchanged and still primary.                                                                                                                                                                                                                                                                                 | Both rows are bimodal under the flag and carry no no-GPU expectation. **GPU gate authoritative**                                                                       |
+| `menu-sequel`, `menu-sequel-rtl`                      | 477 / 475 (was 462 / 460) | Q5 + X   | The same top-layer GPU-compositing class as the `menu` rows, over the larger menu the scene opens: shadow quantisation at the surface edges plus switch-thumb anti-aliasing, on byte-identical rects (138 px from the plain menu items, 322 px from the split-group cells), **plus 15 px each of `layoutunit-1/64` (Decision X, entry 62)**. Promoting Griffel's own menu popover onto that compositing path reproduces the original gate exactly — overlap 460/460, nothing on either side alone, in both directions; original mechanism unchanged and still primary. | No no-GPU expectation, as on the `menu` rows: software rasterization is bimodal for this family. **GPU gate authoritative**                                            |
+
+**The nine new rows (Decision X, `layoutunit-1/64`, entry 62)** were strict-zero before this
+redesign and now carry a ceiling for the same one mechanism: Chrome's Blink layout engine resolves
+a leading value evaluated directly on a utility rule (any spelling) one `LayoutUnit` (1/64px)
+short of the whole-pixel value the old token-indirected form produced. A resolved-ratio diff across
+all 172 sites proves 0 value changes — see entry 62. Eight are row/edge geometry; `persona` is a
+cumulative whole-page-height effect and required a harness change (`heightTolerance` in
+`.scratch/windmod-vr/run.mjs`) since the runner previously hard-failed on any dimension mismatch
+before ever reaching a pixel-diff ceiling.
+
+| Scene(s)                       | Ceiling     | Decision | Mechanism                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------ | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `divider`                      | 7872        | X        | Row-edge: the border-line vertical position sits one `LayoutUnit` short of the row height.                                                                                                                                                                                                                                                                                                                                                                                 |
+| `drawer-scroll`                | 11403       | X        | Row-edge, scrollable body geometry.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `interaction-tag`              | 554         | X        | Row-edge.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `nav`                          | 230         | X        | Row-edge, nav item background/border extent.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `nav-drawer`, `nav-drawer-rtl` | 2575 / 2579 | X        | Row-edge, nested `NavItem` rows.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `switch`                       | 1664        | X        | Row-edge, label/track alignment (Switch's own flex-centering rewrite, this redesign — see entry below).                                                                                                                                                                                                                                                                                                                                                                    |
+| `tag`                          | 2111        | X        | Row-edge.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `persona`                      | 35436       | X        | **Cumulative**: 296 elements on the page each carry a 1/64px-family shortfall, compounding down through nested flex rows and multiple stacked instances to a 1px page-height deficit (`heightTolerance: 1` in `scenes.json`, harness change this session). After cropping both captures to their common height, the residual diff is larger than the other rows in this batch because the drift is not uniform down the page — flagged explicitly in `scenes.json`'s note. |
 
 **Why `--disable-gpu` is not simply a cleaner baseline.** Software rasterization does not put the two
 surfaces back on the same path — it puts them on a _different pair_ of paths. Shipped-green strict-zero

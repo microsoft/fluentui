@@ -37,7 +37,7 @@
   }
 
   .text-caption-1-strong {
-    @apply text-base-200 leading-167;
+    @apply text-base-200 leading-20/12;
   }
 
   .text-subtitle-2 {
@@ -49,7 +49,7 @@
   }
 
   .text-title-3 {
-    @apply text-base-600 leading-083;
+    @apply text-base-600 leading-20/24;
   }
 
   .square-small {

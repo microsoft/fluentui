@@ -80,10 +80,10 @@
   /* Restated rather than omitted: Griffel authors body1 explicitly on the large surface, and a
      class that only repeats the l1 default is a no-op no mutation could kill. */
   .info-small-medium {
-    @apply text-base-200 leading-133;
+    @apply text-base-200 leading-16/12;
   }
 
   .info-large {
-    @apply text-base-300 leading-143;
+    @apply text-base-300 leading-20/14;
   }
 }

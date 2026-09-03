@@ -373,23 +373,37 @@ find the right token.
 
 ### Line-height never rides without font-size
 
-- **Leading is ONE generic value-named ratio ramp — no font-size pairing implied** (AR2). A label
-  is the ratio itself (`leading-140` is `1.4`, `leading-143` is `calc(20 / 14)`), never a step index
-  — there is no "the leading that goes with `text-base-300`" the way there was under the old
-  `leading-base-300` naming. Pick the `--leading-*` value that gives the line box you want.
+- **Leading is pure arithmetic — no token, no ramp, no font-size pairing implied.**
+  `leading-<n>` (any bare integer `n`) compiles to `calc(n / 100)`; `leading-<a>/<b>` compiles to
+  the exact ratio `a / b`, for a value two hundredths-digits can't express (`leading-140` is `1.4`;
+  `leading-20/14` is exactly `20/14`, not the `1.43` `leading-143` would give). There is no
+  `--leading-*` custom property anywhere — see `tokens-and-scale.md` for the full rule. Pick the
+  integer or fraction that gives the line box you want.
 - Never author a `leading-*` without a `text-*` on the same element regardless — a leading value is
-  still a unitless ratio, so authored alone it multiplies whatever font-size inheritance delivers and
-  the line box drifts off the ramp. Compute the ratio against the element's OWN authored font-size
-  and pick (or add) the `--leading-*` label matching that ratio. `leading-000` is the one exemption —
-  zero computes the same against any font-size (Spinner's root, matching Griffel's bare
+  still a unitless ratio, so authored alone it multiplies whatever font-size inheritance delivers.
+  Compute the ratio against the element's OWN authored font-size. `leading-0` is the one
+  exemption — zero computes the same against any font-size (Spinner's root, matching Griffel's bare
   `lineHeight: 0`).
-- If no existing label matches the ratio a site needs, spell it as the self-documenting fraction
-  `leading-[calc(target/ownFontSize)]` in the same rule as the font-size — this is a deliberate
-  escape hatch, not a dead end: `.scratch/windmod-loop/leading-ramp/census.mjs` FAILS LOUDLY on any
-  `leading-*` form whose ratio matches no label in the shared ramp, so an arbitrary bracket form
-  forces a ruling (either an existing label was missed, or the ratio is genuinely new and gets
-  promoted into the shared ramp — label = 3-digit truncation of `ratio * 100`, collision-checked).
-  Do not leave a shipped module authoring a bracket ratio the census would flag.
+- Prefer `leading-<n>` (the bare integer) whenever the target ratio terminates within two decimal
+  digits (`1.4`, `0.83` would be wrong here — see below — `1.25`, `2`); reach for `leading-<a>/<b>`
+  only when it doesn't. Author the fraction as the same integers a hand computation would use — the
+  numerator/denominator pair that actually produced the target (`20/14` for a 20px line box on a
+  14px font), not a reduced or rescaled equivalent — so the site stays self-documenting. `guard.mjs`
+  (`.scratch/windmod-loop/leading-ramp/guard.mjs`) fails loudly on anything outside
+  `leading-<int>` / `leading-<int>/<nonzero int>` — zero-padded labels, keywords
+  (`leading-none`/`leading-tight`/…), bracket/paren forms, and zero or non-integer denominators are
+  all rejected in this corpus, even though some of those forms are valid CSS a consuming
+  application could use. Wire that guard into your local gate before authoring a new leading value.
+- **A sub-pixel VR residue from a leading change is not automatically a bug.** Chrome's Blink layout
+  engine stores line-box height as 1/64px fixed-point (`LayoutUnit`); a leading value evaluated
+  directly on a utility rule (any spelling — `calc()`, a pre-resolved decimal, a bracket form) can
+  legitimately resolve one `LayoutUnit` (1/64px) short of the value a custom-property-indirected
+  form would have produced, purely as a rendering-path artifact — see the `LayoutUnit 1/64px
+quantization` row in `failure-modes.md` and MORNING-DECISIONS.md Decision X. Do NOT chase this as
+  a CSS defect on sight. Before treating a small, edge/corner-concentrated VR diff as this class,
+  run the value-identity control first (a resolved-ratio diff proving the change is 0 — see
+  `lineheight-diff2.mjs`) — only THEN is a sub-pixel diff safe to attribute to LayoutUnit rounding
+  rather than a real regression.
 - Native interactive elements (`button`, `input`, `select`, `textarea`) author their `text-*` step
   even when nothing in the box visibly depends on it. Preflight resets them to `font: inherit`, so
   the component declares its metrics rather than riding the surrounding context — `Tab.module.css`

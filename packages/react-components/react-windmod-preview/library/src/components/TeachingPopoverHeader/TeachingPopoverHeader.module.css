@@ -5,7 +5,7 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply flex flex-row items-center pb-vertical-xs text-base-200 leading-133 font-semibold text-neutral-foreground-3;
+    @apply flex flex-row items-center pb-vertical-xs text-base-200 leading-16/12 font-semibold text-neutral-foreground-3;
   }
 
   .brand {
@@ -13,7 +13,7 @@
   }
 
   .icon {
-    @apply relative me-horizontal-xs box-content inline-flex size-(--text-base-200) items-center justify-center bg-transparent-background align-middle text-base-200 leading-133 text-neutral-foreground-2 no-underline;
+    @apply relative me-horizontal-xs box-content inline-flex size-(--text-base-200) items-center justify-center bg-transparent-background align-middle text-base-200 leading-16/12 text-neutral-foreground-2 no-underline;
   }
 
   .icon-brand {
@@ -23,7 +23,7 @@
   /* The corner and the inline-end border are flattened so the button can sit flush against the
      surface edge. */
   .dismiss-button {
-    @apply relative ms-auto flex cursor-pointer items-center rounded-e-none border-thin border-solid border-transparent-stroke bg-transparent-background px-horizontal-xs py-vertical-xs font-base text-base-300 leading-143 font-regular text-neutral-foreground-2;
+    @apply relative ms-auto flex cursor-pointer items-center rounded-e-none border-thin border-solid border-transparent-stroke bg-transparent-background px-horizontal-xs py-vertical-xs font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-2;
 
     border-inline-end-style: none;
 

@@ -2,7 +2,17 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply relative inline-flex items-start;
+    /*
+     * items-center, not items-start: the label's block height already equals the indicator's
+     * height at both sizes (text-base-300/leading-20/14 -> 20px line-height == h-20; text-base-200/
+     * leading-16/12 -> 16px == h-16, by construction), so centering and start-aligning the two
+     * flex items render identically for a single-line label — the .label block margin this used
+     * to pair with (--fui-switch-label-offset) was an always-0px Griffel-port tautology, deleted
+     * below. label-above restores items-start explicitly: once flex-col flips the cross axis to
+     * horizontal, this is a left-alignment concern, not vertical centering, and the stacked
+     * layout keeps the original left-aligned look.
+     */
+    @apply relative inline-flex items-center;
 
     @variant focus {
       @apply outline-none;
@@ -13,7 +23,7 @@
     }
 
     @variant label-above {
-      @apply flex-col;
+      @apply flex-col items-start;
     }
   }
 
@@ -52,7 +62,7 @@
   .indicator {
     --fui-switch-thumb-offset: 0px;
 
-    @apply pointer-events-none mx-horizontal-s my-vertical-s h-20 w-40 shrink-0 rounded-circular border-thin border-solid fill-current text-18 leading-000 duration-normal ease-easy-ease;
+    @apply pointer-events-none mx-horizontal-s my-vertical-s h-20 w-40 shrink-0 rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
 
     transition-property: background, border, color;
 
@@ -138,14 +148,10 @@
   }
 
   .label {
-    --fui-switch-label-offset: calc((20px * var(--base-scale) - var(--text-base-300) * var(--leading-143)) / 2);
-
-    @apply my-(--fui-switch-label-offset) cursor-pointer px-horizontal-s py-vertical-s font-base text-base-300 leading-143 text-neutral-foreground-1;
+    @apply cursor-pointer px-horizontal-s py-vertical-s font-base text-base-300 leading-20/14 text-neutral-foreground-1;
 
     @variant group-size-small/fui-switch {
-      --fui-switch-label-offset: calc((16px * var(--base-scale) - var(--text-base-200) * var(--leading-133)) / 2);
-
-      @apply text-base-200 leading-133;
+      @apply text-base-200 leading-16/12;
     }
 
     @variant group-label-above/fui-switch {

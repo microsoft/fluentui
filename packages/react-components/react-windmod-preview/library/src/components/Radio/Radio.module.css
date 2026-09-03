@@ -30,7 +30,7 @@
   }
 
   .indicator {
-    @apply pointer-events-none relative mx-horizontal-s my-vertical-s flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-167;
+    @apply pointer-events-none relative mx-horizontal-s my-vertical-s flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-20/12;
 
     /* Raw pseudo, never Tailwind's `after` variant: the variant injects
        `content: var(--tw-content)`, whose registered initial value renders the dot in every
@@ -112,10 +112,17 @@
   }
 
   .label {
-    @apply self-center px-horizontal-s py-vertical-s font-base text-base-300 leading-143 text-neutral-foreground-1;
+    @apply self-center px-horizontal-s py-vertical-s font-base text-base-300 leading-20/14 text-neutral-foreground-1;
 
     @variant group-label-after/fui-radio {
-      --fui-radio-label-offset: calc((16px * var(--base-scale) - var(--text-base-300) * var(--leading-143)) / 2);
+      /*
+       * Real, non-tautological math: the indicator is a fixed 16px but the label's line-height
+       * is 20px (text-base-300 x 20/14), so this is a genuine -2px * scale correction, applied
+       * only for label-after. `calc(20 / 14)` is the exact ratio the removed --leading-20/14 token
+       * held (verified against the AR2 ramp's fixed table before deletion) — a literal, not an
+       * approximation.
+       */
+      --fui-radio-label-offset: calc((16px * var(--base-scale) - var(--text-base-300) * calc(20 / 14)) / 2);
 
       @apply my-(--fui-radio-label-offset) ps-horizontal-xs;
     }

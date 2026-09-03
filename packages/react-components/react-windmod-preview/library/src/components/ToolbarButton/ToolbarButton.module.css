@@ -14,7 +14,7 @@
     /* `m-0` is load-bearing: Griffel's shorthand beats Button's icon-spacing longhand through
        mergeClasses, so a vertically stacked button drops the 6px gap between glyph and label. */
     @variant group-vertical-flag/fui-toolbar-button {
-      @apply m-0 text-icon-24 leading-083;
+      @apply m-0 text-icon-24 leading-20/24;
     }
   }
 }

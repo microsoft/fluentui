@@ -6,7 +6,7 @@
  * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
  * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
  *
- * 467 Fluent tokens: 467 registered, none excluded.
+ * 467 Fluent tokens: 457 registered, 10 excluded (10× lineHeight*).
  *
  * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each
  * utility, so values resolve per-element — the `:root, :host` defaults below,
@@ -28,11 +28,10 @@
  *
  * Font sizes (--text-*) carry the same literal calc(<px> * var(--base-scale)) form as
  * stroke widths: type follows the root font size, not the --spacing density knob.
- * Line heights (--leading-*) are ONE generic value-named UNITLESS RATIO ramp (AR2), no
- * font-size pairing implied — --leading-140 is 1.4, --leading-083 is calc(20 / 24) — the
- * ratio multiplies the element’s own font-size, which already rides base-scale, so line
- * boxes scale for free. Theme-invariant (ramp fixed, cross-checked against the type ramp)
- * and emitted below, not per theme.
+ * Line heights (--leading-*) are NOT registered here at all: leading-<n> is pure
+ * arithmetic (n / 100 for any bare integer n) via the functional @utility override in
+ * css/index.css, so there is no theme token and no runtime custom property for it —
+ * see the `lineHeight` entry in EXCLUSIONS below.
  * Shadow offsets and blur radii ride the base-scale axis, so an elevation
  * keeps its proportion to the box it lifts. Border radii ride the same axis, so a
  * corner keeps its proportion to the control it rounds (0 and the 10000px circular
@@ -449,23 +448,6 @@
   --font-weight-semibold: var(--font-weight-semibold);
   --font-weight-bold: var(--font-weight-bold);
 
-  /* Line heights — ONE generic value-named ratio ramp, no font-size pairing implied — 15 tokens → --leading-* (leading-*) */
-  --leading-000: var(--leading-000);
-  --leading-050: var(--leading-050);
-  --leading-055: var(--leading-055);
-  --leading-080: var(--leading-080);
-  --leading-083: var(--leading-083);
-  --leading-092: var(--leading-092);
-  --leading-100: var(--leading-100);
-  --leading-125: var(--leading-125);
-  --leading-133: var(--leading-133);
-  --leading-137: var(--leading-137);
-  --leading-140: var(--leading-140);
-  --leading-143: var(--leading-143);
-  --leading-160: var(--leading-160);
-  --leading-167: var(--leading-167);
-  --leading-200: var(--leading-200);
-
   /* Shadows — 12 tokens → --shadow-* (shadow-*) */
   --shadow-2: var(--shadow-2);
   --shadow-4: var(--shadow-4);
@@ -653,30 +635,6 @@
     --spacing-vertical-xl: calc(var(--spacing) * 20);
     --spacing-vertical-xxl: calc(var(--spacing) * 24);
     --spacing-vertical-xxxl: calc(var(--spacing) * 32);
-
-    /*
-     * Line heights — the fixed, generic LEADING_RAMP (AR2): one value-named unitless
-     * ratio per label, no font-size pairing implied (--leading-140 is 1.4, not "base-100");
-     * no base/hero split — see the generator's LEADING_RAMP doc comment. THEME-INVARIANT:
-     * cross-checked against Fluent's type ramp, so these live in the base sheet, not the
-     * per-theme files. No --base-scale factor — the paired --text-* carries it, and a
-     * ratio multiplies the element’s own computed font-size.
-     */
-    --leading-000: 0;
-    --leading-050: 0.5;
-    --leading-055: 0.55;
-    --leading-080: 0.8;
-    --leading-083: calc(20 / 24);
-    --leading-092: calc(22 / 24);
-    --leading-100: 1;
-    --leading-125: 1.25;
-    --leading-133: calc(16 / 12);
-    --leading-137: 1.375;
-    --leading-140: 1.4;
-    --leading-143: calc(20 / 14);
-    --leading-160: 1.6;
-    --leading-167: calc(20 / 12);
-    --leading-200: 2;
   }
 
   /*

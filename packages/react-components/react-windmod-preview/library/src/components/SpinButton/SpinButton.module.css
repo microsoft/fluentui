@@ -26,7 +26,7 @@
        reach the medium size by inheritance, so without them here a surrounding typography scope
        would also reach the small text. */
     @variant size-small {
-      @apply min-h-24 ps-horizontal-s font-base text-base-200 leading-133 font-regular;
+      @apply min-h-24 ps-horizontal-s font-base text-base-200 leading-16/12 font-regular;
     }
 
     @variant focus-within {

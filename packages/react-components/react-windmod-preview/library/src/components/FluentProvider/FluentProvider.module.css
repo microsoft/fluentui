@@ -2,6 +2,6 @@
 
 @layer fui.components.l1 {
   .root {
-    @apply bg-neutral-background-1 text-start font-base text-base-300 leading-143 font-regular text-neutral-foreground-1;
+    @apply bg-neutral-background-1 text-start font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
   }
 }

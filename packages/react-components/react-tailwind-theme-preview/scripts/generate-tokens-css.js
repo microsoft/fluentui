@@ -322,111 +322,6 @@ function baseScaledValue(tokenName, value) {
 }
 
 /**
- * The unitless line-height ratio for a `lineHeight*` token: canonical ramp px divided by the
- * 1:1-paired `fontSize*` token's px (Decision U — see the lineHeight NAMESPACES entry).
- *
- * Emits an exact decimal when the division is finite (`22px / 16px` → `1.375`) and an exact
- * `calc(A / B)` fraction when it repeats (`20px / 14px` → `calc(20 / 14)`) — a rounded decimal
- * would be a silent visual change, and calc division is exact by construction. Finiteness is
- * decided arithmetically: the reduced fraction's denominator must factor into 2s and 5s only.
- *
- * @param {string} tokenName      the lineHeight token, for errors
- * @param {string} lineHeightValue raw theme value, e.g. `20px`
- * @param {string} fontSizeValue   the paired fontSize token's raw theme value, e.g. `14px`
- * @returns {string}
- */
-function unitlessLeadingValue(tokenName, lineHeightValue, fontSizeValue) {
-  const parsePx = (value, role) => {
-    const match = /^(\d+)px$/.exec(value);
-    if (!match) {
-      throw new Error(
-        `Token \`${tokenName}\`: ${role} value \`${value}\` is not an integer px length — ` +
-          'the unitless ratio derivation only understands the integer-px type ramp.',
-      );
-    }
-    return Number(match[1]);
-  };
-
-  const lineHeightPx = parsePx(lineHeightValue, 'line-height');
-  const fontSizePx = parsePx(fontSizeValue, 'paired font-size');
-  if (fontSizePx === 0) {
-    throw new Error(`Token \`${tokenName}\`: paired font-size is 0px — cannot form a ratio.`);
-  }
-
-  const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
-  let denominator = fontSizePx / gcd(lineHeightPx, fontSizePx);
-  while (denominator % 2 === 0) denominator /= 2;
-  while (denominator % 5 === 0) denominator /= 5;
-
-  return denominator === 1 ? String(lineHeightPx / fontSizePx) : `calc(${lineHeightPx} / ${fontSizePx})`;
-}
-
-/**
- * The generic value-named leading ramp (AR2, TASTE-BACKLOG.md "AR2 PROMOTED -> RULED",
- * superseding Decision U's per-step `--leading-base-*`/`--leading-hero-*` names).
- *
- * ONE flat ramp, no font-size pairing implied: a `label` is the 3-digit truncation of
- * `ratio * 100` (e.g. `0.8333…` -> `083`), and `value` is the exact CSS spelling — a plain
- * decimal where the ratio terminates, an unevaluated `calc(A / B)` fraction where it repeats
- * (division is exact by construction; a rounded decimal would be a silent visual change).
- * Every ratio here is a ratio genuinely authored somewhere in the windmod corpus census
- * (`.scratch/windmod-loop/leading-ramp/census.mjs`) — this table is the fixed, literal output
- * of that census, not derived per-build from packages/tokens.
- *
- * The six `lineHeightBase*` entries in packages/tokens/src/tokens.ts are cross-checked against
- * this table below (see the leadingTokens loop in analyzeThemeEmission) so an upstream change
- * to Fluent's base type ramp cannot silently invalidate the fixed ratios here. The four
- * `lineHeightHero*` entries are NOT cross-checked and NOT represented in this ramp — the
- * windmod corpus has zero sites pairing a leading value with a hero font-size step, so there is
- * no hero half to this ramp (hero keeps its base/hero split for FONT SIZE; leading does not).
- *
- * @type {{ label: string, ratio: number, value: string }[]}
- */
-const LEADING_RAMP = [
-  { label: '000', ratio: 0, value: '0' },
-  { label: '050', ratio: 0.5, value: '0.5' },
-  { label: '055', ratio: 0.55, value: '0.55' },
-  { label: '080', ratio: 0.8, value: '0.8' },
-  { label: '083', ratio: 20 / 24, value: 'calc(20 / 24)' },
-  { label: '092', ratio: 22 / 24, value: 'calc(22 / 24)' },
-  { label: '100', ratio: 1, value: '1' },
-  { label: '125', ratio: 1.25, value: '1.25' },
-  { label: '133', ratio: 16 / 12, value: 'calc(16 / 12)' },
-  { label: '137', ratio: 1.375, value: '1.375' },
-  { label: '140', ratio: 1.4, value: '1.4' },
-  { label: '143', ratio: 20 / 14, value: 'calc(20 / 14)' },
-  { label: '160', ratio: 1.6, value: '1.6' },
-  { label: '167', ratio: 20 / 12, value: 'calc(20 / 12)' },
-  { label: '200', ratio: 2, value: '2' },
-];
-
-/** Fails loudly on a duplicate 3-digit label — the uniqueness the whole ramp depends on. */
-function assertUniqueLeadingLabels() {
-  const seen = new Set();
-  for (const { label } of LEADING_RAMP) {
-    if (seen.has(label)) {
-      throw new Error(`LEADING_RAMP has a duplicate label \`${label}\` — labels must be unique 3-digit tokens.`);
-    }
-    if (!/^\d{3}$/.test(label)) {
-      throw new Error(`LEADING_RAMP label \`${label}\` is not a 3-digit token.`);
-    }
-    seen.add(label);
-  }
-}
-assertUniqueLeadingLabels();
-
-/**
- * Finds the LEADING_RAMP entry whose ratio matches `ratio` within floating-point tolerance.
- *
- * @param {number} ratio
- * @returns {{ label: string, ratio: number, value: string } | undefined}
- */
-function findLeadingRampEntry(ratio) {
-  const EPSILON = 1e-9;
-  return LEADING_RAMP.find(entry => Math.abs(entry.ratio - ratio) < EPSILON);
-}
-
-/**
  * A shadow theme value with every LENGTH rewritten onto the `--base-scale` axis, leaving the
  * colour components untouched: `0 1px 2px rgba(0, 0, 0, .14)` →
  * `0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, .14)`.
@@ -695,17 +590,12 @@ function readThemeValues() {
  *   are THEME-INVARIANT and already emitted at `:root, :host` in their density-knob
  *   calc form, which a literal per-theme re-emission would silently break, so they are
  *   asserted identical and EXCLUDED from the per-theme classes;
- * - every theme's lineHeight values AND their 1:1-paired fontSize values must be
- *   byte-identical across themes — the fixed LEADING_RAMP (AR2) is emitted ONCE at
- *   `:root, :host` in the base sheet, and the pairing is used only to cross-check that ramp
- *   against Fluent's real base type ramp, so a theme with a divergent ramp needs a design
- *   decision, not a silently wrong cross-check. lineHeight tokens are likewise EXCLUDED from
- *   the per-theme classes.
+ * - `lineHeight*` tokens are excluded entirely (see EXCLUSIONS) — `leading-<n>` is pure
+ *   arithmetic now, so there is no per-theme or invariant value to assert here at all.
  *
  * @param {{ name: string, value: string }[]} tokens parsed tokens.ts entries
  * @returns {{
  *   variantTokens: { name: string, canonical: string, scaleValue: ((tokenName: string, value: string) => string) | null }[],
- *   leadingTokens: { name: string, canonical: string, value: string }[],
  *   themes: Record<string, Record<string, string>>,
  *   classNames: Record<string, string>,
  * }}
@@ -731,8 +621,6 @@ function analyzeThemeEmission(tokens) {
   const invariantTokens = [];
   /** @type {string[]} */
   const themeAbsentTokens = [];
-  /** @type {{ name: string, canonical: string, fontSizeName: string, value: string }[]} */
-  const leadingTokens = [];
 
   for (const { name } of tokens) {
     const classification = classify(name);
@@ -744,13 +632,6 @@ function analyzeThemeEmission(tokens) {
       invariantTokens.push({ name, expected: px === 0 ? '0' : `${px}px` });
     } else if (classification.group.prefix === 'zIndex') {
       themeAbsentTokens.push(name);
-    } else if (classification.group.unitlessRatio === true) {
-      leadingTokens.push({
-        name,
-        canonical: classification.canonical,
-        fontSizeName: `fontSize${name.slice(classification.group.prefix.length)}`,
-        value: '', // derived below, once the themes are proven to agree
-      });
     } else {
       variantTokens.push({
         name,
@@ -763,19 +644,25 @@ function analyzeThemeEmission(tokens) {
     }
   }
 
-  const expectedKeys = [
-    ...variantTokens.map(token => token.name),
-    ...invariantTokens.map(token => token.name),
-    ...leadingTokens.map(token => token.name),
-  ].sort();
+  const expectedKeys = [...variantTokens.map(token => token.name), ...invariantTokens.map(token => token.name)].sort();
+
+  // `lineHeight*` tokens are EXCLUDED (see EXCLUSIONS) — leading is pure arithmetic now
+  // (css/index.css's `@utility leading-*`), so nothing here registers them. The snapshot in
+  // theme-values.json still carries Fluent's real lineHeight*/fontSize* values (it is generated
+  // independently, from @fluentui/tokens, for reasons unrelated to this package), so every
+  // excluded prefix's keys are stripped out of each theme's key set before the parity check
+  // below — otherwise a key genuinely present upstream but deliberately unregistered here would
+  // misreport as "drift".
+  const excludedPrefixes = EXCLUSIONS.map(exclusion => exclusion.prefix);
+  const stripExcluded = keys => keys.filter(key => !excludedPrefixes.some(prefix => key.startsWith(prefix)));
 
   for (const [themeName, theme] of Object.entries(themes)) {
-    const themeKeys = Object.keys(theme).sort();
+    const themeKeys = stripExcluded(Object.keys(theme)).sort();
     if (JSON.stringify(themeKeys) !== JSON.stringify(expectedKeys)) {
       const missing = expectedKeys.filter(key => !(key in theme));
       const extra = themeKeys.filter(key => !expectedKeys.includes(key));
       throw new Error(
-        `Theme \`${themeName}\` keys drifted from tokens.ts (zIndex excluded): ` +
+        `Theme \`${themeName}\` keys drifted from tokens.ts (zIndex/excluded prefixes aside): ` +
           `missing [${missing}], extra [${extra}]. Regenerate theme-values.json.`,
       );
     }
@@ -797,52 +684,7 @@ function analyzeThemeEmission(tokens) {
     }
   }
 
-  // Unitless leading ratios (Decision U): prove the whole pairing is theme-invariant —
-  // BOTH halves, since a ratio derived from theme A silently misdescribes a theme whose
-  // line-height OR font-size diverges — then derive each ratio once.
-  const themeEntries = Object.entries(themes);
-  const [referenceThemeName, referenceTheme] = themeEntries[0];
-  for (const token of leadingTokens) {
-    if (!(token.fontSizeName in referenceTheme)) {
-      throw new Error(
-        `Token \`${token.name}\` has no 1:1-paired \`${token.fontSizeName}\` in the theme snapshot — ` +
-          'the unitless ratio derivation depends on the ramp pairing.',
-      );
-    }
-    for (const [themeName, theme] of themeEntries) {
-      for (const key of [token.name, token.fontSizeName]) {
-        if (theme[key] !== referenceTheme[key]) {
-          throw new Error(
-            `Theme \`${themeName}\` has \`${key}: ${theme[key]}\` but \`${referenceThemeName}\` has ` +
-              `\`${referenceTheme[key]}\`. The type ramp must be theme-invariant for the shared unitless ` +
-              '`--leading-*` ratios in the base sheet to be correct — a genuinely divergent ramp needs a ' +
-              'design decision, not a silently wrong shared ratio.',
-          );
-        }
-      }
-    }
-    token.value = unitlessLeadingValue(token.name, referenceTheme[token.name], referenceTheme[token.fontSizeName]);
-
-    // AR2 cross-check: the fixed LEADING_RAMP table must stay grounded in Fluent's real base
-    // type ramp. Only the SIX `lineHeightBase*` steps are checked — the four `lineHeightHero*`
-    // steps have zero corpus sites pairing them with a leading value (see LEADING_RAMP's
-    // doc comment) and are deliberately NOT required to land on a ramp entry.
-    if (token.name.startsWith('lineHeightBase')) {
-      const lineHeightPx = Number(/^(\d+)px$/.exec(referenceTheme[token.name])[1]);
-      const fontSizePx = Number(/^(\d+)px$/.exec(referenceTheme[token.fontSizeName])[1]);
-      const rampEntry = findLeadingRampEntry(lineHeightPx / fontSizePx);
-      if (!rampEntry) {
-        throw new Error(
-          `Token \`${token.name}\` has ratio ${lineHeightPx}/${fontSizePx} = ${lineHeightPx / fontSizePx}, ` +
-            "which matches no entry in LEADING_RAMP. Fluent's base type ramp changed upstream — add the " +
-            'new ratio to LEADING_RAMP (label = 3-digit truncation of ratio*100, no collision) after ' +
-            're-running the corpus census.',
-        );
-      }
-    }
-  }
-
-  return { variantTokens, leadingTokens, themes, classNames };
+  return { variantTokens, themes, classNames };
 }
 
 /**
@@ -886,44 +728,9 @@ const NAMESPACES = [
     utility: 'font-*',
     heading: 'Font weights',
   },
-  {
-    prefix: 'lineHeight',
-    namespace: 'leading',
-    utility: 'leading-*',
-    heading: 'Line heights — ONE generic value-named ratio ramp, no font-size pairing implied',
-    // GENERIC VALUE-NAMED RAMP — AR2 (2026-09-02, TASTE-BACKLOG.md "AR2 PROMOTED -> RULED"),
-    // superseding Decision U's per-step `--leading-base-*`/`--leading-hero-*` names.
-    // --------------------------------------------------------------------------------------
-    // The runtime `--leading-*` custom properties are NOT one-per-tokens.ts-entry the way
-    // every other namespace is: they are LEADING_RAMP (above), a fixed 15-entry table keyed
-    // by a 3-digit VALUE label (`--leading-140` is ratio 1.4), with no name tying it to any
-    // particular font-size step. Unlike the font-size ramp, leading keeps no base/hero split —
-    // every ratio actually authored anywhere in the windmod corpus, base or hero-adjacent,
-    // collapses into this one flat ramp (AR2's "no font-size pairing implied").
-    //
-    // Each value is the idiomatic unitless line-height: an exact decimal where finite, an
-    // unevaluated `calc(A / B)` fraction where it repeats. No `--base-scale` factor: a ratio
-    // multiplies the element's own computed font-size, which already rides base-scale, so line
-    // boxes scale for free.
-    //
-    // The lane-D measurement that first rejected a GLOBAL unitless swap (1323 elements
-    // changing used value, because `line-height` inherits a ratio as a NUMBER where a length
-    // inherited a fixed px line box) still holds mechanically — it is COMPENSATED in the
-    // windmod modules exactly as Decision U compensated it: every rule whose descendants relied
-    // on inheriting a px line box authors its own explicit ratio paired against its authored
-    // font-size (lane-D's rule-surface map, .scratch/leading-shadow/rule-surface.txt). AR2 only
-    // changes how those per-site ratios are NAMED — the mechanism is unchanged.
-    //
-    // `lineHeightBase*`/`lineHeightHero*` in packages/tokens/src/tokens.ts are still classified
-    // here (`unitlessRatio: true`) so the theme-invariance assertion in analyzeThemeEmission
-    // keeps proving the type ramp is byte-identical across all seven shipped themes, and so the
-    // six `lineHeightBase*` ratios stay cross-checked against LEADING_RAMP (a Fluent ramp
-    // change upstream must fail the build, not silently invalidate the fixed table). But NONE
-    // of those ten tokens.ts entries is emitted as its own runtime variable any more — render()
-    // special-cases `group.prefix === 'lineHeight'` and emits LEADING_RAMP directly instead.
-    // `unitlessRatio` still routes them to the theme-invariant `:root, :host` emission.
-    unitlessRatio: true,
-  },
+  // `lineHeight*` is deliberately absent from this table — see the `lineHeight` entry in
+  // EXCLUSIONS. `leading-<n>` is pure arithmetic (css/index.css's `@utility leading-*`), so
+  // there is no namespace here to register it into.
   {
     prefix: 'spacingHorizontal',
     namespace: 'spacing-horizontal',
@@ -1013,19 +820,35 @@ const NAMESPACES = [
 ];
 
 /**
- * Prefixes deliberately NOT registered — currently EMPTY: every Fluent token has a Tailwind
- * theme name. The mechanism stays because `classify` throws on an unclassified token, and a
- * future token family may genuinely have no namespace; this is where its reason would live.
+ * Prefixes deliberately NOT registered. The mechanism exists because `classify` throws on an
+ * unclassified token, and a token family may genuinely have no namespace, or (lineHeight) have
+ * one this generator deliberately does not fill; this is where the reason lives.
  *
- * HISTORY: `strokeWidth*` was the last exclusion, on the grounds that no namespace fits (still
- * true — see STROKE_WIDTH_SCALE). It was removed 2026-07-27 when the four joined `--spacing-*`:
- * a stroke width IS a length on the same base-scale system, the spacing-powered families give
- * it real utilities, and the accompanying `emit: true` variable covers the border/outline/ring/
+ * HISTORY: `strokeWidth*` was excluded once, on the grounds that no namespace fits (still true
+ * — see STROKE_WIDTH_SCALE). It was removed 2026-07-27 when the four joined `--spacing-*`: a
+ * stroke width IS a length on the same base-scale system, the spacing-powered families give it
+ * real utilities, and the accompanying `emit: true` variable covers the border/outline/ring/
  * decoration properties that provably do NOT consume the namespace.
+ *
+ * `lineHeight*` was added 2026-09-02 (AR2 follow-up): `leading-<n>` is now PURE ARITHMETIC —
+ * `n / 100` for any bare integer `n`, via the functional `@utility leading-*` override in
+ * css/index.css — so there is no per-token registration to emit and no runtime `--leading-*`
+ * custom property at all. tokens.ts still carries the ten `lineHeightBase*`/`lineHeightHero*`
+ * inventory entries (owned by @fluentui/tokens, upstream of this package) and
+ * theme-values.json still snapshots their real values, but nothing here reads or emits them —
+ * see `stripExcluded` in analyzeThemeEmission, which keeps the per-theme key-parity check from
+ * misreading those still-present-upstream keys as drift.
  *
  * @type {{ prefix: string, reason: string }[]}
  */
-const EXCLUSIONS = [];
+const EXCLUSIONS = [
+  {
+    prefix: 'lineHeight',
+    reason:
+      'leading-<n> is pure arithmetic (n / 100) via the functional @utility override in ' +
+      'css/index.css — no theme token is registered or emitted for it.',
+  },
+];
 
 /*
  * COLLISIONS WITH TAILWIND STATIC UTILITIES — probe-verified, no action needed.
@@ -1170,9 +993,7 @@ function render(options = {}) {
   readStrokeWidthScale();
   // Theme-VARIANT values are NOT emitted here — they ship one file per theme under
   // `css/themes/` (see NO DEFAULT THEME at the top). `analyzeThemeEmission` runs for its
-  // assertions — it is what proves the spacing/stroke set below really is invariant, and that
-  // the fixed LEADING_RAMP (AR2) stays cross-checked against Fluent's real base type ramp. The
-  // ramp itself is not one of its return values — it is the fixed LEADING_RAMP table above.
+  // assertions — it is what proves the spacing/stroke set below really is invariant.
   analyzeThemeEmission(tokens);
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
@@ -1201,30 +1022,6 @@ function render(options = {}) {
     }
 
     const { group, themeKey } = classification;
-
-    // AR2: lineHeight tokens are not emitted one-per-tokens.ts-entry — the runtime ramp is the
-    // fixed, generic LEADING_RAMP table, unrelated in shape to how many lineHeightBase*/Hero*
-    // entries tokens.ts happens to carry. Insert the whole 15-entry alias section ONCE, at the
-    // position of the FIRST lineHeight-prefixed token encountered (preserving this namespace's
-    // original placement in tokens.css — right after Font weights), then skip the per-token
-    // handling below entirely for every lineHeight token.
-    if (group.prefix === 'lineHeight') {
-      if (!sections.has('lineHeight')) {
-        for (const { label } of LEADING_RAMP) {
-          const rampThemeKey = `--leading-${label}`;
-          const rampCollision = seenThemeKeys.get(rampThemeKey);
-          if (rampCollision) {
-            throw new Error(`Theme key \`${rampThemeKey}\` is produced by both \`${rampCollision}\` and LEADING_RAMP.`);
-          }
-          seenThemeKeys.set(rampThemeKey, `LEADING_RAMP[${label}]`);
-        }
-        sections.set('lineHeight', {
-          group,
-          lines: LEADING_RAMP.map(({ label }) => `  --leading-${label}: var(--leading-${label});`),
-        });
-      }
-      continue;
-    }
 
     const collision = seenThemeKeys.get(themeKey);
     if (collision) {
@@ -1278,9 +1075,8 @@ function render(options = {}) {
   }
 
   // Computed from the `excluded` map directly, NOT from `tokens.length - seenThemeKeys.size`:
-  // the lineHeight namespace collapses its 10 tokens.ts entries into LEADING_RAMP's 14 runtime
-  // names (AR2), so seenThemeKeys.size is no longer 1:1 with the number of tokens.ts entries
-  // that were actually processed as `register`.
+  // the ten `lineHeight*` tokens.ts entries are excluded outright now (AR2 follow-up) rather
+  // than mapped 1:1 into a registered theme key.
   const excludedCount = [...excluded.values()].reduce((sum, names) => sum + names.length, 0);
   const registered = tokens.length - excludedCount;
 
@@ -1324,11 +1120,10 @@ function render(options = {}) {
   out.push(' *');
   out.push(' * Font sizes (--text-*) carry the same literal calc(<px> * var(--base-scale)) form as');
   out.push(' * stroke widths: type follows the root font size, not the --spacing density knob.');
-  out.push(' * Line heights (--leading-*) are ONE generic value-named UNITLESS RATIO ramp (AR2), no');
-  out.push(' * font-size pairing implied — --leading-140 is 1.4, --leading-083 is calc(20 / 24) — the');
-  out.push(' * ratio multiplies the element’s own font-size, which already rides base-scale, so line');
-  out.push(' * boxes scale for free. Theme-invariant (ramp fixed, cross-checked against the type ramp)');
-  out.push(' * and emitted below, not per theme.');
+  out.push(' * Line heights (--leading-*) are NOT registered here at all: leading-<n> is pure');
+  out.push(' * arithmetic (n / 100 for any bare integer n) via the functional @utility override in');
+  out.push(' * css/index.css, so there is no theme token and no runtime custom property for it —');
+  out.push(' * see the `lineHeight` entry in EXCLUSIONS below.');
   out.push(' * Shadow offsets and blur radii ride the base-scale axis, so an elevation');
   out.push(' * keeps its proportion to the box it lifts. Border radii ride the same axis, so a');
   out.push(' * corner keeps its proportion to the control it rounds (0 and the 10000px circular');
@@ -1362,10 +1157,7 @@ function render(options = {}) {
 
   out.push('}');
 
-  /** The fixed, theme-invariant generic leading ramp (AR2). @type {string[]} */
-  const leadingLines = LEADING_RAMP.map(({ label, value }) => `    --leading-${label}: ${value};`);
-
-  if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length + leadingLines.length > 0) {
+  if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length > 0) {
     out.push('');
     out.push('/*');
     out.push(' * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.');
@@ -1428,16 +1220,6 @@ function render(options = {}) {
     out.push('');
     out.push('    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */');
     out.push(...emittedVariables);
-    out.push('');
-    out.push('    /*');
-    out.push('     * Line heights — the fixed, generic LEADING_RAMP (AR2): one value-named unitless');
-    out.push('     * ratio per label, no font-size pairing implied (--leading-140 is 1.4, not "base-100");');
-    out.push("     * no base/hero split — see the generator's LEADING_RAMP doc comment. THEME-INVARIANT:");
-    out.push("     * cross-checked against Fluent's type ramp, so these live in the base sheet, not the");
-    out.push('     * per-theme files. No --base-scale factor — the paired --text-* carries it, and a');
-    out.push('     * ratio multiplies the element’s own computed font-size.');
-    out.push('     */');
-    out.push(...leadingLines);
     out.push('  }');
     out.push('');
     out.push('  /*');
@@ -1775,7 +1557,6 @@ module.exports = {
   renderThemesAggregate,
   themeFileStem,
   spacingTokenValue,
-  unitlessLeadingValue,
   strokeWidthValue,
   strokeWidthCanonicalName,
   strokeWidthCanonicalValue,
