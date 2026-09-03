@@ -2,17 +2,23 @@
 
 @layer fui.components.l1 {
   .root {
+    @apply relative inline-grid grid-rows-[1lh_minmax(0,auto)] gap-x-horizontal-m px-horizontal-s py-vertical-s align-middle font-base text-base-300 leading-20/14;
+
+    @variant size-small {
+      @apply text-base-200 leading-16/12;
+    }
+
     /*
-     * items-center, not items-start: the label's block height already equals the indicator's
-     * height at both sizes (text-base-300/leading-20/14 -> 20px line-height == h-20; text-base-200/
-     * leading-16/12 -> 16px == h-16, by construction), so centering and start-aligning the two
-     * flex items render identically for a single-line label — the .label block margin this used
-     * to pair with (--fui-switch-label-offset) was an always-0px Griffel-port tautology, deleted
-     * below. label-above restores items-start explicitly: once flex-col flips the cross axis to
-     * horizontal, this is a left-alignment concern, not vertical centering, and the stacked
-     * layout keeps the original left-aligned look.
+     * A stacked single-column template, not a row: label takes row 1 alone (no longer spanning
+     * into row 2 — that row is the indicator's now) and the indicator moves to row 2, via the
+     * per-position overrides on .label and .label-above below. The vertical gap and the root's
+     * own top/bottom padding are asymmetric here because the pre-grid geometry was: the
+     * indicator's own bottom margin set the bottom edge, while the label's own (smaller) padding
+     * set both the top edge and the inter-row gap.
      */
-    @apply relative inline-flex items-center;
+    @variant label-above {
+      @apply grid-rows-[auto_auto] gap-x-0 gap-y-vertical-xs pt-vertical-xs pb-vertical-s;
+    }
 
     @variant focus {
       @apply outline-none;
@@ -20,10 +26,6 @@
 
     @variant focus-within-visible {
       @apply fui-focus-outline;
-    }
-
-    @variant label-above {
-      @apply flex-col items-start;
     }
   }
 
@@ -62,7 +64,7 @@
   .indicator {
     --fui-switch-thumb-offset: 0px;
 
-    @apply pointer-events-none mx-horizontal-s my-vertical-s h-20 w-40 shrink-0 rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
+    @apply pointer-events-none row-start-1 h-20 w-40 self-center rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
 
     transition-property: background, border, color;
 
@@ -143,27 +145,23 @@
     }
   }
 
+  /* Stamped on the indicator, not the label — see useSwitchStyles: the indicator is the only
+     slot with a dedicated conditional class for the above case (the label reaches it via the
+     group variant below). It moves the indicator off the shared 1lh row and onto its own second
+     row, below the label's. */
   .label-above {
-    @apply mt-0;
+    @apply row-[2];
   }
 
   .label {
-    @apply cursor-pointer px-horizontal-s py-vertical-s font-base text-base-300 leading-20/14 text-neutral-foreground-1;
+    @apply row-[1/span_2] cursor-pointer self-start font-base text-base-300 leading-20/14 text-neutral-foreground-1;
 
     @variant group-size-small/fui-switch {
       @apply text-base-200 leading-16/12;
     }
 
     @variant group-label-above/fui-switch {
-      @apply w-full py-vertical-xs;
-    }
-
-    @variant group-label-after/fui-switch {
-      @apply ps-horizontal-xs;
-    }
-
-    @variant group-label-before/fui-switch {
-      @apply pe-horizontal-xs;
+      @apply row-[1];
     }
 
     @variant peer-disabled-control/fui-switch {
