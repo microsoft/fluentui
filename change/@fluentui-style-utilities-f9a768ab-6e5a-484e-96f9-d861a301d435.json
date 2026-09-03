@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update the default Fluent CDN base URL to the fabric-cdn-prod_20260710.001 drop.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

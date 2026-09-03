@@ -17,5 +17,6 @@ describe('return valid icon name', () => {
     expect(getFileTypeIconNameFromExtensionOrType('work', undefined)).toBe('agentwork');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiDashboard)).toBe('pbidashboard');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.wikiPage)).toBe('wikipage');
   });
 });
