@@ -58,7 +58,7 @@
   }
 
   .indicator {
-    @apply pointer-events-none row-start-1 flex size-16 shrink-0 items-center justify-center self-center overflow-hidden rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-20/12;
+    @apply pointer-events-none row-start-1 flex size-16 items-center justify-center self-center overflow-hidden rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-20/12;
 
     @variant group-size-large/fui-checkbox {
       @apply size-20 text-icon-16 leading-125;

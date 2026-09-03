@@ -64,7 +64,7 @@
   .indicator {
     --fui-switch-thumb-offset: 0px;
 
-    @apply pointer-events-none row-start-1 h-20 w-40 shrink-0 self-center rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
+    @apply pointer-events-none row-start-1 h-20 w-40 self-center rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
 
     transition-property: background, border, color;
 

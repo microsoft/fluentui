@@ -30,7 +30,7 @@
   }
 
   .indicator {
-    @apply pointer-events-none relative row-start-1 flex size-16 shrink-0 items-center justify-center self-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-20/12;
+    @apply pointer-events-none relative row-start-1 flex size-16 items-center justify-center self-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-20/12;
 
     /* Raw pseudo, never Tailwind's `after` variant: the variant injects
        `content: var(--tw-content)`, whose registered initial value renders the dot in every
