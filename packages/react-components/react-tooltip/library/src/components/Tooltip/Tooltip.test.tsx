@@ -3,7 +3,9 @@ import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import type { RenderResult } from '@testing-library/react';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -201,5 +203,49 @@ describe('Tooltip', () => {
     expect(getByRoleTooltip(result)).toBe(tooltip);
     expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
     expect(onPositioningEnd).toHaveBeenCalledWith(visibleEvent);
+  });
+
+  it('shows tooltip on hover', async () => {
+    render(
+      <Tooltip content="Tooltip content" relationship="label">
+        <button>Show Tooltip</button>
+      </Tooltip>,
+    );
+
+    // Initially, the tooltip should not be visible
+    expect(await screen.queryByRole('tooltip', { name: 'Tooltip content' })).toBeNull();
+
+    const tooltipTrigger = screen.getByText('Show Tooltip');
+
+    await userEvent.hover(tooltipTrigger);
+
+    // After hovering, the tooltip should be visible
+    expect(await screen.findByRole('tooltip', { name: 'Tooltip content' })).toBeVisible();
+
+    await userEvent.unhover(tooltipTrigger);
+
+    // After unhovering, the tooltip should no longer be visible
+    await waitFor(() => expect(screen.queryByRole('tooltip', { name: 'Tooltip content' })).toBeNull());
+  });
+
+  it('shows tooltip on focus', async () => {
+    render(
+      <Tooltip content="Tooltip content" relationship="label">
+        <button>Show Tooltip</button>
+      </Tooltip>,
+    );
+
+    // Initially, the tooltip should not be visible
+    expect(await screen.queryByRole('tooltip', { name: 'Tooltip content' })).toBeNull();
+
+    await userEvent.tab();
+
+    // After focusing, the tooltip should be visible
+    expect(await screen.findByRole('tooltip', { name: 'Tooltip content' })).toBeVisible();
+
+    await userEvent.tab();
+
+    // After tabbing away, the tooltip should no longer be visible
+    await waitFor(() => expect(screen.queryByRole('tooltip', { name: 'Tooltip content' })).toBeNull());
   });
 });
