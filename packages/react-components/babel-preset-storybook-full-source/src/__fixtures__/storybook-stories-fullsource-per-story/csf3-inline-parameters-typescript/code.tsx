@@ -10,3 +10,17 @@ export const Default: Story = {
     docs: { description: { story: 'Description' } },
   },
 };
+
+export const Satisfies = {
+  render: () => <div>Example</div>,
+  parameters: {
+    docs: { description: { story: 'Description' } },
+  },
+} satisfies Story;
+
+export const As = {
+  render: () => <div>Example</div>,
+  parameters: {
+    docs: { description: { story: 'Description' } },
+  },
+} as Story;
