@@ -11,14 +11,20 @@ export type RotateParams = BasePresenceParams &
     axis?: Axis3D;
 
     /**
-     * Rotation angle for the out state (exited) in degrees.
-     * Defaults to -90.
+     * Rotation angle before entry in degrees. Used by Rotate and Rotate.In.
+     * Also supplies the default for `toAngle`. Defaults to -90.
      */
-    outAngle?: number;
+    fromAngle?: number;
 
     /**
-     * Rotation angle for the in state (entered) in degrees.
+     * Rotation angle at rest in degrees. Used as the entry destination and exit origin.
      * Defaults to 0.
      */
-    inAngle?: number;
+    restAngle?: number;
+
+    /**
+     * Rotation angle after exit in degrees. Used by Rotate and Rotate.Out.
+     * Defaults to `fromAngle`.
+     */
+    toAngle?: number;
   };
