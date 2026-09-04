@@ -13,6 +13,24 @@
 @custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
 @custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
 
+/* CounterBadge: the dot presentation and the empty/no-dot hidden state, both stamped by the
+   headless useCounterBadge on the root. */
+@custom-variant dot (&:where([data-dot]));
+@custom-variant hidden (&:where([data-hidden]));
+
+/* PresenceBadge: status and the out-of-office flag, both stamped by the headless
+   usePresenceBadge on the root. `status-` is prefixed because a bare status name would read as
+   a generic state; `out-of-office` is the boolean flag, distinct from `status-out-of-office`. */
+@custom-variant status-available (&:where([data-status='available']));
+@custom-variant status-away (&:where([data-status='away']));
+@custom-variant status-blocked (&:where([data-status='blocked']));
+@custom-variant status-busy (&:where([data-status='busy']));
+@custom-variant status-do-not-disturb (&:where([data-status='do-not-disturb']));
+@custom-variant status-offline (&:where([data-status='offline']));
+@custom-variant status-out-of-office (&:where([data-status='out-of-office']));
+@custom-variant status-unknown (&:where([data-status='unknown']));
+@custom-variant out-of-office (&:where([data-out-of-office]));
+
 /* Button */
 @custom-variant appearance-secondary (&:where([data-appearance='secondary']));
 @custom-variant appearance-primary (&:where([data-appearance='primary']));

@@ -7,9 +7,18 @@
 import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
 import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeProps as CounterBadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeState as CounterBadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps as PresenceBadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { PresenceBadgeState as PresenceBadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import { PresenceBadgeStatus } from '@fluentui/react-headless-components-preview/badge';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderCounterBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderPresenceBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
+import { useCounterBadge } from '@fluentui/react-headless-components-preview/badge';
+import { usePresenceBadge } from '@fluentui/react-headless-components-preview/badge';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -44,12 +53,72 @@ export { BadgeSlots }
 // @public
 export type BadgeState = BadgeState_2 & Required<Pick<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
 
+// @public
+export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+// @public
+export type CounterBadgeAppearance = 'filled' | 'ghost';
+
+// @public
+export const counterBadgeClassNames: {
+    root: string;
+};
+
+// @public
+export type CounterBadgeColor = Extract<BadgeColor, 'brand' | 'danger' | 'important' | 'informative'>;
+
+// @public
+export type CounterBadgeProps = CounterBadgeProps_2 & {
+    appearance?: CounterBadgeAppearance;
+    color?: CounterBadgeColor;
+    shape?: CounterBadgeShape;
+    size?: BadgeSize;
+};
+
+// @public
+export type CounterBadgeShape = 'circular' | 'rounded';
+
+// @public
+export type CounterBadgeState = CounterBadgeState_2 & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
+
+// @public
+export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public
+export const presenceBadgeClassNames: {
+    root: string;
+};
+
+// @public
+export type PresenceBadgeProps = PresenceBadgeProps_2 & {
+    size?: BadgeSize;
+};
+
+// @public
+export type PresenceBadgeState = PresenceBadgeState_2 & Required<Pick<PresenceBadgeProps, 'size'>>;
+
+export { PresenceBadgeStatus }
+
 export { renderBadge }
+
+export { renderCounterBadge }
+
+export { renderPresenceBadge }
 
 export { useBadge }
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+export { useCounterBadge }
+
+// @public
+export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
+
+export { usePresenceBadge }
+
+// @public
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
 
 // (No @packageDocumentation comment for this package)
 
