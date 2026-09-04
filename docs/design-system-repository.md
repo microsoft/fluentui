@@ -7,11 +7,11 @@ runtime and packaging details.
 
 ## Integration boundaries
 
-| Integration | Location | Consumer |
-| --- | --- | --- |
-| Shared tokens | `packages/tokens/` | All integrations |
-| React components | `packages/react-components/` | React applications |
-| Flask/Jinja integration | `packages/flask-ui/` | Flask applications |
+| Integration             | Location                     | Consumer           |
+| ----------------------- | ---------------------------- | ------------------ |
+| Shared tokens           | `packages/tokens/`           | All integrations   |
+| React components        | `packages/react-components/` | React applications |
+| Flask/Jinja integration | `packages/flask-ui/`         | Flask applications |
 
 The existing React packages remain unchanged. The Flask package is currently a
 private scaffold so its API can be designed without prematurely publishing an
