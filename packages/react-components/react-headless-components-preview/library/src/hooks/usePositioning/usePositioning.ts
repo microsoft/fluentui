@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { normalizeAutoSize } from '@fluentui/react-positioning';
 import type {
   PositioningImperativeRef,
   PositioningShorthandValue,
@@ -12,6 +13,7 @@ import type { PositioningProps, PositioningReturn } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
+import { useAutoSize } from './useAutoSize';
 import { usePlacementObserver } from './usePlacementObserver';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
@@ -44,11 +46,13 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     strategy = 'fixed',
     matchTargetSize,
     positioningRef,
+    autoSize,
   } = options;
 
   const align = normalizeAlign(alignInput);
 
-  const { mainAxis, crossAxis } = resolveOffset(offset);
+  const resolvedOffset = resolveOffset(offset);
+  const { mainAxis, crossAxis } = resolvedOffset;
   const coverAlignment = React.useMemo(
     () => (coverTarget ? getCoverSelfAlignment(position, align) : null),
     [coverTarget, position, align],
@@ -67,7 +71,26 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  const normalizedAutoSize = React.useMemo(() => normalizeAutoSize(autoSize), [autoSize]);
+
+  const applyAutoSize = useAutoSize({
+    containerEl,
+    targetEl: effectiveTarget,
+    targetDocument,
+    autoSize: normalizedAutoSize,
+    position,
+    offset: resolvedOffset,
+    pinned: Boolean(pinned),
+    coverTarget,
+  });
+
+  const requestPlacementUpdate = usePlacementObserver(
+    containerEl,
+    effectiveTarget,
+    targetDocument,
+    coverTarget && !normalizedAutoSize,
+    applyAutoSize,
+  );
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
@@ -150,12 +173,16 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
        * Workaround for https://crbug.com/438334710: Chromium (<=130-ish) doesn't
          apply the implicit `anchor-center` self-alignment that the spec defines
          for single-keyword `position-area` values (`block-start`, `block-end`,
-    `    inline-start`, `inline-end`) or `span-all`.
+         `inline-start`, `inline-end`) or `span-all`.
       */
+      node.style.removeProperty('place-self');
+
       if (align === ALIGNMENTS.center) {
-        node.style.setProperty('place-self', 'anchor-center');
+        const isBlockAxisMain = position === POSITIONS.above || position === POSITIONS.below;
+
+        node.style.setProperty(isBlockAxisMain ? 'justify-self' : 'align-self', 'anchor-center');
+        node.style.removeProperty(isBlockAxisMain ? 'align-self' : 'justify-self');
       } else {
-        node.style.removeProperty('place-self');
         node.style.removeProperty('align-self');
         node.style.removeProperty('justify-self');
       }

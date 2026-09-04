@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add autoSize to headless usePositioning",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
