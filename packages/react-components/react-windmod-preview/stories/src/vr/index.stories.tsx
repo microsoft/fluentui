@@ -12,6 +12,8 @@ export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
 export { CounterBadgeWindmod } from './CounterBadgeWindmod.stories';
 export { CounterBadgeGriffel } from './CounterBadgeGriffel.stories';
+export { PresenceBadgeWindmod } from './PresenceBadgeWindmod.stories';
+export { PresenceBadgeGriffel } from './PresenceBadgeGriffel.stories';
 export { BreadcrumbWindmod } from './BreadcrumbWindmod.stories';
 export { BreadcrumbGriffel } from './BreadcrumbGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';
