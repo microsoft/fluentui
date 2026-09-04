@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: apply state.arrowClassName to the Tooltip arrow element, which renderTooltip was dropping",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

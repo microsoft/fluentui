@@ -1,0 +1,18 @@
+@reference '#theme';
+
+/* Block order is the cascade: reset first, then the inverted surface. Every selector is
+   :where()-flat, so source order alone arbitrates.
+
+   The three grid columns are declared here and claimed by ToastTitle, ToastBody and ToastFooter
+   through their own modules; no descendant selector crosses a component boundary. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply grid grid-cols-[auto_1fr_auto] rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-12 text-base-300 leading-20/14 font-semibold text-neutral-foreground-1 shadow-8;
+  }
+
+  /* Appearance is a look prop — it rides a module class; see Tooltip.module.css. */
+  .inverted {
+    @apply bg-neutral-background-inverted text-neutral-foreground-inverted-2;
+  }
+}

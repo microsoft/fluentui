@@ -1,0 +1,671 @@
+/*
+ * DO NOT EDIT — generated file.
+ *
+ * Generator:  packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Source:     @fluentui/tokens@1.0.0-alpha.24 (packages/tokens/src/tokens.ts)
+ * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
+ *
+ * 467 Fluent tokens: 457 registered, 10 excluded (10× lineHeight*).
+ *
+ * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each
+ * utility, so values resolve per-element — the `:root, :host` defaults below,
+ * overridden per subtree by the theme classes (css/themes.css).
+ * A plain `@theme` alias would freeze resolution at `:root`, breaking scoped
+ * theming. `reference` suppresses the self-referential aliases that plain
+ * `inline` would emit now that each runtime variable IS its theme key (theming
+ * the kebab-name model) — the values are emitted in the fui.theme block below, not by JS.
+ *
+ * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are
+ * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12
+ * compiles to — so named and numeric spacing are ONE system with ONE density knob
+ * (--spacing). Stroke widths are the deliberate exception: their PUBLIC variables
+ * are --stroke-width-thin/thick/thicker/thickest with literal
+ * calc(<px> * var(--base-scale)) values (borders must not thin when layout density
+ * changes); --spacing-thin/… are PRIVATE hooks aliasing them for utility generation.
+ * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes
+ * carry identical values.
+ *
+ * Font sizes (--text-*) carry the same literal calc(<px> * var(--base-scale)) form as
+ * stroke widths: type follows the root font size, not the --spacing density knob.
+ * Line heights (--leading-*) are NOT registered here at all: leading-<n> is pure
+ * arithmetic (n / 100 for any bare integer n) via the functional @utility override in
+ * css/index.css, so there is no theme token and no runtime custom property for it —
+ * see the `lineHeight` entry in EXCLUSIONS below.
+ * Shadow offsets and blur radii ride the base-scale axis, so an elevation
+ * keeps its proportion to the box it lifts. Border radii ride the same axis, so a
+ * corner keeps its proportion to the control it rounds (0 and the 10000px circular
+ * sentinel excepted — neither meaningfully scales).
+ *
+ * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
+ * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
+ *
+ * Rationale, namespace mapping, emission reasons: see the generator source.
+ */
+
+@theme inline reference {
+  /* Colors — 366 tokens → --color-* (bg-* text-* border-* fill-* stroke-* outline-* ring-* decoration-*) */
+  --color-neutral-foreground-1: var(--color-neutral-foreground-1);
+  --color-neutral-foreground-1-hover: var(--color-neutral-foreground-1-hover);
+  --color-neutral-foreground-1-pressed: var(--color-neutral-foreground-1-pressed);
+  --color-neutral-foreground-1-selected: var(--color-neutral-foreground-1-selected);
+  --color-neutral-foreground-2: var(--color-neutral-foreground-2);
+  --color-neutral-foreground-2-hover: var(--color-neutral-foreground-2-hover);
+  --color-neutral-foreground-2-pressed: var(--color-neutral-foreground-2-pressed);
+  --color-neutral-foreground-2-selected: var(--color-neutral-foreground-2-selected);
+  --color-neutral-foreground-2-brand-hover: var(--color-neutral-foreground-2-brand-hover);
+  --color-neutral-foreground-2-brand-pressed: var(--color-neutral-foreground-2-brand-pressed);
+  --color-neutral-foreground-2-brand-selected: var(--color-neutral-foreground-2-brand-selected);
+  --color-neutral-foreground-3: var(--color-neutral-foreground-3);
+  --color-neutral-foreground-3-hover: var(--color-neutral-foreground-3-hover);
+  --color-neutral-foreground-3-pressed: var(--color-neutral-foreground-3-pressed);
+  --color-neutral-foreground-3-selected: var(--color-neutral-foreground-3-selected);
+  --color-neutral-foreground-3-brand-hover: var(--color-neutral-foreground-3-brand-hover);
+  --color-neutral-foreground-3-brand-pressed: var(--color-neutral-foreground-3-brand-pressed);
+  --color-neutral-foreground-3-brand-selected: var(--color-neutral-foreground-3-brand-selected);
+  --color-neutral-foreground-4: var(--color-neutral-foreground-4);
+  --color-neutral-foreground-5: var(--color-neutral-foreground-5);
+  --color-neutral-foreground-5-hover: var(--color-neutral-foreground-5-hover);
+  --color-neutral-foreground-5-pressed: var(--color-neutral-foreground-5-pressed);
+  --color-neutral-foreground-5-selected: var(--color-neutral-foreground-5-selected);
+  --color-neutral-foreground-disabled: var(--color-neutral-foreground-disabled);
+  --color-brand-foreground-link: var(--color-brand-foreground-link);
+  --color-brand-foreground-link-hover: var(--color-brand-foreground-link-hover);
+  --color-brand-foreground-link-pressed: var(--color-brand-foreground-link-pressed);
+  --color-brand-foreground-link-selected: var(--color-brand-foreground-link-selected);
+  --color-neutral-foreground-2-link: var(--color-neutral-foreground-2-link);
+  --color-neutral-foreground-2-link-hover: var(--color-neutral-foreground-2-link-hover);
+  --color-neutral-foreground-2-link-pressed: var(--color-neutral-foreground-2-link-pressed);
+  --color-neutral-foreground-2-link-selected: var(--color-neutral-foreground-2-link-selected);
+  --color-compound-brand-foreground-1: var(--color-compound-brand-foreground-1);
+  --color-compound-brand-foreground-1-hover: var(--color-compound-brand-foreground-1-hover);
+  --color-compound-brand-foreground-1-pressed: var(--color-compound-brand-foreground-1-pressed);
+  --color-neutral-foreground-on-brand: var(--color-neutral-foreground-on-brand);
+  --color-neutral-foreground-inverted: var(--color-neutral-foreground-inverted);
+  --color-neutral-foreground-inverted-hover: var(--color-neutral-foreground-inverted-hover);
+  --color-neutral-foreground-inverted-pressed: var(--color-neutral-foreground-inverted-pressed);
+  --color-neutral-foreground-inverted-selected: var(--color-neutral-foreground-inverted-selected);
+  --color-neutral-foreground-inverted-2: var(--color-neutral-foreground-inverted-2);
+  --color-neutral-foreground-static-inverted: var(--color-neutral-foreground-static-inverted);
+  --color-neutral-foreground-inverted-link: var(--color-neutral-foreground-inverted-link);
+  --color-neutral-foreground-inverted-link-hover: var(--color-neutral-foreground-inverted-link-hover);
+  --color-neutral-foreground-inverted-link-pressed: var(--color-neutral-foreground-inverted-link-pressed);
+  --color-neutral-foreground-inverted-link-selected: var(--color-neutral-foreground-inverted-link-selected);
+  --color-neutral-foreground-inverted-disabled: var(--color-neutral-foreground-inverted-disabled);
+  --color-brand-foreground-1: var(--color-brand-foreground-1);
+  --color-brand-foreground-2: var(--color-brand-foreground-2);
+  --color-brand-foreground-2-hover: var(--color-brand-foreground-2-hover);
+  --color-brand-foreground-2-pressed: var(--color-brand-foreground-2-pressed);
+  --color-neutral-foreground-1-static: var(--color-neutral-foreground-1-static);
+  --color-brand-foreground-inverted: var(--color-brand-foreground-inverted);
+  --color-brand-foreground-inverted-hover: var(--color-brand-foreground-inverted-hover);
+  --color-brand-foreground-inverted-pressed: var(--color-brand-foreground-inverted-pressed);
+  --color-brand-foreground-on-light: var(--color-brand-foreground-on-light);
+  --color-brand-foreground-on-light-hover: var(--color-brand-foreground-on-light-hover);
+  --color-brand-foreground-on-light-pressed: var(--color-brand-foreground-on-light-pressed);
+  --color-brand-foreground-on-light-selected: var(--color-brand-foreground-on-light-selected);
+  --color-neutral-background-1: var(--color-neutral-background-1);
+  --color-neutral-background-1-hover: var(--color-neutral-background-1-hover);
+  --color-neutral-background-1-pressed: var(--color-neutral-background-1-pressed);
+  --color-neutral-background-1-selected: var(--color-neutral-background-1-selected);
+  --color-neutral-background-2: var(--color-neutral-background-2);
+  --color-neutral-background-2-hover: var(--color-neutral-background-2-hover);
+  --color-neutral-background-2-pressed: var(--color-neutral-background-2-pressed);
+  --color-neutral-background-2-selected: var(--color-neutral-background-2-selected);
+  --color-neutral-background-3: var(--color-neutral-background-3);
+  --color-neutral-background-3-hover: var(--color-neutral-background-3-hover);
+  --color-neutral-background-3-pressed: var(--color-neutral-background-3-pressed);
+  --color-neutral-background-3-selected: var(--color-neutral-background-3-selected);
+  --color-neutral-background-4: var(--color-neutral-background-4);
+  --color-neutral-background-4-hover: var(--color-neutral-background-4-hover);
+  --color-neutral-background-4-pressed: var(--color-neutral-background-4-pressed);
+  --color-neutral-background-4-selected: var(--color-neutral-background-4-selected);
+  --color-neutral-background-5: var(--color-neutral-background-5);
+  --color-neutral-background-5-hover: var(--color-neutral-background-5-hover);
+  --color-neutral-background-5-pressed: var(--color-neutral-background-5-pressed);
+  --color-neutral-background-5-selected: var(--color-neutral-background-5-selected);
+  --color-neutral-background-6: var(--color-neutral-background-6);
+  --color-neutral-background-7: var(--color-neutral-background-7);
+  --color-neutral-background-7-hover: var(--color-neutral-background-7-hover);
+  --color-neutral-background-7-pressed: var(--color-neutral-background-7-pressed);
+  --color-neutral-background-7-selected: var(--color-neutral-background-7-selected);
+  --color-neutral-background-8: var(--color-neutral-background-8);
+  --color-neutral-background-inverted: var(--color-neutral-background-inverted);
+  --color-neutral-background-inverted-hover: var(--color-neutral-background-inverted-hover);
+  --color-neutral-background-inverted-pressed: var(--color-neutral-background-inverted-pressed);
+  --color-neutral-background-inverted-selected: var(--color-neutral-background-inverted-selected);
+  --color-neutral-background-static: var(--color-neutral-background-static);
+  --color-neutral-background-alpha: var(--color-neutral-background-alpha);
+  --color-neutral-background-alpha-2: var(--color-neutral-background-alpha-2);
+  --color-subtle-background: var(--color-subtle-background);
+  --color-subtle-background-hover: var(--color-subtle-background-hover);
+  --color-subtle-background-pressed: var(--color-subtle-background-pressed);
+  --color-subtle-background-selected: var(--color-subtle-background-selected);
+  --color-subtle-background-light-alpha-hover: var(--color-subtle-background-light-alpha-hover);
+  --color-subtle-background-light-alpha-pressed: var(--color-subtle-background-light-alpha-pressed);
+  --color-subtle-background-light-alpha-selected: var(--color-subtle-background-light-alpha-selected);
+  --color-subtle-background-inverted: var(--color-subtle-background-inverted);
+  --color-subtle-background-inverted-hover: var(--color-subtle-background-inverted-hover);
+  --color-subtle-background-inverted-pressed: var(--color-subtle-background-inverted-pressed);
+  --color-subtle-background-inverted-selected: var(--color-subtle-background-inverted-selected);
+  --color-transparent-background: var(--color-transparent-background);
+  --color-transparent-background-hover: var(--color-transparent-background-hover);
+  --color-transparent-background-pressed: var(--color-transparent-background-pressed);
+  --color-transparent-background-selected: var(--color-transparent-background-selected);
+  --color-neutral-background-disabled: var(--color-neutral-background-disabled);
+  --color-neutral-background-disabled-2: var(--color-neutral-background-disabled-2);
+  --color-neutral-background-inverted-disabled: var(--color-neutral-background-inverted-disabled);
+  --color-neutral-stencil-1: var(--color-neutral-stencil-1);
+  --color-neutral-stencil-2: var(--color-neutral-stencil-2);
+  --color-neutral-stencil-1-alpha: var(--color-neutral-stencil-1-alpha);
+  --color-neutral-stencil-2-alpha: var(--color-neutral-stencil-2-alpha);
+  --color-background-overlay: var(--color-background-overlay);
+  --color-scrollbar-overlay: var(--color-scrollbar-overlay);
+  --color-brand-background: var(--color-brand-background);
+  --color-brand-background-hover: var(--color-brand-background-hover);
+  --color-brand-background-pressed: var(--color-brand-background-pressed);
+  --color-brand-background-selected: var(--color-brand-background-selected);
+  --color-compound-brand-background: var(--color-compound-brand-background);
+  --color-compound-brand-background-hover: var(--color-compound-brand-background-hover);
+  --color-compound-brand-background-pressed: var(--color-compound-brand-background-pressed);
+  --color-brand-background-static: var(--color-brand-background-static);
+  --color-brand-background-2: var(--color-brand-background-2);
+  --color-brand-background-2-hover: var(--color-brand-background-2-hover);
+  --color-brand-background-2-pressed: var(--color-brand-background-2-pressed);
+  --color-brand-background-3-static: var(--color-brand-background-3-static);
+  --color-brand-background-4-static: var(--color-brand-background-4-static);
+  --color-brand-background-inverted: var(--color-brand-background-inverted);
+  --color-brand-background-inverted-hover: var(--color-brand-background-inverted-hover);
+  --color-brand-background-inverted-pressed: var(--color-brand-background-inverted-pressed);
+  --color-brand-background-inverted-selected: var(--color-brand-background-inverted-selected);
+  --color-neutral-card-background: var(--color-neutral-card-background);
+  --color-neutral-card-background-hover: var(--color-neutral-card-background-hover);
+  --color-neutral-card-background-pressed: var(--color-neutral-card-background-pressed);
+  --color-neutral-card-background-selected: var(--color-neutral-card-background-selected);
+  --color-neutral-card-background-disabled: var(--color-neutral-card-background-disabled);
+  --color-neutral-stroke-accessible: var(--color-neutral-stroke-accessible);
+  --color-neutral-stroke-accessible-hover: var(--color-neutral-stroke-accessible-hover);
+  --color-neutral-stroke-accessible-pressed: var(--color-neutral-stroke-accessible-pressed);
+  --color-neutral-stroke-accessible-selected: var(--color-neutral-stroke-accessible-selected);
+  --color-neutral-stroke-1: var(--color-neutral-stroke-1);
+  --color-neutral-stroke-1-hover: var(--color-neutral-stroke-1-hover);
+  --color-neutral-stroke-1-pressed: var(--color-neutral-stroke-1-pressed);
+  --color-neutral-stroke-1-selected: var(--color-neutral-stroke-1-selected);
+  --color-neutral-stroke-2: var(--color-neutral-stroke-2);
+  --color-neutral-stroke-3: var(--color-neutral-stroke-3);
+  --color-neutral-stroke-4: var(--color-neutral-stroke-4);
+  --color-neutral-stroke-4-hover: var(--color-neutral-stroke-4-hover);
+  --color-neutral-stroke-4-pressed: var(--color-neutral-stroke-4-pressed);
+  --color-neutral-stroke-4-selected: var(--color-neutral-stroke-4-selected);
+  --color-neutral-stroke-subtle: var(--color-neutral-stroke-subtle);
+  --color-neutral-stroke-on-brand: var(--color-neutral-stroke-on-brand);
+  --color-neutral-stroke-on-brand-2: var(--color-neutral-stroke-on-brand-2);
+  --color-neutral-stroke-on-brand-2-hover: var(--color-neutral-stroke-on-brand-2-hover);
+  --color-neutral-stroke-on-brand-2-pressed: var(--color-neutral-stroke-on-brand-2-pressed);
+  --color-neutral-stroke-on-brand-2-selected: var(--color-neutral-stroke-on-brand-2-selected);
+  --color-brand-stroke-1: var(--color-brand-stroke-1);
+  --color-brand-stroke-2: var(--color-brand-stroke-2);
+  --color-brand-stroke-2-hover: var(--color-brand-stroke-2-hover);
+  --color-brand-stroke-2-pressed: var(--color-brand-stroke-2-pressed);
+  --color-brand-stroke-2-contrast: var(--color-brand-stroke-2-contrast);
+  --color-compound-brand-stroke: var(--color-compound-brand-stroke);
+  --color-compound-brand-stroke-hover: var(--color-compound-brand-stroke-hover);
+  --color-compound-brand-stroke-pressed: var(--color-compound-brand-stroke-pressed);
+  --color-neutral-stroke-disabled: var(--color-neutral-stroke-disabled);
+  --color-neutral-stroke-disabled-2: var(--color-neutral-stroke-disabled-2);
+  --color-neutral-stroke-inverted-disabled: var(--color-neutral-stroke-inverted-disabled);
+  --color-transparent-stroke: var(--color-transparent-stroke);
+  --color-transparent-stroke-interactive: var(--color-transparent-stroke-interactive);
+  --color-transparent-stroke-disabled: var(--color-transparent-stroke-disabled);
+  --color-neutral-stroke-alpha: var(--color-neutral-stroke-alpha);
+  --color-neutral-stroke-alpha-2: var(--color-neutral-stroke-alpha-2);
+  --color-stroke-focus-1: var(--color-stroke-focus-1);
+  --color-stroke-focus-2: var(--color-stroke-focus-2);
+  --color-neutral-shadow-ambient: var(--color-neutral-shadow-ambient);
+  --color-neutral-shadow-key: var(--color-neutral-shadow-key);
+  --color-neutral-shadow-ambient-lighter: var(--color-neutral-shadow-ambient-lighter);
+  --color-neutral-shadow-key-lighter: var(--color-neutral-shadow-key-lighter);
+  --color-neutral-shadow-ambient-darker: var(--color-neutral-shadow-ambient-darker);
+  --color-neutral-shadow-key-darker: var(--color-neutral-shadow-key-darker);
+  --color-brand-shadow-ambient: var(--color-brand-shadow-ambient);
+  --color-brand-shadow-key: var(--color-brand-shadow-key);
+  --color-palette-red-background-1: var(--color-palette-red-background-1);
+  --color-palette-red-background-2: var(--color-palette-red-background-2);
+  --color-palette-red-background-3: var(--color-palette-red-background-3);
+  --color-palette-red-border-active: var(--color-palette-red-border-active);
+  --color-palette-red-border-1: var(--color-palette-red-border-1);
+  --color-palette-red-border-2: var(--color-palette-red-border-2);
+  --color-palette-red-foreground-1: var(--color-palette-red-foreground-1);
+  --color-palette-red-foreground-2: var(--color-palette-red-foreground-2);
+  --color-palette-red-foreground-3: var(--color-palette-red-foreground-3);
+  --color-palette-red-foreground-inverted: var(--color-palette-red-foreground-inverted);
+  --color-palette-green-background-1: var(--color-palette-green-background-1);
+  --color-palette-green-background-2: var(--color-palette-green-background-2);
+  --color-palette-green-background-3: var(--color-palette-green-background-3);
+  --color-palette-green-border-active: var(--color-palette-green-border-active);
+  --color-palette-green-border-1: var(--color-palette-green-border-1);
+  --color-palette-green-border-2: var(--color-palette-green-border-2);
+  --color-palette-green-foreground-1: var(--color-palette-green-foreground-1);
+  --color-palette-green-foreground-2: var(--color-palette-green-foreground-2);
+  --color-palette-green-foreground-3: var(--color-palette-green-foreground-3);
+  --color-palette-green-foreground-inverted: var(--color-palette-green-foreground-inverted);
+  --color-palette-dark-orange-background-1: var(--color-palette-dark-orange-background-1);
+  --color-palette-dark-orange-background-2: var(--color-palette-dark-orange-background-2);
+  --color-palette-dark-orange-background-3: var(--color-palette-dark-orange-background-3);
+  --color-palette-dark-orange-border-active: var(--color-palette-dark-orange-border-active);
+  --color-palette-dark-orange-border-1: var(--color-palette-dark-orange-border-1);
+  --color-palette-dark-orange-border-2: var(--color-palette-dark-orange-border-2);
+  --color-palette-dark-orange-foreground-1: var(--color-palette-dark-orange-foreground-1);
+  --color-palette-dark-orange-foreground-2: var(--color-palette-dark-orange-foreground-2);
+  --color-palette-dark-orange-foreground-3: var(--color-palette-dark-orange-foreground-3);
+  --color-palette-yellow-background-1: var(--color-palette-yellow-background-1);
+  --color-palette-yellow-background-2: var(--color-palette-yellow-background-2);
+  --color-palette-yellow-background-3: var(--color-palette-yellow-background-3);
+  --color-palette-yellow-border-active: var(--color-palette-yellow-border-active);
+  --color-palette-yellow-border-1: var(--color-palette-yellow-border-1);
+  --color-palette-yellow-border-2: var(--color-palette-yellow-border-2);
+  --color-palette-yellow-foreground-1: var(--color-palette-yellow-foreground-1);
+  --color-palette-yellow-foreground-2: var(--color-palette-yellow-foreground-2);
+  --color-palette-yellow-foreground-3: var(--color-palette-yellow-foreground-3);
+  --color-palette-yellow-foreground-inverted: var(--color-palette-yellow-foreground-inverted);
+  --color-palette-berry-background-1: var(--color-palette-berry-background-1);
+  --color-palette-berry-background-2: var(--color-palette-berry-background-2);
+  --color-palette-berry-background-3: var(--color-palette-berry-background-3);
+  --color-palette-berry-border-active: var(--color-palette-berry-border-active);
+  --color-palette-berry-border-1: var(--color-palette-berry-border-1);
+  --color-palette-berry-border-2: var(--color-palette-berry-border-2);
+  --color-palette-berry-foreground-1: var(--color-palette-berry-foreground-1);
+  --color-palette-berry-foreground-2: var(--color-palette-berry-foreground-2);
+  --color-palette-berry-foreground-3: var(--color-palette-berry-foreground-3);
+  --color-palette-marigold-background-1: var(--color-palette-marigold-background-1);
+  --color-palette-marigold-background-2: var(--color-palette-marigold-background-2);
+  --color-palette-marigold-background-3: var(--color-palette-marigold-background-3);
+  --color-palette-marigold-border-active: var(--color-palette-marigold-border-active);
+  --color-palette-marigold-border-1: var(--color-palette-marigold-border-1);
+  --color-palette-marigold-border-2: var(--color-palette-marigold-border-2);
+  --color-palette-marigold-foreground-1: var(--color-palette-marigold-foreground-1);
+  --color-palette-marigold-foreground-2: var(--color-palette-marigold-foreground-2);
+  --color-palette-marigold-foreground-3: var(--color-palette-marigold-foreground-3);
+  --color-palette-light-green-background-1: var(--color-palette-light-green-background-1);
+  --color-palette-light-green-background-2: var(--color-palette-light-green-background-2);
+  --color-palette-light-green-background-3: var(--color-palette-light-green-background-3);
+  --color-palette-light-green-border-active: var(--color-palette-light-green-border-active);
+  --color-palette-light-green-border-1: var(--color-palette-light-green-border-1);
+  --color-palette-light-green-border-2: var(--color-palette-light-green-border-2);
+  --color-palette-light-green-foreground-1: var(--color-palette-light-green-foreground-1);
+  --color-palette-light-green-foreground-2: var(--color-palette-light-green-foreground-2);
+  --color-palette-light-green-foreground-3: var(--color-palette-light-green-foreground-3);
+  --color-palette-anchor-background-2: var(--color-palette-anchor-background-2);
+  --color-palette-anchor-border-active: var(--color-palette-anchor-border-active);
+  --color-palette-anchor-foreground-2: var(--color-palette-anchor-foreground-2);
+  --color-palette-beige-background-2: var(--color-palette-beige-background-2);
+  --color-palette-beige-border-active: var(--color-palette-beige-border-active);
+  --color-palette-beige-foreground-2: var(--color-palette-beige-foreground-2);
+  --color-palette-blue-background-2: var(--color-palette-blue-background-2);
+  --color-palette-blue-border-active: var(--color-palette-blue-border-active);
+  --color-palette-blue-foreground-2: var(--color-palette-blue-foreground-2);
+  --color-palette-brass-background-2: var(--color-palette-brass-background-2);
+  --color-palette-brass-border-active: var(--color-palette-brass-border-active);
+  --color-palette-brass-foreground-2: var(--color-palette-brass-foreground-2);
+  --color-palette-brown-background-2: var(--color-palette-brown-background-2);
+  --color-palette-brown-border-active: var(--color-palette-brown-border-active);
+  --color-palette-brown-foreground-2: var(--color-palette-brown-foreground-2);
+  --color-palette-cornflower-background-2: var(--color-palette-cornflower-background-2);
+  --color-palette-cornflower-border-active: var(--color-palette-cornflower-border-active);
+  --color-palette-cornflower-foreground-2: var(--color-palette-cornflower-foreground-2);
+  --color-palette-cranberry-background-2: var(--color-palette-cranberry-background-2);
+  --color-palette-cranberry-border-active: var(--color-palette-cranberry-border-active);
+  --color-palette-cranberry-foreground-2: var(--color-palette-cranberry-foreground-2);
+  --color-palette-dark-green-background-2: var(--color-palette-dark-green-background-2);
+  --color-palette-dark-green-border-active: var(--color-palette-dark-green-border-active);
+  --color-palette-dark-green-foreground-2: var(--color-palette-dark-green-foreground-2);
+  --color-palette-dark-red-background-2: var(--color-palette-dark-red-background-2);
+  --color-palette-dark-red-border-active: var(--color-palette-dark-red-border-active);
+  --color-palette-dark-red-foreground-2: var(--color-palette-dark-red-foreground-2);
+  --color-palette-forest-background-2: var(--color-palette-forest-background-2);
+  --color-palette-forest-border-active: var(--color-palette-forest-border-active);
+  --color-palette-forest-foreground-2: var(--color-palette-forest-foreground-2);
+  --color-palette-gold-background-2: var(--color-palette-gold-background-2);
+  --color-palette-gold-border-active: var(--color-palette-gold-border-active);
+  --color-palette-gold-foreground-2: var(--color-palette-gold-foreground-2);
+  --color-palette-grape-background-2: var(--color-palette-grape-background-2);
+  --color-palette-grape-border-active: var(--color-palette-grape-border-active);
+  --color-palette-grape-foreground-2: var(--color-palette-grape-foreground-2);
+  --color-palette-lavender-background-2: var(--color-palette-lavender-background-2);
+  --color-palette-lavender-border-active: var(--color-palette-lavender-border-active);
+  --color-palette-lavender-foreground-2: var(--color-palette-lavender-foreground-2);
+  --color-palette-light-teal-background-2: var(--color-palette-light-teal-background-2);
+  --color-palette-light-teal-border-active: var(--color-palette-light-teal-border-active);
+  --color-palette-light-teal-foreground-2: var(--color-palette-light-teal-foreground-2);
+  --color-palette-lilac-background-2: var(--color-palette-lilac-background-2);
+  --color-palette-lilac-border-active: var(--color-palette-lilac-border-active);
+  --color-palette-lilac-foreground-2: var(--color-palette-lilac-foreground-2);
+  --color-palette-magenta-background-2: var(--color-palette-magenta-background-2);
+  --color-palette-magenta-border-active: var(--color-palette-magenta-border-active);
+  --color-palette-magenta-foreground-2: var(--color-palette-magenta-foreground-2);
+  --color-palette-mink-background-2: var(--color-palette-mink-background-2);
+  --color-palette-mink-border-active: var(--color-palette-mink-border-active);
+  --color-palette-mink-foreground-2: var(--color-palette-mink-foreground-2);
+  --color-palette-navy-background-2: var(--color-palette-navy-background-2);
+  --color-palette-navy-border-active: var(--color-palette-navy-border-active);
+  --color-palette-navy-foreground-2: var(--color-palette-navy-foreground-2);
+  --color-palette-peach-background-2: var(--color-palette-peach-background-2);
+  --color-palette-peach-border-active: var(--color-palette-peach-border-active);
+  --color-palette-peach-foreground-2: var(--color-palette-peach-foreground-2);
+  --color-palette-pink-background-2: var(--color-palette-pink-background-2);
+  --color-palette-pink-border-active: var(--color-palette-pink-border-active);
+  --color-palette-pink-foreground-2: var(--color-palette-pink-foreground-2);
+  --color-palette-platinum-background-2: var(--color-palette-platinum-background-2);
+  --color-palette-platinum-border-active: var(--color-palette-platinum-border-active);
+  --color-palette-platinum-foreground-2: var(--color-palette-platinum-foreground-2);
+  --color-palette-plum-background-2: var(--color-palette-plum-background-2);
+  --color-palette-plum-border-active: var(--color-palette-plum-border-active);
+  --color-palette-plum-foreground-2: var(--color-palette-plum-foreground-2);
+  --color-palette-pumpkin-background-2: var(--color-palette-pumpkin-background-2);
+  --color-palette-pumpkin-border-active: var(--color-palette-pumpkin-border-active);
+  --color-palette-pumpkin-foreground-2: var(--color-palette-pumpkin-foreground-2);
+  --color-palette-purple-background-2: var(--color-palette-purple-background-2);
+  --color-palette-purple-border-active: var(--color-palette-purple-border-active);
+  --color-palette-purple-foreground-2: var(--color-palette-purple-foreground-2);
+  --color-palette-royal-blue-background-2: var(--color-palette-royal-blue-background-2);
+  --color-palette-royal-blue-border-active: var(--color-palette-royal-blue-border-active);
+  --color-palette-royal-blue-foreground-2: var(--color-palette-royal-blue-foreground-2);
+  --color-palette-seafoam-background-2: var(--color-palette-seafoam-background-2);
+  --color-palette-seafoam-border-active: var(--color-palette-seafoam-border-active);
+  --color-palette-seafoam-foreground-2: var(--color-palette-seafoam-foreground-2);
+  --color-palette-steel-background-2: var(--color-palette-steel-background-2);
+  --color-palette-steel-border-active: var(--color-palette-steel-border-active);
+  --color-palette-steel-foreground-2: var(--color-palette-steel-foreground-2);
+  --color-palette-teal-background-2: var(--color-palette-teal-background-2);
+  --color-palette-teal-border-active: var(--color-palette-teal-border-active);
+  --color-palette-teal-foreground-2: var(--color-palette-teal-foreground-2);
+  --color-status-success-background-1: var(--color-status-success-background-1);
+  --color-status-success-background-2: var(--color-status-success-background-2);
+  --color-status-success-background-3: var(--color-status-success-background-3);
+  --color-status-success-foreground-1: var(--color-status-success-foreground-1);
+  --color-status-success-foreground-2: var(--color-status-success-foreground-2);
+  --color-status-success-foreground-3: var(--color-status-success-foreground-3);
+  --color-status-success-foreground-inverted: var(--color-status-success-foreground-inverted);
+  --color-status-success-border-active: var(--color-status-success-border-active);
+  --color-status-success-border-1: var(--color-status-success-border-1);
+  --color-status-success-border-2: var(--color-status-success-border-2);
+  --color-status-warning-background-1: var(--color-status-warning-background-1);
+  --color-status-warning-background-2: var(--color-status-warning-background-2);
+  --color-status-warning-background-3: var(--color-status-warning-background-3);
+  --color-status-warning-foreground-1: var(--color-status-warning-foreground-1);
+  --color-status-warning-foreground-2: var(--color-status-warning-foreground-2);
+  --color-status-warning-foreground-3: var(--color-status-warning-foreground-3);
+  --color-status-warning-foreground-inverted: var(--color-status-warning-foreground-inverted);
+  --color-status-warning-border-active: var(--color-status-warning-border-active);
+  --color-status-warning-border-1: var(--color-status-warning-border-1);
+  --color-status-warning-border-2: var(--color-status-warning-border-2);
+  --color-status-danger-background-1: var(--color-status-danger-background-1);
+  --color-status-danger-background-2: var(--color-status-danger-background-2);
+  --color-status-danger-background-3: var(--color-status-danger-background-3);
+  --color-status-danger-background-3-hover: var(--color-status-danger-background-3-hover);
+  --color-status-danger-background-3-pressed: var(--color-status-danger-background-3-pressed);
+  --color-status-danger-foreground-1: var(--color-status-danger-foreground-1);
+  --color-status-danger-foreground-2: var(--color-status-danger-foreground-2);
+  --color-status-danger-foreground-3: var(--color-status-danger-foreground-3);
+  --color-status-danger-foreground-inverted: var(--color-status-danger-foreground-inverted);
+  --color-status-danger-border-active: var(--color-status-danger-border-active);
+  --color-status-danger-border-1: var(--color-status-danger-border-1);
+  --color-status-danger-border-2: var(--color-status-danger-border-2);
+
+  /* Border radii — 11 tokens → --radius-* (rounded-* rounded-s-* rounded-e-* …) */
+  --radius-none: var(--radius-none);
+  --radius-small: var(--radius-small);
+  --radius-medium: var(--radius-medium);
+  --radius-large: var(--radius-large);
+  --radius-x-large: var(--radius-x-large);
+  --radius-2-x-large: var(--radius-2-x-large);
+  --radius-3-x-large: var(--radius-3-x-large);
+  --radius-4-x-large: var(--radius-4-x-large);
+  --radius-5-x-large: var(--radius-5-x-large);
+  --radius-6-x-large: var(--radius-6-x-large);
+  --radius-circular: var(--radius-circular);
+
+  /* Font families — 3 tokens → --font-* (font-*) */
+  --font-base: var(--font-base);
+  --font-monospace: var(--font-monospace);
+  --font-numeric: var(--font-numeric);
+
+  /* Font sizes — 10 tokens → --text-* (text-*) */
+  --text-base-100: var(--text-base-100);
+  --text-base-200: var(--text-base-200);
+  --text-base-300: var(--text-base-300);
+  --text-base-400: var(--text-base-400);
+  --text-base-500: var(--text-base-500);
+  --text-base-600: var(--text-base-600);
+  --text-hero-700: var(--text-hero-700);
+  --text-hero-800: var(--text-hero-800);
+  --text-hero-900: var(--text-hero-900);
+  --text-hero-1000: var(--text-hero-1000);
+
+  /* Font weights — 4 tokens → --font-weight-* (font-*) */
+  --font-weight-regular: var(--font-weight-regular);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+
+  /* Shadows — 12 tokens → --shadow-* (shadow-*) */
+  --shadow-2: var(--shadow-2);
+  --shadow-4: var(--shadow-4);
+  --shadow-8: var(--shadow-8);
+  --shadow-16: var(--shadow-16);
+  --shadow-28: var(--shadow-28);
+  --shadow-64: var(--shadow-64);
+  --shadow-2-brand: var(--shadow-2-brand);
+  --shadow-4-brand: var(--shadow-4-brand);
+  --shadow-8-brand: var(--shadow-8-brand);
+  --shadow-16-brand: var(--shadow-16-brand);
+  --shadow-28-brand: var(--shadow-28-brand);
+  --shadow-64-brand: var(--shadow-64-brand);
+
+  /* Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for ring widths) */
+  --spacing-thin: var(--stroke-width-thin);
+  --spacing-thick: var(--stroke-width-thick);
+  --spacing-thicker: var(--stroke-width-thicker);
+  --spacing-thickest: var(--stroke-width-thickest);
+
+  /* Horizontal spacing, inline axis — numeric-axis ALIASES (calc(var(--spacing) * N)) — 11 tokens → --spacing-horizontal-* (px-* ps-* pe-* mx-* gap-x-* …) */
+  --spacing-horizontal-none: 0;
+  --spacing-horizontal-xxs: calc(var(--spacing) * 2);
+  --spacing-horizontal-xs: calc(var(--spacing) * 4);
+  --spacing-horizontal-s-nudge: calc(var(--spacing) * 6);
+  --spacing-horizontal-s: calc(var(--spacing) * 8);
+  --spacing-horizontal-m-nudge: calc(var(--spacing) * 10);
+  --spacing-horizontal-m: calc(var(--spacing) * 12);
+  --spacing-horizontal-l: calc(var(--spacing) * 16);
+  --spacing-horizontal-xl: calc(var(--spacing) * 20);
+  --spacing-horizontal-xxl: calc(var(--spacing) * 24);
+  --spacing-horizontal-xxxl: calc(var(--spacing) * 32);
+
+  /* Vertical spacing, block axis — numeric-axis ALIASES (calc(var(--spacing) * N)) — 11 tokens → --spacing-vertical-* (py-* pt-* pb-* my-* gap-y-* …) */
+  --spacing-vertical-none: 0;
+  --spacing-vertical-xxs: calc(var(--spacing) * 2);
+  --spacing-vertical-xs: calc(var(--spacing) * 4);
+  --spacing-vertical-s-nudge: calc(var(--spacing) * 6);
+  --spacing-vertical-s: calc(var(--spacing) * 8);
+  --spacing-vertical-m-nudge: calc(var(--spacing) * 10);
+  --spacing-vertical-m: calc(var(--spacing) * 12);
+  --spacing-vertical-l: calc(var(--spacing) * 16);
+  --spacing-vertical-xl: calc(var(--spacing) * 20);
+  --spacing-vertical-xxl: calc(var(--spacing) * 24);
+  --spacing-vertical-xxxl: calc(var(--spacing) * 32);
+
+  /* Transition durations — 8 tokens → --transition-duration-* (duration-*) */
+  --transition-duration-ultra-fast: var(--duration-ultra-fast);
+  --transition-duration-faster: var(--duration-faster);
+  --transition-duration-fast: var(--duration-fast);
+  --transition-duration-normal: var(--duration-normal);
+  --transition-duration-gentle: var(--duration-gentle);
+  --transition-duration-slow: var(--duration-slow);
+  --transition-duration-slower: var(--duration-slower);
+  --transition-duration-ultra-slow: var(--duration-ultra-slow);
+
+  /* Easing curves — 9 tokens → --ease-* (ease-*) */
+  --ease-accelerate-max: var(--ease-accelerate-max);
+  --ease-accelerate-mid: var(--ease-accelerate-mid);
+  --ease-accelerate-min: var(--ease-accelerate-min);
+  --ease-decelerate-max: var(--ease-decelerate-max);
+  --ease-decelerate-mid: var(--ease-decelerate-mid);
+  --ease-decelerate-min: var(--ease-decelerate-min);
+  --ease-easy-ease-max: var(--ease-easy-ease-max);
+  --ease-easy-ease: var(--ease-easy-ease);
+  --ease-linear: var(--ease-linear);
+
+  /* z-index (theme-absent tokens — fallbacks carried verbatim) — 8 tokens → --z-index-* (z-*) */
+  --z-index-background: var(--z-index-background, 0);
+  --z-index-content: var(--z-index-content, 1);
+  --z-index-overlay: var(--z-index-overlay, 1000);
+  --z-index-popup: var(--z-index-popup, 2000);
+  --z-index-messages: var(--z-index-messages, 3000);
+  --z-index-floating: var(--z-index-floating, 4000);
+  --z-index-priority: var(--z-index-priority, 5000);
+  --z-index-debug: var(--z-index-debug, 6000);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --border-width-* (border-* border-t/b/s/e/x/y-* divide-*) */
+  --border-width-thin: var(--spacing-thin);
+  --border-width-thick: var(--spacing-thick);
+  --border-width-thicker: var(--spacing-thicker);
+  --border-width-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --outline-width-* (outline-*) */
+  --outline-width-thin: var(--spacing-thin);
+  --outline-width-thick: var(--spacing-thick);
+  --outline-width-thicker: var(--spacing-thicker);
+  --outline-width-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --outline-offset-* (outline-offset-*) */
+  --outline-offset-thin: var(--spacing-thin);
+  --outline-offset-thick: var(--spacing-thick);
+  --outline-offset-thicker: var(--spacing-thicker);
+  --outline-offset-thickest: var(--spacing-thickest);
+
+  /* Stroke widths — width-namespace MIRROR of the --spacing-* hooks — 4 tokens → --text-decoration-thickness-* (decoration-*) */
+  --text-decoration-thickness-thin: var(--spacing-thin);
+  --text-decoration-thickness-thick: var(--spacing-thick);
+  --text-decoration-thickness-thicker: var(--spacing-thicker);
+  --text-decoration-thickness-thickest: var(--spacing-thickest);
+}
+
+/*
+ * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.
+ *
+ * `@theme inline` above registers utility NAMES and emits no variables, which is
+ * correct for every other namespace. The spacing namespace needs real variables:
+ * the border/outline/decoration widths have named utilities via the width-namespace
+ * mirrors above, but ring-width, divide-* values and underline-offset have no
+ * themable namespace and are authored as a direct var(--spacing-thin); and the
+ * `tokens.*` JS constants in @fluentui/tokens are var() reference strings against
+ * the canonical names emitted here (charts inline styles etc.).
+ *
+ * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)
+ * ARE GONE for the ENTIRE token set: single
+ * vocabulary, documented major break for hand-written consumer CSS. Theming
+ * the static-theme model removed FluentProvider's runtime theme style tag, so this block
+ * (plus the per-theme classes in css/themes/) is the ONLY writer of token values.
+ *
+ * THEME-INVARIANT ONLY. Every value below is identical in all seven shipped themes
+ * (asserted by `analyzeThemeEmission`), so it belongs to the base sheet rather than
+ * to any one theme. The theme-VARIANT variables are NOT emitted here — there is no
+ * default theme; a consumer imports the theme file(s) they use and applies the class,
+ * exactly as Griffel makes them import `webLightTheme` and pass it to the provider.
+ *
+ * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component
+ * `*.module.css` output stays free of theme declarations; css/emit.css compiles it
+ * into dist/base.css alongside --base-scale and --spacing, which utility-sourced
+ * spacing already depends on identically.
+ *
+ * `:root, :host` — not bare `:root` — matches the selector Tailwind emits its own
+ * `@theme` block on, so a shadow-DOM consumer that sees --base-scale/--spacing sees
+ * these too (verified in the compiled dist/styles.css). `.fui-scale-region` is
+ * GROUPED into the same rule: a scale region re-declares every invariant formula at
+ * the region element, so each one re-substitutes the region’s `--fui-scale` there
+ * (an inherited custom property arrives pre-substituted; only a re-declaration at or
+ * below the region can pick the local factor up). The Tailwind-owned scale axis is
+ * NOT repeated here — `@theme` already covers `:root`/`:host`; its mirror lives in
+ * the region-only rule below, the one place it is needed.
+ */
+@layer fui.theme {
+  :root,
+  :host,
+  .fui-scale-region {
+    /*
+     * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately
+     * NOT coupled to the --spacing density knob: borders must not thin when layout
+     * density changes.
+     */
+    --stroke-width-thin: calc(1px * var(--base-scale));
+    --stroke-width-thick: calc(2px * var(--base-scale));
+    --stroke-width-thicker: calc(3px * var(--base-scale));
+    --stroke-width-thickest: calc(4px * var(--base-scale));
+
+    /*
+     * PRIVATE internal hooks — Tailwind utility generation only (w-thin, p-thick, …)
+     * and module-authored var(--spacing-thin) border/outline widths. Do NOT set or
+     * read these from consumer code; the public contract is --stroke-width-*.
+     */
+    --spacing-thin: var(--stroke-width-thin);
+    --spacing-thick: var(--stroke-width-thick);
+    --spacing-thicker: var(--stroke-width-thicker);
+    --spacing-thickest: var(--stroke-width-thickest);
+
+    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */
+    --spacing-horizontal-none: 0;
+    --spacing-horizontal-xxs: calc(var(--spacing) * 2);
+    --spacing-horizontal-xs: calc(var(--spacing) * 4);
+    --spacing-horizontal-s-nudge: calc(var(--spacing) * 6);
+    --spacing-horizontal-s: calc(var(--spacing) * 8);
+    --spacing-horizontal-m-nudge: calc(var(--spacing) * 10);
+    --spacing-horizontal-m: calc(var(--spacing) * 12);
+    --spacing-horizontal-l: calc(var(--spacing) * 16);
+    --spacing-horizontal-xl: calc(var(--spacing) * 20);
+    --spacing-horizontal-xxl: calc(var(--spacing) * 24);
+    --spacing-horizontal-xxxl: calc(var(--spacing) * 32);
+    --spacing-vertical-none: 0;
+    --spacing-vertical-xxs: calc(var(--spacing) * 2);
+    --spacing-vertical-xs: calc(var(--spacing) * 4);
+    --spacing-vertical-s-nudge: calc(var(--spacing) * 6);
+    --spacing-vertical-s: calc(var(--spacing) * 8);
+    --spacing-vertical-m-nudge: calc(var(--spacing) * 10);
+    --spacing-vertical-m: calc(var(--spacing) * 12);
+    --spacing-vertical-l: calc(var(--spacing) * 16);
+    --spacing-vertical-xl: calc(var(--spacing) * 20);
+    --spacing-vertical-xxl: calc(var(--spacing) * 24);
+    --spacing-vertical-xxxl: calc(var(--spacing) * 32);
+  }
+
+  /*
+   * The scale-region knob. `--fui-scale` is a unitless factor on `--base-scale`
+   * (css/index.css: `calc(1rem / 16px * var(--fui-scale, 1))`), read off the
+   * element’s own data-fui-scale attribute via typed attr() — the same coercion
+   * the component packages use for data-size. No attribute coerces to the
+   * fallback 1, so a bare `.fui-scale-region` is inert. Because the factor is an
+   * attribute read on THIS element, nested regions replace the scale absolutely —
+   * they never compound. The class must be co-located with a theme class: theme
+   * tokens (type ramp, shadows) re-substitute only where their theme-class
+   * declarations re-apply, which is what FluentProvider’s ScaleRegion component
+   * arranges.
+   */
+  .fui-scale-region {
+    --fui-scale: attr(data-fui-scale type(<number>), 1);
+
+    /*
+     * Scale axis — mirrored from css/index.css’s `@theme static` block (the
+     * generator reads the values out of that file; see readScaleAxisDeclarations).
+     * Tailwind emits these at `:root, :host` only — covered there — so the mirror
+     * exists ONLY here, where the region’s `--fui-scale` must reach it.
+     */
+    --base-scale: calc(1rem / 16px * var(--fui-scale, 1));
+    --spacing: calc(1px * var(--base-scale));
+    --text-icon-12: calc(12px * var(--base-scale));
+    --text-icon-16: calc(16px * var(--base-scale));
+    --text-icon-20: calc(20px * var(--base-scale));
+    --text-icon-24: calc(24px * var(--base-scale));
+    --text-icon-28: calc(28px * var(--base-scale));
+    --text-icon-32: calc(32px * var(--base-scale));
+    --text-icon-48: calc(48px * var(--base-scale));
+  }
+}

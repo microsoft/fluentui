@@ -106,6 +106,96 @@ describe('Dialog', () => {
     expect(dialog).not.toHaveAttribute('aria-labelledby');
   });
 
+  describe('scroll lock', () => {
+    // jsdom reports clientWidth 0, which would read as a scrollbar on every page.
+    const setScrollbarWidth = (width: number) =>
+      Object.defineProperty(document.documentElement, 'clientWidth', {
+        configurable: true,
+        value: window.innerWidth - width,
+      });
+
+    afterEach(() => {
+      // `setScrollbarWidth` installs a configurable OWN property shadowing the prototype getter, so
+      // removing that own property restores the getter. `delete` cannot express this — `clientWidth`
+      // is typed `readonly`, which `Partial<HTMLElement>` preserves — while `Reflect.deleteProperty`
+      // has identical runtime semantics and needs no cast.
+      Reflect.deleteProperty(document.documentElement, 'clientWidth');
+      document.documentElement.style.removeProperty('scrollbar-gutter');
+      document.body.style.removeProperty('overflow');
+    });
+
+    const renderModal = () =>
+      render(
+        <Dialog unmountOnClose={false}>
+          <DialogTrigger>
+            <button>Open dialog</button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogActions>
+              <DialogTrigger>
+                <button>Close dialog</button>
+              </DialogTrigger>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+
+    it('reserves the scrollbar gutter while a modal holds the lock', () => {
+      setScrollbarWidth(15);
+      const result = renderModal();
+
+      fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
+
+      expect(document.body.style.overflow).toBe('visible clip');
+      // On <html>, not <body>: scrollbar-gutter does not propagate to the viewport.
+      expect(document.documentElement.style.scrollbarGutter).toBe('stable');
+
+      fireEvent.click(result.getByRole('button', { name: 'Close dialog' }));
+
+      expect(document.documentElement.style.scrollbarGutter).toBe('');
+    });
+
+    it('reserves nothing when the scrollbar takes no layout width', () => {
+      setScrollbarWidth(0);
+      const result = renderModal();
+
+      fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
+
+      expect(document.body.style.overflow).toBe('visible clip');
+      expect(document.documentElement.style.scrollbarGutter).toBe('');
+    });
+
+    it('restores a gutter the host application had already set', () => {
+      setScrollbarWidth(15);
+      document.documentElement.style.scrollbarGutter = 'both-edges';
+      const result = renderModal();
+
+      fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
+
+      expect(document.documentElement.style.scrollbarGutter).toBe('stable');
+
+      fireEvent.click(result.getByRole('button', { name: 'Close dialog' }));
+
+      expect(document.documentElement.style.scrollbarGutter).toBe('both-edges');
+    });
+
+    it('leaves a non-modal dialog out of the lock entirely', () => {
+      setScrollbarWidth(15);
+      const result = render(
+        <Dialog defaultOpen modalType="non-modal">
+          <DialogSurface>
+            <DialogTitle>Non-modal title</DialogTitle>
+          </DialogSurface>
+        </Dialog>,
+      );
+
+      expect(result.container.querySelector('dialog')).toHaveAttribute('data-open');
+      expect(document.body.style.overflow).toBe('');
+      expect(document.documentElement.style.scrollbarGutter).toBe('');
+    });
+  });
+
   it('keeps dialog mounted after close when unmountOnClose is false', () => {
     const result = render(
       <Dialog unmountOnClose={false}>

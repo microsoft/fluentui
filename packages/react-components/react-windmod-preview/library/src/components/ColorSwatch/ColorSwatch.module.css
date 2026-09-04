@@ -1,0 +1,180 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Block order inside .root is load-bearing: it reproduces the resolution order Griffel gets
+     from its mergeClasses argument order (reset, size, shape, selected, selectedSmall, disabled)
+     for same-key conflicts and from styleBucketOrdering for the rest — rest declarations before
+     hover ones, forced-colors last. Every catalog variant is :where()-flat, so source order is
+     the only thing deciding between these blocks. */
+  .root {
+    @apply inline-flex size-28 shrink-0 items-center justify-center overflow-hidden bg-(--fui-SwatchPicker--color) outline-none;
+
+    /* --fui-SwatchPicker--color and --fui-SwatchPicker--borderColor are per-instance custom
+       properties the headless base hook writes as an inline style. */
+    border: var(--stroke-width-thin) solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
+
+    /* border-current beside border-none: the resting colour above must not survive into these
+       states — Griffel's `border: none` shorthand resets it to currentColor. */
+    @variant hover {
+      @apply cursor-pointer border-none border-current;
+
+      box-shadow:
+        inset 0 0 0 var(--stroke-width-thick) var(--color-brand-stroke-1),
+        inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+    }
+
+    @variant hover-active {
+      @apply border-none border-current;
+
+      box-shadow:
+        inset 0 0 0 var(--stroke-width-thicker) var(--color-compound-brand-stroke-pressed),
+        inset 0 0 0 var(--stroke-width-thickest) var(--color-stroke-focus-1);
+    }
+
+    @variant focus-visible {
+      @apply border-none border-current;
+
+      box-shadow:
+        inset 0 0 0 var(--stroke-width-thick) var(--color-stroke-focus-2),
+        inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+    }
+
+    @variant size-extra-small {
+      @apply size-20;
+
+      @variant hover {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thin) var(--color-brand-stroke-1),
+          inset 0 0 0 var(--stroke-width-thick) var(--color-stroke-focus-1);
+      }
+
+      @variant hover-active {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thick) var(--color-compound-brand-stroke-pressed),
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+      }
+    }
+
+    @variant size-small {
+      @apply size-24;
+
+      @variant hover-active {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thick) var(--color-compound-brand-stroke-pressed),
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+      }
+    }
+
+    @variant size-large {
+      @apply size-32;
+    }
+
+    @variant shape-rounded {
+      @apply rounded-medium;
+    }
+
+    @variant shape-circular {
+      @apply rounded-circular;
+    }
+
+    @variant selected {
+      @apply border-none border-current;
+
+      box-shadow:
+        inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-1),
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
+
+      @variant size-extra-small, size-small {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thick) var(--color-brand-stroke-1),
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+      }
+
+      /* The selected focus ring is size-independent: Griffel gives its small selected branch no
+         focus indicator, so this block must outrank the size branch above at every size. */
+      @variant focus-visible {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-2),
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
+      }
+
+      @variant hover {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-hover),
+          inset 0 0 0 calc(6px * var(--base-scale)) var(--color-stroke-focus-1);
+      }
+
+      @variant hover-active {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thickest) var(--color-compound-brand-stroke-pressed),
+          inset 0 0 0 calc(7px * var(--base-scale)) var(--color-stroke-focus-1);
+      }
+
+      @variant size-extra-small, size-small {
+        @variant hover {
+          box-shadow:
+            inset 0 0 0 var(--stroke-width-thick) var(--color-compound-brand-stroke-hover),
+            inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+        }
+
+        @variant hover-active {
+          box-shadow:
+            inset 0 0 0 var(--stroke-width-thicker) var(--color-compound-brand-stroke-pressed),
+            inset 0 0 0 var(--stroke-width-thickest) var(--color-stroke-focus-1);
+        }
+      }
+    }
+
+    @variant disabled {
+      @variant hover {
+        @apply cursor-not-allowed;
+
+        box-shadow: none;
+      }
+    }
+
+    @variant forced-colors {
+      @apply forced-color-adjust-none;
+
+      @variant selected {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-2-pressed),
+          inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
+      }
+
+      @variant hover {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thick) var(--color-brand-stroke-2-hover),
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-stroke-focus-1);
+      }
+
+      @variant disabled {
+        @variant hover {
+          box-shadow: none;
+        }
+      }
+
+      @variant hover-active {
+        box-shadow:
+          inset 0 0 0 var(--stroke-width-thicker) var(--color-brand-stroke-2-pressed),
+          inset 0 0 0 var(--stroke-width-thickest) var(--color-stroke-focus-1);
+      }
+    }
+  }
+
+  .icon {
+    @apply absolute flex self-center text-icon-20 leading-100;
+
+    @variant group-size-extra-small/fui-color-swatch, group-size-small/fui-color-swatch {
+      @apply text-icon-16 leading-125;
+    }
+
+    @variant group-size-large/fui-color-swatch {
+      @apply text-icon-24 leading-20/24;
+    }
+  }
+
+  .disabled-icon {
+    @apply text-neutral-foreground-inverted drop-shadow-[0_1px_1px_rgb(0_0_0)];
+  }
+}

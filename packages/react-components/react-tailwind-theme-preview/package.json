@@ -1,0 +1,92 @@
+{
+  "name": "@fluentui/react-tailwind-theme-preview",
+  "version": "0.1.0",
+  "description": "Fluent UI themes and design tokens as a Tailwind v4 CSS layer: cascade layer order, custom variants, the base-scale spacing bridge, the generated Fluent token registration (css/tokens.css, `@theme inline` utility names over kebab-case custom properties), and the 7 shipped themes as static CSS classes, one file each (css/themes/web-light.css …). Theming follows Griffel's contract exactly: import the theme-less base plus the theme file(s) you use, then apply that theme's class (`fui-theme-web-dark`) to any element to theme its subtree — there is NO baked default, so you pay only for the themes you ship. Spacing registers the 22 named tokens as aliases of the numeric axis (one density knob, --spacing); stroke widths keep literal base-scale values under --stroke-width-* on purpose (borders must not thin with layout density). The kebab-case variable namespace is self-contained by design — it does not interoperate with classic FluentProvider runtime theming (camelCase variables). Pairs with @fluentui/react-windmod-preview, and is equally usable for styling @fluentui/react-headless-components-preview directly.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "scripts": {
+    "build": "node build.js",
+    "generate-tokens-css": "node scripts/generate-tokens-css.js",
+    "verify-tokens-css": "node scripts/generate-tokens-css.js --check",
+    "generate-theme-values": "node scripts/generate-theme-values.js",
+    "verify-theme-values": "node scripts/generate-theme-values.js --check",
+    "verify-scripts": "tsc --noEmit --allowJs --checkJs --target es2022 --module commonjs --types node scripts/generate-tokens-css.js scripts/generate-theme-values.js",
+    "test-spacing-behavior": "node scripts/probe-spacing-behavior.mjs",
+    "prepack": "node build.js"
+  },
+  "style": "css/index.css",
+  "//exports": "HAND-AUTHORED ASSET SUBPATHS — every entry below is CSS or a hand written theme-class-names module; this package ships no TypeScript entry points at all, so none of them can be derived from source. The `export-maps-sync` Nx generator (tools/workspace-plugin, wired into CI as `yarn nx sync:check`) rebuilds a project's whole map from project.json's metadata.exportMap and keeps only what that block declares. Two things keep this map safe. First, the generator skips any project that resolves zero source entry points — with no src/index.ts and no subpath globs there is no `main`/`module`/`typings` to own and no map to derive, so it leaves the package entirely alone. Second, this package is not tagged `vNext` + `platform:web`, so it is out of the generator's scope regardless. If it is ever tagged for the vNext publish pipeline, the first reason still holds; and should it ever grow a TypeScript entry point, declare these keys in metadata.exportMap.staticSubpaths — `./base.css`, `./styles.css`, all seven `./themes/*.css`, `./theme-class-names` and `./css/*` — so the generator reads them back verbatim instead of dropping them. Verified after the per-theme split: `yarn nx sync` still leaves this package untouched (no project.json, zero resolved source entry points, untagged).",
+  "//exports:themes": "PER-THEME SUBPATHS ARE DECLARED EXPLICITLY, not as a `./themes/*` wildcard. Seven keys are cheap, and the point of the split is that a consumer can SEE what they are choosing between — a wildcard hides the catalog and would resolve names that are not shipped themes. The stems are derived from the theme class names in theme-class-names.mjs (`fui-theme-web-light` -> `web-light`), which the generator asserts on every run, so these keys, the emitted files and the class constants cannot drift apart.",
+  "exports": {
+    ".": "./css/index.css",
+    "./base.css": "./dist/base.css",
+    "./styles.css": "./dist/styles.css",
+    "./themes/web-light.css": "./dist/themes/web-light.css",
+    "./themes/web-dark.css": "./dist/themes/web-dark.css",
+    "./themes/teams-light.css": "./dist/themes/teams-light.css",
+    "./themes/teams-dark.css": "./dist/themes/teams-dark.css",
+    "./themes/teams-high-contrast.css": "./dist/themes/teams-high-contrast.css",
+    "./themes/teams-light-v21.css": "./dist/themes/teams-light-v21.css",
+    "./themes/teams-dark-v21.css": "./dist/themes/teams-dark-v21.css",
+    "./theme-class-names": {
+      "types": "./theme-class-names.d.mts",
+      "require": "./theme-class-names.cjs",
+      "default": "./theme-class-names.mjs"
+    },
+    "./css/*": "./css/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "css",
+    "dist/base.css",
+    "dist/themes",
+    "dist/styles.css",
+    "theme-class-names.mjs",
+    "theme-class-names.cjs",
+    "theme-class-names.d.mts"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "//nx:verify": "The committed generator outputs (css/tokens.css, css/themes/*.css, theme-values.json) are only as fresh as the last hand run of the generators, so their `--check` scripts gate the build: `verify-tokens-css` re-derives the CSS from packages/tokens source and the snapshot; `verify-theme-values` re-derives the snapshot from the BUILT tokens package, hence its dependency on tokens:build. `verify-scripts` type-checks the two `// @ts-check` generators, which have no other type-check venue (no project.json, so no inferred type-check target).",
+  "nx": {
+    "name": "react-tailwind-theme-preview",
+    "targets": {
+      "build": {
+        "dependsOn": [
+          "^build",
+          "verify-tokens-css",
+          "verify-theme-values",
+          "verify-scripts"
+        ],
+        "inputs": [
+          "{projectRoot}/css/**",
+          "{projectRoot}/build.js"
+        ],
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      },
+      "verify-theme-values": {
+        "dependsOn": [
+          {
+            "projects": [
+              "tokens"
+            ],
+            "target": "build"
+          }
+        ]
+      }
+    }
+  }
+}

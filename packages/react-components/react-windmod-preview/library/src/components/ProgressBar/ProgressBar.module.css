@@ -1,0 +1,109 @@
+@reference '#theme';
+
+/* The keyframes declare both endpoints so the element's underlying `translate` stays `none`:
+   the reduced-motion branch swaps to the opacity keyframes and must leave no residual offset. */
+
+/* `.bar` is authored last in this layer so its forced-colors override outranks the plain
+   background-color the colour classes set at equal specificity. */
+
+@keyframes indeterminate-slide {
+  0% {
+    translate: -100%;
+  }
+
+  100% {
+    translate: 300%;
+  }
+}
+
+@keyframes indeterminate-pulse {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @apply block w-full overflow-hidden bg-neutral-background-6;
+
+    @variant forced-colors {
+      @apply bg-[CanvasText];
+    }
+  }
+
+  .rounded {
+    @apply rounded-medium;
+  }
+
+  .square {
+    @apply rounded-none;
+  }
+
+  .medium {
+    @apply h-2;
+  }
+
+  .large {
+    @apply h-4;
+  }
+
+  .brand {
+    @apply bg-compound-brand-background;
+  }
+
+  .error {
+    @apply bg-palette-red-background-3;
+  }
+
+  .warning {
+    @apply bg-palette-dark-orange-background-3;
+  }
+
+  .success {
+    @apply bg-palette-green-background-3;
+  }
+
+  .non-zero-determinate {
+    @apply transition-[width] duration-300 ease-[ease];
+  }
+
+  .bar {
+    @apply h-full rounded-[inherit];
+
+    @variant forced-colors {
+      @apply bg-[Highlight];
+    }
+
+    @variant group-indeterminate/fui-progress-bar {
+      @apply relative max-w-[33%];
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-name: indeterminate-slide;
+      animation-timing-function: linear;
+
+      background-image: linear-gradient(
+        to right,
+        var(--color-neutral-background-6) 0%,
+        var(--color-transparent-background) 50%,
+        var(--color-neutral-background-6) 100%
+      );
+
+      /* Kept: neither max-width nor animation-name is one of the five properties the theme's
+         reduced-motion floor authors. The floor does clamp the pulse it selects here to a single
+         1ms iteration, so the bar renders full-width and static rather than pulsing — Griffel's
+         WAAPI pulse stops for the same reason, at its own layer. */
+      @variant motion-reduce {
+        @apply max-w-full;
+        animation-name: indeterminate-pulse;
+      }
+    }
+  }
+}

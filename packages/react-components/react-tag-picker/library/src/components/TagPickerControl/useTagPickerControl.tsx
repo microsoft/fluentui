@@ -142,9 +142,11 @@ export const useTagPickerControlBase_unstable = (
   }
 
   React.useEffect(() => {
-    if (rafIdRef.current && targetDocument?.defaultView) {
-      targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
-    }
+    return () => {
+      if (rafIdRef.current && targetDocument?.defaultView) {
+        targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
   }, [targetDocument]);
 
   return state;

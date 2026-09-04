@@ -71,7 +71,8 @@ function runPrettier(files, config = {}) {
     prettierRulesConfig,
     '--ignore-path',
     prettierIgnorePath,
-    ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
+    // `--loglevel` was renamed to `--log-level` in prettier 3
+    ...(logErrorsOnly ? ['--log-level', 'warn'] : []),
     check ? '--check' : '--write',
     ...prettierSupportedFiles,
   ];

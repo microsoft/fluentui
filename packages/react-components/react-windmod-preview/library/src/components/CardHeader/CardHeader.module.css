@@ -1,0 +1,62 @@
+@reference '#theme';
+
+/* Two box models: flex without a description, a three-column grid with one. Griffel picks
+   between two style sets in JS; here the description's presence is stamped on the root and
+   the slots read it through the header's own group variants.
+
+   `shrink-0` and the horizontal `grow` are Card's rules on `> .fui-CardHeader`; they are
+   scoped back to "inside a Card" by the orientation the Card always stamps. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-center;
+
+    --fui-card-header-gap: calc(12px * var(--base-scale));
+
+    @variant with-description {
+      @apply grid auto-cols-[min-content_1fr_min-content];
+    }
+
+    @variant group-horizontal/fui-card, group-vertical/fui-card {
+      @apply shrink-0;
+    }
+
+    @variant group-horizontal/fui-card {
+      @variant last-of-type {
+        @apply grow;
+      }
+    }
+  }
+
+  .image {
+    @apply me-(--fui-card-header-gap) inline-flex;
+
+    @variant group-with-description/fui-card-header {
+      @apply col-start-1 row-start-[span_2];
+    }
+  }
+
+  .header {
+    @apply flex;
+
+    @variant group-with-description/fui-card-header {
+      @apply col-start-2 row-start-1;
+    }
+
+    @variant group-not-with-description/fui-card-header {
+      @apply grow;
+    }
+  }
+
+  .description {
+    @apply col-start-2 row-start-2 flex;
+  }
+
+  .action {
+    @apply ms-(--fui-card-header-gap);
+
+    @variant group-with-description/fui-card-header {
+      @apply col-start-3 row-start-[span_2];
+    }
+  }
+}

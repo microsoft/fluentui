@@ -1,0 +1,169 @@
+/**
+ * Custom variant catalog — the single place state selectors are defined; never define
+ * variants in component modules. Names follow the headless data-attribute vocabulary.
+ *
+ * Every entry is the canonical `&:where(…)` form: zero added specificity, and Tailwind
+ * rewrites it into `group-<variant>/<name>` automatically, so every entry composes with
+ * named groups. Ancestor-form entries silently stop group-composing — do not add one.
+ * At-rule variants (forced-colors) cannot take a group prefix; nest the group variant
+ * inside them. No union entries: comma-separate variants at the call site
+ * (@variant hover, focus { … }).
+ *
+ * A catalog entry is vocabulary, not a usage index, so having no in-repo consumer is not by
+ * itself a reason to delete one. Three kinds of entry stay unconsumed on purpose: names that
+ * shadow a Tailwind built-in whose selector is narrower and not `:where()`-flat (`invalid`,
+ * `required`, `read-only`, `ltr` — dropping the entry silently substitutes the built-in); the
+ * unused half of a polarity pair (`focused`, `not-selected`, `not-indeterminate`,
+ * `has-actions`); and the unstyled member of a live enumeration (`layout-horizontal`,
+ * `layout-horizontal-stacked`, `layout-singleline`). A positive entry consumed only through
+ * Tailwind's automatic `not-` compound (`scroll-state-none` via `@variant not-scroll-state-none`)
+ * is load-bearing, not unconsumed — the derivation needs it and emits the same zero specificity.
+ * Delete an entry only when its selector can match nothing the tree renders, or when it can
+ * never be false.
+ */
+
+/* direction (computed, correct under nesting) */
+@custom-variant rtl (&:where(:dir(rtl)));
+@custom-variant ltr (&:where(:dir(ltr)));
+
+/* orientation. The headless library spells vertical orientation two ways: an enumerated
+ * data-orientation (Divider, TabList, ColorSlider, AlphaSlider) and a boolean data-vertical
+ * (Slider, Toolbar and its parts). Separate entries, one spelling each. */
+@custom-variant vertical (&:where([data-orientation='vertical']));
+@custom-variant horizontal (&:where([data-orientation='horizontal']));
+@custom-variant vertical-flag (&:where([data-vertical]));
+
+/* content alignment along the main axis */
+@custom-variant align-content-start (&:where([data-align-content='start']));
+@custom-variant align-content-center (&:where([data-align-content='center']));
+@custom-variant align-content-end (&:where([data-align-content='end']));
+
+/* anchored-surface placement — data-placement on the positioned surface: above|below|before|after main axis, -start/-end/-top/-bottom alignment, suffix-less = centered */
+@custom-variant placement-above (&:where([data-placement^='above']));
+@custom-variant placement-below (&:where([data-placement^='below']));
+@custom-variant placement-before (&:where([data-placement^='before']));
+@custom-variant placement-after (&:where([data-placement^='after']));
+@custom-variant placement-start (&:where([data-placement$='-start']));
+@custom-variant placement-end (&:where([data-placement$='-end']));
+@custom-variant placement-top (&:where([data-placement$='-top']));
+@custom-variant placement-bottom (&:where([data-placement$='-bottom']));
+@custom-variant placement-above-centered (&:where([data-placement='above']));
+@custom-variant placement-below-centered (&:where([data-placement='below']));
+@custom-variant placement-before-centered (&:where([data-placement='before']));
+@custom-variant placement-after-centered (&:where([data-placement='after']));
+
+/* generic states (native/ARIA + data- spellings of one state per entry) */
+@custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
+@custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
+@custom-variant checked (&:where([data-checked], :checked));
+@custom-variant not-checked (&:where(:not([data-checked], :checked)));
+@custom-variant checked-mixed (&:where([data-checked='mixed'], [aria-checked='mixed']));
+@custom-variant not-checked-mixed (&:where(:not([data-checked='mixed'], [aria-checked='mixed'])));
+@custom-variant selected (&:where([data-selected], [aria-selected='true']));
+@custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
+@custom-variant multiselect (&:where([data-multiselect]));
+@custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
+@custom-variant open (&:where([open], [data-open], :open));
+@custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
+@custom-variant invalid (&:where([data-invalid], :invalid, [aria-invalid='true']));
+@custom-variant required (&:where([required], [data-required], :required));
+@custom-variant read-only (&:where([readonly], [data-readonly], :read-only));
+@custom-variant placeholder-shown (&:where([data-placeholder], :placeholder-shown));
+@custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
+@custom-variant not-indeterminate (&:where(:not([data-indeterminate], :indeterminate)));
+
+/* size scale. Numeric data-size values get NO variants (size-16 would read as a
+ * Tailwind utility) — coerce with typed attr(): calc(attr(data-size type(<number>)) * 1px) */
+@custom-variant size-extra-tiny (&:where([data-size='extra-tiny']));
+@custom-variant size-tiny (&:where([data-size='tiny']));
+@custom-variant size-extra-small (&:where([data-size='extra-small']));
+@custom-variant size-small (&:where([data-size='small']));
+@custom-variant size-medium (&:where([data-size='medium']));
+@custom-variant size-large (&:where([data-size='large']));
+@custom-variant size-extra-large (&:where([data-size='extra-large']));
+@custom-variant size-huge (&:where([data-size='huge']));
+@custom-variant size-full (&:where([data-size='full']));
+
+/* icon slot states */
+@custom-variant icon-only (&:where([data-icon-only]));
+@custom-variant not-icon-only (&:where(:not([data-icon-only])));
+@custom-variant with-icon (&:where([data-icon-position]));
+@custom-variant icon-before (&:where([data-icon-position='before']));
+@custom-variant icon-after (&:where([data-icon-position='after']));
+@custom-variant icon-present (&:where([data-icon]));
+@custom-variant not-icon-present (&:where(:not([data-icon])));
+
+/* label position. Every producer stamps data-label-position unconditionally, so a
+ * presence-only entry over it can never be false — select on the value. */
+@custom-variant label-above (&:where([data-label-position='above']));
+@custom-variant label-after (&:where([data-label-position='after']));
+@custom-variant label-before (&:where([data-label-position='before']));
+@custom-variant label-below (&:where([data-label-position='below']));
+
+/* description presence */
+@custom-variant with-description (&:where([data-description]));
+@custom-variant not-with-description (&:where(:not([data-description])));
+
+/* layout */
+@custom-variant layout-vertical (&:where([data-layout='vertical']));
+@custom-variant layout-horizontal (&:where([data-layout='horizontal']));
+@custom-variant layout-horizontal-stacked (&:where([data-layout='horizontal-stacked']));
+@custom-variant layout-singleline (&:where([data-layout='singleline']));
+@custom-variant layout-multiline (&:where([data-layout='multiline']));
+@custom-variant layout-grid (&:where([data-layout='grid']));
+
+/* per-component booleans */
+@custom-variant inset (&:where([data-inset]));
+@custom-variant interactive (&:where([data-interactive]));
+@custom-variant inline (&:where([data-inline]));
+@custom-variant multiline (&:where([data-multiline]));
+@custom-variant content-before (&:where([data-content-before]));
+@custom-variant content-after (&:where([data-content-after]));
+@custom-variant has-actions (&:where([data-has-actions]));
+@custom-variant not-has-actions (&:where(:not([data-has-actions])));
+@custom-variant submenu-open (&:where([data-submenu-open]));
+
+/* interaction */
+@custom-variant hover (&:where(:hover));
+@custom-variant focus (&:where(:focus));
+@custom-variant focused (&:where([data-focused]));
+@custom-variant not-focused (&:where(:not([data-focused])));
+@custom-variant not-focus-within (&:where(:not(:focus-within)));
+@custom-variant active (&:where(:active));
+@custom-variant hover-active (&:where(:hover:active, :active:focus-visible));
+@custom-variant at-rest (&:where(:not(:hover, :active:focus-visible)));
+
+/* disabled family. disabled-native is the narrowest: only native form controls match it. A
+ * component that renders as either a button or an anchor needs it to reach the button form
+ * alone, since disabled and disabled-control also match the data-disabled an anchor carries. */
+@custom-variant disabled-focusable (&:where([data-disabled-focusable]));
+@custom-variant disabled-native (&:where(:disabled));
+@custom-variant disabled-control (&:where([disabled], [data-disabled], :disabled, [aria-disabled='true']));
+@custom-variant enabled-control (&:where(:not([disabled], [data-disabled], :disabled, [aria-disabled='true'])));
+
+/* focus visibility. focus-within is the permissive native pseudo-class (the old keyborg
+ * attribute branch was subsumed by it — the union collapsed to :focus-within alone).
+ * focus-within-visible is keyboard-only via the browser's native modality heuristic:
+ * :has(:focus-visible) matches createFocusOutlineStyle for non-text controls (range,
+ * radio, checkbox — measured: no match on mouse click, match on keyboard and on a
+ * mouse-then-keyboard modality switch). Text-editable descendants always match, which
+ * is the native behavior text controls want anyway. */
+@custom-variant focus-visible (&:where([data-fui-focus-visible], :focus-visible));
+@custom-variant focus-within (&:where(:focus-within));
+@custom-variant focus-within-visible (&:where(:has(:focus-visible)));
+
+/* The active-descendant ring, written by @fluentui/react-aria under keyboard navigation only.
+   The attribute is identical on both implementations, so it needs a name rather than a mapping. */
+@custom-variant activedescendant-focusvisible (&:where([data-activedescendant-focusvisible]));
+
+/* content presence — data-empty mirrors 'no JSX children'; :empty is the unstamped fallback */
+@custom-variant empty (&:where([data-empty], :empty));
+@custom-variant not-empty (&:where(:not([data-empty], :empty)));
+
+/* content presence, nullish reading — data-content-empty mirrors 'children is null or undefined',
+   so the falsy-but-rendered `0` and `''` still count as present. Griffel needs both readings on
+   one element (CompoundButton gates its icon margin nullishly, Button's gate is falsiness), so
+   the two cannot share an attribute. No :empty fallback: the roots that carry it always have
+   slot children, and the unstamped case is exactly the one that must not match. */
+@custom-variant content-empty (&:where([data-content-empty]));
+@custom-variant not-content-empty (&:where(:not([data-content-empty])));

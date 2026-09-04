@@ -1,0 +1,23 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex shrink-0 flex-row flex-nowrap items-stretch;
+
+    @variant vertical {
+      @apply flex-col;
+    }
+  }
+
+  /* Only the circular appearances put a gap between tabs; the flat ones butt them together
+     so the selection indicator reads as one continuous rail. Appearance is a look prop — it
+     rides a module class (see Tooltip.module.css); both circular values share this one,
+     matching Griffel's single `rounded` bucket. */
+  .rounded {
+    @apply gap-horizontal-s;
+
+    @variant size-small {
+      @apply gap-horizontal-s-nudge;
+    }
+  }
+}

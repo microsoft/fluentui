@@ -1,0 +1,140 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @variant open {
+      @variant appearance-outline {
+        @apply border-thicker;
+      }
+
+      /* Griffel's expanded colours are plain declarations that Button's own :hover and
+         :hover:active rules outrank by selector specificity; layer precedence would invert
+         that, so they are gated to the resting state instead. */
+      @variant at-rest {
+        @variant appearance-secondary {
+          @apply border-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+        }
+
+        @variant appearance-outline {
+          @apply border-neutral-stroke-1-selected text-neutral-foreground-1-selected;
+        }
+
+        @variant appearance-primary {
+          @apply bg-brand-background-selected;
+        }
+
+        @variant appearance-subtle {
+          @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
+        }
+
+        @variant appearance-transparent {
+          @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+        }
+      }
+
+      /* The focus indicator outranks the expanded border in Griffel by an attribute
+         selector; see ToggleButton.module.css for the same repair and why the two
+         declarations stay raw. */
+      @variant focus-visible {
+        border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+        border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
+      }
+
+      /* Last in the block. Griffel writes every forced-colors rule into its media bucket, which
+         its sheet emits after every other bucket, so under forced colours Button's crossings win
+         and the expanded look above never applies. Layer order inverts that here — the expanded
+         blocks sit a layer above Button's — so each crossing they would swallow is repeated,
+         gated exactly as Button gates it and carrying no value this file invents. */
+      @variant forced-colors {
+        @variant at-rest {
+          /* Only `primary` declares a resting background at forced colours; the other
+             appearances leave Button's resting look alone, and so does this re-assert. */
+          @variant appearance-primary {
+            @apply bg-[Highlight];
+          }
+        }
+
+        @variant focus {
+          @apply border-[ButtonText];
+        }
+
+        /* After the focus crossing, as in Button: the disabled border wins over it. */
+        @variant disabled, disabled-focusable {
+          @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+        }
+      }
+    }
+  }
+
+  .icon {
+    @variant group-open/fui-menu-button {
+      @variant forced-colors {
+        @variant group-hover/fui-menu-button {
+          @apply text-[Highlight];
+        }
+      }
+
+      @variant icon-filled {
+        @apply inline;
+      }
+
+      @variant icon-regular {
+        @apply hidden;
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      @variant forced-colors {
+        @variant group-hover/fui-menu-button {
+          @apply text-[GrayText];
+        }
+      }
+
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .menu-icon {
+    @apply size-12 text-icon-12 leading-16/12;
+
+    @variant group-size-large/fui-menu-button {
+      @apply size-16 text-icon-16 leading-11/8;
+    }
+
+    @variant group-not-icon-only/fui-menu-button {
+      @apply ms-horizontal-xs;
+    }
+
+    @variant group-open/fui-menu-button {
+      @variant icon-filled {
+        @apply inline;
+      }
+
+      @variant icon-regular {
+        @apply hidden;
+      }
+    }
+
+    @variant group-disabled/fui-menu-button, group-disabled-focusable/fui-menu-button {
+      @variant group-hover/fui-menu-button, group-hover-active/fui-menu-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
+    }
+  }
+}

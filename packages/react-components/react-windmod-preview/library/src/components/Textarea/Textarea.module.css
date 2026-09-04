@@ -1,0 +1,130 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Cascade is block order — see Input.module.css. .outlineInteractive after .outline, .invalid
+     after every appearance block. */
+  .root {
+    @apply relative inline-flex rounded-medium pb-thick align-top;
+  }
+
+  .disabled {
+    @apply border-thin border-solid border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .filled {
+    @apply border-thin border-solid border-transparent-stroke;
+
+    @variant hover, focus-within {
+      @apply border-transparent-stroke-interactive;
+    }
+  }
+
+  .filled-darker {
+    @apply bg-neutral-background-3;
+  }
+
+  .filled-lighter {
+    @apply bg-neutral-background-1;
+  }
+
+  .outline {
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .interactive {
+    /* Underline geometry — see Input.module.css. */
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+
+    @variant focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-compound-brand-stroke;
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .textarea {
+    @apply h-full grow border-none font-base font-regular text-neutral-foreground-1 outline-none;
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant group-size-small/fui-textarea {
+      @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs text-base-200 leading-16/12;
+    }
+
+    @variant group-size-medium/fui-textarea {
+      @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge text-base-300 leading-20/14;
+    }
+
+    @variant group-size-large/fui-textarea {
+      @apply max-h-320 min-h-64 px-14 py-vertical-s text-base-400 leading-11/8;
+    }
+
+    @variant group-disabled/fui-textarea {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+
+  .resize-none {
+    @apply resize-none;
+  }
+
+  .resize-horizontal {
+    @apply resize-x;
+  }
+
+  .resize-vertical {
+    @apply resize-y;
+  }
+
+  .resize-both {
+    @apply resize;
+  }
+}

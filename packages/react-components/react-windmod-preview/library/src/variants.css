@@ -1,0 +1,156 @@
+/**
+ * Component-specific variant catalog — component API values (appearance/intent/etc.), never
+ * meaningful without knowing the owning component's props. Generic vocabulary (state, structure,
+ * positioning/orientation, size-*) stays in the theme's `css/variants.css`; see that file's header
+ * for the shared rules this catalog also follows: canonical `&:where(…)` form, zero added
+ * specificity, group-composes automatically, no union entries — comma-separate variants at the
+ * call site (@variant hover, focus { … }).
+ *
+ * New component-specific entries go here, sectioned by the component that owns them.
+ */
+
+/* Accordion */
+@custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
+@custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
+
+/* CounterBadge: the dot presentation and the empty/no-dot hidden state, both stamped by the
+   headless useCounterBadge on the root. */
+@custom-variant dot (&:where([data-dot]));
+@custom-variant hidden (&:where([data-hidden]));
+
+/* PresenceBadge: status and the out-of-office flag, both stamped by the headless
+   usePresenceBadge on the root. `status-` is prefixed because a bare status name would read as
+   a generic state; `out-of-office` is the boolean flag, distinct from `status-out-of-office`. */
+@custom-variant status-available (&:where([data-status='available']));
+@custom-variant status-away (&:where([data-status='away']));
+@custom-variant status-blocked (&:where([data-status='blocked']));
+@custom-variant status-busy (&:where([data-status='busy']));
+@custom-variant status-do-not-disturb (&:where([data-status='do-not-disturb']));
+@custom-variant status-offline (&:where([data-status='offline']));
+@custom-variant status-out-of-office (&:where([data-status='out-of-office']));
+@custom-variant status-unknown (&:where([data-status='unknown']));
+@custom-variant out-of-office (&:where([data-out-of-office]));
+
+/* Button */
+@custom-variant appearance-secondary (&:where([data-appearance='secondary']));
+@custom-variant appearance-primary (&:where([data-appearance='primary']));
+@custom-variant appearance-outline (&:where([data-appearance='outline']));
+@custom-variant appearance-subtle (&:where([data-appearance='subtle']));
+@custom-variant appearance-transparent (&:where([data-appearance='transparent']));
+
+/* Card: appearance-outline and appearance-subtle are shared with Button above.
+   after-floating-action is CardPreview's structural reach — a preview immediately following the
+   floating action. Class-based (the peer marker), not data-based: the condition is sibling
+   adjacency, not state. Adjacent (+) on purpose, matching Griffel's
+   `> .fui-Card__floatingAction + .fui-CardPreview` rule. */
+@custom-variant appearance-filled-alternative (&:where([data-appearance='filled-alternative']));
+@custom-variant after-floating-action (:where(.peer\/fui-card-floating-action) + &);
+
+/* icon glyph variants.
+ *
+ * icon is the generic spelling: every @fluentui/react-icons glyph stamps data-fui-icon (SVG
+ * icons: empty string; font icons: "font"), so applied to the class that OWNS the glyph it
+ * selects any direct-child Fluent icon, bundled or not, SVG or font. A consumer's bring-your-own
+ * <svg> does not match — stamping data-fui-icon on it opts in.
+ *
+ * icon-filled/icon-regular are the bundled-pair spelling, selecting the data-fui-icon-variant
+ * attribute headless bundleIcon stamps on each glyph. Same direct-child anchoring (bundleIcon
+ * renders its two glyphs as siblings directly inside the slot element; a wrapper element a
+ * consumer adds around their icon takes it out of reach). State-guard placement: a group-state
+ * variant must wrap these from the owning class's block, and the owning class must be a
+ * DESCENDANT of the group root — on the group root itself the compiled group check fails.
+ *
+ * variant-filled/variant-regular are the glyph-self spelling for the one case direct-child cannot
+ * express: an anchor class whose glyphs sit deeper than one level (InteractionTagPrimary anchors
+ * on root appearance classes while the glyphs live inside the tag icon slot). */
+@custom-variant icon (& > :where([data-fui-icon]));
+@custom-variant icon-filled (& > :where([data-fui-icon-variant='filled']));
+@custom-variant icon-regular (& > :where([data-fui-icon-variant='regular']));
+@custom-variant variant-filled (&:where([data-fui-icon-variant='filled']));
+@custom-variant variant-regular (&:where([data-fui-icon-variant='regular']));
+
+/* ColorSlider: colour channel. `hue` is the headless default and the resting look, so it gets
+   no entry. */
+@custom-variant channel-saturation (&:where([data-channel='saturation']));
+@custom-variant channel-value (&:where([data-channel='value']));
+
+/* Dialog: modality and the nested-dialog flag. Only `non-modal` earns a modality entry — the
+   backdrop is painted positively and non-modal is its single override. No `fluid` entry: the fluid
+   rules select on which column the actions occupy, so they reuse `position-start`/`position-end`
+   (shared with Drawer below) and nothing selects on `data-fluid` — the same minimality test that
+   keeps `modal-type-modal` and `modal-type-alert` out. */
+@custom-variant modal-type-non-modal (&:where([data-modal-type='non-modal']));
+@custom-variant nested (&:where([data-nested]));
+
+/* Drawer: surface edge position */
+@custom-variant position-start (&:where([data-position='start']));
+@custom-variant position-end (&:where([data-position='end']));
+@custom-variant position-bottom (&:where([data-position='bottom']));
+
+/* Drawer: scroll position of a scrollable body. Call sites negate the first entry as
+   `not-scroll-state-none` — Tailwind's automatic not- compound, zero specificity like the rest. */
+@custom-variant scroll-state-none (&:where([data-scroll-state='none']));
+@custom-variant scroll-state-top (&:where([data-scroll-state='top']));
+@custom-variant scroll-state-middle (&:where([data-scroll-state='middle']));
+@custom-variant scroll-state-bottom (&:where([data-scroll-state='bottom']));
+
+/* Drawer: InlineDrawer's visible edge against the content it is stacked with */
+@custom-variant separator (&:where([data-separator]));
+
+/* Field: validation state stamped by the headless useField on the root */
+@custom-variant validate-state-error (&:where([data-validate-state='error']));
+@custom-variant validate-state-warning (&:where([data-validate-state='warning']));
+@custom-variant validate-state-success (&:where([data-validate-state='success']));
+
+/* MessageBar and Toast: intent */
+@custom-variant intent-info (&:where([data-intent='info']));
+@custom-variant intent-success (&:where([data-intent='success']));
+@custom-variant intent-warning (&:where([data-intent='warning']));
+@custom-variant intent-error (&:where([data-intent='error']));
+
+/* Nav: row density. `medium` is the base look and nothing selects it. */
+@custom-variant density-small (&:where([data-density='small']));
+
+/* Persona: text position, and text alignment against the coin. `start` is the resting look and
+   nothing selects it. */
+@custom-variant text-position-after (&:where([data-text-position='after']));
+@custom-variant text-position-before (&:where([data-text-position='before']));
+@custom-variant text-position-below (&:where([data-text-position='below']));
+@custom-variant text-alignment-center (&:where([data-text-alignment='center']));
+
+/* Skeleton: animation, appearance, item shape */
+@custom-variant animation-pulse (&:where([data-animation='pulse']));
+@custom-variant appearance-translucent (&:where([data-appearance='translucent']));
+@custom-variant shape-circle (&:where([data-shape='circle']));
+@custom-variant shape-square (&:where([data-shape='square']));
+
+/* SpinButton: held spin repeat — persists across the repeat interval, unlike :active */
+@custom-variant spin-active (&:where([data-spin-active]));
+
+/* Spinner and Toast: appearance */
+@custom-variant appearance-inverted (&:where([data-appearance='inverted']));
+
+/* SwatchPicker: swatch shape and inter-swatch spacing. `square` (Skeleton's entry above) and
+ * `medium` are the resting looks, so neither gets a positive twin. */
+@custom-variant spacing-small (&:where([data-spacing='small']));
+@custom-variant shape-rounded (&:where([data-shape='rounded']));
+@custom-variant shape-circular (&:where([data-shape='circular']));
+
+/* TabList: circular appearances, and the selection indicator's armed-transition flag. The flag is
+ * present while the indicator rests, which is when a selection change should transition. */
+@custom-variant appearance-subtle-circular (&:where([data-appearance='subtle-circular']));
+@custom-variant appearance-filled-circular (&:where([data-appearance='filled-circular']));
+@custom-variant animating (&:where([data-animating]));
+
+/* Toast: the Toaster's six position containers. Deliberately prefixed — a bare `position-start`
+ * belongs to Drawer, and these select a different attribute with a different vocabulary. The
+ * inverted surface reuses `appearance-inverted` above, as the intent set reuses MessageBar's. */
+@custom-variant toaster-position-top (&:where([data-toaster-position='top']));
+@custom-variant toaster-position-top-start (&:where([data-toaster-position='top-start']));
+@custom-variant toaster-position-top-end (&:where([data-toaster-position='top-end']));
+@custom-variant toaster-position-bottom (&:where([data-toaster-position='bottom']));
+@custom-variant toaster-position-bottom-start (&:where([data-toaster-position='bottom-start']));
+@custom-variant toaster-position-bottom-end (&:where([data-toaster-position='bottom-end']));
+
+/* ToggleButton: opt-in high-contrast selected look */
+@custom-variant accessible (&:where([data-accessible]));
