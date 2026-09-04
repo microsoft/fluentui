@@ -613,7 +613,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
-    const focusTrapZoneProps: IFocusTrapZoneProps = { firstFocusableTarget: `#${this._listId}1` };
+    const focusTrapZoneProps: IFocusTrapZoneProps = { firstFocusableTarget: `#${this._listId}0` };
     const panelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
