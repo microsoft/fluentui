@@ -337,7 +337,7 @@ subpath is the sanctioned entry point here.
 
 ## What differs deliberately
 
-Fifty-nine differences, each one a decision rather than a defect.
+Sixty-three differences, each one a decision rather than a defect.
 
 ### Setup and API surface
 

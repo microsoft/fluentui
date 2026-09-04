@@ -388,21 +388,19 @@ find the right token.
   digits (`1.4`, `0.83` would be wrong here — see below — `1.25`, `2`); reach for `leading-<a>/<b>`
   only when it doesn't. Author the fraction as the same integers a hand computation would use — the
   numerator/denominator pair that actually produced the target (`20/14` for a 20px line box on a
-  14px font), not a reduced or rescaled equivalent — so the site stays self-documenting. `guard.mjs`
-  (`.scratch/windmod-loop/leading-ramp/guard.mjs`) fails loudly on anything outside
-  `leading-<int>` / `leading-<int>/<nonzero int>` — zero-padded labels, keywords
+  14px font), not a reduced or rescaled equivalent — so the site stays self-documenting. Author only
+  `leading-<int>` or `leading-<int>/<nonzero int>`. Zero-padded labels, keywords
   (`leading-none`/`leading-tight`/…), bracket/paren forms, and zero or non-integer denominators are
-  all rejected in this corpus, even though some of those forms are valid CSS a consuming
-  application could use. Wire that guard into your local gate before authoring a new leading value.
+  outside this corpus even where they are valid CSS a consuming application could use.
 - **A sub-pixel VR residue from a leading change is not automatically a bug.** Chrome's Blink layout
   engine stores line-box height as 1/64px fixed-point (`LayoutUnit`); a leading value evaluated
   directly on a utility rule (any spelling — `calc()`, a pre-resolved decimal, a bracket form) can
   legitimately resolve one `LayoutUnit` (1/64px) short of the value a custom-property-indirected
   form would have produced, purely as a rendering-path artifact — see the `LayoutUnit 1/64px
-quantization` row in `failure-modes.md` and MORNING-DECISIONS.md Decision X. Do NOT chase this as
+quantization` row in `failure-modes.md`. Do NOT chase this as
   a CSS defect on sight. Before treating a small, edge/corner-concentrated VR diff as this class,
-  run the value-identity control first (a resolved-ratio diff proving the change is 0 — see
-  `lineheight-diff2.mjs`) — only THEN is a sub-pixel diff safe to attribute to LayoutUnit rounding
+  run the value-identity control first (a resolved-ratio comparison over every affected element
+  showing the change is 0) — only THEN is a sub-pixel diff safe to attribute to LayoutUnit rounding
   rather than a real regression.
 - Native interactive elements (`button`, `input`, `select`, `textarea`) author their `text-*` step
   even when nothing in the box visibly depends on it. Preflight resets them to `font: inherit`, so
@@ -552,8 +550,8 @@ Copy `Button.module.css`. Two constraints:
 ## Definition of done
 
 1. A VR scene added: shared `<X>VrScene.tsx` in `stories/src/vr/`, rendered by both a windmod and a
-   Griffel story, re-exported from `vr/index.stories.tsx`, with a scene entry appended to the harness's
-   `scenes.json`.
+   Griffel story, re-exported from `vr/index.stories.tsx`, and the new scene included in the VR
+   comparison.
 2. The gates script fully green — build, type-check, lint and test for both packages, then a static
    storybook build and the pixel diff against Griffel.
 
@@ -562,7 +560,7 @@ Copy `Button.module.css`. Two constraints:
 **Where these rules live, and where the runner does not.** The VR scenes are checked in —
 `stories/src/vr/` carries a `<Name>VrScene.tsx` plus its Griffel and windmod story pair per component,
 and that is what a runner captures. The pixel-diff runner itself is **not** in this package: no
-`pixelmatch` reference, no `scenes.json`, no gate script exists under
+`pixelmatch` reference, no scene list, no gate script exists under
 `packages/react-components/react-windmod-preview`. The recorded numbers and the allowance rows in
 `library/MIGRATION.md` come from a harness pointed at this package from outside it.
 
@@ -634,13 +632,13 @@ Two honesty rules make the table mean something:
   out to be true.
 - **Never trust a piped exit code.** A pipeline's status is the _last_ command's, so
   `nx run …:build | tail` reports `tail`'s success and hides a failed pre-task — once leaving a stale
-  `dist/` that polluted a CSS diff with ~22 phantom removals. Check per-step exit codes, or the
-  harness's `report.json`, never the tail. The same trap has bitten builds and sweeps alike.
-- **Prettier reads `.gitignore` as an ignore path.** A plain `prettier --check` on anything under
-  `.scratch/` therefore passes _without reading the file_. Probe runs need `--ignore-path <empty
-file>`. And a formatting verdict on a probe copy never transfers to the shipped module: the Tailwind
-  plugin sorts against the resolved entry stylesheet, and a probe's `@reference` line differs by
-  construction. Check the **shipped** `module.css`.
+  `dist/` that polluted a CSS diff with ~22 phantom removals. Adjudicate a sweep from its full
+  recorded results, never from the tail of shell output — a piped tail swallows exit codes. The same
+  trap has bitten builds and sweeps alike.
+- **Prettier reads `.gitignore` as an ignore path.** A `prettier --check` on a gitignored probe copy
+  passes without reading the file, so format-verify the shipped module itself, never a probe copy.
+  The Tailwind plugin sorts against the resolved entry stylesheet, and a probe's `@reference` line
+  differs by construction — check the **shipped** `module.css`.
 - **Calibrate ident-hash probes** against a shipped component's real `lib/**/*.module.css.js` hash
   before trusting a prediction. The digest seeds on the path relative to `library/src` (no `src/`
   prefix). Enumerate module files **recursively** — a one-level glob silently misses nested pair

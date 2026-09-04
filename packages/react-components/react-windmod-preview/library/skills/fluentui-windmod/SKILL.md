@@ -1,6 +1,6 @@
 ---
 name: fluentui-windmod
-description: Use when styling, theming or overriding Fluent UI components from @fluentui/react-windmod-preview or @fluentui/react-tailwind-theme-preview, when authoring or verifying component styles inside those packages, or when users say "style this Fluent component", "override the button styles", "theme this app", "switch to dark theme", "restyle windmod", "fui-button", "group variant", "cascade layer", or when working with .module.css files in a windmod project or migrating an app off @fluentui/react-components and Griffel. Provides the override model (cascade layers, not props), the public class and data-attribute surface, the variant catalog, theme class names, the base-scale density knob, and the authoring and verification conventions used inside the library itself.
+description: Use when styling, theming or overriding Fluent UI components from @fluentui/react-windmod-preview or @fluentui/react-tailwind-theme-preview, when authoring or verifying component styles inside those packages, or when users say "style this Fluent component", "override the button styles", "theme this app", "switch to dark theme", "restyle windmod", "fui-button", "group variant", "cascade layer", "line-height", "leading", "density", "ScaleRegion", "base-scale", or when working with .module.css files in a windmod project or migrating an app off @fluentui/react-components and Griffel. Provides the override model (cascade layers, not props), the public class and data-attribute surface, the variant catalog, theme class names, the base-scale density knob, and the authoring and verification conventions used inside the library itself.
 license: MIT
 metadata:
   author: fluentui
@@ -60,6 +60,10 @@ Two audiences, one skill:
 - **NEVER hardcode a palette value** — use the kebab-case Fluent theme tokens
   (`var(--color-neutral-foreground-1)`, `bg-neutral-background-1`). The theme drops Tailwind's default
   palette entirely, so a stray `text-red-500` fails the build rather than silently diverging.
+- **NEVER author a `leading-*` without a `text-*` on the same element** — leading is not a token here;
+  `leading-<n>` is the bare ratio `n/100` and `leading-<a>/<b>` the exact fraction, compiled straight
+  into `line-height`. Authored alone it multiplies whatever font-size inheritance delivers. The one
+  exemption is `leading-0`.
 - **NEVER author a `@custom-variant` in a component module** — the catalog is exactly two files. See
   [The variant catalog](#the-variant-catalog).
 - **NEVER assume `Tooltip` or `Popover` position correctly on Firefox or Safari** — the headless
@@ -67,7 +71,7 @@ Two audiences, one skill:
   detection and no polyfill. On an engine without it the surface renders unpositioned at the viewport
   origin.
 - **NEVER assume a windmod component is a drop-in for its Griffel twin without checking the delta
-  list** — there are fifty-nine deliberate differences. The ones that bite while styling are in
+  list** — there are sixty-three deliberate differences. The ones that bite while styling are in
   [references/griffel-deltas.md](references/griffel-deltas.md).
 
 ## Before You Style, Ask
@@ -147,7 +151,7 @@ first, so ours transitively precedes everything:
 ```
 
 For CommonJS/SSR, or any time one file is simpler, swap `base.css` for
-`@fluentui/react-windmod-preview/styles.css` — the aggregate carrying the root sheet plus all 131
+`@fluentui/react-windmod-preview/styles.css` — the aggregate carrying the root sheet plus all 133
 components.
 
 ```tsx
@@ -220,7 +224,9 @@ trigger.
 **Choosing a token, or reasoning about sizing and density:**
 
 - **MANDATORY**: Load [references/tokens-and-scale.md](references/tokens-and-scale.md) when picking a
-  colour/typography/radius token, when layout is the wrong size, or when `--base-scale` comes up.
+  colour/typography/radius token, when choosing a line-height (leading is arithmetic, not a token —
+  the file's Typography section is the rule), when layout is the wrong size, or when `--base-scale` or
+  `ScaleRegion` comes up.
 - **Do NOT Load**: variant-catalog.md unless also selecting on state.
 
 **Theming — switching themes, theming part of a page, or building a custom one:**

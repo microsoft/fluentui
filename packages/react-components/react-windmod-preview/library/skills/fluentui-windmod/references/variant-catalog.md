@@ -11,7 +11,7 @@ and both importable:
 | File                                                      | Vocabulary                                                             | Entries |
 | --------------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
 | `@fluentui/react-tailwind-theme-preview/css/variants.css` | **generic** — meaningful without knowing any component's API           | 95      |
-| `@fluentui/react-windmod-preview/variants.css`            | **component-specific** — component API values, sectioned per component | ~55     |
+| `@fluentui/react-windmod-preview/variants.css`            | **component-specific** — component API values, sectioned per component | 68      |
 
 The split test: _would this name mean anything to someone who has never seen this component's props?_
 `disabled`, `placement-above`, `size-small` — yes, generic. `appearance-filled-alternative`,

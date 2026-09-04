@@ -73,11 +73,7 @@ independent entries and shares them with any single-name read of the same variab
 
 **Not every token reads back as a usable value.** The theme deliberately leaves its knobs unregistered
 (no `@property`), so a custom property's computed value is the specified token stream with `var()`
-substituted and **`calc()` not evaluated**. Measured over all 462 declared tokens (a follow-up to
-AR2 DELETED `--leading-*` entirely — `leading-<n>` is now pure arithmetic, `n / 100` for any bare
-integer `n`, or `leading-<a>/<b>` for an exact ratio, compiled straight into `line-height` by a
-functional `@utility` override in `css/index.css` with no backing custom property at all, so the
-15 `--leading-*` declarations the original AR2 landing added are gone, not renamed):
+substituted and **`calc()` not evaluated**. Measured over all 462 declared tokens:
 
 | Family         | Reads as a literal | Reads as a `calc()` string |
 | -------------- | ------------------ | -------------------------- |

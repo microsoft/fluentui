@@ -81,7 +81,7 @@ also the natural home for a custom theme: declare it after the imports above and
    the document before the root sheet defines the order itself, inverting inter-component precedence
    (a `ToggleButton` chunk ahead of a `Button` chunk puts `fui.components.l2` below
    `fui.components.l1`, and `ToggleButton` loses contested properties to the `Button` it builds on).
-   There is no per-chunk fallback by design — one owner of the order declaration is a campaign
+   There is no per-chunk fallback by design — one owner of the order declaration is a package
    contract, and loading the root sheet first is how it is honoured.
 3. `base.css` carries the `@property` registrations that give Tailwind's `--tw-*` variables their
    initial values. Without it, borders and shadows lose their values on every component.
@@ -95,7 +95,7 @@ elements rather than looking for a stylesheet URL, so Mode 2 does not trip eithe
 ### Fallback — one file
 
 `@fluentui/react-windmod-preview/styles.css` still exists and still contains everything: the root sheet
-plus all 131 components. Loading it alone is a complete setup and `base.css` is then unnecessary. Use
+plus all 133 components. Loading it alone is a complete setup and `base.css` is then unnecessary. Use
 it for CommonJS/SSR, a `<link>`-only pipeline, or whenever one file beats letting the bundler collect
 chunks.
 
@@ -287,7 +287,6 @@ outranks the reset; within the layer the resets that follow preflight beat it by
 The theme package's README describes `l3`–`l5` as available for app-global, per-page and one-off
 overrides that should still lose to your unlayered CSS.
 
-> **Caveat, verified in the current tree:** `fui.components.l3` is no longer empty — four component
-> modules author into it (deeper compositions such as ToolbarToggleButton over ToggleButton over
-> Button). `l4` and `l5` are still unused. Treat `l4`/`l5` as the safe consumer levels, and prefer
-> plain unlayered CSS, which needs no coordination at all.
+> **`fui.components.l3` is not free:** two component modules author into it (`SplitButton`, and
+> `ToolbarToggleButton` over `ToggleButton` over `Button`). `l4` and `l5` are unused. Treat `l4`/`l5`
+> as the safe consumer levels, and prefer plain unlayered CSS, which needs no coordination at all.

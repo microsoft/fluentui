@@ -84,12 +84,12 @@ custom property and nothing to look up.
   silently compiles to nothing; use `leading-83`.
 - **`leading-<a>/<b>`** — an exact ratio, for a value two hundredths-of-a-ratio digits can't
   express: `leading-20/14` is exactly `20/14` (`1.428571…`), not the `1.43` that `leading-143`
-  would give. Reach for this only when the exact fraction matters — most of the corpus's
-  historically-repeating ratios (former labels 143, 133, 167, 83, 92, 137) now use this form.
+  would give. Reach for this only when the exact fraction matters — the corpus's repeating ratios
+  (`20/14`, `16/12`, `20/12`, and the like) use this form.
 - **Bracket/paren forms pass through as explicit opt-outs** — `leading-[1.5]`, `leading-(--my-var)`
   — Tailwind's own arbitrary-value handling for the `leading` root, untouched by this package's
   `@utility`, since it claims only the bare-integer and `a/b` shapes. Neither form is used in this
-  library's own corpus (`guard.mjs` enforces `leading-<int>` / `leading-<int>/<nonzero int>` only)
+  library's own corpus (this corpus authors only `leading-<int>` / `leading-<int>/<nonzero int>`)
   — they exist for consuming applications.
 - **`leading-none` is not part of the vocabulary.** It is a real Tailwind static utility
   (`line-height: 1`) and still compiles — nothing in this package's setup suppresses it — but it

@@ -228,7 +228,7 @@ Likely one of:
 
 ## "A component behaves differently from its Griffel twin"
 
-Check [griffel-deltas.md](griffel-deltas.md) first — there are fifty-nine documented differences and this
+Check [griffel-deltas.md](griffel-deltas.md) first — there are sixty-three documented differences and this
 is very likely one of them. The high-traffic ones: closed `Accordion` panels stay mounted (state
 persists), a local prop beats a context value, `Field` does not push `size` into its control,
 `TagGroup` does not restore focus after a dismiss, `Card` selection is not focus-aware.
@@ -245,7 +245,7 @@ differ; only the jest ones collide.
 
 **Cause:** the theme leaves its knobs unregistered (no `@property`), so a custom property's computed
 value is the token stream with `var()` substituted and `calc()` **not** evaluated. Spacing, text, stroke
-and `--base-scale` all read this way (47 of 472 tokens).
+and `--base-scale` all read this way (the calc-string families in `css-var-values.md`'s table).
 
 **Fix:** the hook is for colour and other literal tokens. For a resolved length, read a real property
 with `getComputedStyle`, not the token. See [css-var-values.md](css-var-values.md).

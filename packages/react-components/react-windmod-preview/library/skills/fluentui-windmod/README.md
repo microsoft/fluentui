@@ -55,17 +55,18 @@ Make the icon strike through when the button is disabled
 
 - **SKILL.md** — the rules: prohibitions, decision tests, the override model, the public class surface,
   and the reference loading map
-- **AGENTS.md** — quick reference: class surface, layer stack, variant vocabulary, token namespaces,
-  theme classes, subpaths, and a Griffel→windmod conversion table
 - **references/**
   - `setup.md` — install, the two stylesheets, the provider, Tailwind wiring
   - `overriding.md` — the three override routes, what not to target, motion overrides
   - `variant-catalog.md` — the full generic and component-specific vocabulary
-  - `tokens-and-scale.md` — token families, the density knob, what responds at runtime
+  - `tokens-and-scale.md` — token families, the density knob, what responds at runtime, leading as
+    arithmetic
   - `griffel-deltas.md` — the differences that change how you style, test or debug
   - `css-var-values.md` — `useCssVarValue` / `invalidateCssVars`
   - `authoring-conventions.md` — contributor rules for changing styles inside the package
   - `troubleshooting.md` — symptom-keyed fixes
+  - `failure-modes.md` — the defect classes past reviews caught inside the package, each with its
+    detection grep
 - **assets/** — a worked consumer override, correct patterns with the anti-patterns beside them
 
 ## Key Concepts
@@ -152,9 +153,8 @@ export const Cta = () => <Button className="cta-button">Get started</Button>;
 ## Learn More
 
 - [SKILL.md](SKILL.md) — the full rule set
-- [AGENTS.md](AGENTS.md) — quick reference
 - [references/](references/) — detailed catalogs and guides
-- The package's own `MIGRATION.md` — all fifty-nine deliberate differences from
+- The package's own `MIGRATION.md` — all sixty-three deliberate differences from
   `@fluentui/react-components`
 
 ## Preview
