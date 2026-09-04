@@ -9,5 +9,19 @@ export type {
   BadgeState,
 } from './components/Badge';
 
+export { CounterBadge, counterBadgeClassNames, useCounterBadgeStyles } from './components/CounterBadge';
+export type {
+  CounterBadgeAppearance,
+  CounterBadgeColor,
+  CounterBadgeProps,
+  CounterBadgeShape,
+  CounterBadgeState,
+} from './components/CounterBadge';
+
 /** Headless building blocks, re-exported for consumers composing their own Badge. */
-export { renderBadge, useBadge } from '@fluentui/react-headless-components-preview/badge';
+export {
+  renderBadge,
+  renderCounterBadge,
+  useBadge,
+  useCounterBadge,
+} from '@fluentui/react-headless-components-preview/badge';

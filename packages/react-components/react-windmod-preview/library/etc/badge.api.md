@@ -7,9 +7,13 @@
 import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
 import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeProps as CounterBadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeState as CounterBadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderCounterBadge } from '@fluentui/react-headless-components-preview/badge';
 import { useBadge } from '@fluentui/react-headless-components-preview/badge';
+import { useCounterBadge } from '@fluentui/react-headless-components-preview/badge';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -44,12 +48,47 @@ export { BadgeSlots }
 // @public
 export type BadgeState = BadgeState_2 & Required<Pick<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
 
+// @public
+export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+// @public
+export type CounterBadgeAppearance = 'filled' | 'ghost';
+
+// @public
+export const counterBadgeClassNames: {
+    root: string;
+};
+
+// @public
+export type CounterBadgeColor = Extract<BadgeColor, 'brand' | 'danger' | 'important' | 'informative'>;
+
+// @public
+export type CounterBadgeProps = CounterBadgeProps_2 & {
+    appearance?: CounterBadgeAppearance;
+    color?: CounterBadgeColor;
+    shape?: CounterBadgeShape;
+    size?: BadgeSize;
+};
+
+// @public
+export type CounterBadgeShape = 'circular' | 'rounded';
+
+// @public
+export type CounterBadgeState = CounterBadgeState_2 & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>>;
+
 export { renderBadge }
+
+export { renderCounterBadge }
 
 export { useBadge }
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+export { useCounterBadge }
+
+// @public
+export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
 
 // (No @packageDocumentation comment for this package)
 

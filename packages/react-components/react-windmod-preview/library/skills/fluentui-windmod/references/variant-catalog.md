@@ -186,6 +186,7 @@ Sectioned by owning component, in
 ```
 Accordion       expand-icon-position-start|end
 Button          appearance-secondary|primary|outline|subtle|transparent
+CounterBadge    dot  hidden
 Card            appearance-filled-alternative        (outline, subtle shared with Button)
 icons           icon                                 — any direct-child Fluent glyph ([data-fui-icon], SVG or font)
 bundleIcon      icon-filled  icon-regular         — the glyph swap, direct-child form

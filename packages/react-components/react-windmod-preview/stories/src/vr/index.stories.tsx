@@ -10,6 +10,8 @@ export { AvatarGroupOpenWindmod } from './AvatarGroupOpenWindmod.stories';
 export { AvatarGroupOpenGriffel } from './AvatarGroupOpenGriffel.stories';
 export { BadgeWindmod } from './BadgeWindmod.stories';
 export { BadgeGriffel } from './BadgeGriffel.stories';
+export { CounterBadgeWindmod } from './CounterBadgeWindmod.stories';
+export { CounterBadgeGriffel } from './CounterBadgeGriffel.stories';
 export { BreadcrumbWindmod } from './BreadcrumbWindmod.stories';
 export { BreadcrumbGriffel } from './BreadcrumbGriffel.stories';
 export { ButtonWindmod } from './ButtonWindmod.stories';

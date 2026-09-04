@@ -13,6 +13,11 @@
 @custom-variant expand-icon-position-start (&:where([data-expand-icon-position='start']));
 @custom-variant expand-icon-position-end (&:where([data-expand-icon-position='end']));
 
+/* CounterBadge: the dot presentation and the empty/no-dot hidden state, both stamped by the
+   headless useCounterBadge on the root. */
+@custom-variant dot (&:where([data-dot]));
+@custom-variant hidden (&:where([data-hidden]));
+
 /* Button */
 @custom-variant appearance-secondary (&:where([data-appearance='secondary']));
 @custom-variant appearance-primary (&:where([data-appearance='primary']));
