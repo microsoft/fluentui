@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adopt native Interest Invokers (interestfor) for Tooltip hover/focus intent, with the existing JS engine as a graceful fallback",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "mgodbolt+microsoft@microsoft.com",
+  "dependentChangeType": "patch"
+}
