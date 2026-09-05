@@ -223,6 +223,7 @@ export interface CartesianChartProps {
     reflowProps?: {
         mode: 'none' | 'min-width';
     };
+    rotateXAxisLabels?: boolean;
     rotateXAxisLables?: boolean;
     roundedTicks?: boolean;
     secondaryYAxistitle?: string;
@@ -231,7 +232,10 @@ export interface CartesianChartProps {
         yMaxValue?: number;
     };
     secondaryYScaleType?: AxisScaleType;
+    showXAxisLabelsTooltip?: boolean;
     showXAxisLablesTooltip?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     strokeWidth?: number;
@@ -244,6 +248,7 @@ export interface CartesianChartProps {
     titleStyles?: TitleStyles;
     useUTC?: string | boolean;
     width?: number;
+    wrapXAxisLabels?: boolean;
     wrapXAxisLables?: boolean;
     xAxis?: AxisProps & {
         tickLayout?: 'default' | 'auto';
@@ -1491,6 +1496,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     onChartMouseLeave?: () => void;
     points: any;
     showRoundOffXTickValues?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
