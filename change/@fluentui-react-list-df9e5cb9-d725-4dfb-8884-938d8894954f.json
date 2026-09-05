@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose useListBase_unstable, useListItemBase_unstable and List context APIs for headless composition",
+  "packageName": "@fluentui/react-list",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
