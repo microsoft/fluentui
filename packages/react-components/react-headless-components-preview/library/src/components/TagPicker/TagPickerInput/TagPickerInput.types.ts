@@ -8,7 +8,7 @@ export type { TagPickerInputBaseProps as TagPickerInputProps, TagPickerInputSlot
 export type TagPickerInputState = TagPickerInputBaseState & {
   root: {
     /**
-     * Data attribute set when the input is disabled.
+     * Present when the input is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
   };

@@ -8,7 +8,7 @@ export type { SpinButtonSlots, SpinButtonBaseProps as SpinButtonProps } from '@f
 export type SpinButtonState = SpinButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the spin button is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
