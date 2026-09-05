@@ -4,7 +4,7 @@ import * as React from 'react';
 import { isHTMLElement, useMergedRefs, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { CAROUSEL_ITEM } from './constants';
+import { CAROUSEL_ITEM, CAROUSEL_TITLE } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
 import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
@@ -39,6 +39,21 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   const { announce } = useAnnounce();
+
+  // Tracks the value of a carousel page that is in the process of becoming active, so that focus is only moved
+  // to a page's title when its DOM node mounts *because of* a navigation - not whenever any
+  // `[data-carousel-title]` node happens to be added anywhere under the carousel (e.g. unrelated async content).
+  const pendingFocusValueRef = React.useRef<string | null>(null);
+  const isInitialRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      return;
+    }
+
+    pendingFocusValueRef.current = value;
+  }, [value]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -80,7 +95,11 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     const callback: MutationCallback = mutationList => {
       for (const mutation of mutationList) {
         for (const addedNode of Array.from(mutation.addedNodes)) {
-          if (isHTMLElement(addedNode) && addedNode.hasAttribute(CAROUSEL_ITEM)) {
+          if (!isHTMLElement(addedNode)) {
+            continue;
+          }
+
+          if (addedNode.hasAttribute(CAROUSEL_ITEM)) {
             const newValue = addedNode.getAttribute(CAROUSEL_ITEM)!;
             const newNode = carouselWalker.find(newValue);
             if (!newNode?.value) {
@@ -89,6 +108,26 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
 
             const previousNode = carouselWalker.prevPage(newNode?.value);
             store.insertValue(newValue, previousNode?.value ?? null);
+          }
+
+          // Move focus to a page's title only when it mounts as part of an actual navigation to it (tracked via
+          // `pendingFocusValueRef`), so assistive technology announces the updated heading (and any
+          // aria-describedby'd step count) in a single pass. A page's own root element (marked with
+          // `data-carousel-item`) is never removed/re-added on navigation - only its children toggle - so the
+          // title's *owning* item is resolved via the closest `[data-carousel-item]` ancestor and compared
+          // against the pending value. This ensures unrelated title mounts elsewhere in the carousel - e.g. async
+          // content added to a page that isn't the one just navigated to - never steal focus.
+          if (pendingFocusValueRef.current !== null) {
+            const titleEl = addedNode.matches(`[${CAROUSEL_TITLE}]`)
+              ? addedNode
+              : addedNode.querySelector<HTMLElement>(`[${CAROUSEL_TITLE}]`);
+
+            const owningItemValue = titleEl?.closest(`[${CAROUSEL_ITEM}]`)?.getAttribute(CAROUSEL_ITEM);
+
+            if (titleEl && owningItemValue === pendingFocusValueRef.current) {
+              titleEl.focus({ preventScroll: true });
+              pendingFocusValueRef.current = null;
+            }
           }
         }
 

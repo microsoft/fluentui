@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: move focus to the active page's TeachingPopoverTitle when a TeachingPopoverCarousel step changes, so assistive technology announces the new heading and step count in a single pass (fixes screen reader not announcing step changes on Next/Previous)",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
