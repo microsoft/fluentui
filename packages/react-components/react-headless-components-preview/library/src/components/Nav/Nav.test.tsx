@@ -202,4 +202,34 @@ describe('Nav', () => {
     expect(link.tagName).toBe('A');
     expect(link).toHaveAttribute('href', 'https://example.com');
   });
+
+  it('hides NavCategoryItem expandIcon from assistive technology by default', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('allows a consumer to override NavCategoryItem expandIcon aria-hidden', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ 'aria-hidden': false, children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1 expand' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'false');
+  });
 });
