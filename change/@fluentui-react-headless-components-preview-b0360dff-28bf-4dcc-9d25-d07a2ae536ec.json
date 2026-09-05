@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MenuSplitGroup provides its context to descendants via a new exported useMenuSplitGroupContextValues hook",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

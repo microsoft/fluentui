@@ -45,5 +45,11 @@ export type { MenuGroupProps, MenuGroupSlots, MenuGroupState, MenuGroupContextVa
 export { MenuGroupHeader, useMenuGroupHeader, renderMenuGroupHeader } from './MenuGroupHeader';
 export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from '@fluentui/react-menu';
 
-export { MenuSplitGroup, useMenuSplitGroup, renderMenuSplitGroup } from './MenuSplitGroup';
+export {
+  MenuSplitGroup,
+  useMenuSplitGroup,
+  useMenuSplitGroupContextValues,
+  renderMenuSplitGroup,
+} from './MenuSplitGroup';
+export type { MenuSplitGroupContextValues } from './MenuSplitGroup';
 export type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from '@fluentui/react-menu';
