@@ -50,11 +50,39 @@ export const CollapseRelaxed: PresenceComponent<CollapseParams>;
 // @public (undocumented)
 export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
+// @public (undocumented)
+export const createSequenceComponent: ({ motions, }: {
+    motions: MotionEntry[];
+}) => React_2.FC<React_2.PropsWithChildren<{}>>;
+
 // @public
 export const Fade: PresenceComponent<FadeParams>;
 
 // @public
+export const Fade2: PresenceComponent<Fade2Params>;
+
+// @public (undocumented)
+export type Fade2Params = BasePresenceParams & {
+    fromOpacity?: number;
+    restOpacity?: number;
+    toOpacity?: number;
+};
+
+// @public
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
+
+// @public
+export const fadeAtom2: ({ duration, easing, delay, fill, fromOpacity, toOpacity, }: FadeAtom2Params) => AtomMotion;
+
+// @public (undocumented)
+export type FadeAtom2Params = {
+    duration: number;
+    easing?: EffectTiming['easing'];
+    delay?: EffectTiming['delay'];
+    fill?: FillMode;
+    fromOpacity?: number;
+    toOpacity?: number;
+};
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
@@ -67,6 +95,16 @@ export const FadeRelaxed: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeParams>;
+
+// @public
+export const Hold: React_2.FC<HoldProps>;
+
+// @public
+export interface HoldProps {
+    children?: React_2.ReactNode;
+    duration: number;
+    onMotionFinish?: () => void;
+}
 
 // @public (undocumented)
 export const Rotate: PresenceComponent<RotateParams>;
@@ -99,11 +137,53 @@ export const ScaleRelaxed: PresenceComponent<ScaleParams>;
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleParams>;
 
+// @public (undocumented)
+export const Scene: React_2.FC<HoldProps>;
+
+// @public (undocumented)
+export const Sequence: React_2.FC<SequenceProps>;
+
+// @public
+export interface SequenceProps {
+    children: React_2.ReactNode;
+    commonProps?: Record<string, unknown>;
+    iterations?: EffectTiming['iterations'];
+    onMotionFinish?: () => void;
+}
+
 // @public
 export const Slide: PresenceComponent<SlideParams>;
 
 // @public
+export const Slide2: PresenceComponent<Slide2Params>;
+
+// @public (undocumented)
+export type Slide2Params = BasePresenceParams & AnimateOpacity & {
+    fromX?: string;
+    fromY?: string;
+    restX?: string;
+    restY?: string;
+    toX?: string;
+    toY?: string;
+};
+
+// @public
 export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
+
+// @public
+export const slideAtom2: ({ duration, easing, delay, fill, fromX, fromY, toX, toY, }: SlideAtom2Params) => AtomMotion;
+
+// @public (undocumented)
+export type SlideAtom2Params = {
+    duration: number;
+    easing?: EffectTiming['easing'];
+    delay?: EffectTiming['delay'];
+    fill?: FillMode;
+    fromX?: string;
+    fromY?: string;
+    toX?: string;
+    toY?: string;
+};
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {
