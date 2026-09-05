@@ -71,15 +71,23 @@ export const useTagPickerControlBase_unstable = (
     expandIcon.ref = expandIconMergeRef;
   }
 
+  const handleAsideDetach = useEventCallback(() => {
+    if (rafIdRef.current && targetDocument?.defaultView) {
+      targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
+    }
+    rafIdRef.current = null;
+  });
+
   const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
     const targetWindow = targetDocument?.defaultView;
 
     if (targetWindow) {
       rafIdRef.current = targetWindow.requestAnimationFrame(() => {
         innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+        rafIdRef.current = null;
       });
     }
-  });
+  }, handleAsideDetach);
   const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
     elementType: 'span',
     renderByDefault: Boolean(secondaryAction || expandIcon),
@@ -140,12 +148,6 @@ export const useTagPickerControlBase_unstable = (
   if (state.expandIcon) {
     state.expandIcon.ref = expandIconLabelMergeRef;
   }
-
-  React.useEffect(() => {
-    if (rafIdRef.current && targetDocument?.defaultView) {
-      targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
-    }
-  }, [targetDocument]);
 
   return state;
 };
