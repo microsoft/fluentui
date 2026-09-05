@@ -5,18 +5,30 @@ import bestPracticesMd from './PositioningBestPractices.md';
 
 export { Default } from './PositioningDefault.stories';
 export { ShorthandPositions } from './PositioningShorthandPositions.stories';
-export { Offset } from './PositioningOffset.stories';
 export { CoverTarget } from './PositioningCoverTarget.stories';
+export { OffsetFunction } from './PositioningOffsetFunction.stories';
+export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
+export { ImperativeAnchorTarget } from './PositioningImperativeAnchorTarget.stories';
+export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.stories';
+export { OverflowBoundary } from './PositioningOverflowBoundary.stories';
+export { OverflowBoundaryRect } from './PositioningOverflowBoundaryRect.stories';
+export { OverflowBoundaryPadding } from './PositioningOverflowBoundaryPadding.stories';
+export { FlipBoundary } from './PositioningFlipBoundary.stories';
 export { MatchTargetSize } from './PositioningMatchTargetSize.stories';
+export { DisableTransform } from './PositioningDisableTransform.stories';
+export { ListenToUpdates } from './PositioningListenToUpdates.stories';
+export { AutoSizeForSmallViewport } from './PositioningAutoSize.stories';
+export { CoverTargetForSmallViewport } from './PositioningShiftToCoverTarget.stories';
 export { FallbackPositions } from './PositioningFallbackPositions.stories';
 export { FlippingBlock } from './PositioningFlippingBlock.stories';
 export { FlippingInline } from './PositioningFlippingInline.stories';
 export { FlippingCorner } from './PositioningFlippingCorner.stories';
 
 export default {
-  title: 'Concepts/Positioning',
+  title: 'Concepts/Developer/Positioning Components',
   component: Positioning,
   parameters: {
+    layout: 'centered',
     docs: {
       description: {
         component: [descriptionMd, bestPracticesMd].join('\n'),

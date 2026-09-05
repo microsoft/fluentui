@@ -4341,6 +4341,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-headless-components-preview@workspace:packages/react-components/react-headless-components-preview/library"
   dependencies:
+    "@floating-ui/dom": "npm:^1.6.12"
     "@fluentui/keyboard-keys": "npm:^9.0.9"
     "@fluentui/react-accordion": "npm:^9.12.3"
     "@fluentui/react-aria": "npm:^9.17.14"
