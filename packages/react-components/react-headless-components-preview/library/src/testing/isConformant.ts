@@ -1,5 +1,21 @@
+import * as React from 'react';
+import { render, type RenderOptions } from '@testing-library/react';
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+type HeadlessIsConformantOptions<TProps> = Omit<IsConformantOptions<TProps>, 'componentPath'> & {
+  /**
+   * Path to component file. This is optional because the test file is usually in the same folder as the component file.
+   */
+  componentPath?: string;
+  /**
+   * Custom render options applied only to the axe test.
+   */
+  axeRenderOptions?: RenderOptions;
+};
 
 function kebabCase(str: string): string {
   return str
@@ -8,9 +24,8 @@ function kebabCase(str: string): string {
     .toLowerCase();
 }
 
-export function isConformant<TProps = {}>(
-  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
-): void {
+export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<TProps>): void {
+  const { axeRenderOptions, ...baseTestInfo } = testInfo;
   const name = kebabCase(testInfo.displayName);
 
   // Subcomponents have no top-level entry file and therefore no export map entry of their own.
@@ -30,6 +45,16 @@ export function isConformant<TProps = {}>(
     ],
     disableTypeTests: true,
     extraTests: {
+      'component-has-no-axe-violations': ({ Component, requiredProps, renderOptions }: IsConformantOptions<TProps>) => {
+        it('has no axe violations (component-has-no-axe-violations)', async () => {
+          const { container } = render(
+            React.createElement(Component as React.ComponentType<Partial<TProps>>, requiredProps),
+            { ...renderOptions, ...axeRenderOptions },
+          );
+
+          expect(await axe(container)).toHaveNoViolations();
+        });
+      },
       'has-top-level-file-extra': ({ displayName, Component }: IsConformantOptions<TProps>) => {
         it(`has corresponding top-level file 'src/${name}.ts' (has-top-level-file)`, () => {
           const topLevelFile = require(`../${name}.ts`);
@@ -63,5 +88,5 @@ export function isConformant<TProps = {}>(
     },
   };
 
-  baseIsConformant(defaultOptions, testInfo);
+  baseIsConformant(defaultOptions, baseTestInfo);
 }

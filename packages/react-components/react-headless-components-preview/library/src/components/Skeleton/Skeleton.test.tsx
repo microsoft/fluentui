@@ -7,6 +7,7 @@ describe('Skeleton', () => {
   isConformant({
     Component: Skeleton,
     displayName: 'Skeleton',
+    requiredProps: { 'aria-label': 'Loading' },
   });
 
   it('renders a default state', () => {

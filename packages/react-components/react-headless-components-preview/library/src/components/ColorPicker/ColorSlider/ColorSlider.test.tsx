@@ -9,6 +9,7 @@ describe('ColorSlider', () => {
     displayName: 'ColorSlider',
     disabledTests: ['has-top-level-file-extra'],
     primarySlot: 'input',
+    requiredProps: { 'aria-label': 'Color' },
   });
 
   it('renders a native range input with channel semantics', () => {

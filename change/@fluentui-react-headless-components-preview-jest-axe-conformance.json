@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test: add axe accessibility checks to component conformance tests",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}

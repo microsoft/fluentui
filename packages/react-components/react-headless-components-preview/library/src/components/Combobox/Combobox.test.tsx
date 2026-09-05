@@ -10,6 +10,7 @@ describe('Combobox', () => {
     displayName: 'Combobox',
     primarySlot: 'input',
     requiredProps: {
+      'aria-label': 'Options',
       open: true,
       children: (
         <>
