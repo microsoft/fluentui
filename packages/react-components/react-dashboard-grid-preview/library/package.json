@@ -1,0 +1,83 @@
+{
+  "name": "@fluentui/react-dashboard-grid-preview",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fluent UI React Dashboard Grid preview components",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.9",
+    "@fluentui/react-context-selector": "^9.2.19",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
+    "@griffel/react": "^1.5.32",
+    "@swc/helpers": "^0.5.1",
+    "use-sync-external-store": "^1.2.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <20.0.0",
+    "@types/react-dom": ">=16.9.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./engine": {
+      "import": {
+        "types": "./dist/engine.d.ts",
+        "default": "./lib/engine.js"
+      },
+      "require": {
+        "types": "./dist/engine.d.cts",
+        "default": "./lib-commonjs/engine.cjs"
+      }
+    },
+    "./gridstack-compat": {
+      "import": {
+        "types": "./dist/gridstack-compat.d.ts",
+        "default": "./lib/gridstack-compat.js"
+      },
+      "require": {
+        "types": "./dist/gridstack-compat.d.cts",
+        "default": "./lib-commonjs/gridstack-compat.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "devDependencies": {
+    "@fluentui/verify-bundle-isolation": "*"
+  },
+  "type": "module"
+}

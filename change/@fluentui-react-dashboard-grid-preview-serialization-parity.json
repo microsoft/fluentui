@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve complete serializable dashboard grid options across save and load",
+  "packageName": "@fluentui/react-dashboard-grid-preview",
+  "email": "ynagaraj@microsoft.com",
+  "dependentChangeType": "patch"
+}

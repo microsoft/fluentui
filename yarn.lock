@@ -4041,6 +4041,40 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-dashboard-grid-preview-stories@workspace:packages/react-components/react-dashboard-grid-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-dashboard-grid-preview-stories@workspace:packages/react-components/react-dashboard-grid-preview/stories"
+  dependencies:
+    "@fluentui/react-components": "npm:*"
+    "@fluentui/react-dashboard-grid-preview": "npm:*"
+    "@fluentui/react-utilities": "npm:*"
+    react: "npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-dashboard-grid-preview@npm:*, @fluentui/react-dashboard-grid-preview@workspace:packages/react-components/react-dashboard-grid-preview/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-dashboard-grid-preview@workspace:packages/react-components/react-dashboard-grid-preview/library"
+  dependencies:
+    "@fluentui/keyboard-keys": "npm:^9.0.9"
+    "@fluentui/react-context-selector": "npm:^9.2.19"
+    "@fluentui/react-jsx-runtime": "npm:^9.4.5"
+    "@fluentui/react-shared-contexts": "npm:^9.26.3"
+    "@fluentui/react-tabster": "npm:^9.26.17"
+    "@fluentui/react-theme": "npm:^9.2.2"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@fluentui/verify-bundle-isolation": "npm:*"
+    "@griffel/react": "npm:^1.5.32"
+    "@swc/helpers": "npm:^0.5.1"
+    use-sync-external-store: "npm:^1.2.0"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    "@types/react-dom": ">=16.9.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-date-time@workspace:packages/react-date-time":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-date-time@workspace:packages/react-date-time"

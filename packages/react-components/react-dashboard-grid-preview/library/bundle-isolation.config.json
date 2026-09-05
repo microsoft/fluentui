@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../../tools/verify-bundle-isolation/schema.json",
+  "fixturesRoot": "./bundle-isolation",
+  "externals": [],
+  "forbiddenPackages": [
+    "@fluentui/keyboard-keys",
+    "@fluentui/react-context-selector",
+    "@fluentui/react-jsx-runtime",
+    "@fluentui/react-shared-contexts",
+    "@fluentui/react-tabster",
+    "@fluentui/react-theme",
+    "@fluentui/react-utilities",
+    "@griffel/*",
+    "react",
+    "react-dom",
+    "tabster",
+    "use-sync-external-store"
+  ],
+  "fixtures": {
+    "engine.fixture.js": {}
+  }
+}

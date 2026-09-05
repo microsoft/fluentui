@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: complete dashboard serialization and interaction behavior",
+  "packageName": "@fluentui/react-dashboard-grid-preview",
+  "email": "ynagaraj@microsoft.com",
+  "dependentChangeType": "patch"
+}
