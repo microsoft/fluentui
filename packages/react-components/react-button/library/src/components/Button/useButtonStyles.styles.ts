@@ -279,6 +279,9 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
+  },
 
   // Shape variations
   circular: { borderRadius: tokens.borderRadiusCircular },
@@ -458,6 +461,9 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
+  },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
   },
 });
 

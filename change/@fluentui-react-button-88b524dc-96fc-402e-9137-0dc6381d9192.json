@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add 'tint' appearance to Button",
+  "packageName": "@fluentui/react-button",
+  "email": "egianoglio@microsoft.com",
+  "dependentChangeType": "patch"
+}
