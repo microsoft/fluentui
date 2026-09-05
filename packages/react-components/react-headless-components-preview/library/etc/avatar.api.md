@@ -4,9 +4,9 @@
 
 ```ts
 
+import type { AvatarBaseState } from '@fluentui/react-avatar';
 import { AvatarBaseProps as AvatarProps } from '@fluentui/react-avatar';
-import { AvatarSlots } from '@fluentui/react-avatar';
-import { AvatarBaseState as AvatarState } from '@fluentui/react-avatar';
+import { AvatarBaseSlots as AvatarSlots } from '@fluentui/react-avatar';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderAvatar_unstable as renderAvatar } from '@fluentui/react-avatar';
@@ -19,7 +19,12 @@ export { AvatarProps }
 
 export { AvatarSlots }
 
-export { AvatarState }
+// @public (undocumented)
+export type AvatarState = AvatarBaseState & {
+    root: {
+        'data-active'?: string;
+    };
+};
 
 export { renderAvatar }
 
