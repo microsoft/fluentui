@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-calendar-preview",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "private": true,
   "description": "Fluent UI React Calendar components",
   "type": "module",
   "main": "lib-commonjs/index.cjs",
@@ -36,9 +37,12 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "exports": {
     ".": {
