@@ -1,5 +1,7 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import { useAncestorMotionState_unstable } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
@@ -45,6 +47,21 @@ function createElementMock() {
     finishMock,
   };
 }
+
+const MotionStateObserver = React.forwardRef<HTMLDivElement, { onChange: (active: boolean) => void }>((props, ref) => {
+  const motionState = useAncestorMotionState_unstable();
+
+  useIsomorphicLayoutEffect(() => {
+    const notify = () => props.onChange(motionState?.active ?? false);
+    notify();
+    motionState?.listeners.add(notify);
+    return () => {
+      motionState?.listeners.delete(notify);
+    };
+  }, [motionState, props]);
+
+  return <div ref={ref}>MotionStateObserver</div>;
+});
 
 describe('createPresenceComponent', () => {
   let hasAnimation: boolean;
@@ -152,6 +169,24 @@ describe('createPresenceComponent', () => {
         expect(finishMock).toHaveBeenCalledTimes(1);
         expect(onMotionStart).toHaveBeenCalledTimes(1);
         expect(onMotionFinish).toHaveBeenCalledTimes(1);
+      });
+
+      it('publishes active motion until skipped presence motion finishes', () => {
+        const TestPresence = createPresenceComponent(motion);
+        const onChange = jest.fn();
+
+        render(
+          <MotionBehaviourProvider value="skip">
+            <TestPresence appear visible>
+              <MotionStateObserver onChange={onChange} />
+            </TestPresence>
+          </MotionBehaviourProvider>,
+        );
+
+        const transitions = onChange.mock.calls
+          .map(([active]) => active)
+          .filter((active, index, values) => index === 0 || active !== values[index - 1]);
+        expect(transitions).toEqual([false, true, false]);
       });
     });
   });
