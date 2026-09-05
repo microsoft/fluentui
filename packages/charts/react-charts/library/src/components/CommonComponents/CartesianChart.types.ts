@@ -239,11 +239,16 @@ export interface CartesianChartProps {
   tickValues?: number[] | Date[] | string[] | undefined;
 
   /**
-   * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
-   * Please look at https://github.com/d3/d3-time-format for all the formats supported for date axis
-   * Only applicable for date axis. For y-axis format use yAxisTickFormat prop.
+   * Format for x-axis tick labels. Accepts either a d3-format string or a `(value) => string` function.
+   *
+   * String: a d3-time-format specifier for date axes (e.g. `'%m/%d'`) or a d3-format specifier for
+   * numeric axes. See https://github.com/d3/d3-time-format and https://github.com/d3/d3-format.
+   *
+   * Function: formats the tick value directly — useful when a d3-format string is insufficient,
+   * e.g. appending a literal `%` to an already-0–100 axis (d3's `%` type multiplies by 100),
+   * or routing ticks through an app/i18n formatter. For y-axis format use `yAxisTickFormat`.
    */
-  tickFormat?: string;
+  tickFormat?: string | ((value: number | Date) => string);
 
   /**
    * Width of line stroke
@@ -644,7 +649,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    */
   tickParams?: {
     tickValues?: number[] | Date[] | string[];
-    tickFormat?: string;
+    tickFormat?: string | ((value: number | Date) => string);
   };
 
   /**
