@@ -2767,6 +2767,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/flask-ui@workspace:packages/flask-ui":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/flask-ui@workspace:packages/flask-ui"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/fluent2-theme@npm:*, @fluentui/fluent2-theme@npm:^8.107.154, @fluentui/fluent2-theme@workspace:packages/fluent2-theme":
   version: 0.0.0-use.local
   resolution: "@fluentui/fluent2-theme@workspace:packages/fluent2-theme"

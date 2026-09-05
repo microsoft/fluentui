@@ -1,0 +1,11 @@
+{
+  "name": "@fluentui/flask-ui",
+  "version": "0.0.0",
+  "description": "Fluent UI integration points for Flask and Jinja applications",
+  "private": true,
+  "license": "MIT",
+  "files": [
+    "templates",
+    "README.md"
+  ]
+}
