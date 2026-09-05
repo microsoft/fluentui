@@ -22,6 +22,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Toolbar: ['focusgroup'],
   TabList: ['focusgroup'],
   SwatchPicker: ['focusgroup'],
+  Calendar: ['focusgroup'],
 };
 
 const BROWSER_SUPPORT_DOCS_PATH = '?path=/docs/overview-browser-support--docs';
