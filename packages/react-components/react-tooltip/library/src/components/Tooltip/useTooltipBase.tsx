@@ -95,6 +95,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     position: 'above' as const,
     align: 'center' as const,
     offset: 4,
+    hideBoundary: 'scrollParent' as const,
     ...resolvedPositioning,
     onPositioningEnd,
   };
