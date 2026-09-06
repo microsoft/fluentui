@@ -147,6 +147,37 @@ import { Button } from '@fluentui/react-windmod-preview/button';
 why they are as correct over windmod-styled items as over Griffel-styled ones. The cascade win is
 structural: the component's own `display: inline-flex` is layered, and those two rules are unlayered.
 
+## After porting
+
+The delta tables above are the reference; this is the pass to make once the imports are swapped,
+before calling the port done.
+
+**Checklist**
+
+- [ ] `@fluentui/react-tailwind-theme-preview/styles.css` imported once, before the app's own CSS, and
+      `@fluentui/react-windmod-preview/base.css` (or the aggregate `styles.css`) once — [setup.md](setup.md).
+- [ ] Every `FluentProvider` passes a theme **class name**; no Griffel theme object survives (delta 1).
+- [ ] No selector targets `.fui-Button`-style PascalCase classes or `__slot` classes (delta 5); no
+      `useCustomStyleHook_unstable` / `overrides_unstable` call sites remain (delta 4).
+- [ ] Anchored components (`Tooltip`, `Popover`, `InfoButton`, `Combobox`/`Dropdown` listboxes) — the
+      target browsers support CSS anchor positioning, or those components stay on
+      `@fluentui/react-components` (delta 27).
+- [ ] Runtime overrides of spacing tokens are gone or moved to `--base-scale` (delta 11).
+- [ ] Snapshot and computed-style tests updated for the longer `box-shadow` strings (delta 12), the
+      absent `aria-modal` (delta 35), and lower-case class names (delta 5).
+- [ ] Any `transitionend` logic re-checked under reduced motion — every element now fires it (delta 22).
+
+**Self-check matrix** — render the ported surface in each and look, rather than trusting the tables:
+
+| Axis                                 | What to look for                                                              |
+| ------------------------------------ | ----------------------------------------------------------------------------- |
+| web light / web dark                 | tokens moved everywhere; nothing hardcoded shows through                      |
+| `forced-colors: active`              | outlines and system colours where Griffel had them                            |
+| `dir="rtl"`                          | logical alignment (delta 13) and mirrored anchored surfaces                   |
+| `prefers-reduced-motion`             | the global floor (delta 22): everything jumps, Spinner still turns            |
+| a non-16px root font size            | the whole UI rescales together — intended, or reset the root to 16px          |
+| a browser without anchor positioning | anchored surfaces render at the viewport origin — polyfill or keep on Griffel |
+
 ## Mixing the two libraries
 
 - **Griffel container around windmod children** — works.

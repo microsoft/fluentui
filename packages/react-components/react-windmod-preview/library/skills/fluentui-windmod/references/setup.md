@@ -273,6 +273,103 @@ Individual layers are available at `@fluentui/react-tailwind-theme-preview/css/*
 Only `base.css`, `themes/*.css`, `styles.css` and `theme-class-names` are consumable **without** a
 Tailwind toolchain.
 
+### Writing your own CSS Modules against windmod
+
+Everything above covers a global Tailwind entry stylesheet. If you author **CSS Modules** with
+`@apply` — the same shape the library's own components use — three more things have to be true, and
+two of them fail silently when they are not.
+
+**1. Every module needs a `@reference`.** `@apply` and `@variant` resolve against whatever the file
+references; a module that references nothing sees no Fluent tokens and no catalog variants. Compose
+one reference target once and point every module at it — this is exactly what the library does
+internally with `#theme`:
+
+```css
+/* src/theme.css — tokens, generic vocabulary, layer order, then the component-specific catalog */
+@import '@fluentui/react-tailwind-theme-preview/css/index.css';
+@import '@fluentui/react-windmod-preview/variants.css';
+```
+
+```jsonc
+// package.json — a subpath import so the reference is one stable line in every module
+{ "imports": { "#theme": "./src/theme.css" } }
+```
+
+```css
+/* any *.module.css */
+@reference '#theme';
+
+.panel {
+  @apply rounded-medium bg-neutral-background-2 px-horizontal-m;
+}
+```
+
+`@reference` emits nothing — it only makes the vocabulary visible to the compiler. The CSS itself
+still comes from the two stylesheet imports in the setup section.
+
+**2. Named `group/…` and `peer/…` markers must survive CSS Modules.** Tailwind compiles
+`@apply group-disabled/fui-button:line-through` to a selector containing `.group\/fui-button`;
+`postcss-modules` then hashes that class like any other local, and the result is a selector the DOM
+never matches — with no error. The library's own build runs a PostCSS plugin between Tailwind and
+`postcss-modules` that wraps every `.group\/<name>` and `.peer\/<name>` in `:global()`; the order is
+load-bearing (Tailwind must have emitted the marker, and `postcss-modules` must see the wrapper).
+Your pipeline needs the same step. `@accelint/postcss-tailwind-css-modules` does this transform; a
+minimal plugin of your own is a dozen lines:
+
+```js
+// postcss-globalize-markers.js
+const MARKER = /\.((?:group|peer)\\\/[a-zA-Z0-9_-]+)/g;
+module.exports = () => ({
+  postcssPlugin: 'globalize-markers',
+  Rule(rule) {
+    if (rule.selector.includes('\\/')) {
+      rule.selector = rule.selector.replace(MARKER, (m, marker, i) =>
+        rule.selector.slice(Math.max(0, i - 8), i) === ':global(' ? m : `:global(.${marker})`,
+      );
+    }
+  },
+});
+module.exports.postcss = true;
+```
+
+```js
+// postcss.config.js — the order is the point
+module.exports = {
+  plugins: [
+    require('@tailwindcss/postcss')(),
+    require('./postcss-globalize-markers')(),
+    require('postcss-modules')({/* … */}),
+  ],
+};
+```
+
+If you would rather not touch the pipeline, write named-group and peer rules in a **global**
+stylesheet (not a module): unlayered, they win anyway, and nothing hashes them.
+
+**3. Class sorting.** `prettier-plugin-tailwindcss` sorts `@apply` lists and `className` strings, but
+only knows the Fluent utilities and catalog variants if it is pointed at the same reference target:
+
+```js
+// prettier.config.js
+module.exports = {
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './src/theme.css',
+};
+```
+
+Leave `tailwindFunctions` unset if you pass class lists through `clsx`/`cn` in an order that carries
+meaning — the plugin may reorder across arguments.
+
+### Pre-flight, before anything renders
+
+- `@fluentui/react-tailwind-theme-preview/styles.css` imported once, before your own CSS.
+- `@fluentui/react-windmod-preview/base.css` (or the aggregate `styles.css` for CommonJS/SSR) once.
+- A `FluentProvider` above every windmod component.
+- If you run Tailwind: the `fui` layer list declared before `@import 'tailwindcss'`, and both variant
+  catalogs imported.
+- If you write CSS Modules: a `@reference` in every module, the marker-globalizing step between
+  Tailwind and `postcss-modules`, and prettier's `tailwindStylesheet` pointed at the reference target.
+
 ## What the layers are for
 
 ```css

@@ -119,6 +119,16 @@ are registered by the theme rather than generated from Fluent's token set.
 
 Utility form: `px-horizontal-m`, `py-vertical-s`, `border-(length:--spacing-thin)`.
 
+The named steps, at a 16px root (every value rides `--base-scale`; `horizontal-*` and `vertical-*`
+carry the same numbers):
+
+| step   | `none` | `xxs` | `xs` | `s-nudge` | `s` | `m-nudge` | `m` | `l` | `xl` | `xxl` | `xxxl` |
+| ------ | ------ | ----- | ---- | --------- | --- | --------- | --- | --- | ---- | ----- | ------ |
+| pixels | 0      | 2     | 4    | 6         | 8   | 10        | 12  | 16  | 20   | 24    | 32     |
+
+The `-nudge` steps exist for Fluent's own off-grid control paddings; the corpus uses `s`/`m`/`l` for
+almost everything and reaches for a nudge only when matching a Griffel value that sits between them.
+
 A **numeric axis** also exists — `p-12`, `gap-8` — reading as px and computing through `--base-scale`.
 Both forms share the one density knob. Prefer the named Fluent steps; the numeric axis is for values the
 named scale does not carry.

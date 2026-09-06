@@ -111,6 +111,17 @@ Fluent system fails loudly instead of diverging silently.
 **Fix:** use a Fluent token — `text-neutral-foreground-1`, `rounded-medium`, `shadow-16`. See
 [tokens-and-scale.md](tokens-and-scale.md). Structural utilities (flex, grid, positioning) still work.
 
+## "`p-4` is 4px, not 16px" (numeric spacing is smaller than vanilla Tailwind)
+
+**Cause:** the theme sets `--spacing: calc(1px * var(--base-scale))`, so the numeric spacing axis reads
+as **pixels on the density knob** — `p-4` is 4px, `gap-8` is 8px — not vanilla Tailwind's 0.25rem
+steps. Every component is authored against that axis, and it is what keeps `p-12` and
+`px-horizontal-m` on the same knob.
+
+**Fix:** reach for the named Fluent steps first (`px-horizontal-m`, `py-vertical-s`); when you need the
+numeric axis, write the pixel value you mean. See the spacing table in
+[tokens-and-scale.md](tokens-and-scale.md).
+
 ## "Nothing is styled at all"
 
 **Cause 1:** `@fluentui/react-tailwind-theme-preview/styles.css` is not imported. The components' `var()`
