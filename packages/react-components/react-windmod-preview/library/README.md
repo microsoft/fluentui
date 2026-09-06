@@ -14,11 +14,23 @@ text colour and background onto its subtree. No Griffel, no runtime style inject
 > preview: APIs may change without notice, and coverage is limited to the components the headless
 > package ships. Not production-ready.
 
-Using a coding agent? This package ships an [Agent Skill](./skills/fluentui-windmod/SKILL.md) covering
-the override model, the class and `data-*` surface, the variant catalog and the theme classes. It
-travels in the tarball, so it stays in step with the version you installed — point your agent at
-`node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod/SKILL.md`
-([how](./skills/fluentui-windmod/README.md)).
+## Coding agents: the skill ships with the package
+
+This package ships an [Agent Skill](./skills/fluentui-windmod/SKILL.md) covering the override model,
+the class and `data-*` surface, the variant catalog, the theme classes and the density knob. It
+travels in the tarball, so it is always the guidance for the version you installed, and it is
+[TanStack Intent](https://github.com/TanStack/intent)-compatible — the package carries the
+`tanstack-intent` keyword, so opting into Intent is all it takes for the skill to come along with the
+package:
+
+```sh
+npx @tanstack/intent@latest list      # lists @fluentui/react-windmod-preview#fluentui-windmod
+npx @tanstack/intent@latest install   # tells your agent to load local skills before it edits
+```
+
+Not using Intent? Point your agent at
+`node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod/SKILL.md` — the two-line
+recipe is in the [skill's README](./skills/fluentui-windmod/README.md).
 
 Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the family
 map, the parity contract, every deliberate difference, and what is not shipped.

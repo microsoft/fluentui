@@ -10,7 +10,23 @@ conventions used inside the library itself.
 
 ## Installation
 
-The skill ships inside the package. Point your agent at it:
+The skill ships inside the package, under `skills/fluentui-windmod/`, and the package is
+[TanStack Intent](https://github.com/TanStack/intent)-compatible (it carries the `tanstack-intent`
+keyword). Three ways to opt in, in order of preference:
+
+**1. TanStack Intent** — one command, works in every Intent-aware agent, and the skill is discovered
+from `node_modules` on every install and update:
+
+```sh
+npx @tanstack/intent@latest list                                   # shows @fluentui/react-windmod-preview#fluentui-windmod
+npx @tanstack/intent@latest install                                # writes a "load local skills first" block into AGENTS.md / CLAUDE.md / .cursorrules
+npx @tanstack/intent@latest load @fluentui/react-windmod-preview#fluentui-windmod   # what the agent runs before editing
+```
+
+Optional: `npx @tanstack/intent@latest hooks install` adds a session-start skill catalog and an edit
+gate that blocks edits until a skill has been listed or loaded (Claude Code and Codex).
+
+**2. A pointer in your agent config** — no tooling:
 
 ```markdown
 <!-- in CLAUDE.md -->
@@ -19,14 +35,14 @@ When styling Fluent UI components, read
 node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod/SKILL.md first.
 ```
 
-Or link it into your project's skill directory:
+**3. A symlink into your project's skill directory** — native loading, no tooling:
 
 ```sh
 mkdir -p .claude/skills
 ln -s ../../node_modules/@fluentui/react-windmod-preview/skills/fluentui-windmod .claude/skills/fluentui-windmod
 ```
 
-Both routes are opt-in by design. No npm package can install an agent skill into your project
+All three routes are opt-in by design. No npm package can install an agent skill into your project
 automatically, and one that tried would be writing into your agent's configuration without asking.
 Shipping the skill in the tarball buys the thing that matters instead: it is versioned with the code
 it documents, so `npm update` moves the guidance with the API rather than leaving a hand-copied guide
