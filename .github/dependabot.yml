@@ -21,6 +21,8 @@ updates:
           - 'patch'
 
   # npm dependencies - weekly minor and patch updates
+    cooldown:
+      default-days: 7
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
