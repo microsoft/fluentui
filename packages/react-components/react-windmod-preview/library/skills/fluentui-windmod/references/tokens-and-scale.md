@@ -165,6 +165,15 @@ sentinel the browser clamps to half the box — neither meaningfully scales, so 
   it sets the region's `--fui-scale` factor from `data-fui-scale` via typed attr(). Factors are absolute —
   nested regions replace, never compound.
 
+  ```tsx
+  import { ScaleRegion } from '@fluentui/react-windmod-preview/provider';
+
+  <ScaleRegion scale={1.25}>{/* everything inside renders 25% larger: spacing, sizes, radii, type */}</ScaleRegion>;
+  ```
+
+  `scale` is the only prop beyond the `div` attributes it passes through; it renders `display: contents`,
+  so it is not a box in your layout — the nearest `FluentProvider` still is.
+
 A handful of literals stay fixed by design where Griffel is also fixed: stroke widths (borders must not
 thin with layout density) and a few 1px nudges.
 

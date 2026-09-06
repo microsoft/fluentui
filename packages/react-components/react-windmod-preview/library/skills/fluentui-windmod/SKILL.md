@@ -42,8 +42,8 @@ task. Load a reference only on its trigger; each one is self-contained.
   `var(--color-neutral-foreground-1)`; `text-red-500` fails the build. Spacing resolves at compile time;
   colour, typography and stroke stay live `var()` references.
 - **Density is one knob.** `--base-scale` at the document root scales spacing, sizes, radii, shadows
-  and the type ramp together; `ScaleRegion` (from `./provider`) scales a subtree. Leading is arithmetic,
-  not a token: `leading-<n>` is `n/100`, `leading-<a>/<b>` the exact ratio.
+  and the type ramp together; `<ScaleRegion scale={1.25}>` (from `./provider`) scales one subtree.
+  Leading is arithmetic, not a token: `leading-<n>` is `n/100`, `leading-<a>/<b>` the exact ratio.
 
 ## Never
 

@@ -37,6 +37,11 @@ unlayered rule already wins. Reaching for it anyway also outranks the reduced-mo
 (unlayered, selector-less, zero specificity) so it only suppresses animations nothing else already
 overrides.
 
+**When an override is not applying, look before theorising.** DevTools' Styles pane labels every matched
+rule with the layer it landed in and strikes through the loser, so one glance shows whether your rule is
+layered — by your own `@layer`, or by a framework or bundler that wrapped your imported stylesheet in
+one. Unlayer it, or declare your layer after `fui.utilities`. `!important` is never the answer.
+
 ### The declared order
 
 ```css
@@ -49,7 +54,7 @@ overrides.
 - `fui.components.l1` — every component's own base styles (Button, Label, Input; also a composition's
   rules for its own plain elements).
 - `fui.components.l2` — rules overriding another component's `l1` styles (`ToggleButton` over `Button`).
-- `fui.components.l3`+ — rules overriding `l2` rules (deeper compositions).
+- `fui.components.l3+` — rules overriding `l2` rules (deeper compositions).
 - `fui.utilities` (Tailwind's utility layer) beats component styles and still loses to your unlayered
   CSS. If you run Tailwind yourself and want _your_ utilities to beat Fluent's, declare the family before
   importing Tailwind — see [setup.md](setup.md).
