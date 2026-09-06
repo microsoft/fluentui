@@ -346,19 +346,23 @@ module.exports = {
 If you would rather not touch the pipeline, write named-group and peer rules in a **global**
 stylesheet (not a module): unlayered, they win anyway, and nothing hashes them.
 
-**3. Class sorting.** `prettier-plugin-tailwindcss` sorts `@apply` lists and `className` strings, but
-only knows the Fluent utilities and catalog variants if it is pointed at the same reference target:
+**3. Sort classes, and keep one `@apply` per rule.** A Tailwind class sorter rewrites every `@apply`
+list and `className` string into Tailwind's canonical order — the order the compiled CSS actually
+emits — so the source reads the way the cascade resolves, two people write the same list the same
+way, and a duplicated or conflicting utility is visible in review instead of discovered in the
+browser. That guarantee only holds within a single list. Two `@apply` statements in one rule are two
+lists whose relative order is source order: the sorter cannot see across them, so a conflict between
+them is settled by whichever statement comes second while each list is, individually, "correctly"
+sorted — the source now lies about which declaration wins. Hence the library's rule: one `@apply` per
+block position, with any raw declarations beside it as plain lines. Follow it in your own modules and
+the sorter is a safety net; break it and the sorter becomes camouflage.
 
-```js
-// prettier.config.js
-module.exports = {
-  plugins: ['prettier-plugin-tailwindcss'],
-  tailwindStylesheet: './src/theme.css',
-};
-```
-
-Leave `tailwindFunctions` unset if you pass class lists through `clsx`/`cn` in an order that carries
-meaning — the plugin may reorder across arguments.
+Any sorter works — `prettier-plugin-tailwindcss`, oxfmt's Tailwind class sorting, Biome's sorted-classes
+rule — on two conditions. It must be pointed at the **same reference target your modules use**
+(`src/theme.css` above; each tool has a setting for the Tailwind v4 stylesheet), or it will not know
+the Fluent utilities and catalog variants and will leave them unsorted or push them to the end. And
+leave sorting of JavaScript call expressions (`clsx`, `cn`) off if the argument order carries meaning,
+since a sorter may reorder across arguments.
 
 ### Pre-flight, before anything renders
 
@@ -369,7 +373,7 @@ meaning — the plugin may reorder across arguments.
 - If you run Tailwind: the `fui` layer list declared before `@import 'tailwindcss'`, and both variant
   catalogs imported.
 - If you write CSS Modules: a `@reference` in every module, the marker-globalizing step between
-  Tailwind and `postcss-modules`, and prettier's `tailwindStylesheet` pointed at the reference target.
+  Tailwind and `postcss-modules`, a class sorter pointed at the reference target, and one `@apply` per rule.
 
 ## What the layers are for
 
