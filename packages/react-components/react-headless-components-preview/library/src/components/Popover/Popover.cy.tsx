@@ -453,6 +453,7 @@ describe('positioning observer', () => {
           <Tooltip
             hideDelay={0}
             showDelay={0}
+            positioning="after"
             content={{ id: 'tooltip-content', children: 'Open popover for more info' }}
             relationship="label"
           >
@@ -596,3 +597,122 @@ describe('positioning observer', () => {
     });
   }
 });
+
+if (typeof window !== 'undefined' && window.CSS?.supports?.('anchor-name: --x')) {
+  describe('positioning autoSize', () => {
+    const surfaceSelector = popoverContentSelector;
+
+    const TallContent = () => (
+      <div>
+        {Array.from({ length: 60 }, (_, index) => (
+          <div key={index} style={{ height: 20 }}>{`item ${index}`}</div>
+        ))}
+      </div>
+    );
+
+    /** Anchors the trigger `topOffset` px down a 600px-tall viewport. */
+    const Fixture = ({ topOffset, positioning }: { topOffset: number; positioning?: PopoverProps['positioning'] }) => (
+      <div style={{ paddingTop: topOffset }}>
+        <Popover defaultOpen positioning={positioning}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface style={{ boxSizing: 'border-box' }}>
+            <TallContent />
+          </PopoverSurface>
+        </Popover>
+      </div>
+    );
+
+    it('keeps an oversized surface inside the viewport', () => {
+      cy.viewport(1000, 600);
+      mount(<Fixture topOffset={40} positioning={{ position: 'below', autoSize: true }} />);
+
+      cy.get(surfaceSelector).should($surface => {
+        const rect = $surface[0].getBoundingClientRect();
+        expect(rect.top).to.be.at.least(-1);
+        expect(rect.bottom).to.be.at.most(601);
+      });
+    });
+
+    it('settles on the roomier side rather than being shrunk onto the requested one', () => {
+      cy.viewport(1000, 600);
+      mount(<Fixture topOffset={480} positioning={{ position: 'below', autoSize: true }} />);
+
+      cy.get(surfaceSelector).should($surface => {
+        expect($surface[0].getAttribute('data-placement')).to.match(/^above/);
+      });
+      cy.get(surfaceSelector).should($surface => {
+        expect($surface[0].getBoundingClientRect().height).to.be.greaterThan(200);
+      });
+    });
+
+    it('applies the constraint before the surface is first painted', () => {
+      cy.viewport(1000, 600);
+
+      const heights: number[] = [];
+
+      cy.window().then(win => {
+        const observer = new win.ResizeObserver(entries => {
+          entries.forEach(entry => heights.push(entry.contentRect.height));
+        });
+        cy.get('body').then($body => {
+          const target = $body[0];
+          new win.MutationObserver((_records, self) => {
+            const surface = target.querySelector(surfaceSelector);
+            if (surface) {
+              observer.observe(surface);
+              self.disconnect();
+            }
+          }).observe(target, { childList: true, subtree: true });
+        });
+      });
+
+      mount(<Fixture topOffset={40} positioning={{ position: 'below', autoSize: true }} />);
+
+      cy.get(surfaceSelector).should('be.visible');
+      cy.then(() => {
+        heights.forEach(height => expect(height).to.be.lessThan(1200));
+      });
+    });
+
+    it('constrains a surface that covers its target', () => {
+      cy.viewport(1000, 600);
+      mount(<Fixture topOffset={200} positioning={{ position: 'below', coverTarget: true, autoSize: true }} />);
+
+      cy.get(surfaceSelector).should($surface => {
+        expect($surface[0].getBoundingClientRect().bottom).to.be.at.most(601);
+      });
+    });
+
+    it('recalculates when the viewport is resized', () => {
+      cy.viewport(1000, 600);
+      mount(<Fixture topOffset={40} positioning={{ position: 'below', autoSize: true }} />);
+
+      cy.get(surfaceSelector).should('be.visible');
+      cy.viewport(1000, 400);
+
+      cy.get(surfaceSelector).should($surface => {
+        expect($surface[0].getBoundingClientRect().bottom).to.be.at.most(401);
+      });
+    });
+
+    it('recalculates when the anchor scrolls toward a viewport edge', () => {
+      cy.viewport(1000, 600);
+      mount(
+        <div style={{ height: 2000 }}>
+          <Fixture topOffset={400} positioning={{ position: 'below', autoSize: true }} />
+        </div>,
+      );
+
+      cy.get(surfaceSelector).should('be.visible');
+      cy.window().then(win => win.scrollTo(0, 200));
+
+      cy.get(surfaceSelector).should($surface => {
+        const rect = $surface[0].getBoundingClientRect();
+        expect(rect.top).to.be.at.least(-1);
+        expect(rect.bottom).to.be.at.most(601);
+      });
+    });
+  });
+}

@@ -338,3 +338,22 @@
   font-size: 11px;
   color: var(--text-muted);
 }
+
+.surfaceAutoSize {
+  display: block;
+  width: 260px;
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-4);
+  /* Required: max-block-size constrains the content box, and the UA [popover] stylesheet adds a
+     border and padding on top of it. */
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+.autoSizeItem {
+  padding: var(--space-2) 0;
+  border-bottom: var(--stroke-thin) solid var(--border);
+}
