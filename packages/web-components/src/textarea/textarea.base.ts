@@ -61,6 +61,8 @@ export class BaseTextArea extends FASTElement {
    * @internal
    */
   protected controlElChanged() {
+    this.controlEl.spellcheck = this.spellcheck;
+
     this.controlElAttrObserver = new MutationObserver(() => {
       this.setValidity();
     });
@@ -316,7 +318,12 @@ export class BaseTextArea extends FASTElement {
    * @remarks
    * HTML Attribute: `spellcheck`
    */
-  @attr({ mode: 'boolean' })
+  @attr({
+    converter: {
+      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : value),
+      toView: value => (value === null || value === undefined ? null : value.toString()),
+    },
+  })
   public spellcheck = false;
 
   /**
