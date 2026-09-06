@@ -25,6 +25,17 @@ const textFieldRef: IRefObject<ITextField> = (ref: ITextField | null) => {
 
 const noOp = () => undefined;
 
+function setOverflow(element: HTMLElement, scrollWidth: number, clientWidth: number) {
+  Object.defineProperty(element, 'scrollWidth', {
+    configurable: true,
+    value: scrollWidth,
+  });
+  Object.defineProperty(element, 'clientWidth', {
+    configurable: true,
+    value: clientWidth,
+  });
+}
+
 function sharedBeforeEach() {
   resetIds();
   resetControlledWarnings();
@@ -266,6 +277,61 @@ describe('TextField basic props', () => {
     const { getByRole } = render(<TextField readOnly={true} />);
     const input = getByRole('textbox') as HTMLInputElement;
     expect(input.readOnly).toEqual(true);
+  });
+  it('should apply title with the value when disabled and truncated', () => {
+    const value = 'some very long text that should overflow';
+    const { getByRole, rerender } = render(<TextField disabled value={value} onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+
+    setOverflow(input, 200, 100);
+    rerender(<TextField disabled value={value} onChange={noOp} />);
+
+    expect(input.title).toEqual(value);
+  });
+  it('should not apply title when disabled and not truncated', () => {
+    const value = 'short text';
+    const { getByRole, rerender } = render(<TextField disabled value={value} onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+
+    setOverflow(input, 100, 100);
+    rerender(<TextField disabled value={value} onChange={noOp} />);
+
+    expect(input.title).toEqual('');
+  });
+  it('should apply title with the value when readOnly and truncated', () => {
+    const value = 'some very long text that should overflow';
+    const { getByRole, rerender } = render(<TextField readOnly value={value} onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+
+    setOverflow(input, 200, 100);
+    rerender(<TextField readOnly value={value} onChange={noOp} />);
+
+    expect(input.title).toEqual(value);
+  });
+  it('should not apply title when readOnly and not truncated', () => {
+    const value = 'short text';
+    const { getByRole, rerender } = render(<TextField readOnly value={value} onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+
+    setOverflow(input, 100, 100);
+    rerender(<TextField readOnly value={value} onChange={noOp} />);
+
+    expect(input.title).toEqual('');
+  });
+  it('should not auto-apply title for multiline fields', () => {
+    const value = 'some very long text that should overflow';
+    const { getByRole } = render(<TextField multiline value={value} onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLTextAreaElement;
+
+    setOverflow(input, 200, 100);
+
+    expect(input.title).toEqual('');
+  });
+  it('should preserve an explicitly provided title prop', () => {
+    const { getByRole } = render(<TextField multiline title="custom title" value="value" onChange={noOp} />);
+    const input = getByRole('textbox') as HTMLTextAreaElement;
+
+    expect(input.title).toEqual('custom title');
   });
   it('can render description text', () => {
     const testDescription = 'A custom description';

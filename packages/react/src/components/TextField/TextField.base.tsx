@@ -133,6 +133,7 @@ export class TextFieldBase
 
   public componentDidMount(): void {
     this._adjustInputHeight();
+    this._updateTitleAttribute();
 
     if (this.props.validateOnLoad) {
       this._validate(this.value);
@@ -196,6 +197,8 @@ export class TextFieldBase
         this._delayedValidate(value);
       }
     }
+
+    this._updateTitleAttribute();
   }
 
   public render(): JSXElement {
@@ -654,6 +657,38 @@ export class TextFieldBase
         this.props.scrollContainerRef!.current!.scrollTop = scrollTop;
       }
     }
+  }
+
+  private _updateTitleAttribute(): void {
+    const textElement = this._textElement.current;
+    const value = this.value;
+    const providedTitle = this.props.title;
+
+    if (!textElement) {
+      return;
+    }
+
+    // Always honor an explicitly provided title prop.
+    if (providedTitle !== undefined) {
+      textElement.title = providedTitle;
+      return;
+    }
+
+    if (
+      this.props.multiline ||
+      (!this.props.disabled && !this.props.readOnly) ||
+      !value ||
+      !this._isTextElementOverflowing(textElement)
+    ) {
+      textElement.removeAttribute('title');
+      return;
+    }
+
+    textElement.title = value;
+  }
+
+  private _isTextElementOverflowing(textElement: HTMLTextAreaElement | HTMLInputElement): boolean {
+    return textElement.scrollWidth > textElement.clientWidth;
   }
 }
 
