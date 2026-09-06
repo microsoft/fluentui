@@ -3253,6 +3253,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/postcss-tailwind-css-modules@npm:*, @fluentui/postcss-tailwind-css-modules@workspace:packages/react-components/postcss-tailwind-css-modules":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/postcss-tailwind-css-modules@workspace:packages/react-components/postcss-tailwind-css-modules"
+  peerDependencies:
+    postcss: ^8.4.0
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/pr-deploy-site@workspace:apps/pr-deploy-site":
   version: 0.0.0-use.local
   resolution: "@fluentui/pr-deploy-site@workspace:apps/pr-deploy-site"
@@ -6361,6 +6369,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-storybook@workspace:scripts/storybook"
   dependencies:
+    "@fluentui/postcss-tailwind-css-modules": "npm:*"
     "@fluentui/scripts-monorepo": "npm:*"
   languageName: unknown
   linkType: soft
@@ -6838,6 +6847,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/workspace-plugin@workspace:tools/workspace-plugin"
   dependencies:
+    "@fluentui/postcss-tailwind-css-modules": "npm:*"
     "@nx/devkit": "npm:~20.8.1"
   languageName: unknown
   linkType: soft

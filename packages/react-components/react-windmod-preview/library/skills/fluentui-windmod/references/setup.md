@@ -310,38 +310,32 @@ still comes from the two stylesheet imports in the setup section.
 **2. Named `group/…` and `peer/…` markers must survive CSS Modules.** Tailwind compiles
 `@apply group-disabled/fui-button:line-through` to a selector containing `.group\/fui-button`;
 `postcss-modules` then hashes that class like any other local, and the result is a selector the DOM
-never matches — with no error. The library's own build runs a PostCSS plugin between Tailwind and
-`postcss-modules` that wraps every `.group\/<name>` and `.peer\/<name>` in `:global()`; the order is
-load-bearing (Tailwind must have emitted the marker, and `postcss-modules` must see the wrapper).
-Your pipeline needs the same step. `@accelint/postcss-tailwind-css-modules` does this transform; a
-minimal plugin of your own is a dozen lines:
+never matches — with no error. The library's own build runs `@fluentui/postcss-tailwind-css-modules`
+between Tailwind and `postcss-modules`, which wraps every `.group\/<name>` and `.peer\/<name>` in
+`:global()`; the order is load-bearing (Tailwind must have emitted the marker, and `postcss-modules`
+must see the wrapper). Your pipeline needs the same step:
 
-```js
-// postcss-globalize-markers.js
-const MARKER = /\.((?:group|peer)\\\/[a-zA-Z0-9_-]+)/g;
-module.exports = () => ({
-  postcssPlugin: 'globalize-markers',
-  Rule(rule) {
-    if (rule.selector.includes('\\/')) {
-      rule.selector = rule.selector.replace(MARKER, (m, marker, i) =>
-        rule.selector.slice(Math.max(0, i - 8), i) === ':global(' ? m : `:global(.${marker})`,
-      );
-    }
-  },
-});
-module.exports.postcss = true;
+```sh
+npm install --save-dev @fluentui/postcss-tailwind-css-modules
 ```
 
 ```js
 // postcss.config.js — the order is the point
 module.exports = {
-  plugins: [
-    require('@tailwindcss/postcss')(),
-    require('./postcss-globalize-markers')(),
-    require('postcss-modules')({/* … */}),
-  ],
+  plugins: {
+    '@tailwindcss/postcss': {},
+    '@fluentui/postcss-tailwind-css-modules': {},
+    'postcss-modules': {/* … */},
+  },
 };
 ```
+
+If you use Vite, use Tailwind's Vite plugin instead of `@tailwindcss/postcss`, so `postcss.config.js`
+contains only `@fluentui/postcss-tailwind-css-modules` (object syntax — the array form does not work
+with Vite).
+
+`@accelint/postcss-tailwind-css-modules` is an equivalent third-party plugin performing the same
+transform.
 
 If you would rather not touch the pipeline, write named-group and peer rules in a **global**
 stylesheet (not a module): unlayered, they win anyway, and nothing hashes them.

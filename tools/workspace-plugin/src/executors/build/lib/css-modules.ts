@@ -107,12 +107,16 @@ const cssModulesIdent: {
 
 /**
  * `:global()`-wraps Tailwind's `group/…` / `peer/…` markers so CSS Modules cannot hash them.
- * BLOCKING prerequisite for named groups — see that file's header.
+ * BLOCKING prerequisite for named groups — see @fluentui/postcss-tailwind-css-modules's README.
+ *
+ * No `include` is passed: this call always compiles a real `*.module.css` source file with
+ * `from: absolutePath` set (see the `postcss(...).process()` call below), so the plugin's
+ * default `/\.module\.css$/` filter already matches every rule this executor ever feeds it.
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const globalizeGroupMarkers: (options?: {
   onRewrite?: (info: { from: string; to: string; count: number }) => void;
-}) => AcceptedPlugin = require('../../../../../../scripts/css-modules/globalize-group-markers.js');
+}) => AcceptedPlugin = require('@fluentui/postcss-tailwind-css-modules');
 
 import { type NormalizedOptions } from './shared';
 
@@ -450,8 +454,8 @@ function assertGroupMarkersSurvived(relativePath: string, classMap: Record<strin
   if (leaked.length > 0) {
     throw new Error(
       `${relativePath}: Tailwind group/peer markers were scoped by CSS Modules (${leaked.join(', ')}). ` +
-        'The fui-globalize-group-markers PostCSS plugin must run between tailwindcss() and postcssModules() — ' +
-        'see scripts/css-modules/globalize-group-markers.js.',
+        'The @fluentui/postcss-tailwind-css-modules PostCSS plugin must run between tailwindcss() and ' +
+        'postcssModules() — see packages/react-components/postcss-tailwind-css-modules.',
     );
   }
 }

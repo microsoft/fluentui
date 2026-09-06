@@ -2,10 +2,9 @@ const path = require('path');
 
 /**
  * Shared with the package build (`postcss-modules` `generateScopedName`) and with jest — one
- * scheme, three pipelines. Required by relative path for the reasons in that file's header
- * (it must stay free of workspace requires).
+ * scheme, three pipelines.
  */
-const globalizeGroupMarkers = require('../../css-modules/globalize-group-markers');
+const globalizeGroupMarkers = require('@fluentui/postcss-tailwind-css-modules');
 const { getLocalIdent } = require('../../css-modules/ident');
 
 /**
@@ -89,7 +88,7 @@ const tailwindPostcssLoader = {
          *
          * Without it css-loader hashes the marker and every named-group rule compiles to a
          * selector the DOM never matches — silently, with VR still green. See
-         * scripts/css-modules/globalize-group-markers.js.
+         * @fluentui/postcss-tailwind-css-modules.
          */
         globalizeGroupMarkers(),
       ],

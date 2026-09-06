@@ -5,5 +5,8 @@
   "main": "src/index.js",
   "dependencies": {
     "@fluentui/scripts-monorepo": "*"
+  },
+  "devDependencies": {
+    "@fluentui/postcss-tailwind-css-modules": "*"
   }
 }
