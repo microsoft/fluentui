@@ -72,8 +72,10 @@ npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-previ
 ```
 
 ```js
-// Once per document, before your own CSS: tokens, theme classes, and the fui.* layer order …
-import '@fluentui/react-tailwind-theme-preview/styles.css';
+// Once per document, before your own CSS: the theme-less base (tokens, layer order, preflight) …
+import '@fluentui/react-tailwind-theme-preview/base.css';
+// … one file per theme you ship — there is no default …
+import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
 // … then windmod's root sheet. Component CSS arrives per component with each family import.
 import '@fluentui/react-windmod-preview/base.css';
 ```

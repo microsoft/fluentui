@@ -362,7 +362,8 @@ meaning — the plugin may reorder across arguments.
 
 ### Pre-flight, before anything renders
 
-- `@fluentui/react-tailwind-theme-preview/styles.css` imported once, before your own CSS.
+- `@fluentui/react-tailwind-theme-preview/base.css` plus one `themes/<name>.css` per theme you ship
+  (or the all-seven `styles.css`), once, before your own CSS.
 - `@fluentui/react-windmod-preview/base.css` (or the aggregate `styles.css` for CommonJS/SSR) once.
 - A `FluentProvider` above every windmod component.
 - If you run Tailwind: the `fui` layer list declared before `@import 'tailwindcss'`, and both variant
