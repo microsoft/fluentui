@@ -56,7 +56,7 @@ export const Filtering = (): JSXElement => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions} disableAutoFocus={disableAutoFocus}>
         <TagPickerControl>
-          <TagPickerGroup aria-label="Selected Employees">
+          <TagPickerGroup aria-roledescription="List" aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
