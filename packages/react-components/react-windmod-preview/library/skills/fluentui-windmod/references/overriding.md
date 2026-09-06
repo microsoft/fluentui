@@ -31,6 +31,12 @@ This is the whole story for most overrides. The corollary is the one thing to re
 }
 ```
 
+**Never reach for `!important` to beat a component style, either.** There is nothing to beat — your
+unlayered rule already wins. Reaching for it anyway also outranks the reduced-motion floor (see
+[Overriding motion](#overriding-motion)), which you do not want: that floor is deliberately weak
+(unlayered, selector-less, zero specificity) so it only suppresses animations nothing else already
+overrides.
+
 ### The declared order
 
 ```css
@@ -38,9 +44,15 @@ This is the whole story for most overrides. The corollary is the one thing to re
   fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 ```
 
-`fui.utilities` (Tailwind's utility layer) beats component styles and still loses to your unlayered
-CSS. If you run Tailwind yourself and want _your_ utilities to beat Fluent's, declare the family before
-importing Tailwind — see [setup.md](setup.md).
+- `fui.base` — opens with Tailwind's preflight, then the theme's element resets; every component rule
+  outranks both.
+- `fui.components.l1` — every component's own base styles (Button, Label, Input; also a composition's
+  rules for its own plain elements).
+- `fui.components.l2` — rules overriding another component's `l1` styles (`ToggleButton` over `Button`).
+- `fui.components.l3`+ — rules overriding `l2` rules (deeper compositions).
+- `fui.utilities` (Tailwind's utility layer) beats component styles and still loses to your unlayered
+  CSS. If you run Tailwind yourself and want _your_ utilities to beat Fluent's, declare the family before
+  importing Tailwind — see [setup.md](setup.md).
 
 Use a `fui.components.l4` / `l5` layer deliberately only when you want your override to lose to your
 own unlayered CSS — app-global defaults that a page-level rule should still be able to beat.
@@ -87,6 +99,11 @@ Selecting on published state is safe and stable:
 
 Presence attributes select **bare** — `[data-open]`, never `[data-open='true']`. Enumerated attributes
 select on their value.
+
+Component roots publish their look props and state as data attributes. `Button`, for example, stamps
+`data-appearance`, `data-size` and `data-empty` from its styles hook, on top of the
+`data-disabled` / `data-disabled-focusable` / `data-icon-only` / `data-icon-position` the headless hook
+already stamps.
 
 ## Route 2: slot `className`
 
@@ -162,6 +179,10 @@ stable target.
 document.querySelectorAll('.fui-button'); // ✅
 document.querySelectorAll('.' + buttonClassNames.root); // ❌ invalid selector
 ```
+
+Every class-name record exposes **one public key**, almost always `root`. The single exception is
+`avatarGroupPopoverClassNames`, whose key is `triggerButton` — that component renders no root element of
+its own.
 
 ## Escape hatches that do not exist
 

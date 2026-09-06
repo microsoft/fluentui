@@ -69,8 +69,8 @@ Make the icon strike through when the button is disabled
 
 ## What's Included
 
-- **SKILL.md** — the rules: prohibitions, decision tests, the override model, the public class surface,
-  and the reference loading map
+- **SKILL.md** — the map, kept small so it is cheap to load on every trigger: the model in six
+  lines, the never-list, minimal setup, and the table of which reference to load for which task
 - **references/**
   - `setup.md` — install, the two stylesheets, the provider, Tailwind wiring
   - `overriding.md` — the three override routes, what not to target, motion overrides

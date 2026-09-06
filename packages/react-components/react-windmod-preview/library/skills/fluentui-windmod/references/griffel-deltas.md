@@ -14,8 +14,10 @@ Start here, because it is most of the surface:
 - **The props** — the headless props plus the same look props Griffel takes (`appearance`, `shape`,
   `size`, `orientation`, …) with the same defaults.
 - **The pixels**, at a 16px root font size. Rest-state rendering is byte-identical across the shipped
-  matrix, including forced-colors rules, RTL and the icon glyph swaps, verified at a strict-zero pixel
-  threshold.
+  matrix, including forced-colors rules, RTL and the icon glyph swaps, verified per component against
+  the Griffel twin with pixelmatch at a strict-zero threshold — zero non-antialiasing differences, with
+  the matcher's antialiasing classifier absorbing sub-perceptual rasterization noise — and computed-style
+  parity passes catching what pixel counting cannot.
 - **Slot `className` merging** — your class lands last on every slot.
 - **Context behaviour** — components read their own contexts the way Griffel's do (`ButtonContext`,
   `LinkContext`, `AvatarContext`, `FieldContext`, …).

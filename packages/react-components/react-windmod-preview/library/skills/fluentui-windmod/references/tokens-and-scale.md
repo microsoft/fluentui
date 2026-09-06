@@ -95,6 +95,9 @@ custom property and nothing to look up.
   (`line-height: 1`) and still compiles — nothing in this package's setup suppresses it — but it
   reads as "no line-height" rather than "ratio 1", so this corpus never authors it. Use
   `leading-100`.
+- **Never author a `leading-*` without a `text-*` on the same element.** The ratio compiles straight
+  into `line-height`; authored alone it multiplies whatever font-size inheritance delivers instead of
+  the size you intended. The one exemption is `leading-0`.
 
 A leading value is a **unitless ratio**, so it is not a length: it multiplies the element's own
 font-size, descendants inherit the ratio rather than a px box, and a JS read wanting a length must
@@ -182,6 +185,19 @@ For density, use `--base-scale` at the document root. For a one-off, set the pro
 on your own unlayered class.
 
 ## Custom themes
+
+Seven themes ship as class names, plus a record and a type:
+
+```tsx
+import { themeClassNames, type ThemeClassName } from '@fluentui/react-windmod-preview/provider';
+
+export const pickTheme = (dark: boolean): ThemeClassName =>
+  dark ? themeClassNames.webDarkTheme : themeClassNames.webLightTheme;
+```
+
+`webLightThemeClassName`, `webDarkThemeClassName`, `teamsLightThemeClassName`,
+`teamsDarkThemeClassName`, `teamsHighContrastThemeClassName`, `teamsLightV21ThemeClassName`,
+`teamsDarkV21ThemeClassName`.
 
 A theme is a CSS class that redeclares token custom properties. `FluentProvider`'s `theme` accepts any
 string:
