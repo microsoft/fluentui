@@ -4,7 +4,6 @@
  * in :global() BEFORE postcss-modules runs, so the marker class survives as authored
  * instead of being hashed — a hashed marker compiles to a selector the DOM never matches,
  * with no error. Must run between tailwindcss() and postcssModules() in every pipeline.
- * Prior art: @accelint/postcss-tailwind-css-modules does the same transform.
  */
 
 /**

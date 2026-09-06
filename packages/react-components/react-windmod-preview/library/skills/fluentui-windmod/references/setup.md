@@ -334,9 +334,6 @@ If you use Vite, use Tailwind's Vite plugin instead of `@tailwindcss/postcss`, s
 contains only `@fluentui/postcss-tailwind-css-modules` (object syntax — the array form does not work
 with Vite).
 
-`@accelint/postcss-tailwind-css-modules` is an equivalent third-party plugin performing the same
-transform.
-
 If you would rather not touch the pipeline, write named-group and peer rules in a **global**
 stylesheet (not a module): unlayered, they win anyway, and nothing hashes them.
 

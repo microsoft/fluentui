@@ -86,7 +86,3 @@ interface Options {
 - When no `from` is given to `postcss.process(css)`, `source.input.file` is `undefined`, and the
   default filter treats that as **not matching** — pass `from`, or pass `include: true`, to opt
   in.
-
-## Prior art
-
-`@accelint/postcss-tailwind-css-modules` performs the same transform.
