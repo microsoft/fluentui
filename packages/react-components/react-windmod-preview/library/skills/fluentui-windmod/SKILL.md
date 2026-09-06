@@ -7,6 +7,13 @@ metadata:
   version: '0.1.0'
   library: '@fluentui/react-windmod-preview'
   library_version: '0.1.0'
+  type: core
+sources:
+  - 'microsoft/fluentui:packages/react-components/react-windmod-preview/library/MIGRATION.md'
+  - 'microsoft/fluentui:packages/react-components/react-windmod-preview/library/src/variants.css'
+  - 'microsoft/fluentui:packages/react-components/react-windmod-preview/library/src/components/*/*.module.css'
+  - 'microsoft/fluentui:packages/react-components/react-tailwind-theme-preview/css/*.css'
+  - 'microsoft/fluentui:packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js'
 ---
 
 # Fluent windmod
@@ -107,19 +114,6 @@ Two audiences, one skill:
   the Griffel ones they replace — the whole UI scales, not just the type. Keep the root at 16px to
   stay pixel-aligned with Griffel, or accept the coherent rescale deliberately.
 
-### Setup
-
-- **Is `@fluentui/react-tailwind-theme-preview/styles.css` imported, once, before my own CSS?**
-  Nothing renders correctly without it, and its position fixes how any layers of _yours_ sort against
-  `fui.*`. It does not affect an unlayered rule, which wins either way.
-- **Is `@fluentui/react-windmod-preview/base.css` loaded once, ahead of everything else?** Component
-  CSS ships per component and every chunk assumes this root sheet (the layer order and the
-  `@property` registrations). Directly, or `@import`ed at the top of the app's own root stylesheet —
-  both work.
-- **Is this a CommonJS or SSR build?** Then import `@fluentui/react-windmod-preview/styles.css`
-  instead — it bundles the root sheet and every component into one file. Only ESM gets the
-  per-component chunks as a side effect.
-
 ## Setup Requirements
 
 **CRITICAL: two root stylesheets and one provider. Missing any of them produces symptoms that read
@@ -142,17 +136,9 @@ import '@fluentui/react-tailwind-theme-preview/styles.css';
 import '@fluentui/react-windmod-preview/base.css';
 ```
 
-If the app has its own root stylesheet, `@import` both at the TOP of it instead — that sheet loads
-first, so ours transitively precedes everything:
-
-```css
-@import '@fluentui/react-tailwind-theme-preview/styles.css';
-@import '@fluentui/react-windmod-preview/base.css';
-```
-
-For CommonJS/SSR, or any time one file is simpler, swap `base.css` for
-`@fluentui/react-windmod-preview/styles.css` — the aggregate carrying the root sheet plus all 133
-components.
+Or `@import` both at the top of the app's own root stylesheet — it loads first, so ours transitively
+precede everything. CommonJS and SSR builds, or anyone who prefers one file, swap `base.css` for
+`@fluentui/react-windmod-preview/styles.css`: the root sheet plus all 133 components in one aggregate.
 
 ```tsx
 import { Button } from '@fluentui/react-windmod-preview/button';
@@ -168,13 +154,10 @@ export const App = () => (
 );
 ```
 
-**Why the order matters.** The theme stylesheet declares the cascade-layer family, and layer order is
-first-appearance. It is load-bearing for exactly two things: nothing resolves without the theme sheet,
-because the components' `var()` references have nothing to read; and if _you_ declare layers of your
-own, whichever sheet appeared first fixes their order against `fui.*`. It does **not** decide whether a
-plain unlayered rule of yours wins. Unlayered author CSS outranks every layer in the author origin no
-matter which sheet loaded first, so an override that is genuinely unlayered cannot be broken by import
-order.
+**Why the order matters.** Layer order is first-appearance, and the theme sheet declares the `fui.*`
+family — so nothing resolves without it, and if _you_ declare layers, whichever sheet came first fixes
+their order against `fui.*`. It does **not** decide whether a plain unlayered rule of yours wins;
+unlayered author CSS outranks every layer no matter which sheet loaded first.
 
 **`FluentProvider` is a real element and it paints.** It renders a `div` carrying base typography, text
 colour and `background-color: var(--color-neutral-background-1)`. If you wrap children in a provider
@@ -432,96 +415,39 @@ in a `FluentProvider` to control it.
 
 ## Imports and subpaths
 
-**There is no root barrel** — `@fluentui/react-windmod-preview` exports nothing. Every component comes
-from its **family** subpath, and the families are the ones
-`@fluentui/react-headless-components-preview` already uses, so the two layers have the same shape. A
-family is one kebab-case subpath exporting every part of that family:
-
-```tsx
-import { Button } from '@fluentui/react-windmod-preview/button';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-windmod-preview/card';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-windmod-preview/menu';
-```
-
-Rules of thumb when writing an import:
-
-- Look up the family, not the component. `CardHeader` → `./card`. `MenuItem` → `./menu`. `Tab` →
-  `./tab-list`. `Radio` → `./radio-group`. `Option` and `Listbox` → `./combobox`. `InfoButton` →
-  `./info-label`. `ColorArea`, `ColorSlider` and `AlphaSlider` → `./color-picker`. `ColorSwatch`,
-  `EmptySwatch` and `ImageSwatch` → `./swatch-picker`. `InlineDrawer` and `OverlayDrawer` → `./drawer`.
-  `NavDrawer` and its parts → `./nav`. `Toaster` → `./toast`.
-- `FluentProvider` is at **`./provider`** (headless's name for the family), together with the seven
-  theme class-name constants, the `themeClassNames` record and the `ThemeClassName` type.
-- One family, one import line, however many parts you use.
-
-Family JS still tree-shakes — unused siblings' code is dropped. Family **CSS** comes along, because each
-class map side-effect-imports its own chunk and the barrel keeps the family's chunks reachable. That is
-the deliberate trade: the styling cost is bounded by the family you reached for, not by the suite.
-
-Subpaths exporting no component: `./positioning` (the headless positioning primitives, re-exported) and
-`./use-css-var-value`. Non-JavaScript subpaths: `./base.css`, `./styles.css`, `./css/*`, `./variants.css`.
+**There is no root barrel.** Every component comes from its kebab-case **family** subpath — the same
+families `@fluentui/react-headless-components-preview` uses — and one family import line carries every
+part (`CardHeader` → `./card`, `MenuItem` → `./menu`, `Tab` → `./tab-list`, `Radio` → `./radio-group`,
+`FluentProvider` and the theme class names → `./provider`). The full family map, the no-component
+subpaths (`./positioning`, `./use-css-var-value`) and the CSS subpaths are in
+[references/setup.md](references/setup.md).
 
 ## Reading token values in JavaScript
 
-When a token's resolved value is needed at runtime — canvas, measurement, theming a third-party widget:
-
-```tsx
-import { useCssVarValue } from '@fluentui/react-windmod-preview/use-css-var-value';
-
-const ref = React.useRef<HTMLDivElement>(null);
-const fg = useCssVarValue('--color-neutral-foreground-1', ref, { fallback: '#242424' });
-const { bg, radius } = useCssVarValue({ bg: '--color-neutral-background-1', radius: '--border-radius-medium' }, ref);
-```
-
-The read happens at the element's DOM position, so cascade, inheritance and theme scoping all apply.
-Values are cached and re-read on invalidation. `invalidateCssVars()` from the same subpath is the
-escape hatch for changes the observers cannot see. Details in
+`useCssVarValue` from `./use-css-var-value` reads a token at an element's DOM position, so cascade,
+inheritance and theme scoping apply; `invalidateCssVars()` is the escape hatch. The API, the cache
+rules, and which token families read back as literals versus unevaluated `calc()` strings are in
 [references/css-var-values.md](references/css-var-values.md).
 
 ## Common Issues
 
-### Issue: my override is not applying
-
-**Cause 1:** the override is inside an `@layer`. Layered CSS loses to unlayered CSS, and it loses to
-`fui.utilities` too if the layer was declared earlier.
-
-**Fix:** take it out of the layer.
-
-**Cause 2:** the rule is layered without your having written `@layer` around it. `@layer components { … }`
-is ordinary Tailwind idiom, and some frameworks and bundler CSS pipelines wrap imported global
-stylesheets in a layer of their own. This is Cause 1 with nothing to see in your file, which is why it
-outlives the first fix.
-
-**Fix:** look before theorising. DevTools' Styles pane labels each rule with the layer it landed in and
-strikes through whatever lost, so one glance tells you which cause you actually have. Then unlayer the
-rule, or move your layer after `fui.utilities` in the declaration.
-
-**Cause 3:** the selector targets a hashed ident or a Griffel-era class name (`.fui-Button`,
-`.fui-Button__icon`).
-
-**Fix:** target `.fui-button` and reach internals through group variants and `data-*`.
-
-### Issue: `document.querySelector` throws on a class-name constant
-
-**Cause:** `xClassNames.root` is a space-separated pair, not a single class.
-
-**Fix:** query `.fui-<component>` directly. Use the constant only in `className`.
-
-### The rest, in one line each
-
-Symptom, cause, and where the worked answer is. Every one of these is written out in
+Symptom, cause, and fix in one line each. Every one is written out in
 [references/troubleshooting.md](references/troubleshooting.md), which also covers the symptoms that only
-show up in tests.
+show up in tests. The first row is the one that dominates: an override that "is not applying" is almost
+always layered — by your own `@layer`, or by a framework or bundler wrapping imported stylesheets in one —
+and DevTools' Styles pane shows which, labelling each rule with its layer and striking through the loser.
 
-| Symptom                                        | Cause                                                                                              | Fix                                                                                                                                |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| a `group-…/fui-x` class does nothing           | the name is in neither catalog, or your Tailwind build was never given the catalogs                | `@import` both catalogs — [setup.md](references/setup.md)                                                                          |
-| everything is the wrong size                   | a non-16px root font size; `--base-scale` rides `calc(1rem / 16px)` and the whole UI follows it    | keep `html { font-size: 16px }`, or accept the rescale — never patch it on a provider (scaling one subtree is `ScaleRegion`'s job) |
-| overriding a spacing token changes nothing     | Tailwind's `--spacing-*` resolves at compile time, so there is no live `var()` to move             | use `--base-scale` for density, or set the property directly                                                                       |
-| `Tooltip`/`Popover` renders in the page corner | no CSS anchor positioning in that engine, and no fallback anywhere in the positioning layer        | polyfill it, or keep those two on `@fluentui/react-components`                                                                     |
-| an animation stopped working                   | the theme's global `prefers-reduced-motion` floor — unlayered, 1ms, `animation-iteration-count: 1` | it is selector-less, so any rule of yours with a class already outranks it                                                         |
-| a Tailwind class fails the build               | the theme sets Tailwind's own palette, ramp, radii and shadows to `initial`, deliberately          | use a Fluent token — [tokens-and-scale.md](references/tokens-and-scale.md)                                                         |
-| a snapshot broke after migrating               | computed `box-shadow` strings, `aria-modal`, lower-case class names                                | [griffel-deltas.md](references/griffel-deltas.md)                                                                                  |
+| Symptom                                         | Cause                                                                                              | Fix                                                                                                                                |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| my override is not applying                     | the rule is inside an `@layer` (yours, or one a framework/bundler wrapped around your stylesheet)  | look in DevTools first; unlayer the rule, or declare your layer after `fui.utilities`                                              |
+| `querySelector` throws on a class-name constant | `xClassNames.root` is the pair `"fui-button group/fui-button"`, not one class                      | query `.fui-<component>`; use the constant only in `className`                                                                     |
+| a `group-…/fui-x` class does nothing            | the name is in neither catalog, or your Tailwind build was never given the catalogs                | `@import` both catalogs — [setup.md](references/setup.md)                                                                          |
+| everything is the wrong size                    | a non-16px root font size; `--base-scale` rides `calc(1rem / 16px)` and the whole UI follows it    | keep `html { font-size: 16px }`, or accept the rescale — never patch it on a provider (scaling one subtree is `ScaleRegion`'s job) |
+| overriding a spacing token changes nothing      | Tailwind's `--spacing-*` resolves at compile time, so there is no live `var()` to move             | use `--base-scale` for density, or set the property directly                                                                       |
+| `Tooltip`/`Popover` renders in the page corner  | no CSS anchor positioning in that engine, and no fallback anywhere in the positioning layer        | polyfill it, or keep those two on `@fluentui/react-components`                                                                     |
+| an animation stopped working                    | the theme's global `prefers-reduced-motion` floor — unlayered, 1ms, `animation-iteration-count: 1` | it is selector-less, so any rule of yours with a class already outranks it                                                         |
+| a Tailwind class fails the build                | the theme sets Tailwind's own palette, ramp, radii and shadows to `initial`, deliberately          | use a Fluent token — [tokens-and-scale.md](references/tokens-and-scale.md)                                                         |
+| a snapshot broke after migrating                | computed `box-shadow` strings, `aria-modal`, lower-case class names                                | [griffel-deltas.md](references/griffel-deltas.md)                                                                                  |
 
 ## Important Notes
 
