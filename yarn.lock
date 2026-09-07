@@ -5619,7 +5619,7 @@ __metadata:
   dependencies:
     "@fluentui/react-aria": "npm:^9.17.14"
     "@fluentui/react-button": "npm:^9.11.0"
-    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-icons": "npm:^2.0.339"
     "@fluentui/react-label": "npm:^9.4.4"
     "@fluentui/react-link": "npm:^9.8.4"
     "@fluentui/react-menu": "npm:^9.25.4"
