@@ -239,7 +239,7 @@ Day rows use semantic `tr`, weekday and week-number headers use `th`, and dates 
 Calendar Preview preserves the main date-selection concepts but is not a drop-in replacement.
 
 - Replace v8 styling props (`styles`, `theme`, class-name maps) with v9 slot props, `className`, and Griffel styling.
-- Update `onSelectDate` to the v9 event/data callback shape: `(event, { date, selectedDateRangeArray })`.
+- Update `onSelectDate` to the v9 event/data callback shape: `(event, { date, selectedDateRange })`.
 - Replace string resources and date-format callbacks with `formatLabel` and `formatDateTime`. Prefer `createCalendarLabelFormatter` and `createCalendarDateTimeFormatter` for partial label overrides and locale-aware formatting.
 - Configure child-only behavior through the `dayPicker` and `monthPicker` slots.
 - Replace `componentRef`/`ICalendar` usage with normal React refs and application-owned focus or popup behavior. Calendar's root ref is an `HTMLDivElement`; child picker handles expose their own focus methods.

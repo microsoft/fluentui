@@ -71,8 +71,8 @@ const useGoTodayButtonStyles = makeStyles({
     minWidth: 'auto',
     height: '30px',
     lineHeight: '30px',
-    marginRight: '16px',
-    marginTop: '3px',
+    marginInlineEnd: '16px',
+    marginBlockStart: '3px',
     overflow: 'visible',
     padding: '0 4px',
 

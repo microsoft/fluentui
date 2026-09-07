@@ -70,11 +70,11 @@ function useDateState({ onSelectDate, today, value }: Pick<CalendarProps, 'onSel
 
   // Stable identity: this is published on the calendar context, which would otherwise change every render.
   const onDateSelected = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarDaySelectData) => {
-    const { date, selectedDateRangeArray } = data;
+    const { date, selectedDateRange } = data;
     setNavigatedMonth(date);
     setNavigatedDay(date);
     setSelectedDate(date);
-    onSelectDate?.(ev, { ...data, date, selectedDateRangeArray });
+    onSelectDate?.(ev, { ...data, date, selectedDateRange });
   });
 
   return [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] as const;
@@ -217,7 +217,7 @@ export const useCalendarBase_unstable = (
       }
 
       if (monthPickerOnly) {
-        onDateSelected(ev, { ...data, date, selectedDateRangeArray: [date] });
+        onDateSelected(ev, { ...data, date, selectedDateRange: [date] });
       }
 
       navigateDay(date);

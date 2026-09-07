@@ -109,7 +109,7 @@ describe('Calendar', () => {
       cy.get(day('September 16, 2020')).click();
 
       cy.get('td[data-selected]').should('have.length', 7);
-      cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRangeArray').should('have.length', 7);
+      cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRange').should('have.length', 7);
     });
 
     it('resolves the same date range when selecting with Enter', () => {
@@ -119,7 +119,7 @@ describe('Calendar', () => {
       cy.get(day('September 16, 2020')).focus().realPress('Enter');
 
       cy.get('td[data-selected]').should('have.length', 7);
-      cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRangeArray').should('have.length', 7);
+      cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRange').should('have.length', 7);
     });
 
     it('does not select a restricted day', () => {

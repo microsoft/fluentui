@@ -124,7 +124,7 @@ export const useCalendarDayBase_unstable = (
     dateRange = dateRange.filter((d: Date) => !isRestrictedDate(d, restrictedDatesOptions));
 
     const type = ev.type === 'keydown' ? 'keydown' : 'click';
-    setValue?.(ev, { event: ev, type, date, selectedDateRangeArray: dateRange });
+    setValue?.(ev, { event: ev, type, date, selectedDateRange: dateRange });
     onNavigateDate(ev, { event: ev, type, date, focusOnNavigatedDay: true });
   };
 

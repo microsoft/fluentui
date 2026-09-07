@@ -60,7 +60,7 @@ export type CalendarSelectDateData = EventData<'click' | 'keydown', React.Synthe
   /**
    * Dates selected according to the configured range type.
    */
-  selectedDateRangeArray: Date[];
+  selectedDateRange: Date[];
 };
 
 /**
@@ -75,7 +75,7 @@ export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
   /**
    * Callback for when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * @param selectedDateRange - The resultant list of dates that are selected based on the date range type set
    * for the component.
    */
   onSelectDate?: EventHandler<CalendarSelectDateData>;
