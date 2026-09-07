@@ -53,6 +53,7 @@ export const useNavCategoryItem = (
       elementType: 'span',
     }),
     expandIcon: slot.optional(expandIcon, {
+      defaultProps: { 'aria-hidden': true },
       elementType: 'span',
     }),
     components: {
