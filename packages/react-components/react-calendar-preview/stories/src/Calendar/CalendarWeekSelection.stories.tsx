@@ -17,7 +17,7 @@ export const CalendarWeekSelection = (): JSXElement => {
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
-    setSelectedDateRange(data.selectedDateRangeArray);
+    setSelectedDateRange(data.selectedDateRange);
   }, []);
 
   const goPrevious = React.useCallback((): void => {

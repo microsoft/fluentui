@@ -20,7 +20,7 @@ export const CalendarMultidayDayView = (): JSXElement => {
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
-    setSelectedDateRange(data.selectedDateRangeArray);
+    setSelectedDateRange(data.selectedDateRange);
   }, []);
 
   const onOptionSelect = React.useCallback((_: SelectionEvents, data: OptionOnSelectData) => {

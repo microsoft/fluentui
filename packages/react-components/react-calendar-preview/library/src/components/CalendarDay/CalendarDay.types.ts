@@ -67,7 +67,7 @@ export type CalendarDaySlots = {
 
 export type CalendarDaySelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   date: Date;
-  selectedDateRangeArray: Date[];
+  selectedDateRange: Date[];
 };
 
 /**

@@ -11,7 +11,7 @@ export const CalendarContiguousWorkWeekDays = (): JSXElement => {
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
-    setSelectedDateRange(data.selectedDateRangeArray);
+    setSelectedDateRange(data.selectedDateRange);
   }, []);
 
   let dateRangeString = 'Not set';

@@ -278,7 +278,7 @@ export const CalendarDayProvider: React_2.Provider<CalendarDayContextValue | und
 // @public
 export type CalendarDaySelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     date: Date;
-    selectedDateRangeArray: Date[];
+    selectedDateRange: Date[];
 };
 
 // @public
@@ -468,7 +468,7 @@ export const CalendarMonthProvider: React_2.Provider<CalendarMonthContextValue |
 // @public
 export type CalendarMonthSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>> & {
     date: Date;
-    selectedDateRangeArray: Date[];
+    selectedDateRange: Date[];
 };
 
 // @public
@@ -526,7 +526,7 @@ export const CalendarProvider: Provider<CalendarContextValue | undefined> & FC<P
 // @public
 export type CalendarSelectDateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     date: Date;
-    selectedDateRangeArray: Date[];
+    selectedDateRange: Date[];
 };
 
 // @public
