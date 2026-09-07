@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
-import type {
-  ToolbarProps} from '@fluentui/react-toolbar';
-import {
-  Toolbar,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  ToolbarGroup,
-} from '@fluentui/react-toolbar';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton, ToolbarGroup } from '@fluentui/react-toolbar';
 import {
   TextBoldRegular,
   TextItalicRegular,

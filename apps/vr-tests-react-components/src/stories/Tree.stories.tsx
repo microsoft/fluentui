@@ -3,7 +3,8 @@ import type {
   HeadlessFlatTreeItemProps,
   TreeItemValue,
   TreeOpenChangeData,
-  TreeOpenChangeEvent} from '@fluentui/react-tree';
+  TreeOpenChangeEvent,
+} from '@fluentui/react-tree';
 import {
   FlatTree,
   Tree,
