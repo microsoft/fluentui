@@ -72,7 +72,7 @@ export const useTagPickerControlBase_unstable = (
   }
 
   const handleAsideDetach = useEventCallback(() => {
-    if (rafIdRef.current && targetDocument?.defaultView) {
+    if (rafIdRef.current !== null && targetDocument?.defaultView) {
       targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
     }
     rafIdRef.current = null;

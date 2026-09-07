@@ -35,10 +35,21 @@ describe('TagPickerControl', () => {
     let frames: { id: number; callback: FrameRequestCallback }[] = [];
     let cancelledIds: number[] = [];
 
+    function flushFrames() {
+      const queuedFrames = frames;
+      frames = [];
+      for (const { id, callback } of queuedFrames) {
+        if (!cancelledIds.includes(id)) {
+          callback(0);
+        }
+      }
+    }
+
     beforeEach(() => {
       frames = [];
       cancelledIds = [];
-      let nextId = 1;
+      // Zero is a valid animation-frame handle, not the absence of a pending frame.
+      let nextId = 0;
       window.requestAnimationFrame = (callback: FrameRequestCallback) => {
         const id = nextId++;
         frames.push({ id, callback });
@@ -73,9 +84,7 @@ describe('TagPickerControl', () => {
       expect(frames).toHaveLength(1);
       expect(cancelledIds).not.toContain(frames[0].id);
 
-      act(() => {
-        frames[0].callback(0);
-      });
+      act(flushFrames);
 
       const control = result.container.querySelector('.fui-TagPickerControl') as HTMLElement;
       expect(control.style.getPropertyValue('--fui-TagPickerControl-aside-width')).toBe(`${ASIDE_WIDTH}px`);
@@ -97,24 +106,17 @@ describe('TagPickerControl', () => {
 
     it('writes the property after mount inside React.StrictMode', () => {
       // Regression test for https://github.com/microsoft/fluentui/pull/36667#discussion_r3925809333:
-      // StrictMode mounts, simulates an unmount/remount of the render output (detaching and
-      // reattaching refs, and replaying effects), then settles. Cancelling the pending frame
-      // from a passive effect's cleanup -- rather than from the observer ref's own detach path
-      // -- risked cancelling the frame during that replay with nothing left to reschedule it,
-      // since callback refs are not necessarily re-invoked the same way effects are replayed.
-      // Asserting the property IS set after the dust settles pins the fix: the frame's
-      // cancellation now lives on the same ref-detach path as ResizeObserver.disconnect(), so
-      // it only ever cancels a frame that its own detach actually orphaned, and any reattach
-      // schedules its own fresh frame that survives.
+      // React 18 replays effects without replaying callback refs. Effect cleanup would cancel
+      // the initial frame with no ref reattachment to schedule a replacement. React 19 also
+      // replays refs, so run this with the React 18 integration target as well as the default
+      // tests. Only uncancelled frames may run: executing cancelled callbacks hides the bug.
       const result = render(
         <React.StrictMode>
           <TagPickerControl>Default PickerControl</TagPickerControl>
         </React.StrictMode>,
       );
 
-      act(() => {
-        frames.forEach(frame => frame.callback(0));
-      });
+      act(flushFrames);
 
       const control = result.container.querySelector('.fui-TagPickerControl') as HTMLElement;
       expect(control.style.getPropertyValue('--fui-TagPickerControl-aside-width')).toBe(`${ASIDE_WIDTH}px`);
