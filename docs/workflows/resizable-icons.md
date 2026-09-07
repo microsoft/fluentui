@@ -114,7 +114,7 @@ Preserve the original combinator:
 },
 
 // Becomes
-'& :is(svg, :where([data-fui-icon]))': {
+'& svg, & :where([data-fui-icon])': {
   display: 'block',
 },
 ```
@@ -126,16 +126,17 @@ Preserve the original combinator:
 },
 
 // Becomes
-'> :is(svg, :where([data-fui-icon]))': {
+'> svg, > :where([data-fui-icon])': {
   fontSize: '20px',
 },
 ```
 
-Use `:is(svg, :where([data-fui-icon]))`, not `:where(:is(svg, [data-fui-icon]))`.
+Use an explicit selector list rather than nesting both branches inside `:is()`.
 
-- `svg` retains the original type selector specificity contribution of `(0,0,1)`.
-- `:where([data-fui-icon])` matches the font variant without increasing specificity.
-- Wrapping the entire selector in `:where()` would reduce that contribution to zero and could change the cascade.
+- The existing `svg` branch remains unchanged and retains its original specificity.
+- `:where([data-fui-icon])` matches font variants without increasing specificity.
+- Avoid selecting the implementation element (`i`) because that could match unrelated italic content.
+- Avoid hardcoding `.fui-Icon-font` unless a style intentionally applies only to font icons.
 
 Direct `fontSize` props do not replace these selector updates. Existing selectors may also provide layout behavior such as `display`, `overflow`, flex sizing, or sizing for arbitrary slot content.
 

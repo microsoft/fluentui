@@ -77,36 +77,36 @@ const useStyles = makeStyles({
     aspectRatio: '1',
     width: '6px',
     backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '6px',
     },
   },
   extraSmall: {
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '10px',
     },
   },
   small: {
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '12px',
     },
   },
   medium: {
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '16px',
     },
   },
   large: {
     aspectRatio: '1',
     width: '20px',
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '20px',
     },
   },
   extraLarge: {
     aspectRatio: '1',
     width: '28px',
-    '& :is(svg, :where([data-fui-icon]))': {
+    '& svg, & :where([data-fui-icon])': {
       fontSize: '28px',
     },
   },

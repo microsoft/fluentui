@@ -85,7 +85,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useIndicatorStyles = makeStyles({
   lowerHalf: {
     right: '50%',
-    '& > :is(svg, :where([data-fui-icon]))': {
+    '& > svg, & > :where([data-fui-icon])': {
       flex: '0 0 auto',
     },
   },

@@ -306,7 +306,7 @@ const useContentClassName = makeResetStyles({
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
-  '> :is(svg, :where([data-fui-icon]))': { fontSize: '20px' },
+  '> svg, > :where([data-fui-icon])': { fontSize: '20px' },
 });
 
 const useContentStyles = makeStyles({
@@ -315,13 +315,13 @@ const useContentStyles = makeStyles({
   },
   // Ensure resizable icons show up with the proper font size
   small: {
-    '> :is(svg, :where([data-fui-icon]))': { fontSize: '16px' },
+    '> svg, > :where([data-fui-icon])': { fontSize: '16px' },
   },
   medium: {
     // included in useContentClassName
   },
   large: {
-    '> :is(svg, :where([data-fui-icon]))': { fontSize: '24px' },
+    '> svg, > :where([data-fui-icon])': { fontSize: '24px' },
   },
 });
 
