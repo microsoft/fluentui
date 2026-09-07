@@ -29,6 +29,8 @@ export function lockDocumentScroll(targetDocument: Document): void {
   // Read the scrollbar's layout width before the lock takes it away. Overlay
   // scrollbars and unscrollable pages both measure 0, and both want no gutter.
   const scrollbarWidth = (targetDocument.defaultView?.innerWidth ?? 0) - documentElement.clientWidth;
+  const scrollbarGutter = targetDocument.defaultView?.getComputedStyle(documentElement).scrollbarGutter;
+  const hasStableGutter = scrollbarGutter?.split(/\s+/).includes('stable');
 
   scrollLockStateByDocument.set(targetDocument, {
     lockCount: 1,
@@ -37,7 +39,7 @@ export function lockDocumentScroll(targetDocument: Document): void {
   });
 
   body.style.overflow = 'visible clip';
-  if (scrollbarWidth > 0) {
+  if (scrollbarWidth > 0 && !hasStableGutter) {
     documentElement.style.scrollbarGutter = 'stable';
   }
 }

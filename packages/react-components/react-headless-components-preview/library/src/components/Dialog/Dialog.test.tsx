@@ -115,10 +115,6 @@ describe('Dialog', () => {
       });
 
     afterEach(() => {
-      // `setScrollbarWidth` installs a configurable OWN property shadowing the prototype getter, so
-      // removing that own property restores the getter. `delete` cannot express this — `clientWidth`
-      // is typed `readonly`, which `Partial<HTMLElement>` preserves — while `Reflect.deleteProperty`
-      // has identical runtime semantics and needs no cast.
       Reflect.deleteProperty(document.documentElement, 'clientWidth');
       document.documentElement.style.removeProperty('scrollbar-gutter');
       document.body.style.removeProperty('overflow');
@@ -166,18 +162,41 @@ describe('Dialog', () => {
       expect(document.documentElement.style.scrollbarGutter).toBe('');
     });
 
-    it('restores a gutter the host application had already set', () => {
+    it.each(['stable', 'stable both-edges'])('preserves an inline %s gutter during and after the lock', gutter => {
       setScrollbarWidth(15);
-      document.documentElement.style.scrollbarGutter = 'both-edges';
+      document.documentElement.style.scrollbarGutter = gutter;
       const result = renderModal();
 
       fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
 
-      expect(document.documentElement.style.scrollbarGutter).toBe('stable');
+      expect(document.documentElement.style.scrollbarGutter).toBe(gutter);
 
       fireEvent.click(result.getByRole('button', { name: 'Close dialog' }));
 
-      expect(document.documentElement.style.scrollbarGutter).toBe('both-edges');
+      expect(document.documentElement.style.scrollbarGutter).toBe(gutter);
+    });
+
+    it('preserves a stable both-edges gutter supplied by a stylesheet', () => {
+      setScrollbarWidth(15);
+      const stylesheet = document.createElement('style');
+      stylesheet.textContent = 'html { scrollbar-gutter: stable both-edges; }';
+      document.head.appendChild(stylesheet);
+      try {
+        const result = renderModal();
+        expect(window.getComputedStyle(document.documentElement).scrollbarGutter).toBe('stable both-edges');
+
+        fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
+
+        expect(document.documentElement.style.scrollbarGutter).toBe('');
+        expect(window.getComputedStyle(document.documentElement).scrollbarGutter).toBe('stable both-edges');
+
+        fireEvent.click(result.getByRole('button', { name: 'Close dialog' }));
+
+        expect(document.documentElement.style.scrollbarGutter).toBe('');
+        expect(window.getComputedStyle(document.documentElement).scrollbarGutter).toBe('stable both-edges');
+      } finally {
+        stylesheet.remove();
+      }
     });
 
     it('leaves a non-modal dialog out of the lock entirely', () => {
