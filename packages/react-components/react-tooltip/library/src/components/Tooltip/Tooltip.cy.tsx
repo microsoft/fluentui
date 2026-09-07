@@ -10,6 +10,11 @@ const mount = (element: React.ReactElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
+const hoverTrigger = () => {
+  cy.get('body').realHover({ position: 'bottomRight' });
+  cy.get('#trigger').realHover();
+};
+
 describe('Tooltip', () => {
   describe('overflow behavior (regression: #32882)', () => {
     it('hides and restores the tooltip when its trigger scrolls out of view', () => {
@@ -31,7 +36,7 @@ describe('Tooltip', () => {
         </div>,
       );
 
-      cy.get('#trigger').realHover();
+      hoverTrigger();
 
       cy.get('[role="tooltip"]')
         .should('be.visible')
@@ -56,7 +61,7 @@ describe('Tooltip', () => {
         </div>,
       );
 
-      cy.get('#trigger').realHover();
+      hoverTrigger();
 
       cy.get('[role="tooltip"]').should('be.visible').and('have.text', 'I should still appear');
     });
@@ -88,17 +93,13 @@ describe('Tooltip', () => {
         </div>,
       );
 
-      cy.get('#trigger').realHover();
+      hoverTrigger();
 
-      cy.get('[role="tooltip"]')
-        .should('be.visible')
-        .then($tooltip => {
-          cy.get('#outer-scroll-container').scrollTo(0, 300);
-          cy.wrap($tooltip).should('not.be.visible');
-
-          cy.get('#outer-scroll-container').scrollTo(0, 0);
-          cy.wrap($tooltip).should('be.visible');
-        });
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('#outer-scroll-container').scrollTo(0, 300);
+      cy.get('[role="tooltip"]').should('not.be.visible');
+      cy.get('#outer-scroll-container').scrollTo(0, 0);
+      cy.get('[role="tooltip"]').should('be.visible');
     });
   });
 });
