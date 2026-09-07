@@ -43,12 +43,15 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
     extraTests: {
       'component-has-no-axe-violations': ({ Component, requiredProps, renderOptions }: IsConformantOptions<TProps>) => {
         it('has no axe violations (component-has-no-axe-violations)', async () => {
-          const { container } = render(
+          const { baseElement } = render(
             React.createElement(Component as React.ComponentType<Partial<TProps>>, requiredProps),
             { ...renderOptions, ...axeRenderOptions },
           );
 
-          expect(await axe(container)).toHaveNoViolations();
+          // The conformance fixture is rendered without an application landmark. Keep
+          // checking the full document so body-mounted content is included, but avoid
+          // reporting the fixture itself for not being inside a landmark.
+          expect(await axe(baseElement, { rules: { region: { enabled: false } } })).toHaveNoViolations();
         });
       },
       'has-top-level-file-extra': ({ displayName, Component }: IsConformantOptions<TProps>) => {

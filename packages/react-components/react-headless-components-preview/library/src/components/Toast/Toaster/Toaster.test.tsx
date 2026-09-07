@@ -25,9 +25,9 @@ describe('Toaster', () => {
     // (not inside the Toaster's React tree) so a single shared region serves
     // the whole app. The DOM fallback path only renders an assertive region;
     // polite messages on browsers without `ariaNotify` are announced assertively.
-    render(<Toaster />);
+    const { baseElement } = render(<Toaster />);
 
-    expect(document.body.querySelector('[aria-live="assertive"]')).not.toBeNull();
+    expect(baseElement.querySelector('[aria-live="assertive"]')).not.toBeNull();
   });
 
   it('does not render position containers when there are no toasts', () => {
