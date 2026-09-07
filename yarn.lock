@@ -6874,21 +6874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.19.2":
-  version: 1.19.2
-  resolution: "@griffel/core@npm:1.19.2"
-  dependencies:
-    "@emotion/hash": "npm:^0.9.0"
-    "@griffel/style-types": "npm:^1.3.0"
-    csstype: "npm:^3.1.3"
-    rtl-css-js: "npm:^1.16.1"
-    stylis: "npm:^4.2.0"
-    tslib: "npm:^2.1.0"
-  checksum: 10c0/6e086ba2132e130360e14d1ab0493f6b7e34e3dba82c928a0a438ac7f48628555845ba5366a8dfaaf163ee67b3bca1776906347d02dc0ab32c03ef85bd113ba2
-  languageName: node
-  linkType: hard
-
-"@griffel/core@npm:^1.21.3":
+"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.21.3":
   version: 1.21.3
   resolution: "@griffel/core@npm:1.21.3"
   dependencies:
@@ -6925,19 +6911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/react@npm:^1.5.32":
-  version: 1.5.32
-  resolution: "@griffel/react@npm:1.5.32"
-  dependencies:
-    "@griffel/core": "npm:^1.19.2"
-    tslib: "npm:^2.1.0"
-  peerDependencies:
-    react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/ae451721830808dc9868d496869d38096905554f13c8a3cbc7bbbe6c235fc23b6ef39a294ee005b77a5af687634672899eb8855c302aa1dd6f08bc24e1072c60
-  languageName: node
-  linkType: hard
-
-"@griffel/react@npm:^1.6.1":
+"@griffel/react@npm:^1.5.32, @griffel/react@npm:^1.6.1":
   version: 1.7.7
   resolution: "@griffel/react@npm:1.7.7"
   dependencies:
@@ -6956,15 +6930,6 @@ __metadata:
     "@griffel/core": "npm:^1.16.0"
     tslib: "npm:^2.1.0"
   checksum: 10c0/a1cdc46d7a5c9e151744389b5552439bb2bcfa9def81f45d0e92e3c2d6e984df641c8e878cc6022b993ac81632ea505d00c5e72369c0fcb91b10312ceb6c7f7f
-  languageName: node
-  linkType: hard
-
-"@griffel/style-types@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@griffel/style-types@npm:1.3.0"
-  dependencies:
-    csstype: "npm:^3.1.3"
-  checksum: 10c0/94c63ed89398e154f5ced769b25ff7e14471c991672f32f69ac27daa463f880650cb2d7d5ef7e00811e3cd3a6cd2694b9ef861d9bc294cf72838e31761d72ef8
   languageName: node
   linkType: hard
 
