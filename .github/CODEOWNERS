@@ -337,6 +337,8 @@ packages/react-components/react-headless-components-preview/stories @microsoft/c
 packages/react-components/react-windmod-preview/library @microsoft/cxe-prg
 packages/react-components/react-windmod-preview/stories @microsoft/cxe-prg
 packages/react-components/postcss-tailwind-css-modules @microsoft/cxe-prg
+packages/react-components/react-calendar-preview/library @microsoft/cxe-prg
+packages/react-components/react-calendar-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add badge support for Avatar base hooks",
+  "packageName": "@fluentui/react-avatar",
+  "email": "dmytrokirpa@microsoft.com"
+}
