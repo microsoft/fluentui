@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix prototype pollution in SankeyChart node ID maps.",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}

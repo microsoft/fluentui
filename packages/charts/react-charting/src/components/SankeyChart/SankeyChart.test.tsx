@@ -91,6 +91,17 @@ const dataWithoutColors: () => IChartProps = () => ({
   },
 });
 
+const dataWithPrototypeNodeId: () => IChartProps = () => ({
+  chartTitle: 'Sankey Chart',
+  SankeyChartData: {
+    nodes: [
+      { nodeId: '__proto__', name: 'Source' },
+      { nodeId: 'target', name: 'Target' },
+    ],
+    links: [{ source: 0, target: 1, value: 10 }],
+  },
+});
+
 describe('Sankey Chart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -141,6 +152,13 @@ describe('Sankey Chart snapShot testing', () => {
     );
     // ASSERT
     expect(container).toMatchSnapshot();
+  });
+
+  it('renders Sankey correctly with a prototype property node ID', () => {
+    const { getByText } = render(<SankeyChart data={dataWithPrototypeNodeId()} height={500} width={800} />);
+
+    expect(getByText('Source')).toBeDefined();
+    expect(getByText('Target')).toBeDefined();
   });
 
   describe.skip('number formatting', () => {

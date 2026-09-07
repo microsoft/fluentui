@@ -39,7 +39,7 @@ type NodeValues = ItemValues<number>;
 type LinkItemValues<T> = { [key: NodeId]: ItemValues<T> };
 type LinkValues = LinkItemValues<number>;
 
-type NodesInColumns = { [key: number]: SNode[] };
+type NodesInColumns = ItemValues<SNode[]>;
 type NormalizedData = ISankeyChartData & {
   width: number;
   height: number;
@@ -55,6 +55,10 @@ type NormalizeDiagramFunction = (
 
 type NodeColors = { fillColor: string; borderColor: string };
 type SankeyLayoutGenerator = SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
+
+function createNodeIdMap<T>(): ItemValues<T> {
+  return Object.setPrototypeOf({}, null);
+}
 
 export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   containerWidth: number;
@@ -194,7 +198,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  */
 // This is exported for unit tests.
 export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
-  const nodesInColumn: NodesInColumns = {};
+  const nodesInColumn = createNodeIdMap<SNode[]>();
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
@@ -331,7 +335,7 @@ function duplicateData(data: ISankeyChartData): ISankeyChartData {
 }
 
 function valuesOfNodes(nodes: SNode[]): NodeValues {
-  const result: NodeValues = {};
+  const result = createNodeIdMap<number>();
   nodes.forEach((node: SNode) => {
     result[node.nodeId as NodeId] = node.value!;
   });
@@ -339,12 +343,12 @@ function valuesOfNodes(nodes: SNode[]): NodeValues {
 }
 
 function valuesOfLinks(links: SLink[]): LinkValues {
-  const result: LinkValues = {};
+  const result = createNodeIdMap<ItemValues<number>>();
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = createNodeIdMap<number>();
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
@@ -495,12 +499,12 @@ function computeLinkAttributes(
   linkFrom: (node: SNode) => string,
   linkAriaLabel: (link: SLink) => string,
 ): LinkItemValues<RenderedLinkAttributes> {
-  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  const result = createNodeIdMap<ItemValues<RenderedLinkAttributes>>();
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = createNodeIdMap<RenderedLinkAttributes>();
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
@@ -928,7 +932,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     nodes: SNode[],
     nodeAriaLabel: (node: SNode, weight: number) => string,
   ): ItemValues<RenderedNodeAttributes> {
-    const result: ItemValues<RenderedNodeAttributes> = {};
+    const result = createNodeIdMap<RenderedNodeAttributes>();
     const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
     const nameSpan = select('.nodeName')
       .append('text')

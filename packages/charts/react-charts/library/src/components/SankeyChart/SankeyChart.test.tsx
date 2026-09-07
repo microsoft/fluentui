@@ -99,6 +99,19 @@ function chartPointsWithStringNodeId(): ChartProps {
   };
 }
 
+function chartPointsWithPrototypeNodeId(): ChartProps {
+  return {
+    chartTitle: 'Sankey Chart',
+    SankeyChartData: {
+      nodes: [
+        { nodeId: '__proto__', name: 'Source' },
+        { nodeId: 'target', name: 'Target' },
+      ],
+      links: [{ source: 0, target: 1, value: 10 }],
+    },
+  };
+}
+
 const emptyChartPoints: ChartProps = {
   chartData: [],
 };
@@ -132,6 +145,16 @@ describe('Sankey bar chart rendering', () => {
     container => {
       // Assert
       expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Sankey chart with a prototype property node ID',
+    SankeyChart,
+    { data: chartPointsWithPrototypeNodeId() },
+    () => {
+      expect(screen.getByText('Source')).toBeDefined();
+      expect(screen.getByText('Target')).toBeDefined();
     },
   );
 });
