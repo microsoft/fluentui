@@ -104,7 +104,7 @@ const fadeIn = fadeAtom({
 | `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`         |
 | `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`  |
 | `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `outAngle`, `inAngle` |
-| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`       |
+| `blurAtom`   | Blur filter          | `filter: blur()`         | `fromRadius`, `toRadius`      |
 
 <AtomsDemo />
 
@@ -141,7 +141,7 @@ slideAtom({ direction: 'enter', duration: 500, outX: '0px', outY: '20px', inX: '
 rotateAtom({ direction: 'enter', duration: 600, axis: 'z', outAngle: -90, inAngle: 0 });
 
 // blurAtom — blur filter
-blurAtom({ direction: 'enter', duration: 500, outRadius: '10px', inRadius: '0px' });
+blurAtom({ duration: 500, fromRadius: '10px', toRadius: '0px' });
 ```
 
 ## Creating Custom Presence Components

@@ -14,12 +14,13 @@ import * as React_2 from 'react';
 export const Blur: PresenceComponent<BlurParams>;
 
 // @public
-export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
+export const blurAtom: ({ duration, easing, delay, fromRadius, toRadius, }: BlurAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
-    outRadius?: string;
-    inRadius?: string;
+    fromRadius?: string;
+    restRadius?: string;
+    toRadius?: string;
 };
 
 // @public
