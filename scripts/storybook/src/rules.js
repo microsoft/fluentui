@@ -79,8 +79,14 @@ const tailwindPostcssLoader = {
       // no postcss.config.* exists in this repo — skip cosmiconfig's upward search
       config: false,
       plugins: [
-        // @ts-ignore -- types are behind `exports`; see the note above
-        require('@tailwindcss/postcss')(),
+        // Tailwind resolves a separate PostCSS 8 copy. Normalize its plugin at this boundary
+        // to avoid TypeScript recursively comparing the two versions' node/visitor types.
+        /** @type {import('postcss').Plugin} */ (
+          /** @type {unknown} */ (
+            // @ts-ignore -- types are behind `exports`; see the note above
+            require('@tailwindcss/postcss')()
+          )
+        ),
         /**
          * MUST come after Tailwind and before css-loader's CSS-Modules pass. webpack runs
          * loaders right-to-left, so postcss-loader is already ahead of css-loader; within
