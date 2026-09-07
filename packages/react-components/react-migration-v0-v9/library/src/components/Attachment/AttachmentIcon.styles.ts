@@ -10,7 +10,7 @@ export const useAttachmentIconStyles = makeStyles({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    '& svg': {
+    '& :is(svg, :where([data-fui-icon]))': {
       height: '100%',
       width: '100%',
     },

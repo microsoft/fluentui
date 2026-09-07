@@ -31,9 +31,9 @@ export type FieldSlots = {
    * The icon associated with the `validationMessage`. This will only be displayed if `validationMessage` is set.
    *
    * The default depends on `validationState`:
-   * * error: `<ErrorCircle12Filled />`
-   * * warning: `<Warning12Filled />`
-   * * success: `<CheckmarkCircle12Filled />`
+   * * error: `<ErrorCircleFilled />`
+   * * warning: `<WarningFilled />`
+   * * success: `<CheckmarkCircleFilled />`
    * * none: `null`
    */
   validationMessageIcon?: Slot<'span'>;

@@ -6,7 +6,7 @@ import type {
   FlatTreeItemProps,
 } from '@fluentui/react-components';
 import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
-import { Delete20Regular } from '@fluentui/react-icons';
+import { DeleteRegular } from '@fluentui/react-icons';
 import {
   Button,
   Menu,
@@ -57,7 +57,7 @@ const CustomTreeItem = React.forwardRef(
                     aria-label="Remove item"
                     appearance="subtle"
                     onClick={handleRemoveItem}
-                    icon={<Delete20Regular />}
+                    icon={<DeleteRegular />}
                   />
                 ) : undefined
               }

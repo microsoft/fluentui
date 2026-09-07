@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
-import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled } from '@fluentui/react-icons';
 import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
@@ -47,7 +47,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;
   if (state.multiselect) {
-    CheckIcon = state.selected ? <Checkmark12Filled /> : '';
+    CheckIcon = state.selected ? <CheckmarkFilled /> : '';
   }
 
   if (state.checkIcon) {

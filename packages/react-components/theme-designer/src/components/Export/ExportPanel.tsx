@@ -15,7 +15,7 @@ import {
   tokens,
   webLightTheme,
 } from '@fluentui/react-components';
-import { DismissSquare24Regular } from '@fluentui/react-icons';
+import { DismissSquareRegular } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { getBrandValues, objectToString } from '../../utils/toString';
@@ -136,7 +136,7 @@ export const ExportPanel = (): JSXElement => {
                 <Button
                   size="small"
                   appearance="subtle"
-                  icon={<DismissSquare24Regular />}
+                  icon={<DismissSquareRegular />}
                   // eslint-disable-next-line react/jsx-no-bind
                   onClick={onCloseExportPanel}
                 />

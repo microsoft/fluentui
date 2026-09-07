@@ -2727,11 +2727,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/eslint-plugin-react-icons@npm:0.0.1":
+  version: 0.0.1
+  resolution: "@fluentui/eslint-plugin-react-icons@npm:0.0.1"
+  dependencies:
+    "@typescript-eslint/utils": "npm:7.18.0"
+  peerDependencies:
+    eslint: ">=8.0.0"
+  checksum: 10c0/95541e607c2864b8edd8702db81eb5d8870502c430ea5fd8ca1cf2ecbb8ff882fff1d01825cae5c09dc53fe044d47e315207e53398b7271764ac9bc62203a5d6
+  languageName: node
+  linkType: hard
+
 "@fluentui/eslint-plugin@npm:*, @fluentui/eslint-plugin@workspace:packages/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@fluentui/eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
     "@eslint/compat": "npm:1.3.0"
+    "@fluentui/eslint-plugin-react-icons": "npm:0.0.1"
     "@griffel/eslint-plugin": "npm:^2.0.0"
     "@nx/eslint-plugin": "npm:21.6.10"
     "@rnx-kit/eslint-plugin": "npm:^0.8.4"
@@ -2811,6 +2823,7 @@ __metadata:
     "@eslint/compat": "npm:1.3.0"
     "@eslint/js": "npm:9.26.0"
     "@floating-ui/dom": "npm:1.6.12"
+    "@fluentui/eslint-plugin-react-icons": "npm:0.0.1"
     "@fluentui/react-compiler-analyzer": "npm:0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0"
     "@fluentui/react-icons": "npm:^2.0.306"
     "@fluentui/react-icons-northstar": "npm:0.66.5"
@@ -11490,6 +11503,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/utils@npm:7.18.0, @typescript-eslint/utils@npm:^7.18.0":
+  version: 7.18.0
+  resolution: "@typescript-eslint/utils@npm:7.18.0"
+  dependencies:
+    "@eslint-community/eslint-utils": "npm:^4.4.0"
+    "@typescript-eslint/scope-manager": "npm:7.18.0"
+    "@typescript-eslint/types": "npm:7.18.0"
+    "@typescript-eslint/typescript-estree": "npm:7.18.0"
+  peerDependencies:
+    eslint: ^8.56.0
+  checksum: 10c0/a25a6d50eb45c514469a01ff01f215115a4725fb18401055a847ddf20d1b681409c4027f349033a95c4ff7138d28c3b0a70253dfe8262eb732df4b87c547bd1e
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/utils@npm:8.46.2":
   version: 8.46.2
   resolution: "@typescript-eslint/utils@npm:8.46.2"
@@ -11517,20 +11544,6 @@ __metadata:
     eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
     typescript: ">=4.8.4 <6.0.0"
   checksum: 10c0/c85d6e7c618dbf902fda98cc795883388bc512bc2c34c7ac0481ea43acb6dd3cd38d60bdb571b586f392419a17998c89330fd7b0b9a344161f4a595637dd3f55
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/utils@npm:^7.18.0":
-  version: 7.18.0
-  resolution: "@typescript-eslint/utils@npm:7.18.0"
-  dependencies:
-    "@eslint-community/eslint-utils": "npm:^4.4.0"
-    "@typescript-eslint/scope-manager": "npm:7.18.0"
-    "@typescript-eslint/types": "npm:7.18.0"
-    "@typescript-eslint/typescript-estree": "npm:7.18.0"
-  peerDependencies:
-    eslint: ^8.56.0
-  checksum: 10c0/a25a6d50eb45c514469a01ff01f215115a4725fb18401055a847ddf20d1b681409c4027f349033a95c4ff7138d28c3b0a70253dfe8262eb732df4b87c547bd1e
   languageName: node
   linkType: hard
 

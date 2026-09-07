@@ -1,14 +1,15 @@
 import * as React from 'react';
+import type {
+  HeadlessFlatTreeItemProps,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent} from '@fluentui/react-tree';
 import {
   FlatTree,
-  HeadlessFlatTreeItemProps,
   Tree,
   TreeItem,
   TreeItemLayout,
   TreeItemPersonaLayout,
-  TreeItemValue,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { tokens } from '@fluentui/react-theme';
@@ -20,12 +21,12 @@ import { Steps, type StoryParameters } from 'storywright';
 import {
   CaretDownRegular,
   CaretRightRegular,
-  Edit20Regular,
-  Image20Regular,
-  Important16Regular,
-  LockClosed20Regular,
-  MoreHorizontal20Regular,
-  SquareMultiple20Regular,
+  EditRegular,
+  ImageRegular,
+  ImportantRegular,
+  LockClosedRegular,
+  MoreHorizontalRegular,
+  SquareMultipleRegular,
 } from '@fluentui/react-icons';
 import { CounterBadge } from '@fluentui/react-badge';
 import { makeStyles, shorthands } from '@griffel/react';
@@ -360,10 +361,10 @@ export const ExpandIconRTL = getStoryVariant(ExpandIcon, RTL);
 const ActionsExample = () => {
   return (
     <>
-      <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+      <Button aria-label="Edit" appearance="subtle" icon={<EditRegular />} />
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontalRegular />} />
         </MenuTrigger>
 
         <MenuPopover>
@@ -424,15 +425,15 @@ export const Layout = () => (
       <TreeItemLayout
         aside={
           <>
-            <Important16Regular primaryFill="red" />
+            <ImportantRegular fontSize={16} primaryFill="red" />
             <CounterBadge count={1} color="danger" size="small" />
           </>
         }
-        iconBefore={<Image20Regular />}
+        iconBefore={<ImageRegular />}
         iconAfter={
           <>
-            <LockClosed20Regular />
-            <SquareMultiple20Regular />
+            <LockClosedRegular fontSize={20} />
+            <SquareMultipleRegular fontSize={20} />
           </>
         }
       >
@@ -463,12 +464,12 @@ export const Layout = () => (
     </TreeItem>
     <TreeItem itemType="branch" aria-description="Private">
       <TreeItemLayout
-        aside={<Important16Regular primaryFill="red" />}
-        iconBefore={<Image20Regular />}
+        aside={<ImportantRegular primaryFill="red" />}
+        iconBefore={<ImageRegular />}
         iconAfter={
           <>
-            <LockClosed20Regular />
-            <SquareMultiple20Regular />
+            <LockClosedRegular fontSize={20} />
+            <SquareMultipleRegular fontSize={20} />
           </>
         }
       >
@@ -509,7 +510,7 @@ const Badges = () => {
   const badgeStyles = useBadgeStyles();
   return (
     <div className={badgeStyles.base}>
-      <Important16Regular primaryFill="red" />
+      <ImportantRegular fontSize={16} primaryFill="red" />
       <CounterBadge count={1} color="danger" size="small" />
     </div>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Info16Regular } from '@fluentui/react-icons';
+import { InfoRegular } from '@fluentui/react-icons';
 import { Field } from '@fluentui/react-headless-components-preview/field';
 import { InfoLabel } from '@fluentui/react-headless-components-preview/info-label';
 import { Input } from '@fluentui/react-headless-components-preview/input';
@@ -18,7 +18,7 @@ export const InField = (): React.ReactNode => (
           {...props}
           className={infoLabelStyles.infoLabel}
           info={{ className: infoLabelStyles.popover, children: 'Example info' }}
-          infoButton={{ className: infoLabelStyles.infoButton, children: <Info16Regular /> }}
+          infoButton={{ className: infoLabelStyles.infoButton, children: <InfoRegular fontSize={16} /> }}
         >
           Field with info label
         </InfoLabel>

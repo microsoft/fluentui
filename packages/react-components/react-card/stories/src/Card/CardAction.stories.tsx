@@ -14,7 +14,7 @@ import {
   Text,
   tokens,
 } from '@fluentui/react-components';
-import { MoreHorizontal20Regular, Open16Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular, OpenRegular } from '@fluentui/react-icons';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -118,7 +118,7 @@ export const WithAction = (): JSXElement => {
               </Body1>
             }
             description={<Caption1>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
           />
 
           <p className={styles.text}>
@@ -127,7 +127,7 @@ export const WithAction = (): JSXElement => {
           </p>
 
           <CardFooter>
-            <Button appearance="primary" icon={<Open16Regular />} onClick={onActionCardClick}>
+            <Button appearance="primary" icon={<OpenRegular />} onClick={onActionCardClick}>
               Open
             </Button>
           </CardFooter>
@@ -154,7 +154,7 @@ export const WithAction = (): JSXElement => {
               </Text>
             }
             description={<Caption1>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
           />
         </Card>
       </section>

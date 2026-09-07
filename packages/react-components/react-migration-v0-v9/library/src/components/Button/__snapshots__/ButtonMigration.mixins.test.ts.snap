@@ -8,7 +8,7 @@ Object {
   "& .fui-Icon-regular": Object {
     "display": "inline",
   },
-  "& svg": Object {
+  "& :is(svg, :where([data-fui-icon]))": Object {
     "margin": "-4px 0 0 -4px",
     "overflow": "visible",
     "paddingBottom": "100%",
@@ -33,7 +33,7 @@ Object {
   "& .fui-Icon-regular": Object {
     "display": "inline",
   },
-  "& svg": Object {
+  "& :is(svg, :where([data-fui-icon]))": Object {
     "overflow": "visible",
   },
   "&:hover": Object {

@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
   Button,
 } from '@fluentui/react-components';
-import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
+import { MathFormatLinearRegular, ImageRegular, TableFilled } from '@fluentui/react-icons';
 
 export const WithPopover = (props: Partial<ToolbarProps>): JSXElement => {
   const [open, setOpen] = React.useState<'first' | 'second' | 'third' | 'fourth' | undefined>();
@@ -24,7 +24,7 @@ export const WithPopover = (props: Partial<ToolbarProps>): JSXElement => {
         onOpenChange={(_, data) => setOpen(data.open ? 'first' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton aria-label="Insert image" icon={<Image24Regular />} />
+          <ToolbarButton aria-label="Insert image" icon={<ImageRegular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
@@ -40,7 +40,7 @@ export const WithPopover = (props: Partial<ToolbarProps>): JSXElement => {
         onOpenChange={(_, data) => setOpen(data.open ? 'second' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton appearance="primary" icon={<Table24Filled />} aria-label="Insert Table" />
+          <ToolbarButton appearance="primary" icon={<TableFilled />} aria-label="Insert Table" />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
@@ -56,7 +56,7 @@ export const WithPopover = (props: Partial<ToolbarProps>): JSXElement => {
         onOpenChange={(_, data) => setOpen(data.open ? 'third' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton aria-label="Insert Formula" icon={<MathFormatLinear24Regular />} />
+          <ToolbarButton aria-label="Insert Formula" icon={<MathFormatLinearRegular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>

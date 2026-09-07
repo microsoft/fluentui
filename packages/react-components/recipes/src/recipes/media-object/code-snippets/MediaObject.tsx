@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Attach24Regular } from '@fluentui/react-icons';
+import { AttachRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { Text } from '@fluentui/react-text';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -71,7 +71,7 @@ export const FlexSkeleton = (): JSXElement => {
 
 export const IconMediaObject = (): JSXElement => (
   <MediaObject
-    media={<Attach24Regular />}
+    media={<AttachRegular />}
     text={
       <>
         <Text size={400} weight="bold">
@@ -92,7 +92,7 @@ export const TextPositionVariations = (): JSXElement => {
       {positions.map(textPosition => (
         <MediaObject
           textPosition={textPosition}
-          media={<Attach24Regular />}
+          media={<AttachRegular />}
           key={textPosition}
           text={
             <>
@@ -118,7 +118,7 @@ export const TextAlignmentVariations = (): JSXElement => {
         <MediaObject
           textAlignment={alignment}
           key={alignment}
-          media={<Attach24Regular />}
+          media={<AttachRegular />}
           text={
             <>
               <Text size={400} weight="bold">

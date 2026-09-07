@@ -73,32 +73,41 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
 
-  // Icons are not resizeable, and these sizes are currently missing
-  // use `!important` to size the currently available icons to the missing ones
-  //
   tiny: {
     aspectRatio: '1',
     width: '6px',
     backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
-    '& svg': {
-      width: '6px !important',
-      height: '6px !important',
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '6px',
+    },
+  },
+  extraSmall: {
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '10px',
+    },
+  },
+  small: {
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '12px',
+    },
+  },
+  medium: {
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '16px',
     },
   },
   large: {
     aspectRatio: '1',
     width: '20px',
-    '& svg': {
-      width: '20px !important',
-      height: '20px !important',
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '20px',
     },
   },
   extraLarge: {
     aspectRatio: '1',
     width: '28px',
-    '& svg': {
-      width: '28px !important',
-      height: '28px !important',
+    '& :is(svg, :where([data-fui-icon]))': {
+      fontSize: '28px',
     },
   },
 });
@@ -129,6 +138,9 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
       styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
     state.size === 'tiny' && styles.tiny,
+    state.size === 'extra-small' && styles.extraSmall,
+    state.size === 'small' && styles.small,
+    state.size === 'medium' && styles.medium,
     state.size === 'large' && styles.large,
     state.size === 'extra-large' && styles.extraLarge,
     state.root.className,

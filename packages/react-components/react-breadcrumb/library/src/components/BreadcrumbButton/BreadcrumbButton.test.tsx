@@ -5,7 +5,7 @@ import { useBreadcrumbButtonBase_unstable } from './useBreadcrumbButton';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
-import { ArrowRight16Filled } from '@fluentui/react-icons';
+import { ArrowRightFilled } from '@fluentui/react-icons';
 
 describe('BreadcrumbButton', () => {
   isConformant({
@@ -37,9 +37,7 @@ describe('BreadcrumbButton', () => {
   });
 
   it('renders with an icon', () => {
-    const result = render(
-      <BreadcrumbButton icon={<ArrowRight16Filled />}>BreadcrumbButton with icon</BreadcrumbButton>,
-    );
+    const result = render(<BreadcrumbButton icon={<ArrowRightFilled />}>BreadcrumbButton with icon</BreadcrumbButton>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button

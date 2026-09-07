@@ -13,7 +13,7 @@ import {
   Text,
   tokens,
 } from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
@@ -122,7 +122,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
                 e.preventDefault();
               }}
               appearance="transparent"
-              icon={<MoreHorizontal20Regular />}
+              icon={<MoreHorizontalRegular />}
               aria-label="More actions"
             />
           </MenuTrigger>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Combobox, Dropdown } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
-import { Dismiss12Filled } from '@fluentui/react-icons';
+import { DismissFilled } from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
 import { ProgressBar } from '@fluentui/react-progress';
 import { Radio, RadioGroup } from '@fluentui/react-radio';
@@ -98,7 +98,7 @@ export const ValidationMessageIcon = () => (
   <Field
     label="Custom validation icon"
     validationMessage="Error message with custom icon"
-    validationMessageIcon={<Dismiss12Filled />}
+    validationMessageIcon={<DismissFilled />}
   >
     <Input />
   </Field>

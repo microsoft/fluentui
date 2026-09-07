@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, ToolbarProps } from '@fluentui/react-components';
-import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
+import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components';
 
 export const ControlledToggleButton = (): JSXElement => {
@@ -15,11 +15,11 @@ export const ControlledToggleButton = (): JSXElement => {
 
   return (
     <Toolbar aria-label="with controlled Toggle Button" checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
-      <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
+      <ToolbarToggleButton aria-label="Bold" icon={<TextBoldRegular />} name="textOptions" value="bold" />
+      <ToolbarToggleButton aria-label="Italic" icon={<TextItalicRegular />} name="textOptions" value="italic" />
       <ToolbarToggleButton
         aria-label="Underline"
-        icon={<TextUnderline24Regular />}
+        icon={<TextUnderlineRegular />}
         name="textOptions"
         value="underline"
       />

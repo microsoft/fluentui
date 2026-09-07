@@ -4,7 +4,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
-import { Dismiss20Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
 import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
 
@@ -46,7 +46,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
               // TODO: find a better way to add internal labels
               aria-label="close"
             >
-              <Dismiss20Regular />
+              <DismissRegular fontSize={20} />
             </button>
           </DialogTrigger>
         ),

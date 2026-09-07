@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { FontIncrease24Regular, FontDecrease24Regular, TextFont24Regular } from '@fluentui/react-icons';
+import { FontIncreaseRegular, FontDecreaseRegular, TextFontRegular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarButton } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 
@@ -14,9 +14,9 @@ export const Large = (props: Partial<ToolbarProps>): JSXElement => (
       borderRadius: '8px',
     }}
   >
-    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
-    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
-    <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
+    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
+    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
+    <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
   </Toolbar>
 );
 
