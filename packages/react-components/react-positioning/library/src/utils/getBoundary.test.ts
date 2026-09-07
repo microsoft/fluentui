@@ -50,25 +50,27 @@ describe('getBoundary', () => {
       expect(getBoundary(trigger, 'scrollParent')).toEqual([]);
     });
 
-    it('resolves to the nearest real scroll parent, ignoring an intermediate static overflow:hidden container', () => {
-      const scrollableAncestor = document.createElement('div');
+    it('resolves all real scroll parents, ignoring an intermediate static overflow:hidden container', () => {
+      const outerScrollableAncestor = document.createElement('div');
+      const innerScrollableAncestor = document.createElement('div');
       const staticHiddenContainer = document.createElement('div');
       const trigger = document.createElement('button');
 
       staticHiddenContainer.appendChild(trigger);
-      scrollableAncestor.appendChild(staticHiddenContainer);
-      document.body.appendChild(scrollableAncestor);
+      innerScrollableAncestor.appendChild(staticHiddenContainer);
+      outerScrollableAncestor.appendChild(innerScrollableAncestor);
+      document.body.appendChild(outerScrollableAncestor);
 
       jest.spyOn(window, 'getComputedStyle').mockImplementation(
         (node: Element) =>
           ({
-            overflow: node === scrollableAncestor ? 'scroll' : 'hidden',
+            overflow: node === outerScrollableAncestor || node === innerScrollableAncestor ? 'scroll' : 'hidden',
             overflowX: '',
             overflowY: '',
           } as CSSStyleDeclaration),
       );
 
-      expect(getBoundary(trigger, 'scrollParent')).toBe(scrollableAncestor);
+      expect(getBoundary(trigger, 'scrollParent')).toEqual([innerScrollableAncestor, outerScrollableAncestor]);
     });
 
     it('returns an empty boundary list when the resolved scroll parent is BODY', () => {

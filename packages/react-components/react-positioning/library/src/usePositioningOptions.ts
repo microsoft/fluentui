@@ -136,7 +136,6 @@ export function usePositioningOptions(options: PositioningOptions): (
   return React.useCallback(
     (container: HTMLElement, target: TargetElement, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
-
       const optionsAfterEnhancement = configFn(container, arrow);
       const {
         autoSize,
@@ -162,8 +161,6 @@ export function usePositioningOptions(options: PositioningOptions): (
       const normalizedAutoSize = normalizeAutoSize(autoSize);
       const normalizedHideBoundary = getBoundary(target, hideBoundary ?? undefined);
       const hideBoundaryOptions = normalizedHideBoundary ? { boundary: normalizedHideBoundary } : {};
-      const shouldUseHideMiddleware =
-        hideBoundary !== 'scrollParent' || !Array.isArray(normalizedHideBoundary) || normalizedHideBoundary.length > 0;
 
       const middleware = [
         normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
@@ -184,8 +181,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        shouldUseHideMiddleware && hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
-        shouldUseHideMiddleware && hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
+        hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
+        hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),

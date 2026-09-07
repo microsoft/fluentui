@@ -73,15 +73,19 @@ const NoScrollBoundaryTestComponent = () => {
 };
 
 describe('usePositioning', () => {
-  it('omits hide middleware when the target has no scroll parent', () => {
+  it('uses an empty boundary list when the target has no scroll parent', () => {
     render(<NoScrollBoundaryTestComponent />);
     const calls = jest.mocked(createPositionManager).mock.calls;
     const { middleware } = calls[calls.length - 1][0];
 
-    expect(middleware.filter(item => item.name === 'hide')).toHaveLength(0);
+    const hideMiddleware = middleware.filter(item => item.name === 'hide');
+    expect(hideMiddleware).toHaveLength(2);
+    hideMiddleware.forEach(item => {
+      expect(item.options).toEqual(expect.objectContaining({ boundary: [] }));
+    });
   });
 
-  it('uses the target scroll parent as the hide boundary for a portaled container', () => {
+  it('uses the target scroll parents as the hide boundary for a portaled container', () => {
     const { getByTestId } = render(<ScrollBoundaryTestComponent />);
     const calls = jest.mocked(createPositionManager).mock.calls;
     const { middleware } = calls[calls.length - 1][0];
@@ -89,7 +93,7 @@ describe('usePositioning', () => {
     const hideMiddleware = middleware.filter(item => item.name === 'hide');
     expect(hideMiddleware).toHaveLength(2);
     hideMiddleware.forEach(item => {
-      expect(item.options).toEqual(expect.objectContaining({ boundary: getByTestId('scroll-parent') }));
+      expect(item.options).toEqual(expect.objectContaining({ boundary: [getByTestId('scroll-parent')] }));
     });
   });
 

@@ -1,9 +1,9 @@
 import { getScrollParent } from './getScrollParent';
 
-export function listScrollParents(node: HTMLElement): HTMLElement[] {
+export function listScrollParents(node: Element): HTMLElement[] {
   const scrollParents: HTMLElement[] = [];
 
-  let cur: HTMLElement | null = node;
+  let cur: Element | null = node;
   while (cur) {
     const scrollParent = getScrollParent(cur);
 

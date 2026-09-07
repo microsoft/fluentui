@@ -1,6 +1,6 @@
 import type { Boundary as FloatingUIBoundary } from '@floating-ui/dom';
 
-import { getScrollParent } from './getScrollParent';
+import { listScrollParents } from './listScrollParents';
 import type { PositioningBoundary, TargetElement } from '../types';
 
 const isElement = (node: TargetElement | Element | null | undefined): node is Element =>
@@ -24,13 +24,9 @@ export function getBoundary(
     return 'clippingAncestors';
   }
   if (boundary === 'scrollParent') {
-    const boundariesNode = targetElement && getScrollParent(targetElement);
-
-    if (!boundariesNode || boundariesNode.nodeName === 'BODY') {
-      return [];
-    }
-
-    return boundariesNode;
+    return targetElement
+      ? listScrollParents(targetElement).filter(scrollParent => scrollParent.nodeName !== 'BODY')
+      : [];
   }
 
   return boundary;
