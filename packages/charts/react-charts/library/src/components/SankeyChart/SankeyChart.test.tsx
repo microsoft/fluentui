@@ -147,16 +147,6 @@ describe('Sankey bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
-
-  testWithoutWait(
-    'Should render the Sankey chart with a prototype property node ID',
-    SankeyChart,
-    { data: chartPointsWithPrototypeNodeId() },
-    () => {
-      expect(screen.getByText('Source')).toBeDefined();
-      expect(screen.getByText('Target')).toBeDefined();
-    },
-  );
 });
 
 describe('Sankey chart - Theme', () => {
@@ -625,4 +615,18 @@ describe('SankeyChart - Min Height of Node Test', () => {
     // ASSERT
     expect(component).toMatchSnapshot();
   });
+});
+
+describe('Sankey chart prototype property node IDs', () => {
+  beforeEach(sharedBeforeEach);
+
+  testWithoutWait(
+    'Should render the Sankey chart with a prototype property node ID',
+    SankeyChart,
+    { data: chartPointsWithPrototypeNodeId() },
+    () => {
+      expect(screen.getByText('Source')).toBeDefined();
+      expect(screen.getByText('Target')).toBeDefined();
+    },
+  );
 });
