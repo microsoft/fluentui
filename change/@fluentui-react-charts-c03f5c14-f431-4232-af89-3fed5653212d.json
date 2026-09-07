@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Simple accessibility bug fix",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
