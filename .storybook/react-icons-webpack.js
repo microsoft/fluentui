@@ -5,10 +5,12 @@ const iconLoader = require.resolve('@fluentui/react-icons-atomic-webpack-loader'
 const headlessBaseStyles = require.resolve('@fluentui/react-icons/headless/styles.css');
 const headlessFontStyles = require.resolve('@fluentui/react-icons/headless/fonts/styles.css');
 
+/** @typedef {string | string[] | import('webpack').EntryObject} ResolvedEntry */
+
 /**
- * @param {import('webpack').Entry} entry
+ * @param {ResolvedEntry} entry
  * @param {string[]} imports
- * @returns {import('webpack').Entry}
+ * @returns {ResolvedEntry}
  */
 function prependEntryImports(entry, imports) {
   if (typeof entry === 'string') {
@@ -83,7 +85,7 @@ function configureReactIcons(options) {
 
     config.entry = async () => {
       const entry = typeof originalEntry === 'function' ? await originalEntry() : originalEntry;
-      return prependEntryImports(entry, styleImports);
+      return prependEntryImports(entry ?? [], styleImports);
     };
   }
 
