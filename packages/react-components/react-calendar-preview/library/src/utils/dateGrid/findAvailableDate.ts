@@ -6,29 +6,35 @@ import { isAfterMaxDate } from './isAfterMaxDate';
 
 import { isBeforeMinDate } from './isBeforeMinDate';
 import { compareDatePart, addDays } from '../dateMath/dateMath';
+import { dateAdapter as calendarDateAdapter } from '../dateAdapter';
 
 /**
  * Returns closest available date given the restriction `options`, or undefined otherwise
  * @param options - list of search options
  */
 export const findAvailableDate = (options: AvailableDateOptions): Date | undefined => {
-  const { targetDate, initialDate, direction, ...restrictedDateOptions } = options;
+  const { targetDate, initialDate, direction, dateAdapter, ...restrictedDateOptions } = options;
+  const adapter = dateAdapter ?? calendarDateAdapter;
+  const restrictionOptions = { ...restrictedDateOptions, dateAdapter: adapter };
   let availableDate = targetDate;
   // if the target date is available, return it immediately
-  if (!isRestrictedDate(targetDate, restrictedDateOptions)) {
+  if (!isRestrictedDate(targetDate, restrictionOptions)) {
     return targetDate;
   }
 
   while (
-    compareDatePart(initialDate, availableDate) !== 0 &&
-    isRestrictedDate(availableDate, restrictedDateOptions) &&
-    !isAfterMaxDate(availableDate, restrictedDateOptions) &&
-    !isBeforeMinDate(availableDate, restrictedDateOptions)
+    compareDatePart(initialDate, availableDate, adapter) !== 0 &&
+    isRestrictedDate(availableDate, restrictionOptions) &&
+    !isAfterMaxDate(availableDate, restrictionOptions) &&
+    !isBeforeMinDate(availableDate, restrictionOptions)
   ) {
-    availableDate = addDays(availableDate, direction);
+    availableDate = addDays(availableDate, direction, adapter);
   }
 
-  if (compareDatePart(initialDate, availableDate) !== 0 && !isRestrictedDate(availableDate, restrictedDateOptions)) {
+  if (
+    compareDatePart(initialDate, availableDate, adapter) !== 0 &&
+    !isRestrictedDate(availableDate, restrictionOptions)
+  ) {
     return availableDate;
   }
 

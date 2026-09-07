@@ -1,4 +1,6 @@
 import { getDayIndex, getMonthIndex, TimeConstants } from '../constants';
+import { dateAdapter } from '../dateAdapter';
+import type { CalendarDateAdapter } from '../dateAdapter';
 import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from '../constants';
 
 /**
@@ -7,10 +9,8 @@ import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from '../constants';
  * @param days - The number of days to offset. 'days' can be negative.
  * @returns A new Date object offset from the origin date by the given number of days
  */
-export function addDays(date: Date, days: number): Date {
-  const result = new Date(date.getTime());
-  result.setDate(result.getDate() + days);
-  return result;
+export function addDays(date: Date, days: number, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addDays(date, days);
 }
 
 /**
@@ -19,8 +19,8 @@ export function addDays(date: Date, days: number): Date {
  * @param weeks - The number of weeks to offset. 'weeks' can be negative.
  * @returns A new Date object offset from the origin date by the given number of weeks
  */
-export function addWeeks(date: Date, weeks: number): Date {
-  return addDays(date, weeks * TimeConstants.DaysInOneWeek);
+export function addWeeks(date: Date, weeks: number, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addDays(date, weeks * TimeConstants.DaysInOneWeek);
 }
 
 /**
@@ -31,23 +31,8 @@ export function addWeeks(date: Date, weeks: number): Date {
  * @param months - The number of months to offset. 'months' can be negative.
  * @returns A new Date object offset from the origin date by the given number of months
  */
-export function addMonths(date: Date, months: number): Date {
-  let result = new Date(date.getTime());
-  const newMonth = result.getMonth() + months;
-  result.setMonth(newMonth);
-
-  /*
-   * We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
-   * Loop until we back up to a day the new month has.
-   * (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-   */
-  if (
-    result.getMonth() !==
-    ((newMonth % TimeConstants.MonthInOneYear) + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear
-  ) {
-    result = addDays(result, -result.getDate());
-  }
-  return result;
+export function addMonths(date: Date, months: number, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addMonths(date, months);
 }
 
 /**
@@ -58,22 +43,8 @@ export function addMonths(date: Date, months: number): Date {
  * @param years - The number of years to offset. 'years' can be negative.
  * @returns A new Date object offset from the origin date by the given number of years
  */
-export function addYears(date: Date, years: number): Date {
-  let result = new Date(date.getTime());
-  result.setFullYear(date.getFullYear() + years);
-
-  /*
-   * We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
-   * Loop until we back up to a day the new month has.
-   * (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-   */
-  if (
-    result.getMonth() !==
-    ((date.getMonth() % TimeConstants.MonthInOneYear) + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear
-  ) {
-    result = addDays(result, -result.getDate());
-  }
-  return result;
+export function addYears(date: Date, years: number, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addYears(date, years);
 }
 
 /**
@@ -81,8 +52,8 @@ export function addYears(date: Date, years: number): Date {
  * @param date - The origin date
  * @returns A new Date object with the day set to the first day of the month.
  */
-export function getMonthStart(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0, 0);
+export function getMonthStart(date: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.createDate(adapter.getYear(date), adapter.getMonth(date), 1);
 }
 
 /**
@@ -90,8 +61,8 @@ export function getMonthStart(date: Date): Date {
  * @param date - The origin date
  * @returns A new Date object with the day set to the last day of the month.
  */
-export function getMonthEnd(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0, 0);
+export function getMonthEnd(date: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addDays(adapter.createDate(adapter.getYear(date), adapter.getMonth(date) + 1, 1), -1);
 }
 
 /**
@@ -99,8 +70,8 @@ export function getMonthEnd(date: Date): Date {
  * @param date - The origin date
  * @returns A new Date object with the day set to the first day of the year.
  */
-export function getYearStart(date: Date): Date {
-  return new Date(date.getFullYear(), 0, 1, 0, 0, 0, 0);
+export function getYearStart(date: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.createDate(adapter.getYear(date), 0, 1);
 }
 
 /**
@@ -108,8 +79,8 @@ export function getYearStart(date: Date): Date {
  * @param date - The origin date
  * @returns A new Date object with the day set to the last day of the year.
  */
-export function getYearEnd(date: Date): Date {
-  return new Date(date.getFullYear() + 1, 0, 0, 0, 0, 0, 0);
+export function getYearEnd(date: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addDays(adapter.createDate(adapter.getYear(date) + 1, 0, 1), -1);
 }
 
 /**
@@ -120,25 +91,21 @@ export function getYearEnd(date: Date): Date {
  * @param month - The 0-based index of the month to set on the date.
  * @returns A new Date object with the given month set.
  */
-export function setMonth(date: Date, month: number): Date {
-  return addMonths(date, month - date.getMonth());
+export function setMonth(date: Date, month: number, adapter: CalendarDateAdapter<Date> = dateAdapter): Date {
+  return adapter.addMonths(date, month - adapter.getMonth(date));
 }
 
 /**
  * Compares two dates, and returns true if the two dates (not accounting for time-of-day) are equal.
  * @returns True if the two dates represent the same date (regardless of time-of-day), false otherwise.
  */
-export function compareDates(date1: Date, date2: Date): boolean {
+export function compareDates(date1: Date, date2: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): boolean {
   if (!date1 && !date2) {
     return true;
   } else if (!date1 || !date2) {
     return false;
   } else {
-    return (
-      date1.getFullYear() === date2.getFullYear() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate()
-    );
+    return adapter.compareDates(date1, date2) === 0;
   }
 }
 
@@ -149,8 +116,8 @@ export function compareDates(date1: Date, date2: Date): boolean {
  * @returns A negative value if date1 is earlier than date2, 0 if the dates are equal, or a positive value
  * if date1 is later than date2.
  */
-export function compareDatePart(date1: Date, date2: Date): number {
-  return getDatePartHashValue(date1) - getDatePartHashValue(date2);
+export function compareDatePart(date1: Date, date2: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): number {
+  return adapter.compareDates(date1, date2);
 }
 
 /**
@@ -170,6 +137,7 @@ export function getDateRangeArray(
   firstDayOfWeek: DayOfWeek,
   workWeekDays?: DayOfWeek[],
   daysToSelectInDayView: number = 1,
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
 ): Date[] {
   const datesArray: Date[] = [];
   let startDate: Date;
@@ -185,28 +153,28 @@ export function getDateRangeArray(
     case 'day':
       // Create a date range for the specified date
 
-      [startDate, endDate] = [date, addDays(date, daysToSelectInDayView)];
+      [startDate, endDate] = [date, adapter.addDays(date, daysToSelectInDayView)];
 
       // If the start date is after the end date, swap them
-      if (compareDatePart(startDate, endDate) > 0) {
+      if (adapter.compareDates(startDate, endDate) > 0) {
         /*
          * For reverse dates we need to add one day to both dates
          * to ensure correct start date
          */
-        [startDate, endDate] = [addDays(endDate, 1), addDays(startDate, 1)];
+        [startDate, endDate] = [adapter.addDays(endDate, 1), adapter.addDays(startDate, 1)];
       }
 
       break;
 
     case 'week':
     case 'workWeek':
-      startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
-      endDate = addDays(startDate, TimeConstants.DaysInOneWeek);
+      startDate = getStartDateOfWeek(date, firstDayOfWeek, adapter);
+      endDate = adapter.addDays(startDate, TimeConstants.DaysInOneWeek);
       break;
 
     case 'month':
-      startDate = new Date(date.getFullYear(), date.getMonth(), 1);
-      endDate = addMonths(startDate, 1);
+      startDate = adapter.createDate(adapter.getYear(date), adapter.getMonth(date), 1);
+      endDate = adapter.addMonths(startDate, 1);
       break;
 
     default:
@@ -220,11 +188,11 @@ export function getDateRangeArray(
     if (dateRangeType !== 'workWeek') {
       // push all days not in work week view
       datesArray.push(nextDate);
-    } else if (workWeekDayIndices.indexOf(nextDate.getDay()) !== -1) {
+    } else if (workWeekDayIndices.indexOf(adapter.getDay(nextDate)) !== -1) {
       datesArray.push(nextDate);
     }
-    nextDate = addDays(nextDate, 1);
-  } while (!compareDates(nextDate, endDate));
+    nextDate = adapter.addDays(nextDate, 1);
+  } while (adapter.compareDates(nextDate, endDate) !== 0);
 
   return datesArray;
 }
@@ -235,9 +203,13 @@ export function getDateRangeArray(
  * @param dateRange - An array of dates to do the lookup on
  * @returns True if the date matches one of the dates in the specified array, false otherwise.
  */
-export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean {
+export function isInDateRangeArray(
+  date: Date,
+  dateRange: Date[],
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
+): boolean {
   for (const dateInRange of dateRange) {
-    if (compareDates(date, dateInRange)) {
+    if (adapter.compareDates(date, dateInRange) === 0) {
       return true;
     }
   }
@@ -257,25 +229,26 @@ export function getWeekNumbersInMonth(
   firstDayOfWeek: DayOfWeek,
   firstWeekOfYear: FirstWeekOfYear,
   navigatedDate: Date,
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
 ): number[] {
-  const selectedYear = navigatedDate.getFullYear();
-  const selectedMonth = navigatedDate.getMonth();
+  const selectedYear = adapter.getYear(navigatedDate);
+  const selectedMonth = adapter.getMonth(navigatedDate);
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
   let dayOfMonth = 1;
-  const fistDayOfMonth = new Date(selectedYear, selectedMonth, dayOfMonth);
+  const fistDayOfMonth = adapter.createDate(selectedYear, selectedMonth, dayOfMonth);
   const endOfFirstWeek =
     dayOfMonth +
     (firstDayOfWeekIndex + TimeConstants.DaysInOneWeek - 1) -
-    adjustWeekDay(firstDayOfWeekIndex, fistDayOfMonth.getDay());
-  let endOfWeekRange = new Date(selectedYear, selectedMonth, endOfFirstWeek);
-  dayOfMonth = endOfWeekRange.getDate();
+    adjustWeekDay(firstDayOfWeekIndex, adapter.getDay(fistDayOfMonth));
+  let endOfWeekRange = adapter.createDate(selectedYear, selectedMonth, endOfFirstWeek);
+  dayOfMonth = adapter.getDate(endOfWeekRange);
 
   const weeksArray = [];
   for (let i = 0; i < weeksInMonth; i++) {
     // Get week number for end of week
-    weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear));
+    weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear, adapter));
     dayOfMonth += TimeConstants.DaysInOneWeek;
-    endOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
+    endOfWeekRange = adapter.createDate(selectedYear, selectedMonth, dayOfMonth);
   }
   return weeksArray;
 }
@@ -288,19 +261,24 @@ export function getWeekNumbersInMonth(
  * @param firstWeekOfYear - The first week of the year (1-2)
  * @returns The week's number in the year.
  */
-export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number {
+export function getWeekNumber(
+  date: Date,
+  firstDayOfWeek: DayOfWeek,
+  firstWeekOfYear: FirstWeekOfYear,
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
+): number {
   // First four-day week of the year - minumum days count
   const fourDayWeek = 4;
 
   switch (firstWeekOfYear) {
     case 'firstFullWeek':
-      return getWeekOfYearFullDays(date, firstDayOfWeek, TimeConstants.DaysInOneWeek);
+      return getWeekOfYearFullDays(date, firstDayOfWeek, TimeConstants.DaysInOneWeek, adapter);
 
     case 'firstFourDayWeek':
-      return getWeekOfYearFullDays(date, firstDayOfWeek, fourDayWeek);
+      return getWeekOfYearFullDays(date, firstDayOfWeek, fourDayWeek, adapter);
 
     default:
-      return getFirstDayWeekOfYear(date, firstDayOfWeek);
+      return getFirstDayWeekOfYear(date, firstDayOfWeek, adapter);
   }
 }
 
@@ -310,13 +288,17 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
  * @param date - The date to find the beginning of the week date for.
  * @returns A new date object representing the first day of the week containing the input date.
  */
-export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
-  let daysOffset = getDayIndex(firstDayOfWeek) - date.getDay();
+export function getStartDateOfWeek(
+  date: Date,
+  firstDayOfWeek: DayOfWeek,
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
+): Date {
+  let daysOffset = getDayIndex(firstDayOfWeek) - adapter.getDay(date);
   if (daysOffset > 0) {
     // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
     daysOffset -= TimeConstants.DaysInOneWeek;
   }
-  return addDays(date, daysOffset);
+  return adapter.addDays(date, daysOffset);
 }
 
 /**
@@ -325,33 +307,28 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
  * @param date - The date to find the beginning of the week date for.
  * @returns A new date object representing the first day of the week containing the input date.
  */
-export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+export function getEndDateOfWeek(
+  date: Date,
+  firstDayOfWeek: DayOfWeek,
+  adapter: CalendarDateAdapter<Date> = dateAdapter,
+): Date {
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
   const lastDayOfWeek = firstDayOfWeekIndex - 1 >= 0 ? firstDayOfWeekIndex - 1 : TimeConstants.DaysInOneWeek - 1;
-  let daysOffset = lastDayOfWeek - date.getDay();
+  let daysOffset = lastDayOfWeek - adapter.getDay(date);
   if (daysOffset < 0) {
     // If last day of week is < date, go 1 week forward, to ensure resulting date is in the future.
     daysOffset += TimeConstants.DaysInOneWeek;
   }
-  return addDays(date, daysOffset);
-}
-
-/**
- * Gets a new date with the time portion zeroed out, i.e., set to midnight
- * @param date - The origin date
- * @returns A new date with the time set to midnight
- */
-function getDatePart(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  return adapter.addDays(date, daysOffset);
 }
 
 /**
  * Helper function to assist in date comparisons
  */
-export function getDatePartHashValue(date: Date): number {
+export function getDatePartHashValue(date: Date, adapter: CalendarDateAdapter<Date> = dateAdapter): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
   // eslint-disable-next-line no-bitwise
-  return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
+  return adapter.getDate(date) + (adapter.getMonth(date) << 5) + (adapter.getYear(date) << 9);
 }
 
 /**
@@ -362,13 +339,18 @@ export function getDatePartHashValue(date: Date): number {
  * @param numberOfFullDays - week settings.
  * @returns The week's number in the year.
  */
-function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number): number {
+function getWeekOfYearFullDays(
+  date: Date,
+  firstDayOfWeek: DayOfWeek,
+  numberOfFullDays: number,
+  adapter: CalendarDateAdapter<Date>,
+): number {
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  const dayOfYear = getDayOfYear(date) - 1;
-  let num = date.getDay() - (dayOfYear % TimeConstants.DaysInOneWeek);
+  const dayOfYear = getDayOfYear(date, adapter) - 1;
+  let num = adapter.getDay(date) - (dayOfYear % TimeConstants.DaysInOneWeek);
 
-  const lastDayOfPrevYear = new Date(date.getFullYear() - 1, getMonthIndex('december'), 31);
-  const daysInYear = getDayOfYear(lastDayOfPrevYear) - 1;
+  const lastDayOfPrevYear = adapter.createDate(adapter.getYear(date) - 1, getMonthIndex('december'), 31);
+  const daysInYear = getDayOfYear(lastDayOfPrevYear, adapter) - 1;
 
   let num2 = (firstDayOfWeekIndex - num + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
   if (num2 !== 0 && num2 >= numberOfFullDays) {
@@ -396,9 +378,9 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @returns The week's number in the year.
  */
-function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: DayOfWeek): number {
-  const num = getDayOfYear(date) - 1;
-  const num2 = date.getDay() - (num % TimeConstants.DaysInOneWeek);
+function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: DayOfWeek, adapter: CalendarDateAdapter<Date>): number {
+  const num = getDayOfYear(date, adapter) - 1;
+  const num2 = adapter.getDay(date) - (num % TimeConstants.DaysInOneWeek);
   const num3 = (num2 - getDayIndex(firstDayOfWeek) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
 
   return Math.floor((num + num3) / TimeConstants.DaysInOneWeek + 1);
@@ -425,16 +407,16 @@ function adjustWeekDay(firstDayOfWeekIndex: number, dateWeekDay: number): number
  * @param date - A date to find the day number for.
  * @returns The day's number in the year.
  */
-function getDayOfYear(date: Date): number {
-  const month = date.getMonth();
-  const year = date.getFullYear();
+function getDayOfYear(date: Date, adapter: CalendarDateAdapter<Date>): number {
+  const month = adapter.getMonth(date);
+  const year = adapter.getYear(date);
   let daysUntilDate = 0;
 
   for (let i = 0; i < month; i++) {
-    daysUntilDate += daysInMonth(i + 1, year);
+    daysUntilDate += daysInMonth(i + 1, year, adapter);
   }
 
-  daysUntilDate += date.getDate();
+  daysUntilDate += adapter.getDate(date);
 
   return daysUntilDate;
 }
@@ -445,6 +427,6 @@ function getDayOfYear(date: Date): number {
  * @param year - The year to target.
  * @returns The number of days in the month.
  */
-function daysInMonth(month: number, year: number): number {
-  return new Date(year, month, 0).getDate();
+function daysInMonth(month: number, year: number, adapter: CalendarDateAdapter<Date>): number {
+  return adapter.getDate(adapter.createDate(year, month, 0));
 }

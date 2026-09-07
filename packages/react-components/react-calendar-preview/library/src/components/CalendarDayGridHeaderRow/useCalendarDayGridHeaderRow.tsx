@@ -21,19 +21,20 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
   ref: React.Ref<HTMLTableRowElement>,
 ): CalendarDayGridHeaderRowState => {
   const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
+  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
   const showWeekNumbers = useCalendarContext_unstable(ctx => ctx.showWeekNumbers);
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
   const weeksToShow = useCalendarDayContext_unstable(ctx => ctx.weeksToShow);
 
-  const weekdayDates = Array.from({ length: DAYS_IN_WEEK }, (_, index) => new Date(2020, 0, 5 + index));
+  const weekdayDates = Array.from({ length: DAYS_IN_WEEK }, (_, index) => dateAdapter.createDate(2020, 0, 5 + index));
   const shortDays = weekdayDates.map(date => formatDateTime(date, 'shortWeekday'));
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
 
   let firstOfMonthIndex = -1;
   const firstWeekOfMonth = weeks[1];
   for (let i = 0; i < firstWeekOfMonth.length; i++) {
-    if (firstWeekOfMonth[i].originalDate.getDate() === 1) {
+    if (dateAdapter.getDate(firstWeekOfMonth[i].originalDate) === 1) {
       firstOfMonthIndex = i;
       break;
     }

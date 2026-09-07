@@ -1,10 +1,17 @@
 'use client';
 
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../utils';
+import { dateAdapter, formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../utils';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventHandler } from '@fluentui/react-utilities';
-import type { DateRangeType, DayOfWeek, FirstWeekOfYear, FormatCalendarLabel, FormatDateTime } from '../utils';
+import type {
+  CalendarDateAdapter,
+  DateRangeType,
+  DayOfWeek,
+  FirstWeekOfYear,
+  FormatCalendarLabel,
+  FormatDateTime,
+} from '../utils';
 import type { CalendarDaySelectData } from '../CalendarDay';
 
 /**
@@ -12,6 +19,11 @@ import type { CalendarDaySelectData } from '../CalendarDay';
  * Pickers and their descendants read shared configuration directly from this context.
  */
 export type CalendarContextValue = {
+  /**
+   * Implements calendar arithmetic and field access.
+   */
+  dateAdapter: CalendarDateAdapter<Date>;
+
   /**
    * Allows all dates and buttons to be focused, including disabled ones.
    */
@@ -108,6 +120,7 @@ export type CalendarContextValues = {
  */
 export const calendarContextDefaultValue: CalendarContextValue = {
   allFocusable: false,
+  dateAdapter,
   dateRangeType: 'day',
   firstDayOfWeek: 'sunday',
   firstWeekOfYear: 'firstDay',

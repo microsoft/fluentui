@@ -2,8 +2,8 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Calendar } from './Calendar';
 import { isConformant } from '../../testing/isConformant';
-import { formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
-import type { CalendarDateLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
+import { dateAdapter, formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
+import type { CalendarDateAdapter, CalendarDateLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
 
 describe('Calendar', () => {
   isConformant({
@@ -63,6 +63,17 @@ describe('Calendar', () => {
 
     expect(onKeyDown).toHaveBeenCalledTimes(1);
     expect(onDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses the configured date adapter for keyboard navigation', () => {
+    const addMonths = jest.fn(dateAdapter.addMonths);
+    const customDateAdapter: CalendarDateAdapter<Date> = { ...dateAdapter, addMonths };
+    const value = new Date(2020, 8, 18);
+    const { container } = render(<Calendar value={value} today={value} dateAdapter={customDateAdapter} />);
+
+    fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
+
+    expect(addMonths).toHaveBeenCalledWith(value, 1);
   });
 
   it('moves the highlighted month with navigation rather than with the selected value', () => {

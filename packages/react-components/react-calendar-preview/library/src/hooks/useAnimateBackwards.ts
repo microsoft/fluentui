@@ -7,7 +7,10 @@ import * as React from 'react';
  * the one from the previous render. `false` until the first navigation, so nothing animates on mount.
  * @internal
  */
-export function useAnimateBackwards<T extends number | Date>(fromValue: T): boolean {
+export function useAnimateBackwards<T extends number | Date>(
+  fromValue: T,
+  compare: (value1: T, value2: T) => number = (value1, value2) => Number(value1) - Number(value2),
+): boolean {
   const previousValueRef = React.useRef<T | undefined>(undefined);
   React.useEffect(() => {
     previousValueRef.current = fromValue;
@@ -16,9 +19,9 @@ export function useAnimateBackwards<T extends number | Date>(fromValue: T): bool
   const previousValue = previousValueRef.current;
 
   // eslint-disable-next-line react-hooks/refs
-  if (previousValue === undefined || Number(previousValue) === Number(fromValue)) {
+  if (previousValue === undefined || compare(previousValue, fromValue) === 0) {
     return false;
   }
 
-  return Number(previousValue) > Number(fromValue);
+  return compare(previousValue, fromValue) > 0;
 }

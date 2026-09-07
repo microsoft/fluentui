@@ -9,10 +9,10 @@ import { isAfterMaxDate } from './isAfterMaxDate';
  * @param options - restriction options (min date, max date and list of restricted dates)
  */
 export const isRestrictedDate = (date: Date, options: RestrictedDatesOptions): boolean => {
-  const { restrictedDates, minDate, maxDate } = options;
+  const { restrictedDates, minDate, maxDate, dateAdapter } = options;
   if (!restrictedDates && !minDate && !maxDate) {
     return false;
   }
-  const inRestrictedDates = restrictedDates && restrictedDates.some((rd: Date) => compareDates(rd, date));
+  const inRestrictedDates = restrictedDates && restrictedDates.some((rd: Date) => compareDates(rd, date, dateAdapter));
   return inRestrictedDates || isBeforeMinDate(date, options) || isAfterMaxDate(date, options);
 };

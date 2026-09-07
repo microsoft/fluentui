@@ -65,6 +65,7 @@ export const useCalendarDayBase_unstable = (
   ref: React.Ref<CalendarDayHandle>,
 ): CalendarDayBaseState => {
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
+  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
   const firstWeekOfYear = useCalendarContext_unstable(ctx => ctx.firstWeekOfYear);
@@ -94,7 +95,7 @@ export const useCalendarDayBase_unstable = (
     previousMonthButton,
   } = props;
 
-  const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
+  const today = React.useMemo(() => contextToday ?? dateAdapter.now(), [contextToday, dateAdapter]);
   const navigatedDate = props.navigatedDate ?? today;
   const selectedDate = value ?? today;
   const weeksToShow = props.weeksToShow;
@@ -117,10 +118,17 @@ export const useCalendarDayBase_unstable = (
     ev: React.MouseEvent<HTMLTableCellElement> | React.KeyboardEvent<HTMLElement>,
     date: Date,
   ): void => {
-    const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
+    const restrictedDatesOptions = { dateAdapter, minDate, maxDate, restrictedDates };
 
-    let dateRange = getDateRangeArray(date, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
-    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
+    let dateRange = getDateRangeArray(
+      date,
+      dateRangeType,
+      firstDayOfWeek,
+      workWeekDays,
+      daysToSelectInDayView,
+      dateAdapter,
+    );
+    dateRange = getBoundedDateRange(dateRange, minDate, maxDate, dateAdapter);
     dateRange = dateRange.filter((d: Date) => !isRestrictedDate(d, restrictedDatesOptions));
 
     const type = ev.type === 'keydown' ? 'keydown' : 'click';
@@ -132,6 +140,7 @@ export const useCalendarDayBase_unstable = (
 
   const gridOptions = {
     ...props,
+    dateAdapter,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,
@@ -165,12 +174,15 @@ export const useCalendarDayBase_unstable = (
       firstDayOfWeek,
       workWeekDays,
       daysToSelectInDayView,
-    ).map((date: Date) => date.getTime());
+      dateAdapter,
+    );
 
     // gets all the day refs for the given dates
     return weeks.reduce((accumulatedValue: DayInfo[], currentWeek: DayInfo[]) => {
       return accumulatedValue.concat(
-        currentWeek.filter((weekDay: DayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1),
+        currentWeek.filter((weekDay: DayInfo) =>
+          dateRange.some((date: Date) => dateAdapter.compareDates(date, weekDay.originalDate) === 0),
+        ),
       );
     }, []);
   };
@@ -185,21 +197,25 @@ export const useCalendarDayBase_unstable = (
    * aria-disabled rather than disabled, so focus is not lost when a prev/next button becomes
    * disabled right after being clicked.
    */
-  const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
-  const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
+  const prevMonthInBounds = minDate
+    ? compareDatePart(minDate, getMonthStart(navigatedDate, dateAdapter), dateAdapter) < 0
+    : true;
+  const nextMonthInBounds = maxDate
+    ? compareDatePart(getMonthEnd(navigatedDate, dateAdapter), maxDate, dateAdapter) < 0
+    : true;
 
   const onSelectPrevMonth = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
     onNavigateDate(ev, {
       event: ev,
       type: ev.type === 'keydown' ? 'keydown' : 'click',
-      date: addMonths(navigatedDate, -1),
+      date: addMonths(navigatedDate, -1, dateAdapter),
       focusOnNavigatedDay: false,
     });
   const onSelectNextMonth = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
     onNavigateDate(ev, {
       event: ev,
       type: ev.type === 'keydown' ? 'keydown' : 'click',
-      date: addMonths(navigatedDate, 1),
+      date: addMonths(navigatedDate, 1, dateAdapter),
       focusOnNavigatedDay: false,
     });
   const onSelectHeader = (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) =>
@@ -265,8 +281,8 @@ export const useCalendarDayBase_unstable = (
         onKeyDown: prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined,
         tabIndex: prevMonthInBounds ? undefined : allFocusable ? 0 : -1,
         title: formatLabel('previousMonth', {
-          date: addMonths(navigatedDate, -1),
-          formattedDate: formatDateTime(addMonths(navigatedDate, -1), 'month'),
+          date: addMonths(navigatedDate, -1, dateAdapter),
+          formattedDate: formatDateTime(addMonths(navigatedDate, -1, dateAdapter), 'month'),
         }),
         type: 'button',
       },
@@ -279,8 +295,8 @@ export const useCalendarDayBase_unstable = (
         onKeyDown: nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined,
         tabIndex: nextMonthInBounds ? undefined : allFocusable ? 0 : -1,
         title: formatLabel('nextMonth', {
-          date: addMonths(navigatedDate, 1),
-          formattedDate: formatDateTime(addMonths(navigatedDate, 1), 'month'),
+          date: addMonths(navigatedDate, 1, dateAdapter),
+          formattedDate: formatDateTime(addMonths(navigatedDate, 1, dateAdapter), 'month'),
         }),
         type: 'button',
       },

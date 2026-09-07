@@ -24,16 +24,16 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
-export function addDays(date: Date, days: number): Date;
+export function addDays(date: Date, days: number, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function addMonths(date: Date, months: number): Date;
+export function addMonths(date: Date, months: number, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function addWeeks(date: Date, weeks: number): Date;
+export function addWeeks(date: Date, weeks: number, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function addYears(date: Date, years: number): Date;
+export function addYears(date: Date, years: number, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
 export type AnimationDirection = 'horizontal' | 'vertical';
@@ -55,6 +55,7 @@ export const calendarContextDefaultValue: CalendarContextValue;
 
 // @public
 export type CalendarContextValue = {
+    dateAdapter: CalendarDateAdapter<Date>;
     allFocusable: boolean;
     dateRangeType: DateRangeType;
     firstDayOfWeek: DayOfWeek;
@@ -76,6 +77,20 @@ export type CalendarContextValue = {
 // @public
 export type CalendarContextValues = {
     calendar: CalendarContextValue;
+};
+
+// @public
+export type CalendarDateAdapter<TDate> = {
+    addDays(date: TDate, days: number): TDate;
+    addMonths(date: TDate, months: number): TDate;
+    addYears(date: TDate, years: number): TDate;
+    compareDates(date1: TDate, date2: TDate): number;
+    createDate(year: number, month: number, day: number): TDate;
+    getDate(date: TDate): number;
+    getDay(date: TDate): number;
+    getMonth(date: TDate): number;
+    getYear(date: TDate): number;
+    now(): TDate;
 };
 
 // @public
@@ -498,6 +513,7 @@ export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
 
 // @public
 export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
+    dateAdapter?: CalendarDateAdapter<Date>;
     onSelectDate?: EventHandler<CalendarSelectDateData>;
     onDismiss?: EventHandler<CalendarDismissData>;
     value?: Date;
@@ -721,16 +737,19 @@ export type CalendarYearState = ComponentState<CalendarYearSlots> & {
 };
 
 // @public
-export function compareDatePart(date1: Date, date2: Date): number;
+export function compareDatePart(date1: Date, date2: Date, adapter?: CalendarDateAdapter<Date>): number;
 
 // @public
-export function compareDates(date1: Date, date2: Date): boolean;
+export function compareDates(date1: Date, date2: Date, adapter?: CalendarDateAdapter<Date>): boolean;
 
 // @public
 export const createCalendarDateTimeFormatter: (locales?: string | string[], options?: CalendarIntlDateTimeFormatterOptions) => FormatDateTime;
 
 // @public
 export const createCalendarLabelFormatter: (overrides: CalendarLabelOverrides, fallback?: FormatCalendarLabel) => FormatCalendarLabel;
+
+// @public
+export const dateAdapter: CalendarDateAdapter<Date>;
 
 // @public
 export type DateRangeType = 'day' | 'week' | 'month' | 'workWeek';
@@ -780,10 +799,10 @@ export const formatDateTime: FormatDateTime;
 export const formatLabel: FormatCalendarLabel;
 
 // @public
-export function getDatePartHashValue(date: Date): number;
+export function getDatePartHashValue(date: Date, adapter?: CalendarDateAdapter<Date>): number;
 
 // @public
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number, adapter?: CalendarDateAdapter<Date>): Date[];
 
 // @public
 export function getDayFromIndex(index: number): DayOfWeek;
@@ -792,10 +811,10 @@ export function getDayFromIndex(index: number): DayOfWeek;
 export function getDayIndex(day: DayOfWeek): number;
 
 // @public
-export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function getMonthEnd(date: Date): Date;
+export function getMonthEnd(date: Date, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
 export function getMonthFromIndex(index: number): MonthOfYear;
@@ -804,25 +823,25 @@ export function getMonthFromIndex(index: number): MonthOfYear;
 export function getMonthIndex(month: MonthOfYear): number;
 
 // @public
-export function getMonthStart(date: Date): Date;
+export function getMonthStart(date: Date, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number;
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, adapter?: CalendarDateAdapter<Date>): number;
 
 // @public
-export function getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date): number[];
+export function getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date, adapter?: CalendarDateAdapter<Date>): number[];
 
 // @public
-export function getYearEnd(date: Date): Date;
+export function getYearEnd(date: Date, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function getYearStart(date: Date): Date;
+export function getYearStart(date: Date, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
-export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
+export function isInDateRangeArray(date: Date, dateRange: Date[], adapter?: CalendarDateAdapter<Date>): boolean;
 
 // @public
 export type MonthOfYear = 'january' | 'february' | 'march' | 'april' | 'may' | 'june' | 'july' | 'august' | 'september' | 'october' | 'november' | 'december';
@@ -867,7 +886,7 @@ export const renderCalendarYearGridCell_unstable: (state: CalendarYearGridCellSt
 export const renderCalendarYearGridRow_unstable: (state: CalendarYearGridRowState) => JSXElement;
 
 // @public
-export function setMonth(date: Date, month: number): Date;
+export function setMonth(date: Date, month: number, adapter?: CalendarDateAdapter<Date>): Date;
 
 // @public
 export const TimeConstants: {

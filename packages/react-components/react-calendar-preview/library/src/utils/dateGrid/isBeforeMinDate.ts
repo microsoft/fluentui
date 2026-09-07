@@ -7,6 +7,6 @@ import { compareDatePart } from '../dateMath/dateMath';
  * @param options - object with min date to check against
  */
 export const isBeforeMinDate = (date: Date, options: RestrictedDatesOptions): boolean => {
-  const { minDate } = options;
-  return minDate ? compareDatePart(minDate, date) >= 1 : false;
+  const { dateAdapter, minDate } = options;
+  return minDate ? compareDatePart(minDate, date, dateAdapter) >= 1 : false;
 };

@@ -117,13 +117,13 @@ export function useWeekCorners(
   };
 
   const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
-    const { dateRangeType, firstDayOfWeek, workWeekDays } = props;
+    const { dateAdapter, dateRangeType, firstDayOfWeek, workWeekDays } = props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = dateRangeType === 'workWeek' ? 'week' : dateRangeType;
 
     // we do not pass daysToSelectInDayView because we handle setting those styles dynamically in onMouseOver
-    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
+    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays, 1, dateAdapter);
 
     if (date1Selected !== date2Selected) {
       // if one is selected and the other is not, they can't be in the same range
@@ -134,7 +134,7 @@ export function useWeekCorners(
     }
 
     // otherwise, both must be unselected, so check the dateRange
-    return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
+    return dateRange.some((date: Date) => dateAdapter?.compareDates(date, date2) === 0);
   };
 
   return [getWeekCorners, calculateRoundedCorners] as const;

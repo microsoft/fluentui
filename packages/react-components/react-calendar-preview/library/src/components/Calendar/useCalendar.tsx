@@ -9,13 +9,14 @@ import { Button } from '@fluentui/react-button';
 import {
   addMonths,
   addYears,
+  dateAdapter as defaultDateAdapter,
   focusAsync,
   formatDateTime as defaultFormatDateTime,
   formatLabel as defaultFormatLabel,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import type { DayOfWeek } from '../../utils';
+import type { CalendarDateAdapter, DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
   CalendarDayDismissData,
@@ -29,7 +30,12 @@ const MIN_SIZE_FORCE_OVERLAY = 440;
 
 const defaultWorkWeekDays: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
-function useDateState({ onSelectDate, today, value }: Pick<CalendarProps, 'onSelectDate' | 'value'> & { today: Date }) {
+function useDateState({
+  dateAdapter,
+  onSelectDate,
+  today,
+  value,
+}: Pick<CalendarProps, 'onSelectDate' | 'value'> & { dateAdapter: CalendarDateAdapter<Date>; today: Date }) {
   /**
    * The currently selected date in the calendar
    */
@@ -53,7 +59,7 @@ function useDateState({ onSelectDate, today, value }: Pick<CalendarProps, 'onSel
    * The previously selected controlled value, used to update the displayed date.
    */
   const [lastSelectedDate = today, setLastSelectedDate] = React.useState(value);
-  if (value && lastSelectedDate.valueOf() !== value.valueOf()) {
+  if (value && dateAdapter.compareDates(lastSelectedDate, value) !== 0) {
     setNavigatedDay(value);
     setNavigatedMonth(value);
     setLastSelectedDate(value);
@@ -123,6 +129,7 @@ export const useCalendarBase_unstable = (
 ): CalendarBaseState => {
   const {
     allFocusable = false,
+    dateAdapter = defaultDateAdapter,
     dateRangeType = 'day',
     divider,
     firstDayOfWeek = 'sunday',
@@ -148,9 +155,10 @@ export const useCalendarBase_unstable = (
     workWeekDays = defaultWorkWeekDays,
   } = props;
 
-  const today = React.useMemo(() => todayProp ?? new Date(), [todayProp]);
+  const today = React.useMemo(() => todayProp ?? dateAdapter.now(), [dateAdapter, todayProp]);
 
   const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState({
+    dateAdapter,
     onSelectDate,
     value,
     today,
@@ -260,12 +268,12 @@ export const useCalendarBase_unstable = (
         break;
 
       case PageUp:
-        navigateDay(ev.ctrlKey ? addYears(navigatedDay, 1) : addMonths(navigatedDay, 1));
+        navigateDay(ev.ctrlKey ? addYears(navigatedDay, 1, dateAdapter) : addMonths(navigatedDay, 1, dateAdapter));
         ev.preventDefault();
         break;
 
       case PageDown:
-        navigateDay(ev.ctrlKey ? addYears(navigatedDay, -1) : addMonths(navigatedDay, -1));
+        navigateDay(ev.ctrlKey ? addYears(navigatedDay, -1, dateAdapter) : addMonths(navigatedDay, -1, dateAdapter));
         ev.preventDefault();
         break;
 
@@ -285,13 +293,14 @@ export const useCalendarBase_unstable = (
     : '';
 
   const goToTodayEnabled =
-    navigatedDay.getFullYear() !== today.getFullYear() ||
-    navigatedDay.getMonth() !== today.getMonth() ||
-    navigatedMonth.getFullYear() !== today.getFullYear() ||
-    navigatedMonth.getMonth() !== today.getMonth();
+    dateAdapter.getYear(navigatedDay) !== dateAdapter.getYear(today) ||
+    dateAdapter.getMonth(navigatedDay) !== dateAdapter.getMonth(today) ||
+    dateAdapter.getYear(navigatedMonth) !== dateAdapter.getYear(today) ||
+    dateAdapter.getMonth(navigatedMonth) !== dateAdapter.getMonth(today);
 
   return {
     allFocusable,
+    dateAdapter,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,

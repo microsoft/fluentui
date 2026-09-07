@@ -51,7 +51,8 @@ export function useWeeks(
           onSelected: ev => onSelectDate(ev, day.originalDate),
           setRef: getSetRefCallback(day.key),
           ...day,
-          isMarked: day.isMarked || markedDays?.some(markedDay => compareDates(day.originalDate, markedDay)),
+          isMarked:
+            day.isMarked || markedDays?.some(markedDay => compareDates(day.originalDate, markedDay, props.dateAdapter)),
         };
 
         week.push(dayInfo);
