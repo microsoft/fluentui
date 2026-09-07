@@ -1,11 +1,11 @@
 import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { execSync, spawnSync, SpawnSyncReturns } from 'child_process';
+import { execFileSync, spawnSync, SpawnSyncReturns } from 'child_process';
 import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
 
 jest.mock('child_process');
-const execSyncMock = execSync as unknown as jest.Mock<string>;
+const execFileSyncMock = execFileSync as unknown as jest.Mock<string>;
 const spawnSyncMock = spawnSync as unknown as jest.Mock<Partial<SpawnSyncReturns<string[]>>>;
 
 type Package = {
@@ -49,7 +49,7 @@ function setupTest(packages: Package[]) {
   });
 
   // response to epic creation
-  execSyncMock.mockReturnValueOnce('epicUrl');
+  execFileSyncMock.mockReturnValueOnce('epicUrl');
 
   /**
    * Responses for each of the packages created
@@ -68,11 +68,11 @@ function setupTest(packages: Package[]) {
       return acc;
     }, [])
     .forEach(owner => {
-      execSyncMock.mockReturnValueOnce(`issueUrl-${owner}`);
+      execFileSyncMock.mockReturnValueOnce(`issueUrl-${owner}`);
     });
 
   // response to editing the epic
-  execSyncMock.mockReturnValueOnce('epicUrl');
+  execFileSyncMock.mockReturnValueOnce('epicUrl');
 
   return tree;
 }
@@ -103,6 +103,15 @@ describe('epic-generator', () => {
         Please follow the format {owner}/{repositoryName}."
       `);
     });
+
+    it.each(['microsoft/fluentui;malicious-command', 'microsoft/fluentui/extra', 'microsoft/'])(
+      'rejects a repository containing extra characters: %s',
+      repository => {
+        const tree = createTreeWithEmptyWorkspace();
+
+        expect(() => epicGenerator(tree, { title: 'test title', repository })).toThrow(/invalid repository name/);
+      },
+    );
   });
 
   describe('authentication', () => {
@@ -204,73 +213,130 @@ describe('epic-generator', () => {
       });
       effectsCall();
 
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        1,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title" --body "*Description to be added*"`,
-      );
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(1, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title',
+        '--body',
+        '*Description to be added*',
+      ]);
 
       // @microsoft/cxe-red issue creation
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        2,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-red" --body "🚧 This is an auto-generated issue to individually track migration progress.
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(2, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title - @microsoft/cxe-red',
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
 
-        ### Packages to migrate:
-        - react-link
-        - react-button"`,
-      );
+          ### Packages to migrate:
+          - react-link
+          - react-button`,
+      ]);
       // @microsoft/cxe-prg issue creation
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        3,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(3, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title - @microsoft/cxe-prg',
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
 
-        ### Packages to migrate:
-        - react-card"`,
-      );
+          ### Packages to migrate:
+          - react-card`,
+      ]);
       // @microsoft/teams-prg issue creation
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        4,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/teams-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(4, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title - @microsoft/teams-prg',
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
 
-        ### Packages to migrate:
-        - react-menu
-        - react-accordion"`,
-      );
+          ### Packages to migrate:
+          - react-menu
+          - react-accordion`,
+      ]);
       // no owner issue creation
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        5,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title - ownerless" --body "🚧 This is an auto-generated issue to individually track migration progress.
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(5, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title - ownerless',
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
 
-        ### Packages to migrate:
-        - misterious-unowned-package"`,
-      );
+          ### Packages to migrate:
+          - misterious-unowned-package`,
+      ]);
       // @microsoft/cxe-coastal issue creation
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        6,
-        stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-coastal" --body "🚧 This is an auto-generated issue to individually track migration progress.
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(6, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'cool-company/repository',
+        '--title',
+        'test title - @microsoft/cxe-coastal',
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
 
-        ### Packages to migrate:
-        - react-slider"`,
-      );
+          ### Packages to migrate:
+          - react-slider`,
+      ]);
 
       // epic edit to add sub-issues
-      expect(execSyncMock).toHaveBeenNthCalledWith(
-        7,
-        stripIndents`gh issue edit epicUrl --body "*Description to be added*
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(7, 'gh', [
+        'issue',
+        'edit',
+        'epicUrl',
+        '--body',
+        stripIndents`*Description to be added*
 
-        ### Packages that need migration:
-        - [ ] issueUrl-@microsoft/cxe-red
-          - react-link
-          - react-button
-        - [ ] issueUrl-@microsoft/cxe-coastal
-          - react-card
-        - [ ] issueUrl-@microsoft/cxe-prg
-          - react-menu
-          - react-accordion
-        - [ ] issueUrl-@microsoft/teams-prg
-          - misterious-unowned-package
-        - [ ] epicUrl
-          - react-slider"`,
-      );
+          ### Packages that need migration:
+          - [ ] issueUrl-@microsoft/cxe-red
+            - react-link
+            - react-button
+          - [ ] issueUrl-@microsoft/cxe-coastal
+            - react-card
+          - [ ] issueUrl-@microsoft/cxe-prg
+            - react-menu
+            - react-accordion
+          - [ ] issueUrl-@microsoft/teams-prg
+            - misterious-unowned-package
+          - [ ] epicUrl
+            - react-slider`,
+      ]);
+    });
+
+    it('passes a shell-like title as a single argument', () => {
+      const tree = setupTest([]);
+      const title = 'Create epic"; malicious-command; #';
+
+      epicGenerator(tree, { title, repository: 'microsoft/fluentui' })();
+
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(1, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'microsoft/fluentui',
+        '--title',
+        title,
+        '--body',
+        '*Description to be added*',
+      ]);
     });
   });
 });
