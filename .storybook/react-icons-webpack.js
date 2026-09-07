@@ -6,6 +6,7 @@ const FONT_ICON_VARIANT = 'fonts';
 const iconLoader = require.resolve('@fluentui/react-icons-atomic-webpack-loader');
 const headlessBaseStyles = require.resolve('@fluentui/react-icons/headless/styles.css');
 const headlessFontStyles = require.resolve('@fluentui/react-icons/headless/fonts/styles.css');
+const fontIconStyles = require.resolve('./react-icons-font.css');
 
 /** @typedef {string | string[] | import('webpack').EntryObject} ResolvedEntry */
 
@@ -81,8 +82,18 @@ function configureReactIcons(options) {
     config.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
   }
 
+  const styleImports = [];
   if (headless) {
-    const styleImports = useFontIcons ? [headlessBaseStyles, headlessFontStyles] : [headlessBaseStyles];
+    styleImports.push(headlessBaseStyles);
+  }
+  if (useFontIcons) {
+    if (headless) {
+      styleImports.push(headlessFontStyles);
+    }
+    styleImports.push(fontIconStyles);
+  }
+
+  if (styleImports.length > 0) {
     const originalEntry = config.entry;
 
     config.entry = async () => {
