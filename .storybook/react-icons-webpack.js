@@ -1,3 +1,5 @@
+// @ts-check
+
 const FluentUIReactIconsFontSubsettingPlugin = require('@fluentui/react-icons-font-subsetting-webpack-plugin').default;
 
 const FONT_ICON_VARIANT = 'fonts';
