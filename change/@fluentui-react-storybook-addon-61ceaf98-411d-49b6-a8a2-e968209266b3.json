@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: keep the Markdown action icon on SVG pending an upstream font glyph fix",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

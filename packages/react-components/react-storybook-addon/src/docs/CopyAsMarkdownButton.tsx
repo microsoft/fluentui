@@ -5,9 +5,7 @@ import { Spinner } from '@fluentui/react-spinner';
 import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
-import { bundleIcon } from '@fluentui/react-icons';
-// Keep this icon on SVG until https://github.com/microsoft/fluentui-system-icons/issues/1235 is fixed.
-import { MarkdownFilled, MarkdownRegular } from '@fluentui/react-icons/lib/atoms/svg/markdown';
+import { bundleIcon, MarkdownFilled, MarkdownRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const MarkdownIcon = bundleIcon(MarkdownFilled, MarkdownRegular);
