@@ -48,7 +48,8 @@ describe('BreadcrumbButton', () => {
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="fui-Icon"
+              data-fui-icon=""
               fill="currentColor"
               height="1em"
               viewBox="0 0 20 20"
@@ -56,7 +57,7 @@ describe('BreadcrumbButton', () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M11.27 3.2a.75.75 0 0 0-1.04 1.1l5.24 4.95H2.75a.75.75 0 0 0 0 1.5h12.73l-5.25 4.96a.75.75 0 1 0 1.04 1.09l6.41-6.07a1 1 0 0 0 0-1.46l-6.41-6.06Z"
+                d="M11.27 3.2a.75.75 0 0 0-1.04 1.1l5.24 4.95H2.75a.75.75 0 0 0 0 1.5h12.73l-5.25 4.96a.75.75 0 1 0 1.04 1.09l6.41-6.07a1 1 0 0 0 0-1.46z"
                 fill="currentColor"
               />
             </svg>
