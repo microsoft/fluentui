@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: migrate icon examples to resizable icons",
+  "packageName": "@fluentui/react-card",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
