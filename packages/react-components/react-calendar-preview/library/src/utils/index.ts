@@ -1,4 +1,6 @@
 export { stringifyDataAttribute } from './dataAttributes';
+export { dateAdapter } from './dateAdapter';
+export type { CalendarDateAdapter } from './dateAdapter';
 export { DAYS_IN_WEEK, TimeConstants, daysOfWeek, monthsOfYear } from './constants';
 export { getDayFromIndex, getDayIndex, getMonthFromIndex, getMonthIndex } from './constants';
 export type { AnimationDirection, DateRangeType, DayOfWeek, FirstWeekOfYear, MonthOfYear } from './constants';

@@ -39,6 +39,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
 
   const activeDescendantId = useCalendarDayContext_unstable(ctx => ctx.activeDescendantId);
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
+  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const calculateRoundedCorners = useCalendarDayContext_unstable(ctx => ctx.calculateRoundedCorners);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const daysToSelectInDayView = useCalendarDayContext_unstable(ctx => ctx.daysToSelectInDayView);
@@ -57,7 +58,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
 
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
-  const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
+  const isNavigatedDate = compareDates(navigatedDate, day.originalDate, dateAdapter);
 
   const { dir } = useFluent_unstable();
 
@@ -66,15 +67,15 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
     let direction = 1; // by default search forward
 
     if (ev.key === ArrowUp) {
-      targetDate = addWeeks(date, -1);
+      targetDate = addWeeks(date, -1, dateAdapter);
       direction = -1;
     } else if (ev.key === ArrowDown) {
-      targetDate = addWeeks(date, 1);
+      targetDate = addWeeks(date, 1, dateAdapter);
     } else if (ev.key === getRTLSafeKey(ArrowLeft, dir)) {
-      targetDate = addDays(date, -1);
+      targetDate = addDays(date, -1, dateAdapter);
       direction = -1;
     } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
-      targetDate = addDays(date, 1);
+      targetDate = addDays(date, 1, dateAdapter);
     }
 
     if (!targetDate) {
@@ -83,6 +84,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
     }
 
     const findAvailableDateOptions: AvailableDateOptions = {
+      dateAdapter,
       initialDate: date,
       targetDate,
       direction,
@@ -112,7 +114,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
       nextDate &&
       weeks.slice(1, weeks.length - 1).some((week: DayInfo[]) => {
         return week.some((dayToCompare: DayInfo) => {
-          return compareDates(dayToCompare.originalDate, nextDate!);
+          return compareDates(dayToCompare.originalDate, nextDate!, dateAdapter);
         });
       });
     if (isInCurrentView) {

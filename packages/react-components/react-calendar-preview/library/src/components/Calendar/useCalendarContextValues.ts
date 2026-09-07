@@ -10,6 +10,7 @@ import type { CalendarBaseState, CalendarContextValue, CalendarContextValues } f
 export function useCalendarContextValues_unstable(state: CalendarBaseState): CalendarContextValues {
   const {
     allFocusable,
+    dateAdapter,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,
@@ -30,6 +31,7 @@ export function useCalendarContextValues_unstable(state: CalendarBaseState): Cal
   const calendar = React.useMemo<CalendarContextValue>(
     () => ({
       allFocusable,
+      dateAdapter,
       dateRangeType,
       firstDayOfWeek,
       firstWeekOfYear,
@@ -48,6 +50,7 @@ export function useCalendarContextValues_unstable(state: CalendarBaseState): Cal
     }),
     [
       allFocusable,
+      dateAdapter,
       dateRangeType,
       firstDayOfWeek,
       firstWeekOfYear,

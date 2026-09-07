@@ -20,20 +20,15 @@ import type {
 const CELL_COUNT = 12;
 const CELLS_PER_ROW = 4;
 
-const getDateForYear = (year: number): Date => {
-  const date = new Date(0);
-  date.setFullYear(year);
-  return date;
-};
-
 function useYearRangeState({
   selectedYear,
   navigatedYear,
   onNavigateDate,
-}: Pick<CalendarYearProps, 'navigatedYear' | 'onNavigateDate'> & { selectedYear?: number }) {
+  currentYear,
+}: Pick<CalendarYearProps, 'navigatedYear' | 'onNavigateDate'> & { selectedYear?: number; currentYear: number }) {
   const rangeYear = React.useMemo(
-    () => selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10,
-    [navigatedYear, selectedYear],
+    () => selectedYear ?? navigatedYear ?? Math.floor(currentYear / 10) * 10,
+    [currentYear, navigatedYear, selectedYear],
   );
 
   const [fromYear, setFromYear] = React.useState<number>(rangeYear);
@@ -75,6 +70,7 @@ export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearBaseState => {
+  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
   const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
@@ -84,10 +80,16 @@ export const useCalendarYearBase_unstable = (
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
-  const selectedYear = props.selectedYear ?? value?.getFullYear();
-  const minYear = minDate?.getFullYear();
-  const maxYear = maxDate?.getFullYear();
-  const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState({ ...props, selectedYear });
+  const today = dateAdapter.now();
+  const currentYear = dateAdapter.getYear(today);
+  const selectedYear = props.selectedYear ?? (value ? dateAdapter.getYear(value) : undefined);
+  const minYear = minDate ? dateAdapter.getYear(minDate) : undefined;
+  const maxYear = maxDate ? dateAdapter.getYear(maxDate) : undefined;
+  const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState({
+    ...props,
+    currentYear,
+    selectedYear,
+  });
 
   const currentYearRef = React.useRef<HTMLButtonElement>(null);
   const selectedYearRef = React.useRef<HTMLButtonElement>(null);
@@ -102,9 +104,8 @@ export const useCalendarYearBase_unstable = (
     [],
   );
 
-  const formatYear = (year: number) => formatDateTime(getDateForYear(year), 'year');
+  const formatYear = (year: number) => formatDateTime(dateAdapter.createDate(year, 0, 1), 'year');
 
-  const thisYear = new Date().getFullYear();
   const yearRows: CalendarYearCell[][] = [];
   for (let row = 0; row < CELL_COUNT / CELLS_PER_ROW; row++) {
     const cells: CalendarYearCell[] = [];
@@ -113,7 +114,7 @@ export const useCalendarYearBase_unstable = (
       cells.push({
         year,
         content: formatYear(year),
-        isCurrent: year === thisYear,
+        isCurrent: year === currentYear,
         isSelected: year === selectedYear,
         isDisabled: (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear),
       });

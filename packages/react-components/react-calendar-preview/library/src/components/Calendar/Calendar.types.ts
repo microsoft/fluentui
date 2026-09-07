@@ -1,7 +1,14 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { Button } from '@fluentui/react-button';
-import type { DateRangeType, DayOfWeek, FirstWeekOfYear, FormatCalendarLabel, FormatDateTime } from '../../utils';
+import type {
+  CalendarDateAdapter,
+  DateRangeType,
+  DayOfWeek,
+  FirstWeekOfYear,
+  FormatCalendarLabel,
+  FormatDateTime,
+} from '../../utils';
 import type { CalendarContextValue, CalendarDayHandle } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarDay } from '../../CalendarDay';
@@ -72,6 +79,12 @@ export type CalendarDismissData = EventData<'click' | 'keydown', React.Synthetic
  * Props for the Calendar component.
  */
 export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
+  /**
+   * Adapter used for date arithmetic and calendar field access.
+   * @default The native JavaScript `Date` adapter.
+   */
+  dateAdapter?: CalendarDateAdapter<Date>;
+
   /**
    * Callback for when a date is selected
    * @param date - The date the user selected

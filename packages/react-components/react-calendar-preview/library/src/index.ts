@@ -219,6 +219,7 @@ export type {
 
 export {
   DAYS_IN_WEEK,
+  dateAdapter,
   createCalendarDateTimeFormatter,
   createCalendarLabelFormatter,
   formatDateTime,
@@ -249,6 +250,7 @@ export {
   isInDateRangeArray,
   setMonth,
 } from './utils';
+export type { CalendarDateAdapter } from './utils';
 export type {
   AnimationDirection,
   CalendarDateLabelData,

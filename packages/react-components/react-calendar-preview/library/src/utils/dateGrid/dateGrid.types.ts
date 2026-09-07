@@ -1,4 +1,5 @@
 import type { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
+import type { CalendarDateAdapter } from '../dateAdapter';
 
 export interface Day {
   /**
@@ -55,6 +56,11 @@ export interface AvailableDateOptions extends RestrictedDatesOptions {
 }
 
 export interface RestrictedDatesOptions {
+  /**
+   * Adapter used for date arithmetic and field access.
+   */
+  dateAdapter?: CalendarDateAdapter<Date>;
+
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
    */
