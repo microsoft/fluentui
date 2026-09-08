@@ -1,5 +1,6 @@
 'use client';
 
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { motionSlot, motionTokens } from '@fluentui/react-motion';
 import { Fade } from '@fluentui/react-motion-components-preview';
@@ -17,6 +18,7 @@ import type {
  */
 export const useCalendarDayGridHeaderCellBase_unstable = (
   props: CalendarDayGridHeaderCellBaseProps,
+  ref: React.Ref<HTMLTableCellElement>,
 ): CalendarDayGridHeaderCellBaseState => {
   const { dayLabel } = props;
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
@@ -33,6 +35,7 @@ export const useCalendarDayGridHeaderCellBase_unstable = (
         tabIndex: allFocusable ? 0 : undefined,
         title: dayLabel.label,
         ...props,
+        ref,
       }),
       { elementType: 'th' },
     ),
@@ -44,8 +47,9 @@ export const useCalendarDayGridHeaderCellBase_unstable = (
  */
 export const useCalendarDayGridHeaderCell_unstable = (
   props: CalendarDayGridHeaderCellProps,
+  ref: React.Ref<HTMLTableCellElement>,
 ): CalendarDayGridHeaderCellState => {
-  const state = useCalendarDayGridHeaderCellBase_unstable(props);
+  const state = useCalendarDayGridHeaderCellBase_unstable(props, ref);
 
   return {
     ...state,
