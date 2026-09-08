@@ -99,7 +99,7 @@ export type CalendarContextValues = {
 };
 
 /**
- * Used when a picker or grid is rendered without a Calendar above it.
+ * Default shared configuration used when a picker or grid is rendered without a Calendar above it.
  */
 export const calendarContextDefaultValue: CalendarContextValue = {
   allFocusable: false,
@@ -114,7 +114,9 @@ export const calendarContextDefaultValue: CalendarContextValue = {
 
 const calendarContext = createContext<CalendarContextValue | undefined>(undefined);
 
+/** Provides shared configuration to standalone Calendar pickers and grids. */
 export const CalendarProvider = calendarContext.Provider;
 
+/** Selects shared Calendar configuration from the nearest CalendarProvider. */
 export const useCalendarContext_unstable = <T>(selector: ContextSelector<CalendarContextValue, T>): T =>
   useContextSelector(calendarContext, (ctx = calendarContextDefaultValue) => selector(ctx));

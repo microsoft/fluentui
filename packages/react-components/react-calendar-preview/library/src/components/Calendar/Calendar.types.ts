@@ -7,7 +7,6 @@ import type {
   EventHandler,
   Slot,
 } from '@fluentui/react-utilities';
-import type { Button } from '@fluentui/react-button';
 import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarContextValue, CalendarDayHandle } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
@@ -53,7 +52,7 @@ export type CalendarSlots = {
   /**
    * The "go to today" button. Set to `null` to hide it.
    */
-  goToTodayButton?: Slot<typeof Button>;
+  goToTodayButton?: Slot<'button'>;
 };
 
 /**
@@ -70,18 +69,22 @@ export type CalendarSelectDateData = EventData<'click' | 'keydown', React.Synthe
   selectedDateRange: Date[];
 };
 
+/** Event data reported when the displayed date changes through user interaction. */
 export type CalendarNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   /** The date displayed by the calendar. */
   displayedDate: Date;
 };
 
+/** Picker views available when Calendar uses an overlay layout. */
 export type CalendarView = 'day' | 'month';
 
+/** Event data reported when user interaction changes the active overlay view. */
 export type CalendarViewChangeData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   /** The active picker when the calendar uses an overlay layout. */
   view: CalendarView;
 };
 
+/** Controls how the day and month pickers are arranged. */
 export type CalendarLayout = 'auto' | 'sideBySide' | 'overlay';
 
 /**

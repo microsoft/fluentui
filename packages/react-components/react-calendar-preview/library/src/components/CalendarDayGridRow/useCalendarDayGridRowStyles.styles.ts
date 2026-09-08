@@ -26,7 +26,7 @@ const useRootStyles = makeStyles({
 const useWeekNumberCellStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground4,
     fontSize: tokens.fontSizeBase200,

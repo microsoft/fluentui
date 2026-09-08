@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Space } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
   getRTLSafeKey,
@@ -193,10 +193,10 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   };
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.key === Enter && day.isInBounds) {
+    if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
       ev.preventDefault();
       /*
-       * `day.onSelected` is the grid's own handler, so Enter resolves the same date range and
+       * `day.onSelected` is the grid's own handler, so keyboard activation resolves the same date range and
        * navigation as a click does.
        */
       day.onSelected(ev);

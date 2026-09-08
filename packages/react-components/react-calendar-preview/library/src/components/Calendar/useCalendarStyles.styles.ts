@@ -21,7 +21,7 @@ export const calendarClassNames: SlotClassNames<CalendarSlots> = {
 const useRootStyles = makeStyles({
   base: {
     display: 'flex',
-    width: '220px',
+    width: 'fit-content',
   },
   normalize: {
     boxShadow: 'none',
@@ -32,20 +32,11 @@ const useRootStyles = makeStyles({
   monthPickerNotVisible: {
     flexDirection: 'column',
   },
-  dayAndMonthPickersVisible: {
-    width: '440px',
-  },
-  dayPickerVisibleAndWeekNumbersShown: {
-    width: '250px',
-  },
-  dayAndMonthPickersVisibleAndWeekNumbersShown: {
-    width: '470px',
-  },
 });
 
 const useDividerStyles = makeStyles({
   base: {
-    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     top: 0,
   },
 });
@@ -71,14 +62,10 @@ const useGoTodayButtonStyles = makeStyles({
     minWidth: 'auto',
     height: '30px',
     lineHeight: '30px',
-    marginInlineEnd: '16px',
+    marginInlineEnd: tokens.spacingHorizontalL,
     marginBlockStart: '3px',
     overflow: 'visible',
-    padding: '0 4px',
-
-    '& div': {
-      fontSize: tokens.fontSizeBase200,
-    },
+    padding: `0 ${tokens.spacingHorizontalXS}`,
     '&:hover': {
       backgroundColor: tokens.colorTransparentBackground,
       color: tokens.colorBrandForeground1,
@@ -121,7 +108,7 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
   const goTodayButtonStyles = useGoTodayButtonStyles();
   const liveRegionStyles = useLiveRegionStyles();
 
-  const { isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = state;
+  const { isMonthPickerVisible } = state;
 
   /* eslint-disable react-hooks/immutability */
   state.root.className = mergeClasses(
@@ -129,12 +116,6 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
     rootStyles.base,
     rootStyles.normalize,
     !isMonthPickerVisible && rootStyles.monthPickerNotVisible,
-    isDayPickerVisible && isMonthPickerVisible && !showWeekNumbers && rootStyles.dayAndMonthPickersVisible,
-    isDayPickerVisible && !isMonthPickerVisible && showWeekNumbers && rootStyles.dayPickerVisibleAndWeekNumbersShown,
-    isDayPickerVisible &&
-      isMonthPickerVisible &&
-      showWeekNumbers &&
-      rootStyles.dayAndMonthPickersVisibleAndWeekNumbersShown,
     state.root.className,
   );
 

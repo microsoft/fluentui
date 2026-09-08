@@ -2,6 +2,7 @@
 
 import { motionTokens, createMotionComponent } from '@fluentui/react-motion';
 import { Slide, fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
+import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 import type { MotionComponentProps } from '@fluentui/react-motion';
@@ -9,7 +10,7 @@ import type { AnimationDirection } from './constants';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 // Distance the rows travel as they slide in/out. Shared so the enter and exit motions stay in sync.
-const SLIDE_DISTANCE = '20px';
+const SLIDE_DISTANCE = tokens.spacingHorizontalXL;
 
 /*
  * Clones the single child with a ref that merges the forwarded ref and the child's own ref. Lets the

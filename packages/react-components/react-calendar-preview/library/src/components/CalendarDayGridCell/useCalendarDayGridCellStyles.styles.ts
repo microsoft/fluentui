@@ -26,7 +26,7 @@ export const useCalendarDayGridCellBaseStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     margin: '0',
-    padding: '2px',
+    padding: tokens.spacingHorizontalXXS,
     position: 'relative',
     '@media (forced-colors: active)': {
       backgroundColor: 'Window',
@@ -37,7 +37,7 @@ export const useCalendarDayGridCellBaseStyles = makeStyles({
       color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
-        outline: '1px solid Highlight',
+        outline: `${tokens.strokeWidthThin} solid Highlight`,
         zIndex: 3,
         [`&[data-today] .${calendarDayGridCellClassNames.dayLabel}`]: {
           backgroundColor: 'Highlight',
@@ -110,7 +110,7 @@ const useSingleSelectedStyles = makeStyles({
     [`& > .${calendarDayGridCellClassNames.button}`]: {
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
       borderRadius: tokens.borderRadiusMedium,
-      border: `1px solid ${tokens.colorBrandStroke1}`,
+      border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
         borderTopColor: 'Highlight',
@@ -219,14 +219,14 @@ const useMarkerStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorBrandForeground2,
     borderRadius: '100%',
-    bottom: '1px',
-    height: '4px',
+    bottom: tokens.strokeWidthThin,
+    height: tokens.spacingVerticalXS,
     left: 0,
     margin: 'auto',
 
     position: 'absolute',
     right: 0,
-    width: '4px',
+    width: tokens.spacingHorizontalXS,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'WindowText',

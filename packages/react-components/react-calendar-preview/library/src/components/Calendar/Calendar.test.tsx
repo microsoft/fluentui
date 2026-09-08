@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Calendar } from './Calendar';
 import { isConformant } from '../../testing/isConformant';
 import { calendarFormatters } from '../../utils';
 import type { CalendarDayHandle } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
+
+expect.extend(toHaveNoViolations);
 
 describe('Calendar', () => {
   isConformant({
@@ -36,6 +39,32 @@ describe('Calendar', () => {
     expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('Selected date September 18, 2020');
   });
 
+  it('clamps uncontrolled initial selection and navigation to date boundaries', () => {
+    const minDate = new Date(2020, 8, 10);
+    const { container } = render(
+      <Calendar defaultValue={new Date(2020, 7, 18)} defaultDisplayedDate={new Date(2020, 6, 18)} minDate={minDate} />,
+    );
+
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('Selected date September 10, 2020');
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('September 2020'),
+    );
+  });
+
+  it('renders an out-of-bounds controlled selection as empty and clamps controlled navigation', () => {
+    const { container } = render(
+      <Calendar value={new Date(2020, 7, 18)} displayedDate={new Date(2020, 6, 18)} minDate={new Date(2020, 8, 10)} />,
+    );
+
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('');
+    expect(container.querySelector('td[aria-selected="true"]')).toBeNull();
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('September 2020'),
+    );
+  });
+
   it('controls the displayed date independently from the selected value', () => {
     const { container } = render(
       <Calendar defaultValue={new Date(2020, 8, 18)} displayedDate={new Date(2021, 0, 5)} layout="sideBySide" />,
@@ -54,7 +83,7 @@ describe('Calendar', () => {
 
     fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
 
-    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 18));
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 7, 18));
     expect(container.textContent).toContain('September 2020');
   });
 
@@ -149,6 +178,41 @@ describe('Calendar', () => {
 
     expect(container.querySelector('table[role="grid"]')).toBeNull();
     expect(container.querySelector('[role="grid"]')).not.toBeNull();
+  });
+
+  it('restores focus when responsive overlay mode hides the focused picker', async () => {
+    const matchMediaDescriptor = Object.getOwnPropertyDescriptor(window, 'matchMedia');
+    let onMediaChange: (() => void) | undefined;
+    const mediaQuery = {
+      matches: false,
+      addEventListener: (_type: string, listener: () => void) => {
+        onMediaChange = listener;
+      },
+      removeEventListener: jest.fn(),
+    };
+    Object.defineProperty(window, 'matchMedia', {
+      configurable: true,
+      value: jest.fn(() => mediaQuery),
+    });
+
+    try {
+      const { getByRole, container } = render(
+        <Calendar value={new Date(2020, 8, 18)} displayedDate={new Date(2020, 8, 18)} layout="auto" />,
+      );
+
+      getByRole('gridcell', { name: 'September' }).focus();
+      mediaQuery.matches = true;
+      act(() => onMediaChange?.());
+
+      await waitFor(() => expect(container.querySelector('table[role="grid"]')).not.toBeNull());
+      await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
+    } finally {
+      if (matchMediaDescriptor) {
+        Object.defineProperty(window, 'matchMedia', matchMediaDescriptor);
+      } else {
+        delete (window as Partial<Window>).matchMedia;
+      }
+    }
   });
 
   it('selects a bounded month without switching to the day picker', () => {
@@ -265,7 +329,7 @@ describe('Calendar', () => {
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
-  it('advances one month on PageUp keyboard navigation', () => {
+  it('moves back one month on PageUp keyboard navigation', () => {
     const onDisplayedDateChange = jest.fn();
     const value = new Date(2020, 8, 18);
     const { container } = render(
@@ -281,16 +345,16 @@ describe('Calendar', () => {
     fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
 
     expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
-    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 18));
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 7, 18));
   });
 
-  it('clamps PageUp navigation to the maximum date', () => {
+  it('clamps PageDown navigation to the maximum date', () => {
     const value = new Date(2020, 8, 18);
     const { container } = render(
       <Calendar value={value} today={value} maxDate={new Date(2020, 9, 10)} onChange={jest.fn()} />,
     );
 
-    fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
+    fireEvent.keyDown(container.firstElementChild!, { key: 'PageDown' });
 
     expect(container.textContent).toContain('October 2020');
     expect(container.querySelector('button[aria-label="October 10, 2020"]')?.closest('td')).toHaveAttribute(
@@ -307,11 +371,11 @@ describe('Calendar', () => {
   });
 
   it.each([
-    { key: 'PageUp', ctrlKey: false, targetDate: new Date(2020, 9, 18) },
-    { key: 'PageDown', ctrlKey: false, targetDate: new Date(2020, 7, 18) },
-    { key: 'PageUp', ctrlKey: true, targetDate: new Date(2021, 8, 18) },
-    { key: 'PageDown', ctrlKey: true, targetDate: new Date(2019, 8, 18) },
-  ])('restores day focus after $key with ctrlKey=$ctrlKey', async ({ key, ctrlKey, targetDate }) => {
+    { key: 'PageUp', shiftKey: false, targetDate: new Date(2020, 7, 18) },
+    { key: 'PageDown', shiftKey: false, targetDate: new Date(2020, 9, 18) },
+    { key: 'PageUp', shiftKey: true, targetDate: new Date(2019, 8, 18) },
+    { key: 'PageDown', shiftKey: true, targetDate: new Date(2021, 8, 18) },
+  ])('restores day focus after $key with shiftKey=$shiftKey', async ({ key, shiftKey, targetDate }) => {
     const onDisplayedDateChange = jest.fn();
     const onSelectDate = jest.fn();
     const { getByRole } = render(
@@ -324,7 +388,7 @@ describe('Calendar', () => {
     const day = getByRole('button', { name: 'September 18, 2020' }).closest('td')!;
     day.focus();
 
-    fireEvent.keyDown(day, { key, ctrlKey });
+    fireEvent.keyDown(day, { key, shiftKey });
 
     expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
     expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(targetDate);
@@ -414,5 +478,10 @@ describe('Calendar', () => {
       'aria-label',
       'Localized September 2020, Chosen: Localized September 18, 2020, Current: Localized October 20, 2020',
     );
+  });
+
+  it('passes accessibility checks', async () => {
+    const { container } = render(<Calendar defaultValue={new Date(2020, 8, 18)} today={new Date(2020, 9, 20)} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
