@@ -41,6 +41,15 @@ describe('Combobox', () => {
       cy.get(listbox).should('exist');
     });
 
+    it('toggles on expand icon click', () => {
+      mount(<BasicCombobox />);
+
+      cy.get('[role="button"]').trigger('click');
+      cy.get(listbox).should('exist');
+      cy.get('[role="button"]').trigger('click');
+      cy.get(listbox).should('not.exist');
+    });
+
     it('opens on ArrowDown key', () => {
       mount(<BasicCombobox />);
       cy.get(trigger).focus().realPress('ArrowDown');

@@ -74,6 +74,8 @@ export { useComboboxFilter } from './hooks/useComboboxFilter';
 export { useComboboxBaseState } from './utils/useComboboxBaseState';
 export { useButtonTriggerSlot } from './components/Dropdown/useButtonTriggerSlot';
 export { useInputTriggerSlot } from './components/Combobox/useInputTriggerSlot';
+export { useComboboxExpandIconSlot } from './components/Combobox/useComboboxExpandIconSlot';
+export type { UseComboboxExpandIconSlotOptions } from './components/Combobox/useComboboxExpandIconSlot';
 export { useListboxSlot } from './utils/useListboxSlot';
 export type { ComboboxBaseState, ComboboxBaseProps } from './utils/ComboboxBase.types';
 export { isComboboxOptionElement } from './utils/isComboboxOptionElement';
