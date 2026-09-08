@@ -27,6 +27,10 @@ export type CalendarYearCell = {
    */
   isSelected: boolean;
   /**
+   * Whether this is the focus target in the displayed range.
+   */
+  isNavigated: boolean;
+  /**
    * Whether this year cannot be selected.
    */
   isDisabled: boolean;
@@ -55,6 +59,11 @@ export type CalendarYearContextValue = {
    * Reference to the selected year button.
    */
   selectedYearRef: React.RefObject<HTMLButtonElement | null>;
+
+  /**
+   * Reference to the navigated year button.
+   */
+  navigatedYearRef: React.RefObject<HTMLButtonElement | null>;
 
   /**
    * Year cells grouped into rows of four.

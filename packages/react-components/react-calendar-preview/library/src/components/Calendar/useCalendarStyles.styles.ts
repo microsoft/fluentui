@@ -164,9 +164,13 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
     );
   }
 
-  state.dayPicker.className = mergeClasses(calendarClassNames.dayPicker, state.dayPicker.className);
+  if (state.dayPicker) {
+    state.dayPicker.className = mergeClasses(calendarClassNames.dayPicker, state.dayPicker.className);
+  }
 
-  state.monthPicker.className = mergeClasses(calendarClassNames.monthPicker, state.monthPicker.className);
+  if (state.monthPicker) {
+    state.monthPicker.className = mergeClasses(calendarClassNames.monthPicker, state.monthPicker.className);
+  }
 
   /* eslint-enable react-hooks/immutability */
   return state;

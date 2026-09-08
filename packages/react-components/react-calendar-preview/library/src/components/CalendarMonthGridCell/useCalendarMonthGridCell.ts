@@ -34,16 +34,18 @@ export const useCalendarMonthGridCell_unstable = (props: CalendarMonthGridCellPr
         onKeyDown: onSelect
           ? (event: React.KeyboardEvent<HTMLButtonElement>) => {
               if (event.key === Enter) {
+                event.preventDefault();
                 onSelect(event);
               }
             }
           : undefined,
         'aria-label': month.ariaLabel,
+        'aria-disabled': !month.isInBounds,
         'aria-selected': month.isSelected,
         'data-current': stringifyDataAttribute(month.isCurrent),
         'data-selected': stringifyDataAttribute(month.isSelected),
         'data-outside-bounds': stringifyDataAttribute(!month.isInBounds),
-        tabIndex: month.isInBounds ? 0 : -1,
+        tabIndex: month.isInBounds || allFocusable ? 0 : -1,
         type: 'button',
       },
       { elementType: 'button' },

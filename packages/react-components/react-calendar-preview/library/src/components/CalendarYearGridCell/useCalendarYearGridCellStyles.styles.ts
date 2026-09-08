@@ -18,12 +18,14 @@ export const calendarYearGridCellClassNames: SlotClassNames<CalendarYearGridCell
  */
 export const useCalendarYearGridCellStyles_unstable = (state: CalendarYearGridCellState): CalendarYearGridCellState => {
   const itemStyles = useCalendarItemStyles();
+  const highlightCurrentYear = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
   const highlightSelectedYear = useCalendarContext_unstable(ctx => ctx.highlightSelected);
 
   /* eslint-disable-next-line react-hooks/immutability */
   state.root.className = mergeClasses(
     calendarYearGridCellClassNames.root,
     itemStyles.itemButton,
+    state.isCurrent && highlightCurrentYear && itemStyles.highlightCurrent,
     state.isSelected && highlightSelectedYear && itemStyles.highlightSelected,
     state.isDisabled && itemStyles.disabled,
     state.root.className,

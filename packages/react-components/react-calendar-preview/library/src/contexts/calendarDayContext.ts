@@ -6,7 +6,7 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { DayCorners, WeekCorners } from '../hooks/useWeekCorners';
 import type { DayInfo } from '../hooks/useWeeks';
-import type { CalendarDayNavigateData } from '../CalendarDay';
+import type { CalendarDayNavigateData, CalendarDayProps } from '../CalendarDay';
 
 /**
  * Resolved configuration and grid data shared with every row and cell in the day grid.
@@ -26,6 +26,9 @@ export type CalendarDayContextValue = {
    * How many days a single click selects when `dateRangeType` is `day`.
    */
   daysToSelectInDayView?: number;
+
+  /** Custom props for each visible date cell. */
+  getDayCellProps?: CalendarDayProps['getDayCellProps'];
 
   /**
    * Gets the day grid items selected with a given day.

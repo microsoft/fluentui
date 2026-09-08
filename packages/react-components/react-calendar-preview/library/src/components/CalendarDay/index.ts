@@ -5,6 +5,7 @@ export { renderCalendarDay_unstable } from './renderCalendarDay';
 export type {
   CalendarDayBaseProps,
   CalendarDayBaseState,
+  CalendarDayCellProps,
   CalendarDayContextValue,
   CalendarDayContextValues,
   CalendarDayDismissData,

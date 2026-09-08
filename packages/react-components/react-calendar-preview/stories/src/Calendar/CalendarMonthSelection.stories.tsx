@@ -12,12 +12,11 @@ const firstDayOfWeek = 'sunday';
 
 export const CalendarMonthSelection = (): JSXElement => {
   const styles = useStyles();
-  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
-  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+  const selectedDateRange = selectedDate ? getDateRange(selectedDate, dateRangeType, firstDayOfWeek) : undefined;
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
-    setSelectedDateRange(data.selectedDateRange);
   }, []);
 
   const goPrevious = React.useCallback((): void => {

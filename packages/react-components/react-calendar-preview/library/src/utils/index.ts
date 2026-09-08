@@ -5,10 +5,11 @@ export type { AnimationDirection, DateRangeType, DayOfWeek, FirstWeekOfYear, Mon
 export type {
   CalendarDateLabelData,
   CalendarDateTimeFormat,
+  CalendarDateTimeFormatterOptions,
   CalendarFormatters,
   CalendarYearRangeLabelData,
 } from './formatters';
-export { calendarFormatters } from './formatters';
+export { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 export type { AvailableDateOptions, Day, DayGridOptions, RestrictedDatesOptions } from './dateGrid';
 export { findAvailableDate, getBoundedDateRange, getDayGrid, isRestrictedDate } from './dateGrid';
 export {

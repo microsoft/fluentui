@@ -90,7 +90,13 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
    * The date whose month is highlighted when `highlightSelectedMonth` is set, and whose year the
    * year picker opens on. Defaults to the Calendar's selected value.
    */
-  selectedDate?: Date;
+  selectedDate?: Date | null;
+
+  /**
+   * Called when a month is selected. The date is an available day in that month and the range
+   * follows the CalendarProvider configuration. Year navigation does not select a month.
+   */
+  onSelectDate?: EventHandler<CalendarMonthSelectData>;
 
   /**
    * Callback issued when the year is navigated

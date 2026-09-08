@@ -27,7 +27,7 @@ function useYearRangeState({
   currentYear,
 }: Pick<CalendarYearProps, 'navigatedYear' | 'onNavigateDate'> & { selectedYear?: number; currentYear: number }) {
   const rangeYear = React.useMemo(
-    () => selectedYear ?? navigatedYear ?? Math.floor(currentYear / 10) * 10,
+    () => navigatedYear ?? selectedYear ?? Math.floor(currentYear / 10) * 10,
     [currentYear, navigatedYear, selectedYear],
   );
 
@@ -70,6 +70,8 @@ export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearBaseState => {
+  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
+  const contextToday = useCalendarContext_unstable(ctx => ctx.today);
   const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
   const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
@@ -78,7 +80,7 @@ export const useCalendarYearBase_unstable = (
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
-  const today = new Date();
+  const today = contextToday ?? new Date();
   const currentYear = today.getFullYear();
   const selectedYear = props.selectedYear ?? (value ? value.getFullYear() : undefined);
   const minYear = minDate ? minDate.getFullYear() : undefined;
@@ -91,12 +93,15 @@ export const useCalendarYearBase_unstable = (
 
   const currentYearRef = React.useRef<HTMLButtonElement>(null);
   const selectedYearRef = React.useRef<HTMLButtonElement>(null);
+  const navigatedYearRef = React.useRef<HTMLButtonElement>(null);
 
   React.useImperativeHandle(
     ref,
     () => ({
       focus() {
-        (selectedYearRef.current ?? currentYearRef.current)?.focus?.();
+        [navigatedYearRef.current, selectedYearRef.current, currentYearRef.current]
+          .find(element => element && !element.disabled)
+          ?.focus();
       },
     }),
     [],
@@ -104,6 +109,12 @@ export const useCalendarYearBase_unstable = (
 
   const formatYear = (year: number) => formatters.dateTime({ date: new Date(year, 0, 1), format: 'year' });
 
+  const firstFocusableYear = allFocusable ? fromYear : Math.max(fromYear, minYear ?? fromYear);
+  const lastFocusableYear = allFocusable ? toYear : Math.min(toYear, maxYear ?? toYear);
+  const focusYear = Math.min(
+    lastFocusableYear,
+    Math.max(firstFocusableYear, props.navigatedYear ?? selectedYear ?? currentYear),
+  );
   const yearRows: CalendarYearCell[][] = [];
   for (let row = 0; row < CELL_COUNT / CELLS_PER_ROW; row++) {
     const cells: CalendarYearCell[] = [];
@@ -111,16 +122,17 @@ export const useCalendarYearBase_unstable = (
       const year = fromYear + row * CELLS_PER_ROW + column;
       cells.push({
         year,
-        content: formatYear(year),
+        content: props.renderYear ? props.renderYear(year) : formatYear(year),
         isCurrent: year === currentYear,
         isSelected: year === selectedYear,
+        isNavigated: year === focusYear,
         isDisabled: (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear),
       });
     }
     yearRows.push(cells);
   }
 
-  const prevDisabled = minYear !== undefined && fromYear < minYear;
+  const prevDisabled = minYear !== undefined && fromYear <= minYear;
   const nextDisabled = maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
 
   const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
@@ -143,6 +155,7 @@ export const useCalendarYearBase_unstable = (
     fromYear,
     onSelectYear,
     selectedYearRef,
+    navigatedYearRef,
     yearRows,
     components: {
       root: 'div',
@@ -172,6 +185,7 @@ export const useCalendarYearBase_unstable = (
         onKeyDown: onHeaderSelect
           ? (ev: React.KeyboardEvent<HTMLElement>) => {
               if (ev.key === Enter || ev.key === Space) {
+                ev.preventDefault();
                 onHeaderSelect(ev, { event: ev, type: 'keydown', focus: true });
               }
             }
@@ -186,7 +200,7 @@ export const useCalendarYearBase_unstable = (
         'aria-disabled': prevDisabled,
         onClick: prevDisabled ? undefined : onNavPrevious,
         onKeyDown: prevDisabled ? undefined : onNavigationKeyDown(onNavPrevious),
-        tabIndex: prevDisabled ? -1 : undefined,
+        tabIndex: prevDisabled ? (allFocusable ? 0 : -1) : undefined,
         title: formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
         type: 'button',
       },
@@ -197,7 +211,7 @@ export const useCalendarYearBase_unstable = (
         'aria-disabled': nextDisabled,
         onClick: nextDisabled ? undefined : onNavNext,
         onKeyDown: nextDisabled ? undefined : onNavigationKeyDown(onNavNext),
-        tabIndex: nextDisabled ? -1 : undefined,
+        tabIndex: nextDisabled ? (allFocusable ? 0 : -1) : undefined,
         title: formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
         type: 'button',
       },
@@ -219,6 +233,7 @@ export const useCalendarYearBase_unstable = (
 const onNavigationKeyDown =
   (callback: (ev: React.KeyboardEvent<HTMLButtonElement>) => void) => (ev: React.KeyboardEvent<HTMLButtonElement>) => {
     if (ev.key === Enter) {
+      ev.preventDefault();
       callback(ev);
     }
   };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render as testingRender, fireEvent } from '@testing-library/react';
 import { CalendarDay } from './CalendarDay';
-import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
+import { CalendarProvider, calendarContextDefaultValue } from '../../index';
 import { calendarDayClassNames } from './useCalendarDayStyles.styles';
 import { calendarDayGridCellClassNames } from '../CalendarDayGridCell/useCalendarDayGridCellStyles.styles';
 import { calendarDayGridRowClassNames } from '../CalendarDayGridRow/useCalendarDayGridRowStyles.styles';
@@ -188,6 +188,47 @@ describe('CalendarDay', () => {
     expect(navigatedCell).not.toBeNull();
     expect(navigatedCell!.getAttribute('aria-selected')).toBe('true');
     expect(document.activeElement).toBe(navigatedCell);
+  });
+
+  it('preserves selection and focus with customized day content, props, and refs', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const cellRef = React.createRef<HTMLTableCellElement>();
+    const setValue = jest.fn();
+    const onClick = jest.fn();
+    const { getByRole } = render(
+      <CalendarDay
+        {...defaultProps}
+        ref={ref}
+        getDayCellProps={date =>
+          date.getDate() === 18
+            ? { ref: cellRef, title: 'Appointment', onClick, dayLabel: { children: <strong>18</strong> } }
+            : {}
+        }
+      />,
+      { setValue },
+    );
+    const dayButton = getByRole('button', { name: 'September 18, 2020' });
+
+    expect(cellRef.current).toBe(dayButton.closest('td'));
+    expect(cellRef.current).toHaveAttribute('title', 'Appointment');
+    expect(dayButton.querySelector('strong')).toHaveTextContent('18');
+    fireEvent.click(dayButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(setValue).toHaveBeenCalledTimes(1);
+    ref.current!.focus();
+    expect(cellRef.current).toHaveFocus();
+  });
+
+  it('lets a custom cell handler prevent selection', () => {
+    const setValue = jest.fn();
+    const { getByRole } = render(
+      <CalendarDay {...defaultProps} getDayCellProps={() => ({ onClick: event => event.preventDefault() })} />,
+      { setValue },
+    );
+
+    fireEvent.click(getByRole('button', { name: 'September 18, 2020' }));
+
+    expect(setValue).not.toHaveBeenCalled();
   });
 
   it('shows the requested number of weeks', () => {

@@ -30,8 +30,17 @@ export type CalendarDateLabelData = {
  * A year range and its formatted display value.
  */
 export type CalendarYearRangeLabelData = {
+  /**
+   * The starting year of the range.
+   */
   fromYear: number;
+  /**
+   * The ending year of the range.
+   */
   toYear: number;
+  /**
+   * The formatted display value of the year range.
+   */
   formattedRange: string;
 };
 
@@ -102,23 +111,47 @@ export type CalendarFormatters = {
   dayMarkedLabel: (data: CalendarDateLabelData) => string;
 };
 
+/**
+ * Intl options applied consistently to every date display format.
+ * These affect labels only, not the calendar's Gregorian date arithmetic.
+ */
+export type CalendarDateTimeFormatterOptions = Pick<Intl.DateTimeFormatOptions, 'timeZone'>;
+
 const dateTimeFormatters = {
-  day: new Intl.DateTimeFormat(undefined, { day: 'numeric' }),
-  month: new Intl.DateTimeFormat(undefined, { month: 'long' }),
-  shortMonth: new Intl.DateTimeFormat(undefined, { month: 'short' }),
-  year: new Intl.DateTimeFormat(undefined, { year: 'numeric' }),
-  monthDayYear: new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'long', year: 'numeric' }),
-  dayMonthYear: new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'long', year: 'numeric' }),
-  monthYear: new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }),
-  weekday: new Intl.DateTimeFormat(undefined, { weekday: 'long' }),
-  shortWeekday: new Intl.DateTimeFormat(undefined, { weekday: 'narrow' }),
-} as const satisfies Record<CalendarDateTimeFormat, Intl.DateTimeFormat>;
+  day: { day: 'numeric' },
+  month: { month: 'long' },
+  shortMonth: { month: 'short' },
+  year: { year: 'numeric' },
+  monthDayYear: { day: 'numeric', month: 'long', year: 'numeric' },
+  dayMonthYear: { day: 'numeric', month: 'long', year: 'numeric' },
+  monthYear: { month: 'long', year: 'numeric' },
+  weekday: { weekday: 'long' },
+  shortWeekday: { weekday: 'narrow' },
+} satisfies Record<CalendarDateTimeFormat, Intl.DateTimeFormatOptions>;
+
+/**
+ * Creates reusable Intl formatters for every calendar date format. Full dates follow locale-specific
+ * field ordering, so `monthDayYear` and `dayMonthYear` produce the same locale-appropriate label.
+ */
+export function createCalendarDateTimeFormatter(
+  locales?: string | string[],
+  options?: CalendarDateTimeFormatterOptions,
+): CalendarFormatters['dateTime'] {
+  const formatters = Object.fromEntries(
+    Object.entries(dateTimeFormatters).map(([key, fields]) => [
+      key,
+      new Intl.DateTimeFormat(locales, { ...options, ...fields }),
+    ]),
+  );
+
+  return data => formatters[data.format].format(data.date);
+}
 
 /**
  * Default calendar formatters.
  */
 export const calendarFormatters: CalendarFormatters = {
-  dateTime: data => dateTimeFormatters[data.format].format(data.date),
+  dateTime: createCalendarDateTimeFormatter(),
   previousMonthLabel: data => `Previous month ${data.formattedDate}`,
   nextMonthLabel: data => `Next month ${data.formattedDate}`,
   previousYearLabel: data => `Previous year ${data.formattedDate}`,

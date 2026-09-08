@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render as testingRender, fireEvent } from '@testing-library/react';
 import { CalendarYear } from './CalendarYear';
+import type { CalendarYearHandle } from './CalendarYear.types';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
 import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
@@ -28,6 +29,107 @@ describe('CalendarYear', () => {
     expect(grid.getAttribute('aria-label')).toContain('2025');
   });
 
+  it('uses the provider today value and keeps unavailable years focusable without selecting them', () => {
+    const onSelectYear = jest.fn();
+    const { getByRole, getByTitle } = render(<CalendarYear navigatedYear={2025} onSelectYear={onSelectYear} />, {
+      today: new Date(2025, 0, 15),
+      minDate: new Date(2026, 0, 1),
+      allFocusable: true,
+    });
+    const year = getByRole('gridcell', { name: '2025' });
+
+    expect(year).toHaveAttribute('data-current');
+    expect(year).not.toBeDisabled();
+    expect(year).toHaveAttribute('aria-disabled', 'true');
+    expect(year).toHaveAttribute('tabindex', '0');
+    expect(getByTitle('Previous year range 2013 - 2024')).toHaveAttribute('tabindex', '0');
+    fireEvent.click(year);
+    fireEvent.keyDown(year, { key: 'Enter' });
+    expect(onSelectYear).not.toHaveBeenCalled();
+  });
+
+  it('focuses the navigated year with an empty selection outside the current year range', () => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2027} />, {
+      today: new Date(2026, 8, 8),
+      value: null,
+    });
+
+    ref.current?.focus();
+
+    expect(getByRole('gridcell', { name: '2027' })).toHaveFocus();
+  });
+
+  it('focuses an available year when the navigated year is disabled', () => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2025} selectedYear={2025} />, {
+      minDate: new Date(2027, 0, 1),
+      maxDate: new Date(2030, 11, 31),
+    });
+
+    ref.current?.focus();
+
+    expect(getByRole('gridcell', { name: '2027' })).toHaveFocus();
+  });
+
+  it.each([2000, 2045])('prefers the navigated year over selectedYear=%s for its range and focus', selectedYear => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2040} selectedYear={selectedYear} />);
+
+    ref.current?.focus();
+
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '2040 - 2051');
+    expect(getByRole('gridcell', { name: '2040' })).toHaveFocus();
+  });
+
+  it('uses the selected year for range and focus when navigation is unspecified', () => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} selectedYear={2045} />);
+
+    ref.current?.focus();
+
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '2045 - 2056');
+    expect(getByRole('gridcell', { name: '2045' })).toHaveFocus();
+  });
+
+  it('updates selection without resetting an independently navigated range', () => {
+    const { getByRole, rerender } = render(<CalendarYear navigatedYear={2040} selectedYear={2000} />);
+
+    rerender(<CalendarYear navigatedYear={2040} selectedYear={2045} />);
+
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '2040 - 2051');
+    expect(getByRole('gridcell', { name: '2045' })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it.each([false, true])('applies current-year styling only when highlightCurrent=%s', highlightCurrent => {
+    const { getByRole } = render(<CalendarYear navigatedYear={2025} />, {
+      today: new Date(2026, 8, 8),
+      value: null,
+      highlightCurrent,
+    });
+    const currentYear = getByRole('gridcell', { name: '2026' });
+    const otherYear = getByRole('gridcell', { name: '2027' });
+
+    expect(currentYear.className === otherYear.className).toBe(!highlightCurrent);
+  });
+
+  it.each([false, true])('keeps heading styles independent of current-year highlighting (clickable=%s)', clickable => {
+    const onHeaderSelect = clickable ? jest.fn() : undefined;
+    const renderPicker = (highlightCurrent: boolean) => (
+      <CalendarProvider value={{ ...calendarContextDefaultValue, today: new Date(2026, 8, 8), highlightCurrent }}>
+        <CalendarYear navigatedYear={2025} onHeaderSelect={onHeaderSelect} />
+      </CalendarProvider>
+    );
+    const { getByText, getByRole, rerender } = testingRender(renderPicker(false));
+    const headingClassName = getByText('2025 - 2036').className;
+    const currentYearClassName = getByRole('gridcell', { name: '2026' }).className;
+
+    rerender(renderPicker(true));
+
+    expect(getByText('2025 - 2036').className).toBe(headingClassName);
+    expect(getByRole('gridcell', { name: '2026' }).className).not.toBe(currentYearClassName);
+  });
+
   it('should format visible years', () => {
     const dateTime: typeof calendarFormatters.dateTime = ({ date, format }) =>
       format === 'year'
@@ -39,6 +141,18 @@ describe('CalendarYear', () => {
 
     expect(getByText('Localized 2025 - Localized 2036')).toBeTruthy();
     expect(getByRole('gridcell', { name: 'Localized 2025' })).toBeTruthy();
+  });
+
+  it('preserves year selection with custom cell content', () => {
+    const onSelectYear = jest.fn();
+    const { getByRole } = render(
+      <CalendarYear navigatedYear={2025} renderYear={year => <strong>FY {year}</strong>} onSelectYear={onSelectYear} />,
+    );
+
+    fireEvent.click(getByRole('gridcell', { name: 'FY 2027' }));
+
+    expect(onSelectYear).toHaveBeenCalledTimes(1);
+    expect(onSelectYear.mock.calls[0][1].year).toBe(2027);
   });
 
   it('should format the current and adjacent ranges for accessible labels', () => {

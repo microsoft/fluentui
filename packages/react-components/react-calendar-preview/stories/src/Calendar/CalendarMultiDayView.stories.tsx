@@ -15,7 +15,7 @@ const dayOptions = ['1', '2', '3', '4', '5', '6'];
 export const CalendarMultidayDayView = (): JSXElement => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
-  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
   const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState(4);
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
@@ -37,7 +37,8 @@ export const CalendarMultidayDayView = (): JSXElement => {
   return (
     <div className={styles.wrapper}>
       <p>
-        This calendar uses <code>dateRangeType = Day</code> and <code>daysToSelectInView = 4</code>.
+        This calendar uses <code>dateRangeType="day"</code> and{' '}
+        <code>dayPicker.daysToSelectInDayView = {daysToSelectInDayView}</code>.
       </p>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
@@ -48,7 +49,12 @@ export const CalendarMultidayDayView = (): JSXElement => {
         dayPicker={{ daysToSelectInDayView }}
       />
       <Field label="Choose days to select">
-        <Dropdown className={styles.dropdown} onOptionSelect={onOptionSelect}>
+        <Dropdown
+          className={styles.dropdown}
+          onOptionSelect={onOptionSelect}
+          selectedOptions={[String(daysToSelectInDayView)]}
+          value={String(daysToSelectInDayView)}
+        >
           {dayOptions.map(option => (
             <Option key={option} text={option} value={option}>
               {option}

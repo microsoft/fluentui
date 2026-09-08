@@ -15,7 +15,8 @@ export type {
  */
 export type CalendarYearHandle = {
   /**
-   * Moves focus to the selected year, falling back to the current year.
+   * Focuses the navigated year, or the selected/current year when navigation is unspecified,
+   * within the focusable visible range.
    */
   focus(): void;
 };
@@ -83,15 +84,20 @@ export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React.
  */
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   /**
-   * The currently navigated year
+   * The currently navigated year. Takes precedence over selectedYear for the displayed range and focus.
    */
   navigatedYear?: number;
 
   /**
-   * The highlighted year, which also decides which range the picker opens on. Defaults to the year
-   * of the Calendar's selected value.
+   * The highlighted year. Initializes the displayed range and focus only when navigatedYear is omitted.
+   * Defaults to the year of the Calendar's selected value.
    */
   selectedYear?: number;
+
+  /**
+   * Renders the content of each year cell without replacing its selection and keyboard behavior.
+   */
+  renderYear?: (year: number) => React.ReactNode;
 
   /**
    * Callback action when a year is selected
@@ -136,6 +142,8 @@ export type CalendarYearState = ComponentState<CalendarYearSlots> & {
   currentYearRef: React.RefObject<HTMLButtonElement | null>;
 
   selectedYearRef: React.RefObject<HTMLButtonElement | null>;
+
+  navigatedYearRef: React.RefObject<HTMLButtonElement | null>;
 };
 
 /**

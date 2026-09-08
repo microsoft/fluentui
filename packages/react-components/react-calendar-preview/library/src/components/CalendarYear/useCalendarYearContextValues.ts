@@ -5,11 +5,12 @@ import type { CalendarYearBaseState, CalendarYearContextValues } from './Calenda
  * without preventing any re-render.
  */
 export function useCalendarYearContextValues_unstable(state: CalendarYearBaseState): CalendarYearContextValues {
-  const { fromYear, currentYearRef, onSelectYear, selectedYearRef, yearRows } = state;
+  const { fromYear, currentYearRef, navigatedYearRef, onSelectYear, selectedYearRef, yearRows } = state;
 
   return {
     calendarYear: {
       currentYearRef,
+      navigatedYearRef,
       onSelectYear,
       selectedYearRef,
       yearRows,

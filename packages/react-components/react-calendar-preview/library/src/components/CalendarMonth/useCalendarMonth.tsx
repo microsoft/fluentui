@@ -4,8 +4,18 @@ import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
-import { addYears, compareDatePart, getMonthEnd, getMonthStart, getYearEnd, getYearStart, setMonth } from '../../utils';
+import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  addYears,
+  compareDatePart,
+  getDateRange,
+  getMonthEnd,
+  getMonthStart,
+  getYearEnd,
+  getYearStart,
+  isRestrictedDate,
+  setMonth,
+} from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { CalendarMonthGridRow } from '../CalendarMonthGridRow/CalendarMonthGridRow';
@@ -29,6 +39,7 @@ const onButtonKeyDown =
   ): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) =>
   ev => {
     if (ev.key === Enter) {
+      ev.preventDefault();
       callback?.(ev);
     }
   };
@@ -43,11 +54,15 @@ export const useCalendarMonthBase_unstable = (
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthBaseState => {
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
+  const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
+  const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
   const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const highlightCurrentMonth = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
   const highlightSelectedMonth = useCalendarContext_unstable(ctx => ctx.highlightSelected);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
   const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
+  const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
+  const workWeekDays = useCalendarContext_unstable(ctx => ctx.workWeekDays);
   const contextToday = useCalendarContext_unstable(ctx => ctx.today);
   const value = useCalendarContext_unstable(ctx => ctx.value);
 
@@ -58,6 +73,7 @@ export const useCalendarMonthBase_unstable = (
     nextYearButton,
     onHeaderSelect: onUserHeaderSelect,
     onNavigateDate = noop,
+    onSelectDate,
     previousYearButton,
     heading,
     yearPicker,
@@ -66,7 +82,7 @@ export const useCalendarMonthBase_unstable = (
 
   const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
-  const selectedDate = props.selectedDate ?? value ?? today;
+  const selectedDate = props.selectedDate !== undefined ? props.selectedDate : value === undefined ? today : value;
 
   const navigatedMonthRef = React.useRef<HTMLButtonElement>(null);
   const yearPickerRef = React.useRef<CalendarYearHandle>(null);
@@ -98,12 +114,26 @@ export const useCalendarMonthBase_unstable = (
   const onSelectMonth = useEventCallback(
     (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>, newMonth: number): void => {
       const type = ev.type === 'keydown' ? 'keydown' : 'click';
+      let date = setMonth(navigatedDate, newMonth);
+      if (onSelectDate) {
+        const availableDates = getDateRange(date, 'month', firstDayOfWeek).filter(
+          rangeDate => !isRestrictedDate(rangeDate, { minDate, maxDate, restrictedDates }),
+        );
+        if (!availableDates.length) {
+          return;
+        }
+        date = availableDates.find(rangeDate => compareDatePart(rangeDate, date) === 0) ?? availableDates[0];
+        const selectedDateRange = getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays).filter(
+          rangeDate => !isRestrictedDate(rangeDate, { minDate, maxDate, restrictedDates }),
+        );
+        onSelectDate(ev, { event: ev, type, date, selectedDateRange });
+      }
       // If header is clickable the calendars are overlaid, switch back to day picker when month is clicked
       onUserHeaderSelect?.(ev, { event: ev, type });
       onNavigateDate(ev, {
         event: ev,
         type,
-        date: setMonth(navigatedDate, newMonth),
+        date,
         focusOnNavigatedDay: true,
       });
     },
@@ -193,11 +223,16 @@ export const useCalendarMonthBase_unstable = (
           today.getMonth() === monthIndex,
         isSelected:
           !!highlightSelectedMonth &&
+          !!selectedDate &&
           selectedDate.getMonth() === monthIndex &&
           selectedDate.getFullYear() === navigatedDate.getFullYear(),
         isInBounds:
           (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-          (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true),
+          (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true) &&
+          (!onSelectDate ||
+            getDateRange(indexedMonth, 'month', firstDayOfWeek).some(
+              date => !isRestrictedDate(date, { minDate, maxDate, restrictedDates }),
+            )),
         onSelect: (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
           onSelectMonth(ev, monthIndex),
       };
@@ -209,7 +244,7 @@ export const useCalendarMonthBase_unstable = (
   if (isYearPickerVisible) {
     yearPickerProps = {
       navigatedYear: navigatedDate.getFullYear(),
-      selectedYear: selectedDate.getFullYear(),
+      selectedYear: selectedDate?.getFullYear(),
       onHeaderSelect: onYearPickerHeaderSelect,
       onSelectYear,
     };
@@ -304,6 +339,11 @@ export const useCalendarMonth_unstable = (
 ): CalendarMonthState => {
   const baseState = useCalendarMonthBase_unstable(props, ref);
   const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const yearPicker = slot.always(props.yearPicker, {
+    defaultProps: baseState.yearPicker,
+    elementType: CalendarYear,
+  });
+  yearPicker.ref = useMergedRefs(baseState.yearPickerRef, yearPicker.ref);
 
   return {
     ...baseState,
@@ -322,10 +362,7 @@ export const useCalendarMonth_unstable = (
       },
       elementType: 'div',
     }),
-    yearPicker: slot.always(props.yearPicker, {
-      defaultProps: { ...baseState.yearPicker, ref: baseState.yearPickerRef },
-      elementType: CalendarYear,
-    }),
+    yearPicker,
     previousYearButton: slot.always(props.previousYearButton, {
       defaultProps: {
         ...baseState.previousYearButton,

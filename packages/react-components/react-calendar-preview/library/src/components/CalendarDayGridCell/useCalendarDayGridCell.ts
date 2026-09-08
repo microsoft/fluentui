@@ -2,7 +2,13 @@
 
 import type * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, getRTLSafeKey, slot } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  getRTLSafeKey,
+  mergeCallbacks,
+  slot,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { addDays, addWeeks, compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
@@ -40,6 +46,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   const calculateRoundedCorners = useCalendarDayContext_unstable(ctx => ctx.calculateRoundedCorners);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const daysToSelectInDayView = useCalendarDayContext_unstable(ctx => ctx.daysToSelectInDayView);
+  const getDayCellProps = useCalendarDayContext_unstable(ctx => ctx.getDayCellProps);
   const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const getDayInfosInRangeOfDay = useCalendarDayContext_unstable(ctx => ctx.getDayInfosInRangeOfDay);
   const getRefsFromDayInfos = useCalendarDayContext_unstable(ctx => ctx.getRefsFromDayInfos);
@@ -52,6 +59,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
   const weekCorners = useCalendarDayContext_unstable(ctx => ctx.weekCorners);
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
+  const cellProps = { ...(!ariaHidden ? getDayCellProps?.(day.originalDate) : undefined), ...rest };
 
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
   const isNavigatedDate = compareDatePart(navigatedDate, day.originalDate) === 0;
@@ -186,6 +194,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.key === Enter && day.isInBounds) {
+      ev.preventDefault();
       /*
        * `day.onSelected` is the grid's own handler, so Enter resolves the same date range and
        * navigation as a click does.
@@ -216,24 +225,39 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
    * The grid publishes `navigatedDayRef` so it can focus the navigated cell; assigning it from this
    * ref callback runs at commit, not during render.
    */
-  // eslint-disable-next-line react-hooks/refs
-  const root = slot.always<ExtractSlotProps<Slot<'td'>>>(getIntrinsicElementProps('td', rest), {
-    defaultProps: {
-      ref: setCellRef,
-      'aria-current': day.isToday ? 'date' : undefined,
-      'aria-disabled': !ariaHidden && !day.isInBounds,
-      'aria-selected': day.isInBounds ? day.isSelected : undefined,
-      onClick: day.isInBounds && !ariaHidden ? day.onSelected : undefined,
-      onKeyDown: !ariaHidden ? onDayKeyDown : undefined,
-      onMouseDown: !ariaHidden ? onMouseDownDay : undefined,
-      onMouseOut: !ariaHidden ? onMouseOutDay : undefined,
-      onMouseOver: !ariaHidden ? onMouseOverDay : undefined,
-      onMouseUp: !ariaHidden ? onMouseUpDay : undefined,
-      role: 'gridcell',
-      tabIndex: isNavigatedDate || isFocusable ? 0 : undefined,
+  const cellRef = useMergedRefs(setCellRef, cellProps.ref);
+  const root = slot.always<ExtractSlotProps<Slot<'td'>>>(
+    getIntrinsicElementProps('td', {
+      ...cellProps,
+      ref: cellRef,
+      onClick: (ev: React.MouseEvent<HTMLTableCellElement>) => {
+        cellProps.onClick?.(ev);
+        if (!ev.isDefaultPrevented() && day.isInBounds && !ariaHidden) {
+          day.onSelected(ev);
+        }
+      },
+      onKeyDown: (ev: React.KeyboardEvent<HTMLTableCellElement>) => {
+        cellProps.onKeyDown?.(ev);
+        if (!ev.isDefaultPrevented() && !ariaHidden) {
+          onDayKeyDown(ev);
+        }
+      },
+      onMouseDown: !ariaHidden ? mergeCallbacks(cellProps.onMouseDown, onMouseDownDay) : undefined,
+      onMouseOut: !ariaHidden ? mergeCallbacks(cellProps.onMouseOut, onMouseOutDay) : undefined,
+      onMouseOver: !ariaHidden ? mergeCallbacks(cellProps.onMouseOver, onMouseOverDay) : undefined,
+      onMouseUp: !ariaHidden ? mergeCallbacks(cellProps.onMouseUp, onMouseUpDay) : undefined,
+    }),
+    {
+      defaultProps: {
+        'aria-current': day.isToday ? 'date' : undefined,
+        'aria-disabled': !ariaHidden && !day.isInBounds,
+        'aria-selected': day.isInBounds ? day.isSelected : undefined,
+        role: 'gridcell',
+        tabIndex: isNavigatedDate || isFocusable ? 0 : undefined,
+      },
+      elementType: 'td',
     },
-    elementType: 'td',
-  });
+  );
 
   Object.assign(root, {
     'data-marked': stringifyDataAttribute(day.isMarked),
@@ -257,7 +281,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
       marker: 'div',
     },
     root,
-    button: slot.always(props.button, {
+    button: slot.always(cellProps.button, {
       defaultProps: {
         'aria-label': ariaLabel,
         disabled: !ariaHidden && !day.isInBounds,
@@ -267,11 +291,11 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
       },
       elementType: 'button',
     }),
-    dayLabel: slot.always(props.dayLabel, {
+    dayLabel: slot.always(cellProps.dayLabel, {
       defaultProps: { children: formatters.dateTime({ date: day.originalDate, format: 'day' }) },
       elementType: 'span',
     }),
-    marker: slot.optional(props.marker, {
+    marker: slot.optional(cellProps.marker, {
       defaultProps: { 'aria-hidden': true },
       renderByDefault: day.isMarked,
       elementType: 'div',

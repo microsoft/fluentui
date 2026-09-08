@@ -1,8 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { Backspace, Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useControllableState,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Button } from '@fluentui/react-button';
 
@@ -55,7 +61,7 @@ function useDateState({
 > & {
   today: Date;
 }) {
-  const resolveDate = (date: Date): Date | undefined => {
+  const resolveDate = (date: Date): Date => {
     let resolvedDate = date;
 
     if (minDate && compareDatePart(resolvedDate, minDate) < 0) {
@@ -64,7 +70,7 @@ function useDateState({
       resolvedDate = maxDate;
     }
 
-    return isRestrictedDate(resolvedDate, { minDate, maxDate, restrictedDates }) ? undefined : resolvedDate;
+    return resolvedDate;
   };
 
   /**
@@ -72,16 +78,25 @@ function useDateState({
    */
   const [selectedDate, setSelectedDate] = useControllableState({
     state: value,
-    defaultState: defaultValue === undefined ? today : defaultValue,
+    defaultState: value === undefined ? (defaultValue === undefined ? today : defaultValue) : undefined,
     initialState: today,
   });
 
   const initialDisplayedDate = defaultDisplayedDate ?? selectedDate ?? today;
   const [navigatedDate = initialDisplayedDate, setNavigatedDate] = useControllableState({
     state: displayedDate,
-    defaultState: initialDisplayedDate,
+    defaultState: displayedDate === undefined ? initialDisplayedDate : undefined,
     initialState: today,
   });
+
+  const valueTimestamp = value?.getTime();
+  const [previousValueTimestamp, setPreviousValueTimestamp] = React.useState(valueTimestamp);
+  if (!Object.is(previousValueTimestamp, valueTimestamp)) {
+    setPreviousValueTimestamp(valueTimestamp);
+    if (value && displayedDate === undefined) {
+      setNavigatedDate(resolveDate(value));
+    }
+  }
 
   const navigate = useEventCallback((date: Date, ev: React.SyntheticEvent | Event) => {
     const resolvedDate = resolveDate(date);
@@ -97,20 +112,17 @@ function useDateState({
 
   // Stable identity: this is published on the calendar context, which would otherwise change every render.
   const onDateSelected = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarDaySelectData) => {
-    const date = resolveDate(data.date);
-    if (!date) {
+    const { date } = data;
+    if (isRestrictedDate(date, { minDate, maxDate, restrictedDates })) {
       return;
     }
 
-    const selectedDateRange = data.selectedDateRange
-      .map(rangeDate => resolveDate(rangeDate))
-      .filter((rangeDate): rangeDate is Date => !!rangeDate);
-    const resolvedRange = selectedDateRange.length === 1 ? [date] : selectedDateRange;
+    const selectedDateRange = data.selectedDateRange.filter(
+      rangeDate => !isRestrictedDate(rangeDate, { minDate, maxDate, restrictedDates }),
+    );
 
-    setNavigatedDate(date);
     setSelectedDate(date);
-    onDisplayedDateChange?.(ev, { ...data, displayedDate: date });
-    onSelectDate?.(ev, { ...data, date, selectedDateRange: resolvedRange });
+    onSelectDate?.(ev, { ...data, date, selectedDateRange });
   });
 
   return [selectedDate, navigatedDate, onDateSelected, navigate, resolveDate] as const;
@@ -137,20 +149,25 @@ function useResponsiveOverlay(layout: CalendarProps['layout']) {
 }
 
 function useVisibilityState({
+  dayPicker,
   defaultView,
   layout,
+  monthPicker,
   onViewChange,
   view: viewProp,
-}: Pick<CalendarProps, 'defaultView' | 'layout' | 'onViewChange' | 'view'>) {
+}: Pick<CalendarProps, 'dayPicker' | 'defaultView' | 'layout' | 'monthPicker' | 'onViewChange' | 'view'>) {
   const responsiveOverlay = useResponsiveOverlay(layout);
   const [view = 'day', setView] = useControllableState({
     state: viewProp,
-    defaultState: defaultView,
+    defaultState: viewProp === undefined ? defaultView : undefined,
     initialState: 'day' as const,
   });
-  const isOverlay = layout === 'overlay' || (layout !== 'sideBySide' && responsiveOverlay);
-  const isDayPickerVisible = !isOverlay || view === 'day';
-  const isMonthPickerVisible = !isOverlay || view === 'month';
+  const isOverlay =
+    dayPicker !== null &&
+    monthPicker !== null &&
+    (layout === 'overlay' || (layout !== 'sideBySide' && responsiveOverlay));
+  const isDayPickerVisible = dayPicker !== null && (!isOverlay || view === 'day');
+  const isMonthPickerVisible = monthPicker !== null && (!isOverlay || view === 'month');
 
   const toggleDayMonthPickerVisibility = (ev: React.SyntheticEvent | Event) => {
     const nextView = view === 'day' ? 'month' : 'day';
@@ -224,8 +241,10 @@ export const useCalendarBase_unstable = (
   });
 
   const [isMonthPickerVisible, isDayPickerVisible, isOverlay, toggleDayMonthPickerVisibility] = useVisibilityState({
+    dayPicker: props.dayPicker,
     defaultView,
     layout,
+    monthPicker: props.monthPicker,
     onViewChange,
     view,
   });
@@ -270,11 +289,6 @@ export const useCalendarBase_unstable = (
       const { date, focusOnNavigatedDay } = data;
       if (focusOnNavigatedDay) {
         focusOnNextUpdate();
-      }
-
-      if (!focusOnNavigatedDay) {
-        navigate(date, ev);
-        return;
       }
 
       navigate(date, ev);
@@ -323,11 +337,13 @@ export const useCalendarBase_unstable = (
 
       case PageUp:
         navigate(ev.ctrlKey ? addYears(navigatedDate, 1) : addMonths(navigatedDate, 1), ev);
+        focusOnNextUpdate();
         ev.preventDefault();
         break;
 
       case PageDown:
         navigate(ev.ctrlKey ? addYears(navigatedDate, -1) : addMonths(navigatedDate, -1), ev);
+        focusOnNextUpdate();
         ev.preventDefault();
         break;
 
@@ -405,7 +421,8 @@ export const useCalendarBase_unstable = (
         disabled: !goToTodayEnabled,
         onClick: onGotoToday,
         onKeyDown: (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-          if (ev.key === Enter || ev.key === Space) {
+          if (ev.key === Enter) {
+            ev.preventDefault();
             onGotoToday(ev);
           }
         },
@@ -413,7 +430,8 @@ export const useCalendarBase_unstable = (
       },
       elementType: 'button',
     }),
-    dayPicker: slot.always(props.dayPicker, {
+    dayPicker: slot.optional(props.dayPicker, {
+      renderByDefault: true,
       defaultProps: {
         grid: {
           'aria-label': `${formatters.dateTime({
@@ -428,11 +446,12 @@ export const useCalendarBase_unstable = (
       },
       elementType: 'div',
     }),
-    monthPicker: slot.always(props.monthPicker, {
+    monthPicker: slot.optional(props.monthPicker, {
+      renderByDefault: true,
       defaultProps: {
         navigatedDate,
-        // Matches the day picker: the month/year highlight follows navigation, not the committed value.
-        selectedDate: navigatedDate,
+        selectedDate: props.dayPicker === null ? selectedDate : navigatedDate,
+        onSelectDate: props.dayPicker === null ? onDateSelected : undefined,
         onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
         onNavigateDate: onNavigateMonthDate,
       },
@@ -447,8 +466,27 @@ export const useCalendarBase_unstable = (
  * headless layer can render its own picker components from the same computed props.
  */
 export const useCalendar_unstable = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): CalendarState => {
-  const { dayPicker, monthPicker, goToTodayButton, ...baseProps } = props;
-  const state = useCalendarBase_unstable(baseProps, ref);
+  const { dayPicker, monthPicker, goToTodayButton } = props;
+  const state = useCalendarBase_unstable(props, ref);
+  const resolvedDayPicker = slot.optional(dayPicker, {
+    renderByDefault: true,
+    defaultProps: state.dayPicker,
+    elementType: CalendarDay,
+  });
+  const resolvedMonthPicker = slot.optional(monthPicker, {
+    renderByDefault: true,
+    defaultProps: state.monthPicker,
+    elementType: CalendarMonth,
+  });
+  const mergedDayPickerRef = useMergedRefs(state.dayPickerRef, resolvedDayPicker?.ref);
+  const mergedMonthPickerRef = useMergedRefs(state.monthPickerRef, resolvedMonthPicker?.ref);
+
+  if (resolvedDayPicker) {
+    resolvedDayPicker.ref = mergedDayPickerRef;
+  }
+  if (resolvedMonthPicker) {
+    resolvedMonthPicker.ref = mergedMonthPickerRef;
+  }
 
   return {
     ...state,
@@ -464,13 +502,7 @@ export const useCalendar_unstable = (props: CalendarProps, ref: React.Ref<HTMLDi
       defaultProps: state.goToTodayButton,
       elementType: Button,
     }),
-    dayPicker: slot.always(dayPicker, {
-      defaultProps: { ...state.dayPicker, ref: state.dayPickerRef },
-      elementType: CalendarDay,
-    }),
-    monthPicker: slot.always(monthPicker, {
-      defaultProps: { ...state.monthPicker, ref: state.monthPickerRef },
-      elementType: CalendarMonth,
-    }),
+    dayPicker: resolvedDayPicker,
+    monthPicker: resolvedMonthPicker,
   };
 };

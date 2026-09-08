@@ -1,7 +1,38 @@
 import { getMonthIndex } from './constants';
-import { calendarFormatters } from './formatters';
+import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
 const date = new Date(2016, getMonthIndex('april'), 1);
+
+describe('createCalendarDateTimeFormatter', () => {
+  it.each(['monthDayYear', 'dayMonthYear'] as const)('uses locale ordering for %s', format => {
+    const formatter = createCalendarDateTimeFormatter('en-GB');
+
+    expect(formatter({ date, format })).toBe('1 April 2016');
+  });
+
+  it('localizes month and weekday names', () => {
+    const formatter = createCalendarDateTimeFormatter('de-DE');
+
+    expect(formatter({ date, format: 'weekday' })).toBe('Freitag');
+    expect(formatter({ date, format: 'monthDayYear' })).toBe('1. April 2016');
+  });
+
+  it('applies the requested time zone consistently', () => {
+    const boundary = new Date('2016-04-01T00:30:00.000Z');
+    const formatter = createCalendarDateTimeFormatter('en-US', { timeZone: 'America/Los_Angeles' });
+
+    expect(formatter({ date: boundary, format: 'day' })).toBe('31');
+    expect(formatter({ date: boundary, format: 'monthDayYear' })).toBe('March 31, 2016');
+  });
+
+  it('supports locale numbering-system extensions', () => {
+    const formatter = createCalendarDateTimeFormatter('en-US-u-nu-arab');
+
+    expect(formatter({ date, format: 'year' })).toBe(
+      new Intl.DateTimeFormat('en-US-u-nu-arab', { year: 'numeric' }).format(date),
+    );
+  });
+});
 
 describe('defaultCalendarFormatters', () => {
   it.each([
