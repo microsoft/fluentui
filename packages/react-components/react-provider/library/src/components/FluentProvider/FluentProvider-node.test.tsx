@@ -77,10 +77,9 @@ describe('FluentProvider (node)', () => {
     `);
   });
 
-  it('omits invalid theme entries from the server style element', () => {
-    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  it('contains theme entries in the server style element', () => {
     const theme = {
-      invalidToken: 'url(resource/*);token/**/)',
+      customToken: 'url(resource/*);token/**/)',
       validToken: 'green',
     } as unknown as PartialTheme;
 
@@ -93,12 +92,12 @@ describe('FluentProvider (node)', () => {
       >
         <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
+            --customToken: url(resource)\\3B token);
             --validToken: green;
           }
         </style>
       </div>"
     `);
     expect(html.match(/<style/g)).toHaveLength(1);
-    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"invalidToken"'));
   });
 });

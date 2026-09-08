@@ -3,18 +3,16 @@ import type { PartialTheme } from '@fluentui/react-theme';
 const CSS_ESCAPE_MAP = {
   '<': '\\3C ',
   '>': '\\3E ',
+  ';': '\\3B ',
+  '{': '\\7B ',
+  '}': '\\7D ',
 };
-const THEME_TOKEN_NAME_PATTERN = /^[-_a-zA-Z0-9\u0080-\uFFFF]+$/;
-const OPENING_DELIMITERS: Record<string, string> = {
-  '(': ')',
-  '[': ']',
-  '{': '}',
-};
-const CLOSING_DELIMITERS = new Set(Object.values(OPENING_DELIMITERS));
-type DelimiterFrame = {
-  closingDelimiter: string;
-  urlState?: 'leading' | 'value' | 'trailing';
-};
+const THEME_TOKEN_NAME_PATTERN =
+  /^(?:[-_a-z0-9\u0080-\uFFFF]|\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^0-9a-f\n\r\f]))+$/i;
+const NAME_CHARACTER_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]$/i;
+const ESCAPE_AT_START_PATTERN = /^\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^\n\r\f])/i;
+const URL_FUNCTION_PATTERN =
+  /^(?:u|\\(?:u|0{0,4}75(?:\r\n|[ \t\n\r\f])?))(?:r|\\(?:r|0{0,4}72(?:\r\n|[ \t\n\r\f])?))(?:l|\\(?:l|0{0,4}6c(?:\r\n|[ \t\n\r\f])?))$/i;
 
 /**
  * Escapes characters that could break out of a <style> tag during SSR.
@@ -25,293 +23,127 @@ type DelimiterFrame = {
 function escapeForStyleTag(value: string): string {
   // Escape as CSS code points so the resulting CSS still represents the same characters.
   // Using CSS escapes prevents the HTML parser from seeing a literal '<' / '>' and closing <style>.
-  return value.replace(/[<>]/g, match => CSS_ESCAPE_MAP[match as keyof typeof CSS_ESCAPE_MAP]);
-}
-
-function isNewline(character: string): boolean {
-  return character === '\n' || character === '\r' || character === '\f';
-}
-
-function isWhitespace(character: string): boolean {
-  return character === ' ' || character === '\t' || isNewline(character);
-}
-
-function isNameCodePoint(character: string): boolean {
-  return /^[-_a-zA-Z0-9\u0080-\uFFFF]$/.test(character);
-}
-
-function consumeEscape(value: string, escapeIndex: number): number | undefined {
-  const nextCharacter = value[escapeIndex + 1];
-  if (nextCharacter === undefined || isNewline(nextCharacter)) {
-    return undefined;
-  }
-
-  if (/^[0-9a-fA-F]$/.test(nextCharacter)) {
-    let index = escapeIndex + 1;
-    let hexDigits = 0;
-
-    while (hexDigits < 6 && /^[0-9a-fA-F]$/.test(value[index])) {
-      index++;
-      hexDigits++;
-    }
-
-    if (isWhitespace(value[index])) {
-      if (value[index] === '\r' && value[index + 1] === '\n') {
-        index++;
-      }
-
-      return index;
-    }
-
-    return index - 1;
-  }
-
-  return escapeIndex + 1;
-}
-
-function decodeIdentifier(value: string): string | undefined {
-  let decodedValue = '';
-
-  for (let i = 0; i < value.length; i++) {
-    const character = value[i];
-
-    if (character === '\\') {
-      const nextCharacter = value[i + 1];
-      if (nextCharacter === undefined || isNewline(nextCharacter)) {
-        return undefined;
-      }
-
-      if (/^[0-9a-fA-F]$/.test(nextCharacter)) {
-        let escapeEndIndex = i + 1;
-        let hexDigits = 0;
-
-        while (hexDigits < 6 && /^[0-9a-fA-F]$/.test(value[escapeEndIndex])) {
-          escapeEndIndex++;
-          hexDigits++;
-        }
-
-        const codePoint = Number.parseInt(value.slice(i + 1, escapeEndIndex), 16);
-        decodedValue +=
-          codePoint === 0 || codePoint > 0x10ffff || (codePoint >= 0xd800 && codePoint <= 0xdfff)
-            ? '\uFFFD'
-            : String.fromCodePoint(codePoint);
-
-        if (isWhitespace(value[escapeEndIndex])) {
-          if (value[escapeEndIndex] === '\r' && value[escapeEndIndex + 1] === '\n') {
-            escapeEndIndex++;
-          }
-
-          i = escapeEndIndex;
-        } else {
-          i = escapeEndIndex - 1;
-        }
-      } else {
-        decodedValue += nextCharacter;
-        i++;
-      }
-
-      continue;
-    }
-
-    if (!isNameCodePoint(character)) {
-      return undefined;
-    }
-
-    decodedValue += character;
-  }
-
-  return decodedValue;
-}
-
-function findUrlFunctionParentheses(value: string): Set<number> {
-  const openingParentheses = new Set<number>();
-  let identifierStart: number | undefined;
-
-  for (let i = 0; i < value.length; i++) {
-    const character = value[i];
-
-    if (isNameCodePoint(character)) {
-      identifierStart ??= i;
-      continue;
-    }
-
-    if (character === '\\') {
-      const escapeEndIndex = consumeEscape(value, i);
-      if (escapeEndIndex !== undefined) {
-        identifierStart ??= i;
-        i = escapeEndIndex;
-        continue;
-      }
-    }
-
-    if (
-      character === '(' &&
-      identifierStart !== undefined &&
-      decodeIdentifier(value.slice(identifierStart, i))?.toLowerCase() === 'url'
-    ) {
-      openingParentheses.add(i);
-    }
-
-    identifierStart = undefined;
-  }
-
-  return openingParentheses;
-}
-
-function isNonPrintable(character: string): boolean {
-  const codePoint = character.charCodeAt(0);
-  return (
-    (codePoint >= 0 && codePoint <= 8) || codePoint === 11 || (codePoint >= 14 && codePoint <= 31) || codePoint === 127
+  return value.replace(
+    /(\\*)([<>])/g,
+    (_match, backslashes: string, bracket: '<' | '>') =>
+      backslashes.slice(backslashes.length % 2) + CSS_ESCAPE_MAP[bracket],
   );
 }
 
-/**
- * Checks only the CSS structure needed to keep a value within its custom property declaration.
- * Semantic validation belongs to the application because custom tokens can represent any CSS property.
- */
-function isValidThemeTokenValue(value: string): boolean {
-  const delimiterFrames: DelimiterFrame[] = [];
-  const urlFunctionParentheses = findUrlFunctionParentheses(value);
-  let quote: '"' | "'" | undefined;
-  let inComment = false;
+function containThemeTokenValue(value: string): string {
+  const result = value.split('');
+  const blocks: string[] = [];
+  let identifier = '';
+  let quote = '';
+  let comment = false;
+  let urlState = 0;
 
   for (let i = 0; i < value.length; i++) {
     const character = value[i];
     const nextCharacter = value[i + 1];
 
-    if (inComment) {
+    if (comment) {
       if (character === '*' && nextCharacter === '/') {
-        inComment = false;
+        comment = false;
         i++;
       }
-
       continue;
     }
 
     if (quote) {
       if (character === '\\') {
-        if (nextCharacter === undefined) {
-          return false;
+        const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
+        if (escape) {
+          i += escape.length - 1;
+        } else if (nextCharacter === undefined) {
+          result[i] = '\\\n';
+        } else {
+          i += nextCharacter === '\r' && value[i + 2] === '\n' ? 2 : 1;
         }
-
-        if (nextCharacter === '\r' && value[i + 2] === '\n') {
-          i++;
-        }
-
-        i++;
       } else if (character === quote) {
-        quote = undefined;
-      } else if (isNewline(character)) {
-        return false;
+        quote = '';
+      } else if (/[\n\r\f]/.test(character)) {
+        result[i] = quote + character;
+        quote = '';
       }
-
       continue;
     }
 
-    const currentFrame = delimiterFrames[delimiterFrames.length - 1];
-    if (currentFrame?.urlState) {
-      if (currentFrame.urlState === 'leading') {
-        if (isWhitespace(character)) {
-          continue;
-        }
-
-        if (character === '"' || character === "'") {
-          currentFrame.urlState = undefined;
-        } else {
-          currentFrame.urlState = 'value';
-        }
-      }
-
-      if (currentFrame.urlState === 'value') {
-        if (character === ')') {
-          delimiterFrames.pop();
-          continue;
-        }
-
-        if (isWhitespace(character)) {
-          currentFrame.urlState = 'trailing';
-          continue;
-        }
-
-        if (character === '\\') {
-          const escapeEndIndex = consumeEscape(value, i);
-          if (escapeEndIndex === undefined) {
-            return false;
-          }
-
-          i = escapeEndIndex;
-          continue;
-        }
-
-        if (character === '"' || character === "'" || character === '(' || isNonPrintable(character)) {
-          return false;
-        }
-
+    if (urlState) {
+      if (urlState === 1 && /[ \t\n\r\f]/.test(character)) {
         continue;
       }
-
-      if (currentFrame.urlState === 'trailing') {
-        if (isWhitespace(character)) {
-          continue;
-        }
-
-        if (character === ')') {
-          delimiterFrames.pop();
-          continue;
-        }
-
-        return false;
+      if (urlState === 1 && (character === '"' || character === "'")) {
+        urlState = 0;
+        quote = character;
+        continue;
       }
-    }
-
-    if (character === '/' && nextCharacter === '*') {
-      inComment = true;
-      i++;
+      if (character === ')') {
+        blocks.pop();
+        urlState = 0;
+      } else if (character === '\\') {
+        const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
+        if (escape) {
+          i += escape.length - 1;
+        } else if (nextCharacter === undefined) {
+          result[i] = '\\\n';
+        }
+      } else {
+        urlState = 2;
+      }
       continue;
     }
 
-    if (character === '"' || character === "'") {
-      quote = character;
+    if (NAME_CHARACTER_PATTERN.test(character)) {
+      identifier += character;
       continue;
     }
 
     if (character === '\\') {
-      if (nextCharacter !== undefined && isNewline(nextCharacter)) {
-        continue;
+      const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
+      if (escape) {
+        identifier += escape;
+        i += escape.length - 1;
+      } else {
+        identifier = '';
+        if (nextCharacter === undefined) {
+          result[i] = '\\\n';
+        }
       }
-
-      const escapeEndIndex = consumeEscape(value, i);
-      if (escapeEndIndex === undefined) {
-        return false;
-      }
-
-      i = escapeEndIndex;
       continue;
     }
 
-    const closingDelimiter = OPENING_DELIMITERS[character];
-    if (closingDelimiter) {
-      delimiterFrames.push({
-        closingDelimiter,
-        urlState: character === '(' && urlFunctionParentheses.has(i) ? 'leading' : undefined,
-      });
-      continue;
-    }
+    const functionNameIsUrl = URL_FUNCTION_PATTERN.test(identifier);
+    identifier = '';
 
-    if (CLOSING_DELIMITERS.has(character)) {
-      if (delimiterFrames.pop()?.closingDelimiter !== character) {
-        return false;
+    if (character === '/' && nextCharacter === '*') {
+      comment = true;
+      i++;
+    } else if (character === '"' || character === "'") {
+      quote = character;
+    } else if (character === '(' || character === '[' || character === '{') {
+      blocks.push(character === '(' ? ')' : character === '[' ? ']' : '}');
+      if (character === '(' && functionNameIsUrl) {
+        urlState = 1;
       }
-
-      continue;
-    }
-
-    if (character === ';' && delimiterFrames.length === 0) {
-      return false;
+    } else if (character === ')' || character === ']' || character === '}') {
+      const blockIndex = blocks.lastIndexOf(character);
+      if (blockIndex >= 0) {
+        result[i] =
+          blocks
+            .splice(blockIndex + 1)
+            .reverse()
+            .join('') + character;
+        blocks.pop();
+      } else if (character === '}') {
+        result[i] = CSS_ESCAPE_MAP[character];
+      }
+    } else if (character === ';' && blocks.length === 0) {
+      result[i] = CSS_ESCAPE_MAP[character];
     }
   }
 
-  return quote === undefined && !inComment && delimiterFrames.length === 0;
+  return result.join('') + quote + (comment ? '*/' : '') + blocks.reverse().join('');
 }
 
 function warnInvalidThemeToken(tokenName: string, reason: 'name' | 'value'): void {
@@ -346,15 +178,12 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
         return cssVarRule;
       }
 
-      if (
-        (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) ||
-        !isValidThemeTokenValue(String(tokenValue))
-      ) {
+      if (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) {
         warnInvalidThemeToken(tokenName, 'value');
         return cssVarRule;
       }
 
-      return `${cssVarRule}--${tokenName}: ${tokenValue}; `;
+      return `${cssVarRule}--${tokenName}: ${containThemeTokenValue(String(tokenValue))}; `;
     }, '');
 
     return `${escapedSelector} { ${escapeForStyleTag(cssVarsAsString)} }`;

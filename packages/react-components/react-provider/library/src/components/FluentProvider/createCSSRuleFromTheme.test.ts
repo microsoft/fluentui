@@ -2,6 +2,7 @@ import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  themeToTokensObject,
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
@@ -72,6 +73,8 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'escaped delimiters', value: String.raw`red\;blue` },
     { description: 'escaped quotes', value: String.raw`"escaped \"quote\""` },
     { description: 'escaped unquoted URL characters', value: String.raw`url(image\20 name.png)` },
+    { description: 'escaped generic function names', value: String.raw`f\6f o((x); y)` },
+    { description: 'quoted URL functions with nested blocks', value: String.raw`url("image" (x); fallback)` },
     { description: 'backslash and line feed', value: 'first\\\nsecond' },
     { description: 'backslash and carriage return', value: 'first\\\rsecond' },
     { description: 'backslash and form feed', value: 'first\\\fsecond' },
@@ -87,15 +90,28 @@ describe('createCSSRuleFromTheme', () => {
     const theme = {
       'custom-token_1': 0,
       customÜnicode: 'red',
+      'custom\\ token': 'blue',
+      'custom\\3A token': 'green',
+      'custom\\<token': 'purple',
     } as unknown as PartialTheme;
 
     expect(createCSSRuleFromTheme('.selector', theme)).toBe(
-      '.selector { --custom-token_1: 0; --customÜnicode: red;  }',
+      '.selector { --custom-token_1: 0; --customÜnicode: red; --custom\\ token: blue; --custom\\3A token: green; --custom\\3C token: purple;  }',
     );
     expect(logWarnSpy).not.toHaveBeenCalled();
   });
 
-  it.each(['', 'token name', 'token:name', 'token;name', 'token\\name'])(
+  it('serializes escaped custom token names consistently with themeToTokensObject', () => {
+    const escapedColonTheme = { ...webLightTheme, 'custom\\3A token': 'red' };
+    const escapedAngleTheme = { ...webLightTheme, 'custom\\<token': 'red' };
+
+    expect(createCSSRuleFromTheme('.selector', escapedColonTheme)).toContain('--custom\\3A token: red;');
+    expect(createCSSRuleFromTheme('.selector', escapedAngleTheme)).toContain('--custom\\3C token: red;');
+    expect(themeToTokensObject(escapedColonTheme)['custom\\3A token']).toBe('var(--custom\\3A token)');
+    expect(themeToTokensObject(escapedAngleTheme)['custom\\<token']).toBe('var(--custom\\<token)');
+  });
+
+  it.each(['', 'token name', 'token:name', 'token;name', 'token\\', 'token\\\nname'])(
     'omits unsupported custom token name %j',
     tokenName => {
       const result = createCSSRuleFromTheme('.selector', { [tokenName]: 'red' } as PartialTheme);
@@ -106,20 +122,55 @@ describe('createCSSRuleFromTheme', () => {
   );
 
   it.each([
-    { description: 'top-level delimiter', value: 'red;blue' },
-    { description: 'unmatched closing delimiter', value: 'red}' },
+    { description: 'top-level semicolon', value: 'red;blue', containedValue: 'red\\3B blue' },
+    { description: 'unmatched closing block delimiter', value: 'red}', containedValue: 'red\\7D ' },
+    {
+      description: 'unquoted URL tokenization',
+      value: 'url(resource/*);token/**/)',
+      containedValue: 'url(resource/*)\\3B token/**/)',
+    },
+    {
+      description: 'escaped unquoted URL tokenization',
+      value: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*);token/**/)',
+      containedValue: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*)\\3B token/**/)',
+    },
+  ])('contains a value with $description without affecting later tokens', ({ value, containedValue }) => {
+    const theme = {
+      customToken: value,
+      colorBrandBackground: 'blue',
+    } as unknown as PartialTheme;
+
+    expect(createCSSRuleFromTheme('.selector', theme)).toBe(
+      `.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`,
+    );
+    expect(logWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it.each([
     { description: 'mismatched delimiters', value: 'calc([1px)]' },
     { description: 'unterminated function', value: 'calc(1px' },
     { description: 'unterminated string', value: '"red' },
-    { description: 'unescaped string newline', value: '"red\nblue"' },
+    { description: 'unescaped string newline', value: '"red\n; color: red' },
     { description: 'unterminated comment', value: 'red /* comment' },
     { description: 'unterminated escape', value: 'red\\' },
-    { description: 'invalid unquoted URL tokenization', value: 'url(resource/*);token/**/)' },
-    {
-      description: 'invalid escaped unquoted URL tokenization',
-      value: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*);token/**/)',
-    },
     { description: 'escaped whitespace in a generic function name', value: String.raw`ur\ l(resource{)` },
+  ])('repairs a value with $description without affecting later tokens', ({ value }) => {
+    const ruleText = createCSSRuleFromTheme('.selector', {
+      customToken: value,
+      colorBrandBackground: 'blue',
+    } as unknown as PartialTheme);
+    const styleElement = document.createElement('style');
+    styleElement.textContent = ruleText;
+    document.head.appendChild(styleElement);
+
+    const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
+    expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+    expect(logWarnSpy).not.toHaveBeenCalled();
+
+    styleElement.remove();
+  });
+
+  it.each([
     { description: 'non-finite number', value: Number.POSITIVE_INFINITY },
     { description: 'non-primitive value', value: { color: 'red' } },
   ])('omits a value with $description without affecting later tokens', ({ value }) => {
