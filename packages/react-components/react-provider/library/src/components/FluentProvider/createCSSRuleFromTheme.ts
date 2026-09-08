@@ -12,7 +12,7 @@ const THEME_TOKEN_NAME_PATTERN =
 const NAME_CHARACTER_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]$/i;
 const ESCAPE_AT_START_PATTERN = /^\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^\n\r\f])/i;
 const URL_FUNCTION_PATTERN =
-  /^(?:u|\\(?:u|0{0,4}75(?:\r\n|[ \t\n\r\f])?))(?:r|\\(?:r|0{0,4}72(?:\r\n|[ \t\n\r\f])?))(?:l|\\(?:l|0{0,4}6c(?:\r\n|[ \t\n\r\f])?))$/i;
+  /^(?:u|\\(?:u|0{0,4}[57]5(?:\r\n|[ \t\n\r\f])?))(?:r|\\(?:r|0{0,4}[57]2(?:\r\n|[ \t\n\r\f])?))(?:l|\\(?:l|0{0,4}[46]c(?:\r\n|[ \t\n\r\f])?))$/i;
 
 /**
  * Escapes characters that could break out of a <style> tag during SSR.
@@ -21,13 +21,13 @@ const URL_FUNCTION_PATTERN =
  * We only need to ensure the generated text cannot terminate the style tag and inject HTML.
  */
 function escapeForStyleTag(value: string): string {
-  // Escape as CSS code points so the resulting CSS still represents the same characters.
-  // Using CSS escapes prevents the HTML parser from seeing a literal '<' / '>' and closing <style>.
-  return value.replace(
-    /(\\*)([<>])/g,
-    (_match, backslashes: string, bracket: '<' | '>') =>
-      backslashes.slice(backslashes.length % 2) + CSS_ESCAPE_MAP[bracket],
-  );
+  // Consume each backslash run once so matching does not retry overlapping suffixes.
+  return value.replace(/\\+[<>]?|[<>]/g, match => {
+    const bracket = match[match.length - 1] as '<' | '>' | '\\';
+    const runLength = bracket === '\\' ? match.length : match.length - 1;
+
+    return bracket === '\\' ? match : match.slice(runLength % 2, runLength) + CSS_ESCAPE_MAP[bracket];
+  });
 }
 
 function containThemeTokenValue(value: string): string {

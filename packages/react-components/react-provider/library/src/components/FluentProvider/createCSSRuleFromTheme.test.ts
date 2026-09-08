@@ -58,6 +58,30 @@ describe('createCSSRuleFromTheme', () => {
   });
 
   it.each([
+    { value: String.raw`<`, expected: String.raw`\3C ` },
+    { value: String.raw`\<`, expected: String.raw`\3C ` },
+    { value: String.raw`\\<`, expected: String.raw`\\\3C ` },
+    { value: String.raw`\\\<`, expected: String.raw`\\\3C ` },
+  ])('preserves backslash parity when escaping angle brackets in %j', ({ value, expected }) => {
+    expect(createCSSRuleFromTheme(value, undefined)).toBe(`${expected} {}`);
+  });
+
+  it.each([5_000, 10_000, 20_000, 100_000])(
+    'serializes matching and nonmatching backslash runs of length %i',
+    runLength => {
+      const backslashes = '\\'.repeat(runLength);
+      const theme = {
+        fontFamilyBase: `"${backslashes}x"`,
+        fontFamilyMonospace: `"${backslashes}<"`,
+      } as PartialTheme;
+
+      expect(createCSSRuleFromTheme(`.selector${backslashes}<`, theme)).toBe(
+        `.selector${backslashes}\\3C  { --fontFamilyBase: "${backslashes}x"; --fontFamilyMonospace: "${backslashes}\\3C ";  }`,
+      );
+    },
+  );
+
+  it.each([
     { description: 'font family fallbacks', value: '"Segoe UI", system-ui, sans-serif' },
     { description: 'system and functional colors', value: 'color-mix(in srgb, CanvasText 40%, transparent)' },
     { description: 'nested functions and fallbacks', value: 'clamp(1rem, calc(var(--scale, 1) * 2vw), 3rem)' },
@@ -73,6 +97,17 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'escaped delimiters', value: String.raw`red\;blue` },
     { description: 'escaped quotes', value: String.raw`"escaped \"quote\""` },
     { description: 'escaped unquoted URL characters', value: String.raw`url(image\20 name.png)` },
+    { description: 'uppercase hexadecimal escaped URL name', value: String.raw`\55rl(resource/*)` },
+    { description: 'mixed hexadecimal escaped URL name', value: String.raw`u\52l(resource/*)` },
+    { description: 'uppercase hexadecimal escaped URL suffix', value: String.raw`ur\4c(resource/*)` },
+    { description: 'lowercase hexadecimal escaped URL name', value: String.raw`\75rl(resource/*)` },
+    { description: 'mixed simple and hexadecimal escaped URL name', value: String.raw`\U\72L(resource/*)` },
+    { description: 'hexadecimal escaped URL name with a space terminator', value: String.raw`\55 rl(resource/*)` },
+    {
+      description: 'hexadecimal escaped URL name with a CRLF terminator',
+      value: String.raw`u\52${'\r\n'}l(resource/*)`,
+    },
+    { description: 'zero-padded hexadecimal escaped URL name', value: String.raw`\000055rl(resource/*)` },
     { description: 'escaped generic function names', value: String.raw`f\6f o((x); y)` },
     { description: 'quoted URL functions with nested blocks', value: String.raw`url("image" (x); fallback)` },
     { description: 'backslash and line feed', value: 'first\\\nsecond' },
@@ -154,6 +189,7 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'unterminated comment', value: 'red /* comment' },
     { description: 'unterminated escape', value: 'red\\' },
     { description: 'escaped whitespace in a generic function name', value: String.raw`ur\ l(resource{)` },
+    { description: 'non-URL escaped function name', value: String.raw`\54rl(resource/*)` },
   ])('repairs a value with $description without affecting later tokens', ({ value }) => {
     const ruleText = createCSSRuleFromTheme('.selector', {
       customToken: value,
@@ -166,6 +202,24 @@ describe('createCSSRuleFromTheme', () => {
     const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
     expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
     expect(logWarnSpy).not.toHaveBeenCalled();
+
+    styleElement.remove();
+  });
+
+  it.each([
+    String.raw`\55rl(resource.png)`,
+    String.raw`u\52l(resource.png)`,
+    String.raw`ur\4c(resource.png)`,
+    String.raw`\55 rl(resource.png)`,
+  ])('preserves escaped unquoted URL syntax through CSSOM for %j', value => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = createCSSRuleFromTheme('.selector', {
+      customToken: value,
+    } as unknown as PartialTheme);
+    document.head.appendChild(styleElement);
+
+    const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
+    expect(rule.style.getPropertyValue('--customToken')).toBe(value);
 
     styleElement.remove();
   });
