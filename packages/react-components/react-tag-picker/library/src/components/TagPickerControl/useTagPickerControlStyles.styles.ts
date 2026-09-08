@@ -198,7 +198,7 @@ const useIconStyles = makeStyles({
     fontSize: tokens.fontSizeBase500,
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
-    '& svg, & :where([data-fui-icon])': {
+    '& svg, & i': {
       display: 'block',
     },
   },

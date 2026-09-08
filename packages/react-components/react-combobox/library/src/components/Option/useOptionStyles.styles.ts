@@ -80,7 +80,7 @@ const useStyles = makeStyles({
     marginRight: tokens.spacingHorizontalXXS,
     visibility: 'hidden',
 
-    '& svg, & :where([data-fui-icon])': {
+    '& svg, & i': {
       display: 'block',
     },
   },

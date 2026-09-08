@@ -26,7 +26,7 @@ export const v9HoverClasses = (): GriffelStyle => ({
 
 export const v9Icon = (): GriffelStyle => ({
   // styles that allow to keep consistent size of v9 icon with v0 icon
-  '& svg, & :where([data-fui-icon])': {
+  '& svg, & i': {
     width: '100%',
     paddingBottom: '100%',
     // negative margin is necessary here for centering v9 icon
@@ -38,7 +38,7 @@ export const v9Icon = (): GriffelStyle => ({
 });
 
 export const v9CustomSizeIcon = (): GriffelStyle => ({
-  '& svg, & :where([data-fui-icon])': { overflow: 'visible' },
+  '& svg, & i': { overflow: 'visible' },
   ...v9HoverClasses(),
 });
 

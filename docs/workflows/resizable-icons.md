@@ -103,7 +103,7 @@ Use literal pixel values for fixed icon geometry. Typography tokens can be custo
 
 ## Support font icon variants
 
-Font icon variants render an element with the `data-fui-icon` attribute. Every existing style selector that targets a Fluent icon SVG must also match this attribute.
+Font icon variants render an `i` element. Every existing style selector that targets a Fluent icon SVG must also match this element.
 
 Preserve the original combinator:
 
@@ -114,7 +114,7 @@ Preserve the original combinator:
 },
 
 // Becomes
-'& svg, & :where([data-fui-icon])': {
+'& svg, & i': {
   display: 'block',
 },
 ```
@@ -126,7 +126,7 @@ Preserve the original combinator:
 },
 
 // Becomes
-'> svg, > :where([data-fui-icon])': {
+'> svg, > i': {
   fontSize: '20px',
 },
 ```
@@ -134,8 +134,8 @@ Preserve the original combinator:
 Use an explicit selector list rather than nesting both branches inside `:is()`.
 
 - The existing `svg` branch remains unchanged and retains its original specificity.
-- `:where([data-fui-icon])` matches font variants without increasing specificity.
-- Avoid selecting the implementation element (`i`) because that could match unrelated italic content.
+- `i` matches font variants across the supported browser matrix.
+- Keep the `i` branch scoped to the icon slot and preserve the original combinator to avoid matching unrelated italic content.
 - Avoid hardcoding `.fui-Icon-font` unless a style intentionally applies only to font icons.
 
 Direct `fontSize` props do not replace these selector updates. Existing selectors may also provide layout behavior such as `display`, `overflow`, flex sizing, or sizing for arbitrary slot content.
