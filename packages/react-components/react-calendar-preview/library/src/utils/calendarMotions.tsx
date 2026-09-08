@@ -28,8 +28,14 @@ function useChildWithMergedRef(children: JSXElement, ref: React.Ref<HTMLElement>
  * so they are baked into the slot's `defaultProps` rather than passed per row.
  */
 export type DirectionalSlideParams = {
+  /**
+   * The direction in which the row should slide.
+   */
   animationDirection: AnimationDirection;
-  animateBackwards: boolean;
+  /**
+   * Whether the row should animate in the reverse direction.
+   */
+  animateBackwards?: boolean;
   /**
    * When this value changes, the animation replays from the start on the same DOM element without
    * remounting the subtree, so focus and DOM identity survive keyboard navigation.
@@ -123,7 +129,13 @@ export type DirectionalSlideOutProps = MotionComponentProps & {
    * Which transition row this wraps: the first (top) or last (bottom) filler row.
    */
   edge?: 'first' | 'last';
+  /**
+   * The direction in which the row should slide.
+   */
   animationDirection?: AnimationDirection;
+  /**
+   * Whether the row should animate in the reverse direction.
+   */
   animateBackwards?: boolean;
 };
 

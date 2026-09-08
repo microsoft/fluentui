@@ -261,12 +261,12 @@ export function isDateInRange(date: Date, dateRange: Date[]): boolean {
 }
 
 /**
- * Returns the week number for a date.
- * Week numbers are 1 - 52 (53) in a year
+ * Returns the week number in a year for a date.
+ *
  * @param navigatedDate - A date to find the week number for.
- * @param firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
- * @param firstWeekOfYear - The first week of the year (1-2)
- * @returns The weeks number array for the current month.
+ * @param firstDayOfWeek - The named day that starts each week.
+ * @param firstWeekOfYear - The convention that determines which week is the first week of the year.
+ * @returns The week number array for the current month.
  */
 export function getWeekNumbersInMonth(
   weeksInMonth: number,
@@ -278,9 +278,11 @@ export function getWeekNumbersInMonth(
   const selectedMonth = navigatedDate.getMonth();
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
   let dayOfMonth = 1;
-  const fistDayOfMonth = createDate(selectedYear, selectedMonth, dayOfMonth);
+  const firstDayOfMonth = createDate(selectedYear, selectedMonth, dayOfMonth);
   const endOfFirstWeek =
-    dayOfMonth + (firstDayOfWeekIndex + DAYS_IN_WEEK - 1) - adjustWeekDay(firstDayOfWeekIndex, fistDayOfMonth.getDay());
+    dayOfMonth +
+    (firstDayOfWeekIndex + DAYS_IN_WEEK - 1) -
+    adjustWeekDay(firstDayOfWeekIndex, firstDayOfMonth.getDay());
   let endOfWeekRange = createDate(selectedYear, selectedMonth, endOfFirstWeek);
   dayOfMonth = endOfWeekRange.getDate();
 
@@ -296,14 +298,14 @@ export function getWeekNumbersInMonth(
 
 /**
  * Returns the week number for a date.
- * Week numbers are 1 - 52 (53) in a year
+ *
  * @param date - A date to find the week number for.
- * @param firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
- * @param firstWeekOfYear - The first week of the year (1-2)
+ * @param firstDayOfWeek - The named day that starts each week.
+ * @param firstWeekOfYear - The convention that determines which week is the first week of the year.
  * @returns The week's number in the year.
  */
 export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number {
-  // First four-day week of the year - minumum days count
+  // First four-day week of the year - minimum days count
   const fourDayWeek = 4;
 
   switch (firstWeekOfYear) {

@@ -164,7 +164,7 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
-   * Whether the calendar should show the week-of-year number (1 through 53) before each week row.
+   * Whether the calendar should show the week-of-year number before each week row.
    * @default false
    */
   showWeekNumbers?: boolean;

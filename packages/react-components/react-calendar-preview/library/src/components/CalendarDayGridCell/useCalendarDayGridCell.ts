@@ -253,7 +253,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
         'aria-disabled': !ariaHidden && !day.isInBounds,
         'aria-selected': day.isInBounds ? day.isSelected : undefined,
         role: 'gridcell',
-        tabIndex: isNavigatedDate || isFocusable ? 0 : undefined,
+        tabIndex: isFocusable ? 0 : undefined,
       },
       elementType: 'td',
     },

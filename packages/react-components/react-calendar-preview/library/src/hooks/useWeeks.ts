@@ -33,7 +33,7 @@ export function useWeeks(
     const weeksGrid = getDayGrid(props);
 
     const firstVisibleDay = weeksGrid[1][0].originalDate;
-    const lastVisibleDay = weeksGrid[weeksGrid.length - 1][6].originalDate;
+    const lastVisibleDay = weeksGrid[weeksGrid.length - 2][DAYS_IN_WEEK - 1].originalDate;
     const markedDays = props.getMarkedDays?.(firstVisibleDay, lastVisibleDay) || [];
 
     /**

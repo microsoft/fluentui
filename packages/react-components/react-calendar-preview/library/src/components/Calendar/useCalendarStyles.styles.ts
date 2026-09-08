@@ -63,7 +63,7 @@ const useGoTodayButtonStyles = makeStyles({
     height: '30px',
     lineHeight: '30px',
     marginInlineEnd: tokens.spacingHorizontalL,
-    marginBlockStart: '3px',
+    marginBlockStart: tokens.spacingVerticalXXS,
     overflow: 'visible',
     padding: `0 ${tokens.spacingHorizontalXS}`,
     '&:hover': {

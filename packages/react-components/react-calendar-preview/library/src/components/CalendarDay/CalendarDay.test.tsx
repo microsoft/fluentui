@@ -238,6 +238,24 @@ describe('CalendarDay', () => {
     expect(container.querySelectorAll('tbody > tr')).toHaveLength(9);
   });
 
+  it('requests marked days only for the visible date range', () => {
+    const getMarkedDays = jest.fn(() => []);
+
+    render(<CalendarDay {...defaultProps} getMarkedDays={getMarkedDays} />);
+
+    expect(getMarkedDays).toHaveBeenCalledWith(new Date(2020, 7, 30), new Date(2020, 9, 3));
+  });
+
+  it('does not make a restricted navigated day tabbable', () => {
+    const restrictedDate = new Date(2020, 8, 18);
+    const { container } = render(<CalendarDay {...defaultProps} />, {
+      restrictedDates: [restrictedDate],
+    });
+
+    expect(findDayCellByLabel(container, 18, 'September', 2020)).not.toHaveAttribute('tabindex');
+    expect(findDayCellByLabel(container, 17, 'September', 2020)).toHaveAttribute('tabindex', '0');
+  });
+
   it('does not select a restricted day with Enter when disabled days are focusable', () => {
     const setValue = jest.fn();
     const onNavigateDate = jest.fn();
@@ -384,7 +402,8 @@ describe('CalendarDay', () => {
        * remounted when they start or stop animating (their `DirectionalSlideOut` wrapper mounts
        * only for the matching navigation direction), so they are excluded here.
        */
-      const getWeekRows = () => Array.from(tbody.querySelectorAll(`tr.${calendarDayGridRowClassNames.root}`));
+      const getWeekRows = () =>
+        Array.from(tbody.querySelectorAll(`tr.${calendarDayGridRowClassNames.root}:not([aria-hidden="true"])`));
       const rowsBefore = getWeekRows();
       expect(rowsBefore.length).toBeGreaterThan(0);
 
