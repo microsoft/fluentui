@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Normalize declaration value serialization in merge-styles.",
+  "comment": "fix(merge-styles): normalize declaration value serialization.",
   "packageName": "@fluentui/merge-styles",
   "email": "paulmardling@microsoft.com"
 }
