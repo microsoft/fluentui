@@ -162,6 +162,20 @@ describe('Dialog', () => {
       expect(document.documentElement.style.scrollbarGutter).toBe('');
     });
 
+    it('restores an inline auto gutter after the lock replaces it', () => {
+      setScrollbarWidth(15);
+      document.documentElement.style.scrollbarGutter = 'auto';
+      const result = renderModal();
+
+      fireEvent.click(result.getByRole('button', { name: 'Open dialog' }));
+
+      expect(document.documentElement.style.scrollbarGutter).toBe('stable');
+
+      fireEvent.click(result.getByRole('button', { name: 'Close dialog' }));
+
+      expect(document.documentElement.style.scrollbarGutter).toBe('auto');
+    });
+
     it.each(['stable', 'stable both-edges'])('preserves an inline %s gutter during and after the lock', gutter => {
       setScrollbarWidth(15);
       document.documentElement.style.scrollbarGutter = gutter;

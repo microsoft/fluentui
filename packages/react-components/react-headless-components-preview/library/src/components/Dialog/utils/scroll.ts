@@ -8,7 +8,7 @@ const scrollLockStateByDocument = new WeakMap<Document, ScrollLockState>();
 
 /**
  * Prevents background scrolling while a modal/alert dialog is open by applying
- * `overflow: hidden` to `<body>`, and reserves the space the page scrollbar was
+ * `overflow: visible clip` to `<body>`, and reserves the space the page scrollbar was
  * occupying so nothing on the page moves sideways as it disappears.
  *
  * The gutter has to be reserved on `<html>`: `scrollbar-gutter` does not propagate
