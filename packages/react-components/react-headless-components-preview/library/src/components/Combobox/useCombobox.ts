@@ -76,30 +76,54 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   };
 
   const openOnPointerDownRef = React.useRef(open);
+  const hasExpandIconMouseDownRef = React.useRef(false);
   React.useEffect(() => {
     openOnPointerDownRef.current = open;
   }, [open]);
 
   const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
+      hasExpandIconMouseDownRef.current = true;
       openOnPointerDownRef.current = open;
     }),
   );
 
   const onExpandIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      const nextOpen = !openOnPointerDownRef.current;
+      const wasOpenOnPointerDown = hasExpandIconMouseDownRef.current && openOnPointerDownRef.current;
+      const nextOpen = hasExpandIconMouseDownRef.current ? !openOnPointerDownRef.current : !open;
+      hasExpandIconMouseDownRef.current = false;
       openOnPointerDownRef.current = nextOpen;
-      internalState.setOpen(event, nextOpen);
+      // A pointer interaction that starts while open light-dismisses the native popover on pointerup.
+      // Let the popover's toggle event issue the close notification so onOpenChange fires only once.
+      if (!disabled && !wasOpenOnPointerDown) {
+        internalState.setOpen(event, nextOpen);
+      }
       triggerRef.current?.focus();
+    }),
+  );
+
+  const onExpandIconKeyDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        const nextOpen = !open;
+        openOnPointerDownRef.current = nextOpen;
+        internalState.setOpen(event, nextOpen);
+        triggerRef.current?.focus();
+      }
     }),
   );
 
   if (state.expandIcon) {
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
     state.expandIcon.onClick = onExpandIconClick;
+    state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
 
   const onClearIconMouseDown = useEventCallback(

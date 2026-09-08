@@ -41,13 +41,34 @@ describe('Combobox', () => {
       cy.get(listbox).should('exist');
     });
 
-    it('toggles on expand icon click', () => {
+    it('toggles on click-only expand icon activation', () => {
       mount(<BasicCombobox />);
 
       cy.get('[role="button"]').trigger('click');
       cy.get(listbox).should('exist');
       cy.get('[role="button"]').trigger('click');
       cy.get(listbox).should('not.exist');
+    });
+
+    it('toggles on expand icon keyboard activation', () => {
+      mount(<BasicCombobox />);
+
+      cy.get('[role="button"]').focus().realPress('Enter');
+      cy.get(listbox).should('exist');
+      cy.get('[role="button"]').focus().realPress('Space');
+      cy.get(listbox).should('not.exist');
+    });
+
+    it('notifies of a close only once when the expand icon is clicked', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(<BasicCombobox onOpenChange={onOpenChange} />);
+
+      cy.get('[role="button"]').realClick();
+      cy.get(listbox).should('exist');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+      cy.get('[role="button"]').realClick();
+      cy.get(listbox).should('not.exist');
+      cy.get('@onOpenChange').should('have.been.calledTwice');
     });
 
     it('opens on ArrowDown key', () => {

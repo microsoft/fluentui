@@ -1,12 +1,7 @@
-'use client';
-
 import { slot, useId } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 
-/**
- * @internal
- */
-export type UseComboboxExpandIconSlotOptions = {
+type UseComboboxExpandIconSlotOptions = {
   /** Whether the combobox trigger is disabled. */
   disabled?: boolean;
   /** Whether the listbox is currently open. */
@@ -28,6 +23,7 @@ export function useComboboxExpandIconSlot(
   expandIconFromProps: Slot<'span'> | undefined | null,
   options: UseComboboxExpandIconSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'span'>>> | undefined {
+  const defaultExpandIconId = useId('combobox-chevron-');
   const { disabled, open, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, triggerLabelledBy } = options;
   const expandIcon = slot.optional(expandIconFromProps, {
     renderByDefault: true,
@@ -35,6 +31,7 @@ export function useComboboxExpandIconSlot(
       'aria-disabled': disabled ? 'true' : undefined,
       'aria-expanded': open,
       role: 'button',
+      tabIndex: disabled ? -1 : 0,
     },
     elementType: 'span',
   });
@@ -47,7 +44,7 @@ export function useComboboxExpandIconSlot(
 
   if (!hasExpandLabel) {
     if (triggerLabelledBy || ariaLabelledBy) {
-      const expandIconId = expandIcon.id ?? useId('combobox-chevron-');
+      const expandIconId = expandIcon.id ?? defaultExpandIconId;
       expandIcon.id = expandIconId;
       expandIcon['aria-labelledby'] = `${expandIcon.id} ${triggerLabelledBy ?? ariaLabelledBy}`.trim();
       expandIcon['aria-label'] = 'Open';

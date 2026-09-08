@@ -135,13 +135,27 @@ export const useComboboxBase_unstable = (
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      state.setOpen(event, !state.open);
+      if (!state.disabled) {
+        state.setOpen(event, !state.open);
+      }
       triggerRef.current?.focus();
+    }),
+  );
+
+  const onExpandIconKeyDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (!state.disabled && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        state.setOpen(event, !state.open);
+        triggerRef.current?.focus();
+      }
     }),
   );
 
   if (state.expandIcon) {
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
 
   const onClearIconMouseDown = useEventCallback(
