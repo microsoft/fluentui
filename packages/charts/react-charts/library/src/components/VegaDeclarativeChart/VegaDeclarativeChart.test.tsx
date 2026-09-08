@@ -1347,3 +1347,51 @@ describe('VegaDeclarativeChart - Security', () => {
     );
   });
 });
+
+describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
+  it.each([
+    {
+      name: 'category',
+      pollutionKey: 'vegaRenderPrototypeProbe',
+      values: [
+        { category: '__proto__', series: 'vegaRenderPrototypeProbe', value: 10 },
+        { category: 'constructor', series: 'vegaRenderPrototypeProbe', value: 20 },
+        { category: 'prototype', series: 'vegaRenderPrototypeProbe', value: 30 },
+      ],
+    },
+    {
+      name: 'series',
+      pollutionKey: undefined,
+      values: [
+        { category: 'A', series: '__proto__', value: 10 },
+        { category: 'A', series: 'constructor', value: 20 },
+        { category: 'A', series: 'prototype', value: 30 },
+      ],
+    },
+  ])('should render special $name names as ordinary data', ({ values, pollutionKey }) => {
+    const spec: VegaLiteSpec = {
+      mark: 'bar',
+      data: { values },
+      encoding: {
+        x: { field: 'category', type: 'nominal' },
+        y: { field: 'value', type: 'quantitative' },
+        color: { field: 'series', type: 'nominal' },
+        xOffset: { field: 'series' },
+      },
+    };
+
+    try {
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(3);
+      if (pollutionKey) {
+        expect(Object.prototype).not.toHaveProperty(pollutionKey);
+      }
+    } finally {
+      if (pollutionKey) {
+        Reflect.deleteProperty(Object.prototype, pollutionKey);
+        Reflect.deleteProperty(Object, pollutionKey);
+      }
+    }
+  });
+});

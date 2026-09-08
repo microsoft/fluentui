@@ -95,7 +95,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   let _barLegends: string[] = [];
   let _lineLegends: string[] = [];
-  let _legendColorMap: Record<string, [string, string]> = {};
+  let _legendColorMap: Record<string, [string, string]> = Object.create(null);
   const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
   const _rectRef = React.useRef<SVGRectElement>(null);
@@ -141,7 +141,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = {};
+    const linePointsByX: Record<string, YValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -160,8 +160,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -265,7 +265,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _processDataV2 = (dataV2: (BarSeries<string, number> | LineSeries<string, number>)[]) => {
-    const barPointsByX: Record<string, GroupedVerticalBarChartData> = {};
+    const barPointsByX: Record<string, GroupedVerticalBarChartData> = Object.create(null);
     const lineData: GVBCLineSeries[] = [];
 
     dataV2.forEach(series => {
@@ -303,7 +303,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       ({ barData, lineData } = _processDataV2(props.dataV2));
     }
 
-    _legendColorMap = {};
+    _legendColorMap = Object.create(null);
     let colorIndex = 0;
 
     return {
@@ -360,7 +360,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _mapCategoryToValues = (barData: GroupedVerticalBarChartData[], lineData: GVBCLineSeries[]) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     barData.forEach(point => {
       if (!categoryToValues[point.name]) {
         categoryToValues[point.name] = [];
@@ -534,7 +534,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
-    const presentLegends = _barLegends.filter(key => key in singleSet);
+    const presentLegends = _barLegends.filter(key => Object.prototype.hasOwnProperty.call(singleSet, key));
     const effectiveGroupWidth = calcRequiredWidth(_barWidth, presentLegends.length, X1_INNER_PADDING);
 
     // For stacked bars, center the single bar group in the available space

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Handle grouped chart category and series names consistently",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}

@@ -3,6 +3,7 @@ import {
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
+  transformVegaLiteToGroupedVerticalBarChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
@@ -14,6 +15,76 @@ describe('VegaLiteSchemaAdapter', () => {
   beforeEach(() => {
     // Clear colorMap before each test to ensure test isolation
     colorMap.clear();
+  });
+
+  describe('transformVegaLiteToGroupedVerticalBarChartProps', () => {
+    test('Should preserve special category names without modifying Object.prototype', () => {
+      const legend = 'vegaCategoryPrototypeProbe';
+      const originalConstructor = Object.prototype.constructor;
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: '__proto__', series: legend, value: 10 },
+            { category: 'constructor', series: legend, value: 20 },
+            { category: 'prototype', series: legend, value: 30 },
+          ],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      try {
+        const result = transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+        expect(result.data).toEqual([
+          { name: '__proto__', series: [expect.objectContaining({ data: 10, legend })] },
+          { name: 'constructor', series: [expect.objectContaining({ data: 20, legend })] },
+          { name: 'prototype', series: [expect.objectContaining({ data: 30, legend })] },
+        ]);
+        expect(Object.prototype.constructor).toBe(originalConstructor);
+        expect(Object.prototype).not.toHaveProperty(legend);
+      } finally {
+        Reflect.deleteProperty(Object.prototype, legend);
+        Reflect.deleteProperty(Object, legend);
+      }
+    });
+
+    test('Should preserve special series names', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: 'A', series: '__proto__', value: 10 },
+            { category: 'A', series: 'constructor', value: 20 },
+            { category: 'A', series: 'prototype', value: 30 },
+          ],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      const result = transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(result.data).toEqual([
+        {
+          name: 'A',
+          series: [
+            expect.objectContaining({ data: 10, legend: '__proto__' }),
+            expect.objectContaining({ data: 20, legend: 'constructor' }),
+            expect.objectContaining({ data: 30, legend: 'prototype' }),
+          ],
+        },
+      ]);
+    });
   });
 
   describe('transformVegaLiteToLineChartProps', () => {

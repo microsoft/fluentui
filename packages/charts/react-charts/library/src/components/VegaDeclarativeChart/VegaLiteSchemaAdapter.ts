@@ -2757,7 +2757,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Group data by x value (name), then by color (series)
-  const groupedData: { [key: string]: { [legend: string]: number } } = {};
+  const groupedData: Record<string, Record<string, number>> = Object.create(null);
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2774,7 +2774,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     const legend = String(groupValue);
 
     if (!groupedData[xKey]) {
-      groupedData[xKey] = {};
+      groupedData[xKey] = Object.create(null);
     }
 
     groupedData[xKey][legend] = yValue;
