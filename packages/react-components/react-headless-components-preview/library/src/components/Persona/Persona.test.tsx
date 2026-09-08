@@ -7,6 +7,7 @@ describe('Persona', () => {
   isConformant({
     Component: Persona,
     displayName: 'Persona',
+    requiredProps: { name: 'User' },
   });
 
   it('renders a default state', () => {
