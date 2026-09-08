@@ -16,12 +16,8 @@ export { CalendarMultidayDayView } from './CalendarMultiDayView.stories';
 export { CalendarContiguousWorkWeekDays } from './CalendarContiguousWork.stories';
 export { CalendarNonContiguousWorkWeekDays } from './CalendarNonContiguousWorkWeekDays.stories';
 export { CalendarLocalizedFormatting } from './CalendarLocalizedFormatting.stories';
-export {
-  CalendarControlledSelection,
-  CalendarControlledNavigation,
-  CalendarUncontrolledSelection,
-  CalendarDayOnly,
-} from './CalendarControlled.stories';
+export { CalendarControlledSelection } from './CalendarControlledSelection.stories';
+export { CalendarControlledNavigation } from './CalendarControlledNavigation.stories';
 export { CalendarStandalonePickers } from './CalendarStandalonePickers.stories';
 export { CalendarCustomCells } from './CalendarCustomCells.stories';
 export { CalendarFocusAndDismissal } from './CalendarFocusAndDismissal.stories';
