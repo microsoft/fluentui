@@ -38,7 +38,10 @@ const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
 /**
  * Create the state required to render CalendarDayGridCell.
  */
-export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps): CalendarDayGridCellState => {
+export const useCalendarDayGridCell_unstable = (
+  props: CalendarDayGridCellProps,
+  ref: React.Ref<HTMLTableCellElement>,
+): CalendarDayGridCellState => {
   const { ariaHidden, day, dayIndex, weekIndex, ...rest } = props;
 
   const activeDescendantId = useCalendarDayContext_unstable(ctx => ctx.activeDescendantId);
@@ -225,7 +228,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
    * The grid publishes `navigatedDayRef` so it can focus the navigated cell; assigning it from this
    * ref callback runs at commit, not during render.
    */
-  const cellRef = useMergedRefs(setCellRef, cellProps.ref);
+  const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref);
   const root = slot.always<ExtractSlotProps<Slot<'td'>>>(
     getIntrinsicElementProps('td', {
       ...cellProps,

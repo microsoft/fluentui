@@ -142,10 +142,7 @@ export type CalendarDayContextValues = {
 export type CalendarDayDismissData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>>;
 
 // @public
-export const CalendarDayGridCell: {
-    (props: CalendarDayGridCellProps): JSXElement;
-    displayName: string;
-};
+export const CalendarDayGridCell: ForwardRefComponent<CalendarDayGridCellProps>;
 
 // @public
 export const calendarDayGridCellClassNames: SlotClassNames<CalendarDayGridCellSlots>;
@@ -173,10 +170,7 @@ export type CalendarDayGridCellState = ComponentState<CalendarDayGridCellSlots> 
 };
 
 // @public
-export const CalendarDayGridHeaderCell: {
-    (props: CalendarDayGridHeaderCellProps): JSXElement;
-    displayName: string;
-};
+export const CalendarDayGridHeaderCell: ForwardRefComponent<CalendarDayGridHeaderCellProps>;
 
 // @public
 export type CalendarDayGridHeaderCellBaseProps = ComponentProps<Partial<CalendarDayGridHeaderCellBaseSlots>> & Pick<CalendarDayGridHeaderCellProps, 'dayLabel'>;
@@ -379,10 +373,7 @@ export type CalendarMonthContextValues = {
 };
 
 // @public
-export const CalendarMonthGridCell: {
-    (props: CalendarMonthGridCellProps): JSXElement;
-    displayName: string;
-};
+export const CalendarMonthGridCell: ForwardRefComponent<CalendarMonthGridCellProps>;
 
 // @public
 export const calendarMonthGridCellClassNames: SlotClassNames<CalendarMonthGridCellSlots>;
@@ -607,10 +598,7 @@ export type CalendarYearContextValues = {
 };
 
 // @public
-export const CalendarYearGridCell: {
-    (props: CalendarYearGridCellProps): JSXElement;
-    displayName: string;
-};
+export const CalendarYearGridCell: ForwardRefComponent<CalendarYearGridCellProps>;
 
 // @public
 export const calendarYearGridCellClassNames: SlotClassNames<CalendarYearGridCellSlots>;
@@ -799,16 +787,16 @@ export const useCalendarDayBase_unstable: (props: CalendarDayBaseProps, ref: Rea
 export function useCalendarDayContextValues_unstable(state: CalendarDayBaseState): CalendarDayContextValues;
 
 // @public
-export const useCalendarDayGridCell_unstable: (props: CalendarDayGridCellProps) => CalendarDayGridCellState;
+export const useCalendarDayGridCell_unstable: (props: CalendarDayGridCellProps, ref: React_2.Ref<HTMLTableCellElement>) => CalendarDayGridCellState;
 
 // @public
 export const useCalendarDayGridCellStyles_unstable: (state: CalendarDayGridCellState) => CalendarDayGridCellState;
 
 // @public
-export const useCalendarDayGridHeaderCell_unstable: (props: CalendarDayGridHeaderCellProps) => CalendarDayGridHeaderCellState;
+export const useCalendarDayGridHeaderCell_unstable: (props: CalendarDayGridHeaderCellProps, ref: React_2.Ref<HTMLTableCellElement>) => CalendarDayGridHeaderCellState;
 
 // @public
-export const useCalendarDayGridHeaderCellBase_unstable: (props: CalendarDayGridHeaderCellBaseProps) => CalendarDayGridHeaderCellBaseState;
+export const useCalendarDayGridHeaderCellBase_unstable: (props: CalendarDayGridHeaderCellBaseProps, ref: React_2.Ref<HTMLTableCellElement>) => CalendarDayGridHeaderCellBaseState;
 
 // @public
 export const useCalendarDayGridHeaderCellStyles_unstable: (state: CalendarDayGridHeaderCellState) => CalendarDayGridHeaderCellState;
@@ -844,7 +832,7 @@ export const useCalendarMonthBase_unstable: (props: CalendarMonthBaseProps, ref:
 export function useCalendarMonthContextValues_unstable(state: CalendarMonthBaseState): CalendarMonthContextValues;
 
 // @public
-export const useCalendarMonthGridCell_unstable: (props: CalendarMonthGridCellProps) => CalendarMonthGridCellState;
+export const useCalendarMonthGridCell_unstable: (props: CalendarMonthGridCellProps, ref?: React_2.Ref<HTMLButtonElement>) => CalendarMonthGridCellState;
 
 // @public
 export const useCalendarMonthGridCellStyles_unstable: (state: CalendarMonthGridCellState) => CalendarMonthGridCellState;
@@ -874,7 +862,7 @@ export const useCalendarYearBase_unstable: (props: CalendarYearBaseProps, ref: R
 export function useCalendarYearContextValues_unstable(state: CalendarYearBaseState): CalendarYearContextValues;
 
 // @public
-export const useCalendarYearGridCell_unstable: (props: CalendarYearGridCellProps) => CalendarYearGridCellState;
+export const useCalendarYearGridCell_unstable: (props: CalendarYearGridCellProps, ref: React_2.Ref<HTMLButtonElement>) => CalendarYearGridCellState;
 
 // @public
 export const useCalendarYearGridCellStyles_unstable: (state: CalendarYearGridCellState) => CalendarYearGridCellState;
