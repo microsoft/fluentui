@@ -7,6 +7,7 @@ describe('ProgressBar', () => {
   isConformant({
     Component: ProgressBar,
     displayName: 'ProgressBar',
+    requiredProps: { 'aria-label': 'Progress' },
   });
 
   it('renders a default state', () => {
