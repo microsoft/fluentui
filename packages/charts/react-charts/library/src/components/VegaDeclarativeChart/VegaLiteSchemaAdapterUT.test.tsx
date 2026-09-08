@@ -10,6 +10,15 @@ import {
 import type { VegaLiteSpec } from './VegaLiteTypes';
 
 const colorMap = new Map<string, string>();
+const specialNames = [
+  '__proto__',
+  'constructor',
+  'prototype',
+  'xAxisPoint',
+  'indexNum',
+  'groupSeries',
+  'stackCallOutAccessibilityData',
+];
 
 describe('VegaLiteSchemaAdapter', () => {
   beforeEach(() => {
@@ -21,6 +30,7 @@ describe('VegaLiteSchemaAdapter', () => {
     test('Should preserve special category names without modifying Object.prototype', () => {
       const legend = 'vegaCategoryPrototypeProbe';
       const originalConstructor = Object.prototype.constructor;
+      const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
       const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
@@ -47,6 +57,7 @@ describe('VegaLiteSchemaAdapter', () => {
           { name: 'prototype', series: [expect.objectContaining({ data: 30, legend })] },
         ]);
         expect(Object.prototype.constructor).toBe(originalConstructor);
+        expect(Object.getOwnPropertyNames(Object.prototype)).toEqual(originalPrototypeProperties);
         expect(Object.prototype).not.toHaveProperty(legend);
       } finally {
         Reflect.deleteProperty(Object.prototype, legend);
@@ -54,15 +65,13 @@ describe('VegaLiteSchemaAdapter', () => {
       }
     });
 
-    test('Should preserve special series names', () => {
+    test('Should preserve special series names without modifying Object.prototype', () => {
+      const originalConstructor = Object.prototype.constructor;
+      const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
       const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
-          values: [
-            { category: 'A', series: '__proto__', value: 10 },
-            { category: 'A', series: 'constructor', value: 20 },
-            { category: 'A', series: 'prototype', value: 30 },
-          ],
+          values: specialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
         },
         encoding: {
           x: { field: 'category', type: 'nominal' },
@@ -77,13 +86,11 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(result.data).toEqual([
         {
           name: 'A',
-          series: [
-            expect.objectContaining({ data: 10, legend: '__proto__' }),
-            expect.objectContaining({ data: 20, legend: 'constructor' }),
-            expect.objectContaining({ data: 30, legend: 'prototype' }),
-          ],
+          series: specialNames.map((legend, index) => expect.objectContaining({ legend, data: index + 1 })),
         },
       ]);
+      expect(Object.prototype.constructor).toBe(originalConstructor);
+      expect(Object.getOwnPropertyNames(Object.prototype)).toEqual(originalPrototypeProperties);
     });
   });
 

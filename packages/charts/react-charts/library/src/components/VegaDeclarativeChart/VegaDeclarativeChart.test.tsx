@@ -4,6 +4,16 @@ import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
+const groupedBarSpecialNames = [
+  '__proto__',
+  'constructor',
+  'prototype',
+  'xAxisPoint',
+  'indexNum',
+  'groupSeries',
+  'stackCallOutAccessibilityData',
+];
+
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -1362,13 +1372,11 @@ describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
     {
       name: 'series',
       pollutionKey: undefined,
-      values: [
-        { category: 'A', series: '__proto__', value: 10 },
-        { category: 'A', series: 'constructor', value: 20 },
-        { category: 'A', series: 'prototype', value: 30 },
-      ],
+      values: groupedBarSpecialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
     },
   ])('should render special $name names as ordinary data', ({ values, pollutionKey }) => {
+    const originalConstructor = Object.prototype.constructor;
+    const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
     const spec: VegaLiteSpec = {
       mark: 'bar',
       data: { values },
@@ -1383,7 +1391,13 @@ describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
     try {
       const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
-      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(3);
+      const bars = Array.from(container.querySelectorAll('rect[role="option"]'));
+      expect(bars).toHaveLength(values.length);
+      values.forEach(({ category, series, value }) => {
+        expect(bars.some(bar => bar.getAttribute('aria-label') === `${category}. ${series}, ${value}.`)).toBe(true);
+      });
+      expect(Object.prototype.constructor).toBe(originalConstructor);
+      expect(Object.getOwnPropertyNames(Object.prototype)).toEqual(originalPrototypeProperties);
       if (pollutionKey) {
         expect(Object.prototype).not.toHaveProperty(pollutionKey);
       }

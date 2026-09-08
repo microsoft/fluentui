@@ -59,14 +59,12 @@ const X1_INNER_PADDING = 0.1;
 const VERTICAL_BAR_GAP = 1;
 const MIN_BAR_HEIGHT = 1;
 
-// This interface used for - While forming datapoints from given prop "data" in code
-interface GVDataPoint {
-  [key: string]: number | string;
-}
-
-// While forming datapoints from given prop "data" in code. These datapoints are used for to draw graph easily.
-interface GVSingleDataPoint {
-  [key: string]: GVDataPoint;
+interface GVSingleDatasetPoint {
+  barPointsByLegend: Record<string, GVBarChartSeriesPoint[]>;
+  groupSeries: YValueHover[];
+  indexNum: number;
+  stackCallOutAccessibilityData?: AccessibilityProps;
+  xAxisPoint: string;
 }
 
 type GVBCLineSeries = LineSeries<string, number>;
@@ -84,7 +82,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisLabels: string[] = [];
-  let _datasetForBars: any[] = [];
+  let _datasetForBars: GVSingleDatasetPoint[] = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
   let _groupedVerticalBarGraph: JSXElement[] = [];
   let _yMax: number = 0;
@@ -138,8 +136,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _createDataset = (barData: GroupedVerticalBarChartData[], lineData: GVBCLineSeries[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const datasetForBars: any = [];
+    const datasetForBars: GVSingleDatasetPoint[] = [];
 
     const linePointsByX: Record<string, YValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
@@ -159,35 +156,35 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     });
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = Object.create(null);
+      const barPointsByLegend: Record<string, GVBarChartSeriesPoint[]> = Object.create(null);
       const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
-        if (!singleDatasetPointForBars[seriesPoint.legend]) {
-          singleDatasetPointForBars[seriesPoint.legend] = [{ ...seriesPoint }];
+        if (!barPointsByLegend[seriesPoint.legend]) {
+          barPointsByLegend[seriesPoint.legend] = [{ ...seriesPoint }];
           legendToBarPoint[seriesPoint.legend] = { ...seriesPoint };
         } else {
-          singleDatasetPointForBars[seriesPoint.legend].push({ ...seriesPoint });
+          barPointsByLegend[seriesPoint.legend].push({ ...seriesPoint });
           legendToBarPoint[seriesPoint.legend].data += seriesPoint.data;
         }
       });
 
-      singleDatasetPointForBars.xAxisPoint = point.name;
-      singleDatasetPointForBars.indexNum = index;
-      singleDatasetPointForBars.groupSeries = [
-        ...Object.values(legendToBarPoint),
-        ...(linePointsByX[point.name] ?? []),
-      ];
-      singleDatasetPointForBars.stackCallOutAccessibilityData = point.stackCallOutAccessibilityData;
-      datasetForBars.push(singleDatasetPointForBars);
+      datasetForBars.push({
+        barPointsByLegend,
+        xAxisPoint: point.name,
+        indexNum: index,
+        groupSeries: [...Object.values(legendToBarPoint), ...(linePointsByX[point.name] ?? [])],
+        stackCallOutAccessibilityData: point.stackCallOutAccessibilityData,
+      });
       visitedX.add(point.name);
     });
 
     Object.keys(linePointsByX).forEach(xPoint => {
       if (!visitedX.has(xPoint)) {
         datasetForBars.push({
+          barPointsByLegend: Object.create(null),
           xAxisPoint: xPoint,
+          indexNum: datasetForBars.length,
           groupSeries: linePointsByX[xPoint],
         });
       }
@@ -475,7 +472,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     const xScale1 = _createX1Scale();
     const allGroupsBars: JSXElement[] = [];
-    _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
+    _datasetForBars.forEach(singleSet => {
       allGroupsBars.push(
         _buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
       );
@@ -519,8 +516,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _buildGraph = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    singleSet: any,
+    singleSet: GVSingleDatasetPoint,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale0: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -534,7 +530,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
-    const presentLegends = _barLegends.filter(key => Object.prototype.hasOwnProperty.call(singleSet, key));
+    const presentLegends = _barLegends.filter(key =>
+      Object.prototype.hasOwnProperty.call(singleSet.barPointsByLegend, key),
+    );
     const effectiveGroupWidth = calcRequiredWidth(_barWidth, presentLegends.length, X1_INNER_PADDING);
 
     // For stacked bars, center the single bar group in the available space
@@ -544,7 +542,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       .range(_useRtl ? [effectiveGroupWidth, 0] : [0, effectiveGroupWidth])
       .paddingInner(X1_INNER_PADDING);
     _barLegends.forEach((legendTitle: string, legendIndex: number) => {
-      const barPoints = singleSet[legendTitle];
+      const barPoints = singleSet.barPointsByLegend[legendTitle];
       if (barPoints) {
         const yBarScale = barPoints[0].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
@@ -955,7 +953,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       data: point.y,
       yAxisCalloutData: point.yAxisCalloutData as string | undefined,
     };
-    const groupData = _datasetForBars.find((singleSet: { xAxisPoint: string }) => singleSet.xAxisPoint === point.x);
+    const groupData = _datasetForBars.find(singleSet => singleSet.xAxisPoint === point.x);
 
     _showCallout(target, pointData, groupData, _getDotId(seriesIdx, pointIdx));
   };
