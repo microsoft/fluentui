@@ -63,6 +63,32 @@ export type ListItemBaseState = ComponentState<ListItemBaseSlots> & ListItemOwnS
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
 
 // @public
+export const calculateListItemRoleForListRole: (listRole: string) => string;
+
+// @public
+export const calculateListRole: (navigationMode: ListNavigationMode | undefined, selectable: boolean) => "grid" | "listbox" | "list";
+
+// @public
+export const validateGridCellsArePresent: (listRole: string, listItemEl: HTMLElement) => void;
+
+// @public
+export const validateListItemElement: (listItemEl: HTMLElement, options: ValidateListItemElementOptions) => void;
+
+// @public
+export type ValidateListItemElementOptions = {
+    hasFocusableChildren: boolean;
+    hasSelection: boolean;
+    listRenderedAs: string;
+    listRole: string;
+};
+
+// @public
+export const validateProperElementTypes: (listRenderedAs?: string, listItemRenderedAs?: string) => void;
+
+// @public
+export const validateProperRolesAreUsed: (role: string, listItemRole: string, hasSelection: boolean, hasFocusableChildren: boolean) => void;
+
+// @public
 export type ListItemProps = ComponentProps<ListItemSlots> & ListItemOwnProps;
 
 // @public (undocumented)
