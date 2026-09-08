@@ -2,8 +2,7 @@ import * as React from 'react';
 import { fireEvent, render as testingRender } from '@testing-library/react';
 import { CalendarMonth } from './CalendarMonth';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
-import { formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
-import type { CalendarDateLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
+import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 
@@ -21,26 +20,24 @@ const render = (element: React.ReactElement, contextValue: Partial<CalendarConte
     ),
   });
 
+type FormatDateTime = typeof calendarFormatters.dateTime;
+
 describe('CalendarMonth', () => {
   it('should render without crashing', () => {
     expect(() => render(<CalendarMonth {...defaultProps} />)).not.toThrow();
   });
 
   it('uses localized strings for the header and year navigation buttons', () => {
-    const formatDateTime: FormatDateTime = (date, format) => `Localized ${defaultFormatDateTime(date, format)}`;
-    const formatLabel = ((label: string, data: CalendarDateLabelData) => {
-      switch (label) {
-        case 'monthPickerHeader':
-          return `Change the displayed year: ${data.formattedDate}`;
-        case 'previousYear':
-          return `Go to prior year ${data.formattedDate}`;
-        case 'nextYear':
-          return `Go to following year ${data.formattedDate}`;
-        default:
-          return defaultFormatLabel(label as 'selectedDate', data);
-      }
-    }) as FormatCalendarLabel;
-    const { getByRole } = render(<CalendarMonth {...defaultProps} yearPickerHidden />, { formatDateTime, formatLabel });
+    const dateTime: FormatDateTime = ({ date, format }) => `Localized ${calendarFormatters.dateTime({ date, format })}`;
+    const { getByRole } = render(<CalendarMonth {...defaultProps} yearPickerHidden />, {
+      formatters: {
+        ...calendarFormatters,
+        dateTime,
+        monthPickerHeaderLabel: data => `Change the displayed year: ${data.formattedDate}`,
+        previousYearLabel: data => `Go to prior year ${data.formattedDate}`,
+        nextYearLabel: data => `Go to following year ${data.formattedDate}`,
+      },
+    });
 
     expect(getByRole('button', { name: 'Change the displayed year: Localized 2025' })).toBeTruthy();
     expect(getByRole('button', { name: 'Go to prior year Localized 2024' })).toHaveAttribute(
@@ -55,22 +52,15 @@ describe('CalendarMonth', () => {
   });
 
   it('passes localized range strings to the year picker', () => {
-    const formatLabel = ((label: string, data: { formattedDate?: string; formattedRange?: string }) => {
-      if (label === 'monthPickerHeader') {
-        return `Change the displayed year: ${data.formattedDate}`;
-      }
-      if (label === 'yearRangePickerHeader') {
-        return `Change the displayed year: ${data.formattedRange}`;
-      }
-      if (label === 'previousYearRange') {
-        return `Earlier years ${data.formattedRange}`;
-      }
-      if (label === 'nextYearRange') {
-        return `Later years ${data.formattedRange}`;
-      }
-      return '';
-    }) as FormatCalendarLabel;
-    const { getAllByRole, getByRole } = render(<CalendarMonth {...defaultProps} />, { formatLabel });
+    const { getAllByRole, getByRole } = render(<CalendarMonth {...defaultProps} />, {
+      formatters: {
+        ...calendarFormatters,
+        monthPickerHeaderLabel: data => `Change the displayed year: ${data.formattedDate}`,
+        yearRangePickerHeaderLabel: data => `Change the displayed year: ${data.formattedRange}`,
+        previousYearRangeLabel: data => `Earlier years ${data.formattedRange}`,
+        nextYearRangeLabel: data => `Later years ${data.formattedRange}`,
+      },
+    });
 
     fireEvent.click(getByRole('button', { name: 'Change the displayed year: 2025' }));
 

@@ -9,7 +9,6 @@ export {
   useCalendarDayGridHeaderRowStyles_unstable,
 } from './useCalendarDayGridHeaderRowStyles.styles';
 export type {
-  CalendarDayGridHeaderRowBaseProps,
   CalendarDayGridHeaderRowProps,
   CalendarDayGridHeaderRowSlots,
   CalendarDayGridHeaderRowState,

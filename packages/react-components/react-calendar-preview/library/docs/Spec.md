@@ -58,35 +58,24 @@ When `value` is omitted, Calendar initializes its internal selected date from `t
 />
 ```
 
-### Month-only selection
+### Start in the month view
 
 ```tsx
-<Calendar
-  value={value}
-  isDayPickerVisible={false}
-  isMonthPickerVisible
-  highlightSelectedMonth
-  onSelectDate={onSelectDate}
-/>
+<Calendar value={value} layout="overlay" defaultView="month" highlightSelectedMonth onSelectDate={onSelectDate} />
 ```
+
+In an overlay layout, selecting a month returns to the day view for date selection.
 
 ### Localization
 
 ```tsx
-import {
-  Calendar,
-  createCalendarDateTimeFormatter,
-  createCalendarLabelFormatter,
-} from '@fluentui/react-calendar-preview';
-
-const formatDateTime = createCalendarDateTimeFormatter('fr-FR');
-const formatLabel = createCalendarLabelFormatter({
-  weekNumber: data => `Semaine ${data.weekNumber}`,
-});
+import { Calendar, createCalendarDateTimeFormatter } from '@fluentui/react-calendar-preview';
 
 <Calendar
-  formatDateTime={formatDateTime}
-  formatLabel={formatLabel}
+  formatters={{
+    dateTime: createCalendarDateTimeFormatter('fr-FR'),
+    weekNumberLabel: data => `Semaine ${data.weekNumber}`,
+  }}
   goToTodayButton={{ children: "Aujourd'hui" }}
   showWeekNumbers
 />;
@@ -96,12 +85,12 @@ const formatLabel = createCalendarLabelFormatter({
 
 ### Picker layout
 
-| Configuration                                   | Result                                                                                                               |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `isDayPickerVisible` and `isMonthPickerVisible` | Day and month pickers are shown side by side with a divider.                                                         |
-| `isDayPickerVisible` only                       | Only the day picker is shown.                                                                                        |
-| `isMonthPickerVisible` only                     | Only the month picker is shown; choosing a month commits that month as the value.                                    |
-| `showMonthPickerAsOverlay`                      | The day and month pickers replace each other. Their headings switch views and restore focus in the newly shown view. |
+| Configuration                  | Result                                                                                                               |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `layout="sideBySide"`          | Day and month pickers are shown side by side with a divider.                                                         |
+| `layout="overlay"`             | The day and month pickers replace each other. Their headings switch views and restore focus in the newly shown view. |
+| `layout="auto"` or unspecified | Uses the side-by-side layout above 440px and the overlay layout at narrower widths.                                  |
+| `view` / `defaultView`         | Controls or initializes the active picker in the overlay layout.                                                     |
 
 Overlay mode is also used on initial render when the day picker is enabled and the target window is no wider than 440 CSS pixels. Picker visibility is initialized from the visibility props; those props do not control subsequent view toggles.
 
@@ -131,27 +120,25 @@ The source of truth is [Calendar.types.ts](../src/components/Calendar/Calendar.t
 
 ### Props
 
-| Prop                       | Type                                       | Default                     | Purpose                                                                                                        |
-| -------------------------- | ------------------------------------------ | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `value`                    | `Date`                                     | `today` in uncontrolled use | Selected date. Supplying it controls selection.                                                                |
-| `today`                    | `Date`                                     | Client date and time        | Reference date used for initialization, current-date styling, and Go to today.                                 |
-| `onSelectDate`             | `EventHandler<CalendarSelectDateData>`     | -                           | Called with the activated date and bounded, unrestricted selected range.                                       |
-| `onDismiss`                | `EventHandler<CalendarDismissData>`        | -                           | Called when Escape is pressed within Calendar or a configured close action is invoked.                         |
-| `dateRangeType`            | `'day' \| 'week' \| 'month' \| 'workWeek'` | `'day'`                     | Determines the selected range.                                                                                 |
-| `firstDayOfWeek`           | `DayOfWeek`                                | `'sunday'`                  | Controls week layout and week-range calculation.                                                               |
-| `firstWeekOfYear`          | `FirstWeekOfYear`                          | `'firstDay'`                | Controls week-number calculation.                                                                              |
-| `workWeekDays`             | `DayOfWeek[]`                              | Monday-Friday               | Selectable days for a work-week range.                                                                         |
-| `isDayPickerVisible`       | `boolean`                                  | `true`                      | Initial day-picker visibility.                                                                                 |
-| `isMonthPickerVisible`     | `boolean`                                  | `true`                      | Initial month-picker visibility.                                                                               |
-| `showMonthPickerAsOverlay` | `boolean`                                  | `false`                     | Replaces one picker with the other instead of laying them out together.                                        |
-| `showWeekNumbers`          | `boolean`                                  | `false`                     | Adds week-number row headers.                                                                                  |
-| `minDate` / `maxDate`      | `Date`                                     | -                           | Bound navigation and selection.                                                                                |
-| `restrictedDates`          | `Date[]`                                   | -                           | Prevent selection of individual dates.                                                                         |
-| `highlightCurrentMonth`    | `boolean`                                  | `false`                     | Marks today's month in the month grid.                                                                         |
-| `highlightSelectedMonth`   | `boolean`                                  | `false`                     | Marks the navigated/selected month in the month grid.                                                          |
-| `allFocusable`             | `boolean`                                  | `false`                     | Includes unavailable dates and navigation actions in keyboard focus order while preserving disabled semantics. |
-| `formatDateTime`           | `FormatDateTime`                           | English formatter           | Formats visible and accessible date values.                                                                    |
-| `formatLabel`              | `FormatCalendarLabel`                      | English formatter           | Formats complete accessible labels and announcements.                                                          |
+| Prop                     | Type                                       | Default                     | Purpose                                                                                                        |
+| ------------------------ | ------------------------------------------ | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `value`                  | `Date`                                     | `today` in uncontrolled use | Selected date. Supplying it controls selection.                                                                |
+| `today`                  | `Date`                                     | Client date and time        | Reference date used for initialization, current-date styling, and Go to today.                                 |
+| `onSelectDate`           | `EventHandler<CalendarSelectDateData>`     | -                           | Called with the activated date and bounded, unrestricted selected range.                                       |
+| `onDismiss`              | `EventHandler<CalendarDismissData>`        | -                           | Called when Escape is pressed within Calendar or a configured close action is invoked.                         |
+| `dateRangeType`          | `'day' \| 'week' \| 'month' \| 'workWeek'` | `'day'`                     | Determines the selected range.                                                                                 |
+| `firstDayOfWeek`         | `DayOfWeek`                                | `'sunday'`                  | Controls week layout and week-range calculation.                                                               |
+| `firstWeekOfYear`        | `FirstWeekOfYear`                          | `'firstDay'`                | Controls week-number calculation.                                                                              |
+| `workWeekDays`           | `DayOfWeek[]`                              | Monday-Friday               | Selectable days for a work-week range.                                                                         |
+| `layout`                 | `'auto' \| 'sideBySide' \| 'overlay'`      | `'auto'`                    | Controls whether pickers appear together or replace one another.                                               |
+| `view` / `defaultView`   | `'day' \| 'month'`                         | `'day'`                     | Controls or initializes the active picker in the overlay layout.                                               |
+| `showWeekNumbers`        | `boolean`                                  | `false`                     | Adds week-number row headers.                                                                                  |
+| `minDate` / `maxDate`    | `Date`                                     | -                           | Bound navigation and selection.                                                                                |
+| `restrictedDates`        | `Date[]`                                   | -                           | Prevent selection of individual dates.                                                                         |
+| `highlightCurrentMonth`  | `boolean`                                  | `false`                     | Marks today's month in the month grid.                                                                         |
+| `highlightSelectedMonth` | `boolean`                                  | `false`                     | Marks the navigated/selected month in the month grid.                                                          |
+| `allFocusable`           | `boolean`                                  | `false`                     | Includes unavailable dates and navigation actions in keyboard focus order while preserving disabled semantics. |
+| `formatters`             | `Partial<CalendarFormatters>`              | English formatters          | Overrides date and accessible-label formatters; omitted properties use defaults.                               |
 
 Calendar also accepts the native props of its root `div` and slot props for customizing the elements below.
 
@@ -240,7 +227,7 @@ Calendar Preview preserves the main date-selection concepts but is not a drop-in
 
 - Replace v8 styling props (`styles`, `theme`, class-name maps) with v9 slot props, `className`, and Griffel styling.
 - Update `onSelectDate` to the v9 event/data callback shape: `(event, { date, selectedDateRange })`.
-- Replace string resources and date-format callbacks with `formatLabel` and `formatDateTime`. Prefer `createCalendarLabelFormatter` and `createCalendarDateTimeFormatter` for partial label overrides and locale-aware formatting.
+- Replace string resources and date-format callbacks with named overrides in `formatters`. Use `createCalendarDateTimeFormatter` for locale-aware date values.
 - Configure child-only behavior through the `dayPicker` and `monthPicker` slots.
 - Replace `componentRef`/`ICalendar` usage with normal React refs and application-owned focus or popup behavior. Calendar's root ref is an `HTMLDivElement`; child picker handles expose their own focus methods.
 - Re-test custom keyboard handling. Preventing default in a consumer `onKeyDown` intentionally suppresses Calendar's root key behavior.
@@ -248,7 +235,7 @@ Calendar Preview preserves the main date-selection concepts but is not a drop-in
 
 ### From Fluent UI React Northstar (v0)
 
-There is no compatibility layer. Map selected dates and callbacks to `value` and `onSelectDate`, replace shorthand customization with v9 slots, and provide localization through the Calendar formatter functions. Revalidate range selection, focus management, and popup composition as a new integration.
+There is no compatibility layer. Map selected dates and callbacks to `value` and `onSelectDate`, replace shorthand customization with v9 slots, and provide localization through the Calendar `formatters` object. Revalidate range selection, focus management, and popup composition as a new integration.
 
 ## Behaviors
 
@@ -258,7 +245,7 @@ There is no compatibility layer. Map selected dates and callbacks to `value` and
 - **Navigated day:** the date represented by the active day cell. It can differ from the selected date while browsing.
 - **Navigated month:** the active month in the month picker. It can differ from both the selected date and navigated day.
 - **Controlled updates:** when a supplied `value` changes to a different date, both navigated states synchronize to it.
-- **Picker visibility:** initialized from visibility and overlay props, then owned internally while switching overlay views.
+- **Picker view:** controlled by `view` when supplied; otherwise initialized from `defaultView` and owned internally while switching overlay views.
 - **Year picker visibility:** owned by `CalendarMonth`; selecting a year returns to the month grid.
 - **Unavailable dates:** dates outside `minDate`/`maxDate` and dates in `restrictedDates` cannot be selected. Arrow navigation searches for the next available date.
 - **Go to today:** enabled only when a picker is navigated away from today's month/year. It navigates and focuses today but does not commit a selection.
@@ -306,7 +293,7 @@ Day, month, and year rows use directional motion when navigating between time ra
 
 The day grid's accessible name includes the navigated month and year, selected date, and today's date. Month and year grids are named by their displayed year or year range. Picker headings use polite, atomic live regions so navigation announces the displayed time range. Calendar's `liveRegion` politely and atomically announces a committed selection.
 
-The default strings are English. Localized applications must provide both `formatDateTime` and `formatLabel`; customizing only visible date formatting leaves surrounding instructions and state labels in English. A custom `formatLabel` must return meaningful text for every label or delegate unhandled labels to the default formatter.
+The default formatters produce English strings and US date formatting. Calendar merges partial `formatters` overrides with those defaults. Localized applications must provide `dateTime` and every label formatter; customizing only visible date formatting leaves surrounding instructions and state labels in English.
 
 Marked dates include the marked state in their accessible label. Visual range hover and pressed states are supplemental and do not reveal otherwise unavailable information.
 

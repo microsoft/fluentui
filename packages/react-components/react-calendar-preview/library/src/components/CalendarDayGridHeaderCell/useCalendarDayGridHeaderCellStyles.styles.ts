@@ -3,13 +3,15 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useCalendarDayGridCellBaseStyles } from '../CalendarDayGridCell/useCalendarDayGridCellStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarDayGridHeaderCellSlots, CalendarDayGridHeaderCellState } from './CalendarDayGridHeaderCell.types';
+import type {
+  CalendarDayGridHeaderCellBaseSlots,
+  CalendarDayGridHeaderCellState,
+} from './CalendarDayGridHeaderCell.types';
 
 /**
  * Class names for calendarDayGridHeaderCell slots.
  */
-
-export const calendarDayGridHeaderCellClassNames: SlotClassNames<CalendarDayGridHeaderCellSlots> = {
+export const calendarDayGridHeaderCellClassNames: SlotClassNames<CalendarDayGridHeaderCellBaseSlots> = {
   root: 'fui-CalendarDayGridHeaderCell',
 };
 
@@ -25,8 +27,6 @@ const useRootStyles = makeStyles({
 export const useCalendarDayGridHeaderCellStyles_unstable = (
   state: CalendarDayGridHeaderCellState,
 ): CalendarDayGridHeaderCellState => {
-  'use no memo'; // justified: compiler would optimize useCalendarDayGridHeaderCellStyles_unstable — manual opt-out to preserve runtime behavior
-
   // The header cells sit in the same grid columns as the day cells, so they share their metrics.
   const cellBaseStyles = useCalendarDayGridCellBaseStyles();
   const rootStyles = useRootStyles();

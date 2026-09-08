@@ -15,7 +15,7 @@ export const CalendarOverlaidMonth = (): JSXElement => {
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
 
       <Calendar
-        showMonthPickerAsOverlay
+        layout="overlay"
         highlightSelectedMonth
         goToTodayButton={null}
         onSelectDate={onSelectDate}

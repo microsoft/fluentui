@@ -1,11 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { MotionSlotProps } from '@fluentui/react-motion';
-import type { FadeParams } from '@fluentui/react-motion-components-preview';
 
 /**
  * Defines the CalendarDayGridHeaderRowSlots contract.
  */
-
 export type CalendarDayGridHeaderRowSlots = {
   /**
    * The `<tr>` holding the weekday labels.
@@ -21,13 +18,7 @@ export type CalendarDayGridHeaderRowSlots = {
 /**
  * Defines the CalendarDayGridHeaderRowProps contract.
  */
-
-export type CalendarDayGridHeaderRowProps = ComponentProps<Partial<CalendarDayGridHeaderRowSlots>> & {
-  /**
-   * Overrides the mount fade played by each weekday label. Pass `null` to disable the animation.
-   */
-  labelMotion?: Slot<MotionSlotProps<FadeParams>>;
-};
+export type CalendarDayGridHeaderRowProps = ComponentProps<Partial<CalendarDayGridHeaderRowSlots>>;
 
 /**
  * One weekday label, already resolved for the grid's first day of week and single-week view.
@@ -50,14 +41,11 @@ export type CalendarWeekDayLabel = {
 };
 
 /**
- * Label motion is a styled concern, so the base hook leaves it unresolved.
- */
-export type CalendarDayGridHeaderRowBaseProps = Omit<CalendarDayGridHeaderRowProps, 'labelMotion'>;
-
-/**
  * Defines the CalendarDayGridHeaderRowState contract.
  */
-
 export type CalendarDayGridHeaderRowState = ComponentState<CalendarDayGridHeaderRowSlots> & {
+  /**
+   * The resolved weekday labels for this header row.
+   */
   dayLabels: CalendarWeekDayLabel[];
 };

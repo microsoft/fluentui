@@ -23,7 +23,6 @@ export type CalendarYearHandle = {
 /**
  * Defines the CalendarYearRange contract.
  */
-
 export interface CalendarYearRange {
   fromYear: number;
   toYear: number;
@@ -32,7 +31,6 @@ export interface CalendarYearRange {
 /**
  * Defines the CalendarYearSlots contract.
  */
-
 export type CalendarYearSlots = {
   root: NonNullable<Slot<'div'>>;
 
@@ -62,7 +60,6 @@ export type CalendarYearSlots = {
 /**
  * Defines the CalendarYearSelectData contract.
  */
-
 export type CalendarYearSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   year: number;
 };
@@ -70,7 +67,6 @@ export type CalendarYearSelectData = EventData<'click' | 'keydown', React.Synthe
 /**
  * Defines the CalendarYearNavigateData contract.
  */
-
 export type CalendarYearNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   year: number;
 };
@@ -78,7 +74,6 @@ export type CalendarYearNavigateData = EventData<'click' | 'keydown', React.Synt
 /**
  * Defines the CalendarYearHeaderSelectData contract.
  */
-
 export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   focus: boolean;
 };
@@ -86,7 +81,6 @@ export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React.
 /**
  * Defines the CalendarYearProps contract.
  */
-
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   /**
    * The currently navigated year
@@ -120,7 +114,6 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
 /**
  * Defines the CalendarYearState contract.
  */
-
 export type CalendarYearState = ComponentState<CalendarYearSlots> & {
   /**
    * The first year of the visible range, used to replay the row motions on navigation.
@@ -153,5 +146,4 @@ export type CalendarYearBaseProps = CalendarYearProps;
 /**
  * Defines the CalendarYearBaseState contract.
  */
-
 export type CalendarYearBaseState = CalendarYearState;

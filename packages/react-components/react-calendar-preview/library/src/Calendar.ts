@@ -4,10 +4,14 @@ export type {
   CalendarContextValue,
   CalendarContextValues,
   CalendarDismissData,
+  CalendarLayout,
+  CalendarNavigateData,
   CalendarProps,
   CalendarSelectDateData,
   CalendarSlots,
   CalendarState,
+  CalendarView,
+  CalendarViewChangeData,
 } from './components/Calendar/index';
 export {
   Calendar,

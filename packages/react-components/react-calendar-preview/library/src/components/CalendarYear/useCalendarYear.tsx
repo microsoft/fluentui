@@ -70,9 +70,7 @@ export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearBaseState => {
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
-  const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
-  const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
+  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
   const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
   const value = useCalendarContext_unstable(ctx => ctx.value);
@@ -80,11 +78,11 @@ export const useCalendarYearBase_unstable = (
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
-  const today = dateAdapter.now();
-  const currentYear = dateAdapter.getYear(today);
-  const selectedYear = props.selectedYear ?? (value ? dateAdapter.getYear(value) : undefined);
-  const minYear = minDate ? dateAdapter.getYear(minDate) : undefined;
-  const maxYear = maxDate ? dateAdapter.getYear(maxDate) : undefined;
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const selectedYear = props.selectedYear ?? (value ? value.getFullYear() : undefined);
+  const minYear = minDate ? minDate.getFullYear() : undefined;
+  const maxYear = maxDate ? maxDate.getFullYear() : undefined;
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState({
     ...props,
     currentYear,
@@ -104,7 +102,7 @@ export const useCalendarYearBase_unstable = (
     [],
   );
 
-  const formatYear = (year: number) => formatDateTime(dateAdapter.createDate(year, 0, 1), 'year');
+  const formatYear = (year: number) => formatters.dateTime({ date: new Date(year, 0, 1), format: 'year' });
 
   const yearRows: CalendarYearCell[][] = [];
   for (let row = 0; row < CELL_COUNT / CELLS_PER_ROW; row++) {
@@ -131,7 +129,7 @@ export const useCalendarYearBase_unstable = (
   const formatRange = (range: CalendarYearRange) => `${formatYear(range.fromYear)} - ${formatYear(range.toYear)}`;
   const range = { fromYear, toYear };
   const rangeLabel = formatRange(range);
-  const titleAriaLabel = formatLabel('yearRangePickerHeader', { ...range, formattedRange: rangeLabel });
+  const titleAriaLabel = formatters.yearRangePickerHeaderLabel({ ...range, formattedRange: rangeLabel });
 
   const titleElementType = onHeaderSelect ? 'button' : 'div';
   const titleContent = (
@@ -189,7 +187,7 @@ export const useCalendarYearBase_unstable = (
         onClick: prevDisabled ? undefined : onNavPrevious,
         onKeyDown: prevDisabled ? undefined : onNavigationKeyDown(onNavPrevious),
         tabIndex: prevDisabled ? -1 : undefined,
-        title: formatLabel('previousYearRange', { ...prevRange, formattedRange: formatRange(prevRange) }),
+        title: formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
         type: 'button',
       },
       elementType: 'button',
@@ -200,7 +198,7 @@ export const useCalendarYearBase_unstable = (
         onClick: nextDisabled ? undefined : onNavNext,
         onKeyDown: nextDisabled ? undefined : onNavigationKeyDown(onNavNext),
         tabIndex: nextDisabled ? -1 : undefined,
-        title: formatLabel('nextYearRange', { ...nextRange, formattedRange: formatRange(nextRange) }),
+        title: formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
         type: 'button',
       },
       elementType: 'button',

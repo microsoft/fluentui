@@ -43,9 +43,7 @@ export const useCalendarMonthBase_unstable = (
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthBaseState => {
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
-  const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
-  const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
+  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const highlightCurrentMonth = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
   const highlightSelectedMonth = useCalendarContext_unstable(ctx => ctx.highlightSelected);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
@@ -66,7 +64,7 @@ export const useCalendarMonthBase_unstable = (
     yearPickerHidden = false,
   } = props;
 
-  const today = React.useMemo(() => contextToday ?? dateAdapter.now(), [contextToday, dateAdapter]);
+  const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
   const selectedDate = props.selectedDate ?? value ?? today;
 
@@ -105,7 +103,7 @@ export const useCalendarMonthBase_unstable = (
       onNavigateDate(ev, {
         event: ev,
         type,
-        date: setMonth(navigatedDate, newMonth, dateAdapter),
+        date: setMonth(navigatedDate, newMonth),
         focusOnNavigatedDay: true,
       });
     },
@@ -116,7 +114,7 @@ export const useCalendarMonthBase_unstable = (
       onNavigateDate(ev, {
         event: ev,
         type: ev.type === 'keydown' ? 'keydown' : 'click',
-        date: addYears(navigatedDate, -1, dateAdapter),
+        date: addYears(navigatedDate, -1),
         focusOnNavigatedDay: false,
       }),
   );
@@ -125,7 +123,7 @@ export const useCalendarMonthBase_unstable = (
       onNavigateDate(ev, {
         event: ev,
         type: ev.type === 'keydown' ? 'keydown' : 'click',
-        date: addYears(navigatedDate, 1, dateAdapter),
+        date: addYears(navigatedDate, 1),
         focusOnNavigatedDay: false,
       }),
   );
@@ -144,17 +142,17 @@ export const useCalendarMonthBase_unstable = (
   const onSelectYear = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarYearSelectData) => {
     const selectedYear = data.year;
     focusOnNextUpdate();
-    const navYear = dateAdapter.getYear(navigatedDate);
+    const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
-      let newNavigationDate = dateAdapter.addYears(navigatedDate, selectedYear - navYear);
+      let newNavigationDate = addYears(navigatedDate, selectedYear - navYear);
       /*
        * for min and max dates, adjust the new navigation date - perhaps this should be
        * checked on the master navigation date handler (i.e. in Calendar)
        */
-      if (maxDate && dateAdapter.compareDates(newNavigationDate, maxDate) > 0) {
-        newNavigationDate = setMonth(newNavigationDate, dateAdapter.getMonth(maxDate), dateAdapter);
-      } else if (minDate && dateAdapter.compareDates(newNavigationDate, minDate) < 0) {
-        newNavigationDate = setMonth(newNavigationDate, dateAdapter.getMonth(minDate), dateAdapter);
+      if (maxDate && compareDatePart(newNavigationDate, maxDate) > 0) {
+        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+      } else if (minDate && compareDatePart(newNavigationDate, minDate) < 0) {
+        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
       }
       onNavigateDate(ev, {
         ...data,
@@ -170,15 +168,11 @@ export const useCalendarMonthBase_unstable = (
     setIsYearPickerVisible(false);
   });
 
-  const yearString = formatDateTime(navigatedDate, 'year');
-  const headerAriaLabel = formatLabel('monthPickerHeader', { date: navigatedDate, formattedDate: yearString });
+  const yearString = formatters.dateTime({ date: navigatedDate, format: 'year' });
+  const headerAriaLabel = formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString });
 
-  const isPrevYearInBounds = minDate
-    ? compareDatePart(minDate, getYearStart(navigatedDate, dateAdapter), dateAdapter) < 0
-    : true;
-  const isNextYearInBounds = maxDate
-    ? compareDatePart(getYearEnd(navigatedDate, dateAdapter), maxDate, dateAdapter) < 0
-    : true;
+  const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
+  const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
 
   const headerIsClickable = !!onUserHeaderSelect || !yearPickerHidden;
 
@@ -186,24 +180,24 @@ export const useCalendarMonthBase_unstable = (
   for (let rowNum = 0; rowNum < 12 / MONTHS_PER_ROW; rowNum++) {
     const row = Array.from({ length: MONTHS_PER_ROW }, (_, index: number) => {
       const monthIndex = rowNum * MONTHS_PER_ROW + index;
-      const indexedMonth = setMonth(navigatedDate, monthIndex, dateAdapter);
+      const indexedMonth = setMonth(navigatedDate, monthIndex);
 
       return {
         index: monthIndex,
-        label: formatDateTime(indexedMonth, 'shortMonth'),
-        ariaLabel: formatDateTime(indexedMonth, 'month'),
-        isNavigated: dateAdapter.getMonth(navigatedDate) === monthIndex,
+        label: formatters.dateTime({ date: indexedMonth, format: 'shortMonth' }),
+        ariaLabel: formatters.dateTime({ date: indexedMonth, format: 'month' }),
+        isNavigated: navigatedDate.getMonth() === monthIndex,
         isCurrent:
           !!highlightCurrentMonth &&
-          dateAdapter.getYear(today) === dateAdapter.getYear(navigatedDate) &&
-          dateAdapter.getMonth(today) === monthIndex,
+          today.getFullYear() === navigatedDate.getFullYear() &&
+          today.getMonth() === monthIndex,
         isSelected:
           !!highlightSelectedMonth &&
-          dateAdapter.getMonth(selectedDate) === monthIndex &&
-          dateAdapter.getYear(selectedDate) === dateAdapter.getYear(navigatedDate),
+          selectedDate.getMonth() === monthIndex &&
+          selectedDate.getFullYear() === navigatedDate.getFullYear(),
         isInBounds:
-          (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth, dateAdapter), dateAdapter) < 1 : true) &&
-          (maxDate ? compareDatePart(getMonthStart(indexedMonth, dateAdapter), maxDate, dateAdapter) < 1 : true),
+          (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+          (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true),
         onSelect: (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
           onSelectMonth(ev, monthIndex),
       };
@@ -214,8 +208,8 @@ export const useCalendarMonthBase_unstable = (
   let yearPickerProps: CalendarYearProps | undefined;
   if (isYearPickerVisible) {
     yearPickerProps = {
-      navigatedYear: dateAdapter.getYear(navigatedDate),
-      selectedYear: dateAdapter.getYear(selectedDate),
+      navigatedYear: navigatedDate.getFullYear(),
+      selectedYear: selectedDate.getFullYear(),
       onHeaderSelect: onYearPickerHeaderSelect,
       onSelectYear,
     };
@@ -225,7 +219,7 @@ export const useCalendarMonthBase_unstable = (
     isYearPickerVisible,
     monthRows,
     navigatedMonthRef,
-    navigatedYear: dateAdapter.getYear(navigatedDate),
+    navigatedYear: navigatedDate.getFullYear(),
     yearPickerRef,
     yearString,
     components: {
@@ -262,9 +256,9 @@ export const useCalendarMonthBase_unstable = (
         onClick: isPrevYearInBounds ? onSelectPrevYear : undefined,
         onKeyDown: isPrevYearInBounds ? onButtonKeyDown(onSelectPrevYear) : undefined,
         tabIndex: isPrevYearInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatLabel('previousYear', {
-          date: addYears(navigatedDate, -1, dateAdapter),
-          formattedDate: formatDateTime(addYears(navigatedDate, -1, dateAdapter), 'year'),
+        title: formatters.previousYearLabel({
+          date: addYears(navigatedDate, -1),
+          formattedDate: formatters.dateTime({ date: addYears(navigatedDate, -1), format: 'year' }),
         }),
         type: 'button',
       },
@@ -276,9 +270,9 @@ export const useCalendarMonthBase_unstable = (
         onClick: isNextYearInBounds ? onSelectNextYear : undefined,
         onKeyDown: isNextYearInBounds ? onButtonKeyDown(onSelectNextYear) : undefined,
         tabIndex: isNextYearInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatLabel('nextYear', {
-          date: addYears(navigatedDate, 1, dateAdapter),
-          formattedDate: formatDateTime(addYears(navigatedDate, 1, dateAdapter), 'year'),
+        title: formatters.nextYearLabel({
+          date: addYears(navigatedDate, 1),
+          formattedDate: formatters.dateTime({ date: addYears(navigatedDate, 1), format: 'year' }),
         }),
         type: 'button',
       },

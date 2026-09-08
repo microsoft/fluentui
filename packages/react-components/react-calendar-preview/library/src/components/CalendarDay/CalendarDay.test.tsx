@@ -6,8 +6,7 @@ import { calendarDayClassNames } from './useCalendarDayStyles.styles';
 import { calendarDayGridCellClassNames } from '../CalendarDayGridCell/useCalendarDayGridCellStyles.styles';
 import { calendarDayGridRowClassNames } from '../CalendarDayGridRow/useCalendarDayGridRowStyles.styles';
 import { calendarDayGridHeaderCellClassNames } from '../CalendarDayGridHeaderCell/useCalendarDayGridHeaderCellStyles.styles';
-import { formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
-import type { CalendarDateLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
+import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
 import type { CalendarDayHandle, CalendarDayProps } from './CalendarDay.types';
 
@@ -40,6 +39,8 @@ function findDayCellByLabel(container: HTMLElement, day: number, month: string, 
   const button = container.querySelector(`button[aria-label="${month} ${day}, ${year}"]`);
   return button?.closest('td') as HTMLElement;
 }
+
+type FormatDateTime = typeof calendarFormatters.dateTime;
 
 describe('CalendarDay', () => {
   describe('header', () => {
@@ -136,22 +137,19 @@ describe('CalendarDay', () => {
     });
 
     it('uses localized strings for the header and navigation buttons', () => {
-      const formatDateTime: FormatDateTime = (date, format) => `Localized ${defaultFormatDateTime(date, format)}`;
-      const formatLabel = ((label: string, data: CalendarDateLabelData) => {
-        switch (label) {
-          case 'previousMonth':
-            return `Go backward ${data.formattedDate}`;
-          case 'nextMonth':
-            return `Go forward ${data.formattedDate}`;
-          case 'yearPickerHeader':
-            return `Change the displayed month: ${data.formattedDate}`;
-          default:
-            return defaultFormatLabel(label as 'selectedDate', data);
-        }
-      }) as FormatCalendarLabel;
+      const dateTime: FormatDateTime = ({ date, format }) =>
+        `Localized ${calendarFormatters.dateTime({ date, format })}`;
       const { getByRole } = render(
         <CalendarDay {...defaultProps} onHeaderSelect={jest.fn()} closeButton={{ title: 'Dismiss calendar' }} />,
-        { formatDateTime, formatLabel },
+        {
+          formatters: {
+            ...calendarFormatters,
+            dateTime,
+            previousMonthLabel: data => `Go backward ${data.formattedDate}`,
+            nextMonthLabel: data => `Go forward ${data.formattedDate}`,
+            yearPickerHeaderLabel: data => `Change the displayed month: ${data.formattedDate}`,
+          },
+        },
       );
 
       expect(getByRole('button', { name: 'Change the displayed month: Localized September 2020' })).toBeTruthy();
@@ -167,11 +165,13 @@ describe('CalendarDay', () => {
     });
 
     it('passes the formatted month and year to the header label formatter', () => {
-      const formatLabel = jest.fn(defaultFormatLabel) as unknown as FormatCalendarLabel;
-      const { getByRole } = render(<CalendarDay {...defaultProps} onHeaderSelect={jest.fn()} />, { formatLabel });
+      const yearPickerHeaderLabel = jest.fn(calendarFormatters.yearPickerHeaderLabel);
+      const { getByRole } = render(<CalendarDay {...defaultProps} onHeaderSelect={jest.fn()} />, {
+        formatters: { ...calendarFormatters, yearPickerHeaderLabel },
+      });
 
       expect(getByRole('button', { name: 'September 2020, change month' })).toBeTruthy();
-      expect(formatLabel).toHaveBeenCalledWith('yearPickerHeader', {
+      expect(yearPickerHeaderLabel).toHaveBeenCalledWith({
         date: new Date(2020, 8, 18),
         formattedDate: 'September 2020',
       });
@@ -195,6 +195,25 @@ describe('CalendarDay', () => {
 
     // Weekday header row, six week rows and the two hidden transition rows.
     expect(container.querySelectorAll('tbody > tr')).toHaveLength(9);
+  });
+
+  it('does not select a restricted day with Enter when disabled days are focusable', () => {
+    const setValue = jest.fn();
+    const onNavigateDate = jest.fn();
+    const restrictedDate = new Date(2020, 8, 18);
+    const { container } = render(<CalendarDay {...defaultProps} onNavigateDate={onNavigateDate} />, {
+      allFocusable: true,
+      restrictedDates: [restrictedDate],
+      setValue,
+    });
+
+    const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+    expect(dayCell).toHaveAttribute('aria-disabled', 'true');
+
+    fireEvent.keyDown(dayCell, { key: 'Enter' });
+
+    expect(setValue).not.toHaveBeenCalled();
+    expect(onNavigateDate).not.toHaveBeenCalled();
   });
 
   describe('arrow key navigation', () => {

@@ -7,7 +7,11 @@ import { useCalendarMonthContext_unstable } from '../../contexts/calendarMonthCo
 import { CalendarMonthGridCell } from '../CalendarMonthGridCell';
 import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
-import type { CalendarMonthGridRowProps, CalendarMonthGridRowState } from './CalendarMonthGridRow.types';
+import type {
+  CalendarMonthGridRowBaseState,
+  CalendarMonthGridRowProps,
+  CalendarMonthGridRowState,
+} from './CalendarMonthGridRow.types';
 
 /**
  * Create the base state required to render an unstyled CalendarMonthGridRow.
@@ -15,7 +19,7 @@ import type { CalendarMonthGridRowProps, CalendarMonthGridRowState } from './Cal
 export const useCalendarMonthGridRowBase_unstable = (
   props: CalendarMonthGridRowProps,
   ref: React.Ref<HTMLDivElement>,
-): CalendarMonthGridRowState => {
+): CalendarMonthGridRowBaseState => {
   const { rowIndex } = props;
   const monthRows = useCalendarMonthContext_unstable(ctx => ctx.monthRows);
 
@@ -23,7 +27,6 @@ export const useCalendarMonthGridRowBase_unstable = (
     cells: monthRows[rowIndex],
     components: {
       root: 'div',
-      motion: React.Fragment,
     },
     root: slot.always(getIntrinsicElementProps('div', { ref, role: 'row', ...props }, ['rowIndex']), {
       elementType: 'div',

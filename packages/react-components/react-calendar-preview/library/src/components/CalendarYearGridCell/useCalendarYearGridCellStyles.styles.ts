@@ -9,7 +9,6 @@ import type { CalendarYearGridCellSlots, CalendarYearGridCellState } from './Cal
 /**
  * Class names for calendarYearGridCell slots.
  */
-
 export const calendarYearGridCellClassNames: SlotClassNames<CalendarYearGridCellSlots> = {
   root: 'fui-CalendarYearGridCell',
 };

@@ -20,7 +20,6 @@ export type CalendarDayHandle = {
 /**
  * Defines the CalendarDaySlots contract.
  */
-
 export type CalendarDaySlots = {
   root: NonNullable<Slot<'div'>>;
 
@@ -40,8 +39,14 @@ export type CalendarDaySlots = {
    */
   navigation: NonNullable<Slot<'div'>>;
 
+  /**
+   * The button to navigate to the previous month.
+   */
   previousMonthButton: NonNullable<Slot<'button'>>;
 
+  /**
+   * The button to navigate to the next month.
+   */
   nextMonthButton: NonNullable<Slot<'button'>>;
 
   /**
@@ -64,7 +69,6 @@ export type CalendarDaySlots = {
 /**
  * Defines the CalendarDaySelectData contract.
  */
-
 export type CalendarDaySelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   date: Date;
   selectedDateRange: Date[];
@@ -73,7 +77,6 @@ export type CalendarDaySelectData = EventData<'click' | 'keydown', React.Synthet
 /**
  * Defines the CalendarDayNavigateData contract.
  */
-
 export type CalendarDayNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   date: Date;
   focusOnNavigatedDay: boolean;
@@ -82,19 +85,16 @@ export type CalendarDayNavigateData = EventData<'click' | 'keydown', React.Synth
 /**
  * Defines the CalendarDayDismissData contract.
  */
-
 export type CalendarDayDismissData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>>;
 
 /**
  * Defines the CalendarDayHeaderSelectData contract.
  */
-
 export type CalendarDayHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
 
 /**
  * Defines the CalendarDayProps contract.
  */
-
 export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
   Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
     /**
@@ -143,7 +143,6 @@ export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
 /**
  * Defines the CalendarDayState contract.
  */
-
 export type CalendarDayState = ComponentState<CalendarDaySlots> &
   CalendarDayContextValue & {
     /**
@@ -172,5 +171,4 @@ export type CalendarDayBaseProps = CalendarDayProps;
 /**
  * Defines the CalendarDayBaseState contract.
  */
-
 export type CalendarDayBaseState = CalendarDayState;

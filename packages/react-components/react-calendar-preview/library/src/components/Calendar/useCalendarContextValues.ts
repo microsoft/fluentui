@@ -6,16 +6,13 @@ import type { CalendarBaseState, CalendarContextValue, CalendarContextValues } f
 /**
  * Creates state for the CalendarContextValues component.
  */
-
 export function useCalendarContextValues_unstable(state: CalendarBaseState): CalendarContextValues {
   const {
     allFocusable,
-    dateAdapter,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,
-    formatDateTime,
-    formatLabel,
+    formatters,
     highlightCurrent,
     highlightSelected,
     maxDate,
@@ -31,12 +28,10 @@ export function useCalendarContextValues_unstable(state: CalendarBaseState): Cal
   const calendar = React.useMemo<CalendarContextValue>(
     () => ({
       allFocusable,
-      dateAdapter,
       dateRangeType,
       firstDayOfWeek,
       firstWeekOfYear,
-      formatDateTime,
-      formatLabel,
+      formatters,
       highlightCurrent,
       highlightSelected,
       maxDate,
@@ -50,12 +45,10 @@ export function useCalendarContextValues_unstable(state: CalendarBaseState): Cal
     }),
     [
       allFocusable,
-      dateAdapter,
       dateRangeType,
       firstDayOfWeek,
       firstWeekOfYear,
-      formatDateTime,
-      formatLabel,
+      formatters,
       highlightCurrent,
       highlightSelected,
       maxDate,

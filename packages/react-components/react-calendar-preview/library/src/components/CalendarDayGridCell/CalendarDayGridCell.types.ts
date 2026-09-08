@@ -4,7 +4,6 @@ import type { DayInfo } from '../../hooks/useWeeks';
 /**
  * Defines the CalendarDayGridCellSlots contract.
  */
-
 export type CalendarDayGridCellSlots = {
   /**
    * The `role="gridcell"` element for a single day. Resolved from the grid's `dayCell` shorthand,
@@ -31,7 +30,6 @@ export type CalendarDayGridCellSlots = {
 /**
  * Defines the CalendarDayGridCellProps contract.
  */
-
 export type CalendarDayGridCellProps = ComponentProps<Partial<CalendarDayGridCellSlots>> & {
   day: DayInfo;
 
@@ -48,7 +46,6 @@ export type CalendarDayGridCellProps = ComponentProps<Partial<CalendarDayGridCel
 /**
  * Defines the CalendarDayGridCellState contract.
  */
-
 export type CalendarDayGridCellState = ComponentState<CalendarDayGridCellSlots> & {
   day: DayInfo;
 

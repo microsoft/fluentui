@@ -1,52 +1,47 @@
-import type { ComponentProps, ComponentState, Slot, SlotComponentType } from '@fluentui/react-utilities';
-import type { MotionComponentProps, MotionSlotProps } from '@fluentui/react-motion';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import type { CalendarWeekDayLabel } from '../CalendarDayGridHeaderRow/CalendarDayGridHeaderRow.types';
 
 /**
- * What `motionSlot` hands back: the motion params baked in, plus the lifecycle callbacks that stay
- * settable at the render site.
- */
-type ResolvedLabelMotion = SlotComponentType<
-  Pick<MotionComponentProps, 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & FadeParams
->;
-
-/**
  * Defines the CalendarDayGridHeaderCellSlots contract.
  */
-
 export type CalendarDayGridHeaderCellSlots = {
   /**
    * The `<th>` holding one weekday label.
    */
   root: NonNullable<Slot<'th'>>;
-};
-
-/**
- * Defines the CalendarDayGridHeaderCellProps contract.
- */
-
-export type CalendarDayGridHeaderCellProps = ComponentProps<Partial<CalendarDayGridHeaderCellSlots>> & {
-  dayLabel: CalendarWeekDayLabel;
 
   /**
-   * Overrides the mount fade. Pass `null` to disable the animation.
+   * Optional motion slot for the label.
    */
   labelMotion?: Slot<MotionSlotProps<FadeParams>>;
 };
 
 /**
+ * Defines the CalendarDayGridHeaderCellBaseSlots contract.
+ */
+export type CalendarDayGridHeaderCellBaseSlots = Omit<CalendarDayGridHeaderCellSlots, 'labelMotion'>;
+
+/**
+ * Defines the CalendarDayGridHeaderCellProps contract.
+ */
+export type CalendarDayGridHeaderCellProps = ComponentProps<Partial<CalendarDayGridHeaderCellSlots>> & {
+  dayLabel: CalendarWeekDayLabel;
+};
+
+/**
  * Label motion is a styled concern, so the base hook leaves it unresolved.
  */
-export type CalendarDayGridHeaderCellBaseProps = Omit<CalendarDayGridHeaderCellProps, 'labelMotion'>;
+export type CalendarDayGridHeaderCellBaseProps = ComponentProps<Partial<CalendarDayGridHeaderCellBaseSlots>> &
+  Pick<CalendarDayGridHeaderCellProps, 'dayLabel'>;
 
 /**
  * Defines the CalendarDayGridHeaderCellState contract.
  */
+export type CalendarDayGridHeaderCellState = ComponentState<CalendarDayGridHeaderCellSlots>;
 
-export type CalendarDayGridHeaderCellState = ComponentState<CalendarDayGridHeaderCellSlots> & {
-  /**
-   * Resolved by the styled hook only; the unstyled layer renders the labels unanimated.
-   */
-  labelMotion?: ResolvedLabelMotion;
-};
+/**
+ * Defines the CalendarDayGridHeaderCellBaseState contract.
+ */
+export type CalendarDayGridHeaderCellBaseState = ComponentState<CalendarDayGridHeaderCellBaseSlots>;

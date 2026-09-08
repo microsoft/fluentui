@@ -1,5 +1,26 @@
+import { getDayFromIndex, getDayIndex } from '../constants';
 import type { DateRangeType, DayOfWeek } from '../constants';
-import { isContiguous } from './isContiguous';
+
+/**
+ * Checks if the given set of days forms a contiguous sequence within a week.
+ */
+const isContiguous = (days: DayOfWeek[], isSingleWeek: boolean, firstDayOfWeek: DayOfWeek): boolean => {
+  const daySet = new Set(days);
+  let amountOfNoNeighbors = 0;
+  for (const day of days) {
+    const nextDay = getDayFromIndex(getDayIndex(day) + 1);
+    if (!(daySet.has(nextDay) && (!isSingleWeek || firstDayOfWeek !== nextDay))) {
+      amountOfNoNeighbors++;
+    }
+  }
+
+  /*
+   *  In case the full week is provided, then each day has a neighbor
+   * , otherwise the last day does not have a neighbor.
+   */
+  return amountOfNoNeighbors < 2;
+};
+
 /**
  * Return corrected date range type, given `dateRangeType` and list of working days.
  * For non-contiguous working days and working week range type, returns general week range type.

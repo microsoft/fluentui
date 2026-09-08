@@ -9,12 +9,12 @@ import {
   addMonths,
   compareDatePart,
   getBoundedDateRange,
-  getDateRangeArray,
+  getDateRange,
   getMonthEnd,
   getMonthStart,
   isRestrictedDate,
 } from '../../utils';
-import { getDateRangeTypeToUse } from '../../utils/dateGrid/getDateRangeTypeToUse';
+import { getDateRangeTypeToUse } from '../../utils/dateGrid/workWeek';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { CalendarDayGridRow } from '../CalendarDayGridRow/CalendarDayGridRow';
 import { CalendarDayGridHeaderRow } from '../CalendarDayGridHeaderRow/CalendarDayGridHeaderRow';
@@ -65,12 +65,10 @@ export const useCalendarDayBase_unstable = (
   ref: React.Ref<CalendarDayHandle>,
 ): CalendarDayBaseState => {
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
   const firstWeekOfYear = useCalendarContext_unstable(ctx => ctx.firstWeekOfYear);
-  const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
-  const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
+  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
   const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
   const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
@@ -95,9 +93,9 @@ export const useCalendarDayBase_unstable = (
     previousMonthButton,
   } = props;
 
-  const today = React.useMemo(() => contextToday ?? dateAdapter.now(), [contextToday, dateAdapter]);
+  const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
-  const selectedDate = value ?? today;
+  const selectedDate = value === undefined ? today : value;
   const weeksToShow = props.weeksToShow;
 
   const navigatedDayRef = React.useRef<HTMLTableCellElement | null>(null);
@@ -118,17 +116,14 @@ export const useCalendarDayBase_unstable = (
     ev: React.MouseEvent<HTMLTableCellElement> | React.KeyboardEvent<HTMLElement>,
     date: Date,
   ): void => {
-    const restrictedDatesOptions = { dateAdapter, minDate, maxDate, restrictedDates };
+    const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
-    let dateRange = getDateRangeArray(
-      date,
-      dateRangeType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-      dateAdapter,
-    );
-    dateRange = getBoundedDateRange(dateRange, minDate, maxDate, dateAdapter);
+    if (isRestrictedDate(date, restrictedDatesOptions)) {
+      return;
+    }
+
+    let dateRange = getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
     dateRange = dateRange.filter((d: Date) => !isRestrictedDate(d, restrictedDatesOptions));
 
     const type = ev.type === 'keydown' ? 'keydown' : 'click';
@@ -140,7 +135,6 @@ export const useCalendarDayBase_unstable = (
 
   const gridOptions = {
     ...props,
-    dateAdapter,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,
@@ -168,20 +162,19 @@ export const useCalendarDayBase_unstable = (
     const dateRangeHoverType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(
+    const dateRange = getDateRange(
       dayToCompare.originalDate,
       dateRangeHoverType,
       firstDayOfWeek,
       workWeekDays,
       daysToSelectInDayView,
-      dateAdapter,
     );
 
     // gets all the day refs for the given dates
     return weeks.reduce((accumulatedValue: DayInfo[], currentWeek: DayInfo[]) => {
       return accumulatedValue.concat(
         currentWeek.filter((weekDay: DayInfo) =>
-          dateRange.some((date: Date) => dateAdapter.compareDates(date, weekDay.originalDate) === 0),
+          dateRange.some((date: Date) => compareDatePart(date, weekDay.originalDate) === 0),
         ),
       );
     }, []);
@@ -190,32 +183,28 @@ export const useCalendarDayBase_unstable = (
   const getRefsFromDayInfos = (dayInfosInRange: DayInfo[]): (HTMLElement | null)[] =>
     dayInfosInRange.map((dayInfo: DayInfo) => daysRef.current[dayInfo.key]);
 
-  const monthAndYear = formatDateTime(navigatedDate, 'monthYear');
+  const monthAndYear = formatters.dateTime({ date: navigatedDate, format: 'monthYear' });
   const headerIsClickable = !!onHeaderSelect;
 
   /*
    * aria-disabled rather than disabled, so focus is not lost when a prev/next button becomes
    * disabled right after being clicked.
    */
-  const prevMonthInBounds = minDate
-    ? compareDatePart(minDate, getMonthStart(navigatedDate, dateAdapter), dateAdapter) < 0
-    : true;
-  const nextMonthInBounds = maxDate
-    ? compareDatePart(getMonthEnd(navigatedDate, dateAdapter), maxDate, dateAdapter) < 0
-    : true;
+  const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
+  const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
 
   const onSelectPrevMonth = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
     onNavigateDate(ev, {
       event: ev,
       type: ev.type === 'keydown' ? 'keydown' : 'click',
-      date: addMonths(navigatedDate, -1, dateAdapter),
+      date: addMonths(navigatedDate, -1),
       focusOnNavigatedDay: false,
     });
   const onSelectNextMonth = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
     onNavigateDate(ev, {
       event: ev,
       type: ev.type === 'keydown' ? 'keydown' : 'click',
-      date: addMonths(navigatedDate, 1, dateAdapter),
+      date: addMonths(navigatedDate, 1),
       focusOnNavigatedDay: false,
     });
   const onSelectHeader = (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) =>
@@ -258,7 +247,7 @@ export const useCalendarDayBase_unstable = (
     heading: slot.always(heading, {
       defaultProps: {
         'aria-label': onHeaderSelect
-          ? formatLabel('yearPickerHeader', { date: navigatedDate, formattedDate: monthAndYear })
+          ? formatters.yearPickerHeaderLabel({ date: navigatedDate, formattedDate: monthAndYear })
           : undefined,
         onClick: onHeaderSelect ? onSelectHeader : undefined,
         onKeyDown: onHeaderSelect ? onButtonKeyDown(onSelectHeader) : undefined,
@@ -280,9 +269,9 @@ export const useCalendarDayBase_unstable = (
         onClick: prevMonthInBounds ? onSelectPrevMonth : undefined,
         onKeyDown: prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined,
         tabIndex: prevMonthInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatLabel('previousMonth', {
-          date: addMonths(navigatedDate, -1, dateAdapter),
-          formattedDate: formatDateTime(addMonths(navigatedDate, -1, dateAdapter), 'month'),
+        title: formatters.previousMonthLabel({
+          date: addMonths(navigatedDate, -1),
+          formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, -1), format: 'month' }),
         }),
         type: 'button',
       },
@@ -294,9 +283,9 @@ export const useCalendarDayBase_unstable = (
         onClick: nextMonthInBounds ? onSelectNextMonth : undefined,
         onKeyDown: nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined,
         tabIndex: nextMonthInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatLabel('nextMonth', {
-          date: addMonths(navigatedDate, 1, dateAdapter),
-          formattedDate: formatDateTime(addMonths(navigatedDate, 1, dateAdapter), 'month'),
+        title: formatters.nextMonthLabel({
+          date: addMonths(navigatedDate, 1),
+          formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, 1), format: 'month' }),
         }),
         type: 'button',
       },

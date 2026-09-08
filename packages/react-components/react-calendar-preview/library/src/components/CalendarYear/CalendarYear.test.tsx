@@ -2,9 +2,8 @@ import * as React from 'react';
 import { render as testingRender, fireEvent } from '@testing-library/react';
 import { CalendarYear } from './CalendarYear';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
-import { formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
+import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
-import type { CalendarYearRangeLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
 
 const CELL_COUNT = 12;
 
@@ -30,30 +29,36 @@ describe('CalendarYear', () => {
   });
 
   it('should format visible years', () => {
-    const formatDateTime: FormatDateTime = (date, format) =>
-      format === 'year' ? `Localized ${defaultFormatDateTime(date, format)}` : defaultFormatDateTime(date, format);
-    const { getByRole, getByText } = render(<CalendarYear navigatedYear={2025} />, { formatDateTime });
+    const dateTime: typeof calendarFormatters.dateTime = ({ date, format }) =>
+      format === 'year'
+        ? `Localized ${calendarFormatters.dateTime({ date, format })}`
+        : calendarFormatters.dateTime({ date, format });
+    const { getByRole, getByText } = render(<CalendarYear navigatedYear={2025} />, {
+      formatters: { ...calendarFormatters, dateTime },
+    });
 
     expect(getByText('Localized 2025 - Localized 2036')).toBeTruthy();
     expect(getByRole('gridcell', { name: 'Localized 2025' })).toBeTruthy();
   });
 
   it('should format the current and adjacent ranges for accessible labels', () => {
-    const formatLabel = jest.fn((label: string, data: CalendarYearRangeLabelData): string => {
-      if (label === 'yearRangePickerHeader') {
-        return `Choose a year from ${data.formattedRange}`;
-      }
-      if (label === 'previousYearRange' && 'formattedRange' in data) {
-        return `Previous ${data.fromYear} to ${data.toYear}`;
-      }
-      if (label === 'nextYearRange' && 'formattedRange' in data) {
-        return `Next ${data.fromYear} to ${data.toYear}`;
-      }
-      return '';
-    }) as unknown as FormatCalendarLabel;
+    const previousYearRangeLabel = jest.fn(
+      (data: { fromYear: number; toYear: number }) => `Previous ${data.fromYear} to ${data.toYear}`,
+    );
+    const nextYearRangeLabel = jest.fn(
+      (data: { fromYear: number; toYear: number }) => `Next ${data.fromYear} to ${data.toYear}`,
+    );
+    const yearRangePickerHeaderLabel = jest.fn(
+      (data: { formattedRange: string }) => `Choose a year from ${data.formattedRange}`,
+    );
 
     const { getAllByRole, getByRole } = render(<CalendarYear navigatedYear={2025} onHeaderSelect={jest.fn()} />, {
-      formatLabel,
+      formatters: {
+        ...calendarFormatters,
+        previousYearRangeLabel,
+        nextYearRangeLabel,
+        yearRangePickerHeaderLabel,
+      },
     });
 
     const buttons = getAllByRole('button');
@@ -61,17 +66,17 @@ describe('CalendarYear', () => {
     expect(getByRole('button', { name: 'Choose a year from 2025 - 2036' })).toBeTruthy();
     expect(buttons[1]).toHaveAttribute('title', 'Previous 2013 to 2024');
     expect(buttons[buttons.length - 1]).toHaveAttribute('title', 'Next 2037 to 2048');
-    expect(formatLabel).toHaveBeenCalledWith('previousYearRange', {
+    expect(previousYearRangeLabel).toHaveBeenCalledWith({
       fromYear: 2013,
       toYear: 2024,
       formattedRange: '2013 - 2024',
     });
-    expect(formatLabel).toHaveBeenCalledWith('nextYearRange', {
+    expect(nextYearRangeLabel).toHaveBeenCalledWith({
       fromYear: 2037,
       toYear: 2048,
       formattedRange: '2037 - 2048',
     });
-    expect(formatLabel).toHaveBeenCalledWith('yearRangePickerHeader', {
+    expect(yearRangePickerHeaderLabel).toHaveBeenCalledWith({
       fromYear: 2025,
       toYear: 2036,
       formattedRange: '2025 - 2036',
@@ -79,16 +84,13 @@ describe('CalendarYear', () => {
   });
 
   it('should update formatted range labels after navigating', () => {
-    const formatLabel = ((label: string, data: CalendarYearRangeLabelData) => {
-      if (label === 'previousYearRange') {
-        return `Previous ${data.fromYear} to ${data.toYear}`;
-      }
-      if (label === 'nextYearRange') {
-        return `Next ${data.fromYear} to ${data.toYear}`;
-      }
-      return '';
-    }) as FormatCalendarLabel;
-    const { getAllByRole } = render(<CalendarYear navigatedYear={2025} />, { formatLabel });
+    const { getAllByRole } = render(<CalendarYear navigatedYear={2025} />, {
+      formatters: {
+        ...calendarFormatters,
+        previousYearRangeLabel: data => `Previous ${data.fromYear} to ${data.toYear}`,
+        nextYearRangeLabel: data => `Next ${data.fromYear} to ${data.toYear}`,
+      },
+    });
 
     let buttons = getAllByRole('button');
     fireEvent.click(buttons[buttons.length - 1]);
@@ -99,14 +101,13 @@ describe('CalendarYear', () => {
   });
 
   it('should support static range labels', () => {
-    const formatLabel = ((label: string, _data: unknown) => {
-      if (label === 'yearRangePickerHeader') {
-        return 'Localized range';
-      }
-      return label === 'previousYearRange' ? 'Localized previous range' : 'Localized next range';
-    }) as unknown as FormatCalendarLabel;
     const { getAllByRole, getByRole } = render(<CalendarYear navigatedYear={2025} onHeaderSelect={jest.fn()} />, {
-      formatLabel,
+      formatters: {
+        ...calendarFormatters,
+        yearRangePickerHeaderLabel: () => 'Localized range',
+        previousYearRangeLabel: () => 'Localized previous range',
+        nextYearRangeLabel: () => 'Localized next range',
+      },
     });
 
     const buttons = getAllByRole('button');
@@ -125,7 +126,6 @@ describe('CalendarYear', () => {
   });
 
   it('should prefer explicit slot labels over generated labels', () => {
-    const formatLabel = jest.fn(defaultFormatLabel) as unknown as FormatCalendarLabel;
     const { getAllByRole, getByRole } = render(
       <CalendarYear
         navigatedYear={2025}
@@ -135,7 +135,6 @@ describe('CalendarYear', () => {
         nextRangeButton={{ title: 'Custom next label' }}
         grid={{ 'aria-label': 'Custom grid label' }}
       />,
-      { formatLabel },
     );
 
     const buttons = getAllByRole('button');
