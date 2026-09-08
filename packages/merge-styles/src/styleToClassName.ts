@@ -266,9 +266,9 @@ export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key
 
   // Apply punctuation.
   for (let i = 1; i < allEntries.length; i += 4) {
-    const value = allEntries[i];
+    const value = String(allEntries[i]);
 
-    allEntries.splice(i, 1, ':', typeof value === 'string' ? escapeForStyleTag(value) : value, ';');
+    allEntries.splice(i, 1, ':', escapeForStyleTag(value), ';');
   }
 
   return allEntries.join('');

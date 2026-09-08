@@ -1,5 +1,5 @@
 import { InjectionMode, Stylesheet } from './Stylesheet';
-import { styleToClassName } from './styleToClassName';
+import { serializeRuleEntries, styleToClassName } from './styleToClassName';
 import { IStyleOptions } from './IStyleOptions';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -606,6 +606,36 @@ describe('styleToClassName with specificityMultiplier', () => {
 
   describe('style tag escaping', () => {
     const payload = 'red;}</style><script>alert(1)</script><style>.x{color:red';
+
+    it('preserves supported string and number serialization', () => {
+      expect(
+        serializeRuleEntries(
+          {},
+          {
+            color: 'red',
+            marginTop: 2,
+            opacity: 0.5,
+            '--scale': 3,
+          },
+        ),
+      ).toEqual('color:red;margin-top:2px;opacity:0.5;--scale:3;');
+    });
+
+    it('escapes angle brackets after array values are coerced', () => {
+      const entries = { fontFamily: ['Arial', '<fallback>'] } as unknown as Record<string, string | number>;
+
+      expect(serializeRuleEntries({}, entries)).toEqual('font-family:Arial,\\3C fallback\\3E ;');
+    });
+
+    it('escapes angle brackets after custom string coercion', () => {
+      const value = {
+        toString: jest.fn(() => '<custom>'),
+      };
+      const entries = { color: value } as unknown as Record<string, string | number>;
+
+      expect(serializeRuleEntries({}, entries)).toEqual('color:\\3C custom\\3E ;');
+      expect(value.toString).toHaveBeenCalledTimes(1);
+    });
 
     it.each(['fill', 'background', 'color', 'content', 'fontFamily', 'backgroundImage'] as const)(
       'escapes a value that would terminate the style element in %s',
