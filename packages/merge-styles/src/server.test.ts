@@ -126,4 +126,21 @@ describe('staticRender', () => {
     expect(css).toContain(`.odd{content:"${backslash}3C /StYlE>"}`);
     expect(css).toContain(`.even{content:"${backslash}${backslash}${backslash}3C /style>"}`);
   });
+
+  it.each([5000, 10000, 20000])(
+    'contains increasing backslash runs of length %s in raw server-rendered rules',
+    runLength => {
+      const stylesheet = Stylesheet.getInstance();
+      const backslashes = new Array(runLength + 1).join('\\');
+
+      stylesheet.insertRule(`.nonmatching{content:"${backslashes}x"}`);
+      stylesheet.insertRule(`.matching{content:"${backslashes}</style>"}`);
+
+      const css = stylesheet.getRules();
+
+      expect(css).toContain(`.nonmatching{content:"${backslashes}x"}`);
+      expect(css).toContain(`.matching{content:"${backslashes}\\3C /style>"}`);
+      expect(css).not.toMatch(/<\/style/i);
+    },
+  );
 });

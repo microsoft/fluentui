@@ -681,6 +681,15 @@ describe('styleToClassName with specificityMultiplier', () => {
       );
     });
 
+    it.each([5000, 10000, 20000])('serializes increasing backslash runs of length %s', runLength => {
+      const backslashes = new Array(runLength + 1).join('\\');
+
+      expect(serializeRuleEntries({}, { content: `${backslashes}x` })).toBe(`content:${backslashes}x;`);
+      expect(serializeRuleEntries({}, { content: `${backslashes}</style>` })).toBe(
+        `content:${backslashes}\\3C /style\\3E ;`,
+      );
+    });
+
     it('does not escape selectors, so combinators keep working', () => {
       styleToClassName(
         {},
