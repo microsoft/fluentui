@@ -121,6 +121,7 @@ export type CalendarDayContextValue = {
     activeDescendantId: string;
     calculateRoundedCorners: (above: boolean, below: boolean, left: boolean, right: boolean) => DayCorners;
     daysToSelectInDayView?: number;
+    focusTargetDate?: Date;
     getDayCellProps?: CalendarDayProps['getDayCellProps'];
     getDayInfosInRangeOfDay: (dayToCompare: DayInfo) => DayInfo[];
     getRefsFromDayInfos: (dayInfosInRange: DayInfo[]) => (HTMLElement | null)[];

@@ -49,6 +49,7 @@ export const useCalendarDayGridCell_unstable = (
   const calculateRoundedCorners = useCalendarDayContext_unstable(ctx => ctx.calculateRoundedCorners);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const daysToSelectInDayView = useCalendarDayContext_unstable(ctx => ctx.daysToSelectInDayView);
+  const focusTargetDate = useCalendarDayContext_unstable(ctx => ctx.focusTargetDate);
   const getDayCellProps = useCalendarDayContext_unstable(ctx => ctx.getDayCellProps);
   const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const getDayInfosInRangeOfDay = useCalendarDayContext_unstable(ctx => ctx.getDayInfosInRangeOfDay);
@@ -56,7 +57,6 @@ export const useCalendarDayGridCell_unstable = (
   const lightenDaysOutsideNavigatedMonth = useCalendarDayContext_unstable(ctx => ctx.lightenDaysOutsideNavigatedMonth);
   const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
   const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
-  const navigatedDate = useCalendarDayContext_unstable(ctx => ctx.navigatedDate);
   const navigatedDayRef = useCalendarDayContext_unstable(ctx => ctx.navigatedDayRef);
   const onNavigateDate = useCalendarDayContext_unstable(ctx => ctx.onNavigateDate);
   const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
@@ -65,7 +65,7 @@ export const useCalendarDayGridCell_unstable = (
   const cellProps = { ...(!ariaHidden ? getDayCellProps?.(day.originalDate) : undefined), ...rest };
 
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
-  const isNavigatedDate = compareDatePart(navigatedDate, day.originalDate) === 0;
+  const isFocusTargetDate = focusTargetDate ? compareDatePart(focusTargetDate, day.originalDate) === 0 : false;
 
   const { dir } = useFluent_unstable();
 
@@ -219,7 +219,7 @@ export const useCalendarDayGridCell_unstable = (
 
   const setCellRef = (element: HTMLTableCellElement) => {
     day.setRef(element);
-    if (isNavigatedDate) {
+    if (isFocusTargetDate) {
       navigatedDayRef.current = element;
     }
   };
@@ -288,7 +288,7 @@ export const useCalendarDayGridCell_unstable = (
       defaultProps: {
         'aria-label': ariaLabel,
         disabled: !ariaHidden && !day.isInBounds,
-        id: isNavigatedDate ? activeDescendantId : undefined,
+        id: isFocusTargetDate ? activeDescendantId : undefined,
         tabIndex: -1,
         type: 'button',
       },
