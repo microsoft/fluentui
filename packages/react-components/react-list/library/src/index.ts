@@ -20,6 +20,7 @@ export type {
   ListSynchronousContextValue,
   OnListSelectionChangeData,
 } from './List';
+export * from './utils';
 export {
   ListItem,
   listItemClassNames,

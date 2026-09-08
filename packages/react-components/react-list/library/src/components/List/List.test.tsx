@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { act, fireEvent, render, within } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import type { ListProps } from './List.types';
@@ -7,6 +8,7 @@ import { ListItem } from '../ListItem/ListItem';
 import type { ListItemActionEventData } from '../ListItem/ListItem.types';
 import type { EventHandler } from '@fluentui/react-utilities';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { useList_unstable } from './useList';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
@@ -66,6 +68,31 @@ describe('List', () => {
   afterAll(() => {
     consoleWarn.mockRestore();
     jest.clearAllMocks();
+  });
+
+  describe('useList_unstable', () => {
+    it('preserves list role and selection metadata in headless mode', () => {
+      const ref = React.createRef<HTMLUListElement | HTMLDivElement | HTMLOListElement>();
+      const { result } = renderHook(() =>
+        useList_unstable({ role: 'listbox', selectionMode: 'single', selectedItems: ['value-1'] }, ref),
+      );
+
+      expect(result.current.root).toMatchObject({
+        role: 'listbox',
+      });
+      expect(result.current.root['aria-multiselectable']).toBeUndefined();
+      expect(result.current.listItemRole).toBe('option');
+      expect(result.current.selection).toBeDefined();
+    });
+
+    it('validates plain DOM items without throwing', () => {
+      const ref = React.createRef<HTMLUListElement | HTMLDivElement | HTMLOListElement>();
+      const { result } = renderHook(() => useList_unstable({ selectionMode: 'single' }, ref));
+      const listItem = document.createElement('li');
+      listItem.setAttribute('role', 'option');
+
+      expect(() => result.current.validateListItem(listItem)).not.toThrow();
+    });
   });
 
   describe('rendering', () => {

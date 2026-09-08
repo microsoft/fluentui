@@ -37,7 +37,7 @@ const DEFAULT_ROOT_EL_TYPE = 'li';
  * before being passed to renderListItem_unstable.
  *
  * @param props - props from this instance of ListItem
- * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElement of ListItem
  */
 export const useListItem_unstable = (
   props: ListItemProps,
