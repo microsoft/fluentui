@@ -657,6 +657,30 @@ describe('styleToClassName with specificityMultiplier', () => {
       expect(_stylesheet.getRules()).toEqual('.css-0{content:"a\\3C b\\3E c";}');
     });
 
+    it('preserves odd backslash escape parity in declaration values', () => {
+      const backslash = '\\';
+
+      expect(serializeRuleEntries({}, { content: `"${backslash}</style${backslash}>"` })).toEqual(
+        `content:"${backslash}3C /style${backslash}3E ";`,
+      );
+    });
+
+    it('preserves even backslash escape parity in declaration values', () => {
+      const backslash = '\\';
+
+      expect(
+        serializeRuleEntries({}, { content: `"${backslash}${backslash}</style${backslash}${backslash}>"` }),
+      ).toEqual(`content:"${backslash}${backslash}${backslash}3C /style${backslash}${backslash}${backslash}3E ";`);
+    });
+
+    it('preserves backslash escape parity in URLs', () => {
+      const backslash = '\\';
+
+      expect(serializeRuleEntries({}, { backgroundImage: `url("${backslash}</style${backslash}>")` })).toEqual(
+        `background-image:url("${backslash}3C /style${backslash}3E ");`,
+      );
+    });
+
     it('does not escape selectors, so combinators keep working', () => {
       styleToClassName(
         {},

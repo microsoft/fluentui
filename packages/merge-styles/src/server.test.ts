@@ -1,6 +1,7 @@
 import { renderStatic } from './server';
 import { mergeCssSets } from './mergeStyleSets';
 import { keyframes } from './keyframes';
+import { Stylesheet } from './Stylesheet';
 
 describe('staticRender', () => {
   it('can render content', () => {
@@ -110,5 +111,19 @@ describe('staticRender', () => {
     expect(css).toContain('@media (width < 1000px)');
     expect(css).toContain('--custom-property:value;');
     expect(css).toContain('from{opacity:0;}50%{opacity:0.5;}to{opacity:1;}');
+  });
+
+  it('preserves odd and even backslash escape parity in raw server-rendered rules', () => {
+    const stylesheet = Stylesheet.getInstance();
+    const backslash = '\\';
+
+    stylesheet.insertRule(`.odd{content:"${backslash}</StYlE>"}`);
+    stylesheet.insertRule(`.even{content:"${backslash}${backslash}</style>"}`);
+
+    const css = stylesheet.getRules();
+
+    expect(css).not.toMatch(/<\/style/i);
+    expect(css).toContain(`.odd{content:"${backslash}3C /StYlE>"}`);
+    expect(css).toContain(`.even{content:"${backslash}${backslash}${backslash}3C /style>"}`);
   });
 });

@@ -4,10 +4,7 @@
 import { IStyle } from './IStyle';
 import { GLOBAL_STYLESHEET_KEY, SHADOW_DOM_STYLESHEET_SETTING } from './shadowConfig';
 import type { ShadowConfig } from './shadowConfig';
-
-function escapeStyleTagTerminator(css: string): string {
-  return css.replace(/<(?=\/style)/gi, '\\3C ');
-}
+import { escapeStyleTagTerminator } from './escapeForStyleTag';
 
 export const InjectionMode = {
   /**
