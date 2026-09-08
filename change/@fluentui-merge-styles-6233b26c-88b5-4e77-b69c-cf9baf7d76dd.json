@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(merge-styles): normalize declaration value serialization.",
+  "comment": "fix(merge-styles): contain serialized CSS output for server rendering.",
   "packageName": "@fluentui/merge-styles",
   "email": "paulmardling@microsoft.com"
 }

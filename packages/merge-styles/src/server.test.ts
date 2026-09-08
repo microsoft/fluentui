@@ -1,5 +1,6 @@
 import { renderStatic } from './server';
 import { mergeCssSets } from './mergeStyleSets';
+import { keyframes } from './keyframes';
 
 describe('staticRender', () => {
   it('can render content', () => {
@@ -51,5 +52,63 @@ describe('staticRender', () => {
 
     expect(css).not.toContain('</style');
     expect(css).not.toContain('<script');
+  });
+
+  it('contains style element terminators in structural CSS positions', () => {
+    const { css } = renderStatic(() => {
+      mergeCssSets([
+        {
+          root: {
+            selectors: {
+              '&</STYLE>.selector-sentinel': { color: 'red' },
+            },
+            'color</style>-property-sentinel': 'red',
+            '--custom</StYlE>-property-sentinel': 'value',
+          },
+        },
+      ]);
+      keyframes({
+        '50%</sTyLe>.keyframe-sentinel': { opacity: 0.5 },
+      });
+
+      return '';
+    });
+
+    expect(css).not.toMatch(/<\/style/i);
+    expect(css).toContain('\\3C /STYLE');
+    expect(css).toContain('\\3C /style');
+    expect(css).toContain('\\3C /StYlE');
+    expect(css).toContain('\\3C /sTyLe');
+    expect(css).toContain('selector-sentinel');
+    expect(css).toContain('property-sentinel');
+    expect(css).toContain('keyframe-sentinel');
+  });
+
+  it('preserves valid structural CSS syntax', () => {
+    const { css } = renderStatic(() => {
+      mergeCssSets([
+        {
+          root: {
+            '--custom-property': 'value',
+            selectors: {
+              '& > .child': { color: 'red' },
+              '@media (width < 1000px)': { color: 'blue' },
+            },
+          },
+        },
+      ]);
+      keyframes({
+        from: { opacity: 0 },
+        '50%': { opacity: 0.5 },
+        to: { opacity: 1 },
+      });
+
+      return '';
+    });
+
+    expect(css).toContain(' > .child');
+    expect(css).toContain('@media (width < 1000px)');
+    expect(css).toContain('--custom-property:value;');
+    expect(css).toContain('from{opacity:0;}50%{opacity:0.5;}to{opacity:1;}');
   });
 });

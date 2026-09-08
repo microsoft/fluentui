@@ -5,6 +5,10 @@ import { IStyle } from './IStyle';
 import { GLOBAL_STYLESHEET_KEY, SHADOW_DOM_STYLESHEET_SETTING } from './shadowConfig';
 import type { ShadowConfig } from './shadowConfig';
 
+function escapeStyleTagTerminator(css: string): string {
+  return css.replace(/<(?=\/style)/gi, '\\3C ');
+}
+
 export const InjectionMode = {
   /**
    * Avoids style injection, use getRules() to read the styles.
@@ -374,12 +378,13 @@ export class Stylesheet {
    * Gets all rules registered with the stylesheet; only valid when
    * using InsertionMode.none.
    *
-   * The return value is raw CSS text intended for a `<style>` element. Values that went through
-   * `mergeStyles`, `fontFace` or `keyframes` have `<` and `>` escaped as CSS code points so they
-   * cannot terminate that element, but rules added via {@link Stylesheet.insertRule} are unescaped.
+   * The return value is raw CSS text intended for a `<style>` element. Any case-insensitive
+   * `</style` sequence is escaped at this serialization boundary without changing other CSS syntax.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('');
+    const rules = (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('');
+
+    return escapeStyleTagTerminator(rules);
   }
 
   /**
