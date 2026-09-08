@@ -24,6 +24,14 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     restrictedDates,
     markedDays,
   } = options;
+
+  if (
+    weeksToShow !== undefined &&
+    (!Number.isFinite(weeksToShow) || !Number.isInteger(weeksToShow) || weeksToShow <= 0)
+  ) {
+    throw new RangeError('weeksToShow must be a positive finite integer.');
+  }
+
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
   const todaysDate = today || new Date();

@@ -100,7 +100,7 @@ export interface DayGridOptions extends RestrictedDatesOptions {
   today?: Date;
 
   /**
-   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   * Whether the calendar should show the week number before each week row
    */
   showWeekNumbers?: boolean;
 

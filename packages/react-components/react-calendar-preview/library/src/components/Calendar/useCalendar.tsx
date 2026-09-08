@@ -72,14 +72,10 @@ function useDateState({
     return resolvedDate;
   };
 
-  /**
-   * The currently selected date in the calendar
-   */
-  const initialSelectedDate = defaultValue === undefined ? today : defaultValue;
   const [selectedDateState, setSelectedDate] = useControllableState({
     state: value,
-    defaultState: value === undefined && initialSelectedDate ? resolveDate(initialSelectedDate) : initialSelectedDate,
-    initialState: today,
+    defaultState: defaultValue && resolveDate(defaultValue),
+    initialState: resolveDate(today),
   });
   const selectedDate =
     selectedDateState && compareDatePart(selectedDateState, resolveDate(selectedDateState)) !== 0
@@ -89,8 +85,7 @@ function useDateState({
   const initialDisplayedDate = resolveDate(defaultDisplayedDate ?? selectedDate ?? today);
   const [navigatedDateState = initialDisplayedDate, setNavigatedDate] = useControllableState({
     state: displayedDate,
-    defaultState: displayedDate === undefined ? initialDisplayedDate : undefined,
-    initialState: today,
+    initialState: initialDisplayedDate,
   });
   const navigatedDate = resolveDate(navigatedDateState);
 
@@ -167,12 +162,12 @@ function useVisibilityState({
     defaultState: viewProp === undefined ? defaultView : undefined,
     initialState: 'day' as const,
   });
+  const hasDayPicker = dayPicker !== null;
+  const hasMonthPicker = monthPicker !== null;
   const isOverlay =
-    dayPicker !== null &&
-    monthPicker !== null &&
-    (layout === 'overlay' || (layout !== 'sideBySide' && responsiveOverlay));
-  const isDayPickerVisible = dayPicker !== null && (!isOverlay || view === 'day');
-  const isMonthPickerVisible = monthPicker !== null && (!isOverlay || view === 'month');
+    hasDayPicker && hasMonthPicker && (layout === 'overlay' || (layout !== 'sideBySide' && responsiveOverlay));
+  const isDayPickerVisible = hasDayPicker && (!isOverlay || view === 'day');
+  const isMonthPickerVisible = hasMonthPicker && (!isOverlay || view === 'month');
 
   const toggleDayMonthPickerVisibility = (ev: React.SyntheticEvent | Event) => {
     const nextView = view === 'day' ? 'month' : 'day';
@@ -386,6 +381,7 @@ export const useCalendarBase_unstable = (
         formattedDate: formatters.dateTime({ date: selectedDate, format: 'monthDayYear' }),
       })
     : '';
+  const isMonthOnly = props.dayPicker === null;
 
   const resolvedToday = resolveDate(today);
   const goToTodayEnabled =
@@ -481,8 +477,8 @@ export const useCalendarBase_unstable = (
       renderByDefault: true,
       defaultProps: {
         navigatedDate,
-        selectedDate: props.dayPicker === null ? selectedDate : navigatedDate,
-        onSelectDate: props.dayPicker === null ? onDateSelected : undefined,
+        selectedDate: isMonthOnly ? selectedDate : navigatedDate,
+        onSelectDate: isMonthOnly ? onDateSelected : undefined,
         onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
         onNavigateDate: onNavigateMonthDate,
       },

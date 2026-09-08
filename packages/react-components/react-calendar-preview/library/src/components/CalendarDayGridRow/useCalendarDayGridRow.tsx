@@ -111,7 +111,7 @@ export const useCalendarDayGridRow_unstable = (
       elementType: motionElementType,
       defaultProps: {
         animationDirection: 'vertical',
-        animateBackwards,
+        animateBackwards: props.transition ? animateBackwards : animateBackwards ?? false,
         replayKey,
         edge: props.transition,
       },

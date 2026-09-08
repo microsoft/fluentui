@@ -10,9 +10,11 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
+import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -138,6 +140,111 @@ export type CalendarDayContextValues = {
 
 // @public
 export type CalendarDayDismissData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>>;
+
+// @public
+export const CalendarDayGridCell: {
+    (props: CalendarDayGridCellProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export const calendarDayGridCellClassNames: SlotClassNames<CalendarDayGridCellSlots>;
+
+// @public
+export type CalendarDayGridCellProps = ComponentProps<Partial<CalendarDayGridCellSlots>> & {
+    day: DayInfo;
+    dayIndex: number;
+    weekIndex: number;
+    ariaHidden?: boolean;
+};
+
+// @public
+export type CalendarDayGridCellSlots = {
+    root: NonNullable<Slot<'td'>>;
+    button: NonNullable<Slot<'button'>>;
+    dayLabel: NonNullable<Slot<'span'>>;
+    marker?: Slot<'div'>;
+};
+
+// @public
+export type CalendarDayGridCellState = ComponentState<CalendarDayGridCellSlots> & {
+    day: DayInfo;
+    lightenDaysOutsideNavigatedMonth: boolean;
+};
+
+// @public
+export const CalendarDayGridHeaderCell: {
+    (props: CalendarDayGridHeaderCellProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export type CalendarDayGridHeaderCellBaseProps = ComponentProps<Partial<CalendarDayGridHeaderCellBaseSlots>> & Pick<CalendarDayGridHeaderCellProps, 'dayLabel'>;
+
+// @public
+export const calendarDayGridHeaderCellClassNames: SlotClassNames<CalendarDayGridHeaderCellBaseSlots>;
+
+// @public
+export type CalendarDayGridHeaderCellProps = ComponentProps<Partial<CalendarDayGridHeaderCellSlots>> & {
+    dayLabel: CalendarWeekDayLabel;
+};
+
+// @public
+export type CalendarDayGridHeaderCellSlots = {
+    root: NonNullable<Slot<'th'>>;
+    labelMotion?: Slot<MotionSlotProps<FadeParams>>;
+};
+
+// @public
+export type CalendarDayGridHeaderCellState = ComponentState<CalendarDayGridHeaderCellSlots>;
+
+// @public
+export const CalendarDayGridHeaderRow: ForwardRefComponent<CalendarDayGridHeaderRowProps>;
+
+// @public
+export const calendarDayGridHeaderRowClassNames: SlotClassNames<CalendarDayGridHeaderRowSlots>;
+
+// @public
+export type CalendarDayGridHeaderRowProps = ComponentProps<Partial<CalendarDayGridHeaderRowSlots>>;
+
+// @public
+export type CalendarDayGridHeaderRowSlots = {
+    root: NonNullable<Slot<'tr'>>;
+    weekNumberSpacerCell?: Slot<'th'>;
+};
+
+// @public
+export type CalendarDayGridHeaderRowState = ComponentState<CalendarDayGridHeaderRowSlots> & {
+    dayLabels: CalendarWeekDayLabel[];
+};
+
+// @public
+export const CalendarDayGridRow: ForwardRefComponent<CalendarDayGridRowProps>;
+
+// @public
+export type CalendarDayGridRowBaseProps = Omit<CalendarDayGridRowProps, 'motion'>;
+
+// @public
+export const calendarDayGridRowClassNames: SlotClassNames<CalendarDayGridRowSlots>;
+
+// @public
+export type CalendarDayGridRowProps = ComponentProps<Partial<CalendarDayGridRowSlots>> & {
+    week: DayInfo[];
+    weekIndex: number;
+    transition?: 'first' | 'last';
+};
+
+// @public
+export type CalendarDayGridRowSlots = {
+    root: NonNullable<Slot<'tr'>>;
+    weekNumberCell?: Slot<'th'>;
+    motion?: Slot<MotionSlotProps<DirectionalSlideOutParams>>;
+};
+
+// @public
+export type CalendarDayGridRowState = ComponentState<CalendarDayGridRowSlots> & {
+    transition: CalendarDayGridRowProps['transition'];
+};
 
 // @public
 export type CalendarDayHandle = {
@@ -272,6 +379,54 @@ export type CalendarMonthContextValues = {
 };
 
 // @public
+export const CalendarMonthGridCell: {
+    (props: CalendarMonthGridCellProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export const calendarMonthGridCellClassNames: SlotClassNames<CalendarMonthGridCellSlots>;
+
+// @public
+export type CalendarMonthGridCellProps = ComponentProps<Partial<CalendarMonthGridCellSlots>> & {
+    month: CalendarMonthCell;
+};
+
+// @public
+export type CalendarMonthGridCellSlots = {
+    root: NonNullable<Slot<'button'>>;
+};
+
+// @public
+export type CalendarMonthGridCellState = ComponentState<CalendarMonthGridCellSlots> & {
+    isCurrent: boolean;
+    isInBounds: boolean;
+    isSelected: boolean;
+};
+
+// @public
+export const CalendarMonthGridRow: ForwardRefComponent<CalendarMonthGridRowProps>;
+
+// @public
+export const calendarMonthGridRowClassNames: SlotClassNames<CalendarMonthGridRowSlots>;
+
+// @public
+export type CalendarMonthGridRowProps = ComponentProps<Partial<CalendarMonthGridRowSlots>> & {
+    rowIndex: number;
+};
+
+// @public
+export type CalendarMonthGridRowSlots = {
+    root: NonNullable<Slot<'div'>>;
+    motion?: Slot<MotionSlotProps<DirectionalSlideParams>>;
+};
+
+// @public
+export type CalendarMonthGridRowState = ComponentState<CalendarMonthGridRowSlots> & {
+    cells: CalendarMonthCell[];
+};
+
+// @public
 export type CalendarMonthHandle = {
     focus(): void;
 };
@@ -397,6 +552,13 @@ export type CalendarViewChangeData = EventData<'click' | 'keydown', React_2.Synt
 };
 
 // @public
+export type CalendarWeekDayLabel = {
+    content: string;
+    label: string;
+    key: string;
+};
+
+// @public
 export const CalendarYear: React_2.ForwardRefExoticComponent<Omit<Partial<CalendarYearSlots>, "root"> & Omit<{
     as?: "div" | undefined;
 } & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> & {
@@ -442,6 +604,54 @@ export type CalendarYearContextValue = {
 // @public
 export type CalendarYearContextValues = {
     calendarYear: CalendarYearContextValue;
+};
+
+// @public
+export const CalendarYearGridCell: {
+    (props: CalendarYearGridCellProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export const calendarYearGridCellClassNames: SlotClassNames<CalendarYearGridCellSlots>;
+
+// @public
+export type CalendarYearGridCellProps = ComponentProps<Partial<CalendarYearGridCellSlots>> & {
+    cell: CalendarYearCell;
+};
+
+// @public
+export type CalendarYearGridCellSlots = {
+    root: NonNullable<Slot<'button'>>;
+};
+
+// @public
+export type CalendarYearGridCellState = ComponentState<CalendarYearGridCellSlots> & {
+    isCurrent: boolean;
+    isDisabled: boolean;
+    isSelected: boolean;
+};
+
+// @public
+export const CalendarYearGridRow: ForwardRefComponent<CalendarYearGridRowProps>;
+
+// @public
+export const calendarYearGridRowClassNames: SlotClassNames<CalendarYearGridRowSlots>;
+
+// @public
+export type CalendarYearGridRowProps = ComponentProps<Partial<CalendarYearGridRowSlots>> & {
+    rowIndex: number;
+};
+
+// @public
+export type CalendarYearGridRowSlots = {
+    root: NonNullable<Slot<'div'>>;
+    motion?: Slot<MotionSlotProps<DirectionalSlideParams>>;
+};
+
+// @public
+export type CalendarYearGridRowState = ComponentState<CalendarYearGridRowSlots> & {
+    cells: CalendarYearCell[];
 };
 
 // @public
@@ -538,10 +748,34 @@ export const renderCalendar_unstable: (state: CalendarBaseState, contextValues: 
 export const renderCalendarDay_unstable: (state: CalendarDayBaseState, contextValues: CalendarDayContextValues) => JSXElement;
 
 // @public
+export const renderCalendarDayGridCell_unstable: (state: CalendarDayGridCellState) => JSXElement;
+
+// @public
+export const renderCalendarDayGridHeaderCell_unstable: (state: CalendarDayGridHeaderCellState) => JSXElement;
+
+// @public
+export const renderCalendarDayGridHeaderRow_unstable: (state: CalendarDayGridHeaderRowState) => JSXElement;
+
+// @public
+export const renderCalendarDayGridRow_unstable: (state: CalendarDayGridRowState) => JSXElement | null;
+
+// @public
 export const renderCalendarMonth_unstable: (state: CalendarMonthBaseState, contextValues: CalendarMonthContextValues) => JSXElement;
 
 // @public
+export const renderCalendarMonthGridCell_unstable: (state: CalendarMonthGridCellState) => JSXElement;
+
+// @public
+export const renderCalendarMonthGridRow_unstable: (state: CalendarMonthGridRowState) => JSXElement;
+
+// @public
 export const renderCalendarYear_unstable: (state: CalendarYearBaseState, contextValues: CalendarYearContextValues) => JSXElement;
+
+// @public
+export const renderCalendarYearGridCell_unstable: (state: CalendarYearGridCellState) => JSXElement;
+
+// @public
+export const renderCalendarYearGridRow_unstable: (state: CalendarYearGridRowState) => JSXElement;
 
 // @public
 export const useCalendar_unstable: (props: CalendarProps, ref: React_2.Ref<HTMLDivElement>) => CalendarState;
@@ -565,6 +799,39 @@ export const useCalendarDayBase_unstable: (props: CalendarDayBaseProps, ref: Rea
 export function useCalendarDayContextValues_unstable(state: CalendarDayBaseState): CalendarDayContextValues;
 
 // @public
+export const useCalendarDayGridCell_unstable: (props: CalendarDayGridCellProps) => CalendarDayGridCellState;
+
+// @public
+export const useCalendarDayGridCellStyles_unstable: (state: CalendarDayGridCellState) => CalendarDayGridCellState;
+
+// @public
+export const useCalendarDayGridHeaderCell_unstable: (props: CalendarDayGridHeaderCellProps) => CalendarDayGridHeaderCellState;
+
+// @public
+export const useCalendarDayGridHeaderCellBase_unstable: (props: CalendarDayGridHeaderCellBaseProps) => CalendarDayGridHeaderCellBaseState;
+
+// @public
+export const useCalendarDayGridHeaderCellStyles_unstable: (state: CalendarDayGridHeaderCellState) => CalendarDayGridHeaderCellState;
+
+// @public
+export const useCalendarDayGridHeaderRow_unstable: (props: CalendarDayGridHeaderRowProps, ref: React_2.Ref<HTMLTableRowElement>) => CalendarDayGridHeaderRowState;
+
+// @public
+export const useCalendarDayGridHeaderRowBase_unstable: (props: CalendarDayGridHeaderRowProps, ref: React_2.Ref<HTMLTableRowElement>) => CalendarDayGridHeaderRowState;
+
+// @public
+export const useCalendarDayGridHeaderRowStyles_unstable: (state: CalendarDayGridHeaderRowState) => CalendarDayGridHeaderRowState;
+
+// @public
+export const useCalendarDayGridRow_unstable: (props: CalendarDayGridRowProps, ref: React_2.Ref<HTMLTableRowElement>) => CalendarDayGridRowState;
+
+// @public
+export const useCalendarDayGridRowBase_unstable: (props: CalendarDayGridRowBaseProps, ref: React_2.Ref<HTMLTableRowElement>) => CalendarDayGridRowState;
+
+// @public
+export const useCalendarDayGridRowStyles_unstable: (state: CalendarDayGridRowState) => CalendarDayGridRowState;
+
+// @public
 export const useCalendarDayStyles_unstable: (state: CalendarDayState) => CalendarDayState;
 
 // @public
@@ -575,6 +842,21 @@ export const useCalendarMonthBase_unstable: (props: CalendarMonthBaseProps, ref:
 
 // @public
 export function useCalendarMonthContextValues_unstable(state: CalendarMonthBaseState): CalendarMonthContextValues;
+
+// @public
+export const useCalendarMonthGridCell_unstable: (props: CalendarMonthGridCellProps) => CalendarMonthGridCellState;
+
+// @public
+export const useCalendarMonthGridCellStyles_unstable: (state: CalendarMonthGridCellState) => CalendarMonthGridCellState;
+
+// @public
+export const useCalendarMonthGridRow_unstable: (props: CalendarMonthGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarMonthGridRowState;
+
+// @public
+export const useCalendarMonthGridRowBase_unstable: (props: CalendarMonthGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarMonthGridRowBaseState;
+
+// @public
+export const useCalendarMonthGridRowStyles_unstable: (state: CalendarMonthGridRowState) => CalendarMonthGridRowState;
 
 // @public
 export const useCalendarMonthStyles_unstable: (state: CalendarMonthState) => CalendarMonthState;
@@ -590,6 +872,21 @@ export const useCalendarYearBase_unstable: (props: CalendarYearBaseProps, ref: R
 
 // @public
 export function useCalendarYearContextValues_unstable(state: CalendarYearBaseState): CalendarYearContextValues;
+
+// @public
+export const useCalendarYearGridCell_unstable: (props: CalendarYearGridCellProps) => CalendarYearGridCellState;
+
+// @public
+export const useCalendarYearGridCellStyles_unstable: (state: CalendarYearGridCellState) => CalendarYearGridCellState;
+
+// @public
+export const useCalendarYearGridRow_unstable: (props: CalendarYearGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarYearGridRowState;
+
+// @public
+export const useCalendarYearGridRowBase_unstable: (props: CalendarYearGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarYearGridRowState;
+
+// @public
+export const useCalendarYearGridRowStyles_unstable: (state: CalendarYearGridRowState) => CalendarYearGridRowState;
 
 // @public
 export const useCalendarYearStyles_unstable: (state: CalendarYearState) => CalendarYearState;
