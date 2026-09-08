@@ -1,10 +1,8 @@
-import { compareDates, getDateRangeArray, isInDateRangeArray } from '../dateMath/dateMath';
+import { areDatesEqual, getDateRange, isDateInRange } from '../dateMath';
 import { DAYS_IN_WEEK, getDayIndex } from '../constants';
-import { dateAdapter as defaultDateAdapter } from '../dateAdapter';
 import type { Day, DayGridOptions } from './dateGrid.types';
-import { getDateRangeTypeToUse } from './getDateRangeTypeToUse';
-import { getBoundedDateRange } from './getBoundedDateRange';
-import { isRestrictedDate } from './isRestrictedDate';
+import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
+import { getDateRangeTypeToUse } from './workWeek';
 
 /**
  * Generates a grid of days, given the `options`.
@@ -25,35 +23,30 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     daysToSelectInDayView,
     restrictedDates,
     markedDays,
-    dateAdapter = defaultDateAdapter,
   } = options;
-  const restrictedDateOptions = { dateAdapter, minDate, maxDate, restrictedDates };
+  const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
-  const todaysDate = today || dateAdapter.now();
+  const todaysDate = today || new Date();
 
   const navigatedDate = options.navigatedDate ? options.navigatedDate : todaysDate;
 
   let date;
   if (weeksToShow && weeksToShow <= 4) {
     // if showing less than a full month, just use date == navigatedDate
-    date = dateAdapter.createDate(
-      dateAdapter.getYear(navigatedDate),
-      dateAdapter.getMonth(navigatedDate),
-      dateAdapter.getDate(navigatedDate),
-    );
+    date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), navigatedDate.getDate());
   } else {
-    date = dateAdapter.createDate(dateAdapter.getYear(navigatedDate), dateAdapter.getMonth(navigatedDate), 1);
+    date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
   }
   const weeks: Day[][] = [];
 
   // Cycle the date backwards to get to the first day of the week.
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  while (dateAdapter.getDay(date) !== firstDayOfWeekIndex) {
-    date = dateAdapter.addDays(date, -1);
+  while (date.getDay() !== firstDayOfWeekIndex) {
+    date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
   }
 
   // add the transition week as last week of previous range
-  date = dateAdapter.addDays(date, -DAYS_IN_WEEK);
+  date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
 
   // a flag to indicate whether all days of the week are outside the month
   let isAllDaysOfWeekOutOfMonth = false;
@@ -64,15 +57,14 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   let selectedDates: Date[] = [];
 
   if (selectedDate) {
-    selectedDates = getDateRangeArray(
+    selectedDates = getDateRange(
       selectedDate,
       selectedDateRangeType,
       firstDayOfWeek,
       workWeekDays,
       daysToSelectInDayView,
-      dateAdapter,
     );
-    selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate, dateAdapter);
+    selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
   }
 
   let shouldGetWeeks = true;
@@ -83,21 +75,17 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     isAllDaysOfWeekOutOfMonth = true;
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-      const originalDate = dateAdapter.createDate(
-        dateAdapter.getYear(date),
-        dateAdapter.getMonth(date),
-        dateAdapter.getDate(date),
-      );
+      const originalDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
       const dayInfo: Day = {
-        key: `${dateAdapter.getYear(date)}-${dateAdapter.getMonth(date)}-${dateAdapter.getDate(date)}`,
-        date: dateAdapter.getDate(date).toString(),
+        key: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+        date: date.getDate().toString(),
         originalDate,
-        isInMonth: dateAdapter.getMonth(date) === dateAdapter.getMonth(navigatedDate),
-        isToday: compareDates(todaysDate, date, dateAdapter),
-        isSelected: isInDateRangeArray(date, selectedDates, dateAdapter),
-        isSingleSelected: selectedDates.length === 1 && compareDates(date, selectedDate, dateAdapter),
+        isInMonth: date.getMonth() === navigatedDate.getMonth(),
+        isToday: areDatesEqual(todaysDate, date),
+        isSelected: isDateInRange(date, selectedDates),
+        isSingleSelected: !!selectedDate && selectedDates.length === 1 && areDatesEqual(date, selectedDate),
         isInBounds: !isRestrictedDate(date, restrictedDateOptions),
-        isMarked: markedDays?.some((markedDay: Date) => compareDates(originalDate, markedDay, dateAdapter)) || false,
+        isMarked: markedDays?.some((markedDay: Date) => areDatesEqual(originalDate, markedDay)) || false,
       };
 
       week.push(dayInfo);
@@ -106,7 +94,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         isAllDaysOfWeekOutOfMonth = false;
       }
 
-      date = dateAdapter.addDays(date, 1);
+      date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
     }
 
     // A fixed week count includes one additional row for the transition state.

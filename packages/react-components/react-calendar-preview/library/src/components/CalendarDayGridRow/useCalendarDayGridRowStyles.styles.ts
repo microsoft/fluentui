@@ -8,7 +8,6 @@ import type { CalendarDayGridRowState, CalendarDayGridRowSlots } from './Calenda
 /**
  * Class names for calendarDayGridRow slots.
  */
-
 export const calendarDayGridRowClassNames: SlotClassNames<CalendarDayGridRowSlots> = {
   root: 'fui-CalendarDayGridRow',
   weekNumberCell: 'fui-CalendarDayGridRow__weekNumberCell',
@@ -63,8 +62,6 @@ const useTransitionStyles = makeStyles({
  * Apply styling to the CalendarDayGridRow slots based on the state.
  */
 export const useCalendarDayGridRowStyles_unstable = (state: CalendarDayGridRowState): CalendarDayGridRowState => {
-  'use no memo'; // justified: compiler would optimize useCalendarDayGridRowStyles_unstable — manual opt-out to preserve runtime behavior
-
   const rootStyles = useRootStyles();
   const weekNumberCellStyles = useWeekNumberCellStyles();
   const transitionStyles = useTransitionStyles();
@@ -86,6 +83,5 @@ export const useCalendarDayGridRowStyles_unstable = (state: CalendarDayGridRowSt
     );
   }
   /* eslint-enable react-hooks/immutability */
-
   return state;
 };

@@ -1,5 +1,4 @@
 export type {
-  CalendarDayGridHeaderRowBaseProps,
   CalendarDayGridHeaderRowProps,
   CalendarDayGridHeaderRowSlots,
   CalendarDayGridHeaderRowState,

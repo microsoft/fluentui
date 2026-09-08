@@ -24,8 +24,6 @@ export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'y
  * Apply styling to the CalendarMonth slots based on the state.
  */
 export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): CalendarMonthState => {
-  'use no memo'; // justified: compiler would optimize useCalendarMonthStyles_unstable — manual opt-out to preserve runtime behavior
-
   const pickerStyles = useCalendarPickerStyles();
   const itemStyles = useCalendarItemStyles();
 
@@ -68,6 +66,5 @@ export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): Cale
     state.nextYearButton.className,
   );
   /* eslint-enable react-hooks/immutability */
-
   return state;
 };

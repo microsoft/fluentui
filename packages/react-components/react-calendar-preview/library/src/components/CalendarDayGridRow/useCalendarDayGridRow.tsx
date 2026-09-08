@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { motionSlot } from '@fluentui/react-motion';
-import { getWeekNumbersInMonth } from '../../utils';
+import { compareDatePart, getWeekNumbersInMonth } from '../../utils';
 import { DirectionalSlideIn, DirectionalSlideOut } from '../../utils/calendarMotions';
 import { CalendarDayGridCell } from '../CalendarDayGridCell/CalendarDayGridCell';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
@@ -25,18 +25,17 @@ export const useCalendarDayGridRowBase_unstable = (
 ): CalendarDayGridRowState => {
   const { transition, weekIndex } = props;
   const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const firstWeekOfYear = useCalendarContext_unstable(ctx => ctx.firstWeekOfYear);
-  const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
+  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const showWeekNumbers = useCalendarContext_unstable(ctx => ctx.showWeekNumbers);
   const navigatedDate = useCalendarDayContext_unstable(ctx => ctx.navigatedDate);
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
 
   const weekNumbers = showWeekNumbers
-    ? getWeekNumbersInMonth(weeks.length, firstDayOfWeek, firstWeekOfYear, navigatedDate, dateAdapter)
+    ? getWeekNumbersInMonth(weeks.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
     : null;
 
-  const titleString = weekNumbers ? formatLabel('weekNumber', { weekNumber: weekNumbers[weekIndex] }) : '';
+  const titleString = weekNumbers ? formatters.weekNumberLabel({ weekNumber: weekNumbers[weekIndex] }) : '';
 
   return {
     transition,
@@ -75,10 +74,7 @@ export const useCalendarDayGridRow_unstable = (
 ): CalendarDayGridRowState => {
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
   const state = useCalendarDayGridRowBase_unstable(props, ref);
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
-  const animateBackwards = useAnimateBackwards(weeks[0][0].originalDate, (date1, date2) =>
-    dateAdapter.compareDates(date1, date2),
-  );
+  const animateBackwards = useAnimateBackwards(weeks[0][0].originalDate, compareDatePart);
 
   // The filler rows slide out towards the edge they sit on; the visible weeks slide in.
   const motionElementType = props.transition ? DirectionalSlideOut : DirectionalSlideIn;

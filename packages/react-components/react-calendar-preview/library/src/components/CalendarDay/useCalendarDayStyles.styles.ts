@@ -157,8 +157,6 @@ const useDisabledStyleStyles = makeStyles({
  * Apply styling to the CalendarDay slots based on the state.
  */
 export const useCalendarDayStyles_unstable = (state: CalendarDayState): CalendarDayState => {
-  'use no memo'; // justified: compiler would optimize useCalendarDayStyles_unstable — manual opt-out to preserve runtime behavior
-
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();
   const gridStyles = useGridStyles();
@@ -223,6 +221,5 @@ export const useCalendarDayStyles_unstable = (state: CalendarDayState): Calendar
     );
   }
   /* eslint-enable react-hooks/immutability */
-
   return state;
 };

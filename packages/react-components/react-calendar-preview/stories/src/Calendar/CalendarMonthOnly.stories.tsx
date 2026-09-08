@@ -26,9 +26,10 @@ export const CalendarMonthOnly = (): JSXElement => {
       <Calendar
         dateRangeType={'month'}
         highlightSelectedMonth
-        isDayPickerVisible={false}
+        layout="overlay"
         onSelectDate={onSelectDate}
         value={selectedDate}
+        view="month"
       />
     </>
   );

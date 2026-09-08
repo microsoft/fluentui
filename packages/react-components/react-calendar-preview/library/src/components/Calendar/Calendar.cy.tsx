@@ -190,7 +190,7 @@ describe('Calendar', () => {
     });
 
     it('toggles between the pickers when the day header is clicked in overlay mode', () => {
-      mountFluent(<Calendar today={today} value={today} showMonthPickerAsOverlay />);
+      mountFluent(<Calendar today={today} value={today} layout="overlay" />);
 
       cy.get(`.${calendarDayClassNames.root}`).should('exist');
       cy.get(`.${calendarMonthClassNames.root}`).should('not.exist');

@@ -7,6 +7,7 @@ import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import type {
   CalendarDayGridHeaderCellBaseProps,
+  CalendarDayGridHeaderCellBaseState,
   CalendarDayGridHeaderCellProps,
   CalendarDayGridHeaderCellState,
 } from './CalendarDayGridHeaderCell.types';
@@ -16,7 +17,7 @@ import type {
  */
 export const useCalendarDayGridHeaderCellBase_unstable = (
   props: CalendarDayGridHeaderCellBaseProps,
-): CalendarDayGridHeaderCellState => {
+): CalendarDayGridHeaderCellBaseState => {
   const { dayLabel } = props;
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
 
@@ -48,6 +49,11 @@ export const useCalendarDayGridHeaderCell_unstable = (
 
   return {
     ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      labelMotion: Fade.In,
+    },
     labelMotion: motionSlot<FadeParams>(props.labelMotion, {
       elementType: Fade.In,
       defaultProps: { duration: motionTokens.durationGentle },

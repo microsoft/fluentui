@@ -6,7 +6,6 @@ import type { DayInfo } from '../../hooks/useWeeks';
 /**
  * Defines the CalendarDayGridRowSlots contract.
  */
-
 export type CalendarDayGridRowSlots = {
   /**
    * The `<tr>` holding one week of day cells.
@@ -27,7 +26,6 @@ export type CalendarDayGridRowSlots = {
 /**
  * Defines the CalendarDayGridRowProps contract.
  */
-
 export type CalendarDayGridRowProps = ComponentProps<Partial<CalendarDayGridRowSlots>> & {
   week: DayInfo[];
 
@@ -43,7 +41,6 @@ export type CalendarDayGridRowProps = ComponentProps<Partial<CalendarDayGridRowS
 /**
  * Defines the CalendarDayGridRowState contract.
  */
-
 export type CalendarDayGridRowState = ComponentState<CalendarDayGridRowSlots> & {
   transition: CalendarDayGridRowProps['transition'];
 };

@@ -25,7 +25,6 @@ export type CalendarMonthHandle = {
 /**
  * Defines the CalendarMonthSlots contract.
  */
-
 export type CalendarMonthSlots = {
   root: NonNullable<Slot<'div'>>;
 
@@ -60,7 +59,6 @@ export type CalendarMonthSlots = {
 /**
  * Defines the CalendarMonthSelectData contract.
  */
-
 export type CalendarMonthSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   date: Date;
   selectedDateRange: Date[];
@@ -69,7 +67,6 @@ export type CalendarMonthSelectData = EventData<'click' | 'keydown', React.Synth
 /**
  * Defines the CalendarMonthNavigateData contract.
  */
-
 export type CalendarMonthNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   date: Date;
   focusOnNavigatedDay: boolean;
@@ -78,13 +75,11 @@ export type CalendarMonthNavigateData = EventData<'click' | 'keydown', React.Syn
 /**
  * Defines the CalendarMonthHeaderSelectData contract.
  */
-
 export type CalendarMonthHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>>;
 
 /**
  * Defines the CalendarMonthProps contract.
  */
-
 export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   /**
    * The currently navigated date
@@ -119,7 +114,6 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
 /**
  * Defines the CalendarMonthState contract.
  */
-
 export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
   /**
    * When the year picker is open, CalendarMonth renders CalendarYear instead of its own grid.
@@ -160,5 +154,4 @@ export type CalendarMonthBaseProps = CalendarMonthProps;
 /**
  * Defines the CalendarMonthBaseState contract.
  */
-
 export type CalendarMonthBaseState = CalendarMonthState;

@@ -9,7 +9,6 @@ import type { CalendarMonthGridCellSlots, CalendarMonthGridCellState } from './C
 /**
  * Class names for calendarMonthGridCell slots.
  */
-
 export const calendarMonthGridCellClassNames: SlotClassNames<CalendarMonthGridCellSlots> = {
   root: 'fui-CalendarMonthGridCell',
 };

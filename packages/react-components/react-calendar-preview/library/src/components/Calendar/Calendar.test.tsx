@@ -2,8 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Calendar } from './Calendar';
 import { isConformant } from '../../testing/isConformant';
-import { dateAdapter, formatDateTime as defaultFormatDateTime, formatLabel as defaultFormatLabel } from '../../utils';
-import type { CalendarDateAdapter, CalendarDateLabelData, FormatCalendarLabel, FormatDateTime } from '../../utils';
+import { calendarFormatters } from '../../utils';
 
 describe('Calendar', () => {
   isConformant({
@@ -12,11 +11,76 @@ describe('Calendar', () => {
   });
 
   it('should render without crashing when value is undefined', () => {
-    expect(() => render(<Calendar value={undefined} />)).not.toThrow();
+    expect(() => render(<Calendar value={undefined} onChange={jest.fn()} />)).not.toThrow();
   });
 
   it('should render correctly when value is undefined', () => {
-    const { container } = render(<Calendar value={undefined} />);
+    const { container } = render(<Calendar value={undefined} onChange={jest.fn()} />);
+    expect(container.querySelector('[role="grid"]')).not.toBeNull();
+  });
+
+  it('supports an explicitly empty controlled selection', () => {
+    const { container } = render(<Calendar value={null} today={new Date(2020, 8, 18)} onChange={jest.fn()} />);
+
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('');
+    expect(container.querySelector('td[aria-selected="true"]')).toBeNull();
+  });
+
+  it('uses defaultValue only for an uncontrolled initial selection', () => {
+    const { container } = render(
+      <Calendar defaultValue={new Date(2020, 8, 18)} defaultDisplayedDate={new Date(2020, 8, 18)} />,
+    );
+
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('Selected date September 18, 2020');
+  });
+
+  it('controls the displayed date independently from the selected value', () => {
+    const { container } = render(
+      <Calendar defaultValue={new Date(2020, 8, 18)} displayedDate={new Date(2021, 0, 5)} layout="sideBySide" />,
+    );
+
+    expect(container.textContent).toContain('January 2021');
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('Selected date September 18, 2020');
+  });
+
+  it('reports displayed-date navigation without mutating a controlled date', () => {
+    const onDisplayedDateChange = jest.fn();
+    const displayedDate = new Date(2020, 8, 18);
+    const { container } = render(
+      <Calendar displayedDate={displayedDate} onDisplayedDateChange={onDisplayedDateChange} layout="sideBySide" />,
+    );
+
+    fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
+
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 18));
+    expect(container.textContent).toContain('September 2020');
+  });
+
+  it('supports an uncontrolled overlay view and reports view changes', () => {
+    const onViewChange = jest.fn();
+    const { getByRole, container } = render(
+      <Calendar
+        defaultDisplayedDate={new Date(2020, 8, 18)}
+        defaultView="month"
+        layout="overlay"
+        onViewChange={onViewChange}
+      />,
+    );
+
+    expect(container.querySelector('table[role="grid"]')).toBeNull();
+    fireEvent.click(getByRole('gridcell', { name: 'September' }));
+
+    expect(onViewChange.mock.calls[0][1].view).toBe('day');
+    expect(container.querySelector('table[role="grid"]')).not.toBeNull();
+  });
+
+  it('updates the visible picker when a controlled overlay view changes', () => {
+    const { container, rerender } = render(<Calendar value={new Date(2020, 8, 18)} layout="overlay" view="day" />);
+    expect(container.querySelector('table[role="grid"]')).not.toBeNull();
+
+    rerender(<Calendar value={new Date(2020, 8, 18)} layout="overlay" view="month" />);
+
+    expect(container.querySelector('table[role="grid"]')).toBeNull();
     expect(container.querySelector('[role="grid"]')).not.toBeNull();
   });
 
@@ -32,12 +96,6 @@ describe('Calendar', () => {
     );
 
     expect(container.textContent).toContain('January 2021');
-  });
-
-  it('does not render the pickers that are hidden', () => {
-    const { container } = render(<Calendar value={new Date(2020, 8, 18)} isMonthPickerVisible={false} />);
-
-    expect(container.querySelectorAll('[role="grid"]')).toHaveLength(1);
   });
 
   it('renders the go-to-today button by default', () => {
@@ -65,20 +123,57 @@ describe('Calendar', () => {
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
-  it('uses the configured date adapter for keyboard navigation', () => {
-    const addMonths = jest.fn(dateAdapter.addMonths);
-    const customDateAdapter: CalendarDateAdapter<Date> = { ...dateAdapter, addMonths };
+  it('advances one month on PageUp keyboard navigation', () => {
+    const onDisplayedDateChange = jest.fn();
     const value = new Date(2020, 8, 18);
-    const { container } = render(<Calendar value={value} today={value} dateAdapter={customDateAdapter} />);
+    const { container } = render(
+      <Calendar
+        value={value}
+        today={value}
+        displayedDate={value}
+        onDisplayedDateChange={onDisplayedDateChange}
+        onChange={jest.fn()}
+      />,
+    );
 
     fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
 
-    expect(addMonths).toHaveBeenCalledWith(value, 1);
+    expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 18));
+  });
+
+  it('clamps PageUp navigation to the maximum date', () => {
+    const value = new Date(2020, 8, 18);
+    const { container } = render(
+      <Calendar value={value} today={value} maxDate={new Date(2020, 9, 10)} onChange={jest.fn()} />,
+    );
+
+    fireEvent.keyDown(container.firstElementChild!, { key: 'PageUp' });
+
+    expect(container.textContent).toContain('October 2020');
+    expect(container.querySelector('button[aria-label="October 10, 2020"]')?.closest('td')).toHaveAttribute(
+      'tabindex',
+      '0',
+    );
+  });
+
+  it('clamps go-to-today navigation to the allowed date range', () => {
+    const { getByRole, container } = render(
+      <Calendar defaultValue={new Date(2020, 7, 18)} today={new Date(2020, 9, 18)} maxDate={new Date(2020, 8, 10)} />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+
+    expect(container.textContent).toContain('September 2020');
+    expect(container.querySelector('button[aria-label="September 10, 2020"]')?.closest('td')).toHaveAttribute(
+      'tabindex',
+      '0',
+    );
   });
 
   it('moves the highlighted month with navigation rather than with the selected value', () => {
     const { getByTitle, getByRole } = render(
-      <Calendar value={new Date(2020, 8, 18)} today={new Date(2020, 8, 18)} highlightSelectedMonth />,
+      <Calendar defaultValue={new Date(2020, 8, 18)} today={new Date(2020, 8, 18)} highlightSelectedMonth />,
     );
 
     expect(getByRole('gridcell', { name: 'September' })).toHaveAttribute('data-selected');
@@ -91,7 +186,7 @@ describe('Calendar', () => {
 
   it('opens the year picker on the navigated year rather than the selected year', () => {
     const { getByTitle, getByRole } = render(
-      <Calendar value={new Date(2020, 11, 18)} today={new Date(2020, 11, 18)} />,
+      <Calendar defaultValue={new Date(2020, 11, 18)} today={new Date(2020, 11, 18)} />,
     );
 
     fireEvent.click(getByTitle('Next month January'));
@@ -101,22 +196,18 @@ describe('Calendar', () => {
   });
 
   it('uses localized strings for the selected date, today, and go-to-today button', () => {
-    const formatDateTime: FormatDateTime = (date, format) => `Localized ${defaultFormatDateTime(date, format)}`;
-    const formatLabel = ((label: string, data: CalendarDateLabelData) => {
-      if (label === 'selectedDate') {
-        return `Chosen: ${data.formattedDate}`;
-      }
-      if (label === 'todayDate') {
-        return `Current: ${data.formattedDate}`;
-      }
-      return defaultFormatLabel(label as 'selectedDate', data);
-    }) as FormatCalendarLabel;
+    type FormatDateTime = typeof calendarFormatters.dateTime;
+    const dateTime: FormatDateTime = ({ date, format }) => `Localized ${calendarFormatters.dateTime({ date, format })}`;
+
     const { getByRole, container } = render(
       <Calendar
-        value={new Date(2020, 8, 18)}
+        defaultValue={new Date(2020, 8, 18)}
         today={new Date(2020, 9, 20)}
-        formatDateTime={formatDateTime}
-        formatLabel={formatLabel}
+        formatters={{
+          dateTime,
+          selectedDateLabel: data => `Chosen: ${data.formattedDate}`,
+          todayDateLabel: data => `Current: ${data.formattedDate}`,
+        }}
         goToTodayButton={{ children: 'Jump to current date' }}
       />,
     );
@@ -127,24 +218,5 @@ describe('Calendar', () => {
       'aria-label',
       'Localized September 2020, Chosen: Localized September 18, 2020, Current: Localized October 20, 2020',
     );
-  });
-
-  it('uses the month-year selected date format in month-picker-only mode', () => {
-    const formatDateTime = jest.fn(defaultFormatDateTime);
-    const formatLabel = ((label: string, data: CalendarDateLabelData) =>
-      label === 'selectedDate'
-        ? `Chosen month: ${data.formattedDate}`
-        : defaultFormatLabel(label as 'todayDate', data)) as FormatCalendarLabel;
-    const { container } = render(
-      <Calendar
-        value={new Date(2020, 8, 18)}
-        formatDateTime={formatDateTime}
-        formatLabel={formatLabel}
-        isDayPickerVisible={false}
-      />,
-    );
-
-    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent('Chosen month: September 2020');
-    expect(formatDateTime).toHaveBeenCalledWith(new Date(2020, 8, 18), 'monthYear');
   });
 });

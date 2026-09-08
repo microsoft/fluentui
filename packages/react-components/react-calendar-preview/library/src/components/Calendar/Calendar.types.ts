@@ -1,14 +1,14 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { Button } from '@fluentui/react-button';
 import type {
-  CalendarDateAdapter,
-  DateRangeType,
-  DayOfWeek,
-  FirstWeekOfYear,
-  FormatCalendarLabel,
-  FormatDateTime,
-} from '../../utils';
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  EventData,
+  EventHandler,
+  Slot,
+} from '@fluentui/react-utilities';
+import type { Button } from '@fluentui/react-button';
+import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarContextValue, CalendarDayHandle } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarDay } from '../../CalendarDay';
@@ -31,7 +31,7 @@ export type CalendarSlots = {
   liveRegion: NonNullable<Slot<'div'>>;
 
   /**
-   * The day picker. Only rendered while `isDayPickerVisible` is set.
+   * The day picker.
    */
   dayPicker: NonNullable<Slot<typeof CalendarDay>>;
 
@@ -46,7 +46,7 @@ export type CalendarSlots = {
   monthPickerWrapper: NonNullable<Slot<'div'>>;
 
   /**
-   * The month picker. Only rendered while `isMonthPickerVisible` is set.
+   * The month picker.
    */
   monthPicker: NonNullable<Slot<typeof CalendarMonth>>;
 
@@ -70,6 +70,20 @@ export type CalendarSelectDateData = EventData<'click' | 'keydown', React.Synthe
   selectedDateRange: Date[];
 };
 
+export type CalendarNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /** The date displayed by the calendar. */
+  displayedDate: Date;
+};
+
+export type CalendarView = 'day' | 'month';
+
+export type CalendarViewChangeData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /** The active picker when the calendar uses an overlay layout. */
+  view: CalendarView;
+};
+
+export type CalendarLayout = 'auto' | 'sideBySide' | 'overlay';
+
 /**
  * Event data for dismissing the Calendar.
  */
@@ -78,13 +92,7 @@ export type CalendarDismissData = EventData<'click' | 'keydown', React.Synthetic
 /**
  * Props for the Calendar component.
  */
-export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
-  /**
-   * Adapter used for date arithmetic and calendar field access.
-   * @default The native JavaScript `Date` adapter.
-   */
-  dateAdapter?: CalendarDateAdapter<Date>;
-
+export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlots>>, 'defaultValue'> & {
   /**
    * Callback for when a date is selected
    * @param date - The date the user selected
@@ -98,10 +106,35 @@ export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
    */
   onDismiss?: EventHandler<CalendarDismissData>;
 
+  /** The selected date. `null` represents an explicitly empty controlled selection. */
+  value?: Date | null;
+
+  /** The initial selected date when uncontrolled. `null` starts with no selection. */
+  defaultValue?: Date | null;
+
+  /** The date currently displayed by the day and month pickers. */
+  displayedDate?: Date;
+
+  /** The initial displayed date when uncontrolled. */
+  defaultDisplayedDate?: Date;
+
+  /** Called when user interaction requests a different displayed date. */
+  onDisplayedDateChange?: EventHandler<CalendarNavigateData>;
+
+  /** The active picker in an overlay layout. */
+  view?: CalendarView;
+
+  /** The initial active picker when uncontrolled. */
+  defaultView?: CalendarView;
+
+  /** Called when user interaction changes the active picker. */
+  onViewChange?: EventHandler<CalendarViewChangeData>;
+
   /**
-   * Default value of the Calendar, if any
+   * How the day and month pickers are arranged. `auto` switches to an overlay below 440px.
+   * @default 'auto'
    */
-  value?: Date;
+  layout?: CalendarLayout;
 
   /**
    * Value of today. If unspecified, current time in client machine will be used.
@@ -128,38 +161,15 @@ export type CalendarProps = ComponentProps<Partial<CalendarSlots>> & {
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
-   * Whether the month picker is shown beside the day picker or hidden.
-   * @default true
-   */
-  isMonthPickerVisible?: boolean;
-
-  /**
-   * Whether the day picker is shown beside the month picker or hidden.
-   * @default true
-   */
-  isDayPickerVisible?: boolean;
-
-  /**
-   * Show month picker on top of date picker when visible.
-   * @default false
-   */
-  showMonthPickerAsOverlay?: boolean;
-
-  /**
-   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   * Whether the calendar should show the week-of-year number (1 through 53) before each week row.
    * @default false
    */
   showWeekNumbers?: boolean;
 
   /**
-   * Formats localized labels used throughout the Calendar.
+   * Overrides date and accessibility label formatters. Omitted formatters use the defaults.
    */
-  formatLabel?: FormatCalendarLabel;
-
-  /**
-   * Formats date values used throughout the Calendar.
-   */
-  formatDateTime?: FormatDateTime;
+  formatters?: Partial<CalendarFormatters>;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -228,14 +238,9 @@ export type CalendarState = ComponentState<CalendarSlots> &
     isMonthPickerVisible: boolean;
 
     /**
-     * Whether only the month picker is visible.
+     * Whether the day and month pickers replace one another.
      */
-    monthPickerOnly: boolean;
-
-    /**
-     * Whether the month picker overlays the day picker.
-     */
-    showMonthPickerAsOverlay: boolean;
+    isOverlay: boolean;
   };
 
 /**

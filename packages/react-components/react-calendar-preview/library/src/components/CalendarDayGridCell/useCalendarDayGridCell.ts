@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { getIntrinsicElementProps, getRTLSafeKey, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { addDays, addWeeks, compareDates, findAvailableDate, stringifyDataAttribute } from '../../utils';
+import { addDays, addWeeks, compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
 import type { AvailableDateOptions } from '../../utils';
@@ -33,18 +33,14 @@ const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
  * Create the state required to render CalendarDayGridCell.
  */
 export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps): CalendarDayGridCellState => {
-  'use no memo'; // justified: compiler would optimize unknown function — manual opt-out to preserve runtime behavior
-
   const { ariaHidden, day, dayIndex, weekIndex, ...rest } = props;
 
   const activeDescendantId = useCalendarDayContext_unstable(ctx => ctx.activeDescendantId);
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const dateAdapter = useCalendarContext_unstable(ctx => ctx.dateAdapter);
   const calculateRoundedCorners = useCalendarDayContext_unstable(ctx => ctx.calculateRoundedCorners);
   const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
   const daysToSelectInDayView = useCalendarDayContext_unstable(ctx => ctx.daysToSelectInDayView);
-  const formatDateTime = useCalendarContext_unstable(ctx => ctx.formatDateTime);
-  const formatLabel = useCalendarContext_unstable(ctx => ctx.formatLabel);
+  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
   const getDayInfosInRangeOfDay = useCalendarDayContext_unstable(ctx => ctx.getDayInfosInRangeOfDay);
   const getRefsFromDayInfos = useCalendarDayContext_unstable(ctx => ctx.getRefsFromDayInfos);
   const lightenDaysOutsideNavigatedMonth = useCalendarDayContext_unstable(ctx => ctx.lightenDaysOutsideNavigatedMonth);
@@ -58,7 +54,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
 
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
-  const isNavigatedDate = compareDates(navigatedDate, day.originalDate, dateAdapter);
+  const isNavigatedDate = compareDatePart(navigatedDate, day.originalDate) === 0;
 
   const { dir } = useFluent_unstable();
 
@@ -67,15 +63,15 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
     let direction = 1; // by default search forward
 
     if (ev.key === ArrowUp) {
-      targetDate = addWeeks(date, -1, dateAdapter);
+      targetDate = addWeeks(date, -1);
       direction = -1;
     } else if (ev.key === ArrowDown) {
-      targetDate = addWeeks(date, 1, dateAdapter);
+      targetDate = addWeeks(date, 1);
     } else if (ev.key === getRTLSafeKey(ArrowLeft, dir)) {
-      targetDate = addDays(date, -1, dateAdapter);
+      targetDate = addDays(date, -1);
       direction = -1;
     } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
-      targetDate = addDays(date, 1, dateAdapter);
+      targetDate = addDays(date, 1);
     }
 
     if (!targetDate) {
@@ -84,7 +80,6 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
     }
 
     const findAvailableDateOptions: AvailableDateOptions = {
-      dateAdapter,
       initialDate: date,
       targetDate,
       direction,
@@ -114,7 +109,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
       nextDate &&
       weeks.slice(1, weeks.length - 1).some((week: DayInfo[]) => {
         return week.some((dayToCompare: DayInfo) => {
-          return compareDates(dayToCompare.originalDate, nextDate!, dateAdapter);
+          return compareDatePart(dayToCompare.originalDate, nextDate!) === 0;
         });
       });
     if (isInCurrentView) {
@@ -190,7 +185,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
   };
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.key === Enter) {
+    if (ev.key === Enter && day.isInBounds) {
       /*
        * `day.onSelected` is the grid's own handler, so Enter resolves the same date range and
        * navigation as a click does.
@@ -201,11 +196,11 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
     }
   };
 
-  const formattedDate = formatDateTime(day.originalDate, 'dayMonthYear');
+  const formattedDate = formatters.dateTime({ date: day.originalDate, format: 'dayMonthYear' });
   let ariaLabel = formattedDate;
 
   if (day.isMarked) {
-    ariaLabel = formatLabel('dayMarked', { date: day.originalDate, formattedDate });
+    ariaLabel = formatters.dayMarkedLabel({ date: day.originalDate, formattedDate });
   }
 
   const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
@@ -273,7 +268,7 @@ export const useCalendarDayGridCell_unstable = (props: CalendarDayGridCellProps)
       elementType: 'button',
     }),
     dayLabel: slot.always(props.dayLabel, {
-      defaultProps: { children: formatDateTime(day.originalDate, 'day') },
+      defaultProps: { children: formatters.dateTime({ date: day.originalDate, format: 'day' }) },
       elementType: 'span',
     }),
     marker: slot.optional(props.marker, {

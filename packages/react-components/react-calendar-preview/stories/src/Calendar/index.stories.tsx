@@ -4,7 +4,6 @@ import descriptionMd from './CalendarDescription.md';
 import bestPracticesMd from './CalendarBestPractices.md';
 
 export { Default } from './CalendarDefault.stories';
-export { CalendarMonthOnly } from './CalendarMonthOnly.stories';
 export { CalendarOverlaidMonth } from './CalendarOverlaidMonthPicker.stories';
 export { CalendarDateBoundaries } from './CalendarDateBoundaries.stories';
 export { CalendarSixWeeks } from './CalendarSixWeeks.stories';

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { compareDates, DAYS_IN_WEEK, getDayGrid } from '../utils/index';
+import { compareDatePart, DAYS_IN_WEEK, getDayGrid } from '../utils/index';
 import type { Day, DayGridOptions } from '../utils';
 
 /**
@@ -51,8 +51,7 @@ export function useWeeks(
           onSelected: ev => onSelectDate(ev, day.originalDate),
           setRef: getSetRefCallback(day.key),
           ...day,
-          isMarked:
-            day.isMarked || markedDays?.some(markedDay => compareDates(day.originalDate, markedDay, props.dateAdapter)),
+          isMarked: day.isMarked || markedDays?.some(markedDay => compareDatePart(day.originalDate, markedDay) === 0),
         };
 
         week.push(dayInfo);

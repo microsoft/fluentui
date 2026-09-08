@@ -6,7 +6,6 @@ import type { DirectionalSlideParams } from '../../utils/calendarMotions';
 /**
  * Defines the CalendarMonthGridRowSlots contract.
  */
-
 export type CalendarMonthGridRowSlots = {
   /**
    * The `role="row"` element holding one row of month cells.
@@ -20,10 +19,11 @@ export type CalendarMonthGridRowSlots = {
   motion?: Slot<MotionSlotProps<DirectionalSlideParams>>;
 };
 
+export type CalendarMonthGridRowBaseSlots = Omit<CalendarMonthGridRowSlots, 'motion'>;
+
 /**
  * Defines the CalendarMonthGridRowProps contract.
  */
-
 export type CalendarMonthGridRowProps = ComponentProps<Partial<CalendarMonthGridRowSlots>> & {
   /**
    * Index of the row within the month grid. Everything else is read from the CalendarMonth context.
@@ -31,13 +31,18 @@ export type CalendarMonthGridRowProps = ComponentProps<Partial<CalendarMonthGrid
   rowIndex: number;
 };
 
+export type CalendarMonthGridRowBaseProps = ComponentProps<Partial<CalendarMonthGridRowBaseSlots>> &
+  Pick<CalendarMonthGridRowProps, 'rowIndex'>;
+
 /**
  * Defines the CalendarMonthGridRowState contract.
  */
-
 export type CalendarMonthGridRowState = ComponentState<CalendarMonthGridRowSlots> & {
   /**
    * The month cells in this row.
    */
   cells: CalendarMonthCell[];
 };
+
+export type CalendarMonthGridRowBaseState = ComponentState<CalendarMonthGridRowBaseSlots> &
+  Pick<CalendarMonthGridRowState, 'cells'>;

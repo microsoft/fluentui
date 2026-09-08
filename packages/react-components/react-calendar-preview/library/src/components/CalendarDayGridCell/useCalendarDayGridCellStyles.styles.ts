@@ -9,7 +9,6 @@ import type { CalendarDayGridCellState, CalendarDayGridCellSlots } from './Calen
 /**
  * Class names for calendarDayGridCell slots.
  */
-
 export const calendarDayGridCellClassNames: SlotClassNames<CalendarDayGridCellSlots> = {
   root: 'fui-CalendarDayGridCell',
   button: 'fui-CalendarDayGridCell__button',
@@ -257,8 +256,6 @@ const useCornerBorderAndRadiusStyles = makeStyles({
  * Apply styling to the CalendarDayGridCell slots based on the state.
  */
 export const useCalendarDayGridCellStyles_unstable = (state: CalendarDayGridCellState): CalendarDayGridCellState => {
-  'use no memo'; // justified: compiler would optimize useCalendarDayGridCellStyles_unstable — manual opt-out to preserve runtime behavior
-
   const baseStyles = useCalendarDayGridCellBaseStyles();
   const selectedStyles = useSelectedStyles();
   const singleSelectedStyles = useSingleSelectedStyles();
@@ -310,6 +307,5 @@ export const useCalendarDayGridCellStyles_unstable = (state: CalendarDayGridCell
     );
   }
   /* eslint-enable react-hooks/immutability */
-
   return state;
 };

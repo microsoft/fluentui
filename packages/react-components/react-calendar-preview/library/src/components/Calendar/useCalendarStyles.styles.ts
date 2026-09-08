@@ -115,8 +115,6 @@ const useLiveRegionStyles = makeStyles({
  * Apply styling to the Calendar slots based on the state.
  */
 export const useCalendarStyles_unstable = (state: CalendarState): CalendarState => {
-  'use no memo'; // justified: compiler would optimize useCalendarStyles_unstable — manual opt-out to preserve runtime behavior
-
   const rootStyles = useRootStyles();
   const dividerStyles = useDividerStyles();
   const monthPickerWrapperStyles = useMonthPickerWrapperStyles();
@@ -171,6 +169,5 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
   state.monthPicker.className = mergeClasses(calendarClassNames.monthPicker, state.monthPicker.className);
 
   /* eslint-enable react-hooks/immutability */
-
   return state;
 };

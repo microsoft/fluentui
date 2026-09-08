@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Calendar, addDays, getDateRangeArray } from '@fluentui/react-calendar-preview';
+import { Calendar, addDays, getDateRange } from '@fluentui/react-calendar-preview';
 import type { CalendarProps } from '@fluentui/react-calendar-preview';
 import { Button, makeStyles } from '@fluentui/react-components';
 
@@ -23,7 +23,7 @@ export const CalendarMonthSelection = (): JSXElement => {
   const goPrevious = React.useCallback((): void => {
     setSelectedDate(prevSelectedDate => {
       prevSelectedDate = prevSelectedDate || new Date();
-      const dateRangeArray = getDateRangeArray(prevSelectedDate, dateRangeType, firstDayOfWeek);
+      const dateRangeArray = getDateRange(prevSelectedDate, dateRangeType, firstDayOfWeek);
 
       const subtractFrom = new Date(dateRangeArray[0].getFullYear(), dateRangeArray[0].getMonth(), 1);
       const daysToSubtract = 1;
@@ -35,7 +35,7 @@ export const CalendarMonthSelection = (): JSXElement => {
   const goNext = React.useCallback((): void => {
     setSelectedDate(prevSelectedDate => {
       prevSelectedDate = prevSelectedDate || new Date();
-      const dateRangeArray = getDateRangeArray(prevSelectedDate, dateRangeType, firstDayOfWeek);
+      const dateRangeArray = getDateRange(prevSelectedDate, dateRangeType, firstDayOfWeek);
       return addDays(dateRangeArray.pop()!, 1);
     });
   }, []);
