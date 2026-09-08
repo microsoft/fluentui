@@ -27,6 +27,11 @@ export type CalendarDayContextValue = {
    */
   daysToSelectInDayView?: number;
 
+  /**
+   * The available date that receives focus when focus is restored to the grid.
+   */
+  focusTargetDate?: Date;
+
   /** Custom props for each visible date cell. */
   getDayCellProps?: CalendarDayProps['getDayCellProps'];
 

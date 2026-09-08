@@ -256,6 +256,32 @@ describe('CalendarDay', () => {
     expect(findDayCellByLabel(container, 17, 'September', 2020)).toHaveAttribute('tabindex', '0');
   });
 
+  it('focuses an available day in the displayed month when the navigated day is restricted', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const restrictedDate = new Date(2020, 8, 18);
+    const { container, getByText } = render(<CalendarDay {...defaultProps} ref={ref} />, {
+      restrictedDates: [restrictedDate],
+    });
+
+    ref.current!.focus();
+
+    expect(getByText('September 2020')).toBeTruthy();
+    expect(document.activeElement).toHaveAttribute('role', 'gridcell');
+    expect(document.activeElement).toHaveAttribute('tabindex', '0');
+    expect(document.activeElement).not.toHaveAttribute('aria-disabled', 'true');
+    expect(document.activeElement).not.toBe(findDayCellByLabel(container, 18, 'September', 2020));
+  });
+
+  it('searches backward within the displayed month when no later day is available', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const restrictedDates = Array.from({ length: 13 }, (_, index) => new Date(2020, 8, 18 + index));
+    const { container } = render(<CalendarDay {...defaultProps} ref={ref} />, { restrictedDates });
+
+    ref.current!.focus();
+
+    expect(document.activeElement).toBe(findDayCellByLabel(container, 17, 'September', 2020));
+  });
+
   it('does not select a restricted day with Enter when disabled days are focusable', () => {
     const setValue = jest.fn();
     const onNavigateDate = jest.fn();

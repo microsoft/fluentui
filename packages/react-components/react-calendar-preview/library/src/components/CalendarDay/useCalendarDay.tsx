@@ -6,8 +6,10 @@ import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/reac
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
 import {
+  addDays,
   addMonths,
   compareDatePart,
+  findAvailableDate,
   getBoundedDateRange,
   getDateRange,
   getMonthEnd,
@@ -152,6 +154,24 @@ export const useCalendarDayBase_unstable = (
 
   const weeks = useWeeks(gridOptions, onSelectDate, getSetRefCallback);
 
+  const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
+  let focusTargetDate: Date | undefined = navigatedDate;
+  if (isRestrictedDate(navigatedDate, restrictedDatesOptions)) {
+    focusTargetDate = findAvailableDate({
+      ...restrictedDatesOptions,
+      initialDate: addDays(getMonthEnd(navigatedDate), 1),
+      targetDate: navigatedDate,
+      direction: 1,
+    });
+
+    focusTargetDate ??= findAvailableDate({
+      ...restrictedDatesOptions,
+      initialDate: addDays(getMonthStart(navigatedDate), -1),
+      targetDate: navigatedDate,
+      direction: -1,
+    });
+  }
+
   const [getWeekCorners, calculateRoundedCorners] = useWeekCorners(gridOptions);
 
   /**
@@ -220,6 +240,7 @@ export const useCalendarDayBase_unstable = (
     activeDescendantId,
     calculateRoundedCorners,
     daysToSelectInDayView,
+    focusTargetDate,
     getDayCellProps,
     getDayInfosInRangeOfDay,
     getRefsFromDayInfos,
