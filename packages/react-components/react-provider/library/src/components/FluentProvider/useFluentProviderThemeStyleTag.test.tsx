@@ -71,6 +71,27 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
+  it('should omit invalid theme entries without affecting valid CSS variables', () => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const theme = {
+      invalidToken: 'url(resource/*);token/**/)',
+      validToken: 'green',
+    } as unknown as Theme;
+
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+    const sheet = tag.sheet as CSSStyleSheet;
+    const rule = sheet.cssRules[0] as CSSStyleRule;
+
+    expect(rule.style.getPropertyValue('--invalidToken')).toBe('');
+    expect(rule.style.getPropertyValue('--validToken')).toBe('green');
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--validToken: green;}"`);
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"invalidToken"'));
+  });
+
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;

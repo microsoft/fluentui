@@ -4,6 +4,9 @@ It's often useful for an app to extend the base set of tokens from Fluent UI.
 
 ⚠ Warning that adding more tokens adds more CSS variables which can effect run time performance as each DOM Node carries all the tokens.
 
+Theme names and values are developer-authored CSS. Validate dynamic data against an application-specific schema before
+using it to construct or extend a theme.
+
 ```tsx
 import { makeStyles, themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
 

@@ -76,4 +76,29 @@ describe('FluentProvider (node)', () => {
       </div>"
     `);
   });
+
+  it('omits invalid theme entries from the server style element', () => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const theme = {
+      invalidToken: 'url(resource/*);token/**/)',
+      validToken: 'green',
+    } as unknown as PartialTheme;
+
+    const html = renderToStaticMarkup(<FluentProvider theme={theme} />);
+
+    expect(parseHTMLString(html)).toMatchInlineSnapshot(`
+      "<div
+        dir="ltr"
+        class="fui-FluentProvider fui-FluentProvider1"
+      >
+        <style id="fui-FluentProvider1">
+          .fui-FluentProvider1 {
+            --validToken: green;
+          }
+        </style>
+      </div>"
+    `);
+    expect(html.match(/<style/g)).toHaveLength(1);
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"invalidToken"'));
+  });
 });
