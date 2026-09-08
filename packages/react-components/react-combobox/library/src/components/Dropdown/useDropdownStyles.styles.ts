@@ -259,8 +259,6 @@ const useBaseClearButtonStyle = makeResetStyles({
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  'use no memo';
-
   const { appearance, open, placeholderVisible, showClearButton, size } = state;
   const invalid = `${state.button['aria-invalid']}` === 'true';
   const disabled = state.button.disabled;
@@ -268,6 +266,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   const iconStyles = useIconStyles();
   const clearButtonStyle = useBaseClearButtonStyle();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dropdownClassNames.root,
     styles.root,
@@ -279,6 +278,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.button.className = mergeClasses(
     dropdownClassNames.button,
     styles.button,
@@ -289,6 +289,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   );
 
   if (state.listbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.listbox.className = mergeClasses(
       dropdownClassNames.listbox,
       styles.listbox,
@@ -299,6 +300,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       dropdownClassNames.expandIcon,
       iconStyles.icon,
@@ -310,6 +312,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   }
 
   if (state.clearButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.clearButton.className = mergeClasses(
       dropdownClassNames.clearButton,
       clearButtonStyle,

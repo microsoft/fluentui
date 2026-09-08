@@ -59,9 +59,9 @@ describe('react-library generator', () => {
         "README.md",
         "config",
         "docs",
-        "eslint.config.js",
+        "eslint.config.cjs",
         "etc",
-        "jest.config.js",
+        "jest.config.cjs",
         "package.json",
         "src",
         "tsconfig.json",
@@ -72,7 +72,7 @@ describe('react-library generator', () => {
     expect(tree.children(joinPathFragments(library.root, 'docs'))).toEqual(['Spec.md']);
     expect(tree.children(joinPathFragments(library.root, 'src'))).toEqual(['index.ts', 'testing']);
     expect(tree.exists(joinPathFragments(library.root, 'src', 'testing', 'isConformant.ts'))).toEqual(true);
-    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.js']);
+    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.cjs']);
     expect(tree.children(joinPathFragments(library.root, 'etc'))).toEqual(['react-one-preview.api.md']);
 
     expect(library).toMatchInlineSnapshot(`
@@ -103,7 +103,7 @@ describe('react-library generator', () => {
         name: '@proj/react-one-preview',
         private: true,
         version: '0.0.0',
-        files: ['*.md', 'dist/*.d.ts', 'lib', 'lib-commonjs'],
+        files: ['*.md', 'dist/*.d.ts', 'dist/*.d.cts', 'lib', 'lib-commonjs'],
         dependencies: {
           '@proj/react-jsx-runtime': '^9.0.0',
           '@proj/react-shared-contexts': '^9.0.0',
@@ -155,7 +155,7 @@ describe('react-library generator', () => {
       expect.objectContaining({ extends: '../../../../.babelrc-v9.json' }),
     );
 
-    const jestConfig = tree.read(`${library.root}/jest.config.js`, 'utf-8');
+    const jestConfig = tree.read(`${library.root}/jest.config.cjs`, 'utf-8');
     expect(jestConfig).toEqual(expect.stringContaining(`displayName: 'react-one-preview',`));
     expect(jestConfig).toEqual(expect.stringContaining(`'^.+\\\\.tsx?$': ['@swc/jest', swcJestConfig],`));
     expect(tree.read(`${library.root}/README.md`, 'utf-8')).toEqual(
@@ -260,9 +260,9 @@ describe('react-library generator', () => {
         "README.md",
         "config",
         "docs",
-        "eslint.config.js",
+        "eslint.config.cjs",
         "etc",
-        "jest.config.js",
+        "jest.config.cjs",
         "package.json",
         "src",
         "tsconfig.json",

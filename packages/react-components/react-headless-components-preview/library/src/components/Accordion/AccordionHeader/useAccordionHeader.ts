@@ -1,27 +1,24 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useAccordionHeaderBase_unstable,
-  useAccordionHeaderContext_unstable,
-  useAccordionHeaderContextValues_unstable,
-} from '@fluentui/react-accordion';
+import { useAccordionHeaderBase_unstable, useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderContextValues } from './AccordionHeader.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AccordionHeader component, given its props and ref.
  * The returned state can be modified with hooks before being passed to `renderAccordionHeader`.
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
-  'use no memo';
-
   const state: AccordionHeaderState = useAccordionHeaderBase_unstable(props, ref);
 
   // Set data attributes for open, disabled, and expand icon position states to simplify styling.
-  state.root['data-open'] = stringifyDataAttribute(state.open);
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-open'] = toDataAttributeValue(state.open);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-expand-icon-position'] = state.expandIconPosition;
 
   return state;
@@ -30,7 +27,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
 /**
  * Returns the context values provided by the nearest AccordionHeader, enabling child components to read header-level state.
  */
-export const useAccordionHeaderContext = useAccordionHeaderContext_unstable;
+export { useAccordionHeaderContext_unstable as useAccordionHeaderContext } from '@fluentui/react-accordion';
 
 /**
  * Maps AccordionHeader state to the context values passed down to child components.

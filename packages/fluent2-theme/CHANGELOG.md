@@ -1,8 +1,27 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Thu, 26 Feb 2026 18:07:05 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2026 09:55:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.154](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.154)
+
+Thu, 02 Jul 2026 09:55:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.153..@fluentui/fluent2-theme_v8.107.154)
+
+### Patches
+
+- fix: fluent2-theme PrimaryButton high contrast focus style ([PR #36354](https://github.com/microsoft/fluentui/pull/36354) by sarah.higley@microsoft.com)
+- Bump @fluentui/react to v8.125.7 ([commit](https://github.com/microsoft/fluentui/commit/e287a20abcf5146c41ae0a6243c04358fddca40c) by beachball)
+
+## [8.107.153](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.153)
+
+Mon, 11 May 2026 10:02:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.152..@fluentui/fluent2-theme_v8.107.153)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.6 ([commit](https://github.com/microsoft/fluentui/commit/04bf7a7dd2b5c8f6963d3bf63187017e96c57a10) by beachball)
 
 ## [8.107.152](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.152)
 

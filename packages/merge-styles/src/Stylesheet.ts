@@ -168,6 +168,7 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: (Function | InsertRuleCallback)[] = [];
   private _onResetCallbacks: Function[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
@@ -210,6 +211,10 @@ export class Stylesheet {
 
   /**
    * Serializes the Stylesheet instance into a format which allows rehydration on creation.
+   *
+   * `<` is emitted as the `\u003C` JSON escape so the result can be safely embedded in an inline
+   * `<script>` element without terminating it. `JSON.parse` round-trips to an identical object.
+   *
    * @returns string representation of `ISerializedStylesheet` interface.
    */
   public serialize(): string {
@@ -219,7 +224,7 @@ export class Stylesheet {
       keyToClassName: this._keyToClassName,
       preservedRules: this._preservedRules,
       rules: this._rules,
-    });
+    }).replace(/</g, '\\u003C');
   }
 
   /**
@@ -321,7 +326,14 @@ export class Stylesheet {
 
   /**
    * Inserts a css rule into the stylesheet.
-   * @param preserve - Preserves the rule beyond a reset boundary.
+   *
+   * The rule is inserted verbatim - no escaping is performed, because a rule includes its selector
+   * and selectors legitimately contain characters such as `>`. Callers passing untrusted data are
+   * responsible for validating it before it reaches this method.
+   *
+   * @param preserve - Preserves the rule beyond a reset boundary. Note that {@link Stylesheet.reset}
+   * intentionally does not clear preserved rules, so a preserved rule is re-emitted by every
+   * subsequent {@link Stylesheet.getRules} call in the same process.
    */
   public insertRule(rule: string, preserve?: boolean, stylesheetKey: string = GLOBAL_STYLESHEET_KEY): void {
     const { injectionMode } = this._config;
@@ -361,6 +373,10 @@ export class Stylesheet {
   /**
    * Gets all rules registered with the stylesheet; only valid when
    * using InsertionMode.none.
+   *
+   * The return value is raw CSS text intended for a `<style>` element. Values that went through
+   * `mergeStyles`, `fontFace` or `keyframes` have `<` and `>` escaped as CSS code points so they
+   * cannot terminate that element, but rules added via {@link Stylesheet.insertRule} are unescaped.
    */
   public getRules(includePreservedRules?: boolean): string {
     return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('');
@@ -369,6 +385,9 @@ export class Stylesheet {
   /**
    * Resets the internal state of the stylesheet. Only used in server
    * rendered scenarios where we're using InsertionMode.none.
+   *
+   * Rules registered with `preserve` (via `fontFace` and `keyframes`) are intentionally retained,
+   * so they survive into every later render served by the same process.
    */
   public reset(): void {
     this._rules = [];

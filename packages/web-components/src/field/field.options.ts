@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
@@ -47,3 +48,10 @@ export const ValidationFlags = {
 
 /** @public */
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
+
+/**
+ * The tag name for the field element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-field` as const;

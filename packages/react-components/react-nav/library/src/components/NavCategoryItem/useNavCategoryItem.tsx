@@ -5,7 +5,12 @@ import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from
 import { ChevronDown20Regular } from '@fluentui/react-icons';
 import { createPresenceComponentVariant, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 
-import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import type {
+  NavCategoryItemBaseProps,
+  NavCategoryItemBaseState,
+  NavCategoryItemProps,
+  NavCategoryItemState,
+} from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
 import { Rotate } from '@fluentui/react-motion-components-preview';
@@ -31,11 +36,49 @@ export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
+  const { density = 'medium' } = useNavContext_unstable();
+
+  const state = useNavCategoryItemBase_unstable(props, ref);
+
+  return {
+    ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      expandIconMotion: ExpandIconMotion,
+    },
+    expandIcon: slot.always(props.expandIcon, {
+      defaultProps: {
+        children: <ChevronDown20Regular />,
+        'aria-hidden': true,
+      },
+      elementType: 'span',
+    }),
+    expandIconMotion: presenceMotionSlot(props.expandIconMotion, {
+      elementType: ExpandIconMotion,
+      defaultProps: {
+        visible: state.open,
+      },
+    }),
+    density,
+  };
+};
+
+/**
+ * Create the base state required to render NavCategoryItem.
+ *
+ * @param props - props from this instance of NavCategoryItem
+ * @param ref - reference to root HTMLButtonElement of NavCategoryItem
+ */
+export const useNavCategoryItemBase_unstable = (
+  props: NavCategoryItemBaseProps,
+  ref: React.Ref<HTMLButtonElement>,
+): NavCategoryItemBaseState => {
   const { onClick, expandIcon, icon } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
-  const { onRequestNavCategoryItemToggle, selectedCategoryValue, density = 'medium' } = useNavContext_unstable();
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event =>
@@ -56,7 +99,6 @@ export const useNavCategoryItem_unstable = (
       root: 'button',
       icon: 'span',
       expandIcon: 'span',
-      expandIconMotion: ExpandIconMotion,
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -70,20 +112,12 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronDown20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
     }),
-    expandIconMotion: presenceMotionSlot(props.expandIconMotion, {
-      elementType: ExpandIconMotion,
-      defaultProps: {
-        visible: open,
-      },
-    }),
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    density,
   };
 };

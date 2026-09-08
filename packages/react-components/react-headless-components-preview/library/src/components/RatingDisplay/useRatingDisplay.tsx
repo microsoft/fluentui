@@ -11,8 +11,6 @@ import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.typ
  * The returned state can be modified with hooks before being passed to `renderRatingDisplay`.
  */
 export const useRatingDisplay = (props: RatingDisplayProps, ref: React.Ref<HTMLDivElement>): RatingDisplayState => {
-  'use no memo';
-
   const state = useRatingDisplayBase_unstable(
     {
       icon: 'span',

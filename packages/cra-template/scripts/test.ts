@@ -80,7 +80,7 @@ async function runE2ETest() {
   const templatePath = await prepareTemplate(logger, tempPaths);
 
   logger('STEP 2. Create test React app from template');
-  await prepareCreateReactApp(tempPaths, `file:${templatePath}`);
+  await prepareCreateReactApp(tempPaths, `@fluentui/cra-template@file:${templatePath}`);
   await shEcho('yarn add cross-env', tempPaths.testApp);
   logger(`✔️ Test React app is successfully created: ${tempPaths.testApp}`);
 

@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
@@ -280,38 +280,38 @@ export const baseButtonStyles = css`
 export const styles = css`
   ${baseButtonStyles}
 
-  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])),
-  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable]):hover),
-  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable]):hover:active) {
+  :host(:is(:disabled, [disabled], [disabled-focusable], [appearance]:disabled, [appearance][disabled], [appearance][disabled-focusable])),
+  :host(:is(:disabled, [disabled], [disabled-focusable], [appearance]:disabled, [appearance][disabled], [appearance][disabled-focusable]):hover),
+  :host(:is(:disabled, [disabled], [disabled-focusable], [appearance]:disabled, [appearance][disabled], [appearance][disabled-focusable]):hover:active) {
     background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
 
-  :host([appearance='primary']:is(:disabled, [disabled-focusable])),
-  :host([appearance='primary']:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
+  :host([appearance='primary']:is(:disabled, [disabled], [disabled-focusable])),
+  :host([appearance='primary']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active)) {
     border-color: transparent;
   }
 
-  :host([appearance='outline']:is(:disabled, [disabled-focusable])),
-  :host([appearance='outline']:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
+  :host([appearance='outline']:is(:disabled, [disabled], [disabled-focusable])),
+  :host([appearance='outline']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active)) {
     background-color: ${colorTransparentBackground};
   }
 
-  :host([appearance='subtle']:is(:disabled, [disabled-focusable])),
-  :host([appearance='subtle']:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
+  :host([appearance='subtle']:is(:disabled, [disabled], [disabled-focusable])),
+  :host([appearance='subtle']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active)) {
     background-color: ${colorTransparentBackground};
     border-color: transparent;
   }
 
-  :host([appearance='transparent']:is(:disabled, [disabled-focusable])),
-  :host([appearance='transparent']:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
+  :host([appearance='transparent']:is(:disabled, [disabled], [disabled-focusable])),
+  :host([appearance='transparent']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active)) {
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       background-color: ButtonFace;
       color: ButtonText;
@@ -327,10 +327,19 @@ export const styles = css`
       forced-color-adjust: none;
     }
 
-    :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])) {
+    :host(
+        :is(
+            :disabled,
+            [disabled],
+            [disabled-focusable],
+            [appearance]:disabled,
+            [appearance][disabled],
+            [appearance][disabled-focusable]
+          )
+      ) {
       background-color: ButtonFace;
       color: GrayText;
       border-color: ButtonText;
     }
-  `),
-);
+  }
+`;

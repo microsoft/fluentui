@@ -75,7 +75,7 @@ export async function compileSwc(
   }
 }
 
-type Transform = (filePath: string) => Promise<void>;
+export type Transform = (filePath: string) => Promise<void>;
 async function applyTransforms(filePath: string, transforms?: Array<Transform>): Promise<void> {
   if (!transforms || !Array.isArray(transforms) || transforms.length === 0) {
     return;

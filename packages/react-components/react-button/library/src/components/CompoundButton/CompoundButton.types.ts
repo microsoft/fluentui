@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonBaseProps, ButtonBaseState, ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type CompoundButtonSlots = ButtonSlots & {
   /**
@@ -13,8 +13,12 @@ export type CompoundButtonSlots = ButtonSlots & {
   contentContainer: NonNullable<Slot<'span'>>;
 };
 
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> &
-  Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
+export type CompoundButtonBaseProps = ComponentProps<Partial<CompoundButtonSlots>> &
+  Pick<ButtonBaseProps, 'disabledFocusable' | 'disabled' | 'iconPosition'>;
 
-export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
-  Omit<ButtonState, keyof ButtonSlots | 'components'>;
+export type CompoundButtonProps = CompoundButtonBaseProps & Pick<ButtonProps, 'appearance' | 'shape' | 'size'>;
+
+export type CompoundButtonBaseState = ComponentState<CompoundButtonSlots> &
+  Omit<ButtonBaseState, keyof ButtonSlots | 'components'>;
+
+export type CompoundButtonState = CompoundButtonBaseState & Pick<ButtonState, 'appearance' | 'shape' | 'size'>;

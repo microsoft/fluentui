@@ -16,8 +16,6 @@ const menuItemRoleToNameMapping = {
 };
 
 export const useValidateNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement | null> => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const triggerRef = useMenuContext_unstable((context: MenuContextValue) => context.triggerRef);
   const inline = useMenuContext_unstable((context: MenuContextValue) => context.inline);

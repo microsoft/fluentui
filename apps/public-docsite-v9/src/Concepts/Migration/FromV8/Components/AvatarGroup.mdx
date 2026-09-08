@@ -4,6 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # AvatarGroup Migration
 
+## Overview
+
 Fluent UI v8 provides the `Facepile` control to allow users to display a list of `Personas`. Fluent UI v9 provides an `AvatarGroup` control, but has a different API.
 
 Some key differences between `Facepile` and `AvatarGroup` are:
@@ -13,7 +15,11 @@ Some key differences between `Facepile` and `AvatarGroup` are:
   - `AvatarGroupPopover`: subcomponent in charge of rendering the overflow indicator button and rendering the `Popover` containing the overflowing `AvatarGroupItems`.
   - `AvatarGroupItem`: used instead of `Personas` and provides internal functionality for `AvatarGroup`.
 
-v9 also provides a function `partitionAvatarGroupItems` that will split the items provided with the right behavior based on the layout provided. It is highly encouraged to use this function as each layout has a specific way of arranging the items.
+v9 also provides `partitionAvatarGroupItems` for layout-driven partitioning.
+Its overflow-slot and item-order behavior does not preserve v8
+`maxDisplayablePersonas`; use the manual strategy in
+[Preserve `maxDisplayablePersonas`](#preserve-maxdisplayablepersonas) when that
+contract matters.
 
 ## Examples
 
@@ -24,7 +30,7 @@ Basic usage of `FacePile` in v8
 ```tsx
 import React from 'react';
 import { facepilePersonas } from '@fluentui/example-data';
-import { Facepile, IFacepilePersona } from '@fluentui/react/lib/Facepile';
+import { Facepile, IFacepilePersona, OverflowButtonType } from '@fluentui/react/lib/Facepile';
 import { PersonaSize } from '@fluentui/react/lib/Persona';
 
 const AvatarGroupV8BasicExample = () => {
@@ -33,7 +39,15 @@ const AvatarGroupV8BasicExample = () => {
   const personas: IFacepilePersona[] = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);
   const overflowPersonas = React.useMemo(() => facepilePersonas.slice(numberOfFaces), [numberOfFaces]);
 
-  return <Facepile personaSize={PersonaSize.size32} personas={personas} overflowPersonas={overflowPersonas} />;
+  return (
+    <Facepile
+      personaSize={PersonaSize.size32}
+      personas={personas}
+      overflowPersonas={overflowPersonas}
+      overflowButtonProps={{ ariaLabel: 'More people' }}
+      overflowButtonType={OverflowButtonType.descriptive}
+    />
+  );
 };
 ```
 
@@ -58,41 +72,118 @@ const names = [
 ];
 
 const AvatarGroupV9BasicExample = () => {
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
+  const inlineItems = names.slice(0, 3);
+  const overflowItems = names.slice(3);
 
   return (
-    <AvatarGroup {...props}>
+    <AvatarGroup size={32}>
       {inlineItems.map(name => (
         <AvatarGroupItem name={name} key={name} />
       ))}
-      <AvatarGroupPopover>
-        {overflowItems.map(name => (
-          <AvatarGroupItem name={name} key={name} />
-        ))}
-      </AvatarGroupPopover>
+      {overflowItems.length > 0 && (
+        <AvatarGroupPopover
+          triggerButton={{ 'aria-label': 'More people' }}
+          tooltip={{ content: overflowItems.join(', '), relationship: 'description' }}
+        >
+          {overflowItems.map(name => (
+            <AvatarGroupItem name={name} key={name} />
+          ))}
+        </AvatarGroupPopover>
+      )}
     </AvatarGroup>
   );
 };
 ```
 
-## Props Mapping
+### Preserve `maxDisplayablePersonas`
+
+`partitionAvatarGroupItems` is not a direct numeric replacement for v8
+`maxDisplayablePersonas`. For spread and stack layouts, `maxInlineItems`
+includes the overflow indicator slot and the helper keeps the last inline
+items. v8 keeps the first `maxDisplayablePersonas` people visible and renders
+the overflow button in addition to them.
+
+Partition manually when preserving that v8 contract and no explicit
+`overflowPersonas` array was supplied. When v8 supplied `overflowPersonas`, all
+entries in `personas` render inline, `maxDisplayablePersonas` is ignored, and
+the supplied `overflowPersonas` become the popover children.
+
+```tsx
+function MigratedFacepile({
+  people,
+  maxDisplayablePersonas,
+  showOverflowButton,
+  isDescriptiveOverflow,
+  overflowAriaLabel,
+  overflowTooltip,
+}: MigratedFacepileProps) {
+  const inlineItems = people.slice(0, maxDisplayablePersonas);
+  const overflowItems = people.slice(maxDisplayablePersonas);
+  const overflowNames = overflowItems.map(person => person.name).join(', ');
+
+  return (
+    <AvatarGroup size={32}>
+      {inlineItems.map(person => (
+        <AvatarGroupItem key={person.id} name={person.name} initials={person.initials} title={person.name} />
+      ))}
+      {showOverflowButton && overflowItems.length > 0 && (
+        <AvatarGroupPopover
+          indicator="count"
+          triggerButton={{ 'aria-label': overflowAriaLabel }}
+          tooltip={
+            overflowTooltip || isDescriptiveOverflow
+              ? { content: overflowTooltip ?? overflowNames, relationship: 'description' }
+              : undefined
+          }
+        >
+          {overflowItems.map(person => (
+            <AvatarGroupItem key={person.id} name={person.name} initials={person.initials} title={person.name} />
+          ))}
+        </AvatarGroupPopover>
+      )}
+    </AvatarGroup>
+  );
+}
+```
+
+The `title` preserves v8 Facepile's default native name tooltip
+(`showTooltip={true}`). Omit it when v8 `showTooltip={false}`, or wrap the item
+in a v9 `Tooltip` when a richer tooltip is required.
+
+Set `showOverflowButton` only when the v8 Facepile supplied
+`overflowButtonProps` (or deprecated `chevronButtonProps`) and set
+`overflowButtonType` to a value other than `OverflowButtonType.none`. Without
+both, v8 does not render an overflow control, even when overflow personas exist.
+The `descriptive` type also suppresses its button when there are no overflow
+personas.
+
+Preserve the overflow button's accessible name and visible tooltip separately.
+Pass v8 `overflowButtonProps.ariaLabel` to the popover's `triggerButton` slot.
+Pass `overflowButtonProps.title`, when supplied, as a descriptive tooltip;
+otherwise v8's descriptive button defaults the tooltip to the comma-separated
+overflow persona names. Do not synthesize that default for the `more` or
+`downArrow` types. `AvatarGroupPopover` is a compound component whose root is a
+`Popover`, so placing `aria-label` directly on `AvatarGroupPopover` does not
+label its trigger button.
+
+## Prop Mapping
 
 This table maps `Facepile` v8 props to the v9's `AvatarGroup` equivalent.
 
-| v8 \`Facepile\`            | v9 \`AvatarGroup\`                                             |
-| -------------------------- | -------------------------------------------------------------- |
-| \`personas\`               | \`children\`                                                   |
-| \`addButtonProps\`         | \-                                                             |
-| \`className\`              | \`className\`                                                  |
-| \`getPersonaProps\`        | \`AvatarGroupItem\`'s props                                    |
-| \`maxDisplayablePersonas\` | \`maxAvatars\` option in \`partitionAvatarGroupItems\`         |
-| \`onRenderPersona\`        | Render function for the \`AvatarGroupItem\`                    |
-| \`onRenderPersonaCoin\`    | Render function for the \`avatar\` slot in \`AvatarGroupItem\` |
-| \`onRenderPersonaWrapper\` | \-                                                             |
-| \`overflowButtonProps\`    | \`AvatarGroupPopover\`'s props                                 |
-| \`overflowButtonType\`     | \`AvatarGroupPopover\`'s \`indicator\` prop                    |
-| \`overflowPersonas\`       | \`AvatarGroupPopover\`'s children                              |
-| \`personaSize\`            | \`size\`                                                       |
-| \`showAddButton\`          | \-                                                             |
-| \`showTooltip\`            | \-                                                             |
-| \`styles\`                 | (theme)                                                        |
+| v8 `Facepile`            | v9 `AvatarGroup`                                           |
+| ------------------------ | ---------------------------------------------------------- |
+| `personas`               | `children`                                                 |
+| `addButtonProps`         | -                                                          |
+| `className`              | `className`                                                |
+| `getPersonaProps`        | `AvatarGroupItem`'s props                                  |
+| `maxDisplayablePersonas` | Manual first-N partition unless `overflowPersonas` is set  |
+| `onRenderPersona`        | Render function for the `AvatarGroupItem`                  |
+| `onRenderPersonaCoin`    | Render function for the `avatar` slot in `AvatarGroupItem` |
+| `onRenderPersonaWrapper` | -                                                          |
+| `overflowButtonProps`    | Separate `triggerButton` accessible name and tooltip text  |
+| `overflowButtonType`     | `AvatarGroupPopover`'s `indicator` prop                    |
+| `overflowPersonas`       | Explicit popover children; keep every `persona` inline     |
+| `personaSize`            | `size`                                                     |
+| `showAddButton`          | -                                                          |
+| `showTooltip`            | `title` on each `AvatarGroupItem`, or v9 `Tooltip`         |
+| `styles`                 | (theme)                                                    |

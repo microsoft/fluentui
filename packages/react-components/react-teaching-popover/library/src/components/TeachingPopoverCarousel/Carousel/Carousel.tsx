@@ -24,8 +24,6 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => void;
   };
 } {
-  'use no memo';
-
   const { announcement, onValueChange, onFinish } = options;
 
   const { targetDocument } = useFluent();

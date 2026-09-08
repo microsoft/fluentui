@@ -156,8 +156,6 @@ const useCircleSizeStyles = makeStyles({
  * Apply styling to the SkeletonItem slots based on the state
  */
 export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): SkeletonItemState => {
-  'use no memo';
-
   const { animation, appearance, size, shape } = state;
 
   const rootStyles = useStyles();
@@ -165,6 +163,7 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   const sizeStyles = useSizeStyles();
   const circleStyles = useCircleSizeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     skeletonItemClassNames.root,
     rootStyles.root,

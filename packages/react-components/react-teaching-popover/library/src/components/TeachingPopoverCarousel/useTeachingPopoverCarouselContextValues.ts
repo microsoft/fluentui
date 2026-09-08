@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import type {
   TeachingPopoverCarouselContextValues,
   TeachingPopoverCarouselState,
@@ -8,12 +11,15 @@ export function useTeachingPopoverCarouselContextValues_unstable(
 ): TeachingPopoverCarouselContextValues {
   const { store, value, selectPageByValue, selectPageByDirection } = state;
 
-  const carousel = {
-    store,
-    value,
-    selectPageByDirection,
-    selectPageByValue,
-  };
+  const carousel = React.useMemo(
+    () => ({
+      store,
+      value,
+      selectPageByDirection,
+      selectPageByValue,
+    }),
+    [store, value, selectPageByDirection, selectPageByValue],
+  );
 
   return { carousel };
 }

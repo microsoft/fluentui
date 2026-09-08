@@ -134,7 +134,11 @@ export class Listbox extends FASTElement {
    * @internal
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.options?.filter(x => !x.disabled) ?? [];
+    return (
+      this.options?.filter(x => !x.disabled) ??
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled) ??
+      []
+    );
   }
 
   /**

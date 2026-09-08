@@ -1,4 +1,4 @@
-import { Default as Rotate } from './RotateDefault.stories';
+import { DefaultRotate as Rotate } from './Rotate.stories';
 import RotateDescription from './RotateDescription.md';
 
 export { Default } from './RotateDefault.stories';

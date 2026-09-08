@@ -9,12 +9,25 @@
 - [Current problem](#current-problem)
   - [What is _tearing_?](#what-is-_tearing_)
   - [Where we are _now_?](#where-we-are-_now_)
+    - [Behavioral benchmark](#behavioral-benchmark)
+    - [`useContextSelector()` & re-renders](#usecontextselector--re-renders)
+      - [Test results](#test-results)
+    - [`@fluentui/react-context-selector` & re-renders (we use this)](#fluentuireact-context-selector--re-renders-we-use-this)
+      - [Test results](#test-results-1)
   - [Exploration](#exploration)
+    - [Tearing issues](#tearing-issues)
   - [POC](#poc)
-- [Options](#options)
+    - [Can we avoid `useLayoutEffect`?](#can-we-avoid-uselayouteffect)
+- [Decision](#decision)
   - [Option A: Do nothing (safe)](#option-a-do-nothing-safe)
+- [Rejected options](#rejected-options)
   - [Option B: Use `useSyncExternalStore()` (probably safe)](#option-b-use-usesyncexternalstore-probably-safe)
   - [Option C: Propagate the value in render (risky)](#option-c-propagate-the-value-in-render-risky)
+- [Addendum (2026-04): Option D — Allow tearing, heal in effect](#addendum-2026-04-option-d--allow-tearing-heal-in-effect)
+  - [The underlying bug aka "glitchy behavior"](#the-underlying-bug-aka-glitchy-behavior)
+  - [Option D: Relay's `useFragmentInternal` pattern](#option-d-relays-usefragmentinternal-pattern)
+  - [What changes vs. Option A](#what-changes-vs-option-a)
+  - [New recommendation](#new-recommendation)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -513,3 +526,104 @@ function Provider() {
 ```
 
 It will function as expected in terms of behavior, but _might_ introduce additional issues with tearing.
+
+## Addendum (2026-04): Option D — Allow tearing, heal in effect
+
+The original decision "Option A: do nothing" was made when the only known alternatives were `useSyncExternalStore` (Option B) and render-phase value propagation (Option C). An offline conversation with the React team after that decision surfaced a fourth option that the original RFC did not consider.
+
+### The underlying bug aka "glitchy behavior"
+
+The "glitchy behavior" note in the original RFC "three items re-rendered instead of two" has a precise root cause. `dispatchSetStateInternal` in `ReactFiberHooks.js` gates the eager-bailout fast path on:
+
+```ts
+if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
+  // eager bailout — drop the update without scheduling a render
+}
+```
+
+> https://github.com/facebook/react/blob/1ddff43c41147b880c22eb363e07aade5a71c5d9/packages/react-reconciler/src/ReactFiberHooks.js#L3648-L3651
+
+The `fiber` passed is the fiber bound at mount via `queue.dispatch = dispatchSetState.bind(null, currentlyRenderingFiber, queue)`. After the first listener-driven render commits:
+
+1. React clones `fiberA` (mount fiber) into WIP `fiberB`; `beginWork` clears `fiberB.lanes = NoLanes`.
+2. Commit swaps: `fiberB` becomes current, `fiberA` becomes alternate.
+3. `fiberA.lanes` was never cleared — it still holds `SyncLane` from the `enqueueUpdate` that preceded the render.
+
+From that point on, every subsequent `dispatchSetState(fiberA, ...)` fails the `NoLanes` precondition. The eager path is **permanently unavailable** for that component instance. Updates are enqueued normally, schedule a render, and the reducer runs in-render only to return `prevState`. React then calls `bailoutOnAlreadyFinishedWork` — the DOM doesn't update, but the component function ran (_and causes perf issues_), which is exactly the pattern the original "glitchy behavior" log showed.
+
+This is confirmed by patching `react-dom.development.js` to log `fiber.lanes` / `alternate.lanes` at the eager-bailout check in `dispatchSetState`.
+
+> 💡A standalone reproduction running the RFC's Scenario 2 against the published `@fluentui/react-context-selector@9.2.15` is at [layershifter/context-selector-bailout-repro](https://github.com/layershifter/context-selector-bailout-repro).
+>
+> Sample output from that probe. Four memoized `ListItem` components, `activeValue` cycled through the `set-N` buttons. For each click the probe shows which components re-rendered and the eager-bailout-gate observation on each `dispatchSetState` fired during that click. `SKIPPED ✗` means the precondition `fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)` failed and the update fell through to the non-eager path:
+>
+> <details>
+> <summary>Log output</summary>
+> ```
+> == click 1 (1→2) → activeValue=2 ==
+> Component function invocations (expected 2: items 1 and 2):
+>  ListItem[1]  isActive=false
+>  ListItem[2]  isActive=true
+> dispatchSetState → eager-bailout check:
+>  App       fiber=0  alt=null  EAGER-PATH ✓
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓    ← first dispatch on a given fiber, clean
+>  ListItem  fiber=1  alt=null  SKIPPED ✗       ← sibling hook on the SAME fiber, now polluted
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+>  ListItem  fiber=1  alt=null  SKIPPED ✗
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+>  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+>
+> == click 2 (2→3) → activeValue=3 ← "three items rendered instead of two" ==
+> Component function invocations (expected 2: items 2 and 3; actual 3):
+> ListItem[1] isActive=false ← should NOT have re-rendered
+> ListItem[2] isActive=false
+> ListItem[3] isActive=true
+> dispatchSetState → eager-bailout check:
+> App fiber=0 alt=0 EAGER-PATH ✓
+> ListItem fiber=1 alt=0 SKIPPED ✗ ← items 1, 2 previously committed,
+> ListItem fiber=1 alt=1 SKIPPED ✗ fiber.lanes retained SyncLane from
+> ListItem fiber=1 alt=0 SKIPPED ✗ the prior enqueueUpdate — every
+> ListItem fiber=1 alt=1 SKIPPED ✗ subsequent dispatch fails the
+> ListItem fiber=0 alt=0 EAGER-PATH ✓ NoLanes precondition
+> ListItem fiber=1 alt=1 SKIPPED ✗
+> ListItem fiber=0 alt=0 EAGER-PATH ✓ ← items 3, 4 never committed a
+> ListItem fiber=0 alt=0 EAGER-PATH ✓ listener-driven render yet, still clean
+>
+> ```
+> </details>
+> ```
+
+- In `click 1`, items 3 and 4 had never received a listener-driven render; their bound fibers still satisfy `fiber.lanes === NoLanes`. Items 1 and 2 fire two dispatches each (two `useContextSelector` hooks per `ListItem`); within the listener `forEach`, the second hook's dispatch sees `fiber.lanes === SyncLane` (set by the first hook's `enqueueUpdate`) and is forced off the eager path. This is the "within-batch" pollution.
+- In `click 2`, items 1 and 2 have committed once already, so their bound mount-fibers are now the stale alternates with `fiber.lanes === SyncLane` still set. Every dispatch on them is `SKIPPED ✗` from the first attempt. The reducer runs during the subsequent render, returns `prevState`, `didReceiveUpdate === false`, and React calls `bailoutOnAlreadyFinishedWork` — discarding the JSX but having already executed the component function. Item 1's render thus shows up in the `renderLog` even though its `isActive` never changed.
+
+### Option D: Relay's `useFragmentInternal` pattern
+
+[josephsavona](https://github.com/josephsavona) pointed out Relay's solution for an analogous problem (_consumers of a shared mutable store, wanting selective re-rendering_) and landed on:
+
+- Provider updates value in `useLayoutEffect` (no render-phase writes)
+- Hook reads `valueRef.current` during render and returns `selector(value)` directly — analogous to `useSyncExternalStore`'s `getSnapshot`.
+- Hook holds only an opaque force-update counter (`useReducer(x => x + 1)`), not a `[value, selected]` tuple. **No `setState(prev => prev)` bailout trick is used**, so `fiber.lanes` is never polluted with would-have-bailed updates.
+- Listener compares `selector(newValue)` against the most-recently-returned slice (tracked in a ref updated in a layout effect). Calls `forceUpdate()` only when the selected slice actually changed.
+- Layout-effect fixup catches updates that occurred between render and effect firing.
+
+> Relay's canonical implementation (permalinked to Relay commit `e3c9d1b`): the subscription layout effect [`useFragmentInternal_CURRENT.js#L600-L624`](https://github.com/facebook/relay/blob/e3c9d1b5661fb6f58e4d58f81cd930e09a47a89a/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L600-L624) and the [`handleMissedUpdates` function at L136-207](https://github.com/facebook/relay/blob/e3c9d1b5661fb6f58e4d58f81cd930e09a47a89a/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L136-L207).
+
+### What changes vs. Option A
+
+|                                    | Option A (current main)                          | Option D                                                             |
+| ---------------------------------: | :----------------------------------------------- | :------------------------------------------------------------------- |
+| "Glitchy Behavior" (memo, +1 item) | Present                                          | Fixed ✅                                                             |
+|    "Scenario 1 update" plain items | N items re-render with stale + 2 more afterwards | N items re-render, healed by listener ✅                             |
+|                 Parent-driven tear | Level 1 (acceptable)                             | Level 1 (unchanged — Option D does not change this)                  |
+|        Concurrent-mode correctness | Safe                                             | Safe                                                                 |
+|            `react-hooks/refs` lint | Clean                                            | Clean (one `getSnapshot`-style read, same as `useSyncExternalStore)` |
+
+Option D is strictly better than Option A on the "Glitchy Behavior" axis and strictly equivalent everywhere else. It does NOT address Level 1 tearing — that remains out of scope per the original decision.
+
+### New recommendation
+
+Adopt Option D as the replacement implementation of `useContextSelector`. It is a drop-in replacement (same signature, same `ContextValue` shape).
+
+Keep Option A as the "what we shipped before" record for context.

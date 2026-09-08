@@ -1,8 +1,6 @@
-import type { DividerSlots as DividerBaseSlots, DividerBaseProps, DividerBaseState } from '@fluentui/react-divider';
+import type { DividerBaseState } from '@fluentui/react-divider';
 
-export type DividerSlots = DividerBaseSlots;
-
-export type DividerProps = DividerBaseProps;
+export type { DividerSlots, DividerBaseProps as DividerProps } from '@fluentui/react-divider';
 
 export type DividerState = DividerBaseState & {
   root: {

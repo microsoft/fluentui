@@ -10,6 +10,7 @@
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "baseUrl": ".",
     "parser": {
       "syntax": "typescript",
       "tsx": true,

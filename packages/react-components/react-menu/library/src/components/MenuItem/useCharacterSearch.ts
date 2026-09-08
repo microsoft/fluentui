@@ -6,12 +6,11 @@ import type { MenuItemState } from '../../components/index';
 import type { ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HTMLElement | null>): MenuItemState => {
-  'use no memo';
-
   const setFocusByFirstCharacter = useMenuListContext_unstable(context => context.setFocusByFirstCharacter);
 
   const { onKeyDown: originalOnKeyDown } = state.root;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onKeyDown = (e: React.KeyboardEvent<ARIAButtonElementIntersection>) => {
     originalOnKeyDown?.(e);
 

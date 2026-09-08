@@ -9,7 +9,7 @@ import type { CalendarYearStyleProps, CalendarYearStyles } from './CalendarYear.
  * @internal
  */
 export const useCalendarYearStyles_unstable = (props: CalendarYearStyleProps): CalendarYearStyles => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCalendarYearStyles_unstable — manual opt-out to preserve runtime behavior
 
   return useCalendarPickerStyles_unstable(props);
 };

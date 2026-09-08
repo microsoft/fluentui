@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { RadioDefinition, RadioGroupDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
-RadioDefinition.define(FluentDesignSystem.registry);
-RadioGroupDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/radio/define.js';
+import '@fluentui/web-components/radio-group/define.js';
 
 export default {
   title: 'RadioGroup',

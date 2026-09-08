@@ -36,10 +36,6 @@ export const useTagGroupBase_unstable = (
     ...rest
   } = props;
 
-  const innerRef = React.useRef<HTMLElement>(undefined);
-  const { targetDocument } = useFluent();
-  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
-
   const [items, setItems] = useControllableState<Array<TagValue>>({
     defaultState: defaultSelectedValues,
     state: selectedValues,
@@ -48,26 +44,6 @@ export const useTagGroupBase_unstable = (
 
   const handleTagDismiss: TagGroupBaseState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
-
-    // set focus after tag dismiss
-    const activeElement = targetDocument?.activeElement;
-    if (innerRef.current?.contains(activeElement as HTMLElement)) {
-      // focus on next tag only if the active element is within the current tag group
-      const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
-      if (next) {
-        next.focus();
-        return;
-      }
-
-      // if there is no next focusable, focus on the previous focusable
-      if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
-        const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container: innerRef.current });
-        prev?.focus();
-      } else {
-        const prev = findPrevFocusable(activeElement as HTMLElement, { container: innerRef.current });
-        prev?.focus();
-      }
-    }
   });
 
   const handleTagSelect: TagGroupBaseState['handleTagSelect'] = useEventCallback(
@@ -79,12 +55,6 @@ export const useTagGroupBase_unstable = (
       }
     }),
   );
-
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: true,
-    axis: 'both',
-    memorizeCurrent: true,
-  });
 
   return {
     handleTagDismiss,
@@ -99,13 +69,9 @@ export const useTagGroupBase_unstable = (
 
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
+        ref,
         role,
         'aria-disabled': disabled,
-        ...arrowNavigationProps,
         ...rest,
       }),
       { elementType: 'div' },
@@ -124,8 +90,46 @@ export const useTagGroupBase_unstable = (
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const { size = 'medium', appearance = 'filled' } = props;
+
+  const { targetDocument } = useFluent();
+  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'both',
+    memorizeCurrent: true,
+  });
+
+  const innerRef = React.useRef<HTMLDivElement>(null);
+  const mergedRef = useMergedRefs(ref, innerRef);
+
+  const enhancedOnDismiss: TagGroupProps['onDismiss'] = useEventCallback((e, data) => {
+    props.onDismiss?.(e, data);
+
+    const container = innerRef.current;
+    const activeElement = targetDocument?.activeElement;
+
+    if (container?.contains(activeElement as HTMLElement)) {
+      // focus on next tag only if the active element is within the current tag group
+      const next = findNextFocusable(activeElement as HTMLElement, { container });
+      if (next) {
+        next.focus();
+        return;
+      }
+
+      // if there is no next focusable, focus on the previous focusable
+      if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
+        const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container });
+        prev?.focus();
+      } else {
+        const prev = findPrevFocusable(activeElement as HTMLElement, { container });
+        prev?.focus();
+      }
+    }
+  });
+
   return {
-    ...useTagGroupBase_unstable(props, ref),
+    ...useTagGroupBase_unstable({ ...arrowNavigationProps, ...props, onDismiss: enhancedOnDismiss }, mergedRef),
     size,
     appearance,
   };

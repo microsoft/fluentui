@@ -1,0 +1,172 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/List Migration" />
+
+# List Migration
+
+## Overview
+
+v9 `List` + `ListItem` replaces v8 `List` rendering, but not v8's paging and virtualization.
+
+- v8 uses an `items` array and `onRenderCell`; v9 uses declarative `<ListItem>` children.
+- `navigationMode="items"` adds vertical arrow navigation for rows with one primary action.
+- `navigationMode="composite"` adds grid-style navigation for rows containing multiple interactive elements.
+- `selectionMode` adds controlled or uncontrolled selection. Item values use `SelectionItemId` (`string | number`).
+
+## Basic migration
+
+```tsx
+import { List, ListItem } from '@fluentui/react-components';
+
+<List navigationMode="items" aria-label="Contacts">
+  {contacts.map(contact => (
+    <ListItem key={contact.id} value={contact.id} onAction={() => openContact(contact)}>
+      {contact.name}
+    </ListItem>
+  ))}
+</List>;
+```
+
+`onAction` normalizes row activation. A click and Enter invoke it; Space invokes it when selection is disabled. With
+selection enabled, click and Enter invoke `onAction` and then toggle selection unless the action event calls
+`preventDefault()`, while Space always toggles selection. A root `onClick` or `onKeyDown` can also call
+`preventDefault()` to stop List's default handling, but controlled selection is then usually required.
+
+```tsx
+const onAction: ListItemProps['onAction'] = (event, data) => {
+  event.preventDefault(); // Open without also changing selection.
+  openContactById(data.value);
+};
+```
+
+## Selection
+
+```tsx
+import type { SelectionItemId } from '@fluentui/react-components';
+
+const [selected, setSelected] = React.useState<SelectionItemId[]>([]);
+
+<List
+  navigationMode="items"
+  selectionMode="multiselect"
+  selectedItems={selected}
+  onSelectionChange={(_, data) => setSelected(data.selectedItems)}
+>
+  {items.map(item => (
+    <ListItem key={item.id} value={item.id}>
+      {item.name}
+    </ListItem>
+  ))}
+</List>;
+```
+
+`selectedItems`, `defaultSelectedItems`, and `onSelectionChange.data.selectedItems` are `SelectionItemId[]`, not
+`string[]`. Supply an explicit, unique `value` (`string | number`) and keep it stable across sorting, filtering,
+virtualization, and rerenders. Omitting `value` generates an ID, which is unsuitable for persisted or controlled
+selection. Keep `key` stable for React independently.
+
+## Elements, roles, and navigation
+
+Without composite navigation, `List` defaults to `ul` and `ListItem` to `li`. Selection changes the semantic roles to
+`listbox`/`option`; item navigation retains list semantics. Composite navigation renders `div` roots with
+`grid`/`row`; every direct row child must be a `role="gridcell"` wrapper.
+
+```tsx
+<List navigationMode="composite" aria-label="Contacts">
+  {items.map(item => (
+    <ListItem key={item.id} value={item.id} onAction={() => open(item)}>
+      <div role="gridcell">{item.name}</div>
+      <div role="gridcell">
+        <Button onClick={() => archive(item)}>Archive {item.name}</Button>
+      </div>
+    </ListItem>
+  ))}
+</List>
+```
+
+Up/Down moves between rows. In composite mode, Right enters a row's actions, Left/Right moves within the row, Left from
+the first action returns to the row, and Up/Down exits to the adjacent row. Do not place interactive descendants in an
+`option`: option descendants are presentational. List therefore uses grid semantics when selection and secondary
+actions coexist.
+
+## Virtualization
+
+v9 has no `onShouldVirtualize`, page cache, or rendered-window props. Compose a virtualizer such as `react-window`.
+The virtualizer must:
+
+- render `List` as its inner element and **forward the inner ref and props** so
+  the generated `ListItem` elements are direct children of the list;
+- put the virtualizer's `style` on each `ListItem`;
+- set `aria-setsize` to the complete item count and `aria-posinset` to the one-based data index;
+- use `navigationMode="items"` for actionable rows, or `tabIndex={0}` on the outer `List` so a non-actionable virtual
+  list itself can receive focus for scrolling;
+- retain stable item values and enough `overscanCount` that focus is not immediately unmounted.
+
+```tsx
+import { FixedSizeList, type FixedSizeList as FixedSizeListHandle } from 'react-window';
+
+const VirtualList = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLUListElement>>((props, ref) => (
+  <List navigationMode="items" aria-label="Contacts" {...props} ref={ref} />
+));
+
+const virtualizerRef = React.useRef<FixedSizeListHandle>(null);
+
+<FixedSizeList
+  ref={virtualizerRef}
+  height={400}
+  width="100%"
+  itemCount={items.length}
+  itemSize={40}
+  itemData={items}
+  itemKey={(index, data) => data[index].id}
+  innerElementType={VirtualList}
+  overscanCount={4}
+>
+  {({ index, style, data }) => (
+    <ListItem
+      style={style}
+      value={data[index].id}
+      aria-setsize={data.length}
+      aria-posinset={index + 1}
+      onAction={() => open(data[index])}
+    >
+      {data[index].name}
+    </ListItem>
+  )}
+</FixedSizeList>;
+
+// Replace an imperative v8 scroll-to-index call:
+virtualizerRef.current?.scrollToItem(targetIndex, 'smart');
+```
+
+Map `renderedWindowsAhead`/`renderedWindowsBehind` to the virtualizer's overscan setting, fixed or measured v8 page
+height to `itemSize`/a variable-size virtualizer, and `onShouldVirtualize` to the application's choice between the
+virtualized and ordinary render paths. Map v8 list refs and scroll methods to the virtualizer ref. Test keyboard focus,
+selection, programmatic scrolling, dynamic row height, and screen-reader position announcements together.
+
+## Prop Mapping
+
+| v8 `IListProps`        | v9 equivalent                         | Notes                                              |
+| ---------------------- | ------------------------------------- | -------------------------------------------------- |
+| `items`                | `<ListItem>` children                 | Render declaratively                               |
+| `onRenderCell`         | `ListItem` JSX                        |                                                    |
+| `onShouldVirtualize`   | Application chooses a virtualizer     | No built-in virtualization                         |
+| `renderedWindowsAhead` | Virtualizer overscan                  | Also map `renderedWindowsBehind`                   |
+| `getPageHeight`        | Virtualizer item/page measurement     | Use a variable-size virtualizer for dynamic height |
+| `componentRef`         | `List` DOM ref and/or virtualizer ref | Reimplement imperative scrolling                   |
+
+`styles` and `theme` are not `IListProps`; do not invent direct mappings for them. Style the v9 `List`/`ListItem`
+elements with `className` and `makeStyles`, and obtain theme tokens from the surrounding `FluentProvider`.
+
+## v9 prop summary
+
+| Prop                   | Type / behavior                                                               |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| `navigationMode`       | `"items"` \| `"composite"`                                                    |
+| `selectionMode`        | `"single"` \| `"multiselect"`                                                 |
+| `selectedItems`        | Controlled `SelectionItemId[]`                                                |
+| `defaultSelectedItems` | Initial uncontrolled `SelectionItemId[]`                                      |
+| `onSelectionChange`    | Receives `{ selectedItems: SelectionItemId[] }`                               |
+| `ListItem.value`       | Stable `string \| number`                                                     |
+| `ListItem.onAction`    | Click/keyboard action; call `preventDefault()` to suppress selection fallback |
+| `ListItem.checkmark`   | Selection checkmark slot                                                      |

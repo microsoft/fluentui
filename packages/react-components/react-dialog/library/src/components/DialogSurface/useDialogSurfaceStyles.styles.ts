@@ -80,8 +80,6 @@ const useStyles = makeStyles({
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  'use no memo';
-
   const { root, backdrop, open, unmountOnClose, treatBackdropAsNested, backdropAppearance } = state;
 
   const rootBaseStyle = useRootBaseStyle();
@@ -91,6 +89,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
 
   const mountedAndClosed = !unmountOnClose && !open;
 
+  // eslint-disable-next-line react-hooks/immutability
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     rootBaseStyle,
@@ -99,6 +98,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   );
 
   if (backdrop) {
+    // eslint-disable-next-line react-hooks/immutability
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,

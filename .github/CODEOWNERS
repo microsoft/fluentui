@@ -42,7 +42,7 @@
 /typings @microsoft/fluentui-react-build
 
 #### Root Build files
-/.yarnrc @microsoft/fluentui-react-build
+/.yarnrc.yml @microsoft/fluentui-react-build
 /.gitattributes @microsoft/fluentui-react-build
 /.gitignore @microsoft/fluentui-react-build
 /.npmrc @microsoft/fluentui-react-build
@@ -334,6 +334,8 @@ packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
 packages/react-components/react-headless-components-preview/library @microsoft/cxe-prg
 packages/react-components/react-headless-components-preview/stories @microsoft/cxe-prg
+packages/react-components/react-calendar-preview/library @microsoft/cxe-prg
+packages/react-components/react-calendar-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api
@@ -399,6 +401,7 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 
 ### generic rules for v-build. Might be tweaked based on needs.
 **/project.json @microsoft/fluentui-react-build
+**/monosize.config.mjs @microsoft/fluentui-react-build
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build

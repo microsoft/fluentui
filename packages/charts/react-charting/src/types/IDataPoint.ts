@@ -132,6 +132,8 @@ export interface IChartDataPoint {
 
   /**
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
+   *
+   * @remarks This value is rendered into generated CSS. Validate it before assigning untrusted input to it.
    */
   color?: string;
 

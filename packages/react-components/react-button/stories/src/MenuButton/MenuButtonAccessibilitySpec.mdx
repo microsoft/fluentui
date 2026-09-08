@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/MenuButton" />
+
+# MenuButton Accessibility Spec
+
+`MenuButton` is a `Button` that opens a menu when activated. It renders a trailing chevron icon to communicate the presence of an associated menu, and manages `aria-expanded` to reflect whether the menu is currently open.
+
+`MenuButton` extends `Button` and inherits all of its accessibility behavior. This spec only covers what is **specific** to `MenuButton`. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations across appearance variants, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](?path=/docs/concepts-developer-accessibility-components-button--docs).
+
+## Usage
+
+### When to choose MenuButton
+
+Use `MenuButton` when activation should open a menu of items for the user to choose from. If activation performs a single direct action with no associated menu, use `Button`. If activation performs a primary action and the user needs an alternate way to reach related variations, use `SplitButton`.
+
+Despite its name, it is possible to use `MenuButton` for any Button that opens/closes a non-modal popup, such as a Popover.
+
+`MenuButton` is the typical trigger for the `Menu` component, and is what `MenuTrigger` produces by default when its `disableButtonEnhancement` prop is not set.
+
+### Implementing MenuButton
+
+#### Use with Menu and MenuTrigger
+
+The recommended pattern is to wrap `MenuButton` in `MenuTrigger` inside a `Menu`. `MenuTrigger` handles the ARIA wiring (`aria-haspopup`, `aria-controls`, and toggling `aria-expanded`) and the keyboard behavior to open and close the menu, including <kbd>Down</kbd> arrow to open the menu and place focus on the first item, and <kbd>Esc</kbd> to close the menu and return focus to the trigger.
+
+```tsx
+<Menu>
+  <MenuTrigger disableButtonEnhancement>
+    <MenuButton>Open menu</MenuButton>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem>Item a</MenuItem>
+      <MenuItem>Item b</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+When used this way, `MenuButton`'s only ARIA responsibility is reflecting the open/closed state via `aria-expanded`, which `MenuTrigger` sets.
+
+#### Standalone use
+
+If `MenuButton` is used outside of `MenuTrigger`, the author is responsible for:
+
+1. Setting `aria-expanded` to reflect whether the menu is currently open. `MenuButton` normalizes the `aria-expanded` prop to a boolean — string values like `"true"` and `"false"` are accepted and converted, but the attribute is always rendered as a boolean.
+2. Setting `aria-haspopup="menu"` if the button opens a Fluent Menu, or other popup that has `role="menu".
+3. Optional: For buttons that open a popup with `role="dialog"`, setting `aria-haspopup="dialog"` is recommended. MenuButton should not be used for any other supported values of `aria-haspopup` aside from `menu` and `dialog`.
+4. Move keyboard focus into the popup when it opens, and return focus to the `MenuButton` when the popup closes.
+
+Standalone use is uncommon; prefer the `Menu` + `MenuTrigger` pattern unless there is a concrete reason not to.
+
+#### Label
+
+Like `Button`, `MenuButton` requires an accessible label. The label rules from [Button](?path=/docs/concepts-developer-accessibility-components-button--docs) apply unchanged.
+
+The trailing chevron `menuIcon` is decorative and does not contribute to the accessible name. For an icon-only `MenuButton` (a `MenuButton` with no children), provide an `aria-label` describing what the menu contains, not the chevron itself — for example, `aria-label="More actions"` rather than `aria-label="Expand"`.
+
+When an icon-only `MenuButton` has both an `icon` slot and no children, the `menuIcon` is omitted from the rendered output (see [renderMenuButton.tsx](packages/react-components/react-button/library/src/components/MenuButton/renderMenuButton.tsx#L20)) so the button does not render two icons.
+
+## Semantics
+
+`MenuButton`'s root element has the same role mapping as `Button`. The only addition is the `aria-expanded` attribute on the root, which is always present (rendered as either `true` or `false`).
+
+| Slot     | Role   | Notes                                                                                          |
+| -------- | ------ | ---------------------------------------------------------------------------------------------- |
+| root     | button | `aria-expanded` is always set; `aria-haspopup` and `aria-controls` are added by `MenuTrigger`. |
+| icon     | —      | Decorative leading icon, same as `Button`.                                                     |
+| menuIcon | —      | Decorative trailing chevron (`ChevronDownRegular` by default).                                 |
+
+Because the chevron is decorative, screen readers communicate the presence of the associated menu through `aria-haspopup` (announced as "menu") and `aria-expanded`, not through the icon itself.
+
+## Keyboard interaction
+
+`MenuButton` itself implements only the activation keys inherited from `Button` — <kbd>Enter</kbd> and <kbd>Space</kbd>. The keys that interact with the menu (<kbd>Down</kbd>, <kbd>Esc</kbd>, type-ahead, etc.) are handled by `Menu` and `MenuTrigger`, not by `MenuButton`, and are documented in the `Menu` accessibility spec.
+
+## Windows contrast themes (high contrast mode)
+
+`MenuButton` adds an "expanded" visual state on top of `Button`'s appearance variants. When `aria-expanded="true"`, the button changes to a selected/pressed style. In Windows contrast themes:
+
+- The expanded state uses the same system colors as the equivalent `Button` `:hover` state, so the open state remains visible in forced colors.
+- The leading `icon` slot's color is set to `Highlight` on hover when expanded, ensuring the icon stays visible against the hover background.
+
+All other forced-colors behavior is inherited from `Button`.

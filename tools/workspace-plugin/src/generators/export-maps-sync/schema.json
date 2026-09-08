@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "export-maps-sync",
+  "description": "Keep package.json entry point fields and export maps in sync with declared entry points",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

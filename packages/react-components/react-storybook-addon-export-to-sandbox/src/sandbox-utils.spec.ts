@@ -61,6 +61,9 @@ describe(`sabdbox-utils`, () => {
         storyExportToken: 'DefaultTitle',
         storyFile: context.parameters.fullSource,
         title: 'FluentUI React v9',
+        requiredDependencies: {},
+        optionalDependencies: {},
+        devDependencies: {},
       });
     });
   });

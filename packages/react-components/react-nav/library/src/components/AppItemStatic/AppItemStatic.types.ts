@@ -15,7 +15,9 @@ export type AppItemStaticSlots = {
 /**
  * AppItemStatic Props
  */
-export type AppItemStaticProps = ComponentProps<AppItemStaticSlots> & {};
+export type AppItemStaticProps = ComponentProps<AppItemStaticSlots>;
+
+export type AppItemStaticBaseProps = AppItemStaticProps;
 
 /**
  * State used in rendering AppItemStatic
@@ -28,3 +30,5 @@ export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
    */
   density: NavDensity;
 };
+
+export type AppItemStaticBaseState = Omit<AppItemStaticState, 'density'>;

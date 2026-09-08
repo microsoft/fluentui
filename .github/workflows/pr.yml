@@ -46,22 +46,23 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Workspace lint
         run: |
           yarn nx run workspace-plugin:check-graph
+          yarn nx sync:check
           yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
           yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+          yarn nx g @fluentui/workspace-plugin:verify-peer-dependencies --tag=vNext
 
       - name: Type-check just.config.ts files
         run: |
           # following packages need to be build in advance:
           # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts,
-          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
           #
           # NOTE: we are running this via nx in order to get cache hits later on
-          yarn nx run-many -t build -p api-docs digest
+          yarn nx run-many -t build -p api-docs
           yarn tsc -p ./tsconfig.just-scripts-configs.json
 
       - name: 'check packages: installed dependencies versions'
@@ -74,12 +75,40 @@ jobs:
 
       - name: build, test, lint, test-ssr (affected)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging verify-bundle-isolation --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
+
+  react-compiler-analyzer:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --immutable
+
+      - name: React Compiler analysis (affected)
+        run: |
+          yarn nx affected -t react-compiler-analyzer--lint --nxBail
 
   react-major-versions-integration:
     if: ${{ github.repository_owner == 'microsoft' }}
@@ -102,7 +131,8 @@ jobs:
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
       - run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
+      - run: |
           yarn rit --react 17 --install-deps
           yarn rit --react 18 --install-deps
 
@@ -158,7 +188,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Install Playwright dependencies
         run: yarn playwright install --with-deps

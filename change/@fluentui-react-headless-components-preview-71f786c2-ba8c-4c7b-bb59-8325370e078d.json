@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add badge support for Avatar",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -1,9 +1,9 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize, tagName } from './badge.options.js';
 
 test.describe('Badge', () => {
   test.use({
-    tagName: 'fluent-badge',
+    tagName,
     innerHTML: 'Badge',
   });
 
@@ -16,9 +16,9 @@ test.describe('Badge', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-badge');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });

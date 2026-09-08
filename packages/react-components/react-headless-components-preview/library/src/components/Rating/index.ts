@@ -4,4 +4,5 @@ export type { RatingItemSlots, RatingItemProps, RatingItemState } from './Rating
 export { Rating } from './Rating';
 export { renderRating } from './renderRating';
 export { useRating } from './useRating';
+export { useRatingContextValues } from './useRatingContextValues';
 export type { RatingSlots, RatingProps, RatingState } from './Rating.types';

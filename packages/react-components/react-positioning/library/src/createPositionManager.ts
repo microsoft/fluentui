@@ -142,6 +142,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
               // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
               // types into the public API surface.
               placement: computedPlacement satisfies PositioningPlacement,
+              escaped: middlewareData.hide?.escaped ?? false,
+              referenceHidden: middlewareData.hide?.referenceHidden ?? false,
             },
           }),
         );

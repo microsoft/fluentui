@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import type { TreeContextValue } from '../../contexts';
 import type { FlatTreeContextValues, FlatTreeState } from './FlatTree.types';
 
@@ -15,23 +18,35 @@ export const useFlatTreeContextValues_unstable = (state: FlatTreeState): FlatTre
     requestTreeResponse,
     forceUpdateRovingTabIndex,
   } = state;
-  /**
-   * This context is created with "@fluentui/react-context-selector",
-   * there is no sense to memoize it
-   */
-  const tree: TreeContextValue = {
-    treeType,
-    size,
-    openItems,
-    appearance,
-    checkedItems,
-    selectionMode,
-    navigationMode,
-    contextType,
-    level,
-    requestTreeResponse,
-    forceUpdateRovingTabIndex,
-  };
+
+  const tree = React.useMemo<TreeContextValue>(
+    () => ({
+      treeType,
+      size,
+      openItems,
+      appearance,
+      checkedItems,
+      selectionMode,
+      navigationMode,
+      contextType,
+      level,
+      requestTreeResponse,
+      forceUpdateRovingTabIndex,
+    }),
+    [
+      treeType,
+      size,
+      openItems,
+      appearance,
+      checkedItems,
+      selectionMode,
+      navigationMode,
+      contextType,
+      level,
+      requestTreeResponse,
+      forceUpdateRovingTabIndex,
+    ],
+  );
 
   return { tree };
 };

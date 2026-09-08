@@ -16,7 +16,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Card: ForwardRefComponent<CardProps>;
 
 // @public (undocumented)
-export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'>;
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'> & {
+    shouldRestrictTriggerAction?: (event: CardOnSelectionChangeEvent) => boolean;
+};
 
 // @public (undocumented)
 export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;

@@ -5,3 +5,4 @@ export { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, AnchorTarg
 export type { AnchorButtonOptions } from './anchor-button.options.js';
 export { styles as AnchorButtonStyles } from './anchor-button.styles.js';
 export { template as AnchorButtonTemplate } from './anchor-button.template.js';
+export { tagName as AnchorButtonTagName } from './anchor-button.options.js';

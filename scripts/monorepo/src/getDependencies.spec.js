@@ -10,8 +10,22 @@ describe(`#getDependencies`, () => {
   it(`should return package/s dependency tree array for all,devDeps and production dependencies`, async () => {
     const deps = await getDependencies(packageName);
 
-    expect(deps.dependencies).toMatchInlineSnapshot(`
+    // graph traversal order is not deterministic across machines; sort by name for a stable snapshot
+    /** @type {(a: { name: string }, b: { name: string }) => number} */
+    const byName = (a, b) => a.name.localeCompare(b.name);
+
+    expect([...deps.dependencies].sort(byName)).toMatchInlineSnapshot(`
       Array [
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "keyboard-keys",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "react-jsx-runtime",
+        },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
@@ -29,34 +43,14 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": true,
-          "name": "react-jsx-runtime",
-        },
-        Object {
-          "dependencyType": "dependencies",
           "isTopLevel": false,
           "name": "tokens",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "keyboard-keys",
         },
       ]
     `);
 
-    expect(deps.devDependencies).toMatchInlineSnapshot(`
+    expect([...deps.devDependencies].sort(byName)).toMatchInlineSnapshot(`
       Array [
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": true,
-          "name": "react-conformance",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": true,
-          "name": "react-conformance-griffel",
-        },
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
@@ -66,6 +60,16 @@ describe(`#getDependencies`, () => {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
           "name": "eslint-plugin-react-components",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "react-conformance",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "react-conformance-griffel",
         },
         Object {
           "dependencyType": "devDependencies",
@@ -82,7 +86,7 @@ describe(`#getDependencies`, () => {
 
     expect(packageInfo.absoluteRootPath).toEqual(expect.stringContaining('packages/react-components/react-text'));
     expect(packageInfo?.dependencies).toEqual(expect.any(Object));
-    expect(packageInfo?.main).toEqual('lib-commonjs/index.js');
+    expect(packageInfo?.main).toEqual('lib-commonjs/index.cjs');
     expect(packageInfo?.module).toEqual('lib/index.js');
 
     const depResultWithoutProjectScope = await getDependencies('react-text');

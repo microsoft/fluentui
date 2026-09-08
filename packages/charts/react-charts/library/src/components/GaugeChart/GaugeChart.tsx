@@ -631,36 +631,38 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   </text>
                 </>
               )}
-              {arcs.map((arc, index) => {
-                const segment = _segments[arc.segmentIndex];
-                const arcId = `gauge-chart-arc-${index}`;
-                return (
-                  <React.Fragment key={index}>
-                    <path
-                      d={arc.d}
-                      id={arcId}
-                      strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
-                      className={classes.segment}
-                      fill={segment.color}
-                      opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
-                      {...getAccessibleDataObject(
-                        {
-                          ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
-                          ...segment.accessibilityData,
-                        },
-                        'img',
-                        true,
-                      )}
-                      onFocus={e => _handleFocus(e, segment.legend, arcId)}
-                      onBlur={_handleBlur}
-                      onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
-                      onMouseLeave={e => _handleCalloutDismiss()}
-                      onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
-                      tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
-                    />
-                  </React.Fragment>
-                );
-              })}
+              <g role="listbox" aria-label={`${_segments.length} ${_segments.length === 1 ? 'segment' : 'segments'}`}>
+                {arcs.map((arc, index) => {
+                  const segment = _segments[arc.segmentIndex];
+                  const arcId = `gauge-chart-arc-${index}`;
+                  return (
+                    <React.Fragment key={index}>
+                      <path
+                        d={arc.d}
+                        id={arcId}
+                        strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
+                        className={classes.segment}
+                        fill={segment.color}
+                        opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
+                        {...getAccessibleDataObject(
+                          {
+                            ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
+                            ...segment.accessibilityData,
+                          },
+                          'option',
+                          true,
+                        )}
+                        onFocus={e => _handleFocus(e, segment.legend, arcId)}
+                        onBlur={_handleBlur}
+                        onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
+                        onMouseLeave={e => _handleCalloutDismiss()}
+                        onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
+                        tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
+                      />
+                    </React.Fragment>
+                  );
+                })}
+              </g>
               {_renderNeedle()}
               <g
                 onMouseEnter={e => _handleMouseOver(e, 'Chart value')}

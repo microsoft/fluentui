@@ -1,11 +1,13 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { TextInput } from '../text-input/text-input.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Field } from './field.js';
+import { tagName } from './field.options.js';
 
 test.describe('Field', () => {
   test.use({
-    tagName: 'fluent-field',
-    waitFor: ['fluent-text-input'],
+    tagName,
+    waitFor: [TextInputTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -17,9 +19,9 @@ test.describe('Field', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-field');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -388,7 +390,7 @@ test.describe('Field', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-text-input id="input" slot="input" type="text"></fluent-text-input>
+        <${TextInputTagName} id="input" slot="input" type="text"></${TextInputTagName}>
         <div id="message" slot="message" flag="bad-input">I have no idea how you managed to do this.</div>
       `,
     });

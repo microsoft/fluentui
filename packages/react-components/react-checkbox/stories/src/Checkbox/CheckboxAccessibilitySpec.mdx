@@ -1,0 +1,148 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/Checkbox" />
+
+# Checkbox Accessibility Spec
+
+`Checkbox` lets a user toggle an option on, off, or — in some cases — into a mixed state representing partial selection of a group. Internally it renders a real `<input type="checkbox">` element with a custom visual indicator, and uses the native input for all ARIA semantics and keyboard interaction.
+
+Because the underlying control is a native checkbox, `Checkbox` inherits the browser's built-in accessibility behavior: focus, role, checked state, and the platform keyboard contract are all handled by the browser. The visible square (or circle) the user sees is a separate `aria-hidden` element rendered next to the input; it does not contribute to the accessibility tree.
+
+## Usage
+
+### When to choose Checkbox
+
+#### Checkbox vs. Switch
+
+This is largely a visual choice -- both Checkbox and Switch are standalone controls that support on/off user input and communicate their state and state changes in almost identical ways. One difference is that Checkbox supports an `indeterminate` or `checked="mixed"` state, and Switch does not. The Switch control uses an `<input type="checkbox">` as the underlying interactive element, so all keyboard behavior is identical. While Switch adds`role="switch"`, the difference to screen reader users is negligible.
+
+#### Checkbox vs. ToggleButton
+
+ToggleButton is another control with an on/off user-selected state. The difference here is also largely visual, though ToggleButton is semantically a button and hints towards users that pressing it will have an immediate effect on the page. Checkbox, in contrast, is traditionally a form control. However, in the modern web, checkbox inputs may be used outside of a form and have immediate effects when toggled. Both choices are ultimately accessible for any standalone on/off user input.
+
+#### Checkbox vs. Radio
+
+Use `Checkbox` when multiple options can be selected independently, or when a single option can be turned on or off. Use a `RadioGroup` when the user must choose exactly one from a set of mutually exclusive options.
+
+#### Multiselect Dropdown vs. Checkboxes
+
+For fewer than ~10 options, a checkbox group is significantly more usable and accessible than a multiselect `Dropdown` or `Combobox`. Prefer checkboxes for small option sets.
+
+#### Tri-state (mixed) checkboxes
+
+Use `checked="mixed"` when the checkbox controls a group of sub-options that are partially selected (for example, a "Select all" master checkbox above a list where some but not all items are selected). The mixed state is announced by screen readers as "mixed" or "partially checked", and is the standard ARIA pattern for this case.
+
+The `circular` shape variant is **only** appropriate for tasks-style UI (a checklist), where it is unambiguously a completion control. Do not use `circular` for general form checkboxes — users will mistake it for a radio button.
+
+### Checkbox within other controls
+
+There are multiple other types of composite widgets that will sometimes visually display a checked/unchecked icon: multiselect Dropdown and Combobox, Tree, and Menu. However, all of these have their own specific semantic ways of exposing selection (e.g. `role="menuitemcheckbox` inside a `role="menu"` or `aria-checked` on a `role="treeitem"`). Checkbox should not be directly used in any of these controls. Nested interactives are forbidden, so Checkbox is not a valid child of a menuitem, option, or treeitem.
+
+Instead of using the Checkbox control within these composite widgets, use the styles for the check indicator directly as a visual-only indication of selection combined with the component-specific selection semantics for the control in question.
+
+Checkbox may be used directly within Toolbar, which is the only composite / arrow-navigation control that supports flexible interactive children.
+
+### Implementing Checkbox
+
+#### Programmatic label
+
+`Checkbox` does not render its own visible label text unless the `label` prop is set. Authors must provide a label one of three ways:
+
+```tsx
+<Checkbox label="I agree to the terms" />
+```
+
+The `label` prop renders a `<label>` element with `htmlFor` pointing at the internal input id, so clicking the label text toggles the checkbox.
+
+When `Checkbox` is wrapped in `Field`, the field's label is associated with the checkbox automatically via the same `htmlFor` mechanism, and there is no need to set `label` on the checkbox itself:
+
+```tsx
+<Field label="I agree to the terms">
+  <Checkbox />
+</Field>
+```
+
+If neither of those layouts fits, use `aria-label` or `aria-labelledby` on the `<Checkbox>` to point at visible label text elsewhere on the page. `aria-label` should be avoided when a visible label is available, since screen reader and voice control users benefit from the labels matching what they see on screen.
+
+#### Visual label
+
+Per [WCAG 3.3.2 — Labels or Instructions](https://w3c.github.io/wcag/understanding/labels-or-instructions.html), every checkbox needs a visible label or visibly associated text. The visible text and the programmatic accessible name should match.
+
+A checkbox with **no** visible label (only an `aria-label`) is acceptable only when the surrounding visual context makes the meaning obvious — for example, checkboxes in the first column of a table, where another column in the row serves as the visible label.
+
+#### Field integration
+
+When `Checkbox` is inside `Field`, `Field` automatically applies:
+
+- `id` — generated and used for the `<label htmlFor>` association.
+- `aria-labelledby` — set if the consumer overrides `id` so that the input is still labelled correctly.
+- `aria-describedby` — points at the field's validation message and hint, merged with any consumer-provided value.
+- `required` — applied as the native attribute on the `<input>` (Checkbox opts in to `supportsRequired`).
+
+`Checkbox` does **not** automatically set `aria-invalid` from `Field`'s `validationState`. There is no error visual styling on the checkbox itself; communicate validation through the field's validation message text.
+
+When `Checkbox` is not inside `Field`, the consumer is responsible for `aria-describedby`, `aria-invalid`, and `required` if those are needed.
+
+#### Tri-state (mixed)
+
+`Checkbox` exposes its tri-state via the `checked` and `defaultChecked` props, which accept `true`, `false`, or the string `"mixed"`. Internally, `"mixed"` maps to the native [`indeterminate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes) property on the `<input>`, which is what assistive technologies read to announce "mixed" or "partially checked".
+
+The mixed state can only be set programmatically (it is not a value the user can toggle to). The standard pattern is:
+
+1. The consumer determines that not all sub-items are selected and sets `checked="mixed"` on the master checkbox.
+2. The user activates the master checkbox.
+3. `onChange` fires with `data.checked = false` (since the native input was indeterminate before activation, the browser treats the activation as a transition away from indeterminate).
+4. The consumer updates its model — typically clearing or selecting all sub-items — and the next render passes a non-mixed `checked` value.
+
+Because the mixed → next-state transition is driven by the consumer's `onChange` handler, authors must ensure that handler updates state in a way that does not leave the checkbox stuck in `"mixed"` after a user toggle.
+
+#### Disabled
+
+`Checkbox` supports the native `disabled` attribute, which removes the input from the tab order and prevents toggling. There is no `disabledFocusable` analog — checkboxes that need to remain focusable in a roving-tabindex context should use the native disabled behavior, since a disabled form input is reliably announced by screen readers.
+
+When disabled, the cursor on the root becomes `default`, all colors switch to disabled tokens, and the indicator's color is mapped to `GrayText` in Windows contrast themes.
+
+#### Click target
+
+The hidden `<input>` is sized to cover the visible indicator plus the surrounding padding, so clicking anywhere on the indicator (or the empty space immediately around it) toggles the checkbox. Clicking the `<label>` element also toggles the checkbox via the native `<label htmlFor>` association.
+
+When customizing layout, ensure the combined indicator + click-padding area remains at least 24×24 CSS pixels per [WCAG 2.5.8 Target Size (Minimum)](https://w3c.github.io/wcag/understanding/target-size-minimum.html). The default sizes meet this.
+
+## Semantics
+
+`Checkbox` is a composition of a native input, a visual indicator, and an optional label:
+
+| Slot      | Role              | States and properties                                                                                                                                                                        |
+| --------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| root      | none              | A plain `<span>` with no role; used for layout, focus-within outline, and click-target sizing.                                                                                               |
+| input     | checkbox (native) | `type="checkbox"`; `checked` reflects `true`/`false`; `indeterminate` reflects `"mixed"`; `disabled`, `required`, `aria-labelledby`, `aria-describedby` as applied by Field or the consumer. |
+| indicator | none              | A `<div>` with `aria-hidden="true"`; the visible square or circle. Purely presentational.                                                                                                    |
+| label     | label (native)    | A `<label htmlFor={input.id}>` from `@fluentui/react-label`. Clicking it toggles the input.                                                                                                  |
+
+Note: never set `aria-checked` on a Checkbox, since it conflicts in unexpected and unsupported ways with the native `checked` property.
+
+Focus lives on the `<input>` element. The visible focus indicator is drawn on the root via `:focus-within` from `createFocusOutlineStyle` in `@fluentui/react-tabster`, because the actual `<input>` is `opacity: 0` and would not show its native focus ring.
+
+The indicator is not part of the accessibility tree. Screen readers announce the checkbox using the native input's role and `checked`/`indeterminate` state, with the label text as its accessible name — the visual checkmark is not announced separately.
+
+## Keyboard interaction
+
+`Checkbox` is a single tab stop. All keyboard behavior comes from the native `<input type="checkbox">` element.
+
+| Key                               | Result                                           |
+| --------------------------------- | ------------------------------------------------ |
+| <kbd>Tab</kbd>                    | Moves focus to the checkbox.                     |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the checkbox from a later target. |
+| <kbd>Space</kbd>                  | Toggles the checkbox. Fires `onChange`.          |
+
+There is no <kbd>Enter</kbd> activation on a checkbox — pressing <kbd>Enter</kbd> inside a form submits the form, matching native behavior.
+
+When `disabled` is set, the input is removed from the tab order entirely and is not interactable.
+
+## Windows contrast themes (high contrast mode)
+
+`Checkbox` relies on native browser behavior to provide forced-colors values for most interaction states. The component itself only adds one explicit forced-colors rule: the disabled state maps the root and indicator colors to `GrayText`, so the disabled affordance matches the platform's disabled-control color. This is because the border is on the indicator slot and not on the native input, so does not automatically set the correct color based on the input element's state.
+
+## Motion and animation
+
+`Checkbox` has no animation. State changes (checked / unchecked / mixed) are immediate. There is therefore nothing to gate on `prefers-reduced-motion`.

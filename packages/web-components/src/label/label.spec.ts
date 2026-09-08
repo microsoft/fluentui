@@ -1,16 +1,21 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Label } from './label.js';
-import { LabelSize, LabelWeight } from './label.options.js';
+import { LabelSize, LabelWeight, tagName } from './label.options.js';
 
 test.describe('Label', () => {
-  test.use({ tagName: 'fluent-label' });
+  test.use({
+    tagName,
+    innerHTML: 'Label',
+  });
 
   test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const size of Object.values(LabelSize)) {
       await test.step(`should set the \`size\` property to "${size}"`, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
+        await fastPage.updateTemplate(element, { attributes: { size } });
 
         await expect(element).toHaveAttribute('size', size);
 
@@ -28,9 +33,9 @@ test.describe('Label', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-label');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -38,9 +43,11 @@ test.describe('Label', () => {
   test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const weight of Object.values(LabelWeight)) {
       await test.step(`should set the \`weight\` property to "${weight}"`, async () => {
-        await fastPage.setTemplate({ attributes: { weight } });
+        await fastPage.updateTemplate(element, { attributes: { weight } });
 
         await expect(element).toHaveAttribute('weight', weight);
 

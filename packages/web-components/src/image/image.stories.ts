@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Image as FluentImage } from './image.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
 type Story = StoryObj<FluentImage>;
+const { argTypes } = getStorybookHelpers<FluentImage>('fluent-image');
 
 const imageTemplate = html<StoryArgs<FluentImage>>`
   <fluent-image
@@ -23,64 +25,7 @@ export default {
   args: {
     slottedContent: () => html`<img alt="Short image description" src="300x100.png" />`,
   },
-  argTypes: {
-    block: {
-      control: 'boolean',
-      description:
-        'An image can use the argument ‘block’ so that it’s width will expand to fill the available container space.',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
-      },
-    },
-    bordered: {
-      control: 'boolean',
-      description: 'Border surrounding image',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
-      },
-    },
-    fit: {
-      control: 'select',
-      description: 'Determines how the image will be scaled and positioned within its parent container.',
-      name: 'size',
-      mapping: { '': null, ...ImageFit },
-      options: ['', ...Object.values(ImageFit)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ImageFit).join('|') },
-      },
-    },
-    shadow: {
-      control: 'boolean',
-      description: 'Apply an optional box shadow to further separate the image from the background.',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'Image Shape',
-      name: 'size',
-      mapping: { '': null, ...ImageShape },
-      options: ['', ...Object.values(ImageShape)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ImageShape).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentImage>;
 
 export const Default = {};

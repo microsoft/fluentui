@@ -59,6 +59,6 @@ In your app, combine the base `ms-Icon` class with a modifier class for the spec
 
 Note the `aria-hidden` attribute, which prevents screen readers from reading the icon. In cases where meaning is conveyed only through the icon, such as an icon-only navigation bar, use the [`aria-label` attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) on the button for accessibility.
 
-### Fluent UI icons tool
+### Icon subsets
 
-The [Fluent UI icons tool](https://aka.ms/fluentui-icons) lets you search and browse all of Fluent UI's font-based icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons more frequently than the Fluent UI set. You can see detailed docs for the tool at https://aka.ms/fluentui-icons?help=1.
+The Fluent UI icons subsetting tool is no longer publicly available. For web apps that need font-based icons, use the default CDN, host the font files from `@fluentui/font-icons-mdl2/fonts` yourself and pass that location to `initializeIcons`, or register custom icons with `registerIcons`.

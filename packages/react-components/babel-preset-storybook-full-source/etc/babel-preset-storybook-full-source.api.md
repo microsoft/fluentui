@@ -7,7 +7,11 @@
 import * as Babel from '@babel/core';
 
 // @public (undocumented)
-export type BabelPluginOptions = Record<string, DependencyEntry>;
+export interface BabelPluginOptions {
+    cssModules?: boolean | CssModulesConfig;
+    importMappings: Record<string, DependencyEntry>;
+    storyGranularity?: 'file' | 'story';
+}
 
 // @public
 function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj;

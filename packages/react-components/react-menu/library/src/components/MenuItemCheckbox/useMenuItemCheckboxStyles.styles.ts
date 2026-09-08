@@ -17,15 +17,16 @@ export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'sub
 };
 
 export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState): MenuItemCheckboxState => {
-  'use no memo';
-
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuItemCheckboxClassNames.root, state.root.className);
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(menuItemCheckboxClassNames.content, state.content.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       menuItemCheckboxClassNames.secondaryContent,
       state.secondaryContent.className,
@@ -33,14 +34,17 @@ export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState)
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuItemCheckboxClassNames.icon, state.icon.className);
   }
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(menuItemCheckboxClassNames.checkmark, state.checkmark.className);
   }
 
   if (state.subText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(menuItemCheckboxClassNames.subText, state.subText.className);
   }
 

@@ -26,8 +26,6 @@ export function useButtonTriggerSlot(
   ref: React.Ref<HTMLButtonElement>,
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
-  'use no memo';
-
   const {
     state: { open, setOpen, getOptionById },
     defaultProps,
@@ -125,6 +123,7 @@ export function useButtonTriggerSlot(
     elementType: 'button',
     activeDescendantController,
   });
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

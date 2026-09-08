@@ -1,15 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Link } from './link.js';
+import { tagName } from './link.options.js';
 import { styles } from './link.styles.js';
 import { template } from './link.template.js';
 
 /**
+ * The definition for the `<fluent-link>` element.
+ *
  * @public
- * @remarks
- * HTML Element: \<fluent-link\>
  */
-export const definition = Link.compose({
-  name: `${FluentDesignSystem.prefix}-link`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

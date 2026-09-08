@@ -187,12 +187,11 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
-  'use no memo';
-
   const { checked, disabled, labelPosition, shape, size } = state;
 
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     checkboxClassNames.root,
     rootBaseClassName,
@@ -208,6 +207,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
 
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     checkboxClassNames.input,
     inputBaseClassName,
@@ -219,6 +219,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
       indicatorBaseClassName,
@@ -230,6 +231,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
 
   const labelStyles = useLabelStyles();
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       checkboxClassNames.label,
       labelStyles.base,

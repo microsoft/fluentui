@@ -29,6 +29,18 @@ export type OnPositioningEndEventDetail = {
    * placement if flip or other middleware adjusted it.
    */
   placement: PositioningPlacement;
+
+  /**
+   * True when the floating element has escaped its clipping boundary,
+   * as reported by Floating UI's hide middleware.
+   */
+  escaped: boolean;
+
+  /**
+   * True when the reference element is clipped or out of view,
+   * as reported by Floating UI's hide middleware.
+   */
+  referenceHidden: boolean;
 };
 
 /**

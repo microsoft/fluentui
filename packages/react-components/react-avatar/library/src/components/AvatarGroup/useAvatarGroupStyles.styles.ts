@@ -31,12 +31,11 @@ const useStyles = makeStyles({
  * Apply styling to the AvatarGroup slots based on the state
  */
 export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGroupState => {
-  'use no memo';
-
   const { layout, size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,

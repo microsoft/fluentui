@@ -210,12 +210,11 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Radio slots based on the state
  */
 export const useRadioStyles_unstable = (state: RadioState): RadioState => {
-  'use no memo';
-
   const { labelPosition } = state;
 
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     radioClassNames.root,
     rootBaseClassName,
@@ -225,6 +224,7 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
 
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     radioClassNames.input,
     inputBaseClassName,
@@ -234,6 +234,7 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   );
 
   const indicatorBaseClassName = useIndicatorBaseClassName();
+  // eslint-disable-next-line react-hooks/immutability
   state.indicator.className = mergeClasses(
     radioClassNames.indicator,
     indicatorBaseClassName,
@@ -242,6 +243,7 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
 
   const labelStyles = useLabelStyles();
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       radioClassNames.label,
       labelStyles.base,

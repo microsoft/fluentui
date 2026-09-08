@@ -4,9 +4,10 @@ import {
   Overflow,
   OverflowItem,
   OverflowDivider,
+  OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useOverflowMenu,
-  useOverflowContext,
+  useOverflowVisibility,
   type OverflowProps,
   type OverflowItemProps,
   type OnOverflowChangeData,
@@ -95,7 +96,7 @@ const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
 
 const Menu: React.FC<{ width?: number }> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
+  const { itemVisibility } = useOverflowVisibility();
   const selector = {
     [selectors.menu]: '',
   };
@@ -107,7 +108,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, minWidth: width, height: 50 }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -251,6 +252,87 @@ describe('Overflow', () => {
       setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
+  });
+
+  it('should keep the menu visible when one phone number overflows next to a divider', () => {
+    cy.on('uncaught:exception', error => {
+      if (error.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+        return false;
+      }
+    });
+
+    const PhoneNumbers = () => {
+      const [width, setWidth] = React.useState(280);
+
+      return (
+        <>
+          {[40, 180, 250, 280].map(nextWidth => (
+            <button key={nextWidth} data-test-width={nextWidth} onClick={() => setWidth(nextWidth)}>
+              {nextWidth}
+            </button>
+          ))}
+          <Container size={width} padding={10}>
+            <OverflowItem id="primary-phone" groupId="primary-phone-group" priority={1}>
+              <a
+                {...{ [selectors.item]: 'primary-phone' }}
+                href="tel:+4790981948"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 120 }}
+              >
+                +4790981948
+              </a>
+            </OverflowItem>
+            <OverflowDivider groupId="primary-phone-group">
+              <div
+                {...{ [selectors.divider]: 'primary-phone-group' }}
+                style={{ flexShrink: 0, width: 8 }}
+                aria-hidden="true"
+              >
+                •
+              </div>
+            </OverflowDivider>
+            <OverflowItem id="secondary-phone" priority={0}>
+              <a
+                {...{ [selectors.item]: 'secondary-phone' }}
+                href="tel:+47 (2) 3011302"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 140 }}
+              >
+                +47 (2) 3011302
+              </a>
+            </OverflowItem>
+            <Menu width={36} />
+          </Container>
+        </>
+      );
+    };
+
+    const setPhoneContainerWidth = (width: number) => {
+      cy.get(`[data-test-width="${width}"]`).click();
+    };
+
+    mount(<PhoneNumbers />);
+    cy.get(`[${selectors.container}]`).should('have.css', 'width', '280px');
+    cy.window().then(win => new Cypress.Promise(resolve => win.requestAnimationFrame(() => resolve())));
+
+    setPhoneContainerWidth(40);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+
+    setPhoneContainerWidth(180);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(250);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(280);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
   it(`should overflow items when there's more than one child element`, () => {
@@ -1304,6 +1386,45 @@ describe('Overflow', () => {
       cy.get(`[${selectors.item}="8"]`).should('be.visible');
       // After pinning item 8: 8 items overflow (1-7, 9) - pinned item 8 is not counted
       cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+  });
+
+  describe('OverflowReorderObserver', () => {
+    const INITIAL_IDS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+    const ReorderExample: React.FC = () => {
+      const [ids, setIds] = React.useState(INITIAL_IDS);
+      return (
+        <>
+          <Container size={300}>
+            <OverflowReorderObserver />
+            {ids.map(id => (
+              <Item key={id} id={id} priority={1}>
+                {id}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <button id="reverse" onClick={() => setIds(prev => [...prev].reverse())}>
+            Reverse
+          </button>
+        </>
+      );
+    };
+
+    it('recomputes overflow when items are reordered via React state', () => {
+      mount(<ReorderExample />);
+
+      // Initial layout: container=300px, items=50px each + 50px menu → ~5 visible, 3 overflow.
+      cy.get(`[${selectors.item}="a"]`).should('be.visible');
+      cy.get(`[${selectors.item}="h"]`).should('not.be.visible');
+
+      cy.get('#reverse').click();
+
+      // After reversing, the items at the front of the new order (h, g, f, ...) should be
+      // visible. Items pushed to the tail (..., b, a) should overflow.
+      cy.get(`[${selectors.item}="h"]`).should('be.visible');
+      cy.get(`[${selectors.item}="a"]`).should('not.be.visible');
     });
   });
 });

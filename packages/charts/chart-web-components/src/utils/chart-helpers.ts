@@ -7,7 +7,7 @@ export const jsonConverter: ValueConverter = {
     return JSON.stringify(value);
   },
   fromView(value: string): any {
-    return JSON.parse(value);
+    return typeof value === 'string' ? JSON.parse(value) : value;
   },
 };
 

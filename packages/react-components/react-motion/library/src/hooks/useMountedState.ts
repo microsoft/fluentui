@@ -30,5 +30,6 @@ export function useMountedState(
     }
   });
 
+  // eslint-disable-next-line react-hooks/refs
   return [visible || mountedRef.current, setMounted];
 }

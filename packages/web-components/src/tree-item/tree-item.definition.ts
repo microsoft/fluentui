@@ -1,16 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { TreeItem } from './tree-item.js';
-import { styles as treeItemStyle } from './tree-item.styles.js';
-import { template as treeItemTemplate } from './tree-item.template.js';
+import { tagName } from './tree-item.options.js';
+import { styles } from './tree-item.styles.js';
+import { template } from './tree-item.template.js';
 
 /**
+ * The definition for the `<fluent-tree-item>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-tree-item\>
  */
-export const definition = TreeItem.compose({
-  name: `${FluentDesignSystem.prefix}-tree-item`,
-  template: treeItemTemplate,
-  styles: treeItemStyle,
-});
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
+  styles,
+  template,
+};

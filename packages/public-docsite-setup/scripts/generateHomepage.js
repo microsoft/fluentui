@@ -17,10 +17,9 @@ if (!fs.existsSync(dest)) {
   fs.mkdirSync(dest);
 }
 
-const rollupCommand = 'yarn --silent rollup';
+const rollupCommand = 'yarn run -T rollup';
 
 // first rollup run: resolve imports relative to the original file
-// (--silent prevents yarn headers from being printed with output)
 const loadSitePath = path.resolve(__dirname, '../lib/loadSite.js');
 const prelimJsPath = path.join(dest, 'homepage.prelim.js');
 execSync(`${rollupCommand} ${loadSitePath} -o ${prelimJsPath}`, { stdio: 'pipe' });

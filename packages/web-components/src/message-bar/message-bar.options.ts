@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
@@ -37,3 +38,10 @@ export const MessageBarIntent = {
 } as const;
 
 export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+/**
+ * The tag name for the message bar element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-message-bar` as const;

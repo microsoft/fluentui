@@ -1,6 +1,1 @@
-import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
-
-/**
- * Renders the final JSX of the AccordionHeader component, given the state and context values.
- */
-export const renderAccordionHeader = renderAccordionHeader_unstable;
+export { renderAccordionHeader_unstable as renderAccordionHeader } from '@fluentui/react-accordion';

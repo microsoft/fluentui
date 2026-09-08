@@ -160,8 +160,6 @@ const useExpandIconBaseStyles = makeResetStyles({
 export const useTreeItemPersonaLayoutStyles_unstable = (
   state: TreeItemPersonaLayoutState,
 ): TreeItemPersonaLayoutState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const rootStyles = useRootStyles();
   const mediaBaseStyles = useMediaBaseStyles();
@@ -176,6 +174,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeItemPersonaLayoutClassNames.root,
     rootBaseStyles,
@@ -185,9 +184,11 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, state.media.className);
 
   if (state.main) {
+    // eslint-disable-next-line react-hooks/immutability
     state.main.className = mergeClasses(
       treeItemPersonaLayoutClassNames.main,
       mainBaseStyles,
@@ -196,6 +197,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.description) {
+    // eslint-disable-next-line react-hooks/immutability
     state.description.className = mergeClasses(
       treeItemPersonaLayoutClassNames.description,
       descriptionBaseStyles,
@@ -203,6 +205,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.actions) {
+    // eslint-disable-next-line react-hooks/immutability
     state.actions.className = mergeClasses(
       treeItemPersonaLayoutClassNames.actions,
       actionsBaseStyles,
@@ -210,9 +213,11 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(treeItemPersonaLayoutClassNames.aside, asideBaseStyles, state.aside.className);
   }
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconBaseStyles,
@@ -221,6 +226,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   }
 
   if (state.selector) {
+    // eslint-disable-next-line react-hooks/immutability
     state.selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, state.selector.className);
   }
 

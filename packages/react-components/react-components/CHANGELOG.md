@@ -1,8 +1,633 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 01 Apr 2026 15:52:39 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.74.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.7)
+
+Mon, 24 Aug 2026 16:40:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.6..@fluentui/react-components_v9.74.7)
+
+### Patches
+
+- `@fluentui/react-migration-v8-v9`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: avoid redundant overflow work during menu teardown and unchanged visibility updates ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-rating`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: remove no-op `supportsSize` field control option from `TagPickerInput` ([PR #36468](https://github.com/microsoft/fluentui/pull/36468) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+  - Keep motion ref handling out of the headless MessageBar base hook. ([PR #36549](https://github.com/microsoft/fluentui/pull/36549) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: synchronously measure overflowing managers when the overflow menu attaches ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+  - fix: avoid redundant overflow recomputation after conditional menu removal ([PR #36602](https://github.com/microsoft/fluentui/pull/36602) by bsunderhus@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+
+## [9.74.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.6)
+
+Tue, 11 Aug 2026 17:20:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.5..@fluentui/react-components_v9.74.6)
+
+### Minor changes
+
+- `@fluentui/react-swatch-picker`
+  - feat: expose headless base APIs ([PR #36534](https://github.com/microsoft/fluentui/pull/36534) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - feat: expose useSplitButtonBase_unstable hook ([PR #36524](https://github.com/microsoft/fluentui/pull/36524) by vgenaev@gmail.com)
+  - feat: expose CompoundButton base hook ([PR #36530](https://github.com/microsoft/fluentui/pull/36530) by vgenaev@gmail.com)
+- `@fluentui/react-color-picker`
+  - feat(react-color-picker): expose headless base APIs ([PR #36517](https://github.com/microsoft/fluentui/pull/36517) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-icons-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: move inline styling and context resolution out of the base hook ([PR #36542](https://github.com/microsoft/fluentui/pull/36542) by vgenaev@gmail.com)
+- `@fluentui/react-list`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: Move ColorSwatch styling out of the headless base hook. ([PR #36550](https://github.com/microsoft/fluentui/pull/36550) by dmytrokirpa@microsoft.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: avoid headless bundle size regression from #36275 ([PR #36497](https://github.com/microsoft/fluentui/pull/36497) by dmytrokirpa@microsoft.com)
+  - fix: omit the default TagPicker expand icon from headless state ([PR #36503](https://github.com/microsoft/fluentui/pull/36503) by vgenaev@gmail.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: separate headless teaching popover title state from bundled icon defaults ([PR #36504](https://github.com/microsoft/fluentui/pull/36504) by vgenaev@gmail.com)
+- `@fluentui/react-text`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-theme`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-charts`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: use valid HSL syntax for color slider styles ([PR #36555](https://github.com/microsoft/fluentui/pull/36555) by dmytrokirpa@microsoft.com)
+  - refactor: Replace the tinycolor dependency with internal utilities. ([PR #36548](https://github.com/microsoft/fluentui/pull/36548) by dmytrokirpa@microsoft.com)
+  - fix: Move shared color picker CSS variables from style modules to constants files. ([PR #36552](https://github.com/microsoft/fluentui/pull/36552) by dmytrokirpa@microsoft.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: avoid headless bundle size regression from #36275 ([PR #36497](https://github.com/microsoft/fluentui/pull/36497) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/tokens`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-alert`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [9.74.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.5)
+
+Tue, 04 Aug 2026 10:12:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.4..@fluentui/react-components_v9.74.5)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail ([PR #36432](https://github.com/microsoft/fluentui/pull/36432) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: escape SSR theme style selectors ([PR #36464](https://github.com/microsoft/fluentui/pull/36464) by paulmardling@microsoft.com)
+- `@fluentui/react-select`
+  - fix: fix Field control size handling for Select ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: allow base states in TagPicker render functions ([PR #36443](https://github.com/microsoft/fluentui/pull/36443) by vgenaev@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: hide Tooltip when its trigger scrolls outside an overflow container ([PR #36386](https://github.com/microsoft/fluentui/pull/36386) by paulmardling@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: add accessible names to Tree selection controls ([PR #36384](https://github.com/microsoft/fluentui/pull/36384) by paulmardling@microsoft.com)
+- `@fluentui/react-charts`
+  - voice control accessibility bug fix ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by 132879294+v-baambati@users.noreply.github.com)
+  - Accessibility bug fixe ([PR #36426](https://github.com/microsoft/fluentui/pull/36426) by 132879294+v-baambati@users.noreply.github.com)
+  - HorizontalBarChart bug fixes ([PR #36494](https://github.com/microsoft/fluentui/pull/36494) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-color-picker`
+  - Pin @ctrl/tinycolor version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: fix Field control size handling Combobox and Dropdown ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix(MessageBar): v9 MessageBar Resize Flicker Fix ([PR #36405](https://github.com/microsoft/fluentui/pull/36405) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically ([PR #36440](https://github.com/microsoft/fluentui/pull/36440) by petrduda@microsoft.com)
+
+## [9.74.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.4)
+
+Wed, 15 Jul 2026 14:10:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.3..@fluentui/react-components_v9.74.4)
+
+### Minor changes
+
+- `@fluentui/react-tag-picker`
+  - feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition ([PR #36353](https://github.com/microsoft/fluentui/pull/36353) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: avoid overflow snapshot updates after unmount ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-charts`
+  - Accessibility bug fixes ([PR #36292](https://github.com/microsoft/fluentui/pull/36292) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: align @fluentui/fluent2-theme and @fluentui/react dependency ranges with republished v8 versions ([PR #36364](https://github.com/microsoft/fluentui/pull/36364) by martinhochel@microsoft.com)
+
+## [9.74.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.3)
+
+Mon, 29 Jun 2026 15:15:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.2..@fluentui/react-components_v9.74.3)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: do not expose default icon in base hook ([PR #36345](https://github.com/microsoft/fluentui/pull/36345) by vgenaev@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix(Calendar): year prev/next buttons don't lose focus when they become disabled ([PR #36343](https://github.com/microsoft/fluentui/pull/36343) by sarah.higley@microsoft.com)
+
+## [9.74.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.2)
+
+Wed, 24 Jun 2026 11:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.1..@fluentui/react-components_v9.74.2)
+
+### Minor changes
+
+- `@fluentui/react-overflow`
+  - Expose Overflow use/render/styles hooks, provider and context types for headless consumers ([PR #36304](https://github.com/microsoft/fluentui/pull/36304) by vgenaev@gmail.com)
+  - feat: produce a correct overflow snapshot before the first paint ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: add base hooks/types for headless composition ([PR #36260](https://github.com/microsoft/fluentui/pull/36260) by viktorgenaev@microsoft.com)
+- `@fluentui/priority-overflow`
+  - feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported. ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+  - feat: expose getSnapshot and subscribe on OverflowManager ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+- `@fluentui/react-button`
+  - feat: add useMenuButtonBase hook ([PR #36319](https://github.com/microsoft/fluentui/pull/36319) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: Escape in an open Combobox or Dropdown does not trigger tabster actions ([PR #36275](https://github.com/microsoft/fluentui/pull/36275) by sarah.higley@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix(Link): add disabled styles for high contrast mode ([PR #36277](https://github.com/microsoft/fluentui/pull/36277) by sarah.higley@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: Escape in an open Menu does not trigger tabster actions ([PR #36313](https://github.com/microsoft/fluentui/pull/36313) by olfedias@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: make Overflow container strict-mode safe ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+  - fix: subscribe overflow hooks directly to the manager snapshot ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes ([PR #36266](https://github.com/microsoft/fluentui/pull/36266) by bsunderhus@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: recompute overflow eagerly when the overflow menu attaches or detaches ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- `@fluentui/react-accordion`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - refactor(react-calendar): migrate to motion components ([PR #35666](https://github.com/microsoft/fluentui/pull/35666) by robertpenner@microsoft.com)
+- `@fluentui/react-card`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: prevent DonutChart from growing infinitely inside an unconstrained ResponsiveContainer ([PR #36276](https://github.com/microsoft/fluentui/pull/36276) by kumarkshitij@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+
+## [9.74.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.1)
+
+Wed, 27 May 2026 11:18:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.0..@fluentui/react-components_v9.74.1)
+
+### Minor changes
+
+- `@fluentui/react-toast`
+  - feat: export toast base hooks and types ([PR #35914](https://github.com/microsoft/fluentui/pull/35914) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tags`
+  - fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version. ([PR #36228](https://github.com/microsoft/fluentui/pull/36228) by vgenaev@gmail.com)
+
+## [9.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.0)
+
+Tue, 26 May 2026 09:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.8..@fluentui/react-components_v9.74.0)
+
+### Minor changes
+
+- `@fluentui/react-tags`
+  - feat: export contexts for headless ([PR #36229](https://github.com/microsoft/fluentui/pull/36229) by vgenaev@gmail.com)
+- `@fluentui/react-teaching-popover`
+  - feat: export base hooks ([PR #36200](https://github.com/microsoft/fluentui/pull/36200) by viktorgenaev@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: expose react-menu base hooks ([PR #36087](https://github.com/microsoft/fluentui/pull/36087) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add base hooks and expose them ([PR #35812](https://github.com/microsoft/fluentui/pull/35812) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: fix after broken release ([PR #36037](https://github.com/microsoft/fluentui/pull/36037) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - Make Card base hooks tabster-free; expose shouldRestrictTriggerAction on CardBaseProps ([PR #36004](https://github.com/microsoft/fluentui/pull/36004) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-export motionSlot and presenceMotionSlot from @fluentui/react-motion ([PR #35922](https://github.com/microsoft/fluentui/pull/35922) by robertpenner@microsoft.com)
+  - feat: re-export OverflowReorderObserver from @fluentui/react-overflow ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: expose inline drawer types and base hooks ([PR #36042](https://github.com/microsoft/fluentui/pull/36042) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1 ([PR #36082](https://github.com/microsoft/fluentui/pull/36082) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tooltip`
+  - fix: dismiss Tooltip when the document becomes hidden (e.g. tab backgrounded or app switched on mobile) ([PR #36023](https://github.com/microsoft/fluentui/pull/36023) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tree`
+  - fix(react-tree): support indentation for TreeItem levels greater than 10 via inline CSS variable fallback ([PR #36014](https://github.com/microsoft/fluentui/pull/36014) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-utilities`
+  - style: replace deprecated assertion syntax that causes issues to babel tsx ([PR #36185](https://github.com/microsoft/fluentui/pull/36185) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Menu item with expanded submenu should be highlighted ([PR #36098](https://github.com/microsoft/fluentui/pull/36098) by jukapsia@microsoft.com)
+  - fix: update useMenuTriggerBase hook signature ([PR #36237](https://github.com/microsoft/fluentui/pull/36237) by dmytrokirpa@microsoft.com)
+  - feat: add headless Menu components ([PR #36110](https://github.com/microsoft/fluentui/pull/36110) by vgenaev@gmail.com)
+  - chore: extract useMenuItemBase_unstable into a separate module ([PR #36234](https://github.com/microsoft/fluentui/pull/36234) by viktorgenaev@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover when focus escapes outside while trapFocus is enabled ([PR #35995](https://github.com/microsoft/fluentui/pull/35995) by petrduda@microsoft.com)
+- `@fluentui/react-portal`
+  - revert: revert removal of Griffel dependency from usePortalMount #35994 ([PR #36235](https://github.com/microsoft/fluentui/pull/36235) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - fix: avoid pulling griffel in CardHeader and CardPreview base hooks ([PR #36194](https://github.com/microsoft/fluentui/pull/36194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - refactor: move isSafeUrl to chart-utilities package and update imports ([PR #36206](https://github.com/microsoft/fluentui/pull/36206) by dmytrokirpa@microsoft.com)
+  - safeurl related bug fix ([PR #36121](https://github.com/microsoft/fluentui/pull/36121) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-combobox`
+  - fix(Option): when disabled, hover styles should not show ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by sarah.higley@microsoft.com)
+  - fix: use role attribute instead of classname for active descendant ([PR #36109](https://github.com/microsoft/fluentui/pull/36109) by dmytrokirpa@microsoft.com)
+
+## [9.73.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.8)
+
+Thu, 23 Apr 2026 14:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.7..@fluentui/react-components_v9.73.8)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - feat: add CollapseParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: expose base hooks for Toolbar components ([PR #35903](https://github.com/microsoft/fluentui/pull/35903) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat(react-message-bar): add useMessageBarBase_unstable hook ([PR #35908](https://github.com/microsoft/fluentui/pull/35908) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: expose motion params as direct props on motion slot types ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+  - fix(react-motion): apply MotionComponent type to presence definition ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by robertpenner@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: add ScaleParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: update type for drawerMotion slot ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-accordion`
+  - feat: add CollapseParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: add focusgroupstart property to baseElementProperties ([PR #36020](https://github.com/microsoft/fluentui/pull/36020) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: Combobox now expands/collapses when clicking in the right padding area (the dead zone between the chevron and the right border) ([PR #36013](https://github.com/microsoft/fluentui/pull/36013) by copilot@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-toolbar`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: use subtle appearance for radio button by default ([PR #36022](https://github.com/microsoft/fluentui/pull/36022) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: export base hook types ([PR #35989](https://github.com/microsoft/fluentui/pull/35989) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-list`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-color-picker`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-context-selector`
+  - fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers ([PR #36002](https://github.com/microsoft/fluentui/pull/36002) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: prevent spreading of custom props on html element ([PR #36017](https://github.com/microsoft/fluentui/pull/36017) by dmytrokirpa@microsoft.com)
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: prevent keyboard focus from entering a collapsing panel ([PR #35960](https://github.com/microsoft/fluentui/pull/35960) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-spinner`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: update Switch component to conditionally render CircleFilled in indicator ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path ([PR #35933](https://github.com/microsoft/fluentui/pull/35933) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - refactor: remove Griffel dependency from usePortalMountNode ([PR #35994](https://github.com/microsoft/fluentui/pull/35994) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: add mising base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - fix: add missing base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+  - fix(react-breadcrumb): wrong appearance applied by default to BreadcrumbButton ([PR #35970](https://github.com/microsoft/fluentui/pull/35970) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: isSafeUrl utility ([PR #35963](https://github.com/microsoft/fluentui/pull/35963) by vgenaev@gmail.com)
 
 ## [9.73.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.7)
 

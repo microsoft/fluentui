@@ -43,3 +43,27 @@ export function tsConfigPathsPlugin(options: { cwd: string }): Plugin {
 
   return pluginConfig;
 }
+
+/**
+ * SSR shim for `*.module.css` imports. Returns a Proxy that echoes the requested
+ * property name (so `styles.foo === 'foo'`), which keeps className strings stable
+ * for SSR rendering without needing the actual CSS-Modules transform.
+ */
+export function cssModulesShimPlugin(): Plugin {
+  return {
+    name: 'css-modules-shim',
+    setup({ onResolve, onLoad }) {
+      onResolve({ filter: /\.module\.css$/ }, args => {
+        const absolute = path.isAbsolute(args.path) ? args.path : path.resolve(args.resolveDir, args.path);
+        return { path: absolute, namespace: 'css-modules-shim' };
+      });
+      onLoad({ filter: /.*/, namespace: 'css-modules-shim' }, () => ({
+        contents: [
+          `const styles = new Proxy({}, { get: (_, key) => typeof key === 'string' ? key : '' });`,
+          `export default styles;`,
+        ].join('\n'),
+        loader: 'js',
+      }));
+    },
+  };
+}

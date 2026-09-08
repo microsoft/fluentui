@@ -43,8 +43,6 @@ const useDrawerRootStyles = makeStyles({
  * Apply styling to the OverlayDrawer slots based on the state
  */
 export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): OverlayDrawerState => {
-  'use no memo';
-
   const baseClassNames = useDrawerBaseClassNames(state);
   const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
@@ -52,6 +50,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
   const absoluteStyles = state.hasMountNodeElement && rootStyles.absolute;
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     overlayDrawerClassNames.root,
     baseClassNames,
@@ -62,6 +61,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
   );
 
   if (backdrop) {
+    // eslint-disable-next-line react-hooks/immutability
     backdrop.className = mergeClasses(overlayDrawerClassNames.backdrop, absoluteStyles, backdrop.className);
   }
 

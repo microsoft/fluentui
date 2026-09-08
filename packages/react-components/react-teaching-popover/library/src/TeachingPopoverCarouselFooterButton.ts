@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverCarouselFooterButtonBaseProps,
+  TeachingPopoverCarouselFooterButtonBaseState,
   TeachingPopoverCarouselFooterButtonProps,
   TeachingPopoverCarouselFooterButtonSlots,
   TeachingPopoverCarouselFooterButtonState,
@@ -9,4 +11,5 @@ export {
   teachingPopoverCarouselFooterButtonClassNames,
   useTeachingPopoverCarouselFooterButtonStyles_unstable,
   useTeachingPopoverCarouselFooterButton_unstable,
+  useTeachingPopoverCarouselFooterButtonBase_unstable,
 } from './components/TeachingPopoverCarouselFooterButton/index';

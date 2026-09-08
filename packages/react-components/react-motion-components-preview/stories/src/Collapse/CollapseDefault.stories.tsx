@@ -1,17 +1,21 @@
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
-import type { JSXElement, PresenceComponentProps } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: tokens.spacingVerticalXL,
+  },
+  cardContent: {
+    maxHeight: '300px',
+    overflow: 'hidden',
   },
   controls: {
     display: 'flex',
@@ -21,10 +25,13 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
 });
 
@@ -36,9 +43,9 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: PresenceComponentProps): JSXElement => {
+export const Default = (): JSXElement => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   return (
     <div className={classes.container}>
@@ -49,9 +56,19 @@ export const Default = (props: PresenceComponentProps): JSXElement => {
       </div>
 
       <Collapse visible={visible}>
-        <div className={classes.card}>
-          <LoremIpsum />
-        </div>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
+          {/* Wrapper div needed because Collapse controls maxHeight on its child to animate height */}
+          <div className={classes.cardContent}>
+            <LoremIpsum />
+          </div>
+        </Card>
       </Collapse>
     </div>
   );

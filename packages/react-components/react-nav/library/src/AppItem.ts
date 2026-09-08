@@ -1,4 +1,10 @@
-export type { AppItemProps, AppItemSlots, AppItemState } from './components/AppItem/index';
+export type {
+  AppItemProps,
+  AppItemSlots,
+  AppItemState,
+  AppItemBaseProps,
+  AppItemBaseState,
+} from './components/AppItem/index';
 export {
   AppItem,
   appItemClassNames,
@@ -6,4 +12,5 @@ export {
   useAppItemStyles,
   useAppItemStyles_unstable,
   useAppItem_unstable,
+  useAppItemBase_unstable,
 } from './components/AppItem/index';

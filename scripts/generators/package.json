@@ -6,6 +6,5 @@
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-projects-test": "*"
-  },
-  "devDependencies": {}
+  }
 }

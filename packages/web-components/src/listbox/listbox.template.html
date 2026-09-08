@@ -1,0 +1,6 @@
+<f-template name="fluent-listbox" shadowrootmode="open">
+  <template @beforetoggle="{beforetoggleHandler($e)}" @click="{clickHandler($e)}">
+    {{styles}}
+    <slot f-ref="{defaultSlot}" @slotchange="{slotchangeHandler($e)}"></slot>
+  </template>
+</f-template>

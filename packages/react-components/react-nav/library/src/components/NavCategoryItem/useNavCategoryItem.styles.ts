@@ -41,8 +41,6 @@ export const useRootStyles = makeStyles({
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const smallStyles = useSmallStyles();
   const defaultRootClassName = useRootDefaultClassName();
@@ -53,6 +51,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
 
   const { selected, open, density } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
@@ -63,6 +62,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
     expandIconStyles.base,
@@ -70,6 +70,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       navCategoryItemClassNames.icon,
       iconStyles.base,

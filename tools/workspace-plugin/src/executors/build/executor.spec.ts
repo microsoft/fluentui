@@ -389,4 +389,205 @@ describe('Build Executor', () => {
       expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'))).toBe(false);
     }, 60000);
   });
+
+  describe(`#__esmFirst`, () => {
+    const esmFirstContext: ExecutorContext = {
+      root: workspaceRoot,
+      cwd: process.cwd(),
+      isVerbose: false,
+      projectName: 'esm-first-proj',
+      projectsConfigurations: {
+        version: 2,
+        projects: {
+          'esm-first-proj': {
+            root: 'libs/esm-first-proj',
+            name: 'esm-first-proj',
+          },
+        },
+      },
+      nxJsonConfiguration: {},
+      projectGraph: { nodes: {}, dependencies: {} },
+    };
+
+    it('renames lib-commonjs output to *.cjs, rewrites relative require() extensions, and copies dist/*.d.cts', async () => {
+      const esmFirstOptions: BuildExecutorSchema = {
+        sourceRoot: 'src',
+        outputPathRoot: 'libs/esm-first-proj/dist',
+        moduleOutput: [
+          { module: 'es6', outputPath: 'lib' },
+          { module: 'commonjs', outputPath: 'lib-commonjs' },
+        ],
+        assets: [],
+        generateApi: true,
+        clean: true,
+        __esmFirst: true,
+      };
+
+      const output = await executor(esmFirstOptions, esmFirstContext);
+      expect(output.success).toBe(true);
+
+      // ESM (`lib`) output keeps *.js, with fully-resolved relative specifiers (resolveFully, driven by .swcrc's jsc.baseUrl)
+      expect(readdirSync(join(workspaceRoot, 'libs/esm-first-proj/lib')).sort()).toEqual([
+        'greeter.js',
+        'greeter.js.map',
+        'helper.js',
+        'helper.js.map',
+        'index.js',
+        'index.js.map',
+      ]);
+      const greeterEsm = readFileSync(join(workspaceRoot, 'libs/esm-first-proj/lib/greeter.js'), 'utf-8');
+      expect(greeterEsm).toContain(`./helper.js`);
+
+      // commonjs output is renamed to *.cjs and its relative `require()` is rewritten to the `.cjs` extension
+      expect(readdirSync(join(workspaceRoot, 'libs/esm-first-proj/lib-commonjs')).sort()).toEqual([
+        'greeter.cjs',
+        'greeter.cjs.map',
+        'helper.cjs',
+        'helper.cjs.map',
+        'index.cjs',
+        'index.cjs.map',
+      ]);
+      const greeterCjs = readFileSync(join(workspaceRoot, 'libs/esm-first-proj/lib-commonjs/greeter.cjs'), 'utf-8');
+      expect(greeterCjs).toContain(`require("./helper.cjs")`);
+      expect(greeterCjs).not.toContain(`./helper.js`);
+
+      // package.json itself is never modified by this temporary flag
+      expect(readFileSync(join(workspaceRoot, 'libs/esm-first-proj/package.json'), 'utf-8')).toBe(
+        '{\n  "name": "esm-first-proj"\n}\n',
+      );
+
+      // `copyCjsTypes` is driven by the same `isEsmPackage` flag as the `.cjs` rename - unified via `options.isEsmPackage`
+      expect(existsSync(join(workspaceRoot, 'libs/esm-first-proj/dist/index.d.cts'))).toBe(true);
+      expect(readFileSync(join(workspaceRoot, 'libs/esm-first-proj/dist/index.d.cts'), 'utf-8')).toBe(
+        readFileSync(join(workspaceRoot, 'libs/esm-first-proj/dist/index.d.ts'), 'utf-8'),
+      );
+    }, 60000);
+
+    it('fails fast when ESM-first postprocessing is enabled but .swcrc is missing "jsc.baseUrl"', async () => {
+      // `libs/proj/.swcrc` has no `jsc.baseUrl`, so its commonjs output never gets extensioned relative
+      // `require()` specifiers - renaming those files to `.cjs` would ship an unrequireable package.
+      const optionsWithoutBaseUrl: BuildExecutorSchema = {
+        ...options,
+        __esmFirst: true,
+      };
+
+      await expect(executor(optionsWithoutBaseUrl, context)).rejects.toThrow(/jsc\.baseUrl/);
+    });
+  });
+
+  describe(`#reactCompiler`, () => {
+    const reactCompilerContext: ExecutorContext = {
+      root: workspaceRoot,
+      cwd: process.cwd(),
+      isVerbose: false,
+      projectName: 'react-compiler-proj',
+      projectsConfigurations: {
+        version: 2,
+        projects: {
+          'react-compiler-proj': {
+            root: 'libs/react-compiler-proj',
+            name: 'react-compiler-proj',
+          },
+        },
+      },
+      nxJsonConfiguration: {},
+      projectGraph: { nodes: {}, dependencies: {} },
+    };
+
+    it('applies react-compiler transforms to ESM output (without styles)', async () => {
+      jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
+      jest.spyOn(logger, 'verbose').mockImplementation(() => {
+        return;
+      });
+
+      const reactCompilerOptions: BuildExecutorSchema = {
+        sourceRoot: 'src',
+        outputPathRoot: 'libs/react-compiler-proj/dist',
+        moduleOutput: [
+          { module: 'es6', outputPath: 'lib' },
+          { module: 'commonjs', outputPath: 'lib-commonjs' },
+        ],
+        assets: [],
+        generateApi: false,
+        clean: true,
+        reactCompiler: true,
+      };
+
+      const output = await executor(reactCompilerOptions, reactCompilerContext);
+      expect(output.success).toBe(true);
+
+      // assert react-compiler memoization cache is present in ESM output
+      expect(readFileSync(join(workspaceRoot, 'libs/react-compiler-proj/lib/Counter.js'), 'utf-8'))
+        .toMatchInlineSnapshot(`
+        "import { c as _c } from \\"react/compiler-runtime\\";
+        import * as React from 'react';
+        export function Counter(t0) {
+            const $ = _c(2);
+            const { initialCount: t1 } = t0;
+            const initialCount = t1 === undefined ? 0 : t1;
+            const [count, setCount] = React.useState(initialCount);
+            let t2;
+            if ($[0] !== count) {
+                t2 = /*#__PURE__*/ React.createElement(\\"div\\", null, /*#__PURE__*/ React.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ React.createElement(\\"button\\", {
+                    onClick: ()=>setCount(count + 1)
+                }, \\"Increment\\"));
+                $[0] = count;
+                $[1] = t2;
+            } else {
+                t2 = $[1];
+            }
+            return t2;
+        }
+        "
+      `);
+
+      // assert intermediate directory is cleaned up
+      expect(existsSync(join(workspaceRoot, 'libs/react-compiler-proj/temp/react-compiler-intermediate'))).toBe(false);
+    }, 60000);
+
+    it('applies react-compiler before griffel AOT (with styles)', async () => {
+      jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
+      jest.spyOn(logger, 'verbose').mockImplementation(() => {
+        return;
+      });
+
+      const optionsWithReactCompiler: BuildExecutorSchema = {
+        ...options,
+        reactCompiler: true,
+      };
+
+      const output = await executor(optionsWithReactCompiler, context);
+      expect(output.success).toBe(true);
+
+      // assert greeter.js ESM output is valid (react-compiler ran on TS source, SWC compiled from intermediate)
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "import { useStyles } from './greeter.styles';
+        export function greeter(greeting, user) {
+            var _user_hometown;
+            const styles = useStyles();
+            return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+        }
+        "
+      `);
+
+      // assert griffel AOT still applied correctly on styles files
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "import { __styles } from '@griffel/react';
+        export const useStyles = /*#__PURE__*/__styles({
+          root: {
+            sj55zd: \\"fe3e8s9\\"
+          }
+        }, {
+          d: [\\".fe3e8s9{color:red;}\\"]
+        });"
+      `);
+
+      // assert intermediate directory is cleaned up
+      expect(existsSync(join(workspaceRoot, 'libs/proj/temp/react-compiler-intermediate'))).toBe(false);
+    }, 60000);
+  });
 });

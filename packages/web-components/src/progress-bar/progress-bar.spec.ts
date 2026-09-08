@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { ProgressBar } from './progress-bar.js';
-import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
+import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState, tagName } from './progress-bar.options.js';
 
 interface BoundingBox {
   width: number;
@@ -8,7 +8,7 @@ interface BoundingBox {
 
 test.describe('Progress Bar', () => {
   test.use({
-    tagName: 'fluent-progress-bar',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -20,15 +20,17 @@ test.describe('Progress Bar', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-progress-bar');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should include a role of progressbar', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'progressbar');
   });
@@ -59,6 +61,9 @@ test.describe('Progress Bar', () => {
 
   test('should set indicator width to be 1/3 of the container width if `value` is missing', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
     await element.evaluate(node => {
       node.style.setProperty('width', '100px');
     });

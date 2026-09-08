@@ -1,6 +1,8 @@
 export { createOverflowManager } from './overflowManager';
+export { EMPTY_SNAPSHOT } from './consts';
 export type {
   ObserveOptions,
+  OverflowOptions,
   OnUpdateItemVisibility,
   OnUpdateItemVisibilityPayload,
   OnUpdateOverflow,
@@ -11,4 +13,5 @@ export type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
+  OverflowSnapshot,
 } from './types';

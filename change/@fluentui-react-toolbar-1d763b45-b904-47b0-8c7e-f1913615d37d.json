@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

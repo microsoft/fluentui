@@ -679,6 +679,8 @@ import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
 import { MotionComponentProps } from '@fluentui/react-motion';
 import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionSlot } from '@fluentui/react-motion';
+import { MotionSlotProps } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
 import { Nav } from '@fluentui/react-nav';
 import { NavButtonRenderFunction } from '@fluentui/react-carousel';
@@ -770,6 +772,7 @@ import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { OverflowReorderObserver } from '@fluentui/react-overflow';
 import { OverlayDrawer } from '@fluentui/react-drawer';
 import { overlayDrawerClassNames } from '@fluentui/react-drawer';
 import { OverlayDrawerProps } from '@fluentui/react-drawer';
@@ -834,6 +837,8 @@ import { presenceDndRegular } from '@fluentui/react-badge';
 import { PresenceGroup } from '@fluentui/react-motion';
 import { PresenceMotion } from '@fluentui/react-motion';
 import { PresenceMotionFn } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -3377,6 +3382,10 @@ export { MotionComponentProps }
 
 export { MotionImperativeRef }
 
+export { motionSlot }
+
+export { MotionSlotProps }
+
 export { motionTokens }
 
 export { Nav }
@@ -3559,6 +3568,8 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
+export { OverflowReorderObserver }
+
 export { OverlayDrawer }
 
 export { overlayDrawerClassNames }
@@ -3686,6 +3697,10 @@ export { PresenceGroup }
 export { PresenceMotion }
 
 export { PresenceMotionFn }
+
+export { presenceMotionSlot }
+
+export { PresenceMotionSlotProps }
 
 export { presenceOfflineRegular }
 

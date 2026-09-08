@@ -15,10 +15,12 @@ describe(PLUGIN_NAME, () => {
   pluginTester({
     fixtures: fixturesDir,
     pluginOptions: {
-      '@fluentui/react-button': defaultDependencyReplace,
-      '@fluentui/react-menu': defaultDependencyReplace,
-      '@fluentui/react-link': defaultDependencyReplace,
-      '@fluentui/react-unstable-component': { replace: '@fluentui/react-components/unstable' },
+      importMappings: {
+        '@fluentui/react-button': defaultDependencyReplace,
+        '@fluentui/react-menu': defaultDependencyReplace,
+        '@fluentui/react-link': defaultDependencyReplace,
+        '@fluentui/react-unstable-component': { replace: '@fluentui/react-components/unstable' },
+      },
     },
     pluginName: PLUGIN_NAME,
     plugin,

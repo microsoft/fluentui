@@ -6,8 +6,8 @@ import type { MenuProps } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { makeStyles } from '@griffel/react';
 
-import type { ThemeIds } from '..';
-import { themes, THEME_ID } from '..';
+import type { ThemeIds, Theme } from '..';
+import { THEME_ID } from '..';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 /**
  * Theme picker used in the react-components docs header
  */
-export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedThemeId }) => {
+export const ThemePicker: React.FC<{ selectedThemeId?: string; themes: Theme[] }> = ({ selectedThemeId, themes }) => {
   const styles = useStyles();
   const [currentThemeId, setCurrentThemeId] = React.useState(selectedThemeId ?? null);
 

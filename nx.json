@@ -16,7 +16,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production", "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json"],
-      "cache": true
+      "cache": true,
+      "syncGenerators": ["@fluentui/workspace-plugin:export-maps-sync"]
     },
     "build-storybook": {
       "dependsOn": [],
@@ -60,7 +61,12 @@
       "cache": true
     },
     "e2e": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "scripts-cypress"
+        }
+      ],
       "cache": true,
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
@@ -124,11 +130,15 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s"
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/bundle-size/**"
     ]
   },
   "release": {
     "projectsRelationship": "independent"
+  },
+  "sync": {
+    "globalGenerators": ["@fluentui/workspace-plugin:export-maps-sync"]
   },
   "parallel": 3,
   "useInferencePlugins": false,
@@ -163,16 +173,13 @@
         "apps/public-docsite-v9-headless/**",
         "apps/rit-tests-v9/*",
         "apps/rit-tests-v8/*",
-
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
-
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
         "packages/charts/react-charts/**/*",
-
         "packages/foundation-legacy/**",
         "packages/jest-serializer-merge-styles/**",
         "packages/react/**",

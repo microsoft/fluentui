@@ -12,7 +12,7 @@ import { useTooltipBase_unstable } from './useTooltipBase';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTooltip_unstable — manual opt-out to preserve runtime behavior
 
   const { appearance = 'normal', ...baseProps } = props;
 

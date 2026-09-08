@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

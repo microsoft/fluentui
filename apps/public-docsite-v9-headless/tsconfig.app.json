@@ -7,6 +7,8 @@
     "outDir": "lib",
     "jsx": "react",
     "sourceMap": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "types": ["static-assets", "webpack-env"]
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],

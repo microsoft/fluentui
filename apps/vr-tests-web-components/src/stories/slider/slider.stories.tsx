@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps, Keys, type StoryParameters } from 'storywright';
-import { SliderDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import '@fluentui/web-components/slider/define.js';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
-
-SliderDefinition.define(FluentDesignSystem.registry);
 
 export default {
   title: 'Slider',

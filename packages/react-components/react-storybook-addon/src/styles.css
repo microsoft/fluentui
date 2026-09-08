@@ -128,7 +128,8 @@
 #storybook-docs .sbdocs-preview {
   border-radius: 16px;
   background: var(--colorBrandBackgroundInverted, #fff);
-  padding: 0;
+  /* This makes Canvas Toolbar un-usable, we are already forcing padding via '#storybook-docs .innerZoomElementWrapper' */
+  /* padding: 0; */
   box-shadow: none;
   border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
 }

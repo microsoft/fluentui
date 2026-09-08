@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enforce consistent type imports",
-  "packageName": "@fluentui/react-combobox",
-  "email": "copilot@microsoft.com",
-  "dependentChangeType": "none"
-}

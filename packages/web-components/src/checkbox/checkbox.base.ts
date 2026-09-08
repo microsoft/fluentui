@@ -1,23 +1,16 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 
 /**
  * The base class for a component with a toggleable checked state.
  *
+ * @fires { Event } change - Fires a custom 'change' event when the checked state changes
+ * @fires { Event } input - Fires a custom 'input' event when the checked state changes
+ *
  * @public
  */
 export class BaseCheckbox extends FASTElement {
-  /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
   /**
    * The element's current checked state.
    *
@@ -177,7 +170,7 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   protected requiredChanged(prev: boolean, next: boolean): void {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals) {
       this.setValidity();
       this.elementInternals.ariaRequired = this.required ? 'true' : 'false';
     }
@@ -248,7 +241,7 @@ export class BaseCheckbox extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    if (this.elementInternals.validationMessage) {
+    if (this.elementInternals?.validationMessage) {
       return this.elementInternals.validationMessage;
     }
 
@@ -295,11 +288,12 @@ export class BaseCheckbox extends FASTElement {
   public set value(value: string) {
     this._value = value;
 
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals) {
       this.setFormValue(value);
       this.setValidity();
-      Observable.notify(this, 'value');
     }
+
+    Observable.notify(this, 'value');
   }
 
   /**
@@ -355,6 +349,7 @@ export class BaseCheckbox extends FASTElement {
     this.disabled = !!this.disabledAttribute;
     this.setAriaChecked();
     this.setValidity();
+    maybeSetAutoFocus(this);
   }
 
   /**
@@ -429,7 +424,9 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   protected setAriaChecked(value: boolean = this.checked) {
-    this.elementInternals.ariaChecked = value ? 'true' : 'false';
+    if (this.elementInternals) {
+      this.elementInternals.ariaChecked = value ? 'true' : 'false';
+    }
   }
 
   /**
@@ -438,7 +435,7 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
-    this.elementInternals.setFormValue(value, value ?? state);
+    this.elementInternals?.setFormValue(value, value ?? state);
   }
 
   /**
@@ -462,7 +459,7 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals) {
       if (this.disabled || !this.required) {
         this.elementInternals.setValidity({});
         return;

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { LinkDefinition, FluentDesignSystem } from '@fluentui/web-components';
 
-LinkDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/link/define.js';
 
 const linkId = 'link-id';
 

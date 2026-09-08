@@ -1,0 +1,15 @@
+<f-template name="fluent-slider" shadowrootmode="open">
+  <template @pointerdown="{handlePointerDown($e)}" @keydown="{handleKeydown($e)}">
+    {{styles}}
+    <div f-ref="{track}" part="track-container" class="track" style="{{position}}"></div>
+    <div
+      f-ref="{thumb}"
+      part="thumb-container"
+      class="thumb-container"
+      style="{{position}}"
+      @pointerdown="{handleThumbPointerDown($e)}"
+    >
+      <slot name="thumb"><div class="thumb"></div></slot>
+    </div>
+  </template>
+</f-template>

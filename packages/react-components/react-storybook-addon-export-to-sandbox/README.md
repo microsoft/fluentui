@@ -8,6 +8,7 @@ This Storybook addon enables exporting stories to CodeSandbox or StackBlitz dire
 
 - Export stories to CodeSandbox/StackBlitz
 - Supports both Create React App (CRA) and Vite bundlers
+- "Open in new tab" button to view stories outside the Storybook iframe (enabled by default)
 
 ## Installation
 
@@ -111,18 +112,24 @@ const preview = {
         '@fluentui/react-components': '^9.0.0',
       },
     },
+    // "Open in new tab" button is enabled by default.
+    // Set to false to hide it.
+    openInNewTab: true,
   } satisfies Parameters,
 } satisfies Preview;
 
 export default preview;
 ```
 
-| Option                 | Type                                                                 | Required | Description                                                |
-| ---------------------- | -------------------------------------------------------------------- | -------- | ---------------------------------------------------------- |
-| `provider`             | `'codesandbox-cloud' \| 'codesandbox-browser' \| 'stackblitz-cloud'` | Yes      | Which sandbox provider to use for the export               |
-| `bundler`              | `'vite' \| 'cra'`                                                    | Yes      | Which bundler template to scaffold in the sandbox          |
-| `requiredDependencies` | `Record<string, string>`                                             | No       | Dependencies always included in the sandbox `package.json` |
-| `optionalDependencies` | `Record<string, string>`                                             | No       | Dependencies included only when detected in story imports  |
+| Option                 | Type                                                                 | Required | Description                                                  |
+| ---------------------- | -------------------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| `provider`             | `'codesandbox-cloud' \| 'codesandbox-browser' \| 'stackblitz-cloud'` | Yes      | Which sandbox provider to use for the export                 |
+| `bundler`              | `'vite' \| 'cra'`                                                    | Yes      | Which bundler template to scaffold in the sandbox            |
+| `requiredDependencies` | `Record<string, string>`                                             | No       | Dependencies always included in the sandbox `package.json`   |
+| `optionalDependencies` | `Record<string, string>`                                             | No       | Dependencies included only when detected in story imports    |
+| `openInNewTab`         | `boolean`                                                            | No       | Show "Open in new tab" button in Docs view (default: `true`) |
+
+> **Note on `openInNewTab` placement:** The `openInNewTab` parameter is a separate top-level key alongside `exportToSandbox`, not nested within it. This is because opening a story in a new browser tab is conceptually unrelated to exporting to an external sandbox provider. Ideally this feature would live in `@fluentui/react-storybook-addon` (the base addon), but for simplicity it is currently shipped within this package. A future refactor may move it to the appropriate addon.
 
 ### Local (Per Story) Configuration
 
@@ -140,6 +147,8 @@ MyStory.parameters = {
       '@fluentui/react-components': 'latest',
     },
   },
+  // Disable "Open in new tab" for this specific story
+  openInNewTab: false,
 };
 ```
 

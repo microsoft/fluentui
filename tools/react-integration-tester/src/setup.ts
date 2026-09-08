@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process';
 
 import * as ejs from 'ejs';
 
-import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
+import type { Args, ReactVersion, PackageJson as BasePackageJson, TsConfig } from './shared';
 import {
   runCmd,
   readCommandsFromPreparedProject,
@@ -15,6 +15,10 @@ import {
   serializeJson,
 } from './shared';
 import { type Logger } from './logger';
+
+type PackageJson = BasePackageJson & {
+  dependenciesMeta?: Record<string, { built?: boolean }>;
+};
 
 function findGitRoot(cwd: string) {
   const output = execSync('git rev-parse --show-toplevel', { cwd });
@@ -125,6 +129,17 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
  * Writes only when the file does not exist or dependencies actually change (to avoid race issues on CI).
  * Returned value indicates whether a write occurred.
  */
+function ensureWorkspaceIsolation(reactRootPath: string) {
+  const yarnLockPath = join(reactRootPath, 'yarn.lock');
+  if (!existsSync(yarnLockPath)) {
+    writeFileSync(yarnLockPath, '');
+  }
+
+  const yarnrcPath = join(reactRootPath, '.yarnrc.yml');
+  // Always overwrite to ensure enableHardenedMode is disabled (stale cached files may lack it)
+  writeFileSync(yarnrcPath, 'enableHardenedMode: false\nnodeLinker: node-modules\n');
+}
+
 function upsertReactRootPackageJson(params: {
   reactRootPath: string;
   react: ReactVersion;
@@ -133,6 +148,7 @@ function upsertReactRootPackageJson(params: {
 }): { wrote: boolean; pkgPath: string } {
   const { reactRootPath, react, dependencies, logger } = params;
   mkdirSync(reactRootPath, { recursive: true });
+  ensureWorkspaceIsolation(reactRootPath);
   const reactRootPkgPath = join(reactRootPath, 'package.json');
 
   const basePkg: PackageJson = {
@@ -155,11 +171,20 @@ function upsertReactRootPackageJson(params: {
   const prevDeps = existingPkg?.dependencies ?? basePkg.dependencies ?? {};
   const mergedDeps = { ...prevDeps, ...dependencies };
   const depsChanged = JSON.stringify(prevDeps) !== JSON.stringify(mergedDeps) || !existsSync(reactRootPkgPath);
+  const dependenciesMeta = {
+    ...existingPkg?.dependenciesMeta,
+    cypress: {
+      ...existingPkg?.dependenciesMeta?.['cypress'],
+      built: true,
+    },
+  };
+  const dependenciesMetaChanged = JSON.stringify(existingPkg?.dependenciesMeta) !== JSON.stringify(dependenciesMeta);
 
-  if (depsChanged) {
+  if (depsChanged || dependenciesMetaChanged) {
     const nextPkg: PackageJson = {
       ...(existingPkg ?? basePkg),
       dependencies: mergedDeps,
+      dependenciesMeta,
     };
     writeJsonFile(reactRootPkgPath, nextPkg);
     logger?.verbose?.(
@@ -260,6 +285,7 @@ function prepareTsConfigTemplate(options: {
 
   const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
+  const moduleResolution = tsConfig.compilerOptions?.moduleResolution ?? 'node';
 
   return {
     pathToProjectConfig: options.projectTsConfigPath,
@@ -269,26 +295,24 @@ function prepareTsConfigTemplate(options: {
     target,
     lib,
     strictMode,
+    moduleResolution,
   };
 }
 
-async function installDependenciesAtReactRoot(reactVersionRootPath: string, opts: { scaffoldRoot: string }) {
-  // Use a scoped global yarn cache and a global mutex to avoid concurrent cache corruption on CI
-  const yarnCacheFolder = join(opts.scaffoldRoot, '.yarn-cache');
-
+async function installDependenciesAtReactRoot(reactVersionRootPath: string) {
   if (!existsSync(join(reactVersionRootPath, 'package.json'))) {
     throw new Error(`Missing package.json at react root: ${reactVersionRootPath}`);
   }
 
-  mkdirSync(yarnCacheFolder, { recursive: true });
   // small retry loop
   const maxAttempts = 3;
   let attempt = 0;
   while (true) {
     try {
       attempt += 1;
-      await runCmd(`yarn install --mutex network --network-timeout 60000 --cache-folder ${yarnCacheFolder}`, {
+      await runCmd(`yarn install`, {
         cwd: reactVersionRootPath,
+        env: { YARN_ENABLE_HARDENED_MODE: '0', YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' },
       });
       break;
     } catch (err) {
@@ -334,7 +358,7 @@ async function ensureDependencies(params: {
 
     case 'run-install': {
       params.logger.verbose(`Installing dependencies for React ${params.react}...`);
-      await installDependenciesAtReactRoot(params.reactRootPath, { scaffoldRoot: params.mode.scaffoldRoot });
+      await installDependenciesAtReactRoot(params.reactRootPath);
       return;
     }
   }
@@ -490,6 +514,14 @@ export async function setup(
       metadata.tmpl,
       join(projectPath, 'tsconfig.cy.json'),
     );
+
+    const workspaceTsConfigBasePath = join(workspaceRoot, 'tsconfig.base.json');
+    if (existsSync(workspaceTsConfigBasePath)) {
+      // Provide a local tsconfig.base.json so relative TsconfigPathsPlugin lookups keep working in RIT context.
+      writeJsonFile(join(projectPath, 'tsconfig.base.json'), {
+        extends: relative(projectPath, workspaceTsConfigBasePath).replace(/\\/g, '/'),
+      });
+    }
   }
 
   // 4) Create package.json for test project including npm scripts
@@ -527,7 +559,7 @@ export async function installDepsForReactVersion(
 
   logger.verbose(`Installing dependencies under: ${reactRootPath}`);
 
-  await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
+  await installDependenciesAtReactRoot(reactRootPath);
 
   logger.log(`Dependencies installed under shared react root -> ${reactRootPath}.`);
 }

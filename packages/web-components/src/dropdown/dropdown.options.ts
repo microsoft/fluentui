@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';
 import type { BaseDropdown } from './dropdown.base.js';
@@ -65,3 +66,10 @@ export const DropdownType = {
 
 /** @public */
 export type DropdownType = ValuesOf<typeof DropdownType>;
+
+/**
+ * The tag name for the dropdown element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-dropdown` as const;

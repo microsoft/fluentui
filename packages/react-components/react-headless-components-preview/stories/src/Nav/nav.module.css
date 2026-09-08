@@ -1,0 +1,248 @@
+/* ----------------------------------------------------------------
+ * Nav — standalone nav list
+ * ----------------------------------------------------------------*/
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  padding: var(--space-2) 0;
+  gap: var(--space-1);
+}
+
+/* ----------------------------------------------------------------
+ * Shared item base — reused by navItem, navSubItem, navCategoryItem
+ * ----------------------------------------------------------------*/
+.navItem,
+.navSubItem,
+.navCategoryItem {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-muted);
+  text-align: start;
+  width: 100%;
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.navItem:hover,
+.navSubItem:hover,
+.navCategoryItem:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.navItem:focus-visible,
+.navSubItem:focus-visible,
+.navCategoryItem:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* ----------------------------------------------------------------
+ * NavItem
+ * ----------------------------------------------------------------*/
+.navItem {
+  padding: var(--space-2) var(--space-3);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.navItem[aria-current='page'] {
+  background: var(--surface-sunken);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+ * NavSubItem
+ * ----------------------------------------------------------------*/
+.navSubItem {
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-10);
+  font-size: 13px;
+}
+
+.navSubItem[aria-current='page'] {
+  background: var(--surface-sunken);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+ * NavCategoryItem
+ * ----------------------------------------------------------------*/
+.navCategoryItem {
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.expandIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-soft);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+/* ----------------------------------------------------------------
+ * NavDivider
+ * ----------------------------------------------------------------*/
+.divider {
+  height: var(--stroke-thin);
+  margin: var(--space-1) var(--space-3);
+  border: none;
+  background: var(--border);
+}
+
+/* ----------------------------------------------------------------
+ * NavSectionHeader
+ * ----------------------------------------------------------------*/
+.sectionHeader {
+  padding: var(--space-3) var(--space-3) var(--space-1);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+ * Status line (Controlled story)
+ * ----------------------------------------------------------------*/
+.status {
+  padding: var(--space-2) var(--space-3);
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* ================================================================
+ * NavDrawer layout
+ * ================================================================*/
+.drawerRoot {
+  display: flex;
+  height: 480px;
+  overflow: hidden;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+}
+
+.drawerContent {
+  flex: 1;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+/* ----------------------------------------------------------------
+ * NavDrawer panel (the <nav> rendered by NavDrawer)
+ * ----------------------------------------------------------------*/
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  flex-shrink: 0;
+  border: none;
+  border-right: var(--stroke-thin) solid var(--border);
+  background: var(--bg-soft);
+}
+
+dialog.drawerNav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  max-height: 100%;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--stroke-thin) solid var(--border);
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-2);
+  gap: var(--space-1);
+}
+
+/* ----------------------------------------------------------------
+ * Buttons
+ * ----------------------------------------------------------------*/
+.hamburgerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hamburgerButton:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.hamburgerButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.navigateButton {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navigateButton:hover {
+  background: var(--accent-strong);
+}
+
+.navigateButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ----------------------------------------------------------------
+ * Control panel (radio / checkbox groups in the main content area)
+ * ----------------------------------------------------------------*/
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.controlLabel {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}

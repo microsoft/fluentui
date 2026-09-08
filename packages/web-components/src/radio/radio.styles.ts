@@ -19,7 +19,6 @@ import {
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 
 /**
@@ -106,8 +105,8 @@ export const styles = css`
   :host(${checkedState}${disabledState}) .checked-indicator {
     background-color: ${colorNeutralStrokeDisabled};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       border-color: FieldText;
     }
@@ -141,5 +140,5 @@ export const styles = css`
     :host(${disabledState}${checkedState}) .checked-indicator {
       background-color: GrayText;
     }
-  `),
-);
+  }
+`;

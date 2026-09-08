@@ -99,7 +99,7 @@ const useStyles = makeStyles({
     },
   },
   chartWrapper40ppadding: {
-    paddingRight: '40p',
+    paddingRight: '40px',
   },
   chartWrapper0ppadding: {
     paddingRight: tokens.spacingHorizontalNone,

@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -16,6 +17,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
+
+// @public
+export type AlphaSliderBaseProps = Omit<AlphaSliderProps, 'shape'>;
+
+// @public
+export type AlphaSliderBaseState = Omit<AlphaSliderState, 'shape'>;
 
 // @public (undocumented)
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
@@ -33,6 +40,12 @@ export type AlphaSliderState = ComponentState<AlphaSliderSlots> & Pick<AlphaSlid
 
 // @public
 export const ColorArea: ForwardRefComponent<ColorAreaProps>;
+
+// @public
+export type ColorAreaBaseProps = Omit<ColorAreaProps, 'shape'>;
+
+// @public
+export type ColorAreaBaseState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;
 
 // @public (undocumented)
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
@@ -55,11 +68,32 @@ export type ColorAreaSlots = {
 // @public
 export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color' | 'shape'>;
 
+// @public (undocumented)
+export type ColorChannel = 'hue' | 'saturation' | 'value';
+
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 
+// @public
+export type ColorPickerBaseProps = Omit<ColorPickerProps, 'shape'>;
+
+// @public
+export type ColorPickerBaseState = Omit<ColorPickerState, 'shape'>;
+
 // @public (undocumented)
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
+
+// @public
+export type ColorPickerContextValue = Pick<ColorPickerProps, 'shape' | 'color'> & {
+    requestChange: (event: React_2.ChangeEvent<HTMLInputElement>, data: {
+        color: HsvColor;
+    }) => void;
+};
+
+// @public (undocumented)
+export type ColorPickerContextValues = {
+    colorPicker: ColorPickerContextValue;
+};
 
 // @public
 export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
@@ -78,6 +112,12 @@ export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerCon
 
 // @public
 export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
+
+// @public (undocumented)
+export type ColorSliderBaseProps = Omit<ColorSliderProps, 'shape'>;
+
+// @public (undocumented)
+export type ColorSliderBaseState = Omit<ColorSliderState, 'shape'>;
 
 // @public (undocumented)
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
@@ -103,19 +143,22 @@ export type ColorSliderSlots = {
 export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
 
 // @public
-export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSXElement;
+export const renderAlphaSlider_unstable: (state: AlphaSliderBaseState) => JSXElement;
 
 // @public
-export const renderColorArea_unstable: (state: ColorAreaState) => JSXElement;
+export const renderColorArea_unstable: (state: ColorAreaBaseState) => JSXElement;
 
 // @public
-export const renderColorPicker_unstable: (state: ColorPickerState, contextValues: ColorPickerContextValues) => JSXElement;
+export const renderColorPicker_unstable: (state: ColorPickerBaseState, contextValues: ColorPickerContextValues) => JSXElement;
 
 // @public
-export const renderColorSlider_unstable: (state: ColorSliderState) => JSXElement;
+export const renderColorSlider_unstable: (state: ColorSliderBaseState) => JSXElement;
 
 // @public
 export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref<HTMLInputElement>) => AlphaSliderState;
+
+// @public (undocumented)
+export const useAlphaSliderBase_unstable: (props: AlphaSliderBaseProps, ref: React_2.Ref<HTMLInputElement>) => AlphaSliderBaseState;
 
 // @public
 export const useAlphaSliderStyles_unstable: (state: AlphaSliderState) => AlphaSliderState;
@@ -124,16 +167,31 @@ export const useAlphaSliderStyles_unstable: (state: AlphaSliderState) => AlphaSl
 export const useColorArea_unstable: (props: ColorAreaProps, ref: React_2.Ref<HTMLDivElement>) => ColorAreaState;
 
 // @public
-export const useColorAreaStyles_unstable: (state: ColorAreaState) => ColorAreaState;
+export const useColorAreaBase_unstable: (props: ColorAreaBaseProps, ref: React_2.Ref<HTMLDivElement>) => ColorAreaBaseState;
 
 // @public
+export const useColorAreaStyles_unstable: (state: ColorAreaState) => ColorAreaState;
+
+// @public (undocumented)
 export const useColorPicker_unstable: (props: ColorPickerProps, ref: React_2.Ref<HTMLDivElement>) => ColorPickerState;
+
+// @public
+export const useColorPickerBase_unstable: (props: ColorPickerBaseProps, ref: React_2.Ref<HTMLDivElement>) => ColorPickerBaseState;
+
+// @public (undocumented)
+export const useColorPickerContextValue_unstable: <T>(selector: ContextSelector<ColorPickerContextValue, T>) => T;
+
+// @public (undocumented)
+export const useColorPickerContextValues: (state: ColorPickerState) => ColorPickerContextValues;
 
 // @public
 export const useColorPickerStyles_unstable: (state: ColorPickerState) => ColorPickerState;
 
 // @public
 export const useColorSlider_unstable: (props: ColorSliderProps, ref: React_2.Ref<HTMLInputElement>) => ColorSliderState;
+
+// @public
+export const useColorSliderBase_unstable: (props: ColorSliderBaseProps, ref: React_2.Ref<HTMLInputElement>) => ColorSliderBaseState;
 
 // @public
 export const useColorSliderStyles_unstable: (state: ColorSliderState) => ColorSliderState;

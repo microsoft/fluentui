@@ -425,13 +425,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               onFocus={(event: React.FocusEvent<SVGElement>) => _onBarFocus(point, event)}
               onBlur={_onBarLeave}
               tabIndex={shouldHighlight ? 0 : -1}
-              role="img"
+              role="option"
               aria-label={_getAriaLabel(point)}
             />
           );
         });
         return (
-          <g>
+          <g role="listbox" aria-label={`${points.length} ${points.length === 1 ? 'bar' : 'bars'}`}>
             {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
             {bars}
           </g>

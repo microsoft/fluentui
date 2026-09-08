@@ -19,6 +19,8 @@ export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
   value: NavItemValue;
 };
 
+export type NavSubItemBaseProps = NavSubItemProps;
+
 /**
  * State used in rendering NavSubItem
  */
@@ -35,3 +37,5 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> &
      */
     density: NavDensity;
   };
+
+export type NavSubItemBaseState = Omit<NavSubItemState, 'density'>;

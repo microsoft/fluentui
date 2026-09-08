@@ -24,7 +24,7 @@ async function main() {
   const asyncQueue = [];
 
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --noEmit --baseUrl .`;
+    const program = `yarn run -T tsc -p ${ref} --pretty --noEmit --baseUrl .`;
     asyncQueue.push(asyncExec(program));
   }
 

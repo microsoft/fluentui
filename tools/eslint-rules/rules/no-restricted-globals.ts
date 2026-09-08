@@ -14,8 +14,9 @@
  * https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/src/rules
  */
 
-import { Reference } from '@typescript-eslint/scope-manager';
-import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES, TSESLint, TSESTree } from '@typescript-eslint/utils';
+
+type Reference = TSESLint.Scope.Reference;
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-no-restricted-globals"
 export const RULE_NAME = 'no-restricted-globals';
 

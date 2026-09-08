@@ -1,12 +1,13 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Radio } from '../radio/index.js';
+import { tagName as RadioTagName } from '../radio/radio.options.js';
 import type { RadioGroup } from './radio-group.js';
+import { tagName } from './radio-group.options.js';
 
 test.describe('RadioGroup', () => {
   test.use({
-    tagName: 'fluent-radio-group',
-    waitFor: ['fluent-radio'],
-    innerHTML: '',
+    tagName,
+    waitFor: [RadioTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -18,9 +19,9 @@ test.describe('RadioGroup', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-radio-group');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -67,13 +68,13 @@ test.describe('RadioGroup', () => {
 
   test('should set the `aria-setsize` and `aria-posinset` attributes on the radios', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -91,16 +92,16 @@ test.describe('RadioGroup', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
     const firstRadio = radios.nth(0);
     const secondRadio = radios.nth(1);
     const thirdRadio = radios.nth(2);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio></fluent-radio>
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -133,11 +134,11 @@ test.describe('RadioGroup', () => {
 
     await fastPage.setTemplate(/* html */ `
       <button tabindex="0">First</button>
-      <fluent-radio-group disabled>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-      </fluent-radio-group>
+      <${tagName} disabled>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+      </${tagName}>
       <button tabindex="0">Second</button>
     `);
 
@@ -154,16 +155,16 @@ test.describe('RadioGroup', () => {
 
   test('should NOT be focusable via click when disabled', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
     const button = page.locator('button', { hasText: 'Button' });
 
     await fastPage.setTemplate(/* html */ `
       <button>Button</button>
-      <fluent-radio-group>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-      </fluent-radio-group>
+      <${tagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+      </${tagName}>
     `);
 
     await button.focus();
@@ -200,16 +201,16 @@ test.describe('RadioGroup', () => {
 
   test('should set tabindex of 0 to a child radio with a matching `value`', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       attributes: {
         value: 'foo',
       },
       innerHTML: /* html */ `
-        <fluent-radio value="foo"></fluent-radio>
-        <fluent-radio value="bar"></fluent-radio>
-        <fluent-radio value="baz"></fluent-radio>
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
       `,
     });
 
@@ -218,13 +219,13 @@ test.describe('RadioGroup', () => {
 
   test("should set tabindex of 0 to a child radio that's initially checked", async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio value="foo"></fluent-radio>
-        <fluent-radio value="bar" checked></fluent-radio>
-        <fluent-radio value="baz"></fluent-radio>
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar" checked></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
       `,
     });
 
@@ -233,14 +234,16 @@ test.describe('RadioGroup', () => {
 
   test('should check the first radio with a matching `value`', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
-    await fastPage.setTemplate(/* html */ `
-      <fluent-radio-group value="bar">
-        <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
-        <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
-        <fluent-radio id="radio-3" name="radio" value="baz"></fluent-radio>
-    `);
+    await fastPage.setTemplate({
+      attributes: { value: 'bar' },
+      innerHTML: /* html */ `
+        <${RadioTagName} id="radio-1" name="radio" value="foo"></${RadioTagName}>
+        <${RadioTagName} id="radio-2" name="radio" value="bar"></${RadioTagName}>
+        <${RadioTagName} id="radio-3" name="radio" value="baz"></${RadioTagName}>
+      `,
+    });
 
     await expect(radios.nth(0)).toHaveJSProperty('checked', false);
 
@@ -254,14 +257,14 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate(/* html */ `
-      <fluent-radio-group>
-        <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
-        <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
-        <fluent-radio id="radio-3" name="radio" value="baz"></fluent-radio>
-      </fluent-radio-group>
+      <${tagName}>
+        <${RadioTagName} id="radio-1" name="radio" value="foo"></${RadioTagName}>
+        <${RadioTagName} id="radio-2" name="radio" value="bar"></${RadioTagName}>
+        <${RadioTagName} id="radio-3" name="radio" value="baz"></${RadioTagName}>
+      </${tagName}>
     `);
 
     await radios.nth(0).evaluate((node: Radio) => {
@@ -283,16 +286,16 @@ test.describe('RadioGroup', () => {
   });
 
   test('should emit `change` event when using keyboard', async ({ fastPage, page }) => {
-    const element = page.locator('fluent-radio-group');
-    const radios = element.locator('fluent-radio');
+    const element = page.locator(tagName);
+    const radios = element.locator(RadioTagName);
 
-    await fastPage.setTemplate(/* html */ `
-      <fluent-radio-group>
-        <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
-        <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
-        <fluent-radio id="radio-3" name="radio" value="baz"></fluent-radio>
-      </fluent-radio-group>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${RadioTagName} id="radio-1" name="radio" value="foo"></${RadioTagName}>
+        <${RadioTagName} id="radio-2" name="radio" value="bar"></${RadioTagName}>
+        <${RadioTagName} id="radio-3" name="radio" value="baz"></${RadioTagName}>
+      `,
+    });
 
     const wasChanged = element.evaluate((node: RadioGroup) => {
       return new Promise(resolve => {
@@ -308,16 +311,16 @@ test.describe('RadioGroup', () => {
 
   test('should set a child radio with a matching `value` to `checked` when value changes', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       attributes: {
         value: 'foo',
       },
       innerHTML: /* html */ `
-        <fluent-radio value="foo"></fluent-radio>
-        <fluent-radio value="bar"></fluent-radio>
-        <fluent-radio value="baz"></fluent-radio>
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
       `,
     });
 
@@ -334,13 +337,13 @@ test.describe('RadioGroup', () => {
 
   test('should mark only the last radio defaulted to checked as checked', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio value="foo" checked></fluent-radio>
-        <fluent-radio value="bar" checked></fluent-radio>
-        <fluent-radio value="baz" checked></fluent-radio>
+        <${RadioTagName} value="foo" checked></${RadioTagName}>
+        <${RadioTagName} value="bar" checked></${RadioTagName}>
+        <${RadioTagName} value="baz" checked></${RadioTagName}>
       `,
     });
 
@@ -355,14 +358,14 @@ test.describe('RadioGroup', () => {
 
   test('should mark radio matching value on radio-group over any checked attributes', async ({ fastPage }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       attributes: { value: 'foo' },
       innerHTML: /* html */ `
-        <fluent-radio value="foo"></fluent-radio>
-        <fluent-radio value="bar" checked></fluent-radio>
-        <fluent-radio value="baz"></fluent-radio>
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar" checked></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
       `,
     });
 
@@ -379,15 +382,15 @@ test.describe('RadioGroup', () => {
 
   test('should allow resetting of elements by the parent form', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group>
-          <fluent-radio name="radio" value="foo"></fluent-radio>
-          <fluent-radio name="radio" value="bar" checked></fluent-radio>
-          <fluent-radio name="radio" value="baz"></fluent-radio>
-        </fluent-radio-group>
+        <${tagName}>
+          <${RadioTagName} name="radio" value="foo"></${RadioTagName}>
+          <${RadioTagName} name="radio" value="bar" checked></${RadioTagName}>
+          <${RadioTagName} name="radio" value="baz"></${RadioTagName}>
+        </${tagName}>
       </form>
     `);
 
@@ -420,13 +423,13 @@ test.describe('RadioGroup', () => {
 
   test('should focus the first radio when the radio group is focused', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -440,13 +443,13 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -460,13 +463,13 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -483,9 +486,9 @@ test.describe('RadioGroup', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio disabled></fluent-radio>
-        <fluent-radio disabled></fluent-radio>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName} disabled></${RadioTagName}>
+        <${RadioTagName} disabled></${RadioTagName}>
       `,
     });
 
@@ -494,22 +497,23 @@ test.describe('RadioGroup', () => {
     await expect(element).not.toBeFocused();
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should move focus to the next radio when the radio group is focused and the arrow down key is pressed', async ({
     fastPage,
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-      `,
-    });
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <${tagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+      </${tagName}>
+    `);
 
+    await page.getByTestId('before').focus();
     await page.keyboard.press('Tab');
 
     await expect(radios.nth(0)).toBeFocused();
@@ -538,9 +542,9 @@ test.describe('RadioGroup', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio name="foo"></fluent-radio>
-        <fluent-radio name="foo"></fluent-radio>
-        <fluent-radio name="foo"></fluent-radio>
+        <${RadioTagName} name="foo"></${RadioTagName}>
+        <${RadioTagName} name="foo"></${RadioTagName}>
+        <${RadioTagName} name="foo"></${RadioTagName}>
       `,
     });
 
@@ -554,28 +558,27 @@ test.describe('RadioGroup', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-radio name="foo"></fluent-radio>
-        <fluent-radio name="bar"></fluent-radio>
-        <fluent-radio name="baz"></fluent-radio>
+        <${RadioTagName} name="foo"></${RadioTagName}>
+        <${RadioTagName} name="bar"></${RadioTagName}>
+        <${RadioTagName} name="baz"></${RadioTagName}>
       `,
     });
 
     await expect(element).not.toHaveAttribute('name');
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should set the `name` attribute of the radios to the `name` attribute of the radio group', async ({
     fastPage,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       attributes: { name: 'foo' },
       innerHTML: /* html */ `
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
-        <fluent-radio></fluent-radio>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
+        <${RadioTagName}></${RadioTagName}>
       `,
     });
 
@@ -590,14 +593,14 @@ test.describe('RadioGroup', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate({
       attributes: { name: 'foo' },
       innerHTML: /* html */ `
-        <fluent-radio name="bar"></fluent-radio>
-        <fluent-radio name="baz"></fluent-radio>
-        <fluent-radio name="qux"></fluent-radio>
+        <${RadioTagName} name="bar"></${RadioTagName}>
+        <${RadioTagName} name="baz"></${RadioTagName}>
+        <${RadioTagName} name="qux"></${RadioTagName}>
       `,
     });
 
@@ -615,15 +618,15 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group name="radio">
-          <fluent-radio value="foo"></fluent-radio>
-          <fluent-radio value="bar"></fluent-radio>
-          <fluent-radio value="baz"></fluent-radio>
-        </fluent-radio-group>
+        <${tagName} name="radio">
+          <${RadioTagName} value="foo"></${RadioTagName}>
+          <${RadioTagName} value="bar"></${RadioTagName}>
+          <${RadioTagName} value="baz"></${RadioTagName}>
+        </${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -642,15 +645,15 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group name="radio" disabled>
-          <fluent-radio value="foo"></fluent-radio>
-          <fluent-radio value="bar"></fluent-radio>
-          <fluent-radio value="baz"></fluent-radio>
-        </fluent-radio-group>
+        <${tagName} name="radio" disabled>
+          <${RadioTagName} value="foo"></${RadioTagName}>
+          <${RadioTagName} value="bar"></${RadioTagName}>
+          <${RadioTagName} value="baz"></${RadioTagName}>
+        </${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -669,15 +672,15 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group>
-          <fluent-radio value="foo"></fluent-radio>
-          <fluent-radio value="bar"></fluent-radio>
-          <fluent-radio value="baz"></fluent-radio>
-        </fluent-radio-group>
+        <${tagName}>
+          <${RadioTagName} value="foo"></${RadioTagName}>
+          <${RadioTagName} value="bar"></${RadioTagName}>
+          <${RadioTagName} value="baz"></${RadioTagName}>
+        </${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -697,7 +700,7 @@ test.describe('RadioGroup', () => {
   }) => {
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group name="radio" value="foo"></fluent-radio-group>
+        <${tagName} name="radio" value="foo"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -714,16 +717,16 @@ test.describe('RadioGroup', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const radios = element.locator('fluent-radio');
+    const radios = element.locator(RadioTagName);
     const button = page.locator('button');
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio-group name="radio">
-          <fluent-radio disabled value="foo"></fluent-radio>
-          <fluent-radio disabled value="bar"></fluent-radio>
-          <fluent-radio disabled value="baz"></fluent-radio>
-        </fluent-radio-group>
+        <${tagName} name="radio">
+          <${RadioTagName} disabled value="foo"></${RadioTagName}>
+          <${RadioTagName} disabled value="bar"></${RadioTagName}>
+          <${RadioTagName} disabled value="baz"></${RadioTagName}>
+        </${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -735,5 +738,57 @@ test.describe('RadioGroup', () => {
     await button.click();
 
     await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT check the first radio when the group gains focus and check when space is hit', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator(RadioTagName);
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <${tagName} name="radio">
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
+      </${tagName}>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+
+    await expect(radios.nth(0)).toBeFocused();
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await page.keyboard.press('Space');
+    await expect(radios.nth(0)).toHaveJSProperty('checked', true);
+  });
+
+  test('should check the second radio when the focus is moved to it by directional navigation', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator(RadioTagName);
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <${tagName} name="radio">
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
+      </${tagName}>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+
+    await expect(radios.nth(1)).toBeFocused();
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
   });
 });

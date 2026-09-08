@@ -1,17 +1,12 @@
 import { attr } from '@microsoft/fast-element';
-import type { StaticallyComposableHTML } from '../utils/index.js';
-import { StartEnd } from '../patterns/index.js';
-import type { StartEndOptions } from '../patterns/index.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { StartEnd, type StartEndOptions } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { BaseAccordionItem } from './accordion-item.base.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
-export type { StaticallyComposableHTML } from '../utils/index.js';
-
 /**
  * Accordion Item configuration options
- *
- * @tag fluent-accordion-item
  *
  * @public
  */
@@ -23,6 +18,8 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
 /**
  * An Accordion Item Custom HTML Element.
  * Based on BaseAccordionItem and includes style and layout specific attributes
+ *
+ * @tag fluent-accordion-item
  *
  * @public
  */

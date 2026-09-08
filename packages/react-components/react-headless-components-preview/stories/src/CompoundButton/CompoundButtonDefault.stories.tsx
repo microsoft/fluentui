@@ -1,0 +1,89 @@
+import * as React from 'react';
+import { CompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
+import { AddRegular, ArrowDownloadRegular, DeleteRegular, OpenRegular, SettingsRegular } from '@fluentui/react-icons';
+
+import styles from './compound-button.module.css';
+
+export const Default = (): React.ReactNode => {
+  const [completedActions, setCompletedActions] = React.useState(0);
+
+  const iconSlot = (icon: React.ReactNode) => ({
+    children: icon,
+    className: styles.actionIcon,
+  });
+
+  const contentContainerSlot = {
+    className: styles.actionContent,
+  };
+
+  const secondaryContentSlot = (children: React.ReactNode) => ({
+    children,
+    className: styles.actionSecondary,
+  });
+
+  return (
+    <div className={styles.demo}>
+      <div className={styles.introduction}>
+        <p className={styles.eyebrow}>Deployment workspace</p>
+        <h2 className={styles.heading}>Compound actions</h2>
+        <p className={styles.summary}>
+          One semantic component, styled here as a compact action system with CSS Modules.
+        </p>
+      </div>
+
+      <output className={styles.status} role="status" aria-live="polite">
+        Actions completed: {completedActions}
+      </output>
+
+      <div className={styles.actions}>
+        <CompoundButton
+          className={styles.action}
+          icon={iconSlot(<ArrowDownloadRegular aria-hidden />)}
+          contentContainer={contentContainerSlot}
+          secondaryContent={secondaryContentSlot('Starts a new deployment')}
+          onClick={() => setCompletedActions(value => value + 1)}
+        >
+          Create release
+        </CompoundButton>
+
+        <CompoundButton
+          as="a"
+          href="#release-details"
+          className={`${styles.action} ${styles.anchorAction}`}
+          icon={iconSlot(<OpenRegular aria-hidden />)}
+          contentContainer={contentContainerSlot}
+          secondaryContent={secondaryContentSlot('Opens release details')}
+        >
+          Review release
+        </CompoundButton>
+
+        <CompoundButton
+          className={styles.action}
+          icon={iconSlot(<DeleteRegular aria-hidden />)}
+          contentContainer={contentContainerSlot}
+          secondaryContent={secondaryContentSlot('Unavailable while deployment is active')}
+          disabled
+          onClick={() => setCompletedActions(value => value + 1)}
+        >
+          Delete release
+        </CompoundButton>
+
+        <CompoundButton
+          className={styles.action}
+          icon={iconSlot(<SettingsRegular aria-hidden />)}
+          contentContainer={contentContainerSlot}
+          secondaryContent={secondaryContentSlot('Focusable for feature discovery')}
+          disabledFocusable
+        >
+          Configure policy
+        </CompoundButton>
+
+        <CompoundButton
+          className={`${styles.action} ${styles.iconAction}`}
+          icon={iconSlot(<AddRegular aria-hidden />)}
+          aria-label="Add deployment target"
+        />
+      </div>
+    </div>
+  );
+};

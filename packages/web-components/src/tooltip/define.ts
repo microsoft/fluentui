@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './tooltip.definition.js';
+import { Tooltip } from './tooltip.js';
 
-definition.define(FluentDesignSystem.registry);
+Tooltip.define(definition);

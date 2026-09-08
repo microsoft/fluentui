@@ -5,7 +5,7 @@ import { emptySparklinePoints } from './Sparkline.test';
 import { getByRole, queryAllByAttribute, render } from '@testing-library/react';
 import * as React from 'react';
 
-const env = require('../../../config/tests.js');
+const env = require('../../../config/tests.cjs');
 const runTest = env === 'TEST' ? describe : describe;
 
 const sparkline1Points: ChartProps = {

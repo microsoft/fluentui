@@ -37,7 +37,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -64,7 +64,6 @@ import {
   calcTotalWidth,
   calcBandwidth,
   calcRequiredWidth,
-  isSafeUrl,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';

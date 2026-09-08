@@ -1,0 +1,199 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Dialog Migration" />
+
+# Dialog / Modal Migration
+
+## Overview
+
+In v8, `Dialog` is controlled via `hidden` prop (inverted logic) and composed via a `dialogContentProps` object.
+`Modal` is a separate component with `isOpen`.
+
+In v9, both map to a single `Dialog` that uses declarative JSX children and `open` / `onOpenChange`.
+The structure is: `Dialog` → `DialogSurface` → `DialogBody` → `DialogTitle` + `DialogContent` + `DialogActions`.
+
+Note: v8 `hidden={false}` means visible — v9 `open={true}` means visible. The logic is inverted.
+
+## Examples
+
+### Basic Migration
+
+```tsx
+// v8
+import { Dialog, DialogFooter, DialogType, PrimaryButton, DefaultButton } from '@fluentui/react';
+
+<Dialog
+  hidden={!isOpen}
+  onDismiss={handleClose}
+  dialogContentProps={{
+    type: DialogType.normal,
+    title: 'Delete item',
+    subText: 'Are you sure you want to delete this item?',
+  }}
+  modalProps={{ isBlocking: true }}
+>
+  <DialogFooter>
+    <PrimaryButton onClick={handleConfirm} text="Delete" />
+    <DefaultButton onClick={handleClose} text="Cancel" />
+  </DialogFooter>
+</Dialog>;
+```
+
+```tsx
+// v9
+import {
+  Dialog,
+  DialogSurface,
+  DialogBody,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from '@fluentui/react-components';
+
+<Dialog
+  open={isOpen}
+  modalType="modal"
+  onOpenChange={(event, data) => {
+    if (data.type === 'backdropClick') {
+      event.preventDefault();
+      return;
+    }
+
+    setIsOpen(data.open);
+  }}
+>
+  <DialogSurface>
+    <DialogBody>
+      <DialogTitle>Delete item</DialogTitle>
+      <DialogContent>Are you sure you want to delete this item?</DialogContent>
+      <DialogActions>
+        <Button appearance="primary" onClick={handleConfirm}>
+          Delete
+        </Button>
+        <Button onClick={handleClose}>Cancel</Button>
+      </DialogActions>
+    </DialogBody>
+  </DialogSurface>
+</Dialog>;
+```
+
+### Dialogs with forms or complex content
+
+By default, v9 uses the complete `DialogContent` as the dialog's accessible
+description. That is appropriate when the content is only the short v8
+`subText`, as above. When `DialogContent` also contains fields, lists, or other
+interactive content, point `DialogSurface` at only the migrated `subText` so a
+screen reader does not announce the whole form as the description:
+
+```tsx
+import { DialogBody, DialogContent, DialogSurface, DialogTitle, Field, Input, useId } from '@fluentui/react-components';
+
+function RenameDialogContent() {
+  const descriptionId = useId('rename-description');
+
+  return (
+    <DialogSurface aria-describedby={descriptionId}>
+      <DialogBody>
+        <DialogTitle>Rename document</DialogTitle>
+        <DialogContent>
+          <p id={descriptionId}>Enter a new document name.</p>
+          <Field label="Name">
+            <Input />
+          </Field>
+        </DialogContent>
+      </DialogBody>
+    </DialogSurface>
+  );
+}
+```
+
+### Triggers and focus restoration
+
+`DialogTrigger` marks the element that opened a v9 dialog and restores focus to
+it when the dialog closes. Keep the trigger inside `Dialog` when possible,
+including for a controlled dialog:
+
+```tsx
+<Dialog open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)}>
+  <DialogTrigger disableButtonEnhancement>
+    <Button onClick={() => setIsOpen(true)}>Rename document</Button>
+  </DialogTrigger>
+  <RenameDialogContent />
+</Dialog>
+```
+
+If the opener must remain outside `Dialog`, apply `useRestoreFocusTarget()` to
+it. A controlled `open` prop alone does not identify the element that should
+receive focus after dismissal:
+
+```tsx
+import { Button, Dialog, useRestoreFocusTarget } from '@fluentui/react-components';
+
+const restoreFocusTargetAttributes = useRestoreFocusTarget();
+
+<>
+  <Button {...restoreFocusTargetAttributes} onClick={() => setIsOpen(true)}>
+    Rename document
+  </Button>
+  <Dialog open={isOpen} onOpenChange={(_, data) => setIsOpen(data.open)}>
+    <RenameDialogContent />
+  </Dialog>
+</>;
+```
+
+### Modal → Dialog
+
+v8 `Modal` also maps to v9 `Dialog`. Replace `isOpen` with `open`, use
+the same declarative dialog children shown above, and choose `modalType` for the
+required modality. Preserve dismissal behavior separately in `onOpenChange`.
+
+`DialogType` controls the v8 title treatment, not modality. Preserve
+`DialogType.normal` or `DialogType.largeHeader` through `DialogTitle`
+composition and styling. For `DialogType.close`, add an explicit close action
+to `DialogTitle`. Choose v9 `modalType` independently from the source dialog's
+interaction and ARIA requirements.
+
+## Prop Mapping
+
+### IDialogProps → DialogProps
+
+| v8                              | v9                                          | Notes                                                          |
+| ------------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
+| `hidden`                        | `open` (inverted)                           | `hidden={false}` = `open={true}`                               |
+| `onDismiss`                     | `onOpenChange`                              | `(ev, data) => data.open === false` on close                   |
+| `dialogContentProps.title`      | `<DialogTitle>`                             | JSX child                                                      |
+| `dialogContentProps.subText`    | `<DialogContent>` + `aria-describedby`      | Give only the short description an ID when content is complex  |
+| `dialogContentProps.type`       | `<DialogTitle>` composition and styling     | Add an explicit close action for `DialogType.close`            |
+| `dialogContentProps.titleProps` | Props on `<DialogTitle>`                    |                                                                |
+| `dialogContentProps.styles`     | `className` + `makeStyles`                  |                                                                |
+| `modalProps.isBlocking`         | `modalType="modal"` + `onOpenChange` guard  | Reject `data.type === "backdropClick"` when blocking           |
+| `modalProps.layerProps.hostId`  | `mountNode` on `<DialogSurface>`            | Resolve the host element; review other `LayerProps` separately |
+| `minWidth` / `maxWidth`         | `style` or `className` on `<DialogSurface>` |                                                                |
+| `styles`                        | `className` + `makeStyles`                  |                                                                |
+| `theme`                         | `FluentProvider`                            |                                                                |
+| External opener                 | `useRestoreFocusTarget()`                   | Prefer `DialogTrigger` when the opener can be a child          |
+
+### IModalProps → DialogProps
+
+| v8                           | v9                                         | Notes                                                          |
+| ---------------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| `isOpen`                     | `open`                                     |                                                                |
+| `onDismiss`                  | `onOpenChange`                             |                                                                |
+| `isBlocking`                 | `modalType="modal"` + `onOpenChange` guard | Reject `data.type === "backdropClick"` when blocking           |
+| `isDarkOverlay`              | CSS on `DialogSurface` backdrop            |                                                                |
+| `scrollableContentClassName` | `className` on `<DialogSurface>`           |                                                                |
+| `containerClassName`         | `className` on `<DialogSurface>`           |                                                                |
+| `layerProps.hostId`          | `mountNode` on `<DialogSurface>`           | Resolve the host element; review other `LayerProps` separately |
+| `styles`                     | `className` + `makeStyles`                 |                                                                |
+| `theme`                      | `FluentProvider`                           |                                                                |
+
+| v9 `modalType` | Behavior                                                        | v8 equivalent                                       |
+| -------------- | --------------------------------------------------------------- | --------------------------------------------------- |
+| `"modal"`      | Standard modal semantics; background content is not interactive | Ordinary blocking `Dialog` or `Modal`               |
+| `"non-modal"`  | Background content remains interactive                          | Only intentionally non-modal experiences            |
+| `"alert"`      | Urgent alert dialog that requires an explicit user response     | Reserve for genuine alert dialogs, not `isBlocking` |
+
+Treat dismissal behavior separately from modality. Preserve whether outside
+clicks or Escape close the v8 component through controlled `open` and
+`onOpenChange` handling rather than mapping `isBlocking` directly to `"alert"`.

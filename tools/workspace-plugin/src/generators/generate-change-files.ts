@@ -32,7 +32,7 @@ function _generateChangeFiles(tree: Tree, options: { cwd?: string } & ChangeFile
 }
 
 function createCommand(options: ChangeFileOptions) {
-  const cmd = 'beachball change --scope "!packages/fluentui/*" --no-commit';
+  const cmd = 'beachball change';
   const flags = Object.entries({
     message: options.message,
     type: options.type,

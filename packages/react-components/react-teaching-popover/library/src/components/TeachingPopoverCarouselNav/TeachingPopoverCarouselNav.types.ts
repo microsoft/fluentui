@@ -23,3 +23,7 @@ export type TeachingPopoverCarouselNavProps = Omit<
 > & {
   children: NavButtonRenderFunction;
 };
+
+export type TeachingPopoverCarouselNavBaseProps = TeachingPopoverCarouselNavProps;
+
+export type TeachingPopoverCarouselNavBaseState = TeachingPopoverCarouselNavState;

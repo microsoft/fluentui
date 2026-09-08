@@ -61,7 +61,7 @@ export class BaseProgressBar extends FASTElement {
    *
    * HTML Attribute: `value`
    *
-   * @internal
+   * @public
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number;
@@ -85,7 +85,7 @@ export class BaseProgressBar extends FASTElement {
    *
    * HTML Attribute: `min`
    *
-   * @internal
+   * @public
    */
   @attr({ converter: nullableNumberConverter })
   public min?: number;
@@ -110,7 +110,7 @@ export class BaseProgressBar extends FASTElement {
    *
    * HTML Attribute: `max`
    *
-   * @internal
+   * @public
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;

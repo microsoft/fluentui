@@ -1,0 +1,108 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline;
+}
+
+:host {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+  font-weight: var(--fontWeightRegular);
+  text-align: start;
+}
+
+:host([nowrap]),
+:host([nowrap]) ::slotted(*) {
+  white-space: nowrap;
+  overflow: hidden;
+}
+:host([truncate]),
+:host([truncate]) ::slotted(*) {
+  text-overflow: ellipsis;
+}
+:host([block]) {
+  display: block;
+}
+:host([italic]) {
+  font-style: italic;
+}
+:host([underline]) {
+  text-decoration-line: underline;
+}
+:host([strikethrough]) {
+  text-decoration-line: line-through;
+}
+:host([underline][strikethrough]) {
+  text-decoration-line: line-through underline;
+}
+:host([size='100']) {
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase100);
+}
+:host([size='200']) {
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+}
+:host([size='400']) {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+:host([size='500']) {
+  font-size: var(--fontSizeBase500);
+  line-height: var(--lineHeightBase500);
+}
+:host([size='600']) {
+  font-size: var(--fontSizeBase600);
+  line-height: var(--lineHeightBase600);
+}
+:host([size='700']) {
+  font-size: var(--fontSizeHero700);
+  line-height: var(--lineHeightHero700);
+}
+:host([size='800']) {
+  font-size: var(--fontSizeHero800);
+  line-height: var(--lineHeightHero800);
+}
+:host([size='900']) {
+  font-size: var(--fontSizeHero900);
+  line-height: var(--lineHeightHero900);
+}
+:host([size='1000']) {
+  font-size: var(--fontSizeHero1000);
+  line-height: var(--lineHeightHero1000);
+}
+:host([font='monospace']) {
+  font-family: var(--fontFamilyMonospace);
+}
+:host([font='numeric']) {
+  font-family: var(--fontFamilyNumeric);
+}
+:host([weight='medium']) {
+  font-weight: var(--fontWeightMedium);
+}
+:host([weight='semibold']) {
+  font-weight: var(--fontWeightSemibold);
+}
+:host([weight='bold']) {
+  font-weight: var(--fontWeightBold);
+}
+:host([align='center']) {
+  text-align: center;
+}
+:host([align='end']) {
+  text-align: end;
+}
+:host([align='justify']) {
+  text-align: justify;
+}
+
+::slotted(*) {
+  font: inherit;
+  line-height: inherit;
+  text-decoration-line: inherit;
+  text-align: inherit;
+  text-decoration-line: inherit;
+  margin: 0;
+}

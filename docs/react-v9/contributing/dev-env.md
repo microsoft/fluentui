@@ -11,10 +11,9 @@ Note that the core team does not support native Windows as a development platfor
   - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
 
 - Windows users should install **[WSL](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
-- Install **[Node.js LTS](https://nodejs.org/en/)** (20 as of writing)
+- Install **[Node.js LTS](https://nodejs.org/en/)** (^22 or ^24)
   - Optional: If you're developing across multiple repos with varying Node version requirements, you may want to use `nvm` to install and manage Node versions.
-- Install **[Yarn v1](https://classic.yarnpkg.com/) (we do not use Yarn >=v2)**
-  - easiest way: run `npm install -g yarn@1`
+- Install **[Yarn 4](https://yarnpkg.com/getting-started/install)**. The repo pins a specific Yarn 4.x release via the `packageManager` field in `package.json` (the exact version source of truth); `.yarnrc.yml` configures the repository binary path.
 - Install **[Git](https://git-scm.com/)**
 - Install **[Visual Studio Code](https://code.visualstudio.com/)** or any other editor of your preference
 - Install **[Nx Console extension for Visual Studio](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)**
@@ -28,8 +27,8 @@ Note that the core team does not support native Windows as a development platfor
 
 Open a command line and run:
 
-- `node -v`: Should be `^22.x.x`.
-- `yarn -v`: Should be >= 1.15.0 but **less than 2**. If not, run `npm install -g yarn@1`.
+- `node -v`: Should be `^22.x.x` or `^24.x.x`.
+- `yarn -v`: Should report `4.x`; the exact version is pinned by `packageManager` in `package.json`.
 - `git --version` to ensure you have Git installed.
 - If using VS Code, go to a folder and run `code .` to open the folder in VS Code. If it doesn't work, open VS Code and press `F1` or `ctrl+shift+P` (`cmd+shift+P`), type `path`, and select the `Install 'code' command in PATH` option.
 

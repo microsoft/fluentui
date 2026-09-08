@@ -19,7 +19,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
   rootRef: React.RefCallback<HTMLElement>;
   forceUpdateRovingTabIndex: () => void;
 } {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useFlatTreeNavigation — manual opt-out to preserve runtime behavior
 
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
   const { rove, forceUpdate: forceUpdateRovingTabIndex, initialize: initializeRovingTabIndex } = useRovingTabIndex();

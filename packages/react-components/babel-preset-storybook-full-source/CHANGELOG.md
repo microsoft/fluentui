@@ -1,8 +1,26 @@
 # Change Log - @fluentui/babel-preset-storybook-full-source
 
-This log was last generated on Tue, 04 Nov 2025 14:46:59 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2026 14:23:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.3)
+
+Thu, 30 Jul 2026 14:23:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-storybook-full-source_v0.1.2..@fluentui/babel-preset-storybook-full-source_v0.1.3)
+
+### Patches
+
+- feat: add opt-in `storyGranularity: 'story'` mode that emits a per-story sliced `fullSource` for files with multiple story exports ([PR #36404](https://github.com/microsoft/fluentui/pull/36404) by martinhochel@microsoft.com)
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.2)
+
+Tue, 16 Jun 2026 18:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-storybook-full-source_v0.1.1..@fluentui/babel-preset-storybook-full-source_v0.1.2)
+
+### Patches
+
+- feat: add css-modules support as opt in via 'cssModules' config ([PR #36088](https://github.com/microsoft/fluentui/pull/36088) by martinhochel@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.1)
 

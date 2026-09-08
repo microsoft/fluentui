@@ -14,9 +14,5 @@ import type { Context, ContextValue } from './types';
 export function useHasParentContext<Value>(context: Context<Value>): boolean {
   const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
 
-  if (contextValue.version) {
-    return contextValue.version.current !== -1;
-  }
-
-  return false;
+  return !contextValue.isDefault;
 }

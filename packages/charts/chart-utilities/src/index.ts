@@ -128,3 +128,5 @@ export {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
 } from './formatter';
+
+export { isSafeUrl } from './isSafeUrl';

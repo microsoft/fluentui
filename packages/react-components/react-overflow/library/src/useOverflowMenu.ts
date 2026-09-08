@@ -11,8 +11,7 @@ export function useOverflowMenu<TElement extends HTMLElement>(
 ): { ref: React.MutableRefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
   const elementId = useId('overflow-menu', id);
   const overflowCount = useOverflowCount();
-  const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);
-  const updateOverflow = useOverflowContext(v => v.updateOverflow);
+  const { registerOverflowMenu } = useOverflowContext();
   const ref = React.useRef<TElement | null>(null);
   const isOverflowing = overflowCount > 0;
 
@@ -21,12 +20,6 @@ export function useOverflowMenu<TElement extends HTMLElement>(
       return registerOverflowMenu(ref.current);
     }
   }, [registerOverflowMenu, isOverflowing, elementId]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (isOverflowing) {
-      updateOverflow();
-    }
-  }, [isOverflowing, updateOverflow, ref]);
 
   return { ref, overflowCount, isOverflowing };
 }

@@ -26,10 +26,10 @@ const useResetStyles = makeResetStyles({
  * Apply styling to the AriaLive slots based on the state
  */
 export const useAriaLiveStyles_unstable = (state: AriaLiveState): AriaLiveState => {
-  'use no memo';
-
   const visuallyHidden = useResetStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.assertive.className = mergeClasses(visuallyHidden, ariaLiveClassNames.assertive, state.assertive.className);
+  // eslint-disable-next-line react-hooks/immutability
   state.polite.className = mergeClasses(visuallyHidden, ariaLiveClassNames.polite, state.polite.className);
 
   return state;

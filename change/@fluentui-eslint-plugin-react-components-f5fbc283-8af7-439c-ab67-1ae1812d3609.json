@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: narrow eslint and typescript peer ranges to what @typescript-eslint/utils supports",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

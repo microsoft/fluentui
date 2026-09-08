@@ -1,5 +1,6 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { AnchorAttributes, AnchorTarget } from '../anchor-button/anchor-button.options.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * Link Appearance constants
@@ -42,3 +43,10 @@ export const LinkAttributes = AnchorAttributes;
  * @public
  */
 export type LinkAttributes = ValuesOf<typeof LinkAttributes>;
+
+/**
+ * The tag name for the link element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-link` as const;

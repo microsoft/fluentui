@@ -1,0 +1,56 @@
+.display {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  font-size: 13.5px;
+}
+
+.display [data-appearance] {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  display: inline-flex;
+}
+
+.display [data-appearance] svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.display [data-appearance='filled'] .iconHalf,
+.display [data-appearance='filled'] .iconOutline {
+  visibility: hidden;
+}
+
+.display [data-appearance='filled-half'] .iconFilled,
+.display [data-appearance='filled-half'] .iconOutline {
+  visibility: hidden;
+}
+
+.display [data-appearance='outline'] .iconFilled,
+.display [data-appearance='outline'] .iconHalf {
+  visibility: hidden;
+}
+
+.display [data-appearance='outline'] .iconOutline {
+  color: var(--border-strong);
+}
+
+.value {
+  color: var(--text);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.count {
+  color: var(--text-muted);
+  font-size: 12.5px;
+}

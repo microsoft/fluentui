@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add missing base hook export",
-  "packageName": "@fluentui/react-field",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

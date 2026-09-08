@@ -11,26 +11,48 @@ export {
   CompoundButton,
   compoundButtonClassNames,
   renderCompoundButton_unstable,
+  useCompoundButtonBase_unstable,
   useCompoundButtonStyles_unstable,
   useCompoundButton_unstable,
 } from './CompoundButton';
-export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton';
+export type {
+  CompoundButtonBaseProps,
+  CompoundButtonBaseState,
+  CompoundButtonProps,
+  CompoundButtonSlots,
+  CompoundButtonState,
+} from './CompoundButton';
 export {
   MenuButton,
   menuButtonClassNames,
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,
   useMenuButton_unstable,
+  useMenuButtonBase_unstable,
 } from './MenuButton';
-export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuButton';
+export type {
+  MenuButtonProps,
+  MenuButtonSlots,
+  MenuButtonState,
+  MenuButtonBaseProps,
+  MenuButtonBaseState,
+} from './MenuButton';
 export {
   SplitButton,
   renderSplitButton_unstable,
   splitButtonClassNames,
   useSplitButtonStyles_unstable,
   useSplitButton_unstable,
+  useSplitButtonBase_unstable,
 } from './SplitButton';
-export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './SplitButton';
+export type {
+  SplitButtonBaseProps,
+  SplitButtonBaseSlots,
+  SplitButtonBaseState,
+  SplitButtonProps,
+  SplitButtonSlots,
+  SplitButtonState,
+} from './SplitButton';
 export {
   ToggleButton,
   renderToggleButton_unstable,

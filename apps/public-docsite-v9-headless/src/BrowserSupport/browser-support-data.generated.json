@@ -1,0 +1,139 @@
+{
+  "generatedFrom": "web-features@3.30.0",
+  "browsers": [
+    "chrome",
+    "edge",
+    "firefox",
+    "safari"
+  ],
+  "features": {
+    "popover": {
+      "key": "popover",
+      "name": "Popover",
+      "baseline": "low",
+      "baselineLowDate": "2025-01-27",
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "116",
+        "edge": "116",
+        "firefox": "125",
+        "safari": "17"
+      }
+    },
+    "dialog": {
+      "key": "dialog",
+      "name": "<dialog>",
+      "baseline": "high",
+      "baselineLowDate": "2022-03-14",
+      "baselineHighDate": "2024-09-14",
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "37",
+        "edge": "79",
+        "firefox": "98",
+        "safari": "15.4"
+      }
+    },
+    "focusgroup": {
+      "key": "focusgroup",
+      "name": "focusgroup",
+      "baseline": false,
+      "baselineLowDate": null,
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": null,
+        "edge": null,
+        "firefox": null,
+        "safari": null
+      }
+    },
+    "anchor-positioning": {
+      "key": "anchor-positioning",
+      "name": "Anchor positioning",
+      "baseline": false,
+      "baselineLowDate": null,
+      "baselineHighDate": null,
+      "partial": true,
+      "representativeBaseline": "low",
+      "representativeBaselineLowDate": "2026-01-13",
+      "support": {
+        "chrome": "125",
+        "edge": "125",
+        "firefox": "147",
+        "safari": "26"
+      }
+    },
+    "anchor-name": {
+      "key": "anchor-name",
+      "name": "anchor-name",
+      "baseline": "low",
+      "baselineLowDate": "2026-01-13",
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "125",
+        "edge": "125",
+        "firefox": "147",
+        "safari": "26"
+      }
+    },
+    "position-area": {
+      "key": "position-area",
+      "name": "position-area",
+      "baseline": "low",
+      "baselineLowDate": "2026-01-13",
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "129",
+        "edge": "129",
+        "firefox": "147",
+        "safari": "26"
+      }
+    },
+    "position-try-fallbacks": {
+      "key": "position-try-fallbacks",
+      "name": "position-try-fallbacks",
+      "baseline": "low",
+      "baselineLowDate": "2026-01-13",
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "128",
+        "edge": "128",
+        "firefox": "147",
+        "safari": "26"
+      }
+    },
+    "anchor-center": {
+      "key": "anchor-center",
+      "name": "anchor-center",
+      "baseline": "low",
+      "baselineLowDate": "2026-01-13",
+      "baselineHighDate": null,
+      "partial": false,
+      "representativeBaseline": null,
+      "representativeBaselineLowDate": null,
+      "support": {
+        "chrome": "125",
+        "edge": "125",
+        "firefox": "147",
+        "safari": "26"
+      }
+    }
+  }
+}

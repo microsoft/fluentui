@@ -21,15 +21,21 @@ import { MenuContext } from '../../contexts/menuContext';
 import type { MenuListProps, MenuListState } from './MenuList.types';
 import { useValidateNesting } from '../../utils/useValidateNesting';
 
+const MENU_ITEM_ROLES = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
+const MENU_ITEM_ROLES_SELECTOR = MENU_ITEM_ROLES.map(role => `[role="${role}"]`).join(',');
+
 /**
- * Returns the props and state required to render the component
+ * Returns the props and state required to render the component.
+ *
+ * Composes with `useMenuListBase_unstable` and adds Tabster-driven keyboard
+ * navigation: circular arrow-key focus, a `TabsterMoveFocusEvent` listener
+ * that lets `useMenuPopover_unstable` handle Tab key presses, a focus-aware
+ * `setFocusByFirstCharacter`, and the `hasIcons` / `hasCheckmarks` slot
+ * alignment hints sourced from the parent `MenuContext`.
  */
 export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
-  const { findAllFocusable } = useFocusFinders();
-  const { targetDocument } = useFluent();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
@@ -37,84 +43,101 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     console.warn('You are using both MenuList and Menu props, we recommend you to use Menu props when available');
   }
 
-  const innerRef = React.useRef<HTMLElement>(null);
-  const validateNestingRef = useValidateNesting('MenuList');
+  const wrapperRef = React.useRef<HTMLElement>(null);
+  const { findAllFocusable } = useFocusFinders();
+  const { targetDocument } = useFluent();
+  const focusAttributes = useArrowNavigationGroup({ circular: true });
+
+  const baseState = useMenuListBase_unstable(props, ref);
+  // recreate root non-mutatively: merge wrapperRef so the effect below can
+  // observe the rendered DOM element, and add Tabster arrow-nav attributes
+  const mergedRootRef = useMergedRefs(baseState.root.ref, wrapperRef) as React.Ref<HTMLDivElement>;
 
   React.useEffect(() => {
-    const element = innerRef.current;
+    const element = wrapperRef.current;
 
-    if (hasMenuContext && targetDocument && element) {
-      const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
-        const nextElement = e.detail.next;
-
-        if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
-          // Preventing Tabster from handling Tab press, useMenuPopover will handle it.
-          e.preventDefault();
-        }
-      };
-
-      targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
-
-      return () => {
-        targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
-      };
+    if (!hasMenuContext || !targetDocument || !element) {
+      return;
     }
-  }, [innerRef, targetDocument, hasMenuContext]);
+
+    const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
+      const nextElement = e.detail.next;
+      if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
+        // Preventing Tabster from handling Tab press, useMenuPopover will handle it.
+        e.preventDefault();
+      }
+    };
+
+    targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+    return () => {
+      targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+    };
+  }, [hasMenuContext, targetDocument]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
-      // TODO use some kind of children registration to reduce dependency on DOM roles
-      const acceptedRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
-      if (!innerRef.current) {
+      if (!wrapperRef.current) {
         return;
       }
-
       const menuItems = findAllFocusable(
-        innerRef.current,
-        (el: HTMLElement) => el.hasAttribute('role') && acceptedRoles.indexOf(el.getAttribute('role')!) !== -1,
+        wrapperRef.current,
+        (el: HTMLElement) => el.hasAttribute('role') && MENU_ITEM_ROLES.indexOf(el.getAttribute('role')!) !== -1,
       );
-
-      let startIndex = menuItems.indexOf(itemEl) + 1;
-      if (startIndex === menuItems.length) {
-        startIndex = 0;
-      }
-
-      const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
-      const char = e.key.toLowerCase();
-
-      const getIndexFirstChars = (start: number, firstChar: string) => {
-        for (let i = start; i < firstChars.length; i++) {
-          if (char === firstChars[i]) {
-            return i;
-          }
-        }
-        return -1;
-      };
-
-      // Check remaining slots in the menu
-      let index = getIndexFirstChars(startIndex, char);
-
-      // If not found in remaining slots, check from beginning
-      if (index === -1) {
-        index = getIndexFirstChars(0, char);
-      }
-
-      // If match was found...
-      if (index > -1) {
-        menuItems[index].focus();
-      }
+      focusItemMatchingFirstCharacter(menuItems, e.key, itemEl);
     },
     [findAllFocusable],
   );
 
+  return {
+    ...baseState,
+    root: {
+      ...focusAttributes,
+      ...baseState.root,
+      ref: mergedRootRef,
+    },
+    setFocusByFirstCharacter,
+  };
+};
+
+/**
+ * Base hook for MenuList component, produces state required to render the component.
+ *
+ * Does not invoke any Tabster APIs internally: arrow-key navigation and the
+ * focus-aware `setFocusByFirstCharacter` are added by the wrapper
+ * `useMenuList_unstable`. The base's `setFocusByFirstCharacter` walks the DOM
+ * via `querySelectorAll` and does not filter by Tabster's focusability rules,
+ * so consumers integrating their own focus management should layer that on top.
+ *
+ * @param props - props from this instance of MenuList
+ * @param ref - reference to root HTMLElement of MenuList
+ */
+export const useMenuListBase_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
+  const triggerId = useMenuContext_unstable(context => context.triggerId);
+  const checkedValuesContext = useMenuContext_unstable(context => context.checkedValues);
+  const onCheckedValueChangeContext = useMenuContext_unstable(context => context.onCheckedValueChange);
+  const hasIconsContext = useMenuContext_unstable(context => context.hasIcons);
+  const hasCheckmarksContext = useMenuContext_unstable(context => context.hasCheckmarks);
+  const hasMenuContext = useHasParentContext(MenuContext);
+
+  const innerRef = React.useRef<HTMLElement>(null);
+  const validateNestingRef = useValidateNesting('MenuList');
+
+  const setFocusByFirstCharacter = React.useCallback((e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
+    if (!innerRef.current) {
+      return;
+    }
+    const menuItems = Array.from(innerRef.current.querySelectorAll<HTMLElement>(MENU_ITEM_ROLES_SELECTOR));
+    focusItemMatchingFirstCharacter(menuItems, e.key, itemEl);
+  }, []);
+
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: props.checkedValues ?? (hasMenuContext ? menuContext.checkedValues : undefined),
+    state: props.checkedValues ?? (hasMenuContext ? checkedValuesContext : undefined),
     defaultState: props.defaultCheckedValues,
     initialState: {},
   });
 
   const handleCheckedValueChange =
-    props.onCheckedValueChange ?? (hasMenuContext ? menuContext.onCheckedValueChange : undefined);
+    props.onCheckedValueChange ?? (hasMenuContext ? onCheckedValueChangeContext : undefined);
 
   const toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
@@ -148,20 +171,51 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<HTMLDivElement>,
         role: 'menu',
-        'aria-labelledby': menuContext.triggerId,
-        ...focusAttributes,
+        'aria-labelledby': triggerId,
         ...props,
       }),
       { elementType: 'div' },
     ),
-    hasIcons: menuContext.hasIcons || false,
-    hasCheckmarks: menuContext.hasCheckmarks || false,
     checkedValues,
+    hasIcons: props.hasIcons ?? hasIconsContext ?? false,
+    hasCheckmarks: props.hasCheckmarks ?? hasCheckmarksContext ?? false,
     hasMenuContext,
     setFocusByFirstCharacter,
     selectRadio,
     toggleCheckbox,
   };
+};
+
+/**
+ * Focuses the next menu item whose textContent starts with the typed character,
+ * wrapping around the list. Shared between the Tabster-free base impl and the
+ * Tabster-aware wrapper.
+ */
+const focusItemMatchingFirstCharacter = (menuItems: HTMLElement[], key: string, current: HTMLElement) => {
+  let startIndex = menuItems.indexOf(current) + 1;
+  if (startIndex === menuItems.length) {
+    startIndex = 0;
+  }
+
+  const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
+  const char = key.toLowerCase();
+
+  const getIndexFirstChars = (start: number) => {
+    for (let i = start; i < firstChars.length; i++) {
+      if (char === firstChars[i]) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  let index = getIndexFirstChars(startIndex);
+  if (index === -1) {
+    index = getIndexFirstChars(0);
+  }
+  if (index > -1) {
+    menuItems[index].focus();
+  }
 };
 
 /**

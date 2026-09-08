@@ -4,7 +4,7 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
-import { useMenuItemBase_unstable } from '../MenuItem/useMenuItem';
+import { useMenuItemBase_unstable } from '../MenuItem/useMenuItemBase';
 import type {
   MenuItemRadioBaseProps,
   MenuItemRadioBaseState,
@@ -33,8 +33,6 @@ export const useMenuItemRadio_unstable = (
 /**
  * Base hook for MenuItemRadio component, produces state required to render the component.
  * It doesn't set any design-related props specific to MenuItemRadio.
- *
- * @internal
  */
 export const useMenuItemRadioBase_unstable = (
   props: MenuItemRadioBaseProps,

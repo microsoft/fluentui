@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
+import { useBreadcrumbButtonBase_unstable } from './useBreadcrumbButton';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
@@ -66,5 +67,24 @@ describe('BreadcrumbButton', () => {
         </button>
       </div>
     `);
+  });
+
+  it('accepts the anchor arm of the ARIA button union in the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'a', href: '/somewhere' }, React.createRef<HTMLAnchorElement>()),
+    );
+
+    expect(result.current).toMatchObject({
+      root: { as: 'a', href: '/somewhere' },
+    });
+  });
+
+  it('keeps an explicit as="button" on the button arm of the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'button' }, React.createRef<HTMLButtonElement>()),
+    );
+
+    expect(result.current.root.as).toBe('button');
+    expect(result.current.root.role).toBeUndefined();
   });
 });

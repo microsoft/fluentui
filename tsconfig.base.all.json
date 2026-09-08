@@ -91,6 +91,10 @@
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-calendar-preview": ["packages/react-components/react-calendar-preview/library/src/index.ts"],
+      "@fluentui/react-calendar-preview-stories": [
+        "packages/react-components/react-calendar-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
@@ -122,8 +126,11 @@
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
-      "@fluentui/react-headless-components-preview": [
-        "packages/react-components/react-headless-components-preview/library/src/index.ts"
+      "@fluentui/react-headless-components-preview/*": [
+        "packages/react-components/react-headless-components-preview/library/src/*.ts"
+      ],
+      "@fluentui/react-headless-components-preview-stories": [
+        "packages/react-components/react-headless-components-preview/stories/src/index.ts"
       ],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],
@@ -257,10 +264,7 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-headless-components-preview-stories": [
-        "packages/react-components/react-headless-components-preview/stories/src/index.ts"
-      ]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }

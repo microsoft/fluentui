@@ -290,8 +290,6 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Switch slots based on the state
  */
 export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const indicatorBaseClassName = useIndicatorBaseClassName();
@@ -302,6 +300,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
 
   const { label, labelPosition, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     switchClassNames.root,
     rootBaseClassName,
@@ -309,6 +308,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.indicator.className = mergeClasses(
     switchClassNames.indicator,
     indicatorBaseClassName,
@@ -317,6 +317,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     state.indicator.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     switchClassNames.input,
     inputBaseClassName,
@@ -326,6 +327,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   );
 
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       switchClassNames.label,
       labelStyles.base,

@@ -1,34 +1,86 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Introduction" />
+import pkg from '@fluentui/react-headless-components-preview/package.json';
 
-## Overview
+import { Hero, Features, Feature, WhyGrid, WhyCard } from './Introduction';
+import hero from './assets/images/hero.svg';
+import composition from './assets/images/features-composition.svg';
+import primitives from './assets/images/features-primitives.svg';
+import accessibility from './assets/images/features-accessibility.svg';
+import whyControl from './assets/images/why-control.svg';
+import whyBrand from './assets/images/why-brand.svg';
+import whyAccessibility from './assets/images/why-accessibility.svg';
+import whyBundle from './assets/images/why-bundle.svg';
+import whyFlexibility from './assets/images/why-flexibility.svg';
+import whyBattleTested from './assets/images/why-battle-tested.svg';
 
-Fluent UI React Headless Components is a set of unstyled, accessible, and composable React components that implement the Fluent UI design patterns without prescribing any specific styling solution.
+<Meta title="Overview/Introduction" />
 
-These components provide the behavior, accessibility, and state management while giving you full control over the visual presentation using your preferred styling approach (e.g., Tailwind CSS, CSS Modules, or any other solution).
+<h1 class="fluent">
+  Fluent UI Headless Components <span class="fluent-version">v{pkg.version}</span>
+</h1>
 
-## Getting Started
+<Hero src={hero} alt="Fluent headless hero" />
 
-To get started with the headless components package in your project:
+# Overview
 
-1. Install the package using `npm` or `yarn`:
+**Fluent UI Headless** provides accessible, interactive React components without opinionated styling. Perfect for teams building custom design systems, maintaining brand consistency, or integrating with existing design frameworks.
 
-   ```
-   npm install @fluentui/react-headless-components-preview
-   ```
+## What you get
 
-2. Import and use the components:
+- **Behavior without styling** — Accessible primitives with full keyboard navigation and ARIA support
+- **Interaction logic** — Pre-built state management, event handling, and user interactions
+- **Zero visual opinions** — No CSS framework lock-in, style components however you want
+- **Enterprise-ready** — WCAG 2.1 AA compliant out of the box
+- **Framework agnostic** — Pure JavaScript logic you control completely
 
-   ```tsx
-   import {
-     Accordion,
-     AccordionItem,
-     AccordionHeader,
-     AccordionPanel,
-   } from '@fluentui/react-headless-components-preview';
-   ```
+## Features
 
-## Contributing
+<Features>
+  <Feature src={composition} alt="Composition" title="Flexible composition">
+    Build component hierarchies that match your design system. Slot-based architecture gives you complete control over
+    structure and content nesting.
+  </Feature>
+  <Feature src={primitives} alt="Primitives" title="Unstyled building blocks">
+    Start from zero styling constraints. Use CSS-in-JS, CSS modules, Tailwind, or any styling approach without conflicts
+    or overrides.
+  </Feature>
+  <Feature src={accessibility} alt="Accessibility" title="Accessible by default">
+    WCAG 2.1 AA compliant with full keyboard support, screen reader optimization, and semantic HTML. Accessibility is
+    built in, not bolted on.
+  </Feature>
+</Features>
 
-Refer to the main FluentUI [wiki](https://github.com/microsoft/fluentui/wiki) for detailed instructions on setup and contributing to the package.
+## Why choose Fluent UI Headless
+
+Designed for flexibility, maintainability, and performance without sacrificing accessibility or developer experience.
+
+<WhyGrid>
+  <WhyCard src={whyControl} alt="Complete control" title="Complete control">
+    No predefined colors, spacing, or typography. You own every pixel of your design system implementation.
+  </WhyCard>
+  <WhyCard src={whyBrand} alt="Brand consistency" title="Brand consistency">
+    Integrate seamlessly with existing design systems. Apply your brand identity without fighting CSS specificity.
+  </WhyCard>
+  <WhyCard src={whyAccessibility} alt="Enterprise accessibility" title="Enterprise accessibility">
+    WCAG 2.1 AA compliant with keyboard navigation and screen reader support out of the box.
+  </WhyCard>
+  <WhyCard src={whyBundle} alt="Reduced bundle size" title="Reduced bundle size">
+    Only ship the styles you use. No unused CSS framework bloat in your production bundles.
+  </WhyCard>
+  <WhyCard src={whyFlexibility} alt="Framework flexibility" title="Framework flexibility">
+    React hooks-based architecture. Easy to adapt patterns to other frameworks if needed.
+  </WhyCard>
+  <WhyCard src={whyBattleTested} alt="Battle-tested logic" title="Battle-tested logic">
+    Leverages years of Fluent UI development. Proven interaction patterns for common components.
+  </WhyCard>
+</WhyGrid>
+
+## Perfect for
+
+- **Custom design systems** — Maintain complete design system control without style conflicts
+- **Multi-brand applications** — Easy theming and brand switching without component rewrites
+- **Enterprise products** — WCAG 2.1 AA compliance and mature accessibility patterns
+- **Minimalist bundles** — Ship only the code you need, no unused styling framework
+- **Design-first teams** — Designers control the visual expression, developers ensure accessibility
+- **Micro-frontends** — Self-contained components that don't leak styles to other parts of your app

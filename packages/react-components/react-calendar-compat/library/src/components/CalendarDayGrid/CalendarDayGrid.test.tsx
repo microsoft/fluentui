@@ -152,4 +152,61 @@ describe('CalendarDayGrid', () => {
       expect(navigatedTo.getDate()).toBe(7);
     });
   });
+
+  describe('week-row DOM element identity across month navigation', () => {
+    it('reuses the same <tr> DOM elements when navigating between months', () => {
+      // Regression test: a `key` on the <tr> inside CalendarGridRow that encoded the week's
+      // first-day date string caused React to unmount+remount the <tr> on every navigation.
+      // This detached the element from the Web Animations API handle held by Slide.In,
+      // making slide-in replay silently target a stale disconnected node.
+      //
+      // Without that key, React reuses the same <tr> DOM element across navigations —
+      // animations remain connected and can be replayed.
+      const { container, rerender } = render(<CalendarDayGrid {...defaultProps} />);
+      const tbody = container.querySelector('tbody')!;
+
+      // Only the persistent week rows must keep their DOM identity — they are what `Slide.In`
+      // replays against on navigation. The first/last transition (filler) rows are intentionally
+      // remounted when they start or stop animating (their `DirectionalSlideOut` wrapper mounts
+      // only for the matching navigation direction), so they are excluded here.
+      const getWeekRows = () => Array.from(tbody.querySelectorAll('tr.fui-CalendarDayGrid__weekRow'));
+      const rowsBefore = getWeekRows();
+      expect(rowsBefore.length).toBeGreaterThan(0);
+
+      // Navigate to October 2020.
+      rerender(<CalendarDayGrid {...defaultProps} navigatedDate={new Date(2020, 9, 1)} />);
+
+      const rowsAfter = getWeekRows();
+
+      // Every week row present in both months must be the same DOM node — not a new element.
+      const sharedCount = Math.min(rowsBefore.length, rowsAfter.length);
+      for (let i = 0; i < sharedCount; i++) {
+        expect(rowsAfter[i]).toBe(rowsBefore[i]);
+      }
+    });
+  });
+
+  // Motion-component wrappers (DirectionalSlide, Fade.In) must remain transparent —
+  // table semantics require <tr> to be a direct child of <tbody> and <th>/<td>
+  // to be direct children of <tr>. Any wrapper element would break a11y and CSS.
+  describe('motion wrappers preserve table structure', () => {
+    it('renders week rows as direct children of <tbody>', () => {
+      const { container } = render(<CalendarDayGrid {...defaultProps} />);
+      const tbody = container.querySelector('tbody');
+      expect(tbody).not.toBeNull();
+      Array.from(tbody!.children).forEach(child => {
+        expect(child.tagName).toBe('TR');
+      });
+    });
+
+    it('renders weekday label cells as direct children of the header <tr>', () => {
+      const { container } = render(<CalendarDayGrid {...defaultProps} />);
+      // The header row contains the weekday label <th> cells (Sun, Mon, …)
+      const headerCells = container.querySelectorAll('th[scope="col"]');
+      expect(headerCells.length).toBeGreaterThan(0);
+      headerCells.forEach(cell => {
+        expect(cell.parentElement?.tagName).toBe('TR');
+      });
+    });
+  });
 });

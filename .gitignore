@@ -47,6 +47,13 @@ $RECYCLE.BIN/
 dist.stats.json
 bower_components
 node_modules
+
+# Yarn (ignore everything except patches, plugins, and releases)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+
 temp
 tmp
 lib
@@ -106,6 +113,7 @@ npminstall-log.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npmrc
 
 # Dependency change files generated from npmx aka rush
 package-deps.json

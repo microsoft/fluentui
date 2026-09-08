@@ -1,0 +1,119 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  --size: 16px;
+  aspect-ratio: 1;
+  background-color: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  border-radius: var(--borderRadiusCircular);
+  box-sizing: border-box;
+  position: relative;
+  width: var(--size);
+}
+
+:host([size='large']) {
+  --size: 20px;
+}
+
+.checked-indicator {
+  aspect-ratio: 1;
+  border-radius: var(--borderRadiusCircular);
+  color: var(--colorNeutralForegroundInverted);
+  inset: 0;
+  margin: auto;
+  position: absolute;
+  width: calc(var(--size) * 0.625);
+}
+
+:host(:not([slot='input']))::after {
+  content: '' / '';
+  position: absolute;
+  display: block;
+  inset: -8px;
+  box-sizing: border-box;
+  outline: none;
+  border: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+}
+
+:host(:not([slot='input']):focus-visible)::after {
+  border-color: var(--colorStrokeFocus2);
+}
+
+:host(:hover) {
+  border-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+:host(:state(checked)) {
+  border-color: var(--colorCompoundBrandStroke);
+}
+
+:host(:state(checked)) .checked-indicator {
+  background-color: var(--colorCompoundBrandBackground);
+}
+
+:host(:state(checked):hover) .checked-indicator {
+  background-color: var(--colorCompoundBrandBackgroundHover);
+}
+
+:host(:active) {
+  border-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+
+:host(:state(checked):active) .checked-indicator {
+  background-color: var(--colorCompoundBrandBackgroundPressed);
+}
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+:host(:state(disabled)) {
+  background-color: var(--colorNeutralBackgroundDisabled);
+  border-color: var(--colorNeutralStrokeDisabled);
+}
+
+:host(:state(checked):state(disabled)) .checked-indicator {
+  background-color: var(--colorNeutralStrokeDisabled);
+}
+
+@media (forced-colors: active) {
+  :host {
+    border-color: FieldText;
+  }
+
+  :host(:not([slot='input']:focus-visible))::after {
+    border-color: Canvas;
+  }
+
+  :host(:not(:state(disabled)):hover),
+  :host(:not([slot='input']):focus-visible)::after {
+    border-color: Highlight;
+  }
+
+  .checked-indicator {
+    color: HighlightText;
+  }
+
+  :host(:state(checked)) .checked-indicator {
+    background-color: FieldText;
+  }
+
+  :host(:state(checked):not(:state(disabled)):hover) .checked-indicator {
+    background-color: Highlight;
+  }
+
+  :host(:state(disabled)) {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  :host(:state(disabled):state(checked)) .checked-indicator {
+    background-color: GrayText;
+  }
+}

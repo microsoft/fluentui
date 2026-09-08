@@ -98,4 +98,99 @@ describe('useContextSelector', () => {
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(onUpdate).toHaveBeenCalledTimes(2);
   });
+
+  it('memoized consumers re-render only when their selected slice changes', () => {
+    const MemoizedTestComponent = React.memo(TestComponent);
+
+    const onUpdates: Record<number, jest.Mock> = {
+      1: jest.fn(),
+      2: jest.fn(),
+      3: jest.fn(),
+      4: jest.fn(),
+    };
+
+    render(
+      <TestProvider>
+        <MemoizedTestComponent index={1} onUpdate={onUpdates[1]} />
+        <MemoizedTestComponent index={2} onUpdate={onUpdates[2]} />
+        <MemoizedTestComponent index={3} onUpdate={onUpdates[3]} />
+        <MemoizedTestComponent index={4} onUpdate={onUpdates[4]} />
+      </TestProvider>,
+      { container: container as HTMLElement },
+    );
+
+    // Initial render. TestProvider starts at index=0, so none are active. Each memoized item has committed once — the
+    // `onUpdate` effect fires once per item on mount.
+    Object.values(onUpdates).forEach(m => expect(m).toHaveBeenCalledTimes(1));
+
+    // Click 1: 0 → 1. Only index=1 flips (active: false → true).
+    jest.clearAllMocks();
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+
+    expect(onUpdates[1]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[2]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[3]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
+
+    // Click 2: 1 → 2. index=1 flips (active: true → false), index=2 flips (active: false → true).
+    // Items 3 and 4 did not change and must not re-render.
+    jest.clearAllMocks();
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+
+    expect(onUpdates[1]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[2]).toHaveBeenCalledTimes(1); // false => true
+    expect(onUpdates[3]).toHaveBeenCalledTimes(0); // ← was 2 under the old eager-bailout with `useState()`
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
+
+    // Click 3: 2 → 3.
+    jest.clearAllMocks();
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+
+    expect(onUpdates[1]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[2]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[3]).toHaveBeenCalledTimes(1); // false => true
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
+  });
+
+  it('a single consumer throw does not starve later subscribers of context updates', () => {
+    const ThrowingConsumer: React.FC<{ threshold: number }> = ({ threshold }) => {
+      useContextSelector(TestContext, v => {
+        if (v.index > threshold) {
+          throw new Error('selector cannot handle this value');
+        }
+        return v.index;
+      });
+
+      return null;
+    };
+
+    const onUpdate = jest.fn();
+
+    render(
+      <TestProvider>
+        <ThrowingConsumer threshold={0} />
+        <TestComponent index={1} onUpdate={onUpdate} />
+      </TestProvider>,
+      { container: container as HTMLElement },
+    );
+
+    expect(onUpdate).toHaveBeenCalledTimes(1);
+
+    // Click: index goes 0 → 1. The first consumer's selector will throw
+    // (1 > 0). The downstream TestComponent must still receive the update
+    // because listener error isolation prevents `listeners.forEach` from
+    // short-circuiting.
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
+    expect(onUpdate).toHaveBeenCalledTimes(2);
+  });
 });

@@ -1,0 +1,7 @@
+<f-template name="fluent-label" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <slot></slot>
+    <span part="asterisk" class="asterisk" aria-hidden="true" ?hidden="{{!required}}">*</span>
+  </template>
+</f-template>

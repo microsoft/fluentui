@@ -31,9 +31,19 @@ export type NavCategoryItemSlots = {
 };
 
 /**
+ * Base slots for NavCategoryItem, excluding design/animation-specific slots.
+ */
+export type NavCategoryItemBaseSlots = Omit<NavCategoryItemSlots, 'expandIconMotion'>;
+
+/**
  * navCategoryItem Props
  */
 export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>;
+
+/**
+ * Base NavCategoryItemProps, excluding design/animation-specific props.
+ */
+export type NavCategoryItemBaseProps = ComponentProps<Partial<NavCategoryItemBaseSlots>>;
 
 /**
  * State used in rendering NavCategoryItem
@@ -51,3 +61,9 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
      */
     density: NavDensity;
   };
+
+/**
+ * State used in rendering NavCategoryItem, excluding design/animation-specific state.
+ */
+export type NavCategoryItemBaseState = ComponentState<NavCategoryItemBaseSlots> &
+  Pick<NavCategoryItemState, 'open' | 'value' | 'selected'>;

@@ -3,5 +3,20 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/cypress/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools"],
+  "targets": {
+    "build": {
+      "executor": "@fluentui/workspace-plugin:build",
+      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-commonjs"],
+      "options": {
+        "sourceRoot": "src",
+        "outputPathRoot": "{projectRoot}",
+        "moduleOutput": [
+          { "module": "es6", "outputPath": "lib" },
+          { "module": "commonjs", "outputPath": "lib-commonjs" }
+        ],
+        "generateApi": true
+      }
+    }
+  }
 }

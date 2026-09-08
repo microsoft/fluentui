@@ -1,0 +1,8 @@
+<f-template name="fluent-radio" shadowrootmode="open">
+  <template @click="{clickHandler($e)}" @keydown="{keydownHandler($e)}" @keyup="{keyupHandler($e)}">
+    {{styles}}
+    <slot name="checked-indicator">
+      <span part="checked-indicator" class="checked-indicator" role="presentation"></span>
+    </slot>
+  </template>
+</f-template>

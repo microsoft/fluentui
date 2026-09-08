@@ -1,0 +1,125 @@
+.bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.bar[data-layout='multiline'] {
+  grid-template-columns: auto 1fr;
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+}
+
+.bar[data-layout='multiline'] .actions {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.body {
+  color: var(--text);
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actionBtn {
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.actionBtn:hover {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.iconBtn {
+  width: 24px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBtn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Intent variants — subtle pastel backgrounds */
+.info {
+  background: var(--info-soft);
+  border-color: transparent;
+}
+.info .icon {
+  color: var(--info);
+}
+
+.success {
+  background: var(--success-soft);
+  border-color: transparent;
+}
+.success .icon {
+  color: var(--success);
+}
+
+.warning {
+  background: var(--warning-soft);
+  border-color: transparent;
+}
+.warning .icon {
+  color: var(--warning);
+}
+
+.danger {
+  background: var(--brand-soft);
+  border-color: transparent;
+}
+.danger .icon {
+  color: var(--brand);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}

@@ -5,6 +5,7 @@ exports[`TagPickerInput renders a default state 1`] = `
   <input
     aria-expanded="false"
     class="fui-TagPickerInput"
+    data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":false}}}"
     role="combobox"
     type="text"
     value=""
