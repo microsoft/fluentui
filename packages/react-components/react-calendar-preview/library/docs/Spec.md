@@ -173,7 +173,7 @@ Calendar also accepts the native props of its root `div` and slot props for cust
 | `divider`            | `div`           | Separator rendered when both pickers are visible.                   |
 | `monthPickerWrapper` | `div`           | Groups the month picker and Go to today action.                     |
 | `monthPicker`        | `CalendarMonth` | Month grid and nested year picker; `null` enables day-only mode.    |
-| `goToTodayButton`    | `Button`        | Navigates to today; set to `null` to omit.                          |
+| `goToTodayButton`    | `button`        | Navigates to today; set to `null` to omit.                          |
 
 The `dayPicker` and `monthPicker` slots expose their component APIs. Consumers can use these to configure `weeksToShow`, marked days, picker labels, navigation buttons, or year-picker visibility without Calendar duplicating every child prop.
 
@@ -316,8 +316,8 @@ There is no compatibility layer. Map selected dates and callbacks to `value` and
 
 ### State
 
-- **Selected date:** controlled by `value` when supplied; otherwise initialized from `defaultValue` or `today`. `null` clears selection without moving navigation.
-- **Displayed date:** shared by the day and month pickers. Controlled by `displayedDate` or initialized from `defaultDisplayedDate`, the selected date, or `today`.
+- **Selected date:** controlled by `value` when supplied; otherwise initialized from `defaultValue` or `today`. Uncontrolled initial values are clamped to `minDate` and `maxDate`. An out-of-bounds controlled value is rendered as an empty selection. `null` clears selection without moving navigation.
+- **Displayed date:** shared by the day and month pickers. Controlled by `displayedDate` or initialized from `defaultDisplayedDate`, the selected date, or `today`; displayed dates are clamped to `minDate` and `maxDate`.
 - **Controlled updates:** changing `value` to a different date navigates to it only when `displayedDate` is uncontrolled. Prop changes do not fire interaction callbacks. A controlled `displayedDate` always takes precedence.
 - **Navigation events:** each user selection or navigation action reports at most one `onDisplayedDateChange` request. Selection additionally reports `onSelectDate`; browsing alone does not select a date.
 - **Picker view:** controlled by `view` when supplied; otherwise initialized from `defaultView` and owned internally while switching overlay views.
@@ -334,13 +334,13 @@ Clicking or tapping an available day commits the configured range and moves navi
 | Focus area          | Key                  | Behavior                                                                                                                                                                                                          |
 | ------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Calendar            | `Escape`             | Stops propagation and calls `onDismiss`, when provided.                                                                                                                                                           |
-| Calendar            | `PageUp`             | Navigates the day picker forward one month.                                                                                                                                                                       |
-| Calendar            | `PageDown`           | Navigates the day picker backward one month.                                                                                                                                                                      |
-| Calendar            | `Ctrl+PageUp`        | Navigates the day picker forward one year.                                                                                                                                                                        |
-| Calendar            | `Ctrl+PageDown`      | Navigates the day picker backward one year.                                                                                                                                                                       |
+| Calendar            | `PageUp`             | Navigates the day picker backward one month.                                                                                                                                                                      |
+| Calendar            | `PageDown`           | Navigates the day picker forward one month.                                                                                                                                                                       |
+| Calendar            | `Shift+PageUp`       | Navigates the day picker backward one year.                                                                                                                                                                       |
+| Calendar            | `Shift+PageDown`     | Navigates the day picker forward one year.                                                                                                                                                                        |
 | Calendar            | `Enter`, `Backspace` | Prevents the root browser default; focused descendants retain their own activation behavior.                                                                                                                      |
 | Day grid            | Arrow keys           | Moves by one day horizontally and one week vertically. Horizontal direction follows text direction. Crossing the rendered grid navigates to the adjacent month and restores focus. Unavailable dates are skipped. |
-| Day gridcell        | `Enter`              | Selects the focused date and reports the configured range.                                                                                                                                                        |
+| Day gridcell        | `Enter` or `Space`   | Selects the focused date and reports the configured range.                                                                                                                                                        |
 | Month/year grid     | Arrow keys           | Moves through the two-dimensional grid using roving focus.                                                                                                                                                        |
 | Month/year gridcell | `Enter`              | Selects the focused month or year.                                                                                                                                                                                |
 | Native button       | `Enter` or `Space`   | Activates navigation, heading, close, and Go to today actions using native button behavior.                                                                                                                       |
@@ -376,6 +376,7 @@ Marked dates include the marked state in their accessible label. Visual range ho
 
 - Each grid uses roving focus so arrow navigation does not add every cell to the tab sequence.
 - Switching between overlaid day and month pickers moves focus to the navigated cell in the destination picker.
+- When responsive `auto` layout hides the picker that contains focus, focus moves to the navigated cell in the remaining picker.
 - Opening the year picker moves focus to its navigated year; selecting a year returns focus to the corresponding month.
 - Calendar's month/year paging shortcuts restore focus to the navigated cell in the visible picker.
 - Go to today moves focus to today's day cell but does not select it.

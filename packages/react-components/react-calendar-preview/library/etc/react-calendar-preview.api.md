@@ -4,7 +4,6 @@
 
 ```ts
 
-import type { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -222,7 +221,7 @@ export type CalendarFormatters = {
 // @public
 export const calendarFormatters: CalendarFormatters;
 
-// @public (undocumented)
+// @public
 export type CalendarLayout = 'auto' | 'sideBySide' | 'overlay';
 
 // @public
@@ -327,7 +326,7 @@ export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
     yearString: string;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarNavigateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     displayedDate: Date;
 };
@@ -360,7 +359,7 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
     allFocusable?: boolean;
 };
 
-// @public (undocumented)
+// @public
 export const CalendarProvider: Provider<CalendarContextValue | undefined> & FC<ProviderProps<CalendarContextValue | undefined>>;
 
 // @public
@@ -377,7 +376,7 @@ export type CalendarSlots = {
     divider: NonNullable<Slot<'div'>>;
     monthPickerWrapper: NonNullable<Slot<'div'>>;
     monthPicker?: Slot<typeof CalendarMonth>;
-    goToTodayButton?: Slot<typeof Button>;
+    goToTodayButton?: Slot<'button'>;
 };
 
 // @public
@@ -389,10 +388,10 @@ export type CalendarState = ComponentState<CalendarSlots> & CalendarContextValue
     isOverlay: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarView = 'day' | 'month';
 
-// @public (undocumented)
+// @public
 export type CalendarViewChangeData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     view: CalendarView;
 };
@@ -550,7 +549,7 @@ export const useCalendar_unstable: (props: CalendarProps, ref: React_2.Ref<HTMLD
 // @public
 export const useCalendarBase_unstable: (props: CalendarBaseProps, ref: React_2.Ref<HTMLDivElement>) => CalendarBaseState;
 
-// @public (undocumented)
+// @public
 export const useCalendarContext_unstable: <T>(selector: ContextSelector<CalendarContextValue, T>) => T;
 
 // @public

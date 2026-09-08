@@ -33,7 +33,7 @@ export const useCalendarPickerStyles = makeStyles({
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
     overflow: 'visible',
-    padding: '0 4px 0 10px',
+    padding: `0 ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalMNudge}`,
     textAlign: 'left',
   },
   hasHeaderClickCallback: {
@@ -42,13 +42,13 @@ export const useCalendarPickerStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
-      outline: `1px solid ${tokens.colorTransparentStroke}`,
+      outline: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
       color: tokens.colorBrandForegroundOnLightPressed,
       cursor: 'pointer',
-      outline: `1px solid ${tokens.colorTransparentStroke}`,
+      outline: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
     },
   },
   navigation: {
@@ -77,7 +77,7 @@ export const useCalendarPickerStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
-      outline: `1px solid ${tokens.colorTransparentStroke}`,
+      outline: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
     },
 
     '&:hover:active': {
@@ -86,6 +86,6 @@ export const useCalendarPickerStyles = makeStyles({
     },
   },
   grid: {
-    marginTop: '4px',
+    marginTop: tokens.spacingVerticalXS,
   },
 });

@@ -11,7 +11,7 @@ export const useCalendarItemStyles = makeStyles({
   buttonRow: {
     columnGap: tokens.spacingHorizontalM,
     display: 'flex',
-    marginBottom: '16px',
+    marginBottom: tokens.spacingVerticalL,
     '&:last-of-type': {
       marginBottom: 0,
     },
@@ -36,13 +36,13 @@ export const useCalendarItemStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorNeutralForeground1Static,
       cursor: 'pointer',
-      outline: `1px solid ${tokens.colorTransparentStroke}`,
+      outline: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         color: 'WindowText',
         forcedColorAdjust: 'none',
-        outline: '1px solid Highlight',
+        outline: `${tokens.strokeWidthThin} solid Highlight`,
       },
     },
     '&:hover:active': {

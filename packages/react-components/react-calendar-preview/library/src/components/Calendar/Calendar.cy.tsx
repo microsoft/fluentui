@@ -54,13 +54,13 @@ describe('Calendar', () => {
       cy.focused().find('button').should('have.attr', 'aria-label', 'October 4, 2020');
     });
 
-    it('navigates a month with PageUp and a year with Ctrl+PageUp', () => {
+    it('navigates a month with PageDown and a year with Shift+PageDown', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(day('September 18, 2020')).focus().trigger('keydown', { key: 'PageUp', bubbles: true });
+      cy.get(day('September 18, 2020')).focus().trigger('keydown', { key: 'PageDown', bubbles: true });
       cy.get(heading).should('have.text', 'October 2020');
 
-      cy.get(day('October 18, 2020')).focus().trigger('keydown', { key: 'PageUp', ctrlKey: true, bubbles: true });
+      cy.get(day('October 18, 2020')).focus().trigger('keydown', { key: 'PageDown', shiftKey: true, bubbles: true });
       cy.get(heading).should('have.text', 'October 2021');
     });
 
@@ -117,6 +117,16 @@ describe('Calendar', () => {
       mountFluent(<Calendar today={today} dateRangeType="week" onSelectDate={onSelectDate} />);
 
       cy.get(day('September 16, 2020')).focus().realPress('Enter');
+
+      cy.get('td[data-selected]').should('have.length', 7);
+      cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRange').should('have.length', 7);
+    });
+
+    it('resolves the same date range when selecting with Space', () => {
+      const onSelectDate = cy.stub().as('onSelectDate');
+      mountFluent(<Calendar today={today} dateRangeType="week" onSelectDate={onSelectDate} />);
+
+      cy.get(day('September 16, 2020')).focus().realPress('Space');
 
       cy.get('td[data-selected]').should('have.length', 7);
       cy.get('@onSelectDate').its('firstCall.args.1.selectedDateRange').should('have.length', 7);

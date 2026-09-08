@@ -10,7 +10,6 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { Button } from '@fluentui/react-button';
 
 import {
   addMonths,
@@ -76,18 +75,24 @@ function useDateState({
   /**
    * The currently selected date in the calendar
    */
-  const [selectedDate, setSelectedDate] = useControllableState({
+  const initialSelectedDate = defaultValue === undefined ? today : defaultValue;
+  const [selectedDateState, setSelectedDate] = useControllableState({
     state: value,
-    defaultState: value === undefined ? (defaultValue === undefined ? today : defaultValue) : undefined,
+    defaultState: value === undefined && initialSelectedDate ? resolveDate(initialSelectedDate) : initialSelectedDate,
     initialState: today,
   });
+  const selectedDate =
+    selectedDateState && compareDatePart(selectedDateState, resolveDate(selectedDateState)) !== 0
+      ? null
+      : selectedDateState;
 
-  const initialDisplayedDate = defaultDisplayedDate ?? selectedDate ?? today;
-  const [navigatedDate = initialDisplayedDate, setNavigatedDate] = useControllableState({
+  const initialDisplayedDate = resolveDate(defaultDisplayedDate ?? selectedDate ?? today);
+  const [navigatedDateState = initialDisplayedDate, setNavigatedDate] = useControllableState({
     state: displayedDate,
     defaultState: displayedDate === undefined ? initialDisplayedDate : undefined,
     initialState: today,
   });
+  const navigatedDate = resolveDate(navigatedDateState);
 
   const valueTimestamp = value?.getTime();
   const [previousValueTimestamp, setPreviousValueTimestamp] = React.useState(valueTimestamp);
@@ -251,6 +256,7 @@ export const useCalendarBase_unstable = (
 
   const dayPickerRef = React.useRef<CalendarDayHandle>(null);
   const monthPickerRef = React.useRef<CalendarMonthHandle>(null);
+  const focusedPicker = React.useRef<'day' | 'month' | undefined>(undefined);
   const focusOnUpdate = React.useRef(false);
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -269,6 +275,15 @@ export const useCalendarBase_unstable = (
       focusOnUpdate.current = false;
     }
   });
+
+  React.useEffect(() => {
+    if (
+      (focusedPicker.current === 'day' && !isDayPickerVisible) ||
+      (focusedPicker.current === 'month' && !isMonthPickerVisible)
+    ) {
+      focus();
+    }
+  }, [focus, isDayPickerVisible, isMonthPickerVisible]);
 
   const focusOnNextUpdate = () => {
     focusOnUpdate.current = true;
@@ -336,19 +351,30 @@ export const useCalendarBase_unstable = (
         break;
 
       case PageUp:
-        navigate(ev.ctrlKey ? addYears(navigatedDate, 1) : addMonths(navigatedDate, 1), ev);
+        navigate(ev.shiftKey ? addYears(navigatedDate, -1) : addMonths(navigatedDate, -1), ev);
         focusOnNextUpdate();
         ev.preventDefault();
         break;
 
       case PageDown:
-        navigate(ev.ctrlKey ? addYears(navigatedDate, -1) : addMonths(navigatedDate, -1), ev);
+        navigate(ev.shiftKey ? addYears(navigatedDate, 1) : addMonths(navigatedDate, 1), ev);
         focusOnNextUpdate();
         ev.preventDefault();
         break;
 
       default:
         break;
+    }
+  });
+
+  const onRootFocusCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
+    props.onFocusCapture?.(ev);
+
+    const target = ev.target as HTMLElement;
+    if (target.closest('.fui-CalendarDay')) {
+      focusedPicker.current = 'day';
+    } else if (target.closest('.fui-CalendarMonth')) {
+      focusedPicker.current = 'month';
     }
   });
 
@@ -397,9 +423,14 @@ export const useCalendarBase_unstable = (
       dayPicker: 'div',
       monthPicker: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', { ref, ...props, onKeyDown: onRootKeyDown }, ['defaultValue']), {
-      elementType: 'div',
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', { ref, ...props, onFocusCapture: onRootFocusCapture, onKeyDown: onRootKeyDown }, [
+        'defaultValue',
+      ]),
+      {
+        elementType: 'div',
+      },
+    ),
     liveRegion: slot.always(liveRegion, {
       defaultProps: {
         'aria-atomic': true,
@@ -495,12 +526,12 @@ export const useCalendar_unstable = (props: CalendarProps, ref: React.Ref<HTMLDi
       ...state.components,
       dayPicker: CalendarDay,
       monthPicker: CalendarMonth,
-      goToTodayButton: Button,
+      goToTodayButton: 'button',
     },
     goToTodayButton: slot.optional(goToTodayButton, {
       renderByDefault: !!state.goToTodayButton,
       defaultProps: state.goToTodayButton,
-      elementType: Button,
+      elementType: 'button',
     }),
     dayPicker: resolvedDayPicker,
     monthPicker: resolvedMonthPicker,
