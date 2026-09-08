@@ -5,7 +5,7 @@ import type { CalendarProps } from '@fluentui/react-calendar-preview';
 
 export const CalendarMonthOnly = (): JSXElement => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
-  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
@@ -24,12 +24,11 @@ export const CalendarMonthOnly = (): JSXElement => {
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
       <Calendar
-        dateRangeType={'month'}
+        dateRangeType="month"
+        dayPicker={null}
         highlightSelectedMonth
-        layout="overlay"
         onSelectDate={onSelectDate}
         value={selectedDate}
-        view="month"
       />
     </>
   );

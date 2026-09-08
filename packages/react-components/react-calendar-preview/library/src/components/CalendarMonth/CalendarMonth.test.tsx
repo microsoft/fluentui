@@ -27,6 +27,22 @@ describe('CalendarMonth', () => {
     expect(() => render(<CalendarMonth {...defaultProps} />)).not.toThrow();
   });
 
+  it('keeps unavailable months focusable but not selectable with allFocusable', () => {
+    const onSelectDate = jest.fn();
+    const { getByRole } = render(<CalendarMonth {...defaultProps} onSelectDate={onSelectDate} />, {
+      allFocusable: true,
+      minDate: new Date(2025, 1, 1),
+    });
+    const january = getByRole('gridcell', { name: 'January' });
+
+    expect(january).not.toBeDisabled();
+    expect(january).toHaveAttribute('aria-disabled', 'true');
+    expect(january).toHaveAttribute('tabindex', '0');
+    fireEvent.click(january);
+    fireEvent.keyDown(january, { key: 'Enter' });
+    expect(onSelectDate).not.toHaveBeenCalled();
+  });
+
   it('uses localized strings for the header and year navigation buttons', () => {
     const dateTime: FormatDateTime = ({ date, format }) => `Localized ${calendarFormatters.dateTime({ date, format })}`;
     const { getByRole } = render(<CalendarMonth {...defaultProps} yearPickerHidden />, {

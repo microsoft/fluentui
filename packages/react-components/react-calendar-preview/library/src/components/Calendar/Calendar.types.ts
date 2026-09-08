@@ -31,9 +31,9 @@ export type CalendarSlots = {
   liveRegion: NonNullable<Slot<'div'>>;
 
   /**
-   * The day picker.
+   * The day picker. Set to `null` to select months without showing the day picker.
    */
-  dayPicker: NonNullable<Slot<typeof CalendarDay>>;
+  dayPicker?: Slot<typeof CalendarDay>;
 
   /**
    * Separates the day picker from the month picker when both are visible.
@@ -46,9 +46,9 @@ export type CalendarSlots = {
   monthPickerWrapper: NonNullable<Slot<'div'>>;
 
   /**
-   * The month picker.
+   * The month picker. Set to `null` to show only the day picker.
    */
-  monthPicker: NonNullable<Slot<typeof CalendarMonth>>;
+  monthPicker?: Slot<typeof CalendarMonth>;
 
   /**
    * The "go to today" button. Set to `null` to hide it.
@@ -112,13 +112,13 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   /** The initial selected date when uncontrolled. `null` starts with no selection. */
   defaultValue?: Date | null;
 
-  /** The date currently displayed by the day and month pickers. */
+  /** The displayed date, controlled independently of value. When omitted, external value changes navigate automatically. */
   displayedDate?: Date;
 
   /** The initial displayed date when uncontrolled. */
   defaultDisplayedDate?: Date;
 
-  /** Called when user interaction requests a different displayed date. */
+  /** Called once per user navigation or selection action. External prop changes do not fire this callback. */
   onDisplayedDateChange?: EventHandler<CalendarNavigateData>;
 
   /** The active picker in an overlay layout. */
@@ -187,9 +187,9 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   restrictedDates?: Date[];
 
   /**
-   * The days that are selectable when `dateRangeType` is `WorkWeek`.
-   * If `dateRangeType` is not `WorkWeek` this property does nothing.
-   * @default [Monday,Tuesday,Wednesday,Thursday,Friday]
+   * The days that are selectable when `dateRangeType` is `workWeek`.
+   * If `dateRangeType` is not `workWeek` this property does nothing.
+   * @default ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
    */
   workWeekDays?: DayOfWeek[];
 

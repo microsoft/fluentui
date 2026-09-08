@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { Calendar } from './Calendar';
 import { isConformant } from '../../testing/isConformant';
 import { calendarFormatters } from '../../utils';
+import type { CalendarDayHandle } from '../CalendarDay/CalendarDay.types';
+import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
 
 describe('Calendar', () => {
   isConformant({
@@ -56,6 +58,71 @@ describe('Calendar', () => {
     expect(container.textContent).toContain('September 2020');
   });
 
+  it('navigates to an externally updated value when displayedDate is uncontrolled', () => {
+    const onDisplayedDateChange = jest.fn();
+    const { container, rerender } = render(
+      <Calendar value={new Date(2020, 8, 18)} onDisplayedDateChange={onDisplayedDateChange} />,
+    );
+
+    rerender(<Calendar value={new Date(2021, 0, 5)} onDisplayedDateChange={onDisplayedDateChange} />);
+
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('January 2021, Selected date January 5, 2021'),
+    );
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+  });
+
+  it('preserves a controlled displayedDate when value changes', () => {
+    const displayedDate = new Date(2020, 8, 18);
+    const { container, rerender } = render(<Calendar value={null} displayedDate={displayedDate} />);
+
+    rerender(<Calendar value={new Date(2021, 0, 5)} displayedDate={displayedDate} />);
+
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('September 2020, Selected date January 5, 2021'),
+    );
+  });
+
+  it('allows navigation to a month whose anchor date is restricted', () => {
+    const { getByTitle, getByRole, container } = render(
+      <Calendar defaultValue={new Date(2020, 8, 18)} restrictedDates={[new Date(2020, 9, 18)]} layout="sideBySide" />,
+    );
+
+    fireEvent.click(getByTitle('Next month October'));
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('October 2020'),
+    );
+
+    fireEvent.click(getByRole('gridcell', { name: 'September' }));
+    fireEvent.click(getByRole('gridcell', { name: 'October' }));
+    expect(container.querySelector('table[role="grid"]')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('October 2020'),
+    );
+  });
+
+  it('reports one navigation callback for one day selection', () => {
+    const onSelectDate = jest.fn();
+    const onDisplayedDateChange = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        value={null}
+        defaultDisplayedDate={new Date(2020, 8, 18)}
+        onSelectDate={onSelectDate}
+        onDisplayedDateChange={onDisplayedDateChange}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'September 15, 2020' }));
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 8, 15));
+  });
+
   it('supports an uncontrolled overlay view and reports view changes', () => {
     const onViewChange = jest.fn();
     const { getByRole, container } = render(
@@ -82,6 +149,81 @@ describe('Calendar', () => {
 
     expect(container.querySelector('table[role="grid"]')).toBeNull();
     expect(container.querySelector('[role="grid"]')).not.toBeNull();
+  });
+
+  it('selects a bounded month without switching to the day picker', () => {
+    const onSelectDate = jest.fn();
+    const onDisplayedDateChange = jest.fn();
+    const onViewChange = jest.fn();
+    const { getByRole, container } = render(
+      <Calendar
+        dayPicker={null}
+        defaultValue={null}
+        defaultDisplayedDate={new Date(2020, 8, 18)}
+        dateRangeType="month"
+        minDate={new Date(2020, 9, 10)}
+        maxDate={new Date(2020, 9, 31)}
+        restrictedDates={[new Date(2020, 9, 18)]}
+        onSelectDate={onSelectDate}
+        onDisplayedDateChange={onDisplayedDateChange}
+        onViewChange={onViewChange}
+      />,
+    );
+
+    fireEvent.click(getByRole('gridcell', { name: 'October' }));
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+    expect(onSelectDate.mock.calls[0][1].date).toEqual(new Date(2020, 9, 10));
+    expect(onSelectDate.mock.calls[0][1].selectedDateRange).toHaveLength(21);
+    expect(onSelectDate.mock.calls[0][1].selectedDateRange).not.toContainEqual(new Date(2020, 9, 18));
+    expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+    expect(onViewChange).not.toHaveBeenCalled();
+    expect(container.querySelector('table[role="grid"]')).toBeNull();
+  });
+
+  it('renders a day-only calendar without a month-toggle action', () => {
+    const { queryByRole, container } = render(<Calendar monthPicker={null} layout="overlay" />);
+
+    expect(container.querySelector('table[role="grid"]')).not.toBeNull();
+    expect(container.querySelector('.fui-CalendarMonth')).toBeNull();
+    expect(queryByRole('button', { name: /change month/ })).toBeNull();
+  });
+
+  it.each([2000, 2045])('opens the displayed year in month-only mode with a selection in %s', async selectedYear => {
+    const onSelectDate = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        dayPicker={null}
+        value={new Date(selectedYear, 8, 15)}
+        displayedDate={new Date(2040, 8, 15)}
+        onSelectDate={onSelectDate}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: '2040, change year' }));
+
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '2040 - 2051');
+    await waitFor(() => expect(getByRole('gridcell', { name: '2040' })).toHaveFocus());
+    expect(onSelectDate).not.toHaveBeenCalled();
+  });
+
+  it('preserves built-in focus restoration with consumer picker refs', async () => {
+    const dayRef = React.createRef<CalendarDayHandle>();
+    const monthRef = React.createRef<CalendarMonthHandle>();
+    const { getByRole } = render(
+      <Calendar
+        today={new Date(2020, 8, 18)}
+        defaultDisplayedDate={new Date(2020, 9, 18)}
+        dayPicker={{ ref: dayRef }}
+        monthPicker={{ ref: monthRef }}
+      />,
+    );
+
+    expect(dayRef.current?.focus).toBeInstanceOf(Function);
+    expect(monthRef.current?.focus).toBeInstanceOf(Function);
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+
+    await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
   });
 
   it('provides shared configuration to the day picker through context', () => {
@@ -155,6 +297,60 @@ describe('Calendar', () => {
       'tabindex',
       '0',
     );
+  });
+
+  it('leaves day-grid paging keys to Calendar instead of Tabster', () => {
+    const { container } = render(<Calendar defaultValue={new Date(2020, 8, 18)} />);
+    const attributes = JSON.parse(container.querySelector('table[role="grid"]')!.getAttribute('data-tabster')!);
+
+    expect(attributes.focusable.ignoreKeydown).toEqual({ PageUp: true, PageDown: true });
+  });
+
+  it.each([
+    { key: 'PageUp', ctrlKey: false, targetDate: new Date(2020, 9, 18) },
+    { key: 'PageDown', ctrlKey: false, targetDate: new Date(2020, 7, 18) },
+    { key: 'PageUp', ctrlKey: true, targetDate: new Date(2021, 8, 18) },
+    { key: 'PageDown', ctrlKey: true, targetDate: new Date(2019, 8, 18) },
+  ])('restores day focus after $key with ctrlKey=$ctrlKey', async ({ key, ctrlKey, targetDate }) => {
+    const onDisplayedDateChange = jest.fn();
+    const onSelectDate = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={new Date(2020, 8, 18)}
+        onDisplayedDateChange={onDisplayedDateChange}
+        onSelectDate={onSelectDate}
+      />,
+    );
+    const day = getByRole('button', { name: 'September 18, 2020' }).closest('td')!;
+    day.focus();
+
+    fireEvent.keyDown(day, { key, ctrlKey });
+
+    expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(targetDate);
+    expect(onSelectDate).not.toHaveBeenCalled();
+    const targetLabel = calendarFormatters.dateTime({ date: targetDate, format: 'dayMonthYear' });
+    await waitFor(() => expect(getByRole('button', { name: targetLabel }).closest('td')).toHaveFocus());
+  });
+
+  it('allows a consumer to cancel paging from a day cell', () => {
+    const onDisplayedDateChange = jest.fn();
+    const onKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={new Date(2020, 8, 18)}
+        onKeyDown={onKeyDown}
+        onDisplayedDateChange={onDisplayedDateChange}
+      />,
+    );
+    const day = getByRole('button', { name: 'September 18, 2020' }).closest('td')!;
+    day.focus();
+
+    fireEvent.keyDown(day, { key: 'PageUp' });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+    expect(day).toHaveFocus();
   });
 
   it('clamps go-to-today navigation to the allowed date range', () => {

@@ -37,6 +37,7 @@ const onButtonKeyDown =
   ): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) =>
   ev => {
     if (ev.key === Enter) {
+      ev.preventDefault();
       callback?.(ev);
     }
   };
@@ -81,6 +82,7 @@ export const useCalendarDayBase_unstable = (
     body,
     closeButton,
     daysToSelectInDayView,
+    getDayCellProps,
     grid,
     header,
     heading,
@@ -218,6 +220,7 @@ export const useCalendarDayBase_unstable = (
     activeDescendantId,
     calculateRoundedCorners,
     daysToSelectInDayView,
+    getDayCellProps,
     getDayInfosInRangeOfDay,
     getRefsFromDayInfos,
     headerIsClickable,
@@ -321,7 +324,10 @@ export const useCalendarDay_unstable = (
   ref: React.Ref<CalendarDayHandle>,
 ): CalendarDayState => {
   const state = useCalendarDayBase_unstable(props, ref);
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid-linear' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({
+    axis: 'grid-linear',
+    ignoreDefaultKeydown: { PageUp: true, PageDown: true },
+  });
 
   const { weeks } = state;
 

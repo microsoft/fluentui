@@ -1,7 +1,15 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  EventData,
+  EventHandler,
+  RefAttributes,
+  Slot,
+} from '@fluentui/react-utilities';
 import type { DayGridOptions } from '../../utils';
 import type { CalendarDayContextValue } from '../../contexts/calendarDayContext';
+import type { CalendarDayGridCellSlots } from '../CalendarDayGridCell/CalendarDayGridCell.types';
 
 export type { CalendarContextValue, CalendarContextValues } from '../../contexts/calendarContext';
 export type { CalendarDayContextValue, CalendarDayContextValues } from '../../contexts/calendarDayContext';
@@ -93,7 +101,13 @@ export type CalendarDayDismissData = EventData<'click' | 'keydown', React.Synthe
 export type CalendarDayHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
 
 /**
- * Defines the CalendarDayProps contract.
+ * Custom props and ref for a visible day cell and its child slots.
+ */
+export type CalendarDayCellProps = ComponentProps<Partial<CalendarDayGridCellSlots>> &
+  RefAttributes<HTMLTableCellElement>;
+
+/**
+ * Props for the day picker. Shared selection, boundaries, and formatting come from CalendarProvider.
  */
 export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
   Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
@@ -138,6 +152,13 @@ export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
      * marked.
      */
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+
+    /**
+     * Customizes each visible day's cell and its button, dayLabel, and marker slots.
+     * Cell refs are merged with the calendar's refs. Click and keyboard handlers run before
+     * selection and navigation; preventDefault suppresses the built-in action.
+     */
+    getDayCellProps?: (date: Date) => CalendarDayCellProps;
   };
 
 /**

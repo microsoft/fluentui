@@ -7,7 +7,7 @@ const workWeekDays: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday',
 
 export const CalendarContiguousWorkWeekDays = (): JSXElement => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
-  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);

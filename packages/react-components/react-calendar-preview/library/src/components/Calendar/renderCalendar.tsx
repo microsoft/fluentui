@@ -15,11 +15,11 @@ export const renderCalendar_unstable = (state: CalendarBaseState, contextValues:
     <CalendarProvider value={contextValues.calendar}>
       <state.root>
         <state.liveRegion />
-        {state.isDayPickerVisible && <state.dayPicker />}
+        {state.isDayPickerVisible && state.dayPicker && <state.dayPicker />}
         {state.isDayPickerVisible && state.isMonthPickerVisible && <state.divider />}
         {state.isMonthPickerVisible ? (
           <state.monthPickerWrapper>
-            <state.monthPicker />
+            {state.monthPicker && <state.monthPicker />}
             {state.goToTodayButton && <state.goToTodayButton />}
           </state.monthPickerWrapper>
         ) : (

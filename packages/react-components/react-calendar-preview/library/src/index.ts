@@ -35,6 +35,7 @@ export {
 export type {
   CalendarDayBaseProps,
   CalendarDayBaseState,
+  CalendarDayCellProps,
   CalendarDayContextValue,
   CalendarDayContextValues,
   CalendarDayDismissData,
@@ -96,11 +97,22 @@ export type {
   CalendarYearSelectData,
 } from './CalendarYear';
 
-export { calendarFormatters, addDays, addMonths, addWeeks, addYears, getDateRange } from './utils';
+export { CalendarProvider, calendarContextDefaultValue, useCalendarContext_unstable } from './contexts/calendarContext';
+
+export {
+  calendarFormatters,
+  createCalendarDateTimeFormatter,
+  addDays,
+  addMonths,
+  addWeeks,
+  addYears,
+  getDateRange,
+} from './utils';
 export type {
   AnimationDirection,
   CalendarDateLabelData,
   CalendarDateTimeFormat,
+  CalendarDateTimeFormatterOptions,
   CalendarFormatters,
   CalendarYearRangeLabelData,
   DateRangeType,

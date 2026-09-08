@@ -1,6 +1,7 @@
 export type {
   CalendarDayBaseProps,
   CalendarDayBaseState,
+  CalendarDayCellProps,
   CalendarDayContextValue,
   CalendarDayContextValues,
   CalendarDayDismissData,

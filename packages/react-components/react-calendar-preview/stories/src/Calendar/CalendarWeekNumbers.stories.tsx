@@ -4,7 +4,7 @@ import { Calendar } from '@fluentui/react-calendar-preview';
 import type { CalendarProps } from '@fluentui/react-calendar-preview';
 
 export const CalendarWeekNumbers = (): JSXElement => {
-  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
 
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
