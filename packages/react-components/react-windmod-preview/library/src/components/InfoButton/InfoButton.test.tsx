@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons/headless/utils';
 
 import { isConformant } from '../../testing/isConformant';
 import { InfoButton } from './InfoButton';
@@ -89,7 +90,8 @@ describe('InfoButton', () => {
       const { glyphs } = parts(scoped.baseElement);
 
       expect(glyphs).toHaveLength(2);
-      expect(glyphs.map(glyph => glyph.getAttribute('data-fui-icon-variant'))).toEqual(['filled', 'regular']);
+      expect(glyphs[0]).toHaveClass(iconFilledClassName);
+      expect(glyphs[1]).toHaveClass(iconRegularClassName);
       // Presence alone would pass against a constant glyph; the rendered box is the identity.
       expect(glyphs.map(glyph => glyph.getAttribute('width'))).toEqual([widths[size], widths[size]]);
       scoped.unmount();

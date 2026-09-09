@@ -49,6 +49,12 @@ import '@fluentui/react-windmod-preview/base.css';
 Stems are the theme class names without their `fui-theme-` prefix: `web-light`, `web-dark`,
 `teams-light`, `teams-dark`, `teams-high-contrast`, `teams-light-v21`, `teams-dark-v21`.
 
+For icons, use `@fluentui/react-icons/headless` (version 2.0.339 or newer). The theme base already
+includes its stylesheet in `fui.base`, below the component layers. Do not also import
+`@fluentui/react-icons/headless/styles.css` unlayered: its visibility rules would override
+component hover and selection glyph swaps. The `icon-filled` / `icon-regular` variants target
+the icon package's public class tokens and need no additional data attribute.
+
 `@fluentui/react-tailwind-theme-preview/styles.css` bundles the base and all seven into one file.
 It still bakes no default — a theme class is still applied by hand — so it saves imports, not
 steps, and costs 15.4 KB gzip against 5.9 KB for base + one theme.

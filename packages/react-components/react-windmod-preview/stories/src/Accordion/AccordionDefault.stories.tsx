@@ -6,7 +6,7 @@ import { bundleIcon } from '@fluentui/react-icons/headless';
 
 import styles from '../compare.module.css';
 
-// Bundled pair: the icon slot swaps regular → filled via data-fui-icon-variant.
+// Bundled pair: the icon slot swaps regular → filled via the public filled/regular icon classes.
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const sizes = ['small', 'medium', 'large', 'extra-large'] as const;

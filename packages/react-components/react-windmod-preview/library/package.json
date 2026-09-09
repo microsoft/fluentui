@@ -31,7 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-headless-components-preview": "^0.2.5",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.339",
     "@fluentui/react-jsx-runtime": "^9.4.5",
     "@fluentui/react-shared-contexts": "^9.26.3",
     "@fluentui/react-tailwind-theme-preview": "^0.1.0",

@@ -451,8 +451,8 @@ Note it matches font icons too, and it does NOT match a consumer's arbitrary `<s
 behavioural delta vs Griffel's `& svg` is documented in MIGRATION.md (stamp `data-fui-icon` to
 opt in).
 
-The filled/regular glyph swap selects on `data-fui-icon-variant`, stamped by the headless
-`bundleIcon` on each of the two sibling glyphs it renders directly inside the slot element. The
+The filled/regular glyph swap selects the public `fui-Icon-filled` / `fui-Icon-regular` class
+tokens, stamped by `bundleIcon` on the two sibling glyphs it renders inside the slot element. The
 `icon-filled` / `icon-regular` variants are direct-child selectors applied to the class that owns
 the glyphs — no descendant wrapper:
 
@@ -469,6 +469,12 @@ the glyphs — no descendant wrapper:
   }
 }
 ```
+
+The catalog uses `[class~='fui-Icon-filled']` / `[class~='fui-Icon-regular']` inside `:where()`.
+These token selectors survive CSS Modules without being renamed and add zero specificity.
+The theme imports the icons stylesheet into `fui.base`, below the component layers; consumers
+must not also load an unlayered copy, whose visibility rules would outrank component glyph swaps.
+Use headless icon atoms: the standard Griffel atoms inject their own unlayered styles.
 
 Copy `Button.module.css`. Two constraints:
 

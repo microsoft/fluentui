@@ -31,7 +31,8 @@ task. Load a reference only on its trigger; each one is self-contained.
   no `!important`. Slot `className` merges last, so it wins at equal specificity too.
 - **The public surface is two classes and data attributes.** A root carries `fui-<component>` (the
   identity class, safe for CSS and `querySelector`) and `group/fui-<component>` (Tailwind's named
-  group). Everything below the root is a hashed ident; look-props and state are `data-*` on the root.
+  group). Windmod's slot classes are hashed; icons retain their package's public class tokens.
+  Look-props and state are `data-*` on the root.
 - **State is reached through the variant catalog.** `group-<variant>/fui-<component>:…` on any child,
   `peer-<variant>/fui-<component>:…` beside a native input. The catalog is exactly two shipped files —
   generic (`@fluentui/react-tailwind-theme-preview/css/variants.css`) and component-specific

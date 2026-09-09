@@ -53,8 +53,9 @@
  * selects any direct-child Fluent icon, bundled or not, SVG or font. A consumer's bring-your-own
  * <svg> does not match — stamping data-fui-icon on it opts in.
  *
- * icon-filled/icon-regular are the bundled-pair spelling, selecting the data-fui-icon-variant
- * attribute headless bundleIcon stamps on each glyph. Same direct-child anchoring (bundleIcon
+ * icon-filled/icon-regular select the public fui-Icon-filled/fui-Icon-regular class tokens.
+ * The class attribute's ~= operator preserves these global names through CSS Modules, while
+ * :where() keeps their specificity at zero. Same direct-child anchoring (bundleIcon
  * renders its two glyphs as siblings directly inside the slot element; a wrapper element a
  * consumer adds around their icon takes it out of reach). State-guard placement: a group-state
  * variant must wrap these from the owning class's block, and the owning class must be a
@@ -64,10 +65,10 @@
  * express: an anchor class whose glyphs sit deeper than one level (InteractionTagPrimary anchors
  * on root appearance classes while the glyphs live inside the tag icon slot). */
 @custom-variant icon (& > :where([data-fui-icon]));
-@custom-variant icon-filled (& > :where([data-fui-icon-variant='filled']));
-@custom-variant icon-regular (& > :where([data-fui-icon-variant='regular']));
-@custom-variant variant-filled (&:where([data-fui-icon-variant='filled']));
-@custom-variant variant-regular (&:where([data-fui-icon-variant='regular']));
+@custom-variant icon-filled (& > :where([class~='fui-Icon-filled']));
+@custom-variant icon-regular (& > :where([class~='fui-Icon-regular']));
+@custom-variant variant-filled (&:where([class~='fui-Icon-filled']));
+@custom-variant variant-regular (&:where([class~='fui-Icon-regular']));
 
 /* ColorSlider: colour channel. `hue` is the headless default and the resting look, so it gets
    no entry. */
