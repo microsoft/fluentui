@@ -1,11 +1,12 @@
 import {
-  CreateNodesContext,
+  CreateNodesContextV2,
   CreateNodesResultV2,
   PostTasksExecutionContext,
   ProjectConfiguration,
   TaskResult,
   serializeJson,
 } from '@nx/devkit';
+import { join } from 'node:path';
 
 import { TempFs } from './testing-utils/index';
 import { WorkspacePluginOptions, createNodesV2, postTasksExecution } from './workspace-plugin';
@@ -33,7 +34,7 @@ const postTasksExecutionContext: PostTasksExecutionContext = {
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
   const originalEnv = process.env;
-  let context: CreateNodesContext;
+  let context: CreateNodesContextV2;
   let tempFs: TempFs;
   let cwd: string;
   const options: WorkspacePluginOptions = {
@@ -58,8 +59,6 @@ describe(`workspace-plugin`, () => {
         },
       },
       workspaceRoot: tempFs.tempDir,
-
-      configFiles: [],
     };
   });
 
@@ -67,8 +66,188 @@ describe(`workspace-plugin`, () => {
     process.env = originalEnv;
     jest.restoreAllMocks();
     jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
+  });
+
+  describe('workspace-root filesystem anchoring', () => {
+    async function inferFromEveryCwd(configFiles: string[]) {
+      const expected = await createNodesFunction(configFiles, options, context);
+      await tempFs.createFile('nested/.gitkeep', '');
+      for (const otherCwd of [join(context.workspaceRoot, 'nested'), cwd]) {
+        process.chdir(otherCwd);
+        expect(await createNodesFunction(configFiles, options, context)).toEqual(expected);
+      }
+      return expected;
+    }
+
+    it.each([
+      ['jest.config.js', 'eslint.config.js', 'bundle-size/index.js', 'cypress.config.ts', 'tsconfig.cy.json'],
+      ['jest.config.cjs', 'eslint.config.cjs', 'monosize.config.mjs', 'playwright.config.ts', 'tsconfig.e2e.json'],
+      ['jest.config.ts', 'eslint.config.mjs', 'monosize.config.mjs', 'playwright.config.ts', 'tsconfig.spec.json'],
+    ])(
+      'infers %s and other optional targets independently of cwd',
+      async (jestConfig, eslint, bundle, e2e, tsconfig) => {
+        await tempFs.createFiles({
+          'proj/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
+          'proj/package.json': serializeJson({
+            name: '@proj/proj',
+            exports: { '.': './lib/index.js' },
+            peerDependencies: { react: '>=17' },
+          }),
+          [`proj/${jestConfig}`]: '',
+          [`proj/${eslint}`]: '',
+          [`proj/${bundle}`]: '',
+          [`proj/${e2e}`]: '',
+          [`proj/${tsconfig}`]: '{}',
+          'proj/.storybook/main.js': '',
+          'proj/bundle-isolation.config.json': '{}',
+        });
+
+        const results = await inferFromEveryCwd(['proj/project.json']);
+        expect(Object.keys(results[0][1].projects!)).toEqual(['proj']);
+        const targets = getTargets(results)!;
+        for (const name of [
+          'test',
+          'lint',
+          'bundle-size',
+          'e2e',
+          'storybook',
+          'verify-bundle-isolation',
+          'attw',
+          'react-compiler-analyzer--lint',
+        ]) {
+          expect(targets[name]).toMatchObject({ options: { cwd: 'proj' } });
+        }
+        expect(targets.e2e.command).toBe(
+          `yarn run -T ${e2e === 'cypress.config.ts' ? 'cypress run --component' : 'playwright test'}`,
+        );
+        expect(targets.build.options?.outputPathRoot).toBe('{projectRoot}');
+        for (const version of ['17', '18']) {
+          expect(targets[`react-integration-testing--${version}--test`]).toMatchObject({
+            options: { cwd: '{projectRoot}' },
+          });
+          expect(Boolean(targets[`react-integration-testing--${version}--e2e`])).toBe(e2e === 'cypress.config.ts');
+        }
+      },
+    );
+
+    it('infers Storybook and RIT sibling relationships independently of cwd', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
+        'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
+        'proj/stories/project.json': serializeJson({
+          name: 'proj-stories',
+          projectType: 'library',
+          tags: ['vNext', 'type:stories'],
+        }),
+        'proj/stories/package.json': serializeJson({ name: '@proj/proj-stories', private: true }),
+        'proj/stories/.storybook/main.js': '',
+        'proj/stories/jest.config.js': '',
+        'proj/stories/cypress.config.ts': '',
+      });
+      const results = await inferFromEveryCwd(['proj/library/project.json', 'proj/stories/project.json']);
+      const library = getTargets(results, 'proj/library')!;
+      const stories = results[1][1].projects!['proj/stories'].targets!;
+      expect(library.storybook).toEqual({ command: 'nx run proj-stories:storybook', cache: true });
+      expect(library.start).toEqual(library.storybook);
+      expect(stories.storybook.options?.cwd).toBe('proj/stories');
+      for (const version of ['17', '18']) {
+        const typeCheck = `react-integration-testing--${version}--type-check`;
+        const prepare = `react-integration-testing--${version}--prepare`;
+        expect(library[typeCheck]).toMatchObject({
+          executor: 'nx:noop',
+          dependsOn: [{ projects: 'proj-stories', target: typeCheck }],
+        });
+        expect(library[prepare]).toBeUndefined();
+        expect(stories[typeCheck]).toMatchObject({ dependsOn: [prepare], options: { cwd: '{projectRoot}' } });
+        expect(stories[prepare].outputs).toEqual([
+          `{workspaceRoot}/tmp/rit/react-${version}/proj-stories-react-${version}-ci`,
+        ]);
+        expect(stories[`react-integration-testing--${version}--test`]).toBeUndefined();
+        expect(stories[`react-integration-testing--${version}--e2e`]).toBeUndefined();
+      }
+    });
+
+    it.each(['js', 'cjs'])('resolves rit.config.%s and its referenced files independently of cwd', async extension => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+          ...(extension === 'cjs' ? { type: 'module' } : {}),
+        }),
+        'proj/library/rit.config.js': 'module.exports = {}',
+        [`proj/library/rit.config.${extension}`]: `module.exports = ${serializeJson({
+          react: {
+            17: {
+              runConfig: {
+                'type-check': { configPath: '../stories/tsconfig.json' },
+                e2e: { configPath: 'config/cypress.custom.ts' },
+                test: { configPath: 'missing-jest.config.js' },
+              },
+            },
+            18: {
+              runConfig: {
+                'type-check': { configPath: 'missing-tsconfig.json' },
+                e2e: { configPath: 'missing-cypress.config.ts' },
+                test: { configPath: 'config/jest.custom.cjs' },
+              },
+            },
+          },
+        })}`,
+        'proj/stories/tsconfig.json': '{}',
+        'proj/library/config/cypress.custom.ts': '',
+        'proj/library/config/jest.custom.cjs': '',
+        'proj/library/cypress.config.ts': '',
+        'proj/library/jest.config.js': '',
+      });
+      const errors = jest.spyOn(console, 'error').mockImplementation();
+      const results = await inferFromEveryCwd(['proj/library/project.json']);
+      const targets = getTargets(results, 'proj/library')!;
+      expect(errors).not.toHaveBeenCalled();
+      for (const [version, typeCheck, e2e, test] of [
+        ['17', true, true, false],
+        ['18', false, false, true],
+      ] as const) {
+        expect(Boolean(targets[`react-integration-testing--${version}--type-check`])).toBe(typeCheck);
+        expect(Boolean(targets[`react-integration-testing--${version}--e2e`])).toBe(e2e);
+        expect(Boolean(targets[`react-integration-testing--${version}--test`])).toBe(test);
+      }
+    });
+
+    it('ignores misleading project, sibling and optional config files under another cwd', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
+        'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
+        'nested/proj/library/project.json': serializeJson({ name: 'wrong-project', tags: ['tools'] }),
+        'nested/proj/library/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+        'nested/proj/library/jest.config.js': '',
+        'nested/proj/library/eslint.config.js': '',
+        'nested/proj/library/.storybook/main.js': '',
+        'nested/proj/library/bundle-size/index.js': '',
+        'nested/proj/library/monosize.config.mjs': '',
+        'nested/proj/library/bundle-isolation.config.json': '{}',
+        'nested/proj/library/cypress.config.ts': '',
+        'nested/proj/library/tsconfig.cy.json': '{}',
+        'nested/proj/library/playwright.config.ts': '',
+        'nested/proj/library/tsconfig.e2e.json': '{}',
+        'nested/proj/stories/project.json': serializeJson({ name: 'wrong-stories' }),
+        'nested/proj/library/rit.config.cjs': `module.exports = {
+          react: { 17: { runConfig: { 'type-check': { configPath: 'tsconfig.cy.json' } } } }
+        }`,
+      });
+      const results = await inferFromEveryCwd(['proj/library/project.json']);
+      expect(getTargetsNames(results, 'proj/library')).toEqual([
+        'clean',
+        'format',
+        'type-check',
+        'generate-api',
+        'build',
+        'react-integration-testing',
+      ]);
+      expect(getTargets(results, 'proj/library')!['react-integration-testing'].dependsOn).toEqual([]);
+    });
   });
 
   it('should report failed tasks as GitHub Actions errors', async () => {
