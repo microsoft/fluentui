@@ -10,6 +10,9 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverBody,
   TeachingPopoverTitle,
+  TeachingPopoverCarousel,
+  TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
 } from '@fluentui/react-teaching-popover';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -23,6 +26,31 @@ const triggerSelector = '[aria-expanded]';
 const surfaceSelector = '[role="dialog"]';
 
 describe('TeachingPopover', () => {
+  it('focuses Next when returning to the first page hides Previous', () => {
+    mount(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverCarousel defaultValue="two">
+            <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+            <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+            <TeachingPopoverCarouselFooter
+              initialStepText=""
+              finalStepText="Got it"
+              previous={{ navType: 'prev', altText: null, children: 'Previous', id: 'previous' }}
+              next={{ navType: 'next', altText: 'Got it', children: 'Next', id: 'next' }}
+            />
+          </TeachingPopoverCarousel>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    cy.get('#previous').focus().realPress('Enter');
+    cy.get('#previous').should('not.be.visible');
+    cy.get('#next').should('have.focus');
+  });
+
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
     const UncontrolledExample = () => (
       <TeachingPopover>

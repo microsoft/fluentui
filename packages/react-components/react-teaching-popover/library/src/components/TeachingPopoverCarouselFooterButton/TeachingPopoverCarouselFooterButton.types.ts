@@ -20,6 +20,7 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
 
     /**
      * The ReactNode provided to the button when it is on it's first (navType 'prev') or last (navType 'next') step
+     * A null or undefined value hides the button. If it has focus, focus moves to the opposite navigation button.
      */
     altText: React.ReactNode;
   };

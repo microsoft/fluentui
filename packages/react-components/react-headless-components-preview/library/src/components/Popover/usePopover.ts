@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
 
@@ -72,6 +73,17 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const triggerRef = React.useRef<HTMLElement>(null);
   const contentRef = React.useRef<HTMLElement>(null);
   const arrowRef = React.useRef<HTMLDivElement>(null);
+  const { targetDocument } = useFluent();
+  const wasOpen = React.useRef(open);
+
+  React.useEffect(() => {
+    // React removes the surface before the native hide algorithm can restore focus.
+    // Restore only after an actual close, without taking focus from an outside control.
+    if (wasOpen.current && !open && targetDocument?.activeElement === targetDocument?.body) {
+      triggerRef.current?.focus();
+    }
+    wasOpen.current = open;
+  }, [open, targetDocument]);
 
   const generatedSurfaceId = useId('fui-popover-surface-');
   const surfaceId = props.id ?? generatedSurfaceId;
