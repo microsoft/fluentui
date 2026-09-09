@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add data-* state attributes to Nav components and forward AvatarGroup size through context",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -41,7 +41,8 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
      */
     selected: boolean;
     root: {
-      'data-open'?: string;
+      'data-disabled'?: string;
+      'data-expanded'?: string;
       'data-selected'?: string;
     };
   };
