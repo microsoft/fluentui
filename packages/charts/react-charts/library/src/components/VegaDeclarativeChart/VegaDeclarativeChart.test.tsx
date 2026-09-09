@@ -4,6 +4,16 @@ import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
+const groupedBarSpecialNames = [
+  '__proto__',
+  'constructor',
+  'prototype',
+  'xAxisPoint',
+  'indexNum',
+  'groupSeries',
+  'stackCallOutAccessibilityData',
+];
+
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -1345,5 +1355,57 @@ describe('VegaDeclarativeChart - Security', () => {
     expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: deepSpec }} />)).toThrow(
       'Maximum JSON depth exceeded',
     );
+  });
+});
+
+describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
+  it.each([
+    {
+      name: 'category',
+      pollutionKey: 'vegaRenderPrototypeProbe',
+      values: [
+        { category: '__proto__', series: 'vegaRenderPrototypeProbe', value: 10 },
+        { category: 'constructor', series: 'vegaRenderPrototypeProbe', value: 20 },
+        { category: 'prototype', series: 'vegaRenderPrototypeProbe', value: 30 },
+      ],
+    },
+    {
+      name: 'series',
+      pollutionKey: undefined,
+      values: groupedBarSpecialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
+    },
+  ])('should render special $name names as ordinary data', ({ values, pollutionKey }) => {
+    const originalConstructor = Object.prototype.constructor;
+    const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
+    const spec: VegaLiteSpec = {
+      mark: 'bar',
+      data: { values },
+      encoding: {
+        x: { field: 'category', type: 'nominal' },
+        y: { field: 'value', type: 'quantitative' },
+        color: { field: 'series', type: 'nominal' },
+        xOffset: { field: 'series' },
+      },
+    };
+
+    try {
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
+      const bars = Array.from(container.querySelectorAll('rect[role="option"]'));
+      expect(bars).toHaveLength(values.length);
+      values.forEach(({ category, series, value }) => {
+        expect(bars.some(bar => bar.getAttribute('aria-label') === `${category}. ${series}, ${value}.`)).toBe(true);
+      });
+      expect(Object.prototype.constructor).toBe(originalConstructor);
+      expect(Object.getOwnPropertyNames(Object.prototype)).toEqual(originalPrototypeProperties);
+      if (pollutionKey) {
+        expect(Object.prototype).not.toHaveProperty(pollutionKey);
+      }
+    } finally {
+      if (pollutionKey) {
+        Reflect.deleteProperty(Object.prototype, pollutionKey);
+        Reflect.deleteProperty(Object, pollutionKey);
+      }
+    }
   });
 });
