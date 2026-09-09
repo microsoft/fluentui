@@ -1,11 +1,12 @@
 import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { execFileSync, spawnSync, SpawnSyncReturns } from 'child_process';
+import { execFileSync, execSync, spawnSync, SpawnSyncReturns } from 'child_process';
 import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
 
 jest.mock('child_process');
 const execFileSyncMock = execFileSync as unknown as jest.Mock<string>;
+const execSyncMock = execSync as unknown as jest.Mock<string>;
 const spawnSyncMock = spawnSync as unknown as jest.Mock<Partial<SpawnSyncReturns<string[]>>>;
 
 type Package = {
@@ -112,6 +113,24 @@ describe('epic-generator', () => {
         expect(() => epicGenerator(tree, { title: 'test title', repository })).toThrow(/invalid repository name/);
       },
     );
+
+    it('accepts an Enterprise Managed User repository owner', () => {
+      const tree = setupTest([]);
+      const repository = 'mona-cat_octo/migration-tracker';
+
+      epicGenerator(tree, { title: 'test title', repository })();
+
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(1, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        repository,
+        '--title',
+        'test title',
+        '--body',
+        '*Description to be added*',
+      ]);
+    });
   });
 
   describe('authentication', () => {
@@ -321,12 +340,20 @@ describe('epic-generator', () => {
       ]);
     });
 
-    it('passes a shell-like title as a single argument', () => {
-      const tree = setupTest([]);
-      const title = 'Create epic"; malicious-command; #';
+    it('passes special characters as literal arguments for all issue commands', () => {
+      const tree = setupTest([
+        {
+          name: 'react-button',
+          version: '9.0.0',
+          projectType: 'library',
+          owners: ['@microsoft/cxe-red'],
+        },
+      ]);
+      const title = 'Create "migration" for `react-button` 🚧';
 
       epicGenerator(tree, { title, repository: 'microsoft/fluentui' })();
 
+      expect(execFileSyncMock).toHaveBeenCalledTimes(3);
       expect(execFileSyncMock).toHaveBeenNthCalledWith(1, 'gh', [
         'issue',
         'create',
@@ -337,6 +364,31 @@ describe('epic-generator', () => {
         '--body',
         '*Description to be added*',
       ]);
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(2, 'gh', [
+        'issue',
+        'create',
+        '--repo',
+        'microsoft/fluentui',
+        '--title',
+        `${title} - @microsoft/cxe-red`,
+        '--body',
+        stripIndents`🚧 This is an auto-generated issue to individually track migration progress.
+
+          ### Packages to migrate:
+          - react-button`,
+      ]);
+      expect(execFileSyncMock).toHaveBeenNthCalledWith(3, 'gh', [
+        'issue',
+        'edit',
+        'epicUrl',
+        '--body',
+        stripIndents`*Description to be added*
+
+          ### Packages that need migration:
+          - [ ] issueUrl-@microsoft/cxe-red
+            - react-button`,
+      ]);
+      expect(execSyncMock).not.toHaveBeenCalled();
     });
   });
 });

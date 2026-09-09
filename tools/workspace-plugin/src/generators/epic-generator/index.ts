@@ -4,7 +4,7 @@ import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';
 
 const placeholderMessage = '*Description to be added*';
-const repositoryNamePattern = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?\/[A-Za-z0-9._-]+$/;
+const repositoryNamePattern = /^[A-Za-z0-9](?:[A-Za-z0-9_-]{0,37}[A-Za-z0-9])?\/[A-Za-z0-9._-]+$/;
 
 function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   if (schema.repository !== undefined && !repositoryNamePattern.test(schema.repository)) {
