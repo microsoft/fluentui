@@ -2,7 +2,7 @@ import { type ExecutorContext, logger, stripIndents } from '@nx/devkit';
 
 import { BuildExecutorSchema } from './schema';
 import executor from './executor';
-import { join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { existsSync, readFileSync, readdirSync, appendFileSync, writeFileSync } from 'node:fs';
 
 // ===== mocks start =====
@@ -154,6 +154,7 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'utils',
     ]);
     expect(readdirSync(join(workspaceRoot, 'libs/proj/lib-commonjs'))).toEqual([
       'greeter.js',
@@ -162,6 +163,7 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'utils',
     ]);
 
     // ====================================
@@ -208,10 +210,22 @@ describe('Build Executor', () => {
       }
       "
     `);
+    for (const outputPath of ['lib', 'lib-commonjs']) {
+      for (const [fileName, source] of [
+        ['greeter', '../src/greeter.ts'],
+        ['utils/nested', '../../src/utils/nested.ts'],
+      ]) {
+        const mapPath = join(workspaceRoot, 'libs/proj', outputPath, `${fileName}.js.map`);
+        const map: { sources: string[] } = JSON.parse(readFileSync(mapPath, 'utf-8'));
+        expect(map.sources).toEqual([source]);
+        expect(resolve(dirname(mapPath), map.sources[0])).toBe(join(workspaceRoot, 'libs/proj/src', `${fileName}.ts`));
+      }
+    }
+
     const sourceMap = JSON.parse(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8'));
     sourceMap.sourcesContent = sourceMap.sourcesContent.map((content: string) => content.replace(/\r\n/g, '\n'));
     expect(JSON.stringify(sourceMap)).toMatchInlineSnapshot(
-      `"{\\"version\\":3,\\"sources\\":[\\"src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
     );
 
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`

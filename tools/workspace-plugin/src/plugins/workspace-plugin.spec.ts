@@ -6,6 +6,7 @@ import {
   TaskResult,
   serializeJson,
 } from '@nx/devkit';
+import { join } from 'node:path';
 
 import { TempFs } from './testing-utils/index';
 import { WorkspacePluginOptions, createNodesV2, postTasksExecution } from './workspace-plugin';
@@ -67,6 +68,237 @@ describe(`workspace-plugin`, () => {
     jest.resetModules();
     process.chdir(cwd);
     tempFs.cleanup();
+  });
+
+  describe('workspace-root filesystem anchoring', () => {
+    async function inferFromWorkspaceAndOtherCwds(configFiles: string[]) {
+      const fromWorkspaceRoot = await createNodesFunction(configFiles, options, context);
+      await tempFs.createFile('nested/.gitkeep', '');
+
+      for (const otherCwd of [join(context.workspaceRoot, 'nested'), cwd]) {
+        process.chdir(otherCwd);
+        expect(await createNodesFunction(configFiles, options, context)).toEqual(fromWorkspaceRoot);
+      }
+
+      return fromWorkspaceRoot;
+    }
+
+    it.each([
+      {
+        jestConfig: 'jest.config.js',
+        eslintConfig: 'eslint.config.js',
+        bundleSizeFile: 'bundle-size/index.fixture.js',
+        e2eConfig: 'cypress.config.ts',
+        e2eTsconfig: 'tsconfig.cy.json',
+        e2eCommand: 'cypress run --component',
+      },
+      {
+        jestConfig: 'jest.config.cjs',
+        eslintConfig: 'eslint.config.cjs',
+        bundleSizeFile: 'monosize.config.mjs',
+        e2eConfig: 'playwright.config.ts',
+        e2eTsconfig: 'tsconfig.e2e.json',
+        e2eCommand: 'playwright test',
+      },
+      {
+        jestConfig: 'jest.config.ts',
+        eslintConfig: 'eslint.config.mjs',
+        bundleSizeFile: 'monosize.config.mjs',
+        e2eConfig: 'playwright.config.ts',
+        e2eTsconfig: 'tsconfig.spec.json',
+        e2eCommand: 'playwright test',
+      },
+    ])(
+      'should infer identical config-driven targets for $jestConfig, $eslintConfig and $e2eTsconfig from any cwd',
+      async ({ jestConfig, eslintConfig, bundleSizeFile, e2eConfig, e2eTsconfig, e2eCommand }) => {
+        await tempFs.createFiles({
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/package.json': serializeJson({
+            name: '@proj/proj',
+            exports: { '.': './lib/index.js' },
+            peerDependencies: { react: '>=17' },
+          } satisfies Partial<PackageJson>),
+          [`proj/${jestConfig}`]: 'module.exports = {}',
+          [`proj/${eslintConfig}`]: '',
+          [`proj/${bundleSizeFile}`]: '',
+          [`proj/${e2eConfig}`]: 'export default {}',
+          [`proj/${e2eTsconfig}`]: '{}',
+          'proj/.storybook/main.js': 'module.exports = {}',
+          'proj/bundle-isolation.config.json': '{}',
+        });
+
+        const results = await inferFromWorkspaceAndOtherCwds(['proj/project.json']);
+        expect(Object.keys(results[0][1].projects!)).toEqual(['proj']);
+        const targets = getTargets(results)!;
+        for (const targetName of [
+          'lint',
+          'test',
+          'storybook',
+          'bundle-size',
+          'verify-bundle-isolation',
+          'e2e',
+          'attw',
+          'react-compiler-analyzer--lint',
+        ]) {
+          expect(targets[targetName]).toMatchObject({ options: { cwd: 'proj' } });
+        }
+        expect(targets.e2e.command).toBe(`yarn run -T ${e2eCommand}`);
+        expect(targets.build.options?.outputPathRoot).toBe('{projectRoot}');
+        for (const reactVersion of ['17', '18']) {
+          expect(targets[`react-integration-testing--${reactVersion}--test`]).toMatchObject({
+            options: { cwd: '{projectRoot}' },
+          });
+          if (e2eConfig === 'cypress.config.ts') {
+            expect(targets[`react-integration-testing--${reactVersion}--e2e`]).toBeDefined();
+          } else {
+            expect(targets[`react-integration-testing--${reactVersion}--e2e`]).toBeUndefined();
+          }
+        }
+      },
+    );
+
+    it('should infer identical Storybook and RIT sibling targets from any cwd', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj/library',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
+        'proj/stories/project.json': serializeJson({
+          root: 'proj/stories',
+          name: 'proj-stories',
+          projectType: 'library',
+          tags: ['vNext', 'type:stories'],
+        } satisfies ProjectConfiguration),
+        'proj/stories/package.json': serializeJson({ name: '@proj/proj-stories', private: true }),
+        'proj/stories/.storybook/main.js': 'module.exports = {}',
+        'proj/stories/jest.config.js': 'module.exports = {}',
+        'proj/stories/cypress.config.ts': 'export default {}',
+      });
+
+      const results = await inferFromWorkspaceAndOtherCwds(['proj/library/project.json', 'proj/stories/project.json']);
+      const libraryTargets = getTargets(results, 'proj/library')!;
+      const storiesTargets = results[1][1].projects!['proj/stories'].targets!;
+      expect(libraryTargets.storybook).toEqual({ command: 'nx run proj-stories:storybook', cache: true });
+      expect(libraryTargets.start).toEqual(libraryTargets.storybook);
+      expect(storiesTargets.storybook).toMatchObject({ options: { cwd: 'proj/stories' } });
+      expect(storiesTargets.start).toEqual({ command: 'nx run proj-stories:storybook', cache: true });
+      for (const reactVersion of ['17', '18']) {
+        const typeCheckTarget = `react-integration-testing--${reactVersion}--type-check`;
+        const prepareTarget = `react-integration-testing--${reactVersion}--prepare`;
+        expect(libraryTargets[typeCheckTarget]).toMatchObject({
+          executor: 'nx:noop',
+          dependsOn: [{ projects: 'proj-stories', target: typeCheckTarget }],
+        });
+        expect(libraryTargets[prepareTarget]).toBeUndefined();
+        expect(storiesTargets[typeCheckTarget]).toMatchObject({
+          dependsOn: [prepareTarget],
+          options: { cwd: '{projectRoot}' },
+        });
+        expect(storiesTargets[prepareTarget].outputs).toEqual([
+          `{workspaceRoot}/tmp/rit/react-${reactVersion}/proj-stories-react-${reactVersion}-ci`,
+        ]);
+        expect(storiesTargets[`react-integration-testing--${reactVersion}--test`]).toBeUndefined();
+        expect(storiesTargets[`react-integration-testing--${reactVersion}--e2e`]).toBeUndefined();
+      }
+    });
+
+    it.each(['js', 'cjs'])('should resolve rit.config.%s and its referenced files from any cwd', async extension => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj/library',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+          ...(extension === 'cjs' ? { type: 'module' } : {}),
+        }),
+        'proj/library/rit.config.js': 'module.exports = {}',
+        [`proj/library/rit.config.${extension}`]: `module.exports = ${serializeJson({
+          react: {
+            17: {
+              runConfig: {
+                'type-check': { configPath: '../stories/tsconfig.json' },
+                e2e: { configPath: 'config/cypress.custom.ts' },
+                test: { configPath: 'missing-jest.config.js' },
+              },
+            },
+            18: {
+              runConfig: {
+                'type-check': { configPath: 'missing-tsconfig.json' },
+                e2e: { configPath: 'missing-cypress.config.ts' },
+                test: { configPath: 'config/jest.custom.cjs' },
+              },
+            },
+          },
+        })}`,
+        'proj/stories/tsconfig.json': '{}',
+        'proj/library/config/cypress.custom.ts': 'export default {}',
+        'proj/library/config/jest.custom.cjs': 'module.exports = {}',
+        'proj/library/cypress.config.ts': 'export default {}',
+        'proj/library/jest.config.js': 'module.exports = {}',
+      });
+
+      const consoleError = jest.spyOn(console, 'error').mockImplementation();
+      const results = await inferFromWorkspaceAndOtherCwds(['proj/library/project.json']);
+      const targets = getTargets(results, 'proj/library')!;
+      expect(consoleError).not.toHaveBeenCalled();
+      expect(targets['react-integration-testing--17--type-check']).toBeDefined();
+      expect(targets['react-integration-testing--17--e2e']).toBeDefined();
+      expect(targets['react-integration-testing--17--test']).toBeUndefined();
+      expect(targets['react-integration-testing--18--type-check']).toBeUndefined();
+      expect(targets['react-integration-testing--18--e2e']).toBeUndefined();
+      expect(targets['react-integration-testing--18--test']).toBeDefined();
+    });
+
+    it('should ignore project files and optional configs under a non-root cwd', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj/library',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
+        'nested/proj/library/project.json': serializeJson({ name: 'wrong-project', tags: ['tools'] }),
+        'nested/proj/library/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+        'nested/proj/library/jest.config.js': 'module.exports = {}',
+        'nested/proj/library/eslint.config.js': '',
+        'nested/proj/library/.storybook/main.js': 'module.exports = {}',
+        'nested/proj/library/bundle-size/index.fixture.js': '',
+        'nested/proj/library/monosize.config.mjs': '',
+        'nested/proj/library/bundle-isolation.config.json': '{}',
+        'nested/proj/library/cypress.config.ts': 'export default {}',
+        'nested/proj/library/tsconfig.cy.json': '{}',
+        'nested/proj/library/playwright.config.ts': 'export default {}',
+        'nested/proj/library/tsconfig.e2e.json': '{}',
+        'nested/proj/stories/project.json': serializeJson({ name: 'wrong-stories' }),
+        'nested/proj/library/rit.config.cjs': `module.exports = {
+          react: { 17: { runConfig: { 'type-check': { configPath: 'tsconfig.cy.json' } } } }
+        }`,
+      });
+
+      const results = await inferFromWorkspaceAndOtherCwds(['proj/library/project.json']);
+      expect(getTargetsNames(results, 'proj/library')).toEqual([
+        'clean',
+        'format',
+        'type-check',
+        'generate-api',
+        'build',
+        'react-integration-testing',
+      ]);
+      expect(getTargets(results, 'proj/library')!['react-integration-testing'].dependsOn).toEqual([]);
+    });
   });
 
   it('should report failed tasks as GitHub Actions errors', async () => {

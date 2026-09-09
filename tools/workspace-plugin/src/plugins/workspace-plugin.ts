@@ -140,7 +140,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const taskBuilderConfig = getTaskBuilderConfig(projectRoot, globalConfig.pmc);
+  const taskBuilderConfig = getTaskBuilderConfig(projectRoot, context, globalConfig.pmc);
 
   const workspaceConfig = buildWorkspaceProjectConfiguration(
     projectRoot,
@@ -181,9 +181,13 @@ interface TaskBuilderConfig {
 
 type WorkspaceTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
 
-function getTaskBuilderConfig(projectRoot: string, pmc: TaskBuilderConfig['pmc']): TaskBuilderConfig {
-  const projectJSON: ProjectConfiguration = readJsonFile(join(projectRoot, 'project.json'));
-  const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
+function getTaskBuilderConfig(
+  projectRoot: string,
+  context: CreateNodesContextV2,
+  pmc: TaskBuilderConfig['pmc'],
+): TaskBuilderConfig {
+  const projectJSON: ProjectConfiguration = readJsonFile(join(context.workspaceRoot, projectRoot, 'project.json'));
+  const packageJSON: PackageJson = readJsonFile(join(context.workspaceRoot, projectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
   const config = { projectJSON, packageJSON, pmc, tags };
@@ -296,7 +300,7 @@ function buildWorkspaceProjectConfiguration(
       },
     };
 
-    if (existsSync(join(projectRoot, '../stories/project.json'))) {
+    if (existsSync(join(context.workspaceRoot, projectRoot, '../stories/project.json'))) {
       const storybookTarget = { command: `nx run ${config.projectJSON.name}-stories:storybook`, cache: true };
 
       targets.storybook = storybookTarget;
@@ -448,9 +452,9 @@ function buildTestTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
   if (
-    !existsSync(join(projectRoot, 'jest.config.js')) &&
-    !existsSync(join(projectRoot, 'jest.config.cjs')) &&
-    !existsSync(join(projectRoot, 'jest.config.ts'))
+    !existsSync(join(context.workspaceRoot, projectRoot, 'jest.config.js')) &&
+    !existsSync(join(context.workspaceRoot, projectRoot, 'jest.config.cjs')) &&
+    !existsSync(join(context.workspaceRoot, projectRoot, 'jest.config.ts'))
   ) {
     return null;
   }
@@ -505,9 +509,9 @@ function buildLintTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasEslintConfig =
-    existsSync(join(projectRoot, 'eslint.config.js')) ||
-    existsSync(join(projectRoot, 'eslint.config.cjs')) ||
-    existsSync(join(projectRoot, 'eslint.config.mjs'));
+    existsSync(join(context.workspaceRoot, projectRoot, 'eslint.config.js')) ||
+    existsSync(join(context.workspaceRoot, projectRoot, 'eslint.config.cjs')) ||
+    existsSync(join(context.workspaceRoot, projectRoot, 'eslint.config.mjs'));
 
   if (!hasEslintConfig) {
     return null;
@@ -568,7 +572,8 @@ function buildBundleSizeTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasMonosize =
-    existsSync(join(projectRoot, 'bundle-size')) || existsSync(join(projectRoot, 'monosize.config.mjs'));
+    existsSync(join(context.workspaceRoot, projectRoot, 'bundle-size')) ||
+    existsSync(join(context.workspaceRoot, projectRoot, 'monosize.config.mjs'));
 
   if (!hasMonosize) {
     return null;
@@ -602,7 +607,7 @@ function buildVerifyBundleIsolationTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, 'bundle-isolation.config.json'))) {
+  if (!existsSync(join(context.workspaceRoot, projectRoot, 'bundle-isolation.config.json'))) {
     return null;
   }
 
@@ -634,12 +639,13 @@ function buildE2eTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasCypress =
-    existsSync(join(projectRoot, 'cypress.config.ts')) && existsSync(join(projectRoot, 'tsconfig.cy.json'));
+    existsSync(join(context.workspaceRoot, projectRoot, 'cypress.config.ts')) &&
+    existsSync(join(context.workspaceRoot, projectRoot, 'tsconfig.cy.json'));
   const hasPlaywright =
-    existsSync(join(projectRoot, 'playwright.config.ts')) &&
-    (existsSync(join(projectRoot, 'tsconfig.e2e.json')) ||
+    existsSync(join(context.workspaceRoot, projectRoot, 'playwright.config.ts')) &&
+    (existsSync(join(context.workspaceRoot, projectRoot, 'tsconfig.e2e.json')) ||
       // web-components uses playwright only for all kinds of testing
-      existsSync(join(projectRoot, 'tsconfig.spec.json')));
+      existsSync(join(context.workspaceRoot, projectRoot, 'tsconfig.spec.json')));
 
   if (hasCypress) {
     return {
@@ -734,7 +740,7 @@ function buildStorybookTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.storybook/main.js'))) {
+  if (!existsSync(join(context.workspaceRoot, projectRoot, '.storybook/main.js'))) {
     return null;
   }
 
@@ -788,10 +794,11 @@ function buildReactIntegrationTesterProjectConfiguration(
     return {};
   }
 
-  const storiesAdjacentLibraryPath = resolve(projectRoot, '../library/project.json');
+  const storiesAdjacentLibraryPath = resolve(context.workspaceRoot, projectRoot, '../library/project.json');
   const isStorybookAdjacentProject = isV9StoriesProject && existsSync(storiesAdjacentLibraryPath);
   const isLibraryWithStorybookAdjacentProject =
-    basename(projectRoot) === 'library' && existsSync(resolve(projectRoot, '../stories/project.json'));
+    basename(projectRoot) === 'library' &&
+    existsSync(resolve(context.workspaceRoot, projectRoot, '../stories/project.json'));
 
   const reactVersions = options.reactIntegrationTesting.reactVersions;
   if (reactVersions.length === 0) {
@@ -965,18 +972,18 @@ function buildReactIntegrationTesterProjectConfiguration(
   ): { hasTypeCheck: boolean; hasE2E: boolean; hasTest: boolean } {
     const defaults = {
       hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
-      hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
+      hasE2E: existsSync(join(context.workspaceRoot, projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
       hasTest:
-        (existsSync(join(projectRootPath, 'jest.config.js')) ||
-          existsSync(join(projectRootPath, 'jest.config.cjs')) ||
-          existsSync(join(projectRootPath, 'jest.config.ts'))) &&
+        (existsSync(join(context.workspaceRoot, projectRootPath, 'jest.config.js')) ||
+          existsSync(join(context.workspaceRoot, projectRootPath, 'jest.config.cjs')) ||
+          existsSync(join(context.workspaceRoot, projectRootPath, 'jest.config.ts'))) &&
         !storybookAdjacent,
     };
 
     // web packages ship as `type: module`, so their CommonJS rit config uses `.cjs`; fall back to `.js`
     const ritConfigPathLocal = [
-      resolve(projectRootPath, 'rit.config.cjs'),
-      resolve(projectRootPath, 'rit.config.js'),
+      resolve(context.workspaceRoot, projectRootPath, 'rit.config.cjs'),
+      resolve(context.workspaceRoot, projectRootPath, 'rit.config.js'),
     ].find(candidate => existsSync(candidate));
 
     if (ritConfigPathLocal) {
@@ -996,7 +1003,9 @@ function buildReactIntegrationTesterProjectConfiguration(
               return null;
             }
             const configPath = cfg.configPath;
-            return typeof configPath === 'string' && existsSync(join(projectRootPath, configPath));
+            return (
+              typeof configPath === 'string' && existsSync(join(context.workspaceRoot, projectRootPath, configPath))
+            );
           };
 
           // For targets declared in rit config, use that result. For targets not
