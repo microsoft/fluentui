@@ -36,6 +36,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
 export type LabelSlots = {
     root: Slot<'label'>;
     required?: Slot<'span'>;
+    icon?: Slot<'span'>;
 };
 
 // @public

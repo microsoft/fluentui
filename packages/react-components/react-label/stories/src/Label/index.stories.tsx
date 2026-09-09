@@ -8,6 +8,7 @@ export { Size } from './LabelSize.stories';
 export { Weight } from './LabelWeight.stories';
 export { Disabled } from './LabelDisabled.stories';
 export { Required } from './LabelRequired.stories';
+export { Icon } from './LabelIcon.stories';
 
 const meta = {
   title: 'Components/Label',
