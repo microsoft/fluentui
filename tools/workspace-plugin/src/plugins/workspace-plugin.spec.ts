@@ -1,5 +1,5 @@
 import {
-  CreateNodesContext,
+  CreateNodesContextV2,
   CreateNodesResultV2,
   PostTasksExecutionContext,
   ProjectConfiguration,
@@ -33,7 +33,7 @@ const postTasksExecutionContext: PostTasksExecutionContext = {
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
   const originalEnv = process.env;
-  let context: CreateNodesContext;
+  let context: CreateNodesContextV2;
   let tempFs: TempFs;
   let cwd: string;
   const options: WorkspacePluginOptions = {
@@ -58,8 +58,6 @@ describe(`workspace-plugin`, () => {
         },
       },
       workspaceRoot: tempFs.tempDir,
-
-      configFiles: [],
     };
   });
 
@@ -67,8 +65,8 @@ describe(`workspace-plugin`, () => {
     process.env = originalEnv;
     jest.restoreAllMocks();
     jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
   });
 
   it('should report failed tasks as GitHub Actions errors', async () => {

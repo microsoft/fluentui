@@ -1,0 +1,87 @@
+#
+# TEMPORARY diagnostic workflow — remove once the Nx 22 CI hang (see #36435) is understood/fixed.
+#
+# The main CI jobs sometimes hang with zero output after a task completes, until the 6h GH Actions
+# job timeout kills them.
+#
+# Prior findings (kept for history, no longer tested here):
+#  - Small-scale legs (single task, 2 sequential tasks, lint-only) never hung under any setting --
+#    the hang only reproduces at the scale of a full `nx affected -t build` across the whole graph.
+#  - NX_ISOLATE_PLUGINS=false is NOT viable: it broke workspace-plugin:check-graph
+#    (tools/workspace-plugin/src/plugins/workspace-plugin.ts:160 assumes process.cwd() == workspace
+#    root, which only holds inside Nx's isolated plugin worker).
+#  - UV_THREADPOOL_SIZE (32, 64) was tested and REFUTED: both timed out identically to baseline.
+#  - NX_DAEMON=false was tested on the real PR and did NOT fix the hang either.
+#
+# CURRENT LEADING HYPOTHESIS (nrwl/nx#36682, nrwl/nx#36579): Nx v22's native Rust pseudo-terminal
+# subsystem has a teardown bug: `disable_raw_mode().expect(...)` can panic one line before sending the
+# task's exit notification, permanently blocking `task-orchestrator.ts`'s
+# `await Promise.all(this.discreteTaskExitHandled.values())` in cleanup(). This matches our symptom
+# exactly (task fully finishes -> zero output forever -> only SIGKILL/CI-timeout ends it) and matches
+# the 5 orphaned `node` processes GH Actions reported cleaning up after our `all-build-only` timeout.
+# `NX_NATIVE_COMMAND_RUNNER=false` (packages/nx/src/tasks-runner/task-orchestrator.ts) switches Nx back
+# to the pre-v22 "legacy" fork-based task runner, entirely bypassing the native PTY subsystem. The
+# `*-legacy-runner` leg below tests this.
+#
+name: Nx Hang Diagnostics (temporary)
+
+on:
+  push:
+    branches:
+      - chore/nx-22-upgrade
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+jobs:
+  diag:
+    if: ${{ github.repository_owner == 'PaulGMardling' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: all-build-only-legacy-runner
+            timeout: 60
+            isolate_plugins: 'true'
+            native_command_runner: 'false'
+            cmd: yarn nx affected -t build --nxBail
+          - name: all-build-only-baseline-retry
+            timeout: 60
+            isolate_plugins: 'true'
+            native_command_runner: ''
+            cmd: yarn nx affected -t build --nxBail
+    name: diag / ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: ${{ matrix.timeout }}
+    env:
+      NX_ISOLATE_PLUGINS: ${{ matrix.isolate_plugins }}
+      NX_NATIVE_COMMAND_RUNNER: ${{ matrix.native_command_runner }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - name: Run yarn install --immutable
+        run: yarn install --immutable
+
+      - name: Run diagnostic command
+        run: ${{ matrix.cmd }}

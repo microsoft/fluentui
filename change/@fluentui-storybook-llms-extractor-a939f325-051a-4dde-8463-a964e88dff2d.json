@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update Jest configuration for Nx 22",
+  "packageName": "@fluentui/storybook-llms-extractor",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "none"
+}

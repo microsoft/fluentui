@@ -153,7 +153,7 @@ describe('GenerateApi Executor', () => {
     try {
       await executor(options, context);
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: ${paths.projRoot}/tsconfig.json doesn't exist]`);
+      expect(err).toMatchInlineSnapshot(`[Error: ${join(paths.projRoot, 'tsconfig.json')} doesn't exist]`);
     }
 
     writeFileSync(join(paths.projRoot, 'tsconfig.json'), '{}', 'utf-8');
@@ -162,7 +162,7 @@ describe('GenerateApi Executor', () => {
       await executor(options, context);
     } catch (err) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: Cannot find api-extractor.json at "${paths.projRoot}/config/api-extractor.json"]`,
+        `[Error: Cannot find api-extractor.json at "${join(paths.projRoot, 'config/api-extractor.json')}"]`,
       );
     }
   });
@@ -182,7 +182,7 @@ describe('GenerateApi Executor', () => {
     const output = await executor(options, context);
 
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${paths.projRoot}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
+      `tsc -p ${join(paths.projRoot, 'tsconfig.lib.json')} --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
       { stdio: 'inherit' },
     ]);
 
@@ -201,7 +201,7 @@ describe('GenerateApi Executor', () => {
     });
     expect(extractorConfig.skipLibCheck).toBe(false);
 
-    const actualLocalBuildValue = isCI() ? false : true;
+    const actualLocalBuildValue = Boolean(process.env.__FORCE_API_MD_UPDATE__) || !isCI();
 
     expect(extractorArgs).toEqual({
       compilerState: compilerStateStub,
@@ -240,7 +240,7 @@ describe('GenerateApi Executor', () => {
     expect(extractorArgs).toEqual({
       compilerState: compilerStateStub,
       messageCallback: expect.any(Function),
-      localBuild: false,
+      localBuild: Boolean(process.env.__FORCE_API_MD_UPDATE__),
       showDiagnostics: true,
       showVerboseMessages: true,
     });
@@ -338,8 +338,8 @@ describe('GenerateApi Executor – export subpath resolution', () => {
 
     const wildcardConfigs = capturedConfigs.slice(1);
     for (const name of subDirs) {
-      const cfg = wildcardConfigs.find(c => c.mainEntryPointFilePath.includes(`items/${name}/`))!;
-      expect(cfg.mainEntryPointFilePath).toContain(`items/${name}/index.d.ts`);
+      const cfg = wildcardConfigs.find(c => c.mainEntryPointFilePath.includes(join('items', name)))!;
+      expect(cfg.mainEntryPointFilePath).toContain(join('items', name, 'index.d.ts'));
       expect(cfg.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'items', name, 'index.d.ts'));
       expect(cfg.apiReportEnabled).toBe(true);
       // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -469,7 +469,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     expect(capturedConfigs).toHaveLength(2);
 
     const utilsConfig = capturedConfigs[1];
-    expect(utilsConfig.mainEntryPointFilePath).toContain('utils/index.d.ts');
+    expect(utilsConfig.mainEntryPointFilePath).toContain(join('utils', 'index.d.ts'));
     expect(utilsConfig.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'utils', 'index.d.ts'));
     expect(utilsConfig.apiReportEnabled).toBe(true);
     // eslint-disable-next-line @typescript-eslint/no-deprecated

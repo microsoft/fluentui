@@ -70,7 +70,7 @@ describe('react-component generator', () => {
       "
     `);
 
-        expect(tree.children(componentRootPath)).toMatchInlineSnapshot(`
+        expect(tree.children(componentRootPath).sort()).toMatchInlineSnapshot(`
       Array [
         "MyOne.test.tsx",
         "MyOne.tsx",
@@ -268,7 +268,7 @@ describe('react-component generator', () => {
             : 'packages/react-components/react-one/stories/src/MyOne';
         await generator(tree, { project: 'react-one', name: 'MyOne' });
 
-        expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
+        expect(tree.children(componentStoryRootPath).sort()).toMatchInlineSnapshot(`
       Array [
         "MyOneBestPractices.md",
         "MyOneDefault.stories.tsx",
