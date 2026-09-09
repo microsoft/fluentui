@@ -229,6 +229,39 @@ describe.skip('Legends - controlled legend selection', () => {
   });
 });
 
+describe('Legends - dynamic overflow', () => {
+  const originalClientWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientWidth');
+  const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+
+  beforeEach(() => {
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, get: () => 250 });
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, get: () => 50 });
+  });
+
+  afterEach(() => {
+    if (originalClientWidth) {
+      Object.defineProperty(HTMLElement.prototype, 'clientWidth', originalClientWidth);
+    } else {
+      Reflect.deleteProperty(HTMLElement.prototype, 'clientWidth');
+    }
+    if (originalOffsetWidth) {
+      Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+    } else {
+      Reflect.deleteProperty(HTMLElement.prototype, 'offsetWidth');
+    }
+  });
+
+  it('does not throw when legends shrink while overflow is being reconciled', () => {
+    const result = render(<Legends legends={legends} overflowText="Overflow Items" />);
+
+    expect(result.getByText('+14 Overflow Items')).toBeTruthy();
+    result.rerender(<Legends legends={legends.slice(0, 3)} overflowText="Overflow Items" />);
+
+    expect(result.queryByText(/Overflow Items/)).toBeNull();
+    expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
+  });
+});
+
 describe('Legends - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<Legends legends={legends} />);
