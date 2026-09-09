@@ -237,7 +237,7 @@ export interface CartesianChartProps {
     strokeWidth?: number;
     styles?: CartesianChartStyles;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
-    tickFormat?: string;
+    tickFormat?: string | ((value: number | Date) => string);
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
@@ -1496,7 +1496,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
         tickValues?: number[] | Date[] | string[];
-        tickFormat?: string;
+        tickFormat?: string | ((value: number | Date) => string);
     };
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
