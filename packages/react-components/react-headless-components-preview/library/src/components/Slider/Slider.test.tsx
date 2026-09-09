@@ -8,6 +8,7 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
+    requiredProps: { 'aria-label': 'Value' },
   });
 
   it('renders a default state', () => {
