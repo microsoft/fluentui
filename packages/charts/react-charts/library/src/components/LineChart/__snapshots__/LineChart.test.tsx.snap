@@ -367,7 +367,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_1__2_1"
@@ -390,7 +390,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="yellow"
                 id="circle_r_0__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -405,7 +405,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="yellow"
                 id="circle_r_0__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -423,7 +423,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_1__1_1"
@@ -446,7 +446,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="green"
                 id="circle_r_0__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -461,7 +461,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="green"
                 id="circle_r_0__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -479,7 +479,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_1__0_1"
@@ -502,7 +502,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="red"
                 id="circle_r_0__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -517,7 +517,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 fill="red"
                 id="circle_r_0__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -992,7 +992,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_c__2_1"
@@ -1013,7 +1013,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="yellow"
                 id="circle_r_b__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -1026,7 +1026,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="yellow"
                 id="circle_r_b__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -1044,7 +1044,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_c__1_1"
@@ -1067,7 +1067,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="green"
                 id="circle_r_b__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -1082,7 +1082,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="green"
                 id="circle_r_b__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -1100,7 +1100,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_c__0_1"
@@ -1123,7 +1123,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="red"
                 id="circle_r_b__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -1138,7 +1138,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 fill="red"
                 id="circle_r_b__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -1647,7 +1647,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ba__2_1"
@@ -1670,7 +1670,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="var(--colorNeutralBackground1)"
                 id="circle_r_b9__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -1685,7 +1685,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="yellow"
                 id="circle_r_b9__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -1703,7 +1703,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ba__1_1"
@@ -1726,7 +1726,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="green"
                 id="circle_r_b9__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -1741,7 +1741,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="green"
                 id="circle_r_b9__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -1759,7 +1759,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ba__0_1"
@@ -1782,7 +1782,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="red"
                 id="circle_r_b9__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -1797,7 +1797,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 fill="red"
                 id="circle_r_b9__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -2332,7 +2332,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ch__2_1"
@@ -2355,7 +2355,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="var(--colorNeutralBackground1)"
                 id="circle_r_cg__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -2370,7 +2370,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="yellow"
                 id="circle_r_cg__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -2388,7 +2388,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ch__1_1"
@@ -2411,7 +2411,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="green"
                 id="circle_r_cg__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -2426,7 +2426,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="green"
                 id="circle_r_cg__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -2444,7 +2444,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_ch__0_1"
@@ -2467,7 +2467,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="red"
                 id="circle_r_cg__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -2482,7 +2482,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 fill="red"
                 id="circle_r_cg__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -2989,7 +2989,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_8a__2_1"
@@ -3012,7 +3012,7 @@ Object {
                     fill="yellow"
                     id="circle_r_89__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -3027,7 +3027,7 @@ Object {
                     fill="yellow"
                     id="circle_r_89__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -3045,7 +3045,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_8a__1_1"
@@ -3068,7 +3068,7 @@ Object {
                     fill="green"
                     id="circle_r_89__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -3083,7 +3083,7 @@ Object {
                     fill="green"
                     id="circle_r_89__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -3101,7 +3101,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_8a__0_1"
@@ -3124,7 +3124,7 @@ Object {
                     fill="red"
                     id="circle_r_89__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -3139,7 +3139,7 @@ Object {
                     fill="red"
                     id="circle_r_89__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -3612,7 +3612,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_8a__2_1"
@@ -3635,7 +3635,7 @@ Object {
                   fill="yellow"
                   id="circle_r_89__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -3650,7 +3650,7 @@ Object {
                   fill="yellow"
                   id="circle_r_89__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -3668,7 +3668,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_8a__1_1"
@@ -3691,7 +3691,7 @@ Object {
                   fill="green"
                   id="circle_r_89__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -3706,7 +3706,7 @@ Object {
                   fill="green"
                   id="circle_r_89__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -3724,7 +3724,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_8a__0_1"
@@ -3747,7 +3747,7 @@ Object {
                   fill="red"
                   id="circle_r_89__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -3762,7 +3762,7 @@ Object {
                   fill="red"
                   id="circle_r_89__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -4294,7 +4294,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6a__2_1"
@@ -4317,7 +4317,7 @@ Object {
                     fill="yellow"
                     id="circle_r_69__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -4332,7 +4332,7 @@ Object {
                     fill="yellow"
                     id="circle_r_69__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -4350,7 +4350,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6a__1_1"
@@ -4373,7 +4373,7 @@ Object {
                     fill="green"
                     id="circle_r_69__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -4388,7 +4388,7 @@ Object {
                     fill="green"
                     id="circle_r_69__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -4406,7 +4406,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6a__0_1"
@@ -4429,7 +4429,7 @@ Object {
                     fill="red"
                     id="circle_r_69__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -4444,7 +4444,7 @@ Object {
                     fill="red"
                     id="circle_r_69__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -4917,7 +4917,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6a__2_1"
@@ -4940,7 +4940,7 @@ Object {
                   fill="yellow"
                   id="circle_r_69__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -4955,7 +4955,7 @@ Object {
                   fill="yellow"
                   id="circle_r_69__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -4973,7 +4973,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6a__1_1"
@@ -4996,7 +4996,7 @@ Object {
                   fill="green"
                   id="circle_r_69__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -5011,7 +5011,7 @@ Object {
                   fill="green"
                   id="circle_r_69__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -5029,7 +5029,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6a__0_1"
@@ -5052,7 +5052,7 @@ Object {
                   fill="red"
                   id="circle_r_69__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -5067,7 +5067,7 @@ Object {
                   fill="red"
                   id="circle_r_69__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -5599,7 +5599,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7a__2_1"
@@ -5622,7 +5622,7 @@ Object {
                     fill="yellow"
                     id="circle_r_79__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -5637,7 +5637,7 @@ Object {
                     fill="yellow"
                     id="circle_r_79__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -5655,7 +5655,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7a__1_1"
@@ -5678,7 +5678,7 @@ Object {
                     fill="green"
                     id="circle_r_79__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -5693,7 +5693,7 @@ Object {
                     fill="green"
                     id="circle_r_79__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -5711,7 +5711,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7a__0_1"
@@ -5734,7 +5734,7 @@ Object {
                     fill="red"
                     id="circle_r_79__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -5749,7 +5749,7 @@ Object {
                     fill="red"
                     id="circle_r_79__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -6228,7 +6228,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7a__2_1"
@@ -6251,7 +6251,7 @@ Object {
                   fill="yellow"
                   id="circle_r_79__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -6266,7 +6266,7 @@ Object {
                   fill="yellow"
                   id="circle_r_79__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -6284,7 +6284,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7a__1_1"
@@ -6307,7 +6307,7 @@ Object {
                   fill="green"
                   id="circle_r_79__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -6322,7 +6322,7 @@ Object {
                   fill="green"
                   id="circle_r_79__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -6340,7 +6340,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7a__0_1"
@@ -6363,7 +6363,7 @@ Object {
                   fill="red"
                   id="circle_r_79__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -6378,7 +6378,7 @@ Object {
                   fill="red"
                   id="circle_r_79__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -6916,7 +6916,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6l__2_1"
@@ -6939,7 +6939,7 @@ Object {
                     fill="yellow"
                     id="circle_r_6k__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -6954,7 +6954,7 @@ Object {
                     fill="yellow"
                     id="circle_r_6k__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -6972,7 +6972,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6l__1_1"
@@ -6995,7 +6995,7 @@ Object {
                     fill="green"
                     id="circle_r_6k__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -7010,7 +7010,7 @@ Object {
                     fill="green"
                     id="circle_r_6k__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -7028,7 +7028,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6l__0_1"
@@ -7051,7 +7051,7 @@ Object {
                     fill="red"
                     id="circle_r_6k__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -7066,7 +7066,7 @@ Object {
                     fill="red"
                     id="circle_r_6k__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -7455,7 +7455,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6l__2_1"
@@ -7478,7 +7478,7 @@ Object {
                   fill="yellow"
                   id="circle_r_6k__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -7493,7 +7493,7 @@ Object {
                   fill="yellow"
                   id="circle_r_6k__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -7511,7 +7511,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6l__1_1"
@@ -7534,7 +7534,7 @@ Object {
                   fill="green"
                   id="circle_r_6k__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -7549,7 +7549,7 @@ Object {
                   fill="green"
                   id="circle_r_6k__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -7567,7 +7567,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6l__0_1"
@@ -7590,7 +7590,7 @@ Object {
                   fill="red"
                   id="circle_r_6k__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -7605,7 +7605,7 @@ Object {
                   fill="red"
                   id="circle_r_6k__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -8053,7 +8053,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6v__2_1"
@@ -8076,7 +8076,7 @@ Object {
                     fill="yellow"
                     id="circle_r_6u__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -8091,7 +8091,7 @@ Object {
                     fill="yellow"
                     id="circle_r_6u__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -8109,7 +8109,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6v__1_1"
@@ -8132,7 +8132,7 @@ Object {
                     fill="green"
                     id="circle_r_6u__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -8147,7 +8147,7 @@ Object {
                     fill="green"
                     id="circle_r_6u__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -8165,7 +8165,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_6v__0_1"
@@ -8188,7 +8188,7 @@ Object {
                     fill="red"
                     id="circle_r_6u__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -8203,7 +8203,7 @@ Object {
                     fill="red"
                     id="circle_r_6u__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -8676,7 +8676,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6v__2_1"
@@ -8699,7 +8699,7 @@ Object {
                   fill="yellow"
                   id="circle_r_6u__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -8714,7 +8714,7 @@ Object {
                   fill="yellow"
                   id="circle_r_6u__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -8732,7 +8732,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6v__1_1"
@@ -8755,7 +8755,7 @@ Object {
                   fill="green"
                   id="circle_r_6u__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -8770,7 +8770,7 @@ Object {
                   fill="green"
                   id="circle_r_6u__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -8788,7 +8788,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_6v__0_1"
@@ -8811,7 +8811,7 @@ Object {
                   fill="red"
                   id="circle_r_6u__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -8826,7 +8826,7 @@ Object {
                   fill="red"
                   id="circle_r_6u__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -9435,7 +9435,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7k__2_1"
@@ -9458,7 +9458,7 @@ Object {
                     fill="yellow"
                     id="circle_r_7j__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -9473,7 +9473,7 @@ Object {
                     fill="yellow"
                     id="circle_r_7j__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -9491,7 +9491,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7k__1_1"
@@ -9514,7 +9514,7 @@ Object {
                     fill="green"
                     id="circle_r_7j__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -9529,7 +9529,7 @@ Object {
                     fill="green"
                     id="circle_r_7j__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -9547,7 +9547,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7k__0_1"
@@ -9570,7 +9570,7 @@ Object {
                     fill="red"
                     id="circle_r_7j__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -9585,7 +9585,7 @@ Object {
                     fill="red"
                     id="circle_r_7j__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -10140,7 +10140,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7k__2_1"
@@ -10163,7 +10163,7 @@ Object {
                   fill="yellow"
                   id="circle_r_7j__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -10178,7 +10178,7 @@ Object {
                   fill="yellow"
                   id="circle_r_7j__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -10196,7 +10196,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7k__1_1"
@@ -10219,7 +10219,7 @@ Object {
                   fill="green"
                   id="circle_r_7j__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -10234,7 +10234,7 @@ Object {
                   fill="green"
                   id="circle_r_7j__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -10252,7 +10252,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7k__0_1"
@@ -10275,7 +10275,7 @@ Object {
                   fill="red"
                   id="circle_r_7j__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -10290,7 +10290,7 @@ Object {
                   fill="red"
                   id="circle_r_7j__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -10827,7 +10827,7 @@ Object {
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7v__2_1"
@@ -10850,7 +10850,7 @@ Object {
                     fill="yellow"
                     id="circle_r_7u__2_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -10865,7 +10865,7 @@ Object {
                     fill="yellow"
                     id="circle_r_7u__2_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="yellow"
                     stroke-width="4"
                     tabindex="0"
@@ -10883,7 +10883,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7v__1_1"
@@ -10906,7 +10906,7 @@ Object {
                     fill="green"
                     id="circle_r_7u__1_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -10921,7 +10921,7 @@ Object {
                     fill="green"
                     id="circle_r_7u__1_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="green"
                     stroke-width="4"
                     tabindex="0"
@@ -10939,7 +10939,7 @@ Object {
                 </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <line
                     id="lineID_r_7v__0_1"
@@ -10962,7 +10962,7 @@ Object {
                     fill="red"
                     id="circle_r_7u__0_1"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -10977,7 +10977,7 @@ Object {
                     fill="red"
                     id="circle_r_7u__0_11L"
                     opacity="1"
-                    role="img"
+                    role="option"
                     stroke="red"
                     stroke-width="4"
                     tabindex="0"
@@ -11450,7 +11450,7 @@ Object {
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7v__2_1"
@@ -11473,7 +11473,7 @@ Object {
                   fill="yellow"
                   id="circle_r_7u__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -11488,7 +11488,7 @@ Object {
                   fill="yellow"
                   id="circle_r_7u__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -11506,7 +11506,7 @@ Object {
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7v__1_1"
@@ -11529,7 +11529,7 @@ Object {
                   fill="green"
                   id="circle_r_7u__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -11544,7 +11544,7 @@ Object {
                   fill="green"
                   id="circle_r_7u__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -11562,7 +11562,7 @@ Object {
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_7v__0_1"
@@ -11585,7 +11585,7 @@ Object {
                   fill="red"
                   id="circle_r_7u__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -11600,7 +11600,7 @@ Object {
                   fill="red"
                   id="circle_r_7u__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -12032,7 +12032,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_4t__2_1"
@@ -12055,7 +12055,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="yellow"
                 id="circle_r_4s__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -12070,7 +12070,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="yellow"
                 id="circle_r_4s__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -12088,7 +12088,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_4t__1_1"
@@ -12111,7 +12111,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="green"
                 id="circle_r_4s__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -12126,7 +12126,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="green"
                 id="circle_r_4s__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -12144,7 +12144,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_4t__0_1"
@@ -12167,7 +12167,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="red"
                 id="circle_r_4s__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -12182,7 +12182,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 fill="red"
                 id="circle_r_4s__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -12562,7 +12562,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_58__2_1"
@@ -12585,7 +12585,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="yellow"
                 id="circle_r_57__2_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -12600,7 +12600,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="yellow"
                 id="circle_r_57__2_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="yellow"
                 stroke-width="4"
                 tabindex="0"
@@ -12618,7 +12618,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_58__1_1"
@@ -12641,7 +12641,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="green"
                 id="circle_r_57__1_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -12656,7 +12656,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="green"
                 id="circle_r_57__1_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="green"
                 stroke-width="4"
                 tabindex="0"
@@ -12674,7 +12674,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
-              role="region"
+              role="listbox"
             >
               <line
                 id="lineID_r_58__0_1"
@@ -12697,7 +12697,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="red"
                 id="circle_r_57__0_1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -12712,7 +12712,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 fill="red"
                 id="circle_r_57__0_11L"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="4"
                 tabindex="0"
@@ -13191,7 +13191,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_5k__2_1"
@@ -13214,7 +13214,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="yellow"
                   id="circle_r_5j__2_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -13229,7 +13229,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="yellow"
                   id="circle_r_5j__2_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="yellow"
                   stroke-width="4"
                   tabindex="0"
@@ -13247,7 +13247,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_5k__1_1"
@@ -13270,7 +13270,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="green"
                   id="circle_r_5j__1_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -13285,7 +13285,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="green"
                   id="circle_r_5j__1_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="green"
                   stroke-width="4"
                   tabindex="0"
@@ -13303,7 +13303,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
-                role="region"
+                role="listbox"
               >
                 <line
                   id="lineID_r_5k__0_1"
@@ -13326,7 +13326,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="red"
                   id="circle_r_5j__0_1"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
@@ -13341,7 +13341,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   fill="red"
                   id="circle_r_5j__0_11L"
                   opacity="1"
-                  role="img"
+                  role="option"
                   stroke="red"
                   stroke-width="4"
                   tabindex="0"
