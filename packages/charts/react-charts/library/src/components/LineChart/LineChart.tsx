@@ -381,16 +381,18 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _createLegends(data: LineChartDataWithIndex[]): JSXElement {
       const { legendProps, allowMultipleShapesForPoints = false } = props;
       const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-      const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
+      const mapLegendToPoints = new Map<string, LineChartDataWithIndex[]>();
       data.forEach((point: LineChartDataWithIndex) => {
         if (point.legend) {
-          if (!mapLegendToPoints[point.legend]) {
-            mapLegendToPoints[point.legend] = [];
+          let points = mapLegendToPoints.get(point.legend);
+          if (!points) {
+            points = [];
+            mapLegendToPoints.set(point.legend, points);
           }
-          mapLegendToPoints[point.legend].push(point);
+          points.push(point);
         }
       });
-      const legendDataItems: Legend[] = Object.entries(mapLegendToPoints).map(([legendTitle, points]) => {
+      const legendDataItems: Legend[] = Array.from(mapLegendToPoints, ([legendTitle, points]) => {
         const representativePoint = points[0];
         // mapping data to the format Legends component needs
         const legend: Legend = {

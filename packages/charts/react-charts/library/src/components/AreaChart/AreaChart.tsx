@@ -353,20 +353,19 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
             allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
           });
 
-        const mapOfXvalToListOfDataPoints: MapXToDataSet = {};
+        const mapOfXvalToListOfDataPoints = new Map<number | string, LineChartDataPoint[]>();
         allChartPoints.forEach((dataPoint: LineChartDataPoint) => {
           const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
           // map of x value to the list of data points which share the same x value .
-          if (mapOfXvalToListOfDataPoints[xValue]) {
-            mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
+          const existing = mapOfXvalToListOfDataPoints.get(xValue);
+          if (existing) {
+            existing.push(dataPoint);
           } else {
-            mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
+            mapOfXvalToListOfDataPoints.set(xValue, [dataPoint]);
           }
         });
 
-        Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
-          const value: LineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
-
+        mapOfXvalToListOfDataPoints.forEach((value: LineChartDataPoint[]) => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const singleDataset: any = {};
           value.forEach((singleDataPoint: LineChartDataPoint, index: number) => {
@@ -470,18 +469,19 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       const dataSet: AreaChartDataSetPoint[] = [];
 
       // Group data points by x-axis value
-      const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = {};
+      const groupedData = new Map<string | number, ILineChartDataPointWithLegend[]>();
       allChartPoints.forEach((dataPoint: ILineChartDataPointWithLegend) => {
         const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
-        if (!groupedData[xValue]) {
-          groupedData[xValue] = [];
+        let points = groupedData.get(xValue);
+        if (!points) {
+          points = [];
+          groupedData.set(xValue, points);
         }
-        groupedData[xValue].push(dataPoint);
+        points.push(dataPoint);
       });
 
       // Aggregate data points for each x-axis value
-      Object.keys(groupedData).forEach(xValue => {
-        const dataPoints = groupedData[xValue];
+      groupedData.forEach(dataPoints => {
         dataPoints.forEach((dataPoint, id) => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const singleDataset: any = { xVal: dataPoints[0].x };

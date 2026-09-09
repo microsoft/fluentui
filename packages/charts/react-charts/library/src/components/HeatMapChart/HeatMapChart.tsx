@@ -40,7 +40,7 @@ type DataSet = {
 type FlattenData = HeatMapChartDataPoint & {
   legend: string;
 };
-type RectanglesGraphData = { [key: string]: FlattenData[] };
+type RectanglesGraphData = Map<string, FlattenData[]>;
 
 export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -59,7 +59,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const classes = useHeatMapChartStyles(props);
     const _stringXAxisDataPoints = React.useRef<string[]>([]);
     const _stringYAxisDataPoints = React.useRef<string[]>([]);
-    const _dataSet = React.useRef<RectanglesGraphData>({});
+    const _dataSet = React.useRef<RectanglesGraphData>(new Map());
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const _colorScale = React.useRef<any>(undefined);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -193,15 +193,13 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         _stringXAxisDataPoints.current.forEach((xAxisDataPoint: string) => {
           let rectElement: JSXElement;
           const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
-          if (
-            _dataSet.current[yAxisDataPoint][index]?.x === xAxisDataPoint &&
-            typeof _dataSet.current[yAxisDataPoint][index]?.value === 'number'
-          ) {
+          const rowData = _dataSet.current.get(yAxisDataPoint);
+          if (rowData?.[index]?.x === xAxisDataPoint && typeof rowData?.[index]?.value === 'number') {
             /**
              * dataPointObject is an object where it contains information on single
              * data point such as x, y , value, rectText property of the rectangle
              */
-            const dataPointObject = _dataSet.current[yAxisDataPoint][index];
+            const dataPointObject = rowData![index];
             let styleRules = '';
             let foregroundColor = tokens.colorNeutralForeground1;
             if (cartesianChartRef.current?.chartContainer) {
@@ -401,7 +399,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
      * @returns x-axis points
      */
     const _getXAxisDataPoints = React.useCallback(
-      (points: { [key: string]: '1' }): string[] => {
+      (points: Set<string>): string[] => {
         let xAxisPoints: string[] = [];
         const unFormattedXAxisDataPoints = _getOrderedXAxisLabels(points);
         xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
@@ -431,7 +429,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
      * @returns yaxis points
      */
     const _getYAxisDataPoints = React.useCallback(
-      (points: { [key: string]: '1' }): string[] => {
+      (points: Set<string>): string[] => {
         let yAxisPoints: string[] = [];
         const unFormattedYAxisDataPoints = _getOrderedYAxisLabels(points);
         yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
@@ -488,15 +486,15 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             flattenData.push({ ...point, legend: item.legend });
           });
         });
-        const yPoints: RectanglesGraphData = {};
-        const uniqueYPoints: { [key: string]: '1' } = {};
-        const uniqueXPoints: { [key: string]: '1' } = {};
+        const yPoints: RectanglesGraphData = new Map();
+        const uniqueYPoints = new Set<string>();
+        const uniqueXPoints = new Set<string>();
         flattenData.forEach((item: FlattenData) => {
           const posX = _getXIndex(item.x);
           const posY = _getYIndex(item.y);
 
-          uniqueXPoints[posX] = '1';
-          uniqueYPoints[posY] = '1';
+          uniqueXPoints.add(posX);
+          uniqueYPoints.add(posY);
           /** we will check if the property(posY) is already there in object, if  Yes,
            *  then we will append the item in the Array related to the pos, if not
            *  then we will simply append the item in the new Array and
@@ -505,10 +503,11 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
            *  property (which is nothing but y data point) and object in the
            *  array are noting but x data points associated to the property y
            */
-          if (yPoints[posY]) {
-            yPoints[posY] = [...yPoints[posY], item];
+          const existing = yPoints.get(posY);
+          if (existing) {
+            yPoints.set(posY, [...existing, item]);
           } else {
-            yPoints[posY] = [item];
+            yPoints.set(posY, [item]);
           }
         });
         /**
@@ -516,10 +515,11 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
          * sorting is important to achive the accessibility order of the
          * rectangles and then format the x and y datapoints respectively
          */
-        Object.keys(yPoints).forEach((item: string) => {
-          yPoints[item] = _getOrderedXPoints(yPoints[item]);
+        Array.from(yPoints.keys()).forEach((item: string) => {
+          const ordered = _getOrderedXPoints(yPoints.get(item)!);
+          yPoints.set(item, ordered);
 
-          yPoints[item].forEach((datapoint: HeatMapChartDataPoint) => {
+          ordered.forEach((datapoint: HeatMapChartDataPoint) => {
             if (_xAxisType.current === XAxisTypes.DateAxis) {
               datapoint.x = _getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
             }
@@ -550,13 +550,14 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
          * Cannot read property 'forEach' of undefined
          */
 
-        Object.keys(yPoints).forEach((yPoint: string) => {
+        Array.from(yPoints.keys()).forEach((yPoint: string) => {
+          const value = yPoints.get(yPoint)!;
           if (_yAxisType.current === YAxisType.DateAxis) {
-            yPoints[_getStringFormattedDate(yPoint, yAxisDateFormatString)] = yPoints[yPoint];
+            yPoints.set(_getStringFormattedDate(yPoint, yAxisDateFormatString), value);
           } else if (_yAxisType.current === YAxisType.NumericAxis) {
-            yPoints[`${_getStringFormattedNumber(yPoint, yAxisNumberFormatString)}`] = yPoints[yPoint];
+            yPoints.set(`${_getStringFormattedNumber(yPoint, yAxisNumberFormatString)}`, value);
           } else {
-            yPoints[_getFormattedLabelForYAxisDataPoint(yPoint)] = yPoints[yPoint];
+            yPoints.set(_getFormattedLabelForYAxisDataPoint(yPoint), value);
           }
         });
         /**
@@ -638,10 +639,10 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
     };
 
-    const _getOrderedXAxisLabels = (points: { [key: string]: '1' }) => {
+    const _getOrderedXAxisLabels = (points: Set<string>) => {
       if (!_shouldOrderXAxisLabelsByCategoryOrder()) {
         // Keep the original ordering logic as the default behavior to ensure backward compatibility
-        return Object.keys(points).sort((a: string, b: string) => {
+        return Array.from(points).sort((a: string, b: string) => {
           if (_xAxisType.current === XAxisTypes.DateAxis || _xAxisType.current === XAxisTypes.NumericAxis) {
             return +a - +b;
           } else {
@@ -653,10 +654,10 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       return sortAxisCategories(_mapCategoryToValues(), props.xAxisCategoryOrder);
     };
 
-    const _getOrderedYAxisLabels = (points: { [key: string]: '1' }) => {
+    const _getOrderedYAxisLabels = (points: Set<string>) => {
       if (!_shouldOrderYAxisLabelsByCategoryOrder()) {
         // Keep the original ordering logic as the default behavior to ensure backward compatibility
-        return Object.keys(points).sort((a: string, b: string) => {
+        return Array.from(points).sort((a: string, b: string) => {
           if (_yAxisType.current === YAxisType.DateAxis || _yAxisType.current === YAxisType.NumericAxis) {
             return +a - +b;
           } else {
@@ -689,19 +690,22 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
 
       const result: FlattenData[] = [];
 
-      const xValueToPoints: Record<string, FlattenData[]> = {};
+      const xValueToPoints = new Map<string, FlattenData[]>();
       xPoints.forEach(point => {
         const xValue = point.x as string;
-        if (!xValueToPoints[xValue]) {
-          xValueToPoints[xValue] = [];
+        let points = xValueToPoints.get(xValue);
+        if (!points) {
+          points = [];
+          xValueToPoints.set(xValue, points);
         }
-        xValueToPoints[xValue].push(point);
+        points.push(point);
       });
 
-      const xAxisLabels = _getOrderedXAxisLabels({});
+      const xAxisLabels = _getOrderedXAxisLabels(new Set());
       xAxisLabels.forEach(xValue => {
-        if (xValueToPoints[xValue]) {
-          result.push(...xValueToPoints[xValue]);
+        const points = xValueToPoints.get(xValue);
+        if (points) {
+          result.push(...points);
         }
       });
 
@@ -717,14 +721,16 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     };
 
     const _mapCategoryToValues = (isYAxis = false) => {
-      const categoryToValues: Record<string, number[]> = {};
+      const categoryToValues = new Map<string, number[]>();
       props.data.forEach(item => {
         item.data.forEach(point => {
           const category = (isYAxis ? point.y : point.x) as string;
-          if (!categoryToValues[category]) {
-            categoryToValues[category] = [];
+          let values = categoryToValues.get(category);
+          if (!values) {
+            values = [];
+            categoryToValues.set(category, values);
           }
-          categoryToValues[category].push(point.value);
+          values.push(point.value);
         });
       });
       return categoryToValues;

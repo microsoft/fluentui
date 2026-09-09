@@ -410,15 +410,15 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
     if (isStacked) {
       // Collect unique categories and their color
-      const categoryMap: Record<string, string> = {};
+      const categoryMap = new Map<string, string>();
       props.data.forEach((stage: FunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
-          if (!(sub.category in categoryMap)) {
-            categoryMap[sub.category] = sub.color;
+          if (!categoryMap.has(sub.category)) {
+            categoryMap.set(sub.category, sub.color);
           }
         });
       });
-      legends = Object.entries(categoryMap).map(([category, color]) => ({
+      legends = Array.from(categoryMap, ([category, color]) => ({
         title: category,
         color,
         hoverAction: () => setHoveredStage(category),

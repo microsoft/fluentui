@@ -141,14 +141,16 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = {};
+    const linePointsByX = new Map<string, YValueHover[]>();
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
-        if (!linePointsByX[point.x]) {
-          linePointsByX[point.x] = [];
+        let points = linePointsByX.get(point.x);
+        if (!points) {
+          points = [];
+          linePointsByX.set(point.x, points);
         }
-        linePointsByX[point.x].push({
+        points.push({
           ...point,
           legend: series.legend,
           color: series.color,
@@ -159,36 +161,37 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     });
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
+      // Named record with legend-keyed entries; null-prototype so a "__proto__" legend cannot pollute Object.prototype.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint = new Map<string, GVBarChartSeriesPoint>();
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
           singleDatasetPointForBars[seriesPoint.legend] = [{ ...seriesPoint }];
-          legendToBarPoint[seriesPoint.legend] = { ...seriesPoint };
+          legendToBarPoint.set(seriesPoint.legend, { ...seriesPoint });
         } else {
           singleDatasetPointForBars[seriesPoint.legend].push({ ...seriesPoint });
-          legendToBarPoint[seriesPoint.legend].data += seriesPoint.data;
+          legendToBarPoint.get(seriesPoint.legend)!.data += seriesPoint.data;
         }
       });
 
       singleDatasetPointForBars.xAxisPoint = point.name;
       singleDatasetPointForBars.indexNum = index;
       singleDatasetPointForBars.groupSeries = [
-        ...Object.values(legendToBarPoint),
-        ...(linePointsByX[point.name] ?? []),
+        ...Array.from(legendToBarPoint.values()),
+        ...(linePointsByX.get(point.name) ?? []),
       ];
       singleDatasetPointForBars.stackCallOutAccessibilityData = point.stackCallOutAccessibilityData;
       datasetForBars.push(singleDatasetPointForBars);
       visitedX.add(point.name);
     });
 
-    Object.keys(linePointsByX).forEach(xPoint => {
+    linePointsByX.forEach((points, xPoint) => {
       if (!visitedX.has(xPoint)) {
         datasetForBars.push({
           xAxisPoint: xPoint,
-          groupSeries: linePointsByX[xPoint],
+          groupSeries: points,
         });
       }
     });
@@ -360,21 +363,25 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _mapCategoryToValues = (barData: GroupedVerticalBarChartData[], lineData: GVBCLineSeries[]) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = new Map<string, number[]>();
     barData.forEach(point => {
-      if (!categoryToValues[point.name]) {
-        categoryToValues[point.name] = [];
+      let values = categoryToValues.get(point.name);
+      if (!values) {
+        values = [];
+        categoryToValues.set(point.name, values);
       }
       point.series.forEach(seriesPoint => {
-        categoryToValues[point.name].push(seriesPoint.data);
+        values!.push(seriesPoint.data);
       });
     });
     lineData.forEach(series => {
       series.data.forEach(point => {
-        if (!categoryToValues[point.x]) {
-          categoryToValues[point.x] = [];
+        let values = categoryToValues.get(point.x);
+        if (!values) {
+          values = [];
+          categoryToValues.set(point.x, values);
         }
-        categoryToValues[point.x].push(point.y);
+        values.push(point.y);
       });
     });
     return categoryToValues;

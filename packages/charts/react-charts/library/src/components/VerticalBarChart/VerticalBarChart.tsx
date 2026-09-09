@@ -825,13 +825,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor = new Map<string, string>();
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);
-      mapLegendToColor[point.legend!] = color;
+      mapLegendToColor.set(point.legend!, color);
     });
-    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
+    Array.from(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: Legend = {
         title: legendTitle,
@@ -1086,15 +1086,17 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = new Map<string, number[]>();
     _points.forEach(point => {
       const xValue = point.x as string;
-      if (!categoryToValues[xValue]) {
-        categoryToValues[xValue] = [];
+      let values = categoryToValues.get(xValue);
+      if (!values) {
+        values = [];
+        categoryToValues.set(xValue, values);
       }
-      categoryToValues[xValue].push(point.y);
+      values.push(point.y);
       if (point.lineData) {
-        categoryToValues[xValue].push(point.lineData.y);
+        values.push(point.lineData.y);
       }
     });
     return categoryToValues;

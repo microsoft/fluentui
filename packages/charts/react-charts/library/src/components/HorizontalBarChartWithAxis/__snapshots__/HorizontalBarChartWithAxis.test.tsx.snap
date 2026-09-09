@@ -360,21 +360,21 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="13000, bar group 2 of 4, with 1 bars."
+            aria-label="50000, bar group 2 of 4, with 1 bars."
             role="listbox"
           >
             <rect
-              aria-label="2020/04/30. Bananas, 88%."
+              aria-label="2020/04/30. Grapes, 20%."
               aria-labelledby="toolTipcallout_r_0_"
-              fill="#002050"
+              fill="#00bcf2"
               height="16"
               opacity="1"
               role="option"
               rx="0"
               tabindex="0"
-              width="590"
+              width="295"
               x="40"
-              y="185.62"
+              y="28"
             />
             <text
               aria-hidden="true"
@@ -383,10 +383,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
               transform="translate(4)"
-              x="630"
-              y="193.62"
+              x="335"
+              y="36"
             >
-              40k
+              20k
             </text>
           </g>
           <g
@@ -420,21 +420,21 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="50000, bar group 4 of 4, with 1 bars."
+            aria-label="13000, bar group 4 of 4, with 1 bars."
             role="listbox"
           >
             <rect
-              aria-label="2020/04/30. Grapes, 20%."
+              aria-label="2020/04/30. Bananas, 88%."
               aria-labelledby="toolTipcallout_r_0_"
-              fill="#00bcf2"
+              fill="#002050"
               height="16"
               opacity="1"
               role="option"
               rx="0"
               tabindex="0"
-              width="295"
+              width="590"
               x="40"
-              y="28"
+              y="185.62"
             />
             <text
               aria-hidden="true"
@@ -443,10 +443,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
               transform="translate(4)"
-              x="335"
-              y="36"
+              x="630"
+              y="193.62"
             >
-              20k
+              40k
             </text>
           </g>
         </g>
@@ -1053,9 +1053,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               />
               <div
                 class="fui-legend__text"
-              >
-                undefined
-              </div>
+              />
             </button>
           </div>
         </div>
@@ -1430,21 +1428,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4, with 1 bars."
+                aria-label="50000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Bananas, 88%."
+                  aria-label="2020/04/30. Grapes, 20%."
                   aria-labelledby="toolTipcallout_r_2e_"
-                  fill="#002050"
+                  fill="#00bcf2"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="590"
+                  width="295"
                   x="40"
-                  y="185.62"
+                  y="28"
                 />
                 <text
                   aria-hidden="true"
@@ -1453,10 +1451,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="630"
-                  y="193.62"
+                  x="335"
+                  y="36"
                 >
-                  40k
+                  20k
                 </text>
               </g>
               <g
@@ -1490,21 +1488,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4, with 1 bars."
+                aria-label="13000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Grapes, 20%."
+                  aria-label="2020/04/30. Bananas, 88%."
                   aria-labelledby="toolTipcallout_r_2e_"
-                  fill="#00bcf2"
+                  fill="#002050"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="295"
+                  width="590"
                   x="40"
-                  y="28"
+                  y="185.62"
                 />
                 <text
                   aria-hidden="true"
@@ -1513,10 +1511,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="335"
-                  y="36"
+                  x="630"
+                  y="193.62"
                 >
-                  20k
+                  40k
                 </text>
               </g>
             </g>
@@ -1989,21 +1987,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4, with 1 bars."
+              aria-label="50000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Bananas, 88%."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_2e_"
-                fill="#002050"
+                fill="#00bcf2"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="590"
+                width="295"
                 x="40"
-                y="185.62"
+                y="28"
               />
               <text
                 aria-hidden="true"
@@ -2012,10 +2010,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="630"
-                y="193.62"
+                x="335"
+                y="36"
               >
-                40k
+                20k
               </text>
             </g>
             <g
@@ -2049,21 +2047,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4, with 1 bars."
+              aria-label="13000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Grapes, 20%."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_2e_"
-                fill="#00bcf2"
+                fill="#002050"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="590"
                 x="40"
-                y="28"
+                y="185.62"
               />
               <text
                 aria-hidden="true"
@@ -2072,10 +2070,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="335"
-                y="36"
+                x="630"
+                y="193.62"
               >
-                20k
+                40k
               </text>
             </g>
           </g>
@@ -2607,21 +2605,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4, with 1 bars."
+                aria-label="50000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Bananas, 88%."
+                  aria-label="2020/04/30. Grapes, 20%."
                   aria-labelledby="toolTipcallout_r_2i_"
-                  fill="#002050"
+                  fill="#00bcf2"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="3"
                   tabindex="0"
-                  width="590"
+                  width="295"
                   x="40"
-                  y="185.62"
+                  y="28"
                 />
                 <text
                   aria-hidden="true"
@@ -2630,10 +2628,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="630"
-                  y="193.62"
+                  x="335"
+                  y="36"
                 >
-                  40k
+                  20k
                 </text>
               </g>
               <g
@@ -2667,21 +2665,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4, with 1 bars."
+                aria-label="13000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Grapes, 20%."
+                  aria-label="2020/04/30. Bananas, 88%."
                   aria-labelledby="toolTipcallout_r_2i_"
-                  fill="#00bcf2"
+                  fill="#002050"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="3"
                   tabindex="0"
-                  width="295"
+                  width="590"
                   x="40"
-                  y="28"
+                  y="185.62"
                 />
                 <text
                   aria-hidden="true"
@@ -2690,10 +2688,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="335"
-                  y="36"
+                  x="630"
+                  y="193.62"
                 >
-                  20k
+                  40k
                 </text>
               </g>
             </g>
@@ -3166,21 +3164,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4, with 1 bars."
+              aria-label="50000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Bananas, 88%."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_2i_"
-                fill="#002050"
+                fill="#00bcf2"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="3"
                 tabindex="0"
-                width="590"
+                width="295"
                 x="40"
-                y="185.62"
+                y="28"
               />
               <text
                 aria-hidden="true"
@@ -3189,10 +3187,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="630"
-                y="193.62"
+                x="335"
+                y="36"
               >
-                40k
+                20k
               </text>
             </g>
             <g
@@ -3226,21 +3224,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4, with 1 bars."
+              aria-label="13000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Grapes, 20%."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_2i_"
-                fill="#00bcf2"
+                fill="#002050"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="3"
                 tabindex="0"
-                width="295"
+                width="590"
                 x="40"
-                y="28"
+                y="185.62"
               />
               <text
                 aria-hidden="true"
@@ -3249,10 +3247,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="335"
-                y="36"
+                x="630"
+                y="193.62"
               >
-                20k
+                40k
               </text>
             </g>
           </g>
@@ -3784,21 +3782,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4, with 1 bars."
+                aria-label="50000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Bananas, 88%."
+                  aria-label="2020/04/30. Grapes, 20%."
                   aria-labelledby="toolTipcallout_r_1r_"
-                  fill="#002050"
+                  fill="#00bcf2"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="590"
+                  width="295"
                   x="40"
-                  y="185.62"
+                  y="28"
                 />
                 <text
                   aria-hidden="true"
@@ -3807,10 +3805,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="630"
-                  y="193.62"
+                  x="335"
+                  y="36"
                 >
-                  40k
+                  20k
                 </text>
               </g>
               <g
@@ -3844,21 +3842,21 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4, with 1 bars."
+                aria-label="13000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Grapes, 20%."
+                  aria-label="2020/04/30. Bananas, 88%."
                   aria-labelledby="toolTipcallout_r_1r_"
-                  fill="#00bcf2"
+                  fill="#002050"
                   height="16"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="295"
+                  width="590"
                   x="40"
-                  y="28"
+                  y="185.62"
                 />
                 <text
                   aria-hidden="true"
@@ -3867,10 +3865,10 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
                   transform="translate(4)"
-                  x="335"
-                  y="36"
+                  x="630"
+                  y="193.62"
                 >
-                  20k
+                  40k
                 </text>
               </g>
             </g>
@@ -4343,21 +4341,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4, with 1 bars."
+              aria-label="50000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Bananas, 88%."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_1r_"
-                fill="#002050"
+                fill="#00bcf2"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="590"
+                width="295"
                 x="40"
-                y="185.62"
+                y="28"
               />
               <text
                 aria-hidden="true"
@@ -4366,10 +4364,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="630"
-                y="193.62"
+                x="335"
+                y="36"
               >
-                40k
+                20k
               </text>
             </g>
             <g
@@ -4403,21 +4401,21 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4, with 1 bars."
+              aria-label="13000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Grapes, 20%."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_1r_"
-                fill="#00bcf2"
+                fill="#002050"
                 height="16"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="590"
                 x="40"
-                y="28"
+                y="185.62"
               />
               <text
                 aria-hidden="true"
@@ -4426,10 +4424,10 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
                 transform="translate(4)"
-                x="335"
-                y="36"
+                x="630"
+                y="193.62"
               >
-                20k
+                40k
               </text>
             </g>
           </g>
@@ -6318,21 +6316,21 @@ Object {
                 />
               </g>
               <g
-                aria-label="13000, bar group 2 of 4, with 1 bars."
+                aria-label="50000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Bananas, 88%."
+                  aria-label="2020/04/30. Grapes, 20%."
                   aria-labelledby="toolTipcallout_r_23_"
-                  fill="#002050"
+                  fill="#00bcf2"
                   height="1"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="590"
+                  width="295"
                   x="40"
-                  y="11.719999999999999"
+                  y="28"
                 />
               </g>
               <g
@@ -6354,21 +6352,21 @@ Object {
                 />
               </g>
               <g
-                aria-label="50000, bar group 4 of 4, with 1 bars."
+                aria-label="13000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
-                  aria-label="2020/04/30. Grapes, 20%."
+                  aria-label="2020/04/30. Bananas, 88%."
                   aria-labelledby="toolTipcallout_r_23_"
-                  fill="#00bcf2"
+                  fill="#002050"
                   height="1"
                   opacity="1"
                   role="option"
                   rx="0"
                   tabindex="0"
-                  width="295"
+                  width="590"
                   x="40"
-                  y="28"
+                  y="11.719999999999999"
                 />
               </g>
             </g>
@@ -6724,21 +6722,21 @@ Object {
               />
             </g>
             <g
-              aria-label="13000, bar group 2 of 4, with 1 bars."
+              aria-label="50000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Bananas, 88%."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_23_"
-                fill="#002050"
+                fill="#00bcf2"
                 height="1"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="590"
+                width="295"
                 x="40"
-                y="11.719999999999999"
+                y="28"
               />
             </g>
             <g
@@ -6760,21 +6758,21 @@ Object {
               />
             </g>
             <g
-              aria-label="50000, bar group 4 of 4, with 1 bars."
+              aria-label="13000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
-                aria-label="2020/04/30. Grapes, 20%."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_23_"
-                fill="#00bcf2"
+                fill="#002050"
                 height="1"
                 opacity="1"
                 role="option"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="590"
                 x="40"
-                y="28"
+                y="11.719999999999999"
               />
             </g>
           </g>
@@ -7357,9 +7355,7 @@ Object {
                   />
                   <div
                     class="fui-legend__text"
-                  >
-                    undefined
-                  </div>
+                  />
                 </button>
               </div>
             </div>
@@ -7888,9 +7884,7 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                >
-                  undefined
-                </div>
+                />
               </button>
             </div>
           </div>
@@ -8454,9 +8448,7 @@ Object {
                   />
                   <div
                     class="fui-legend__text"
-                  >
-                    undefined
-                  </div>
+                  />
                 </button>
               </div>
             </div>
@@ -8956,9 +8948,7 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                >
-                  undefined
-                </div>
+                />
               </button>
             </div>
           </div>

@@ -519,7 +519,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _getFormattedLineData(data: VerticalStackedChartProps[]): LineObject {
     const linesData: LinePoint[] = [];
-    const formattedLineData: LineObject = {};
+    // Accumulate in a Map so a legend of "__proto__" cannot pollute Object.prototype;
+    // Object.fromEntries creates own properties, keeping the returned object safe.
+    const formattedLineData = new Map<string, LinePoint[]>();
     data.forEach((item: VerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         item.lineData.forEach((line: any) => {
@@ -532,13 +534,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
     });
     linesData.forEach(item => {
-      if (formattedLineData[item.legend]) {
-        formattedLineData[item.legend].push(item);
+      const existing = formattedLineData.get(item.legend);
+      if (existing) {
+        existing.push(item);
       } else {
-        formattedLineData[item.legend] = [item];
+        formattedLineData.set(item.legend, [item]);
       }
     });
-    return formattedLineData;
+    return Object.fromEntries(formattedLineData);
   }
 
   function _getLineLegends(data: VerticalStackedChartProps[]): LineLegends[] {
@@ -1307,16 +1310,18 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _mapCategoryToValues(isYAxis = false) {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = new Map<string, number[]>();
     _points.forEach(point => {
       point.chartData.forEach(bar => {
         const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
         const value = isYAxis ? point.xAxisPoint : bar.data;
-        if (!categoryToValues[category]) {
-          categoryToValues[category] = [];
+        let values = categoryToValues.get(category);
+        if (!values) {
+          values = [];
+          categoryToValues.set(category, values);
         }
         if (typeof value === 'number') {
-          categoryToValues[category].push(value);
+          values.push(value);
         }
       });
       point.lineData?.forEach(linePoint => {
@@ -1325,11 +1330,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         }
         const category = (isYAxis ? linePoint.y : point.xAxisPoint) as string;
         const value = isYAxis ? point.xAxisPoint : linePoint.y;
-        if (!categoryToValues[category]) {
-          categoryToValues[category] = [];
+        let values = categoryToValues.get(category);
+        if (!values) {
+          values = [];
+          categoryToValues.set(category, values);
         }
         if (typeof value === 'number') {
-          categoryToValues[category].push(value);
+          values.push(value);
         }
       });
     });

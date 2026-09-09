@@ -1299,7 +1299,7 @@ export const transformPlotlyJsonToDonutProps = (
     isDarkTheme,
     true,
   );
-  const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
+  const mapLegendToDataPoint = new Map<string, ChartDataPoint>();
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
   colorMap.current!.clear();
@@ -1332,14 +1332,15 @@ export const transformPlotlyJsonToDonutProps = (
           true,
         );
 
-      if (!mapLegendToDataPoint[legend]) {
-        mapLegendToDataPoint[legend] = {
+      const existingDataPoint = mapLegendToDataPoint.get(legend);
+      if (!existingDataPoint) {
+        mapLegendToDataPoint.set(legend, {
           legend,
           data: pair.value,
           color,
-        };
+        });
       } else {
-        mapLegendToDataPoint[legend].data! += pair.value as number;
+        existingDataPoint.data! += pair.value as number;
       }
     });
   }
@@ -1356,17 +1357,17 @@ export const transformPlotlyJsonToDonutProps = (
     : MIN_DONUT_RADIUS;
   const { chartTitle, titleStyles } = getTitles(input.layout);
   // Build anticlockwise order by keeping the first item, reversing the rest
-  const legends = Object.keys(mapLegendToDataPoint);
+  const legends = Array.from(mapLegendToDataPoint.keys());
   const reorderedEntries =
     legends.length > 1
       ? ([
-          [legends[0], mapLegendToDataPoint[legends[0]]],
+          [legends[0], mapLegendToDataPoint.get(legends[0])!],
           ...legends
             .slice(1)
             .reverse()
-            .map(key => [key, mapLegendToDataPoint[key]] as const),
+            .map(key => [key, mapLegendToDataPoint.get(key)!] as const),
         ] as ReadonlyArray<readonly [string, ChartDataPoint]>)
-      : legends.map(key => [key, mapLegendToDataPoint[key]] as const);
+      : legends.map(key => [key, mapLegendToDataPoint.get(key)!] as const);
 
   return {
     data: {
@@ -1395,7 +1396,7 @@ export const transformPlotlyJsonToVSBCProps = (
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
 ): VerticalStackedBarChartProps => {
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  const mapXToDataPoints = new Map<string, VerticalStackedChartProps>();
   let yMaxValue = 0;
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
@@ -1433,12 +1434,13 @@ export const transformPlotlyJsonToVSBCProps = (
         : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
-        if (!mapXToDataPoints[x]) {
-          mapXToDataPoints[x] = {
+        const xKey = String(x);
+        if (!mapXToDataPoints.has(xKey)) {
+          mapXToDataPoints.set(xKey, {
             xAxisPoint: resolveXValue(x)!,
             chartData: [],
             lineData: [],
-          };
+          });
         }
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the colorscale or extracted colors
@@ -1466,7 +1468,7 @@ export const transformPlotlyJsonToVSBCProps = (
           barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index2);
         }
         if (series.type === 'bar') {
-          mapXToDataPoints[x].chartData.push({
+          mapXToDataPoints.get(xKey)!.chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
@@ -1487,7 +1489,7 @@ export const transformPlotlyJsonToVSBCProps = (
           );
           const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
           const legendShape = getLegendShape(series);
-          mapXToDataPoints[x].lineData!.push({
+          mapXToDataPoints.get(xKey)!.lineData!.push({
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
@@ -1554,8 +1556,9 @@ export const transformPlotlyJsonToVSBCProps = (
 
       const y0Val = resolveY(shape.y0!);
       const y1Val = resolveY(shape.y1!);
-      if (mapXToDataPoints[x0Key as string]) {
-        mapXToDataPoints[x0Key as string].lineData!.push({
+      const x0Entry = mapXToDataPoints.get(x0Key as string);
+      if (x0Entry) {
+        x0Entry.lineData!.push({
           legend: `Reference_${shapeIdx}`,
           y: y0Val as string,
           color: rgb(lineColor!).formatHex8() ?? lineColor,
@@ -1564,8 +1567,9 @@ export const transformPlotlyJsonToVSBCProps = (
         });
       }
 
-      if (mapXToDataPoints[x1Key as string]) {
-        mapXToDataPoints[x1Key as string].lineData!.push({
+      const x1Entry = mapXToDataPoints.get(x1Key as string);
+      if (x1Entry) {
+        x1Entry.lineData!.push({
           legend: `Reference_${shapeIdx}`,
           y: y1Val as string,
           color: rgb(lineColor!).formatHex8() ?? lineColor,
@@ -1575,7 +1579,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
     });
 
-  const vsbcData = Object.values(mapXToDataPoints);
+  const vsbcData = Array.from(mapXToDataPoints.values());
   const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
@@ -3077,7 +3081,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
   if (isStacked) {
     // Assign a color per series/category and use it for all subValues of that category
-    const seriesColors: Record<string, string> = {};
+    const seriesColors = new Map<string, string>();
     input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages
@@ -3097,7 +3101,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
         input.layout?.template?.layout?.colorway,
         isDarkTheme,
       );
-      seriesColors[category] = color;
+      seriesColors.set(category, color);
 
       const labels = series.labels ?? series.y ?? series.stage;
       const values = series.values ?? series.x ?? series.value;

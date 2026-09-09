@@ -693,15 +693,15 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor = new Map<string, string>();
 
     data.forEach((point: HorizontalBarChartWithAxisDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = useSingleColor ? (props.colors ? _createColors()(1) : getNextColor(1, 0)) : point.color!;
 
-      mapLegendToColor[point.legend!] = color;
+      mapLegendToColor.set(point.legend!, color);
     });
-    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
+    Array.from(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: Legend = {
         title: legendTitle,
@@ -829,12 +829,14 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = new Map<string, number[]>();
     _points.forEach(point => {
-      if (!categoryToValues[point.y]) {
-        categoryToValues[point.y] = [];
+      let values = categoryToValues.get(point.y);
+      if (!values) {
+        values = [];
+        categoryToValues.set(point.y, values);
       }
-      categoryToValues[point.y].push(point.x);
+      values.push(point.x);
     });
     return categoryToValues;
   }

@@ -1021,8 +1021,11 @@ export function calloutData(
     combinedResult = combinedResult.concat(elements);
   });
 
-  const xValToDataPoints: {
-    [key: number]: {
+  // Accumulate in a Map so data-derived x keys (e.g. "__proto__") cannot pollute Object.prototype;
+  // Object.fromEntries creates own properties, keeping the returned Record safe.
+  const xValToDataPoints = new Map<
+    string | number,
+    {
       legend: string;
       y: number;
       color: string;
@@ -1030,17 +1033,8 @@ export function calloutData(
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: AccessibilityProps;
       index?: number;
-    }[];
-    [key: string]: {
-      legend: string;
-      y: number;
-      color: string;
-      xAxisCalloutData?: string;
-      yAxisCalloutData?: string | { [id: string]: number };
-      callOutAccessibilityData?: AccessibilityProps;
-      index?: number;
-    }[];
-  } = {};
+    }[]
+  >();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
@@ -1054,18 +1048,19 @@ export function calloutData(
       index: ele.index,
     };
 
-    if (xValue in xValToDataPoints) {
+    const existing = xValToDataPoints.get(xValue);
+    if (existing) {
       // Check if a point with the same legend and y-value already exists
-      const existingPoint = xValToDataPoints[xValue].find(p => p.legend === newPoint.legend && p.y === newPoint.y);
+      const existingPoint = existing.find(p => p.legend === newPoint.legend && p.y === newPoint.y);
       if (!existingPoint) {
-        xValToDataPoints[xValue].push(newPoint);
+        existing.push(newPoint);
       }
     } else {
-      xValToDataPoints[xValue] = [newPoint];
+      xValToDataPoints.set(xValue, [newPoint]);
     }
   });
 
-  return xValToDataPoints;
+  return Object.fromEntries(xValToDataPoints);
 }
 
 export function getUnique(
@@ -1386,16 +1381,19 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
 export function groupChartDataByYValue(
   chartData: HorizontalBarChartWithAxisDataPoint[],
 ): HorizontalBarChartWithAxisDataPoint[][] {
-  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
+  // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
+  const map = new Map<HorizontalBarChartWithAxisDataPoint['y'], HorizontalBarChartWithAxisDataPoint[]>();
   chartData.forEach(dataPoint => {
     const key = dataPoint.y;
-    if (!map[key]) {
-      map[key] = [];
+    let group = map.get(key);
+    if (!group) {
+      group = [];
+      map.set(key, group);
     }
-    map[key].push(dataPoint);
+    group.push(dataPoint);
   });
 
-  return Object.values(map);
+  return Array.from(map.values());
 }
 
 /**
@@ -2047,7 +2045,7 @@ const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|
  * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
  */
 export const sortAxisCategories = (
-  categoryToValues: Record<string, number[]>,
+  categoryToValues: Map<string, number[]>,
   categoryOrder: AxisCategoryOrder | undefined,
 ): string[] => {
   if (Array.isArray(categoryOrder)) {
@@ -2056,14 +2054,14 @@ export const sortAxisCategories = (
 
     // Add elements from categoryOrder array that are in categoryToValues, in the array's order
     categoryOrder.forEach(category => {
-      if (categoryToValues[category] && !seen.has(category)) {
+      if (categoryToValues.has(category) && !seen.has(category)) {
         result.push(category);
         seen.add(category);
       }
     });
 
     // Append any keys from categoryToValues not already in result
-    Object.keys(categoryToValues).forEach(category => {
+    categoryToValues.forEach((_values, category) => {
       if (!seen.has(category)) {
         result.push(category);
       }
@@ -2078,7 +2076,7 @@ export const sortAxisCategories = (
     const order = match[2];
 
     if (aggregator === 'category') {
-      const result = Object.keys(categoryToValues).sort();
+      const result = Array.from(categoryToValues.keys()).sort();
       return order === 'descending' ? result.reverse() : result;
     }
 
@@ -2098,8 +2096,8 @@ export const sortAxisCategories = (
     };
 
     const categoriesAggregatedValue: [string, number][] = [];
-    Object.keys(categoryToValues).forEach(category => {
-      categoriesAggregatedValue.push([category, aggFn[aggregator](categoryToValues[category]) || 0]);
+    categoryToValues.forEach((values, category) => {
+      categoriesAggregatedValue.push([category, aggFn[aggregator](values) || 0]);
     });
 
     categoriesAggregatedValue.sort(order === 'descending' ? sortDescending : sortAscending);
@@ -2107,7 +2105,7 @@ export const sortAxisCategories = (
     return categoriesAggregatedValue.map(([category]) => category);
   }
 
-  return Object.keys(categoryToValues);
+  return Array.from(categoryToValues.keys());
 };
 
 export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element): void {

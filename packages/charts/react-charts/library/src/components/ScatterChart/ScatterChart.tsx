@@ -253,16 +253,18 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = {};
+    const mapLegendToPoints = new Map<string, ScatterChartDataWithIndex[]>();
     data.forEach((point: ScatterChartDataWithIndex) => {
       if (point.legend) {
-        if (!mapLegendToPoints[point.legend]) {
-          mapLegendToPoints[point.legend] = [];
+        let points = mapLegendToPoints.get(point.legend);
+        if (!points) {
+          points = [];
+          mapLegendToPoints.set(point.legend, points);
         }
-        mapLegendToPoints[point.legend].push(point);
+        points.push(point);
       }
     });
-    const legendDataItems: Legend[] = Object.entries(mapLegendToPoints).map(([legendTitle, points]) => {
+    const legendDataItems: Legend[] = Array.from(mapLegendToPoints, ([legendTitle, points]) => {
       const representativePoint = points[0];
       // mapping data to the format Legends component needs
       const legend: Legend = {
@@ -319,16 +321,18 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = new Map<string, number[]>();
     _points.forEach(point => {
       if (point.data && Array.isArray(point.data)) {
         point.data.forEach(d => {
           if (typeof d.y === 'string') {
-            if (!categoryToValues[d.y]) {
-              categoryToValues[d.y] = [];
+            let values = categoryToValues.get(d.y);
+            if (!values) {
+              values = [];
+              categoryToValues.set(d.y, values);
             }
             if (typeof d.x === 'number') {
-              categoryToValues[d.y].push(d.x);
+              values.push(d.x);
             }
           }
         });

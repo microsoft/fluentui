@@ -3,6 +3,7 @@ import {
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
+  transformVegaLiteToGroupedVerticalBarChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
@@ -1456,6 +1457,62 @@ describe('VegaLiteSchemaAdapter', () => {
 
       expect(pointA?.y).toBe(20); // (10 + 20 + 30) / 3
       expect(pointB?.y).toBe(20); // (15 + 25) / 2
+    });
+  });
+
+  describe('Grouped bar chart - prototype pollution hardening', () => {
+    const pollutionKeys = ['__proto__', 'constructor', 'prototype'];
+
+    afterEach(() => {
+      for (const key of ['polluted', 'NODE_OPTIONS']) {
+        delete (Object.prototype as Record<string, unknown>)[key];
+      }
+    });
+
+    test.each(pollutionKeys)('does not pollute Object.prototype via x value "%s"', magicKey => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: magicKey, value: 1, series: 'polluted' },
+            { category: 'A', value: 2, series: 'polluted' },
+          ],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      const result = transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(({} as Record<string, unknown>).polluted).toBeUndefined();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'polluted')).toBe(false);
+      // The malicious category is still processed as ordinary data.
+      expect(result.data!.some(d => d.name === magicKey)).toBe(true);
+    });
+
+    test('environment-shaped series name is not written onto Object.prototype', () => {
+      const envKey = 'NODE_OPTIONS';
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [{ category: '__proto__', value: 1, series: envKey }],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(({} as Record<string, unknown>)[envKey]).toBeUndefined();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, envKey)).toBe(false);
     });
   });
 });

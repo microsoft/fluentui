@@ -472,12 +472,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  const groupedTraces: Record<string, number[]> = {};
+  // Map keys have no prototype-collision problem, so a trace key of "__proto__" is safe.
+  const groupedTraces = new Map<string, number[]>();
   let nonCartesianTraceCount = 0;
 
   // For annotation-only charts, create a single group entry
   if (chart.type === 'annotation') {
-    groupedTraces[DEFAULT_XAXIS] = [];
+    groupedTraces.set(DEFAULT_XAXIS, []);
   } else {
     plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
       let traceKey = '';
@@ -490,15 +491,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             ? (trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT
             : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
       }
-      if (!groupedTraces[traceKey]) {
-        groupedTraces[traceKey] = [];
+      let traceIndices = groupedTraces.get(traceKey);
+      if (!traceIndices) {
+        traceIndices = [];
+        groupedTraces.set(traceKey, traceIndices);
       }
-      groupedTraces[traceKey].push(index);
+      traceIndices.push(index);
     });
   }
 
   // eslint-disable-next-line react-hooks/refs
-  isMultiPlot.current = Object.keys(groupedTraces).length > 1;
+  isMultiPlot.current = groupedTraces.size > 1;
   const gridProperties: GridProperties = getGridProperties(
     plotlyInputWithValidData,
     // eslint-disable-next-line react-hooks/refs
@@ -515,16 +518,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   ) {
     if (chart.type === 'donut') {
       // If there are multiple data traces for donut/pie, picking the last one similar to plotly
-      const keys = Object.keys(groupedTraces);
+      const keys = Array.from(groupedTraces.keys());
       keys.forEach((key, index) => {
         if (index < keys.length - 1) {
-          delete groupedTraces[key];
+          groupedTraces.delete(key);
         }
       });
     } else {
-      Object.keys(groupedTraces).forEach((key, index) => {
+      Array.from(groupedTraces.keys()).forEach((key, index) => {
         if (index > 0) {
-          delete groupedTraces[key];
+          groupedTraces.delete(key);
         }
       });
     }
@@ -568,7 +571,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         ref={containerRef}
       >
         {/* eslint-disable-next-line react-hooks/refs */}
-        {Object.entries(groupedTraces).map(([xAxisKey, index], chartIdx) => {
+        {Array.from(groupedTraces).map(([xAxisKey, index], chartIdx) => {
           const plotlyInputForGroup: PlotlySchema = {
             ...plotlyInputWithValidData,
             data: index.map(idx => plotlyInputWithValidData.data[idx]),

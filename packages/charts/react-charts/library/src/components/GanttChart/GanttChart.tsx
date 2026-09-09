@@ -135,12 +135,15 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     }, [useUTC, _points, _xAxisType]);
 
     const _mapYValueToXValues = React.useCallback(() => {
-      const yValueToXValues: Record<string, number[]> = {};
+      // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
+      const yValueToXValues = new Map<string, number[]>();
       _points.forEach(point => {
-        if (!yValueToXValues[point.y]) {
-          yValueToXValues[point.y] = [];
+        let xValues = yValueToXValues.get(point.y);
+        if (!xValues) {
+          xValues = [];
+          yValueToXValues.set(point.y, xValues);
         }
-        yValueToXValues[point.y].push(+point.x.end - +point.x.start);
+        xValues.push(+point.x.end - +point.x.start);
       });
       return yValueToXValues;
     }, [_points]);
@@ -149,11 +152,11 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       const yValueToXValues = _mapYValueToXValues();
 
       if (_yAxisType !== YAxisType.StringAxis) {
-        return Object.keys(yValueToXValues).sort((a, b) => +a - +b);
+        return Array.from(yValueToXValues.keys()).sort((a, b) => +a - +b);
       }
 
       if (yAxisCategoryOrder === 'default') {
-        return Object.keys(yValueToXValues).reverse();
+        return Array.from(yValueToXValues.keys()).reverse();
       }
       return sortAxisCategories(yValueToXValues, yAxisCategoryOrder);
     }, [_mapYValueToXValues, _yAxisType, yAxisCategoryOrder]);
@@ -350,18 +353,21 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const _getOrderedDataPoints = React.useCallback(() => {
       const result: GanttChartDataPoint[] = [];
 
-      const yValueToPoints: Record<string, GanttChartDataPoint[]> = {};
+      const yValueToPoints = new Map<string, GanttChartDataPoint[]>();
       _points.forEach(point => {
-        if (!yValueToPoints[point.y]) {
-          yValueToPoints[point.y] = [];
+        let points = yValueToPoints.get(point.y);
+        if (!points) {
+          points = [];
+          yValueToPoints.set(point.y, points);
         }
-        yValueToPoints[point.y].push(point);
+        points.push(point);
       });
 
       for (let i = _yAxisLabels.length - 1; i >= 0; i--) {
         const yValue = _yAxisLabels[i];
-        if (yValueToPoints[yValue]) {
-          result.push(...yValueToPoints[yValue].sort((a, b) => +a.x.start - +b.x.start));
+        const points = yValueToPoints.get(yValue);
+        if (points) {
+          result.push(...points.sort((a, b) => +a.x.start - +b.x.start));
         }
       }
 

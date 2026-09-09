@@ -2395,8 +2395,9 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Extract color configuration
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
-  // Group data by x value, then by color (stack)
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  // Group data by x value, then by color (stack).
+  // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
+  const mapXToDataPoints = new Map<string, VerticalStackedChartProps>();
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2406,12 +2407,14 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       const xKey = String(category);
       const legend = 'Bar';
 
-      if (!mapXToDataPoints[xKey]) {
-        mapXToDataPoints[xKey] = {
+      let entry = mapXToDataPoints.get(xKey);
+      if (!entry) {
+        entry = {
           xAxisPoint: category,
           chartData: [],
           lineData: [],
         };
+        mapXToDataPoints.set(xKey, entry);
       }
 
       if (!colorIndex.has(legend)) {
@@ -2429,7 +2432,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         isDarkTheme,
       );
 
-      mapXToDataPoints[xKey].chartData.push({
+      entry.chartData.push({
         legend,
         data: value,
         color,
@@ -2445,11 +2448,12 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       // Fall back to count aggregation: count rows per x category and color
       const counts = countByCategory(dataValues, xField, colorField, 'Bar');
       counts.forEach((legendMap, xKey) => {
-        mapXToDataPoints[xKey] = {
+        const entry: VerticalStackedChartProps = {
           xAxisPoint: xKey,
           chartData: [],
           lineData: [],
         };
+        mapXToDataPoints.set(xKey, entry);
         legendMap.forEach((count, legend) => {
           if (!colorIndex.has(legend)) {
             colorIndex.set(legend, currentColorIndex++);
@@ -2464,7 +2468,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
             colorRange,
             isDarkTheme,
           );
-          mapXToDataPoints[xKey].chartData.push({
+          entry.chartData.push({
             legend,
             data: count,
             color,
@@ -2485,14 +2489,16 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         const xKey = String(xValue);
         const legend = stackValue !== undefined ? String(stackValue) : 'Bar';
 
-        if (!mapXToDataPoints[xKey]) {
+        let entry = mapXToDataPoints.get(xKey);
+        if (!entry) {
           // For bar charts, x-axis values are treated as categories (even if numeric)
           const xCategory = typeof xValue === 'number' ? String(xValue) : (xValue as string);
-          mapXToDataPoints[xKey] = {
+          entry = {
             xAxisPoint: xCategory,
             chartData: [],
             lineData: [],
           };
+          mapXToDataPoints.set(xKey, entry);
         }
 
         if (!colorIndex.has(legend)) {
@@ -2512,7 +2518,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         );
 
         const stackYFormatter = createValueFormatter(encoding.y?.axis?.format);
-        mapXToDataPoints[xKey].chartData.push({
+        entry.chartData.push({
           legend,
           data: yValue,
           color,
@@ -2554,12 +2560,14 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         lineColorField && row[lineColorField] !== undefined ? String(row[lineColorField]) : lineLegendBase;
 
       // Ensure x-axis point exists
-      if (!mapXToDataPoints[xKey]) {
-        mapXToDataPoints[xKey] = {
+      let entry = mapXToDataPoints.get(xKey);
+      if (!entry) {
+        entry = {
           xAxisPoint: xValue as number | string,
           chartData: [],
           lineData: [],
         };
+        mapXToDataPoints.set(xKey, entry);
       }
 
       // Determine line color
@@ -2605,7 +2613,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         };
       }
 
-      mapXToDataPoints[xKey].lineData!.push(lineData);
+      mapXToDataPoints.get(xKey)!.lineData!.push(lineData);
     });
   });
 
@@ -2641,8 +2649,8 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         : String(yDatum);
 
       // Add the constant y-value line to every x-axis point
-      Object.keys(mapXToDataPoints).forEach(xKey => {
-        mapXToDataPoints[xKey].lineData!.push({
+      mapXToDataPoints.forEach(entry => {
+        entry.lineData!.push({
           y: yDatum as number,
           legend: ruleText,
           color: ruleColor,
@@ -2653,7 +2661,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     }
   });
 
-  const chartData = Object.values(mapXToDataPoints);
+  const chartData = Array.from(mapXToDataPoints.values());
   const titles = getVegaLiteTitles(spec);
 
   // Check if we have secondary Y-axis data
@@ -2756,8 +2764,9 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
   // Extract color configuration
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
-  // Group data by x value (name), then by color (series)
-  const groupedData: { [key: string]: { [legend: string]: number } } = {};
+  // Group data by x value (name), then by color (series).
+  // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
+  const groupedData = new Map<string, Map<string, number>>();
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2773,11 +2782,13 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     const xKey = String(xValue);
     const legend = String(groupValue);
 
-    if (!groupedData[xKey]) {
-      groupedData[xKey] = {};
+    let legendData = groupedData.get(xKey);
+    if (!legendData) {
+      legendData = new Map<string, number>();
+      groupedData.set(xKey, legendData);
     }
 
-    groupedData[xKey][legend] = yValue;
+    legendData.set(legend, yValue);
 
     if (!colorIndex.has(legend)) {
       colorIndex.set(legend, currentColorIndex++);
@@ -2785,10 +2796,10 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
   });
 
   // Convert to GroupedVerticalBarChartData format
-  const chartData = Object.keys(groupedData).map(name => {
-    const series = Object.keys(groupedData[name]).map(legend => ({
+  const chartData = Array.from(groupedData, ([name, legendData]) => {
+    const series = Array.from(legendData, ([legend, data]) => ({
       key: legend,
-      data: groupedData[name][legend],
+      data,
       legend,
       color: resolveColor(
         legend,
@@ -3104,20 +3115,23 @@ export function transformVegaLiteToScatterChartProps(
     });
   }
 
-  // Group data by series (color encoding)
-  const groupedData: Record<string, Array<Record<string, unknown>>> = {};
+  // Group data by series (color encoding).
+  // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
+  const groupedData = new Map<string, Array<Record<string, unknown>>>();
 
   dataValues.forEach(row => {
     const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';
 
-    if (!groupedData[seriesName]) {
-      groupedData[seriesName] = [];
+    let series = groupedData.get(seriesName);
+    if (!series) {
+      series = [];
+      groupedData.set(seriesName, series);
     }
 
-    groupedData[seriesName].push(row);
+    series.push(row);
   });
 
-  const seriesNames = Object.keys(groupedData);
+  const seriesNames = Array.from(groupedData.keys());
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -3125,7 +3139,7 @@ export function transformVegaLiteToScatterChartProps(
     if (!colorIndex.has(seriesName)) {
       colorIndex.set(seriesName, currentColorIndex++);
     }
-    const seriesData = groupedData[seriesName];
+    const seriesData = groupedData.get(seriesName)!;
 
     const points: ScatterChartDataPoint[] = seriesData.map(row => {
       const xValue = parseValue(row[xField], isXTemporal);
