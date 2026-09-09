@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { isHTMLElement, useMergedRefs, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import {
+  isHTMLElement,
+  useMergedRefs,
+  useControllableState,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { CAROUSEL_ITEM, CAROUSEL_TITLE } from './constants';
@@ -9,6 +15,12 @@ import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
 import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
 import type { CarouselContextValue } from './CarouselContext';
+
+type CarouselFocusRequest = {
+  requestedValue: string;
+  origin: Element | null;
+  committed: boolean;
+};
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
@@ -40,20 +52,25 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
 
   const { announce } = useAnnounce();
 
-  // Tracks the value of a carousel page that is in the process of becoming active, so that focus is only moved
-  // to a page's title when its DOM node mounts *because of* a navigation - not whenever any
-  // `[data-carousel-title]` node happens to be added anywhere under the carousel (e.g. unrelated async content).
-  const pendingFocusValueRef = React.useRef<string | null>(null);
-  const isInitialRenderRef = React.useRef(true);
+  const previousValueRef = React.useRef(value);
+  const focusRequestRef = React.useRef<CarouselFocusRequest | null>(null);
 
-  React.useEffect(() => {
-    if (isInitialRenderRef.current) {
-      isInitialRenderRef.current = false;
+  // A controlled value does not carry the request that caused it, so delayed acceptance is recognized by matching
+  // the latest directional request while its captured focus origin still owns focus. Any different committed value,
+  // direct tab activation, or newer directional request supersedes it.
+  useIsomorphicLayoutEffect(() => {
+    if (previousValueRef.current === value) {
       return;
     }
 
-    pendingFocusValueRef.current = value;
-  }, [value]);
+    previousValueRef.current = value;
+
+    if (focusRequestRef.current?.requestedValue === value) {
+      focusRequestRef.current.committed = true;
+    } else {
+      focusRequestRef.current = null;
+    }
+  });
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -110,23 +127,26 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
             store.insertValue(newValue, previousNode?.value ?? null);
           }
 
-          // Move focus to a page's title only when it mounts as part of an actual navigation to it (tracked via
-          // `pendingFocusValueRef`), so assistive technology announces the updated heading (and any
-          // aria-describedby'd step count) in a single pass. A page's own root element (marked with
-          // `data-carousel-item`) is never removed/re-added on navigation - only its children toggle - so the
-          // title's *owning* item is resolved via the closest `[data-carousel-item]` ancestor and compared
-          // against the pending value. This ensures unrelated title mounts elsewhere in the carousel - e.g. async
-          // content added to a page that isn't the one just navigated to - never steal focus.
-          if (pendingFocusValueRef.current !== null) {
+          const focusRequest = focusRequestRef.current;
+
+          if (focusRequest?.committed) {
             const titleEl = addedNode.matches(`[${CAROUSEL_TITLE}]`)
               ? addedNode
               : addedNode.querySelector<HTMLElement>(`[${CAROUSEL_TITLE}]`);
 
             const owningItemValue = titleEl?.closest(`[${CAROUSEL_ITEM}]`)?.getAttribute(CAROUSEL_ITEM);
 
-            if (titleEl && owningItemValue === pendingFocusValueRef.current) {
-              titleEl.focus({ preventScroll: true });
-              pendingFocusValueRef.current = null;
+            if (titleEl && owningItemValue === focusRequest.requestedValue) {
+              const activeElement: Element | null = targetDocument?.activeElement ?? null;
+              const originWasRemoved = focusRequest.origin !== null && !focusRequest.origin.isConnected;
+              const requestStillOwnsFocus =
+                activeElement === focusRequest.origin || (originWasRemoved && activeElement === targetDocument?.body);
+
+              if (requestStillOwnsFocus) {
+                titleEl.focus({ preventScroll: true });
+              }
+
+              focusRequestRef.current = null;
             }
           }
         }
@@ -151,7 +171,7 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     return () => {
       observer.disconnect();
     };
-  }, [carouselWalker, store, win]);
+  }, [carouselWalker, store, targetDocument, win]);
 
   const updateSlide = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => {
@@ -176,10 +196,20 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
       direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
     if (newPage) {
+      focusRequestRef.current = {
+        requestedValue: newPage.value,
+        origin: targetDocument?.activeElement ?? null,
+        committed: false,
+      };
       updateSlide(event, newPage?.value);
     } else {
       onFinish?.(event, { event, type: 'click', value: active?.value });
     }
+  });
+
+  const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, newValue) => {
+    focusRequestRef.current = null;
+    updateSlide(event, newValue);
   });
 
   return {
@@ -188,7 +218,7 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
       store,
       value,
       selectPageByDirection,
-      selectPageByValue: updateSlide,
+      selectPageByValue,
     },
   };
 }
