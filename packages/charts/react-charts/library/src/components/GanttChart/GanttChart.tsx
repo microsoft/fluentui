@@ -138,10 +138,11 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       // Map keys have no prototype-collision problem, so data-derived keys (e.g. "__proto__") are safe.
       const yValueToXValues = new Map<string, number[]>();
       _points.forEach(point => {
-        let xValues = yValueToXValues.get(point.y);
+        const yKey = String(point.y);
+        let xValues = yValueToXValues.get(yKey);
         if (!xValues) {
           xValues = [];
-          yValueToXValues.set(point.y, xValues);
+          yValueToXValues.set(yKey, xValues);
         }
         xValues.push(+point.x.end - +point.x.start);
       });
@@ -355,10 +356,11 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
 
       const yValueToPoints = new Map<string, GanttChartDataPoint[]>();
       _points.forEach(point => {
-        let points = yValueToPoints.get(point.y);
+        const yKey = String(point.y);
+        let points = yValueToPoints.get(yKey);
         if (!points) {
           points = [];
-          yValueToPoints.set(point.y, points);
+          yValueToPoints.set(yKey, points);
         }
         points.push(point);
       });
