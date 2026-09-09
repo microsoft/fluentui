@@ -1,31 +1,31 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
-import { Image20Regular, LockClosed20Regular, Person20Regular, Warning20Regular } from '@fluentui/react-icons';
+import { ImageRegular, LockClosedRegular, PersonRegular, WarningRegular } from '@fluentui/react-icons';
 
 export const IconBeforeAndAfter = (): JSXElement => {
   return (
     <Tree aria-label="Icon Before & After">
       <TreeItem itemType="branch">
-        <TreeItemLayout iconBefore={<Image20Regular />} iconAfter={<LockClosed20Regular />}>
+        <TreeItemLayout iconBefore={<ImageRegular />} iconAfter={<LockClosedRegular />}>
           level 1, item 1
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconBefore={<Person20Regular />}>icon before</TreeItemLayout>
+            <TreeItemLayout iconBefore={<PersonRegular />}>icon before</TreeItemLayout>
           </TreeItem>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconBefore={<Person20Regular />}>icon before</TreeItemLayout>
+            <TreeItemLayout iconBefore={<PersonRegular />}>icon before</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
       <TreeItem itemType="branch">
-        <TreeItemLayout iconBefore={<Image20Regular />} iconAfter={<LockClosed20Regular />}>
+        <TreeItemLayout iconBefore={<ImageRegular />} iconAfter={<LockClosedRegular />}>
           level 1, item 2
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconAfter={<Warning20Regular />}>icon after</TreeItemLayout>
+            <TreeItemLayout iconAfter={<WarningRegular />}>icon after</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>

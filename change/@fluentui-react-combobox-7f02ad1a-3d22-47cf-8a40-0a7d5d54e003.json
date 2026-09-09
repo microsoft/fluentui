@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate default option icons to resizable icons",
+  "packageName": "@fluentui/react-combobox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

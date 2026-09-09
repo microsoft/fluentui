@@ -12,13 +12,7 @@ import {
   slot,
 } from '@fluentui/react-utilities';
 import type { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
-import {
-  Checkmark12Filled,
-  Checkmark16Filled,
-  Square12Filled,
-  Square16Filled,
-  CircleFilled,
-} from '@fluentui/react-icons';
+import { CheckmarkFilled, SquareFilled, CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
 
@@ -36,17 +30,17 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
 
   const state = useCheckboxBase_unstable(checkboxProps, ref);
 
-  // Override indicator children with size+shape-appropriate icon
+  // Override indicator children with the state- and shape-appropriate icon
   const mixed = state.checked === 'mixed';
   let checkmarkIcon;
   if (mixed) {
     if (shape === 'circular') {
       checkmarkIcon = <CircleFilled />;
     } else {
-      checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
+      checkmarkIcon = <SquareFilled />;
     }
   } else if (state.checked) {
-    checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
+    checkmarkIcon = <CheckmarkFilled />;
   }
 
   if (state.indicator) {

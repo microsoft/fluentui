@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
-import { Navigation20Filled } from '@fluentui/react-icons';
+import { NavigationFilled } from '@fluentui/react-icons';
 import type { HamburgerProps, HamburgerState } from './Hamburger.types';
 
 /**
@@ -15,5 +15,5 @@ export const useHamburger_unstable = (
   props: HamburgerProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): HamburgerState => {
-  return useButton_unstable({ icon: <Navigation20Filled />, appearance: 'transparent', ...props }, ref);
+  return useButton_unstable({ icon: <NavigationFilled />, appearance: 'transparent', ...props }, ref);
 };

@@ -13,7 +13,7 @@ import {
   useRestoreFocusTarget,
   ToggleButton,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -69,7 +69,7 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
       <DrawerHeader>
         <DrawerHeaderTitle
           action={
-            <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
+            <Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} onClick={() => setOpen(false)} />
           }
         >
           {capitalize(props.position!)} Inline Drawer

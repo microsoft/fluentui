@@ -38,37 +38,36 @@ import {
   useId,
 } from '@fluentui/react-components';
 import {
-  Board20Filled,
-  Board20Regular,
-  BoxMultiple20Filled,
-  BoxMultiple20Regular,
-  DataArea20Filled,
-  DataArea20Regular,
-  DocumentBulletListMultiple20Filled,
-  DocumentBulletListMultiple20Regular,
-  HeartPulse20Filled,
-  HeartPulse20Regular,
-  MegaphoneLoud20Filled,
-  MegaphoneLoud20Regular,
-  People20Filled,
-  People20Regular,
-  PersonLightbulb20Filled,
-  PersonLightbulb20Regular,
-  PersonSearch20Filled,
-  PersonSearch20Regular,
-  PreviewLink20Filled,
-  PreviewLink20Regular,
+  BoardFilled,
+  BoardRegular,
+  BoxMultipleFilled,
+  BoxMultipleRegular,
+  DataAreaFilled,
+  DataAreaRegular,
+  DocumentBulletListMultipleFilled,
+  DocumentBulletListMultipleRegular,
+  HeartPulseFilled,
+  HeartPulseRegular,
+  MegaphoneLoudFilled,
+  MegaphoneLoudRegular,
+  PeopleFilled,
+  PeopleRegular,
+  PersonLightbulbFilled,
+  PersonLightbulbRegular,
+  PersonSearchFilled,
+  PersonSearchRegular,
+  PreviewLinkFilled,
+  PreviewLinkRegular,
   bundleIcon,
-  PersonCircle32Regular,
-  PersonCircle24Regular,
-  Pin20Filled,
-  Pin20Regular,
-  NotePin20Filled,
-  NotePin20Regular,
-  PeopleStar20Filled,
-  PeopleStar20Regular,
-  Person20Filled,
-  Person20Regular,
+  PersonCircleRegular,
+  PinFilled,
+  PinRegular,
+  NotePinFilled,
+  NotePinRegular,
+  PeopleStarFilled,
+  PeopleStarRegular,
+  PersonFilled,
+  PersonRegular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -100,20 +99,20 @@ const useStyles = makeStyles({
   },
 });
 
-const Dashboard = bundleIcon(Board20Filled, Board20Regular);
-const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
-const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
-const Search = bundleIcon(PersonSearch20Filled, PersonSearch20Regular);
-const PerformanceReviews = bundleIcon(PreviewLink20Filled, PreviewLink20Regular);
-const Interviews = bundleIcon(People20Filled, People20Regular);
-const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
-const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
-const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
-const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
-const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
-const Person = bundleIcon(Person20Filled, Person20Regular);
-const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
-const Pin = bundleIcon(Pin20Filled, Pin20Regular);
+const Dashboard = bundleIcon(BoardFilled, BoardRegular);
+const Announcements = bundleIcon(MegaphoneLoudFilled, MegaphoneLoudRegular);
+const EmployeeSpotlight = bundleIcon(PersonLightbulbFilled, PersonLightbulbRegular);
+const Search = bundleIcon(PersonSearchFilled, PersonSearchRegular);
+const PerformanceReviews = bundleIcon(PreviewLinkFilled, PreviewLinkRegular);
+const Interviews = bundleIcon(PeopleFilled, PeopleRegular);
+const HealthPlans = bundleIcon(HeartPulseFilled, HeartPulseRegular);
+const TrainingPrograms = bundleIcon(BoxMultipleFilled, BoxMultipleRegular);
+const Analytics = bundleIcon(DataAreaFilled, DataAreaRegular);
+const Reports = bundleIcon(DocumentBulletListMultipleFilled, DocumentBulletListMultipleRegular);
+const JobPostings = bundleIcon(NotePinFilled, NotePinRegular);
+const Person = bundleIcon(PersonFilled, PersonRegular);
+const CareerDevelopment = bundleIcon(PeopleStarFilled, PeopleStarRegular);
+const Pin = bundleIcon(PinFilled, PinRegular);
 
 type SplitNavItemNestedProps = {
   splitNavItem?: SplitNavItemProps;
@@ -208,9 +207,9 @@ export const SplitNavItems = (): JSXElement => {
 
   const appItemIcon = isAppItemIconPresent ? (
     density === 'small' ? (
-      <PersonCircle24Regular />
+      <PersonCircleRegular fontSize={24} />
     ) : (
-      <PersonCircle32Regular />
+      <PersonCircleRegular fontSize={32} />
     )
   ) : undefined;
 
@@ -237,7 +236,7 @@ export const SplitNavItems = (): JSXElement => {
       return {
         checked: isPinned,
         onClick: () => handlePinClick(value),
-        icon: isPinned ? <Pin /> : <Pin20Regular />,
+        icon: isPinned ? <Pin /> : <PinRegular fontSize={20} />,
         className: isPinned ? styles.pinned : '',
       };
     }

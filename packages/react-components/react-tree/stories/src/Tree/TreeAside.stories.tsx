@@ -3,15 +3,16 @@ import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { CounterBadge } from '@fluentui/react-components';
 import type { FluentIconsProps } from '@fluentui/react-icons';
-import { Important16Regular } from '@fluentui/react-icons';
+import { ImportantRegular } from '@fluentui/react-icons';
 
 const iconStyleProps: FluentIconsProps = {
+  fontSize: 16,
   primaryFill: 'red',
 };
 
 const AsideContent = ({ isImportant, messageCount }: { isImportant?: boolean; messageCount?: number }) => (
   <>
-    {isImportant && <Important16Regular {...iconStyleProps} />}
+    {isImportant && <ImportantRegular {...iconStyleProps} />}
     {messageCount && messageCount > 0 && <CounterBadge count={messageCount} color="danger" size="small" />}
   </>
 );

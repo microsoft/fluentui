@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate default spin button icons to resizable icons",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

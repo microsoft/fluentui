@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate default indicator icons to resizable icons",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

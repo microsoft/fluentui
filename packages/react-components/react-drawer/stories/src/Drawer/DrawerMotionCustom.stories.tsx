@@ -9,7 +9,7 @@ import {
   motionTokens,
   tokens,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
@@ -141,7 +141,7 @@ export const MotionCustom = (): JSXElement => {
               <Button
                 appearance="subtle"
                 aria-label="Close"
-                icon={<Dismiss24Regular />}
+                icon={<DismissRegular />}
                 onClick={() => setIsOpen(false)}
               />
             }

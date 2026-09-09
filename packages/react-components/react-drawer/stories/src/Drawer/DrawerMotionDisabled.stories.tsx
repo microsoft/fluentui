@@ -15,7 +15,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -75,7 +75,7 @@ export const MotionDisabled = (): JSXElement => {
               <Button
                 appearance="subtle"
                 aria-label="Close"
-                icon={<Dismiss24Regular />}
+                icon={<DismissRegular />}
                 onClick={() => setIsOpen(false)}
               />
             }

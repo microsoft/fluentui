@@ -89,7 +89,7 @@ const useDismissClassName = makeResetStyles({
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
-  '> svg': { fontSize: '20px' },
+  '> svg, > i': { fontSize: '20px' },
   cursor: 'pointer',
 });
 
@@ -99,13 +99,13 @@ const useDismissStyles = makeStyles({
   },
   // Ensure resizable icons show up with the proper font size
   small: {
-    '> svg': { fontSize: '16px' },
+    '> svg, > i': { fontSize: '16px' },
   },
   medium: {
     // included in useDismissClassName
   },
   large: {
-    '> svg': { fontSize: '24px' },
+    '> svg, > i': { fontSize: '24px' },
   },
 });
 

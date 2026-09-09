@@ -6,7 +6,7 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
-import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalFilled, PinRegular } from '@fluentui/react-icons';
 import { NavItem } from '../NavItem/index';
 import { NavSubItem } from '../NavSubItem/NavSubItem';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
@@ -50,7 +50,7 @@ export const useSplitNavItem_unstable = (
 
   const actionButtonShorthand = slot.optional(actionButton, {
     defaultProps: {
-      icon: <Pin20Regular />,
+      icon: <PinRegular />,
       size: 'small',
       appearance: 'transparent',
     },
@@ -59,7 +59,7 @@ export const useSplitNavItem_unstable = (
 
   const toggleButtonShorthand = slot.optional(toggleButton, {
     defaultProps: {
-      icon: <Pin20Regular />,
+      icon: <PinRegular />,
       size: 'small',
       appearance: 'transparent',
     },

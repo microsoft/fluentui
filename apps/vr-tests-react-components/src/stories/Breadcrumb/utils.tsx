@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  Breadcrumb,
-  BreadcrumbButton,
-  BreadcrumbProps,
-  BreadcrumbItem,
-  BreadcrumbDivider,
-} from '@fluentui/react-breadcrumb';
-import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
-const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
+import type { BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { Breadcrumb, BreadcrumbButton, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const steps = new Steps()
   .snapshot('default')

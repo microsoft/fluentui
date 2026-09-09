@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { PresenceBadgeStatus, JSXElement } from '@fluentui/react-components';
 import { Avatar, Button, Card, CardHeader, Text, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import { Stagger, Collapse } from '@fluentui/react-motion-components-preview';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import StaggerStaggerOutDescription from './StaggerStaggerOut.stories.md';
 
 const useClasses = makeStyles({
@@ -112,7 +112,7 @@ export const StaggerOut = (): JSXElement => {
                     </Text>
                   </div>
                 }
-                action={<Button appearance="subtle" icon={<MoreHorizontal20Regular />} size="small" />}
+                action={<Button appearance="subtle" icon={<MoreHorizontalRegular />} size="small" />}
               />
 
               <div className={classes.cardContent}>

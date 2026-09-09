@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
-import { Dismiss12Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -74,7 +74,7 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>): JSXElement =
                 size="small"
                 shape="circular"
                 appearance="primary"
-                icon={<Dismiss12Regular />}
+                icon={<DismissRegular />}
                 iconPosition="after"
                 onClick={() => onTagClick(option, i)}
                 id={`${comboId}-remove-${i}`}

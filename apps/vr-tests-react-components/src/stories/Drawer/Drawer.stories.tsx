@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 
+import type { OverlayDrawerProps, InlineDrawerProps } from '@fluentui/react-drawer';
 import {
   Drawer,
   DrawerHeader,
@@ -8,19 +9,12 @@ import {
   DrawerBody,
   DrawerHeaderNavigation,
   OverlayDrawer,
-  OverlayDrawerProps,
   InlineDrawer,
-  InlineDrawerProps,
   DrawerFooter,
 } from '@fluentui/react-drawer';
 import { Toolbar, ToolbarButton, ToolbarGroup } from '@fluentui/react-toolbar';
 import { Button } from '@fluentui/react-button';
-import {
-  ArrowLeft24Regular,
-  ArrowClockwise24Regular,
-  Settings24Regular,
-  Dismiss24Regular,
-} from '@fluentui/react-icons';
+import { ArrowLeftRegular, ArrowClockwiseRegular, SettingsRegular, DismissRegular } from '@fluentui/react-icons';
 
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
@@ -32,12 +26,12 @@ const ExampleDrawerHeader = () => (
   <DrawerHeader>
     <DrawerHeaderNavigation>
       <Toolbar style={{ justifyContent: 'space-between' }}>
-        <ToolbarButton aria-label="Back" appearance="subtle" icon={<ArrowLeft24Regular />} />
+        <ToolbarButton aria-label="Back" appearance="subtle" icon={<ArrowLeftRegular />} />
 
         <ToolbarGroup>
-          <ToolbarButton aria-label="Reload content" appearance="subtle" icon={<ArrowClockwise24Regular />} />
-          <ToolbarButton aria-label="Settings" appearance="subtle" icon={<Settings24Regular />} />
-          <ToolbarButton aria-label="Close panel" appearance="subtle" icon={<Dismiss24Regular />} />
+          <ToolbarButton aria-label="Reload content" appearance="subtle" icon={<ArrowClockwiseRegular />} />
+          <ToolbarButton aria-label="Settings" appearance="subtle" icon={<SettingsRegular />} />
+          <ToolbarButton aria-label="Close panel" appearance="subtle" icon={<DismissRegular />} />
         </ToolbarGroup>
       </Toolbar>
     </DrawerHeaderNavigation>

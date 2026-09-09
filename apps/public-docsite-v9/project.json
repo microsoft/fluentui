@@ -6,6 +6,12 @@
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build-storybook": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        { "env": "FLUENTUI_ICON_VARIANT" }
+      ],
       "dependsOn": [
         {
           "projects": [
@@ -21,7 +27,12 @@
       ]
     },
     "build-storybook:docsite": {
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        { "env": "FLUENTUI_ICON_VARIANT" }
+      ],
       "outputs": ["{projectRoot}/dist/react"],
       "executor": "nx:noop",
       "dependsOn": [

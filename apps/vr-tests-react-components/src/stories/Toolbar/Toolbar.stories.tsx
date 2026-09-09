@@ -1,19 +1,13 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton, ToolbarGroup } from '@fluentui/react-toolbar';
 import {
-  Toolbar,
-  ToolbarProps,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  ToolbarGroup,
-} from '@fluentui/react-toolbar';
-import {
-  TextBold24Regular,
-  TextItalic24Regular,
-  TextUnderline24Regular,
-  AlertSnooze24Regular,
+  TextBoldRegular,
+  TextItalicRegular,
+  TextUnderlineRegular,
+  AlertSnoozeRegular,
   FontIncreaseRegular,
   FontDecreaseRegular,
   TextFontRegular,
@@ -45,16 +39,16 @@ export default {
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBoldRegular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalicRegular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderlineRegular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       id="snooze-toggle"
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
-      icon={<AlertSnooze24Regular />}
+      icon={<AlertSnoozeRegular />}
     />
   </Toolbar>
 );
@@ -65,10 +59,10 @@ export const Transparent = (props: Partial<ToolbarProps>) => (
       id="bold-button"
       aria-label="Text option - Bold"
       appearance="transparent"
-      icon={<TextBold24Regular />}
+      icon={<TextBoldRegular />}
     />
-    <ToolbarButton aria-label="Text option - Italic" appearance="transparent" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" appearance="transparent" icon={<TextUnderline24Regular />} />
+    <ToolbarButton aria-label="Text option - Italic" appearance="transparent" icon={<TextItalicRegular />} />
+    <ToolbarButton aria-label="Text option - Underline" appearance="transparent" icon={<TextUnderlineRegular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       id="snooze-toggle"
@@ -76,55 +70,55 @@ export const Transparent = (props: Partial<ToolbarProps>) => (
       name="toggle"
       value="toggle"
       appearance="transparent"
-      icon={<AlertSnooze24Regular />}
+      icon={<AlertSnoozeRegular />}
     />
   </Toolbar>
 );
 
 export const Vertical = (props: Partial<ToolbarProps>) => (
   <Toolbar vertical>
-    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBoldRegular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalicRegular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderlineRegular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       id="snooze-toggle"
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
-      icon={<AlertSnooze24Regular />}
+      icon={<AlertSnoozeRegular />}
     />
   </Toolbar>
 );
 
 export const Small = (props: Partial<ToolbarProps>) => (
   <Toolbar size="small">
-    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBoldRegular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalicRegular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderlineRegular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       id="snooze-toggle"
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
-      icon={<AlertSnooze24Regular />}
+      icon={<AlertSnoozeRegular />}
     />
   </Toolbar>
 );
 
 export const Large = (props: Partial<ToolbarProps>) => (
   <Toolbar size="large">
-    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBoldRegular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalicRegular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderlineRegular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       id="snooze-toggle"
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
-      icon={<AlertSnooze24Regular />}
+      icon={<AlertSnoozeRegular />}
     />
   </Toolbar>
 );
@@ -136,7 +130,7 @@ export const VerticalButton = (props: Partial<ToolbarProps>) => (
       id="bold-button"
       aria-label="Text option - Bold"
       appearance="primary"
-      icon={<TextBold24Regular />}
+      icon={<TextBoldRegular />}
     />
     <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular />}>
       Increase
@@ -165,7 +159,7 @@ export const FarGroup = (props: Partial<ToolbarProps>) => {
           id="bold-button"
           aria-label="Text option - Bold"
           appearance="primary"
-          icon={<TextBold24Regular />}
+          icon={<TextBoldRegular />}
         />
         <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
         <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
@@ -183,7 +177,7 @@ export const FarGroup = (props: Partial<ToolbarProps>) => {
           aria-label="Snooze Alert Option"
           name="toggle"
           value="toggle"
-          icon={<AlertSnooze24Regular />}
+          icon={<AlertSnoozeRegular />}
         />
       </ToolbarGroup>
     </Toolbar>

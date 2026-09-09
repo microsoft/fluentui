@@ -2,10 +2,10 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { ComboboxProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
-import { CheckmarkCircle20Filled } from '@fluentui/react-icons';
+import { CheckmarkCircleFilled } from '@fluentui/react-icons';
 
 const CustomOption = (props: OptionProps) => {
-  return <Option {...props} checkIcon={<CheckmarkCircle20Filled />} />;
+  return <Option {...props} checkIcon={<CheckmarkCircleFilled />} />;
 };
 
 const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: string[] }) => {

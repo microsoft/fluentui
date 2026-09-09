@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate default presence icons to resizable icons",
+  "packageName": "@fluentui/react-badge",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
