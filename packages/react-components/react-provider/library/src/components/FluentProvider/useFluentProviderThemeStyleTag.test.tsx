@@ -71,6 +71,43 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
+  it('should contain theme entries without affecting later CSS variables', () => {
+    const theme = {
+      customToken: 'red; color: red',
+      validToken: 'green',
+    } as unknown as Theme;
+
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+    const sheet = tag.sheet as CSSStyleSheet;
+    const rule = sheet.cssRules[0] as CSSStyleRule;
+
+    expect(rule.style.getPropertyValue('--customToken')).toBe('red\\3B  color: red');
+    expect(rule.style.getPropertyValue('--validToken')).toBe('green');
+    expect(rule.cssText).toMatchInlineSnapshot(
+      `".fui-FluentProvider1 {--customToken: red\\\\3B  color: red; --validToken: green;}"`,
+    );
+  });
+
+  it('should isolate malformed URL content from later CSS variables', () => {
+    const theme = {
+      customToken: 'url(\\x")',
+      validToken: 'green',
+    } as unknown as Theme;
+
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+    const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
+
+    expect(rule.style.getPropertyValue('--validToken')).toBe('green');
+  });
+
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;

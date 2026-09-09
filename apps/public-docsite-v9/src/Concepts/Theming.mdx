@@ -112,6 +112,10 @@ export const customDarkTheme = createDarkTheme(customBrandRamp);
 
 A theme is a flat object containing `{ [token name]: CSS value }` pairs. You can copy the object and overwrite any tokens you wish.
 
+Theme names and values are developer-authored CSS. If theme customization is based on dynamic data, validate it against
+an application-specific schema before constructing the theme. Fluent UI contains generated declarations structurally,
+but does not determine whether a valid CSS value or URL is appropriate for your application.
+
 ```tsx
 import { webLightTheme, Theme } from '@fluentui/react-components';
 

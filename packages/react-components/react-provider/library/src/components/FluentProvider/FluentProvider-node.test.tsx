@@ -76,4 +76,28 @@ describe('FluentProvider (node)', () => {
       </div>"
     `);
   });
+
+  it('contains theme entries in the server style element', () => {
+    const theme = {
+      customToken: 'url(\\x")',
+      validToken: 'green',
+    } as unknown as PartialTheme;
+
+    const html = renderToStaticMarkup(<FluentProvider theme={theme} />);
+
+    expect(parseHTMLString(html)).toMatchInlineSnapshot(`
+      "<div
+        dir="ltr"
+        class="fui-FluentProvider fui-FluentProvider1"
+      >
+        <style id="fui-FluentProvider1">
+          .fui-FluentProvider1 {
+            --customToken: url(\\x\\22);
+            --validToken: green;
+          }
+        </style>
+      </div>"
+    `);
+    expect(html.match(/<style/g)).toHaveLength(1);
+  });
 });

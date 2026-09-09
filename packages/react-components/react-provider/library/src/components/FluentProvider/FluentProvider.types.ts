@@ -40,7 +40,12 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   /** Provides the document, can be undefined during SSR render. */
   targetDocument?: Document;
 
-  /** Sets the theme used in a scope. */
+  /**
+   * Sets the theme used in a scope.
+   *
+   * Theme names and values are developer-authored CSS. Validate dynamic data against an application-specific schema
+   * before using it to construct a theme.
+   */
   theme?: PartialTheme;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
