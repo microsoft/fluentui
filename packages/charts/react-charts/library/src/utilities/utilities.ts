@@ -1178,7 +1178,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
     maxLines = Math.max(maxLines, lineNumber + 1);
   });
   if (!showXAxisLablesTooltip) {
-    let maxHeight: number = 12; // intial value to render corretly first time
+    let maxHeight: number = 12; // initial value to render correctly first time
     const boxHeight =
       (container ?? document).querySelector(`.${CARTESIAN_XAXIS_CLASSNAME} tspan`)?.getBoundingClientRect().height ?? 0;
     if (boxHeight > maxHeight) {

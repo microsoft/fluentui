@@ -81,7 +81,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>,
   /**
    * Function to be performed on the data in order to increase its width. It is called in scenarios where the
    * container has more room than the previous render and we may be able to fit more content. If there are no more
-   * scaling operations to perform on teh data, it should return undefined to prevent an infinite render loop.
+   * scaling operations to perform on the data, it should return undefined to prevent an infinite render loop.
    */
   onGrowData?: (prevData: any) => any;
 
