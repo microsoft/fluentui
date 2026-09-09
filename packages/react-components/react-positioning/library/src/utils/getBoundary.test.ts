@@ -1,10 +1,17 @@
 import { getBoundary } from './getBoundary';
+import type { PositioningBoundary } from '../types';
 
 describe('getBoundary', () => {
   it('returns undefined when boundary is undefined', () => {
     const element = document.createElement('div');
 
     expect(getBoundary(element, undefined)).toBeUndefined();
+  });
+
+  it('returns undefined when boundary is null', () => {
+    const element = document.createElement('div');
+
+    expect(getBoundary(element, null)).toBeUndefined();
   });
 
   it("returns the document element for 'window' boundary", () => {
@@ -20,60 +27,54 @@ describe('getBoundary', () => {
     expect(getBoundary(element, 'clippingParents')).toBe('clippingAncestors');
   });
 
-  it('returns the boundary itself when it is already a floating-ui boundary', () => {
+  it.each<[string, PositioningBoundary]>([
+    ['an empty element array', []],
+    ['an element', document.createElement('div')],
+    ['an element array', [document.createElement('div')]],
+    ['a rect', { x: 0, y: 0, width: 100, height: 100 }],
+  ])('returns the boundary itself when it is %s', (_description, customBoundary) => {
     const element = document.createElement('div');
-    const customBoundary = document.createElement('div');
 
     expect(getBoundary(element, customBoundary)).toBe(customBoundary);
   });
 
-  // Regression coverage for https://github.com/microsoft/fluentui/issues/36604
-  //
-  // Before the fix, the hide middleware always used 'clippingAncestors' as its boundary, which meant any static
-  // (non-scrolling) `overflow: hidden` ancestor was treated the same as a real scroll container, causing
-  // `referenceHidden` to report true even though nothing was actually scrolled out of view. `getBoundary` with
-  // `'scrollParent'` is what the fix now uses instead, and it must only stop at ancestors that can actually scroll.
   describe("'scrollParent' boundary", () => {
-    it('skips a static overflow:hidden ancestor that cannot scroll, falling back to the root boundary', () => {
-      const staticHiddenContainer = document.createElement('div');
+    it('returns the nearest scroll parent', () => {
+      const scrollParent = document.createElement('div');
       const trigger = document.createElement('button');
 
       jest.spyOn(window, 'getComputedStyle').mockReturnValue({
-        overflow: 'hidden',
+        overflow: 'scroll',
         overflowX: '',
         overflowY: '',
       } as CSSStyleDeclaration);
 
-      staticHiddenContainer.appendChild(trigger);
-      document.body.appendChild(staticHiddenContainer);
+      scrollParent.appendChild(trigger);
+      document.body.appendChild(scrollParent);
 
-      expect(getBoundary(trigger, 'scrollParent')).toEqual([]);
+      expect(getBoundary(trigger, 'scrollParent')).toBe(scrollParent);
     });
 
-    it('resolves all real scroll parents, ignoring an intermediate static overflow:hidden container', () => {
-      const outerScrollableAncestor = document.createElement('div');
-      const innerScrollableAncestor = document.createElement('div');
-      const staticHiddenContainer = document.createElement('div');
-      const trigger = document.createElement('button');
-
-      staticHiddenContainer.appendChild(trigger);
-      innerScrollableAncestor.appendChild(staticHiddenContainer);
-      outerScrollableAncestor.appendChild(innerScrollableAncestor);
-      document.body.appendChild(outerScrollableAncestor);
+    it('returns the nearest scroll parent for a non-HTMLElement target', () => {
+      const scrollParent = document.createElement('div');
+      const trigger = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
       jest.spyOn(window, 'getComputedStyle').mockImplementation(
-        (node: Element) =>
+        node =>
           ({
-            overflow: node === outerScrollableAncestor || node === innerScrollableAncestor ? 'scroll' : 'hidden',
+            overflow: node === scrollParent ? 'scroll' : 'visible',
             overflowX: '',
             overflowY: '',
           } as CSSStyleDeclaration),
       );
 
-      expect(getBoundary(trigger, 'scrollParent')).toEqual([innerScrollableAncestor, outerScrollableAncestor]);
+      scrollParent.appendChild(trigger);
+      document.body.appendChild(scrollParent);
+
+      expect(getBoundary(trigger, 'scrollParent')).toBe(scrollParent);
     });
 
-    it('returns an empty boundary list when the resolved scroll parent is BODY', () => {
+    it('returns the document element when the resolved scroll parent is BODY', () => {
       const trigger = document.createElement('button');
       document.body.appendChild(trigger);
 
@@ -83,7 +84,7 @@ describe('getBoundary', () => {
         overflowY: '',
       } as CSSStyleDeclaration);
 
-      expect(getBoundary(trigger, 'scrollParent')).toEqual([]);
+      expect(getBoundary(trigger, 'scrollParent')).toBe(document.documentElement);
     });
   });
 });

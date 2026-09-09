@@ -155,8 +155,23 @@ export interface PositioningOptions {
   /** The element which will define the boundaries of the positioned element for the overflow behavior. */
   overflowBoundary?: PositioningBoundary | null;
 
-  /** The element which will define the boundaries for detecting whether the positioned element is hidden. */
+  /**
+   * The boundary used to detect when the target is hidden or the positioned element has escaped.
+   *
+   * `undefined` preserves the component's default hide boundaries, while `null` preserves Floating UI's default
+   * clipping behavior. Empty arrays, elements, element arrays, and rects are forwarded unchanged.
+   */
   hideBoundary?: PositioningBoundary | null;
+
+  /**
+   * Component-specific hide boundaries used only when `hideBoundary` is undefined.
+   *
+   * @internal
+   */
+  hideBoundaryDefault?: {
+    escaped?: PositioningBoundary | null;
+    referenceHidden?: PositioningBoundary | null;
+  };
 
   /**
    * Applies a padding to the overflow bounadry, so that overflow is detected earlier before the
@@ -326,6 +341,8 @@ export type PositioningConfigurationFnOptions = Omit<
   | 'enabled'
   // Callback is not subscribed from options
   | 'onPositioningEnd'
+  // Component defaults should not be altered by global positioning configuration
+  | 'hideBoundaryDefault'
   // Is deprecated, no need to bloat the interface
   | 'positionFixed'
 >;

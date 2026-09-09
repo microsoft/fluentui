@@ -19,6 +19,7 @@ import {
 import type {
   PositioningConfigurationFn,
   PositioningConfigurationFnOptions,
+  PositioningBoundary,
   PositioningOptions,
   TargetElement,
 } from './types';
@@ -129,6 +130,7 @@ export function usePositioningOptions(options: PositioningOptions): (
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
   const {
+    hideBoundaryDefault,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
   } = options;
@@ -159,8 +161,18 @@ export function usePositioningOptions(options: PositioningOptions): (
         unstable_disableTether,
       } = optionsAfterEnhancement;
       const normalizedAutoSize = normalizeAutoSize(autoSize);
-      const normalizedHideBoundary = getBoundary(target, hideBoundary ?? undefined);
-      const hideBoundaryOptions = normalizedHideBoundary ? { boundary: normalizedHideBoundary } : {};
+      const targetElement = 'nodeType' in target ? target : target.contextElement;
+      const getHideBoundaryOptions = (boundary: PositioningBoundary | null | undefined) => {
+        const normalizedBoundary = getBoundary(targetElement ?? null, boundary);
+
+        return normalizedBoundary === undefined ? {} : { boundary: normalizedBoundary };
+      };
+      const referenceHiddenBoundaryOptions = getHideBoundaryOptions(
+        hideBoundary === undefined ? hideBoundaryDefault?.referenceHidden : hideBoundary,
+      );
+      const escapedBoundaryOptions = getHideBoundaryOptions(
+        hideBoundary === undefined ? hideBoundaryDefault?.escaped : hideBoundary,
+      );
 
       const middleware = [
         normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
@@ -181,8 +193,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden', ...hideBoundaryOptions }),
-        hideMiddleware({ strategy: 'escaped', ...hideBoundaryOptions }),
+        hideMiddleware({ strategy: 'referenceHidden', ...referenceHiddenBoundaryOptions }),
+        hideMiddleware({ strategy: 'escaped', ...escapedBoundaryOptions }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
@@ -199,6 +211,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         useTransform,
       };
     },
-    [configFn, isRtl, targetDocument, positionFixed],
+    [configFn, hideBoundaryDefault, isRtl, targetDocument, positionFixed],
   );
 }

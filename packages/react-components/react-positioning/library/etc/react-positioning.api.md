@@ -84,7 +84,7 @@ export type PositioningConfigurationFn = (params: {
 }) => PositioningConfigurationFnOptions;
 
 // @public (undocumented)
-export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'positionFixed'>;
+export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'hideBoundaryDefault' | 'positionFixed'>;
 
 // @public
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;

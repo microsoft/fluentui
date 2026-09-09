@@ -3,7 +3,13 @@ import * as React from 'react';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
-import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
+import type {
+  OnPositioningEndEvent,
+  OnPositioningEndEventDetail,
+  PositioningBoundary,
+  PositioningOptions,
+  PositioningProps,
+} from './types';
 
 // Mock createPositionManager to avoid @floating-ui/dom dependency in this test.
 // The mock dispatches the positioning end event asynchronously (via microtask),
@@ -33,7 +39,7 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioningEnd'] }> = ({ onPositioningEnd }) => {
+const TestComponent = ({ onPositioningEnd }: { onPositioningEnd?: PositioningProps['onPositioningEnd'] }) => {
   const { targetRef, containerRef } = usePositioning({ onPositioningEnd });
 
   return (
@@ -44,6 +50,23 @@ const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioni
       <div ref={containerRef} data-testid="container">
         Container
       </div>
+    </>
+  );
+};
+
+const BoundaryTestComponent = ({
+  hideBoundary,
+  hideBoundaryDefault,
+}: {
+  hideBoundary?: PositioningBoundary | null;
+  hideBoundaryDefault?: PositioningOptions['hideBoundaryDefault'];
+}) => {
+  const { targetRef, containerRef } = usePositioning({ hideBoundary, hideBoundaryDefault });
+
+  return (
+    <>
+      <button ref={targetRef}>Target</button>
+      <div ref={containerRef}>Container</div>
     </>
   );
 };
@@ -61,31 +84,61 @@ const ScrollBoundaryTestComponent = () => {
   );
 };
 
-const NoScrollBoundaryTestComponent = () => {
-  const { targetRef, containerRef } = usePositioning({ hideBoundary: 'scrollParent' });
-
-  return (
-    <>
-      <button ref={targetRef}>Target</button>
-      <div ref={containerRef}>Portaled container</div>
-    </>
-  );
-};
-
 describe('usePositioning', () => {
-  it('uses an empty boundary list when the target has no scroll parent', () => {
-    render(<NoScrollBoundaryTestComponent />);
+  it('preserves Floating UI default hide boundaries when no component default is configured', () => {
+    render(<BoundaryTestComponent />);
     const calls = jest.mocked(createPositionManager).mock.calls;
     const { middleware } = calls[calls.length - 1][0];
 
     const hideMiddleware = middleware.filter(item => item.name === 'hide');
     expect(hideMiddleware).toHaveLength(2);
     hideMiddleware.forEach(item => {
-      expect(item.options).toEqual(expect.objectContaining({ boundary: [] }));
+      expect(item.options).not.toHaveProperty('boundary');
     });
   });
 
-  it('uses the target scroll parents as the hide boundary for a portaled container', () => {
+  it('supports separate component defaults for reference-hidden and escaped detection', () => {
+    render(<BoundaryTestComponent hideBoundaryDefault={{ escaped: [] }} />);
+    const calls = jest.mocked(createPositionManager).mock.calls;
+    const { middleware } = calls[calls.length - 1][0];
+
+    const hideMiddleware = middleware.filter(item => item.name === 'hide');
+    expect(hideMiddleware).toHaveLength(2);
+    expect(hideMiddleware[0].options).toEqual({ strategy: 'referenceHidden' });
+    expect(hideMiddleware[1].options).toEqual({ strategy: 'escaped', boundary: [] });
+  });
+
+  it('uses an explicit null boundary instead of component defaults', () => {
+    render(<BoundaryTestComponent hideBoundary={null} hideBoundaryDefault={{ escaped: [] }} />);
+    const calls = jest.mocked(createPositionManager).mock.calls;
+    const { middleware } = calls[calls.length - 1][0];
+
+    const hideMiddleware = middleware.filter(item => item.name === 'hide');
+    expect(hideMiddleware).toHaveLength(2);
+    hideMiddleware.forEach(item => {
+      expect(item.options).not.toHaveProperty('boundary');
+    });
+  });
+
+  it.each<[string, PositioningBoundary]>([
+    ['an empty element array', []],
+    ['an element', document.createElement('div')],
+    ['an element array', [document.createElement('div')]],
+    ['a rect', { x: 0, y: 0, width: 100, height: 100 }],
+  ])('forwards %s as the hide middleware boundary', (_description, hideBoundary) => {
+    render(<BoundaryTestComponent hideBoundary={hideBoundary} hideBoundaryDefault={{ escaped: [] }} />);
+    const calls = jest.mocked(createPositionManager).mock.calls;
+    const { middleware } = calls[calls.length - 1][0];
+
+    const hideMiddleware = middleware.filter(item => item.name === 'hide');
+    expect(hideMiddleware).toHaveLength(2);
+    hideMiddleware.forEach(item => {
+      expect(item.options).toHaveProperty('boundary', hideBoundary);
+      expect((item.options as { boundary: PositioningBoundary }).boundary).toBe(hideBoundary);
+    });
+  });
+
+  it('resolves an explicit scrollParent boundary from the target for a portaled container', () => {
     const { getByTestId } = render(<ScrollBoundaryTestComponent />);
     const calls = jest.mocked(createPositionManager).mock.calls;
     const { middleware } = calls[calls.length - 1][0];
@@ -93,7 +146,7 @@ describe('usePositioning', () => {
     const hideMiddleware = middleware.filter(item => item.name === 'hide');
     expect(hideMiddleware).toHaveLength(2);
     hideMiddleware.forEach(item => {
-      expect(item.options).toEqual(expect.objectContaining({ boundary: [getByTestId('scroll-parent')] }));
+      expect(item.options).toEqual(expect.objectContaining({ boundary: getByTestId('scroll-parent') }));
     });
   });
 

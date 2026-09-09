@@ -65,6 +65,52 @@ describe('Tooltip', () => {
 
       cy.get('[role="tooltip"]').should('be.visible').and('have.text', 'I should still appear');
     });
+
+    it('still hides the tooltip when the trigger itself is clipped', () => {
+      mount(
+        <div style={{ height: '40px', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '100px' }}>
+            <Tooltip content="Clipped trigger" relationship="label" visible>
+              <Button id="trigger">Hover me</Button>
+            </Tooltip>
+          </div>
+        </div>,
+      );
+
+      cy.get('[role="tooltip"]').should('not.be.visible');
+    });
+
+    it('respects overflow clipping through a fixed-position containing block', () => {
+      mount(
+        <div style={{ height: '40px', overflow: 'hidden', position: 'relative', transform: 'translateZ(0)' }}>
+          <div style={{ position: 'fixed', top: '100px' }}>
+            <Tooltip content="Fixed clipped trigger" relationship="label" visible>
+              <Button id="trigger">Hover me</Button>
+            </Tooltip>
+          </div>
+        </div>,
+      );
+
+      cy.get('[role="tooltip"]').should('not.be.visible');
+    });
+
+    it('re-evaluates clipping ancestors after overflow styles change', () => {
+      mount(
+        <div id="dynamic-overflow-container">
+          <div style={{ height: '300px' }}>
+            <Tooltip content="Dynamic overflow" relationship="label" visible>
+              <Button id="trigger">Hover me</Button>
+            </Tooltip>
+          </div>
+        </div>,
+      );
+
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('#dynamic-overflow-container').invoke('attr', 'style', 'height: 40px; overflow: auto');
+      cy.get('#dynamic-overflow-container').scrollTo(0, 200);
+      cy.window().trigger('resize');
+      cy.get('[role="tooltip"]').should('not.be.visible');
+    });
   });
 
   describe('nested scrollable ancestors', () => {
