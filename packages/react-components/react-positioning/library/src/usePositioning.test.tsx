@@ -65,11 +65,14 @@ describe('usePositioning', () => {
     expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: false }));
     const initialManagerCount = jest.mocked(createPositionManager).mock.calls.length;
 
-    await act(async () => motionController.setActive(true));
+    let endMotion: () => void = () => undefined;
+    await act(async () => {
+      endMotion = motionController.start();
+    });
 
     expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: true }));
 
-    await act(async () => motionController.setActive(false));
+    await act(async () => endMotion());
 
     expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: false }));
     expect(createPositionManager).toHaveBeenCalledTimes(initialManagerCount + 2);

@@ -113,8 +113,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const motionController = React.useRef(createAncestorMotionController_unstable()).current;
     motionController.parent = ancestorMotionState;
 
-    const handleRef = useMotionImperativeRef(imperativeRef);
     const isInitialRender = React.useRef(true);
+    const endMotionRef = React.useRef<(() => void) | undefined>(undefined);
     const skipMotions = useMotionBehaviourContext() === 'skip';
     const optionsRef = React.useRef<{ skipMotions: boolean; params: MotionParams }>({
       skipMotions,
@@ -125,17 +125,14 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const isReducedMotion = useIsReducedMotion();
 
     const onMotionStart = useEventCallback(() => {
-      motionController.setActive(true);
       onMotionStartProp?.(null);
     });
 
     const onMotionFinish = useEventCallback(() => {
-      motionController.setActive(false);
       onMotionFinishProp?.(null);
     });
 
     const onMotionCancel = useEventCallback(() => {
-      motionController.setActive(false);
       onMotionCancelProp?.(null);
     });
 
@@ -145,14 +142,43 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     // keeping pure animation sequencing on the handle and React callbacks here in the component.
     const activateAnimationHandle = React.useCallback(
       (handle: AnimationHandle) => {
+        const endMotion = motionController.start();
+        endMotionRef.current = endMotion;
+
         onMotionStart();
-        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
+        handle.setMotionEndCallbacks(
+          () => {
+            endMotion();
+            if (endMotionRef.current === endMotion) {
+              endMotionRef.current = undefined;
+            }
+            onMotionFinish();
+          },
+          () => {
+            endMotion();
+            if (endMotionRef.current === endMotion) {
+              endMotionRef.current = undefined;
+            }
+            onMotionCancel();
+          },
+        );
         if (optionsRef.current.skipMotions) {
           handle.finish();
         }
       },
-      [onMotionStart, onMotionFinish, onMotionCancel],
+      [motionController, onMotionStart, onMotionFinish, onMotionCancel],
     );
+    const imperativeCallbacks = React.useMemo(
+      () => ({
+        onPause: () => {
+          endMotionRef.current?.();
+          endMotionRef.current = undefined;
+        },
+        onPlay: activateAnimationHandle,
+      }),
+      [activateAnimationHandle],
+    );
+    const handleRef = useMotionImperativeRef(imperativeRef, imperativeCallbacks);
 
     useIsomorphicLayoutEffect(() => {
       // Heads up!
@@ -185,9 +211,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
       const handle = handleRef.current;
       if (handle) {
-        handle.cancel();
-        handle.play();
-        activateAnimationHandle(handle);
+        handle.replay(() => activateAnimationHandle(handle));
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally the only trigger; other deps are stable refs/callbacks
     }, [replayKey]);

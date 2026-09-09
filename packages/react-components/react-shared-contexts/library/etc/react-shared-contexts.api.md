@@ -9,7 +9,7 @@ import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
 export type AncestorMotionController_unstable = AncestorMotionState_unstable & {
-    setActive: (active: boolean) => void;
+    start: () => () => void;
 };
 
 // @internal (undocumented)

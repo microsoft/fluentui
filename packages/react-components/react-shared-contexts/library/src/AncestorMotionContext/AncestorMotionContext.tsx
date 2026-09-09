@@ -15,7 +15,8 @@ export type AncestorMotionState = {
  * @internal
  */
 export type AncestorMotionController = AncestorMotionState & {
-  setActive: (active: boolean) => void;
+  /** Starts a motion and returns a callback that ends it only while it remains the latest motion. */
+  start: () => () => void;
 };
 
 const AncestorMotionContext = React.createContext<AncestorMotionState | undefined>(undefined);
@@ -24,14 +25,24 @@ const AncestorMotionContext = React.createContext<AncestorMotionState | undefine
  * @internal
  */
 export const createAncestorMotionController = (): AncestorMotionController => {
+  let currentMotionId = 0;
   const controller: AncestorMotionController = {
     active: false,
     listeners: new Set(),
-    setActive: nextActive => {
-      if (controller.active !== nextActive) {
-        controller.active = nextActive;
+    start: () => {
+      const motionId = ++currentMotionId;
+
+      if (!controller.active) {
+        controller.active = true;
         controller.listeners.forEach(listener => listener());
       }
+
+      return () => {
+        if (motionId === currentMotionId && controller.active) {
+          controller.active = false;
+          controller.listeners.forEach(listener => listener());
+        }
+      };
     },
   };
 

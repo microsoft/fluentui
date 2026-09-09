@@ -555,16 +555,51 @@ describe('TagPicker', () => {
 
       const assertDropdownAlignedToControl = () => {
         cy.get('[data-testid="dialog-tag-picker-control"]').should('be.visible');
-        cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'false');
+        cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'true');
         cy.get('[data-testid="dialog-tag-picker-list"]', { timeout: 200 })
           .should('be.visible')
-          .should($list => {
-            const controlRect = Cypress.$('[data-testid="dialog-tag-picker-control"]')[0].getBoundingClientRect();
-            const listRect = $list[0].getBoundingClientRect();
+          .then(
+            $list =>
+              new Cypress.Promise<void>((resolve, reject) => {
+                const list = $list[0];
+                const targetWindow = list.ownerDocument.defaultView!;
+                const control = list.ownerDocument.querySelector<HTMLElement>(
+                  '[data-testid="dialog-tag-picker-control"]',
+                )!;
+                const dialogBody = list.ownerDocument.querySelector<HTMLElement>('[data-testid="dialog-body"]')!;
+                const controlTopSamples: number[] = [];
 
-            expect(listRect.width, 'dropdown width matches control width').to.be.closeTo(controlRect.width, 4);
-            expect(listRect.left, 'dropdown left aligns with control left').to.be.closeTo(controlRect.left, 4);
-            expect(listRect.top, 'dropdown sits directly below control').to.be.closeTo(controlRect.bottom, 6);
+                const samplePosition = () => {
+                  try {
+                    const controlRect = control.getBoundingClientRect();
+                    const listRect = list.getBoundingClientRect();
+                    controlTopSamples.push(controlRect.top);
+
+                    expect(listRect.width, 'dropdown width matches control width').to.be.closeTo(controlRect.width, 4);
+                    expect(listRect.left, 'dropdown left aligns with control left').to.be.closeTo(controlRect.left, 6);
+                    expect(listRect.top, 'dropdown sits directly below control').to.be.closeTo(controlRect.bottom, 8);
+
+                    if (dialogBody.dataset.animating === 'true') {
+                      targetWindow.requestAnimationFrame(samplePosition);
+                      return;
+                    }
+
+                    expect(controlTopSamples.length, 'positions sampled during motion').to.be.greaterThan(1);
+                    expect(
+                      Math.max(...controlTopSamples) - Math.min(...controlTopSamples),
+                      'control geometry changed during motion',
+                    ).to.be.greaterThan(1);
+                    resolve();
+                  } catch (error) {
+                    reject(error);
+                  }
+                };
+
+                samplePosition();
+              }),
+          )
+          .then(() => {
+            cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'false');
           });
       };
 

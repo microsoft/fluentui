@@ -23,7 +23,7 @@ describe('AncestorMotionContext', () => {
 
   it('provides active motion to descendants', () => {
     const controller = createAncestorMotionController();
-    controller.setActive(true);
+    controller.start();
 
     render(
       <AncestorMotionProvider value={controller}>
@@ -37,7 +37,7 @@ describe('AncestorMotionContext', () => {
   it('preserves active motion through an inactive nested provider', () => {
     const activeController = createAncestorMotionController();
     const inactiveController = createAncestorMotionController();
-    activeController.setActive(true);
+    activeController.start();
     inactiveController.parent = activeController;
 
     render(
@@ -57,11 +57,23 @@ describe('AncestorMotionContext', () => {
     const listener = jest.fn();
     controller.listeners.add(listener);
 
-    controller.setActive(true);
-    controller.setActive(true);
-    controller.setActive(false);
+    const endMotion = controller.start();
+    endMotion();
+    endMotion();
 
     expect(listener).toHaveBeenCalledTimes(2);
     controller.listeners.delete(listener);
+  });
+
+  it('only lets the latest motion end the active state', () => {
+    const controller = createAncestorMotionController();
+    const endFirstMotion = controller.start();
+    const endSecondMotion = controller.start();
+
+    endFirstMotion();
+    expect(controller.active).toBe(true);
+
+    endSecondMotion();
+    expect(controller.active).toBe(false);
   });
 });
