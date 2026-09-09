@@ -158,8 +158,10 @@ export interface PositioningOptions {
   /**
    * The boundary used to detect when the target is hidden or the positioned element has escaped.
    *
-   * `undefined` preserves the component's default hide boundaries, while `null` preserves Floating UI's default
-   * clipping behavior. Empty arrays, elements, element arrays, and rects are forwarded unchanged.
+   * `undefined` preserves the component's default hide boundaries. `null` resets both hide strategies to Floating UI's
+   * native clipping-ancestor behavior. An empty array ignores element clipping ancestors but still clips to the root
+   * boundary (the viewport by default). `'scrollParent'` resolves to the nearest scrollable ancestor. Elements, element
+   * arrays, and rects are forwarded unchanged.
    */
   hideBoundary?: PositioningBoundary | null;
 
