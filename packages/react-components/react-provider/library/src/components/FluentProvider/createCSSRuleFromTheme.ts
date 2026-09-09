@@ -33,6 +33,7 @@ function escapeForStyleTag(value: string): string {
 function containThemeTokenValue(value: string): string {
   const result = value.split('');
   const blocks: string[] = [];
+  const blockIndexes: Record<string, number[]> = { ')': [], ']': [], '}': [] };
   let identifier = '';
   let quote = '';
   let comment = false;
@@ -79,18 +80,23 @@ function containThemeTokenValue(value: string): string {
         continue;
       }
       if (character === ')') {
-        blocks.pop();
+        const closingBlock = blocks.pop()!;
+        blockIndexes[closingBlock].pop();
         urlState = 0;
-      } else if (character === '\\') {
+        continue;
+      }
+      if (character === '"' || character === "'") {
+        result[i] = character === '"' ? '\\22 ' : '\\27 ';
+      }
+      if (character === '\\') {
         const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
         if (escape) {
           i += escape.length - 1;
         } else if (nextCharacter === undefined) {
           result[i] = '\\\n';
         }
-      } else {
-        urlState = 2;
       }
+      urlState = 2;
       continue;
     }
 
@@ -114,7 +120,7 @@ function containThemeTokenValue(value: string): string {
     }
 
     const functionNameIsUrl = URL_FUNCTION_PATTERN.test(identifier);
-    identifier = '';
+    identifier = character === '#' || character === '@' ? character : '';
 
     if (character === '/' && nextCharacter === '*') {
       comment = true;
@@ -122,19 +128,20 @@ function containThemeTokenValue(value: string): string {
     } else if (character === '"' || character === "'") {
       quote = character;
     } else if (character === '(' || character === '[' || character === '{') {
-      blocks.push(character === '(' ? ')' : character === '[' ? ']' : '}');
+      const closingBlock = character === '(' ? ')' : character === '[' ? ']' : '}';
+      blockIndexes[closingBlock].push(blocks.push(closingBlock) - 1);
       if (character === '(' && functionNameIsUrl) {
         urlState = 1;
       }
     } else if (character === ')' || character === ']' || character === '}') {
-      const blockIndex = blocks.lastIndexOf(character);
-      if (blockIndex >= 0) {
-        result[i] =
-          blocks
-            .splice(blockIndex + 1)
-            .reverse()
-            .join('') + character;
+      const blockIndex = blockIndexes[character].pop();
+      if (blockIndex !== undefined) {
+        const repairedBlocks = blocks.splice(blockIndex + 1).reverse();
+        for (const closingBlock of repairedBlocks) {
+          blockIndexes[closingBlock].pop();
+        }
         blocks.pop();
+        result[i] = repairedBlocks.join('') + character;
       } else if (character === '}') {
         result[i] = CSS_ESCAPE_MAP[character];
       }

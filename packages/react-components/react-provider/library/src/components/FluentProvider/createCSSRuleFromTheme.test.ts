@@ -81,6 +81,23 @@ describe('createCSSRuleFromTheme', () => {
     },
   );
 
+  it.each([5_000, 10_000, 20_000, 100_000])('serializes deep block patterns of length %i', depth => {
+    const openingBlocks = '('.repeat(depth);
+    const matchingBlocks = `${openingBlocks}${')'.repeat(depth)}`;
+    const nonmatchingBlocks = `${openingBlocks}${']'.repeat(depth)}`;
+    const mixedBlocks = `${'([{'.repeat(depth)}${')'.repeat(depth)}`;
+
+    expect(createCSSRuleFromTheme('.selector', { customToken: matchingBlocks } as unknown as PartialTheme)).toContain(
+      `--customToken: ${matchingBlocks};`,
+    );
+    expect(
+      createCSSRuleFromTheme('.selector', { customToken: nonmatchingBlocks } as unknown as PartialTheme),
+    ).toContain(`--customToken: ${nonmatchingBlocks}${')'.repeat(depth)};`);
+    expect(createCSSRuleFromTheme('.selector', { customToken: mixedBlocks } as unknown as PartialTheme)).toContain(
+      `--customToken: ${'([{'.repeat(depth)}${'}])'.repeat(depth)};`,
+    );
+  });
+
   it.each([
     { description: 'font family fallbacks', value: '"Segoe UI", system-ui, sans-serif' },
     { description: 'system and functional colors', value: 'color-mix(in srgb, CanvasText 40%, transparent)' },
@@ -108,6 +125,9 @@ describe('createCSSRuleFromTheme', () => {
       value: String.raw`u\52${'\r\n'}l(resource/*)`,
     },
     { description: 'zero-padded hexadecimal escaped URL name', value: String.raw`\000055rl(resource/*)` },
+    { description: 'hash token followed by a parenthesized block', value: '#url(/* ) */; x)' },
+    { description: 'at-keyword followed by a parenthesized block', value: '@url(/* ) */; x)' },
+    { description: 'escaped hash token followed by a parenthesized block', value: String.raw`#\75rl(/* ) */; x)` },
     { description: 'escaped generic function names', value: String.raw`f\6f o((x); y)` },
     { description: 'quoted URL functions with nested blocks', value: String.raw`url("image" (x); fallback)` },
     { description: 'backslash and line feed', value: 'first\\\nsecond' },
@@ -169,6 +189,11 @@ describe('createCSSRuleFromTheme', () => {
       value: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*);token/**/)',
       containedValue: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*)\\3B token/**/)',
     },
+    {
+      description: 'malformed unquoted URL content',
+      value: 'url(\\x")',
+      containedValue: 'url(\\x\\22 )',
+    },
   ])('contains a value with $description without affecting later tokens', ({ value, containedValue }) => {
     const theme = {
       customToken: value,
@@ -190,6 +215,11 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'unterminated escape', value: 'red\\' },
     { description: 'escaped whitespace in a generic function name', value: String.raw`ur\ l(resource{)` },
     { description: 'non-URL escaped function name', value: String.raw`\54rl(resource/*)` },
+    { description: 'malformed unquoted URL content', value: 'url(\\x")' },
+    { description: 'malformed unquoted URL content after whitespace', value: "url( \\x')" },
+    { description: 'malformed unquoted URL content after an escaped delimiter', value: 'url(\\)")' },
+    { description: 'unterminated unquoted URL', value: 'url(resource' },
+    { description: 'unterminated escape in an unquoted URL', value: 'url(resource\\' },
   ])('repairs a value with $description without affecting later tokens', ({ value }) => {
     const ruleText = createCSSRuleFromTheme('.selector', {
       customToken: value,
@@ -211,7 +241,14 @@ describe('createCSSRuleFromTheme', () => {
     String.raw`u\52l(resource.png)`,
     String.raw`ur\4c(resource.png)`,
     String.raw`\55 rl(resource.png)`,
-  ])('preserves escaped unquoted URL syntax through CSSOM for %j', value => {
+    '#url(/* ) */; x)',
+    '@url(/* ) */; x)',
+    String.raw`#\75rl(/* ) */; x)`,
+  ])('preserves token semantics through CSSOM for %j', value => {
+    const baselineStyleElement = document.createElement('style');
+    baselineStyleElement.textContent = `.selector { --customToken: ${value}; }`;
+    document.head.appendChild(baselineStyleElement);
+
     const styleElement = document.createElement('style');
     styleElement.textContent = createCSSRuleFromTheme('.selector', {
       customToken: value,
@@ -219,8 +256,10 @@ describe('createCSSRuleFromTheme', () => {
     document.head.appendChild(styleElement);
 
     const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
-    expect(rule.style.getPropertyValue('--customToken')).toBe(value);
+    const baselineRule = baselineStyleElement.sheet?.cssRules[0] as CSSStyleRule;
+    expect(rule.style.getPropertyValue('--customToken')).toBe(baselineRule.style.getPropertyValue('--customToken'));
 
+    baselineStyleElement.remove();
     styleElement.remove();
   });
 

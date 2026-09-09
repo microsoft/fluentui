@@ -79,7 +79,7 @@ describe('FluentProvider (node)', () => {
 
   it('contains theme entries in the server style element', () => {
     const theme = {
-      customToken: 'url(resource/*);token/**/)',
+      customToken: 'url(\\x")',
       validToken: 'green',
     } as unknown as PartialTheme;
 
@@ -92,7 +92,7 @@ describe('FluentProvider (node)', () => {
       >
         <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
-            --customToken: url(resource)\\3B token);
+            --customToken: url(\\x\\22);
             --validToken: green;
           }
         </style>

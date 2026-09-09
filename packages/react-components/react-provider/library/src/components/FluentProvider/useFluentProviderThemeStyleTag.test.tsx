@@ -92,6 +92,22 @@ describe('useFluentProviderThemeStyleTag', () => {
     );
   });
 
+  it('should isolate malformed URL content from later CSS variables', () => {
+    const theme = {
+      customToken: 'url(\\x")',
+      validToken: 'green',
+    } as unknown as Theme;
+
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+    const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
+
+    expect(rule.style.getPropertyValue('--validToken')).toBe('green');
+  });
+
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;
