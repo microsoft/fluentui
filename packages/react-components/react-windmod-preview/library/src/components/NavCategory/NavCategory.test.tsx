@@ -48,11 +48,11 @@ describe('NavCategory', () => {
       </Nav>,
     );
 
-    expect(getByTestId('open-item').getAttribute('data-open')).toBe('');
+    expect(getByTestId('open-item').getAttribute('data-expanded')).toBe('');
     expect(getByTestId('open-item').getAttribute('aria-expanded')).toBe('true');
     expect(getByTestId('open-group')).not.toBeNull();
 
-    expect(queryByTestId('closed-item')!.hasAttribute('data-open')).toBe(false);
+    expect(queryByTestId('closed-item')!.hasAttribute('data-expanded')).toBe(false);
     expect(queryByTestId('closed-item')!.getAttribute('aria-expanded')).toBe('false');
     expect(queryByTestId('closed-group')).toBeNull();
   });

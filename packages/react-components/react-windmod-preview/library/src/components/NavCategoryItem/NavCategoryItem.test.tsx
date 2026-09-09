@@ -140,10 +140,10 @@ describe('NavCategoryItem', () => {
         </Nav>,
       );
 
-      // The rotation is a group variant on the row's own open stamp; both chevrons carry the
+      // The rotation is a group variant on the row's expanded stamp; both chevrons carry the
       // same class and differ only by that attribute.
-      expect(getByTestId('open').getAttribute('data-open')).toBe('');
-      expect(getByTestId('closed').hasAttribute('data-open')).toBe(false);
+      expect(getByTestId('open').getAttribute('data-expanded')).toBe('');
+      expect(getByTestId('closed').hasAttribute('data-expanded')).toBe(false);
       expect(getByTestId('open').querySelector(`.${styles.expandIcon}`)).not.toBeNull();
       expect(getByTestId('closed').querySelector(`.${styles.expandIcon}`)).not.toBeNull();
     });
@@ -189,11 +189,11 @@ describe('NavCategoryItem', () => {
 
     const root = getByTestId('root');
 
-    expect(root.hasAttribute('data-open')).toBe(false);
+    expect(root.hasAttribute('data-expanded')).toBe(false);
     fireEvent.click(root);
-    expect(root.getAttribute('data-open')).toBe('');
+    expect(root.getAttribute('data-expanded')).toBe('');
     fireEvent.click(root);
-    expect(root.hasAttribute('data-open')).toBe(false);
+    expect(root.hasAttribute('data-expanded')).toBe(false);
   });
 
   it('merges the consumer className last on every slot', () => {

@@ -8,7 +8,7 @@
   .expand-icon {
     @apply ms-auto h-20 rotate-0 transition-[rotate] duration-fast ease-easy-ease;
 
-    @variant group-open/fui-nav-category-item {
+    @variant group-expanded/fui-nav-category-item {
       @apply rotate-180;
     }
   }
