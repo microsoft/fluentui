@@ -5,6 +5,8 @@
 ```ts
 
 import type { AvatarBaseState } from '@fluentui/react-avatar';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { AvatarContextValue } from '@fluentui/react-avatar';
 import { AvatarBaseProps as AvatarProps } from '@fluentui/react-avatar';
 import { AvatarBaseSlots as AvatarSlots } from '@fluentui/react-avatar';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -14,6 +16,10 @@ import { useAvatarContext } from '@fluentui/react-avatar';
 
 // @public
 export const Avatar: ForwardRefComponent<AvatarProps>;
+
+export { AvatarContextProvider }
+
+export { AvatarContextValue }
 
 export { AvatarProps }
 
