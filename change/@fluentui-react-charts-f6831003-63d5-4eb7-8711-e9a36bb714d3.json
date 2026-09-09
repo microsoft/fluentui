@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Merge branch 'master' of https://github.com/microsoft/fluentui into charts-vega-grouped-bar-map-fix",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
