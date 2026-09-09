@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): enforce safe Vega-Lite expression calls and transform property handling",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}

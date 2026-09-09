@@ -16,6 +16,89 @@ describe('VegaLiteSchemaAdapter', () => {
     colorMap.clear();
   });
 
+  describe('transform property handling', () => {
+    function transformData(values: Array<Record<string, unknown>>, transform: VegaLiteSpec['transform']) {
+      const spec: VegaLiteSpec = {
+        mark: 'line',
+        data: { values },
+        transform,
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      };
+
+      return transformVegaLiteToLineChartProps(spec, { current: colorMap }, false).data.lineChartData![0].data;
+    }
+
+    it.each(['constructor', 'toString', '__proto__'])('does not fold the inherited %s property', field => {
+      const points = transformData(
+        [{ x: 1, y: 10 }],
+        [{ fold: ['y', field] }, { calculate: 'isValid(datum.value) ? 1 : 0', as: 'y' }],
+      );
+
+      expect(points).toHaveLength(1);
+      expect(points[0]).toMatchObject({ x: 1, y: 1 });
+    });
+
+    it.each(['constructor', 'toString', '__proto__'])('preserves the own %s data field when folding', field => {
+      const points = transformData([{ x: 1, [field]: 42 }], [{ fold: [field] }, { calculate: 'datum.value', as: 'y' }]);
+
+      expect(points).toHaveLength(1);
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it('preserves an own __proto__ field while copying other fields during fold', () => {
+      const points = transformData(
+        [{ x: 1, y: 10, ['__proto__']: { value: 42 } }],
+        [{ fold: ['y'] }, { calculate: 'isValid(datum.__proto__) ? datum.__proto__.value : 0', as: 'y' }],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it('preserves an own __proto__ grouping field during aggregation', () => {
+      const points = transformData(
+        [{ x: 1, value: { amount: 42 } }],
+        [
+          { calculate: 'datum.value', as: '__proto__' },
+          { aggregate: [{ op: 'count', as: 'count' }], groupby: ['x', '__proto__'] },
+          { calculate: 'isValid(datum.__proto__) ? datum.__proto__.amount : 0', as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it('preserves an aggregate output named __proto__ as an own data field', () => {
+      const points = transformData(
+        [{ x: 1 }, { x: 1 }],
+        [
+          { aggregate: [{ op: 'count', as: '__proto__' }], groupby: ['x'] },
+          { calculate: 'isValid(datum.__proto__) ? datum.__proto__ : 0', as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 2 });
+    });
+
+    it('preserves ordinary fold, calculate and aggregate results', () => {
+      const points = transformData(
+        [
+          { x: 1, first: 2, second: 3 },
+          { x: 2, first: 4, second: 5 },
+        ],
+        [
+          { fold: ['first', 'second'] },
+          { calculate: 'pow(datum.value, 2)', as: 'squared' },
+          { aggregate: [{ op: 'sum', field: 'squared', as: 'y' }], groupby: ['x'] },
+        ],
+      );
+
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 13 }), expect.objectContaining({ x: 2, y: 41 })]);
+    });
+  });
+
   describe('transformVegaLiteToLineChartProps', () => {
     test('Should transform basic line chart with quantitative axes', () => {
       const spec: VegaLiteSpec = {

@@ -88,6 +88,11 @@ describe('VegaLiteExpressionEvaluator', () => {
       expect(safeEvaluateExpression('max(datum.a, datum.b)', { a: 3, b: 7 })).toBe(7);
     });
 
+    it('allows nested and parenthesized safe built-in calls', () => {
+      expect(safeEvaluateExpression('round(abs(datum.x))', { x: -3.7 })).toBe(4);
+      expect(safeEvaluateExpression('(datum.roundUp ? ceil : floor)(datum.x)', { roundUp: true, x: 3.2 })).toBe(4);
+    });
+
     it('evaluates safe constants', () => {
       expect(safeEvaluateExpression('PI', {})).toBe(Math.PI);
       expect(safeEvaluateExpression('E', {})).toBe(Math.E);
@@ -200,6 +205,33 @@ describe('VegaLiteExpressionEvaluator', () => {
 
     it('rejects calling non-function values', () => {
       expect(() => safeEvaluateExpression('datum.x()', { x: 42 })).toThrow();
+    });
+
+    it.each(['datum.callback()', "datum['callback']()", '(datum.callback)()', '(true ? datum.callback : abs)()'])(
+      'rejects a data-supplied function in %s without invoking it',
+      expression => {
+        const callback = jest.fn(() => 73);
+
+        expect(() => safeEvaluateExpression(expression, { callback })).toThrow(
+          'function calls are only allowed for built-in functions',
+        );
+        expect(callback).not.toHaveBeenCalled();
+      },
+    );
+
+    it('rejects a data-supplied function with the same name as a safe built-in', () => {
+      const abs = jest.fn(() => 73);
+
+      expect(() => safeEvaluateExpression('datum.abs(-1)', { abs })).toThrow(
+        'function calls are only allowed for built-in functions',
+      );
+      expect(abs).not.toHaveBeenCalled();
+    });
+
+    it('rejects a constructor materialized as an own data property', () => {
+      expect(() => safeEvaluateExpression("datum.callable('return 73')()", { callable: Function })).toThrow(
+        'function calls are only allowed for built-in functions',
+      );
     });
 
     it('rejects template literals (backticks)', () => {
