@@ -5581,6 +5581,7 @@ __metadata:
   dependencies:
     "@fluentui/react-components": "npm:^9.74.7"
     "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-utilities": "npm:^9.26.6"
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:0.33.0"
