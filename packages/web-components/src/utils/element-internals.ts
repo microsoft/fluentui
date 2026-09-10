@@ -1,3 +1,4 @@
+import { Updates } from '@microsoft/fast-element';
 import { CustomStatesSetSupported } from './support.js';
 
 /**
@@ -54,7 +55,8 @@ export function toggleState(
   }
 
   if (!CustomStatesSetSupported) {
-    elementInternals.shadowRoot!.host.toggleAttribute(`state--${state}`, force);
+    // Attribute mutations must wait until a custom element's constructor has returned.
+    Updates.enqueue(() => elementInternals.shadowRoot!.host.toggleAttribute(`state--${state}`, force));
     return;
   }
   if (force ?? !elementInternals.states.has(state)) {
