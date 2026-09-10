@@ -26,8 +26,9 @@ export function prepareSandboxContainers(context: StoryContext) {
   }
 
   return Array.from(rootElements).map(rootElement => {
+    // Exclude buttons added by this addon and by @fluentui/react-storybook-addon-playground
     const showCodeButton = rootElement.querySelector(
-      '.docblock-code-toggle:not(.with-code-sandbox-button):not(.with-open-in-new-tab-button)',
+      '.docblock-code-toggle:not(.with-code-sandbox-button):not(.with-open-in-new-tab-button):not(.with-open-in-playground-button)',
     );
     const container = showCodeButton?.parentElement;
 

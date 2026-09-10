@@ -49,6 +49,8 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
         },
       },
     }),
+    /** {@link file://./../packages/react-components/react-storybook-addon-playground/package.json} */
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-playground', { tsConfigPath }),
   ],
   webpackFinal: config => {
     registerRules({ config, rules: [rules.swcRule] });
