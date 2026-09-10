@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import { mergeClasses } from '@fluentui/react-components';
 
+import { useEditorStyles } from './Editor.styles';
 import { monaco } from './monaco';
 
 export interface EditorProps {
@@ -12,21 +13,12 @@ export interface EditorProps {
   className?: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    height: '100%',
-    width: '100%',
-    minHeight: 0,
-    minWidth: 0,
-  },
-});
-
 // A stable, file-like URI so the TypeScript worker treats the buffer as a `.tsx` module
 const MODEL_URI = 'file:///playground/example.tsx';
 
 export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref) => {
   const { value, onChange, onModelReady, dark, className } = props;
-  const styles = useStyles();
+  const styles = useEditorStyles();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const onChangeRef = React.useRef(onChange);

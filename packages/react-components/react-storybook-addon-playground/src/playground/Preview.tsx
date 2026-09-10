@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { FluentProvider, makeStyles, mergeClasses, tokens, type Theme } from '@fluentui/react-components';
+import { FluentProvider, mergeClasses, type Theme } from '@fluentui/react-components';
 
 import { ErrorBoundary } from './ErrorBoundary';
+import { usePreviewStyles } from './Preview.styles';
 import type { PlaygroundComponent } from './runner';
 
 export interface PreviewProps {
@@ -13,20 +14,9 @@ export interface PreviewProps {
   className?: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    height: '100%',
-    minHeight: 0,
-    overflow: 'auto',
-    boxSizing: 'border-box',
-    padding: tokens.spacingHorizontalXXL,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-});
-
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, ref) => {
   const { component: Component, runId, theme, onError, className } = props;
-  const styles = useStyles();
+  const styles = usePreviewStyles();
 
   return (
     <FluentProvider ref={ref} theme={theme} className={mergeClasses(styles.root, className)}>

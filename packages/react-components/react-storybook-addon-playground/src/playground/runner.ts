@@ -120,7 +120,8 @@ export async function evaluate(code: string, loaders: Record<string, ModuleLoade
   const module = { exports: {} as ModuleExports };
 
   try {
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    // Evaluating user code is the whole point of the playground; imports are restricted to the allowlist above.
+    // eslint-disable-next-line no-new-func
     const fn = new Function('require', 'exports', 'module', code);
     fn(require, module.exports, module);
   } catch (error) {

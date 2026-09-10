@@ -15,8 +15,6 @@ import {
   ToolbarButton,
   ToolbarDivider,
   Tooltip,
-  makeStyles,
-  tokens,
   useFluent,
   useId,
   useToastController,
@@ -30,6 +28,7 @@ import { compile, formatDiagnostics } from './compiler';
 import { Editor } from './Editor';
 import { monaco } from './monaco';
 import { moduleLoaders } from './modules';
+import { usePlaygroundStyles } from './Playground.styles';
 import { Preview } from './Preview';
 import { evaluate, PlaygroundError, type PlaygroundComponent } from './runner';
 import { defaultThemeOption, getThemeOption, themeOptions } from './themes';
@@ -45,76 +44,6 @@ interface PlaygroundErrorState {
 
 const RUN_DEBOUNCE_MS = 400;
 const HASH_SYNC_DEBOUNCE_MS = 500;
-
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateRows: 'auto minmax(0, 1fr)',
-    height: '100vh',
-    width: '100vw',
-    overflow: 'hidden',
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalM,
-    paddingLeft: tokens.spacingHorizontalM,
-    paddingRight: tokens.spacingHorizontalM,
-    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  title: {
-    fontWeight: tokens.fontWeightSemibold,
-    whiteSpace: 'nowrap',
-  },
-  toolbar: {
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  themePicker: {
-    minWidth: '140px',
-  },
-  main: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-    minHeight: 0,
-  },
-  editorPane: {
-    minWidth: 0,
-    minHeight: 0,
-    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-  },
-  previewPane: {
-    display: 'grid',
-    gridTemplateRows: 'minmax(0, 1fr) auto',
-    minWidth: 0,
-    minHeight: 0,
-  },
-  status: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalS,
-    color: tokens.colorNeutralForeground3,
-  },
-  errorBar: {
-    margin: tokens.spacingHorizontalM,
-    maxHeight: '40vh',
-    overflow: 'auto',
-  },
-  errorMessage: {
-    margin: 0,
-    marginTop: tokens.spacingVerticalXS,
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase200,
-  },
-});
 
 function toErrorState(error: unknown): PlaygroundErrorState {
   if (error instanceof PlaygroundError) {
@@ -136,7 +65,7 @@ function toErrorState(error: unknown): PlaygroundErrorState {
 
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
   const { initialCode } = props;
-  const styles = useStyles();
+  const styles = usePlaygroundStyles();
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView;
 
@@ -193,13 +122,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   // Auto-run (debounced) whenever the code changes or the editor model becomes available
   React.useEffect(() => {
-    if (!model) {
+    if (!model || !targetWindow) {
       return;
     }
 
-    const timeout = setTimeout(run, RUN_DEBOUNCE_MS);
-    return () => clearTimeout(timeout);
-  }, [code, model, run]);
+    const timeout = targetWindow.setTimeout(run, RUN_DEBOUNCE_MS);
+    return () => targetWindow.clearTimeout(timeout);
+  }, [code, model, run, targetWindow]);
 
   // Keep the URL hash in sync so a refresh / copied URL restores the current code
   React.useEffect(() => {
@@ -207,10 +136,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       return;
     }
 
-    const timeout = setTimeout(() => {
+    const timeout = targetWindow.setTimeout(() => {
       targetWindow.history.replaceState(null, '', createCodeHash(code));
     }, HASH_SYNC_DEBOUNCE_MS);
-    return () => clearTimeout(timeout);
+    return () => targetWindow.clearTimeout(timeout);
   }, [code, targetWindow]);
 
   const handleRuntimeError = React.useCallback((err: Error) => {
