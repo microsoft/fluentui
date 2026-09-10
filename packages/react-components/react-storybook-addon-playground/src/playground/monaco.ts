@@ -28,7 +28,8 @@ type MonacoGlobal = typeof globalThis & { MonacoEnvironment?: monaco.Environment
 };
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions(COMPILER_OPTIONS);
-// Fluent UI type definitions are not loaded into the worker, so semantic validation would only produce noise.
+// Type declarations of the dependency allowlist are loaded asynchronously by `registerTypings()` (see `typings.ts`),
+// which enables semantic validation once they are available - until then it would only report missing modules.
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
   noSemanticValidation: true,
   noSyntaxValidation: false,

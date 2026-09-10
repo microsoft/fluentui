@@ -5585,6 +5585,8 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:0.33.0"
+    prettier: "npm:2.8.8"
+    semver: "npm:^6.2.0"
   peerDependencies:
     "@storybook/react": ^9.1.17
     "@types/react": ">=16.14.0 <20.0.0"

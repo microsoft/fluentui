@@ -9,6 +9,7 @@ import {
   Spinner,
   Text,
   Toast,
+  ToastBody,
   ToastTitle,
   Toaster,
   Toolbar,
@@ -21,17 +22,19 @@ import {
   type OptionOnSelectData,
   type SelectionEvents,
 } from '@fluentui/react-components';
-import { ArrowResetRegular, LinkRegular, PlayRegular } from '@fluentui/react-icons';
+import { ArrowResetRegular, LinkRegular, PlayRegular, TextGrammarWandRegular } from '@fluentui/react-icons';
 
 import { createCodeHash } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { Editor } from './Editor';
+import { registerFormatter } from './formatter';
 import { monaco } from './monaco';
 import { moduleLoaders } from './modules';
 import { usePlaygroundStyles } from './Playground.styles';
 import { Preview } from './Preview';
 import { evaluate, PlaygroundError, type PlaygroundComponent } from './runner';
 import { defaultThemeOption, getThemeOption, themeOptions } from './themes';
+import { registerTypings } from './typings';
 
 export interface PlaygroundProps {
   initialCode: string;
@@ -76,11 +79,68 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [status, setStatus] = React.useState<'idle' | 'compiling' | 'ready' | 'error'>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState(defaultThemeOption.id);
+  const [typingsStatus, setTypingsStatus] = React.useState<'loading' | 'ready' | 'error'>('loading');
 
   const runCounter = React.useRef(0);
+  const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const toasterId = useId('playground-toaster');
   const { dispatchToast } = useToastController(toasterId);
   const themeOption = getThemeOption(themeId);
+
+  const notify = React.useCallback(
+    (title: string, intent: 'success' | 'error', body?: string) => {
+      dispatchToast(
+        <Toast>
+          <ToastTitle>{title}</ToastTitle>
+          {body ? <ToastBody>{body}</ToastBody> : null}
+        </Toast>,
+        { intent },
+      );
+    },
+    [dispatchToast],
+  );
+
+  // IntelliSense: load type declarations of the allowlisted dependencies into the TypeScript worker
+  React.useEffect(() => {
+    if (!targetWindow) {
+      return;
+    }
+
+    let cancelled = false;
+
+    registerTypings(monaco, targetWindow).then(
+      () => !cancelled && setTypingsStatus('ready'),
+      (err: unknown) => {
+        if (!cancelled) {
+          setTypingsStatus('error');
+          // eslint-disable-next-line no-console
+          console.warn('Playground: failed to load type declarations, IntelliSense is limited.', err);
+        }
+      },
+    );
+
+    return () => {
+      cancelled = true;
+    };
+  }, [targetWindow]);
+
+  // Prettier as "Format Document" provider (Shift+Alt+F and the toolbar button)
+  React.useEffect(() => {
+    const disposable = registerFormatter(monaco, {
+      // Prettier appends a code frame to syntax errors, the first line (message + location) is enough for a toast
+      onError: err => notify('Cannot format code', 'error', err.message.split('\n')[0]),
+    });
+
+    return () => disposable.dispose();
+  }, [notify]);
+
+  const handleFormat = React.useCallback(() => {
+    editorRef.current?.getAction('editor.action.formatDocument')?.run();
+  }, []);
+
+  const handleEditorReady = React.useCallback((editor: monaco.editor.IStandaloneCodeEditor | null) => {
+    editorRef.current = editor;
+  }, []);
 
   const run = React.useCallback(async () => {
     if (!model) {
@@ -120,15 +180,17 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }
   }, [model]);
 
-  // Auto-run (debounced) whenever the code changes or the editor model becomes available
+  // Auto-run (debounced) whenever the code changes or the editor model becomes available.
+  // Waits for the type declarations first: registering them restarts the TypeScript worker, which would abort an
+  // in-flight compilation.
   React.useEffect(() => {
-    if (!model || !targetWindow) {
+    if (!model || !targetWindow || typingsStatus === 'loading') {
       return;
     }
 
     const timeout = targetWindow.setTimeout(run, RUN_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
-  }, [code, model, run, targetWindow]);
+  }, [code, model, run, targetWindow, typingsStatus]);
 
   // Keep the URL hash in sync so a refresh / copied URL restores the current code
   React.useEffect(() => {
@@ -159,13 +221,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     const url = `${targetWindow.location.origin}${targetWindow.location.pathname}${createCodeHash(code)}`;
     await targetWindow.navigator.clipboard.writeText(url);
 
-    dispatchToast(
-      <Toast>
-        <ToastTitle>Link copied to clipboard</ToastTitle>
-      </Toast>,
-      { intent: 'success' },
-    );
-  }, [code, dispatchToast, targetWindow]);
+    notify('Link copied to clipboard', 'success');
+  }, [code, notify, targetWindow]);
 
   const handleThemeSelect = React.useCallback((_event: SelectionEvents, data: OptionOnSelectData) => {
     if (data.optionValue) {
@@ -185,6 +242,11 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             {status === 'ready' ? <Text size={200}>Ready</Text> : null}
             {status === 'error' ? <Text size={200}>Error</Text> : null}
           </span>
+          {typingsStatus === 'loading' ? (
+            <span className={styles.status}>
+              <Spinner size="extra-tiny" label="Loading IntelliSense…" labelPosition="after" />
+            </span>
+          ) : null}
           <Toolbar aria-label="Playground actions" className={styles.toolbar}>
             <Tooltip content="Re-run the code (remounts the preview)" relationship="description">
               <ToolbarButton icon={<PlayRegular />} onClick={run}>
@@ -194,6 +256,11 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             <Tooltip content="Restore the initial code" relationship="description">
               <ToolbarButton icon={<ArrowResetRegular />} onClick={handleReset}>
                 Reset
+              </ToolbarButton>
+            </Tooltip>
+            <Tooltip content="Format the code with Prettier (Shift+Alt+F)" relationship="description">
+              <ToolbarButton icon={<TextGrammarWandRegular />} onClick={handleFormat}>
+                Format
               </ToolbarButton>
             </Tooltip>
             <Tooltip content="Copy a shareable link with the current code" relationship="description">
@@ -221,7 +288,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
         <main className={styles.main}>
           <section className={styles.editorPane} aria-label="Code editor">
-            <Editor value={code} onChange={setCode} onModelReady={setModel} dark={themeOption.dark} />
+            <Editor
+              value={code}
+              onChange={setCode}
+              onModelReady={setModel}
+              onEditorReady={handleEditorReady}
+              dark={themeOption.dark}
+            />
           </section>
           <section className={styles.previewPane} aria-label="Preview">
             <Preview component={component} runId={runId} theme={themeOption.theme} onError={handleRuntimeError} />

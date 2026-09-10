@@ -9,6 +9,7 @@ export interface EditorProps {
   value: string;
   onChange: (value: string) => void;
   onModelReady: (model: monaco.editor.ITextModel) => void;
+  onEditorReady?: (editor: monaco.editor.IStandaloneCodeEditor | null) => void;
   dark: boolean;
   className?: string;
 }
@@ -17,7 +18,7 @@ export interface EditorProps {
 const MODEL_URI = 'file:///playground/example.tsx';
 
 export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref) => {
-  const { value, onChange, onModelReady, dark, className } = props;
+  const { value, onChange, onModelReady, onEditorReady, dark, className } = props;
   const styles = useEditorStyles();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
@@ -63,11 +64,13 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
     });
 
     onModelReady(model);
+    onEditorReady?.(editor);
 
     return () => {
       subscription.dispose();
       editor.dispose();
       editorRef.current = null;
+      onEditorReady?.(null);
     };
     // The editor instance is created once; value/theme updates are handled by the effects below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
