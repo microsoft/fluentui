@@ -142,6 +142,27 @@ describe('Callout', () => {
     expect(onDismiss).not.toHaveBeenCalled();
   });
 
+  it('Callout  dismisses on right-click', () => {
+    jest.useFakeTimers();
+    const onDismiss = jest.fn();
+
+    const { getByText } = render(
+      <div>
+        <button>button</button>
+        <Callout target="#target" onDismiss={onDismiss}>
+          <div>Content</div>
+        </Callout>
+      </div>,
+    );
+
+    act(() => {
+      jest.runAllTimers();
+      getByText('button').dispatchEvent(new MouseEvent('contextmenu'));
+    });
+
+    expect(onDismiss).toHaveBeenCalled();
+  });
+
   it('will correctly return focus to element that spawned it', () => {
     jest.useFakeTimers();
 
