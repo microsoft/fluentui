@@ -22,7 +22,7 @@ const createAtomMotion = (type: AtomType) => {
       return createMotionComponent(slideAtom({ direction: 'enter', duration: demoDuration, easing, outY: '30px' }));
     case 'rotate':
       return createMotionComponent(
-        rotateAtom({ direction: 'enter', duration: demoDuration, easing, axis: 'z', outAngle: -90 }),
+        rotateAtom({ duration: demoDuration, easing, axis: 'z', fromAngle: -90, toAngle: 0 }),
       );
     case 'blur':
       return createMotionComponent(blurAtom({ direction: 'enter', duration: demoDuration, easing, outRadius: '10px' }));
@@ -61,11 +61,10 @@ const atomCodeSnippets: Record<AtomType, string> = {
   inY: '0px',
 })`,
   rotate: `rotateAtom({
-  direction: 'enter',
   duration: 600,
   axis: 'z',
-  outAngle: -90,
-  inAngle: 0,
+  fromAngle: -90,
+  toAngle: 0,
 })`,
   blur: `blurAtom({
   direction: 'enter',
