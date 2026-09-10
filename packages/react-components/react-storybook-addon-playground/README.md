@@ -11,7 +11,8 @@ edited live against a pre-installed (allowlisted) set of dependencies.
 - Monaco based TSX editor with TypeScript IntelliSense (auto-completion, quick info, type errors) for all
   pre-installed dependencies — their `.d.ts` files are collected at build time (`tools/collect-typings.js`) and loaded
   into the TypeScript worker
-- Prettier formatting (`Format` toolbar button / `Shift+Alt+F`) using the repository Prettier settings
+- Prettier formatting (`Format` toolbar button or Monaco's "Format Document" shortcut: `Shift+Alt+F`, `Ctrl+Shift+I`
+  on Linux) using the repository Prettier settings
 - TSX -> JS transpilation runs off the main thread in Monaco's TypeScript web worker
 - Pre-installed dependency allowlist: `react`, `react-dom`, `@fluentui/react-components`,
   `@fluentui/react-components/unstable`, `@fluentui/react-icons`

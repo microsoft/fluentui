@@ -24,6 +24,20 @@ export async function formatCode(code: string): Promise<string> {
   return prettier.format(code, { ...PRETTIER_OPTIONS, parser: 'typescript', plugins: [typescriptParser] });
 }
 
+/**
+ * Keyboard shortcut of Monaco's built-in "Format Document" action for the current platform
+ * (`editor.action.formatDocument`: Shift+Alt+F, but Ctrl+Shift+I on Linux).
+ */
+export function getFormatShortcutLabel(userAgent: string): string {
+  if (/macintosh|mac os|iphone|ipad/i.test(userAgent)) {
+    return 'Shift+Option+F';
+  }
+  if (/linux/i.test(userAgent) && !/android/i.test(userAgent)) {
+    return 'Ctrl+Shift+I';
+  }
+  return 'Shift+Alt+F';
+}
+
 export interface FormatterOptions {
   /** Called when formatting fails, e.g. because of a syntax error. */
   onError?: (error: Error) => void;

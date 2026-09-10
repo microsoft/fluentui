@@ -27,7 +27,7 @@ import { ArrowResetRegular, LinkRegular, PlayRegular, TextGrammarWandRegular } f
 import { createCodeHash } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { Editor } from './Editor';
-import { registerFormatter } from './formatter';
+import { getFormatShortcutLabel, registerFormatter } from './formatter';
 import { monaco } from './monaco';
 import { moduleLoaders } from './modules';
 import { usePlaygroundStyles } from './Playground.styles';
@@ -124,7 +124,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     };
   }, [targetWindow]);
 
-  // Prettier as "Format Document" provider (Shift+Alt+F and the toolbar button)
+  // Prettier as "Format Document" provider (Monaco's format shortcut and the toolbar button)
   React.useEffect(() => {
     const disposable = registerFormatter(monaco, {
       // Prettier appends a code frame to syntax errors, the first line (message + location) is enough for a toast
@@ -133,6 +133,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
     return () => disposable.dispose();
   }, [notify]);
+
+  const formatShortcut = getFormatShortcutLabel(targetWindow?.navigator.userAgent ?? '');
 
   const handleFormat = React.useCallback(() => {
     editorRef.current?.getAction('editor.action.formatDocument')?.run();
@@ -258,7 +260,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 Reset
               </ToolbarButton>
             </Tooltip>
-            <Tooltip content="Format the code with Prettier (Shift+Alt+F)" relationship="description">
+            <Tooltip content={`Format the code with Prettier (${formatShortcut})`} relationship="description">
               <ToolbarButton icon={<TextGrammarWandRegular />} onClick={handleFormat}>
                 Format
               </ToolbarButton>
