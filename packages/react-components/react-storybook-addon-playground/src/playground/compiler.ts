@@ -8,6 +8,9 @@ export const COMPILER_OPTIONS: monacoApi.languages.typescript.CompilerOptions = 
   jsx: 4, // JsxEmit.ReactJSX -> emits `require("react/jsx-runtime")`, so stories don't need to import React for JSX
   module: 1, // ModuleKind.CommonJS -> `require()` calls are resolved against the dependency allowlist
   target: 6, // ScriptTarget.ES2019
+  // ImportsNotUsedAsValues.Preserve -> unused value imports still emit `require()`, so importing a module that isn't
+  // allowlisted is reported immediately instead of being silently elided
+  importsNotUsedAsValues: 1,
   esModuleInterop: true,
   allowNonTsExtensions: true,
   allowJs: true,
