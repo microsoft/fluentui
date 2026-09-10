@@ -88,7 +88,7 @@ export class CartesianChartBase
    * To display the total word (space separated words), Need to have more space than usual.
    * This height will get total height need to disaply total word.
    * These value need to be removed from actual svg height/graph height.
-   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
+   * Defalut value is 0. And this values calculted when 'wrapXAxisLabels' or 'showXAxisLabelsTooltip' is true.
    */
   private _removalValueForTextTuncate: number = 0;
   private _yAxisTickText: string[] = [];
@@ -112,9 +112,29 @@ export class CartesianChartBase
     this._tooltipId = getId('tooltip_');
   }
 
+  private _showXAxisLabelsTooltip(): boolean | undefined {
+    return this.props.showXAxisLabelsTooltip ?? this.props.showXAxisLablesTooltip;
+  }
+
+  private _wrapXAxisLabels(): boolean | undefined {
+    return this.props.wrapXAxisLabels ?? this.props.wrapXAxisLables;
+  }
+
+  private _rotateXAxisLabels(): boolean | undefined {
+    return this.props.rotateXAxisLabels ?? this.props.rotateXAxisLables;
+  }
+
+  private _showYAxisLabels(): boolean | undefined {
+    return this.props.showYAxisLabels ?? this.props.showYAxisLables;
+  }
+
+  private _showYAxisLabelsTooltip(): boolean | undefined {
+    return this.props.showYAxisLabelsTooltip ?? this.props.showYAxisLablesTooltip;
+  }
+
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (this.props.showYAxisLables) {
+    if (this._showYAxisLabels()) {
       const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
@@ -139,7 +159,7 @@ export class CartesianChartBase
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
-    if (this.props.showYAxisLables) {
+    if (this._showYAxisLabels()) {
       const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
@@ -160,7 +180,7 @@ export class CartesianChartBase
 
   public calculateMaxYAxisLabelLength = (className: string): number => {
     const formatTickLabel = (str: string) => {
-      if (this.props.showYAxisLablesTooltip) {
+      if (this._showYAxisLabelsTooltip()) {
         return truncateString(str, this.props.noOfCharsToTruncate || 4);
       }
 
@@ -239,13 +259,13 @@ export class CartesianChartBase
         showRoundOffXTickValues: this.props.showRoundOffXTickValues ?? true,
         xAxisCount: this.props.xAxisTickCount,
         xAxistickSize: this.props.xAxistickSize,
-        tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
+        tickPadding: this.props.tickPadding || this._showXAxisLabelsTooltip() ? 5 : 10,
         xAxisPadding: this.props.xAxisPadding,
         xAxisInnerPadding: this.props.xAxisInnerPadding,
         xAxisOuterPadding: this.props.xAxisOuterPadding,
         containerWidth: this.state.containerWidth,
         hideTickOverlap:
-          this.props.rotateXAxisLables || this.props.xAxis?.tickLayout === 'auto' ? false : this.props.hideTickOverlap,
+          this._rotateXAxisLabels() || this.props.xAxis?.tickLayout === 'auto' ? false : this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
         xMinValue: this.props.xMinValue,
         xMaxValue: this.props.xMaxValue,
@@ -406,7 +426,7 @@ export class CartesianChartBase
         // eslint-disable-next-line no-empty
       } catch (e) {}
       // Used to display tooltip at x axis labels.
-      if (this.props.showXAxisLablesTooltip || this.props.xAxis?.tickLayout === 'auto') {
+      if (this._showXAxisLabelsTooltip() || this.props.xAxis?.tickLayout === 'auto') {
         const xAxisElement = this.xAxisElement ? d3Select(this.xAxisElement).call(xScale) : null;
         const tooltipProps = {
           tooltipCls: this._classNames.tooltip!,
@@ -417,7 +437,7 @@ export class CartesianChartBase
         xAxisElement && tooltipOfAxislabels(tooltipProps);
       }
       // Used to display tooltip at y axis labels.
-      if (this.props.showYAxisLablesTooltip) {
+      if (this._showYAxisLabelsTooltip()) {
         // To create y axis tick values by if specified truncating the rest of the text
         // and showing elipsis or showing the whole string,
         yScalePrimary &&
@@ -425,7 +445,7 @@ export class CartesianChartBase
             this.yAxisElement,
             yScalePrimary,
             this.props.noOfCharsToTruncate || 4,
-            this.props.showYAxisLablesTooltip || false,
+            this._showYAxisLabelsTooltip() || false,
             this._isRtl,
           );
 
@@ -1030,8 +1050,8 @@ export class CartesianChartBase
   private _calcMaxLabelWidthWithTransform = (x: (string | number)[]) => {
     // Case: rotated labels
     if (
-      !this.props.wrapXAxisLables &&
-      this.props.rotateXAxisLables &&
+      !this._wrapXAxisLabels() &&
+      this._rotateXAxisLabels() &&
       this.props.xAxisType! === XAxisTypes.StringAxis
     ) {
       const longestLabelWidth = calculateLongestLabelWidth(x, `.${this._classNames.xAxis} text`);
@@ -1039,7 +1059,7 @@ export class CartesianChartBase
     }
 
     // Case: truncated labels
-    if (this.props.showXAxisLablesTooltip) {
+    if (this._showXAxisLabelsTooltip()) {
       const tickLabels = x.map(val => {
         const numChars = this.props.noOfCharsToTruncate || 4;
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
@@ -1050,7 +1070,7 @@ export class CartesianChartBase
     }
 
     // Case: wrapped labels
-    if (this.props.wrapXAxisLables) {
+    if (this._wrapXAxisLabels()) {
       // FIXME: Calculate the max width of lines instead of words. This requires applying
       // the wrapping transformation earlier to obtain the actual rendered lines.
       const words: string[] = [];
@@ -1078,7 +1098,7 @@ export class CartesianChartBase
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
      * */
-    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+    if (this._wrapXAxisLabels() || this._showXAxisLabelsTooltip()) {
       let maxXAxisLabelWidth: number | undefined;
       if (this.props.xAxisType === XAxisTypes.StringAxis) {
         if ((this.props.datasetForXAxisDomain?.length || 0) > 1) {
@@ -1091,7 +1111,7 @@ export class CartesianChartBase
       const wrapLabelProps = {
         node: this.xAxisElement,
         xAxis: this._xScale,
-        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+        showXAxisLablesTooltip: this._showXAxisLabelsTooltip() || false,
         noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
         width: maxXAxisLabelWidth,
         container: this.chartContainer,
@@ -1100,8 +1120,8 @@ export class CartesianChartBase
     }
 
     if (
-      !this.props.wrapXAxisLables &&
-      this.props.rotateXAxisLables &&
+      !this._wrapXAxisLabels() &&
+      this._rotateXAxisLabels() &&
       this.props.xAxisType! === XAxisTypes.StringAxis
     ) {
       const rotateLabelProps = {

@@ -925,6 +925,18 @@ describe('VerticalBarChart snapShot testing', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('supports correctly spelled x-axis label props', () => {
+    const { container } = render(
+      <VerticalBarChart data={chartPointsVBC} showXAxisLabelsTooltip={true} wrapXAxisLabels={true} />,
+    );
+    expect(container.firstChild).not.toBeNull();
+  });
+
+  it('supports correctly spelled x-axis label rotation prop', () => {
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} rotateXAxisLabels={true} />);
+    expect(container.firstChild).not.toBeNull();
+  });
+
   it('renders yAxisTickFormat correctly', () => {
     const { container } = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'.1f'} />);
     expect(container.firstChild).toMatchSnapshot();
