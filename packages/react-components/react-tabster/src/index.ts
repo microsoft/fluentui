@@ -43,16 +43,16 @@ const dispatchGroupperMoveFocusEvent: typeof tabster.dispatchGroupperMoveFocusEv
   tabster.dispatchGroupperMoveFocusEvent;
 const dispatchMoverMoveFocusEvent: typeof tabster.dispatchMoverMoveFocusEvent = tabster.dispatchMoverMoveFocusEvent;
 const MoverMoveFocusEventName: typeof tabster.MoverMoveFocusEventName = tabster.MoverMoveFocusEventName;
-const MoverMoveFocusEvent: typeof tabster.MoverMoveFocusEvent = tabster.MoverMoveFocusEvent;
 const MoverKeys: typeof tabster.MoverKeys = tabster.MoverKeys;
 const GroupperMoveFocusEventName: typeof tabster.GroupperMoveFocusEventName = tabster.GroupperMoveFocusEventName;
-const GroupperMoveFocusEvent: typeof tabster.GroupperMoveFocusEvent = tabster.GroupperMoveFocusEvent;
 const GroupperMoveFocusActions: typeof tabster.GroupperMoveFocusActions = tabster.GroupperMoveFocusActions;
 const MoverMemorizedElementEventName: typeof tabster.MoverMemorizedElementEventName =
   tabster.MoverMemorizedElementEventName;
-const MoverMemorizedElementEvent: typeof tabster.MoverMemorizedElementEvent = tabster.MoverMemorizedElementEvent;
 const TabsterMoveFocusEventName: typeof tabster.TabsterMoveFocusEventName = tabster.TabsterMoveFocusEventName;
-const TabsterMoveFocusEvent: typeof tabster.TabsterMoveFocusEvent = tabster.TabsterMoveFocusEvent;
+class MoverMoveFocusEvent extends tabster.MoverMoveFocusEvent {}
+class GroupperMoveFocusEvent extends tabster.GroupperMoveFocusEvent {}
+class MoverMemorizedElementEvent extends tabster.MoverMemorizedElementEvent {}
+class TabsterMoveFocusEvent extends tabster.TabsterMoveFocusEvent {}
 
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 

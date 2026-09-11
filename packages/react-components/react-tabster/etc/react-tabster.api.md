@@ -565,7 +565,8 @@ interface GroupperMoveFocusActions_2 {
 const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
 
 // @public (undocumented)
-export const GroupperMoveFocusEvent: typeof tabster.GroupperMoveFocusEvent;
+export class GroupperMoveFocusEvent extends tabster.GroupperMoveFocusEvent {
+}
 
 // @public (undocumented)
 type GroupperMoveFocusEvent_2 = CustomEvent<{
@@ -805,7 +806,8 @@ interface MoverKeys_2 {
 const MoverKeys_2: MoverKeys_2;
 
 // @public (undocumented)
-export const MoverMemorizedElementEvent: typeof tabster.MoverMemorizedElementEvent;
+export class MoverMemorizedElementEvent extends tabster.MoverMemorizedElementEvent {
+}
 
 // @public (undocumented)
 export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElementEventDetail;
@@ -814,7 +816,8 @@ export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElement
 export const MoverMemorizedElementEventName: typeof tabster.MoverMemorizedElementEventName;
 
 // @public (undocumented)
-export const MoverMoveFocusEvent: typeof tabster.MoverMoveFocusEvent;
+export class MoverMoveFocusEvent extends tabster.MoverMoveFocusEvent {
+}
 
 // @public (undocumented)
 type MoverMoveFocusEvent_2 = CustomEvent<{
@@ -1221,7 +1224,8 @@ interface TabsterElementStorageEntry {
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
 // @public (undocumented)
-export const TabsterMoveFocusEvent: typeof tabster.TabsterMoveFocusEvent;
+export class TabsterMoveFocusEvent extends tabster.TabsterMoveFocusEvent {
+}
 
 // @public (undocumented)
 type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
