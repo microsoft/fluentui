@@ -1040,7 +1040,8 @@ export function calloutData(
       callOutAccessibilityData?: AccessibilityProps;
       index?: number;
     }[];
-  } = {};
+    // Null-prototype object so data-derived x keys (e.g. "__proto__") cannot pollute Object.prototype.
+  } = Object.create(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
@@ -1386,7 +1387,8 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
 export function groupChartDataByYValue(
   chartData: HorizontalBarChartWithAxisDataPoint[],
 ): HorizontalBarChartWithAxisDataPoint[][] {
-  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
+  // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
+  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = Object.create(null);
   chartData.forEach(dataPoint => {
     const key = dataPoint.y;
     if (!map[key]) {

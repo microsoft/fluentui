@@ -2396,7 +2396,8 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Group data by x value, then by color (stack)
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
+  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2757,7 +2758,8 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Group data by x value (name), then by color (series)
-  const groupedData: { [key: string]: { [legend: string]: number } } = {};
+  // Null-prototype objects so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
+  const groupedData: { [key: string]: { [legend: string]: number } } = Object.create(null);
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2774,7 +2776,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     const legend = String(groupValue);
 
     if (!groupedData[xKey]) {
-      groupedData[xKey] = {};
+      groupedData[xKey] = Object.create(null);
     }
 
     groupedData[xKey][legend] = yValue;
@@ -3105,7 +3107,8 @@ export function transformVegaLiteToScatterChartProps(
   }
 
   // Group data by series (color encoding)
-  const groupedData: Record<string, Array<Record<string, unknown>>> = {};
+  // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
+  const groupedData: Record<string, Array<Record<string, unknown>>> = Object.create(null);
 
   dataValues.forEach(row => {
     const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';
