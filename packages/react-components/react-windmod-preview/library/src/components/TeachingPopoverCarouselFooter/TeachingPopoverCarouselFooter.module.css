@@ -1,0 +1,29 @@
+@reference '#theme';
+
+/* The gap is hoisted to the resting block: the reference declares it in each of the two layout
+   buckets, which are mutually exclusive and exhaustive, so one declaration is byte-equivalent.
+
+   The offset look reorders in paint only: both buttons take `order` so they trail the row's own
+   children, whose first member carries the auto margin. The DOM stays previous, children, next.
+   The reference's auto-margin selector is a descendant combinator, which also catches the first
+   pagination dot inside a nested nav and pushes the remaining dots apart; this one is direct-child. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-row gap-8;
+  }
+
+  .centered {
+    @apply justify-between;
+  }
+
+  .offset {
+    & > :nth-child(1 of :not(.offset-button)) {
+      @apply me-auto;
+    }
+  }
+
+  .offset-button {
+    @apply order-1;
+  }
+}

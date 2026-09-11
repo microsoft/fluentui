@@ -1,0 +1,26 @@
+@reference '#theme';
+
+/* The separator is a hairline the scrolling body reveals: it exists whenever the body scrolls at
+   all, and becomes opaque only once content has scrolled under this header. DrawerFooter carries
+   the complementary rule. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative z-2 flex w-full max-w-full flex-col gap-horizontal-s self-stretch px-horizontal-xxl pt-vertical-xxl pb-vertical-s;
+
+    @variant not-scroll-state-none {
+      @variant after {
+        @apply absolute inset-x-0 h-thin bg-neutral-stroke-1 opacity-0 duration-normal ease-easy-ease;
+
+        inset-block-end: 0;
+        transition-property: opacity;
+      }
+    }
+
+    @variant scroll-state-middle, scroll-state-bottom {
+      @variant after {
+        @apply opacity-100;
+      }
+    }
+  }
+}

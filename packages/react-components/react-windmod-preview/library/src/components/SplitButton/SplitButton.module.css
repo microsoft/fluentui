@@ -1,0 +1,68 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-flex justify-stretch align-middle;
+  }
+}
+
+@layer fui.components.l2 {
+  /* The primary action slot renders a windmod Button; this block overrides its l1 styles.
+     The divider between the two buttons is the primary button's inline-end border: the menu
+     button drops its own inline-start border width so exactly one line is drawn. */
+  .primary-action-button {
+    @apply rounded-e-none;
+
+    @variant group-appearance-primary/fui-split-button {
+      @apply border-e-neutral-stroke-on-brand;
+
+      @variant forced-colors {
+        @apply border-e-[HighlightText];
+
+        @variant group-hover/fui-split-button, group-hover-active/fui-split-button {
+          @apply border-e-[Highlight];
+        }
+      }
+    }
+
+    @variant group-appearance-subtle/fui-split-button, group-appearance-transparent/fui-split-button {
+      @apply border-e-transparent-background;
+
+      @variant group-hover/fui-split-button {
+        @apply border-e-transparent-background-hover;
+      }
+
+      @variant group-hover-active/fui-split-button {
+        @apply border-e-transparent-background-pressed;
+      }
+
+      /* The divider edge is a LOGICAL longhand, so it is not touched by the physical
+         `border-color` shorthand Button uses for its forced-colors focus crossing — and this
+         layer outranks that crossing anyway. Griffel's media bucket trails its whole sheet, so
+         its divider takes ButtonText with the other three edges; repeat that here. Nothing else
+         is repeated: the hover and pressed edges already agree. */
+      @variant forced-colors {
+        @variant focus {
+          @apply border-e-[ButtonText];
+        }
+      }
+    }
+
+    /* Last in the block: equal specificity to the appearance rules above, and the disabled
+       divider colour must win over them in every interaction state. */
+    @variant group-disabled/fui-split-button, group-disabled-focusable/fui-split-button {
+      @apply border-e-neutral-stroke-disabled;
+
+      @variant forced-colors {
+        @apply border-e-[GrayText];
+      }
+    }
+  }
+}
+
+@layer fui.components.l3 {
+  /* The menu button slot renders a windmod MenuButton, whose own root block is l2. */
+  .menu-button {
+    @apply min-w-24 rounded-s-none border-s-0;
+  }
+}

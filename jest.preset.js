@@ -27,6 +27,27 @@ const reactDepsPaths = {
 };
 
 /**
+ * CSS Modules support (react-windmod-preview / react-tailwind-theme-preview).
+ *
+ * Jest resolves `@fluentui/*` to SOURCE via the tsconfig path aliases above, so any suite
+ * that renders a windmod component evaluates `import styles from './X.module.css'`.
+ * Without a mapper those suites fail to *run*, so the mapper is repo-wide rather than
+ * per-package (it only matches `*.module.css`, which no Griffel package imports).
+ *
+ * Resolved by path (not via `require('@fluentui/scripts-jest')`) to keep this file free
+ * of workspace requires: scripts/jest pulls in @fluentui/scripts-monorepo, which walks
+ * the repo on load.
+ *
+ * Caveat: Jest MERGES `moduleNameMapper` from a preset, but a project-level
+ * `snapshotSerializers` REPLACES the preset's array — packages that declare their own
+ * serializers AND consume windmod classes must list the css-modules serializer themselves.
+ */
+const cssModulesJest = {
+  moduleNameMapperTarget: require.resolve('./scripts/jest/src/css-modules/proxy.js'),
+  snapshotSerializer: require.resolve('./scripts/jest/src/css-modules/serializer.js'),
+};
+
+/**
  * @type {import('@jest/types').Config.InitialOptions}
  */
 const baseConfig = {
@@ -37,7 +58,12 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   testEnvironment: 'jsdom',
-  moduleNameMapper: { ...tsPathAliases, ...reactDepsPaths },
+  moduleNameMapper: {
+    ...tsPathAliases,
+    ...reactDepsPaths,
+    '\\.module\\.css$': cssModulesJest.moduleNameMapperTarget,
+  },
+  snapshotSerializers: [cssModulesJest.snapshotSerializer],
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],

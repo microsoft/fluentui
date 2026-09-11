@@ -1,0 +1,108 @@
+@reference '#theme';
+
+/* The selection animations Griffel runs on the indicator and on the two bundled glyphs.
+   Their end states differ from the resting declarations and `animation-fill-mode: both`
+   persists them, so a running selection settles on the filled glyph; cancelling the
+   animations returns every element to its static declarations instead. */
+@keyframes nav-indicator-enter {
+  0% {
+    background: transparent;
+  }
+
+  100% {
+    background: var(--color-compound-brand-foreground-1);
+  }
+}
+
+@keyframes nav-icon-filled-enter {
+  0% {
+    opacity: 0;
+    color: transparent;
+  }
+
+  100% {
+    opacity: 1;
+    color: var(--color-neutral-foreground-2-brand-selected);
+  }
+}
+
+@keyframes nav-icon-regular-exit {
+  0% {
+    opacity: 1;
+    color: var(--color-neutral-foreground-2);
+  }
+
+  100% {
+    opacity: 0;
+    color: transparent;
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex w-full cursor-pointer items-start justify-start gap-vertical-l rounded-medium border-none bg-neutral-background-4 py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s text-start font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-2 normal-case no-underline duration-faster ease-linear;
+
+    transition-property: background;
+
+    @variant hover {
+      @apply bg-neutral-background-4-hover;
+    }
+
+    @variant focus-visible {
+      @apply outline-thick -outline-offset-(--spacing-thick) outline-stroke-focus-2 outline-solid;
+    }
+
+    @variant density-small {
+      @apply py-vertical-xs;
+    }
+
+    @variant selected {
+      @apply font-semibold;
+
+      @variant after {
+        @apply absolute -ms-16 h-20 w-4 rounded-circular bg-compound-brand-foreground-1;
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-indicator-enter;
+        animation-timing-function: var(--ease-linear);
+      }
+
+      @variant forced-colors {
+        @variant after {
+          @apply outline-thick -outline-offset-(--spacing-thick) outline-transparent-stroke outline-solid;
+        }
+      }
+    }
+  }
+
+  .icon {
+    @apply grid min-h-20 min-w-20 justify-center overflow-hidden;
+
+    @variant icon-filled {
+      @apply hidden text-transparent;
+      grid-area: overlay-area;
+    }
+
+    @variant icon-regular {
+      @apply inline;
+      grid-area: overlay-area;
+    }
+
+    @variant group-selected/fui-nav-item {
+      @variant icon-filled {
+        @apply inline;
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-filled-enter;
+        animation-timing-function: var(--ease-linear);
+      }
+
+      @variant icon-regular {
+        animation-duration: var(--duration-faster);
+        animation-fill-mode: both;
+        animation-name: nav-icon-regular-exit;
+        animation-timing-function: var(--ease-linear);
+      }
+    }
+  }
+}

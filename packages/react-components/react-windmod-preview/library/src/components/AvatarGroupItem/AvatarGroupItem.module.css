@@ -1,0 +1,163 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-flex shrink-0 items-center;
+  }
+
+  .non-overflow-item {
+    --fui-avatar-group-item-size: calc(attr(data-size type(<number>), 32) * 1px);
+
+    @apply size-(--fui-avatar-group-item-size) rounded-circular;
+  }
+
+  .overflow-item {
+    @apply px-horizontal-xs py-vertical-xs;
+  }
+
+  .overflow-label {
+    @apply ms-horizontal-s font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
+  }
+
+  .stack-thick {
+    box-shadow: 0 0 0 var(--stroke-width-thick) var(--color-neutral-background-2);
+  }
+
+  .stack-thicker {
+    box-shadow: 0 0 0 var(--stroke-width-thicker) var(--color-neutral-background-2);
+  }
+
+  .stack-thickest {
+    box-shadow: 0 0 0 var(--stroke-width-thickest) var(--color-neutral-background-2);
+  }
+
+  /* A single logical margin reproduces the physical left/right pair Griffel picks between by
+     reading `dir`. */
+  .stack-gap-xxs {
+    @variant not-first {
+      @apply -ms-horizontal-xxs;
+    }
+  }
+
+  .stack-gap-xs {
+    @variant not-first {
+      @apply -ms-horizontal-xs;
+    }
+  }
+
+  .stack-gap-s {
+    @variant not-first {
+      @apply -ms-horizontal-s;
+    }
+  }
+
+  .stack-gap-l {
+    @variant not-first {
+      @apply -ms-horizontal-l;
+    }
+  }
+
+  .spread-gap-s {
+    @variant not-first {
+      @apply ms-horizontal-s;
+    }
+  }
+
+  .spread-gap-m-nudge {
+    @variant not-first {
+      @apply ms-horizontal-m-nudge;
+    }
+  }
+
+  .spread-gap-l {
+    @variant not-first {
+      @apply ms-horizontal-l;
+    }
+  }
+
+  .spread-gap-xl {
+    @variant not-first {
+      @apply ms-horizontal-xl;
+    }
+  }
+
+  .pie {
+    @apply absolute;
+  }
+
+  /* The RTL half mirrors the four clip-paths and moves the two three-slice quadrants back to the
+     inline start; `transform-origin` has no RTL twin on Griffel and stays physically top-left. */
+  .pie-slices {
+    &:nth-of-type(1):nth-last-of-type(2),
+    &:nth-of-type(1):nth-last-of-type(3) {
+      @apply -start-1/4;
+
+      clip-path: inset(0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)) 0 25%);
+    }
+
+    &:nth-of-type(2):nth-last-of-type(1) {
+      @apply start-1/4;
+
+      clip-path: inset(0 25% 0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)));
+    }
+
+    &:nth-of-type(2):nth-last-of-type(2) {
+      @apply start-1/2 origin-top-left scale-50;
+
+      clip-path: inset(0 0 var(--fui-avatar-group-item-divider-width) var(--fui-avatar-group-item-divider-width));
+    }
+
+    &:nth-of-type(3):nth-last-of-type(1) {
+      @apply start-1/2 top-1/2 origin-top-left scale-50;
+
+      clip-path: inset(var(--fui-avatar-group-item-divider-width) 0 0 var(--fui-avatar-group-item-divider-width));
+    }
+
+    @variant rtl {
+      &:nth-of-type(1):nth-last-of-type(2),
+      &:nth-of-type(1):nth-last-of-type(3) {
+        clip-path: inset(0 25% 0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)));
+      }
+
+      &:nth-of-type(2):nth-last-of-type(1) {
+        clip-path: inset(0 calc(25% + (var(--fui-avatar-group-item-divider-width) / 2)) 0 25%);
+      }
+
+      &:nth-of-type(2):nth-last-of-type(2) {
+        @apply start-0;
+
+        clip-path: inset(0 var(--fui-avatar-group-item-divider-width) var(--fui-avatar-group-item-divider-width) 0);
+      }
+
+      &:nth-of-type(3):nth-last-of-type(1) {
+        @apply start-0;
+
+        clip-path: inset(var(--fui-avatar-group-item-divider-width) var(--fui-avatar-group-item-divider-width) 0 0);
+      }
+    }
+  }
+
+  .pie-divider-thick {
+    --fui-avatar-group-item-divider-width: var(--stroke-width-thick);
+  }
+
+  .pie-divider-thicker {
+    --fui-avatar-group-item-divider-width: var(--stroke-width-thicker);
+  }
+
+  .pie-divider-thickest {
+    --fui-avatar-group-item-divider-width: var(--stroke-width-thickest);
+  }
+}
+
+@layer fui.components.l2 {
+  /* The avatar slot renders a windmod Avatar; these blocks override its own l1 root
+     (`position: relative`, `rounded-circular`), so they sit one level above it. */
+  .avatar-non-overflow {
+    @apply absolute;
+  }
+
+  .avatar-pie {
+    @apply rounded-none;
+  }
+}

@@ -1,0 +1,55 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline cursor-pointer text-start font-base text-base-300 font-regular text-brand-foreground-link no-underline decoration-thin select-text;
+    overflow: inherit;
+    text-overflow: inherit;
+
+    @variant hover {
+      @apply text-brand-foreground-link-hover underline;
+    }
+
+    @variant active {
+      @apply text-brand-foreground-link-pressed underline;
+    }
+
+    @variant appearance-subtle {
+      @apply text-neutral-foreground-2-link;
+
+      @variant hover {
+        @apply text-neutral-foreground-2-link-hover underline;
+      }
+
+      @variant active {
+        @apply text-neutral-foreground-2-link-pressed underline;
+      }
+    }
+
+    @variant inline {
+      @apply underline;
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed text-neutral-foreground-disabled no-underline;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+
+    /* Must stay last in this block: the catalog variants are specificity-neutral `:where()`,
+       so only source order keeps the focus underline ahead of the disabled `no-underline`. */
+    @variant focus-visible {
+      @apply underline decoration-stroke-focus-2 decoration-double outline-none;
+    }
+  }
+
+  .href {
+    @apply text-[length:inherit];
+  }
+
+  .button {
+    @apply border-none;
+  }
+}

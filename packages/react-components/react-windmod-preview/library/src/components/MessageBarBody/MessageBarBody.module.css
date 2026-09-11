@@ -1,0 +1,8 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply pe-horizontal-m font-base text-base-300 leading-20/14 font-regular;
+    grid-area: body;
+  }
+}

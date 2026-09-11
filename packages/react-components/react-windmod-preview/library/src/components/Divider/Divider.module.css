@@ -1,0 +1,151 @@
+@reference '#theme';
+
+/* The two line segments are the root's ::before / ::after. They carry no module class, so
+   they are reached with Tailwind's built-in before/after variants, which also supply
+   `content: var(--tw-content)` — registered with initial-value "" — for every state. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex grow flex-row items-center text-center font-base text-base-200 leading-16/12 font-regular;
+
+    @variant before, after {
+      @apply flex grow;
+    }
+
+    @variant horizontal {
+      @apply w-full;
+
+      @variant before, after {
+        @apply min-w-8 border-t-thin;
+      }
+
+      @variant inset {
+        @apply px-12;
+      }
+
+      @variant align-content-start {
+        @apply text-start;
+
+        @variant before {
+          @apply me-12 max-w-8;
+        }
+
+        @variant after {
+          @apply ms-12;
+        }
+      }
+
+      @variant align-content-center {
+        @variant before {
+          @apply me-12;
+        }
+
+        @variant after {
+          @apply ms-12;
+        }
+      }
+
+      @variant align-content-end {
+        @apply text-end;
+
+        @variant before {
+          @apply me-12;
+        }
+
+        @variant after {
+          @apply ms-12 max-w-8;
+        }
+      }
+    }
+
+    @variant vertical {
+      @apply min-h-20 flex-col;
+
+      @variant before, after {
+        @apply min-h-8 border-e-thin;
+      }
+
+      @variant not-empty {
+        @apply min-h-84;
+      }
+
+      @variant inset {
+        @apply my-12;
+      }
+
+      @variant align-content-start {
+        @variant before {
+          @apply mb-12 max-h-8;
+        }
+
+        @variant after {
+          @apply mt-12;
+        }
+      }
+
+      @variant align-content-center {
+        @variant before {
+          @apply mb-12;
+        }
+
+        @variant after {
+          @apply mt-12;
+        }
+      }
+
+      @variant align-content-end {
+        @variant before {
+          @apply mb-12;
+        }
+
+        @variant after {
+          @apply mt-12 max-h-8;
+        }
+      }
+    }
+
+    /* Must stay last in this block: it zeroes the alignment margins at equal specificity,
+       so source order alone carries the cascade. Orientation-independent, as in Griffel. */
+    @variant empty {
+      @variant before {
+        @apply me-0 mb-0;
+      }
+
+      @variant after {
+        @apply ms-0 mt-0;
+      }
+    }
+  }
+
+  .brand {
+    @apply text-brand-foreground-1;
+
+    @variant before, after {
+      @apply border-brand-stroke-1;
+    }
+  }
+
+  .default {
+    @apply text-neutral-foreground-2;
+
+    @variant before, after {
+      @apply border-neutral-stroke-2;
+    }
+  }
+
+  .subtle {
+    @apply text-neutral-foreground-3;
+
+    @variant before, after {
+      @apply border-neutral-stroke-3;
+    }
+  }
+
+  .strong {
+    @apply text-neutral-foreground-1;
+
+    @variant before, after {
+      @apply border-neutral-stroke-1;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@reference '#theme';
+
+/* The type ramp is body1 at ALL THREE sizes — Griffel spells `body1` in every size bucket — so only
+   the block padding steps with the picker size. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply max-w-full min-w-24 grow border-none bg-transparent-background font-base text-base-300 leading-20/14 text-neutral-foreground-1;
+
+    /* Written inline as 100% by the headless input hook once the text overflows; 0 otherwise, so
+       flex-grow decides the resting width and a full row is taken only when needed. The custom
+       property name is fixed by that hook, camel segment and double underscore included. */
+    width: var(--fluent-TagPickerInput__width, 0);
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant after {
+      @apply invisible whitespace-pre-wrap;
+    }
+
+    @variant group-size-medium/fui-tag-picker-control {
+      @apply py-vertical-s-nudge;
+    }
+
+    @variant group-size-large/fui-tag-picker-control {
+      @apply py-vertical-m-nudge;
+    }
+
+    @variant group-size-extra-large/fui-tag-picker-control {
+      @apply py-vertical-m;
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+/*
+ * Demo chrome for the Overflow documentation story. Plain CSS Modules (no Tailwind, no theme
+ * reference), authored the way any CONSUMER stylesheet is authored: unlayered. That matters
+ * here — the hiding rule below has to out-rank windmod Button's own `display: inline-flex`,
+ * which lives in the `fui.components.*` cascade layer, and unlayered CSS always beats layered
+ * CSS regardless of specificity.
+ */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1040px;
+}
+
+.heading {
+  font:
+    600 13px/18px system-ui,
+    sans-serif;
+  color: #242424;
+  margin: 0;
+}
+
+.note {
+  font:
+    400 13px/18px system-ui,
+    sans-serif;
+  color: #616161;
+  margin: 0;
+  max-width: 70ch;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font:
+    400 13px/18px system-ui,
+    sans-serif;
+  color: #616161;
+}
+
+/* The resizable strip the overflow engine measures. */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/*
+ * THE TWO CONSUMER RULES.
+ *
+ * Only the headless `Overflow` needs these: it ships no styling at all, so the engine stamps
+ * `data-overflowing` / `data-overflow-menu` and nothing acts on them. Griffel's
+ * `@fluentui/react-overflow` `Overflow` injects exactly these two declarations itself
+ * (useOverflowStyles.styles.ts), which is why the Griffel panel below needs no CSS from us.
+ */
+.headlessHiding [data-overflowing] {
+  display: none;
+}
+
+.headlessHiding [data-overflow-menu] {
+  flex-shrink: 0;
+}

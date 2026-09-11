@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: publish the Button, Link and Avatar contexts so a styling layer can read the look values the render functions already provide",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

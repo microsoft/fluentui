@@ -1,0 +1,51 @@
+@reference '#theme';
+
+/* Block order carries the cascade: `.circular` and `.rounded` override `.root`'s border-radius
+   at equal specificity. `.root` declares border-color alone — a border only draws once
+   `.bordered` supplies the width and style. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-block rounded-none border-neutral-stroke-1;
+  }
+
+  .block {
+    @apply w-full;
+  }
+
+  .bordered {
+    @apply border-thin border-solid;
+  }
+
+  .shadow {
+    @apply shadow-4;
+  }
+
+  .center {
+    @apply object-none object-center;
+  }
+
+  .contain {
+    @apply object-contain object-center;
+  }
+
+  .cover {
+    @apply object-cover object-center;
+  }
+
+  .none {
+    @apply object-none object-left-top;
+  }
+
+  .fit-fill {
+    @apply size-full;
+  }
+
+  .circular {
+    @apply rounded-circular;
+  }
+
+  .rounded {
+    @apply rounded-medium;
+  }
+}

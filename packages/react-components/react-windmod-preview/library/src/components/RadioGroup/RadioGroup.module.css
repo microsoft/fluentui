@@ -1,0 +1,11 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-start;
+
+    @variant layout-vertical {
+      @apply flex-col;
+    }
+  }
+}

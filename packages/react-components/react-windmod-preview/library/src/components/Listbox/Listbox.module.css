@@ -1,0 +1,31 @@
+@reference '#theme';
+
+/* The neutralisation below cancels the user-agent `[popover]` box, which applies to this element
+   whether or not it is showing — a solid border style, fixed/inset-0 placement, fit-content sizing,
+   a CanvasText colour and `position-anchor: auto`, none of which the Griffel Listbox has (its 3px
+   border width, margin and padding already fall to the base sheet's reset). The placement pair and
+   position-anchor are inert on a promoted surface (usePositioning writes position, inset, margin
+   and position-anchor inline, which outrank an authored rule); the placement pair is what makes an
+   unpromoted standalone Listbox sit in flow.
+   overflow and the max-* pair are deliberately NOT neutralised: the authored overflow-y already
+   computes both axes to Griffel's `auto`, and the user-agent max-* pair belongs to showModal().
+   The user-agent also hides an unpromoted popover outright — `[popover]:not(:popover-open)
+   { display: none }` — and what defeats that is not a neutralisation but the authored `flex` on the
+   second line: an author declaration inside a cascade layer beats a user-agent one. That is what
+   makes a standalone `<Listbox>` render at all, and therefore what makes scene combobox-listbox
+   possible.
+
+   Derived from a full computed-style dump — all 456 enumerated properties of a bare `[popover]`
+   against a bare element — rather than from a chosen property list, and confirmed against the real
+   built Listbox at 1405 properties per element in all three configurations
+   (review-combobox/r1-ua-full-dump, r1-real-parity). */
+
+@layer fui.components.l1 {
+  .root {
+    @apply static inset-auto flex h-auto w-auto min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto border-none bg-neutral-background-1 p-horizontal-xs text-inherit outline-thin outline-transparent-stroke;
+
+    /* No Tailwind utility exists for this one; it is the fifth user-agent row and the only one that
+       is not a box property, so a property list assembled by eye misses it. */
+    position-anchor: none;
+  }
+}

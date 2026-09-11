@@ -1,0 +1,145 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-grid grid-rows-[1lh_minmax(0,auto)] gap-x-horizontal-m px-horizontal-s py-vertical-s-nudge align-middle font-base text-base-300 leading-20/14;
+
+    @variant label-below {
+      @apply grid-rows-[auto_auto] justify-items-center gap-x-0 gap-y-vertical-m py-vertical-s;
+    }
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+  }
+
+  .input {
+    @apply absolute start-0 top-0 h-full w-32 opacity-0;
+
+    @variant group-label-below/fui-radio {
+      @apply h-32 w-full;
+    }
+
+    @variant enabled {
+      @apply cursor-pointer;
+    }
+  }
+
+  .indicator {
+    @apply pointer-events-none relative row-start-1 flex size-16 items-center justify-center self-center overflow-hidden rounded-circular border-thin border-solid fill-current text-icon-12 leading-20/12;
+
+    /* Raw pseudo, never Tailwind's `after` variant: the variant injects
+       `content: var(--tw-content)`, whose registered initial value renders the dot in every
+       state. The checked-only `content` lives in .defaultIndicator. */
+    &::after {
+      @apply absolute size-16 rounded-circular bg-current;
+      transform: scale(0.625);
+    }
+
+    @variant peer-enabled/fui-radio {
+      @variant peer-not-checked/fui-radio {
+        @apply border-neutral-stroke-accessible;
+
+        @variant peer-hover/fui-radio {
+          @apply border-neutral-stroke-accessible-hover;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply border-neutral-stroke-accessible-pressed;
+        }
+      }
+
+      @variant peer-checked/fui-radio {
+        @apply border-compound-brand-stroke text-compound-brand-foreground-1;
+
+        @variant peer-hover/fui-radio {
+          @apply border-compound-brand-stroke-hover text-compound-brand-foreground-1-hover;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply border-compound-brand-stroke-pressed text-compound-brand-foreground-1-pressed;
+        }
+      }
+    }
+
+    @variant peer-disabled/fui-radio {
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant forced-colors {
+      @variant peer-enabled/fui-radio {
+        @variant peer-not-checked/fui-radio {
+          @apply border-[ButtonBorder];
+        }
+
+        @variant peer-checked/fui-radio {
+          @apply border-[Highlight] text-[Highlight];
+
+          &::after {
+            @apply bg-[Highlight];
+          }
+        }
+      }
+
+      @variant peer-disabled/fui-radio {
+        @apply border-[GrayText] text-[GrayText];
+
+        &::after {
+          @apply bg-[GrayText];
+        }
+      }
+    }
+  }
+
+  .default-indicator {
+    @variant peer-checked/fui-radio {
+      &::after {
+        @apply content-[''];
+      }
+    }
+  }
+
+  .custom-indicator {
+    @variant peer-not-checked/fui-radio {
+      & > * {
+        @apply opacity-0;
+      }
+    }
+  }
+
+  .label {
+    @apply row-[1/span_2] self-start font-base text-base-300 leading-20/14 text-neutral-foreground-1;
+
+    @variant group-label-below/fui-radio {
+      @apply row-[2] text-center;
+    }
+
+    @variant peer-enabled/fui-radio {
+      @apply cursor-pointer;
+
+      @variant peer-not-checked/fui-radio {
+        @apply text-neutral-foreground-3;
+
+        @variant peer-hover/fui-radio {
+          @apply text-neutral-foreground-2;
+        }
+
+        @variant peer-hover-active/fui-radio {
+          @apply text-neutral-foreground-1;
+        }
+      }
+    }
+
+    @variant peer-disabled/fui-radio {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

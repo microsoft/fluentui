@@ -112,6 +112,67 @@ describe('export-maps-sync generator', () => {
     expect(project.readPackageJson()).toEqual(afterFirstRun);
   });
 
+  describe('static subpaths', () => {
+    it('preserves declared asset entries while regenerating the source derived ones', async () => {
+      const project = setupProject({
+        name: 'react-windmod',
+        projectConfig: {
+          metadata: { exportMap: { root: true, subpathEntryPoints: ['src/*.ts'], staticSubpaths: ['./styles.css'] } },
+        },
+        sourceFiles: ['src/badge.ts'],
+        packageJson: {
+          // `.` carries the legacy flat shape, so the generator has to rewrite it
+          exports: { '.': './lib/index.js', './styles.css': './dist/styles.css' },
+        },
+      });
+
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toContain('react-windmod');
+      expect(project.readPackageJson().exports).toEqual({
+        '.': {
+          import: { types: './dist/index.d.ts', default: './lib/index.js' },
+          require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+        },
+        './badge': {
+          import: { types: './dist/badge.d.ts', default: './lib/badge.js' },
+          require: { types: './dist/badge.d.cts', default: './lib-commonjs/badge.cjs' },
+        },
+        './styles.css': './dist/styles.css',
+        './package.json': './package.json',
+      });
+    });
+
+    it('is a no-op on the second run', async () => {
+      const project = setupProject({
+        name: 'react-windmod',
+        projectConfig: {
+          metadata: { exportMap: { root: true, subpathEntryPoints: ['src/*.ts'], staticSubpaths: ['./styles.css'] } },
+        },
+        sourceFiles: ['src/badge.ts'],
+        packageJson: { exports: { './styles.css': './dist/styles.css' } },
+      });
+
+      await generator(tree);
+      const afterFirstRun = project.readPackageJson();
+
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toBeUndefined();
+      expect(project.readPackageJson()).toEqual(afterFirstRun);
+    });
+
+    it('fails loudly when a declared entry was never authored', async () => {
+      setupProject({
+        name: 'react-windmod',
+        projectConfig: { metadata: { exportMap: { staticSubpaths: ['./styles.css'] } } },
+        packageJson: { exports: undefined },
+      });
+
+      await expect(generator(tree)).rejects.toThrow(/no exports\["\.\/styles\.css"\] entry to preserve/);
+    });
+  });
+
   describe('key ordering', () => {
     it('repairs a condition ordered so that default shadows types', async () => {
       const project = setupProject({
@@ -211,6 +272,23 @@ describe('export-maps-sync generator', () => {
       await generator(tree);
 
       expect(project.readPackageJson().exports).toBeUndefined();
+    });
+
+    it('leaves an asset only project untouched, static declaration and all', async () => {
+      const exports = { '.': './css/index.css', './styles.css': './dist/styles.css' };
+      const project = setupProject({
+        name: 'tailwind-theme',
+        projectConfig: {
+          metadata: { exportMap: { root: false, subpathEntryPoints: [], staticSubpaths: ['./styles.css'] } },
+        },
+        packageJson: { exports, main: undefined, module: undefined, typings: undefined },
+      });
+
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toBeUndefined();
+      expect(project.readPackageJson()).toMatchObject({ exports });
+      expect(project.readPackageJson().main).toBeUndefined();
     });
   });
 });

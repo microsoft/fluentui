@@ -1,0 +1,9 @@
+@reference '#theme';
+
+/* Negative margins pull the navigation row out to the header's own padding edges. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply -mx-horizontal-l -my-vertical-s;
+  }
+}

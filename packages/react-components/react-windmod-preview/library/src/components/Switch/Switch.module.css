@@ -1,0 +1,175 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-grid grid-rows-[1lh_minmax(0,auto)] gap-x-horizontal-m px-horizontal-s py-vertical-s align-middle font-base text-base-300 leading-20/14;
+
+    @variant size-small {
+      @apply text-base-200 leading-16/12;
+    }
+
+    /*
+     * A stacked single-column template, not a row: label takes row 1 alone (no longer spanning
+     * into row 2 — that row is the indicator's now) and the indicator moves to row 2, via the
+     * per-position overrides on .label and .label-above below. The vertical gap and the root's
+     * own top/bottom padding are asymmetric here because the pre-grid geometry was: the
+     * indicator's own bottom margin set the bottom edge, while the label's own (smaller) padding
+     * set both the top edge and the inter-row gap.
+     */
+    @variant label-above {
+      @apply grid-rows-[auto_auto] gap-x-0 gap-y-vertical-xs pt-vertical-xs pb-vertical-s;
+    }
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+  }
+
+  .input {
+    --fui-switch-input-width: calc(var(--spacing) * 56);
+
+    @apply absolute h-full w-(--fui-switch-input-width) cursor-pointer opacity-0;
+
+    @variant group-size-small/fui-switch {
+      --fui-switch-input-width: calc(var(--spacing) * 48);
+    }
+
+    @variant disabled-control {
+      @apply cursor-default;
+    }
+  }
+
+  .anchored {
+    @variant group-label-before/fui-switch {
+      @apply end-0 top-0;
+    }
+
+    @variant group-label-after/fui-switch {
+      @apply start-0 top-0;
+    }
+
+    @variant group-label-above/fui-switch {
+      @apply bottom-0 h-28;
+
+      @variant group-size-medium/fui-switch {
+        --fui-switch-input-width: 100%;
+      }
+    }
+  }
+
+  .indicator {
+    --fui-switch-thumb-offset: 0px;
+
+    @apply pointer-events-none row-start-1 h-20 w-40 self-center rounded-circular border-thin border-solid fill-current text-18 leading-0 duration-normal ease-easy-ease;
+
+    transition-property: background, border, color;
+
+    & > * {
+      @apply transition-[transform] duration-normal ease-easy-ease;
+      transform: translateX(var(--fui-switch-thumb-offset));
+
+      /* translateX is physical, so the offset needs an explicit RTL negation. */
+      @variant rtl {
+        transform: translateX(calc(var(--fui-switch-thumb-offset) * -1));
+      }
+    }
+
+    @variant peer-checked/fui-switch {
+      --fui-switch-thumb-offset: calc(20px * var(--base-scale));
+    }
+
+    @variant group-size-small/fui-switch {
+      @apply h-16 w-32 text-base-300;
+
+      @variant peer-checked/fui-switch {
+        --fui-switch-thumb-offset: calc(16px * var(--base-scale));
+      }
+    }
+
+    @variant peer-enabled-control/fui-switch {
+      @variant peer-not-checked/fui-switch {
+        @apply border-neutral-stroke-accessible text-neutral-stroke-accessible;
+
+        @variant peer-hover/fui-switch {
+          @apply border-neutral-stroke-accessible-hover text-neutral-stroke-accessible-hover;
+        }
+
+        @variant peer-hover-active/fui-switch {
+          @apply border-neutral-stroke-accessible-pressed text-neutral-stroke-accessible-pressed;
+        }
+      }
+
+      @variant peer-checked/fui-switch {
+        @apply border-transparent-stroke bg-compound-brand-background text-neutral-foreground-inverted;
+
+        @variant peer-hover/fui-switch {
+          @apply border-transparent-stroke-interactive bg-compound-brand-background-hover;
+        }
+
+        @variant peer-hover-active/fui-switch {
+          @apply border-transparent-stroke-interactive bg-compound-brand-background-pressed;
+        }
+      }
+    }
+
+    @variant peer-disabled-control/fui-switch {
+      @apply text-neutral-foreground-disabled;
+
+      @variant peer-not-checked/fui-switch {
+        @apply border-neutral-stroke-disabled;
+      }
+
+      @variant peer-checked/fui-switch {
+        @apply border-transparent-stroke-disabled bg-neutral-background-disabled;
+      }
+    }
+
+    @variant forced-colors {
+      @variant peer-disabled-control/fui-switch {
+        @apply border-[GrayText] text-[GrayText];
+      }
+
+      @variant peer-enabled-control/fui-switch {
+        @variant peer-checked/fui-switch {
+          @apply bg-[Highlight] text-[Canvas];
+
+          @variant peer-hover/fui-switch, peer-hover-active/fui-switch {
+            @apply bg-[Highlight] text-[Canvas];
+          }
+        }
+      }
+    }
+  }
+
+  /* Stamped on the indicator, not the label — see useSwitchStyles: the indicator is the only
+     slot with a dedicated conditional class for the above case (the label reaches it via the
+     group variant below). It moves the indicator off the shared 1lh row and onto its own second
+     row, below the label's. */
+  .label-above {
+    @apply row-[2];
+  }
+
+  .label {
+    @apply row-[1/span_2] cursor-pointer self-start font-base text-base-300 leading-20/14 text-neutral-foreground-1;
+
+    @variant group-size-small/fui-switch {
+      @apply text-base-200 leading-16/12;
+    }
+
+    @variant group-label-above/fui-switch {
+      @apply row-[1];
+    }
+
+    @variant peer-disabled-control/fui-switch {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+}

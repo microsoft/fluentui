@@ -1,0 +1,353 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply m-horizontal-none inline-flex min-w-96 items-center justify-center overflow-hidden rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-1 px-horizontal-m py-5 align-middle font-base text-base-300 leading-20/14 font-semibold text-neutral-foreground-1 no-underline duration-faster ease-easy-ease outline-none;
+
+    transition-property: background, border, color;
+
+    @variant hover {
+      @apply cursor-pointer border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+    }
+
+    @variant hover-active {
+      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+    }
+
+    @variant size-small {
+      @apply min-w-64 px-horizontal-s py-3 text-base-200 leading-16/12 font-regular;
+    }
+
+    @variant size-large {
+      @apply px-horizontal-l py-vertical-s text-base-400 leading-11/8;
+    }
+
+    /* The appearance blocks all follow this one at equal specificity, so each of them
+       re-asserts the disabled background and foreground it would otherwise win back. */
+    @variant disabled, disabled-focusable {
+      @apply cursor-not-allowed border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+
+    /* Griffel's focus indicator carries an attribute on top of the class, so it outranks every
+       border recolour by specificity. Here position carries that: the ring trails the disabled
+       sub-block, and every appearance class that recolours the border repeats it after its own. */
+    @variant focus-visible {
+      @apply fui-focus-ring;
+
+      @variant size-small {
+        @apply rounded-small;
+      }
+
+      @variant size-large {
+        @apply rounded-large;
+      }
+    }
+
+    /* Mozilla BugID 1857642 */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible {
+        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
+      }
+    }
+
+    @variant with-icon {
+      @variant size-small {
+        @apply py-1;
+      }
+
+      @variant size-large {
+        @apply py-7;
+      }
+    }
+
+    @variant icon-only {
+      @variant size-small {
+        @apply max-w-24 min-w-24 p-1;
+      }
+
+      @variant size-medium {
+        @apply max-w-32 min-w-32 p-5;
+      }
+
+      @variant size-large {
+        @apply max-w-40 min-w-40 p-7;
+      }
+    }
+
+    /* Griffel emits every forced-colors rule into its media style bucket, which its sheet writes
+       after every other bucket, so those rules outrank the resting, hover, disabled and focus
+       rules whatever their source position. Source order is the only equivalent here: the
+       forced-colors look therefore trails every class block, and each appearance class below
+       repeats whatever it would otherwise win back from this one. */
+    @variant forced-colors {
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant hover, hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+      }
+    }
+  }
+
+  .icon {
+    @apply inline-flex size-20 items-center justify-center text-icon-20 leading-100;
+
+    --fui-button-icon-spacing: calc(6px * var(--base-scale));
+
+    @variant group-not-empty/fui-button {
+      @variant group-icon-before/fui-button {
+        @apply me-(--fui-button-icon-spacing);
+      }
+
+      @variant group-icon-after/fui-button {
+        @apply ms-(--fui-button-icon-spacing);
+      }
+    }
+
+    @variant group-size-small/fui-button {
+      @apply leading-80;
+
+      --fui-button-icon-spacing: calc(4px * var(--base-scale));
+    }
+
+    @variant group-size-large/fui-button {
+      @apply size-24 text-icon-24 leading-22/24;
+    }
+
+    @variant group-appearance-subtle/fui-button {
+      @variant group-hover/fui-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant group-hover-active/fui-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+
+      @variant forced-colors {
+        @variant group-hover/fui-button, group-hover-active/fui-button {
+          @apply text-[Highlight];
+        }
+      }
+    }
+
+    /* Glyph swap on hover — the icon-filled/icon-regular variants select the glyphs as this
+       slot's direct children. Every icon rule shares equal specificity, so in-block order
+       carries the cascade: appearance-hover swaps before the disabled swap-back, which must
+       win last. */
+    @variant group-appearance-subtle/fui-button, group-appearance-transparent/fui-button {
+      @variant group-hover/fui-button, group-hover-active/fui-button {
+        @variant icon-filled {
+          @apply inline;
+        }
+
+        @variant icon-regular {
+          @apply hidden;
+        }
+      }
+    }
+
+    /* Group-variant form; equal specificity to the appearance-hover icon-color and glyph-swap
+       rules above, so source order alone must put the disabled swap-back after them. */
+    @variant group-disabled/fui-button, group-disabled-focusable/fui-button {
+      @apply text-neutral-foreground-disabled;
+
+      @variant group-hover/fui-button, group-hover-active/fui-button {
+        @apply text-neutral-foreground-disabled;
+      }
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+
+        @variant group-hover/fui-button, group-hover-active/fui-button {
+          @apply text-[GrayText];
+        }
+      }
+
+      @variant group-hover/fui-button, group-hover-active/fui-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
+    }
+  }
+
+  .outline {
+    @apply bg-transparent-background;
+
+    @variant hover {
+      @apply bg-transparent-background-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed;
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply bg-transparent-background;
+    }
+
+    /* Background only: this class never touches the border or the text, so .root's trailing
+       forced-colors block still supplies both. */
+    @variant forced-colors {
+      @variant hover, hover-active {
+        @apply bg-[HighlightText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply bg-[ButtonFace];
+      }
+    }
+  }
+
+  .primary {
+    @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
+
+    @variant hover {
+      @apply bg-brand-background-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-brand-background-pressed;
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant focus-visible {
+      @apply border-stroke-focus-2;
+
+      box-shadow:
+        var(--shadow-2),
+        0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset,
+        0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
+
+      @variant hover {
+        @apply border-stroke-focus-2;
+
+        box-shadow:
+          var(--shadow-2),
+          0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
+      }
+    }
+
+    /* Mozilla BugID 1857642 */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible {
+        box-shadow:
+          var(--shadow-2),
+          0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
+          0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
+
+        @variant hover {
+          box-shadow:
+            var(--shadow-2),
+            0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
+        }
+      }
+    }
+
+    @variant forced-colors {
+      @apply border-[HighlightText] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+      @variant hover, hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      /* Griffel reaches this from the base rule, where the focus pseudo-class outranks this
+         appearance by specificity inside the shared media bucket. */
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+      }
+    }
+  }
+
+  .subtle {
+    @apply border-transparent bg-subtle-background text-neutral-foreground-2;
+
+    @variant hover {
+      @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply bg-transparent-background text-neutral-foreground-disabled;
+    }
+
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+    }
+
+    @variant forced-colors {
+      @variant hover, hover-active {
+        @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+      }
+
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+      }
+    }
+  }
+
+  .transparent {
+    @apply border-transparent bg-transparent-background text-neutral-foreground-2;
+
+    @variant hover {
+      @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply bg-transparent-background text-neutral-foreground-disabled;
+    }
+
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+    }
+
+    @variant forced-colors {
+      @variant hover, hover-active {
+        @apply border-[Highlight] bg-transparent-background text-[Highlight];
+      }
+
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+  }
+
+  .square {
+    @apply rounded-none;
+  }
+}

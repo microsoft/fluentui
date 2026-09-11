@@ -16,7 +16,11 @@ export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions
 }
 
 const identity = <T extends unknown>(value: T) => value;
-const addonFilePattern = /react-storybook-addon-export-to-sandbox\/[a-z/]+.[jt]s$/;
+// Both path separators on purpose: on Windows the registered preset name is an absolute
+// path with backslashes (e.g. `...\react-storybook-addon-export-to-sandbox\temp\preset.ts`);
+// a forward-slash-only pattern fails to find the registration, silently drops the addon
+// options, and the full-source babel plugin then crashes on undefined `importMappings`.
+const addonFilePattern = /react-storybook-addon-export-to-sandbox[\\/][a-z\\/]+.[jt]s$/;
 const defaultOptions = {
   webpackRule: {},
   babelLoaderOptionsUpdater: identity,

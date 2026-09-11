@@ -1,0 +1,14 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* A closed panel stays mounted here: the headless panel drops the presence wrapper that
+     carried both the collapse animation and its unmount, keeping only tabIndex and inert.
+     State inside a closed panel therefore survives a close/open cycle. */
+  .root {
+    @apply mx-horizontal-m hidden;
+
+    @variant open {
+      @apply block;
+    }
+  }
+}

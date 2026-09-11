@@ -1,0 +1,11 @@
+@reference '#theme';
+
+/* Zero padding is the shipped Griffel result, not a simplification of it: react-nav writes a
+   five-value `padding` shorthand whose var() operands parse but do not substitute, so the property
+   resolves to its initial value and suppresses DrawerFooter's reset padding with it. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply flex flex-col gap-y-vertical-xxs p-0;
+  }
+}
