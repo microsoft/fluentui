@@ -95,7 +95,10 @@ extends:
               name: Azure-Pipelines-1ESPT-ExDShared
               image: ubuntu-latest
               os: linux
-            timeoutInMinutes: 90
+              # With the full yarn install, the default agent runs out of disk space
+              demands:
+                - DiskSizeGiB -equals 128
+                - WorkFolder -equals /mnt/storage/_work
             workspace:
               clean: all
             variables:
@@ -222,6 +225,9 @@ extends:
               name: Azure-Pipelines-1ESPT-ExDShared
               image: ubuntu-latest
               os: linux
+              demands:
+                - DiskSizeGiB -equals 128
+                - WorkFolder -equals /mnt/storage/_work
             variables:
               - template: /.devops/templates/variables/variables.yml@self
               - template: /.devops/templates/variables/readonly-variables.yml@self
@@ -229,7 +235,6 @@ extends:
                   variables:
                     PACKAGES_ARTIFACT_PATH: $(Agent.BuildDirectory)/${{ parameters.packagesArtifactName }}
                     RELEASE_TOOL_ARTIFACT_PATH: $(Agent.BuildDirectory)/${{ parameters.releaseToolArtifactName }}
-                    RELEASE_TOOL_ARTIFACT_BIN: $(RELEASE_TOOL_ARTIFACT_PATH)/index.mjs
             templateContext:
               type: releaseJob
               isProduction: true
@@ -276,7 +281,7 @@ extends:
               # Release packages using the ESRP API. If this stage fails or times out, it's safe to
               # manually re-run the stage unless the result in the logs is failDoNotRetry.
               # https://github.com/microsoft/beachball/blob/main/packages/esrp-npm-release/README.md
-              - script: node "$RELEASE_TOOL_ARTIFACT_BIN"
+              - script: node "$RELEASE_TOOL_ARTIFACT_PATH/index.mjs"
                 displayName: Publish npm packages using ESRP Release API
                 # For a dry run, skip only the publish step (still verify that getting creds worked).
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
@@ -327,6 +332,8 @@ extends:
                       FLUENT_PROD_BUILD=true yarn nx run-many -t build ${{ parameters.nxScope }} --nxBail
                     displayName: Build
 
+                  # Get a token as the office-ogx-auth-helper app
+                  # https://microsoft.github.io/beachball/concepts/ci-integration/auth-helper.html
                   - task: AzureCLI@2
                     name: createToken
                     displayName: Create GitHub App token
