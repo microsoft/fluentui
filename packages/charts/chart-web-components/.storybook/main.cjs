@@ -3,6 +3,15 @@ const fs = require('node:fs');
 
 const tsConfigPath = path.resolve(__dirname, '../../../../tsconfig.base.wc.json');
 
+/**
+ * Vite's default `modules` target (`ESBUILD_MODULES_TARGET`) still lists `safari14`.
+ * esbuild >=0.27 knows Safari 14.0 has a broken destructuring implementation and it cannot lower
+ * destructuring, so it fails the build instead. Safari 14.1 is the first release with a correct
+ * implementation, so bump only that entry and keep the rest of Vite's defaults.
+ * @type {string[]}
+ */
+const esbuildModulesTarget = ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14.1'];
+
 module.exports =
   /** @type {import('@storybook/html-vite').StorybookConfig} */
   ({
@@ -24,6 +33,12 @@ module.exports =
       config.resolve.alias = {
         ...(config.resolve.alias || {}),
         ...createTypeScriptAliases(tsConfigPath),
+      };
+
+      config.build = { ...(config.build || {}), target: esbuildModulesTarget };
+      config.optimizeDeps = {
+        ...(config.optimizeDeps || {}),
+        esbuildOptions: { ...(config.optimizeDeps?.esbuildOptions || {}), target: esbuildModulesTarget },
       };
 
       // Add plugin to resolve .ts files when imported with .js extension
