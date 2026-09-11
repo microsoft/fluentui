@@ -154,6 +154,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
     containerWidthOffset?: number;
     resizableColumnsOptions?: {
         autoFitColumns?: boolean;
+        autoFitColumnsStrategy?: AutoFitColumnsStrategy;
     };
 };
 
