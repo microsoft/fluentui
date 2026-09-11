@@ -217,6 +217,9 @@
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
+      "@fluentui/react-storybook-addon-playground": [
+        "packages/react-components/react-storybook-addon-playground/src/index.ts"
+      ],
       "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/library/src/index.ts"],
       "@fluentui/react-swatch-picker-stories": ["packages/react-components/react-swatch-picker/stories/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/library/src/index.ts"],

@@ -31,6 +31,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       excludeStoriesInsertionFromPackages: [
         '@fluentui/react-storybook-addon',
         '@fluentui/react-storybook-addon-export-to-sandbox',
+        '@fluentui/react-storybook-addon-playground',
         '@fluentui/theme-designer',
         // Exclude non v9 stories
         '@fluentui/react',

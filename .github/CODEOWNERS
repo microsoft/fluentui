@@ -288,6 +288,7 @@ packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg
 packages/react-components/react-drawer/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-drawer/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
+packages/react-components/react-storybook-addon-playground @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast/library @microsoft/teams-prg

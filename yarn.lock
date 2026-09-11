@@ -3286,6 +3286,7 @@ __metadata:
     "@fluentui/react-northstar": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    "@fluentui/react-storybook-addon-playground": "npm:*"
     "@fluentui/react-timepicker-compat": "npm:*"
     "@fluentui/recipes": "npm:*"
     "@fluentui/theme-designer": "npm:*"
@@ -5571,6 +5572,29 @@ __metadata:
     dedent: "npm:^1.2.0"
   peerDependencies:
     "@storybook/react": ^9.1.17
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-storybook-addon-playground@npm:*, @fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
+  dependencies:
+    "@fluentui/react-components": "npm:^9.74.7"
+    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@swc/helpers": "npm:^0.5.1"
+    lz-string: "npm:^1.5.0"
+    monaco-editor: "npm:0.33.0"
+    prettier: "npm:2.8.8"
+    semver: "npm:^6.2.0"
+  peerDependencies:
+    "@storybook/react": ^9.1.17
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
