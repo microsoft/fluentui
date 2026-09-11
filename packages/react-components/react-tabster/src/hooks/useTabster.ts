@@ -12,10 +12,10 @@ interface WindowWithTabsterShadowDOMAPI extends Window {
   __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
 }
 
-type UseTabsterFactory<FactoryResult> = (tabster: TabsterTypes.TabsterCore) => FactoryResult;
+type UseTabsterFactory<FactoryResult> = (tabsterInstance: TabsterTypes.TabsterCore) => FactoryResult;
 
-const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabster => {
-  return tabster;
+const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabsterInstance => {
+  return tabsterInstance;
 };
 
 /**
@@ -60,13 +60,13 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefO
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
   useIsomorphicLayoutEffect(() => {
-    const tabster = createTabsterWithConfig(targetDocument);
+    const tabsterInstance = createTabsterWithConfig(targetDocument);
 
-    if (tabster) {
-      factoryResultRef.current = factory(tabster) as FactoryResult;
+    if (tabsterInstance) {
+      factoryResultRef.current = factory(tabsterInstance) as FactoryResult;
 
       return () => {
-        disposeTabster(tabster);
+        disposeTabster(tabsterInstance);
         factoryResultRef.current = null;
       };
     }

@@ -41,9 +41,9 @@ const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = ele
   return element.hasAttribute(DangerousNeverHiddenAttribute);
 };
 
-function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
-  getModalizer(tabster, undefined, tabsterAccessibleCheck);
-  getRestorer(tabster);
+function initTabsterModules(tabsterInstance: TabsterTypes.TabsterCore) {
+  getModalizer(tabsterInstance, undefined, tabsterAccessibleCheck);
+  getRestorer(tabsterInstance);
 }
 
 /**

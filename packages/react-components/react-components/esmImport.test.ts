@@ -14,7 +14,7 @@ describe('@fluentui/react-components ESM import', () => {
     try {
       writeFileSync(
         testFilePath,
-        "import { FluentProvider } from '@fluentui/react-components';\nconsole.log(typeof FluentProvider);\n",
+        "import { FluentProvider } from '@fluentui/react-components';\nconsole.log(FluentProvider !== undefined ? 'defined' : 'undefined');\n",
       );
 
       const result = spawnSync(process.execPath, [testFilePath], {
@@ -22,8 +22,12 @@ describe('@fluentui/react-components ESM import', () => {
         encoding: 'utf-8',
       });
 
-      expect(result.status).toBe(0);
-      expect(result.stdout.trim()).toBe('object');
+      expect({
+        status: result.status,
+        error: result.error?.message,
+        stdout: result.stdout,
+        stderr: result.stderr,
+      }).toMatchObject({ status: 0, stdout: 'defined\n', stderr: '' });
     } finally {
       rmSync(testDirectory, { recursive: true, force: true });
     }

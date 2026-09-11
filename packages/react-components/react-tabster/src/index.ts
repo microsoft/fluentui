@@ -39,9 +39,11 @@ export { applyFocusVisiblePolyfill } from './focus/index';
 import type { EventsTypes, Types } from 'tabster';
 import { tabster } from './tabsterCompat';
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 const dispatchGroupperMoveFocusEvent: typeof tabster.dispatchGroupperMoveFocusEvent =
   tabster.dispatchGroupperMoveFocusEvent;
 const dispatchMoverMoveFocusEvent: typeof tabster.dispatchMoverMoveFocusEvent = tabster.dispatchMoverMoveFocusEvent;
+/* eslint-enable @typescript-eslint/no-deprecated */
 const MoverMoveFocusEventName: typeof tabster.MoverMoveFocusEventName = tabster.MoverMoveFocusEventName;
 const MoverKeys: typeof tabster.MoverKeys = tabster.MoverKeys;
 const GroupperMoveFocusEventName: typeof tabster.GroupperMoveFocusEventName = tabster.GroupperMoveFocusEventName;

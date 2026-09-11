@@ -21,14 +21,14 @@ export function useFocusedElementChange(
   const listener = useEventCallback(callback);
 
   React.useEffect(() => {
-    const tabster = createTabsterWithConfig(targetDocument);
+    const tabsterInstance = createTabsterWithConfig(targetDocument);
 
-    if (tabster) {
-      tabster.focusedElement.subscribe(listener);
+    if (tabsterInstance) {
+      tabsterInstance.focusedElement.subscribe(listener);
 
       return () => {
-        tabster.focusedElement.unsubscribe(listener);
-        disposeTabster(tabster);
+        tabsterInstance.focusedElement.unsubscribe(listener);
+        disposeTabster(tabsterInstance);
       };
     }
   }, [listener, targetDocument]);
