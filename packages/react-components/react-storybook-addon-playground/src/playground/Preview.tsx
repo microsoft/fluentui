@@ -24,7 +24,9 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
     <FluentProvider ref={ref} theme={theme} className={mergeClasses(styles.root, className)}>
       {Component ? (
         <ErrorBoundary key={runId} onError={onError} fallback={placeholder}>
-          <Component />
+          <div className={styles.content}>
+            <Component />
+          </div>
         </ErrorBoundary>
       ) : (
         placeholder

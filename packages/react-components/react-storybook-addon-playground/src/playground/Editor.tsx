@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 
-import { defineEditorTheme } from './editorTheme';
+import { defineEditorTheme, EDITOR_FONT_FAMILY } from './editorTheme';
 import { useEditorStyles } from './Editor.styles';
 import { monaco } from './monaco';
 import type { ThemeOption } from './themes';
@@ -55,17 +55,26 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
     const editor = monaco.editor.create(container, {
       model,
       theme: defineEditorTheme(monaco, themeOption),
-      fontFamily: themeOption.theme.fontFamilyMonospace,
+      fontFamily: EDITOR_FONT_FAMILY,
+      fontLigatures: true,
       automaticLayout: true,
       minimap: { enabled: false },
       fontSize: 13,
+      lineHeight: 21,
       tabSize: 2,
       lineNumbersMinChars: 3,
+      lineDecorationsWidth: 12,
+      padding: { top: 14, bottom: 14 },
       scrollBeyondLastLine: false,
       smoothScrolling: true,
+      cursorBlinking: 'smooth',
+      cursorSmoothCaretAnimation: true,
+      renderLineHighlight: 'all',
       wordWrap: 'on',
       fixedOverflowWidgets: true,
       bracketPairColorization: { enabled: true },
+      guides: { bracketPairs: 'active' },
+      scrollbar: { verticalScrollbarSize: 10, horizontalScrollbarSize: 10 },
     });
     editorRef.current = editor;
 
@@ -97,7 +106,6 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
 
   React.useEffect(() => {
     monaco.editor.setTheme(defineEditorTheme(monaco, themeOption));
-    editorRef.current?.updateOptions({ fontFamily: themeOption.theme.fontFamilyMonospace });
   }, [themeOption]);
 
   React.useEffect(() => {

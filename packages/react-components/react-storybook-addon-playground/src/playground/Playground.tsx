@@ -1,11 +1,7 @@
 import * as React from 'react';
 import {
-  Badge,
   Dropdown,
   FluentProvider,
-  MessageBar,
-  MessageBarBody,
-  MessageBarTitle,
   Option,
   Spinner,
   Text,
@@ -26,15 +22,15 @@ import {
 } from '@fluentui/react-components';
 import {
   ArrowResetRegular,
-  CheckmarkCircleRegular,
+  CheckmarkCircleFilled,
   CodeRegular,
-  DocumentBulletListRegular,
-  ErrorCircleRegular,
+  DismissCircleFilled,
+  ErrorCircleFilled,
   EyeRegular,
   LinkRegular,
-  PlayRegular,
+  PlayFilled,
   TextGrammarWandRegular,
-  WarningRegular,
+  WarningFilled,
 } from '@fluentui/react-icons';
 
 import { createCodeHash } from '../url';
@@ -94,12 +90,13 @@ interface ToolbarActionProps {
   tooltip: string;
   compact: boolean;
   appearance?: 'primary' | 'subtle';
+  className?: string;
   onClick: () => void;
 }
 
 /** Toolbar button that collapses to an icon (keeping an accessible name) when the toolbar is compact. */
 const ToolbarAction = React.forwardRef<HTMLButtonElement, ToolbarActionProps>((props, ref) => {
-  const { icon, label, tooltip, compact, appearance, onClick } = props;
+  const { icon, label, tooltip, compact, appearance, className, onClick } = props;
 
   return (
     <Tooltip content={tooltip} relationship="description">
@@ -107,6 +104,7 @@ const ToolbarAction = React.forwardRef<HTMLButtonElement, ToolbarActionProps>((p
         ref={ref}
         icon={icon}
         appearance={appearance}
+        className={className}
         onClick={onClick}
         aria-label={compact ? label : undefined}
       >
@@ -116,6 +114,36 @@ const ToolbarAction = React.forwardRef<HTMLButtonElement, ToolbarActionProps>((p
   );
 });
 ToolbarAction.displayName = 'ToolbarAction';
+
+type PillTone = 'neutral' | 'success' | 'danger' | 'warning' | 'info';
+
+interface StatusPillProps {
+  tone: PillTone;
+  /** Leading icon; a dot is rendered when omitted (`pulse` animates it). */
+  icon?: React.ReactElement;
+  pulse?: boolean;
+  children: React.ReactNode;
+}
+
+const StatusPill = React.forwardRef<HTMLSpanElement, StatusPillProps>((props, ref) => {
+  const { tone, icon, pulse, children } = props;
+  const styles = usePlaygroundStyles();
+  const toneClass: Record<PillTone, string> = {
+    neutral: styles.pillNeutral,
+    success: styles.pillSuccess,
+    danger: styles.pillDanger,
+    warning: styles.pillWarning,
+    info: styles.pillInfo,
+  };
+
+  return (
+    <span ref={ref} className={mergeClasses(styles.pill, toneClass[tone])}>
+      {icon ?? <span className={mergeClasses(styles.pillDot, pulse && styles.pillDotPulse)} aria-hidden="true" />}
+      {children}
+    </span>
+  );
+});
+StatusPill.displayName = 'StatusPill';
 
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
   const { initialCode } = props;
@@ -291,20 +319,28 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const renderRunStatus = () => {
     switch (status) {
       case 'idle':
-        return <Spinner size="extra-tiny" label="Preparing…" labelPosition="after" />;
+        return (
+          <StatusPill tone="neutral" pulse>
+            Preparing
+          </StatusPill>
+        );
       case 'compiling':
-        return <Spinner size="extra-tiny" label="Compiling…" labelPosition="after" />;
+        return (
+          <StatusPill tone="info" pulse>
+            Compiling
+          </StatusPill>
+        );
       case 'ready':
         return (
-          <Badge appearance="tint" color="success" icon={<CheckmarkCircleRegular />}>
+          <StatusPill tone="success" icon={<CheckmarkCircleFilled />}>
             Ready
-          </Badge>
+          </StatusPill>
         );
       case 'error':
         return (
-          <Badge appearance="tint" color="danger" icon={<ErrorCircleRegular />}>
+          <StatusPill tone="danger" icon={<DismissCircleFilled />}>
             Error
-          </Badge>
+          </StatusPill>
         );
     }
   };
@@ -312,19 +348,28 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const renderTypingsStatus = () => {
     switch (typingsStatus) {
       case 'loading':
-        return <Spinner size="extra-tiny" label="Loading IntelliSense…" labelPosition="after" />;
+        return (
+          <StatusPill tone="neutral" pulse>
+            Loading IntelliSense
+          </StatusPill>
+        );
       case 'ready':
         return (
-          <Badge appearance="outline" color="informative">
-            TypeScript
-          </Badge>
+          <Tooltip
+            content="Auto-completion and type checking for the pre-installed packages"
+            relationship="description"
+          >
+            <StatusPill tone="info" icon={<CheckmarkCircleFilled />}>
+              IntelliSense
+            </StatusPill>
+          </Tooltip>
         );
       case 'error':
         return (
           <Tooltip content="Type declarations could not be loaded, completions are limited" relationship="description">
-            <Badge appearance="tint" color="warning" icon={<WarningRegular />}>
+            <StatusPill tone="warning" icon={<WarningFilled />}>
               Limited IntelliSense
-            </Badge>
+            </StatusPill>
           </Tooltip>
         );
     }
@@ -334,9 +379,11 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     if (status === 'error') {
       return (
         <div className={styles.placeholder} role="status">
-          <ErrorCircleRegular className={styles.placeholderIcon} />
-          <Text weight="semibold">Nothing to preview</Text>
-          <Text size={200}>Fix the error below and the preview updates automatically.</Text>
+          <span className={styles.placeholderIcon} aria-hidden="true">
+            <ErrorCircleFilled />
+          </span>
+          <span className={styles.placeholderTitle}>Nothing to preview</span>
+          <span className={styles.placeholderText}>Fix the error below and the preview updates automatically.</span>
         </div>
       );
     }
@@ -352,28 +399,32 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   return (
     <FluentProvider theme={themeOption.theme}>
-      <div ref={ref} className={mergeClasses(styles.root, split.dragging && styles.rootDragging)}>
+      <div
+        ref={ref}
+        className={mergeClasses(
+          styles.root,
+          themeOption.dark ? styles.rootDark : styles.rootLight,
+          split.dragging && styles.rootDragging,
+        )}
+      >
         <header className={styles.header}>
           <div className={styles.brand}>
             <span className={styles.brandMark} aria-hidden="true">
               <CodeRegular />
             </span>
             <div className={styles.titles}>
-              <Text as="h1" size={400} weight="semibold" className={styles.title}>
-                Fluent UI Playground
-              </Text>
-              <Text size={200} className={styles.subtitle}>
-                React v9 · TypeScript
-              </Text>
+              <h1 className={styles.title}>Fluent UI Playground</h1>
+              <span className={styles.subtitle}>React v9 · TypeScript · live preview</span>
             </div>
           </div>
 
           <Toolbar aria-label="Playground actions" className={styles.toolbar}>
             <ToolbarAction
-              icon={<PlayRegular />}
+              icon={<PlayFilled />}
               label="Run"
               tooltip={`Run the code and remount the preview (${runShortcut})`}
               appearance="primary"
+              className={mergeClasses(styles.toolbarButton, styles.runButton)}
               compact={compactToolbar}
               onClick={run}
             />
@@ -381,6 +432,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               icon={<TextGrammarWandRegular />}
               label="Format"
               tooltip={`Format the code with Prettier (${formatShortcut})`}
+              className={styles.toolbarButton}
               compact={compactToolbar}
               onClick={handleFormat}
             />
@@ -388,21 +440,24 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               icon={<ArrowResetRegular />}
               label="Reset"
               tooltip="Restore the initial code"
+              className={styles.toolbarButton}
               compact={compactToolbar}
               onClick={handleReset}
             />
-            <ToolbarDivider />
+            <ToolbarDivider className={styles.toolbarDivider} />
             <ToolbarAction
               icon={<LinkRegular />}
               label="Copy link"
               tooltip="Copy a shareable link with the current code"
+              className={styles.toolbarButton}
               compact={compactToolbar}
               onClick={handleCopyLink}
             />
-            <ToolbarDivider />
+            <ToolbarDivider className={styles.toolbarDivider} />
             <Dropdown
               aria-label="Theme"
               className={styles.themePicker}
+              appearance="filled-darker"
               size="small"
               value={themeOption.label}
               selectedOptions={[themeOption.id]}
@@ -418,11 +473,11 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         </header>
 
         <main ref={mainRef} className={styles.main} style={splitStyle}>
-          <section className={mergeClasses(styles.pane, styles.editorPane)} aria-label="Code editor">
+          <section className={styles.pane} aria-label="Code editor">
             <div className={styles.paneHeader}>
-              <span className={styles.paneTitle}>
-                <DocumentBulletListRegular />
-                <span className={styles.fileName}>{FILE_NAME}</span>
+              <span className={styles.fileTab}>
+                <span className={styles.fileTabDot} aria-hidden="true" />
+                {FILE_NAME}
               </span>
               <span className={styles.paneMeta}>{renderTypingsStatus()}</span>
             </div>
@@ -460,17 +515,18 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               placeholder={renderPlaceholder()}
             />
             {error ? (
-              <MessageBar intent="error" layout="multiline" className={styles.errorBar}>
-                <MessageBarBody>
-                  <MessageBarTitle>{error.title}</MessageBarTitle>
+              <div className={styles.errorBar} role="alert">
+                <ErrorCircleFilled className={styles.errorIcon} aria-hidden="true" />
+                <div>
+                  <p className={styles.errorTitle}>{error.title}</p>
                   <pre className={styles.errorMessage}>{error.message}</pre>
                   {component && !error.fromBoundary ? (
                     <Text size={200} className={styles.errorHint}>
                       The preview shows the last successful render.
                     </Text>
                   ) : null}
-                </MessageBarBody>
-              </MessageBar>
+                </div>
+              </div>
             ) : null}
           </section>
         </main>
