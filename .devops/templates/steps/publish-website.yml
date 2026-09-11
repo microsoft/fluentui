@@ -1,5 +1,6 @@
 # This template is no longer used in the v8 release pipeline, since v8 website updates are unlikely to be needed.
-# If this is re-enabled, the Azure service connection will need to be re-created.
+# If it's re-enabled, the Azure service connection will need to be re-created.
+# See notes in azure-pipelines.release.yml for how the template would be used.
 
 steps:
   - task: AzureCLI@2
@@ -11,7 +12,7 @@ steps:
       inlineScript: |
         az storage blob upload-batch \
         --destination 'fabric-website' \
-        --source $(System.DefaultWorkingDirectory)/apps/public-docsite/dist \
+        --source $(Agent.BuildDirectory)/fabric-website \
         --account-name fabricweb \
         --destination-path v8/$(Build.BuildNumber)/ \
         --auth-mode login \
@@ -28,7 +29,7 @@ steps:
         --account-name fabricweb \
         --container-name fabric-website \
         --name manifests/v8-df.js \
-        --file $(System.DefaultWorkingDirectory)/site-manifests/v8-df.js \
+        --file $(Agent.BuildDirectory)/site-manifests/v8-df.js \
         --auth-mode login \
         --overwrite
 
@@ -43,6 +44,6 @@ steps:
         --account-name fabricweb \
         --container-name fabric-website \
         --name manifests/v8-prod.js \
-        --file $(System.DefaultWorkingDirectory)/site-manifests/v8-prod.js \
+        --file $(Agent.BuildDirectory)/site-manifests/v8-prod.js \
         --auth-mode login \
         --overwrite
