@@ -95,7 +95,10 @@ extends:
               name: Azure-Pipelines-1ESPT-ExDShared
               image: ubuntu-latest
               os: linux
-            timeoutInMinutes: 90
+              # With the full yarn install, the default agent runs out of disk space
+              demands:
+                - DiskSizeGiB -equals 128
+                - WorkFolder -equals /mnt/storage/_work
             workspace:
               clean: all
             variables:
@@ -222,6 +225,9 @@ extends:
               name: Azure-Pipelines-1ESPT-ExDShared
               image: ubuntu-latest
               os: linux
+              demands:
+                - DiskSizeGiB -equals 128
+                - WorkFolder -equals /mnt/storage/_work
             variables:
               - template: /.devops/templates/variables/variables.yml@self
               - template: /.devops/templates/variables/readonly-variables.yml@self
