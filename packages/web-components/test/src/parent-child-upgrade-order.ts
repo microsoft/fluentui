@@ -4,6 +4,12 @@ import { template as listboxTemplate } from '../../src/listbox/listbox.template.
 import { DropdownOption } from '../../src/option/option.js';
 import { styles as optionStyles } from '../../src/option/option.styles.js';
 import { template as optionTemplate } from '../../src/option/option.template.js';
+import { RadioGroup } from '../../src/radio-group/radio-group.js';
+import { styles as radioGroupStyles } from '../../src/radio-group/radio-group.styles.js';
+import { template as radioGroupTemplate } from '../../src/radio-group/radio-group.template.js';
+import { Radio } from '../../src/radio/radio.js';
+import { styles as radioStyles } from '../../src/radio/radio.styles.js';
+import { template as radioTemplate } from '../../src/radio/radio.template.js';
 import { TreeItem } from '../../src/tree-item/tree-item.js';
 import { styles as treeItemStyles } from '../../src/tree-item/tree-item.styles.js';
 import { template as treeItemTemplate } from '../../src/tree-item/tree-item.template.js';
@@ -15,6 +21,15 @@ type ListboxUpgradeOrderResult = {
   firstOptionMultiple: boolean;
   hasOwnMultiple: boolean;
   optionsLength: number;
+};
+
+type RadioGroupUpgradeOrderResult = {
+  checkedRadioChecked: boolean;
+  checkedValue: string | null;
+  hasOwnChecked: boolean;
+  hasOwnCheckedBeforeUpgrade: boolean;
+  radiosLength: number;
+  radiosLengthBeforeUpgrade: number;
 };
 
 type TreeUpgradeOrderResult = {
@@ -79,6 +94,69 @@ const nextFrame = () => new Promise<void>(resolve => requestAnimationFrame(() =>
     firstOptionMultiple: firstOption.multiple,
     hasOwnMultiple: Object.prototype.hasOwnProperty.call(firstOption, 'multiple'),
     optionsLength: listbox.options.length,
+  };
+};
+
+(
+  window as unknown as {
+    runRadioGroupUpgradeOrderTest(): Promise<RadioGroupUpgradeOrderResult>;
+  }
+).runRadioGroupUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const radioGroupTagName = `upgrade-${id}-radio-group`;
+  const radioTagName = `upgrade-${id}-radio`;
+
+  document.body.innerHTML = `
+    <${radioGroupTagName}>
+      <${radioTagName} value="apple">Apple</${radioTagName}>
+      <${radioTagName} value="banana" checked>Banana</${radioTagName}>
+      <${radioTagName} value="orange">Orange</${radioTagName}>
+    </${radioGroupTagName}>
+  `;
+
+  await RadioGroup.define({
+    name: radioGroupTagName,
+    registry: customElements,
+    template: radioGroupTemplate,
+    styles: radioGroupStyles,
+  });
+
+  const radioGroup = document.querySelector<RadioGroup>(radioGroupTagName);
+  const pendingCheckedRadio = document.querySelector<HTMLElement>(`${radioTagName}[checked]`);
+  if (!radioGroup || !pendingCheckedRadio) {
+    throw new Error('Expected radio group and checked radio to exist.');
+  }
+
+  customElements.upgrade(radioGroup);
+  await nextFrame();
+
+  const radiosLengthBeforeUpgrade = radioGroup.radios?.length ?? 0;
+  const hasOwnCheckedBeforeUpgrade = Object.prototype.hasOwnProperty.call(pendingCheckedRadio, 'checked');
+
+  await Radio.define({
+    name: radioTagName,
+    registry: customElements,
+    template: radioTemplate,
+    styles: radioStyles,
+  });
+
+  await customElements.whenDefined(radioGroupTagName);
+  await customElements.whenDefined(radioTagName);
+  await nextFrame();
+  await nextFrame();
+
+  const checkedRadio = radioGroup.radios.find(radio => radio.value === 'banana');
+  if (!checkedRadio) {
+    throw new Error('Expected checked radio to exist.');
+  }
+
+  return {
+    checkedRadioChecked: checkedRadio.checked,
+    checkedValue: radioGroup.value,
+    hasOwnChecked: radioGroup.radios.some(radio => Object.prototype.hasOwnProperty.call(radio, 'checked')),
+    hasOwnCheckedBeforeUpgrade,
+    radiosLength: radioGroup.radios.length,
+    radiosLengthBeforeUpgrade,
   };
 };
 
