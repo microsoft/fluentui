@@ -61,7 +61,7 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   for (let sourceObject of args) {
     if (sourceObject) {
       for (let propName in sourceObject) {
-        if (sourceObject.hasOwnProperty(propName) && (!isAllowed || isAllowed(propName))) {
+        if (Object.prototype.hasOwnProperty.call(sourceObject, propName) && (!isAllowed || isAllowed(propName))) {
           target[propName] = sourceObject[propName];
         }
       }
