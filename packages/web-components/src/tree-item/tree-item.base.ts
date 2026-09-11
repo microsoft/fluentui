@@ -1,6 +1,7 @@
 import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
+import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
 export class BaseTreeItem extends FASTElement {
@@ -28,6 +29,18 @@ export class BaseTreeItem extends FASTElement {
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') || '0');
+
+    if (isTreeItem(this.parentElement)) {
+      this.slot ||= 'item';
+    }
+
+    maybeSetAutoFocus(this);
   }
 
   /**

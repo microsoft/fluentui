@@ -1,4 +1,5 @@
 import { expect, test } from '../../test/playwright/index.js';
+import type { TreeItem } from '../tree-item/tree-item.js';
 import { tagName as TreeItemTagName } from '../tree-item/tree-item.options.js';
 import { tagName } from './tree.options.js';
 
@@ -62,6 +63,8 @@ test.describe('Tree', () => {
     await expect(treeItems).toHaveCount(4);
     const nestedItems = treeItems.nth(0).locator(TreeItemTagName);
     await expect(nestedItems).toHaveCount(1);
+    await expect(nestedItems).toHaveAttribute('slot', 'item');
+    await expect.poll(() => treeItems.nth(0).evaluate((node: TreeItem) => node.childTreeItems?.length ?? 0)).toBe(1);
   });
 
   test('works with size variants - small', async ({ fastPage }) => {

@@ -49,6 +49,11 @@ export class BaseMenuList extends FASTElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
+
+    if (!this.slot && this.isNestedMenu()) {
+      this.slot = 'submenu';
+    }
+
     Updates.enqueue(() => {
       // wait until children have had a chance to
       // connect before setting/checking their props/attributes
