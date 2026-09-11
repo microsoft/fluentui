@@ -5,7 +5,7 @@ parameters:
     type: string
     values: ['official', 'experimental', 'nightly']
 
-  - name: skipYarnInstall
+  - name: installNodeOnly
     type: boolean
     default: false
 
@@ -31,19 +31,21 @@ steps:
           echo "Feature name: $EXPERIMENTAL_FEATURE_NAME"
         displayName: Validate experimental branch
 
-  # Re-attach HEAD to ensure beachball works even with fetching disabled.
-  - script: |
-      git checkout -b "$BRANCH_PATH"
-      git branch --set-upstream-to="origin/$BRANCH_PATH" "$BRANCH_PATH"
-    displayName: Re-attach HEAD
+  # Skip git operations if installNodeOnly is true, since the repo isn't checked out in a releaseJob.
+  - ${{ if not(parameters.installNodeOnly) }}:
+      # Re-attach HEAD to ensure beachball works even with fetching disabled.
+      - script: |
+          git checkout -b "$BRANCH_PATH"
+          git branch --set-upstream-to="origin/$BRANCH_PATH" "$BRANCH_PATH"
+        displayName: Re-attach HEAD
 
-  - script: |
-      git config user.name "OGX bot"
-      git config user.email "257645319+office-ogx-auth-helper[bot]@users.noreply.github.com"
-    displayName: Configure git user
+      - script: |
+          git config user.name "OGX bot"
+          git config user.email "257645319+office-ogx-auth-helper[bot]@users.noreply.github.com"
+        displayName: Configure git user
 
-  - script: echo "registry=$REGISTRY_URL" >> .npmrc
-    displayName: Configure npm registry
+      - script: echo "registry=$REGISTRY_URL" >> .npmrc
+        displayName: Configure npm registry
 
   - task: UseNode@1
     displayName: Install Node.js 22
@@ -64,17 +66,17 @@ steps:
     displayName: Print Node.js and package manager versions
 
   # Log all the environment variables since it can be useful for debugging.
-  # (This happens automatically for the built-in agents, but not for custom agents.)
   - script: |
       printenv | sort
       echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
       set -x
       git --no-pager config list
       npm config list
-      yarn config --no-defaults
+      yarn config --no-defaults || true
+    # ^ yarn v1 will be used in the releaseJob (since it skips checkout) and doesn't have this command
     displayName: Log environment
 
-  - ${{ if not(parameters.skipYarnInstall) }}:
+  - ${{ if not(parameters.installNodeOnly) }}:
       - task: npmAuthenticate@0
         displayName: npm authenticate
         inputs:

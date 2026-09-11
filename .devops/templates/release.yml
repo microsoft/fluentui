@@ -92,13 +92,11 @@ extends:
           - job: build_pack
             displayName: Build and pack
             pool:
-              name: Azure-Pipelines-1ESPT-ExDShared
-              image: ubuntu-latest
+              # Custom pool with larger, faster image (see team wiki)
+              name: fluentui-react-1es-pool
+              image: 1ES-PT-Ubuntu-24.04
               os: linux
-              # With the full yarn install, the default agent runs out of disk space
-              demands:
-                - DiskSizeGiB -equals 128
-                - WorkFolder -equals /mnt/storage/_work
+            timeoutInMinutes: 90
             workspace:
               clean: all
             variables:
@@ -222,12 +220,10 @@ extends:
           - job: npm_publish
             displayName: Publish npm packages
             pool:
-              name: Azure-Pipelines-1ESPT-ExDShared
-              image: ubuntu-latest
+              name: fluentui-react-1es-pool
+              image: 1ES-PT-Ubuntu-24.04
               os: linux
-              demands:
-                - DiskSizeGiB -equals 128
-                - WorkFolder -equals /mnt/storage/_work
+            timeoutInMinutes: 90
             variables:
               - template: /.devops/templates/variables/variables.yml@self
               - template: /.devops/templates/variables/readonly-variables.yml@self
@@ -252,7 +248,7 @@ extends:
               - template: /.devops/templates/steps/setup.yml@self
                 parameters:
                   releaseType: ${{ parameters.releaseType }}
-                  skipYarnInstall: true
+                  installNodeOnly: true
 
               - script: |
                   ls -R "$PACKAGES_ARTIFACT_PATH"
@@ -321,9 +317,10 @@ extends:
                 variables:
                   - template: /.devops/templates/variables/variables.yml@self
                 pool:
-                  name: Azure-Pipelines-1ESPT-ExDShared
-                  image: ubuntu-latest
+                  name: fluentui-react-1es-pool
+                  image: 1ES-PT-Ubuntu-24.04
                   os: linux
+                timeoutInMinutes: 90
                 steps:
                   - template: /.devops/templates/steps/setup.yml@self
                     parameters:
