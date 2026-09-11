@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import type { Types } from 'tabster';
-import { TABSTER_ATTRIBUTE_NAME } from 'tabster';
+import { tabster } from '../tabsterCompat';
+
+const { TABSTER_ATTRIBUTE_NAME } = tabster;
 
 /**
  * Merges a collection of tabster attributes.

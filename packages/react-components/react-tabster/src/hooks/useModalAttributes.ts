@@ -1,12 +1,14 @@
 'use client';
 
-import { getModalizer, getRestorer, RestorerTypes } from 'tabster';
 import type { Types as TabsterTypes } from 'tabster';
 
 import { useId } from '@fluentui/react-utilities';
+import { tabster } from '../tabsterCompat';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 import { DangerousNeverHiddenAttribute } from './useDangerousNeverHidden';
+
+const { getModalizer, getRestorer, RestorerTypes } = tabster;
 
 export interface UseModalAttributesOptions {
   /**

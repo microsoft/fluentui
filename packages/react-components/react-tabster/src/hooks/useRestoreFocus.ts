@@ -1,8 +1,10 @@
 'use client';
 
 import type { Types as TabsterTypes } from 'tabster';
-import { getRestorer, getTabsterAttribute, RestorerTypes } from 'tabster';
+import { tabster } from '../tabsterCompat';
 import { useTabster } from './useTabster';
+
+const { getRestorer, getTabsterAttribute, RestorerTypes } = tabster;
 
 /**
  * Focus will be restored to the most recent target element when it is lost from a source

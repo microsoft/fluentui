@@ -4,25 +4,14 @@
 
 ```ts
 
-import { dispatchGroupperMoveFocusEvent } from 'tabster';
-import { dispatchMoverMoveFocusEvent } from 'tabster';
-import { EventsTypes } from 'tabster';
+import type { EventsTypes } from 'tabster';
 import type { GriffelStyle } from '@griffel/react';
-import { GroupperMoveFocusActions } from 'tabster';
-import { GroupperMoveFocusEvent } from 'tabster';
-import { GroupperMoveFocusEventName } from 'tabster';
 import { KEYBORG_FOCUSIN } from 'keyborg';
 import { KeyborgFocusInEvent } from 'keyborg';
 import type { makeResetStyles } from '@griffel/react';
-import { MoverKeys } from 'tabster';
-import { MoverMemorizedElementEvent } from 'tabster';
-import { MoverMemorizedElementEventName } from 'tabster';
-import { MoverMoveFocusEvent } from 'tabster';
-import { MoverMoveFocusEventName } from 'tabster';
 import * as React_2 from 'react';
-import { TabsterMoveFocusEvent } from 'tabster';
-import { TabsterMoveFocusEventName } from 'tabster';
-import { Types } from 'tabster';
+import * as tabsterModule from 'tabster';
+import type { Types } from 'tabster';
 
 // @internal (undocumented)
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
@@ -236,9 +225,11 @@ interface DeloserProps {
     restoreFocusOrder?: RestoreFocusOrder;
 }
 
-export { dispatchGroupperMoveFocusEvent }
+// @public (undocumented)
+export const dispatchGroupperMoveFocusEvent: typeof tabster.dispatchGroupperMoveFocusEvent;
 
-export { dispatchMoverMoveFocusEvent }
+// @public (undocumented)
+export const dispatchMoverMoveFocusEvent: typeof tabster.dispatchMoverMoveFocusEvent;
 
 // @public (undocumented)
 interface Disposable {
@@ -559,7 +550,8 @@ type GroupperConstructor = (tabster: TabsterCore, element: HTMLElement, props: G
 // @public (undocumented)
 type GroupperMoveFocusAction = GroupperMoveFocusActions_2[keyof GroupperMoveFocusActions_2];
 
-export { GroupperMoveFocusActions }
+// @public (undocumented)
+export const GroupperMoveFocusActions: typeof tabster.GroupperMoveFocusActions;
 
 // @public (undocumented)
 interface GroupperMoveFocusActions_2 {
@@ -572,7 +564,8 @@ interface GroupperMoveFocusActions_2 {
 // @public (undocumented)
 const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
 
-export { GroupperMoveFocusEvent }
+// @public (undocumented)
+export const GroupperMoveFocusEvent: typeof tabster.GroupperMoveFocusEvent;
 
 // @public (undocumented)
 type GroupperMoveFocusEvent_2 = CustomEvent<{
@@ -582,7 +575,8 @@ type GroupperMoveFocusEvent_2 = CustomEvent<{
 // @public (undocumented)
 export type GroupperMoveFocusEventDetail = EventsTypes.GroupperMoveFocusEventDetail;
 
-export { GroupperMoveFocusEventName }
+// @public (undocumented)
+export const GroupperMoveFocusEventName: typeof tabster.GroupperMoveFocusEventName;
 
 // @public (undocumented)
 const GroupperMoveFocusEventName_2 = "tabster:groupper:movefocus";
@@ -784,7 +778,8 @@ const MoverEventName = "tabster:mover";
 // @public (undocumented)
 type MoverKey = MoverKeys_2[keyof MoverKeys_2];
 
-export { MoverKeys }
+// @public (undocumented)
+export const MoverKeys: typeof tabster.MoverKeys;
 
 // @public (undocumented)
 interface MoverKeys_2 {
@@ -809,14 +804,17 @@ interface MoverKeys_2 {
 // @public (undocumented)
 const MoverKeys_2: MoverKeys_2;
 
-export { MoverMemorizedElementEvent }
+// @public (undocumented)
+export const MoverMemorizedElementEvent: typeof tabster.MoverMemorizedElementEvent;
 
 // @public (undocumented)
 export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElementEventDetail;
 
-export { MoverMemorizedElementEventName }
+// @public (undocumented)
+export const MoverMemorizedElementEventName: typeof tabster.MoverMemorizedElementEventName;
 
-export { MoverMoveFocusEvent }
+// @public (undocumented)
+export const MoverMoveFocusEvent: typeof tabster.MoverMoveFocusEvent;
 
 // @public (undocumented)
 type MoverMoveFocusEvent_2 = CustomEvent<{
@@ -826,7 +824,8 @@ type MoverMoveFocusEvent_2 = CustomEvent<{
 // @public (undocumented)
 export type MoverMoveFocusEventDetail = EventsTypes.MoverMoveFocusEventDetail;
 
-export { MoverMoveFocusEventName }
+// @public (undocumented)
+export const MoverMoveFocusEventName: typeof tabster.MoverMoveFocusEventName;
 
 // @public (undocumented)
 const MoverMoveFocusEventName_2 = "tabster:mover:movefocus";
@@ -1221,7 +1220,8 @@ interface TabsterElementStorageEntry {
 // @public (undocumented)
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
-export { TabsterMoveFocusEvent }
+// @public (undocumented)
+export const TabsterMoveFocusEvent: typeof tabster.TabsterMoveFocusEvent;
 
 // @public (undocumented)
 type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
@@ -1241,7 +1241,8 @@ interface TabsterMoveFocusEventDetails {
     relatedEvent?: KeyboardEvent;
 }
 
-export { TabsterMoveFocusEventName }
+// @public (undocumented)
+export const TabsterMoveFocusEventName: typeof tabster.TabsterMoveFocusEventName;
 
 // @public (undocumented)
 type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;

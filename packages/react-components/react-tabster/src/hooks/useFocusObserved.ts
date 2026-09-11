@@ -2,8 +2,10 @@
 
 import * as React from 'react';
 import type { Types as TabsterTypes } from 'tabster';
-import { getObservedElement } from 'tabster';
+import { tabster } from '../tabsterCompat';
 import { useTabster } from './useTabster';
+
+const { getObservedElement } = tabster;
 
 interface UseFocusObservedOptions {
   /**

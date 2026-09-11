@@ -1,9 +1,11 @@
 'use client';
 
 import type { Types as TabsterTypes } from 'tabster';
-import { getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
+import { tabster } from '../tabsterCompat';
 import { useTabster } from './useTabster';
 import * as React from 'react';
+
+const { getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } = tabster;
 
 /**
  * Hook that returns tabster attributes while ensuring tabster exists

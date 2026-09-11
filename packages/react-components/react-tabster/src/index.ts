@@ -36,22 +36,23 @@ export type {
 } from './focus/index';
 
 export { applyFocusVisiblePolyfill } from './focus/index';
-import {
-  type Types,
-  type EventsTypes,
-  dispatchGroupperMoveFocusEvent,
-  dispatchMoverMoveFocusEvent,
-  MoverMoveFocusEventName,
-  MoverMoveFocusEvent,
-  MoverKeys,
-  GroupperMoveFocusEventName,
-  GroupperMoveFocusEvent,
-  GroupperMoveFocusActions,
-  MoverMemorizedElementEventName,
-  MoverMemorizedElementEvent,
-  TabsterMoveFocusEventName,
-  TabsterMoveFocusEvent,
-} from 'tabster';
+import type { EventsTypes, Types } from 'tabster';
+import { tabster } from './tabsterCompat';
+
+const dispatchGroupperMoveFocusEvent: typeof tabster.dispatchGroupperMoveFocusEvent =
+  tabster.dispatchGroupperMoveFocusEvent;
+const dispatchMoverMoveFocusEvent: typeof tabster.dispatchMoverMoveFocusEvent = tabster.dispatchMoverMoveFocusEvent;
+const MoverMoveFocusEventName: typeof tabster.MoverMoveFocusEventName = tabster.MoverMoveFocusEventName;
+const MoverMoveFocusEvent: typeof tabster.MoverMoveFocusEvent = tabster.MoverMoveFocusEvent;
+const MoverKeys: typeof tabster.MoverKeys = tabster.MoverKeys;
+const GroupperMoveFocusEventName: typeof tabster.GroupperMoveFocusEventName = tabster.GroupperMoveFocusEventName;
+const GroupperMoveFocusEvent: typeof tabster.GroupperMoveFocusEvent = tabster.GroupperMoveFocusEvent;
+const GroupperMoveFocusActions: typeof tabster.GroupperMoveFocusActions = tabster.GroupperMoveFocusActions;
+const MoverMemorizedElementEventName: typeof tabster.MoverMemorizedElementEventName =
+  tabster.MoverMemorizedElementEventName;
+const MoverMemorizedElementEvent: typeof tabster.MoverMemorizedElementEvent = tabster.MoverMemorizedElementEvent;
+const TabsterMoveFocusEventName: typeof tabster.TabsterMoveFocusEventName = tabster.TabsterMoveFocusEventName;
+const TabsterMoveFocusEvent: typeof tabster.TabsterMoveFocusEvent = tabster.TabsterMoveFocusEvent;
 
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 

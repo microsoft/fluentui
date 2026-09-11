@@ -1,9 +1,11 @@
 'use client';
 
 import type { Types } from 'tabster';
-import { getGroupper, GroupperTabbabilities } from 'tabster';
+import { tabster } from '../tabsterCompat';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
+
+const { getGroupper, GroupperTabbabilities } = tabster;
 
 export interface UseFocusableGroupOptions {
   /**

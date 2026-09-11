@@ -1,9 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { getModalizer } from 'tabster';
 import { useTimeout } from '@fluentui/react-utilities';
+import { tabster } from '../tabsterCompat';
 import { useTabster } from './useTabster';
+
+const { getModalizer } = tabster;
 
 /**
  * Returns a function that activates a modal by element from the modal or modal container.
