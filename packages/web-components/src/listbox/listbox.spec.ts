@@ -148,3 +148,25 @@ test.describe('Listbox', () => {
     await expect(element).toHaveJSProperty('dropdown', undefined);
   });
 });
+
+test.describe('Listbox upgrade order', () => {
+  test('should apply multiple state when options upgrade after the listbox', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () => {
+      return (
+        window as unknown as {
+          runListboxUpgradeOrderTest(): Promise<{
+            firstOptionMultiple: boolean;
+            hasOwnMultiple: boolean;
+            optionsLength: number;
+          }>;
+        }
+      ).runListboxUpgradeOrderTest();
+    });
+
+    expect(result.optionsLength).toBe(3);
+    expect(result.firstOptionMultiple).toBe(true);
+    expect(result.hasOwnMultiple).toBe(false);
+  });
+});
