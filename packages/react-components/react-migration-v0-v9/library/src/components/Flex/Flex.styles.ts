@@ -13,7 +13,34 @@ const paddingValues = {
   medium: '10px',
 };
 
-export const useFlexStyles = makeStyles({
+export const useFlexStyles: () => Record<
+  | 'flex'
+  | 'fill'
+  | 'inline'
+  | 'column'
+  | 'wrap'
+  | 'alignItemsFlexStart'
+  | 'alignItemsCenter'
+  | 'alignItemsFlexEnd'
+  | 'alignItemsStretch'
+  | 'justifyContentFlexStart'
+  | 'justifyContentCenter'
+  | 'justifyContentFlexEnd'
+  | 'justifyContentStretch'
+  | 'justifyContentSpaceAround'
+  | 'justifyContentSpaceBetween'
+  | 'justifyContentSpaceEvenly'
+  | 'gapForColumnFlexSmall'
+  | 'gapForColumnFlexSmaller'
+  | 'gapForColumnFlexMedium'
+  | 'gapForColumnFlexLarge'
+  | 'gapForRowFlexSmall'
+  | 'gapForRowFlexSmaller'
+  | 'gapForRowFlexMedium'
+  | 'gapForRowFlexLarge'
+  | 'paddingMedium',
+  string
+> = makeStyles({
   flex: {
     display: 'flex',
   },

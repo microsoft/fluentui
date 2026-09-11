@@ -2,20 +2,22 @@
 
 import * as React from 'react';
 import type { Types as TabsterTypes } from 'tabster';
+import * as tabsterModule from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
-import { tabster } from '../tabsterCompat';
 
-const { createTabster, disposeTabster } = tabster;
+const tabsterExports =
+  (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
+const { createTabster, disposeTabster } = tabsterExports;
 
 interface WindowWithTabsterShadowDOMAPI extends Window {
   __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
 }
 
-type UseTabsterFactory<FactoryResult> = (tabsterInstance: TabsterTypes.TabsterCore) => FactoryResult;
+type UseTabsterFactory<FactoryResult> = (tabster: TabsterTypes.TabsterCore) => FactoryResult;
 
-const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabsterInstance => {
-  return tabsterInstance;
+const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabster => {
+  return tabster;
 };
 
 /**
@@ -60,13 +62,13 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefO
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
   useIsomorphicLayoutEffect(() => {
-    const tabsterInstance = createTabsterWithConfig(targetDocument);
+    const tabster = createTabsterWithConfig(targetDocument);
 
-    if (tabsterInstance) {
-      factoryResultRef.current = factory(tabsterInstance) as FactoryResult;
+    if (tabster) {
+      factoryResultRef.current = factory(tabster) as FactoryResult;
 
       return () => {
-        disposeTabster(tabsterInstance);
+        disposeTabster(tabster);
         factoryResultRef.current = null;
       };
     }

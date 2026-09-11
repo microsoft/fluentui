@@ -1,10 +1,11 @@
 'use client';
 
 import type { Types as TabsterTypes } from 'tabster';
-import { tabster } from '../tabsterCompat';
+import * as tabsterModule from 'tabster';
 import { useTabster } from './useTabster';
 import * as React from 'react';
 
+const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
 const { getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } = tabster;
 
 /**

@@ -4536,7 +4536,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-icons@npm:^2.0.237, @fluentui/react-icons@npm:^2.0.239, @fluentui/react-icons@npm:^2.0.245, @fluentui/react-icons@npm:^2.0.306":
+"@fluentui/react-icons@npm:^2.0.237, @fluentui/react-icons@npm:^2.0.239, @fluentui/react-icons@npm:^2.0.245, @fluentui/react-icons@npm:^2.0.306, @fluentui/react-icons@npm:^2.0.336":
   version: 2.0.339
   resolution: "@fluentui/react-icons@npm:2.0.339"
   dependencies:
@@ -5305,7 +5305,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
-    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-icons": "npm:^2.0.336"
     "@fluentui/react-jsx-runtime": "npm:^9.4.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
     "@fluentui/react-tabster": "npm:^9.26.17"

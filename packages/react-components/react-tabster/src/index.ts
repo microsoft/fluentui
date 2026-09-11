@@ -37,24 +37,24 @@ export type {
 
 export { applyFocusVisiblePolyfill } from './focus/index';
 import type { EventsTypes, Types } from 'tabster';
-import { tabster } from './tabsterCompat';
+import * as tabsterModule from 'tabster';
 
+const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
 /* eslint-disable @typescript-eslint/no-deprecated */
-const dispatchGroupperMoveFocusEvent: typeof tabster.dispatchGroupperMoveFocusEvent =
-  tabster.dispatchGroupperMoveFocusEvent;
-const dispatchMoverMoveFocusEvent: typeof tabster.dispatchMoverMoveFocusEvent = tabster.dispatchMoverMoveFocusEvent;
+const { dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } = tabster;
 /* eslint-enable @typescript-eslint/no-deprecated */
-const MoverMoveFocusEventName: typeof tabster.MoverMoveFocusEventName = tabster.MoverMoveFocusEventName;
-const MoverKeys: typeof tabster.MoverKeys = tabster.MoverKeys;
-const GroupperMoveFocusEventName: typeof tabster.GroupperMoveFocusEventName = tabster.GroupperMoveFocusEventName;
-const GroupperMoveFocusActions: typeof tabster.GroupperMoveFocusActions = tabster.GroupperMoveFocusActions;
-const MoverMemorizedElementEventName: typeof tabster.MoverMemorizedElementEventName =
-  tabster.MoverMemorizedElementEventName;
-const TabsterMoveFocusEventName: typeof tabster.TabsterMoveFocusEventName = tabster.TabsterMoveFocusEventName;
-class MoverMoveFocusEvent extends tabster.MoverMoveFocusEvent {}
-class GroupperMoveFocusEvent extends tabster.GroupperMoveFocusEvent {}
-class MoverMemorizedElementEvent extends tabster.MoverMemorizedElementEvent {}
-class TabsterMoveFocusEvent extends tabster.TabsterMoveFocusEvent {}
+const {
+  MoverMoveFocusEventName,
+  MoverMoveFocusEvent,
+  MoverKeys,
+  GroupperMoveFocusEventName,
+  GroupperMoveFocusEvent,
+  GroupperMoveFocusActions,
+  MoverMemorizedElementEventName,
+  MoverMemorizedElementEvent,
+  TabsterMoveFocusEventName,
+  TabsterMoveFocusEvent,
+} = tabster;
 
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 

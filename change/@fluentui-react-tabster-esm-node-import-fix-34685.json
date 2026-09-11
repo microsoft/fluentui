@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use Tabster CJS-compatible imports in ESM output for Node consumers",
-  "packageName": "@fluentui/react-tabster",
-  "email": "copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

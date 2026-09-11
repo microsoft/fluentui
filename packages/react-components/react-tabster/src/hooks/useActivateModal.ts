@@ -1,10 +1,11 @@
 'use client';
 
 import * as React from 'react';
+import * as tabsterModule from 'tabster';
 import { useTimeout } from '@fluentui/react-utilities';
-import { tabster } from '../tabsterCompat';
 import { useTabster } from './useTabster';
 
+const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
 const { getModalizer } = tabster;
 
 /**

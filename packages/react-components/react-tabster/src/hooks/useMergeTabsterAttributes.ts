@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import type { Types } from 'tabster';
-import { tabster } from '../tabsterCompat';
+import * as tabsterModule from 'tabster';
 
+const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
 const { TABSTER_ATTRIBUTE_NAME } = tabster;
 
 /**
