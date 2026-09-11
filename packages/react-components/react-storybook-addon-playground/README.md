@@ -16,7 +16,11 @@ edited live against a pre-installed (allowlisted) set of dependencies.
 - TSX -> JS transpilation runs off the main thread in Monaco's TypeScript web worker
 - Pre-installed dependency allowlist: `react`, `react-dom`, `@fluentui/react-components`,
   `@fluentui/react-components/unstable`, `@fluentui/react-icons`
-- Live preview rendered inside `FluentProvider` with an error boundary, light/dark theme switch
+- Live preview rendered inside `FluentProvider` with an error boundary; `Run` (`Ctrl+Enter` / `Cmd+Enter`) remounts
+  the preview, compile and runtime errors are shown below it
+- Theme switch (Web / Teams, light / dark) that also themes the code editor
+- Resizable editor / preview split (drag the separator or use the arrow keys, `Enter` resets); the panes stack on
+  narrow viewports
 - Shareable URLs — the code lives in the URL hash (`playground.html#code=...`)
 
 ## Installation

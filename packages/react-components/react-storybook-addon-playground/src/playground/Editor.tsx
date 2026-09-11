@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 
+import { defineEditorTheme } from './editorTheme';
 import { useEditorStyles } from './Editor.styles';
 import { monaco } from './monaco';
+import type { ThemeOption } from './themes';
 
 export interface EditorProps {
   /** Initial value. Later changes are applied through {@link EditorProps.value} only when they differ from the model. */
@@ -10,7 +12,9 @@ export interface EditorProps {
   onChange: (value: string) => void;
   onModelReady: (model: monaco.editor.ITextModel) => void;
   onEditorReady?: (editor: monaco.editor.IStandaloneCodeEditor | null) => void;
-  dark: boolean;
+  /** Invoked by the "Run" editor action (`CtrlCmd+Enter`, also available from the command palette). */
+  onRun?: () => void;
+  themeOption: ThemeOption;
   className?: string;
 }
 
@@ -18,12 +22,14 @@ export interface EditorProps {
 const MODEL_URI = 'file:///playground/example.tsx';
 
 export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref) => {
-  const { value, onChange, onModelReady, onEditorReady, dark, className } = props;
+  const { value, onChange, onModelReady, onEditorReady, onRun, themeOption, className } = props;
   const styles = useEditorStyles();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const onChangeRef = React.useRef(onChange);
   onChangeRef.current = onChange;
+  const onRunRef = React.useRef(onRun);
+  onRunRef.current = onRun;
 
   const setContainer = React.useCallback(
     (node: HTMLDivElement | null) => {
@@ -48,16 +54,28 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
 
     const editor = monaco.editor.create(container, {
       model,
-      theme: dark ? 'vs-dark' : 'vs',
+      theme: defineEditorTheme(monaco, themeOption),
+      fontFamily: themeOption.theme.fontFamilyMonospace,
       automaticLayout: true,
       minimap: { enabled: false },
       fontSize: 13,
       tabSize: 2,
+      lineNumbersMinChars: 3,
       scrollBeyondLastLine: false,
+      smoothScrolling: true,
       wordWrap: 'on',
       fixedOverflowWidgets: true,
+      bracketPairColorization: { enabled: true },
     });
     editorRef.current = editor;
+
+    const runAction = editor.addAction({
+      id: 'playground.run',
+      label: 'Playground: Run',
+      // eslint-disable-next-line no-bitwise -- Monaco encodes key chords as bit flags
+      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter],
+      run: () => onRunRef.current?.(),
+    });
 
     const subscription = model.onDidChangeContent(() => {
       onChangeRef.current(model.getValue());
@@ -68,6 +86,7 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
 
     return () => {
       subscription.dispose();
+      runAction.dispose();
       editor.dispose();
       editorRef.current = null;
       onEditorReady?.(null);
@@ -77,8 +96,9 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
   }, []);
 
   React.useEffect(() => {
-    monaco.editor.setTheme(dark ? 'vs-dark' : 'vs');
-  }, [dark]);
+    monaco.editor.setTheme(defineEditorTheme(monaco, themeOption));
+    editorRef.current?.updateOptions({ fontFamily: themeOption.theme.fontFamilyMonospace });
+  }, [themeOption]);
 
   React.useEffect(() => {
     const model = editorRef.current?.getModel();

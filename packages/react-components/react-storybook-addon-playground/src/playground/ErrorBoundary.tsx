@@ -3,6 +3,8 @@ import * as React from 'react';
 interface ErrorBoundaryProps {
   children: React.ReactNode;
   onError: (error: Error) => void;
+  /** Rendered instead of the children after an error was caught. */
+  fallback?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -25,6 +27,6 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 
   public render(): React.ReactNode {
-    return this.state.hasError ? null : this.props.children;
+    return this.state.hasError ? this.props.fallback ?? null : this.props.children;
   }
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Badge,
   Dropdown,
   FluentProvider,
   MessageBar,
@@ -16,25 +17,40 @@ import {
   ToolbarButton,
   ToolbarDivider,
   Tooltip,
+  mergeClasses,
   useFluent,
   useId,
   useToastController,
   type OptionOnSelectData,
   type SelectionEvents,
 } from '@fluentui/react-components';
-import { ArrowResetRegular, LinkRegular, PlayRegular, TextGrammarWandRegular } from '@fluentui/react-icons';
+import {
+  ArrowResetRegular,
+  CheckmarkCircleRegular,
+  CodeRegular,
+  DocumentBulletListRegular,
+  ErrorCircleRegular,
+  EyeRegular,
+  LinkRegular,
+  PlayRegular,
+  TextGrammarWandRegular,
+  WarningRegular,
+} from '@fluentui/react-icons';
 
 import { createCodeHash } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { Editor } from './Editor';
-import { getFormatShortcutLabel, registerFormatter } from './formatter';
+import { registerFormatter } from './formatter';
 import { monaco } from './monaco';
 import { moduleLoaders } from './modules';
-import { usePlaygroundStyles } from './Playground.styles';
+import { COMPACT_TOOLBAR_QUERY, usePlaygroundStyles } from './Playground.styles';
 import { Preview } from './Preview';
 import { evaluate, PlaygroundError, type PlaygroundComponent } from './runner';
+import { getFormatShortcutLabel, getRunShortcutLabel } from './shortcuts';
 import { defaultThemeOption, getThemeOption, themeOptions } from './themes';
 import { registerTypings } from './typings';
+import { useMediaQuery } from './useMediaQuery';
+import { useSplitPane } from './useSplitPane';
 
 export interface PlaygroundProps {
   initialCode: string;
@@ -43,10 +59,16 @@ export interface PlaygroundProps {
 interface PlaygroundErrorState {
   title: string;
   message: string;
+  /** `true` when the rendered component crashed (caught by the preview's error boundary). */
+  fromBoundary?: boolean;
 }
+
+type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
+type TypingsStatus = 'loading' | 'ready' | 'error';
 
 const RUN_DEBOUNCE_MS = 400;
 const HASH_SYNC_DEBOUNCE_MS = 500;
+const FILE_NAME = 'example.tsx';
 
 function toErrorState(error: unknown): PlaygroundErrorState {
   if (error instanceof PlaygroundError) {
@@ -66,6 +88,35 @@ function toErrorState(error: unknown): PlaygroundErrorState {
   return { title: 'Error', message: String(error) };
 }
 
+interface ToolbarActionProps {
+  icon: React.ReactElement;
+  label: string;
+  tooltip: string;
+  compact: boolean;
+  appearance?: 'primary' | 'subtle';
+  onClick: () => void;
+}
+
+/** Toolbar button that collapses to an icon (keeping an accessible name) when the toolbar is compact. */
+const ToolbarAction = React.forwardRef<HTMLButtonElement, ToolbarActionProps>((props, ref) => {
+  const { icon, label, tooltip, compact, appearance, onClick } = props;
+
+  return (
+    <Tooltip content={tooltip} relationship="description">
+      <ToolbarButton
+        ref={ref}
+        icon={icon}
+        appearance={appearance}
+        onClick={onClick}
+        aria-label={compact ? label : undefined}
+      >
+        {compact ? null : label}
+      </ToolbarButton>
+    </Tooltip>
+  );
+});
+ToolbarAction.displayName = 'ToolbarAction';
+
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
   const { initialCode } = props;
   const styles = usePlaygroundStyles();
@@ -76,16 +127,19 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [component, setComponent] = React.useState<PlaygroundComponent | null>(null);
   const [runId, setRunId] = React.useState(0);
-  const [status, setStatus] = React.useState<'idle' | 'compiling' | 'ready' | 'error'>('idle');
+  const [status, setStatus] = React.useState<RunStatus>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState(defaultThemeOption.id);
-  const [typingsStatus, setTypingsStatus] = React.useState<'loading' | 'ready' | 'error'>('loading');
+  const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
 
   const runCounter = React.useRef(0);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const mainRef = React.useRef<HTMLElement | null>(null);
   const toasterId = useId('playground-toaster');
   const { dispatchToast } = useToastController(toasterId);
   const themeOption = getThemeOption(themeId);
+  const compactToolbar = useMediaQuery(COMPACT_TOOLBAR_QUERY);
+  const split = useSplitPane(mainRef);
 
   const notify = React.useCallback(
     (title: string, intent: 'success' | 'error', body?: string) => {
@@ -134,7 +188,9 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     return () => disposable.dispose();
   }, [notify]);
 
-  const formatShortcut = getFormatShortcutLabel(targetWindow?.navigator.userAgent ?? '');
+  const userAgent = targetWindow?.navigator.userAgent ?? '';
+  const formatShortcut = getFormatShortcutLabel(userAgent);
+  const runShortcut = getRunShortcutLabel(userAgent);
 
   const handleFormat = React.useCallback(() => {
     editorRef.current?.getAction('editor.action.formatDocument')?.run();
@@ -207,7 +263,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, [code, targetWindow]);
 
   const handleRuntimeError = React.useCallback((err: Error) => {
-    setError(toErrorState(err));
+    setError({ ...toErrorState(err), fromBoundary: true });
     setStatus('error');
   }, []);
 
@@ -232,44 +288,117 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }
   }, []);
 
+  const renderRunStatus = () => {
+    switch (status) {
+      case 'idle':
+        return <Spinner size="extra-tiny" label="Preparing…" labelPosition="after" />;
+      case 'compiling':
+        return <Spinner size="extra-tiny" label="Compiling…" labelPosition="after" />;
+      case 'ready':
+        return (
+          <Badge appearance="tint" color="success" icon={<CheckmarkCircleRegular />}>
+            Ready
+          </Badge>
+        );
+      case 'error':
+        return (
+          <Badge appearance="tint" color="danger" icon={<ErrorCircleRegular />}>
+            Error
+          </Badge>
+        );
+    }
+  };
+
+  const renderTypingsStatus = () => {
+    switch (typingsStatus) {
+      case 'loading':
+        return <Spinner size="extra-tiny" label="Loading IntelliSense…" labelPosition="after" />;
+      case 'ready':
+        return (
+          <Badge appearance="outline" color="informative">
+            TypeScript
+          </Badge>
+        );
+      case 'error':
+        return (
+          <Tooltip content="Type declarations could not be loaded, completions are limited" relationship="description">
+            <Badge appearance="tint" color="warning" icon={<WarningRegular />}>
+              Limited IntelliSense
+            </Badge>
+          </Tooltip>
+        );
+    }
+  };
+
+  const renderPlaceholder = () => {
+    if (status === 'error') {
+      return (
+        <div className={styles.placeholder} role="status">
+          <ErrorCircleRegular className={styles.placeholderIcon} />
+          <Text weight="semibold">Nothing to preview</Text>
+          <Text size={200}>Fix the error below and the preview updates automatically.</Text>
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles.placeholder} role="status">
+        <Spinner label={status === 'idle' ? 'Preparing the playground…' : 'Compiling your code…'} />
+      </div>
+    );
+  };
+
+  const splitStyle = { '--playground-split': `${split.percent}%` } as React.CSSProperties;
+
   return (
     <FluentProvider theme={themeOption.theme}>
-      <div ref={ref} className={styles.root}>
+      <div ref={ref} className={mergeClasses(styles.root, split.dragging && styles.rootDragging)}>
         <header className={styles.header}>
-          <Text as="h1" size={400} className={styles.title}>
-            Fluent UI React v9 Playground
-          </Text>
-          <span className={styles.status} aria-live="polite">
-            {status === 'compiling' ? <Spinner size="extra-tiny" label="Compiling…" labelPosition="after" /> : null}
-            {status === 'ready' ? <Text size={200}>Ready</Text> : null}
-            {status === 'error' ? <Text size={200}>Error</Text> : null}
-          </span>
-          {typingsStatus === 'loading' ? (
-            <span className={styles.status}>
-              <Spinner size="extra-tiny" label="Loading IntelliSense…" labelPosition="after" />
+          <div className={styles.brand}>
+            <span className={styles.brandMark} aria-hidden="true">
+              <CodeRegular />
             </span>
-          ) : null}
+            <div className={styles.titles}>
+              <Text as="h1" size={400} weight="semibold" className={styles.title}>
+                Fluent UI Playground
+              </Text>
+              <Text size={200} className={styles.subtitle}>
+                React v9 · TypeScript
+              </Text>
+            </div>
+          </div>
+
           <Toolbar aria-label="Playground actions" className={styles.toolbar}>
-            <Tooltip content="Re-run the code (remounts the preview)" relationship="description">
-              <ToolbarButton icon={<PlayRegular />} onClick={run}>
-                Run
-              </ToolbarButton>
-            </Tooltip>
-            <Tooltip content="Restore the initial code" relationship="description">
-              <ToolbarButton icon={<ArrowResetRegular />} onClick={handleReset}>
-                Reset
-              </ToolbarButton>
-            </Tooltip>
-            <Tooltip content={`Format the code with Prettier (${formatShortcut})`} relationship="description">
-              <ToolbarButton icon={<TextGrammarWandRegular />} onClick={handleFormat}>
-                Format
-              </ToolbarButton>
-            </Tooltip>
-            <Tooltip content="Copy a shareable link with the current code" relationship="description">
-              <ToolbarButton icon={<LinkRegular />} onClick={handleCopyLink}>
-                Copy link
-              </ToolbarButton>
-            </Tooltip>
+            <ToolbarAction
+              icon={<PlayRegular />}
+              label="Run"
+              tooltip={`Run the code and remount the preview (${runShortcut})`}
+              appearance="primary"
+              compact={compactToolbar}
+              onClick={run}
+            />
+            <ToolbarAction
+              icon={<TextGrammarWandRegular />}
+              label="Format"
+              tooltip={`Format the code with Prettier (${formatShortcut})`}
+              compact={compactToolbar}
+              onClick={handleFormat}
+            />
+            <ToolbarAction
+              icon={<ArrowResetRegular />}
+              label="Reset"
+              tooltip="Restore the initial code"
+              compact={compactToolbar}
+              onClick={handleReset}
+            />
+            <ToolbarDivider />
+            <ToolbarAction
+              icon={<LinkRegular />}
+              label="Copy link"
+              tooltip="Copy a shareable link with the current code"
+              compact={compactToolbar}
+              onClick={handleCopyLink}
+            />
             <ToolbarDivider />
             <Dropdown
               aria-label="Theme"
@@ -288,23 +417,58 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           </Toolbar>
         </header>
 
-        <main className={styles.main}>
-          <section className={styles.editorPane} aria-label="Code editor">
+        <main ref={mainRef} className={styles.main} style={splitStyle}>
+          <section className={mergeClasses(styles.pane, styles.editorPane)} aria-label="Code editor">
+            <div className={styles.paneHeader}>
+              <span className={styles.paneTitle}>
+                <DocumentBulletListRegular />
+                <span className={styles.fileName}>{FILE_NAME}</span>
+              </span>
+              <span className={styles.paneMeta}>{renderTypingsStatus()}</span>
+            </div>
             <Editor
               value={code}
               onChange={setCode}
               onModelReady={setModel}
               onEditorReady={handleEditorReady}
-              dark={themeOption.dark}
+              onRun={run}
+              themeOption={themeOption}
             />
           </section>
-          <section className={styles.previewPane} aria-label="Preview">
-            <Preview component={component} runId={runId} theme={themeOption.theme} onError={handleRuntimeError} />
+
+          <div
+            {...split.separatorProps}
+            aria-label="Resize editor and preview"
+            className={mergeClasses(styles.separator, split.dragging && styles.separatorActive)}
+          />
+
+          <section className={mergeClasses(styles.pane, styles.previewPane)} aria-label="Preview">
+            <div className={styles.paneHeader}>
+              <span className={styles.paneTitle}>
+                <EyeRegular />
+                Preview
+              </span>
+              <span className={styles.paneMeta} aria-live="polite">
+                {renderRunStatus()}
+              </span>
+            </div>
+            <Preview
+              component={component}
+              runId={runId}
+              theme={themeOption.theme}
+              onError={handleRuntimeError}
+              placeholder={renderPlaceholder()}
+            />
             {error ? (
               <MessageBar intent="error" layout="multiline" className={styles.errorBar}>
                 <MessageBarBody>
                   <MessageBarTitle>{error.title}</MessageBarTitle>
                   <pre className={styles.errorMessage}>{error.message}</pre>
+                  {component && !error.fromBoundary ? (
+                    <Text size={200} className={styles.errorHint}>
+                      The preview shows the last successful render.
+                    </Text>
+                  ) : null}
                 </MessageBarBody>
               </MessageBar>
             ) : null}
