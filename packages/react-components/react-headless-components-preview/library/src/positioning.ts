@@ -6,6 +6,8 @@ export type {
   PositioningImperativeRef,
   PositioningShorthand,
   PositioningShorthandValue,
+  PositioningEngine,
+  PositioningEngineReturn,
 } from './hooks/usePositioning';
 export {
   usePositioning,
