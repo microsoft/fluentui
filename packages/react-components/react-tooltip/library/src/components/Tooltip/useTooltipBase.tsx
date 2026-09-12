@@ -29,6 +29,8 @@ import { Escape } from '@fluentui/keyboard-keys';
 
 type OnPositioningEndEvent = Parameters<Exclude<PositioningProps['onPositioningEnd'], undefined>>[0];
 
+const tooltipHideBoundaryDefault = { escaped: [] };
+
 /**
  * Create the state required to render Tooltip.
  *
@@ -95,6 +97,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     position: 'above' as const,
     align: 'center' as const,
     offset: 4,
+    hideBoundaryDefault: tooltipHideBoundaryDefault,
     ...resolvedPositioning,
     onPositioningEnd,
   };

@@ -84,7 +84,7 @@ export type PositioningConfigurationFn = (params: {
 }) => PositioningConfigurationFnOptions;
 
 // @public (undocumented)
-export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'positionFixed'>;
+export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'hideBoundaryDefault' | 'positionFixed'>;
 
 // @public
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
@@ -96,7 +96,7 @@ export type PositioningImperativeRef = {
 };
 
 // @public
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'hideBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }

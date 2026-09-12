@@ -156,6 +156,26 @@ export interface PositioningOptions {
   overflowBoundary?: PositioningBoundary | null;
 
   /**
+   * The boundary used to detect when the target is hidden or the positioned element has escaped.
+   *
+   * `undefined` preserves the component's default hide boundaries. `null` resets both hide strategies to Floating UI's
+   * native clipping-ancestor behavior. An empty array ignores element clipping ancestors but still clips to the root
+   * boundary (the viewport by default). `'scrollParent'` resolves to the nearest scrollable ancestor. Elements, element
+   * arrays, and rects are forwarded unchanged.
+   */
+  hideBoundary?: PositioningBoundary | null;
+
+  /**
+   * Component-specific hide boundaries used only when `hideBoundary` is undefined.
+   *
+   * @internal
+   */
+  hideBoundaryDefault?: {
+    escaped?: PositioningBoundary | null;
+    referenceHidden?: PositioningBoundary | null;
+  };
+
+  /**
    * Applies a padding to the overflow bounadry, so that overflow is detected earlier before the
    * positioned surface hits the overflow boundary.
    */
@@ -277,6 +297,7 @@ export interface PositioningProps
     | 'coverTarget'
     | 'fallbackPositions'
     | 'flipBoundary'
+    | 'hideBoundary'
     | 'offset'
     | 'overflowBoundary'
     | 'overflowBoundaryPadding'
@@ -322,6 +343,8 @@ export type PositioningConfigurationFnOptions = Omit<
   | 'enabled'
   // Callback is not subscribed from options
   | 'onPositioningEnd'
+  // Component defaults should not be altered by global positioning configuration
+  | 'hideBoundaryDefault'
   // Is deprecated, no need to bloat the interface
   | 'positionFixed'
 >;

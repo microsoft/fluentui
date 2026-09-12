@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add a hideBoundary positioning option for customizing escaped and reference-hidden detection",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
