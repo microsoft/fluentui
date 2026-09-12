@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix histogram bar overlap on numeric x-axis",
+  "packageName": "@fluentui/react-charts",
+  "email": "24109638d@connect.polyu.hk",
+  "dependentChangeType": "patch"
+}
