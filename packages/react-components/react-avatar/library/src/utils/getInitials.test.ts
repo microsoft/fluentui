@@ -165,6 +165,9 @@ describe('getInitials', () => {
     result = getInitials('1x1', false);
     expect(result).toEqual('');
 
+    result = getInitials('1 EXT 234', false);
+    expect(result).toEqual('');
+
     result = getInitials('1y1', false);
     expect(result).toEqual('1');
 
@@ -173,6 +176,11 @@ describe('getInitials', () => {
 
     result = getInitials('A 2', false);
     expect(result).toEqual('A2');
+  });
+
+  it('handles long non-phone names', () => {
+    const result = getInitials(`${'1'.repeat(100_000)}y`, false);
+    expect(result).toEqual('1');
   });
 
   it('calculates firstInitialOnly correctly in LTR', () => {

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: improve phone number initials handling",
+  "packageName": "@fluentui/web-components",
+  "email": "paulmardling@microsoft.com"
+}
