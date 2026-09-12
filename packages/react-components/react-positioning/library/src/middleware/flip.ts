@@ -25,7 +25,7 @@ export function flip(options: FlipMiddlewareOptions): Middleware {
   return baseFlip({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
-    ...(flipBoundaryPadding && { padding: toFloatingUIPadding(flipBoundaryPadding, isRtl ?? false) }),
+    ...(flipBoundaryPadding !== undefined && { padding: toFloatingUIPadding(flipBoundaryPadding, isRtl ?? false) }),
     fallbackStrategy: 'bestFit',
     ...(fallbackPlacements.length && { fallbackPlacements }),
   });
