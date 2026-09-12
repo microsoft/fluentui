@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore Popover and TeachingPopover trigger focus after controlled and uncontrolled close without stealing intentional outside focus",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "paulmardling@microsoft.com"
+}
