@@ -1,0 +1,49 @@
+{
+  "name": "react-dashboard-grid-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-dashboard-grid-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": [],
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    },
+    "e2e": {
+      "command": "yarn nx run react-dashboard-grid-preview-stories:test-browser",
+      "configurations": {
+        "local": {
+          "command": "yarn nx run react-dashboard-grid-preview-stories:test-browser:local"
+        }
+      },
+      "metadata": {
+        "technologies": ["playwright"],
+        "description": "Run Dashboard Grid end-to-end tests"
+      }
+    },
+    "verify-bundle-isolation": {
+      "cache": true,
+      "dependsOn": ["build", "^build"],
+      "command": "yarn run -T verify-bundle-isolation",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
+      "outputs": ["{projectRoot}/dist/bundle-isolation"],
+      "metadata": {
+        "technologies": ["webpack"],
+        "description": "Assert the engine entry stays isolated from React, DOM-facing, Griffel, and Fluent UI runtimes"
+      }
+    },
+    "test-browser": {
+      "executor": "nx:noop",
+      "dependsOn": ["e2e"],
+      "metadata": {
+        "technologies": ["playwright"],
+        "description": "Run Dashboard Grid browser interaction tests"
+      }
+    }
+  }
+}

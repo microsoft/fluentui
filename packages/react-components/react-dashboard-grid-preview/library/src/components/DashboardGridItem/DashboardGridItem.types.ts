@@ -1,0 +1,46 @@
+import type * as React from 'react';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { DashboardGridItemDefinition, DashboardGridResizeDirection } from '../../state/DashboardGridStore.types';
+
+/** Slots rendered by DashboardGridItem. */
+export type DashboardGridItemSlots = {
+  /** Positioned item shell. */
+  root: NonNullable<Slot<'div'>>;
+  /** Stable content-host container. */
+  content: NonNullable<Slot<'div'>>;
+  /** Optional explicit drag handle. */
+  dragHandle?: Slot<'div'>;
+  /** Repeatable native-button resize handle. */
+  resizeHandle?: Slot<'button'>;
+  /** Optional child-grid container. */
+  subGrid?: Slot<'div'>;
+};
+
+/** Props for declarative DashboardGridItem ownership. */
+export type DashboardGridItemProps = Omit<ComponentProps<Partial<DashboardGridItemSlots>>, 'id'> & {
+  /** Grid-local item identity. Provider grids require provider-wide uniqueness. */
+  id: string;
+  /** Declarative item geometry, behavior, metadata, and nested-grid definition. */
+  item?: Partial<Omit<DashboardGridItemDefinition, 'id'>>;
+  /** React-owned item content. */
+  children?: React.ReactNode;
+
+  /** @deprecated Set `item.label`. */
+  label?: string;
+  /** @deprecated Set grid-level `resize.handles`. */
+  resizeDirections?: readonly DashboardGridResizeDirection[];
+  /** @deprecated Set grid-level `drag.cancelSelector`. */
+  cancel?: string;
+  /** @deprecated Set `item.lazyMount`. */
+  lazyMount?: boolean;
+  /** @deprecated Set `item.sizeToContent`. */
+  sizeToContent?: boolean | number;
+  /** @deprecated Set `item.print`. */
+  print?: DashboardGridItemDefinition['print'];
+  /** @internal */
+  // eslint-disable-next-line @typescript-eslint/naming-convention -- Compatibility marker retained for declarative ownership.
+  modelOwned_unstable?: boolean;
+};
+
+/** Render state for DashboardGridItem. */
+export type DashboardGridItemState = ComponentState<DashboardGridItemSlots>;

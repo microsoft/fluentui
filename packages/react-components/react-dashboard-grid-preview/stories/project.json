@@ -1,0 +1,39 @@
+{
+  "name": "react-dashboard-grid-preview-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-dashboard-grid-preview/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "implicitDependencies": [],
+  "targets": {
+    "test-browser": {
+      "dependsOn": [
+        {
+          "projects": ["react-dashboard-grid-preview"],
+          "target": "build"
+        }
+      ],
+      "command": "yarn run -T playwright test",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "configurations": {
+        "local": {
+          "command": "yarn run -T playwright test --ui"
+        }
+      },
+      "inputs": [
+        "default",
+        "{projectRoot}/playwright.config.ts",
+        {
+          "externalDependencies": ["@playwright/test"]
+        }
+      ],
+      "outputs": ["{projectRoot}/e2e/test-results"],
+      "metadata": {
+        "technologies": ["playwright"],
+        "description": "Run Dashboard Grid Storybook browser tests"
+      }
+    }
+  }
+}

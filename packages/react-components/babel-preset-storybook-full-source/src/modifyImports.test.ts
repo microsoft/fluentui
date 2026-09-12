@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { transformSync } from '@babel/core';
 import { modifyImportsPlugin as plugin, PLUGIN_NAME } from './modifyImports';
 import pluginTester from 'babel-plugin-tester';
 
@@ -24,5 +25,13 @@ describe(PLUGIN_NAME, () => {
     },
     pluginName: PLUGIN_NAME,
     plugin,
+  });
+
+  it('preserves package imports when import mappings are unavailable', () => {
+    const result = transformSync("import { Button } from '@fluentui/react-components';", {
+      plugins: [[plugin, {}]],
+    });
+
+    expect(result?.code).toContain("from '@fluentui/react-components'");
   });
 });

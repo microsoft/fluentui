@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2019"],
+    "types": [],
+    "noEmit": true
+  },
+  "include": ["./src/engine.ts", "./src/engine/**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+}
