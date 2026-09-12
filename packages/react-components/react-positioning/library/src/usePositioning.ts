@@ -1,7 +1,9 @@
 'use client';
 
+import { useAncestorMotionState_unstable } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 import { POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
@@ -26,6 +28,39 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const containerRef = React.useRef<HTMLElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
+  const ancestorMotionState = useAncestorMotionState_unstable();
+  const subscribeToAncestorMotion = React.useCallback(
+    (listener: () => void) => {
+      const states: NonNullable<typeof ancestorMotionState>[] = [];
+      let state = ancestorMotionState;
+
+      while (state) {
+        states.push(state);
+        state.listeners.add(listener);
+        state = state.parent;
+      }
+
+      return () => states.forEach(ancestorState => ancestorState.listeners.delete(listener));
+    },
+    [ancestorMotionState],
+  );
+  const getAncestorMotionSnapshot = React.useCallback(() => {
+    let state = ancestorMotionState;
+
+    while (state) {
+      if (state.active) {
+        return true;
+      }
+      state = state.parent;
+    }
+
+    return false;
+  }, [ancestorMotionState]);
+  const isMotionActive = useSyncExternalStore(
+    subscribeToAncestorMotion,
+    getAncestorMotionSnapshot,
+    getAncestorMotionSnapshot,
+  );
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
@@ -41,10 +76,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
+        isMotionActive,
         ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
-  }, [enabled, resolvePositioningOptions]);
+  }, [enabled, isMotionActive, resolvePositioningOptions]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;

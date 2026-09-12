@@ -1,7 +1,9 @@
 import { render, act } from '@testing-library/react';
 import * as React from 'react';
+import { useAncestorMotionState_unstable } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-import type { AtomMotion } from '../types';
+import type { AtomMotion, MotionImperativeRef } from '../types';
 import { createMotionComponent } from './createMotionComponent';
 import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
@@ -12,15 +14,29 @@ const motion: AtomMotion = {
 
 function createElementMock() {
   const finishMock = jest.fn();
-  const cancelMock = jest.fn();
-  const playMock = jest.fn();
+  let oncancel: Animation['oncancel'];
+  let playState: AnimationPlayState = 'running';
+  const cancelMock = jest.fn(() => {
+    playState = 'idle';
+    oncancel?.call({} as Animation, {} as AnimationPlaybackEvent);
+  });
+  const playMock = jest.fn(() => {
+    playState = 'running';
+  });
   const animateMock = jest.fn().mockImplementation(() => ({
     cancel: cancelMock,
     play: playMock,
     persist: jest.fn(),
     finish: finishMock,
+    get playState() {
+      return playState;
+    },
     set onfinish(fn: () => void) {
+      playState = 'finished';
       fn();
+    },
+    set oncancel(fn: Animation['oncancel']) {
+      oncancel = fn;
     },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
@@ -41,6 +57,83 @@ function createElementMock() {
     finishMock,
   };
 }
+
+function createControllableElementMock() {
+  let onfinish: Animation['onfinish'];
+  let oncancel: Animation['oncancel'];
+  let playState: AnimationPlayState = 'running';
+  const animation = {
+    cancel: jest.fn(() => {
+      playState = 'idle';
+    }),
+    finish: jest.fn(() => {
+      playState = 'finished';
+    }),
+    pause: jest.fn(() => {
+      playState = 'paused';
+    }),
+    play: jest.fn(() => {
+      playState = 'running';
+    }),
+    persist: jest.fn(),
+    get playState() {
+      return playState;
+    },
+    set onfinish(callback: Animation['onfinish']) {
+      onfinish = callback;
+    },
+    set oncancel(callback: Animation['oncancel']) {
+      oncancel = callback;
+    },
+  } as Partial<Animation> as Animation;
+  const ElementMock = React.forwardRef<{ animate: () => Animation }, { onChange: (active: boolean) => void }>(
+    (props, ref) => {
+      const motionState = useAncestorMotionState_unstable();
+
+      React.useImperativeHandle(ref, () => ({
+        animate: () => animation,
+      }));
+      useIsomorphicLayoutEffect(() => {
+        const notify = () => props.onChange(motionState?.active ?? false);
+        notify();
+        motionState?.listeners.add(notify);
+        return () => {
+          motionState?.listeners.delete(notify);
+        };
+      }, [motionState, props]);
+
+      return <div>ControllableElementMock</div>;
+    },
+  );
+
+  return {
+    animation,
+    ElementMock,
+    emitCancel: () => {
+      playState = 'idle';
+      oncancel?.call(animation, {} as AnimationPlaybackEvent);
+    },
+    emitFinish: () => {
+      playState = 'finished';
+      onfinish?.call(animation, {} as AnimationPlaybackEvent);
+    },
+  };
+}
+
+const MotionStateObserver = React.forwardRef<HTMLDivElement, { onChange: (active: boolean) => void }>((props, ref) => {
+  const motionState = useAncestorMotionState_unstable();
+
+  useIsomorphicLayoutEffect(() => {
+    const notify = () => props.onChange(motionState?.active ?? false);
+    notify();
+    motionState?.listeners.add(notify);
+    return () => {
+      motionState?.listeners.delete(notify);
+    };
+  }, [motionState, props]);
+
+  return <div ref={ref}>MotionStateObserver</div>;
+});
 
 describe('createMotionComponent', () => {
   let hasAnimation: boolean;
@@ -136,6 +229,126 @@ describe('createMotionComponent', () => {
 
     expect(onMotionStart).toHaveBeenCalledTimes(1);
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('publishes active motion until a skipped motion finishes', () => {
+    const TestAtom = createMotionComponent(motion);
+    const onChange = jest.fn();
+
+    render(
+      <MotionBehaviourProvider value="skip">
+        <TestAtom>
+          <MotionStateObserver onChange={onChange} />
+        </TestAtom>
+      </MotionBehaviourProvider>,
+    );
+
+    const transitions = onChange.mock.calls
+      .map(([active]) => active)
+      .filter((active, index, values) => index === 0 || active !== values[index - 1]);
+    expect(transitions).toEqual([false, true, false]);
+  });
+
+  it('tracks imperative pause, resume, and replay after completion', () => {
+    const TestAtom = createMotionComponent(motion);
+    const imperativeRef = React.createRef<MotionImperativeRef>();
+    const onChange = jest.fn();
+    const { animation, ElementMock, emitFinish } = createControllableElementMock();
+
+    render(
+      <TestAtom imperativeRef={imperativeRef}>
+        <ElementMock onChange={onChange} />
+      </TestAtom>,
+    );
+
+    expect(onChange).toHaveBeenLastCalledWith(true);
+
+    act(() => imperativeRef.current?.setPlayState('paused'));
+    expect(animation.pause).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(false);
+
+    act(() => imperativeRef.current?.setPlayState('running'));
+    expect(animation.play).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(true);
+
+    act(emitFinish);
+    expect(onChange).toHaveBeenLastCalledWith(false);
+
+    act(() => imperativeRef.current?.setPlayState('running'));
+    expect(animation.play).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenLastCalledWith(true);
+
+    act(emitFinish);
+    expect(onChange).toHaveBeenLastCalledWith(false);
+  });
+
+  it('does not let a queued replay cancellation settle the new playback cycle', () => {
+    const TestAtom = createMotionComponent(motion);
+    const onChange = jest.fn();
+    const onMotionCancel = jest.fn();
+    const onMotionFinish = jest.fn();
+    const onMotionStart = jest.fn();
+    const { ElementMock, emitCancel, emitFinish } = createControllableElementMock();
+
+    const { rerender } = render(
+      <TestAtom
+        replayKey="first"
+        onMotionCancel={onMotionCancel}
+        onMotionFinish={onMotionFinish}
+        onMotionStart={onMotionStart}
+      >
+        <ElementMock onChange={onChange} />
+      </TestAtom>,
+    );
+
+    rerender(
+      <TestAtom
+        replayKey="second"
+        onMotionCancel={onMotionCancel}
+        onMotionFinish={onMotionFinish}
+        onMotionStart={onMotionStart}
+      >
+        <ElementMock onChange={onChange} />
+      </TestAtom>,
+    );
+
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+
+    act(emitCancel);
+
+    expect(onMotionCancel).toHaveBeenCalledTimes(1);
+    expect(onMotionStart).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenLastCalledWith(true);
+
+    act(emitFinish);
+
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
+    expect(onMotionCancel).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(false);
+  });
+
+  it('does not restart a pending replay after unmount', () => {
+    const TestAtom = createMotionComponent(motion);
+    const onMotionStart = jest.fn();
+    const { animation, ElementMock, emitCancel } = createControllableElementMock();
+
+    const { rerender, unmount } = render(
+      <TestAtom replayKey="first" onMotionStart={onMotionStart}>
+        <ElementMock onChange={jest.fn()} />
+      </TestAtom>,
+    );
+
+    rerender(
+      <TestAtom replayKey="second" onMotionStart={onMotionStart}>
+        <ElementMock onChange={jest.fn()} />
+      </TestAtom>,
+    );
+    unmount();
+
+    act(emitCancel);
+
+    expect(animation.play).not.toHaveBeenCalled();
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
   });
 
   it('replays animation when replayKey changes', () => {
