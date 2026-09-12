@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: require tabster 8.8.1 for ESM/CJS/bundler-compatible imports",
+  "packageName": "@fluentui/react-tabster",
+  "email": "copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
