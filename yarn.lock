@@ -5735,7 +5735,7 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     keyborg: "npm:^2.14.1"
-    tabster: "npm:^8.8.0"
+    tabster: "npm:^8.8.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -22707,10 +22707,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyborg@npm:^2.14.0, keyborg@npm:^2.14.1":
+"keyborg@npm:^2.14.1":
   version: 2.14.1
   resolution: "keyborg@npm:2.14.1"
   checksum: 10c0/5776649f12a572b4cca590451d0baf30c88329f533a71576b3fb4da4438eafe67f4636544483431fd98f539d3057370455b6853af2eb3ba44006fbd276bb7ee0
+  languageName: node
+  linkType: hard
+
+"keyborg@npm:^3.0.0":
+  version: 3.498.0
+  resolution: "keyborg@npm:3.498.0"
+  checksum: 10c0/aae11064f664d28b006c026f9470d89b32e08dbdf5cb07cbcc43e7733c17666e0a50ff5b3936787e1dd7928776a8d3381308c7a7970f181b89827b5dee5c9535
   languageName: node
   linkType: hard
 
@@ -30337,13 +30344,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabster@npm:^8.8.0":
-  version: 8.8.0
-  resolution: "tabster@npm:8.8.0"
+"tabster@npm:^8.8.1":
+  version: 8.8.1
+  resolution: "tabster@npm:8.8.1"
   dependencies:
-    keyborg: "npm:^2.14.0"
+    keyborg: "npm:^3.0.0"
     tslib: "npm:^2.8.1"
-  checksum: 10c0/013e269b66af718d02401d26e0c6dfd5d169a18b30fb257198e68188521f43b9b093b933d6f6b56d0e7c9533e403217149bd48092db3fac3d95495964185b689
+  checksum: 10c0/e26f2e38eba89af632b44efdb6dd1e92fd8040084f1976592dac69a3cff30423fb0b6a9849ba8f011be5314d873fae2d05356e358462552be538519e513803b1
   languageName: node
   linkType: hard
 

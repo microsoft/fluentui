@@ -36,14 +36,11 @@ export type {
 } from './focus/index';
 
 export { applyFocusVisiblePolyfill } from './focus/index';
-import type { EventsTypes, Types } from 'tabster';
-import * as tabsterModule from 'tabster';
-
-const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
-/* eslint-disable @typescript-eslint/no-deprecated */
-const { dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } = tabster;
-/* eslint-enable @typescript-eslint/no-deprecated */
-const {
+import {
+  type Types,
+  type EventsTypes,
+  dispatchGroupperMoveFocusEvent,
+  dispatchMoverMoveFocusEvent,
   MoverMoveFocusEventName,
   MoverMoveFocusEvent,
   MoverKeys,
@@ -54,7 +51,7 @@ const {
   MoverMemorizedElementEvent,
   TabsterMoveFocusEventName,
   TabsterMoveFocusEvent,
-} = tabster;
+} from 'tabster';
 
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 

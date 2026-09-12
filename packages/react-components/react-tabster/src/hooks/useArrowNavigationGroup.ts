@@ -1,11 +1,8 @@
 'use client';
 
 import type { Types } from 'tabster';
-import * as tabsterModule from 'tabster';
+import { getMover, MoverDirections } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
-
-const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
-const { getMover, MoverDirections } = tabster;
 import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {

@@ -12,7 +12,7 @@ import {
   useArrowNavigationGroup,
   useFocusFinders,
   TabsterMoveFocusEventName,
-  type TabsterMoveFocusEventDetail,
+  type TabsterMoveFocusEvent,
 } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useHasParentContext } from '@fluentui/react-context-selector';
@@ -60,8 +60,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
       return;
     }
 
-    const onTabsterMoveFocus = (event: Event) => {
-      const e = event as CustomEvent<TabsterMoveFocusEventDetail>;
+    const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
       const nextElement = e.detail.next;
       if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
         // Preventing Tabster from handling Tab press, useMenuPopover will handle it.

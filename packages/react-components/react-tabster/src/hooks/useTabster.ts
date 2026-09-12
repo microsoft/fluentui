@@ -2,13 +2,9 @@
 
 import * as React from 'react';
 import type { Types as TabsterTypes } from 'tabster';
-import * as tabsterModule from 'tabster';
+import { createTabster, disposeTabster } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
-
-const tabsterExports =
-  (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
-const { createTabster, disposeTabster } = tabsterExports;
 
 interface WindowWithTabsterShadowDOMAPI extends Window {
   __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;

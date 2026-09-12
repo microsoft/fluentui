@@ -1,11 +1,8 @@
 'use client';
 
 import type { Types as TabsterTypes } from 'tabster';
-import * as tabsterModule from 'tabster';
+import { getTabsterAttribute } from 'tabster';
 import { useTabster } from './useTabster';
-
-const tabster = (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
-const { getTabsterAttribute } = tabster;
 
 /**
  * Designates an area where tabster does not control focus

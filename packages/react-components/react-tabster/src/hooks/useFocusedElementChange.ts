@@ -1,16 +1,11 @@
 'use client';
 
-import type { Types as TabsterTypes } from 'tabster';
-import * as tabsterModule from 'tabster';
+import { type Types as TabsterTypes, disposeTabster } from 'tabster';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from '@fluentui/react-utilities';
 
 import { createTabsterWithConfig } from './useTabster';
-
-const tabsterExports =
-  (tabsterModule as typeof tabsterModule & { default?: typeof tabsterModule }).default ?? tabsterModule;
-const { disposeTabster } = tabsterExports;
 
 /**
  * Subscribes to the tabster focused element. Calls the callback when the focused element changes.
