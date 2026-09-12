@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { CAROUSEL_TITLE } from '../TeachingPopoverCarousel/Carousel/constants';
 import type { TeachingPopoverTitleBaseProps, TeachingPopoverTitleBaseState } from './TeachingPopoverTitle.types';
 
 /**
@@ -38,6 +39,10 @@ export const useTeachingPopoverTitleBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps('h2', {
         ref,
+        // Not in the tab sequence, but programmatically focusable so a TeachingPopoverCarousel can move focus
+        // here when the active page changes, letting assistive technology announce the new title in one pass.
+        tabIndex: -1,
+        [CAROUSEL_TITLE]: true,
         ...props,
       }),
       { elementType: 'h2' },

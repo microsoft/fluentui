@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: move focus to the active page's TeachingPopoverTitle after Next/Previous navigation while preserving navigation-tab focus and newer focus choices",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
