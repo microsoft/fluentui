@@ -5,22 +5,22 @@ export type { ToolbarButtonBaseProps as ToolbarButtonProps } from '@fluentui/rea
 export type ToolbarButtonState = ToolbarButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the button is in a vertically oriented toolbar.
+     * Present when the button is in a vertically oriented toolbar; omitted when it is in a horizontally oriented toolbar.
      */
     'data-vertical'?: string;
 
     /**
-     * Data attribute set when the button is disabled.
+     * Present when the button is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the button is disabled but still focusable.
+     * Present when the button is disabled but still focusable; omitted otherwise.
      */
     'data-disabled-focusable'?: string;
 
     /**
-     * Data attribute set when the button renders only an icon.
+     * Present when the button renders only an icon; omitted otherwise.
      */
     'data-icon-only'?: string;
   };

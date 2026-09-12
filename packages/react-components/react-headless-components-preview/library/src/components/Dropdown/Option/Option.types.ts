@@ -8,11 +8,11 @@ export type { OptionSlots, OptionProps } from '@fluentui/react-combobox';
 export type OptionState = OptionBaseState & {
   root: {
     /**
-     * Whether the option is currently disabled.
+     * Present when the option is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
     /**
-     * Whether the option is currently selected.
+     * Present when the option is selected; omitted otherwise.
      */
     'data-selected'?: string;
     /**

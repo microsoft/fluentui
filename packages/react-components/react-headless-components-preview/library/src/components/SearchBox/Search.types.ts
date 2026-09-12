@@ -8,12 +8,12 @@ export type { SearchBoxSlots, SearchBoxBaseProps as SearchBoxProps } from '@flue
 export type SearchBoxState = SearchBoxBaseState & {
   root: {
     /**
-     * Data attribute set when the search box is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the search box has focus within.
+     * Present when the search box has focus within; omitted otherwise.
      */
     'data-focused'?: string;
   };

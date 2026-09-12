@@ -8,7 +8,7 @@ export type { RadioSlots, RadioBaseProps as RadioProps } from '@fluentui/react-r
 export type RadioState = RadioBaseState & {
   root: {
     /**
-     * Data attribute set when the radio is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 

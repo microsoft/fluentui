@@ -1,0 +1,25 @@
+{
+  "name": "@fixtures/state-data-attributes-valid",
+  "version": "0.0.0",
+  "exports": {
+    "./button": {
+      "import": {
+        "types": "./types/button.d.ts",
+        "default": "./lib/button.js"
+      },
+      "require": {
+        "types": "./types/button.d.cts",
+        "default": "./lib-commonjs/button.cjs"
+      }
+    },
+    "./button-direct": {
+      "types": "./types/button.d.ts"
+    },
+    "./button-direct-preferred": {
+      "types": "./types/button.d.ts",
+      "import": {
+        "types": "./types/missing.d.ts"
+      }
+    }
+  }
+}

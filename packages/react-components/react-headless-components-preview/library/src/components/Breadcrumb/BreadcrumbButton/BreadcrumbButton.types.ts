@@ -11,7 +11,7 @@ export type {
 export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
   root: {
     /**
-     * Data attribute set to indicate that this button represents the current page in the breadcrumb.
+     * Present when this button represents the current page in the breadcrumb; omitted otherwise.
      */
     'data-current'?: string;
   };

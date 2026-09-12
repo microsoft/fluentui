@@ -78,6 +78,56 @@ module.exports = {
 };
 ```
 
+### Advanced Configuration (opt-in `stateDataAttributes`)
+
+The addon can be registered with an options object (instead of a bare string) to opt into extracting
+all `data-*` members declared on the immediate properties of exported component `*State` types and surfacing them as
+read-only Storybook ArgTypes rows, alongside the framework's native (e.g. react-docgen-typescript) ArgTypes:
+
+```js
+// .storybook/main.js
+const path = require('node:path');
+
+module.exports = {
+  addons: [
+    {
+      name: '@fluentui/react-storybook-addon',
+      options: {
+        stateDataAttributes: {
+          packageRoot: path.resolve(__dirname, '../../my-package'),
+        },
+      },
+    },
+  ],
+};
+```
+
+Notes:
+
+- **Disabled by default.** Omitting `stateDataAttributes` entirely leaves native Storybook behavior untouched.
+- **`packageRoot` must be an absolute path** (e.g. derived from `__dirname` as above). A relative path throws at
+  build time.
+- **`packageRoot` must already be built.** Extraction reads the package's on-disk `.d.ts` rollups; it never falls
+  back to scanning TypeScript source, so the package must be built (its `exports` map targets must exist on disk)
+  before Storybook is started or built.
+- Extraction discovers entry points exclusively from `packageRoot`'s `package.json` `exports` map: only export
+  conditions with a direct string `types` target (e.g. `"./button": { "types": "./dist/button.d.ts" }`) are scanned.
+  Nested `import.types`/`require.types` forms, the `"./package.json"` self-reference, and any non-object export
+  values are ignored.
+- Every immediate state property is inspected, including optional slots.
+- Rows for `root` keep raw keys and use the `Data attributes` category. For non-root properties, internal keys are
+  `<slot>.<attribute>`, visible names remain raw `data-*`, and the category is `Data attributes · <slot>`.
+- Only names that are genuinely exported from a scanned `.d.ts` entry point are surfaced; declarations that merely
+  happen to appear in the file (e.g. a non-exported helper type used only to compose an exported `*State` type) are
+  ignored.
+- When two entry points declare the same component key with identical extracted metadata, the duplicate is silently
+  deduped. When they declare the same key with **different** metadata, extraction throws a conflicting-metadata
+  error identifying both declaration files.
+- Native React prop extraction remains responsible for normal props; this feature only adds state data attribute rows.
+- When a generated row and a native row have an exact key collision, **the native row wins**.
+- The optional TypeScript, react-docgen, and Storybook React peers are loaded only when `stateDataAttributes` is enabled.
+- Restart Storybook after rebuilding `packageRoot` so the extracted rows are refreshed.
+
 ## Development
 
 1. Run the inner loop from the monorepo root with `yarn workspace @fluentui/react-storybook-addon storybook`.

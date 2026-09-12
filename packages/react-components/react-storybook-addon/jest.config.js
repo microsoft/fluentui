@@ -30,4 +30,8 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
+  testPathIgnorePatterns: ['/src/preset/__fixtures__/'],
+  // Fixture package.json/types files are test data (including intentionally malformed JSON) consumed
+  // directly by the tests via fs/TypeScript APIs — they must not be crawled by Jest's haste map.
+  modulePathIgnorePatterns: ['<rootDir>/src/preset/__fixtures__/'],
 };

@@ -14,7 +14,7 @@ export type MessageBarActionsState = MessageBarActionsBaseState & {
     'data-layout'?: string;
 
     /**
-     * Data attribute set when actions content is present.
+     * Present when actions content is present; omitted otherwise.
      */
     'data-has-actions'?: string;
   };

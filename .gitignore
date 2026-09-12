@@ -47,6 +47,8 @@ $RECYCLE.BIN/
 dist.stats.json
 bower_components
 node_modules
+!packages/react-components/react-storybook-addon/src/preset/__fixtures__/**/node_modules
+!packages/react-components/react-storybook-addon/src/preset/__fixtures__/**/node_modules/**
 
 # Yarn (ignore everything except patches, plugins, and releases)
 .yarn/*

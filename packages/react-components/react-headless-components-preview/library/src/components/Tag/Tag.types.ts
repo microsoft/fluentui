@@ -5,17 +5,17 @@ export type { TagBaseProps as TagProps, TagSlots, TagContextValues } from '@flue
 export type TagState = TagBaseState & {
   root: {
     /**
-     * Data attribute set when the tag is disabled.
+     * Present when the tag is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the tag renders as a dismissible button.
+     * Present when the tag renders as a dismissible button; omitted otherwise.
      */
     'data-dismissible'?: string;
 
     /**
-     * Data attribute set when the tag is selected.
+     * Present when the tag is selected; omitted otherwise.
      */
     'data-selected'?: string;
   };

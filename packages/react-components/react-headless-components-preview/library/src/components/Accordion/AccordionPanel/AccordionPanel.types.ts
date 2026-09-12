@@ -5,7 +5,7 @@ export type { AccordionPanelSlots, AccordionPanelBaseProps as AccordionPanelProp
 export type AccordionPanelState = AccordionPanelBaseState & {
   root: {
     /**
-     * Data attribute set when the accordion panel is open.
+     * Present when the accordion panel is open; omitted when the accordion panel is closed.
      */
     'data-open'?: string;
   };
