@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: rebind withViewport resize handling when its root moves to another window",
+  "packageName": "@fluentui/react",
+  "email": "2241678935@qq.com",
+  "dependentChangeType": "patch"
+}

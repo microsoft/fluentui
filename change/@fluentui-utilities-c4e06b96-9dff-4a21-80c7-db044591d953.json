@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: honor an explicitly supplied window in getRect",
+  "packageName": "@fluentui/utilities",
+  "email": "2241678935@qq.com",
+  "dependentChangeType": "patch"
+}
