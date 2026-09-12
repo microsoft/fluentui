@@ -154,6 +154,7 @@ export interface PositioningOptions {
 
   /**
    * Applies padding to the flip boundary, so that the positioned surface flips before reaching the boundary.
+   * A number applies to all sides. Use `start` and `end` for direction-aware horizontal padding.
    */
   flipBoundaryPadding?: number | Partial<{ top: number; end: number; bottom: number; start: number }>;
 
