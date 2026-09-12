@@ -10,6 +10,7 @@ describe('PositioningProps', () => {
       autoSize: 'always',
       coverTarget: true,
       flipBoundary: null,
+      flipBoundaryPadding: 0,
       offset: 0,
       overflowBoundary: null,
       overflowBoundaryPadding: 0,
