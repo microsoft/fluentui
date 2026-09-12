@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@floating-ui/dom": "^1.6.12",
     "@fluentui/keyboard-keys": "^9.0.9",
     "@fluentui/react-accordion": "^9.12.3",
     "@fluentui/react-aria": "^9.17.14",

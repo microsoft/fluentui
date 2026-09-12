@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { TagPicker } from './TagPicker';
 import type { TagPickerProps } from './TagPicker.types';
 import { TagPickerControl } from './TagPickerControl';
@@ -112,22 +112,20 @@ describe('TagPicker', () => {
     expect(getByTestId('tag-Dog')).not.toHaveFocus();
   });
 
-  it('uses only the consumer positioning configuration', () => {
+  it('uses only the consumer positioning configuration', async () => {
     const { getByRole } = renderTagPicker({
       positioning: { position: 'above', align: 'end', fallbackPositions: ['below'] },
     });
     const listbox = getByRole('listbox');
 
-    expect(listbox).toHaveAttribute('data-placement', 'above-end');
-    expect(listbox).toHaveStyle({ positionArea: 'block-start span-inline-start' });
-    expect(listbox).toHaveStyle({ positionTryFallbacks: 'block-end' });
+    await waitFor(() => expect(listbox).toHaveAttribute('data-placement', 'top-end'));
     expect(listbox).not.toHaveStyle({ width: 'anchor-size(width)' });
   });
 
-  it('does not apply a TagPicker-specific offset when positioning is omitted', () => {
+  it('does not apply a TagPicker-specific offset when positioning is omitted', async () => {
     const { getByRole } = renderTagPicker();
 
-    expect(getByRole('listbox')).toHaveStyle({ margin: '0px' });
+    await waitFor(() => expect(getByRole('listbox')).toHaveStyle({ margin: '0px' }));
   });
 });
 
