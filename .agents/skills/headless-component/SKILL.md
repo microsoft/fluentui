@@ -241,14 +241,14 @@ State attributes are the supported CSS targeting contract.
   attribute.
 - Removal or rename is breaking. Additions require tests and documentation.
 
-Use `stringifyDataAttribute` from `library/src/utils` for presence and string
+Use `toDataAttributeValue` from `library/src/utils` for presence and string
 attributes:
 
 ```tsx
 const state: ComponentNameState = useComponentNameBase_unstable(props, ref);
 
 // Applied after consumer props so base state cannot be misrepresented.
-state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+state.root['data-disabled'] = toDataAttributeValue(state.disabled);
 
 return state;
 ```
