@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: add custom callout rendering to GaugeChart",
   "packageName": "@fluentui/react-charts",
   "email": "atisjai@microsoft.com",
