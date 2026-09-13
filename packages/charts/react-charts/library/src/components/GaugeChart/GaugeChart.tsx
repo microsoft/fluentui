@@ -135,6 +135,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const [calloutLegend, setCalloutLegend] = React.useState('');
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
@@ -402,6 +403,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
       setRefSelected(targetElement);
+      setCalloutLegend(legend);
       setHoverYValues(hoverYValues);
       if (isFocusEvent) {
         setFocusedElement(legend);
@@ -411,6 +413,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     function _hideCallout(isBlurEvent?: boolean) {
       _calloutAnchor = '';
       setPopoverOpen(false);
+      setCalloutLegend('');
       setHoverYValues([]);
       if (isBlurEvent) {
         setFocusedElement('');
@@ -720,6 +723,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               customizedCallout:
                 (() => {
                   const calloutData: GaugeChartCalloutData = {
+                    legend: calloutLegend,
                     chartValue: props.chartValue,
                     minValue: _minValue,
                     maxValue: _maxValue,

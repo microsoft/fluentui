@@ -52,6 +52,11 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
  */
 export interface GaugeChartCalloutData {
   /**
+   * Legend of the segment or gauge element that opened the callout.
+   */
+  legend: string;
+
+  /**
    * Current value of the gauge.
    */
   chartValue: number;

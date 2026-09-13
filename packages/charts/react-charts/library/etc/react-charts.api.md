@@ -899,6 +899,7 @@ export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 export interface GaugeChartCalloutData {
     chartValue: number;
     chartValueLabel: string;
+    legend: string;
     maxValue: number;
     minValue: number;
     segmentValues: YValueHover[];

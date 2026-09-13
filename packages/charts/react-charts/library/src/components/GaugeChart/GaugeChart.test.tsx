@@ -386,15 +386,19 @@ describe('GaugeChart custom callout', () => {
     {
       segments,
       chartValue: 30,
+      minValue: 10,
+      maxValue: 110,
       onRenderCallout: (calloutData?: GaugeChartCalloutData) => (
-        <div data-testid="custom-gauge-callout">{calloutData?.chartValue} blocks</div>
+        <div data-testid="custom-gauge-callout">
+          {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-{calloutData?.maxValue})
+        </div>
       ),
     },
     () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(chartSegments[0]);
 
-      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent('30 blocks');
+      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent('Low Risk: 30 blocks (10-110)');
     },
   );
 
