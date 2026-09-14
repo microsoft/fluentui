@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix the decision condition in dismissOnTargetWindowBlur to handle the case that clicking inside an iframe.",
+  "packageName": "@fluentui/react",
+  "email": "272097277@qq.com",
+  "dependentChangeType": "patch"
+}
