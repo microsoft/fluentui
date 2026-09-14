@@ -7,6 +7,7 @@ describe('MenuButton', () => {
   isConformant({
     Component: MenuButton,
     displayName: 'MenuButton',
+    requiredProps: { children: 'Open menu' },
   });
 
   it('renders a default state without a default menu icon', () => {

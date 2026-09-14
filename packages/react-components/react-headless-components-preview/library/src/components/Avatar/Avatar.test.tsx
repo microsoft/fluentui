@@ -7,6 +7,7 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    requiredProps: { name: 'John Doe' },
   });
 
   it('renders a default state', () => {

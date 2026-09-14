@@ -8,6 +8,7 @@ describe('Switch', () => {
     Component: Switch,
     displayName: 'Switch',
     primarySlot: 'input',
+    requiredProps: { label: 'Switch' },
   });
 
   it('renders a default state', () => {
