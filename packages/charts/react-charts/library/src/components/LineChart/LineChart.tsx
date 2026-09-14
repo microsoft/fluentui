@@ -381,7 +381,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _createLegends(data: LineChartDataWithIndex[]): JSXElement {
       const { legendProps, allowMultipleShapesForPoints = false } = props;
       const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-      const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
+      const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = Object.create(null);
       data.forEach((point: LineChartDataWithIndex) => {
         if (point.legend) {
           if (!mapLegendToPoints[point.legend]) {

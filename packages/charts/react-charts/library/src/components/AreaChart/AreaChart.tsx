@@ -353,7 +353,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
             allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
           });
 
-        const mapOfXvalToListOfDataPoints: MapXToDataSet = {};
+        const mapOfXvalToListOfDataPoints: MapXToDataSet = Object.create(null);
         allChartPoints.forEach((dataPoint: LineChartDataPoint) => {
           const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
           // map of x value to the list of data points which share the same x value .
@@ -470,7 +470,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       const dataSet: AreaChartDataSetPoint[] = [];
 
       // Group data points by x-axis value
-      const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = {};
+      const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = Object.create(null);
       allChartPoints.forEach((dataPoint: ILineChartDataPointWithLegend) => {
         const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
         if (!groupedData[xValue]) {
