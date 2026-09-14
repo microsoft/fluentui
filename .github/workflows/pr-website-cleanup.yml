@@ -1,0 +1,34 @@
+name: PR Website Cleanup
+on:
+  pull_request_target:
+    types: [closed]
+
+concurrency:
+  group: gh-pages-pr-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  cleanup:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+
+      - name: Remove PR preview
+        run: |
+          PREVIEW_DIR="pr-preview/pr-${{ github.event.number }}"
+          if [ -d "$PREVIEW_DIR" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            rm -rf "$PREVIEW_DIR"
+            git add -A
+            git commit -m "Remove preview for PR #${{ github.event.number }}"
+            git push origin gh-pages
+          else
+            echo "No preview directory found for PR #${{ github.event.number }}, skipping cleanup"
+          fi
