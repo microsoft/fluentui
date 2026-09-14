@@ -12,6 +12,22 @@ type CollectTypingsResult = {
   sources: string[];
   missing: string[];
 };
+type HtmlAssetsData = {
+  assets: {
+    js: string[];
+    css: string[];
+  };
+};
+type EntrypointFiles = {
+  getFiles(): string[];
+};
+type HtmlWebpackPluginConstructor = {
+  getHooks(compilation: import('webpack').Compilation): {
+    beforeAssetTagGeneration: {
+      tap(name: string, callback: (data: HtmlAssetsData) => HtmlAssetsData): void;
+    };
+  };
+};
 
 const ENTRY_NAME = 'playground-runtime';
 const REGISTER_CALLBACK = '__FLUENTUI_PLAYGROUND_REGISTER_V1__';
@@ -42,9 +58,58 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
   };
 
   config.plugins = config.plugins ?? [];
+  config.plugins.push(new ExcludeRuntimeEntryFromHtmlPlugin());
   config.plugins.push(new PlaygroundRuntimeManifestPlugin(addonOptions, typings));
 
   return config;
+}
+
+// Storybook injects every Webpack entry into iframe.html by default. The playground entry must only run in its sandbox.
+class ExcludeRuntimeEntryFromHtmlPlugin {
+  public apply(compiler: import('webpack').Compiler): void {
+    const pluginName = 'ExcludePlaygroundRuntimeFromHtmlPlugin';
+    const htmlPlugin = compiler.options.plugins.find(
+      plugin => plugin && plugin.constructor.name === 'HtmlWebpackPlugin',
+    );
+    const htmlPluginConstructor = htmlPlugin?.constructor as unknown as HtmlWebpackPluginConstructor | undefined;
+
+    if (!htmlPluginConstructor?.getHooks) {
+      return;
+    }
+
+    compiler.hooks.compilation.tap(pluginName, compilation => {
+      htmlPluginConstructor.getHooks(compilation).beforeAssetTagGeneration.tap(pluginName, data => {
+        return filterRuntimeEntryAssets(compilation.entrypoints, data);
+      });
+    });
+  }
+}
+
+export function filterRuntimeEntryAssets(
+  entrypoints: ReadonlyMap<string, EntrypointFiles>,
+  data: HtmlAssetsData,
+): HtmlAssetsData {
+  const runtimeFiles = new Set(entrypoints.get(ENTRY_NAME)?.getFiles() ?? []);
+  const otherEntryFiles = new Set(
+    Array.from(entrypoints.entries()).flatMap(([name, entrypoint]) =>
+      name === ENTRY_NAME ? [] : entrypoint.getFiles(),
+    ),
+  );
+  const exclusiveRuntimeFiles = Array.from(runtimeFiles).filter(file => !otherEntryFiles.has(file));
+
+  data.assets.js = data.assets.js.filter(asset => !matchesAnyAsset(asset, exclusiveRuntimeFiles));
+  data.assets.css = data.assets.css.filter(asset => !matchesAnyAsset(asset, exclusiveRuntimeFiles));
+
+  return data;
+}
+
+function matchesAnyAsset(assetUrl: string, assetFiles: string[]): boolean {
+  const normalizedUrl = assetUrl.split(/[?#]/, 1)[0].replace(/\\/g, '/');
+
+  return assetFiles.some(file => {
+    const normalizedFile = file.replace(/\\/g, '/');
+    return normalizedUrl === normalizedFile || normalizedUrl.endsWith(`/${normalizedFile}`);
+  });
 }
 
 function getAddonOptions(options: WebpackFinalOptions): PresetConfig {
