@@ -1,6 +1,6 @@
 # @fluentui/cli
 
-Command-line tool for Fluent UI — migration analysis, usage reporting, and API metadata extraction.
+Command-line tool for Fluent UI usage reporting and API metadata extraction.
 
 > **⚠️ Experimental** — This package is published under the `experimental` npm tag. APIs and commands may change without notice.
 
@@ -13,21 +13,6 @@ npx @fluentui/cli@experimental <command> [options]
 > Run any command with `--help` for detailed options.
 
 ## Commands
-
-### `migrate`
-
-Run migration analysis and annotation.
-
-```sh
-# List available migrations
-npx @fluentui/cli migrate --list
-
-# Analyze v8 → v9 migration (dry run)
-npx @fluentui/cli migrate v8-to-v9 --path src/ --dryRun
-
-# Annotate source files with migration hints
-npx @fluentui/cli migrate v8-to-v9 --path src/
-```
 
 ### `report`
 

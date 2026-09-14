@@ -21,14 +21,14 @@ tools/cli/
 │   │   ├── index.ts                 # Barrel exports
 │   │   └── types.ts                 # Shared CommandHandler type
 │   └── commands/
-│       ├── migrate/                 # Command module
-│       │   ├── index.ts             # CommandModule definition (eagerly loaded)
-│       │   ├── handler.ts           # Handler implementation (lazy-loaded)
-│       │   └── handler.spec.ts      # Tests
-│       └── report/                  # Command module
-│           ├── index.ts
-│           ├── handler.ts
-│           └── handler.spec.ts
+│       ├── metadata/                # API metadata command
+│       │   ├── index.ts             # CommandModule definition
+│       │   ├── handler.ts           # Lazy-loaded handler
+│       │   └── impl/                # Parsing and formatting
+│       └── report/                  # Reporting command group
+│           ├── index.ts             # Registers report subcommands
+│           ├── commands/            # info and usage definitions
+│           └── impl/                # Lazy-loaded report implementations
 ```
 
 ### Lazy Loading Pattern
@@ -44,7 +44,7 @@ handler: async argv => {
 },
 ```
 
-This means running `fluentui-cli migrate` will never load the code for `report` or any other command.
+This keeps command implementations out of the startup path until the selected command runs.
 
 ### CommandHandler Type
 
@@ -62,15 +62,15 @@ Each command is imported and registered in `tools/cli/src/cli.ts`:
 
 ```typescript
 import yargs from 'yargs';
-import migrateCommand from './commands/migrate';
 import reportCommand from './commands/report';
+import metadataCommand from './commands/metadata';
 
 export async function main(argv: string[]): Promise<void> {
   await yargs(argv)
     .scriptName('fluentui-cli')
     .usage('$0 <command> [options]')
-    .command(migrateCommand)
     .command(reportCommand)
+    .command(metadataCommand)
     .demandCommand(1, 'You need to specify a command to run.')
     .help()
     .strict()
@@ -109,8 +109,8 @@ If a command needs subcommands, use yargs nested command pattern in the builder:
 ```typescript
 builder: yargs =>
   yargs
-    .command('run', 'Run migrations', subBuilder => subBuilder, subHandler)
-    .command('list', 'List available migrations', subBuilder => subBuilder, subHandler)
+    .command('summary', 'Generate a summary', subBuilder => subBuilder, summaryHandler)
+    .command('details', 'Generate detailed output', subBuilder => subBuilder, detailsHandler)
     .demandCommand(1)
     .help(),
 ```

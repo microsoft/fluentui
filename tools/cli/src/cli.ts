@@ -1,6 +1,5 @@
 import yargs from 'yargs';
 
-import migrateCommand from './commands/migrate';
 import reportCommand from './commands/report';
 import metadataCommand from './commands/metadata';
 
@@ -18,7 +17,6 @@ export async function main(argv: string[]): Promise<void> {
   await yargs(argv)
     .scriptName('fluentui-cli')
     .usage(`${BANNER}\n  $0 <command> [options]`)
-    .command(migrateCommand)
     .command(reportCommand)
     .command(metadataCommand)
     .demandCommand(1, 'You need to specify a command to run.')
