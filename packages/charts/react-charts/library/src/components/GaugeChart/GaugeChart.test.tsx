@@ -2,8 +2,10 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../utilities/TestUtility.test';
+import type { RenderFunction } from '../../utilities/index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import type { ExtendedSegment, GaugeChartCalloutData } from './GaugeChart';
+import type { ExtendedSegment } from './GaugeChart';
+import type { GaugeChartCalloutData } from './GaugeChart.types';
 import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
 expect.extend(toHaveNoViolations);
 
@@ -380,6 +382,10 @@ describe('GaugeChart snapshot tests', () => {
 });
 
 describe('GaugeChart custom callout', () => {
+  const renderDefaultCallout: RenderFunction<GaugeChartCalloutData> = (calloutData, defaultRender) => (
+    <div data-testid="wrapped-gauge-callout">{defaultRender?.(calloutData)}</div>
+  );
+
   testWithoutWait(
     'Should render a custom callout',
     GaugeChart,
@@ -408,9 +414,7 @@ describe('GaugeChart custom callout', () => {
     {
       segments,
       chartValue: 30,
-      onRenderCallout: (calloutData, defaultRender) => (
-        <div data-testid="wrapped-gauge-callout">{defaultRender?.(calloutData)}</div>
-      ),
+      onRenderCallout: renderDefaultCallout,
     },
     () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
