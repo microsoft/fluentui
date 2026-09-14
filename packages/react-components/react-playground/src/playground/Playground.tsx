@@ -31,30 +31,30 @@ import {
   TextGrammarWandRegular,
 } from '@fluentui/react-icons';
 
+import type { PlaygroundSetupMetadata } from '../setup';
 import { createCodeHash } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { Editor } from './Editor';
 import { registerFormatter } from './formatter';
 import { monaco } from './monaco';
-import { moduleLoaders } from './modules';
 import { COMPACT_TOOLBAR_QUERY, usePlaygroundStyles } from './Playground.styles';
 import { Preview } from './Preview';
-import { evaluate, PlaygroundError, type PlaygroundComponent } from './runner';
+import { PlaygroundError, assertAllowedModules, getRequiredModules } from './runner';
+import type { PlaygroundRuntimeErrorKind, ResolvedPlaygroundRuntimeManifest } from './runtime';
 import { getFormatShortcutLabel, getRunShortcutLabel } from './shortcuts';
-import { defaultThemeOption, getThemeOption, themeOptions } from './themes';
+import { defaultThemeOption } from './themes';
 import { registerTypings } from './typings';
 import { useMediaQuery } from './useMediaQuery';
 import { useSplitPane } from './useSplitPane';
 
 export interface PlaygroundProps {
-  initialCode: string;
+  initialCode: string | null;
+  manifest: ResolvedPlaygroundRuntimeManifest;
 }
 
 interface PlaygroundErrorState {
   title: string;
   message: string;
-  /** `true` when the rendered component crashed (caught by the preview's error boundary). */
-  fromBoundary?: boolean;
 }
 
 type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
@@ -63,6 +63,7 @@ type TypingsStatus = 'loading' | 'ready' | 'error';
 const RUN_DEBOUNCE_MS = 400;
 const HASH_SYNC_DEBOUNCE_MS = 500;
 const FILE_NAME = 'example.tsx';
+const EMPTY_METADATA: PlaygroundSetupMetadata = { themes: [] };
 
 function toErrorState(error: unknown): PlaygroundErrorState {
   if (error instanceof PlaygroundError) {
@@ -82,6 +83,17 @@ function toErrorState(error: unknown): PlaygroundErrorState {
   return { title: 'Error', message: String(error) };
 }
 
+function runtimeErrorTitle(kind: PlaygroundRuntimeErrorKind): string {
+  switch (kind) {
+    case 'import':
+      return 'Import error';
+    case 'export':
+      return 'Nothing to render';
+    case 'runtime':
+      return 'Runtime error';
+  }
+}
+
 interface ToolbarActionProps {
   icon: React.ReactElement;
   label: string;
@@ -92,7 +104,6 @@ interface ToolbarActionProps {
   onClick: () => void;
 }
 
-/** Toolbar button that collapses to an icon (keeping an accessible name) when the toolbar is compact. */
 const ToolbarAction = React.forwardRef<HTMLButtonElement, ToolbarActionProps>((props, ref) => {
   const { icon, label, tooltip, compact, appearance, className, onClick } = props;
 
@@ -117,12 +128,10 @@ type StatusTone = 'neutral' | 'success' | 'danger' | 'warning';
 
 interface StatusIndicatorProps {
   tone: StatusTone;
-  /** Shows a spinner instead of the dot for in-progress states. */
   busy?: boolean;
   children: React.ReactNode;
 }
 
-/** Label with a spinner while busy or a colored dot for the success / error / warning states. */
 const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>((props, ref) => {
   const { tone, busy, children } = props;
   const styles = usePlaygroundStyles();
@@ -144,28 +153,32 @@ const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>(
 StatusIndicator.displayName = 'StatusIndicator';
 
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
-  const { initialCode } = props;
+  const { initialCode, manifest } = props;
   const styles = usePlaygroundStyles();
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView;
 
-  const [code, setCode] = React.useState(initialCode);
+  const [metadata, setMetadata] = React.useState<PlaygroundSetupMetadata>(EMPTY_METADATA);
+  const [runtimeReady, setRuntimeReady] = React.useState(false);
+  const [code, setCode] = React.useState(initialCode ?? '');
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
-  const [component, setComponent] = React.useState<PlaygroundComponent | null>(null);
+  const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
   const [runId, setRunId] = React.useState(0);
   const [status, setStatus] = React.useState<RunStatus>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
-  const [themeId, setThemeId] = React.useState(defaultThemeOption.id);
+  const [themeId, setThemeId] = React.useState<string>();
   const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
+  const [hasSuccessfulRun, setHasSuccessfulRun] = React.useState(false);
 
   const runCounter = React.useRef(0);
+  const defaultCodeApplied = React.useRef(initialCode !== null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const mainRef = React.useRef<HTMLElement | null>(null);
   const toasterId = useId('playground-toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const themeOption = getThemeOption(themeId);
   const compactToolbar = useMediaQuery(COMPACT_TOOLBAR_QUERY);
   const split = useSplitPane(mainRef);
+  const shellTheme = defaultThemeOption;
 
   const notify = React.useCallback(
     (title: string, intent: 'success' | 'error', body?: string) => {
@@ -180,7 +193,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [dispatchToast],
   );
 
-  // IntelliSense: load type declarations of the allowlisted dependencies into the TypeScript worker
   React.useEffect(() => {
     if (!targetWindow) {
       return;
@@ -188,7 +200,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
     let cancelled = false;
 
-    registerTypings(monaco, targetWindow).then(
+    registerTypings(monaco, targetWindow, manifest.typings).then(
       () => !cancelled && setTypingsStatus('ready'),
       (err: unknown) => {
         if (!cancelled) {
@@ -202,12 +214,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     return () => {
       cancelled = true;
     };
-  }, [targetWindow]);
+  }, [manifest.typings, targetWindow]);
 
-  // Prettier as "Format Document" provider (Monaco's format shortcut and the toolbar button)
   React.useEffect(() => {
     const disposable = registerFormatter(monaco, {
-      // Prettier appends a code frame to syntax errors, the first line (message + location) is enough for a toast
       onError: err => notify('Cannot format code', 'error', err.message.split('\n')[0]),
     });
 
@@ -227,7 +237,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, []);
 
   const run = React.useCallback(async () => {
-    if (!model) {
+    if (!model || !runtimeReady) {
       return;
     }
 
@@ -246,39 +256,29 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics));
       }
 
-      const nextComponent = await evaluate(result.code, moduleLoaders);
-      if (isStale()) {
-        return;
-      }
-
-      setComponent(() => nextComponent);
+      assertAllowedModules(getRequiredModules(result.code), manifest.allowedModules);
+      setCompiledCode(result.code);
       setRunId(id => id + 1);
       setError(null);
-      setStatus('ready');
     } catch (err) {
-      if (isStale()) {
-        return;
+      if (!isStale()) {
+        setError(toErrorState(err));
+        setStatus('error');
       }
-      setError(toErrorState(err));
-      setStatus('error');
     }
-  }, [model]);
+  }, [manifest.allowedModules, model, runtimeReady]);
 
-  // Auto-run (debounced) whenever the code changes or the editor model becomes available.
-  // Waits for the type declarations first: registering them restarts the TypeScript worker, which would abort an
-  // in-flight compilation.
   React.useEffect(() => {
-    if (!model || !targetWindow || typingsStatus === 'loading') {
+    if (!model || !targetWindow || typingsStatus === 'loading' || !runtimeReady || !code) {
       return;
     }
 
     const timeout = targetWindow.setTimeout(run, RUN_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
-  }, [code, model, run, targetWindow, typingsStatus]);
+  }, [code, model, run, runtimeReady, targetWindow, typingsStatus]);
 
-  // Keep the URL hash in sync so a refresh / copied URL restores the current code
   React.useEffect(() => {
-    if (!targetWindow) {
+    if (!targetWindow || !code) {
       return;
     }
 
@@ -288,31 +288,77 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     return () => targetWindow.clearTimeout(timeout);
   }, [code, targetWindow]);
 
-  const handleRuntimeError = React.useCallback((err: Error) => {
-    setError({ ...toErrorState(err), fromBoundary: true });
-    setStatus('error');
+  const handleMetadata = React.useCallback((nextMetadata: PlaygroundSetupMetadata) => {
+    setMetadata(nextMetadata);
+    setRuntimeReady(true);
+    setThemeId(current => current ?? nextMetadata.themes[0]?.id);
+
+    if (!defaultCodeApplied.current && nextMetadata.defaultCode) {
+      defaultCodeApplied.current = true;
+      setCode(nextMetadata.defaultCode);
+    }
   }, []);
 
+  const handleRuntimeSuccess = React.useCallback((successfulRunId: number) => {
+    setRunId(currentRunId => {
+      if (successfulRunId === currentRunId) {
+        setStatus('ready');
+        setHasSuccessfulRun(true);
+      }
+      return currentRunId;
+    });
+  }, []);
+
+  const handleRuntimeError = React.useCallback(
+    (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number }) => {
+      setRunId(currentRunId => {
+        if (runtimeError.runId === currentRunId) {
+          setError({ title: runtimeErrorTitle(runtimeError.kind), message: runtimeError.message });
+          setStatus('error');
+        }
+        return currentRunId;
+      });
+    },
+    [],
+  );
+
   const handleReset = React.useCallback(() => {
-    setCode(initialCode);
-  }, [initialCode]);
+    setCode(metadata.defaultCode ?? initialCode ?? '');
+  }, [initialCode, metadata.defaultCode]);
 
   const handleCopyLink = React.useCallback(async () => {
     if (!targetWindow) {
       return;
     }
 
-    const url = `${targetWindow.location.origin}${targetWindow.location.pathname}${createCodeHash(code)}`;
-    await targetWindow.navigator.clipboard.writeText(url);
+    const url = `${targetWindow.location.origin}${targetWindow.location.pathname}${
+      targetWindow.location.search
+    }${createCodeHash(code)}`;
 
-    notify('Link copied to clipboard', 'success');
+    try {
+      await targetWindow.navigator.clipboard.writeText(url);
+      notify('Link copied to clipboard', 'success');
+    } catch (err) {
+      notify('Could not copy link', 'error', err instanceof Error ? err.message : String(err));
+    }
   }, [code, notify, targetWindow]);
 
-  const handleThemeSelect = React.useCallback((_event: SelectionEvents, data: OptionOnSelectData) => {
-    if (data.optionValue) {
+  const handleThemeSelect = React.useCallback(
+    (_event: SelectionEvents, data: OptionOnSelectData) => {
+      if (!data.optionValue) {
+        return;
+      }
+
       setThemeId(data.optionValue);
-    }
-  }, []);
+      if (compiledCode) {
+        setStatus('compiling');
+        setRunId(id => id + 1);
+      }
+    },
+    [compiledCode],
+  );
+
+  const selectedThemeLabel = metadata.themes.find(theme => theme.id === themeId)?.label ?? '';
 
   const renderRunStatus = () => {
     switch (status) {
@@ -344,14 +390,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           </StatusIndicator>
         );
       case 'ready':
-        return (
-          <Tooltip
-            content="Auto-completion and type checking for the pre-installed packages"
-            relationship="description"
-          >
-            <StatusIndicator tone="neutral">TypeScript</StatusIndicator>
-          </Tooltip>
-        );
+        return <StatusIndicator tone="neutral">TypeScript</StatusIndicator>;
       case 'error':
         return (
           <Tooltip content="Type declarations could not be loaded, completions are limited" relationship="description">
@@ -374,7 +413,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
     return (
       <div className={styles.placeholder} role="status">
-        <Spinner size="small" label={status === 'idle' ? 'Preparing the playground…' : 'Compiling…'} />
+        <Spinner size="small" label={runtimeReady ? 'Compiling…' : 'Loading playground runtime…'} />
       </div>
     );
   };
@@ -382,12 +421,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const splitStyle = { '--playground-split': `${split.percent}%` } as React.CSSProperties;
 
   return (
-    <FluentProvider theme={themeOption.theme}>
+    <FluentProvider theme={shellTheme.theme}>
       <div
         ref={ref}
         className={mergeClasses(
           styles.root,
-          themeOption.dark ? styles.rootDark : styles.rootLight,
+          shellTheme.dark ? styles.rootDark : styles.rootLight,
           split.dragging && styles.rootDragging,
         )}
       >
@@ -396,8 +435,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             <span className={styles.brandIcon} aria-hidden="true">
               <CodeRegular />
             </span>
-            <h1 className={styles.title}>Fluent UI Playground</h1>
-            <span className={styles.subtitle}>React v9</span>
+            <h1 className={styles.title}>{metadata.title ?? 'React Playground'}</h1>
+            {metadata.subtitle ? <span className={styles.subtitle}>{metadata.subtitle}</span> : null}
           </div>
 
           <Toolbar aria-label="Playground actions" className={styles.toolbar}>
@@ -431,21 +470,25 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               compact={compactToolbar}
               onClick={handleCopyLink}
             />
-            <ToolbarDivider />
-            <Dropdown
-              aria-label="Theme"
-              className={styles.themePicker}
-              size="small"
-              value={themeOption.label}
-              selectedOptions={[themeOption.id]}
-              onOptionSelect={handleThemeSelect}
-            >
-              {themeOptions.map(option => (
-                <Option key={option.id} value={option.id}>
-                  {option.label}
-                </Option>
-              ))}
-            </Dropdown>
+            {metadata.themes.length > 0 ? (
+              <>
+                <ToolbarDivider />
+                <Dropdown
+                  aria-label="Theme"
+                  className={styles.themePicker}
+                  size="small"
+                  value={selectedThemeLabel}
+                  selectedOptions={themeId ? [themeId] : []}
+                  onOptionSelect={handleThemeSelect}
+                >
+                  {metadata.themes.map(theme => (
+                    <Option key={theme.id} value={theme.id}>
+                      {theme.label}
+                    </Option>
+                  ))}
+                </Dropdown>
+              </>
+            ) : null}
           </Toolbar>
         </header>
 
@@ -464,7 +507,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               onModelReady={setModel}
               onEditorReady={handleEditorReady}
               onRun={run}
-              themeOption={themeOption}
+              themeOption={shellTheme}
             />
           </section>
 
@@ -485,9 +528,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               </span>
             </div>
             <Preview
-              component={component}
+              code={compiledCode}
               runId={runId}
-              theme={themeOption.theme}
+              themeId={themeId}
+              manifest={manifest}
+              onMetadata={handleMetadata}
+              onSuccess={handleRuntimeSuccess}
               onError={handleRuntimeError}
               placeholder={renderPlaceholder()}
             />
@@ -497,7 +543,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 <div>
                   <p className={styles.errorTitle}>{error.title}</p>
                   <pre className={styles.errorMessage}>{error.message}</pre>
-                  {component && !error.fromBoundary ? (
+                  {hasSuccessfulRun ? (
                     <Text size={200} className={styles.errorHint}>
                       The preview shows the last successful render.
                     </Text>

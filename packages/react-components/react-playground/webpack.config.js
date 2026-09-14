@@ -1,6 +1,5 @@
 // @ts-check
 
-const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
@@ -10,39 +9,6 @@ const workspaceRoot = path.resolve(__dirname, '../../..');
 const outputPath = path.resolve(__dirname, 'dist/playground');
 // worker names used in `src/playground/monaco.ts`
 const WORKER_CHUNKS = ['ts.worker', 'editor.worker'];
-// virtual module resolved to the generated type declarations asset, see `src/playground/typings.ts`
-const TYPINGS_MODULE = 'playground-typings';
-const TYPINGS_STUB = path.resolve(__dirname, 'tools/playground-typings.json');
-
-/**
- * Must match the dependency allowlist in `src/playground/modules.ts`.
- */
-const TYPINGS_ENTRIES = [
-  'react',
-  'react/jsx-runtime',
-  'react-dom',
-  '@fluentui/react-components',
-  '@fluentui/react-components/unstable',
-  '@fluentui/react-icons',
-];
-
-/**
- * TypeScript version bundled with Monaco - `typesVersions` mappings in package.json files are resolved against it.
- */
-function getMonacoTypeScriptVersion() {
-  const contribution = fs.readFileSync(
-    require.resolve('monaco-editor/esm/vs/language/typescript/monaco.contribution.js'),
-    'utf8',
-  );
-  const match = contribution.match(/typescriptVersion\s*=\s*["'](\d+\.\d+\.\d+)["']/);
-
-  if (!match) {
-    throw new Error('Unable to detect the TypeScript version bundled with monaco-editor');
-  }
-
-  return match[1];
-}
-
 /**
  * Same SWC rule Storybook uses in this repo, but for files of this package `.swcrc` must be ignored:
  * it excludes `src/playground` from the library build (those files are only ever bundled by this config).
@@ -66,11 +32,8 @@ const workspaceSwcRule = {
 };
 
 /**
- * Bundles the standalone playground app (`src/playground`) into `dist/playground/playground.html` + assets.
- * The output folder is served by Storybook through the `staticDirs` preset property, see `preset.js`.
- *
- * Workspace packages are resolved from source via tsconfig path aliases (same approach as Storybook in this repo),
- * so the playground always ships the current state of the monorepo.
+ * Bundles the standalone playground shell (`src/playground`) into `dist/playground/playground.html` + assets.
+ * Consumer modules and typings are emitted separately by the Storybook addon's webpack hook.
  *
  * @type {import('webpack').Configuration}
  */
@@ -93,33 +56,12 @@ module.exports = {
   devtool: false,
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.mjs', '.json'],
-    alias: {
-      [TYPINGS_MODULE]: TYPINGS_STUB,
-    },
     plugins: [new TsconfigPathsPlugin({ configFile: path.join(workspaceRoot, 'tsconfig.base.all.json') })],
   },
   module: {
     rules: [
       playgroundSwcRule,
       workspaceSwcRule,
-      {
-        // `.d.ts` files of the dependency allowlist, emitted as one JSON asset that the editor fetches lazily
-        test: TYPINGS_STUB,
-        type: 'asset/resource',
-        generator: {
-          filename: 'playground/typings.[contenthash].json',
-        },
-        use: [
-          {
-            loader: path.resolve(__dirname, 'tools/typings-loader.js'),
-            options: {
-              packageRoot: __dirname,
-              entries: TYPINGS_ENTRIES,
-              typescriptVersion: getMonacoTypeScriptVersion(),
-            },
-          },
-        ],
-      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],

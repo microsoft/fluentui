@@ -32,6 +32,13 @@ export interface PlaygroundParameters {
     disable?: boolean;
 }
 
+// @public (undocumented)
+export interface PresetConfig {
+    modules: Record<string, string>;
+    setup?: string;
+    typings?: string[];
+}
+
 // @public
 export const withOpenInPlaygroundButton: (storyFn: (context: StoryContext) => JSXElement, context: StoryContext) => JSXElement;
 

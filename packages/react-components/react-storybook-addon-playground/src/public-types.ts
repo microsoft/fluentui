@@ -14,6 +14,23 @@ export interface PlaygroundParameters {
   disable?: boolean;
 }
 
+export interface PresetConfig {
+  /**
+   * Maps imports available in playground source to requests resolved by the consumer's Storybook Webpack build.
+   */
+  modules: Record<string, string>;
+
+  /**
+   * Optional setup module that exports playground branding, themes and render behavior.
+   */
+  setup?: string;
+
+  /**
+   * Additional package entries whose declarations should be loaded into Monaco.
+   */
+  typings?: string[];
+}
+
 export interface ParametersExtension {
   playground?: PlaygroundParameters;
 }

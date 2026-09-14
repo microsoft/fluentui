@@ -137,6 +137,8 @@
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/library/src/index.ts"],
       "@fluentui/react-persona-stories": ["packages/react-components/react-persona/stories/src/index.ts"],
+      "@fluentui/react-playground": ["packages/react-components/react-playground/src/index.ts"],
+      "@fluentui/react-playground/setup": ["packages/react-components/react-playground/src/setup.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/library/src/index.ts"],
       "@fluentui/react-popover-stories": ["packages/react-components/react-popover/stories/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-components/react-portal/library/src/index.ts"],

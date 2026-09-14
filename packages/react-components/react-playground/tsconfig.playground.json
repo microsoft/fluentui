@@ -7,5 +7,11 @@
     "types": ["static-assets", "environment", "webpack-env"]
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
-  "include": ["./src/playground/**/*.ts", "./src/playground/**/*.tsx", "./src/url.ts", "./src/playground/**/*.d.ts"]
+  "include": [
+    "./src/playground/**/*.ts",
+    "./src/playground/**/*.tsx",
+    "./src/url.ts",
+    "./src/setup.ts",
+    "./src/playground/**/*.d.ts"
+  ]
 }

@@ -5142,6 +5142,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-playground@npm:^0.0.0, @fluentui/react-playground@workspace:packages/react-components/react-playground":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-playground@workspace:packages/react-components/react-playground"
+  dependencies:
+    "@fluentui/react-components": "npm:^9.74.7"
+    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-shared-contexts": "npm:^9.26.3"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@swc/helpers": "npm:^0.5.1"
+    lz-string: "npm:^1.5.0"
+    monaco-editor: "npm:0.33.0"
+    prettier: "npm:^2.8.8"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-popover-stories@workspace:packages/react-components/react-popover/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-popover-stories@workspace:packages/react-components/react-popover/stories"
@@ -5579,13 +5601,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
   dependencies:
-    "@fluentui/react-components": "npm:^9.74.7"
-    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-playground": "npm:^0.0.0"
     "@fluentui/react-utilities": "npm:^9.26.6"
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
-    monaco-editor: "npm:0.33.0"
-    prettier: "npm:2.8.8"
     semver: "npm:^6.2.0"
   peerDependencies:
     "@storybook/react": ^9.1.17

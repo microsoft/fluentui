@@ -107,7 +107,7 @@ describe('withOpenInPlaygroundButton', () => {
     expect(features).toBe('noopener');
 
     const [base, hash] = (url as string).split('#');
-    expect(base).toBe('./playground.html');
+    expect(base).toBe('./playground/app/playground.html?manifest=../runtime/manifest.json');
     expect(decodeCodeFromHash(`#${hash}`)).toBe(fullSource);
   });
 

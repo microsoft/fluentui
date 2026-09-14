@@ -11,8 +11,9 @@ module.exports = defineConfig([
     },
   },
   {
-    // The Storybook decorator manipulates the docs DOM directly.
-    files: ['src/decorators/**/*.ts'],
+    // Non-component code that runs outside of any React tree:
+    // - the playground entry point bootstraps the React root
+    files: ['src/playground/main.tsx'],
     rules: {
       '@nx/workspace-no-restricted-globals': 'off',
     },

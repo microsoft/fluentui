@@ -60,12 +60,10 @@ describe('url', () => {
   });
 
   describe('createPlaygroundUrl', () => {
-    it('defaults to the prebuilt shell and generated runtime manifest', () => {
+    it('defaults to playground.html next to the current document', () => {
       const url = createPlaygroundUrl(sampleCode);
 
-      expect(
-        url.startsWith(`./playground/app/playground.html?manifest=../runtime/manifest.json#${CODE_HASH_PARAM}=`),
-      ).toBe(true);
+      expect(url.startsWith(`./playground.html#${CODE_HASH_PARAM}=`)).toBe(true);
     });
 
     it('supports a custom base url', () => {

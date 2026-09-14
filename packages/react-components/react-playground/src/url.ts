@@ -1,7 +1,7 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
 
 export const CODE_HASH_PARAM = 'code';
-export const PLAYGROUND_PATH = 'playground/app/playground.html?manifest=../runtime/manifest.json';
+export const PLAYGROUND_FILE_NAME = 'playground.html';
 
 /**
  * Compresses source code into a URL safe string.
@@ -46,6 +46,6 @@ export function createCodeHash(code: string): string {
  * The URL is relative to the Storybook preview (`iframe.html`), which lives next to `playground.html` in the Storybook
  * root, so it also works when Storybook is deployed under a sub path.
  */
-export function createPlaygroundUrl(code: string, baseUrl = `./${PLAYGROUND_PATH}`): string {
+export function createPlaygroundUrl(code: string, baseUrl = `./${PLAYGROUND_FILE_NAME}`): string {
   return `${baseUrl}${createCodeHash(code)}`;
 }

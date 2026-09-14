@@ -7,7 +7,6 @@
   "tags": ["vNext", "platform:any", "tools"],
   "targets": {
     "build": {
-      "dependsOn": ["^build", "build-playground"],
       "options": {
         "assets": [
           {
@@ -16,16 +15,6 @@
             "glob": "styles.css"
           }
         ]
-      }
-    },
-    "build-playground": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["^build"],
-      "inputs": ["default", "^production"],
-      "outputs": ["{projectRoot}/dist/playground"],
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "webpack --config webpack.playground.config.js"
       }
     }
   }

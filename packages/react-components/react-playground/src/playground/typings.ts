@@ -1,5 +1,4 @@
 import type * as monacoApi from 'monaco-editor/esm/vs/editor/editor.api';
-import typingsUrl from 'playground-typings';
 
 type Monaco = typeof monacoApi;
 
@@ -10,7 +9,7 @@ type Monaco = typeof monacoApi;
  *
  * @returns number of registered declaration files
  */
-export async function registerTypings(monaco: Monaco, targetWindow: Window): Promise<number> {
+export async function registerTypings(monaco: Monaco, targetWindow: Window, typingsUrl: string): Promise<number> {
   const response = await targetWindow.fetch(typingsUrl);
 
   if (!response.ok) {
