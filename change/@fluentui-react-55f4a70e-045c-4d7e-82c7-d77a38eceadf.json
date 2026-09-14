@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "#24280 issueFixed: focus is not set on first item",
+  "packageName": "@fluentui/react",
+  "email": "gaurav198.rr@gmail.com",
+  "dependentChangeType": "patch"
+}
