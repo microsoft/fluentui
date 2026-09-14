@@ -4,7 +4,7 @@
 import '../scripts/storybook/src/tailwind-theme.css';
 import '../packages/react-components/react-storybook-addon/src/styles.css';
 import '../packages/react-components/react-storybook-addon-export-to-sandbox/src/styles.css';
-import { webLightThemeClassName } from '@fluentui/react-tailwind-theme-preview/theme-class-names';
+import { webLightThemeClassName } from '../packages/react-components/react-tailwind-theme-preview/theme-class-names.mjs';
 import { withLinks } from '@storybook/addon-links';
 
 /*
