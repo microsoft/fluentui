@@ -1,0 +1,214 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Architecture" />
+
+# Architecture
+
+Fluent UI Headless is the unstyled component layer built on the same behavior primitives as Fluent UI v9. It does not
+reimplement keyboard handling, ARIA semantics, or slot structure in a separate component system. Instead, it composes
+the base state hooks owned by the corresponding v9 component packages and exposes them through a public, styling-free
+API surface. The package is in preview, so those public APIs may still change before release.
+
+## Architecture at a glance
+
+```text
+Corresponding Fluent UI v9 package
+@fluentui/react-<component>
+        |
+        | use<Component>Base_unstable
+        | behavior, ARIA, keyboard handling, semantic slots
+        |
+        +-------------------------------+
+        |                               |
+        v                               v
+Headless path                       Styled v9 path
+use<Component>                      use<Component>_unstable
+public headless hook                design props and defaults
+        |                               |
+        | data-* state contract          | Griffel styles, tokens, motion
+        v                               v
+render<Component>                   render<Component>_unstable
+        |                               |
+        v                               v
+Unstyled primitive                 Fluent-styled component
+        |
+        v
+Your CSS, tokens, motion, and brand
+```
+
+The base hook is the shared foundation. The headless and styled component paths diverge only when visual-system
+concerns are applied.
+
+The headless path has five layers:
+
+1. The v9 base state hook resolves behavior, ARIA, keyboard interactions, refs, and semantic slots.
+2. The public headless hook preserves that state and exposes documented styling attributes.
+3. The render function turns the resolved slots into elements.
+4. The primitive component wires the hook, context values when needed, and renderer together.
+5. Your design system supplies CSS, design tokens, motion, and visual accessibility.
+
+## Shared foundation, different visual layers
+
+| Concern                       | Fluent UI Headless                 | Styled Fluent UI v9                                      |
+| ----------------------------- | ---------------------------------- | -------------------------------------------------------- |
+| Behavior and state            | Inherited from v9 base state hooks | Inherited from the same v9 base state hooks              |
+| ARIA and keyboard interaction | Included                           | Included                                                 |
+| Semantic slot structure       | Included                           | Included                                                 |
+| Public state hook             | Public `use<Component>` wrapper    | Advanced `use<Component>_unstable` hook                  |
+| State styling surface         | Documented `data-*` attributes     | Fluent-owned state and Griffel classes                   |
+| Design props                  | Excluded                           | Includes props such as `appearance`, `size`, and `shape` |
+| Styling and tokens            | Supplied by your design system     | Supplied by Fluent UI                                    |
+| Motion and visual defaults    | Supplied by your design system     | Supplied by Fluent UI where applicable                   |
+
+This shared foundation is why a headless component and its styled v9 counterpart have the same behavioral semantics
+without sharing a visual design.
+
+## How a Button is assembled
+
+Button shows the common implementation flow:
+
+1. `useButtonBase_unstable` in `@fluentui/react-button` resolves the root and icon slots, native or ARIA button
+   behavior, disabled behavior, the forwarded ref, and structural state such as `iconOnly` and `iconPosition`.
+2. The headless `useButton` hook calls that base hook and maps resolved state to styling attributes such as
+   `data-disabled`, `data-disabled-focusable`, `data-icon-only`, and `data-icon-position`.
+3. `renderButton` renders the resolved slots. It can reuse the v9 renderer because rendering is independent from the
+   Fluent visual layer.
+4. The exported `Button` primitive wires `useButton` and `renderButton` together for the common case.
+
+The simplified shape is:
+
+```tsx
+import * as React from 'react';
+import { useButtonBase_unstable, renderButton_unstable } from '@fluentui/react-button';
+
+// Simplified for illustration.
+export const useButton = (props, ref) => {
+  const state = useButtonBase_unstable(props, ref);
+
+  state.root['data-disabled'] = state.disabled ? '' : undefined;
+  state.root['data-icon-only'] = state.iconOnly ? '' : undefined;
+
+  return state;
+};
+
+export const renderButton = renderButton_unstable;
+
+export const Button = React.forwardRef((props, ref) => {
+  const state = useButton(props, ref);
+  return renderButton(state);
+});
+```
+
+The real implementation includes complete types and the full data-attribute contract. The example focuses on the
+responsibility of each layer.
+
+## Compound components and context
+
+Compound components such as Accordion, Menu, and Toolbar have state shared across multiple primitives. Their headless
+flow adds context values between the state hook and renderer:
+
+```text
+use<Parent>Base_unstable
+        |
+        v
+use<Parent> -> use<Parent>ContextValues
+        |               |
+        +-------+-------+
+                |
+                v
+render<Parent>
+                |
+                v
+Child primitives consume shared context
+```
+
+For example, Accordion uses its v9 base hook for expansion behavior and semantic structure, maps the resolved
+`collapsible` and `multiple` state to data attributes, and passes the corresponding context values to its item, header,
+and panel primitives.
+
+Some compound or platform-oriented components also add headless-specific orchestration for native browser primitives,
+positioning, or context boundaries. Those details can evolve, while the public component, hook, render, and documented
+`data-*` contracts remain the supported consumer surface.
+
+## State is exposed through `data-*`
+
+A headless component has no Fluent-owned classes for state styling. Instead, resolved behavioral and structural state
+is reflected as documented `data-*` attributes:
+
+```tsx
+<Button className={styles.button} disabled>
+  Save
+</Button>
+```
+
+```css
+.button[data-disabled] {
+  opacity: var(--brand-disabled-opacity);
+}
+
+.button[data-icon-only] {
+  inline-size: var(--brand-control-size);
+}
+```
+
+Attributes describe base state such as disabled, checked, selected, open, orientation, or slot presence. They do not
+describe visual-system choices such as appearance, size, shape, color, or density. Those choices belong to your design
+system.
+
+Reserved state attributes are produced from resolved component state so CSS cannot accidentally present a component
+as being in a state that disagrees with its behavior. Check each component's API documentation for its supported
+attributes and values.
+
+## Choose the right public API
+
+| API                                | Use it when                                                                                                                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<Component />`                    | You want the supported behavior and markup, and only need to apply props, slots, and styles. This is the default choice.                                                |
+| `useComponent` + `renderComponent` | You need to extend resolved state, add slots, integrate your own design-system state, or control the render pipeline.                                                   |
+| v9 `useComponentBase_unstable`     | You are working at the lower-level v9 package boundary and accept an unstable internal contract. Headless consumers should normally prefer the public headless wrapper. |
+
+An advanced composition can extend the public headless hook before rendering:
+
+```tsx
+import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { renderButton, useButton, type ButtonProps } from '@fluentui/react-headless-components-preview/button';
+
+import styles from './BrandButton.module.css';
+
+export const BrandButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton(props, ref);
+
+  state.root.className = [styles.root, state.root.className].filter(Boolean).join(' ');
+
+  return renderButton(state);
+});
+```
+
+Use the primitive component unless you need this additional composition point. The hook and renderer expose more
+control, but also make your component responsible for preserving the resolved state, slot props, refs, and
+accessibility behavior.
+
+## Ownership boundary
+
+Fluent UI Headless supplies the semantic accessibility layer:
+
+- ARIA roles, states, and relationships
+- Keyboard interaction and focus-management behavior
+- Semantic slots and resolved component state
+
+Your design system supplies the visual layer:
+
+- Focus indicators
+- Color contrast and non-color state cues
+- Spacing, typography, shape, and density
+- Motion and reduced-motion behavior
+- Pointer and touch-target presentation
+
+See [Accessibility](?path=/docs/overview-accessibility--docs) for the complete consumer checklist.
+
+## Deeper implementation references
+
+- [Headless components RFC](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/headless-components.md)
+- [Component base state hooks RFC](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/base-state-hooks.md)
+- [`@fluentui/react-headless-components-preview` source](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-headless-components-preview)
