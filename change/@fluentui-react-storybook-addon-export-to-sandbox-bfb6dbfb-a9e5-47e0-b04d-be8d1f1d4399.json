@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-storybook-addon-export-to-sandbox): ignore buttons added by the playground addon when locating the Show code toggle",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "cursoragent@cursor.com"
+}

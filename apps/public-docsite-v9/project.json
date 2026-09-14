@@ -11,6 +11,7 @@
           "projects": [
             "react-storybook-addon",
             "react-storybook-addon-export-to-sandbox",
+            "react-storybook-addon-playground",
             "storybook-llms-extractor",
             "react-alert",
             "react-infobutton",

@@ -49,6 +49,19 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
         },
       },
     }),
+    /** {@link file://./../packages/react-components/react-storybook-addon-playground/package.json} */
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-playground', {
+      tsConfigPath,
+      /** @type {import('../packages/react-components/react-storybook-addon-playground/src/index').PresetConfig} */
+      options: {
+        modules: {
+          '@fluentui/react-components': '@fluentui/react-components',
+          '@fluentui/react-components/unstable': '@fluentui/react-components/unstable',
+          '@fluentui/react-icons': '@fluentui/react-icons',
+        },
+        setup: path.resolve(__dirname, './playground.setup.tsx'),
+      },
+    }),
   ],
   webpackFinal: config => {
     registerRules({ config, rules: [rules.swcRule] });
