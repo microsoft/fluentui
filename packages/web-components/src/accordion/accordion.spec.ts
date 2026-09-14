@@ -1,9 +1,21 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as AccordionItemTagName } from '../accordion-item/accordion-item.options.js';
+import { tagName } from './accordion.options.js';
 
 test.describe('Accordion', () => {
   test.use({
-    innerHTML: 'Hello, World!',
-    tagName: 'fluent-accordion',
+    tagName,
+    innerHTML: /* html */ `
+      <${AccordionItemTagName} tabindex="0">
+        <span slot="heading">Heading 1</span>
+        <div>Content 1</div>
+      </${AccordionItemTagName}>
+      <${AccordionItemTagName} tabindex="0">
+        <span slot="heading">Heading 2</span>
+        <div>Content 2</div>
+      </${AccordionItemTagName}>
+    `,
+    waitFor: [AccordionItemTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -15,9 +27,9 @@ test.describe('Accordion', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-accordion');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -27,16 +39,6 @@ test.describe('Accordion', () => {
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'multi' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await expect(element).toHaveAttribute('expand-mode', 'multi');
@@ -44,22 +46,12 @@ test.describe('Accordion', () => {
 
   test('should open/close appropriate accordion items on Enter key in single expand mode', async ({ fastPage }) => {
     const { element } = fastPage;
-    const accordionItems = element.locator('fluent-accordion-item');
+    const accordionItems = element.locator(AccordionItemTagName);
     const firstItem = accordionItems.nth(0);
     const secondItem = accordionItems.nth(1);
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item tabindex="0" id="item-one">
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item id="item-two">
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await expect(firstItem).toHaveAttribute('expanded');
@@ -81,22 +73,12 @@ test.describe('Accordion', () => {
 
   test('should open/close appropriate accordion items on Enter key in multi expand mode', async ({ fastPage }) => {
     const { element } = fastPage;
-    const accordionItems = element.locator('fluent-accordion-item');
+    const accordionItems = element.locator(AccordionItemTagName);
     const firstItem = accordionItems.nth(0);
     const secondItem = accordionItems.nth(1);
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'multi' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item tabindex="0" id="item-one">
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item id="item-two">
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await expect(firstItem).toHaveJSProperty('expanded', false);
@@ -124,16 +106,6 @@ test.describe('Accordion', () => {
     const { element } = fastPage;
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await expect(element).toHaveAttribute('expand-mode', 'single');
@@ -144,18 +116,7 @@ test.describe('Accordion', () => {
   }) => {
     const { element } = fastPage;
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
-    });
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('expandmode', 'multi');
 
@@ -164,20 +125,10 @@ test.describe('Accordion', () => {
 
   test('should expand/collapse items when clicked in multi mode', async ({ fastPage }) => {
     const { element } = fastPage;
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'multi' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await items.nth(0).click();
@@ -191,22 +142,12 @@ test.describe('Accordion', () => {
 
   test('should only have one expanded item in single mode', async ({ fastPage }) => {
     const { element } = fastPage;
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
     const firstItem = items.nth(0);
     const secondItem = items.nth(1);
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
     await firstItem.click();
@@ -229,19 +170,9 @@ test.describe('Accordion', () => {
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     const firstItem = items.nth(0);
 
@@ -272,19 +203,9 @@ test.describe('Accordion', () => {
 
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     const firstItem = items.nth(0);
 
@@ -310,19 +231,9 @@ test.describe('Accordion', () => {
       attributes: {
         'expand-mode': 'single',
       },
-      innerHTML: /* html */ `
-        <fluent-accordion-item>
-          <span slot="heading">Heading 1</span>
-          <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item>
-          <span slot="heading">Heading 2</span>
-          <div>Content 2</div>
-        </fluent-accordion-item>
-      `,
     });
 
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     const firstItem = items.nth(0);
 
@@ -347,22 +258,22 @@ test.describe('Accordion', () => {
         'expand-mode': 'single',
       },
       innerHTML: /* html */ `
-        <fluent-accordion-item>
+        <${AccordionItemTagName}>
           <span slot="heading">Heading 1</span>
           <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item expanded>
+        </${AccordionItemTagName}>
+        <${AccordionItemTagName} expanded>
           <span slot="heading">Heading 2</span>
           <div>Content 2</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item expanded>
+        </${AccordionItemTagName}>
+        <${AccordionItemTagName} expanded>
           <span slot="heading">Heading 3</span>
           <div>Content 2</div>
-        </fluent-accordion-item>
+        </${AccordionItemTagName}>
       `,
     });
 
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     const firstItem = items.nth(0);
 
@@ -385,22 +296,22 @@ test.describe('Accordion', () => {
         'expand-mode': 'single',
       },
       innerHTML: /* html */ `
-        <fluent-accordion-item>
+        <${AccordionItemTagName}>
           <span slot="heading">Heading 1</span>
           <div>Content 1</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item expanded disabled>
+        </${AccordionItemTagName}>
+        <${AccordionItemTagName} expanded disabled>
           <span slot="heading">Heading 2</span>
           <div>Content 2</div>
-        </fluent-accordion-item>
-        <fluent-accordion-item expanded>
+        </${AccordionItemTagName}>
+        <${AccordionItemTagName} expanded>
           <span slot="heading">Heading 3</span>
           <div>Content 2</div>
-        </fluent-accordion-item>
+        </${AccordionItemTagName}>
       `,
     });
 
-    const items = element.locator('fluent-accordion-item');
+    const items = element.locator(AccordionItemTagName);
 
     const firstItem = items.nth(0);
 
@@ -431,18 +342,18 @@ test.describe('Accordion', () => {
     await fastPage.setTemplate({
       attributes: { 'expand-mode': 'single' },
       innerHTML: /* html */ `
-        <fluent-accordion-item>
+        <${AccordionItemTagName}>
           <div slot="heading">Accordion Item 1 Heading</div>
           Accordion Item 1 Content
-        </fluent-accordion-item>
-        <fluent-accordion-item>
+        </${AccordionItemTagName}>
+        <${AccordionItemTagName}>
           <div slot="heading">Accordion Item 2 Heading</div>
-          <fluent-checkbox>A checkbox as content</fluent-checkbox>
-        </fluent-accordion-item>
+          <input type="checkbox">A checkbox as content
+        </${AccordionItemTagName}>
       `,
     });
 
-    const item = element.locator('fluent-accordion-item').nth(1);
+    const item = element.locator(AccordionItemTagName).nth(1);
 
     const button = item.locator('button[part="button"]');
 
@@ -450,7 +361,7 @@ test.describe('Accordion', () => {
 
     await expect(item).toHaveAttribute('expanded');
 
-    const checkbox = item.locator('fluent-checkbox');
+    const checkbox = item.locator('input[type="checkbox"]');
 
     await checkbox.click();
 

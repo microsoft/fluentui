@@ -7,8 +7,6 @@ export const menuGridGroupClassNames: SlotClassNames<MenuGridGroupSlots> = {
 };
 
 export const useMenuGridGroupStyles_unstable = (state: MenuGridGroupState): MenuGridGroupState => {
-  'use no memo';
-
   state.root.className = mergeClasses(menuGridGroupClassNames.root, state.root.className);
 
   return state;

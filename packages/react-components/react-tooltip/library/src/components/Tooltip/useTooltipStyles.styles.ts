@@ -40,6 +40,11 @@ const useStyles = makeStyles({
     display: 'block',
   },
 
+  hidden: {
+    visibility: 'hidden',
+    pointerEvents: 'none',
+  },
+
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
     color: tokens.colorNeutralForegroundStaticInverted,
@@ -52,18 +57,19 @@ const useStyles = makeStyles({
  * Apply styling to the Tooltip slots based on the state
  */
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.content.className = mergeClasses(
     tooltipClassNames.content,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
+    state.hidden && styles.hidden,
     state.content.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.arrowClassName = styles.arrow;
 
   return state;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ColorPickerProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
@@ -12,7 +12,6 @@ import {
   ColorPicker,
   ColorSlider,
   AlphaSlider,
-  ColorPickerProps,
   ColorArea,
 } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';

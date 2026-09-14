@@ -1,52 +1,61 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import {
+  Button,
+  Card,
+  CardFooter,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px',
-    padding: '20px',
-  },
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '10px',
+    gridTemplateColumns: '1fr 1fr',
+    gap: tokens.spacingVerticalXXXL,
+    padding: tokens.spacingVerticalMNudge,
   },
   card: {
-    width: '200px',
-    height: '150px',
-    padding: '20px',
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
-    fontSize: tokens.fontSizeBase300,
-    textAlign: 'center',
+    alignItems: 'center',
+    padding: tokens.spacingVerticalXL,
+    gap: tokens.spacingVerticalM,
+  },
+  cellNormal: {
+    fontWeight: tokens.fontWeightRegular,
+  },
+  cellBold: {
+    fontWeight: tokens.fontWeightBold,
   },
   controls: {
     display: 'flex',
-    gap: '10px',
-    marginBottom: '20px',
+    justifyContent: 'center',
+    marginTop: tokens.spacingVerticalXL,
   },
 });
 
-const blurRadiusOptions = [
-  { label: 'Small (5px)', value: '5px' },
-  { label: 'Medium (20px)', value: '20px' },
-  { label: 'Large (50px)', value: '50px' },
-  { label: 'Extra Large (100px)', value: '100px' },
+const blurRadiusCombinations = [
+  // Top row: outRadius 5px, inRadius 0px (default)
+  { outRadius: '5px', inRadius: '0px' },
+  { outRadius: '10px', inRadius: '0px' },
+  // Bottom row: outRadius 20px, with inRadius values
+  { outRadius: '10px', inRadius: '1px' },
+  { outRadius: '10px', inRadius: '2px' },
 ];
 
 export const Radius = (): JSXElement => {
   const classes = useClasses();
-  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(blurRadiusOptions.map(() => true));
+  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(() => blurRadiusCombinations.map(() => true));
 
   const toggleAll = () => {
     setVisibleStates(prev => prev.map(state => !state));
@@ -58,26 +67,46 @@ export const Radius = (): JSXElement => {
 
   return (
     <>
-      <div className={classes.controls}>
-        <Button onClick={toggleAll}>Toggle All</Button>
+      <div className={classes.container}>
+        {blurRadiusCombinations.map((option, index) => {
+          const isVisible = visibleStates[index];
+          return (
+            <Card key={index} className={classes.card}>
+              <Table size="small" noNativeElements aria-label="Blur radius values">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>outRadius</TableHeaderCell>
+                    <TableHeaderCell>inRadius</TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className={isVisible ? classes.cellNormal : classes.cellBold}>
+                      {option.outRadius}
+                    </TableCell>
+                    <TableCell className={isVisible ? classes.cellBold : classes.cellNormal}>
+                      {option.inRadius}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+              <Blur visible={isVisible} outRadius={option.outRadius} inRadius={option.inRadius} animateOpacity={false}>
+                <div>Lorem ipsum dolor sit amet</div>
+              </Blur>
+              <CardFooter>
+                <Button appearance="primary" onClick={() => toggleSingle(index)}>
+                  {isVisible ? 'Hide' : 'Show'}
+                </Button>
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
 
-      <div className={classes.container}>
-        {blurRadiusOptions.map((option, index) => (
-          <div key={option.value} className={classes.example}>
-            <h4>{option.label}</h4>
-            <Button onClick={() => toggleSingle(index)}>{visibleStates[index] ? 'Hide' : 'Show'}</Button>
-            <Blur visible={visibleStates[index]} outRadius={option.value}>
-              <div className={classes.card}>
-                <div>
-                  Blur radius: {option.value}
-                  <br />
-                  Sample content with various text and elements.
-                </div>
-              </div>
-            </Blur>
-          </div>
-        ))}
+      <div className={classes.controls}>
+        <Button appearance="secondary" onClick={toggleAll}>
+          Toggle All
+        </Button>
       </div>
     </>
   );

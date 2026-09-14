@@ -9,7 +9,7 @@ import { MenuItem } from '../MenuItem/index';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
 import { MenuPopover } from '../MenuPopover/index';
-import { MenuOpenChangeData } from './Menu.types';
+import type { MenuOpenChangeData } from './Menu.types';
 
 describe('Menu', () => {
   isConformant({

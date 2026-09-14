@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ToastIntent } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -12,7 +12,6 @@ import {
   useToastController,
   ToastTitle,
   Toast,
-  ToastIntent,
 } from '@fluentui/react-components';
 
 export const Intent = (): JSXElement => {

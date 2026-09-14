@@ -1,4 +1,6 @@
 export type {
+  SwatchPickerRowBaseProps,
+  SwatchPickerRowBaseState,
   SwatchPickerRowProps,
   SwatchPickerRowSlots,
   SwatchPickerRowState,
@@ -9,4 +11,5 @@ export {
   swatchPickerRowClassNames,
   useSwatchPickerRowStyles_unstable,
   useSwatchPickerRow_unstable,
+  useSwatchPickerRowBase_unstable,
 } from './components/SwatchPickerRow/index';

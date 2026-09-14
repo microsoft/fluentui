@@ -1,10 +1,12 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { TreeItem as FluentTreeItem, TreeItem } from './tree-item.js';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 type Story = StoryObj<FluentTreeItem>;
+const { argTypes } = getStorybookHelpers<FluentTreeItem>('fluent-tree-item');
 
 const CalendarIcon = html`<svg
   fill="currentColor"
@@ -56,60 +58,7 @@ export default {
     size: TreeItemSize.medium,
     appearance: TreeItemAppearance.subtle,
   },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: Object.values(TreeItemSize),
-      description: 'Sets the visual appearance of the control',
-      table: {
-        defaultValue: {
-          summary: 'medium',
-        },
-      },
-      category: 'attributes',
-    },
-    appearance: {
-      control: 'select',
-      options: Object.values(TreeItemAppearance),
-      description: 'The appearance variants of the tree item element',
-      table: {
-        defaultValue: {
-          summary: 'subtle',
-        },
-      },
-      category: 'attributes',
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'The start slot - appears before content',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'The end slot - appears after content',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-    asideSlottedContent: {
-      control: false,
-      description: 'The aside slot - appears at the far end of the tree-item',
-      name: 'aside',
-      table: { category: 'slots', type: {} },
-    },
-    itemSlottedContent: {
-      control: false,
-      description: 'The item slot - where the child tree-items are automatically slotted',
-      name: 'item',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentTreeItem>;
 
 export const Default: Story = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, HeadlessFlatTreeItemProps } from '@fluentui/react-components';
 import {
   FlatTree,
   TreeItem,
@@ -7,7 +7,6 @@ import {
   // TreeItemProps,
   TreeItemLayout,
   useHeadlessFlatTree_unstable,
-  HeadlessFlatTreeItemProps,
 } from '@fluentui/react-components';
 import {
   Button,

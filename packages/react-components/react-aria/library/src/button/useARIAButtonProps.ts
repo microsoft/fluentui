@@ -2,7 +2,7 @@
 
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './types';
 
 /**

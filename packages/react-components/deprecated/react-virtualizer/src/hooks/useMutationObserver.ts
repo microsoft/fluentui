@@ -13,11 +13,8 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   observer: React.MutableRefObject<MutationObserver | undefined>;
 } => {
-  'use no memo';
-
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
   const observer = useRef<MutationObserver | undefined>(undefined);
@@ -29,6 +26,7 @@ export const useMutationObserver = (
       return;
     }
     // Create an observer instance linked to the callback function
+    // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
     observer.current = new win.MutationObserver(callback);
   }, [callback, win]);
 

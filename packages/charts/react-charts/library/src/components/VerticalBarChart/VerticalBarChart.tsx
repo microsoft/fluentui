@@ -4,35 +4,28 @@ import * as React from 'react';
 import { useVerticalBarChartStyles } from './useVerticalBarChartStyles.styles';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
-import {
-  scaleLinear as d3ScaleLinear,
-  ScaleLinear as D3ScaleLinear,
-  scaleBand as d3ScaleBand,
-  scaleUtc as d3ScaleUtc,
-} from 'd3-scale';
+import type { ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   Margins,
   Legend,
   RefArrayData,
   VerticalBarChartProps,
   VerticalBarChartDataPoint,
-  Legends,
   ChildProps,
   YValueHover,
-  ChartPopover,
   DataPoint,
 } from '../../index';
+import { CartesianChart, Legends, ChartPopover } from '../../index';
+import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
-  NumericAxis,
   getTypeOfAxis,
   formatScientificLimitWidth,
   getBarWidth,
@@ -44,7 +37,6 @@ import {
   calculateLongestLabelWidth,
   findVerticalNumericMinMaxOfY,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfVerticalNumeric,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfXStringAxis,
@@ -428,7 +420,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     YValueHover: YValueHover[];
     hoverXValue: string | number | undefined;
   } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const YValueHover: YValueHover[] = [];
     const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
@@ -514,7 +505,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     setHoverXValue('');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   function _onBarFocus(
     event: React.FocusEvent<SVGRectElement, Element>,
     point: VerticalBarChartDataPoint,
@@ -671,7 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <g key={`${point.x}_${index}` as string} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -684,7 +674,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
@@ -734,6 +724,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
+          role="presentation"
         >
           <rect
             id={`${_vbcBarId}-${index}`}
@@ -742,7 +733,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             width={_barWidth}
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -792,7 +783,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -806,7 +797,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
@@ -834,7 +825,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);
@@ -1109,6 +1100,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return categoryToValues;
   }
 
+  function _getBarsGroupLabel(): string {
+    // Calculate number of unique series and total data points for accessibility label
+    const uniqueSeries = new Set(_points.map(point => point.legend)).size;
+    const totalDataPoints = _points.length;
+    return `${uniqueSeries} series and ${totalDataPoints} bars`;
+  }
+
   function updatePosition(newX: number, newY: number) {
     const threshold = 1; // Set a threshold for movement
     const { x, y } = clickPosition;
@@ -1129,16 +1127,16 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const calloutProps = {
     ...(_isHavingLine && {
       YValueHover: hoveredYValues,
-      hoverXValue: hoverXValue,
+      hoverXValue,
     }),
-    color: color,
+    color,
     legend: calloutLegend,
     XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
-    clickPosition: clickPosition,
-    isPopoverOpen: isPopoverOpen,
+    clickPosition,
+    isPopoverOpen,
     isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
     culture: props.culture,
     isCartesian: true,
@@ -1185,11 +1183,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         !isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram'
       }
       /* eslint-disable react/jsx-no-bind */
-      // eslint-disable-next-line react/no-children-prop
+
       children={(props: ChildProps) => {
         return (
           <>
-            <g>{_bars}</g>
+            <g role="listbox" aria-label={_getBarsGroupLabel()}>
+              {_bars}
+            </g>
             {_isHavingLine && (
               <g>
                 {_createLine(

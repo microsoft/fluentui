@@ -2,7 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import { Portal } from '@fluentui/react-portal';
 
 /**

@@ -1,4 +1,4 @@
-import { NamedPalette, NamedTheme } from './types';
+import type { NamedPalette, NamedTheme } from './types';
 
 export const paletteTemplate = (id: string): NamedPalette & { id: string } => ({
   id,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Meta } from '@storybook/react-webpack5';
+import type { Meta } from '@storybook/react-webpack5';
 import { Tooltip } from '@fluentui/react-components';
 import descriptionMd from './TooltipDescription.md';
 import accessibilityMd from './TooltipAccessibility.md';
@@ -15,6 +15,7 @@ export { Controlled } from './TooltipControlled.stories';
 export { Positioning } from './TooltipPositioning.stories';
 export { Target } from './TooltipTarget.stories';
 export { Icon } from './TooltipIcon.stories';
+export { OverflowHidden } from './TooltipOverflowHidden.stories';
 
 export default {
   title: 'Components/Tooltip',

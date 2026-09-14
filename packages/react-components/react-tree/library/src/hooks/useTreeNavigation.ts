@@ -1,10 +1,10 @@
 'use client';
 
-import { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
+import type { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useMergedRefs } from '@fluentui/react-utilities';
@@ -21,7 +21,7 @@ export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): 
   treeRef: React.RefCallback<HTMLElement>;
   forceUpdateRovingTabIndex: () => void;
 } {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTreeNavigation — manual opt-out to preserve runtime behavior
 
   const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();
   const { findFirstFocusable } = useFocusFinders();

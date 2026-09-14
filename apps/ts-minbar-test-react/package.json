@@ -8,7 +8,7 @@
     "@fluentui/react": "*"
   },
   "scripts": {
-    "type-check": "tsc -p .",
-    "test-integration": "ts-node --transpileOnly ./src/index.ts"
+    "type-check": "yarn run -T tsc -p .",
+    "test-integration": "yarn run -T ts-node --transpileOnly ./src/index.ts"
   }
 }

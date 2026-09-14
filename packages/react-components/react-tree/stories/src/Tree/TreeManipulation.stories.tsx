@@ -1,14 +1,11 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
+import type {
+  JSXElement,
   HeadlessFlatTreeItemProps,
-  useHeadlessFlatTree_unstable,
   TreeItemValue,
   FlatTreeItemProps,
 } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
 import { Delete20Regular } from '@fluentui/react-icons';
 import {
   Button,

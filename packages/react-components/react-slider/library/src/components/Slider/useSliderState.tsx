@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { sliderCSSVars } from './useSliderStyles.styles';
+import { sliderCSSVars } from './Slider.constants';
 import type { SliderBaseState, SliderBaseProps } from './Slider.types';
 
 const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
@@ -13,8 +13,6 @@ const getPercent = (value: number, min: number, max: number) => {
 };
 
 export const useSliderState_unstable = (state: SliderBaseState, props: SliderBaseProps): SliderBaseState => {
-  'use no memo';
-
   const { min = 0, max = 100, step } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
@@ -50,13 +48,16 @@ export const useSliderState_unstable = (state: SliderBaseState, props: SliderBas
   };
 
   // Root props
+  // eslint-disable-next-line react-hooks/immutability
   state.root.style = {
     ...rootVariables,
     ...state.root.style,
   };
 
   // Input Props
+  // eslint-disable-next-line react-hooks/immutability
   state.input.value = clampedValue;
+  // eslint-disable-next-line react-hooks/immutability
   state.input.onChange = onChange;
 
   return state;

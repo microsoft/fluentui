@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { VirtualizerContextProps } from '../../Utilities';
 
@@ -70,12 +70,12 @@ export type VirtualizerConfigState = {
   /**
    * Ref for access to internal size knowledge, can be used to measure updates
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   childSizes: React.MutableRefObject<number[]>;
   /**
    * Ref for access to internal progressive size knowledge, can be used to measure updates
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   childProgressiveSizes: React.MutableRefObject<number[]>;
 };
 
@@ -159,7 +159,7 @@ export type VirtualizerConfigProps = {
    * Enables users to override the intersectionObserverRoot.
    * We recommend passing this in for accurate distance assessment in IO
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 
   /**
@@ -200,7 +200,7 @@ export type VirtualizerConfigProps = {
   /*
    * Callback for notifying when a flagged index has been rendered
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   flaggedIndex?: React.MutableRefObject<number | null>;
 
   /**

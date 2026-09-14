@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TableFeaturesState, TableSortState, defaultColumnSizingState } from '../hooks';
+import type { TableFeaturesState, TableSortState } from '../hooks';
+import { defaultColumnSizingState } from '../hooks';
 import { defaultTableSelectionState, defaultTableSortState } from '../hooks';
 
 export const mockTableState = <TItem = unknown>(

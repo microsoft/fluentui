@@ -21,20 +21,21 @@ type PresenceMotionSlotRenderProps = Pick<
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<
   PresenceComponentProps,
   'imperativeRef' | 'onMotionFinish' | 'onMotionStart'
-> & {
-  // FIXME: 'as' property is required by design on the slot AP but it does not support components, only intrinsic
-  //        elements motion slots do not support intrinsic elements, only custom components.
-  /**
-   * @deprecated Do not use. Presence Motion Slots do not support intrinsic elements.
-   *
-   * If you want to override the animation, use the children render function instead.
-   */
-  as?: JSXIntrinsicElementKeys;
+> &
+  Partial<MotionParams> & {
+    // FIXME: 'as' property is required by design on the slot AP but it does not support components, only intrinsic
+    //        elements motion slots do not support intrinsic elements, only custom components.
+    /**
+     * @deprecated Do not use. Presence Motion Slots do not support intrinsic elements.
+     *
+     * If you want to override the animation, use the children render function instead.
+     */
+    as?: JSXIntrinsicElementKeys;
 
-  // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
-  //       possible value for children
-  children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }>;
-};
+    // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
+    //       possible value for children
+    children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }>;
+  };
 
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotionSlotProps<MotionParams> | null | undefined,

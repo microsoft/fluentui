@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { Label } from '@fluentui/react-label';
 
 export type SpinnerSlots = {
   /**

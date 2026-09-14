@@ -85,6 +85,12 @@ function main() {
       title: 'Theme Designer v9',
     },
     {
+      package: '@fluentui/public-docsite-v9-headless',
+      link: './public-docsite-v9-headless/storybook/index.html',
+      icon: 'Code',
+      title: 'Headless Components',
+    },
+    {
       package: '@fluentui/perf-test',
       link: './perf-test/index.html',
       icon: 'SpeedHigh',

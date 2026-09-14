@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 
 import { Card } from './Card';
-import { CardProps } from './Card.types';
+import type { CardProps } from './Card.types';
 import { cardClassNames } from './useCardStyles.styles';
 
 describe('Card', () => {

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, TextareaProps } from '@fluentui/react-components';
 
 import { DefaultPalette } from '@fluentui/react';
-import { Button, makeStyles, Textarea, TextareaProps, RadioGroup, Radio } from '@fluentui/react-components';
+import { Button, makeStyles, Textarea, RadioGroup, Radio } from '@fluentui/react-components';
 import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
-import { Meta } from '@storybook/react-webpack5';
+import type { Meta } from '@storybook/react-webpack5';
 
 const useStyles = makeStyles({
   root: {

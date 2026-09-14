@@ -3,11 +3,116 @@
 
 # General Guidelines for working with Nx
 
-- When running tasks (for example build, lint, test, e2e, etc.), always prefer running the task through `nx` (i.e. `nx run`, `nx run-many`, `nx affected`) instead of using the underlying tooling directly
-- You have access to the Nx MCP server and its tools, use them to help the user
-- When answering questions about the repository, use the `nx_workspace` tool first to gain an understanding of the workspace architecture where applicable.
-- When working in individual projects, use the `nx_project_details` mcp tool to analyze and understand the specific project structure and dependencies
-- For questions around nx configuration, best practices or if you're unsure, use the `nx_docs` tool to get relevant, up-to-date docs. Always use this instead of assuming things about nx configuration
-- If the user needs help with an Nx configuration or project graph error, use the `nx_workspace` tool to get any errors
+- Always run tasks through `nx` (`nx run`, `nx run-many`, `nx affected`), never tools directly
+- Use `nx_workspace` tool to understand workspace architecture
+- Use `nx_project_details` tool to analyze specific project structure and dependencies
+- Use `nx_docs` tool for up-to-date Nx configuration guidance
 
 <!-- nx configuration end-->
+
+# Fluent UI — Agent Instructions
+
+**Instructions in this file are the source of truth, not existing code.** This repo contains
+legacy patterns (especially in v8 packages) that predate current standards. Never copy patterns
+from existing code without verifying they match these instructions.
+
+## Critical Rules (never violate)
+
+1. **Never hardcode colors, spacing, or typography values.** Always use design tokens from `@fluentui/react-theme`. See [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md).
+2. **Never use `React.FC`.** Always use `ForwardRefComponent` with `React.forwardRef`.
+3. **Never access `window`, `document`, or `navigator` directly.** In v9 components, use `useFluent_unstable()` to get `targetDocument` and `targetDocument.defaultView` instead of `document`/`window`. For non-component code, use `canUseDOM()` from `@fluentui/react-utilities`.
+4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
+5. **Never skip beachball change files** for published package changes. Run `yarn beachball change`.
+
+## V9 Component Template (the correct pattern)
+
+```tsx
+// ComponentName.tsx — always ForwardRefComponent, never React.FC
+export const ComponentName: ForwardRefComponent<ComponentNameProps> = React.forwardRef((props, ref) => {
+  const state = useComponentName_unstable(props, ref);
+  useComponentNameStyles_unstable(state);
+  return renderComponentName_unstable(state);
+});
+
+// Styles — always use tokens, never hardcoded values
+import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+
+export const useComponentNameStyles = makeStyles({
+  root: {
+    color: tokens.colorNeutralForeground1,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+  },
+});
+
+// mergeClasses — always preserve user className LAST
+state.root.className = mergeClasses(
+  classes.root,
+  state.root.className, // always last
+);
+```
+
+## Legacy Anti-Patterns (never copy these)
+
+- **DO NOT copy patterns from `packages/react/` (v8).** That's maintenance-only legacy code using runtime styling, class components, and different APIs.
+- **DO NOT use `@fluentui/react` imports for new v9 work.** Use `@fluentui/react-components`.
+- **DO NOT use `mergeStyles` or `mergeStyleSets`.** Use Griffel `makeStyles` with design tokens.
+- **DO NOT use `IStyle` or `IStyleFunctionOrObject`.** Use Griffel's `GriffelStyle` type.
+- **DO NOT use `initializeIcons()`.** V9 uses `@fluentui/react-icons` with tree-shaking.
+
+## Exploration Guidance
+
+- `packages/react-components/` has 74+ packages — search by specific component name, never read the full directory.
+- Use `yarn nx show project <project-name>` to understand a project's structure.
+- Map package names to paths: `@fluentui/react-<name>` → `packages/react-components/react-<name>/library/src/`.
+
+## Architecture (deep dives)
+
+| Topic                                         | Location                                                                           |
+| --------------------------------------------- | ---------------------------------------------------------------------------------- |
+| V9 component patterns (hooks, slots, Griffel) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md) |
+| Design tokens and theming                     | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)           |
+| Package dependency layers                     | [docs/architecture/layers.md](docs/architecture/layers.md)                         |
+
+## Workflows
+
+| Topic                                | Location                                                         |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| PR checklist, change files, commands | [docs/workflows/contributing.md](docs/workflows/contributing.md) |
+| Testing guide (unit, VRT, SSR, E2E)  | [docs/workflows/testing.md](docs/workflows/testing.md)           |
+| Team routing and label taxonomy      | [docs/team-routing.md](docs/team-routing.md)                     |
+
+## Quality Tracking
+
+| Topic                      | Location                                               |
+| -------------------------- | ------------------------------------------------------ |
+| Per-package quality grades | [docs/quality-grades.md](docs/quality-grades.md)       |
+| Technical debt tracker     | [docs/tech-debt-tracker.md](docs/tech-debt-tracker.md) |
+
+## Skills (Slash Commands)
+
+| Skill                | Command                            | Purpose                                                                   |
+| -------------------- | ---------------------------------- | ------------------------------------------------------------------------- |
+| `v9-component`       | `/v9-component Name`               | Scaffold a new v9 component with all required files                       |
+| `headless-component` | `/headless-component Name`         | Author an unstyled v9 primitive with state attributes, tests, and stories |
+| `change`             | `/change`                          | Create beachball change file from current diff                            |
+| `lint-check`         | `/lint-check [pkg]`                | Run lint, parse errors, and auto-fix common issues                        |
+| `token-lookup`       | `/token-lookup val`                | Find the design token for a hardcoded CSS value                           |
+| `package-info`       | `/package-info pkg`                | Quick lookup: path, deps, owner, tests, structure                         |
+| `visual-test`        | `/visual-test Name`                | Visually verify a component via Storybook + playwright-cli                |
+| `review-pr`          | `/review-pr #123`                  | Review a PR with confidence scoring and category checks                   |
+| `triage-issues`      | `/triage-issues`                   | Walk the Needs-Triage queue and recommend labels/assignee                 |
+| `dependabot-rollup`  | `/dependabot-rollup`               | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs      |
+| `assign-prs`         | `/assign-prs`                      | Assign reviewers to the team review queues by area and current load       |
+| `release-recovery`   | `/release-recovery [pipeline-url]` | Diagnose and repair a release that published to npm but failed to push    |
+
+## Package Layout
+
+| Area           | Path                         | Status             |
+| -------------- | ---------------------------- | ------------------ |
+| V9 components  | `packages/react-components/` | Active development |
+| V8 components  | `packages/react/`            | Maintenance only   |
+| Web Components | `packages/web-components/`   | Active             |
+| Charting       | `packages/charts/`           | Active             |
+| Build tooling  | `tools/`                     | Active             |
+| ESLint plugin  | `packages/eslint-plugin/`    | Active             |

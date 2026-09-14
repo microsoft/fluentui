@@ -10,5 +10,6 @@ export const themes = [
 
 export const defaultTheme = themes[0];
 
-export type ThemeIds = (typeof themes)[number]['id'];
-export type ThemeLabels = (typeof themes)[number]['label'];
+export type Theme = (typeof themes)[number];
+export type ThemeIds = Theme['id'];
+export type ThemeLabels = Theme['label'];

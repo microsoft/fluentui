@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
-import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
+import type { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';

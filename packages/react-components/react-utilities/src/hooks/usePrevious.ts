@@ -10,5 +10,6 @@ export const usePrevious = <ValueType = unknown>(value: ValueType): ValueType | 
   React.useEffect(() => {
     ref.current = value;
   }, [value]);
+  // eslint-disable-next-line react-hooks/refs
   return ref.current;
 };

@@ -1,6 +1,7 @@
 import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ChartDataPoint, ChartProps, DonutChart } from './index';
+import type { ChartDataPoint, ChartProps } from './index';
+import { DonutChart } from './index';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import * as utils from '../../utilities/utilities';
@@ -270,30 +271,29 @@ describe('DonutChart snapShot testing', () => {
     const { container } = render(<DonutChart data={chartPointsDCElevateMinimums} />);
     expect(container.firstChild).toMatchSnapshot();
   });
-  /* eslint-enable @typescript-eslint/no-deprecated */
 });
 
 describe('DonutChart - basic props', () => {
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <DonutChart
         data={chartPointsDC}
         /* onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
@@ -310,7 +310,7 @@ describe('DonutChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -318,14 +318,14 @@ describe('DonutChart - basic props', () => {
 
 describe('DonutChart - mouse events', () => {
   it('Should render callout correctly on mouseover', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(wrapper.container, /Pie/i)[0]);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should render callout correctly on mousemove', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(wrapper.container, /Pie/i)[0]);
     const html1 = wrapper!.container.innerHTML;
@@ -336,7 +336,7 @@ describe('DonutChart - mouse events', () => {
   });
 
   it('Should render customized callout on mouseover', () => {
-    let wrapper = render(
+    const wrapper = render(
       <DonutChart
         data={chartPointsDC}
         innerRadius={55}
@@ -357,13 +357,13 @@ describe('DonutChart - mouse events', () => {
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<DonutChart data={chartPointsDC} />);
+    const wrapper = render(<DonutChart data={chartPointsDC} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<DonutChart data={emptyChartPoints} />);
+    const wrapper = render(<DonutChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

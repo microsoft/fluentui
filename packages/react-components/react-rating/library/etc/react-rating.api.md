@@ -168,6 +168,9 @@ export const useRatingDisplayStyles_unstable: (state: RatingDisplayState) => Rat
 export const useRatingItem_unstable: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
 
 // @public
+export const useRatingItemBase_unstable: (props: RatingItemBaseProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemBaseState;
+
+// @public
 export const useRatingItemContextValue_unstable: () => RatingItemContextValue;
 
 // @public

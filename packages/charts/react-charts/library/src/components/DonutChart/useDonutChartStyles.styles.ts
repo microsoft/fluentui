@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { DonutChartProps, DonutChartStyles } from './index';
+import type { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getAxisTitleStyle, getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 

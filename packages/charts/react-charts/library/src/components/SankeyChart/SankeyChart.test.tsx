@@ -5,9 +5,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { SankeyChart } from './SankeyChart';
-import { ChartProps } from './index';
+import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
+import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -457,7 +457,7 @@ describe('SankeyChart - mouse events', () => {
   }
   beforeEach(sharedBeforeEach);
   it('Should render correctly on node mouseover', () => {
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     const rects = wrapper.container.querySelectorAll('rect');
     fireEvent.mouseOver(rects[1]);
     expect(wrapper).toMatchSnapshot();
@@ -479,7 +479,7 @@ describe('SankeyChart - mouse events', () => {
 
   it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -511,7 +511,7 @@ describe('SankeyChart - mouse events', () => {
 
   it.skip('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {

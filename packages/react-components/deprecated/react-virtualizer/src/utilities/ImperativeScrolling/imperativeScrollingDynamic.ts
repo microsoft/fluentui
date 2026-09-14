@@ -1,4 +1,4 @@
-import { ScrollToItemDynamicParams } from './imperativeScrolling.types';
+import type { ScrollToItemDynamicParams } from './imperativeScrolling.types';
 
 export const scrollToItemDynamic = (params: ScrollToItemDynamicParams): void => {
   const { index, itemSizes, totalSize, scrollViewRef, axis = 'vertical', reversed = false, behavior = 'auto' } = params;

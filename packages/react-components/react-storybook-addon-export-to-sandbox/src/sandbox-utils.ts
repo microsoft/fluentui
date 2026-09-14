@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 import { getDependencies } from './getDependencies';
-import { StoryContext, ParametersExtension } from './types';
+import type { StoryContext, ParametersExtension } from './types';
 
 type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
 
@@ -26,7 +26,9 @@ export function prepareSandboxContainers(context: StoryContext) {
   }
 
   return Array.from(rootElements).map(rootElement => {
-    const showCodeButton = rootElement.querySelector('.docblock-code-toggle');
+    const showCodeButton = rootElement.querySelector(
+      '.docblock-code-toggle:not(.with-code-sandbox-button):not(.with-open-in-new-tab-button)',
+    );
     const container = showCodeButton?.parentElement;
 
     if (!container) {
@@ -35,8 +37,8 @@ export function prepareSandboxContainers(context: StoryContext) {
 
     const classList = (showCodeButton.classList.value + ' with-code-sandbox-button').split(' ');
 
-    // remove button if it already existed
-    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
+    // remove buttons if they already existed
+    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button, .with-open-in-new-tab-button`);
     ourButtons.forEach(node => node.remove());
 
     return {
@@ -46,7 +48,7 @@ export function prepareSandboxContainers(context: StoryContext) {
   });
 }
 
-const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {} };
+const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {}, devDependencies: {} };
 export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   storyFile: string;
   // use originalStoryFn because users can override the `storyName` property.
@@ -59,6 +61,12 @@ export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   dependencies: Record<string, string>;
   title: string;
   description: string;
+  requiredDependencies: Record<string, string>;
+  optionalDependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+  transformFiles?: NonNullable<ParametersConfig['transformFiles']>;
+  /** CSS module sources injected by the babel plugin (modules + tokens). */
+  cssModuleSources?: StoryContext['parameters']['cssModuleSources'];
 };
 
 export function prepareData(context: StoryContext): Data | null {
@@ -66,7 +74,7 @@ export function prepareData(context: StoryContext): Data | null {
     throw new Error('exportToSandbox config parameter cannot be empty');
   }
 
-  const addonConfig: Required<ParametersConfig> = {
+  const addonConfig: ParametersConfig & typeof addonConfigDefaults = {
     ...addonConfigDefaults,
     ...context.parameters.exportToSandbox,
   };
@@ -97,7 +105,7 @@ export function prepareData(context: StoryContext): Data | null {
     throw new Error('issues processing story export token');
   }
 
-  const demoData = {
+  const demoData: Data = {
     storyFile,
     storyExportToken,
     provider,
@@ -105,6 +113,11 @@ export function prepareData(context: StoryContext): Data | null {
     dependencies,
     title,
     description,
+    requiredDependencies: addonConfig.requiredDependencies,
+    optionalDependencies: addonConfig.optionalDependencies,
+    devDependencies: addonConfig.devDependencies,
+    transformFiles: addonConfig.transformFiles,
+    cssModuleSources: context.parameters.cssModuleSources,
   };
 
   return demoData;

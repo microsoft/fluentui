@@ -2,36 +2,34 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { Legend } from '../../components/Legends/Legends.types';
+import type { ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import type { Legend } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
+import type {
   AccessibilityProps,
   HorizontalBarChartWithAxisDataPoint,
   RefArrayData,
   Margins,
   ChartPopoverProps,
 } from '../../index';
-import { ChildProps } from '../CommonComponents/CartesianChart.types';
+import type { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
-import { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
+import type { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
 import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import type { IAxisData, NumericAxis, StringAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   YAxisType,
   XAxisTypes,
-  NumericAxis,
-  StringAxis,
   getTypeOfAxis,
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
-  IDomainNRange,
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
@@ -72,7 +70,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _yAxisLabels: string[];
   let _xMax: number;
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   let _longestBarPositiveTotalValue: number;
   let _longestBarNegativeTotalValue: number;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -186,8 +184,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
-      allBars = stackedChartData
-        .map(singleBarData =>
+      allBars = stackedChartData.map((singleBarData, groupIndex) => {
+        const groupBars =
           _yAxisType === YAxisType.NumericAxis
             ? _createNumericBars(
                 containerHeight,
@@ -206,9 +204,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
                 singleBarData,
                 xBarScale,
                 yBarScale,
-              ),
-        )
-        .flat();
+              );
+
+        return (
+          <g
+            key={`bar-group-${groupIndex}`}
+            role="listbox"
+            aria-label={_getBarGroupAriaLabel(singleBarData, groupIndex)}
+          >
+            {groupBars}
+          </g>
+        );
+      });
     }
 
     return (_bars = allBars);
@@ -459,7 +466,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             key={point.y}
             x={xStart}
@@ -473,7 +480,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onClick={point.onClick}
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
@@ -637,7 +644,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - _barHeight)})`}
             key={point.x}
@@ -648,7 +655,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -686,7 +693,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
 
     data.forEach((point: HorizontalBarChartWithAxisDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -771,6 +778,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + (legend ? `${legend}, ` : '') + `${xValue}.`;
+  }
+
+  function _getBarGroupAriaLabel(singleBarData: HorizontalBarChartWithAxisDataPoint[], groupIndex: number): string {
+    const yGroupLabel = singleBarData[0]?.y?.toString() || `Group ${groupIndex + 1}`;
+    return `${yGroupLabel}, bar group ${groupIndex + 1} of ${_yAxisLabels.length}, with ${singleBarData.length} bars.`;
   }
 
   function _renderBarLabel(
@@ -866,7 +878,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   if (!_isChartEmpty()) {
     _adjustProps();
     const calloutProps: ChartPopoverProps = {
-      color: color,
+      color,
       legend: selectedLegendTitle,
       XValue: xCalloutValue,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,

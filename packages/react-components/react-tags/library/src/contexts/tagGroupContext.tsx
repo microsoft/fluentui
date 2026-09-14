@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { TagGroupState } from '../components/TagGroup/index';
+import type { TagGroupState } from '../components/TagGroup/index';
 
 export const TagGroupContext = React.createContext<TagGroupContextValue | undefined>(undefined);
 

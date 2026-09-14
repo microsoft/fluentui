@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
@@ -186,6 +186,10 @@ export type MenuState = ComponentState<InternalMenuSlots> &
      */
     safeZone?: React.ReactElement | null;
   };
+
+export type MenuBaseProps = Omit<MenuProps, 'surfaceMotion'>;
+
+export type MenuBaseState = Omit<MenuState, 'surfaceMotion' | 'components'>;
 
 export type MenuContextValues = {
   menu: MenuContextValue;

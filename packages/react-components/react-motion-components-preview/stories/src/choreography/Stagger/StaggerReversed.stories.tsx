@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerReversedDescription from './StaggerReversed.stories.md';
-import { Field, makeStyles, tokens, Button, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({

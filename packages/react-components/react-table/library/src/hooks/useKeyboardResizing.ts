@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { ColumnResizeState, EnableKeyboardModeOnChangeCallback, TableColumnId } from './types';
+import type { ColumnResizeState, EnableKeyboardModeOnChangeCallback, TableColumnId } from './types';
 import { useFocusFinders, useTabsterAttributes } from '@fluentui/react-tabster';
 
 const STEP = 20;

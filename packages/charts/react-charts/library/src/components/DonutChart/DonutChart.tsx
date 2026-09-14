@@ -3,9 +3,9 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Pie } from './Pie/index';
-import { DonutChartProps } from './DonutChart.types';
+import type { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
-import { ChartDataPoint } from '../../DonutChart';
+import type { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   areArraysEqual,
@@ -15,7 +15,8 @@ import {
   ChartTitle,
   CHART_TITLE_PADDING,
 } from '../../utilities/index';
-import { Legend, Legends } from '../../index';
+import type { Legend } from '../../index';
+import { Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -38,7 +39,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       false,
     );
     const _uniqText: string = useId('_Pie_');
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+
     let _calloutAnchorPoint: ChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
@@ -130,7 +131,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={_onLegendSelectionChange}
           legendRef={_legendsRef}
         />
@@ -269,6 +269,21 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     /**
+     * Computes the vertical space the chart title occupies above the donut.
+     * Kept in sync with the title rendered inside the SVG so that
+     * `_fitParentContainer` can reserve this space when sizing the chart.
+     */
+    function _getTitleHeight(): number {
+      return props.data?.chartTitle
+        ? Math.max(
+            (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+              CHART_TITLE_PADDING,
+            36,
+          )
+        : 0;
+    }
+
+    /**
      * When screen resizes, along with screen, chart also auto adjusted.
      * This method used to adjust height and width of the charts.
      */
@@ -293,11 +308,16 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           container.getBoundingClientRect().height > legendContainerHeight
             ? container.getBoundingClientRect().height
             : 200;
-        const shouldResize =
-          _width !== currentContainerWidth || _height !== currentContainerHeight - legendContainerHeight;
+        // The SVG is rendered `titleHeight / 2` taller than `_height` (see the `height` attribute below)
+        // to fit the title. Reserve that space here so the total rendered content never exceeds the
+        // measured container height. Otherwise, when the container height is unconstrained (e.g. an
+        // auto-height parent), the extra pixels feed back into the ResizeObserver and the chart grows
+        // on every frame in an infinite loop.
+        const availableHeight = currentContainerHeight - legendContainerHeight - _getTitleHeight() / 2;
+        const shouldResize = _width !== currentContainerWidth || _height !== availableHeight;
         if (shouldResize) {
           setWidth(currentContainerWidth);
-          setHeight(currentContainerHeight - legendContainerHeight);
+          setHeight(availableHeight);
         }
       }
       //});
@@ -311,13 +331,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
-    const titleHeight = data?.chartTitle
-      ? Math.max(
-          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
-            CHART_TITLE_PADDING,
-          36,
-        )
-      : 0;
+    const titleHeight = _getTitleHeight();
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =

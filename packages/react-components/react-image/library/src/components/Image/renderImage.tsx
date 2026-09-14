@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { ImageSlots, ImageBaseState } from './Image.types';
+import type { ImageSlots, ImageBaseState } from './Image.types';
 
 /**
  * Define the render function.

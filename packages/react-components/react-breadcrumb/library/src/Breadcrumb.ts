@@ -15,6 +15,7 @@ export {
   useBreadcrumbContext_unstable,
   useBreadcrumbStyles_unstable,
   useBreadcrumb_unstable,
+  useBreadcrumbContextValues_unstable,
   useBreadcrumbBase_unstable,
   useBreadcrumbA11yBehavior_unstable,
 } from './components/Breadcrumb/index';

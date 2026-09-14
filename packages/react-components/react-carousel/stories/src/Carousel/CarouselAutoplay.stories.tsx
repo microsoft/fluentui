@@ -11,8 +11,6 @@ import {
 } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
-  CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -20,7 +18,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CarouselAnnouncerFunction, CarouselAutoplayButtonProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {

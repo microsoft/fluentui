@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { Field, InputOnChangeData, SearchBox } from '@fluentui/react-components';
+import type { JSXElement, InputOnChangeData } from '@fluentui/react-components';
+import { Field, SearchBox } from '@fluentui/react-components';
 import type { SearchBoxChangeEvent } from '@fluentui/react-components';
 
 export const Controlled = (): JSXElement => {

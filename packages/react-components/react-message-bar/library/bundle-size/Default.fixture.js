@@ -3,10 +3,10 @@ import {
   MessageBar,
   MessageBarBody,
   MessageBarTitle,
-  MessagebarActions,
+  MessageBarActions,
 } from '@fluentui/react-message-bar';
 
-console.log(MessageBar, MessageBarBody, MessageBar, MessageBarBody, MessageBarTitle, MessagebarActions);
+console.log(MessageBar, MessageBarBody, MessageBar, MessageBarBody, MessageBarTitle, MessageBarActions);
 
 export default {
   name: 'MessageBar (all components)',

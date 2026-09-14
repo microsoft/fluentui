@@ -410,15 +410,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_52_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -436,14 +441,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_52_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -461,14 +468,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_52_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -493,73 +502,83 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -977,15 +996,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_58_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1003,14 +1027,16 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_58_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1028,14 +1054,16 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_58_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1060,73 +1088,83 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1548,15 +1586,20 @@ exports[`Theme Change Should reflect theme change 1`] = `
               </text>
             </g>
           </g>
-          <g>
-            <g>
+          <g
+            aria-label="3 series and 3 bars"
+            role="listbox"
+          >
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. First, 10%."
                 fill="aqua"
                 height="49"
                 id="_VBC_bar__r_5f_-0"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -1574,14 +1617,16 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 10k
               </text>
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. Second, 20%."
                 fill="blue"
                 height="245"
                 id="_VBC_bar__r_5f_-1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -1599,14 +1644,16 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 50k
               </text>
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. Third, 37%."
                 fill="navy"
                 height="147"
                 id="_VBC_bar__r_5f_-2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -1631,73 +1678,83 @@ exports[`Theme Change Should reflect theme change 1`] = `
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="First"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="First"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+                type="button"
               >
-                First
-              </div>
-            </button>
-            <button
-              aria-label="Second"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  First
+                </div>
+              </button>
+              <button
+                aria-label="Second"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                type="button"
               >
-                Second
-              </div>
-            </button>
-            <button
-              aria-label="Third"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Second
+                </div>
+              </button>
+              <button
+                aria-label="Third"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+                type="button"
               >
-                Third
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2127,15 +2184,20 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_5l_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2153,14 +2215,16 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_5l_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2178,14 +2242,16 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_5l_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2210,73 +2276,83 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2694,15 +2770,20 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
               height="49"
               id="_VBC_bar__r_l_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2720,14 +2801,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
               height="245"
               id="_VBC_bar__r_l_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2745,14 +2828,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
               height="147"
               id="_VBC_bar__r_l_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2777,73 +2862,83 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3261,15 +3356,20 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_3_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3287,14 +3387,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_3_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3312,14 +3414,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_3_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3344,73 +3448,83 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3638,8 +3752,12 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="1 series and 4 bars"
+          role="listbox"
+        >
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3648,7 +3766,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="245"
               id="_VBC_bar__r_9_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3667,6 +3785,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3675,7 +3794,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="175"
               id="_VBC_bar__r_9_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3694,6 +3813,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3702,7 +3822,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="133"
               id="_VBC_bar__r_9_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3721,6 +3841,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3729,7 +3850,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="196"
               id="_VBC_bar__r_9_-3"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3754,35 +3875,41 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="undefined"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="1"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
+              type="button"
             >
-              undefined
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                undefined
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4219,15 +4346,20 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
               height="24.5"
               id="_VBC_bar__r_r_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4245,14 +4377,16 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
               height="122.5"
               id="_VBC_bar__r_r_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4270,14 +4404,16 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
               height="73.5"
               id="_VBC_bar__r_r_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4302,73 +4438,83 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4786,15 +4932,20 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_5r_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4812,14 +4963,16 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_5r_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4837,14 +4990,16 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_5r_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4885,7 +5040,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="First"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -4907,7 +5064,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="Second"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -4929,7 +5088,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="Third"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -5409,15 +5570,20 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </text>
           </g>
         </g>
-        <g>
-          <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
               height="49"
               id="_VBC_bar__r_62_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5435,14 +5601,16 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
               height="245"
               id="_VBC_bar__r_62_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5460,14 +5628,16 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
               height="147"
               id="_VBC_bar__r_62_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5508,7 +5678,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="First"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -5530,7 +5702,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="Second"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -5552,7 +5726,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="Third"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -6009,15 +6185,20 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_7n_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6025,14 +6206,16 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="216"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_7n_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6040,14 +6223,16 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="20"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_7n_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6062,73 +6247,83 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -6544,15 +6739,20 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_7t_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6570,14 +6770,16 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_7t_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6595,14 +6797,16 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_7t_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6627,73 +6831,83 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7109,15 +7323,20 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_83_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7135,14 +7354,16 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_83_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7160,14 +7381,16 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_83_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7192,73 +7415,83 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7674,15 +7907,20 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_6f_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7700,14 +7938,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_6f_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7725,14 +7965,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_6f_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7757,73 +7999,83 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -8239,15 +8491,20 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_70_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8265,14 +8522,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_70_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8290,14 +8549,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_70_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8338,7 +8599,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="First"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="3"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -8360,7 +8623,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="Second"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="3"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -8382,7 +8647,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="Third"
+            aria-posinset="3"
             aria-selected="false"
+            aria-setsize="3"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -8814,15 +9081,20 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="1"
             id="_VBC_bar__r_6l_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8840,14 +9112,16 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="5"
             id="_VBC_bar__r_6l_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8865,14 +9139,16 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="3"
             id="_VBC_bar__r_6l_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -9305,15 +9581,20 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_6q_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="56"
@@ -9330,14 +9611,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_6q_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="264.46153846153845"
@@ -9354,14 +9637,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_6q_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="577.1538461538462"
@@ -9385,73 +9670,83 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -9965,15 +10260,20 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_75_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -9991,14 +10291,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_75_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10016,14 +10318,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_75_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10048,73 +10352,83 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -10633,15 +10947,20 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_7b_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10659,14 +10978,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_7b_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10684,14 +11005,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_7b_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10716,73 +11039,83 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -11205,15 +11538,20 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           </text>
         </g>
       </g>
-      <g>
-        <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="49"
             id="_VBC_bar__r_7h_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11231,14 +11569,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="245"
             id="_VBC_bar__r_7h_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11256,14 +11596,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="147"
             id="_VBC_bar__r_7h_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11288,73 +11630,83 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>

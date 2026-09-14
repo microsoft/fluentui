@@ -4,7 +4,7 @@ import { PopoverSurface } from './PopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
-import { PopoverSurfaceProps } from './PopoverSurface.types';
+import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 jest.mock('../../popoverContext');
 

@@ -73,6 +73,7 @@ export function useIsSSR(): boolean {
     // mounting.
     // eslint-disable-next-line
     React.useLayoutEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSSR(false);
     }, []);
   }

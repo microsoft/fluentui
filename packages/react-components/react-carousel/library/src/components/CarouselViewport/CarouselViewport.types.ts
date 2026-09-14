@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { CarouselSliderContextValue } from '../CarouselSlider/CarouselSlider.types';
+import type { CarouselSliderContextValue } from '../CarouselSlider/CarouselSlider.types';
 
 export type CarouselViewportSlots = {
   /**

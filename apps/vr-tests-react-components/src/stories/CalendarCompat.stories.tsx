@@ -7,10 +7,10 @@ import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@flue
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
-const Calendar = (props: CalendarProps) => {
-  const today = new Date('3/15/2023');
+const referenceDate = new Date(2023, 2, 15);
 
-  return <CalendarBase today={today} {...props} />;
+const Calendar = (props: CalendarProps) => {
+  return <CalendarBase today={referenceDate} value={referenceDate} {...props} />;
 };
 
 export default {

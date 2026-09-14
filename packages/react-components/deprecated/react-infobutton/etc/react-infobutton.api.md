@@ -6,8 +6,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Label } from '@fluentui/react-label';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';

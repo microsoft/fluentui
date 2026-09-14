@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {
+import type * as React from 'react';
+import type {
   AreaPolarSeries,
   AxisCategoryOrder,
   AxisProps,
@@ -9,7 +9,7 @@ import {
   Margins,
   ScatterPolarSeries,
 } from '../../types/DataPoint';
-import { LegendsProps } from '../Legends/Legends.types';
+import type { LegendsProps } from '../Legends/Legends.types';
 
 /**
  * Configuration options for a polar axis.

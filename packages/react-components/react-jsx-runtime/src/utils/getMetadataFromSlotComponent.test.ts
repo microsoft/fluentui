@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
 import type { SlotComponentType, SlotRenderFunction } from '@fluentui/react-utilities';
 import { getMetadataFromSlotComponent } from './getMetadataFromSlotComponent';

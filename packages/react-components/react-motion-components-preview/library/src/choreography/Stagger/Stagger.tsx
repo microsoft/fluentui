@@ -9,7 +9,8 @@ import {
   acceptsDelayProps,
   getStaggerChildMapping,
 } from './utils';
-import { StaggerOneWayProps, StaggerProps, type StaggerHideMode, type StaggerDelayMode } from './stagger-types';
+import type { StaggerOneWayProps, StaggerProps } from './stagger-types';
+import { type StaggerHideMode, type StaggerDelayMode } from './stagger-types';
 
 /**
  * Shared utility to detect optimal stagger modes based on children components.

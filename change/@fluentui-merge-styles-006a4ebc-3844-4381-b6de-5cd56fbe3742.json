@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(security): escape < and > in serialized CSS values and stylesheet state so they cannot terminate a <style> or <script> element during SSR",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

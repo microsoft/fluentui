@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ChartProps, DataVizPalette, ScatterChartProps, ScatterChart, AxisScaleType } from '@fluentui/react-charts';
-import { RadioGroup, Radio, Field, JSXElement } from '@fluentui/react-components';
+import type { ChartProps, ScatterChartProps, AxisScaleType } from '@fluentui/react-charts';
+import { DataVizPalette, ScatterChart } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import { RadioGroup, Radio, Field } from '@fluentui/react-components';
 
 const data: ChartProps = {
   chartTitle: 'Scatter Chart',

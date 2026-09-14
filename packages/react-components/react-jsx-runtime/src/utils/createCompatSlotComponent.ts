@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
 

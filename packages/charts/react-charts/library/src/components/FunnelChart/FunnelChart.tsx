@@ -4,8 +4,9 @@ import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl, ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
-import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
-import { Legend, Legends } from '../Legends/index';
+import type { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -18,7 +19,7 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
-import { ChartPopoverProps } from '../../index';
+import type { ChartPopoverProps } from '../../index';
 import { useImageExport } from '../../utilities/hooks';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
@@ -251,7 +252,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const eventHandlers = _getEventHandlerProps(data, opacity, segmentId);
     const textColor = getContrastTextColor(fill);
     return (
-      <g key={key}>
+      <g key={key} role="presentation">
         <path
           id={segmentId}
           d={pathD}
@@ -259,10 +260,14 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           opacity={opacity}
           {...eventHandlers}
           tabIndex={tabIndex}
-          role="img"
+          role="option"
           aria-label={_getAriaLabel(data)}
         />
-        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
+        {textProps && (
+          <g {...eventHandlers} aria-hidden={true}>
+            {_renderSegmentText({ ...textProps, textColor, opacity })}
+          </g>
+        )}
       </g>
     );
   }
@@ -405,7 +410,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
     if (isStacked) {
       // Collect unique categories and their color
-      const categoryMap: Record<string, string> = {};
+      const categoryMap: Record<string, string> = Object.create(null);
       props.data.forEach((stage: FunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
           if (!(sub.category in categoryMap)) {
@@ -468,6 +473,9 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
   const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
+  const segmentCount = isStacked
+    ? props.data.reduce((count, stage) => count + (stage.subValues?.length ?? 0), 0)
+    : props.data.length;
 
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
@@ -490,6 +498,8 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           />
         )}
         <g
+          role="listbox"
+          aria-label={`Funnel chart with ${segmentCount} segments`}
           transform={
             isRTL
               ? `translate(${funnelOffsetX + funnelWidth}, ${funnelMarginTop}) scale(-1,1)`

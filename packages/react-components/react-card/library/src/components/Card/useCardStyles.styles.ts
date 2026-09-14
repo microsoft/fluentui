@@ -1,11 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses, makeResetStyles, GriffelStyle } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { textClassNames } from '@fluentui/react-text';
-import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
@@ -410,8 +412,6 @@ const useCardStyles = makeStyles({
  * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
-  'use no memo';
-
   const resetStyles = useCardResetStyles();
   const styles = useCardStyles();
 
@@ -464,6 +464,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     return styles.focused;
   }, [state.disabled, state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     cardClassNames.root,
     resetStyles,
@@ -482,6 +483,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   );
 
   if (state.floatingAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.floatingAction.className = mergeClasses(
       cardClassNames.floatingAction,
       styles.select,
@@ -490,6 +492,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   }
 
   if (state.checkbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkbox.className = mergeClasses(cardClassNames.checkbox, styles.hiddenCheckbox, state.checkbox.className);
   }
 

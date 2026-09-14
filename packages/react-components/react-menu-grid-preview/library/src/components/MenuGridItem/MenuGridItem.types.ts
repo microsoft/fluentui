@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { MenuGridCellProps } from './../MenuGridCell/MenuGridCell.types';
-import { MenuGridRowProps } from './../MenuGridRow/MenuGridRow.types';
+import type { MenuGridCellProps } from './../MenuGridCell/MenuGridCell.types';
+import type { MenuGridRowProps } from './../MenuGridRow/MenuGridRow.types';
 
 export type MenuGridItemSlots = {
   root: Slot<MenuGridRowProps>;

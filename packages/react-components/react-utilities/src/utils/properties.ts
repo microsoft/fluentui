@@ -120,6 +120,7 @@ export const baseElementProperties = toObjectMap([
   'lang', // global
   'popover', // global
   'focusgroup', // global
+  'focusgroupstart', // global
   'ref', // global
   'role', // global
   'style', // global
@@ -415,6 +416,7 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
   'alt', // area, img, input
   'crossOrigin', // img
   'height', // canvas, embed, iframe, img, input, object, video
+  'loading', // img, iframe
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcSet', // img, source
   'useMap', // img, object,

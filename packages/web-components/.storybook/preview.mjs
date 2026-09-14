@@ -1,11 +1,24 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
-import { setTheme } from '../src/theme/set-theme.js';
 import webcomponentsTheme from './theme.mjs';
+import { setStorybookHelpersConfig } from './wc-toolkit-helpers.js';
 
 import '../src/index-rollup.js';
 import './docs-root.css';
+
+// Load the Custom Elements Manifest for Storybook helpers
+// @ts-ignore — JSON import attribute not needed in Vite, TS NodeNext is overly strict here
+import customElementsManifest from '../custom-elements.json';
+// @ts-ignore — Storybook global
+window.__STORYBOOK_CUSTOM_ELEMENTS_MANIFEST__ = customElementsManifest;
+
+// Configure CEM-based argTypes generation
+setStorybookHelpersConfig({
+  typeRef: 'parsedType',
+  hideArgRef: true,
+  categoryOrder: ['attributes', 'properties', 'slots', 'cssProps', 'cssParts', 'cssStates', 'methods', 'events'],
+});
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
 
@@ -17,9 +30,11 @@ const themes = {
 };
 
 // This is needed in Playwright.
-Object.defineProperty(window, 'setTheme', { value: setTheme });
+// @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+Object.defineProperty(window, 'Fluent', { value: globalThis.Fluent });
 
-setTheme(themes['web-light']);
+// @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+Fluent.setTheme(themes['web-light']);
 
 export const globalTypes = {
   theme: {
@@ -63,7 +78,8 @@ export const decorators = [
      * @type {keyof typeof themes}
      */
     const theme = context.globals.theme || 'web-light';
-    setTheme(themes[theme]);
+    // @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+    Fluent.setTheme(themes[theme]);
 
     // Set direction on the document body
     const dir = context.globals.dir || 'ltr';
@@ -75,7 +91,7 @@ export const decorators = [
 
 export const parameters = {
   layout: 'fullscreen',
-  controls: { expanded: true },
+  controls: { expanded: true, sort: 'none' },
   viewMode: 'docs',
   previewTabs: {
     canvas: { hidden: true },

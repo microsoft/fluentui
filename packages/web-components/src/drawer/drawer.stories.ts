@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 type Story = StoryObj<FluentDrawer>;
+const { argTypes } = getStorybookHelpers<FluentDrawer>('fluent-drawer');
 
 const dismissed20Regular = html<StoryArgs<FluentDrawer>>`<svg
   fill="currentColor"
@@ -94,57 +96,8 @@ export default {
     size: DrawerSize.medium,
     position: DrawerPosition.start,
     '--drawer-width': '',
-    '--dialog-backdrop': 'var(--colorBackgroundOverlay)',
   },
-  argTypes: {
-    position: {
-      control: 'select',
-      description: 'Sets the position of drawer',
-      mapping: { '': null, ...DrawerPosition },
-      options: ['', ...Object.values(DrawerPosition)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerPosition).join('|') },
-      },
-    },
-    type: {
-      control: 'select',
-      description: 'Sets the modal type of the drawer',
-      mapping: { '': null, ...DrawerType },
-      options: ['', ...Object.values(DrawerType)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerType).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'Sets the modal type of the drawer',
-      mapping: { '': null, ...DrawerSize },
-      options: ['', ...Object.values(DrawerSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerSize).join('|') },
-      },
-    },
-    '--drawer-width': {
-      control: 'text',
-      description: 'Sets the custom width of drawer, e.g. 300px',
-      required: false,
-      table: {
-        category: 'CSS Custom Properties',
-      },
-    },
-    '--dialog-backdrop': {
-      control: 'color',
-      description: 'Sets the custom color of the drawer backdrop, e.g. #000000',
-      required: false,
-      table: {
-        category: 'CSS Custom Properties',
-        type: { summary: 'Defaults to --colorBackgroundOverlay' },
-      },
-    },
-  },
+  argTypes,
 } as Meta<FluentDrawer>;
 
 export const Default: Story = {};

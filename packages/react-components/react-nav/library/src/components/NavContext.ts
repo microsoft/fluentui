@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { NavContextValue } from './NavContext.types';
+import type { NavContextValue } from './NavContext.types';
 
 const navContextDefaultValue: NavContextValue = {
   selectedValue: undefined,

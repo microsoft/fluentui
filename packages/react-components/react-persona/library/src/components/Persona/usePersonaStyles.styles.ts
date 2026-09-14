@@ -124,8 +124,6 @@ const usePresenceSpacingStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
-  'use no memo';
-
   const { presenceOnly, size, textAlignment, textPosition } = state;
 
   const alignToPrimary = presenceOnly && textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';
@@ -137,6 +135,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   const avatarSpacingStyles = useAvatarSpacingStyles();
   const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     personaClassNames.root,
     rootClassName,
@@ -146,6 +145,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   );
 
   if (state.avatar) {
+    // eslint-disable-next-line react-hooks/immutability
     state.avatar.className = mergeClasses(
       personaClassNames.avatar,
       textPosition !== 'below' && styles.media,
@@ -158,6 +158,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   }
 
   if (state.presence) {
+    // eslint-disable-next-line react-hooks/immutability
     state.presence.className = mergeClasses(
       personaClassNames.presence,
       textPosition !== 'below' && styles.media,
@@ -172,6 +173,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   }
 
   if (state.primaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.primaryText.className = mergeClasses(
       personaClassNames.primaryText,
       alignBeforeAfterCenter && styles.primary,
@@ -181,6 +183,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   }
 
   if (state.secondaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryText.className = mergeClasses(
       personaClassNames.secondaryText,
       alignBeforeAfterCenter && styles.secondary,
@@ -191,6 +194,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   }
 
   if (state.tertiaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.tertiaryText.className = mergeClasses(
       personaClassNames.tertiaryText,
       alignBeforeAfterCenter && styles.tertiary,
@@ -200,6 +204,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   }
 
   if (state.quaternaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.quaternaryText.className = mergeClasses(
       personaClassNames.quaternaryText,
       alignBeforeAfterCenter && styles.quaternary,

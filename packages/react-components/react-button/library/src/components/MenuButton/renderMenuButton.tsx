@@ -4,12 +4,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
+import type { MenuButtonSlots, MenuButtonBaseState } from './MenuButton.types';
 
 /**
  * Renders a MenuButton component by passing the state defined props to the appropriate slots.
  */
-export const renderMenuButton_unstable = (state: MenuButtonState): JSXElement => {
+export const renderMenuButton_unstable = (state: MenuButtonBaseState): JSXElement => {
   assertSlots<MenuButtonSlots>(state);
   const { icon, iconOnly } = state;
 

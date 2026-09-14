@@ -1,15 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { AnchorButton } from './anchor-button.js';
+import { tagName } from './anchor-button.options.js';
 import { styles } from './anchor-button.styles.js';
 import { template } from './anchor-button.template.js';
 
 /**
+ * The definition for the `<fluent-anchor-button>` element.
+ *
  * @public
- * @remarks
- * HTML Element: \<fluent-anchor-button\>
  */
-export const definition = AnchorButton.compose({
-  name: `${FluentDesignSystem.prefix}-anchor-button`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

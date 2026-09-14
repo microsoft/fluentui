@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MessageBarActionsProps, MessageBarActionsState } from './MessageBarActions.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';

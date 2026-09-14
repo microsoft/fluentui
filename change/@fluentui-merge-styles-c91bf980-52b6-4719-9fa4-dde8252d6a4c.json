@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "style: enforce jsdoc/empty-tags rule and fix all violations",
-  "packageName": "@fluentui/merge-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

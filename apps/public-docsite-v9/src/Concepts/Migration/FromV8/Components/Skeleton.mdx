@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Shimmer Migration" />
+
+# Shimmer → Skeleton Migration
+
+## Overview
+
+v8 `Shimmer` combines placeholders, loaded content, a loading gate, and a crossfade. v9 separates these concerns:
+`Skeleton` groups visual placeholders and `SkeletonItem` draws each shape. Application code controls loading and the
+content transition.
+
+- `shimmerElements` (`Line`, `Circle`, `Gap`) becomes JSX, `SkeletonItem`, and CSS layout.
+- `customElementsGroup` becomes ordinary children.
+- v8 `width` maps to `Skeleton.width` (deprecated) or, preferably, a width class on `Skeleton`/a layout wrapper. It is
+  not a `SkeletonItem` prop.
+- Conditional rendering removes v8's built-in `isDataLoaded` crossfade. If continuity matters, keep placeholder and
+  content mounted during an application-owned transition and honor `prefers-reduced-motion`.
+
+## Basic migration
+
+```tsx
+import { makeStyles, Skeleton, SkeletonItem } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  skeleton: { width: '320px' },
+  row: { display: 'flex', alignItems: 'center', gap: '8px' },
+});
+
+function LoadableContent({ isLoaded }: { isLoaded: boolean }) {
+  const styles = useStyles();
+
+  return isLoaded ? (
+    <MyContent />
+  ) : (
+    <Skeleton className={styles.skeleton} aria-label="Loading profile">
+      <div className={styles.row}>
+        <SkeletonItem shape="circle" size={40} />
+        <SkeletonItem shape="rectangle" style={{ flexGrow: 1 }} />
+      </div>
+    </Skeleton>
+  );
+}
+```
+
+The `gap` in the example replaces v8 `ShimmerElementType.gap`; a gap is layout/background, not a skeleton item.
+
+## Shape, size, animation, and appearance
+
+`shape` supports `"rectangle"` (default), `"square"`, and `"circle"`. `size` supports:
+
+`8 | 12 | 14 | 16 | 20 | 22 | 24 | 28 | 32 | 36 | 40 | 48 | 52 | 56 | 64 | 72 | 92 | 96 | 120 | 128`
+
+Rectangle size controls height and its width defaults to 100%; square and circle use size for both dimensions.
+`Skeleton` can set a default `shape`, `size`, `animation` (`"wave"` default or `"pulse"`), and `appearance`
+(`"opaque"` default or `"translucent"`). Each `SkeletonItem` may override all four, including `animation` and
+`appearance`, for mixed groups.
+
+```tsx
+<Skeleton animation="wave" appearance="opaque" size={16}>
+  <SkeletonItem shape="circle" size={48} animation="pulse" appearance="translucent" />
+  <SkeletonItem shape="rectangle" />
+</Skeleton>
+```
+
+## Accessibility and loading state
+
+v9 `Skeleton` renders `role="progressbar"` and `aria-busy="true"` by default. Give a single loader an accessible name
+when that progress indicator needs a label. For a section containing several skeletons, put `aria-busy={isLoading}` on
+the content region and avoid repetitive live regions.
+
+This differs from v8: `Shimmer ariaLabel` conditionally creates a delayed `role="status" aria-live="polite"`
+announcement while data is not loaded. `Skeleton` does not reproduce that live status. If an announcement is required,
+provide one page/section-level status message and announce completion once; do not add `aria-live` to every item.
+Clear the region's busy state when content is ready.
+
+## Colors and gaps
+
+v8 `shimmerColors` has three distinct roles:
+
+1. `shimmer`: the base placeholder color;
+2. `shimmerWave`: the moving highlight/tip color;
+3. `background`: the surface visible around elements, in gaps, borders, and rounded corners.
+
+v9 opaque wave items use `colorNeutralStencil1` for the base and `colorNeutralStencil2` for the highlight.
+Translucent items use `colorNeutralStencil1Alpha` with a transparent wave. Recreate v8 custom colors with a
+`className`/`makeStyles` override on `SkeletonItem` (including its `::after` gradient). Recreate the third,
+`background`, role on the parent layout and its CSS `gap`; do not paint a fake `SkeletonItem` as a gap. Verify custom
+colors in light, dark, forced-colors, and reduced-motion modes.
+
+## Prop Mapping
+
+| v8 `IShimmerProps`            | v9 equivalent                                      | Notes                                                      |
+| ----------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
+| `isDataLoaded`                | Application loading state                          | Add an explicit transition if the v8 crossfade must remain |
+| `shimmerElements`             | `SkeletonItem` children + CSS layout               | Gap elements become layout gaps                            |
+| `customElementsGroup`         | Children                                           |                                                            |
+| `width`                       | Width class on `Skeleton`/wrapper                  | `Skeleton.width` exists but is deprecated                  |
+| `transitionAnimationInterval` | Application transition duration                    | No built-in content crossfade                              |
+| `ariaLabel`                   | `aria-label` and, when needed, one external status | v9 already supplies `progressbar`/`aria-busy`              |
+| `shimmerColors`               | Item styles/tokens + parent background             | Preserve base, wave, and gap-background roles separately   |
+| `styles`, `className`         | `className` + `makeStyles`                         |                                                            |
+| `theme`                       | `FluentProvider` and v9 tokens                     |                                                            |
+
+`SkeletonItem` has no `width` prop. Use `className`, `style`, flex/grid sizing, or size the parent. Its `size` prop is
+the supported height/diameter scale, not an arbitrary width.

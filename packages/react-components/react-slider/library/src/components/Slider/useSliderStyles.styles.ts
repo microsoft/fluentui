@@ -5,6 +5,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState, SliderSlots } from './Slider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { sliderCSSVars } from './Slider.constants';
 
 export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',
@@ -15,18 +16,6 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
 
 // Internal CSS variables
 const thumbPositionVar = `--fui-Slider__thumb--position`;
-
-export const sliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderInnerThumbRadiusVar: `--fui-Slider__inner-thumb--radius`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  sliderProgressColorVar: `--fui-Slider__progress--color`,
-  sliderRailSizeVar: `--fui-Slider__rail--size`,
-  sliderRailColorVar: `--fui-Slider__rail--color`,
-  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
-  sliderThumbColorVar: `--fui-Slider__thumb--color`,
-  sliderThumbSizeVar: `--fui-Slider__thumb--size`,
-};
 
 const {
   sliderDirectionVar,
@@ -284,14 +273,13 @@ const useInputStyles = makeStyles({
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles_unstable = (state: SliderState): SliderState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const isVertical = state.vertical;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     sliderClassNames.root,
     rootStyles.root,
@@ -302,6 +290,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(
     sliderClassNames.rail,
     railStyles.rail,
@@ -309,6 +298,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.rail.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     sliderClassNames.thumb,
     thumbStyles.thumb,
@@ -317,6 +307,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     sliderClassNames.input,
     inputStyles.input,

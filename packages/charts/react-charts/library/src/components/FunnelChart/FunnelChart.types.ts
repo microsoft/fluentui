@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { TitleStyles } from '../../utilities/Common.styles';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { LegendsProps } from '../Legends/index';
-import { Chart } from '../../types/index';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { LegendsProps } from '../Legends/index';
+import type { Chart } from '../../types/index';
 
 /**
  * Data point for funnel chart

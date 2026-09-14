@@ -1,16 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { AccordionItem } from './accordion-item.js';
+import { tagName } from './accordion-item.options.js';
 import { styles } from './accordion-item.styles.js';
 import { template } from './accordion-item.template.js';
 
 /**
+ * The definition configuration for the `<fluent-accordion-item>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-accordion-item\>
  */
-export const definition = AccordionItem.compose({
-  name: `${FluentDesignSystem.prefix}-accordion-item`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

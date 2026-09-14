@@ -4,7 +4,6 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { CardHeaderBaseProps, CardHeaderBaseState, CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
-import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
 /**
  * Finds the first child of CardHeader with an id prop.
@@ -77,12 +76,14 @@ export const useCardHeaderBase_unstable = (
   const headerRef = React.useRef<HTMLDivElement>(null);
 
   const hasChildId = React.useRef(false);
-  const generatedId = useId(cardHeaderClassNames.header, referenceId);
+  const generatedId = useId('fui-CardHeader__header', referenceId);
 
+  // eslint-disable-next-line react-hooks/refs
   const headerSlot = slot.optional(header, {
     renderByDefault: true,
     defaultProps: {
       ref: headerRef,
+      // eslint-disable-next-line react-hooks/refs
       id: !hasChildId.current ? referenceId : undefined,
     },
     elementType: 'div',

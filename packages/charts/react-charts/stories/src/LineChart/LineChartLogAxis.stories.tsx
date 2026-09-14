@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ChartProps, LineChartProps, LineChart, DataVizPalette, AxisScaleType } from '@fluentui/react-charts';
-import { RadioGroup, Radio, Field, JSXElement } from '@fluentui/react-components';
+import type { ChartProps, LineChartProps, AxisScaleType } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import { RadioGroup, Radio, Field } from '@fluentui/react-components';
 
 const data: ChartProps = {
   chartTitle: 'Line Chart',

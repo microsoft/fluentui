@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TableResizeHandleProps, TableResizeHandleState } from './TableResizeHandle.types';
 

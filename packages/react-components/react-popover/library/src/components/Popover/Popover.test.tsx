@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Popover } from './Popover';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { usePopover_unstable } from './usePopover';
 import { isConformant } from '../../testing/isConformant';
+import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
   isConformant({
@@ -36,5 +37,228 @@ describe('Popover', () => {
 
     // Assert
     expect(result.current.withArrow).toBe(false);
+  });
+
+  describe('close on focus outside', () => {
+    it('should close when trapFocus is enabled and focus moves from inside to outside', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(outsideButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: true } },
+      );
+
+      // Set the contentRef to simulate mounted popover content
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      // Focus first enters the popover content...
+      act(() => {
+        popoverContent.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      // ...and is then moved outside, which should dismiss the popover.
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), { open: false });
+
+      document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when focus moves outside but was never inside the popover', () => {
+      // Focus stays on an external element the whole time and is programmatically re-focused.
+      // Since focus never entered the popover, this outside -> outside change must not dismiss it.
+      const onOpenChange = jest.fn();
+      const externalInput = document.createElement('input');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(externalInput);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      // Focus lands outside the popover (and was never inside it).
+      act(() => {
+        externalInput.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(externalInput);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when trapFocus is not enabled and focus moves outside', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      document.body.appendChild(outsideButton);
+
+      renderHook(() =>
+        usePopover_unstable({
+          open: true,
+          trapFocus: false,
+          onOpenChange,
+          children: <div />,
+        }),
+      );
+
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(outsideButton);
+    });
+
+    it('should not close when popover is not open', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      document.body.appendChild(outsideButton);
+
+      renderHook(() =>
+        usePopover_unstable({
+          open: false,
+          trapFocus: true,
+          onOpenChange,
+          children: <div />,
+        }),
+      );
+
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(outsideButton);
+    });
+
+    it('should also close when inertTrapFocus is enabled and focus moves from inside to a page element outside', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(outsideButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(() =>
+        usePopover_unstable({
+          open: true,
+          trapFocus: true,
+          inertTrapFocus: true,
+          onOpenChange,
+          children: <div />,
+        }),
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      act(() => {
+        popoverContent.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), { open: false });
+
+      document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when closeOnFocusOutside is false', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(outsideButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            closeOnFocusOutside: false,
+            onOpenChange,
+            children: <div />,
+          } as unknown as PopoverProps),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when focus moves to the trigger element', () => {
+      const onOpenChange = jest.fn();
+      const triggerButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(triggerButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+        (result.current.triggerRef as React.RefObject<HTMLElement | null>).current = triggerButton;
+      });
+
+      act(() => {
+        triggerButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(triggerButton);
+      document.body.removeChild(popoverContent);
+    });
   });
 });

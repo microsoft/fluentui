@@ -171,4 +171,51 @@ describe('buildAssets', () => {
       `[Error: Multiple TS path mappings are not supported. Please adjust your config. "@proj/hello": [ packages/hello/index.ts,packages/hello/foo.ts ]"]`,
     );
   });
+
+  it('shims *.module.css imports with a Proxy that echoes class names', async () => {
+    const template = stripIndents`
+      import styles from './button.module.css';
+
+      export const className = styles.root;
+    `;
+
+    const { getEsmContent, getCjsContent, getCjsContentWithoutHelpers, distDirectory, ...apiArgs } = await setup(
+      template,
+    );
+
+    // Create a dummy CSS module file so esbuild can resolve the path
+    await fs.promises.writeFile(path.resolve(distDirectory, 'button.module.css'), '.root { color: red; }');
+
+    await buildAssets({
+      chromeVersion: 100,
+      distDirectory,
+      ...apiArgs,
+    });
+
+    const cjsContent = await getCjsContent();
+    const esmContent = await getEsmContent();
+
+    const cjsContentWithoutHelpers = getCjsContentWithoutHelpers(cjsContent);
+
+    expect(esmContent).toMatchInlineSnapshot(`
+      "(() => {
+
+      var styles = new Proxy({}, { get: (_, key) => typeof key === \\"string\\" ? key : \\"\\" });
+      var button_default = styles;
+
+
+      var className = button_default.root;
+      })();"
+    `);
+    expect(cjsContentWithoutHelpers).toMatchInlineSnapshot(`
+      "module.exports = __toCommonJS(cjs_exports);
+
+
+      var styles = new Proxy({}, { get: (_, key) => typeof key === \\"string\\" ? key : \\"\\" });
+      var button_default = styles;
+
+
+      var className = button_default.root;"
+    `);
+  }, /* Sets 15s timeout to allow for the build to complete */ 15000);
 });

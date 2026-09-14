@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } from '@fluentui/react-utilities';
 import type { HsvColor } from '../../types/color';
 import type { ColorPickerProps } from '../ColorPicker/ColorPicker.types';
@@ -36,6 +36,16 @@ export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'colo
   };
 
 /**
+ * ColorArea Base Props
+ */
+export type ColorAreaBaseProps = Omit<ColorAreaProps, 'shape'>;
+
+/**
  * State used in rendering ColorArea
  */
 export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color' | 'shape'>;
+
+/**
+ * ColorArea Base State
+ */
+export type ColorAreaBaseState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;

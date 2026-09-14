@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pin @microsoft/load-themed-styles version to prevent yarn modern duplication",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

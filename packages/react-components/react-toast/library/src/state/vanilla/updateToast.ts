@@ -1,4 +1,4 @@
-import { UpdateToastEventDetail } from '../types';
+import type { UpdateToastEventDetail } from '../types';
 import { EVENTS } from '../constants';
 
 export function updateToast(options: UpdateToastEventDetail, targetDocument: Document): void {

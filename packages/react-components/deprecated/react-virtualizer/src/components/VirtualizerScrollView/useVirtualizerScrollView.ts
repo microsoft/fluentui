@@ -21,7 +21,9 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
 
   // Store the virtualizer length as a ref for imperative ref access
   const virtualizerLengthRef = React.useRef<number>(virtualizerLength);
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   if (virtualizerLengthRef.current !== virtualizerLength) {
+    // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
     virtualizerLengthRef.current = virtualizerLength;
   }
 

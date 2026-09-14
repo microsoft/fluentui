@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
-import { Label } from '@fluentui/react-label';
-import { InfoButton } from '../InfoButton';
+import type { Label } from '@fluentui/react-label';
+import type { InfoButton } from '../InfoButton';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { InfoButtonProps } from '../InfoButton';
 

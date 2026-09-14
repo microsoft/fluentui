@@ -3,7 +3,7 @@
 import type { TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { TeachingPopoverTitleSlots } from './TeachingPopoverTitle.types';
+import type { TeachingPopoverTitleSlots } from './TeachingPopoverTitle.types';
 
 /**
  * Render the final JSX of TeachingPopoverTitle

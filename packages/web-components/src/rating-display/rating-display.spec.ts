@@ -1,6 +1,11 @@
+import { createRequire } from 'node:module';
 import { expect, test } from '../../test/playwright/index.js';
-import { RatingDisplaySize } from './rating-display.options.js';
 import type { RatingDisplay } from './rating-display.js';
+import { RatingDisplaySize, tagName } from './rating-display.options.js';
+
+// Note: We need to use `createRequire` to import from `@fluentui/tokens` since it is a CommonJS module
+const require = createRequire(import.meta.url);
+const { webLightTheme } = require('@fluentui/tokens');
 
 function encodedSvg(str: string, browserName: string) {
   return encodeURIComponent(str)
@@ -10,7 +15,7 @@ function encodedSvg(str: string, browserName: string) {
 
 test.describe('Rating Display', () => {
   test.use({
-    tagName: 'fluent-rating-display',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -22,15 +27,18 @@ test.describe('Rating Display', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-rating-display');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should not set any default attributes and custom states', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
     await expect(element).toBeVisible();
     for (const attribute of ['color', 'compact', 'count', 'icon-view-box', 'max', 'size']) {
       await expect(element).not.toHaveAttribute(attribute);
@@ -53,7 +61,6 @@ test.describe('Rating Display', () => {
 
   test('should display the correct number of filled icons and label text based on the `value` attribute', async ({
     fastPage,
-    browserName,
   }) => {
     const { element } = fastPage;
     const display = element.locator('.display');
@@ -64,9 +71,7 @@ test.describe('Rating Display', () => {
     await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS(
       'background-image',
-      browserName === 'chromium'
-        ? 'linear-gradient(90deg, rgb(234, 163, 0) calc(63px), rgb(249, 226, 174) calc(63.5px))'
-        : 'linear-gradient(90deg, rgb(234, 163, 0) 63px, rgb(249, 226, 174) 63.5px)',
+      'linear-gradient(90deg, rgb(234, 163, 0) 63px, rgb(249, 226, 174) 63.5px)',
     );
   });
 
@@ -75,8 +80,13 @@ test.describe('Rating Display', () => {
     await fastPage.setTemplate({ attributes: { value: '4' } });
     await expect(element).toHaveJSProperty('color', undefined);
 
-    await expect(element).toHaveCSS('--_icon-color-value', '#eaa300');
-    await expect(element).toHaveCSS('--_icon-color-empty', '#f9e2ae');
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
+      webLightTheme.colorPaletteMarigoldBorderActive,
+    );
+
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-empty'))).toContain(
+      webLightTheme.colorPaletteMarigoldBackground2,
+    );
 
     await element.evaluate((node: RatingDisplay) => {
       node.color = 'brand';
@@ -84,8 +94,13 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('color', 'brand');
     await expect(element).toHaveAttribute('color', 'brand');
-    await expect(element).toHaveCSS('--_icon-color-value', '#0f6cbd');
-    await expect(element).toHaveCSS('--_icon-color-empty', '#ebf3fc');
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
+      webLightTheme.colorBrandForeground1,
+    );
+
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-empty'))).toContain(
+      webLightTheme.colorBrandBackground2,
+    );
 
     await element.evaluate((node: RatingDisplay) => {
       node.color = 'neutral';
@@ -93,8 +108,12 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('color', 'neutral');
     await expect(element).toHaveAttribute('color', 'neutral');
-    await expect(element).toHaveCSS('--_icon-color-value', '#242424');
-    await expect(element).toHaveCSS('--_icon-color-empty', '#e6e6e6');
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
+      webLightTheme.colorNeutralForeground1,
+    );
+    expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-empty'))).toContain(
+      webLightTheme.colorNeutralBackground6,
+    );
   });
 
   test('should display the compact version', async ({ fastPage }) => {

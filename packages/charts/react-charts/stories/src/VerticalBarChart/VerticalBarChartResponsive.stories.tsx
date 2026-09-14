@@ -1,13 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  VerticalBarChart,
-  VerticalBarChartDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-  LineChartLineOptions,
-  ResponsiveContainer,
-} from '@fluentui/react-charts';
+import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalBarChart, DataVizPalette, getColorFromToken, ResponsiveContainer } from '@fluentui/react-charts';
 
 export const VerticalBarChartResponsive = (): JSXElement => {
   const points: VerticalBarChartDataPoint[] = [

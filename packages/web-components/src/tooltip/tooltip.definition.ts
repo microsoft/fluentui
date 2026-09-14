@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Tooltip } from './tooltip.js';
+import { tagName } from './tooltip.options.js';
 import { styles } from './tooltip.styles.js';
 import { template } from './tooltip.template.js';
 
 /**
- * The {@link Tooltip } custom element definition.
+ * The definition for the `<fluent-tooltip>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-tooltip>`
  */
-export const definition = Tooltip.compose({
-  name: `${FluentDesignSystem.prefix}-tooltip`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ChartAnnotation } from '../../types/ChartAnnotation';
 import type { Chart } from '../../types/index';
 import type { Margin } from '@fluentui/chart-utilities';

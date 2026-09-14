@@ -5,13 +5,8 @@ import { useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContex
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { useControllableState, slot } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
-import {
-  OnOpenChangeData,
-  OpenPopoverEvents,
-  Popover,
-  type PopoverProps,
-  PopoverSurface,
-} from '@fluentui/react-popover';
+import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
+import { Popover, type PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 import type {
   AvatarGroupPopoverBaseProps,
   AvatarGroupPopoverBaseState,
@@ -39,8 +34,10 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
   });
 
   if (layout === 'pie') {
+    // eslint-disable-next-line react-hooks/immutability
     state.triggerButton.children = null;
   } else if (indicator === 'icon') {
+    // eslint-disable-next-line react-hooks/immutability
     state.triggerButton.children = <MoreHorizontalRegular />;
   }
 
@@ -103,11 +100,11 @@ export const useAvatarGroupPopoverBase_unstable = (props: AvatarGroupPopoverBase
     popoverOpen,
 
     components: {
-      root: Popover,
+      root: 'div',
       triggerButton: 'button',
       content: 'ul',
-      popoverSurface: PopoverSurface,
-      tooltip: Tooltip,
+      popoverSurface: 'div',
+      tooltip: 'div',
     },
     root: slot.always(
       {

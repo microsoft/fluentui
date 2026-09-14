@@ -1,5 +1,6 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
+import type { KeyborgFocusInEvent } from 'keyborg';
+import { KEYBORG_FOCUSIN, createKeyborg, disposeKeyborg } from 'keyborg';
 
 import { FOCUS_VISIBLE_ATTR } from './constants';
 

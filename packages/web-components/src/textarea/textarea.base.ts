@@ -1,7 +1,8 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
-import { whitespaceFilter } from '../utils/index.js';
+import { attr, FASTElement, nullableNumberConverter, observable, Updates } from '@microsoft/fast-element';
+import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
 import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
 
 /**
@@ -13,8 +14,8 @@ import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
  * @csspart label - The `<label>` element.
  * @csspart root - The container element of the `<textarea>` element.
  * @csspart control - The internal `<textarea>` element.
- * @fires change - Fires after the control loses focus, if the content has changed.
- * @fires select - Fires when the `select()` method is called.
+ * @fires { Event } change - Fires after the control loses focus, if the content has changed.
+ * @fires { Event } select - Fires when the `select()` method is called.
  *
  * @public
  */
@@ -84,9 +85,11 @@ export class BaseTextArea extends FASTElement {
   @observable
   public defaultSlottedNodes!: Node[];
   protected defaultSlottedNodesChanged() {
-    const next = this.getContent();
-    this.defaultValue = next;
-    this.value = next;
+    Updates.enqueue(() => {
+      const next = this.getContent();
+      this.defaultValue = next;
+      this.value = next;
+    });
   }
 
   private filteredLabelSlottedNodes: Label[] = [];
@@ -263,9 +266,9 @@ export class BaseTextArea extends FASTElement {
   @attr({ attribute: 'readonly', mode: 'boolean' })
   public readOnly = false;
   protected readOnlyChanged() {
-    this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+    if (this.elementInternals) {
+      this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
 
-    if (this.$fastController.isConnected) {
       this.setValidity();
     }
   }
@@ -441,6 +444,7 @@ export class BaseTextArea extends FASTElement {
       this.preConnectControlEl = null;
 
       this.maybeCreateAutoSizerEl();
+      maybeSetAutoFocus(this);
     });
   }
 
@@ -509,7 +513,7 @@ export class BaseTextArea extends FASTElement {
    * @public
    */
   public setCustomValidity(message: string | null): void {
-    this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
+    this.elementInternals?.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
     this.reportValidity();
   }
 
@@ -523,7 +527,7 @@ export class BaseTextArea extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (!this.$fastController.isConnected) {
+    if (!this.elementInternals) {
       return;
     }
 
@@ -531,8 +535,8 @@ export class BaseTextArea extends FASTElement {
       this.elementInternals.setValidity({});
     } else {
       this.elementInternals.setValidity(
-        flags ?? this.controlEl.validity,
-        message ?? this.controlEl.validationMessage,
+        flags ?? this.controlEl?.validity,
+        message ?? this.controlEl?.validationMessage,
         anchor ?? this.controlEl,
       );
     }
@@ -557,7 +561,7 @@ export class BaseTextArea extends FASTElement {
   private getContent(): string {
     return (
       this.defaultSlottedNodes
-        .map(node => {
+        ?.map(node => {
           switch (node.nodeType) {
             case Node.ELEMENT_NODE:
               return (node as Element).outerHTML;

@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   ChartProps,
   LineChartPoints,
   Margins,
@@ -8,7 +7,7 @@ import {
   RefArrayData,
   CustomizedCalloutData,
 } from '../../types/index';
-import {
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,

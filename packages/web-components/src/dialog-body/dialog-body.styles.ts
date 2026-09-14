@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorNeutralBackground1,
   colorNeutralForeground1,
@@ -106,4 +106,5 @@ export const styles = css`
       position: sticky;
       z-index: 2;
     }
+  }
 `;

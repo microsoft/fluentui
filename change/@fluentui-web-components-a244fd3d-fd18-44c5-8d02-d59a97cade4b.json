@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: focus menu items immediately after connecting a menu list",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}

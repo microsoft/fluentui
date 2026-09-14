@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useToastTrigger_unstable } from './useToastTrigger';
 import { renderToastTrigger_unstable } from './renderToastTrigger';
 import type { ToastTriggerProps } from './ToastTrigger.types';

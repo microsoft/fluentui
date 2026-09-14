@@ -7,7 +7,7 @@
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
-import { FASTElementDefinition } from '@microsoft/fast-element';
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 
 // Warning: (ae-missing-release-tag) "DonutChart" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -69,8 +69,8 @@ export class DonutChart extends FASTElement {
     width: number;
 }
 
-// @public (undocumented)
-export const DonutChartDefinition: FASTElementDefinition<typeof DonutChart>;
+// @public
+export const DonutChartDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DonutChartStyles: ElementStyles;
@@ -135,7 +135,7 @@ export class HorizontalBarChart extends FASTElement {
 }
 
 // @public
-export const HorizontalBarChartDefinition: FASTElementDefinition<typeof HorizontalBarChart>;
+export const HorizontalBarChartDefinition: PartialFASTElementDefinition;
 
 // @public
 export const HorizontalBarChartStyles: ElementStyles;

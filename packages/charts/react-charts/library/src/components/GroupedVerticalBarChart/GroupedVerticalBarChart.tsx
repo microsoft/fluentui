@@ -4,12 +4,14 @@ import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
 import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleBand, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
+import { scaleBand as d3ScaleBand } from 'd3-scale';
 
-import { useId, JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
+import type { IAxisData, IDomainNRange, YAxisType } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -18,14 +20,12 @@ import {
   getBarWidth,
   isScalePaddingDefined,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
-  YAxisType,
   calcRequiredWidth,
   calcTotalWidth,
   calcBandwidth,
@@ -33,22 +33,20 @@ import {
   sortAxisCategories,
 } from '../../utilities/index';
 
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   Margins,
   Legend,
   GroupedVerticalBarChartProps,
   GroupedVerticalBarChartData,
   GVBarChartSeriesPoint,
-  Legends,
   YValueHover,
   ChartPopoverProps,
   LineSeries,
-  getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
+import { CartesianChart, Legends, getColorFromToken } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
 import { isInvalidValue } from '@fluentui/chart-utilities';
@@ -143,7 +141,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = {};
+    const linePointsByX: Record<string, YValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -162,8 +160,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -316,8 +314,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             series:
               point.series?.map(seriesPoint => {
                 // TODO: Add support for gradient colors
-                let startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
-                let endColor = startColor;
+                const startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
+                const endColor = startColor;
                 if (!_legendColorMap[seriesPoint.legend]) {
                   _legendColorMap[seriesPoint.legend] = [startColor, endColor];
                 }
@@ -431,7 +429,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
@@ -596,7 +594,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
               tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
-              role="img"
+              role="option"
             />,
           );
 
@@ -638,8 +636,15 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
+
+    const categoryGroupAriaLabel = `${singleSet.xAxisPoint}, category ${singleSet.indexNum + 1} of ${
+      _datasetForBars.length
+    }, with ${presentLegends.length} bars`;
+
     return (
       <g
+        role="listbox"
+        aria-label={categoryGroupAriaLabel}
         key={singleSet.indexNum}
         transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
@@ -856,7 +861,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
         const dotId = _getDotId(seriesIdx, pointIdx);
         const isLinePointActive = activeLinePoint === point.x || activeLinePoint === dotId;
-
         dotGroup.push(
           <circle
             key={dotId}
@@ -873,7 +877,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
-            role="img"
+            role="option"
             aria-label={getAriaLabel(
               {
                 xAxisCalloutData: point.xAxisCalloutData,
@@ -887,10 +891,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           />,
         );
       });
+      const dotGroupAriaLabel = `${series.legend || `Line ${seriesIdx + 1}`}, line with ${
+        series.data.length
+      } data points`;
 
       lineBorders.push(<g key={`lineBorderGroup-${seriesIdx}`}>{lineBorderGroup}</g>);
       lines.push(<g key={`lineGroup-${seriesIdx}`}>{lineGroup}</g>);
-      dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
+      dots.push(
+        <g role="listbox" key={`dotGroup-${seriesIdx}`} aria-label={dotGroupAriaLabel}>
+          {dotGroup}
+        </g>,
+      );
     });
 
     return dots.length > 0 ? (

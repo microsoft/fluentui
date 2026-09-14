@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { TableContextValue } from '../components/Table/Table.types';
+import type { TableContextValue } from '../components/Table/Table.types';
 
 const tableContext = React.createContext<TableContextValue | undefined>(undefined);
 

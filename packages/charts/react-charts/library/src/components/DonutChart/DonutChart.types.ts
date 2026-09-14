@@ -1,9 +1,9 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
-import { ChartProps, ChartDataPoint, Chart } from './index';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { LegendsProps } from '../Legends/index';
+import type { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
+import type { ChartProps, ChartDataPoint, Chart } from './index';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**

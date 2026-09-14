@@ -1,4 +1,4 @@
-import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
+import type { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
 
 export interface Day {
   /** `Date.toString()` value of current date */

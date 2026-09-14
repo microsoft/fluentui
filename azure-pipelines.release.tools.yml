@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: tools_20201022.1
-name: 'tools_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "tools_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -14,10 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -56,17 +52,6 @@ extends:
                   dryRun: ${{ parameters.dryRun }}
 
               - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-                displayName: Authenticate git for pushes
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
-
-              - script: |
                   echo "Following packages will be published(if they contain changes):"
                   yarn nx show projects -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**'
 
@@ -82,14 +67,13 @@ extends:
                   FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
                 displayName: lint
 
-              - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-tools.config.js --message 'release: applying package updates - tools'
-                  git reset --hard origin/master
-                env:
-                  GITHUB_PAT: $(githubPAT)
-                displayName: Publish changes and bump versions
-                condition: not(${{ parameters.dryRun }})
-
-              - template: .devops/templates/cleanup.yml@self
+              - template: .devops/templates/run-with-token.yml@self
                 parameters:
-                  checkForModifiedFiles: false
+                  steps:
+                    - script: |
+                        yarn beachball publish --config scripts/beachball/src/release-tools.config.js --message 'release: applying package updates - tools'
+                      env:
+                        BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
+                        BEACHBALL_NPM_TOKEN: $(npmToken)
+                      displayName: Publish changes and bump versions
+                      condition: not(${{ parameters.dryRun }})

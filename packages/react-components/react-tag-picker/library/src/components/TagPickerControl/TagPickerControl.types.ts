@@ -1,7 +1,13 @@
-import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
-import { TagPickerContextValue } from '../../contexts/TagPickerContext';
-import { ComboboxSlots } from '@fluentui/react-combobox';
-import * as React from 'react';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  ExtractSlotProps,
+  Slot,
+} from '@fluentui/react-utilities';
+import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
+import type { ComboboxSlots } from '@fluentui/react-combobox';
+import type * as React from 'react';
 
 export type TagPickerControlSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TagPickerControlCSSProperties }>>;
@@ -32,3 +38,8 @@ export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPi
   Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'> & {
     invalid: boolean;
   };
+
+/**
+ * TagPickerControl Base State - omits design-only state derived from picker context.
+ */
+export type TagPickerControlBaseState = DistributiveOmit<TagPickerControlState, 'size' | 'appearance'>;

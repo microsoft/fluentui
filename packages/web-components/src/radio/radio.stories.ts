@@ -1,8 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Radio as FluentRadio } from './radio.js';
 
 type Story = StoryObj<FluentRadio>;
+const { argTypes } = getStorybookHelpers<FluentRadio>('fluent-radio');
 
 const storyTemplate = html<StoryArgs<FluentRadio>>`
   <fluent-radio
@@ -18,18 +20,7 @@ const storyTemplate = html<StoryArgs<FluentRadio>>`
 export default {
   title: 'Components/Radio',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Sets checked state on radio',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets disabled state on radio',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentRadio>;
 
 export const Default: Story = {};

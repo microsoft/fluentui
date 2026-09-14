@@ -1,22 +1,27 @@
 import type { Locator } from '@playwright/test';
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as DialogBodyTagName } from '../dialog-body/dialog-body.options.js';
+import { tagName as TabTagName } from '../tab/tab.options.js';
+import { tagName as TablistTagName } from '../tablist/tablist.options.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Dialog } from './dialog.js';
+import { tagName } from './dialog.options.js';
 
 test.describe('Dialog', () => {
   test.use({
-    tagName: 'fluent-dialog',
+    tagName,
     innerHTML: /* html */ `<div id="content">Dialog Body</div>`,
-    waitFor: ['fluent-button', 'fluent-dialog-body'],
+    waitFor: [DialogBodyTagName],
   });
 
   async function getPointOutside(element: Locator) {
     // Get the bounding box of the element
-    const boundingBox = (await element.boundingBox()) as { x: number; y: number; width: number; height: number };
+    const boundingBox = await element.boundingBox();
 
     // Calculate a point outside the bounding box
     return {
-      x: boundingBox.x + boundingBox.width + 10, // 10 pixels to the right
-      y: boundingBox.y + boundingBox.height + 10, // 10 pixels below
+      x: boundingBox!.x + boundingBox!.width + 10, // 10 pixels to the right
+      y: boundingBox!.y + boundingBox!.height + 10, // 10 pixels below
     };
   }
 
@@ -29,9 +34,9 @@ test.describe('Dialog', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-dialog');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -39,6 +44,8 @@ test.describe('Dialog', () => {
   test('should open and close programmatically', async ({ fastPage }) => {
     const { element } = fastPage;
     const content = element.locator('#content');
+
+    await fastPage.setTemplate();
 
     await test.step('should show the dialog content when the dialog is shown', async () => {
       await expect(content).toBeHidden();
@@ -65,6 +72,8 @@ test.describe('Dialog', () => {
   }) => {
     const { element } = fastPage;
     const content = element.locator('#content');
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Dialog) => {
       node.show();
@@ -116,6 +125,8 @@ test.describe('Dialog', () => {
     const { element } = fastPage;
     const content = element.locator('#content');
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: Dialog) => {
       node.setAttribute('type', 'alert');
       node.show();
@@ -139,6 +150,8 @@ test.describe('Dialog', () => {
     const { element } = fastPage;
     const content = element.locator('#content');
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: Dialog) => {
       node.show();
     });
@@ -152,17 +165,17 @@ test.describe('Dialog', () => {
 
   test('should close after a button is slotted into the close slot and clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const closeButton = element.locator('fluent-button[slot="close"]');
+    const closeButton = element.locator('button[slot="close"]');
     const content = element.locator('#content');
 
-    await fastPage.setTemplate(/* html */ `
-      <fluent-dialog>
-        <fluent-dialog-body>
-            <fluent-button slot="close">Close</fluent-button>
-            <div id="content">content</div>
-        </fluent-dialog-body>
-      </fluent-dialog>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${DialogBodyTagName}>
+          <button slot="close">Close</button>
+          <div id="content">content</div>
+        </${DialogBodyTagName}>
+      `,
+    });
 
     await element.evaluate((node: Dialog) => {
       node.show();
@@ -177,17 +190,18 @@ test.describe('Dialog', () => {
 
   test('should NOT close after a slotted button is clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const genericButton = element.locator('fluent-button');
+    const genericButton = element.locator('button');
     const content = element.locator('#content');
 
-    await fastPage.setTemplate(/* html */ `
-      <fluent-dialog type="non-modal">
-        <fluent-dialog-body>
-            <fluent-button>Close</fluent-button>
-            <div id="content">content</div>
-        </fluent-dialog-body>
-      </fluent-dialog>
-    `);
+    await fastPage.setTemplate({
+      attributes: { type: 'non-modal' },
+      innerHTML: /* html */ `
+        <${DialogBodyTagName}>
+          <button>Close</button>
+          <div id="content">content</div>
+        </${DialogBodyTagName}>
+      `,
+    });
 
     await element.evaluate((node: Dialog) => {
       node.show();
@@ -292,6 +306,8 @@ test.describe('Dialog', () => {
     const { element } = fastPage;
     const dialog = element.locator('dialog');
 
+    await fastPage.setTemplate();
+
     await expect(dialog).not.toHaveAttribute('aria-labelledby');
 
     await element.evaluate(node => {
@@ -306,6 +322,8 @@ test.describe('Dialog', () => {
   }) => {
     const { element } = fastPage;
     const dialog = element.locator('dialog');
+
+    await fastPage.setTemplate();
 
     await expect(dialog).not.toHaveAttribute('aria-describedby');
 
@@ -322,6 +340,8 @@ test.describe('Dialog', () => {
     const { element } = fastPage;
     const dialog = element.locator('dialog');
 
+    await fastPage.setTemplate();
+
     await expect(dialog).not.toHaveAttribute('aria-label');
 
     await element.evaluate(node => {
@@ -337,14 +357,14 @@ test.describe('Dialog', () => {
     const label = page.locator('label');
     const input = page.locator('input');
 
-    await fastPage.setTemplate(/* html */ `
-      <fluent-dialog>
-        <fluent-dialog-body id="content">
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${DialogBodyTagName} id="content">
           <label for="input">Label</label>
           <input id="input" />
-        </fluent-dialog-body>
-      </fluent-dialog>
-    `);
+        </${DialogBodyTagName}>
+      `,
+    });
 
     await element.evaluate((node: Dialog) => {
       node.show();
@@ -365,5 +385,90 @@ test.describe('Dialog', () => {
     await page.mouse.click(x, y);
 
     await expect(content).toBeHidden();
+  });
+
+  test.describe('sets focus when show() is called', () => {
+    test.use({
+      tagName,
+      waitFor: [DialogBodyTagName, TablistTagName, TabTagName, TextInputTagName],
+    });
+
+    test('should not change tablist’s `activeid` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const tablist = element.locator(TablistTagName);
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <${TablistTagName} activeid="tab2">
+              <${TabTagName} id="tab1">tab 1</${TabTagName}>
+              <${TabTagName} id="tab2">tab 2</${TabTagName}>
+            </${TablistTagName}>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(tablist).toHaveAttribute('activeid', 'tab2');
+
+      await element.evaluate((node: Dialog) => {
+        node.hide();
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(tablist).toHaveAttribute('activeid', 'tab2');
+    });
+
+    test('should focus on itself if no slotted content has `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName}></${TextInputTagName}>
+            <button>after</button>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(element).toBeFocused();
+    });
+
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const input = element.getByTestId('input');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
+            <button>after</button>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(input).toBeFocused();
+    });
   });
 });

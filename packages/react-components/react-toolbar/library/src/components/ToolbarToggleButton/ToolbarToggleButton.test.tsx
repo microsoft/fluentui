@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToolbarToggleButton } from './ToolbarToggleButton';
 import { isConformant } from '../../testing/isConformant';
-import { ToggleButtonProps } from '@fluentui/react-button';
+import type { ToggleButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarToggleButton', () => {
   isConformant({

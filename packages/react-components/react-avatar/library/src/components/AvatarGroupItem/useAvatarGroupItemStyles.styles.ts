@@ -161,8 +161,6 @@ const usePieStyles = makeStyles({
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
-  'use no memo';
-
   const { isOverflowItem, layout, size } = state;
   const { dir } = useFluent();
 
@@ -202,8 +200,10 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
     rootClasses.push(rootStyles.overflowItem);
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(avatarGroupItemClassNames.root, ...rootClasses, state.root.className);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.avatar.className = mergeClasses(
     avatarGroupItemClassNames.avatar,
     !isOverflowItem && avatarStyles.nonOverflowItem,
@@ -212,6 +212,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   );
 
   if (state.overflowLabel) {
+    // eslint-disable-next-line react-hooks/immutability
     state.overflowLabel.className = mergeClasses(
       avatarGroupItemClassNames.overflowLabel,
       overflowLabelStyles.base,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Legends, Legend, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { Legend } from '@fluentui/react-charts';
+import { Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
 
 const legends: Legend[] = [

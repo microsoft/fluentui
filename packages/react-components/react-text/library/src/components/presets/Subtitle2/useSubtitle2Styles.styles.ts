@@ -1,7 +1,7 @@
 'use client';
 
 import { makeStyles } from '@griffel/react';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TextSlots } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 

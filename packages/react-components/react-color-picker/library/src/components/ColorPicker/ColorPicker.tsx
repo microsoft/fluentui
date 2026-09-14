@@ -6,7 +6,7 @@ import { useColorPicker_unstable } from './useColorPicker';
 import { renderColorPicker_unstable } from './renderColorPicker';
 import { useColorPickerStyles_unstable } from './useColorPickerStyles.styles';
 import type { ColorPickerProps } from './ColorPicker.types';
-import { useColorPickerContextValues } from '../../contexts/colorPicker';
+import { useColorPickerContextValues } from './useColorPickerContextValues';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**

@@ -1,12 +1,13 @@
 'use client';
 
 import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
+import type { EmblaPluginType } from 'embla-carousel';
+import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
+import type { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
 import { pointerEventPlugin } from './pointerEvents';
@@ -229,6 +230,7 @@ export function useEmblaCarousel(
     };
 
     // Get plugins using autoplayRef to prevent state change recreating EmblaCarousel
+    // eslint-disable-next-line react-hooks/refs
     const plugins = getPlugins();
 
     return {

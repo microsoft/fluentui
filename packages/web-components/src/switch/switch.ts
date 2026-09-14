@@ -1,4 +1,4 @@
-import type { StaticallyComposableHTML } from '../utils/index.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import { BaseCheckbox } from '../checkbox/checkbox.base.js';
 
 export type SwitchOptions = {
@@ -10,6 +10,7 @@ export type SwitchOptions = {
  * Based on BaseCheckbox and includes style and layout specific attributes
  *
  * @tag fluent-switch
+ * @csspart checked-indicator - The internal switch indicator element.
  *
  */
 export class Switch extends BaseCheckbox {

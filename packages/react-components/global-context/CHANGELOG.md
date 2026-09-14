@@ -1,8 +1,49 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.104)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.103..@fluentui/global-context_v9.0.0-beta.104)
+
+### Changes
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.0.0-beta.103](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.103)
+
+Wed, 24 Jun 2026 11:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.102..@fluentui/global-context_v9.0.0-beta.103)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.2.18 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.102)
+
+Tue, 26 May 2026 09:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.101..@fluentui/global-context_v9.0.0-beta.102)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.101)
+
+Thu, 23 Apr 2026 14:21:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.100..@fluentui/global-context_v9.0.0-beta.101)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.100)
 

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update pinned versions of deprecated packages moved back onto their beta line",
+  "packageName": "@fluentui/react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

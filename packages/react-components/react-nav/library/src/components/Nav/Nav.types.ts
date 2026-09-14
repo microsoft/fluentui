@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { NavContextValue, NavItemValue } from '../NavContext.types';
@@ -83,6 +83,8 @@ export type NavProps = ComponentProps<NavSlots> & {
   density?: NavDensity;
 };
 
+export type NavBaseProps = Omit<NavProps, 'density'>;
+
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value of the selected navItem.
@@ -101,3 +103,5 @@ export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButton
  * State used in rendering Nav
  */
 export type NavState = ComponentState<NavSlots> & NavContextValue;
+
+export type NavBaseState = Omit<NavState, 'density' | 'tabbable'>;

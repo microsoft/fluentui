@@ -3,20 +3,13 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-import * as React from 'react';
-import {
-  bin as d3Bin,
-  extent as d3Extent,
-  sum as d3Sum,
-  min as d3Min,
-  max as d3Max,
-  range as d3Range,
-  Bin,
-} from 'd3-array';
+import type * as React from 'react';
+import type { Bin } from 'd3-array';
+import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, range as d3Range } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format } from 'd3-format';
-import { DonutChartProps } from '../DonutChart/index';
-import {
+import type { DonutChartProps } from '../DonutChart/index';
+import type {
   ChartDataPoint,
   ChartProps,
   HorizontalBarChartWithAxisDataPoint,
@@ -30,18 +23,18 @@ import {
   GanttChartDataPoint,
   ScatterChartPoints,
 } from '../../types/DataPoint';
-import { SankeyChartProps } from '../SankeyChart/index';
-import { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
-import { HorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
-import { LineChartProps } from '../LineChart/index';
-import { AreaChartProps } from '../AreaChart/index';
-import { HeatMapChartProps } from '../HeatMapChart/index';
+import type { SankeyChartProps } from '../SankeyChart/index';
+import type { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
+import type { HorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import type { LineChartProps } from '../LineChart/index';
+import type { AreaChartProps } from '../AreaChart/index';
+import type { HeatMapChartProps } from '../HeatMapChart/index';
 import { DataVizPalette, getColorFromToken } from '../../utilities/colors';
-import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
-import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
-import { VerticalBarChartProps } from '../VerticalBarChart/index';
-import { ChartTableProps } from '../ChartTable/index';
-import { GanttChartProps } from '../GanttChart/index';
+import type { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
+import type { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
+import type { VerticalBarChartProps } from '../VerticalBarChart/index';
+import type { ChartTableProps } from '../ChartTable/index';
+import type { GanttChartProps } from '../GanttChart/index';
 import type { AnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
   DEFAULT_DATE_STRING,
@@ -91,12 +84,12 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
-import { Legend, LegendsProps } from '../Legends/index';
-import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
-import { CartesianChartProps } from '../CommonComponents/index';
-import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
-import { PolarAxisProps, PolarChartProps } from '../PolarChart/PolarChart.types';
-import {
+import type { Legend, LegendsProps } from '../Legends/index';
+import type { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
+import type { CartesianChartProps } from '../CommonComponents/index';
+import type { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
+import type { PolarAxisProps, PolarChartProps } from '../PolarChart/PolarChart.types';
+import type {
   ChartAnnotation,
   ChartAnnotationArrowHead,
   ChartAnnotationLayoutProps,
@@ -525,7 +518,8 @@ const shouldIgnoreKey = (key: string): boolean => {
  * @returns Flattened object
  */
 const flattenObject = (obj: Record<string, unknown>, prefix: string = ''): Record<string, unknown> => {
-  const flattened: Record<string, unknown> = {};
+  // Null-prototype object so a schema key of "__proto__" cannot mutate the object's prototype.
+  const flattened: Record<string, unknown> = Object.create(null);
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -1306,7 +1300,7 @@ export const transformPlotlyJsonToDonutProps = (
     isDarkTheme,
     true,
   );
-  const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
+  const mapLegendToDataPoint: Record<string, ChartDataPoint> = Object.create(null);
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
   colorMap.current!.clear();
@@ -1402,7 +1396,7 @@ export const transformPlotlyJsonToVSBCProps = (
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
 ): VerticalStackedBarChartProps => {
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
   let yMaxValue = 0;
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
@@ -3084,7 +3078,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
   if (isStacked) {
     // Assign a color per series/category and use it for all subValues of that category
-    const seriesColors: Record<string, string> = {};
+    const seriesColors: Record<string, string> = Object.create(null);
     input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages

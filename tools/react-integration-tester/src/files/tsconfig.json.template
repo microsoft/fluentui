@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "<%= tsconfig.target %>",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "<%= tsconfig.moduleResolution %>",
     "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
     "strict": <%= tsconfig.strictMode %>,
     "pretty": true,

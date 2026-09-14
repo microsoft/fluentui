@@ -10,9 +10,9 @@ import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/ind
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './useChartPopoverStyles.styles';
-import { YValueHover } from './CartesianChart.types';
-import { LegendShape } from '../Legends/Legends.types';
-import { ChartPopoverProps } from './ChartPopover.types';
+import type { YValueHover } from './CartesianChart.types';
+import type { LegendShape } from '../Legends/Legends.types';
+import type { ChartPopoverProps } from './ChartPopover.types';
 
 /* This component is a wrapper over Popover component which implements the logic for rendering popovers for any chart
 combining the logic for Callout and ChartHoverCard in v8 charts. */

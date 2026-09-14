@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: collapse redundant headless type, render, and hook wrappers to direct re-exports",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

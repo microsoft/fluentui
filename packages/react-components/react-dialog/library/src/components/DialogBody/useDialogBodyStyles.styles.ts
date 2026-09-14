@@ -40,10 +40,9 @@ const useResetStyles = makeResetStyles({
  * Apply styling to the DialogBody slots based on the state
  */
 export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBodyState => {
-  'use no memo';
-
   const resetStyles = useResetStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dialogBodyClassNames.root, resetStyles, state.root.className);
 
   return state;

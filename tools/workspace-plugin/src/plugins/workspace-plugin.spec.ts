@@ -1,11 +1,38 @@
-import { CreateNodesContext, CreateNodesResultV2, ProjectConfiguration, serializeJson } from '@nx/devkit';
+import {
+  CreateNodesContext,
+  CreateNodesResultV2,
+  PostTasksExecutionContext,
+  ProjectConfiguration,
+  TaskResult,
+  serializeJson,
+} from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
-import { WorkspacePluginOptions, createNodesV2 } from './workspace-plugin';
+import { WorkspacePluginOptions, createNodesV2, postTasksExecution } from './workspace-plugin';
 import { PackageJson } from '../types';
+
+const createTaskResult = (id: string, status: TaskResult['status']): TaskResult => ({
+  task: { id } as TaskResult['task'],
+  status,
+  code: status === 'failure' ? 1 : 0,
+});
+
+const postTasksExecutionContext: PostTasksExecutionContext = {
+  id: 'test-run',
+  workspaceRoot: '/test',
+  nxJsonConfiguration: {},
+  argv: [],
+  startTime: 0,
+  endTime: 1,
+  taskResults: {
+    'successful-project:build': createTaskResult('successful-project:build', 'success'),
+    'failed-project:type-check': createTaskResult('failed-project:type-check', 'failure'),
+  },
+};
 
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
+  const originalEnv = process.env;
   let context: CreateNodesContext;
   let tempFs: TempFs;
   let cwd: string;
@@ -19,6 +46,9 @@ describe(`workspace-plugin`, () => {
     tempFs = new TempFs('test');
     cwd = process.cwd();
     process.chdir(tempFs.tempDir);
+    process.env = { ...originalEnv };
+    delete process.env.GITHUB_ACTIONS;
+    delete process.env.TF_BUILD;
 
     context = {
       nxJsonConfiguration: {
@@ -34,9 +64,39 @@ describe(`workspace-plugin`, () => {
   });
 
   afterEach(() => {
+    process.env = originalEnv;
+    jest.restoreAllMocks();
     jest.resetModules();
     tempFs.cleanup();
     process.chdir(cwd);
+  });
+
+  it('should report failed tasks as GitHub Actions errors', async () => {
+    process.env.GITHUB_ACTIONS = 'true';
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).toHaveBeenCalledTimes(1);
+    expect(consoleLog).toHaveBeenCalledWith('::error::Nx task failed: failed-project:type-check');
+  });
+
+  it('should report failed tasks as Azure Pipelines errors', async () => {
+    process.env.TF_BUILD = 'true';
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).toHaveBeenCalledTimes(1);
+    expect(consoleLog).toHaveBeenCalledWith('##vso[task.logissue type=error]Nx task failed: failed-project:type-check');
+  });
+
+  it('should not report failed tasks outside CI', async () => {
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).not.toHaveBeenCalled();
   });
 
   it('should create nodes with clean,format targets for any project', async () => {
@@ -47,6 +107,41 @@ describe(`workspace-plugin`, () => {
     const results = await createNodesFunction(['proj/project.json'], options, context);
 
     expect(getTargetsNames(results)).toEqual(['clean', 'format', 'type-check']);
+  });
+
+  it('should add the test target when a jest.config.cjs (type:module) exists', async () => {
+    await tempFs.createFiles({
+      'proj/project.json': serializeJson({}),
+      'proj/package.json': serializeJson({ type: 'module' }),
+      'proj/jest.config.cjs': 'module.exports = {}',
+    });
+    const results = await createNodesFunction(['proj/project.json'], options, context);
+
+    expect(getTargetsNames(results)).toContain('test');
+  });
+
+  it('should add an optional attw target only when package.json declares exports and is not private', async () => {
+    await tempFs.createFiles({
+      'with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'with-exports/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+      'no-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'no-exports/package.json': serializeJson({}),
+      'private-with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'private-with-exports/package.json': serializeJson({ private: true, exports: { '.': './lib/index.js' } }),
+    });
+
+    const withExports = await createNodesFunction(['with-exports/project.json'], options, context);
+    const noExports = await createNodesFunction(['no-exports/project.json'], options, context);
+    const privateWithExports = await createNodesFunction(['private-with-exports/project.json'], options, context);
+
+    expect(getTargetsNames(withExports, 'with-exports')).toContain('attw');
+    expect(getTargets(withExports, 'with-exports')?.attw).toMatchObject({
+      executor: 'nx:run-commands',
+      dependsOn: ['build'],
+      options: { cwd: 'with-exports', command: expect.stringContaining('attw --pack --profile node16') },
+    });
+    expect(getTargetsNames(noExports, 'no-exports')).not.toContain('attw');
+    expect(getTargetsNames(privateWithExports, 'private-with-exports')).not.toContain('attw');
   });
 
   it('should add lint,test task only if configuration exists', async () => {
@@ -77,7 +172,7 @@ describe(`workspace-plugin`, () => {
         "metadata": Object {
           "description": "Runs ESLint on project",
           "help": Object {
-            "command": "yarn eslint --help",
+            "command": "yarn run -T eslint --help",
             "example": Object {
               "options": Object {
                 "max-warnings": 0,
@@ -89,7 +184,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
-          "command": "yarn eslint src",
+          "command": "yarn run -T eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
@@ -101,7 +196,7 @@ describe(`workspace-plugin`, () => {
     expect(targets?.test).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn jest",
+        "command": "yarn run -T jest",
         "inputs": Array [
           "default",
           "^production",
@@ -115,7 +210,7 @@ describe(`workspace-plugin`, () => {
         "metadata": Object {
           "description": "Run Jest Tests",
           "help": Object {
-            "command": "yarn jest --help",
+            "command": "yarn run -T jest --help",
             "example": Object {
               "options": Object {
                 "coverage": true,
@@ -140,7 +235,7 @@ describe(`workspace-plugin`, () => {
     expect(targets?.['bundle-size']).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn monosize measure",
+        "command": "yarn run -T monosize measure",
         "inputs": Array [
           "{workspaceRoot}/monosize.config.mjs",
           "{projectRoot}/monosize.config.mjs",
@@ -155,7 +250,7 @@ describe(`workspace-plugin`, () => {
         ],
         "metadata": Object {
           "help": Object {
-            "command": "yarn monosize measure --help",
+            "command": "yarn run -T monosize measure --help",
             "example": Object {},
           },
           "technologies": Array [
@@ -170,6 +265,40 @@ describe(`workspace-plugin`, () => {
         ],
       }
     `);
+  });
+
+  it('should add the verify-bundle-isolation target only when a bundle-isolation.config.json exists', async () => {
+    await tempFs.createFiles({
+      'with-config/project.json': serializeJson({}),
+      'with-config/package.json': serializeJson({}),
+      'with-config/bundle-isolation.config.json': serializeJson({}),
+      'no-config/project.json': serializeJson({}),
+      'no-config/package.json': serializeJson({}),
+      // a monosize fixtures dir alone must not be mistaken for an isolation opt-in
+      'no-config/bundle-size/A.fixture.js': '',
+    });
+
+    const withConfig = await createNodesFunction(['with-config/project.json'], options, context);
+    const noConfig = await createNodesFunction(['no-config/project.json'], options, context);
+
+    expect(getTargetsNames(noConfig, 'no-config')).not.toContain('verify-bundle-isolation');
+    expect(getTargets(withConfig, 'with-config')?.['verify-bundle-isolation']).toEqual({
+      cache: true,
+      dependsOn: ['build', '^build'],
+      command: 'yarn run -T verify-bundle-isolation',
+      options: { cwd: 'with-config' },
+      inputs: [
+        'default',
+        '^default',
+        '{workspaceRoot}/tools/verify-bundle-isolation/**',
+        { externalDependencies: ['ajv', 'webpack'] },
+      ],
+      outputs: ['{projectRoot}/dist/bundle-isolation'],
+      metadata: {
+        technologies: ['webpack'],
+        description: 'Assert entry points do not bundle runtimes the package is meant to stay free of',
+      },
+    });
   });
 
   describe(`v9 project nodes`, () => {
@@ -257,7 +386,7 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
           Object {
             "cache": true,
-            "command": "yarn rit --project-id ci --react 17 --run type-check --verbose",
+            "command": "yarn run -T rit --project-id ci --react 17 --run type-check --verbose",
             "dependsOn": Array [
               "react-integration-testing--17--prepare",
             ],
@@ -271,7 +400,7 @@ describe(`workspace-plugin`, () => {
             "metadata": Object {
               "description": "Run react integration tests against React 17",
               "help": Object {
-                "command": "yarn rit --help",
+                "command": "yarn run -T rit --help",
                 "example": Object {},
               },
               "technologies": Array [
@@ -287,7 +416,7 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17--prepare']).toMatchInlineSnapshot(`
           Object {
             "cache": true,
-            "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose",
+            "command": "yarn run -T rit --prepare-only --no-install --project-id ci --react 17 --verbose",
             "dependsOn": Array [],
             "inputs": Array [
               "default",
@@ -299,7 +428,7 @@ describe(`workspace-plugin`, () => {
             "metadata": Object {
               "description": "Run react integration tests against React 17",
               "help": Object {
-                "command": "yarn rit --help",
+                "command": "yarn run -T rit --help",
                 "example": Object {},
               },
               "technologies": Array [
@@ -378,7 +507,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--e2e'].command).toMatchInlineSnapshot(
-          `"yarn rit --project-id ci --react 17 --run e2e --verbose"`,
+          `"yarn run -T rit --project-id ci --react 17 --run e2e --verbose"`,
         );
         expect(targets['react-integration-testing--17--prepare']).toBeDefined();
       });
@@ -404,7 +533,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--test'].command).toMatchInlineSnapshot(
-          `"yarn rit --project-id ci --react 17 --run test --verbose"`,
+          `"yarn run -T rit --project-id ci --react 17 --run test --verbose"`,
         );
         expect(targets['react-integration-testing--17--prepare']).toBeDefined();
       });
@@ -558,12 +687,13 @@ describe(`workspace-plugin`, () => {
                             "@swc/core",
                             "@microsoft/api-extractor",
                             "typescript",
+                            "babel-plugin-react-compiler",
                           ],
                         },
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run proj:build --help",
+                          "command": "yarn run -T nx run proj:build --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -591,7 +721,6 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/lib",
                         "{projectRoot}/lib-commonjs",
                         "{projectRoot}/dist",
-                        "{projectRoot}/dist/index.d.ts",
                         "{projectRoot}/etc/proj.api.md",
                       ],
                     },
@@ -616,7 +745,7 @@ describe(`workspace-plugin`, () => {
                       "metadata": Object {
                         "description": "Format code with prettier",
                         "help": Object {
-                          "command": "yarn prettier --help",
+                          "command": "yarn run -T prettier --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -642,7 +771,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run proj:generate-api --help",
+                          "command": "yarn run -T nx run proj:generate-api --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -680,7 +809,7 @@ describe(`workspace-plugin`, () => {
                       "metadata": Object {
                         "description": "Run react integration tests against React 17, 18",
                         "help": Object {
-                          "command": "yarn rit --help",
+                          "command": "yarn run -T rit --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -776,7 +905,7 @@ describe(`workspace-plugin`, () => {
       expect(targets?.storybook).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "yarn storybook dev",
+          "command": "yarn run -T storybook dev",
           "inputs": Array [
             "production",
             "{workspaceRoot}/.storybook/**",
@@ -789,7 +918,7 @@ describe(`workspace-plugin`, () => {
           ],
           "metadata": Object {
             "help": Object {
-              "command": "yarn storybook dev --help",
+              "command": "yarn run -T storybook dev --help",
               "example": Object {},
             },
             "technologies": Array [
@@ -804,10 +933,10 @@ describe(`workspace-plugin`, () => {
       expect(targets?.['test-ssr']).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "yarn test-ssr \\"./src/**/*.stories.tsx\\"",
+          "command": "yarn run -T test-ssr \\"./src/**/*.stories.tsx\\"",
           "metadata": Object {
             "help": Object {
-              "command": "yarn test-ssr --help",
+              "command": "yarn run -T test-ssr --help",
               "example": Object {},
             },
             "technologies": Array [
@@ -819,6 +948,74 @@ describe(`workspace-plugin`, () => {
           },
         }
       `);
+    });
+
+    describe('generate-api target', () => {
+      const v9LibFiles = {
+        'proj/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      };
+
+      async function setupAndGetGenerateApiTarget(extraFiles: Record<string, string> = {}) {
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        return getTargets(results)?.['generate-api'];
+      }
+
+      it('should use default inputs and outputs for a standard v9 library', async () => {
+        const target = await setupAndGetGenerateApiTarget();
+
+        expect(target?.inputs).toEqual([
+          '{projectRoot}/config/api-extractor.json',
+          '{projectRoot}/tsconfig.json',
+          '{projectRoot}/tsconfig.lib.json',
+          '{projectRoot}/src/**/*.tsx?',
+          '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+          { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+        ]);
+        expect(target?.outputs).toEqual(['{projectRoot}/dist/index.d.ts', '{projectRoot}/etc/proj.api.md']);
+      });
+
+      it('should add glob outputs when user configures exportSubpaths on generate-api target', async () => {
+        const extraFiles = {
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+            targets: {
+              'generate-api': {
+                options: {
+                  exportSubpaths: true,
+                },
+              },
+            },
+          } satisfies ProjectConfiguration),
+        };
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        const targets = getTargets(results);
+
+        const generateApiTarget = targets?.['generate-api'];
+        expect(generateApiTarget?.outputs).toEqual(['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']);
+
+        const buildTarget = targets?.build;
+        expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
+        expect(buildTarget?.outputs).toEqual([
+          '{projectRoot}/lib',
+          '{projectRoot}/lib-commonjs',
+          '{projectRoot}/dist',
+          '{projectRoot}/etc/*.api.md',
+        ]);
+      });
     });
 
     it('should add verify-packaging task only if package is not private', async () => {
@@ -839,11 +1036,181 @@ describe(`workspace-plugin`, () => {
         }
       `);
     });
+
+    describe('react library project', () => {
+      describe('with react in peerDependencies', () => {
+        let targets: ReturnType<typeof getTargets>;
+        let metadata: ReturnType<typeof getMetadata>;
+
+        beforeEach(async () => {
+          await tempFs.createFiles({
+            'proj/library/project.json': serializeJson({
+              root: 'proj/library',
+              name: 'proj',
+              projectType: 'library',
+              tags: ['vNext'],
+            } satisfies ProjectConfiguration),
+            'proj/library/package.json': serializeJson({
+              name: '@proj/proj',
+              peerDependencies: { react: '>=16' },
+            } satisfies Partial<PackageJson>),
+          });
+          const results = await createNodesFunction(['proj/library/project.json'], options, context);
+          targets = getTargets(results, 'proj/library');
+          metadata = getMetadata(results, 'proj/library');
+        });
+
+        it('should add react-compiler-analyzer target group', async () => {
+          expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "command": "yarn run -T react-compiler-analyzer lint ./src",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "Lint redundant 'use no memo' directives",
+                "help": Object {
+                  "command": "yarn run -T react-compiler-analyzer lint --help",
+                  "example": Object {
+                    "options": Object {
+                      "fix": true,
+                    },
+                  },
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+              "options": Object {
+                "cwd": "proj/library",
+              },
+            }
+          `);
+
+          expect(targets?.['react-compiler-analyzer--analyze']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "command": "yarn run -T react-compiler-analyzer analyze ./src",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "Analyze React Compiler coverage and migration status",
+                "help": Object {
+                  "command": "yarn run -T react-compiler-analyzer analyze --help",
+                  "example": Object {
+                    "options": Object {
+                      "annotate": true,
+                    },
+                  },
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+              "options": Object {
+                "cwd": "proj/library",
+              },
+            }
+          `);
+
+          expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "dependsOn": Array [
+                "react-compiler-analyzer--lint",
+              ],
+              "executor": "nx:noop",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "React Compiler analysis (runs lint on CI)",
+                "help": Object {
+                  "command": "yarn run -T react-compiler-analyzer --help",
+                  "example": Object {},
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+            }
+          `);
+
+          expect(metadata?.targetGroups).toMatchInlineSnapshot(`
+            Object {
+              "React Compiler Analyzer": Array [
+                "react-compiler-analyzer--lint",
+                "react-compiler-analyzer--analyze",
+                "react-compiler-analyzer",
+              ],
+              "React Integration Tester": Array [
+                "react-integration-testing",
+              ],
+            }
+          `);
+        });
+
+        it('should not set reactCompiler build option by default', async () => {
+          expect(targets?.build.options.reactCompiler).toBeUndefined();
+        });
+      });
+
+      describe('without react in peerDependencies', () => {
+        let targets: ReturnType<typeof getTargets>;
+
+        beforeEach(async () => {
+          await tempFs.createFiles({
+            'proj/library/project.json': serializeJson({
+              root: 'proj/library',
+              name: 'proj',
+              projectType: 'library',
+              tags: ['vNext'],
+            } satisfies ProjectConfiguration),
+            'proj/library/package.json': serializeJson({
+              name: '@proj/proj',
+              private: true,
+            } satisfies Partial<PackageJson>),
+          });
+          const results = await createNodesFunction(['proj/library/project.json'], options, context);
+          targets = getTargets(results, 'proj/library');
+        });
+
+        it('should not add react-compiler-analyzer targets', async () => {
+          expect(targets?.['react-compiler-analyzer']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--lint']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--analyze']).toBeUndefined();
+        });
+
+        it('should not set reactCompiler build option', async () => {
+          expect(targets?.build.options.reactCompiler).toBeUndefined();
+        });
+      });
+    });
   });
 });
 
 function getTargets(results: CreateNodesResultV2, projRoot = 'proj') {
   return results[0][1].projects?.[projRoot].targets;
+}
+function getMetadata(results: CreateNodesResultV2, projRoot = 'proj') {
+  return results[0][1].projects?.[projRoot].metadata;
 }
 function getTargetsNames(results: CreateNodesResultV2, projRoot = 'proj'): string[] {
   return Object.keys(getTargets(results, projRoot) ?? {});

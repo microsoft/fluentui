@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -55,6 +55,7 @@ export type TooltipSlots = {
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
     children?: JSXElement | null;
+    hidden?: boolean;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;

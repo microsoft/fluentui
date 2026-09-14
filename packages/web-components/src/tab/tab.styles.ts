@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -39,10 +39,12 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     gap: 4px;
   }
+
   :host .tab-content {
     display: inline-flex;
     flex-direction: column;
     padding: 0 2px;
+    grid-column: 3;
   }
 
   :host([aria-selected='true']) {
@@ -77,8 +79,33 @@ export const styles = css`
     z-index: 1;
   }
 
+  /*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tablist.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+  @supports (anchor-name: --a) and (text-size-adjust: auto) {
+    :host([aria-selected='true'])::after {
+      background-color: transparent;
+    }
+
+    :host([aria-selected='true']:hover)::after {
+      background-color: ${colorNeutralStroke1Hover};
+    }
+  }
+
   :host([aria-selected='true'][disabled])::after {
     background-color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::slotted([slot='start']) {
+    grid-column: 2;
+  }
+
+  ::slotted([slot='end']) {
+    grid-column: -1;
   }
 
   ::slotted([slot='start']),
@@ -89,6 +116,7 @@ export const styles = css`
     cursor: not-allowed;
     fill: ${colorNeutralForegroundDisabled};
     color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
   }
 
   :host([disabled]:hover)::after {
@@ -105,18 +133,9 @@ export const styles = css`
     outline: 1px solid ${colorStrokeFocus1};
   }
 
-  :host([data-hasIndent]) {
-    display: grid;
-    grid-template-columns: 20px 1fr auto;
-  }
-
-  :host([data-hasIndent]) .tab-content {
-    grid-column: 2;
-  }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+  @media (forced-colors: active) {
     :host([aria-selected='true'])::after {
       background-color: Highlight;
     }
-  `),
-);
+  }
+`;

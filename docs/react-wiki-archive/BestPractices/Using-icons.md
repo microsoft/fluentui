@@ -32,9 +32,7 @@ If you would like the icons to be served from your own CDN, simply copy the file
 
 ### Creating an icon subset
 
-The Fabric Icons tool, https://aka.ms/uifabric-icons, lets you search and browse all of Fabric/Fluent UI's MDL2 icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fabric Icons tool is updated with new icons several times a month, whereas the default Fluent UI React set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/uifabric-icons?help.
-
-Note that if you use the Fabric icons tool to create your own icon subset, you will also need to host those assets on your own CDN.
+The Fabric Icons subsetting tool is no longer publicly available. To serve font-based icons without using the default CDN, copy the font files from `@uifabric/icons/fonts` (or `@fluentui/font-icons-mdl2/fonts` in version 8+) to your own CDN and pass that base URL to `initializeIcons`.
 
 ### What does `initializeIcons` do?
 

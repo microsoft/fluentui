@@ -1,5 +1,6 @@
 import type { MotionParam, AtomMotionFn } from '../types';
-import { MOTION_DEFINITION, createMotionComponent, MotionComponent } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
+import { MOTION_DEFINITION, createMotionComponent } from './createMotionComponent';
 
 /**
  * Create a variant function that wraps a motion function to customize it.

@@ -8,9 +8,15 @@ import * as React from 'react';
 import { createPresenceComponent } from '../factories/createPresenceComponent';
 import { presenceMotionSlot, type PresenceMotionSlotProps } from './presenceMotionSlot';
 
+type TestMotionParams = { duration?: number; easing?: string };
+
 type TestComponentSlots = { presenceMotion: Slot<PresenceMotionSlotProps> };
 type TestComponentProps = ComponentProps<Partial<TestComponentSlots>> & { visible: boolean };
 type TestComponentState = ComponentState<TestComponentSlots>;
+
+type ParamTestComponentSlots = { presenceMotion: Slot<PresenceMotionSlotProps<TestMotionParams>> };
+type ParamTestComponentProps = ComponentProps<Partial<ParamTestComponentSlots>> & { visible: boolean };
+type ParamTestComponentState = ComponentState<ParamTestComponentSlots>;
 
 const TestMotion = jest.fn(
   createPresenceComponent({
@@ -42,6 +48,30 @@ const TestComponent: React.FC<TestComponentProps> = props => {
           </state.presenceMotion>
         )
       }
+    </div>
+  );
+};
+
+const ParamTestComponent: React.FC<ParamTestComponentProps> = props => {
+  const state: ParamTestComponentState = {
+    components: {
+      presenceMotion: TestMotion,
+    },
+    presenceMotion: presenceMotionSlot(props.presenceMotion, {
+      elementType: TestMotion,
+      defaultProps: { visible: props.visible, unmountOnExit: true },
+    }),
+  };
+
+  assertSlots<ParamTestComponentSlots>(state);
+
+  return (
+    <div data-testid="root">
+      {state.presenceMotion && (
+        <state.presenceMotion>
+          <div data-testid="content" />
+        </state.presenceMotion>
+      )}
     </div>
   );
 };
@@ -129,5 +159,40 @@ describe('presenceMotionSlot', () => {
 
     expect(queryByTestId('content')).toBeNull();
     expect(TestMotion).not.toHaveBeenCalled();
+  });
+});
+
+describe('presenceMotionSlot (with MotionParams)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('forwards MotionParams directly to the motion component', () => {
+    render(<ParamTestComponent presenceMotion={{ duration: 500, easing: 'ease-in' }} visible />);
+
+    expect(TestMotion).toHaveBeenCalled();
+    const firstCall = TestMotion.mock.calls[0];
+    expect(firstCall[0]).toEqual(expect.objectContaining({ duration: 500, easing: 'ease-in' }));
+  });
+
+  it('passes MotionParams to the children render function', () => {
+    const renderFn = jest.fn((Component, props) => <Component {...props} />);
+    render(<ParamTestComponent presenceMotion={{ duration: 500, easing: 'ease-in', children: renderFn }} visible />);
+
+    expect(renderFn).toHaveBeenCalled();
+    const [, renderProps] = renderFn.mock.calls[0];
+    expect(renderProps).toEqual(
+      expect.objectContaining({ duration: 500, easing: 'ease-in', visible: true, unmountOnExit: true }),
+    );
+  });
+
+  it('does not pass "as" or "children" through to the render function props', () => {
+    const renderFn = jest.fn((Component, props) => <Component {...props} />);
+    render(<ParamTestComponent presenceMotion={{ duration: 500, children: renderFn }} visible />);
+
+    expect(renderFn).toHaveBeenCalled();
+    const [, renderProps] = renderFn.mock.calls[0];
+    expect(renderProps).not.toHaveProperty('as');
+    expect(renderProps).not.toHaveProperty('children', renderFn);
   });
 });

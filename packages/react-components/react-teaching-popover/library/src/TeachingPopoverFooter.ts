@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverFooterBaseProps,
+  TeachingPopoverFooterBaseState,
   TeachingPopoverFooterProps,
   TeachingPopoverFooterSlots,
   TeachingPopoverFooterState,
@@ -9,4 +11,5 @@ export {
   teachingPopoverFooterClassNames,
   useTeachingPopoverFooterStyles_unstable,
   useTeachingPopoverFooter_unstable,
+  useTeachingPopoverFooterBase_unstable,
 } from './components/TeachingPopoverFooter';

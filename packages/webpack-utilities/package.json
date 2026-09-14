@@ -8,18 +8,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint"
   },
   "dependencies": {
     "loader-utils": "^2.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "webpack": ">=4.0.0 || >=5.0.0",
-    "react-loadable": ">=5.0.0"
+    "react-loadable": ">=5.0.0",
+    "webpack": ">=4.0.0 || >=5.0.0"
   }
 }

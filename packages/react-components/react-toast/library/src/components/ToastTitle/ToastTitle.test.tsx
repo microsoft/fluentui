@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToastTitle } from './ToastTitle';
 import { isConformant } from '../../testing/isConformant';
-import { ToastTitleProps } from './ToastTitle.types';
+import type { ToastTitleProps } from './ToastTitle.types';
 import { toastTitleClassNames } from './useToastTitleStyles.styles';
 
 describe('ToastTitle', () => {

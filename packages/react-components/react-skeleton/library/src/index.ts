@@ -2,11 +2,19 @@ export {
   Skeleton,
   renderSkeleton_unstable,
   skeletonClassNames,
+  useSkeletonContextValues,
   useSkeletonStyles_unstable,
   useSkeleton_unstable,
   useSkeletonBase_unstable,
 } from './Skeleton';
-export type { SkeletonBaseProps, SkeletonProps, SkeletonSlots, SkeletonBaseState, SkeletonState } from './Skeleton';
+export type {
+  SkeletonContextValues,
+  SkeletonBaseProps,
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonBaseState,
+  SkeletonState,
+} from './Skeleton';
 export {
   SkeletonItem,
   renderSkeletonItem_unstable,

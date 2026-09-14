@@ -20,7 +20,8 @@ module.exports = createRule({
       description: 'Restricts usage of default values on React context creation',
     },
     messages: {
-      invalidDefaultValue: 'Invalid default value for context declaration, default value should be undefined',
+      invalidDefaultValue:
+        'Invalid default value for context declaration, default value should be undefined. Use createContext(undefined) and handle missing context in the consumer hook. See docs/architecture/component-patterns.md',
     },
     fixable: 'code',
     schema: [

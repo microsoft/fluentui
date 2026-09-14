@@ -1,0 +1,236 @@
+.surface {
+  background: var(--bg-elev);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  min-width: 320px;
+  max-width: 360px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.headerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+/* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
+.dismissButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin-inline-start: auto;
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+}
+
+.dismissButton:hover {
+  background: var(--surface-muted);
+  border-color: var(--border-stronger);
+  color: var(--text);
+}
+
+.dismissButton:active {
+  background: var(--surface-sunken);
+}
+
+.dismissButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 1px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 var(--space-4);
+}
+
+/* Media placeholder — 288×176 (v9 'medium' aspect ratio) gray box. */
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 288 / 176;
+  background: var(--surface-muted);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  color: var(--text-faint);
+  font-size: 64px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--space-1);
+}
+
+.bodyText {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: 0;
+}
+
+/*
+  Action button — mirrors v9 Button medium / secondary appearance:
+  32px tall, 1px neutral border, 4px radius, ~96px min-width to match the v9
+  TeachingPopoverCarouselFooterButton minimum.
+*/
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 96px;
+  padding: 0 var(--space-3);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+}
+
+.actionButton:hover {
+  background: var(--surface-muted);
+  border-color: var(--border-stronger);
+}
+
+.actionButton:active {
+  background: var(--surface-sunken);
+}
+
+.actionButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.actionButton:disabled {
+  background: var(--surface-muted);
+  border-color: var(--border);
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+/* Primary variant — mirrors v9 Button primary appearance. */
+.actionButtonPrimary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.actionButtonPrimary:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.actionButtonPrimary:active {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.actionButtonPrimary:disabled {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.carouselCard[hidden] {
+  display: none;
+}
+
+.carouselFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.carouselNav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/*
+  Mirrors the v9 TeachingPopoverCarouselNavButton shape: an 8×8 circle when
+  unselected (30% accent), and a 16×8 rounded-rectangle "pill" when selected
+  (full accent). Width and border-radius animate so paging feels continuous.
+*/
+.carouselNavButton {
+  display: flex;
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  cursor: pointer;
+  transition: width 120ms ease, border-radius 120ms ease, background-color 120ms ease;
+}
+
+@supports not (color: color-mix(in lch, white, black)) {
+  .carouselNavButton {
+    background: var(--accent);
+    opacity: 0.3;
+  }
+}
+
+.carouselNavButton[aria-selected='true'] {
+  width: 16px;
+  border-radius: 4px;
+  background: var(--accent);
+  opacity: 1;
+}
+
+.carouselNavButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pageCount {
+  font-size: 12px;
+  color: var(--text-muted);
+}

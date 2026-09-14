@@ -1,8 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { DialogBody as FluentDialogBody } from './dialog-body.js';
 
 type Story = StoryObj<FluentDialogBody>;
+const { argTypes } = getStorybookHelpers<FluentDialogBody>('fluent-dialog-body');
 
 const dismissed20Regular = html<StoryArgs<FluentDialogBody>>`
   <svg
@@ -75,38 +77,7 @@ export default {
   args: {
     closeSlottedContent: () => titleActionTemplate,
   },
-  argTypes: {
-    slottedContent: {
-      control: false,
-      name: '',
-      description: 'The default slot, for the dialog content.',
-      table: { category: 'slots', type: {} },
-    },
-    actionSlottedContent: {
-      control: false,
-      description: 'Slot for the dialog actions, such as buttons.',
-      name: 'action',
-      table: { category: 'slots', type: {} },
-    },
-    titleActionSlottedContent: {
-      control: false,
-      description: 'Slot for the title action elements.',
-      name: 'title-action',
-      table: { category: 'slots', type: {} },
-    },
-    closeSlottedContent: {
-      control: false,
-      description: 'Slot for the close element.',
-      name: 'close',
-      table: { category: 'slots', type: {} },
-    },
-    titleSlottedContent: {
-      control: false,
-      description: 'Slot for the title element.',
-      name: 'title',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentDialogBody>;
 
 export const Default: Story = {

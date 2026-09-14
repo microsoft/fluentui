@@ -8,5 +8,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["*", "../public", "../src/**/*.stories.*"]
+  "include": ["*", "./*.d.ts", "../public", "../src/**/*.stories.*"]
 }

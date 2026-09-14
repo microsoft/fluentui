@@ -1,8 +1,9 @@
-import { RenderHookResult, renderHook } from '@testing-library/react-hooks';
+import type { RenderHookResult } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import { useTableColumnSizing_unstable as useTableColumnSizing } from './useTableColumnSizing';
 import { createTableColumn } from './createColumn';
 import { mockTableState } from '../testing/mockTableState';
-import { TableFeaturesState } from './types';
+import type { TableFeaturesState } from './types';
 
 const mockColumnResizeState = {
   getColumnWidth: jest.fn(),

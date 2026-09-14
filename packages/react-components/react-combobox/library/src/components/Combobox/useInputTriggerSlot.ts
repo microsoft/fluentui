@@ -5,10 +5,11 @@ import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
-import { ComboboxProps } from '../Combobox/Combobox.types';
-import { UseTriggerSlotState, useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
-import { OptionValue } from '../../utils/OptionCollection.types';
+import type { ComboboxProps } from '../Combobox/Combobox.types';
+import type { UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { useTriggerSlot } from '../../utils/useTriggerSlot';
+import type { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UsedComboboxState = UseTriggerSlotState &
@@ -33,8 +34,6 @@ export function useInputTriggerSlot(
   ref: React.Ref<HTMLInputElement>,
   options: UseInputTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
-  'use no memo';
-
   const {
     state: {
       open,
@@ -111,7 +110,9 @@ export function useInputTriggerSlot(
     activeDescendantController,
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 
   // NVDA and JAWS have bugs that suppress reading the input value text when aria-activedescendant is set
@@ -166,9 +167,11 @@ export function useInputTriggerSlot(
     defaultOnKeyDown?.(event);
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onKeyDown = onKeyDown;
 
   if (hideActiveDescendant) {
+    // eslint-disable-next-line react-hooks/immutability
     trigger['aria-activedescendant'] = undefined;
   }
 

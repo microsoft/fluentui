@@ -25,12 +25,11 @@ export function useMeasureList<
   totalLength: number,
   defaultItemSize: number,
 ): {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   widthArray: React.MutableRefObject<number[]>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   heightArray: React.MutableRefObject<number[]>;
   createIndexedRef: (index: number) => (el: TElement | null) => void;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   refArray: React.MutableRefObject<Array<TElement | undefined | null>>;
   sizeUpdateCount: number;
 } {
@@ -138,6 +137,7 @@ export function useMeasureList<
     return () => _resizeObserver.current?.disconnect();
   }, [resizeObserver]);
 
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   return { widthArray, heightArray, createIndexedRef, refArray, sizeUpdateCount: sizeUpdateCount.current };
 }
 

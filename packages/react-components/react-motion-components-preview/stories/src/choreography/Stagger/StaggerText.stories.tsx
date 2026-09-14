@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerTextDescription from './StaggerText.stories.md';
-import { Field, makeStyles, tokens, Button, motionTokens, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
 import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({

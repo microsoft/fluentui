@@ -35,12 +35,11 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselCard slots based on the state
  */
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
-  'use no memo';
-
   const { autoSize } = state;
   const appearance = useCarouselContext(context => context.appearance);
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,

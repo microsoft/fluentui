@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { CalendarStrings, DateFormatting, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';

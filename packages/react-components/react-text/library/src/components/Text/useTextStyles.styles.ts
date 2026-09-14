@@ -3,7 +3,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TextSlots, TextState } from './Text.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const textClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Text',
@@ -112,10 +112,9 @@ const useStyles = makeStyles({
  * Apply styling to the Text slots based on the state
  */
 export const useTextStyles_unstable = (state: TextState): TextState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     textClassNames.root,
     styles.root,

@@ -14,4 +14,5 @@ export {
   useBreadcrumbBase_unstable,
   useBreadcrumbA11yBehavior_unstable,
 } from './useBreadcrumb';
+export { useBreadcrumbContextValues_unstable } from './useBreadcrumbContextValue';
 export { breadcrumbClassNames, useBreadcrumbStyles_unstable } from './useBreadcrumbStyles.styles';

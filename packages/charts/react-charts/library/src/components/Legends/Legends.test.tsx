@@ -117,35 +117,33 @@ describe('Legends snapShot testing', () => {
   });
 });
 
-/* eslint-enable @typescript-eslint/no-deprecated */
-
 describe('Legends - basic props', () => {
   it('Should not mount legends when empty', () => {
-    let wrapper = render(<Legends legends={[]} />);
+    const wrapper = render(<Legends legends={[]} />);
     const legend = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(legend!.length).toBe(0);
   });
 
   it('Should mount legends when not empty', () => {
-    let wrapper = render(<Legends legends={legends} />);
+    const wrapper = render(<Legends legends={legends} />);
     const legend = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(legend).toBeDefined();
   });
 
   it('Should mount Overflow Button when not empty', () => {
-    let wrapper = render(<Legends legends={legends} /* {...overflowProps} */ overflowText={'OverFlow Items'} />);
+    const wrapper = render(<Legends legends={legends} /* {...overflowProps} */ overflowText={'OverFlow Items'} />);
     const overflowBtnText = wrapper.container.querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
     expect(overflowBtnText).toBeDefined();
   });
 
   it('Should not mount Overflow when empty', () => {
-    let wrapper = render(<Legends legends={legends} />);
+    const wrapper = render(<Legends legends={legends} />);
     const overflowBtn = wrapper.container.querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
     expect(overflowBtn!.length).toBe(0);
   });
 
   it('Should be not able to select multiple Legends', () => {
-    let wrapper = render(<Legends legends={legends} canSelectMultipleLegends={false} />);
+    const wrapper = render(<Legends legends={legends} canSelectMultipleLegends={false} />);
     const canSelectMultipleLegends = wrapper.container
       .querySelector('[class^="legend"]')
       ?.getAttribute('canSelectMultipleLegends');
@@ -153,7 +151,7 @@ describe('Legends - basic props', () => {
   });
 
   it('Should render data-is-focusable correctly', () => {
-    let wrapper = render(<Legends legends={legends} data-is-focusable={true} />);
+    const wrapper = render(<Legends legends={legends} data-is-focusable={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

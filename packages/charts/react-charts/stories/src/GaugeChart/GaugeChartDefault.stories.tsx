@@ -1,9 +1,23 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox, makeStyles, Switch, tokens } from '@fluentui/react-components';
+import type { GaugeChartCalloutData } from '@fluentui/react-charts';
 import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  callout: {
+    display: 'grid',
+    gap: tokens.spacingVerticalXS,
+    padding: tokens.spacingVerticalS,
+  },
+  calloutValue: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+});
 
 export const GaugeChartBasic = (): JSXElement => {
+  const styles = useStyles();
   const [width, setWidth] = React.useState<number>(252);
   const [height, setHeight] = React.useState<number>(128);
   const [chartValue, setChartValue] = React.useState<number>(50);
@@ -11,6 +25,7 @@ export const GaugeChartBasic = (): JSXElement => {
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundedCorners, setRoundedCorners] = React.useState<boolean>(false);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState<boolean>(false);
+  const [useCustomCallout, setUseCustomCallout] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -36,6 +51,26 @@ export const GaugeChartBasic = (): JSXElement => {
   const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
+
+  const _onSwitchCustomCallout = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+    setUseCustomCallout(ev.currentTarget.checked);
+  }, []);
+
+  const _renderCallout = (data?: GaugeChartCalloutData): JSXElement | null => {
+    if (!data) {
+      return null;
+    }
+
+    return (
+      <div className={styles.callout}>
+        <span>{data.legend}</span>
+        <span className={styles.calloutValue}>Risk score: {data.chartValue}</span>
+        <span>
+          Range: {data.minValue} to {data.maxValue}
+        </span>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -104,6 +139,12 @@ export const GaugeChartBasic = (): JSXElement => {
           checked={legendMultiSelect}
           onChange={_onSwitchLegendMultiSelect}
         />
+        &nbsp;&nbsp;
+        <Switch
+          label={useCustomCallout ? 'Custom callout ON' : 'Custom callout OFF'}
+          checked={useCustomCallout}
+          onChange={_onSwitchCustomCallout}
+        />
       </div>
 
       <GaugeChart
@@ -134,6 +175,7 @@ export const GaugeChartBasic = (): JSXElement => {
         legendProps={{
           canSelectMultipleLegends: legendMultiSelect,
         }}
+        onRenderCallout={useCustomCallout ? _renderCallout : undefined}
       />
     </>
   );

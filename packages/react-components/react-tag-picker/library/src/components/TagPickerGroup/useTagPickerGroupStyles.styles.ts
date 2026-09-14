@@ -39,10 +39,9 @@ const useStyles = makeStyles({
  * Apply styling to the TagPickerGroup slots based on the state
  */
 export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): TagPickerGroupState => {
-  'use no memo';
-
   useTagGroupStyles_unstable(state);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerGroupClassNames.root,
     styles[tagSizeToTagPickerSize(state.size)],

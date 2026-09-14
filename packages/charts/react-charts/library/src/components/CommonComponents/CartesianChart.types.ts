@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { LegendsProps } from '../Legends/index';
+import type { LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
-import {
+import type {
   AccessibilityProps,
   Chart,
   Margins,
@@ -20,10 +20,17 @@ import {
   AxisProps,
   AxisScaleType,
 } from '../../types/index';
-import { TimeLocaleDefinition } from 'd3-time-format';
-import { ChartPopoverProps } from './ChartPopover.types';
-import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
-import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { TimeLocaleDefinition } from 'd3-time-format';
+import type { ChartPopoverProps } from './ChartPopover.types';
+import type {
+  ChartTypes,
+  IAxisData,
+  IDomainNRange,
+  IYAxisParams,
+  XAxisTypes,
+  YAxisType,
+} from '../../utilities/utilities';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}

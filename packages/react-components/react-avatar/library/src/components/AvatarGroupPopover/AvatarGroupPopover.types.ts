@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { AvatarSize } from '../Avatar/Avatar.types';
 import type { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';

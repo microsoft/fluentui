@@ -29,7 +29,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
@@ -37,7 +37,7 @@ jobs:
       - name: Affected Deployable Storybooks
         id: affected_storybooks_count
         run: |
-          affected_count=$(yarn --silent nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
+          affected_count=$(yarn nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
 
       - name: Build affected storybooks
@@ -49,11 +49,12 @@ jobs:
         if: steps.affected_storybooks_count.outputs.value > 0
         run: |
           rm -rf _pages
-          mkdir -p _pages/react _pages/charts _pages/web-components
+          mkdir -p _pages/react _pages/charts _pages/web-components _pages/headless
 
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
+          cp -R apps/public-docsite-v9-headless/dist/storybook/* _pages/headless/
 
       - name: Upload Pages Artifact
         if: steps.affected_storybooks_count.outputs.value > 0

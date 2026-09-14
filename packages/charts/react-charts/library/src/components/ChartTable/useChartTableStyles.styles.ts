@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ChartTableProps, ChartTableStyles } from './ChartTable.types';
+import type { ChartTableProps, ChartTableStyles } from './ChartTable.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 

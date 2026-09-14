@@ -5,13 +5,13 @@
 ```ts
 
 import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ButtonProps } from '@fluentui/react-button';
+import type { ButtonSlots } from '@fluentui/react-button';
+import type { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import { FC } from 'react';
@@ -22,9 +22,9 @@ import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ToggleButtonProps } from '@fluentui/react-button';
-import { ToggleButtonState } from '@fluentui/react-button';
-import { TooltipProps } from '@fluentui/react-tooltip';
+import type { ToggleButtonProps } from '@fluentui/react-button';
+import type { ToggleButtonState } from '@fluentui/react-button';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;

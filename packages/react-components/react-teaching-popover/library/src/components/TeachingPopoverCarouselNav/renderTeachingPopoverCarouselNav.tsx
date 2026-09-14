@@ -3,7 +3,7 @@
 import type { TeachingPopoverCarouselNavState } from './TeachingPopoverCarouselNav.types';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { TeachingPopoverCarouselNavSlots } from './TeachingPopoverCarouselNav.types';
+import type { TeachingPopoverCarouselNavSlots } from './TeachingPopoverCarouselNav.types';
 import { ValueIdContextProvider } from './valueIdContext';
 
 /**

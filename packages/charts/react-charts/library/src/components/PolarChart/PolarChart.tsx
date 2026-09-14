@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { PolarChartProps } from './PolarChart.types';
+import type { PolarChartProps } from './PolarChart.types';
 import { usePolarChartStyles } from './usePolarChartStyles.styles';
 import { useImageExport } from '../../utilities/hooks';
 import {
@@ -10,9 +10,10 @@ import {
   lineRadial as d3LineRadial,
   curveLinearClosed as d3CurveLinearClosed,
 } from 'd3-shape';
-import { AreaPolarSeries, LinePolarSeries, PolarDataPoint, ScatterPolarSeries } from '../../types/DataPoint';
+import type { AreaPolarSeries, LinePolarSeries, PolarDataPoint, ScatterPolarSeries } from '../../types/DataPoint';
 import { tokens } from '@fluentui/react-theme';
-import { Legend, Legends } from '../Legends/index';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
 import {
   createRadialScale,
   getContinuousScaleDomain,
@@ -142,7 +143,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
     const mapCategoryToValues = React.useCallback(
       (isAngularAxis?: boolean) => {
-        const categoryToValues: Record<string, number[]> = {};
+        const categoryToValues: Record<string, number[]> = Object.create(null);
         chartData.forEach(series => {
           series.data.forEach(point => {
             const category = (isAngularAxis ? point.theta : point.r) as string;

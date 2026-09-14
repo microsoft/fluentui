@@ -44,8 +44,6 @@ export interface VideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> 
 }
 
 export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
-  'use no memo';
-
   const { className, muted, ...rest } = props;
 
   const videoRef = React.useRef<HTMLVideoElement>(null);

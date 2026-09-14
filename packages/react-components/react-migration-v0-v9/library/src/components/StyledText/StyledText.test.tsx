@@ -4,7 +4,8 @@ import { isConformant } from '@fluentui/react-conformance';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import { StyledText, StyledTextProps } from './StyledText';
+import type { StyledTextProps } from './StyledText';
+import { StyledText } from './StyledText';
 
 describe('StyledText', () => {
   isConformant({

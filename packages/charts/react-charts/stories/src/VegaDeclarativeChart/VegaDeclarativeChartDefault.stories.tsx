@@ -1,17 +1,7 @@
 import * as React from 'react';
 import { VegaDeclarativeChart } from '@fluentui/react-charts';
-import {
-  Button,
-  Dropdown,
-  Field,
-  Input,
-  InputOnChangeData,
-  Option,
-  OptionOnSelectData,
-  SelectionEvents,
-  Spinner,
-  Switch,
-} from '@fluentui/react-components';
+import type { InputOnChangeData, OptionOnSelectData, SelectionEvents } from '@fluentui/react-components';
+import { Button, Dropdown, Field, Input, Option, Spinner, Switch } from '@fluentui/react-components';
 
 // Inline schemas (25 total covering various chart types)
 // These are the default schemas shown in "show few" mode

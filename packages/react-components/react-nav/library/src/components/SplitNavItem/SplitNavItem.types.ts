@@ -1,9 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavItemProps } from '../NavItem/NavItem.types';
-import { ButtonProps, MenuButtonProps, ToggleButtonProps } from '@fluentui/react-button';
+import type { NavItemProps } from '../NavItem/NavItem.types';
+import type { ButtonProps, MenuButtonProps, ToggleButtonProps } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
-import { NavDensity } from '../Nav/Nav.types';
-import { NavSubItemProps } from '../NavSubItem/NavSubItem.types';
+import type { NavDensity } from '../Nav/Nav.types';
+import type { NavSubItemProps } from '../NavSubItem/NavSubItem.types';
 
 export type SplitNavItemSlots = {
   /**

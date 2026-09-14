@@ -1,4 +1,4 @@
-export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
+export type { TabProps, TabSlots, TabState, TabValue, TabBaseProps, TabBaseState } from './Tab';
 export {
   renderTab_unstable,
   Tab,

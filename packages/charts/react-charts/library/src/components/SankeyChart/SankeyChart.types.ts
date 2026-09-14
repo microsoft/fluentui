@@ -1,7 +1,7 @@
-import { Ref } from 'react';
+import type { Ref } from 'react';
 import type { TitleStyles } from '../../utilities/Common.styles';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { Chart, ChartProps } from '../../types/DataPoint';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { Chart, ChartProps } from '../../types/DataPoint';
 
 export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoint';
 

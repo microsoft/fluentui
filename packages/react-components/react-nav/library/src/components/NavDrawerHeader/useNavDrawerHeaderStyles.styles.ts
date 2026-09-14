@@ -25,10 +25,9 @@ const useStyles = makeStyles({
  * Apply styling to the NavDrawerHeader slots based on the state
  */
 export const useNavDrawerHeaderStyles_unstable = (state: NavDrawerHeaderState): NavDrawerHeaderState => {
-  'use no memo';
-
   useDrawerHeaderStyles_unstable(state);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navDrawerHeaderClassNames.root, styles.root, state.root.className);
 
   return state;

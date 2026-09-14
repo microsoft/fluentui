@@ -13,8 +13,6 @@ export type PopoverSurfaceSlots = {
   root: Slot<'div'>;
 };
 
-export type PopoverSurfaceBaseProps = PopoverSurfaceProps;
-
 /**
  * PopoverSurface State
  */
@@ -25,5 +23,3 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> &
      */
     arrowClassName?: string;
   };
-
-export type PopoverSurfaceBaseState = Omit<PopoverSurfaceState, 'appearance' | 'size'>;

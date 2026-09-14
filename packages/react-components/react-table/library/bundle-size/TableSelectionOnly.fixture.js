@@ -9,7 +9,7 @@ import {
   TableCellLayout,
   useTableFeatures,
   useTableSelection,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-table';
 
 console.log(
@@ -23,7 +23,7 @@ console.log(
   TableCellLayout,
   useTableFeatures,
   useTableSelection,
-  createColumn,
+  createTableColumn,
 );
 
 export default {

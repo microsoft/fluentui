@@ -1,9 +1,9 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+import { AvatarAppearance, AvatarColor, AvatarSize, tagName } from './avatar.options.js';
 
 test.describe('Avatar', () => {
   test.use({
-    tagName: 'fluent-avatar',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -15,15 +15,17 @@ test.describe('Avatar', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-avatar');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should have a `role` of `img`', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
   });
@@ -37,13 +39,13 @@ test.describe('Avatar', () => {
     await expect(icon).toBeVisible();
 
     await test.step('should NOT render the icon when empty elements are present in the default slot', async () => {
-      await fastPage.setTemplate({ innerHTML: `<div></div><span></span>\n\n` });
+      await fastPage.updateTemplate(element, { innerHTML: `<div></div><span></span>\n\n` });
 
       await expect(icon).toBeHidden();
     });
 
     await test.step('should retain comment nodes in the default slot when no name or initials are provided', async () => {
-      await fastPage.setTemplate({ innerHTML: `\n<!--hello-->\n<!--world-->\n` });
+      await fastPage.updateTemplate(element, { innerHTML: `\n<!--hello-->\n<!--world-->\n` });
 
       await expect(icon).toBeVisible();
     });
@@ -102,7 +104,11 @@ test.describe('Avatar', () => {
   });
 
   test('should have a data-color attribute of `neutral` when no color is provided', async ({ fastPage }) => {
-    await expect(fastPage.element).toHaveAttribute('data-color', 'neutral');
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveAttribute('data-color', 'neutral');
   });
 
   test('should add a data-color attribute of `brand` when `brand is provided as the color', async ({ fastPage }) => {
@@ -124,9 +130,11 @@ test.describe('Avatar', () => {
   test('should set the `data-color` attribute to match the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const color of Object.values(AvatarColor)) {
       await test.step(`should set the \`color\` property to \`${color}\``, async () => {
-        await fastPage.setTemplate({ attributes: { color } });
+        await fastPage.updateTemplate(element, { attributes: { color } });
 
         await expect(element).toHaveAttribute('color', color);
 
@@ -134,6 +142,7 @@ test.describe('Avatar', () => {
 
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (color !== AvatarColor.colorful) {
+          // eslint-disable-next-line playwright/no-conditional-expect
           await expect.soft(element).toHaveAttribute('data-color', color);
         }
       });
@@ -143,9 +152,11 @@ test.describe('Avatar', () => {
   test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const size of Object.values(AvatarSize)) {
       await test.step(`should set the \`size\` property to \`${size}\``, async () => {
-        await fastPage.setTemplate({ attributes: { size: `${size}` } });
+        await fastPage.updateTemplate(element, { attributes: { size: `${size}` } });
 
         await expect(element).toHaveAttribute('size', `${size}`);
 
@@ -157,9 +168,11 @@ test.describe('Avatar', () => {
   test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const appearance of Object.values(AvatarAppearance)) {
       await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+        await fastPage.updateTemplate(element, { attributes: { appearance } });
 
         await expect(element).toHaveJSProperty('appearance', appearance);
 

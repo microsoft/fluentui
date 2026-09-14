@@ -6,13 +6,14 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
-import { PresenceBadge } from '@fluentui/react-badge';
+import type { PresenceBadge } from '@fluentui/react-badge';
+import type { PresenceBadgeBaseProps } from '@fluentui/react-badge';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -24,10 +25,15 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
-export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
+export type AvatarBaseProps = ComponentProps<AvatarBaseSlots> & Pick<AvatarProps, 'active' | 'name'>;
 
 // @public (undocumented)
-export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;
+export type AvatarBaseSlots = Omit<AvatarSlots, 'badge'> & {
+    badge?: Slot<PresenceBadgeBaseProps>;
+};
+
+// @public (undocumented)
+export type AvatarBaseState = ComponentState<AvatarBaseSlots> & Pick<AvatarState, 'active' | 'activeAriaLabelElement'>;
 
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;

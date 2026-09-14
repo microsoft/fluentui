@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { EventData, EventHandler } from '@fluentui/react-utilities';
 
 export type TagAppearance = 'filled' | 'outline' | 'brand';

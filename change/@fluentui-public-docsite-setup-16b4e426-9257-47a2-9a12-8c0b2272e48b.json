@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Yarn Modern migration compatibility changes",
+  "packageName": "@fluentui/public-docsite-setup",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

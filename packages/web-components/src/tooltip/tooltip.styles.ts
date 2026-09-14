@@ -49,7 +49,7 @@ export const styles = css`
     padding: 4px ${spacingHorizontalMNudge} 6px;
     position: absolute;
     position-area: var(--position-area);
-    position-try-options: var(--position-try-options);
+    position-try-fallbacks: var(--position-try-options);
     width: auto;
     z-index: 1;
   }

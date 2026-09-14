@@ -13,7 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceDirection } from '@fluentui/react-motion';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -136,6 +136,12 @@ export type DrawerState = ComponentState<DrawerSlots>;
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
 // @public (undocumented)
+export type InlineDrawerBaseProps = ComponentProps<InlineDrawerBaseSlots> & Omit<DrawerBaseProps, 'size'>;
+
+// @public (undocumented)
+export type InlineDrawerBaseState = Required<ComponentState<InlineDrawerBaseSlots> & Omit<DrawerBaseState, 'size' | 'motion'>>;
+
+// @public (undocumented)
 export const inlineDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
 
 // @public
@@ -245,6 +251,9 @@ export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
 
 // @public
 export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerState;
+
+// @public (undocumented)
+export const useInlineDrawerBase_unstable: (props: InlineDrawerBaseProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerBaseState;
 
 // @public
 export const useInlineDrawerStyles_unstable: (state: InlineDrawerState) => InlineDrawerState;

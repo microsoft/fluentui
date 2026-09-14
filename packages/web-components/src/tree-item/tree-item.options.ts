@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { ValuesOf } from '../utils/typings.js';
 import { BaseTreeItem } from './tree-item.base.js';
 
@@ -31,3 +32,10 @@ export function isTreeItem(element?: Node | null, tagName: string = '-tree-item'
 
   return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
+
+/**
+ * The tag name for the tree item element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-tree-item` as const;

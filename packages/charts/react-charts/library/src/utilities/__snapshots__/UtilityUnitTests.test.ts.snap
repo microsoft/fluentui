@@ -1975,6 +1975,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -1992,6 +1993,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -2009,6 +2011,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -2041,6 +2044,7 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2058,6 +2062,7 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2075,6 +2080,7 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2107,6 +2113,7 @@ exports[`createStringYAxis should render y-axis labels correctly for specific pa
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2124,6 +2131,7 @@ exports[`createStringYAxis should render y-axis labels correctly for specific pa
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2141,6 +2149,7 @@ exports[`createStringYAxis should render y-axis labels correctly for specific pa
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2173,6 +2182,7 @@ exports[`createStringYAxis should render y-axis labels correctly when layout dir
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="12"
@@ -2190,6 +2200,7 @@ exports[`createStringYAxis should render y-axis labels correctly when layout dir
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="12"
@@ -2207,6 +2218,7 @@ exports[`createStringYAxis should render y-axis labels correctly when layout dir
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="12"
@@ -2239,6 +2251,7 @@ exports[`createStringYAxis should render y-axis labels correctly with a custom t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2256,6 +2269,7 @@ exports[`createStringYAxis should render y-axis labels correctly with a custom t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2273,6 +2287,7 @@ exports[`createStringYAxis should render y-axis labels correctly with a custom t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-12"
@@ -2305,6 +2320,7 @@ exports[`createStringYAxis should render y-axis labels correctly with specific t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-5"
@@ -2322,6 +2338,7 @@ exports[`createStringYAxis should render y-axis labels correctly with specific t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-5"
@@ -2339,6 +2356,7 @@ exports[`createStringYAxis should render y-axis labels correctly with specific t
       x2="0"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-5"
@@ -2371,6 +2389,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="18"
@@ -2388,6 +2407,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="18"
@@ -2405,6 +2425,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="18"
@@ -2437,6 +2458,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -2454,6 +2476,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -2471,6 +2494,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-18"
@@ -2503,6 +2527,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-11"
@@ -2520,6 +2545,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-11"
@@ -2537,6 +2563,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       x2="-6"
     />
     <text
+      aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
       x="-11"
@@ -3541,6 +3568,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
@@ -3562,6 +3590,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
@@ -3583,6 +3612,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"
@@ -3619,6 +3649,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
@@ -3642,6 +3673,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
@@ -3665,6 +3697,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      aria-hidden="true"
       data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"

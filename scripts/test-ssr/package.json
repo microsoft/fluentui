@@ -8,6 +8,5 @@
   "dependencies": {
     "@fluentui/scripts-puppeteer": "*",
     "@fluentui/scripts-ts-node": "*"
-  },
-  "devDependencies": {}
+  }
 }

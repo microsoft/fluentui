@@ -13,7 +13,8 @@ import {
 import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme, webLightTheme } from '@fluentui/tokens';
+import type { Theme } from '@fluentui/tokens';
+import { webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
 
 import {
@@ -54,7 +55,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { Chart, ImageExportOptions } from '../../types/index';
+import type { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
@@ -62,8 +63,9 @@ import { PolarChart } from '../PolarChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
-import { LegendsProps, Legends, LegendContainer } from '../Legends/index';
-import { JSXElement } from '@fluentui/react-utilities/src/index';
+import type { LegendsProps, LegendContainer } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { JSXElement } from '@fluentui/react-utilities/src/index';
 import { resolveCSSVariables, useRtl } from '../../utilities/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
@@ -403,6 +405,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const { plotlySchema } = sanitizeJson(props.chartSchema);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { selectedLegends } = plotlySchema;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveLegends(selectedLegends ?? []);
   }, [props.chartSchema]);
 
@@ -417,7 +420,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   function createLegends(legendProps: LegendsProps): JSXElement {
-    // eslint-disable-next-line react/jsx-no-bind
     return (
       <Legends
         {...legendProps}
@@ -470,7 +472,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  const groupedTraces: Record<string, number[]> = {};
+  const groupedTraces: Record<string, number[]> = Object.create(null);
   let nonCartesianTraceCount = 0;
 
   // For annotation-only charts, create a single group entry
@@ -495,15 +497,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     });
   }
 
+  // eslint-disable-next-line react-hooks/refs
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
   const gridProperties: GridProperties = getGridProperties(
     plotlyInputWithValidData,
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current,
     chart.validTracesInfo!,
   );
 
   // Render only one plot if the grid properties cannot determine positioning of multiple plots.
   if (
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current &&
     gridProperties.templateRows === SINGLE_REPEAT &&
     gridProperties.templateColumns === SINGLE_REPEAT
@@ -523,6 +528,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         }
       });
     }
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current = false;
   }
 
@@ -551,6 +557,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {/* eslint-disable-next-line react-hooks/refs */}
       {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
@@ -560,6 +567,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         }}
         ref={containerRef}
       >
+        {/* eslint-disable-next-line react-hooks/refs */}
         {Object.entries(groupedTraces).map(([xAxisKey, index], chartIdx) => {
           const plotlyInputForGroup: PlotlySchema = {
             ...plotlyInputWithValidData,
@@ -599,7 +607,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme], // eslint-disable-line react-hooks/refs
                 {
                   ...resolvedCommonProps,
                   ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
@@ -622,6 +630,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           }
         })}
       </div>
+      {/* eslint-disable-next-line react-hooks/refs */}
       {isMultiPlot.current && createLegends(allupLegendsProps)}
     </>
   );

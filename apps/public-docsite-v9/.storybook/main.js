@@ -11,12 +11,26 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     ...rootMain.stories,
     '../src/**/*.mdx',
     '../src/**/index.stories.@(ts|tsx)',
-    ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
+    ...getPackageStoriesGlob({
+      packageName: '@fluentui/react-components',
+      callerPath: __dirname,
+      excludeStoriesInsertionFromPackages: [
+        // Exclude packages that don't have story files
+        '@fluentui/react-icons-compat',
+        '@fluentui/react-tabster',
+        '@fluentui/react-utilities',
+        // Exclude deprecated packages
+        '@fluentui/react-alert',
+        '@fluentui/react-infobutton',
+        '@fluentui/react-virtualizer',
+      ],
+    }),
     ...getPackageStoriesGlob({
       packageName: '@fluentui/public-docsite-v9',
       callerPath: __dirname,
       excludeStoriesInsertionFromPackages: [
         '@fluentui/react-storybook-addon',
+        '@fluentui/react-storybook-addon-export-to-sandbox',
         '@fluentui/theme-designer',
         // Exclude non v9 stories
         '@fluentui/react',
@@ -41,11 +55,20 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
-    registerRules({ rules: [rules.scssRule], config: localConfig });
+    registerRules({
+      rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
+      config: localConfig,
+    });
 
     return localConfig;
   },
   refs: {
+    'fluent-system-icons': {
+      title: 'Fluent System Icons',
+      url: 'https://microsoft.github.io/fluentui-system-icons/',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui-system-icons',
+    },
     contrib: {
       title: 'Contributors Packages',
       url: 'https://microsoft.github.io/fluentui-contrib/docsite/',

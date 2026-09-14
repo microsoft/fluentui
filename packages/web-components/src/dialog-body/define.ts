@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './dialog-body.definition.js';
+import { DialogBody } from './dialog-body.js';
 
-definition.define(FluentDesignSystem.registry);
+DialogBody.define(definition);

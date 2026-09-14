@@ -1,20 +1,20 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { TextArea } from './textarea.js';
+import { tagName } from './textarea.options.js';
 import { styles } from './textarea.styles.js';
 import { template } from './textarea.template.js';
 
 /**
- * The Fluent Textarea Element definition.
+ * The definition for the `<fluent-textarea>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-textarea>`
  */
-export const definition = TextArea.compose({
-  name: `${FluentDesignSystem.prefix}-textarea`,
-  template,
-  styles,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   shadowOptions: {
     delegatesFocus: true,
   },
-});
+  styles,
+  template,
+};

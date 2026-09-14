@@ -30,7 +30,7 @@ In Fabric 5, we did this:
 
 2. We added a method `registerIcons` to the `@uifabric/styling` package which enables the partner to register a subset definition (including which font to use for what codes.)
 
-3. We updated the [Icon subset tool](https://aka.ms/uifabric-icons) to generate a package, including TypeScript code which would call `registerIcons` with multiple subsets.
+3. We updated the Icon subset tool, which is no longer publicly available, to generate a package, including TypeScript code which would call `registerIcons` with multiple subsets.
 
 4. The tool can now allow a partner to choose the icons that are important to them, and then for remaining ones, can optionally split them into chunks. That means rendering the common icons would always download the first chunk but all other icons would only download the subset containing them when actually used.
 
@@ -54,7 +54,7 @@ So, your options for supporting icons in your project are:
 
 3. Import directly from `@uifabric/icons/lib/fabric-icons-0` to register only the first subset (which includes just the icons that Fabric components use, plus common commanding icons.) Less than 1k gzip penalty for registering just the core icons + 4k core only font subset.
 
-4. Custom icons! Use the [icon subset tool](https://aka.ms/uifabric-icons) to choose the exact set of icons to register and build your own icon registration code. You can even choose to use inlined icons and include them with your JavaScript bundle.
+4. Custom icons! The icon subset tool previously let you choose the exact set of icons to register and build your own icon registration code. You could even choose to use inlined icons and include them with your JavaScript bundle. The tool is no longer publicly available.
 
 # Glamor replacement
 

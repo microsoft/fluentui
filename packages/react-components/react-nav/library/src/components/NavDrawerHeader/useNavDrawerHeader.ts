@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
 
 import type { NavDrawerHeaderProps, NavDrawerHeaderState } from './NavDrawerHeader.types';

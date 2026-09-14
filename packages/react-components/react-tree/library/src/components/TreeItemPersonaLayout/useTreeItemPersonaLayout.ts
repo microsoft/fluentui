@@ -1,13 +1,15 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import type { TreeItemPersonaLayoutProps, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
 import { slot } from '@fluentui/react-utilities';
 import { useTreeContext_unstable } from '../../contexts';
 import { treeAvatarSize } from '../../utils/tokens';
 import { useTreeItemLayout_unstable } from '../TreeItemLayout/useTreeItemLayout';
-import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
-import { Radio, RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
+import { Radio } from '@fluentui/react-radio';
 
 /**
  * Create the state required to render TreeItemPersonaLayout.
@@ -50,7 +52,10 @@ export const useTreeItemPersonaLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
-    main: slot.always(main, { defaultProps: { children }, elementType: 'div' }),
+    main: slot.always(main, {
+      defaultProps: { children, id: treeItemLayoutState.main.id },
+      elementType: 'div',
+    }),
     media: slot.always(media, { elementType: 'div' }),
     description: slot.optional(description, { elementType: 'div' }),
   };

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { RatingDisplayContextValues, RatingDisplayState } from './RatingDisplay.types';
-import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
+import type { RatingDisplayContextValues, RatingDisplayState } from './RatingDisplay.types';
+import type { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export const useRatingDisplayContextValues = (state: RatingDisplayState): RatingDisplayContextValues => {
   const { color, compact, icon, size, value } = state;

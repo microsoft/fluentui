@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { DialogOpenChangeData } from './Dialog.types';
+import type { DialogOpenChangeData } from './Dialog.types';
 import * as React from 'react';
 
 import { useDialog_unstable } from './useDialog';

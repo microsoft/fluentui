@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SkeletonContextValue } from '../../contexts/index';
+import type { SkeletonContextValue } from '../../contexts/index';
 
 export type SkeletonSlots = {
   /**

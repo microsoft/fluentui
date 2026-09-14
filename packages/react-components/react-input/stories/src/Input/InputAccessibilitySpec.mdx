@@ -1,0 +1,186 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/Input" />
+
+# Input Accessibility Spec
+
+`Input` is a single-line text entry control. It wraps a native HTML `<input>` element in a styled `<span>` container, with optional `contentBefore` and `contentAfter` slots for in-field decoration (icons, units, prefixes, or action buttons).
+
+Because the rendered control is a real `<input>`, `Input` inherits the browser's built-in accessibility behavior for text fields: caret movement, selection, IME composition, autofill, password masking, spellcheck, and the platform-native keyboard contract are all handled by the browser. This spec covers what Fluent layers on top: labelling, the `Field` integration, the `contentBefore` / `contentAfter` slots, validation, and visual considerations.
+
+## Usage
+
+### When to choose Input
+
+`Input` is for free-form single-line text entry. The component supports a constrained set of text-based `type` values: `text` (default), `email`, `password`, `search`, `tel`, `url`, `date`, `datetime-local`, `month`, `number`, `time`, and `week`. For non-text input types like `button`, `checkbox`, or `radio`, use the appropriate Fluent component instead.
+
+#### Input vs. SpinButton
+
+Use `SpinButton` (not `Input` with `type="number"`) when the value is a number within a defined range and the user benefits from incremental adjustment with arrow keys, or from explicit min/max boundaries that are announced to assistive technology. `Input type="number"` does not enforce min/max in a way screen readers reliably announce, and does not support non-numerical characters such as commas, dollar signs, etc.
+
+#### Input vs. Textarea
+
+Use `Textarea` when the user needs to enter multi-line content (comments, descriptions, free-form notes). Use `Input` for single-line entry, even if the value is long — the input will scroll horizontally rather than wrap.
+
+#### Input vs. Combobox / Dropdown
+
+If the user is selecting from a known set of values, prefer `Combobox` (which allows freeform entry alongside selection) or `Dropdown` / `Select`. `Input` should be reserved for cases where the value space is open-ended.
+
+### Implementing Input
+
+#### Programmatic Label
+
+`Input` does not render its own label. Authors must always associate the input with visible label text. The recommended pattern is to wrap `Input` in a `Field`, which sets `id` and the label association automatically:
+
+```tsx
+<Field label="Full name">
+  <Input />
+</Field>
+```
+
+If `Field` is not appropriate for the layout, use `Label` directly with `htmlFor`:
+
+```tsx
+<Label htmlFor="full-name">Full name</Label>
+<Input id="full-name" />
+```
+
+Other options:
+
+1. `aria-labelledby="label-id"` on the `<Input>`, pointing at the id of visible label text elsewhere on the page.
+2. `aria-label="label text string"` on the `<Input>`. Use sparingly — some sort of visible or contextual label is required.
+
+#### Visual Label
+
+All form fields including Input require a visible label per [WCAG 3.3.2 -- Labels or Instructions](https://w3c.github.io/wcag/understanding/labels-or-instructions.html). That label does not need to be a `<label>` element, but there must be text that is visually associated with the input that functions as its label. The programmatic accessible name of the input should match that text.
+
+There are only two exceptions to this rule:
+
+1. For top-level search inputs that have a search icon -- the search icon is considered generally understood and can function as the visible label for one search input in the current context. If there are multiple search inputs with different functions, they will still require a specific text label, however.
+2. In chat applications such as Teams or M365 Copilot, where the main content area contains exactly one chat input, usually at the bottom of the pane. In this case, we consider the surrounding context (it being a chat application) + visual language of the input staying at the bottom of the pane to be sufficient for a user to understand what the input does.
+
+#### Placeholder
+
+The `placeholder` prop is **not** a substitute for a label. Placeholder text disappears as soon as the user starts typing, while WCAG requires a persistent visual label to be present. Placeholder also fails contrast requirements in some themes by design.
+
+Because the `placeholder` is not persistent, it also should never be used for user instructions such as "Type / for more suggestions", unless those instructions are easily accessible elsewhere.
+
+#### Field integration
+
+When `Input` is rendered inside `Field`, `Field` automatically wires up:
+
+- `id` — generated and applied so the field's `<Label>` `htmlFor` points at the input.
+- `aria-labelledby` — set if the consumer's `id` does not match the label's `htmlFor` (so the input is still labelled even when the consumer overrides the id, or if Field is used with an element that does not support native `<label>` + `for` association).
+- `aria-describedby` — set to point at the validation message and hint elements, merged with any consumer-provided `aria-describedby`.
+- `aria-invalid` — set to `true` when `Field`'s `validationState` is `"error"`.
+- `required` — applied as the native attribute when `Field` is marked required (Input opts in to `supportsRequired`, so the attribute used is `required`, not `aria-required`).
+
+When `Input` is **not** inside `Field`, the consumer is responsible for any of these attributes that are needed (`aria-describedby` for hint/error text, `aria-invalid` for validation state, `required`).
+
+#### contentBefore and contentAfter
+
+The `contentBefore` and `contentAfter` slots render inside the visual input border, on either side of the editable text. They are rendered as siblings of the `<input>` element in DOM order: `contentBefore` precedes the input, `contentAfter` follows it.
+
+Three common patterns each have different accessibility implications:
+
+**Decorative icon.** A non-interactive icon describing the field (for example, a magnifying glass on a search field). The icon is purely visual and does not need to be in the accessible name or focusable.
+
+```tsx
+<Field label="Search">
+  <Input contentBefore={<SearchRegular />} />
+</Field>
+```
+
+**Action button.** A `Button` that performs an action related to the input (for example, a microphone button to dictate input). The button is a separate focusable control with its own accessible name.
+
+```tsx
+<Field label="First name">
+  <Input contentAfter={<Button appearance="transparent" icon={<MicRegular />} aria-label="Start dictation" />} />
+</Field>
+```
+
+The button is reached by <kbd>Tab</kbd> after the input (or before it, if placed in `contentBefore`). Authors must ensure the button has its own accessible name — the input's label does not propagate to it.
+
+**Presentational text that completes the field's meaning.** For example, a `$` prefix and `.00` suffix on an amount field. These are visible text that materially affects how the input value should be read, but they are **not** part of the input's value or its accessible name by default. To make the input announce as "Amount to pay, dollars, dot zero zero", the consumer must write concise human-readable alternative text and include it in `aria-labelledby` or an `aria-label` explicitly:
+
+```tsx
+<Field label="Amount to pay">
+  <Input
+    contentBefore={<Text id="prefix">$</Text>}
+    contentAfter={<Text id="suffix">.00</Text>}
+    aria-labelledby={`${fieldLabelId} prefix suffix`}
+  />
+</Field>
+```
+
+This is the consumer's responsibility — `Input` does not infer the accessible name from `contentBefore` / `contentAfter`. The [ContentBeforeAfter](?path=/story/components-input--content-before-after) story demonstrates all three patterns.
+
+#### Disabled
+
+`Input` supports the native `disabled` attribute, which removes the input from the tab order and prevents value changes. There is no `disabledFocusable` analog for `Input` — keeping a disabled text field in the tab order is rarely useful, and the native disabled behavior is the standard. The `readonly` attribute is a native alternative state for inputs that is still focusable and allows text to be read and copied but not edited.
+
+When disabled, the focus underline animation and focus outline are suppressed, the cursor becomes `not-allowed`, the border switches to `colorNeutralStrokeDisabled` (or `GrayText` in forced colors), and any `contentBefore` / `contentAfter` content is colored to match.
+
+Focusable content placed in `contentBefore` / `contentAfter` is **not** automatically disabled by the parent `Input`'s `disabled` prop; authors who want the inner button to also be disabled must pass `disabled` on it explicitly.
+
+#### Validation
+
+When `Input` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<input>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<input>` ([useInputStyles.styles.ts:336](packages/react-components/react-input/library/src/components/Input/useInputStyles.styles.ts#L336)), so styling and ARIA stay in sync.
+
+The error **message** itself is not provided by `Input`. Use `Field`'s `validationMessage` (which is automatically wired into `aria-describedby`), or wire your own message element via `aria-describedby`. An `aria-invalid` value with no accompanying description tells the user the field is invalid but does not tell them why.
+
+Both `error` and `warning` validation states give the `validationMessage` a `role=alert` and will be announced to screen reader users as soon as they appear. Other validation states will not cause the message to be announced automatically. If this behavior is desired, use the `useAnnounce` utility to do so.
+
+#### Color contrast and appearance variants
+
+All inputs must have some part of their boundary meet 3:1 contrast against the background behind the input. The placeholder or value text are not sufficient to meet this requirement. Each appearance variant meets this contrast requirement in a different way:
+
+- `outline` (default) — the bottom border specifically uses `colorNeutralStrokeAccessible`, which is darker than the surrounding border tokens to meet the indicator-contrast requirement.
+- `underline` — only the bottom border is visible at rest, and meets 3:1 contrast against the background.
+- `filled-darker` and `filled-lighter` — these must be placed on a surface that provides at least 3:1 contrast against the input's background color, so the boundary of the input is still discernible.
+- `filled-darker-shadow` and `filled-lighter-shadow` — **deprecated**. Do not use in new code; they emit a console error in development.
+
+The bottom focus border (`::after`) uses `colorCompoundBrandStroke`, which is the brand color and is guaranteed to meet 3:1 against all supported page surfaces in the included themes.
+
+### Placing Input within an arrow-navigation region like Toolbar or Menu
+
+It is not recommended to place an input inside a horizontal arrow-navigable region like a `Toolbar`, since left/right arrow keys are already used within an input to move through characters in its value. If this is done, the consumer must provide a custom way to switch between navigating the input value and navigating the `Toolbar` with arrow keys.
+
+An `input` is not technically a valid child of other arrow-navigable controls like `Menu` -- doing so violates the ARIA spec's parent/child requirements for `role=menu`, as well as others like `role=tree` or `role=listbox`. However, the practical consequences of doing so are relatively low in severity **if** the input is the first interactive child of the menu or listbox. Exercise caution when doing so, and document both the ARIA violation and reason for doing so.
+
+If Input is used within a vertical arrow-navigation region like Menu or Listbox, do not put any interactive controls like `button` inside the `contentBefore` and `contentAfter` slots.
+
+## Semantics
+
+`Input` renders a wrapping `<span>` for styling and the actual `<input>` element for editing:
+
+| Slot          | Role             | States and properties                                                                                                                  |
+| ------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| root          | none             | A plain `<span>` with no role; used only for visual border and focus styling.                                                          |
+| input         | textbox (native) | `type` attribute; `aria-invalid`, `aria-describedby`, `aria-labelledby`, `disabled`, `required` as applied by `Field` or the consumer. |
+| contentBefore | none             | A `<span>` with no role; contains decorative or interactive content placed before the input.                                           |
+| contentAfter  | none             | A `<span>` with no role; contains decorative or interactive content placed after the input.                                            |
+
+Focus lives on the `<input>` element. The visual focus state (the animated bottom border) is applied to the root via `:focus-within`, but the focused element from a screen reader and keyboard perspective is always the `<input>`.
+
+The wrapping `<span>` is **not** a `<label>`. Clicking on the wrapper padding or on a non-focusable `contentBefore` / `contentAfter` does not move focus to the input. If a label-like click-to-focus surface is needed, wrap the input in a `<Label htmlFor>` or use `Field`, which provides the label semantics.
+
+## Keyboard interaction
+
+`Input` is a single tab stop. All editing key behavior comes from the browser's native `<input>` implementation and matches platform conventions.
+
+When `disabled` is set, the input is removed from the tab order entirely, and is not interactable.
+
+Focusable content placed in `contentBefore` or `contentAfter` is a separate tab stop. Within the rendered DOM order, the tab sequence is: `contentBefore` (if focusable) → `input` → `contentAfter` (if focusable).
+
+## Windows contrast themes (high contrast mode)
+
+`Input` relies almost entirely on the browser's native `<input>` behavior in Windows contrast themes. The native input adapts its background, text, caret, and placeholder colors to the user-selected theme without explicit overrides in the component's styles.
+
+The only explicit forced-colors rule on `Input` is for the disabled state: the border switches to `GrayText` so the disabled affordance matches the system disabled-control color. This is because the border style is on the parent root node and not on the `<input>` element itself, so it does not natively pick up the disabled state's color.
+
+Because `contentBefore` and `contentAfter` are arbitrary user-supplied content, their forced-colors behavior is the consumer's responsibility. Decorative icons typically need no special handling; interactive content (like a `Button` inside `contentAfter`) inherits whatever forced-colors handling that component provides.
+
+## Motion and animation
+
+The bottom focus border has two animations — one for focus in and one for focus out — using `durationNormal` (focus in) and `durationUltraFast` (focus out) respectively. Both animations are shortened to `0.01ms` when [`prefers-reduced-motion: reduce`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) is set, effectively disabling the motion while preserving the final visual state. There is no other motion on `Input`.

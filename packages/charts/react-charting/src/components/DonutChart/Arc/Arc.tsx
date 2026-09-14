@@ -5,7 +5,8 @@ import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatScientificLimitWidth, isSafeUrl } from '../../../utilities/index';
+import { formatScientificLimitWidth } from '../../../utilities/index';
+import { isSafeUrl } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
 export interface IArcState {

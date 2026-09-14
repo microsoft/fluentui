@@ -1,7 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { PresenceComponentProps } from '@fluentui/react-components';
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
+import { Scale, type ScaleParams } from '@fluentui/react-motion-components-preview';
+
+const useClasses = makeStyles({
+  wrapper: {
+    padding: tokens.spacingVerticalXL,
+  },
+});
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -11,10 +17,13 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultScale = (props: PresenceComponentProps): JSXElement => {
+export const DefaultScale = (props: PresenceComponentProps & ScaleParams): JSXElement => {
+  const classes = useClasses();
   return (
-    <Scale {...props}>
-      <LoremIpsum />
-    </Scale>
+    <div className={classes.wrapper}>
+      <Scale {...props}>
+        <LoremIpsum />
+      </Scale>
+    </div>
   );
 };

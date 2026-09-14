@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   mergeCallbacks,
@@ -13,7 +13,7 @@ import {
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 import { Listbox } from '../Listbox';
-import { ListboxProps } from '../Listbox';
+import type { ListboxProps } from '../Listbox';
 
 export type UseListboxSlotState = Pick<ComboboxBaseState, 'multiselect'>;
 
@@ -82,6 +82,7 @@ export function useListboxSlot(
   );
 
   const onClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       event.preventDefault();
       triggerRef.current?.focus();

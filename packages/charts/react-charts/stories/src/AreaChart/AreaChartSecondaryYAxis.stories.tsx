@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { AreaChart, ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
+import type { ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
+import { AreaChart } from '@fluentui/react-charts';
 import { makeStyles, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

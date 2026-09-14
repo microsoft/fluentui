@@ -52,6 +52,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('button', {
         children: infoButtonIconMap[size],
         type: 'button',
@@ -100,7 +101,9 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     }
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  // eslint-disable-next-line react-hooks/refs
   state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
   return state;
 };

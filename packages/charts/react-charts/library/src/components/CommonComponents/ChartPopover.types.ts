@@ -1,6 +1,6 @@
 import type { JSXElement } from '@fluentui/react-utilities';
-import { YValueHover } from '../../index';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { YValueHover } from '../../index';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 
 export interface ChartPopoverProps {
   clickPosition?: { x: number; y: number };

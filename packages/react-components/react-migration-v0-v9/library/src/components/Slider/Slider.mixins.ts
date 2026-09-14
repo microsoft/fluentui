@@ -1,4 +1,4 @@
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 
 const fluid = (): GriffelStyle => ({ width: '100%' });
 

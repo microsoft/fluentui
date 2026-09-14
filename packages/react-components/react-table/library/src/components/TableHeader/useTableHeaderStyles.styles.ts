@@ -25,12 +25,11 @@ const useTableLayoutStyles = makeStyles({
  * Apply styling to the TableHeader slots based on the state
  */
 export const useTableHeaderStyles_unstable = (state: TableHeaderState): TableHeaderState => {
-  'use no memo';
-
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableHeaderClassName,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,

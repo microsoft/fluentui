@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { BreadcrumbContextValues } from './Breadcrumb.types';
+import type { BreadcrumbContextValues } from './Breadcrumb.types';
 
 const BreadcrumbContext = React.createContext<BreadcrumbContextValues | undefined>(undefined);
 

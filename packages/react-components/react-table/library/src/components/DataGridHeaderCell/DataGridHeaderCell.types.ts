@@ -1,10 +1,10 @@
-import {
+import type {
   TableHeaderCellProps,
   TableHeaderCellSlots,
   TableHeaderCellState,
 } from '../TableHeaderCell/TableHeaderCell.types';
 
-import { DataGridCellProps } from '../DataGridCell/DataGridCell.types';
+import type { DataGridCellProps } from '../DataGridCell/DataGridCell.types';
 
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
 

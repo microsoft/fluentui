@@ -47,11 +47,10 @@ const useStyles = makeStyles({
 export const useCarouselNavImageButtonStyles_unstable = (
   state: CarouselNavImageButtonState,
 ): CarouselNavImageButtonState => {
-  'use no memo';
-
   const { selected } = state;
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselNavImageButtonClassNames.root,
     styles.root,
@@ -60,6 +59,7 @@ export const useCarouselNavImageButtonStyles_unstable = (
   );
 
   if (state.image) {
+    // eslint-disable-next-line react-hooks/immutability
     state.image.className = mergeClasses(
       carouselNavImageButtonClassNames.image,
       styles.image,

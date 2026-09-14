@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -10,7 +10,6 @@ import {
   DialogActions,
   Button,
   Checkbox,
-  CheckboxOnChangeData,
 } from '@fluentui/react-components';
 import story from './DialogActions.md';
 

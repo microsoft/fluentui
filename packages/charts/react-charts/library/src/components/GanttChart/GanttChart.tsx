@@ -2,15 +2,18 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
+import type { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
-import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
-import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
-import { GanttChartProps } from './GanttChart.types';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { Margins, GanttChartDataPoint } from '../../types/DataPoint';
+import type { ModifiedCartesianChartProps } from '../CommonComponents/index';
+import { CartesianChart } from '../CommonComponents/index';
+import type { GanttChartProps } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ChartPopoverProps } from '../../index';
+import type { ChartPopoverProps } from '../../index';
+import type { IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
   YAxisType,
@@ -19,7 +22,6 @@ import {
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
-  IDomainNRange,
   createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
   MIN_DOMAIN_MARGIN,
@@ -133,7 +135,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     }, [useUTC, _points, _xAxisType]);
 
     const _mapYValueToXValues = React.useCallback(() => {
-      const yValueToXValues: Record<string, number[]> = {};
+      const yValueToXValues: Record<string, number[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToXValues[point.y]) {
           yValueToXValues[point.y] = [];
@@ -348,7 +350,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const _getOrderedDataPoints = React.useCallback(() => {
       const result: GanttChartDataPoint[] = [];
 
-      const yValueToPoints: Record<string, GanttChartDataPoint[]> = {};
+      const yValueToPoints: Record<string, GanttChartDataPoint[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToPoints[point.y]) {
           yValueToPoints[point.y] = [];
@@ -423,13 +425,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               onFocus={(event: React.FocusEvent<SVGElement>) => _onBarFocus(point, event)}
               onBlur={_onBarLeave}
               tabIndex={shouldHighlight ? 0 : -1}
-              role="img"
+              role="option"
               aria-label={_getAriaLabel(point)}
             />
           );
         });
         return (
-          <g>
+          <g role="listbox" aria-label={`${points.length} ${points.length === 1 ? 'bar' : 'bars'}`}>
             {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
             {bars}
           </g>

@@ -10,8 +10,6 @@ export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots> = {
  * Apply styling to the MessageBarGroup slots based on the state
  */
 export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): MessageBarGroupState => {
-  'use no memo';
-
   state.root.className = mergeClasses(messageBarGroupClassNames.root, state.root.className);
   return state;
 };

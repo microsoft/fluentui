@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 30 Mar 2026 14:37:40 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.2..@fluentui/react-motion_v9.16.3)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+
+## [9.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.2)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.1..@fluentui/react-motion_v9.16.2)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.1)
+
+Wed, 24 Jun 2026 11:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.0..@fluentui/react-motion_v9.16.1)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.0)
+
+Tue, 26 May 2026 09:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.15.0..@fluentui/react-motion_v9.16.0)
+
+### Minor changes
+
+- feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.15.0)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.14.0..@fluentui/react-motion_v9.15.0)
+
+### Minor changes
+
+- feat: expose motion params as direct props on motion slot types ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- fix(react-motion): apply MotionComponent type to presence definition ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.14.0)
 

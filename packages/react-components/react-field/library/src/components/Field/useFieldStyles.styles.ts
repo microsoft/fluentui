@@ -123,12 +123,11 @@ const useValidationMessageIconStyles = makeStyles({
  * Apply styling to the Field slots based on the state
  */
 export const useFieldStyles_unstable = (state: FieldState): FieldState => {
-  'use no memo';
-
   const { validationState, size } = state;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     fieldClassNames.root,
     rootStyles.base,
@@ -139,6 +138,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
 
   const labelStyles = useLabelStyles();
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       fieldClassNames.label,
       labelStyles.base,
@@ -154,6 +154,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   const validationMessageIconBaseClassName = useValidationMessageIconBaseClassName();
   const validationMessageIconStyles = useValidationMessageIconStyles();
   if (state.validationMessageIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.validationMessageIcon.className = mergeClasses(
       fieldClassNames.validationMessageIcon,
       validationMessageIconBaseClassName,
@@ -165,6 +166,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
   const secondaryTextStyles = useSecondaryTextStyles();
   if (state.validationMessage) {
+    // eslint-disable-next-line react-hooks/immutability
     state.validationMessage.className = mergeClasses(
       fieldClassNames.validationMessage,
       secondaryTextBaseClassName,
@@ -175,6 +177,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   }
 
   if (state.hint) {
+    // eslint-disable-next-line react-hooks/immutability
     state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
   }
 

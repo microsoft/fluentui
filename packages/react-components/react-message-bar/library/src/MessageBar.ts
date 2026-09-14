@@ -1,4 +1,6 @@
 export type {
+  MessageBarBaseProps,
+  MessageBarBaseState,
   MessageBarContextValues,
   MessageBarIntent,
   MessageBarProps,
@@ -11,5 +13,6 @@ export {
   renderMessageBar_unstable,
   useMessageBarContextValue_unstable,
   useMessageBarStyles_unstable,
+  useMessageBarBase_unstable,
   useMessageBar_unstable,
 } from './components/MessageBar/index';

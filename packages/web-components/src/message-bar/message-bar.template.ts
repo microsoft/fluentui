@@ -4,8 +4,8 @@ import type { MessageBar } from './message-bar.js';
 /**
  * Generates a template for the MessageBar component.
  * @public
- * @param {MessageBar} T - The type of the MessageBar.
- * @returns {ElementViewTemplate<T>} - The template for the MessageBar component.
+ * @param T - The type of the MessageBar.
+ * @returns The template for the MessageBar component.
  */
 export function messageBarTemplate<T extends MessageBar>(): ElementViewTemplate<T> {
   return html<T>`
@@ -22,6 +22,6 @@ export function messageBarTemplate<T extends MessageBar>(): ElementViewTemplate<
 
 /**
  * The template for the MessageBar component.
- * @type {ElementViewTemplate<MessageBar>}
+ * @type ElementViewTemplate
  */
 export const template: ElementViewTemplate<MessageBar> = messageBarTemplate();

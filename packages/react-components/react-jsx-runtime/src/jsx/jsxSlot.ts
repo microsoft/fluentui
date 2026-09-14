@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
+import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
 import { getMetadataFromSlotComponent } from '../utils/getMetadataFromSlotComponent';
 import { Runtime } from '../utils/Runtime';
 

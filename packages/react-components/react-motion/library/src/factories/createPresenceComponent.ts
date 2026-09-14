@@ -19,7 +19,8 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
-import { createMotionComponent, MotionComponent } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
+import { createMotionComponent } from './createMotionComponent';
 
 /**
  * A private symbol to store the motion definition on the component for variants.
@@ -96,8 +97,6 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 ): PresenceComponent<MotionParams> {
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
-      'use no memo';
-
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
       const skipMotions = useMotionBehaviourContext() === 'skip';

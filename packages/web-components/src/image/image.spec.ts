@@ -1,10 +1,10 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Image } from './image.js';
-import { ImageFit, ImageShape } from './image.options.js';
+import { ImageFit, ImageShape, tagName } from './image.options.js';
 
 test.describe('Image', () => {
   test.use({
-    tagName: 'fluent-image',
+    tagName,
     innerHTML: /* html */ `
       <img alt="Short image description" src="/300x100.png" />
     `,
@@ -19,9 +19,9 @@ test.describe('Image', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-image');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -83,9 +83,11 @@ test.describe('Image', () => {
   test('should set the `fit` property to match the `fit` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const fit of Object.values(ImageFit)) {
       await test.step(`should set the \`fit\` property to "${fit}"`, async () => {
-        await fastPage.setTemplate({ attributes: { fit } });
+        await fastPage.updateTemplate(element, { attributes: { fit } });
 
         await expect(element).toHaveAttribute('fit', fit);
 
@@ -97,9 +99,11 @@ test.describe('Image', () => {
   test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const shape of Object.values(ImageShape)) {
       await test.step(`should set the \`shape\` property to "${shape}"`, async () => {
-        await fastPage.setTemplate({ attributes: { shape } });
+        await fastPage.updateTemplate(element, { attributes: { shape } });
 
         await expect(element).toHaveAttribute('shape', shape);
 

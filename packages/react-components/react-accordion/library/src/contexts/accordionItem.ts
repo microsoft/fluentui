@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { AccordionItemValue } from '../AccordionItem';
-import { AccordionToggleEvent } from '../Accordion';
+import type { AccordionItemValue } from '../AccordionItem';
+import type { AccordionToggleEvent } from '../Accordion';
 
 export type AccordionItemContextValue<Value = AccordionItemValue> = {
   open: boolean;

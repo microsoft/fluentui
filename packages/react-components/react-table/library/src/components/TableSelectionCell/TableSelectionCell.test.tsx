@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { TableSelectionCell } from './TableSelectionCell';
 import { isConformant } from '../../testing/isConformant';
-import { TableSelectionCellProps } from './TableSelectionCell.types';
+import type { TableSelectionCellProps } from './TableSelectionCell.types';
 import { tableContextDefaultValue, TableContextProvider } from '../../contexts/tableContext';
 import { tableSelectionCellClassNames } from './useTableSelectionCellStyles.styles';
 

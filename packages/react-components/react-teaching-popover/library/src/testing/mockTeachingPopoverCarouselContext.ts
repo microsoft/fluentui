@@ -1,7 +1,7 @@
 'use client';
 
+import type { CarouselContextValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselContext';
 import {
-  CarouselContextValue,
   carouselContextDefaultValue,
   useCarouselContext_unstable,
 } from '../components/TeachingPopoverCarousel/Carousel/CarouselContext';

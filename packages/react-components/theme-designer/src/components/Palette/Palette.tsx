@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { Button, Caption1, Text } from '@fluentui/react-components';
-import { Brands, BrandVariants } from '@fluentui/react-theme';
+import type { Brands, BrandVariants } from '@fluentui/react-theme';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { bundleIcon, CopyFilled, CopyRegular } from '@fluentui/react-icons';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';

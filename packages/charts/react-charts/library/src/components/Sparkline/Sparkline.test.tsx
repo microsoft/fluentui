@@ -1,7 +1,8 @@
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
-import { ChartProps, Sparkline } from './index';
+import type { ChartProps } from './index';
+import { Sparkline } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -139,13 +140,13 @@ describe('Sparkline snapShot testing', () => {
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<Sparkline data={sparkline1Points} />);
+    const wrapper = render(<Sparkline data={sparkline1Points} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<Sparkline data={emptySparklinePoints} />);
+    const wrapper = render(<Sparkline data={emptySparklinePoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

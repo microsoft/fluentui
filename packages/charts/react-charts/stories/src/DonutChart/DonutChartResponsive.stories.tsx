@@ -1,13 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  DonutChart,
-  ChartProps,
-  ChartDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-  ResponsiveContainer,
-} from '@fluentui/react-charts';
+import type { ChartProps, ChartDataPoint } from '@fluentui/react-charts';
+import { DonutChart, DataVizPalette, getColorFromToken, ResponsiveContainer } from '@fluentui/react-charts';
 
 export const DonutChartResponsive = (): JSXElement => {
   const points: ChartDataPoint[] = [

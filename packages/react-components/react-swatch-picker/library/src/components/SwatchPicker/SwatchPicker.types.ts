@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
-import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
+import type { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
@@ -69,6 +69,8 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   spacing?: 'small' | 'medium';
 };
 
+export type SwatchPickerBaseProps = Omit<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
+
 /**
  * State used in rendering SwatchPicker
  */
@@ -77,3 +79,5 @@ export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'> & {
     isGrid: boolean;
   };
+
+export type SwatchPickerBaseState = Omit<SwatchPickerState, 'size' | 'shape' | 'spacing'>;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableBody } from './TableBody';
 import { isConformant } from '../../testing/isConformant';
-import { TableBodyProps } from './TableBody.types';
+import type { TableBodyProps } from './TableBody.types';
 import { tableContextDefaultValue, TableContextProvider } from '../../contexts/tableContext';
 
 const table = document.createElement('table');

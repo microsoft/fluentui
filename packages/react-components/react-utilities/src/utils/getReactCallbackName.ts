@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 interface ReactSyntheticEvent extends React.SyntheticEvent<unknown> {
   // React 17/18

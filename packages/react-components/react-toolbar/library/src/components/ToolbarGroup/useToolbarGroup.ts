@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 
 import type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';

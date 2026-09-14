@@ -1,6 +1,7 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SankeyChartProps, SankeyChartStyles } from './SankeyChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';

@@ -1,24 +1,14 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
+import type {
+  JSXElement,
   CheckboxOnChangeData,
   CheckboxProps,
-  Input,
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
 
 export const VerticalStackedBarAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');

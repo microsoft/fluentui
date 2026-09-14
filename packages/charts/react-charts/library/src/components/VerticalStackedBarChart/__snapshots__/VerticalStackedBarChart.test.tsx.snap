@@ -206,7 +206,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <g>
             <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="January. Metadata1, 2."
@@ -215,7 +217,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -230,7 +232,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="1.05"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -254,7 +256,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
           <g>
             <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="February. Metadata1, 30."
@@ -263,7 +267,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="62.999999999999986"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -278,7 +282,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="6.299999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -293,7 +297,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="83.99999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -317,7 +321,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
           <g>
             <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
               id="2-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="March. Metadata1, 10."
@@ -326,7 +332,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="21"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -341,7 +347,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="126"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -356,7 +362,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="63"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -380,67 +386,72 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g>
-          <line
-            opacity="1"
-            stroke="#0078d4"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
-            y1="141.8"
-            y2="143.9"
-          />
-          <line
-            opacity="1"
-            stroke="#0078d4"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
-            y1="143.9"
-            y2="20"
-          />
-          <circle
-            aria-label="January. Supported Builds, 42."
-            cx="279"
-            cy="141.8"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
-          <circle
-            aria-label="February. Supported Builds, 41."
-            cx="327"
-            cy="143.9"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
-          <circle
-            aria-label="March. Supported Builds, 100."
-            cx="375"
-            cy="20"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
+          <g
+            aria-label="Supported Builds, line with 3 data points."
+            role="listbox"
+          >
+            <line
+              opacity="1"
+              stroke="#0078d4"
+              stroke-linecap="round"
+              stroke-width="3"
+              transform="translate(8, 0)"
+              x1="279"
+              x2="327"
+              y1="141.8"
+              y2="143.9"
+            />
+            <line
+              opacity="1"
+              stroke="#0078d4"
+              stroke-linecap="round"
+              stroke-width="3"
+              transform="translate(8, 0)"
+              x1="327"
+              x2="375"
+              y1="143.9"
+              y2="20"
+            />
+            <circle
+              aria-label="January. Supported Builds, 42."
+              cx="279"
+              cy="141.8"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+            <circle
+              aria-label="February. Supported Builds, 41."
+              cx="327"
+              cy="143.9"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+            <circle
+              aria-label="March. Supported Builds, 100."
+              cx="375"
+              cy="20"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+          </g>
         </g>
       </svg>
     </div>
@@ -448,92 +459,104 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
-          <button
-            aria-label="Metadata3"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+            <button
+              aria-label="Metadata3"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              type="button"
             >
-              Metadata3
-            </div>
-          </button>
-          <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata3
+              </div>
+            </button>
+            <button
+              aria-label="Supported Builds"
+              aria-posinset="4"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Supported Builds
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Supported Builds
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -747,7 +770,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <g>
             <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="January. Metadata1, 2."
@@ -756,7 +781,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -771,7 +796,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="1.05"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -795,7 +820,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
           <g>
             <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="February. Metadata1, 30."
@@ -804,7 +831,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="62.999999999999986"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -819,7 +846,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="6.299999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -834,7 +861,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="83.99999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -858,7 +885,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
           <g>
             <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
               id="2-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="March. Metadata1, 10."
@@ -867,7 +896,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="21"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -882,7 +911,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="126"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -897,7 +926,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="63"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -921,67 +950,72 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g>
-          <line
-            opacity="1"
-            stroke="#0078d4"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
-            y1="141.8"
-            y2="143.9"
-          />
-          <line
-            opacity="1"
-            stroke="#0078d4"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
-            y1="143.9"
-            y2="20"
-          />
-          <circle
-            aria-label="January. Supported Builds, 42."
-            cx="279"
-            cy="141.8"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
-          <circle
-            aria-label="February. Supported Builds, 41."
-            cx="327"
-            cy="143.9"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
-          <circle
-            aria-label="March. Supported Builds, 100."
-            cx="375"
-            cy="20"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="#0078d4"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-          />
+          <g
+            aria-label="Supported Builds, line with 3 data points."
+            role="listbox"
+          >
+            <line
+              opacity="1"
+              stroke="#0078d4"
+              stroke-linecap="round"
+              stroke-width="3"
+              transform="translate(8, 0)"
+              x1="279"
+              x2="327"
+              y1="141.8"
+              y2="143.9"
+            />
+            <line
+              opacity="1"
+              stroke="#0078d4"
+              stroke-linecap="round"
+              stroke-width="3"
+              transform="translate(8, 0)"
+              x1="327"
+              x2="375"
+              y1="143.9"
+              y2="20"
+            />
+            <circle
+              aria-label="January. Supported Builds, 42."
+              cx="279"
+              cy="141.8"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+            <circle
+              aria-label="February. Supported Builds, 41."
+              cx="327"
+              cy="143.9"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+            <circle
+              aria-label="March. Supported Builds, 100."
+              cx="375"
+              cy="20"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="#0078d4"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(8, 0)"
+            />
+          </g>
         </g>
       </svg>
     </div>
@@ -989,92 +1023,104 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
-          <button
-            aria-label="Metadata3"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+            <button
+              aria-label="Metadata3"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              type="button"
             >
-              Metadata3
-            </div>
-          </button>
-          <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata3
+              </div>
+            </button>
+            <button
+              aria-label="Supported Builds"
+              aria-posinset="4"
+              aria-selected="false"
+              aria-setsize="4"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Supported Builds
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Supported Builds
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1440,7 +1486,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         >
           <g>
             <g
+              aria-label="0. Metadata1, 40%. Metadata2, 5%."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
@@ -1449,7 +1497,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1464,7 +1512,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1488,7 +1536,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           </g>
           <g>
             <g
+              aria-label="20. Metadata1, 30%. Metadata2, 20%."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
@@ -1497,7 +1547,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1512,7 +1562,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1542,54 +1592,62 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="2"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="2"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1955,7 +2013,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         >
           <g>
             <g
+              aria-label="0. Metadata1, 40%. Metadata2, 5%."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
@@ -1964,7 +2024,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1979,7 +2039,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2003,7 +2063,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </g>
           <g>
             <g
+              aria-label="20. Metadata1, 30%. Metadata2, 20%."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
@@ -2012,7 +2074,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2027,7 +2089,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2073,7 +2135,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -2095,7 +2159,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -2523,7 +2589,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         >
           <g>
             <g
+              aria-label="0. Metadata1, 40%. Metadata2, 5%."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
@@ -2532,7 +2600,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2547,7 +2615,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2571,7 +2639,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
           <g>
             <g
+              aria-label="20. Metadata1, 30%. Metadata2, 20%."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
@@ -2580,7 +2650,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2595,7 +2665,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2641,7 +2711,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -2663,7 +2735,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -3068,7 +3142,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         >
           <g>
             <g
+              aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
               id="0-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
@@ -3077,7 +3153,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3092,7 +3168,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3116,7 +3192,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
           <g>
             <g
+              aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
               id="1-singleBar"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
@@ -3125,7 +3203,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3140,7 +3218,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3164,43 +3242,48 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
         </g>
         <g>
-          <line
-            opacity="1"
-            stroke="yellow"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(0, 0)"
-            x1="56"
-            x2="614"
-            y1="194.3269230769231"
-            y2="123.65384615384616"
-          />
-          <circle
-            aria-label="0. Line1, 15."
-            cx="56"
-            cy="194.3269230769231"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="yellow"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(0, 0)"
-          />
-          <circle
-            aria-label="20. Line1, 30."
-            cx="614"
-            cy="123.65384615384616"
-            fill="var(--colorNeutralBackground1)"
-            opacity="0"
-            r="8"
-            role="img"
-            stroke="yellow"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(0, 0)"
-          />
+          <g
+            aria-label="Line1, line with 2 data points."
+            role="listbox"
+          >
+            <line
+              opacity="1"
+              stroke="yellow"
+              stroke-linecap="round"
+              stroke-width="3"
+              transform="translate(0, 0)"
+              x1="56"
+              x2="614"
+              y1="194.3269230769231"
+              y2="123.65384615384616"
+            />
+            <circle
+              aria-label="0. Line1, 15."
+              cx="56"
+              cy="194.3269230769231"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(0, 0)"
+            />
+            <circle
+              aria-label="20. Line1, 30."
+              cx="614"
+              cy="123.65384615384616"
+              fill="var(--colorNeutralBackground1)"
+              opacity="0"
+              r="8"
+              role="option"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="0"
+              transform="translate(0, 0)"
+            />
+          </g>
         </g>
       </svg>
     </div>
@@ -3224,7 +3307,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -3246,7 +3331,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -3268,7 +3355,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Line1"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
@@ -3695,7 +3784,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -3704,7 +3795,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3719,7 +3810,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3731,7 +3822,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -3740,7 +3833,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3755,7 +3848,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3773,54 +3866,62 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -4184,7 +4285,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -4193,7 +4296,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4208,7 +4311,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4232,7 +4335,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -4241,7 +4346,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4256,7 +4361,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4286,54 +4391,62 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -4697,7 +4810,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -4706,7 +4821,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4721,7 +4836,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4745,7 +4860,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -4754,7 +4871,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4769,7 +4886,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4799,54 +4916,62 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -5210,7 +5335,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -5219,7 +5346,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5234,7 +5361,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5258,7 +5385,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -5267,7 +5396,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5282,7 +5411,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5312,54 +5441,62 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -5723,7 +5860,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -5732,7 +5871,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5747,7 +5886,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5771,7 +5910,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -5780,7 +5921,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5795,7 +5936,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5841,7 +5982,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -5863,7 +6006,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -6243,7 +6388,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -6252,7 +6399,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="aqua"
               height="3.846153846153846"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6267,7 +6414,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="navy"
               height="0.4807692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6291,7 +6438,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -6300,7 +6449,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="aqua"
               height="2.884615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6315,7 +6464,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="navy"
               height="1.923076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6701,7 +6850,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -6710,7 +6861,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6724,7 +6875,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6747,7 +6898,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -6756,7 +6909,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6770,7 +6923,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6799,54 +6952,62 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7212,7 +7373,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <g
             aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
-            role="img"
+            role="listbox"
             tabindex="0"
           >
             <rect
@@ -7257,7 +7418,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <g
             aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
-            role="img"
+            role="listbox"
             tabindex="0"
           >
             <rect
@@ -7306,54 +7467,62 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7794,7 +7963,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -7803,7 +7974,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7818,7 +7989,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7842,7 +8013,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -7851,7 +8024,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7866,7 +8039,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7896,54 +8069,62 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -8389,7 +8570,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -8398,7 +8581,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8413,7 +8596,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8437,7 +8620,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -8446,7 +8631,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8461,7 +8646,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8491,54 +8676,62 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -8909,7 +9102,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       >
         <g>
           <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
@@ -8918,7 +9113,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8933,7 +9128,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8957,7 +9152,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         </g>
         <g>
           <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
@@ -8966,7 +9163,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8981,7 +9178,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -9011,54 +9208,62 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="fui-Overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class="fui-legend__text"
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="fui-Button fui-legend__legend"
-          data-overflow-item=""
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class="fui-legend__text"
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>

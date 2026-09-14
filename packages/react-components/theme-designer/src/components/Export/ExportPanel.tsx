@@ -1,17 +1,15 @@
 import * as React from 'react';
 import dedent from 'dedent';
 import { makeStyles } from '@griffel/react';
+import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';
 import {
   Body1,
   Button,
   createLightTheme,
   createDarkTheme,
   FluentProvider,
-  SelectTabData,
-  SelectTabEvent,
   Tab,
   TabList,
-  TabValue,
   Text,
   Textarea,
   tokens,

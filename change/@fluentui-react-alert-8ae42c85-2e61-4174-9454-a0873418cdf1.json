@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: restore named beta prerelease line (9.0.x-0 was published by mistake)",
+  "packageName": "@fluentui/react-alert",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

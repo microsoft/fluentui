@@ -9,6 +9,7 @@ import { getLanguage } from '../utils/language.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -24,6 +25,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot - The default slot. Accepts a {@link (Listbox:class)} element.
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
+ *
+ * @fires { Event } change - Fires a custom 'change' event when the selected option changes
  *
  * @public
  */
@@ -444,7 +447,10 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.listbox?.enabledOptions ?? [];
+    return (
+      this.listbox?.enabledOptions ??
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled)
+    );
   }
 
   /**
@@ -509,7 +515,9 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get options(): DropdownOption[] {
-    return this.listbox?.options ?? [];
+    return (
+      this.listbox?.options ?? Array.from(this.querySelectorAll('*')).filter<DropdownOption>(o => isDropdownOption(o))
+    );
   }
 
   /**
@@ -802,6 +810,12 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Guard flag to prevent reentrant calls to `insertControl`.
+   * @internal
+   */
+  private _insertingControl = false;
+
+  /**
    * Inserts the control element based on the dropdown type.
    *
    * @public
@@ -809,6 +823,11 @@ export class BaseDropdown extends FASTElement {
    * This method can be overridden in derived classes to provide custom control elements, though this is not recommended.
    */
   protected insertControl(): void {
+    if (this._insertingControl) {
+      return;
+    }
+
+    this._insertingControl = true;
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
 
     if (this.type === DropdownType.combobox) {
@@ -817,6 +836,65 @@ export class BaseDropdown extends FASTElement {
     }
 
     dropdownButtonTemplate.render(this, this);
+    this._insertingControl = false;
+  }
+
+  /**
+   * The duration in milliseconds after the last character search keystroke before the search string is cleared.
+   */
+  protected searchTimeoutMs = 500;
+
+  /**
+   * The accumulated search string used to match option labels by prefix when printable characters are typed.
+   *
+   * @internal
+   */
+  private searchString: string = '';
+
+  /**
+   * The timeout id used to reset the search string.
+   *
+   * @internal
+   */
+  private searchTimeout?: ReturnType<typeof setTimeout>;
+
+  /**
+   * Handles printable character input by moving {@link Dropdown#activeIndex} to the next option whose label matches the
+   * accumulated search string. When the string is a single character (or the same character repeated), matching
+   * options are cycled through; otherwise the string is treated as a prefix match.
+   *
+   * @param char - the printable character that was pressed
+   * @internal
+   */
+  private handleSearchCharacter(char: string): void {
+    const isRepeating = this.searchString === char.repeat(this.searchString.length);
+    this.searchString += char;
+
+    let candidates = this.searchString.length > 1 ? this.filterOptions(this.searchString) : [];
+    let isCycling = false;
+
+    if (!candidates.length && isRepeating) {
+      candidates = this.filterOptions(char);
+      isCycling = true;
+    }
+
+    if (candidates.length) {
+      const activeOption = this.enabledOptions[this.activeIndex];
+      const currentPos = candidates.indexOf(activeOption);
+      const nextMatch = isCycling
+        ? candidates[this.getEnabledIndexInBounds(currentPos + 1, candidates.length)]
+        : currentPos >= 0
+        ? activeOption
+        : candidates[0];
+
+      this.activeIndex = this.enabledOptions.indexOf(nextMatch);
+    }
+
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.searchString = '';
+      this.searchTimeout = undefined;
+    }, this.searchTimeoutMs);
   }
 
   /**
@@ -841,16 +919,17 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
-      case ' ': {
-        if (this.isCombobox) {
-          break;
-        }
-
-        e.preventDefault();
-      }
-
+      case ' ':
       case 'Enter':
       case 'Tab': {
+        if (e.key === ' ') {
+          if (this.isCombobox) {
+            break;
+          }
+
+          e.preventDefault();
+        }
+
         if (this.open) {
           this.selectOption(this.activeIndex, true);
           if (this.multiple) {
@@ -873,6 +952,12 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (!increment) {
+      if (!this.isCombobox && e.key.length === 1 && e.key !== ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!this.open) {
+          this.listbox.showPopover();
+        }
+        this.handleSearchCharacter(e.key);
+      }
       return true;
     }
 
@@ -930,7 +1015,9 @@ export class BaseDropdown extends FASTElement {
    */
   public selectOption(index: number = this.selectedIndex, shouldEmit: boolean = false): void {
     this.listbox.selectOption(index);
-    this.control.value = this.displayValue;
+    if (this.control) {
+      this.control.value = this.displayValue;
+    }
 
     this.setValidity();
 
@@ -951,20 +1038,22 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected) {
-      if (this.disabled || !this.required) {
-        this.elementInternals.setValidity({});
-        return;
-      }
-
-      const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
-
-      this.elementInternals.setValidity(
-        { valueMissing, ...flags },
-        message ?? this.validationMessage,
-        anchor ?? this.control,
-      );
+    if (!this.elementInternals) {
+      return;
     }
+
+    if (this.disabled || !this.required) {
+      this.elementInternals.setValidity({});
+      return;
+    }
+
+    const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
+
+    this.elementInternals.setValidity(
+      { valueMissing, ...flags },
+      message ?? this.validationMessage,
+      anchor ?? this.control,
+    );
   }
 
   /**
@@ -1019,11 +1108,19 @@ export class BaseDropdown extends FASTElement {
     Updates.enqueue(() => {
       this.insertControl();
     });
+
+    maybeSetAutoFocus(this);
   }
 
   disconnectedCallback(): void {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
     this.debounceController?.abort();
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = undefined;
+      this.searchString = '';
+    }
 
     super.disconnectedCallback();
   }

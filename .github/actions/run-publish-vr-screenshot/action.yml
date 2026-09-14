@@ -38,7 +38,7 @@ runs:
         cache: 'yarn'
         node-version: '20'
 
-    - run: yarn install --frozen-lockfile
+    - run: yarn install --immutable
       shell: bash
 
     - run: yarn playwright install --with-deps
@@ -50,7 +50,7 @@ runs:
         isPR=${{ github.event_name == 'pull_request' }}
         echo "isPR=$isPR" >> $GITHUB_ENV
         if [[ $isPR == true ]]; then
-          packageAffected=$(yarn --silent check:affected --project ${{ inputs.vrTestPackageName }})
+          packageAffected=$(yarn check:affected --project ${{ inputs.vrTestPackageName }})
           if [[ $packageAffected == false ]]; then
             echo "In PR pipeline but NOT affecting test package. Skipping test run"
             echo "vrTestSkip=yes" >> $GITHUB_ENV

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { ChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { ChartProps } from '@fluentui/react-charts';
+import { SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 const data: ChartProps = {
   chartTitle: 'Sankey Chart',

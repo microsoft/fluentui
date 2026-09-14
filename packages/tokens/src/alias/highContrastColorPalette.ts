@@ -1,6 +1,11 @@
 import { hcHighlight, hcCanvas, hcCanvasText } from '../global/colors';
 import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames';
-import { ColorPaletteTokens, ColorStatusTokens, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
+import type {
+  ColorPaletteTokens,
+  ColorStatusTokens,
+  PersonaColorPaletteTokens,
+  StatusColorPaletteTokens,
+} from '../types';
 import { statusColorMapping } from '../statusColorMapping';
 
 const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor) => {

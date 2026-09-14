@@ -7,6 +7,5 @@
     "types": ["node"]
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["./src/**/*.ts", "./src/**/*.js"],
-  "files": ["../../typings/ignore-not-found-export-webpack-plugin/index.d.ts"]
+  "include": ["./src/**/*.ts", "./src/**/*.js"]
 }

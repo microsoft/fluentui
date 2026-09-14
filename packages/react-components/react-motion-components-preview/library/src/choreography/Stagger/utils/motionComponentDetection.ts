@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 /**
  * Checks if a React element has all of the specified props explicitly provided.

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { AccordionItemContextValue } from '../../contexts/accordionItem';
+import type { AccordionItemContextValue } from '../../contexts/accordionItem';
 
 export type AccordionItemContextValues<Value = AccordionItemValue> = {
   accordionItem: AccordionItemContextValue<Value>;

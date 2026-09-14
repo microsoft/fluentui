@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Curve, CurvePath, Vec3 } from './types';
+import type { Curve, CurvePath, Vec3 } from './types';
 
 const curveResolution = 128;
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: warn that Markdown's `enableRenderHtmlBlock` renders unsanitized HTML and must only be used with developer-authored content",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

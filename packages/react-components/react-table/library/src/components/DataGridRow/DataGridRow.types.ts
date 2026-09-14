@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { TableColumnDefinition } from '../../hooks';
-import { DataGridContextValue } from '../DataGrid/DataGrid.types';
+import type { DataGridContextValue } from '../DataGrid/DataGrid.types';
 import type { TableRowProps, TableRowSlots, TableRowState } from '../TableRow/TableRow.types';
 import type { TableSelectionCell } from '../TableSelectionCell/TableSelectionCell';
 

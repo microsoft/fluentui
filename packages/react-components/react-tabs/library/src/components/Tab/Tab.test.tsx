@@ -4,7 +4,7 @@ import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { Tab } from './Tab';
 import { isConformant } from '../../testing/isConformant';
 import { TabListContext } from '../TabList/TabListContext';
-import { TabListContextValue } from '../TabList/TabList.types';
+import type { TabListContextValue } from '../TabList/TabList.types';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 describe('Tab', () => {

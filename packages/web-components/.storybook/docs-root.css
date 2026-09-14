@@ -64,7 +64,7 @@
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2:not(.sbdocs-preview h2) {
+#storybook-docs .sbdocs h2:not(.sbdocs-preview h2, .sticker-sheet h2) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -155,6 +155,7 @@
 }
 
 #storybook-docs .innerZoomElementWrapper {
+  background-color: var(--colorNeutralBackground2);
   padding: 30px;
 }
 
@@ -256,12 +257,27 @@
   border-bottom: 1px solid #edebe9;
 }
 
-#storybook-docs .docblock-argstable-body > tr > td:nth-child(4) {
+#storybook-docs .docblock-argstable-body > tr > td[colspan] {
+  background: var(--colorNeutralBackground2) !important;
+}
+
+/**
+ * Hides the Control column from the ArgsTable
+ * Disabled
+ *
+ */
+/*
+#storybook-docs .docblock-argstable-body>tr>td:nth-child(4) {
   display: none;
 }
 
-#storybook-docs .docblock-argstable-head > tr > th:nth-child(4) {
+#storybook-docs .docblock-argstable-head>tr>th:nth-child(4) {
   display: none;
+}
+*/
+
+#storybook-docs .docblock-argstable-body > tr > td {
+  width: unset !important;
 }
 
 #storybook-docs .docblock-argstable tbody tr {
@@ -368,14 +384,6 @@
   line-height: 130%;
   color: black;
   letter-spacing: -0.01em;
-}
-
-#storybook-docs .docblock-argstable tr > :nth-child(1) {
-  width: 4%;
-}
-
-#storybook-docs .docblock-argstable tr > :nth-child(2) {
-  width: 100%;
 }
 
 #storybook-docs .os-padding {

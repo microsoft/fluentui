@@ -1,8 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Menu as FluentMenu } from './menu.js';
 
 type Story = StoryObj<FluentMenu>;
+const { argTypes } = getStorybookHelpers<FluentMenu>('fluent-menu');
 
 const defaultSlottedContent = html`
   <fluent-menu-list>
@@ -46,64 +48,7 @@ export default {
     triggerSlottedContent: () => defaultTriggerSlottedContent,
     '--menu-max-height': 'auto',
   },
-  argTypes: {
-    split: {
-      control: 'boolean',
-      description: 'Sets the split visual state. Used in Cordination with the `primary-action` slot.',
-      name: 'split',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    openOnHover: {
-      control: 'boolean',
-      description: 'Sets whether menu opens on hover',
-      name: 'open-on-hover',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    openOnContext: {
-      description: 'Opens the menu on right click (context menu), removes all other menu open interactions',
-      control: 'boolean',
-      name: 'open-on-context',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    closeOnScroll: {
-      description: 'Close when scroll outside of it',
-      control: 'boolean',
-      name: 'close-on-scroll',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    persistOnItemClick: {
-      description: 'Prevents the menu from closing when an item is clicked',
-      control: 'boolean',
-      name: 'persist-on-item-click',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    '--menu-max-height': {
-      control: 'text',
-      description: 'Sets the max height of the menu, e.g. 300px',
-      required: false,
-      table: {
-        category: 'CSS Custom Properties',
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    primaryActionSlottedContent: {
-      control: false,
-      description: 'The primary action slot. Used when the menu is `split`',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    triggerSlottedContent: {
-      control: false,
-      description: 'The trigger slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentMenu>;
 
 export const Default: Story = {};

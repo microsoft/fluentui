@@ -5,13 +5,16 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { sum as d3Sum } from 'd3-array';
-import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { Selection as D3Selection, select, selectAll } from 'd3-selection';
+import type { SankeyGraph, SankeyLayout } from 'd3-sankey';
+import { sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
+import type { Selection as D3Selection } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode } from '../../types/DataPoint';
-import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
+import type { Margins, SLink, SNode } from '../../types/DataPoint';
+import type { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
-import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
+import type { ChartPopoverProps } from '../CommonComponents/index';
+import { ChartPopover } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
@@ -72,7 +75,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -117,7 +120,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -159,7 +162,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  */
 // This is exported for unit tests.
 export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns {
-  const nodesInColumn: NodesInColumns = {};
+  const nodesInColumn: NodesInColumns = Object.create(null);
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
@@ -746,7 +749,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const target = singleLink.target as SNode;
         // TODO: localize the aria-label string
         return (
-          <g key={key}>
+          <g key={key} role="presentation">
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={source.color} />
@@ -767,7 +770,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               fillOpacity={_getOpacityStream(singleLink)}
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
           </g>
         );
@@ -799,7 +802,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const { name, actualValue, x0, x1, y0 } = singleNode;
         const textColor = nodeTextColor({ selectedState, selectedNodes, selectedNode }, singleNode);
         return (
-          <g key={index} id={gElementId}>
+          <g key={index} id={gElementId} role="presentation">
             <rect
               x={x0}
               y={y0}
@@ -815,7 +818,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               opacity="1"
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classes.nodeTextContainer}>
@@ -1145,7 +1148,14 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId} className={classes.chart}>
+          <svg
+            width={width}
+            height={height}
+            id={_chartId}
+            className={classes.chart}
+            role="listbox"
+            aria-label={`Sankey chart with ${nodes.length} nodes and ${links.length} links`}
+          >
             {!props.hideLegend && props.data.chartTitle && (
               <ChartTitle
                 title={props.data.chartTitle}
@@ -1159,7 +1169,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (
-                  <g key={nodes[item.index].nodeId} className={classes.nodes}>
+                  <g key={nodes[item.index].nodeId} className={classes.nodes} role="presentation">
                     {nodeData![item.index]}
                   </g>
                 );
@@ -1170,6 +1180,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                     className={classes.links}
                     stroke={props.pathColor ? props.pathColor : tokens.colorStrokeFocus2}
                     strokeOpacity={1}
+                    role="presentation"
                   >
                     {linkData![item.index]}
                   </g>

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type * as React from 'react';
+import type { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
   SortState,
@@ -10,7 +10,7 @@ import type {
   TableColumnSizingOptions,
   TableColumnId,
 } from '../../hooks';
-import { TableRowProps } from '../TableRow/TableRow.types';
+import type { TableRowProps } from '../TableRow/TableRow.types';
 
 export type DataGridSlots = TableSlots;
 

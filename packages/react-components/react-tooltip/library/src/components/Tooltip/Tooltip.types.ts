@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, JSXElement, Slot, TriggerProps } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -131,6 +131,11 @@ export type TooltipState = ComponentState<TooltipSlots> &
   Pick<TooltipProps, 'mountNode' | 'relationship'> &
   Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
     children?: JSXElement | null;
+
+    /**
+     * Whether positioning has determined that the tooltip or its target is outside its clipping boundary.
+     */
+    hidden?: boolean;
 
     /**
      * Whether the tooltip should be rendered to the DOM.

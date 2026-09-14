@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition, TableRowId } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -11,7 +11,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   TableBody,
   TableCell,
@@ -22,8 +21,6 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
-  TableRowId,
   useTableSelection,
   createTableColumn,
 } from '@fluentui/react-components';

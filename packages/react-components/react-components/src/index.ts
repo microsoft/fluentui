@@ -931,6 +931,7 @@ export {
   Overflow,
   OverflowItem,
   OverflowDivider,
+  OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowCount,
@@ -1912,6 +1913,8 @@ export {
   createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
+  motionSlot,
+  presenceMotionSlot,
   PresenceGroup,
 } from '@fluentui/react-motion';
 export type {
@@ -1919,9 +1922,11 @@ export type {
   AtomMotionFn,
   MotionComponentProps,
   MotionImperativeRef,
+  MotionSlotProps,
   PresenceComponent,
   PresenceMotion,
   PresenceMotionFn,
+  PresenceMotionSlotProps,
   PresenceComponentProps,
 } from '@fluentui/react-motion';
 

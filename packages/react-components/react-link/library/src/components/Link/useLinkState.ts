@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import type { LinkBaseState } from './Link.types';
 

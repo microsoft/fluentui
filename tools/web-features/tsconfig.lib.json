@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "lib": ["ES2019"],
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"],
+    "module": "CommonJS",
+    "moduleResolution": "Node10"
+  },
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.js"]
+}

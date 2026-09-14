@@ -1,0 +1,1 @@
+`matchTargetSize: 'width'` applies `width: anchor-size(width)` to the surface so its inline size tracks the trigger's. Handy for combobox / autocomplete dropdowns that should line up with the input. Ensure the surface uses `box-sizing: border-box` so padding doesn't exceed the matched width.

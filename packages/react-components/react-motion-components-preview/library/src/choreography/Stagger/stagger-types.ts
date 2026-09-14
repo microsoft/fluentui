@@ -1,5 +1,5 @@
-import { PresenceComponentProps, PresenceDirection } from '@fluentui/react-motion';
-import * as React from 'react';
+import type { PresenceComponentProps, PresenceDirection } from '@fluentui/react-motion';
+import type * as React from 'react';
 
 /**
  * Defines how Stagger manages its children's visibility/mounting.

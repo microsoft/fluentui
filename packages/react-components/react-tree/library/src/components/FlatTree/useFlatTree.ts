@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
-import { FlatTreeProps, FlatTreeState } from './FlatTree.types';
+import type { FlatTreeProps, FlatTreeState } from './FlatTree.types';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { useSubtree } from '../../hooks/useSubtree';
@@ -14,8 +14,6 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLEle
   props,
   ref,
 ) => {
-  'use no memo';
-
   const isRoot = React.useContext(SubtreeContext) === undefined;
   // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted

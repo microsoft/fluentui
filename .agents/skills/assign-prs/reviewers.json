@@ -1,0 +1,134 @@
+{
+  "$schema": "./reviewers.schema.json",
+  "version": 1,
+
+  "team": {
+    "org": "microsoft",
+    "slug": "cxe-prg"
+  },
+
+  "settings": {
+    "reviewers": 1,
+    "areaMatch": "preference",
+    "unknownMemberPolicy": "exclude-and-report"
+  },
+
+  "areas": {
+    "headless": {
+      "label": "Headless components",
+      "scopes": ["react-headless-components-preview", "headless-*"],
+      "paths": ["packages/react-components/react-headless-components-preview/**", "apps/public-docsite-v9-headless/**"]
+    },
+    "components": {
+      "label": "v9 React components",
+      "scopes": ["react", "react-*"],
+      "paths": ["packages/react-components/**"]
+    },
+    "web-components": {
+      "label": "Web components",
+      "scopes": ["web-components"],
+      "paths": ["packages/web-components/**", "apps/vr-tests-web-components/**"]
+    },
+    "motion": {
+      "label": "Motion",
+      "scopes": ["react-motion*"],
+      "paths": ["packages/react-components/react-motion*/**"]
+    },
+    "build": {
+      "label": "Build, tooling and release",
+      "scopes": [
+        "eslint-*",
+        "workspace-plugin",
+        "tools",
+        "scripts*",
+        "ci",
+        "release",
+        "bundle-size",
+        "monosize",
+        "babel-preset*",
+        "react-conformance"
+      ],
+      "paths": [
+        "tools/**",
+        "scripts/**",
+        ".github/**",
+        ".devops/**",
+        "packages/eslint-plugin/**",
+        "packages/react-conformance/**"
+      ]
+    },
+    "dependencies": {
+      "label": "Dependencies",
+      "scopes": ["deps", "deps-dev", "dependabot"],
+      "paths": ["yarn.lock", "package.json", "**/package.json"]
+    },
+    "docs": {
+      "label": "Docs and docsite",
+      "scopes": ["docsite*", "api-docs", "react-docsite-components", "docs"],
+      "paths": ["apps/public-docsite*/**", "packages/api-docs/**"]
+    },
+    "a11y": {
+      "label": "Accessibility",
+      "scopes": ["a11y*", "axe"],
+      "paths": ["packages/a11y-testing/**"]
+    },
+    "ai-skills": {
+      "label": "Agentic Skills",
+      "scopes": ["skills"],
+      "paths": [".agents/skills/**", ".claude/skills/**", "AGENTS.md"]
+    }
+  },
+
+  "reviewers": [
+    {
+      "login": "Hotell",
+      "eligible": true,
+      "primary": ["build"],
+      "secondary": ["ai-skills", "dependencies", "docs", "headless"]
+    },
+    {
+      "login": "dmytrokirpa",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
+    },
+    {
+      "login": "mainframev",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
+    },
+    {
+      "login": "PaulGMardling",
+      "eligible": true,
+      "primary": ["components", "headless"],
+      "secondary": ["a11y", "ai-skills", "build", "dependencies", "motion", "web-components"]
+    },
+    {
+      "login": "tudorpopams",
+      "eligible": true,
+      "fallbackEligible": false,
+      "primary": ["ai-skills"],
+      "secondary": []
+    },
+    {
+      "login": "ValentinaKozlova",
+      "eligible": false,
+      "primary": [],
+      "secondary": []
+    },
+    {
+      "login": "paolo-aliprandi",
+      "eligible": true,
+      "fallbackEligible": false,
+      "primary": ["ai-skills"],
+      "secondary": []
+    },
+    {
+      "login": "gouttierre",
+      "eligible": false,
+      "primary": [],
+      "secondary": []
+    }
+  ]
+}

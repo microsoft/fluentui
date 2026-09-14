@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Divider } from './divider.js';
-import { template } from './divider.template.js';
+import { tagName } from './divider.options.js';
 import { styles } from './divider.styles.js';
+import { template } from './divider.template.js';
 
 /**
- * The Fluent Divider Element
+ * The definition for the `<fluent-divider>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-divider\>
  */
-export const definition = Divider.compose({
-  name: `${FluentDesignSystem.prefix}-divider`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

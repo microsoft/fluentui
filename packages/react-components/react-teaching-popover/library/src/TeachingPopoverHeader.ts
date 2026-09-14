@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverHeaderBaseProps,
+  TeachingPopoverHeaderBaseState,
   TeachingPopoverHeaderProps,
   TeachingPopoverHeaderSlots,
   TeachingPopoverHeaderState,
@@ -9,4 +11,5 @@ export {
   teachingPopoverHeaderClassNames,
   useTeachingPopoverHeaderStyles_unstable,
   useTeachingPopoverHeader_unstable,
+  useTeachingPopoverHeaderBase_unstable,
 } from './components/TeachingPopoverHeader/index';

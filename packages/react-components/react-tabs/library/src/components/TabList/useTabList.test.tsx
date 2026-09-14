@@ -5,11 +5,12 @@ import '@testing-library/jest-dom';
 
 import { useTabListBase_unstable } from './useTabList';
 import { renderTabList_unstable } from './renderTabList';
-import { renderTab_unstable, TabState, useTabBase_unstable } from '../Tab';
+import type { TabState } from '../Tab';
+import { renderTab_unstable, useTabBase_unstable } from '../Tab';
 import { useTabListContextValues_unstable } from './useTabListContextValues';
 import { mergeClasses } from '@griffel/react';
 import { useTabListContext_unstable } from './TabListContext';
-import { TabListState } from './TabList.types';
+import type { TabListState } from './TabList.types';
 
 describe('useTabListBase', () => {
   type CustomTabAppearance = 'filled' | 'outline';
@@ -44,7 +45,7 @@ describe('useTabListBase', () => {
 
       // Use `focusgroup` proposal to for tab roving navigation
       // @ts-expect-error - `focusgroup` is not yet typed
-      state.root.focusgroup = `tablist ${state.vertical ? 'block' : 'inline'} no-memory wrap`;
+      state.root.focusgroup = `tablist ${state.vertical ? 'block' : 'inline'} nomemory wrap`;
 
       // or apply Tabster focus attributes
       // const focusProps = useTabListA11yBehavior_unstable({ vertical: state.vertical });
@@ -66,7 +67,7 @@ describe('useTabListBase', () => {
       <div
         aria-orientation="horizontal"
         class="tab-list tab-list--outline"
-        focusgroup="tablist inline no-memory wrap"
+        focusgroup="tablist inline nomemory wrap"
         role="tablist"
       >
         <button

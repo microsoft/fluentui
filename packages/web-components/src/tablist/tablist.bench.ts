@@ -1,9 +1,5 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as tabDefinition } from '../tab/tab.definition.js';
-import { definition as tablistDefinition } from './tablist.definition.js';
-
-tabDefinition.define(FluentDesignSystem.registry);
-tablistDefinition.define(FluentDesignSystem.registry);
+import '../tab/define.js';
+import './define.js';
 
 const itemRenderer = () => {
   const tablist = document.createElement('fluent-tablist');

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useTableRowIdContext } from '../../contexts/rowIdContext';

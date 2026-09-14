@@ -1,0 +1,103 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: block;
+}
+
+:host {
+  width: 100%;
+  height: 2px;
+  overflow-x: hidden;
+  background-color: var(--colorNeutralBackground6);
+  border-radius: var(--borderRadiusMedium);
+  contain: content;
+
+  @supports (width: attr(value type(<number>))) {
+    --max: attr(max type(<number>), 100);
+    --min: attr(min type(<number>), 0);
+    --value: attr(value type(<number>), 0);
+    --indicator-width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
+  }
+}
+
+:host([thickness='large']) {
+  height: 4px;
+}
+
+:host([shape='square']) {
+  border-radius: var(--borderRadiusNone);
+}
+
+.indicator {
+  background-color: var(--colorCompoundBrandBackground);
+  border-radius: inherit;
+  height: 100%;
+}
+
+:host([value]) .indicator {
+  transition: all 0.2s ease-in-out;
+
+  @supports (width: attr(value type(<number>))) {
+    width: var(--indicator-width);
+  }
+}
+
+:host(:not([value])) .indicator {
+  position: relative;
+  width: 33%;
+  background-image: linear-gradient(
+    to right,
+    var(--colorNeutralBackground6) 0%,
+    var(--colorTransparentBackground) 50%,
+    var(--colorNeutralBackground6) 100%
+  );
+  animation-name: indeterminate;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+:host([validation-state='error']) .indicator {
+  background-color: var(--colorPaletteRedBackground3);
+}
+
+:host([validation-state='warning']) .indicator {
+  background-color: var(--colorPaletteDarkOrangeBackground3);
+}
+
+:host([validation-state='success']) .indicator {
+  background-color: var(--colorPaletteGreenBackground3);
+}
+
+@layer animations {
+  /* Disable animations for reduced motion */
+  @media (prefers-reduced-motion: no-preference) {
+    :host([value]) {
+      transition: none;
+    }
+    :host(:not([value])) .indicator {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+    }
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    inset-inline-start: -33%;
+  }
+  100% {
+    inset-inline-start: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    background-color: CanvasText;
+  }
+  .indicator,
+  :host(:is([validation-state='success'], [validation-state='warning'], [validation-state='error'])) .indicator {
+    background-color: Highlight;
+  }
+}

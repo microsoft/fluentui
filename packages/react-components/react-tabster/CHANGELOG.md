@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.26.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.17)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.16..@fluentui/react-tabster_v9.26.17)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.26.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.16)
+
+Wed, 24 Jun 2026 11:09:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.15..@fluentui/react-tabster_v9.26.16)
+
+### Patches
+
+- useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes ([PR #36266](https://github.com/microsoft/fluentui/pull/36266) by bsunderhus@microsoft.com)
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.26.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.15)
+
+Tue, 26 May 2026 09:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.14..@fluentui/react-tabster_v9.26.15)
+
+### Patches
+
+- chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1 ([PR #36082](https://github.com/microsoft/fluentui/pull/36082) by 198982749+Copilot@users.noreply.github.com)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.26.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.14)
+
+Thu, 23 Apr 2026 14:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.13..@fluentui/react-tabster_v9.26.14)
+
+### Patches
+
+- fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path ([PR #35933](https://github.com/microsoft/fluentui/pull/35933) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.26.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.13)
 

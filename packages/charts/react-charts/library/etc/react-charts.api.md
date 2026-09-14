@@ -4,21 +4,21 @@
 
 ```ts
 
-import { CurveFactory } from 'd3-shape';
+import type { CurveFactory } from 'd3-shape';
 import type { Font } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { Ref } from 'react';
-import { SankeyGraph } from 'd3-sankey';
-import { SankeyLayout } from 'd3-sankey';
-import { SankeyLink } from 'd3-sankey';
-import { SankeyNode } from 'd3-sankey';
-import { ScaleBand } from 'd3-scale';
-import { ScaleLinear } from 'd3-scale';
-import { SVGProps } from 'react';
-import { TimeLocaleDefinition } from 'd3-time-format';
+import type { Ref } from 'react';
+import type { SankeyGraph } from 'd3-sankey';
+import type { SankeyLayout } from 'd3-sankey';
+import type { SankeyLink } from 'd3-sankey';
+import type { SankeyNode } from 'd3-sankey';
+import type { ScaleBand } from 'd3-scale';
+import type { ScaleLinear } from 'd3-scale';
+import type { SVGProps } from 'react';
+import type { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public (undocumented)
 export interface AccessibilityProps {
@@ -896,6 +896,16 @@ export interface GanttChartStyles extends CartesianChartStyles {
 export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 
 // @public
+export interface GaugeChartCalloutData {
+    chartValue: number;
+    chartValueLabel: string;
+    legend: string;
+    maxValue: number;
+    minValue: number;
+    segmentValues: YValueHover[];
+}
+
+// @public
 export interface GaugeChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     chartTitle?: string;
@@ -912,6 +922,7 @@ export interface GaugeChartProps {
     legendProps?: Partial<LegendsProps>;
     maxValue?: number;
     minValue?: number;
+    onRenderCallout?: RenderFunction<GaugeChartCalloutData>;
     roundCorners?: boolean;
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;

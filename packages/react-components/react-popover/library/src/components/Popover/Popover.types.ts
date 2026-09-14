@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type {
@@ -159,8 +159,6 @@ export type PopoverProps = ComponentProps<Partial<PopoverSlots>> &
     unstable_disableAutoFocus?: boolean;
   };
 
-export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
-
 /**
  * Popover State
  */
@@ -223,8 +221,6 @@ export type PopoverState = ComponentState<InternalPopoverSlots> &
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 
-export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'components' | 'size' | 'surfaceMotion'>;
-
 /**
  * Data attached to open/close events
  */
@@ -236,6 +232,7 @@ export type OnOpenChangeData = { open: boolean };
 export type OpenPopoverEvents =
   | MouseEvent
   | TouchEvent
+  | FocusEvent
   | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement>;

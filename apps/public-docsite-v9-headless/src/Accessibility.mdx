@@ -1,0 +1,136 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Accessibility" />
+
+# Accessibility
+
+Fluent UI Headless provides accessible, interactive React components without opinionated styling. Headless components implement WAI-ARIA authoring practices, keyboard navigation patterns, and focus management across a broad range of browsers and assistive technologies.
+
+**Important:** Headless components provide accessibility infrastructure: ARIA attributes, roles, keyboard event handling, and focus management. They **do not provide visual styling**, so your design system must supply visible focus indicators, sufficient color contrast, and clear interactive state feedback.
+
+## Built In, And What You Own
+
+When building custom components with Fluent UI Headless, you own the visual accessibility layer:
+
+- **Visible focus indicators** — Use CSS to style `:focus-visible` with sufficient contrast and size
+- **Color contrast** — Ensure text and interactive elements meet WCAG AA (or AAA) color contrast ratios
+- **Visual feedback** — Provide clear indication of hover, active, disabled, and error states
+- **Touch targets** — Make interactive elements at least 44×44px for mobile accessibility
+- **Motion considerations** — Respect `prefers-reduced-motion` media query for users with vestibular disorders
+
+## WAI-ARIA Patterns
+
+Headless components implement standard WAI-ARIA patterns and apply appropriate roles, states, and properties:
+
+| Component      | ARIA Pattern  | Key Attributes                                                   |
+| -------------- | ------------- | ---------------------------------------------------------------- |
+| Button         | Button / Link | `role="button"`, `aria-pressed` (toggle), `aria-disabled`        |
+| Checkbox       | Checkbox      | `role="checkbox"`, `aria-checked`                                |
+| Radio Group    | Radio Group   | `role="radiogroup"`, `role="radio"`, `aria-checked`              |
+| Switch         | Switch        | `role="switch"`, `aria-checked`                                  |
+| Accordion      | Accordion     | `role="button"`, `aria-expanded`, `aria-controls`                |
+| Dialog         | Dialog        | `role="dialog"`, `aria-modal`, `aria-labelledby`                 |
+| Tooltip        | Tooltip       | `role="tooltip"`                                                 |
+| Tabs           | Tab List      | `role="tablist"`, `role="tab"`, `aria-selected`, `aria-controls` |
+| Menu / Popover | Menu          | `role="menu"`, `role="menuitem"`                                 |
+
+**Note:** When a component is disabled but should remain focusable (for context), headless components set `aria-disabled="true"` while keeping the element keyboard-accessible. Style both `:disabled` pseudo-classes and `[aria-disabled="true"]` states.
+
+## Keyboard Navigation
+
+Fluent UI Headless components support keyboard interaction patterns consistent with WAI-ARIA authoring practices:
+
+- **Tab/Shift+Tab** — Move focus between components; focus management respects `tabindex`
+- **Enter/Space** — Activate buttons, checkboxes, switches, and toggle buttons
+- **Arrow Keys** — Navigate within components like radio groups, tab lists, menus, and sliders
+- **Home/End** — Jump to first/last item in lists, tabs, and menus (where applicable)
+- **Escape** — Close overlays (dialogs, popovers, menus, tooltips)
+
+Each component's keyboard behavior is identical to its styled counterpart in `@fluentui/react-components`. Check individual component docs for pattern-specific details, like arrow key direction for horizontal versus vertical components.
+
+## Accessible Labels
+
+Form controls and custom UI patterns require accessible names so screen readers can identify them:
+
+### Form Controls
+
+Use the native HTML `<label>` element to associate text with form inputs:
+
+```tsx
+<label htmlFor="email">Email address</label>
+<input id="email" type="email" />
+```
+
+For headless `<Input>`, `<Checkbox>`, `<RadioGroup>`, and `<Select>` components, wrap them with a `<Field>` component or manually associate a label:
+
+```tsx
+import { Field } from '@fluentui/react-headless-components-preview/field';
+import { Input } from '@fluentui/react-headless-components-preview/input';
+
+<Field label="Email">
+  <Input />
+</Field>;
+```
+
+### Buttons and Icon-Only Controls
+
+Buttons must have visible or accessible text:
+
+```tsx
+// ✅ Visible text
+<button>Save</button>
+
+// ✅ aria-label for icon-only buttons
+<button aria-label="Close dialog">×</button>
+
+// ❌ Avoid: unlabeled buttons
+<button></button>
+```
+
+### Custom Controls
+
+For complex components without standard labels, provide an accessible name using:
+
+- `aria-label` — Direct label text on the element
+- `aria-labelledby` — Reference to another element's id
+- `aria-describedby` — Additional description for context
+
+```tsx
+<div
+  role="combobox"
+  aria-label="Select a team member"
+  aria-describedby="team-help"
+>
+  {/* component content */}
+</div>
+<p id="team-help">Start typing to filter the list</p>
+```
+
+## Focus Management
+
+Headless hooks automatically manage focus based on user interaction:
+
+- **Logical tab order** — Focus flows naturally through the page; modify with `tabindex` if needed
+- **Focus on interaction** — When a user opens a menu or dialog, focus may move to the first menu item or a default action button
+- **Disabled elements** — Disabled elements are removed from tab order (unless `disabledFocusable` prop is used)
+- **Trapped focus** — Dialogs and overlays keep focus within their boundaries during keyboard navigation
+
+**Your responsibility:** Ensure focused elements are **visually obvious** with a `:focus-visible` style. Don't remove the default focus outline without providing an alternative visual indicator.
+
+## Testing Your Accessibility
+
+- **Keyboard navigation** — Tab through your interface; verify arrow keys work in appropriate components
+- **Screen reader** — Test with NVDA (Windows), JAWS, or VoiceOver (macOS/iOS)
+- **Color contrast** — Use tools like WebAIM or Axe to verify WCAG AA or AAA ratios
+- **Focus visibility** — Ensure all interactive elements show a clear focus indicator
+- **Responsive behavior** — Test touch interactions on mobile; verify 44×44px minimum target size
+- **Motion sensitivity** — Test with `prefers-reduced-motion: reduce` enabled in your OS
+
+Fluent UI Headless components are tested across a wide spectrum of browsers, devices, and assistive technologies. The ARIA patterns are battle-tested; focus on ensuring your **custom styling layer** maintains accessibility.
+
+## Resources
+
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [WebAIM Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [APCA (Advanced Perceptual Contrast Algorithm)](https://contrast-ratio.com/#%23ffffff-on-%23000000)

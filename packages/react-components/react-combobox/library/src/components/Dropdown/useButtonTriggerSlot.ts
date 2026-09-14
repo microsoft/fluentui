@@ -4,7 +4,8 @@ import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import type { UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { useTriggerSlot } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UseButtonTriggerSlotOptions = {
@@ -25,8 +26,6 @@ export function useButtonTriggerSlot(
   ref: React.Ref<HTMLButtonElement>,
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
-  'use no memo';
-
   const {
     state: { open, setOpen, getOptionById },
     defaultProps,
@@ -124,6 +123,7 @@ export function useButtonTriggerSlot(
     elementType: 'button',
     activeDescendantController,
   });
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

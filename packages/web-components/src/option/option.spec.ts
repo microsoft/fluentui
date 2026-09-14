@@ -1,9 +1,10 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { DropdownOption } from './option.js';
+import { tagName } from './option.options.js';
 
 test.describe('DropdownOption', () => {
   test.use({
-    tagName: 'fluent-option',
+    tagName,
     innerHTML: 'Option',
   });
 
@@ -16,9 +17,9 @@ test.describe('DropdownOption', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-option');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -160,7 +161,7 @@ test.describe('DropdownOption', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="test-form" action="#">
-        <fluent-option name="option" value="hello" selected>Hello</fluent-option>
+        <${tagName} name="option" value="hello" selected>Hello</${tagName}>
       </form>
     `);
 

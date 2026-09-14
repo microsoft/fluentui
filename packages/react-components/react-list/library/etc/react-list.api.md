@@ -4,7 +4,7 @@
 
 ```ts
 
-import { Checkbox } from '@fluentui/react-checkbox';
+import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';

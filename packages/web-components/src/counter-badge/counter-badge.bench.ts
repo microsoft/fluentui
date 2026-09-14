@@ -1,7 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './counter-badge.definition.js';
-
-definition.define(FluentDesignSystem.registry);
+import './define.js';
 
 const itemRenderer = () => {
   const counterBadge = document.createElement('fluent-counter-badge');

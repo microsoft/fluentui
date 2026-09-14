@@ -37,8 +37,8 @@ const useStyles = makeStyles({
   description: { margin: '0 0 12px' },
 
   card: {
-    width: '400px',
-    maxWidth: '100%',
+    maxWidth: '400px',
+    width: '100%',
     height: 'fit-content',
   },
 

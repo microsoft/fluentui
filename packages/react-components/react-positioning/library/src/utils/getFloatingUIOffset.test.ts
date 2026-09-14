@@ -1,6 +1,7 @@
-import { MiddlewareState } from '@floating-ui/dom';
-import { OffsetFunction } from '../types';
-import { FloatingUIOffsetFunction, getFloatingUIOffset } from './getFloatingUIOffset';
+import type { MiddlewareState } from '@floating-ui/dom';
+import type { OffsetFunction } from '../types';
+import type { FloatingUIOffsetFunction } from './getFloatingUIOffset';
+import { getFloatingUIOffset } from './getFloatingUIOffset';
 
 describe('getFloatingUIOffset', () => {
   const testMiddlewareArgs: MiddlewareState = {

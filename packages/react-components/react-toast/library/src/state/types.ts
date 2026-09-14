@@ -1,6 +1,6 @@
 import type { Slot } from '@fluentui/react-utilities';
-import { EVENTS } from './constants';
-import * as React from 'react';
+import type { EVENTS } from './constants';
+import type * as React from 'react';
 
 export type ToastId = string;
 export type ToasterId = string;
@@ -152,14 +152,12 @@ export type ToastListenerMap = {
   [EVENTS.pause]: EventListener<PauseToastEventDetail>;
 };
 
-type RootSlot = Slot<'div'>;
-
 export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
-  root?: RootSlot;
+  root?: Slot<'div'>;
 }
 
 export interface UpdateToastOptions extends UpdateToastEventDetail {
-  root?: RootSlot;
+  root?: Slot<'div'>;
 }
 
 export type ToastImperativeRef = {

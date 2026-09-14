@@ -1,4 +1,5 @@
-import { GriffelStyle, tokens } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
+import { tokens } from '@fluentui/react-components';
 import { input } from './Input.mixins';
 
 const testMixin = (mixin: GriffelStyle | undefined, expectedStyle: GriffelStyle | undefined) => {

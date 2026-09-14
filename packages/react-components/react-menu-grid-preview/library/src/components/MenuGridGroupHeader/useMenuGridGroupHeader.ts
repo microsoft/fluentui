@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import { useMenuGridGroupContext_unstable } from '../../contexts/menuGridGroupContext';
-import { MenuGridGroupHeaderProps, MenuGridGroupHeaderState } from './MenuGridGroupHeader.types';
+import type { MenuGridGroupHeaderProps, MenuGridGroupHeaderState } from './MenuGridGroupHeader.types';
 
 /**
  * Given user props, returns state and render function for a MenuGridGroupHeader.

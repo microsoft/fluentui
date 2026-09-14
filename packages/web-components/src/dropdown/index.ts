@@ -15,3 +15,4 @@ export {
   template as DropdownTemplate,
   dropdownTemplate,
 } from './dropdown.template.js';
+export { tagName as DropdownTagName } from './dropdown.options.js';

@@ -1,0 +1,21 @@
+<f-template name="fluent-drawer" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <dialog
+      class="dialog"
+      part="dialog"
+      aria-describedby="{{dialogDescribedby}}"
+      aria-labelledby="{{dialogLabelledby}}"
+      aria-label="{{dialogLabel}}"
+      aria-modal="{{dialogModal}}"
+      role="{{dialogRole}}"
+      size="{{size}}"
+      position="{{position}}"
+      @click="{clickHandler($e)}"
+      @cancel="{cancelHandler()}"
+      f-ref="{dialog}"
+    >
+      <slot></slot>
+    </dialog>
+  </template>
+</f-template>

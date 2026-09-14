@@ -1,4 +1,6 @@
 export type {
+  MenuBaseProps,
+  MenuBaseState,
   MenuContextValues,
   MenuOpenChangeData,
   MenuOpenEvent,
@@ -8,4 +10,10 @@ export type {
   MenuSlots,
   MenuState,
 } from './components/Menu/index';
-export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unstable } from './components/Menu/index';
+export {
+  Menu,
+  renderMenu_unstable,
+  useMenuContextValues_unstable,
+  useMenuBase_unstable,
+  useMenu_unstable,
+} from './components/Menu/index';

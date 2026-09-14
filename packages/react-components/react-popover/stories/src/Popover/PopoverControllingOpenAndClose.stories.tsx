@@ -20,6 +20,7 @@ const ExampleContent = () => {
       <h3 className={styles.contentHeader}>Popover content</h3>
 
       <div>This is some popover content</div>
+      <Button>Action</Button>
     </div>
   );
 };
@@ -39,7 +40,7 @@ export const ControllingOpenAndClose = (): JSXElement => {
         <PopoverTrigger disableButtonEnhancement>
           <Button>Controlled trigger</Button>
         </PopoverTrigger>
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

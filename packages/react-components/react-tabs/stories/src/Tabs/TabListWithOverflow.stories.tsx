@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, MenuItemProps } from '@fluentui/react-components';
 import {
   makeStyles,
   mergeClasses,
@@ -7,7 +7,6 @@ import {
   Button,
   Menu,
   MenuItem,
-  MenuItemProps,
   MenuList,
   MenuPopover,
   MenuTrigger,

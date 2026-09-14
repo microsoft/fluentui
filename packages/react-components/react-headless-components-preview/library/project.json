@@ -1,0 +1,21 @@
+{
+  "name": "react-headless-components-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-headless-components-preview/library/src",
+  "tags": ["vNext", "platform:web", "react-headless"],
+  "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/*.ts"]
+    }
+  },
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
+}

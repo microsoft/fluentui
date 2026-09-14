@@ -4,11 +4,79 @@
 
 ```ts
 
-// @internal (undocumented)
-export function createOverflowManager(): OverflowManager;
+// @internal
+export function createOverflowManager(initialOptions?: Partial<OverflowOptions>): OverflowManager;
+
+// @internal
+export const EMPTY_SNAPSHOT: OverflowSnapshot;
 
 // @public (undocumented)
-export interface ObserveOptions {
+export interface ObserveOptions extends Partial<OverflowOptions> {
+    forceUpdate?: boolean;
+}
+
+// @public
+export type OnUpdateItemVisibility = (data: OnUpdateItemVisibilityPayload) => void;
+
+// @public
+export interface OnUpdateItemVisibilityPayload {
+    item: OverflowItemEntry;
+    visible: boolean;
+}
+
+// @public
+export type OnUpdateOverflow = (data: OverflowEventPayload) => void;
+
+// @public
+export type OverflowAxis = 'horizontal' | 'vertical';
+
+// @public
+export type OverflowDirection = 'start' | 'end';
+
+// @public
+export interface OverflowDividerEntry {
+    element: HTMLElement;
+    groupId: string;
+}
+
+// @public
+export interface OverflowEventPayload {
+    groupVisibility: Record<string, OverflowGroupState>;
+    invisibleItems: OverflowItemEntry[];
+    visibleItems: OverflowItemEntry[];
+}
+
+// @public
+export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
+
+// @public
+export interface OverflowItemEntry {
+    element: HTMLElement;
+    groupId?: string;
+    id: string;
+    pinned?: boolean;
+    priority: number;
+}
+
+// @internal
+export interface OverflowManager {
+    addDivider: (divider: OverflowDividerEntry) => void;
+    addItem: (items: OverflowItemEntry) => void;
+    addOverflowMenu: (element: HTMLElement) => void;
+    disconnect: () => void;
+    forceUpdate: () => void;
+    getSnapshot: () => OverflowSnapshot;
+    observe: (container: HTMLElement, options?: ObserveOptions) => void;
+    removeDivider: (groupId: string) => void;
+    removeItem: (itemId: string) => void;
+    removeOverflowMenu: () => void;
+    setOptions: (options: Partial<OverflowOptions>) => void;
+    subscribe: (listener: () => void) => () => void;
+    update: () => void;
+}
+
+// @public
+export interface OverflowOptions {
     hasHiddenItems?: boolean;
     minimumVisible?: number;
     onUpdateItemVisibility: OnUpdateItemVisibility;
@@ -18,68 +86,11 @@ export interface ObserveOptions {
     padding?: number;
 }
 
-// @public (undocumented)
-export type OnUpdateItemVisibility = (data: OnUpdateItemVisibilityPayload) => void;
-
-// @public (undocumented)
-export interface OnUpdateItemVisibilityPayload {
-    // (undocumented)
-    item: OverflowItemEntry;
-    // (undocumented)
-    visible: boolean;
-}
-
 // @public
-export type OnUpdateOverflow = (data: OverflowEventPayload) => void;
-
-// @public (undocumented)
-export type OverflowAxis = 'horizontal' | 'vertical';
-
-// @public (undocumented)
-export type OverflowDirection = 'start' | 'end';
-
-// @public (undocumented)
-export interface OverflowDividerEntry {
-    element: HTMLElement;
-    // (undocumented)
-    groupId: string;
-}
-
-// @public
-export interface OverflowEventPayload {
-    // (undocumented)
+export interface OverflowSnapshot {
     groupVisibility: Record<string, OverflowGroupState>;
-    // (undocumented)
-    invisibleItems: OverflowItemEntry[];
-    // (undocumented)
-    visibleItems: OverflowItemEntry[];
-}
-
-// @public (undocumented)
-export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
-
-// @public (undocumented)
-export interface OverflowItemEntry {
-    element: HTMLElement;
-    // (undocumented)
-    groupId?: string;
-    id: string;
-    pinned?: boolean;
-    priority: number;
-}
-
-// @internal (undocumented)
-export interface OverflowManager {
-    addDivider: (divider: OverflowDividerEntry) => void;
-    addItem: (items: OverflowItemEntry) => void;
-    addOverflowMenu: (element: HTMLElement) => void;
-    disconnect: () => void;
-    forceUpdate: () => void;
-    observe: (container: HTMLElement, options: ObserveOptions) => void;
-    removeDivider: (groupId: string) => void;
-    removeItem: (itemId: string) => void;
-    removeOverflowMenu: () => void;
-    update: () => void;
+    invisibleItemCount: number;
+    itemVisibility: Record<string, boolean>;
 }
 
 // (No @packageDocumentation comment for this package)

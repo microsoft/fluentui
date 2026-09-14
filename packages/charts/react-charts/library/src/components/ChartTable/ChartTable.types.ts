@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { TitleStyles } from '../../utilities/Common.styles';
-import { Chart } from './index';
+import type { Chart } from './index';
 
 /**
  * Chart Table properties

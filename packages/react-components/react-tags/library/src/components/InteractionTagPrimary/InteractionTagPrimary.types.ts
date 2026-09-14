@@ -1,6 +1,6 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { InteractionTagContextValue } from '../../contexts/interactionTagContext';
+import type { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
 export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
 

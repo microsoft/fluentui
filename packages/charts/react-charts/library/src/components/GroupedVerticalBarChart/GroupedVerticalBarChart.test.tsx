@@ -1,7 +1,7 @@
 import { screen, fireEvent, render, act } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { GroupedVerticalBarChartData } from '../../index';
+import type { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 
@@ -399,7 +399,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: chartPoints, barWidth: 'auto', maxBarWidth: 50 },
     container => {
       // Assert
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       expect(bars).toHaveLength(6);
       expect(bars[0].getAttribute('width')).toEqual('50');
       expect(bars[1].getAttribute('width')).toEqual('50');
@@ -414,7 +414,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     container => {
       // colors mentioned in the data points itself
       // Assert
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
       expect(bars[1].getAttribute('fill')).toEqual('#0078d4');
       expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
@@ -440,7 +440,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: accessibilityDataPoints },
     container => {
       // Assert
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       expect(bars[0]).toHaveAttribute(
         'aria-label',
         'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
@@ -473,7 +473,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       //const legends = getByClass(container, /legend-/i);
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -491,7 +491,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -500,7 +500,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(bars[4]).toHaveAttribute('opacity', '');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
       fireEvent.mouseOver(legends[1]);
-      const updatedBars = container.querySelectorAll('rect[role="img"]');
+      const updatedBars = container.querySelectorAll('rect[role="option"]');
       // Assert
       expect(updatedBars[0]).toHaveAttribute('opacity', '0.1');
       expect(updatedBars[1]).toHaveAttribute('opacity', '');
@@ -521,7 +521,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -545,7 +545,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -576,7 +576,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
       expect(secondLegend).toHaveAttribute('aria-selected', 'true');
 
-      const bars = container.querySelectorAll('rect[role="img"]');
+      const bars = container.querySelectorAll('rect[role="option"]');
       expect(bars[0]).toHaveAttribute('opacity', '0.1');
       expect(bars[1]).toHaveAttribute('opacity', '');
       expect(bars[2]).toHaveAttribute('opacity', '');
@@ -605,27 +605,27 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders GroupedVerticalBarChart correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -640,12 +640,12 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
         value: mockGetComputedTextLength,
       },
     );
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -655,31 +655,31 @@ describe('GroupedVerticalBarChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom.length).toBe(0);
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -729,7 +729,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 
   it('Should render callout correctly on mouseover', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{}} />);
-    const bars = container.querySelectorAll('rect[role="img"]');
+    const bars = container.querySelectorAll('rect[role="option"]');
     fireEvent.mouseOver(bars[0]);
     // Wait for any async updates (if needed)
     act(() => {
@@ -740,7 +740,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
-    const bars = container.querySelectorAll('rect[role="img"]');
+    const bars = container.querySelectorAll('rect[role="option"]');
     fireEvent.mouseMove(bars[2]);
     const html1 = container.innerHTML;
     fireEvent.mouseMove(bars[3]);
@@ -754,13 +754,13 @@ describe('Render empty chart aria label div when chart is empty', () => {
   afterEach(sharedAfterEach);
 
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

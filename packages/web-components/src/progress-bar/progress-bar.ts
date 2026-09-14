@@ -7,6 +7,7 @@ import type { ProgressBarShape, ProgressBarThickness } from './progress-bar.opti
  * Based on BaseProgressBar and includes style and layout specific attributes
  *
  * @tag fluent-progress-bar
+ * @csspart indicator - The internal progress indicator element.
  *
  * @public
  */

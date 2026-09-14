@@ -1,9 +1,10 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { LineChartProps, LineChartStyles } from './LineChart.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { LineChartProps, LineChartStyles } from './LineChart.types';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { HighContrastSelector } from '../../utilities/index';
 import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
 

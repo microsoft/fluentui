@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { checkedState, disabledState, submenuState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Pressed,
@@ -20,30 +20,35 @@ import {
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
-import { checkedState, disabledState, submenuState } from '../styles/states/index.js';
+import { display } from '../utils/display.js';
 
 /** MenuItem styles
  * @public
  */
 export const styles = css`
-  ${display('grid')}
+  ${display('flex')}
 
   :host {
-    --indent: 0;
     align-items: center;
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
     color: ${colorNeutralForeground2};
-    contain: layout;
     cursor: pointer;
-    /* Prevent shrinking of MenuItems when max-height is applied to MenuList */
-    flex-shrink: 0;
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
-    grid-gap: 4px;
-    grid-template-columns: 20px 20px auto 20px;
-    height: 32px;
+    gap: 4px;
+    min-block-size: 32px;
     overflow: visible;
-    padding: 0 10px;
+    padding-inline: 10px;
+  }
+
+  @supports (grid-template-columns: subgrid) {
+    :host {
+      display: grid;
+      gap: 0;
+      grid-template-columns: subgrid;
+      padding-inline: unset;
+    }
   }
 
   :host(:hover) {
@@ -75,13 +80,6 @@ export const styles = css`
     outline: 2px solid ${colorStrokeFocus2};
   }
 
-  .content {
-    white-space: nowrap;
-    flex-grow: 1;
-    grid-column: auto / span 2;
-    padding: 0 2px;
-  }
-
   :host(:not(${checkedState})) .indicator,
   :host(:not(${checkedState})) ::slotted([slot='indicator']),
   :host(:not(${submenuState})) .submenu-glyph,
@@ -95,46 +93,32 @@ export const styles = css`
     white-space: nowrap;
   }
 
-  :host([data-indent='1']) {
-    --indent: 1;
-  }
-
-  :host([data-indent='2']) {
-    --indent: 2;
-    grid-template-columns: 20px 20px auto auto;
-  }
-
-  :host(${submenuState}) {
-    grid-template-columns: 20px auto auto 20px;
-  }
-
-  :host([data-indent='2']${submenuState}) {
-    grid-template-columns: 20px 20px auto auto 20px;
-  }
-
   .indicator,
   ::slotted([slot='indicator']) {
-    grid-column: 1 / span 1;
+    grid-column: 2 / span 1;
     width: 20px;
   }
 
   ::slotted([slot='start']) {
     display: inline-flex;
-    grid-column: calc(var(--indent)) / span 1;
+    grid-column: 3 / span 1;
   }
 
   .content {
-    grid-column: calc(var(--indent) + 1) / span 1;
+    flex-grow: 1;
+    grid-column: 4 / span 1;
+    padding: 0 2px;
+    white-space: nowrap;
   }
 
   ::slotted([slot='end']) {
-    grid-column: calc(var(--indent) + 2) / span 1;
+    grid-column: 5 / span 1;
     justify-self: end;
   }
 
   .submenu-glyph,
   ::slotted([slot='submenu-glyph']) {
-    grid-column: -2 / span 1;
+    grid-column: 6 / span 1;
     justify-self: end;
   }
 
@@ -144,22 +128,25 @@ export const styles = css`
       position: relative;
     }
 
+    @position-try --inline-inside {
+      inset-inline-start: unset;
+      inset-inline-end: anchor(inside);
+    }
+
     ::slotted([popover]) {
       margin: 0;
-      max-height: var(--menu-max-height, auto);
-      position: absolute;
+      max-block-size: var(--menu-max-height, auto);
+      position: fixed;
       position-anchor: --menu-trigger;
-      position-area: inline-end span-block-end;
-      position-try-fallbacks: flip-inline, block-start, block-end;
+      inset: unset;
+      inset-block-start: anchor(inside);
+      inset-inline-start: anchor(outside);
+      position-try-fallbacks: --inline-inside, flip-block, flip-block --inline-inside;
       z-index: 1;
     }
 
     ::slotted([popover]:not(:popover-open)) {
       display: none;
-    }
-
-    ::slotted([popover]:popover-open) {
-      inset: unset;
     }
 
     /* Fallback for no anchor-positioning */
@@ -169,12 +156,12 @@ export const styles = css`
       }
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host(${disabledState}),
     :host(${disabledState}) ::slotted([slot='start']),
     :host(${disabledState}) ::slotted([slot='end']) {
       color: GrayText;
     }
-  `),
-);
+  }
+`;
