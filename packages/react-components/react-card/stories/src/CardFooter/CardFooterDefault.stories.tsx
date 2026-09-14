@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button } from '@fluentui/react-components';
-import { ArrowReply16Regular, MoreHorizontal20Regular, Share16Regular } from '@fluentui/react-icons';
+import { ArrowReplyRegular, MoreHorizontalRegular, ShareRegular } from '@fluentui/react-icons';
 import { CardFooter } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -16,10 +16,10 @@ export const Default = (): JSXElement => {
   return (
     <CardFooter
       className={styles.footer}
-      action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+      action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
     >
-      <Button icon={<ArrowReply16Regular />}>Reply</Button>
-      <Button icon={<Share16Regular />}>Share</Button>
+      <Button icon={<ArrowReplyRegular />}>Reply</Button>
+      <Button icon={<ShareRegular />}>Share</Button>
     </CardFooter>
   );
 };

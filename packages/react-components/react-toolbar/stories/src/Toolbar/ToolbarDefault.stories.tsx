@@ -1,11 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  FontIncrease24Regular,
-  FontDecrease24Regular,
-  TextFont24Regular,
-  MoreHorizontal24Filled,
-} from '@fluentui/react-icons';
+import { FontIncreaseRegular, FontDecreaseRegular, TextFontRegular, MoreHorizontalFilled } from '@fluentui/react-icons';
 import {
   Toolbar,
   ToolbarButton,
@@ -20,13 +15,13 @@ import type { ToolbarProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<ToolbarProps>): JSXElement => (
   <Toolbar aria-label="Default" {...props}>
-    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
-    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
-    <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
+    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
+    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
+    <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
     <ToolbarDivider />
     <Menu>
       <MenuTrigger>
-        <ToolbarButton aria-label="More" icon={<MoreHorizontal24Filled />} />
+        <ToolbarButton aria-label="More" icon={<MoreHorizontalFilled />} />
       </MenuTrigger>
 
       <MenuPopover>

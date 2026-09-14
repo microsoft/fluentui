@@ -12,12 +12,12 @@ import {
   mergeClasses,
 } from '@fluentui/react-components';
 import {
-  AlertUrgent16Filled,
-  Attach16Regular,
-  CheckmarkCircle16Regular,
-  CircleHalfFill16Regular,
-  Comment16Regular,
-  MoreHorizontal20Regular,
+  AlertUrgentFilled,
+  AttachRegular,
+  CheckmarkCircleRegular,
+  CircleHalfFillRegular,
+  CommentRegular,
+  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
@@ -124,20 +124,20 @@ export const Templates = (): JSXElement => {
         </div>
 
         <footer className={mergeClasses(styles.flex, styles.footer)}>
-          <AlertUrgent16Filled primaryFill="#C4314B" />
-          <CircleHalfFill16Regular primaryFill="#0078DB" />
+          <AlertUrgentFilled fontSize={16} primaryFill="#C4314B" />
+          <CircleHalfFillRegular fontSize={16} primaryFill="#0078DB" />
 
           <div className={styles.flex}>
-            <Attach16Regular />
+            <AttachRegular fontSize={16} />
             <Body1>4</Body1>
           </div>
 
           <div className={styles.flex}>
-            <CheckmarkCircle16Regular />
+            <CheckmarkCircleRegular fontSize={16} />
             <Body1>2/12</Body1>
           </div>
 
-          <Comment16Regular />
+          <CommentRegular fontSize={16} />
         </footer>
       </Card>
 
@@ -153,7 +153,7 @@ export const Templates = (): JSXElement => {
             image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
             header={<Text weight="semibold">Team Offsite 2020</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
-            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontalRegular />} />}
           />
         </Card>
 
@@ -162,7 +162,7 @@ export const Templates = (): JSXElement => {
             image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontalRegular />} />}
           />
         </Card>
 
@@ -171,7 +171,7 @@ export const Templates = (): JSXElement => {
             image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontalRegular />} />}
           />
         </Card>
       </div>

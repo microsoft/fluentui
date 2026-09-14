@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement, TreeItemProps } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
-import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { EditRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 import {
   Button,
   Menu,
@@ -35,10 +35,10 @@ const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
           <TreeItemLayout
             actions={
               <>
-                <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+                <Button aria-label="Edit" appearance="subtle" icon={<EditRegular />} />
                 <Menu>
                   <MenuTrigger disableButtonEnhancement>
-                    <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+                    <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontalRegular />} />
                   </MenuTrigger>
                   <MenuPopover>
                     <MenuList>{commonMenuItems}</MenuList>

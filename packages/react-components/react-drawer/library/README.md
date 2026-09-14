@@ -27,7 +27,7 @@ Simple example of Drawer Usage:
 ```tsx
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer } from '@fluentui/react-components';
 import { Button } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 export const App = () => (
   <Drawer type="inline" open>
@@ -37,7 +37,7 @@ export const App = () => (
           <Button
             appearance="subtle"
             aria-label="Close drawer"
-            icon={<Dismiss24Regular />}
+            icon={<DismissRegular />}
             onClick={() => setIsOpen(false)}
           />
         }

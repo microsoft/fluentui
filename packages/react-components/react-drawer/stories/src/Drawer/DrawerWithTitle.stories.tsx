@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { InlineDrawer, DrawerHeader, DrawerHeaderTitle, Button, makeStyles } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   drawer: {
@@ -16,7 +16,7 @@ export const WithTitle = (): JSXElement => {
       <DrawerHeader>
         <DrawerHeaderTitle>Drawer with title</DrawerHeaderTitle>
         <DrawerHeaderTitle heading={{ as: 'h1' }}>Drawer with custom tag</DrawerHeaderTitle>
-        <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+        <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} />}>
           Drawer with title and action
         </DrawerHeaderTitle>
       </DrawerHeader>

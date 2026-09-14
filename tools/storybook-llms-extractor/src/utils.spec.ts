@@ -452,7 +452,7 @@ describe('generate-llms-docs', () => {
 
         \`\`\`tsx
         import * as React from \\"react\\";
-        import { Add20Filled, Subtract20Filled } from \\"@fluentui/react-icons\\";
+        import { AddFilled, SubtractFilled } from \\"@fluentui/react-icons\\";
         import {
           Accordion,
           AccordionHeader,
@@ -473,7 +473,7 @@ describe('generate-llms-docs', () => {
             <Accordion onToggle={handleToggle} openItems={openItem}>
               <AccordionItem value={1}>
                 <AccordionHeader
-                  expandIcon={openItem === 1 ? <Subtract20Filled /> : <Add20Filled />}
+                  expandIcon={openItem === 1 ? <SubtractFilled /> : <AddFilled />}
                 >
                   Accordion Header 1
                 </AccordionHeader>
@@ -483,7 +483,7 @@ describe('generate-llms-docs', () => {
               </AccordionItem>
               <AccordionItem value={2}>
                 <AccordionHeader
-                  expandIcon={openItem === 2 ? <Subtract20Filled /> : <Add20Filled />}
+                  expandIcon={openItem === 2 ? <SubtractFilled /> : <AddFilled />}
                 >
                   Accordion Header 2
                 </AccordionHeader>
@@ -493,7 +493,7 @@ describe('generate-llms-docs', () => {
               </AccordionItem>
               <AccordionItem value={3}>
                 <AccordionHeader
-                  expandIcon={openItem === 3 ? <Subtract20Filled /> : <Add20Filled />}
+                  expandIcon={openItem === 3 ? <SubtractFilled /> : <AddFilled />}
                 >
                   Accordion Header 3
                 </AccordionHeader>

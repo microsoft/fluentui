@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -77,7 +77,7 @@ export const Orientation = (): JSXElement => {
               </Text>
             }
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
           />
 
           <p className={styles.text}>
@@ -99,7 +99,7 @@ export const Orientation = (): JSXElement => {
           <CardHeader
             header={<Text weight="semibold">App Name</Text>}
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
           />
         </Card>
       </section>

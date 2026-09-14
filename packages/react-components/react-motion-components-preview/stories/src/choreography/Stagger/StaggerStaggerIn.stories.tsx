@@ -3,7 +3,7 @@ import StaggerStaggerInDescription from './StaggerStaggerIn.stories.md';
 import type { PresenceBadgeStatus, JSXElement } from '@fluentui/react-components';
 import { Avatar, Button, Card, CardHeader, Text, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
   container: {
@@ -110,7 +110,7 @@ export const StaggerIn = (): JSXElement => {
                     </Text>
                   </div>
                 }
-                action={<Button appearance="subtle" icon={<MoreHorizontal20Regular />} size="small" />}
+                action={<Button appearance="subtle" icon={<MoreHorizontalRegular />} size="small" />}
               />
 
               <div className={classes.cardContent}>

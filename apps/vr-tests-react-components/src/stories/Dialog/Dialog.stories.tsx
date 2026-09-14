@@ -11,7 +11,7 @@ import {
 import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-button';
 import { Combobox, Option } from '@fluentui/react-combobox';
-import { Rocket24Regular, Dismiss24Regular } from '@fluentui/react-icons';
+import { RocketRegular, DismissRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
@@ -260,7 +260,7 @@ export const TitleCustomAction = () => (
     </DialogTrigger>
     <DialogSurface>
       <DialogBody>
-        <DialogTitle action={<Button appearance="subtle" aria-label="fly" icon={<Rocket24Regular />} />}>
+        <DialogTitle action={<Button appearance="subtle" aria-label="fly" icon={<RocketRegular />} />}>
           Dialog title
         </DialogTitle>
         <DialogContent>
@@ -533,7 +533,7 @@ export const IntegrationComboboxInline = () => {
 export const DialogInsideDrawerDefault = () => (
   <OverlayDrawer open position="start">
     <DrawerHeader>
-      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} />}>
         Drawer with Dialog
       </DrawerHeaderTitle>
     </DrawerHeader>
@@ -568,7 +568,7 @@ export const DialogInsideDrawerDefaultRTL = getStoryVariant(DialogInsideDrawerDe
 export const DialogInsideDrawerDimmed = () => (
   <OverlayDrawer open position="start">
     <DrawerHeader>
-      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} />}>
         Drawer with Dialog
       </DrawerHeaderTitle>
     </DrawerHeader>
@@ -603,7 +603,7 @@ export const DialogInsideDrawerDimmedRTL = getStoryVariant(DialogInsideDrawerDim
 export const DialogInsideDrawerTransparent = () => (
   <OverlayDrawer open position="start">
     <DrawerHeader>
-      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} />}>
         Drawer with Dialog
       </DrawerHeaderTitle>
     </DrawerHeader>

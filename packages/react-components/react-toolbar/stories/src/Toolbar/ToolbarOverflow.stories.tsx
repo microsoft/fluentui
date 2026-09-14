@@ -1,11 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  FontDecrease24Regular,
-  TextFont24Regular,
-  FontIncrease24Regular,
-  MoreHorizontal20Filled,
-} from '@fluentui/react-icons';
+import { FontDecreaseRegular, TextFontRegular, FontIncreaseRegular, MoreHorizontalFilled } from '@fluentui/react-icons';
 import {
   Toolbar,
   ToolbarButton,
@@ -38,15 +33,15 @@ const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props =>
   }
 
   if (id.includes('increase')) {
-    return <MenuItem icon={<FontIncrease24Regular />}>Increase Font Size</MenuItem>;
+    return <MenuItem icon={<FontIncreaseRegular />}>Increase Font Size</MenuItem>;
   }
 
   if (id.includes('decrease')) {
-    return <MenuItem icon={<FontDecrease24Regular />}>Decrease Font Size</MenuItem>;
+    return <MenuItem icon={<FontDecreaseRegular />}>Decrease Font Size</MenuItem>;
   }
 
   if (id.includes('reset')) {
-    return <MenuItem icon={<TextFont24Regular />}>Reset Font Size</MenuItem>;
+    return <MenuItem icon={<TextFontRegular />}>Reset Font Size</MenuItem>;
   }
 
   return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
@@ -74,7 +69,7 @@ const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ itemIds }) 
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <Button ref={ref} icon={<MoreHorizontal20Filled />} aria-label="More items" appearance="subtle" />
+        <Button ref={ref} icon={<MoreHorizontalFilled />} aria-label="More items" appearance="subtle" />
       </MenuTrigger>
 
       <MenuPopover>
@@ -137,7 +132,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="1"
           appearance="subtle"
           aria-label="Increase Font Size ( Group 1 )"
-          icon={<FontIncrease24Regular />}
+          icon={<FontIncreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -145,7 +140,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="1"
           appearance="subtle"
           aria-label="Decrease Font Size ( Group 1 )"
-          icon={<FontDecrease24Regular />}
+          icon={<FontDecreaseRegular />}
         />
 
         <ToolbarOverflowDivider groupId="1" />
@@ -155,7 +150,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="2"
           appearance="subtle"
           aria-label="Increase Font Size ( Group 2 )"
-          icon={<FontIncrease24Regular />}
+          icon={<FontIncreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -163,7 +158,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="2"
           appearance="subtle"
           aria-label="Decrease Font Size ( Group 2 )"
-          icon={<FontDecrease24Regular />}
+          icon={<FontDecreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -171,7 +166,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="2"
           appearance="subtle"
           aria-label="Reset Font Size ( Group 2 )"
-          icon={<TextFont24Regular />}
+          icon={<TextFontRegular />}
         />
 
         <ToolbarOverflowButton
@@ -179,7 +174,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="2"
           appearance="subtle"
           aria-label="Increase Font Size ( Group 2 )"
-          icon={<FontIncrease24Regular />}
+          icon={<FontIncreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -187,7 +182,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="2"
           appearance="subtle"
           aria-label="Decrease Font Size ( Group 2 )"
-          icon={<FontDecrease24Regular />}
+          icon={<FontDecreaseRegular />}
         />
 
         <ToolbarOverflowDivider groupId="2" />
@@ -197,7 +192,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="3"
           appearance="subtle"
           aria-label="Increase Font Size ( Group 3 )"
-          icon={<FontIncrease24Regular />}
+          icon={<FontIncreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -205,7 +200,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="3"
           appearance="subtle"
           aria-label="Decrease Font Size ( Group 3 )"
-          icon={<FontDecrease24Regular />}
+          icon={<FontDecreaseRegular />}
         />
 
         <ToolbarOverflowButton
@@ -213,7 +208,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
           overflowGroupId="3"
           appearance="subtle"
           aria-label="Reset Font Size ( Group 3 )"
-          icon={<TextFont24Regular />}
+          icon={<TextFontRegular />}
         />
 
         <OverflowMenu

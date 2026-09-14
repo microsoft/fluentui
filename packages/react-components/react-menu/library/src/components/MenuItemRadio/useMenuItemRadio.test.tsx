@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { Checkmark16Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled } from '@fluentui/react-icons';
 import { useMenuItemRadio_unstable } from './useMenuItemRadio';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { MenuProvider } from '../../contexts/menuContext';
@@ -168,7 +168,7 @@ describe('useMenuItemRadio_unstable', () => {
   });
 
   describe('checkmark slot — default icon injection', () => {
-    it('injects Checkmark16Filled when no checkmark.children provided', () => {
+    it('injects CheckmarkFilled when no checkmark.children provided', () => {
       const ref = React.createRef<ARIAButtonElement<'div'>>();
 
       const { result } = renderHook(() => useMenuItemRadio_unstable({ name: 'foo', value: '1' }, ref), {
@@ -177,10 +177,10 @@ describe('useMenuItemRadio_unstable', () => {
 
       const children = result.current.checkmark?.children as React.ReactElement;
       expect(children).toBeDefined();
-      expect(children.type).toBe(Checkmark16Filled);
+      expect(children.type).toBe(CheckmarkFilled);
     });
 
-    it('preserves user-provided checkmark children over default Checkmark16Filled', () => {
+    it('preserves user-provided checkmark children over default CheckmarkFilled', () => {
       const ref = React.createRef<ARIAButtonElement<'div'>>();
       const customIcon = React.createElement('span', { 'data-testid': 'custom-checkmark' });
 

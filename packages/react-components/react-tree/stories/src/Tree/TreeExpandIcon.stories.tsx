@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement, TreeItemValue, TreeOpenChangeData, TreeOpenChangeEvent } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
-import { AddSquare16Regular, SubtractSquare16Regular } from '@fluentui/react-icons';
+import { AddSquareRegular, SubtractSquareRegular } from '@fluentui/react-icons';
 
 export const ExpandIcon = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
@@ -12,14 +12,26 @@ export const ExpandIcon = (): JSXElement => {
     <Tree aria-label="Expand Icon" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem itemType="branch" value="tree-item-2">
         <TreeItemLayout
-          expandIcon={openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+          expandIcon={
+            openItems.includes('tree-item-2') ? (
+              <SubtractSquareRegular fontSize={16} />
+            ) : (
+              <AddSquareRegular fontSize={16} />
+            )
+          }
         >
           level 1, item 1
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="branch" value="tree-item-3">
             <TreeItemLayout
-              expandIcon={openItems.includes('tree-item-3') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+              expandIcon={
+                openItems.includes('tree-item-3') ? (
+                  <SubtractSquareRegular fontSize={16} />
+                ) : (
+                  <AddSquareRegular fontSize={16} />
+                )
+              }
             >
               level 2, item 1
             </TreeItemLayout>
@@ -33,7 +45,13 @@ export const ExpandIcon = (): JSXElement => {
       </TreeItem>
       <TreeItem itemType="branch" value="tree-item-1">
         <TreeItemLayout
-          expandIcon={openItems.includes('tree-item-1') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+          expandIcon={
+            openItems.includes('tree-item-1') ? (
+              <SubtractSquareRegular fontSize={16} />
+            ) : (
+              <AddSquareRegular fontSize={16} />
+            )
+          }
         >
           level 1, item 2
         </TreeItemLayout>

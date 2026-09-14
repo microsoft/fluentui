@@ -15,7 +15,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   main: {
@@ -63,12 +63,7 @@ export const Size = (): JSXElement => {
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setOpen(false)}
-              />
+              <Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} onClick={() => setOpen(false)} />
             }
           >
             {labelMap[size]} size

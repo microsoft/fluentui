@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronDown20Regular } from '@fluentui/react-icons';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import { createPresenceComponentVariant, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 
 import type {
@@ -49,7 +49,7 @@ export const useNavCategoryItem_unstable = (
     },
     expandIcon: slot.always(props.expandIcon, {
       defaultProps: {
-        children: <ChevronDown20Regular />,
+        children: <ChevronDownRegular fontSize={20} />,
         'aria-hidden': true,
       },
       elementType: 'span',

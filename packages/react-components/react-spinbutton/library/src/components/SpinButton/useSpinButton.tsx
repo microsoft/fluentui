@@ -21,7 +21,7 @@ import type {
   SpinButtonBounds,
 } from './SpinButton.types';
 import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils/index';
-import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
+import { ChevronUpRegular, ChevronDownRegular } from '@fluentui/react-icons';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 type InternalState = {
@@ -396,8 +396,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const state = useSpinButtonBase_unstable(baseProps, ref);
 
-  state.incrementButton.children ??= <ChevronUp16Regular />;
-  state.decrementButton.children ??= <ChevronDown16Regular />;
+  state.incrementButton.children ??= <ChevronUpRegular fontSize={16} />;
+  state.decrementButton.children ??= <ChevronDownRegular fontSize={16} />;
 
   return { ...state, appearance, size };
 };

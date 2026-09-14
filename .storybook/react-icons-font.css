@@ -1,0 +1,6 @@
+/* Prevent inherited text weight from synthetically bolding font icons.
+ * TODO: Remove when https://github.com/microsoft/fluentui-system-icons/issues/1235 is fixed.
+ */
+:where([data-fui-icon]) {
+  font-weight: normal;
+}

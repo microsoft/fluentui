@@ -21,7 +21,7 @@ import {
   DialogContent,
   shorthands,
 } from '@fluentui/react-components';
-import { Dismiss20Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 const MIN_SIDEBAR_WIDTH = 240;
 const useStyles = makeStyles({
@@ -222,7 +222,7 @@ export const Resizable = (): JSXElement => {
                 <DialogTitle
                   action={
                     <DialogTrigger action="close">
-                      <Button appearance="subtle" aria-label="close" icon={<Dismiss20Regular />} />
+                      <Button appearance="subtle" aria-label="close" icon={<DismissRegular />} />
                     </DialogTrigger>
                   }
                 >

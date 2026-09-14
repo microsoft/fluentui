@@ -3,6 +3,7 @@ const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
 const reactPlugin = require('eslint-plugin-react');
 const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const griffelPlugin = require('@griffel/eslint-plugin');
+const reactIconsPlugin = require('@fluentui/eslint-plugin-react-icons');
 const configHelpers = require('../../utils/configHelpers');
 const { fixupPluginRules } = require('@eslint/compat');
 const { defineConfig } = require('eslint/config');
@@ -14,13 +15,14 @@ const reactComponentsPlugin = require('@fluentui/eslint-plugin-react-components'
 module.exports = defineConfig(
   {
     files: ['**/*.{jsx,tsx,ts,js}'],
-    plugins: {
+    plugins: /** @type {any} */ ({
       react: reactPlugin,
       '@griffel': fixupPluginRules(/** @type {any} */ (griffelPlugin)),
       'jsx-a11y': jsxA11yPlugin,
       'react-hooks': reactHooksPlugin,
       '@fluentui/react-components': reactComponentsPlugin,
-    },
+      '@fluentui/react-icons': reactIconsPlugin,
+    }),
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -59,6 +61,11 @@ module.exports = defineConfig(
       '@griffel/no-shorthands': 'error',
       '@griffel/pseudo-element-naming': 'error',
       '@griffel/styles-file': 'error',
+      /**
+       * fluent ui react icons eslint rules
+       * @see https://github.com/microsoft/fluentui-system-icons/tree/main/packages/eslint-plugin-react-icons
+       */
+      '@fluentui/react-icons/prefer-resizable': 'error',
       /**
        * react eslint rules
        * @see https://github.com/yannickcr/eslint-plugin-react

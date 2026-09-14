@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { CardHeader } from '@fluentui/react-components';
 import { makeStyles, Button, Body1, Caption1 } from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
@@ -39,7 +39,7 @@ export const Default = (): JSXElement => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -50,7 +50,7 @@ export const Default = (): JSXElement => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -61,7 +61,7 @@ export const Default = (): JSXElement => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -82,7 +82,7 @@ export const Default = (): JSXElement => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
       />
 
       <CardHeader

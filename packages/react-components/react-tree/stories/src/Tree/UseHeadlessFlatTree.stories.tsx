@@ -17,7 +17,7 @@ import {
   MenuTrigger,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { EditRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 
 type FlatItem = HeadlessFlatTreeItemProps & { content: string };
 
@@ -82,10 +82,10 @@ const flatTreeItems: FlatItem[] = [
 
 const ActionsExample = () => (
   <>
-    <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+    <Button aria-label="Edit" appearance="subtle" icon={<EditRegular />} />
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+        <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontalRegular />} />
       </MenuTrigger>
 
       <MenuPopover>

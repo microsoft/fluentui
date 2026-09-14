@@ -61,7 +61,7 @@ After:
 ```tsx
 import * as React from 'react';
 import { Button, Card, CardFooter, makeStyles, shorthands } from '@fluentui/react-components';
-import { Pin20Regular, Share20Regular, ServiceBell20Regular, Eye20Regular } from '@fluentui/react-icons';
+import { PinRegular, ShareRegular, ServiceBellRegular, EyeRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   card: {
@@ -97,16 +97,16 @@ export const Default = () => {
         action={
           views > 0 ? (
             <span className={styles.actions}>
-              <Eye20Regular aria-hidden />
+              <EyeRegular aria-hidden />
               <span>{views}</span>
               <span className={styles.visuallyHidden}> views</span>
             </span>
           ) : undefined
         }
       >
-        <Button appearance="transparent" icon={<Share20Regular />} aria-label="Share document" />
-        <Button appearance="transparent" icon={<Pin20Regular />} aria-label="Pin document" />
-        <Button appearance="transparent" icon={<ServiceBell20Regular />} aria-label="Manage document notifications" />
+        <Button appearance="transparent" icon={<ShareRegular />} aria-label="Share document" />
+        <Button appearance="transparent" icon={<PinRegular />} aria-label="Pin document" />
+        <Button appearance="transparent" icon={<ServiceBellRegular />} aria-label="Manage document notifications" />
       </CardFooter>
     </Card>
   );

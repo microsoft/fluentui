@@ -9,7 +9,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 export const PreventClose = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
@@ -25,12 +25,7 @@ export const PreventClose = (): JSXElement => {
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setOpen(false)}
-              />
+              <Button appearance="subtle" aria-label="Close" icon={<DismissRegular />} onClick={() => setOpen(false)} />
             }
           >
             Prevent close with Esc or outside click

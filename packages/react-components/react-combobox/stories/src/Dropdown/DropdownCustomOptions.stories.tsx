@@ -3,20 +3,20 @@ import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
-  AnimalCat24Filled,
-  AnimalDog24Filled,
-  AnimalRabbit24Filled,
-  AnimalTurtle24Filled,
-  FoodFish24Filled,
-  CheckboxChecked24Regular,
+  AnimalCatFilled,
+  AnimalDogFilled,
+  AnimalRabbitFilled,
+  AnimalTurtleFilled,
+  FoodFishFilled,
+  CheckboxCheckedRegular,
 } from '@fluentui/react-icons';
 
 const animalIcons = {
-  Cat: AnimalCat24Filled,
-  Dog: AnimalDog24Filled,
-  Rabbit: AnimalRabbit24Filled,
-  Turtle: AnimalTurtle24Filled,
-  Fish: FoodFish24Filled,
+  Cat: AnimalCatFilled,
+  Dog: AnimalDogFilled,
+  Rabbit: AnimalRabbitFilled,
+  Turtle: AnimalTurtleFilled,
+  Fish: FoodFishFilled,
 };
 
 const useCustomOptionStyles = makeStyles({
@@ -36,7 +36,7 @@ const CustomOption = (props: CustomOptionProps) => {
   const Icon = animalIcons[animal];
   const styles = useCustomOptionStyles();
   return (
-    <Option text={animal} className={styles.option} checkIcon={<CheckboxChecked24Regular />} {...optionProps}>
+    <Option text={animal} className={styles.option} checkIcon={<CheckboxCheckedRegular />} {...optionProps}>
       <Icon className={styles.icon} />
       <span className={styles.text}>{animal}</span>
     </Option>

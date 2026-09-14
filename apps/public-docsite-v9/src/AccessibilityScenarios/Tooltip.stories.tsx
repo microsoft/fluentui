@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, Tooltip } from '@fluentui/react-components';
 
-import { TextItalic24Regular, TextUnderline24Regular, TextBold24Regular } from '@fluentui/react-icons';
+import { TextItalicRegular, TextUnderlineRegular, TextBoldRegular } from '@fluentui/react-icons';
 
 import { Scenario } from './utils';
 
@@ -12,15 +12,15 @@ export const ButtonsWithTooltip: React.FunctionComponent = () => {
       <h1>Tooltip variants</h1>
       <h2>Tooltips for text formatting icon-only buttons</h2>
       <Tooltip relationship="label" content="Make text bold">
-        <Button icon={<TextBold24Regular />} />
+        <Button icon={<TextBoldRegular />} />
       </Tooltip>
 
       <Tooltip relationship="label" content="Make text underline">
-        <Button icon={<TextUnderline24Regular />} />
+        <Button icon={<TextUnderlineRegular />} />
       </Tooltip>
 
       <Tooltip relationship="label" content="Make text italic">
-        <Button icon={<TextItalic24Regular />} />
+        <Button icon={<TextItalicRegular />} />
       </Tooltip>
 
       <h2>Tooltip as an additional button description</h2>

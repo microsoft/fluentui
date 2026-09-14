@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement, CardProps } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
-import { MoreHorizontal20Regular, Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular, OpenRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -70,7 +70,7 @@ const CardExample = (props: CardProps) => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />}
       />
 
       <p className={styles.text}>
@@ -78,10 +78,10 @@ const CardExample = (props: CardProps) => {
       </p>
 
       <CardFooter>
-        <Button appearance="primary" icon={<Open16Regular />}>
+        <Button appearance="primary" icon={<OpenRegular />}>
           Open
         </Button>
-        <Button icon={<Share16Regular />}>Share</Button>
+        <Button icon={<ShareRegular />}>Share</Button>
       </CardFooter>
     </Card>
   );

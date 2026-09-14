@@ -19,7 +19,7 @@ import {
   useOverflowMenu,
   OverflowDivider,
 } from '@fluentui/react-components';
-import { ChevronRight20Regular } from '@fluentui/react-icons';
+import { ChevronRightRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
@@ -101,7 +101,7 @@ const OverflowGroupDivider: React.FC<{
   return (
     <OverflowDivider groupId={props.groupId}>
       <div>
-        <ChevronRight20Regular />
+        <ChevronRightRegular fontSize={20} />
       </div>
     </OverflowDivider>
   );

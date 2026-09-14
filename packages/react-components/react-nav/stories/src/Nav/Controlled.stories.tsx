@@ -16,34 +16,34 @@ import {
 } from '@fluentui/react-components';
 import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
-  Board20Filled,
-  Board20Regular,
-  BoxMultiple20Filled,
-  BoxMultiple20Regular,
-  DataArea20Filled,
-  DataArea20Regular,
-  DocumentBulletListMultiple20Filled,
-  DocumentBulletListMultiple20Regular,
-  HeartPulse20Filled,
-  HeartPulse20Regular,
-  MegaphoneLoud20Filled,
-  MegaphoneLoud20Regular,
-  NotePin20Filled,
-  NotePin20Regular,
-  People20Filled,
-  People20Regular,
-  PeopleStar20Filled,
-  PeopleStar20Regular,
-  Person20Filled,
-  PersonLightbulb20Filled,
-  PersonLightbulb20Regular,
-  Person20Regular,
-  PersonSearch20Filled,
-  PersonSearch20Regular,
-  PreviewLink20Filled,
-  PreviewLink20Regular,
+  BoardFilled,
+  BoardRegular,
+  BoxMultipleFilled,
+  BoxMultipleRegular,
+  DataAreaFilled,
+  DataAreaRegular,
+  DocumentBulletListMultipleFilled,
+  DocumentBulletListMultipleRegular,
+  HeartPulseFilled,
+  HeartPulseRegular,
+  MegaphoneLoudFilled,
+  MegaphoneLoudRegular,
+  NotePinFilled,
+  NotePinRegular,
+  PeopleFilled,
+  PeopleRegular,
+  PeopleStarFilled,
+  PeopleStarRegular,
+  PersonFilled,
+  PersonLightbulbFilled,
+  PersonLightbulbRegular,
+  PersonRegular,
+  PersonSearchFilled,
+  PersonSearchRegular,
+  PreviewLinkFilled,
+  PreviewLinkRegular,
   bundleIcon,
-  PersonCircle32Regular,
+  PersonCircleRegular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -71,19 +71,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Person = bundleIcon(Person20Filled, Person20Regular);
-const Dashboard = bundleIcon(Board20Filled, Board20Regular);
-const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
-const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
-const Search = bundleIcon(PersonSearch20Filled, PersonSearch20Regular);
-const PerformanceReviews = bundleIcon(PreviewLink20Filled, PreviewLink20Regular);
-const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
-const Interviews = bundleIcon(People20Filled, People20Regular);
-const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
-const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
-const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
-const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
-const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
+const Person = bundleIcon(PersonFilled, PersonRegular);
+const Dashboard = bundleIcon(BoardFilled, BoardRegular);
+const Announcements = bundleIcon(MegaphoneLoudFilled, MegaphoneLoudRegular);
+const EmployeeSpotlight = bundleIcon(PersonLightbulbFilled, PersonLightbulbRegular);
+const Search = bundleIcon(PersonSearchFilled, PersonSearchRegular);
+const PerformanceReviews = bundleIcon(PreviewLinkFilled, PreviewLinkRegular);
+const JobPostings = bundleIcon(NotePinFilled, NotePinRegular);
+const Interviews = bundleIcon(PeopleFilled, PeopleRegular);
+const HealthPlans = bundleIcon(HeartPulseFilled, HeartPulseRegular);
+const TrainingPrograms = bundleIcon(BoxMultipleFilled, BoxMultipleRegular);
+const CareerDevelopment = bundleIcon(PeopleStarFilled, PeopleStarRegular);
+const Analytics = bundleIcon(DataAreaFilled, DataAreaRegular);
+const Reports = bundleIcon(DocumentBulletListMultipleFilled, DocumentBulletListMultipleRegular);
 
 // A type that represents a navItemValue and its potential children.
 // An empty children array indicates a Single top level NavItem.
@@ -216,7 +216,7 @@ export const Controlled = (): JSXElement => {
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 
         <NavDrawerBody>
-          <AppItem icon={<PersonCircle32Regular />} as="a">
+          <AppItem icon={<PersonCircleRegular />} as="a">
             Contoso HR
           </AppItem>
           <NavItem icon={<Dashboard />} value="1">

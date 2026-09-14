@@ -10,7 +10,7 @@ import {
   Button,
 } from '@fluentui/react-components';
 import story from './DialogTitleCustomAction.md';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 export const TitleCustomAction = (): JSXElement => {
   return (
@@ -23,7 +23,7 @@ export const TitleCustomAction = (): JSXElement => {
           <DialogTitle
             action={
               <DialogTrigger action="close">
-                <Button appearance="subtle" aria-label="close" icon={<Dismiss24Regular />} />
+                <Button appearance="subtle" aria-label="close" icon={<DismissRegular />} />
               </DialogTrigger>
             }
           >
