@@ -1,0 +1,11 @@
+{
+  "name": "@fluentui/react-dashboard-grid-preview-stories",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-dashboard-grid-preview": "*",
+    "@fluentui/react-utilities": "*",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  }
+}
