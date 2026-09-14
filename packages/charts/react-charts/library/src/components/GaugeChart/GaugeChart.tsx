@@ -386,7 +386,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       if (_calloutAnchor === legend) {
         return;
       }
-      const targetElement = document.getElementById(elementId!);
+      const targetElement = elementId
+        ? document.getElementById(elementId)
+        : (event.currentTarget as unknown as HTMLElement);
       _calloutAnchor = legend;
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const hoverYValues: YValue[] = _segments
