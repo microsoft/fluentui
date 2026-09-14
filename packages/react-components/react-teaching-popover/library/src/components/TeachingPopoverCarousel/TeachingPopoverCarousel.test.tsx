@@ -151,6 +151,25 @@ describe('TeachingPopoverCarousel', () => {
     expect(input).toHaveFocus();
   });
 
+  it('does not move focus to a deferred title after the user leaves and returns to the navigation origin', async () => {
+    const revealTitleRef: React.RefObject<(() => void) | null> = { current: null };
+    render(<DeferredSecondPage revealTitleRef={revealTitleRef} />);
+
+    const nextButton = screen.getByRole('button', { name: 'Next' });
+    nextButton.focus();
+    fireEvent.click(nextButton);
+
+    const input = await screen.findByRole('textbox', { name: 'Step two input' });
+    input.focus();
+    expect(input).toHaveFocus();
+    nextButton.focus();
+    expect(nextButton).toHaveFocus();
+    act(() => revealTitleRef.current?.());
+
+    await waitFor(() => expect(screen.getByText('Step two')).toBeVisible());
+    expect(nextButton).toHaveFocus();
+  });
+
   it('moves focus to a deferred title when the navigation origin still has focus', async () => {
     const revealTitleRef: React.RefObject<(() => void) | null> = { current: null };
     render(<DeferredSecondPage revealTitleRef={revealTitleRef} />);
@@ -320,43 +339,61 @@ describe('TeachingPopoverCarousel', () => {
     await waitFor(() => expect(screen.getByText('Step two')).toHaveFocus());
   });
 
-  it('supports delayed controlled acceptance while the navigation origin retains focus', async () => {
-    let acceptNavigation: (() => void) | undefined;
+  it.each(['retains', 'leaves and returns to'])(
+    'respects focus ownership during delayed controlled acceptance when the user %s focus on the navigation origin',
+    async focusChoice => {
+      let acceptNavigation: (() => void) | undefined;
 
-    const ControlledCarousel = () => {
-      const [value, setValue] = React.useState('one');
+      const ControlledCarousel = () => {
+        const [value, setValue] = React.useState('one');
 
-      return (
-        <TeachingPopoverCarousel
-          value={value}
-          onValueChange={(_, data) => {
-            acceptNavigation = () => setValue(data.value!);
-          }}
-        >
-          <TeachingPopoverCarouselCard value="one">
-            <TeachingPopoverTitle>Step one</TeachingPopoverTitle>
-          </TeachingPopoverCarouselCard>
-          <TeachingPopoverCarouselCard value="two">
-            <TeachingPopoverTitle>Step two</TeachingPopoverTitle>
-          </TeachingPopoverCarouselCard>
-          <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-            Footer
-          </TeachingPopoverCarouselFooter>
-        </TeachingPopoverCarousel>
-      );
-    };
+        return (
+          <TeachingPopoverCarousel
+            value={value}
+            onValueChange={(_, data) => {
+              acceptNavigation = () => setValue(data.value!);
+            }}
+          >
+            <TeachingPopoverCarouselCard value="one">
+              <TeachingPopoverTitle>Step one</TeachingPopoverTitle>
+              <input aria-label="Step one input" />
+            </TeachingPopoverCarouselCard>
+            <TeachingPopoverCarouselCard value="two">
+              <TeachingPopoverTitle>Step two</TeachingPopoverTitle>
+            </TeachingPopoverCarouselCard>
+            <TeachingPopoverCarouselFooter
+              next="Next"
+              previous="Previous"
+              initialStepText="Close"
+              finalStepText="Finish"
+            >
+              Footer
+            </TeachingPopoverCarouselFooter>
+          </TeachingPopoverCarousel>
+        );
+      };
 
-    render(<ControlledCarousel />);
+      render(<ControlledCarousel />);
 
-    const nextButton = screen.getByRole('button', { name: 'Next' });
-    nextButton.focus();
-    fireEvent.click(nextButton);
-    expect(screen.getByText('Step one')).toBeVisible();
+      const nextButton = screen.getByRole('button', { name: 'Next' });
+      nextButton.focus();
+      fireEvent.click(nextButton);
+      expect(screen.getByText('Step one')).toBeVisible();
 
-    act(() => acceptNavigation?.());
+      if (focusChoice === 'leaves and returns to') {
+        const input = screen.getByRole('textbox', { name: 'Step one input' });
+        input.focus();
+        expect(input).toHaveFocus();
+        nextButton.focus();
+        expect(nextButton).toHaveFocus();
+      }
 
-    await waitFor(() => expect(screen.getByText('Step two')).toHaveFocus());
-  });
+      act(() => acceptNavigation?.());
+
+      await waitFor(() => expect(screen.getByText('Step two')).toBeVisible());
+      expect(focusChoice === 'retains' ? screen.getByText('Step two') : nextButton).toHaveFocus();
+    },
+  );
 
   it('does not move focus to a deferred initial title in StrictMode', async () => {
     let revealInitialTitle: (() => void) | undefined;
@@ -386,6 +423,36 @@ describe('TeachingPopoverCarousel', () => {
     await waitFor(() => expect(screen.getByText('Step one')).toBeVisible());
     expect(document.body).toHaveFocus();
     expect(screen.getByText('Step one')).not.toHaveFocus();
+  });
+
+  it('removes document focus listeners when unmounted in StrictMode', () => {
+    const result = render(<div />);
+    const targetDocument = result.container.ownerDocument;
+    const addEventListener = jest.spyOn(targetDocument, 'addEventListener');
+    const removeEventListener = jest.spyOn(targetDocument, 'removeEventListener');
+
+    try {
+      result.rerender(
+        <React.StrictMode>
+          <TeachingPopoverCarousel defaultValue="one">
+            <TeachingPopoverCarouselCard value="one">
+              <TeachingPopoverTitle>Step one</TeachingPopoverTitle>
+            </TeachingPopoverCarouselCard>
+          </TeachingPopoverCarousel>
+        </React.StrictMode>,
+      );
+
+      const focusListeners = addEventListener.mock.calls.filter(([type, , capture]) => type === 'focusin' && capture);
+      expect(focusListeners.length).toBeGreaterThan(0);
+      result.unmount();
+
+      for (const args of focusListeners) {
+        expect(removeEventListener).toHaveBeenCalledWith(...args);
+      }
+    } finally {
+      addEventListener.mockRestore();
+      removeEventListener.mockRestore();
+    }
   });
 
   it('does not move focus when a title mounts on the active page outside of a navigation', async () => {

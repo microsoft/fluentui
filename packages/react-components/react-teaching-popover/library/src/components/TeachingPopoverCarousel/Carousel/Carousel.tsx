@@ -56,8 +56,8 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
   const focusRequestRef = React.useRef<CarouselFocusRequest | null>(null);
 
   // A controlled value does not carry the request that caused it, so delayed acceptance is recognized by matching
-  // the latest directional request while its captured focus origin still owns focus. Any different committed value,
-  // direct tab activation, or newer directional request supersedes it.
+  // the latest directional request while its captured focus origin continuously owns focus. Any different committed
+  // value, direct tab activation, newer directional request, or newer focus choice supersedes it.
   useIsomorphicLayoutEffect(() => {
     if (previousValueRef.current === value) {
       return;
@@ -71,6 +71,32 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
       focusRequestRef.current = null;
     }
   });
+
+  useIsomorphicLayoutEffect(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    const onFocusIn = (event: FocusEvent) => {
+      const request = focusRequestRef.current;
+      if (!request || event.target === request.origin) {
+        return;
+      }
+
+      // Removing the navigation origin can return focus to the body without a newer focus choice.
+      if (request.origin && !request.origin.isConnected && event.target === targetDocument.body) {
+        return;
+      }
+
+      focusRequestRef.current = null;
+    };
+
+    targetDocument.addEventListener('focusin', onFocusIn, true);
+    return () => {
+      targetDocument.removeEventListener('focusin', onFocusIn, true);
+      focusRequestRef.current = null;
+    };
+  }, [targetDocument]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
