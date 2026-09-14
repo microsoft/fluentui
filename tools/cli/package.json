@@ -5,8 +5,8 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "bin": {
-    "fluentui-cli": "./bin/fluentui-cli.js",
-    "cli": "./bin/fluentui-cli.js"
+    "cli": "./bin/fluentui-cli.js",
+    "fluentui-cli": "./bin/fluentui-cli.js"
   },
   "files": [
     "*.md",
