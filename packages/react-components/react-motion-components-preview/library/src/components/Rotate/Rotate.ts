@@ -14,8 +14,9 @@ import type { RotateParams } from './rotate-types';
  * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'z'.
- * @param outAngle - Rotation angle for the out state (exited) in degrees. Defaults to -90.
- * @param inAngle - Rotation angle for the in state (entered) in degrees. Defaults to 0.
+ * @param fromAngle - Rotation angle before entry in degrees. Defaults to -90.
+ * @param restAngle - Rotation angle at rest in degrees. Defaults to 0.
+ * @param toAngle - Rotation angle after exit in degrees. Defaults to `fromAngle`.
  * @param animateOpacity - Whether to animate the opacity during the rotation. Defaults to `true`.
  */
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
@@ -26,31 +27,30 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   exitEasing = motionTokens.curveAccelerateMax,
   exitDelay = delay,
   axis = 'z',
-  outAngle = -90,
-  inAngle = 0,
+  fromAngle = -90,
+  restAngle = 0,
+  toAngle = fromAngle,
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
     rotateAtom({
-      direction: 'enter',
       duration,
       easing,
       delay,
       axis,
-      outAngle,
-      inAngle,
+      fromAngle,
+      toAngle: restAngle,
     }),
   ];
 
   const exitAtoms: AtomMotion[] = [
     rotateAtom({
-      direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
       axis,
-      outAngle,
-      inAngle,
+      fromAngle: restAngle,
+      toAngle,
     }),
   ];
 
