@@ -806,6 +806,33 @@ describe('LineChart snapShot testing', () => {
   });
 });
 
+describe('LineChart - prototype pollution hardening', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each(['__proto__', 'constructor', 'prototype'])(
+    'renders without crashing or polluting Object.prototype when a legend is "%s"',
+    magicKey => {
+      const maliciousChartPoints = {
+        chartTitle: 'LineChart',
+        lineChartData: [
+          {
+            legend: magicKey,
+            data: [
+              { x: 1, y: 3 },
+              { x: 2, y: 4 },
+            ],
+            color: 'red',
+          },
+        ] as LineChartPoints[],
+      };
+
+      expect(() => render(<LineChart data={maliciousChartPoints} />)).not.toThrow();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'push')).toBe(false);
+    },
+  );
+});
+
 describe('LineChart - basic props', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);

@@ -188,6 +188,21 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test.each(['__proto__', 'constructor', 'prototype'])(
+    'transformPlotlyJsonToDonutProps - handles a "%s" label without polluting Object.prototype',
+    label => {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'pie', labels: [label], values: [7], hole: 0.5 }],
+        layout: { width: 440, height: 220 },
+      };
+
+      const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+      expect(result.data?.chartData).toEqual([expect.objectContaining({ legend: label, data: 7 })]);
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
+    },
+  );
+
   test('transformPlotlyJsonToDonutProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
