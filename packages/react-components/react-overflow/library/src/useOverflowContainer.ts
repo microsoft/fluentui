@@ -27,6 +27,7 @@ import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERF
 export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<OverflowOptions, 'onUpdateOverflow'>,
+  managerFactory?: (opts: Partial<OverflowOptions>) => OverflowManager,
 ): UseOverflowContainerReturn<TElement> => {
   const {
     overflowAxis = 'horizontal',
@@ -57,13 +58,13 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const managerRef = React.useRef<OverflowManager | null>(null);
 
   if (managerRef.current === null) {
-    managerRef.current = canUseDOM() ? createOverflowManager(observeOptions) : null;
+    if (canUseDOM()) {
+      managerRef.current = (managerFactory ?? createOverflowManager)(observeOptions);
+    }
   }
 
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
-      // forceUpdate resolves overflow synchronously for a correct first paint; the manager guards it
-      // on the container being measured.
       managerRef.current.observe(containerRef.current, { forceUpdate: true });
       return () => managerRef.current?.disconnect();
     }
