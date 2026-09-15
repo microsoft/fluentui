@@ -8,17 +8,17 @@ export type { SwitchSlots, SwitchBaseProps as SwitchProps } from '@fluentui/reac
 export type SwitchState = SwitchBaseState & {
   root: {
     /**
-     * Data attribute set when the switch is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the switch is disabled but still focusable.
+     * Present when disabled but still focusable; omitted otherwise.
      */
     'data-disabled-focusable'?: string;
 
     /**
-     * Data attribute set when the switch is checked (controlled mode only).
+     * Present when checked in controlled mode; omitted when unchecked or uncontrolled.
      */
     'data-checked'?: string;
 

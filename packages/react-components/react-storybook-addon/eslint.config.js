@@ -11,4 +11,7 @@ module.exports = [
       '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
+  {
+    ignores: ['src/preset/__fixtures__/**'],
+  },
 ];

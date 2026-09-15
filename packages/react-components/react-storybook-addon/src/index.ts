@@ -5,3 +5,4 @@ export { DIR_ID, THEME_ID, THEMES } from './constants';
 export { parameters } from './hooks';
 export { FluentCanvas, FluentDocsPage, FluentStory } from './docs';
 export type { FluentDocsPageProps } from './docs';
+export type { PresetConfig, StateDataAttributesConfig } from './public-types';

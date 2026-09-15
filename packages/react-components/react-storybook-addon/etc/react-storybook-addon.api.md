@@ -71,6 +71,16 @@ export interface FluentStoryContext extends StoryContext {
 // @public (undocumented)
 export function parameters(options?: FluentParameters): FluentParameters;
 
+// @public
+export interface PresetConfig {
+    stateDataAttributes?: StateDataAttributesConfig;
+}
+
+// @public
+export type StateDataAttributesConfig = {
+    packageRoot: string;
+};
+
 // @public (undocumented)
 export type Theme = (typeof themes)[number];
 

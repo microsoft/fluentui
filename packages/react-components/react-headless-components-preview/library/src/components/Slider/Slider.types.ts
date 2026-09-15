@@ -8,12 +8,12 @@ export type { SliderSlots, SliderBaseProps as SliderProps } from '@fluentui/reac
 export type SliderState = SliderBaseState & {
   root: {
     /**
-     * Data attribute set when the slider is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the slider is oriented vertically.
+     * Present when oriented vertically; omitted when oriented horizontally.
      */
     'data-vertical'?: string;
   };

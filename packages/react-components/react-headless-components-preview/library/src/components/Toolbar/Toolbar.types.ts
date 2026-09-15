@@ -5,7 +5,7 @@ export type { ToolbarSlots, ToolbarBaseProps as ToolbarProps, ToolbarContextValu
 export type ToolbarState = ToolbarBaseState & {
   root: {
     /**
-     * Data attribute set when the toolbar is vertically oriented.
+     * Present when the toolbar is vertically oriented; omitted when it is horizontally oriented.
      */
     'data-vertical'?: string;
   };

@@ -19,7 +19,7 @@ export type TagPickerGroupProps = ComponentProps<TagPickerGroupBaseSlots> &
 export type TagPickerGroupState = TagPickerGroupBaseState & {
   root: {
     /**
-     * Data attribute set when the group is disabled.
+     * Present when the group is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
   };

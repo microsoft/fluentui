@@ -11,7 +11,7 @@ export type {
 export type TagPickerButtonState = TagPickerButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the button is disabled.
+     * Present when the button is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
   };

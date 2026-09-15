@@ -8,12 +8,12 @@ export type { LinkSlots, LinkBaseProps as LinkProps } from '@fluentui/react-link
 export type LinkState = LinkBaseState & {
   root: {
     /**
-     * Data attribute set when the link is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the link is disabled but still focusable.
+     * Present when disabled but still focusable; omitted otherwise.
      */
     'data-disabled-focusable'?: string;
   };
