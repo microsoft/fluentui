@@ -1016,4 +1016,22 @@ describe('LineChart - mouse events', () => {
     expect(container.querySelector('pre')).toBeDefined();
     expect(container).toMatchSnapshot();
   });
+
+  it('Should dismiss the callout when focus leaves the chart', () => {
+    const { container } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} />
+      </>,
+      { container: root! },
+    );
+    const dataPoint = container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoint).not.toBeNull();
+    fireEvent.focus(dataPoint!);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(dataPoint!, { relatedTarget: screen.getByTestId('before-chart') });
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
 });

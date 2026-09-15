@@ -953,7 +953,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/100
+              Current value is 30%
             </div>
           </div>
           <div>
@@ -964,7 +964,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 33"
+                  id="0_0% - 33%"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
@@ -977,7 +977,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 33
+                      0% - 33%
                     </div>
                   </div>
                 </div>
@@ -990,7 +990,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_33 - 67"
+                  id="1_33% - 67%"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
@@ -1003,7 +1003,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      33 - 67
+                      33% - 67%
                     </div>
                   </div>
                 </div>
@@ -1016,7 +1016,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_67 - 100"
+                  id="2_67% - 100%"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
@@ -1029,7 +1029,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      67 - 100
+                      67% - 100%
                     </div>
                   </div>
                 </div>
@@ -1684,7 +1684,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/100
+              Current value is 30%
             </div>
           </div>
           <div>
@@ -1695,7 +1695,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 33"
+                  id="0_0% - 33%"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
@@ -1708,7 +1708,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 33
+                      0% - 33%
                     </div>
                   </div>
                 </div>
@@ -1721,7 +1721,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_33 - 67"
+                  id="1_33% - 67%"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
@@ -1734,7 +1734,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      33 - 67
+                      33% - 67%
                     </div>
                   </div>
                 </div>
@@ -1747,7 +1747,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_67 - 100"
+                  id="2_67% - 100%"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
@@ -1760,7 +1760,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      67 - 100
+                      67% - 100%
                     </div>
                   </div>
                 </div>
@@ -1999,7 +1999,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/100
+              Current value is 30%
             </div>
           </div>
           <div>
@@ -2010,7 +2010,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 33"
+                  id="0_0% - 33%"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
@@ -2023,7 +2023,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 33
+                      0% - 33%
                     </div>
                   </div>
                 </div>
@@ -2036,7 +2036,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_33 - 67"
+                  id="1_33% - 67%"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
@@ -2049,7 +2049,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      33 - 67
+                      33% - 67%
                     </div>
                   </div>
                 </div>
@@ -2062,7 +2062,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_67 - 100"
+                  id="2_67% - 100%"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
@@ -2075,7 +2075,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      67 - 100
+                      67% - 100%
                     </div>
                   </div>
                 </div>
