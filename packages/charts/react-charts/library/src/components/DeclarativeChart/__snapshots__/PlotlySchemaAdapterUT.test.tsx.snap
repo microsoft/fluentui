@@ -2895,6 +2895,211 @@ Object {
 }
 `;
 
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToHeatmapProps - Should return heatmap chart props with annotations 1`] = `
+Object {
+  "annotations": Array [
+    Object {
+      "connector": Object {
+        "arrow": "end",
+        "strokeColor": "#ff0000",
+        "strokeWidth": 2,
+      },
+      "coordinates": Object {
+        "type": "data",
+        "x": "Fri",
+        "y": "Evening",
+      },
+      "id": "annotation-0-peak-activity",
+      "layout": Object {
+        "clipToBounds": true,
+        "offsetX": -40,
+        "offsetY": -30,
+      },
+      "style": Object {
+        "backgroundColor": "#ffffff",
+        "borderColor": "#ff0000",
+        "borderWidth": 1,
+        "fontSize": "12px",
+        "padding": "4px",
+        "textColor": "#ff0000",
+      },
+      "text": "Peak Activity",
+    },
+    Object {
+      "coordinates": Object {
+        "type": "relative",
+        "x": 0.1,
+        "y": 0.09999999999999998,
+      },
+      "id": "annotation-1-low-activity-zone",
+      "style": Object {
+        "backgroundColor": "#333333",
+        "fontSize": "10px",
+        "textColor": "#ffffff",
+      },
+      "text": "Low Activity Zone",
+    },
+    Object {
+      "connector": Object {
+        "arrow": "end",
+        "strokeColor": "#0078d4",
+      },
+      "coordinates": Object {
+        "type": "data",
+        "x": "Wed",
+        "y": "Afternoon",
+      },
+      "id": "annotation-2-mid-week-note",
+      "layout": Object {
+        "clipToBounds": true,
+        "offsetX": 30,
+        "offsetY": -20,
+      },
+      "style": Object {
+        "fontSize": "11px",
+        "textColor": "#0078d4",
+      },
+      "text": "Mid-week Note",
+    },
+  ],
+  "chartTitle": "Weekly Activity Heatmap with Annotations",
+  "data": Array [
+    Object {
+      "data": Array [
+        Object {
+          "rectText": 10,
+          "value": 10,
+          "x": "Mon",
+          "y": "Morning",
+        },
+        Object {
+          "rectText": 15,
+          "value": 15,
+          "x": "Mon",
+          "y": "Afternoon",
+        },
+        Object {
+          "rectText": 20,
+          "value": 20,
+          "x": "Mon",
+          "y": "Evening",
+        },
+        Object {
+          "rectText": 20,
+          "value": 20,
+          "x": "Tue",
+          "y": "Morning",
+        },
+        Object {
+          "rectText": 25,
+          "value": 25,
+          "x": "Tue",
+          "y": "Afternoon",
+        },
+        Object {
+          "rectText": 30,
+          "value": 30,
+          "x": "Tue",
+          "y": "Evening",
+        },
+        Object {
+          "rectText": 30,
+          "value": 30,
+          "x": "Wed",
+          "y": "Morning",
+        },
+        Object {
+          "rectText": 35,
+          "value": 35,
+          "x": "Wed",
+          "y": "Afternoon",
+        },
+        Object {
+          "rectText": 40,
+          "value": 40,
+          "x": "Wed",
+          "y": "Evening",
+        },
+        Object {
+          "rectText": 40,
+          "value": 40,
+          "x": "Thu",
+          "y": "Morning",
+        },
+        Object {
+          "rectText": 45,
+          "value": 45,
+          "x": "Thu",
+          "y": "Afternoon",
+        },
+        Object {
+          "rectText": 50,
+          "value": 50,
+          "x": "Thu",
+          "y": "Evening",
+        },
+        Object {
+          "rectText": 50,
+          "value": 50,
+          "x": "Fri",
+          "y": "Morning",
+        },
+        Object {
+          "rectText": 55,
+          "value": 55,
+          "x": "Fri",
+          "y": "Afternoon",
+        },
+        Object {
+          "rectText": 60,
+          "value": 60,
+          "x": "Fri",
+          "y": "Evening",
+        },
+      ],
+      "legend": "",
+      "value": 0,
+    },
+  ],
+  "domainValuesForColorScale": Array [
+    10,
+    35,
+    60,
+  ],
+  "height": 400,
+  "hideLegend": true,
+  "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
+  "rangeValuesForColorScale": Array [
+    "rgb(158,1,66)",
+    "rgb(255,255,191)",
+    "rgb(94,79,162)",
+  ],
+  "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
+  "sortOrder": "none",
+  "width": 600,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "Weekly Activity Heatmap with Annotations",
+  "xAxisCategoryOrder": Array [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+  ],
+  "xAxisTitle": "",
+  "yAxisCategoryOrder": Array [
+    "Morning",
+    "Afternoon",
+    "Evening",
+  ],
+  "yAxisTitle": "",
+}
+`;
+
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props 1`] = `
 Object {
   "barHeight": 12.662117371807371,
