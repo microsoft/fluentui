@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: dismiss HorizontalBarChart popover when keyboard focus leaves the chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

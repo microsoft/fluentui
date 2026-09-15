@@ -275,6 +275,59 @@ describe('Horizontal bar chart - Subcomponent callout', () => {
       expect(screen.queryByText('Custom Callout Content')).toBeDefined();
     },
   );
+
+  test('Should dismiss the callout when keyboard focus leaves the chart', async () => {
+    // Arrange
+    const { container } = render(
+      <>
+        <HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />
+        <button data-testid="outside-btn">outside</button>
+      </>,
+    );
+    const bars = getByClass(container, /barWrapper-/i);
+    fireEvent.focus(bars[0]);
+    const callout = container.querySelector('.ms-Callout-container') as HTMLElement;
+    expect(callout).not.toBeNull();
+    await waitFor(() => expect(callout.style.visibility).not.toBe('hidden'));
+    // Act - move keyboard focus to an element outside the chart
+    fireEvent.blur(bars[0], { relatedTarget: screen.getByTestId('outside-btn') });
+    // Assert
+    await waitFor(() => expect(callout.style.visibility).toBe('hidden'));
+  });
+
+  test('Should keep the callout open when focus moves to another bar within the same chart', async () => {
+    // Arrange
+    const { container } = render(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    const bars = getByClass(container, /barWrapper-/i);
+    fireEvent.focus(bars[0]);
+    const callout = container.querySelector('.ms-Callout-container') as HTMLElement;
+    expect(callout).not.toBeNull();
+    await waitFor(() => expect(callout.style.visibility).not.toBe('hidden'));
+    // Act - move keyboard focus to a bar of another series in the same chart
+    fireEvent.blur(bars[0], { relatedTarget: bars[2] });
+    // Assert - dismissing here would reintroduce the callout flicker fixed by PR #21750
+    await waitFor(() => expect(callout.style.visibility).not.toBe('hidden'));
+  });
+
+  test('Should dismiss the callout when keyboard focus moves to a bar in another chart', async () => {
+    // Arrange - two charts on the same page, as in the issue repro
+    const { container } = render(
+      <>
+        <HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />
+        <HorizontalBarChart data={chartPointsWithBenchMark} calloutProps={{ doNotLayer: true }} />
+      </>,
+    );
+    const bars = getByClass(container, /barWrapper-/i);
+    expect(bars.length).toBe(12);
+    const firstChartCallout = container.querySelectorAll('.ms-Callout-container')[0] as HTMLElement;
+    expect(firstChartCallout).not.toBeNull();
+    fireEvent.focus(bars[0]);
+    await waitFor(() => expect(firstChartCallout.style.visibility).not.toBe('hidden'));
+    // Act - tab from the first chart's bar into the second chart
+    fireEvent.blur(bars[0], { relatedTarget: bars[6] });
+    // Assert
+    await waitFor(() => expect(firstChartCallout.style.visibility).toBe('hidden'));
+  });
 });
 
 describe('Horizontal bar chart - Screen resolution', () => {
