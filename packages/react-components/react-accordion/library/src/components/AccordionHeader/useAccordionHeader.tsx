@@ -10,10 +10,12 @@ import type {
   AccordionHeaderState,
 } from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
-import { ChevronRightRegular } from '@fluentui/react-icons';
+import { bundleIcon, ChevronRightFilled, ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
 import { motionTokens } from '@fluentui/react-motion';
+
+const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 
 /**
  * Returns the props and state required to render the component
@@ -41,7 +43,7 @@ export const useAccordionHeader_unstable = (
 
   if (state.expandIcon) {
     state.expandIcon.children ??= (
-      <ChevronRightRegular
+      <ChevronRightIcon
         style={{
           transform: `rotate(${expandIconRotation}deg)`,
           transition: `transform ${motionTokens.durationNormal}ms ease-out`,
