@@ -3,6 +3,7 @@ export type {
   ColumnSizingTableCellProps,
   ColumnSizingTableHeaderCellProps,
   ColumnSizingTableProps,
+  AutoFitColumnsStrategy,
   ColumnWidthState,
   CreateTableColumnOptions,
   EnableKeyboardModeOnChangeCallback,

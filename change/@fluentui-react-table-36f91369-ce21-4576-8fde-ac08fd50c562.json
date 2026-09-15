@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-table): add autoFitColumnsStrategy option to share leftover space evenly between resizable columns",
+  "packageName": "@fluentui/react-table",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
