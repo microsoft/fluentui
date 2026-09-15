@@ -228,6 +228,22 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test('transformPlotlyJsonToVSBCProps - handles a "__proto__" x-axis value', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'bar', name: 'Series 1', x: ['__proto__'], y: [7] }],
+      layout: { width: 440, height: 220 },
+    };
+
+    const result = transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true, true);
+
+    expect(result.data).toEqual([
+      expect.objectContaining({
+        xAxisPoint: '__proto__',
+        chartData: [expect.objectContaining({ legend: 'Series 1', data: 7 })],
+      }),
+    ]);
+  });
+
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {

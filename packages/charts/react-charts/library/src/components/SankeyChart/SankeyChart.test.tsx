@@ -4,7 +4,7 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { SankeyChart } from './SankeyChart';
+import { groupNodesByColumn, SankeyChart } from './SankeyChart';
 import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
@@ -134,6 +134,19 @@ describe('Sankey bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe('SankeyChart - prototype pollution hardening', () => {
+  it('groups a node with a __proto__ column without using Object.prototype', () => {
+    const node = { nodeId: 0, name: 'malicious', layer: '__proto__' };
+    const graph = { nodes: [node], links: [] } as unknown as Parameters<typeof groupNodesByColumn>[0];
+
+    const nodesByColumn = groupNodesByColumn(graph);
+
+    expect(Object.prototype.hasOwnProperty.call(nodesByColumn, '__proto__')).toBe(true);
+    expect(nodesByColumn['__proto__' as unknown as number]).toEqual([node]);
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, '0')).toBe(false);
+  });
 });
 
 describe('Sankey chart - Theme', () => {
