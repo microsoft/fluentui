@@ -1020,7 +1020,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         return false;
       }
       for (const item of lineChartData) {
-        const xValueMap: Record<string, number[]> = {};
+        const xValueMap: Record<string, number[]> = Object.create(null);
         for (const point of item.data) {
           const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
           if (!xValueMap[xValue]) {
