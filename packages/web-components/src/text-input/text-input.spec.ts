@@ -61,13 +61,101 @@ test.describe('TextInput', () => {
     await expect(control).toHaveAttribute('required');
   });
 
-  test('should set the `spellcheck` attribute on the internal control', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const control = element.locator('input');
+  test.describe('spellcheck', () => {
+    const attributeCases = [
+      { value: 'true', expected: true },
+      { value: 'false', expected: false },
+      { value: '', expected: true },
+      { value: 'anything', expected: false },
+    ] as const;
 
-    await fastPage.setTemplate({ attributes: { spellcheck: 'true' } });
+    for (const { value, expected } of attributeCases) {
+      test(`should propagate \`spellcheck="${value}"\` to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('input');
 
-    await expect(control).toHaveAttribute('spellcheck', 'true');
+        await fastPage.setTemplate(/* html */ `
+          <div spellcheck="false">
+            <${tagName}></${tagName}>
+          </div>
+        `);
+
+        await element.evaluate((node, attributeValue) => {
+          node.setAttribute('spellcheck', attributeValue);
+        }, value);
+
+        await expect(element).toHaveAttribute('spellcheck', value);
+        await expect(element).toHaveJSProperty('spellcheck', expected);
+        await expect(control).toHaveAttribute('spellcheck', expected.toString());
+        await expect(control).toHaveJSProperty('spellcheck', expected);
+      });
+    }
+
+    for (const spellcheck of [true, false]) {
+      test(`should propagate a ${spellcheck} \`spellcheck\` property to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('input');
+
+        await fastPage.setTemplate();
+
+        await element.evaluate((node: TextInput, value) => {
+          node.spellcheck = value;
+        }, spellcheck);
+
+        await expect(element).toHaveAttribute('spellcheck', spellcheck.toString());
+        await expect(element).toHaveJSProperty('spellcheck', spellcheck);
+        await expect(control).toHaveAttribute('spellcheck', spellcheck.toString());
+        await expect(control).toHaveJSProperty('spellcheck', spellcheck);
+      });
+    }
+
+    for (const value of ['null', 'undefined'] as const) {
+      test(`should propagate a ${value} \`spellcheck\` property to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('input');
+
+        await fastPage.setTemplate();
+
+        await element.evaluate((node, nullishValue) => {
+          Reflect.set(node, 'spellcheck', nullishValue === 'null' ? null : undefined);
+        }, value);
+
+        await expect(element).not.toHaveAttribute('spellcheck');
+        await expect(element).toHaveJSProperty('spellcheck', value === 'null' ? null : undefined);
+        await expect(control).not.toHaveAttribute('spellcheck');
+      });
+    }
+
+    test('should propagate removal of the host `spellcheck` attribute to the internal control', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(/* html */ `
+        <div spellcheck="false">
+          <${tagName} spellcheck="true"></${tagName}>
+        </div>
+      `);
+
+      await element.evaluate(node => {
+        node.removeAttribute('spellcheck');
+      });
+
+      await expect(element).not.toHaveAttribute('spellcheck');
+      await expect(element).toHaveJSProperty('spellcheck', null);
+      await expect(control).not.toHaveAttribute('spellcheck');
+    });
+
+    test('should use the browser default when `spellcheck` is unset', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const control = element.locator('input');
+
+      await fastPage.setTemplate();
+
+      await expect(element).not.toHaveAttribute('spellcheck');
+      await expect(control).not.toHaveAttribute('spellcheck');
+    });
   });
 
   test('should set the `maxlength` attribute on the internal control', async ({ fastPage }) => {
