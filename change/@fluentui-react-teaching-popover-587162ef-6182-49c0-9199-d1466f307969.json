@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: handle mount-time carousel focus and transfer focus after replacement navigation refs attach",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com"
+}

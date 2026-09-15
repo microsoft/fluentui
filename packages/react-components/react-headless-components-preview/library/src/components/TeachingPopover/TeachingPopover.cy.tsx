@@ -8,6 +8,7 @@ import {
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
   TeachingPopoverCarouselPageCount,
+  TeachingPopoverHeader,
   TeachingPopoverSurface,
   TeachingPopoverTitle,
   TeachingPopoverTrigger,
@@ -20,7 +21,146 @@ const mount = (element: JSXElement) => mountBase(element);
 const triggerSelector = '[aria-expanded]';
 const surfaceSelector = '[role="group"]';
 
+const FocusExample = ({
+  controlled = false,
+  initiallyOpen = false,
+  withTrigger = true,
+  trapFocus = false,
+}: {
+  controlled?: boolean;
+  initiallyOpen?: boolean;
+  withTrigger?: boolean;
+  trapFocus?: boolean;
+}) => {
+  const [open, setOpen] = React.useState(initiallyOpen);
+  const [value, setValue] = React.useState<string | undefined>('one');
+  const surface = (
+    <TeachingPopoverSurface key="surface">
+      <TeachingPopoverHeader>Tour</TeachingPopoverHeader>
+      <TeachingPopoverCarousel
+        value={controlled ? value : undefined}
+        defaultValue={controlled ? undefined : 'one'}
+        onValueChange={(_, data) => setValue(data.value)}
+        onFinish={() => {
+          setValue('one');
+          setOpen(false);
+        }}
+      >
+        <TeachingPopoverCarouselCard value="one">Feature Step 1</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="two">Feature Step 2</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselFooter
+          previous={{ navType: 'prev', altText: null, children: 'Previous', id: 'previous' }}
+          next={{ navType: 'next', altText: 'Got it', children: 'Next', id: 'next' }}
+        />
+      </TeachingPopoverCarousel>
+    </TeachingPopoverSurface>
+  );
+  return (
+    <>
+      <button data-testid="outside" onClick={() => setOpen(false)}>
+        Outside
+      </button>
+      <TeachingPopover
+        open={controlled ? open : undefined}
+        defaultOpen={controlled ? undefined : initiallyOpen}
+        trapFocus={trapFocus}
+        onOpenChange={(_, data) => setOpen(data.open)}
+      >
+        {withTrigger
+          ? [
+              <TeachingPopoverTrigger key="trigger">
+                <button>Open tour</button>
+              </TeachingPopoverTrigger>,
+              surface,
+            ]
+          : surface}
+      </TeachingPopover>
+    </>
+  );
+};
+
 describe('TeachingPopover', () => {
+  describe('focus management', () => {
+    [false, true].forEach(controlled => {
+      describe(controlled ? 'controlled' : 'uncontrolled', () => {
+        it('moves focus to Next when Previous becomes hidden on the first step', () => {
+          mount(<FocusExample controlled={controlled} initiallyOpen />);
+          cy.get('#next').realClick();
+          cy.get('#previous').focus().realPress('Enter');
+          cy.contains('Feature Step 1').should('be.visible');
+          cy.get('#previous').should('not.be.visible');
+          cy.get('#next').should('have.focus');
+        });
+
+        [false, true].forEach(initiallyOpen => {
+          (['finish', 'escape', 'dismiss'] as const).forEach(action => {
+            it(`restores trigger focus on ${action} (initiallyOpen=${initiallyOpen})`, () => {
+              mount(<FocusExample controlled={controlled} initiallyOpen={initiallyOpen} />);
+              if (!initiallyOpen) {
+                cy.get(triggerSelector).realClick();
+              }
+              cy.get('#next').should('be.visible').focus();
+              if (action === 'finish') {
+                cy.realPress('Enter');
+                cy.get('#next').should('have.text', 'Got it').realPress('Enter');
+              } else if (action === 'escape') {
+                cy.realPress('Escape');
+              } else {
+                cy.get('[aria-label="dismiss"]').realClick();
+              }
+              cy.get(surfaceSelector).should('not.exist');
+              cy.get(triggerSelector).should('have.focus');
+            });
+          });
+        });
+      });
+    });
+
+    it('restores the trigger after light dismissal of an initially open tour', () => {
+      mount(<FocusExample controlled initiallyOpen />);
+      cy.get('#next').focus();
+      cy.get('body').realClick({ position: 'bottomRight' });
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get(triggerSelector).should('have.focus');
+    });
+
+    it('preserves intentional outside focus on controlled close', () => {
+      mount(<FocusExample controlled initiallyOpen />);
+      cy.get('#next').focus();
+      cy.get('[data-testid="outside"]').realClick();
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('[data-testid="outside"]').should('have.focus');
+    });
+
+    it('does not move focus on an initially closed mount', () => {
+      mount(<FocusExample controlled />);
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get(triggerSelector).should('not.have.focus');
+    });
+
+    it('can finish an initially open triggerless tour', () => {
+      mount(<FocusExample controlled initiallyOpen withTrigger={false} />);
+      cy.get('#next').realClick();
+      cy.get('#next').realClick();
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('[data-testid="outside"]').should('not.have.focus');
+    });
+
+    (['escape', 'dismiss'] as const).forEach(action => {
+      it(`restores trigger focus on modal ${action} when initially open`, () => {
+        mount(<FocusExample controlled initiallyOpen trapFocus />);
+        cy.get('[role="dialog"]').should('be.visible');
+        if (action === 'escape') {
+          cy.realPress('Escape');
+        } else {
+          cy.get('[aria-label="dismiss"]').realClick();
+        }
+        cy.get('[role="dialog"]').should('not.exist');
+        cy.get(triggerSelector).should('have.focus');
+      });
+    });
+  });
+
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
     const UncontrolledExample = () => (
       <TeachingPopover>

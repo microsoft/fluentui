@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: move focus to the opposite carousel navigation button when null alternate text hides the focused button, including headless base hooks",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com"
+}
