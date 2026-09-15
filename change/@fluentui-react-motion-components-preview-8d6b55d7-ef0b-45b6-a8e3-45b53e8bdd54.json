@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Migrate Blur from outRadius/inRadius to graph-level fromRadius/restRadius/toRadius parameters, and make blurAtom a neutral directed fromRadius/toRadius atom",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "githubcopilot@microsoft.com",
+  "dependentChangeType": "patch"
+}

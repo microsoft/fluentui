@@ -2,50 +2,23 @@ import { motionTokens } from '@fluentui/react-motion';
 import { blurAtom } from './blur-atom';
 
 describe('blurAtom', () => {
-  it('creates enter keyframes with blur from radius to 0', () => {
+  it('creates directed keyframes from one radius to another', () => {
     const atom = blurAtom({
-      direction: 'enter',
       duration: 300,
       easing: motionTokens.curveEasyEase,
-      outRadius: '20px',
+      fromRadius: '20px',
+      toRadius: '5px',
     });
 
     expect(atom).toMatchObject({
       duration: 300,
       easing: motionTokens.curveEasyEase,
-      keyframes: [{ filter: 'blur(20px)' }, { filter: 'blur(0px)' }],
+      keyframes: [{ filter: 'blur(20px)' }, { filter: 'blur(5px)' }],
     });
   });
 
-  it('creates exit keyframes with blur from 0 to radius', () => {
+  it('uses default radius endpoints when not provided', () => {
     const atom = blurAtom({
-      direction: 'exit',
-      duration: 250,
-      easing: motionTokens.curveAccelerateMin,
-      outRadius: '15px',
-    });
-
-    expect(atom).toMatchObject({
-      duration: 250,
-      easing: motionTokens.curveAccelerateMin,
-      keyframes: [{ filter: 'blur(0px)' }, { filter: 'blur(15px)' }],
-    });
-  });
-
-  it('applies custom inRadius values', () => {
-    const atom = blurAtom({
-      direction: 'enter',
-      duration: 300,
-      outRadius: '20px',
-      inRadius: '5px',
-    });
-
-    expect(atom.keyframes).toEqual([{ filter: 'blur(20px)' }, { filter: 'blur(5px)' }]);
-  });
-
-  it('uses default outRadius when not provided', () => {
-    const atom = blurAtom({
-      direction: 'enter',
       duration: 300,
     });
 
@@ -54,27 +27,24 @@ describe('blurAtom', () => {
 
   it('uses default easing when not provided', () => {
     const atom = blurAtom({
-      direction: 'enter',
       duration: 300,
-      outRadius: '5px',
+      fromRadius: '5px',
     });
 
     expect(atom.easing).toBe(motionTokens.curveLinear);
   });
 
-  it('handles different CSS units for outRadius and inRadius', () => {
+  it('handles different CSS units for graph endpoints', () => {
     const atomPx = blurAtom({
-      direction: 'enter',
       duration: 300,
-      outRadius: '8px',
-      inRadius: '2px',
+      fromRadius: '8px',
+      toRadius: '2px',
     });
 
     const atomRem = blurAtom({
-      direction: 'enter',
       duration: 300,
-      outRadius: '1rem',
-      inRadius: '0.5rem',
+      fromRadius: '1rem',
+      toRadius: '0.5rem',
     });
 
     expect(atomPx.keyframes[0]).toEqual({ filter: 'blur(8px)' });
