@@ -181,7 +181,7 @@ function applyFoldTransform(
 
   for (const row of data) {
     // Create a base row without the fields being folded
-    const baseRow: Record<string, unknown> = {};
+    const baseRow: Record<string, unknown> = Object.create(null);
     for (const [key, value] of Object.entries(row)) {
       if (!foldFields.includes(key)) {
         baseRow[key] = value;
@@ -190,7 +190,7 @@ function applyFoldTransform(
 
     // Create a new row for each folded field
     for (const field of foldFields) {
-      if (field in row) {
+      if (Object.prototype.hasOwnProperty.call(row, field)) {
         result.push({
           ...baseRow,
           [keyField]: field,
@@ -272,7 +272,8 @@ function applyTransforms(
       });
 
       result = Array.from(groups.entries()).map(([key, rows]) => {
-        const baseRow: Record<string, unknown> = {};
+        // Grouping fields and aggregate aliases are data keys, including "__proto__".
+        const baseRow: Record<string, unknown> = Object.create(null);
         groupby.forEach((g, i) => {
           baseRow[g] = rows[0][g];
         });
