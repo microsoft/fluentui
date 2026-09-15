@@ -792,3 +792,31 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(1)).toHaveJSProperty('checked', true);
   });
 });
+
+test.describe('RadioGroup upgrade order', () => {
+  test('should preserve checked state when radios upgrade after the radio group', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () => {
+      return (
+        window as unknown as {
+          runRadioGroupUpgradeOrderTest(): Promise<{
+            checkedRadioChecked: boolean;
+            checkedValue: string | null;
+            hasOwnChecked: boolean;
+            hasOwnCheckedBeforeUpgrade: boolean;
+            radiosLength: number;
+            radiosLengthBeforeUpgrade: number;
+          }>;
+        }
+      ).runRadioGroupUpgradeOrderTest();
+    });
+
+    expect(result.radiosLengthBeforeUpgrade).toBe(0);
+    expect(result.hasOwnCheckedBeforeUpgrade).toBe(false);
+    expect(result.radiosLength).toBe(3);
+    expect(result.checkedRadioChecked).toBe(true);
+    expect(result.checkedValue).toBe('banana');
+    expect(result.hasOwnChecked).toBe(false);
+  });
+});
