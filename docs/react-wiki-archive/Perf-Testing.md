@@ -98,7 +98,7 @@ Each sample number entry links to a flamegraph, which looks like the following:
 
 <a target="_blank" href="https://user-images.githubusercontent.com/26070760/60136445-07304c00-9759-11e9-882a-33d73575dc15.png"><img src="https://user-images.githubusercontent.com/26070760/60136445-07304c00-9759-11e9-882a-33d73575dc15.png" width="1385"/></a>
 
-## Perf Test Results Intepretation
+## Perf Test Results Interpretation
 
 Since this PR improves perf for new Button components, we expect to see improvements in corresponding components:
 

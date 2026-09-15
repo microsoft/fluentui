@@ -21,19 +21,19 @@ We wanna make initial triage-ing issues a fully automated process.
 
 ## Problem statement
 
-At the moment processing newly created issues is mostly manual work done by 2 people on shield duty. While this was a good start it wont scale as the codebase/team/contributors list grows. Thus we need to introduce automation to establish best possible contributors DX while they need our help.
+At the moment processing newly created issues is mostly manual work done by 2 people on shield duty. While this was a good start it won't scale as the codebase/team/contributors list grows. Thus we need to introduce automation to establish best possible contributors DX while they need our help.
 
 <!--
 Why are we making this change? What problem are we solving? What do we expect to gain from this?
 
-This section is important as the motivation or problem statement is indepenent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
+This section is important as the motivation or problem statement is independent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
 
 In the end, please make sure to present a neutral Problem statement, rather than one that motivates a particular solution
 -->
 
 ## Detailed Design or Proposal
 
-<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
+<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the intended audience to understand. -->
 
 After we [introduced new github issues beta](https://github.com/microsoft/fluentui/pull/22337) for reporting issues and feature request, the experience for both contributors and shield devs was significantly improved. A followup that was discussed is to implement further automation by leveraging Github Actions, This document will describe the approach in better detail.
 
