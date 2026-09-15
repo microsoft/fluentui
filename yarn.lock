@@ -4537,15 +4537,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-icons@npm:^2.0.237, @fluentui/react-icons@npm:^2.0.239, @fluentui/react-icons@npm:^2.0.245, @fluentui/react-icons@npm:^2.0.306":
-  version: 2.0.311
-  resolution: "@fluentui/react-icons@npm:2.0.311"
+"@fluentui/react-icons@npm:^2.0.237, @fluentui/react-icons@npm:^2.0.239, @fluentui/react-icons@npm:^2.0.245, @fluentui/react-icons@npm:^2.0.306, @fluentui/react-icons@npm:^2.0.336":
+  version: 2.0.339
+  resolution: "@fluentui/react-icons@npm:2.0.339"
   dependencies:
-    "@griffel/react": "npm:^1.0.0"
+    "@griffel/react": "npm:^1.6.1"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/92374c68a5271afb4f8ed7e42e012bf422b3569aa0209216b65a2ec0d828bf011c1a6eccc438ff5fea7f49bf114df919ce2da861f3dcc21091025c1a4e430563
+  checksum: 10c0/343b4a003cfca6e02d8ada30585cee18be5a28c079275733529f2ce0727e8ceb3252aae8353bf5c42f4297017baae7bbf73f84f097d5d8c2c2a855c7eb776a7d
   languageName: node
   linkType: hard
 
@@ -5306,7 +5306,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
-    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-icons": "npm:^2.0.336"
     "@fluentui/react-jsx-runtime": "npm:^9.4.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
     "@fluentui/react-tabster": "npm:^9.26.17"
@@ -5736,7 +5736,7 @@ __metadata:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     keyborg: "npm:^2.14.1"
-    tabster: "npm:^8.8.0"
+    tabster: "npm:^8.8.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -6836,17 +6836,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.19.2":
-  version: 1.19.2
-  resolution: "@griffel/core@npm:1.19.2"
+"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.21.3":
+  version: 1.21.3
+  resolution: "@griffel/core@npm:1.21.3"
   dependencies:
     "@emotion/hash": "npm:^0.9.0"
-    "@griffel/style-types": "npm:^1.3.0"
-    csstype: "npm:^3.1.3"
+    "@griffel/style-types": "npm:^1.4.2"
+    csstype: "npm:^3.2.3"
     rtl-css-js: "npm:^1.16.1"
-    stylis: "npm:^4.2.0"
+    stylis: "npm:^4.4.0"
     tslib: "npm:^2.1.0"
-  checksum: 10c0/6e086ba2132e130360e14d1ab0493f6b7e34e3dba82c928a0a438ac7f48628555845ba5366a8dfaaf163ee67b3bca1776906347d02dc0ab32c03ef85bd113ba2
+  checksum: 10c0/9bfa315a90b2351e3292798cf7aeaa64709aa6acf29c6dd8b9c1fc3e4805dae4c81e1c0d1b4767a3a4772c66dd55a10788e36ac472f2e7ca08db43ec14f15c11
   languageName: node
   linkType: hard
 
@@ -6873,15 +6873,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/react@npm:^1.0.0, @griffel/react@npm:^1.5.32":
-  version: 1.5.32
-  resolution: "@griffel/react@npm:1.5.32"
+"@griffel/react@npm:^1.5.32, @griffel/react@npm:^1.6.1":
+  version: 1.7.7
+  resolution: "@griffel/react@npm:1.7.7"
   dependencies:
-    "@griffel/core": "npm:^1.19.2"
+    "@griffel/core": "npm:^1.21.3"
     tslib: "npm:^2.1.0"
   peerDependencies:
-    react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/ae451721830808dc9868d496869d38096905554f13c8a3cbc7bbbe6c235fc23b6ef39a294ee005b77a5af687634672899eb8855c302aa1dd6f08bc24e1072c60
+    react: ">=16.14.0 <20.0.0"
+  checksum: 10c0/6b2a81b3965efb4850efefbbb141dbe5a25331c22a2c0a567b909388e31f8f859148951d92010e36eac414ebc494969b0d2d6e2820b40413022ec6a3f5e9a276
   languageName: node
   linkType: hard
 
@@ -6895,12 +6895,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/style-types@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@griffel/style-types@npm:1.3.0"
+"@griffel/style-types@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@griffel/style-types@npm:1.4.2"
   dependencies:
-    csstype: "npm:^3.1.3"
-  checksum: 10c0/94c63ed89398e154f5ced769b25ff7e14471c991672f32f69ac27daa463f880650cb2d7d5ef7e00811e3cd3a6cd2694b9ef861d9bc294cf72838e31761d72ef8
+    csstype: "npm:^3.2.3"
+  checksum: 10c0/5049b59d5f978c7d34774e49da6824c9f44178bc0261f38f5359512661a5cb6da827ecb855cc6237bc9ffdf2e584e6cbe8b622f2bcac347eb1307920ce583652
   languageName: node
   linkType: hard
 
@@ -15581,10 +15581,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2, csstype@npm:^3.1.3":
-  version: 3.1.3
-  resolution: "csstype@npm:3.1.3"
-  checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+"csstype@npm:^3.0.2, csstype@npm:^3.1.3, csstype@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
   languageName: node
   linkType: hard
 
@@ -22717,10 +22717,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyborg@npm:^2.14.0, keyborg@npm:^2.14.1":
+"keyborg@npm:^2.14.1":
   version: 2.14.1
   resolution: "keyborg@npm:2.14.1"
   checksum: 10c0/5776649f12a572b4cca590451d0baf30c88329f533a71576b3fb4da4438eafe67f4636544483431fd98f539d3057370455b6853af2eb3ba44006fbd276bb7ee0
+  languageName: node
+  linkType: hard
+
+"keyborg@npm:^3.0.0":
+  version: 3.498.0
+  resolution: "keyborg@npm:3.498.0"
+  checksum: 10c0/aae11064f664d28b006c026f9470d89b32e08dbdf5cb07cbcc43e7733c17666e0a50ff5b3936787e1dd7928776a8d3381308c7a7970f181b89827b5dee5c9535
   languageName: node
   linkType: hard
 
@@ -30149,10 +30156,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylis@npm:^4.2.0":
-  version: 4.3.0
-  resolution: "stylis@npm:4.3.0"
-  checksum: 10c0/5a9f7e0cf2a15591efaacc1c6416a8785d2b57522cd38bb8e0a81a03c23d3bea2363659fa5f9d486a73d1b6ebaf1d32826ce1c1974c95afdb5b495d98acb25c0
+"stylis@npm:^4.2.0, stylis@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "stylis@npm:4.4.0"
+  checksum: 10c0/259be096d90dfbfe903c8656dcb7591e52a421e577e950ef42ebd9ca02f387623a1165dd08761492fb6e92a7a562d62a53a694a10b0a2f6dcd7a0db107b4bf55
   languageName: node
   linkType: hard
 
@@ -30347,13 +30354,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabster@npm:^8.8.0":
-  version: 8.8.0
-  resolution: "tabster@npm:8.8.0"
+"tabster@npm:^8.8.1":
+  version: 8.8.1
+  resolution: "tabster@npm:8.8.1"
   dependencies:
-    keyborg: "npm:^2.14.0"
+    keyborg: "npm:^3.0.0"
     tslib: "npm:^2.8.1"
-  checksum: 10c0/013e269b66af718d02401d26e0c6dfd5d169a18b30fb257198e68188521f43b9b093b933d6f6b56d0e7c9533e403217149bd48092db3fac3d95495964185b689
+  checksum: 10c0/e26f2e38eba89af632b44efdb6dd1e92fd8040084f1976592dac69a3cff30423fb0b6a9849ba8f011be5314d873fae2d05356e358462552be538519e513803b1
   languageName: node
   linkType: hard
 
