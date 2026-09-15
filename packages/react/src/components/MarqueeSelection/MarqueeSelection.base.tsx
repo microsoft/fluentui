@@ -125,7 +125,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     );
   }
 
-  /** Determine if the mouse event occured on a scrollbar of the target element. */
+  /** Determine if the mouse event occurred on a scrollbar of the target element. */
   private _isMouseEventOnScrollbar(ev: MouseEvent): boolean {
     const targetElement = ev.target as HTMLElement;
     const targetScrollbarWidth = targetElement.offsetWidth - targetElement.clientWidth;
