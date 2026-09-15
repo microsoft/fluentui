@@ -126,7 +126,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
         'aria-label': ariaLabel ? ariaLabel : badAriaLabel,
         'aria-labelledby': labelledById,
         className: classNames.pill,
-        'data-is-focusable': true,
+        'data-is-focusable': toggleNativeProps['data-is-focusable'] ?? true,
         'data-ktp-target': true,
         disabled,
         id,
