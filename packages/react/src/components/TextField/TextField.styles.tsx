@@ -318,6 +318,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       },
       getPlaceholderStyles(placeholderStyles),
+      hasRevealButton && {
+        selectors: {
+          // Hide Edge's built-in reveal button since the custom one is shown instead
+          '::-ms-reveal': {
+            display: 'none',
+          },
+        },
+      },
       multiline &&
         !resizable && [
           classNames.unresizable,
@@ -429,6 +437,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         backgroundColor: 'transparent',
         color: semanticColors.link,
         selectors: {
+          [HighContrastSelector]: {
+            color: 'ButtonText',
+          },
           ':hover': {
             outline: 0,
             color: semanticColors.primaryButtonBackgroundHovered,

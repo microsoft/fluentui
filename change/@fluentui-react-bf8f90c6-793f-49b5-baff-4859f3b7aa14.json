@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react): show TextField's themable password reveal button in Edge and hide the native ::-ms-reveal, and give it a resting forced-colors color",
+  "packageName": "@fluentui/react",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
