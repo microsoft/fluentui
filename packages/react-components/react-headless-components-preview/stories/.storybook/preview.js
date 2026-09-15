@@ -1,4 +1,5 @@
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+import '../../../react-storybook-addon-playground/src/styles.css';
 
 import * as rootPreview from '../../../../../.storybook/preview';
 

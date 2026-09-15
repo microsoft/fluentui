@@ -4,5 +4,23 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/stories/src",
   "tags": ["vNext", "platform:web", "type:stories", "react-headless"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "storybook": {
+      "dependsOn": [
+        {
+          "projects": ["react-storybook-addon-playground"],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook": {
+      "dependsOn": [
+        {
+          "projects": ["react-storybook-addon-playground"],
+          "target": "build"
+        }
+      ]
+    }
+  }
 }
