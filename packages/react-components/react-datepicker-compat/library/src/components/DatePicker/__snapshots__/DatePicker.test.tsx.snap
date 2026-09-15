@@ -15,6 +15,7 @@ Object {
           id="datePicker-input_r_m_"
           readonly=""
           role="combobox"
+          size="1"
           type="text"
           value=""
         />
@@ -53,6 +54,7 @@ Object {
         id="datePicker-input_r_m_"
         readonly=""
         role="combobox"
+        size="1"
         type="text"
         value=""
       />
