@@ -1,0 +1,93 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* The `--fui-Slider--*` and `--fui-Slider__*` custom properties are written by the headless
+     hook into the root's inline style and are read only here. The kebab-case ones are this
+     file's own. The resting look is the horizontal one, so every block that sets a main-axis
+     property carries a `vertical` counterpart resetting it. */
+  .root {
+    @apply relative inline-grid min-h-32 min-w-200 touch-none grid-cols-[1fr_100%_1fr] grid-rows-[1fr_var(--fui-color-slider-thumb-size)_1fr] items-center justify-items-center;
+
+    --fui-color-slider-thumb-size: calc(20px * var(--base-scale));
+    --fui-color-slider-rail-size: calc(20px * var(--base-scale));
+
+    @variant vertical {
+      @apply min-h-280 min-w-auto grid-cols-[1fr_var(--fui-color-slider-thumb-size)_1fr] grid-rows-[1fr_100%_1fr];
+    }
+  }
+
+  /* The channel gradients stay raw declarations: a Tailwind gradient utility emits the
+     --tw-gradient-* machinery and its own interpolation space instead of the literal
+     linear-gradient() Griffel compiles. The two literal channel gradients name a physical
+     axis, so they need an explicit rtl counterpart; the hue gradient reads the hook's
+     direction custom property, which is already direction-aware. */
+  .rail {
+    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-color-slider-rail-size) w-full rounded-medium outline-thin outline-transparent-stroke forced-color-adjust-none outline-solid;
+
+    background-image: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
+
+    @variant group-channel-saturation/fui-color-slider {
+      background-image: linear-gradient(to right, #808080, var(--fui-Slider__rail--color));
+
+      @variant rtl {
+        background-image: linear-gradient(to left, #808080, var(--fui-Slider__rail--color));
+      }
+    }
+
+    @variant group-channel-value/fui-color-slider {
+      background-image: linear-gradient(to right, #000, var(--fui-Slider__rail--color));
+
+      @variant rtl {
+        background-image: linear-gradient(to left, #000, var(--fui-Slider__rail--color));
+      }
+    }
+
+    @variant group-shape-square/fui-color-slider {
+      @apply rounded-none;
+    }
+
+    @variant group-vertical/fui-color-slider {
+      @apply h-full w-(--fui-color-slider-rail-size);
+    }
+  }
+
+  .thumb {
+    @apply pointer-events-none absolute start-(--fui-Slider--progress) col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-color-slider-thumb-size) -translate-x-1/2 rounded-circular border-thin border-solid border-neutral-foreground-4 bg-(--fui-Slider__thumb--color) shadow-4 forced-color-adjust-none outline-none;
+
+    @variant before {
+      @apply absolute inset-0 rounded-circular border-thick border-solid border-neutral-background-1;
+    }
+
+    @variant rtl {
+      @apply translate-x-1/2;
+    }
+
+    @variant group-vertical/fui-color-slider {
+      @apply start-auto bottom-(--fui-Slider--progress) translate-x-0 translate-y-1/2;
+    }
+
+    /* Keyed off the input's own focus, matching Griffel's sibling selector: the range input is
+       the only focusable element in the tree and it always precedes the thumb. */
+    @variant peer-focus-visible/fui-color-slider {
+      @apply border-thick border-stroke-focus-2 outline-thick outline-transparent-stroke outline-solid;
+    }
+  }
+
+  .input {
+    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-color-slider-thumb-size) w-full cursor-pointer opacity-0;
+
+    /* vertical-lr stands the native range on end and rtl runs its value axis upward, so the maximum
+       sits at the top; the nested rule is the reference's RTL mirror of that direction, keyed off
+       the root because a :dir(rtl) on the input would read the direction this block sets. */
+    @variant group-vertical/fui-color-slider {
+      @apply h-full w-(--fui-color-slider-thumb-size);
+      writing-mode: vertical-lr;
+
+      direction: rtl;
+
+      @variant group-rtl/fui-color-slider {
+        direction: ltr;
+      }
+    }
+  }
+}

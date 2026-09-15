@@ -56,7 +56,7 @@ export function sliceStorySource(babel: typeof Babel, source: string, options: S
     plugins: [createSliceStoryPlugin(babel, options, context)],
   });
 
-  return context.handled ? result?.code ?? null : null;
+  return context.handled ? (result?.code ?? null) : null;
 }
 
 function createSliceStoryPlugin(
@@ -503,8 +503,8 @@ function buildRenderFunction(
   const argsId = t.isAssignmentPattern(argsParam)
     ? argsParam.left
     : t.isRestElement(argsParam)
-    ? argsParam.argument
-    : argsParam;
+      ? argsParam.argument
+      : argsParam;
 
   // Precedence for the local `args`: merged meta/story args win; otherwise fall
   // back to the param's default (`args = <default>`) so the author's intended
@@ -565,8 +565,8 @@ function mergeArgs(
         const key = t.isIdentifier(property.key)
           ? property.key.name
           : t.isStringLiteral(property.key)
-          ? property.key.value
-          : undefined;
+            ? property.key.value
+            : undefined;
         if (key !== undefined) {
           if (!byKey.has(key)) {
             order.push({ kind: 'key', key });

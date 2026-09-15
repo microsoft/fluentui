@@ -421,8 +421,8 @@ function collectViolations(
           verdict: !declaredRange
             ? 'not declared'
             : isRangeCompatible(declaredRange, requiredRange)
-            ? `satisfied by peer '${declaredRange}'`
-            : `INCOMPATIBLE with peer '${declaredRange}'`,
+              ? `satisfied by peer '${declaredRange}'`
+              : `INCOMPATIBLE with peer '${declaredRange}'`,
         });
 
         if (!declaredRange) {
@@ -742,8 +742,8 @@ function reportTrace(trace: Trace, checks: Set<ViolationKind>) {
       const verdict = requirement.verdict.startsWith('INCOMPATIBLE')
         ? chalk.red(requirement.verdict)
         : requirement.verdict === 'not declared'
-        ? chalk.yellow(requirement.verdict)
-        : chalk.green(requirement.verdict);
+          ? chalk.yellow(requirement.verdict)
+          : chalk.green(requirement.verdict);
 
       logger.verbose(
         `  ${requirement.peer} ${chalk.grey(

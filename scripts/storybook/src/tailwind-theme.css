@@ -1,0 +1,40 @@
+/*
+ * Emits the shared Tailwind theme layer once per storybook document — every preview
+ * imports this (directly or via the root preview). Component `*.module.css` files only
+ * `@reference` the theme, so without this emission spacing computes to 0px and tokens
+ * resolve to nothing. `source(none)` keeps Tailwind from content-scanning, so the file
+ * emits variables only and cannot affect unconverted packages.
+ * Routed through Tailwind by `rules.tailwindThemeRule` (matched by filename).
+ */
+@import '@fluentui/react-tailwind-theme-preview' source(none);
+
+/*
+ * THE THEMES, EXPLICITLY — the storybook is a consumer, and this is the consumer contract.
+ *
+ * The base entry above is theme-less by design (operator ruling 2026-08-28, "Theme
+ * delivery"): it registers every token name but gives none of them a value, exactly as
+ * Griffel leaves tokens unset until you `import { webLightTheme }` and pass it to the
+ * provider. A document is themed only by importing theme files and applying their classes —
+ * so this harness imports them, and `.storybook/preview.js` applies the default class.
+ *
+ * ALL SEVEN, deliberately, even though the VR scenes exercise four (web-light as the
+ * document default plus web-dark, teams-dark and teams-high-contrast in the
+ * FluentProviderNestedThemes story). A storybook is the catalog of what the package ships:
+ * every theme has to be switchable here, and loading the full set keeps the harness's token
+ * surface identical to the published monolith, so a scene diff means a real regression
+ * rather than a theme this file forgot.
+ *
+ * The individual files, not `/css/themes.css`, because that is the shape an application
+ * uses: the aggregate exists for the monolith build and would hide which themes are in play.
+ */
+@import '@fluentui/react-tailwind-theme-preview/css/themes/web-light.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/web-dark.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/teams-light.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/teams-dark.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/teams-high-contrast.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/teams-light-v21.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/teams-dark-v21.css';
+
+/* Headless icons stylesheet, layered at fui.base for the same reasons as the theme
+   package's own emit.css (which serves published consumers; this copy serves storybooks). */
+@import '@fluentui/react-icons/headless/styles.css' layer(fui.base);

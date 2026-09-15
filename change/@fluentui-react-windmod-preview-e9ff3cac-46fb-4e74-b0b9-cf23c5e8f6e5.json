@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Use the expanded state selector for NavCategoryItem to match the latest headless component.",
+  "packageName": "@fluentui/react-windmod-preview",
+  "email": "array.knight+github@gmail.com"
+}

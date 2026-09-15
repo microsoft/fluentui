@@ -1,0 +1,86 @@
+@reference '#theme';
+
+/* Block order carries the cascade: the colour classes override `.indicator`'s resting colour,
+   and `.unselected` is authored last so its forced-colors override outranks them. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative;
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+  }
+
+  .small {
+    @apply size-12 text-icon-12;
+  }
+
+  .medium {
+    @apply size-16 text-icon-16;
+  }
+
+  .large {
+    @apply size-20 text-icon-20;
+  }
+
+  .extra-large {
+    @apply size-28 text-icon-28;
+  }
+
+  .input {
+    @apply absolute inset-0 h-full cursor-pointer opacity-0;
+  }
+
+  .input-lower-half {
+    @apply end-1/2;
+  }
+
+  .input-upper-half {
+    @apply start-1/2;
+  }
+
+  .indicator {
+    @apply pointer-events-none absolute inset-0 flex overflow-hidden fill-current text-neutral-foreground-1;
+  }
+
+  .selected-brand {
+    @apply text-brand-foreground-1;
+  }
+
+  .selected-marigold {
+    @apply text-palette-marigold-border-active;
+  }
+
+  .unselected-neutral {
+    @apply text-neutral-background-6;
+  }
+
+  .unselected-brand {
+    @apply text-brand-background-2;
+  }
+
+  .unselected-marigold {
+    @apply text-palette-marigold-background-2;
+  }
+
+  .unselected {
+    @apply stroke-transparent-stroke;
+
+    @variant forced-colors {
+      @apply stroke-[CanvasText] text-[Canvas];
+    }
+  }
+
+  .lower-half {
+    @apply end-1/2;
+
+    @variant icon {
+      @apply flex-none;
+    }
+  }
+
+  .upper-half {
+    @apply start-1/2 -ms-[50%];
+  }
+}

@@ -1,0 +1,13 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @apply ps-46;
+
+    @variant selected {
+      @variant after {
+        @apply -ms-52;
+      }
+    }
+  }
+}

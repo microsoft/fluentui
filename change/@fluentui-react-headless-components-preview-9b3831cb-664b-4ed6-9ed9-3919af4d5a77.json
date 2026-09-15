@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: let a consumer popover prop win on PopoverSurface by moving the default into the surface slot defaultProps, so more than one Popover can be open per page",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,89 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Block order is Griffel's merge order (base, highContrast, focusIndicator, selected, large),
+     not state severity: highContrast's own hover override must beat the resting hover, and the
+     open background must beat highContrast's CanvasText. Every catalog variant is :where()-flat,
+     so source order alone decides. */
+  .root {
+    /* The ring is drawn by the ::after of fui-focus-outline, so the user-agent's own ring is
+       suppressed here. Resting placement is one of the two spellings this package uses; the other
+       authors the same reset inside a `@variant focus` block. Both suppress the ring in every state
+       the user agent draws it. */
+    @apply relative inline-flex items-center justify-center rounded-medium border-none bg-transparent-background px-horizontal-xs py-vertical-xs align-middle text-base-300 text-neutral-foreground-2 no-underline outline-none;
+
+    /* The glyphs are this root's direct children — InfoButton has no icon slot. */
+    @variant icon-filled {
+      @apply hidden;
+    }
+
+    @variant icon-regular {
+      @apply inline-flex;
+    }
+
+    @variant hover {
+      @apply cursor-pointer bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+
+      @variant icon-filled {
+        @apply inline-flex;
+      }
+
+      @variant icon-regular {
+        @apply hidden;
+      }
+    }
+
+    @variant hover-active {
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+    }
+
+    @variant forced-colors {
+      @apply text-[CanvasText];
+
+      @variant hover, hover-active {
+        @apply bg-[Highlight] text-[Canvas] forced-color-adjust-none;
+      }
+    }
+
+    @variant focus-visible {
+      @apply fui-focus-outline;
+    }
+
+    @variant open {
+      @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+
+      @variant icon-filled {
+        @apply inline-flex;
+      }
+
+      @variant icon-regular {
+        @apply hidden;
+      }
+
+      @variant forced-colors {
+        @apply bg-[Highlight] text-[Canvas];
+      }
+    }
+
+    @variant size-large {
+      @apply p-vertical-xxs;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* The info slot renders a windmod PopoverSurface; these blocks override its l1 typography. */
+  .info {
+    @apply max-w-264;
+  }
+
+  /* Restated rather than omitted: Griffel authors body1 explicitly on the large surface, and a
+     class that only repeats the l1 default is a no-op no mutation could kill. */
+  .info-small-medium {
+    @apply text-base-200 leading-16/12;
+  }
+
+  .info-large {
+    @apply text-base-300 leading-20/14;
+  }
+}

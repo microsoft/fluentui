@@ -1,0 +1,7 @@
+/**
+ * The `#theme` reference target for this package's `*.module.css` files. Composes the shared
+ * theme (generic vocabulary, tokens, layer order) with this package's own component-specific
+ * variant catalog, so a module needs only one `@reference '#theme'` line to see both.
+ */
+@import '@fluentui/react-tailwind-theme-preview/css/index.css';
+@import './variants.css';

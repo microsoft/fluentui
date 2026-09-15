@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(postcss-tailwind-css-modules): make CommonJS plugin calls type-check while preserving ESM imports",
+  "packageName": "@fluentui/postcss-tailwind-css-modules",
+  "email": "array.knight+github@gmail.com"
+}

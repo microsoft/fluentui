@@ -1,0 +1,46 @@
+import * as React from 'react';
+import {
+  Button,
+  FluentProvider,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuItemCheckbox,
+  MenuItemLink,
+  MenuItemSwitch,
+  MenuList,
+  MenuPopover,
+  MenuSplitGroup,
+  MenuTrigger,
+  webLightTheme,
+} from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+import { MenuSequelVrScene } from './MenuSequelVrScene';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+// Griffel portals each surface to its own node, so nothing needs pinning.
+const popoverProps = {};
+
+/** The Griffel half of the RTL band — see MenuSequelRtlWindmod. */
+export const MenuSequelRtlGriffel = (): React.ReactNode => (
+  <FluentProvider theme={webLightTheme} dir="rtl">
+    <MenuSequelVrScene
+      Menu={Menu as never}
+      MenuTrigger={MenuTrigger as never}
+      MenuPopover={MenuPopover as never}
+      MenuList={MenuList as never}
+      MenuItem={MenuItem as never}
+      MenuItemCheckbox={MenuItemCheckbox as never}
+      MenuItemLink={MenuItemLink as never}
+      MenuItemSwitch={MenuItemSwitch as never}
+      MenuSplitGroup={MenuSplitGroup as never}
+      MenuDivider={MenuDivider as never}
+      Button={Button}
+      Icon={CalendarMonth}
+      popoverProps={popoverProps}
+      dir="rtl"
+    />
+  </FluentProvider>
+);
