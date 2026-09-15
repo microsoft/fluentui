@@ -34,6 +34,7 @@ const PBI_PAGINATED_REPORT = 'pbipagereport';
 const PBI_SCORECARD = 'pbiscorecard';
 const PBI_SEMANTIC_MODEL = 'pbisemmodel';
 const PBI_REPORT = 'powerbi';
+const WIKI_PAGE = 'wikipage';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -198,6 +199,9 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.pbiReport:
         iconBaseName = PBI_REPORT;
+        break;
+      case FileIconType.wikiPage:
+        iconBaseName = WIKI_PAGE;
         break;
     }
   }
