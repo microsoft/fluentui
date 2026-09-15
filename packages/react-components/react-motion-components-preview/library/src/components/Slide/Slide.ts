@@ -1,7 +1,7 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
-import { slideAtom } from '../../atoms/slide-atom';
+import { slideAtom2 } from '../../atoms/slide-atom2';
 import type { SlideParams } from './slide-types';
 
 /**
@@ -32,17 +32,28 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   inY = '0px',
   animateOpacity = true,
 }: SlideParams) => {
-  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, delay, outX, outY, inX, inY })];
+  const enterAtoms = [
+    slideAtom2({
+      duration,
+      easing,
+      delay,
+      fill: 'both',
+      fromX: outX,
+      fromY: outY,
+      toX: inX,
+      toY: inY,
+    }),
+  ];
   const exitAtoms = [
-    slideAtom({
-      direction: 'exit',
+    slideAtom2({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outX,
-      outY,
-      inX,
-      inY,
+      fill: 'both',
+      fromX: inX,
+      fromY: inY,
+      toX: outX,
+      toY: outY,
     }),
   ];
 
