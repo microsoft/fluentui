@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add @fluentui/react-storybook-addon-playground package scaffold",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "dmytrokirpa@microsoft.com"
+}

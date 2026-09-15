@@ -1,0 +1,32 @@
+{
+  "name": "react-storybook-addon-playground",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/react-storybook-addon-playground/src",
+  "tags": ["vNext", "platform:any", "tools"],
+  "targets": {
+    "build": {
+      "dependsOn": ["^build", "build-playground"],
+      "options": {
+        "assets": [
+          {
+            "input": "{projectRoot}/src",
+            "output": "dist",
+            "glob": "styles.css"
+          }
+        ]
+      }
+    },
+    "build-playground": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^production"],
+      "outputs": ["{projectRoot}/dist/playground"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "webpack --config webpack.playground.config.js"
+      }
+    }
+  }
+}

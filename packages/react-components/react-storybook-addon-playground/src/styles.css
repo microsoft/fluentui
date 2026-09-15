@@ -1,0 +1,29 @@
+/* Match the styling of the "Show code" / "Open in ..." buttons rendered by Storybook and sibling addons */
+.docs-story .with-open-in-playground-button {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  min-width: 91px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 150% !important;
+  color: #201f1e !important;
+  text-align: center !important;
+  justify-content: center !important;
+  letter-spacing: -0.01em !important;
+  background: #f8f8f8 !important;
+  border: none !important;
+  border-radius: 5px 5px 0px 0px !important;
+  margin-right: 22px;
+  right: 105px !important;
+}
+
+@media screen and (max-width: 380px) {
+  .docs-story .with-open-in-playground-button {
+    font-size: 10px !important;
+  }
+}
+
+.docs-story .with-open-in-playground-button:focus {
+  outline: none;
+  box-shadow: #1ea7fd 0 -3px 0 0 inset;
+}

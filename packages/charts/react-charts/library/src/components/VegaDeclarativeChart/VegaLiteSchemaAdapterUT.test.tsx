@@ -3,6 +3,9 @@ import {
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
+  transformVegaLiteToGroupedVerticalBarChartProps,
+  transformVegaLiteToVerticalStackedBarChartProps,
+  transformVegaLiteToScatterChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
@@ -1456,6 +1459,133 @@ describe('VegaLiteSchemaAdapter', () => {
 
       expect(pointA?.y).toBe(20); // (10 + 20 + 30) / 3
       expect(pointB?.y).toBe(20); // (15 + 25) / 2
+    });
+  });
+
+  describe('Prototype pollution hardening', () => {
+    const pollutionKeys = ['__proto__', 'constructor', 'prototype'];
+
+    afterEach(() => {
+      // Ensure no test leaked a polluting property onto Object.prototype.
+      for (const key of ['polluted', 'injected', 'NODE_OPTIONS']) {
+        delete (Object.prototype as Record<string, unknown>)[key];
+      }
+    });
+
+    test.each(pollutionKeys)(
+      'transformVegaLiteToGroupedVerticalBarChartProps does not pollute Object.prototype via x value "%s"',
+      magicKey => {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: {
+            values: [
+              { category: magicKey, value: 1, series: 'polluted' },
+              { category: 'A', value: 2, series: 'polluted' },
+            ],
+          },
+          encoding: {
+            x: { field: 'category', type: 'nominal' },
+            y: { field: 'value', type: 'quantitative' },
+            color: { field: 'series', type: 'nominal' },
+            xOffset: { field: 'series' },
+          },
+        };
+
+        const result = transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+        expect(({} as Record<string, unknown>).polluted).toBeUndefined();
+        expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'polluted')).toBe(false);
+        // The malicious category is still processed as ordinary data.
+        expect(result.data!.some(d => d.name === magicKey)).toBe(true);
+      },
+    );
+
+    test.each(pollutionKeys)(
+      'transformVegaLiteToGroupedVerticalBarChartProps does not pollute Object.prototype via series value "%s"',
+      magicKey => {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: {
+            values: [{ category: 'A', value: 1, series: magicKey }],
+          },
+          encoding: {
+            x: { field: 'category', type: 'nominal' },
+            y: { field: 'value', type: 'quantitative' },
+            color: { field: 'series', type: 'nominal' },
+            xOffset: { field: 'series' },
+          },
+        };
+
+        expect(() => transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false)).not.toThrow();
+        expect(Object.prototype.hasOwnProperty.call(Object.prototype, '1')).toBe(false);
+      },
+    );
+
+    test.each(pollutionKeys)(
+      'transformVegaLiteToVerticalStackedBarChartProps does not pollute or crash via x value "%s"',
+      magicKey => {
+        const spec: VegaLiteSpec = {
+          mark: 'bar',
+          data: {
+            values: [
+              { category: magicKey, value: 1, series: 'polluted' },
+              { category: 'A', value: 2, series: 'polluted' },
+            ],
+          },
+          encoding: {
+            x: { field: 'category', type: 'nominal' },
+            y: { field: 'value', type: 'quantitative' },
+            color: { field: 'series', type: 'nominal' },
+          },
+        };
+
+        expect(() => transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap }, false)).not.toThrow();
+        expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'polluted')).toBe(false);
+      },
+    );
+
+    test.each(pollutionKeys)(
+      'transformVegaLiteToScatterChartProps does not pollute or crash via series value "%s"',
+      magicKey => {
+        const spec: VegaLiteSpec = {
+          mark: 'point',
+          data: {
+            values: [
+              { x: 1, y: 2, series: magicKey },
+              { x: 3, y: 4, series: magicKey },
+            ],
+          },
+          encoding: {
+            x: { field: 'x', type: 'quantitative' },
+            y: { field: 'y', type: 'quantitative' },
+            color: { field: 'series', type: 'nominal' },
+          },
+        };
+
+        expect(() => transformVegaLiteToScatterChartProps(spec, { current: colorMap }, false)).not.toThrow();
+        expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'polluted')).toBe(false);
+      },
+    );
+
+    test('environment-shaped series name is not written onto Object.prototype', () => {
+      const envKey = 'NODE_OPTIONS';
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [{ category: '__proto__', value: 1, series: envKey }],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(({} as Record<string, unknown>)[envKey]).toBeUndefined();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, envKey)).toBe(false);
     });
   });
 });
