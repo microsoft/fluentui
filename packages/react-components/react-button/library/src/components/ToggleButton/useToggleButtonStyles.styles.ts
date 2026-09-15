@@ -142,6 +142,9 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
+  },
 });
 
 const useCheckedAccessibleStyles = makeStyles({
@@ -196,6 +199,9 @@ const useCheckedAccessibleStyles = makeStyles({
   },
 
   secondary: {
+    /* No styles */
+  },
+  tint: {
     /* No styles */
   },
 });
@@ -265,6 +271,9 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
+  },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
   },
 });
 
