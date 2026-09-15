@@ -166,7 +166,7 @@ export interface UseTableFeaturesOptions<TItem> {
   getRowId?: (item: TItem) => TableRowId;
 }
 
-export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export type TableFeaturePlugin<TItem> = (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 export interface ColumnWidthState {
   columnId: TableColumnId;
