@@ -531,6 +531,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     props.onChartMouseLeave && props.onChartMouseLeave();
   }
 
+  function _onChartBlur(event: React.FocusEvent<HTMLDivElement>): void {
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) {
+      _onChartLeave();
+    }
+  }
+
   function _calculateChartMinWidth(): number {
     // Adding 10px for padding on both sides
     const labelWidth = _calcMaxLabelWidthWithTransform(_tickLabels) + 10;
@@ -746,6 +752,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       ref={(rootElem: HTMLDivElement) => {
         chartContainer.current = rootElem;
       }}
+      onBlur={_onChartBlur}
       onMouseLeave={_onChartLeave}
     >
       <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>

@@ -47,6 +47,22 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
 export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 
 /**
+ * GaugeChart segment data with its calculated range.
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartCalloutSegment extends GaugeChartSegment {
+  /**
+   * Start of the segment range.
+   */
+  start: number;
+
+  /**
+   * End of the segment range.
+   */
+  end: number;
+}
+
+/**
  * Data provided to a custom GaugeChart callout renderer.
  * {@docCategory GaugeChart}
  */
@@ -55,6 +71,11 @@ export interface GaugeChartCalloutData {
    * Legend of the segment or gauge element that opened the callout.
    */
   legend: string;
+
+  /**
+   * Title of the gauge.
+   */
+  chartTitle?: string;
 
   /**
    * Current value of the gauge.
@@ -75,6 +96,11 @@ export interface GaugeChartCalloutData {
    * Formatted current value displayed in the default callout.
    */
   chartValueLabel: string;
+
+  /**
+   * Gauge segments with their calculated ranges.
+   */
+  segments: GaugeChartCalloutSegment[];
 
   /**
    * Segment values displayed in the default callout.
