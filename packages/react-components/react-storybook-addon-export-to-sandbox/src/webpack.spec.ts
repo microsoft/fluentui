@@ -23,7 +23,7 @@ describe(`webpack`, () => {
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
-                { importMappings: undefined, cssModules: false },
+                { importMappings: {}, cssModules: false },
               ],
             ],
           },
@@ -76,6 +76,33 @@ describe(`webpack`, () => {
     ]);
   });
 
+  it(`should register user provided options from a Windows preset path`, () => {
+    const actual = webpack({ module: { rules: [] } }, {
+      presetsList: [
+        {
+          name: 'node_modules\\@fluentui\\react-storybook-addon-export-to-sandbox\\lib\\preset.js',
+          preset: {},
+          options: {
+            importMappings: { '@proj/foo': { replace: '@proj/moo' } },
+          } as PresetConfig,
+        },
+      ],
+    } as WebpackFinalOptions);
+
+    expect(actual.module?.rules?.[0]).toMatchObject({
+      use: {
+        options: {
+          plugins: [
+            [
+              expect.stringContaining('babel-preset-storybook-full-source'),
+              { importMappings: { '@proj/foo': { replace: '@proj/moo' } }, cssModules: false },
+            ],
+          ],
+        },
+      },
+    });
+  });
+
   it.each([
     ['boolean true', true as const],
     ['object with tokensFilePath', { tokensFilePath: '/path/to/tokens.css' }],
@@ -99,10 +126,7 @@ describe(`webpack`, () => {
           options: {
             parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
-              [
-                expect.stringContaining('babel-preset-storybook-full-source'),
-                { importMappings: undefined, cssModules },
-              ],
+              [expect.stringContaining('babel-preset-storybook-full-source'), { importMappings: {}, cssModules }],
             ],
           },
         },
