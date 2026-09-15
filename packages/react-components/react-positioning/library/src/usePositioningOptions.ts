@@ -1,7 +1,7 @@
 'use client';
 
 import { devtools } from '@floating-ui/devtools';
-import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import { arrow as arrowMiddleware, hide as hideMiddleware } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
@@ -16,8 +16,14 @@ import {
   intersecting as intersectingMiddleware,
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
-import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
-import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
+import type {
+  PositioningConfigurationFn,
+  PositioningConfigurationFnOptions,
+  PositioningBoundary,
+  PositioningOptions,
+  TargetElement,
+} from './types';
+import { getBoundary, toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
 import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
@@ -38,6 +44,7 @@ function usePositioningConfigFn(
     coverTarget,
     disableUpdateOnResize,
     flipBoundary,
+    hideBoundary,
     offset,
     overflowBoundary,
     pinned,
@@ -65,6 +72,7 @@ function usePositioningConfigFn(
           strategy,
           coverTarget,
           flipBoundary,
+          hideBoundary,
           overflowBoundary,
           useTransform,
           overflowBoundaryPadding,
@@ -87,6 +95,7 @@ function usePositioningConfigFn(
       strategy,
       coverTarget,
       flipBoundary,
+      hideBoundary,
       overflowBoundary,
       useTransform,
       overflowBoundaryPadding,
@@ -107,6 +116,7 @@ function usePositioningConfigFn(
  */
 export function usePositioningOptions(options: PositioningOptions): (
   container: HTMLElement,
+  target: TargetElement,
   arrow: HTMLElement | null,
 ) => {
   placement: Placement | undefined;
@@ -120,14 +130,14 @@ export function usePositioningOptions(options: PositioningOptions): (
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
   const {
+    hideBoundaryDefault,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
   } = options;
 
   return React.useCallback(
-    (container: HTMLElement, arrow: HTMLElement | null) => {
+    (container: HTMLElement, target: TargetElement, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
-
       const optionsAfterEnhancement = configFn(container, arrow);
       const {
         autoSize,
@@ -136,6 +146,7 @@ export function usePositioningOptions(options: PositioningOptions): (
         offset,
         coverTarget,
         flipBoundary,
+        hideBoundary,
         overflowBoundary,
         useTransform,
         overflowBoundaryPadding,
@@ -150,6 +161,18 @@ export function usePositioningOptions(options: PositioningOptions): (
         unstable_disableTether,
       } = optionsAfterEnhancement;
       const normalizedAutoSize = normalizeAutoSize(autoSize);
+      const targetElement = 'nodeType' in target ? target : target.contextElement;
+      const getHideBoundaryOptions = (boundary: PositioningBoundary | null | undefined) => {
+        const normalizedBoundary = getBoundary(targetElement ?? null, boundary);
+
+        return normalizedBoundary === undefined ? {} : { boundary: normalizedBoundary };
+      };
+      const referenceHiddenBoundaryOptions = getHideBoundaryOptions(
+        hideBoundary === undefined ? hideBoundaryDefault?.referenceHidden : hideBoundary,
+      );
+      const escapedBoundaryOptions = getHideBoundaryOptions(
+        hideBoundary === undefined ? hideBoundaryDefault?.escaped : hideBoundary,
+      );
 
       const middleware = [
         normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
@@ -170,8 +193,8 @@ export function usePositioningOptions(options: PositioningOptions): (
           maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden' }),
-        hideMiddleware({ strategy: 'escaped' }),
+        hideMiddleware({ strategy: 'referenceHidden', ...referenceHiddenBoundaryOptions }),
+        hideMiddleware({ strategy: 'escaped', ...escapedBoundaryOptions }),
         process.env.NODE_ENV !== 'production' &&
           targetDocument &&
           devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
@@ -188,6 +211,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         useTransform,
       };
     },
-    [configFn, isRtl, targetDocument, positionFixed],
+    [configFn, hideBoundaryDefault, isRtl, targetDocument, positionFixed],
   );
 }
