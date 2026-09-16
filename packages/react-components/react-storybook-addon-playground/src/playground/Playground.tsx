@@ -167,7 +167,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [code, setCode] = React.useState(initialCode ?? '');
   const [cssModules, setCssModules] = React.useState(initialCssModules);
   const [activeFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
-  const [previewCssModules, setPreviewCssModules] = React.useState(() => compileCssModules(initialCssModules));
+  const [previewCssModules, setPreviewCssModules] = React.useState<ReturnType<typeof compileCssModules>>([]);
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
   const [requiredModules, setRequiredModules] = React.useState<string[]>([]);
