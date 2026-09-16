@@ -14,7 +14,8 @@ const manifest: ResolvedPlaygroundRuntimeManifest = {
 
 function getBootstrap(token: string): string {
   const documentSource = createSandboxDocument(manifest, token);
-  const bootstrap = documentSource.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  const sandboxDocument = new DOMParser().parseFromString(documentSource, 'text/html');
+  const bootstrap = sandboxDocument.querySelector('script:not([src])')?.textContent;
   if (!bootstrap) {
     throw new Error('Sandbox bootstrap not found');
   }

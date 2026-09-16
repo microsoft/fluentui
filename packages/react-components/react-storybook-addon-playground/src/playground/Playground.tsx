@@ -80,6 +80,9 @@ function toErrorState(error: unknown): PlaygroundErrorState {
   }
 
   if (error instanceof Error) {
+    if (error.name === 'CssSyntaxError') {
+      return { title: 'CSS syntax error', message: error.message };
+    }
     return { title: 'Runtime error', message: `${error.name}: ${error.message}` };
   }
 
@@ -164,8 +167,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [code, setCode] = React.useState(initialCode ?? '');
   const [cssModules, setCssModules] = React.useState(initialCssModules);
   const [activeFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
-  const compiledCssModules = React.useMemo(() => compileCssModules(cssModules), [cssModules]);
-  const [previewCssModules, setPreviewCssModules] = React.useState(compiledCssModules);
+  const [previewCssModules, setPreviewCssModules] = React.useState(() => compileCssModules(initialCssModules));
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
   const [requiredModules, setRequiredModules] = React.useState<string[]>([]);
@@ -292,8 +294,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
       const nextRequiredModules = getRequiredModules(result.code);
       assertAllowedModules(nextRequiredModules, manifest.allowedModules);
+      const nextCssModules = compileCssModules(cssModules);
       setCompiledCode(result.code);
       setRequiredModules(nextRequiredModules);
+      setPreviewCssModules(nextCssModules);
       setRunId(id => id + 1);
       setError(null);
     } catch (err) {
@@ -302,7 +306,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         setStatus('error');
       }
     }
-  }, [manifest.allowedModules, model, runtimeReady]);
+  }, [cssModules, manifest.allowedModules, model, runtimeReady]);
 
   React.useEffect(() => {
     if (!model || !targetWindow || typingsStatus === 'loading' || !runtimeReady) {
@@ -327,17 +331,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }, HASH_SYNC_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
   }, [code, cssModules, targetWindow]);
-
-  React.useEffect(() => {
-    if (!targetWindow) {
-      return;
-    }
-
-    const timeout = targetWindow.setTimeout(() => {
-      setPreviewCssModules(compiledCssModules);
-    }, RUN_DEBOUNCE_MS);
-    return () => targetWindow.clearTimeout(timeout);
-  }, [compiledCssModules, targetWindow]);
 
   const handleMetadata = React.useCallback((nextMetadata: PlaygroundSetupMetadata) => {
     setMetadata(nextMetadata);
@@ -406,7 +399,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     const nextCssModules = initialCssModules.map(mod => ({ ...mod }));
     setCode(nextCode);
     setCssModules(nextCssModules);
-    setPreviewCssModules(compileCssModules(nextCssModules));
   }, [initialCode, initialCssModules, metadata.defaultCode]);
 
   const handleCopyLink = React.useCallback(async () => {

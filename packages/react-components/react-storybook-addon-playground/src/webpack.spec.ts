@@ -1,4 +1,13 @@
-import { buildRuntimeEntrySource, filterRuntimeEntryAssets } from './webpack';
+import { buildRuntimeEntrySource, filterRuntimeEntryAssets, isPlaygroundAddonFile } from './webpack';
+
+describe('isPlaygroundAddonFile', () => {
+  it.each([
+    '/repo/react-storybook-addon-playground/preset.js',
+    'C:\\repo\\react-storybook-addon-playground\\preset.js',
+  ])('matches the addon preset path %s', presetPath => {
+    expect(isPlaygroundAddonFile(presetPath)).toBe(true);
+  });
+});
 
 describe('filterRuntimeEntryAssets', () => {
   it('removes playground-only assets from Storybook HTML and preserves shared chunks', () => {

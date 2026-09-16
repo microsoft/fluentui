@@ -32,7 +32,7 @@ type HtmlWebpackPluginConstructor = {
 export const ENTRY_NAME = 'playground-runtime';
 export const REGISTER_CALLBACK = '__FLUENTUI_PLAYGROUND_REGISTER_V1__';
 
-const addonFilePattern = /react-storybook-addon-playground\/[a-z/]+.[jt]s$/;
+const addonFilePattern = /react-storybook-addon-playground[\\/][a-z\\/]+\.[jt]s$/;
 const defaultOptions: PresetConfig = {
   modules: {},
 };
@@ -121,10 +121,14 @@ function matchesAnyAsset(assetUrl: string, assetFiles: string[]): boolean {
 }
 
 function getAddonOptions(options: WebpackFinalOptions): PresetConfig {
-  const presetRegistration = options.presetsList?.find(preset => addonFilePattern.test(preset.name));
+  const presetRegistration = options.presetsList?.find(preset => isPlaygroundAddonFile(preset.name));
   const addonOptions = presetRegistration?.options ?? {};
 
   return { ...defaultOptions, ...addonOptions };
+}
+
+export function isPlaygroundAddonFile(filePath: string): boolean {
+  return addonFilePattern.test(filePath);
 }
 
 function getDefaultSetupPath(): string {
