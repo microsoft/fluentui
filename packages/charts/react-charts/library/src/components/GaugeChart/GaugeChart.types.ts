@@ -100,7 +100,7 @@ export interface GaugeChartCalloutData {
   /**
    * Gauge segments with their calculated ranges.
    */
-  segments: GaugeChartCalloutSegment[];
+  segments?: GaugeChartCalloutSegment[];
 
   /**
    * Segment values displayed in the default callout.
@@ -167,6 +167,8 @@ export interface GaugeChartProps {
 
   /**
    * Format of the chart value
+   * A custom formatter applies to the chart value and the current value in the callout.
+   * Use `onRenderCallout` to customize units for segment ranges.
    * @defaultvalue GaugeValueFormat.Percentage
    */
   chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);

@@ -394,9 +394,9 @@ describe('GaugeChart custom callout', () => {
       chartValue: 30,
       chartTitle: 'Server tick time',
       minValue: 10,
-      maxValue: 110,
+      maxValue: 120,
       onRenderCallout: (calloutData?: GaugeChartCalloutData) => {
-        const lastSegment = calloutData?.segments.at(-1);
+        const lastSegment = calloutData?.segments?.at(-1);
         return (
           <div data-testid="custom-gauge-callout">
             {calloutData?.chartTitle}: {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-
@@ -410,8 +410,9 @@ describe('GaugeChart custom callout', () => {
       fireEvent.mouseOver(chartSegments[0]);
 
       expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent(
-        'Server tick time: Low Risk: 30 blocks (10-110); last range 77-110',
+        'Server tick time: Low Risk: 30 blocks (10-120); last range 77-110',
       );
+      expect(screen.getByTestId('custom-gauge-callout')).not.toHaveTextContent('Unknown');
     },
   );
 
@@ -421,7 +422,7 @@ describe('GaugeChart custom callout', () => {
     {
       segments,
       chartValue: 30,
-      chartValueFormat: ([value]) => `${value}ms`,
+      chartValueFormat: ([value]: [number, number]) => `${value}ms`,
       onRenderCallout: renderDefaultCallout,
     },
     () => {
@@ -534,8 +535,8 @@ describe('GaugeChart rendering and behavior tests', () => {
     expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('25%');
     expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('25%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('25/100');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('25/100');
 
     expect(getChartValueLabel(125, 100, 200, () => customChartValue)).toBe(customChartValue);
     expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe(customChartValue);

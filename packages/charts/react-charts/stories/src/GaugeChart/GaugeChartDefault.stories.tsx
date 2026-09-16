@@ -73,7 +73,7 @@ export const GaugeChartBasic = (): JSXElement => {
         <span className={styles.calloutTitle}>{data.chartTitle}</span>
         <span className={styles.calloutDescription}>Average time required to process one server tick.</span>
         <span className={styles.calloutValue}>Current value: {data.chartValueLabel}</span>
-        {data.segments.map((segment, index) => (
+        {data.segments?.map((segment, index) => (
           <span key={segment.legend}>
             {segment.legend}: {segment.start}
             {index === data.segments.length - 1 ? '+' : `-${segment.end}`} ms

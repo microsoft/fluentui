@@ -903,7 +903,7 @@ export interface GaugeChartCalloutData {
     legend: string;
     maxValue: number;
     minValue: number;
-    segments: GaugeChartCalloutSegment[];
+    segments?: GaugeChartCalloutSegment[];
     segmentValues: YValueHover[];
 }
 

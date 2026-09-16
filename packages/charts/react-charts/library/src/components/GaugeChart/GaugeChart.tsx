@@ -91,11 +91,11 @@ export const getChartValueLabel = (
     return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
   }
 
-  return minValue !== 0
-    ? chartValue.toString()
-    : chartValueFormat === 'fraction'
-    ? `${chartValue}/${maxValue}`
-    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+  if (chartValueFormat === 'fraction') {
+    return `${chartValue - minValue}/${maxValue - minValue}`;
+  }
+
+  return minValue !== 0 ? chartValue.toString() : `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
 
 const getCalloutSegmentLabel = (
@@ -750,7 +750,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       props.chartValueFormat,
                       true,
                     ),
-                    segments: _segments,
+                    segments: _segments.slice(0, props.segments.length).map(segment => ({ ...segment })),
                     segmentValues: hoverYValues,
                   };
 

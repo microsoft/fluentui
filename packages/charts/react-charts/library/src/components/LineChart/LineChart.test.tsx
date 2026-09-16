@@ -1034,4 +1034,36 @@ describe('LineChart - mouse events', () => {
     fireEvent.blur(dataPoint!, { relatedTarget: screen.getByTestId('before-chart') });
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
+
+  it('Should keep the callout open when focus moves within the chart', () => {
+    const { container } = render(<LineChart data={basicChartPoints} />, { container: root! });
+    const dataPoints = container.querySelectorAll<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoints.length).toBeGreaterThan(1);
+    fireEvent.focus(dataPoints[0]);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(dataPoints[0], { relatedTarget: dataPoints[1] });
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+  });
+
+  it('Should keep the callout open when focus moves into custom callout content', () => {
+    const onRenderCalloutPerDataPoint = () => <button data-testid="callout-action">Callout action</button>;
+    const { container } = render(
+      <LineChart
+        data={basicChartPoints}
+        isCalloutForStack={false}
+        onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint}
+      />,
+      { container: root! },
+    );
+    const dataPoint = container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoint).not.toBeNull();
+    fireEvent.focus(dataPoint!);
+    const calloutAction = screen.getByTestId('callout-action');
+
+    fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
+    expect(screen.getByTestId('callout-action')).toBeInTheDocument();
+  });
 });
