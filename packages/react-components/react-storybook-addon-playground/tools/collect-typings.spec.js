@@ -196,6 +196,33 @@ describe('collect-typings', () => {
       fs.rmSync(root, { recursive: true, force: true });
     });
 
+    it('uses a resolvable root exports target before falling back to @types', () => {
+      const root = createFixture({
+        'node_modules/exports-only/package.json': JSON.stringify({
+          name: 'exports-only',
+          exports: { '.': { types: './dist/index.d.ts', default: './lib/index.js' } },
+        }),
+        'node_modules/exports-only/dist/index.d.ts': `export declare const source: 'package';`,
+        'node_modules/@types/exports-only/package.json': JSON.stringify({
+          name: '@types/exports-only',
+          types: 'index.d.ts',
+        }),
+        'node_modules/@types/exports-only/index.d.ts': `export declare const source: 'fallback';`,
+      });
+
+      const result = collectTypings({
+        packageRoot: path.join(root, 'app'),
+        entries: ['exports-only'],
+        typescriptVersion: '4.5.5',
+      });
+
+      expect(result.missing).toEqual([]);
+      expect(result.files['file:///node_modules/exports-only/dist/index.d.ts']).toContain(`source: 'package'`);
+      expect(result.files['file:///node_modules/@types/exports-only/index.d.ts']).toBeUndefined();
+
+      fs.rmSync(root, { recursive: true, force: true });
+    });
+
     it('applies typesVersions to export types so Monaco TS <=5.0 gets the legacy React tree', () => {
       const root = createFixture({
         'node_modules/@types/react/package.json': JSON.stringify({

@@ -257,7 +257,11 @@ function collectTypings(options) {
     const ownDir = findPackageDir(name, fromDir);
     const own = ownDir ? load(ownDir) : null;
     const hasOwnTypes =
-      own && (own.packageJson.types || own.packageJson.typings || existingFile(path.join(own.dir, 'index.d.ts')));
+      own &&
+      (own.packageJson.types ||
+        own.packageJson.typings ||
+        existingFile(path.join(own.dir, 'index.d.ts')) ||
+        resolveEntryFile(own, ''));
 
     let result = hasOwnTypes ? own : null;
     if (!result && !name.startsWith('@types/')) {
