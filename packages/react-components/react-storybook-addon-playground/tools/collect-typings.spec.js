@@ -210,17 +210,19 @@ describe('collect-typings', () => {
         'node_modules/@types/exports-only/index.d.ts': `export declare const source: 'fallback';`,
       });
 
-      const result = collectTypings({
-        packageRoot: path.join(root, 'app'),
-        entries: ['exports-only'],
-        typescriptVersion: '4.5.5',
-      });
+      try {
+        const result = collectTypings({
+          packageRoot: path.join(root, 'app'),
+          entries: ['exports-only'],
+          typescriptVersion: '4.5.5',
+        });
 
-      expect(result.missing).toEqual([]);
-      expect(result.files['file:///node_modules/exports-only/dist/index.d.ts']).toContain(`source: 'package'`);
-      expect(result.files['file:///node_modules/@types/exports-only/index.d.ts']).toBeUndefined();
-
-      fs.rmSync(root, { recursive: true, force: true });
+        expect(result.missing).toEqual([]);
+        expect(result.files['file:///node_modules/exports-only/dist/index.d.ts']).toContain(`source: 'package'`);
+        expect(result.files['file:///node_modules/@types/exports-only/index.d.ts']).toBeUndefined();
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
     });
 
     it('applies typesVersions to export types so Monaco TS <=5.0 gets the legacy React tree', () => {
