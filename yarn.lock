@@ -2636,6 +2636,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/cli@workspace:tools/cli":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/cli@workspace:tools/cli"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.1"
+    "@types/yargs": "npm:^17.0.33"
+    fast-glob: "npm:^3.3.3"
+    ts-morph: "npm:^23.0.0"
+    yargs: "npm:^17.7.2"
+  bin:
+    cli: ./bin/fluentui-cli.js
+    fluentui-cli: ./bin/fluentui-cli.js
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/codemods@workspace:packages/codemods":
   version: 0.0.0-use.local
   resolution: "@fluentui/codemods@workspace:packages/codemods"
