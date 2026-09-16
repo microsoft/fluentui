@@ -1587,5 +1587,31 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(({} as Record<string, unknown>)[envKey]).toBeUndefined();
       expect(Object.prototype.hasOwnProperty.call(Object.prototype, envKey)).toBe(false);
     });
+
+    test('transform pipeline cannot launder the Function constructor through prototype fields', () => {
+      const marker = '__msrcFluentUiVegaBypass';
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: { values: [{ category: 'A', value: 1 }] },
+        transform: [
+          { calculate: 'abs', as: '__proto__' },
+          { aggregate: [{ op: 'count', as: '_s1' }], groupby: ['__proto__', 'category', 'value'] },
+          { aggregate: [{ op: 'count', as: '_s2' }], groupby: ['constructor', 'category', 'value'] },
+          { calculate: `datum.constructor("globalThis.${marker} = 'owned'; return 1337")()`, as: 'computed' },
+        ],
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+
+      delete (globalThis as unknown as Record<string, unknown>)[marker];
+      try {
+        transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }, false);
+        expect((globalThis as unknown as Record<string, unknown>)[marker]).toBeUndefined();
+      } finally {
+        delete (globalThis as unknown as Record<string, unknown>)[marker];
+      }
+    });
   });
 });
