@@ -5586,7 +5586,7 @@ __metadata:
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:^0.33.0"
-    postcss: "npm:^8.5.18"
+    postcss: "npm:8.5.18"
     prettier: "npm:^2.8.8"
     semver: "npm:^6.2.0"
   peerDependencies:
@@ -27006,7 +27006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.18, postcss@npm:^8.5.3":
+"postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.3":
   version: 8.5.28
   resolution: "postcss@npm:8.5.28"
   dependencies:
