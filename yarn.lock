@@ -5575,6 +5575,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@storybook/react": ">=9.1.17"
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-storybook-addon@npm:*, @fluentui/react-storybook-addon@workspace:packages/react-components/react-storybook-addon":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon@workspace:packages/react-components/react-storybook-addon"
