@@ -2679,6 +2679,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/component-style-specs@npm:0.0.0, @fluentui/component-style-specs@workspace:packages/component-style-specs/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/component-style-specs@workspace:packages/component-style-specs/library"
+  dependencies:
+    "@fluentui/style-spec": "npm:0.0.0"
+    "@swc/helpers": "npm:^0.5.1"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/cra-template@workspace:packages/cra-template":
   version: 0.0.0-use.local
   resolution: "@fluentui/cra-template@workspace:packages/cra-template"
@@ -6456,6 +6465,31 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
     react: ">=16.8.0 <20.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/style-spec-compilers@workspace:packages/style-spec-compilers":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/style-spec-compilers@workspace:packages/style-spec-compilers"
+  dependencies:
+    "@fluentui/component-style-specs": "npm:0.0.0"
+    "@fluentui/style-spec": "npm:0.0.0"
+    "@swc/helpers": "npm:^0.5.1"
+    "@types/yargs": "npm:^17.0.33"
+    prettier: "npm:2.8.8"
+    yargs: "npm:^17.7.2"
+  bin:
+    style-spec-compile: ./bin/style-spec-compile.js
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/style-spec@npm:0.0.0, @fluentui/style-spec@workspace:packages/style-spec":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/style-spec@workspace:packages/style-spec"
+  dependencies:
+    "@fluentui/tokens": "npm:1.0.0-alpha.24"
+    "@swc/helpers": "npm:^0.5.1"
+    ajv: "npm:^8.20.0"
   languageName: unknown
   linkType: soft
 
@@ -12491,7 +12525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^8.0.0, ajv@npm:^8.0.1, ajv@npm:^8.13.0, ajv@npm:^8.4.0, ajv@npm:^8.9.0":
+"ajv@npm:^8.0.0, ajv@npm:^8.0.1, ajv@npm:^8.13.0, ajv@npm:^8.20.0, ajv@npm:^8.4.0, ajv@npm:^8.9.0":
   version: 8.20.0
   resolution: "ajv@npm:8.20.0"
   dependencies:

@@ -340,6 +340,7 @@
   "workspaces": [
     "apps/*",
     "packages/*",
+    "packages/component-style-specs/*",
     "packages/react-components/*",
     "packages/react-components/*/*",
     "!packages/react-components/react-jsx-runtime/jsx-runtime",

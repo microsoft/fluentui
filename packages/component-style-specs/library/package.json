@@ -1,0 +1,70 @@
+{
+  "name": "@fluentui/component-style-specs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Published Fluent UI component style specifications (Badge, Button, Divider, …)",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/style-spec": "0.0.0",
+    "@swc/helpers": "^0.5.1"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./Badge": {
+      "import": {
+        "types": "./dist/Badge.d.ts",
+        "default": "./lib/Badge.js"
+      },
+      "require": {
+        "types": "./dist/Badge.d.cts",
+        "default": "./lib-commonjs/Badge.cjs"
+      }
+    },
+    "./Button": {
+      "import": {
+        "types": "./dist/Button.d.ts",
+        "default": "./lib/Button.js"
+      },
+      "require": {
+        "types": "./dist/Button.d.cts",
+        "default": "./lib-commonjs/Button.cjs"
+      }
+    },
+    "./Divider": {
+      "import": {
+        "types": "./dist/Divider.d.ts",
+        "default": "./lib/Divider.js"
+      },
+      "require": {
+        "types": "./dist/Divider.d.cts",
+        "default": "./lib-commonjs/Divider.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "type": "module"
+}

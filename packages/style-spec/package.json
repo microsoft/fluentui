@@ -1,0 +1,45 @@
+{
+  "name": "@fluentui/style-spec",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Framework-agnostic, JSON-shaped component style specification (types, validation, normalization)",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/tokens": "1.0.0-alpha.24",
+    "@swc/helpers": "^0.5.1"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./schema/component-style-spec.schema.json": "./src/schema/component-style-spec.schema.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs",
+    "src/schema"
+  ],
+  "type": "module"
+}
