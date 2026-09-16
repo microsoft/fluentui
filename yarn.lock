@@ -25233,16 +25233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.12":
-  version: 3.3.16
-  resolution: "nanoid@npm:3.3.16"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 10c0/bbf2dcffe22d2b62d16de2711752070b539c0f644c7916f823ad6521986b2078cbe524f2d6240f58c46e9141ea0c7b87a029e100c0f7f175228cacaf30e41bba
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.3.18":
+"nanoid@npm:^3.3.12, nanoid@npm:^3.3.18":
   version: 3.3.18
   resolution: "nanoid@npm:3.3.18"
   bin:
@@ -27004,7 +26995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.18, postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.3":
+"postcss@npm:8.5.18":
   version: 8.5.18
   resolution: "postcss@npm:8.5.18"
   dependencies:
@@ -27015,7 +27006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.18":
+"postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.18, postcss@npm:^8.5.3":
   version: 8.5.28
   resolution: "postcss@npm:8.5.28"
   dependencies:
