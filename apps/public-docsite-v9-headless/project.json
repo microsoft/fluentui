@@ -9,6 +9,7 @@
       "dependsOn": [
         {
           "projects": [
+            "react-headless-components-preview",
             "react-storybook-addon",
             "react-storybook-addon-export-to-sandbox",
             "react-storybook-addon-playground",
@@ -22,6 +23,7 @@
       "dependsOn": [
         {
           "projects": [
+            "react-headless-components-preview",
             "react-storybook-addon",
             "react-storybook-addon-export-to-sandbox",
             "react-storybook-addon-playground",

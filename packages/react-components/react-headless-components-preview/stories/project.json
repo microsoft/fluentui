@@ -9,7 +9,7 @@
     "storybook": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon-playground"],
+          "projects": ["react-headless-components-preview", "react-storybook-addon-playground"],
           "target": "build"
         }
       ]
@@ -17,7 +17,7 @@
     "build-storybook": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon-playground"],
+          "projects": ["react-headless-components-preview", "react-storybook-addon-playground"],
           "target": "build"
         }
       ]
