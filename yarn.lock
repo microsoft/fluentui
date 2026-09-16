@@ -3264,6 +3264,7 @@ __metadata:
     "@fluentui/react-headless-components-preview": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    "@fluentui/react-storybook-addon-playground": "npm:*"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -5572,6 +5573,29 @@ __metadata:
     dedent: "npm:^1.2.0"
   peerDependencies:
     "@storybook/react": ^9.1.17
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-storybook-addon-playground@npm:*, @fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
+  dependencies:
+    "@fluentui/react-components": "npm:^9.74.7"
+    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@swc/helpers": "npm:^0.5.1"
+    lz-string: "npm:^1.5.0"
+    monaco-editor: "npm:^0.33.0"
+    prettier: "npm:^2.8.8"
+    semver: "npm:^6.2.0"
+  peerDependencies:
+    "@storybook/react": ">=9.1.17"
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    react-dom: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -25059,7 +25083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"monaco-editor@npm:0.33.0":
+"monaco-editor@npm:0.33.0, monaco-editor@npm:^0.33.0":
   version: 0.33.0
   resolution: "monaco-editor@npm:0.33.0"
   checksum: 10c0/660654fabf1219ccc5a8477eaa3a6ba6dfa4334ba0b19329503dc466b28f9cdcda958946351a22c92d12a033e6476031d61ddbb31b6ae764984bd70f34733a40
