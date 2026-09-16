@@ -8,7 +8,63 @@ export class PlaygroundError extends Error {
   }
 }
 
-const REQUIRE_REGEX = /\brequire\(\s*(["'])([^"']+)\1\s*\)/g;
+function skipQuoted(code: string, start: number, quote: string): number {
+  for (let index = start + 1; index < code.length; index += 1) {
+    if (code[index] === '\\') {
+      index += 1;
+    } else if (code[index] === quote) {
+      return index + 1;
+    }
+  }
+
+  return code.length;
+}
+
+function skipTrivia(code: string, start: number): number {
+  let index = start;
+  while (index < code.length) {
+    if (/\s/.test(code[index])) {
+      index += 1;
+    } else if (code.startsWith('//', index)) {
+      index = code.indexOf('\n', index + 2);
+      if (index === -1) {
+        return code.length;
+      }
+    } else if (code.startsWith('/*', index)) {
+      const end = code.indexOf('*/', index + 2);
+      index = end === -1 ? code.length : end + 2;
+    } else {
+      break;
+    }
+  }
+
+  return index;
+}
+
+function readString(code: string, start: number): { end: number; value: string } | undefined {
+  const quote = code[start];
+  if (quote !== '"' && quote !== "'") {
+    return undefined;
+  }
+
+  let value = '';
+  for (let index = start + 1; index < code.length; index += 1) {
+    const character = code[index];
+    if (character === '\\') {
+      if (index + 1 >= code.length) {
+        return undefined;
+      }
+      value += code[index + 1];
+      index += 1;
+    } else if (character === quote) {
+      return { end: index + 1, value };
+    } else {
+      value += character;
+    }
+  }
+
+  return undefined;
+}
 
 /**
  * CSS imports are executed from story CSS modules encoded in the playground URL.
@@ -19,13 +75,40 @@ export function isCssSpecifier(name: string): boolean {
 }
 
 /**
- * Collects module specifiers from `require()` calls in transpiled CommonJS code.
+ * Collects module specifiers from real `require()` calls in transpiled CommonJS code.
  */
 export function getRequiredModules(code: string): string[] {
   const modules = new Set<string>();
 
-  for (const match of code.matchAll(REQUIRE_REGEX)) {
-    modules.add(match[2]);
+  for (let index = 0; index < code.length; ) {
+    const character = code[index];
+    if (character === '"' || character === "'" || character === '`') {
+      index = skipQuoted(code, index, character);
+      continue;
+    }
+    if (code.startsWith('//', index) || code.startsWith('/*', index)) {
+      index = skipTrivia(code, index);
+      continue;
+    }
+    if (
+      code.startsWith('require', index) &&
+      !/[\w$]/.test(code[index - 1] ?? '') &&
+      code[index - 1] !== '.' &&
+      !/[\w$]/.test(code[index + 'require'.length] ?? '')
+    ) {
+      const openParen = skipTrivia(code, index + 'require'.length);
+      if (code[openParen] === '(') {
+        const argumentStart = skipTrivia(code, openParen + 1);
+        const argument = readString(code, argumentStart);
+        if (argument && code[skipTrivia(code, argument.end)] === ')') {
+          modules.add(argument.value);
+          index = argument.end;
+          continue;
+        }
+      }
+    }
+
+    index += 1;
   }
 
   return Array.from(modules);

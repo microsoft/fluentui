@@ -17,6 +17,19 @@ describe('runner', () => {
     it('returns an empty array when nothing is required', () => {
       expect(getRequiredModules('module.exports = 1;')).toEqual([]);
     });
+
+    it('ignores require-looking text that is not an executed call', () => {
+      const code = `
+        // require('comment')
+        /* require('block-comment') */
+        const text = "require('string')";
+        const template = \`require('template')\`;
+        object.require('method');
+        const actual = require(/* webpack comment */ 'react');
+      `;
+
+      expect(getRequiredModules(code)).toEqual(['react']);
+    });
   });
 
   describe('assertAllowedModules', () => {

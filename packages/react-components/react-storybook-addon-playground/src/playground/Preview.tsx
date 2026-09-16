@@ -12,6 +12,7 @@ import { usePreviewStyles } from './Preview.styles';
 
 export interface PreviewProps {
   code: string | null;
+  requiredModules?: string[];
   runId: number;
   themeId?: string;
   cssModules?: Array<{ name: string; specifier: string; locals: Record<string, string>; cssText: string }>;
@@ -28,7 +29,19 @@ export interface PreviewProps {
  * `sandbox="allow-scripts"`); subsequent runs postMessage compiled code without remounting.
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, ref) => {
-  const { code, runId, themeId, cssModules, manifest, onMetadata, onSuccess, onError, placeholder, className } = props;
+  const {
+    code,
+    requiredModules,
+    runId,
+    themeId,
+    cssModules,
+    manifest,
+    onMetadata,
+    onSuccess,
+    onError,
+    placeholder,
+    className,
+  } = props;
   const styles = usePreviewStyles();
   const { targetDocument } = useFluent();
   const frameRef = React.useRef<HTMLIFrameElement | null>(null);
@@ -42,7 +55,7 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
   }, [token]);
 
   const postRun = React.useCallback(() => {
-    if (!readyRef.current || !code || !frameRef.current?.contentWindow) {
+    if (!readyRef.current || code === null || !frameRef.current?.contentWindow) {
       return;
     }
 
@@ -52,13 +65,14 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
         token,
         type: 'run',
         code,
+        requiredModules,
         cssModules,
         themeId,
         runId,
       },
       '*',
     );
-  }, [code, cssModules, runId, themeId, token]);
+  }, [code, cssModules, requiredModules, runId, themeId, token]);
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
@@ -102,7 +116,7 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
         srcDoc={source}
         className={styles.frame}
       />
-      {!code && placeholder ? <div className={styles.placeholder}>{placeholder}</div> : null}
+      {code === null && placeholder ? <div className={styles.placeholder}>{placeholder}</div> : null}
     </div>
   );
 });

@@ -62,6 +62,7 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
       options: {
         importMappings: getImportMappingsForExportToSandboxAddon(),
         babelLoaderOptionsUpdater: processBabelLoaderOptions,
+        storyGranularity: 'story',
         cssModules: { tokensFilePath: path.resolve(__dirname, 'tokens.css') },
         webpackRule: {
           test: /\.stories\.tsx$/,

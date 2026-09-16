@@ -93,6 +93,14 @@ describe('collect-typings', () => {
       expect(applyTypesVersions(packageJson, 'jsx-runtime', '4.5.5')).toBe('ts5.0/jsx-runtime');
     });
 
+    it('replaces every wildcard in the selected target', () => {
+      const repeatedWildcard = { typesVersions: { '<=5.0': { '*': ['generated/*/fallback/*'] } } };
+
+      expect(applyTypesVersions(repeatedWildcard, 'jsx-runtime', '4.5.5')).toBe(
+        'generated/jsx-runtime/fallback/jsx-runtime',
+      );
+    });
+
     it('keeps paths when no range matches', () => {
       expect(applyTypesVersions(packageJson, 'index.d.ts', '5.4.0')).toBe('index.d.ts');
       expect(applyTypesVersions({}, 'index.d.ts', '4.5.5')).toBe('index.d.ts');

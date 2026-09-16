@@ -46,6 +46,22 @@ describe('cssModules', () => {
       expect(first.locals).toEqual(second.locals);
       expect(first.cssText).toBe(second.cssText);
     });
+
+    it('does not rewrite comments or declaration values and supports nested globals', () => {
+      const compiled = compileCssModule({
+        name: 'content.module.css',
+        source: `
+          /* .comment */
+          .root::before { content: ".value"; }
+          :global(.outer :global(.inner)) .local { color: red; }
+        `,
+      });
+
+      expect(compiled.cssText).toContain('/* .comment */');
+      expect(compiled.cssText).toContain('content: ".value"');
+      expect(compiled.cssText).toContain(`.outer .inner .${compiled.locals.local}`);
+      expect(compiled.locals).toEqual({ root: expect.any(String), local: expect.any(String) });
+    });
   });
 
   describe('findCompiledCssModule', () => {

@@ -36,6 +36,7 @@ import { createPlaygroundHash, type CssModuleSource } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { compileCssModules, cssModuleBasename, updateCssModuleSource } from './cssModules';
 import { Editor, TSX_FILE_PATH, type EditorFile } from './Editor';
+import { getNextFileTabIndex } from './fileTabs';
 import { registerFormatter } from './formatter';
 import { monaco } from './monaco';
 import { COMPACT_TOOLBAR_QUERY, usePlaygroundStyles } from './Playground.styles';
@@ -167,6 +168,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [previewCssModules, setPreviewCssModules] = React.useState(compiledCssModules);
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
+  const [requiredModules, setRequiredModules] = React.useState<string[]>([]);
   const [runId, setRunId] = React.useState(0);
   const [status, setStatus] = React.useState<RunStatus>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
@@ -179,6 +181,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const mainRef = React.useRef<HTMLElement | null>(null);
   const toasterId = useId('playground-toaster');
+  const fileTabId = useId('playground-file-tab');
+  const editorPanelId = useId('playground-editor-panel');
   const { dispatchToast } = useToastController(toasterId);
   const compactToolbar = useMediaQuery(COMPACT_TOOLBAR_QUERY);
   const split = useSplitPane(mainRef);
@@ -286,8 +290,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics));
       }
 
-      assertAllowedModules(getRequiredModules(result.code), manifest.allowedModules);
+      const nextRequiredModules = getRequiredModules(result.code);
+      assertAllowedModules(nextRequiredModules, manifest.allowedModules);
       setCompiledCode(result.code);
+      setRequiredModules(nextRequiredModules);
       setRunId(id => id + 1);
       setError(null);
     } catch (err) {
@@ -299,7 +305,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, [manifest.allowedModules, model, runtimeReady]);
 
   React.useEffect(() => {
-    if (!model || !targetWindow || typingsStatus === 'loading' || !runtimeReady || !code) {
+    if (!model || !targetWindow || typingsStatus === 'loading' || !runtimeReady) {
       return;
     }
 
@@ -377,6 +383,22 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       })),
     ],
     [code, cssModules],
+  );
+
+  const fileIds = React.useMemo(() => [TSX_FILE_PATH, ...cssModules.map(mod => mod.name)], [cssModules]);
+  const activeFileIndex = Math.max(fileIds.indexOf(activeFileId), 0);
+  const handleFileTabKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
+      const nextIndex = getNextFileTabIndex(event.key, currentIndex, fileIds.length);
+      if (nextIndex === null) {
+        return;
+      }
+
+      event.preventDefault();
+      setActiveFileId(fileIds[nextIndex]);
+      targetDocument?.getElementById(`${fileTabId}-${nextIndex}`)?.focus();
+    },
+    [fileIds, fileTabId, targetDocument],
   );
 
   const handleReset = React.useCallback(() => {
@@ -551,7 +573,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         </header>
 
         <main ref={mainRef} className={styles.main} style={splitStyle}>
-          <section className={styles.pane} aria-label="Code editor">
+          <section
+            className={styles.pane}
+            aria-label={cssModules.length === 0 ? 'Code editor' : undefined}
+            aria-labelledby={cssModules.length > 0 ? `${fileTabId}-${activeFileIndex}` : undefined}
+            id={cssModules.length > 0 ? editorPanelId : undefined}
+            role={cssModules.length > 0 ? 'tabpanel' : undefined}
+          >
             <div className={styles.paneHeader}>
               <span className={styles.paneTitle}>
                 <DocumentRegular />
@@ -560,24 +588,33 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                     <button
                       type="button"
                       role="tab"
+                      id={`${fileTabId}-0`}
+                      aria-controls={editorPanelId}
                       aria-selected={activeFileId === TSX_FILE_PATH}
+                      tabIndex={activeFileId === TSX_FILE_PATH ? 0 : -1}
                       className={mergeClasses(styles.fileTab, activeFileId === TSX_FILE_PATH && styles.fileTabActive)}
                       onClick={() => setActiveFileId(TSX_FILE_PATH)}
+                      onKeyDown={event => handleFileTabKeyDown(event, 0)}
                     >
                       {TSX_FILE_PATH}
                     </button>
-                    {cssModules.map(mod => {
+                    {cssModules.map((mod, index) => {
                       const tabId = mod.name;
                       const selected = activeFileId === tabId;
+                      const tabIndex = index + 1;
 
                       return (
                         <button
                           key={tabId}
                           type="button"
                           role="tab"
+                          id={`${fileTabId}-${tabIndex}`}
+                          aria-controls={editorPanelId}
                           aria-selected={selected}
+                          tabIndex={selected ? 0 : -1}
                           className={mergeClasses(styles.fileTab, selected && styles.fileTabActive)}
                           onClick={() => setActiveFileId(tabId)}
+                          onKeyDown={event => handleFileTabKeyDown(event, tabIndex)}
                         >
                           {cssModuleBasename(mod.name)}
                         </button>
@@ -625,6 +662,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             </div>
             <Preview
               code={compiledCode}
+              requiredModules={requiredModules}
               runId={runId}
               themeId={themeId}
               cssModules={previewCssModules}

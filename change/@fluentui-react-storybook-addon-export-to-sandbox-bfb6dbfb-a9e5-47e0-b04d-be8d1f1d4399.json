@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: ignore buttons added by the playground addon when locating the Show code toggle",
+  "type": "minor",
+  "comment": "feat: support per-story full source generation and playground addon buttons",
   "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
   "email": "dmytrokirpa@microsoft.com"
 }

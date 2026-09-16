@@ -20,8 +20,8 @@ export const usePlaygroundStyles = makeStyles({
     overflow: 'hidden',
     color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
-    fontSize: '13px',
-    lineHeight: '20px',
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
     backgroundColor: tokens.colorNeutralBackground3,
   },
   rootDragging: {

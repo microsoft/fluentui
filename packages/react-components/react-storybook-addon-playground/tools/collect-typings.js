@@ -168,7 +168,7 @@ function applyTypesVersions(packageJson, relativePath, typescriptVersion) {
     const suffix = pattern.slice(star + 1);
     if (relativePath.startsWith(prefix) && relativePath.endsWith(suffix)) {
       const matched = relativePath.slice(prefix.length, relativePath.length - suffix.length);
-      return targets[0].replace('*', matched);
+      return targets[0].replaceAll('*', matched);
     }
   }
 

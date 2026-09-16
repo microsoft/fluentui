@@ -17,12 +17,20 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
   const callbackName = ${escapeInlineJson(PLAYGROUND_REGISTER_CALLBACK)};
   let runtime;
   let root;
+  let RenderBoundary;
 
   const send = message => parent.postMessage({
     source: 'fluentui-playground',
     token,
     ...message,
   }, '*');
+
+  const sendError = (error, runId) => send({
+    type: 'error',
+    runId,
+    kind: error && error.kind ? error.kind : 'runtime',
+    message: error instanceof Error ? error.name + ': ' + error.message : String(error),
+  });
 
   const isComponentLike = value =>
     typeof value === 'function' ||
@@ -45,17 +53,32 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
     throw error;
   };
 
-  const getRequiredModules = code => {
-    const modules = new Set();
-    const regex = /\\brequire\\(\\s*(["'])([^"']+)\\1\\s*\\)/g;
-    for (const match of code.matchAll(regex)) {
-      modules.add(match[2]);
-    }
-    return Array.from(modules);
-  };
-
   window[callbackName] = nextRuntime => {
     runtime = nextRuntime;
+    RenderBoundary = class extends runtime.React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { error: null };
+      }
+
+      static getDerivedStateFromError(error) {
+        return { error };
+      }
+
+      componentDidCatch(error) {
+        sendError(error, this.props.runId);
+      }
+
+      componentDidMount() {
+        if (!this.state.error) {
+          send({ type: 'success', runId: this.props.runId });
+        }
+      }
+
+      render() {
+        return this.state.error ? null : this.props.children;
+      }
+    };
     delete window[callbackName];
 
     const setup = runtime.setup || {};
@@ -102,7 +125,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         }
         return undefined;
       };
-      const requested = getRequiredModules(message.code);
+      const requested = message.requiredModules || [];
       const unavailable = requested.filter(name => !runtime.moduleLoaders[name] && !findCssModule(name));
       if (unavailable.length > 0) {
         const error = new Error('Cannot import ' + unavailable.map(name => '"' + name + '"').join(', ') + '.');
@@ -150,17 +173,16 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
       const element = setup.render
         ? setup.render({ Component, theme: selectedTheme && selectedTheme.value })
         : runtime.React.createElement(Component);
+      const guardedElement = runtime.React.createElement(
+        RenderBoundary,
+        { key: message.runId, runId: message.runId },
+        element,
+      );
 
       root = root || runtime.createRoot(document.getElementById('root'));
-      root.render(element);
-      send({ type: 'success', runId: message.runId });
+      root.render(guardedElement);
     } catch (error) {
-      send({
-        type: 'error',
-        runId: message.runId,
-        kind: error && error.kind ? error.kind : 'runtime',
-        message: error instanceof Error ? error.name + ': ' + error.message : String(error),
-      });
+      sendError(error, message.runId);
     }
   });
 })();
