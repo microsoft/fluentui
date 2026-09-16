@@ -49,7 +49,7 @@
       "require": "./lib-commonjs/index.js"
     },
     "./setup": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/setup.d.ts",
       "node": {
         "module": "./lib/setup.js",
         "default": "./lib-commonjs/setup.js"

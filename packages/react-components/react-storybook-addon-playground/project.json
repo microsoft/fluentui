@@ -5,7 +5,18 @@
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-storybook-addon-playground/src",
   "tags": ["vNext", "platform:any", "tools"],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/setup.ts"]
+    }
+  },
   "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    },
     "build": {
       "dependsOn": ["^build", "build-playground"],
       "options": {
